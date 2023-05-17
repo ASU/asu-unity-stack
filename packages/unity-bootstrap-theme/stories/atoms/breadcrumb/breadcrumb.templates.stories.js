@@ -22,14 +22,14 @@ export default createComponent("Breadcrumbs", "Atoms", "Templates");
 export const BreadcrumbsAgainstWhiteBackground = createStory(args => {
   return (
     <nav aria-label="breadcrumbs">
-      <ol class={`breadcrumb ${args.type}`}>
-        <li class="breadcrumb-item">
+      <ol className={`breadcrumb ${args.type}`}>
+        <li className="breadcrumb-item">
           <a href="#">Home</a>
         </li>
-        <li class="breadcrumb-item">
+        <li className="breadcrumb-item">
           <a href="#">Second Nav Item</a>
         </li>
-        <li class="breadcrumb-item active" aria-current="page">
+        <li className="breadcrumb-item active" aria-current="page">
           <a href="#">Current Page</a>
         </li>
       </ol>

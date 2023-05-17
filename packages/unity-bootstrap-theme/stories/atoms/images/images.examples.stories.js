@@ -8,10 +8,10 @@ export default createComponent("Images", "Atoms", "Examples");
 // TODO Consider employing JS to enforce 255 character max for captions.
 
 export const LargeImageNoCaptionComponent = createStory(
-  <div class="uds-img">
+  <div className="uds-img">
     <img
       src="https://source.unsplash.com/WLUHO9A_xik/1200x750"
-      class="img-fluid"
+      className="img-fluid"
       alt="Random image. REPLACE with appropriate alt text for accessibility."
       width="1200"
       height="750"
@@ -26,10 +26,10 @@ LargeImageNoCaptionComponent.args = {
 };
 
 export const LargeImageNoCaptionComponentBorderless = createStory(
-  <div class="uds-img borderless">
+  <div className="uds-img borderless">
     <img
       src="https://source.unsplash.com/WLUHO9A_xik/1200x750"
-      class="img-fluid"
+      className="img-fluid"
       alt="Random image. REPLACE with appropriate alt text for accessibility."
       width="1200"
       height="750"
@@ -44,11 +44,11 @@ LargeImageNoCaptionComponentBorderless.args = {
 };
 
 export const LargeImageCaptionComponent = createStory(
-  <div class="uds-img">
-    <figure class="figure uds-figure">
+  <div className="uds-img">
+    <figure className="figure uds-figure">
       <img
         src="https://source.unsplash.com/WLUHO9A_xik/800x600"
-        class="uds-img figure-img img-fluid"
+        className="uds-img figure-img img-fluid"
         alt="Random image with caption below. REPLACE with appropriate alt text for accessibility."
         width="800"
         height="600"
@@ -56,8 +56,8 @@ export const LargeImageCaptionComponent = createStory(
         decoding="async"
         fetchPriority="high"
       />
-      <figcaption class="figure-caption uds-figure-caption">
-        <span class="uds-caption-text">
+      <figcaption className="figure-caption uds-figure-caption">
+        <span className="uds-caption-text">
           Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
           commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
           et magnis dis parturient montes, nascetur ridiculus mus. Donec quam
@@ -72,11 +72,11 @@ LargeImageCaptionComponent.args = {
 };
 
 export const LargeImageCaptionComponentBorderless = createStory(
-  <div class="uds-img borderless">
-    <figure class="figure uds-figure">
+  <div className="uds-img borderless">
+    <figure className="figure uds-figure">
       <img
         src="https://source.unsplash.com/WLUHO9A_xik/800x600"
-        class="uds-img figure-img img-fluid"
+        className="uds-img figure-img img-fluid"
         alt="Random image with caption below. REPLACE with appropriate alt text for accessibility."
         width="800"
         height="600"
@@ -84,8 +84,8 @@ export const LargeImageCaptionComponentBorderless = createStory(
         decoding="async"
         fetchPriority="high"
       />
-      <figcaption class="figure-caption uds-figure-caption">
-        <span class="uds-caption-text">
+      <figcaption className="figure-caption uds-figure-caption">
+        <span className="uds-caption-text">
           Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
           commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus
           et magnis dis parturient montes, nascetur ridiculus mus. Donec quam
@@ -102,10 +102,10 @@ LargeImageCaptionComponentBorderless.args = {
 export const LargeImagesDropShadowComponent = createStory(
   <div>
     {/* Component start */}
-    <div class="uds-img uds-img-drop-shadow">
+    <div className="uds-img uds-img-drop-shadow">
       <img
         src="https://source.unsplash.com/WLUHO9A_xik/800x600"
-        class="uds-img XXuds-img-drop-shadow img-fluid"
+        className="uds-img XXuds-img-drop-shadow img-fluid"
         alt="Random image with dropshadow. REPLACE with appropriate alt text."
         width="800"
         height="600"
@@ -120,11 +120,11 @@ export const LargeImagesDropShadowComponent = createStory(
     <br />
 
     {/* Component start */}
-    <div class="uds-img uds-img-drop-shadow">
-      <figure class="figure uds-figure XXuds-img-drop-shadow">
+    <div className="uds-img uds-img-drop-shadow">
+      <figure className="figure uds-figure XXuds-img-drop-shadow">
         <img
           src="https://source.unsplash.com/WLUHO9A_xik/800x600"
-          class="uds-img figure-img img-fluid"
+          className="uds-img figure-img img-fluid"
           alt="Random image with caption below. REPLACE with appropriate alt text for accessibility."
           width="800"
           height="600"
@@ -132,8 +132,8 @@ export const LargeImagesDropShadowComponent = createStory(
           decoding="async"
           fetchPriority="high"
         />
-        <figcaption class="figure-caption uds-figure-caption">
-          <span class="uds-caption-text">
+        <figcaption className="figure-caption uds-figure-caption">
+          <span className="uds-caption-text">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
             commodo ligula eget dolor. Aenean massa. Cum sociis natoque
             penatibus et magnis dis parturient montes, nascetur ridiculus mus.
@@ -167,10 +167,10 @@ export const SmallImagesComponent = createStory(
 
     <div style={{ maxWidth: "300px" }}>
       {/* Component start */}
-      <div class="uds-img">
+      <div className="uds-img">
         <img
           src="https://source.unsplash.com/WLUHO9A_xik/800x600"
-          class="uds-img img-fluid"
+          className="uds-img img-fluid"
           alt="Random image with dropshadow. REPLACE with appropriate alt text."
           width="800"
           height="600"
@@ -187,11 +187,11 @@ export const SmallImagesComponent = createStory(
 
     <div style={{ maxWidth: "300px" }}>
       {/* Component start */}
-      <div class="uds-img uds-img-drop-shadow">
-        <figure class="figure uds-figure">
+      <div className="uds-img uds-img-drop-shadow">
+        <figure className="figure uds-figure">
           <img
             src="https://source.unsplash.com/WLUHO9A_xik/800x600"
-            class="uds-img figure-img img-fluid"
+            className="uds-img figure-img img-fluid"
             alt="Random image with caption below. REPLACE with appropriate alt text for accessibility."
             width="800"
             height="600"
@@ -199,8 +199,8 @@ export const SmallImagesComponent = createStory(
             decoding="async"
             fetchPriority="high"
           />
-          <figcaption class="figure-caption uds-figure-caption">
-            <span class="uds-caption-text">
+          <figcaption className="figure-caption uds-figure-caption">
+            <span className="uds-caption-text">
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
               commodo ligula eget dolor. Aenean massa. Cum sociis natoque
               penatibus et magnis dis parturient montes, nascetur ridiculus mus.

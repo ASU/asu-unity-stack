@@ -2,9 +2,9 @@ import React from "react";
 
 export default (content) => {
   return (
-    <div class="container">
-      <div class="row">
-        <div id="html-root" class="col-12">
+    <div className="container">
+      <div className="row">
+        <div id="html-root" className="col-12">
           {content}
         </div>
       </div>

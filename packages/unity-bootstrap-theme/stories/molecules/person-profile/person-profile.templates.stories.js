@@ -162,7 +162,7 @@ const PersonProfile = props => (
       {props.size === "small" && (
         <Button color="maroon" size="small" label="View Profile" />
       )}
-      {props.size === "micro" && <span class="more-link">Edplus at ASU</span>}
+      {props.size === "micro" && <span className="more-link">Edplus at ASU</span>}
     </div>
   </div>
 );

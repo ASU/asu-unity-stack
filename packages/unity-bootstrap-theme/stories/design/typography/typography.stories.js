@@ -2,9 +2,9 @@ import { createComponent, createStory } from "../../../helpers/wrapper.js";
 export default createComponent("Typography", "Design");
 
 export const Componentfont = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col col-sm-12 p-3">
+  <div className="container">
+    <div className="row">
+      <div className="col col-sm-12 p-3">
         <h1>Arial bold</h1>
         <p>
           <strong>
@@ -30,9 +30,9 @@ export const Componentfont = createStory(
 );
 
 export const ComponentbodyCopyWhite = createStory(
-  <div class="container bg-white">
-    <div class="row">
-      <div class="col col-sm-12 p-3">
+  <div className="container bg-white">
+    <div className="row">
+      <div className="col col-sm-12 p-3">
         <p>
           Lorem ipsum dolor sit amet,{" "}
           <strong>consectetur adipiscing elit</strong>. Vivamus ac pretium
@@ -63,9 +63,9 @@ export const ComponentbodyCopyWhite = createStory(
 );
 
 export const ComponentbodyCopyGray1 = createStory(
-  <div class="container bg-gray-1">
-    <div class="row">
-      <div class="col col-sm-12 p-3">
+  <div className="container bg-gray-1">
+    <div className="row">
+      <div className="col col-sm-12 p-3">
         <p>
           Lorem ipsum dolor sit amet,{" "}
           <strong>consectetur adipiscing elit</strong>. Vivamus ac pretium
@@ -96,9 +96,9 @@ export const ComponentbodyCopyGray1 = createStory(
 );
 
 export const ComponentbodyCopyGray2 = createStory(
-  <div class="container bg-gray-2">
-    <div class="row">
-      <div class="col col-sm-12 p-3">
+  <div className="container bg-gray-2">
+    <div className="row">
+      <div className="col col-sm-12 p-3">
         <p>
           Lorem ipsum dolor sit amet,{" "}
           <strong>consectetur adipiscing elit</strong>. Vivamus ac pretium
@@ -129,16 +129,16 @@ export const ComponentbodyCopyGray2 = createStory(
 );
 
 export const ComponentbodyCopyGray7 = createStory(
-  <div class="container bg-gray-7 text-white">
-    <div class="row">
-      <div class="col col-sm-12 p-3">
+  <div className="container bg-gray-7 text-white">
+    <div className="row">
+      <div className="col col-sm-12 p-3">
         <p>
           Lorem ipsum dolor sit amet,{" "}
           <strong>consectetur adipiscing elit</strong>. Vivamus ac pretium
           lorem. Fusce libero nulla, ornare eget mi id, auctor pharetra sem.
           Nulla libero erat, viverra sit amet lectus ac, venenatis consectetur
           arcu.{" "}
-          <a href="www.example.com" class="text-gold">
+          <a href="www.example.com" className="text-gold">
             Nullam sit amet ligula ullamcorper
           </a>
           , consequat sapien vitae, ultricies leo. Nullam ligula sapien, posuere
@@ -165,11 +165,11 @@ export const ComponentbodyCopyGray7 = createStory(
 );
 
 export const ComponentASUHeadingsWhite = createStory(
-  <div class="container bg-white">
-    <div class="row">
-      <div class="col col-sm-12 p-3">
+  <div className="container bg-white">
+    <div className="row">
+      <div className="col col-sm-12 p-3">
         <h1>Heading 1</h1>
-        <h1 class="article">Heading 1 - Long Headlines and Article Titles</h1>
+        <h1 className="article">Heading 1 - Long Headlines and Article Titles</h1>
         <h2>Heading 2</h2>
         <h3>Heading 3</h3>
         <h4>Heading 4</h4>
@@ -180,11 +180,11 @@ export const ComponentASUHeadingsWhite = createStory(
 );
 
 export const ComponentASUHeadingsGray1 = createStory(
-  <div class="container bg-gray-1">
-    <div class="row">
-      <div class="col col-sm-12 p-3">
+  <div className="container bg-gray-1">
+    <div className="row">
+      <div className="col col-sm-12 p-3">
         <h1>Heading 1</h1>
-        <h1 class="article">Heading 1 - Long Headlines and Article Titles</h1>
+        <h1 className="article">Heading 1 - Long Headlines and Article Titles</h1>
         <h2>Heading 2</h2>
         <h3>Heading 3</h3>
         <h4>Heading 4</h4>
@@ -195,11 +195,11 @@ export const ComponentASUHeadingsGray1 = createStory(
 );
 
 export const ComponentASUHeadingsGray2 = createStory(
-  <div class="container bg-gray-2">
-    <div class="row">
-      <div class="col col-sm-12 p-3">
+  <div className="container bg-gray-2">
+    <div className="row">
+      <div className="col col-sm-12 p-3">
         <h1>Heading 1</h1>
-        <h1 class="article">Heading 1 - Long Headlines and Article Titles</h1>
+        <h1 className="article">Heading 1 - Long Headlines and Article Titles</h1>
         <h2>Heading 2</h2>
         <h3>Heading 3</h3>
         <h4>Heading 4</h4>
@@ -210,11 +210,11 @@ export const ComponentASUHeadingsGray2 = createStory(
 );
 
 export const ComponentASUHeadingsGray7 = createStory(
-  <div class="container bg-gray-7 text-gray-1">
-    <div class="row">
-      <div class="col col-sm-12 p-3">
+  <div className="container bg-gray-7 text-gray-1">
+    <div className="row">
+      <div className="col col-sm-12 p-3">
         <h1>Heading 1</h1>
-        <h1 class="article">Heading 1 - Long Headlines and Article Titles</h1>
+        <h1 className="article">Heading 1 - Long Headlines and Article Titles</h1>
         <h2>Heading 2</h2>
         <h3>Heading 3</h3>
         <h4>Heading 4</h4>
@@ -225,14 +225,14 @@ export const ComponentASUHeadingsGray7 = createStory(
 );
 
 export const ComponentHighlightsWhite = createStory(
-  <div class="container bg-white">
-    <div class="row">
-      <div class="col col-sm-12 p-3">
+  <div className="container bg-white">
+    <div className="row">
+      <div className="col col-sm-12 p-3">
         <h3>
-          <span class="highlight-gold">Lorem ipsum</span>
+          <span className="highlight-gold">Lorem ipsum</span>
         </h3>
         <h3>
-          <span class="highlight-black">Lorem ipsum</span>
+          <span className="highlight-black">Lorem ipsum</span>
         </h3>
       </div>
     </div>
@@ -240,14 +240,14 @@ export const ComponentHighlightsWhite = createStory(
 );
 
 export const ComponentHighlightsGray1 = createStory(
-  <div class="container bg-gray-1">
-    <div class="row">
-      <div class="col col-sm-12 p-3">
+  <div className="container bg-gray-1">
+    <div className="row">
+      <div className="col col-sm-12 p-3">
         <h3>
-          <span class="highlight-gold">Lorem ipsum</span>
+          <span className="highlight-gold">Lorem ipsum</span>
         </h3>
         <h3>
-          <span class="highlight-black">Lorem ipsum</span>
+          <span className="highlight-black">Lorem ipsum</span>
         </h3>
       </div>
     </div>
@@ -255,17 +255,17 @@ export const ComponentHighlightsGray1 = createStory(
 );
 
 export const ComponentHighlightsGray2 = createStory(
-  <div class="container bg-gray-2">
-    <div class="row">
-      <div class="col col-sm-12 p-3">
+  <div className="container bg-gray-2">
+    <div className="row">
+      <div className="col col-sm-12 p-3">
         <h3>
-          <span class="highlight-gold">Lorem ipsum</span>
+          <span className="highlight-gold">Lorem ipsum</span>
         </h3>
         <h3>
-          <span class="highlight-black">Lorem ipsum</span>
+          <span className="highlight-black">Lorem ipsum</span>
         </h3>
         <h3>
-          <span class="highlight-white">Lorem ipsum</span>
+          <span className="highlight-white">Lorem ipsum</span>
         </h3>
       </div>
     </div>
@@ -273,14 +273,14 @@ export const ComponentHighlightsGray2 = createStory(
 );
 
 export const ComponentHighlightsGray7 = createStory(
-  <div class="container bg-gray-7 text-gray-1">
-    <div class="row">
-      <div class="col col-sm-12 p-3">
+  <div className="container bg-gray-7 text-gray-1">
+    <div className="row">
+      <div className="col col-sm-12 p-3">
         <h3>
-          <span class="highlight-gold">Lorem ipsum</span>
+          <span className="highlight-gold">Lorem ipsum</span>
         </h3>
         <h3>
-          <span class="highlight-white">Lorem ipsum</span>
+          <span className="highlight-white">Lorem ipsum</span>
         </h3>
       </div>
     </div>
@@ -288,25 +288,25 @@ export const ComponentHighlightsGray7 = createStory(
 );
 
 export const ComponentASUHeadingsHighlights = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col col-sm-12 p-3">
+  <div className="container">
+    <div className="row">
+      <div className="col col-sm-12 p-3">
         <h1>
-          <span class="highlight-gold">Lorem ipsum</span>
+          <span className="highlight-gold">Lorem ipsum</span>
         </h1>
-        <h1 class="article">
-          <span class="highlight-gold">
+        <h1 className="article">
+          <span className="highlight-gold">
             Heading 1 - Long Headlines and Article Titles
           </span>
         </h1>
         <h2>
-          <span class="highlight-black">Heading 2</span>
+          <span className="highlight-black">Heading 2</span>
         </h2>
         <h3>
-          <span class="highlight-gold">Heading 3</span>
+          <span className="highlight-gold">Heading 3</span>
         </h3>
         <h4>
-          <span class="highlight-black">Heading 4</span>
+          <span className="highlight-black">Heading 4</span>
         </h4>
       </div>
     </div>
@@ -314,11 +314,11 @@ export const ComponentASUHeadingsHighlights = createStory(
 );
 
 export const ComponentASUHeadingsContentPage = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col col-sm-12 p-3">
+  <div className="container">
+    <div className="row">
+      <div className="col col-sm-12 p-3">
         <h1>
-          <span class="highlight-gold">Lorem ipsum</span>
+          <span className="highlight-gold">Lorem ipsum</span>
         </h1>
         <p>
           Senectus diam rhoncus dui lectus. Egestas viverra, scelerisque mollis.
@@ -343,8 +343,8 @@ export const ComponentASUHeadingsContentPage = createStory(
           nascetur gravida consectetur pretium. At quam donec amet sit donec
           tincidunt sed praesent! Senectus netus mollis porttitor.
         </p>
-        <h1 class="article">
-          <span class="highlight-gold">
+        <h1 className="article">
+          <span className="highlight-gold">
             Heading 1 - Long Headlines and Article Titles
           </span>
         </h1>
@@ -372,7 +372,7 @@ export const ComponentASUHeadingsContentPage = createStory(
           tincidunt sed praesent! Senectus netus mollis porttitor.
         </p>
         <h2>
-          <span class="highlight-black">Heading 2</span>
+          <span className="highlight-black">Heading 2</span>
         </h2>
         <p>
           Senectus diam rhoncus dui lectus. Egestas viverra, scelerisque mollis.
@@ -398,7 +398,7 @@ export const ComponentASUHeadingsContentPage = createStory(
           tincidunt sed praesent! Senectus netus mollis porttitor.
         </p>
         <h3>
-          <span class="highlight-white">Heading 3</span>
+          <span className="highlight-white">Heading 3</span>
         </h3>
         <p>
           Senectus diam rhoncus dui lectus. Egestas viverra, scelerisque mollis.
@@ -424,7 +424,7 @@ export const ComponentASUHeadingsContentPage = createStory(
           tincidunt sed praesent! Senectus netus mollis porttitor.
         </p>
         <h4>
-          <span class="highlight-black">Heading 4</span>
+          <span className="highlight-black">Heading 4</span>
         </h4>
         <p>
           Senectus diam rhoncus dui lectus. Egestas viverra, scelerisque mollis.
@@ -455,10 +455,10 @@ export const ComponentASUHeadingsContentPage = createStory(
 );
 
 export const ComponentLead = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col col-sm-12 p-3">
-        <p class="lead">
+  <div className="container">
+    <div className="row">
+      <div className="col col-sm-12 p-3">
+        <p className="lead">
           Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
           Duis mollis, est non commodo luctus.
         </p>
@@ -468,11 +468,11 @@ export const ComponentLead = createStory(
 );
 
 export const ComponentASUParagraphs = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12 p-3">
+  <div className="container">
+    <div className="row">
+      <div className="col-sm-12 p-3">
         <h1>
-          <span class="highlight-gold">Paragraphs</span>
+          <span className="highlight-gold">Paragraphs</span>
         </h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis
@@ -507,9 +507,9 @@ export const ComponentASUParagraphs = createStory(
 );
 
 export const ComponentInlineTextElements = createStory(
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12 p-3">
+  <div className="container">
+    <div className="row">
+      <div className="col-sm-12 p-3">
         <p>
           You can use the mark tag to <mark>highlight</mark> text.
         </p>

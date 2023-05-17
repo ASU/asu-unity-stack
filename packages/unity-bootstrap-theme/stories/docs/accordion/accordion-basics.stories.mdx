@@ -13,8 +13,8 @@ The recommended markup for an accordion begins from the following pattern.
 
 ```html
 <div className="accordion">
-  <div class="accordion-item">
-    <div class="accordion-header">
+  <div className="accordion-item">
+    <div className="accordion-header">
       <h3>
         <a
           id="example-header-3"
@@ -31,13 +31,13 @@ The recommended markup for an accordion begins from the following pattern.
           data-ga-section="default"
         >
           This card starts off in an unfolded state.
-          <span class="fas fa-chevron-up"></span>
+          <span className="fas fa-chevron-up"></span>
         </a>
       </h3>
     </div>
     <div
       id="example-content-3"
-      class="collapse show accordion-body"
+      className="collapse show accordion-body"
       aria-labelledby="example-header-3"
     >
       <h4>This is a quaternary headline</h4>
@@ -82,19 +82,19 @@ To add an icon:
 A foldable card with an icon and and accent color might look like this:
 
 ```
-<div class=" accordion mt-3 accordion-item-maroon">
-  <div class="accordion-header accordion-header-icon">
+<div className=" accordion mt-3 accordion-item-maroon">
+  <div className="accordion-header accordion-header-icon">
     <h4>
-      <a id="accordionOne" class="collapsed" href="#cardBodyOne" data-bs-toggle="collapse" data-bs-target="#accordionBodyOne" role="button" aria-expanded="false" aria-controls="cardBodyOne">
-        <span class="accordion-icon">
-            <i class="fas fa-dog me-2" role="img" aria-label="..."></i>
+      <a id="accordionOne" className="collapsed" href="#cardBodyOne" data-bs-toggle="collapse" data-bs-target="#accordionBodyOne" role="button" aria-expanded="false" aria-controls="cardBodyOne">
+        <span className="accordion-icon">
+            <i className="fas fa-dog me-2" role="img" aria-label="..."></i>
             Accordion with icon and gold color.
         </span>
-        <span class="fas fa-chevron-up"></span>
+        <span className="fas fa-chevron-up"></span>
       </a>
     </h4>
   </div>
-  <div id="accordionTwo" class="collapse accordion-body" aria-labelledby="accordionOne">
+  <div id="accordionTwo" className="collapse accordion-body" aria-labelledby="accordionOne">
     ...
   </div>
 </div>
@@ -112,11 +112,11 @@ Include one of the following modifier classes next to the `.accordion` class to 
 Example:
 
 ```
-<div class="accordion desktop-disable-lg">
-  <div class="accordion-header">
+<div className="accordion desktop-disable-lg">
+  <div className="accordion-header">
     ...
   </div>
-  <div id="accordionOne" class="collapse accordion-body" aria-labelledby="accordionOne">
+  <div id="accordionOne" className="collapse accordion-body" aria-labelledby="accordionOne">
     ...
   </div>
 </div>

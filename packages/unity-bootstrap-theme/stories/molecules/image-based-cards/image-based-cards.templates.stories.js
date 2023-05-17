@@ -6,18 +6,18 @@ import portraitImage from './portrait-image.jpg';
 export default createComponent('Image Based Cards', 'Molecules', 'Templates');
 
 export const PortraitSM = createStory(
-  <div class="uds-image-based-card portrait-sm">
+  <div className="uds-image-based-card portrait-sm">
     <img
       src={portraitImage}
       alt="Card image cap"
       loading="lazy"
       decoding="async"
     />
-    <div class="card-img-overlay">
-      <h2 class="card-title text-white">Heading text</h2>
+    <div className="card-img-overlay">
+      <h2 className="card-title text-white">Heading text</h2>
       <a
         href="#"
-        class="btn btn-md btn-gold"
+        className="btn btn-md btn-gold"
         data-ga="populate with deafult button text"
         data-ga-name="onclick"
         data-ga-event="link"
@@ -34,18 +34,18 @@ export const PortraitSM = createStory(
 );
 
 export const PortraitMD = createStory(
-  <div class="uds-image-based-card portrait-md">
+  <div className="uds-image-based-card portrait-md">
     <img
       src={portraitImage}
       alt="Card image cap"
       loading="lazy"
       decoding="async"
     />
-    <div class="card-img-overlay">
-      <h2 class="card-title text-white">Heading text</h2>
+    <div className="card-img-overlay">
+      <h2 className="card-title text-white">Heading text</h2>
       <a
         href="#"
-        class="btn btn-md btn-gold"
+        className="btn btn-md btn-gold"
         data-ga="populate with deafult button text"
         data-ga-name="onclick"
         data-ga-event="link"
@@ -62,18 +62,18 @@ export const PortraitMD = createStory(
 );
 
 export const LandscapeSM = createStory(
-  <div class="uds-image-based-card landscape-sm">
+  <div className="uds-image-based-card landscape-sm">
     <img
       src={portraitImage}
       alt="Card image cap"
       loading="lazy"
       decoding="async"
     />
-    <div class="card-img-overlay">
-      <h2 class="card-title text-white">Heading text</h2>
+    <div className="card-img-overlay">
+      <h2 className="card-title text-white">Heading text</h2>
       <a
         href="#"
-        class="btn btn-sm btn-gold"
+        className="btn btn-sm btn-gold"
         data-ga="populate with deafult button text"
         data-ga-name="onclick"
         data-ga-event="link"
@@ -90,18 +90,18 @@ export const LandscapeSM = createStory(
 );
 
 export const LandscapeMD = createStory(
-  <div class="uds-image-based-card landscape-md">
+  <div className="uds-image-based-card landscape-md">
     <img
       src={portraitImage}
       alt="Card image cap"
       loading="lazy"
       decoding="async"
     />
-    <div class="card-img-overlay">
-      <h2 class="card-title text-white">Heading text</h2>
+    <div className="card-img-overlay">
+      <h2 className="card-title text-white">Heading text</h2>
       <a
         href="#"
-        class="btn btn-sm btn-gold"
+        className="btn btn-sm btn-gold"
         data-ga="populate with deafult button text"
         data-ga-name="onclick"
         data-ga-event="link"
@@ -118,18 +118,18 @@ export const LandscapeMD = createStory(
 );
 
 export const LandscapeLG = createStory(
-  <div class="uds-image-based-card landscape-lg">
+  <div className="uds-image-based-card landscape-lg">
     <img
       src={portraitImage}
       alt="Card image cap"
       loading="lazy"
       decoding="async"
     />
-    <div class="card-img-overlay">
-      <h2 class="card-title text-white">Heading text</h2>
+    <div className="card-img-overlay">
+      <h2 className="card-title text-white">Heading text</h2>
       <a
         href="#"
-        class="btn btn-md btn-gold"
+        className="btn btn-md btn-gold"
         data-ga="populate with deafult button text"
         data-ga-name="onclick"
         data-ga-event="link"
@@ -146,18 +146,18 @@ export const LandscapeLG = createStory(
 );
 
 export const SquareSM = createStory(
-  <div class="uds-image-based-card square-sm">
+  <div className="uds-image-based-card square-sm">
     <img
       src={portraitImage}
       alt="Card image cap"
       loading="lazy"
       decoding="async"
     />
-    <div class="card-img-overlay">
-      <h2 class="card-title text-white">Heading text</h2>
+    <div className="card-img-overlay">
+      <h2 className="card-title text-white">Heading text</h2>
       <a
         href="#"
-        class="btn btn-sm btn-gold"
+        className="btn btn-sm btn-gold"
         data-ga="populate with deafult button text"
         data-ga-name="onclick"
         data-ga-event="link"
@@ -174,18 +174,18 @@ export const SquareSM = createStory(
 );
 
 export const SquareMD = createStory(
-  <div class="uds-image-based-card square-md">
+  <div className="uds-image-based-card square-md">
     <img
       src={portraitImage}
       alt="Card image cap"
       loading="lazy"
       decoding="async"
     />
-    <div class="card-img-overlay">
-      <h2 class="card-title text-white">Heading text</h2>
+    <div className="card-img-overlay">
+      <h2 className="card-title text-white">Heading text</h2>
       <a
         href="#"
-        class="btn btn-md btn-gold"
+        className="btn btn-md btn-gold"
         data-ga="populate with deafult button text"
         data-ga-name="onclick"
         data-ga-event="link"
@@ -202,18 +202,18 @@ export const SquareMD = createStory(
 );
 
 export const SquareLG = createStory(
-  <div class="uds-image-based-card square-lg">
+  <div className="uds-image-based-card square-lg">
     <img
       src={portraitImage}
       alt="Card image cap"
       loading="lazy"
       decoding="async"
     />
-    <div class="card-img-overlay">
-      <h2 class="card-title text-white">Heading text</h2>
+    <div className="card-img-overlay">
+      <h2 className="card-title text-white">Heading text</h2>
       <a
         href="#"
-        class="btn btn-md btn-gold"
+        className="btn btn-md btn-gold"
         data-ga="populate with deafult button text"
         data-ga-name="onclick"
         data-ga-event="link"

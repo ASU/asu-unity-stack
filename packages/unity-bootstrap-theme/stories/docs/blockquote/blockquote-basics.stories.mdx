@@ -7,15 +7,15 @@ import { Meta, Story, Canvas } from '@storybook/addon-docs';
 The recommended markup for a blockquote begins from the following pattern.
 
 ```
-<div class="uds-blockquote">
+<div className="uds-blockquote">
   <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">
     <path d="M113.61,245.82H0V164.56q0-49.34,8.69-77.83T40.84,35.58Q64.29,12.95,100.67,0l22.24,46.9q-34,11.33-48.72,31.54T58.63,132.21h55Zm180,0H180V164.56q0-49.74,8.7-78T221,35.58Q244.65,12.95,280.63,0l22.24,46.9q-34,11.33-48.72,31.54t-15.57,53.77h55Z"/>
   </svg>
   <blockquote>
     <p>We hold these truths to be self-evident, that all men are created equal, that they are endowed by their Creator with certain unalienable Rights, that among these are Life, Liberty and the pursuit of Happiness.</p>
-    <div class="citation">
-      <cite class="name">Thomas Jefferson</cite>
-      <cite class="description">The Declaration of Independence</cite>
+    <div className="citation">
+      <cite className="name">Thomas Jefferson</cite>
+      <cite className="description">The Declaration of Independence</cite>
     </div>
   </blockquote>
 </div>
@@ -35,25 +35,25 @@ The design of the blockquote can be altered in a number of different ways by add
 | .alt-citation   | Alt Citation                                 |
 | .uds-testmonial | Testmonials                                  |
 
-<div class="pt-6">&nbsp;</div>
+<div className="pt-6">&nbsp;</div>
 
 ## Modifying classes
 
-<div class="pt-2">&nbsp;</div>
+<div className="pt-2">&nbsp;</div>
 
 ### .accent-gold, .accent-maroon
 
 This modifying class for `.uds-blockquote` contains additiional styling to change the accent color for the element to either ASU Maroon or ASU Gold. It will affect both the color of open quotation mark image and the decorative separator between the blockquote and the citation when present.
 
 ```
-<div class="uds-blockquote accent-maroon">
+<div className="uds-blockquote accent-maroon">
   <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">...</svg>
   <blockquote>
     ...
   </blockquote>
 </div>
 
-<div class="uds-blockquote uds-testimonial accent-gold">
+<div className="uds-blockquote uds-testimonial accent-gold">
   <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">...</svg>
   <blockquote>
     ...
@@ -70,7 +70,7 @@ The class `.with-image` applies the necessary formatting to include a circular i
 - The class leverages the Bootstrap "sm" breakpoint (575px) to transform the image from 180px on desktop to 40px on mobile.
 
 ```
-<div class="uds-blockquote with-image">
+<div className="uds-blockquote with-image">
   <img src="https://placeimg.com/400/400/any" alt="Must include alt text"/>
   <blockquote>
     ...
@@ -86,7 +86,7 @@ Adding both the `.with-image` and `.reversed` modifier classes to the initial `.
 - The effect is only visible on viewports larger than 575px. (Tablet and desktop only.)
 
 ```
-<div class="uds-blockquote with-image reversed">
+<div className="uds-blockquote with-image reversed">
   <img src="https://placeimg.com/400/400/any" alt="Must include alt text"/>
   <blockquote>
     ...
@@ -103,10 +103,10 @@ The `.no-citation` class allows for an alternate presentation of the quoted part
 - The UDS Blockquote "no citation" style should always include an image.
 
 ```
-<div class="uds-blockquote no-citation with-image">
+<div className="uds-blockquote no-citation with-image">
   <img src="https://placeimg.com/400/400/any" alt="Must include alt text"/>
   <blockquote>
-    <h3><span class="highlight-black">Quoted Person</span></h3>
+    <h3><span className="highlight-black">Quoted Person</span></h3>
     <p>The quotation would go here.</p>
   </blockquote>
 </div>
@@ -117,7 +117,7 @@ The `.no-citation` class allows for an alternate presentation of the quoted part
 The `.alt-citation` class replaces the indentation and included hyphen of the blockquote's `<cite>` element with a decorative colored separator. The color of the separator element is controlled by the manditory additional inclusion of either `.accent-gold` or `.accent-maroon`.
 
 ```
-<div class="uds-blockquote .alt-citation accent-gold">
+<div className="uds-blockquote .alt-citation accent-gold">
   <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">...</svg>
   <blockquote>
     ...
@@ -132,7 +132,7 @@ The `.uds-testimonial` class applies all of the styles that originate from the `
 - The markup intensionally includes both an open quotation mark that preceeds the quoted text and the maroon or gold open quote image above it.
 - When including an image and applying the `.uds-testimonial` class, the image will remain at a max-width of 180px on a mobile device.
 
-<div class="pt-6">&nbsp;</div>
+<div className="pt-6">&nbsp;</div>
 
 ## The open quote svg
 

@@ -8,14 +8,14 @@ export const GlobalElementsOnly = (
     role="contentinfo"
     data-elastic-exclude="data-elastic-exclude"
   >
-    <div class="wrapper" id="wrapper-footer-innovation">
-      <div class="container" id="footer-innovation">
-        <div class="row">
-          <div class="col">
-            <div class="d-flex footer-innovation-links">
-              <nav class="nav" aria-label="University Services">
+    <div className="wrapper" id="wrapper-footer-innovation">
+      <div className="container" id="footer-innovation">
+        <div className="row">
+          <div className="col">
+            <div className="d-flex footer-innovation-links">
+              <nav className="nav" aria-label="University Services">
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/about/locations-maps"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -24,7 +24,7 @@ export const GlobalElementsOnly = (
                   Maps and Locations
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/asujobs"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -33,7 +33,7 @@ export const GlobalElementsOnly = (
                   Jobs
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://isearch.asu.edu/"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -42,7 +42,7 @@ export const GlobalElementsOnly = (
                   Directory
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/about/contact"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -51,7 +51,7 @@ export const GlobalElementsOnly = (
                   Contact ASU
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://my.asu.edu/"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -61,7 +61,7 @@ export const GlobalElementsOnly = (
                 </a>
               </nav>
               <a
-                class="img-link"
+                className="img-link"
                 href="https://www.asu.edu/rankings"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="secondary footer"
@@ -82,16 +82,16 @@ export const GlobalElementsOnly = (
       </div>
     </div>
 
-    <div class="wrapper" id="wrapper-footer-colophon">
-      <div class="container" id="footer-colophon">
-        <div class="row">
-          <div class="col">
+    <div className="wrapper" id="wrapper-footer-colophon">
+      <div className="container" id="footer-colophon">
+        <div className="row">
+          <div className="col">
             <nav
-              class="nav colophon"
+              className="nav colophon"
               aria-label="University Legal and Compliance"
             >
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/about/copyright-trademark"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -100,7 +100,7 @@ export const GlobalElementsOnly = (
                 Copyright and Trademark
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/accessibility/"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -109,7 +109,7 @@ export const GlobalElementsOnly = (
                 Accessibility
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/about/privacy"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -118,7 +118,7 @@ export const GlobalElementsOnly = (
                 Privacy
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/about/terms-of-use"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -127,7 +127,7 @@ export const GlobalElementsOnly = (
                 Terms of Use
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/emergency/"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -136,7 +136,7 @@ export const GlobalElementsOnly = (
                 Emergency
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://eoss.asu.edu/health/announcements/coronavirus"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -158,10 +158,10 @@ export const ZeroColumns = (
     role="contentinfo"
     data-elastic-exclude="data-elastic-exclude"
   >
-    <div class="wrapper" id="wrapper-endorsed-footer">
-      <div class="container" id="endorsed-footer">
-        <div class="row">
-          <div class="col-md" id="endorsed-logo">
+    <div className="wrapper" id="wrapper-endorsed-footer">
+      <div className="container" id="endorsed-footer">
+        <div className="row">
+          <div className="col-md" id="endorsed-logo">
             <a
               href="https://www.asu.edu"
               data-ga-footer-type="internal link"
@@ -179,10 +179,10 @@ export const ZeroColumns = (
             </a>
           </div>
 
-          <div class="col-md" id="social-media">
-            <nav class="nav" aria-label="Social Media">
+          <div className="col-md" id="social-media">
+            <nav className="nav" aria-label="Social Media">
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -190,11 +190,11 @@ export const ZeroColumns = (
               >
                 <span
                   title="Facebook Social Media Icon"
-                  class="fab fa-facebook-square"
+                  className="fab fa-facebook-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -202,11 +202,11 @@ export const ZeroColumns = (
               >
                 <span
                   title="Twitter Social Media Icon"
-                  class="fab fa-twitter-square"
+                  className="fab fa-twitter-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -214,11 +214,11 @@ export const ZeroColumns = (
               >
                 <span
                   title="Instagram Social Media Icon"
-                  class="fab fa-instagram-square"
+                  className="fab fa-instagram-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -226,11 +226,11 @@ export const ZeroColumns = (
               >
                 <span
                   title="YouTube Social Media Icon"
-                  class="fab fa-youtube-square"
+                  className="fab fa-youtube-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -238,7 +238,7 @@ export const ZeroColumns = (
               >
                 <span
                   title="LinkedIn Social Media Icon"
-                  class="fab fa-linkedin"
+                  className="fab fa-linkedin"
                 ></span>
               </a>
             </nav>
@@ -247,14 +247,14 @@ export const ZeroColumns = (
       </div>
     </div>
 
-    <div class="wrapper" id="wrapper-footer-innovation">
-      <div class="container" id="footer-innovation">
-        <div class="row">
-          <div class="col">
-            <div class="d-flex footer-innovation-links">
-              <nav class="nav" aria-label="University Services">
+    <div className="wrapper" id="wrapper-footer-innovation">
+      <div className="container" id="footer-innovation">
+        <div className="row">
+          <div className="col">
+            <div className="d-flex footer-innovation-links">
+              <nav className="nav" aria-label="University Services">
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/about/locations-maps"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -263,7 +263,7 @@ export const ZeroColumns = (
                   Maps and Locations
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/asujobs"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -272,7 +272,7 @@ export const ZeroColumns = (
                   Jobs
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://isearch.asu.edu/"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -281,7 +281,7 @@ export const ZeroColumns = (
                   Directory
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/about/contact"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -290,7 +290,7 @@ export const ZeroColumns = (
                   Contact ASU
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://my.asu.edu/"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -300,7 +300,7 @@ export const ZeroColumns = (
                 </a>
               </nav>
               <a
-                class="img-link"
+                className="img-link"
                 href="https://www.asu.edu/rankings"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="secondary footer"
@@ -321,16 +321,16 @@ export const ZeroColumns = (
       </div>
     </div>
 
-    <div class="wrapper" id="wrapper-footer-colophon">
-      <div class="container" id="footer-colophon">
-        <div class="row">
-          <div class="col">
+    <div className="wrapper" id="wrapper-footer-colophon">
+      <div className="container" id="footer-colophon">
+        <div className="row">
+          <div className="col">
             <nav
-              class="nav colophon"
+              className="nav colophon"
               aria-label="University Legal and Compliance"
             >
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/about/copyright-trademark"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -339,7 +339,7 @@ export const ZeroColumns = (
                 Copyright and Trademark
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/accessibility/"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -348,7 +348,7 @@ export const ZeroColumns = (
                 Accessibility
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/about/privacy"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -357,7 +357,7 @@ export const ZeroColumns = (
                 Privacy
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/about/terms-of-use"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -366,7 +366,7 @@ export const ZeroColumns = (
                 Terms of Use
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/emergency/"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -375,7 +375,7 @@ export const ZeroColumns = (
                 Emergency
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://eoss.asu.edu/health/announcements/coronavirus"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -397,10 +397,10 @@ export const OneColumn = (
     role="contentinfo"
     data-elastic-exclude="data-elastic-exclude"
   >
-    <div class="wrapper" id="wrapper-endorsed-footer">
-      <div class="container" id="endorsed-footer">
-        <div class="row">
-          <div class="col-md" id="endorsed-logo">
+    <div className="wrapper" id="wrapper-endorsed-footer">
+      <div className="container" id="endorsed-footer">
+        <div className="row">
+          <div className="col-md" id="endorsed-logo">
             <a
               href="https://www.asu.edu"
               data-ga-footer-type="internal link"
@@ -418,10 +418,10 @@ export const OneColumn = (
             </a>
           </div>
 
-          <div class="col-md" id="social-media">
-            <nav class="nav" aria-label="Social Media">
+          <div className="col-md" id="social-media">
+            <nav className="nav" aria-label="Social Media">
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -429,11 +429,11 @@ export const OneColumn = (
               >
                 <span
                   title="Facebook Social Media Icon"
-                  class="fab fa-facebook-square"
+                  className="fab fa-facebook-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -441,11 +441,11 @@ export const OneColumn = (
               >
                 <span
                   title="Twitter Social Media Icon"
-                  class="fab fa-twitter-square"
+                  className="fab fa-twitter-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -453,11 +453,11 @@ export const OneColumn = (
               >
                 <span
                   title="Instagram Social Media Icon"
-                  class="fab fa-instagram-square"
+                  className="fab fa-instagram-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -465,11 +465,11 @@ export const OneColumn = (
               >
                 <span
                   title="YouTube Social Media Icon"
-                  class="fab fa-youtube-square"
+                  className="fab fa-youtube-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -477,7 +477,7 @@ export const OneColumn = (
               >
                 <span
                   title="LinkedIn Social Media Icon"
-                  class="fab fa-linkedin"
+                  className="fab fa-linkedin"
                 ></span>
               </a>
             </nav>
@@ -486,18 +486,18 @@ export const OneColumn = (
       </div>
     </div>
 
-    <div class="wrapper" id="wrapper-footer-columns">
-      <div class="container" id="footer-columns">
-        <div class="row">
-          <div class="col-xl-3" id="info-column">
+    <div className="wrapper" id="wrapper-footer-columns">
+      <div className="container" id="footer-columns">
+        <div className="row">
+          <div className="col-xl-3" id="info-column">
             <h5>
               Complete Name of College, School or Unit Title Should Go Here
             </h5>
-            <p class="contact-link">
+            <p className="contact-link">
               <a href="#">Contact Us</a>
             </p>
-            <p class="contribute-button">
-              <a href="#" class="btn btn-small btn-gold">
+            <p className="contribute-button">
+              <a href="#" className="btn btn-small btn-gold">
                 Contribute
               </a>
             </p>
@@ -506,14 +506,14 @@ export const OneColumn = (
       </div>
     </div>
 
-    <div class="wrapper" id="wrapper-footer-innovation">
-      <div class="container" id="footer-innovation">
-        <div class="row">
-          <div class="col">
-            <div class="d-flex footer-innovation-links">
-              <nav class="nav" aria-label="University Services">
+    <div className="wrapper" id="wrapper-footer-innovation">
+      <div className="container" id="footer-innovation">
+        <div className="row">
+          <div className="col">
+            <div className="d-flex footer-innovation-links">
+              <nav className="nav" aria-label="University Services">
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/about/locations-maps"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -522,7 +522,7 @@ export const OneColumn = (
                   Maps and Locations
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/asujobs"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -531,7 +531,7 @@ export const OneColumn = (
                   Jobs
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://isearch.asu.edu/"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -540,7 +540,7 @@ export const OneColumn = (
                   Directory
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/about/contact"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -549,7 +549,7 @@ export const OneColumn = (
                   Contact ASU
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://my.asu.edu/"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -559,7 +559,7 @@ export const OneColumn = (
                 </a>
               </nav>
               <a
-                class="img-link"
+                className="img-link"
                 href="https://www.asu.edu/rankings"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="secondary footer"
@@ -580,16 +580,16 @@ export const OneColumn = (
       </div>
     </div>
 
-    <div class="wrapper" id="wrapper-footer-colophon">
-      <div class="container" id="footer-colophon">
-        <div class="row">
-          <div class="col">
+    <div className="wrapper" id="wrapper-footer-colophon">
+      <div className="container" id="footer-colophon">
+        <div className="row">
+          <div className="col">
             <nav
-              class="nav colophon"
+              className="nav colophon"
               aria-label="University Legal and Compliance"
             >
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/about/copyright-trademark"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -598,7 +598,7 @@ export const OneColumn = (
                 Copyright and Trademark
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/accessibility/"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -607,7 +607,7 @@ export const OneColumn = (
                 Accessibility
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/about/privacy"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -616,7 +616,7 @@ export const OneColumn = (
                 Privacy
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/about/terms-of-use"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -625,7 +625,7 @@ export const OneColumn = (
                 Terms of Use
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/emergency/"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -634,7 +634,7 @@ export const OneColumn = (
                 Emergency
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://eoss.asu.edu/health/announcements/coronavirus"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -656,18 +656,18 @@ export const OneColumnNoLogoOrSocial = (
     role="contentinfo"
     data-elastic-exclude="data-elastic-exclude"
   >
-    <div class="wrapper" id="wrapper-footer-columns">
-      <div class="container" id="footer-columns">
-        <div class="row">
-          <div class="col-xl-3" id="info-column">
+    <div className="wrapper" id="wrapper-footer-columns">
+      <div className="container" id="footer-columns">
+        <div className="row">
+          <div className="col-xl-3" id="info-column">
             <h5>
               Complete Name of College, School or Unit Title Should Go Here
             </h5>
-            <p class="contact-link">
+            <p className="contact-link">
               <a href="#">Contact Us</a>
             </p>
-            <p class="contribute-button">
-              <a href="#" class="btn btn-small btn-gold">
+            <p className="contribute-button">
+              <a href="#" className="btn btn-small btn-gold">
                 Contribute
               </a>
             </p>
@@ -676,14 +676,14 @@ export const OneColumnNoLogoOrSocial = (
       </div>
     </div>
 
-    <div class="wrapper" id="wrapper-footer-innovation">
-      <div class="container" id="footer-innovation">
-        <div class="row">
-          <div class="col">
-            <div class="d-flex footer-innovation-links">
-              <nav class="nav" aria-label="University Services">
+    <div className="wrapper" id="wrapper-footer-innovation">
+      <div className="container" id="footer-innovation">
+        <div className="row">
+          <div className="col">
+            <div className="d-flex footer-innovation-links">
+              <nav className="nav" aria-label="University Services">
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/about/locations-maps"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -692,7 +692,7 @@ export const OneColumnNoLogoOrSocial = (
                   Maps and Locations
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/asujobs"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -701,7 +701,7 @@ export const OneColumnNoLogoOrSocial = (
                   Jobs
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://isearch.asu.edu/"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -710,7 +710,7 @@ export const OneColumnNoLogoOrSocial = (
                   Directory
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/about/contact"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -719,7 +719,7 @@ export const OneColumnNoLogoOrSocial = (
                   Contact ASU
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://my.asu.edu/"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -729,7 +729,7 @@ export const OneColumnNoLogoOrSocial = (
                 </a>
               </nav>
               <a
-                class="img-link"
+                className="img-link"
                 href="https://www.asu.edu/rankings"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="secondary footer"
@@ -750,16 +750,16 @@ export const OneColumnNoLogoOrSocial = (
       </div>
     </div>
 
-    <div class="wrapper" id="wrapper-footer-colophon">
-      <div class="container" id="footer-colophon">
-        <div class="row">
-          <div class="col">
+    <div className="wrapper" id="wrapper-footer-colophon">
+      <div className="container" id="footer-colophon">
+        <div className="row">
+          <div className="col">
             <nav
-              class="nav colophon"
+              className="nav colophon"
               aria-label="University Legal and Compliance"
             >
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/about/copyright-trademark"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -768,7 +768,7 @@ export const OneColumnNoLogoOrSocial = (
                 Copyright and Trademark
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/accessibility/"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -777,7 +777,7 @@ export const OneColumnNoLogoOrSocial = (
                 Accessibility
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/about/privacy"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -786,7 +786,7 @@ export const OneColumnNoLogoOrSocial = (
                 Privacy
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/about/terms-of-use"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -795,7 +795,7 @@ export const OneColumnNoLogoOrSocial = (
                 Terms of Use
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/emergency/"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -804,7 +804,7 @@ export const OneColumnNoLogoOrSocial = (
                 Emergency
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://eoss.asu.edu/health/announcements/coronavirus"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -826,10 +826,10 @@ export const TwoColumns = (
     role="contentinfo"
     data-elastic-exclude="data-elastic-exclude"
   >
-    <div class="wrapper" id="wrapper-endorsed-footer">
-      <div class="container" id="endorsed-footer">
-        <div class="row">
-          <div class="col-md" id="endorsed-logo">
+    <div className="wrapper" id="wrapper-endorsed-footer">
+      <div className="container" id="endorsed-footer">
+        <div className="row">
+          <div className="col-md" id="endorsed-logo">
             <a
               href="https://www.asu.edu"
               data-ga-footer-type="internal link"
@@ -847,10 +847,10 @@ export const TwoColumns = (
             </a>
           </div>
 
-          <div class="col-md" id="social-media">
-            <nav class="nav" aria-label="Social Media">
+          <div className="col-md" id="social-media">
+            <nav className="nav" aria-label="Social Media">
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -858,11 +858,11 @@ export const TwoColumns = (
               >
                 <span
                   title="Facebook Social Media Icon"
-                  class="fab fa-facebook-square"
+                  className="fab fa-facebook-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -870,11 +870,11 @@ export const TwoColumns = (
               >
                 <span
                   title="Twitter Social Media Icon"
-                  class="fab fa-twitter-square"
+                  className="fab fa-twitter-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -882,11 +882,11 @@ export const TwoColumns = (
               >
                 <span
                   title="Instagram Social Media Icon"
-                  class="fab fa-instagram-square"
+                  className="fab fa-instagram-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -894,11 +894,11 @@ export const TwoColumns = (
               >
                 <span
                   title="YouTube Social Media Icon"
-                  class="fab fa-youtube-square"
+                  className="fab fa-youtube-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -906,7 +906,7 @@ export const TwoColumns = (
               >
                 <span
                   title="LinkedIn Social Media Icon"
-                  class="fab fa-linkedin"
+                  className="fab fa-linkedin"
                 ></span>
               </a>
             </nav>
@@ -915,31 +915,31 @@ export const TwoColumns = (
       </div>
     </div>
 
-    <div class="wrapper" id="wrapper-footer-columns">
+    <div className="wrapper" id="wrapper-footer-columns">
       <nav aria-label="Footer">
-        <div class="container" id="footer-columns">
-          <div class="row">
-            <div class="col-xl-3" id="info-column">
+        <div className="container" id="footer-columns">
+          <div className="row">
+            <div className="col-xl-3" id="info-column">
               <h5>
                 Complete Name of College, School or Unit Title Should Go Here
               </h5>
-              <p class="contact-link">
+              <p className="contact-link">
                 <a href="#">Contact Us</a>
               </p>
-              <p class="contribute-button">
-                <a href="#" class="btn btn-small btn-gold">
+              <p className="contribute-button">
+                <a href="#" className="btn btn-small btn-gold">
                   Contribute
                 </a>
               </p>
             </div>
 
-            <div class="col-xl flex-footer">
-              <div class="card card-foldable desktop-disable-xl">
-                <div class="card-header">
+            <div className="col-xl flex-footer">
+              <div className="card card-foldable desktop-disable-xl">
+                <div className="card-header">
                   <h5>
                     <a
                       id="footlink-header-two"
-                      class="collapsed"
+                      className="collapsed"
                       data-bs-toggle="collapse"
                       href="#footlink-two"
                       role="button"
@@ -947,29 +947,29 @@ export const TwoColumns = (
                       aria-controls="footlink-two"
                     >
                       Second Column
-                      <span class="fas fa-chevron-up"></span>
+                      <span className="fas fa-chevron-up"></span>
                     </a>
                   </h5>
                 </div>
                 <div
                   id="footlink-two"
-                  class="collapse card-body"
+                  className="collapse card-body"
                   aria-labelledby="footlink-header-two"
                 >
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Biological and Health Systems Computing
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Informatics and Decision Systems Electrical
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Computer and Energy Matter
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Transport and Energy Sustainability and the Built
                     Environment
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     The Polytechnic School
                   </a>
                 </div>
@@ -980,14 +980,14 @@ export const TwoColumns = (
       </nav>
     </div>
 
-    <div class="wrapper" id="wrapper-footer-innovation">
-      <div class="container" id="footer-innovation">
-        <div class="row">
-          <div class="col">
-            <div class="d-flex footer-innovation-links">
-              <nav class="nav" aria-label="University Services">
+    <div className="wrapper" id="wrapper-footer-innovation">
+      <div className="container" id="footer-innovation">
+        <div className="row">
+          <div className="col">
+            <div className="d-flex footer-innovation-links">
+              <nav className="nav" aria-label="University Services">
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/about/locations-maps"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -996,7 +996,7 @@ export const TwoColumns = (
                   Maps and Locations
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/asujobs"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -1005,7 +1005,7 @@ export const TwoColumns = (
                   Jobs
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://isearch.asu.edu/"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -1014,7 +1014,7 @@ export const TwoColumns = (
                   Directory
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/about/contact"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -1023,7 +1023,7 @@ export const TwoColumns = (
                   Contact ASU
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://my.asu.edu/"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -1033,7 +1033,7 @@ export const TwoColumns = (
                 </a>
               </nav>
               <a
-                class="img-link"
+                className="img-link"
                 href="https://www.asu.edu/rankings"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="secondary footer"
@@ -1054,16 +1054,16 @@ export const TwoColumns = (
       </div>
     </div>
 
-    <div class="wrapper" id="wrapper-footer-colophon">
-      <div class="container" id="footer-colophon">
-        <div class="row">
-          <div class="col">
+    <div className="wrapper" id="wrapper-footer-colophon">
+      <div className="container" id="footer-colophon">
+        <div className="row">
+          <div className="col">
             <nav
-              class="nav colophon"
+              className="nav colophon"
               aria-label="University Legal and Compliance"
             >
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/about/copyright-trademark"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -1072,7 +1072,7 @@ export const TwoColumns = (
                 Copyright and Trademark
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/accessibility/"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -1081,7 +1081,7 @@ export const TwoColumns = (
                 Accessibility
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/about/privacy"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -1090,7 +1090,7 @@ export const TwoColumns = (
                 Privacy
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/about/terms-of-use"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -1099,7 +1099,7 @@ export const TwoColumns = (
                 Terms of Use
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/emergency/"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -1108,7 +1108,7 @@ export const TwoColumns = (
                 Emergency
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://eoss.asu.edu/health/announcements/coronavirus"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -1130,10 +1130,10 @@ export const ThreeColumns = (
     role="contentinfo"
     data-elastic-exclude="data-elastic-exclude"
   >
-    <div class="wrapper" id="wrapper-endorsed-footer">
-      <div class="container" id="endorsed-footer">
-        <div class="row">
-          <div class="col-md" id="endorsed-logo">
+    <div className="wrapper" id="wrapper-endorsed-footer">
+      <div className="container" id="endorsed-footer">
+        <div className="row">
+          <div className="col-md" id="endorsed-logo">
             <a
               href="https://www.asu.edu"
               data-ga-footer-type="internal link"
@@ -1151,10 +1151,10 @@ export const ThreeColumns = (
             </a>
           </div>
 
-          <div class="col-md" id="social-media">
-            <nav class="nav" aria-label="Social Media">
+          <div className="col-md" id="social-media">
+            <nav className="nav" aria-label="Social Media">
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -1162,11 +1162,11 @@ export const ThreeColumns = (
               >
                 <span
                   title="Facebook Social Media Icon"
-                  class="fab fa-facebook-square"
+                  className="fab fa-facebook-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -1174,11 +1174,11 @@ export const ThreeColumns = (
               >
                 <span
                   title="Twitter Social Media Icon"
-                  class="fab fa-twitter-square"
+                  className="fab fa-twitter-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -1186,11 +1186,11 @@ export const ThreeColumns = (
               >
                 <span
                   title="Instagram Social Media Icon"
-                  class="fab fa-instagram-square"
+                  className="fab fa-instagram-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -1198,11 +1198,11 @@ export const ThreeColumns = (
               >
                 <span
                   title="YouTube Social Media Icon"
-                  class="fab fa-youtube-square"
+                  className="fab fa-youtube-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -1210,7 +1210,7 @@ export const ThreeColumns = (
               >
                 <span
                   title="LinkedIn Social Media Icon"
-                  class="fab fa-linkedin"
+                  className="fab fa-linkedin"
                 ></span>
               </a>
             </nav>
@@ -1219,31 +1219,31 @@ export const ThreeColumns = (
       </div>
     </div>
 
-    <div class="wrapper" id="wrapper-footer-columns">
+    <div className="wrapper" id="wrapper-footer-columns">
       <nav aria-label="Footer">
-        <div class="container" id="footer-columns">
-          <div class="row">
-            <div class="col-xl" id="info-column">
+        <div className="container" id="footer-columns">
+          <div className="row">
+            <div className="col-xl" id="info-column">
               <h5>
                 Complete Name of College, School or Unit Title Should Go Here
               </h5>
-              <p class="contact-link">
+              <p className="contact-link">
                 <a href="#">Contact Us</a>
               </p>
-              <p class="contribute-button">
-                <a href="#" class="btn btn-small btn-gold">
+              <p className="contribute-button">
+                <a href="#" className="btn btn-small btn-gold">
                   Contribute
                 </a>
               </p>
             </div>
 
-            <div class="col-xl flex-footer">
-              <div class="card card-foldable desktop-disable-xl">
-                <div class="card-header">
+            <div className="col-xl flex-footer">
+              <div className="card card-foldable desktop-disable-xl">
+                <div className="card-header">
                   <h5>
                     <a
                       id="footlink-header-two"
-                      class="collapsed"
+                      className="collapsed"
                       data-bs-toggle="collapse"
                       href="#footlink-two"
                       role="button"
@@ -1251,42 +1251,42 @@ export const ThreeColumns = (
                       aria-controls="footlink-two"
                     >
                       Second Column
-                      <span class="fas fa-chevron-up"></span>
+                      <span className="fas fa-chevron-up"></span>
                     </a>
                   </h5>
                 </div>
                 <div
                   id="footlink-two"
-                  class="collapse card-body"
+                  className="collapse card-body"
                   aria-labelledby="footlink-header-two"
                 >
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Biological and Health Systems Computing
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Informatics and Decision Systems Electrical
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Computer and Energy Matter
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Transport and Energy Sustainability and the Built
                     Environment
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     The Polytechnic School
                   </a>
                 </div>
               </div>
             </div>
 
-            <div class="col-xl flex-footer">
-              <div class="card card-foldable desktop-disable-xl">
-                <div class="card-header">
+            <div className="col-xl flex-footer">
+              <div className="card card-foldable desktop-disable-xl">
+                <div className="card-header">
                   <h5>
                     <a
                       id="footlink-header-three"
-                      class="collapsed"
+                      className="collapsed"
                       data-bs-toggle="collapse"
                       href="#footlink-three"
                       role="button"
@@ -1294,34 +1294,34 @@ export const ThreeColumns = (
                       aria-controls="footlink-three"
                     >
                       Student Information
-                      <span class="fas fa-chevron-up"></span>
+                      <span className="fas fa-chevron-up"></span>
                     </a>
                   </h5>
                 </div>
                 <div
                   id="footlink-three"
-                  class="collapse card-body"
+                  className="collapse card-body"
                   aria-labelledby="footlink-header-three"
                 >
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Student Organization
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Inner Circle Newsletter
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     For Your Parents
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Visit Campus
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     K-12 Outreach
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Hire Our Graduates
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Hire an Intern
                   </a>
                 </div>
@@ -1332,14 +1332,14 @@ export const ThreeColumns = (
       </nav>
     </div>
 
-    <div class="wrapper" id="wrapper-footer-innovation">
-      <div class="container" id="footer-innovation">
-        <div class="row">
-          <div class="col">
-            <div class="d-flex footer-innovation-links">
-              <nav class="nav" aria-label="University Services">
+    <div className="wrapper" id="wrapper-footer-innovation">
+      <div className="container" id="footer-innovation">
+        <div className="row">
+          <div className="col">
+            <div className="d-flex footer-innovation-links">
+              <nav className="nav" aria-label="University Services">
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/about/locations-maps"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -1348,7 +1348,7 @@ export const ThreeColumns = (
                   Maps and Locations
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/asujobs"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -1357,7 +1357,7 @@ export const ThreeColumns = (
                   Jobs
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://isearch.asu.edu/"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -1366,7 +1366,7 @@ export const ThreeColumns = (
                   Directory
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/about/contact"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -1375,7 +1375,7 @@ export const ThreeColumns = (
                   Contact ASU
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://my.asu.edu/"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -1385,7 +1385,7 @@ export const ThreeColumns = (
                 </a>
               </nav>
               <a
-                class="img-link"
+                className="img-link"
                 href="https://www.asu.edu/rankings"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="secondary footer"
@@ -1406,16 +1406,16 @@ export const ThreeColumns = (
       </div>
     </div>
 
-    <div class="wrapper" id="wrapper-footer-colophon">
-      <div class="container" id="footer-colophon">
-        <div class="row">
-          <div class="col">
+    <div className="wrapper" id="wrapper-footer-colophon">
+      <div className="container" id="footer-colophon">
+        <div className="row">
+          <div className="col">
             <nav
-              class="nav colophon"
+              className="nav colophon"
               aria-label="University Legal and Compliance"
             >
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/about/copyright-trademark"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -1424,7 +1424,7 @@ export const ThreeColumns = (
                 Copyright and Trademark
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/accessibility/"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -1433,7 +1433,7 @@ export const ThreeColumns = (
                 Accessibility
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/about/privacy"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -1442,7 +1442,7 @@ export const ThreeColumns = (
                 Privacy
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/about/terms-of-use"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -1451,7 +1451,7 @@ export const ThreeColumns = (
                 Terms of Use
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/emergency/"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -1460,7 +1460,7 @@ export const ThreeColumns = (
                 Emergency
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://eoss.asu.edu/health/announcements/coronavirus"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -1482,10 +1482,10 @@ export const FourColumns = (
     role="contentinfo"
     data-elastic-exclude="data-elastic-exclude"
   >
-    <div class="wrapper" id="wrapper-endorsed-footer">
-      <div class="container" id="endorsed-footer">
-        <div class="row">
-          <div class="col-md" id="endorsed-logo">
+    <div className="wrapper" id="wrapper-endorsed-footer">
+      <div className="container" id="endorsed-footer">
+        <div className="row">
+          <div className="col-md" id="endorsed-logo">
             <a
               href="https://www.asu.edu"
               data-ga-footer-type="internal link"
@@ -1503,10 +1503,10 @@ export const FourColumns = (
             </a>
           </div>
 
-          <div class="col-md" id="social-media">
-            <nav class="nav" aria-label="Social Media">
+          <div className="col-md" id="social-media">
+            <nav className="nav" aria-label="Social Media">
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -1514,11 +1514,11 @@ export const FourColumns = (
               >
                 <span
                   title="Facebook Social Media Icon"
-                  class="fab fa-facebook-square"
+                  className="fab fa-facebook-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -1526,11 +1526,11 @@ export const FourColumns = (
               >
                 <span
                   title="Twitter Social Media Icon"
-                  class="fab fa-twitter-square"
+                  className="fab fa-twitter-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -1538,11 +1538,11 @@ export const FourColumns = (
               >
                 <span
                   title="Instagram Social Media Icon"
-                  class="fab fa-instagram-square"
+                  className="fab fa-instagram-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -1550,11 +1550,11 @@ export const FourColumns = (
               >
                 <span
                   title="YouTube Social Media Icon"
-                  class="fab fa-youtube-square"
+                  className="fab fa-youtube-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -1562,7 +1562,7 @@ export const FourColumns = (
               >
                 <span
                   title="LinkedIn Social Media Icon"
-                  class="fab fa-linkedin"
+                  className="fab fa-linkedin"
                 ></span>
               </a>
             </nav>
@@ -1571,31 +1571,31 @@ export const FourColumns = (
       </div>
     </div>
 
-    <div class="wrapper" id="wrapper-footer-columns">
+    <div className="wrapper" id="wrapper-footer-columns">
       <nav aria-label="Footer">
-        <div class="container" id="footer-columns">
-          <div class="row">
-            <div class="col-xl" id="info-column">
+        <div className="container" id="footer-columns">
+          <div className="row">
+            <div className="col-xl" id="info-column">
               <h5>
                 Complete Name of College, School or Unit Title Should Go Here
               </h5>
-              <p class="contact-link">
+              <p className="contact-link">
                 <a href="#">Contact Us</a>
               </p>
-              <p class="contribute-button">
-                <a href="#" class="btn btn-small btn-gold">
+              <p className="contribute-button">
+                <a href="#" className="btn btn-small btn-gold">
                   Contribute
                 </a>
               </p>
             </div>
 
-            <div class="col-xl flex-footer">
-              <div class="card card-foldable desktop-disable-xl">
-                <div class="card-header">
+            <div className="col-xl flex-footer">
+              <div className="card card-foldable desktop-disable-xl">
+                <div className="card-header">
                   <h5>
                     <a
                       id="footlink-header-two"
-                      class="collapsed"
+                      className="collapsed"
                       data-bs-toggle="collapse"
                       href="#footlink-two"
                       role="button"
@@ -1603,42 +1603,42 @@ export const FourColumns = (
                       aria-controls="footlink-two"
                     >
                       Second Column
-                      <span class="fas fa-chevron-up"></span>
+                      <span className="fas fa-chevron-up"></span>
                     </a>
                   </h5>
                 </div>
                 <div
                   id="footlink-two"
-                  class="collapse card-body"
+                  className="collapse card-body"
                   aria-labelledby="footlink-header-two"
                 >
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Biological and Health Systems Computing
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Informatics and Decision Systems Electrical
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Computer and Energy Matter
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Transport and Energy Sustainability and the Built
                     Environment
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     The Polytechnic School
                   </a>
                 </div>
               </div>
             </div>
 
-            <div class="col-xl flex-footer">
-              <div class="card card-foldable desktop-disable-xl">
-                <div class="card-header">
+            <div className="col-xl flex-footer">
+              <div className="card card-foldable desktop-disable-xl">
+                <div className="card-header">
                   <h5>
                     <a
                       id="footlink-header-three"
-                      class="collapsed"
+                      className="collapsed"
                       data-bs-toggle="collapse"
                       href="#footlink-three"
                       role="button"
@@ -1646,47 +1646,47 @@ export const FourColumns = (
                       aria-controls="footlink-three"
                     >
                       Student Information
-                      <span class="fas fa-chevron-up"></span>
+                      <span className="fas fa-chevron-up"></span>
                     </a>
                   </h5>
                 </div>
                 <div
                   id="footlink-three"
-                  class="collapse card-body"
+                  className="collapse card-body"
                   aria-labelledby="footlink-header-three"
                 >
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Student Organization
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Inner Circle Newsletter
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     For Your Parents
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Visit Campus
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     K-12 Outreach
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Hire Our Graduates
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Hire an Intern
                   </a>
                 </div>
               </div>
             </div>
 
-            <div class="col-xl flex-footer">
-              <div class="card card-foldable desktop-disable-xl">
-                <div class="card-header">
+            <div className="col-xl flex-footer">
+              <div className="card card-foldable desktop-disable-xl">
+                <div className="card-header">
                   <h5>
                     <a
                       id="footlink-header-four"
-                      class="collapsed"
+                      className="collapsed"
                       data-bs-toggle="collapse"
                       href="#footlink-four"
                       role="button"
@@ -1694,34 +1694,34 @@ export const FourColumns = (
                       aria-controls="footlink-four"
                     >
                       Column Number Four
-                      <span class="fas fa-chevron-up"></span>
+                      <span className="fas fa-chevron-up"></span>
                     </a>
                   </h5>
                 </div>
                 <div
                   id="footlink-four"
-                  class="collapse card-body"
+                  className="collapse card-body"
                   aria-labelledby="footlink-header-four"
                 >
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Student Organization
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Inner Circle Newsletter
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     For Your Parents
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Visit Campus
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     K-12 Outreach
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Hire Our Graduates
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Hire an Intern
                   </a>
                 </div>
@@ -1732,14 +1732,14 @@ export const FourColumns = (
       </nav>
     </div>
 
-    <div class="wrapper" id="wrapper-footer-innovation">
-      <div class="container" id="footer-innovation">
-        <div class="row">
-          <div class="col">
-            <div class="d-flex footer-innovation-links">
-              <nav class="nav" aria-label="University Services">
+    <div className="wrapper" id="wrapper-footer-innovation">
+      <div className="container" id="footer-innovation">
+        <div className="row">
+          <div className="col">
+            <div className="d-flex footer-innovation-links">
+              <nav className="nav" aria-label="University Services">
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/about/locations-maps"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -1748,7 +1748,7 @@ export const FourColumns = (
                   Maps and Locations
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/asujobs"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -1757,7 +1757,7 @@ export const FourColumns = (
                   Jobs
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://isearch.asu.edu/"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -1766,7 +1766,7 @@ export const FourColumns = (
                   Directory
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/about/contact"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -1775,7 +1775,7 @@ export const FourColumns = (
                   Contact ASU
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://my.asu.edu/"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -1785,7 +1785,7 @@ export const FourColumns = (
                 </a>
               </nav>
               <a
-                class="img-link"
+                className="img-link"
                 href="https://www.asu.edu/rankings"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="secondary footer"
@@ -1806,16 +1806,16 @@ export const FourColumns = (
       </div>
     </div>
 
-    <div class="wrapper" id="wrapper-footer-colophon">
-      <div class="container" id="footer-colophon">
-        <div class="row">
-          <div class="col">
+    <div className="wrapper" id="wrapper-footer-colophon">
+      <div className="container" id="footer-colophon">
+        <div className="row">
+          <div className="col">
             <nav
-              class="nav colophon"
+              className="nav colophon"
               aria-label="University Legal and Compliance"
             >
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/about/copyright-trademark"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -1824,7 +1824,7 @@ export const FourColumns = (
                 Copyright and Trademark
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/accessibility/"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -1833,7 +1833,7 @@ export const FourColumns = (
                 Accessibility
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/about/privacy"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -1842,7 +1842,7 @@ export const FourColumns = (
                 Privacy
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/about/terms-of-use"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -1851,7 +1851,7 @@ export const FourColumns = (
                 Terms of Use
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/emergency/"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -1860,7 +1860,7 @@ export const FourColumns = (
                 Emergency
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://eoss.asu.edu/health/announcements/coronavirus"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -1882,10 +1882,10 @@ export const FiveColumns = (
     role="contentinfo"
     data-elastic-exclude="data-elastic-exclude"
   >
-    <div class="wrapper" id="wrapper-endorsed-footer">
-      <div class="container" id="endorsed-footer">
-        <div class="row">
-          <div class="col-md" id="endorsed-logo">
+    <div className="wrapper" id="wrapper-endorsed-footer">
+      <div className="container" id="endorsed-footer">
+        <div className="row">
+          <div className="col-md" id="endorsed-logo">
             <a
               href="https://www.asu.edu"
               data-ga-footer-type="internal link"
@@ -1903,10 +1903,10 @@ export const FiveColumns = (
             </a>
           </div>
 
-          <div class="col-md" id="social-media">
-            <nav class="nav" aria-label="Social Media">
+          <div className="col-md" id="social-media">
+            <nav className="nav" aria-label="Social Media">
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -1914,11 +1914,11 @@ export const FiveColumns = (
               >
                 <span
                   title="Facebook Social Media Icon"
-                  class="fab fa-facebook-square"
+                  className="fab fa-facebook-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -1926,11 +1926,11 @@ export const FiveColumns = (
               >
                 <span
                   title="Twitter Social Media Icon"
-                  class="fab fa-twitter-square"
+                  className="fab fa-twitter-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -1938,11 +1938,11 @@ export const FiveColumns = (
               >
                 <span
                   title="Instagram Social Media Icon"
-                  class="fab fa-instagram-square"
+                  className="fab fa-instagram-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -1950,11 +1950,11 @@ export const FiveColumns = (
               >
                 <span
                   title="YouTube Social Media Icon"
-                  class="fab fa-youtube-square"
+                  className="fab fa-youtube-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -1962,7 +1962,7 @@ export const FiveColumns = (
               >
                 <span
                   title="LinkedIn Social Media Icon"
-                  class="fab fa-linkedin"
+                  className="fab fa-linkedin"
                 ></span>
               </a>
             </nav>
@@ -1971,31 +1971,31 @@ export const FiveColumns = (
       </div>
     </div>
 
-    <div class="wrapper" id="wrapper-footer-columns">
+    <div className="wrapper" id="wrapper-footer-columns">
       <nav aria-label="Footer">
-        <div class="container" id="footer-columns">
-          <div class="row">
-            <div class="col-xl" id="info-column">
+        <div className="container" id="footer-columns">
+          <div className="row">
+            <div className="col-xl" id="info-column">
               <h5>
                 Complete Name of College, School or Unit Title Should Go Here
               </h5>
-              <p class="contact-link">
+              <p className="contact-link">
                 <a href="#">Contact Us</a>
               </p>
-              <p class="contribute-button">
-                <a href="#" class="btn btn-small btn-gold">
+              <p className="contribute-button">
+                <a href="#" className="btn btn-small btn-gold">
                   Contribute
                 </a>
               </p>
             </div>
 
-            <div class="col-xl flex-footer">
-              <div class="card card-foldable desktop-disable-xl">
-                <div class="card-header">
+            <div className="col-xl flex-footer">
+              <div className="card card-foldable desktop-disable-xl">
+                <div className="card-header">
                   <h5>
                     <a
                       id="footlink-header-two"
-                      class="collapsed"
+                      className="collapsed"
                       data-bs-toggle="collapse"
                       href="#footlink-two"
                       role="button"
@@ -2003,42 +2003,42 @@ export const FiveColumns = (
                       aria-controls="footlink-two"
                     >
                       Second Column
-                      <span class="fas fa-chevron-up"></span>
+                      <span className="fas fa-chevron-up"></span>
                     </a>
                   </h5>
                 </div>
                 <div
                   id="footlink-two"
-                  class="collapse card-body"
+                  className="collapse card-body"
                   aria-labelledby="footlink-header-two"
                 >
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Biological and Health Systems Computing
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Informatics and Decision Systems Electrical
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Computer and Energy Matter
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Transport and Energy Sustainability and the Built
                     Environment
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     The Polytechnic School
                   </a>
                 </div>
               </div>
             </div>
 
-            <div class="col-xl flex-footer">
-              <div class="card card-foldable desktop-disable-xl">
-                <div class="card-header">
+            <div className="col-xl flex-footer">
+              <div className="card card-foldable desktop-disable-xl">
+                <div className="card-header">
                   <h5>
                     <a
                       id="footlink-header-three"
-                      class="collapsed"
+                      className="collapsed"
                       data-bs-toggle="collapse"
                       href="#footlink-three"
                       role="button"
@@ -2046,47 +2046,47 @@ export const FiveColumns = (
                       aria-controls="footlink-three"
                     >
                       Student Information
-                      <span class="fas fa-chevron-up"></span>
+                      <span className="fas fa-chevron-up"></span>
                     </a>
                   </h5>
                 </div>
                 <div
                   id="footlink-three"
-                  class="collapse card-body"
+                  className="collapse card-body"
                   aria-labelledby="footlink-header-three"
                 >
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Student Organization
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Inner Circle Newsletter
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     For Your Parents
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Visit Campus
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     K-12 Outreach
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Hire Our Graduates
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Hire an Intern
                   </a>
                 </div>
               </div>
             </div>
 
-            <div class="col-xl flex-footer">
-              <div class="card card-foldable desktop-disable-xl">
-                <div class="card-header">
+            <div className="col-xl flex-footer">
+              <div className="card card-foldable desktop-disable-xl">
+                <div className="card-header">
                   <h5>
                     <a
                       id="footlink-header-four"
-                      class="collapsed"
+                      className="collapsed"
                       data-bs-toggle="collapse"
                       href="#footlink-four"
                       role="button"
@@ -2094,47 +2094,47 @@ export const FiveColumns = (
                       aria-controls="footlink-four"
                     >
                       Column Number Four
-                      <span class="fas fa-chevron-up"></span>
+                      <span className="fas fa-chevron-up"></span>
                     </a>
                   </h5>
                 </div>
                 <div
                   id="footlink-four"
-                  class="collapse card-body"
+                  className="collapse card-body"
                   aria-labelledby="footlink-header-four"
                 >
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Student Organization
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Inner Circle Newsletter
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     For Your Parents
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Visit Campus
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     K-12 Outreach
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Hire Our Graduates
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Hire an Intern
                   </a>
                 </div>
               </div>
             </div>
 
-            <div class="col-xl flex-footer">
-              <div class="card card-foldable desktop-disable-xl">
-                <div class="card-header">
+            <div className="col-xl flex-footer">
+              <div className="card card-foldable desktop-disable-xl">
+                <div className="card-header">
                   <h5>
                     <a
                       id="footlink-header-five"
-                      class="collapsed"
+                      className="collapsed"
                       data-bs-toggle="collapse"
                       href="#footlink-five"
                       role="button"
@@ -2142,34 +2142,34 @@ export const FiveColumns = (
                       aria-controls="footlink-five"
                     >
                       Mambo Number Five
-                      <span class="fas fa-chevron-up"></span>
+                      <span className="fas fa-chevron-up"></span>
                     </a>
                   </h5>
                 </div>
                 <div
                   id="footlink-five"
-                  class="collapse card-body"
+                  className="collapse card-body"
                   aria-labelledby="footlink-header-five"
                 >
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Student Organization
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Inner Circle Newsletter
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     For Your Parents
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Visit Campus
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     K-12 Outreach
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Hire Our Graduates
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Hire an Intern
                   </a>
                 </div>
@@ -2180,14 +2180,14 @@ export const FiveColumns = (
       </nav>
     </div>
 
-    <div class="wrapper" id="wrapper-footer-innovation">
-      <div class="container" id="footer-innovation">
-        <div class="row">
-          <div class="col">
-            <div class="d-flex footer-innovation-links">
-              <nav class="nav" aria-label="University Services">
+    <div className="wrapper" id="wrapper-footer-innovation">
+      <div className="container" id="footer-innovation">
+        <div className="row">
+          <div className="col">
+            <div className="d-flex footer-innovation-links">
+              <nav className="nav" aria-label="University Services">
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/about/locations-maps"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -2196,7 +2196,7 @@ export const FiveColumns = (
                   Maps and Locations
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/asujobs"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -2205,7 +2205,7 @@ export const FiveColumns = (
                   Jobs
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://isearch.asu.edu/"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -2214,7 +2214,7 @@ export const FiveColumns = (
                   Directory
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/about/contact"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -2223,7 +2223,7 @@ export const FiveColumns = (
                   Contact ASU
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://my.asu.edu/"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -2233,7 +2233,7 @@ export const FiveColumns = (
                 </a>
               </nav>
               <a
-                class="img-link"
+                className="img-link"
                 href="https://www.asu.edu/rankings"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="secondary footer"
@@ -2254,16 +2254,16 @@ export const FiveColumns = (
       </div>
     </div>
 
-    <div class="wrapper" id="wrapper-footer-colophon">
-      <div class="container" id="footer-colophon">
-        <div class="row">
-          <div class="col">
+    <div className="wrapper" id="wrapper-footer-colophon">
+      <div className="container" id="footer-colophon">
+        <div className="row">
+          <div className="col">
             <nav
-              class="nav colophon"
+              className="nav colophon"
               aria-label="University Legal and Compliance"
             >
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/about/copyright-trademark"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -2272,7 +2272,7 @@ export const FiveColumns = (
                 Copyright and Trademark
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/accessibility/"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -2281,7 +2281,7 @@ export const FiveColumns = (
                 Accessibility
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/about/privacy"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -2290,7 +2290,7 @@ export const FiveColumns = (
                 Privacy
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/about/terms-of-use"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -2299,7 +2299,7 @@ export const FiveColumns = (
                 Terms of Use
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://www.asu.edu/emergency/"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -2308,7 +2308,7 @@ export const FiveColumns = (
                 Emergency
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="https://eoss.asu.edu/health/announcements/coronavirus"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -2330,10 +2330,10 @@ export const SixColumns = (
     role="contentinfo"
     data-elastic-exclude="data-elastic-exclude"
   >
-    <div class="wrapper" id="wrapper-endorsed-footer">
-      <div class="container" id="endorsed-footer">
-        <div class="row">
-          <div class="col-md" id="endorsed-logo">
+    <div className="wrapper" id="wrapper-endorsed-footer">
+      <div className="container" id="endorsed-footer">
+        <div className="row">
+          <div className="col-md" id="endorsed-logo">
             <a
               href="https://www.asu.edu"
               data-ga-footer-type="internal link"
@@ -2351,10 +2351,10 @@ export const SixColumns = (
             </a>
           </div>
 
-          <div class="col-md" id="social-media">
-            <nav class="nav" aria-label="Social Media">
+          <div className="col-md" id="social-media">
+            <nav className="nav" aria-label="Social Media">
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -2362,11 +2362,11 @@ export const SixColumns = (
               >
                 <span
                   title="Facebook Social Media Icon"
-                  class="fab fa-facebook-square"
+                  className="fab fa-facebook-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -2374,11 +2374,11 @@ export const SixColumns = (
               >
                 <span
                   title="Twitter Social Media Icon"
-                  class="fab fa-twitter-square"
+                  className="fab fa-twitter-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -2386,11 +2386,11 @@ export const SixColumns = (
               >
                 <span
                   title="Instagram Social Media Icon"
-                  class="fab fa-instagram-square"
+                  className="fab fa-instagram-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -2398,11 +2398,11 @@ export const SixColumns = (
               >
                 <span
                   title="YouTube Social Media Icon"
-                  class="fab fa-youtube-square"
+                  className="fab fa-youtube-square"
                 ></span>
               </a>
               <a
-                class="nav-link"
+                className="nav-link"
                 href="#"
                 data-ga-footer-type="external link"
                 data-ga-footer-section="primary footer"
@@ -2410,7 +2410,7 @@ export const SixColumns = (
               >
                 <span
                   title="LinkedIn Social Media Icon"
-                  class="fab fa-linkedin"
+                  className="fab fa-linkedin"
                 ></span>
               </a>
             </nav>
@@ -2419,31 +2419,31 @@ export const SixColumns = (
       </div>
     </div>
 
-    <div class="wrapper" id="wrapper-footer-columns">
+    <div className="wrapper" id="wrapper-footer-columns">
       <nav aria-label="Footer">
-        <div class="container" id="footer-columns">
-          <div class="row">
-            <div class="col-xl" id="info-column">
+        <div className="container" id="footer-columns">
+          <div className="row">
+            <div className="col-xl" id="info-column">
               <h5>
                 Complete Name of College, School or Unit Title Should Go Here
               </h5>
-              <p class="contact-link">
+              <p className="contact-link">
                 <a href="#">Contact Us</a>
               </p>
-              <p class="contribute-button">
-                <a href="#" class="btn btn-gold">
+              <p className="contribute-button">
+                <a href="#" className="btn btn-gold">
                   Contribute
                 </a>
               </p>
             </div>
 
-            <div class="col-xl flex-footer">
-              <div class="card card-foldable desktop-disable-xl">
-                <div class="card-header">
+            <div className="col-xl flex-footer">
+              <div className="card card-foldable desktop-disable-xl">
+                <div className="card-header">
                   <h5>
                     <a
                       id="footlink-header-two"
-                      class="collapsed"
+                      className="collapsed"
                       data-bs-toggle="collapse"
                       href="#footlink-two"
                       role="button"
@@ -2451,42 +2451,42 @@ export const SixColumns = (
                       aria-controls="footlink-two"
                     >
                       Second Column
-                      <span class="fas fa-chevron-up"></span>
+                      <span className="fas fa-chevron-up"></span>
                     </a>
                   </h5>
                 </div>
                 <div
                   id="footlink-two"
-                  class="collapse card-body"
+                  className="collapse card-body"
                   aria-labelledby="footlink-header-two"
                 >
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Biological and Health Systems Computing
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Informatics and Decision Systems Electrical
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Computer and Energy Matter
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Transport and Energy Sustainability and the Built
                     Environment
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     The Polytechnic School
                   </a>
                 </div>
               </div>
             </div>
 
-            <div class="col-xl flex-footer">
-              <div class="card card-foldable desktop-disable-xl">
-                <div class="card-header">
+            <div className="col-xl flex-footer">
+              <div className="card card-foldable desktop-disable-xl">
+                <div className="card-header">
                   <h5>
                     <a
                       id="footlink-header-three"
-                      class="collapsed"
+                      className="collapsed"
                       data-bs-toggle="collapse"
                       href="#footlink-three"
                       role="button"
@@ -2494,47 +2494,47 @@ export const SixColumns = (
                       aria-controls="footlink-three"
                     >
                       Student Information
-                      <span class="fas fa-chevron-up"></span>
+                      <span className="fas fa-chevron-up"></span>
                     </a>
                   </h5>
                 </div>
                 <div
                   id="footlink-three"
-                  class="collapse card-body"
+                  className="collapse card-body"
                   aria-labelledby="footlink-header-three"
                 >
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Student Organization
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Inner Circle Newsletter
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     For Your Parents
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Visit Campus
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     K-12 Outreach
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Hire Our Graduates
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Hire an Intern
                   </a>
                 </div>
               </div>
             </div>
 
-            <div class="col-xl flex-footer">
-              <div class="card card-foldable desktop-disable-xl">
-                <div class="card-header">
+            <div className="col-xl flex-footer">
+              <div className="card card-foldable desktop-disable-xl">
+                <div className="card-header">
                   <h5>
                     <a
                       id="footlink-header-four"
-                      class="collapsed"
+                      className="collapsed"
                       data-bs-toggle="collapse"
                       href="#footlink-four"
                       role="button"
@@ -2542,47 +2542,47 @@ export const SixColumns = (
                       aria-controls="footlink-four"
                     >
                       Column Number Four
-                      <span class="fas fa-chevron-up"></span>
+                      <span className="fas fa-chevron-up"></span>
                     </a>
                   </h5>
                 </div>
                 <div
                   id="footlink-four"
-                  class="collapse card-body"
+                  className="collapse card-body"
                   aria-labelledby="footlink-header-four"
                 >
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Student Organization
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Inner Circle Newsletter
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     For Your Parents
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Visit Campus
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     K-12 Outreach
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Hire Our Graduates
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Hire an Intern
                   </a>
                 </div>
               </div>
             </div>
 
-            <div class="col-xl flex-footer">
-              <div class="card card-foldable desktop-disable-xl">
-                <div class="card-header">
+            <div className="col-xl flex-footer">
+              <div className="card card-foldable desktop-disable-xl">
+                <div className="card-header">
                   <h5>
                     <a
                       id="footlink-header-five"
-                      class="collapsed"
+                      className="collapsed"
                       data-bs-toggle="collapse"
                       href="#footlink-five"
                       role="button"
@@ -2590,47 +2590,47 @@ export const SixColumns = (
                       aria-controls="footlink-five"
                     >
                       Mambo Number Five
-                      <span class="fas fa-chevron-up"></span>
+                      <span className="fas fa-chevron-up"></span>
                     </a>
                   </h5>
                 </div>
                 <div
                   id="footlink-five"
-                  class="collapse card-body"
+                  className="collapse card-body"
                   aria-labelledby="footlink-header-five"
                 >
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Student Organization
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Inner Circle Newsletter
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     For Your Parents
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Visit Campus
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     K-12 Outreach
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Hire Our Graduates
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Hire an Intern
                   </a>
                 </div>
               </div>
             </div>
 
-            <div class="col-xl flex-footer">
-              <div class="card card-foldable desktop-disable-xl">
-                <div class="card-header">
+            <div className="col-xl flex-footer">
+              <div className="card card-foldable desktop-disable-xl">
+                <div className="card-header">
                   <h5>
                     <a
                       id="footlink-header-six"
-                      class="collapsed"
+                      className="collapsed"
                       data-bs-toggle="collapse"
                       href="#footlink-six"
                       role="button"
@@ -2638,28 +2638,28 @@ export const SixColumns = (
                       aria-controls="footlink-six"
                     >
                       The Zen Master and the Hot Dog Vendor
-                      <span class="fas fa-chevron-up"></span>
+                      <span className="fas fa-chevron-up"></span>
                     </a>
                   </h5>
                 </div>
                 <div
                   id="footlink-six"
-                  class="collapse card-body"
+                  className="collapse card-body"
                   aria-labelledby="footlink-header-six"
                 >
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     A Zen master
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Visiting New York City
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Walks up to
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     A hot dog vendor and says
                   </a>
-                  <a class="nav-link" href="#" title="link">
+                  <a className="nav-link" href="#" title="link">
                     Make me one with everything
                   </a>
                 </div>
@@ -2670,14 +2670,14 @@ export const SixColumns = (
       </nav>
     </div>
 
-    <div class="wrapper" id="wrapper-footer-innovation">
-      <div class="container" id="footer-innovation">
-        <div class="row">
-          <div class="col">
-            <div class="d-flex footer-innovation-links">
-              <nav class="nav" aria-label="University Services">
+    <div className="wrapper" id="wrapper-footer-innovation">
+      <div className="container" id="footer-innovation">
+        <div className="row">
+          <div className="col">
+            <div className="d-flex footer-innovation-links">
+              <nav className="nav" aria-label="University Services">
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/about/locations-maps"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -2686,7 +2686,7 @@ export const SixColumns = (
                   Maps and Locations
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/asujobs"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -2695,7 +2695,7 @@ export const SixColumns = (
                   Jobs
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://isearch.asu.edu/"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -2704,7 +2704,7 @@ export const SixColumns = (
                   Directory
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/about/contact"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -2713,7 +2713,7 @@ export const SixColumns = (
                   Contact ASU
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://my.asu.edu/"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
@@ -2723,7 +2723,7 @@ export const SixColumns = (
                 </a>
               </nav>
               <a
-                class="img-link"
+                className="img-link"
                 href="https://www.asu.edu/rankings"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="secondary footer"
@@ -2744,17 +2744,17 @@ export const SixColumns = (
       </div>
     </div>
 
-    <div class="wrapper" id="wrapper-footer-colophon">
-      <div class="container" id="footer-colophon">
-        <div class="row">
-          <div class="col">
-            <div class="footer-legal-links">
+    <div className="wrapper" id="wrapper-footer-colophon">
+      <div className="container" id="footer-colophon">
+        <div className="row">
+          <div className="col">
+            <div className="footer-legal-links">
               <nav
-                class="nav colophon"
+                className="nav colophon"
                 aria-label="University Legal and Compliance"
               >
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/about/copyright-trademark"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="tertiary footer"
@@ -2763,7 +2763,7 @@ export const SixColumns = (
                   Copyright and Trademark
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/accessibility/"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="tertiary footer"
@@ -2772,7 +2772,7 @@ export const SixColumns = (
                   Accessibility
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/about/privacy"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="tertiary footer"
@@ -2781,7 +2781,7 @@ export const SixColumns = (
                   Privacy
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/about/terms-of-use"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="tertiary footer"
@@ -2790,7 +2790,7 @@ export const SixColumns = (
                   Terms of Use
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://www.asu.edu/emergency/"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="tertiary footer"
@@ -2799,7 +2799,7 @@ export const SixColumns = (
                   Emergency
                 </a>
                 <a
-                  class="nav-link"
+                  className="nav-link"
                   href="https://eoss.asu.edu/health/announcements/coronavirus"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="tertiary footer"

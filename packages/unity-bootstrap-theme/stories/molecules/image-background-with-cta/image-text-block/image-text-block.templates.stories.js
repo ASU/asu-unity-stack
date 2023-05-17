@@ -32,14 +32,14 @@ export default createComponent(
 export const ImageLeftOrRight = createStory(args => {
   return (
     <div
-      class={`uds-image-text-block-container ${
+      className={`uds-image-text-block-container ${
         args.right ? "uds-image-text-block-container-right" : ""
       }`}
     >
-      <div class="uds-image-text-block-image-container">
+      <div className="uds-image-text-block-image-container">
         <img
           src="https://source.unsplash.com/WLUHO9A_xik/1200x750"
-          class="img-fluid"
+          className="img-fluid"
           alt="Random image. REPLACE with appropriate alt text for accessibility."
           width="1200"
           height="750"
@@ -48,7 +48,7 @@ export const ImageLeftOrRight = createStory(args => {
           fetchPriority="high"
         ></img>
       </div>
-      <div class={`uds-image-text-block-text-container ${args.bgColor}`}>
+      <div className={`uds-image-text-block-text-container ${args.bgColor}`}>
         <h3>This is a heading</h3>
         <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h4>
         <p>
@@ -59,21 +59,21 @@ export const ImageLeftOrRight = createStory(args => {
           aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
           qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.
         </p>
-        <div class="row">
-          <div class="col-12 col-md-6 py-1">
+        <div className="row">
+          <div className="col-12 col-md-6 py-1">
             <a
               href="#"
-              class={`btn ${
+              className={`btn ${
                 args.bgColor === "gray-7-bg" ? "btn-gold" : "btn-dark"
               }`}
             >
               Button link here
             </a>
           </div>
-          <div class="col-12 col-md-6 py-1">
+          <div className="col-12 col-md-6 py-1">
             <a
               href="#"
-              class={`btn ${
+              className={`btn ${
                 args.bgColor === "gray-7-bg" ? "btn-gold" : "btn-dark"
               }`}
             >

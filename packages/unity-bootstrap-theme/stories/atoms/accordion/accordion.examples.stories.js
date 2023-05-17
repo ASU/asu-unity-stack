@@ -4,8 +4,8 @@ import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-
 
 export const FoldableCardDefaultOpen = createStory(
   <div className="accordion">
-  <div class="accordion-item">
-    <div class="accordion-header">
+  <div className="accordion-item">
+    <div className="accordion-header">
       <h3>
         <a
           id="example-header-3"
@@ -22,13 +22,13 @@ export const FoldableCardDefaultOpen = createStory(
           data-ga-section="default"
         >
           This card starts off in an unfolded state.
-          <span class="fas fa-chevron-up"></span>
+          <span className="fas fa-chevron-up"></span>
         </a>
       </h3>
     </div>
     <div
       id="example-content-3"
-      class="collapse show accordion-body"
+      className="collapse show accordion-body"
       aria-labelledby="example-header-3"
     >
       <h4>This is a quaternary headline</h4>
@@ -58,13 +58,13 @@ FoldableCardDefaultOpen.args = {
 };
 
 export const ColorAccents = createStory(
-  <div class="accordion" id="accordionExample">
-    <div class="card accordion-item mt-3">
-      <div class="accordion-header">
+  <div className="accordion" id="accordionExample">
+    <div className="card accordion-item mt-3">
+      <div className="accordion-header">
         <h4>
           <a
             id="cardOne"
-            class="collapsed"
+            className="collapsed"
             href="#cardBodyOne"
             data-bs-toggle="collapse"
             data-bs-target="#cardBodyOne"
@@ -79,14 +79,14 @@ export const ColorAccents = createStory(
             data-ga-section="default"
           >
             Accordion gold color (default).
-            <span class="fas fa-chevron-up"></span>
+            <span className="fas fa-chevron-up"></span>
           </a>
         </h4>
       </div>
       {/* end .accordion-header */}
       <div
         id="cardBodyOne"
-        class="collapse accordion-body"
+        className="collapse accordion-body"
         aria-labelledby="cardOne"
         data-bs-parent="#accordionExample"
       >
@@ -109,12 +109,12 @@ export const ColorAccents = createStory(
     </div>
     {/* end .card */}
 
-    <div class="card accordion-item mt-3 accordion-item-maroon">
-      <div class="accordion-header">
+    <div className="card accordion-item mt-3 accordion-item-maroon">
+      <div className="accordion-header">
         <h4>
           <a
             id="cardTwo"
-            class="collapsed"
+            className="collapsed"
             data-bs-toggle="collapse"
             href="#cardBodyTwo"
             role="button"
@@ -128,13 +128,13 @@ export const ColorAccents = createStory(
             data-ga-section="default"
           >
             Accordion maroon color.
-            <span class="fas fa-chevron-up"></span>
+            <span className="fas fa-chevron-up"></span>
           </a>
         </h4>
       </div>
       <div
         id="cardBodyTwo"
-        class="collapse accordion-body"
+        className="collapse accordion-body"
         aria-labelledby="cardTwo"
         data-bs-parent="#accordionExample"
       >
@@ -160,12 +160,12 @@ export const ColorAccents = createStory(
     </div>
     {/* end .card */}
 
-    <div class="card accordion-item mt-3 accordion-item-gray">
-      <div class="accordion-header">
+    <div className="card accordion-item mt-3 accordion-item-gray">
+      <div className="accordion-header">
         <h4>
           <a
             id="cardThree"
-            class="collapsed"
+            className="collapsed"
             data-bs-toggle="collapse"
             href="#cardBodyThree"
             role="button"
@@ -179,13 +179,13 @@ export const ColorAccents = createStory(
             data-ga-section="default"
           >
             Accordion gray color.
-            <span class="fas fa-chevron-up"></span>
+            <span className="fas fa-chevron-up"></span>
           </a>
         </h4>
       </div>
       <div
         id="cardBodyThree"
-        class="collapse accordion-body"
+        className="collapse accordion-body"
         aria-labelledby="cardThree"
         data-bs-parent="#accordionExample"
       >
@@ -207,12 +207,12 @@ export const ColorAccents = createStory(
     </div>
     {/* end .card */}
 
-    <div class="card accordion-item mt-3 accordion-item-dark">
-      <div class="accordion-header">
+    <div className="card accordion-item mt-3 accordion-item-dark">
+      <div className="accordion-header">
         <h4>
           <a
             id="cardFour"
-            class="collapsed"
+            className="collapsed"
             href="#cardBodyFour"
             data-bs-toggle="collapse"
             data-bs-target="#cardBodyFour"
@@ -227,14 +227,14 @@ export const ColorAccents = createStory(
             data-ga-section="default"
           >
             Accordion dark color.
-            <span class="fas fa-chevron-up"></span>
+            <span className="fas fa-chevron-up"></span>
           </a>
         </h4>
       </div>
       {/* end .accordion-header */}
       <div
         id="cardBodyFour"
-        class="collapse accordion-body"
+        className="collapse accordion-body"
         aria-labelledby="cardFour"
         data-bs-parent="#accordionExample"
       >
@@ -261,13 +261,13 @@ export const ColorAccents = createStory(
 );
 
 export const IncludedIcons = createStory(
-  <div class="accordion" id="accordionExample">
-    <div class="card accordion-item mt-3">
-      <div class="accordion-header accordion-header-icon">
+  <div className="accordion" id="accordionExample">
+    <div className="card accordion-item mt-3">
+      <div className="accordion-header accordion-header-icon">
         <h4>
           <a
             id="cardOne"
-            class="collapsed"
+            className="collapsed"
             href="#cardBodyOne"
             data-bs-toggle="collapse"
             data-bs-target="#cardBodyOne"
@@ -281,18 +281,18 @@ export const IncludedIcons = createStory(
             data-ga-region="main content"
             data-ga-section="default"
           >
-            <span class="accordion-icon">
-              <i class="fas fa-dog me-2" role="img" aria-label="..."></i>
+            <span className="accordion-icon">
+              <i className="fas fa-dog me-2" role="img" aria-label="..."></i>
               Accordion with icon and gold color.
             </span>
-            <span class="fas fa-chevron-up"></span>
+            <span className="fas fa-chevron-up"></span>
           </a>
         </h4>
       </div>
       {/* end .accordion-header */}
       <div
         id="cardBodyOne"
-        class="collapse accordion-body"
+        className="collapse accordion-body"
         aria-labelledby="cardOne"
         data-bs-parent="#accordionExample"
       >
@@ -315,12 +315,12 @@ export const IncludedIcons = createStory(
     </div>
     {/* end .card */}
 
-    <div class="card accordion-item mt-3 accordion-item-maroon">
-      <div class="accordion-header accordion-header-icon">
+    <div className="card accordion-item mt-3 accordion-item-maroon">
+      <div className="accordion-header accordion-header-icon">
         <h4>
           <a
             id="cardTwo"
-            class="collapsed"
+            className="collapsed"
             data-bs-toggle="collapse"
             href="#cardBodyTwo"
             role="button"
@@ -333,17 +333,17 @@ export const IncludedIcons = createStory(
             data-ga-region="main content"
             data-ga-section="default"
           >
-            <span class="accordion-icon">
-              <i class="fas fa-cat me-2" role="img" aria-label="..."></i>
+            <span className="accordion-icon">
+              <i className="fas fa-cat me-2" role="img" aria-label="..."></i>
               Accordion with icon and maroon color.
             </span>
-            <span class="fas fa-chevron-up"></span>
+            <span className="fas fa-chevron-up"></span>
           </a>
         </h4>
       </div>
       <div
         id="cardBodyTwo"
-        class="collapse accordion-body"
+        className="collapse accordion-body"
         aria-labelledby="cardTwo"
         data-bs-parent="#accordionExample"
       >
@@ -373,13 +373,13 @@ export const IncludedIcons = createStory(
 );
 
 export const DisableFold = createStory(
-  <div class="container my-5">
-    <div class="row mt-4">
-      <div class="col-md-7">
+  <div className="container my-5">
+    <div className="row mt-4">
+      <div className="col-md-7">
         {/* Component start */}
-        <div class="accordion" id="accordionExample">
-        <div class="card accordion-item desktop-disable-lg">
-          <div class="accordion-header">
+        <div className="accordion" id="accordionExample">
+        <div className="card accordion-item desktop-disable-lg">
+          <div className="accordion-header">
             <h4>
               <a
                 id="example-header-2"
@@ -396,13 +396,13 @@ export const DisableFold = createStory(
                 data-ga-section="default"
               >
                 This will become an foldable card at the lg breakpoint.
-                <span class="fas fa-chevron-up"></span>
+                <span className="fas fa-chevron-up"></span>
               </a>
             </h4>
           </div>
           <div
             id="example-content-2"
-            class="collapse accordion-body"
+            className="collapse accordion-body"
             aria-labelledby="example-header-2"
           >
             <p>
@@ -422,12 +422,12 @@ export const DisableFold = createStory(
       </div>
     </div>
 
-    <div class="row mt-4">
-      <div class="col-md-7">
+    <div className="row mt-4">
+      <div className="col-md-7">
         {/* Component start */}
-        <div class="accordion" id="accordionExample">
-        <div class="card accordion-item desktop-disable-xl">
-          <div class="accordion-header">
+        <div className="accordion" id="accordionExample">
+        <div className="card accordion-item desktop-disable-xl">
+          <div className="accordion-header">
             <h4>
               <a
                 id="example-header-3"
@@ -444,13 +444,13 @@ export const DisableFold = createStory(
                 data-ga-section="default"
               >
                 Collapses to an foldable card at the xl breakpoint.
-                <span class="fas fa-chevron-up"></span>
+                <span className="fas fa-chevron-up"></span>
               </a>
             </h4>
           </div>
           <div
             id="example-content-3"
-            class="collapse accordion-body"
+            className="collapse accordion-body"
             aria-labelledby="example-header-3"
           >
             <p>
