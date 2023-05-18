@@ -1,7 +1,7 @@
-const express = require("express");
-const path = require("path");
-const nunjucks = require("nunjucks");
 const compression = require("compression");
+const express = require("express");
+const nunjucks = require("nunjucks");
+const path = require("path");
 
 const app = express();
 
@@ -50,7 +50,16 @@ app.get("/gtm-datalayer", function (req, res) {
 const server = require("http").createServer(app);
 const io = require("socket.io")(server);
 
-server.listen(3000);
+const PORT = 3000;
+const URL = `http://localhost:${PORT}`;
+
+server.listen(PORT, () => {
+  console.log("\nServer Details:");
+  console.log("------------------------------------");
+  console.log("| Server is running on port  |", PORT, " |");
+  console.log("| Access the application at  |", URL, " |");
+  console.log("------------------------------------");
+});
 
 io.on("connection", socketServer => {
   socketServer.on("npmStop", () => {
