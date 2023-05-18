@@ -16,13 +16,14 @@ const ColumnSection = ({ columnIndex, column: { title, links } }) => {
 
   return (
     <div className="col-xl flex-footer testname-column">
-      <div className="card card-foldable desktop-disable-xl">
+      <div className="card accordion-item desktop-disable-xl">
         <div
-          className="card-header"
+          className="accordion-header"
           role="button"
           onClick={() => setShow(!show)}
           onKeyDown={() => setShow(!show)}
           tabIndex={0}
+          data-bs-toggle="collapse"
         >
           <h5>
             <a
@@ -38,7 +39,7 @@ const ColumnSection = ({ columnIndex, column: { title, links } }) => {
         </div>
         <div
           id={`footlink-${columnIndex}`}
-          className={`collapse card-body ${show ? "show" : ""}`}
+          className={`collapse accordion-body ${show ? "show" : ""}`}
         >
           {links.map(link => (
             <a
