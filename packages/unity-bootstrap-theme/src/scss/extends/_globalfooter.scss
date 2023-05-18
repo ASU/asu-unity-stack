@@ -286,7 +286,7 @@ footer {
   }
 }
 
-@include media-breakpoint-down(md) {
+@include media-breakpoint-down(lg) {
   #footer-innovation {
     .footer-innovation-links {
       flex-direction: column;
