@@ -73,57 +73,59 @@ module.exports = generateHTML = packages => `
       <div class="container-xl">
         <div class="row">
           <div id="header-main" class="col-12">
-            <nav class="navbar navbar-expand-xl" aria-label="Main">
+            <div class="navbar navbar-expand-xl" aria-label="Main">
+              <div class="container-fluid">
 
-              <a class="navbar-brand" href="#">
-                <img class="vert" src="./@asu/unity-bootstrap-theme/img/asu-logo/arizona-state-university-logo-vertical.png" alt="Arizona State University" />
-                <img class="horiz" src="./@asu/unity-bootstrap-theme/img/asu-logo/arizona-state-university-logo.png" alt="Arizona State University" />
-              </a>
+                <a class="navbar-brand" href="#">
+                  <img class="vert" src="./@asu/unity-bootstrap-theme/img/asu-logo/arizona-state-university-logo-vertical.png" alt="Arizona State University" />
+                  <img class="horiz" src="./@asu/unity-bootstrap-theme/img/asu-logo/arizona-state-university-logo.png" alt="Arizona State University" />
+                </a>
 
-              <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#menubar" aria-controls="menubar" aria-expanded="false" aria-label="Toggle navigation">
-                <span title="Open mobile menu" class="fa fa-bars"></span>
-                <span title="Close mobile menu" class="fa-stack">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-times fa-stack-1x"></i>
-                </span>
-              </button>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#menubar" aria-controls="menubar" aria-expanded="false" aria-label="Toggle navigation">
+                  <span title="Open mobile menu" class="fa fa-bars"></span>
+                  <span title="Close mobile menu" class="fa-stack">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-times fa-stack-1x"></i>
+                  </span>
+                </button>
 
-              <div class="navbar-container no-links">
+                <div class="navbar-container no-links">
 
-                <div class="title subdomain-name">
-                  Unity Design
-                </div>
-
-                <div class="collapse navbar-collapse w-100 justify-content-between" id="menubar">
-
-                  <!-- <form class="navbar-site-buttons form-inline">
-                    <a href="#" class="btn btn-md btn-maroon">CTA Button 1</a>
-                    <a href="#" class="btn btn-md btn-dark">CTA Button 2</a>
-                  </form> -->
-
-                  <div class="navbar-mobile-footer">
-                    <form class="form-inline navbar-mobile-search" action="https://search.asu.edu/search" method="get" name="gs">
-                      <input class="form-control" type="search" name="q" aria-label="Search" placeholder="Search ASU">
-                      <input name="site" value="default_collection" type="hidden">
-                      <input name="sort" value="date:D:L:d1" type="hidden">
-                      <input name="output" value="xml_no_dtd" type="hidden">
-                      <input name="ie" value="UTF-8" type="hidden">
-                      <input name="oe" value="UTF-8" type="hidden">
-                      <input name="client" value="asu_frontend" type="hidden">
-                      <input name="proxystylesheet" value="asu_frontend" type="hidden">
-                    </form>
-                    <div class="nav-grid">
-                      <a class="nav-link" href="https://asu.edu">ASU home</a>
-                      <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
-                      <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
-                    </div>
+                  <div class="title subdomain-name">
+                    <a data-ga-header="Subdomain name" href="#" title="Subdomain name home page">Unity Design</a>
                   </div>
 
+                  <div class="collapse navbar-collapse w-100 justify-content-between" id="menubar">
+
+                    <!-- <form class="navbar-site-buttons form-inline">
+                      <a href="#" class="btn btn-md btn-maroon">CTA Button 1</a>
+                      <a href="#" class="btn btn-md btn-dark">CTA Button 2</a>
+                    </form> -->
+
+                    <div class="navbar-mobile-footer">
+                      <form class="form-inline navbar-mobile-search" action="https://search.asu.edu/search" method="get" name="gs">
+                        <input class="form-control" type="search" name="q" aria-label="Search" placeholder="Search ASU">
+                        <input name="site" value="default_collection" type="hidden">
+                        <input name="sort" value="date:D:L:d1" type="hidden">
+                        <input name="output" value="xml_no_dtd" type="hidden">
+                        <input name="ie" value="UTF-8" type="hidden">
+                        <input name="oe" value="UTF-8" type="hidden">
+                        <input name="client" value="asu_frontend" type="hidden">
+                        <input name="proxystylesheet" value="asu_frontend" type="hidden">
+                      </form>
+                      <div class="nav-grid">
+                        <a class="nav-link" href="https://asu.edu">ASU home</a>
+                        <a class="nav-link" href="https://my.asu.edu">My ASU</a>
+                        <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
+                        <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
+                      </div>
+                    </div>
+
+                  </div>
                 </div>
               </div>
 
-            </nav>
+            </div>
           </div>
         </div>
       </div>
