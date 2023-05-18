@@ -934,8 +934,8 @@ export const TwoColumns = (
             </div>
 
             <div className="col-xl flex-footer">
-              <div className="card card-foldable desktop-disable-xl">
-                <div className="card-header">
+              <div className="card accordion-item desktop-disable-xl">
+                <div className="accordion-header">
                   <h5>
                     <a
                       id="footlink-header-two"
@@ -953,7 +953,7 @@ export const TwoColumns = (
                 </div>
                 <div
                   id="footlink-two"
-                  className="collapse card-body"
+                  className="collapse accordion-body"
                   aria-labelledby="footlink-header-two"
                 >
                   <a className="nav-link" href="#" title="link">
@@ -1238,8 +1238,8 @@ export const ThreeColumns = (
             </div>
 
             <div className="col-xl flex-footer">
-              <div className="card card-foldable desktop-disable-xl">
-                <div className="card-header">
+              <div className="card accordion-item desktop-disable-xl">
+                <div className="accordion-header">
                   <h5>
                     <a
                       id="footlink-header-two"
@@ -1257,7 +1257,7 @@ export const ThreeColumns = (
                 </div>
                 <div
                   id="footlink-two"
-                  className="collapse card-body"
+                  className="collapse accordion-body"
                   aria-labelledby="footlink-header-two"
                 >
                   <a className="nav-link" href="#" title="link">
@@ -1281,8 +1281,8 @@ export const ThreeColumns = (
             </div>
 
             <div className="col-xl flex-footer">
-              <div className="card card-foldable desktop-disable-xl">
-                <div className="card-header">
+              <div className="card accordion-item desktop-disable-xl">
+                <div className="accordion-header">
                   <h5>
                     <a
                       id="footlink-header-three"
@@ -1300,7 +1300,7 @@ export const ThreeColumns = (
                 </div>
                 <div
                   id="footlink-three"
-                  className="collapse card-body"
+                  className="collapse accordion-body"
                   aria-labelledby="footlink-header-three"
                 >
                   <a className="nav-link" href="#" title="link">
@@ -1590,8 +1590,8 @@ export const FourColumns = (
             </div>
 
             <div className="col-xl flex-footer">
-              <div className="card card-foldable desktop-disable-xl">
-                <div className="card-header">
+              <div className="card accordion-item desktop-disable-xl">
+                <div className="accordion-header">
                   <h5>
                     <a
                       id="footlink-header-two"
@@ -1609,7 +1609,7 @@ export const FourColumns = (
                 </div>
                 <div
                   id="footlink-two"
-                  className="collapse card-body"
+                  className="collapse accordion-body"
                   aria-labelledby="footlink-header-two"
                 >
                   <a className="nav-link" href="#" title="link">
@@ -1633,8 +1633,8 @@ export const FourColumns = (
             </div>
 
             <div className="col-xl flex-footer">
-              <div className="card card-foldable desktop-disable-xl">
-                <div className="card-header">
+              <div className="card accordion-item desktop-disable-xl">
+                <div className="accordion-header">
                   <h5>
                     <a
                       id="footlink-header-three"
@@ -1652,7 +1652,7 @@ export const FourColumns = (
                 </div>
                 <div
                   id="footlink-three"
-                  className="collapse card-body"
+                  className="collapse accordion-body"
                   aria-labelledby="footlink-header-three"
                 >
                   <a className="nav-link" href="#" title="link">
@@ -1681,8 +1681,8 @@ export const FourColumns = (
             </div>
 
             <div className="col-xl flex-footer">
-              <div className="card card-foldable desktop-disable-xl">
-                <div className="card-header">
+              <div className="card accordion-item desktop-disable-xl">
+                <div className="accordion-header">
                   <h5>
                     <a
                       id="footlink-header-four"
@@ -1700,7 +1700,7 @@ export const FourColumns = (
                 </div>
                 <div
                   id="footlink-four"
-                  className="collapse card-body"
+                  className="collapse accordion-body"
                   aria-labelledby="footlink-header-four"
                 >
                   <a className="nav-link" href="#" title="link">
@@ -1990,8 +1990,8 @@ export const FiveColumns = (
             </div>
 
             <div className="col-xl flex-footer">
-              <div className="card card-foldable desktop-disable-xl">
-                <div className="card-header">
+              <div className="card accordion-item desktop-disable-xl">
+                <div className="accordion-header">
                   <h5>
                     <a
                       id="footlink-header-two"
@@ -2009,7 +2009,7 @@ export const FiveColumns = (
                 </div>
                 <div
                   id="footlink-two"
-                  className="collapse card-body"
+                  className="collapse accordion-body"
                   aria-labelledby="footlink-header-two"
                 >
                   <a className="nav-link" href="#" title="link">
@@ -2033,8 +2033,8 @@ export const FiveColumns = (
             </div>
 
             <div className="col-xl flex-footer">
-              <div className="card card-foldable desktop-disable-xl">
-                <div className="card-header">
+              <div className="card accordion-item desktop-disable-xl">
+                <div className="accordion-header">
                   <h5>
                     <a
                       id="footlink-header-three"
@@ -2052,7 +2052,7 @@ export const FiveColumns = (
                 </div>
                 <div
                   id="footlink-three"
-                  className="collapse card-body"
+                  className="collapse accordion-body"
                   aria-labelledby="footlink-header-three"
                 >
                   <a className="nav-link" href="#" title="link">
@@ -2081,8 +2081,8 @@ export const FiveColumns = (
             </div>
 
             <div className="col-xl flex-footer">
-              <div className="card card-foldable desktop-disable-xl">
-                <div className="card-header">
+              <div className="card accordion-item desktop-disable-xl">
+                <div className="accordion-header">
                   <h5>
                     <a
                       id="footlink-header-four"
@@ -2100,7 +2100,7 @@ export const FiveColumns = (
                 </div>
                 <div
                   id="footlink-four"
-                  className="collapse card-body"
+                  className="collapse accordion-body"
                   aria-labelledby="footlink-header-four"
                 >
                   <a className="nav-link" href="#" title="link">
@@ -2129,8 +2129,8 @@ export const FiveColumns = (
             </div>
 
             <div className="col-xl flex-footer">
-              <div className="card card-foldable desktop-disable-xl">
-                <div className="card-header">
+              <div className="card accordion-item desktop-disable-xl">
+                <div className="accordion-header">
                   <h5>
                     <a
                       id="footlink-header-five"
@@ -2148,7 +2148,7 @@ export const FiveColumns = (
                 </div>
                 <div
                   id="footlink-five"
-                  className="collapse card-body"
+                  className="collapse accordion-body"
                   aria-labelledby="footlink-header-five"
                 >
                   <a className="nav-link" href="#" title="link">
@@ -2438,8 +2438,8 @@ export const SixColumns = (
             </div>
 
             <div className="col-xl flex-footer">
-              <div className="card card-foldable desktop-disable-xl">
-                <div className="card-header">
+              <div className="card accordion-item desktop-disable-xl">
+                <div className="accordion-header">
                   <h5>
                     <a
                       id="footlink-header-two"
@@ -2457,7 +2457,7 @@ export const SixColumns = (
                 </div>
                 <div
                   id="footlink-two"
-                  className="collapse card-body"
+                  className="collapse accordion-body"
                   aria-labelledby="footlink-header-two"
                 >
                   <a className="nav-link" href="#" title="link">
@@ -2481,8 +2481,8 @@ export const SixColumns = (
             </div>
 
             <div className="col-xl flex-footer">
-              <div className="card card-foldable desktop-disable-xl">
-                <div className="card-header">
+              <div className="card accordion-item desktop-disable-xl">
+                <div className="accordion-header">
                   <h5>
                     <a
                       id="footlink-header-three"
@@ -2500,7 +2500,7 @@ export const SixColumns = (
                 </div>
                 <div
                   id="footlink-three"
-                  className="collapse card-body"
+                  className="collapse accordion-body"
                   aria-labelledby="footlink-header-three"
                 >
                   <a className="nav-link" href="#" title="link">
@@ -2529,8 +2529,8 @@ export const SixColumns = (
             </div>
 
             <div className="col-xl flex-footer">
-              <div className="card card-foldable desktop-disable-xl">
-                <div className="card-header">
+              <div className="card accordion-item desktop-disable-xl">
+                <div className="accordion-header">
                   <h5>
                     <a
                       id="footlink-header-four"
@@ -2548,7 +2548,7 @@ export const SixColumns = (
                 </div>
                 <div
                   id="footlink-four"
-                  className="collapse card-body"
+                  className="collapse accordion-body"
                   aria-labelledby="footlink-header-four"
                 >
                   <a className="nav-link" href="#" title="link">
@@ -2577,8 +2577,8 @@ export const SixColumns = (
             </div>
 
             <div className="col-xl flex-footer">
-              <div className="card card-foldable desktop-disable-xl">
-                <div className="card-header">
+              <div className="card accordion-item desktop-disable-xl">
+                <div className="accordion-header">
                   <h5>
                     <a
                       id="footlink-header-five"
@@ -2596,7 +2596,7 @@ export const SixColumns = (
                 </div>
                 <div
                   id="footlink-five"
-                  className="collapse card-body"
+                  className="collapse accordion-body"
                   aria-labelledby="footlink-header-five"
                 >
                   <a className="nav-link" href="#" title="link">
@@ -2625,8 +2625,8 @@ export const SixColumns = (
             </div>
 
             <div className="col-xl flex-footer">
-              <div className="card card-foldable desktop-disable-xl">
-                <div className="card-header">
+              <div className="card accordion-item desktop-disable-xl">
+                <div className="accordion-header">
                   <h5>
                     <a
                       id="footlink-header-six"
@@ -2644,7 +2644,7 @@ export const SixColumns = (
                 </div>
                 <div
                   id="footlink-six"
-                  className="collapse card-body"
+                  className="collapse accordion-body"
                   aria-labelledby="footlink-header-six"
                 >
                   <a className="nav-link" href="#" title="link">
