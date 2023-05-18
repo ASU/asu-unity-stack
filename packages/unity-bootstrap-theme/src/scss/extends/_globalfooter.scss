@@ -181,19 +181,19 @@ footer {
   }
 
   .flex-footer {
-    .card-foldable,
-    .card-header,
-    .card-body {
+    .accordion-item,
+    .accordion-header,
+    .accordion-body {
       background: $uds-color-divider-darker;
       color: $uds-color-base-white;
       border: 0;
     }
 
-    .card-foldable {
+    .accordion-foldable {
       margin: 0;
     }
 
-    .card-header {
+    .accordion-header {
       border-top: 1px solid $uds-color-divider-lighter;
       padding-left: 0;
 
@@ -208,7 +208,7 @@ footer {
       }
     }
 
-    .card-body {
+    .accordion-body {
       padding: 0 0 0 $uds-size-spacing-3;
 
       .nav-link {
@@ -232,7 +232,7 @@ footer {
     }
 
     .flex-footer {
-      .card-header {
+      .accordion-header {
         border-top: 0;
         padding: 0;
 
@@ -246,7 +246,7 @@ footer {
         }
       }
 
-      .card-body {
+      .accordion-body {
         padding: 0;
         transition-delay: 0;
 
@@ -286,7 +286,7 @@ footer {
   }
 }
 
-@include media-breakpoint-down(md) {
+@include media-breakpoint-down(lg) {
   #footer-innovation {
     .footer-innovation-links {
       flex-direction: column;
