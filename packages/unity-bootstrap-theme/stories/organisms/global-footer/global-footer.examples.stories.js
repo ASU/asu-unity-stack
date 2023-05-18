@@ -28,6 +28,15 @@ export const ThreeColumnsExample = createStory(ThreeColumns, { initFunc });
 export const FourColumnsExample = createStory(FourColumns, { initFunc });
 export const FiveColumnsExample = createStory(FiveColumns, { initFunc });
 export const SixColumnsExample = createStory(SixColumns, { initFunc });
-SixColumnsExample.args = {
-  template: 0,
-};
+GlobalElementsOnlyExample.args =
+  ZeroColumnsExample.args =
+  OneColumnExample.args =
+  OneColumnNoLogoOrSocialExample.args =
+  TwoColumnsExample.args =
+  ThreeColumnsExample.args =
+  FourColumnsExample.args =
+  FiveColumnsExample.args =
+  SixColumnsExample.args =
+    {
+      template: 0,
+    };
