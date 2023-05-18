@@ -537,6 +537,7 @@ Cards - Table of Contents
 
   .accordion-header {
     padding: $uds-size-spacing-1;
+    overflow: hidden;
 
     &.accordion-header-icon {
       & .accordion-icon {
