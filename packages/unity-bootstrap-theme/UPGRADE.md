@@ -42,15 +42,21 @@ Note: the optional header and footer CSS require the base theme file to be inclu
 
 See README.md for more details about using and extending the Unity Bootstrap 5 theme in your application.
 
-### Update Unity component markup used by your application. 
+### Update Unity component markup used by your application.
 
 Most design components' markup changed little or not at all in this update. A few to pay close attention to are:
 
 #### Accordion markup
 
-- Accordions have deprecated the use of `foldable-card` classes. Instead, use `accordion` and `accordion-item` classes.
-- The `foldable-card-header` class has been replaced with `accordion-header` and the `foldable-card-header-button` class has been replaced with `accordion-button`.
-- The `foldable-card-body` class has been replaced with `accordion-body`.
+- Accordions have deprecated the use of `card-foldable` classes. Instead, use `accordion` as a wrapper class and `accordion-item` for the individual items in the accordion.
+- The `card-header` class in accordions has been replaced with `accordion-header` and the `card-header-button` class has been replaced with `accordion-button`.
+- The `card-body` class in accordions has been replaced with `accordion-body`.
+
+  This mainly applies to the accordion component that is wrapped in the `accordion` class. See [these examples](https://https://unity.web.asu.edu/@asu/unity-bootstrap-theme/?path=/story/atoms-accordions-examples--color-accents&globals=backgrounds.grid:false) for the unity markup. *Classes in the footer have also been changed when there are dropdowns present. These are NOT wrapped in an `accordion` class wrapper.*
+
+  This does not apply to the sidebar as we use custom cards for that.
+
+  If using the recommended React packages - `component-header` and `component-footer`, the markup changes are handled for you.
 
 **Accordions require the use of Javascript to function. If using Webspark, this has already been done for you. If using the Unity Bootstrap 5 theme in a standalone application, you will need to import the bundled bootstrap javascript file which is available in `@asu/unity-bootstrap-theme/dist/js/bootstrap.bundle.min.js`**
 
