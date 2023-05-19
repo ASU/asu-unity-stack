@@ -1,95 +1,127 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
 export default createComponent("Anchor Menu", "Atoms", "Examples");
+import { Basic } from "../../organisms/global-header/global-header.templates.stories.js";
 import { initializeAnchorMenu as initFunc } from "./anchor-menu";
 
 export const AnchorMenu = createStory(
   <div>
-    <div
-      id="uds-anchor-menu"
-      className="uds-anchor-menu uds-anchor-menu-expanded-lg"
-    >
-      <div className="container">
-        <div className="uds-anchor-menu-wrapper">
-          <h4
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseExample"
-            aria-expanded="false"
-            aria-controls="collapseExample"
-            data-ga-name="onclick"
-            data-ga-event="collapse"
-            data-ga-type="click"
-            data-ga="On this page"
-          >
-            On This Page: <span className="fas fa-chevron-down"></span>
-          </h4>
-          <div id="collapseExample" className="card card-body collapse">
-            <nav className="nav" aria-label="Same Page">
-              <a
-                className="nav-link"
-                href="#first"
-                data-ga-name="onclick"
-                data-ga-event="link"
-                data-ga-action="click"
-                data-ga-type="internal link"
-                data-ga-region="main content"
-                data-ga-section="gettysburg address"
-                data-ga="Anchor item"
-              >
-                <span className="fas fa-link"></span>Anchor item
-              </a>
-              <a
-                className="nav-link"
-                href="#second"
-                data-ga-name="onclick"
-                data-ga-event="link"
-                data-ga-action="click"
-                data-ga-type="internal link"
-                data-ga-region="main content"
-                data-ga-section="gettysburg address"
-                data-ga="Anchor item"
-              >
-                <span className="fas fa-link"></span>Anchor item
-              </a>
-              <a
-                className="nav-link"
-                href="#third"
-                data-ga-name="onclick"
-                data-ga-event="link"
-                data-ga-action="click"
-                data-ga-type="internal link"
-                data-ga-region="main content"
-                data-ga-section="gettysburg address"
-                data-ga="Anchor item"
-              >
-                <span className="fa fa-link"></span>Anchor item
-              </a>
-              <a
-                className="nav-link"
-                href="#fourth"
-                data-ga-name="onclick"
-                data-ga-event="link"
-                data-ga-action="click"
-                data-ga-type="internal link"
-                data-ga-region="main content"
-                data-ga-section="gettysburg address"
-                data-ga="Anchor item"
-              >
-                <span className="fa fa-link"></span>Anchor item
-              </a>
-              <a
-                className="nav-link"
-                href="#fifth"
-                data-ga-name="onclick"
-                data-ga-event="link"
-                data-ga-action="click"
-                data-ga-type="internal link"
-                data-ga-region="main content"
-                data-ga-section="gettysburg address"
-                data-ga="Anchor item"
-              >
-                <span className="fa fa-link"></span>Anchor item
-              </a>
-            </nav>
+    <div class="container-fluid">
+      {Basic}
+
+      <div class="uds-hero-lg has-btn-row">
+        <img
+          class="hero"
+          src="https://source.unsplash.com/WLUHO9A_xik/1920x1000"
+          alt="Sample placeholder image."
+          width="1920"
+          height="1000"
+          loading="lazy"
+          decoding="async"
+          fetchPriority="high"
+        />
+        <h1>
+          <span class="highlight-gold">Gettysburg Address</span>
+        </h1>
+        <div class="content">
+          <p class="text-white">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+        <div class="btn-row">
+          <a href="#" class="btn btn-default btn-gold">
+            Read the 13th Amendment
+          </a>
+        </div>
+      </div>
+
+      <div
+        id="uds-anchor-menu"
+        className="uds-anchor-menu uds-anchor-menu-expanded-lg"
+      >
+        <div className="container">
+          <div className="uds-anchor-menu-wrapper">
+            <h4
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseExample"
+              aria-expanded="false"
+              aria-controls="collapseExample"
+              data-ga-name="onclick"
+              data-ga-event="collapse"
+              data-ga-type="click"
+              data-ga="On this page"
+            >
+              On This Page: <span className="fas fa-chevron-down"></span>
+            </h4>
+            <div id="collapseExample" className="card card-body collapse">
+              <nav className="nav" aria-label="Same Page">
+                <a
+                  className="nav-link"
+                  href="#first"
+                  data-ga-name="onclick"
+                  data-ga-event="link"
+                  data-ga-action="click"
+                  data-ga-type="internal link"
+                  data-ga-region="main content"
+                  data-ga-section="gettysburg address"
+                  data-ga="Anchor item"
+                >
+                  <span className="fas fa-link"></span>Anchor item
+                </a>
+                <a
+                  className="nav-link"
+                  href="#second"
+                  data-ga-name="onclick"
+                  data-ga-event="link"
+                  data-ga-action="click"
+                  data-ga-type="internal link"
+                  data-ga-region="main content"
+                  data-ga-section="gettysburg address"
+                  data-ga="Anchor item"
+                >
+                  <span className="fas fa-link"></span>Anchor item
+                </a>
+                <a
+                  className="nav-link"
+                  href="#third"
+                  data-ga-name="onclick"
+                  data-ga-event="link"
+                  data-ga-action="click"
+                  data-ga-type="internal link"
+                  data-ga-region="main content"
+                  data-ga-section="gettysburg address"
+                  data-ga="Anchor item"
+                >
+                  <span className="fa fa-link"></span>Anchor item
+                </a>
+                <a
+                  className="nav-link"
+                  href="#fourth"
+                  data-ga-name="onclick"
+                  data-ga-event="link"
+                  data-ga-action="click"
+                  data-ga-type="internal link"
+                  data-ga-region="main content"
+                  data-ga-section="gettysburg address"
+                  data-ga="Anchor item"
+                >
+                  <span className="fa fa-link"></span>Anchor item
+                </a>
+                <a
+                  className="nav-link"
+                  href="#fifth"
+                  data-ga-name="onclick"
+                  data-ga-event="link"
+                  data-ga-action="click"
+                  data-ga-type="internal link"
+                  data-ga-region="main content"
+                  data-ga-section="gettysburg address"
+                  data-ga="Anchor item"
+                >
+                  <span className="fa fa-link"></span>Anchor item
+                </a>
+              </nav>
+            </div>
           </div>
         </div>
       </div>
@@ -382,10 +414,7 @@ export const AnchorMenu = createStory(
     <div style={{ height: "1000px" }}></div>
   </div>,
   {
-    initFunc
+    initFunc,
+    omitTemplate: true,
   }
 );
-
-AnchorMenu.args = {
-  template: 1,
-};
