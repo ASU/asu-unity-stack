@@ -415,6 +415,6 @@ export const AnchorMenu = createStory(
   </div>,
   {
     initFunc,
-    omitTemplate: true,
+    omitTemplate: true, // This removes the wrapper provided by createStory and renders your story as-is, avoiding the need to wrap it in a container div, required for this story
   }
 );
