@@ -56,7 +56,7 @@ Most design components' markup changed little or not at all in this update. A fe
 
   This does not apply to the sidebar as we use custom cards for that.
 
-  If using the reccomended React packages - `component-header` and `component-footer`, the markup changes are handled for you.
+  If using the recommended React packages - `component-header` and `component-footer`, the markup changes are handled for you.
 
 **Accordions require the use of Javascript to function. If using Webspark, this has already been done for you. If using the Unity Bootstrap 5 theme in a standalone application, you will need to import the bundled bootstrap javascript file which is available in `@asu/unity-bootstrap-theme/dist/js/bootstrap.bundle.min.js`**
 
