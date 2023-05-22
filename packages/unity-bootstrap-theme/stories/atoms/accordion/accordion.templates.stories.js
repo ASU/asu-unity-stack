@@ -8,7 +8,7 @@ const FoldableCardElement = (
   bodyID = null
 ) => (
   <div className="accordion">
-    <div className="card accordion-item">
+    <div className="accordion-item mt-3">
       <div className="accordion-header">
         <h3>
           <a

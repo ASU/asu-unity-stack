@@ -4,7 +4,7 @@ import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-
 
 export const FoldableCardDefaultOpen = createStory(
   <div className="accordion">
-  <div className="accordion-item">
+  <div className="accordion-item mt-3">
     <div className="accordion-header">
       <h3>
         <a
@@ -59,7 +59,7 @@ FoldableCardDefaultOpen.args = {
 
 export const ColorAccents = createStory(
   <div className="accordion" id="accordionExample">
-    <div className="card accordion-item mt-3">
+    <div className="accordion-item mt-3">
       <div className="accordion-header">
         <h4>
           <a
@@ -109,7 +109,7 @@ export const ColorAccents = createStory(
     </div>
     {/* end .card */}
 
-    <div className="card accordion-item mt-3 accordion-item-maroon">
+    <div className="accordion-item mt-3 accordion-item-maroon">
       <div className="accordion-header">
         <h4>
           <a
@@ -160,7 +160,7 @@ export const ColorAccents = createStory(
     </div>
     {/* end .card */}
 
-    <div className="card accordion-item mt-3 accordion-item-gray">
+    <div className="accordion-item mt-3 accordion-item-gray">
       <div className="accordion-header">
         <h4>
           <a
@@ -207,7 +207,7 @@ export const ColorAccents = createStory(
     </div>
     {/* end .card */}
 
-    <div className="card accordion-item mt-3 accordion-item-dark">
+    <div className="accordion-item mt-3 accordion-item-dark">
       <div className="accordion-header">
         <h4>
           <a
@@ -262,7 +262,7 @@ export const ColorAccents = createStory(
 
 export const IncludedIcons = createStory(
   <div className="accordion" id="accordionExample">
-    <div className="card accordion-item mt-3">
+    <div className="accordion-item mt-3">
       <div className="accordion-header accordion-header-icon">
         <h4>
           <a
@@ -315,7 +315,7 @@ export const IncludedIcons = createStory(
     </div>
     {/* end .card */}
 
-    <div className="card accordion-item mt-3 accordion-item-maroon">
+    <div className="accordion-item mt-3 accordion-item-maroon">
       <div className="accordion-header accordion-header-icon">
         <h4>
           <a
@@ -378,7 +378,7 @@ export const DisableFold = createStory(
       <div className="col-md-7">
         {/* Component start */}
         <div className="accordion" id="accordionExample">
-        <div className="card accordion-item desktop-disable-lg">
+        <div className="accordion-item desktop-disable-lg">
           <div className="accordion-header">
             <h4>
               <a
@@ -426,7 +426,7 @@ export const DisableFold = createStory(
       <div className="col-md-7">
         {/* Component start */}
         <div className="accordion" id="accordionExample">
-        <div className="card accordion-item desktop-disable-xl">
+        <div className="accordion-item desktop-disable-xl">
           <div className="accordion-header">
             <h4>
               <a
