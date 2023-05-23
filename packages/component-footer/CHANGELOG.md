@@ -1,3 +1,10 @@
+# [@asu/component-footer-v2.0.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.0.0...@asu/component-footer-v2.0.1) (2023-05-23)
+
+
+### Bug Fixes
+
+* **component-footer:** changelog cleanup ([eefaa61](https://github.com/asu/asu-unity-stack/commit/eefaa614df8b8c48986445d4981a05531c75cfaa))
+
 # [@asu/component-footer-v2.0.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v1.2.2...@asu/component-footer-v2.0.0) (2023-05-23)
 
 
