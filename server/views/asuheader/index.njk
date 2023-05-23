@@ -6,9 +6,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Bootstrap includes for asu-web-standards-bootstrap4-->
-  <link rel="stylesheet" href="../@asu/bootstrap4-theme/css/bootstrap-asu.min.css" type="text/css"
-media="all">
-<script src="https://kit.fontawesome.com/35fb12a3a9.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../@asu/unity-bootstrap-theme/css/unity-bootstrap-theme.bundle.css" type="text/css" media="all">
+  <script type="text/javascript" src="../@asu/unity-bootstrap-theme/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript" src="../@asu/unity-bootstrap-theme/js/data-layer.js"></script>
+  <script type="text/javascript" src="../@asu/unity-bootstrap-theme/js/global-header.js"></script>
+  <script src="https://kit.fontawesome.com/35fb12a3a9.js" crossorigin="anonymous"></script>
 
   <style>
     /** Basic resets **/
@@ -77,13 +79,13 @@ media="all">
                       class="nav"
                     >
                       <a
-                        class="nav-link sr-only sr-only-focusable"
+                        class="nav-link visually-hidden visually-hidden-focusable"
                         href="#skip-to-content"
                       >
                         Skip to main content
                       </a>
                       <a
-                        class="nav-link sr-only sr-only-focusable"
+                        class="nav-link visually-hidden visually-hidden-focusable"
                         href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system"
                       >
                         Report an accessibility problem
@@ -194,151 +196,153 @@ media="all">
                     id="header-main"
                   >
                     <div class="navbar navbar-expand-xl">
-                      <a
-                        class="navbar-brand"
-                        data-ga-header="asu logo"
-                        href="#"
-                      >
-                        <img
-                          alt="Arizona State University"
-                          class="vert"
-                          src="https://www.asu.edu/asuthemes/5.0/assets/arizona-state-university-logo-vertical.png"
-                        />
-                        <img
-                          alt="Arizona State University"
-                          class="horiz"
-                          src="https://www.asu.edu/asuthemes/5.0/assets/arizona-state-university-logo.png"
-                        />
-                      </a>
-                      <button
-                        aria-controls="menubar"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
-                        class="navbar-toggler collapsed"
-                        data-ga-header="menu button label"
-                        data-ga-header-event="collapse"
-                        data-ga-header-type="click"
-                        data-target="#menubar"
-                        data-toggle="collapse"
-                        type="button"
-                      >
-                        <span
-                          alt=""
-                          class="fa fa-bars"
-                          title="Open mobile menu"
-                        ></span>
-                        <span
-                          class="fa-stack"
-                          title="Close mobile menu"
+                      <div class="container-fluid">
+                        <a
+                          class="navbar-brand"
+                          data-ga-header="asu logo"
+                          href="#"
                         >
-                          <i
-                            alt=""
-                            class="fa fa-circle fa-stack-2x"
-                          >
-                          </i>
-                          <i
-                            alt=""
-                            class="fa fa-times fa-stack-1x"
-                          ></i>
-                        </span>
-                      </button>
-                      <div class="navbar-container no-links">
-                        <div class="title subdomain-name">
-                          <a
-                            data-ga-header="Subdomain name"
-                            href="#"
-                            title="Subdomain name home page"
-                          >
-                            ASU Themes Global Header and Footer Example
-                          </a>
-                        </div>
-                        <div
-                          class="collapse navbar-collapse w-100 justify-content-between"
-                          id="menubar"
+                          <img
+                            alt="Arizona State University"
+                            class="vert"
+                            src="https://www.asu.edu/asuthemes/5.0/assets/arizona-state-university-logo-vertical.png"
+                          />
+                          <img
+                            alt="Arizona State University"
+                            class="horiz"
+                            src="https://www.asu.edu/asuthemes/5.0/assets/arizona-state-university-logo.png"
+                          />
+                        </a>
+                        <button
+                          aria-controls="menubar"
+                          aria-expanded="false"
+                          aria-label="Toggle navigation"
+                          class="navbar-toggler collapsed"
+                          data-ga-header="menu button label"
+                          data-ga-header-event="collapse"
+                          data-ga-header-type="click"
+                          data-bs-target="#menubar"
+                          data-bs-toggle="collapse"
+                          type="button"
                         >
-                          <div class="navbar-mobile-footer pinned">
-                            <form
-                              action="https://search.asu.edu/search"
-                              class="form-inline navbar-mobile-search"
-                              method="get"
-                              name="gs"
+                          <span
+                            alt=""
+                            class="fa fa-bars"
+                            title="Open mobile menu"
+                          ></span>
+                          <span
+                            class="fa-stack"
+                            title="Close mobile menu"
+                          >
+                            <i
+                              alt=""
+                              class="fa fa-circle fa-stack-2x"
                             >
-                              <input
-                                aria-label="Search"
-                                class="form-control"
-                                name="q"
-                                placeholder="Search asu.edu"
-                                type="search"
-                              />
-                              <input
-                                name="site"
-                                type="hidden"
-                                value="default_collection"
-                              />
-                              <input
-                                name="sort"
-                                type="hidden"
-                                value="date:D:L:d1"
-                              />
-                              <input
-                                name="output"
-                                type="hidden"
-                                value="xml_no_dtd"
-                              />
-                              <input
-                                name="ie"
-                                type="hidden"
-                                value="UTF-8"
-                              />
-                              <input
-                                name="oe"
-                                type="hidden"
-                                value="UTF-8"
-                              />
-                              <input
-                                name="client"
-                                type="hidden"
-                                value="asu_frontend"
-                              />
-                              <input
-                                name="proxystylesheet"
-                                type="hidden"
-                                value="asu_frontend"
-                              />
-                            </form>
-                            <div class="nav-grid">
-                              <a
-                                class="nav-link"
-                                data-ga-header="asu home"
-                                data-ga-header-section="topbar"
-                                href="https://asu.edu"
+                            </i>
+                            <i
+                              alt=""
+                              class="fa fa-times fa-stack-1x"
+                            ></i>
+                          </span>
+                        </button>
+                        <div class="navbar-container no-links">
+                          <div class="title subdomain-name">
+                            <a
+                              data-ga-header="Subdomain name"
+                              href="#"
+                              title="Subdomain name home page"
+                            >
+                              Unity Design
+                            </a>
+                          </div>
+                          <div
+                            class="collapse navbar-collapse w-100 justify-content-between"
+                            id="menubar"
+                          >
+                            <div class="navbar-mobile-footer pinned">
+                              <form
+                                action="https://search.asu.edu/search"
+                                class="form-inline navbar-mobile-search"
+                                method="get"
+                                name="gs"
                               >
-                                ASU Home
-                              </a>
-                              <a
-                                class="nav-link"
-                                data-ga-header="my asu"
-                                data-ga-header-section="topbar"
-                                href="https://my.asu.edu"
-                              >
-                                My ASU
-                              </a>
-                              <a
-                                class="nav-link"
-                                data-ga-header="colleges and schools"
-                                data-ga-header-section="topbar"
-                                href="https://www.asu.edu/academics/colleges-schools"
-                              >
-                                Colleges and Schools
-                              </a>
-                              <a
-                                class="nav-link"
-                                data-ga-header="sign in"
-                                data-ga-header-section="topbar"
-                                href="https://weblogin.asu.edu/cgi-bin/login"
-                              >
-                                Sign In
-                              </a>
+                                <input
+                                  aria-label="Search"
+                                  class="form-control"
+                                  name="q"
+                                  placeholder="Search asu.edu"
+                                  type="search"
+                                />
+                                <input
+                                  name="site"
+                                  type="hidden"
+                                  value="default_collection"
+                                />
+                                <input
+                                  name="sort"
+                                  type="hidden"
+                                  value="date:D:L:d1"
+                                />
+                                <input
+                                  name="output"
+                                  type="hidden"
+                                  value="xml_no_dtd"
+                                />
+                                <input
+                                  name="ie"
+                                  type="hidden"
+                                  value="UTF-8"
+                                />
+                                <input
+                                  name="oe"
+                                  type="hidden"
+                                  value="UTF-8"
+                                />
+                                <input
+                                  name="client"
+                                  type="hidden"
+                                  value="asu_frontend"
+                                />
+                                <input
+                                  name="proxystylesheet"
+                                  type="hidden"
+                                  value="asu_frontend"
+                                />
+                              </form>
+                              <div class="nav-grid">
+                                <a
+                                  class="nav-link"
+                                  data-ga-header="asu home"
+                                  data-ga-header-section="topbar"
+                                  href="https://asu.edu"
+                                >
+                                  ASU Home
+                                </a>
+                                <a
+                                  class="nav-link"
+                                  data-ga-header="my asu"
+                                  data-ga-header-section="topbar"
+                                  href="https://my.asu.edu"
+                                >
+                                  My ASU
+                                </a>
+                                <a
+                                  class="nav-link"
+                                  data-ga-header="colleges and schools"
+                                  data-ga-header-section="topbar"
+                                  href="https://www.asu.edu/academics/colleges-schools"
+                                >
+                                  Colleges and Schools
+                                </a>
+                                <a
+                                  class="nav-link"
+                                  data-ga-header="sign in"
+                                  data-ga-header-section="topbar"
+                                  href="https://weblogin.asu.edu/cgi-bin/login"
+                                >
+                                  Sign In
+                                </a>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -354,7 +358,7 @@ media="all">
             id="page-wrapper"
           >
             <div
-              class="sr-only"
+              class="visually-hidden"
               id="skip-to-content"
             >
             </div>
@@ -371,19 +375,19 @@ media="all">
     <div id="cookieConsentContainer" class="cookieConsentContainer"></div>
     <!-- end AsuCookieConsent container -->
 
-    <section id="test-content" style="margin-top:200px;">
+    <section id="test-content">
 
       <div class="row">
         <div class="col-12">
-          <h3 class="display-4">ASU Header Guide</h3>
+          <h1 class="display-4">ASU Header Guide</h1>
 
           <p>Testing data shows that users see asu.edu as one website. The ASU global header
             should appear on every subdomain and page of asu.edu to ensure and optimal
             user experience as they navigate across asu.edu.</p>
 
-          <h3>The ASU Header is delivered in five ways</h3>
+          <h2>The ASU Header is delivered in five ways</h2>
 
-          <h4>Components Header</h4>
+          <h3>Components Header</h3>
           <p><strong>Preferred:</strong> Intended for use within platforms and applications, this
             header variant is built using React as a peer dependency and can be implemented
             using the <a href="/asu-unity-stack/@asu/component-header/index.html">
@@ -395,7 +399,7 @@ media="all">
             Tag Manager code snippets to their sites. See below for guidance in
             both cases and instructions for installing packages.</p>
 
-          <h4>Components Library Header - deprecated and no longer maintained</h4>
+          <h3>Components Library Header - deprecated and no longer maintained</h3>
           <p><strong>Deprecated in favor of Component Header:</strong>
             Intended for use within platforms and applications, this
             header variant is built using Preact and can be implemented
@@ -408,18 +412,17 @@ media="all">
             Tag Manager code snippets to their sites. See below for guidance in
             both cases and instructions for installing packages.</p>
 
-          <h4>ASUThemes component header - deprecated and no longer maintained</h4>
+          <h3>ASUThemes component header - deprecated and no longer maintained</h3>
           <p>The ASU Web Standards 2.0 header is made available through
-            ASUThemes for ease of use in ASU enterprise apps. It is an
-            alternative packaging of the Components Library header. See
-            <a href="https://unity.web.asu.edu/asuthemes">
-              https://unity.web.asu.edu/asuthemes</a>. Note: this version of the
-            header bundles the ASU Cookie Consent but does not provide Google
-            Tag Manager code. Read below about how to implement GTM on
-            enterprise sites.
+            ASUThemes for use in ASU enterprise apps. It is no longer
+            maintained and sites should transition to use of another option.
+            This option is an alternative packaging of the deprecated
+            Components Library header. Note: this version of the header bundles
+            the ASU Cookie Consent but does not provide Google Tag Manager
+            code. Read below about how to implement GTM on enterprise sites.
           </p>
 
-          <h4>Integrated CMS header modules and plugins</h4>
+          <h3>Integrated CMS header modules and plugins</h3>
           <p>CMS modules and plugins providing the ASU header should implement
             it using the <a href="/asu-unity-stack/@asu/components-header/index.html">
               @asu/components-header</a> package and should also
@@ -432,10 +435,10 @@ media="all">
             Header modules and plugins are to be shipped with their respective
             CMS platform distributions.</p>
 
-          <h4>Bootstrap 4 theme header</h4>
-          <p>Primarily used as a reference point, the Bootstrap 4 header
-            provided via the <a href="/asu-unity-stack/@asu/bootstrap4-theme/index.html">
-              @asu/bootstrap4-theme</a> package is a plain HTML and
+          <h3>Unity Bootstrap Theme header</h3>
+          <p>Primarily used as a reference point, the Bootstrap header
+            provided via the <a href="/asu-unity-stack/@asu/unity-bootstrap-theme/index.html">
+              @asu/unity-bootstrap-theme</a> package is a plain HTML and
             CSS Web Standards 2 header implementation built without embedded
             components for Cookie Consent and Google Tag Manager. Site
             developers using this header must implement Component Cookie Consent
@@ -444,7 +447,7 @@ media="all">
             Tag Manager code snippets to their sites. See below for guidance
             in both cases.</p>
 
-          <h3>Notes on additional requirements for sites using the header</h3>
+          <h2>Notes on additional requirements for sites using the header</h2>
 
           <p>In addition to the header, ASU sites must, as a general rule
             implement the Web Standards 2 Cookie Consent component for GDPR
@@ -452,7 +455,7 @@ media="all">
             further for options and guidance on how to implement these in your
             application or site.</p>
 
-          <h3>Cookie Consent (GDPR compliance)</h3>
+          <h2>Cookie Consent (GDPR compliance)</h2>
           <p>Before implementing Cookie Consent yourself, please review the
             options for obtaining the ASU Header. Some options provide the
             Cookie Consent component automatically bundled.</p>
@@ -461,123 +464,12 @@ media="all">
             please see the section "Installing Unity components from
             the Unity package registry."</p>
 
-          <h3>Google Tag Manager (GTM)</h3>
-          <p>Before implementing Google Tag Manager yourself, please review
-            the options for obtaining the ASU Header. Some options provide the
-            ASU Google Tag Manager code automatically bundled.</p>
+          <h2>Google Tag Manager (GTM)</h2>
+          <p>See the <a href="/gtm-datalayer/index.html">Google Tag Manager (GTM) and Data
+          Layer</a> page for details on using Google Tag Manager in your site
+          or application.</p>
 
-          <h4>Benefits of Becoming part of GTM Product Community:</h4>
-          <ul>
-            <li>Receive consultation/assistance with GTM implementation and maintenance</li>
-            <li>Receive information on any changes being made to Enterprise UTO GTM and how any changes might affect your site</li>
-            <li>Provide feedback for any changes submitted</li>
-            <li>Become a member of the larger GTM community as a member of a private slack channel to keep up with all the latest GTM news</li>
-            <li>Coming Soon &mdash; Link to Service Now Request to register site – https://asu.service-now.com/xxxxxxx</li>
-          </ul>
-
-          <h4>Best Practices for Implementing GTM</h4>
-          <p>Install on test site first</p>
-          <ul>
-            <li>Confirm data is being collected properly through GA</li>
-            <li>Confirm any PII data is being redacted by javascript variables in GTM</li>
-            <ul>
-              <li>PII Data variables accounted for in javascript include:</li>
-              <ul>
-                <li>E-mail</li>
-                <li>Phone number</li>
-                <li>First name, last name</li>
-                <li>Passwords</li>
-                <li>Zip codes</li>
-                <li>ASURITE IDs</li>
-                </ul>
-              <li>Insure NO PII is being exposed on your site!</li>
-            </ul>
-            <li>Confirm GTM functioning properly in test environment and nothing is breaking</li>
-            <li>Reach out to UTO GTM Team if you need assistance</li>
-            <li>If all looks well &mdash; deploy to prod!</li>
-            <li>Check in prod to insure everything is working correctly</li>
-          </ul>
-
-          <p>To implement Google Tag Manager, insert the appropriate snippets
-            found below within the body tag of your HTML as close to the top of
-            the page as possible. Further details can be found in the
-            <a href="https://developers.google.com/tag-manager/quickstart">
-              Google Tag Manager Quickstart Guide</a>.
-          </p>
-
-          <p>Most ASU sites should implement the ASU Universal GTM.</p>
-
-          <p>Enterprise sites should implement the ASU Enterprise QA GTM on
-            their "DEV" environment, and the ASU Enterprise Production GTM
-            on their "QA" and "Production" environments. This may be configured
-            using environmental variables. Each environment has its own
-            GTM ID associated with it and care must be taken to use the
-            appropriate GTM ID for each application environment.
-          </p>
-
-          <p>Some units have their own GTM IDs. When multiple GTM IDs need to
-            be used in a single site or application, follow the guidance on
-            <a href="https://developers.google.com/tag-manager/devguide#multiple-containers">
-              Multiple Containers on a Page</a>.
-          </p>
-
-          <h4>ASU universal GTM code</h4>
-          <p>Paste this code as high in the <strong>&lt;head&gt;</strong> tag of the page as possible.</p>
-          <pre><code>
-            &lt;!-- Google Tag Manager ASU Universal--&gt;
-            &lt;script&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({&apos;gtm.start&apos;:
-            new Date().getTime(),event:&apos;gtm.js&apos;});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!=&apos;dataLayer&apos;?&apos;&amp;l=&apos;+l:&apos;&apos;;j.async=true;j.src=
-            &apos;//www.googletagmanager.com/gtm.js?id=&apos;+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,&apos;script&apos;,&apos;dataLayer&apos;,&apos;GTM-KDWN8Z&apos;);&lt;/script&gt;
-          </code></pre>
-          <p>Additionally, paste this code immediately after the opening <strong>&lt;body&gt;</strong> tag.</p>
-          <pre><code>
-            &lt;!-- Google Tag Manager (noscript) --&gt;
-            &lt;noscript&gt;&lt;iframe src=&quot;//www.googletagmanager.com/ns.html?id=GTM-KDWN8Z&quot;
-            height=&quot;0&quot; width=&quot;0&quot; style=&quot;display:none;visibility:hidden&quot;&gt;&lt;/iframe&gt;&lt;/noscript&gt;
-            &lt;!-- End Google Tag Manager ASU Universal --&gt;
-          </code></pre>
-
-          <h4>UTO Enterprise Webapp QA GTM</h4>
-          <p>Paste this code as high in the <strong>&lt;head&gt;</strong> tag of the page as possible.</p>
-          <pre><code>
-            &lt;!-- Google Tag Manager --&gt;
-            &lt;script&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-W3FGR6T');&lt;/script&gt;
-            &lt;!-- End Google Tag Manager --&gt;
-          </code></pre>
-          <p>Additionally, paste this code immediately after the opening <strong>&lt;body&gt;</strong> tag.</p>
-          <pre><code>
-            &lt;!-- Google Tag Manager (noscript) --&gt;
-            &lt;noscript&gt;&lt;iframe src=&quot;https://www.googletagmanager.com/ns.html?id=GTM-W3FGR6T&quot;
-            height=&quot;0&quot; width=&quot;0&quot; style=&quot;display:none;visibility:hidden&quot;&gt;&lt;/iframe&gt;&lt;/noscript&gt;
-            &lt;!-- End Google Tag Manager (noscript) --&gt;
-          </code></pre>
-
-          <h4>UTO Enterprise Webapp Production GTM</h4>
-          <p>Paste this code as high in the <strong>&lt;head&gt;</strong> tag of the page as possible.</p>
-          <pre><code>
-            &lt;!-- Google Tag Manager --&gt;
-            &lt;script&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({&apos;gtm.start&apos;:
-            new Date().getTime(),event:&apos;gtm.js&apos;});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!=&apos;dataLayer&apos;?&apos;&amp;l=&apos;+l:&apos;&apos;;j.async=true;j.src=
-            &apos;https://www.googletagmanager.com/gtm.js?id=&apos;+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,&apos;script&apos;,&apos;dataLayer&apos;,&apos;GTM-WPVTBHL&apos;);&lt;/script&gt;
-            &lt;!-- End Google Tag Manager --&gt;
-          </code></pre>
-          <p>Additionally, paste this code immediately after the opening <strong>&lt;body&gt;</strong> tag.</p>
-          <pre><code>
-            &lt;!-- Google Tag Manager (noscript) --&gt;
-            &lt;noscript&gt;&lt;iframe src=&quot;https://www.googletagmanager.com/ns.html?id=GTM-WPVTBHL&quot;
-            height=&quot;0&quot; width=&quot;0&quot; style=&quot;display:none;visibility:hidden&quot;&gt;&lt;/iframe&gt;&lt;/noscript&gt;
-            &lt;!-- End Google Tag Manager (noscript) --&gt;
-          </code></pre>
-
-          <h3>Installing Unity components from the Unity package registry</h3>
+          <h2>Installing Unity components from the Unity package registry</h2>
 
           <p><a href="https://github.com/ASU/asu-unity-stack#-how-to-use-the-private-package-registry">
             Learn how to use the private package registry</a> and begin using
@@ -841,14 +733,18 @@ media="all">
             ]
           }
         ],
-        title: "ASU Themes Global Header and Footer Example",
-        baseUrl: "/asuthemes"
+        title: "Unity Design",
+        baseUrl: "/"
       };
 
       // Initialize cookie consent banner
       AsuCookieConsent.init();
     </script>
   </footer>
+  <script>
+    window.initDataLayer();
+    window.initGlobalHeader();
+  </script>
 </body>
 
 </html>

@@ -43,7 +43,7 @@ export const PageItem = ({
           data-id={dataId}
         >
           {children}
-          {selectedPage && <span className="sr-only">(current)</span>}
+          {selectedPage && <span className="visually-hidden">(current)</span>}
         </button>
       ) : (
         <span className="page-link" data-testid="page-link">

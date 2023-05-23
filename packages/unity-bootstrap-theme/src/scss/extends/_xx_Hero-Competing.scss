@@ -1,0 +1,187 @@
+/*--------------------------------------------------------------
+# Heroes
+
+1. Mixins
+2. Hero, Desktop
+3. Hero, Mobile
+4. Story Hero, Mobile
+5. Story Hero, Desktop
+--------------------------------------------------------------*/
+
+// ASU Design System Hero styles without Bootstrap variables to override.
+
+// Shared styling between md and lg heroes.
+@mixin container-md-and-lg {
+  width: 100%;
+  font-size: $uds-size-font-xl;
+  .uds-hero-text {
+    line-height: $uds-size-spacing-4;
+  }
+}
+
+/*--------------------------------------------------------------
+2. Hero, Desktop
+--------------------------------------------------------------*/
+
+div[class^='uds-hero'] {
+  background-size: cover;
+  background-position: top;
+  width: 100%;
+  height: 42.75rem;
+  display: flex;
+  max-width: 1920px;
+  position: relative;
+
+  .hero-content {
+    position: absolute;
+    bottom: $uds-size-spacing-6;
+    left: $uds-size-spacing-12;
+    width: 66%;
+
+    h1 {
+      margin: 0;
+    }
+
+    h3 {
+      margin-left: -6px; //Align with h1
+      margin-bottom: 0;
+    }
+
+    p {
+      color: $uds-color-base-white;
+      font-size: $uds-size-spacing-3;
+      margin: 0;
+      margin-top: $uds-size-spacing-4;
+    }
+
+    .btn,
+    button {
+      margin-top: $uds-size-spacing-4;
+    }
+  }
+
+  &.uds-hero-sm {
+    height: $uds-size-spacing-32;
+    .hero-body {
+      display: none;
+    }
+  }
+
+  &.uds-hero-md {
+    height: $uds-size-spacing-64;
+  }
+
+  &.uds-hero-lg {
+    height: 42.75rem;
+  }
+}
+
+/*--------------------------------------------------------------
+3. Hero, Mobile
+--------------------------------------------------------------*/
+@media screen and (max-width: $uds-breakpoint-sm) {
+  div[class^='uds-hero'] {
+
+
+    .hero-content {
+      position: relative;
+      height: 100%;
+      top: 0;
+      left: $uds-size-spacing-4;
+
+      .hero-header {
+        position: absolute;
+        bottom: $uds-size-spacing-7;
+      }
+
+      h3 {
+        margin-left: -2px; //Align with h1
+      }
+
+      p {
+        display: none;
+      }
+
+      .btn,
+      button {
+        position: absolute;
+        bottom: -$uds-size-spacing-3;
+      }
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+4. Story Hero, Mobile
+--------------------------------------------------------------*/
+.uds-story-hero {
+  // Calc value in the grid-template row definitions:
+  // First row = height of the overall mobile hero image - 4.5rem offset for the indented content.
+  display: grid;
+  grid-template-columns: $uds-size-spacing-2 1fr $uds-size-spacing-2;
+  grid-template-rows: calc(#{$uds-size-spacing-32} - 4.5rem) 4.5rem auto;
+  gap: 0px 0px;
+  max-width: 1920px;
+  margin: 0 auto;
+
+  .hero {
+    grid-column: 1 / span 3;
+    grid-row: 1 / span 2;
+    object-fit: cover;
+    height: 100%;
+    max-width: 100%;
+  }
+
+  .content {
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 2;
+    background-color: $uds-color-base-white;
+
+    // Padding from top of content box should be carried by whatever element comes within it.
+    padding: 0 $uds-size-spacing-2;
+
+    .breadcrumb,
+    p.meta {
+      padding: 0.75rem 0;
+      margin: $uds-size-spacing-half 0;
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+5. Story Hero, Desktop
+--------------------------------------------------------------*/
+
+// Firing "tablet" breakpoint prior to the standard $lg breakpoint due to expected image proportion size.
+@media (min-width: 950px) {
+  // Calc value in the grid-template row definitions:
+  // First row = height of the overall hero image - 8rem offset for the indented content.
+  .uds-story-hero {
+    grid-template-columns: $uds-size-spacing-3 1fr $uds-size-spacing-3;
+    grid-template-rows: calc(#{$uds-size-spacing-64} - #{$uds-size-spacing-16}) $uds-size-spacing-16 1fr;
+
+    &.uds-story-hero-lg {
+      grid-template-rows: calc(42.75rem - #{$uds-size-spacing-16}) $uds-size-spacing-16 1fr;
+    }
+
+    // Calc value: 8.34% is the width of one bootstrap column. 12px is the gutter on the outside.
+    .content {
+      padding: 0 calc(8.34% + 12px);
+
+      .breadcrumb,
+      p.meta {
+        margin: 1.25rem 0 2.25rem;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .uds-story-hero {
+    grid-template-columns: 1fr calc(1200px + 12px + 12px) 1fr;
+  }
+}

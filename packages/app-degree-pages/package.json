@@ -35,7 +35,7 @@
     "build": "webpack -c webpack/webpack.prod.js",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
-    "storybook": "start-storybook -s ./dist -p 9009",
+    "storybook": "start-storybook -s ./dist -p 9010",
     "build-storybook": "build-storybook -s ./dist",
     "jsdoc": "jsdoc -c jsdoc.config.js",
     "predocs": "mkdir -p ./docs",
@@ -43,6 +43,7 @@
     "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "dependencies": {
+    "@asu/components-core": "^1.0.0",
     "@popperjs/core": "^2.9.2",
     "classnames": "^2.3.1",
     "prop-types": "^15.7.2",
@@ -57,13 +58,15 @@
     "@babel/plugin-syntax-jsx": "^7.14.5",
     "@babel/plugin-transform-react-jsx": "^7.13.12",
     "@babel/plugin-transform-runtime": "^7.14.5",
-    "@storybook/addon-a11y": "^6.5.15",
-    "@storybook/addon-actions": "^6.5.15",
-    "@storybook/addon-controls": "^6.5.15",
-    "@storybook/addon-docs": "^6.5.15",
-    "@storybook/addon-essentials": "^6.5.15",
-    "@storybook/addon-links": "^6.5.15",
-    "@storybook/react": "^6.5.15",
+    "@storybook/addon-a11y": "^6.5.16",
+    "@storybook/addon-actions": "^6.5.16",
+    "@storybook/addon-controls": "^6.5.16",
+    "@storybook/addon-docs": "^6.5.16",
+    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/addon-links": "^6.5.16",
+    "@storybook/react": "^6.5.16",
+    "@storybook/builder-webpack5": "^6.5.16",
+    "@storybook/manager-webpack5": "^6.5.16",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "babel-jest": "^27.0.6",
@@ -95,7 +98,6 @@
     "webpack-merge": "^5.8.0"
   },
   "volta": {
-    "node": "14.17.6",
-    "yarn": "1.22.10"
+    "extends": "../../package.json"
   }
 }

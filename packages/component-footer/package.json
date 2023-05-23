@@ -32,22 +32,23 @@
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "postbuild": "cp ./types/main.d.ts ./dist/main.d.ts",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
-    "storybook": "start-storybook -s ./dist -p 9009",
+    "storybook": "start-storybook -s ./dist -p 9070",
     "build-storybook": "build-storybook -s ./dist"
   },
   "dependencies": {
+    "@asu/components-core": "^1.0.0",
     "@babel/plugin-transform-react-jsx": "^7.13.12",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
-    "@storybook/addon-a11y": "^6.5.15",
-    "@storybook/addon-actions": "^6.5.15",
-    "@storybook/addon-controls": "^6.5.15",
-    "@storybook/addon-docs": "^6.5.15",
-    "@storybook/addon-essentials": "^6.5.15",
-    "@storybook/addon-links": "^6.5.15",
-    "@storybook/react": "^6.5.15",
+    "@storybook/addon-a11y": "^6.5.16",
+    "@storybook/addon-actions": "^6.5.16",
+    "@storybook/addon-controls": "^6.5.16",
+    "@storybook/addon-docs": "^6.5.16",
+    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/addon-links": "^6.5.16",
+    "@storybook/react": "^6.5.16",
     "prop-types": "^15.7.2",
     "react": ">= 16.14.0 < 18",
     "react-dom": ">= 16.14.0 < 18"
@@ -75,7 +76,6 @@
     "webpack-merge": "^5.8.0"
   },
   "volta": {
-    "node": "14.17.6",
-    "yarn": "1.22.10"
+    "extends": "../../package.json"
   }
 }

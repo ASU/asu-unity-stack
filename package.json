@@ -1,16 +1,16 @@
 {
-  "name": "root",
+  "name": "asu",
   "private": true,
   "license": "MIT",
   "volta": {
-    "node": "14.17.6",
+    "node": "18.16.0",
     "yarn": "1.22.10"
   },
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "clean": "lerna run clean",
+    "lerna-clean": "lerna clean && rm -rf ./node_modules",
     "lint": "lerna run lint",
     "build-components-core": "lerna run --scope @asu/components-core build",
     "build-component-carousel": "lerna run --scope @asu/component-carousel build",

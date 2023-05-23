@@ -6,7 +6,7 @@ import {
   createComponent,
   createStory,
   layoutNames,
-} from "../../../bootstrap4-theme/helpers/wrapper";
+} from "../../../unity-bootstrap-theme/helpers/wrapper";
 
 export default createComponent("Web Directory", "Organisms", "Templates");
 
