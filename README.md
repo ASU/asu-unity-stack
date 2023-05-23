@@ -42,12 +42,13 @@ This repository contains multiple packages which are managed and published using
 4. [component-cookie-consent](./packages/component-cookie-consent/README.md)
 5. [component-events](./packages/component-events/README.md)
 6. [component-footer](./packages/component-footer/README.md)
-7. [component-header](./packages/component-header/README.md) - standalone header component that doesn't require the ```bootstrap4-theme``` styles
+7. [component-header](./packages/component-header/README.md) - standalone header component that doesn't require the ```unity-bootstrap-theme``` styles
 8. [component-news](./packages/component-news/README.md)
 9. [components-core](./packages/components-core/README.md)
-10. design-tokens - deprecated and removed. Archived copy in ```/packages-disabled```
-11. components-library - deprecated and removed. Archived copy in ```/packages-disabled```
-12. cookie-consent - deprecated and removed. Archived copy in ```/packages-disabled```
+10. bootstrap4-theme - deprecated and removed. Archived copy in ```/packages-disabled```
+11. design-tokens - deprecated and removed. Archived copy in ```/packages-disabled```
+12. components-library - deprecated and removed. Archived copy in ```/packages-disabled```
+13. cookie-consent - deprecated and removed. Archived copy in ```/packages-disabled```
 
 ## ❯ Package Multi Output Targets
 
