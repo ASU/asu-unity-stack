@@ -1,3 +1,10 @@
+# [@asu/component-cookie-consent-v2.0.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-cookie-consent-v2.0.0...@asu/component-cookie-consent-v2.0.1) (2023-05-23)
+
+
+### Bug Fixes
+
+* **component-cookie-consent:** changelog cleanup ([e09c6fb](https://github.com/asu/asu-unity-stack/commit/e09c6fb852458686c833f74da87bacb72a7a74c5))
+
 # [@asu/component-cookie-consent-v2.0.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-cookie-consent-v1.0.2...@asu/component-cookie-consent-v2.0.0) (2023-05-23)
 
 
