@@ -1,3 +1,10 @@
+# [@asu/component-news-v2.0.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-news-v2.0.0...@asu/component-news-v2.0.1) (2023-05-23)
+
+
+### Bug Fixes
+
+* **component-news:** changelog cleanup ([5cad36d](https://github.com/asu/asu-unity-stack/commit/5cad36db019ead9915431e47c24e1432de379e9d))
+
 # [@asu/component-news-v2.0.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-news-v1.1.2...@asu/component-news-v2.0.0) (2023-05-23)
 
 
