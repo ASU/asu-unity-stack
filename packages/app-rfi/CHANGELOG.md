@@ -1,3 +1,10 @@
+# [@asu/app-rfi-v2.0.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.0.0...@asu/app-rfi-v2.0.1) (2023-05-23)
+
+
+### Bug Fixes
+
+* **app-rfi:** changelog cleanup ([a34be16](https://github.com/asu/asu-unity-stack/commit/a34be1690806709792fbf89f63dd96347f6869c9))
+
 # [@asu/app-rfi-v2.0.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v1.1.3...@asu/app-rfi-v2.0.0) (2023-05-23)
 
 
