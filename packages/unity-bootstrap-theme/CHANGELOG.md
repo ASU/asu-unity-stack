@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.0.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.0.0...@asu/unity-bootstrap-theme-v1.0.1) (2023-05-23)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** changelog cleanup ([322b31d](https://github.com/ASU/asu-unity-stack/commit/322b31db8954ba9444fb11268c00dc17c0e3e779))
+
 # @asu/unity-bootstrap-theme-v1.0.0 (2023-05-23)
 
 
