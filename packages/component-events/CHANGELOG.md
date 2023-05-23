@@ -1,3 +1,10 @@
+# [@asu/component-events-v2.0.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v2.0.0...@asu/component-events-v2.0.1) (2023-05-23)
+
+
+### Bug Fixes
+
+* **component-events:** changelog cleanup ([750ffee](https://github.com/asu/asu-unity-stack/commit/750ffee7dee8a019648f0de7a91f7d578c19e8fd))
+
 # [@asu/component-events-v2.0.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v1.1.2...@asu/component-events-v2.0.0) (2023-05-23)
 
 
