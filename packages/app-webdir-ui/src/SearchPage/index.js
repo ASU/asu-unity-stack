@@ -101,15 +101,15 @@ function SearchPage({
   };
 
   const componentMap = {
-    FacultyTab: <PreFacStaffMsg />,
-    StudentsTab: <PreStudentMsg />,
+    "web_dir_faculty_staff": <PreFacStaffMsg />,
+    "web_dir_students": <PreStudentMsg />,
+    "all": <PreSearchMessage />,
+    "web-sites": <PreSearchMessage />,
   };
 
   const preSearchOrContent = content => {
     if (term) return content;
-
-    const component = componentMap[content.type.name];
-    return component || <PreSearchMessage />;
+    return componentMap[searchParams.get(searchTabsId)];
   };
 
   return (
