@@ -1,3 +1,10 @@
+# [@asu/component-header-v2.0.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.0...@asu/component-header-v2.0.1) (2023-05-23)
+
+
+### Bug Fixes
+
+* **component-header:** changelog cleanup ([0cd208a](https://github.com/asu/asu-unity-stack/commit/0cd208aa154e937962d4cb82c1479b486c3f0b64))
+
 # [@asu/component-header-v2.0.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v1.3.0...@asu/component-header-v2.0.0) (2023-05-23)
 
 
