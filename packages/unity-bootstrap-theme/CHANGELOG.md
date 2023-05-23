@@ -10,29 +10,17 @@
 
 * **unity-bootstrap-theme:** New BS5 theme is used
 
-* fix(app-webdir-ui): replaced old bs4 stylesheet in storybook
-
-Added Added sass loader in storybook webpack to show updated bs5 styles
-
-* fix(component-footer): changed classes to new accordion
-
 * fix(unity-bootstrap-theme): fixed styles for global footer
 
 * fix(unity-bootstrap-theme): fixed breakpoints for footer
-
-* fix(asu-unity-stack): sitename position in header
 
 * fix(unity-bootstrap-theme): update accordion classes in bs5 footer, fix story widths
 
 * fix(unity-bootstrap-theme): ensure padding is included with header/footer styles
 
-* chore(component-events): update SB images
-
-* chore(asu-unity-stack): change script for package.json
-
 * fix(unity-bootstrap-theme): fixed mobile styles for accordions
 
-fix(unity-bootstrap-theme): fixed overflow on accordion headers for small mobile
+* fix(unity-bootstrap-theme): fixed overflow on accordion headers for small mobile
 
 * fix(unity-bootstrap-theme): add missing foldable card accordion wrapper
 
@@ -53,5 +41,3 @@ It only looks like JSX
 * docs(unity-bootstrap-theme): add comments to a strange use case
 
 * fix(unity-bootstrap-theme): added mt-3 class on accordion stories and removed card class
-
-* fix: update Jenkinsfile to node 18.16
