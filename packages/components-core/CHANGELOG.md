@@ -1,3 +1,10 @@
+# [@asu/components-core-v2.0.1](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v2.0.0...@asu/components-core-v2.0.1) (2023-05-23)
+
+
+### Bug Fixes
+
+* **components-core:** changelog cleanup ([0e183d6](https://github.com/ASU/asu-unity-stack/commit/0e183d6c3d557a46f29df532be376fcd9a37f789))
+
 # [@asu/components-core-v2.0.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v1.5.0...@asu/components-core-v2.0.0) (2023-05-23)
 
 
