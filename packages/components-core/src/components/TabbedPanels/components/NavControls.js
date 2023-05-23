@@ -13,7 +13,7 @@ const NavControls = ({ clickPrev, clickNext }) => {
         tabIndex={-1}
       >
         <span className="carousel-control-prev-icon" aria-hidden="true" />
-        <span className="sr-only">Previous</span>
+        <span className="visually-hidden">Previous</span>
       </button>
       <button
         className="scroll-control-next"
@@ -22,7 +22,7 @@ const NavControls = ({ clickPrev, clickNext }) => {
         tabIndex={-1}
       >
         <span className="carousel-control-next-icon" aria-hidden="true" />
-        <span className="sr-only">Next</span>
+        <span className="visually-hidden">Next</span>
       </button>
     </NavControlButtons>
   );

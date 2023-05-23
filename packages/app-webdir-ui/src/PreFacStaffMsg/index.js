@@ -4,7 +4,7 @@ import { PreSearchMessageTemplate } from "../PreSearchMessage/index.styles";
 import { QuickLinks } from "../QuickLinks";
 
 const PreFacStaffMsg = () => {
-  const titleText = "Welcome to the ASU Faculty/Staff directory";
+  const titleText = "Welcome to the ASU Faculty and Staff Directory";
   const descText =
     "Our directory is integrated into the ASU Search engine experience. Find current faculty and staff " +
     "profiles by using the search field above.";

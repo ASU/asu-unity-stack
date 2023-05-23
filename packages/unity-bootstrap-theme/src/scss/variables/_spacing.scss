@@ -1,0 +1,75 @@
+// ASU Design System Spacing
+
+// If we are going to override the spacing schema in Bootstrap 4,
+// we need to keep in mind how these spacing variables are used in various
+// utilities. See Spacing Documentation here:
+// https://getbootstrap.com/docs/4.4/utilities/spacing/
+//
+// Because the familiar size abbreviations, "xs", "sm", "lg", are actually only
+// used for the media query context, it would be a mistake to use the same
+// schema here for spacing. This is why the vanilla Bootstrap Spacing schema is
+// numeric.
+//
+// Our schema references spacing units as multiples of 8. For reference:
+//
+// $uds-size-spacing-0: 0rem;
+// $uds-size-spacing-1: 0.5rem;
+// $uds-size-spacing-2: 1rem;
+// $uds-size-spacing-3: 1.5rem;
+// $uds-size-spacing-4: 2rem;
+// $uds-size-spacing-5: 2.5rem;
+// $uds-size-spacing-6: 3rem;
+// $uds-size-spacing-7: 3.5rem;
+// $uds-size-spacing-8: 4rem;
+// $uds-size-spacing-9: 4.5rem;
+// $uds-size-spacing-10: 5rem;
+// $uds-size-spacing-12: 6rem;
+// $uds-size-spacing-14: 7rem;
+// $uds-size-spacing-16: 8rem;
+
+// Spacing
+//
+// control the default styling of most of elements
+$spacers: (
+  '0': $uds-size-spacing-0,
+  '1': $uds-size-spacing-1,
+  '2': $uds-size-spacing-2,
+  '3': $uds-size-spacing-3,
+  '4': $uds-size-spacing-4,
+  '5': $uds-size-spacing-5,
+  '6': $uds-size-spacing-6,
+  '7': $uds-size-spacing-7,
+  '8': $uds-size-spacing-8,
+  '9': $uds-size-spacing-9,
+  '10': $uds-size-spacing-10,
+  '12': $uds-size-spacing-12,
+  '14': $uds-size-spacing-14,
+  '16': $uds-size-spacing-16,
+);
+
+// Grid breakpoints.
+// xs through lg are BS4 default values of 0, 576px, 768px and 992px.
+// xl set to 1260px, which is an arbitrary value bigger than xl container size.
+$grid-breakpoints: (
+  xs: $uds-breakpoint-xs,
+  sm: $uds-breakpoint-sm,
+  md: $uds-breakpoint-md,
+  lg: $uds-breakpoint-lg,
+  xl: $uds-breakpoint-xl,
+);
+
+// Grid containers max-widths
+// sm through lg values are BS4 default values of 540px, 768px and 992px.
+// xl value set to 1224px which is 1200px + a 12px gutter on either side.
+$container-max-widths: (
+  sm: $uds-grid-container-max-width-sm,
+  md: $uds-grid-container-max-width-md,
+  lg: $uds-grid-container-max-width-lg,
+  xl: $uds-grid-container-max-width-xl,
+);
+
+// Grid columns
+// Set the number of columns and specify the width of the gutters.
+
+$grid-columns: $uds-grid-column-count; // 12, BS4 default.
+$grid-gutter-width: $uds-grid-gutter-width; // Set to UDS specification of 24px;

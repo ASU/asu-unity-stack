@@ -60,7 +60,6 @@
   },
   "dependencies": {},
   "volta": {
-    "node": "14.17.6",
-    "yarn": "1.22.10"
+    "extends": "../../package.json"
   }
 }

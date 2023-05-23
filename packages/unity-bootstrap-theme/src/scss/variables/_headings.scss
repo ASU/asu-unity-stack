@@ -1,0 +1,73 @@
+$heading-font-family: $uds-font-family-base;
+$heading-font-weight: 700;
+$heading-text-align: left;
+$heading-opacity: 1;
+$heading-margin: 1rem;
+$heading-line-height: calc(100% + .12em);
+
+$heading-one-font-size: 4rem;
+$heading-one-line-height: 4.25rem;
+$heading-one-letter-spacing: -0.14rem;
+
+$heading-one-article-font-size: 3rem;
+$heading-one-article-line-height: 3.25rem;
+$heading-one-article-letter-spacing: -0.105rem;
+
+$heading-one-mobile-font-size: 2.25rem;
+$heading-one-mobile-line-height: 2.5rem;
+$heading-one-mobile-letter-spacing: -0.078rem;
+
+$heading-two-font-size: 2.5rem;
+$heading-two-line-height: 2.75rem;
+$heading-two-letter-spacing: -0.0875rem;
+
+$heading-two-mobile-font-size: 2rem;
+$heading-two-mobile-line-height: 2.125rem;
+$heading-two-mobile-letter-spacing: -0.07rem;
+
+$heading-three-font-size: 1.5rem;
+$heading-three-line-height: 1.75rem;
+$heading-three-letter-spacing: -0.0525rem;
+
+$heading-four-font-size: 1.25rem;
+$heading-four-line-height: 1.625rem;
+$heading-four-letter-spacing: -0.01875rem;
+
+$heading-five-font-size: 1rem;
+$heading-five-line-height: 1.5rem;
+$heading-five-letter-spacing: -0.015rem;
+
+$heading-highlight-gold-background-color: $uds-color-base-gold;
+$heading-highlight-gold-text-color: $uds-color-base-gray-7;
+
+$heading-highlight-black-background-color: $uds-color-base-gray-7;
+$heading-highlight-black-text-color: $uds-color-base-gray-1;
+
+$heading-highlight-white-background-color: $uds-color-base-white;
+$heading-highlight-white-text-color: $uds-color-base-gray-7;
+
+@mixin heading-highlight-large-box-shadow($bsColor, $textColor) {
+  box-shadow: -0.15em
+      0
+      0
+      $bsColor,
+    0.15em
+      0
+      0
+      $bsColor;
+  background: $bsColor;
+  color: $textColor;
+}
+
+@mixin heading-highlight-small-box-shadow($bsColor, $textColor) {
+  box-shadow: -0.15em
+      0
+      0
+      $bsColor,
+    0.15em
+      0
+      0
+      $bsColor;
+  background: $bsColor;
+  color: $textColor;
+}

@@ -29,7 +29,7 @@ const Logo = () => {
         height="234"
         decoding="async"
         // eslint-disable-next-line
-        fetchPriority="high"
+        fetchpriority="high"
       />
       <img
         className="horiz"
@@ -40,7 +40,7 @@ const Logo = () => {
         height="72"
         decoding="async"
         // eslint-disable-next-line
-        fetchPriority="high"
+        fetchpriority="high"
       />
     </LogoWrapper>
   );

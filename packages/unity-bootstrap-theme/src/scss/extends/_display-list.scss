@@ -1,0 +1,12 @@
+ul.uds-display-list {
+  color: $uds-color-base-gray-7;
+  font-size: 1rem;
+
+  li {
+    span {
+      color: $uds-color-base-gray-5;
+      display: block;
+      font-size: 0.875rem;
+    }
+  }
+}
