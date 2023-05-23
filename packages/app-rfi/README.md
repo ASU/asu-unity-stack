@@ -24,9 +24,9 @@ read on:
 React and React-DOM are required as peer dependencies. Install with:
 `yarn add react react-dom`
 
-@asu/bootstrap4-theme is required as a peer dependency in your
+@asu/unity-bootstrap-theme is required as a peer dependency in your
 project. Install the latest version with the following command:
-`yarn add @asu/bootstrap4-theme@dev`
+`yarn add @asu/unity-bootstrap-theme@dev`
 
 Make sure to have included [FontAwesome](https://fontawesome.com/) in your
 project to allow icons to be shown:
