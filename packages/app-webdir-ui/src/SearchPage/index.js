@@ -4,7 +4,9 @@ import { useSearchParams } from "react-router-dom";
 
 import { Button, TabbedPanels, Tab } from "../../../components-core";
 import { engineNames, engines } from "../helpers/search";
+import { PreFacStaffMsg } from "../PreFacStaffMsg";
 import { PreSearchMessage } from "../PreSearchMessage/index";
+import { PreStudentMsg } from "../PreStudentMsg";
 import {
   AllTab,
   FacultyTab,
@@ -98,10 +100,16 @@ function SearchPage({
     }
   };
 
+  const componentMap = {
+    FacultyTab: <PreFacStaffMsg />,
+    StudentsTab: <PreStudentMsg />,
+  };
+
   const preSearchOrContent = content => {
     if (term) return content;
 
-    return <PreSearchMessage />;
+    const component = componentMap[content.type.name];
+    return component || <PreSearchMessage />;
   };
 
   return (
