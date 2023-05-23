@@ -1,3 +1,10 @@
+# [@asu/app-degree-pages-v2.0.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.0.0...@asu/app-degree-pages-v2.0.1) (2023-05-23)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** changelog cleanup ([2549e10](https://github.com/asu/asu-unity-stack/commit/2549e1047a1f880e754681ccc0b3949e969a3303))
+
 # [@asu/app-degree-pages-v2.0.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v1.3.6...@asu/app-degree-pages-v2.0.0) (2023-05-23)
 
 
