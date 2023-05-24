@@ -490,9 +490,9 @@ export const OneColumn = (
       <div className="container" id="footer-columns">
         <div className="row">
           <div className="col-xl-3" id="info-column">
-            <h5>
+            <p className="h5">
               Complete Name of College, School or Unit Title Should Go Here
-            </h5>
+            </p>
             <p className="contact-link">
               <a href="#">Contact Us</a>
             </p>
@@ -660,9 +660,9 @@ export const OneColumnNoLogoOrSocial = (
       <div className="container" id="footer-columns">
         <div className="row">
           <div className="col-xl-3" id="info-column">
-            <h5>
+            <p className="h5">
               Complete Name of College, School or Unit Title Should Go Here
-            </h5>
+            </p>
             <p className="contact-link">
               <a href="#">Contact Us</a>
             </p>
@@ -920,9 +920,9 @@ export const TwoColumns = (
         <div className="container" id="footer-columns">
           <div className="row">
             <div className="col-xl-3" id="info-column">
-              <h5>
+              <p className="h5">
                 Complete Name of College, School or Unit Title Should Go Here
-              </h5>
+              </p>
               <p className="contact-link">
                 <a href="#">Contact Us</a>
               </p>
@@ -1224,9 +1224,9 @@ export const ThreeColumns = (
         <div className="container" id="footer-columns">
           <div className="row">
             <div className="col-xl" id="info-column">
-              <h5>
+              <p className="h5">
                 Complete Name of College, School or Unit Title Should Go Here
-              </h5>
+              </p>
               <p className="contact-link">
                 <a href="#">Contact Us</a>
               </p>
@@ -1576,9 +1576,9 @@ export const FourColumns = (
         <div className="container" id="footer-columns">
           <div className="row">
             <div className="col-xl" id="info-column">
-              <h5>
+              <p className="h5">
                 Complete Name of College, School or Unit Title Should Go Here
-              </h5>
+              </p>
               <p className="contact-link">
                 <a href="#">Contact Us</a>
               </p>
@@ -1976,9 +1976,9 @@ export const FiveColumns = (
         <div className="container" id="footer-columns">
           <div className="row">
             <div className="col-xl" id="info-column">
-              <h5>
+              <p className="h5">
                 Complete Name of College, School or Unit Title Should Go Here
-              </h5>
+              </p>
               <p className="contact-link">
                 <a href="#">Contact Us</a>
               </p>
@@ -2424,9 +2424,9 @@ export const SixColumns = (
         <div className="container" id="footer-columns">
           <div className="row">
             <div className="col-xl" id="info-column">
-              <h5>
+              <p className="h5">
                 Complete Name of College, School or Unit Title Should Go Here
-              </h5>
+              </p>
               <p className="contact-link">
                 <a href="#">Contact Us</a>
               </p>
