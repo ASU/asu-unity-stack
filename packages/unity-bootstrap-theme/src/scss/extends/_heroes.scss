@@ -298,6 +298,7 @@ div.uds-hero-lg {
 @include media-breakpoint-up(md) {
   div[class^="uds-hero"] {
     grid-template-columns: 1fr minmax(0, 700px) 1fr;
+    margin-bottom: 0;
 
     // Column alignment for decendent items
     h1,
