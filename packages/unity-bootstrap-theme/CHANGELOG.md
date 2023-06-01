@@ -1,3 +1,17 @@
+# [@asu/unity-bootstrap-theme-v1.1.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.0.1...@asu/unity-bootstrap-theme-v1.1.0) (2023-06-01)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix the behavior of the card ([b26dfb7](https://github.com/ASU/asu-unity-stack/commit/b26dfb7f1d6038b277d31e6bfeafe654eaecc015))
+* **unity-bootstrap-theme:** move ranking cards into card group ([8191e5a](https://github.com/ASU/asu-unity-stack/commit/8191e5a76e0bc1f65d24bd073f2f435938f88eea))
+* **unity-bootstrap-theme:** no social icons on ranking cards ([20aea45](https://github.com/ASU/asu-unity-stack/commit/20aea45de75ab5b8d0083c34ec344e629585483c))
+
+
+### Features
+
+* **unity-bootstrap-theme:** ranking cards component ([ca21b78](https://github.com/ASU/asu-unity-stack/commit/ca21b78b1eabb0dfae41fbfa6800ed51d6d966fd))
+
 # [@asu/unity-bootstrap-theme-v1.0.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.0.0...@asu/unity-bootstrap-theme-v1.0.1) (2023-05-23)
 
 
