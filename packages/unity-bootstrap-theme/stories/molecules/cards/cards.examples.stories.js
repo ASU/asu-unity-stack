@@ -1,7 +1,8 @@
+import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
+
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
 import exampleImage from "./example-image.jpg";
 import portraitImage from "./portrait-image.jpeg";
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 import { rankingFunc as initRankFunc } from "./ranking-cards.js";
 
 export default createComponent("Cards", "Molecules", "Examples");
@@ -1565,7 +1566,7 @@ export const RankingCardLarge = createStory(
       alt="Card ranking large version"
       loading="lazy"
       decoding="async"
-      fetchPriority="high"
+      fetchpriority="high"
     />
     <div className="info-layer">
       <div className="content">
@@ -1615,7 +1616,7 @@ export const RankingCardLarge = createStory(
       </div>
     </div>
   </div>,
-  { initRankFunc }
+  { initFunc: initRankFunc }
 );
 
 export const RankingCardSmall = createStory(
@@ -1626,7 +1627,7 @@ export const RankingCardSmall = createStory(
         alt="Card ranking small version"
         loading="lazy"
         decoding="async"
-        fetchPriority="high"
+        fetchpriority="high"
       />
     </div>
     <div className="citation">
@@ -1683,5 +1684,5 @@ export const RankingCardSmall = createStory(
       </div>
     </div>
   </div>,
-  { initRankFunc }
+  { initFunc: initRankFunc }
 );
