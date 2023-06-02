@@ -1,3 +1,11 @@
+# [@asu/unity-bootstrap-theme-v1.1.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.1.0...@asu/unity-bootstrap-theme-v1.1.1) (2023-06-02)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix typo in footer story ([6500f9d](https://github.com/ASU/asu-unity-stack/commit/6500f9d72a1b634d48c417ef8344319a5604ad1c))
+* **unity-bootstrap-theme:** updated 'Contribute' wording to Support ASU ([f1c77bf](https://github.com/ASU/asu-unity-stack/commit/f1c77bfcad76878c96494b3918e7ec9c6fa402ff))
+
 # [@asu/unity-bootstrap-theme-v1.1.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.0.1...@asu/unity-bootstrap-theme-v1.1.0) (2023-06-01)
 
 
