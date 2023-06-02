@@ -1,3 +1,10 @@
+# [@asu/app-rfi-v2.0.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.0.1...@asu/app-rfi-v2.0.2) (2023-06-02)
+
+
+### Bug Fixes
+
+* **app-rfi:** phone field styles issues ([cb7aa79](https://github.com/asu/asu-unity-stack/commit/cb7aa79f571fb9a3a469403eb9fbc227cb32eb55))
+
 # [@asu/app-rfi-v2.0.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.0.0...@asu/app-rfi-v2.0.1) (2023-05-23)
 
 
