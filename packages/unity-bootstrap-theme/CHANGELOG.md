@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.1.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.1.2...@asu/unity-bootstrap-theme-v1.1.3) (2023-06-02)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** show modal close button in smaller view ([a47e1d5](https://github.com/ASU/asu-unity-stack/commit/a47e1d54295e6616dede179c900c86246ab1defb))
+
 # [@asu/unity-bootstrap-theme-v1.1.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.1.1...@asu/unity-bootstrap-theme-v1.1.2) (2023-06-02)
 
 
