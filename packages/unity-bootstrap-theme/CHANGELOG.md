@@ -1,3 +1,11 @@
+# [@asu/unity-bootstrap-theme-v1.1.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.1.1...@asu/unity-bootstrap-theme-v1.1.2) (2023-06-02)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** cSS fix for cards overlay ([9c84247](https://github.com/ASU/asu-unity-stack/commit/9c842474366934f7079382b9068f110f2f682d19))
+* **unity-bootstrap-theme:** fix hero bottom margin on tablets and higher ([2c91b20](https://github.com/ASU/asu-unity-stack/commit/2c91b2056b3507ff604532fd884a569d67b4f663))
+
 # [@asu/unity-bootstrap-theme-v1.1.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.1.0...@asu/unity-bootstrap-theme-v1.1.1) (2023-06-02)
 
 
