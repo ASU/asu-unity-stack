@@ -498,7 +498,7 @@ export const OneColumn = (
             </p>
             <p className="contribute-button">
               <a href="#" className="btn btn-small btn-gold">
-                Contribute
+                Support ASU
               </a>
             </p>
           </div>
@@ -668,7 +668,7 @@ export const OneColumnNoLogoOrSocial = (
             </p>
             <p className="contribute-button">
               <a href="#" className="btn btn-small btn-gold">
-                Contribute
+                Support ASU
               </a>
             </p>
           </div>
@@ -928,7 +928,7 @@ export const TwoColumns = (
               </p>
               <p className="contribute-button">
                 <a href="#" className="btn btn-small btn-gold">
-                  Contribute
+                  Support ASU
                 </a>
               </p>
             </div>
@@ -1232,7 +1232,7 @@ export const ThreeColumns = (
               </p>
               <p className="contribute-button">
                 <a href="#" className="btn btn-small btn-gold">
-                  Contribute
+                  Support ASU
                 </a>
               </p>
             </div>
@@ -1584,7 +1584,7 @@ export const FourColumns = (
               </p>
               <p className="contribute-button">
                 <a href="#" className="btn btn-small btn-gold">
-                  Contribute
+                  Support ASU
                 </a>
               </p>
             </div>
@@ -1984,7 +1984,7 @@ export const FiveColumns = (
               </p>
               <p className="contribute-button">
                 <a href="#" className="btn btn-small btn-gold">
-                  Contribute
+                  Support ASU
                 </a>
               </p>
             </div>
@@ -2432,7 +2432,7 @@ export const SixColumns = (
               </p>
               <p className="contribute-button">
                 <a href="#" className="btn btn-gold">
-                  Contribute
+                  Support ASU
                 </a>
               </p>
             </div>
