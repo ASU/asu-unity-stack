@@ -928,7 +928,7 @@ export const TwoColumns = (
               </p>
               <p className="contribute-button">
                 <a href="#" className="btn btn-small btn-gold">
-                  Support ASUUUU
+                  Support ASU
                 </a>
               </p>
             </div>
