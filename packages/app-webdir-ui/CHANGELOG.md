@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v2.0.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v2.0.1...@asu/app-webdir-ui-v2.0.2) (2023-06-02)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** make dept admin button display more exclusive ([72f993a](https://github.com/asu/asu-unity-stack/commit/72f993a47c6a96e3c8d0218553e5df161bed20c2))
+
 # [@asu/app-webdir-ui-v2.0.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v2.0.0...@asu/app-webdir-ui-v2.0.1) (2023-05-23)
 
 
