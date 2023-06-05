@@ -30,7 +30,7 @@ const Contact = ({
                 data-testid="contact-contribution-link"
               >
                 <a href={contributionLink} className="btn btn-small btn-gold">
-                  Contribute
+                  Support ASU
                 </a>
               </p>
             )}

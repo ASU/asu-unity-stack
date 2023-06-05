@@ -5,6 +5,7 @@ import {
 } from "../../../helpers/wrapper.js";
 import { initVideo as initFunc } from "./heroes-video";
 import stockVideo from "../../atoms/video/stock-video-person-drawing.mp4";
+import exampleImage from "../cards/example-image.jpg";
 
 export default createComponent("Heroes", "Molecules", "Examples");
 
@@ -13,7 +14,7 @@ export const HeroMedium = createStory(
     <div className="hero-overlay"></div>
     <img
       className="hero"
-      src="https://source.unsplash.com/random/2560x512"
+      src={exampleImage}
       alt="Sample placeholder image."
       width="2560"
       height="512"
@@ -76,7 +77,7 @@ export const HeroLarge = createStory(
       <div className="hero-overlay"></div>
       <img
         className="hero"
-        src="https://source.unsplash.com/random/2560x512"
+        src={exampleImage}
         alt="Sample placeholder image."
         width="2560"
         height="512"
@@ -123,7 +124,7 @@ export const StoryHeroLarge = createStory(
     <section className="uds-story-hero uds-story-hero-lg entry-header">
       <img
         className="hero"
-        src="https://source.unsplash.com/random/2560x512"
+        src={exampleImage}
         alt="Sample placeholder image."
         width="2560"
         height="512"
@@ -205,7 +206,7 @@ export const HeroVideo = createStory(
         <div className="hero-overlay"></div>
         <img
           className="hero"
-          src="https://source.unsplash.com/random/2560x512"
+          src={exampleImage}
           alt="Sample placeholder image."
           width="2560"
           height="512"

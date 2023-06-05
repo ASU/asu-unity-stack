@@ -42,7 +42,6 @@ const RfiPhone = ({
                 required: required,
               }}
               {...field}
-              className="form-control"
               placeholder={helperText}
               country={values.Country ? values.Country.toLowerCase() : "us"}
               preferredCountries={["us"]}

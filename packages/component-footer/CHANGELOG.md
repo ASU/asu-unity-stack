@@ -1,3 +1,10 @@
+# [@asu/component-footer-v2.0.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.0.1...@asu/component-footer-v2.0.2) (2023-06-02)
+
+
+### Bug Fixes
+
+* **component-footer:** change 'Contribute' button to 'Support ASU' per brandguide ([87b323d](https://github.com/asu/asu-unity-stack/commit/87b323df73cd5a440cbd037f7be6d74f148fe0b7))
+
 # [@asu/component-footer-v2.0.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.0.0...@asu/component-footer-v2.0.1) (2023-05-23)
 
 
