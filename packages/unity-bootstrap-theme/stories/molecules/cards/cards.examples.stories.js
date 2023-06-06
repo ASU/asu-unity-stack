@@ -1,15 +1,14 @@
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
+import { googleAnalytics as initFunc } from '@asu/unity-bootstrap-theme/js/data-layer.js';
 
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-import exampleImage from "./example-image.jpg";
-import portraitImage from "./portrait-image.jpeg";
-import { rankingFunc as initRankFunc } from "./ranking-cards.js";
+import { createComponent, createStory } from '../../../helpers/wrapper.js';
+import exampleImage from './example-image.jpg';
+import { rankingFunc as initRankFunc } from './ranking-cards.js';
+import rankingCardsImage from './rankingCards-image.jpg';
 
-export default createComponent("Cards", "Molecules", "Examples");
-
+export default createComponent('Cards', 'Molecules', 'Examples');
 
 export const cardImages = createStory(
-  <div style={{ width: "50%" }}>
+  <div style={{ width: '50%' }}>
     <div className="card">
       <img
         className="card-img-top"
@@ -60,7 +59,7 @@ export const cardImages = createStory(
 );
 
 export const cardTitles = createStory(
-  <div style={{ width: "50%" }}>
+  <div style={{ width: '50%' }}>
     <div className="card">
       <div className="card-header">
         <h3 className="card-title">Card default title</h3>
@@ -162,7 +161,7 @@ export const cardEventInfo = createStory(
 );
 
 export const cardTags = createStory(
-  <div style={{ width: "50%" }}>
+  <div style={{ width: '50%' }}>
     <div className="card">
       <div className="card-header"></div>
       <div className="card-tags">
@@ -182,9 +181,9 @@ export const cardTags = createStory(
     <div className="card">
       <div className="card-header"></div>
       <div className="card-body">
-        Need a card tag that does not behave like an anchor? Try the{" "}
-        <code>.badge</code> class. Be sure to include the modifier text background
-        class too.
+        Need a card tag that does not behave like an anchor? Try the{' '}
+        <code>.badge</code> class. Be sure to include the modifier text
+        background class too.
       </div>
       <div className="card-tags">
         <span className="badge text-bg-gray-2">No button class</span>
@@ -1385,7 +1384,10 @@ export const mediaTypeOverlayCard = createStory(
               />
             </div>
             <div className="card-image-overlay-content media-type-overlay ms-4 mb-4">
-              <span className="fas icon-small fa-video" title="Video Icon"></span>
+              <span
+                className="fas icon-small fa-video"
+                title="Video Icon"
+              ></span>
             </div>
           </div>
           <div className="card-header">
@@ -1459,7 +1461,10 @@ export const mediaTypeOverlayCard = createStory(
               />
             </div>
             <div className="card-image-overlay-content media-type-overlay ms-4 mb-2">
-              <span className="fas icon-small fa-video" title="Video Icon"></span>
+              <span
+                className="fas icon-small fa-video"
+                title="Video Icon"
+              ></span>
             </div>
           </div>
           <div className="card-header">
@@ -1536,13 +1541,19 @@ export const mediaTypeOverlayCard = createStory(
       <span className="col me-4">
         <h3>Audio</h3>
         <div className="media-type-overlay mt-2">
-          <span className="fas icon-small fa-volume-up" title="Video Icon"></span>
+          <span
+            className="fas icon-small fa-volume-up"
+            title="Video Icon"
+          ></span>
         </div>
       </span>
       <span className="col me-4">
         <h3>VR/AR/360</h3>
         <div className="media-type-overlay mt-2">
-          <span className="fas icon-small fa-street-view" title="Video Icon"></span>
+          <span
+            className="fas icon-small fa-street-view"
+            title="Video Icon"
+          ></span>
         </div>
       </span>
       <span className="col me-4">
@@ -1562,7 +1573,7 @@ export const mediaTypeOverlayCard = createStory(
 export const RankingCardLarge = createStory(
   <div className="card-ranking large-image">
     <img
-      src={portraitImage}
+      src={rankingCardsImage}
       alt="Card ranking large version"
       loading="lazy"
       decoding="async"
@@ -1623,7 +1634,7 @@ export const RankingCardSmall = createStory(
   <div className="card-ranking small-image">
     <div className="image-wrapper">
       <img
-        src={portraitImage}
+        src={rankingCardsImage}
         alt="Card ranking small version"
         loading="lazy"
         decoding="async"

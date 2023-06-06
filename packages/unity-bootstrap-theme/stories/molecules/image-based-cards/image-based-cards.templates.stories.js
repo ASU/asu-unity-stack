@@ -1,7 +1,8 @@
-import React from 'react';
-import { createComponent, createStory } from '../../../helpers/wrapper.js';
 import { googleAnalytics as initFunc } from '@asu/unity-bootstrap-theme/js/data-layer.js';
-import portraitImage from './portrait-image.jpg';
+import React from 'react';
+
+import { createComponent, createStory } from '../../../helpers/wrapper.js';
+import portraitImage from '../cards/rankingCards-image.jpg';
 
 export default createComponent('Image Based Cards', 'Molecules', 'Templates');
 

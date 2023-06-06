@@ -1,13 +1,13 @@
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
-import React from "react";
+import { googleAnalytics as initFunc } from '@asu/unity-bootstrap-theme/js/data-layer.js';
+import React from 'react';
 
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-import portraitImage from "./portrait-image.jpg";
+import { createComponent, createStory } from '../../../helpers/wrapper.js';
+import portraitImage from '../cards/rankingCards-image.jpg';
 
 export default createComponent(
-  "Image Based Card And Hover",
-  "Molecules",
-  "Templates"
+  'Image Based Card And Hover',
+  'Molecules',
+  'Templates'
 );
 
 export const ImageBasedCardsWithCTA = createStory(
