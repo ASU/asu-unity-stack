@@ -17,7 +17,24 @@ const Template = args => (
   </div>
 );
 
-export const Default = Template.bind({});
-Default.args = {
-  imageSrc: 'https://source.unsplash.com/WLUHO9A_xik/300x200',
+export const Large = Template.bind({});
+Large.args = {
+  imageSize: 'large',
+  image: 'https://source.unsplash.com/WLUHO9A_xik/600x400',
+  imageAlt: 'Image alt text',
+  heading: 'Ranking title goes here, under the photo',
+  body: 'ASU has topped U.S. News & World Report’s “Most Innovative Schools list since the inception of the category in 2016. ASU again placed ahead of Stanford and MIT on the list, based on a survey of peers. College presidents, provosts and admissions deans around the country nominated up to 10 colleges or universities that are making the most innovative improvements.',
+  readMoreLink: 'https://www.google.com',
+};
+
+export const Small = Template.bind({});
+Small.args = {
+  imageSize: 'small',
+  image: 'https://source.unsplash.com/WLUHO9A_xik/600x400',
+  imageAlt: 'Image alt text',
+  heading: 'Ranking title goes here, under the photo',
+  body: 'ASU has topped U.S. News & World Report’s “Most Innovative Schools list since the inception of the category in 2016. ASU again placed ahead of Stanford and MIT on the list, based on a survey of peers. College presidents, provosts and admissions deans around the country nominated up to 10 colleges or universities that are making the most innovative improvements.',
+  readMoreLink: 'https://www.google.com',
+  citation:
+    'Citation of the ranking should go under the headline, regular body style text',
 };

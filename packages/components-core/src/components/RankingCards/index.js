@@ -1,73 +1,199 @@
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
-export const RankingCard = ({ imageSrc }) => {
-  const [open, setOpen] = useState(false);
+import { trackGAEvent } from '../../core/services/googleAnalytics';
+import { sanitizeDangerousMarkup } from '../../core/utils/html-utils';
 
-  const handleClick = () => {
-    setOpen(!open);
-  };
+const gaDefaultObject = {
+  name: 'onclick',
+  event: 'link',
+  action: 'click',
+  type: 'internal link',
+  region: 'main content',
+};
 
-  return (
-    <div className="card-ranking large-image">
+const AVAILABLE_GA_ACTIONS = {
+  OPEN: 'open',
+  CLOSE: 'close',
+};
+
+const AVAILABLE_SIZES = {
+  LARGE: 'large',
+  SMALL: 'small',
+};
+
+const isSmallSize = size => size === AVAILABLE_SIZES.SMALL;
+
+const ImageWrapper = ({ size, image, imageAlt }) => {
+  return isSmallSize(size) ? (
+    <div className="image-wrapper">
       <img
-        src={imageSrc}
-        alt="Card ranking large version"
+        src={image}
+        alt={imageAlt}
         loading="lazy"
         decoding="async"
         fetchpriority="high"
       />
-      <div className={classNames('info-layer', { [`active`]: open })}>
-        <div className="content">
-          <div className="header">
-            <h4>Ranking title goes here, under the photo</h4>
-            <button
-              onClick={handleClick}
-              id="dispatch"
-              className="btn btn-expand"
-              aria-label="Expand ranking"
-              type="button"
-              aria-expanded="false"
-              data-toggle="collapse"
-              data-target="#collapseExample"
-              data-ga="collapsable element"
-              data-ga-name="onclick"
-              data-ga-event="collapse"
-              data-ga-type="click"
-              data-ga-region="main content"
-              data-ga-section="H4 Ranking title goes here, under the photo"
-            >
-              <span className="fas fa-chevron-up" />
-              <span className="sr-only">Expand</span>
-            </button>
-          </div>
-          <p id="collapseExample">
-            ASU has topped U.S. News & World Report’s “Most Innovative Schools”
-            list since the inception of the category in 2016. ASU again placed
-            ahead of Stanford and MIT on the list, based on a survey of peers.
-            College presidents, provosts and admissions deans around the country
-            nominated up to 10 colleges or universities that are making the most
-            innovative improvements.
-          </p>
-          <a
-            href="#"
-            aria-label="Read more"
-            data-ga-event="link"
-            data-ga-action="click"
-            data-ga-name="onclick"
-            data-ga-type="internal link (external link if non asu.edu domain)"
-            data-ga-region="main content"
-            data-ga-section="H4 Ranking title goes here, under the photo"
-            data-ga="read more"
+    </div>
+  ) : (
+    <img
+      src={image}
+      alt={imageAlt}
+      loading="lazy"
+      decoding="async"
+      fetchpriority="high"
+    />
+  );
+};
+
+ImageWrapper.propTypes = {
+  size: PropTypes.oneOf(['small', 'large']),
+  image: PropTypes.string.isRequired,
+  imageAlt: PropTypes.string.isRequired,
+};
+
+const CitationWrapper = ({ heading, citation }) => {
+  return (
+    <div className="citation">
+      <h4>{heading}</h4>
+      <p>— {citation}</p>
+    </div>
+  );
+};
+
+CitationWrapper.propTypes = {
+  heading: PropTypes.string.isRequired,
+  citation: PropTypes.string.isRequired,
+};
+
+const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
+  const [open, setOpen] = useState(false);
+
+  // TODO: test this
+  const handleButtonClick = async () => {
+    await setOpen(!open);
+    trackGAEvent({
+      ...gaDefaultObject,
+      text: 'Expand ranking',
+      action: open ? AVAILABLE_GA_ACTIONS.OPEN : AVAILABLE_GA_ACTIONS.CLOSE,
+      section: heading,
+    });
+  };
+
+  return (
+    <div className={classNames('info-layer', { [`active`]: open })}>
+      <div className="content">
+        <div className="header">
+          {isSmallSize(imageSize) ? (
+            // eslint-disable-next-line react/no-danger
+            <p dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)} />
+          ) : (
+            <h4>{heading}</h4>
+          )}
+          <button
+            onClick={handleButtonClick}
+            id="dispatch"
+            className="btn btn-expand"
+            aria-label="Expand ranking"
+            type="button"
+            aria-expanded="false"
+            data-toggle="collapse"
+            data-target="#collapseExample"
           >
-            Read more
-            <span
-              className="fas icon-small fa-arrow-right"
-              aria-hidden="true"
-            />
-          </a>
+            <span className="fas fa-chevron-up" />
+            <span className="sr-only">Expand</span>
+          </button>
         </div>
+        {!isSmallSize(imageSize) && (
+          // eslint-disable-next-line react/no-danger
+          <p dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)} />
+        )}
+        <a
+          href={readMoreLink}
+          aria-label="Read more"
+          onClick={() => {
+            trackGAEvent({
+              ...gaDefaultObject,
+              section: heading,
+              text: 'read more',
+            });
+          }}
+        >
+          Read more
+          <span className="fas icon-small fa-arrow-right" aria-hidden="true" />
+        </a>
       </div>
     </div>
   );
+};
+
+InfoLayerWrapper.propTypes = {
+  imageSize: PropTypes.oneOf(['small', 'large']),
+  body: PropTypes.string.isRequired,
+  heading: PropTypes.string.isRequired,
+  readMoreLink: PropTypes.string.isRequired,
+};
+
+export const RankingCard = ({
+  imageSize = 'large',
+  image,
+  imageAlt,
+  heading,
+  body,
+  readMoreLink = '#',
+  citation,
+}) => {
+  return (
+    <div
+      className={classNames('card-ranking', {
+        [`large-image`]: imageSize === 'large',
+        [`small-image`]: imageSize === 'small',
+      })}
+    >
+      <ImageWrapper size={imageSize} image={image} imageAlt={imageAlt} />
+
+      {isSmallSize(imageSize) && (
+        <CitationWrapper heading={heading} citation={citation} />
+      )}
+
+      <InfoLayerWrapper
+        imageSize={imageSize}
+        body={body}
+        heading={heading}
+        readMoreLink={readMoreLink}
+      />
+    </div>
+  );
+};
+
+RankingCard.propTypes = {
+  /**
+   * Size of ranking card
+   */
+  imageSize: PropTypes.oneOf(['small', 'large']).isRequired,
+  /**
+   * Ranking card image
+   */
+  image: PropTypes.string.isRequired,
+  /**
+   * Card header image alt text
+   */
+  imageAlt: PropTypes.string.isRequired,
+  /**
+   * Ranking card heading
+   */
+  heading: PropTypes.string.isRequired,
+  /**
+   * Ranking card body content
+   */
+  body: PropTypes.string.isRequired,
+  /**
+   * Link for read more
+   */
+  readMoreLink: PropTypes.string.isRequired,
+  /**
+   * Ranking card citation content (Small size only)
+   */
+  citation: PropTypes.string,
 };
