@@ -1,3 +1,11 @@
+# [@asu/unity-bootstrap-theme-v1.3.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.2.0...@asu/unity-bootstrap-theme-v1.3.0) (2023-06-07)
+
+
+### Features
+
+* **unity-bootstrap-theme:** change of images ([c9588c6](https://github.com/ASU/asu-unity-stack/commit/c9588c6e78cd2fd8c301a53be4303dbb0c454437))
+* **unity-bootstrap-theme:** image based card with text and CTA ([36d4d8d](https://github.com/ASU/asu-unity-stack/commit/36d4d8dfe3064ef6513ab3d46a59b83c383ac9e4))
+
 # [@asu/unity-bootstrap-theme-v1.2.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.1.3...@asu/unity-bootstrap-theme-v1.2.0) (2023-06-05)
 
 
