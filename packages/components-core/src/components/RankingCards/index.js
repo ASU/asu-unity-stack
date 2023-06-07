@@ -193,7 +193,7 @@ RankingCard.propTypes = {
    */
   readMoreLink: PropTypes.string.isRequired,
   /**
-   * Ranking card citation content (Small size only)
+   * Ranking card citation content (Required for small size only)
    */
   citation: PropTypes.string,
 };
