@@ -84,7 +84,10 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
   };
 
   return (
-    <div className={classNames('info-layer', { [`active`]: open })}>
+    <div
+      className={classNames('info-layer', { [`active`]: open })}
+      data-testid="info-layer"
+    >
       <div className="content">
         <div className="header">
           {isSmallSize(imageSize) ? (
