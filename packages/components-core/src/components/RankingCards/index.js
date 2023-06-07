@@ -33,6 +33,7 @@ const ImageWrapper = ({ size, image, imageAlt }) => {
         alt={imageAlt}
         loading="lazy"
         decoding="async"
+        // eslint-disable-next-line react/no-unknown-property
         fetchpriority="high"
       />
     </div>
@@ -42,6 +43,7 @@ const ImageWrapper = ({ size, image, imageAlt }) => {
       alt={imageAlt}
       loading="lazy"
       decoding="async"
+      // eslint-disable-next-line react/no-unknown-property
       fetchpriority="high"
     />
   );
@@ -101,7 +103,7 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
             data-toggle="collapse"
             data-target="#collapseExample"
           >
-            <span className="fas fa-chevron-up" />
+            <i className="fas fa-chevron-up" />
             <span className="sr-only">Expand</span>
           </button>
         </div>
