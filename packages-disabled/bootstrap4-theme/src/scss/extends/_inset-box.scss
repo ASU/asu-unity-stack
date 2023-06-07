@@ -13,7 +13,7 @@
       background-repeat: no-repeat;
     }
 
-    @media screen and (max-width: $uds-breakpoint-sm) {
+    @media screen and (max-width: $uds-breakpoint-md) {
       padding: $uds-size-spacing-3;
     }
   }
@@ -44,7 +44,7 @@
       padding: $uds-size-spacing-4;
     }
 
-    @media screen and (max-width: $uds-breakpoint-sm) {
+    @media screen and (max-width: $uds-breakpoint-md) {
       padding: $uds-size-spacing-2;
       width: $uds-inset-box-content-small-width;
 
