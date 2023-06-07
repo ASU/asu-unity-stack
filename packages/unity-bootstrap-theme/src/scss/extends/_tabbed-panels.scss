@@ -26,6 +26,11 @@
     white-space: nowrap;
     overflow-x: auto;
     scroll-behavior: smooth;
+    -ms-overflow-style: none; // to hide scrollbar in IE and Edge
+    scrollbar-width: none; // to hide scrollbar in Firefox
+    &::-webkit-scrollbar {
+      display: none; // to hide scrollbar In Chrome, Safari, Opera, and other WebKit-based browsers
+    }
 
     .nav-link {
       color: #000;

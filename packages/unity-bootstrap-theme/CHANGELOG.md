@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.2.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.1.3...@asu/unity-bootstrap-theme-v1.2.0) (2023-06-05)
+
+
+### Features
+
+* **unity-bootstrap-theme:** tabbed panels, new way to move between tabs ([88c1fc1](https://github.com/ASU/asu-unity-stack/commit/88c1fc1cfedda066627094a973966511e263c176))
+
 # [@asu/unity-bootstrap-theme-v1.1.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.1.2...@asu/unity-bootstrap-theme-v1.1.3) (2023-06-02)
 
 

@@ -68,7 +68,7 @@ function SearchPage({
   };
 
   const doSearch = () => {
-    if (searchValue.length > 0 && term !== searchValue) {
+    if (searchValue.length > 0) {
       setTotalResults(0);
       updateSearchParams(queryParamName, searchValue);
     }
@@ -168,13 +168,19 @@ function SearchPage({
               site={site}
               goToTab={goToTab}
               term={term}
+              loggedIn={loggedIn}
             />
           )}
         </Tab>
         {site && (
           <Tab id={tabIds.sites} title={site}>
             {preSearchOrContent(
-              <LocalTab engines={enginesWithParams} site={site} term={term} />
+              <LocalTab
+                loggedIn={loggedIn}
+                engines={enginesWithParams}
+                site={site}
+                term={term}
+              />
             )}
           </Tab>
         )}
