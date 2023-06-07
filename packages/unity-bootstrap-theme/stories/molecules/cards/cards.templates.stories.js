@@ -1,6 +1,7 @@
 import React from "react";
+
 import { createComponent } from "../../../helpers/wrapper.js";
-import exampleImage from "./example-image.jpg";
+import cardsImage from "./cards-image.jpg";
 
 const extraOptions = {
   cardHeader: {
@@ -56,7 +57,7 @@ export const cardNoTemplates = args => {
         {args.cardHeader === "image" && (
           <img
             className="card-img-top"
-            src={exampleImage}
+            src={cardsImage}
             alt="Card image cap"
             width="600"
             height="337"

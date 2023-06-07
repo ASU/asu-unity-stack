@@ -2,14 +2,14 @@ import { googleAnalytics as initFunc } from '@asu/unity-bootstrap-theme/js/data-
 import React from 'react';
 
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
-import portraitImage from '../cards/rankingCards-image.jpg';
+import cardsImage from '../cards/cards-image.jpg';
 
 export default createComponent('Image Based Cards', 'Molecules', 'Templates');
 
 export const PortraitSM = createStory(
   <div className="uds-image-based-card portrait-sm">
     <img
-      src={portraitImage}
+      src={cardsImage}
       alt="Card image cap"
       loading="lazy"
       decoding="async"
@@ -37,7 +37,7 @@ export const PortraitSM = createStory(
 export const PortraitMD = createStory(
   <div className="uds-image-based-card portrait-md">
     <img
-      src={portraitImage}
+      src={cardsImage}
       alt="Card image cap"
       loading="lazy"
       decoding="async"
@@ -65,7 +65,7 @@ export const PortraitMD = createStory(
 export const LandscapeSM = createStory(
   <div className="uds-image-based-card landscape-sm">
     <img
-      src={portraitImage}
+      src={cardsImage}
       alt="Card image cap"
       loading="lazy"
       decoding="async"
@@ -93,7 +93,7 @@ export const LandscapeSM = createStory(
 export const LandscapeMD = createStory(
   <div className="uds-image-based-card landscape-md">
     <img
-      src={portraitImage}
+      src={cardsImage}
       alt="Card image cap"
       loading="lazy"
       decoding="async"
@@ -121,7 +121,7 @@ export const LandscapeMD = createStory(
 export const LandscapeLG = createStory(
   <div className="uds-image-based-card landscape-lg">
     <img
-      src={portraitImage}
+      src={cardsImage}
       alt="Card image cap"
       loading="lazy"
       decoding="async"
@@ -149,7 +149,7 @@ export const LandscapeLG = createStory(
 export const SquareSM = createStory(
   <div className="uds-image-based-card square-sm">
     <img
-      src={portraitImage}
+      src={cardsImage}
       alt="Card image cap"
       loading="lazy"
       decoding="async"
@@ -177,7 +177,7 @@ export const SquareSM = createStory(
 export const SquareMD = createStory(
   <div className="uds-image-based-card square-md">
     <img
-      src={portraitImage}
+      src={cardsImage}
       alt="Card image cap"
       loading="lazy"
       decoding="async"
@@ -205,7 +205,7 @@ export const SquareMD = createStory(
 export const SquareLG = createStory(
   <div className="uds-image-based-card square-lg">
     <img
-      src={portraitImage}
+      src={cardsImage}
       alt="Card image cap"
       loading="lazy"
       decoding="async"

@@ -1,9 +1,8 @@
 import { googleAnalytics as initFunc } from '@asu/unity-bootstrap-theme/js/data-layer.js';
 
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
-import exampleImage from './example-image.jpg';
+import cardsImage from './cards-image.jpg';
 import { rankingFunc as initRankFunc } from './ranking-cards.js';
-import rankingCardsImage from './rankingCards-image.jpg';
 
 export default createComponent('Cards', 'Molecules', 'Examples');
 
@@ -12,7 +11,7 @@ export const cardImages = createStory(
     <div className="card">
       <img
         className="card-img-top"
-        src={exampleImage}
+        src={cardsImage}
         alt="Card image cap"
         width="600"
         height="337"
@@ -26,7 +25,7 @@ export const cardImages = createStory(
     <div className="card card-event">
       <img
         className="card-img-top"
-        src={exampleImage}
+        src={cardsImage}
         alt="Card image cap"
         width="600"
         height="337"
@@ -40,7 +39,7 @@ export const cardImages = createStory(
     <div className="card card-story">
       <img
         className="card-img-top"
-        src={exampleImage}
+        src={cardsImage}
         alt="Card image cap"
         width="600"
         height="337"
@@ -198,7 +197,7 @@ export const cardDegree = createStory(
   <div className="card card-degree">
     <img
       className="card-img-top"
-      src={exampleImage}
+      src={cardsImage}
       alt="Card image cap"
       width="600"
       height="337"
@@ -267,7 +266,7 @@ export const cardStory = createStory(
   <div className="card card-story">
     <img
       className="card-img-top"
-      src={exampleImage}
+      src={cardsImage}
       alt="Card image cap"
       width="600"
       height="337"
@@ -336,7 +335,7 @@ export const cardEvent = createStory(
   <div className="card card-event">
     <img
       className="card-img-top"
-      src={exampleImage}
+      src={cardsImage}
       alt="Card image cap"
       width="600"
       height="337"
@@ -423,7 +422,7 @@ export const cardVariations = createStory(
           <div className="card">
             <img
               className="card-img-top"
-              src={exampleImage}
+              src={cardsImage}
               alt="Card image cap"
               width="600"
               height="337"
@@ -559,7 +558,7 @@ export const cardVariations = createStory(
           <div className="card borderless">
             <img
               className="card-img-top"
-              src={exampleImage}
+              src={cardsImage}
               alt="Card image cap"
               width="600"
               height="337"
@@ -624,7 +623,7 @@ export const cardVariations = createStory(
           <div className="card borderless">
             <img
               className="card-img-top"
-              src={exampleImage}
+              src={cardsImage}
               alt="Card image cap"
               width="600"
               height="337"
@@ -771,7 +770,7 @@ export const cardVariations = createStory(
           <div className="card">
             <img
               className="card-img-top"
-              src={exampleImage}
+              src={cardsImage}
               alt="Card image cap"
               width="600"
               height="337"
@@ -880,7 +879,7 @@ export const cardVariations = createStory(
           <div className="card">
             <img
               className="card-img-top"
-              src={exampleImage}
+              src={cardsImage}
               alt="Card image cap"
               width="600"
               height="337"
@@ -984,7 +983,7 @@ export const horizontal = createStory(
     <div className="card card-horizontal">
       <img
         className="card-img-top"
-        src={exampleImage}
+        src={cardsImage}
         alt="Card image cap"
         width="600"
         height="337"
@@ -1028,7 +1027,7 @@ export const horizontal = createStory(
     <div className="card card-degree card-horizontal">
       <img
         className="card-img-top"
-        src={exampleImage}
+        src={cardsImage}
         alt="Card image cap"
         width="600"
         height="337"
@@ -1072,7 +1071,7 @@ export const horizontal = createStory(
     <div className="card card-event card-horizontal">
       <img
         className="card-img-top"
-        src={exampleImage}
+        src={cardsImage}
         alt="Card image cap"
         width="600"
         height="337"
@@ -1123,7 +1122,7 @@ export const horizontal = createStory(
     <div className="card card-story card-horizontal">
       <img
         className="card-img-top"
-        src={exampleImage}
+        src={cardsImage}
         alt="Card image cap"
         width="600"
         height="337"
@@ -1171,7 +1170,7 @@ export const checkboxStackedCard = createStory(
       <div className="card-image-gradient checkbox-card">
         <img
           className="card-img-top"
-          src={exampleImage}
+          src={cardsImage}
           alt="Card image cap"
           width="600"
           height="337"
@@ -1271,7 +1270,7 @@ export const checkboxInlineCard = createStory(
       <div className="card-image-gradient checkbox-card">
         <img
           className="card-img-top"
-          src={exampleImage}
+          src={cardsImage}
           alt="Card image cap"
           width="600"
           height="337"
@@ -1374,7 +1373,7 @@ export const mediaTypeOverlayCard = createStory(
             <div className="card-image-gradient">
               <img
                 className="card-img-top"
-                src={exampleImage}
+                src={cardsImage}
                 alt="Card image cap"
                 width="600"
                 height="337"
@@ -1451,7 +1450,7 @@ export const mediaTypeOverlayCard = createStory(
             <div className="card-image-gradient">
               <img
                 className="card-img-top"
-                src={exampleImage}
+                src={cardsImage}
                 alt="Card image cap"
                 width="600"
                 height="337"
@@ -1573,7 +1572,7 @@ export const mediaTypeOverlayCard = createStory(
 export const RankingCardLarge = createStory(
   <div className="card-ranking large-image">
     <img
-      src={rankingCardsImage}
+      src={cardsImage}
       alt="Card ranking large version"
       loading="lazy"
       decoding="async"
@@ -1634,7 +1633,7 @@ export const RankingCardSmall = createStory(
   <div className="card-ranking small-image">
     <div className="image-wrapper">
       <img
-        src={rankingCardsImage}
+        src={cardsImage}
         alt="Card ranking small version"
         loading="lazy"
         decoding="async"

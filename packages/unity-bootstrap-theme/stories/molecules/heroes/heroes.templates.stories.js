@@ -1,10 +1,11 @@
+import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
+
 import {
   createComponent,
   createStory,
   layoutNames,
 } from "../../../helpers/wrapper.js";
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
-import exampleImage from "../cards/example-image.jpg";
+import cardsImage from "../cards/cards-image.jpg";
 
 const extraOptions = {
   size: {
@@ -36,7 +37,7 @@ export const HeroSmallOneButton = createStory(
         <div className="hero-overlay"></div>
         <img
           className="hero"
-          src={exampleImage}
+          src={cardsImage}
           alt="Sample placeholder image."
           width="2560"
           height="512"
@@ -83,7 +84,7 @@ export const HeroSmallTwoButtons = createStory(
         <div className="hero-overlay"></div>
         <img
           className="hero"
-          src={exampleImage}
+          src={cardsImage}
           alt="Sample placeholder image."
           width="2560"
           height="512"
@@ -145,7 +146,7 @@ export const StoryHero = createStory(
   <section className="uds-story-hero">
     <img
       className="hero"
-      src={exampleImage}
+      src={cardsImage}
       alt="Sample placeholder image."
       width="2560"
       height="512"

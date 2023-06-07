@@ -2,7 +2,7 @@ import { googleAnalytics as initFunc } from '@asu/unity-bootstrap-theme/js/data-
 import React from 'react';
 
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
-import portraitImage from '../cards/rankingCards-image.jpg';
+import cardsImage from '../cards/cards-image.jpg';
 
 export default createComponent(
   'Image Based Card And Hover',
@@ -13,7 +13,7 @@ export default createComponent(
 export const ImageBasedCardsWithCTA = createStory(
   <div className="content-section text-white">
     <div className="image-holder">
-      <img src={portraitImage} alt="alt text" loading="lazy" decoding="async" />
+      <img src={cardsImage} alt="alt text" loading="lazy" decoding="async" />
     </div>
     <div className="content-holder">
       <div className="content-bg">
