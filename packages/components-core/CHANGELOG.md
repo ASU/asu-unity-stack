@@ -1,3 +1,13 @@
+# [@asu/components-core-v2.1.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v2.0.1...@asu/components-core-v2.1.0) (2023-06-08)
+
+
+### Features
+
+* **components-core:** add Ranking cards component ([c97ad24](https://github.com/ASU/asu-unity-stack/commit/c97ad249f3f8163f917464c548fc0df21c6977a1))
+* **components-core:** fix lint ([61dc543](https://github.com/ASU/asu-unity-stack/commit/61dc5430610048fbd644c77eca45515622fedf1f))
+* **components-core:** ranking cards component ([c039dc1](https://github.com/ASU/asu-unity-stack/commit/c039dc15f0f72d94f10cb21601ba790e2e6567bb))
+* **components-core:** ranking cards component ([f31bff0](https://github.com/ASU/asu-unity-stack/commit/f31bff03e7922528f55533f1929b417950fcee84))
+
 # [@asu/components-core-v2.0.1](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v2.0.0...@asu/components-core-v2.0.1) (2023-05-23)
 
 
