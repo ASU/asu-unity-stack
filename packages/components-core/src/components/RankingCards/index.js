@@ -107,7 +107,7 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
             data-target="#collapseExample"
           >
             <i className="fas fa-chevron-up" />
-            <span className="sr-only">Expand</span>
+            <span className="visually-hidden">Expand</span>
           </button>
         </div>
         {!isSmallSize(imageSize) && (
