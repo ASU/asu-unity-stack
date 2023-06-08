@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.4.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.3.0...@asu/unity-bootstrap-theme-v1.4.0) (2023-06-08)
+
+
+### Features
+
+* **unity-bootstrap-theme:** add styles to <i> tag ([f885f53](https://github.com/ASU/asu-unity-stack/commit/f885f530b74f1816915061a7a0a0073776757d2a))
+
 # [@asu/unity-bootstrap-theme-v1.3.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.2.0...@asu/unity-bootstrap-theme-v1.3.0) (2023-06-07)
 
 
