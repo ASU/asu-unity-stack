@@ -27,7 +27,7 @@ const listRow = (feed, cardButton) => (
       image={feed.imageUrl}
       imageAltText={feed.title}
       linkLabel={feed.eventButtonText}
-      linkUrl={feed.eventButtonUrl}
+      linkUrl={feed.eventButtonUrl || feed?.buttonLink}
       buttons={[
         {
           ariaLabel: cardButton.text,
