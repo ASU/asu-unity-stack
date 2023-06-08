@@ -57,7 +57,7 @@ const htmlTemplate = (
       eventTime={eventTime}
       buttons={buttons}
       linkLabel={linkLabel}
-      linkUrl={linkUrl}
+      linkUrl={linkUrl || buttons?.[0]?.href}
       tags={tags}
     />
   ),
@@ -80,6 +80,7 @@ const CardCarousel = ({
   const carouselItems = cardItems.map(item =>
     htmlTemplate(item, cardType, cardHorizontal, cardEventFormat)
   );
+  console.log(cardItems)
   const activateGlideActions = cardItems.length > perView;
 
   return (
