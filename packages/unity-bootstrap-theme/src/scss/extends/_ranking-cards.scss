@@ -40,7 +40,8 @@
           -webkit-box-orient: vertical;
           overflow: hidden;
         }
-        svg {
+        svg.fa-chevron-up,
+        i.fa-chevron-up {
           transition: all 0.3s ease-in-out;
         }
       }
@@ -68,7 +69,8 @@
           h4 {
             display: block;
           }
-          svg {
+          svg.fa-chevron-up,
+          i.fa-chevron-up {
             transform: rotate(180deg);
           }
         }

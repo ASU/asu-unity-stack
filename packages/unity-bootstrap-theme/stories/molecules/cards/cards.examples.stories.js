@@ -1597,7 +1597,7 @@ export const RankingCardLarge = createStory(
             data-ga-region="main content"
             data-ga-section="H4 Ranking title goes here, under the photo"
           >
-            <span className="fas fa-chevron-up"></span>
+            <i className="fas fa-chevron-up" />
             <span className="sr-only">Expand</span>
           </button>
         </div>
@@ -1673,7 +1673,7 @@ export const RankingCardSmall = createStory(
             data-ga-region="main content"
             data-ga-section="H4 Ranking title goes here, under the photo"
           >
-            <span className="fas fa-chevron-up"></span>
+            <i className="fas fa-chevron-up" />
             <span className="sr-only">Expand</span>
           </button>
         </div>
