@@ -1,0 +1,14 @@
+.breadcrumb {
+  padding-left: 0;
+  &.bg-gray-7 {
+    li.active {
+      color: $uds-color-base-gray-1;
+    }
+  }
+}
+// WS2-1036 and UDS-1129 hide breadcrumb on mobile
+@media screen and (max-width: $uds-breakpoint-sm) {
+  .breadcrumb {
+    display: none;
+  }
+}

@@ -1,0 +1,63 @@
+.uds-image-background-with-cta {
+  align-items: center;
+  display: flex;
+  height: 512px;
+  justify-content: center;
+  width: 100%;
+  max-width: 1920px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin: auto;
+
+  &-container {
+    align-items: baseline;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 $uds-size-spacing-8;
+
+    & > span {
+      color: $uds-color-font-light-base;
+      font: normal normal bold 2.5rem Arial;
+      flex: 1;
+      max-width: 784px;
+    }
+  }
+}
+
+@media screen and (max-width: $uds-breakpoint-xl) {
+  .uds-image-background-with-cta {
+    padding: $uds-size-spacing-6;
+  }
+}
+
+@media screen and (max-width: $uds-breakpoint-lg) {
+  .uds-image-background-with-cta {
+    height: 434px;
+    padding: $uds-size-spacing-6 $uds-size-spacing-4;
+    align-items: flex-end;
+
+    &-container {
+      align-items: flex-start;
+      flex-direction: column;
+      justify-content: flex-end;
+
+      & > span {
+        font-size: $uds-size-font-xxl; // 2rem
+        margin-bottom: $uds-size-spacing-4; // 2rem
+        max-width: 512px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $uds-breakpoint-sm) {
+  .uds-image-background-with-cta {
+    margin: 0;
+    .container {
+      padding: 0;
+    }
+  }
+}

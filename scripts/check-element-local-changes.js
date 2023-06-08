@@ -36,7 +36,7 @@ function getFiles(dir) {
   return Array.prototype.concat(...files);
 }
 
-const BASE_URL = "./packages/bootstrap4-theme/stories";
+const BASE_URL = "./packages/unity-bootstrap-theme/stories";
 
 const fileTemplates = getFiles(BASE_URL).filter(elm =>
   elm.match(/.*\.(templates?)/gi)

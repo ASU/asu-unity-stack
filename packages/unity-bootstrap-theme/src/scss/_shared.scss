@@ -1,0 +1,23 @@
+// load brand rules (former design tokens)
+@import "custom-asu-variables";
+// default path for image assets (assuming the images will be hosted from the web root). Storybook and themes override this for their particular path needs
+$image-assets-path: "../img" !default;
+
+/*
+  TODO: all imports below belong to the previous bootstrap 4 package, you have to check each import and be careful when removing it.
+*/
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+@import "unity-bootstrap-theme-variables";
+
+// 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
+@import "bootstrap/scss/variables";
+
+// 4. Include any default map overrides here
+@import "unity-bootstrap-theme-maps";
+
+// 5. Configuration: Include remainder of required parts
+@import "bootstrap/scss/mixins";

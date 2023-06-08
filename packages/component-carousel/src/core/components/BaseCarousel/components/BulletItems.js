@@ -101,7 +101,7 @@ const ImageBulletItems = ({ imageItems, onItemClick = () => null }) => {
         decoding="async"
         // @ts-ignore
         // eslint-disable-next-line
-        fetchPriority="low"
+        fetchpriority="low"
       />
     </button>
   ));

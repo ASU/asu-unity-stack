@@ -1,6 +1,6 @@
 {
   "name": "@asu/app-webdir-ui",
-  "version": "1.2.16",
+  "version": "2.0.3",
   "description": "App Webdir UI",
   "main": "./dist/webdirUI.cjs.js",
   "browser": "./dist/webdirUI.umd.js",
@@ -31,7 +31,7 @@
     "build": "webpack -c webpack/webpack.prod.js",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
-    "storybook": "start-storybook -s ./dist -p 9011",
+    "storybook": "start-storybook -s ./dist -p 9030",
     "build-storybook": "build-storybook -s ./dist",
     "jsdoc": "jsdoc -c jsdoc.config.js",
     "predocs": "mkdir -p ./docs",
@@ -57,13 +57,13 @@
     "@babel/plugin-transform-runtime": "^7.14.5",
     "@babel/runtime": "^7.15.3",
     "@babel/runtime-corejs3": "^7.15.3",
-    "@storybook/addon-a11y": "^6.5.15",
-    "@storybook/addon-actions": "^6.5.15",
-    "@storybook/addon-controls": "^6.5.15",
-    "@storybook/addon-docs": "^6.5.15",
-    "@storybook/addon-essentials": "^6.5.15",
-    "@storybook/addon-links": "^6.5.15",
-    "@storybook/react": "^6.5.15",
+    "@storybook/addon-a11y": "^6.5.16",
+    "@storybook/addon-actions": "^6.5.16",
+    "@storybook/addon-controls": "^6.5.16",
+    "@storybook/addon-docs": "^6.5.16",
+    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/addon-links": "^6.5.16",
+    "@storybook/react": "^6.5.16",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "babel-loader": "^8.2.2",
@@ -96,7 +96,6 @@
     "webpack-filter-warnings-plugin": "^1.2.1"
   },
   "volta": {
-    "node": "14.17.6",
-    "yarn": "1.22.10"
+    "extends": "../../package.json"
   }
 }
