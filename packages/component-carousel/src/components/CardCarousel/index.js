@@ -80,7 +80,6 @@ const CardCarousel = ({
   const carouselItems = cardItems.map(item =>
     htmlTemplate(item, cardType, cardHorizontal, cardEventFormat)
   );
-  console.log(cardItems)
   const activateGlideActions = cardItems.length > perView;
 
   return (
