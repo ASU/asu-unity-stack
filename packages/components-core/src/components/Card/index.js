@@ -316,7 +316,6 @@ const CardContent = ({
   tags,
 }) => (
   <>
-  {console.log(linkUrl, linkLabel)}
     {!!title && (
       <div className="card-header" data-testid="card-title">
         <h3 className="card-title">{linkUrl ? <a href={linkUrl}>{title}</a> : title}</h3>
