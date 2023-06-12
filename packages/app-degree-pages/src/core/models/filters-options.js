@@ -54,6 +54,13 @@ const acceleratedConcurrentValues = [
 
 const isAccelConcValid = opt => opt?.value && opt?.value !== "all";
 
+const getFullCampusLocalText = opt =>
+  [
+    ...locationOptions,
+    ...asuLocalOptions,
+    ...acceleratedConcurrentOptions,
+  ].find(({ value }) => value === opt)?.text || opt;
+
 export {
   asuLocalOptions,
   acceleratedConcurrentOptions,
@@ -63,4 +70,5 @@ export {
   locationOptions,
   ONLNE,
   onlneOption,
+  getFullCampusLocalText,
 };
