@@ -129,7 +129,7 @@ export const LargeNumbersComponent = createStory(
       <li className="page-item">
         <span className="page-link elipses">...</span>
       </li>
-      <li className="page-item elipses">
+      <li className="page-item">
         <a className="page-link" href="#">
           50
         </a>
