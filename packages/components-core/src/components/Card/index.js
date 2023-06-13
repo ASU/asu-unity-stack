@@ -146,6 +146,10 @@ Card.propTypes = {
    * Remove card borders
    */
   showBorders: PropTypes.bool,
+  /**
+   * Card link
+   */
+  cardLink: PropTypes.string
 };
 
 Card.defaultProps = {
@@ -288,6 +292,7 @@ BaseCard.propTypes = {
     })
   ),
   showBorders: PropTypes.bool,
+  cardLink: PropTypes.string,
 };
 
 BaseCard.defaultProps = {
@@ -429,6 +434,7 @@ CardContent.propTypes = {
       onClick: PropTypes.func,
     })
   ),
+  cardLink: PropTypes.string,
 };
 
 CardContent.defaultProps = {
