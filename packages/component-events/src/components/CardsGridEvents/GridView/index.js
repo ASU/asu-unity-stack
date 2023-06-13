@@ -24,7 +24,7 @@ const GridView = () => {
               </span>`}
             eventLocation={event.location}
             clickable={!!event.alias}
-            clickHref={`${event.alias}/?eventDate=${formatDate(
+            cardLink={`${event.alias}/?eventDate=${formatDate(
               event.startDate,
               "ISO"
             )}`}

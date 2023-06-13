@@ -206,7 +206,7 @@ export const cardDegree = createStory(
       fetchpriority="high"
     />
     <div className="card-header">
-      <h3 className="card-title">Card default title</h3>
+      <h3 className="card-title"><a href="#" >Card default title</a></h3>
     </div>
     <div className="card-body">
       <p className="card-text">
@@ -275,7 +275,7 @@ export const cardStory = createStory(
       fetchpriority="high"
     />
     <div className="card-header">
-      <h3 className="card-title">Card default title</h3>
+      <h3 className="card-title"><a href="#" >Card default title</a></h3>
     </div>
     <div className="card-body">
       <p className="card-text">
@@ -344,7 +344,7 @@ export const cardEvent = createStory(
       fetchpriority="high"
     />
     <div className="card-header">
-      <h3 className="card-title">Card default title</h3>
+      <h3 className="card-title"><a href="#" >Card default title</a></h3>
     </div>
     <div className="card-body">
       <p className="card-text">
@@ -431,7 +431,7 @@ export const cardVariations = createStory(
               fetchpriority="high"
             />
             <div className="card-header">
-              <h3 className="card-title">Card default title</h3>
+              <h3 className="card-title"><a href="#" >Card default title</a></h3>
             </div>
             <div className="card-body">
               <p className="card-text">
@@ -512,7 +512,7 @@ export const cardVariations = createStory(
           <div className="card">
             <div className="card-header">
               <h3 className="card-title">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit
+              <a href="#" >Card default title</a>
               </h3>
             </div>
             <div className="card-body">
@@ -567,7 +567,7 @@ export const cardVariations = createStory(
               fetchpriority="high"
             />
             <div className="card-header">
-              <h3 className="card-title">Card event without borders</h3>
+              <h3 className="card-title"><a href="#" >Card event without borders</a></h3>
             </div>
             <div className="card-event-details">
               <div className="card-event-icons">
@@ -632,7 +632,7 @@ export const cardVariations = createStory(
               fetchpriority="high"
             />
             <div className="card-header">
-              <h3 className="card-title">Card with image and no borders</h3>
+              <h3 className="card-title"><a href="#" > with image and no borders</a></h3>
             </div>
             <div className="card-body">
               <p className="card-text">
@@ -663,7 +663,7 @@ export const cardVariations = createStory(
         <div className="col col-12 col-lg-4">
           <div className="card">
             <div className="card-header">
-              <h3 className="card-title">Card default title</h3>
+              <h3 className="card-title"><a href="#" >Card default title</a></h3>
             </div>
             <div className="card-body">
               <p className="card-text">
@@ -717,7 +717,7 @@ export const cardVariations = createStory(
         <div className="col col-12 col-lg-4">
           <div className="card">
             <div className="card-header">
-              <h3 className="card-title">Card default title</h3>
+              <h3 className="card-title"><a href="#" >Card default title</a></h3>
             </div>
             <div className="card-body">
               <p className="card-text">
@@ -779,7 +779,7 @@ export const cardVariations = createStory(
               fetchpriority="high"
             />
             <div className="card-header">
-              <h3 className="card-title">Card default title</h3>
+              <h3 className="card-title"><a href="#" >Card default title</a></h3>
             </div>
             <div className="card-body">
               <p className="card-text">
@@ -817,7 +817,7 @@ export const cardVariations = createStory(
           <div className="card">
             <i className="fas fa-rocket fa-2x card-icon-top"></i>
             <div className="card-header">
-              <h3 className="card-title">Card default title</h3>
+              <h3 className="card-title"><a href="#" >Card default title</a></h3>
             </div>
             <div className="card-body">
               <p className="card-text">
@@ -849,7 +849,7 @@ export const cardVariations = createStory(
           <div className="card card-centered">
             <i className="fas fa-rocket fa-2x card-icon-top"></i>
             <div className="card-header">
-              <h3 className="card-title">Card default title</h3>
+              <h3 className="card-title"><a href="#" >Card default title</a></h3>
             </div>
             <div className="card-buttons">
               <div className="card-button">
@@ -993,7 +993,7 @@ export const horizontal = createStory(
       />
       <div className="card-content-wrapper">
         <div className="card-header">
-          <h3 className="card-title">Card default title</h3>
+          <h3 className="card-title"><a href="#" >Card default title</a></h3>
         </div>
         <div className="card-body">
           <p className="card-text">
@@ -1037,7 +1037,7 @@ export const horizontal = createStory(
       />
       <div className="card-content-wrapper">
         <div className="card-header">
-          <h3 className="card-title">Card default title</h3>
+          <h3 className="card-title"><a href="#" >Card default title</a></h3>
         </div>
         <div className="card-body">
           <p className="card-text">
@@ -1081,7 +1081,7 @@ export const horizontal = createStory(
       />
       <div className="card-content-wrapper">
         <div className="card-header">
-          <h3 className="card-title">Card default title</h3>
+          <h3 className="card-title"><a href="#" >Card default title</a></h3>
         </div>
         <div className="card-event-details">
           <div className="card-event-icons">
@@ -1132,7 +1132,7 @@ export const horizontal = createStory(
       />
       <div className="card-content-wrapper">
         <div className="card-header">
-          <h3 className="card-title">Card default title</h3>
+          <h3 className="card-title"><a href="#" >Card default title</a></h3>
         </div>
         <div className="card-body">
           <p className="card-text">
@@ -1208,7 +1208,7 @@ export const checkboxStackedCard = createStory(
       </form>
     </div>
     <div className="card-header">
-      <h3 className="card-title">Card default title</h3>
+      <h3 className="card-title"><a href="#" >Card default title</a></h3>
     </div>
     <div className="card-body">
       <p className="card-text">
@@ -1308,7 +1308,7 @@ export const checkboxInlineCard = createStory(
       </form>
     </div>
     <div className="card-header">
-      <h3 className="card-title">Card default title</h3>
+      <h3 className="card-title"><a href="#" >Card default title</a></h3>
     </div>
     <div className="card-body">
       <p className="card-text">
@@ -1390,7 +1390,7 @@ export const mediaTypeOverlayCard = createStory(
             </div>
           </div>
           <div className="card-header">
-            <h3 className="card-title">Card default title</h3>
+            <h3 className="card-title"><a href="#" >Card default title</a></h3>
           </div>
           <div className="card-body">
             <p className="card-text">
@@ -1467,7 +1467,7 @@ export const mediaTypeOverlayCard = createStory(
             </div>
           </div>
           <div className="card-header">
-            <h3 className="card-title">Card default title</h3>
+            <h3 className="card-title"><a href="#" >Card default title</a></h3>
           </div>
           <div className="card-body">
             <p className="card-text">

@@ -12,7 +12,7 @@ const transformData = data => ({
   interests: data.node.interests,
   startDate: data.node.very_start_date,
   endDate: data.node.very_end_date,
-  alias: data.node.alias,
+  alias: data.node.alias, // Also used for card link in title of card
   audiences: data.node.audiences,
   eventUnits: data.node.event_units,
   eventTopics: data.node.event_topics,

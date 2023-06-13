@@ -13,6 +13,7 @@ const transformData = ({ node }, index) => ({
   interests: node.interests,
   newsUnits: node.news_units,
   eventTypes: node.event_types,
+  alias: node.path, // Used for card link in title, matches component-events data transformer
 });
 
 export { transformData };
