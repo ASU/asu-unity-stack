@@ -43,6 +43,7 @@ export const Card = ({
   linkUrl,
   tags,
   showBorders,
+  cardLink,
 }) => {
   return (
     <BaseCard
@@ -62,6 +63,7 @@ export const Card = ({
       linkUrl={linkUrl}
       tags={tags}
       showBorders={showBorders}
+      cardLink={cardLink}
     />
   );
 };
@@ -184,6 +186,7 @@ const BaseCard = ({
   linkUrl,
   tags,
   showBorders,
+  cardLink,
 }) => {
   const cardClass = classNames("card", "cards-components", {
     [`card-degree`]: type === "degree",
@@ -226,6 +229,7 @@ const BaseCard = ({
               linkLabel={linkLabel}
               linkUrl={linkUrl}
               tags={tags}
+              cardLink={cardLink}
             />
           </div>
         ) : (
@@ -240,6 +244,7 @@ const BaseCard = ({
             linkLabel={linkLabel}
             linkUrl={linkUrl}
             tags={tags}
+            cardLink={cardLink}
           />
         )}
       </CardWrapper>
@@ -314,11 +319,12 @@ const CardContent = ({
   linkLabel,
   linkUrl,
   tags,
+  cardLink,
 }) => (
   <>
     {!!title && (
       <div className="card-header" data-testid="card-title">
-        <h3 className="card-title">{linkUrl ? <a href={linkUrl}>{title}</a> : title}</h3>
+        <h3 className="card-title">{cardLink ? <a href={cardLink}>{title}</a> : title}</h3>
       </div>
     )}
     {!!body && (
