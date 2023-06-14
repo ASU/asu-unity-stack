@@ -24,7 +24,7 @@ const rankingCardSmall = {
     'Citation of the ranking should go under the headline, regular body style text',
 };
 
-const renderRankingCards = args => {
+const renderRankingCard = args => {
   return render(<RankingCard {...args} />);
 };
 
@@ -32,7 +32,7 @@ describe('RankingCard large layout', () => {
   let component;
 
   beforeEach(() => {
-    component = renderRankingCards(rankingCardLarge);
+    component = renderRankingCard(rankingCardLarge);
   });
 
   afterEach(cleanup);
@@ -53,7 +53,7 @@ describe('RankingCard small layout', () => {
   let component;
 
   beforeEach(() => {
-    component = renderRankingCards(rankingCardSmall);
+    component = renderRankingCard(rankingCardSmall);
   });
 
   afterEach(cleanup);
