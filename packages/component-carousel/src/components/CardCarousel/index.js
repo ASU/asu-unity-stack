@@ -57,7 +57,7 @@ const htmlTemplate = (
       eventTime={eventTime}
       buttons={buttons}
       linkLabel={linkLabel}
-      linkUrl={linkUrl}
+      linkUrl={linkUrl || buttons?.[0]?.href}
       tags={tags}
     />
   ),

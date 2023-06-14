@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.4.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.4.0...@asu/unity-bootstrap-theme-v1.4.1) (2023-06-08)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** added correct export of all css build files ([aa74ef2](https://github.com/ASU/asu-unity-stack/commit/aa74ef2f961f87c8bb20d7fa4ac901e198b22bb7))
+
 # [@asu/unity-bootstrap-theme-v1.4.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.3.0...@asu/unity-bootstrap-theme-v1.4.0) (2023-06-08)
 
 

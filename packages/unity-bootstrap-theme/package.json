@@ -1,6 +1,6 @@
 {
   "name": "@asu/unity-bootstrap-theme",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Base UI theme for ASU Web Standards 2.0 developed with Bootstrap 5",
   "author": "Mayco Barale <mbarale@asu.edu>",
   "homepage": "https://github.com/ASU/asu-unity-stack#readme",
@@ -89,6 +89,18 @@
     "./js/data-layer.js": {
       "module": "./src/js/storybook-data-layer.js",
       "default": "./src/js/data-layer.js"
+    },
+    "./dist/css/unity-bootstrap-theme.bundle.css": {
+      "default": "./dist/css/unity-bootstrap-theme.bundle.css"
+    },
+    "./dist/css/unity-bootstrap-theme.css": {
+      "default": "./dist/css/unity-bootstrap-theme.css"
+    },
+    "./dist/css/unity-bootstrap-footer.css": {
+      "default": "./dist/css/unity-bootstrap-footer.css"
+    },
+    "./dist/css/unity-bootstrap-header.css": {
+      "default": "./dist/css/unity-bootstrap-header.css"
     }
   },
   "peerDependencies": {
