@@ -220,14 +220,42 @@ export const staffConverter = ({
   },
   appPathFolder,
 }) => {
-  // We rounded the time to the nearest minute ot prevent multiple request to the image service
-  const nearestMinute = Math.floor(Date.now() / (1000 * 60)) * (1000 * 60);
-
   const filledDatum = fillInBlanks(datum);
   const titles = getTitleFromProfile(filledDatum, options.titleMatch);
-  const queryConcat = filledDatum.photo_url.raw.includes('?') ? '&' : '?';
-  // the 'break' param is used to prevent caching of the image
-  const processedImage = `${filledDatum.photo_url.raw}${queryConcat}size=medium&break=${nearestMinute}`;
+
+  /**
+    Formats the image URL by adding query parameters for size and break.
+    @param {string} baseUrl - The base URL of the image.
+    @returns {string} The formatted URL with added query parameters.
+  */
+  const formatImageUrl = baseUrl => {
+    const AVAILABLE_URL_PARAMS = { SIZE: 'size', BREAK: 'break' };
+    const AVAILABLE_IMG_SIZES = { MEDIUM: 'medium' };
+
+    /**
+      Rounds the current time in seconds to the nearest hundred seconds.
+      @returns {string} The rounded timestamp in seconds, with the last two digits as zero.
+    */
+    const nearestHundredSeconds = () => {
+      const milisecondsTimestamp = Date.now();
+      const secondsTimestamp = Math.floor(milisecondsTimestamp / 1000); // Convert to seconds.
+      const breakValue = Math.floor(secondsTimestamp / 100) * 100; // Round to nearest 100 seconds.
+
+      return breakValue.toString();
+    };
+
+    const url = new URL(baseUrl);
+    url.searchParams.append(
+      AVAILABLE_URL_PARAMS.SIZE,
+      AVAILABLE_IMG_SIZES.MEDIUM
+    );
+    url.searchParams.append(
+      AVAILABLE_URL_PARAMS.BREAK,
+      nearestHundredSeconds()
+    );
+
+    return url.toString();
+  };
 
   // We use EID if it's available, otherwise we use the asurite_id.
   const profileURLBase = options.profileURLBase ?? '';
@@ -245,7 +273,7 @@ export const staffConverter = ({
           id={asuriteEID}
           profileURL={`${profileURLBase}/profile/${asuriteEID}`}
           key={asuriteEID}
-          imgURL={processedImage}
+          imgURL={formatImageUrl(filledDatum.photo_url.raw)}
           anonImgURL={anonImg}
           name={filledDatum.display_name.raw}
           matchedAffiliationTitle={titles.matchedAffiliationTitle}
