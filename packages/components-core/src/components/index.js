@@ -6,6 +6,7 @@ export * from "./Button";
 export * from "./ButtonIconOnly";
 export * from "./ButtonTag";
 export * from "./Card";
+export * from "./RankingCard";
 export * from "./FeedAnatomy";
 export * from "./Hero";
 export * from "./Pagination";

@@ -1,5 +1,6 @@
 import {
   Card,
+  RankingCard,
   Article,
   Button,
   ButtonIconOnly,
@@ -19,6 +20,7 @@ export * from "./core/hooks";
 
 export {
   Card,
+  RankingCard,
   Article,
   Button,
   ButtonIconOnly,
