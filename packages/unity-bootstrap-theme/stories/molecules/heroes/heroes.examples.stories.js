@@ -9,7 +9,49 @@ import { initVideo as initFunc } from "./heroes-video";
 
 export default createComponent("Heroes", "Molecules", "Examples");
 
-export const HeroMedium = createStory(
+export const HeroSmallOneButton = createStory(
+  <div className="uds-hero-sm has-btn-row">
+    <div className="hero-overlay"></div>
+    <img
+      className="hero"
+      src={cardsImage}
+      alt="Sample placeholder image."
+      width="2560"
+      height="512"
+      loading="lazy"
+      decoding="async"
+      fetchpriority="high"
+    />
+    <h1>
+      <span className="highlight-gold">
+        ASU named to prestigious university association
+      </span>
+    </h1>
+    <div className="btn-row">
+      <a
+        href="#"
+        className="btn btn-dark"
+        data-ga="Call to action"
+        data-ga-name="onclick"
+        data-ga-event="link"
+        data-ga-action="click"
+        data-ga-type="internal link"
+        data-ga-region="main content"
+        data-ga-secion="the new american university"
+      >
+        Find out more
+      </a>
+    </div>
+  </div>,
+  {
+    initFunc
+  }
+);
+HeroSmallOneButton.args = {
+  template: 0,
+};
+
+export const HeroMediumTwoButtons = createStory(
   <div className="uds-hero-md has-btn-row">
     <div className="hero-overlay"></div>
     <img
@@ -23,21 +65,76 @@ export const HeroMedium = createStory(
       fetchpriority="high"
     />
     <h1>
-      <span className="highlight-white">
-        Lorem ipsum dolor sit amet, consectetur adip
-      </span>
+      <span className="highlight-white">Turning the tide on our coral reefs</span>
     </h1>
     <div className="content">
       <p className="text-white">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        incididuntåç ut labore et dolore magna aliqua eiusmod tempo.
+        ASU is creating a new $25 million collaboration that will fuse state-of-the-art science programs with the leadership and cultural knowledge of Hawaii’s community partners to preserve and restore vitality to Hawaii's coral reefs and the health of its coastlines.
+      </p>
+    </div>
+    <div className="btn-row">
+      <a
+        href="#"
+        className="btn btn-default btn-maroon"
+        data-ga="Read more"
+        data-ga-name="onclick"
+        data-ga-event="link"
+        data-ga-action="click"
+        data-ga-type="internal link"
+        data-ga-region="main content"
+        data-ga-section="gettysburg address"
+      >
+        Read more
+      </a>
+      <a
+        href="#"
+        className="btn btn-default btn-gold"
+        data-ga="More quotes"
+        data-ga-name="onclick"
+        data-ga-event="link"
+        data-ga-action="click"
+        data-ga-type="internal link"
+        data-ga-region="main content"
+        data-ga-section="gettysburg address"
+      >
+        Sign up for our newsletter
+      </a>
+    </div>
+  </div>,
+  {
+    initFunc
+  }
+);
+HeroMediumTwoButtons.args = {
+  template: 0,
+};
+
+export const HeroLargeOneButton = createStory(
+  <div className="uds-hero-lg has-btn-row">
+    <div className="hero-overlay"></div>
+    <img
+      className="hero"
+      src={cardsImage}
+      alt="Sample placeholder image."
+      width="2560"
+      height="512"
+      loading="lazy"
+      decoding="async"
+      fetchpriority="high"
+    />
+    <h1>
+      <span className="text-white">The academic experience at ASU</span>
+    </h1>
+    <div className="content">
+      <p className="text-white">
+        As the New American University, ASU offers a world-class academic experience designed for the 21st century learner.
       </p>
     </div>
     <div className="btn-row">
       <a
         href="#"
         className="btn btn-default btn-gold"
-        data-ga="more quotes"
+        data-ga="Read more"
         data-ga-name="onclick"
         data-ga-event="link"
         data-ga-action="click"
@@ -45,77 +142,15 @@ export const HeroMedium = createStory(
         data-ga-region="main content"
         data-ga-section="gettysburg address"
       >
-        Call to action button
-      </a>
-      <a
-        href="#"
-        className="btn btn-default btn-maroon"
-        data-ga="more quotes"
-        data-ga-name="onclick"
-        data-ga-event="link"
-        data-ga-action="click"
-        data-ga-type="internal link"
-        data-ga-region="main content"
-        data-ga-section="gettysburg address"
-      >
-        Second Call to action button
+        Find your degree
       </a>
     </div>
   </div>,
   {
-    initFunc,
-    supportedTemplates: [layoutNames.FULL_WIDTH],
+    initFunc
   }
 );
-HeroMedium.args = {
-  template: 0,
-};
-
-export const HeroLarge = createStory(
-  <>
-    <div className="uds-hero-lg has-btn-row">
-      <div className="hero-overlay"></div>
-      <img
-        className="hero"
-        src={cardsImage}
-        alt="Sample placeholder image."
-        width="2560"
-        height="512"
-        loading="lazy"
-        decoding="async"
-        fetchpriority="high"
-      />
-      <div role="doc-subtitle">
-        <span className="highlight-black">sub head</span>
-      </div>
-      <h1>
-        <span className="highlight-gold">
-          Lorem ipsum dolor sit amet, consectetur adip
-        </span>
-      </h1>
-      <div className="btn-row">
-        <a
-          href="#"
-          className="btn btn-default btn-gold"
-          data-ga="more quotes"
-          data-ga-name="onclick"
-          data-ga-event="link"
-          data-ga-action="click"
-          data-ga-type="internal link"
-          data-ga-region="main content"
-          data-ga-section="gettysburg address"
-        >
-          Call to action button
-        </a>
-      </div>
-    </div>
-  </>,
-  {
-    initFunc,
-    supportedTemplates: [layoutNames.FULL_WIDTH],
-  }
-);
-HeroLarge.args = {
+HeroLargeOneButton.args = {
   template: 0,
 };
 
