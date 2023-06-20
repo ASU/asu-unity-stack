@@ -9,6 +9,10 @@ module.exports = {
     "@storybook/addon-essentials",
     "storybook-css-modules-preset",
   ],
+  framework: "@storybook/react",
+  core: {
+    builder: "webpack5",
+  },
   webpackFinal: config => {
     return {
       ...config,

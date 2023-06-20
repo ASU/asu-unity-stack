@@ -18,6 +18,7 @@ function SearchPage({
   API_URL,
   searchApiVersion,
   loggedIn,
+  deptAdmin,
   profileURLBase,
   appPathFolder,
 }) {
@@ -67,7 +68,7 @@ function SearchPage({
   };
 
   const doSearch = () => {
-    if (searchValue.length > 0 && term !== searchValue) {
+    if (searchValue.length > 0) {
       setTotalResults(0);
       updateSearchParams(queryParamName, searchValue);
     }
@@ -147,7 +148,7 @@ function SearchPage({
             label="Edit my profile"
             href="/profile-edit"
           />
-          {loggedIn && (
+          {loggedIn && deptAdmin && (
             <Button
               color="gray"
               icon={["fas", "lock"]}
@@ -167,13 +168,19 @@ function SearchPage({
               site={site}
               goToTab={goToTab}
               term={term}
+              loggedIn={loggedIn}
             />
           )}
         </Tab>
         {site && (
           <Tab id={tabIds.sites} title={site}>
             {preSearchOrContent(
-              <LocalTab engines={enginesWithParams} site={site} term={term} />
+              <LocalTab
+                loggedIn={loggedIn}
+                engines={enginesWithParams}
+                site={site}
+                term={term}
+              />
             )}
           </Tab>
         )}
@@ -205,6 +212,7 @@ SearchPage.propTypes = {
   API_URL: PropTypes.string,
   searchApiVersion: PropTypes.string,
   loggedIn: PropTypes.bool,
+  deptAdmin: PropTypes.bool,
   profileURLBase: PropTypes.string,
   appPathFolder: PropTypes.string,
 };

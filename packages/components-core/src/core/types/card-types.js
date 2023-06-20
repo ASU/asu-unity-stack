@@ -23,6 +23,7 @@
  * @property {"25%"|"50%"|"75%"|"100%"} [width]
  * @property {TagsProps[]} [tags]
  * @property {boolean} [showBorders]
+ * @property {string} [cardLink]
  */
 
 /**

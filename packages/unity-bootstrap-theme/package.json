@@ -1,0 +1,113 @@
+{
+  "name": "@asu/unity-bootstrap-theme",
+  "version": "1.4.1",
+  "description": "Base UI theme for ASU Web Standards 2.0 developed with Bootstrap 5",
+  "author": "Mayco Barale <mbarale@asu.edu>",
+  "homepage": "https://github.com/ASU/asu-unity-stack#readme",
+  "license": "MIT",
+  "main": "./src/index.js",
+  "private": false,
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ASU/asu-unity-stack.git"
+  },
+  "scripts": {
+    "test": "node ./__tests__/@asu/unity-bootstrap-theme.test.js",
+    "build": "rimraf ./dist && NODE_ENV=production webpack  --progress --bail && rimraf ./.tmp",
+    "build:dev": "rimraf ./dist && webpack --progress --bail && rimraf ./.tmp",
+    "watch": "rimraf ./dist && webpack --watch && rimraf ./.tmp",
+    "storybook": "start-storybook -p 9000",
+    "build-storybook": "build-storybook -s ./dist",
+    "lint": "yarn js-lint && yarn css-lint",
+    "lint:fix": "yarn js-lint:fix && yarn css-lint:fix",
+    "js-lint": "eslint \"**/*.js\"",
+    "js-lint:fix": "eslint \"**/*.js\" --fix",
+    "css-lint": "stylelint \"**/*.{css,scss}\" --cache --cache-location .cache/.stylelintcache --rd",
+    "css-lint:fix": "stylelint \"**/*.{css,scss}\" --fix --cache --cache-location .cache/.stylelintcache --rd"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.21.3",
+    "@babel/plugin-transform-runtime": "^7.19.6",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/register": "^7.18.9",
+    "@storybook/addon-actions": "^6.5.16",
+    "@storybook/addon-essentials": "^6.5.16",
+    "@storybook/addon-interactions": "^6.5.16",
+    "@storybook/addon-links": "^6.5.16",
+    "@storybook/builder-webpack5": "^6.5.16",
+    "@storybook/manager-webpack5": "^6.5.16",
+    "@storybook/react": "^6.5.16",
+    "@storybook/testing-library": "^0.0.13",
+    "@whitespace/storybook-addon-html": "^5.1.4",
+    "autoprefixer": "^10.4.14",
+    "babel-loader": "^8.3.0",
+    "bootstrap": "^5.2.3",
+    "chart.js": "^3.2.1",
+    "copy-webpack-plugin": "^11.0.0",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.7.2",
+    "css-minimizer-webpack-plugin": "^4.2.2",
+    "eslint": "^8.37.0",
+    "eslint-webpack-plugin": "^4.0.0",
+    "image-minimizer-webpack-plugin": "^3.8.2",
+    "mini-css-extract-plugin": "^2.7.5",
+    "postcss": "^8.4.19",
+    "postcss-discard-duplicates": "^5.1.0",
+    "postcss-loader": "^7.1.0",
+    "postcss-scss": "^4.0.6",
+    "prettier": "^2.8.7",
+    "react-syntax-highlighter": "^15.5.0",
+    "resolve-url-loader": "^5.0.0",
+    "sass-loader": "^13.2.2",
+    "setup-env": "^1.2.3",
+    "sharp": "^0.32.0",
+    "style-loader": "^3.3.1",
+    "stylelint": "^14.16.1",
+    "stylelint-scss": "^4.6.0",
+    "stylelint-webpack-plugin": "^4.1.0",
+    "terser-webpack-plugin": "^5.3.7",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-node-externals": "^3.0.0"
+  },
+  "exports": {
+    "./src/scss/unity-bootstrap-theme.bundle.scss": {
+      "browser": "./src/scss/unity-bootstrap-theme.bundle.scss",
+      "node": "./src/scss/unity-bootstrap-theme.bundle.scss",
+      "module": "./src/scss/unity-bootstrap-theme.bundle.scss",
+      "default": "./dist/css/unity-bootstrap-theme.bundle.css"
+    },
+    "./js/global-header.js": {
+      "module": "./src/js/storybook-global-header.js",
+      "default": "./src/js/global-header.js"
+    },
+    "./js/data-layer.js": {
+      "module": "./src/js/storybook-data-layer.js",
+      "default": "./src/js/data-layer.js"
+    },
+    "./dist/css/unity-bootstrap-theme.bundle.css": {
+      "default": "./dist/css/unity-bootstrap-theme.bundle.css"
+    },
+    "./dist/css/unity-bootstrap-theme.css": {
+      "default": "./dist/css/unity-bootstrap-theme.css"
+    },
+    "./dist/css/unity-bootstrap-footer.css": {
+      "default": "./dist/css/unity-bootstrap-footer.css"
+    },
+    "./dist/css/unity-bootstrap-header.css": {
+      "default": "./dist/css/unity-bootstrap-header.css"
+    }
+  },
+  "peerDependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.3"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  },
+  "dependencies": {}
+}

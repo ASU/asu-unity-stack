@@ -1,0 +1,34 @@
+// clean the vanilla colors from 'colors' map
+$colors: map-remove(
+  $colors,
+  "blue",
+  "indigo",
+  "purple",
+  "pink",
+  "red",
+  "orange",
+  "yellow",
+  "green",
+  "teal",
+  "cyan",
+  "gray-dark"
+);
+
+// Remove vanilla grayscale colors
+$grays: map-remove(
+  $grays,
+  "100",
+  "200",
+  "300",
+  "400",
+  "500",
+  "600",
+  "700",
+  "800",
+  "900"
+);
+
+// Remove the vanilla primary and secondary brand colors
+$theme-colors: map-remove($theme-colors, "primary", "secondary");
+// Remove the vanilla spacing units not overwritten already
+$theme-colors: map-remove($theme-colors, 1, 3, 5);

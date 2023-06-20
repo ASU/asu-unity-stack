@@ -8,7 +8,7 @@
     <!-- CSS only -->
     <link
       rel="stylesheet"
-      href="https://unity.web.asu.edu/@asu/bootstrap4-theme/css/bootstrap-asu.css"
+      href="https://unity.web.asu.edu/@asu/unity-bootstrap-theme/css/unity-bootstrap-theme.bundle.css"
     />
 
     <!-- Load FontAwesome -->
@@ -46,6 +46,7 @@
       <div class="d-flex justify-content-center border p-4">
         <!-- Provide target elements -->
         <div id="default-card"></div>
+        <div id="ranking-card"></div>
         <div id="icon-card"></div>
         <div id="degree-card"></div>
         <div id="event-card"></div>
@@ -90,6 +91,18 @@
             { color: "gray", label: "tag2", href: "/#example-link" },
             { color: "gray", label: "tag3", href: "/#example-link" },
           ],
+        },
+      });
+      AsuWebCore.initRankingCard({
+        targetSelector: "#ranking-card",
+        props: {
+          imageSize: 'small',
+          image: "https://picsum.photos/300/200",
+          imageAlt: "An example image",
+          heading: "Ranking card title",
+          body: "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
+          readMoreLink: '#readmore',
+          citation: "My happy citation.",
         },
       });
       AsuWebCore.initCard({

@@ -1,0 +1,13 @@
+.page-item {
+  margin: 0;
+  white-space: nowrap;
+  display: flex;
+  align-items: stretch;
+
+  @media (max-width: 576px) {
+    max-width: 34px;
+  }
+  &.elipses {
+    max-width: 24px;
+  }
+}

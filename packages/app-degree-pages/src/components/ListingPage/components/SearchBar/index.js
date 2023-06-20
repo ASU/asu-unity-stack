@@ -63,7 +63,7 @@ const SearchBar = ({ value, onChange, onSearch }) => {
           clearTimeout(timeoutId);
         }}
       >
-        <div className="form-group mb-0 mr-2">
+        <div className="form-group mb-0 me-2">
           <label htmlFor="search-field">Search</label>
 
           <div className="d-flex row align-items-baseline g-3">

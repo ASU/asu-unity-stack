@@ -9,8 +9,8 @@ spec:
   securityContext:
     runAsUser: 1000 # default UID of jenkins user to node user in agent image
   containers:
-  - name: node14
-    image: 'node:14.17.6'
+  - name: node18
+    image: 'node:18.16'
     imagePullPolicy: Always
     command:
     - cat
@@ -49,7 +49,7 @@ spec:
                 branch 'testing'
             }
             steps {
-                container('node14') {
+                container('node18') {
                   script {
                     echo '## Configure .npmrc file for @asu registry...'
                     writeFile file: '.npmrc', text: '@asu:registry=https://npm.pkg.github.com/ \n' +
@@ -68,7 +68,7 @@ spec:
         }
         stage('Build') {
             steps {
-                container('node14') {
+                container('node18') {
                     echo '## Configure .npmrc file for Github Package registry...'
                     writeFile file: '.npmrc', text: '@asu:registry=https://npm.pkg.github.com/ \n' +
                       '//npm.pkg.github.com/:_authToken=' + env.RAW_GH_TOKEN_PSW
@@ -96,7 +96,7 @@ spec:
                 branch 'dev'
             }
             steps {
-                container('node14') {
+                container('node18') {
                     script {
                       withEnv(["GH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
                       echo '## Publishing packages...'
@@ -111,7 +111,7 @@ spec:
               branch 'dev'
             }
             steps {
-                container('node14') {
+                container('node18') {
                     script {
                         echo '# Final, post-publish install and build to include just published pkgs...'
                         sh 'yarn install --frozen-lockfile'

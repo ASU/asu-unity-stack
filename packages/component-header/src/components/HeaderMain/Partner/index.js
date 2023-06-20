@@ -30,7 +30,7 @@ const Partner = () => {
           decoding="async"
           // @ts-ignore
           // eslint-disable-next-line
-          fetchPriority="high"
+          fetchpriority="high"
         />
       </a>
       <a
@@ -46,7 +46,7 @@ const Partner = () => {
           decoding="async"
           // @ts-ignore
           // eslint-disable-next-line
-          fetchPriority="high"
+          fetchpriority="high"
         />
         <img
           className="horiz"
@@ -57,7 +57,7 @@ const Partner = () => {
           decoding="async"
           // @ts-ignore
           // eslint-disable-next-line
-          fetchPriority="high"
+          fetchpriority="high"
         />
       </a>
     </PartnerLogosWrapper>

@@ -18,17 +18,19 @@ const Contact = ({
       <div className="container" id="footer-columns">
         <div className="row" data-testid="columns-container">
           <div className="col-xl-3" id="info-column">
-            <h5>{title}</h5>
-            <p className="contact-link">
-              <a href={contactLink}>Contact Us</a>
-            </p>
+            <p className="h5">{title}</p>
+            {contactLink && (
+              <p className="contact-link">
+                <a href={contactLink}>Contact Us</a>
+              </p>
+            )}
             {contributionLink && (
               <p
                 className="contribute-button"
                 data-testid="contact-contribution-link"
               >
                 <a href={contributionLink} className="btn btn-small btn-gold">
-                  Contribute
+                  Support ASU
                 </a>
               </p>
             )}

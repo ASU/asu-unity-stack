@@ -1,0 +1,328 @@
+/*------------------------------------------------------------------
+Footer - Table of Contents
+
+1. Component Level Mixins
+2. Global Footer Rules
+3. Wrapper Base Colors
+4. Endorsed Footer (#endorsed-footer)
+5. Footer Columns (#footer-columns)
+6. Footer Innovation (#footer-innovation)
+7. Footer Colophon (#footer-colophon)
+-------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------
+1. Component Level Mixins
+--------------------------------------------------------------------*/
+
+@mixin footer-links {
+  color: $uds-color-base-gray-2;
+  line-height: $uds-size-spacing-3;
+  text-decoration: none;
+
+  &:hover {
+    color: $uds-color-base-gold;
+    text-decoration: underline;
+  }
+}
+
+@mixin nav-to-grid {
+  .nav {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-auto-flow: column;
+    justify-items: start;
+    width: 100%;
+  }
+
+  .nav-link {
+    margin-right: 0;
+    padding: 0.5rem 0;
+
+    &:nth-child(n + 4) {
+      justify-self: end;
+    }
+  }
+}
+
+/*------------------------------------------------------------------
+2. Global Footer Rules
+--------------------------------------------------------------------*/
+
+footer {
+}
+
+/*------------------------------------------------------------------
+3. Wrapper Base Colors
+--------------------------------------------------------------------*/
+
+#wrapper-endorsed-footer,
+#wrapper-footer-columns {
+  background: $uds-color-divider-darker;
+
+  h5 {
+    color: $uds-color-base-white;
+  }
+}
+
+#wrapper-endorsed-footer {
+  a {
+    color: $uds-color-base-gray-2;
+  }
+}
+
+#wrapper-endorsed-footer + #wrapper-footer-columns {
+  border-top: 2px solid $uds-color-divider-lighter;
+}
+
+#wrapper-footer-innovation {
+  background-color: $uds-color-base-gold;
+  a {
+    margin-right: $uds-size-spacing-3;
+    text-decoration: none;
+    color: $uds-color-base-gray-7;
+  }
+}
+
+#wrapper-footer-colophon {
+  background-color: $uds-color-base-gray-2;
+  a {
+    margin-right: $uds-size-spacing-3;
+    text-decoration: none;
+    color: $uds-color-base-gray-7;
+  }
+}
+
+/*------------------------------------------------------------------
+4. Endorsed Footer (#endorsed-footer)
+--------------------------------------------------------------------*/
+
+// #endorsed-footer, mobile first design
+
+#endorsed-logo img {
+  width: 100%;
+  height: auto;
+
+  /* Transform here scales an image which has embedded padding so that
+  it aligns with the Bootstrap grid. */
+  transform: scale(1.13);
+
+  /* Once transformed, the endorsed logo will have approx 20px of vertical
+  "padding" between the top of the logo and black section border. Adding
+  12px provides an approximate 2rem top/bottom margin. */
+
+  margin: 12px 0;
+}
+
+#endorsed-footer {
+  #social-media {
+    .nav {
+      padding-bottom: $uds-size-spacing-3;
+    }
+
+    .nav-link {
+      font-size: $uds-size-icon-base;
+      color: $uds-color-base-gray-4;
+      line-height: 1;
+      padding-top: 7px; // Magic number. Reducing the padding by 1px to make the height = 48px.
+    }
+  }
+}
+
+// #endorsed-footer, only on mobile
+@include media-breakpoint-down(sm) {
+  #endorsed-footer #social-media .nav-link:first-child {
+    padding-left: 0;
+  }
+}
+
+// #endorsed-footer, up to desktop
+@include media-breakpoint-up(md) {
+  #endorsed-logo {
+    display: flex;
+    align-items: center;
+    img {
+      box-sizing: border-box;
+      padding: 0.5rem 0 0.5rem 0;
+      max-height: $uds-size-spacing-14;
+      width: auto;
+    }
+  }
+
+  #social-media .nav {
+    padding: $uds-size-spacing-5 0;
+    justify-content: flex-end;
+
+    .nav-link:last-child {
+      padding-right: 0;
+    }
+  }
+}
+
+/*------------------------------------------------------------------
+5. Footer Columns (#footer-columns)
+--------------------------------------------------------------------*/
+
+// #footer-columns, mobile first design
+
+#footer-columns {
+  #info-column {
+    .contact-link {
+      margin-bottom: $uds-size-spacing-4;
+
+      a {
+        @include footer-links;
+        text-decoration: underline;
+      }
+    }
+
+    .contribute-button {
+      margin-bottom: $uds-size-spacing-3;
+    }
+  }
+
+  .flex-footer {
+    .accordion-item,
+    .accordion-header,
+    .accordion-body {
+      background: $uds-color-divider-darker;
+      color: $uds-color-base-white;
+      border: 0;
+    }
+
+    .accordion-foldable {
+      margin: 0;
+    }
+
+    .accordion-header {
+      border-top: 1px solid $uds-color-divider-lighter;
+      padding-left: 0;
+
+      a {
+        color: $uds-color-base-gray-2;
+        padding: $uds-size-spacing-3 0;
+        text-decoration: none;
+
+        &:hover {
+          background: $uds-color-divider-darker;
+        }
+      }
+    }
+
+    .accordion-body {
+      padding: 0 0 0 $uds-size-spacing-3;
+
+      .nav-link {
+        color: $uds-color-base-white;
+        padding: 0 0 $uds-size-spacing-2;
+        @include footer-links;
+      }
+    }
+  }
+}
+
+// #footer-columns, up to desktop
+
+@include media-breakpoint-up(xl) {
+  #footer-columns {
+    padding-top: $uds-size-spacing-6;
+    padding-bottom: $uds-size-spacing-6;
+
+    h5 {
+      margin: 0 0 $uds-size-spacing-3 0;
+    }
+
+    .flex-footer {
+      .accordion-header {
+        border-top: 0;
+        padding: 0;
+
+        a {
+          padding: 0;
+          cursor: default;
+        }
+
+        span {
+          display: none;
+        }
+      }
+
+      .accordion-body {
+        padding: 0;
+        transition-delay: 0;
+
+        &.collapse:not(.show) {
+          display: block;
+          min-height: auto;
+        }
+      }
+    }
+  }
+}
+
+/*------------------------------------------------------------------
+6. Footer Innovation (#footer-innovation)
+--------------------------------------------------------------------*/
+
+// #footer-innovtion, uses desktop first design for accessibility reasons.
+
+#footer-innovation {
+  .footer-innovation-links {
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    .img-link {
+      order: 2;
+      margin-right: 0;
+      transform: translate(1.5rem, 0);
+      img {
+        height: 100px;
+        width: auto;
+      }
+    }
+
+    .nav-link {
+      padding: 0;
+    }
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  #footer-innovation {
+    .footer-innovation-links {
+      flex-direction: column;
+      padding: $uds-size-spacing-1 0 $uds-size-spacing-1 0;
+      .img-link {
+        margin-right: 0;
+        transform: none;
+        img {
+          width: 100%;
+          height: auto;
+          order: -1;
+        }
+      }
+      @include nav-to-grid;
+    }
+  }
+}
+
+/*------------------------------------------------------------------
+7. Footer Colophon (#footer-colophon)
+--------------------------------------------------------------------*/
+
+// #footer-colophon, uses desktop first design to mirror #footer-innovation
+
+#wrapper-footer-colophon .colophon {
+  margin: $uds-size-spacing-2 0;
+}
+
+#footer-colophon .nav-link {
+  padding: 0;
+}
+
+// #footer-colophon, Mobile
+
+@include media-breakpoint-down(md) {
+  #footer-colophon {
+    @include nav-to-grid;
+  }
+}
