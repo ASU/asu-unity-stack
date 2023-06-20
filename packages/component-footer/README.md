@@ -21,8 +21,9 @@ yarn test
 ## How to install
 
 1. Either make sure you are part of the ASU github organization and follow the instructions [here,](https://github.com/ASU/asu-unity-stack#-how-to-use-the-private-package-registry)or, if you already are, you can clone this repo and run `yarn install` and `yarn build` to build the package locally.
-<br/>
-1. ```yarn add @asu/component-footer```
+
+
+2. ```yarn add @asu/component-footer```
 
 
 ## Use as a JS module in React app
