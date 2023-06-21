@@ -8,10 +8,10 @@
       "type": "chrome",
       "request": "launch",
       "name": "Storybook Debug",
-      "url": "http://localhost:9011",
+      "url": "http://localhost:9080",
       "trace": true,
       "sourceMaps": true,
-      "webRoot": "${workspaceFolder}/packages/<package-name>",
+      "webRoot": "${workspaceFolder}/packages/component-header",
       "sourceMapPathOverrides": {
         "webpack:///*": "${webRoot}/*",
         "webpack:///./*": "${webRoot}/*",
