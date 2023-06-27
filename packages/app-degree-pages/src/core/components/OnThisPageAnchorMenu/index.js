@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { AnchorMenu } from "../../../../../components-core/src/components/AnchorMenu";
+import { AnchorMenu } from "@asu/components-core";
 import { anchorMenuPropType, progDetailSectionIds } from "../../models";
 
 /**

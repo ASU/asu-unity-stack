@@ -1,7 +1,7 @@
 // @ts-check
+import { Card } from "@asu/components-core";
 import React from "react";
 
-import { Card } from "../../../../../../components-core/src/components/Card";
 import { progDetailSectionIds } from "../../../../core/models";
 import { Section, Background } from "./index.style";
 

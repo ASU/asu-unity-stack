@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import { createGlobalStyle } from "styled-components";
 
-import { Pagination } from "../../../../../../components-core/src/components/Pagination";
+import { Pagination } from "@asu/components-core";
 import { InfoAlert } from "../../../../core/components";
 import { GRID_VIEW_ID, LIST_VIEW_ID } from "../../../../core/models";
 import { computePages } from "../../../../core/utils";

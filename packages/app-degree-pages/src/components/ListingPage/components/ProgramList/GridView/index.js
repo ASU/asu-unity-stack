@@ -2,7 +2,7 @@
 // @ts-check
 import React, { useContext } from "react";
 
-import { Card } from "../../../../../../../components-core/src/components/Card";
+import { Card } from "@asu/components-core";
 import { AppContext } from "../../../../../core/context";
 import { GRID_PROGRAMS_ID } from "../../../../../core/models";
 import { degreeDataPropResolverService } from "../../../../../core/services";

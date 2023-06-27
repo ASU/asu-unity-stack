@@ -4,7 +4,7 @@ import React from "react";
 
 import { OnThisPageAnchorMenu } from ".";
 
-import { AnchorMenu } from "../../../../../components-core/src/components/AnchorMenu";
+import { AnchorMenu } from "@asu/components-core";
 import { progDetailSectionIds } from "../../models";
 
 describe("#OnThisPageAnchorMenu", () => {
