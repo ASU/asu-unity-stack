@@ -3,6 +3,11 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import {
+  feedHeaderShape,
+  feedCtaButtonShape,
+  feedDataSourceShape,
+} from "../../../../../components-core/src/components/FeedAnatomy/feed-prop-types";
+import {
   FeedBody,
   FeedContainerProvider,
   FeedHeader,
