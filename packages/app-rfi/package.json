@@ -42,6 +42,7 @@
     "url": "https://github.com/ASU/asu-unity-stack/issues"
   },
   "devDependencies": {
+    "@asu/components-core": "*",
     "@asu/unity-bootstrap-theme": "*",
     "@babel/core": "^7.13.14",
     "@babel/eslint-parser": "^7.13.14",
