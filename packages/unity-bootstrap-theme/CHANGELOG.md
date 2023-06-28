@@ -1,3 +1,13 @@
+# [@asu/unity-bootstrap-theme-v1.4.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.4.1...@asu/unity-bootstrap-theme-v1.4.2) (2023-06-28)
+
+
+### Bug Fixes
+
+* **component:** fix image-text-box component mobile styles ([5f8c2f6](https://github.com/ASU/asu-unity-stack/commit/5f8c2f6459b03b42fcc94dbe4a03b4c9be8dabf0))
+* **component:** fix inset-box component mobile styles ([2285f82](https://github.com/ASU/asu-unity-stack/commit/2285f82fe8f43553360467ea00efff3a57d3322d))
+* **unity-bootstrap-theme:** Card Image and Content ([b3e5e9e](https://github.com/ASU/asu-unity-stack/commit/b3e5e9e5043a0986f3d1e606a8180a9d07e3b91c))
+* **unity-bootstrap-theme:** update pagination css ([70ed886](https://github.com/ASU/asu-unity-stack/commit/70ed886c61ab60a9e2aea3d7d70df686fefcadd9))
+
 # [@asu/unity-bootstrap-theme-v1.4.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.4.0...@asu/unity-bootstrap-theme-v1.4.1) (2023-06-08)
 
 
