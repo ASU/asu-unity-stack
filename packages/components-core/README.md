@@ -41,7 +41,7 @@ yarn test
 
 1. Make sure you are set up to use the private npm registry at registry.web.asu.edu. See instructures in the 'How to use private package registry' here: [README.md](../../README.md)
 2. Make sure to have included [FontAwesome](https://fontawesome.com/) on your project to allow icons to be shown
-3. `yarn add @asu/components-core@dev`
+3. `yarn add @asu/components-core`
 
 ## Use as a JS module in React app
 
