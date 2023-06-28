@@ -1,3 +1,11 @@
+# [@asu/component-events-v2.0.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v2.0.1...@asu/component-events-v2.0.2) (2023-06-28)
+
+
+### Bug Fixes
+
+* **component-events:** titles are now links ([eda0add](https://github.com/asu/asu-unity-stack/commit/eda0addb8658d6c898b7590bad6d504799ccdfd3))
+* **component-events:** use alias for link in title ([c4da0d9](https://github.com/asu/asu-unity-stack/commit/c4da0d92672885d684f2e97cebeb9be75a33e3b5))
+
 # [@asu/component-events-v2.0.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v2.0.0...@asu/component-events-v2.0.1) (2023-05-23)
 
 
