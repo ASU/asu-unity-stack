@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import { Button, TabbedPanels, Tab } from "../../../components-core";
+import { Button, TabbedPanels, Tab } from "@asu/components-core";
 import { engineNames, engines } from "../helpers/search";
 import { PreSearchMessage } from "../PreSearchMessage/index";
 import {
