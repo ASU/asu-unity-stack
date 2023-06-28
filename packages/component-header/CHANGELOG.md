@@ -1,3 +1,10 @@
+# [@asu/component-header-v2.0.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.1...@asu/component-header-v2.0.2) (2023-06-28)
+
+
+### Bug Fixes
+
+* **component-header:** fixed aria-owns and id attrs for dropdown submenus ([844dc77](https://github.com/asu/asu-unity-stack/commit/844dc77c0dd8ae0f7fa0fd5da28471aea67895bb))
+
 # [@asu/component-header-v2.0.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.0...@asu/component-header-v2.0.1) (2023-05-23)
 
 
