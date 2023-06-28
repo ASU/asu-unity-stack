@@ -81,7 +81,7 @@ WithImage.args = {
     },
   },
   imageSource: "https://source.unsplash.com/WLUHO9A_xik/400x400",
-  altText: "Pretend this is Han Solo",
+  imageAltText: "Pretend this is Han Solo",
   itemStyle: {
     containerCssClass: itemColorCombinations.Gold,
     contentCssClass: itemQuoteColorCombinations.none,
@@ -112,7 +112,7 @@ WithCitation.args = {
     },
   },
   imageSource: "https://source.unsplash.com/WLUHO9A_xik/400x400",
-  altText: "Pretend this is Michael M. Crow, President of ASU",
+  imageAltText: "Pretend this is Michael M. Crow, President of ASU",
   itemStyle: {
     containerCssClass: itemColorCombinations.Gold,
   },
@@ -126,7 +126,7 @@ HightlightGold.args = {
       "Laughter is timeless, imagination has no age, dreams are forever.",
   },
   imageSource: "https://source.unsplash.com/WLUHO9A_xik/300x300",
-  altText: "Image of Walt DisneyImage of Walt Disney",
+  imageAltText: "Image of Walt DisneyImage of Walt Disney",
   itemStyle: {
     containerCssClass: itemColorCombinations.Gold,
     titleCssClass: itemTitleColorCombinations["Highlight gold"],
