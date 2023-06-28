@@ -1,27 +1,28 @@
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import classNames from "classnames";
+import PropTypes from "prop-types";
+import React, { useState } from "react";
 
-import { trackGAEvent } from '../../core/services/googleAnalytics';
-import { sanitizeDangerousMarkup } from '../../core/utils/html-utils';
-import { Image } from '../Image';
+import { trackGAEvent } from "../../core/services/googleAnalytics";
+import { sanitizeDangerousMarkup } from "../../core/utils/html-utils";
+// eslint-disable-next-line import/no-cycle
+import { Image } from "../Image";
 
 const gaDefaultObject = {
-  name: 'onclick',
-  event: 'link',
-  action: 'click',
-  type: 'internal link',
-  region: 'main content',
+  name: "onclick",
+  event: "link",
+  action: "click",
+  type: "internal link",
+  region: "main content",
 };
 
 const AVAILABLE_GA_ACTIONS = {
-  OPEN: 'open',
-  CLOSE: 'close',
+  OPEN: "open",
+  CLOSE: "close",
 };
 
 const AVAILABLE_SIZES = {
-  LARGE: 'large',
-  SMALL: 'small',
+  LARGE: "large",
+  SMALL: "small",
 };
 
 const isSmallSize = size => size === AVAILABLE_SIZES.SMALL;
@@ -29,15 +30,15 @@ const isSmallSize = size => size === AVAILABLE_SIZES.SMALL;
 const ImageWrapper = ({ size, image, imageAlt }) => {
   return isSmallSize(size) ? (
     <div className="image-wrapper">
-      <Image url={image} alt={imageAlt} fetchPriority='high' />
+      <Image url={image} alt={imageAlt} fetchPriority="high" />
     </div>
   ) : (
-    <Image url={image} alt={imageAlt} fetchPriority='high' />
+    <Image url={image} alt={imageAlt} fetchPriority="high" />
   );
 };
 
 ImageWrapper.propTypes = {
-  size: PropTypes.oneOf(['small', 'large']),
+  size: PropTypes.oneOf(["small", "large"]),
   image: PropTypes.string.isRequired,
   imageAlt: PropTypes.string.isRequired,
 };
@@ -64,7 +65,7 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
     await setOpen(!open);
     trackGAEvent({
       ...gaDefaultObject,
-      text: 'Expand ranking',
+      text: "Expand ranking",
       action: open ? AVAILABLE_GA_ACTIONS.OPEN : AVAILABLE_GA_ACTIONS.CLOSE,
       section: heading,
     });
@@ -72,7 +73,7 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
 
   return (
     <div
-      className={classNames('info-layer', { [`active`]: open })}
+      className={classNames("info-layer", { [`active`]: open })}
       data-testid="info-layer"
     >
       <div className="content">
@@ -108,7 +109,7 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
             trackGAEvent({
               ...gaDefaultObject,
               section: heading,
-              text: 'read more',
+              text: "read more",
             });
           }}
         >
@@ -121,26 +122,26 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
 };
 
 InfoLayerWrapper.propTypes = {
-  imageSize: PropTypes.oneOf(['small', 'large']),
+  imageSize: PropTypes.oneOf(["small", "large"]),
   body: PropTypes.string.isRequired,
   heading: PropTypes.string.isRequired,
   readMoreLink: PropTypes.string.isRequired,
 };
 
 export const RankingCard = ({
-  imageSize = 'large',
+  imageSize = "large",
   image,
   imageAlt,
   heading,
   body,
-  readMoreLink = '#',
+  readMoreLink = "#",
   citation,
 }) => {
   return (
     <div
-      className={classNames('card-ranking', {
-        [`large-image`]: imageSize === 'large',
-        [`small-image`]: imageSize === 'small',
+      className={classNames("card-ranking", {
+        [`large-image`]: imageSize === "large",
+        [`small-image`]: imageSize === "small",
       })}
     >
       <ImageWrapper size={imageSize} image={image} imageAlt={imageAlt} />
@@ -163,7 +164,7 @@ RankingCard.propTypes = {
   /**
    * Size of ranking card
    */
-  imageSize: PropTypes.oneOf(['small', 'large']).isRequired,
+  imageSize: PropTypes.oneOf(["small", "large"]).isRequired,
   /**
    * Ranking card image
    */

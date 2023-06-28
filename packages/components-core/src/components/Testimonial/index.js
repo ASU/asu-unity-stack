@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import { spreadClasses } from "../../core/utils/css-utils";
+// eslint-disable-next-line import/no-cycle
 import { Image } from "../Image";
 
 /**
@@ -14,18 +15,19 @@ import { Image } from "../Image";
  * @param {TestimonialProps} props
  * @returns {JSX.Element}
  */
-const Testimonial = ({
-  imageSource,
-  imageAltText,
-  quote,
-  itemStyle = {},
-}) => (
+const Testimonial = ({ imageSource, imageAltText, quote, itemStyle = {} }) => (
   <div
-    className={`uds-blockquote uds-testimonial ${imageSource ? "with-image" : ""
-      } ${spreadClasses(itemStyle.containerCssClass)}`}
+    className={`uds-blockquote uds-testimonial ${
+      imageSource ? "with-image" : ""
+    } ${spreadClasses(itemStyle.containerCssClass)}`}
   >
     {imageSource && (
-      <Image src={imageSource} alt={imageAltText} data-testid='testimonial-image' fetchPriority='high' />
+      <Image
+        src={imageSource}
+        alt={imageAltText}
+        data-testid="testimonial-image"
+        fetchPriority="high"
+      />
     )}
     <svg role="presentation" viewBox="0 0 302.87 245.82">
       <path d="M113.61,245.82H0V164.56q0-49.34,8.69-77.83T40.84,35.58Q64.29,12.95,100.67,0l22.24,46.9q-34,11.33-48.72,31.54T58.63,132.21h55Zm180,0H180V164.56q0-49.74,8.7-78T221,35.58Q244.65,12.95,280.63,0l22.24,46.9q-34,11.33-48.72,31.54t-15.57,53.77h55Z" />
