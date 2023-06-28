@@ -42,7 +42,6 @@
     "url": "https://github.com/ASU/asu-unity-stack/issues"
   },
   "devDependencies": {
-    "@asu/components-core": "*",
     "@asu/unity-bootstrap-theme": "*",
     "@babel/core": "^7.13.14",
     "@babel/eslint-parser": "^7.13.14",
@@ -79,6 +78,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "@asu/components-core": "^2.1.0",
     "formik": "^2.1.4",
     "prop-types": "^15.7.2",
     "react": ">= 16.14.0 < 18",
