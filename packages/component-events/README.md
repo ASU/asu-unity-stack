@@ -3,6 +3,7 @@ ASU Web Standards-based implementation of events component.
 
 This component is the React implementation of the old D8 Events component(https://github.com/ASU-CLAS/asu-react-d8events) but reusing a lot of the components already developed in `components-core` and `component-carousel`, taking in cosideration good practises, scalability and performance.
 
+
 The job of this component is listing all the events fetched to the api url provided by the user. It also display a customizable, optional header with a title and a button.
 
 ## Architecture details

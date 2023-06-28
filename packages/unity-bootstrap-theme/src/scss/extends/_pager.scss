@@ -1,0 +1,148 @@
+// This function set the backgrounf color for the arrow icon
+// $fill-color: any valid css color
+// $direction:  left or right. this will set the required svg icon
+@mixin bg-arrow-icon($fill-color, $direction) {
+  @if $fill-color != 'currentColor' {
+    // "%23" escapes "#" which does not work when the SVG is an inline value
+    $fill-color: '%23' + str-slice('' + $fill-color, 2);
+  }
+  $svg-path: "<path fill='#{$fill-color}' d='M207.029 381.476L12.686 " +
+    "187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 " +
+    "24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 " +
+    "24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 " +
+    "33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z'></path>";
+  $bg-icon: "data:image/svg+xml; utf8, " +
+    "<svg xmlns='http://www.w3.org/2000/svg' " +
+    "viewBox='0 0 448 512' " +
+    "data-fa-i2svg=''>#{$svg-path}</svg>";
+
+  @if $direction == 'left' {
+    transform: rotate(90deg);
+  }
+  @if $direction == 'right' {
+    transform: rotate(270deg);
+  }
+
+  content: url($bg-icon);
+}
+
+a.page-link {
+  &, &:visited {
+    border-radius: $uds-component-border-radius;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.1s ease-out;
+    font-size: 14px;
+  }
+  .page-item:not(.active) &:not(:focus):visited {
+    color: $uds-color-base-gray-7;
+  }
+}
+a.page-link:hover {
+  color: $uds-color-base-gray-7;
+  text-decoration: none;
+}
+span.page-link {
+  padding-left: 0;
+  padding-right: 0;
+  &:hover {
+    background-color: inherit;
+    color: inherit;
+  }
+}
+.page-item:last-child .page-link,
+.page-item:first-child .page-link {
+  border-radius: $uds-component-border-radius;
+  display: flex;
+}
+.page-item:last-child .page-link-icon:after,
+.page-item:first-child .page-link-icon:before {
+  align-self: center;
+  display: block;
+  font-size: inherit;
+  width: 1rem;
+  height: 1rem;
+
+  .disabled & {
+    opacity: 0.5;
+  }
+}
+.page-item:last-child .page-link-icon:after {
+  @include bg-arrow-icon('currentColor', right);
+}
+.page-item:first-child .page-link-icon:before {
+  @include bg-arrow-icon('currentColor', left);
+}
+
+.pagination {
+  overflow-x: auto;
+  padding: $pagination-padding-y $pagination-padding-x;
+  gap: 1rem;
+  &.uds-bg-gray1 {
+    background-color: $uds-color-base-gray-1;
+
+    :not(.active) .page-link {
+      background-color: $uds-color-base-gray-1;
+      &:hover {
+        background-color: $uds-color-base-gray-4;
+        color: $uds-color-font-dark-base;
+      }
+    }
+  }
+
+  &.uds-bg-gray {
+    background-color: $uds-color-background-gray;
+
+    :not(.active) .page-link {
+      background-color: $uds-color-background-gray;
+      &:hover {
+        background-color: $uds-color-base-gray-4;
+        color: $uds-color-font-dark-base;
+      }
+    }
+  }
+
+  &.uds-bg-dark {
+    background-color: $uds-color-background-dark;
+
+    .page-item {
+      &:last-child .page-link-icon::after {
+        @include bg-arrow-icon($uds-color-base-gray-1, right);
+      }
+
+      &:first-child .page-link-icon::before {
+        @include bg-arrow-icon($uds-color-base-gray-1, left);
+      }
+    }
+
+    .page-link {
+      color: $uds-color-base-gray-1;
+    }
+
+    .active .page-link {
+      background-color: $uds-color-base-gold;
+      color: $uds-color-font-dark-base;
+    }
+
+    :not(.active) .page-link {
+      background-color: $uds-color-background-dark;
+      &:hover {
+        background-color: $uds-color-base-gray-5;
+        color: $uds-color-base-gray-1;
+      }
+    }
+  }
+}
+@include media-breakpoint-up(md) {
+  a.page-link {
+    font-size: 16px;
+  }
+}
+@include media-breakpoint-down(md) {
+  .pagination {
+    gap: .4rem;
+  }
+  a.page-link {
+    font-size: 14px;
+  }
+}

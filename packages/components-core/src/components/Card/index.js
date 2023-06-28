@@ -43,6 +43,7 @@ export const Card = ({
   linkUrl,
   tags,
   showBorders,
+  cardLink,
 }) => {
   return (
     <BaseCard
@@ -62,6 +63,7 @@ export const Card = ({
       linkUrl={linkUrl}
       tags={tags}
       showBorders={showBorders}
+      cardLink={cardLink}
     />
   );
 };
@@ -144,6 +146,10 @@ Card.propTypes = {
    * Remove card borders
    */
   showBorders: PropTypes.bool,
+  /**
+   * Card link
+   */
+  cardLink: PropTypes.string
 };
 
 Card.defaultProps = {
@@ -184,6 +190,7 @@ const BaseCard = ({
   linkUrl,
   tags,
   showBorders,
+  cardLink,
 }) => {
   const cardClass = classNames("card", "cards-components", {
     [`card-degree`]: type === "degree",
@@ -226,6 +233,7 @@ const BaseCard = ({
               linkLabel={linkLabel}
               linkUrl={linkUrl}
               tags={tags}
+              cardLink={cardLink}
             />
           </div>
         ) : (
@@ -240,6 +248,7 @@ const BaseCard = ({
             linkLabel={linkLabel}
             linkUrl={linkUrl}
             tags={tags}
+            cardLink={cardLink}
           />
         )}
       </CardWrapper>
@@ -283,6 +292,7 @@ BaseCard.propTypes = {
     })
   ),
   showBorders: PropTypes.bool,
+  cardLink: PropTypes.string,
 };
 
 BaseCard.defaultProps = {
@@ -314,11 +324,12 @@ const CardContent = ({
   linkLabel,
   linkUrl,
   tags,
+  cardLink,
 }) => (
   <>
     {!!title && (
       <div className="card-header" data-testid="card-title">
-        <h3 className="card-title">{title}</h3>
+        <h3 className="card-title">{cardLink ? <a href={cardLink}>{title}</a> : title}</h3>
       </div>
     )}
     {!!body && (
@@ -423,6 +434,7 @@ CardContent.propTypes = {
       onClick: PropTypes.func,
     })
   ),
+  cardLink: PropTypes.string,
 };
 
 CardContent.defaultProps = {

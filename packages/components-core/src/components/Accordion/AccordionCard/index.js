@@ -17,17 +17,17 @@ import { sanitizeDangerousMarkup } from "../../../core/utils/html-utils";
  */
 export const AccordionCard = ({ id, item, openCard, onClick }) => (
   <div
-    className={classNames("card", "card-foldable", "mt-3", {
-      [`card-${item.color}`]: item.color,
-      [`card-header-icon`]: item.content.icon,
+    className={classNames("accordion-item", "mt-3", {
+      [`accordion-item-${item.color}`]: item.color,
+      [`accordion-header-icon`]: item.content.icon,
     })}
   >
-    <div className="card-header">
+    <div className="accordion-header">
       <h4>
         <a
           data-testid="accordion-opener"
           className={classNames({ [`collapsed`]: id !== openCard })}
-          data-toggle="collapse"
+          data-bs-toggle="collapse"
           href={`#card-body-${id}`}
           role="button"
           aria-expanded={id === openCard}
@@ -35,14 +35,14 @@ export const AccordionCard = ({ id, item, openCard, onClick }) => (
           onClick={e => onClick(e, id, item.content.header)}
         >
           {item.content.icon ? (
-            <span className="card-icon">
+            <span className="accordion-icon">
               <i
-                className={`${item.content.icon?.[0]} fa-${item.content.icon?.[1]} mr-2`}
+                className={`${item.content.icon?.[0]} fa-${item.content.icon?.[1]} me-2`}
               />
               {item.content.header}
             </span>
           ) : (
-            item.content.header
+            item.content?.header
           )}
           <i className="fas fa-chevron-up" />
         </a>
@@ -50,7 +50,7 @@ export const AccordionCard = ({ id, item, openCard, onClick }) => (
     </div>
     <div
       id={`card-body-${id}`}
-      className={classNames("collapse", "card-body", {
+      className={classNames("collapse", "accordion-body", {
         [`show`]: id === openCard,
       })}
       // eslint-disable-next-line react/no-danger

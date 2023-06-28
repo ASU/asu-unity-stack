@@ -1,0 +1,39 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+<Meta title="Docs/Global Header/No navigation" />
+
+# No navigation and CTA only variations
+
+For the purposes of creating landing pages with minimal visual navigation, the `#header-main` header element can be altered to display the title vertically centered within the container.
+
+The key here is to add the utility class of `.no-links` to the `.navbar-container` element.
+
+Even if there are no links present with in the desktop version of the navigation, it is still important to include the markup for the mobile menu, as the links in the mobile menu footer are intended to be "universal."
+
+```
+<!-- No links, no buttons -->
+<div className="navbar-container no-links">
+  <div className="title subdomain-name"><a href="#">Landing Page Title</a></div>
+  <div className="collapse navbar-collapse w-100 justify-content-between" id="menubar">
+    <div className="navbar-mobile-footer">
+      ...
+    </div>
+  </div>
+</div>
+```
+
+```
+<!-- No links, buttons included -->
+<div className="navbar-container no-links">
+  <div className="title subdomain-name"><a href="#">Landing Page Title</a></div>
+  <div className="collapse navbar-collapse w-100 justify-content-between" id="menubar">
+    <form className="navbar-site-buttons form-inline">
+      <a href="#" className="btn btn-md btn-maroon">CTA Button 1</a>
+      <a href="#" className="btn btn-md btn-dark">CTA Button 2</a>
+    </form>
+    <div className="navbar-mobile-footer">
+      ...
+    </div>
+  </div>
+</div>
+```

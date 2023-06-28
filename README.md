@@ -1,16 +1,28 @@
 # ASU Unity Design System (UDS)
-## ❯ Quickstart Guide
+## Quickstart Guide
 
-Bootstrap 4 UI theme and React components for building ASU Web Standards 2.0 compliant web sites and apps.
+Using the Unity Bootstrap Theme and React components for building ASU Web Standards 2.0 compliant web sites and apps.
+
+## ❯ Consuming Unity packages in your project:
+
+1. You must configure your local NPM to use the ASU Unity Design System package registry. Add a ```.npmrc``` file to your project root or global .npmrc with the following contents:
+```
+@asu:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=YOUR_TOKEN_HERE
+```
+2. Install the package using yarn or npm:
+```yarn add @asu/<package-name>``` or ```npm install @asu/<package-name>```
+
 
 ## ❯ How to use the private package registry:
 
 The ASU Unity Design System packages are published to GitHub's package registry. This is not the same as the NPM registry. To use the packages, you need to belong to ASU's GitHub organization and to configure your local NPM to use this registry.
 
-1. If you don't already have it [request access to the Unity Design System GitHub Repo](https://asu.edu/webservices).
-2. Once you have access, there is a ```.npmrc.example``` file in the root of this project with the correct scope of the ```@asu``` packages. Make a copy and name it ```.npmrc``` and replace the ```YOUR_TOKEN_HERE``` with a [GitHub Personal Access Token](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authenticating-to-github-packages) to have a project-based configuration for adding Unity package dependencies to your project. Alternately, some users may wish to include these configurations in the ```.npmrc``` in their HOME folder, or in another project's ```.npmrc``` instead.
-3. The first line in the ```.npmrc``` tells NPM that all packages with the ```@asu``` scope should be obtained from our Github package registry. If you receive errors when trying to install packages saying you are not authorized, typically this means your local machine is not set up with the Personal Access Token to access Github.  You can fix this as well as learn more about working with the GitHub package registry by following the instructions at https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry
-4. Test installing packages using yarn or npm inside of another NPM project:
+1. Clone the monorepo using ```git clone``` or download the zip file from GitHub.
+2. If you don't already have it [request access to the Unity Design System GitHub Repo](https://asu.edu/webservices).
+3. Once you have access, there is a ```.npmrc.example``` file in the root of this project with the correct scope of the ```@asu``` packages. Make a copy and name it ```.npmrc``` and replace the ```YOUR_TOKEN_HERE``` with a [GitHub Personal Access Token](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authenticating-to-github-packages) to have a project-based configuration for adding Unity package dependencies to your project. Alternately, some users may wish to include these configurations in the ```.npmrc``` in their HOME folder, or in another project's ```.npmrc``` instead.
+4. The first line in the ```.npmrc``` tells NPM that all packages with the ```@asu``` scope should be obtained from our Github package registry. If you receive errors when trying to install packages saying you are not authorized, typically this means your local machine is not set up with the Personal Access Token to access Github.  You can fix this as well as learn more about working with the GitHub package registry by following the instructions at https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry
+5. Test installing packages using yarn or npm inside of another NPM project:
 ```yarn add @asu/design-tokens```
 
 ### TROUBLESHOOTING INSTALLATION ERRORS
@@ -22,7 +34,7 @@ If you get errors having to do with yarn not being able to find a package on the
 
 This repository contains multiple packages which are managed and published using [LernaJS](https://lerna.js.org/). For more information about each individual package, see the README located at the package root.
 
-1. [bootstrap4-theme](./packages/bootstrap4-theme/README.md) - ASU-customized Bootstrap 4 CSS library. This library serves as a structural base for most of the styling across our packages.
+1. [unity-bootstrap-theme](./packages/unity-bootstrap-theme/README.md) - ASU-customized Bootstrap 5 CSS library. This library serves as a structural base for most of the styling across our packages.
 2. [app-degree-pages](./packages/app-degree-pages/README.md)
 3. [app-rfi](./packages/app-rfi/README.md)
 4. [app-webdir-ui](./packages/app-webdir-ui/README.md)
@@ -30,12 +42,13 @@ This repository contains multiple packages which are managed and published using
 4. [component-cookie-consent](./packages/component-cookie-consent/README.md)
 5. [component-events](./packages/component-events/README.md)
 6. [component-footer](./packages/component-footer/README.md)
-7. [component-header](./packages/component-header/README.md) - standalone header component that doesn't require the ```bootstrap4-theme``` styles
+7. [component-header](./packages/component-header/README.md) - standalone header component that doesn't require the ```unity-bootstrap-theme``` styles
 8. [component-news](./packages/component-news/README.md)
 9. [components-core](./packages/components-core/README.md)
-10. [design-tokens](./packages/design-tokens/README.md) - ASU styled design token values used across all packages. Built with style-dictionary library.
-11. components-library - deprecated and removed. Archived copy in ```/packages-disabled```
-12. cookie-consent - deprecated and removed. Archived copy in ```/packages-disabled```
+10. bootstrap4-theme - deprecated and removed. Archived copy in ```/packages-disabled```
+11. design-tokens - deprecated and removed. Archived copy in ```/packages-disabled```
+12. components-library - deprecated and removed. Archived copy in ```/packages-disabled```
+13. cookie-consent - deprecated and removed. Archived copy in ```/packages-disabled```
 
 ## ❯ Package Multi Output Targets
 
@@ -48,7 +61,10 @@ include JS files with the following naming convention:
 Select the module type that works for your use case and include it in your project. Most React packages in Unity include an examples/ folder which provides
 an HTML example illustrating how to implement the UMD approach.
 
-## ❯ Dependencies
+
+## Advanced Details for Unity Developers and Contributors
+
+## > Dependencies
 
 In order to build the project, the dev environment needs to have the following programs installed:
 - Node.js
@@ -166,31 +182,24 @@ yarn stop # stop the testing server
 
 ### check-element-changes
 
-This tool shows outdated markup into the folder `bootstrap4-theme`
-It takes as an argument the number of days past from the last file changes.
-
+This tool shows updated markup in the folder `unity-bootstrap-theme`.
+It takes as an argument the number of days since the last file change.
 
 Example:
-let's say today is 4 November 2021 and I want to show those files changed 8 days ago
+Let's say today is 4 November 2021 and I want to show those files changed within the last 8 days. Run the command  `node ./scripts/check-element-changes.js -d 8`
 
-run the command  `node ./scripts/check-element-changes.js -d 8`
+The output will display files with the extension `.templates.js` where date of last change is >= 28 October
 
-I will display  only those files, which extension is `.templates.js`
-which date change is  >= 28 October
-
-shortcut command `yarn check-element-changes 8`
+Shortcut command: `yarn check-element-changes 8`
 
 <img src = "./docs/assets/check-element-changes.png" />
 
 ### check-element-local-changes
 
-This tool is similar to `check-element-changes` which difference is that it does not look latest change in `git` but it does in your file system.
+This tool is similar to `check-element-changes` with the difference being that it does not look at latest changes in `git` but instead uses your file system.
 
 Example:
-today: 4 November 2021
-past days: 2
-
-run the command  `node ./scripts/check-element-local-changes.js -d 2`
+Find updates within the past 2 days by running the command  `node ./scripts/check-element-local-changes.js -d 2`
 
 <img src = "./docs/assets/check-element-local-changes.png" />
 
@@ -212,11 +221,11 @@ After publishing, a QA environment is deployed to AWS ECS with the latest built 
 
 ## > Google Analytics integration
 
-The Google Analytics integration is being done throughout Google Tag manager, this means that the events, of the user interaction, are being cathed by Google Tag manager, and then delivered to Google Analytics.
+Google Analytics integration for Unity is handled via Google Tag Manager. During user interaction with Unity components, usage data is captured by Google Tag Manager and delivered to Google Analytics.
 
-This is posible using the window `dataLayer` object. For all of the components in every package(that has the integration) of this repository we take the `dataLayer` object, with GTM already initialized by another user (CMS/WS2 user), and push each event, using `push()` method of the `dataLayer`, to the object already mentioned. When each object is included in the array, Google Tag manager catch that event.
+This is enabled using the window `dataLayer` object. For components in each package of this repository we take the `dataLayer` object, with GTM and the dataLayer having already been initialized (by the host application or CMS - see [https://unity.web.asu.edu](https://unity.web.asu.edu) for details on GTM setup), and push events using the `push()` method of the `dataLayer`. For each object included in the array, Google Tag manager catches that event.
 
-Depending on the package, this integration, of dispatching events, is handled in different ways. For `component-header`, `components-library` header and `component-footer`, we use a service that push each event, if the `dataLayer` object exists, and that service method is called on each jsx element event handler. For example:
+Depending on the package, this integration, of dispatching events, is handled in different ways. For `component-header`, `components-library` header and `component-footer`, we use a service that pushes each event if the `dataLayer` object exists and that service method is called on each jsx element event handler. For example:
 
 #### **`src/component.js`**
 ```JS
@@ -230,7 +239,7 @@ const trackGAEvent = (event) => {
 }
 ```
 
-For `bootstrap4-theme` package the events are being dispatched by an `eventListener`, for the `focus`, `click` or `change` event handler, for each html element that needs to be included. For example:
+For the `unity-bootstrap-theme` package the events are dispatched by an `eventListener`, for the `focus`, `click` or `change` event handler, for each html element that needs to be included. For example:
 
 #### **`src/component.html`**
 ```JS
@@ -250,8 +259,9 @@ elements.forEach((element) =>
   })
 );
 ```
+Check [https://unity.web.asu.edu/](https://unity.web.asu.edu/) as well as the README.md's in individual Unity packages for more Google Analytics, Google Tag Manager and data layer implementation details.
 
-To read more about Google Tag manager and dataLayer usage, see [here](https://www.analyticsmania.com/post/what-is-data-layer-in-google-tag-manager/).
+To read more about Google Tag Manager and dataLayer usage, see [here](https://www.analyticsmania.com/post/what-is-data-layer-in-google-tag-manager/).
 
 ## ❯ Git commit guidelines:
 This repo uses semantic-release to automatically release new packages upon merging to the 'dev' or 'master' branches.
@@ -311,9 +321,6 @@ To assist contributors with writing compliant commit messages, the `commitizen` 
 ## ❯ Contributing:
 
 Read contribution guide here: [CONTRIBUTING.md](./CONTRIBUTING.md)
-
-### TODO
-Dockerfile, Jenkinsfile, and server/server.js and server/stop.js will become unnecessary and can be removed.
 
 ### See [here](https://docs.github.com/en/actions/guides/publishing-nodejs-packages) for more information about publishing packages
 

@@ -30,6 +30,13 @@ UnitLogo.args = {
   },
 };
 
+export const OneColumnNoLinks = Template.bind({});
+OneColumnNoLinks.args = {
+  contact: {
+    title: "No props passed should omit the button and the contact link",
+  },
+};
+
 export const OneColumnNoLogo = Template.bind({});
 OneColumnNoLogo.args = {
   contact: {

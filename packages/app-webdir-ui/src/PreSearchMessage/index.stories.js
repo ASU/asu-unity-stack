@@ -5,7 +5,7 @@ import { PreSearchMessage } from "./index";
 import {
   createComponent,
   createStory,
-} from "../../../bootstrap4-theme/helpers/wrapper";
+} from "../../../unity-bootstrap-theme/helpers/wrapper";
 
 export default createComponent("PreSearchMessage", "Atoms", "Template");
 

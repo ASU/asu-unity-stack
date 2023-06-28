@@ -39,7 +39,7 @@ const ASUSearchResultsList = ({
   icon,
 }) => {
   const [results, setResults] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [subtitle, setSubtitle] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalResults, setTotalResults] = useState(null);
@@ -79,8 +79,9 @@ const ASUSearchResultsList = ({
             props: {
               API_URL: engine.API_URL,
               searchApiVersion: engine.searchApiVersion,
-            },
-          });
+              loggedIn,
+            }
+        });
           if (registerResults) {
             registerResults(formattedResults.page.total_results);
           }

@@ -149,8 +149,8 @@ export const AnchorMenu = ({
               trackMobileDropdownEvent();
               handleMenuVisibility();
             }}
-            data-toggle="collapse"
-            data-target="#collapseAnchorMenu"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseAnchorMenu"
             aria-controls="collapseAnchorMenu"
           >
             <h4>

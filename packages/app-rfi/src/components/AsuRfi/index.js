@@ -3,7 +3,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-// Requires peer dependency of @asu/bootstrap4-theme
+// Requires peer dependency of @asu/unity-bootstrap-theme
 // We import the styles in .storybook/preview-head.html for Storybook
 // rendering, but otherwise, we only worry about using the correct markup and
 // tweaking a few styles

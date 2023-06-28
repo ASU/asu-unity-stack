@@ -1,0 +1,116 @@
+// Breakpoints
+$uds-breakpoint-xs: 0; // Mapped to BS4, grid-breakpoints.xs
+$uds-breakpoint-sm: 576px; // Mapped to BS4, grid-breakpoints.sm
+$uds-breakpoint-md: 768px; // Mapped to BS4, grid-breakpoints.md
+$uds-breakpoint-lg: 992px; // Mapped to BS4, grid-breakpoints.lg
+$uds-breakpoint-xl: 1260px; // Mapped to BS4, grid-breakpoints.xl
+$uds-breakpoint-xxxl: 1920px; // Not in use within ASU BS4
+
+// Grid
+$uds-grid-container-max-width-sm: 540px; // BS4 default value
+$uds-grid-container-max-width-md: 768px; // BS4 default value
+$uds-grid-container-max-width-lg: 992px; // BS4 default value
+$uds-grid-container-max-width-xl: 1224px; // 1200px max + 12px gutter on either side.
+
+$uds-grid-column-count: 12; // BS4 default value
+$uds-grid-gutter-width: 24px; // Decreased from default BS4 value of 30px
+
+// Spacing
+$uds-size-spacing-0: 0rem;
+$uds-size-spacing-1: 0.5rem;
+$uds-size-spacing-2: 1rem;
+$uds-size-spacing-3: 1.5rem;
+$uds-size-spacing-4: 2rem;
+$uds-size-spacing-5: 2.5rem;
+$uds-size-spacing-6: 3rem;
+$uds-size-spacing-7: 3.5rem;
+$uds-size-spacing-8: 4rem;
+$uds-size-spacing-9: 4.5rem;
+$uds-size-spacing-10: 5rem;
+$uds-size-spacing-12: 6rem;
+$uds-size-spacing-14: 7rem;
+$uds-size-spacing-16: 8rem;
+$uds-size-spacing-32: 16rem;
+$uds-size-spacing-64: 32rem;
+$uds-size-spacing-half: 0.25rem;
+
+// Colors
+$uds-color-base-gold: #ffc627; // ASU Gold
+$uds-color-base-maroon: #8c1d40; // ASU Maroon
+$uds-color-base-white: #ffffff; // White
+$uds-color-base-green: #78be20; // ASU Green
+$uds-color-base-orange: #ff7f32; // ASU Orange
+$uds-color-base-blue: #00a3e0; // ASU Blue
+$uds-color-base-bluefocus: #00baff; // A11y Focus Blue - used for highlighting the page element with current focus
+$uds-color-base-darkgold: #7f6227; // Visited state of ASU Gold
+$uds-color-base-darkmaroon: #440e22; // Visited state of ASU Maroon
+$uds-color-base-gray-1: #fafafa;
+$uds-color-base-gray-2: #e8e8e8;
+$uds-color-base-gray-3: #d0d0d0;
+$uds-color-base-gray-4: #bfbfbf;
+$uds-color-base-gray-5: #747474;
+$uds-color-base-gray-6: #484848;
+$uds-color-base-gray-7: #191919; // Base font color and default black level
+
+$uds-color-brand-gold: $uds-color-base-gold; // ASU Gold brand color
+$uds-color-brand-maroon: $uds-color-base-maroon; // ASU Maroon brand color
+
+$uds-color-alerts-error: #cc2f2f; // Error
+$uds-color-alerts-warning: $uds-color-base-orange; // Warning
+$uds-color-alerts-info: $uds-color-base-blue; // Information
+$uds-color-alerts-success: $uds-color-base-green; // Success
+
+$uds-color-background-white: $uds-color-base-white; // Background - White
+$uds-color-background-gray: $uds-color-base-gray-2; // Background - Gray
+$uds-color-background-dark: $uds-color-base-gray-7; // Background - Dark
+$uds-color-background-success: #e9f5db; // Background - Success
+$uds-color-background-error: #f7dddd; // Background - Error
+$uds-color-background-warning: #ffeade; // Background - Warning
+$uds-color-background-info: #d6f0fa; // Background - Information
+
+$uds-color-font-dark-base: $uds-color-base-gray-7; // Default text color on light background
+$uds-color-font-dark-error: #b72a2a; // Error text on light background
+$uds-color-font-dark-success: #446d12; // Success text on light background
+$uds-color-font-light-base: $uds-color-base-gray-1; // Default text on dark background
+$uds-color-font-light-link: $uds-color-base-gold; // Link text on dark background
+$uds-color-font-light-visited: $uds-color-base-darkgold; // Visited link text on dark background
+$uds-color-font-light-info: #00b0f3; // Information text on dark background
+
+$uds-color-divider-darker: #1e1e1e; // Footer accent - darker
+$uds-color-divider-lighter: #393939; // Footer accent - lighter
+
+// Font
+$uds-font-family-base: Arial, Helvetica, 'Nimbus Sans L', 'Liberation Sans', FreeSans, sans-serif;
+
+$uds-font-weight-lighter: 100;
+$uds-font-weight-light: 300;
+$uds-font-weight-normal: 400;
+$uds-font-weight-bold: 700;
+$uds-font-weight-bolder: 900;
+
+$uds-size-font-tiny: 0.75rem;
+$uds-size-font-small: 0.875rem;
+$uds-size-font-medium: 1rem;
+$uds-size-font-large: 1.25rem;
+$uds-size-font-xl: 1.5rem;
+$uds-size-font-xxl: 2rem;
+$uds-size-font-xxxl: 3rem;
+
+$uds-size-icon-small: 1.5rem;
+$uds-size-icon-base: 2rem;
+$uds-size-icon-large: 2.5rem;
+$uds-size-icon-xl: 3rem;
+$uds-size-icon-xxl: 5rem;
+
+$uds-time-transition-base: 0.40s;
+$uds-time-transition-xl: 1.00s;
+
+// Common Component Properties
+$uds-component-button-padding-y: 1rem;
+$uds-component-button-padding-y-small: 0.25rem;
+$uds-component-button-padding-x-small: .75rem;
+$uds-component-button-padding-y-medium: 0.5rem;
+$uds-component-button-padding-x-medium: 1rem;
+$uds-component-button-padding-x: 2rem;
+$uds-component-list-ol-styles-steplist-styles-li-padding-bottom: 2rem;
+$uds-component-border-radius: 400rem;

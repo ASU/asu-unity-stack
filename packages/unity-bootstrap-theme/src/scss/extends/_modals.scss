@@ -1,0 +1,77 @@
+.uds-modal {
+  align-items: center;
+  // Use rgba instead of opacity because opacity will affect children
+  background-color: $uds-modal-overlay-background-color;
+  display: none;
+  justify-content: center;
+  left: 0;
+  opacity: 0;
+  padding: 4rem 2rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1030;
+  min-height: 100vh;
+
+  &.open {
+    animation: fadeIn $uds-time-transition-base ease-out forwards; // .4s
+    display: flex;
+  }
+
+  &-container {
+    background-color: $uds-color-background-white;
+    flex: 1;
+    height: 530px;
+    max-width: 1200px;
+    opacity: 1;
+    padding: 32px;
+    position: relative;
+    z-index: 1000;
+  }
+
+  &-close-btn {
+    @extend .btn;
+    background-color: $uds-color-base-gray-4;
+    border: 1px solid transparent;
+    height: $uds-size-spacing-4; // 2rem
+    opacity: 0.5;
+    padding: 0.25rem;
+    position: absolute;
+    right: 0;
+    text-decoration: none;
+    top: -$uds-size-spacing-7; // -56 px (24px away from top + 32px height of button)
+    width: $uds-size-spacing-4 !important; // 2rem
+
+    .fa-times {
+      color: $uds-color-base-gray-7;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    display: flex;
+    opacity: 0;
+  }
+  100% {
+    display: flex;
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: $uds-breakpoint-sm) {
+  .uds-modal {
+    &-container {
+      height: auto;
+      min-height: 256px;
+    }
+  }
+}

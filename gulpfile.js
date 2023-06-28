@@ -20,7 +20,7 @@ cleanup = () =>
   gulp
     .src([
       "./build/@asu/asuheader",
-      "./build/@asu/asuthemes",
+      "./build/@asu/gtm-datalayer",
       "./build/@asu/nav.njk",
     ])
     .pipe(clean());

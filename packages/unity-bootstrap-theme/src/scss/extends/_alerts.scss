@@ -1,0 +1,79 @@
+// ASU Design System Alert styles without Bootstrap variables to override.
+
+.alert {
+  color: $uds-color-font-dark-base;
+  display: flex;
+  border-radius: 0;
+
+  .alert-icon {
+    flex: 0 0 $uds-size-spacing-8;
+    svg {
+      font-size: $uds-size-spacing-4;
+      //margin: 0.25rem 1rem;
+    }
+  }
+  .alert-content {
+    flex: 10;
+    padding: $uds-size-spacing-1 $uds-size-spacing-0;
+  }
+  .alert-close {
+    flex: 1;
+
+    // Edits close button content (i.e. "X" inside bubble)
+    .close
+    {
+      opacity: 1;
+      font-size: 1rem;
+
+      &:hover
+      {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.alert-warning {
+  background-color: $uds-color-background-warning; /* 33% opacity of official maroon */
+  border-color: $uds-color-alerts-warning;
+}
+
+.alert-success {
+  background-color: $uds-color-background-success;
+  border-color: $uds-color-alerts-success;
+}
+.alert-info {
+  background-color: $uds-color-background-info;
+  border-color: $uds-color-alerts-info;
+}
+.alert-danger {
+  background-color: $uds-color-background-error; /* 20% opacity of official maroon */
+  border-color: $uds-color-alerts-error;
+}
+
+.alert:not([class*='alert-']),
+div[class='alert alert-block'] {
+  /* Catch-all for default alert class */
+  background-color: $uds-color-background-gray;
+  border-color: $uds-color-base-gray-3;
+}
+
+// Media Queries
+.alert {
+  // Mobile tweaks below 576px.
+  @media screen and (max-width: $uds-breakpoint-sm) {
+    // Adjust padding and margins.
+    .alert-icon {
+      flex: 0 0 $uds-size-spacing-6;
+      svg {
+        font-size: $uds-size-spacing-4;
+        //margin: 0.25rem 1rem;
+        margin-top: $uds-size-spacing-2;
+      }
+    }
+    .alert-close {
+      margin-top: -$uds-size-spacing-1;
+      margin-right: -0.75rem; // Magic number.
+    }
+  }
+}

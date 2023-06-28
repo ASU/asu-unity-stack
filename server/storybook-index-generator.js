@@ -17,26 +17,11 @@ module.exports = generateHTML = packages => `
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./@asu/bootstrap4-theme/css/bootstrap-asu.css">
+    <link rel="stylesheet" href="./@asu/unity-bootstrap-theme/css/unity-bootstrap-theme.bundle.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="./@asu/bootstrap4-theme/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="./@asu/bootstrap4-theme/js/global-header.js"></script>
-    <script type="text/javascript" src="./@asu/bootstrap4-theme/js/global-header-datalayer.js"></script>
-    <script type="text/javascript" src="./@asu/bootstrap4-theme/assets/fontawesome/js/all.js"></script>
-
-    <style>
-    #header-top input[type='search'] {
-      background: url(/bootstrap4-theme/src/img/font-awesome-svg/search-gray-6.svg) no-repeat 10px 50%;
-      background-size: 12px;
-    }
-
-    #header-top input[type='search']:focus {
-      background: url(/bootstrap4-theme/src/img/font-awesome-svg/search-gray-5.svg) no-repeat 10px 50%;
-      background-size: 12px;
-      background-color: #ffffff;
-    }
-    </style>
+    <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/data-layer.js"></script>
+    <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/global-header.js"></script>
 
     <title>Unity Design Kit</title>
   </head>
@@ -59,8 +44,8 @@ module.exports = generateHTML = packages => `
         <div class="row">
           <div id="header-top" class="col-12">
             <nav class="nav" aria-label="ASU">
-              <a class="nav-link sr-only sr-only-focusable" href="#skip-to-content">Skip to Content</a>
-              <a class="nav-link sr-only sr-only-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
+              <a class="nav-link visually-hidden visually-hidden-focusable" href="#skip-to-content">Skip to Content</a>
+              <a class="nav-link visually-hidden visually-hidden-focusable" href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system">Report an accessibility problem</a>
               <a class="nav-link" href="https://asu.edu">ASU home</a>
               <a class="nav-link" href="https://my.asu.edu">My ASU</a>
               <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
@@ -88,57 +73,59 @@ module.exports = generateHTML = packages => `
       <div class="container-xl">
         <div class="row">
           <div id="header-main" class="col-12">
-            <nav class="navbar navbar-expand-xl" aria-label="Main">
+            <div class="navbar navbar-expand-xl" aria-label="Main">
+              <div class="container-fluid">
 
-              <a class="navbar-brand" href="#">
-                <img class="vert" src="./@asu/bootstrap4-theme/img/asu-logo/arizona-state-university-logo-vertical.png" alt="Arizona State University" />
-                <img class="horiz" src="./@asu/bootstrap4-theme/img/asu-logo/arizona-state-university-logo.png" alt="Arizona State University" />
-              </a>
+                <a class="navbar-brand" href="#">
+                  <img class="vert" src="./@asu/unity-bootstrap-theme/img/asu-logo/arizona-state-university-logo-vertical.png" alt="Arizona State University" />
+                  <img class="horiz" src="./@asu/unity-bootstrap-theme/img/asu-logo/arizona-state-university-logo.png" alt="Arizona State University" />
+                </a>
 
-              <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#menubar" aria-controls="menubar" aria-expanded="false" aria-label="Toggle navigation">
-                <span title="Open mobile menu" class="fa fa-bars"></span>
-                <span title="Close mobile menu" class="fa-stack">
-                  <i class="fa fa-circle fa-stack-2x"></i>
-                  <i class="fa fa-times fa-stack-1x"></i>
-                </span>
-              </button>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#menubar" aria-controls="menubar" aria-expanded="false" aria-label="Toggle navigation">
+                  <span title="Open mobile menu" class="fa fa-bars"></span>
+                  <span title="Close mobile menu" class="fa-stack">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-times fa-stack-1x"></i>
+                  </span>
+                </button>
 
-              <div class="navbar-container no-links">
+                <div class="navbar-container no-links">
 
-                <div class="title subdomain-name">
-                  Unity Design
-                </div>
-
-                <div class="collapse navbar-collapse w-100 justify-content-between" id="menubar">
-
-                  <!-- <form class="navbar-site-buttons form-inline">
-                    <a href="#" class="btn btn-md btn-maroon">CTA Button 1</a>
-                    <a href="#" class="btn btn-md btn-dark">CTA Button 2</a>
-                  </form> -->
-
-                  <div class="navbar-mobile-footer">
-                    <form class="form-inline navbar-mobile-search" action="https://search.asu.edu/search" method="get" name="gs">
-                      <input class="form-control" type="search" name="q" aria-label="Search" placeholder="Search ASU">
-                      <input name="site" value="default_collection" type="hidden">
-                      <input name="sort" value="date:D:L:d1" type="hidden">
-                      <input name="output" value="xml_no_dtd" type="hidden">
-                      <input name="ie" value="UTF-8" type="hidden">
-                      <input name="oe" value="UTF-8" type="hidden">
-                      <input name="client" value="asu_frontend" type="hidden">
-                      <input name="proxystylesheet" value="asu_frontend" type="hidden">
-                    </form>
-                    <div class="nav-grid">
-                      <a class="nav-link" href="https://asu.edu">ASU home</a>
-                      <a class="nav-link" href="https://my.asu.edu">My ASU</a>
-                      <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
-                      <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
-                    </div>
+                  <div class="title subdomain-name">
+                    <a data-ga-header="Subdomain name" href="#" title="Subdomain name home page">Unity Design</a>
                   </div>
 
+                  <div class="collapse navbar-collapse w-100 justify-content-between" id="menubar">
+
+                    <!-- <form class="navbar-site-buttons form-inline">
+                      <a href="#" class="btn btn-md btn-maroon">CTA Button 1</a>
+                      <a href="#" class="btn btn-md btn-dark">CTA Button 2</a>
+                    </form> -->
+
+                    <div class="navbar-mobile-footer">
+                      <form class="form-inline navbar-mobile-search" action="https://search.asu.edu/search" method="get" name="gs">
+                        <input class="form-control" type="search" name="q" aria-label="Search" placeholder="Search ASU">
+                        <input name="site" value="default_collection" type="hidden">
+                        <input name="sort" value="date:D:L:d1" type="hidden">
+                        <input name="output" value="xml_no_dtd" type="hidden">
+                        <input name="ie" value="UTF-8" type="hidden">
+                        <input name="oe" value="UTF-8" type="hidden">
+                        <input name="client" value="asu_frontend" type="hidden">
+                        <input name="proxystylesheet" value="asu_frontend" type="hidden">
+                      </form>
+                      <div class="nav-grid">
+                        <a class="nav-link" href="https://asu.edu">ASU home</a>
+                        <a class="nav-link" href="https://my.asu.edu">My ASU</a>
+                        <a class="nav-link" href="https://asu.edu/about/colleges-and-schools">Colleges and schools</a>
+                        <a class="nav-link" href="https://weblogin.asu.edu/cgi-bin/login">Sign in</a>
+                      </div>
+                    </div>
+
+                  </div>
                 </div>
               </div>
 
-            </nav>
+            </div>
           </div>
         </div>
       </div>
@@ -147,7 +134,7 @@ module.exports = generateHTML = packages => `
   </header>
 
   <main>
-    <div id="skip-to-content" class="sr-only"></div>
+    <div id="skip-to-content" class="visually-hidden"></div>
 
     <div class="uds-hero-sm">
       <img class="hero" src="https://images.unsplash.com/photo-1454117096348-e4abbeba002c?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=265&ixlib=rb-1.2.1&q=80&w=1920" alt="" />
@@ -178,6 +165,12 @@ module.exports = generateHTML = packages => `
         </div>
 
         <div class="col-md-6 pb-8">
+          <h2>Google Tag Manager and data layer</h2>
+          <p>Ensure your site or application has the necessary analytics integrations.</p>
+          <p><a class="btn btn-maroon btn-medium" href="gtm-datalayer/index.html">GTM and data layer guide</a></p>
+        </div>
+
+        <div class="col-md-6 pb-8">
           <h2>Unity Design System Package Registry</h2>
           <p><a href="https://github.com/ASU/asu-unity-stack#-how-to-use-the-private-package-registry">
             Learn how to use the private package registry</a> to incorporate
@@ -204,7 +197,7 @@ module.exports = generateHTML = packages => `
                 href="https://www.asu.edu/rankings"
               >
                 <img
-                  src="./@asu/bootstrap4-theme/img/innovation-lockup/on-gold/200420-GlobalFooter-No1InnovationLockup.png"
+                  src="./@asu/unity-bootstrap-theme/img/innovation-lockup/on-gold/200420-GlobalFooter-No1InnovationLockup.png"
                   alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
                 />
               </a>
@@ -291,7 +284,10 @@ module.exports = generateHTML = packages => `
     </div>
   </footer>
 
+  <script>
+    window.initDataLayer();
+    window.initGlobalHeader();
+  </script>
   </body>
-
 </html>
 `;
