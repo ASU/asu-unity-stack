@@ -1,3 +1,14 @@
+# [@asu/components-core-v2.1.1](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v2.1.0...@asu/components-core-v2.1.1) (2023-06-28)
+
+
+### Bug Fixes
+
+* **components-core:** add cardLink prop and update story ([59ccda8](https://github.com/ASU/asu-unity-stack/commit/59ccda82f9c37dc5185b5c1b86a3c1612c9f8c64))
+* **components-core:** add missing init for ranking cards. rename folder ([ba9e653](https://github.com/ASU/asu-unity-stack/commit/ba9e6536f6101ddbfbbf111e313456624e996dff))
+* **components-core:** added prop types ([d2732b1](https://github.com/ASU/asu-unity-stack/commit/d2732b1e130ee44b4706555c42e8351994486220))
+* **components-core:** card titles are now links ([326d4bc](https://github.com/ASU/asu-unity-stack/commit/326d4bc3251c5df6ee253bb652504e538703a58e))
+* **components-core:** removed log statement ([8f5135f](https://github.com/ASU/asu-unity-stack/commit/8f5135f8dd732d85e17fbaf3414207bf2561b211))
+
 # [@asu/components-core-v2.1.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v2.0.1...@asu/components-core-v2.1.0) (2023-06-08)
 
 
