@@ -13,12 +13,7 @@ import { spreadClasses } from "../../core/utils/css-utils";
  * @param {TestimonialProps} props
  * @returns {JSX.Element}
  */
-const Testimonial = ({
-  imageSource = null,
-  imageAltText = null,
-  quote,
-  itemStyle = {},
-}) => (
+const Testimonial = ({ imageSource, imageAltText, quote, itemStyle = {} }) => (
   <div
     className={`uds-blockquote uds-testimonial ${
       imageSource ? "with-image" : ""

@@ -60,13 +60,13 @@ function headingHeroHtmlTemplate({
   return (
     <div
       className={classNames(`uds-hero`, {
-        [imageSize[image.size]]: image.size,
+        [imageSize[image?.size]]: image?.size,
       })}
     >
       <HeroImage
         className="hero"
-        src={image.url}
-        alt={image.altText}
+        src={image?.url}
+        alt={image?.altText}
         data-testid="hero-image"
       />
 
