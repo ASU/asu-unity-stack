@@ -210,7 +210,7 @@ HeroLarge.args = {
   template: 0,
 };
 
-export const StoryHero = createStory(
+export const StoryHeroMedium = createStory(
   <section className="uds-story-hero">
     <img
       className="hero"
@@ -247,6 +247,86 @@ export const StoryHero = createStory(
     supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
-StoryHero.args = {
+StoryHeroMedium.args = {
+  template: 0,
+};
+
+export const StoryHeroLarge = createStory(
+  <>
+    <section className="uds-story-hero uds-story-hero-lg entry-header">
+      <img
+        className="hero"
+        src={cardsImage}
+        alt="Sample placeholder image."
+        width="2560"
+        height="512"
+        loading="lazy"
+        decoding="async"
+        fetchpriority="high"
+      />
+      <div className="content">
+        <nav aria-label="breadcrumbs">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <a href="#">Home</a>
+            </li>
+            <li className="breadcrumb-item">
+              <a href="#">Second Nav Item</a>
+            </li>
+            <li className="breadcrumb-item active" aria-current="page">
+              <a href="#">Current Page</a>
+            </li>
+          </ol>
+        </nav>
+        <h1 className="article">
+          The answer to the ultimate question of life, the universe, and
+          everything
+        </h1>
+      </div>
+    </section>
+    <div className="container-xl">
+      <div className="row">
+        <div className="col-lg-10 offset-lg-1">
+          <article>
+            <p>
+              Cuba Poland worldwide hotel South-America flexibility Amsterdam
+              currency. Expedia Moscow St. Petersburg Tripit. Lonely planet
+              train airBnB on a shoestring Amsterdam South-America. Hotspots
+              flight active lifestyle France activities relaxation car rental
+              New York City discount. Maps Australia Tripit translator St.
+              Petersburg Russia bus Hungary. Package horse riding itinerary
+              foreign flight last minute travel housing euro.
+            </p>
+            <p>
+              Lodge tent rural. Transit relaxation Poland Asia airmiles hotel
+              deal things to do Cuba airBnB diary animals package. Rome bunkbeds
+              itinerary Pacific. Hitchhiking ticket Pacific France national
+              bunkbeds St. Petersburg Hungary. Translator recommendations
+              booking discover expedia city trip diary motel chartering guest
+              travel. Unique experiences lonely planet guest nighttrain
+              couchsurfing horse riding flight China Germany last minute
+              overnight.
+            </p>
+            <p>
+              Stay Pacific uncharted relaxation transit tourist attractions
+              insurance tent lifestyle booking train hotel. Itinerary exchange
+              rate Budapest last minute hotel translation. Earth Cuba booking
+              spa place to stay adventure group discount unique experiences
+              caravan Moscow gateway package currency kayak. Lonely planet
+              housing Barcelona. Australia private jet city trip taxi translator
+              cab active lifestyle airBnB explore South-America caravan tour
+              operator.
+            </p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </>,
+  {
+    initFunc,
+    supportedTemplates: [layoutNames.FULL_WIDTH],
+  }
+);
+StoryHeroLarge.args = {
   template: 0,
 };
