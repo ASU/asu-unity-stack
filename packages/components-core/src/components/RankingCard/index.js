@@ -30,10 +30,10 @@ const isSmallSize = size => size === AVAILABLE_SIZES.SMALL;
 const ImageWrapper = ({ size, image, imageAlt }) => {
   return isSmallSize(size) ? (
     <div className="image-wrapper">
-      <Image url={image} alt={imageAlt} fetchPriority="high" />
+      <Image src={image} alt={imageAlt} fetchPriority="high" />
     </div>
   ) : (
-    <Image url={image} alt={imageAlt} fetchPriority="high" />
+    <Image src={image} alt={imageAlt} fetchPriority="high" />
   );
 };
 
