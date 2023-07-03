@@ -1,10 +1,22 @@
 // @ts-check
 import PropTypes from "prop-types";
-import React, { useState, useEffect, useRef } from "react";
-import { useSearchParams } from "react-router-dom";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 
 import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { NavControls, TabHeader } from "./components";
+
+function useRefs() {
+  const refs = useRef({});
+
+  const register = useCallback(
+    refName => ref => {
+      refs.current[refName] = ref;
+    },
+    []
+  );
+
+  return [refs, register];
+}
 
 const Tab = ({ id, bgColor, selected, children }) =>
   selected && (
@@ -30,50 +42,46 @@ Tab.propTypes = {
   ]),
 };
 
-const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
+const TabbedPanels = ({ initialTab, children, bgColor, onTabChange = () => {} }) => {
   const childrenArray = React.Children.toArray(children);
-  const [activeTabID, setActiveTabID] = useState(childrenArray[0].props.id);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [navControlsNeeded, setNavControlsNeeded] = useState(false);
+  const selectedChild =
+    childrenArray.find(({props}) => initialTab === props.id) || childrenArray[0];
+  const [activeTabID, setActiveTabID] = useState(selectedChild.props.id);
   const headerTabs = useRef(null);
+  const [headerTabItems, setHeaderTabItems] = useRefs();
   const tabbedPanels = useRef(null);
 
   const updateTabParam = tab => {
-    const newParams = {};
-    // eslint-disable-next-line no-restricted-syntax
-    for (const entry of searchParams.entries()) {
-      // eslint-disable-next-line prefer-destructuring
-      newParams[entry[0]] = entry[1];
-    }
-    const currentTab = newParams[id];
-    if (currentTab == null) {
-      newParams[id] = activeTabID;
-    } else {
-      setActiveTabID(currentTab);
-    }
-    newParams[id] = tab;
-    setSearchParams(newParams);
+    setActiveTabID(tab);
   };
 
-  useEffect(() => {
-    setActiveTabID(searchParams.get(id) || activeTabID);
-  }, [searchParams]);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const [scrollableWidth, setScrollableWidth] = useState();
 
   useEffect(() => {
-    if (!searchParams.get(id)) {
-      updateTabParam(searchParams.get(id) || activeTabID);
-    }
+    const onScroll = () => {
+      setScrollLeft(headerTabs.current.scrollLeft);
+    };
+    headerTabs.current.addEventListener("scroll", onScroll);
+    onScroll();
+    return () => headerTabs.current.removeEventListener("scroll", onScroll);
+  }, [scrollableWidth]);
+
+  useEffect(() => {
+    const onResize = () => {
+      setScrollableWidth(headerTabs.current.scrollWidth - headerTabs.current.offsetWidth);
+    };
+    window.addEventListener("resize", onResize);
+    onResize();
+    return () => window.removeEventListener("resize", onResize);
   }, []);
 
   useEffect(() => {
-    const allTabsWidth = [
-      ...headerTabs.current.querySelectorAll(".nav-item"),
-    ].reduce((prev, curr) => prev + curr.offsetWidth, 0);
-    const componentWidth = tabbedPanels.current.offsetWidth;
-    if (allTabsWidth >= componentWidth) {
-      setNavControlsNeeded(true);
-    }
-  }, []);
+    headerTabItems.current[activeTabID].focus();
+    headerTabItems.current[activeTabID].scrollIntoView();
+
+    onTabChange(activeTabID);
+  }, [activeTabID]);
 
   const [backgroundColor] = useState(bgColor || "");
   const [randId] = useState(Math.floor(Math.random() * 1000 + 1));
@@ -107,20 +115,9 @@ const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
       selected: activeTabID === el.props.id,
     });
   });
-  const catchScroll = event => {
-    const item = document.querySelector(`#${TabbedPanelsId}`);
-    const nav = item.querySelector(".nav-tabs");
-    const scrollPos = event.target.scrollLeft;
-    const prevButton = item.querySelector(".scroll-control-prev");
-    const nextButton = item.querySelector(".scroll-control-next");
-    const atFarRight = nav["offsetWidth"] + scrollPos + 3 >= nav.scrollWidth;
-    prevButton["style"].display = scrollPos === 0 ? "none" : "block";
-    nextButton["style"].display = atFarRight ? "none" : "block";
-  };
 
   const slideNav = direction => {
-    const selectedElem = document.querySelector(`#${NavTabsId}`);
-    selectedElem.scrollBy({
+    headerTabs.current.scrollBy({
       left: 200 * direction,
       behavior: "smooth",
     });
@@ -130,32 +127,16 @@ const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
     trackLinkEvent(title);
     e.preventDefault();
     updateTabParam(tabID);
-    onTabChange(tabID);
   };
 
-  const focusOnTab = tabID => {
-    const panels = document.getElementById(TabbedPanelsId);
-    panels.querySelector(`#${tabID}`).focus();
+  const incrementIndex = (up = true) => {
+    const count = childrenArray.length;
+    const num = up ? 1 : -1;
+    const currPos = childrenArray.findIndex(c => c.props.id === activeTabID);
+    const newTabID = childrenArray[(count + currPos + num)%count].props.id;
+    updateTabParam(newTabID);
   };
 
-  const goLeft = () => {
-    const currPos = childrenArray.findIndex(c => c.props.id === activeTabID);
-    if (currPos > 0) {
-      const newTabID = childrenArray[currPos - 1].props.id;
-      updateTabParam(newTabID);
-      focusOnTab(newTabID);
-      onTabChange(newTabID);
-    }
-  };
-  const goRight = () => {
-    const currPos = childrenArray.findIndex(c => c.props.id === activeTabID);
-    if (currPos < childrenArray.length - 1) {
-      const newTabID = childrenArray[currPos + 1].props.id;
-      updateTabParam(newTabID);
-      focusOnTab(newTabID);
-      onTabChange(newTabID);
-    }
-  };
   let navClasses = "uds-tabbed-panels";
   if (backgroundColor === "bg-dark") {
     navClasses += " uds-tabbed-panels-dark";
@@ -163,40 +144,42 @@ const TabbedPanels = ({ id, children, bgColor, onTabChange }) => {
 
   return (
     <div className={backgroundColor} ref={tabbedPanels}>
-      <nav className={navClasses} onScroll={catchScroll} id={TabbedPanelsId}>
+      <nav className={navClasses} id={TabbedPanelsId}>
         <div
           className="nav nav-tabs"
           id={NavTabsId}
           role="tablist"
           ref={headerTabs}
         >
-          {childrenArray.map(child => {
+          {childrenArray.map((child, index) => {
             return (
               <TabHeader
+                ref={setHeaderTabItems(child.props.id)}
                 id={child.props.id}
                 title={child.props.title}
                 selected={activeTabID === child.props.id}
                 selectTab={switchToTab}
                 key={child.props.id}
-                leftKeyPressed={goLeft}
-                rightKeyPressed={goRight}
+                leftKeyPressed={()=>incrementIndex(false)}
+                rightKeyPressed={()=>incrementIndex()}
                 icon={child.props.icon}
+                index={index}
               />
             );
           })}
         </div>
-        {navControlsNeeded && (
-          <NavControls
-            clickPrev={() => {
-              slideNav(-1);
-              trackArrowsEvent("left chevron");
-            }}
-            clickNext={() => {
-              slideNav(1);
-              trackArrowsEvent("right chevron");
-            }}
-          />
-        )}
+        <NavControls
+          hidePrev={scrollLeft === 0}
+          hideNext={scrollLeft === scrollableWidth}
+          clickPrev={() => {
+            slideNav(-1);
+            trackArrowsEvent("left chevron");
+          }}
+          clickNext={() => {
+            slideNav(1);
+            trackArrowsEvent("right chevron");
+          }}
+        />
       </nav>
       <div
         className="tab-content"

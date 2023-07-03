@@ -1,15 +1,34 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { forwardRef, useRef, useImperativeHandle } from "react";
 
-const TabHeader = ({
-  id,
-  selected,
-  title,
-  selectTab,
-  leftKeyPressed,
-  rightKeyPressed,
-  icon,
-}) => {
+const TabHeader = forwardRef(function TabHeader(props, ref) {
+  const {
+    id,
+    selected,
+    title,
+    selectTab,
+    leftKeyPressed,
+    rightKeyPressed,
+    icon,
+  } = props;
+
+  const inputRef = useRef(null);
+
+  useImperativeHandle(
+    ref,
+    () => {
+      return {
+        focus() {
+          inputRef.current.focus();
+        },
+        scrollIntoView() {
+          inputRef.current.scrollIntoView();
+        }
+      };
+    },
+    []
+  );
+
   const func = e => {
     if (e.keyCode === 37) {
       leftKeyPressed();
@@ -19,6 +38,7 @@ const TabHeader = ({
   };
   return (
     <a
+      ref={inputRef}
       className={`nav-item nav-link ${selected ? "active" : ""}`}
       id={id}
       href={`#nav-${id}`}
@@ -32,7 +52,7 @@ const TabHeader = ({
       {title} {icon && <i className={`${icon?.[0]} fa-${icon?.[1]} me-1`} />}
     </a>
   );
-};
+});
 
 TabHeader.propTypes = {
   id: PropTypes.string.isRequired,
