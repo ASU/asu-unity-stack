@@ -1,11 +1,11 @@
 # ASU Unity Design System (UDS)
-## ❯ Quickstart Guide
+## Quickstart Guide
 
-Bootstrap 4 UI theme and React components for building ASU Web Standards 2.0 compliant web sites and apps.
+Using the Unity Bootstrap Theme and React components for building ASU Web Standards 2.0 compliant web sites and apps.
 
-## ❯ For consumers of a single package:
+## ❯ Consuming Unity packages in your project:
 
-1. You must configure your local NPM to use the ASU Unity Design System package registry. You must add a ```.npmrc``` file to your project root or global .npmrc with the following contents:
+1. You must configure your local NPM to use the ASU Unity Design System package registry. Add a ```.npmrc``` file to your project root or global .npmrc with the following contents:
 ```
 @asu:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=YOUR_TOKEN_HERE
@@ -61,7 +61,10 @@ include JS files with the following naming convention:
 Select the module type that works for your use case and include it in your project. Most React packages in Unity include an examples/ folder which provides
 an HTML example illustrating how to implement the UMD approach.
 
-## ❯ Dependencies
+
+## Advanced Details for Unity Developers and Contributors
+
+## > Dependencies
 
 In order to build the project, the dev environment needs to have the following programs installed:
 - Node.js
@@ -318,9 +321,6 @@ To assist contributors with writing compliant commit messages, the `commitizen` 
 ## ❯ Contributing:
 
 Read contribution guide here: [CONTRIBUTING.md](./CONTRIBUTING.md)
-
-### TODO
-Dockerfile, Jenkinsfile, and server/server.js and server/stop.js will become unnecessary and can be removed.
 
 ### See [here](https://docs.github.com/en/actions/guides/publishing-nodejs-packages) for more information about publishing packages
 
