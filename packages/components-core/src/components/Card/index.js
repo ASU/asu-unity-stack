@@ -149,7 +149,7 @@ Card.propTypes = {
   /**
    * Card link
    */
-  cardLink: PropTypes.string
+  cardLink: PropTypes.string,
 };
 
 Card.defaultProps = {
@@ -329,7 +329,9 @@ const CardContent = ({
   <>
     {!!title && (
       <div className="card-header" data-testid="card-title">
-        <h3 className="card-title">{cardLink ? <a href={cardLink}>{title}</a> : title}</h3>
+        <h3 className="card-title">
+          {cardLink ? <a href={cardLink}>{title}</a> : title}
+        </h3>
       </div>
     )}
     {!!body && (

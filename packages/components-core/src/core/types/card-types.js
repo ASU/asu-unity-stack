@@ -11,7 +11,7 @@
  * @property {boolean} [horizontal]
  * @property {string} [image]
  * @property {string} [imageAltText]
- * @property {string} [title]
+ * @property {string} title
  * @property {string[]} [icon]
  * @property {string} [body]
  * @property {string} [eventLocation]

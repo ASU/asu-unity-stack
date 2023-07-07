@@ -1,6 +1,6 @@
 // @ts-nocheck
 import PropTypes from "prop-types";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import { accordionCardPropTypes } from "../../core/models/shared-prop-types";
 import { trackGAEvent } from "../../core/services/googleAnalytics";

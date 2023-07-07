@@ -1,7 +1,7 @@
 // @ts-check
 
 /**
- * @param {string []} classes
+ * @param {string []} [classes]
  * @returns {string}
  */
 const spreadClasses = classes => (classes || []).join(" ");
