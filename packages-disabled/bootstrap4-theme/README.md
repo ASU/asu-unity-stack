@@ -139,30 +139,11 @@ A Workspace in VS Code is your project workspace and special settings you choose
 
 ### Clone and initialize this project
 
-Once you have verified that node and yarn installed correctly, it is time to download and initialize this project and all its software dependencies.
-
-First, use your favorite git client ([Gitkraken](https://www.gitkraken.com/) is a popular and easy-to-use option), and clone this repo to your preferred folder on your computer; e.g. on MacOS/Linux:
-
-```
-cd ~
-mkdir projects
-cd projects
-
-git clone https://github.com/gios-asu/asu-web-standards-bootstrap4
-cd asu-web-standards-bootstrap4
-```
-
-Now that you are located in the root of the project, initialize the project and install all of its build tools:
-
-```
-yarn install
-```
-
-Wait until this install process completes.
+This Project is a monorepo, which means it contains multiple projects in a single repository. To clone this project, open a terminal and navigate to a suitable location on your computer. You must clone the entire project if you want to contribute, not just the individual packages. See instructions [here](https://github.com/ASU/asu-unity-stack#-how-to-use-the-private-package-registry) on how to do that
 
 ### Launch Storybook Dev Server
 
-In your terminal, still located at the root of the project, type:
+In your terminal, in the bootstrap4-theme package type:
 
 ```
 yarn storybook

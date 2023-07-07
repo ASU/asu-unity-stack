@@ -18,10 +18,11 @@ You can also see the storybook example at `src/SearchPage/index.stories.js`.
 ## `WebDirectoryComponent`
 This component is a bit more complicated. It's props, `searchType`, `ids`, and `searchURL`, dictate which of three different scenarios is active.
 
-- `searchType` can be one of three different values:
+- `searchType` can be one of four different values:
   - departments
   - people
   - people_departments
+  - faculty_rank
 - `ids` is either a lit of comma-separated ids (when `searchType` is 'departments) or
 a list of objects containing `asuriteid` and `dept` pairs (when `searchType` is 'people' or 'people_departments')
 - `searchURL` is a string that tells the component where to search. The endpoint names

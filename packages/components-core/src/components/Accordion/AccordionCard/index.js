@@ -19,7 +19,7 @@ export const AccordionCard = ({ id, item, openCard, onClick }) => (
   <div
     className={classNames("accordion-item", "mt-3", {
       [`accordion-item-${item.color}`]: item.color,
-      [`accordion-header-icon`]: item.content.icon,
+      [`accordion-header-icon`]: item.content?.icon,
     })}
   >
     <div className="accordion-header">
@@ -32,9 +32,9 @@ export const AccordionCard = ({ id, item, openCard, onClick }) => (
           role="button"
           aria-expanded={id === openCard}
           aria-controls={`card-body-${id}`}
-          onClick={e => onClick(e, id, item.content.header)}
+          onClick={e => onClick(e, id, item.content?.header)}
         >
-          {item.content.icon ? (
+          {item.content?.icon ? (
             <span className="accordion-icon">
               <i
                 className={`${item.content.icon?.[0]} fa-${item.content.icon?.[1]} me-2`}
@@ -48,14 +48,16 @@ export const AccordionCard = ({ id, item, openCard, onClick }) => (
         </a>
       </h4>
     </div>
-    <div
-      id={`card-body-${id}`}
-      className={classNames("collapse", "accordion-body", {
-        [`show`]: id === openCard,
-      })}
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={sanitizeDangerousMarkup(item.content.body)}
-    />
+    {item.content?.body && (
+      <div
+        id={`card-body-${id}`}
+        className={classNames("collapse", "accordion-body", {
+          [`show`]: id === openCard,
+        })}
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={sanitizeDangerousMarkup(item.content.body)}
+      />
+    )}
   </div>
 );
 
