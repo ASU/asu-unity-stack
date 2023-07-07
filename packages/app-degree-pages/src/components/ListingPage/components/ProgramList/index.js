@@ -68,10 +68,10 @@ function ProgramList({
   if (!degreesPerPage) {
     defaultDegreesPerPage = 8;
   } else if (typeof degreesPerPage !== "number") {
-    defaultDegreesPerPage = parseInt(degreesPerPage);
+    defaultDegreesPerPage = parseInt(degreesPerPage, 10);
   }
 
-  const ROW_PAGES = degreesPerPage ||  defaultDegreesPerPage;
+  const ROW_PAGES = degreesPerPage || defaultDegreesPerPage;
   const TOTAL_PAGES = computePages(programs.length, ROW_PAGES);
   const ProgramsViewer = programViewer[dataViewComponent];
   const [tableView, setTableView] = useState([]);
@@ -135,6 +135,5 @@ ProgramList.propTypes = {
   ...degreeListPropTypes,
   degreesPerPage: PropTypes.number,
 };
-
 
 export { ProgramList, GridView, ListView };
