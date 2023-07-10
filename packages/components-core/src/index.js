@@ -11,7 +11,6 @@ import {
   Hero,
   Accordion,
   Video,
-  TabbedPanels,
 } from "./components";
 
 export * from "./components/FeedAnatomy";
@@ -32,5 +31,4 @@ export {
   Hero,
   Accordion,
   Video,
-  TabbedPanels,
 };
