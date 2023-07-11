@@ -57,7 +57,6 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
 
   useEffect(() => {
     const handleClickOutside = event => {
-      event.preventDefault();
       if (
         opened &&
         (!clickRef?.current?.contains(event.target))) {
