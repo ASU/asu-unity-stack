@@ -1,6 +1,6 @@
 // @ts-check
 import React from "react";
-import { ASUFooter } from "@asu-design-system/component-footer/dist/asuFooter.es";
+import { ASUFooter } from "@asu/component-footer/dist/asuFooter.es";
 import styled from "styled-components";
 
 const FooterSection = styled.div`
