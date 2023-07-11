@@ -100,6 +100,11 @@
     "react-share": "^4.4.0",
     "reactstrap": "^8.9.0"
   },
+  "exports": {
+    "./dist/libCore.es.js": {
+      "default": "./src/index.js"
+    }
+  },
   "volta": {
     "extends": "../../package.json"
   }
