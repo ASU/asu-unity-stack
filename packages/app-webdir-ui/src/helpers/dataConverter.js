@@ -240,6 +240,7 @@ const formatImageUrl = baseUrl => {
     AVAILABLE_IMG_SIZES.MEDIUM
   );
   url.searchParams.append(AVAILABLE_URL_PARAMS.BREAK, nearestHundredSeconds());
+  url.searchParams.append('blankImage2', 'true');
 
   return url.toString();
 };
