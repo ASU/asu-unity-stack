@@ -6,6 +6,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useMediaQuery } from "../../core/hooks/use-media-query";
 import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { queryFirstFocusable } from "../../core/utils/html-utils";
+import { throttle, debounce } from "../../core/utils/timers";
 import { Button } from "../Button";
 import { AnchorMenuWrapper } from "./index.styles";
 
@@ -32,14 +33,18 @@ export const AnchorMenu = ({
   focusFirstFocusableElement = false,
 }) => {
   const anchorMenuRef = useRef(null);
-  const [hasHeader, setHasHeader] = useState(false);
-  const [requiresAltMenuSpacing, setRequiresAltMenuSpacing] = useState(false);
-  const [actualContainer, setActualContainer] = useState("");
-  const [showMenu, setShowMenu] = useState(false);
   const isSmallDevice = useMediaQuery("(max-width: 991px)");
+  const [state, setState] = useState({
+    hasHeader: false,
+    hasDegreeContainer: false,
+    containerClass: "container-xl",
+    activeContainer: "",
+    showMenu: false,
+  });
   const headerHeight = isSmallDevice ? 110 : 142;
 
   const handleWindowScroll = () => {
+    const newState = {};
     const curPos = window.scrollY;
     // Select first next sibling element of the anchor menu
     const firstElement = document
@@ -49,15 +54,14 @@ export const AnchorMenu = ({
 
     // Scroll position
     if (firstElement >= 0) {
-      anchorMenuRef.current.classList.remove("sticky");
-      setActualContainer("");
+      newState.sticky = false;
+      newState.activeContainer = "";
     }
     if (curPos > anchorMenuRef.current.getBoundingClientRect().top)
-      anchorMenuRef.current.classList.add("sticky");
+      newState.sticky = true;
 
     // Change active containers on scroll
-    let curSection = "";
-    const subsHeight = hasHeader
+    const subsHeight = state.hasHeader
       ? headerHeight + anchorMenuHeight
       : anchorMenuHeight;
     items?.forEach(({ targetIdName }) => {
@@ -66,44 +70,86 @@ export const AnchorMenu = ({
       const containerBottom =
         container?.getBoundingClientRect().bottom - subsHeight;
       if (containerTop < 0 && containerBottom > 0) {
-        curSection = targetIdName;
+        newState.activeContainer = targetIdName;
       }
     });
 
-    setActualContainer(curSection);
+    setState(prevState => ({
+      ...prevState,
+      ...newState,
+    }));
+  };
+
+  const throttleWindowScroll = () => {
+    const timeout = 150;
+    // prevent function from being called excessively
+    throttle(handleWindowScroll, timeout);
+    // ensure function executes after scrolling stops
+    debounce(handleWindowScroll, timeout);
   };
 
   // Set any ASU Header on the document
-  const setHeader = () => {
+  const getHasHeader = () => {
     const pageHeader =
       document.getElementById("asu-header") ||
       document.getElementById("headerContainer") ||
       document.getElementById("asuHeader");
-    setHasHeader(!!pageHeader);
+    return (!!pageHeader);
   };
 
   // Sets prop for styled-component to change anchor menu style
   // based on if it requires different spacing for the ASU Header
-  const findContainersRequiringAltMenuSpacing = () => {
+  const getHasDegreeContainer = () => {
     const degreeDetailPageContainer = document.getElementById(
       "degreeDetailPageContainer"
     );
-    if (degreeDetailPageContainer) setRequiresAltMenuSpacing(true);
+    return (!!degreeDetailPageContainer);
   };
 
+  // Returns the first container class found from ancestors or default
+  function getContainerClass(el = null) {
+    if (el === null) return state.containerClass;
+
+    const result = Object.values(el.classList).filter(c =>
+      [
+        "container-sm",
+        "container-md",
+        "container",
+        "container-lg",
+        "container-xl",
+        "container-fluid",
+      ].includes(c)
+    );
+
+    if (result.length > 0) return result.join(" ");
+
+    return getContainerClass(el.parentElement);
+  }
+
+  // get values from outside this component
+  // set initial state from external values
   useEffect(() => {
-    setHeader();
-    findContainersRequiringAltMenuSpacing();
+    const firstElement = document.getElementById(firstElementId) || null;
+    const newState = {
+      hasHeader: getHasHeader(),
+      hasDegreeContainer: getHasDegreeContainer(),
+      containerClass: getContainerClass(firstElement),
+    };
+    setState(prevState => ({
+      ...prevState,
+      ...newState,
+    }));
   }, []);
 
   useEffect(() => {
-    window?.addEventListener("scroll", handleWindowScroll);
-    return () => window.removeEventListener("scroll", handleWindowScroll);
-  }, [hasHeader]);
+    window?.addEventListener("scroll", throttleWindowScroll);
+    return () => window.removeEventListener("scroll", throttleWindowScroll);
+  }, [state.hasHeader]);
 
   const handleClickLink = container => {
     // Set scroll position considering if ASU Header is setted or not
-    const curScroll = window.scrollY - (hasHeader ? headerHeight + 100 : 100);
+    const curScroll =
+      window.scrollY - (state.hasHeader ? headerHeight + 100 : 100);
     const anchorMenuHeight = isSmallDevice ? 410 : 90;
     // Set where to scroll to
     let scrollTo =
@@ -122,28 +168,33 @@ export const AnchorMenu = ({
   const trackMobileDropdownEvent = () => {
     trackGAEvent({
       ...defaultMobileGAEvent,
-      action: showMenu ? "close" : "open",
+      action: state.showMenu ? "close" : "open",
     });
   };
 
   const handleMenuVisibility = () => {
-    setShowMenu(prevState => !prevState);
+    setState(prevState => ({
+      ...prevState,
+      showMenu: !prevState.showMenu,
+    }));
   };
 
   return (
     <AnchorMenuWrapper
       // @ts-ignore
-      requiresAltMenuSpacing={requiresAltMenuSpacing}
+      requiresAltMenuSpacing={state.hasDegreeContainer}
       ref={anchorMenuRef}
-      className={`uds-anchor-menu uds-anchor-menu-expanded-lg ${
-        hasHeader ? "with-header " : ""
+      className={`uds-anchor-menu uds-anchor-menu-expanded-lg ${state.sticky ? "sticky" : ""} ${
+        state.hasHeader ? "with-header " : ""
       }mb-4`}
-      style={showMenu ? { borderBottom: 0 } : {}}
+      style={state.showMenu ? { borderBottom: 0 } : {}}
     >
-      <div className="container-xl uds-anchor-menu-wrapper">
+      <div className={`${state.containerClass} uds-anchor-menu-wrapper`}>
         {isSmallDevice ? (
           <button
-            className={`${showMenu ? "show-menu " : ""}mobile-menu-toggler`}
+            className={`${
+              state.showMenu ? "show-menu " : ""
+            }mobile-menu-toggler`}
             type="button"
             onClick={() => {
               trackMobileDropdownEvent();
@@ -165,7 +216,7 @@ export const AnchorMenu = ({
           data-testid="anchor-menu-container"
           id="collapseAnchorMenu"
           className={classNames("card", "card-body", "collapse", {
-            [`show`]: showMenu,
+            [`show`]: state.showMenu,
           })}
         >
           <nav data-testid="anchor-menu" className="nav" aria-label={menuTitle}>
@@ -177,7 +228,7 @@ export const AnchorMenu = ({
                 key={item.targetIdName}
                 classes={[
                   "nav-link",
-                  `${actualContainer === item.targetIdName ? "active" : ""}`,
+                  `${state.activeContainer === item.targetIdName ? "active" : ""}`,
                 ]}
                 ariaLabel={item.text}
                 label={item.text}
