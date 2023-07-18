@@ -23,7 +23,7 @@ const asuLocalOptions = [
   { id: 7, value: "YAVAP", text: "ASU at Yavapai" },
   { id: 8, value: "AWC", text: "ASU at Yuma" },
   { id: 9, value: "MESACITYCR", text: "ASU at Mesa City Center" },
-  { id: 10, value: "CALHC", text: "ASU at Colleges at Lake Havasu City" },
+  { id: 10, value: "CALHC", text: "Colleges at Lake Havasu City" },
 ];
 
 const acceleratedConcurrentOptions = [
