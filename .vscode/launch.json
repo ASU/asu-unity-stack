@@ -11,7 +11,7 @@
       "url": "http://localhost:9080",
       "trace": true,
       "sourceMaps": true,
-      "webRoot": "${workspaceFolder}/packages/component-header",
+      "webRoot": "${workspaceFolder}/packages/<package-name>",
       "sourceMapPathOverrides": {
         "webpack:///*": "${webRoot}/*",
         "webpack:///./*": "${webRoot}/*",
