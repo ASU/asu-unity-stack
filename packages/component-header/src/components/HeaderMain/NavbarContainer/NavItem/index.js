@@ -2,7 +2,7 @@
 import { faChevronDown, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useRef, useEffect, useMemo } from "react";
 
 import { useAppContext } from "../../../../core/context/app-context";
 import { useIsMobile } from "../../../../core/hooks/isMobile";
@@ -10,6 +10,7 @@ import { NavTreePropTypes } from "../../../../core/models/app-prop-types";
 import { trackGAEvent } from "../../../../core/services/googleAnalytics";
 import { DropdownItem } from "../DropdownItem";
 import { NavItemWrapper } from "./index.styles";
+const DROPDOWN_CONTAINER_CLASS = "dropdown-container";
 
 export const DROPDOWNS_GA_EVENTS = {
   event: "collapse",
@@ -43,17 +44,32 @@ NavLinkIcon.propTypes = {
  * @param {{
  *  link: NavTreeProps,
  *  setItemOpened: (value: any) => void,
- *  itemOpened: number
+ *  itemOpened: number | undefined,
  * }} props
  * @returns
  */
 
 const NavItem = ({ link, setItemOpened, itemOpened }) => {
+  const clickRef = useRef(null);
   const opened = link.id === itemOpened;
   const { breakpoint, expandOnHover, title } = useAppContext();
   const isMobile = useIsMobile(breakpoint);
 
-  const renderNavLinks = () => {
+  useEffect(() => {
+    const handleClickOutside = event => {
+      if (
+        opened &&
+        (!clickRef?.current?.contains(event.target))) {
+        setItemOpened();
+      }
+    };
+    document.addEventListener('click', handleClickOutside, true);
+    return () => {
+      document.removeEventListener('click', handleClickOutside, true);
+    };
+  }, [opened]);
+
+  const renderNavLinks = useMemo(() => {
     if (link.type === "icon-home") {
       return <NavLinkIcon>{link.text}</NavLinkIcon>;
     }
@@ -62,6 +78,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
         {link.text}
         {!!link.items?.length && (
           <FontAwesomeIcon
+            // @ts-ignore
             icon={faChevronDown}
             className={`chevron-icon ${opened ? "open" : ""}`}
             // @ts-ignore
@@ -70,13 +87,15 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
         )}
       </span>
     );
-  };
+  }, [link]);
+
 
   const dispatchGAEvent = () => {
     const isDropdown = !!link.items?.length;
     const action = opened ? "close" : "open";
     const { text } = link;
     trackGAEvent(
+      // @ts-ignore
       isDropdown
         ? {
             ...DROPDOWNS_GA_EVENTS,
@@ -113,12 +132,14 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
     <NavItemWrapper
       // @ts-ignore
       breakpoint={breakpoint}
-      onClick={handleClick}
+      ref={clickRef}
       onMouseEnter={handleOnMouseEnterLeave}
       onMouseLeave={handleOnMouseEnterLeave}
+
     >
       {/* @ts-ignore */}
       <a
+        onClick={handleClick}
         href={link.href}
         aria-expanded={() => "true"} // eslint-disable-line no-nested-ternary
         aria-owns={link.items ? `dropdown-${link.id}` : null}
@@ -131,12 +152,14 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
           link.type === "icon-home" && title ? `${title} home page` : link.text
         }
       >
-        {renderNavLinks()}
+        {renderNavLinks}
       </a>
       {link.items && (
         <DropdownItem
           items={link.items}
+          // @ts-ignore
           buttons={link.buttons}
+          // @ts-ignore
           dropdownName={link.text}
           classes={`header-dropdown-${link.id} ${opened ? "opened" : ""}`}
           listId={`dropdown-${link.id}`}
