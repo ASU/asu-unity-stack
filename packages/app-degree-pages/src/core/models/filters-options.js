@@ -13,17 +13,17 @@ const locationOptions = [
 const onlneOption = locationOptions[4];
 
 const asuLocalOptions = [
-  { id: 0, value: "COCHS", text: "Cochise" },
-  { id: 1, value: "LOSAN", text: "Los Angeles" },
-  { id: 2, value: "NEAZ", text: "Northeastern Arizona" },
-  { id: 3, value: "PIMA", text: "Pima" },
-  { id: 4, value: "CAC", text: "Pinal" },
-  { id: 5, value: "EAC", text: "TheGilaValley" },
-  { id: 6, value: "TUCSN", text: "Tucson" },
-  { id: 7, value: "YAVAP", text: "Yavapai" },
-  { id: 8, value: "AWC", text: "Yuma" },
-  { id: 9, value: "MESACITYCR", text: "Mesa City Center" },
-  { id: 10, value: "CALHC", text: "Colleges at Lake Havasu City" },
+  { id: 0, value: "COCHS", text: "ASU at Cochise" },
+  { id: 1, value: "LOSAN", text: "ASU at Los Angeles" },
+  { id: 2, value: "NEAZ", text: "ASU at Northeastern Arizona" },
+  { id: 3, value: "PIMA", text: "ASU at Pima" },
+  { id: 4, value: "CAC", text: "ASU at Pinal" },
+  { id: 5, value: "EAC", text: "ASU at TheGilaValley" },
+  { id: 6, value: "TUCSN", text: "ASU at Tucson" },
+  { id: 7, value: "YAVAP", text: "ASU at Yavapai" },
+  { id: 8, value: "AWC", text: "ASU at Yuma" },
+  { id: 9, value: "MESACITYCR", text: "ASU at Mesa City Center" },
+  { id: 10, value: "CALHC", text: "ASU at Colleges at Lake Havasu City" },
 ];
 
 const acceleratedConcurrentOptions = [
