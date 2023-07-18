@@ -38,7 +38,7 @@ function OnThisPageAnchorMenu({ anchorMenu }) {
     <AnchorMenu
       items={anchorList}
       firstElementId={anchorList[0]?.targetIdName}
-      focusFirstFocusableElement
+      focusFirstFocusableElement={false}
     />
   );
 }
