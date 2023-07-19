@@ -194,7 +194,7 @@ const TabbedPanels = ({ initialTab, children, bgColor, onTabChange = () => {} })
 };
 
 TabbedPanels.propTypes = {
-  id: PropTypes.string,
+  initialTab: PropTypes.string,
   children: PropTypes.arrayOf(PropTypes.element).isRequired,
   bgColor: PropTypes.string,
   onTabChange: PropTypes.func,
