@@ -36,7 +36,7 @@ describe("#OnThisPageAnchorMenu", () => {
         firstElementId: expect.stringContaining(
           progDetailSectionIds.affordingCollege.targetIdName
         ),
-        focusFirstFocusableElement: true,
+        focusFirstFocusableElement: false,
       }),
       expect.anything()
     );
