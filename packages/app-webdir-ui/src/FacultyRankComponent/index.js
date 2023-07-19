@@ -40,7 +40,7 @@ export const FacultyRankTabPanels = ({
   tempFilters["deptIds"] = deptIds.split(",");
 
   return (
-    <TabbedPanels onTabChange={() => true} id="faculty-rank-tabs">
+    <TabbedPanels onTabChange={() => true}>
       <Tab id="faculty" title="Faculty">
         <ASUSearchResultsList
           engine={enginesWithParams[searchTypeEngineMap[searchType]]}
