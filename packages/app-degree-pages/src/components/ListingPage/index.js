@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState, useContext } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
-import { Hero } from "../../../../components-core/src/components/Hero";
-import { useFetch } from "../../../../components-core/src/core/hooks/use-fetch";
+import { Hero, useFetch } from "@asu/components-core";
 import {
   Loader,
   Main as MainSection,

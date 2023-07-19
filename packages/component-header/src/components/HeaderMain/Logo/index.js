@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from "react";
 
-import { getCurrentScriptPath } from "../../../../../components-core/src/core/utils/script-utils";
+import { getCurrentScriptPath } from "@asu/components-core";
 import { useAppContext } from "../../../core/context/app-context";
 import { trackGAEvent } from "../../../core/services/googleAnalytics";
 import { LogoWrapper } from "./index.styles";

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-import { TabbedPanels, Tab } from "../../../components-core";
+import { TabbedPanels, Tab } from "@asu/components-core";
 import { engineNames, engines } from "../helpers/search";
 import { ASUSearchResultsList } from "../SearchResultsList";
 
