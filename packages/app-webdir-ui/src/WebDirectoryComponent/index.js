@@ -54,7 +54,7 @@ function WebDirectory({
         display?.defaultSort
       )
     ) {
-      return defaultCMSOptions[display.defaultSort];
+      return defaultCMSOptions[display?.defaultSort];
     }
     return "last_name_asc"; // defaults to last_name_asc if no default sort is set in CMS
   }
@@ -137,12 +137,12 @@ function WebDirectory({
             <ASUSearchResultsList
               engine={enginesWithParams[searchTypeEngineMap[searchType]]}
               itemsPerPage={
-                parseInt(display.profilesPerPage, 10) || RES_PER_PAGE
+                parseInt(display?.profilesPerPage, 10) || RES_PER_PAGE
               }
               sort={sort}
-              hidePaginator={display.usePager !== "1"}
+              hidePaginator={display?.usePager !== "1"}
               filters={requestFilters}
-              profilesToFilterOut={display.doNotDisplayProfiles}
+              profilesToFilterOut={display?.doNotDisplayProfiles}
               display={display}
               appPathFolder={appPathFolder}
             />

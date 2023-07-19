@@ -158,7 +158,11 @@ function SearchPage({
           )}
         </div>
       </div>
-      <TabbedPanels id={searchTabsId} onTabChange={() => true}>
+      <TabbedPanels
+        initialTab={searchParams.get(searchTabsId)}
+        id={searchTabsId}
+        onTabChange={tab => goToTab(tab)}
+      >
         <Tab id={tabIds.all} title="All ASU Search">
           {preSearchOrContent(
             <AllTab
