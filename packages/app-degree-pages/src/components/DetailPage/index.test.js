@@ -1,11 +1,11 @@
 // @ts-check
 // import * as componentsCore from "@asu/components-core";
+import { Hero } from "@asu/components-core";
 import { render, act, waitFor, cleanup } from "@testing-library/react";
 import React from "react";
 
 import { DetailPage } from "./index";
 
-import { Hero } from "../../../../components-core/src/components/Hero";
 import * as service from "../../core/services/degree-data-prop-resolver-service";
 
 /**

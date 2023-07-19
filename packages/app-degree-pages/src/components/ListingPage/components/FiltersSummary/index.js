@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { idGenerator } from "../../../../../../components-core/src/core/utils/id-generator";
+import { idGenerator } from "@asu/components-core";
 import { filterValueShape, isAccelConcValid } from "../../../../core/models";
 
 /**

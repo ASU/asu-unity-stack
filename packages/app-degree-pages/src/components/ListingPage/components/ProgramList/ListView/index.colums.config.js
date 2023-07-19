@@ -2,7 +2,7 @@
 // @ts-check
 import React from "react";
 
-import { idGenerator } from "../../../../../../../components-core/src/core/utils/id-generator";
+import { idGenerator } from "@asu/components-core";
 import {
   ChevronIconButton,
   InfoButtonIcon,
