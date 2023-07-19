@@ -1,7 +1,7 @@
 // @ts-check
 import classNames from "classnames";
 import PropTypes from "prop-types";
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 
 import { trackGAEvent } from "../../core/services/googleAnalytics";
 
@@ -26,15 +26,15 @@ const defaultGAEvent = {
 const videoTemplate = ({
   url = "",
   vttUrl,
-  caption = null,
+  caption,
   title = "",
   className,
   controls = true,
 }) => {
-  /** @type {React.MutableRefObject<HTMLVideoElement>} */
-  const videoRef = useRef();
+  /** @type {React.MutableRefObject<HTMLVideoElement | null>} */
+  const videoRef = useRef(null);
 
-  const onVideoClick = e => {
+  const onVideoClick = () => {
     trackGAEvent({ ...defaultGAEvent, section: title });
   };
 
@@ -76,12 +76,7 @@ const videoTemplate = ({
  * @returns {JSX.Element}
  * @ignore
  */
-const youtubeTemplate = ({
-  title = "",
-  caption = null,
-  url = "",
-  className,
-}) => (
+const youtubeTemplate = ({ title = "", caption, url = "", className }) => (
   <div
     className={classNames(`uds-video-container ${className}`, {
       "uds-video-with-caption": caption,
@@ -107,10 +102,10 @@ const Video = props => {
   const {
     type = "video",
     url = "",
-    vttUrl = null,
+    vttUrl,
     title = "",
-    caption = null,
-    className = null,
+    caption,
+    className,
     controls = true,
   } = props;
   return type === "youtube"

@@ -81,7 +81,8 @@ yarn test
 
 ## How to install
 
-1. Make sure you are set up to use the private npm registry at registry.web.asu.edu. See instructures in the 'How to use private package registry' here: [README.md](../../README.md)
+1. Either make sure you are part of the ASU github organization and follow the instructions [here,](https://github.com/ASU/asu-unity-stack#-how-to-use-the-private-package-registry)or, if you already are, you can clone this repo and run `yarn install` and `yarn build` to build the package locally.
+
 2. ```yarn add @asu/component-news```
 
 ## Use as a JS module in React app

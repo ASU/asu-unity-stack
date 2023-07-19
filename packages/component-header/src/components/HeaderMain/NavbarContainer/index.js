@@ -17,7 +17,7 @@ const NavbarContainer = () => {
   const [itemOpened, setItemOpened] = useState(undefined);
 
   const handleSetItemOpened = itemId => {
-    setItemOpened(itemId === itemOpened ? undefined : itemId);
+    setItemOpened(prev => (itemOpened === itemId ? undefined : itemId));
   };
 
   const renderItem = (link, index) => {
