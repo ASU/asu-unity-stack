@@ -36,10 +36,11 @@ export const AnchorMenu = ({
   const isSmallDevice = useMediaQuery("(max-width: 991px)");
   const [state, setState] = useState({
     hasHeader: false,
-    hasDegreeContainer: false,
+    hasAltMenuSpacing: false,
     containerClass: "container-xl",
     activeContainer: "",
     showMenu: false,
+    sticky: false,
   });
   const headerHeight = isSmallDevice ? 110 : 142;
 
@@ -88,8 +89,8 @@ export const AnchorMenu = ({
     debounce(handleWindowScroll, timeout);
   };
 
-  // Set any ASU Header on the document
-  const getHasHeader = () => {
+  // Is ASU Header on the document
+  const isHeader = () => {
     const pageHeader =
       document.getElementById("asu-header") ||
       document.getElementById("headerContainer") ||
@@ -97,9 +98,9 @@ export const AnchorMenu = ({
     return (!!pageHeader);
   };
 
+  // Is element present which requires different spacing for the ASU Header
   // Sets prop for styled-component to change anchor menu style
-  // based on if it requires different spacing for the ASU Header
-  const getHasDegreeContainer = () => {
+  const isAltMenuSpacing = () => {
     const degreeDetailPageContainer = document.getElementById(
       "degreeDetailPageContainer"
     );
@@ -131,8 +132,8 @@ export const AnchorMenu = ({
   useEffect(() => {
     const firstElement = document.getElementById(firstElementId) || null;
     const newState = {
-      hasHeader: getHasHeader(),
-      hasDegreeContainer: getHasDegreeContainer(),
+      hasHeader: isHeader(),
+      hasAltMenuSpacing: isAltMenuSpacing(),
       containerClass: getContainerClass(firstElement),
     };
     setState(prevState => ({
@@ -182,19 +183,25 @@ export const AnchorMenu = ({
   return (
     <AnchorMenuWrapper
       // @ts-ignore
-      requiresAltMenuSpacing={state.hasDegreeContainer}
+      requiresAltMenuSpacing={state.hasAltMenuSpacing}
       ref={anchorMenuRef}
-      className={`uds-anchor-menu uds-anchor-menu-expanded-lg ${state.sticky ? "sticky" : ""} ${
-        state.hasHeader ? "with-header " : ""
-      }mb-4`}
+      className={classNames(
+        "uds-anchor-menu",
+        "uds-anchor-menu-expanded-lg",
+        "mb-4",
+        {
+          [`sticky`]: state.sticky,
+          [`with-header`]: state.hasHeader,
+        }
+      )}
       style={state.showMenu ? { borderBottom: 0 } : {}}
     >
       <div className={`${state.containerClass} uds-anchor-menu-wrapper`}>
         {isSmallDevice ? (
           <button
-            className={`${
-              state.showMenu ? "show-menu " : ""
-            }mobile-menu-toggler`}
+            className={classNames("mobile-menu-toggler", {
+              [`show-menu`]: state.showMenu,
+            })}
             type="button"
             onClick={() => {
               trackMobileDropdownEvent();
@@ -226,10 +233,9 @@ export const AnchorMenu = ({
               <Button
                 data-testid={`anchor-item-${item.targetIdName}`}
                 key={item.targetIdName}
-                classes={[
-                  "nav-link",
-                  `${state.activeContainer === item.targetIdName ? "active" : ""}`,
-                ]}
+                classes={classNames("nav-link", {
+                  [`active`]: state.activeContainer === item.targetIdName,
+                }).split(" ")}
                 ariaLabel={item.text}
                 label={item.text}
                 icon={item.icon}
