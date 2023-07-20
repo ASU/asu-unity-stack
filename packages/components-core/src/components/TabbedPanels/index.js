@@ -42,10 +42,16 @@ Tab.propTypes = {
   ]),
 };
 
-const TabbedPanels = ({ initialTab, children, bgColor, onTabChange = () => {} }) => {
+const TabbedPanels = ({
+  initialTab,
+  children,
+  bgColor,
+  onTabChange = () => {},
+}) => {
   const childrenArray = React.Children.toArray(children);
   const selectedChild =
-    childrenArray.find(({props}) => initialTab === props.id) || childrenArray[0];
+    childrenArray.find(element => initialTab === element.props.id) ||
+    childrenArray[0];
   const [activeTabID, setActiveTabID] = useState(selectedChild.props.id);
   const headerTabs = useRef(null);
   const [headerTabItems, setHeaderTabItems] = useRefs();
