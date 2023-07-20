@@ -1,7 +1,6 @@
+import { sanitizeDangerousMarkup } from "@asu/components-core";
 import PropTypes from "prop-types";
 import React from "react";
-
-import { sanitizeDangerousMarkup } from "../../../../../../components-core/src/core/utils/html-utils";
 
 /** @typedef {import('../../../../core/types/detail-page-types').ProgramDescriptionProps} ProgramDescriptionProps */
 

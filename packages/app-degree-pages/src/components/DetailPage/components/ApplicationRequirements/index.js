@@ -1,13 +1,15 @@
 /* eslint-disable react/no-danger */
 // @ts-check
+import {
+  Accordion,
+  Button,
+  sanitizeDangerousMarkup,
+} from "@asu/components-core";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
 
-import { Accordion } from "../../../../../../components-core/src/components/Accordion";
-import { Button } from "../../../../../../components-core/src/components/Button";
-import { sanitizeDangerousMarkup } from "../../../../../../components-core/src/core/utils/html-utils";
 import { progDetailSectionIds } from "../../../../core/models";
 
 /**

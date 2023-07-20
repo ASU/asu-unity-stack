@@ -7,6 +7,8 @@ import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { sanitizeDangerousMarkup } from "../../core/utils/html-utils";
 import { Button } from "../Button";
 import { ButtonTag } from "../ButtonTag";
+// eslint-disable-next-line import/no-cycle
+import { Image } from "../Image";
 import { CardWrapper } from "./index.styles";
 import { emailAddressParser } from "./utils/emailAddressParser";
 
@@ -205,13 +207,11 @@ const BaseCard = ({
     <>
       <CardWrapper className={cardClass} data-testid="card-container">
         {!!image && (
-          <img
-            className="card-img-top"
+          <Image
             src={image}
             alt={imageAltText}
-            data-testid="card-image"
-            loading="lazy"
-            decoding="async"
+            dataTestId="card-image"
+            cssClasses={["card-img-top"]}
           />
         )}
         {!image && icon && (

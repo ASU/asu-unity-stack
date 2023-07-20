@@ -4,6 +4,8 @@ import React, { useState } from "react";
 
 import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { sanitizeDangerousMarkup } from "../../core/utils/html-utils";
+// eslint-disable-next-line import/no-cycle
+import { Image } from "../Image";
 
 const gaDefaultObject = {
   name: "onclick",
@@ -28,24 +30,10 @@ const isSmallSize = size => size === AVAILABLE_SIZES.SMALL;
 const ImageWrapper = ({ size, image, imageAlt }) => {
   return isSmallSize(size) ? (
     <div className="image-wrapper">
-      <img
-        src={image}
-        alt={imageAlt}
-        loading="lazy"
-        decoding="async"
-        // eslint-disable-next-line react/no-unknown-property
-        fetchpriority="high"
-      />
+      <Image src={image} alt={imageAlt} fetchPriority="high" />
     </div>
   ) : (
-    <img
-      src={image}
-      alt={imageAlt}
-      loading="lazy"
-      decoding="async"
-      // eslint-disable-next-line react/no-unknown-property
-      fetchpriority="high"
-    />
+    <Image src={image} alt={imageAlt} fetchPriority="high" />
   );
 };
 

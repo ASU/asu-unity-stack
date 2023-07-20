@@ -36,6 +36,7 @@
     "build-storybook": "build-storybook -s ./dist"
   },
   "peerDependencies": {
+    "@asu/components-core": "^2.1.0",
     "@babel/plugin-transform-react-jsx": "^7.13.12",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",

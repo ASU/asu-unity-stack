@@ -2,7 +2,7 @@
 import React from "react";
 
 // @ts-check
-import { getCurrentScriptPath } from "../../../../../components-core/src/core/utils/script-utils";
+import { getCurrentScriptPath } from "@asu/components-core";
 import { useAppContext } from "../../../core/context/app-context";
 import { trackGAEvent } from "../../../core/services/googleAnalytics";
 import { PartnerLogosWrapper } from "./index.styles";
