@@ -7,7 +7,6 @@ ASU Web Standards-based implementation of the Degree page component
 
 ### Document reference
 
-
 [ux-doc-link]:https://xd.adobe.com/view/03081953-57ea-498f-a7f1-771c92c4dbed-565b/?fullscreen
 
 You can find the UX document [here][ux-doc-link]
@@ -69,7 +68,6 @@ You can find the UX document [here][ux-doc-link]
 </td>
 </tr>
 </table>
-
 
 
 
