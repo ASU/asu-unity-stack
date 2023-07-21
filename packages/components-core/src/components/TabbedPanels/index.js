@@ -49,10 +49,7 @@ const TabbedPanels = ({
   onTabChange = () => {},
 }) => {
   const childrenArray = React.Children.toArray(children);
-  const selectedChild =
-    childrenArray.find(element => initialTab === element.props.id) ||
-    childrenArray[0];
-  const [activeTabID, setActiveTabID] = useState(selectedChild.props.id);
+  const [activeTabID, setActiveTabID] = useState(initialTab);
   const headerTabs = useRef(null);
   const [headerTabItems, setHeaderTabItems] = useRefs();
   const tabbedPanels = useRef(null);
@@ -83,11 +80,15 @@ const TabbedPanels = ({
   }, []);
 
   useEffect(() => {
-    headerTabItems.current[activeTabID].focus();
-    headerTabItems.current[activeTabID].scrollIntoView();
+    headerTabItems.current[activeTabID]?.focus();
+    headerTabItems.current[activeTabID]?.scrollIntoView();
 
     onTabChange(activeTabID);
   }, [activeTabID]);
+
+  useEffect(() => {
+    setActiveTabID(initialTab);
+  }, [initialTab]);
 
   const [backgroundColor] = useState(bgColor || "");
   const [randId] = useState(Math.floor(Math.random() * 1000 + 1));
