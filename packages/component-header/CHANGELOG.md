@@ -1,3 +1,12 @@
+# [@asu/component-header-v2.0.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.2...@asu/component-header-v2.0.3) (2023-07-24)
+
+
+### Bug Fixes
+
+* **component-header:** header interations fix ([bd20e85](https://github.com/asu/asu-unity-stack/commit/bd20e85cbd81ec6b915d57357d92f799632df83e))
+* **component-header:** removed preventDefault to fix links ([f18e6d3](https://github.com/asu/asu-unity-stack/commit/f18e6d316ac2fcf6fd754abc5a9c00360e25cc4a))
+* **component-header:** updated comonents-core dependency and imports ([930de58](https://github.com/asu/asu-unity-stack/commit/930de5829824601058bb1ef4e3b413d8356cba4e))
+
 # [@asu/component-header-v2.0.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.1...@asu/component-header-v2.0.2) (2023-06-28)
 
 
