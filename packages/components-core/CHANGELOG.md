@@ -1,3 +1,22 @@
+# [@asu/components-core-v2.2.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v2.1.1...@asu/components-core-v2.2.0) (2023-07-24)
+
+
+### Bug Fixes
+
+* **components-core:** add exports to package.json ([e4df59a](https://github.com/ASU/asu-unity-stack/commit/e4df59ac3c0d382ebdbe444c6cdc2c189bfb1d14))
+* **components-core:** align anchor menu with its content ([fb8bfed](https://github.com/ASU/asu-unity-stack/commit/fb8bfedd3e0553900c4edf22b5868340a6ca9228))
+* **components-core:** exported tabbedpanels correctly ([96049b1](https://github.com/ASU/asu-unity-stack/commit/96049b18e5ea00ea87bcb1d6e07c09517d502033))
+* **components-core:** fix typo error in readme ([aaa05b5](https://github.com/ASU/asu-unity-stack/commit/aaa05b5aac156178fd6b567410cbc8f94ae32191))
+* **components-core:** removed exports ([ce3c5fd](https://github.com/ASU/asu-unity-stack/commit/ce3c5fd178e32377c4ed5e1b69107fb61eb918fd))
+* **components-core:** updated package.json main and types ([f8859a8](https://github.com/ASU/asu-unity-stack/commit/f8859a8a1c93cc371d7e47fe4d1c4cae84448d0e))
+
+
+### Features
+
+* **components-core:** image component ([80da9f6](https://github.com/ASU/asu-unity-stack/commit/80da9f6dbcf3f2398a3098fe458b140cf0313dbc))
+* **components-core:** new Image component ([c710c5c](https://github.com/ASU/asu-unity-stack/commit/c710c5cc13209ddd4ce5b995147284995e50e216))
+* **image component:** fix linter issues ([b7bd259](https://github.com/ASU/asu-unity-stack/commit/b7bd25989278ee3570efdd645f91de97e939331f))
+
 # [@asu/components-core-v2.1.1](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v2.1.0...@asu/components-core-v2.1.1) (2023-06-28)
 
 
