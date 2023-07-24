@@ -1,3 +1,10 @@
+# [@asu/app-rfi-v2.0.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.0.2...@asu/app-rfi-v2.0.3) (2023-07-24)
+
+
+### Bug Fixes
+
+* **app-rfi:** updated components-core imports ([28267a3](https://github.com/asu/asu-unity-stack/commit/28267a3d531d8ccabe759a14ae3ceced96a0fecd))
+
 # [@asu/app-rfi-v2.0.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.0.1...@asu/app-rfi-v2.0.2) (2023-06-02)
 
 
