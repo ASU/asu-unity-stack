@@ -1,3 +1,12 @@
+# [@asu/component-news-v2.0.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-news-v2.0.2...@asu/component-news-v2.0.3) (2023-07-24)
+
+
+### Bug Fixes
+
+* **component-news:** added proptypes import ([87a9b9b](https://github.com/asu/asu-unity-stack/commit/87a9b9b623de00d5237d12594fa3f16c68519400))
+* **component-news:** added proptypes inport ([34ea67e](https://github.com/asu/asu-unity-stack/commit/34ea67ea85ef283191cf3a41f942b65c58a59fd8))
+* **component-news:** updated components-core dependency and improts ([26cdbdb](https://github.com/asu/asu-unity-stack/commit/26cdbdb248734c9b5a8bece9a8a6be8c8e5013e3))
+
 # [@asu/component-news-v2.0.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-news-v2.0.1...@asu/component-news-v2.0.2) (2023-06-28)
 
 
