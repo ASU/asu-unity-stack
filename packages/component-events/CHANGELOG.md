@@ -1,3 +1,11 @@
+# [@asu/component-events-v2.0.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v2.0.2...@asu/component-events-v2.0.3) (2023-07-24)
+
+
+### Bug Fixes
+
+* **component-events:** added propttypes import ([4be724b](https://github.com/asu/asu-unity-stack/commit/4be724be1a6d289cfc4ceadd529302dd8a304cf7))
+* **component-events:** updated components-core dependency and imports ([b1cfadb](https://github.com/asu/asu-unity-stack/commit/b1cfadb38da9c47912ca769becc34921fbe207b2))
+
 # [@asu/component-events-v2.0.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v2.0.1...@asu/component-events-v2.0.2) (2023-06-28)
 
 
