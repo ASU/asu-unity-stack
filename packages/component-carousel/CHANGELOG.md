@@ -1,3 +1,10 @@
+# [@asu/component-carousel-v2.0.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-carousel-v2.0.2...@asu/component-carousel-v2.0.3) (2023-07-24)
+
+
+### Bug Fixes
+
+* **component-carousel:** updated components-core dependency ([d639cd1](https://github.com/asu/asu-unity-stack/commit/d639cd14690b99783aa4f5110bc9c9a5bd955b2a))
+
 # [@asu/component-carousel-v2.0.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-carousel-v2.0.1...@asu/component-carousel-v2.0.2) (2023-06-28)
 
 
