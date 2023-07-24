@@ -1,3 +1,15 @@
+# [@asu/unity-bootstrap-theme-v1.5.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.4.2...@asu/unity-bootstrap-theme-v1.5.0) (2023-07-24)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** update blockquote image size in breakpoint ([f87ffa9](https://github.com/ASU/asu-unity-stack/commit/f87ffa989f9180fe75cdba7a051155c15d5680db))
+
+
+### Features
+
+* **unity-bootstrap-theme:** align old stories with XD File ([77ec424](https://github.com/ASU/asu-unity-stack/commit/77ec4242668a2471adad79cddda3dea21230e5b7))
+
 # [@asu/unity-bootstrap-theme-v1.4.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.4.1...@asu/unity-bootstrap-theme-v1.4.2) (2023-06-28)
 
 
