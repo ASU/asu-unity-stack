@@ -1,3 +1,11 @@
+# [@asu/component-carousel-v2.0.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-carousel-v2.0.1...@asu/component-carousel-v2.0.2) (2023-06-28)
+
+
+### Bug Fixes
+
+* **component-carousel:** removed log statement ([583f032](https://github.com/asu/asu-unity-stack/commit/583f032cece5b094b269d7d1c0c9da4399fae010))
+* **component-carousel:** updated cards to have links in titles ([ea431ca](https://github.com/asu/asu-unity-stack/commit/ea431cafc2e70b61e4538bae44c5b406c65afc91))
+
 # [@asu/component-carousel-v2.0.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-carousel-v2.0.0...@asu/component-carousel-v2.0.1) (2023-05-23)
 
 

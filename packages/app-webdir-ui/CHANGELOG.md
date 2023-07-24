@@ -1,3 +1,18 @@
+# [@asu/app-webdir-ui-v2.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v2.0.3...@asu/app-webdir-ui-v2.1.0) (2023-06-28)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** fix sideways profiles by adding parameters ([96de123](https://github.com/asu/asu-unity-stack/commit/96de12359f6c045d08e8d8538c9e83636bedd0c2))
+* **app-webdir-ui:** move image processing logic to const ([a15f772](https://github.com/asu/asu-unity-stack/commit/a15f77222ea6f62beb458f377572169f1dbab647))
+
+
+### Features
+
+* **app-webdir-ui:** add break value cache for students section of the app ([9a074b0](https://github.com/asu/asu-unity-stack/commit/9a074b0a2c4738fcd6b9c478cb7a737f56773f4b))
+* **app-webdir-ui:** addition of logic to prevent too many requests t… ([738beae](https://github.com/asu/asu-unity-stack/commit/738beae1e4f2308d06103a7049b849d40a66415a))
+* **app-webdir-ui:** addition of logic to prevent too many requests to the image service ([1414b6d](https://github.com/asu/asu-unity-stack/commit/1414b6d1f419b425e951623c69865d99c2ff5a3a))
+
 # [@asu/app-webdir-ui-v2.0.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v2.0.2...@asu/app-webdir-ui-v2.0.3) (2023-06-05)
 
 

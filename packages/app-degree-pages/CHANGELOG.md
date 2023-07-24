@@ -1,3 +1,11 @@
+# [@asu/app-degree-pages-v2.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.0.1...@asu/app-degree-pages-v2.1.0) (2023-06-28)
+
+
+### Features
+
+* **app-degree-pages:** remove ASU@ filter option text ([f7e0963](https://github.com/asu/asu-unity-stack/commit/f7e0963596ef407de88b614d2fe59b897b9ccc99))
+* **app-degree-pages:** unabbrev. result location ([e629bce](https://github.com/asu/asu-unity-stack/commit/e629bce67792ab1952f10a6dad24c84c8e7c0c43))
+
 # [@asu/app-degree-pages-v2.0.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.0.0...@asu/app-degree-pages-v2.0.1) (2023-05-23)
 
 

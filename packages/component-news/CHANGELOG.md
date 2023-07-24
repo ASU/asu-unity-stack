@@ -1,3 +1,11 @@
+# [@asu/component-news-v2.0.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-news-v2.0.1...@asu/component-news-v2.0.2) (2023-06-28)
+
+
+### Bug Fixes
+
+* **component-news:** add proper link for title in trasnformer and card props ([68173a9](https://github.com/asu/asu-unity-stack/commit/68173a92124bcbfbdef25465f1bfc0f33542da4e))
+* **component-news:** titles are now links ([a5365fd](https://github.com/asu/asu-unity-stack/commit/a5365fd483c499ec19b2b74937d631e0538e6755))
+
 # [@asu/component-news-v2.0.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-news-v2.0.0...@asu/component-news-v2.0.1) (2023-05-23)
 
 
