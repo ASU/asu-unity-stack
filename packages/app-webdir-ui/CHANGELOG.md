@@ -1,3 +1,11 @@
+# [@asu/app-webdir-ui-v2.1.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v2.1.0...@asu/app-webdir-ui-v2.1.1) (2023-07-24)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** added blankImage to photo service params ([32f6cc3](https://github.com/asu/asu-unity-stack/commit/32f6cc3fb7a216dd0f4a3050ea3efed8eec8c34f))
+* **app-webdir-ui:** updated components-core imports and dependency ([b2a0ed7](https://github.com/asu/asu-unity-stack/commit/b2a0ed736798d08b12d581ca1121b1e432cb1e08))
+
 # [@asu/app-webdir-ui-v2.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v2.0.3...@asu/app-webdir-ui-v2.1.0) (2023-06-28)
 
 
