@@ -41,7 +41,6 @@ const ProfileCard = ({ ...props }) => {
       <a href={props.profileURL} className="profile-img-container">
         <div
           className="profile-img-placeholder"
-          style={{ backgroundImage: `url(${props.anonImgURL})` }}
         >
           <img
             className="profile-img"

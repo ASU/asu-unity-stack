@@ -10,7 +10,7 @@ import React from "react";
 
 import { ListingPage } from "./index";
 
-import { Hero } from "../../../../components-core/src/components/Hero";
+import { Hero } from "@asu/components-core";
 import { DOMAIN_URL } from "../../core/constants";
 import {
   locationOptions,

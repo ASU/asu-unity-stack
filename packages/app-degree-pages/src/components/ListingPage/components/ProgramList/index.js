@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import { createGlobalStyle } from "styled-components";
 
-import { Pagination } from "../../../../../../components-core/src/components/Pagination";
+import { Pagination } from "@asu/components-core";
 import { InfoAlert } from "../../../../core/components";
 import { GRID_VIEW_ID, LIST_VIEW_ID } from "../../../../core/models";
 import { computePages } from "../../../../core/utils";
@@ -63,7 +63,15 @@ function ProgramList({
   actionUrls,
   degreesPerPage,
 }) {
-  const ROW_PAGES = degreesPerPage;
+  // Check if degreesPerPage is provided and is a number, if not set a default value
+  let defaultDegreesPerPage;
+  if (!degreesPerPage) {
+    defaultDegreesPerPage = 8;
+  } else if (typeof degreesPerPage !== "number") {
+    defaultDegreesPerPage = parseInt(degreesPerPage, 10);
+  }
+
+  const ROW_PAGES = degreesPerPage || defaultDegreesPerPage;
   const TOTAL_PAGES = computePages(programs.length, ROW_PAGES);
   const ProgramsViewer = programViewer[dataViewComponent];
   const [tableView, setTableView] = useState([]);
@@ -89,7 +97,7 @@ function ProgramList({
           programs={tableView}
           totalRows={programs?.length}
           actionUrls={actionUrls}
-          degreesPerPage={degreesPerPage}
+          degreesPerPage={degreesPerPage || defaultDegreesPerPage}
         />
       </div>
 
@@ -99,7 +107,7 @@ function ProgramList({
           programs={tableView}
           totalRows={programs?.length}
           actionUrls={actionUrls}
-          degreesPerPage={degreesPerPage}
+          degreesPerPage={degreesPerPage || defaultDegreesPerPage}
         />
       </div>
 
@@ -126,10 +134,6 @@ ProgramList.propTypes = {
   dataViewComponent: PropTypes.string,
   ...degreeListPropTypes,
   degreesPerPage: PropTypes.number,
-};
-
-ProgramList.defaultProps = {
-  degreesPerPage: 8,
 };
 
 export { ProgramList, GridView, ListView };

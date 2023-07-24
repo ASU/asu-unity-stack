@@ -2,7 +2,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 
-import { Accordion } from "../../../../../../../components-core/src/components/Accordion";
+import { Accordion } from "@asu/components-core";
 import { AppContext } from "../../../../../core/context";
 import {
   degreeDataPropResolverService,

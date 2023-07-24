@@ -1,9 +1,8 @@
 // @ts-check
 // import { sanitizeDangerousMarkup } from "../components-core/src/core/utils";
+import { Card, sanitizeDangerousMarkup } from "@asu/components-core";
 import React from "react";
 
-import { Card } from "../../../../../../components-core/src/components/Card";
-import { sanitizeDangerousMarkup } from "../../../../../../components-core/src/core/utils/html-utils";
 import {
   whyChooseAsuShape,
   progDetailSectionIds,

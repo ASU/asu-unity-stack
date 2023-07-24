@@ -40,6 +40,7 @@
     "dev": "webpack-dev-server"
   },
   "dependencies": {
+    "@asu/components-core": "^2.1.0",
     "@babel/preset-env": "^7.15.0",
     "@babel/preset-react": "^7.14.5",
     "axios": "^0.24.0",
