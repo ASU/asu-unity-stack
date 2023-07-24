@@ -1,3 +1,17 @@
+# [@asu/app-degree-pages-v2.1.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.1.0...@asu/app-degree-pages-v2.1.1) (2023-07-24)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** added check for degreesPerpage ([0f2e313](https://github.com/asu/asu-unity-stack/commit/0f2e313f6b5d6243161bbb587569df50bf7efba2))
+* **app-degree-pages:** added radix to parseInt function ([5369d56](https://github.com/asu/asu-unity-stack/commit/5369d56f914b25ef902db0e9531468c01ac02126))
+* **app-degree-pages:** commit to ensure release corresponding to components-core ([340ddb9](https://github.com/asu/asu-unity-stack/commit/340ddb9eacf073c734766a5b7bad4b48f190e23a))
+* **app-degree-pages:** keep focus on anchor menu ([1cf41e9](https://github.com/asu/asu-unity-stack/commit/1cf41e9ad6676cb9b9f3ce3525102e3440a58067))
+* **app-degree-pages:** keep focus on anchor menu ([42dc3c2](https://github.com/asu/asu-unity-stack/commit/42dc3c2e3efb32b926ec160b05035c990f156f2d))
+* **app-degree-pages:** update @ to at degree locations ([bccd306](https://github.com/asu/asu-unity-stack/commit/bccd306da5ed864c7c6cee72a388d3c64cdd4dbf))
+* **app-degree-pages:** update @ to at degree locations ([dcc0cea](https://github.com/asu/asu-unity-stack/commit/dcc0ceaf2a81a918ad6cd3adbdb3effd62a51c4f))
+* **app-degree-pages:** updated imports for components-core ([ea8fa50](https://github.com/asu/asu-unity-stack/commit/ea8fa501ce451853d8b731b6142ae59bb8027e23))
+
 # [@asu/app-degree-pages-v2.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.0.1...@asu/app-degree-pages-v2.1.0) (2023-06-28)
 
 
