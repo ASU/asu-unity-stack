@@ -43,17 +43,23 @@ Tab.propTypes = {
 };
 
 const TabbedPanels = ({
-  initialTab,
+  initialTab = '',
   children,
   bgColor = '',
   onTabChange = () => {},
 }) => {
   const childrenArray = React.Children.toArray(children);
-  const [activeTabID, setActiveTabID] = useState(initialTab);
+  const isMounted = useRef(false);
+  const [activeTabID, setActiveTabID] = useState(
+    initialTab && initialTab !== 'null' ? initialTab : childrenArray[0].props.id
+  );
   const headerTabs = useRef(null);
   const [headerTabItems, setHeaderTabItems] = useRefs();
 
-  const updateTabParam = tab => {
+  const updateActiveTabID = tab => {
+    onTabChange(tab);
+
+    headerTabItems.current[tab]?.focus();
     setActiveTabID(tab);
   };
 
@@ -79,16 +85,24 @@ const TabbedPanels = ({
   }, []);
 
   useEffect(() => {
-    headerTabItems.current[activeTabID]?.focus();
     headerTabItems.current[activeTabID]?.scrollIntoView();
-
-    onTabChange(activeTabID);
   }, [activeTabID]);
 
+
   useEffect(() => {
-    setActiveTabID(initialTab);
+    if (
+      isMounted.current &&
+      initialTab &&
+      initialTab !== 'null' &&
+      activeTabID !== initialTab
+    ) {
+      setActiveTabID(initialTab);
+    }
   }, [initialTab]);
 
+  useEffect(() => {
+    isMounted.current = true;
+  }, []);
 
   const trackArrowsEvent = text => {
     trackGAEvent({
@@ -128,7 +142,7 @@ const TabbedPanels = ({
   const switchToTab = (e, tabID, title) => {
     trackLinkEvent(title);
     e.preventDefault();
-    updateTabParam(tabID);
+    updateActiveTabID(tabID);
   };
 
   const incrementIndex = (up = true) => {
@@ -136,7 +150,7 @@ const TabbedPanels = ({
     const num = up ? 1 : -1;
     const currPos = childrenArray.findIndex(c => c.props.id === activeTabID);
     const newTabID = childrenArray[(count + currPos + num)%count].props.id;
-    updateTabParam(newTabID);
+    updateActiveTabID(newTabID);
   };
 
   let navClasses = "uds-tabbed-panels";
@@ -167,7 +181,7 @@ const TabbedPanels = ({
         </div>
         <NavControls
           hidePrev={scrollLeft === 0}
-          hideNext={scrollLeft === scrollableWidth}
+          hideNext={scrollLeft >= scrollableWidth}
           clickPrev={() => {
             slideNav(-1);
             trackArrowsEvent("left chevron");
