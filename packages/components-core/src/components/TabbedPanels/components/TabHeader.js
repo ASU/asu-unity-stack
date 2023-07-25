@@ -22,8 +22,16 @@ const TabHeader = forwardRef(function TabHeader(props, ref) {
           inputRef.current.focus();
         },
         scrollIntoView() {
-          inputRef.current.scrollIntoView();
-        }
+          const middle =
+            inputRef.current.offsetWidth / 2 + inputRef.current.offsetLeft;
+          const targetMiddle =
+            inputRef.current.offsetParent.scrollLeft +
+            inputRef.current.offsetParent.offsetWidth / 2;
+
+          inputRef.current.offsetParent.scrollBy({
+            left: middle - targetMiddle,
+          });
+        },
       };
     },
     []
@@ -31,8 +39,10 @@ const TabHeader = forwardRef(function TabHeader(props, ref) {
 
   const func = e => {
     if (e.keyCode === 37) {
+      e.preventDefault();
       leftKeyPressed();
     } else if (e.keyCode === 39) {
+      e.preventDefault();
       rightKeyPressed();
     }
   };
