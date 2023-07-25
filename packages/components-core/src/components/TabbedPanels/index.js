@@ -45,14 +45,13 @@ Tab.propTypes = {
 const TabbedPanels = ({
   initialTab,
   children,
-  bgColor,
+  bgColor = '',
   onTabChange = () => {},
 }) => {
   const childrenArray = React.Children.toArray(children);
   const [activeTabID, setActiveTabID] = useState(initialTab);
   const headerTabs = useRef(null);
   const [headerTabItems, setHeaderTabItems] = useRefs();
-  const tabbedPanels = useRef(null);
 
   const updateTabParam = tab => {
     setActiveTabID(tab);
@@ -90,10 +89,6 @@ const TabbedPanels = ({
     setActiveTabID(initialTab);
   }, [initialTab]);
 
-  const [backgroundColor] = useState(bgColor || "");
-  const [randId] = useState(Math.floor(Math.random() * 1000 + 1));
-  const TabbedPanelsId = `tabbed-panels-${randId}`;
-  const NavTabsId = `nav-tabs-${randId}`;
 
   const trackArrowsEvent = text => {
     trackGAEvent({
@@ -118,7 +113,7 @@ const TabbedPanels = ({
 
   const tabs = childrenArray.map(el => {
     return React.cloneElement(el, {
-      bgColor: backgroundColor,
+      bgColor,
       selected: activeTabID === el.props.id,
     });
   });
@@ -145,19 +140,14 @@ const TabbedPanels = ({
   };
 
   let navClasses = "uds-tabbed-panels";
-  if (backgroundColor === "bg-dark") {
+  if (bgColor === "bg-dark") {
     navClasses += " uds-tabbed-panels-dark";
   }
 
   return (
-    <div className={backgroundColor} ref={tabbedPanels}>
-      <nav className={navClasses} id={TabbedPanelsId}>
-        <div
-          className="nav nav-tabs"
-          id={NavTabsId}
-          role="tablist"
-          ref={headerTabs}
-        >
+    <div className={bgColor}>
+      <nav className={navClasses}>
+        <div className="nav nav-tabs" role="tablist" ref={headerTabs}>
           {childrenArray.map((child, index) => {
             return (
               <TabHeader
