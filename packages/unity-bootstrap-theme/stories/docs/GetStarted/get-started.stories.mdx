@@ -15,7 +15,7 @@ A Bootstrap 5-based web ui kit for website developers building new websites from
 
 - **Bootstrap 5:** Unity is built on top of Bootstrap 5, so you get all the Bootstrap goodness, plus some extra ASU-specific components and styles. **Bootstrap files,including CSS and Javascript, are bundled with Unity** so you don't need to include them separately.
 - **Clean, easy to use styles and scripts:** thanks to the helper utilities and variables provided by the Bootstrap 5 team.
-- **Font Awesome is no longer included with unity!** If using in a project outside of webspark, you will need to include Font Awesome yourself. See [here](https://fontawesome.com/start) for instructions on how to do that.
+- **Font Awesome is no longer included with Unity!** If using in a project outside of webspark, you will need to include Font Awesome yourself. See [here](https://fontawesome.com/start) for instructions on how to do that.
 
 ## ❯ Including Unity in your project:
 
@@ -26,9 +26,14 @@ We bundle the necessary CSS  and Javascript in the `dist/` folder. There are mor
 * `dist/css/unity-bootstrap-header.css` (optional) - header CSS only - don't use if using the Unity `component-header` React component
 * `dist/css/unity-bootstrap-footer.css` (optional) - footer CSS only - don't use if using the Unity `component-footer` React component
 
+## ❯ How to  use the Unity Storybook reference site
+
+The Storybook reference site for the Unity Bootstrap Theme exists to provide a reference library of components and the markup to use to implement them in your site once you've included the library's CSS and Javascript in your site or application.
+Some components also have controls so you can make changes and see how those changes will appear in your site.
+
 ## ❯ How to use the private package registry:
 
-The ASU Unity Design System packages are published to GitHub's package registry. This is not the same as the NPM registry. To use the packages, you need to belong to ASU's GitHub organization and to configure your local NPM to use this registry.
+The ASU Unity Design System packages are published to GitHub's package registry. This is not exactly the same as using the NPM registry. To use the packages, you need to belong to ASU's GitHub organization and to configure your local NPM config to use this registry.
 
 1. Clone the monorepo using ```git clone``` or download the zip file from GitHub.
 2. If you don't already have it [request access to the Unity Design System GitHub Repo](https://asu.edu/webservices).
@@ -88,4 +93,4 @@ elements.forEach((element) =>
 ```
 Check [https://unity.web.asu.edu/](https://unity.web.asu.edu/) as well as the README.md's in individual Unity packages for more Google Analytics, Google Tag Manager and data layer implementation details.
 
-To read more about Google Tag Manager and dataLayer usage, see [here](https://www.analyticsmania.com/post/what-is-data-layer-in-google-tag-manager/).
+To read more about Google Tag Manager and dataLayer usage, see [here](https://developers.google.com/tag-platform/tag-manager/datalayer).
