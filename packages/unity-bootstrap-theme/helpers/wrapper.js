@@ -42,6 +42,14 @@ export const createComponent = (
     },
   };
 
+  // removes default controls when extraOptions = { footer: null }
+  result.argTypes = Object.entries(result.argTypes).reduce((acc,[key,obj])=>{
+    if (obj?.control) {
+      acc[key]=obj;
+    }
+    return acc;
+  }, {});
+
   // warn if invalid extraOptions will cause problems
   /*
     example:
