@@ -3,12 +3,12 @@ import { createComponent, createStory } from "../../../helpers/wrapper.js";
 const extraOptions = {
   type: {
     name: "Color",
-    options: ["", "bg-gray-2", "bg-gray-7"],
-    defaultValue: "",
+    options: [null, "bg-gray-2", "bg-gray-7"],
+    defaultValue: null,
     control: {
       type: "radio",
       labels: {
-        "": "On White",
+        null: "On White",
         "bg-gray-2": "On Gray",
         "bg-gray-7": "On Black",
       },

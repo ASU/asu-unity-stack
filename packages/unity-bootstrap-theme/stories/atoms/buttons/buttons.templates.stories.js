@@ -21,14 +21,14 @@ const extraOptions = {
   },
   size: {
     name: "Size",
-    options: ["btn-sm", "btn-md", ""],
-    defaultValue: "",
+    options: ["btn-sm", "btn-md", null],
+    defaultValue: null,
     control: {
       type: "radio",
       labels: {
         "btn-sm": "Small",
         "btn-md": "Medium",
-        "": "Large",
+        null: "Large",
       },
     },
   },

@@ -6,13 +6,13 @@ import anonPic from "./anon.png";
 const extraOptions = {
   size: {
     name: "Size",
-    options: ["small", ""],
-    defaultValue: "",
+    options: ["small", null],
+    defaultValue: null,
     control: {
       type: "radio",
       labels: {
         "small": "Small",
-        "": "Large",
+        null: "Large",
       },
     },
   },

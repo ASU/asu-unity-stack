@@ -1,5 +1,5 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Global Header", "Organisms", "Examples");
+export default createComponent("Global Header", "Organisms", "Examples", {header:null, template:null});
 
 import {
   Basic,
@@ -10,18 +10,18 @@ import {
   Partner,
 } from "./global-header.templates.stories.js";
 import { initGlobalHeader as initFunc } from "@asu/unity-bootstrap-theme/js/global-header.js";
+const options = {
+  initFunc,
+  omitTemplate: true
+}
+export const BasicExample = createStory(Basic, options);
 
-export const BasicExample = createStory(Basic, { initFunc });
 
-BasicExample.args = {
-  template: 0,
-};
-
-export const DropDownMenusExample = createStory(DropDownMenus, { initFunc });
-export const NoNavigationExample = createStory(NoNavigation, { initFunc });
+export const DropDownMenusExample = createStory(DropDownMenus, options);
+export const NoNavigationExample = createStory(NoNavigation, options);
 export const NoNavigationAndWithButtonsExample = createStory(
   NoNavigationAndWithButtons,
-  { initFunc }
+  options
 );
 export const StickyNoNavigationExample = createStory(
   <>
@@ -35,8 +35,8 @@ export const StickyNoNavigationExample = createStory(
       <div className="bg-gray-3" style={{ height: "200vh" }}></div>
     </main>
   </>,
-  { initFunc }
+  options
 );
 
-export const ScrolledStateExample = createStory(ScrolledState, { initFunc });
-export const PartnerExample = createStory(Partner, { initFunc });
+export const ScrolledStateExample = createStory(ScrolledState, options);
+export const PartnerExample = createStory(Partner, options);
