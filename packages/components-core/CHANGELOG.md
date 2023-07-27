@@ -9,6 +9,17 @@
 * **components-core:** fix TabbedPanel activeTab ([169540e](https://github.com/ASU/asu-unity-stack/commit/169540e46faf8affcf504030ba4c064b88c24fb6))
 * **components-core:** update TabbedPanels props ([d72714c](https://github.com/ASU/asu-unity-stack/commit/d72714c8a05c5e6821bfb02ee0295a4438298638))
 
+# [@asu/components-core-v2.2.1](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v2.2.0...@asu/components-core-v2.2.1) (2023-07-27)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** Update TabbedPanels ([5b46336](https://github.com/ASU/asu-unity-stack/commit/5b46336ff4207ea0fa254752f7ac746d6c46e23a))
+* **components-core:** activeTab less aggressive ([ebd67a8](https://github.com/ASU/asu-unity-stack/commit/ebd67a810b6fb4fbcaf273bc2d474c0eca2635e4))
+* **components-core:** change TabbedPanels props ([526dca3](https://github.com/ASU/asu-unity-stack/commit/526dca3a57cc0f705965c0ef5e1714e78f786e7f))
+* **components-core:** fix TabbedPanel activeTab ([169540e](https://github.com/ASU/asu-unity-stack/commit/169540e46faf8affcf504030ba4c064b88c24fb6))
+* **components-core:** update TabbedPanels props ([d72714c](https://github.com/ASU/asu-unity-stack/commit/d72714c8a05c5e6821bfb02ee0295a4438298638))
+
 # [@asu/components-core-v2.2.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v2.1.1...@asu/components-core-v2.2.0) (2023-07-24)
 
 
