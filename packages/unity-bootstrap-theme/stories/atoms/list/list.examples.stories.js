@@ -3,12 +3,12 @@ import { createComponent, createStory } from "../../../helpers/wrapper.js";
 const extraOptions = {
   bulletColor: {
     name: "Bullet Color",
-    options: ["", "maroon", "gold"],
-    defaultValue: "",
+    options: [null, "maroon", "gold"],
+    defaultValue: null,
     control: {
       type: "radio",
       labels: {
-        "": "Default",
+        null: "Default",
         "maroon": "Maroon",
         "gold": "Gold",
       },
@@ -16,12 +16,12 @@ const extraOptions = {
   },
   backgroundColor: {
     name: "Size",
-    options: ["", "smokemode", "light-smokemode", "darkmode"],
-    defaultValue: "",
+    options: [null, "smokemode", "light-smokemode", "darkmode"],
+    defaultValue: null,
     control: {
       type: "radio",
       labels: {
-        "": "Default",
+        null: "Default",
         "smokemode": "Smoke mode",
         "light-smokemode": "Light Smoke mode",
         "darkmode": "Dark mode",

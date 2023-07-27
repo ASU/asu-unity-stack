@@ -9,8 +9,9 @@ export const createComponent = (
   type = "",
   extraOptions = {}
 ) => {
-  return {
-    title: `${section}/${name}${type === "" ? "" : "/" + type}`,
+
+  const result = {
+    title: [section,name,type].filter(x=>x).join("/"),
     argTypes: {
       header: {
         name: "Show Header",
@@ -40,6 +41,28 @@ export const createComponent = (
       ...extraOptions,
     },
   };
+
+  // warn if invalid extraOptions will cause problems
+  /*
+    example:
+    size: {
+      name: "Size",
+      options: ["small", null],
+      defaultValue: null,
+      control: {
+        type: "radio",
+        labels: {
+          "small": "Small",
+          null: "Large",
+        },
+      },
+    },
+  */
+  if (JSON.stringify(result.argTypes).indexOf('""') > -1) {
+    console.warn(`${result.title} has invalid extraOptions object, replace "" with null`);
+  }
+
+  return result;
 };
 
 export const layoutNames = {
@@ -60,7 +83,7 @@ export const createStory = (
       layoutNames.THREE_COLUMN,
       layoutNames.FOUR_COLUMN,
     ],
-    initFunc = null,
+    initFunc = ()=>{},
     omitTemplate = false,
   } = {}
 ) => {
@@ -88,9 +111,9 @@ export const createStory = (
 
       return (
         <div>
-          {args.header && Header}
+          {`${args.header}` === 'true' && Header}
           {componentCode}
-          {args.footer && Footer}
+          {`${args.footer}` === 'true' && Footer}
         </div>
       );
     } else {
@@ -129,80 +152,3 @@ export const createStory = (
   };
   return Template.bind({});
 };
-
-// export const createStoryTwo = (
-//   componentJSX,
-//   {
-//     supportedTemplates = [
-//       layoutNames.FULL_WIDTH,
-//       layoutNames.ONE_COLUMN,
-//       layoutNames.TWO_COLUMN,
-//       layoutNames.THREE_COLUMN,
-//       layoutNames.FOUR_COLUMN,
-//     ],
-//     initFunc = null,
-//     omitTemplate = false,
-//   } = {}
-// ) => {
-//   const Template = ({ ...args }) => {
-//     if (supportedTemplates.includes(args.template) || omitTemplate) {
-//       if (initFunc) {
-//         // Necessitated by Storybook intricacies.
-//         if (document.readyState !== "loading") {
-//           setTimeout(function () {
-//             initFunc();
-//           }, 150);
-//         } else {
-//           window.addEventListener("DOMContentLoaded", function () {
-//             initFunc();
-//           });
-//         }
-//       }
-
-//       const componentCode = omitTemplate
-//         ? componentJSX(args)
-//         : template(componentJSX(args), args.template);
-
-//       return (
-//         <div>
-//           {args.header && Header}
-//           {componentCode}
-//           {args.footer && Footer}
-//         </div>
-//       );
-//     } else {
-//       return (
-//         <div
-//           style={{
-//             display: "flex",
-//             flexDirection: "column",
-//             width: "80%",
-//             maxWidth: "600px",
-//             margin: "0 auto",
-//           }}
-//         >
-//           <h2>This layout isn't supported for this element.</h2>
-//           <span>Use the storybook controls to choose a supported layout:</span>
-//           <ul>
-//             {supportedTemplates.includes(layoutNames.FULL_WIDTH) && (
-//               <li>Full-width</li>
-//             )}
-//             {supportedTemplates.includes(layoutNames.ONE_COLUMN) && (
-//               <li>One Column</li>
-//             )}
-//             {supportedTemplates.includes(layoutNames.TWO_COLUMN) && (
-//               <li>Two Column</li>
-//             )}
-//             {supportedTemplates.includes(layoutNames.THREE_COLUMN) && (
-//               <li>Three Column</li>
-//             )}
-//             {supportedTemplates.includes(layoutNames.FOUR_COLUMN) && (
-//               <li>Four Column</li>
-//             )}
-//           </ul>
-//         </div>
-//       );
-//     }
-//   };
-//   return Template.bind({});
-// };

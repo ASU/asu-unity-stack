@@ -4,12 +4,12 @@ import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-
 const extraOptions = {
   bgColor: {
     name: "Background (With Border Only)",
-    options: ["", "uds-bg-gray", "uds-bg-dark"],
-    defaultValue: "",
+    options: [null, "uds-bg-gray", "uds-bg-dark"],
+    defaultValue: null,
     control: {
       type: "radio",
       labels: {
-        "": "None",
+        null: "None",
         "uds-bg-gray": "uds-bg-gray",
         "uds-bg-dark": "uds-bg-dark",
       },
