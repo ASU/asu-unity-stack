@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { GlobalElementsOnly as Footer } from "../stories/organisms/global-footer/global-footer.templates.stories.js";
 import { Basic as Header } from "../stories/organisms/global-header/global-header.templates.stories.js";
 import { template } from "./templates";
@@ -89,18 +89,12 @@ export const createStory = (
 ) => {
   const Template = ({ ...args }) => {
     if (supportedTemplates.includes(args.template) || omitTemplate) {
-      if (initFunc) {
-        // Necessitated by Storybook intricacies.
-        if (document.readyState !== "loading") {
-          setTimeout(function () {
-            initFunc();
-          }, 150);
-        } else {
-          window.addEventListener("DOMContentLoaded", function () {
-            initFunc();
-          });
-        }
-      }
+      // call init function after render every time
+      const loaded = useRef(0);
+      useEffect(()=>{
+        initFunc();
+      },[loaded.current]);
+      loaded.current++;
 
       const codeWithArgs =
         typeof componentJSX === "function" ? componentJSX(args) : componentJSX;
