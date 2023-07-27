@@ -1,3 +1,16 @@
+# [@asu/app-webdir-ui-v3.0.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v2.1.1...@asu/app-webdir-ui-v3.0.0) (2023-07-27)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** SearchParams props TabbedPanel ([49ff0c3](https://github.com/asu/asu-unity-stack/commit/49ff0c36a82cae39a32d423a8c130e74e436f59d))
+* **components-core:** change TabbedPanels props ([69c44f3](https://github.com/asu/asu-unity-stack/commit/69c44f3724162f2694568b970d4e531622feadf4))
+
+
+### BREAKING CHANGES
+
+* **components-core:** TabbedPanels Props have changed
+
 # [@asu/app-webdir-ui-v2.1.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v2.1.0...@asu/app-webdir-ui-v2.1.1) (2023-07-24)
 
 
