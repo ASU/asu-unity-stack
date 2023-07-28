@@ -6,7 +6,8 @@ import { NavControlButtons } from "./NavControls.styles";
 const NavControls = ({ hidePrev, hideNext, clickPrev, clickNext }) => {
   return (
     <NavControlButtons>
-      {!hidePrev && <button
+      {!hidePrev && (
+        <button
           className="scroll-control-prev"
           type="button"
           onClick={clickPrev}
@@ -15,8 +16,9 @@ const NavControls = ({ hidePrev, hideNext, clickPrev, clickNext }) => {
           <span className="carousel-control-prev-icon" aria-hidden="true" />
           <span className="visually-hidden">Previous</span>
         </button>
-      }
-      {!hideNext && <button
+      )}
+      {!hideNext && (
+        <button
           className="scroll-control-next"
           type="button"
           onClick={clickNext}
@@ -25,7 +27,7 @@ const NavControls = ({ hidePrev, hideNext, clickPrev, clickNext }) => {
           <span className="carousel-control-next-icon" aria-hidden="true" />
           <span className="visually-hidden">Next</span>
         </button>
-  }
+      )}
     </NavControlButtons>
   );
 };
