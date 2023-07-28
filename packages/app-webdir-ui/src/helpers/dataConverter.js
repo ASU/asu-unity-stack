@@ -1,9 +1,9 @@
 /* eslint-disable prefer-destructuring */
-import React from 'react';
+import React from "react";
 
-import anonPic from '../assets/anon.png';
-import { ProfileCard } from '../ProfileCard/index';
-import { ResultCard } from '../ResultCard/index';
+import anonPic from "../assets/anon.png";
+import { ProfileCard } from "../ProfileCard/index";
+import { ResultCard } from "../ResultCard/index";
 
 // Use packaged image, but for CMS aggregation contexts we
 // override in converters below using appPathFolder prop.
@@ -22,61 +22,61 @@ const fillInBlanks = datum => {
 
   const full = {
     id: {
-      raw: '',
+      raw: "",
     },
     campus_address: {
-      raw: '',
+      raw: "",
     },
     city: {
-      raw: '',
+      raw: "",
     },
     state: {
-      raw: '',
+      raw: "",
     },
     asurite_id: {
-      raw: '',
+      raw: "",
     },
     working_title: {
-      raw: [''],
+      raw: [""],
     },
     titles: {
       raw: null,
     },
     eid: {
-      raw: '',
+      raw: "",
     },
     photo_url: {
-      raw: '',
+      raw: "",
     },
     display_name: {
-      raw: '',
+      raw: "",
     },
     display_last_name: {
-      raw: '',
+      raw: "",
     },
     email_address: {
-      raw: '',
+      raw: "",
     },
     phone: {
-      raw: '',
+      raw: "",
     },
     address_line1: {
-      raw: '',
+      raw: "",
     },
     address_line2: {
-      raw: '',
+      raw: "",
     },
     bio: {
-      raw: '',
+      raw: "",
     },
     short_bio: {
-      raw: '',
+      raw: "",
     },
     url_path_dir1: {
-      raw: '',
+      raw: "",
     },
     url_path_dir2: {
-      raw: '',
+      raw: "",
     },
     facebook: {
       raw: null,
@@ -88,19 +88,19 @@ const fillInBlanks = datum => {
       raw: null,
     },
     url_host: {
-      raw: '',
+      raw: "",
     },
     body_content: {
-      raw: '',
+      raw: "",
     },
     url: {
-      raw: '',
+      raw: "",
     },
     primary_search_department_affiliation: {
-      raw: [''],
+      raw: [""],
     },
     website: {
-      raw: '',
+      raw: "",
     },
   };
   return { ...full, ...datumAdjusted };
@@ -119,7 +119,7 @@ const getTitleFromProfile = (profile, titleMatch) => {
   let matchedAffiliationDept = null;
 
   if (profile.title) {
-    console.log('title from service');
+    console.log("title from service");
     // Here we can use the WEB_DIRECTORY_PEOPLE_AND_DEPS pre-matched title.
     // We don't need to consult titleMatch.peopleDeps.
     matchedAffiliationTitle = profile.title;
@@ -139,7 +139,7 @@ const getTitleFromProfile = (profile, titleMatch) => {
     */
     !!titleMatch.depts[0]
   ) {
-    console.log('title from titleMatch.deps');
+    console.log("title from titleMatch.deps");
     // A flow for WEB_DIRECTORY_DEPARTMENTS.
     // Note: If someone is in two depts queried, there is no guarantee which
     // title they'll get. When precision is needed, users should use the
@@ -153,7 +153,7 @@ const getTitleFromProfile = (profile, titleMatch) => {
     const deptIndex = profile.deptids.raw.findIndex(
       id => id === deptValueMatch[0]
     );
-    if (profile.title_source.raw[deptIndex] === 'titles') {
+    if (profile.title_source.raw[deptIndex] === "titles") {
       matchedAffiliationTitle = profile.titles.raw[deptIndex];
     } else if (profile.working_title) {
       matchedAffiliationTitle = profile.working_title.raw[0];
@@ -163,12 +163,12 @@ const getTitleFromProfile = (profile, titleMatch) => {
     }
     matchedAffiliationDept = profile.departments.raw[deptIndex];
   } else if (profile.primary_deptid && profile.titles && profile.titles.raw) {
-    console.log('title from fallback1 to primary_deptid');
+    console.log("title from fallback1 to primary_deptid");
     // Fallback to using primary_deptid from CMS to derive the match.
     const deptIndex = profile.deptids.raw.findIndex(
       id => id === profile.primary_deptid.raw
     );
-    if (profile.title_source.raw[deptIndex] === 'titles') {
+    if (profile.title_source.raw[deptIndex] === "titles") {
       matchedAffiliationTitle = profile.titles.raw[deptIndex];
     } else if (profile.working_title && profile.working_title.raw[0]) {
       matchedAffiliationTitle = profile.working_title.raw[deptIndex];
@@ -176,12 +176,12 @@ const getTitleFromProfile = (profile, titleMatch) => {
     matchedAffiliationDept = profile.departments.raw[deptIndex];
 
     // Used in directory component when dept id is provided with asurite
-    if (profile.primary_affiliation.raw === 'COURTESY_AFFILIATE') {
+    if (profile.primary_affiliation.raw === "COURTESY_AFFILIATE") {
       matchedAffiliationTitle = profile.affiliations?.raw[0];
       matchedAffiliationDept = profile.subaffiliations?.raw[0];
     }
   } else if (profile.primary_department && profile.primary_department.raw) {
-    console.log('title from fallback2 to primary_department');
+    console.log("title from fallback2 to primary_department");
     // Fallback to using primary_department name to derive the match, using
     // working_title. This condition is unlikely to be met. If we have one, we
     // should have the other.
@@ -195,12 +195,12 @@ const getTitleFromProfile = (profile, titleMatch) => {
       matchedAffiliationTitle = profile.working_title.raw[0];
     }
     matchedAffiliationDept = profile.departments.raw[deptIndex];
-  } else if (profile.primary_affiliation.raw === 'COURTESY_AFFILIATE') {
-    console.log('title from fallback to courtesy affiliate');
+  } else if (profile.primary_affiliation.raw === "COURTESY_AFFILIATE") {
+    console.log("title from fallback to courtesy affiliate");
     matchedAffiliationTitle = profile.affiliations?.raw[0];
     matchedAffiliationDept = profile.subaffiliations?.raw[0];
   } else {
-    console.log('title from fallback3 to hr values - final');
+    console.log("title from fallback3 to hr values - final");
     // Final fallback is to use the HR working title and department values.
     matchedAffiliationTitle = profile.working_title.raw[0];
     matchedAffiliationDept =
@@ -217,10 +217,10 @@ const getTitleFromProfile = (profile, titleMatch) => {
   */
 const formatImageUrl = baseUrl => {
   // Since user profiles in the image service can have no assigned image, we should account for possible empty values.
-  if (!baseUrl) return '';
+  if (!baseUrl) return "";
 
-  const AVAILABLE_URL_PARAMS = { SIZE: 'size', BREAK: 'break' };
-  const AVAILABLE_IMG_SIZES = { MEDIUM: 'medium' };
+  const AVAILABLE_URL_PARAMS = { SIZE: "size", BREAK: "break" };
+  const AVAILABLE_IMG_SIZES = { MEDIUM: "medium" };
 
   /**
     Rounds the current time in seconds to the nearest hundred seconds.
@@ -240,7 +240,7 @@ const formatImageUrl = baseUrl => {
     AVAILABLE_IMG_SIZES.MEDIUM
   );
   url.searchParams.append(AVAILABLE_URL_PARAMS.BREAK, nearestHundredSeconds());
-  url.searchParams.append('blankImage2', 'true');
+  url.searchParams.append("blankImage2", "true");
 
   return url.toString();
 };
@@ -248,7 +248,7 @@ const formatImageUrl = baseUrl => {
 export const staffConverter = ({
   datum,
   options = {
-    size: 'small',
+    size: "small",
     titleMatch: null,
     profileURLBase: null,
     fill: false,
@@ -259,7 +259,7 @@ export const staffConverter = ({
   const titles = getTitleFromProfile(filledDatum, options.titleMatch);
 
   // We use EID if it's available, otherwise we use the asurite_id.
-  const profileURLBase = options.profileURLBase ?? '';
+  const profileURLBase = options.profileURLBase ?? "";
   const asuriteEID = filledDatum.eid.raw
     ? filledDatum.eid.raw.toString()
     : filledDatum.asurite_id.raw.toString();
@@ -302,7 +302,7 @@ export const staffConverter = ({
 export const studentsConverter = ({
   datum,
   options = {
-    size: 'small',
+    size: "small",
     fill: false,
   },
   appPathFolder,
@@ -344,7 +344,7 @@ export const studentsConverter = ({
 export const anonConverter = (
   datum,
   options = {
-    size: 'small',
+    size: "small",
   },
   appPathFolder
 ) => {
@@ -360,7 +360,7 @@ export const anonConverter = (
       imgURL={anonImg}
       anonImgURL={anonImg}
       name="Student name"
-      titles={['Title']}
+      titles={["Title"]}
       email="email@example.com"
       telephone=""
       addressLine1=""
@@ -377,11 +377,11 @@ export const anonConverter = (
 export const subdomainConverter = ({
   datum,
   options = {
-    size: 'small',
+    size: "small",
     fill: false,
   },
   appPathFolder,
-  logClick = () => { },
+  logClick = () => {},
   requestId,
   localSection = null,
   props,
@@ -392,8 +392,8 @@ export const subdomainConverter = ({
     desc = filledDatum.meta_description.raw;
   } else {
     desc = filledDatum.body_content.raw
-      .replace('Skip to main content ', '')
-      .replace('Skip to Main Page Content ', '');
+      .replace("Skip to main content ", "")
+      .replace("Skip to Main Page Content ", "");
   }
   return (
     <ResultCard

@@ -1,7 +1,7 @@
+import { Button, Pagination } from "@asu/components-core";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 
-import { Button, Pagination } from "@asu/components-core";
 import { trackGAEvent } from "../core/services/googleAnalytics";
 import {
   performSearch,
@@ -79,8 +79,8 @@ const ASUSearchResultsList = ({
               API_URL: engine.API_URL,
               searchApiVersion: engine.searchApiVersion,
               loggedIn,
-            }
-        });
+            },
+          });
           if (registerResults) {
             registerResults(formattedResults.page.total_results);
           }
