@@ -500,6 +500,8 @@ Cards - Table of Contents
 .card-horizontal .card-img-top {
   height: auto;
   max-width: 40%;
+  aspect-ratio: 2/3;
+  max-height: 400px;
 }
 
 .card-event.card-horizontal .card-header {

@@ -3,6 +3,7 @@ import { googleAnalytics as initFunc } from '@asu/unity-bootstrap-theme/js/data-
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
 import cardsImage from './cards-image.jpg';
 import { rankingFunc as initRankFunc } from './ranking-cards.js';
+import { horizontalCardsMap as horizontalCard } from './cardVariations.js';
 
 export default createComponent('Cards', 'Molecules', 'Examples');
 
@@ -980,186 +981,18 @@ export const cardVariations = createStory(
 
 export const horizontal = createStory(
   <div>
-    <div className="card card-horizontal">
-      <img
-        className="card-img-top"
-        src={cardsImage}
-        alt="Card image cap"
-        width="600"
-        height="337"
-        loading="lazy"
-        decoding="async"
-        fetchpriority="high"
-      />
-      <div className="card-content-wrapper">
-        <div className="card-header">
-          <h3 className="card-title"><a href="#" >Card default title</a></h3>
-        </div>
-        <div className="card-body">
-          <p className="card-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod
-            tempo.
-          </p>
-        </div>
-        <div className="card-buttons">
-          <div className="card-button">
-            <a
-              href="#"
-              className="btn btn-dark"
-              data-ga="Button link here"
-              data-ga-name="onclick"
-              data-ga-event="link"
-              data-ga-action="click"
-              data-ga-type="internal link"
-              data-ga-region="main content"
-              data-ga-section="card default title"
-            >
-              Button link here
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
+    {horizontalCard()}
+    <hr />
+
+    {horizontalCard("degree")}
 
     <hr />
 
-    <div className="card card-degree card-horizontal">
-      <img
-        className="card-img-top"
-        src={cardsImage}
-        alt="Card image cap"
-        width="600"
-        height="337"
-        loading="lazy"
-        decoding="async"
-        fetchpriority="high"
-      />
-      <div className="card-content-wrapper">
-        <div className="card-header">
-          <h3 className="card-title"><a href="#" >Card default title</a></h3>
-        </div>
-        <div className="card-body">
-          <p className="card-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod
-            tempo.
-          </p>
-        </div>
-        <div className="card-buttons">
-          <div className="card-button">
-            <a
-              href="#"
-              className="btn btn-dark"
-              data-ga="Button link here"
-              data-ga-name="onclick"
-              data-ga-event="link"
-              data-ga-action="click"
-              data-ga-type="internal link"
-              data-ga-region="main content"
-              data-ga-section="card default title"
-            >
-              Button link here
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
+    {horizontalCard("event")}
 
     <hr />
 
-    <div className="card card-event card-horizontal">
-      <img
-        className="card-img-top"
-        src={cardsImage}
-        alt="Card image cap"
-        width="600"
-        height="337"
-        loading="lazy"
-        decoding="async"
-        fetchpriority="high"
-      />
-      <div className="card-content-wrapper">
-        <div className="card-header">
-          <h3 className="card-title"><a href="#" >Card default title</a></h3>
-        </div>
-        <div className="card-event-details">
-          <div className="card-event-icons">
-            <div>
-              <i className="far fa-calendar"></i>
-            </div>
-            <div>Wednesday, November 21st, 2021 12:30 p.m.</div>
-          </div>
-          <div className="card-event-icons">
-            <div>
-              <i className="fas fa-map-marker-alt"></i>
-            </div>
-            <div>Downtown Phoenix campus</div>
-          </div>
-        </div>
-        <div className="card-buttons">
-          <div className="card-button">
-            <a
-              href="#"
-              className="btn btn-dark"
-              data-ga="Button link here"
-              data-ga-name="onclick"
-              data-ga-event="link"
-              data-ga-action="click"
-              data-ga-type="internal link"
-              data-ga-region="main content"
-              data-ga-section="card default title"
-            >
-              Button link here
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <hr />
-
-    <div className="card card-story card-horizontal">
-      <img
-        className="card-img-top"
-        src={cardsImage}
-        alt="Card image cap"
-        width="600"
-        height="337"
-        loading="lazy"
-        decoding="async"
-        fetchpriority="high"
-      />
-      <div className="card-content-wrapper">
-        <div className="card-header">
-          <h3 className="card-title"><a href="#" >Card default title</a></h3>
-        </div>
-        <div className="card-body">
-          <p className="card-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod
-            tempo.
-          </p>
-        </div>
-        <div className="card-buttons">
-          <div className="card-button">
-            <a
-              href="#"
-              className="btn btn-dark"
-              data-ga="Button link here"
-              data-ga-name="onclick"
-              data-ga-event="link"
-              data-ga-action="click"
-              data-ga-type="internal link"
-              data-ga-region="main content"
-              data-ga-section="card default title"
-            >
-              Button link here
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
+    {horizontalCard("story")}
   </div>,
   { initFunc }
 );
