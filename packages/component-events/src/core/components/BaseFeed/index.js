@@ -1,4 +1,9 @@
 // @ts-check
+import {
+  FeedBody,
+  FeedContainerProvider,
+  FeedHeader,
+} from "@asu/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -7,11 +12,6 @@ import {
   feedCtaButtonShape,
   feedDataSourceShape,
 } from "../../../../../components-core/src/components/FeedAnatomy/feed-prop-types";
-import {
-  FeedBody,
-  FeedContainerProvider,
-  FeedHeader,
-} from "@asu/components-core";
 import { defaultProps } from "../../constants/default-props";
 import { filterData } from "../../services/dataManager";
 import { transformData } from "../../transformers/data.transfromer";

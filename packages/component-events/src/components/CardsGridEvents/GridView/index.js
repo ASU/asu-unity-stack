@@ -1,7 +1,7 @@
 // @ts-check
+import { Card, FeedContext } from "@asu/components-core";
 import React, { useContext } from "react";
 
-import { Card, FeedContext } from "@asu/components-core";
 import { formatDate, formatTime } from "../../../core/utils/date";
 import { GridViewWrapper } from "./index.styles";
 
