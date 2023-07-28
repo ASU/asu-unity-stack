@@ -1,9 +1,9 @@
 // @ts-check
+import { Button } from "@asu/components-core";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import { Button } from "@asu/components-core";
 import { trackGAEvent } from "../../../../core/services/google-analytics";
 
 const Section = styled.div`

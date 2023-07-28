@@ -1,8 +1,8 @@
 // @ts-check
+import { Button } from "@asu/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { Button } from "@asu/components-core";
 import {
   locationOptions,
   filterValueShape,
