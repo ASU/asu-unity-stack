@@ -1,8 +1,8 @@
+import { idGenerator } from "@asu/components-core";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { idGenerator } from "@asu/components-core";
 import { useAppContext } from "../../../../core/context/app-context";
 import { ButtonPropTypes } from "../../../../core/models/app-prop-types";
 import { trackGAEvent } from "../../../../core/services/googleAnalytics";
@@ -92,7 +92,10 @@ const DropdownItem = ({ dropdownName, items, buttons, classes, listId }) => {
       // @ts-ignore
       breakpoint={breakpoint}
     >
-      <div id={MULTIPLE_SUBMENUS ? listId : null } className="dropdown-container">
+      <div
+        id={MULTIPLE_SUBMENUS ? listId : null}
+        className="dropdown-container"
+      >
         {items?.map((item, index0) => {
           const genKey = idGenerator(`dropdown-item-${index0}-`);
           const key = genKey.next().value;

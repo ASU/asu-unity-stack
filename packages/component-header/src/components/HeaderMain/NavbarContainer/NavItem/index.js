@@ -10,6 +10,7 @@ import { NavTreePropTypes } from "../../../../core/models/app-prop-types";
 import { trackGAEvent } from "../../../../core/services/googleAnalytics";
 import { DropdownItem } from "../DropdownItem";
 import { NavItemWrapper } from "./index.styles";
+
 const DROPDOWN_CONTAINER_CLASS = "dropdown-container";
 
 export const DROPDOWNS_GA_EVENTS = {
@@ -57,15 +58,13 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
 
   useEffect(() => {
     const handleClickOutside = event => {
-      if (
-        opened &&
-        (!clickRef?.current?.contains(event.target))) {
+      if (opened && !clickRef?.current?.contains(event.target)) {
         setItemOpened();
       }
     };
-    document.addEventListener('click', handleClickOutside, true);
+    document.addEventListener("click", handleClickOutside, true);
     return () => {
-      document.removeEventListener('click', handleClickOutside, true);
+      document.removeEventListener("click", handleClickOutside, true);
     };
   }, [opened]);
 
@@ -88,7 +87,6 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
       </span>
     );
   }, [link]);
-
 
   const dispatchGAEvent = () => {
     const isDropdown = !!link.items?.length;
@@ -135,7 +133,6 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
       ref={clickRef}
       onMouseEnter={handleOnMouseEnterLeave}
       onMouseLeave={handleOnMouseEnterLeave}
-
     >
       {/* @ts-ignore */}
       <a
