@@ -422,6 +422,10 @@ div.uds-hero-lg {
       margin-bottom: $uds-size-spacing-4;
     }
   }
+
+  div.uds-hero-lg.uds-video-hero.has-btn-row .hero-overlay {
+    height: 100%;
+  }
 }
 
 /*--------------------------------------------------------------
