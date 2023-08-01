@@ -12,7 +12,7 @@
       flex-direction: row-reverse;
     }
 
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(xl) {
       max-height: 540px;
     }
 
