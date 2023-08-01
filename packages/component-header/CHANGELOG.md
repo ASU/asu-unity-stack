@@ -1,3 +1,10 @@
+# [@asu/component-header-v2.0.4](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.3...@asu/component-header-v2.0.4) (2023-08-01)
+
+
+### Bug Fixes
+
+* **component-header:** fix focus univ. nav ([45c09c0](https://github.com/asu/asu-unity-stack/commit/45c09c0d25d1e5f6830e0729240aad04f78dd734))
+
 # [@asu/component-header-v2.0.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.2...@asu/component-header-v2.0.3) (2023-07-24)
 
 
