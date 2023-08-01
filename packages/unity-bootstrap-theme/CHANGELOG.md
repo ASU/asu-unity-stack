@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.5.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.5.0...@asu/unity-bootstrap-theme-v1.5.1) (2023-08-01)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix focus univ. nav ([ab8068e](https://github.com/ASU/asu-unity-stack/commit/ab8068e150cb0a35a5bc16b7773a14791c697efc))
+
 # [@asu/unity-bootstrap-theme-v1.5.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.4.2...@asu/unity-bootstrap-theme-v1.5.0) (2023-07-24)
 
 
