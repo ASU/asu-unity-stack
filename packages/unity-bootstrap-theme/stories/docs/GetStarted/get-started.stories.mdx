@@ -1,0 +1,94 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Get Started/Get Started" />
+
+# ASU Unity Bootstrap Theme
+## Quickstart Guide
+
+The Unity Bootstrap Theme is a Bootstrap 5-based web UI kit implementing ASU's Web Standards. Developers use the Unity Bootstrap Theme to build accessible and ASU Web Standards 2.0 compliant web sites and applications. 
+
+This is the Storybook reference site for the Unity Bootstrap theme. Browse the design components here to identify one you want to use. Implement the HTML markup associated with that design component in your site or application, include the Unity Bootstrap Theme's CSS and JS files, and you're in business.
+
+### Features
+
+- **Bootstrap 5:** Unity is built on top of Bootstrap 5, so you get all the Bootstrap goodness, plus some extra ASU-specific components and styles. **Bootstrap files,including CSS and Javascript, are bundled with Unity** so you don't need to include them separately.
+- **Clean, easy to use styles and scripts:** thanks to the helper utilities and variables provided by the Bootstrap 5 team.
+- **Font Awesome is no longer included with Unity!** If using in a project outside of webspark, you will need to include Font Awesome yourself. See [here](https://fontawesome.com/start) for instructions on how to do that.
+
+## ❯ Including Unity in your project
+
+We bundle the necessary CSS  and Javascript in the `dist/` folder. There are more options so you don't have to include CSS you don't use.
+
+* `dist/css/unity-bootstrap-theme.bundle.css` - base theme with header and footer CSS
+* `dist/css/unity-bootstrap-theme.css` - base theme without header and footer CSS
+* `dist/css/unity-bootstrap-header.css` (optional) - header CSS only - don't use if using the Unity `component-header` React component
+* `dist/css/unity-bootstrap-footer.css` (optional) - footer CSS only - don't use if using the Unity `component-footer` React component
+
+## ❯ How to  use the Unity Storybook reference site
+
+The Storybook reference site for the Unity Bootstrap Theme exists to provide a reference library of components and the markup to use to implement them in your site once you've included the library's CSS and Javascript in your site or application.
+Some components also have controls so you can make changes and see how those changes will appear in your site.
+
+## ❯ How to use the private package registry
+
+The ASU Unity Design System packages are published to GitHub's package registry. This is not exactly the same as using the NPM registry. To use the packages, you need to belong to ASU's GitHub organization and to configure your local NPM config to use this registry.
+
+1. Clone the monorepo using ```git clone``` or download the zip file from GitHub.
+2. If you don't already have it [request access to the Unity Design System GitHub Repo](https://asu.edu/webservices).
+3. Once you have access, there is a ```.npmrc.example``` file in the root of this project with the correct scope of the ```@asu``` packages. Make a copy and name it ```.npmrc``` and replace the ```YOUR_TOKEN_HERE``` with a [GitHub Personal Access Token](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authenticating-to-github-packages) to have a project-based configuration for adding Unity package dependencies to your project. Alternately, some users may wish to include these configurations in the ```.npmrc``` in their HOME folder, or in another project's ```.npmrc``` instead.
+4. The first line in the ```.npmrc``` tells NPM that all packages with the ```@asu``` scope should be obtained from our Github package registry. If you receive errors when trying to install packages saying you are not authorized, typically this means your local machine is not set up with the Personal Access Token to access Github.  You can fix this as well as learn more about working with the GitHub package registry by following the instructions at https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry
+5. Test installing packages using yarn or npm inside of another NPM project:
+```yarn add @asu/design-tokens```
+
+### TROUBLESHOOTING INSTALLATION ERRORS
+
+If you get errors having to do with yarn not being able to find a package on the registry, try running ```yarn config list``` at the project root and look for the ```registry:``` key under yarn config. If it is not set to ```https://registry.yarnpkg.com``` then run ```yarn config delete registry``` and recheck config.
+
+
+## Advanced Details for Unity Developers and Contributors
+
+See [this section](https://github.com/ASU/asu-unity-stack#advanced-details-for-unity-developers-and-contributors) of our README for more information about the Unity monorepo and how to contribute to the project.
+
+## > Google Analytics integration
+
+Google Analytics integration for Unity is handled via Google Tag Manager. During user interaction with Unity components, usage data is captured by Google Tag Manager and delivered to Google Analytics.
+
+This is enabled using the window `dataLayer` object. For components in each package of this repository we take the `dataLayer` object, with GTM and the dataLayer having already been initialized (by the host application or CMS - see [https://unity.web.asu.edu](https://unity.web.asu.edu) for details on GTM setup), and push events using the `push()` method of the `dataLayer`. For each object included in the array, Google Tag manager catches that event.
+
+Depending on the package, this integration, of dispatching events, is handled in different ways. For `component-header`, `components-library` header and `component-footer`, we use a service that pushes each event if the `dataLayer` object exists and that service method is called on each jsx element event handler. For example:
+
+#### **`src/component.js`**
+```JS
+<a href="#" onFocus={() => trackGAEvent(customEvent)}>Anchor Text</a>
+```
+#### **`services/googleAnalytics.js`**
+```JS
+const trackGAEvent = (event) => {
+  const { dataLayer } = window;
+  if (dataLayer) dataLayer.push(event);
+}
+```
+
+For the `unity-bootstrap-theme` package the events are dispatched by an `eventListener`, for the `focus`, `click` or `change` event handler, for each html element that needs to be included. For example:
+
+#### **`src/component.html`**
+```JS
+<a href="#" data-ga="">Anchor Text</a>
+```
+#### **`src/component.js`**
+```JS
+const pushGAEvent = (event) => {
+  const { dataLayer } = window;
+  if (dataLayer) dataLayer.push(event);
+};
+// eventListener
+const elements = document.querySelectorAll('[data-ga]');
+elements.forEach((element) =>
+  element.addEventListener('focus', () => {
+    pushGAEvent(event);
+  })
+);
+```
+Check [https://unity.web.asu.edu/](https://unity.web.asu.edu/) as well as the README.md's in individual Unity packages for more Google Analytics, Google Tag Manager and data layer implementation details.
+
+To read more about Google Tag Manager and dataLayer usage, see [here](https://developers.google.com/tag-platform/tag-manager/datalayer).
