@@ -1,3 +1,11 @@
+# [@asu/unity-bootstrap-theme-v1.5.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.5.1...@asu/unity-bootstrap-theme-v1.5.2) (2023-08-01)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** add img text max-hgt ([70091a3](https://github.com/ASU/asu-unity-stack/commit/70091a3c0297a005b22b1c3bcf5d03a9216b4a6f))
+* **unity-bootstrap-theme:** btn to wrap ([25b341b](https://github.com/ASU/asu-unity-stack/commit/25b341bf278861347ce2235d1d9c8bbd11279dc6))
+
 # [@asu/unity-bootstrap-theme-v1.5.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.5.0...@asu/unity-bootstrap-theme-v1.5.1) (2023-08-01)
 
 
