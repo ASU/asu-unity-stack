@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.5.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.5.2...@asu/unity-bootstrap-theme-v1.5.3) (2023-08-02)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix anchor menu styles to match XD ([5c0d1a9](https://github.com/ASU/asu-unity-stack/commit/5c0d1a9b420875682efeff204be55047ac0aa71e))
+
 # [@asu/unity-bootstrap-theme-v1.5.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.5.1...@asu/unity-bootstrap-theme-v1.5.2) (2023-08-01)
 
 
