@@ -1,3 +1,10 @@
+# [@asu/component-header-v2.0.5](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.4...@asu/component-header-v2.0.5) (2023-08-02)
+
+
+### Bug Fixes
+
+* **component-header:** keep gold underline on open dropwdown, remove on close ([b75ccc4](https://github.com/asu/asu-unity-stack/commit/b75ccc4b763d6e116aa9cb17dffa9b2bf5157e96))
+
 # [@asu/component-header-v2.0.4](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.3...@asu/component-header-v2.0.4) (2023-08-01)
 
 
