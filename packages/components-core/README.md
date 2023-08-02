@@ -156,7 +156,6 @@ yarn test
     },
   });
 </script>
-
 ```
 
 ### Examples
