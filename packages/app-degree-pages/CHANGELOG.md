@@ -1,3 +1,10 @@
+# [@asu/app-degree-pages-v2.1.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.1.1...@asu/app-degree-pages-v2.1.2) (2023-08-02)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** add check to the anchorMenu prop to see if all values are false ([5c3ff1c](https://github.com/asu/asu-unity-stack/commit/5c3ff1ca9365d2ac9f86b4792f1b2343ea105962))
+
 # [@asu/app-degree-pages-v2.1.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.1.0...@asu/app-degree-pages-v2.1.1) (2023-07-24)
 
 
