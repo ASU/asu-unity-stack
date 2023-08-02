@@ -181,71 +181,73 @@ export const AnchorMenu = ({
   };
 
   return (
-    <AnchorMenuWrapper
-      // @ts-ignore
-      requiresAltMenuSpacing={state.hasAltMenuSpacing}
-      ref={anchorMenuRef}
-      className={classNames(
-        "uds-anchor-menu",
-        "uds-anchor-menu-expanded-lg",
-        "mb-4",
-        {
-          [`sticky`]: state.sticky,
-          [`with-header`]: state.hasHeader,
-        }
-      )}
-      style={state.showMenu ? { borderBottom: 0 } : {}}
-    >
-      <div className={`${state.containerClass} uds-anchor-menu-wrapper`}>
-        {isSmallDevice ? (
-          <button
-            className={classNames("mobile-menu-toggler", {
-              [`show-menu`]: state.showMenu,
-            })}
-            type="button"
-            onClick={() => {
-              trackMobileDropdownEvent();
-              handleMenuVisibility();
-            }}
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseAnchorMenu"
-            aria-controls="collapseAnchorMenu"
-          >
-            <h4>
-              {menuTitle}:<i className="fas fa-chevron-down" />
-            </h4>
-          </button>
-        ) : (
-          <h4>{menuTitle}:</h4>
+    items?.length > 0 && (
+      <AnchorMenuWrapper
+        // @ts-ignore
+        requiresAltMenuSpacing={state.hasAltMenuSpacing}
+        ref={anchorMenuRef}
+        className={classNames(
+          "uds-anchor-menu",
+          "uds-anchor-menu-expanded-lg",
+          "mb-4",
+          {
+            [`sticky`]: state.sticky,
+            [`with-header`]: state.hasHeader,
+          }
         )}
+        style={state.showMenu ? { borderBottom: 0 } : {}}
+      >
+        <div className={`${state.containerClass} uds-anchor-menu-wrapper`}>
+          {isSmallDevice ? (
+            <button
+              className={classNames("mobile-menu-toggler", {
+                [`show-menu`]: state.showMenu,
+              })}
+              type="button"
+              onClick={() => {
+                trackMobileDropdownEvent();
+                handleMenuVisibility();
+              }}
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseAnchorMenu"
+              aria-controls="collapseAnchorMenu"
+            >
+              <h4>
+                {menuTitle}:<i className="fas fa-chevron-down" />
+              </h4>
+            </button>
+          ) : (
+            <h4>{menuTitle}:</h4>
+          )}
 
-        <div
-          data-testid="anchor-menu-container"
-          id="collapseAnchorMenu"
-          className={classNames("card", "card-body", "collapse", {
-            [`show`]: state.showMenu,
-          })}
-        >
-          <nav data-testid="anchor-menu" className="nav" aria-label={menuTitle}>
-            {items?.map(item => (
-              // Use this package button
-              // @ts-ignore
-              <Button
-                data-testid={`anchor-item-${item.targetIdName}`}
-                key={item.targetIdName}
-                classes={classNames("nav-link", {
-                  [`active`]: state.activeContainer === item.targetIdName,
-                }).split(" ")}
-                ariaLabel={item.text}
-                label={item.text}
-                icon={item.icon}
-                onClick={() => handleClickLink(item.targetIdName)}
-              />
-            ))}
-          </nav>
+          <div
+            data-testid="anchor-menu-container"
+            id="collapseAnchorMenu"
+            className={classNames("card", "card-body", "collapse", {
+              [`show`]: state.showMenu,
+            })}
+          >
+            <nav data-testid="anchor-menu" className="nav" aria-label={menuTitle}>
+              {items?.map(item => (
+                // Use this package button
+                // @ts-ignore
+                <Button
+                  data-testid={`anchor-item-${item.targetIdName}`}
+                  key={item.targetIdName}
+                  classes={classNames("nav-link", {
+                    [`active`]: state.activeContainer === item.targetIdName,
+                  }).split(" ")}
+                  ariaLabel={item.text}
+                  label={item.text}
+                  icon={item.icon}
+                  onClick={() => handleClickLink(item.targetIdName)}
+                />
+              ))}
+            </nav>
+          </div>
         </div>
-      </div>
-    </AnchorMenuWrapper>
+      </AnchorMenuWrapper>
+    )
   );
 };
 

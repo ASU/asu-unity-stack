@@ -15,11 +15,6 @@ import { anchorMenuPropType, progDetailSectionIds } from "../../models";
  * @returns {JSX.Element}
  */
 function OnThisPageAnchorMenu({ anchorMenu }) {
-  // Check if all keys in anchorMenu are false
-  if (Object.values(anchorMenu).every(value => value === false)) {
-    return null;
-  }
-
   // clean up those targetIdNames bad formatted
   /** @type {AnchorMenuItem[]} */
   const externalAnchors = anchorMenu?.externalAnchors?.map(anchorItem => {
