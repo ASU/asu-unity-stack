@@ -67,6 +67,10 @@
       color: $uds-color-base-gray-7;
     }
 
+    &:focus {
+      box-shadow: 0px 0px 0px 2px $uds-color-base-gray-7 !important;
+    }
+
     svg {
       width: 2rem !important;
       margin-right: $uds-size-spacing-1;
@@ -99,6 +103,7 @@
     border-bottom: $uds-size-spacing-1 solid transparent;
     padding: $uds-size-spacing-3 $uds-size-spacing-2 $uds-size-spacing-2
       $uds-size-spacing-2;
+    margin-left: 8px;
 
     &:hover,
     &.active {
