@@ -4,7 +4,7 @@ const NavItemWrapper = styled.li`
   position: relative;
   padding: 0;
   margin: 0 0.5rem 0 0;
-  &:hover > a:after {
+  &:has(.open-link) > a:after, &:hover > a:after {
     width: calc(100% + 24px);
   }
   > a {
