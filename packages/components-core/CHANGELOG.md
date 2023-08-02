@@ -1,3 +1,10 @@
+# [@asu/components-core-v2.2.2](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v2.2.1...@asu/components-core-v2.2.2) (2023-08-02)
+
+
+### Bug Fixes
+
+* **components-core:** update README.md to trigger release for ws2-1634 ([df59a6b](https://github.com/ASU/asu-unity-stack/commit/df59a6bec2d11a4205aa4eb491bcbbfa327747a1))
+
 # [@asu/components-core-v2.2.1](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v2.2.0...@asu/components-core-v2.2.1) (2023-07-27)
 
 
