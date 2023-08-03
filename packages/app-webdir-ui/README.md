@@ -28,7 +28,6 @@ a list of objects containing `asuriteid` and `dept` pairs (when `searchType` is 
 - `searchURL` is a string that tells the component where to search. The endpoint names
 will be appended to this. For example, by providing the URL "https://dev-asu-isearch.ws.asu.edu/api/v1/, the data will be found at https://dev-asu-isearch.ws.asu.edu/api/v1/webdir-departments/profiles.
 
-
 Here's some examples of the props:
 
 ```
