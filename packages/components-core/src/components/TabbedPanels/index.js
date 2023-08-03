@@ -43,15 +43,15 @@ Tab.propTypes = {
 };
 
 const TabbedPanels = ({
-  initialTab = '',
+  initialTab = "",
   children,
-  bgColor = '',
+  bgColor = "",
   onTabChange = () => {},
 }) => {
   const childrenArray = React.Children.toArray(children);
   const isMounted = useRef(false);
   const [activeTabID, setActiveTabID] = useState(
-    initialTab && initialTab !== 'null' ? initialTab : childrenArray[0].props.id
+    initialTab && initialTab !== "null" ? initialTab : childrenArray[0].props.id
   );
   const headerTabs = useRef(null);
   const [headerTabItems, setHeaderTabItems] = useRefs();
@@ -77,7 +77,9 @@ const TabbedPanels = ({
 
   useEffect(() => {
     const onResize = () => {
-      setScrollableWidth(headerTabs.current.scrollWidth - headerTabs.current.offsetWidth);
+      setScrollableWidth(
+        headerTabs.current.scrollWidth - headerTabs.current.offsetWidth
+      );
     };
     window.addEventListener("resize", onResize);
     onResize();
@@ -88,12 +90,11 @@ const TabbedPanels = ({
     headerTabItems.current[activeTabID]?.scrollIntoView();
   }, [activeTabID]);
 
-
   useEffect(() => {
     if (
       isMounted.current &&
       initialTab &&
-      initialTab !== 'null' &&
+      initialTab !== "null" &&
       activeTabID !== initialTab
     ) {
       setActiveTabID(initialTab);
@@ -149,7 +150,7 @@ const TabbedPanels = ({
     const count = childrenArray.length;
     const num = up ? 1 : -1;
     const currPos = childrenArray.findIndex(c => c.props.id === activeTabID);
-    const newTabID = childrenArray[(count + currPos + num)%count].props.id;
+    const newTabID = childrenArray[(count + currPos + num) % count].props.id;
     updateActiveTabID(newTabID);
   };
 
@@ -171,8 +172,8 @@ const TabbedPanels = ({
                 selected={activeTabID === child.props.id}
                 selectTab={switchToTab}
                 key={child.props.id}
-                leftKeyPressed={()=>incrementIndex(false)}
-                rightKeyPressed={()=>incrementIndex()}
+                leftKeyPressed={() => incrementIndex(false)}
+                rightKeyPressed={() => incrementIndex()}
                 icon={child.props.icon}
                 index={index}
               />

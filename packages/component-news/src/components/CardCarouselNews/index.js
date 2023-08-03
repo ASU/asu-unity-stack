@@ -1,8 +1,8 @@
 // @ts-check
+import { FeedContext } from "@asu/components-core";
 import React, { useContext } from "react";
 
 import { CardCarousel } from "../../../../component-carousel/src/components/CardCarousel";
-import { FeedContext } from "@asu/components-core";
 import { BaseFeed } from "../../core/components/BaseFeed";
 import { defaultProps } from "../../core/constants/default-props";
 import { NewsWrapper } from "./index.styles";

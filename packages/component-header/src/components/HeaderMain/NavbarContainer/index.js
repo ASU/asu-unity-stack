@@ -1,8 +1,8 @@
 // @ts-check
+import { idGenerator } from "@asu/components-core";
 import React, { useState } from "react";
 
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { idGenerator } from "@asu/components-core";
 import { useAppContext } from "../../../core/context/app-context";
 import { useIsMobile } from "../../../core/hooks/isMobile";
 import { trackGAEvent } from "../../../core/services/googleAnalytics";

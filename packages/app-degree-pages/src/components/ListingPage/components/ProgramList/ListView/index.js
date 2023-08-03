@@ -1,8 +1,8 @@
 /* eslint-disable react/no-danger, jsx-a11y/no-noninteractive-element-to-interactive-role  */
 // @ts-check
+import { sanitizeDangerousMarkup, idGenerator } from "@asu/components-core";
 import React, { Fragment, useContext, createRef } from "react";
 
-import { sanitizeDangerousMarkup, idGenerator } from "@asu/components-core";
 import { AppContext } from "../../../../../core/context";
 import { GRID_PROGRAMS_ID } from "../../../../../core/models";
 import { degreeDataPropResolverService } from "../../../../../core/services";

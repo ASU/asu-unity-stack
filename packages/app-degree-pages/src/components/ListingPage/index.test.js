@@ -1,4 +1,5 @@
 // @ts-check
+import { Hero } from "@asu/components-core";
 import {
   render,
   act,
@@ -10,7 +11,6 @@ import React from "react";
 
 import { ListingPage } from "./index";
 
-import { Hero } from "@asu/components-core";
 import { DOMAIN_URL } from "../../core/constants";
 import {
   locationOptions,

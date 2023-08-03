@@ -1,34 +1,34 @@
-import React from 'react';
+import React from "react";
 
-import { trackGAEvent } from '../core/services/googleAnalytics';
-import { ProfileCardLayout } from './index.styles';
-import { profileCardType } from './models';
+import { trackGAEvent } from "../core/services/googleAnalytics";
+import { ProfileCardLayout } from "./index.styles";
+import { profileCardType } from "./models";
 
 const ProfileCard = ({ ...props }) => {
   let title = props.matchedAffiliationTitle
     ? `${props.matchedAffiliationTitle}, `
-    : '';
-  if (props.matchedAffiliationDept && props.size !== 'micro') {
+    : "";
+  if (props.matchedAffiliationDept && props.size !== "micro") {
     title += props.matchedAffiliationDept;
   }
 
   const hideNonExistantImages = e => {
-    e.target.style.display = 'none';
+    e.target.style.display = "none";
   };
   let formattedTelephone = props.telephone;
   if (formattedTelephone) {
     const phoneArea = formattedTelephone.slice(0, 3);
-    const phoneNumber = formattedTelephone.slice(3).replace('/', '');
+    const phoneNumber = formattedTelephone.slice(3).replace("/", "");
     formattedTelephone = `${phoneArea}-${phoneNumber}`;
   }
 
-  const microLinkText = 'ASU Knowledge Enterprise';
+  const microLinkText = "ASU Knowledge Enterprise";
   const sendEvent = () => {
     trackGAEvent({
-      event: 'link',
-      action: 'click',
-      name: 'onclick',
-      type: 'internal link',
+      event: "link",
+      action: "click",
+      name: "onclick",
+      type: "internal link",
       section: props.name,
       text: microLinkText,
       component: props.GASource,
@@ -36,12 +36,10 @@ const ProfileCard = ({ ...props }) => {
   };
   return (
     <ProfileCardLayout
-      className={`uds-person-profile ${props.size} ${props.fill ? 'fill' : ''}`}
+      className={`uds-person-profile ${props.size} ${props.fill ? "fill" : ""}`}
     >
       <a href={props.profileURL} className="profile-img-container">
-        <div
-          className="profile-img-placeholder"
-        >
+        <div className="profile-img-placeholder">
           <img
             className="profile-img"
             src={props.imgURL} // TODO: This prop can potentially be empty, which can occur due to limitations of the image service. Consequently, the <img> tag would be rendered without its "src" attribute, which is not a good practice and should be avoided.
@@ -60,7 +58,7 @@ const ProfileCard = ({ ...props }) => {
         <div className="person-profession">
           <h4>{title}</h4>
         </div>
-        {props.size !== 'micro' && (
+        {props.size !== "micro" && (
           <ul className="person-contact-info">
             <li>
               <a
@@ -90,7 +88,7 @@ const ProfileCard = ({ ...props }) => {
             </li>
           </ul>
         )}
-        {['default', 'large'].includes(props.size) && (
+        {["default", "large"].includes(props.size) && (
           <div>
             <p className="person-description">
               {props.shortBio?.slice(0, 250)}
@@ -99,7 +97,7 @@ const ProfileCard = ({ ...props }) => {
               {props.facebookLink && (
                 <li>
                   <a
-                    onClick={() => sendEvent('facebook icon')}
+                    onClick={() => sendEvent("facebook icon")}
                     href={props.facebookLink}
                     aria-label="Go to user Facebook profile"
                   >
@@ -113,7 +111,7 @@ const ProfileCard = ({ ...props }) => {
               {props.linkedinLink && (
                 <li>
                   <a
-                    onClick={() => sendEvent('linkedin icon')}
+                    onClick={() => sendEvent("linkedin icon")}
                     href={props.linkedinLink}
                     aria-label="Go to user Linkedin profile"
                   >
@@ -124,7 +122,7 @@ const ProfileCard = ({ ...props }) => {
               {props.twitterLink && (
                 <li>
                   <a
-                    onClick={() => sendEvent('twitter icon')}
+                    onClick={() => sendEvent("twitter icon")}
                     href={props.twitterLink}
                     aria-label="Go to user Twitter profile"
                   >
@@ -138,7 +136,7 @@ const ProfileCard = ({ ...props }) => {
               {props.website && (
                 <li>
                   <a
-                    onClick={() => sendEvent('website icon')}
+                    onClick={() => sendEvent("website icon")}
                     href={props.website}
                     aria-label="Go to user Website"
                   >
@@ -149,7 +147,7 @@ const ProfileCard = ({ ...props }) => {
             </ul>
           </div>
         )}
-        {props.size === 'small' && (
+        {props.size === "small" && (
           <a
             className="btn btn-maroon btn-md"
             href={props.profileURL}
@@ -158,7 +156,7 @@ const ProfileCard = ({ ...props }) => {
             View Profile
           </a>
         )}
-        {props.size === 'micro' && props.matchedAffiliationDept && (
+        {props.size === "micro" && props.matchedAffiliationDept && (
           <div>{props.matchedAffiliationDept}</div>
         )}
       </div>

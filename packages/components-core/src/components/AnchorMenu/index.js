@@ -95,7 +95,7 @@ export const AnchorMenu = ({
       document.getElementById("asu-header") ||
       document.getElementById("headerContainer") ||
       document.getElementById("asuHeader");
-    return (!!pageHeader);
+    return !!pageHeader;
   };
 
   // Is element present which requires different spacing for the ASU Header
@@ -104,7 +104,7 @@ export const AnchorMenu = ({
     const degreeDetailPageContainer = document.getElementById(
       "degreeDetailPageContainer"
     );
-    return (!!degreeDetailPageContainer);
+    return !!degreeDetailPageContainer;
   };
 
   // Returns the first container class found from ancestors or default

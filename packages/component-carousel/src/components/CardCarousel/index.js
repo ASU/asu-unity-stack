@@ -1,8 +1,8 @@
 // @ts-check
+import { Card } from "@asu/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { Card } from "@asu/components-core";
 import { BaseCarousel } from "../../core/components/BaseCarousel";
 
 /**

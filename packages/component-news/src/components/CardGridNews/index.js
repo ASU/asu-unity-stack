@@ -1,8 +1,8 @@
 // @ts-check
+import { Card, FeedContext } from "@asu/components-core";
 import React, { useContext } from "react";
 
 import { feedCardButtonShape } from "../../../../components-core/src/components/FeedAnatomy/feed-prop-types";
-import { Card, FeedContext } from "@asu/components-core";
 import { BaseFeed } from "../../core/components/BaseFeed";
 import { defaultProps } from "../../core/constants/default-props";
 import { parseInterests } from "../../core/utils";
