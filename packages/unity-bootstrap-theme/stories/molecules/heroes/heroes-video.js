@@ -47,8 +47,8 @@ export const initVideo = () => {
   }
 
   // set event listeners
-  $videoBtnPause.addEventListener(EVENT_CLICK, handleBtnPauseEvent);
-  $videoBtnPlay.addEventListener(EVENT_CLICK, handleBtnPlayEvent);
+  $videoBtnPause?.addEventListener(EVENT_CLICK, handleBtnPauseEvent);
+  $videoBtnPlay?.addEventListener(EVENT_CLICK, handleBtnPlayEvent);
 
   // Init google analytics
   googleAnalytics();
