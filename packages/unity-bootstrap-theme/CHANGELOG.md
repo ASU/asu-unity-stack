@@ -1,3 +1,12 @@
+# [@asu/unity-bootstrap-theme-v1.5.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.5.3...@asu/unity-bootstrap-theme-v1.5.4) (2023-08-04)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix video hero overlay height on mobile screens ([6932d83](https://github.com/ASU/asu-unity-stack/commit/6932d83274d46b777d2065aff726ba95cd3108ea))
+* **unity-bootstrap-theme:** hero video null check ([c53c9db](https://github.com/ASU/asu-unity-stack/commit/c53c9db00023922178364cbcbe75d5af85dfe3cb))
+* **unity-bootstrap-theme:** set a max-width on donut chart text ([146604b](https://github.com/ASU/asu-unity-stack/commit/146604b9edb4195500a81f7c03ec26fd7543a227))
+
 # [@asu/unity-bootstrap-theme-v1.5.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.5.2...@asu/unity-bootstrap-theme-v1.5.3) (2023-08-02)
 
 
