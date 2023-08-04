@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v3.0.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.0.0...@asu/app-webdir-ui-v3.0.1) (2023-08-04)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** update README.md to trigger release ([c26769b](https://github.com/asu/asu-unity-stack/commit/c26769b4401fb876d9d09e61737fa7589a47ddf3))
+
 # [@asu/app-webdir-ui-v3.0.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v2.1.1...@asu/app-webdir-ui-v3.0.0) (2023-07-27)
 
 
