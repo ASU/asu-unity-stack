@@ -1,3 +1,10 @@
+# [@asu/component-carousel-v2.0.4](https://github.com/asu/asu-unity-stack/compare/@asu/component-carousel-v2.0.3...@asu/component-carousel-v2.0.4) (2023-08-04)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** revert the removal of image borders within carousels ([2b0d86f](https://github.com/asu/asu-unity-stack/commit/2b0d86f90b5dc04db83d3ef29d2eb6813e08a8cf))
+
 # [@asu/component-carousel-v2.0.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-carousel-v2.0.2...@asu/component-carousel-v2.0.3) (2023-07-24)
 
 
