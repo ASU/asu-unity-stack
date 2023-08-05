@@ -60,6 +60,9 @@ Most design components' markup changed little or not at all in this update. A fe
 
 **Accordions require the use of Javascript to function. If using Webspark, this has already been done for you. If using the Unity Bootstrap 5 theme in a standalone application, you will need to import the bundled bootstrap javascript file which is available in `@asu/unity-bootstrap-theme/dist/js/bootstrap.bundle.min.js`**
 
+#### Select Form Element
+- Select elements should use class `form-select` instead of `form-control`
+
 ### Update Unity design component tag attributes to comply with Bootstrap 5 conventions. Details follow:
 
 Regex of tag attribute changes:
