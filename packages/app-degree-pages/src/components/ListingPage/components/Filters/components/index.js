@@ -30,7 +30,7 @@ const SelectFormGroup = ({
   <div className="form-group">
     <label htmlFor={id}>{label}</label>
     <select
-      className="form-control"
+      className="form-select"
       id={id}
       data-testid={id}
       multiple={multiple}
