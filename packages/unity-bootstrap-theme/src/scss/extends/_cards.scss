@@ -542,7 +542,7 @@ Cards - Table of Contents
     &.accordion-header-icon {
       & .accordion-icon {
         display: flex;
-        margin-left: calc($uds-size-spacing-3 / -2);
+        margin-left: calc(#{$uds-size-spacing-3} / -2);
         align-items: flex-start;
 
         svg {
