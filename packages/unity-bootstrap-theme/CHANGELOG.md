@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.5.5](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.5.4...@asu/unity-bootstrap-theme-v1.5.5) (2023-08-07)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** Add SASS var interpltn ([dead0dc](https://github.com/ASU/asu-unity-stack/commit/dead0dc460fb24f6e950f04de90accdb805ddc64))
+
 # [@asu/unity-bootstrap-theme-v1.5.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.5.3...@asu/unity-bootstrap-theme-v1.5.4) (2023-08-04)
 
 
