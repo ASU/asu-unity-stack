@@ -84,7 +84,7 @@
       @include regular-transition;
     }
     .content-holder {
-      width: calc(100% - $uds-size-spacing-8);
+      width: calc(100% - #{$uds-size-spacing-8});
       left: $uds-size-spacing-4;
       .content-bg {
         @include regular-transition;
