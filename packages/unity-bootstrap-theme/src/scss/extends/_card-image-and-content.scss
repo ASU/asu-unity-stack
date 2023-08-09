@@ -37,7 +37,7 @@ div.uds-card-image-and-content {
     }
 
     .card {
-      margin: calc(-1 * $card-image-top-height - 1px) 0 0 2rem;
+      margin: calc(-1 * #{$card-image-top-height} - 1px) 0 0 2rem;
       grid-area: card;
       height: unset;
     }
