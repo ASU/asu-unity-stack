@@ -1,9 +1,10 @@
 // @ts-check
 /* eslint no-use-before-define: 0 */
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-import { FacultyRankTabPanels } from "../FacultyRankComponent";
+import FacultyRankTabPanels from "../FacultyRankComponent";
+import { FilterComponent } from "../helpers/Filter";
 import { engineNames, engines } from "../helpers/search";
 import { SortPicker } from "../SearchPage/components/sort";
 import { ASUSearchResultsList } from "../SearchResultsList";
@@ -19,13 +20,13 @@ function WebDirectory({
   appPathFolder,
   display,
   filters,
+  alphaFilter = "false",
 }) {
   const [sort, setSort] = useState(defaultSortSetter);
-  const [requestFilters] = useState(doSearch);
+  const [requestFilters, setRequestFilters] = useState(doSearch);
   const RES_PER_PAGE = 6;
 
   // Initializer functions for requestFilters and sort. Only runs on first render.
-
   function doSearch() {
     const tempFilters = filters ? { ...filters } : {};
     if (searchType === "departments" || searchType === "faculty_rank") {
@@ -112,7 +113,7 @@ function WebDirectory({
   };
 
   const setNewSort = newSort => {
-    setSort(prev => newSort);
+    setSort(newSort);
   };
 
   const searchTypeEngineMap = {
@@ -126,6 +127,45 @@ function WebDirectory({
     return (
       <>
         <WebDirLayout>
+          {alphaFilter === "true" && (
+            <FilterComponent
+              filterLabel="Filter By Last Initial"
+              choices={[
+                "A",
+                "B",
+                "C",
+                "D",
+                "E",
+                "F",
+                "G",
+                "H",
+                "I",
+                "J",
+                "K",
+                "L",
+                "M",
+                "N",
+                "O",
+                "P",
+                "Q",
+                "R",
+                "S",
+                "T",
+                "U",
+                "V",
+                "W",
+                "X",
+                "Y",
+                "Z",
+              ]}
+              onChoose={filterLetter =>
+                setRequestFilters({ ...requestFilters, lastInit: filterLetter })
+              }
+              resetFilters={() =>
+                setRequestFilters({ ...requestFilters, lastInit: "" })
+              }
+            />
+          )}
           <div className="sort">
             <SortPicker
               customSortOptions={customSortOptions}
@@ -155,6 +195,7 @@ function WebDirectory({
     <FacultyRankLayout>
       <FacultyRankTabPanels
         {...enginesWithParams[searchTypeEngineMap[searchType]]}
+        alphaFilter={alphaFilter}
       />
     </FacultyRankLayout>
   );
@@ -180,6 +221,7 @@ WebDirectory.propTypes = {
     title: PropTypes.string,
     campuses: PropTypes.string,
   }),
+  alphaFilter: PropTypes.string,
 };
 
 export { WebDirectory };

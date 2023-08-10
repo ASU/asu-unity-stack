@@ -346,6 +346,7 @@ export const performSearch = function ({
   filters,
   display,
   rankGroup,
+  controller,
 }) {
   async function search(resolve, reject) {
     const currentSort = engine.supportedSortTypes.includes(sort) ? sort : "";
@@ -405,10 +406,14 @@ export const performSearch = function ({
         const employeeTypesParam = `employee_types=${filters.employee}`;
         query = `${query}&${employeeTypesParam}`;
       }
+      if (filters && filters.lastInit) {
+        const lastInitParam = `last_init=${filters.lastInit}`;
+        query = `${query}&${lastInitParam}`;
+      }
       if (rankGroup) {
         query = `${query}&rank_group=${rankGroup}`;
       }
-      APICall = () => axios.get(query);
+      APICall = () => axios.get(query, { signal: controller.signal });
     } else {
       if (!filters) {
         return;
@@ -452,7 +457,7 @@ export const performSearch = function ({
         resolve(data);
       })
       .catch(err => {
-        if (err.response.status === 403) {
+        if (err.response?.status === 403) {
           reject(403);
         }
       });
