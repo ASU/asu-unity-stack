@@ -38,9 +38,9 @@
   "peerDependencies": {
     "@asu/components-core": "^2.1.0",
     "@babel/plugin-transform-react-jsx": "^7.13.12",
-    "@fortawesome/fontawesome-svg-core": "^1.2.35",
-    "@fortawesome/free-solid-svg-icons": "^5.15.3",
-    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "prop-types": "^15.7.2",
     "react": ">= 16.14.0 < 18",
     "react-dom": ">= 16.14.0 < 18",
