@@ -153,7 +153,7 @@ const PersonProfile = props => (
                 data-ga-section="john smith"
                 data-ga="twitter icon"
               >
-                <span className="fab fa-twitter-square" />
+                <span className="fab fa-square-x-twitter" />
               </a>
             </li>
           </ul>

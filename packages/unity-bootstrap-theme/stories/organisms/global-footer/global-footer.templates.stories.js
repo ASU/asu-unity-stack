@@ -203,7 +203,7 @@ export const ZeroColumns = (
               >
                 <span
                   title="Twitter Social Media Icon"
-                  className="fab fa-twitter-square"
+                  className="fab fa-square-x-twitter"
                 ></span>
               </a>
               <a
@@ -442,7 +442,7 @@ export const OneColumn = (
               >
                 <span
                   title="Twitter Social Media Icon"
-                  className="fab fa-twitter-square"
+                  className="fab fa-square-x-twitter"
                 ></span>
               </a>
               <a
@@ -871,7 +871,7 @@ export const TwoColumns = (
               >
                 <span
                   title="Twitter Social Media Icon"
-                  className="fab fa-twitter-square"
+                  className="fab fa-square-x-twitter"
                 ></span>
               </a>
               <a
@@ -1175,7 +1175,7 @@ export const ThreeColumns = (
               >
                 <span
                   title="Twitter Social Media Icon"
-                  className="fab fa-twitter-square"
+                  className="fab fa-square-x-twitter"
                 ></span>
               </a>
               <a
@@ -1527,7 +1527,7 @@ export const FourColumns = (
               >
                 <span
                   title="Twitter Social Media Icon"
-                  className="fab fa-twitter-square"
+                  className="fab fa-square-x-twitter"
                 ></span>
               </a>
               <a
@@ -1927,7 +1927,7 @@ export const FiveColumns = (
               >
                 <span
                   title="Twitter Social Media Icon"
-                  className="fab fa-twitter-square"
+                  className="fab fa-square-x-twitter"
                 ></span>
               </a>
               <a
@@ -2375,7 +2375,7 @@ export const SixColumns = (
               >
                 <span
                   title="Twitter Social Media Icon"
-                  className="fab fa-twitter-square"
+                  className="fab fa-square-x-twitter"
                 ></span>
               </a>
               <a
