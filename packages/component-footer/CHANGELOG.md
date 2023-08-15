@@ -1,3 +1,10 @@
+# [@asu/component-footer-v2.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.0.2...@asu/component-footer-v2.1.0) (2023-08-15)
+
+
+### Features
+
+* **component-footer:** update Twitter X Icon ([b0c1c05](https://github.com/asu/asu-unity-stack/commit/b0c1c051cff01a4a42a7e1bedcc9e7e0d363a68e))
+
 # [@asu/component-footer-v2.0.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.0.1...@asu/component-footer-v2.0.2) (2023-06-02)
 
 
