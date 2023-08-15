@@ -1,3 +1,10 @@
+# [@asu/app-degree-pages-v2.1.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.1.2...@asu/app-degree-pages-v2.1.3) (2023-08-15)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** add arrow to select ([52df737](https://github.com/asu/asu-unity-stack/commit/52df737b8cccf547b878ca9456131d683ef035f4))
+
 # [@asu/app-degree-pages-v2.1.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.1.1...@asu/app-degree-pages-v2.1.2) (2023-08-02)
 
 
