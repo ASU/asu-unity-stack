@@ -227,7 +227,11 @@ export const AnchorMenu = ({
               [`show`]: state.showMenu,
             })}
           >
-            <nav data-testid="anchor-menu" className="nav" aria-label={menuTitle}>
+            <nav
+              data-testid="anchor-menu"
+              className="nav"
+              aria-label={menuTitle}
+            >
               {items?.map(item => (
                 // Use this package button
                 // @ts-ignore
