@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.6.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.5.7...@asu/unity-bootstrap-theme-v1.6.0) (2023-08-15)
+
+
+### Features
+
+* **unity-bootstrap-theme:** update Twitter X Icon ([f7ec031](https://github.com/ASU/asu-unity-stack/commit/f7ec031f1fb90d05f7efa46a4c69ca5fd749bc78))
+
 # [@asu/unity-bootstrap-theme-v1.5.7](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.5.6...@asu/unity-bootstrap-theme-v1.5.7) (2023-08-15)
 
 
