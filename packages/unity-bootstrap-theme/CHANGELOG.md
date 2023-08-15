@@ -1,3 +1,11 @@
+# [@asu/unity-bootstrap-theme-v1.5.7](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.5.6...@asu/unity-bootstrap-theme-v1.5.7) (2023-08-15)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** add arrow to select ([72ec474](https://github.com/ASU/asu-unity-stack/commit/72ec4748990d2591d573c360ab44f821bcbd6ea2))
+* **unity-bootstrap-theme:** add form-select class ([58d98dc](https://github.com/ASU/asu-unity-stack/commit/58d98dceb96d084dfeb0e6187d4105b69ba93c05))
+
 # [@asu/unity-bootstrap-theme-v1.5.6](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.5.5...@asu/unity-bootstrap-theme-v1.5.6) (2023-08-08)
 
 
