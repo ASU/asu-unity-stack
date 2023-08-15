@@ -27,7 +27,8 @@ form.uds-form {
   // color set in component's Bootstrap variable overrides.
 
   /* Input text */
-  .form-control {
+  .form-control,
+  .form-select {
     color: $uds-color-base-gray-7;
     border: 1px solid $uds-color-base-gray-5;
 
