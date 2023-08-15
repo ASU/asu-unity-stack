@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v3.0.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.0.1...@asu/app-webdir-ui-v3.0.2) (2023-08-15)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** add arrow to select ([d17693d](https://github.com/asu/asu-unity-stack/commit/d17693d763e8a1be9616b8cf23793b0dfc266f03))
+
 # [@asu/app-webdir-ui-v3.0.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.0.0...@asu/app-webdir-ui-v3.0.1) (2023-08-04)
 
 
