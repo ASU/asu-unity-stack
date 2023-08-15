@@ -3,7 +3,7 @@ import {
   faFacebookSquare,
   faInstagramSquare,
   faLinkedin,
-  faTwitterSquare,
+  faSquareXTwitter,
   faYoutubeSquare,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -83,7 +83,7 @@ const Social = ({ social: { logoUrl, unitLogo, mediaLinks } }) => {
                   >
                     <FontAwesomeIcon
                       title="Twitter Social Media Icon"
-                      icon={faTwitterSquare}
+                      icon={faSquareXTwitter}
                     />
                   </a>
                 )}

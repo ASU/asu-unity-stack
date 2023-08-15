@@ -339,7 +339,7 @@ export const socialMediaIcons = createStory(
               <span title="Facebook" className="fab fa-facebook-square"></span>
             </a>
             <a className="nav-link" href="#">
-              <span title="Twitter" className="fab fa-twitter-square"></span>
+              <span title="Twitter" className="fab fa-square-x-twitter"></span>
             </a>
             <a className="nav-link" href="#">
               <span title="LinkedIn" className="fab fa-linkedin"></span>
