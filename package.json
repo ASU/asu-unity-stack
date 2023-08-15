@@ -18,6 +18,7 @@
     "prebuild": "yarn build-components-core && yarn build-component-carousel && yarn lint",
     "test": "lerna run test --stream --parallel",
     "test:e2e": "jest",
+    "prepublish-packages": "node scripts/copy-license.js",
     "publish-packages": "lerna exec --concurrency 1 -- npx --no-install semantic-release --debug -e semantic-release-monorepo",
     "percy": "lerna run percy",
     "start": "node server/server.js",
