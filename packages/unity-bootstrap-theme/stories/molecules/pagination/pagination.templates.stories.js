@@ -40,7 +40,7 @@ export const Basic = createStory(
         >
           <li className="page-item disabled">
             <a
-              aria-label="Previous"
+              aria-label="Previous page"
               aria-disabled
               className="page-link page-link-icon"
               href="#"
@@ -97,7 +97,7 @@ export const Basic = createStory(
             </a>
           </li>
           <li className="page-item">
-            <a className="page-link page-link-icon" href="#" />
+            <a aria-label="Next page" className="page-link page-link-icon" href="#" />
           </li>
         </ul>
       </nav>
