@@ -1,8 +1,13 @@
 import cardsImage from './cards-image.jpg';
 
-export const horizontalCardsMap = (type = "") => {
-  const commonTemplate = (
-    <div className={`card ${type && `card-${type}`} card-horizontal`}>
+export const horizontalCardsMap = (type = "", args) => {
+  let arr = new Array(args?.numCards).fill("x");
+
+  const commonTemplate =(
+    <div className="uds-card-arrangement">
+    <div className="uds-card-arrangement-card-container">
+      {arr.map((x, i)=> (
+        <div key={i} className={`card ${type && `card-${type}`} card-horizontal`}>
       <img
         className="card-img-top"
         src={cardsImage}
@@ -60,7 +65,10 @@ export const horizontalCardsMap = (type = "") => {
         )}
       </div>
     </div>
-  );
+      ))}
+    </div>
+  </div>
+    );
 
   return commonTemplate;
 }

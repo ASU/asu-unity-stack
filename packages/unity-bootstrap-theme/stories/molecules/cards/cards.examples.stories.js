@@ -5,7 +5,18 @@ import cardsImage from './cards-image.jpg';
 import { rankingFunc as initRankFunc } from './ranking-cards.js';
 import { horizontalCardsMap as horizontalCard } from './cardVariations.js';
 
-export default createComponent('Cards', 'Molecules', 'Examples');
+const extraOptions = {
+  numCards: {
+    name: "Columns",
+    options: [1, 2, 3, 4],
+    defaultValue: 1,
+    control: {
+      type: "radio",
+    },
+  }
+};
+
+export default createComponent('Cards', 'Molecules', 'Examples', extraOptions);
 
 export const cardImages = createStory(
   <div style={{ width: '50%' }}>
@@ -57,6 +68,12 @@ export const cardImages = createStory(
     </div>
   </div>
 );
+cardImages.args  = {
+  template: 1
+};
+cardImages.parameters = {
+  controls: { exclude: ["Columns"] },
+};
 
 export const cardTitles = createStory(
   <div style={{ width: '50%' }}>
@@ -74,6 +91,12 @@ export const cardTitles = createStory(
     </div>
   </div>
 );
+cardTitles.args = {
+  template: 1
+};
+cardTitles.parameters = {
+  controls: { exclude: ["Columns"] },
+};
 
 export const cardBody = createStory(
   <div className="card">
@@ -87,6 +110,12 @@ export const cardBody = createStory(
     </div>
   </div>
 );
+cardBody.args = {
+  template: 1
+}
+cardBody.parameters = {
+  controls: { exclude: ["Columns"] },
+};
 
 export const cardEventInfo = createStory(
   <div>
@@ -159,6 +188,12 @@ export const cardEventInfo = createStory(
     </div>
   </div>
 );
+cardEventInfo.args = {
+  template: 1
+};
+cardEventInfo.parameters = {
+  controls: { exclude: ["Columns"] },
+};
 
 export const cardTags = createStory(
   <div style={{ width: '50%' }}>
@@ -193,6 +228,12 @@ export const cardTags = createStory(
     </div>
   </div>
 );
+cardTags.args = {
+  template: 1
+};
+cardTags.parameters = {
+  controls: { exclude: ["Columns"] },
+};
 
 export const cardDegree = createStory(
   <div className="card card-degree">
@@ -262,6 +303,12 @@ export const cardDegree = createStory(
   </div>,
   { initFunc }
 );
+cardDegree.args = {
+  template: 1
+};
+cardDegree.parameters = {
+  controls: { exclude: ["Columns"] },
+};
 
 export const cardStory = createStory(
   <div className="card card-story">
@@ -331,6 +378,12 @@ export const cardStory = createStory(
   </div>,
   { initFunc }
 );
+cardStory.args = {
+  template: 1
+};
+cardStory.parameters = {
+  controls: { exclude: ["Columns"] },
+};
 
 export const cardEvent = createStory(
   <div className="card card-event">
@@ -414,6 +467,12 @@ export const cardEvent = createStory(
   </div>,
   { initFunc }
 );
+cardEvent.args = {
+  template: 1
+};
+cardEvent.parameters = {
+  controls: { exclude: ["Columns"] },
+};
 
 export const cardVariations = createStory(
   <div>
@@ -978,24 +1037,37 @@ export const cardVariations = createStory(
     omitTemplate: true,
   }
 );
+cardVariations.args = {
+  template: 1
+};
 
 export const horizontal = createStory(
-  <div>
-    {horizontalCard()}
+  args => {
+  return (
+    <div>
+    {horizontalCard(null, args)}
     <hr />
 
-    {horizontalCard("degree")}
+    {horizontalCard("degree", args)}
 
     <hr />
 
-    {horizontalCard("event")}
+    {horizontalCard("event", args)}
 
     <hr />
 
-    {horizontalCard("story")}
-  </div>,
-  { initFunc }
+    {horizontalCard("story", args)}
+  </div>
+  );
+  },
+  { initFunc, omitTemplate: false }
 );
+horizontal.args = {
+  template: 1
+};
+horizontal.parameters = {
+  controls: { exclude: ["Template"] },
+}
 
 export const checkboxStackedCard = createStory(
   <div className="card card-checkbox-stacked">
@@ -1096,6 +1168,12 @@ export const checkboxStackedCard = createStory(
   </div>,
   { initFunc }
 );
+checkboxStackedCard.args = {
+  template: 1
+};
+checkboxStackedCard.parameters = {
+  controls: { exclude: ["Columns"] },
+};
 
 export const checkboxInlineCard = createStory(
   <div className="card card-checkbox-inline">
@@ -1196,6 +1274,12 @@ export const checkboxInlineCard = createStory(
   </div>,
   { initFunc }
 );
+checkboxInlineCard.args = {
+  template: 1
+};
+checkboxInlineCard.parameters = {
+  controls: { exclude: ["Columns"] },
+};
 
 export const mediaTypeOverlayCard = createStory(
   <div className="container">
@@ -1401,6 +1485,12 @@ export const mediaTypeOverlayCard = createStory(
     omitTemplate: true,
   }
 );
+mediaTypeOverlayCard.args = {
+  template: 1
+};
+mediaTypeOverlayCard.parameters = {
+  controls: { exclude: ["Columns"] },
+};
 
 export const RankingCardLarge = createStory(
   <div className="card-ranking large-image">
@@ -1461,6 +1551,12 @@ export const RankingCardLarge = createStory(
   </div>,
   { initFunc: initRankFunc }
 );
+RankingCardLarge.args = {
+  template: 1
+};
+RankingCardLarge.parameters = {
+  controls: { exclude: ["Columns"] },
+};
 
 export const RankingCardSmall = createStory(
   <div className="card-ranking small-image">
@@ -1529,3 +1625,9 @@ export const RankingCardSmall = createStory(
   </div>,
   { initFunc: initRankFunc }
 );
+RankingCardSmall.args = {
+  template: 1
+};
+RankingCardSmall.parameters = {
+  controls: { exclude: ["Columns"] },
+};

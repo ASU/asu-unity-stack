@@ -101,7 +101,7 @@ CardArrangement.args = {
 
 export const CardArrangementHorizontal = createStory(
   args => {
-    const cards = Array.from(Array(args.numCards)).map(() => {
+    const cards = Array.from(Array(args.numCards)).map((x) => {
       return horizontalCard(args.cardType);
     });
     return (
