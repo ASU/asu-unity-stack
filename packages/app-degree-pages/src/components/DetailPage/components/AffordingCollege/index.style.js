@@ -12,13 +12,12 @@ const Background = styled.div`
   background-position: center;
   background-size: contain;
   position: absolute;
-  width: 100vw;
-  height: 100%;
   top: 0;
   left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  transform: translateX(-50%);
+  width: 100vw;
+  max-width: 1920px;
+  height: 100%;
   z-index: -1;
 `;
 
