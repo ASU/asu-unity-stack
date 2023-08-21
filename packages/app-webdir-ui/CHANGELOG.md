@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v3.0.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.0.2...@asu/app-webdir-ui-v3.0.3) (2023-08-21)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** update twitter logo and fontawesome ([7d20f68](https://github.com/asu/asu-unity-stack/commit/7d20f6835904540fb4683723905b8ddf61a06194))
+
 # [@asu/app-webdir-ui-v3.0.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.0.1...@asu/app-webdir-ui-v3.0.2) (2023-08-15)
 
 
