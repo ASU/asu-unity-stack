@@ -127,7 +127,7 @@ const ProfileCard = ({ ...props }) => {
                     aria-label="Go to user Twitter profile"
                   >
                     <span
-                      className="fab fa-twitter-square"
+                      className="fab fa-square-x-twitter"
                       title="Twitter Link"
                     />
                   </a>
