@@ -1,25 +1,14 @@
-import { googleAnalytics as initFunc } from '@asu/unity-bootstrap-theme/js/data-layer.js';
+import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
-import { createComponent, createStory } from '../../../helpers/wrapper.js';
-import cardsImage from './cards-image.jpg';
-import { rankingFunc as initRankFunc } from './ranking-cards.js';
-import { horizontalCardsMap as horizontalCard } from './cardVariations.js';
+import { createComponent, createStory } from "../../../helpers/wrapper.js";
+import cardsImage from "./cards-image.jpg";
+import { rankingFunc as initRankFunc } from "./ranking-cards.js";
+import { horizontalCardsMap as horizontalCard } from "./cardVariations.js";
 
-const extraOptions = {
-  numCards: {
-    name: "Columns",
-    options: [1, 2, 3, 4],
-    defaultValue: 1,
-    control: {
-      type: "radio",
-    },
-  }
-};
-
-export default createComponent('Cards', 'Molecules', 'Examples', extraOptions);
+export default createComponent("Cards", "Molecules", "Examples");
 
 export const cardImages = createStory(
-  <div style={{ width: '50%' }}>
+  <div style={{ width: "50%" }}>
     <div className="card">
       <img
         className="card-img-top"
@@ -68,15 +57,9 @@ export const cardImages = createStory(
     </div>
   </div>
 );
-cardImages.args  = {
-  template: 1
-};
-cardImages.parameters = {
-  controls: { exclude: ["Columns"] },
-};
 
 export const cardTitles = createStory(
-  <div style={{ width: '50%' }}>
+  <div style={{ width: "50%" }}>
     <div className="card">
       <div className="card-header">
         <h3 className="card-title">Card default title</h3>
@@ -91,12 +74,6 @@ export const cardTitles = createStory(
     </div>
   </div>
 );
-cardTitles.args = {
-  template: 1
-};
-cardTitles.parameters = {
-  controls: { exclude: ["Columns"] },
-};
 
 export const cardBody = createStory(
   <div className="card">
@@ -110,12 +87,6 @@ export const cardBody = createStory(
     </div>
   </div>
 );
-cardBody.args = {
-  template: 1
-}
-cardBody.parameters = {
-  controls: { exclude: ["Columns"] },
-};
 
 export const cardEventInfo = createStory(
   <div>
@@ -188,15 +159,9 @@ export const cardEventInfo = createStory(
     </div>
   </div>
 );
-cardEventInfo.args = {
-  template: 1
-};
-cardEventInfo.parameters = {
-  controls: { exclude: ["Columns"] },
-};
 
 export const cardTags = createStory(
-  <div style={{ width: '50%' }}>
+  <div style={{ width: "50%" }}>
     <div className="card">
       <div className="card-header"></div>
       <div className="card-tags">
@@ -216,7 +181,7 @@ export const cardTags = createStory(
     <div className="card">
       <div className="card-header"></div>
       <div className="card-body">
-        Need a card tag that does not behave like an anchor? Try the{' '}
+        Need a card tag that does not behave like an anchor? Try the{" "}
         <code>.badge</code> class. Be sure to include the modifier text
         background class too.
       </div>
@@ -228,12 +193,6 @@ export const cardTags = createStory(
     </div>
   </div>
 );
-cardTags.args = {
-  template: 1
-};
-cardTags.parameters = {
-  controls: { exclude: ["Columns"] },
-};
 
 export const cardDegree = createStory(
   <div className="card card-degree">
@@ -248,7 +207,9 @@ export const cardDegree = createStory(
       fetchpriority="high"
     />
     <div className="card-header">
-      <h3 className="card-title"><a href="#" >Card default title</a></h3>
+      <h3 className="card-title">
+        <a href="#">Card default title</a>
+      </h3>
     </div>
     <div className="card-body">
       <p className="card-text">
@@ -303,12 +264,6 @@ export const cardDegree = createStory(
   </div>,
   { initFunc }
 );
-cardDegree.args = {
-  template: 1
-};
-cardDegree.parameters = {
-  controls: { exclude: ["Columns"] },
-};
 
 export const cardStory = createStory(
   <div className="card card-story">
@@ -323,7 +278,9 @@ export const cardStory = createStory(
       fetchpriority="high"
     />
     <div className="card-header">
-      <h3 className="card-title"><a href="#" >Card default title</a></h3>
+      <h3 className="card-title">
+        <a href="#">Card default title</a>
+      </h3>
     </div>
     <div className="card-body">
       <p className="card-text">
@@ -378,12 +335,6 @@ export const cardStory = createStory(
   </div>,
   { initFunc }
 );
-cardStory.args = {
-  template: 1
-};
-cardStory.parameters = {
-  controls: { exclude: ["Columns"] },
-};
 
 export const cardEvent = createStory(
   <div className="card card-event">
@@ -398,7 +349,9 @@ export const cardEvent = createStory(
       fetchpriority="high"
     />
     <div className="card-header">
-      <h3 className="card-title"><a href="#" >Card default title</a></h3>
+      <h3 className="card-title">
+        <a href="#">Card default title</a>
+      </h3>
     </div>
     <div className="card-body">
       <p className="card-text">
@@ -467,12 +420,6 @@ export const cardEvent = createStory(
   </div>,
   { initFunc }
 );
-cardEvent.args = {
-  template: 1
-};
-cardEvent.parameters = {
-  controls: { exclude: ["Columns"] },
-};
 
 export const cardVariations = createStory(
   <div>
@@ -491,7 +438,9 @@ export const cardVariations = createStory(
               fetchpriority="high"
             />
             <div className="card-header">
-              <h3 className="card-title"><a href="#" >Card default title</a></h3>
+              <h3 className="card-title">
+                <a href="#">Card default title</a>
+              </h3>
             </div>
             <div className="card-body">
               <p className="card-text">
@@ -572,7 +521,7 @@ export const cardVariations = createStory(
           <div className="card">
             <div className="card-header">
               <h3 className="card-title">
-              <a href="#" >Card default title</a>
+                <a href="#">Card default title</a>
               </h3>
             </div>
             <div className="card-body">
@@ -627,7 +576,9 @@ export const cardVariations = createStory(
               fetchpriority="high"
             />
             <div className="card-header">
-              <h3 className="card-title"><a href="#" >Card event without borders</a></h3>
+              <h3 className="card-title">
+                <a href="#">Card event without borders</a>
+              </h3>
             </div>
             <div className="card-event-details">
               <div className="card-event-icons">
@@ -692,7 +643,9 @@ export const cardVariations = createStory(
               fetchpriority="high"
             />
             <div className="card-header">
-              <h3 className="card-title"><a href="#" > with image and no borders</a></h3>
+              <h3 className="card-title">
+                <a href="#"> with image and no borders</a>
+              </h3>
             </div>
             <div className="card-body">
               <p className="card-text">
@@ -723,7 +676,9 @@ export const cardVariations = createStory(
         <div className="col col-12 col-lg-4">
           <div className="card">
             <div className="card-header">
-              <h3 className="card-title"><a href="#" >Card default title</a></h3>
+              <h3 className="card-title">
+                <a href="#">Card default title</a>
+              </h3>
             </div>
             <div className="card-body">
               <p className="card-text">
@@ -777,7 +732,9 @@ export const cardVariations = createStory(
         <div className="col col-12 col-lg-4">
           <div className="card">
             <div className="card-header">
-              <h3 className="card-title"><a href="#" >Card default title</a></h3>
+              <h3 className="card-title">
+                <a href="#">Card default title</a>
+              </h3>
             </div>
             <div className="card-body">
               <p className="card-text">
@@ -839,7 +796,9 @@ export const cardVariations = createStory(
               fetchpriority="high"
             />
             <div className="card-header">
-              <h3 className="card-title"><a href="#" >Card default title</a></h3>
+              <h3 className="card-title">
+                <a href="#">Card default title</a>
+              </h3>
             </div>
             <div className="card-body">
               <p className="card-text">
@@ -877,7 +836,9 @@ export const cardVariations = createStory(
           <div className="card">
             <i className="fas fa-rocket fa-2x card-icon-top"></i>
             <div className="card-header">
-              <h3 className="card-title"><a href="#" >Card default title</a></h3>
+              <h3 className="card-title">
+                <a href="#">Card default title</a>
+              </h3>
             </div>
             <div className="card-body">
               <p className="card-text">
@@ -909,7 +870,9 @@ export const cardVariations = createStory(
           <div className="card card-centered">
             <i className="fas fa-rocket fa-2x card-icon-top"></i>
             <div className="card-header">
-              <h3 className="card-title"><a href="#" >Card default title</a></h3>
+              <h3 className="card-title">
+                <a href="#">Card default title</a>
+              </h3>
             </div>
             <div className="card-buttons">
               <div className="card-button">
@@ -1037,37 +1000,42 @@ export const cardVariations = createStory(
     omitTemplate: true,
   }
 );
-cardVariations.args = {
-  template: 1
-};
 
 export const horizontal = createStory(
   args => {
-  return (
-    <div>
-    {horizontalCard(null, args)}
-    <hr />
+    return (
+      <div>
+        {horizontalCard({ ...args, type: null })}
+        <hr />
 
-    {horizontalCard("degree", args)}
+        {horizontalCard({ ...args, type: "degree" })}
 
-    <hr />
+        <hr />
 
-    {horizontalCard("event", args)}
+        {horizontalCard({ ...args, type: "event" })}
 
-    <hr />
+        <hr />
 
-    {horizontalCard("story", args)}
-  </div>
-  );
+        {horizontalCard({ ...args, type: "story" })}
+      </div>
+    );
   },
   { initFunc, omitTemplate: false }
 );
-horizontal.args = {
-  template: 1
+horizontal.argTypes = {
+  numCards: {
+    name: "Columns",
+    options: [1, 2, 3, 4],
+    defaultValue: 1,
+    control: {
+      type: "radio",
+    },
+  },
+  template: {
+    name: "Template",
+    control: false,
+  },
 };
-horizontal.parameters = {
-  controls: { exclude: ["Template"] },
-}
 
 export const checkboxStackedCard = createStory(
   <div className="card card-checkbox-stacked">
@@ -1113,7 +1081,9 @@ export const checkboxStackedCard = createStory(
       </form>
     </div>
     <div className="card-header">
-      <h3 className="card-title"><a href="#" >Card default title</a></h3>
+      <h3 className="card-title">
+        <a href="#">Card default title</a>
+      </h3>
     </div>
     <div className="card-body">
       <p className="card-text">
@@ -1168,12 +1138,6 @@ export const checkboxStackedCard = createStory(
   </div>,
   { initFunc }
 );
-checkboxStackedCard.args = {
-  template: 1
-};
-checkboxStackedCard.parameters = {
-  controls: { exclude: ["Columns"] },
-};
 
 export const checkboxInlineCard = createStory(
   <div className="card card-checkbox-inline">
@@ -1219,7 +1183,9 @@ export const checkboxInlineCard = createStory(
       </form>
     </div>
     <div className="card-header">
-      <h3 className="card-title"><a href="#" >Card default title</a></h3>
+      <h3 className="card-title">
+        <a href="#">Card default title</a>
+      </h3>
     </div>
     <div className="card-body">
       <p className="card-text">
@@ -1274,12 +1240,6 @@ export const checkboxInlineCard = createStory(
   </div>,
   { initFunc }
 );
-checkboxInlineCard.args = {
-  template: 1
-};
-checkboxInlineCard.parameters = {
-  controls: { exclude: ["Columns"] },
-};
 
 export const mediaTypeOverlayCard = createStory(
   <div className="container">
@@ -1307,7 +1267,9 @@ export const mediaTypeOverlayCard = createStory(
             </div>
           </div>
           <div className="card-header">
-            <h3 className="card-title"><a href="#" >Card default title</a></h3>
+            <h3 className="card-title">
+              <a href="#">Card default title</a>
+            </h3>
           </div>
           <div className="card-body">
             <p className="card-text">
@@ -1384,7 +1346,9 @@ export const mediaTypeOverlayCard = createStory(
             </div>
           </div>
           <div className="card-header">
-            <h3 className="card-title"><a href="#" >Card default title</a></h3>
+            <h3 className="card-title">
+              <a href="#">Card default title</a>
+            </h3>
           </div>
           <div className="card-body">
             <p className="card-text">
@@ -1485,12 +1449,6 @@ export const mediaTypeOverlayCard = createStory(
     omitTemplate: true,
   }
 );
-mediaTypeOverlayCard.args = {
-  template: 1
-};
-mediaTypeOverlayCard.parameters = {
-  controls: { exclude: ["Columns"] },
-};
 
 export const RankingCardLarge = createStory(
   <div className="card-ranking large-image">
@@ -1551,12 +1509,6 @@ export const RankingCardLarge = createStory(
   </div>,
   { initFunc: initRankFunc }
 );
-RankingCardLarge.args = {
-  template: 1
-};
-RankingCardLarge.parameters = {
-  controls: { exclude: ["Columns"] },
-};
 
 export const RankingCardSmall = createStory(
   <div className="card-ranking small-image">
@@ -1625,9 +1577,3 @@ export const RankingCardSmall = createStory(
   </div>,
   { initFunc: initRankFunc }
 );
-RankingCardSmall.args = {
-  template: 1
-};
-RankingCardSmall.parameters = {
-  controls: { exclude: ["Columns"] },
-};
