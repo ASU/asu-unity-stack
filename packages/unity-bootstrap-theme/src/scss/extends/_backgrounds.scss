@@ -98,4 +98,40 @@
       background-image: $topo-black;
     }
   }
+
+  &.semiconductor {
+    opacity: 1;
+
+    &-light {
+      background-image: $semiconductor-light;
+    }
+
+    &-dark {
+      background-image: $semiconductor-dark;
+    }
+  }
+
+  &.plus {
+    opacity: 1;
+
+    &-light {
+      background-image: $plus-light;
+    }
+
+    &-dark {
+      background-image: $plus-dark;
+    }
+  }
+
+  &.arrows {
+    opacity: 1;
+
+    &-light {
+      background-image: $arrows-light;
+    }
+
+    &-dark {
+      background-image: $arrows-dark;
+    }
+  }
 }
