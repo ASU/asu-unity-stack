@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import { FilterContainer } from "./index.styles";
 
@@ -10,6 +10,37 @@ const FilterComponent = ({
   resetFilters = () => {},
 }) => {
   const [selected, setSelected] = useState(null);
+  const [focusedIndex, setFocusedIndex] = useState(-1);
+  const [totalChoices, setTotalChoices] = useState(0);
+
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      const totalChildren = containerRef.current.children.length;
+      setTotalChoices(totalChildren);
+    }
+  }, []);
+
+  const handleKeyPress = event => {
+    if (
+      event.key === "ArrowRight" &&
+      focusedIndex + 1 < totalChoices &&
+      containerRef.current
+    ) {
+      const focusedItem = containerRef.current?.children[focusedIndex + 1];
+      setFocusedIndex(focusedIndex + 1);
+      focusedItem.focus();
+    } else if (
+      event.key === "ArrowLeft" &&
+      focusedIndex - 1 >= 0 &&
+      containerRef.current
+    ) {
+      const focusedItem = containerRef.current.children[focusedIndex - 1];
+      setFocusedIndex(focusedIndex - 1);
+      focusedItem.focus();
+    }
+  };
 
   const handleChoose = choice => {
     setSelected(choice);
@@ -19,32 +50,46 @@ const FilterComponent = ({
   return (
     <FilterContainer className="filter-container">
       <legend>{filterLabel}</legend>
-      <div className="choices-container">
+      <div
+        role="radiogroup"
+        tabIndex={0}
+        onKeyDown={handleKeyPress}
+        className="choices-container"
+        ref={containerRef}
+        aria-label={`${filterLabel} filter options}`}
+      >
         {resetFilters && (
-          <a
-            href="#all"
+          <button
+            role="radio"
+            type="button"
             onClick={e => {
               e.preventDefault();
               handleChoose(null);
               resetFilters();
             }}
+            tabIndex={-1}
+            aria-label={`Reset ${filterLabel}`}
+            aria-checked={selected === null}
           >
             All
-          </a>
+          </button>
         )}
         {choices.map(choice => (
-          <a
+          <button
+            role="radio"
+            type="button"
             key={choice}
-            href={`#${choice}`}
             onClick={e => {
               e.preventDefault();
               handleChoose(choice);
             }}
+            aria-checked={selected === choice}
             className={selected === choice ? "selected" : ""}
             aria-label={`Filter by ${choice}`}
+            tabIndex={-1}
           >
             {choice}
-          </a>
+          </button>
         ))}
       </div>
     </FilterContainer>

@@ -13,12 +13,19 @@ export const FilterContainer = styled.fieldset`
     overflow-x: auto;
     padding: 8px 0;
     position: relative;
-    a {
+    button {
+      &:hover {
+        text-decoration: none;
+      }
+      text-decoration: underline;
+      border: none;
+      background-color: transparent;
+      color: #8c1d40;
       &:is(:first-child) {
         padding-left: 0px;
       }
       white-space: nowrap;
-      margin: 0 5px;
+      margin: 0 8px;
       padding: 6px 12px;
       &.selected {
         color: white;
