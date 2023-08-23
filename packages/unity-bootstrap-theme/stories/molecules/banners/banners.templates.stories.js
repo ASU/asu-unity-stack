@@ -9,7 +9,6 @@ const extraOptions = {
   color: {
     name: "Color",
     options: ["banner-orange", "banner-blue", "banner-gray", "banner-black"],
-    defaultValue: "banner-orange",
     control: {
       type: "radio",
       labels: {
@@ -75,10 +74,16 @@ export const Banner = createStory(
   },
   {
     initFunc,
-    supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
+Banner.parameters = {
+  uds:{
+    template: {
+      include: [0]
+    }
+  }
+}
+
 Banner.args = {
-  template: 0,
   color: "banner-orange",
 };

@@ -1,7 +1,16 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Alignment", "Design");
 
-export const TemporaryStory = createStory(
+export default {
+  title: "Design/Alignment",
+  parameters: {
+    uds: {
+      template: {
+        include:["x"]
+      }
+    }
+  }
+};
+
+const Template = () => (
   <div className="container">
     <div className="row">
       <div className="col">
@@ -27,3 +36,5 @@ export const TemporaryStory = createStory(
     </div>
   </div>
 );
+
+export const Default = Template.bind({});

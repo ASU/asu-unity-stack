@@ -7,7 +7,16 @@ import stockVideo from "../../atoms/video/stock-video-person-drawing.mp4";
 import cardsImage from "../cards/cards-image.jpg";
 import { initVideo as initFunc } from "./heroes-video";
 
-export default createComponent("Heroes", "Molecules", "Examples");
+export default {
+  ...createComponent("Heroes", "Molecules", "Examples"),
+  parameters: {
+    uds:{
+      template: {
+        include: [0]
+      }
+    }
+  }
+};
 
 export const HeroSmallOneButton = createStory(
   <div className="uds-hero-sm has-btn-row">
@@ -47,9 +56,6 @@ export const HeroSmallOneButton = createStory(
     initFunc
   }
 );
-HeroSmallOneButton.args = {
-  template: 0,
-};
 
 export const HeroMediumTwoButtons = createStory(
   <div className="uds-hero-md has-btn-row">
@@ -105,9 +111,6 @@ export const HeroMediumTwoButtons = createStory(
     initFunc
   }
 );
-HeroMediumTwoButtons.args = {
-  template: 0,
-};
 
 export const HeroLargeOneButton = createStory(
   <div className="uds-hero-lg has-btn-row">
@@ -150,9 +153,6 @@ export const HeroLargeOneButton = createStory(
     initFunc
   }
 );
-HeroLargeOneButton.args = {
-  template: 0,
-};
 
 export const HeroVideo = createStory(
   args => {
@@ -235,9 +235,5 @@ export const HeroVideo = createStory(
   },
   {
     initFunc,
-    supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
-HeroVideo.args = {
-  template: 0,
-};

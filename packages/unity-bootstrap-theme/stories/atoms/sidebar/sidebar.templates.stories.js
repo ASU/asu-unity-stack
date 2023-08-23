@@ -1,9 +1,12 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
 export default createComponent("Sidebar", "Atoms", "Templates");
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
+import { googleAnalytics } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
+const initFunc = () => {
+  googleAnalytics()
+}
 export const Sidebar = createStory(
-  <div className="col-md-4">
+  <>
     <h2>Lorem ipsum</h2>
     <div
       className="sidebar-toggler"
@@ -191,9 +194,13 @@ export const Sidebar = createStory(
       </div>
     </nav>
     {/* end .sidebar */}
-  </div>,
+  </>,
   { initFunc }
 );
-Sidebar.args = {
-  template: 1,
+Sidebar.parameters = {
+  uds: {
+    template: {
+      include: [4]
+    }
+  }
 };

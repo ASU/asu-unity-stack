@@ -82,6 +82,13 @@ export const BackgroundWhiteStory = createStory(args => {
   );
 });
 BackgroundWhiteStory.args = {
-  template: 1,
   numColumns: "two-columns",
 };
+BackgroundWhiteStory.parameters = {
+  uds:{
+    template: {
+      include: [1]
+    }
+  }
+}
+

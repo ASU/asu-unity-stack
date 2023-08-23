@@ -255,6 +255,10 @@ export const TabbedPanels = createStory(
   },
   { initFunc }
 );
-TabbedPanels.args = {
-  template: 1,
+TabbedPanels.parameters = {
+  uds: {
+    template: {
+      include: [1,3]
+    }
+  }
 };

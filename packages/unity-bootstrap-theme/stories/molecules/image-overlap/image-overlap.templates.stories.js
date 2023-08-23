@@ -51,10 +51,11 @@ export const ImageOverlapRightOrLeft = createStory(
       </div>
     );
   },
-  {
-    supportedTemplates: [layoutNames.ONE_COLUMN, layoutNames.TWO_COLUMN],
-  }
 );
-ImageOverlapRightOrLeft.args = {
-  template: 1,
+ImageOverlapRightOrLeft.parameters = {
+  uds:{
+    template: {
+      include:[1,2],
+    }
+  }
 };

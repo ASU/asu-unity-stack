@@ -1,5 +1,18 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Global Header", "Organisms", "Examples", {header:null, template:null});
+export default {
+  ...createComponent("Global Header", "Organisms", "Examples"),
+  parameters: {
+    uds: {
+      header: {
+        disable: true
+      },
+      template: {
+        include: ["x"]
+      }
+    }
+  }
+};
+
 
 import {
   Basic,
@@ -12,7 +25,6 @@ import {
 import { initGlobalHeader as initFunc } from "@asu/unity-bootstrap-theme/js/global-header.js";
 const options = {
   initFunc,
-  omitTemplate: true
 }
 export const BasicExample = createStory(Basic, options);
 

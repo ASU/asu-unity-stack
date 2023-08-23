@@ -1,7 +1,10 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
 export default createComponent("Sidebar", "Atoms", "Examples");
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
+import { googleAnalytics } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
+const initFunc = () => {
+  googleAnalytics()
+}
 export const Sidebar = createStory(
   <div className="container my-5">
     <div className="row mt-4">

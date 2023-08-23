@@ -1,5 +1,8 @@
-import { googleAnalytics as initFunc } from '@asu/unity-bootstrap-theme/js/data-layer.js';
+import { googleAnalytics } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
+const initFunc = () => {
+  googleAnalytics()
+}
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
 import cardsImage from './cards-image.jpg';
 import { rankingFunc as initRankFunc } from './ranking-cards.js';
@@ -974,9 +977,16 @@ export const cardVariations = createStory(
   </div>,
   {
     initFunc,
-    omitTemplate: true,
   }
 );
+cardVariations.parameters = {
+  uds:{
+    template: {
+      include: ["x"]
+    }
+  }
+}
+
 
 export const horizontal = createStory(
   <div>
@@ -1565,9 +1575,16 @@ export const mediaTypeOverlayCard = createStory(
   </div>,
   {
     initFunc,
-    omitTemplate: true,
   }
 );
+mediaTypeOverlayCard.parameters = {
+  uds:{
+    template: {
+      include: ["x"]
+    }
+  }
+}
+
 
 export const RankingCardLarge = createStory(
   <div className="card-ranking large-image">

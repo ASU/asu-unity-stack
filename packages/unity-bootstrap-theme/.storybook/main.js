@@ -1,17 +1,24 @@
-const path = require("path");
 
 module.exports = {
   stories: ["../**/*.stories.mdx", "../**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
+    "../../../.storybook-config",
     "@whitespace/storybook-addon-html",
     "@storybook/addon-links",
-    "@storybook/addon-essentials",
+    {
+      name: '@storybook/addon-essentials',
+      options: {
+        backgrounds: false, // 👈 disable the backgrounds addon
+      },
+    },
     "@storybook/addon-interactions",
   ],
   framework: "@storybook/react",
   core: {
     builder: "webpack5",
   },
+
+  // staticDirs: [{ from: '../', to: '/assets' },'../src'],
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.

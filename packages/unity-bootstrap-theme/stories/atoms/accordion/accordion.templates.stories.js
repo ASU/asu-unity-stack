@@ -1,7 +1,10 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
 export default createComponent("Accordions", "Atoms", "Templates");
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
+import { googleAnalytics } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
+const initFunc = () => {
+  googleAnalytics()
+}
 const FoldableCardElement = (
   accordionID = null,
   linkID = null,

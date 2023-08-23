@@ -1,6 +1,17 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Global Footer", "Organisms", "Examples", {footer: null, template: null});
-
+export default {
+  ...createComponent("Global Footer", "Organisms", "Examples"),
+  parameters: {
+    uds: {
+      footer: {
+        disable: true
+      },
+      template: {
+        include: ["x"]
+      }
+    }
+  }
+};
 import {
   GlobalElementsOnly,
   ZeroColumns,
@@ -16,7 +27,6 @@ import { initFooterGA as initFunc } from "./global-footer";
 
 const options = {
   initFunc,
-  omitTemplate: true
 }
 export const GlobalElementsOnlyExample = createStory(GlobalElementsOnly, options);
 export const ZeroColumnsExample = createStory(ZeroColumns, options);

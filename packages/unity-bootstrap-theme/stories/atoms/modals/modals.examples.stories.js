@@ -1,6 +1,15 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Modals", "Atoms", "Examples");
 import { initModals as initFunc } from "./modals.js";
+export default {
+  ...createComponent("Modals", "Atoms", "Examples"),
+  parameters: {
+    uds:{
+      template: {
+        include: ["x"]
+      }
+    }
+  },
+};
 
 export const ModalComponent = createStory(
   <div className="container-fluid">
@@ -30,6 +39,5 @@ export const ModalComponent = createStory(
   </div>,
   {
     initFunc,
-    omitTemplate: true,
   }
 );

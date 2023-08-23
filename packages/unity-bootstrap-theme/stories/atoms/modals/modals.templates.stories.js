@@ -1,15 +1,24 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
 
+import { initModals as initFunc } from "./modals.js";
 const extraOptions = {
   open: {
     name: "Open",
     control: { type: "boolean" },
-    defaultValue: true,
   },
 };
 
-export default createComponent("Modals", "Atoms", "Templates", extraOptions);
-import { initModals as initFunc } from "./modals.js";
+export default {
+  ...createComponent("Modals", "Atoms", "Templates", extraOptions),
+  parameters: {
+    uds:{
+      template: {
+        include: ["x"]
+      }
+    }
+  },
+};
+
 
 export const ModalComponent = createStory(
   args => {
@@ -36,7 +45,10 @@ export const ModalComponent = createStory(
     );
   },
   {
-    initFunc,
-    omitTemplate: true,
+    initFunc
   }
 );
+
+ModalComponent.args = {
+  open: true
+};

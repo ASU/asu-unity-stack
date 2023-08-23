@@ -5,31 +5,31 @@ import { initializeAnchorMenu as initFunc } from "./anchor-menu";
 
 export const AnchorMenu = createStory(
   <div>
-    <div class="container-fluid">
+    <div className="container-fluid">
       {Basic}
 
-      <div class="uds-hero-lg has-btn-row">
+      <div className="uds-hero-lg has-btn-row">
         <img
-          class="hero"
+          className="hero"
           src="https://source.unsplash.com/WLUHO9A_xik/1920x1000"
           alt="Sample placeholder image."
           width="1920"
           height="1000"
           loading="lazy"
           decoding="async"
-          fetchPriority="high"
+          fetchpriority="high"
         />
         <h1>
-          <span class="highlight-gold">Gettysburg Address</span>
+          <span className="highlight-gold">Gettysburg Address</span>
         </h1>
-        <div class="content">
-          <p class="text-white">
+        <div className="content">
+          <p className="text-white">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
         </div>
-        <div class="btn-row">
-          <a href="#" class="btn btn-default btn-gold">
+        <div className="btn-row">
+          <a href="#" className="btn btn-default btn-gold">
             Read the 13th Amendment
           </a>
         </div>
@@ -415,6 +415,15 @@ export const AnchorMenu = createStory(
   </div>,
   {
     initFunc,
-    omitTemplate: true, // This removes the wrapper provided by createStory and renders your story as-is, avoiding the need to wrap it in a container div, required for this story
   }
 );
+AnchorMenu.parameters = {
+  uds:{
+    template: {
+      include: ["x"]
+    },
+    header: {
+      disable: true
+    },
+  }
+}

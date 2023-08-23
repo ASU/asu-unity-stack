@@ -14,7 +14,7 @@ export default createComponent(
   "Templates",
   extraOptions
 );
-import "./tables";
+import { initTables as initFunc } from "./tables";
 
 export const DefaultComponent = createStory(
   <div className="uds-table" tabIndex="0">
@@ -122,10 +122,13 @@ export const DefaultComponent = createStory(
     </table>
   </div>
 );
-DefaultComponent.args = {
-  template: 1,
+DefaultComponent.parameters = {
+  uds: {
+    template: {
+      include: [1,3]
+    }
+  }
 };
-
 export const FixedComponent = createStory(
   <div className="uds-table-fixed-wrapper">
     <div className="scroll-control previous">
@@ -281,15 +284,14 @@ export const FixedComponent = createStory(
     </div>
   </div>,
   {
-    initFunc: triggerDOMContentLoaded,
+    initFunc,
   }
 );
 
-function triggerDOMContentLoaded() {
-  if (document.readyState !== "loading")
-    window.dispatchEvent(new Event("DOMContentLoaded"));
-}
-
-FixedComponent.args = {
-  template: 1,
+FixedComponent.parameters = {
+  uds: {
+    template: {
+      include: [1,3]
+    }
+  }
 };

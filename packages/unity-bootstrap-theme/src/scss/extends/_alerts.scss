@@ -7,7 +7,7 @@
 
   .alert-icon {
     flex: 0 0 $uds-size-spacing-8;
-    svg {
+    svg,i[class^="fa"],span[class^="fa"] {
       font-size: $uds-size-spacing-4;
       //margin: 0.25rem 1rem;
     }
@@ -65,7 +65,7 @@ div[class='alert alert-block'] {
     // Adjust padding and margins.
     .alert-icon {
       flex: 0 0 $uds-size-spacing-6;
-      svg {
+      svg,i[class^="fa"],span[class^="fa"] {
         font-size: $uds-size-spacing-4;
         //margin: 0.25rem 1rem;
         margin-top: $uds-size-spacing-2;

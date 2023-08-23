@@ -1,5 +1,8 @@
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
+import { googleAnalytics } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
+const initFunc = () => {
+  googleAnalytics()
+}
 import {
   createComponent,
   createStory,
@@ -23,13 +26,21 @@ const extraOptions = {
   },
 };
 
-export default createComponent(
-  "Heroes",
-  "Molecules",
-  "Templates",
-  extraOptions
-);
-
+export default {
+  ...createComponent(
+    "Heroes",
+    "Molecules",
+    "Templates",
+    extraOptions
+  ),
+  parameters: {
+    uds:{
+      template: {
+        include: [0]
+      }
+    }
+  }
+};
 export const HeroSmall = createStory(
   <div className="uds-hero-sm has-btn-row">
     <div className="hero-overlay"></div>
@@ -79,12 +90,8 @@ export const HeroSmall = createStory(
   </div>,
   {
     initFunc,
-    supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
-HeroSmall.args = {
-  template: 0,
-};
 
 export const HeroMedium = createStory(
   <div className="uds-hero-md has-btn-row">
@@ -141,12 +148,8 @@ export const HeroMedium = createStory(
   </div>,
   {
     initFunc,
-    supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
-HeroMedium.args = {
-  template: 0,
-};
 
 export const HeroLarge = createStory(
   <div className="uds-hero-lg has-btn-row">
@@ -203,12 +206,8 @@ export const HeroLarge = createStory(
   </div>,
   {
     initFunc,
-    supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
-HeroLarge.args = {
-  template: 0,
-};
 
 export const StoryHeroMedium = createStory(
   <section className="uds-story-hero">
@@ -244,12 +243,8 @@ export const StoryHeroMedium = createStory(
   </section>,
   {
     initFunc,
-    supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
-StoryHeroMedium.args = {
-  template: 0,
-};
 
 export const StoryHeroLarge = createStory(
   <>
@@ -324,9 +319,5 @@ export const StoryHeroLarge = createStory(
   </>,
   {
     initFunc,
-    supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
-StoryHeroLarge.args = {
-  template: 0,
-};

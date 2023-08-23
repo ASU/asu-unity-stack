@@ -49,9 +49,6 @@ export const BlockquoteNoImage = createStory(
     </div>
   </div>
 );
-BlockquoteNoImage.args = {
-  template: 1,
-};
 
 export const BlockquoteWithImage = createStory(
   <div>
@@ -239,9 +236,6 @@ export const TestimonialsNoImage = createStory(
     </div>
   </div>
 );
-TestimonialsNoImage.args = {
-  template: 1,
-};
 
 export const TestimonialsWithImage = createStory(
   <div>

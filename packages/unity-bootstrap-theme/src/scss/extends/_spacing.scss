@@ -1,0 +1,9 @@
+.uds-section {
+  margin-top: $uds-size-spacing-6;
+  margin-bottom: $uds-size-spacing-6;
+
+  @include media-breakpoint-up(md) {
+    margin-top: $uds-size-spacing-12;
+    margin-bottom: $uds-size-spacing-12;
+  }
+}

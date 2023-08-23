@@ -5,6 +5,10 @@ import { initCalendar as initFunc } from "./calendar";
 export const CalendarComponent = createStory(<div id="calendar"></div>, {
   initFunc,
 });
-CalendarComponent.args = {
-  template: 1,
+CalendarComponent.parameters = {
+  uds: {
+    template: {
+      include: [1,3]
+    }
+  }
 };
