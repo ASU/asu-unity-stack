@@ -38,11 +38,13 @@ const NavbarContainer = () => {
     // @ts-ignore
     <Wrapper breakpoint={breakpoint} data-testid="navigation" aria-label="Main">
       <div className="content-container">
-        <ul className="nav-list">
-          {!!mobileNavTree?.length && isMobile
-            ? mobileNavTree?.map((link, i) => renderItem(link, i))
-            : navTree?.map((link, i) => renderItem(link, i))}
-        </ul>
+        {(navTree?.length > 0 || mobileNavTree?.length > 0) && (
+          <ul className="nav-list">
+            {!!mobileNavTree?.length && isMobile
+              ? mobileNavTree?.map((link, i) => renderItem(link, i))
+              : navTree?.map((link, i) => renderItem(link, i))}
+          </ul>
+        )}
         {!!buttons?.length && (
           <form className="buttons-container" data-testid="buttons-container">
             {buttons?.map(button => (
