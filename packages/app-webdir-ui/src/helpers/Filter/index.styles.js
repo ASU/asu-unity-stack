@@ -2,7 +2,18 @@ import styled from "styled-components";
 
 export const FilterContainer = styled.fieldset`
   width: 100%;
-  padding: 10px 0;
+  margin: 0 0 2rem 0;
+
+  @media screen and (min-width: 992px) {
+    &:hover span.carousel-control-prev-icon,
+    span.carousel-control-next-icon {
+      opacity: 1;
+    }
+  }
+
+  .choices-wrapper {
+    position: relative;
+  }
 
   legend {
     font-size: 1rem;
@@ -12,11 +23,19 @@ export const FilterContainer = styled.fieldset`
     display: flex;
     overflow-x: auto;
     padding: 8px 0;
-    position: relative;
-    button {
+    &:focus {
+    outline: none !important;
+    box-shadow:  0px 0px 0px 2px #ffffff, 0px 0px 0px 4px #191919 !important;
+  }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    .choice {
       &:hover {
         text-decoration: none;
       }
+      font-weight: bold;
       text-decoration: underline;
       border: none;
       background-color: transparent;
@@ -34,37 +53,5 @@ export const FilterContainer = styled.fieldset`
         border-radius: 300px;
       }
     }
-    background:
-    /* Shadow Cover LEFT */ linear-gradient(
-          to right,
-          rgba(255, 255, 255, 0.9) 30%,
-          rgba(255, 255, 255, 0)
-        )
-        top left,
-      /* Shadow Cover RIGHT */
-        linear-gradient(
-          to left,
-          rgba(255, 255, 255, 0.9) 30%,
-          rgba(255, 255, 255, 0)
-        )
-        top right,
-      /* Shadow LEFT */
-        radial-gradient(
-          farthest-side at 0 50%,
-          rgba(0, 0, 0, 0.4),
-          rgba(0, 0, 0, 0)
-        )
-        top left,
-      /* Shadow RIGHT */
-        radial-gradient(
-          farthest-side at 100% 50%,
-          rgba(0, 0, 0, 0.4),
-          rgba(0, 0, 0, 0)
-        )
-        top right;
-
-    background-repeat: no-repeat;
-    background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
-    background-attachment: local, local, scroll, scroll;
   }
 `;

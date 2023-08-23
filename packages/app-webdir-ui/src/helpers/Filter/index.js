@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React, { useState, useRef, useEffect } from "react";
+import {NavControls} from "../../../../components-core/src/components/TabbedPanels/components/NavControls";
 
 import { FilterContainer } from "./index.styles";
 
@@ -14,6 +15,29 @@ const FilterComponent = ({
   const [totalChoices, setTotalChoices] = useState(0);
 
   const containerRef = useRef(null);
+
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const [scrollableWidth, setScrollableWidth] = useState();
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrollLeft(containerRef.current.scrollLeft);
+    };
+    containerRef.current.addEventListener("scroll", onScroll);
+    onScroll();
+    return () => containerRef.current.removeEventListener("scroll", onScroll);
+  }, [scrollableWidth]);
+
+  useEffect(() => {
+    const onResize = () => {
+      setScrollableWidth(
+        containerRef.current.scrollWidth - containerRef.current.offsetWidth
+      );
+    };
+    containerRef.current.addEventListener("resize", onResize);
+    onResize();
+    return () => containerRef.removeEventListener("resize", onResize);
+  }, []);
 
   useEffect(() => {
     if (containerRef.current) {
@@ -47,9 +71,31 @@ const FilterComponent = ({
     onChoose(choice);
   };
 
+  const slideNav = direction => {
+    containerRef.current.scrollBy({
+      left: 200 * direction,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <FilterContainer className="filter-container">
       <legend>{filterLabel}</legend>
+      <div
+      className="choices-wrapper"
+      >
+        <NavControls
+          hidePrev={scrollLeft === 0}
+          hideNext={scrollLeft >= scrollableWidth}
+          clickPrev={() => {
+            slideNav(-1);
+            trackArrowsEvent("left chevron");
+          }}
+          clickNext={() => {
+            slideNav(1);
+            trackArrowsEvent("right chevron");
+          }}
+        />
       <div
         role="radiogroup"
         tabIndex={0}
@@ -70,6 +116,7 @@ const FilterComponent = ({
             tabIndex={-1}
             aria-label={`Reset ${filterLabel}`}
             aria-checked={selected === null}
+            className={"choice"}
           >
             All
           </button>
@@ -84,13 +131,14 @@ const FilterComponent = ({
               handleChoose(choice);
             }}
             aria-checked={selected === choice}
-            className={selected === choice ? "selected" : ""}
+            className={`${selected === choice ? "selected" : ""} choice`}
             aria-label={`Filter by ${choice}`}
             tabIndex={-1}
           >
             {choice}
           </button>
         ))}
+      </div>
       </div>
     </FilterContainer>
   );
