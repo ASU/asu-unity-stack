@@ -2977,7 +2977,7 @@ export const Selects = createStory(
     <div className="form-group">
       <label for="exampleFormControlSelect1">Example select</label>
       <select
-        className="form-control"
+        className="form-select"
         id="exampleFormControlSelect1"
         data-ga-input="select"
         data-ga-input-name="onclick"
@@ -2998,7 +2998,7 @@ export const Selects = createStory(
         Example select with server-side validation
       </label>
       <select
-        className="form-control is-valid"
+        className="form-select is-valid"
         id="exampleFormControlSelect3"
         aria-describedby="myValidSelectMsg"
         data-ga-input="select"
@@ -3049,7 +3049,7 @@ export const Selects = createStory(
       <label for="exampleFormControlSelect2">Example multiple select</label>
       <select
         multiple
-        className="form-control"
+        className="form-select"
         id="exampleFormControlSelect2"
         data-ga-input="select"
         data-ga-input-name="onclick"
@@ -3075,7 +3075,7 @@ export const Selects = createStory(
       </label>
       <select
         multiple
-        className="form-control is-invalid"
+        className="form-select is-invalid"
         id="exampleFormControlSelect4"
         aria-describedby="myInvalidSelectMsg"
         aria-required="true"
@@ -3199,7 +3199,7 @@ export const KitchenSinkForm = createStory(
 
       <div className="form-group">
         <label for="exampleFormControlSelect1">Example select</label>
-        <select className="form-control" id="exampleFormControlSelect1">
+        <select className="form-select" id="exampleFormControlSelect1">
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -3209,7 +3209,7 @@ export const KitchenSinkForm = createStory(
       </div>
       <div className="form-group">
         <label for="exampleFormControlSelect2">Example multiple select</label>
-        <select multiple className="form-control" id="exampleFormControlSelect2">
+        <select multiple className="form-select" id="exampleFormControlSelect2">
           <option>1</option>
           <option>2</option>
           <option>3</option>
@@ -3699,7 +3699,7 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidat
 
         <div className="form-group">
           <label for="exampleFormControlSelect1">Example select</label>
-          <select className="form-control" id="exampleFormControlSelect1">
+          <select className="form-select" id="exampleFormControlSelect1">
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -3709,7 +3709,7 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidat
         </div>
         <div className="form-group">
           <label for="exampleFormControlSelect2">Example multiple select</label>
-          <select multiple className="form-control" id="exampleFormControlSelect2">
+          <select multiple className="form-select" id="exampleFormControlSelect2">
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -4160,7 +4160,7 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedForm
         <div className="form-group">
           <label for="exampleFormControlSelect1">Example select</label>
           <select
-            className="form-control"
+            className="form-select"
             id="exampleFormControlSelect1"
             aria-describedby="myValidSelectMsg"
           >
@@ -4185,7 +4185,7 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedForm
           </label>
           <select
             multiple
-            className="form-control"
+            className="form-select"
             id="exampleFormControlSelect2"
             aria-describedby="myInvalidSelectMsg"
             aria-required="true"
@@ -4662,7 +4662,7 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidat
 
           <div className="form-group">
             <label for="exampleFormControlSelect1">Example select</label>
-            <select className="form-control" id="exampleFormControlSelect1">
+            <select className="form-select" id="exampleFormControlSelect1">
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -4676,7 +4676,7 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidat
             </label>
             <select
               multiple
-              className="form-control"
+              className="form-select"
               id="exampleFormControlSelect2"
             >
               <option>1</option>
@@ -5141,7 +5141,7 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedForm
           <div className="form-group">
             <label for="exampleFormControlSelect1">Example select</label>
             <select
-              className="form-control"
+              className="form-select"
               id="exampleFormControlSelect1"
               aria-describedby="myValidSelectMsg"
             >
@@ -5166,7 +5166,7 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedForm
             </label>
             <select
               multiple
-              className="form-control"
+              className="form-select"
               id="exampleFormControlSelect2"
               aria-describedby="myInvalidSelectMsg"
               aria-required="true"

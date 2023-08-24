@@ -6,13 +6,13 @@ import anonPic from "./anon.png";
 const extraOptions = {
   size: {
     name: "Size",
-    options: ["small", ""],
-    defaultValue: "",
+    options: ["small", null],
+    defaultValue: null,
     control: {
       type: "radio",
       labels: {
         "small": "Small",
-        "": "Large",
+        null: "Large",
       },
     },
   },
@@ -153,7 +153,7 @@ const PersonProfile = props => (
                 data-ga-section="john smith"
                 data-ga="twitter icon"
               >
-                <span className="fab fa-twitter-square" />
+                <span className="fab fa-square-x-twitter" />
               </a>
             </li>
           </ul>

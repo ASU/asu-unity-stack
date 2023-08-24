@@ -1,6 +1,6 @@
 {
   "name": "@asu/component-cookie-consent",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "ASU Cookie Consent",
   "main": "./dist/asuCookieConsent.cjs.js",
   "browser": "./dist/asuCookieConsent.umd.js",
@@ -12,7 +12,8 @@
   "files": [
     "examples/*",
     "dist/*",
-    "docs/*"
+    "docs/*",
+    "CHANGELOG.md"
   ],
   "repository": {
     "type": "git",
@@ -40,8 +41,8 @@
   },
   "dependencies": {
     "@babel/plugin-transform-react-jsx": "^7.13.12",
-    "@fortawesome/free-solid-svg-icons": "^5.15.3",
-    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "prop-types": "^15.7.2",
     "react": ">= 16.14.0 < 18",
     "react-dom": ">= 16.14.0 < 18",

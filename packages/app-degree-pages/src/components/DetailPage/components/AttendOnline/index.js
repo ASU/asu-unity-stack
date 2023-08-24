@@ -1,9 +1,8 @@
 // @ts-check
+import { Button, idGenerator } from "@asu/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { Button } from "../../../../../../components-core/src/components/Button";
-import { idGenerator } from "../../../../../../components-core/src/core/utils/id-generator";
 import { progDetailSectionIds } from "../../../../core/models";
 import { imagePropShape } from "../../../../core/models/app-prop-types";
 

@@ -1,16 +1,17 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-import exampleImage from "./example-image.jpg";
+import { googleAnalytics as initFunc } from '@asu/unity-bootstrap-theme/js/data-layer.js';
 
-export default createComponent("Cards", "Molecules", "Examples");
+import { createComponent, createStory } from '../../../helpers/wrapper.js';
+import cardsImage from './cards-image.jpg';
+import { rankingFunc as initRankFunc } from './ranking-cards.js';
 
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
+export default createComponent('Cards', 'Molecules', 'Examples');
 
 export const cardImages = createStory(
-  <div style={{ width: "50%" }}>
+  <div style={{ width: '50%' }}>
     <div className="card">
       <img
         className="card-img-top"
-        src={exampleImage}
+        src={cardsImage}
         alt="Card image cap"
         width="600"
         height="337"
@@ -24,7 +25,7 @@ export const cardImages = createStory(
     <div className="card card-event">
       <img
         className="card-img-top"
-        src={exampleImage}
+        src={cardsImage}
         alt="Card image cap"
         width="600"
         height="337"
@@ -38,7 +39,7 @@ export const cardImages = createStory(
     <div className="card card-story">
       <img
         className="card-img-top"
-        src={exampleImage}
+        src={cardsImage}
         alt="Card image cap"
         width="600"
         height="337"
@@ -57,7 +58,7 @@ export const cardImages = createStory(
 );
 
 export const cardTitles = createStory(
-  <div style={{ width: "50%" }}>
+  <div style={{ width: '50%' }}>
     <div className="card">
       <div className="card-header">
         <h3 className="card-title">Card default title</h3>
@@ -159,7 +160,7 @@ export const cardEventInfo = createStory(
 );
 
 export const cardTags = createStory(
-  <div style={{ width: "50%" }}>
+  <div style={{ width: '50%' }}>
     <div className="card">
       <div className="card-header"></div>
       <div className="card-tags">
@@ -179,9 +180,9 @@ export const cardTags = createStory(
     <div className="card">
       <div className="card-header"></div>
       <div className="card-body">
-        Need a card tag that does not behave like an anchor? Try the{" "}
-        <code>.badge</code> class. Be sure to include the modifier text background
-        class too.
+        Need a card tag that does not behave like an anchor? Try the{' '}
+        <code>.badge</code> class. Be sure to include the modifier text
+        background class too.
       </div>
       <div className="card-tags">
         <span className="badge text-bg-gray-2">No button class</span>
@@ -196,7 +197,7 @@ export const cardDegree = createStory(
   <div className="card card-degree">
     <img
       className="card-img-top"
-      src={exampleImage}
+      src={cardsImage}
       alt="Card image cap"
       width="600"
       height="337"
@@ -205,7 +206,7 @@ export const cardDegree = createStory(
       fetchpriority="high"
     />
     <div className="card-header">
-      <h3 className="card-title">Card default title</h3>
+      <h3 className="card-title"><a href="#" >Card default title</a></h3>
     </div>
     <div className="card-body">
       <p className="card-text">
@@ -265,7 +266,7 @@ export const cardStory = createStory(
   <div className="card card-story">
     <img
       className="card-img-top"
-      src={exampleImage}
+      src={cardsImage}
       alt="Card image cap"
       width="600"
       height="337"
@@ -274,7 +275,7 @@ export const cardStory = createStory(
       fetchpriority="high"
     />
     <div className="card-header">
-      <h3 className="card-title">Card default title</h3>
+      <h3 className="card-title"><a href="#" >Card default title</a></h3>
     </div>
     <div className="card-body">
       <p className="card-text">
@@ -334,7 +335,7 @@ export const cardEvent = createStory(
   <div className="card card-event">
     <img
       className="card-img-top"
-      src={exampleImage}
+      src={cardsImage}
       alt="Card image cap"
       width="600"
       height="337"
@@ -343,7 +344,7 @@ export const cardEvent = createStory(
       fetchpriority="high"
     />
     <div className="card-header">
-      <h3 className="card-title">Card default title</h3>
+      <h3 className="card-title"><a href="#" >Card default title</a></h3>
     </div>
     <div className="card-body">
       <p className="card-text">
@@ -421,7 +422,7 @@ export const cardVariations = createStory(
           <div className="card">
             <img
               className="card-img-top"
-              src={exampleImage}
+              src={cardsImage}
               alt="Card image cap"
               width="600"
               height="337"
@@ -430,7 +431,7 @@ export const cardVariations = createStory(
               fetchpriority="high"
             />
             <div className="card-header">
-              <h3 className="card-title">Card default title</h3>
+              <h3 className="card-title"><a href="#" >Card default title</a></h3>
             </div>
             <div className="card-body">
               <p className="card-text">
@@ -511,7 +512,7 @@ export const cardVariations = createStory(
           <div className="card">
             <div className="card-header">
               <h3 className="card-title">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit
+              <a href="#" >Card default title</a>
               </h3>
             </div>
             <div className="card-body">
@@ -557,7 +558,7 @@ export const cardVariations = createStory(
           <div className="card borderless">
             <img
               className="card-img-top"
-              src={exampleImage}
+              src={cardsImage}
               alt="Card image cap"
               width="600"
               height="337"
@@ -566,7 +567,7 @@ export const cardVariations = createStory(
               fetchpriority="high"
             />
             <div className="card-header">
-              <h3 className="card-title">Card event without borders</h3>
+              <h3 className="card-title"><a href="#" >Card event without borders</a></h3>
             </div>
             <div className="card-event-details">
               <div className="card-event-icons">
@@ -622,7 +623,7 @@ export const cardVariations = createStory(
           <div className="card borderless">
             <img
               className="card-img-top"
-              src={exampleImage}
+              src={cardsImage}
               alt="Card image cap"
               width="600"
               height="337"
@@ -631,7 +632,7 @@ export const cardVariations = createStory(
               fetchpriority="high"
             />
             <div className="card-header">
-              <h3 className="card-title">Card with image and no borders</h3>
+              <h3 className="card-title"><a href="#" > with image and no borders</a></h3>
             </div>
             <div className="card-body">
               <p className="card-text">
@@ -662,7 +663,7 @@ export const cardVariations = createStory(
         <div className="col col-12 col-lg-4">
           <div className="card">
             <div className="card-header">
-              <h3 className="card-title">Card default title</h3>
+              <h3 className="card-title"><a href="#" >Card default title</a></h3>
             </div>
             <div className="card-body">
               <p className="card-text">
@@ -716,7 +717,7 @@ export const cardVariations = createStory(
         <div className="col col-12 col-lg-4">
           <div className="card">
             <div className="card-header">
-              <h3 className="card-title">Card default title</h3>
+              <h3 className="card-title"><a href="#" >Card default title</a></h3>
             </div>
             <div className="card-body">
               <p className="card-text">
@@ -769,7 +770,7 @@ export const cardVariations = createStory(
           <div className="card">
             <img
               className="card-img-top"
-              src={exampleImage}
+              src={cardsImage}
               alt="Card image cap"
               width="600"
               height="337"
@@ -778,7 +779,7 @@ export const cardVariations = createStory(
               fetchpriority="high"
             />
             <div className="card-header">
-              <h3 className="card-title">Card default title</h3>
+              <h3 className="card-title"><a href="#" >Card default title</a></h3>
             </div>
             <div className="card-body">
               <p className="card-text">
@@ -816,7 +817,7 @@ export const cardVariations = createStory(
           <div className="card">
             <i className="fas fa-rocket fa-2x card-icon-top"></i>
             <div className="card-header">
-              <h3 className="card-title">Card default title</h3>
+              <h3 className="card-title"><a href="#" >Card default title</a></h3>
             </div>
             <div className="card-body">
               <p className="card-text">
@@ -848,7 +849,7 @@ export const cardVariations = createStory(
           <div className="card card-centered">
             <i className="fas fa-rocket fa-2x card-icon-top"></i>
             <div className="card-header">
-              <h3 className="card-title">Card default title</h3>
+              <h3 className="card-title"><a href="#" >Card default title</a></h3>
             </div>
             <div className="card-buttons">
               <div className="card-button">
@@ -878,7 +879,7 @@ export const cardVariations = createStory(
           <div className="card">
             <img
               className="card-img-top"
-              src={exampleImage}
+              src={cardsImage}
               alt="Card image cap"
               width="600"
               height="337"
@@ -982,7 +983,7 @@ export const horizontal = createStory(
     <div className="card card-horizontal">
       <img
         className="card-img-top"
-        src={exampleImage}
+        src={cardsImage}
         alt="Card image cap"
         width="600"
         height="337"
@@ -992,7 +993,7 @@ export const horizontal = createStory(
       />
       <div className="card-content-wrapper">
         <div className="card-header">
-          <h3 className="card-title">Card default title</h3>
+          <h3 className="card-title"><a href="#" >Card default title</a></h3>
         </div>
         <div className="card-body">
           <p className="card-text">
@@ -1026,7 +1027,7 @@ export const horizontal = createStory(
     <div className="card card-degree card-horizontal">
       <img
         className="card-img-top"
-        src={exampleImage}
+        src={cardsImage}
         alt="Card image cap"
         width="600"
         height="337"
@@ -1036,7 +1037,7 @@ export const horizontal = createStory(
       />
       <div className="card-content-wrapper">
         <div className="card-header">
-          <h3 className="card-title">Card default title</h3>
+          <h3 className="card-title"><a href="#" >Card default title</a></h3>
         </div>
         <div className="card-body">
           <p className="card-text">
@@ -1070,7 +1071,7 @@ export const horizontal = createStory(
     <div className="card card-event card-horizontal">
       <img
         className="card-img-top"
-        src={exampleImage}
+        src={cardsImage}
         alt="Card image cap"
         width="600"
         height="337"
@@ -1080,7 +1081,7 @@ export const horizontal = createStory(
       />
       <div className="card-content-wrapper">
         <div className="card-header">
-          <h3 className="card-title">Card default title</h3>
+          <h3 className="card-title"><a href="#" >Card default title</a></h3>
         </div>
         <div className="card-event-details">
           <div className="card-event-icons">
@@ -1121,7 +1122,7 @@ export const horizontal = createStory(
     <div className="card card-story card-horizontal">
       <img
         className="card-img-top"
-        src={exampleImage}
+        src={cardsImage}
         alt="Card image cap"
         width="600"
         height="337"
@@ -1131,7 +1132,7 @@ export const horizontal = createStory(
       />
       <div className="card-content-wrapper">
         <div className="card-header">
-          <h3 className="card-title">Card default title</h3>
+          <h3 className="card-title"><a href="#" >Card default title</a></h3>
         </div>
         <div className="card-body">
           <p className="card-text">
@@ -1169,7 +1170,7 @@ export const checkboxStackedCard = createStory(
       <div className="card-image-gradient checkbox-card">
         <img
           className="card-img-top"
-          src={exampleImage}
+          src={cardsImage}
           alt="Card image cap"
           width="600"
           height="337"
@@ -1207,7 +1208,7 @@ export const checkboxStackedCard = createStory(
       </form>
     </div>
     <div className="card-header">
-      <h3 className="card-title">Card default title</h3>
+      <h3 className="card-title"><a href="#" >Card default title</a></h3>
     </div>
     <div className="card-body">
       <p className="card-text">
@@ -1269,7 +1270,7 @@ export const checkboxInlineCard = createStory(
       <div className="card-image-gradient checkbox-card">
         <img
           className="card-img-top"
-          src={exampleImage}
+          src={cardsImage}
           alt="Card image cap"
           width="600"
           height="337"
@@ -1307,7 +1308,7 @@ export const checkboxInlineCard = createStory(
       </form>
     </div>
     <div className="card-header">
-      <h3 className="card-title">Card default title</h3>
+      <h3 className="card-title"><a href="#" >Card default title</a></h3>
     </div>
     <div className="card-body">
       <p className="card-text">
@@ -1372,7 +1373,7 @@ export const mediaTypeOverlayCard = createStory(
             <div className="card-image-gradient">
               <img
                 className="card-img-top"
-                src={exampleImage}
+                src={cardsImage}
                 alt="Card image cap"
                 width="600"
                 height="337"
@@ -1382,11 +1383,14 @@ export const mediaTypeOverlayCard = createStory(
               />
             </div>
             <div className="card-image-overlay-content media-type-overlay ms-4 mb-4">
-              <span className="fas icon-small fa-video" title="Video Icon"></span>
+              <span
+                className="fas icon-small fa-video"
+                title="Video Icon"
+              ></span>
             </div>
           </div>
           <div className="card-header">
-            <h3 className="card-title">Card default title</h3>
+            <h3 className="card-title"><a href="#" >Card default title</a></h3>
           </div>
           <div className="card-body">
             <p className="card-text">
@@ -1446,7 +1450,7 @@ export const mediaTypeOverlayCard = createStory(
             <div className="card-image-gradient">
               <img
                 className="card-img-top"
-                src={exampleImage}
+                src={cardsImage}
                 alt="Card image cap"
                 width="600"
                 height="337"
@@ -1456,11 +1460,14 @@ export const mediaTypeOverlayCard = createStory(
               />
             </div>
             <div className="card-image-overlay-content media-type-overlay ms-4 mb-2">
-              <span className="fas icon-small fa-video" title="Video Icon"></span>
+              <span
+                className="fas icon-small fa-video"
+                title="Video Icon"
+              ></span>
             </div>
           </div>
           <div className="card-header">
-            <h3 className="card-title">Card default title</h3>
+            <h3 className="card-title"><a href="#" >Card default title</a></h3>
           </div>
           <div className="card-body">
             <p className="card-text">
@@ -1533,13 +1540,19 @@ export const mediaTypeOverlayCard = createStory(
       <span className="col me-4">
         <h3>Audio</h3>
         <div className="media-type-overlay mt-2">
-          <span className="fas icon-small fa-volume-up" title="Video Icon"></span>
+          <span
+            className="fas icon-small fa-volume-up"
+            title="Video Icon"
+          ></span>
         </div>
       </span>
       <span className="col me-4">
         <h3>VR/AR/360</h3>
         <div className="media-type-overlay mt-2">
-          <span className="fas icon-small fa-street-view" title="Video Icon"></span>
+          <span
+            className="fas icon-small fa-street-view"
+            title="Video Icon"
+          ></span>
         </div>
       </span>
       <span className="col me-4">
@@ -1554,4 +1567,132 @@ export const mediaTypeOverlayCard = createStory(
     initFunc,
     omitTemplate: true,
   }
+);
+
+export const RankingCardLarge = createStory(
+  <div className="card-ranking large-image">
+    <img
+      src={cardsImage}
+      alt="Card ranking large version"
+      loading="lazy"
+      decoding="async"
+      fetchpriority="high"
+    />
+    <div className="info-layer">
+      <div className="content">
+        <div className="header">
+          <h4>Ranking title goes here, under the photo</h4>
+          <button
+            id="dispatch"
+            className="btn btn-expand"
+            aria-label="Expand ranking"
+            type="button"
+            aria-expanded="false"
+            data-toggle="collapse"
+            data-target="#collapseExample"
+            data-ga="collapsable element"
+            data-ga-name="onclick"
+            data-ga-event="collapse"
+            data-ga-type="click"
+            data-ga-region="main content"
+            data-ga-section="H4 Ranking title goes here, under the photo"
+          >
+            <i className="fas fa-chevron-up" />
+            <span className="sr-only">Expand</span>
+          </button>
+        </div>
+        <p id="collapseExample">
+          ASU has topped U.S. News & World Report’s “Most Innovative Schools”
+          list since the inception of the category in 2016. ASU again placed
+          ahead of Stanford and MIT on the list, based on a survey of peers.
+          College presidents, provosts and admissions deans around the country
+          nominated up to 10 colleges or universities that are making the most
+          innovative improvements.
+        </p>
+        <a
+          href="#"
+          aria-label="Read more"
+          data-ga-event="link"
+          data-ga-action="click"
+          data-ga-name="onclick"
+          data-ga-type="internal link (external link if non asu.edu domain)"
+          data-ga-region="main content"
+          data-ga-section="H4 Ranking title goes here, under the photo"
+          data-ga="read more"
+        >
+          Read more
+          <span className="fas icon-small fa-arrow-right" aria-hidden="true" />
+        </a>
+      </div>
+    </div>
+  </div>,
+  { initFunc: initRankFunc }
+);
+
+export const RankingCardSmall = createStory(
+  <div className="card-ranking small-image">
+    <div className="image-wrapper">
+      <img
+        src={cardsImage}
+        alt="Card ranking small version"
+        loading="lazy"
+        decoding="async"
+        fetchpriority="high"
+      />
+    </div>
+    <div className="citation">
+      <h4>H4 Ranking title goes here, under the photo</h4>
+      <p>
+        — Citation of the ranking should go under the headline, regular body
+        style text
+      </p>
+    </div>
+    <div className="info-layer">
+      <div className="content">
+        <div className="header">
+          <p>
+            ASU has topped U.S. News & World Report’s “Most Innovative Schools”
+            list since the inception of the category in 2016. ASU again placed
+            ahead of Stanford and MIT on the list, based on a survey of peers.
+            College presidents, provosts and admissions deans around the country
+            nominated up to 10 colleges or universities that are making the most
+            innovative improvements.
+          </p>
+          <button
+            id="dispatch"
+            className="btn btn-expand"
+            aria-label="Expand ranking"
+            type="button"
+            aria-expanded="false"
+            data-toggle="collapse"
+            data-target="#collapseExample"
+            data-ga="collapsable element"
+            data-ga-name="onclick"
+            data-ga-event="collapse"
+            data-ga-type="click"
+            data-ga-region="main content"
+            data-ga-section="H4 Ranking title goes here, under the photo"
+          >
+            <i className="fas fa-chevron-up" />
+            <span className="sr-only">Expand</span>
+          </button>
+        </div>
+        <a
+          href="#"
+          aria-label="Read more"
+          data-ga-event="link"
+          data-ga-action="click"
+          data-ga-name="onclick"
+          data-ga-type="internal link (external link if non asu.edu domain)"
+          data-ga-region="main content"
+          data-ga-section="H4 Ranking title goes here, under the photo"
+          data-ga="read more"
+        >
+          Read more
+          <span className="fas icon-small fa-arrow-right" aria-hidden="true" />
+        </a>
+      </div>
+    </div>
+  </div>,
+  { initFunc: initRankFunc }
 );

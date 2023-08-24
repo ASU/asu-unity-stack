@@ -16,7 +16,7 @@
       max-height: 540px;
     }
 
-    @media screen and (max-width: $uds-breakpoint-sm) {
+    @media screen and (max-width: $uds-breakpoint-md) {
       flex-direction: column;
     }
   }
@@ -56,11 +56,11 @@
     }
 
     @media screen and (max-width: $uds-breakpoint-md) {
+      max-width: 100%;
       padding: 36px;
     }
 
     @media screen and (max-width: $uds-breakpoint-sm) {
-      max-width: 100%;
       order: 2;
 
       .btn {

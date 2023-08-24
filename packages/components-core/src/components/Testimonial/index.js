@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import { spreadClasses } from "../../core/utils/css-utils";
+// eslint-disable-next-line import/no-cycle
+import { Image } from "../Image";
 
 /**
  * @typedef {import('../../core/types/testimonial-types').TestimonialProps} TestimonialProps
@@ -13,27 +15,18 @@ import { spreadClasses } from "../../core/utils/css-utils";
  * @param {TestimonialProps} props
  * @returns {JSX.Element}
  */
-const Testimonial = ({
-  imageSource = null,
-  imageAltText = null,
-  quote,
-  itemStyle = {},
-}) => (
+const Testimonial = ({ imageSource, imageAltText, quote, itemStyle = {} }) => (
   <div
     className={`uds-blockquote uds-testimonial ${
       imageSource ? "with-image" : ""
     } ${spreadClasses(itemStyle.containerCssClass)}`}
   >
     {imageSource && (
-      <img
+      <Image
         src={imageSource}
         alt={imageAltText}
         data-testid="testimonial-image"
-        loading="lazy"
-        decoding="async"
-        // @ts-ignore
-        // eslint-disable-next-line
-        fetchpriority="high"
+        fetchPriority="high"
       />
     )}
     <svg role="presentation" viewBox="0 0 302.87 245.82">

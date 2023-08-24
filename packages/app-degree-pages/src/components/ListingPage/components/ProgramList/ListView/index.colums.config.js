@@ -1,13 +1,14 @@
 /* eslint-disable no-unused-vars */
 // @ts-check
+import { idGenerator } from "@asu/components-core";
 import React from "react";
 
-import { idGenerator } from "../../../../../../../components-core/src/core/utils/id-generator";
 import {
   ChevronIconButton,
   InfoButtonIcon,
   //  FavButton
 } from "../../../../../core/components/icons";
+import { getFullCampusLocalText } from "../../../../../core/models";
 import {
   parseMajorInfoLink,
   accellerateDegreeTooltipLink, // TODO: this link needs a double check
@@ -89,9 +90,9 @@ const columns = [
           {resolver.getCampusList().map((location, index, campusList) => (
             <div key={genCampusId.next().value} className="cell-container">
               {/*  TODO: This link is currently deferred till we discover which URL to link */}
-              <span key={location}>{`${toTitleCase(location)}${
-                index < campusList.length - 1 ? ", " : ""
-              }`}</span>
+              <span key={location}>{`${toTitleCase(
+                getFullCampusLocalText(location)
+              )}${index < campusList.length - 1 ? ", " : ""}`}</span>
               <span>
                 <InfoButtonIcon
                   popover={{

@@ -1,6 +1,6 @@
 {
   "name": "@asu/component-news",
-  "version": "2.0.0",
+  "version": "2.0.3",
   "description": "ASU News component",
   "main": "./dist/asuNews.cjs.js",
   "browser": "./dist/asuNews.umd.js",
@@ -12,7 +12,8 @@
   "files": [
     "examples/*",
     "dist/*",
-    "docs/*"
+    "docs/*",
+    "CHANGELOG.md"
   ],
   "repository": {
     "type": "git",
@@ -40,6 +41,7 @@
     "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "dependencies": {
+    "@asu/components-core": "^2.1.0",
     "@babel/preset-env": "^7.15.0",
     "@babel/preset-react": "^7.14.5",
     "prop-types": "^15.7.2",

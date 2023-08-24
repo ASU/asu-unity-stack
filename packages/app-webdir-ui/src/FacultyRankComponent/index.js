@@ -1,7 +1,7 @@
+import { TabbedPanels, Tab } from "@asu/components-core";
 import PropTypes from "prop-types";
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-import { TabbedPanels, Tab } from "../../../components-core";
 import { engineNames, engines } from "../helpers/search";
 import { ASUSearchResultsList } from "../SearchResultsList";
 
@@ -40,7 +40,7 @@ export const FacultyRankTabPanels = ({
   tempFilters["deptIds"] = deptIds.split(",");
 
   return (
-    <TabbedPanels onTabChange={() => true} id="faculty-rank-tabs">
+    <TabbedPanels onTabChange={() => true}>
       <Tab id="faculty" title="Faculty">
         <ASUSearchResultsList
           engine={enginesWithParams[searchTypeEngineMap[searchType]]}

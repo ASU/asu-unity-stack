@@ -1,6 +1,6 @@
 {
   "name": "@asu/app-rfi",
-  "version": "2.0.0",
+  "version": "2.0.3",
   "description": "ASU Request For Information (RFI) form",
   "main": "./dist/appRfi.cjs.js",
   "browser": "./dist/appRfi.umd.js",
@@ -12,7 +12,8 @@
   "files": [
     "examples/*",
     "dist/*",
-    "docs/*"
+    "docs/*",
+    "CHANGELOG.md"
   ],
   "repository": {
     "type": "git",
@@ -78,6 +79,7 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "@asu/components-core": "^2.1.0",
     "formik": "^2.1.4",
     "prop-types": "^15.7.2",
     "react": ">= 16.14.0 < 18",

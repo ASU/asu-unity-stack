@@ -21,21 +21,33 @@ export const engineNames = {
 };
 
 export function logClick(query, docId, reqId, tags, { ...props }) {
-  function sendData(resolve, reject) {
+  async function sendData(resolve, reject) {
     const data = {
       query,
       doc_id: docId,
       req_id: reqId,
       tags,
     };
-    axios
-      .post(`${props.API_URL}${props.searchApiVersion}webdir-click`, data)
-      .then(res => {
-        resolve(res);
-      })
-      .catch(err => {
-        reject(err);
-      });
+    let response;
+    if (props.loggedIn) {
+      const tokenResponse = await axios.get(`${props.API_URL}/session/token`);
+      const headers = {
+        "X-CSRF-Token": tokenResponse.data,
+      };
+      response = await axios.post(
+        `${props.API_URL}${props.searchApiVersion}webdir-click`,
+        data,
+        { headers }
+      );
+      resolve(response.data);
+    } else {
+      response = await axios.post(
+        `${props.API_URL}${props.searchApiVersion}webdir-click`,
+        data
+      );
+      resolve(response.data);
+    }
+    reject(response.data);
   }
 
   return new Promise(sendData);
@@ -401,7 +413,7 @@ export const performSearch = function ({
       if (!filters) {
         return;
       }
-      const tokenResponse = await axios.get(`${engine.API_URL}session/token`);
+      const tokenResponse = await axios.get(`${engine.API_URL}/session/token`);
       const headers = {
         "X-CSRF-Token": tokenResponse.data,
       };

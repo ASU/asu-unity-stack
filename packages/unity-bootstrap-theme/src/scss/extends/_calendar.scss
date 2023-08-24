@@ -9,7 +9,7 @@
     .heading {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      margin-bottom: calc($uds-size-spacing-1 / 2);
+      margin-bottom: calc(#{$uds-size-spacing-1} / 2);
       &.mobile {
         display: none;
       }
@@ -31,7 +31,7 @@
         border-radius: $uds-component-border-radius;
         background-color: $uds-color-base-maroon;
         color: $uds-color-background-white;
-        padding: calc($uds-size-spacing-1 / 2) $uds-size-spacing-1;
+        padding: calc(#{$uds-size-spacing-1} / 2) $uds-size-spacing-1;
       }
       .prev,
       .next {
@@ -45,7 +45,7 @@
       border: 1px solid $uds-color-base-gray-3;
       border-radius: $uds-component-border-radius;
       background-color: $uds-color-base-gray-2;
-      padding: calc($uds-size-spacing-3 / 2) calc($uds-size-spacing-7 / 3);
+      padding: calc(#{$uds-size-spacing-3} / 2) calc(#{$uds-size-spacing-7} / 3);
       svg {
         font-size: $uds-size-spacing-3;
         vertical-align: middle;

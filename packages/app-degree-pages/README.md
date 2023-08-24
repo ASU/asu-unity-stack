@@ -7,7 +7,6 @@ ASU Web Standards-based implementation of the Degree page component
 
 ### Document reference
 
-
 [ux-doc-link]:https://xd.adobe.com/view/03081953-57ea-498f-a7f1-771c92c4dbed-565b/?fullscreen
 
 You can find the UX document [here][ux-doc-link]
@@ -75,9 +74,8 @@ You can find the UX document [here][ux-doc-link]
 
 
 
-
 ### Degree listing page template
-Degree listing pages are used for the actual degree browsing module where users can view a list of filterable degrees in either a table or grid view. Please note that the degree listing module is just one of severa l sections required for this template.
+Degree listing pages are used for the actual degree browsing module where users can view a list of filterable degrees in either a table or grid view. Please note that the degree listing module is just one of several sections required for this template.
 
 <table style="border:0px;">
   <tr>
@@ -221,9 +219,10 @@ yarn jsdoc
 ```
 ## How to install
 
-1. Make sure you are set up to use the private npm registry at registry.web.asu.edu.
-<br/>See instructures in the 'How to use private package registry' here: [README.md](../../README.md)
-2. ```yarn add @asu/app-degree-pages```
+1. Either make sure you are part of the ASU github organization and follow the instructions [here,](https://github.com/ASU/asu-unity-stack#-how-to-use-the-private-package-registry)or, if you already are, you can clone this repo and run `yarn install` and `yarn build` to build the package locally.
+<br/>
+
+2. ```yarn add @asu/app-degree-pages``` or ```npm install @asu/app-degree-pages```
 
 ## Use as a JS module in React app
 ### ListingPage component
@@ -315,7 +314,7 @@ You can find an extended example of how to set `ListingPage` props [here](/packa
 
     <link
       rel="stylesheet"
-      href="https://unity.web.asu.edu/@asu/bootstrap4-theme/css/bootstrap-asu.css"
+      href="https://unity.web.asu.edu/@asu/unity-bootstrap-theme/css/unity-bootstrap-theme.bundle.css"
     />
 
     <!-- *************************************************************** -->
@@ -356,7 +355,7 @@ You can find an extended example of how to set `DetailPage` props [here](/packag
 
     <link
       rel="stylesheet"
-      href="https://unity.web.asu.edu/@asu/bootstrap4-theme/css/bootstrap-asu.css"
+      href="https://unity.web.asu.edu/@asu/unity-bootstrap-theme/css/unity-bootstrap-theme.bundle.css"
     />
 
     <!-- *************************************************************** -->
@@ -430,8 +429,8 @@ All the requirements for version 1 of this component were covered, further enhan
 
 - [Font Awesome](https://fontawesome.com/)
     - [CDN link](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js)
-- [ASU bootstrap4-theme](https://unity.web.asu.edu/@asu/bootstrap4-theme)
-    - [CDN link](https://unity.web.asu.edu/@asu/bootstrap4-theme/css/bootstrap-asu.css)
+- [ASU unity-bootstrap-theme](https://unity.web.asu.edu/@asu/unity-bootstrap-theme)
+    - [CDN link](https://unity.web.asu.edu/@asu/unity-bootstrap-theme/css/unity-bootstrap-theme.bundle.css)
 - [React](https://reactjs.org/)
 - [Add React to a Website](https://reactjs.org/docs/add-react-to-a-website.html)
 - [Jest APIs](https://jestjs.io/docs/api)

@@ -16,12 +16,12 @@ const extraOptions = {
   },
   bgColor: {
     name: "BackGround Color",
-    options: ["", "bg-gray-1", "bg-gray-7"],
-    defaultValue: "",
+    options: [null, "bg-gray-1", "bg-gray-7"],
+    defaultValue: null,
     control: {
       type: "radio",
       labels: {
-        "": "None",
+        null: "None",
         "bg-gray-1": "bg-gray-1",
         "bg-gray-7": "bg-gray-7",
       },
@@ -29,12 +29,12 @@ const extraOptions = {
   },
   textColor: {
     name: "Text color",
-    options: ["", "text-gold", "text-white"],
-    defaultValue: "",
+    options: [null, "text-gold", "text-white"],
+    defaultValue: null,
     control: {
       type: "radio",
       labels: {
-        "": "None",
+        null: "None",
         "text-gold": "text-gold",
         "text-white": "text-white",
       },

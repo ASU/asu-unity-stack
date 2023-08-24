@@ -1,6 +1,6 @@
 {
   "name": "@asu/component-carousel",
-  "version": "2.0.0",
+  "version": "2.0.4",
   "description": "ASU implementation of @glidejs/glide npm library for carousels",
   "main": "./dist/asuCarousel.cjs.js",
   "browser": "./dist/asuCarousel.umd.js",
@@ -12,7 +12,8 @@
   "files": [
     "examples/*",
     "dist/*",
-    "docs/*"
+    "docs/*",
+    "CHANGELOG.md"
   ],
   "repository": {
     "type": "git",
@@ -39,13 +40,13 @@
     "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "dependencies": {
-    "@asu/components-core": "^1.0.0",
+    "@asu/components-core": "^2.1.0",
     "@babel/plugin-transform-react-jsx": "^7.13.12",
-    "@fortawesome/fontawesome-svg-core": "^1.2.35",
-    "@fortawesome/free-brands-svg-icons": "^5.15.3",
-    "@fortawesome/free-regular-svg-icons": "^5.15.3",
-    "@fortawesome/free-solid-svg-icons": "^5.15.3",
-    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-brands-svg-icons": "^6.4.2",
+    "@fortawesome/free-regular-svg-icons": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@glidejs/glide": "^3.4.1",
     "@storybook/addon-a11y": "^6.5.16",
     "@storybook/addon-actions": "^6.5.16",

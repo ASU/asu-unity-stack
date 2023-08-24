@@ -8,12 +8,12 @@ const extraOptions = {
   },
   bgColor: {
     name: "Background Color",
-    options: ["", "gray-1-bg", "gray-2-bg", "gray-7-bg"],
-    defaultValue: "",
+    options: [null, "gray-1-bg", "gray-2-bg", "gray-7-bg"],
+    defaultValue: null,
     control: {
       type: "radio",
       labels: {
-        "": "None",
+        null: "None",
         "gray-1-bg": "gray-1-bg",
         "gray-2-bg": "gray-2-bg",
         "gray-7-bg": "gray-7-bg",
@@ -59,27 +59,23 @@ export const ImageLeftOrRight = createStory(args => {
           aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
           qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.
         </p>
-        <div className="row">
-          <div className="col-12 col-md-6 py-1">
-            <a
-              href="#"
-              className={`btn ${
-                args.bgColor === "gray-7-bg" ? "btn-gold" : "btn-dark"
-              }`}
-            >
-              Button link here
-            </a>
-          </div>
-          <div className="col-12 col-md-6 py-1">
-            <a
-              href="#"
-              className={`btn ${
-                args.bgColor === "gray-7-bg" ? "btn-gold" : "btn-dark"
-              }`}
-            >
-              Button link here
-            </a>
-          </div>
+        <div className="uds-buttons py-1">
+          <a
+            href="#"
+            className={`btn ${
+              args.bgColor === "gray-7-bg" ? "btn-gold" : "btn-dark"
+            }`}
+          >
+            Button link here
+          </a>
+          <a
+            href="#"
+            className={`btn ${
+              args.bgColor === "gray-7-bg" ? "btn-gold" : "btn-dark"
+            }`}
+          >
+            Button link here
+          </a>
         </div>
       </div>
     </div>

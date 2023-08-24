@@ -210,6 +210,41 @@ const getTitleFromProfile = (profile, titleMatch) => {
   return { matchedAffiliationTitle, matchedAffiliationDept };
 };
 
+/**
+    Formats the image URL by adding query parameters for size and break.
+    @param {string} baseUrl - The base URL of the image.
+    @returns {string} The formatted URL with added query parameters.
+  */
+const formatImageUrl = baseUrl => {
+  // Since user profiles in the image service can have no assigned image, we should account for possible empty values.
+  if (!baseUrl) return "";
+
+  const AVAILABLE_URL_PARAMS = { SIZE: "size", BREAK: "break" };
+  const AVAILABLE_IMG_SIZES = { MEDIUM: "medium" };
+
+  /**
+    Rounds the current time in seconds to the nearest hundred seconds.
+    @returns {string} The rounded timestamp in seconds, with the last two digits as zero.
+  */
+  const nearestHundredSeconds = () => {
+    const milisecondsTimestamp = Date.now();
+    const secondsTimestamp = Math.floor(milisecondsTimestamp / 1000); // Convert to seconds.
+    const breakValue = Math.floor(secondsTimestamp / 100) * 100; // Round to nearest 100 seconds.
+
+    return breakValue.toString();
+  };
+
+  const url = new URL(baseUrl);
+  url.searchParams.append(
+    AVAILABLE_URL_PARAMS.SIZE,
+    AVAILABLE_IMG_SIZES.MEDIUM
+  );
+  url.searchParams.append(AVAILABLE_URL_PARAMS.BREAK, nearestHundredSeconds());
+  url.searchParams.append("blankImage2", "true");
+
+  return url.toString();
+};
+
 export const staffConverter = ({
   datum,
   options = {
@@ -231,6 +266,8 @@ export const staffConverter = ({
   if (appPathFolder) {
     anonImg = `${appPathFolder}/img/anon.png`;
   }
+  const imgURLProp = formatImageUrl(filledDatum.photo_url.raw);
+
   return (
     <>
       {asuriteEID ? (
@@ -239,7 +276,7 @@ export const staffConverter = ({
           id={asuriteEID}
           profileURL={`${profileURLBase}/profile/${asuriteEID}`}
           key={asuriteEID}
-          imgURL={filledDatum.photo_url.raw}
+          imgURL={imgURLProp}
           anonImgURL={anonImg}
           name={filledDatum.display_name.raw}
           matchedAffiliationTitle={titles.matchedAffiliationTitle}
@@ -277,13 +314,16 @@ export const studentsConverter = ({
   const asuriteEID = filledDatum.eid.raw
     ? filledDatum.eid.raw.toString()
     : filledDatum.asurite_id.raw.toString();
+
+  const imgURLProp = formatImageUrl(filledDatum.photo_url.raw);
+
   return (
     <ProfileCard
       isRequired={false}
       id={asuriteEID}
       profileURL={`/profile/${asuriteEID}`}
       key={asuriteEID}
-      imgURL={filledDatum.photo_url.raw}
+      imgURL={imgURLProp}
       anonImgURL={anonImg}
       name={filledDatum.display_name.raw}
       titles={filledDatum.titles.raw}

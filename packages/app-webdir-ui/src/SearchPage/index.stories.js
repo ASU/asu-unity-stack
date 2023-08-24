@@ -13,8 +13,8 @@ export default createComponent("Search Page", "Organisms", "Templates");
 export const searchPageExample = createStory(
   <div className="uds-content-align">
     <SearchPage
-      API_URL="https://test-asu-isearch.ws.asu.edu/"
-      searchApiVersion="api/v1/"
+      API_URL="https://test-asu-isearch.ws.asu.edu"
+      searchApiVersion="/api/v1/"
       loggedIn={false}
       // appPathFolder="/my/custom/path/to/component/root/example"
     />

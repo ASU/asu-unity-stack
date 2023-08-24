@@ -7,6 +7,8 @@ import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { sanitizeDangerousMarkup } from "../../core/utils/html-utils";
 import { Button } from "../Button";
 import { ButtonTag } from "../ButtonTag";
+// eslint-disable-next-line import/no-cycle
+import { Image } from "../Image";
 import { CardWrapper } from "./index.styles";
 import { emailAddressParser } from "./utils/emailAddressParser";
 
@@ -43,6 +45,7 @@ export const Card = ({
   linkUrl,
   tags,
   showBorders,
+  cardLink,
 }) => {
   return (
     <BaseCard
@@ -62,6 +65,7 @@ export const Card = ({
       linkUrl={linkUrl}
       tags={tags}
       showBorders={showBorders}
+      cardLink={cardLink}
     />
   );
 };
@@ -144,6 +148,10 @@ Card.propTypes = {
    * Remove card borders
    */
   showBorders: PropTypes.bool,
+  /**
+   * Card link
+   */
+  cardLink: PropTypes.string,
 };
 
 Card.defaultProps = {
@@ -184,6 +192,7 @@ const BaseCard = ({
   linkUrl,
   tags,
   showBorders,
+  cardLink,
 }) => {
   const cardClass = classNames("card", "cards-components", {
     [`card-degree`]: type === "degree",
@@ -198,13 +207,11 @@ const BaseCard = ({
     <>
       <CardWrapper className={cardClass} data-testid="card-container">
         {!!image && (
-          <img
-            className="card-img-top"
+          <Image
             src={image}
             alt={imageAltText}
-            data-testid="card-image"
-            loading="lazy"
-            decoding="async"
+            dataTestId="card-image"
+            cssClasses={["card-img-top"]}
           />
         )}
         {!image && icon && (
@@ -226,6 +233,7 @@ const BaseCard = ({
               linkLabel={linkLabel}
               linkUrl={linkUrl}
               tags={tags}
+              cardLink={cardLink}
             />
           </div>
         ) : (
@@ -240,6 +248,7 @@ const BaseCard = ({
             linkLabel={linkLabel}
             linkUrl={linkUrl}
             tags={tags}
+            cardLink={cardLink}
           />
         )}
       </CardWrapper>
@@ -283,6 +292,7 @@ BaseCard.propTypes = {
     })
   ),
   showBorders: PropTypes.bool,
+  cardLink: PropTypes.string,
 };
 
 BaseCard.defaultProps = {
@@ -314,11 +324,14 @@ const CardContent = ({
   linkLabel,
   linkUrl,
   tags,
+  cardLink,
 }) => (
   <>
     {!!title && (
       <div className="card-header" data-testid="card-title">
-        <h3 className="card-title">{title}</h3>
+        <h3 className="card-title">
+          {cardLink ? <a href={cardLink}>{title}</a> : title}
+        </h3>
       </div>
     )}
     {!!body && (
@@ -423,6 +436,7 @@ CardContent.propTypes = {
       onClick: PropTypes.func,
     })
   ),
+  cardLink: PropTypes.string,
 };
 
 CardContent.defaultProps = {

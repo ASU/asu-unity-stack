@@ -84,6 +84,19 @@
   background-color: $gray-1;
 }
 
+
+.uds-buttons {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 1.5rem;
+  row-gap: 1rem;
+    .btn {
+      display: inline;
+      margin: 0;
+    }
+}
+
 // Remove background changing hover effects from all buttons
 @each $color, $value in $theme-colors {
   .btn-#{$color} {
@@ -110,6 +123,10 @@ a.text-gold:visited:not(.btn) {
 0 to SM breakpoint included
 --------------------------------------------------------------*/
 @include media-breakpoint-down(sm) {
+  .uds-buttons {
+    column-gap: 1rem;
+  }
+
   .btn {
     &.btn-responsive {
       @include btn-md;

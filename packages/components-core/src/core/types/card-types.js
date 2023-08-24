@@ -11,7 +11,7 @@
  * @property {boolean} [horizontal]
  * @property {string} [image]
  * @property {string} [imageAltText]
- * @property {string} [title]
+ * @property {string} title
  * @property {string[]} [icon]
  * @property {string} [body]
  * @property {string} [eventLocation]
@@ -23,6 +23,7 @@
  * @property {"25%"|"50%"|"75%"|"100%"} [width]
  * @property {TagsProps[]} [tags]
  * @property {boolean} [showBorders]
+ * @property {string} [cardLink]
  */
 
 /**

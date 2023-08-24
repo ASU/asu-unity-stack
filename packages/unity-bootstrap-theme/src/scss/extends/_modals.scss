@@ -2,16 +2,16 @@
   align-items: center;
   // Use rgba instead of opacity because opacity will affect children
   background-color: $uds-modal-overlay-background-color;
-  bottom: 0;
   display: none;
   justify-content: center;
   left: 0;
   opacity: 0;
-  padding: 0 32px;
+  padding: 4rem 2rem;
   position: absolute;
   right: 0;
   top: 0;
-  z-index: 999;
+  z-index: 1030;
+  min-height: 100vh;
 
   &.open {
     animation: fadeIn $uds-time-transition-base ease-out forwards; // .4s

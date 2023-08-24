@@ -131,6 +131,7 @@ Event.args = {
   image: "https://source.unsplash.com/WLUHO9A_xik/300x200",
   imageAltText: "An example image",
   title: "Event title",
+  cardLink: "#example-link",
   body: "<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
   eventFormat: "stack",
   eventTime: "Wed, November 21st, 2021<br />11:30 a.m - 12:30 p.m.",

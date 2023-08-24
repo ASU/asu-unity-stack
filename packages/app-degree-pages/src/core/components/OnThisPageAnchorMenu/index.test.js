@@ -1,10 +1,10 @@
 // @ts-check
+import { AnchorMenu } from "@asu/components-core";
 import { render } from "@testing-library/react";
 import React from "react";
 
 import { OnThisPageAnchorMenu } from ".";
 
-import { AnchorMenu } from "../../../../../components-core/src/components/AnchorMenu";
 import { progDetailSectionIds } from "../../models";
 
 describe("#OnThisPageAnchorMenu", () => {
@@ -36,7 +36,7 @@ describe("#OnThisPageAnchorMenu", () => {
         firstElementId: expect.stringContaining(
           progDetailSectionIds.affordingCollege.targetIdName
         ),
-        focusFirstFocusableElement: true,
+        focusFirstFocusableElement: false,
       }),
       expect.anything()
     );

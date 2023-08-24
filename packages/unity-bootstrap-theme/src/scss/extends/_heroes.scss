@@ -8,6 +8,7 @@
 4. Hero, Desktop
 5. Story Hero, Mobile
 6. Story Hero, Desktop
+7. Hero, Degree Pages
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
@@ -298,6 +299,7 @@ div.uds-hero-lg {
 @include media-breakpoint-up(md) {
   div[class^="uds-hero"] {
     grid-template-columns: 1fr minmax(0, 700px) 1fr;
+    margin-bottom: 0;
 
     // Column alignment for decendent items
     h1,
@@ -419,6 +421,10 @@ div.uds-hero-lg {
     h1 {
       margin-bottom: $uds-size-spacing-4;
     }
+  }
+
+  div.uds-hero-lg.uds-video-hero.has-btn-row .hero-overlay {
+    height: 100%;
   }
 }
 
@@ -586,5 +592,15 @@ div.uds-hero-lg {
 @include media-breakpoint-up(xl) {
   .uds-story-hero {
     grid-template-columns: 1fr calc(1200px + 12px + 12px) 1fr;
+  }
+}
+
+/*--------------------------------------------------------------
+7. Hero, Degree Pages
+--------------------------------------------------------------*/
+#degreeListingPageContainer,
+#degreeDetailPageContainer {
+  div[class^="uds-hero"] {
+    margin-bottom: 0;
   }
 }

@@ -64,16 +64,16 @@ export const initTabs = function () {
   };
 
   const setControlVisibility = (clicked, scrollOffset) => {
-    // seleccionamos el ancestro mas cercano que tenga la clase .uds-tabbed-panels
+    // select the nearest ancestor with the class ".uds-tabbed-panels".
     const parentContainer = clicked.closest(DOM_ELEMENT_UDS_TABBED_PANELS);
-    // seleccionamos los elementos padres hermanos del elemento clickeado
+    // select the sibling parent elements of the clicked element.
     const parentNav = parentContainer.querySelector(DOM_ELEMENT_NAV_TABS);
 
-    // obtenemos el valor del atributo data-scroll-position y nos asguaramos que sea un número entero
+    // get the value of the data-scroll-position attribute and make sure it is an integer
     const scrollPosition = parseInt(parentNav.dataset.scrollPosition, 10);
     const tabPosition = parentNav.scrollWidth - scrollOffset;
 
-    // ocultamos o mostramos los botones de scroll en función de la posición del scroll
+    // hide or show the scroll buttons based on the scroll position
     if (scrollPosition == 0) {
       parentContainer.querySelector(
         DOM_ELEMENT_SCROLL_CONTROL_PREV
@@ -101,6 +101,15 @@ export const initTabs = function () {
       setButtonsCompatibility(e);
     });
 
+    // handle focus event for tabs titles
+    const navItems = document.querySelectorAll(DOM_ELEMENT_NAV_ITEM);
+    navItems.forEach(tabTitle => {
+      tabTitle.addEventListener("focus", function (e) {
+        tabTitle.scrollIntoView();
+      })
+    })
+
+    // handle scroll for tabs titles
     document.querySelectorAll(DOM_ELEMENT_UDS_TABBED_PANELS).forEach(item => {
       const nav = item.querySelector(DOM_ELEMENT_NAV_TABS);
       nav.addEventListener(EVENT_SCROLL, event => {
@@ -117,6 +126,7 @@ export const initTabs = function () {
       });
     });
 
+    // click of the next button
     document
       .querySelector(DOM_ELEMENT_SCROLL_CONTROL_NEXT)
       .addEventListener(EVENT_CLICK, function (e) {
@@ -125,6 +135,7 @@ export const initTabs = function () {
         }
       });
 
+    // click of the prev button
     document
       .querySelector(DOM_ELEMENT_SCROLL_CONTROL_PREV)
       .addEventListener(EVENT_CLICK, function (e) {
@@ -133,15 +144,20 @@ export const initTabs = function () {
         }
       });
 
+    // hide prev button on load
     document.querySelector(
       `${DOM_ELEMENT_UDS_TABBED_PANELS} ${DOM_ELEMENT_SCROLL_CONTROL_PREV}`
     ).style.display = CSS_DISPLAY_NONE;
 
+    // width of all tabs
     const navTabWidth =
       document.querySelector(DOM_ELEMENT_NAV_TABS).scrollWidth;
+
+    // width of the parent element
     const udsTabbedPanelsWidth = document.querySelector(
       DOM_ELEMENT_UDS_TABBED_PANELS
     ).offsetWidth;
+
     if (navTabWidth <= udsTabbedPanelsWidth) {
       document.querySelector(
         `${DOM_ELEMENT_UDS_TABBED_PANELS} ${DOM_ELEMENT_SCROLL_CONTROL_NEXT}`

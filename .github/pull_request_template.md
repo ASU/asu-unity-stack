@@ -14,6 +14,7 @@
 - [ ] Unity project successfully builds from root `yarn install` & `yarn build`
 - [ ] Commits do not contain multiple scopes
 - [ ] Add/updated examples
+- [ ] Add/updated READMEs/docs
 - [ ] No new console errors
 - [ ] Accessibility checks
 

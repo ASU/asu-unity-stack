@@ -68,7 +68,7 @@ const SortPicker = ({ sort, onChange, customSortOptions }) => {
         <div className="form-group">
           <label htmlFor="sortBySelect">Sort by</label>
           <select
-            className="form-control"
+            className="form-select"
             id="sortBySelect"
             onChange={event => {
               updateSort(event.target.value);

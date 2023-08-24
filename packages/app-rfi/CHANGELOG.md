@@ -1,3 +1,24 @@
+# [@asu/app-rfi-v2.0.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.0.2...@asu/app-rfi-v2.0.3) (2023-07-24)
+
+
+### Bug Fixes
+
+* **app-rfi:** updated components-core imports ([28267a3](https://github.com/asu/asu-unity-stack/commit/28267a3d531d8ccabe759a14ae3ceced96a0fecd))
+
+# [@asu/app-rfi-v2.0.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.0.1...@asu/app-rfi-v2.0.2) (2023-06-02)
+
+
+### Bug Fixes
+
+* **app-rfi:** phone field styles issues ([cb7aa79](https://github.com/asu/asu-unity-stack/commit/cb7aa79f571fb9a3a469403eb9fbc227cb32eb55))
+
+# [@asu/app-rfi-v2.0.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.0.0...@asu/app-rfi-v2.0.1) (2023-05-23)
+
+
+### Bug Fixes
+
+* **app-rfi:** changelog cleanup ([a34be16](https://github.com/asu/asu-unity-stack/commit/a34be1690806709792fbf89f63dd96347f6869c9))
+
 # [@asu/app-rfi-v2.0.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v1.1.3...@asu/app-rfi-v2.0.0) (2023-05-23)
 
 
@@ -8,50 +29,8 @@
 
 ### BREAKING CHANGES
 
-* **unity-bootstrap-theme:** New BS5 theme is used
-
-* fix(app-webdir-ui): replaced old bs4 stylesheet in storybook
-
-Added Added sass loader in storybook webpack to show updated bs5 styles
-
-* fix(component-footer): changed classes to new accordion
-
-* fix(unity-bootstrap-theme): fixed styles for global footer
-
-* fix(unity-bootstrap-theme): fixed breakpoints for footer
-
-* fix(asu-unity-stack): sitename position in header
-
-* fix(unity-bootstrap-theme): update accordion classes in bs5 footer, fix story widths
-
-* fix(unity-bootstrap-theme): ensure padding is included with header/footer styles
-
-* chore(component-events): update SB images
-
-* chore(asu-unity-stack): change script for package.json
-
-* fix(unity-bootstrap-theme): fixed mobile styles for accordions
-
-fix(unity-bootstrap-theme): fixed overflow on accordion headers for small mobile
-
-* fix(unity-bootstrap-theme): add missing foldable card accordion wrapper
-
-* docs(unity-bootstrap-theme): updated accordion upgrade guide
-
-* docs(unity-bootstrap-theme): fix typo
-
-* fix(unity-bootstrap-theme): remove opcity rule for <hr/> elemtns
-
-By default BS5 adds a rule to apply opacity
-
-* fix(unity-bootstrap-theme): anchor menu story wasn't showing header and hero component
-
-* fix(unity-bootstrap-theme): change className to class for Calendar Code
-
-It only looks like JSX
-
-* docs(unity-bootstrap-theme): add comments to a strange use case
-
-* fix(unity-bootstrap-theme): added mt-3 class on accordion stories and removed card class
-
-* fix: update Jenkinsfile to node 18.16
+* **unity-bootstrap-theme:** New BS5 theme is used<br>
+update theme dependency from bootstrap4-theme to unity-bootstrap-theme<br>
+see unity-bootstrap-theme UPGRADE.md for more information.<br>
+refers to UDS-1277<br>
+BREAKING CHANGE: updates theme dependency and markup for Bootstrap 5 compatibility.

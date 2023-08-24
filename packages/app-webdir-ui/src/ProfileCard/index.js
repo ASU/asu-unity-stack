@@ -39,13 +39,10 @@ const ProfileCard = ({ ...props }) => {
       className={`uds-person-profile ${props.size} ${props.fill ? "fill" : ""}`}
     >
       <a href={props.profileURL} className="profile-img-container">
-        <div
-          className="profile-img-placeholder"
-          style={{ backgroundImage: `url(${props.anonImgURL})` }}
-        >
+        <div className="profile-img-placeholder">
           <img
             className="profile-img"
-            src={props.imgURL}
+            src={props.imgURL} // TODO: This prop can potentially be empty, which can occur due to limitations of the image service. Consequently, the <img> tag would be rendered without its "src" attribute, which is not a good practice and should be avoided.
             alt={props.name}
             onError={hideNonExistantImages}
           />
@@ -130,7 +127,7 @@ const ProfileCard = ({ ...props }) => {
                     aria-label="Go to user Twitter profile"
                   >
                     <span
-                      className="fab fa-twitter-square"
+                      className="fab fa-square-x-twitter"
                       title="Twitter Link"
                     />
                   </a>

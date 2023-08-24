@@ -35,11 +35,6 @@ const Wrapper = styled.div`
             white-space: nowrap;
             width: 1px;
           }
-
-          &:focus {
-            padding-top: 0;
-            padding-bottom: 0;
-          }
         }
       }
     }

@@ -62,6 +62,9 @@ form.uds-form.uds-rfi
   -webkit-box-shadow: 0 !important;
   box-shadow: none !important;
 }
+form.uds-form.uds-rfi .rfi-phone-form-group .rfi-phone-input-dropdown {
+  margin: 0;
+}
 form.uds-form.uds-rfi .rfi-phone-form-group .rfi-phone-input-dropdown:focus {
   border: 2px solid #191919 !important;
   outline: 0;

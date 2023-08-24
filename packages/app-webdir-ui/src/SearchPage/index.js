@@ -1,8 +1,8 @@
+import { Button, TabbedPanels, Tab } from "@asu/components-core";
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import { Button, TabbedPanels, Tab } from "../../../components-core";
 import { engineNames, engines } from "../helpers/search";
 import { PreFacStaffMsg } from "../PreFacStaffMsg";
 import { PreSearchMessage } from "../PreSearchMessage/index";
@@ -20,6 +20,7 @@ function SearchPage({
   API_URL,
   searchApiVersion,
   loggedIn,
+  deptAdmin,
   profileURLBase,
   appPathFolder,
 }) {
@@ -69,7 +70,7 @@ function SearchPage({
   };
 
   const doSearch = () => {
-    if (searchValue.length > 0 && term !== searchValue) {
+    if (searchValue.length > 0) {
       setTotalResults(0);
       updateSearchParams(queryParamName, searchValue);
     }
@@ -155,7 +156,7 @@ function SearchPage({
             label="Edit my profile"
             href="/profile-edit"
           />
-          {loggedIn && (
+          {loggedIn && deptAdmin && (
             <Button
               color="gray"
               icon={["fas", "lock"]}
@@ -165,7 +166,10 @@ function SearchPage({
           )}
         </div>
       </div>
-      <TabbedPanels id={searchTabsId} onTabChange={() => true}>
+      <TabbedPanels
+        initialTab={searchParams.get(searchTabsId)}
+        onTabChange={tab => goToTab(tab)}
+      >
         <Tab id={tabIds.all} title="All ASU Search">
           {preSearchOrContent(
             <AllTab
@@ -175,13 +179,19 @@ function SearchPage({
               site={site}
               goToTab={goToTab}
               term={term}
+              loggedIn={loggedIn}
             />
           )}
         </Tab>
         {site && (
           <Tab id={tabIds.sites} title={site}>
             {preSearchOrContent(
-              <LocalTab engines={enginesWithParams} site={site} term={term} />
+              <LocalTab
+                loggedIn={loggedIn}
+                engines={enginesWithParams}
+                site={site}
+                term={term}
+              />
             )}
           </Tab>
         )}
@@ -213,6 +223,7 @@ SearchPage.propTypes = {
   API_URL: PropTypes.string,
   searchApiVersion: PropTypes.string,
   loggedIn: PropTypes.bool,
+  deptAdmin: PropTypes.bool,
   profileURLBase: PropTypes.string,
   appPathFolder: PropTypes.string,
 };

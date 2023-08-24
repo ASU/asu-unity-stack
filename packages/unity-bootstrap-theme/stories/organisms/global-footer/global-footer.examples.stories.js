@@ -1,5 +1,5 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Global Footer", "Organisms", "Examples");
+export default createComponent("Global Footer", "Organisms", "Examples", {footer: null, template: null});
 
 import {
   GlobalElementsOnly,
@@ -14,29 +14,16 @@ import {
 } from "./global-footer.templates.stories.js";
 import { initFooterGA as initFunc } from "./global-footer";
 
-export const GlobalElementsOnlyExample = createStory(GlobalElementsOnly, {
+const options = {
   initFunc,
-});
-export const ZeroColumnsExample = createStory(ZeroColumns, { initFunc });
-export const OneColumnExample = createStory(OneColumn, { initFunc });
-export const OneColumnNoLogoOrSocialExample = createStory(
-  OneColumnNoLogoOrSocial,
-  { initFunc }
-);
-export const TwoColumnsExample = createStory(TwoColumns, { initFunc });
-export const ThreeColumnsExample = createStory(ThreeColumns, { initFunc });
-export const FourColumnsExample = createStory(FourColumns, { initFunc });
-export const FiveColumnsExample = createStory(FiveColumns, { initFunc });
-export const SixColumnsExample = createStory(SixColumns, { initFunc });
-GlobalElementsOnlyExample.args =
-  ZeroColumnsExample.args =
-  OneColumnExample.args =
-  OneColumnNoLogoOrSocialExample.args =
-  TwoColumnsExample.args =
-  ThreeColumnsExample.args =
-  FourColumnsExample.args =
-  FiveColumnsExample.args =
-  SixColumnsExample.args =
-    {
-      template: 0,
-    };
+  omitTemplate: true
+}
+export const GlobalElementsOnlyExample = createStory(GlobalElementsOnly, options);
+export const ZeroColumnsExample = createStory(ZeroColumns, options);
+export const OneColumnExample = createStory(OneColumn, options);
+export const OneColumnNoLogoOrSocialExample = createStory(OneColumnNoLogoOrSocial, options);
+export const TwoColumnsExample = createStory(TwoColumns, options);
+export const ThreeColumnsExample = createStory(ThreeColumns, options);
+export const FourColumnsExample = createStory(FourColumns, options);
+export const FiveColumnsExample = createStory(FiveColumns, options);
+export const SixColumnsExample = createStory(SixColumns, options);

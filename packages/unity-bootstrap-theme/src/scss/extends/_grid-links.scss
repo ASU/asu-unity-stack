@@ -32,7 +32,7 @@
     text-decoration: none;
 
     svg {
-      margin: calc($uds-size-spacing-1 / 2) $uds-size-spacing-1 0 0;
+      margin: calc(#{$uds-size-spacing-1} / 2) $uds-size-spacing-1 0 0;
     }
 
     &:hover {

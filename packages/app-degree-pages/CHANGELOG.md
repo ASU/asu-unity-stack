@@ -1,3 +1,46 @@
+# [@asu/app-degree-pages-v2.1.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.1.2...@asu/app-degree-pages-v2.1.3) (2023-08-15)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** add arrow to select ([52df737](https://github.com/asu/asu-unity-stack/commit/52df737b8cccf547b878ca9456131d683ef035f4))
+
+# [@asu/app-degree-pages-v2.1.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.1.1...@asu/app-degree-pages-v2.1.2) (2023-08-02)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** add check to the anchorMenu prop to see if all values are false ([5c3ff1c](https://github.com/asu/asu-unity-stack/commit/5c3ff1ca9365d2ac9f86b4792f1b2343ea105962))
+
+# [@asu/app-degree-pages-v2.1.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.1.0...@asu/app-degree-pages-v2.1.1) (2023-07-24)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** added check for degreesPerpage ([0f2e313](https://github.com/asu/asu-unity-stack/commit/0f2e313f6b5d6243161bbb587569df50bf7efba2))
+* **app-degree-pages:** added radix to parseInt function ([5369d56](https://github.com/asu/asu-unity-stack/commit/5369d56f914b25ef902db0e9531468c01ac02126))
+* **app-degree-pages:** commit to ensure release corresponding to components-core ([340ddb9](https://github.com/asu/asu-unity-stack/commit/340ddb9eacf073c734766a5b7bad4b48f190e23a))
+* **app-degree-pages:** keep focus on anchor menu ([1cf41e9](https://github.com/asu/asu-unity-stack/commit/1cf41e9ad6676cb9b9f3ce3525102e3440a58067))
+* **app-degree-pages:** keep focus on anchor menu ([42dc3c2](https://github.com/asu/asu-unity-stack/commit/42dc3c2e3efb32b926ec160b05035c990f156f2d))
+* **app-degree-pages:** update @ to at degree locations ([bccd306](https://github.com/asu/asu-unity-stack/commit/bccd306da5ed864c7c6cee72a388d3c64cdd4dbf))
+* **app-degree-pages:** update @ to at degree locations ([dcc0cea](https://github.com/asu/asu-unity-stack/commit/dcc0ceaf2a81a918ad6cd3adbdb3effd62a51c4f))
+* **app-degree-pages:** updated imports for components-core ([ea8fa50](https://github.com/asu/asu-unity-stack/commit/ea8fa501ce451853d8b731b6142ae59bb8027e23))
+
+# [@asu/app-degree-pages-v2.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.0.1...@asu/app-degree-pages-v2.1.0) (2023-06-28)
+
+
+### Features
+
+* **app-degree-pages:** remove ASU@ filter option text ([f7e0963](https://github.com/asu/asu-unity-stack/commit/f7e0963596ef407de88b614d2fe59b897b9ccc99))
+* **app-degree-pages:** unabbrev. result location ([e629bce](https://github.com/asu/asu-unity-stack/commit/e629bce67792ab1952f10a6dad24c84c8e7c0c43))
+
+# [@asu/app-degree-pages-v2.0.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.0.0...@asu/app-degree-pages-v2.0.1) (2023-05-23)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** changelog cleanup ([2549e10](https://github.com/asu/asu-unity-stack/commit/2549e1047a1f880e754681ccc0b3949e969a3303))
+
 # [@asu/app-degree-pages-v2.0.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v1.3.6...@asu/app-degree-pages-v2.0.0) (2023-05-23)
 
 
@@ -8,53 +51,11 @@
 
 ### BREAKING CHANGES
 
-* **unity-bootstrap-theme:** New BS5 theme is used
-
-* fix(app-webdir-ui): replaced old bs4 stylesheet in storybook
-
-Added Added sass loader in storybook webpack to show updated bs5 styles
-
-* fix(component-footer): changed classes to new accordion
-
-* fix(unity-bootstrap-theme): fixed styles for global footer
-
-* fix(unity-bootstrap-theme): fixed breakpoints for footer
-
-* fix(asu-unity-stack): sitename position in header
-
-* fix(unity-bootstrap-theme): update accordion classes in bs5 footer, fix story widths
-
-* fix(unity-bootstrap-theme): ensure padding is included with header/footer styles
-
-* chore(component-events): update SB images
-
-* chore(asu-unity-stack): change script for package.json
-
-* fix(unity-bootstrap-theme): fixed mobile styles for accordions
-
-fix(unity-bootstrap-theme): fixed overflow on accordion headers for small mobile
-
-* fix(unity-bootstrap-theme): add missing foldable card accordion wrapper
-
-* docs(unity-bootstrap-theme): updated accordion upgrade guide
-
-* docs(unity-bootstrap-theme): fix typo
-
-* fix(unity-bootstrap-theme): remove opcity rule for <hr/> elemtns
-
-By default BS5 adds a rule to apply opacity
-
-* fix(unity-bootstrap-theme): anchor menu story wasn't showing header and hero component
-
-* fix(unity-bootstrap-theme): change className to class for Calendar Code
-
-It only looks like JSX
-
-* docs(unity-bootstrap-theme): add comments to a strange use case
-
-* fix(unity-bootstrap-theme): added mt-3 class on accordion stories and removed card class
-
-* fix: update Jenkinsfile to node 18.16
+* **unity-bootstrap-theme:** New BS5 theme is used<br>
+update theme dependency from bootstrap4-theme to unity-bootstrap-theme<br>
+see unity-bootstrap-theme UPGRADE.md for more information.<br>
+refers to UDS-1277<br>
+BREAKING CHANGE: updates theme dependency and markup for Bootstrap 5 compatibility.
 
 # [@asu/app-degree-pages-v1.3.6](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v1.3.5...@asu/app-degree-pages-v1.3.6) (2023-04-15)
 

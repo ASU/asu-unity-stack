@@ -3,12 +3,12 @@ import { createComponent, createStory } from "../../../helpers/wrapper.js";
 const extraOptions = {
   bgColor: {
     name: "Color",
-    options: ["", "bg-gray-1", "bg-gray-2", "bg-dark"],
-    defaultValue: "",
+    options: [null, "bg-gray-1", "bg-gray-2", "bg-dark"],
+    defaultValue: null,
     control: {
       type: "radio",
       labels: {
-        "": "None",
+        null: "None",
         "bg-gray-1": "bg-gray-1",
         "bg-gray-2": "bg-gray-2",
         "bg-dark": "bg-dark",
@@ -29,10 +29,10 @@ export const TabbedPanels = createStory(
   args => {
     return (
       <div className={args.bgColor}>
+        <h2>Tabbed panels</h2>
         <nav
-          className={`uds-tabbed-panels uds-content-align ${
-            args.bgColor === "bg-dark" ? "uds-tabbed-panels-dark" : ""
-          }`}
+          className={`uds-tabbed-panels uds-content-align ${args.bgColor === "bg-dark" ? "uds-tabbed-panels-dark" : ""
+            }`}
         >
           <div
             className="nav nav-tabs"
@@ -116,9 +116,9 @@ export const TabbedPanels = createStory(
               data-ga-action="click"
               data-ga-name="onclick"
               data-ga-type="internal link"
-              data-ga="Another tab, long tab"
+              data-ga="Another tab, 5th tab"
             >
-              Another tab, long tab
+              Another tab, 5th tab
             </a>
             <a
               className="nav-item nav-link"
@@ -132,9 +132,9 @@ export const TabbedPanels = createStory(
               data-ga-action="click"
               data-ga-name="onclick"
               data-ga-type="internal link"
-              data-ga="Another tab, long tab"
+              data-ga="Another tab, 6th tab"
             >
-              Another tab, long tab
+              Another tab, 6th tab
             </a>
           </div>
           <a
@@ -172,84 +172,78 @@ export const TabbedPanels = createStory(
         </nav>
         <div className="tab-content" id="nav-tabContent">
           <div
-            className={`tab-pane fade show active ${
-              args.bgColor === "bg-dark" ? "text-white" : ""
-            }`}
+            className={`tab-pane fade show active ${args.bgColor === "bg-dark" ? "text-white" : ""
+              }`}
             id="nav-home"
             role="tabpanel"
             aria-labelledby="nav-home-tab"
           >
-            This is an ordinary paragraph that is long enough to wrap to
+            TAB 1. <a href="#">This is an ordinary paragraph</a> that is long enough to wrap to
             multiple lines so that you can see how spacing looks. At vero eos et
             accusam et justo duo dolores et ea rebu.
             <br />
             Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
           </div>
           <div
-            className={`tab-pane fade ${
-              args.bgColor === "bg-dark" ? "text-white" : ""
-            }`}
+            className={`tab-pane fade ${args.bgColor === "bg-dark" ? "text-white" : ""
+              }`}
             id="nav-profile"
             role="tabpanel"
             aria-labelledby="nav-profile-tab"
           >
-            This is an ordinary paragraph that is long enough to wrap to
+            TAB 2. This is an ordinary paragraph that is long enough to wrap to
             multiple lines so that you can see how spacing looks. At vero eos et
             accusam et justo duo dolores et ea rebu.
             <br />
             Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
           </div>
           <div
-            className={`tab-pane fade ${
-              args.bgColor === "bg-dark" ? "text-white" : ""
-            }`}
+            className={`tab-pane fade ${args.bgColor === "bg-dark" ? "text-white" : ""
+              }`}
             id="nav-contact"
             role="tabpanel"
             aria-labelledby="nav-contact-tab"
           >
-            This is an ordinary paragraph that is long enough to wrap to
+            TAB 3. This is an ordinary paragraph that is long enough to wrap to
             multiple lines so that you can see how spacing looks. At vero eos et
             accusam et justo duo dolores et ea rebu.
             <br />
             Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
           </div>
           <div
-            className={`tab-pane fade ${
-              args.bgColor === "bg-dark" ? "text-white" : ""
-            }`}
+            className={`tab-pane fade ${args.bgColor === "bg-dark" ? "text-white" : ""
+              }`}
             id="nav-another"
             role="tabpanel"
             aria-labelledby="nav-another-tab"
           >
-            This is an ordinary paragraph that is long enough to wrap to
+            TAB 4. This is an ordinary paragraph that is long enough to wrap to
             multiple lines so that you can see how spacing looks. At vero eos et
             accusam et justo duo dolores et ea rebu.
             <br />
             Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
           </div>
           <div
-            className={`tab-pane fade ${
-              args.bgColor === "bg-dark" ? "text-white" : ""
-            }`}
+            className={`tab-pane fade ${args.bgColor === "bg-dark" ? "text-white" : ""
+              }`}
             id="nav-another-2"
             role="tabpanel"
             aria-labelledby="nav-another-2-tab"
           >
-            This is an ordinary paragraph that is long enough to wrap to
+            TAB 5. This is an ordinary paragraph that is long enough to wrap to
             multiple lines so that you can see how spacing looks. At vero eos et
             accusam et justo duo dolores et ea rebu.
             <br />
             Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
           </div>
           <div
-            className={`tab-pane fade ${
-              args.bgColor === "bg-dark" ? "text-white" : ""
-            }`}
+            className={`tab-pane fade ${args.bgColor === "bg-dark" ? "text-white" : ""
+              }`}
             id="nav-another-3"
             role="tabpanel"
             aria-labelledby="nav-another-3-tab"
           >
-            This is an ordinary paragraph that is long enough to wrap to
+            TAB 6. This is an ordinary paragraph that is long enough to wrap to
             multiple lines so that you can see how spacing looks. At vero eos et
             accusam et justo duo dolores et ea rebu.
             <br />

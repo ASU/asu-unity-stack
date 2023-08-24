@@ -1,6 +1,6 @@
 {
   "name": "@asu/app-degree-pages",
-  "version": "2.0.0",
+  "version": "2.1.3",
   "description": "ASU implementation of degree pages",
   "main": "./dist/degreePages.cjs.js",
   "browser": "./dist/degreePages.umd.js",
@@ -12,7 +12,8 @@
   "files": [
     "examples/*",
     "dist/*",
-    "docs/*"
+    "docs/*",
+    "CHANGELOG.md"
   ],
   "repository": {
     "type": "git",
@@ -43,7 +44,7 @@
     "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "dependencies": {
-    "@asu/components-core": "^1.0.0",
+    "@asu/components-core": "^2.1.0",
     "@popperjs/core": "^2.9.2",
     "classnames": "^2.3.1",
     "prop-types": "^15.7.2",

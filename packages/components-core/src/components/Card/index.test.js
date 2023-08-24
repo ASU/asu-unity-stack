@@ -70,8 +70,6 @@ describe("#Card", () => {
 describe("#Card options", () => {
   /** @type {import("@testing-library/react").RenderResult} */
   let component;
-  /** @type {ChildNode} */
-  let element;
 
   afterEach(cleanup);
 
@@ -99,7 +97,7 @@ describe("#Card options", () => {
   test.each(types)("should define %p type of card", (type, className) => {
     const customProps = { ...defaultArgs, type };
     component = renderCard(customProps);
-    expect(component.queryByTestId("card-container").className).toContain(
+    expect(component.queryByTestId("card-container")?.className).toContain(
       className
     );
   });

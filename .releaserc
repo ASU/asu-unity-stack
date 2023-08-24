@@ -3,7 +3,8 @@
     "dev",
     {
       "name": "testing",
-      "channel": "testing"
+      "channel": "testing",
+      "prerelease": true
     }
   ],
   "plugins": [

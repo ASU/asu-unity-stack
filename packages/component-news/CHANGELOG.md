@@ -1,3 +1,27 @@
+# [@asu/component-news-v2.0.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-news-v2.0.2...@asu/component-news-v2.0.3) (2023-07-24)
+
+
+### Bug Fixes
+
+* **component-news:** added proptypes import ([87a9b9b](https://github.com/asu/asu-unity-stack/commit/87a9b9b623de00d5237d12594fa3f16c68519400))
+* **component-news:** added proptypes inport ([34ea67e](https://github.com/asu/asu-unity-stack/commit/34ea67ea85ef283191cf3a41f942b65c58a59fd8))
+* **component-news:** updated components-core dependency and improts ([26cdbdb](https://github.com/asu/asu-unity-stack/commit/26cdbdb248734c9b5a8bece9a8a6be8c8e5013e3))
+
+# [@asu/component-news-v2.0.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-news-v2.0.1...@asu/component-news-v2.0.2) (2023-06-28)
+
+
+### Bug Fixes
+
+* **component-news:** add proper link for title in trasnformer and card props ([68173a9](https://github.com/asu/asu-unity-stack/commit/68173a92124bcbfbdef25465f1bfc0f33542da4e))
+* **component-news:** titles are now links ([a5365fd](https://github.com/asu/asu-unity-stack/commit/a5365fd483c499ec19b2b74937d631e0538e6755))
+
+# [@asu/component-news-v2.0.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-news-v2.0.0...@asu/component-news-v2.0.1) (2023-05-23)
+
+
+### Bug Fixes
+
+* **component-news:** changelog cleanup ([5cad36d](https://github.com/asu/asu-unity-stack/commit/5cad36db019ead9915431e47c24e1432de379e9d))
+
 # [@asu/component-news-v2.0.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-news-v1.1.2...@asu/component-news-v2.0.0) (2023-05-23)
 
 
@@ -8,50 +32,8 @@
 
 ### BREAKING CHANGES
 
-* **unity-bootstrap-theme:** New BS5 theme is used
-
-* fix(app-webdir-ui): replaced old bs4 stylesheet in storybook
-
-Added Added sass loader in storybook webpack to show updated bs5 styles
-
-* fix(component-footer): changed classes to new accordion
-
-* fix(unity-bootstrap-theme): fixed styles for global footer
-
-* fix(unity-bootstrap-theme): fixed breakpoints for footer
-
-* fix(asu-unity-stack): sitename position in header
-
-* fix(unity-bootstrap-theme): update accordion classes in bs5 footer, fix story widths
-
-* fix(unity-bootstrap-theme): ensure padding is included with header/footer styles
-
-* chore(component-events): update SB images
-
-* chore(asu-unity-stack): change script for package.json
-
-* fix(unity-bootstrap-theme): fixed mobile styles for accordions
-
-fix(unity-bootstrap-theme): fixed overflow on accordion headers for small mobile
-
-* fix(unity-bootstrap-theme): add missing foldable card accordion wrapper
-
-* docs(unity-bootstrap-theme): updated accordion upgrade guide
-
-* docs(unity-bootstrap-theme): fix typo
-
-* fix(unity-bootstrap-theme): remove opcity rule for <hr/> elemtns
-
-By default BS5 adds a rule to apply opacity
-
-* fix(unity-bootstrap-theme): anchor menu story wasn't showing header and hero component
-
-* fix(unity-bootstrap-theme): change className to class for Calendar Code
-
-It only looks like JSX
-
-* docs(unity-bootstrap-theme): add comments to a strange use case
-
-* fix(unity-bootstrap-theme): added mt-3 class on accordion stories and removed card class
-
-* fix: update Jenkinsfile to node 18.16
+* **unity-bootstrap-theme:** New BS5 theme is used<br>
+update theme dependency from bootstrap4-theme to unity-bootstrap-theme<br>
+see unity-bootstrap-theme UPGRADE.md for more information.<br>
+refers to UDS-1277<br>
+BREAKING CHANGE: updates theme dependency and markup for Bootstrap 5 compatibility.

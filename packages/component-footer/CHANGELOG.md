@@ -1,3 +1,24 @@
+# [@asu/component-footer-v2.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.0.2...@asu/component-footer-v2.1.0) (2023-08-15)
+
+
+### Features
+
+* **component-footer:** update Twitter X Icon ([b0c1c05](https://github.com/asu/asu-unity-stack/commit/b0c1c051cff01a4a42a7e1bedcc9e7e0d363a68e))
+
+# [@asu/component-footer-v2.0.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.0.1...@asu/component-footer-v2.0.2) (2023-06-02)
+
+
+### Bug Fixes
+
+* **component-footer:** change 'Contribute' button to 'Support ASU' per brandguide ([87b323d](https://github.com/asu/asu-unity-stack/commit/87b323df73cd5a440cbd037f7be6d74f148fe0b7))
+
+# [@asu/component-footer-v2.0.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.0.0...@asu/component-footer-v2.0.1) (2023-05-23)
+
+
+### Bug Fixes
+
+* **component-footer:** changelog cleanup ([eefaa61](https://github.com/asu/asu-unity-stack/commit/eefaa614df8b8c48986445d4981a05531c75cfaa))
+
 # [@asu/component-footer-v2.0.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v1.2.2...@asu/component-footer-v2.0.0) (2023-05-23)
 
 
@@ -8,50 +29,8 @@
 
 ### BREAKING CHANGES
 
-* **unity-bootstrap-theme:** New BS5 theme is used
-
-* fix(app-webdir-ui): replaced old bs4 stylesheet in storybook
-
-Added Added sass loader in storybook webpack to show updated bs5 styles
-
-* fix(component-footer): changed classes to new accordion
-
-* fix(unity-bootstrap-theme): fixed styles for global footer
-
-* fix(unity-bootstrap-theme): fixed breakpoints for footer
-
-* fix(asu-unity-stack): sitename position in header
-
-* fix(unity-bootstrap-theme): update accordion classes in bs5 footer, fix story widths
-
-* fix(unity-bootstrap-theme): ensure padding is included with header/footer styles
-
-* chore(component-events): update SB images
-
-* chore(asu-unity-stack): change script for package.json
-
-* fix(unity-bootstrap-theme): fixed mobile styles for accordions
-
-fix(unity-bootstrap-theme): fixed overflow on accordion headers for small mobile
-
-* fix(unity-bootstrap-theme): add missing foldable card accordion wrapper
-
-* docs(unity-bootstrap-theme): updated accordion upgrade guide
-
-* docs(unity-bootstrap-theme): fix typo
-
-* fix(unity-bootstrap-theme): remove opcity rule for <hr/> elemtns
-
-By default BS5 adds a rule to apply opacity
-
-* fix(unity-bootstrap-theme): anchor menu story wasn't showing header and hero component
-
-* fix(unity-bootstrap-theme): change className to class for Calendar Code
-
-It only looks like JSX
-
-* docs(unity-bootstrap-theme): add comments to a strange use case
-
-* fix(unity-bootstrap-theme): added mt-3 class on accordion stories and removed card class
-
-* fix: update Jenkinsfile to node 18.16
+* **unity-bootstrap-theme:** New BS5 theme is used<br>
+update theme dependency from bootstrap4-theme to unity-bootstrap-theme<br>
+see unity-bootstrap-theme UPGRADE.md for more information.<br>
+refers to UDS-1277<br>
+BREAKING CHANGE: updates theme dependency and markup for Bootstrap 5 compatibility.

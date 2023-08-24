@@ -1,8 +1,8 @@
+import { idGenerator } from "@asu/components-core";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { idGenerator } from "../../../../../../components-core/src/core/utils/id-generator";
 import { useAppContext } from "../../../../core/context/app-context";
 import { ButtonPropTypes } from "../../../../core/models/app-prop-types";
 import { trackGAEvent } from "../../../../core/services/googleAnalytics";
@@ -30,6 +30,7 @@ const DropdownItem = ({ dropdownName, items, buttons, classes, listId }) => {
   const isMega = items?.length > 2;
   const dropdownRef = useRef(null);
   const [alignedRight, setAlignedRight] = useState(false);
+  const MULTIPLE_SUBMENUS = items?.length > 1;
 
   useEffect(() => {
     if (window && dropdownRef.current) {
@@ -91,12 +92,15 @@ const DropdownItem = ({ dropdownName, items, buttons, classes, listId }) => {
       // @ts-ignore
       breakpoint={breakpoint}
     >
-      <div className="dropdown-container">
+      <div
+        id={MULTIPLE_SUBMENUS ? listId : null}
+        className="dropdown-container"
+      >
         {items?.map((item, index0) => {
           const genKey = idGenerator(`dropdown-item-${index0}-`);
           const key = genKey.next().value;
           return (
-            <ul id={listId} key={key}>
+            <ul id={MULTIPLE_SUBMENUS ? `${listId}-${key}` : listId} key={key}>
               {item.map((link, index) => renderItem(link, index))}
             </ul>
           );

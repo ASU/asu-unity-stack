@@ -77,18 +77,15 @@ $fa-search: url($image-assets-path + "/font-awesome-svg/search.svg");
 
 #wrapper-header-top {
   background-color: $uds-color-base-gray-2;
-  height: 24px;
   @include transition;
 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  height: 24px;
 }
 
 #header-top {
   background-color: $uds-color-base-gray-2;
-  height: 24px;
   @include transition;
 
   .nav {
@@ -112,11 +109,6 @@ $fa-search: url($image-assets-path + "/font-awesome-svg/search.svg");
 
     &.visually-hidden {
       justify-self: flex-start;
-    }
-
-    &:focus {
-      padding-top: 0;
-      padding-bottom: 0;
     }
   }
 

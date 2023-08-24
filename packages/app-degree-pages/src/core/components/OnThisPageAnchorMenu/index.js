@@ -1,8 +1,8 @@
 // @ts-check
+import { AnchorMenu } from "@asu/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { AnchorMenu } from "../../../../../components-core/src/components/AnchorMenu";
 import { anchorMenuPropType, progDetailSectionIds } from "../../models";
 
 /**
@@ -38,7 +38,7 @@ function OnThisPageAnchorMenu({ anchorMenu }) {
     <AnchorMenu
       items={anchorList}
       firstElementId={anchorList[0]?.targetIdName}
-      focusFirstFocusableElement
+      focusFirstFocusableElement={false}
     />
   );
 }

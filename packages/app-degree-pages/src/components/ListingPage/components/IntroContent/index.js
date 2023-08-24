@@ -1,10 +1,9 @@
 // @ts-check
+import { Video, spreadClasses } from "@asu/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
 
-import { Video } from "../../../../../../components-core/src/components/Video";
-import { spreadClasses } from "../../../../../../components-core/src/core/utils/css-utils";
 import {
   ApplyNow,
   OverlapContentImage,

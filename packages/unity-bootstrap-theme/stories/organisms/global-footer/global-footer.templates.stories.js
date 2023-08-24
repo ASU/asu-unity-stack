@@ -1,6 +1,7 @@
 import React from "react";
-import endorsedLogo from "./ASU_UniversityTechOffice_2_Horiz_RGB_White_150ppi.png";
+
 import innovationLockup from "./200420-GlobalFooter-No1InnovationLockup.png";
+import endorsedLogo from "./ASU_UniversityTechOffice_2_Horiz_RGB_White_150ppi.png";
 
 export const GlobalElementsOnly = (
   <footer
@@ -202,7 +203,7 @@ export const ZeroColumns = (
               >
                 <span
                   title="Twitter Social Media Icon"
-                  className="fab fa-twitter-square"
+                  className="fab fa-square-x-twitter"
                 ></span>
               </a>
               <a
@@ -441,7 +442,7 @@ export const OneColumn = (
               >
                 <span
                   title="Twitter Social Media Icon"
-                  className="fab fa-twitter-square"
+                  className="fab fa-square-x-twitter"
                 ></span>
               </a>
               <a
@@ -490,15 +491,15 @@ export const OneColumn = (
       <div className="container" id="footer-columns">
         <div className="row">
           <div className="col-xl-3" id="info-column">
-            <h5>
+            <p className="h5">
               Complete Name of College, School or Unit Title Should Go Here
-            </h5>
+            </p>
             <p className="contact-link">
               <a href="#">Contact Us</a>
             </p>
             <p className="contribute-button">
               <a href="#" className="btn btn-small btn-gold">
-                Contribute
+                Support ASU
               </a>
             </p>
           </div>
@@ -660,15 +661,15 @@ export const OneColumnNoLogoOrSocial = (
       <div className="container" id="footer-columns">
         <div className="row">
           <div className="col-xl-3" id="info-column">
-            <h5>
+            <p className="h5">
               Complete Name of College, School or Unit Title Should Go Here
-            </h5>
+            </p>
             <p className="contact-link">
               <a href="#">Contact Us</a>
             </p>
             <p className="contribute-button">
               <a href="#" className="btn btn-small btn-gold">
-                Contribute
+                Support ASU
               </a>
             </p>
           </div>
@@ -870,7 +871,7 @@ export const TwoColumns = (
               >
                 <span
                   title="Twitter Social Media Icon"
-                  className="fab fa-twitter-square"
+                  className="fab fa-square-x-twitter"
                 ></span>
               </a>
               <a
@@ -920,15 +921,15 @@ export const TwoColumns = (
         <div className="container" id="footer-columns">
           <div className="row">
             <div className="col-xl-3" id="info-column">
-              <h5>
+              <p className="h5">
                 Complete Name of College, School or Unit Title Should Go Here
-              </h5>
+              </p>
               <p className="contact-link">
                 <a href="#">Contact Us</a>
               </p>
               <p className="contribute-button">
                 <a href="#" className="btn btn-small btn-gold">
-                  Contribute
+                  Support ASU
                 </a>
               </p>
             </div>
@@ -936,7 +937,7 @@ export const TwoColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <h5>
+                  <p className="h5">
                     <a
                       id="footlink-header-two"
                       className="collapsed"
@@ -949,7 +950,7 @@ export const TwoColumns = (
                       Second Column
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </h5>
+                  </p>
                 </div>
                 <div
                   id="footlink-two"
@@ -1174,7 +1175,7 @@ export const ThreeColumns = (
               >
                 <span
                   title="Twitter Social Media Icon"
-                  className="fab fa-twitter-square"
+                  className="fab fa-square-x-twitter"
                 ></span>
               </a>
               <a
@@ -1224,15 +1225,15 @@ export const ThreeColumns = (
         <div className="container" id="footer-columns">
           <div className="row">
             <div className="col-xl" id="info-column">
-              <h5>
+              <p className="h5">
                 Complete Name of College, School or Unit Title Should Go Here
-              </h5>
+              </p>
               <p className="contact-link">
                 <a href="#">Contact Us</a>
               </p>
               <p className="contribute-button">
                 <a href="#" className="btn btn-small btn-gold">
-                  Contribute
+                  Support ASU
                 </a>
               </p>
             </div>
@@ -1240,7 +1241,7 @@ export const ThreeColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <h5>
+                  <p className="h5">
                     <a
                       id="footlink-header-two"
                       className="collapsed"
@@ -1253,7 +1254,7 @@ export const ThreeColumns = (
                       Second Column
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </h5>
+                  </p>
                 </div>
                 <div
                   id="footlink-two"
@@ -1283,7 +1284,7 @@ export const ThreeColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <h5>
+                  <p className="h5">
                     <a
                       id="footlink-header-three"
                       className="collapsed"
@@ -1296,7 +1297,7 @@ export const ThreeColumns = (
                       Student Information
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </h5>
+                  </p>
                 </div>
                 <div
                   id="footlink-three"
@@ -1526,7 +1527,7 @@ export const FourColumns = (
               >
                 <span
                   title="Twitter Social Media Icon"
-                  className="fab fa-twitter-square"
+                  className="fab fa-square-x-twitter"
                 ></span>
               </a>
               <a
@@ -1576,15 +1577,15 @@ export const FourColumns = (
         <div className="container" id="footer-columns">
           <div className="row">
             <div className="col-xl" id="info-column">
-              <h5>
+              <p className="h5">
                 Complete Name of College, School or Unit Title Should Go Here
-              </h5>
+              </p>
               <p className="contact-link">
                 <a href="#">Contact Us</a>
               </p>
               <p className="contribute-button">
                 <a href="#" className="btn btn-small btn-gold">
-                  Contribute
+                  Support ASU
                 </a>
               </p>
             </div>
@@ -1592,7 +1593,7 @@ export const FourColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <h5>
+                  <p className="h5">
                     <a
                       id="footlink-header-two"
                       className="collapsed"
@@ -1605,7 +1606,7 @@ export const FourColumns = (
                       Second Column
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </h5>
+                  </p>
                 </div>
                 <div
                   id="footlink-two"
@@ -1635,7 +1636,7 @@ export const FourColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <h5>
+                  <p className="h5">
                     <a
                       id="footlink-header-three"
                       className="collapsed"
@@ -1648,7 +1649,7 @@ export const FourColumns = (
                       Student Information
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </h5>
+                  </p>
                 </div>
                 <div
                   id="footlink-three"
@@ -1683,7 +1684,7 @@ export const FourColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <h5>
+                  <p className="h5">
                     <a
                       id="footlink-header-four"
                       className="collapsed"
@@ -1696,7 +1697,7 @@ export const FourColumns = (
                       Column Number Four
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </h5>
+                  </p>
                 </div>
                 <div
                   id="footlink-four"
@@ -1926,7 +1927,7 @@ export const FiveColumns = (
               >
                 <span
                   title="Twitter Social Media Icon"
-                  className="fab fa-twitter-square"
+                  className="fab fa-square-x-twitter"
                 ></span>
               </a>
               <a
@@ -1976,15 +1977,15 @@ export const FiveColumns = (
         <div className="container" id="footer-columns">
           <div className="row">
             <div className="col-xl" id="info-column">
-              <h5>
+              <p className="h5">
                 Complete Name of College, School or Unit Title Should Go Here
-              </h5>
+              </p>
               <p className="contact-link">
                 <a href="#">Contact Us</a>
               </p>
               <p className="contribute-button">
                 <a href="#" className="btn btn-small btn-gold">
-                  Contribute
+                  Support ASU
                 </a>
               </p>
             </div>
@@ -1992,7 +1993,7 @@ export const FiveColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <h5>
+                  <p className="h5">
                     <a
                       id="footlink-header-two"
                       className="collapsed"
@@ -2005,7 +2006,7 @@ export const FiveColumns = (
                       Second Column
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </h5>
+                  </p>
                 </div>
                 <div
                   id="footlink-two"
@@ -2035,7 +2036,7 @@ export const FiveColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <h5>
+                  <p className="h5">
                     <a
                       id="footlink-header-three"
                       className="collapsed"
@@ -2048,7 +2049,7 @@ export const FiveColumns = (
                       Student Information
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </h5>
+                  </p>
                 </div>
                 <div
                   id="footlink-three"
@@ -2083,7 +2084,7 @@ export const FiveColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <h5>
+                  <p className="h5">
                     <a
                       id="footlink-header-four"
                       className="collapsed"
@@ -2096,7 +2097,7 @@ export const FiveColumns = (
                       Column Number Four
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </h5>
+                  </p>
                 </div>
                 <div
                   id="footlink-four"
@@ -2131,7 +2132,7 @@ export const FiveColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <h5>
+                  <p className="h5">
                     <a
                       id="footlink-header-five"
                       className="collapsed"
@@ -2144,7 +2145,7 @@ export const FiveColumns = (
                       Mambo Number Five
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </h5>
+                  </p>
                 </div>
                 <div
                   id="footlink-five"
@@ -2374,7 +2375,7 @@ export const SixColumns = (
               >
                 <span
                   title="Twitter Social Media Icon"
-                  className="fab fa-twitter-square"
+                  className="fab fa-square-x-twitter"
                 ></span>
               </a>
               <a
@@ -2424,15 +2425,15 @@ export const SixColumns = (
         <div className="container" id="footer-columns">
           <div className="row">
             <div className="col-xl" id="info-column">
-              <h5>
+              <p className="h5">
                 Complete Name of College, School or Unit Title Should Go Here
-              </h5>
+              </p>
               <p className="contact-link">
                 <a href="#">Contact Us</a>
               </p>
               <p className="contribute-button">
                 <a href="#" className="btn btn-gold">
-                  Contribute
+                  Support ASU
                 </a>
               </p>
             </div>
@@ -2440,7 +2441,7 @@ export const SixColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <h5>
+                  <p className="h5">
                     <a
                       id="footlink-header-two"
                       className="collapsed"
@@ -2453,7 +2454,7 @@ export const SixColumns = (
                       Second Column
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </h5>
+                  </p>
                 </div>
                 <div
                   id="footlink-two"
@@ -2483,7 +2484,7 @@ export const SixColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <h5>
+                  <p className="h5">
                     <a
                       id="footlink-header-three"
                       className="collapsed"
@@ -2496,7 +2497,7 @@ export const SixColumns = (
                       Student Information
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </h5>
+                  </p>
                 </div>
                 <div
                   id="footlink-three"
@@ -2531,7 +2532,7 @@ export const SixColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <h5>
+                  <p className="h5">
                     <a
                       id="footlink-header-four"
                       className="collapsed"
@@ -2544,7 +2545,7 @@ export const SixColumns = (
                       Column Number Four
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </h5>
+                  </p>
                 </div>
                 <div
                   id="footlink-four"
@@ -2579,7 +2580,7 @@ export const SixColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <h5>
+                  <p className="h5">
                     <a
                       id="footlink-header-five"
                       className="collapsed"
@@ -2592,7 +2593,7 @@ export const SixColumns = (
                       Mambo Number Five
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </h5>
+                  </p>
                 </div>
                 <div
                   id="footlink-five"
@@ -2627,7 +2628,7 @@ export const SixColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <h5>
+                  <p className="h5">
                     <a
                       id="footlink-header-six"
                       className="collapsed"
@@ -2640,7 +2641,7 @@ export const SixColumns = (
                       The Zen Master and the Hot Dog Vendor
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </h5>
+                  </p>
                 </div>
                 <div
                   id="footlink-six"

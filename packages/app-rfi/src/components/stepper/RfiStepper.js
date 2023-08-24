@@ -1,12 +1,12 @@
 // @ts-check
 /* eslint-disable no-unused-vars, react/no-danger, react/no-unused-prop-types */
+import { sanitizeDangerousMarkup } from "@asu/components-core";
 import { Formik, Form } from "formik";
 import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import { Button, Progress } from "reactstrap";
 import * as Yup from "yup";
 
-import { sanitizeDangerousMarkup } from "../../../../components-core/src/core/utils/html-utils";
 import { trackGAEvent } from "../../core/services/googleAnalytics";
 
 const defaultButtonEvent = {

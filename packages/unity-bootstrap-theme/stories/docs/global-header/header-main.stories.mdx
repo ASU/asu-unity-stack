@@ -1,14 +1,14 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs';
 
-<Meta title="Docs/Global Header/Header main" />
+<Meta title="Organisms/Global Header/Docs/Header main" />
 
 # Header Main
 
-The design of the main header component utilizes a mobile-first design and does not require a separate set of code for both the desktop and the mobile view. This component is a heavily modified version of the default `navbar` component within Bootstrap 4.
+The design of the main header component utilizes a mobile-first design and does not require a separate set of code for both the desktop and the mobile view. This component is a heavily modified version of the default `navbar` component within Bootstrap 5.
 
 The component should toggle between the mobile view and the desktop view at any resolution less than 1260px. This rather high breakpoint was an intensional design decision to prevent menus with a lot of links in the navigation from displaying incorrectly at resolutions between 991px and 1260px.
 
-If this does not apply to your site, the [default code can be modified](?path=/docs/docs-global-header-mobile-beakpoint--page) to display the desktop view at resolutions greater than 991px.
+If this does not apply to your site, the [default code can be modified](?path=/story/organisms-global-header-docs-mobile-breakpoint--page) to display the desktop view at resolutions greater than 991px.
 
 The basic markup should resemble the following:
 
@@ -41,7 +41,7 @@ The basic markup should resemble the following:
 
 This contains both the horizontal and vertical logos used in the component.
 
-If you are copy/pasting directly from Storybook, you'll want to change the image `src` attribute to load the files correctly. The relative path to these files will change depending on your configuration, but within the `@asu` NPM package you can find them at `node_modules/@asu/bootstrap4-theme/src/img/asu-logo` Those will wind up looking something like this:
+If you are copy/pasting directly from Storybook, you'll want to change the image `src` attribute to load the files correctly. The relative path to these files will change depending on your configuration, but within the `@asu` NPM package you can find them at `node_modules/@asu/unity-bootstrap-theme/src/img/asu-logo` Those will wind up looking something like this:
 
 - `<img className="vert" src="{path}/arizona-state-university-logo-vertical.png" alt="Arizona State University" />`
 - `<img className="horiz" src="{path}/arizona-state-university-logo.png" alt="Arizona State University" />`

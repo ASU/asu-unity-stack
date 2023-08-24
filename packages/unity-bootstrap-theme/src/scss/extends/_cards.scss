@@ -92,7 +92,7 @@ Cards - Table of Contents
   position: absolute;
   background: transparent linear-gradient(180deg, #19191900 0%, #191919c9 120%)
     0% 0% no-repeat padding-box;
-  height: 170px;
+  height: 100%;
   width: 100%;
   top: 0;
   content: '';
@@ -101,7 +101,7 @@ Cards - Table of Contents
 .card-img-top img,
 .card-img-top {
   max-width: 100%;
-  height: 12.5rem;
+  height: $card-image-top-height;
   object-fit: cover;
 }
 
@@ -542,7 +542,7 @@ Cards - Table of Contents
     &.accordion-header-icon {
       & .accordion-icon {
         display: flex;
-        margin-left: calc($uds-size-spacing-3 / -2);
+        margin-left: calc(#{$uds-size-spacing-3} / -2);
         align-items: flex-start;
 
         svg {

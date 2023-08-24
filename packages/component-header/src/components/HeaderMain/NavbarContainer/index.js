@@ -1,8 +1,8 @@
 // @ts-check
+import { idGenerator } from "@asu/components-core";
 import React, { useState } from "react";
 
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { idGenerator } from "../../../../../components-core/src/core/utils/id-generator";
 import { useAppContext } from "../../../core/context/app-context";
 import { useIsMobile } from "../../../core/hooks/isMobile";
 import { trackGAEvent } from "../../../core/services/googleAnalytics";
@@ -17,7 +17,7 @@ const NavbarContainer = () => {
   const [itemOpened, setItemOpened] = useState(undefined);
 
   const handleSetItemOpened = itemId => {
-    setItemOpened(itemId === itemOpened ? undefined : itemId);
+    setItemOpened(prev => (itemOpened === itemId ? undefined : itemId));
   };
 
   const renderItem = (link, index) => {
