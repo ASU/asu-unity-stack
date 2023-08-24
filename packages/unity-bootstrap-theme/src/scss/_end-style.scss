@@ -1,0 +1,93 @@
+
+/* -----------------------------------------------------
+Container/ row / column padding adjustments for mobile.
+
+Bootstrap doesn't natively provide a way to alter the behavior
+its native grid elements based on a media query. This overrides
+that behavior at screens <= 575px. (The small breakpoint.)
+
+Should be included after @import scss/grid. Registered here for clarity.
+------------------------------------------------------ */
+@mixin end_styles() {
+
+  @include media-breakpoint-down(md) {
+    .container,
+    .container-fluid,
+    .container-xl,
+    .container-lg,
+    .container-md,
+    .container-sm {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+
+  .container .container,
+  .container .container-sm,
+  .container .container-md,
+  .container .container-lg,
+  .container .container-xl,
+  .container .container-fluid,
+  .container-sm .container,
+  .container-sm .container-sm,
+  .container-sm .container-md,
+  .container-sm .container-lg,
+  .container-sm .container-xl,
+  .container-sm .container-fluid,
+  .container-md .container,
+  .container-md .container-sm,
+  .container-md .container-md,
+  .container-md .container-lg,
+  .container-md .container-xl,
+  .container-md .container-fluid,
+  .container-lg .container,
+  .container-lg .container-sm,
+  .container-lg .container-md,
+  .container-lg .container-lg,
+  .container-lg .container-xl,
+  .container-lg .container-fluid,
+  .container-xl .container,
+  .container-xl .container-sm,
+  .container-xl .container-md,
+  .container-xl .container-lg,
+  .container-xl .container-xl,
+  .container-xl .container-fluid,
+  .container-fluid .container,
+  .container-fluid .container-sm,
+  .container-fluid .container-md,
+  .container-fluid .container-lg,
+  .container-fluid .container-xl,
+  .container-fluid .container-fluid {
+    /* Avoid nested containers, this rule is meant as a backup */
+      padding-left: 0;
+      padding-right: 0;
+  }
+}
+
+
+/*
+This File should be included ONE time at the end of compiled code and bundles.
+
+To include once, just do so normally. The styles are only excluded if
+  this variable ($add_end_styles) is explicitly set to false
+  @import 'end-style';
+
+To include at the end of a bundle:
+  $add_end_styles: false;
+  @import 'unity-bootstrap-theme'; (file also imports 'end-style')
+  @import 'unity-bootstrap-header'; (file also imports 'end-style')
+
+  $add_end_styles: true;
+  @import 'unity-bootstrap-footer'; (file also imports 'end-style')
+
+*/
+@if variable-exists($name: "add_end_styles") {
+  @if $add_end_styles == true {
+    @include end_styles();
+  }
+}
+@else {
+  @include end_styles();
+}
+$add_end_styles: false;
