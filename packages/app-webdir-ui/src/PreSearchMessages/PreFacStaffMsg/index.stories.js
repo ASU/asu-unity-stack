@@ -5,7 +5,7 @@ import { PreFacStaffMsg } from "./index";
 import {
   createComponent,
   createStory,
-} from "../../../unity-bootstrap-theme/helpers/wrapper";
+} from "../../../../unity-bootstrap-theme/helpers/wrapper";
 
 export default createComponent("PreFacStaffMsg", "Atoms", "Template");
 

@@ -4,9 +4,11 @@ import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { engineNames, engines } from "../helpers/search";
-import { PreFacStaffMsg } from "../PreFacStaffMsg";
-import { PreSearchMessage } from "../PreSearchMessage/index";
-import { PreStudentMsg } from "../PreStudentMsg";
+import {
+  PreSearchMessage,
+  PreFacStaffMsg,
+  PreStudentMsg,
+} from "../PreSearchMessages";
 import {
   AllTab,
   FacultyTab,
@@ -32,7 +34,9 @@ function SearchPage({
   const [sort, setSort] = useState("");
   const [totalResults, setTotalResults] = useState(0);
   const [searchValue, setSearchValue] = useState("");
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams({
+    [searchTabsId]: tabIds.all,
+  });
   const [filters] = useState({});
   const [site, setSite] = useState(null);
 

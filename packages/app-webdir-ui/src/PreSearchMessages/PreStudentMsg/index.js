@@ -1,7 +1,7 @@
 import React from "react";
 
 import { PreSearchMessageTemplate } from "../PreSearchMessage/index.styles";
-import { QuickLinks } from "../QuickLinks";
+import { QuickLinks } from "../../QuickLinks";
 
 const PreStudentMsg = () => {
   const titleText = "Welcome to the ASU Student Directory";
