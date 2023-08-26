@@ -11,6 +11,8 @@
  * @property {string} [width]
  * @property {string} [height]
  * @property {string} [dataTestId]
+ * @property {string} [cardLink]
+ * @property {string} [title]
  */
 
 /**

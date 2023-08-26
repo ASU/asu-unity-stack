@@ -23,6 +23,8 @@ export const Image = ({
   fetchPriority = "auto",
   width,
   height,
+  cardLink,
+  title
 }) => {
   const imagePropsRequired = {
     src,
@@ -42,6 +44,15 @@ export const Image = ({
   const imageProps = Object.assign(imagePropsRequired, imagePropsOptional);
 
   // eslint-disable-next-line jsx-a11y/alt-text, react/jsx-props-no-spreading
+  if (cardLink) {
+    return (
+      <a href={cardLink}>
+        <img {...imageProps} />
+        <span className="visually-hidden">{title}</span>
+      </a>
+    );
+  }
+
   return <img {...imageProps} />;
 };
 
@@ -79,4 +90,6 @@ Image.propTypes = {
    */
   height: PropTypes.string,
   dataTestId: PropTypes.string,
+  cardLink: PropTypes.string,
+  title: PropTypes.string,
 };
