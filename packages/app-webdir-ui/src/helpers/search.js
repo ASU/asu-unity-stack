@@ -431,6 +431,7 @@ export const performSearch = function ({
         "sort-by": currentSort || "",
         "full_records": true,
         "profiles": filters.peopleInDepts,
+        "last_init": filters.lastInit || null
       };
       APICall = () => axios.post(query, data, { headers });
     }
