@@ -23,6 +23,7 @@ const Wrapper = styled.nav`
       flex-direction: column;
       justify-content: flex-start;
       overflow-y: auto;
+      min-height: calc(100vh - 277px);
       max-height: calc(100vh - 277px);
       > *:last-child {
         margin-bottom: min(75px, 15vw);

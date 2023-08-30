@@ -37,26 +37,28 @@ const NavbarContainer = () => {
   return (
     // @ts-ignore
     <Wrapper breakpoint={breakpoint} data-testid="navigation" aria-label="Main">
-      <div className="content-container">
-        {(navTree?.length > 0 || mobileNavTree?.length > 0) && (
-          <ul className="nav-list">
-            {!!mobileNavTree?.length && isMobile
-              ? mobileNavTree?.map((link, i) => renderItem(link, i))
-              : navTree?.map((link, i) => renderItem(link, i))}
-          </ul>
-        )}
-        {!!buttons?.length && (
-          <form className="buttons-container" data-testid="buttons-container">
-            {buttons?.map(button => (
-              <Button
-                {...button}
-                key={button.text}
-                onFocus={() => trackGAEvent({ text: button.text })}
-              />
-            ))}
-          </form>
-        )}
-      </div>
+      {(navTree?.length || mobileNavTree?.length || buttons?.length) && (
+        <div className="content-container">
+          {(navTree?.length || mobileNavTree?.length) && (
+            <ul className="nav-list">
+              {!!mobileNavTree?.length && isMobile
+                ? mobileNavTree?.map((link, i) => renderItem(link, i))
+                : navTree?.map((link, i) => renderItem(link, i))}
+            </ul>
+          )}
+          {!!buttons?.length && (
+            <form className="buttons-container" data-testid="buttons-container">
+              {buttons?.map(button => (
+                <Button
+                  {...button}
+                  key={button.text}
+                  onFocus={() => trackGAEvent({ text: button.text })}
+                />
+              ))}
+            </form>
+          )}
+        </div>
+      )}
       {/* Navbar Footer */}
       {isMobile && <UniversalNavbar />}
     </Wrapper>
