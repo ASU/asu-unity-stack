@@ -25,7 +25,7 @@ const ColumnSection = ({ columnIndex, column: { title, links } }) => {
           tabIndex={0}
           data-bs-toggle="collapse"
         >
-          <p className="h5">
+          <div className="h5">
             <a
               id={`footlink-header-${columnIndex}`}
               className="collapsed"
@@ -35,7 +35,7 @@ const ColumnSection = ({ columnIndex, column: { title, links } }) => {
               {title}
               <FontAwesomeIcon icon={faChevronUp} />
             </a>
-          </p>
+          </div>
         </div>
         <div
           id={`footlink-${columnIndex}`}
