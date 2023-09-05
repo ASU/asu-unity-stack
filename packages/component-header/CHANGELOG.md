@@ -1,3 +1,11 @@
+# [@asu/component-header-v2.0.6](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.5...@asu/component-header-v2.0.6) (2023-09-05)
+
+
+### Bug Fixes
+
+* **component-header:** trigger release ([16d8e4f](https://github.com/asu/asu-unity-stack/commit/16d8e4fc8443d1ac44d1c983fa91265c5f670a64))
+* **header:** fix accessibility bug in header ([c81d0ab](https://github.com/asu/asu-unity-stack/commit/c81d0ab78e77f500a222535d56bae0b49aca8d76))
+
 # [@asu/component-header-v2.0.5](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.4...@asu/component-header-v2.0.5) (2023-08-02)
 
 

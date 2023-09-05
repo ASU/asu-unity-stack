@@ -1,6 +1,6 @@
 {
   "name": "@asu/component-header",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "ASU Global Header",
   "main": "./dist/asuHeader.cjs.js",
   "browser": "./dist/asuHeader.umd.js",
