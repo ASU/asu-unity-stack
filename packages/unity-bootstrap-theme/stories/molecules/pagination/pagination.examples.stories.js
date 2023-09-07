@@ -3,18 +3,20 @@ export default createComponent("Pagination", "Molecules", "Examples");
 import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
 export const DisabledAndActiveStatesComponent = createStory(
-  <nav aria-label="...">
+  <nav aria-label="pagination">
     <ul className="pagination">
       <li className="page-item disabled">
         <a
           className="page-link page-link-icon"
           href="#"
-          tabIndex="-1"
           aria-disabled="true"
+          aria-label="Previous page"
         />
       </li>
-      <li className="page-item active" aria-current="page">
+      <li className="page-item active">
         <a
+          aria-label="Page 1"
+          aria-current="page"
           className="page-link"
           href="#"
           data-ga-event="select"
@@ -30,6 +32,7 @@ export const DisabledAndActiveStatesComponent = createStory(
       </li>
       <li className="page-item">
         <a
+          aria-label="Page 2"
           className="page-link"
           href="#"
           data-ga-event="select"
@@ -45,6 +48,7 @@ export const DisabledAndActiveStatesComponent = createStory(
       </li>
       <li className="page-item">
         <a
+          aria-label="Page 3"
           className="page-link"
           href="#"
           data-ga-event="select"
@@ -59,7 +63,7 @@ export const DisabledAndActiveStatesComponent = createStory(
         </a>
       </li>
       <li className="page-item">
-        <a aria-label="next" className="page-link page-link-icon" href="#" />
+        <a aria-label="Next page" className="page-link page-link-icon" href="#" />
       </li>
     </ul>
   </nav>,
@@ -67,13 +71,17 @@ export const DisabledAndActiveStatesComponent = createStory(
 );
 
 export const LargeNumbersComponent = createStory(
-  <nav aria-label="...">
+  <nav aria-label="pagination">
     <ul className="pagination">
       <li className="page-item">
-        <a className="page-link page-link-icon" href="#" />
+        <a
+          aria-label="previous page"
+          className="page-link page-link-icon"
+          href="#"
+        />
       </li>
       <li className="page-item">
-        <a className="page-link" href="#">
+        <a aria-label="Page 1" className="page-link" href="#">
           1
         </a>
       </li>
@@ -82,6 +90,7 @@ export const LargeNumbersComponent = createStory(
       </li>
       <li className="page-item">
         <a
+          aria-label="Page 40"
           className="page-link"
           href="#"
           data-ga-event="select"
@@ -95,8 +104,10 @@ export const LargeNumbersComponent = createStory(
           40
         </a>
       </li>
-      <li className="page-item active" aria-current="page">
+      <li className="page-item active">
         <a
+          aria-label="Page 41"
+          aria-current="page"
           className="page-link"
           href="#"
           data-ga-event="select"
@@ -113,6 +124,7 @@ export const LargeNumbersComponent = createStory(
       </li>
       <li className="page-item">
         <a
+          aria-label="Page 42"
           className="page-link"
           href="#"
           data-ga-event="select"
@@ -130,12 +142,12 @@ export const LargeNumbersComponent = createStory(
         <span className="page-link elipses">...</span>
       </li>
       <li className="page-item">
-        <a className="page-link" href="#">
+        <a aria-label="Page 50" className="page-link" href="#">
           50
         </a>
       </li>
       <li className="page-item">
-        <a className="page-link page-link-icon" href="#" />
+        <a aria-label="next page" className="page-link page-link-icon" href="#" />
       </li>
     </ul>
   </nav>,
