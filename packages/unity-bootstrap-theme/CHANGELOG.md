@@ -1,3 +1,11 @@
+# [@asu/unity-bootstrap-theme-v1.6.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.6.1...@asu/unity-bootstrap-theme-v1.6.2) (2023-09-07)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** uodated examples of pagination story, added Readme ([d298ca1](https://github.com/ASU/asu-unity-stack/commit/d298ca13868bf94c31778f3e41b0ffd81eab98da))
+* **unity-bootstrap-theme:** updated pagination stories to match components-core ([c987029](https://github.com/ASU/asu-unity-stack/commit/c9870296999a53f2875c63a632ddea040228eae0))
+
 # [@asu/unity-bootstrap-theme-v1.6.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.6.0...@asu/unity-bootstrap-theme-v1.6.1) (2023-09-07)
 
 
