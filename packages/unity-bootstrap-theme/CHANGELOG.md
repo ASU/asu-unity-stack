@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.6.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.6.0...@asu/unity-bootstrap-theme-v1.6.1) (2023-09-07)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** added background color to accordion-header ([9e63724](https://github.com/ASU/asu-unity-stack/commit/9e63724175a0ebee5767f697aa127a8acc032d7c))
+
 # [@asu/unity-bootstrap-theme-v1.6.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.5.7...@asu/unity-bootstrap-theme-v1.6.0) (2023-08-15)
 
 
