@@ -1,3 +1,15 @@
+# [@asu/components-core-v3.0.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v2.2.2...@asu/components-core-v3.0.0) (2023-09-07)
+
+
+### Bug Fixes
+
+* **components-core:** improve pagination accessibility, remove unused props ([52b8c40](https://github.com/ASU/asu-unity-stack/commit/52b8c40761482251e9b267a2821f21d95c391c26))
+
+
+### BREAKING CHANGES
+
+* **components-core:** Removed unused props
+
 # [@asu/components-core-v2.2.2](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v2.2.1...@asu/components-core-v2.2.2) (2023-08-02)
 
 
