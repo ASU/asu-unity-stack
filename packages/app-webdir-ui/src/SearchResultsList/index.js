@@ -207,7 +207,7 @@ const ASUSearchResultsList = ({
               type="default"
               background="white"
               currentPage={currentPage}
-              totalPages={Math.ceil(totalResults / itemsPerPage)}
+              totalPages={Math.ceil(totalResults / itemsPerPage) > 100 ? 100 : Math.ceil(totalResults / itemsPerPage)}
               onChange={(e, action) => onPageChange(action)}
               showFirstButton
               showLastButton
