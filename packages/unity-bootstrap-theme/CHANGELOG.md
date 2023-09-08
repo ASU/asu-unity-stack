@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.6.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.6.2...@asu/unity-bootstrap-theme-v1.6.3) (2023-09-08)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** updated styles and links for visually-hidden links ([429ae19](https://github.com/ASU/asu-unity-stack/commit/429ae19f5669d1b2840e138aee678b672966846d))
+
 # [@asu/unity-bootstrap-theme-v1.6.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.6.1...@asu/unity-bootstrap-theme-v1.6.2) (2023-09-07)
 
 
