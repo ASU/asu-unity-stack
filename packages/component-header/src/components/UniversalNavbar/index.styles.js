@@ -26,7 +26,7 @@ const Wrapper = styled.div`
             text-decoration: underline;
           }
 
-          &.visually-hidden:not(:focus):not(:active) {
+          &.visually-hidden-focusable:not(:focus):not(:active) {
             clip: rect(0 0 0 0);
             clip-path: inset(100%);
             height: 1px;
