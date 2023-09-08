@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v3.0.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.0.3...@asu/app-webdir-ui-v3.0.4) (2023-09-08)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** limit results to 100 pages ([48f835c](https://github.com/asu/asu-unity-stack/commit/48f835c20c47e0dcad8b8fadd97e07a328c46fb4))
+
 # [@asu/app-webdir-ui-v3.0.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.0.2...@asu/app-webdir-ui-v3.0.3) (2023-08-21)
 
 
