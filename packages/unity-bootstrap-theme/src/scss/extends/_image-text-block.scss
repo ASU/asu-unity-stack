@@ -12,10 +12,6 @@
       flex-direction: row-reverse;
     }
 
-    @include media-breakpoint-up(xl) {
-      max-height: 540px;
-    }
-
     @media screen and (max-width: $uds-breakpoint-md) {
       flex-direction: column;
     }
