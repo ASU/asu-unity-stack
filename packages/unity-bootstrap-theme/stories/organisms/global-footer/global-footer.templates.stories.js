@@ -136,15 +136,7 @@ export const GlobalElementsOnly = (
               >
                 Emergency
               </a>
-              <a
-                className="nav-link"
-                href="https://eoss.asu.edu/health/announcements/coronavirus"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="tertiary footer"
-                data-ga-footer="covid-19 information"
-              >
-                COVID-19 Information
-              </a>
+
             </nav>
           </div>
         </div>
@@ -375,15 +367,7 @@ export const ZeroColumns = (
               >
                 Emergency
               </a>
-              <a
-                className="nav-link"
-                href="https://eoss.asu.edu/health/announcements/coronavirus"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="tertiary footer"
-                data-ga-footer="covid-19 information"
-              >
-                COVID-19 Information
-              </a>
+
             </nav>
           </div>
         </div>
@@ -634,15 +618,7 @@ export const OneColumn = (
               >
                 Emergency
               </a>
-              <a
-                className="nav-link"
-                href="https://eoss.asu.edu/health/announcements/coronavirus"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="tertiary footer"
-                data-ga-footer="covid-19 information"
-              >
-                COVID-19 Information
-              </a>
+
             </nav>
           </div>
         </div>
@@ -804,15 +780,7 @@ export const OneColumnNoLogoOrSocial = (
               >
                 Emergency
               </a>
-              <a
-                className="nav-link"
-                href="https://eoss.asu.edu/health/announcements/coronavirus"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="tertiary footer"
-                data-ga-footer="covid-19 information"
-              >
-                COVID-19 Information
-              </a>
+
             </nav>
           </div>
         </div>
@@ -1108,15 +1076,7 @@ export const TwoColumns = (
               >
                 Emergency
               </a>
-              <a
-                className="nav-link"
-                href="https://eoss.asu.edu/health/announcements/coronavirus"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="tertiary footer"
-                data-ga-footer="covid-19 information"
-              >
-                COVID-19 Information
-              </a>
+
             </nav>
           </div>
         </div>
@@ -1460,15 +1420,7 @@ export const ThreeColumns = (
               >
                 Emergency
               </a>
-              <a
-                className="nav-link"
-                href="https://eoss.asu.edu/health/announcements/coronavirus"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="tertiary footer"
-                data-ga-footer="covid-19 information"
-              >
-                COVID-19 Information
-              </a>
+
             </nav>
           </div>
         </div>
@@ -1860,15 +1812,7 @@ export const FourColumns = (
               >
                 Emergency
               </a>
-              <a
-                className="nav-link"
-                href="https://eoss.asu.edu/health/announcements/coronavirus"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="tertiary footer"
-                data-ga-footer="covid-19 information"
-              >
-                COVID-19 Information
-              </a>
+
             </nav>
           </div>
         </div>
@@ -2308,15 +2252,7 @@ export const FiveColumns = (
               >
                 Emergency
               </a>
-              <a
-                className="nav-link"
-                href="https://eoss.asu.edu/health/announcements/coronavirus"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="tertiary footer"
-                data-ga-footer="covid-19 information"
-              >
-                COVID-19 Information
-              </a>
+
             </nav>
           </div>
         </div>
@@ -2798,15 +2734,6 @@ export const SixColumns = (
                   data-ga-footer="emergency"
                 >
                   Emergency
-                </a>
-                <a
-                  className="nav-link"
-                  href="https://eoss.asu.edu/health/announcements/coronavirus"
-                  data-ga-footer-type="internal link"
-                  data-ga-footer-section="tertiary footer"
-                  data-ga-footer="covid-19 information"
-                >
-                  COVID-19 Information
                 </a>
               </nav>
             </div>
