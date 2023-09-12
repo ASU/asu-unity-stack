@@ -8,25 +8,26 @@
  *   @param {Object} configuration - Configuration data for the component.
  */
 function trackReactComponent({
-  componentName = "",
-  package = "",
+  packageName = "",
   component = "",
   type = "",
   configuration = {}
 }) {
-  if (!componentName || !package || !component || !configuration) {
+  if (!packageName || !component) {
       console.error("trackReactComponent: Missing required arguments.");
       return;
-  }
+  };
 
   // Initialize or retrieve the global object to store component data.
-  window.udsComponent = window.udsComponent || {};
+  window.uds = window.uds || {};
 
   // Store component data in the global object using the provided componentName.
-  window.udsComponent[componentName] = {
-      package: package,
+  window.uds[packageName] = {
       component: component,
       type: type,
       configuration: configuration
   };
-}
+  console.log("trackReactComponent: ", window)
+ };
+
+export default trackReactComponent;
