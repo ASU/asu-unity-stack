@@ -1,13 +1,14 @@
 // @ts-check
 /* eslint no-use-before-define: 0 */
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { FacultyRankTabPanels } from "../FacultyRankComponent";
 import { engineNames, engines } from "../helpers/search";
 import { SortPicker } from "../SearchPage/components/sort";
 import { ASUSearchResultsList } from "../SearchResultsList";
 import { WebDirLayout, FacultyRankLayout } from "./index.styles";
+import trackReactComponent from "../../../../shared/functions/componentDatalayer";
 
 function WebDirectory({
   searchType,
@@ -23,6 +24,20 @@ function WebDirectory({
   const [sort, setSort] = useState(defaultSortSetter);
   const [requestFilters] = useState(doSearch);
   const RES_PER_PAGE = 6;
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+    trackReactComponent({
+      packageName: "app-webdir-ui",
+      component: "WebDirectory",
+      type: searchType,
+      configuration: {
+        ...filters,
+        ...display
+      }
+    });
+  }
+  }, []);
 
   // Initializer functions for requestFilters and sort. Only runs on first render.
 

@@ -2,6 +2,7 @@ import { Button, TabbedPanels, Tab } from "@asu/components-core";
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import trackReactComponent from "../../../../shared/functions/componentDatalayer";
 
 import { engineNames, engines } from "../helpers/search";
 import { PreSearchMessage } from "../PreSearchMessage/index";
@@ -86,6 +87,18 @@ function SearchPage({
       setSearchValue(searchParams.get(queryParamName));
     }
   }, [searchParams, sort]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+    trackReactComponent({
+      packageName: "app-webdir-ui",
+      component: "SearchPage",
+      type: "NA",
+      configuration: {
+      }
+    });
+  }
+  }, []);
 
   const goToTab = tab => {
     updateSearchParams(searchTabsId, tab);
