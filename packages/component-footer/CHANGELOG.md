@@ -1,3 +1,10 @@
+# [@asu/component-footer-v2.1.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.1.0...@asu/component-footer-v2.1.1) (2023-09-13)
+
+
+### Bug Fixes
+
+* **component-footer:** removed covid-19 link in footer ([02a9a2c](https://github.com/asu/asu-unity-stack/commit/02a9a2c6edd745ab3787f7c4945f5f698e6460cd))
+
 # [@asu/component-footer-v2.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.0.2...@asu/component-footer-v2.1.0) (2023-08-15)
 
 
