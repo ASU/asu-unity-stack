@@ -1,5 +1,14 @@
 import { createComponent, createStory } from "../../../../helpers/wrapper.js";
 
+const ContentBlock = () => <p>
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
+ab illo inventore veritatis et quasi architecto beatae vitae dicta
+sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
+qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.
+</p>;
+
 const extraOptions = {
   right: {
     name: "Right",
@@ -19,6 +28,11 @@ const extraOptions = {
         "gray-7-bg": "gray-7-bg",
       },
     },
+  },
+  extraContent: {
+    name: "Extra Content",
+    control: { type: "boolean" },
+    defaultValue: false,
   },
 };
 
@@ -51,14 +65,13 @@ export const ImageLeftOrRight = createStory(args => {
       <div className={`uds-image-text-block-text-container ${args.bgColor}`}>
         <h3>This is a heading</h3>
         <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h4>
-        <p>
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
-          ab illo inventore veritatis et quasi architecto beatae vitae dicta
-          sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-          aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
-          qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.
-        </p>
+        <ContentBlock/>
+        {
+          args.extraContent && <>
+          <ContentBlock/>
+          <ContentBlock/>
+          </>
+        }
         <div className="uds-buttons py-1">
           <a
             href="#"
