@@ -1,3 +1,11 @@
+# [@asu/unity-bootstrap-theme-v1.6.5](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.6.4...@asu/unity-bootstrap-theme-v1.6.5) (2023-09-13)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix form fields ([7341afa](https://github.com/ASU/asu-unity-stack/commit/7341afac7ce7e669ba8143bbd9528ee6966e0d26))
+* **unity-bootstrap-theme:** removed covid-19 link in footer ([67548c1](https://github.com/ASU/asu-unity-stack/commit/67548c1eb976c9c35d4e41036a9ebe78b3d15b49))
+
 # [@asu/unity-bootstrap-theme-v1.6.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.6.3...@asu/unity-bootstrap-theme-v1.6.4) (2023-09-13)
 
 
