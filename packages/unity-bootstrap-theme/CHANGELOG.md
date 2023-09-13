@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.6.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.6.3...@asu/unity-bootstrap-theme-v1.6.4) (2023-09-13)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix content img-txt overflow ([8e59af0](https://github.com/ASU/asu-unity-stack/commit/8e59af0bddd75a7d1f68e0eb51d51397dff3832e))
+
 # [@asu/unity-bootstrap-theme-v1.6.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.6.2...@asu/unity-bootstrap-theme-v1.6.3) (2023-09-08)
 
 
