@@ -24,7 +24,7 @@ export const Image = ({
   width,
   height,
   cardLink,
-  title
+  title,
 }) => {
   const imagePropsRequired = {
     src,
@@ -43,16 +43,16 @@ export const Image = ({
 
   const imageProps = Object.assign(imagePropsRequired, imagePropsOptional);
 
-  // eslint-disable-next-line jsx-a11y/alt-text, react/jsx-props-no-spreading
   if (cardLink) {
     return (
       <a href={cardLink}>
+        {/* eslint-disable-next-line jsx-a11y/alt-text, react/jsx-props-no-spreading */}
         <img {...imageProps} />
         <span className="visually-hidden">{title}</span>
       </a>
     );
   }
-
+  // eslint-disable-next-line jsx-a11y/alt-text, react/jsx-props-no-spreading
   return <img {...imageProps} />;
 };
 
