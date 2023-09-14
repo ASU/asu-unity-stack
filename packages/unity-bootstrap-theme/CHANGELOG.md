@@ -1,3 +1,12 @@
+# [@asu/unity-bootstrap-theme-v1.6.6](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.6.5...@asu/unity-bootstrap-theme-v1.6.6) (2023-09-14)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** added card arrangement and fix horiz. card size ([050a919](https://github.com/ASU/asu-unity-stack/commit/050a919bdba1081c0e800c4ab9a413c1d50f4e70))
+* **unity-bootstrap-theme:** added stacking in horizontal card arrangement ([422dca2](https://github.com/ASU/asu-unity-stack/commit/422dca2991af67ab32c3d78e0866b212d0c6891f))
+* **unity-bootstrap-theme:** updated horizontal story controls ([5bba217](https://github.com/ASU/asu-unity-stack/commit/5bba2179a8889f0adbb3dd07ffeb34ccee10469c))
+
 # [@asu/unity-bootstrap-theme-v1.6.5](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.6.4...@asu/unity-bootstrap-theme-v1.6.5) (2023-09-13)
 
 
