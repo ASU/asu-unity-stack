@@ -23,7 +23,7 @@ function NextSteps({ cards, defaultCards }) {
     >
       <h2>Next steps to attend ASU</h2>
       <div className="mt-2 row">
-        <div className="mt-2 col-12 col-md-4">
+        <div className="mt-2 col-12 col-md-6 col-lg-4">
           <Card
             icon={cards?.learnMore?.icon ?? defaultCards.learnMore.icon}
             title={cards?.learnMore?.title ?? defaultCards.learnMore.title}
@@ -33,7 +33,7 @@ function NextSteps({ cards, defaultCards }) {
             ]}
           />
         </div>
-        <div className="mt-2 col-12 col-md-4">
+        <div className="mt-2 col-12 col-md-6 col-lg-4">
           <Card
             icon={cards?.apply?.icon ?? defaultCards.apply.icon}
             title={cards?.apply?.title ?? defaultCards.apply.title}
@@ -43,7 +43,7 @@ function NextSteps({ cards, defaultCards }) {
             ]}
           />
         </div>
-        <div className="mt-2 col-12 col-md-4">
+        <div className="mt-2 col-12 col-md-6 col-lg-4">
           <Card
             icon={cards?.visit?.icon ?? defaultCards.visit.icon}
             title={cards?.visit?.title ?? defaultCards.visit.title}
