@@ -65,6 +65,36 @@ export const approvedBackgroundPatterns = createStory(
       <div className="col-sm-6">
         <div className="background-panel bg topo-black m-3"></div>
       </div>
+
+      <div className="col-12 pb-3">
+        <h3>Semiconductor</h3>
+      </div>
+      <div className="col-sm-6">
+        <div className="background-panel bg semiconductor-light m-3"></div>
+      </div>
+      <div className="col-sm-6">
+        <div className="background-panel bg semiconductor-dark m-3"></div>
+      </div>
+
+      <div className="col-12 pb-3">
+        <h3>Plus</h3>
+      </div>
+      <div className="col-sm-6">
+        <div className="background-panel bg plus-light m-3"></div>
+      </div>
+      <div className="col-sm-6">
+        <div className="background-panel bg plus-dark m-3"></div>
+      </div>
+
+      <div className="col-12 pb-3">
+        <h3>Arrows</h3>
+      </div>
+      <div className="col-sm-6">
+        <div className="background-panel bg arrows-light m-3"></div>
+      </div>
+      <div className="col-sm-6">
+        <div className="background-panel bg arrows-dark m-3"></div>
+      </div>
     </div>
   </div>
 );
@@ -131,6 +161,30 @@ export const PatternDividersAndBackgroundPatterns = createStory(
     <div
       style={{ height: "250px" }}
       className="container-fluid bg network-black"
+    ></div>
+    <div
+      style={{ height: "250px" }}
+      className="container-fluid bg semiconductor-light"
+    ></div>
+    <div
+      style={{ height: "250px" }}
+      className="container-fluid bg semiconductor-dark"
+    ></div>
+    <div
+      style={{ height: "250px" }}
+      className="container-fluid bg plus-light"
+    ></div>
+    <div
+      style={{ height: "250px" }}
+      className="container-fluid bg plus-dark"
+    ></div>
+    <div
+      style={{ height: "250px" }}
+      className="container-fluid bg arrows-light"
+    ></div>
+    <div
+      style={{ height: "250px" }}
+      className="container-fluid bg arrows-dark"
     ></div>
   </div>
 );
