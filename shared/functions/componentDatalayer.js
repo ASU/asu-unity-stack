@@ -20,9 +20,10 @@ function trackReactComponent({
 
   // Initialize or retrieve the global object to store component data.
   window.uds = window.uds || {};
+  window.uds.package = window.uds.package || {};
 
   // Store component data in the global object using the provided componentName.
-  window.uds[packageName] = {
+  window.uds.package[packageName] = {
       component: component,
       type: type,
       configuration: configuration
