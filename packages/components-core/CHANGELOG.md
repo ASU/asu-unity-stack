@@ -1,3 +1,15 @@
+# [@asu/components-core-v3.1.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.0.0...@asu/components-core-v3.1.0) (2023-09-18)
+
+
+### Bug Fixes
+
+* **components-core:** ignore eslint warnings ([6304782](https://github.com/ASU/asu-unity-stack/commit/6304782438b84aabfc2d0e16e7ff8aeafcb35e60))
+
+
+### Features
+
+* **components-core:** updated events card ([05f6af4](https://github.com/ASU/asu-unity-stack/commit/05f6af48cc9bfbf42da767d0b46a994f5d1bef82))
+
 # [@asu/components-core-v3.0.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v2.2.2...@asu/components-core-v3.0.0) (2023-09-07)
 
 
