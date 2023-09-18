@@ -1,3 +1,16 @@
+# [@asu/unity-bootstrap-theme-v1.7.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.6.6...@asu/unity-bootstrap-theme-v1.7.0) (2023-09-18)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** event card title max lines set to 3 ([d73969e](https://github.com/ASU/asu-unity-stack/commit/d73969ed306893c513b44814c437caa4c65d3fe5))
+
+
+### Features
+
+* **unity-bootstrap-theme:** add background scss ([0351019](https://github.com/ASU/asu-unity-stack/commit/0351019d07efed64364895d80eff86501e20c257))
+* **unity-bootstrap-theme:** new BG patterns ([2807409](https://github.com/ASU/asu-unity-stack/commit/2807409a23543aed9c81a664b1782a212d65ba5b))
+
 # [@asu/unity-bootstrap-theme-v1.6.6](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.6.5...@asu/unity-bootstrap-theme-v1.6.6) (2023-09-14)
 
 
