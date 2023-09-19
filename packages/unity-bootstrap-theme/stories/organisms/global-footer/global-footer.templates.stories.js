@@ -70,7 +70,7 @@ export const GlobalElementsOnly = (
               >
                 <img
                   src={innovationLockup}
-                  alt="repeatedly ranked #1 in innovation(ASU ahead of MIT and stanford), sustainability(ASU ahead of stanford and UC Berkely), and global impact(ASU ahead of MIT and Penn State)"
+                  alt="Repeatedly ranked #1 in innovation (ASU ahead of MIT and Stanford), sustainability (ASU ahead of Stanford and UC Berkeley), and global impact (ASU ahead of MIT and Penn State)"
                   width="459"
                   height="100"
                   loading="lazy"
@@ -301,7 +301,7 @@ export const ZeroColumns = (
               >
                 <img
                   src={innovationLockup}
-                  alt="repeatedly ranked #1 in innovation(ASU ahead of MIT and stanford), sustainability(ASU ahead of stanford and UC Berkely), and global impact(ASU ahead of MIT and Penn State)"
+                  alt="Repeatedly ranked #1 in innovation (ASU ahead of MIT and Stanford), sustainability (ASU ahead of Stanford and UC Berkeley), and global impact (ASU ahead of MIT and Penn State)"
                   width="459"
                   height="100"
                   loading="lazy"
@@ -552,7 +552,7 @@ export const OneColumn = (
               >
                 <img
                   src={innovationLockup}
-                  alt="repeatedly ranked #1 in innovation(ASU ahead of MIT and stanford), sustainability(ASU ahead of stanford and UC Berkely), and global impact(ASU ahead of MIT and Penn State)"
+                  alt="Repeatedly ranked #1 in innovation (ASU ahead of MIT and Stanford), sustainability (ASU ahead of Stanford and UC Berkeley), and global impact (ASU ahead of MIT and Penn State)"
                   width="459"
                   height="100"
                   loading="lazy"
@@ -714,7 +714,7 @@ export const OneColumnNoLogoOrSocial = (
               >
                 <img
                   src={innovationLockup}
-                  alt="repeatedly ranked #1 in innovation(ASU ahead of MIT and stanford), sustainability(ASU ahead of stanford and UC Berkely), and global impact(ASU ahead of MIT and Penn State)"
+                  alt="Repeatedly ranked #1 in innovation (ASU ahead of MIT and Stanford), sustainability (ASU ahead of Stanford and UC Berkeley), and global impact (ASU ahead of MIT and Penn State)"
                   width="459"
                   height="100"
                   loading="lazy"
@@ -1010,7 +1010,7 @@ export const TwoColumns = (
               >
                 <img
                   src={innovationLockup}
-                  alt="repeatedly ranked #1 in innovation(ASU ahead of MIT and stanford), sustainability(ASU ahead of stanford and UC Berkely), and global impact(ASU ahead of MIT and Penn State)"
+                  alt="Repeatedly ranked #1 in innovation (ASU ahead of MIT and Stanford), sustainability (ASU ahead of Stanford and UC Berkeley), and global impact (ASU ahead of MIT and Penn State)"
                   width="459"
                   height="100"
                   loading="lazy"
@@ -1354,7 +1354,7 @@ export const ThreeColumns = (
               >
                 <img
                   src={innovationLockup}
-                  alt="repeatedly ranked #1 in innovation(ASU ahead of MIT and stanford), sustainability(ASU ahead of stanford and UC Berkely), and global impact(ASU ahead of MIT and Penn State)"
+                  alt="Repeatedly ranked #1 in innovation (ASU ahead of MIT and Stanford), sustainability (ASU ahead of Stanford and UC Berkeley), and global impact (ASU ahead of MIT and Penn State)"
                   width="459"
                   height="100"
                   loading="lazy"
@@ -1746,7 +1746,7 @@ export const FourColumns = (
               >
                 <img
                   src={innovationLockup}
-                  alt="repeatedly ranked #1 in innovation(ASU ahead of MIT and stanford), sustainability(ASU ahead of stanford and UC Berkely), and global impact(ASU ahead of MIT and Penn State)"
+                  alt="Repeatedly ranked #1 in innovation (ASU ahead of MIT and Stanford), sustainability (ASU ahead of Stanford and UC Berkeley), and global impact (ASU ahead of MIT and Penn State)"
                   width="459"
                   height="100"
                   loading="lazy"
@@ -2186,7 +2186,7 @@ export const FiveColumns = (
               >
                 <img
                   src={innovationLockup}
-                  alt="repeatedly ranked #1 in innovation(ASU ahead of MIT and stanford), sustainability(ASU ahead of stanford and UC Berkely), and global impact(ASU ahead of MIT and Penn State)"
+                  alt="Repeatedly ranked #1 in innovation (ASU ahead of MIT and Stanford), sustainability (ASU ahead of Stanford and UC Berkeley), and global impact (ASU ahead of MIT and Penn State)"
                   width="459"
                   height="100"
                   loading="lazy"
@@ -2668,7 +2668,7 @@ export const SixColumns = (
               >
                 <img
                   src={innovationLockup}
-                  alt="repeatedly ranked #1 in innovation(ASU ahead of MIT and stanford), sustainability(ASU ahead of stanford and UC Berkely), and global impact(ASU ahead of MIT and Penn State)"
+                  alt="Repeatedly ranked #1 in innovation (ASU ahead of MIT and Stanford), sustainability (ASU ahead of Stanford and UC Berkeley), and global impact (ASU ahead of MIT and Penn State)"
                   width="459"
                   height="100"
                   loading="lazy"
