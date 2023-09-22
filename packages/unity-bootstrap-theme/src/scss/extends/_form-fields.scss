@@ -205,6 +205,9 @@ form.uds-form {
       border-bottom: 8px solid $uds-color-font-dark-error;
       // BS4 input height led to border eating padding. Resolved in variable
       // overrides by setting input heights to auto.
+      &:focus {
+        border-bottom: 8px solid $uds-color-font-dark-error !important;
+      }
     }
     // Radios and checks individual labels shouldn't be colored.
     .form-check-input:invalid ~ .form-check-label {
@@ -218,6 +221,9 @@ form.uds-form {
       border-bottom: 8px solid $uds-color-font-dark-success;
       // BS4 input height led to border eating padding. Resolved in variable
       // overrides by setting input heights to auto.
+      &:focus {
+        border-bottom: 8px solid $uds-color-font-dark-success !important;
+      }
     }
     // Radios and checks individual labels shouldn't be colored.
     .form-check-input:valid ~ .form-check-label {
