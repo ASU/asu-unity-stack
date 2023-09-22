@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.7.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.0...@asu/unity-bootstrap-theme-v1.7.1) (2023-09-22)
+
+
+### Bug Fixes
+
+* **_form-fields.scss:** added two style updates for validated form fields ([5044bc8](https://github.com/ASU/asu-unity-stack/commit/5044bc8e5e24ae15c9f1280ccdcef056d7f8c18e))
+
 # [@asu/unity-bootstrap-theme-v1.7.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.6.6...@asu/unity-bootstrap-theme-v1.7.0) (2023-09-18)
 
 
