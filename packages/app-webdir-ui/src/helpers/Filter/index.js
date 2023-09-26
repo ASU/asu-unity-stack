@@ -81,64 +81,60 @@ const FilterComponent = ({
   return (
     <FilterContainer className="filter-container">
       <legend>{filterLabel}</legend>
-      <div
-      className="choices-wrapper"
-      >
+      <div className="choices-wrapper">
         <NavControls
           hidePrev={scrollLeft === 0}
           hideNext={scrollLeft >= scrollableWidth}
           clickPrev={() => {
             slideNav(-1);
-            trackArrowsEvent("left chevron");
           }}
           clickNext={() => {
             slideNav(1);
-            trackArrowsEvent("right chevron");
           }}
         />
-      <div
-        role="radiogroup"
-        tabIndex={0}
-        onKeyDown={handleKeyPress}
-        className="choices-container"
-        ref={containerRef}
-        aria-label={`${filterLabel} filter options}`}
-      >
-        {resetFilters && (
-          <button
-            role="radio"
-            type="button"
-            onClick={e => {
-              e.preventDefault();
-              handleChoose(null);
-              resetFilters();
-            }}
-            tabIndex={-1}
-            aria-label={`Reset ${filterLabel}`}
-            aria-checked={selected === null}
-            className={"choice"}
-          >
-            All
-          </button>
-        )}
-        {choices.map(choice => (
-          <button
-            role="radio"
-            type="button"
-            key={choice}
-            onClick={e => {
-              e.preventDefault();
-              handleChoose(choice);
-            }}
-            aria-checked={selected === choice}
-            className={`${selected === choice ? "selected" : ""} choice`}
-            aria-label={`Filter by ${choice}`}
-            tabIndex={-1}
-          >
-            {choice}
-          </button>
-        ))}
-      </div>
+        <div
+          role="radiogroup"
+          tabIndex={0}
+          onKeyDown={handleKeyPress}
+          className="choices-container"
+          ref={containerRef}
+          aria-label={`${filterLabel} filter options}`}
+        >
+          {resetFilters && (
+            <button
+              role="radio"
+              type="button"
+              onClick={e => {
+                e.preventDefault();
+                handleChoose(null);
+                resetFilters();
+              }}
+              tabIndex={-1}
+              aria-label={`Reset ${filterLabel}`}
+              aria-checked={selected === null}
+              className="choice"
+            >
+              All
+            </button>
+          )}
+          {choices.map(choice => (
+            <button
+              role="radio"
+              type="button"
+              key={choice}
+              onClick={e => {
+                e.preventDefault();
+                handleChoose(choice);
+              }}
+              aria-checked={selected === choice}
+              className={`${selected === choice ? "selected" : ""} choice`}
+              aria-label={`Filter by ${choice}`}
+              tabIndex={-1}
+            >
+              {choice}
+            </button>
+          ))}
+        </div>
       </div>
     </FilterContainer>
   );

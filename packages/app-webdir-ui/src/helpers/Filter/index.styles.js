@@ -13,6 +13,9 @@ export const FilterContainer = styled.fieldset`
 
   .choices-wrapper {
     position: relative;
+    .carousel-control-next-icon {
+      margin: 0 12px 0 30px;
+    }
   }
 
   legend {
@@ -24,9 +27,9 @@ export const FilterContainer = styled.fieldset`
     overflow-x: auto;
     padding: 8px 0;
     &:focus {
-    outline: none !important;
-    box-shadow:  0px 0px 0px 2px #ffffff, 0px 0px 0px 4px #191919 !important;
-  }
+      outline: none !important;
+      box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px #191919 !important;
+    }
 
     &::-webkit-scrollbar {
       display: none;
