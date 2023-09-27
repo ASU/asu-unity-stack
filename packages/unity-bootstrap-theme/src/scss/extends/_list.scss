@@ -223,7 +223,7 @@ ol.uds-list {
         font-weight: bold;
         content: counter(
             listcounter
-        ); // Remove space as it messes with centering.
+        ); // Remove space because it messes with centering.
       }
     }
     &.uds-steplist-gold li:before {
