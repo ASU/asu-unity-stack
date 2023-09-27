@@ -22,7 +22,6 @@ module.exports = {
         alias: {
           ...common.resolve.alias,
           Components: path.resolve(PROJECT_DIR, "src/components/"),
-          "shared": path.resolve(PROJECT_DIR, "..", "..", "shared"),
         },
       },
     };

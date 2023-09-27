@@ -29,7 +29,6 @@ module.exports = {
         extensions: [".js", ".jsx"],
         alias: {
           ...common.resolve.alias,
-          "shared": path.resolve(PROJECT_DIR, "..", "..", "shared"),
         },
       },
     };

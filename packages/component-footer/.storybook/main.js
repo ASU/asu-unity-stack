@@ -1,8 +1,6 @@
 const path = require("path");
 const common = require("../webpack/webpack.common");
 
-const PROJECT_DIR = path.resolve(__dirname, "../");
-
 module.exports = {
   addons: [
     "@storybook/addon-controls",
@@ -33,7 +31,6 @@ module.exports = {
         extensions: [".js", ".jsx"],
         alias: {
           ...common.resolve.alias,
-          "shared": path.resolve(PROJECT_DIR, "..", "..", "shared"),
         },
       },
     };
