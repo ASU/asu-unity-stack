@@ -1,3 +1,11 @@
+# [@asu/unity-bootstrap-theme-v1.7.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.1...@asu/unity-bootstrap-theme-v1.7.2) (2023-09-27)
+
+
+### Bug Fixes
+
+* **_list.scss:** fix Multi level OL and UL list-tem doubling and padding squeeze ([b233b26](https://github.com/ASU/asu-unity-stack/commit/b233b26a525df86a0898d7f1d6902d9714ce78af))
+* **unity-bootstrap-theme:** trigger release with correct scope ([ee8e327](https://github.com/ASU/asu-unity-stack/commit/ee8e32755ef3f8ce4017d1be9a5136f3a4f7f6fd))
+
 # [@asu/unity-bootstrap-theme-v1.7.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.0...@asu/unity-bootstrap-theme-v1.7.1) (2023-09-22)
 
 
