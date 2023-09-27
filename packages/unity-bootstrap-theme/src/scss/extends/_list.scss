@@ -39,7 +39,8 @@
 
   ol,
   ul {
-    padding: 1rem 1.5rem 0rem;
+    padding: 1rem 0 0 1.5rem;
+    list-style: none;
   }
 }
 
@@ -150,7 +151,9 @@ ol.uds-list {
   counter-reset: listcounter;
 
   li ol {
-    padding: 1rem 1.5rem 0rem;
+    padding: 1rem 0 0 1.5rem;
+    list-style: none;
+    counter-reset: listcounter;
   }
 
   li:before {
@@ -219,8 +222,8 @@ ol.uds-list {
         font-size: 1.25rem;
         font-weight: bold;
         content: counter(
-          listcounter
-        ); // Remove space as it messes with centering.
+            listcounter
+        ); // Remove space because it messes with centering.
       }
     }
     &.uds-steplist-gold li:before {
