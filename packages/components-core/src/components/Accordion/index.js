@@ -1,7 +1,8 @@
 // @ts-nocheck
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
+import trackReactComponent from "../../../../../shared/functions/componentDatalayer";
 import { accordionCardPropTypes } from "../../core/models/shared-prop-types";
 import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { AccordionCard } from "./AccordionCard";
@@ -28,6 +29,19 @@ const AVAILABLE_GA_ACTIONS = {
  */
 const Accordion = ({ cards, openedCard }) => {
   const [currentOpenCard, setCurrentOpenCard] = useState(openedCard);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      trackReactComponent({
+        packageName: "components-core",
+        component: "Accordion",
+        type: "NA",
+        configuration: {
+          openedCard,
+        },
+      });
+    }
+  }, []);
 
   const trackEvent = (cardTitle, action) => {
     trackGAEvent({

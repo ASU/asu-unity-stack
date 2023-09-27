@@ -1,8 +1,9 @@
 /* eslint-disable react/require-default-props */
 // @ts-check
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useEffect } from "react";
 
+import trackReactComponent from "../../../../../shared/functions/componentDatalayer";
 import { spreadClasses } from "../../core/utils/css-utils";
 // eslint-disable-next-line import/no-cycle
 import { Image } from "../Image";
@@ -15,51 +16,64 @@ import { Image } from "../Image";
  * @param {TestimonialProps} props
  * @returns {JSX.Element}
  */
-const Testimonial = ({ imageSource, imageAltText, quote, itemStyle = {} }) => (
-  <div
-    className={`uds-blockquote uds-testimonial ${
-      imageSource ? "with-image" : ""
-    } ${spreadClasses(itemStyle.containerCssClass)}`}
-  >
-    {imageSource && (
-      <Image
-        src={imageSource}
-        alt={imageAltText}
-        data-testid="testimonial-image"
-        fetchPriority="high"
-      />
-    )}
-    <svg role="presentation" viewBox="0 0 302.87 245.82">
-      <path d="M113.61,245.82H0V164.56q0-49.34,8.69-77.83T40.84,35.58Q64.29,12.95,100.67,0l22.24,46.9q-34,11.33-48.72,31.54T58.63,132.21h55Zm180,0H180V164.56q0-49.74,8.7-78T221,35.58Q244.65,12.95,280.63,0l22.24,46.9q-34,11.33-48.72,31.54t-15.57,53.77h55Z" />
-    </svg>
+const Testimonial = ({ imageSource, imageAltText, quote, itemStyle = {} }) => {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      trackReactComponent({
+        packageName: "components-core",
+        component: "Testimonial",
+        type: "NA",
+        configuration: {},
+      });
+    }
+  }, []);
 
-    <blockquote style={{ paddingLeft: 0 }}>
-      {quote.title && (
-        <h3 className="text-center" data-testid="testimonial-title">
-          <span className={spreadClasses(itemStyle.titleCssClass)}>
-            {quote.title}
-          </span>
-        </h3>
+  return (
+    <div
+      className={`uds-blockquote uds-testimonial ${
+        imageSource ? "with-image" : ""
+      } ${spreadClasses(itemStyle.containerCssClass)}`}
+    >
+      {imageSource && (
+        <Image
+          src={imageSource}
+          alt={imageAltText}
+          data-testid="testimonial-image"
+          fetchPriority="high"
+        />
       )}
-      {quote.content && (
-        <p
-          className={spreadClasses(itemStyle.contentCssClass)}
-          data-testid="testimonial-content"
-        >
-          {quote.content}
-        </p>
-      )}
-      {(!!quote.cite?.name || !!quote.cite?.description) && (
-        <div className="citation" data-testid="testimonial-citation">
-          <cite className="name">{quote.cite.name}</cite>
-          {quote.cite && (
-            <cite className="description">{quote.cite.description}</cite>
-          )}
-        </div>
-      )}
-    </blockquote>
-  </div>
-);
+      <svg role="presentation" viewBox="0 0 302.87 245.82">
+        <path d="M113.61,245.82H0V164.56q0-49.34,8.69-77.83T40.84,35.58Q64.29,12.95,100.67,0l22.24,46.9q-34,11.33-48.72,31.54T58.63,132.21h55Zm180,0H180V164.56q0-49.74,8.7-78T221,35.58Q244.65,12.95,280.63,0l22.24,46.9q-34,11.33-48.72,31.54t-15.57,53.77h55Z" />
+      </svg>
+
+      <blockquote style={{ paddingLeft: 0 }}>
+        {quote.title && (
+          <h3 className="text-center" data-testid="testimonial-title">
+            <span className={spreadClasses(itemStyle.titleCssClass)}>
+              {quote.title}
+            </span>
+          </h3>
+        )}
+        {quote.content && (
+          <p
+            className={spreadClasses(itemStyle.contentCssClass)}
+            data-testid="testimonial-content"
+          >
+            {quote.content}
+          </p>
+        )}
+        {(!!quote.cite?.name || !!quote.cite?.description) && (
+          <div className="citation" data-testid="testimonial-citation">
+            <cite className="name">{quote.cite.name}</cite>
+            {quote.cite && (
+              <cite className="description">{quote.cite.description}</cite>
+            )}
+          </div>
+        )}
+      </blockquote>
+    </div>
+  );
+};
 
 Testimonial.propTypes = {
   quote: PropTypes.shape({

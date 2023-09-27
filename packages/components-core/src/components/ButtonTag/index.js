@@ -2,8 +2,9 @@
 /* eslint react/jsx-props-no-spreading: "off" */
 import classNames from "classnames";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useEffect } from "react";
 
+import trackReactComponent from "../../../../../shared/functions/componentDatalayer";
 import { trackGAEvent } from "../../core/services/googleAnalytics";
 
 const gaDefaultObject = {
@@ -34,6 +35,20 @@ export const ButtonTag = ({
   onClick,
   ...props
 }) => {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      trackReactComponent({
+        packageName: "components-core",
+        component: "ButtonTag",
+        type: "NA",
+        configuration: {
+          label,
+          cardTitle,
+        },
+      });
+    }
+  }, []);
+
   const btnClasses = classNames("btn", `btn-tag`, {
     [`btn-tag-alt-white`]: color === "white",
     [`btn-tag-alt-gray`]: color === "gray",

@@ -1,7 +1,8 @@
 import classNames from "classnames";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
+import trackReactComponent from "../../../../../shared/functions/componentDatalayer";
 import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { sanitizeDangerousMarkup } from "../../core/utils/html-utils";
 // eslint-disable-next-line import/no-cycle
@@ -137,6 +138,17 @@ export const RankingCard = ({
   readMoreLink = "#",
   citation,
 }) => {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      trackReactComponent({
+        packageName: "components-core",
+        component: "Ranking-Card",
+        type: "NA",
+        configuration: {},
+      });
+    }
+  }, []);
+
   return (
     <div
       className={classNames("card-ranking", {

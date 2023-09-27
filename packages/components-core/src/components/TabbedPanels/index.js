@@ -2,6 +2,7 @@
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
+import trackReactComponent from "../../../../../shared/functions/componentDatalayer";
 import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { NavControls, TabHeader } from "./components";
 
@@ -65,6 +66,17 @@ const TabbedPanels = ({
 
   const [scrollLeft, setScrollLeft] = useState(0);
   const [scrollableWidth, setScrollableWidth] = useState();
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      trackReactComponent({
+        packageName: "components-core",
+        component: "Tabbed Panels",
+        type: "NA",
+        configuration: {},
+      });
+    }
+  }, []);
 
   useEffect(() => {
     const onScroll = () => {

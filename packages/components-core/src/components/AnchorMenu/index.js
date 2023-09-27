@@ -3,6 +3,7 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 
+import trackReactComponent from "../../../../../shared/functions/componentDatalayer";
 import { useMediaQuery } from "../../core/hooks/use-media-query";
 import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { queryFirstFocusable } from "../../core/utils/html-utils";
@@ -126,6 +127,20 @@ export const AnchorMenu = ({
 
     return getContainerClass(el.parentElement);
   }
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      trackReactComponent({
+        packageName: "components-core",
+        component: "AnchorMenu",
+        type: "NA",
+        configuration: {
+          firstElementId,
+          focusFirstFocusableElement,
+        },
+      });
+    }
+  }, []);
 
   // get values from outside this component
   // set initial state from external values

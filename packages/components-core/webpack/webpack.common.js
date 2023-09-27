@@ -51,6 +51,12 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    extensions: [".js", ".jsx"],
+    alias: {
+      "@asu/components-core": "@asu/components-core/dist/libCore.es.js",
+    },
+  },
   plugins: [
     /**
      * All files inside webpack's output.path directory will be removed once, but the

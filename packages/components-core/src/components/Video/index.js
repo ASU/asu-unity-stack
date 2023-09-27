@@ -1,8 +1,9 @@
 // @ts-check
 import classNames from "classnames";
 import PropTypes from "prop-types";
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 
+import trackReactComponent from "../../../../../shared/functions/componentDatalayer";
 import { trackGAEvent } from "../../core/services/googleAnalytics";
 
 const defaultGAEvent = {
@@ -108,6 +109,20 @@ const Video = props => {
     className,
     controls = true,
   } = props;
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      trackReactComponent({
+        packageName: "components-core",
+        component: "Video",
+        type: "NA",
+        configuration: {
+          title,
+        },
+      });
+    }
+  }, []);
+
   return type === "youtube"
     ? youtubeTemplate({ url, title, caption, className })
     : videoTemplate({
