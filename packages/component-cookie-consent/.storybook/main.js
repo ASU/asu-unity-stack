@@ -1,4 +1,9 @@
 const common = require("../webpack/webpack.common");
+const path = require("path");
+
+const PROJECT_DIR = path.resolve(__dirname, "../");
+
+
 
 module.exports = {
   addons: [
@@ -18,6 +23,7 @@ module.exports = {
         extensions: [".js", ".jsx"],
         alias: {
           ...common.resolve.alias,
+          "shared": path.resolve(PROJECT_DIR, "..", "..", "shared"),
         },
       },
     };
