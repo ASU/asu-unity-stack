@@ -76,12 +76,6 @@
     "webpack-node-externals": "^3.0.0"
   },
   "exports": {
-    "./src/scss/unity-bootstrap-theme.bundle.scss": {
-      "browser": "./src/scss/unity-bootstrap-theme.bundle.scss",
-      "node": "./src/scss/unity-bootstrap-theme.bundle.scss",
-      "module": "./src/scss/unity-bootstrap-theme.bundle.scss",
-      "default": "./dist/css/unity-bootstrap-theme.bundle.css"
-    },
     "./js/global-header.js": {
       "module": "./src/js/storybook-global-header.js",
       "default": "./src/js/global-header.js"
@@ -90,18 +84,8 @@
       "module": "./src/js/storybook-data-layer.js",
       "default": "./src/js/data-layer.js"
     },
-    "./dist/css/unity-bootstrap-theme.bundle.css": {
-      "default": "./dist/css/unity-bootstrap-theme.bundle.css"
-    },
-    "./dist/css/unity-bootstrap-theme.css": {
-      "default": "./dist/css/unity-bootstrap-theme.css"
-    },
-    "./dist/css/unity-bootstrap-footer.css": {
-      "default": "./dist/css/unity-bootstrap-footer.css"
-    },
-    "./dist/css/unity-bootstrap-header.css": {
-      "default": "./dist/css/unity-bootstrap-header.css"
-    }
+    "./*": "./*",
+    ".": "./dist/css/unity-bootstrap-theme.bundle.css"
   },
   "peerDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3"
