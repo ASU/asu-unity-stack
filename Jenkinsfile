@@ -107,23 +107,18 @@ spec:
             }
         }
         stage('Deploy') {
-            when {
-              branch 'dev'
-            }
             steps {
                 container('node18') {
                     script {
                         echo '# Final, post-publish install and build to include just published pkgs...'
                         sh 'yarn install --frozen-lockfile'
                         sh 'yarn build'
+                        sh 'yarn build-storybook'
+                        sh 'yarn gulp'
 
                         withEnv(["GH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
-                            echo '# Prebuild Storybook static site as dry-run...'
-                            sh 'yarn deploy-storybook:dev'
-                            echo '# Compile templates and copy files for build deploy...'
-                            sh 'yarn gulp'
-                            echo '# Storybook static site final build and deploy...'
-                            sh 'yarn deploy-storybook --existing-output-dir=build'
+                            sh "node deploy-gh-pages.js ${env.BRANCH_NAME}"
+
                         }
                     }
                 }

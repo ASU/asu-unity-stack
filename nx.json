@@ -5,7 +5,8 @@
       "options": {
         "cacheableOperations": [
           "prebuild",
-          "build"
+          "build",
+          "build-storybook"
         ]
       }
     }
@@ -30,6 +31,12 @@
       ],
       "outputs": [
         "{projectRoot}/dist"
+      ]
+    },
+    "build-storybook": {
+      "dependsOn": [
+        "build",
+        "build-storybook"
       ]
     }
   }
