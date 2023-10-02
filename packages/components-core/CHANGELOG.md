@@ -1,3 +1,10 @@
+# [@asu/components-core-v3.1.1](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.1.0...@asu/components-core-v3.1.1) (2023-10-02)
+
+
+### Bug Fixes
+
+* **components-core:** readMoreLink not required in ranming card ([904e8c6](https://github.com/ASU/asu-unity-stack/commit/904e8c629742f801955ebe7a58c28c7100fef04b))
+
 # [@asu/components-core-v3.1.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.0.0...@asu/components-core-v3.1.0) (2023-09-18)
 
 
