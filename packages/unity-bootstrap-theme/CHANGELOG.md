@@ -1,3 +1,11 @@
+# [@asu/unity-bootstrap-theme-v1.7.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.2...@asu/unity-bootstrap-theme-v1.7.3) (2023-10-02)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** update alt text on footer ranking logo ([481e194](https://github.com/ASU/asu-unity-stack/commit/481e194fb0a0a35f1fbf74af2ad144404bcffcd5))
+* **unity-bootstrap-theme:** update innovation footer logo ([d6e5f8e](https://github.com/ASU/asu-unity-stack/commit/d6e5f8e741d6d08618a0cbce568b56673baab62e))
+
 # [@asu/unity-bootstrap-theme-v1.7.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.1...@asu/unity-bootstrap-theme-v1.7.2) (2023-09-27)
 
 
