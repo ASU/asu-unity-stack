@@ -1,3 +1,12 @@
+# [@asu/component-footer-v2.1.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.1.1...@asu/component-footer-v2.1.2) (2023-10-02)
+
+
+### Bug Fixes
+
+* **component-footer:** bump components-core version ([3dd7992](https://github.com/asu/asu-unity-stack/commit/3dd79920239e48e59d7c0f044f417ffdfec6fb80))
+* **component-footer:** update alt test on ranking image ([db72b8b](https://github.com/asu/asu-unity-stack/commit/db72b8b2959bef85d414d99a1a4eed6a1044b79f))
+* **component-footer:** updated innovation logo ([768dc6a](https://github.com/asu/asu-unity-stack/commit/768dc6a18334ea95f5e7a7a8d5d088bed7352ca7))
+
 # [@asu/component-footer-v2.1.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.1.0...@asu/component-footer-v2.1.1) (2023-09-13)
 
 
