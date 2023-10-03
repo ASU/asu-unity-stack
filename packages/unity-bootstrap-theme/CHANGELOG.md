@@ -1,3 +1,11 @@
+# [@asu/unity-bootstrap-theme-v1.7.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.3...@asu/unity-bootstrap-theme-v1.7.4) (2023-10-03)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix package.json exports ([45cb15d](https://github.com/ASU/asu-unity-stack/commit/45cb15d4056a931f25bee1c37775dbf9aee0da96))
+* **unity-bootstrap-theme:** video hero gray overlay fix ([8ebb7b3](https://github.com/ASU/asu-unity-stack/commit/8ebb7b39fb28a19a44d24b84e376502d65c59819))
+
 # [@asu/unity-bootstrap-theme-v1.7.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.2...@asu/unity-bootstrap-theme-v1.7.3) (2023-10-02)
 
 
