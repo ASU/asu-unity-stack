@@ -140,7 +140,7 @@ const cssConfig = {
             loader: "css-loader",
             options: {
               // esModule: false,
-              sourceMap: false,
+              sourceMap: true,
               url: false,
               // modules: {
               //   namedExport: true,
@@ -154,17 +154,16 @@ const cssConfig = {
               postcssOptions: {
                 plugins: ["autoprefixer"],
               },
-              sourceMap: false,
+              sourceMap: true,
             },
           },
           {
             loader: "sass-loader",
             options: {
-              sourceMap: false,
+              sourceMap: true,
             },
           },
         ],
-        sideEffects: true,
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
