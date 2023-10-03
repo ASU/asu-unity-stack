@@ -477,11 +477,12 @@ div.uds-hero-lg {
 
       &.uds-video-hero video {
         display: block;
-        height: auto;
+        height: 100%;
         left: 0;
         position: absolute;
         top: 0;
         width: 100%;
+        object-fit: cover;
       }
 
       .video-hero-controls {
