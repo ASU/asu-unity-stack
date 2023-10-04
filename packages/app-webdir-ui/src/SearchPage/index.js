@@ -1,6 +1,6 @@
 import { Button, TabbedPanels, Tab } from "@asu/components-core";
 import PropTypes from "prop-types";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ref } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { engineNames, engines } from "../helpers/search";
@@ -33,6 +33,7 @@ function SearchPage({
   const [searchParams, setSearchParams] = useSearchParams();
   const [filters] = useState({});
   const [site, setSite] = useState(null);
+  const inputRef = ref(null);
 
   const engineParams = {
     filters,
@@ -86,6 +87,12 @@ function SearchPage({
       setSearchValue(searchParams.get(queryParamName));
     }
   }, [searchParams, sort]);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
 
   const goToTab = tab => {
     updateSearchParams(searchTabsId, tab);
