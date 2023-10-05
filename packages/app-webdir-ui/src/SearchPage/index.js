@@ -1,6 +1,6 @@
 import { Button, TabbedPanels, Tab } from "@asu/components-core";
 import PropTypes from "prop-types";
-import React, { useState, useEffect, ref } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { engineNames, engines } from "../helpers/search";
@@ -33,7 +33,7 @@ function SearchPage({
   const [searchParams, setSearchParams] = useSearchParams();
   const [filters] = useState({});
   const [site, setSite] = useState(null);
-  const inputRef = ref(null);
+  const inputRef = useRef(null);
 
   const engineParams = {
     filters,
@@ -128,6 +128,7 @@ function SearchPage({
               value={searchValue}
               onChange={e => setSearchValue(e.target.value)}
               onKeyDown={inputKeyPress}
+              ref={inputRef}
             />
             <div className="desktop-button">
               <Button
