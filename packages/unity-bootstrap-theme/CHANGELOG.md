@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.7.5](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.4...@asu/unity-bootstrap-theme-v1.7.5) (2023-10-06)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fixed ordered lists allignment issues ([56b9e86](https://github.com/ASU/asu-unity-stack/commit/56b9e864c4f7023f045c21aa63211627205f18ff))
+
 # [@asu/unity-bootstrap-theme-v1.7.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.3...@asu/unity-bootstrap-theme-v1.7.4) (2023-10-03)
 
 
