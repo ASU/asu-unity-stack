@@ -56,7 +56,7 @@ export const decorators = [
     const [args, updateArgs] = useArgs();
   return <MemoryRouter>
         <Wrapper args={args} updateArgs={updateArgs}>
-          <Story />
+          {Story()}
         </Wrapper>
     </MemoryRouter>
   },
