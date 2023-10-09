@@ -33,8 +33,16 @@ function WebDirectory({
       tempFilters["deptIds"] = deptIds.split(",");
       return tempFilters;
     }
-    tempFilters["peopleInDepts"] = ids
+    const profilesToFilterOut = display?.doNotDisplayProfiles
+      ?.split(",")
+      ?.map(asurite => asurite.toLowerCase());
+
+      tempFilters["peopleInDepts"] = ids
       .split(",")
+      .filter(person => {
+        const [asurite,] = person.split(":");
+        return !profilesToFilterOut.includes(asurite.toLowerCase());
+      })
       .filter(id => id.includes(":"))
       .map(pair => pair.split(":"))
       .map(pair => {

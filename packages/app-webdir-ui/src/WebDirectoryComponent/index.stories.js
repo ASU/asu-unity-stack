@@ -98,7 +98,7 @@ export const webDirectoryExampleDepartmentsAndPeople = createStory(
       <div className="uds-content-align">
         <WebDirectory
           searchType="people_departments"
-          ids=",tgrandli:1344,mcrow:1343,jcunnin8:1358,ccherrer:1358,csmudde:1358"
+          ids="mcrow:1343,ccherrer:1358,csmudde:1358"
           API_URL="https://test-asu-isearch.ws.asu.edu"
           searchApiVersion="/api/v1/"
           display={display}
