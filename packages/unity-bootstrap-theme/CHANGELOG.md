@@ -1,3 +1,11 @@
+# [@asu/unity-bootstrap-theme-v1.7.6](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.5...@asu/unity-bootstrap-theme-v1.7.6) (2023-10-09)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** add -moz -webkit and -ms specific hyphen styles ([b3ef359](https://github.com/ASU/asu-unity-stack/commit/b3ef359b041320542aafa87dea99065d4a46dcda))
+* **unity-bootstrap-theme:** blockquote component with long words distorts image ([1201b73](https://github.com/ASU/asu-unity-stack/commit/1201b73e57a5669c4851057f7153e86620f06e87))
+
 # [@asu/unity-bootstrap-theme-v1.7.5](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.4...@asu/unity-bootstrap-theme-v1.7.5) (2023-10-06)
 
 
