@@ -75,7 +75,10 @@ const CardListlNews = ({ cardButton, ...props }) => {
         packageName: "component-news",
         component: "CardListlNews",
         type: "NA",
-        configuration: {},
+        configuration: {
+          cardButton,
+          ...props,
+        },
       });
     }
   }, []);
