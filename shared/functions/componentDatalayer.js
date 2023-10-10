@@ -19,7 +19,18 @@ function trackReactComponent({
       return;
   };
 
-  // Initialize or retrieve the global object to store component data.
+  /*
+  Initialize or retrieve the global object to store component data.
+   Follows the pattern:
+    window.uds = {
+        package: {
+            [packageName, ex: app-degree-pages]: {
+                component: [component ex: DegreeDetailPage],
+                type: [type],
+                configuration: [configuration]
+            }
+        }
+   */
   window.uds = window.uds || {};
   window.uds.package = window.uds.package || {};
 
