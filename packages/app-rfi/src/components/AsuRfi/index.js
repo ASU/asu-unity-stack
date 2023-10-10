@@ -21,26 +21,28 @@ import "./index.css";
  * @param {RFIProps} props
  * @return {JSX.Element}
  */
-const AsuRfi = ({
-  appPathFolder,
-  campus,
-  actualCampus,
-  college,
-  department,
-  studentType,
-  areaOfInterest,
-  programOfInterest,
-  programOfInterestOptional,
-  isCertMinor,
-  country,
-  stateProvince,
-  successMsg,
-  test,
-  dataSourceDegreeSearch,
-  dataSourceAsuOnline,
-  dataSourceCountriesStates,
-  submissionUrl,
-}) => {
+const AsuRfi = props => {
+  const {
+    appPathFolder,
+    campus,
+    actualCampus,
+    college,
+    department,
+    studentType,
+    areaOfInterest,
+    programOfInterest,
+    programOfInterestOptional,
+    isCertMinor,
+    country,
+    stateProvince,
+    successMsg,
+    test,
+    dataSourceDegreeSearch,
+    dataSourceAsuOnline,
+    dataSourceCountriesStates,
+    submissionUrl,
+  } = props;
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       trackReactComponent({
@@ -48,10 +50,7 @@ const AsuRfi = ({
         component: "AsuRfi",
         type: "NA",
         configuration: {
-          campus,
-          college,
-          department,
-          studentType,
+          ...props
         },
       });
     }
