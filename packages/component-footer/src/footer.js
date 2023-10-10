@@ -23,7 +23,7 @@ const ASUFooter = ({ social, contact }) => {
     if (typeof window !== "undefined") {
       trackReactComponent({
         packageName: "component-footer",
-        component: "NA",
+        component: "Component Footer",
         type: "NA",
         configuration: {
           social,
