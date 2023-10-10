@@ -29,7 +29,7 @@ const WhyChooseAsu = ({ sectionIntroText, cards, defaultCards }) => {
         dangerouslySetInnerHTML={sanitizeDangerousMarkup(sectionIntroText)}
       />
       <div className="mt-2 row">
-        <div className="mt-2 col-12 col-md-4">
+        <div className="mt-2 col-12 col-md-6 col-lg-4">
           <Card
             image={cards?.faculty?.image?.url ?? defaultCards.faculty.image.url}
             imageAltText={
@@ -41,7 +41,7 @@ const WhyChooseAsu = ({ sectionIntroText, cards, defaultCards }) => {
             buttons={[cards?.faculty?.button ?? defaultCards.faculty.button]}
           />
         </div>
-        <div className="mt-2 col-12 col-md-4">
+        <div className="mt-2 col-12 col-md-6 col-lg-4">
           <Card
             image={
               cards?.programs?.image?.url ?? defaultCards.programs.image.url
@@ -55,7 +55,7 @@ const WhyChooseAsu = ({ sectionIntroText, cards, defaultCards }) => {
             buttons={[cards?.programs?.button ?? defaultCards.programs.button]}
           />
         </div>
-        <div className="mt-2 col-12 col-md-4">
+        <div className="mt-2 col-12 col-md-6 col-lg-4">
           <Card
             image={
               cards?.research?.image?.url ?? defaultCards.research.image.url
@@ -69,7 +69,7 @@ const WhyChooseAsu = ({ sectionIntroText, cards, defaultCards }) => {
             buttons={[cards?.research?.button ?? defaultCards.research.button]}
           />
         </div>
-        <div className="mt-2 col-12 col-md-4">
+        <div className="mt-2 col-12 col-md-6 col-lg-4">
           <Card
             image={
               cards?.inclusion?.image?.url ?? defaultCards.inclusion.image.url
@@ -85,7 +85,7 @@ const WhyChooseAsu = ({ sectionIntroText, cards, defaultCards }) => {
             ]}
           />
         </div>
-        <div className="mt-2 col-12 col-md-4">
+        <div className="mt-2 col-12 col-md-6 col-lg-4">
           <Card
             image={cards?.mentors?.image?.url ?? defaultCards.mentors.image.url}
             imageAltText={
@@ -97,7 +97,7 @@ const WhyChooseAsu = ({ sectionIntroText, cards, defaultCards }) => {
             buttons={[cards?.mentors?.button ?? defaultCards.mentors.button]}
           />
         </div>
-        <div className="mt-2 col-12 col-md-4">
+        <div className="mt-2 col-12 col-md-6 col-lg-4">
           <Card
             image={cards?.honors?.image?.url ?? defaultCards.honors.image.url}
             imageAltText={

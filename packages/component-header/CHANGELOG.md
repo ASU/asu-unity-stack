@@ -1,3 +1,10 @@
+# [@asu/component-header-v2.0.7](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.6...@asu/component-header-v2.0.7) (2023-09-08)
+
+
+### Bug Fixes
+
+* **component-header:** removed visually-hidden in links ([b243af5](https://github.com/asu/asu-unity-stack/commit/b243af50a5bf1147dc14ddc38367586948010368))
+
 # [@asu/component-header-v2.0.6](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.5...@asu/component-header-v2.0.6) (2023-09-05)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@asu/components-core",
-  "version": "3.0.0",
+  "version": "3.1.2",
   "main": "./dist/libCore.cjs.js",
   "browser": "./dist/libCore.umd.js",
   "module": "./dist/libCore.es.js",
@@ -102,8 +102,10 @@
     "reactstrap": "^8.9.0"
   },
   "exports": {
-    "./dist/libCore.es.js": {
-      "default": "./src/index.js"
+    "./*": "./*",
+    ".": {
+      "import": "./dist/libCore.es.js",
+      "require": "./dist/libCore.cjs.js"
     }
   },
   "volta": {

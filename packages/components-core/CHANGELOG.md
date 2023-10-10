@@ -1,3 +1,29 @@
+# [@asu/components-core-v3.1.2](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.1.1...@asu/components-core-v3.1.2) (2023-10-03)
+
+
+### Bug Fixes
+
+* **components-core:** fix package.json exports ([4011fbe](https://github.com/ASU/asu-unity-stack/commit/4011fbe17e30aa6f293e9e5b22922c4aa8708f0a))
+
+# [@asu/components-core-v3.1.1](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.1.0...@asu/components-core-v3.1.1) (2023-10-02)
+
+
+### Bug Fixes
+
+* **components-core:** readMoreLink not required in ranming card ([904e8c6](https://github.com/ASU/asu-unity-stack/commit/904e8c629742f801955ebe7a58c28c7100fef04b))
+
+# [@asu/components-core-v3.1.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.0.0...@asu/components-core-v3.1.0) (2023-09-18)
+
+
+### Bug Fixes
+
+* **components-core:** ignore eslint warnings ([6304782](https://github.com/ASU/asu-unity-stack/commit/6304782438b84aabfc2d0e16e7ff8aeafcb35e60))
+
+
+### Features
+
+* **components-core:** updated events card ([05f6af4](https://github.com/ASU/asu-unity-stack/commit/05f6af48cc9bfbf42da767d0b46a994f5d1bef82))
+
 # [@asu/components-core-v3.0.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v2.2.2...@asu/components-core-v3.0.0) (2023-09-07)
 
 

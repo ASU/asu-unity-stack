@@ -1,3 +1,10 @@
+# [@asu/app-degree-pages-v2.1.5](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.1.4...@asu/app-degree-pages-v2.1.5) (2023-09-19)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** adjust card columns ([5be99e4](https://github.com/asu/asu-unity-stack/commit/5be99e42d81be3216e05a23f05d8ce0873350761))
+
 # [@asu/app-degree-pages-v2.1.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.1.3...@asu/app-degree-pages-v2.1.4) (2023-09-07)
 
 

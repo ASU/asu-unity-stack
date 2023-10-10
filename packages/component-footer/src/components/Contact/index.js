@@ -18,7 +18,7 @@ const Contact = ({
       <div className="container" id="footer-columns">
         <div className="row" data-testid="columns-container">
           <div className="col-xl-3" id="info-column">
-            <p className="h5">{title}</p>
+            <div className="h5">{title}</div>
             {contactLink && (
               <p className="contact-link">
                 <a href={contactLink}>Contact Us</a>

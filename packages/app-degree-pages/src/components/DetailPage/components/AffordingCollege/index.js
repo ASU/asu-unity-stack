@@ -17,7 +17,7 @@ function AffordingCollege() {
         <span className="highlight-gold">Affording college</span>
       </h2>
       <div className="mt-2 row">
-        <div className="mt-2 col-12 col-md-4">
+        <div className="mt-2 col-12 col-md-6 col-lg-4">
           <Card
             icon={["fas", "calculator"]}
             title="Tuition estimator"
@@ -32,7 +32,7 @@ function AffordingCollege() {
             ]}
           />
         </div>
-        <div className="mt-2 col-12 col-md-4">
+        <div className="mt-2 col-12 col-md-6 col-lg-4">
           <Card
             icon={["fas", "award"]}
             title="Scholarships"
@@ -47,7 +47,7 @@ function AffordingCollege() {
             ]}
           />
         </div>
-        <div className="mt-2 col-12 col-md-4">
+        <div className="mt-2 col-12 col-md-6 col-lg-4">
           <Card
             icon={["fas", "hand-holding-usd"]}
             title="Financial aid"

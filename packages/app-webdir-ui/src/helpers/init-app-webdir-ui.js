@@ -43,4 +43,4 @@ const initWebDirectory = ({ targetSelector, props = {} }) => {
   RenderReactWebDirectory(WebDirectoryComponent, props, targetSelector);
 };
 
-export { initSearchPage, initWebDirectory };
+export { initSearchPage, initWebDirectory, iSearchApp, WebDirectoryComponent };

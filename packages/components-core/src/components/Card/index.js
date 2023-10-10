@@ -212,6 +212,8 @@ const BaseCard = ({
             alt={imageAltText}
             dataTestId="card-image"
             cssClasses={["card-img-top"]}
+            cardLink={cardLink}
+            title={title}
           />
         )}
         {!image && icon && (

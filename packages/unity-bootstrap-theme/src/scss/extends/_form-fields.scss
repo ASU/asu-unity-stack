@@ -60,9 +60,9 @@ form.uds-form {
   input:focus,
   textarea:focus,
   select:focus {
-    outline: none !important;
-    box-shadow: none !important;
-    border: 2px solid $uds-color-base-gray-7 !important;
+    outline: none!important;
+    box-shadow: 0 0 0 1px $uds-color-base-gray-7 !important;
+    border: 1px solid $uds-color-base-gray-7 !important;
     border-radius: none;
   }
 
@@ -205,6 +205,9 @@ form.uds-form {
       border-bottom: 8px solid $uds-color-font-dark-error;
       // BS4 input height led to border eating padding. Resolved in variable
       // overrides by setting input heights to auto.
+      &:focus {
+        border-bottom: 8px solid $uds-color-font-dark-error !important;
+      }
     }
     // Radios and checks individual labels shouldn't be colored.
     .form-check-input:invalid ~ .form-check-label {
@@ -218,6 +221,9 @@ form.uds-form {
       border-bottom: 8px solid $uds-color-font-dark-success;
       // BS4 input height led to border eating padding. Resolved in variable
       // overrides by setting input heights to auto.
+      &:focus {
+        border-bottom: 8px solid $uds-color-font-dark-success !important;
+      }
     }
     // Radios and checks individual labels shouldn't be colored.
     .form-check-input:valid ~ .form-check-label {
@@ -246,6 +252,9 @@ form.uds-form {
     border-bottom: 8px solid $uds-color-font-dark-error;
     // BS4 input height led to border eating padding. Resolved in variable
     // overrides by setting input heights to auto.
+    &:focus {
+      border-bottom: 8px solid $uds-color-font-dark-error !important;
+    }
   }
   /* checks and radios */
   small.is-invalid,
@@ -283,6 +292,9 @@ form.uds-form {
     border-bottom: 8px solid $uds-color-font-dark-success;
     // BS4 input height led to border eating padding. Resolved in variable
     // overrides by setting input heights to auto.
+    &:focus {
+      border-bottom: 8px solid $uds-color-font-dark-success !important;
+    }
   }
   /* checks and radios */
   small.is-valid,
@@ -414,8 +426,11 @@ form.uds-form {
     textarea:focus,
     select:focus {
       background-color: $uds-color-base-gray-7;
-      border: 2px solid $uds-color-base-gray-1 !important;
       color: $uds-color-base-gray-1;
+      outline: none!important;
+      box-shadow: 0 0 0 1px $uds-color-base-gray-1 !important;
+      border: 1px solid $uds-color-base-gray-1 !important;
+      border-radius: none;
     }
 
     /* Dark Radios and Checkboxes */
@@ -477,9 +492,12 @@ form.uds-form {
     select.is-invalid {
       border-style: solid;
       border: 1px solid $uds-color-alerts-error;
-      border-bottom: 8px solid $uds-color-alerts-error;
+      border-bottom: 8px solid $uds-color-alerts-error !important;
       // BS4 input height led to border eating padding. Resolved in variable
       // overrides by setting input heights to auto.
+      &:focus {
+        border-bottom: 8px solid $uds-color-alerts-error !important;
+      }
     }
     .invalid-feedback {
       font-weight: bold;
@@ -501,6 +519,9 @@ form.uds-form {
       border-bottom: 8px solid $uds-color-base-green;
       // BS4 input height led to border eating padding. Resolved in variable
       // overrides by setting input heights to auto.
+      &:focus {
+        border-bottom: 8px solid $uds-color-base-green !important;
+      }
     }
     .valid-feedback {
       font-weight: bold;

@@ -45,6 +45,7 @@ const ASUSearchResultsList = ({
   const [isAnon, setIsAnon] = useState(false);
   const cardSize = type === "micro" ? "micro" : "large";
   const searchList = useRef(null);
+  const controller = new AbortController();
 
   const doSearch = (page = currentPage) => {
     if ((term && term.length > 0) || !engine.needsTerm) {
@@ -58,6 +59,7 @@ const ASUSearchResultsList = ({
         filters,
         display,
         rankGroup,
+        controller,
       })
         .then(res => {
           let filteredResults = res;
@@ -157,6 +159,7 @@ const ASUSearchResultsList = ({
 
   useEffect(() => {
     doSearch(1);
+    return () => controller?.abort();
   }, [term, sort, filters, itemsPerPage, profilesToFilterOut]);
 
   function expandClick(text) {
@@ -207,7 +210,7 @@ const ASUSearchResultsList = ({
               type="default"
               background="white"
               currentPage={currentPage}
-              totalPages={Math.ceil(totalResults / itemsPerPage)}
+              totalPages={Math.ceil(totalResults / itemsPerPage) > 100 ? 100 : Math.ceil(totalResults / itemsPerPage)}
               onChange={(e, action) => onPageChange(action)}
               showFirstButton
               showLastButton
