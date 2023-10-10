@@ -3,11 +3,10 @@ import React, { useState, useRef, useEffect } from "react";
 import {NavControls} from "../../../../components-core/src/components/TabbedPanels/components/NavControls";
 
 import { FilterContainer } from "./index.styles";
-
 const FilterComponent = ({
   filterLabel,
   choices = [],
-  onChoose = () => {},
+  onChoose = (args) => {},
   resetFilters = () => {},
 }) => {
   const [selected, setSelected] = useState(null);
@@ -17,26 +16,32 @@ const FilterComponent = ({
   const containerRef = useRef(null);
 
   const [scrollLeft, setScrollLeft] = useState(0);
-  const [scrollableWidth, setScrollableWidth] = useState();
+  const [scrollableWidth, setScrollableWidth] = useState(0);
 
   useEffect(() => {
     const onScroll = () => {
-      setScrollLeft(containerRef.current.scrollLeft);
+        setScrollLeft(containerRef.current.scrollLeft);
     };
-    containerRef.current.addEventListener("scroll", onScroll);
-    onScroll();
-    return () => containerRef.current.removeEventListener("scroll", onScroll);
+    if (containerRef.current) {
+      containerRef.current.addEventListener("scroll", onScroll);
+      onScroll();
+    }
+    return () => containerRef.current?.removeEventListener("scroll", onScroll);
   }, [scrollableWidth]);
 
   useEffect(() => {
     const onResize = () => {
-      setScrollableWidth(
-        containerRef.current.scrollWidth - containerRef.current.offsetWidth
-      );
+      if (containerRef.current) {
+        setScrollableWidth(
+          containerRef.current.scrollWidth - containerRef.current.offsetWidth
+        );
+      }
     };
-    containerRef.current.addEventListener("resize", onResize);
-    onResize();
-    return () => containerRef.removeEventListener("resize", onResize);
+    if (containerRef.current) {
+      containerRef.current.addEventListener("resize", onResize);
+      onResize();
+    }
+    return () => containerRef.current?.removeEventListener("resize", onResize);
   }, []);
 
   useEffect(() => {
@@ -47,18 +52,18 @@ const FilterComponent = ({
   }, []);
 
   const handleKeyPress = event => {
+    if (!containerRef.current) return;
+
     if (
       event.key === "ArrowRight" &&
-      focusedIndex + 1 < totalChoices &&
-      containerRef.current
+      focusedIndex + 1 < totalChoices
     ) {
       const focusedItem = containerRef.current?.children[focusedIndex + 1];
       setFocusedIndex(focusedIndex + 1);
       focusedItem.focus();
     } else if (
       event.key === "ArrowLeft" &&
-      focusedIndex - 1 >= 0 &&
-      containerRef.current
+      focusedIndex - 1 >= 0
     ) {
       const focusedItem = containerRef.current.children[focusedIndex - 1];
       setFocusedIndex(focusedIndex - 1);
@@ -72,7 +77,7 @@ const FilterComponent = ({
   };
 
   const slideNav = direction => {
-    containerRef.current.scrollBy({
+    containerRef?.current?.scrollBy({
       left: 200 * direction,
       behavior: "smooth",
     });
@@ -84,7 +89,7 @@ const FilterComponent = ({
       <div className="choices-wrapper">
         <NavControls
           hidePrev={scrollLeft === 0}
-          hideNext={scrollLeft >= scrollableWidth}
+          hideNext={scrollLeft >= (scrollableWidth - 5)} // account for offset in scrollableWidth
           clickPrev={() => {
             slideNav(-1);
           }}
