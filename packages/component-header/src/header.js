@@ -55,12 +55,16 @@ const ASUHeader = ({
     if (typeof window !== "undefined") {
       trackReactComponent({
         packageName: "component-header",
-        component: "NA",
+        component: "Component Header",
         type: "NA",
         configuration: {
           site,
           isPartner,
           searchUrl,
+          navTree,
+          parentOrg,
+          buttons,
+          mobileNavTree,
         },
       });
     }
