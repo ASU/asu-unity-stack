@@ -49,7 +49,9 @@ export const FilterContainer = styled.fieldset`
   }
 
   // TODO: Remove this line after next unity theme update in isearch.
+  @media screen and (max-width: 768px) {
     span.carousel-control-next-icon {
-      margin: 0 12px 0 8px; // Duplicated from _tabbed-panels.scss for immediate fix.
+     margin: 0 12px 0 8px; // Duplicated from _tabbed-panels.scss for immediate fix.
     }
+  }
 `;
