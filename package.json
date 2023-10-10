@@ -94,7 +94,7 @@
   "dependencies": {},
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+      "path": "./scripts/conventional-commits.js"
     }
   }
 }
