@@ -1,9 +1,8 @@
 // @ts-check
 import classNames from "classnames";
 import PropTypes from "prop-types";
-import React, { useEffect } from "react";
+import React from "react";
 
-import trackReactComponent from "../../../../../shared/functions/componentDatalayer";
 import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { sanitizeDangerousMarkup } from "../../core/utils/html-utils";
 import { Button } from "../Button";
@@ -48,20 +47,6 @@ export const Card = ({
   showBorders,
   cardLink,
 }) => {
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      trackReactComponent({
-        packageName: "components-core",
-        component: "Card",
-        type,
-        configuration: {
-          title,
-          cardLink,
-        },
-      });
-    }
-  }, []);
-
   return (
     <BaseCard
       type={type}

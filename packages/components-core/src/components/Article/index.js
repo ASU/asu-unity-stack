@@ -1,7 +1,7 @@
 // @ts-check
 import classNames from "classnames";
 import PropTypes from "prop-types";
-import React, { useEffect } from "react";
+import React from "react";
 import {
   EmailShareButton,
   EmailIcon,
@@ -14,7 +14,6 @@ import {
 } from "react-share";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 
-import trackReactComponent from "../../../../../shared/functions/componentDatalayer";
 import { sanitizeDangerousMarkup } from "../../core/utils/html-utils";
 import { Button } from "../Button";
 import { Wrapper, EventInfoWrapper } from "./index.styles";
@@ -49,22 +48,6 @@ export const Article = ({
     [`col-lg-8`]:
       type === "event" && (registrationUrl || zoomUrl || calendarUrl),
   });
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      trackReactComponent({
-        packageName: "components-core",
-        component: "Article",
-        type: "NA",
-        configuration: {
-          type,
-          articleUrl,
-          publicationDate,
-          title,
-        },
-      });
-    }
-  }, []);
 
   const primaryButton = () => {
     if (registrationUrl) {

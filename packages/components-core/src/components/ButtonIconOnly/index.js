@@ -1,8 +1,7 @@
 // @ts-check
 import PropTypes from "prop-types";
-import React, { useEffect } from "react";
+import React from "react";
 
-import trackReactComponent from "../../../../../shared/functions/componentDatalayer";
 import { trackGAEvent } from "../../core/services/googleAnalytics";
 
 const gaDefaultObject = {
@@ -29,19 +28,6 @@ export const ButtonIconOnly = ({
   size,
   cardTitle,
 }) => {
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      trackReactComponent({
-        packageName: "components-core",
-        component: "ButtonIconOnly",
-        type: "NA",
-        configuration: {
-          cardTitle,
-        },
-      });
-    }
-  }, []);
-
   const handleClick = text => {
     trackGAEvent({ ...gaDefaultObject, text, section: cardTitle });
     onClick?.();

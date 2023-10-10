@@ -2,9 +2,8 @@
 /* eslint react/jsx-props-no-spreading: "off" */
 import classNames from "classnames";
 import PropTypes from "prop-types";
-import React, { useEffect } from "react";
+import React from "react";
 
-import trackReactComponent from "../../../../../shared/functions/componentDatalayer";
 import { trackGAEvent } from "../../core/services/googleAnalytics";
 
 const gaDefaultObject = {
@@ -40,20 +39,6 @@ export const Button = ({
   target,
   ...props
 }) => {
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      trackReactComponent({
-        packageName: "components-core",
-        component: "Button",
-        type: "NA",
-        configuration: {
-          label,
-          cardTitle,
-        },
-      });
-    }
-  }, []);
-
   const btnClasses = classNames("btn", {
     [`btn-${color}`]: true,
     [`btn-md`]: size === "small",

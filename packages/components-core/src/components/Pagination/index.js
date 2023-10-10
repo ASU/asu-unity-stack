@@ -3,7 +3,6 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 
-import trackReactComponent from "../../../../../shared/functions/componentDatalayer";
 import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { iff } from "../../core/utils/conditionals";
 import { createRange } from "../../core/utils/numbers";
@@ -33,19 +32,6 @@ export const Pagination = ({
   onChange,
 }) => {
   const [selectedPage, setSelectedPage] = useState(null);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      trackReactComponent({
-        packageName: "components-core",
-        component: "Pagination",
-        type: "NA",
-        configuration: {
-          type,
-        },
-      });
-    }
-  }, []);
 
   useEffect(() => {
     setSelectedPage(currentPage);

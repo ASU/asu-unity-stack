@@ -1,9 +1,8 @@
 // @ts-check
 import classNames from "classnames";
 import PropTypes from "prop-types";
-import React, { useEffect } from "react";
+import React from "react";
 
-import trackReactComponent from "../../../../../shared/functions/componentDatalayer";
 import {
   contentPropType,
   imagePropType,
@@ -121,17 +120,6 @@ function headingHeroHtmlTemplate({
  * @returns {JSX.Element}
  */
 const Hero = props => {
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      trackReactComponent({
-        packageName: "components-core",
-        component: "Hero",
-        type: props.type || "NA",
-        configuration: {},
-      });
-    }
-  }, []);
-
   const type = props.type || "heading-hero";
 
   const templateTypes = {
