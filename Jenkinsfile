@@ -107,6 +107,9 @@ spec:
             }
         }
         stage('Deploy') {
+            when {
+              branch 'dev'
+            }
             steps {
                 container('node18') {
                     script {
@@ -114,10 +117,11 @@ spec:
                         sh 'yarn install --frozen-lockfile'
                         sh 'yarn build'
                         sh 'yarn build-storybook'
-                        sh 'yarn gulp'
 
                         withEnv(["GH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
-                            sh "node deploy-gh-pages.js ${env.BRANCH_NAME}"
+                          // Must pass branch name "dev" and "PUSH" for script to deploy
+                          // If branch!=="dev" build will be nested inside a folder
+                            sh "node ./scripts/deploy-gh-pages.js dev PUSH"
 
                         }
                     }
