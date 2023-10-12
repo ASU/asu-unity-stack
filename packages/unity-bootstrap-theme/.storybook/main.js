@@ -3,10 +3,20 @@ const path = require("path");
 module.exports = {
   stories: ["../**/*.stories.mdx", "../**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
+    "../../../.storybook-config",
     "@whitespace/storybook-addon-html",
     "@storybook/addon-links",
-    "@storybook/addon-essentials",
+    {
+      name: '@storybook/addon-essentials',
+      options: {
+        backgrounds: false, // 👈 disable the backgrounds addon
+      },
+    },
     "@storybook/addon-interactions",
+    {
+      name: '@storybook/addon-docs',
+      // options: { configureJSX: true },
+    },
   ],
   framework: "@storybook/react",
   core: {
