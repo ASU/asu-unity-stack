@@ -8,22 +8,13 @@ let push = process?.argv?.[3] === "PUSH" ? true: false;
 const options = {
   // default is the root (dev)
   dest: ".",
-  push: false,
+  push,
   // ensures we delete the root directory except for the branch folder
   remove: ["*", "!branch"]
 };
 
 if(BRANCH !== "dev"){
   options.dest = `branch/${process.argv[2]}`;
-}
-
-if(!push){
-  console.log(`
-Output gh-pages to local directory "./node_modules/.cache/gh-pages".
-
-PUSH argument should only be used from jenkin, with the exception
-jenkins is down and the static site needs an immediate fix.
-`);
 }
 
 console.log(options);
