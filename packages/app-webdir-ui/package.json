@@ -36,7 +36,7 @@
     "build-storybook": "build-storybook -s ./dist",
     "jsdoc": "jsdoc -c jsdoc.config.js",
     "predocs": "mkdir -p ./docs",
-    "docs": "jsdoc2md -c jsdoc.config.js --files ./src/core/types/** > ./docs/README.props.md",
+    "docs": "jsdoc2md -c jsdoc.config.js --files ./src/** > ./docs/README.props.md",
     "postdocs": "node ../../scripts/process-readme-props.js",
     "dev": "webpack-dev-server"
   },

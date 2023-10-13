@@ -68,11 +68,11 @@ export function logClick(query, docId, reqId, tags, { ...props }) {
   return new Promise(sendData);
 }
 /** Returns the top result with the highest score from a list of results.
-*
-* @param {Object[]} results - The list of results to search.
-* @param {string} engineName - The name of the search engine.
-* @returns {Object|null} The top result or null if no results meet the threshold.
-*/
+ *
+ * @param {Object[]} results - The list of results to search.
+ * @param {string} engineName - The name of the search engine.
+ * @returns {Object|null} The top result or null if no results meet the threshold.
+ */
 
 const getTopResult = (results, engineName) => {
   const topResult = results.reduce((prev, curr) => {
@@ -466,7 +466,7 @@ export const performSearch = function ({
         "sort-by": currentSort || "",
         "full_records": true,
         "profiles": filters.peopleInDepts,
-        "last_init": filters.lastInit || null
+        "last_init": filters.lastInit || null,
       };
       APICall = () => axios.post(query, data, { headers });
     }

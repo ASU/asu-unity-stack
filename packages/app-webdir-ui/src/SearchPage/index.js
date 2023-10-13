@@ -222,7 +222,7 @@ function SearchPage({
       </TabbedPanels>
     </SearchPageLayout>
   );
-};
+}
 
 SearchPage.propTypes = {
   API_URL: PropTypes.string,

@@ -216,7 +216,7 @@ function WebDirectory({
       />
     </FacultyRankLayout>
   );
-};
+}
 
 WebDirectory.propTypes = {
   deptIds: PropTypes.string,
