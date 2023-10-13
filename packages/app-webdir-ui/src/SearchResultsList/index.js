@@ -14,6 +14,34 @@ import { SearchResultsList } from "./index.styles";
 /*
   'type' must be 'micro', 'preview', or 'full'.
 */
+
+/**
+ * React component for displaying search results.
+ *
+ * @param {string} term - The search term.
+ * @param {string} sort - The sorting option.
+ * @param {string} type - The type of results must be 'micro', 'preview', or 'full'.
+ * @param {Object} engine - The search engine configuration.
+ * @param {string} titleText - The title text for the search results.
+ * @param {boolean} showSearchMessage - Indicates whether to show a search message.
+ * @param {string} seeAllResultsText - The text for seeing all results.
+ * @param {number} itemsPerPage - The number of items per page.
+ * @param {function} onExpandClick - Callback function for expanding results.
+ * @param {string} GASource - The Google Analytics source for tracking.
+ * @param {function} setPromotedResult - Callback function for setting promoted results.
+ * @param {boolean} hidePaginator - Indicates whether to hide the paginator.
+ * @param {function} registerResults - Callback function for registering results.
+ * @param {Object} filters - Filters for the search.
+ * @param {boolean} loggedIn - Indicates whether the user is logged in.
+ * @param {Array} profilesToFilterOut - Profiles to filter out from the results.
+ * @param {string} display - Display options for the results.
+ * @param {string} appPathFolder - The base path for the application folder.
+ * @param {boolean} localSection - Indicates whether the results belong to a local section.
+ * @param {string} rankGroup - The rank group for the results.
+ * @param {Array} icon - Icon information for the results.
+ * @returns {JSX.Element} The ASUSearchResultsList component.
+ */
+
 const ASUSearchResultsList = ({
   term,
   sort,

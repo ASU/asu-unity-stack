@@ -4,6 +4,15 @@ import {NavControls} from "../../../../components-core/src/components/TabbedPane
 
 import { FilterContainer } from "./index.styles";
 
+/**
+ * Prop types for FilterComponent component.
+ * @type {Object}
+ * @property {string} filterLabel - The label for the filter.
+ * @property {string[]} [choices=[]] - An array of choices for the filter.
+ * @property {function} [onChoose=() => {}] - A callback function triggered when a choice is selected.
+ * @property {function} [resetFilters=() => {}] - A callback function triggered to reset the filters.
+ */
+
 const FilterComponent = ({
   filterLabel,
   choices = [],
