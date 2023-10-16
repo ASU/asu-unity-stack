@@ -1,5 +1,3 @@
-import { googleAnalytics } from "@asu/unity-bootstrap-theme/js/data-layer.js";
-
 export const initTabs = function () {
   "use strict";
   const DOM_ELEMENT_A = "a";
@@ -165,6 +163,6 @@ export const initTabs = function () {
     }
 
     // Init goolge analytics
-    googleAnalytics();
+    if(typeof window.googleAnalytics === "function") { window.googleAnalytics(); }
   });
 };

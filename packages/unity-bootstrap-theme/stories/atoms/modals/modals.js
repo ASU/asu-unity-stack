@@ -1,5 +1,3 @@
-import { googleAnalytics } from "@asu/unity-bootstrap-theme/js/data-layer.js";
-
 export const initModals = () => {
   document
     .getElementById('openModalButton')
@@ -14,5 +12,5 @@ export const initModals = () => {
     });
 
   // Init google analytics
-  googleAnalytics();
+  if(typeof window.googleAnalytics === "function") { window.googleAnalytics(); }
 };
