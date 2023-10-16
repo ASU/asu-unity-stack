@@ -17,7 +17,7 @@ import { SearchResultsList } from "./index.styles";
 
 /**
  * React component for displaying search results.
- *
+ * @param {Object} props - The props for configuring the ASUSearchResultsList component.
  * @param {string} term - The search term.
  * @param {string} sort - The sorting option.
  * @param {string} type - The type of results must be 'micro', 'preview', or 'full'.
