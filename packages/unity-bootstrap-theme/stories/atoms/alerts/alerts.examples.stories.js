@@ -1,6 +1,5 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
 export default createComponent("Alerts", "Atoms", "Examples");
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
 export const AlertsComponent = createStory(
   <div>
@@ -120,8 +119,7 @@ export const AlertsComponent = createStory(
         </button>
       </div>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 AlertsComponent.args = {
   template: 1,

@@ -1,6 +1,5 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
 export default createComponent("Form Fields", "Atoms", "Examples");
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
 export const TextInputs = createStory(
   <form className="uds-form">
@@ -134,8 +133,7 @@ export const TextInputs = createStory(
       document.getElementById('exampleFocusInput').focus();
       </script>
       */}
-  </form>,
-  { initFunc }
+  </form>
 );
 TextInputs.args = {
   template: 1,
@@ -607,8 +605,7 @@ export const Textareas = createStory(
         message
       </small>
     </div>
-  </form>,
-  { initFunc }
+  </form>
 );
 Textareas.args = {
   template: 1,
@@ -1255,8 +1252,7 @@ export const Checkboxes = createStory(
         </label>
       </div>
     </fieldset>
-  </form>,
-  { initFunc }
+  </form>
 );
 Checkboxes.args = {
   template: 1,
@@ -1513,8 +1509,7 @@ export const Radios = createStory(
         </label>
       </div>
     </fieldset>
-  </form>,
-  { initFunc }
+  </form>
 );
 Radios.args = {
   template: 1,
@@ -3097,8 +3092,7 @@ export const Selects = createStory(
         Form error message
       </small>
     </div>
-  </form>,
-  { initFunc }
+  </form>
 );
 Selects.args = {
   template: 1,

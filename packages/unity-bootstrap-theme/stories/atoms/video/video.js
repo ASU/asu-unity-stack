@@ -53,7 +53,4 @@ export const initVideo = () => {
   $videoBtnPlay.addEventListener(EVENT_CLICK, handleBtnPlayClick);
   $videoOverlay.addEventListener(EVENT_CLICK, handleOverlayClick);
   $videoPlayer.addEventListener(EVENT_ENDED, handleVideoEnded);
-
-  // Init google analytics
-  if(typeof window.googleAnalytics === "function") { window.googleAnalytics(); }
 };

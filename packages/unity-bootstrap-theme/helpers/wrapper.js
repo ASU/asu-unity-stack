@@ -100,7 +100,11 @@ export const createStory = (
       // call init function after render every time
       const loaded = useRef(0);
       useEffect(()=>{
-        initFunc();
+        try{
+          initFunc();
+        }catch(err){
+          console.warn(err)
+        }
       },[loaded.current]);
       loaded.current++;
 

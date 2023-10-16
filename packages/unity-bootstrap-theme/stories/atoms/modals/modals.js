@@ -10,7 +10,4 @@ export const initModals = () => {
     ?.addEventListener('click', function () {
       document.getElementById('uds-modal').classList.remove('open');
     });
-
-  // Init google analytics
-  if(typeof window.googleAnalytics === "function") { window.googleAnalytics(); }
 };

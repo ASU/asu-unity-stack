@@ -279,16 +279,8 @@ export const FixedComponent = createStory(
         </tbody>
       </table>
     </div>
-  </div>,
-  {
-    initFunc: triggerDOMContentLoaded,
-  }
+  </div>
 );
-
-function triggerDOMContentLoaded() {
-  if (document.readyState !== "loading")
-    window.dispatchEvent(new Event("DOMContentLoaded"));
-}
 
 FixedComponent.args = {
   template: 1,

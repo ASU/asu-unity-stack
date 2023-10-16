@@ -6,6 +6,4 @@ export const rankingFunc = () => {
   $toggleIcon.addEventListener("click", function () {
     $infoLayer.classList.toggle("active");
   });
-
-  if(typeof window.googleAnalytics === "function") { window.googleAnalytics(); }
 };

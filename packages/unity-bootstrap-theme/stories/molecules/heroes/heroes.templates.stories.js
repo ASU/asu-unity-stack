@@ -1,4 +1,3 @@
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
 import {
   createComponent,
@@ -78,7 +77,6 @@ export const HeroSmall = createStory(
     </div>
   </div>,
   {
-    initFunc,
     supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
@@ -140,7 +138,6 @@ export const HeroMedium = createStory(
     </div>
   </div>,
   {
-    initFunc,
     supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
@@ -202,7 +199,6 @@ export const HeroLarge = createStory(
     </div>
   </div>,
   {
-    initFunc,
     supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
@@ -243,7 +239,6 @@ export const StoryHeroMedium = createStory(
     </div>
   </section>,
   {
-    initFunc,
     supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );
@@ -323,7 +318,6 @@ export const StoryHeroLarge = createStory(
     </div>
   </>,
   {
-    initFunc,
     supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );

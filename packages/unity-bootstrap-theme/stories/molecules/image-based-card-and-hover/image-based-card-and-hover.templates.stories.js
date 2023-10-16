@@ -1,4 +1,3 @@
-import { googleAnalytics as initFunc } from '@asu/unity-bootstrap-theme/js/data-layer.js';
 import React from 'react';
 
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
@@ -41,6 +40,5 @@ export const ImageBasedCardsWithCTA = createStory(
         </div>
       </div>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );

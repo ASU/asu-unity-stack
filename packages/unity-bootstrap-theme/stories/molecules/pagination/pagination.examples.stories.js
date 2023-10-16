@@ -1,6 +1,5 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
 export default createComponent("Pagination", "Molecules", "Examples");
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
 export const DisabledAndActiveStatesComponent = createStory(
   <nav aria-label="pagination">
@@ -66,8 +65,7 @@ export const DisabledAndActiveStatesComponent = createStory(
         <a aria-label="Next page" className="page-link page-link-icon" href="#" />
       </li>
     </ul>
-  </nav>,
-  { initFunc }
+  </nav>
 );
 
 export const LargeNumbersComponent = createStory(
@@ -150,6 +148,5 @@ export const LargeNumbersComponent = createStory(
         <a aria-label="next page" className="page-link page-link-icon" href="#" />
       </li>
     </ul>
-  </nav>,
-  { initFunc }
+  </nav>
 );

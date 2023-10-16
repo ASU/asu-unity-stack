@@ -1,6 +1,5 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
 export default createComponent("Accordions", "Atoms", "Examples");
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
 export const FoldableCardDefaultOpen = createStory(
   <div className="accordion">
@@ -50,8 +49,6 @@ export const FoldableCardDefaultOpen = createStory(
     </div>
   </div>
   </div>
-  ,
-  { initFunc }
 );
 FoldableCardDefaultOpen.args = {
   template: 1,
@@ -256,8 +253,7 @@ export const ColorAccents = createStory(
       {/* end .accordion-body */}
     </div>
     {/* end .card */}
-  </div>,
-  { initFunc }
+  </div>
 );
 
 export const IncludedIcons = createStory(
@@ -368,8 +364,7 @@ export const IncludedIcons = createStory(
       {/* end .accordion-body */}
     </div>
     {/* end .card */}
-  </div>,
-  { initFunc }
+  </div>
 );
 
 export const DisableFold = createStory(
@@ -469,6 +464,5 @@ export const DisableFold = createStory(
         {/* Component end */}
       </div>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );

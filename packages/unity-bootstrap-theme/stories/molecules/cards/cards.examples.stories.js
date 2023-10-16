@@ -1,4 +1,3 @@
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
 import cardsImage from "./cards-image.jpg";
@@ -261,8 +260,7 @@ export const cardDegree = createStory(
         test tag 3
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
 export const cardStory = createStory(
@@ -332,8 +330,7 @@ export const cardStory = createStory(
         test tag 3
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
 export const cardEvent = createStory(
@@ -417,8 +414,7 @@ export const cardEvent = createStory(
         test tag 3
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
 export const cardVariations = createStory(
@@ -996,7 +992,7 @@ export const cardVariations = createStory(
     </div>
   </div>,
   {
-    initFunc,
+    initFunc: initRankFunc,
     omitTemplate: true,
   }
 );
@@ -1020,7 +1016,7 @@ export const horizontal = createStory(
       </div>
     );
   },
-  { initFunc, omitTemplate: false }
+  { omitTemplate: false }
 );
 horizontal.argTypes = {
   numCards: {
@@ -1135,8 +1131,7 @@ export const checkboxStackedCard = createStory(
         test tag 3
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
 export const checkboxInlineCard = createStory(
@@ -1237,8 +1232,7 @@ export const checkboxInlineCard = createStory(
         test tag 3
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
 export const mediaTypeOverlayCard = createStory(
@@ -1445,7 +1439,7 @@ export const mediaTypeOverlayCard = createStory(
     </div>
   </div>,
   {
-    initFunc,
+    initFunc: initRankFunc,
     omitTemplate: true,
   }
 );

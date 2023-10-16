@@ -1,5 +1,4 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
 /*
 We want to allow this component to change color, size, and disabled status.
@@ -57,8 +56,7 @@ export const BasicButton = createStory(
         Button button
       </button>
     );
-  },
-  { initFunc }
+  }
 );
 
 export const ButtonAsLink = createStory(
@@ -80,8 +78,7 @@ export const ButtonAsLink = createStory(
         Button button
       </a>
     );
-  },
-  { initFunc }
+  }
 );
 
 export const ButtonWithIcon = createStory(
@@ -103,8 +100,7 @@ export const ButtonWithIcon = createStory(
         <span className="fas fa-rocket"></span>&nbsp;&nbsp;Gold button
       </a>
     );
-  },
-  { initFunc }
+  }
 );
 
 export const ButtonTag = createStory(
@@ -119,6 +115,5 @@ export const ButtonTag = createStory(
     data-ga-region="main content"
   >
     This is a default link
-  </a>,
-  { initFunc }
+  </a>
 );

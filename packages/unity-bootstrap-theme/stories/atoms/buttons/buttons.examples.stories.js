@@ -1,6 +1,5 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
 export default createComponent("Buttons", "Atoms", "Examples");
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
 export const ButtonColorsComponent = createStory(
   <div>
@@ -42,8 +41,7 @@ export const ButtonColorsComponent = createStory(
     <button type="button" className="btn btn-dark">
       Dark
     </button>
-  </div>,
-  { initFunc }
+  </div>
 );
 ButtonColorsComponent.args = {
   template: 1,
@@ -129,8 +127,7 @@ export const ButtonSizesComponent = createStory(
         </button>
       </div>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 ButtonSizesComponent.args = {
   template: 1,
@@ -147,8 +144,7 @@ export const ButtonWithIconComponent = createStory(
         <span className="fas fa-rocket"></span>&nbsp;&nbsp;Maroon button
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
 export const DisabledStateComponent = createStory(
@@ -182,8 +178,7 @@ export const DisabledStateComponent = createStory(
         Link
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
 export const ButtonTagsComponent = createStory(
@@ -205,8 +200,7 @@ export const ButtonTagsComponent = createStory(
         </a>
       </div>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
 export const IconOnlyButtonsColorAndSizesComponent = createStory(
@@ -254,8 +248,7 @@ export const IconOnlyButtonsColorAndSizesComponent = createStory(
         </button>
       </div>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 export const IconOnlyButtonsColorCombinationsComponent = createStory(
   <div className="container-fluid">
@@ -341,8 +334,7 @@ export const IconOnlyButtonsColorCombinationsComponent = createStory(
         </button>
       </div>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
 export const PrevAndNextButtonsComponent = createStory(
@@ -397,8 +389,7 @@ export const PrevAndNextButtonsComponent = createStory(
         </button>
       </div>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
 const demoButtonStyle = {
@@ -455,5 +446,4 @@ const TestButtons =
         </button>
       </div>
     </div>
-  ),
-  { initFunc });
+  ));

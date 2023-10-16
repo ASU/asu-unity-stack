@@ -9,7 +9,6 @@ export default createComponent(
   "Organisms",
   "Templates"
 );
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
 export const CardAndImageContent = createStory(
   <div className="uds-card-image-and-content">
@@ -42,7 +41,6 @@ export const CardAndImageContent = createStory(
     </div>
   </div>,
   {
-    initFunc,
     supportedTemplates: [layoutNames.FULL_WIDTH],
   }
 );

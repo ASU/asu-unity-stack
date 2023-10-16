@@ -90,7 +90,4 @@ export const initializeAnchorMenu = () => {
       e.target.classList.add('active');
     });
   }
-
-  // Init google analytics
-  if(typeof window.googleAnalytics === "function") { window.googleAnalytics(); }
 };

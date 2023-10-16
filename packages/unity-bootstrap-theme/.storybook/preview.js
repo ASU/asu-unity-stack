@@ -1,7 +1,27 @@
+import React, {useRef, useEffect} from "react";
 import "../src/scss/unity-bootstrap-theme.bundle.scss";
 
 // Import all the Bootstrap bundle
 import "../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min";
+import "../src/js/data-layer.js";
+
+const loadEvent = (Story)=>{
+  const loaded = useRef(0);
+  useEffect(()=>{
+    console.log(document.readyState)
+    if(document.readyState !== "loading") {
+      // globalThis = window
+      globalThis.dispatchEvent(new Event("DOMContentLoaded"));
+      globalThis.dispatchEvent(new Event('load'));
+    }
+    if(typeof globalThis.googleAnalytics === "function") { globalThis.googleAnalytics(); }
+
+  },[loaded.current]);
+  loaded.current++;
+  return <>
+    {Story()}
+  </>
+}
 
 export const parameters = {
   options: {
@@ -28,7 +48,7 @@ export const parameters = {
             'Navbar options', ['Readme', '*'],
             'No navigation', ['Readme', '*'],
             'Additional considerations', ['Readme', '*'],
-            'Mobile Breakpoint' ['Readme', '*'],
+            'Mobile Breakpoint', ['Readme', '*'],
           ],
           'Content Sections', ['Readme', '*'],
           'Hero', ['Readme', '*'],
@@ -60,3 +80,4 @@ export const parameters = {
     }
   },
 };
+export const decorators = [ loadEvent ];

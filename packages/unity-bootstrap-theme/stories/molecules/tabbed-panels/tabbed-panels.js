@@ -93,7 +93,8 @@ export const initTabs = function () {
   };
 
   // wait to load the page and all resources before initializing
-  window.addEventListener(EVENT_LOAD, () => {
+  window.addEventListener(EVENT_LOAD, function windowLoad() {
+    window.removeEventListener(EVENT_LOAD, windowLoad)
     // wait to DOM content is loaded before run these scripts
     document.addEventListener(EVENT_CLICK, function (e) {
       setButtonsCompatibility(e);
@@ -161,8 +162,5 @@ export const initTabs = function () {
         `${DOM_ELEMENT_UDS_TABBED_PANELS} ${DOM_ELEMENT_SCROLL_CONTROL_NEXT}`
       ).style.display = CSS_DISPLAY_NONE;
     }
-
-    // Init goolge analytics
-    if(typeof window.googleAnalytics === "function") { window.googleAnalytics(); }
   });
 };

@@ -3,7 +3,6 @@ import {
   createStory,
   layoutNames,
 } from "../../../helpers/wrapper.js";
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
 const extraOptions = {
   type: {
@@ -72,7 +71,6 @@ export const Alert = createStory(
     );
   },
   {
-    initFunc,
     supportedTemplates: [
       layoutNames.FULL_WIDTH,
       layoutNames.ONE_COLUMN,

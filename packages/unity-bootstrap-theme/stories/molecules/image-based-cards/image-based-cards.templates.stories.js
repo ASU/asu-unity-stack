@@ -1,4 +1,3 @@
-import { googleAnalytics as initFunc } from '@asu/unity-bootstrap-theme/js/data-layer.js';
 import React from 'react';
 
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
@@ -30,8 +29,7 @@ export const PortraitSM = createStory(
         Call to action button
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
 export const PortraitMD = createStory(
@@ -58,8 +56,7 @@ export const PortraitMD = createStory(
         Call to action button
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
 export const LandscapeSM = createStory(
@@ -86,8 +83,7 @@ export const LandscapeSM = createStory(
         Call to action button
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
 export const LandscapeMD = createStory(
@@ -114,8 +110,7 @@ export const LandscapeMD = createStory(
         Call to action button
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
 export const LandscapeLG = createStory(
@@ -142,8 +137,7 @@ export const LandscapeLG = createStory(
         Call to action button
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
 export const SquareSM = createStory(
@@ -170,8 +164,7 @@ export const SquareSM = createStory(
         Call to action button
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
 export const SquareMD = createStory(
@@ -198,8 +191,7 @@ export const SquareMD = createStory(
         Call to action button
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
 export const SquareLG = createStory(
@@ -226,6 +218,5 @@ export const SquareLG = createStory(
         Call to action button
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );

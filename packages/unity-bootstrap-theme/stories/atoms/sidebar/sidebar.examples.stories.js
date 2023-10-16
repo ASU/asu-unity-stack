@@ -1,6 +1,5 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
 export default createComponent("Sidebar", "Atoms", "Examples");
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
 export const Sidebar = createStory(
   <div className="container my-5">
@@ -275,6 +274,5 @@ export const Sidebar = createStory(
       {/* end .col */}
     </div>
     {/* end .row */}
-  </div>,
-  { initFunc }
+  </div>
 );
