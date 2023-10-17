@@ -1,12 +1,13 @@
 import PropTypes from "prop-types";
 import React, { useState, useRef, useEffect } from "react";
-import {NavControls} from "../../../../components-core/src/components/TabbedPanels/components/NavControls";
 
+import { NavControls } from "../../../../components-core/src/components/TabbedPanels/components/NavControls";
 import { FilterContainer } from "./index.styles";
+
 const FilterComponent = ({
   filterLabel,
   choices = [],
-  onChoose = (args) => {},
+  onChoose = () => {},
   resetFilters = () => {},
 }) => {
   const [selected, setSelected] = useState(null);
@@ -20,7 +21,7 @@ const FilterComponent = ({
 
   useEffect(() => {
     const onScroll = () => {
-        setScrollLeft(containerRef.current.scrollLeft);
+      setScrollLeft(containerRef.current.scrollLeft);
     };
     if (containerRef.current) {
       containerRef.current.addEventListener("scroll", onScroll);
@@ -54,17 +55,11 @@ const FilterComponent = ({
   const handleKeyPress = event => {
     if (!containerRef.current) return;
 
-    if (
-      event.key === "ArrowRight" &&
-      focusedIndex + 1 < totalChoices
-    ) {
+    if (event.key === "ArrowRight" && focusedIndex + 1 < totalChoices) {
       const focusedItem = containerRef.current?.children[focusedIndex + 1];
       setFocusedIndex(focusedIndex + 1);
       focusedItem.focus();
-    } else if (
-      event.key === "ArrowLeft" &&
-      focusedIndex - 1 >= 0
-    ) {
+    } else if (event.key === "ArrowLeft" && focusedIndex - 1 >= 0) {
       const focusedItem = containerRef.current.children[focusedIndex - 1];
       setFocusedIndex(focusedIndex - 1);
       focusedItem.focus();
@@ -77,8 +72,17 @@ const FilterComponent = ({
   };
 
   const slideNav = direction => {
-    containerRef?.current?.scrollBy({
-      left: 200 * direction,
+    const container = containerRef.current;
+    const maxScrollLeft = container.scrollWidth - container.clientWidth;
+    const currentScrollLeft = container.scrollLeft;
+
+    let newScrollLeft = currentScrollLeft + 200 * direction;
+
+    // Ensure the scroll position stays within bounds
+    newScrollLeft = Math.max(0, Math.min(maxScrollLeft, newScrollLeft));
+
+    container.scrollTo({
+      left: newScrollLeft,
       behavior: "smooth",
     });
   };
@@ -88,8 +92,8 @@ const FilterComponent = ({
       <legend>{filterLabel}</legend>
       <div className="choices-wrapper">
         <NavControls
-          hidePrev={scrollLeft === 0}
-          hideNext={scrollLeft >= (scrollableWidth - 5)} // account for offset in scrollableWidth
+          hidePrev={scrollLeft <= 0}
+          hideNext={scrollLeft >= scrollableWidth - 5} // account for offset in scrollableWidth
           clickPrev={() => {
             slideNav(-1);
           }}
