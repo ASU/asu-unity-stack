@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v3.2.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.1...@asu/app-webdir-ui-v3.2.2) (2023-10-17)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** update components-core requirement. ([bf0a063](https://github.com/asu/asu-unity-stack/commit/bf0a063b0b90b8289b3017c4aececd2a28adf594))
+
 # [@asu/app-webdir-ui-v3.2.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.0...@asu/app-webdir-ui-v3.2.1) (2023-10-17)
 
 
