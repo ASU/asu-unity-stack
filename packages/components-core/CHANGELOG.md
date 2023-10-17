@@ -1,3 +1,11 @@
+# [@asu/components-core-v3.1.3](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.1.2...@asu/components-core-v3.1.3) (2023-10-17)
+
+
+### Bug Fixes
+
+* **components-core:** removed console log ([03464ab](https://github.com/ASU/asu-unity-stack/commit/03464ab6aee174b5ca64f7b0e60981421dee809c))
+* **components-core:** useEffect guards in cleanup function of TabbedPanels ([80b3ac0](https://github.com/ASU/asu-unity-stack/commit/80b3ac0c1556b7d0deb021271995f5aff564c8b8))
+
 # [@asu/components-core-v3.1.2](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.1.1...@asu/components-core-v3.1.2) (2023-10-03)
 
 
