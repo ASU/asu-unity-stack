@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v3.2.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.0...@asu/app-webdir-ui-v3.2.1) (2023-10-17)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** fix rendered more hooks than during previous render ([f1d8b03](https://github.com/asu/asu-unity-stack/commit/f1d8b0338fae7b00e189b5017f9ca69830ef1e43))
+
 # [@asu/app-webdir-ui-v3.2.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.1.0...@asu/app-webdir-ui-v3.2.0) (2023-10-03)
 
 
