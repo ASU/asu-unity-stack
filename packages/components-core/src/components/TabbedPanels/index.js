@@ -67,7 +67,6 @@ const TabbedPanels = ({
   const [scrollableWidth, setScrollableWidth] = useState();
 
   useEffect(() => {
-    console.log("useEffect");
     const onScroll = () => {
       setScrollLeft(headerTabs.current.scrollLeft);
     };
