@@ -6,7 +6,6 @@
   "browser": "./dist/webdirUI.umd.js",
   "module": "./dist/webdirUI.es.js",
   "types": "./dist/main.d.ts",
-  "author": "Mark Lambe",
   "license": "MIT",
   "private": false,
   "files": [
@@ -41,7 +40,7 @@
     "dev": "webpack-dev-server"
   },
   "dependencies": {
-    "@asu/components-core": "^2.1.0",
+    "@asu/components-core": "^3.1.3",
     "@babel/preset-env": "^7.15.0",
     "@babel/preset-react": "^7.14.5",
     "axios": "^0.24.0",
