@@ -142,8 +142,17 @@ const TabbedPanels = ({
   });
 
   const slideNav = direction => {
-    headerTabs.current.scrollBy({
-      left: 200 * direction,
+    const container = headerTabs.current;
+    const maxScrollLeft = container.scrollWidth - container.clientWidth;
+    const currentScrollLeft = container.scrollLeft;
+
+    let newScrollLeft = currentScrollLeft + 200 * direction;
+
+    // Ensure the scroll position stays within bounds
+    newScrollLeft = Math.max(0, Math.min(maxScrollLeft, newScrollLeft));
+
+    container.scrollTo({
+      left: newScrollLeft,
       behavior: "smooth",
     });
   };
@@ -189,7 +198,7 @@ const TabbedPanels = ({
           })}
         </div>
         <NavControls
-          hidePrev={scrollLeft === 0}
+          hidePrev={scrollLeft <= 0}
           hideNext={scrollLeft >= scrollableWidth}
           clickPrev={() => {
             slideNav(-1);
