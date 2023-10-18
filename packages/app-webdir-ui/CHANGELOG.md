@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v3.2.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.3...@asu/app-webdir-ui-v3.2.4) (2023-10-18)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** last init filter sentence-cased ([eb03ab7](https://github.com/asu/asu-unity-stack/commit/eb03ab7b924a19168ecc4b62349853667caa1119))
+
 # [@asu/app-webdir-ui-v3.2.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.2...@asu/app-webdir-ui-v3.2.3) (2023-10-18)
 
 

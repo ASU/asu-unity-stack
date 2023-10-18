@@ -1,6 +1,6 @@
 {
   "name": "@asu/app-webdir-ui",
-  "version": "3.2.3",
+  "version": "3.2.4",
   "description": "App Webdir UI",
   "main": "./dist/webdirUI.cjs.js",
   "browser": "./dist/webdirUI.umd.js",
