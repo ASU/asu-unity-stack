@@ -414,7 +414,13 @@ export const AnchorMenu = createStory(
     <div style={{ height: "1000px" }}></div>
   </div>,
   {
-    initFunc,
     omitTemplate: true, // This removes the wrapper provided by createStory and renders your story as-is, avoiding the need to wrap it in a container div, required for this story
   }
 );
+
+AnchorMenu.parameters = {
+  initFunc: {
+    disable: false,
+    code: initFunc
+  }
+}

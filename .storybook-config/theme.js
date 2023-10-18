@@ -17,7 +17,7 @@ export default create({
   // UI
   appBg: '#ffffff',
   appContentBg: '#ffffff',
-  appBorderColor: '#585C6D',
+  appBorderColor: '#d0d0d0',
   appBorderRadius: 4,
 
   // Text colors
@@ -31,6 +31,6 @@ export default create({
   // Form colors
   inputBg: '#ffffff',
   inputBorder: '#747474',
-  inputTextColor: '#191919',
+  inputTextColor: '#000000',
   inputBorderRadius: 0,
 });
