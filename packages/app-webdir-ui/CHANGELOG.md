@@ -1,3 +1,12 @@
+# [@asu/app-webdir-ui-v3.2.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.2...@asu/app-webdir-ui-v3.2.3) (2023-10-18)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** fixed negative scroll width check ([d78894e](https://github.com/asu/asu-unity-stack/commit/d78894e10f5ba6875c7de5d2cb745d6e61fbd2d0))
+* **app-webdir-ui:** updated alpha filter component styles and logic ([3db627f](https://github.com/asu/asu-unity-stack/commit/3db627f0c1c538379364b6f9980f4ce4d591e510))
+* **app-webdir-ui:** updated alpha filter styles ([f6a2c45](https://github.com/asu/asu-unity-stack/commit/f6a2c454094c3bc3caa357bd61e86ea88ea7110f))
+
 # [@asu/app-webdir-ui-v3.2.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.1...@asu/app-webdir-ui-v3.2.2) (2023-10-17)
 
 
