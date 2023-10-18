@@ -63,7 +63,7 @@ const FacultyRankTabPanels = ({
         >
           {alphaFilter === "true" && (
             <FilterComponent
-              filterLabel="Filter By Last Initial"
+              filterLabel="Filter by last initial"
               choices={[
                 "A",
                 "B",
