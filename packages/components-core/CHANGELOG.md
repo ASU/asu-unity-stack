@@ -1,3 +1,10 @@
+# [@asu/components-core-v3.1.4](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.1.3...@asu/components-core-v3.1.4) (2023-10-18)
+
+
+### Bug Fixes
+
+* **components-core:** fixed tab panels error that did not account for negative scroll width ([185051f](https://github.com/ASU/asu-unity-stack/commit/185051f3a860195f982b90503dfedee6e1e08b61))
+
 # [@asu/components-core-v3.1.3](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.1.2...@asu/components-core-v3.1.3) (2023-10-17)
 
 
