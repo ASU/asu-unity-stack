@@ -14,6 +14,19 @@ import {
 } from "./components/tabs";
 import { SearchPageLayout } from "./index.styles";
 
+/**
+ * React component for the ASU search page.
+ *
+ * @param {Object} props - The props for configuring the search page.
+ * @param {string} props.API_URL - The API URL for the search functionality.
+ * @param {string} props.searchApiVersion - The version of the search API.
+ * @param {boolean} props.loggedIn - Indicates whether the user is logged in.
+ * @param {boolean} props.deptAdmin - Indicates whether the user is a department admin.
+ * @param {string} props.profileURLBase - The base URL for user profiles.
+ * @param {string} props.appPathFolder - The folder path for the application.
+ * @returns {JSX.Element} The SearchPage component.
+ */
+
 function SearchPage({
   API_URL,
   searchApiVersion,

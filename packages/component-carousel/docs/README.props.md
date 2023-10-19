@@ -18,17 +18,11 @@
 <dd></dd>
 <dt><a href="#CardProps">CardProps</a> : <code>Object</code></dt>
 <dd></dd>
-<dt><a href="#FeedHeader">FeedHeader</a> : <code>Object</code></dt>
-<dd></dd>
-<dt><a href="#FeedCtaButton">FeedCtaButton</a> : <code>Object</code></dt>
-<dd></dd>
-<dt><a href="#FeedCardButton">FeedCardButton</a> : <code>Object</code></dt>
-<dd></dd>
-<dt><a href="#DataSource">DataSource</a> : <code>Object</code></dt>
-<dd></dd>
-<dt><a href="#FeedType">FeedType</a> : <code>Object</code></dt>
+<dt><a href="#ComponentType">ComponentType</a> : <code>Object</code></dt>
 <dd></dd>
 <dt><a href="#HeroProps">HeroProps</a> : <code>Object</code></dt>
+<dd></dd>
+<dt><a href="#ImageComponentProps">ImageComponentProps</a> : <code>Object</code></dt>
 <dd></dd>
 <dt><a href="#ButtonProps">ButtonProps</a> : <code>Object</code></dt>
 <dd></dd>
@@ -163,11 +157,9 @@
 | --- | --- |
 | [type] | <code>string</code> | 
 | [horizontal] | <code>boolean</code> | 
-| [clickable] | <code>boolean</code> | 
-| [clickHref] | <code>string</code> | 
 | [image] | <code>string</code> | 
 | [imageAltText] | <code>string</code> | 
-| [title] | <code>string</code> | 
+| title | <code>string</code> | 
 | [icon] | <code>Array.&lt;string&gt;</code> | 
 | [body] | <code>string</code> | 
 | [eventLocation] | <code>string</code> | 
@@ -178,66 +170,18 @@
 | [eventFormat] | <code>&quot;stack&quot;</code> \| <code>&quot;inline&quot;</code> | 
 | [width] | <code>&quot;25%&quot;</code> \| <code>&quot;50%&quot;</code> \| <code>&quot;75%&quot;</code> \| <code>&quot;100%&quot;</code> | 
 | [tags] | [<code>Array.&lt;TagsProps&gt;</code>](#TagsProps) | 
+| [showBorders] | <code>boolean</code> | 
+| [cardLink] | <code>string</code> | 
 
-<a name="FeedHeader"></a>
+<a name="ComponentType"></a>
 
-## FeedHeader : <code>Object</code>
+## ComponentType : <code>Object</code>
 **Kind**: global typedef  
 **Properties**
 
 | Name | Type |
 | --- | --- |
-| [color] | <code>&quot;white&quot;</code> \| <code>&quot;dark&quot;</code> | 
-| [text] | <code>string</code> | 
-
-<a name="FeedCtaButton"></a>
-
-## FeedCtaButton : <code>Object</code>
-**Kind**: global typedef  
-**Properties**
-
-| Name | Type |
-| --- | --- |
-| [color] | <code>&quot;gold&quot;</code> \| <code>&quot;maroon&quot;</code> \| <code>&quot;gray&quot;</code> \| <code>&quot;dark&quot;</code> | 
-| [text] | <code>string</code> | 
-| [url] | <code>string</code> | 
-
-<a name="FeedCardButton"></a>
-
-## FeedCardButton : <code>Object</code>
-**Kind**: global typedef  
-**Properties**
-
-| Name | Type |
-| --- | --- |
-| [color] | <code>&quot;gold&quot;</code> \| <code>&quot;maroon&quot;</code> \| <code>&quot;gray&quot;</code> \| <code>&quot;dark&quot;</code> | 
-| [text] | <code>string</code> | 
-| [size] | <code>&quot;default&quot;</code> \| <code>&quot;small&quot;</code> \| <code>&quot;medium&quot;</code> \| <code>&quot;large&quot;</code> | 
-
-<a name="DataSource"></a>
-
-## DataSource : <code>Object</code>
-**Kind**: global typedef  
-**Properties**
-
-| Name | Type |
-| --- | --- |
-| [url] | <code>string</code> | 
-| [filters] | <code>string</code> | 
-
-<a name="FeedType"></a>
-
-## FeedType : <code>Object</code>
-**Kind**: global typedef  
-**Properties**
-
-| Name | Type |
-| --- | --- |
-| [header] | [<code>FeedHeader</code>](#FeedHeader) | 
-| [ctaButton] | [<code>FeedCtaButton</code>](#FeedCtaButton) | 
-| [cardButton] | [<code>FeedCardButton</code>](#FeedCardButton) | 
-| [dataSource] | [<code>DataSource</code>](#DataSource) | 
-| [maxItems] | <code>number</code> | 
+| [numItems] | <code>number</code> | 
 
 <a name="HeroProps"></a>
 
@@ -255,6 +199,26 @@
 | [contentsColor] | <code>&quot;white&quot;</code> \| <code>&quot;black&quot;</code> |  |
 | [type] | <code>&quot;heading-hero&quot;</code> \| <code>&quot;story-hero&quot;</code> | defaut value is "heading-hero" |
 
+<a name="ImageComponentProps"></a>
+
+## ImageComponentProps : <code>Object</code>
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type |
+| --- | --- |
+| src | <code>string</code> | 
+| alt | <code>string</code> | 
+| [cssClasses] | <code>Array.&lt;string&gt;</code> | 
+| [loading] | <code>&quot;lazy&quot;</code> \| <code>&quot;eager&quot;</code> | 
+| [decoding] | <code>&quot;sync&quot;</code> \| <code>&quot;async&quot;</code> \| <code>&quot;auto&quot;</code> | 
+| [fetchPriority] | <code>&quot;auto&quot;</code> \| <code>&quot;high&quot;</code> \| <code>&quot;low&quot;</code> | 
+| [width] | <code>string</code> | 
+| [height] | <code>string</code> | 
+| [dataTestId] | <code>string</code> | 
+| [cardLink] | <code>string</code> | 
+| [title] | <code>string</code> | 
+
 <a name="ButtonProps"></a>
 
 ## ButtonProps : <code>Object</code>
@@ -264,6 +228,7 @@
 | Name | Type |
 | --- | --- |
 | [label] | <code>string</code> | 
+| [cardTitle] | <code>string</code> | 
 | [ariaLabel] | <code>string</code> | 
 | [block] | <code>boolean</code> | 
 | [disabled] | <code>boolean</code> | 
@@ -290,6 +255,7 @@
 | [innerRef] | <code>React.RefObject</code> | 
 | [onClick] | <code>function</code> | 
 | [size] | <code>&quot;large&quot;</code> \| <code>&quot;small&quot;</code> | 
+| [cardTitle] | <code>string</code> | 
 
 <a name="TagsProps"></a>
 
@@ -300,6 +266,7 @@
 | Name | Type |
 | --- | --- |
 | [label] | <code>string</code> | 
+| [cardTitle] | <code>string</code> | 
 | [ariaLabel] | <code>string</code> | 
 | [color] | <code>string</code> | 
 | [disabled] | <code>boolean</code> | 
@@ -381,6 +348,7 @@
 | --- | --- |
 | event | <code>React.MouseEvent.&lt;HTMLAnchorElement, MouseEvent&gt;</code> | 
 | id | <code>number</code> | 
+| [cardTitle] | <code>string</code> | 
 
 <a name="AccordionCardItemProps"></a>
 
@@ -458,8 +426,12 @@
 | [disabled] | <code>boolean</code> | 
 | [pageLinkIcon] | <code>boolean</code> | 
 | [selectedPage] | <code>boolean</code> | 
+| [ellipses] | <code>boolean</code> | 
+| [dataId] | <code>string</code> | 
 | [onClick] | <code>function</code> | 
 | children | <code>React.ReactNode</code> | 
+| [ariaLabel] | <code>string</code> | 
+| [ariaDisabled] | <code>boolean</code> | 
 
 <a name="TestimonialStyle"></a>
 
@@ -514,6 +486,7 @@
 | [title] | <code>string</code> | 
 | [caption] | <code>string</code> | 
 | [className] | <code>string</code> | 
+| [controls] | <code>boolean</code> | 
 
 <a name="ButtonProps"></a>
 
@@ -633,7 +606,7 @@
 
 | Name | Type |
 | --- | --- |
-| imageItems | <code>Array.&lt;ImageCarouselItem&gt;</code> | 
+| imageItems | [<code>Array.&lt;ImageGalleryCarouselItem&gt;</code>](#ImageGalleryCarouselItem) | 
 | [width] | <code>string</code> | 
 | [maxWidth] | <code>string</code> | 
 | [hasContent] | <code>boolean</code> | 
