@@ -115,15 +115,13 @@ spec:
                     script {
                         echo '# Final, post-publish install and build to include just published pkgs...'
                         sh 'yarn install --frozen-lockfile'
-                        sh 'yarn build'
+                        sh 'yarn build-storybook'
 
                         withEnv(["GH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
-                            echo '# Prebuild Storybook static site as dry-run...'
-                            sh 'yarn deploy-storybook:dev'
-                            echo '# Compile templates and copy files for build deploy...'
-                            sh 'yarn gulp'
-                            echo '# Storybook static site final build and deploy...'
-                            sh 'yarn deploy-storybook --existing-output-dir=build'
+                          // Must pass branch name "dev" and "PUSH" for script to deploy
+                          // If branch!=="dev" build will be nested inside a folder
+                            sh "node ./scripts/deploy-gh-pages.js dev PUSH"
+
                         }
                     }
                 }
