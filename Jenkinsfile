@@ -120,7 +120,7 @@ spec:
                         withEnv(["GH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
                           // Must pass branch name "dev" and "PUSH" for script to deploy
                           // If branch!=="dev" build will be nested inside a folder
-                            sh "node ./scripts/deploy-gh-pages.js dev PUSH"
+                          sh "node ./scripts/deploy-gh-pages.js dev PUSH"
 
                         }
                     }
