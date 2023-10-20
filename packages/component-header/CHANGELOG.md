@@ -1,3 +1,10 @@
+# [@asu/component-header-v2.0.8-testing.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.7...@asu/component-header-v2.0.8-testing.1) (2023-10-20)
+
+
+### Bug Fixes
+
+* **component-header:** update Peer Dependency Components-core to allow version 2 or 3 ([bb3eb07](https://github.com/asu/asu-unity-stack/commit/bb3eb07e50f4811d3a78d38c4304a3a45b3568c7))
+
 # [@asu/component-header-v2.0.7](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.6...@asu/component-header-v2.0.7) (2023-09-08)
 
 
