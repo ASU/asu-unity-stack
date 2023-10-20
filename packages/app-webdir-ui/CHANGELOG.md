@@ -1,3 +1,55 @@
+# [@asu/app-webdir-ui-v3.2.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.3...@asu/app-webdir-ui-v3.2.4) (2023-10-18)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** last init filter sentence-cased ([eb03ab7](https://github.com/asu/asu-unity-stack/commit/eb03ab7b924a19168ecc4b62349853667caa1119))
+
+# [@asu/app-webdir-ui-v3.2.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.2...@asu/app-webdir-ui-v3.2.3) (2023-10-18)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** fixed negative scroll width check ([d78894e](https://github.com/asu/asu-unity-stack/commit/d78894e10f5ba6875c7de5d2cb745d6e61fbd2d0))
+* **app-webdir-ui:** updated alpha filter component styles and logic ([3db627f](https://github.com/asu/asu-unity-stack/commit/3db627f0c1c538379364b6f9980f4ce4d591e510))
+* **app-webdir-ui:** updated alpha filter styles ([f6a2c45](https://github.com/asu/asu-unity-stack/commit/f6a2c454094c3bc3caa357bd61e86ea88ea7110f))
+
+# [@asu/app-webdir-ui-v3.2.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.1...@asu/app-webdir-ui-v3.2.2) (2023-10-17)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** update components-core requirement. ([bf0a063](https://github.com/asu/asu-unity-stack/commit/bf0a063b0b90b8289b3017c4aececd2a28adf594))
+
+# [@asu/app-webdir-ui-v3.2.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.0...@asu/app-webdir-ui-v3.2.1) (2023-10-17)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** fix rendered more hooks than during previous render ([f1d8b03](https://github.com/asu/asu-unity-stack/commit/f1d8b0338fae7b00e189b5017f9ca69830ef1e43))
+
+# [@asu/app-webdir-ui-v3.2.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.1.0...@asu/app-webdir-ui-v3.2.0) (2023-10-03)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** add last_init to axios.post ([ec80ede](https://github.com/asu/asu-unity-stack/commit/ec80edea57c058f3ecdddb1a154d09dae46204f3))
+* **app-webdir-ui:** edited filter styles ([3161d38](https://github.com/asu/asu-unity-stack/commit/3161d38494fa660b396e9b8b41f941198eecd20a))
+* **app-webdir-ui:** improve accessibility on alpha filter ([74d1059](https://github.com/asu/asu-unity-stack/commit/74d1059e13d86233386151c6ea56ad2f2c227740))
+* **app-webdir-ui:** style change to alpha filter ([a3e9022](https://github.com/asu/asu-unity-stack/commit/a3e90227cf2c022a5f2fbdc52e5cfb5c4f51cc73))
+
+
+### Features
+
+* **app-webdir-ui:** added alpha sort on web directory ([d8d442b](https://github.com/asu/asu-unity-stack/commit/d8d442b525a3ae23d358d1bfa58e2dfcd151430d))
+
+# [@asu/app-webdir-ui-v3.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.0.4...@asu/app-webdir-ui-v3.1.0) (2023-10-03)
+
+
+### Features
+
+* **@asu/app-webdir-ui:** export Router components ([ffe7caa](https://github.com/asu/asu-unity-stack/commit/ffe7caaef0c59fe4569bf89e540352dad375124d))
+
 # [@asu/app-webdir-ui-v3.0.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.0.3...@asu/app-webdir-ui-v3.0.4) (2023-09-08)
 
 

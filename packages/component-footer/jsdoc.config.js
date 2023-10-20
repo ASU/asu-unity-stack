@@ -7,8 +7,8 @@ module.exports = {
   source: {
     ...coreConfig.source,
     include: [
-      ...coreConfig.source.include,
-      "./src/",
+      "./src/core/models",
+      "./src/components",
     ],
   },
 };

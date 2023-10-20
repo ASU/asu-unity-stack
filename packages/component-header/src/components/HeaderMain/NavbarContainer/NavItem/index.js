@@ -42,12 +42,9 @@ NavLinkIcon.propTypes = {
  */
 
 /**
- * @param {{
- *  link: NavTreeProps,
- *  setItemOpened: (value: any) => void,
- *  itemOpened: number | undefined,
- * }} props
- * @returns
+ * @param {{ link: NavTreeProps, setItemOpened: Function, itemOpened: number }} props
+ * @returns {JSX.Element}
+ *
  */
 
 const NavItem = ({ link, setItemOpened, itemOpened }) => {

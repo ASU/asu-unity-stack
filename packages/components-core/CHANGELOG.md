@@ -1,3 +1,32 @@
+# [@asu/components-core-v3.1.4](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.1.3...@asu/components-core-v3.1.4) (2023-10-18)
+
+
+### Bug Fixes
+
+* **components-core:** fixed tab panels error that did not account for negative scroll width ([185051f](https://github.com/ASU/asu-unity-stack/commit/185051f3a860195f982b90503dfedee6e1e08b61))
+
+# [@asu/components-core-v3.1.3](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.1.2...@asu/components-core-v3.1.3) (2023-10-17)
+
+
+### Bug Fixes
+
+* **components-core:** removed console log ([03464ab](https://github.com/ASU/asu-unity-stack/commit/03464ab6aee174b5ca64f7b0e60981421dee809c))
+* **components-core:** useEffect guards in cleanup function of TabbedPanels ([80b3ac0](https://github.com/ASU/asu-unity-stack/commit/80b3ac0c1556b7d0deb021271995f5aff564c8b8))
+
+# [@asu/components-core-v3.1.2](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.1.1...@asu/components-core-v3.1.2) (2023-10-03)
+
+
+### Bug Fixes
+
+* **components-core:** fix package.json exports ([4011fbe](https://github.com/ASU/asu-unity-stack/commit/4011fbe17e30aa6f293e9e5b22922c4aa8708f0a))
+
+# [@asu/components-core-v3.1.1](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.1.0...@asu/components-core-v3.1.1) (2023-10-02)
+
+
+### Bug Fixes
+
+* **components-core:** readMoreLink not required in ranming card ([904e8c6](https://github.com/ASU/asu-unity-stack/commit/904e8c629742f801955ebe7a58c28c7100fef04b))
+
 # [@asu/components-core-v3.1.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.0.0...@asu/components-core-v3.1.0) (2023-09-18)
 
 

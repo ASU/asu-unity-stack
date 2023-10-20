@@ -5,7 +5,7 @@ import { Meta } from '@storybook/addon-docs';
 # ASU Unity Bootstrap Theme
 ## Quickstart Guide
 
-The Unity Bootstrap Theme is a Bootstrap 5-based web UI kit implementing ASU's Web Standards. Developers use the Unity Bootstrap Theme to build accessible and ASU Web Standards 2.0 compliant web sites and applications. 
+The Unity Bootstrap Theme is a Bootstrap 5-based web UI kit implementing ASU's Web Standards. Developers use the Unity Bootstrap Theme to build accessible and ASU Web Standards 2.0 compliant web sites and applications.
 
 This is the Storybook reference site for the Unity Bootstrap theme. Browse the design components here to identify one you want to use. Implement the HTML markup associated with that design component in your site or application, include the Unity Bootstrap Theme's CSS and JS files, and you're in business.
 
@@ -40,9 +40,16 @@ The ASU Unity Design System packages are published to GitHub's package registry.
 5. Test installing packages using yarn or npm inside of another NPM project:
 ```yarn add @asu/design-tokens```
 
-### TROUBLESHOOTING INSTALLATION ERRORS
+### TROUBLESHOOTING ERRORS
 
 If you get errors having to do with yarn not being able to find a package on the registry, try running ```yarn config list``` at the project root and look for the ```registry:``` key under yarn config. If it is not set to ```https://registry.yarnpkg.com``` then run ```yarn config delete registry``` and recheck config.
+
+For custom compilation and sub-themes using the `unity-bootstrap-theme` package, make sure your bundling/compilation tool is compatible with the scss. For example, if you are usiing Gulp for scss compilation, you will need to handle the new module imports used in our webpack configuration.
+
+In the old bs4 theme we would import some bootstrap scss with `@import "../../node_modules/bootstrap/scss/root";`
+In the new theme it is imported directly with  `@import "bootstrap/scss/functions";`
+
+[This slack thread](https://asu-tech.slack.com/archives/C01ABUVU8LQ/p1695234506292239) has some more information about this issue and using Gulp. *Must be a member of the ASU Community Slack workspace to view.*
 
 
 ## Advanced Details for Unity Developers and Contributors

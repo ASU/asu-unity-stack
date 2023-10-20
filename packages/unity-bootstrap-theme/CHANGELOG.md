@@ -1,3 +1,42 @@
+# [@asu/unity-bootstrap-theme-v1.7.7](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.6...@asu/unity-bootstrap-theme-v1.7.7) (2023-10-18)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fixed tabbed panels chevron styles ([9bf2e04](https://github.com/ASU/asu-unity-stack/commit/9bf2e0404a39bf376a215acf4032d578222e6f7d))
+* **unity-bootstrap-theme:** fixed tabbed panels styles for arrows ([0abbaf3](https://github.com/ASU/asu-unity-stack/commit/0abbaf3ab687f27a76f46cea40f396b70201ecc0))
+
+# [@asu/unity-bootstrap-theme-v1.7.6](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.5...@asu/unity-bootstrap-theme-v1.7.6) (2023-10-09)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** add -moz -webkit and -ms specific hyphen styles ([b3ef359](https://github.com/ASU/asu-unity-stack/commit/b3ef359b041320542aafa87dea99065d4a46dcda))
+* **unity-bootstrap-theme:** blockquote component with long words distorts image ([1201b73](https://github.com/ASU/asu-unity-stack/commit/1201b73e57a5669c4851057f7153e86620f06e87))
+
+# [@asu/unity-bootstrap-theme-v1.7.5](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.4...@asu/unity-bootstrap-theme-v1.7.5) (2023-10-06)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fixed ordered lists allignment issues ([56b9e86](https://github.com/ASU/asu-unity-stack/commit/56b9e864c4f7023f045c21aa63211627205f18ff))
+
+# [@asu/unity-bootstrap-theme-v1.7.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.3...@asu/unity-bootstrap-theme-v1.7.4) (2023-10-03)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix package.json exports ([45cb15d](https://github.com/ASU/asu-unity-stack/commit/45cb15d4056a931f25bee1c37775dbf9aee0da96))
+* **unity-bootstrap-theme:** video hero gray overlay fix ([8ebb7b3](https://github.com/ASU/asu-unity-stack/commit/8ebb7b39fb28a19a44d24b84e376502d65c59819))
+
+# [@asu/unity-bootstrap-theme-v1.7.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.2...@asu/unity-bootstrap-theme-v1.7.3) (2023-10-02)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** update alt text on footer ranking logo ([481e194](https://github.com/ASU/asu-unity-stack/commit/481e194fb0a0a35f1fbf74af2ad144404bcffcd5))
+* **unity-bootstrap-theme:** update innovation footer logo ([d6e5f8e](https://github.com/ASU/asu-unity-stack/commit/d6e5f8e741d6d08618a0cbce568b56673baab62e))
+
 # [@asu/unity-bootstrap-theme-v1.7.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.1...@asu/unity-bootstrap-theme-v1.7.2) (2023-09-27)
 
 

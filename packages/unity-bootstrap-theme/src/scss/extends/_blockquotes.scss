@@ -12,6 +12,17 @@ blockquote {
   font-weight: inherit;
   padding-left: 0;
   max-width: none;
+  p {
+    max-width: unset;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    hyphenate-limit-chars: 12 3 4;
+  }
 }
 
 // In an older version of this element, the quote glyph was applied as a
@@ -95,7 +106,6 @@ blockquote:before {
       width: 72px;
       height: 72px;
     }
-
     blockquote p:first-of-type:before {
       content: '\201C';
     }
@@ -164,8 +174,8 @@ blockquote:before {
       gap: $uds-size-spacing-4;
 
       img {
-        width: 120px;
-        height: 120px;
+        min-width: 120px;
+        min-height: 120px;
       }
     }
 

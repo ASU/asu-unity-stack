@@ -5,11 +5,11 @@ import React from "react";
 import { ColumnSection } from "../ColumnSection";
 
 /**
- * @param {{
- *  contact: import('../../core/models/types').Contact
- * }} props
- * @returns {JSX.Element}
+ * @typedef {import("../../core/models/types").Contact} Contact
+ *
+ * @param {{contact: Contact}} props
  */
+
 const Contact = ({
   contact: { title, contactLink, contributionLink, columns },
 }) => {

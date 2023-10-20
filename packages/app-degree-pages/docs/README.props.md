@@ -22,6 +22,8 @@
 <dd></dd>
 <dt><a href="#HeroProps">HeroProps</a> : <code>Object</code></dt>
 <dd></dd>
+<dt><a href="#ImageComponentProps">ImageComponentProps</a> : <code>Object</code></dt>
+<dd></dd>
 <dt><a href="#ButtonProps">ButtonProps</a> : <code>Object</code></dt>
 <dd></dd>
 <dt><a href="#ButtonIconOnlyProps">ButtonIconOnlyProps</a> : <code>Object</code></dt>
@@ -204,11 +206,9 @@
 | --- | --- |
 | [type] | <code>string</code> | 
 | [horizontal] | <code>boolean</code> | 
-| [clickable] | <code>boolean</code> | 
-| [clickHref] | <code>string</code> | 
 | [image] | <code>string</code> | 
 | [imageAltText] | <code>string</code> | 
-| [title] | <code>string</code> | 
+| title | <code>string</code> | 
 | [icon] | <code>Array.&lt;string&gt;</code> | 
 | [body] | <code>string</code> | 
 | [eventLocation] | <code>string</code> | 
@@ -219,6 +219,8 @@
 | [eventFormat] | <code>&quot;stack&quot;</code> \| <code>&quot;inline&quot;</code> | 
 | [width] | <code>&quot;25%&quot;</code> \| <code>&quot;50%&quot;</code> \| <code>&quot;75%&quot;</code> \| <code>&quot;100%&quot;</code> | 
 | [tags] | [<code>Array.&lt;TagsProps&gt;</code>](#TagsProps) | 
+| [showBorders] | <code>boolean</code> | 
+| [cardLink] | <code>string</code> | 
 
 <a name="ComponentType"></a>
 
@@ -246,6 +248,26 @@
 | [contentsColor] | <code>&quot;white&quot;</code> \| <code>&quot;black&quot;</code> |  |
 | [type] | <code>&quot;heading-hero&quot;</code> \| <code>&quot;story-hero&quot;</code> | defaut value is "heading-hero" |
 
+<a name="ImageComponentProps"></a>
+
+## ImageComponentProps : <code>Object</code>
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type |
+| --- | --- |
+| src | <code>string</code> | 
+| alt | <code>string</code> | 
+| [cssClasses] | <code>Array.&lt;string&gt;</code> | 
+| [loading] | <code>&quot;lazy&quot;</code> \| <code>&quot;eager&quot;</code> | 
+| [decoding] | <code>&quot;sync&quot;</code> \| <code>&quot;async&quot;</code> \| <code>&quot;auto&quot;</code> | 
+| [fetchPriority] | <code>&quot;auto&quot;</code> \| <code>&quot;high&quot;</code> \| <code>&quot;low&quot;</code> | 
+| [width] | <code>string</code> | 
+| [height] | <code>string</code> | 
+| [dataTestId] | <code>string</code> | 
+| [cardLink] | <code>string</code> | 
+| [title] | <code>string</code> | 
+
 <a name="ButtonProps"></a>
 
 ## ButtonProps : <code>Object</code>
@@ -255,6 +277,7 @@
 | Name | Type |
 | --- | --- |
 | [label] | <code>string</code> | 
+| [cardTitle] | <code>string</code> | 
 | [ariaLabel] | <code>string</code> | 
 | [block] | <code>boolean</code> | 
 | [disabled] | <code>boolean</code> | 
@@ -281,6 +304,7 @@
 | [innerRef] | <code>React.RefObject</code> | 
 | [onClick] | <code>function</code> | 
 | [size] | <code>&quot;large&quot;</code> \| <code>&quot;small&quot;</code> | 
+| [cardTitle] | <code>string</code> | 
 
 <a name="TagsProps"></a>
 
@@ -291,6 +315,7 @@
 | Name | Type |
 | --- | --- |
 | [label] | <code>string</code> | 
+| [cardTitle] | <code>string</code> | 
 | [ariaLabel] | <code>string</code> | 
 | [color] | <code>string</code> | 
 | [disabled] | <code>boolean</code> | 
@@ -372,6 +397,7 @@
 | --- | --- |
 | event | <code>React.MouseEvent.&lt;HTMLAnchorElement, MouseEvent&gt;</code> | 
 | id | <code>number</code> | 
+| [cardTitle] | <code>string</code> | 
 
 <a name="AccordionCardItemProps"></a>
 
@@ -449,8 +475,12 @@
 | [disabled] | <code>boolean</code> | 
 | [pageLinkIcon] | <code>boolean</code> | 
 | [selectedPage] | <code>boolean</code> | 
+| [ellipses] | <code>boolean</code> | 
+| [dataId] | <code>string</code> | 
 | [onClick] | <code>function</code> | 
 | children | <code>React.ReactNode</code> | 
+| [ariaLabel] | <code>string</code> | 
+| [ariaDisabled] | <code>boolean</code> | 
 
 <a name="TestimonialStyle"></a>
 
@@ -505,6 +535,7 @@
 | [title] | <code>string</code> | 
 | [caption] | <code>string</code> | 
 | [className] | <code>string</code> | 
+| [controls] | <code>boolean</code> | 
 
 <a name="AnchorMenuProps"></a>
 
@@ -527,6 +558,7 @@ This type set the `url` and `isActive` optional
 | [customizeYourCollegeExperience] | <code>boolean</code> | 
 | [globalOpportunity] | <code>boolean</code> | 
 | [attendOnline] | <code>boolean</code> | 
+| [whyChooseAsu] | <code>boolean</code> | 
 | [programContactInfo] | <code>boolean</code> | 
 | [externalAnchors] | [<code>Array.&lt;AnchorMenuItem&gt;</code>](#AnchorMenuItem) | 
 
@@ -576,9 +608,10 @@ This type set the `url` and `isActive` optional
 
 | Name | Type |
 | --- | --- |
-| concurrentDegreeMajorMaps | <code>string</code> | 
 | onlineMajorMapURL | <code>string</code> | 
-| majorMapOnCampusArchiveURL | <code>string</code> | 
+| majorMapOnCampusURL | <code>string</code> | 
+| subPlnMajorMaps | <code>string</code> | 
+| subPln | <code>string</code> | 
 
 <a name="AtAGlanceProps"></a>
 
@@ -604,6 +637,7 @@ This type set the `url` and `isActive` optional
 | Name | Type |
 | --- | --- |
 | graduateRequirements | <code>string</code> | 
+| isMinorOrCertificate | <code>boolean</code> | 
 | additionalRequirements | <code>string</code> | 
 | transferRequirements | <code>string</code> | 
 
@@ -841,6 +875,7 @@ This type set the `url` and `isActive` optional
 | [collegeAcadOrg] | <code>string</code> | 
 | [departmentCode] | <code>string</code> | 
 | [showInactivePrograms] | <code>boolean</code> \| <code>&quot;true&quot;</code> \| <code>&quot;false&quot;</code> | 
+| [blacklistAcadPlans] | <code>Array</code> | 
 
 <a name="GridListProps"></a>
 
@@ -880,6 +915,7 @@ This type set the `url` and `isActive` optional
 | [hero] | [<code>HeroProps</code>](#HeroProps) | 
 | [introContent] | [<code>IntroContentProps</code>](#IntroContentProps) | 
 | [programList] | [<code>GridListProps</code>](#GridListProps) | 
+| [degreesPerPage] | <code>number</code> | 
 
 <a name="tagHeadings"></a>
 
