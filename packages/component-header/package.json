@@ -37,7 +37,7 @@
     "predocs": "mkdir -p ./docs",
     "docs": "jsdoc2md --no-cache -c jsdoc.config.js --files ./src/components > ./docs/README.props.md",
     "postdocs": "node ../../scripts/process-readme-props.js",
-    "build-storybook": "build-storybook -s ./dist"
+    "build-storybook": "build-storybook -s ./dist -o ../../build/$npm_package_name"
   },
   "peerDependencies": {
     "@asu/components-core": "^2.1.0",

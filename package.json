@@ -12,6 +12,7 @@
   "scripts": {
     "lerna-clean": "lerna clean && rm -rf ./node_modules",
     "lint": "lerna run lint",
+    "build-storybook": "rm -rf ./build && lerna run build-storybook && gulp",
     "build-components-core": "lerna run --scope @asu/components-core build",
     "build-component-carousel": "lerna run --scope @asu/component-carousel build",
     "build": "lerna run --ignore @asu/components-core --ignore @asu/component-carousel build",
@@ -24,8 +25,6 @@
     "percy": "lerna run percy",
     "start": "node server/server.js",
     "stop": "node server/server.stop.js",
-    "deploy-storybook:dev": "storybook-to-ghpages --out=build --packages packages --monorepo-index-generator server/storybook-index-generator.js --source-branch=dev --ci --dry-run",
-    "deploy-storybook": "node ./scripts/deploy-check.js && storybook-to-ghpages --out=build --packages packages --monorepo-index-generator server/storybook-index-generator.js --source-branch=dev --ci",
     "prepare": "husky install",
     "commit": "cz",
     "check-element-changes": "node ./scripts/check-element-changes.js -d"
@@ -53,7 +52,6 @@
     "@commitlint/config-lerna-scopes": "^12.0.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "10.0.1",
-    "@storybook/storybook-deployer": "^2.8.16",
     "clean-webpack-plugin": "^3.0.0",
     "commitizen": "^4.2.3",
     "copy-webpack-plugin": "^8.1.1",
@@ -70,6 +68,8 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "gh-pages": "^6.0.0",
+    "glob": "^7.1.3",
     "gulp": "^4.0.2",
     "gulp-clean": "^0.4.0",
     "gulp-filter": "^7.0.0",
