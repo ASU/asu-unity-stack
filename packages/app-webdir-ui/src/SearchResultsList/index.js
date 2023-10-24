@@ -4,9 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 import { trackGAEvent } from "../core/services/googleAnalytics";
 import {
-  performSearch,
-  anonFormatter,
-  filterOutResults,
+  performSearch
 } from "../helpers/search";
 import { SearchMessage } from "../SearchPage/components/SearchMessage";
 import { SearchResultsList } from "./index.styles";
@@ -96,11 +94,10 @@ const ASUSearchResultsList = ({
               return Object.keys(result).length > 1;
             });
           }
-          if (profilesToFilterOut) {
-            filteredResults = filterOutResults(res, profilesToFilterOut);
-          }
           const formattedResults = engine.formatter({
             results: filteredResults,
+            page,
+            itemsPerPage,
             cardSize,
             filters,
             appPathFolder: appPathFolder || engine.appPathFolder,
@@ -122,7 +119,7 @@ const ASUSearchResultsList = ({
             }
           }
           if (engine.method === "POST") {
-            setTotalResults(filters.peopleInDepts.length);
+            setTotalResults(filteredResults.length);
           } else {
             setTotalResults(formattedResults.page.total_results);
           }

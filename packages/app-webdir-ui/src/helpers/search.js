@@ -360,14 +360,18 @@ export const engines = {
     resultsPerSummaryPage: 6,
     supportedSortTypes: ["_score_desc", "last_name_desc", "last_name_asc"],
     method: "POST",
-    formatter: ({ results, cardSize, filters, appPathFolder }) =>
-      webDirDeptsFormatter({
+    formatter: ({ results, page, itemsPerPage, cardSize, filters, appPathFolder }) => {
+      const startIndex = (page - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const resultsToDisplay = results.slice(startIndex, endIndex);
+
+      return webDirDeptsFormatter({
         engineName: engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
-        results,
+        results: resultsToDisplay,
         cardSize,
         filters,
         appPathFolder,
-      }),
+      })},
     needsTerm: false,
   },
 };
@@ -421,6 +425,10 @@ export const performSearch = function ({
         const deptIDValues = filters.deptIds.map(n => `${n}`).join(",");
         query = `${query}&dept_ids=${deptIDValues}`;
       }
+      if (display.doNotDisplayProfiles) {
+        const doNotDisplayProfilesParam = `profiles_to_exclude=${display.doNotDisplayProfiles}`;
+        query = `${query}&${doNotDisplayProfilesParam}`;
+      }
       if (filters && filters.peopleIds) {
         const asuriteIDParam = filters.peopleIds.map(n => `${n}`).join(",");
         query = `${query}&asurite_ids=${asuriteIDParam}`;
@@ -458,15 +466,13 @@ export const performSearch = function ({
         "X-CSRF-Token": tokenResponse.data,
       };
       const data = {
-        "size":
-          filters.peopleInDepts < itemsPerPage
-            ? filters.peopleInDepts.length
-            : itemsPerPage,
-        "page": page || "",
+        "size": 500, // This is to retrieve all results and handle paging on the front end.
+        "page": 1, // This is to retrieve all results and handle paging on the front end.
         "sort-by": currentSort || "",
         "full_records": true,
         "profiles": filters.peopleInDepts,
         "last_init": filters.lastInit || null,
+        "profiles_to_exclude": display.doNotDisplayProfiles || null,
       };
       APICall = () => axios.post(query, data, { headers });
     }
@@ -499,30 +505,4 @@ export const performSearch = function ({
       });
   }
   return new Promise(search);
-};
-
-export const filterOutResults = (results, stringOfProfilesToExclude) => {
-  let arrOfTotalResults;
-  let filteredResults;
-  if (!Array.isArray(results)) {
-    arrOfTotalResults = results.results;
-  } else {
-    arrOfTotalResults = results;
-  }
-  const tempProfilesToFilterOut = stringOfProfilesToExclude
-    .split(",")
-    .map(x => x.trim());
-  if (arrOfTotalResults[0].asurite_id.raw) {
-    filteredResults = arrOfTotalResults.filter(x => {
-      return !tempProfilesToFilterOut.includes(x.asurite_id.raw);
-    });
-  } else {
-    filteredResults = arrOfTotalResults.filter(x => {
-      return !tempProfilesToFilterOut.includes(x.asurite_id);
-    });
-  }
-  if (!Array.isArray(results)) {
-    return { meta: { ...results.meta }, results: filteredResults };
-  }
-  return filteredResults;
 };
