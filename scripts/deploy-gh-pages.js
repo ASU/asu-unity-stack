@@ -29,6 +29,7 @@ if(typeof process?.env?.GH_TOKEN !== "undefined") {
   console.log("Added GH_TOKEN Option");
 }
 
+process.env.NODE_DEBUG = "gh-pages";
 
 require('./deploy-check');
 
