@@ -24,7 +24,7 @@ if(typeof process?.env?.GH_TOKEN !== "undefined") {
  * This configuration will avoid logging the GH_TOKEN if there is an error.
  */
   options.repo = "https://" + process.env.GH_TOKEN + "@github.com/ASU/asu-unity-stack.git";
-  options.silent = true;
+  // options.silent = true;
 
   console.log("Added GH_TOKEN Option");
 }
@@ -33,7 +33,11 @@ process.env.NODE_DEBUG = "gh-pages";
 
 require('./deploy-check');
 
-ghpages.publish('build', options, function(){
+ghpages.publish('build', options, function(err){
+
+  if(err) {
+    console.log(err);
+  }
 
   if(push){
     console.log(`Published gh-pages branch: ${BRANCH}`);
