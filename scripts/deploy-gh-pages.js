@@ -17,6 +17,14 @@ if(BRANCH !== "dev"){
   options.dest = `branch/${process.argv[2]}`;
 }
 
+if(typeof process?.env?.GH_TOKEN !== "undefined") {
+  /**
+ * This configuration will avoid logging the GH_TOKEN if there is an error.
+ */
+  options.repo = "https://" + process.env.GH_TOKEN + "@github.com/ASU/asu-unity-stack.git";
+  options.silent = true;
+}
+
 console.log(options);
 
 require('./deploy-check');
