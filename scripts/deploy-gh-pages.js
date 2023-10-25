@@ -17,38 +17,40 @@ if(BRANCH !== "dev"){
   options.dest = `branch/${process.argv[2]}`;
 }
 
-console.log(options);
-
+// Is this the best way to determin the Jenkins environment?
 if(typeof process?.env?.GH_TOKEN !== "undefined") {
-  /**
- * This configuration will avoid logging the GH_TOKEN if there is an error.
- */
-  options.repo = "https://" + process.env.GH_TOKEN + "@github.com/ASU/asu-unity-stack.git";
+  // gh-pages needs Jenkins user information
+  options.user = {
+    name: "asu-jenkins-devops",
+    email: "jenkins_app@asu.edu"
+  };
+
+  console.log("options object, before adding GH_TOKEN",options,`\n`);
+
+  // Next section may not be needed
+
+  // This configuration will avoid logging the GH_TOKEN if there is an error.
+  // options.repo = "https://" + process.env.GH_TOKEN + "@github.com/ASU/asu-unity-stack.git";
   // options.silent = true;
-
-  console.log("Added GH_TOKEN Option");
+  // console.log("Added GH_TOKEN Option");
+} else {
+  console.log("options object", options, `\n`);
 }
-
 
 require('./deploy-check');
 
 ghpages.publish('build', options, function(err){
-
   if(err) {
+    // Error
     console.log(err);
-  }
-
-  if(push){
+  } else if(push) {
+    // Success gh-pages deploy
     console.log(`Published gh-pages branch: ${BRANCH}`);
-  }
-  else{
-    console.log(`
-Option to push was false!
-
-Output gh-pages to local directory "./node_modules/.cache/gh-pages".
-
-PUSH argument should only be used from jenkin, with the exception
-jenkins is down and the static site needs an immediate fix.
-  `);
+  } else {
+    // Success Local build
+    console.log(`\nOption to push was false!\n\n` +
+      `Output gh-pages to local directory "./node_modules/.cache/gh-pages".\n\n` +
+      `PUSH argument should only be used from jenkin, with the exception\n\n` +
+      `Jenkins is down and the static site needs an immediate fix.`);
   }
 });
