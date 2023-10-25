@@ -30,9 +30,9 @@ if(typeof process?.env?.GH_TOKEN !== "undefined") {
   // Next section may not be needed
 
   // This configuration will avoid logging the GH_TOKEN if there is an error.
-  // options.repo = "https://" + process.env.GH_TOKEN + "@github.com/ASU/asu-unity-stack.git";
+  options.repo = "https://" + process.env.GH_TOKEN + "@github.com/ASU/asu-unity-stack.git";
   // options.silent = true;
-  // console.log("Added GH_TOKEN Option");
+  console.log("Added GH_TOKEN Option");
 } else {
   console.log(`options object`, options, `\n`);
 }
