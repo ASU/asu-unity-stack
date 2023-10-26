@@ -17,7 +17,6 @@ if(BRANCH !== "dev"){
   options.dest = `branch/${process.argv[2]}`;
 }
 
-// Is this the best way to determin the Jenkins environment?
 if(typeof process?.env?.GH_TOKEN !== "undefined") {
   // gh-pages needs Jenkins user information
   options.user = {
@@ -27,11 +26,9 @@ if(typeof process?.env?.GH_TOKEN !== "undefined") {
 
   console.log(`options object, before adding GH_TOKEN`, options, `\n`);
 
-  // Next section may not be needed
-
   // This configuration will avoid logging the GH_TOKEN if there is an error.
   options.repo = "https://" + process.env.GH_TOKEN + "@github.com/ASU/asu-unity-stack.git";
-  // options.silent = true;
+  options.silent = true;
   console.log("Added GH_TOKEN Option");
 } else {
   console.log(`options object`, options, `\n`);
