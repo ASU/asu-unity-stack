@@ -1,3 +1,12 @@
+# [@asu/app-webdir-ui-v3.2.5](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.4...@asu/app-webdir-ui-v3.2.5) (2023-10-26)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** fix rendered more hooks than during previous render ([e120d17](https://github.com/asu/asu-unity-stack/commit/e120d17ba25072e760153b58847c310b6aa368f9))
+* **app-webdir-ui:** focus cursor in search box on page load ([23bed9e](https://github.com/asu/asu-unity-stack/commit/23bed9e9929349b1680ae21e7895abf93216bf51))
+* **app-webdir-ui:** updated refs and ran linting on app-webdir-ui ([96c78db](https://github.com/asu/asu-unity-stack/commit/96c78db116895302fde54d555dc591989626f9ca))
+
 # [@asu/app-webdir-ui-v3.2.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.3...@asu/app-webdir-ui-v3.2.4) (2023-10-18)
 
 
