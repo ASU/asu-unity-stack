@@ -1,5 +1,6 @@
 import React, {useRef, useEffect} from "react";
 import "../src/scss/unity-bootstrap-theme.bundle.scss";
+import { removeFontAwesomeChanges } from "./local-addon/helpers";
 
 // Import all the Bootstrap bundle
 import "../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min";
@@ -52,12 +53,6 @@ export const parameters = {
     },
     root: "#html-root", // can be customized to wrap an element
     removeComments: /^\s*\s*$/,
-    transform: (code) => {
-      // remove Fontawesome transforming span into svg
-      code = code.replace(/<svg.*?<\/svg>/gi, "");
-      code = code.replace(/(<!--\s)(<span.*?class=.*?fa-.*?><\/span>)(\s-->)/gi, "$2");
-      code = code.replace(/(<!--\s)(<i.*?class=.*?fa-.*?><\/i>)(\s-->)/gi, "$2");
-      return code;
-    }
+    transform: (code) => removeFontAwesomeChanges(code)
   },
 };

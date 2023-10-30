@@ -1,8 +1,9 @@
 const path = require("path");
 
 module.exports = {
-  stories: ["../**/*.stories.mdx", "../**/*.stories.@(js|jsx|ts|tsx)"],
+  stories: ["../**/*.js.stories.mdx", "../**/*.stories.mdx", "../**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
+    "../../../.storybook-config/dataLayerListener",
     "./local-addon",
     "../../../.storybook-config",
     "@whitespace/storybook-addon-html",

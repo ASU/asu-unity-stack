@@ -1,9 +1,7 @@
 
+import React from "react";
 import { useMemo, useEffect } from '@storybook/addons';
-
-import { clearStyles, addStyle } from './../helpers/styleInjection';
-
-
+import { clearStyles, addStyle } from './helpers/styleInjection';
 
 export const withColumns = (StoryFn, context) => {
   const { globals, parameters } = context;

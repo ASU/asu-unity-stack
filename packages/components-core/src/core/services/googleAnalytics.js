@@ -20,6 +20,7 @@ const trackGAEvent = ({
   region = "",
   component = "",
 }) => {
+  window.dataLayer = window.dataLayer || [];
   const { dataLayer } = window;
   const e = {
     event: event.toLowerCase(),

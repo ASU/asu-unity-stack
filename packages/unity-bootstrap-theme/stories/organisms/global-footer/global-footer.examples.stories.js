@@ -98,5 +98,10 @@ export default {
       }
     }
   },
-  args: {...Footer.defaultProps}
+  args: {...Footer.defaultProps},
+  parameters: {
+    footer: {
+      disable: true
+    }
+  }
 };
