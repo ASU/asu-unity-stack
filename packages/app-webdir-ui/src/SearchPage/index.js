@@ -1,6 +1,6 @@
 import { Button, TabbedPanels, Tab } from "@asu/components-core";
 import PropTypes from "prop-types";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { engineNames, engines } from "../helpers/search";
@@ -13,6 +13,19 @@ import {
   tabIds,
 } from "./components/tabs";
 import { SearchPageLayout } from "./index.styles";
+
+/**
+ * React component for the ASU search page.
+ *
+ * @param {Object} props - The props for configuring the search page.
+ * @param {string} props.API_URL - The API URL for the search functionality.
+ * @param {string} props.searchApiVersion - The version of the search API.
+ * @param {boolean} props.loggedIn - Indicates whether the user is logged in.
+ * @param {boolean} props.deptAdmin - Indicates whether the user is a department admin.
+ * @param {string} props.profileURLBase - The base URL for user profiles.
+ * @param {string} props.appPathFolder - The folder path for the application.
+ * @returns {JSX.Element} The SearchPage component.
+ */
 
 function SearchPage({
   API_URL,
@@ -33,6 +46,7 @@ function SearchPage({
   const [searchParams, setSearchParams] = useSearchParams();
   const [filters] = useState({});
   const [site, setSite] = useState(null);
+  const inputRef = useRef(null);
 
   const engineParams = {
     filters,
@@ -87,6 +101,12 @@ function SearchPage({
     }
   }, [searchParams, sort]);
 
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
+
   const goToTab = tab => {
     updateSearchParams(searchTabsId, tab);
     setTotalResults(0);
@@ -121,6 +141,7 @@ function SearchPage({
               value={searchValue}
               onChange={e => setSearchValue(e.target.value)}
               onKeyDown={inputKeyPress}
+              ref={inputRef}
             />
             <div className="desktop-button">
               <Button

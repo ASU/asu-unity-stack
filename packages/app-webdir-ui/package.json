@@ -1,6 +1,6 @@
 {
   "name": "@asu/app-webdir-ui",
-  "version": "3.2.3",
+  "version": "3.2.5",
   "description": "App Webdir UI",
   "main": "./dist/webdirUI.cjs.js",
   "browser": "./dist/webdirUI.umd.js",
@@ -32,10 +32,10 @@
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
     "storybook": "start-storybook -s ./dist -p 9030",
-    "build-storybook": "build-storybook -s ./dist",
+    "build-storybook": "build-storybook -s ./dist -o ../../build/$npm_package_name",
     "jsdoc": "jsdoc -c jsdoc.config.js",
     "predocs": "mkdir -p ./docs",
-    "docs": "jsdoc2md -c jsdoc.config.js --files ./src/core/types/** > ./docs/README.props.md",
+    "docs": "jsdoc2md -c jsdoc.config.js --files ./src/** > ./docs/README.props.md",
     "postdocs": "node ../../scripts/process-readme-props.js",
     "dev": "webpack-dev-server"
   },

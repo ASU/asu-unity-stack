@@ -4,6 +4,31 @@ import { trackGAEvent } from "../core/services/googleAnalytics";
 import { ProfileCardLayout } from "./index.styles";
 import { profileCardType } from "./models";
 
+/**
+ * React component for displaying a user's profile card.
+ *
+ * @param {Object} props - The props for configuring the profile card.
+ * @param {string} props.name - The name of the user.
+ * @param {string} [props.matchedAffiliationTitle] - The matched affiliation title of the user.
+ * @param {string} [props.matchedAffiliationDept] - The matched affiliation department of the user.
+ * @param {string} [props.imgURL] - The URL of the user's profile image.
+ * @param {string} [props.profileURL] - The URL of the user's profile page.
+ * @param {string} [props.email] - The email address of the user.
+ * @param {string} [props.telephone] - The telephone number of the user.
+ * @param {string} [props.addressLine1] - The first line of the user's address.
+ * @param {string} [props.addressLine2] - The second line of the user's address.
+ * @param {string} [props.shortBio] - A short biography of the user.
+ * @param {string} [props.facebookLink] - The Facebook profile link of the user.
+ * @param {string} [props.linkedinLink] - The LinkedIn profile link of the user.
+ * @param {string} [props.twitterLink] - The Twitter profile link of the user.
+ * @param {string} [props.website] - The user's website link.
+ * @param {string} [props.size="default"] - The size of the profile card (e.g., "default", "large", "small", "micro").
+ * @param {boolean} [props.fill=false] - Whether to fill in missing data in the card.
+ * @param {function} [props.logClick] - A function to log clicks on profile card elements.
+ * @param {string} [props.GASource] - The Google Analytics source for tracking events.
+ * @returns {JSX.Element} The ProfileCard component.
+ */
+
 const ProfileCard = ({ ...props }) => {
   let title = props.matchedAffiliationTitle
     ? `${props.matchedAffiliationTitle}, `

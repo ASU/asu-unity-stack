@@ -6,11 +6,40 @@ import { FilterComponent } from "../helpers/Filter";
 import { engineNames, engines } from "../helpers/search";
 import { ASUSearchResultsList } from "../SearchResultsList";
 
+/**
+ * Data object representing the filters for faculty rank.
+ * @typedef {Object} FiltersData
+ * @property {string} 1 - Filter for Faculty.
+ * @property {string} 2 - Filter for Academic Professionals.
+ * @property {string} 3 - Filter for Fixed-Term Faculty and Academic Professionals.
+ */
+
 const filtersData = {
   1: "Faculty",
   2: "Academic Professionals",
   3: "Fixed-Term Faculty and Academic Professionals",
 };
+
+/**
+ * Prop types for FacultyRankTabPanels component.
+ * @type {Object}
+ * @property {string} deptIds - The department IDs.
+ * @property {string} API_URL - The API URL.
+ * @property {string} searchApiVersion - The search API version.
+ * @property {string} searchType - The type of search.
+ * @property {string} appPathFolder - The application path folder.
+ * @property {Object} display - Display settings.
+ * @property {string} display.defaultSort - The default sorting option.
+ * @property {string} display.doNotDisplayProfiles - Profiles not to display.
+ * @property {string} display.profilesPerPage - Number of profiles to display.
+ * @property {string} display.usePager - Whether to use pagination.
+ * @property {Object} filters - Filters for the search.
+ * @property {string} filters.employee - Employee filter.
+ * @property {string} filters.expertise - Expertise filter.
+ * @property {string} filters.title - Title filter.
+ * @property {string} filters.campuses - Campuses filter.
+ * @property {string} alphaFilter - Whether to enable the alpha filter.
+ */
 
 const FacultyRankTabPanels = ({
   filters,
@@ -23,7 +52,7 @@ const FacultyRankTabPanels = ({
   searchType,
   alphaFilter,
 }) => {
-  const [requestFilters, setRequestFilters] = useState(null);
+  const [requestFilters, setRequestFilters] = useState({});
   const [tabChange, setTabChange] = useState(null);
   const RES_PER_PAGE = 6;
   const sort = "faculty_rank";
@@ -63,7 +92,7 @@ const FacultyRankTabPanels = ({
         >
           {alphaFilter === "true" && (
             <FilterComponent
-              filterLabel="Filter By Last Initial"
+              filterLabel="Filter by last initial"
               choices={[
                 "A",
                 "B",
