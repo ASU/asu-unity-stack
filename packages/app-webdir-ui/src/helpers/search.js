@@ -360,18 +360,14 @@ export const engines = {
     resultsPerSummaryPage: 6,
     supportedSortTypes: ["_score_desc", "last_name_desc", "last_name_asc"],
     method: "POST",
-    formatter: ({ results, page, itemsPerPage, cardSize, filters, appPathFolder }) => {
-      const startIndex = (page - 1) * itemsPerPage;
-      const endIndex = startIndex + itemsPerPage;
-      const resultsToDisplay = results.slice(startIndex, endIndex);
-
-      return webDirDeptsFormatter({
+    formatter: ({ results, cardSize, filters, appPathFolder }) =>
+      webDirDeptsFormatter({
         engineName: engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
-        results: resultsToDisplay,
+        results,
         cardSize,
         filters,
         appPathFolder,
-      })},
+      }),
     needsTerm: false,
   },
 };
@@ -386,6 +382,7 @@ export const performSearch = function ({
   display,
   rankGroup,
   controller,
+  size,
 }) {
   async function search(resolve, reject) {
     const currentSort = engine.supportedSortTypes.includes(sort) ? sort : "";
@@ -466,8 +463,8 @@ export const performSearch = function ({
         "X-CSRF-Token": tokenResponse.data,
       };
       const data = {
-        "size": 500, // This is to retrieve all results and handle paging on the front end.
-        "page": 1, // This is to retrieve all results and handle paging on the front end.
+        "size": size,
+        "page": page,
         "sort-by": currentSort || "",
         "full_records": true,
         "profiles": filters.peopleInDepts,
@@ -482,20 +479,6 @@ export const performSearch = function ({
         // engine.inFlight = false;
         // engine.abortController = null;
         const { data } = res;
-        if (
-          engine.method === "POST" &&
-          (sort === "last_name_desc" || sort === "last_name_asc")
-        ) {
-          data.sort((a, b) =>
-            a.full_record.display_last_name.raw.localeCompare(
-              b.full_record.display_last_name.raw
-            )
-          );
-
-          if (sort === "last_name_desc") {
-            data.reverse();
-          }
-        }
         resolve(data);
       })
       .catch(err => {

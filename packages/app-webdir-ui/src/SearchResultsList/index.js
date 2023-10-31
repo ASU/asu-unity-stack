@@ -86,6 +86,7 @@ const ASUSearchResultsList = ({
         display,
         rankGroup,
         controller,
+        size: display?.profilesPerPage,
       })
         .then(res => {
           let filteredResults = res;
@@ -119,7 +120,7 @@ const ASUSearchResultsList = ({
             }
           }
           if (engine.method === "POST") {
-            setTotalResults(filteredResults.length);
+            setTotalResults(filteredResults[0]?.total_results); // Each result has the total_results property
           } else {
             setTotalResults(formattedResults.page.total_results);
           }
