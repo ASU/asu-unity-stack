@@ -89,7 +89,6 @@
     "@storybook/addon-knobs": "^6.2.9",
     "classnames": "^2.2.6",
     "date-fns": "^2.19.0",
-    "dompurify": "^2.2.7",
     "phone-fns": "^3.2.3",
     "prop-types": "^15.7.2",
     "styled-components": "^5.3.0"

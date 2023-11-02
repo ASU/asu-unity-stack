@@ -1,9 +1,10 @@
 // @ts-check
-import { Hero, useFetch } from "@asu/components-core";
+import { Hero } from "@asu/components-core";
 import PropTypes from "prop-types";
 import React, { useEffect, useState, useContext } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
+import { useFetch } from "../../../../../internal";
 import {
   Loader,
   Main as MainSection,

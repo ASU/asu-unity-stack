@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 // eslint-disable-next-line import/no-cycle
-import { spreadClasses } from "../../core/utils";
+import { spreadClasses } from "../../../../../internal";
 
 /**
  * @typedef {import('../../core/types/image-types').ImageComponentProps} ImageComponentProps

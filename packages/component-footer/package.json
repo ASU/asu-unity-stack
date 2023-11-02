@@ -39,9 +39,6 @@
     "postdocs": "node ../../scripts/process-readme-props.js",
     "build-storybook": "build-storybook -s ./dist -o ../../build/$npm_package_name"
   },
-  "peerDependencies": {
-    "@asu/components-core": "^2.1.0 || ^3.0.0"
-  },
   "dependencies": {
     "@babel/plugin-transform-react-jsx": "^7.13.12",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",

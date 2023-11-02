@@ -1,13 +1,10 @@
 /* eslint-disable react/no-danger */
 // @ts-check
-import {
-  spreadClasses,
-  sanitizeDangerousMarkup,
-  idGenerator,
-} from "@asu/components-core";
+import { sanitizeDangerousMarkup } from "@asu/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
+import { spreadClasses, idGenerator } from "../../../../../../internal";
 import { contentPropShape } from "../../models";
 import { isHtml } from "../../utils";
 

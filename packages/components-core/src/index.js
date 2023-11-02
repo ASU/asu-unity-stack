@@ -15,8 +15,6 @@ import {
 
 export * from "./components/FeedAnatomy";
 export * from "./components/TabbedPanels";
-export * from "./core/utils";
-export * from "./core/hooks";
 
 export {
   Card,
