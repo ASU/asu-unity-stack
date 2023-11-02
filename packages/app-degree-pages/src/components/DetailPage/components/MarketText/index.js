@@ -1,9 +1,11 @@
 // @ts-check
-import { sanitizeDangerousMarkup } from "@asu/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { spreadClasses } from "../../../../../../../internal";
+import {
+  sanitizeDangerousMarkup,
+  spreadClasses,
+} from "../../../../../../../internal";
 import { contentPropShape } from "../../../../core/models/app-prop-types";
 
 /**
