@@ -2,6 +2,7 @@ const common = require("../webpack/webpack.common");
 
 module.exports = {
   addons: [
+    "../../../.storybook-config",
     "../../../.storybook-config/dataLayerListener",
     "@storybook/addon-essentials",
     "@storybook/addon-controls",
