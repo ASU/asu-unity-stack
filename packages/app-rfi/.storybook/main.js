@@ -5,6 +5,7 @@ const common = require("../webpack/webpack.common");
 module.exports = {
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
+    "../../../.storybook-config/dataLayerListener",
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "storybook-css-modules-preset",

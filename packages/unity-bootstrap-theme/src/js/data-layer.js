@@ -6,6 +6,7 @@
      * Required
      */
     const pushGAEvent = (event) => {
+      window.dataLayer = window.dataLayer || [];
       const { dataLayer } = window;
       if (dataLayer) dataLayer.push(event);
     };
