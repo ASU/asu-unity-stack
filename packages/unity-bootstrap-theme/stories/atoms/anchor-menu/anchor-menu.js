@@ -1,5 +1,3 @@
-import { googleAnalytics } from "@asu/unity-bootstrap-theme/js/data-layer.js";
-
 export const initializeAnchorMenu = () => {
   const globalHeader = document.getElementById('asu-header');
   const navbar = document.getElementById('uds-anchor-menu');
@@ -92,7 +90,4 @@ export const initializeAnchorMenu = () => {
       e.target.classList.add('active');
     });
   }
-
-  // Init google analytics
-  googleAnalytics();
 };
