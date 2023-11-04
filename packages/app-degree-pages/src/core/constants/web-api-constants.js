@@ -6,20 +6,11 @@ const DOMAIN_URL = "https://degrees.apps.asu.edu";
  * @type {import("../types/listing-page-types").ProgramListDataSource}
  */
 const listingPageDefaultDataSource = {
-  endpoint: "https://degrees.apps.asu.edu/t5/service",
-  method: "findAllDegrees",
+  endpoint: "https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plans",
+  filter: "activeInDegreeSearch",
   init: "false",
-  fields:
-    `graduateApplyDates,planDeadlines,AsuDegSrchFlg,` +
-    "CollegeAcadOrg,CollegeAcadOrgJoint,DepartmentCode," +
-    "Descr100,Institution,AcadPlan," +
-    "Degree,DegreeDescr,DegreeDescrlong," +
-    "concurrentDegreeMajorMaps,managedOnlineCampus,onlineMajorMapURL," +
-    "AsuCritTrackUrl,AsuOfficeLoc,CampusStringArray,AcadPlan," +
-    "accelerateDegrees,concurrentDegrees," +
-    "CollegeDescr100,CollegeUrl,EmailAddr,DescrlongExtns,AsuProgramFee," +
-    "AsuLangReqFlag,asuAcadpLrfText," +
-    "asuMathReqFlag,additionalMathReqCourse,asuAcadpMrfText,MathIntensity,",
+  include: "*",
+  degreeType: "UG",
 };
 
 /**
@@ -48,7 +39,7 @@ const detailPageDefaultDataSource = {
     // program contact
     `DepartmentName,PlanUrl,EmailAddr,Phone,CollegeDescr100,` +
     // application requirement
-    `DescrlongExtn5,TransferAdmission,gradAdditionalRequirements,AdmissionsDegRequirements,` +
+    `admissionsRequirementsText,TransferAdmission,gradAdditionalRequirements,AdmissionsDegRequirements,` +
     `AdmissionsDegRequirements,` +
     // Global opportunity
     `globalExp,` +

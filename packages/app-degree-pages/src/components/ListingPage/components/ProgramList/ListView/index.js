@@ -37,7 +37,7 @@ const renderInfo = ({ resolver, id }) => {
         className="desc-long"
         id={id}
         dangerouslySetInnerHTML={sanitizeDangerousMarkup(
-          resolver.getDescrLongExtented()
+          resolver.getFullDescription()
         )}
       />
       <label

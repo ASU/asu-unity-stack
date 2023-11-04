@@ -26,7 +26,7 @@ function urlResolver(dataSource, defaultDataSource) {
     ""
   );
 
-  return `${endpoint}?fields=${fields}${params}`;
+  return `${endpoint}?${params}`;
 }
 
 export { urlResolver };

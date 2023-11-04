@@ -57,7 +57,7 @@ function filterData({
   // ============================================================
   /** @param {PropResolver} resolver   */
   const isValidForKeyword = resolver =>
-    keyword ? resolver.getDescrLongExtented()?.includes?.(keyword) : true;
+    keyword ? resolver.getFullDescription()?.includes?.(keyword) : true;
   // ============================================================
   /** @param {PropResolver} resolver   */
   const isValidProgram = resolver =>
@@ -94,7 +94,7 @@ function filterData({
  */
 const sortPrograms = programs => {
   const sortedPrograms = programs.sort((p1, p2) =>
-    p1.Descr100.localeCompare(p2.Descr100)
+    p1.acadPlanMarketingDescription.localeCompare(p2.acadPlanMarketingDescription)
   );
 
   return sortedPrograms;

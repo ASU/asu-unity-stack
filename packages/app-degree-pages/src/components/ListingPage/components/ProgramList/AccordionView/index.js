@@ -53,7 +53,7 @@ const AccordionView = ({ programs, actionUrls }) => {
       const isOnline = resolver.isOnline();
       const directUrl = isOnline
         ? resolver.getOnlineMajorMapURL()
-        : resolver.getAsuCritTrackUrl();
+        : resolver.getGeneralDegreeMajorMap();
 
       return `<a href=${directUrl}>${resolver.getRequiredCoursesLabel()} Map</a>`;
     };
@@ -99,7 +99,7 @@ const AccordionView = ({ programs, actionUrls }) => {
         </li>
         <li>
           <strong>Campus or location:</strong>
-          <br />${resolver.getCampusList().map(toTitleCase).join(", ")}
+          <br />${resolver.getCampusList().map(item => item.campusCode).join(", ")}
         </li>
         <li>
           <strong>Accelerated/Concurrent:</strong>

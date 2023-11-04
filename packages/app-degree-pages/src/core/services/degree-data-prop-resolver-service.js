@@ -18,11 +18,18 @@ const isUndergradProgram = row => row["Degree"]?.charAt(0) === "B";
 const hasGraduateApplyDates = row =>
   Object.keys(row["graduateApplyDates"] || {}).length > 0;
 const hasPlanDeadlines = row =>
-  Object.keys(row["planDeadlines"] || {}).length > 0;
+  (row["applicationDeadlines"] || {}).length > 0;
 const isValidActiveProgram = row =>
   Object.keys(row).length > 0
     ? hasPlanDeadlines(row) || hasGraduateApplyDates(row)
     : true;
+const getMajorityOwner = row => {
+  const owners = row["owners"];
+  const majorityOwner = owners.reduce((prev, curr) =>
+    prev.percentOwned > curr.precentOwned ? prev : curr
+  );
+  return majorityOwner;
+};
 
 /**
  *
@@ -32,11 +39,21 @@ const isValidActiveProgram = row =>
 // @ts-ignore
 function degreeDataPropResolverService(row = {}) {
   return {
-    getMajorDesc: () => row["Descr100"],
+    getMajorDesc: () => row["acadPlanDescription"],
     getInstitution: () => row["Institution"],
     getAcadPlan: () => row["AcadPlan"],
-    getDegree: () => row["Degree"],
-    getDegreeMajorMap: () => row["degreeMajorMap"],
+    getDegree: () => row["degreeDescriptionShort"],
+    /** @returns {string} */
+    getGeneralDegreeMajorMap: () => {
+      // TODO: Will there always be a default major map?
+      /**
+       * majorMapGeneral is an array of all general major maps, excluding online,
+       * including archived ones. The most recent has a defaultFlag key of true
+      */
+      let majorMapGeneral = row["majorMapGeneral"];
+      let mostRecentMajorMap = majorMapGeneral.find(obj => obj.defaultFlag === true);
+      return mostRecentMajorMap?.url || "";
+    },
     isUndergradProgram: () => isUndergradProgram(row),
     isGradProgram: () => !isUndergradProgram(row),
     isMinorOrCertificate: () => {
@@ -46,9 +63,9 @@ function degreeDataPropResolverService(row = {}) {
     getProgramType: () => (isUndergradProgram(row) ? "undergrad" : "graduate"),
     getDegreeDesc: () => row["DegreeDescr"],
     getDegreeDescLong: () => row["DegreeDescrlong"],
-    getDescrLongExtented: () => row["DescrlongExtns"],
+    getFullDescription: () => row["fullDescription"],
     getCurriculumUrl: () => row["CurriculumUrl"]?.trim(),
-    getDescrLongExtented5: () => row["DescrlongExtn5"],
+    getAdmissionsRequirementsText: () => row["admissionsRequirementsText"],
     getTransferAdmission: () => row["TransferAdmission"],
     getGraduateRequirements: () => {
       /** @type {Array<Array>} */
@@ -75,13 +92,17 @@ function degreeDataPropResolverService(row = {}) {
 
       return `${gradRequirement1}${gradRequirement2}`;
     },
-    isOnline: () => row["managedOnlineCampus"],
-    getOnlineMajorMapURL: () => row["onlineMajorMapURL"],
-    getAsuCritTrackUrl: () => row["AsuCritTrackUrl"],
+    isOnline: () => !row["majorMapGeneral"], // Returns null if only online is available
+    // See getGeneralDegreeMajorMap for more info
+    getOnlineMajorMapURL: () => {
+      let onlineMajorMaps = row["majorMapOnline"];
+      let mostRecentOnlineMajorMap = onlineMajorMaps.find(obj => obj.defaultFlag === true);
+      return mostRecentOnlineMajorMap?.url || "";
+    },
     hasCareerData: () => !!row["careerData"]?.length,
     getCareerData: () => row["careerData"] || [],
     /** @return {string []} */
-    getCampusList: () => row["CampusStringArray"] || [],
+    getCampusList: () => row["campusesOffered"] || [],
     hasConcurrentOrAccelerateDegrees: () =>
       !!row["accelerateDegrees"]?.length || !!row["concurrentDegrees"]?.length,
     getAccelerateDegrees: () => row["accelerateDegrees"] || [],
@@ -168,7 +189,7 @@ function getCampusLocations(resolver) {
     url: "",
   });
 
-  const campusList = resolver.getCampusList();
+  const campusList = resolver.getCampusList().map(campus => campus.campusCode);
   if (campusList.length > 0)
     locations.push(
       ...campusList.map(

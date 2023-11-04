@@ -67,7 +67,7 @@ const columns = [
       const isOnline = resolver.isOnline();
       const directUrl = isOnline
         ? resolver.getOnlineMajorMapURL()
-        : resolver.getAsuCritTrackUrl();
+        : resolver.getGeneralDegreeMajorMap();
 
       const directMapLink = (
         <a href={directUrl}>{resolver.getRequiredCoursesLabel()} Map</a>
@@ -90,14 +90,14 @@ const columns = [
           {resolver.getCampusList().map((location, index, campusList) => (
             <div key={genCampusId.next().value} className="cell-container">
               {/*  TODO: This link is currently deferred till we discover which URL to link */}
-              <span key={location}>{`${toTitleCase(
-                getFullCampusLocalText(location)
+              <span key={location.campusCode}>{`${toTitleCase(
+                getFullCampusLocalText(location.campusCode)
               )}${index < campusList.length - 1 ? ", " : ""}`}</span>
               <span>
                 <InfoButtonIcon
                   popover={{
-                    title: toTitleCase(location),
-                    body: () => fetch(mapTooltipLink(location)),
+                    title: toTitleCase(location.campusCode),
+                    body: () => fetch(mapTooltipLink(location.campusCode)),
                     withAuto: true,
                   }}
                 />
