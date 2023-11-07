@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.8.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.9...@asu/unity-bootstrap-theme-v1.8.0) (2023-11-07)
+
+
+### Features
+
+* **unity-bootstrap-theme:** disable validation features for disabled inputs ([6d04be3](https://github.com/ASU/asu-unity-stack/commit/6d04be3502e04c03469f0a96adcbc7db00020a8c))
+
 # [@asu/unity-bootstrap-theme-v1.7.9](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.8...@asu/unity-bootstrap-theme-v1.7.9) (2023-11-07)
 
 
