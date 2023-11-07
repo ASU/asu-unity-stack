@@ -32,6 +32,8 @@ module.exports = {
       ],
     });
 
+    config.entry = Array.from(new Set(config.entry));
+
     return config;
   },
 };
