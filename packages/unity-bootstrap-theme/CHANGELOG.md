@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.7.8](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.7...@asu/unity-bootstrap-theme-v1.7.8) (2023-11-07)
+
+
+### Bug Fixes
+
+* update yarn.lock, address storybook tweak needed for unity-bootstrap-theme ([63c6f0d](https://github.com/ASU/asu-unity-stack/commit/63c6f0de6d7b00cf716d7ec874c2ba1a3dfce14e))
+
 # [@asu/unity-bootstrap-theme-v1.7.7](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.6...@asu/unity-bootstrap-theme-v1.7.7) (2023-10-18)
 
 
