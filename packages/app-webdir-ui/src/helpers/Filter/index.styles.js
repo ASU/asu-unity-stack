@@ -4,18 +4,8 @@ export const FilterContainer = styled.fieldset`
   width: 100%;
   margin: 0 0 2rem 0;
 
-  @media screen and (min-width: 992px) {
-    &:hover span.carousel-control-prev-icon,
-    span.carousel-control-next-icon {
-      opacity: 1;
-    }
-  }
-
   .choices-wrapper {
     position: relative;
-    .carousel-control-next-icon {
-      margin: 0 12px 0 30px;
-    }
   }
 
   legend {

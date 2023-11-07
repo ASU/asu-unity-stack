@@ -1,3 +1,11 @@
+# [@asu/unity-bootstrap-theme-v1.7.7](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.6...@asu/unity-bootstrap-theme-v1.7.7) (2023-10-18)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fixed tabbed panels chevron styles ([9bf2e04](https://github.com/ASU/asu-unity-stack/commit/9bf2e0404a39bf376a215acf4032d578222e6f7d))
+* **unity-bootstrap-theme:** fixed tabbed panels styles for arrows ([0abbaf3](https://github.com/ASU/asu-unity-stack/commit/0abbaf3ab687f27a76f46cea40f396b70201ecc0))
+
 # [@asu/unity-bootstrap-theme-v1.7.6](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.5...@asu/unity-bootstrap-theme-v1.7.6) (2023-10-09)
 
 

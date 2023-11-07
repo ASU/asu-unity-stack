@@ -1,3 +1,35 @@
+# [@asu/app-webdir-ui-v3.2.5](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.4...@asu/app-webdir-ui-v3.2.5) (2023-10-26)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** fix rendered more hooks than during previous render ([e120d17](https://github.com/asu/asu-unity-stack/commit/e120d17ba25072e760153b58847c310b6aa368f9))
+* **app-webdir-ui:** focus cursor in search box on page load ([23bed9e](https://github.com/asu/asu-unity-stack/commit/23bed9e9929349b1680ae21e7895abf93216bf51))
+* **app-webdir-ui:** updated refs and ran linting on app-webdir-ui ([96c78db](https://github.com/asu/asu-unity-stack/commit/96c78db116895302fde54d555dc591989626f9ca))
+
+# [@asu/app-webdir-ui-v3.2.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.3...@asu/app-webdir-ui-v3.2.4) (2023-10-18)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** last init filter sentence-cased ([eb03ab7](https://github.com/asu/asu-unity-stack/commit/eb03ab7b924a19168ecc4b62349853667caa1119))
+
+# [@asu/app-webdir-ui-v3.2.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.2...@asu/app-webdir-ui-v3.2.3) (2023-10-18)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** fixed negative scroll width check ([d78894e](https://github.com/asu/asu-unity-stack/commit/d78894e10f5ba6875c7de5d2cb745d6e61fbd2d0))
+* **app-webdir-ui:** updated alpha filter component styles and logic ([3db627f](https://github.com/asu/asu-unity-stack/commit/3db627f0c1c538379364b6f9980f4ce4d591e510))
+* **app-webdir-ui:** updated alpha filter styles ([f6a2c45](https://github.com/asu/asu-unity-stack/commit/f6a2c454094c3bc3caa357bd61e86ea88ea7110f))
+
+# [@asu/app-webdir-ui-v3.2.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.1...@asu/app-webdir-ui-v3.2.2) (2023-10-17)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** update components-core requirement. ([bf0a063](https://github.com/asu/asu-unity-stack/commit/bf0a063b0b90b8289b3017c4aececd2a28adf594))
+
 # [@asu/app-webdir-ui-v3.2.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.0...@asu/app-webdir-ui-v3.2.1) (2023-10-17)
 
 

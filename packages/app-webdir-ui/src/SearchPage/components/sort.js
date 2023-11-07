@@ -4,6 +4,16 @@ import React, { useState, useEffect } from "react";
 import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { SortLayout } from "./index.styles";
 
+/**
+ * React component for selecting and displaying sorting options.
+ *
+ * @param {Object} props - The props for configuring the sorting picker.
+ * @param {string} props.sort - The currently selected sort option.
+ * @param {function} props.onChange - The function to handle sort option changes.
+ * @param {Array} [props.customSortOptions] - Custom sorting options to display.
+ * @returns {JSX.Element} The SortPicker component.
+ */
+
 const SortPicker = ({ sort, onChange, customSortOptions }) => {
   const [defaultSortValue, setDefaultSortValue] = useState(sort);
 

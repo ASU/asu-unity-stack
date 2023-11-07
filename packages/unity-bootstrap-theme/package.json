@@ -1,6 +1,6 @@
 {
   "name": "@asu/unity-bootstrap-theme",
-  "version": "1.7.6",
+  "version": "1.7.7",
   "description": "Base UI theme for ASU Web Standards 2.0 developed with Bootstrap 5",
   "author": "Mayco Barale <mbarale@asu.edu>",
   "homepage": "https://github.com/ASU/asu-unity-stack#readme",
@@ -20,7 +20,7 @@
     "build:dev": "rimraf ./dist && webpack --progress --bail && rimraf ./.tmp",
     "watch": "rimraf ./dist && webpack --watch && rimraf ./.tmp",
     "storybook": "start-storybook -p 9000",
-    "build-storybook": "build-storybook -s ./dist",
+    "build-storybook": "build-storybook -s ./dist -o ../../build/$npm_package_name",
     "lint": "yarn js-lint && yarn css-lint",
     "lint:fix": "yarn js-lint:fix && yarn css-lint:fix",
     "js-lint": "eslint \"**/*.js\"",

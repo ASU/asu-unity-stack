@@ -20,6 +20,21 @@ export const engineNames = {
   WEB_DIRECTORY_FACULTY_RANK: "web_dir_faculty_rank",
 };
 
+/**
+ * Logs a click event for analysis and improvement of search results.
+ *
+ * @param {string} query - The search query.
+ * @param {string} docId - The ID of the clicked document.
+ * @param {string} reqId - The request ID associated with the query.
+ * @param {string[]} tags - An array of tags associated with the click event.
+ * @param {Object} props - Additional properties and configuration options.
+ * @param {boolean} props.loggedIn - Whether the user is logged in.
+ * @param {string} props.API_URL - The base API URL.
+ * @param {string} props.searchApiVersion - The search API version.
+ * @returns {Promise} A promise that resolves when the click event is logged.
+ * @throws {Error} If there's an issue with logging the click event.
+ */
+
 export function logClick(query, docId, reqId, tags, { ...props }) {
   async function sendData(resolve, reject) {
     const data = {
@@ -52,6 +67,12 @@ export function logClick(query, docId, reqId, tags, { ...props }) {
 
   return new Promise(sendData);
 }
+/** Returns the top result with the highest score from a list of results.
+ *
+ * @param {Object[]} results - The list of results to search.
+ * @param {string} engineName - The name of the search engine.
+ * @returns {Object|null} The top result or null if no results meet the threshold.
+ */
 
 const getTopResult = (results, engineName) => {
   const topResult = results.reduce((prev, curr) => {
@@ -68,6 +89,20 @@ const getTopResult = (results, engineName) => {
   }
   return null;
 };
+
+/**
+ * Formats search results for display, including selecting the top result.
+ *
+ * @param {Object} options - Options for formatting the results.
+ * @param {string} options.engineName - The name of the search engine.
+ * @param {Object} options.results - The search results to format.
+ * @param {string} options.cardSize - The size of the result cards.
+ * @param {string} options.appPathFolder - The application path folder.
+ * @param {string|null} options.localSection - The local section information.
+ * @param {Object} options.props - Additional properties and configuration options.
+ * @returns {Object} Formatted search results.
+ */
+
 const standardFormatter = ({
   engineName,
   results,
@@ -431,7 +466,7 @@ export const performSearch = function ({
         "sort-by": currentSort || "",
         "full_records": true,
         "profiles": filters.peopleInDepts,
-        "last_init": filters.lastInit || null
+        "last_init": filters.lastInit || null,
       };
       APICall = () => axios.post(query, data, { headers });
     }

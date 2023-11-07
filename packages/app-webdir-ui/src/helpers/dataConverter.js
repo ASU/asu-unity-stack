@@ -245,6 +245,23 @@ const formatImageUrl = baseUrl => {
   return url.toString();
 };
 
+/**
+ * Shared props for converter functions.
+ * @typedef {Object} SharedProps
+ * @property {Object} datum - The staff data to convert.
+ * @property {string} [size="small"] - The size of the ProfileCard.
+ * @property {string|null} [titleMatch=null] - The title to match for filtering.
+ * @property {string|null} [profileURLBase=null] - The base URL for profile links.
+ * @property {boolean} [fill=false] - Whether to fill in missing data.
+ * @property {string} appPathFolder - The application path folder.
+ */
+
+/**
+ * Converts staff data into ProfileCard components.
+ * @param {SharedProps} props
+ * @returns {JSX.Element} The converted staff data.
+ */
+
 export const staffConverter = ({
   datum,
   options = {
@@ -299,6 +316,12 @@ export const staffConverter = ({
   );
 };
 
+/**
+ * Converts student data into ProfileCard components.
+ * @param {SharedProps} props
+ * @returns {JSX.Element} The converted student data.
+ */
+
 export const studentsConverter = ({
   datum,
   options = {
@@ -341,6 +364,12 @@ export const studentsConverter = ({
   );
 };
 
+/**
+ * Converts data into ProfileCard components.
+ * @param {SharedProps} props
+ * @returns {JSX.Element} The converted faculty data.
+ */
+
 export const anonConverter = (
   datum,
   options = {
@@ -373,6 +402,21 @@ export const anonConverter = (
     />
   );
 };
+
+/**
+ * Converts subdomain data to a ResultCard component.
+ *
+ * @param {Object} options - Options for configuring the conversion.
+ * @param {Object} options.datum - The subdomain data to convert.
+ * @param {string} [options.size="small"] - The size of the ResultCard.
+ * @param {boolean} [options.fill=false] - Whether to fill in missing data.
+ * @param {string} appPathFolder - The application path folder.
+ * @param {function} [logClick=() => {}] - A callback function to log clicks.
+ * @param {string} requestId - The request ID.
+ * @param {string|null} [localSection=null] - The local section information.
+ * @param {Object} props - Additional props to pass to the ResultCard component.
+ * @returns {JSX.Element} The ResultCard component.
+ */
 
 export const subdomainConverter = ({
   datum,
