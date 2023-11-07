@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.7.9](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.8...@asu/unity-bootstrap-theme-v1.7.9) (2023-11-07)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** remove duplicate container rules ([950b397](https://github.com/ASU/asu-unity-stack/commit/950b39763ba266d22a6512af850519a077daf384))
+
 # [@asu/unity-bootstrap-theme-v1.7.8](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.7...@asu/unity-bootstrap-theme-v1.7.8) (2023-11-07)
 
 
