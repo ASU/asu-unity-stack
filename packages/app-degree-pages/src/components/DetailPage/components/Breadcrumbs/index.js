@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { idGenerator } from "../../../../../../../internal";
+import { idGenerator } from "../../../../../../../shared";
 import { linkPropShape } from "../../../../core/models";
 import { trackGAEvent } from "../../../../core/services/google-analytics";
 

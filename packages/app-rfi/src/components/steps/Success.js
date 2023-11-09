@@ -3,7 +3,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { sanitizeDangerousMarkup } from "../../../../../internal";
+import { sanitizeDangerousMarkup } from "../../../../../shared";
 
 // Component
 

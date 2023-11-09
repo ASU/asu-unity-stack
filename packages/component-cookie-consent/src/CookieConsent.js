@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 
-import { trackGAEvent } from "../../../internal";
+import { trackGAEvent } from "../../../shared";
 import { CookieConsentWrapper } from "./CookieConsent.styles";
 import { addDays } from "./core/utils/helpers";
 

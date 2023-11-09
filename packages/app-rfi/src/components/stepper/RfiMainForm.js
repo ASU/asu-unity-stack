@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { getCurrentScriptPath } from "../../../../../internal";
+import { getCurrentScriptPath } from "../../../../../shared";
 import {
   setClientId,
   pushDataLayerEventToGa,

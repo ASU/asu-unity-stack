@@ -2,7 +2,7 @@
 import { Card } from "@asu/components-core";
 import React from "react";
 
-import { sanitizeDangerousMarkup } from "../../../../../../../internal";
+import { sanitizeDangerousMarkup } from "../../../../../../../shared";
 import {
   whyChooseAsuShape,
   progDetailSectionIds,

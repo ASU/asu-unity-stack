@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState, useContext } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
-import { useFetch } from "../../../../../internal";
+import { useFetch } from "../../../../../shared";
 import {
   Loader,
   Main as MainSection,

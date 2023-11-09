@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 
-import { trackGAEvent } from "../../../../../internal";
+import { trackGAEvent } from "../../../../../shared";
 import {
   RfiTextInput,
   RfiTextArea,

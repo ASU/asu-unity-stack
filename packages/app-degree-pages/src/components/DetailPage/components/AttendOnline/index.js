@@ -3,7 +3,7 @@ import { Button } from "@asu/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { idGenerator } from "../../../../../../../internal";
+import { idGenerator } from "../../../../../../../shared";
 import { progDetailSectionIds } from "../../../../core/models";
 import { imagePropShape } from "../../../../core/models/app-prop-types";
 

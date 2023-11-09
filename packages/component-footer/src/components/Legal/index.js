@@ -1,7 +1,7 @@
 // @ts-check
 import React from "react";
 
-import { trackGAEvent } from "../../../../../internal";
+import { trackGAEvent } from "../../../../../shared";
 
 const DEFAULT_GA_EVENT = {
   type: "internal link",

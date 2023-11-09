@@ -1,7 +1,7 @@
 // @ts-check
 import React from "react";
 
-import { trackGAEvent } from "../../../../../internal";
+import { trackGAEvent } from "../../../../../shared";
 // @ts-ignore
 import innovationLogo from "../../assets/images/innovationLogo.png";
 

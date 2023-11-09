@@ -3,7 +3,7 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 
-import { createRange, iff, trackGAEvent } from "../../../../../internal";
+import { createRange, iff, trackGAEvent } from "../../../../../shared";
 import { PageItem } from "./PageItem";
 
 const defaultGAEvent = {

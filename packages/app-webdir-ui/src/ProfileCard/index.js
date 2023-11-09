@@ -1,6 +1,6 @@
 import React from "react";
 
-import { trackGAEvent } from "../../../../internal";
+import { trackGAEvent } from "../../../../shared";
 import { ProfileCardLayout } from "./index.styles";
 import { profileCardType } from "./models";
 

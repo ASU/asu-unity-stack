@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Progress } from "reactstrap";
 import * as Yup from "yup";
 
-import { trackGAEvent, sanitizeDangerousMarkup } from "../../../../../internal";
+import { trackGAEvent, sanitizeDangerousMarkup } from "../../../../../shared";
 
 const defaultButtonEvent = {
   event: "form",

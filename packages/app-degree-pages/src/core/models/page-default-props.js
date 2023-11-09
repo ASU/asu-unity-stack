@@ -1,5 +1,5 @@
 // @ts-check
-import { getCurrentScriptPath } from "../../../../../internal";
+import { getCurrentScriptPath } from "../../../../../shared";
 
 const currentScriptPath = getCurrentScriptPath();
 

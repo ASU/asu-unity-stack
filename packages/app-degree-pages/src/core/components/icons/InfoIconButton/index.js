@@ -7,7 +7,7 @@ import { createPopper } from "@popperjs/core";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
-import { sanitizeDangerousMarkup } from "../../../../../../../internal";
+import { sanitizeDangerousMarkup } from "../../../../../../../shared";
 
 const Tooltip = styled.div`
   position: absolute;

@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import React, { Fragment } from "react";
 
-import { idGenerator } from "../../../../../../../../internal";
+import { idGenerator } from "../../../../../../../../shared";
 import {
   glanceItemPropShape,
   glanceItemsMap,

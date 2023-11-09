@@ -1,7 +1,7 @@
 // @ts-check
 import React from "react";
 
-import { trackGAEvent } from "../../../../../../internal";
+import { trackGAEvent } from "../../../../../../shared";
 import { useAppContext } from "../../../core/context/app-context";
 import { LoginWrapper } from "./index.styles";
 

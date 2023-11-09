@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { sanitizeDangerousMarkup } from "../../../../../../../internal";
+import { sanitizeDangerousMarkup } from "../../../../../../../shared";
 
 /** @typedef {import('../../../../core/types/detail-page-types').ProgramDescriptionProps} ProgramDescriptionProps */
 

@@ -1,7 +1,7 @@
 // @ts-check
 import React, { useState } from "react";
 
-import { idGenerator, trackGAEvent } from "../../../../../../internal";
+import { idGenerator, trackGAEvent } from "../../../../../../shared";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useAppContext } from "../../../core/context/app-context";
 import { useIsMobile } from "../../../core/hooks/isMobile";

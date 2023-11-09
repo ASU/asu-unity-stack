@@ -5,7 +5,7 @@ import React, { useState } from "react";
 
 import { useAppContext } from "../../core/context/app-context";
 import { useIsMobile } from "../../core/hooks/isMobile";
-import { trackGAEvent } from "../../../../../internal";
+import { trackGAEvent } from "../../../../../shared";
 import { UniversalNavbar } from "../UniversalNavbar";
 import { HeaderMainWrapper } from "./index.styles";
 import { Logo } from "./Logo";

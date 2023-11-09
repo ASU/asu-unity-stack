@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
-import { trackGAEvent } from "../../../../../internal";
+import { trackGAEvent } from "../../../../../shared";
 import { accordionCardPropTypes } from "../../core/models/shared-prop-types";
 import { AccordionCard } from "./AccordionCard";
 

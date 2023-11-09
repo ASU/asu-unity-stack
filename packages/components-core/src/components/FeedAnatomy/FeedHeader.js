@@ -2,7 +2,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { trackGAEvent } from "../../../../../internal";
+import { trackGAEvent } from "../../../../../shared";
 import {
   feedComponentShape,
   feedCtaButtonShape,

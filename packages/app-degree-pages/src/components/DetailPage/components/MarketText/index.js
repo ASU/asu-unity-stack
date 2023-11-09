@@ -5,7 +5,7 @@ import React from "react";
 import {
   sanitizeDangerousMarkup,
   spreadClasses,
-} from "../../../../../../../internal";
+} from "../../../../../../../shared";
 import { contentPropShape } from "../../../../core/models/app-prop-types";
 
 /**

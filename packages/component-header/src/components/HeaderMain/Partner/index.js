@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from "react";
 
-import { getCurrentScriptPath, trackGAEvent } from "../../../../../../internal";
+import { getCurrentScriptPath, trackGAEvent } from "../../../../../../shared";
 // @ts-check
 import { useAppContext } from "../../../core/context/app-context";
 import { PartnerLogosWrapper } from "./index.styles";

@@ -5,7 +5,7 @@ import React, { Fragment, useContext, createRef } from "react";
 import {
   idGenerator,
   sanitizeDangerousMarkup,
-} from "../../../../../../../../internal";
+} from "../../../../../../../../shared";
 import { AppContext } from "../../../../../core/context";
 import { GRID_PROGRAMS_ID } from "../../../../../core/models";
 import { degreeDataPropResolverService } from "../../../../../core/services";

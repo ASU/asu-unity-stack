@@ -7,7 +7,7 @@ import {
   idGenerator,
   sanitizeDangerousMarkup,
   spreadClasses,
-} from "../../../../../../internal";
+} from "../../../../../../shared";
 import { contentPropShape } from "../../models";
 import { isHtml } from "../../utils";
 

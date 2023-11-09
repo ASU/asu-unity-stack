@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 import React, { useRef, useEffect, useMemo } from "react";
 
-import { trackGAEvent } from "../../../../../../../internal";
+import { trackGAEvent } from "../../../../../../../shared";
 import { useAppContext } from "../../../../core/context/app-context";
 import { useIsMobile } from "../../../../core/hooks/isMobile";
 import { NavTreePropTypes } from "../../../../core/models/app-prop-types";

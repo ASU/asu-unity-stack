@@ -3,7 +3,7 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { trackGAEvent, sanitizeDangerousMarkup } from "../../../../../internal";
+import { trackGAEvent, sanitizeDangerousMarkup } from "../../../../../shared";
 import { Button } from "../Button";
 import { ButtonTag } from "../ButtonTag";
 // eslint-disable-next-line import/no-cycle

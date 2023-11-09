@@ -2,7 +2,7 @@ import { Button, Pagination } from "@asu/components-core";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 
-import { trackGAEvent } from "../../../../internal";
+import { trackGAEvent } from "../../../../shared";
 import {
   performSearch,
   anonFormatter,
