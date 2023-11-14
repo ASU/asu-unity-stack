@@ -2,18 +2,8 @@
 
 import { findCampusDefinition } from "../models";
 
-const mathintensity = {
-  G: "General",
-  M: "Moderate",
-  S: "Substantial",
-  undefined: "",
-};
-
-// If Degree starts with a B, it's undergrad.
-// TODO Is there a better means of identifying undergrad programs?
-// Possibly AcadProg field (UG* is Undergrad and GR* is Graduate...
-// wouldn't give us minors and certs, though).
-const isUndergradProgram = row => row["Degree"]?.charAt(0) === "B";
+// Possible values are UG, GR, UGCM, and OTHR.
+const isUndergradProgram = row => row["degreeType"] === "UG";
 // Check if a program is still accepting new students
 const hasGraduateApplyDates = row =>
   Object.keys(row["graduateApplyDates"] || {}).length > 0;
@@ -25,6 +15,7 @@ const isValidActiveProgram = row =>
     : true;
 const getMajorityOwner = row => {
   const owners = row["owners"];
+  if (!owners) return null;
   const majorityOwner = owners.reduce((prev, curr) =>
     prev.percentOwned > curr.precentOwned ? prev : curr
   );
@@ -39,9 +30,9 @@ const getMajorityOwner = row => {
 // @ts-ignore
 function degreeDataPropResolverService(row = {}) {
   return {
-    getMajorDesc: () => row["acadPlanDescription"],
-    getInstitution: () => row["Institution"],
-    getAcadPlan: () => row["AcadPlan"],
+    getMajorDesc: () => row["acadPlanMarketingDescription"],
+    getInstitution: () => "ASU00",
+    getAcadPlan: () => row["acadPlanCode"],
     getDegree: () => row["degreeDescriptionShort"],
     /** @returns {string} */
     getGeneralDegreeMajorMap: () => {
@@ -51,34 +42,30 @@ function degreeDataPropResolverService(row = {}) {
        * including archived ones. The most recent has a defaultFlag key of true
       */
       let majorMapGeneral = row["majorMapGeneral"];
-      let mostRecentMajorMap = majorMapGeneral.find(obj => obj.defaultFlag === true);
+      let mostRecentMajorMap = majorMapGeneral?.find(obj => obj.defaultFlag === true);
       return mostRecentMajorMap?.url || "";
     },
     isUndergradProgram: () => isUndergradProgram(row),
-    isGradProgram: () => !isUndergradProgram(row),
-    isMinorOrCertificate: () => {
-      return !!(row["Degree"] === "Minor" || row["Degree"] === "Certificate");
-    },
+    isGradProgram: () => row["degreeType"] === "GR",
+    isMinorOrCertificate: () => row["degreeType"] === "UGCM", // TODO: Is this the best way to identify minors and certificates? Does OTHR also count as a certificate?
     /** @returns {"undergrad" |  "graduate"} */
     getProgramType: () => (isUndergradProgram(row) ? "undergrad" : "graduate"),
-    getDegreeDesc: () => row["DegreeDescr"],
-    getDegreeDescLong: () => row["DegreeDescrlong"],
+    getDegreeDesc: () => row["degreeDescriptionLong"],
+    getDegreeDescLong: () => row["degreeDescriptionText"],
     getFullDescription: () => row["fullDescription"],
-    getCurriculumUrl: () => row["CurriculumUrl"]?.trim(),
+    getCurriculumUrl: () => row["asuOnlineAcadPlanUrl"]?.trim(),
     getAdmissionsRequirementsText: () => row["admissionsRequirementsText"],
-    getTransferAdmission: () => row["TransferAdmission"],
+    getTransferAdmission: () => row["transferAdmissionRequirementsText"],
     getGraduateRequirements: () => {
       /** @type {Array<Array>} */
-      const rawRequirement1 = row["gradAdditionalRequirements"];
+      const rawRequirement1 = row["graduateDegreeAdditionalRequirements"];
       let gradRequirement1 = "";
       if (rawRequirement1?.length > 0) {
         // requirement[0]: acadPlan. ex `LAAUDAUDD`
         // requirement[1]: brief decription of requirement
         // ex 88 credit hours, a written and oral comprehensive exam
         // requirement[2]: unknown code. ex AUD88AUDD
-        const flatRequirement1 = rawRequirement1
-          .map(requirement => requirement?.[1])
-          .join(", or<br />");
+        const flatRequirement1 = rawRequirement1.join(", or<br />");
 
         // AdmissionsDegRequirements
         gradRequirement1 = flatRequirement1 ? `<p>${flatRequirement1}</p>` : "";
@@ -88,7 +75,7 @@ function degreeDataPropResolverService(row = {}) {
       }
 
       /** @type {string} */
-      const gradRequirement2 = row["AdmissionsDegRequirements"];
+      const gradRequirement2 = row["degreeRequirements"]; // Only availble in graduate programs
 
       return `${gradRequirement1}${gradRequirement2}`;
     },
@@ -96,7 +83,9 @@ function degreeDataPropResolverService(row = {}) {
     // See getGeneralDegreeMajorMap for more info
     getOnlineMajorMapURL: () => {
       let onlineMajorMaps = row["majorMapOnline"];
-      let mostRecentOnlineMajorMap = onlineMajorMaps.find(obj => obj.defaultFlag === true);
+      // TODO: Might change based on what Cyndi and her team decide what to show for degrees without a major map
+      let mostRecentOnlineMajorMap = onlineMajorMaps?.find(obj => obj.defaultFlag === true);
+      if (!mostRecentOnlineMajorMap) return onlineMajorMaps?.[onlineMajorMaps.length - 1]?.url;
       return mostRecentOnlineMajorMap?.url || "";
     },
     hasCareerData: () => !!row["careerData"]?.length,
@@ -104,19 +93,32 @@ function degreeDataPropResolverService(row = {}) {
     /** @return {string []} */
     getCampusList: () => row["campusesOffered"] || [],
     hasConcurrentOrAccelerateDegrees: () =>
-      !!row["accelerateDegrees"]?.length || !!row["concurrentDegrees"]?.length,
-    getAccelerateDegrees: () => row["accelerateDegrees"] || [],
+      row["acceleratedAcadPlanCodes"]?.length || row["concurrentAcadPlanCodes"]?.length,
+    getAccelerateDegrees: async () => {
+      if (row["acceleratedAcadPlanCodes"]?.length) {
+        const acceleratedAcadPlanCodes = row["acceleratedAcadPlanCodes"];
+        const acceleratedDegrees = await Promise.all(
+          acceleratedAcadPlanCodes.map(async code => {
+            const response = await fetch(
+              `https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plan/${code}?include=academicOfficeUrl&include=acadPlanDescription`
+            );
+            const data = await response.json();
+            return data;
+          })
+        );
+        return acceleratedDegrees;
+      }
+    },
     getConcurrentDegrees: () => row["concurrentDegrees"] || [],
     getCollegeDesc: () => {
       // webservice value example "for Design and the Arts, Herberger Institute"
       /** @type {String} */
-      const collegeDescRaw = row["CollegeDescr100"];
-      const collegeDesc = collegeDescRaw
-        ? collegeDescRaw.split(",").reverse().join(" ").trim()
-        : "";
-      return collegeDesc;
+      console.log("row in getCollegeDesc", row);
+      return getMajorityOwner(row)?.collegeDescription;
     },
-    getCollegeUrl: () => row["CollegeUrl"],
+    getCollegeUrl: () => {
+      return getMajorityOwner(row)?.collegeUrl || "";
+    },
     /** @return {string} */
     getEmailAddress: () => row["EmailAddr"],
     /** @return {string} */
@@ -127,19 +129,24 @@ function degreeDataPropResolverService(row = {}) {
     getPlanUrl: () => row["PlanUrl"],
     // AsuProgramFee
     getAsuProgramFee: () => row["AsuProgramFee"],
-    hasAsuProgramFee: () => row["AsuProgramFee"] === "Y",
+    hasAsuProgramFee: () => row["additionalFee"],
     // AsuLangReqFlag
-    getAsuLangReqFlag: () => row["AsuLangReqFlag"],
-    hasAsuLangReqFlag: () => row["AsuLangReqFlag"] === "Y",
+    getAsuLangReqFlag: () => row["languageRequired"],
+    hasAsuLangReqFlag: () => row["languageRequired"],
     getAcadPlanText: () => row["asuAcadpLrfText"],
     // asuMathReqFlag
     getMathReqFlag: () => row["asuMathReqFlag"],
     hasMathReqFlag: () => row["asuMathReqFlag"] === "Y",
     getAdditionalMathReqCourse: () => row["additionalMathReqCourse"],
     getOtherMathReqCourse: () => row["asuAcadpMrfText"],
-    getMathIntensity: () => mathintensity[row["MathIntensity"]],
-    getMathIntensityRawValue: () => row["MathIntensity"],
-    getMinMathReq: () => row["MinMathReq"] || "",
+    getMathIntensity: () => row["mathIntensityDescription"],
+    /** @return {string} */
+    getMinMathReq: () => {
+      let mathInfoObject = row["firstMathCourseRequired"];
+      if (!mathInfoObject) return "";
+      let {subject, catalogNumber, description } = mathInfoObject;
+      return `${subject} ${catalogNumber} - ${description}`;
+    },
     /** @return {string} */
     getMarketText: () => row["marketText"]?.trim(),
     /** @return {string} */
@@ -147,8 +154,8 @@ function degreeDataPropResolverService(row = {}) {
     /** @return {string} */
     getCampusWue: () => row["campusWue"] || "",
     getConcurrentDegreeMajorMaps: () => row["concurrentDegreeMajorMaps"]?.[0],
-    getChangeMajor: () => row["ChangeMajor"],
-    getAsuCareerOpportunity: () => row["AsuCareerOpp"],
+    getChangeMajor: () => row["changeMajorRequirementsText"],
+    getAsuCareerOpportunity: () => row["careerOpportunities"],
     getGlobalExp: () => row["globalExp"]?.trim(),
     /** @return {string} */
     getCollegeAcadOrg: () => row["CollegeAcadOrg"],

@@ -17,6 +17,18 @@ function urlResolver(dataSource, defaultDataSource) {
     httpParameters["collegeOrg"] = httpParameters["collegeAcadOrg"];
     delete httpParameters["collegeAcadOrg"];
   }
+  if (httpParameters.program) {
+    // Convert `program` (from props) to `degreeType` for use as paramter
+    // to accommodate Data Potluck API changes.
+    let program = httpParameters.program;
+    httpParameters["degreeType"] = program === "undergrad" ? "UG" : "GR";
+    delete httpParameters["program"];
+  }
+  if (httpParameters.acadPlan) {
+    httpParameters.endpoint += `/${httpParameters.acadPlan}`;
+    delete httpParameters["acadPlan"];
+  }
+
 
   const { endpoint, fields, ...keyValues } = httpParameters;
 
@@ -25,6 +37,7 @@ function urlResolver(dataSource, defaultDataSource) {
       `${accumulator}&${paramName}=${httpParameters[paramName]}`,
     ""
   );
+  console.log("endpoint", endpoint + "?" + params);
 
   return `${endpoint}?${params}`;
 }

@@ -82,6 +82,7 @@ const DetailPage = ({
 }) => {
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
   const [resolver, setResolver] = useState(degreeDataPropResolverService({}));
+  const [acceleratedDegrees, setAcceleratedDegrees] = useState([]);
 
   const url = urlResolver(dataSource, detailPageDefaultDataSource);
   const { defaultState } = useContext(AppContext);
@@ -92,11 +93,22 @@ const DetailPage = ({
   }, [url]);
 
   useEffect(() => {
-    if (data?.programs) {
-      const newResolver = degreeDataPropResolverService(data?.programs[0]);
+    if (data) {
+      const newResolver = degreeDataPropResolverService(data);
       setResolver(newResolver);
+
+      if (newResolver.hasConcurrentOrAccelerateDegrees()) {
+        newResolver.getAccelerateDegrees()
+          .then(accelerateData => {
+            setAcceleratedDegrees(formatAcceleratedConcurrentLinks(accelerateData) || []);
+          })
+          .catch(error => {
+            console.error("Error fetching accelerated degrees:", error);
+            setAcceleratedDegrees([]);
+          });
+      }
     }
-  }, [data?.programs]);
+  }, [data]);
 
   const filteredAnchorMenu = filterAnchorMenu(anchorMenu, resolver);
   return (
@@ -255,9 +267,7 @@ const DetailPage = ({
               {!flexibleDegreeOptions?.hide &&
                 resolver.hasConcurrentOrAccelerateDegrees() && (
                   <FlexibleDegreeOptions
-                    acceleratedLinks={formatAcceleratedConcurrentLinks(
-                      resolver.getAccelerateDegrees()
-                    )}
+                    acceleratedLinks={acceleratedDegrees}
                     concurrentLinks={formatAcceleratedConcurrentLinks(
                       resolver.getConcurrentDegrees()
                     )}
