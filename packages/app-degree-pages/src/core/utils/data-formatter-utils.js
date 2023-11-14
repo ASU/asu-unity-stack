@@ -6,11 +6,12 @@ import { DOMAIN_URL } from "../constants";
  *
  * @param {object[]} links
  */
-const formatAcceleratedConcurrentLinks = links =>
-  links.map(link => ({
+const formatAcceleratedConcurrentLinks = links =>{
+  console.log({links})
+  return links.map(link => ({
     title: link.acadPlanDescription,
     url: link.academicOfficeUrl,
-  }));
+  }))};
 
 /**
  *

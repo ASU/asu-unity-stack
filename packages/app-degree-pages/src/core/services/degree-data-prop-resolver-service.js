@@ -1,6 +1,7 @@
 // @ts-check
 
 import { findCampusDefinition } from "../models";
+import { fetchAcademicPlans } from "../utils"
 
 // Possible values are UG, GR, UGCM, and OTHR.
 const isUndergradProgram = row => row["degreeType"] === "UG";
@@ -40,9 +41,11 @@ function degreeDataPropResolverService(row = {}) {
       /**
        * majorMapGeneral is an array of all general major maps, excluding online,
        * including archived ones. The most recent has a defaultFlag key of true
-      */
+       */
       let majorMapGeneral = row["majorMapGeneral"];
-      let mostRecentMajorMap = majorMapGeneral?.find(obj => obj.defaultFlag === true);
+      let mostRecentMajorMap = majorMapGeneral?.find(
+        obj => obj.defaultFlag === true
+      );
       return mostRecentMajorMap?.url || "";
     },
     isUndergradProgram: () => isUndergradProgram(row),
@@ -84,8 +87,11 @@ function degreeDataPropResolverService(row = {}) {
     getOnlineMajorMapURL: () => {
       let onlineMajorMaps = row["majorMapOnline"];
       // TODO: Might change based on what Cyndi and her team decide what to show for degrees without a major map
-      let mostRecentOnlineMajorMap = onlineMajorMaps?.find(obj => obj.defaultFlag === true);
-      if (!mostRecentOnlineMajorMap) return onlineMajorMaps?.[onlineMajorMaps.length - 1]?.url;
+      let mostRecentOnlineMajorMap = onlineMajorMaps?.find(
+        obj => obj.defaultFlag === true
+      );
+      if (!mostRecentOnlineMajorMap)
+        return onlineMajorMaps?.[onlineMajorMaps.length - 1]?.url;
       return mostRecentOnlineMajorMap?.url || "";
     },
     hasCareerData: () => !!row["careerData"]?.length,
@@ -93,23 +99,18 @@ function degreeDataPropResolverService(row = {}) {
     /** @return {string []} */
     getCampusList: () => row["campusesOffered"] || [],
     hasConcurrentOrAccelerateDegrees: () =>
-      row["acceleratedAcadPlanCodes"]?.length || row["concurrentAcadPlanCodes"]?.length,
+      row["acceleratedAcadPlanCodes"]?.length ||
+      row["concurrentAcadPlanCodes"]?.length,
     getAccelerateDegrees: async () => {
-      if (row["acceleratedAcadPlanCodes"]?.length) {
-        const acceleratedAcadPlanCodes = row["acceleratedAcadPlanCodes"];
-        const acceleratedDegrees = await Promise.all(
-          acceleratedAcadPlanCodes.map(async code => {
-            const response = await fetch(
-              `https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plan/${code}?include=academicOfficeUrl&include=acadPlanDescription`
-            );
-            const data = await response.json();
-            return data;
-          })
-        );
-        return acceleratedDegrees;
-      }
+      if (!row["acceleratedAcadPlanCodes"]) return [];
+
+      return fetchAcademicPlans(row["acceleratedAcadPlanCodes"]);
     },
-    getConcurrentDegrees: () => row["concurrentDegrees"] || [],
+    getConcurrentDegrees: async () => {
+      if (!row["concurrentAcadPlanCodes"]) return [];
+
+      return fetchAcademicPlans(row["concurrentAcadPlanCodes"]);
+    },
     getCollegeDesc: () => {
       // webservice value example "for Design and the Arts, Herberger Institute"
       /** @type {String} */
@@ -144,7 +145,7 @@ function degreeDataPropResolverService(row = {}) {
     getMinMathReq: () => {
       let mathInfoObject = row["firstMathCourseRequired"];
       if (!mathInfoObject) return "";
-      let {subject, catalogNumber, description } = mathInfoObject;
+      let { subject, catalogNumber, description } = mathInfoObject;
       return `${subject} ${catalogNumber} - ${description}`;
     },
     /** @return {string} */

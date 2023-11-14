@@ -120,7 +120,7 @@ const columns = [
         {resolver.getConcurrentDegrees().lenght > 0 && (
           <div className="cell-container">concurrent</div>
         )}
-        {resolver.getAccelerateDegrees().length > 0 && (
+        {resolver.hasConcurrentOrAccelerateDegrees() > 0 && (
           <div className="cell-container">
             <a href={accellerateDegreeLink(resolver, actionUrls.majorInfoUrl)}>
               4+1 years

@@ -60,7 +60,7 @@ const AccordionView = ({ programs, actionUrls }) => {
 
     const getAcceleratedConcurrent = () => `<div>
         ${
-          resolver.getConcurrentDegrees().lenght > 0
+          resolver.getConcurrentDegrees().length > 0
             ? "<div className='cell-container'>concurrent</div>"
             : ""
         }
