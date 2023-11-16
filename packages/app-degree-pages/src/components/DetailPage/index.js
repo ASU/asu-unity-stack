@@ -82,7 +82,8 @@ const DetailPage = ({
 }) => {
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
   const [resolver, setResolver] = useState(degreeDataPropResolverService({}));
-  const [acceleratedDegrees, setAcceleratedDegrees] = useState([]);
+  const [acceleratedAndConcurrentDegrees, setAcceleratedAndConcurrentDegrees] =
+    useState({ accelerateData: [], concurrentData: [] });
 
   const url = urlResolver(dataSource, detailPageDefaultDataSource);
   const { defaultState } = useContext(AppContext);
@@ -98,13 +99,32 @@ const DetailPage = ({
       setResolver(newResolver);
 
       if (newResolver.hasConcurrentOrAccelerateDegrees()) {
-        newResolver.getAccelerateDegrees()
-          .then(accelerateData => {
-            setAcceleratedDegrees(formatAcceleratedConcurrentLinks(accelerateData) || []);
+        Promise.all([
+          newResolver.getAccelerateDegrees(),
+          newResolver.getConcurrentDegrees(),
+        ])
+          .then(([accelerateData, concurrentData]) => {
+            console.log("accelerateData in useEffect", accelerateData);
+            console.log("concurrentData in useEffect", concurrentData);
+
+            setAcceleratedAndConcurrentDegrees(prev => ({
+              ...prev,
+              accelerateData: formatAcceleratedConcurrentLinks([
+                ...(accelerateData || []),
+              ]),
+              concurrentData: formatAcceleratedConcurrentLinks([
+                ...(concurrentData || []),
+              ]),
+            }));
           })
           .catch(error => {
-            console.error("Error fetching accelerated degrees:", error);
-            setAcceleratedDegrees([]);
+            console.error("Error fetching degrees:", error);
+
+            setAcceleratedAndConcurrentDegrees(prev => ({
+              ...prev,
+              accelerateData: [],
+              concurrentData: [],
+            }));
           });
       }
     }
@@ -267,10 +287,8 @@ const DetailPage = ({
               {!flexibleDegreeOptions?.hide &&
                 resolver.hasConcurrentOrAccelerateDegrees() && (
                   <FlexibleDegreeOptions
-                    acceleratedLinks={acceleratedDegrees}
-                    concurrentLinks={formatAcceleratedConcurrentLinks(
-                      resolver.getConcurrentDegrees()
-                    )}
+                    acceleratedLinks={acceleratedAndConcurrentDegrees.accelerateData}
+                    concurrentLinks={acceleratedAndConcurrentDegrees.concurrentData}
                   />
                 )}
 

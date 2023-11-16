@@ -57,7 +57,7 @@ const undergraduateTemplate = ({
   /** @type {import("src/core/types/shared-local-types").AccordionCard[]} */
   const undergradRequirements = [];
 
-  if (additionalRequirements.trim())
+  if (additionalRequirements?.trim())
     undergradRequirements.push({
       content: {
         header: "Additional Requirements",
@@ -65,7 +65,7 @@ const undergraduateTemplate = ({
       },
     });
 
-  if (transferRequirements.trim())
+  if (transferRequirements?.trim())
     undergradRequirements.push({
       content: {
         header: "Transfer Admission Requirements",

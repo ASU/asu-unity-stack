@@ -28,6 +28,14 @@ function urlResolver(dataSource, defaultDataSource) {
     httpParameters.endpoint += `/${httpParameters.acadPlan}`;
     delete httpParameters["acadPlan"];
   }
+  if (httpParameters.cert === "true") {
+    httpParameters.degreeType = "UGCM";
+    delete httpParameters["cert"];
+  }
+  if (httpParameters.showInactivePrograms === "true") {
+    delete httpParameters["showInactivePrograms"];
+    delete httpParameters["filter"];
+  }
 
 
   const { endpoint, fields, ...keyValues } = httpParameters;

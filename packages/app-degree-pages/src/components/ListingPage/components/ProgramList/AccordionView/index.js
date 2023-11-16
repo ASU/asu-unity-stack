@@ -60,12 +60,12 @@ const AccordionView = ({ programs, actionUrls }) => {
 
     const getAcceleratedConcurrent = () => `<div>
         ${
-          resolver.getConcurrentDegrees().length > 0
+          resolver.hasConcurrentDegrees()
             ? "<div className='cell-container'>concurrent</div>"
             : ""
         }
         ${
-          resolver.getAccelerateDegrees().length > 0
+          resolver.hasAccelerateDegrees()
             ? `<div className="cell-container">
                 <a href=${accellerateDegreeLink(
                   resolver,
@@ -99,7 +99,7 @@ const AccordionView = ({ programs, actionUrls }) => {
         </li>
         <li>
           <strong>Campus or location:</strong>
-          <br />${resolver.getCampusList().map(item => item.campusCode).join(", ")}
+          <br />${resolver.getCampusList().map(item => toTitleCase(item.campusCode)).join(", ")}
         </li>
         <li>
           <strong>Accelerated/Concurrent:</strong>

@@ -34,7 +34,15 @@ function degreeDataPropResolverService(row = {}) {
     getMajorDesc: () => row["acadPlanMarketingDescription"],
     getInstitution: () => "ASU00",
     getAcadPlan: () => row["acadPlanCode"],
-    getDegree: () => row["degreeDescriptionShort"],
+    /** @returns {string} */
+    getDegree: () => {
+      // Minors
+    let degree = row["degreeDescriptionShort"] || row["acadPlanTypeDescription"];
+    if (degree === "CERT") {
+      degree = "Certificate";
+    }
+    return degree;
+  },
     /** @returns {string} */
     getGeneralDegreeMajorMap: () => {
       // TODO: Will there always be a default major map?
@@ -82,7 +90,7 @@ function degreeDataPropResolverService(row = {}) {
 
       return `${gradRequirement1}${gradRequirement2}`;
     },
-    isOnline: () => !row["majorMapGeneral"], // Returns null if only online is available
+    isOnline: () => row["asuOnlineAcadPlanUrl"], // Returns null if online url is not available
     // See getGeneralDegreeMajorMap for more info
     getOnlineMajorMapURL: () => {
       let onlineMajorMaps = row["majorMapOnline"];
@@ -101,6 +109,8 @@ function degreeDataPropResolverService(row = {}) {
     hasConcurrentOrAccelerateDegrees: () =>
       row["acceleratedAcadPlanCodes"]?.length ||
       row["concurrentAcadPlanCodes"]?.length,
+    hasAccelerateDegrees: () => row["acceleratedAcadPlanCodes"]?.length,
+    hasConcurrentDegrees: () => row["concurrentAcadPlanCodes"]?.length,
     getAccelerateDegrees: async () => {
       if (!row["acceleratedAcadPlanCodes"]) return [];
 
@@ -114,20 +124,19 @@ function degreeDataPropResolverService(row = {}) {
     getCollegeDesc: () => {
       // webservice value example "for Design and the Arts, Herberger Institute"
       /** @type {String} */
-      console.log("row in getCollegeDesc", row);
       return getMajorityOwner(row)?.collegeDescription;
     },
     getCollegeUrl: () => {
       return getMajorityOwner(row)?.collegeUrl || "";
     },
     /** @return {string} */
-    getEmailAddress: () => row["EmailAddr"],
+    getEmailAddress: () => row["emailAddr"],
     /** @return {string} */
-    getPhone: () => row["Phone"],
+    getPhone: () => row["phoneNumber"]?.replace("/", '-'),
     /** @return {string} */
-    getDepartmentName: () => row["DepartmentName"],
+    getDepartmentName: () => getMajorityOwner(row)?.departmentDescription,
     /** @return {string} */
-    getPlanUrl: () => row["PlanUrl"],
+    getPlanUrl: () => row["academicOfficeUrl"],
     // AsuProgramFee
     getAsuProgramFee: () => row["AsuProgramFee"],
     hasAsuProgramFee: () => row["additionalFee"],
@@ -151,17 +160,23 @@ function degreeDataPropResolverService(row = {}) {
     /** @return {string} */
     getMarketText: () => row["marketText"]?.trim(),
     /** @return {string} */
-    getAsuOfficeLoc: () => row["AsuOfficeLoc"] || "",
+    getAsuOfficeLoc: () => row["academicOfficeLocation"] || "",
     /** @return {string} */
     getCampusWue: () => row["campusWue"] || "",
     getConcurrentDegreeMajorMaps: () => row["concurrentDegreeMajorMaps"]?.[0],
     getChangeMajor: () => row["changeMajorRequirementsText"],
     getAsuCareerOpportunity: () => row["careerOpportunities"],
-    getGlobalExp: () => row["globalExp"]?.trim(),
+    getGlobalExp: () => row["globalExperienceText"]?.trim(),
     /** @return {string} */
     getCollegeAcadOrg: () => row["CollegeAcadOrg"],
     /** @return {Array} */
-    getCollegeAcadOrgJoint: () => row["CollegeAcadOrgJoint"],
+    getCollegeAcadOrgJoint: () => {
+      let owners = row["owners"];
+      if (!owners) return [];
+
+      let allCollegeAcadOrgs =  owners.map(owner => owner.collegeAcadOrg); // TODO: Do we need to include all the owners collegeAcadOrgs when filtering or just the majority owner?
+      return allCollegeAcadOrgs;
+    },
     /** @return {string} */
     getDepartmentCode: () => row["DepartmentCode"],
     /** @return {Object.<string, string>} */

@@ -117,7 +117,7 @@ const columns = [
     sortable: true,
     contentTemplate: ({ resolver, actionUrls }) => (
       <div>
-        {resolver.getConcurrentDegrees().lenght > 0 && (
+        {resolver.getConcurrentDegrees().then(data => data).length > 0 && (
           <div className="cell-container">concurrent</div>
         )}
         {resolver.hasConcurrentOrAccelerateDegrees() > 0 && (

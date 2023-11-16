@@ -17,6 +17,8 @@ import { ContentBlock } from "./ContentBlock";
  * @returns
  */
 function FlexibleDegreeOptions({ acceleratedLinks, concurrentLinks }) {
+  console.log("acceleratedLinks", acceleratedLinks);
+  console.log("concurrentLinks", concurrentLinks);
   return (
     <section
       id={progDetailSectionIds.flexibleDegreeOptions.targetIdName}
