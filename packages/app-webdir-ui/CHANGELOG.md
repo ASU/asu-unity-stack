@@ -1,3 +1,15 @@
+# [@asu/app-webdir-ui-v3.3.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.5...@asu/app-webdir-ui-v3.3.0) (2023-11-16)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** add webdir profiles for exclusion on rest endpoint ([159a70c](https://github.com/asu/asu-unity-stack/commit/159a70c4456a16607062c44e4da110112e8767f1))
+
+
+### Features
+
+* **app-webdir-ui:** updated post request Web Directories to read new field ([819643f](https://github.com/asu/asu-unity-stack/commit/819643f0e9fd7cec7fa19aaca7bd6f536e80e53c))
+
 # [@asu/app-webdir-ui-v3.2.5](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.4...@asu/app-webdir-ui-v3.2.5) (2023-10-26)
 
 
