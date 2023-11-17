@@ -422,7 +422,7 @@ export const performSearch = function ({
         const deptIDValues = filters.deptIds.map(n => `${n}`).join(",");
         query = `${query}&dept_ids=${deptIDValues}`;
       }
-      if (display.doNotDisplayProfiles) {
+      if (display?.doNotDisplayProfiles) {
         const doNotDisplayProfilesParam = `profiles_to_exclude=${display.doNotDisplayProfiles}`;
         query = `${query}&${doNotDisplayProfilesParam}`;
       }
