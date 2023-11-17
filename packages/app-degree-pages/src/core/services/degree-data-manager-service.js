@@ -27,6 +27,15 @@ function filterData({
     blacklistAcadPlans,
   },
 }) {
+  console.log("filtering data",  {
+    collegeAcadOrg,
+    departmentCode,
+    acceleratedConcurrent,
+    locations,
+    keyword,
+    showInactivePrograms,
+    blacklistAcadPlans,
+  })
   // See WS2-1391 for more details on why we use collegeAcadOrg
   const filterByCollegeAcadOrg = resolver =>
     !collegeAcadOrg || resolver.getCollegeAcadOrgJoint().includes(collegeAcadOrg);
@@ -37,7 +46,7 @@ function filterData({
   const filterByCampus = resolver =>
     !locations.length ||
     resolver.getCampusList()?.some(campus =>
-      locations.some(loc => loc.value === campus)
+      locations.some(loc => loc.value === campus.campusCode)
     );
 
   const filterByAcceleratedConcurrent = (row = {}) =>

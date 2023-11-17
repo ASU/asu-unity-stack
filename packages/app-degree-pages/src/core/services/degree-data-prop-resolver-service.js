@@ -7,9 +7,9 @@ import { fetchAcademicPlans } from "../utils"
 const isUndergradProgram = row => row["degreeType"] === "UG";
 // Check if a program is still accepting new students
 const hasGraduateApplyDates = row =>
-  Object.keys(row["graduateApplyDates"] || {}).length > 0;
+  row["applicationDeadlines"]?.length > 0;
 const hasPlanDeadlines = row =>
-  (row["applicationDeadlines"] || {}).length > 0;
+  row["applicationDeadlines"]?.length > 0;
 const isValidActiveProgram = row =>
   Object.keys(row).length > 0
     ? hasPlanDeadlines(row) || hasGraduateApplyDates(row)
@@ -138,17 +138,18 @@ function degreeDataPropResolverService(row = {}) {
     /** @return {string} */
     getPlanUrl: () => row["academicOfficeUrl"],
     // AsuProgramFee
-    getAsuProgramFee: () => row["AsuProgramFee"],
     hasAsuProgramFee: () => row["additionalFee"],
     // AsuLangReqFlag
     getAsuLangReqFlag: () => row["languageRequired"],
     hasAsuLangReqFlag: () => row["languageRequired"],
-    getAcadPlanText: () => row["asuAcadpLrfText"],
     // asuMathReqFlag
-    getMathReqFlag: () => row["asuMathReqFlag"],
-    hasMathReqFlag: () => row["asuMathReqFlag"] === "Y",
-    getAdditionalMathReqCourse: () => row["additionalMathReqCourse"],
-    getOtherMathReqCourse: () => row["asuAcadpMrfText"],
+    hasMathReqFlag: () => row["mathRequired "],
+    getAdditionalMathReqCourse: () => {
+      let mathCourseRequiredObject = row["firstMathCourseRequired"];
+      if (!mathCourseRequiredObject) return "";
+      return `${mathCourseRequiredObject.subject} ${mathCourseRequiredObject.catalogNumber} - ${mathCourseRequiredObject.description}`;
+    },
+    getOtherMathReqCourse: () => row["firstMathCourseRequiredSupplementalText"],
     getMathIntensity: () => row["mathIntensityDescription"],
     /** @return {string} */
     getMinMathReq: () => {
@@ -158,17 +159,17 @@ function degreeDataPropResolverService(row = {}) {
       return `${subject} ${catalogNumber} - ${description}`;
     },
     /** @return {string} */
-    getMarketText: () => row["marketText"]?.trim(),
+    getMarketText: () => row["marketingText"]?.trim(),
     /** @return {string} */
     getAsuOfficeLoc: () => row["academicOfficeLocation"] || "",
     /** @return {string} */
-    getCampusWue: () => row["campusWue"] || "",
-    getConcurrentDegreeMajorMaps: () => row["concurrentDegreeMajorMaps"]?.[0],
+    getCampusWue: () => row["campusWue"] || "", // TODO: Update this. What is this used for?
+    getConcurrentDegreeMajorMaps: () => fetchAcademicPlans(row["concurrentAcadPlanCodes"]),
     getChangeMajor: () => row["changeMajorRequirementsText"],
     getAsuCareerOpportunity: () => row["careerOpportunities"],
     getGlobalExp: () => row["globalExperienceText"]?.trim(),
     /** @return {string} */
-    getCollegeAcadOrg: () => row["CollegeAcadOrg"],
+    getCollegeAcadOrg: () => getMajorityOwner(row)?.collegeAcadOrg,
     /** @return {Array} */
     getCollegeAcadOrgJoint: () => {
       let owners = row["owners"];
@@ -178,24 +179,25 @@ function degreeDataPropResolverService(row = {}) {
       return allCollegeAcadOrgs;
     },
     /** @return {string} */
-    getDepartmentCode: () => row["DepartmentCode"],
+    getDepartmentCode: () => getMajorityOwner(row)?.departmentAcadCode,
     /** @return {Object.<string, string>} */
-    getGraduateApplyDates: () => row["graduateApplyDates"],
+    getGraduateApplyDates: () => row["applicationDeadlines"],
     hasGraduateApplyDates: () => hasGraduateApplyDates(row),
     /** @return {Object.<string, string>} */
-    getPlanDeadlines: () => row["planDeadlines"],
+    getPlanDeadlines: () => row["applicationDeadlines"],
     hasPlanDeadlines: () => hasPlanDeadlines(row),
     isValidActiveProgram: () => isValidActiveProgram(row),
-    getAsuDegSrchFlg: () => row["AsuDegSrchFlg"],
-    getAsuCustomText: () => row["AsuCustomText"],
+    /** @return {boolean} */
+    getAsuDegSrchFlg: () => row["activeInDegreeSearch"],
+    getAsuCustomText: () => row["customText"],
     getRequiredCoursesLabel: () => {
-      if (row["Degree"] === "Minor") return "Minor";
-      if (row["Degree"] === "Certificate") return "Certificate";
+      if (row["acadPlanTypeDescription"] === "Minor") return "Minor";
+      if (row["acadPlanTypeDescription"] === "Certificate") return "Certificate";
 
       return "Major";
     },
-    getSubPlnMajorMaps: () => row["SubPlnMajorMaps"],
-    getSubPln: () => row["SubPln"],
+    getSubPlnMajorMaps: () => row["majorMapSubplans"]?.map(planInfo => planInfo.defualtFlag ? planInfo.url : null).filter(Boolean),
+    getSubPln: () => row["SubPln"], // TODO: What is this used for? What needs to be shown?
   };
 }
 
