@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v3.3.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.3.1...@asu/app-webdir-ui-v3.3.2) (2023-11-17)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** fix undefined error in seach caused by webdir component update ([29538b8](https://github.com/asu/asu-unity-stack/commit/29538b8ba2607ec6c8a1da8bd605cb8e35bb775a))
+
 # [@asu/app-webdir-ui-v3.3.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.3.0...@asu/app-webdir-ui-v3.3.1) (2023-11-17)
 
 
