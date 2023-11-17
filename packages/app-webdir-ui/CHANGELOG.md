@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v3.3.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.3.0...@asu/app-webdir-ui-v3.3.1) (2023-11-17)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** fix zero value EID in path problem ([5e9e7cd](https://github.com/asu/asu-unity-stack/commit/5e9e7cdb1a76fddd1daa46f734cacaa866bc4dfc))
+
 # [@asu/app-webdir-ui-v3.3.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.5...@asu/app-webdir-ui-v3.3.0) (2023-11-16)
 
 
