@@ -1,8 +1,8 @@
 // @ts-check
-import { idGenerator } from "@asu/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
+import { idGenerator } from "../../../../../../../shared";
 import { filterValueShape, isAccelConcValid } from "../../../../core/models";
 
 /**

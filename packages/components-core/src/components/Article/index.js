@@ -14,7 +14,7 @@ import {
 } from "react-share";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 
-import { sanitizeDangerousMarkup } from "../../core/utils/html-utils";
+import { sanitizeDangerousMarkup } from "../../../../../shared";
 import { Button } from "../Button";
 import { Wrapper, EventInfoWrapper } from "./index.styles";
 

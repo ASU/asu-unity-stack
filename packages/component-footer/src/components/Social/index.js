@@ -12,7 +12,7 @@ import React from "react";
 
 // @ts-ignore
 import endorsedLogo from "../../assets/images/endorsedLogo.png";
-import { trackGAEvent } from "../../core/services/googleAnalytics";
+import { trackGAEvent } from "../../../../../shared";
 
 const DEFAULT_GA_EVENT = {
   type: "external link",

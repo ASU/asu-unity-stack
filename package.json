@@ -57,6 +57,7 @@
     "copy-webpack-plugin": "^8.1.1",
     "css-minimizer-webpack-plugin": "^2.0.0",
     "cz-conventional-changelog": "3.3.0",
+    "dompurify": "^2.2.7",
     "eslint": "^7.24.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-preact": "^1.1.3",

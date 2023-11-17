@@ -3,10 +3,11 @@
 /* eslint-disable react/no-danger */
 /* eslint-disable react/prop-types */
 // @ts-check
-import { sanitizeDangerousMarkup } from "@asu/components-core";
 import { createPopper } from "@popperjs/core";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+
+import { sanitizeDangerousMarkup } from "../../../../../../../shared";
 
 const Tooltip = styled.div`
   position: absolute;

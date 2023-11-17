@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import React, { useState, useEffect, createContext } from "react";
 import styled from "styled-components";
 
-import { useFetch } from "../../core/hooks/use-fetch";
+import { useFetch } from "../../../../../shared";
 import { Loader } from "../Loader";
 
 const Container = styled.section``;

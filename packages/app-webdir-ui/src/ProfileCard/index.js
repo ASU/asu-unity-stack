@@ -1,6 +1,6 @@
 import React from "react";
 
-import { trackGAEvent } from "../core/services/googleAnalytics";
+import { trackGAEvent } from "../../../../shared";
 import { ProfileCardLayout } from "./index.styles";
 import { profileCardType } from "./models";
 

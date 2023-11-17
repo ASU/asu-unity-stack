@@ -3,8 +3,8 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 
+import { sanitizeDangerousMarkup } from "../../../../../../shared";
 import { accordionCardPropTypes } from "../../../core/models/shared-prop-types";
-import { sanitizeDangerousMarkup } from "../../../core/utils/html-utils";
 
 /**
  * @typedef {import('../../../core/types/shared-types').AccordionCardItemProps} AccordionCardItemProps
