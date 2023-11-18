@@ -114,6 +114,7 @@
  * @property {boolean} isMinorOrCertificate
  * @property {string} additionalRequirements
  * @property {string} transferRequirements
+ * @property {string} minorRequirements
  */
 
 /**

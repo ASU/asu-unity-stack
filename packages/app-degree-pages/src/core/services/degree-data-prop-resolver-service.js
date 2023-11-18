@@ -66,6 +66,7 @@ function degreeDataPropResolverService(row = {}) {
     getFullDescription: () => row["fullDescription"],
     getCurriculumUrl: () => row["asuOnlineAcadPlanUrl"]?.trim(),
     getAdmissionsRequirementsText: () => row["admissionsRequirementsText"],
+    getMinorCourseRequirements: () => row["minorCourseRequirements"],
     getTransferAdmission: () => row["transferAdmissionRequirementsText"],
     getGraduateRequirements: () => {
       /** @type {Array<Array>} */

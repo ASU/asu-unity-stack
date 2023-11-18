@@ -20,4 +20,5 @@ async function fetchAcademicPlans(acadPlanCodes) {
   return [];
 }
 
+
 export { fetchAcademicPlans };

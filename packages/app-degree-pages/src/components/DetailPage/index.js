@@ -29,9 +29,9 @@ import {
   hasValidAnchorMenu,
 } from "../../core/services";
 import {
-  formatAcceleratedConcurrentLinks,
   formatCareerData,
   urlResolver,
+  executePromisesAndUpdateState
 } from "../../core/utils";
 import { AffordingCollege } from "./components/AffordingCollege";
 import { ApplicationRequirements } from "./components/ApplicationRequirements";
@@ -99,33 +99,13 @@ const DetailPage = ({
       setResolver(newResolver);
 
       if (newResolver.hasConcurrentOrAccelerateDegrees()) {
-        Promise.all([
-          newResolver.getAccelerateDegrees(),
-          newResolver.getConcurrentDegrees(),
-        ])
-          .then(([accelerateData, concurrentData]) => {
-            console.log("accelerateData in useEffect", accelerateData);
-            console.log("concurrentData in useEffect", concurrentData);
-
-            setAcceleratedAndConcurrentDegrees(prev => ({
-              ...prev,
-              accelerateData: formatAcceleratedConcurrentLinks([
-                ...(accelerateData || []),
-              ]),
-              concurrentData: formatAcceleratedConcurrentLinks([
-                ...(concurrentData || []),
-              ]),
-            }));
-          })
-          .catch(error => {
-            console.error("Error fetching degrees:", error);
-
-            setAcceleratedAndConcurrentDegrees(prev => ({
-              ...prev,
-              accelerateData: [],
-              concurrentData: [],
-            }));
-          });
+        executePromisesAndUpdateState(
+          [
+            newResolver.getAccelerateDegrees(),
+            newResolver.getConcurrentDegrees(),
+          ],
+          setAcceleratedAndConcurrentDegrees
+        );
       }
     }
   }, [data]);
@@ -240,6 +220,7 @@ const DetailPage = ({
                         : null
                     }
                     isMinorOrCertificate={resolver.isMinorOrCertificate()}
+                    minorRequirements={resolver.getMinorCourseRequirements()}
                     additionalRequirements={resolver.getAdmissionsRequirementsText()}
                     transferRequirements={resolver.getTransferAdmission()}
                   />
