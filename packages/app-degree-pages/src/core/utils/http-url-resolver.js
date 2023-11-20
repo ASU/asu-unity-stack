@@ -2,8 +2,8 @@
 
 /**
  *
- * @param {import("../types/listing-page-types").AppDataSource} dataSource
- * @param {import("../types/listing-page-types").AppDataSource} defaultDataSource
+ * @param {import("../types/listing-page-types").ProgramListDataSource} dataSource
+ * @param {import("../types/listing-page-types").ProgramListDataSource} defaultDataSource
  * @returns {string}
  */
 function urlResolver(dataSource, defaultDataSource) {
@@ -20,7 +20,7 @@ function urlResolver(dataSource, defaultDataSource) {
   if (httpParameters.program) {
     // Convert `program` (from props) to `degreeType` for use as paramter
     // to accommodate Data Potluck API changes.
-    let program = httpParameters.program;
+    const { program } = httpParameters;
     httpParameters["degreeType"] = program === "undergrad" ? "UG" : "GR";
     delete httpParameters["program"];
   }
@@ -37,7 +37,6 @@ function urlResolver(dataSource, defaultDataSource) {
     delete httpParameters["filter"];
   }
 
-
   const { endpoint, fields, ...keyValues } = httpParameters;
 
   const params = Object.keys(keyValues).reduce(
@@ -45,7 +44,6 @@ function urlResolver(dataSource, defaultDataSource) {
       `${accumulator}&${paramName}=${httpParameters[paramName]}`,
     ""
   );
-  console.log("endpoint", endpoint + "?" + params);
 
   return `${endpoint}?${params}`;
 }

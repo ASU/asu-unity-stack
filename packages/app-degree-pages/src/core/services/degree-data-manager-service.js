@@ -27,27 +27,19 @@ function filterData({
     blacklistAcadPlans,
   },
 }) {
-  console.log("filtering data",  {
-    collegeAcadOrg,
-    departmentCode,
-    acceleratedConcurrent,
-    locations,
-    keyword,
-    showInactivePrograms,
-    blacklistAcadPlans,
-  })
   // See WS2-1391 for more details on why we use collegeAcadOrg
   const filterByCollegeAcadOrg = resolver =>
-    !collegeAcadOrg || resolver.getCollegeAcadOrgJoint().includes(collegeAcadOrg);
+    !collegeAcadOrg ||
+    resolver.getCollegeAcadOrgJoint().includes(collegeAcadOrg);
 
   const filterByDepartmentCode = resolver =>
     !departmentCode || resolver.getDepartmentCode().includes(departmentCode);
 
   const filterByCampus = resolver =>
     !locations.length ||
-    resolver.getCampusList()?.some(campus =>
-      locations.some(loc => loc.value === campus.campusCode)
-    );
+    resolver
+      .getCampusList()
+      ?.some(campus => locations.some(loc => loc.value === campus.campusCode));
 
   const filterByAcceleratedConcurrent = (row = {}) =>
     !isAccelConcValid(acceleratedConcurrent) ||
@@ -86,7 +78,9 @@ function filterData({
  */
 const sortPrograms = programs => {
   const sortedPrograms = programs.sort((p1, p2) =>
-    p1.acadPlanMarketingDescription.localeCompare(p2.acadPlanMarketingDescription)
+    p1.acadPlanMarketingDescription.localeCompare(
+      p2.acadPlanMarketingDescription
+    )
   );
 
   return sortedPrograms;

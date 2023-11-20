@@ -185,10 +185,9 @@
 /**
  * @typedef {Object} ProgramDetailDataSource
  * @property {string} [endpoint]
- * @property {string} [method]
  * @property {"true" | "false"} [init]
  * @property {"true" | "false"} [cert]
- * @property {string} [fields]
+ * @property {string} [include]
  * @property {string} acadPlan
  */
 

@@ -7,7 +7,7 @@
  */
 async function fetchAcademicPlans(acadPlanCodes) {
   if (acadPlanCodes?.length) {
-    return await Promise.all(
+    return Promise.all(
       acadPlanCodes.map(async code => {
         const response = await fetch(
           `https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plan/${code}?include=academicOfficeUrl&include=acadPlanDescription`
@@ -19,6 +19,5 @@ async function fetchAcademicPlans(acadPlanCodes) {
   }
   return [];
 }
-
 
 export { fetchAcademicPlans };

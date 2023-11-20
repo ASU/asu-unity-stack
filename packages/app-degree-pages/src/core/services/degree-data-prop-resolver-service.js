@@ -1,21 +1,19 @@
 // @ts-check
 
 import { findCampusDefinition } from "../models";
-import { fetchAcademicPlans } from "../utils"
+import { fetchAcademicPlans } from "../utils";
 
 // Possible values are UG, GR, UGCM, and OTHR.
 const isUndergradProgram = row => row["degreeType"] === "UG";
 // Check if a program is still accepting new students
-const hasGraduateApplyDates = row =>
-  row["applicationDeadlines"]?.length > 0;
-const hasPlanDeadlines = row =>
-  row["applicationDeadlines"]?.length > 0;
+const hasGraduateApplyDates = row => row["applicationDeadlines"]?.length > 0;
+const hasPlanDeadlines = row => row["applicationDeadlines"]?.length > 0;
 const isValidActiveProgram = row =>
   Object.keys(row).length > 0
     ? hasPlanDeadlines(row) || hasGraduateApplyDates(row)
     : true;
 const getMajorityOwner = row => {
-  const owners = row["owners"];
+  const { owners } = row;
   if (!owners) return null;
   const majorityOwner = owners.reduce((prev, curr) =>
     prev.percentOwned > curr.precentOwned ? prev : curr
@@ -37,12 +35,13 @@ function degreeDataPropResolverService(row = {}) {
     /** @returns {string} */
     getDegree: () => {
       // Minors
-    let degree = row["degreeDescriptionShort"] || row["acadPlanTypeDescription"];
-    if (degree === "CERT") {
-      degree = "Certificate";
-    }
-    return degree;
-  },
+      let degree =
+        row["degreeDescriptionShort"] || row["acadPlanTypeDescription"];
+      if (degree === "CERT") {
+        degree = "Certificate";
+      }
+      return degree;
+    },
     /** @returns {string} */
     getGeneralDegreeMajorMap: () => {
       // TODO: Will there always be a default major map?
@@ -50,8 +49,8 @@ function degreeDataPropResolverService(row = {}) {
        * majorMapGeneral is an array of all general major maps, excluding online,
        * including archived ones. The most recent has a defaultFlag key of true
        */
-      let majorMapGeneral = row["majorMapGeneral"];
-      let mostRecentMajorMap = majorMapGeneral?.find(
+      const { majorMapGeneral } = row;
+      const mostRecentMajorMap = majorMapGeneral?.find(
         obj => obj.defaultFlag === true
       );
       return mostRecentMajorMap?.url || "";
@@ -94,9 +93,9 @@ function degreeDataPropResolverService(row = {}) {
     isOnline: () => row["asuOnlineAcadPlanUrl"], // Returns null if online url is not available
     // See getGeneralDegreeMajorMap for more info
     getOnlineMajorMapURL: () => {
-      let onlineMajorMaps = row["majorMapOnline"];
+      const onlineMajorMaps = row["majorMapOnline"];
       // TODO: Might change based on what Cyndi and her team decide what to show for degrees without a major map
-      let mostRecentOnlineMajorMap = onlineMajorMaps?.find(
+      const mostRecentOnlineMajorMap = onlineMajorMaps?.find(
         obj => obj.defaultFlag === true
       );
       if (!mostRecentOnlineMajorMap)
@@ -105,7 +104,7 @@ function degreeDataPropResolverService(row = {}) {
     },
     hasCareerData: () => !!row["careerData"]?.length,
     getCareerData: () => row["careerData"] || [],
-    /** @return {string []} */
+    /** @return {Object[]} */
     getCampusList: () => row["campusesOffered"] || [],
     hasConcurrentOrAccelerateDegrees: () =>
       row["acceleratedAcadPlanCodes"]?.length ||
@@ -133,7 +132,7 @@ function degreeDataPropResolverService(row = {}) {
     /** @return {string} */
     getEmailAddress: () => row["emailAddr"],
     /** @return {string} */
-    getPhone: () => row["phoneNumber"]?.replace("/", '-'),
+    getPhone: () => row["phoneNumber"]?.replace("/", "-"),
     /** @return {string} */
     getDepartmentName: () => getMajorityOwner(row)?.departmentDescription,
     /** @return {string} */
@@ -146,7 +145,7 @@ function degreeDataPropResolverService(row = {}) {
     // asuMathReqFlag
     hasMathReqFlag: () => row["mathRequired "],
     getAdditionalMathReqCourse: () => {
-      let mathCourseRequiredObject = row["firstMathCourseRequired"];
+      const mathCourseRequiredObject = row["firstMathCourseRequired"];
       if (!mathCourseRequiredObject) return "";
       return `${mathCourseRequiredObject.subject} ${mathCourseRequiredObject.catalogNumber} - ${mathCourseRequiredObject.description}`;
     },
@@ -154,9 +153,9 @@ function degreeDataPropResolverService(row = {}) {
     getMathIntensity: () => row["mathIntensityDescription"],
     /** @return {string} */
     getMinMathReq: () => {
-      let mathInfoObject = row["firstMathCourseRequired"];
+      const mathInfoObject = row["firstMathCourseRequired"];
       if (!mathInfoObject) return "";
-      let { subject, catalogNumber, description } = mathInfoObject;
+      const { subject, catalogNumber, description } = mathInfoObject;
       return `${subject} ${catalogNumber} - ${description}`;
     },
     /** @return {string} */
@@ -165,7 +164,8 @@ function degreeDataPropResolverService(row = {}) {
     getAsuOfficeLoc: () => row["academicOfficeLocation"] || "",
     /** @return {string} */
     getCampusWue: () => row["campusWue"] || "", // TODO: Update this. What is this used for?
-    getConcurrentDegreeMajorMaps: () => fetchAcademicPlans(row["concurrentAcadPlanCodes"]),
+    getConcurrentDegreeMajorMaps: () =>
+      fetchAcademicPlans(row["concurrentAcadPlanCodes"]),
     getChangeMajor: () => row["changeMajorRequirementsText"],
     getAsuCareerOpportunity: () => row["careerOpportunities"],
     getGlobalExp: () => row["globalExperienceText"]?.trim(),
@@ -173,10 +173,10 @@ function degreeDataPropResolverService(row = {}) {
     getCollegeAcadOrg: () => getMajorityOwner(row)?.collegeAcadOrg,
     /** @return {Array} */
     getCollegeAcadOrgJoint: () => {
-      let owners = row["owners"];
+      const { owners } = row;
       if (!owners) return [];
 
-      let allCollegeAcadOrgs =  owners.map(owner => owner.collegeAcadOrg); // TODO: Do we need to include all the owners collegeAcadOrgs when filtering or just the majority owner?
+      const allCollegeAcadOrgs = owners.map(owner => owner.collegeAcadOrg); // TODO: Do we need to include all the owners collegeAcadOrgs when filtering or just the majority owner?
       return allCollegeAcadOrgs;
     },
     /** @return {string} */
@@ -193,11 +193,15 @@ function degreeDataPropResolverService(row = {}) {
     getAsuCustomText: () => row["customText"],
     getRequiredCoursesLabel: () => {
       if (row["acadPlanTypeDescription"] === "Minor") return "Minor";
-      if (row["acadPlanTypeDescription"] === "Certificate") return "Certificate";
+      if (row["acadPlanTypeDescription"] === "Certificate")
+        return "Certificate";
 
       return "Major";
     },
-    getSubPlnMajorMaps: () => row["majorMapSubplans"]?.map(planInfo => planInfo.defualtFlag ? planInfo.url : null).filter(Boolean),
+    getSubPlnMajorMaps: () =>
+      row["majorMapSubplans"]
+        ?.map(planInfo => (planInfo.defualtFlag ? planInfo.url : null))
+        .filter(Boolean),
     getSubPln: () => row["SubPln"], // TODO: What is this used for? What needs to be shown?
   };
 }

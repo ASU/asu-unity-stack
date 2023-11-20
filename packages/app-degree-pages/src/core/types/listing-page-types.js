@@ -37,12 +37,16 @@
 /**
  * @typedef {Object} ProgramListDataSource
  * @property {string} [endpoint]
+ * @property {string} [filter]
+ * @property {string} [include]
+ * @property {string} [degreeType]
  * @property {string} [method]
  * @property {"true" | "false"} [init]
  * @property {"true" | "false"} [cert]
  * @property {string} [fields]
  * @property {string} [program]
  * @property {string} [collegeAcadOrg]
+ * @property {string} [acadPlan]
  * @property {string} [departmentCode]
  * @property {boolean | "true" | "false"} [showInactivePrograms]
  * @property {Array} [blacklistAcadPlans]

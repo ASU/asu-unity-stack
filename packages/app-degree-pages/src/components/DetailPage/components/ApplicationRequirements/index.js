@@ -135,7 +135,7 @@ function ApplicationRequirements({
         <h2>
           <span className="highlight-gold">{reqsLabel}</span>
         </h2>
-        {(graduateRequirements || isMinorOrCertificate )? (
+        {graduateRequirements || isMinorOrCertificate ? (
           <div
             dangerouslySetInnerHTML={sanitizeDangerousMarkup(
               graduateRequirements || minorRequirements
@@ -149,7 +149,7 @@ function ApplicationRequirements({
         )}
       </section>
 
-      {(graduateRequirements || isMinorOrCertificate ) ? (
+      {graduateRequirements || isMinorOrCertificate ? (
         <section
           id={progDetailSectionIds.degreeRequirements.targetIdName}
           data-testid="degree-requirements"

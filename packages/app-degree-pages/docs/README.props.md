@@ -640,6 +640,7 @@ This type set the `url` and `isActive` optional
 | isMinorOrCertificate | <code>boolean</code> | 
 | additionalRequirements | <code>string</code> | 
 | transferRequirements | <code>string</code> | 
+| minorRequirements | <code>string</code> | 
 
 <a name="ChangeMajorRequirementsProps"></a>
 

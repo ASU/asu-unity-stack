@@ -74,9 +74,7 @@ const renderExtraInfo = ({ resolver }) => (
     </div>
     <div>
       <strong>Second Language Requirement: </strong>
-      {resolver.hasAsuLangReqFlag()
-        ? "Yes"
-        : "No"}
+      {resolver.hasAsuLangReqFlag() ? "Yes" : "No"}
     </div>
 
     <div>

@@ -99,7 +99,10 @@ const AccordionView = ({ programs, actionUrls }) => {
         </li>
         <li>
           <strong>Campus or location:</strong>
-          <br />${resolver.getCampusList().map(item => toTitleCase(item.campusCode)).join(", ")}
+          <br />${resolver
+            .getCampusList()
+            .map(item => toTitleCase(item.campusCode))
+            .join(", ")}
         </li>
         <li>
           <strong>Accelerated/Concurrent:</strong>

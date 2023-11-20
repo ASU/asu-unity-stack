@@ -31,7 +31,8 @@ import {
 import {
   formatCareerData,
   urlResolver,
-  executePromisesAndUpdateState
+  executePromisesAndUpdateState,
+  formatAcceleratedConcurrentLinks,
 } from "../../core/utils";
 import { AffordingCollege } from "./components/AffordingCollege";
 import { ApplicationRequirements } from "./components/ApplicationRequirements";
@@ -268,8 +269,12 @@ const DetailPage = ({
               {!flexibleDegreeOptions?.hide &&
                 resolver.hasConcurrentOrAccelerateDegrees() && (
                   <FlexibleDegreeOptions
-                    acceleratedLinks={acceleratedAndConcurrentDegrees.accelerateData}
-                    concurrentLinks={acceleratedAndConcurrentDegrees.concurrentData}
+                    acceleratedLinks={
+                      formatAcceleratedConcurrentLinks(acceleratedAndConcurrentDegrees.accelerateData)
+                    }
+                    concurrentLinks={
+                      formatAcceleratedConcurrentLinks(acceleratedAndConcurrentDegrees.concurrentData)
+                    }
                   />
                 )}
 

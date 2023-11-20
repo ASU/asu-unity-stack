@@ -1,24 +1,18 @@
 /**
  * Executes multiple promises and applies corresponding state updates.
  * @param {Promise[]} promises - An array of promises to be resolved.
-  * @param {Dispatch<SetStateAction<{ accelerateData: any[]; concurrentData: any[]; }>>} stateUpdateFunctions - An array of state update functions
+ * @param {Dispatch<SetStateAction<{ accelerateData: any[]; concurrentData: any[]; }>>} stateUpdateFunctions - A state update function
  */
-function executePromisesAndUpdateState(promises, stateUpdateFunctions) {
+function executePromisesAndUpdateState(promises, stateUpdateFunction) {
   Promise.all(promises)
-    .then(results => {
-      results.forEach((result, index) => {
-        if (stateUpdateFunctions[index]) {
-          stateUpdateFunctions[index](result);
-        }
-      });
+  .then(results => {
+    const accelerateData = results[0];
+    const concurrentData = results[1];
+    stateUpdateFunction({accelerateData, concurrentData});
     })
     .catch(() => {
-      stateUpdateFunctions.forEach(updateFunction => {
-        if (updateFunction) {
-          updateFunction(null);
-        }
-      });
+      stateUpdateFunction({accelerateData: [], concurrentData: []});
     });
-};
+}
 
 export { executePromisesAndUpdateState };
