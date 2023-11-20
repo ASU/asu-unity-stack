@@ -34,12 +34,12 @@ const acceleratedConcurrentOptions = [
   },
   {
     id: 1,
-    value: "accelerateDegrees",
+    value: "acceleratedAcadPlanCodes",
     text: "Accelerated",
   },
   {
     id: 2,
-    value: "concurrentDegrees",
+    value: "concurrentAcadPlanCodes",
     text: "Concurrent",
   },
 ];
