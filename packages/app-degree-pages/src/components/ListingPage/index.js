@@ -122,7 +122,7 @@ const ListingPage = ({
   useListingPageLogger({
     dataSource: programList.dataSource,
     tableView,
-    programs: data?.programs,
+    programs: data,
     stateFilters,
   });
 
@@ -131,7 +131,7 @@ const ListingPage = ({
   }, [url]);
 
   useEffect(() => {
-    let dataInit = sortPrograms(data?.programs || []);
+    let dataInit = sortPrograms(data || []);
     // apply buil-in filters
     dataInit = filterData({
       programs: dataInit,

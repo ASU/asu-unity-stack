@@ -53,19 +53,19 @@ const AccordionView = ({ programs, actionUrls }) => {
       const isOnline = resolver.isOnline();
       const directUrl = isOnline
         ? resolver.getOnlineMajorMapURL()
-        : resolver.getAsuCritTrackUrl();
+        : resolver.getGeneralDegreeMajorMap();
 
       return `<a href=${directUrl}>${resolver.getRequiredCoursesLabel()} Map</a>`;
     };
 
     const getAcceleratedConcurrent = () => `<div>
         ${
-          resolver.getConcurrentDegrees().lenght > 0
+          resolver.hasConcurrentDegrees()
             ? "<div className='cell-container'>concurrent</div>"
             : ""
         }
         ${
-          resolver.getAccelerateDegrees().length > 0
+          resolver.hasAccelerateDegrees()
             ? `<div className="cell-container">
                 <a href=${accellerateDegreeLink(
                   resolver,
@@ -99,7 +99,10 @@ const AccordionView = ({ programs, actionUrls }) => {
         </li>
         <li>
           <strong>Campus or location:</strong>
-          <br />${resolver.getCampusList().map(toTitleCase).join(", ")}
+          <br />${resolver
+            .getCampusList()
+            .map(item => toTitleCase(item.campusCode))
+            .join(", ")}
         </li>
         <li>
           <strong>Accelerated/Concurrent:</strong>

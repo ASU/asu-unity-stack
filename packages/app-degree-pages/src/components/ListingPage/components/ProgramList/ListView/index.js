@@ -37,7 +37,7 @@ const renderInfo = ({ resolver, id }) => {
         className="desc-long"
         id={id}
         dangerouslySetInnerHTML={sanitizeDangerousMarkup(
-          resolver.getDescrLongExtented()
+          resolver.getFullDescription()
         )}
       />
       <label
@@ -74,9 +74,7 @@ const renderExtraInfo = ({ resolver }) => (
     </div>
     <div>
       <strong>Second Language Requirement: </strong>
-      {resolver.hasAsuLangReqFlag()
-        ? resolver.getAcadPlanText() || "Yes"
-        : "No"}
+      {resolver.hasAsuLangReqFlag() ? "Yes" : "No"}
     </div>
 
     <div>
