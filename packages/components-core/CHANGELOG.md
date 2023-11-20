@@ -1,3 +1,16 @@
+# [@asu/components-core-v3.2.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.1.4...@asu/components-core-v3.2.0) (2023-11-20)
+
+
+### Bug Fixes
+
+* **components-core:** export initFuncs ([5da35a2](https://github.com/ASU/asu-unity-stack/commit/5da35a2b6bebd56e054754beb40a5d40df3e38b7))
+* **components-core:** fix components-core init ([38bdb42](https://github.com/ASU/asu-unity-stack/commit/38bdb42bf9243f6ffaf0a615e769388b22a2ef66))
+
+
+### Features
+
+* **components-core:** add InitImage ([4139660](https://github.com/ASU/asu-unity-stack/commit/41396609a2f483cc1ff2fc52e984b1fc551afd4f))
+
 # [@asu/components-core-v3.1.4](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.1.3...@asu/components-core-v3.1.4) (2023-10-18)
 
 
