@@ -29,9 +29,10 @@ import {
   hasValidAnchorMenu,
 } from "../../core/services";
 import {
-  formatAcceleratedConcurrentLinks,
   formatCareerData,
   urlResolver,
+  executePromisesAndUpdateState,
+  formatAcceleratedConcurrentLinks,
 } from "../../core/utils";
 import { AffordingCollege } from "./components/AffordingCollege";
 import { ApplicationRequirements } from "./components/ApplicationRequirements";
@@ -82,6 +83,8 @@ const DetailPage = ({
 }) => {
   const [{ data, loading, error }, doFetchPrograms] = useFetch();
   const [resolver, setResolver] = useState(degreeDataPropResolverService({}));
+  const [acceleratedAndConcurrentDegrees, setAcceleratedAndConcurrentDegrees] =
+    useState({ accelerateData: [], concurrentData: [] });
 
   const url = urlResolver(dataSource, detailPageDefaultDataSource);
   const { defaultState } = useContext(AppContext);
@@ -92,11 +95,21 @@ const DetailPage = ({
   }, [url]);
 
   useEffect(() => {
-    if (data?.programs) {
-      const newResolver = degreeDataPropResolverService(data?.programs[0]);
+    if (data) {
+      const newResolver = degreeDataPropResolverService(data);
       setResolver(newResolver);
+
+      if (newResolver.hasConcurrentOrAccelerateDegrees()) {
+        executePromisesAndUpdateState(
+          [
+            newResolver.getAccelerateDegrees(),
+            newResolver.getConcurrentDegrees(),
+          ],
+          setAcceleratedAndConcurrentDegrees
+        );
+      }
     }
-  }, [data?.programs]);
+  }, [data]);
 
   const filteredAnchorMenu = filterAnchorMenu(anchorMenu, resolver);
   return (
@@ -157,7 +170,7 @@ const DetailPage = ({
 
                   {!introContent?.hideProgramDesc ? (
                     <ProgramDescription
-                      content={resolver.getDescrLongExtented()}
+                      content={resolver.getFullDescription()}
                     />
                   ) : null}
 
@@ -165,7 +178,7 @@ const DetailPage = ({
                     <RequiredCourse
                       concurrentDegreeMajorMaps={resolver.getConcurrentDegreeMajorMaps()}
                       onlineMajorMapURL={resolver.getOnlineMajorMapURL()}
-                      majorMapOnCampusArchiveURL={resolver.getAsuCritTrackUrl()}
+                      majorMapOnCampusArchiveURL={resolver.getGeneralDegreeMajorMap()}
                     />
                   ) : null} */}
                 </section>
@@ -194,7 +207,7 @@ const DetailPage = ({
                 !resolver.isMinorOrCertificate() ? (
                   <RequiredCourse
                     onlineMajorMapURL={resolver.getOnlineMajorMapURL()}
-                    majorMapOnCampusURL={resolver.getAsuCritTrackUrl()}
+                    majorMapOnCampusURL={resolver.getGeneralDegreeMajorMap()}
                     subPlnMajorMaps={resolver.getSubPlnMajorMaps()}
                     subPln={resolver.getSubPln()}
                   />
@@ -208,7 +221,8 @@ const DetailPage = ({
                         : null
                     }
                     isMinorOrCertificate={resolver.isMinorOrCertificate()}
-                    additionalRequirements={resolver.getDescrLongExtented5()}
+                    minorRequirements={resolver.getMinorCourseRequirements()}
+                    additionalRequirements={resolver.getAdmissionsRequirementsText()}
                     transferRequirements={resolver.getTransferAdmission()}
                   />
                 ) : null}
@@ -255,12 +269,12 @@ const DetailPage = ({
               {!flexibleDegreeOptions?.hide &&
                 resolver.hasConcurrentOrAccelerateDegrees() && (
                   <FlexibleDegreeOptions
-                    acceleratedLinks={formatAcceleratedConcurrentLinks(
-                      resolver.getAccelerateDegrees()
-                    )}
-                    concurrentLinks={formatAcceleratedConcurrentLinks(
-                      resolver.getConcurrentDegrees()
-                    )}
+                    acceleratedLinks={
+                      formatAcceleratedConcurrentLinks(acceleratedAndConcurrentDegrees.accelerateData)
+                    }
+                    concurrentLinks={
+                      formatAcceleratedConcurrentLinks(acceleratedAndConcurrentDegrees.concurrentData)
+                    }
                   />
                 )}
 
