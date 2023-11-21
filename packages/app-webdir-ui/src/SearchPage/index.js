@@ -4,11 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { engineNames, engines } from "../helpers/search";
-import {
-  PreSearchMessage,
-  PreFacStaffMsg,
-  PreStudentMsg,
-} from "../PreSearchMessages";
+import { searchMessageComponentMap } from "../PreSearchMessages";
 import {
   AllTab,
   FacultyTab,
@@ -125,16 +121,9 @@ function SearchPage({
     }
   };
 
-  const componentMap = {
-    "web_dir_faculty_staff": <PreFacStaffMsg />,
-    "web_dir_students": <PreStudentMsg />,
-    "all": <PreSearchMessage />,
-    "web-sites": <PreSearchMessage />,
-  };
-
   const preSearchOrContent = content => {
     if (term) return content;
-    return componentMap[searchParams.get(searchTabsId)];
+    return searchMessageComponentMap[searchParams.get(searchTabsId)];
   };
 
   return (

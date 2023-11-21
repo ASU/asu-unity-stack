@@ -1,22 +1,26 @@
 import React from "react";
-
 import { QuickLinks } from "../../QuickLinks";
 import { PreSearchMessageTemplate } from "./index.styles";
 
-const PreSearchMessage = () => {
-  const titleText = "Welcome to ASU search";
-  const descText = "Find the information you're looking for from anywhere on ";
-  const contactText =
-    "Contact us via live chat, phone or email 24 hours a day, seven days a week.";
+const PreSearchDynamicMsg = ({ titleText, descText, contactText, signInLink }) => {
+  const renderDescText = () => {
+    if (signInLink) {
+      return (
+        <p>
+          {descText}
+          <a href={signInLink}>logging into the site</a>.
+        </p>
+      );
+    }
+    return <p>{descText}</p>;
+  };
+
   return (
     <PreSearchMessageTemplate>
       <div className="message-content">
         <h2>{titleText}</h2>
         <div>
-          <p>
-            {descText}
-            <a href="http://asu.edu/">asu.edu.</a>
-          </p>
+          {renderDescText()}
           <div className="assistance-area">
             <span className="intro-highlight">Need assistance?</span> <br />
             <a href="https://www.asu.edu/about/contact">{contactText}</a>
@@ -28,4 +32,4 @@ const PreSearchMessage = () => {
   );
 };
 
-export { PreSearchMessage };
+export { PreSearchDynamicMsg };

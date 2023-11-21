@@ -1,6 +1,6 @@
 import React from "react";
 
-import { PreSearchMessage } from "./index";
+import { searchMessageComponentMap } from "../index";
 
 import {
   createComponent,
@@ -9,4 +9,4 @@ import {
 
 export default createComponent("PreSearchMessage", "Atoms", "Template");
 
-export const preSearchMessage = createStory(<PreSearchMessage />);
+export const preSearchMessage = createStory(searchMessageComponentMap.all);
