@@ -7,5 +7,5 @@ if (!fs.existsSync(PATH_TO_CNAME)) {
   console.error('ERR: no CNAME file found, cancelling build');
   process.exit(1);
 } else {
-  console.log('CNAME file found or --dry-run flag added, continuing build');
+  console.log('CNAME file found, continuing build');
 }

@@ -3,6 +3,14 @@
   flex-direction: column;
   max-width: 1400px;
 
+  .card-horizontal {
+    &.card-event {
+      .card-img-top {
+        max-height: 500px;
+      }
+    }
+  }
+
   & > &-content-container {
     display: flex;
     flex-direction: row;

@@ -2,7 +2,7 @@
 import React from "react";
 
 import { useAppContext } from "../../core/context/app-context";
-import { trackGAEvent } from "../../core/services/googleAnalytics";
+import { trackGAEvent } from "../../../../../shared";
 import { Wrapper } from "./index.styles";
 import { Login } from "./Login";
 import { Search } from "./Search";
@@ -37,13 +37,13 @@ const UniversalNavbar = () => {
           <nav className="nav" aria-label="ASU">
             <div className="links-container">
               <a
-                className="nav-link visually-hidden visually-hidden-focusable"
+                className="nav-link visually-hidden-focusable"
                 href="#skip-to-content"
               >
                 Skip to main content
               </a>
               <a
-                className="nav-link visually-hidden visually-hidden-focusable"
+                className="nav-link visually-hidden-focusable"
                 href={`https://accessibility.asu.edu/report?a11yref=${getURL()}`}
               >
                 Report an accessibility problem

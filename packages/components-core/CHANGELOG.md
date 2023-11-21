@@ -1,3 +1,69 @@
+# [@asu/components-core-v3.2.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.1.4...@asu/components-core-v3.2.0) (2023-11-20)
+
+
+### Bug Fixes
+
+* **components-core:** export initFuncs ([5da35a2](https://github.com/ASU/asu-unity-stack/commit/5da35a2b6bebd56e054754beb40a5d40df3e38b7))
+* **components-core:** fix components-core init ([38bdb42](https://github.com/ASU/asu-unity-stack/commit/38bdb42bf9243f6ffaf0a615e769388b22a2ef66))
+
+
+### Features
+
+* **components-core:** add InitImage ([4139660](https://github.com/ASU/asu-unity-stack/commit/41396609a2f483cc1ff2fc52e984b1fc551afd4f))
+
+# [@asu/components-core-v3.1.4](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.1.3...@asu/components-core-v3.1.4) (2023-10-18)
+
+
+### Bug Fixes
+
+* **components-core:** fixed tab panels error that did not account for negative scroll width ([185051f](https://github.com/ASU/asu-unity-stack/commit/185051f3a860195f982b90503dfedee6e1e08b61))
+
+# [@asu/components-core-v3.1.3](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.1.2...@asu/components-core-v3.1.3) (2023-10-17)
+
+
+### Bug Fixes
+
+* **components-core:** removed console log ([03464ab](https://github.com/ASU/asu-unity-stack/commit/03464ab6aee174b5ca64f7b0e60981421dee809c))
+* **components-core:** useEffect guards in cleanup function of TabbedPanels ([80b3ac0](https://github.com/ASU/asu-unity-stack/commit/80b3ac0c1556b7d0deb021271995f5aff564c8b8))
+
+# [@asu/components-core-v3.1.2](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.1.1...@asu/components-core-v3.1.2) (2023-10-03)
+
+
+### Bug Fixes
+
+* **components-core:** fix package.json exports ([4011fbe](https://github.com/ASU/asu-unity-stack/commit/4011fbe17e30aa6f293e9e5b22922c4aa8708f0a))
+
+# [@asu/components-core-v3.1.1](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.1.0...@asu/components-core-v3.1.1) (2023-10-02)
+
+
+### Bug Fixes
+
+* **components-core:** readMoreLink not required in ranming card ([904e8c6](https://github.com/ASU/asu-unity-stack/commit/904e8c629742f801955ebe7a58c28c7100fef04b))
+
+# [@asu/components-core-v3.1.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.0.0...@asu/components-core-v3.1.0) (2023-09-18)
+
+
+### Bug Fixes
+
+* **components-core:** ignore eslint warnings ([6304782](https://github.com/ASU/asu-unity-stack/commit/6304782438b84aabfc2d0e16e7ff8aeafcb35e60))
+
+
+### Features
+
+* **components-core:** updated events card ([05f6af4](https://github.com/ASU/asu-unity-stack/commit/05f6af48cc9bfbf42da767d0b46a994f5d1bef82))
+
+# [@asu/components-core-v3.0.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v2.2.2...@asu/components-core-v3.0.0) (2023-09-07)
+
+
+### Bug Fixes
+
+* **components-core:** improve pagination accessibility, remove unused props ([52b8c40](https://github.com/ASU/asu-unity-stack/commit/52b8c40761482251e9b267a2821f21d95c391c26))
+
+
+### BREAKING CHANGES
+
+* **components-core:** Removed unused props
+
 # [@asu/components-core-v2.2.2](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v2.2.1...@asu/components-core-v2.2.2) (2023-08-02)
 
 

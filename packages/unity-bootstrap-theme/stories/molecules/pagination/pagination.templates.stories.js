@@ -9,16 +9,11 @@ const extraOptions = {
     control: {
       type: "radio",
       labels: {
-        null: "None",
+        "null": "None",
         "uds-bg-gray": "uds-bg-gray",
         "uds-bg-dark": "uds-bg-dark",
       },
     },
-  },
-  icons: {
-    name: "Icons",
-    control: { type: "boolean" },
-    defaultValue: false,
   },
   border: {
     name: "Border",
@@ -43,20 +38,18 @@ export const Basic = createStory(
             args.border ? "justify-content-center border p-2" : ""
           } ${args.bgColor}`}
         >
-          {args.icons && (
-            <li className="page-item">
-              <a className="page-link page-link-icon" href="#">
-                Prev
-              </a>
-            </li>
-          )}
-          <li className="page-item">
-            <a className="page-link" href="#">
-              Prev
-            </a>
-          </li>
-          <li className="page-item">
+          <li className="page-item disabled">
             <a
+              aria-label="Previous page"
+              aria-disabled
+              className="page-link page-link-icon"
+              href="#"
+            />
+          </li>
+          <li className="page-item active">
+            <a
+              aria-current="page"
+              aria-label="Page 1"
               className="page-link"
               href="#"
               data-ga-event="select"
@@ -69,9 +62,11 @@ export const Basic = createStory(
             >
               1
             </a>
+            <span className="visually-hidden">(current)</span>
           </li>
           <li className="page-item">
             <a
+              aria-label="Page 2"
               className="page-link"
               href="#"
               data-ga-event="select"
@@ -87,6 +82,7 @@ export const Basic = createStory(
           </li>
           <li className="page-item">
             <a
+              aria-label="Page 3"
               className="page-link"
               href="#"
               data-ga-event="select"
@@ -101,17 +97,8 @@ export const Basic = createStory(
             </a>
           </li>
           <li className="page-item">
-            <a className="page-link" href="#">
-              Next
-            </a>
+            <a aria-label="Next page" className="page-link page-link-icon" href="#" />
           </li>
-          {args.icons && (
-            <li className="page-item">
-              <a className="page-link page-link-icon" href="#">
-                Next
-              </a>
-            </li>
-          )}
         </ul>
       </nav>
     );

@@ -22,6 +22,7 @@ export const PageItem = ({
   ellipses,
   ariaLabel,
   children,
+  ariaDisabled,
 }) => {
   return (
     <li
@@ -33,14 +34,16 @@ export const PageItem = ({
     >
       {isClickeable ? (
         <button
+          type="button"
           aria-label={ariaLabel}
           className={classNames("page-link", {
             [`page-link-icon`]: pageLinkIcon,
           })}
-          type="button"
           onClick={onClick}
           data-testid="page-link"
           data-id={dataId}
+          aria-current={selectedPage ? "page" : null}
+          aria-disabled={ariaDisabled}
         >
           {children}
           {selectedPage && <span className="visually-hidden">(current)</span>}
@@ -64,6 +67,7 @@ PageItem.propTypes = {
   children: PropTypes.node,
   ellipses: PropTypes.bool,
   ariaLabel: PropTypes.string,
+  ariaDisabled: PropTypes.bool,
 };
 
 PageItem.defaultProps = {

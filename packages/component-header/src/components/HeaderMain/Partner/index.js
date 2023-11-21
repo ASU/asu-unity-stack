@@ -1,10 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { getCurrentScriptPath } from "@asu/components-core";
 import React from "react";
 
+import { getCurrentScriptPath, trackGAEvent } from "../../../../../../shared";
 // @ts-check
 import { useAppContext } from "../../../core/context/app-context";
-import { trackGAEvent } from "../../../core/services/googleAnalytics";
 import { PartnerLogosWrapper } from "./index.styles";
 
 const currentScriptPath = getCurrentScriptPath();

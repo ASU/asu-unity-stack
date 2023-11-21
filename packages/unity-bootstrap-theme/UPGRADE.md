@@ -69,7 +69,7 @@ Regex of tag attribute changes:
 * change `data-(toggle|parent|target|dismiss)?=` to `data-bs-$1=`
 * change `mr-\d` to `me-$1`
 * change `ml-\d` to `ms-$1`
-* change `sr-only` to `visually-hidden`
+* change `sr-only` to `visually-hidden` to visually hide an element while still allowing it to be exposed to assistive technologies. If you need an element to appear when focused, use `visually-hidden-focusable`.
 * change `badge-gray-2` to `text-bg-gray-2` (may be other variations)
 
 New class pattern .text-bg-{color} used in badges

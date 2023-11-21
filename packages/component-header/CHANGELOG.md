@@ -1,3 +1,25 @@
+# [@asu/component-header-v2.0.8](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.7...@asu/component-header-v2.0.8) (2023-11-17)
+
+
+### Bug Fixes
+
+* **component-header:** update Peer Dependency Components-core to allow version 2 or 3 ([bb3eb07](https://github.com/asu/asu-unity-stack/commit/bb3eb07e50f4811d3a78d38c4304a3a45b3568c7))
+
+# [@asu/component-header-v2.0.7](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.6...@asu/component-header-v2.0.7) (2023-09-08)
+
+
+### Bug Fixes
+
+* **component-header:** removed visually-hidden in links ([b243af5](https://github.com/asu/asu-unity-stack/commit/b243af50a5bf1147dc14ddc38367586948010368))
+
+# [@asu/component-header-v2.0.6](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.5...@asu/component-header-v2.0.6) (2023-09-05)
+
+
+### Bug Fixes
+
+* **component-header:** trigger release ([16d8e4f](https://github.com/asu/asu-unity-stack/commit/16d8e4fc8443d1ac44d1c983fa91265c5f670a64))
+* **header:** fix accessibility bug in header ([c81d0ab](https://github.com/asu/asu-unity-stack/commit/c81d0ab78e77f500a222535d56bae0b49aca8d76))
+
 # [@asu/component-header-v2.0.5](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.4...@asu/component-header-v2.0.5) (2023-08-02)
 
 

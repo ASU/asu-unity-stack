@@ -1,6 +1,6 @@
 {
   "name": "@asu/unity-bootstrap-theme",
-  "version": "1.6.0",
+  "version": "1.8.0",
   "description": "Base UI theme for ASU Web Standards 2.0 developed with Bootstrap 5",
   "author": "Mayco Barale <mbarale@asu.edu>",
   "homepage": "https://github.com/ASU/asu-unity-stack#readme",
@@ -20,7 +20,7 @@
     "build:dev": "rimraf ./dist && webpack --progress --bail && rimraf ./.tmp",
     "watch": "rimraf ./dist && webpack --watch && rimraf ./.tmp",
     "storybook": "start-storybook -p 9000",
-    "build-storybook": "build-storybook -s ./dist",
+    "build-storybook": "build-storybook -s ./dist -o ../../build/$npm_package_name",
     "lint": "yarn js-lint && yarn css-lint",
     "lint:fix": "yarn js-lint:fix && yarn css-lint:fix",
     "js-lint": "eslint \"**/*.js\"",
@@ -76,12 +76,6 @@
     "webpack-node-externals": "^3.0.0"
   },
   "exports": {
-    "./src/scss/unity-bootstrap-theme.bundle.scss": {
-      "browser": "./src/scss/unity-bootstrap-theme.bundle.scss",
-      "node": "./src/scss/unity-bootstrap-theme.bundle.scss",
-      "module": "./src/scss/unity-bootstrap-theme.bundle.scss",
-      "default": "./dist/css/unity-bootstrap-theme.bundle.css"
-    },
     "./js/global-header.js": {
       "module": "./src/js/storybook-global-header.js",
       "default": "./src/js/global-header.js"
@@ -90,18 +84,8 @@
       "module": "./src/js/storybook-data-layer.js",
       "default": "./src/js/data-layer.js"
     },
-    "./dist/css/unity-bootstrap-theme.bundle.css": {
-      "default": "./dist/css/unity-bootstrap-theme.bundle.css"
-    },
-    "./dist/css/unity-bootstrap-theme.css": {
-      "default": "./dist/css/unity-bootstrap-theme.css"
-    },
-    "./dist/css/unity-bootstrap-footer.css": {
-      "default": "./dist/css/unity-bootstrap-footer.css"
-    },
-    "./dist/css/unity-bootstrap-header.css": {
-      "default": "./dist/css/unity-bootstrap-header.css"
-    }
+    "./*": "./*",
+    ".": "./dist/css/unity-bootstrap-theme.bundle.css"
   },
   "peerDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3"

@@ -2,11 +2,9 @@ import { Button, Pagination } from "@asu/components-core";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 
-import { trackGAEvent } from "../core/services/googleAnalytics";
+import { trackGAEvent } from "../../../../shared";
 import {
-  performSearch,
-  anonFormatter,
-  filterOutResults,
+  performSearch
 } from "../helpers/search";
 import { SearchMessage } from "../SearchPage/components/SearchMessage";
 import { SearchResultsList } from "./index.styles";
@@ -14,6 +12,34 @@ import { SearchResultsList } from "./index.styles";
 /*
   'type' must be 'micro', 'preview', or 'full'.
 */
+
+/**
+ * React component for displaying search results.
+ * @param {Object} props - The props for configuring the ASUSearchResultsList component.
+ * @param {string} term - The search term.
+ * @param {string} sort - The sorting option.
+ * @param {string} type - The type of results must be 'micro', 'preview', or 'full'.
+ * @param {Object} engine - The search engine configuration.
+ * @param {string} titleText - The title text for the search results.
+ * @param {boolean} showSearchMessage - Indicates whether to show a search message.
+ * @param {string} seeAllResultsText - The text for seeing all results.
+ * @param {number} itemsPerPage - The number of items per page.
+ * @param {function} onExpandClick - Callback function for expanding results.
+ * @param {string} GASource - The Google Analytics source for tracking.
+ * @param {function} setPromotedResult - Callback function for setting promoted results.
+ * @param {boolean} hidePaginator - Indicates whether to hide the paginator.
+ * @param {function} registerResults - Callback function for registering results.
+ * @param {Object} filters - Filters for the search.
+ * @param {boolean} loggedIn - Indicates whether the user is logged in.
+ * @param {Array} profilesToFilterOut - Profiles to filter out from the results.
+ * @param {string} display - Display options for the results.
+ * @param {string} appPathFolder - The base path for the application folder.
+ * @param {boolean} localSection - Indicates whether the results belong to a local section.
+ * @param {string} rankGroup - The rank group for the results.
+ * @param {Array} icon - Icon information for the results.
+ * @returns {JSX.Element} The ASUSearchResultsList component.
+ */
+
 const ASUSearchResultsList = ({
   term,
   sort,
@@ -45,6 +71,7 @@ const ASUSearchResultsList = ({
   const [isAnon, setIsAnon] = useState(false);
   const cardSize = type === "micro" ? "micro" : "large";
   const searchList = useRef(null);
+  const controller = new AbortController();
 
   const doSearch = (page = currentPage) => {
     if ((term && term.length > 0) || !engine.needsTerm) {
@@ -58,6 +85,8 @@ const ASUSearchResultsList = ({
         filters,
         display,
         rankGroup,
+        controller,
+        size: display?.profilesPerPage,
       })
         .then(res => {
           let filteredResults = res;
@@ -66,11 +95,10 @@ const ASUSearchResultsList = ({
               return Object.keys(result).length > 1;
             });
           }
-          if (profilesToFilterOut) {
-            filteredResults = filterOutResults(res, profilesToFilterOut);
-          }
           const formattedResults = engine.formatter({
             results: filteredResults,
+            page,
+            itemsPerPage,
             cardSize,
             filters,
             appPathFolder: appPathFolder || engine.appPathFolder,
@@ -92,7 +120,7 @@ const ASUSearchResultsList = ({
             }
           }
           if (engine.method === "POST") {
-            setTotalResults(filters.peopleInDepts.length);
+            setTotalResults(filteredResults[0]?.total_results); // Each result has the total_results property
           } else {
             setTotalResults(formattedResults.page.total_results);
           }
@@ -157,6 +185,7 @@ const ASUSearchResultsList = ({
 
   useEffect(() => {
     doSearch(1);
+    return () => controller?.abort();
   }, [term, sort, filters, itemsPerPage, profilesToFilterOut]);
 
   function expandClick(text) {
@@ -207,7 +236,11 @@ const ASUSearchResultsList = ({
               type="default"
               background="white"
               currentPage={currentPage}
-              totalPages={Math.ceil(totalResults / itemsPerPage)}
+              totalPages={
+                Math.ceil(totalResults / itemsPerPage) > 100
+                  ? 100
+                  : Math.ceil(totalResults / itemsPerPage)
+              }
               onChange={(e, action) => onPageChange(action)}
               showFirstButton
               showLastButton

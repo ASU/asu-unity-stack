@@ -5,11 +5,11 @@ import React from "react";
 import { ColumnSection } from "../ColumnSection";
 
 /**
- * @param {{
- *  contact: import('../../core/models/types').Contact
- * }} props
- * @returns {JSX.Element}
+ * @typedef {import("../../core/models/types").Contact} Contact
+ *
+ * @param {{contact: Contact}} props
  */
+
 const Contact = ({
   contact: { title, contactLink, contributionLink, columns },
 }) => {
@@ -18,7 +18,7 @@ const Contact = ({
       <div className="container" id="footer-columns">
         <div className="row" data-testid="columns-container">
           <div className="col-xl-3" id="info-column">
-            <p className="h5">{title}</p>
+            <div className="h5">{title}</div>
             {contactLink && (
               <p className="contact-link">
                 <a href={contactLink}>Contact Us</a>

@@ -2,8 +2,7 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
-import { trackGAEvent } from "../../core/services/googleAnalytics";
-import { sanitizeDangerousMarkup } from "../../core/utils/html-utils";
+import { trackGAEvent, sanitizeDangerousMarkup } from "../../../../../shared";
 // eslint-disable-next-line import/no-cycle
 import { Image } from "../Image";
 
@@ -102,20 +101,25 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
           // eslint-disable-next-line react/no-danger
           <p dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)} />
         )}
-        <a
-          href={readMoreLink}
-          aria-label="Read more"
-          onClick={() => {
-            trackGAEvent({
-              ...gaDefaultObject,
-              section: heading,
-              text: "read more",
-            });
-          }}
-        >
-          Read more
-          <span className="fas icon-small fa-arrow-right" aria-hidden="true" />
-        </a>
+        {readMoreLink && (
+          <a
+            href={readMoreLink}
+            aria-label="Read more"
+            onClick={() => {
+              trackGAEvent({
+                ...gaDefaultObject,
+                section: heading,
+                text: "read more",
+              });
+            }}
+          >
+            Read more
+            <span
+              className="fas icon-small fa-arrow-right"
+              aria-hidden="true"
+            />
+          </a>
+        )}
       </div>
     </div>
   );
@@ -125,7 +129,7 @@ InfoLayerWrapper.propTypes = {
   imageSize: PropTypes.oneOf(["small", "large"]),
   body: PropTypes.string.isRequired,
   heading: PropTypes.string.isRequired,
-  readMoreLink: PropTypes.string.isRequired,
+  readMoreLink: PropTypes.string,
 };
 
 export const RankingCard = ({
@@ -134,7 +138,7 @@ export const RankingCard = ({
   imageAlt,
   heading,
   body,
-  readMoreLink = "#",
+  readMoreLink = "",
   citation,
 }) => {
   return (
@@ -184,7 +188,7 @@ RankingCard.propTypes = {
   /**
    * Link for read more
    */
-  readMoreLink: PropTypes.string.isRequired,
+  readMoreLink: PropTypes.string,
   /**
    * Ranking card citation content (Required for small size only)
    */

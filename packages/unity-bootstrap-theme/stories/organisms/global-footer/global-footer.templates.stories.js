@@ -70,7 +70,7 @@ export const GlobalElementsOnly = (
               >
                 <img
                   src={innovationLockup}
-                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                  alt="Repeatedly ranked #1 in innovation (ASU ahead of MIT and Stanford), sustainability (ASU ahead of Stanford and UC Berkeley), and global impact (ASU ahead of MIT and Penn State)"
                   width="459"
                   height="100"
                   loading="lazy"
@@ -136,15 +136,7 @@ export const GlobalElementsOnly = (
               >
                 Emergency
               </a>
-              <a
-                className="nav-link"
-                href="https://eoss.asu.edu/health/announcements/coronavirus"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="tertiary footer"
-                data-ga-footer="covid-19 information"
-              >
-                COVID-19 Information
-              </a>
+
             </nav>
           </div>
         </div>
@@ -309,7 +301,7 @@ export const ZeroColumns = (
               >
                 <img
                   src={innovationLockup}
-                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                  alt="Repeatedly ranked #1 in innovation (ASU ahead of MIT and Stanford), sustainability (ASU ahead of Stanford and UC Berkeley), and global impact (ASU ahead of MIT and Penn State)"
                   width="459"
                   height="100"
                   loading="lazy"
@@ -375,15 +367,7 @@ export const ZeroColumns = (
               >
                 Emergency
               </a>
-              <a
-                className="nav-link"
-                href="https://eoss.asu.edu/health/announcements/coronavirus"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="tertiary footer"
-                data-ga-footer="covid-19 information"
-              >
-                COVID-19 Information
-              </a>
+
             </nav>
           </div>
         </div>
@@ -491,9 +475,9 @@ export const OneColumn = (
       <div className="container" id="footer-columns">
         <div className="row">
           <div className="col-xl-3" id="info-column">
-            <p className="h5">
+            <div className="h5">
               Complete Name of College, School or Unit Title Should Go Here
-            </p>
+            </div>
             <p className="contact-link">
               <a href="#">Contact Us</a>
             </p>
@@ -568,7 +552,7 @@ export const OneColumn = (
               >
                 <img
                   src={innovationLockup}
-                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                  alt="Repeatedly ranked #1 in innovation (ASU ahead of MIT and Stanford), sustainability (ASU ahead of Stanford and UC Berkeley), and global impact (ASU ahead of MIT and Penn State)"
                   width="459"
                   height="100"
                   loading="lazy"
@@ -634,15 +618,7 @@ export const OneColumn = (
               >
                 Emergency
               </a>
-              <a
-                className="nav-link"
-                href="https://eoss.asu.edu/health/announcements/coronavirus"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="tertiary footer"
-                data-ga-footer="covid-19 information"
-              >
-                COVID-19 Information
-              </a>
+
             </nav>
           </div>
         </div>
@@ -661,9 +637,9 @@ export const OneColumnNoLogoOrSocial = (
       <div className="container" id="footer-columns">
         <div className="row">
           <div className="col-xl-3" id="info-column">
-            <p className="h5">
+            <div className="h5">
               Complete Name of College, School or Unit Title Should Go Here
-            </p>
+            </div>
             <p className="contact-link">
               <a href="#">Contact Us</a>
             </p>
@@ -738,7 +714,7 @@ export const OneColumnNoLogoOrSocial = (
               >
                 <img
                   src={innovationLockup}
-                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                  alt="Repeatedly ranked #1 in innovation (ASU ahead of MIT and Stanford), sustainability (ASU ahead of Stanford and UC Berkeley), and global impact (ASU ahead of MIT and Penn State)"
                   width="459"
                   height="100"
                   loading="lazy"
@@ -804,15 +780,7 @@ export const OneColumnNoLogoOrSocial = (
               >
                 Emergency
               </a>
-              <a
-                className="nav-link"
-                href="https://eoss.asu.edu/health/announcements/coronavirus"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="tertiary footer"
-                data-ga-footer="covid-19 information"
-              >
-                COVID-19 Information
-              </a>
+
             </nav>
           </div>
         </div>
@@ -921,9 +889,9 @@ export const TwoColumns = (
         <div className="container" id="footer-columns">
           <div className="row">
             <div className="col-xl-3" id="info-column">
-              <p className="h5">
+              <div className="h5">
                 Complete Name of College, School or Unit Title Should Go Here
-              </p>
+              </div>
               <p className="contact-link">
                 <a href="#">Contact Us</a>
               </p>
@@ -937,7 +905,7 @@ export const TwoColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <p className="h5">
+                  <div className="h5">
                     <a
                       id="footlink-header-two"
                       className="collapsed"
@@ -950,7 +918,7 @@ export const TwoColumns = (
                       Second Column
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </p>
+                  </div>
                 </div>
                 <div
                   id="footlink-two"
@@ -1042,7 +1010,7 @@ export const TwoColumns = (
               >
                 <img
                   src={innovationLockup}
-                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                  alt="Repeatedly ranked #1 in innovation (ASU ahead of MIT and Stanford), sustainability (ASU ahead of Stanford and UC Berkeley), and global impact (ASU ahead of MIT and Penn State)"
                   width="459"
                   height="100"
                   loading="lazy"
@@ -1108,15 +1076,7 @@ export const TwoColumns = (
               >
                 Emergency
               </a>
-              <a
-                className="nav-link"
-                href="https://eoss.asu.edu/health/announcements/coronavirus"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="tertiary footer"
-                data-ga-footer="covid-19 information"
-              >
-                COVID-19 Information
-              </a>
+
             </nav>
           </div>
         </div>
@@ -1225,9 +1185,9 @@ export const ThreeColumns = (
         <div className="container" id="footer-columns">
           <div className="row">
             <div className="col-xl" id="info-column">
-              <p className="h5">
+              <div className="h5">
                 Complete Name of College, School or Unit Title Should Go Here
-              </p>
+              </div>
               <p className="contact-link">
                 <a href="#">Contact Us</a>
               </p>
@@ -1241,7 +1201,7 @@ export const ThreeColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <p className="h5">
+                  <div className="h5">
                     <a
                       id="footlink-header-two"
                       className="collapsed"
@@ -1254,7 +1214,7 @@ export const ThreeColumns = (
                       Second Column
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </p>
+                  </div>
                 </div>
                 <div
                   id="footlink-two"
@@ -1284,7 +1244,7 @@ export const ThreeColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <p className="h5">
+                  <div className="h5">
                     <a
                       id="footlink-header-three"
                       className="collapsed"
@@ -1297,7 +1257,7 @@ export const ThreeColumns = (
                       Student Information
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </p>
+                  </div>
                 </div>
                 <div
                   id="footlink-three"
@@ -1394,7 +1354,7 @@ export const ThreeColumns = (
               >
                 <img
                   src={innovationLockup}
-                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                  alt="Repeatedly ranked #1 in innovation (ASU ahead of MIT and Stanford), sustainability (ASU ahead of Stanford and UC Berkeley), and global impact (ASU ahead of MIT and Penn State)"
                   width="459"
                   height="100"
                   loading="lazy"
@@ -1460,15 +1420,7 @@ export const ThreeColumns = (
               >
                 Emergency
               </a>
-              <a
-                className="nav-link"
-                href="https://eoss.asu.edu/health/announcements/coronavirus"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="tertiary footer"
-                data-ga-footer="covid-19 information"
-              >
-                COVID-19 Information
-              </a>
+
             </nav>
           </div>
         </div>
@@ -1577,9 +1529,9 @@ export const FourColumns = (
         <div className="container" id="footer-columns">
           <div className="row">
             <div className="col-xl" id="info-column">
-              <p className="h5">
+              <div className="h5">
                 Complete Name of College, School or Unit Title Should Go Here
-              </p>
+              </div>
               <p className="contact-link">
                 <a href="#">Contact Us</a>
               </p>
@@ -1593,7 +1545,7 @@ export const FourColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <p className="h5">
+                  <div className="h5">
                     <a
                       id="footlink-header-two"
                       className="collapsed"
@@ -1606,7 +1558,7 @@ export const FourColumns = (
                       Second Column
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </p>
+                  </div>
                 </div>
                 <div
                   id="footlink-two"
@@ -1636,7 +1588,7 @@ export const FourColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <p className="h5">
+                  <div className="h5">
                     <a
                       id="footlink-header-three"
                       className="collapsed"
@@ -1649,7 +1601,7 @@ export const FourColumns = (
                       Student Information
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </p>
+                  </div>
                 </div>
                 <div
                   id="footlink-three"
@@ -1684,7 +1636,7 @@ export const FourColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <p className="h5">
+                  <div className="h5">
                     <a
                       id="footlink-header-four"
                       className="collapsed"
@@ -1697,7 +1649,7 @@ export const FourColumns = (
                       Column Number Four
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </p>
+                  </div>
                 </div>
                 <div
                   id="footlink-four"
@@ -1794,7 +1746,7 @@ export const FourColumns = (
               >
                 <img
                   src={innovationLockup}
-                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                  alt="Repeatedly ranked #1 in innovation (ASU ahead of MIT and Stanford), sustainability (ASU ahead of Stanford and UC Berkeley), and global impact (ASU ahead of MIT and Penn State)"
                   width="459"
                   height="100"
                   loading="lazy"
@@ -1860,15 +1812,7 @@ export const FourColumns = (
               >
                 Emergency
               </a>
-              <a
-                className="nav-link"
-                href="https://eoss.asu.edu/health/announcements/coronavirus"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="tertiary footer"
-                data-ga-footer="covid-19 information"
-              >
-                COVID-19 Information
-              </a>
+
             </nav>
           </div>
         </div>
@@ -1977,9 +1921,9 @@ export const FiveColumns = (
         <div className="container" id="footer-columns">
           <div className="row">
             <div className="col-xl" id="info-column">
-              <p className="h5">
+              <div className="h5">
                 Complete Name of College, School or Unit Title Should Go Here
-              </p>
+              </div>
               <p className="contact-link">
                 <a href="#">Contact Us</a>
               </p>
@@ -1993,7 +1937,7 @@ export const FiveColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <p className="h5">
+                  <div className="h5">
                     <a
                       id="footlink-header-two"
                       className="collapsed"
@@ -2006,7 +1950,7 @@ export const FiveColumns = (
                       Second Column
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </p>
+                  </div>
                 </div>
                 <div
                   id="footlink-two"
@@ -2036,7 +1980,7 @@ export const FiveColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <p className="h5">
+                  <div className="h5">
                     <a
                       id="footlink-header-three"
                       className="collapsed"
@@ -2049,7 +1993,7 @@ export const FiveColumns = (
                       Student Information
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </p>
+                  </div>
                 </div>
                 <div
                   id="footlink-three"
@@ -2084,7 +2028,7 @@ export const FiveColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <p className="h5">
+                  <div className="h5">
                     <a
                       id="footlink-header-four"
                       className="collapsed"
@@ -2097,7 +2041,7 @@ export const FiveColumns = (
                       Column Number Four
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </p>
+                  </div>
                 </div>
                 <div
                   id="footlink-four"
@@ -2132,7 +2076,7 @@ export const FiveColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <p className="h5">
+                  <div className="h5">
                     <a
                       id="footlink-header-five"
                       className="collapsed"
@@ -2145,7 +2089,7 @@ export const FiveColumns = (
                       Mambo Number Five
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </p>
+                  </div>
                 </div>
                 <div
                   id="footlink-five"
@@ -2242,7 +2186,7 @@ export const FiveColumns = (
               >
                 <img
                   src={innovationLockup}
-                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                  alt="Repeatedly ranked #1 in innovation (ASU ahead of MIT and Stanford), sustainability (ASU ahead of Stanford and UC Berkeley), and global impact (ASU ahead of MIT and Penn State)"
                   width="459"
                   height="100"
                   loading="lazy"
@@ -2308,15 +2252,7 @@ export const FiveColumns = (
               >
                 Emergency
               </a>
-              <a
-                className="nav-link"
-                href="https://eoss.asu.edu/health/announcements/coronavirus"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="tertiary footer"
-                data-ga-footer="covid-19 information"
-              >
-                COVID-19 Information
-              </a>
+
             </nav>
           </div>
         </div>
@@ -2425,9 +2361,9 @@ export const SixColumns = (
         <div className="container" id="footer-columns">
           <div className="row">
             <div className="col-xl" id="info-column">
-              <p className="h5">
+              <div className="h5">
                 Complete Name of College, School or Unit Title Should Go Here
-              </p>
+              </div>
               <p className="contact-link">
                 <a href="#">Contact Us</a>
               </p>
@@ -2441,7 +2377,7 @@ export const SixColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <p className="h5">
+                  <div className="h5">
                     <a
                       id="footlink-header-two"
                       className="collapsed"
@@ -2454,7 +2390,7 @@ export const SixColumns = (
                       Second Column
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </p>
+                  </div>
                 </div>
                 <div
                   id="footlink-two"
@@ -2484,7 +2420,7 @@ export const SixColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <p className="h5">
+                  <div className="h5">
                     <a
                       id="footlink-header-three"
                       className="collapsed"
@@ -2497,7 +2433,7 @@ export const SixColumns = (
                       Student Information
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </p>
+                  </div>
                 </div>
                 <div
                   id="footlink-three"
@@ -2532,7 +2468,7 @@ export const SixColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <p className="h5">
+                  <div className="h5">
                     <a
                       id="footlink-header-four"
                       className="collapsed"
@@ -2545,7 +2481,7 @@ export const SixColumns = (
                       Column Number Four
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </p>
+                  </div>
                 </div>
                 <div
                   id="footlink-four"
@@ -2580,7 +2516,7 @@ export const SixColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <p className="h5">
+                  <div className="h5">
                     <a
                       id="footlink-header-five"
                       className="collapsed"
@@ -2593,7 +2529,7 @@ export const SixColumns = (
                       Mambo Number Five
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </p>
+                  </div>
                 </div>
                 <div
                   id="footlink-five"
@@ -2628,7 +2564,7 @@ export const SixColumns = (
             <div className="col-xl flex-footer">
               <div className="card accordion-item desktop-disable-xl">
                 <div className="accordion-header">
-                  <p className="h5">
+                  <div className="h5">
                     <a
                       id="footlink-header-six"
                       className="collapsed"
@@ -2641,7 +2577,7 @@ export const SixColumns = (
                       The Zen Master and the Hot Dog Vendor
                       <span className="fas fa-chevron-up"></span>
                     </a>
-                  </p>
+                  </div>
                 </div>
                 <div
                   id="footlink-six"
@@ -2732,7 +2668,7 @@ export const SixColumns = (
               >
                 <img
                   src={innovationLockup}
-                  alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
+                  alt="Repeatedly ranked #1 in innovation (ASU ahead of MIT and Stanford), sustainability (ASU ahead of Stanford and UC Berkeley), and global impact (ASU ahead of MIT and Penn State)"
                   width="459"
                   height="100"
                   loading="lazy"
@@ -2798,15 +2734,6 @@ export const SixColumns = (
                   data-ga-footer="emergency"
                 >
                   Emergency
-                </a>
-                <a
-                  className="nav-link"
-                  href="https://eoss.asu.edu/health/announcements/coronavirus"
-                  data-ga-footer-type="internal link"
-                  data-ga-footer-section="tertiary footer"
-                  data-ga-footer="covid-19 information"
-                >
-                  COVID-19 Information
                 </a>
               </nav>
             </div>

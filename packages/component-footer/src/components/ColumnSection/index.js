@@ -5,12 +5,14 @@ import PropTypes, { shape, arrayOf } from "prop-types";
 import React, { useState } from "react";
 
 /**
- * @param {{
- *  columnIndex: number
- *  column?: import("../../core/models/types").Column
- * }} props
+ * @typedef {import("../../core/models/types").Column} Column
+ */
+
+/**
+ * @param {{ columnIndex: number, column: Column }} props
  * @returns {JSX.Element}
  */
+
 const ColumnSection = ({ columnIndex, column: { title, links } }) => {
   const [show, setShow] = useState(false);
 
@@ -25,7 +27,7 @@ const ColumnSection = ({ columnIndex, column: { title, links } }) => {
           tabIndex={0}
           data-bs-toggle="collapse"
         >
-          <p className="h5">
+          <div className="h5">
             <a
               id={`footlink-header-${columnIndex}`}
               className="collapsed"
@@ -35,7 +37,7 @@ const ColumnSection = ({ columnIndex, column: { title, links } }) => {
               {title}
               <FontAwesomeIcon icon={faChevronUp} />
             </a>
-          </p>
+          </div>
         </div>
         <div
           id={`footlink-${columnIndex}`}

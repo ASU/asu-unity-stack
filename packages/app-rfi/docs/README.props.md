@@ -29,6 +29,7 @@
 
 | Name | Type |
 | --- | --- |
+| [appPathFolder] | <code>string</code> | 
 | [campus] | <code>string</code> | 
 | [actualCampus] | <code>string</code> | 
 | [college] | <code>string</code> | 

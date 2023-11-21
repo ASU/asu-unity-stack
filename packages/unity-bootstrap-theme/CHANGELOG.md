@@ -1,3 +1,137 @@
+# [@asu/unity-bootstrap-theme-v1.8.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.9...@asu/unity-bootstrap-theme-v1.8.0) (2023-11-07)
+
+
+### Features
+
+* **unity-bootstrap-theme:** disable validation features for disabled inputs ([6d04be3](https://github.com/ASU/asu-unity-stack/commit/6d04be3502e04c03469f0a96adcbc7db00020a8c))
+
+# [@asu/unity-bootstrap-theme-v1.7.9](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.8...@asu/unity-bootstrap-theme-v1.7.9) (2023-11-07)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** remove duplicate container rules ([950b397](https://github.com/ASU/asu-unity-stack/commit/950b39763ba266d22a6512af850519a077daf384))
+
+# [@asu/unity-bootstrap-theme-v1.7.8](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.7...@asu/unity-bootstrap-theme-v1.7.8) (2023-11-07)
+
+
+### Bug Fixes
+
+* update yarn.lock, address storybook tweak needed for unity-bootstrap-theme ([63c6f0d](https://github.com/ASU/asu-unity-stack/commit/63c6f0de6d7b00cf716d7ec874c2ba1a3dfce14e))
+
+# [@asu/unity-bootstrap-theme-v1.7.7](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.6...@asu/unity-bootstrap-theme-v1.7.7) (2023-10-18)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fixed tabbed panels chevron styles ([9bf2e04](https://github.com/ASU/asu-unity-stack/commit/9bf2e0404a39bf376a215acf4032d578222e6f7d))
+* **unity-bootstrap-theme:** fixed tabbed panels styles for arrows ([0abbaf3](https://github.com/ASU/asu-unity-stack/commit/0abbaf3ab687f27a76f46cea40f396b70201ecc0))
+
+# [@asu/unity-bootstrap-theme-v1.7.6](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.5...@asu/unity-bootstrap-theme-v1.7.6) (2023-10-09)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** add -moz -webkit and -ms specific hyphen styles ([b3ef359](https://github.com/ASU/asu-unity-stack/commit/b3ef359b041320542aafa87dea99065d4a46dcda))
+* **unity-bootstrap-theme:** blockquote component with long words distorts image ([1201b73](https://github.com/ASU/asu-unity-stack/commit/1201b73e57a5669c4851057f7153e86620f06e87))
+
+# [@asu/unity-bootstrap-theme-v1.7.5](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.4...@asu/unity-bootstrap-theme-v1.7.5) (2023-10-06)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fixed ordered lists allignment issues ([56b9e86](https://github.com/ASU/asu-unity-stack/commit/56b9e864c4f7023f045c21aa63211627205f18ff))
+
+# [@asu/unity-bootstrap-theme-v1.7.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.3...@asu/unity-bootstrap-theme-v1.7.4) (2023-10-03)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix package.json exports ([45cb15d](https://github.com/ASU/asu-unity-stack/commit/45cb15d4056a931f25bee1c37775dbf9aee0da96))
+* **unity-bootstrap-theme:** video hero gray overlay fix ([8ebb7b3](https://github.com/ASU/asu-unity-stack/commit/8ebb7b39fb28a19a44d24b84e376502d65c59819))
+
+# [@asu/unity-bootstrap-theme-v1.7.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.2...@asu/unity-bootstrap-theme-v1.7.3) (2023-10-02)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** update alt text on footer ranking logo ([481e194](https://github.com/ASU/asu-unity-stack/commit/481e194fb0a0a35f1fbf74af2ad144404bcffcd5))
+* **unity-bootstrap-theme:** update innovation footer logo ([d6e5f8e](https://github.com/ASU/asu-unity-stack/commit/d6e5f8e741d6d08618a0cbce568b56673baab62e))
+
+# [@asu/unity-bootstrap-theme-v1.7.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.1...@asu/unity-bootstrap-theme-v1.7.2) (2023-09-27)
+
+
+### Bug Fixes
+
+* **_list.scss:** fix Multi level OL and UL list-tem doubling and padding squeeze ([b233b26](https://github.com/ASU/asu-unity-stack/commit/b233b26a525df86a0898d7f1d6902d9714ce78af))
+* **unity-bootstrap-theme:** trigger release with correct scope ([ee8e327](https://github.com/ASU/asu-unity-stack/commit/ee8e32755ef3f8ce4017d1be9a5136f3a4f7f6fd))
+
+# [@asu/unity-bootstrap-theme-v1.7.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.0...@asu/unity-bootstrap-theme-v1.7.1) (2023-09-22)
+
+
+### Bug Fixes
+
+* **_form-fields.scss:** added two style updates for validated form fields ([5044bc8](https://github.com/ASU/asu-unity-stack/commit/5044bc8e5e24ae15c9f1280ccdcef056d7f8c18e))
+
+# [@asu/unity-bootstrap-theme-v1.7.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.6.6...@asu/unity-bootstrap-theme-v1.7.0) (2023-09-18)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** event card title max lines set to 3 ([d73969e](https://github.com/ASU/asu-unity-stack/commit/d73969ed306893c513b44814c437caa4c65d3fe5))
+
+
+### Features
+
+* **unity-bootstrap-theme:** add background scss ([0351019](https://github.com/ASU/asu-unity-stack/commit/0351019d07efed64364895d80eff86501e20c257))
+* **unity-bootstrap-theme:** new BG patterns ([2807409](https://github.com/ASU/asu-unity-stack/commit/2807409a23543aed9c81a664b1782a212d65ba5b))
+
+# [@asu/unity-bootstrap-theme-v1.6.6](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.6.5...@asu/unity-bootstrap-theme-v1.6.6) (2023-09-14)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** added card arrangement and fix horiz. card size ([050a919](https://github.com/ASU/asu-unity-stack/commit/050a919bdba1081c0e800c4ab9a413c1d50f4e70))
+* **unity-bootstrap-theme:** added stacking in horizontal card arrangement ([422dca2](https://github.com/ASU/asu-unity-stack/commit/422dca2991af67ab32c3d78e0866b212d0c6891f))
+* **unity-bootstrap-theme:** updated horizontal story controls ([5bba217](https://github.com/ASU/asu-unity-stack/commit/5bba2179a8889f0adbb3dd07ffeb34ccee10469c))
+
+# [@asu/unity-bootstrap-theme-v1.6.5](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.6.4...@asu/unity-bootstrap-theme-v1.6.5) (2023-09-13)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix form fields ([7341afa](https://github.com/ASU/asu-unity-stack/commit/7341afac7ce7e669ba8143bbd9528ee6966e0d26))
+* **unity-bootstrap-theme:** removed covid-19 link in footer ([67548c1](https://github.com/ASU/asu-unity-stack/commit/67548c1eb976c9c35d4e41036a9ebe78b3d15b49))
+
+# [@asu/unity-bootstrap-theme-v1.6.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.6.3...@asu/unity-bootstrap-theme-v1.6.4) (2023-09-13)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix content img-txt overflow ([8e59af0](https://github.com/ASU/asu-unity-stack/commit/8e59af0bddd75a7d1f68e0eb51d51397dff3832e))
+
+# [@asu/unity-bootstrap-theme-v1.6.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.6.2...@asu/unity-bootstrap-theme-v1.6.3) (2023-09-08)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** updated styles and links for visually-hidden links ([429ae19](https://github.com/ASU/asu-unity-stack/commit/429ae19f5669d1b2840e138aee678b672966846d))
+
+# [@asu/unity-bootstrap-theme-v1.6.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.6.1...@asu/unity-bootstrap-theme-v1.6.2) (2023-09-07)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** uodated examples of pagination story, added Readme ([d298ca1](https://github.com/ASU/asu-unity-stack/commit/d298ca13868bf94c31778f3e41b0ffd81eab98da))
+* **unity-bootstrap-theme:** updated pagination stories to match components-core ([c987029](https://github.com/ASU/asu-unity-stack/commit/c9870296999a53f2875c63a632ddea040228eae0))
+
+# [@asu/unity-bootstrap-theme-v1.6.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.6.0...@asu/unity-bootstrap-theme-v1.6.1) (2023-09-07)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** added background color to accordion-header ([9e63724](https://github.com/ASU/asu-unity-stack/commit/9e63724175a0ebee5767f697aa127a8acc032d7c))
+
 # [@asu/unity-bootstrap-theme-v1.6.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.5.7...@asu/unity-bootstrap-theme-v1.6.0) (2023-08-15)
 
 

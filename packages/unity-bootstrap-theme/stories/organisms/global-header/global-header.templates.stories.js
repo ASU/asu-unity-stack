@@ -16,13 +16,13 @@ export const Basic = (
             <div id="header-top" className="col-12">
               <nav className="nav" aria-label="ASU">
                 <a
-                  className="nav-link visually-hidden visually-hidden-focusable"
+                  className="nav-link visually-hidden-focusable"
                   href="#skip-to-content"
                 >
                   Skip to main content
                 </a>
                 <a
-                  className="nav-link visually-hidden visually-hidden-focusable"
+                  className="nav-link visually-hidden-focusable"
                   href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system"
                 >
                   Report an accessibility problem
@@ -354,13 +354,13 @@ export const DropDownMenus = (
             <div id="header-top" className="col-12">
               <nav className="nav" aria-label="ASU">
                 <a
-                  className="nav-link visually-hidden visually-hidden-focusable"
+                  className="nav-link visually-hidden-focusable"
                   href="#skip-to-content"
                 >
                   Skip to main content
                 </a>
                 <a
-                  className="nav-link visually-hidden visually-hidden-focusable"
+                  className="nav-link visually-hidden-focusable"
                   href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system"
                 >
                   Report an accessibility problem
@@ -1444,13 +1444,13 @@ export const NoNavigation = (
             <div id="header-top" className="col-12">
               <nav className="nav" aria-label="ASU">
                 <a
-                  className="nav-link visually-hidden visually-hidden-focusable"
+                  className="nav-link visually-hidden-focusable"
                   href="#skip-to-content"
                 >
                   Skip to main content
                 </a>
                 <a
-                  className="nav-link visually-hidden visually-hidden-focusable"
+                  className="nav-link visually-hidden-focusable"
                   href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system"
                 >
                   Report an accessibility problem
@@ -1684,13 +1684,13 @@ export const NoNavigationAndWithButtons = (
             <div id="header-top" className="col-12">
               <nav className="nav" aria-label="ASU">
                 <a
-                  className="nav-link visually-hidden visually-hidden-focusable"
+                  className="nav-link visually-hidden-focusable"
                   href="#skip-to-content"
                 >
                   Skip to main content
                 </a>
                 <a
-                  className="nav-link visually-hidden visually-hidden-focusable"
+                  className="nav-link visually-hidden-focusable"
                   href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system"
                 >
                   Report an accessibility problem
@@ -1939,13 +1939,13 @@ export const ScrolledState = (
             <div id="header-top" className="col-12">
               <nav className="nav" aria-label="ASU">
                 <a
-                  className="nav-link visually-hidden visually-hidden-focusable"
+                  className="nav-link visually-hidden-focusable"
                   href="#skip-to-content"
                 >
                   Skip to main content
                 </a>
                 <a
-                  className="nav-link visually-hidden visually-hidden-focusable"
+                  className="nav-link visually-hidden-focusable"
                   href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system"
                 >
                   Report an accessibility problem
@@ -2386,13 +2386,13 @@ export const Partner = (
             <div id="header-top" className="col-12">
               <nav className="nav" aria-label="ASU">
                 <a
-                  className="nav-link visually-hidden visually-hidden-focusable"
+                  className="nav-link visually-hidden-focusable"
                   href="#skip-to-content"
                 >
                   Skip to main content
                 </a>
                 <a
-                  className="nav-link visually-hidden visually-hidden-focusable"
+                  className="nav-link visually-hidden-focusable"
                   href="http://asu.edu/accessibility/feedback?a11yref=unity-design-system"
                 >
                   Report an accessibility problem

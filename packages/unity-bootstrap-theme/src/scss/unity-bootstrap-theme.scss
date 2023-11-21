@@ -7,24 +7,4 @@
 // css Bootstrap doesn't have variables for
 @import "unity-bootstrap-theme-extends";
 
-/* -----------------------------------------------------
-Container/ row / column padding adjustments for mobile.
-
-Bootstrap doesn't natively provide a way to alter the behavior
-its native grid elements based on a media query. This overrides
-that behavior at screens <= 575px. (The small breakpoint.)
-
-Should be included after @import scss/grid. Registered here for clarity.
------------------------------------------------------- */
-
-@include media-breakpoint-down(md) {
-  .container,
-  .container-fluid,
-  .container-xl,
-  .container-lg,
-  .container-md,
-  .container-sm {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-}
+@import 'end-style';

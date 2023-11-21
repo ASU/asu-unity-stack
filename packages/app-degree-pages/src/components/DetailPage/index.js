@@ -1,8 +1,9 @@
 // @ts-check
-import { Hero, useFetch } from "@asu/components-core";
+import { Hero } from "@asu/components-core";
 import PropTypes, { arrayOf } from "prop-types";
 import React, { useContext, useEffect, useState } from "react";
 
+import { useFetch } from "../../../../../shared";
 import {
   ErrorAlert,
   Loader,

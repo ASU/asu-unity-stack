@@ -97,9 +97,6 @@
     );
     left: 0;
 
-    span.carousel-control-prev-icon {
-      margin: 0 42px 0 12px;
-    }
   }
 
   &-next {
@@ -123,7 +120,7 @@
   &-next span.carousel-control-next-icon {
     background-size: 60% 60%;
     display: block;
-    opacity: 0;
+    opacity: 1;
     padding: 12px;
     position: relative;
     top: 50%;
@@ -139,6 +136,17 @@
     &-next {
       width: 48px;
     }
+    &-next,
+    &-prev {
+    span.carousel-control-next-icon,
+    span.carousel-control-prev-icon
+    {
+      margin: 0px 12px 0px 8px;
+    }
+    span.carousel-control-prev-icon {
+      margin-left: 0px;
+    }
+  }
   }
 }
 

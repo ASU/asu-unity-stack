@@ -4,10 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 import React, { useRef, useEffect, useMemo } from "react";
 
+import { trackGAEvent } from "../../../../../../../shared";
 import { useAppContext } from "../../../../core/context/app-context";
 import { useIsMobile } from "../../../../core/hooks/isMobile";
 import { NavTreePropTypes } from "../../../../core/models/app-prop-types";
-import { trackGAEvent } from "../../../../core/services/googleAnalytics";
 import { DropdownItem } from "../DropdownItem";
 import { NavItemWrapper } from "./index.styles";
 
@@ -42,12 +42,9 @@ NavLinkIcon.propTypes = {
  */
 
 /**
- * @param {{
- *  link: NavTreeProps,
- *  setItemOpened: (value: any) => void,
- *  itemOpened: number | undefined,
- * }} props
- * @returns
+ * @param {{ link: NavTreeProps, setItemOpened: Function, itemOpened: number }} props
+ * @returns {JSX.Element}
+ *
  */
 
 const NavItem = ({ link, setItemOpened, itemOpened }) => {

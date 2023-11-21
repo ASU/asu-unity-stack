@@ -1,8 +1,8 @@
 // @ts-check
 import React from "react";
 
+import { trackGAEvent } from "../../../../../../shared";
 import { useAppContext } from "../../../core/context/app-context";
-import { trackGAEvent } from "../../../core/services/googleAnalytics";
 import { LoginWrapper } from "./index.styles";
 
 const DEFAUL_GA_EVENT = {

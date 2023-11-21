@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 
+import { trackGAEvent } from "../../../shared";
 import { CookieConsentWrapper } from "./CookieConsent.styles";
-import { trackGAEvent } from "./core/services/googleAnalytics";
 import { addDays } from "./core/utils/helpers";
 
 const defaultGAEvent = {

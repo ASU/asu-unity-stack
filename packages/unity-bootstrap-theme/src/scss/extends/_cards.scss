@@ -430,6 +430,14 @@ Cards - Table of Contents
 /*------------------------------------------------------------------
 4. Event Cards
 --------------------------------------------------------------------*/
+.card-event .card-header .card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .card-event .card-header {
   border-top: solid 8px $gold;
 }
@@ -500,6 +508,8 @@ Cards - Table of Contents
 .card-horizontal .card-img-top {
   height: auto;
   max-width: 40%;
+  aspect-ratio: 2/3;
+  max-height: 400px;
 }
 
 .card-event.card-horizontal .card-header {
@@ -538,6 +548,7 @@ Cards - Table of Contents
   .accordion-header {
     padding: $uds-size-spacing-1;
     overflow: hidden;
+    background-color: $uds-color-base-white;
 
     &.accordion-header-icon {
       & .accordion-icon {

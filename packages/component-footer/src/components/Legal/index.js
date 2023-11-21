@@ -1,7 +1,7 @@
 // @ts-check
 import React from "react";
 
-import { trackGAEvent } from "../../core/services/googleAnalytics";
+import { trackGAEvent } from "../../../../../shared";
 
 const DEFAULT_GA_EVENT = {
   type: "internal link",
@@ -87,18 +87,6 @@ const Legal = () => {
                 }
               >
                 Emergency
-              </a>
-              <a
-                className="nav-link"
-                href="https://eoss.asu.edu/health/announcements/coronavirus"
-                onFocus={() =>
-                  trackGAEvent({
-                    ...DEFAULT_GA_EVENT,
-                    text: "covid-19 information",
-                  })
-                }
-              >
-                COVID-19 Information
               </a>
             </nav>
           </div>

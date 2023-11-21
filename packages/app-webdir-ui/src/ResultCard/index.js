@@ -1,9 +1,27 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
 
-import { trackGAEvent } from "../core/services/googleAnalytics";
+import { trackGAEvent } from "../../../../shared";
 import { ResultCardTemplate } from "./index.styles";
 import { resultCardType } from "./models";
+
+/**
+ * React component for displaying a search result card.
+ *
+ * @param {Object} props - The props for configuring the result card.
+ * @param {string} props.id - The ID of the result.
+ * @param {string} props.name - The name of the result.
+ * @param {string} props.area - The area of the result.
+ * @param {string} props.description - The description of the result.
+ * @param {string[]} props.cookieTrail - An array representing the cookie trail of the result.
+ * @param {string} props.link - The link associated with the result.
+ * @param {boolean} [props.fill=false] - Whether to fill in missing data in the card.
+ * @param {function} props.logClick - A function to log clicks on result card elements.
+ * @param {string} props.GASource - The Google Analytics source for tracking events.
+ * @param {string} props.requestId - The request ID associated with the query.
+ * @param {boolean|null} [props.localSection=null] - The local section information.
+ * @returns {JSX.Element} The ResultCard component.
+ */
 
 const ResultCard = ({ ...props }) => {
   const [searchParams, ,] = useSearchParams();

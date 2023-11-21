@@ -1,8 +1,8 @@
 // @ts-check
-import { getCurrentScriptPath } from "@asu/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
+import { getCurrentScriptPath } from "../../../../../shared";
 import {
   setClientId,
   pushDataLayerEventToGa,

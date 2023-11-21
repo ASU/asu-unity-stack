@@ -1,11 +1,47 @@
 import { TabbedPanels, Tab } from "@asu/components-core";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
+import { FilterComponent } from "../helpers/Filter";
 import { engineNames, engines } from "../helpers/search";
 import { ASUSearchResultsList } from "../SearchResultsList";
 
-export const FacultyRankTabPanels = ({
+/**
+ * Data object representing the filters for faculty rank.
+ * @typedef {Object} FiltersData
+ * @property {string} 1 - Filter for Faculty.
+ * @property {string} 2 - Filter for Academic Professionals.
+ * @property {string} 3 - Filter for Fixed-Term Faculty and Academic Professionals.
+ */
+
+const filtersData = {
+  1: "Faculty",
+  2: "Academic Professionals",
+  3: "Fixed-Term Faculty and Academic Professionals",
+};
+
+/**
+ * Prop types for FacultyRankTabPanels component.
+ * @type {Object}
+ * @property {string} deptIds - The department IDs.
+ * @property {string} API_URL - The API URL.
+ * @property {string} searchApiVersion - The search API version.
+ * @property {string} searchType - The type of search.
+ * @property {string} appPathFolder - The application path folder.
+ * @property {Object} display - Display settings.
+ * @property {string} display.defaultSort - The default sorting option.
+ * @property {string} display.doNotDisplayProfiles - Profiles not to display.
+ * @property {string} display.profilesPerPage - Number of profiles to display.
+ * @property {string} display.usePager - Whether to use pagination.
+ * @property {Object} filters - Filters for the search.
+ * @property {string} filters.employee - Employee filter.
+ * @property {string} filters.expertise - Expertise filter.
+ * @property {string} filters.title - Title filter.
+ * @property {string} filters.campuses - Campuses filter.
+ * @property {string} alphaFilter - Whether to enable the alpha filter.
+ */
+
+const FacultyRankTabPanels = ({
   filters,
   API_URL,
   searchApiVersion,
@@ -14,9 +50,19 @@ export const FacultyRankTabPanels = ({
   display,
   profileURLBase,
   searchType,
+  alphaFilter,
 }) => {
+  const [requestFilters, setRequestFilters] = useState({});
+  const [tabChange, setTabChange] = useState(null);
   const RES_PER_PAGE = 6;
   const sort = "faculty_rank";
+
+  useEffect(() => {
+    const tempFilters = { ...filters };
+    tempFilters["deptIds"] = deptIds.split(",");
+    setRequestFilters(tempFilters);
+  }, [deptIds, tabChange]);
+
   const engineParams = {
     filters,
     API_URL,
@@ -36,53 +82,66 @@ export const FacultyRankTabPanels = ({
     faculty_rank: engineNames.WEB_DIRECTORY_FACULTY_RANK,
   };
 
-  const tempFilters = { ...filters };
-  tempFilters["deptIds"] = deptIds.split(",");
-
   return (
-    <TabbedPanels onTabChange={() => true}>
-      <Tab id="faculty" title="Faculty">
-        <ASUSearchResultsList
-          engine={enginesWithParams[searchTypeEngineMap[searchType]]}
-          itemsPerPage={parseInt(display.profilesPerPage, 10) || RES_PER_PAGE}
-          size="large"
-          sort={sort}
-          hidePaginator={display.usePager !== "1"}
-          filters={tempFilters}
-          profilesToFilterOut={display.doNotDisplayProfiles}
-          display={display}
-          rankGroup="1"
-        />
-      </Tab>
-      <Tab id="acad-pro" title="Academic Professionals">
-        <ASUSearchResultsList
-          engine={enginesWithParams[searchTypeEngineMap[searchType]]}
-          itemsPerPage={parseInt(display.profilesPerPage, 10) || RES_PER_PAGE}
-          size="large"
-          sort={sort}
-          hidePaginator={display.usePager !== "1"}
-          filters={tempFilters}
-          profilesToFilterOut={display.doNotDisplayProfiles}
-          display={display}
-          rankGroup="2"
-        />
-      </Tab>
-      <Tab
-        id="st-acad-pro"
-        title="Fixed-Term Faculty and Academic Professionals"
-      >
-        <ASUSearchResultsList
-          engine={enginesWithParams[searchTypeEngineMap[searchType]]}
-          itemsPerPage={parseInt(display.profilesPerPage, 10) || RES_PER_PAGE}
-          size="large"
-          sort={sort}
-          hidePaginator={display.usePager !== "1"}
-          filters={tempFilters}
-          profilesToFilterOut={display.doNotDisplayProfiles}
-          display={display}
-          rankGroup="3"
-        />
-      </Tab>
+    <TabbedPanels onTabChange={setTabChange}>
+      {[1, 2, 3].map(rankGroup => (
+        <Tab
+          key={rankGroup}
+          id={`faculty-${rankGroup}`}
+          title={filtersData[rankGroup]}
+        >
+          {alphaFilter === "true" && (
+            <FilterComponent
+              filterLabel="Filter by last initial"
+              choices={[
+                "A",
+                "B",
+                "C",
+                "D",
+                "E",
+                "F",
+                "G",
+                "H",
+                "I",
+                "J",
+                "K",
+                "L",
+                "M",
+                "N",
+                "O",
+                "P",
+                "Q",
+                "R",
+                "S",
+                "T",
+                "U",
+                "V",
+                "W",
+                "X",
+                "Y",
+                "Z",
+              ]}
+              onChoose={filterLetter =>
+                setRequestFilters({ ...requestFilters, lastInit: filterLetter })
+              }
+              resetFilters={() =>
+                setRequestFilters({ ...requestFilters, lastInit: "" })
+              }
+            />
+          )}
+          <ASUSearchResultsList
+            engine={enginesWithParams[searchTypeEngineMap[searchType]]}
+            itemsPerPage={parseInt(display.profilesPerPage, 10) || RES_PER_PAGE}
+            size="large"
+            sort={sort}
+            hidePaginator={display.usePager !== "1"}
+            filters={requestFilters}
+            profilesToFilterOut={display.doNotDisplayProfiles}
+            display={display}
+            rankGroup={rankGroup.toString()}
+          />
+        </Tab>
+      ))}
     </TabbedPanels>
   );
 };
@@ -106,4 +165,7 @@ FacultyRankTabPanels.propTypes = {
     title: PropTypes.string,
     campuses: PropTypes.string,
   }),
+  alphaFilter: PropTypes.string,
 };
+
+export default FacultyRankTabPanels;

@@ -3,7 +3,7 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { useRef } from "react";
 
-import { trackGAEvent } from "../../core/services/googleAnalytics";
+import { trackGAEvent } from "../../../../../shared";
 
 const defaultGAEvent = {
   name: "onclick",

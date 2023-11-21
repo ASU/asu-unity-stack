@@ -1,3 +1,26 @@
+# [@asu/component-footer-v2.1.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.1.2...@asu/component-footer-v2.1.3) (2023-11-17)
+
+
+### Bug Fixes
+
+* **component-footer:** update Peer Dependency Components-core to allow version 2 or 3 ([1ee7d61](https://github.com/asu/asu-unity-stack/commit/1ee7d618609c93d882ef832b901486f54e73d6e7))
+
+# [@asu/component-footer-v2.1.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.1.1...@asu/component-footer-v2.1.2) (2023-10-02)
+
+
+### Bug Fixes
+
+* **component-footer:** bump components-core version ([3dd7992](https://github.com/asu/asu-unity-stack/commit/3dd79920239e48e59d7c0f044f417ffdfec6fb80))
+* **component-footer:** update alt test on ranking image ([db72b8b](https://github.com/asu/asu-unity-stack/commit/db72b8b2959bef85d414d99a1a4eed6a1044b79f))
+* **component-footer:** updated innovation logo ([768dc6a](https://github.com/asu/asu-unity-stack/commit/768dc6a18334ea95f5e7a7a8d5d088bed7352ca7))
+
+# [@asu/component-footer-v2.1.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.1.0...@asu/component-footer-v2.1.1) (2023-09-13)
+
+
+### Bug Fixes
+
+* **component-footer:** removed covid-19 link in footer ([02a9a2c](https://github.com/asu/asu-unity-stack/commit/02a9a2c6edd745ab3787f7c4945f5f698e6460cd))
+
 # [@asu/component-footer-v2.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.0.2...@asu/component-footer-v2.1.0) (2023-08-15)
 
 
