@@ -62,6 +62,7 @@ const ASUSearchResultsList = ({
   localSection,
   rankGroup,
   icon,
+  restClientTag,
 }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -87,6 +88,7 @@ const ASUSearchResultsList = ({
         rankGroup,
         controller,
         size: display?.profilesPerPage,
+        restClientTag,
       })
         .then(res => {
           let filteredResults = res;
@@ -289,6 +291,7 @@ ASUSearchResultsList.propTypes = {
   localSection: PropTypes.bool,
   rankGroup: PropTypes.string,
   icon: PropTypes.arrayOf(PropTypes.string),
+  restClientTag: PropTypes.string,
 };
 
 export { ASUSearchResultsList };
