@@ -1,6 +1,7 @@
 import React from "react";
 import { QuickLinks } from "../../QuickLinks";
 import { PreSearchMessageTemplate } from "./index.styles";
+import PropTypes from "prop-types";
 
 const PreSearchDynamicMsg = ({ titleText, descText, contactText, signInLink }) => {
   const renderDescText = () => {
@@ -30,6 +31,13 @@ const PreSearchDynamicMsg = ({ titleText, descText, contactText, signInLink }) =
       <QuickLinks />
     </PreSearchMessageTemplate>
   );
+};
+
+PreSearchDynamicMsg.propTypes = {
+  titleText: PropTypes.string,
+  descText: PropTypes.string,
+  contactText: PropTypes.string,
+  signInLink: PropTypes.string,
 };
 
 export { PreSearchDynamicMsg };
