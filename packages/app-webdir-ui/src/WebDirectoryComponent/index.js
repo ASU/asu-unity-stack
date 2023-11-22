@@ -202,6 +202,7 @@ function WebDirectory({
               profilesToFilterOut={display?.doNotDisplayProfiles}
               display={display}
               appPathFolder={appPathFolder}
+              restClientTag="webdir"
             />
           </div>
         </WebDirLayout>

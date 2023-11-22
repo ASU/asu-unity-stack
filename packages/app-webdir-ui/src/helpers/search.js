@@ -383,6 +383,7 @@ export const performSearch = function ({
   rankGroup,
   controller,
   size,
+  restClientTag,
 }) {
   async function search(resolve, reject) {
     const currentSort = engine.supportedSortTypes.includes(sort) ? sort : "";
@@ -453,6 +454,9 @@ export const performSearch = function ({
       if (rankGroup) {
         query = `${query}&rank_group=${rankGroup}`;
       }
+      if (restClientTag) {
+        query = `${query}&client=${restClientTag}`;
+      }
       APICall = () => axios.get(query, { signal: controller.signal });
     } else {
       if (!filters) {
@@ -471,6 +475,11 @@ export const performSearch = function ({
         "last_init": filters.lastInit || null,
         "profiles_to_exclude": display.doNotDisplayProfiles || null,
       };
+
+      if (restClientTag) {
+        query = `${query}?&client=${restClientTag}`;
+      }
+
       APICall = () => axios.post(query, data, { headers });
     }
 

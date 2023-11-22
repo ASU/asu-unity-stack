@@ -139,6 +139,7 @@ const FacultyRankTabPanels = ({
             profilesToFilterOut={display.doNotDisplayProfiles}
             display={display}
             rankGroup={rankGroup.toString()}
+            restClientTag="asuis"
           />
         </Tab>
       ))}
