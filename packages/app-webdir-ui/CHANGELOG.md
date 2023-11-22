@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v3.3.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.3.3...@asu/app-webdir-ui-v3.3.4) (2023-11-22)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** added proper margin/display to profile photo title ([47e7161](https://github.com/asu/asu-unity-stack/commit/47e7161360b9ee6f663bda19b4820c167b6cd727))
+
 # [@asu/app-webdir-ui-v3.3.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.3.2...@asu/app-webdir-ui-v3.3.3) (2023-11-22)
 
 
