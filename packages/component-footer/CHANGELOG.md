@@ -1,3 +1,10 @@
+# [@asu/component-footer-v2.1.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.1.2...@asu/component-footer-v2.1.3) (2023-11-17)
+
+
+### Bug Fixes
+
+* **component-footer:** update Peer Dependency Components-core to allow version 2 or 3 ([1ee7d61](https://github.com/asu/asu-unity-stack/commit/1ee7d618609c93d882ef832b901486f54e73d6e7))
+
 # [@asu/component-footer-v2.1.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.1.1...@asu/component-footer-v2.1.2) (2023-10-02)
 
 

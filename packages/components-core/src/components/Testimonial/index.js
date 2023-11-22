@@ -3,7 +3,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { spreadClasses } from "../../core/utils/css-utils";
+import { spreadClasses } from "../../../../../shared";
 // eslint-disable-next-line import/no-cycle
 import { Image } from "../Image";
 

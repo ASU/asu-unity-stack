@@ -4,6 +4,8 @@ const PROJECT_DIR = path.resolve(__dirname, "../");
 module.exports = {
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
+    "../../../.storybook-config",
+    "../../../.storybook-config/dataLayerListener",
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "storybook-css-modules-preset",

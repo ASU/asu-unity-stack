@@ -5,12 +5,14 @@ import PropTypes, { shape, arrayOf } from "prop-types";
 import React, { useState } from "react";
 
 /**
- * @param {{
- *  columnIndex: number
- *  column?: import("../../core/models/types").Column
- * }} props
+ * @typedef {import("../../core/models/types").Column} Column
+ */
+
+/**
+ * @param {{ columnIndex: number, column: Column }} props
  * @returns {JSX.Element}
  */
+
 const ColumnSection = ({ columnIndex, column: { title, links } }) => {
   const [show, setShow] = useState(false);
 

@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
-import { trackGAEvent } from "../../core/services/googleAnalytics";
+import { trackGAEvent } from "../../../../../shared";
 import { NavControls, TabHeader } from "./components";
 
 function useRefs() {
@@ -72,8 +72,12 @@ const TabbedPanels = ({
     };
     headerTabs.current.addEventListener("scroll", onScroll);
     onScroll();
-    return () => headerTabs.current.removeEventListener("scroll", onScroll);
-  }, [scrollableWidth]);
+    return () => {
+      if (headerTabs.current) {
+        headerTabs.current.removeEventListener("scroll", onScroll);
+      }
+    };
+}, [scrollableWidth]);
 
   useEffect(() => {
     const onResize = () => {
@@ -83,7 +87,11 @@ const TabbedPanels = ({
     };
     window.addEventListener("resize", onResize);
     onResize();
-    return () => window.removeEventListener("resize", onResize);
+    return () => {
+      if (headerTabs.current) {
+        window.removeEventListener("resize", onResize);
+      }
+    }
   }, []);
 
   useEffect(() => {
@@ -134,8 +142,17 @@ const TabbedPanels = ({
   });
 
   const slideNav = direction => {
-    headerTabs.current.scrollBy({
-      left: 200 * direction,
+    const container = headerTabs.current;
+    const maxScrollLeft = container.scrollWidth - container.clientWidth;
+    const currentScrollLeft = container.scrollLeft;
+
+    let newScrollLeft = currentScrollLeft + 200 * direction;
+
+    // Ensure the scroll position stays within bounds
+    newScrollLeft = Math.max(0, Math.min(maxScrollLeft, newScrollLeft));
+
+    container.scrollTo({
+      left: newScrollLeft,
       behavior: "smooth",
     });
   };
@@ -181,7 +198,7 @@ const TabbedPanels = ({
           })}
         </div>
         <NavControls
-          hidePrev={scrollLeft === 0}
+          hidePrev={scrollLeft <= 0}
           hideNext={scrollLeft >= scrollableWidth}
           clickPrev={() => {
             slideNav(-1);

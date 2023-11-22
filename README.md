@@ -25,9 +25,16 @@ The ASU Unity Design System packages are published to GitHub's package registry.
 5. Test installing packages using yarn or npm inside of another NPM project:
 ```yarn add @asu/design-tokens```
 
-### TROUBLESHOOTING INSTALLATION ERRORS
+### TROUBLESHOOTING ERRORS
 
 If you get errors having to do with yarn not being able to find a package on the registry, try running ```yarn config list``` at the project root and look for the ```registry:``` key under yarn config. If it is not set to ```https://registry.yarnpkg.com``` then run ```yarn config delete registry``` and recheck config.
+
+For custom compilation and sub-themes using the `unity-bootstrap-theme` package, make sure your bundling/compilation tool is compatible with the scss. For example, if you are using Gulp for scss compilation, you will need to handle the new module imports used in our Webpack configuration.
+
+In the old `bootstrap4-theme` package, we would import the Bootstrap scss with `@import "../../node_modules/bootstrap/scss/root";`
+In the new theme it is imported directly with  `@import "bootstrap/scss/functions";`
+
+[This Slack thread](https://asu-tech.slack.com/archives/C01ABUVU8LQ/p1695234506292239) has some more information about this issue and using Gulp. *Must be a member of the ASU Community Slack workspace to view.*
 
 ## ❯ Packages in this repository
 
@@ -177,6 +184,7 @@ yarn build # build the project
 yarn start & yarn test:e2e # start the testing server and run e2e tests
 yarn stop # stop the testing server
 ```
+
 
 ## ❯ CLI tools
 

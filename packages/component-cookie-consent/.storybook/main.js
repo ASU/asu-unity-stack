@@ -7,6 +7,8 @@ const PROJECT_DIR = path.resolve(__dirname, "../");
 
 module.exports = {
   addons: [
+    "../../../.storybook-config",
+    "../../../.storybook-config/dataLayerListener",
     "@storybook/addon-controls",
     "@storybook/addon-viewport",
     "@storybook/addon-a11y",

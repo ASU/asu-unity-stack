@@ -7,6 +7,20 @@ import { ASUSearchResultsList } from "../../../SearchResultsList/index";
 import { SearchMessage } from "../SearchMessage";
 import { AllTabLayout } from "./index.styles";
 
+/**
+ * React component for displaying search results on the main tab.
+ *
+ * @param {Object} props - The props for configuring the AllTab component.
+ * @param {string} props.term - The search term.
+ * @param {Object} props.engines - The search engines for different categories.
+ * @param {string} props.site - The selected site for filtering results.
+ * @param {function} props.goToTab - Function to switch between tabs.
+ * @param {function} props.setTotalResults - Function to set the total number of results.
+ * @param {number} props.totalResults - The total number of search results.
+ * @param {boolean} props.loggedIn - Indicates if the user is logged in.
+ * @returns {JSX.Element} The AllTab component.
+ */
+
 const AllTab = ({
   term,
   engines,
@@ -83,6 +97,7 @@ const AllTab = ({
                 // setPromotedResult={site ? setPromotedResult : null}
                 localSection
                 loggedIn={loggedIn}
+                restClientTag="asuis"
               />
             </div>
           )}
@@ -123,6 +138,7 @@ const AllTab = ({
               setPromotedResult={setPromotedProfile}
               hidePaginator
               registerResults={registerResults}
+              restClientTag="asuis"
             />
           </div>
           <div className="students all-content-item">
@@ -138,6 +154,7 @@ const AllTab = ({
               hidePaginator
               registerResults={registerResults}
               icon={["fa", "lock"]}
+              restClientTag="asuis"
             />
           </div>
           <div className="quick-links all-content-item">

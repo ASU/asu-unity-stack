@@ -205,7 +205,7 @@ export const ButtonIconOnly: React.FunctionComponent<ButtonIconOnlyProps>;
 
 export interface ButtonTagProps {
   /**
-     Button tag label
+    Button tag label
    */
   label?: string;
   /**
@@ -470,19 +470,3 @@ export interface FetchResponse<E> {
   loading: boolean;
   error: object;
 }
-export function useFetch<T>(): [FetchResponse<T>, (url: string) => void];
-
-export function useMediaQuery(query: string): boolean;
-
-export function idGenerator(
-  key?: string,
-  startIndex?: number
-): Generator<string, string, string>;
-
-export function sanitizeDangerousMarkup(content: string):
-  | {
-      __html: string;
-    }
-  | undefined;
-
-export function spreadClasses(lasses: string[]): string;

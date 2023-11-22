@@ -1,7 +1,12 @@
 const gulp = require("gulp");
+const path = require("path");
+const glob = require("glob");
 const nunjucks = require("gulp-nunjucks");
 const clean = require("gulp-clean");
 const filter = require("gulp-filter");
+var fs = require('fs');
+var pkg = require('./package.json');
+const indexGenerator = require("./server/storybook-index-generator.js");
 
 copy = () => gulp.src(["./server/views/**/*"]).pipe(gulp.dest("./build/@asu"));
 
@@ -16,6 +21,16 @@ compile = () =>
     .pipe(nunjucks.compile())
     .pipe(gulp.dest("build"));
 
+index = (cb) => {
+  const packages = glob
+    .sync(path.join(process.cwd(), "packages/", '**/package.json'), {
+      ignore: '**/node_modules/**'
+    })
+    .map(file => JSON.parse(fs.readFileSync(file, 'utf8')));
+
+ fs.writeFile('build/index.html', indexGenerator(packages), cb);
+}
+
 cleanup = () =>
   gulp
     .src([
@@ -25,4 +40,4 @@ cleanup = () =>
     ])
     .pipe(clean());
 
-exports.default = gulp.series(copy, cname, compile, cleanup);
+exports.default = gulp.series(copy, cname, compile, index, cleanup);

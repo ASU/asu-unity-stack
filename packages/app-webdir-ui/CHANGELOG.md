@@ -1,3 +1,82 @@
+# [@asu/app-webdir-ui-v3.3.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.3.3...@asu/app-webdir-ui-v3.3.4) (2023-11-22)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** added proper margin/display to profile photo title ([47e7161](https://github.com/asu/asu-unity-stack/commit/47e7161360b9ee6f663bda19b4820c167b6cd727))
+
+# [@asu/app-webdir-ui-v3.3.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.3.2...@asu/app-webdir-ui-v3.3.3) (2023-11-22)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** added client tags to web directory api calls ([2a7ce3b](https://github.com/asu/asu-unity-stack/commit/2a7ce3be80cedcc87ed55d6bb19f3995284a0d9a))
+
+# [@asu/app-webdir-ui-v3.3.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.3.1...@asu/app-webdir-ui-v3.3.2) (2023-11-17)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** fix undefined error in seach caused by webdir component update ([29538b8](https://github.com/asu/asu-unity-stack/commit/29538b8ba2607ec6c8a1da8bd605cb8e35bb775a))
+
+# [@asu/app-webdir-ui-v3.3.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.3.0...@asu/app-webdir-ui-v3.3.1) (2023-11-17)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** fix zero value EID in path problem ([5e9e7cd](https://github.com/asu/asu-unity-stack/commit/5e9e7cdb1a76fddd1daa46f734cacaa866bc4dfc))
+
+# [@asu/app-webdir-ui-v3.3.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.5...@asu/app-webdir-ui-v3.3.0) (2023-11-16)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** add webdir profiles for exclusion on rest endpoint ([159a70c](https://github.com/asu/asu-unity-stack/commit/159a70c4456a16607062c44e4da110112e8767f1))
+
+
+### Features
+
+* **app-webdir-ui:** updated post request Web Directories to read new field ([819643f](https://github.com/asu/asu-unity-stack/commit/819643f0e9fd7cec7fa19aaca7bd6f536e80e53c))
+
+# [@asu/app-webdir-ui-v3.2.5](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.4...@asu/app-webdir-ui-v3.2.5) (2023-10-26)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** fix rendered more hooks than during previous render ([e120d17](https://github.com/asu/asu-unity-stack/commit/e120d17ba25072e760153b58847c310b6aa368f9))
+* **app-webdir-ui:** focus cursor in search box on page load ([23bed9e](https://github.com/asu/asu-unity-stack/commit/23bed9e9929349b1680ae21e7895abf93216bf51))
+* **app-webdir-ui:** updated refs and ran linting on app-webdir-ui ([96c78db](https://github.com/asu/asu-unity-stack/commit/96c78db116895302fde54d555dc591989626f9ca))
+
+# [@asu/app-webdir-ui-v3.2.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.3...@asu/app-webdir-ui-v3.2.4) (2023-10-18)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** last init filter sentence-cased ([eb03ab7](https://github.com/asu/asu-unity-stack/commit/eb03ab7b924a19168ecc4b62349853667caa1119))
+
+# [@asu/app-webdir-ui-v3.2.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.2...@asu/app-webdir-ui-v3.2.3) (2023-10-18)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** fixed negative scroll width check ([d78894e](https://github.com/asu/asu-unity-stack/commit/d78894e10f5ba6875c7de5d2cb745d6e61fbd2d0))
+* **app-webdir-ui:** updated alpha filter component styles and logic ([3db627f](https://github.com/asu/asu-unity-stack/commit/3db627f0c1c538379364b6f9980f4ce4d591e510))
+* **app-webdir-ui:** updated alpha filter styles ([f6a2c45](https://github.com/asu/asu-unity-stack/commit/f6a2c454094c3bc3caa357bd61e86ea88ea7110f))
+
+# [@asu/app-webdir-ui-v3.2.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.1...@asu/app-webdir-ui-v3.2.2) (2023-10-17)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** update components-core requirement. ([bf0a063](https://github.com/asu/asu-unity-stack/commit/bf0a063b0b90b8289b3017c4aececd2a28adf594))
+
+# [@asu/app-webdir-ui-v3.2.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.0...@asu/app-webdir-ui-v3.2.1) (2023-10-17)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** fix rendered more hooks than during previous render ([f1d8b03](https://github.com/asu/asu-unity-stack/commit/f1d8b0338fae7b00e189b5017f9ca69830ef1e43))
+
 # [@asu/app-webdir-ui-v3.2.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.1.0...@asu/app-webdir-ui-v3.2.0) (2023-10-03)
 
 

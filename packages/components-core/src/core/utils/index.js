@@ -11,14 +11,11 @@ import { ButtonTag } from "../../components/ButtonTag";
 // eslint-disable-next-line import/no-cycle
 import { Card } from "../../components/Card";
 import { Hero } from "../../components/Hero";
+import { Image } from "../../components/Image";
 import { Pagination } from "../../components/Pagination";
 import { RankingCard } from "../../components/RankingCard";
 import { Testimonial } from "../../components/Testimonial";
 import { Video } from "../../components/Video";
-import { spreadClasses } from "./css-utils";
-import { sanitizeDangerousMarkup } from "./html-utils";
-import { idGenerator } from "./id-generator";
-import { getCurrentScriptPath } from "./script-utils";
 
 /**
  * @typedef {Object} ComponentProps
@@ -80,6 +77,18 @@ export const initCard = ({ targetSelector, props }) =>
 /**
  * @param {ComponentProps} props
  */
+export const initHero = ({ targetSelector, props }) =>
+  RenderReact(Hero, props, document.querySelector(targetSelector));
+
+/**
+ * @param {ComponentProps} props
+ */
+export const initImage = ({ targetSelector, props }) =>
+  RenderReact(Image, props, document.querySelector(targetSelector));
+
+/**
+ * @param {ComponentProps} props
+ */
 export const initRankingCard = ({ targetSelector, props }) =>
   RenderReact(RankingCard, props, document.querySelector(targetSelector));
 
@@ -98,18 +107,5 @@ export const initTestimonial = ({ targetSelector, props }) =>
 /**
  * @param {ComponentProps} props
  */
-export const initHero = ({ targetSelector, props }) =>
-  RenderReact(Hero, props, document.querySelector(targetSelector));
-
-/**
- * @param {ComponentProps} props
- */
 export const initVideo = ({ targetSelector, props }) =>
   RenderReact(Video, props, document.querySelector(targetSelector));
-
-export {
-  sanitizeDangerousMarkup,
-  spreadClasses,
-  idGenerator,
-  getCurrentScriptPath,
-};

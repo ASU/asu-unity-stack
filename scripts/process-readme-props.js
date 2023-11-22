@@ -4,14 +4,14 @@ const path = require("path");
 const packages = [
   "app-degree-pages",
   "app-rfi",
+  "app-webdir-ui",
   "component-carousel",
   "component-events",
   "component-footer",
   "component-header",
   "component-news",
   "components-core",
-  "components-library",
-  "cookie-consent",
+  "component-cookie-consent",
 ];
 
 const processFile = docPath => {

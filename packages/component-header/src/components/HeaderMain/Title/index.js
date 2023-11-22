@@ -1,9 +1,9 @@
 // @ts-check
 import React, { useEffect, useState } from "react";
 
+import { trackGAEvent } from "../../../../../../shared";
 import { useAppContext } from "../../../core/context/app-context";
 import { TitlePropTypes } from "../../../core/models/app-prop-types";
-import { trackGAEvent } from "../../../core/services/googleAnalytics";
 import { checkFirstLoad } from "../../../core/utils/helpers/title";
 import { TitleWrapper } from "./index.styles";
 

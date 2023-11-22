@@ -12,7 +12,7 @@ import React from "react";
 
 // @ts-ignore
 import endorsedLogo from "../../assets/images/endorsedLogo.png";
-import { trackGAEvent } from "../../core/services/googleAnalytics";
+import { trackGAEvent } from "../../../../../shared";
 
 const DEFAULT_GA_EVENT = {
   type: "external link",
@@ -20,11 +20,14 @@ const DEFAULT_GA_EVENT = {
 };
 
 /**
- * @param {{
- *  social: import("../../core/models/types").Social
- * }} props
+ * @typedef {import("../../core/models/types").Social} SocialProps
+ */
+
+/**
+ * @param {{ social: SocialProps }} props
  * @returns {JSX.Element}
  */
+
 const Social = ({ social: { logoUrl, unitLogo, mediaLinks } }) => {
   return (
     <div className="wrapper" id="wrapper-endorsed-footer" data-testid="social">

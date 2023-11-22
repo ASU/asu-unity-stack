@@ -11,6 +11,23 @@ import { ASUSearchResultsList } from "../SearchResultsList";
 import { WebDirLayout, FacultyRankLayout } from "./index.styles";
 import trackReactComponent from "../../../../shared/functions/componentDatalayer";
 
+/**
+ * React component for displaying web directory search results.
+ *
+ * @param {Object} props - The props for configuring the WebDirectory component.
+ * @param {string} props.searchType - The type of web directory search (e.g., 'departments', 'people').
+ * @param {string} props.ids - The IDs used for searching (e.g., department IDs, ASURITE IDs).
+ * @param {string} props.deptIds - The department IDs for searching.
+ * @param {string} props.API_URL - The API URL for performing the search.
+ * @param {string} props.searchApiVersion - The version of the search API to use.
+ * @param {string} props.profileURLBase - The base URL for profile links.
+ * @param {string} props.appPathFolder - The base path for the application folder.
+ * @param {object} props.display - Display options for the search results.
+ * @param {Object} props.filters - Filters for the search.
+ * @param {string} props.alphaFilter - Indicates whether to enable alpha filtering.
+ * @returns {JSX.Element} The WebDirectory component.
+ */
+
 function WebDirectory({
   searchType,
   ids,
@@ -200,6 +217,7 @@ function WebDirectory({
               profilesToFilterOut={display?.doNotDisplayProfiles}
               display={display}
               appPathFolder={appPathFolder}
+              restClientTag="webdir"
             />
           </div>
         </WebDirLayout>

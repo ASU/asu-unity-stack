@@ -6,8 +6,8 @@ import React, { useState, useEffect, useRef } from "react";
 
 // eslint-disable-next-line import/no-unresolved
 import trackReactComponent from "../../../shared/functions/componentDatalayer";
+import { trackGAEvent } from "../../../shared";
 import { CookieConsentWrapper } from "./CookieConsent.styles";
-import { trackGAEvent } from "./core/services/googleAnalytics";
 import { addDays } from "./core/utils/helpers";
 
 const defaultGAEvent = {
