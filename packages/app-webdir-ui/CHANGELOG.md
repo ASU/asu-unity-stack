@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v3.3.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.3.2...@asu/app-webdir-ui-v3.3.3) (2023-11-22)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** added client tags to web directory api calls ([2a7ce3b](https://github.com/asu/asu-unity-stack/commit/2a7ce3be80cedcc87ed55d6bb19f3995284a0d9a))
+
 # [@asu/app-webdir-ui-v3.3.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.3.1...@asu/app-webdir-ui-v3.3.2) (2023-11-17)
 
 
