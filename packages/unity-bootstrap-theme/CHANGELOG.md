@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.9.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.8.0...@asu/unity-bootstrap-theme-v1.9.0) (2023-11-22)
+
+
+### Features
+
+* **unity-bootstrap-theme:** Add Javascript Panel and Readme ([eea68f4](https://github.com/ASU/asu-unity-stack/commit/eea68f4fea7ca7a652075a2ee45212006a29368a))
+
 # [@asu/unity-bootstrap-theme-v1.8.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.9...@asu/unity-bootstrap-theme-v1.8.0) (2023-11-07)
 
 
