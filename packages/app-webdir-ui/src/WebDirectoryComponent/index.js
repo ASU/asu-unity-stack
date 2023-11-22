@@ -9,7 +9,7 @@ import { engineNames, engines } from "../helpers/search";
 import { SortPicker } from "../SearchPage/components/sort";
 import { ASUSearchResultsList } from "../SearchResultsList";
 import { WebDirLayout, FacultyRankLayout } from "./index.styles";
-import trackReactComponent from "../../../../shared/functions/componentDatalayer";
+import trackReactComponent from "../../../../shared/services/componentDatalayer";
 
 /**
  * React component for displaying web directory search results.

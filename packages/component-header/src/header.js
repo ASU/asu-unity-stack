@@ -1,7 +1,7 @@
 // @ts-check
 import React, { useEffect, useRef } from "react";
 
-import trackReactComponent from "../../../shared/functions/componentDatalayer";
+import trackReactComponent from "../../../shared/services/componentDatalayer";
 import { HeaderMain } from "./components/HeaderMain";
 import { AppContextProvider } from "./core/context/app-context";
 import { HeaderPropTypes } from "./core/models/app-prop-types";

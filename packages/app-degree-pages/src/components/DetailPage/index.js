@@ -4,7 +4,7 @@ import PropTypes, { arrayOf } from "prop-types";
 import React, { useContext, useEffect, useState } from "react";
 
 // @ts-ignore
-import trackReactComponent from "../../../../../shared/functions/componentDatalayer";
+import trackReactComponent from "../../../../../shared/services/componentDatalayer";
 import { useFetch } from "../../../../../shared";
 import {
   ErrorAlert,

@@ -2,7 +2,7 @@
 import { Card, FeedContext } from "@asu/components-core";
 import React, { useContext, useEffect } from "react";
 
-import trackReactComponent from "../../../../../shared/functions/componentDatalayer";
+import trackReactComponent from "../../../../../shared/services/componentDatalayer";
 import { feedCardButtonShape } from "../../../../components-core/src/components/FeedAnatomy/feed-prop-types";
 import { BaseFeed } from "../../core/components/BaseFeed";
 import { defaultProps } from "../../core/constants/default-props";

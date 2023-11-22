@@ -1,7 +1,7 @@
 // @ts-check
 import React, { useEffect } from "react";
 
-import trackReactComponent from "../../../../../shared/functions/componentDatalayer";
+import trackReactComponent from "../../../../../shared/services/componentDatalayer";
 import { BaseFeed } from "../../core/components/BaseFeed";
 import { eventsPropTypes } from "../../core/models/propTypes";
 import { ListView } from "./ListView";

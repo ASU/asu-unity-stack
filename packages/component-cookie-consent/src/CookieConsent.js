@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 
 // eslint-disable-next-line import/no-unresolved
-import trackReactComponent from "../../../shared/functions/componentDatalayer";
+import trackReactComponent from "../../../shared/services/componentDatalayer";
 import { trackGAEvent } from "../../../shared";
 import { CookieConsentWrapper } from "./CookieConsent.styles";
 import { addDays } from "./core/utils/helpers";

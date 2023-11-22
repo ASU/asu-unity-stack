@@ -2,7 +2,7 @@
 import { FeedContext } from "@asu/components-core";
 import React, { useContext, useEffect } from "react";
 
-import trackReactComponent from "../../../../../shared/functions/componentDatalayer";
+import trackReactComponent from "../../../../../shared/services/componentDatalayer";
 import { CardCarousel } from "../../../../component-carousel/src/components/CardCarousel";
 import { BaseFeed } from "../../core/components/BaseFeed";
 import { defaultProps } from "../../core/constants/default-props";

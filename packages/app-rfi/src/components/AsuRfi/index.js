@@ -3,7 +3,7 @@
 import PropTypes from "prop-types";
 import React, { useEffect } from "react";
 
-import trackReactComponent from "../../../../../shared/functions/componentDatalayer";
+import trackReactComponent from "../../../../../shared/services/componentDatalayer";
 
 // Requires peer dependency of @asu/unity-bootstrap-theme
 // We import the styles in .storybook/preview-head.html for Storybook

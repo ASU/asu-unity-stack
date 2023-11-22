@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState, useContext } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
-import trackReactComponent from "../../../../../shared/functions/componentDatalayer";
+import trackReactComponent from "../../../../../shared/services/componentDatalayer";
 import { useFetch } from "../../../../../shared";
 import {
   Loader,
