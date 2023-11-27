@@ -57,6 +57,7 @@
  * @property {NavTreeProps[]} mobileNavTree
  * @property {string} searchUrl
  * @property {string} site
+ * @property {string} renderDiv - Can be either "true" or "false".
  */
 
 export const JSDOC = "jsdoc";
