@@ -3,9 +3,7 @@ import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 
 import { trackGAEvent } from "../../../../shared";
-import {
-  performSearch
-} from "../helpers/search";
+import { performSearch } from "../helpers/search";
 import { SearchMessage } from "../SearchPage/components/SearchMessage";
 import { SearchResultsList } from "./index.styles";
 
@@ -91,7 +89,7 @@ const ASUSearchResultsList = ({
         restClientTag,
       })
         .then(res => {
-          let filteredResults = res;
+          const filteredResults = res;
           if (sort === "employee_weight" && engine?.name === "people_in_dept") {
             filteredResults.results = filteredResults.results.filter(result => {
               return Object.keys(result).length > 1;
