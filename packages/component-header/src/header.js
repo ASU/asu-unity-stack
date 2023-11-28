@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react";
 import { HeaderMain } from "./components/HeaderMain";
 import { AppContextProvider } from "./core/context/app-context";
 import { HeaderPropTypes } from "./core/models/app-prop-types";
-import { Header } from "./header.styles";
+import { Header, HeaderDiv } from "./header.styles";
 
 /**
  * @typedef {import("./core/models/types").HeaderProps} HeaderProps
@@ -38,6 +38,7 @@ const ASUHeader = ({
   mobileNavTree,
   searchUrl,
   site,
+  renderDiv = "false",
 }) => {
   const headerRef = useRef(null);
 
@@ -54,6 +55,17 @@ const ASUHeader = ({
     window?.addEventListener("scroll", handleWindowScroll);
     return () => window.removeEventListener("scroll", handleWindowScroll);
   }, []);
+
+  const renderHeader = () => {
+    // Determine the wrapper based on renderDiv value
+    const Wrapper = renderDiv === "true" ? HeaderDiv : Header;
+
+    return (
+      <Wrapper id="asuHeader" ref={headerRef} breakpoint={breakpoint}>
+        <HeaderMain />
+      </Wrapper>
+    );
+  };
 
   return (
     <AppContextProvider
@@ -82,10 +94,7 @@ const ASUHeader = ({
         site,
       }}
     >
-      {/* @ts-ignore */}
-      <Header id="asuHeader" ref={headerRef} breakpoint={breakpoint}>
-        <HeaderMain />
-      </Header>
+      {renderHeader()}
     </AppContextProvider>
   );
 };
