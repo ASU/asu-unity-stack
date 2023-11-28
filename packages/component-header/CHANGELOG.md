@@ -1,3 +1,10 @@
+# [@asu/component-header-v2.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.8...@asu/component-header-v2.1.0) (2023-11-28)
+
+
+### Features
+
+* **component-header:** added prop to conditionally render header as div instead of header element ([5cc9d90](https://github.com/asu/asu-unity-stack/commit/5cc9d907481de814659da62c06e2ad5f11bfe60e))
+
 # [@asu/component-header-v2.0.8](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.7...@asu/component-header-v2.0.8) (2023-11-17)
 
 
