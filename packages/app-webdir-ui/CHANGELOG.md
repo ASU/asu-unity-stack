@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v3.3.5](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.3.4...@asu/app-webdir-ui-v3.3.5) (2023-11-28)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** remove alpha filter option from faculty rank ([34d1679](https://github.com/asu/asu-unity-stack/commit/34d1679957f8d0aeab7674025da66056f9406093))
+
 # [@asu/app-webdir-ui-v3.3.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.3.3...@asu/app-webdir-ui-v3.3.4) (2023-11-22)
 
 
