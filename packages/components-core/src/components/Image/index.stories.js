@@ -42,7 +42,7 @@ imageWithCaption.args = {
 };
 
 export const imageWithCaptionAndDropshadow = Template.bind({});
-imageWithCaptionAndDropshadow .args = {
+imageWithCaptionAndDropshadow.args = {
   src: "https://source.unsplash.com/WLUHO9A_xik/800x600",
   alt: "Placeholder image",
   caption: "This is a caption",
