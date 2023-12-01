@@ -62,21 +62,25 @@ export const Image = ({
 
   const renderFigure = () => (
     <div className={borderAndDropShadowClasses}>
-    <figure className="figure uds-figure">
-      {renderImage()}
-      {caption && (
-        <figcaption className="figure-caption uds-figure-caption">
-          {captionTitle && <h3>{captionTitle}</h3>}
-          <span className="uds-caption-text">{caption}</span>
-        </figcaption>
-      )}
-    </figure>
+      <figure className="figure uds-figure">
+        {renderImage()}
+        {caption && (
+          <figcaption className="figure-caption uds-figure-caption">
+            {captionTitle && <h3>{captionTitle}</h3>}
+            <span className="uds-caption-text">{caption}</span>
+          </figcaption>
+        )}
+      </figure>
     </div>
   );
 
   return (
     <>
-      {caption ? renderFigure() : renderImage()}
+      {caption ? (
+        renderFigure()
+      ) : (
+        <div className={borderAndDropShadowClasses}>{renderImage()}</div>
+      )}
     </>
   );
 };
