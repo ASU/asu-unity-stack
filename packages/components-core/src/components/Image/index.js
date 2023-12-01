@@ -48,17 +48,19 @@ export const Image = ({
     "uds-img-drop-shadow": dropShadow,
   });
 
-  const renderImage = () =>
+  const renderImage = (classes) => {
+    let combinedClasses = classes ? `${imageProps.className} ${classes}` : imageProps.className;
+  return (
     cardLink ? (
       <a href={cardLink}>
         {/* eslint-disable-next-line jsx-a11y/alt-text, react/jsx-props-no-spreading */}
-        <img {...imageProps} />
+        <img {...imageProps} className={combinedClasses} />
         <span className="visually-hidden">{title}</span>
       </a>
     ) : (
       // eslint-disable-next-line jsx-a11y/alt-text, react/jsx-props-no-spreading
-      <img {...imageProps} />
-    );
+      <img {...imageProps} className={combinedClasses} />
+    ))};
 
   const renderFigure = () => (
     <div className={borderAndDropShadowClasses}>
@@ -79,7 +81,7 @@ export const Image = ({
       {caption ? (
         renderFigure()
       ) : (
-        <div className={borderAndDropShadowClasses}>{renderImage()}</div>
+        renderImage(borderAndDropShadowClasses)
       )}
     </>
   );
