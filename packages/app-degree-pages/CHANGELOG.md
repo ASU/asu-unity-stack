@@ -1,3 +1,10 @@
+# [@asu/app-degree-pages-v2.2.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.1.5...@asu/app-degree-pages-v2.2.0) (2023-12-01)
+
+
+### Features
+
+* **app-degree-pages:** txt chg - West Valley campus ([08ea9b4](https://github.com/asu/asu-unity-stack/commit/08ea9b4e8842da1999a9c6a5a4bbf74f4ec7ddf3))
+
 # [@asu/app-degree-pages-v2.1.5](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.1.4...@asu/app-degree-pages-v2.1.5) (2023-09-19)
 
 
