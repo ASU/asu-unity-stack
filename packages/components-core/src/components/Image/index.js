@@ -61,6 +61,7 @@ export const Image = ({
     );
 
   const renderFigure = () => (
+    <div className={borderAndDropShadowClasses}>
     <figure className="figure uds-figure">
       {renderImage()}
       {caption && (
@@ -70,12 +71,13 @@ export const Image = ({
         </figcaption>
       )}
     </figure>
+    </div>
   );
 
   return (
-    <div className={borderAndDropShadowClasses}>
+    <>
       {caption ? renderFigure() : renderImage()}
-    </div>
+    </>
   );
 };
 
