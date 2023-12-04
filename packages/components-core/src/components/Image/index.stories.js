@@ -36,7 +36,7 @@ export const imageWithCaption = Template.bind({});
 imageWithCaption.args = {
   src: "https://source.unsplash.com/WLUHO9A_xik/800x600",
   alt: "Placeholder image",
-  caption: "This is a caption",
+  caption: "This is a <a href='#'>caption</a>.",
   captionTitle: "Caption title",
   border: true,
 };
@@ -45,7 +45,7 @@ export const imageWithCaptionAndDropshadow = Template.bind({});
 imageWithCaptionAndDropshadow.args = {
   src: "https://source.unsplash.com/WLUHO9A_xik/800x600",
   alt: "Placeholder image",
-  caption: "This is a caption",
+  caption: "This is a <a href='#'>caption</a>.",
   captionTitle: "Caption title",
   dropShadow: true,
   border: true,
