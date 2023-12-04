@@ -4,6 +4,7 @@ import React from "react";
 
 // eslint-disable-next-line import/no-cycle
 import { spreadClasses } from "../../../../../shared";
+import { sanitizeDangerousMarkup } from "../../../../../shared/utils";
 
 /**
  * @typedef {import('../../core/types/image-types').ImageComponentProps} ImageComponentProps
@@ -48,10 +49,11 @@ export const Image = ({
     "uds-img-drop-shadow": dropShadow,
   });
 
-  const renderImage = (classes) => {
-    let combinedClasses = classes ? `${imageProps.className} ${classes}` : imageProps.className;
-  return (
-    cardLink ? (
+  const renderImage = classes => {
+    const combinedClasses = classes
+      ? `${imageProps.className} ${classes}`
+      : imageProps.className;
+    return cardLink ? (
       <a href={cardLink}>
         {/* eslint-disable-next-line jsx-a11y/alt-text, react/jsx-props-no-spreading */}
         <img {...imageProps} className={combinedClasses} />
@@ -60,7 +62,8 @@ export const Image = ({
     ) : (
       // eslint-disable-next-line jsx-a11y/alt-text, react/jsx-props-no-spreading
       <img {...imageProps} className={combinedClasses} />
-    ))};
+    );
+  };
 
   const renderFigure = () => (
     <div className={borderAndDropShadowClasses}>
@@ -69,7 +72,10 @@ export const Image = ({
         {caption && (
           <figcaption className="figure-caption uds-figure-caption">
             {captionTitle && <h3>{captionTitle}</h3>}
-            <span className="uds-caption-text">{caption}</span>
+            <span
+              className="uds-caption-text"
+              dangerouslySetInnerHTML={sanitizeDangerousMarkup(caption)}
+            />
           </figcaption>
         )}
       </figure>
@@ -77,13 +83,7 @@ export const Image = ({
   );
 
   return (
-    <>
-      {caption ? (
-        renderFigure()
-      ) : (
-        renderImage(borderAndDropShadowClasses)
-      )}
-    </>
+    <>{caption ? renderFigure() : renderImage(borderAndDropShadowClasses)}</>
   );
 };
 
