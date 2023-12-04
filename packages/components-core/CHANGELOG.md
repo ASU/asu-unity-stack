@@ -1,3 +1,18 @@
+# [@asu/components-core-v3.3.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.2.0...@asu/components-core-v3.3.0) (2023-12-04)
+
+
+### Bug Fixes
+
+* **components-core:** added classes to image renders in Image component ([6b7687f](https://github.com/ASU/asu-unity-stack/commit/6b7687f42f408d88555fb7e793594aa48e2769d9))
+* **components-core:** fixed rendering of wrapper div around images ([1a8a075](https://github.com/ASU/asu-unity-stack/commit/1a8a075ad22e12b05fe726cb0d837efdb94a504c))
+* **components-core:** updated news and story cards to match ws ([dc1e9b1](https://github.com/ASU/asu-unity-stack/commit/dc1e9b13ad5e991a3733a0e0e7dd7e1c4c1928a1))
+
+
+### Features
+
+* **components-core:** added new props in image component ([b70bc76](https://github.com/ASU/asu-unity-stack/commit/b70bc76d61943331f51011d1ad95065fe4e64faa))
+* **components-core:** updated stories and conditional rendering for Image component ([9d10537](https://github.com/ASU/asu-unity-stack/commit/9d10537e92e40ef5d077b22aaee2a4c7c0c68d13))
+
 # [@asu/components-core-v3.2.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.1.4...@asu/components-core-v3.2.0) (2023-11-20)
 
 
