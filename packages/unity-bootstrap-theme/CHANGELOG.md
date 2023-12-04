@@ -1,3 +1,14 @@
+# [@asu/unity-bootstrap-theme-v1.9.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.0...@asu/unity-bootstrap-theme-v1.9.1) (2023-12-04)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fixed horizontal image fitting in card ([8425f6b](https://github.com/ASU/asu-unity-stack/commit/8425f6ba5d732c585d98cd07b9378db80fc20682))
+* **unity-bootstrap-theme:** fixed padding and margin in card Image captions/titles ([d9fd0bc](https://github.com/ASU/asu-unity-stack/commit/d9fd0bce0a2d29b11255b00b7a2a4bdc49a429e3))
+* **unity-bootstrap-theme:** removed border completely  on borderless images ([90b846e](https://github.com/ASU/asu-unity-stack/commit/90b846efd64eb791f0f8844a001e38bdb0a54d42))
+* **unity-bootstrap-theme:** updated cards and images styles ([0d9fe2d](https://github.com/ASU/asu-unity-stack/commit/0d9fe2d31c7f51fd1f0f645f30c0636f9efe941b))
+* **unity-bootstrap-theme:** updated ranking cards lg image styles ([96e398c](https://github.com/ASU/asu-unity-stack/commit/96e398cac8ea8ba92914406c46b3496ac0cd045e))
+
 # [@asu/unity-bootstrap-theme-v1.9.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.8.0...@asu/unity-bootstrap-theme-v1.9.0) (2023-11-22)
 
 
