@@ -1,3 +1,10 @@
+# [@asu/components-core-v3.3.1](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.0...@asu/components-core-v3.3.1) (2023-12-04)
+
+
+### Bug Fixes
+
+* **components-core:** allow sanitized html in image citation ([269fa92](https://github.com/ASU/asu-unity-stack/commit/269fa92f449372666e0d307b00a65f95117cdfa6))
+
 # [@asu/components-core-v3.3.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.2.0...@asu/components-core-v3.3.0) (2023-12-04)
 
 
