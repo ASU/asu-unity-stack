@@ -77,7 +77,7 @@ const TabbedPanels = ({
         headerTabs.current.removeEventListener("scroll", onScroll);
       }
     };
-}, [scrollableWidth]);
+  }, [scrollableWidth]);
 
   useEffect(() => {
     const onResize = () => {
@@ -91,7 +91,7 @@ const TabbedPanels = ({
       if (headerTabs.current) {
         window.removeEventListener("resize", onResize);
       }
-    }
+    };
   }, []);
 
   useEffect(() => {

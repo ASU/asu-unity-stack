@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -25,35 +26,65 @@ export const Image = ({
   height,
   cardLink,
   title,
+  caption,
+  captionTitle,
+  border,
+  dropShadow,
 }) => {
-  const imagePropsRequired = {
+  const imageProps = {
     src,
     alt,
     loading,
     decoding,
-    fetchpriority: fetchPriority, // due to a bug in react, we need to use this attribute in lowercase instead of fetchPriority
-  };
-
-  const imagePropsOptional = {
+    fetchpriority: fetchPriority, // React attribute bug workaround
     ...(cssClasses?.length > 0 && { className: spreadClasses(cssClasses) }),
     ...(dataTestId && { "data-testid": dataTestId }),
     ...(width && { width }),
     ...(height && { height }),
   };
 
-  const imageProps = Object.assign(imagePropsRequired, imagePropsOptional);
+  const borderAndDropShadowClasses = classNames("uds-img", {
+    "borderless": !border,
+    "uds-img-drop-shadow": dropShadow,
+  });
 
-  if (cardLink) {
-    return (
+  const renderImage = (classes) => {
+    let combinedClasses = classes ? `${imageProps.className} ${classes}` : imageProps.className;
+  return (
+    cardLink ? (
       <a href={cardLink}>
         {/* eslint-disable-next-line jsx-a11y/alt-text, react/jsx-props-no-spreading */}
-        <img {...imageProps} />
+        <img {...imageProps} className={combinedClasses} />
         <span className="visually-hidden">{title}</span>
       </a>
-    );
-  }
-  // eslint-disable-next-line jsx-a11y/alt-text, react/jsx-props-no-spreading
-  return <img {...imageProps} />;
+    ) : (
+      // eslint-disable-next-line jsx-a11y/alt-text, react/jsx-props-no-spreading
+      <img {...imageProps} className={combinedClasses} />
+    ))};
+
+  const renderFigure = () => (
+    <div className={borderAndDropShadowClasses}>
+      <figure className="figure uds-figure">
+        {renderImage()}
+        {caption && (
+          <figcaption className="figure-caption uds-figure-caption">
+            {captionTitle && <h3>{captionTitle}</h3>}
+            <span className="uds-caption-text">{caption}</span>
+          </figcaption>
+        )}
+      </figure>
+    </div>
+  );
+
+  return (
+    <>
+      {caption ? (
+        renderFigure()
+      ) : (
+        renderImage(borderAndDropShadowClasses)
+      )}
+    </>
+  );
 };
 
 Image.propTypes = {
@@ -92,4 +123,8 @@ Image.propTypes = {
   dataTestId: PropTypes.string,
   cardLink: PropTypes.string,
   title: PropTypes.string,
+  caption: PropTypes.string,
+  captionTitle: PropTypes.string,
+  border: PropTypes.bool,
+  dropShadow: PropTypes.bool,
 };
