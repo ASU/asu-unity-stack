@@ -47,6 +47,7 @@ RfiDefault.args = {
   stateProvince: undefined, // Only US states or CA provinces - use full name.
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   test: false,
+  dataSourcePotLuck: undefined, // https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plans
   dataSourceDegreeSearch: undefined, // "https://degrees.apps.asu.edu/t5/service",
   dataSourceAsuOnline: undefined, // "https://cms.asuonline.asu.edu/lead-submissions-v3.5/programs",
   dataSourceCountriesStates: undefined, // "https://api.myasuplat-dpl.asu.edu/api/codeset/countries",
@@ -68,6 +69,7 @@ RfiOnCollegePage.args = {
   stateProvince: undefined, // Only US states or CA provinces
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   test: false,
+  dataSourcePotLuck: undefined, // https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plans
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
   dataSourceCountriesStates: undefined,
@@ -89,6 +91,7 @@ RfiOnCollegePageWithAreaOfInterest.args = {
   stateProvince: undefined, // Only US states or CA provinces
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   test: false,
+  dataSourcePotLuck: undefined, // https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plans
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
   dataSourceCountriesStates: undefined,
@@ -113,6 +116,7 @@ RfiOnDegreePageUndergraduate.args = {
   stateProvince: undefined, // Only US states or CA provinces
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   test: false,
+  dataSourcePotLuck: undefined, // https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plans
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
   dataSourceCountriesStates: undefined,
@@ -134,6 +138,7 @@ RfiOnDegreePageGraduate.args = {
   stateProvince: undefined, // Only US states or CA provinces
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   test: false,
+  dataSourcePotLuck: undefined, // https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plans
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
   dataSourceCountriesStates: undefined,
@@ -155,6 +160,7 @@ RfiOnCollegeDepartmentPage.args = {
   stateProvince: undefined, // Only US states or CA provinces
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   test: false,
+  dataSourcePotLuck: undefined, // https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plans
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
   dataSourceCountriesStates: undefined,
@@ -176,6 +182,7 @@ RfiOnNonAcademicUnitPage.args = {
   stateProvince: undefined, // Only US states or CA provinces
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   test: false,
+  dataSourcePotLuck: undefined, // https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plans
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
   dataSourceCountriesStates: undefined,
@@ -197,6 +204,7 @@ RfiOnCertOrMinorPage.args = {
   stateProvince: undefined, // Only US states or CA provinces
   successMsg: `<div>A custom <strong>SuccessMsg</strong> suplied by you displays here.</div>`,
   test: false,
+  dataSourcePotLuck: undefined, // https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plans
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
   dataSourceCountriesStates: undefined,
@@ -218,6 +226,7 @@ RfiOnCampaignLandingPage.args = {
   stateProvince: "New Mexico", // Only US states or CA provinces
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   test: false,
+  dataSourcePotLuck: undefined, // https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plans
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
   dataSourceCountriesStates: undefined,
@@ -239,6 +248,7 @@ RfiTestMode.args = {
   stateProvince: "California", // Only US states or CA provinces
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   test: true,
+  dataSourcePotLuck: undefined, // https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plans
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
   dataSourceCountriesStates: undefined,
@@ -260,6 +270,7 @@ RfiDevTester.args = {
   stateProvince: undefined, // Only US states or CA provinces
   successMsg: "Success. <strong>You made it.</strong>",
   test: false,
+  dataSourcePotLuck: "https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plans",
   dataSourceDegreeSearch: "https://degrees.apps.asu.edu/t5/service",
   dataSourceAsuOnline:
     "https://cms.asuonline.asu.edu/lead-submissions-v3.5/programs",
