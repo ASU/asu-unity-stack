@@ -14,6 +14,7 @@ const FoldableCardElement = (
           <a
             id={`${linkID}`}
             data-bs-toggle="collapse"
+            className="collapsed"
             href={bodyID ? `#${bodyID}` : ""}
             role="button"
             aria-expanded="false"
