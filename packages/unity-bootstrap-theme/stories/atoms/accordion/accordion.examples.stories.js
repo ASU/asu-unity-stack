@@ -10,6 +10,7 @@ export const FoldableCardDefaultOpen = createStory(
         <a
           id="example-header-3"
           data-bs-toggle="collapse"
+          className="collapse"
           href="#example-content-3"
           role="button"
           aria-expanded="true"
@@ -28,8 +29,11 @@ export const FoldableCardDefaultOpen = createStory(
     </div>
     <div
       id="example-content-3"
-      className="collapse show accordion-body"
+      className="collapse show"
       aria-labelledby="example-header-3"
+      >
+    <div
+      className="accordion-body"
     >
       <h4>This is a quaternary headline</h4>
       <p>
@@ -47,6 +51,7 @@ export const FoldableCardDefaultOpen = createStory(
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor
       </p>
+    </div>
     </div>
   </div>
   </div>
@@ -67,7 +72,6 @@ export const ColorAccents = createStory(
             className="collapsed"
             href="#cardBodyOne"
             data-bs-toggle="collapse"
-            data-bs-target="#cardBodyOne"
             role="button"
             aria-expanded="false"
             aria-controls="cardBodyOne"
@@ -86,9 +90,12 @@ export const ColorAccents = createStory(
       {/* end .accordion-header */}
       <div
         id="cardBodyOne"
-        className="collapse accordion-body"
-        aria-labelledby="cardOne"
-        data-bs-parent="#accordionExample"
+        className="collapse"
+      aria-labelledby="cardOne"
+      data-bs-parent="#accordionExample"
+      >
+      <div
+        className="accordion-body"
       >
         <h4>Quatrenary Headline</h4>
         <p>
@@ -104,6 +111,7 @@ export const ColorAccents = createStory(
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud
         </p>
+      </div>
       </div>
       {/* end .accordion-body */}
     </div>
@@ -134,9 +142,12 @@ export const ColorAccents = createStory(
       </div>
       <div
         id="cardBodyTwo"
-        className="collapse accordion-body"
+        className="collapse"
         aria-labelledby="cardTwo"
         data-bs-parent="#accordionExample"
+      >
+      <div
+        className="accordion-body"
       >
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -155,6 +166,7 @@ export const ColorAccents = createStory(
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor
         </p>
+      </div>
       </div>
       {/* end .accordion-body */}
     </div>
@@ -185,9 +197,12 @@ export const ColorAccents = createStory(
       </div>
       <div
         id="cardBodyThree"
-        className="collapse accordion-body"
+        className="collapse"
         aria-labelledby="cardThree"
         data-bs-parent="#accordionExample"
+      >
+      <div
+        className="accordion-body"
       >
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -202,6 +217,7 @@ export const ColorAccents = createStory(
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud
         </p>
+      </div>
       </div>
       {/* end .accordion-body */}
     </div>
@@ -234,9 +250,12 @@ export const ColorAccents = createStory(
       {/* end .accordion-header */}
       <div
         id="cardBodyFour"
-        className="collapse accordion-body"
+        className="collapse"
         aria-labelledby="cardFour"
         data-bs-parent="#accordionExample"
+      >
+      <div
+        className="accordion-body"
       >
         <h4>Quatrenary Headline</h4>
         <p>
@@ -252,6 +271,7 @@ export const ColorAccents = createStory(
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud
         </p>
+      </div>
       </div>
       {/* end .accordion-body */}
     </div>
@@ -270,7 +290,6 @@ export const IncludedIcons = createStory(
             className="collapsed"
             href="#cardBodyOne"
             data-bs-toggle="collapse"
-            data-bs-target="#cardBodyOne"
             role="button"
             aria-expanded="false"
             aria-controls="cardBodyOne"
@@ -292,10 +311,11 @@ export const IncludedIcons = createStory(
       {/* end .accordion-header */}
       <div
         id="cardBodyOne"
-        className="collapse accordion-body"
+        className="collapse"
         aria-labelledby="cardOne"
         data-bs-parent="#accordionExample"
       >
+      <div className="accordion-body">
         <h4>Quatrenary Headline</h4>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -310,6 +330,7 @@ export const IncludedIcons = createStory(
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
           minim veniam, quis nostrud
         </p>
+      </div>
       </div>
       {/* end .accordion-body */}
     </div>
@@ -342,11 +363,12 @@ export const IncludedIcons = createStory(
         </h4>
       </div>
       <div
-        id="cardBodyTwo"
-        className="collapse accordion-body"
-        aria-labelledby="cardTwo"
-        data-bs-parent="#accordionExample"
+      id="cardBodyTwo"
+      className="collapse"
+      aria-labelledby="cardTwo"
+      data-bs-parent="#accordionExample"
       >
+        <div className="accordion-body">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -364,6 +386,7 @@ export const IncludedIcons = createStory(
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor
         </p>
+      </div>
       </div>
       {/* end .accordion-body */}
     </div>
@@ -385,6 +408,7 @@ export const DisableFold = createStory(
                 id="example-header-2"
                 data-bs-toggle="collapse"
                 href="#example-content-2"
+                className="collapsed"
                 role="button"
                 aria-expanded="false"
                 aria-controls="example-content-2"
@@ -402,9 +426,10 @@ export const DisableFold = createStory(
           </div>
           <div
             id="example-content-2"
-            className="collapse accordion-body"
+            className="collapse"
             aria-labelledby="example-header-2"
           >
+          <div className="accordion-body">
             <p>
               This uses the <code>.desktop-disable-lg</code> class.
             </p>
@@ -415,6 +440,7 @@ export const DisableFold = createStory(
               Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
               sem.
             </p>
+          </div>
           </div>
           </div>
         </div>
@@ -432,6 +458,7 @@ export const DisableFold = createStory(
               <a
                 id="example-header-3"
                 data-bs-toggle="collapse"
+                className="collapsed"
                 href="#example-content-3"
                 role="button"
                 aria-expanded="false"
@@ -450,9 +477,10 @@ export const DisableFold = createStory(
           </div>
           <div
             id="example-content-3"
-            className="collapse accordion-body"
+            className="collapse"
             aria-labelledby="example-header-3"
           >
+          <div className="accordion-body">
             <p>
               This uses the <code>.desktop-disable-xl</code> class.
             </p>
@@ -463,6 +491,7 @@ export const DisableFold = createStory(
               Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
               sem.
             </p>
+          </div>
           </div>
           </div>
         </div>

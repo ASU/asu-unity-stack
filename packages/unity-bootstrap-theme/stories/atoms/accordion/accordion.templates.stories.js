@@ -13,9 +13,7 @@ const FoldableCardElement = (
         <h3>
           <a
             id={`${linkID}`}
-            className="collapsed"
             data-bs-toggle="collapse"
-            data-bs-target={bodyID ? `#${bodyID}` : ""}
             href={bodyID ? `#${bodyID}` : ""}
             role="button"
             aria-expanded="false"
@@ -33,10 +31,13 @@ const FoldableCardElement = (
         </h3>
       </div>
       <div
-        id={`${bodyID}`}
-        className="collapse accordion-body"
-        aria-labelledby={`${linkID}`}
-        data-bs-parent={accordionID ? `#${accordionID}` : ""}
+      id={`${bodyID}`}
+      className="collapse"
+      aria-labelledby={`${linkID}`}
+      data-bs-parent={accordionID ? `#${accordionID}` : ""}
+      >
+        <div
+        className="accordion-body"
       >
         <h4>This is a quaternary headline</h4>
         <p>
@@ -55,6 +56,8 @@ const FoldableCardElement = (
           tempor
         </p>
       </div>
+        </div>
+
     </div>
   </div>
 );
