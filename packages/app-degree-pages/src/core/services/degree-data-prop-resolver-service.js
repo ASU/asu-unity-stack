@@ -95,6 +95,7 @@ function degreeDataPropResolverService(row = {}) {
     getOnlineMajorMapURL: () => {
       const onlineMajorMaps = row["majorMapOnline"];
       // TODO: Might change based on what Cyndi and her team decide what to show for degrees without a major map
+      // UPDATE: The major map column should not b visible if we are showing graduate degrees and/or certificate/minors.
       const mostRecentOnlineMajorMap = onlineMajorMaps?.find(
         obj => obj.defaultFlag === true
       );
@@ -176,7 +177,7 @@ function degreeDataPropResolverService(row = {}) {
       const { owners } = row;
       if (!owners) return [];
 
-      const allCollegeAcadOrgs = owners.map(owner => owner.collegeAcadOrg); // TODO: Do we need to include all the owners collegeAcadOrgs when filtering or just the majority owner?
+      const allCollegeAcadOrgs = owners.map(owner => owner.collegeAcadOrg); // TODO: Do we need to include all the owners collegeAcadOrgs when filtering or just the majority owner? UPDATE: Include all > 0 owners in the filter
       return allCollegeAcadOrgs;
     },
     /** @return {string} */
