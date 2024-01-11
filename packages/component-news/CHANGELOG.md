@@ -1,3 +1,16 @@
+# [@asu/component-news-v2.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-news-v2.0.3...@asu/component-news-v2.1.0) (2024-01-11)
+
+
+### Bug Fixes
+
+* **component-news:** modified global gtm function props ([3288562](https://github.com/asu/asu-unity-stack/commit/3288562e3a1c17e4bf872fdcd685430f87c04a05))
+* renamed shared folder to match sahred/services ([860c6f4](https://github.com/asu/asu-unity-stack/commit/860c6f44d42119956cbaa36d8c9d8798613c76fa))
+
+
+### Features
+
+* **component-news:** added gtm global variable tracking ([d899379](https://github.com/asu/asu-unity-stack/commit/d899379b1c38db4708ca372eec126eec7618626d))
+
 # [@asu/component-news-v2.0.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-news-v2.0.2...@asu/component-news-v2.0.3) (2023-07-24)
 
 
