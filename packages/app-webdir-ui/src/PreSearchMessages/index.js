@@ -1,4 +1,5 @@
 import React from "react";
+
 import { PreSearchDynamicMsg } from "./PreSearchMessage";
 
 const searchMessageComponentMap = {
@@ -12,7 +13,7 @@ const searchMessageComponentMap = {
   "web_dir_students": (
     <PreSearchDynamicMsg
       titleText="Welcome to the ASU Student Directory"
-      descText="Students must opt-in to make their profile publicly available. The remainder of student profiles that do not have directory holds on them are available to ASU affiliates with an ASURITE ID and can be viewed by "
+      descText="Students must opt-in to make their profile publicly available. ASU affiliates with an ASURITE ID can view the remaining student profiles that do not have directory holds on them by "
       contactText="Contact us via live chat, phone or email 24 hours a day, seven days a week."
       signInLink="https://search.asu.edu/caslogin?returnto=/"
     />
@@ -30,7 +31,7 @@ const searchMessageComponentMap = {
       descText="Find the information you're looking for from anywhere on asu.edu."
       contactText="Contact us via live chat, phone or email 24 hours a day, seven days a week."
     />
-  )
+  ),
 };
 
 export { searchMessageComponentMap };
