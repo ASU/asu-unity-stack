@@ -1,7 +1,8 @@
 // @ts-check
 import { shape } from "prop-types";
-import React from "react";
+import React, { useEffect } from "react";
 
+import trackReactComponent from "../../../shared/services/componentDatalayer";
 import { Social, Legal, Innovation, Contact } from "./components";
 
 const Base = () => {
@@ -18,6 +19,20 @@ const Base = () => {
  * @returns {JSX.Element}
  */
 const ASUFooter = ({ social, contact }) => {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      trackReactComponent({
+        packageName: "component-footer",
+        component: "Component Footer",
+        type: "NA",
+        configuration: {
+          social,
+          contact,
+        },
+      });
+    }
+  }, []);
+
   return (
     <footer role="contentinfo">
       {social && <Social social={social} />}

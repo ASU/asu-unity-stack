@@ -36,10 +36,7 @@ Tab.propTypes = {
   id: PropTypes.string.isRequired,
   bgColor: PropTypes.string,
   selected: PropTypes.bool,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.element),
-    PropTypes.element,
-  ]),
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]),
 };
 
 const TabbedPanels = ({

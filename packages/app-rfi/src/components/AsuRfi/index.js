@@ -1,17 +1,18 @@
 // @ts-check
 /* eslint react/jsx-props-no-spreading: "off" */
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useEffect } from "react";
 
 // Requires peer dependency of @asu/unity-bootstrap-theme
 // We import the styles in .storybook/preview-head.html for Storybook
 // rendering, but otherwise, we only worry about using the correct markup and
 // tweaking a few styles
 
+import trackReactComponent from "../../../../../shared/services/componentDatalayer";
+import { DATA_SOURCE } from "../../core/utils/constants";
 import { RfiContext } from "../../core/utils/rfiContext";
 import { RfiMainForm } from "../stepper/RfiMainForm";
 import "./index.css";
-import { DATA_SOURCE } from "../../core/utils/constants";
 
 /**
  * @typedef {import("../../core/types/rfi-types").RFIProps} RFIProps
@@ -21,26 +22,41 @@ import { DATA_SOURCE } from "../../core/utils/constants";
  * @param {RFIProps} props
  * @return {JSX.Element}
  */
-const AsuRfi = ({
-  appPathFolder,
-  campus,
-  actualCampus,
-  college,
-  department,
-  studentType,
-  areaOfInterest,
-  programOfInterest,
-  programOfInterestOptional,
-  isCertMinor,
-  country,
-  stateProvince,
-  successMsg,
-  test,
-  dataSourceDegreeSearch,
-  dataSourceAsuOnline,
-  dataSourceCountriesStates,
-  submissionUrl,
-}) => {
+const AsuRfi = props => {
+  const {
+    appPathFolder,
+    campus,
+    actualCampus,
+    college,
+    department,
+    studentType,
+    areaOfInterest,
+    programOfInterest,
+    programOfInterestOptional,
+    isCertMinor,
+    country,
+    stateProvince,
+    successMsg,
+    test,
+    dataSourceDegreeSearch,
+    dataSourceAsuOnline,
+    dataSourceCountriesStates,
+    submissionUrl,
+  } = props;
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      trackReactComponent({
+        packageName: "app-rfi",
+        component: "AsuRfi",
+        type: "NA",
+        configuration: {
+          ...props,
+        },
+      });
+    }
+  }, []);
+
   if (typeof submissionUrl === "undefined") {
     return <></>;
   }

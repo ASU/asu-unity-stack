@@ -1,3 +1,16 @@
+# [@asu/component-footer-v2.2.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.1.3...@asu/component-footer-v2.2.0) (2024-01-11)
+
+
+### Bug Fixes
+
+* **component-footer:** modified global gtm function props ([691dd51](https://github.com/asu/asu-unity-stack/commit/691dd5194311c58ed6cc6ca5daf723fc27054eb4))
+* renamed shared folder to match sahred/services ([860c6f4](https://github.com/asu/asu-unity-stack/commit/860c6f44d42119956cbaa36d8c9d8798613c76fa))
+
+
+### Features
+
+* **component-footer:** added gtm global variable tracking ([be023d4](https://github.com/asu/asu-unity-stack/commit/be023d4c51e16a614f5a5965bb21dc1bc3f0efb0))
+
 # [@asu/component-footer-v2.1.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.1.2...@asu/component-footer-v2.1.3) (2023-11-17)
 
 

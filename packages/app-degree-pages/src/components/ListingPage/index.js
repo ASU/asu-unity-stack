@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState, useContext } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
+import trackReactComponent from "../../../../../shared/services/componentDatalayer";
 import { useFetch } from "../../../../../shared";
 import {
   Loader,
@@ -126,6 +127,20 @@ const ListingPage = ({
     programs: data?.programs,
     stateFilters,
   });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      trackReactComponent({
+        packageName: "app-degree-pages",
+        component: "ListingPage",
+        type: "NA",
+        configuration: {
+          programList,
+          degreesPerPage,
+        },
+      });
+    }
+  }, []);
 
   useEffect(() => {
     doFetchPrograms(url);

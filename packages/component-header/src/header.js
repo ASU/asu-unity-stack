@@ -1,6 +1,7 @@
 // @ts-check
 import React, { useEffect, useRef } from "react";
 
+import trackReactComponent from "../../../shared/services/componentDatalayer";
 import { HeaderMain } from "./components/HeaderMain";
 import { AppContextProvider } from "./core/context/app-context";
 import { HeaderPropTypes } from "./core/models/app-prop-types";
@@ -50,6 +51,25 @@ const ASUHeader = ({
       headerRef.current.classList.remove("scrolled");
     }
   };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      trackReactComponent({
+        packageName: "component-header",
+        component: "Component Header",
+        type: "NA",
+        configuration: {
+          site,
+          isPartner,
+          searchUrl,
+          navTree,
+          parentOrg,
+          buttons,
+          mobileNavTree,
+        },
+      });
+    }
+  }, []);
 
   useEffect(() => {
     window?.addEventListener("scroll", handleWindowScroll);

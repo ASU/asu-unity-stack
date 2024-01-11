@@ -1,6 +1,6 @@
 {
   "name": "@asu/component-news",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "description": "ASU News component",
   "main": "./dist/asuNews.cjs.js",
   "browser": "./dist/asuNews.umd.js",

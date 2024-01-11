@@ -1,3 +1,10 @@
+# [@asu/components-core-v3.3.2](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.1...@asu/components-core-v3.3.2) (2024-01-11)
+
+
+### Bug Fixes
+
+* slight changes ([f07b430](https://github.com/ASU/asu-unity-stack/commit/f07b4306a01bda66e2a53d54b9aa35d821ee0c1f))
+
 # [@asu/components-core-v3.3.1](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.0...@asu/components-core-v3.3.1) (2023-12-04)
 
 

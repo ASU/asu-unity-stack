@@ -14,7 +14,7 @@ const PreSearchMessageTemplate = styled.div`
       margin-bottom: 32px;
     }
   }
-  .assisstance-area {
+  .assistance-area {
     margin-top: 16px;
     .intro-highlight {
       font-weight: bold;
