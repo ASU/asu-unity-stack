@@ -1,7 +1,9 @@
 // @ts-check
 /* eslint react/jsx-props-no-spreading: "off" */
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useEffect } from "react";
+
+import trackReactComponent from "../../../../../shared/services/componentDatalayer";
 
 // Requires peer dependency of @asu/unity-bootstrap-theme
 // We import the styles in .storybook/preview-head.html for Storybook
@@ -19,49 +21,66 @@ import "./index.css";
  * @param {RFIProps} props
  * @return {JSX.Element}
  */
-const AsuRfi = ({
-  appPathFolder,
-  campus,
-  actualCampus,
-  college,
-  department,
-  studentType,
-  areaOfInterest,
-  programOfInterest,
-  programOfInterestOptional,
-  isCertMinor,
-  country,
-  stateProvince,
-  successMsg,
-  test,
-  dataSourceDegreeSearch,
-  dataSourceAsuOnline,
-  dataSourceCountriesStates,
-  submissionUrl,
-}) => (
-  <div>
-    <RfiMainForm
-      appPathFolder={appPathFolder}
-      campus={campus}
-      actualCampus={actualCampus}
-      college={college}
-      department={department}
-      studentType={studentType}
-      areaOfInterest={areaOfInterest}
-      programOfInterest={programOfInterest}
-      programOfInterestOptional={programOfInterestOptional}
-      isCertMinor={isCertMinor}
-      country={country}
-      stateProvince={stateProvince}
-      successMsg={successMsg}
-      test={test}
-      dataSourceDegreeSearch={dataSourceDegreeSearch}
-      dataSourceAsuOnline={dataSourceAsuOnline}
-      dataSourceCountriesStates={dataSourceCountriesStates}
-      submissionUrl={submissionUrl}
-    />
-  </div>
-);
+const AsuRfi = props => {
+  const {
+    appPathFolder,
+    campus,
+    actualCampus,
+    college,
+    department,
+    studentType,
+    areaOfInterest,
+    programOfInterest,
+    programOfInterestOptional,
+    isCertMinor,
+    country,
+    stateProvince,
+    successMsg,
+    test,
+    dataSourceDegreeSearch,
+    dataSourceAsuOnline,
+    dataSourceCountriesStates,
+    submissionUrl,
+  } = props;
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      trackReactComponent({
+        packageName: "app-rfi",
+        component: "AsuRfi",
+        type: "NA",
+        configuration: {
+          ...props
+        },
+      });
+    }
+  }, []);
+
+  return (
+    <div>
+      <RfiMainForm
+        appPathFolder={appPathFolder}
+        campus={campus}
+        actualCampus={actualCampus}
+        college={college}
+        department={department}
+        studentType={studentType}
+        areaOfInterest={areaOfInterest}
+        programOfInterest={programOfInterest}
+        programOfInterestOptional={programOfInterestOptional}
+        isCertMinor={isCertMinor}
+        country={country}
+        stateProvince={stateProvince}
+        successMsg={successMsg}
+        test={test}
+        dataSourceDegreeSearch={dataSourceDegreeSearch}
+        dataSourceAsuOnline={dataSourceAsuOnline}
+        dataSourceCountriesStates={dataSourceCountriesStates}
+        submissionUrl={submissionUrl}
+      />
+    </div>
+  );
+};
 
 export { AsuRfi };
 

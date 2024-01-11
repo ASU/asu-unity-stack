@@ -1,7 +1,8 @@
 // @ts-check
 import { FeedContext } from "@asu/components-core";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
+import trackReactComponent from "../../../../../shared/services/componentDatalayer";
 import { CardCarousel } from "../../../../component-carousel/src/components/CardCarousel";
 import { BaseFeed } from "../../core/components/BaseFeed";
 import { defaultProps } from "../../core/constants/default-props";
@@ -59,14 +60,30 @@ const CarouselTemplate = ({ cardButton }) => {
 /**
  * @param {FeedType} props
  */
-const CardCarouselNews = ({ cardButton, ...props }) => (
-  // Calling the high order component that fetches the data
-  <BaseFeed {...props}>
-    <CarouselTemplate
-      cardButton={{ ...defaultProps.cardButton, ...cardButton }}
-    />
-  </BaseFeed>
-);
+const CardCarouselNews = ({ cardButton, ...props }) => {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      trackReactComponent({
+        packageName: "component-news",
+        component: "CardCarouselNews",
+        type: "NA",
+        configuration: {
+          cardButton,
+          props,
+        },
+      });
+    }
+  }, []);
+
+  return (
+    // Calling the high order component that fetches the data
+    <BaseFeed {...props}>
+      <CarouselTemplate
+        cardButton={{ ...defaultProps.cardButton, ...cardButton }}
+      />
+    </BaseFeed>
+  );
+};
 
 CardCarouselNews.propTypes = BaseFeed.propTypes;
 
