@@ -1,3 +1,23 @@
+# [@asu/app-webdir-ui-v3.4.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.3.5...@asu/app-webdir-ui-v3.4.0) (2024-01-11)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** added prop types for PreSearchMessage ([5c642a1](https://github.com/asu/asu-unity-stack/commit/5c642a14ded9bbba32c1a47b85eed601c066c1e4))
+* **app-webdir-ui:** removed react tracking from search page ([50a2dcd](https://github.com/asu/asu-unity-stack/commit/50a2dcd52177ead2b046294e7ba3371dec3a6ef7))
+* **app-webdir-ui:** rework homepage default tab content ([80dbe2e](https://github.com/asu/asu-unity-stack/commit/80dbe2ee31d730ae4baf78baafd97fce13af2da1))
+* **app-webdir-ui:** tweaking wording ([f0839fb](https://github.com/asu/asu-unity-stack/commit/f0839fbf72dd2b644105e6b3d9dcb32ba1c4b78d))
+* **app-webdir-ui:** updated import typo for app-webdir index ([8310158](https://github.com/asu/asu-unity-stack/commit/8310158e95bfe602f5d3c5184a9f914eb96994bf))
+* **app-webdir-ui:** updated search messages on search page ([151c299](https://github.com/asu/asu-unity-stack/commit/151c2993811b3ddc7d128341182432d6bc036ebc))
+* renamed shared folder to match sahred/services ([860c6f4](https://github.com/asu/asu-unity-stack/commit/860c6f44d42119956cbaa36d8c9d8798613c76fa))
+* slight changes ([f07b430](https://github.com/asu/asu-unity-stack/commit/f07b4306a01bda66e2a53d54b9aa35d821ee0c1f))
+
+
+### Features
+
+* **app-rfi:** added gtm global variable tracking ([6bdd286](https://github.com/asu/asu-unity-stack/commit/6bdd28669a99591f46e6195a80213182a5dbe142))
+* **app-webdir-ui:** added tracking for GTM ([36044b5](https://github.com/asu/asu-unity-stack/commit/36044b5f92e420462423bbb45a2e18ccb8dd6f17))
+
 # [@asu/app-webdir-ui-v3.3.5](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.3.4...@asu/app-webdir-ui-v3.3.5) (2023-11-28)
 
 
