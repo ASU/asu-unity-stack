@@ -1,3 +1,16 @@
+# [@asu/app-rfi-v2.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.0.3...@asu/app-rfi-v2.1.0) (2024-01-11)
+
+
+### Bug Fixes
+
+* **app-rfi:** modified global gtm props ([32cf8e1](https://github.com/asu/asu-unity-stack/commit/32cf8e180117d539bf38c4598be0adf2d53348ca))
+* renamed shared folder to match sahred/services ([860c6f4](https://github.com/asu/asu-unity-stack/commit/860c6f44d42119956cbaa36d8c9d8798613c76fa))
+
+
+### Features
+
+* **app-rfi:** added gtm global variable tracking ([6bdd286](https://github.com/asu/asu-unity-stack/commit/6bdd28669a99591f46e6195a80213182a5dbe142))
+
 # [@asu/app-rfi-v2.0.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.0.2...@asu/app-rfi-v2.0.3) (2023-07-24)
 
 
