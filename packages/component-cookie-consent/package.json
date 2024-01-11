@@ -1,6 +1,6 @@
 {
   "name": "@asu/component-cookie-consent",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "ASU Cookie Consent",
   "main": "./dist/asuCookieConsent.cjs.js",
   "browser": "./dist/asuCookieConsent.umd.js",
