@@ -1,3 +1,16 @@
+# [@asu/component-header-v2.2.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.1.0...@asu/component-header-v2.2.0) (2024-01-11)
+
+
+### Bug Fixes
+
+* **component-header:** modified global gtm function props ([1ecc70a](https://github.com/asu/asu-unity-stack/commit/1ecc70ada5a80586ce658dab44b41cd7b6ad5778))
+* renamed shared folder to match sahred/services ([860c6f4](https://github.com/asu/asu-unity-stack/commit/860c6f44d42119956cbaa36d8c9d8798613c76fa))
+
+
+### Features
+
+* **component-header:** added gtm global variable tracking ([af81988](https://github.com/asu/asu-unity-stack/commit/af8198840da386a9268ecdcb8c1a891284c2175e))
+
 # [@asu/component-header-v2.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.8...@asu/component-header-v2.1.0) (2023-11-28)
 
 
