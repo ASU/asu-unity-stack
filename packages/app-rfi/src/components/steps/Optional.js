@@ -1,10 +1,10 @@
 // @ts-check
 import { useFormikContext } from "formik";
-import PropTypes from "prop-types";
 import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 
 import { trackGAEvent } from "../../../../../shared";
+import { useRfiContext } from "../../core/utils/rfiContext";
 import {
   RfiTextInput,
   RfiDateInput,
@@ -127,7 +127,8 @@ const veteranStatusOptions = [
 
 // Component
 
-const Optional = ({ dataSourceCountriesStates }) => {
+const Optional = () => {
+  const { dataSourceCountriesStates } = useRfiContext();
   const [countryOptions, setCountries] = useState([
     {
       key: "1",
@@ -322,10 +323,6 @@ const Optional = ({ dataSourceCountriesStates }) => {
       />
     </>
   );
-};
-
-Optional.propTypes = {
-  dataSourceCountriesStates: PropTypes.string.isRequired,
 };
 
 // Step configs

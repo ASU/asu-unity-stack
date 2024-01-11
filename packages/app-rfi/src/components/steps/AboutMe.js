@@ -6,6 +6,8 @@ import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 
 import { trackGAEvent } from "../../../../../shared";
+import { fetchDegreesData } from "../../core/utils/fetchPrograms";
+import { useRfiContext } from "../../core/utils/rfiContext";
 import {
   RfiTextInput,
   RfiTextArea,
@@ -64,8 +66,17 @@ const RfiGdpr = ({ campus }) => {
   );
 };
 
+// Props
+
+RfiGdpr.propTypes = {
+  /* Formik value */
+  campus: PropTypes.string.isRequired,
+};
+
 const AboutMe = () => {
   const [termOptions, setTermOptions] = useState([]);
+  const { college, dataSourceAsuOnline, dataSourceDegreeSearch, department } =
+    useRfiContext();
 
   // Surface values from Formik context
   const { values } = useFormikContext();
@@ -80,26 +91,26 @@ const AboutMe = () => {
     ) {
       // Degree Search REST API
       if (values.Interest2) {
-        const serviceUrl = `https://degrees.apps.asu.edu/t5/service?init=false&method=findDegreeByAcadPlan&acadPlan=${values.Interest2}&fields=applyInfo&program=graduate&cert=false`;
-        // Alternate field graduateAllApplyDates has similar data, but lacks a
-        // good label and appears like it might have more dupes.
-
-        fetch(serviceUrl)
-          .then(response => response.json())
-          .then(data => {
-            // Structure of response: data.programs[0].applyInfo
-            const {
-              programs: [{ applyInfo }],
-            } = data;
+        fetchDegreesData({
+          dataSourceDegreeSearch,
+          dataSourceAsuOnline,
+          department,
+          college,
+          Campus: values.Campus,
+          CareerAndStudentType: values.CareerAndStudentType,
+          Interest2: values.Interest2,
+        })
+          .then(([response, data]) => {
+            if (response === "Error") {
+              return;
+            }
             // Convert object to array so we can .sort and .map.
-            const termData = Object.entries(applyInfo)
-              .sort((a, b) => (a[1] > b[1] ? 1 : -1))
-              .map(termValue => ({
-                key: termValue[0].split(":")[2],
-                value: `${termValue[0].split(":")[2]}:${
-                  termValue[1].split(":")[0]
-                }`,
-                text: termValue[1].split(":")[0],
+            const termData = data[0].applicationDeadlines
+              ?.sort((a, b) => (a.strm > b.strm ? 1 : -1))
+              .map(({ strm, strmDescription }) => ({
+                key: strm,
+                value: strm,
+                text: strmDescription,
               }));
             // Dedupe based on object key property as dupe terms can occur due
             // to multiple campus offerings.
@@ -315,12 +326,6 @@ const aboutMeForm = {
     EntryTerm: undefined,
     GdprConsent: undefined,
   },
-};
-
-// Props
-
-RfiGdpr.propTypes = {
-  campus: PropTypes.string.isRequired,
 };
 
 export { aboutMeForm };

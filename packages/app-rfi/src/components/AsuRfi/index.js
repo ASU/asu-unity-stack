@@ -8,8 +8,10 @@ import React from "react";
 // rendering, but otherwise, we only worry about using the correct markup and
 // tweaking a few styles
 
+import { RfiContext } from "../../core/utils/rfiContext";
 import { RfiMainForm } from "../stepper/RfiMainForm";
 import "./index.css";
+import { DATA_SOURCE } from "../../core/utils/constants";
 
 /**
  * @typedef {import("../../core/types/rfi-types").RFIProps} RFIProps
@@ -38,30 +40,40 @@ const AsuRfi = ({
   dataSourceAsuOnline,
   dataSourceCountriesStates,
   submissionUrl,
-}) => (
-  <div>
-    <RfiMainForm
-      appPathFolder={appPathFolder}
-      campus={campus}
-      actualCampus={actualCampus}
-      college={college}
-      department={department}
-      studentType={studentType}
-      areaOfInterest={areaOfInterest}
-      programOfInterest={programOfInterest}
-      programOfInterestOptional={programOfInterestOptional}
-      isCertMinor={isCertMinor}
-      country={country}
-      stateProvince={stateProvince}
-      successMsg={successMsg}
-      test={test}
-      dataSourceDegreeSearch={dataSourceDegreeSearch}
-      dataSourceAsuOnline={dataSourceAsuOnline}
-      dataSourceCountriesStates={dataSourceCountriesStates}
-      submissionUrl={submissionUrl}
-    />
-  </div>
-);
+}) => {
+  if (typeof submissionUrl === "undefined") {
+    return <></>;
+  }
+
+  return (
+    <RfiContext.Provider
+      value={{
+        appPathFolder,
+        campus,
+        actualCampus,
+        college,
+        department,
+        studentType,
+        areaOfInterest,
+        programOfInterest,
+        programOfInterestOptional,
+        isCertMinor,
+        country,
+        stateProvince,
+        successMsg,
+        test,
+        dataSourceDegreeSearch,
+        dataSourceAsuOnline,
+        dataSourceCountriesStates,
+        submissionUrl,
+      }}
+    >
+      <div>
+        <RfiMainForm />
+      </div>
+    </RfiContext.Provider>
+  );
+};
 
 export { AsuRfi };
 
@@ -80,20 +92,18 @@ AsuRfi.defaultProps = {
   stateProvince: undefined,
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   test: false,
-  dataSourceDegreeSearch: "https://degrees.apps.asu.edu/t5/service",
-  dataSourceAsuOnline:
-    "https://cms.asuonline.asu.edu/lead-submissions-v3.5/programs",
-  dataSourceCountriesStates:
-    "https://api.myasuplat-dpl.asu.edu/api/codeset/countries",
+  dataSourceDegreeSearch: DATA_SOURCE.DEGREE_SEARCH,
+  dataSourceAsuOnline: DATA_SOURCE.ASU_ONLINE,
+  dataSourceCountriesStates: DATA_SOURCE.COUNTRIES_STATES,
 };
 
 AsuRfi.propTypes = {
   appPathFolder: PropTypes.string,
-  campus: PropTypes.string,
+  campus: PropTypes.oneOf(["GROUND", "ONLNE", "NOPREF"]),
   actualCampus: PropTypes.string,
   college: PropTypes.string,
   department: PropTypes.string,
-  studentType: PropTypes.string,
+  studentType: PropTypes.oneOf(["graduate", "undergrad"]),
   areaOfInterest: PropTypes.string,
   programOfInterest: PropTypes.string,
   programOfInterestOptional: PropTypes.bool,
