@@ -15,7 +15,8 @@ function initializeAnchorMenu () {
   let isNavbarAttached = false;  // Flag to track if navbar is attached to header
   const body = document.body;
 
-  // These values are for the drupal admin toolbars. They are not present in the storybook.
+  // These values are for optionally present Drupal admin toolbars. They
+  // are not present in Storybook and not required in implementations.
   let toolbarBar = document.getElementById('toolbar-bar');
   let toolbarItemAdministrationTray = document.getElementById('toolbar-item-administration-tray');
 
@@ -32,7 +33,7 @@ function initializeAnchorMenu () {
   }
 
   /*
-    bootstrap needs to be loaded as a variable in order for this to work.
+    Bootstrap needs to be loaded as a variable in order for this to work.
     An alternative is to remove this and add the data-bs-spy="scroll" data-bs-target="#uds-anchor-menu nav" attributes to the body tag
     See https://getbootstrap.com/docs/5.3/components/scrollspy/ for more info
   */
