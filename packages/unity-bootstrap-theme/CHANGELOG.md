@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.9.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.1...@asu/unity-bootstrap-theme-v1.9.2) (2024-01-12)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** updated anchor-menu js to match webspark logic ([05ed03d](https://github.com/ASU/asu-unity-stack/commit/05ed03de6d2189b7f259e508c8186591c4f97fe9))
+
 # [@asu/unity-bootstrap-theme-v1.9.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.0...@asu/unity-bootstrap-theme-v1.9.1) (2023-12-04)
 
 
