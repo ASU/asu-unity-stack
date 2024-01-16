@@ -29,14 +29,13 @@ Cards - Table of Contents
 1. Basic Cards
 --------------------------------------------------------------------*/
 
-.card {
+.card, .accordion {
   --card-child-padding: #{$uds-size-spacing-4};
   --card-child-margin: 0;
   .card-content-wrapper {
     --card-content-wrapper-padding: 1.5rem;
     --card-child-padding: 0;
     --card-child-margin: 0;
-    padding: var(--card-content-wrapper-padding);
   }
 
   @include media-breakpoint-down(md) {
@@ -49,6 +48,9 @@ Cards - Table of Contents
       }
     }
   }
+}
+
+.card {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -444,6 +446,7 @@ Cards - Table of Contents
 }
 
 .card-content-wrapper {
+  padding: var(--card-content-wrapper-padding);
   padding-bottom: 0 !important;
 }
 
@@ -492,7 +495,7 @@ Cards - Table of Contents
   }
 
   .accordion-header {
-    padding: $uds-size-spacing-1;
+    padding: 0;
     overflow: hidden;
     background-color: $uds-color-base-white;
 
@@ -522,7 +525,7 @@ Cards - Table of Contents
       margin: 0;
 
       a {
-        padding: $uds-size-spacing-1 $uds-size-spacing-3;
+        padding: 1rem var(--card-child-padding);
         color: $uds-color-base-gray-7;
         text-decoration: none;
         display: flex;
