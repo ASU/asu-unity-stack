@@ -67,6 +67,7 @@ const HeaderPropTypes = {
   searchUrl: PropTypes.string,
   site: PropTypes.string,
   renderDiv: PropTypes.oneOf(["true", "false"]),
+  currentPage: PropTypes.string,
 };
 
 export {
