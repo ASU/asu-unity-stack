@@ -58,7 +58,6 @@
  * @property {string} searchUrl
  * @property {string} site
  * @property {string} renderDiv - Can be either "true" or "false".
- * @property {string} currentPage
  */
 
 export const JSDOC = "jsdoc";

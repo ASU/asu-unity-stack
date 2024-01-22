@@ -11,17 +11,15 @@ const hasActivePage = navTree =>
 
 /**
  * @param {array} navTree navTree Header property
- * @param {string?} path Href to match, will default to using window.location.pathname + window.location.search
  * @returns {array}
  */
-export const tryAddActivePage = (navTree = [], path) => {
+export const tryAddActivePage = (navTree = []) => {
+  // Do not alter navTree if selected property is found
   if (hasActivePage(navTree)) {
     return navTree;
   }
   let currentPath = "";
-  if (path && typeof path !== "string") {
-    currentPath = path;
-  } else if (window?.location) {
+  if (window?.location) {
     currentPath = window.location.pathname + window.location.search;
   }
 

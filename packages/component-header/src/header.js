@@ -41,10 +41,9 @@ const ASUHeader = ({
   searchUrl,
   site,
   renderDiv = "false",
-  currentPage,
 }) => {
-  const navTree = tryAddActivePage(rawNavTree, currentPage);
-  const mobileNavTree = tryAddActivePage(rawMobileNavTree, currentPage);
+  const navTree = tryAddActivePage(rawNavTree);
+  const mobileNavTree = tryAddActivePage(rawMobileNavTree);
 
   const headerRef = useRef(null);
 
