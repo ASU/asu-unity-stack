@@ -28,7 +28,7 @@ View component examples and source code below.
 const Template = args => (
   <div className="container">
     <div className={classNames("row", "row-spaced", "pt-2", "pb-2")}>
-      <div className={classNames("col", "col-12", "col-md-6", "col-lg-4")}>
+      <div className={classNames("col", "col-12")}>
         <Card {...args} />
       </div>
     </div>
