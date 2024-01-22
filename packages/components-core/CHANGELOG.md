@@ -1,3 +1,10 @@
+# [@asu/components-core-v3.3.3](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.2...@asu/components-core-v3.3.3) (2024-01-22)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix card padding inconsistancies ([4a858f8](https://github.com/ASU/asu-unity-stack/commit/4a858f8a8a646edd0255cd1e5e5c7f0e507d0e7d))
+
 # [@asu/components-core-v3.3.2](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.1...@asu/components-core-v3.3.2) (2024-01-11)
 
 
