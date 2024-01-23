@@ -6,6 +6,7 @@ import { HeaderMain } from "./components/HeaderMain";
 import { AppContextProvider } from "./core/context/app-context";
 import { HeaderPropTypes } from "./core/models/app-prop-types";
 import { Header, HeaderDiv } from "./header.styles";
+import { tryAddActivePage } from "./core/utils/helpers/active-page";
 
 /**
  * @typedef {import("./core/models/types").HeaderProps} HeaderProps
@@ -19,7 +20,7 @@ import { Header, HeaderDiv } from "./header.styles";
 
 const ASUHeader = ({
   isPartner,
-  navTree,
+  navTree: rawNavTree,
   title,
   baseUrl,
   parentOrg,
@@ -36,11 +37,14 @@ const ASUHeader = ({
   breakpoint,
   animateTitle,
   expandOnHover,
-  mobileNavTree,
+  mobileNavTree: rawMobileNavTree,
   searchUrl,
   site,
   renderDiv = "false",
 }) => {
+  const navTree = tryAddActivePage(rawNavTree);
+  const mobileNavTree = tryAddActivePage(rawMobileNavTree);
+
   const headerRef = useRef(null);
 
   const handleWindowScroll = () => {

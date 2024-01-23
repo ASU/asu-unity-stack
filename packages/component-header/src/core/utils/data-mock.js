@@ -336,7 +336,6 @@ const navTreeMega = [
   {
     text: "Link option 2",
     href: "/",
-    selected: true,
     items: [
       [
         {
@@ -812,6 +811,7 @@ const navTreeMega = [
         },
         {
           href: "https://campus.asu.edu/west/",
+          selected: true,
           text: "Directory Admin Tools",
         },
       ],

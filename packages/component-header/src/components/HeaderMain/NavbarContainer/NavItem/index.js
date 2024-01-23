@@ -123,6 +123,8 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
     }
   };
 
+  const activeChild = link.items?.flat().find(({ selected }) => selected);
+
   return (
     <NavItemWrapper
       // @ts-ignore
@@ -138,7 +140,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
         aria-expanded={() => "true"} // eslint-disable-line no-nested-ternary
         aria-owns={link.items ? `dropdown-${link.id}` : null}
         className={`${link.class ? link.class : ""}${
-          link.selected ? " nav-item-selected" : ""
+          activeChild || link.selected ? " nav-item-selected" : ""
         }${opened ? " open-link" : ""}`}
         tabIndex={0}
         data-testid="nav-item"
