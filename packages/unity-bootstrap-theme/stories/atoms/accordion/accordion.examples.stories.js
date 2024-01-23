@@ -4,58 +4,57 @@ import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-
 
 export const FoldableCardDefaultOpen = createStory(
   <div className="accordion">
-  <div className="accordion-item mt-3">
-    <div className="accordion-header">
-      <h3>
-        <a
-          id="example-header-3"
-          data-bs-toggle="collapse"
-          className="collapse"
-          href="#example-content-3"
-          role="button"
-          aria-expanded="true"
-          aria-controls="example-content-3"
-          data-ga="This card starts off in an unfolded state."
-          data-ga-name="onclick"
-          data-ga-event="collapse"
-          data-ga-type="click"
-          data-ga-region="main content"
-          data-ga-section="default"
-        >
-          This card starts off in an unfolded state.
-          <span className="fas fa-chevron-up"></span>
-        </a>
-      </h3>
-    </div>
-    <div
-      id="example-content-3"
-      className="collapse show"
-      aria-labelledby="example-header-3"
+    <div className="accordion-item mt-3">
+      <div className="accordion-header">
+        <h3>
+          <a
+            id="example-header-3"
+            data-bs-toggle="collapse"
+            className="collapse"
+            href="#example-content-3"
+            role="button"
+            aria-expanded="true"
+            aria-controls="example-content-3"
+            data-ga="This card starts off in an unfolded state."
+            data-ga-name="onclick"
+            data-ga-event="collapse"
+            data-ga-type="click"
+            data-ga-region="main content"
+            data-ga-section="default"
+          >
+            This card starts off in an unfolded state.
+            <span className="fas fa-chevron-up"></span>
+          </a>
+        </h3>
+      </div>
+      <div
+        id="example-content-3"
+        className="collapse show"
+        aria-labelledby="example-header-3"
       >
-    <div
-      className="accordion-body"
-    >
-      <h4>This is a quaternary headline</h4>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud
-      </p>
-      <h5>This is a level five headline. There's a fancy word for that too.</h5>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor
-      </p>
+        <div className="accordion-body">
+          <h4>This is a quaternary headline</h4>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud
+          </p>
+          <h5>
+            This is a level five headline. There's a fancy word for that too.
+          </h5>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor
+          </p>
+        </div>
+      </div>
     </div>
-    </div>
-  </div>
-  </div>
-  ,
+  </div>,
   { initFunc }
 );
 FoldableCardDefaultOpen.args = {
@@ -91,27 +90,25 @@ export const ColorAccents = createStory(
       <div
         id="cardBodyOne"
         className="collapse"
-      aria-labelledby="cardOne"
-      data-bs-parent="#accordionExample"
+        aria-labelledby="cardOne"
+        data-bs-parent="#accordionExample"
       >
-      <div
-        className="accordion-body"
-      >
-        <h4>Quatrenary Headline</h4>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud
-        </p>
-        <h5>
-          This is a level five headline. There's a fancy word for that too.
-        </h5>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud
-        </p>
-      </div>
+        <div className="accordion-body">
+          <h4>Quatrenary Headline</h4>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud
+          </p>
+          <h5>
+            This is a level five headline. There's a fancy word for that too.
+          </h5>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud
+          </p>
+        </div>
       </div>
       {/* end .accordion-body */}
     </div>
@@ -146,27 +143,25 @@ export const ColorAccents = createStory(
         aria-labelledby="cardTwo"
         data-bs-parent="#accordionExample"
       >
-      <div
-        className="accordion-body"
-      >
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud
-        </p>
-        <h5>
-          This is a level five headline. There's a fancy word for that too.
-        </h5>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor
-        </p>
-      </div>
+        <div className="accordion-body">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud
+          </p>
+          <h5>
+            This is a level five headline. There's a fancy word for that too.
+          </h5>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor
+          </p>
+        </div>
       </div>
       {/* end .accordion-body */}
     </div>
@@ -201,23 +196,21 @@ export const ColorAccents = createStory(
         aria-labelledby="cardThree"
         data-bs-parent="#accordionExample"
       >
-      <div
-        className="accordion-body"
-      >
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud
-        </p>
-        <h5>
-          This is a level five headline. There's a fancy word for that too.
-        </h5>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud
-        </p>
-      </div>
+        <div className="accordion-body">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud
+          </p>
+          <h5>
+            This is a level five headline. There's a fancy word for that too.
+          </h5>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud
+          </p>
+        </div>
       </div>
       {/* end .accordion-body */}
     </div>
@@ -254,24 +247,22 @@ export const ColorAccents = createStory(
         aria-labelledby="cardFour"
         data-bs-parent="#accordionExample"
       >
-      <div
-        className="accordion-body"
-      >
-        <h4>Quatrenary Headline</h4>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud
-        </p>
-        <h5>
-          This is a level five headline. There's a fancy word for that too.
-        </h5>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud
-        </p>
-      </div>
+        <div className="accordion-body">
+          <h4>Quatrenary Headline</h4>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud
+          </p>
+          <h5>
+            This is a level five headline. There's a fancy word for that too.
+          </h5>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud
+          </p>
+        </div>
       </div>
       {/* end .accordion-body */}
     </div>
@@ -315,22 +306,22 @@ export const IncludedIcons = createStory(
         aria-labelledby="cardOne"
         data-bs-parent="#accordionExample"
       >
-      <div className="accordion-body">
-        <h4>Quatrenary Headline</h4>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud
-        </p>
-        <h5>
-          This is a level five headline. There's a fancy word for that too.
-        </h5>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud
-        </p>
-      </div>
+        <div className="accordion-body">
+          <h4>Quatrenary Headline</h4>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud
+          </p>
+          <h5>
+            This is a level five headline. There's a fancy word for that too.
+          </h5>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud
+          </p>
+        </div>
       </div>
       {/* end .accordion-body */}
     </div>
@@ -363,30 +354,30 @@ export const IncludedIcons = createStory(
         </h4>
       </div>
       <div
-      id="cardBodyTwo"
-      className="collapse"
-      aria-labelledby="cardTwo"
-      data-bs-parent="#accordionExample"
+        id="cardBodyTwo"
+        className="collapse"
+        aria-labelledby="cardTwo"
+        data-bs-parent="#accordionExample"
       >
         <div className="accordion-body">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud
-        </p>
-        <h5>
-          This is a level five headline. There's a fancy word for that too.
-        </h5>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor
-        </p>
-      </div>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud
+          </p>
+          <h5>
+            This is a level five headline. There's a fancy word for that too.
+          </h5>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor
+          </p>
+        </div>
       </div>
       {/* end .accordion-body */}
     </div>
@@ -401,47 +392,47 @@ export const DisableFold = createStory(
       <div className="col-md-7">
         {/* Component start */}
         <div className="accordion" id="accordionExample">
-        <div className="accordion-item desktop-disable-lg">
-          <div className="accordion-header">
-            <h4>
-              <a
-                id="example-header-2"
-                data-bs-toggle="collapse"
-                href="#example-content-2"
-                className="collapsed"
-                role="button"
-                aria-expanded="false"
-                aria-controls="example-content-2"
-                data-ga="This will become an foldable card at the lg breakpoint"
-                data-ga-name="onclick"
-                data-ga-event="collapse"
-                data-ga-type="click"
-                data-ga-region="main content"
-                data-ga-section="default"
-              >
-                This will become an foldable card at the lg breakpoint.
-                <span className="fas fa-chevron-up"></span>
-              </a>
-            </h4>
-          </div>
-          <div
-            id="example-content-2"
-            className="collapse"
-            aria-labelledby="example-header-2"
-          >
-          <div className="accordion-body">
-            <p>
-              This uses the <code>.desktop-disable-lg</code> class.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-              commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-              penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-              Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
-              sem.
-            </p>
-          </div>
-          </div>
+          <div className="accordion-item desktop-disable-lg">
+            <div className="accordion-header">
+              <h4>
+                <a
+                  id="example-header-2"
+                  data-bs-toggle="collapse"
+                  href="#example-content-2"
+                  className="collapsed"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="example-content-2"
+                  data-ga="This will become an foldable card at the lg breakpoint"
+                  data-ga-name="onclick"
+                  data-ga-event="collapse"
+                  data-ga-type="click"
+                  data-ga-region="main content"
+                  data-ga-section="default"
+                >
+                  This will become an foldable card at the lg breakpoint.
+                  <span className="fas fa-chevron-up"></span>
+                </a>
+              </h4>
+            </div>
+            <div
+              id="example-content-2"
+              className="collapse"
+              aria-labelledby="example-header-2"
+            >
+              <div className="accordion-body">
+                <p>
+                  This uses the <code>.desktop-disable-lg</code> class.
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                  Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
+                  natoque penatibus et magnis dis parturient montes, nascetur
+                  ridiculus mus. Donec quam felis, ultricies nec, pellentesque
+                  eu, pretium quis, sem.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
         {/* Component end */}
@@ -452,47 +443,47 @@ export const DisableFold = createStory(
       <div className="col-md-7">
         {/* Component start */}
         <div className="accordion" id="accordionExample">
-        <div className="accordion-item desktop-disable-xl">
-          <div className="accordion-header">
-            <h4>
-              <a
-                id="example-header-3"
-                data-bs-toggle="collapse"
-                className="collapsed"
-                href="#example-content-3"
-                role="button"
-                aria-expanded="false"
-                aria-controls="example-content-3"
-                data-ga="Collapses to an foldable card at the xl breakpoint"
-                data-ga-name="onclick"
-                data-ga-event="collapse"
-                data-ga-type="click"
-                data-ga-region="main content"
-                data-ga-section="default"
-              >
-                Collapses to an foldable card at the xl breakpoint.
-                <span className="fas fa-chevron-up"></span>
-              </a>
-            </h4>
-          </div>
-          <div
-            id="example-content-3"
-            className="collapse"
-            aria-labelledby="example-header-3"
-          >
-          <div className="accordion-body">
-            <p>
-              This uses the <code>.desktop-disable-xl</code> class.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
-              commodo ligula eget dolor. Aenean massa. Cum sociis natoque
-              penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-              Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
-              sem.
-            </p>
-          </div>
-          </div>
+          <div className="accordion-item desktop-disable-xl">
+            <div className="accordion-header">
+              <h4>
+                <a
+                  id="example-header-3"
+                  data-bs-toggle="collapse"
+                  className="collapsed"
+                  href="#example-content-3"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="example-content-3"
+                  data-ga="Collapses to an foldable card at the xl breakpoint"
+                  data-ga-name="onclick"
+                  data-ga-event="collapse"
+                  data-ga-type="click"
+                  data-ga-region="main content"
+                  data-ga-section="default"
+                >
+                  Collapses to an foldable card at the xl breakpoint.
+                  <span className="fas fa-chevron-up"></span>
+                </a>
+              </h4>
+            </div>
+            <div
+              id="example-content-3"
+              className="collapse"
+              aria-labelledby="example-header-3"
+            >
+              <div className="accordion-body">
+                <p>
+                  This uses the <code>.desktop-disable-xl</code> class.
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                  Aenean commodo ligula eget dolor. Aenean massa. Cum sociis
+                  natoque penatibus et magnis dis parturient montes, nascetur
+                  ridiculus mus. Donec quam felis, ultricies nec, pellentesque
+                  eu, pretium quis, sem.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
         {/* Component end */}
