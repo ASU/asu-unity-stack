@@ -1,3 +1,10 @@
+# [@asu/component-header-v2.2.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.1...@asu/component-header-v2.2.2) (2024-01-24)
+
+
+### Bug Fixes
+
+* **component-header:** skip active page if navTree undefined/empty ([5097170](https://github.com/asu/asu-unity-stack/commit/509717057defaa96bb11c19acc81fdb27e53e8c0))
+
 # [@asu/component-header-v2.2.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.0...@asu/component-header-v2.2.1) (2024-01-24)
 
 
