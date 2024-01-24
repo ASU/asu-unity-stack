@@ -1,19 +1,24 @@
 const getHrefMatchIndex = (navTree, path) =>
   navTree?.findIndex(
     item =>
-      item.href === path || item.items?.flat().find(({ href }) => href === path)
+      item?.href === path ||
+      item?.items?.flat().find(({ href }) => href === path)
   );
 
 const hasActivePage = navTree =>
   navTree?.find(
-    x => x.selected || x.items?.flat().find(({ selected }) => selected)
+    x => x?.selected || x?.items?.flat().find(({ selected }) => selected)
   );
 
 /**
  * @param {array} navTree navTree Header property
  * @returns {array}
  */
-export const tryAddActivePage = (navTree = []) => {
+export const tryAddActivePage = navTree => {
+  if (!Array.isArray(navTree) || navTree.length === 0) {
+    // initial render may send empty array or undefined
+    return navTree;
+  }
   // Do not alter navTree if selected property is found
   if (hasActivePage(navTree)) {
     return navTree;
