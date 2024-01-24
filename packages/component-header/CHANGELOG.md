@@ -1,3 +1,10 @@
+# [@asu/component-header-v2.2.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.0...@asu/component-header-v2.2.1) (2024-01-24)
+
+
+### Bug Fixes
+
+* **component-header:** trigger build ([b0f7b65](https://github.com/asu/asu-unity-stack/commit/b0f7b6506d0bbc687f75f959decf583509141e9f))
+
 # [@asu/component-header-v2.2.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.1.0...@asu/component-header-v2.2.0) (2024-01-11)
 
 
