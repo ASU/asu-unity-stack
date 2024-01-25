@@ -1,3 +1,10 @@
+# [@asu/component-header-v2.2.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.2...@asu/component-header-v2.2.3) (2024-01-25)
+
+
+### Bug Fixes
+
+* **component-header:** selected prop only on top level navTree items ([30594a7](https://github.com/asu/asu-unity-stack/commit/30594a713b829f20af181aceb23dbe56fb778914))
+
 # [@asu/component-header-v2.2.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.1...@asu/component-header-v2.2.2) (2024-01-24)
 
 
