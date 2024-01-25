@@ -11,6 +11,7 @@ import { NavTreePropTypes } from "../../../../core/models/app-prop-types";
 import { DropdownItem } from "../DropdownItem";
 import { NavItemWrapper } from "./index.styles";
 
+// TODO: why did we stop using this class and should we remove
 const DROPDOWN_CONTAINER_CLASS = "dropdown-container";
 
 export const DROPDOWNS_GA_EVENTS = {
@@ -123,8 +124,6 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
     }
   };
 
-  const activeChild = link.items?.flat().find(({ selected }) => selected);
-
   return (
     <NavItemWrapper
       // @ts-ignore
@@ -140,7 +139,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
         aria-expanded={() => "true"} // eslint-disable-line no-nested-ternary
         aria-owns={link.items ? `dropdown-${link.id}` : null}
         className={`${link.class ? link.class : ""}${
-          activeChild || link.selected ? " nav-item-selected" : ""
+          link.selected ? " nav-item-selected" : ""
         }${opened ? " open-link" : ""}`}
         tabIndex={0}
         data-testid="nav-item"
