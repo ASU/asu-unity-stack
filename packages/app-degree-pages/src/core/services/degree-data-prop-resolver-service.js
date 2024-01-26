@@ -57,7 +57,7 @@ function degreeDataPropResolverService(row = {}) {
     },
     isUndergradProgram: () => isUndergradProgram(row),
     isGradProgram: () => row["degreeType"] === "GR",
-    isMinorOrCertificate: () => row["degreeType"] === "UGCM", // TODO: Is this the best way to identify minors and certificates? Does OTHR also count as a certificate?
+    isMinorOrCertificate: () => row["degreeType"] === "UGCM",
     /** @returns {"undergrad" |  "graduate"} */
     getProgramType: () => (isUndergradProgram(row) ? "undergrad" : "graduate"),
     getDegreeDesc: () => row["degreeDescriptionLong"],
@@ -94,8 +94,8 @@ function degreeDataPropResolverService(row = {}) {
     // See getGeneralDegreeMajorMap for more info
     getOnlineMajorMapURL: () => {
       const onlineMajorMaps = row["majorMapOnline"];
-      // TODO: Might change based on what Cyndi and her team decide what to show for degrees without a major map
-      // UPDATE: The major map column should not b visible if we are showing graduate degrees and/or certificate/minors.
+      // The required courses column will stay visible, with the graduate version of the degree
+      // listing page having most of them blank since only some will have a requireed courses link.
       const mostRecentOnlineMajorMap = onlineMajorMaps?.find(
         obj => obj.defaultFlag === true
       );
@@ -164,7 +164,12 @@ function degreeDataPropResolverService(row = {}) {
     /** @return {string} */
     getAsuOfficeLoc: () => row["academicOfficeLocation"] || "",
     /** @return {string} */
-    getCampusWue: () => row["campusWue"] || "", // TODO: Update this. What is this used for?
+    getCampusWue: () => {
+      const campusList = row["campusesOffered"];
+      if (!campusList) return null;
+      console.log("campusList", campusList);
+      return campusList?.some(campus => campus.wue === true)
+    },
     getConcurrentDegreeMajorMaps: () =>
       fetchAcademicPlans(row["concurrentAcadPlanCodes"]),
     getChangeMajor: () => row["changeMajorRequirementsText"],

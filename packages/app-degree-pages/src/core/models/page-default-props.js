@@ -1,4 +1,5 @@
 // @ts-check
+// @ts-ignore
 import { getCurrentScriptPath } from "@asu/components-core";
 
 const currentScriptPath = getCurrentScriptPath();
