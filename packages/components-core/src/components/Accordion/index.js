@@ -1,6 +1,7 @@
 // @ts-nocheck
 import PropTypes from "prop-types";
 import React, { useState } from "react";
+import "../../../../../node_modules/bootstrap/js/dist/collapse";
 
 import { trackGAEvent } from "../../../../../shared";
 import { accordionCardPropTypes } from "../../core/models/shared-prop-types";
