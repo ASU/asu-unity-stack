@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.9.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.3...@asu/unity-bootstrap-theme-v1.9.4) (2024-01-29)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** wrap accordion body with collapse class and adjust scss ([8684975](https://github.com/ASU/asu-unity-stack/commit/86849756445e534d630a376097806f92fb65498a))
+
 # [@asu/unity-bootstrap-theme-v1.9.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.2...@asu/unity-bootstrap-theme-v1.9.3) (2024-01-22)
 
 
