@@ -1,3 +1,11 @@
+# [@asu/components-core-v3.3.4](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.3...@asu/components-core-v3.3.4) (2024-01-29)
+
+
+### Bug Fixes
+
+* **components-core:** switched to relative import for less packages to install ([06c2869](https://github.com/ASU/asu-unity-stack/commit/06c28690150b7086e4a67357db77609c3fc077fc))
+* **components-core:** wrap accordion body with collapse class for smoother animation ([0c792d3](https://github.com/ASU/asu-unity-stack/commit/0c792d3ddfa91803895d62d4984ac27f944d11b0))
+
 # [@asu/components-core-v3.3.3](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.2...@asu/components-core-v3.3.3) (2024-01-22)
 
 
