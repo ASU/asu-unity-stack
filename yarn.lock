@@ -3345,6 +3345,15 @@
     cross-spawn "^7.0.3"
     qs "^6.11.0"
 
+"@percy/storybook@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@percy/storybook/-/storybook-5.0.1.tgz#6345ecd7dd900afa0a6ae968bbee6ccdc674fd5d"
+  integrity sha512-L9naTGb+DQC0lOnNmdV6wTZW3q67bSIL2lUgMDTyhVOhKvtn8cgXwh3PH+rqEgXiHl1Ult5dJ4kv2WbLnutbsQ==
+  dependencies:
+    "@percy/cli-command" "^1.24.0"
+    cross-spawn "^7.0.3"
+    qs "^6.11.0"
+
 "@percy/webdriver-utils@1.27.3":
   version "1.27.3"
   resolved "https://registry.yarnpkg.com/@percy/webdriver-utils/-/webdriver-utils-1.27.3.tgz#4e008bffd8120cbb6b4babd50c6a6d69e1a99f44"

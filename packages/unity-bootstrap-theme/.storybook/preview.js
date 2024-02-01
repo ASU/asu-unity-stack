@@ -37,6 +37,15 @@ export const parameters = {
       ],
     },
   },
+  percy: {
+    exclude: [
+      /^Atoms\//,
+      /^Design\//,
+      /^Get Started\//,
+      /^Readme\//,
+      /^Docs\//,
+    ]
+  },
   layout: 'fullscreen',
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {

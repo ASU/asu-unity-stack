@@ -78,18 +78,21 @@ spec:
                 }
             }
         }
-        stage('Test') {
-            steps {
-                container('puppeteer') {
-                    script {
-                        //sh 'yarn test' TODO update or enable when tests are specified. Was resulting in "Error: no test specified" for multiple packages
-                        //sh 'yarn start & yarn test:e2e' TODO: enable testing server when e2e tests fixed
-                        sh 'echo "SKIP visual regression testing"'
-                        //sh 'echo "run visual regression testing"'
-                        //sh 'PERCY_TOKEN_BOOTSTRAP=$PERCY_TOKEN_BOOTSTRAP PERCY_TOKEN_COMPONENTS_CORE=$PERCY_TOKEN_COMPONENTS_CORE yarn percy'
-                    }
-                }
-            }
+        stage('Visual Regression Testing') {
+          when {
+              allOf {
+                  branch 'PR-*'
+                  expression { env.CHANGE_TARGET == 'dev' }
+              }
+          }
+          steps {
+              container('node18') {
+                echo 'building storybook...'
+                sh 'yarn build-storybook'
+                echo 'running percy tests...'
+                sh 'yarn percy-test'
+              }
+          }
         }
         stage('Publish') {
             when {
