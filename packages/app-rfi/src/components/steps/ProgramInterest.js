@@ -1,5 +1,3 @@
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable no-console */
 // @ts-check
 import { useFormikContext } from "formik";
 import React, { useEffect, useState } from "react";
@@ -15,31 +13,29 @@ import {
   KEY,
 } from "../../core/utils/constants";
 import { fetchDegreesData } from "../../core/utils/fetchPrograms";
-import {
-  filterDegrees,
-  filterDegreesByScope,
-} from "../../core/utils/filterPrograms";
 import { useRfiContext } from "../../core/utils/rfiContext";
 import { RfiSelect } from "../controls";
-// @ts-ignore
+
+/** @type {import("../../core/utils/datasource-helper").AcadPlan[]} */
+const emptyDegreeData = []; // This helps silence typescript error
 
 // Component
-
 const ProgramInterest = () => {
   // Surface values from Formik context
   const { values, setFieldValue } = useFormikContext();
 
   const {
-    actualCampus,
-    college,
+    filterByCampusCode,
+    filterByCollegeCode,
     dataSourceAsuOnline,
     dataSourceDegreeSearch,
-    department,
+    filterByDepartmentCode,
     programOfInterest,
     programOfInterestOptional,
+    test,
   } = useRfiContext();
 
-  const [degreeData, setDegreeData] = useState([]);
+  const [degreeData, setDegreeData] = useState(emptyDegreeData);
   const [studentTypeOptions, setStudentTypeOptions] = useState(
     STUDENT_OPTIONS_DEFAULT
   );
@@ -49,14 +45,6 @@ const ProgramInterest = () => {
   const [programInterestOptions, setProgramInterestOptions] = useState(
     FAILED_OPTIONS_DEFAULT
   );
-
-  // Check if degree data has loaded.
-  const degreeDataIsLoaded = () => {
-    if (typeof degreeData !== "object") {
-      return false;
-    }
-    return degreeData.length;
-  };
 
   // FETCH master degree data from Degree Search REST API.
   useEffect(() => {
@@ -69,13 +57,20 @@ const ProgramInterest = () => {
     fetchDegreesData({
       dataSourceDegreeSearch,
       dataSourceAsuOnline,
-      department,
-      college,
+      filterByDepartmentCode,
+      filterByCollegeCode,
+      filterByCampusCode,
       Campus: values.Campus,
       CareerAndStudentType: values.CareerAndStudentType,
     }).then(([response, data]) => {
       if (response === "Error") {
+        // eslint-disable-next-line no-console
+        console.error(data);
         return;
+      }
+      if (test && window) {
+        // @ts-ignore
+        window.degreeData = data;
       }
       setDegreeData(data);
     });
@@ -83,9 +78,6 @@ const ProgramInterest = () => {
 
   // Campus and CareerAndStudentType
   useEffect(() => {
-    if (!degreeDataIsLoaded()) {
-      return;
-    }
     // Setup Campus and CareerAndStudentType values, options and display if
     // the ProgramOfInterest prop is present - ie. rendering for a Degree Page.
     if (programOfInterest) {
@@ -95,13 +87,13 @@ const ProgramInterest = () => {
       fetchDegreesData({
         dataSourceDegreeSearch,
         dataSourceAsuOnline,
-        department,
-        college,
         Campus: values.Campus,
         CareerAndStudentType: values.CareerAndStudentType,
         Interest2: programOfInterest,
       }).then(([response, data]) => {
         if (response === "Error") {
+          // eslint-disable-next-line no-console
+          console.error(data);
           return;
         }
         // Set Campus to NOPREF if a Campus value wasn't set via prop, since
@@ -132,62 +124,42 @@ const ProgramInterest = () => {
 
   // Interest1: areaInterestOptions filter and set logic.
   useEffect(() => {
-    if (!degreeDataIsLoaded()) {
-      return;
+    const aoiOptions = [
+      ...new Set(
+        degreeData
+          .filter(({ planCategories }) => planCategories)
+          .map(({ planCategories }) => planCategories)
+          .flat()
+      ),
+    ]
+      .sort()
+      .map((value, i) => ({ key: `${i}`, value, text: value }));
+
+    if (aoiOptions.length === 0) {
+      setAreaInterestOptions(FAILED_OPTIONS_DEFAULT);
+    } else {
+      setAreaInterestOptions(aoiOptions);
     }
-
-    const degreeDataProcessed = filterDegreesByScope({
-      degreeData,
-      actualCampus,
-      college,
-      department,
-    });
-
-    const dupAoIArrays = degreeDataProcessed.map(e => {
-      if (e.planCategories) {
-        return [...e.planCategories];
-      }
-      return [];
-    });
-    // Concatenate all arrays together, turn into Set so dupes are removed,
-    // and then destructure back into an array. And sort alphabetically.
-    const areasOfInterest = [
-      ...new Set(Array.prototype.concat.apply([], dupAoIArrays)),
-    ].sort();
-    const aoiOptions = areasOfInterest.map((aoi, index) => ({
-      key: index.toString(),
-      value: aoi,
-      text: aoi,
-    }));
-    setAreaInterestOptions(aoiOptions);
   }, [degreeData, values.CareerAndStudentType, values.Campus]);
 
   // Interest2: programInterestOptions filter and set logic.
   useEffect(() => {
-    if (!degreeDataIsLoaded()) {
-      return;
+    const poiOptions = degreeData
+      .filter(
+        ({ planCategories }) =>
+          !values.Interest1 || planCategories.includes(values.Interest1)
+      )
+      .map(({ acadPlanCode: value, title: text }, i) => ({
+        key: `${i}`,
+        value,
+        text,
+      }));
+
+    if (poiOptions.length === 0) {
+      setProgramInterestOptions(FAILED_OPTIONS_DEFAULT);
+    } else {
+      setProgramInterestOptions(poiOptions);
     }
-
-    let degreeDataProcessed = filterDegreesByScope({
-      degreeData,
-      actualCampus,
-      college,
-      department,
-    });
-
-    degreeDataProcessed = filterDegrees({
-      degreeData: degreeDataProcessed,
-      degreeDataFieldName: "planCategories",
-      propFilter: values,
-      propFilterName: "Interest1",
-    });
-
-    const poiOptions = degreeDataProcessed.map((program, index) => ({
-      key: index.toString(),
-      value: program.acadPlanCode,
-      text: program.title,
-    }));
-    setProgramInterestOptions(poiOptions);
   }, [
     degreeData,
     values.Campus,
@@ -287,28 +259,7 @@ const ProgramInterest = () => {
   );
 };
 
-// // Props
-// // For full canonical list of props, see RfiMainForm.js
-// ProgramInterest.defaultProps = {
-//   programOfInterest: undefined,
-//   programOfInterestOptional: false,
-//   // Used but indirectly.
-//   // department: undefined,
-//   // college: undefined,
-// };
-
-// ProgramInterest.propTypes = {
-//   programOfInterest: PropTypes.string,
-//   programOfInterestOptional: PropTypes.bool,
-//   dataSourceDegreeSearch: PropTypes.string.isRequired,
-//   dataSourceAsuOnline: PropTypes.string.isRequired,
-//   // Used but indirectly.
-//   // department: PropTypes.string,
-//   // college: PropTypes.string,
-// };
-
 // Step configs
-
 const programInterestForm = {
   component: ProgramInterest,
 

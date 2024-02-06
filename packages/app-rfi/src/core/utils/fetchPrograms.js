@@ -1,19 +1,28 @@
-// Fetch degree data from Degree Search REST API.
-// Returns the full degree dataset for the given program (undergrad | graduate).
-// We do filtering in useEffect()s to manage filtering logic for our various
-
 import { KEY } from "./constants";
 import { normalizeDegreeData } from "./datasource-helper";
+import { filterDataByProps } from "./filterPrograms";
 
-// field options.
 /**
+ * @typedef {object} FetchDegreesDataParameters
+ * @prop {string} [dataSourceDegreeSearch]
+ * @prop {string} [dataSourceAsuOnline]
+ * @prop {string} [filterByDepartmentCode]
+ * @prop {string} [filterByCollegeCode]
+ * @prop {string} [filterByCampusCode] Campus Code
+ * @prop {string} [Campus] Campus type
+ * @prop {string} [CareerAndStudentType]
+ * @prop {string} [Interest2]
+ */
+
+/**
+ * @param {FetchDegreesDataParameters} params
  * @returns {string}
  */
 function getServiceUrl({
   dataSourceDegreeSearch,
   dataSourceAsuOnline,
-  department,
-  college,
+  filterByDepartmentCode,
+  filterByCollegeCode,
   Campus,
   CareerAndStudentType,
   Interest2,
@@ -59,13 +68,11 @@ function getServiceUrl({
     parameter += `&degreeType=${KEY.GR}&degreeType=${KEY.UG}`;
   }
 
-  if (department) {
-    // add department parameter first
-    parameter += `&ownedByDepartment=${department}`;
-  } else if (college) {
-    // add college parameter if no department parameter
-    parameter += `&ownedByCollege=${college}`;
-  }
+  parameter = filterDataByProps.prepareServiceUrl(
+    parameter,
+    filterByDepartmentCode,
+    filterByCollegeCode
+  );
 
   serviceUrl =
     `${dataSourceDegreeSearch}/acad-plans` +
@@ -82,16 +89,19 @@ function getServiceUrl({
 }
 
 /**
- * @returns {Promise<["Success", import("./datasource-helper").AcadPlan[]]|["Error", Error]>}
+ * @typedef {["Success", import("./datasource-helper").AcadPlan[]]} FetchDataSuccessResponse
+ * @typedef {["Error", Error]} FetchDataErrorResponse
+ *
+ * @param {FetchDegreesDataParameters} params
+ * @returns {Promise<FetchDataSuccessResponse|FetchDataErrorResponse>}
  */
 export async function fetchDegreesData(params) {
   const serviceUrl = getServiceUrl(params);
-  // ASUOnline API
   let options = {};
   if (params.Campus === KEY.ONLINE) {
+    // ASUOnline API
     options = {
       headers: {
-        // eslint-disable-next-line prettier/prettier
         Accept: "application/json",
       },
     };
@@ -100,13 +110,22 @@ export async function fetchDegreesData(params) {
     fetch(serviceUrl, options)
       // Handle as text first due to encoding issues.
       .then(response => response.json())
-      .then(data => {
-        const normalizedData = normalizeDegreeData(data);
-        if (normalizedData.length > 0) {
-          return ["Success", normalizedData];
-        }
-        return ["Error", new Error("No Data")];
-      })
+      // Normalize data from different API's
+      .then(data => normalizeDegreeData(data))
+      // Filter before returning data in order to keep filter logic in one place
+      .then(data =>
+        filterDataByProps.filterData(
+          data,
+          params.filterByDepartmentCode,
+          params.filterByCollegeCode,
+          params.filterByCampusCode
+        )
+      )
+      .then(
+        /** @returns {FetchDataSuccessResponse|FetchDataErrorResponse} */
+        data =>
+          data.length > 0 ? ["Success", data] : ["Error", new Error("No Data")]
+      )
       .catch(error => ["Error", new Error(error)])
   );
 }

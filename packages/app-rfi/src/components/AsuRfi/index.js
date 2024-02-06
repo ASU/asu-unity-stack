@@ -65,10 +65,10 @@ const AsuRfi = props => {
     <RfiContext.Provider
       value={{
         appPathFolder,
-        campus,
-        actualCampus,
-        college,
-        department,
+        campusType: campus,
+        filterByCampusCode: actualCampus,
+        filterByCollegeCode: college,
+        filterByDepartmentCode: department,
         studentType,
         areaOfInterest,
         programOfInterest,
@@ -116,8 +116,11 @@ AsuRfi.defaultProps = {
 AsuRfi.propTypes = {
   appPathFolder: PropTypes.string,
   campus: PropTypes.oneOf(["GROUND", "ONLNE", "NOPREF"]),
+  /** Not be a complete list: "AWC", "CAC", "EAC", "LOSAN", "MESA", "POLY", "TEMPE", "WEST" */
   actualCampus: PropTypes.string,
+  /** Not be a complete list: "CAS", "CBA", "CES", "CHI", "CHL", "CLA", "CLW", "CUC" */
   college: PropTypes.string,
+  /** Not be a complete list: "CACCOUNTAN", "CBA", "CCIVIL", "CCRIMJUS", "CENGLISH", "CMARKET", "CSOFTENG", "CTHEATRE" */
   department: PropTypes.string,
   studentType: PropTypes.oneOf(["graduate", "undergrad"]),
   areaOfInterest: PropTypes.string,

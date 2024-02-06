@@ -1,13 +1,13 @@
 /**
  * @typedef {object} AcadPlan
  * @prop {string} acadPlanCode
- * @prop {string[]} [campuses]
- * @prop {string[]} [collegeCode]
+ * @prop {string[]} [departmentCodes]
+ * @prop {string[]} [collegeCodes]
+ * @prop {string[]} [campusCodes]
  * @prop {"UG"|"GR"} degreeType
  * @prop {string} [planType]
  * @prop {string} [emailAddr]
- * @prop {string[]} [departmentCode]
- * @prop {string[]} [planCategories]
+ * @prop {string[]} planCategories
  * @prop {[{strm: string, strmDescription: string}]} [applicationDeadlines]
  * @prop {string} title
  */
@@ -31,10 +31,10 @@ export const normalizeDegreeData = data => {
         acadPlanCode: curr.acadPlanCode,
 
         // curr.campusesOffered array || null
-        campuses: curr.campusesOffered?.map(({ campusCode }) => campusCode),
+        campusCodes: curr.campusesOffered?.map(({ campusCode }) => campusCode),
 
         // curr.owners array || null
-        collegeCode: curr.owners?.map(({ collegeAcadOrg }) => collegeAcadOrg),
+        collegeCodes: curr.owners?.map(({ collegeAcadOrg }) => collegeAcadOrg),
 
         // curr.acadPlanType
         planType: curr.acadPlanType,
@@ -43,17 +43,18 @@ export const normalizeDegreeData = data => {
         degreeType: curr.degreeType,
 
         // curr.owners array || null
-        departmentCode: curr.owners?.map(
+        departmentCodes: curr.owners?.map(
           ({ departmentAcadOrg }) => departmentAcadOrg
         ),
 
         // curr.emailAddr
         emailAddr: curr.emailAddr,
 
-        // curr.planCategories array || null
-        planCategories: curr.planCategories?.map(
-          ({ categoryDescription }) => categoryDescription
-        ),
+        // curr.planCategories array
+        planCategories:
+          curr.planCategories?.map(
+            ({ categoryDescription }) => categoryDescription
+          ) || [],
 
         // curr.acadPlanDescription string
         //   title = (Degree not included)
@@ -74,16 +75,16 @@ export const normalizeDegreeData = data => {
         acadPlanCode: curr.code,
 
         // always undefined
-        campuses: undefined,
+        campusCodes: undefined,
 
         // always undefined
-        collegeCode: undefined,
+        collegeCodes: undefined,
 
         // curr.category always "Undergraduate" || "Graduate"
         degreeType: curr.category === "Graduate" ? "GR" : "UG",
 
         // always undefined
-        departmentCode: undefined,
+        departmentCodes: undefined,
 
         // always undefined
         emailAddr: undefined,

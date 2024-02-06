@@ -31,7 +31,7 @@ const RfiStepper = props => {
   const section = mapSections[step];
 
   const {
-    campus,
+    campusType,
     studentType,
     areaOfInterest,
     programOfInterest,
@@ -54,13 +54,14 @@ const RfiStepper = props => {
       if (isCertMinor && programOfInterest) {
         fetchDegreesData({
           dataSourceDegreeSearch,
-          programOfInterest,
+          Interest2: programOfInterest,
         }).then(([response, data]) => {
           if (response === "Error") {
+            // eslint-disable-next-line no-console
+            console.error(data);
             return;
           }
           const { emailAddr, planType } = data[0];
-          // debugger;
           if (emailAddr && planType === KEY.CER) {
             setEmail(emailAddr);
           }
@@ -123,7 +124,7 @@ const RfiStepper = props => {
   }));
 
   // Intercede with initial values from props.
-  initValues.Campus = campus;
+  initValues.Campus = campusType;
   if (studentType === KEY.GRADUATE) {
     initValues.CareerAndStudentType = KEY.READMISSION;
   } else if (studentType === KEY.UNDERGRAD) {

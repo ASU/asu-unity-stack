@@ -50,19 +50,6 @@ export const STUDENT = {
   },
 };
 
-export const STUDENT_TYPE = {
-  UNDERGRAD: {
-    value: "undergrad",
-    careerStudentType: KEY.FRESHMAN,
-    abbr: "UG",
-  },
-  GRADUATE: {
-    value: "graduate",
-    careerStudentType: KEY.READMISSION,
-    abbr: "GR",
-  },
-};
-
 export const CAMPUS_OPTIONS_DEFAULT = [
   CAMPUS.GROUND,
   CAMPUS.ONLINE,
