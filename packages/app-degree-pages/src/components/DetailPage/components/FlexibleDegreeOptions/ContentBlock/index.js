@@ -33,6 +33,7 @@ const ContentBlock = ({ id, title, links }) => (
     </p>
     <List className="mt-3 mb-3">
       {links.map((link, index) => (
+        // eslint-disable-next-line react/no-array-index-key
         <li key={`${link.title}-${index}`}>
           <a href={link.url} target="_blank" rel="noreferrer">
             {link.title}

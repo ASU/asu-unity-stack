@@ -72,12 +72,12 @@ const columns = [
       let directMapLink;
 
       try {
-        new URL(directUrl);
+        const url = new URL(directUrl);
         directMapLink = (
           <a href={directUrl}>{resolver.getRequiredCoursesLabel()} Map</a>
         );
       } catch (error) {
-        return ""
+        return "";
       }
 
       return directMapLink;

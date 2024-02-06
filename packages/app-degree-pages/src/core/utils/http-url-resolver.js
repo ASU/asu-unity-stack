@@ -40,9 +40,9 @@ function urlResolver(dataSource, defaultDataSource) {
   const { endpoint, include, ...keyValues } = httpParameters;
 
   const formattedIncludes = include
-  .split(',')
-  .map(item => `include=${item.trim()}`)
-  .join('&');
+    .split(",")
+    .map(item => `include=${item.trim()}`)
+    .join("&");
 
   const params = Object.keys(keyValues).reduce(
     (accumulator, paramName) =>

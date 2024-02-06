@@ -17,13 +17,16 @@ async function fetchAcademicPlans(acadPlanCodes) {
             ),
             // Timeout after 5 seconds
             new Promise((_, reject) =>
-              setTimeout(() => reject(new Error('timeout')), 5000)
+              setTimeout(() => reject(new Error("timeout")), 5000)
             ),
           ]);
           const data = await response.json();
           return data;
         } catch (error) {
-          console.error(`Error fetching academic plan for code ${code}:`, error);
+          console.error(
+            `Error fetching academic plan for code ${code}:`,
+            error
+          );
           return null;
         }
       })

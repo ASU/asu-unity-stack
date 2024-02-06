@@ -1,8 +1,8 @@
 // @ts-check
 
 const DOMAIN_URL = "https://degrees.apps.asu.edu";
-const ACAD_PLAN_ENDPOINT = "https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plan/";
-
+const ACAD_PLAN_ENDPOINT =
+  "https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plan/";
 
 /**
  * @type {import("../types/listing-page-types").ProgramListDataSource}
@@ -32,7 +32,7 @@ const detailPageDefaultDataSource = {
   acceleratedAcadPlanCodes,concurrentAcadPlanCodes,academicOfficeUrl,
   majorMapOnline,majroMapGeneral,academicOfficeLocation,
   marketingText,fullDescription,customText,mathIntensityCode,
-  mathIntensityDescription,firstMathCourseRequired,mathRequired,emailAddr`
+  mathIntensityDescription,firstMathCourseRequired,mathRequired,emailAddr`,
 };
 
 export {
