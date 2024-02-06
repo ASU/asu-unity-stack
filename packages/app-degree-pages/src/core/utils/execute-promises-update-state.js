@@ -5,13 +5,13 @@
  */
 function executePromisesAndUpdateState(promises, stateUpdateFunction) {
   Promise.all(promises)
-  .then(results => {
-    const accelerateData = results[0];
-    const concurrentData = results[1];
-    stateUpdateFunction({accelerateData, concurrentData});
+    .then(results => {
+      const accelerateData = results[0];
+      const concurrentData = results[1];
+      stateUpdateFunction({ accelerateData, concurrentData });
     })
     .catch(() => {
-      stateUpdateFunction({accelerateData: [], concurrentData: []});
+      stateUpdateFunction({ accelerateData: [], concurrentData: [] });
     });
 }
 

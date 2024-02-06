@@ -1,4 +1,5 @@
 // @ts-check
+import { ACAD_PLAN_ENDPOINT } from "../constants/web-api-constants";
 
 /**
  * Fetches details for a list of academic plan codes.
@@ -7,15 +8,27 @@
  */
 async function fetchAcademicPlans(acadPlanCodes) {
   if (acadPlanCodes?.length) {
-    return Promise.all(
+    const results = await Promise.all(
       acadPlanCodes.map(async code => {
-        const response = await fetch(
-          `https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plan/${code}?include=academicOfficeUrl&include=acadPlanDescription`
-        );
-        const data = await response.json();
-        return data;
+        try {
+          const response = await Promise.race([
+            fetch(
+              `${ACAD_PLAN_ENDPOINT}${code}?include=academicOfficeUrl&include=acadPlanDescription`
+            ),
+            // Timeout after 5 seconds
+            new Promise((_, reject) =>
+              setTimeout(() => reject(new Error('timeout')), 5000)
+            ),
+          ]);
+          const data = await response.json();
+          return data;
+        } catch (error) {
+          console.error(`Error fetching academic plan for code ${code}:`, error);
+          return null;
+        }
       })
     );
+    return results.filter(result => result !== null);
   }
   return [];
 }

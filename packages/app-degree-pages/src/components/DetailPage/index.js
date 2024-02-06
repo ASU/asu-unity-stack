@@ -269,12 +269,12 @@ const DetailPage = ({
               {!flexibleDegreeOptions?.hide &&
                 resolver.hasConcurrentOrAccelerateDegrees() && (
                   <FlexibleDegreeOptions
-                    acceleratedLinks={
-                      formatAcceleratedConcurrentLinks(acceleratedAndConcurrentDegrees.accelerateData)
-                    }
-                    concurrentLinks={
-                      formatAcceleratedConcurrentLinks(acceleratedAndConcurrentDegrees.concurrentData)
-                    }
+                    acceleratedLinks={formatAcceleratedConcurrentLinks(
+                      acceleratedAndConcurrentDegrees.accelerateData
+                    )}
+                    concurrentLinks={formatAcceleratedConcurrentLinks(
+                      acceleratedAndConcurrentDegrees.concurrentData
+                    )}
                   />
                 )}
 

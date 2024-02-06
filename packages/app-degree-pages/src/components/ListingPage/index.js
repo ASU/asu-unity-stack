@@ -132,7 +132,7 @@ const ListingPage = ({
 
   useEffect(() => {
     let dataInit = sortPrograms(data || []);
-    // apply buil-in filters
+    // apply built-in filters
     dataInit = filterData({
       programs: dataInit,
       filters: {
@@ -157,7 +157,7 @@ const ListingPage = ({
 
     setSearchLoading(true);
 
-    await doFetchPrograms(url);
+    doFetchPrograms(url);
 
     const filteredPrograms = filterData({
       programs: dataInitView,
@@ -193,26 +193,7 @@ const ListingPage = ({
    * @ignore
    */
   const onFilterApply = activeFilters => {
-    // TODO: consider to remove
-    // const { acceleratedConcurrent, locations, asuLocals } = activeFilters;
-    // ============================================================
-    // prevent search
-    // ============================================================
     if (loading || searchLoading) return;
-    // TODO: consider to remove
-    // TODO:I comment this block since does look to be ever called
-    // TODO: The filter acceleratedConcurrent?.value is always st least  "all"
-    // if (
-    //   !acceleratedConcurrent &&
-    //   acceleratedConcurrent?.value === "all" &&
-    //   locations.length === 0 &&
-    //   asuLocals.length === 0 &&
-    //   !collegeAcadOrg &&
-    //   !departmentCode
-    // ) {
-    //   return;
-    // }
-    // ============================================================
     applyFilters(activeFilters);
   };
 

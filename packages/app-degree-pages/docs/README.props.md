@@ -640,6 +640,7 @@ This type set the `url` and `isActive` optional
 | isMinorOrCertificate | <code>boolean</code> | 
 | additionalRequirements | <code>string</code> | 
 | transferRequirements | <code>string</code> | 
+| minorRequirements | <code>string</code> | 
 
 <a name="ChangeMajorRequirementsProps"></a>
 
@@ -765,10 +766,9 @@ This type set the `url` and `isActive` optional
 | Name | Type |
 | --- | --- |
 | [endpoint] | <code>string</code> | 
-| [method] | <code>string</code> | 
 | [init] | <code>&quot;true&quot;</code> \| <code>&quot;false&quot;</code> | 
 | [cert] | <code>&quot;true&quot;</code> \| <code>&quot;false&quot;</code> | 
-| [fields] | <code>string</code> | 
+| [include] | <code>string</code> | 
 | acadPlan | <code>string</code> | 
 
 <a name="WhyChooseAsuCardProp"></a>
@@ -867,12 +867,16 @@ This type set the `url` and `isActive` optional
 | Name | Type |
 | --- | --- |
 | [endpoint] | <code>string</code> | 
+| [filter] | <code>string</code> | 
+| [include] | <code>string</code> | 
+| [degreeType] | <code>string</code> | 
 | [method] | <code>string</code> | 
 | [init] | <code>&quot;true&quot;</code> \| <code>&quot;false&quot;</code> | 
 | [cert] | <code>&quot;true&quot;</code> \| <code>&quot;false&quot;</code> | 
 | [fields] | <code>string</code> | 
 | [program] | <code>string</code> | 
 | [collegeAcadOrg] | <code>string</code> | 
+| [acadPlan] | <code>string</code> | 
 | [departmentCode] | <code>string</code> | 
 | [showInactivePrograms] | <code>boolean</code> \| <code>&quot;true&quot;</code> \| <code>&quot;false&quot;</code> | 
 | [blacklistAcadPlans] | <code>Array</code> | 

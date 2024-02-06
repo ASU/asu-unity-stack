@@ -37,7 +37,12 @@ function urlResolver(dataSource, defaultDataSource) {
     delete httpParameters["filter"];
   }
 
-  const { endpoint, fields, ...keyValues } = httpParameters;
+  const { endpoint, include, ...keyValues } = httpParameters;
+
+  const formattedIncludes = include
+  .split(',')
+  .map(item => `include=${item.trim()}`)
+  .join('&');
 
   const params = Object.keys(keyValues).reduce(
     (accumulator, paramName) =>
@@ -45,7 +50,7 @@ function urlResolver(dataSource, defaultDataSource) {
     ""
   );
 
-  return `${endpoint}?${params}`;
+  return `${endpoint}?${params}&${formattedIncludes}`;
 }
 
 export { urlResolver };

@@ -1,6 +1,8 @@
 // @ts-check
 
 const DOMAIN_URL = "https://degrees.apps.asu.edu";
+const ACAD_PLAN_ENDPOINT = "https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plan/";
+
 
 /**
  * @type {import("../types/listing-page-types").ProgramListDataSource}
@@ -8,7 +10,13 @@ const DOMAIN_URL = "https://degrees.apps.asu.edu";
 const listingPageDefaultDataSource = {
   endpoint: "https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plans",
   filter: "activeInDegreeSearch",
-  include: "*",
+  include: `applicationDeadlines,owners,acadPlanMarketingDescription,
+    acadPlanCode,degreeDescriptionShort,acadPlanDescription,
+    degreeDescriptionText,majorMapSubplans,majorMapOnline,majorMapGeneral
+    acceleratedAcadPlanCodes,concurrentAcadPlanCodes,academicOfficeUrl,
+    majorMapOnline,majroMapGeneral,academicOfficeLocation,
+    marketingText,fullDescription,customText,mathIntensityCode,
+    mathIntensityDescription,firstMathCourseRequired,mathRequired,emailAddr`,
   degreeType: "UG",
 };
 
@@ -18,11 +26,18 @@ const listingPageDefaultDataSource = {
 const detailPageDefaultDataSource = {
   acadPlan: null,
   endpoint: "https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plan",
-  include: "*",
+  include: `applicationDeadlines,owners,acadPlanMarketingDescription,
+  acadPlanCode,degreeDescriptionShort,acadPlanDescription,
+  degreeDescriptionText,majorMapSubplans,majorMapOnline,majorMapGeneral
+  acceleratedAcadPlanCodes,concurrentAcadPlanCodes,academicOfficeUrl,
+  majorMapOnline,majroMapGeneral,academicOfficeLocation,
+  marketingText,fullDescription,customText,mathIntensityCode,
+  mathIntensityDescription,firstMathCourseRequired,mathRequired,emailAddr`
 };
 
 export {
   DOMAIN_URL,
+  ACAD_PLAN_ENDPOINT,
   listingPageDefaultDataSource,
   detailPageDefaultDataSource,
 };

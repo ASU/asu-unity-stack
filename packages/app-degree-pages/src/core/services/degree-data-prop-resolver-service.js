@@ -16,7 +16,7 @@ const getMajorityOwner = row => {
   const { owners } = row;
   if (!owners) return null;
   const majorityOwner = owners.reduce((prev, curr) =>
-    prev.percentOwned > curr.precentOwned ? prev : curr
+    prev.percentOwned > curr.percentOwned ? prev : curr
   );
   return majorityOwner;
 };
@@ -167,8 +167,7 @@ function degreeDataPropResolverService(row = {}) {
     getCampusWue: () => {
       const campusList = row["campusesOffered"];
       if (!campusList) return null;
-      console.log("campusList", campusList);
-      return campusList?.some(campus => campus.wue === true)
+      return campusList?.find(campus => campus.wue === true)?.campusCode;
     },
     getConcurrentDegreeMajorMaps: () =>
       fetchAcademicPlans(row["concurrentAcadPlanCodes"]),

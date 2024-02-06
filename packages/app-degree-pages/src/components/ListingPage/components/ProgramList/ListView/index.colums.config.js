@@ -69,9 +69,16 @@ const columns = [
         ? resolver.getOnlineMajorMapURL()
         : resolver.getGeneralDegreeMajorMap();
 
-      const directMapLink = (
-        <a href={directUrl}>{resolver.getRequiredCoursesLabel()} Map</a>
-      );
+      let directMapLink;
+
+      try {
+        new URL(directUrl);
+        directMapLink = (
+          <a href={directUrl}>{resolver.getRequiredCoursesLabel()} Map</a>
+        );
+      } catch (error) {
+        return ""
+      }
 
       return directMapLink;
     },
@@ -120,7 +127,7 @@ const columns = [
         {resolver.getConcurrentDegrees().then(data => data).length > 0 && (
           <div className="cell-container">concurrent</div>
         )}
-        {resolver.hasConcurrentOrAccelerateDegrees() > 0 && (
+        {resolver.hasConcurrentOrAccelerateDegrees() && (
           <div className="cell-container">
             <a href={accellerateDegreeLink(resolver, actionUrls.majorInfoUrl)}>
               4+1 years

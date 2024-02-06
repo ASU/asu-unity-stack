@@ -23,7 +23,7 @@
  *                actionUrls?: ActionUrlProps
  *                onMouseOver?: (url: string) => void
  *                onMouseOut?: () => void
- *             }) => JSX.Element
+ *             }) => JSX.Element | string
  * }} GridColumn
  */
 
