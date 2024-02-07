@@ -89,8 +89,10 @@ spec:
               container('node18') {
                 echo 'building storybook...'
                 sh 'yarn build-storybook'
-                echo 'running percy tests...'
-                sh 'yarn percy-test'
+              }
+              container('puppeteer') {
+                  echo 'running percy tests...'
+                  sh 'yarn percy-test'
               }
           }
         }
