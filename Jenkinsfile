@@ -16,7 +16,7 @@ spec:
     - cat
     tty: true
   - name: puppeteer
-    image: 'buildkite/puppeteer:5.2.1'
+    image: 'ghcr.io/puppeteer/puppeteer:22'
     imagePullPolicy: Always
     command:
     - cat
