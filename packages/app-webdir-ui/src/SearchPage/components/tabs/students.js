@@ -27,6 +27,7 @@ const StudentsTab = ({ engines, term, loggedIn }) => {
         titleText="All Student results"
         loggedIn={loggedIn}
         showSearchMessage
+        restClientTag="asuis"
       />
     </StudentsTabLayout>
   );

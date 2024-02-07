@@ -29,6 +29,27 @@ Cards - Table of Contents
 1. Basic Cards
 --------------------------------------------------------------------*/
 
+.card, .accordion {
+  --card-child-padding: #{$uds-size-spacing-4};
+  --card-child-margin: 0;
+  .card-content-wrapper {
+    --card-content-wrapper-padding: 1.5rem;
+    --card-child-padding: 0;
+    --card-child-margin: 0;
+  }
+
+  @include media-breakpoint-down(md) {
+    --card-child-padding: #{$uds-size-spacing-3};
+    & {
+      .card-content-wrapper {
+        --card-content-wrapper-padding:1rem;
+        --card-child-padding: 0;
+        --card-child-margin: 0;
+      }
+    }
+  }
+}
+
 .card {
   height: 100%;
   display: flex;
@@ -72,7 +93,7 @@ Cards - Table of Contents
 .card-icon-top {
   width: $card-basic-icon-top-width;
   height: $card-basic-icon-top-width;
-  margin: 2rem 2rem 0 2rem;
+  margin: var(--card-child-padding) var(--card-child-padding) 0 var(--card-child-padding);
 }
 
 .card-image-content {
@@ -100,13 +121,22 @@ Cards - Table of Contents
 
 .card-img-top img,
 .card-img-top {
+  --card-img-top-height: #{$card-image-top-height};
   max-width: 100%;
-  height: $card-image-top-height;
+  height: var(--card-img-top-height);
   object-fit: cover;
+
+  @include media-breakpoint-down(md) {
+    & {
+          --card-img-top-height: 160px;
+    }
+  }
 }
 
 .card-header {
-  padding: 24px 32px 16px 32px;
+  margin-left: var(--card-child-margin);
+  margin-right: var(--card-child-margin);
+  padding: var(--card-child-padding) var(--card-child-padding) 16px var(--card-child-padding);
   flex-grow: 1;
   .card-icon {
     margin-bottom: $uds-size-spacing-2;
@@ -114,7 +144,9 @@ Cards - Table of Contents
 }
 
 .card-body, .accordion-body {
-  padding: 0 32px 24px 32px;
+  margin-left: var(--card-child-margin);
+  margin-right: var(--card-child-margin);
+  padding: 0 var(--card-child-padding) 24px var(--card-child-padding);
   flex-grow: 100;
 }
 
@@ -123,16 +155,22 @@ Cards - Table of Contents
 }
 
 .card-link {
-  padding: 0 32px 24px 32px;
+  margin-left: var(--card-child-margin);
+  margin-right: var(--card-child-margin);
+  padding: 0 var(--card-child-padding) 24px var(--card-child-padding);
 }
 
 .card-footer {
-  padding: 0 32px 24px 32px;
+  margin-left: var(--card-child-margin);
+  margin-right: var(--card-child-margin);
+  padding: 0 var(--card-child-padding) 24px var(--card-child-padding);
   border-top: 0;
 }
 
 .card-tags {
-  padding: 0 32px 24px 32px;
+  margin-left: var(--card-child-margin);
+  margin-right: var(--card-child-margin);
+  padding: 0 var(--card-child-padding) 24px var(--card-child-padding);
   border-top: 0;
   margin-top: -8px;
   .btn-tag,
@@ -145,7 +183,9 @@ Cards - Table of Contents
 
 .card-button {
   margin-top: auto;
-  padding: 0 32px 24px 32px;
+  margin-left: var(--card-child-margin);
+  margin-right: var(--card-child-margin);
+  padding: 0 var(--card-child-padding) 24px var(--card-child-padding);
   display: flex;
   flex-wrap: wrap;
   row-gap: 1rem;
@@ -153,47 +193,8 @@ Cards - Table of Contents
 }
 
 .card > div:last-child {
-  padding-bottom: 32px;
+  padding-bottom: var(--card-child-padding);
 }
-
-@include media-breakpoint-down(md) {
-  .card-icon-top {
-    width: $card-basic-icon-top-width;
-    height: $card-basic-icon-top-width;
-    margin: 2rem 2rem 0 2rem;
-  }
-
-  .card-img-top img,
-  .card-img-top {
-    height: 160px;
-  }
-
-  .card-header {
-    padding: 24px 24px 16px 24px;
-  }
-
-  .card-body {
-    padding: 0 24px 24px 24px;
-  }
-
-  .card-link {
-    padding: 0 24px 24px 24px;
-  }
-
-  .card-footer {
-    padding: 0 24px 24px 24px;
-    border-top: 0;
-  }
-
-  .card-tags {
-    padding: 0 24px 24px 24px;
-    border-top: 0;
-  }
-
-  .card-button {
-    margin-top: auto;
-    padding: 0 24px 24px 24px;
-  }
 
   @include media-breakpoint-down(md) {
     .card-buttons {
@@ -206,93 +207,42 @@ Cards - Table of Contents
       }
     }
   }
-
   // TODO: This block of rules causes inconsistency between buttons side
   // TODO: removed ad per request on ticket UDS-866
   // TODO: we should consider to review all CSS, for any button types, in small viewport
-  // .card-button .btn {
-  //   font-size: 0.75rem;
-  //   padding: $uds-component-button-padding-y-small
-  //     $uds-component-button-padding-x-small;
-  //   line-height: 1rem;
+  // @include media-breakpoint-down(md) {
+  //   .card-button .btn {
+  //     font-size: 0.75rem;
+  //     padding: $uds-component-button-padding-y-small
+  //       $uds-component-button-padding-x-small;
+  //     line-height: 1rem;
+  //   }
   // }
-
-  .card > div:last-child {
-    padding-bottom: 24px;
-  }
-}
 
 @include media-breakpoint-up(lg) {
   .col-lg-6 .card {
-    .card-img-top img,
     .card-img-top {
-      height: 240px;
+      --card-img-top-height: 240px;
     }
   }
 
   .col-lg-6 .card-horizontal .card-img-top {
-    height: auto;
+    --card-img-top-height: auto;
     max-width: 40%;
   }
 }
 
 .card-sm {
-  .card-body {
-    padding-right: 24px;
-    padding-left: 24px;
-  }
+  // TODO: make storybook examples or delete this class as this option should probably be based on mediaQuery
+  --card-child-padding: #{$uds-size-spacing-3};
+  --card-img-top-height: 160px;
 
-  .card-header {
-    padding: 24px 24px 16px 24px;
-  }
-  .card > div:first-of-type {
-    padding-top: 24px;
-    flex-grow: 1;
-  }
-
-  .card-image-gradient::after {
-    height: 160px;
-  }
-
-  .card-img-top img,
-  .card-img-top {
-    height: 160px;
-  }
-
-  .card-footer-link {
-    padding-right: 24px;
-    padding-left: 24px;
-  }
-
-  .card-button {
-    padding-right: 24px;
-    padding-left: 24px;
-  }
-
-  .card-link {
-    padding-right: 24px;
-    padding-left: 24px;
-  }
-
-  .card-tags {
-    padding-right: 24px;
-    padding-left: 24px;
-  }
-
-  .card-event-details {
-    padding-right: 24px;
-    padding-left: 24px;
-  }
 }
 
 .card-lg {
-  .card-img-top img,
-  .card-img-top {
-    height: 15rem;
-  }
-  .card-image-gradient::after {
-    height: 15rem;
-  }
+  // TODO: make storybook examples or delete this class as this option should probably be based on mediaQuery
+  --card-child-padding: #{$uds-size-spacing-4};
+  --card-img-top-height: 15rem;
 }
 
 .card-header .card-title {
@@ -348,28 +298,22 @@ Cards - Table of Contents
 /*------------------------------------------------------------------
 3. Story Cards
 --------------------------------------------------------------------*/
-
-.card-story .card-header,
-.card-story .card-body,
-.card-story .card-button,
-.card-story .card-footer,
-.card-story .card-tags,
-.card-story .card-footer,
-.card-story .card-link {
-  margin-left: 24px;
-  margin-right: 24px;
-  background-color: $white;
-  padding-left: 16px;
-  padding-right: 16px;
+.card.card-story {
+  .card-header,
+  .card-body,
+  .card-button,
+  .card-footer,
+  .card-tags,
+  .card-footer,
+  .card-link {
+    background-color: $white;
+  }
+  --card-child-margin: 1rem;
+  --card-child-padding: 1rem;
 }
 
-.card-story:not(.card.card-foldable)
-  > div:first-of-type:not(.card-image-content) {
-  padding-top: 16px;
-}
+.card-story > div:first-of-type:not(.card-image-content, .uds-img) {
 
-.card-story > div:first-of-type:not(.card-image-content) {
-  padding: 16px;
   flex-grow: 1;
 }
 
@@ -419,11 +363,16 @@ Cards - Table of Contents
   .card-tags,
   .card-footer,
   .card-link {
-    margin-left: 0;
-    margin-right: 0;
     background-color: $white;
-    padding-left: 24px;
-    padding-right: 24px;
+  }
+
+  --card-child-margin: 1.0;
+  --card-child-padding: 1.5rem;
+
+  @include media-breakpoint-down(md) {
+    & {
+      --card-child-padding: 1rem;
+    }
   }
 }
 
@@ -445,8 +394,7 @@ Cards - Table of Contents
 .card-event-details {
   display: flex;
   flex-grow: 100000;
-  padding: 0 2rem 2rem 2rem;
-  padding: 0 32px 24px 32px;
+  padding: 0 var(--card-child-padding) 24px var(--card-child-padding);
   font-size: 14px;
   > * {
     flex: 50%;
@@ -498,6 +446,7 @@ Cards - Table of Contents
 }
 
 .card-content-wrapper {
+  padding: var(--card-content-wrapper-padding);
   padding-bottom: 0 !important;
 }
 
@@ -546,7 +495,7 @@ Cards - Table of Contents
   }
 
   .accordion-header {
-    padding: $uds-size-spacing-1;
+    padding: 0;
     overflow: hidden;
     background-color: $uds-color-base-white;
 
@@ -576,7 +525,7 @@ Cards - Table of Contents
       margin: 0;
 
       a {
-        padding: $uds-size-spacing-1 $uds-size-spacing-3;
+        padding: 1rem var(--card-child-padding);
         color: $uds-color-base-gray-7;
         text-decoration: none;
         display: flex;
@@ -597,7 +546,7 @@ Cards - Table of Contents
       }
     }
 
-    + .accordion-body {
+    + div > .accordion-body, + .accordion-body{ // TODO: remove '+ .accordion-body' after next major breaking change release. This is for backward compatibility
       border-top: 1px solid $uds-color-base-gray-3;
     }
   }

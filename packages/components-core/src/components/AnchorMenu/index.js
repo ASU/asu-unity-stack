@@ -3,10 +3,13 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 
-import { useMediaQuery } from "../../core/hooks/use-media-query";
-import { trackGAEvent } from "../../core/services/googleAnalytics";
-import { queryFirstFocusable } from "../../core/utils/html-utils";
-import { throttle, debounce } from "../../core/utils/timers";
+import {
+  debounce,
+  queryFirstFocusable,
+  throttle,
+  trackGAEvent,
+  useMediaQuery,
+} from "../../../../../shared";
 import { Button } from "../Button";
 import { AnchorMenuWrapper } from "./index.styles";
 

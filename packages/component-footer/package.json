@@ -1,6 +1,6 @@
 {
   "name": "@asu/component-footer",
-  "version": "2.1.2",
+  "version": "2.2.0",
   "description": "ASU implementation of global footer",
   "main": "./dist/asuFooter.cjs.js",
   "browser": "./dist/asuFooter.umd.js",
@@ -40,7 +40,6 @@
     "build-storybook": "build-storybook -s ./dist -o ../../build/$npm_package_name"
   },
   "dependencies": {
-    "@asu/components-core": "^2.1.0",
     "@babel/plugin-transform-react-jsx": "^7.13.12",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-brands-svg-icons": "^6.4.2",

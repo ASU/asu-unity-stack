@@ -110,7 +110,7 @@ describe("#Listing Page", () => {
   describe("#Search by Filters", () => {
     it("shuld filter data by selecting dropdown filters", () => {
       const locations = cy.getByTestId("locations");
-      locations.select(["Tempe campus", "West campus"]);
+      locations.select(["Tempe campus", "West Valley campus"]);
 
       const asuLocals = cy.getByTestId("asuLocals");
       asuLocals.select("ASU@Los Angeles");

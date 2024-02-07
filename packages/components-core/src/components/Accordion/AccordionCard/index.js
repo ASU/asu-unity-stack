@@ -3,8 +3,8 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 
+import { sanitizeDangerousMarkup } from "../../../../../../shared";
 import { accordionCardPropTypes } from "../../../core/models/shared-prop-types";
-import { sanitizeDangerousMarkup } from "../../../core/utils/html-utils";
 
 /**
  * @typedef {import('../../../core/types/shared-types').AccordionCardItemProps} AccordionCardItemProps
@@ -50,13 +50,15 @@ export const AccordionCard = ({ id, item, openCard, onClick }) => (
     </div>
     {item.content?.body && (
       <div
-        id={`card-body-${id}`}
-        className={classNames("collapse", "accordion-body", {
-          [`show`]: id === openCard,
-        })}
+      id={`card-body-${id}`}
+      className={classNames("collapse", )}
+      >
+      <div
+        className="accordion-body"
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={sanitizeDangerousMarkup(item.content.body)}
       />
+      </div>
     )}
   </div>
 );

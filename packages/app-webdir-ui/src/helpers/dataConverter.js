@@ -277,9 +277,10 @@ export const staffConverter = ({
 
   // We use EID if it's available, otherwise we use the asurite_id.
   const profileURLBase = options.profileURLBase ?? "";
-  const asuriteEID = filledDatum.eid.raw
-    ? filledDatum.eid.raw.toString()
-    : filledDatum.asurite_id.raw.toString();
+  const asuriteEID =
+    filledDatum.eid.raw && filledDatum.eid.raw !== "0"
+      ? filledDatum.eid.raw.toString()
+      : filledDatum.asurite_id.raw.toString();
   if (appPathFolder) {
     anonImg = `${appPathFolder}/img/anon.png`;
   }
@@ -334,9 +335,10 @@ export const studentsConverter = ({
   if (appPathFolder) {
     anonImg = `${appPathFolder}/img/anon.png`;
   }
-  const asuriteEID = filledDatum.eid.raw
-    ? filledDatum.eid.raw.toString()
-    : filledDatum.asurite_id.raw.toString();
+  const asuriteEID =
+    filledDatum.eid.raw && filledDatum.eid.raw !== "0"
+      ? filledDatum.eid.raw.toString()
+      : filledDatum.asurite_id.raw.toString();
 
   const imgURLProp = formatImageUrl(filledDatum.photo_url.raw);
 

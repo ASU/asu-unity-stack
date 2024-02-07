@@ -1,3 +1,15 @@
+# [@asu/component-events-v2.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v2.0.3...@asu/component-events-v2.1.0) (2024-01-11)
+
+
+### Bug Fixes
+
+* renamed shared folder to match sahred/services ([860c6f4](https://github.com/asu/asu-unity-stack/commit/860c6f44d42119956cbaa36d8c9d8798613c76fa))
+
+
+### Features
+
+* **component-events:** added gtm global variable tracking ([21b3d70](https://github.com/asu/asu-unity-stack/commit/21b3d705e6df264899992e6acabebd0993fb1301))
+
 # [@asu/component-events-v2.0.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v2.0.2...@asu/component-events-v2.0.3) (2023-07-24)
 
 

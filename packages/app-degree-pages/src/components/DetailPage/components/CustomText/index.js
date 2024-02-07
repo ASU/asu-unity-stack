@@ -1,7 +1,8 @@
 // @ts-check
-import { sanitizeDangerousMarkup } from "@asu/components-core";
 import PropTypes from "prop-types";
 import React from "react";
+
+import { sanitizeDangerousMarkup } from "../../../../../../../shared";
 
 /**
  * @param {{content: string}} props

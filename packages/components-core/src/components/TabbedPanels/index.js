@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
-import { trackGAEvent } from "../../core/services/googleAnalytics";
+import { trackGAEvent } from "../../../../../shared";
 import { NavControls, TabHeader } from "./components";
 
 function useRefs() {
@@ -36,10 +36,7 @@ Tab.propTypes = {
   id: PropTypes.string.isRequired,
   bgColor: PropTypes.string,
   selected: PropTypes.bool,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.element),
-    PropTypes.element,
-  ]),
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.element]),
 };
 
 const TabbedPanels = ({
@@ -77,7 +74,7 @@ const TabbedPanels = ({
         headerTabs.current.removeEventListener("scroll", onScroll);
       }
     };
-}, [scrollableWidth]);
+  }, [scrollableWidth]);
 
   useEffect(() => {
     const onResize = () => {
@@ -91,7 +88,7 @@ const TabbedPanels = ({
       if (headerTabs.current) {
         window.removeEventListener("resize", onResize);
       }
-    }
+    };
   }, []);
 
   useEffect(() => {

@@ -11,16 +11,19 @@ The `.accordion` class is a bootstrap5 class that is used to create an accordion
 
 The recommended markup for an accordion begins from the following pattern.
 
+***Note:*** The `.accordion-body` class must be wrapped in a div with the `.collapse` class, or else the accordion will have a jerky animation when opening and closing.
+
 ```html
-<div className="accordion">
-  <div className="accordion-item">
-    <div className="accordion-header">
+<div class="accordion">
+  <div class="accordion-item">
+    <div class="accordion-header">
       <h3>
         <a
           id="example-header-3"
           data-bs-toggle="collapse"
           href="#example-content-3"
           role="button"
+          class="collapsed"
           aria-expanded="true"
           aria-controls="example-content-3"
           data-ga="This card starts off in an unfolded state."
@@ -31,15 +34,16 @@ The recommended markup for an accordion begins from the following pattern.
           data-ga-section="default"
         >
           This card starts off in an unfolded state.
-          <span className="fas fa-chevron-up"></span>
+          <span class="fas fa-chevron-up"></span>
         </a>
       </h3>
     </div>
     <div
       id="example-content-3"
-      className="collapse show accordion-body"
+      class="collapse show"
       aria-labelledby="example-header-3"
     >
+    <div class="accordion-body">
       <h4>This is a quaternary headline</h4>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -56,6 +60,7 @@ The recommended markup for an accordion begins from the following pattern.
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor
       </p>
+    </div>
     </div>
   </div>
   </div>
@@ -81,21 +86,23 @@ To add an icon:
 
 A foldable card with an icon and and accent color might look like this:
 
-```
-<div className=" accordion mt-3 accordion-item-maroon">
-  <div className="accordion-header accordion-header-icon">
+```html
+<div class=" accordion mt-3 accordion-item-maroon">
+  <div class="accordion-header accordion-header-icon">
     <h4>
-      <a id="accordionOne" className="collapsed" href="#cardBodyOne" data-bs-toggle="collapse" data-bs-target="#accordionBodyOne" role="button" aria-expanded="false" aria-controls="cardBodyOne">
-        <span className="accordion-icon">
-            <i className="fas fa-dog me-2" role="img" aria-label="..."></i>
+      <a id="accordionOne" class="collapsed" href="#cardBodyOne" data-bs-toggle="collapse" data-bs-target="#accordionBodyOne" role="button" aria-expanded="false" aria-controls="cardBodyOne">
+        <span class="accordion-icon">
+            <i class="fas fa-dog me-2" role="img" aria-label="..."></i>
             Accordion with icon and gold color.
         </span>
-        <span className="fas fa-chevron-up"></span>
+        <span class="fas fa-chevron-up"></span>
       </a>
     </h4>
   </div>
-  <div id="accordionTwo" className="collapse accordion-body" aria-labelledby="accordionOne">
-    ...
+  <div id="accordionBodyOne" class="collapse" aria-labelledby="accordionOne">
+    <div class="accordion-body">
+      ...
+    </div>
   </div>
 </div>
 ```
@@ -111,12 +118,14 @@ Include one of the following modifier classes next to the `.accordion` class to 
 
 Example:
 
-```
-<div className="accordion desktop-disable-lg">
-  <div className="accordion-header">
+```html
+<div class="accordion desktop-disable-lg">
+  <div class="accordion-header">
     ...
   </div>
-  <div id="accordionOne" className="collapse accordion-body" aria-labelledby="accordionOne">
-    ...
+  <div id="accordionOne" class="collapse" aria-labelledby="accordionOne">
+    <div class="accordion-body">
+      ...
+    </div>
   </div>
 </div>

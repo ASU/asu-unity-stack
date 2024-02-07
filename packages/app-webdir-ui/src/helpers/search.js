@@ -382,6 +382,8 @@ export const performSearch = function ({
   display,
   rankGroup,
   controller,
+  size,
+  restClientTag,
 }) {
   async function search(resolve, reject) {
     const currentSort = engine.supportedSortTypes.includes(sort) ? sort : "";
@@ -421,6 +423,10 @@ export const performSearch = function ({
         const deptIDValues = filters.deptIds.map(n => `${n}`).join(",");
         query = `${query}&dept_ids=${deptIDValues}`;
       }
+      if (display?.doNotDisplayProfiles) {
+        const doNotDisplayProfilesParam = `profiles_to_exclude=${display.doNotDisplayProfiles}`;
+        query = `${query}&${doNotDisplayProfilesParam}`;
+      }
       if (filters && filters.peopleIds) {
         const asuriteIDParam = filters.peopleIds.map(n => `${n}`).join(",");
         query = `${query}&asurite_ids=${asuriteIDParam}`;
@@ -448,6 +454,9 @@ export const performSearch = function ({
       if (rankGroup) {
         query = `${query}&rank_group=${rankGroup}`;
       }
+      if (restClientTag) {
+        query = `${query}&client=${restClientTag}`;
+      }
       APICall = () => axios.get(query, { signal: controller.signal });
     } else {
       if (!filters) {
@@ -458,16 +467,19 @@ export const performSearch = function ({
         "X-CSRF-Token": tokenResponse.data,
       };
       const data = {
-        "size":
-          filters.peopleInDepts < itemsPerPage
-            ? filters.peopleInDepts.length
-            : itemsPerPage,
-        "page": page || "",
+        "size": size,
+        "page": page,
         "sort-by": currentSort || "",
         "full_records": true,
         "profiles": filters.peopleInDepts,
         "last_init": filters.lastInit || null,
+        "profiles_to_exclude": display.doNotDisplayProfiles || null,
       };
+
+      if (restClientTag) {
+        query = `${query}?&client=${restClientTag}`;
+      }
+
       APICall = () => axios.post(query, data, { headers });
     }
 
@@ -476,20 +488,6 @@ export const performSearch = function ({
         // engine.inFlight = false;
         // engine.abortController = null;
         const { data } = res;
-        if (
-          engine.method === "POST" &&
-          (sort === "last_name_desc" || sort === "last_name_asc")
-        ) {
-          data.sort((a, b) =>
-            a.full_record.display_last_name.raw.localeCompare(
-              b.full_record.display_last_name.raw
-            )
-          );
-
-          if (sort === "last_name_desc") {
-            data.reverse();
-          }
-        }
         resolve(data);
       })
       .catch(err => {
@@ -499,30 +497,4 @@ export const performSearch = function ({
       });
   }
   return new Promise(search);
-};
-
-export const filterOutResults = (results, stringOfProfilesToExclude) => {
-  let arrOfTotalResults;
-  let filteredResults;
-  if (!Array.isArray(results)) {
-    arrOfTotalResults = results.results;
-  } else {
-    arrOfTotalResults = results;
-  }
-  const tempProfilesToFilterOut = stringOfProfilesToExclude
-    .split(",")
-    .map(x => x.trim());
-  if (arrOfTotalResults[0].asurite_id.raw) {
-    filteredResults = arrOfTotalResults.filter(x => {
-      return !tempProfilesToFilterOut.includes(x.asurite_id.raw);
-    });
-  } else {
-    filteredResults = arrOfTotalResults.filter(x => {
-      return !tempProfilesToFilterOut.includes(x.asurite_id);
-    });
-  }
-  if (!Array.isArray(results)) {
-    return { meta: { ...results.meta }, results: filteredResults };
-  }
-  return filteredResults;
 };

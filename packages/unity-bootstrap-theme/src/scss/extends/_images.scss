@@ -4,7 +4,7 @@
   opacity: 1;
   margin-bottom: $uds-size-spacing-0;
   max-width: 900px;
-  img {
+  img, &:is(img) {
     border: 1px solid $uds-color-base-gray-3;
     width: 100%;
   }
@@ -12,6 +12,7 @@
   &.borderless {
     img {
       border-color: transparent;
+      border: 0px;
     }
     .uds-figure {
       .uds-figure-caption {
@@ -31,13 +32,17 @@
       border-top: none;
       opacity: 1;
       background: $uds-color-background-white 0% 0% no-repeat padding-box;
-      padding: 0.75rem;
+      padding: 2rem;
       font-size: $uds-size-font-tiny;
+      h3, .h3 {
+        color: $uds-color-base-gray-7;
+        margin: 0 0 1rem 0;
+      }
     }
     .uds-caption-text {
       display: block;
       max-width: 700px;
-      color: $uds-color-base-gray-5;
+      color: $uds-color-base-gray-7;
     }
   }
 

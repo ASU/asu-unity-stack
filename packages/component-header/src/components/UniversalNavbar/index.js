@@ -2,7 +2,7 @@
 import React from "react";
 
 import { useAppContext } from "../../core/context/app-context";
-import { trackGAEvent } from "../../core/services/googleAnalytics";
+import { trackGAEvent } from "../../../../../shared";
 import { Wrapper } from "./index.styles";
 import { Login } from "./Login";
 import { Search } from "./Search";

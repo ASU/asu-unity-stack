@@ -9,6 +9,7 @@ import { engineNames, engines } from "../helpers/search";
 import { SortPicker } from "../SearchPage/components/sort";
 import { ASUSearchResultsList } from "../SearchResultsList";
 import { WebDirLayout, FacultyRankLayout } from "./index.styles";
+import trackReactComponent from "../../../../shared/services/componentDatalayer";
 
 /**
  * React component for displaying web directory search results.
@@ -42,6 +43,20 @@ function WebDirectory({
   const [sort, setSort] = useState(defaultSortSetter);
   const [requestFilters, setRequestFilters] = useState(doSearch);
   const RES_PER_PAGE = 6;
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      trackReactComponent({
+        packageName: "app-webdir-ui",
+        component: "WebDirectory",
+        type: searchType,
+        configuration: {
+          ...filters,
+          ...display,
+        },
+      });
+    }
+  }, []);
 
   // Initializer functions for requestFilters and sort. Only runs on first render.
   function doSearch() {
@@ -202,6 +217,7 @@ function WebDirectory({
               profilesToFilterOut={display?.doNotDisplayProfiles}
               display={display}
               appPathFolder={appPathFolder}
+              restClientTag="webdir"
             />
           </div>
         </WebDirLayout>

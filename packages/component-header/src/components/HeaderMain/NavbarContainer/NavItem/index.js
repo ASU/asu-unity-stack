@@ -4,13 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 import React, { useRef, useEffect, useMemo } from "react";
 
+import { trackGAEvent } from "../../../../../../../shared";
 import { useAppContext } from "../../../../core/context/app-context";
 import { useIsMobile } from "../../../../core/hooks/isMobile";
 import { NavTreePropTypes } from "../../../../core/models/app-prop-types";
-import { trackGAEvent } from "../../../../core/services/googleAnalytics";
 import { DropdownItem } from "../DropdownItem";
 import { NavItemWrapper } from "./index.styles";
 
+// TODO: why did we stop using this class and should we remove
 const DROPDOWN_CONTAINER_CLASS = "dropdown-container";
 
 export const DROPDOWNS_GA_EVENTS = {

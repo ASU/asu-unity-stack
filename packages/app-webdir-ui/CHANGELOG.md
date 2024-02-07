@@ -1,3 +1,70 @@
+# [@asu/app-webdir-ui-v3.4.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.3.5...@asu/app-webdir-ui-v3.4.0) (2024-01-11)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** added prop types for PreSearchMessage ([5c642a1](https://github.com/asu/asu-unity-stack/commit/5c642a14ded9bbba32c1a47b85eed601c066c1e4))
+* **app-webdir-ui:** removed react tracking from search page ([50a2dcd](https://github.com/asu/asu-unity-stack/commit/50a2dcd52177ead2b046294e7ba3371dec3a6ef7))
+* **app-webdir-ui:** rework homepage default tab content ([80dbe2e](https://github.com/asu/asu-unity-stack/commit/80dbe2ee31d730ae4baf78baafd97fce13af2da1))
+* **app-webdir-ui:** tweaking wording ([f0839fb](https://github.com/asu/asu-unity-stack/commit/f0839fbf72dd2b644105e6b3d9dcb32ba1c4b78d))
+* **app-webdir-ui:** updated import typo for app-webdir index ([8310158](https://github.com/asu/asu-unity-stack/commit/8310158e95bfe602f5d3c5184a9f914eb96994bf))
+* **app-webdir-ui:** updated search messages on search page ([151c299](https://github.com/asu/asu-unity-stack/commit/151c2993811b3ddc7d128341182432d6bc036ebc))
+* renamed shared folder to match sahred/services ([860c6f4](https://github.com/asu/asu-unity-stack/commit/860c6f44d42119956cbaa36d8c9d8798613c76fa))
+* slight changes ([f07b430](https://github.com/asu/asu-unity-stack/commit/f07b4306a01bda66e2a53d54b9aa35d821ee0c1f))
+
+
+### Features
+
+* **app-rfi:** added gtm global variable tracking ([6bdd286](https://github.com/asu/asu-unity-stack/commit/6bdd28669a99591f46e6195a80213182a5dbe142))
+* **app-webdir-ui:** added tracking for GTM ([36044b5](https://github.com/asu/asu-unity-stack/commit/36044b5f92e420462423bbb45a2e18ccb8dd6f17))
+
+# [@asu/app-webdir-ui-v3.3.5](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.3.4...@asu/app-webdir-ui-v3.3.5) (2023-11-28)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** remove alpha filter option from faculty rank ([34d1679](https://github.com/asu/asu-unity-stack/commit/34d1679957f8d0aeab7674025da66056f9406093))
+
+# [@asu/app-webdir-ui-v3.3.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.3.3...@asu/app-webdir-ui-v3.3.4) (2023-11-22)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** added proper margin/display to profile photo title ([47e7161](https://github.com/asu/asu-unity-stack/commit/47e7161360b9ee6f663bda19b4820c167b6cd727))
+
+# [@asu/app-webdir-ui-v3.3.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.3.2...@asu/app-webdir-ui-v3.3.3) (2023-11-22)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** added client tags to web directory api calls ([2a7ce3b](https://github.com/asu/asu-unity-stack/commit/2a7ce3be80cedcc87ed55d6bb19f3995284a0d9a))
+
+# [@asu/app-webdir-ui-v3.3.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.3.1...@asu/app-webdir-ui-v3.3.2) (2023-11-17)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** fix undefined error in seach caused by webdir component update ([29538b8](https://github.com/asu/asu-unity-stack/commit/29538b8ba2607ec6c8a1da8bd605cb8e35bb775a))
+
+# [@asu/app-webdir-ui-v3.3.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.3.0...@asu/app-webdir-ui-v3.3.1) (2023-11-17)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** fix zero value EID in path problem ([5e9e7cd](https://github.com/asu/asu-unity-stack/commit/5e9e7cdb1a76fddd1daa46f734cacaa866bc4dfc))
+
+# [@asu/app-webdir-ui-v3.3.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.5...@asu/app-webdir-ui-v3.3.0) (2023-11-16)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** add webdir profiles for exclusion on rest endpoint ([159a70c](https://github.com/asu/asu-unity-stack/commit/159a70c4456a16607062c44e4da110112e8767f1))
+
+
+### Features
+
+* **app-webdir-ui:** updated post request Web Directories to read new field ([819643f](https://github.com/asu/asu-unity-stack/commit/819643f0e9fd7cec7fa19aaca7bd6f536e80e53c))
+
 # [@asu/app-webdir-ui-v3.2.5](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.2.4...@asu/app-webdir-ui-v3.2.5) (2023-10-26)
 
 

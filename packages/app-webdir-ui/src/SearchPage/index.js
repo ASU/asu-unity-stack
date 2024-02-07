@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { engineNames, engines } from "../helpers/search";
-import { PreSearchMessage } from "../PreSearchMessage/index";
+import { searchMessageComponentMap } from "../PreSearchMessages";
 import {
   AllTab,
   FacultyTab,
@@ -43,7 +43,9 @@ function SearchPage({
   const [sort, setSort] = useState("");
   const [totalResults, setTotalResults] = useState(0);
   const [searchValue, setSearchValue] = useState("");
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams({
+    [searchTabsId]: tabIds.all,
+  });
   const [filters] = useState({});
   const [site, setSite] = useState(null);
   const inputRef = useRef(null);
@@ -121,8 +123,7 @@ function SearchPage({
 
   const preSearchOrContent = content => {
     if (term) return content;
-
-    return <PreSearchMessage />;
+    return searchMessageComponentMap[searchParams.get(searchTabsId)];
   };
 
   return (

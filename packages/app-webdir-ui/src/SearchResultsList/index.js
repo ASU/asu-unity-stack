@@ -2,12 +2,8 @@ import { Button, Pagination } from "@asu/components-core";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 
-import { trackGAEvent } from "../core/services/googleAnalytics";
-import {
-  performSearch,
-  anonFormatter,
-  filterOutResults,
-} from "../helpers/search";
+import { trackGAEvent } from "../../../../shared";
+import { performSearch } from "../helpers/search";
 import { SearchMessage } from "../SearchPage/components/SearchMessage";
 import { SearchResultsList } from "./index.styles";
 
@@ -64,6 +60,7 @@ const ASUSearchResultsList = ({
   localSection,
   rankGroup,
   icon,
+  restClientTag,
 }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -88,19 +85,20 @@ const ASUSearchResultsList = ({
         display,
         rankGroup,
         controller,
+        size: display?.profilesPerPage,
+        restClientTag,
       })
         .then(res => {
-          let filteredResults = res;
+          const filteredResults = res;
           if (sort === "employee_weight" && engine?.name === "people_in_dept") {
             filteredResults.results = filteredResults.results.filter(result => {
               return Object.keys(result).length > 1;
             });
           }
-          if (profilesToFilterOut) {
-            filteredResults = filterOutResults(res, profilesToFilterOut);
-          }
           const formattedResults = engine.formatter({
             results: filteredResults,
+            page,
+            itemsPerPage,
             cardSize,
             filters,
             appPathFolder: appPathFolder || engine.appPathFolder,
@@ -122,7 +120,7 @@ const ASUSearchResultsList = ({
             }
           }
           if (engine.method === "POST") {
-            setTotalResults(filters.peopleInDepts.length);
+            setTotalResults(filteredResults[0]?.total_results); // Each result has the total_results property
           } else {
             setTotalResults(formattedResults.page.total_results);
           }
@@ -291,6 +289,7 @@ ASUSearchResultsList.propTypes = {
   localSection: PropTypes.bool,
   rankGroup: PropTypes.string,
   icon: PropTypes.arrayOf(PropTypes.string),
+  restClientTag: PropTypes.string,
 };
 
 export { ASUSearchResultsList };

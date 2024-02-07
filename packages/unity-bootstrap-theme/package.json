@@ -1,6 +1,6 @@
 {
   "name": "@asu/unity-bootstrap-theme",
-  "version": "1.7.7",
+  "version": "1.9.4",
   "description": "Base UI theme for ASU Web Standards 2.0 developed with Bootstrap 5",
   "author": "Mayco Barale <mbarale@asu.edu>",
   "homepage": "https://github.com/ASU/asu-unity-stack#readme",
@@ -36,6 +36,7 @@
     "@babel/preset-react": "^7.18.6",
     "@babel/register": "^7.18.9",
     "@storybook/addon-actions": "^6.5.16",
+    "@storybook/addon-docs": "^6.5.16",
     "@storybook/addon-essentials": "^6.5.16",
     "@storybook/addon-interactions": "^6.5.16",
     "@storybook/addon-links": "^6.5.16",

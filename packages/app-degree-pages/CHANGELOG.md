@@ -1,3 +1,22 @@
+# [@asu/app-degree-pages-v2.3.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.2.0...@asu/app-degree-pages-v2.3.0) (2024-01-11)
+
+
+### Bug Fixes
+
+* renamed shared folder to match sahred/services ([860c6f4](https://github.com/asu/asu-unity-stack/commit/860c6f44d42119956cbaa36d8c9d8798613c76fa))
+
+
+### Features
+
+* **app-degreee-pagess:** added react tracking functionality for gtm ([9e6c589](https://github.com/asu/asu-unity-stack/commit/9e6c5891d56ea0ea122b037af02c23d45a21c9f2))
+
+# [@asu/app-degree-pages-v2.2.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.1.5...@asu/app-degree-pages-v2.2.0) (2023-12-01)
+
+
+### Features
+
+* **app-degree-pages:** txt chg - West Valley campus ([08ea9b4](https://github.com/asu/asu-unity-stack/commit/08ea9b4e8842da1999a9c6a5a4bbf74f4ec7ddf3))
+
 # [@asu/app-degree-pages-v2.1.5](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.1.4...@asu/app-degree-pages-v2.1.5) (2023-09-19)
 
 

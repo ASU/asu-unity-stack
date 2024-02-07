@@ -1,3 +1,7 @@
+$add_end_styles: false;
 @import 'unity-bootstrap-theme';
 @import 'unity-bootstrap-header';
 @import 'unity-bootstrap-footer';
+
+$add_end_styles: true;
+@import 'end-style';

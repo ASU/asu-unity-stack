@@ -114,27 +114,3 @@ export const webDirectoryExampleDepartmentsAndPeople = createStory(
 webDirectoryExampleDepartmentsAndPeople.args = {
   template: 0,
 };
-
-export const facultyRankWebDirectory = createStory(
-  ({ ...args }) => {
-    return (
-      <div className="uds-content-align">
-        <WebDirectory
-          searchType="faculty_rank"
-          deptIds="1535"
-          API_URL="https://live-asu-isearch.ws.asu.edu/"
-          searchApiVersion="api/v1/"
-          filters={filters}
-          display={display}
-          alphaFilter={args.alphaFilter}
-          // appPathFolder="/my/custom/path/to/component/root/example"
-        />
-      </div>
-    );
-  },
-  { supportedTemplates: [layoutNames.FULL_WIDTH] }
-);
-
-facultyRankWebDirectory.args = {
-  template: 0,
-};
