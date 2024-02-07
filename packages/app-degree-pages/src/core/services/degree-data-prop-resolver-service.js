@@ -57,7 +57,10 @@ function degreeDataPropResolverService(row = {}) {
     },
     isUndergradProgram: () => isUndergradProgram(row),
     isGradProgram: () => row["degreeType"] === "GR",
-    isMinorOrCertificate: () => row["degreeType"] === "UGCM",
+    isMinorOrCertificate: () =>
+      row["degreeType"] === "UGCM" ||
+      (row["degreeType"] === "GR" &&
+        row["acadPlanTypeDescription"] === "Certificate"),
     /** @returns {"undergrad" |  "graduate"} */
     getProgramType: () => (isUndergradProgram(row) ? "undergrad" : "graduate"),
     getDegreeDesc: () => row["degreeDescriptionLong"],

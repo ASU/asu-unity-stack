@@ -12,11 +12,11 @@ const listingPageDefaultDataSource = {
   filter: "activeInDegreeSearch",
   include: `applicationDeadlines,owners,acadPlanMarketingDescription,
     acadPlanCode,degreeDescriptionShort,acadPlanDescription,
-    degreeDescriptionText,majorMapSubplans,majorMapOnline,majorMapGeneral
+    degreeDescriptionText,majorMapSubplans,majorMapOnline,majorMapGeneral,
     acceleratedAcadPlanCodes,concurrentAcadPlanCodes,academicOfficeUrl,
-    majorMapOnline,majroMapGeneral,academicOfficeLocation,
-    marketingText,fullDescription,customText,mathIntensityCode,
-    mathIntensityDescription,firstMathCourseRequired,mathRequired,emailAddr`,
+    academicOfficeLocation,marketingText,fullDescription,customText,
+    mathIntensityCode,mathIntensityDescription,firstMathCourseRequired,
+    mathRequired,emailAddr,campusesOffered`,
   degreeType: "UG",
 };
 
@@ -28,11 +28,11 @@ const detailPageDefaultDataSource = {
   endpoint: "https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plan",
   include: `applicationDeadlines,owners,acadPlanMarketingDescription,
   acadPlanCode,degreeDescriptionShort,acadPlanDescription,
-  degreeDescriptionText,majorMapSubplans,majorMapOnline,majorMapGeneral
+  degreeDescriptionText,majorMapSubplans,majorMapOnline,majorMapGeneral,
   acceleratedAcadPlanCodes,concurrentAcadPlanCodes,academicOfficeUrl,
-  majorMapOnline,majroMapGeneral,academicOfficeLocation,
-  marketingText,fullDescription,customText,mathIntensityCode,
-  mathIntensityDescription,firstMathCourseRequired,mathRequired,emailAddr`,
+  academicOfficeLocation,marketingText,fullDescription,customText,
+  mathIntensityCode,mathIntensityDescription,firstMathCourseRequired,
+  mathRequired,emailAddr,campusesOffered`,
 };
 
 export {
