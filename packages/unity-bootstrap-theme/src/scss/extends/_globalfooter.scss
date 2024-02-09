@@ -99,16 +99,16 @@ footer {
 // #endorsed-footer, mobile first design
 
 #endorsed-logo {
+  --endorsed-logo-display: block;
+  --endorsed-logo-padding-y: 12px;
   --endorsed-logo-img-max-height: 100%;
   --endorsed-logo-img-width: 100%;
-  --endorsed-logo-padding-y: 12px;
-  --endorsed-logo-display: block;
   @include media-breakpoint-up(md) {
     & {
+      --endorsed-logo-display: flex;
       --endorsed-logo-padding-y: 20px;
       --endorsed-logo-img-max-height: 6rem;
       --endorsed-logo-img-width: auto;
-      --endorsed-logo-display: flex;
     }
   }
   padding-top: var(--endorsed-logo-padding-y);
@@ -152,8 +152,6 @@ footer {
 
 // #endorsed-footer, up to desktop
 @include media-breakpoint-up(md) {
-
-
   #social-media .nav {
     padding: $uds-size-spacing-5 0;
     justify-content: flex-end;
