@@ -1,9 +1,11 @@
 // @ts-check
-import { Hero, useFetch } from "@asu/components-core";
+import { Hero } from "@asu/components-core";
 import PropTypes from "prop-types";
 import React, { useEffect, useState, useContext } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
+import trackReactComponent from "../../../../../shared/services/componentDatalayer";
+import { useFetch } from "../../../../../shared";
 import {
   Loader,
   Main as MainSection,
@@ -125,6 +127,20 @@ const ListingPage = ({
     programs: data,
     stateFilters,
   });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      trackReactComponent({
+        packageName: "app-degree-pages",
+        component: "ListingPage",
+        type: "NA",
+        configuration: {
+          programList,
+          degreesPerPage,
+        },
+      });
+    }
+  }, []);
 
   useEffect(() => {
     doFetchPrograms(url);

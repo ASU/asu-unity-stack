@@ -1,3 +1,15 @@
+# [@asu/component-cookie-consent-v2.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-cookie-consent-v2.0.1...@asu/component-cookie-consent-v2.1.0) (2024-01-11)
+
+
+### Bug Fixes
+
+* renamed shared folder to match sahred/services ([860c6f4](https://github.com/asu/asu-unity-stack/commit/860c6f44d42119956cbaa36d8c9d8798613c76fa))
+
+
+### Features
+
+* **component-cookie-consent:** added gtm global variable tracking ([9a4b51f](https://github.com/asu/asu-unity-stack/commit/9a4b51fa0eafa861147b077d559e32650bf98bed))
+
 # [@asu/component-cookie-consent-v2.0.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-cookie-consent-v2.0.0...@asu/component-cookie-consent-v2.0.1) (2023-05-23)
 
 

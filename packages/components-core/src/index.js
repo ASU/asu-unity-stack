@@ -1,34 +1,35 @@
 import {
-  Card,
-  RankingCard,
+  Accordion,
+  AnchorMenu,
   Article,
   Button,
   ButtonIconOnly,
   ButtonTag,
-  Pagination,
-  Testimonial,
-  AnchorMenu,
+  Card,
   Hero,
-  Accordion,
+  Image,
+  Pagination,
+  RankingCard,
+  Testimonial,
   Video,
 } from "./components";
 
 export * from "./components/FeedAnatomy";
 export * from "./components/TabbedPanels";
 export * from "./core/utils";
-export * from "./core/hooks";
 
 export {
-  Card,
-  RankingCard,
+  Accordion,
+  AnchorMenu,
   Article,
   Button,
   ButtonIconOnly,
   ButtonTag,
-  Pagination,
-  Testimonial,
-  AnchorMenu,
+  Card,
   Hero,
-  Accordion,
+  Image,
+  Pagination,
+  RankingCard,
+  Testimonial,
   Video,
 };

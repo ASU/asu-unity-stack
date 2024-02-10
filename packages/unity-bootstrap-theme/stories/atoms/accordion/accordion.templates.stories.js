@@ -13,9 +13,8 @@ const FoldableCardElement = (
         <h3>
           <a
             id={`${linkID}`}
-            className="collapsed"
             data-bs-toggle="collapse"
-            data-bs-target={bodyID ? `#${bodyID}` : ""}
+            className="collapsed"
             href={bodyID ? `#${bodyID}` : ""}
             role="button"
             aria-expanded="false"
@@ -34,26 +33,30 @@ const FoldableCardElement = (
       </div>
       <div
         id={`${bodyID}`}
-        className="collapse accordion-body"
+        className="collapse"
         aria-labelledby={`${linkID}`}
         data-bs-parent={accordionID ? `#${accordionID}` : ""}
       >
-        <h4>This is a quaternary headline</h4>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-          veniam, quis nostrud
-        </p>
-        <h5>This is a level five headline. There's a fancy word for that too.</h5>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-          veniam, quis nostrud
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor
-        </p>
+        <div className="accordion-body">
+          <h4>This is a quaternary headline</h4>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud
+          </p>
+          <h5>
+            This is a level five headline. There's a fancy word for that too.
+          </h5>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor
+          </p>
+        </div>
       </div>
     </div>
   </div>

@@ -244,9 +244,9 @@ form.uds-form {
     using Bootstrap 4 .is-valid and .is-invalid classes. */
 
   /* Errors */
-  input.is-invalid,
-  textarea.is-invalid,
-  select.is-invalid {
+  input.is-invalid:enabled,
+  textarea.is-invalid:enabled,
+  select.is-invalid:enabled {
     border-style: solid;
     border: 1px solid $uds-color-font-dark-error;
     border-bottom: 8px solid $uds-color-font-dark-error;
@@ -538,6 +538,17 @@ form.uds-form {
       svg {
         color: $uds-color-base-gray-1;
       }
+    }
+  }
+
+  & {
+    input:disabled ~ .valid-feedback,
+    input:disabled ~ .invalid-feedback,
+    textarea:disabled ~ .valid-feedback,
+    textarea:disabled ~ .invalid-feedback,
+    select:disabled ~ .valid-feedback,
+    select:disabled ~ .invalid-feedback {
+      display: none;
     }
   }
 }

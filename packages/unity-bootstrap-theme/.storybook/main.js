@@ -1,12 +1,21 @@
 const path = require("path");
 
 module.exports = {
-  stories: ["../**/*.stories.mdx", "../**/*.stories.@(js|jsx|ts|tsx)"],
+  stories: ["../**/*.js.stories.mdx", "../**/*.stories.mdx", "../**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
+    "./local-addon",
+    "../../../.storybook-config",
+    "../../../.storybook-config/dataLayerListener",
     "@whitespace/storybook-addon-html",
     "@storybook/addon-links",
-    "@storybook/addon-essentials",
+    {
+      name: '@storybook/addon-essentials',
+      options: {
+        backgrounds: false, // 👈 disable the backgrounds addon
+      },
+    },
     "@storybook/addon-interactions",
+    "@storybook/addon-docs",
   ],
   framework: "@storybook/react",
   core: {
@@ -28,6 +37,8 @@ module.exports = {
         },
       ],
     });
+
+    config.entry = Array.from(new Set(config.entry));
 
     return config;
   },

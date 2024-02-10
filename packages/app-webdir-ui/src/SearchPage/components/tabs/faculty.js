@@ -33,6 +33,7 @@ const FacultyTab = ({ engines, term, sort, onSortChange }) => {
           GASource="all faculty and staff results"
           titleText="All faculty and staff results"
           showSearchMessage
+          restClientTag="asuis"
         />
       </div>
     </FacultyTabLayout>

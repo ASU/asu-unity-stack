@@ -6,7 +6,7 @@ const locationOptions = [
   { id: 0, value: "DTPHX", text: "Downtown Phoenix campus" },
   { id: 1, value: "POLY", text: "Polytechnic campus" },
   { id: 2, value: "TEMPE", text: "Tempe campus" },
-  { id: 3, value: "WEST", text: "West campus" },
+  { id: 3, value: "WEST", text: "West Valley campus" },
   { id: 4, value: "ONLNE", text: "ASU Online" },
 ];
 

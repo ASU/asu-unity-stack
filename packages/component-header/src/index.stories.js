@@ -12,6 +12,14 @@ import { ASUHeader } from "./header";
 export default {
   title: "UDS/ASU Header",
   component: ASUHeader,
+  argTypes: {
+    renderDiv: {
+      control: "select",
+      options: ["true", "false"],
+      description:
+        "Either 'true' or 'false'. If 'true', the header will be rendered as a div instead of a header element."
+    },
+  },
 };
 
 const Template = args => (
@@ -67,6 +75,7 @@ Default.args = {
   breakpoint: "Lg",
   searchUrl: "https://search.asu.edu/search",
   site: "subdomain",
+  renderDiv: "false",
 };
 
 export const Empty = Template.bind({});

@@ -1,11 +1,10 @@
 // @ts-check
-import { idGenerator } from "@asu/components-core";
 import React, { useState } from "react";
 
+import { idGenerator, trackGAEvent } from "../../../../../../shared";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useAppContext } from "../../../core/context/app-context";
 import { useIsMobile } from "../../../core/hooks/isMobile";
-import { trackGAEvent } from "../../../core/services/googleAnalytics";
 import { Button } from "../../Button";
 import { UniversalNavbar } from "../../UniversalNavbar";
 import { Wrapper } from "./index.styles";

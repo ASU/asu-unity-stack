@@ -13,7 +13,7 @@
 <dt><a href="#SearchPage">SearchPage(props)</a> ⇒ <code>JSX.Element</code></dt>
 <dd><p>React component for the ASU search page.</p>
 </dd>
-<dt><a href="#ASUSearchResultsList">ASUSearchResultsList(term, sort, type, engine, titleText, showSearchMessage, seeAllResultsText, itemsPerPage, onExpandClick, GASource, setPromotedResult, hidePaginator, registerResults, filters, loggedIn, profilesToFilterOut, display, appPathFolder, localSection, rankGroup, icon)</a> ⇒ <code>JSX.Element</code></dt>
+<dt><a href="#ASUSearchResultsList">ASUSearchResultsList(props, term, sort, type, engine, titleText, showSearchMessage, seeAllResultsText, itemsPerPage, onExpandClick, GASource, setPromotedResult, hidePaginator, registerResults, filters, loggedIn, profilesToFilterOut, display, appPathFolder, localSection, rankGroup, icon)</a> ⇒ <code>JSX.Element</code></dt>
 <dd><p>React component for displaying search results.</p>
 </dd>
 <dt><a href="#WebDirectory">WebDirectory(props)</a> ⇒ <code>JSX.Element</code></dt>
@@ -132,7 +132,7 @@ React component for the ASU search page.
 
 <a name="ASUSearchResultsList"></a>
 
-## ASUSearchResultsList(term, sort, type, engine, titleText, showSearchMessage, seeAllResultsText, itemsPerPage, onExpandClick, GASource, setPromotedResult, hidePaginator, registerResults, filters, loggedIn, profilesToFilterOut, display, appPathFolder, localSection, rankGroup, icon) ⇒ <code>JSX.Element</code>
+## ASUSearchResultsList(props, term, sort, type, engine, titleText, showSearchMessage, seeAllResultsText, itemsPerPage, onExpandClick, GASource, setPromotedResult, hidePaginator, registerResults, filters, loggedIn, profilesToFilterOut, display, appPathFolder, localSection, rankGroup, icon) ⇒ <code>JSX.Element</code>
 React component for displaying search results.
 
 **Kind**: global function  
@@ -140,6 +140,7 @@ React component for displaying search results.
 
 | Param | Type | Description |
 | --- | --- | --- |
+| props | <code>Object</code> | The props for configuring the ASUSearchResultsList component. |
 | term | <code>string</code> | The search term. |
 | sort | <code>string</code> | The sorting option. |
 | type | <code>string</code> | The type of results must be 'micro', 'preview', or 'full'. |

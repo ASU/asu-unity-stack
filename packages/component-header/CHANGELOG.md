@@ -1,3 +1,51 @@
+# [@asu/component-header-v2.2.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.2...@asu/component-header-v2.2.3) (2024-01-25)
+
+
+### Bug Fixes
+
+* **component-header:** selected prop only on top level navTree items ([30594a7](https://github.com/asu/asu-unity-stack/commit/30594a713b829f20af181aceb23dbe56fb778914))
+
+# [@asu/component-header-v2.2.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.1...@asu/component-header-v2.2.2) (2024-01-24)
+
+
+### Bug Fixes
+
+* **component-header:** skip active page if navTree undefined/empty ([5097170](https://github.com/asu/asu-unity-stack/commit/509717057defaa96bb11c19acc81fdb27e53e8c0))
+
+# [@asu/component-header-v2.2.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.0...@asu/component-header-v2.2.1) (2024-01-24)
+
+
+### Bug Fixes
+
+* **component-header:** trigger build ([b0f7b65](https://github.com/asu/asu-unity-stack/commit/b0f7b6506d0bbc687f75f959decf583509141e9f))
+
+# [@asu/component-header-v2.2.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.1.0...@asu/component-header-v2.2.0) (2024-01-11)
+
+
+### Bug Fixes
+
+* **component-header:** modified global gtm function props ([1ecc70a](https://github.com/asu/asu-unity-stack/commit/1ecc70ada5a80586ce658dab44b41cd7b6ad5778))
+* renamed shared folder to match sahred/services ([860c6f4](https://github.com/asu/asu-unity-stack/commit/860c6f44d42119956cbaa36d8c9d8798613c76fa))
+
+
+### Features
+
+* **component-header:** added gtm global variable tracking ([af81988](https://github.com/asu/asu-unity-stack/commit/af8198840da386a9268ecdcb8c1a891284c2175e))
+
+# [@asu/component-header-v2.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.8...@asu/component-header-v2.1.0) (2023-11-28)
+
+
+### Features
+
+* **component-header:** added prop to conditionally render header as div instead of header element ([5cc9d90](https://github.com/asu/asu-unity-stack/commit/5cc9d907481de814659da62c06e2ad5f11bfe60e))
+
+# [@asu/component-header-v2.0.8](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.7...@asu/component-header-v2.0.8) (2023-11-17)
+
+
+### Bug Fixes
+
+* **component-header:** update Peer Dependency Components-core to allow version 2 or 3 ([bb3eb07](https://github.com/asu/asu-unity-stack/commit/bb3eb07e50f4811d3a78d38c4304a3a45b3568c7))
+
 # [@asu/component-header-v2.0.7](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.6...@asu/component-header-v2.0.7) (2023-09-08)
 
 

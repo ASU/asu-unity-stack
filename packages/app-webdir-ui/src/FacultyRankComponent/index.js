@@ -38,7 +38,6 @@ const filtersData = {
  * @property {string} filters.expertise - Expertise filter.
  * @property {string} filters.title - Title filter.
  * @property {string} filters.campuses - Campuses filter.
- * @property {string} alphaFilter - Whether to enable the alpha filter.
  */
 
 const FacultyRankTabPanels = ({
@@ -50,7 +49,6 @@ const FacultyRankTabPanels = ({
   display,
   profileURLBase,
   searchType,
-  alphaFilter,
 }) => {
   const [requestFilters, setRequestFilters] = useState({});
   const [tabChange, setTabChange] = useState(null);
@@ -90,45 +88,6 @@ const FacultyRankTabPanels = ({
           id={`faculty-${rankGroup}`}
           title={filtersData[rankGroup]}
         >
-          {alphaFilter === "true" && (
-            <FilterComponent
-              filterLabel="Filter by last initial"
-              choices={[
-                "A",
-                "B",
-                "C",
-                "D",
-                "E",
-                "F",
-                "G",
-                "H",
-                "I",
-                "J",
-                "K",
-                "L",
-                "M",
-                "N",
-                "O",
-                "P",
-                "Q",
-                "R",
-                "S",
-                "T",
-                "U",
-                "V",
-                "W",
-                "X",
-                "Y",
-                "Z",
-              ]}
-              onChoose={filterLetter =>
-                setRequestFilters({ ...requestFilters, lastInit: filterLetter })
-              }
-              resetFilters={() =>
-                setRequestFilters({ ...requestFilters, lastInit: "" })
-              }
-            />
-          )}
           <ASUSearchResultsList
             engine={enginesWithParams[searchTypeEngineMap[searchType]]}
             itemsPerPage={parseInt(display.profilesPerPage, 10) || RES_PER_PAGE}
@@ -139,6 +98,7 @@ const FacultyRankTabPanels = ({
             profilesToFilterOut={display.doNotDisplayProfiles}
             display={display}
             rankGroup={rankGroup.toString()}
+            restClientTag="asuis"
           />
         </Tab>
       ))}
@@ -165,7 +125,6 @@ FacultyRankTabPanels.propTypes = {
     title: PropTypes.string,
     campuses: PropTypes.string,
   }),
-  alphaFilter: PropTypes.string,
 };
 
 export default FacultyRankTabPanels;

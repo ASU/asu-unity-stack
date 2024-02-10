@@ -97,6 +97,7 @@ const AllTab = ({
                 // setPromotedResult={site ? setPromotedResult : null}
                 localSection
                 loggedIn={loggedIn}
+                restClientTag="asuis"
               />
             </div>
           )}
@@ -137,6 +138,7 @@ const AllTab = ({
               setPromotedResult={setPromotedProfile}
               hidePaginator
               registerResults={registerResults}
+              restClientTag="asuis"
             />
           </div>
           <div className="students all-content-item">
@@ -152,6 +154,7 @@ const AllTab = ({
               hidePaginator
               registerResults={registerResults}
               icon={["fa", "lock"]}
+              restClientTag="asuis"
             />
           </div>
           <div className="quick-links all-content-item">

@@ -1,6 +1,6 @@
 {
   "name": "@asu/app-webdir-ui",
-  "version": "3.2.5",
+  "version": "3.4.0",
   "description": "App Webdir UI",
   "main": "./dist/webdirUI.cjs.js",
   "browser": "./dist/webdirUI.umd.js",
@@ -43,7 +43,7 @@
     "@asu/components-core": "^3.1.3",
     "@babel/preset-env": "^7.15.0",
     "@babel/preset-react": "^7.14.5",
-    "axios": "^0.24.0",
+    "axios": "^1.6.0",
     "prop-types": "^15.7.2",
     "react": ">= 16.14.0 < 18",
     "react-dom": ">= 16.14.0 < 18",

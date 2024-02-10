@@ -1,8 +1,11 @@
 // @ts-check
-import { Hero, useFetch } from "@asu/components-core";
+import { Hero } from "@asu/components-core";
 import PropTypes, { arrayOf } from "prop-types";
 import React, { useContext, useEffect, useState } from "react";
 
+// @ts-ignore
+import trackReactComponent from "../../../../../shared/services/componentDatalayer";
+import { useFetch } from "../../../../../shared";
 import {
   ErrorAlert,
   Loader,
@@ -89,6 +92,19 @@ const DetailPage = ({
   const url = urlResolver(dataSource, detailPageDefaultDataSource);
   const { defaultState } = useContext(AppContext);
   const { detailPageDefault } = defaultState;
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      trackReactComponent({
+        packageName: "app-degree-pages",
+        component: "DetailPage",
+        type: "NA",
+        configuration: {
+          dataSource,
+        },
+      });
+    }
+  }, []);
 
   useEffect(() => {
     doFetchPrograms(url);

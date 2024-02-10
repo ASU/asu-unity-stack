@@ -1,3 +1,63 @@
+# [@asu/unity-bootstrap-theme-v1.9.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.3...@asu/unity-bootstrap-theme-v1.9.4) (2024-01-29)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** wrap accordion body with collapse class and adjust scss ([8684975](https://github.com/ASU/asu-unity-stack/commit/86849756445e534d630a376097806f92fb65498a))
+
+# [@asu/unity-bootstrap-theme-v1.9.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.2...@asu/unity-bootstrap-theme-v1.9.3) (2024-01-22)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix card padding inconsistancies ([4a858f8](https://github.com/ASU/asu-unity-stack/commit/4a858f8a8a646edd0255cd1e5e5c7f0e507d0e7d))
+
+# [@asu/unity-bootstrap-theme-v1.9.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.1...@asu/unity-bootstrap-theme-v1.9.2) (2024-01-12)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** updated anchor-menu js to match webspark logic ([05ed03d](https://github.com/ASU/asu-unity-stack/commit/05ed03de6d2189b7f259e508c8186591c4f97fe9))
+
+# [@asu/unity-bootstrap-theme-v1.9.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.0...@asu/unity-bootstrap-theme-v1.9.1) (2023-12-04)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fixed horizontal image fitting in card ([8425f6b](https://github.com/ASU/asu-unity-stack/commit/8425f6ba5d732c585d98cd07b9378db80fc20682))
+* **unity-bootstrap-theme:** fixed padding and margin in card Image captions/titles ([d9fd0bc](https://github.com/ASU/asu-unity-stack/commit/d9fd0bce0a2d29b11255b00b7a2a4bdc49a429e3))
+* **unity-bootstrap-theme:** removed border completely  on borderless images ([90b846e](https://github.com/ASU/asu-unity-stack/commit/90b846efd64eb791f0f8844a001e38bdb0a54d42))
+* **unity-bootstrap-theme:** updated cards and images styles ([0d9fe2d](https://github.com/ASU/asu-unity-stack/commit/0d9fe2d31c7f51fd1f0f645f30c0636f9efe941b))
+* **unity-bootstrap-theme:** updated ranking cards lg image styles ([96e398c](https://github.com/ASU/asu-unity-stack/commit/96e398cac8ea8ba92914406c46b3496ac0cd045e))
+
+# [@asu/unity-bootstrap-theme-v1.9.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.8.0...@asu/unity-bootstrap-theme-v1.9.0) (2023-11-22)
+
+
+### Features
+
+* **unity-bootstrap-theme:** Add Javascript Panel and Readme ([eea68f4](https://github.com/ASU/asu-unity-stack/commit/eea68f4fea7ca7a652075a2ee45212006a29368a))
+
+# [@asu/unity-bootstrap-theme-v1.8.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.9...@asu/unity-bootstrap-theme-v1.8.0) (2023-11-07)
+
+
+### Features
+
+* **unity-bootstrap-theme:** disable validation features for disabled inputs ([6d04be3](https://github.com/ASU/asu-unity-stack/commit/6d04be3502e04c03469f0a96adcbc7db00020a8c))
+
+# [@asu/unity-bootstrap-theme-v1.7.9](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.8...@asu/unity-bootstrap-theme-v1.7.9) (2023-11-07)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** remove duplicate container rules ([950b397](https://github.com/ASU/asu-unity-stack/commit/950b39763ba266d22a6512af850519a077daf384))
+
+# [@asu/unity-bootstrap-theme-v1.7.8](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.7...@asu/unity-bootstrap-theme-v1.7.8) (2023-11-07)
+
+
+### Bug Fixes
+
+* update yarn.lock, address storybook tweak needed for unity-bootstrap-theme ([63c6f0d](https://github.com/ASU/asu-unity-stack/commit/63c6f0de6d7b00cf716d7ec874c2ba1a3dfce14e))
+
 # [@asu/unity-bootstrap-theme-v1.7.7](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.7.6...@asu/unity-bootstrap-theme-v1.7.7) (2023-10-18)
 
 

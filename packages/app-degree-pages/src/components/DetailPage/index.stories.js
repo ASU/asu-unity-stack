@@ -177,7 +177,7 @@ const defaultArgs = {
         url: "#",
       },
       {
-        text: "West campus",
+        text: "West Valley campus",
         url: "#",
       },
       {

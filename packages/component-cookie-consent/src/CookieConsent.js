@@ -4,8 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 
+// eslint-disable-next-line import/no-unresolved
+import trackReactComponent from "../../../shared/services/componentDatalayer";
+import { trackGAEvent } from "../../../shared";
 import { CookieConsentWrapper } from "./CookieConsent.styles";
-import { trackGAEvent } from "./core/services/googleAnalytics";
 import { addDays } from "./core/utils/helpers";
 
 const defaultGAEvent = {
@@ -50,6 +52,20 @@ const CookieConsent = ({ enableCookieConsent, expirationTime }) => {
     updateLocalStorage();
     updateEasingState();
   };
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      trackReactComponent({
+        packageName: "component-cookie-consent",
+        component: "CookieConsent",
+        type: "NA",
+        configuration: {
+          expirationTime,
+          enableCookieConsent,
+        },
+      });
+    }
+  }, []);
 
   useEffect(() => {
     const { localStorage } = window;

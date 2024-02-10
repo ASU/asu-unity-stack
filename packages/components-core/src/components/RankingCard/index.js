@@ -2,8 +2,7 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
-import { trackGAEvent } from "../../core/services/googleAnalytics";
-import { sanitizeDangerousMarkup } from "../../core/utils/html-utils";
+import { trackGAEvent, sanitizeDangerousMarkup } from "../../../../../shared";
 // eslint-disable-next-line import/no-cycle
 import { Image } from "../Image";
 
