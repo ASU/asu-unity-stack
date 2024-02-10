@@ -147,12 +147,7 @@ function degreeDataPropResolverService(row = {}) {
     getAsuLangReqFlag: () => row["languageRequired"],
     hasAsuLangReqFlag: () => row["languageRequired"],
     // asuMathReqFlag
-    hasMathReqFlag: () => row["mathRequired "],
-    getAdditionalMathReqCourse: () => {
-      const mathCourseRequiredObject = row["firstMathCourseRequired"];
-      if (!mathCourseRequiredObject) return "";
-      return `${mathCourseRequiredObject.subject} ${mathCourseRequiredObject.catalogNumber} - ${mathCourseRequiredObject.description}`;
-    },
+    hasMathReqFlag: () => row["mathRequired"],
     getOtherMathReqCourse: () => row["firstMathCourseRequiredSupplementalText"],
     getMathIntensity: () => row["mathIntensityDescription"],
     /** @return {string} */

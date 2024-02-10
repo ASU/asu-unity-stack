@@ -70,18 +70,18 @@ const renderExtraInfo = ({ resolver }) => (
   <div>
     <div>
       <strong>Additional Program Fee: </strong>
-      {resolver.hasAsuProgramFee() && "Yes"}
+      {resolver.hasAsuProgramFee() ? "Yes" : "No"}
     </div>
     <div>
       <strong>Second Language Requirement: </strong>
       {resolver.hasAsuLangReqFlag() ? "Yes" : "No"}
     </div>
 
-    <div>
-      {resolver.hasMathReqFlag() && (
+    {resolver.hasMathReqFlag() && (
+      <div>
         <div>
           <strong>First Required Math Course:</strong>
-          <span>{resolver.getAdditionalMathReqCourse()}</span>
+          <span>{resolver.getMinMathReq()}</span>
           {resolver.getOtherMathReqCourse() && (
             <span
               dangerouslySetInnerHTML={sanitizeDangerousMarkup(
@@ -90,13 +90,15 @@ const renderExtraInfo = ({ resolver }) => (
             />
           )}
         </div>
-      )}
-    </div>
+      </div>
+    )}
 
-    <div>
-      <strong>Math Intensity:</strong>
-      {resolver.getMathIntensity()}
-    </div>
+    {resolver.getMathIntensity() && (
+      <div>
+        <strong>Math Intensity:</strong>
+        {resolver.getMathIntensity()}
+      </div>
+    )}
   </div>
 );
 

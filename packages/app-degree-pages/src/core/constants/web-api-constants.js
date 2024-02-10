@@ -16,7 +16,8 @@ const listingPageDefaultDataSource = {
     acceleratedAcadPlanCodes,concurrentAcadPlanCodes,academicOfficeUrl,
     academicOfficeLocation,marketingText,fullDescription,customText,
     mathIntensityCode,mathIntensityDescription,firstMathCourseRequired,
-    mathRequired,emailAddr,campusesOffered`,
+    mathRequired,emailAddr,campusesOffered,changeMajorRequirementsText,
+    additionalFee,firstMathCourseRequiredSupplementalText`,
   degreeType: "UG",
 };
 
@@ -32,7 +33,9 @@ const detailPageDefaultDataSource = {
   acceleratedAcadPlanCodes,concurrentAcadPlanCodes,academicOfficeUrl,
   academicOfficeLocation,marketingText,fullDescription,customText,
   mathIntensityCode,mathIntensityDescription,firstMathCourseRequired,
-  mathRequired,emailAddr,campusesOffered`,
+  mathRequired,emailAddr,campusesOffered,changeMajorRequirementsText,
+  careerData,careerOpportunities,globalExperienceText,
+  firstMathCourseRequiredSupplementalText`,
 };
 
 export {
