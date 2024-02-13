@@ -28,16 +28,9 @@ spec:
     }
     environment {
         HOME='.'
-        // GH_URL = 'https://api.github.com'
-        // GH_PREFIX = 'asu'
         RAW_GH_TOKEN = credentials('github-org-asu-pac')
-        // TODO After transition to new registry is complete, we can use the
-        // same token as GH_TOKEN since registry will be GitHub Packages.
-        // NPM_TOKEN = credentials('github-org-asu-pac')
         NPM_TOKEN = credentials('NPM_TOKEN')
         NODE_AUTH_TOKEN = credentials('github-org-asu-pac')
-        // PERCY_TOKEN_COMPONENTS_CORE = credentials("PERCY_TOKEN_COMPONENTS_CORE")
-        // PERCY_TOKEN_BOOTSTRAP = credentials("PERCY_TOKEN_BOOTSTRAP")
     }
     options {
       buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
@@ -80,10 +73,7 @@ spec:
         }
         stage('Visual Regression Testing') {
           when {
-              allOf {
-                  branch 'PR-*'
-                  expression { env.CHANGE_TARGET == 'dev' }
-              }
+              expression { env.CHANGE_TARGET == 'dev' }
           }
           steps {
               container('node18') {
