@@ -17,7 +17,7 @@ async function fetchAcademicPlans(acadPlanCodes) {
             ),
             // Timeout after 5 seconds
             new Promise((_, reject) =>
-              setTimeout(() => reject(new Error("timeout")), 5000)
+              setTimeout(() => reject(new Error("timeout")), 10000)
             ),
           ]);
           const data = await response.json();
