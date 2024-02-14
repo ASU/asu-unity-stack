@@ -86,7 +86,6 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "@storybook/addon-knobs": "^6.2.9",
     "classnames": "^2.2.6",
     "date-fns": "^2.19.0",
     "phone-fns": "^3.2.3",
