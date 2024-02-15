@@ -14,12 +14,10 @@ module.exports = {
         backgrounds: false, // 👈 disable the backgrounds addon
       },
     },
-    "@storybook/addon-interactions",
-    "@storybook/addon-docs",
   ],
-  framework: "@storybook/react",
-  core: {
-    builder: "webpack5",
+  framework: {
+    name: "@storybook/react-webpack5",
+    options: {}
   },
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'

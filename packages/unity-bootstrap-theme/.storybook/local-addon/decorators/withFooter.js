@@ -1,8 +1,9 @@
 import React, { useEffect, useRef} from 'react';
 import { makeDecorator } from '@storybook/addons';
 
-import { GlobalElementsOnly as Footer } from "../../../stories/organisms/global-footer/global-footer.templates.stories";
+import { GlobalElementsOnly as Footer } from "../../../stories/organisms/global-footer/global-footer.templates";
 import { initFooterGA } from "../../../stories/organisms/global-footer/global-footer"
+import { DefaultContainer } from '../../../../../shared/components/Layout';
 
 export const withFooter = makeDecorator({
   name: 'withFooter',
@@ -26,7 +27,7 @@ export const withFooter = makeDecorator({
 
     return <>
       {storyFn(context)}
-      {isStory && isFooterActive && Footer }
+      {isStory && isFooterActive && <Footer /> }
     </>
   }
 });

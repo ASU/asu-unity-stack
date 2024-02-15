@@ -6,7 +6,7 @@ export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   options: {
     storySort: {
-      order: [ListingPage.title, DetailPage.title],
+      order: [`${ListingPage.title}`, `${DetailPage.title}`],
     },
   },
 };
