@@ -24,6 +24,7 @@
  * @property {TagsProps[]} [tags]
  * @property {boolean} [showBorders]
  * @property {string} [cardLink]
+ * @property {object} [customClasses]
  */
 
 /**

@@ -45,6 +45,7 @@ export const Card = ({
   tags,
   showBorders,
   cardLink,
+  customClasses = {},
 }) => {
   return (
     <BaseCard
@@ -65,6 +66,7 @@ export const Card = ({
       tags={tags}
       showBorders={showBorders}
       cardLink={cardLink}
+      customClasses={customClasses}
     />
   );
 };
@@ -151,6 +153,13 @@ Card.propTypes = {
    * Card link
    */
   cardLink: PropTypes.string,
+  /**
+   * Custom classes
+   */
+  customClasses: PropTypes.shape({
+    cardWrapper: PropTypes.string,
+    imageWrapper: PropTypes.string,
+  }),
 };
 
 Card.defaultProps = {
@@ -192,6 +201,7 @@ const BaseCard = ({
   tags,
   showBorders,
   cardLink,
+  customClasses,
 }) => {
   const cardClass = classNames("card", "cards-components", {
     [`card-degree`]: type === "degree",
@@ -200,6 +210,7 @@ const BaseCard = ({
     [`w-${width.replace("%", "")}`]: width !== "100%",
     [`card-horizontal`]: horizontal,
     [`borderless`]: !showBorders,
+    [`${customClasses?.cardWrapper}`]: customClasses?.cardWrapper != null,
   });
 
   return (
@@ -210,7 +221,12 @@ const BaseCard = ({
             src={image}
             alt={imageAltText}
             dataTestId="card-image"
-            cssClasses={["card-img-top"]}
+            cssClasses={[
+              "card-img-top",
+              `${
+                customClasses?.imageWrapper ? customClasses?.imageWrapper : ""
+              }`,
+            ]}
             cardLink={cardLink}
             title={title}
           />
@@ -294,6 +310,10 @@ BaseCard.propTypes = {
   ),
   showBorders: PropTypes.bool,
   cardLink: PropTypes.string,
+  customClasses: PropTypes.shape({
+    cardWrapper: PropTypes.string,
+    imageWrapper: PropTypes.string,
+  }),
 };
 
 BaseCard.defaultProps = {
