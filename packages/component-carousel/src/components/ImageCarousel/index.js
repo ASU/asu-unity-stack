@@ -67,6 +67,7 @@ const ImageCarousel = ({
   width = undefined,
   maxWidth = undefined,
   imageAutoSize = true,
+  customClasses={},
 }) => {
   const carouselItems = imageItems.map(htmlTemplate);
   const activateGlideActions = imageItems.length > perView;
@@ -84,6 +85,7 @@ const ImageCarousel = ({
       hasNavButtons={activateGlideActions}
       isDraggable={activateGlideActions}
       hasShadow
+      customClasses={customClasses}
     />
   );
 };
@@ -95,6 +97,10 @@ ImageCarousel.propTypes = {
   width: PropTypes.string,
   maxWidth: PropTypes.string,
   imageAutoSize: PropTypes.bool,
+  customClasses: PropTypes.shape({
+    cardWrapper: PropTypes.string,
+    imageWrapper: PropTypes.string,
+  }),
 };
 
 export { ImageCarousel, htmlTemplate };

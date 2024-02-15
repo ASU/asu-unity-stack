@@ -45,6 +45,7 @@
  * @property {boolean} [cardHorizontal]
  * @property {"stack" | "inline"} [cardEventFormat]
  * @property {"default" | "degree" | "event" | "news" | "story"} [cardType]
+ * @property {Object.<string, string>} [customClasses]
  */
 
 /**

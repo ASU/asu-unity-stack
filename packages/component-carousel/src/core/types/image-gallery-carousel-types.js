@@ -17,6 +17,7 @@
  * @property {string} [maxWidth]
  * @property {boolean} [hasContent]
  * @property {boolean} [imageAutoSize]
+ * @property {Object.<string, string>} [customClasses]
  */
 
 /**

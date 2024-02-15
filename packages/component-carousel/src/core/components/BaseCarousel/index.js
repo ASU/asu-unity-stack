@@ -39,7 +39,11 @@ import { calcualteViewItems } from "./helper/width-calculator";
  *            imageAutoSize?: boolean
  *            hasPeek?: boolean
  *            isDraggable?: boolean
- *            hasShadow: boolean
+ *            hasShadow: boolean,
+ *           customClasses?: {
+ *            cardWrapper?: string
+ *           imageWrapper?: string
+ *           }
  *          }} props
  * @returns
  */
@@ -61,6 +65,7 @@ const BaseCarousel = ({
   hasPeek = true,
   isDraggable = true,
   hasShadow = true,
+  customClasses = {},
 }) => {
   // Only prop for the slider configs we expose is perView. Everything else is
   // considered locked down for Web Standards 2.
@@ -106,14 +111,14 @@ const BaseCarousel = ({
     <div
       role={role}
       aria-labelledby={ariaLabelledBy}
-      className={`glide ${cssClass}`}
+      className={`glide ${cssClass} ${customClasses?.cardWrapper || ""}`}
       id={instanceName}
       style={{ width, maxWidth }}
       data-remove-side-background={removeSideBackground}
       data-image-auto-size={imageAutoSize}
       data-has-shadow={hasShadow}
     >
-      <div className="glide__track" data-glide-el="track">
+      <div className={`glide__track ${customClasses?.imageWrapper || ""}`}data-glide-el="track">
         <SliderItems carouselItems={carouselItems} />
       </div>
 
@@ -149,6 +154,10 @@ BaseCarousel.propTypes = {
   hasPeek: PropTypes.bool,
   isDraggable: PropTypes.bool,
   hasShadow: PropTypes.bool,
+  customClasses: PropTypes.shape({
+    cardWrapper: PropTypes.string,
+    imageWrapper: PropTypes.string,
+  }),
 };
 
 export { BaseCarousel, calcualteViewItems };

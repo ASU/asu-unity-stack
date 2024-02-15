@@ -76,6 +76,7 @@ const CardCarousel = ({
   width = undefined,
   maxWidth = undefined,
   imageAutoSize = true,
+  customClasses = {},
 }) => {
   const carouselItems = cardItems.map(item =>
     htmlTemplate(item, cardType, cardHorizontal, cardEventFormat)
@@ -95,6 +96,7 @@ const CardCarousel = ({
       hasNavButtons={activateGlideActions}
       isDraggable={activateGlideActions}
       hasShadow
+      customClasses={customClasses}
     />
   );
 };
@@ -121,6 +123,10 @@ CardCarousel.propTypes = {
   width: PropTypes.string,
   maxWidth: PropTypes.string,
   imageAutoSize: PropTypes.bool,
+  customClasses: PropTypes.shape({
+    cardWrapper: PropTypes.string,
+    imagfeWrapper: PropTypes.string,
+  }),
 };
 
 export { CardCarousel };
