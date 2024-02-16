@@ -1,5 +1,7 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Icons", "Design");
+export default {
+  title: "Design/Icons",
+};
 
 export const navigationalIcons = createStory(
   <div>

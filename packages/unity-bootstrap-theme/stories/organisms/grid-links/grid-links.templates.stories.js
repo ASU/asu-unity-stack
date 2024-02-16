@@ -42,12 +42,10 @@ const extraOptions = {
   },
 };
 
-export default createComponent(
-  "Grid Links",
-  "Organisms",
-  "Templates",
-  extraOptions
-);
+export default {
+  title: "Organisms/Grid Links/Templates",
+  argTypes: extraOptions,
+};
 
 export const BackgroundWhiteStory = createStory(args => {
   return (

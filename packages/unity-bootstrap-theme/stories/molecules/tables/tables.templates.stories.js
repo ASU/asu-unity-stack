@@ -8,12 +8,10 @@ const extraOptions = {
   },
 };
 
-export default createComponent(
-  "Tables",
-  "Molecules",
-  "Templates",
-  extraOptions
-);
+export default {
+  title: "Molecules/Tables/Templates",
+  argTypes: extraOptions,
+};
 import "./tables";
 
 export const DefaultComponent = createStory(
@@ -280,9 +278,6 @@ export const FixedComponent = createStory(
       </table>
     </div>
   </div>,
-  {
-    initFunc: triggerDOMContentLoaded,
-  }
 );
 
 function triggerDOMContentLoaded() {

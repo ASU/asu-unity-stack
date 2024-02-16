@@ -6,7 +6,7 @@ import { ImageCarousel } from ".";
 
 // eslint-disable-next-line jest/no-mocks-import
 import { imageCarouselItems } from "../../../__mocks__/data/props-mock";
-import { Basic as Header } from "../../../../unity-bootstrap-theme/stories/organisms/global-header/global-header.templates.stories";
+import { Basic as Header } from "../../../../unity-bootstrap-theme/stories/organisms/global-header/global-header.templates";
 
 const mockItemWithContent = () =>
   imageCarouselItems.map(item => ({
@@ -63,7 +63,7 @@ const Wrapper = ({ imageItems, perView }) => (
       }
     }
   >
-    {Header}
+    <Header />
     <ImageCarousel
       perView={perView}
       maxWidth={maxWidth}

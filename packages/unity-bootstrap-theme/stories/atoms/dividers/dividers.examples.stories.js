@@ -1,5 +1,7 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Dividers", "Atoms", "Examples");
+export default {
+  title: "Atoms/Dividers/Examples",
+};
 
 export const Divider = createStory(
   <div>

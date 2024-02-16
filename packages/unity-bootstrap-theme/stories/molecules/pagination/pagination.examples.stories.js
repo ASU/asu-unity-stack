@@ -1,5 +1,7 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Pagination", "Molecules", "Examples");
+export default {
+  title: "Molecules/Pagination/Examples",
+};
 import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
 export const DisabledAndActiveStatesComponent = createStory(

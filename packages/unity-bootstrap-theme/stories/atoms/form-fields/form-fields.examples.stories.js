@@ -1,5 +1,7 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Form Fields", "Atoms", "Examples");
+export default {
+  title: "Atoms/Form Fields/Examples",
+};
 import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
 export const TextInputs = createStory(

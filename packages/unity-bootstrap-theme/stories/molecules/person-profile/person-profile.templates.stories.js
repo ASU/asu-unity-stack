@@ -23,12 +23,10 @@ const extraOptions = {
   },
 };
 
-export default createComponent(
-  "Person Profile",
-  "Molecules",
-  "Templates",
-  extraOptions
-);
+export default {
+  title: "Molecules/Person Profile/Templates",
+  argTypes: extraOptions,
+};
 
 const PersonProfile = props => (
   <div

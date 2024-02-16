@@ -8,12 +8,10 @@ const extraOptions = {
   },
 };
 
-export default createComponent(
-  "Content Sections/Card And Image",
-  "Molecules",
-  "Templates",
-  extraOptions
-);
+export default {
+  title: "Molecules/Content Sections/Card And Image/Templates",
+  argTypes: extraOptions,
+};
 
 export const LeftFloatedCard = createStory(args => {
   return (

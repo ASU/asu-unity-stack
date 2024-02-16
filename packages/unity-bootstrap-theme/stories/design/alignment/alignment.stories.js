@@ -1,5 +1,7 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Alignment", "Design");
+export default {
+  title: "Design/Alignment",
+};
 
 export const TemporaryStory = createStory(
   <div className="container">

@@ -4,7 +4,9 @@ import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
 import cardsImage from '../cards/cards-image.jpg';
 
-export default createComponent('Image Based Cards', 'Molecules', 'Templates');
+export default {
+  title: "Molecules/Image Based Cards/Templates",
+};
 
 export const PortraitSM = createStory(
   <div className="uds-image-based-card portrait-sm">

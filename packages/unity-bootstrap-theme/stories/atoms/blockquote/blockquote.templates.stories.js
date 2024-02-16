@@ -21,12 +21,10 @@ const extraOptions = {
   },
 };
 
-export default createComponent(
-  "Blockquotes and Testimonials",
-  "Atoms",
-  "Templates",
-  extraOptions
-);
+export default {
+  title: "Atoms/Blockquotes and Testimonials/Templates",
+  argTypes: extraOptions,
+};
 
 export const BasicBlockquote = createStory(args => {
   return (

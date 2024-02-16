@@ -30,7 +30,10 @@ const extraOptions = {
   },
 };
 
-export default createComponent("List", "Atoms", "Examples", extraOptions);
+export default {
+  title: "Atoms/List/Examples",
+  argTypes: extraOptions,
+};
 
 export const UnorderedListMultiLevel = createStory(args => {
   return (

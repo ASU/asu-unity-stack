@@ -23,12 +23,10 @@ const extraOptions = {
   },
 };
 
-export default createComponent(
-  "Heroes",
-  "Molecules",
-  "Templates",
-  extraOptions
-);
+export default {
+  title: "Molecules/Heroes/Templates",
+  argTypes: extraOptions,
+};
 
 export const HeroSmall = createStory(
   <div className="uds-hero-sm has-btn-row">

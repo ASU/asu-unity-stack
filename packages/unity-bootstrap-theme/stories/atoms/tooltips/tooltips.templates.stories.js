@@ -17,7 +17,10 @@ const extraOptions = {
   },
 };
 
-export default createComponent("Tooltips", "Atoms", "Templates", extraOptions);
+export default {
+  title: "Atoms/Tooltips/Templates",
+  argTypes: extraOptions,
+};
 
 export const Tooltips = createStory(args => {
   return (

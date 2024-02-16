@@ -5,7 +5,9 @@ import cardsImage from "./cards-image.jpg";
 import { rankingFunc as initRankFunc } from "./ranking-cards.js";
 import { horizontalCardsMap as horizontalCard } from "./cardVariations.js";
 
-export default createComponent("Cards", "Molecules", "Examples");
+export default {
+  title: "Molecules/Cards/Examples",
+};
 
 export const cardImages = createStory(
   <div style={{ width: "50%" }}>

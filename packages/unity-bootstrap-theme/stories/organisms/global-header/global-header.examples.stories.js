@@ -1,5 +1,12 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Global Header", "Organisms", "Examples", {header:null, template:null});
+import React from "react";
+export default {
+  title: "Organisms/Global Header/Examples",
+  parameters: {
+    header: {
+      disable: true
+    }
+  }
+};
 
 import {
   Basic,
@@ -8,23 +15,32 @@ import {
   NoNavigationAndWithButtons,
   ScrolledState,
   Partner,
-} from "./global-header.templates.stories.js";
-import { initGlobalHeader as initFunc } from "@asu/unity-bootstrap-theme/js/global-header.js";
-const options = {
-  initFunc,
-  omitTemplate: true
-}
-export const BasicExample = createStory(Basic, options);
+} from "./global-header.templates.js";
 
 
-export const DropDownMenusExample = createStory(DropDownMenus, options);
-export const NoNavigationExample = createStory(NoNavigation, options);
-export const NoNavigationAndWithButtonsExample = createStory(
-  NoNavigationAndWithButtons,
-  options
-);
-export const StickyNoNavigationExample = createStory(
-  <>
+const Template = ({children}) => <div id="html-root">{children}</div>
+
+export const BasicExample = Template.bind({});
+BasicExample.args = {
+  children: <Basic />,
+};
+
+
+export const DropDownMenusExample = Template.bind({});
+DropDownMenusExample.args = {
+  children: <DropDownMenus />,
+};
+export const NoNavigationExample = Template.bind({});
+NoNavigationExample.args = {
+  children: <NoNavigation />,
+};
+export const NoNavigationAndWithButtonsExample = Template.bind({});
+NoNavigationAndWithButtonsExample.args = {
+  children: <NoNavigationAndWithButtons />,
+};
+export const StickyNoNavigationExample = Template.bind({});
+StickyNoNavigationExample.args = {
+  children: <>
     {NoNavigationAndWithButtons}
     <main>
       <div
@@ -35,8 +51,13 @@ export const StickyNoNavigationExample = createStory(
       <div className="bg-gray-3" style={{ height: "200vh" }}></div>
     </main>
   </>,
-  options
-);
+};
 
-export const ScrolledStateExample = createStory(ScrolledState, options);
-export const PartnerExample = createStory(Partner, options);
+export const ScrolledStateExample = Template.bind({});
+ScrolledStateExample.args = {
+  children: <ScrolledState />,
+};
+export const PartnerExample = Template.bind({});
+PartnerExample.args = {
+  children: <Partner />,
+};

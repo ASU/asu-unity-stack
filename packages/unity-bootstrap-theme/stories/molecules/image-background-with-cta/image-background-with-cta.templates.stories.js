@@ -1,9 +1,7 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent(
-  "Content Sections/Image Background With Call To Action",
-  "Molecules",
-  "Templates"
-);
+export default {
+  title: "Molecules/Content Sections/Image Background With Call To Action/Templates",
+};
 
 export const Default = createStory(
   <section

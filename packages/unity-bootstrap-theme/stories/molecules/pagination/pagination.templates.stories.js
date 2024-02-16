@@ -22,12 +22,10 @@ const extraOptions = {
   },
 };
 
-export default createComponent(
-  "Pagination",
-  "Molecules",
-  "Templates",
-  extraOptions
-);
+export default {
+  title: "Molecules/Pagination/Templates",
+  argTypes: extraOptions,
+};
 
 export const Basic = createStory(
   args => {

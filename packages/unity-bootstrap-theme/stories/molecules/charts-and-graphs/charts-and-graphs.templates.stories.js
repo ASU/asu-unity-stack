@@ -1,7 +1,9 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
 import { initChart } from "./charts-and-graphs";
 
-export default createComponent("Charts And Graphs", "Molecules", "Templates");
+export default {
+  title: "Molecules/Charts And Graphs/Templates",
+};
 
 export const DonutChartMarkUp = createStory(
   <div className="uds-charts-and-graphs-container">

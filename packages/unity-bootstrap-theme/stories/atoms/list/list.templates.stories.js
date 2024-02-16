@@ -30,7 +30,10 @@ const extraOptions = {
   },
 };
 
-export default createComponent("List", "Atoms", "Templates", extraOptions);
+export default {
+  title: "Atoms/List/Templates",
+  argTypes: extraOptions,
+};
 
 export const UnorderedList = createStory(args => {
   return (

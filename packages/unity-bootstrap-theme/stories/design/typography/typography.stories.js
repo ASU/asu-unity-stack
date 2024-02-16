@@ -1,5 +1,7 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Typography", "Design");
+export default {
+  title: "Design/Typography",
+};
 
 export const Componentfont = createStory(
   <div className="container">

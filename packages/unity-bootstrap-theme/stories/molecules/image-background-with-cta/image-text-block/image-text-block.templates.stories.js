@@ -36,12 +36,10 @@ const extraOptions = {
   },
 };
 
-export default createComponent(
-  "Content Sections/Image And Text Block",
-  "Molecules",
-  "Templates",
-  extraOptions
-);
+export default {
+  title: "Molecules/Content Sections/Image And Text Block/Templates",
+  argTypes: extraOptions,
+};
 
 export const ImageLeftOrRight = createStory(args => {
   return (

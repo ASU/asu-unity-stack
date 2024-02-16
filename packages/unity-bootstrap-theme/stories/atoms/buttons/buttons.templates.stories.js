@@ -1,4 +1,4 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
+import { createStory } from "../../../helpers/wrapper.js";
 import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
 /*
@@ -38,7 +38,10 @@ const extraOptions = {
     defaultValue: false,
   },
 };
-export default createComponent("Buttons", "Atoms", "Templates", extraOptions);
+export default {
+  title: "Atoms/Buttons/Templates",
+  argTypes: extraOptions,
+}
 
 export const BasicButton = createStory(
   args => {

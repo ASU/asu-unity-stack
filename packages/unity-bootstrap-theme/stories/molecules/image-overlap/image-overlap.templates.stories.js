@@ -12,12 +12,10 @@ const extraOptions = {
   },
 };
 
-export default createComponent(
-  "Content Sections/Image Overlap",
-  "Molecules",
-  "Templates",
-  extraOptions
-);
+export default {
+  title: "Molecules/Content Sections/Image Overlap/Templates",
+  argTypes: extraOptions,
+};
 
 export const ImageOverlapRightOrLeft = createStory(
   args => {

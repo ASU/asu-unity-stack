@@ -1,9 +1,7 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent(
-  "Content Sections/Quote On Image Background",
-  "Molecules",
-  "Templates"
-);
+export default {
+  title: "Molecules/Content Sections/Quote On Image Background/Templates",
+};
 
 export const Default = createStory(
   <div

@@ -22,12 +22,10 @@ const extraOptions = {
   },
 };
 
-export default createComponent(
-  "Banners",
-  "Molecules",
-  "Templates",
-  extraOptions
-);
+export default {
+  title: "Molecules/Banners/Templates",
+  argTypes: extraOptions,
+};
 
 export const Banner = createStory(
   args => {

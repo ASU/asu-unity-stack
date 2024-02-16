@@ -4,11 +4,9 @@ import React from 'react';
 import { createComponent, createStory } from '../../../helpers/wrapper.js';
 import cardsImage from '../cards/cards-image.jpg';
 
-export default createComponent(
-  'Image Based Card And Hover',
-  'Molecules',
-  'Templates'
-);
+export default {
+  title: "Molecules/Image Based Card And Hover/Templates",
+};
 
 export const ImageBasedCardsWithCTA = createStory(
   <div className="content-section text-white">

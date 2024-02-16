@@ -7,7 +7,9 @@ import stockVideo from "../../atoms/video/stock-video-person-drawing.mp4";
 import cardsImage from "../cards/cards-image.jpg";
 import { initVideo as initFunc } from "./heroes-video";
 
-export default createComponent("Heroes", "Molecules", "Examples");
+export default {
+  title: "Molecules/Heroes/Examples",
+};
 
 export const HeroSmallOneButton = createStory(
   <div className="uds-hero-sm has-btn-row">

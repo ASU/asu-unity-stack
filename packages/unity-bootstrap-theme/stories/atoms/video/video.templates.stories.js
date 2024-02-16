@@ -9,7 +9,10 @@ const extraOptions = {
   },
 };
 
-export default createComponent("Videos", "Atoms", "Templates", extraOptions);
+export default {
+  title: "Atoms/Videos/Templates",
+  argTypes: extraOptions,
+};
 import "./video";
 import stockVideo from "./stock-video-person-drawing.mp4";
 

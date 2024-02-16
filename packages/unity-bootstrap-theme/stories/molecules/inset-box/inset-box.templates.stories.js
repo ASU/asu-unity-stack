@@ -17,12 +17,10 @@ const extraOptions = {
   },
 };
 
-export default createComponent(
-  "Content Sections/Inset Box",
-  "Molecules",
-  "Templates",
-  extraOptions
-);
+export default {
+  title: "Molecules/Content Sections/Inset Box/Templates",
+  argTypes: extraOptions,
+};
 
 export const Default = createStory(({ background }) => (
   <div className={`uds-inset-box-container ${background}`}>

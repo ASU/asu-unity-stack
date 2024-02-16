@@ -27,7 +27,10 @@ const extraOptions = {
   },
 };
 
-export default createComponent("Alerts", "Atoms", "Templates", extraOptions);
+export default {
+  title: "Atoms/Alerts/Templates",
+  argTypes: extraOptions,
+};
 
 export const Alert = createStory(
   args => {

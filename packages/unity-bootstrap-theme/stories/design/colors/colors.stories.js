@@ -1,5 +1,7 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Colors", "Design");
+export default {
+  title: "Design/Colors",
+};
 
 export const ColorPaletteComponent = createStory(
   <div>

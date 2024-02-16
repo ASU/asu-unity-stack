@@ -42,7 +42,10 @@ const extraOptions = {
   },
 };
 
-export default createComponent("Cards", "Molecules", "Templates", extraOptions);
+export default {
+  title: "Molecules/Cards/Templates",
+  argTypes: extraOptions,
+};
 
 export const cardNoTemplates = args => {
   return (

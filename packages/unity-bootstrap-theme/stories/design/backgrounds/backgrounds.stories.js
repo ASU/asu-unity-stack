@@ -1,5 +1,7 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Backgrounds", "Design");
+export default {
+  title: "Design/Backgrounds",
+};
 
 export const approvedBackgroundColors = createStory(
   <div className="container-fluid mt-2">

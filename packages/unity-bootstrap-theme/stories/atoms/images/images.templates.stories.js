@@ -8,7 +8,10 @@ const extraOptions = {
   },
 };
 
-export default createComponent("Images", "Atoms", "Templates", extraOptions);
+export default {
+  title: "Atoms/Images/Templates",
+  argTypes: extraOptions,
+};
 
 export const LargeImageNoCaptionComponent = createStory(args => {
   return (

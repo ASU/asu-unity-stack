@@ -4,11 +4,9 @@ import {
   layoutNames,
 } from "../../../helpers/wrapper.js";
 import { cardNoTemplates as Card } from "../../molecules/cards/cards.templates.stories";
-export default createComponent(
-  "Content Sections/Card Image And Content",
-  "Organisms",
-  "Templates"
-);
+export default {
+  title: "Organisms/Content Sections/Card Image And Content/Templates",
+};
 import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
 export const CardAndImageContent = createStory(

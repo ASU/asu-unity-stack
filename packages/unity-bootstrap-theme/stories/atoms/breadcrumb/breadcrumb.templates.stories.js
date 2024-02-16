@@ -17,7 +17,9 @@ const extraOptions = {
   },
 };
 
-export default createComponent("Breadcrumbs", "Atoms", "Templates");
+export default {
+  title: "Atoms/Breadcrumbs/Templates",
+};
 
 export const BreadcrumbsAgainstWhiteBackground = createStory(args => {
   return (

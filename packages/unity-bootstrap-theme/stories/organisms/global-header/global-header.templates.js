@@ -3,7 +3,7 @@ import horizlogo from "./arizona-state-university-logo.png";
 import vertlogo from "./arizona-state-university-logo-vertical.png";
 import starbucksLogo from "./asu-starbucks.png";
 
-export const Basic = (
+export const Basic = () => (
   <>
     <header
       id="asu-header"
@@ -341,7 +341,7 @@ export const Basic = (
   </>
 );
 
-export const DropDownMenus = (
+export const DropDownMenus = () => (
   <>
     <header
       id="asu-header"
@@ -1431,7 +1431,7 @@ export const DropDownMenus = (
   </>
 );
 
-export const NoNavigation = (
+export const NoNavigation = () => (
   <>
     <header
       id="asu-header"
@@ -1671,7 +1671,7 @@ export const NoNavigation = (
   </>
 );
 
-export const NoNavigationAndWithButtons = (
+export const NoNavigationAndWithButtons = () => (
   <>
     <header
       id="asu-header"
@@ -1926,7 +1926,7 @@ export const NoNavigationAndWithButtons = (
   </>
 );
 
-export const ScrolledState = (
+export const ScrolledState = () => (
   <>
     <header
       id="asu-header"
@@ -2373,7 +2373,7 @@ export const ScrolledState = (
   </>
 );
 
-export const Partner = (
+export const Partner = () => (
   <>
     <header
       id="asu-header"

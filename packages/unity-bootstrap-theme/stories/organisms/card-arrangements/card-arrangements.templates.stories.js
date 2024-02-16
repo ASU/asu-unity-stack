@@ -1,6 +1,6 @@
 import React from "react";
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
+
 import { cardNoTemplates as Card } from "../../molecules/cards/cards.templates.stories";
 import { horizontalCardsMap as horizontalCard } from "../../molecules/cards/cardVariations.js"
 const extraOptions = {
@@ -36,15 +36,12 @@ const extraOptions = {
       },
     },
   },
-  template: null
 };
 
-export default createComponent(
-  "Content Sections/Card Arrangements",
-  "Organisms",
-  "Templates",
-  extraOptions
-);
+export default {
+  title: "Organisms/Content Sections/Card Arrangements/Templates",
+  argTypes: extraOptions,
+};
 
 export const CardArrangement = createStory(
   args => {
@@ -91,11 +88,9 @@ export const CardArrangement = createStory(
         </div>
       </div>
     );
-  },
-  { initFunc }
+  }
 );
 CardArrangement.args = {
-  template: 1,
   numCards: 2,
 };
 
@@ -138,11 +133,9 @@ export const CardArrangementHorizontal = createStory(
         </div>
       </div>
     );
-  },
-  { initFunc }
+  }
 );
 
 CardArrangementHorizontal.args = {
-  template: 1,
   numCards: 2,
 };

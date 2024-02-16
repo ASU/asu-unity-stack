@@ -1,5 +1,7 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Layout", "Design");
+export default {
+  title: "Design/Layout",
+};
 
 export const ColumnSizingComponent = createStory(
   <div className="container">

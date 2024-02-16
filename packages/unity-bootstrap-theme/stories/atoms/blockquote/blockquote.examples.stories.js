@@ -1,9 +1,7 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent(
-  "Blockquotes and Testimonials",
-  "Atoms",
-  "Examples"
-);
+export default {
+  title: "Atoms/Blockquotes and Testimonials/Examples",
+};
 
 export const BlockquoteNoImage = createStory(
   <div>

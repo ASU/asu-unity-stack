@@ -1,9 +1,7 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent(
-  "Content Sections/Inset Box",
-  "Molecules",
-  "Examples"
-);
+export default {
+  title: "Molecules/Content Sections/Inset Box/Examples",
+};
 
 const DefaultExample = (buttonText = "") =>
   createStory(

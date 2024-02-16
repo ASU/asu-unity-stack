@@ -1,4 +1,4 @@
-import { Basic } from "../../organisms/global-header/global-header.templates.stories.js";
+import { Basic } from "../../organisms/global-header/global-header.templates.js";
 import { initializeAnchorMenu as initFunc } from "./anchor-menu";
 export const AnchorMenu = () => {
 return (

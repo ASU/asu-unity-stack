@@ -1,5 +1,7 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Accordions", "Atoms", "Examples");
+export default {
+  title: "Atoms/Accordions/Examples",
+};
 import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
 export const FoldableCardDefaultOpen = createStory(

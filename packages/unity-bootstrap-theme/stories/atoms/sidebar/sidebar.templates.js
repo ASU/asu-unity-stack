@@ -1,13 +1,7 @@
-import fullWidth from "../../../helpers/templates/full-width.js";
-import { createStory } from "../../../helpers/wrapper.js";
+import React from "react";
 
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
-export default {
-  title: "Atoms/Sidebar/Templates",
-  decorators: [fullWidth]
-};
-export const Sidebar = createStory(
-  <div className="col-md-4">
+export const SidebarComponent = () =>
+  <>
     <h2>Lorem ipsum</h2>
     <div
       className="sidebar-toggler"
@@ -194,10 +188,5 @@ export const Sidebar = createStory(
         </a>
       </div>
     </nav>
-    {/* end .sidebar */}
-  </div>,
-  { initFunc }
-);
-Sidebar.args = {
-  template: 1,
-};
+  </>;
+

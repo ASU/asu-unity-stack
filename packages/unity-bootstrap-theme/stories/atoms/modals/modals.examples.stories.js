@@ -1,5 +1,7 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Modals", "Atoms", "Examples");
+export default {
+  title: "Atoms/Modals/Examples",
+};
 import { initModals as initFunc } from "./modals.js";
 
 export const ModalComponent = createStory(

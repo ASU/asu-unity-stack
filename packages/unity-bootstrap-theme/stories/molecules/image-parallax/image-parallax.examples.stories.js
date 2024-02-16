@@ -1,7 +1,9 @@
 import { createComponent, createStory } from "../../../helpers/wrapper.js";
 import { initImageParallax as initFunc } from "./image-parallax";
 
-export default createComponent("Image Parallax", "Molecules", "Examples");
+export default {
+  title: "Molecules/Image Parallax/Examples",
+};
 
 export const twoImagesInPageOfSections = createStory(
   () => (

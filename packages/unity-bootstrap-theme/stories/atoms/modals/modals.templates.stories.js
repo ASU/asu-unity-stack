@@ -8,7 +8,10 @@ const extraOptions = {
   },
 };
 
-export default createComponent("Modals", "Atoms", "Templates", extraOptions);
+export default {
+  title: "Atoms/Modals/Templates",
+  argTypes: extraOptions,
+};
 import { initModals as initFunc } from "./modals.js";
 
 export const ModalComponent = createStory(
