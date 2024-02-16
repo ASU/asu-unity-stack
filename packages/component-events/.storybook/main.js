@@ -6,6 +6,7 @@ module.exports = {
     "../../../.storybook-config/dataLayerListener",
     "@storybook/addon-essentials",
     "@storybook/addon-a11y",
+    'storybook-addon-mock',
   ],
   stories: ["../src/**/*.stories.js"],
   framework: {

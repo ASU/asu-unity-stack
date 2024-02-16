@@ -8,6 +8,7 @@ module.exports = {
     "@storybook/addon-controls",
     "@storybook/addon-viewport",
     "@storybook/addon-a11y",
+    'storybook-addon-mock',
   ],
   stories: ["../src/**/*.stories.js"],
   framework: {

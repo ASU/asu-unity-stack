@@ -10,6 +10,9 @@ import { createMockParam } from "../../core/utils";
 export default {
   title: "News component/Card Grid News",
   component: CardGridNews,
+  parameters: {
+    mockData: createMockParam(),
+  },
 };
 
 const Template = args => <CardGridNews {...args} />;
@@ -24,6 +27,9 @@ Default.args = {
   },
   ctaButton: {
     url: "https://news.asu.edu",
+  },
+  dataSource: {
+    url: "/api/mocks/feeds-json",
   },
 };
 
@@ -40,6 +46,9 @@ WithCardButtonProps.args = {
     color: "maroon",
     url: "https://news.asu.edu",
     text: "Click to see more news",
+  },
+  dataSource: {
+    url: "/api/mocks/feeds-json",
   },
   cardButton: {
     color: "gold",
@@ -63,6 +72,7 @@ WithFilters.args = {
     text: "Click to see more news",
   },
   dataSource: {
+    url: "/api/mocks/feeds-json",
     filters:
       "nursing_and_health_care,School of Mathematical and Natural Sciences,Student",
     // filters: "Nursing and Health Care",
@@ -84,6 +94,9 @@ WithMaxItems.args = {
     url: "https://news.asu.edu",
     text: "Click to see more news",
   },
+  dataSource: {
+    url: "/api/mocks/feeds-json",
+  },
   maxItems: 3,
 };
 
@@ -91,3 +104,8 @@ WithMaxItems.args = {
  * @type {{ args: FeedType, parameters: object}}
  */
 export const WithNoHeader = Template.bind({});
+WithNoHeader.args = {
+  dataSource: {
+    url: "/api/mocks/feeds-json",
+  },
+};

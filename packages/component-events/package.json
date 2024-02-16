@@ -87,7 +87,7 @@
     "semantic-release": "^17.4.2",
     "semantic-release-monorepo": "^7.0.4",
     "storybook": "^7.6.14",
-    "storybook-addon-mock": "1.7.0",
+    "storybook-addon-mock": "^4.3.0",
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^5.1.1",
     "webpack-filter-warnings-plugin": "^1.2.1",

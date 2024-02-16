@@ -9,6 +9,9 @@ import { createMockParam } from "../../core/utils";
 export default {
   title: "Events component/Cards List",
   component: CardsListEvents,
+  parameters: {
+    mockData: createMockParam(),
+  },
 };
 
 const Template = args => <CardsListEvents {...args} />;
@@ -24,6 +27,9 @@ Default.args = {
     url: "https://asuevents.asu.edu/",
     text: "Click to see more events",
   },
+  dataSource: {
+    url: "/api/mocks/feeds-json",
+  },
 };
 
 /**
@@ -38,8 +44,12 @@ WithFilters.args = {
     text: "Click to see more events",
   },
   dataSource: {
+    url: "/api/mocks/feeds-json",
     filters: "easy_on_the_wallet,alumni_association,staff,sports",
   },
+};
+WithFilters.parameters = {
+  mockData: createMockParam(),
 };
 
 /**
@@ -53,6 +63,9 @@ WithMaxItems.args = {
     url: "https://asuevents.asu.edu/",
     text: "Click to see more events",
   },
+  dataSource: {
+    url: "/api/mocks/feeds-json",
+  },
   maxItems: 4,
 };
 
@@ -60,3 +73,8 @@ WithMaxItems.args = {
  * @type {{ args: FeedType, parameters: object}}
  */
 export const WithNoHeader = Template.bind({});
+WithNoHeader.args = {
+  dataSource: {
+    url: "/api/mocks/feeds-json",
+  },
+};
