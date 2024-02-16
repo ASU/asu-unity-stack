@@ -1,5 +1,4 @@
 import React from "react";
-import withMock from "storybook-addon-mock";
 
 import { CardsListEvents } from ".";
 
@@ -10,7 +9,6 @@ import { createMockParam } from "../../core/utils";
 export default {
   title: "Events component/Cards List",
   component: CardsListEvents,
-  decorators: [withMock],
 };
 
 const Template = args => <CardsListEvents {...args} />;
@@ -26,12 +24,6 @@ Default.args = {
     url: "https://asuevents.asu.edu/",
     text: "Click to see more events",
   },
-  dataSource: {
-    url: "/api/mocks/feeds-json",
-  },
-};
-Default.parameters = {
-  mockData: createMockParam(),
 };
 
 /**
@@ -46,12 +38,8 @@ WithFilters.args = {
     text: "Click to see more events",
   },
   dataSource: {
-    url: "/api/mocks/feeds-json",
     filters: "easy_on_the_wallet,alumni_association,staff,sports",
   },
-};
-WithFilters.parameters = {
-  mockData: createMockParam(),
 };
 
 /**
@@ -65,24 +53,10 @@ WithMaxItems.args = {
     url: "https://asuevents.asu.edu/",
     text: "Click to see more events",
   },
-  dataSource: {
-    url: "/api/mocks/feeds-json",
-  },
   maxItems: 4,
-};
-WithMaxItems.parameters = {
-  mockData: createMockParam(),
 };
 
 /**
  * @type {{ args: FeedType, parameters: object}}
  */
 export const WithNoHeader = Template.bind({});
-WithNoHeader.args = {
-  dataSource: {
-    url: "/api/mocks/feeds-json",
-  },
-};
-WithNoHeader.parameters = {
-  mockData: createMockParam(),
-};

@@ -1,6 +1,5 @@
 // @ts-check
 import React from "react";
-import withMock from "storybook-addon-mock";
 
 import { CardListlNews } from "./index";
 
@@ -11,7 +10,6 @@ import { createMockParam } from "../../core/utils";
 export default {
   title: "News component/Card List News",
   component: CardListlNews,
-  decorators: [withMock],
 };
 
 const Template = args => <CardListlNews {...args} />;
@@ -27,12 +25,6 @@ Default.args = {
   ctaButton: {
     url: "https://news.asu.edu",
   },
-  dataSource: {
-    url: "/api/mocks/feeds-json",
-  },
-};
-Default.parameters = {
-  mockData: createMockParam(),
 };
 
 /**
@@ -49,17 +41,11 @@ WithCardButtonProps.args = {
     url: "https://news.asu.edu",
     text: "Click to see more news",
   },
-  dataSource: {
-    url: "/api/mocks/feeds-json",
-  },
   cardButton: {
     color: "gold",
     text: "Read news",
     size: "default", //   "default" | "small" | "medium" | "large"
   },
-};
-WithCardButtonProps.parameters = {
-  mockData: createMockParam(),
 };
 
 /**
@@ -77,15 +63,11 @@ WithFilters.args = {
     text: "Click to see more news",
   },
   dataSource: {
-    url: "/api/mocks/feeds-json",
     filters:
       "nursing_and_health_care,School of Mathematical and Natural Sciences,Student",
     // filters: "Nursing and Health Care",
     // filters: "Health,Journalism",
   },
-};
-WithFilters.parameters = {
-  mockData: createMockParam(),
 };
 
 /**
@@ -102,24 +84,10 @@ WithMaxItems.args = {
     url: "https://news.asu.edu",
     text: "Click to see more news",
   },
-  dataSource: {
-    url: "/api/mocks/feeds-json",
-  },
   maxItems: 2,
-};
-WithMaxItems.parameters = {
-  mockData: createMockParam(),
 };
 
 /**
  * @type {{ args: FeedType, parameters: object}}
  */
 export const WithNoHeader = Template.bind({});
-WithNoHeader.args = {
-  dataSource: {
-    url: "/api/mocks/feeds-json",
-  },
-};
-WithNoHeader.parameters = {
-  mockData: createMockParam(),
-};
