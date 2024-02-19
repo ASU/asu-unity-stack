@@ -15,9 +15,9 @@ import { ASUSearchResultsList } from "../SearchResultsList";
  */
 
 const filtersData = {
-  1: "Faculty",
-  2: "Academic Professionals",
-  3: "Fixed-Term Faculty and Academic Professionals",
+  1: "TEST Faculty",
+  2: "TEST Academic Professionals",
+  3: "TEST Fixed-Term Faculty and Academic Professionals",
 };
 
 /**
