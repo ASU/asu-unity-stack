@@ -88,6 +88,7 @@
 /**
  * @typedef {Object} ProgramDescriptionProps
  * @property {ContentItem} content
+ * @property {string} [stemOptText]
  */
 
 /**

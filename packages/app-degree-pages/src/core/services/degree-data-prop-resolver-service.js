@@ -178,8 +178,7 @@ function degreeDataPropResolverService(row = {}) {
     getCollegeAcadOrgJoint: () => {
       const { owners } = row;
       if (!owners) return [];
-
-      const allCollegeAcadOrgs = owners.map(owner => owner.collegeAcadOrg); // TODO: Do we need to include all the owners collegeAcadOrgs when filtering or just the majority owner? UPDATE: Include all > 0 owners in the filter
+      const allCollegeAcadOrgs = owners.map(owner => owner.collegeAcadOrg);
       return allCollegeAcadOrgs;
     },
     /** @return {string} */
@@ -201,6 +200,7 @@ function degreeDataPropResolverService(row = {}) {
 
       return "Major";
     },
+    getStemOptText: () => row["stemOptText"],
     getSubPlnMajorMaps: () =>
       row["majorMapSubplans"]
         ?.map(planInfo => (planInfo.defualtFlag ? planInfo.url : null))

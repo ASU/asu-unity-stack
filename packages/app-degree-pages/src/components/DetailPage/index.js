@@ -187,6 +187,7 @@ const DetailPage = ({
                   {!introContent?.hideProgramDesc ? (
                     <ProgramDescription
                       content={resolver.getFullDescription()}
+                      stemOptText={resolver.getStemOptText()}
                     />
                   ) : null}
 

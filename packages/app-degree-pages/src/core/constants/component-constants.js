@@ -28,6 +28,8 @@ const GRID_PROGRAMS_ID = "degree-list-programs";
 
 const ERROR_MESSAGE = "Sorry, Something went wrong.";
 
+const STEM_OPT_HEADER_TEXT = "STEM-OPT for international students on F-1 visas";
+
 export {
   tagHeadings,
   tagHeadingList,
@@ -36,4 +38,5 @@ export {
   GRID_VIEW_ID,
   LIST_VIEW_ID,
   ERROR_MESSAGE,
+  STEM_OPT_HEADER_TEXT,
 };

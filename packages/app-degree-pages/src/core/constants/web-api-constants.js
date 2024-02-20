@@ -35,7 +35,7 @@ const detailPageDefaultDataSource = {
   mathIntensityCode,mathIntensityDescription,firstMathCourseRequired,
   mathRequired,emailAddr,campusesOffered,changeMajorRequirementsText,
   careerData,careerOpportunities,globalExperienceText,
-  firstMathCourseRequiredSupplementalText`,
+  firstMathCourseRequiredSupplementalText,stemOptText`,
 };
 
 export {
