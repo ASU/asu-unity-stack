@@ -74,8 +74,6 @@ export default {
 const maxWidth = "600px";
 const maxHeight = "600px";
 
-const GROUP_STYLE = "Styles";
-
 /**
  *
  * @param {{ children: JSX.Element}} props
