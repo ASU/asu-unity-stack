@@ -1,10 +1,13 @@
-import { createStory } from "../../../helpers/wrapper.js";
+import React from "react";
+
+import { defaultDecorator } from "../../../../../shared/components/Layout";
+
 export default {
   title: "Molecules/Content Sections/Inset Box/Examples",
+  decorators: [ defaultDecorator ],
 };
 
-const DefaultExample = (buttonText = "") =>
-  createStory(
+const DefaultExample = ({buttonText = ""}) =>
     <div className="uds-inset-box-container gray-1-bg">
       <div className="uds-inset-box-content">
         <h3>Lorem ipsum dolor sit amet</h3>
@@ -26,14 +29,18 @@ const DefaultExample = (buttonText = "") =>
         </a>
       </div>
     </div>
-  );
+  ;
 
-export const BasicExample = DefaultExample();
-export const BasicExampleWithStackButton = DefaultExample(
-  "Button link here with very long text"
-);
+export const BasicExample = DefaultExample.bind({});
+BasicExample.args = {
+  buttonText: "Button Link here",
+}
+export const BasicExampleWithStackButton = DefaultExample.bind({});
+BasicExampleWithStackButton.args = {
+  buttonText: "Button link here with very long text"
+};
 
-export const ExampleWithBlockquote = createStory(
+export const ExampleWithBlockquote = () => (
   <div className="uds-inset-box-container gray-2-bg">
     <div className="uds-inset-box-content">
       <div className="uds-blockquote uds-testimonial accent-gold">
@@ -55,7 +62,7 @@ export const ExampleWithBlockquote = createStory(
   </div>
 );
 
-export const ExampleWithImageBackground = createStory(
+export const ExampleWithImageBackground = () => (
   <div
     className="uds-inset-box-container image-background"
     style={{

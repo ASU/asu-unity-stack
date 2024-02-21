@@ -1,10 +1,12 @@
-import { createStory } from "../../../helpers/wrapper.js";
+import React from "react";
+
+import { defaultDecorator } from "../../../../../shared/components/Layout";
+
 export default {
   title: "Molecules/Pagination/Examples",
+  decorators: [ defaultDecorator ],
 };
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
-
-export const DisabledAndActiveStatesComponent = createStory(
+export const DisabledAndActiveStatesComponent = () => (
   <nav aria-label="pagination">
     <ul className="pagination">
       <li className="page-item disabled">
@@ -68,11 +70,10 @@ export const DisabledAndActiveStatesComponent = createStory(
         <a aria-label="Next page" className="page-link page-link-icon" href="#" />
       </li>
     </ul>
-  </nav>,
-  { initFunc }
+  </nav>
 );
 
-export const LargeNumbersComponent = createStory(
+export const LargeNumbersComponent = () => (
   <nav aria-label="pagination">
     <ul className="pagination">
       <li className="page-item">
@@ -152,6 +153,5 @@ export const LargeNumbersComponent = createStory(
         <a aria-label="next page" className="page-link page-link-icon" href="#" />
       </li>
     </ul>
-  </nav>,
-  { initFunc }
-);
+  </nav>
+  );

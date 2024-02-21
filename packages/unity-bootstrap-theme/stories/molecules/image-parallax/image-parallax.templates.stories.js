@@ -1,12 +1,20 @@
-import { createStory } from "../../../helpers/wrapper.js";
+import React from "react";
+
+import { defaultDecorator } from "../../../../../shared/components/Layout";
 import { initImageParallax as initFunc } from "./image-parallax";
 
 export default {
   title: "Molecules/Image Parallax/Templates",
+  decorators: [ defaultDecorator ],
+  parameters: {
+    initFunc: {
+      code: initFunc,
+      disable: false,
+    },
+  }
 };
 
-export const ImageParalax = createStory(
-  () => (
+export const ImageParalax = () =>
     <div>
       <h1>Scroll down to view the parallax</h1>
       <div style={{ marginTop: "25vh", marginBottom: "50vh" }}>
@@ -55,10 +63,4 @@ export const ImageParalax = createStory(
           </div>
         </section>
       </div>
-    </div>
-  ),
-  { initFunc }
-);
-ImageParalax.args = {
-  template: 1,
-};
+    </div>;
