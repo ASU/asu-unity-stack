@@ -3,7 +3,6 @@ import { makeDecorator } from '@storybook/addons';
 
 import { GlobalElementsOnly as Footer } from "../../../stories/organisms/global-footer/global-footer.templates";
 import { initFooterGA } from "../../../stories/organisms/global-footer/global-footer"
-import { DefaultContainer } from '../../../../../shared/components/Layout';
 
 export const withFooter = makeDecorator({
   name: 'withFooter',
@@ -21,7 +20,7 @@ export const withFooter = makeDecorator({
     const { globals, parameters } = context;
 
     const footer = parameters?.footer;
-    const isFooterActive = `${globals.footer}` === 'true' && footer?.disable !== true;
+    const isFooterActive = (globals.footer == true && footer?.disable !== true) || footer.forced == true;
 
     const isStory = context.viewMode === 'story';
 

@@ -5,7 +5,7 @@ export default content => {
     <div>
       {/* Storybook Bug, all options must have equal depth when using controls to switch */}
       <div className="row g-0">
-        <div id="html-root" className="col uds-full-width">
+        <div className="col uds-full-width">
           {/* Component start */}
           {content}
           {/* Component end */}

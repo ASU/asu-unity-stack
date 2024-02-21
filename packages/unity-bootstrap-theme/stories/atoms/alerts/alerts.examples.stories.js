@@ -1,10 +1,12 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
+import React from "react";
+
+import { defaultDecorator } from "../../../../../shared/components/Layout";
+
 export default {
   title: "Atoms/Alerts/Examples",
+  decorators: [ defaultDecorator ],
 };
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
-
-export const AlertsComponent = createStory(
+export const AlertsComponent = () => (
   <div>
     <div className="alert alert-warning alert-dismissable" role="alert">
       <div className="alert-icon">
@@ -122,9 +124,5 @@ export const AlertsComponent = createStory(
         </button>
       </div>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
-AlertsComponent.args = {
-  template: 1,
-};

@@ -21,7 +21,7 @@ export const withHeader = makeDecorator({
     const { globals, parameters } = context;
 
     const header = parameters?.header;
-    const isHeaderActive = `${globals.header}` === 'true' && header?.disable !== true;
+    const isHeaderActive = (globals.header == true && header?.disable !== true) || header.forced === true;
 
     const isStory = context.viewMode === 'story';
 

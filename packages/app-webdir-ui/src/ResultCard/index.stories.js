@@ -1,6 +1,6 @@
 import React from "react";
 
-import { DefaultContainer } from "../../../../shared/components/Layout";
+import { defaultDecorator } from "../../../../shared/components/Layout";
 import { subdomainConverter } from "../helpers/dataConverter";
 import data from "./mock-data";
 
@@ -13,7 +13,7 @@ const argTypes = {
 
 export default {
   title: "Atoms/Results Card/Templates",
-  decorators: [story => <DefaultContainer>{story()}</DefaultContainer>],
+  decorators: [defaultDecorator],
   argTypes,
   args: {
     fill: true,

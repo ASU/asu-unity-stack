@@ -1,43 +1,46 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
+import React from "react";
 
-const extraOptions = {
-  bulletColor: {
-    name: "Bullet Color",
-    options: [null, "maroon", "gold"],
-    defaultValue: null,
-    control: {
-      type: "radio",
-      labels: {
-        null: "Default",
-        "maroon": "Maroon",
-        "gold": "Gold",
-      },
-    },
-  },
-  backgroundColor: {
-    name: "Size",
-    options: [null, "smokemode", "light-smokemode", "darkmode"],
-    defaultValue: null,
-    control: {
-      type: "radio",
-      labels: {
-        null: "Default",
-        "smokemode": "Smoke mode",
-        "light-smokemode": "Light Smoke mode",
-        "darkmode": "Dark mode",
-      },
-    },
-  },
-};
+import { defaultDecorator } from "../../../../../shared/components/Layout";
 
 export default {
   title: "Atoms/List/Examples",
-  argTypes: extraOptions,
+  decorators: [ defaultDecorator ],
+  argTypes: {
+    bulletColor: {
+      name: "Bullet Color",
+      options: ["Default", "Maroon", "Gold"],
+      mapping: {
+        "Default": null,
+        "Maroon": "maroon",
+        "Gold": "gold",
+      },
+      control: {
+        type: "radio",
+      },
+    },
+    backgroundColor: {
+      name: "Background Color",
+      options: ["Default", "Smoke mode", "Light Smoke mode", "Dark mode"],
+      mapping: {
+        "Default": null,
+        "Smoke mode": "smokemode",
+        "Light Smoke mode": "light-smokemode",
+        "Dark mode": "darkmode",
+      },
+      control: {
+        type: "radio",
+      },
+    },
+  },
+  args: {
+    bulletColor: "Default",
+    backgroundColor: "Default",
+  },
 };
 
-export const UnorderedListMultiLevel = createStory(args => {
+export const UnorderedListMultiLevel = ({bulletColor, backgroundColor}) => {
   return (
-    <ul className={`uds-list ${args.bulletColor} ${args.backgroundColor}`}>
+    <ul className={`uds-list ${bulletColor} ${backgroundColor}`}>
       <li>
         Lorem ipsum dolor sit amet
         <ul className="uds-list">
@@ -95,14 +98,11 @@ export const UnorderedListMultiLevel = createStory(args => {
       <li>Lorem ipsum dolor sit amet</li>
     </ul>
   );
-});
-UnorderedListMultiLevel.args = {
-  template: 1,
 };
 
-export const OrderedListMultiLevel = createStory(args => {
+export const OrderedListMultiLevel = ({bulletColor, backgroundColor}) => {
   return (
-    <ol className={`uds-list ${args.bulletColor} ${args.backgroundColor}`}>
+    <ol className={`uds-list ${bulletColor} ${backgroundColor}`}>
       <li>
         Lorem ipsum dolor sit amet
         <ol className="uds-list">
@@ -160,7 +160,4 @@ export const OrderedListMultiLevel = createStory(args => {
       <li>Lorem ipsum dolor sit amet</li>
     </ol>
   );
-});
-OrderedListMultiLevel.args = {
-  template: 1,
 };

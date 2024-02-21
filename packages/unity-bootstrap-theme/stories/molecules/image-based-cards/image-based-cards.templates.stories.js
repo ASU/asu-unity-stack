@@ -1,7 +1,7 @@
 import { googleAnalytics as initFunc } from '@asu/unity-bootstrap-theme/js/data-layer.js';
 import React from 'react';
 
-import { createComponent, createStory } from '../../../helpers/wrapper.js';
+import { createStory } from '../../../helpers/wrapper.js';
 import cardsImage from '../cards/cards-image.jpg';
 
 export default {

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { DefaultContainer } from "../../../../shared/components/Layout";
+import { defaultDecorator } from "../../../../shared/components/Layout";
 import { staffConverter } from "../helpers/dataConverter";
 import data from "./mock-data";
 
@@ -26,7 +26,7 @@ const argTypes = {
 export default {
   title: "Atoms/ProfileCard/Templates",
 
-  decorators: [story => <DefaultContainer>{story()}</DefaultContainer>],
+  decorators: [defaultDecorator],
   argTypes,
   args: {
     size: "large",

@@ -1,10 +1,14 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
+import React from "react";
+
+import { defaultDecorator } from "../../../../../shared/components/Layout";
+
 export default {
   title: "Atoms/Buttons/Examples",
+  decorators: [ defaultDecorator ],
 };
 import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
-export const ButtonColorsComponent = createStory(
+export const ButtonColorsComponent = () => (
   <div>
     <br />
     {/* This same google analytics structure is for all the examples */}
@@ -44,12 +48,9 @@ export const ButtonColorsComponent = createStory(
     <button type="button" className="btn btn-dark">
       Dark
     </button>
-  </div>,
-  { initFunc }
+  </div>
 );
-ButtonColorsComponent.args = {
-  template: 1,
-};
+
 
 const sizesDemoStyle = {
   display: "inline-grid",
@@ -59,7 +60,7 @@ const sizesDemoStyle = {
   rowGap: "1rem",
   columnGap: "2rem",
 };
-export const ButtonSizesComponent = createStory(
+export const ButtonSizesComponent = () => (
   <div>
     <div style={sizesDemoStyle}>
       <div>
@@ -131,14 +132,10 @@ export const ButtonSizesComponent = createStory(
         </button>
       </div>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
-ButtonSizesComponent.args = {
-  template: 1,
-};
 
-export const ButtonWithIconComponent = createStory(
+export const ButtonWithIconComponent = () => (
   <div className="container-fluid">
     <div className="col col-sm-12 p-3">
       <a href="#" className="btn btn-gold" role="button">
@@ -149,11 +146,10 @@ export const ButtonWithIconComponent = createStory(
         <span className="fas fa-rocket"></span>&nbsp;&nbsp;Maroon button
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
-export const DisabledStateComponent = createStory(
+export const DisabledStateComponent = () => (
   <div className="container-fluid">
     <div className="col col-sm-12 p-3">
       <button type="button" className="btn btn-gold" disabled>
@@ -184,11 +180,10 @@ export const DisabledStateComponent = createStory(
         Link
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
-export const ButtonTagsComponent = createStory(
+export const ButtonTagsComponent = () => (
   <div className="container-fluid">
     <div className="row">
       <div className="col col-12 col-lg-4 bg-white p-3">
@@ -207,11 +202,10 @@ export const ButtonTagsComponent = createStory(
         </a>
       </div>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
-export const IconOnlyButtonsColorAndSizesComponent = createStory(
+export const IconOnlyButtonsColorAndSizesComponent = () => (
   <div className="container-fluid">
     <div className="row">
       <div className="col col-12 col-lg-4 bg-white p-3">
@@ -256,10 +250,9 @@ export const IconOnlyButtonsColorAndSizesComponent = createStory(
         </button>
       </div>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
-export const IconOnlyButtonsColorCombinationsComponent = createStory(
+export const IconOnlyButtonsColorCombinationsComponent = () => (
   <div className="container-fluid">
     <div className="row">
       <div className="col col-12 col-lg-4 bg-white p-3">
@@ -343,11 +336,10 @@ export const IconOnlyButtonsColorCombinationsComponent = createStory(
         </button>
       </div>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
-export const PrevAndNextButtonsComponent = createStory(
+export const PrevAndNextButtonsComponent = () => (
   <div className="container-fluid">
     <div className="row">
       <div className="col col-12 col-lg-4 bg-white p-3">
@@ -399,8 +391,7 @@ export const PrevAndNextButtonsComponent = createStory(
         </button>
       </div>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
 const demoButtonStyle = {
@@ -408,8 +399,9 @@ const demoButtonStyle = {
   justifyContent: "center",
   paddingTop: "10px",
 };
+
 const TestButtons =
-  ((
+  () =>
     <div>
       <div style={demoButtonStyle}>
         <button type="button" className="btn btn-gold">
@@ -457,5 +449,4 @@ const TestButtons =
         </button>
       </div>
     </div>
-  ),
-  { initFunc });
+  ;

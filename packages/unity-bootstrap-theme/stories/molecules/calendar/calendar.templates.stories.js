@@ -1,12 +1,18 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default {
-  title: "Molecules/Calendar/Templates",
-};
+import React from "react";
+
+import { defaultDecorator } from "../../../../../shared/components/Layout";
 import { initCalendar as initFunc } from "./calendar";
 
-export const CalendarComponent = createStory(<div id="calendar"></div>, {
-  initFunc,
-});
-CalendarComponent.args = {
-  template: 1,
+export default {
+  title: "Molecules/Calendar/Templates",
+  decorators: [ defaultDecorator ],
+  parameters: {
+    initFunc: {
+      code: initFunc,
+      disable: false,
+    },
+  },
 };
+
+export const CalendarComponent = () => <div id="calendar"></div>;
+

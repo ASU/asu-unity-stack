@@ -1,4 +1,4 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
+import { createStory } from "../../../helpers/wrapper.js";
 export default {
   title: "Molecules/Pagination/Examples",
 };

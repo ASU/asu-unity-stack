@@ -1,6 +1,6 @@
 import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
+import { createStory } from "../../../helpers/wrapper.js";
 import cardsImage from "./cards-image.jpg";
 import { rankingFunc as initRankFunc } from "./ranking-cards.js";
 import { horizontalCardsMap as horizontalCard } from "./cardVariations.js";

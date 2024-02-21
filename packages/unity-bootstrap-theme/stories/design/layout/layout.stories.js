@@ -1,9 +1,12 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
+import React from "react";
+
+import { htmlRootDecorator } from "../../../../../shared/components/Layout.js";
 export default {
   title: "Design/Layout",
+  decorators: [htmlRootDecorator],
 };
 
-export const ColumnSizingComponent = createStory(
+export const ColumnSizingComponent = () => (
   <div className="container">
     <div className="row mb-6">
       <div className="col-12">

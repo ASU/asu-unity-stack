@@ -1,9 +1,13 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
+import React from "react";
+
+import { defaultDecorator } from "../../../../../shared/components/Layout";
+
 export default {
   title: "Atoms/Dividers/Examples",
+  decorators: [ defaultDecorator ],
 };
 
-export const Divider = createStory(
+export const Divider = () => (
   <div>
     <h2>
       <span className="highlight-gold">Horizontal Rules</span>

@@ -1,13 +1,6 @@
 import React from "react";
-export default {
-  title: "Organisms/Global Header/Examples",
-  parameters: {
-    header: {
-      disable: true
-    }
-  }
-};
 
+import { htmlRootDecorator } from "../../../../../shared/components/Layout.js";
 import {
   Basic,
   DropDownMenus,
@@ -17,31 +10,27 @@ import {
   Partner,
 } from "./global-header.templates.js";
 
+export default {
+  title: "Organisms/Global Header/Examples",
+  decorators: [ htmlRootDecorator ],
+  parameters: {
+    header: {
+      disable: true
+    }
+  }
+};
+
 
 const Template = ({children}) => <div id="html-root">{children}</div>
 
-export const BasicExample = Template.bind({});
-BasicExample.args = {
-  children: <Basic />,
-};
+export const BasicExample = Basic.bind({});
 
 
-export const DropDownMenusExample = Template.bind({});
-DropDownMenusExample.args = {
-  children: <DropDownMenus />,
-};
-export const NoNavigationExample = Template.bind({});
-NoNavigationExample.args = {
-  children: <NoNavigation />,
-};
-export const NoNavigationAndWithButtonsExample = Template.bind({});
-NoNavigationAndWithButtonsExample.args = {
-  children: <NoNavigationAndWithButtons />,
-};
-export const StickyNoNavigationExample = Template.bind({});
-StickyNoNavigationExample.args = {
-  children: <>
-    {NoNavigationAndWithButtons}
+export const DropDownMenusExample = DropDownMenus.bind({});
+export const NoNavigationExample = NoNavigation.bind({});
+export const NoNavigationAndWithButtonsExample = NoNavigationAndWithButtons.bind({});
+export const StickyNoNavigationExample = () => <>
+    <NoNavigationAndWithButtons/>
     <main>
       <div
         id="skip-to-content"
@@ -50,14 +39,7 @@ StickyNoNavigationExample.args = {
       ></div>
       <div className="bg-gray-3" style={{ height: "200vh" }}></div>
     </main>
-  </>,
-};
+  </>;
 
-export const ScrolledStateExample = Template.bind({});
-ScrolledStateExample.args = {
-  children: <ScrolledState />,
-};
-export const PartnerExample = Template.bind({});
-PartnerExample.args = {
-  children: <Partner />,
-};
+export const ScrolledStateExample = ScrolledState.bind({});
+export const PartnerExample = Partner.bind({});

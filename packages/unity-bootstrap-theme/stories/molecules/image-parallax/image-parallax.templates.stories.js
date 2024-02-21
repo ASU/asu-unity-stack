@@ -1,4 +1,4 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
+import { createStory } from "../../../helpers/wrapper.js";
 import { initImageParallax as initFunc } from "./image-parallax";
 
 export default {

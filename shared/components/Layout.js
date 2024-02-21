@@ -20,10 +20,9 @@ FullLayout.propTypes = {
   ...Base.propTypes,
 };
 
-export const Container = ({children, ...rest}) => {
-
+export const Container = ({children, className = "container", ...rest}) => {
   return (
-    <div className="container" {...rest}>
+    <div className={ className } {...rest}>
       <div className="row">
         {children}
       </div>
@@ -34,12 +33,23 @@ export const Container = ({children, ...rest}) => {
 Container.propTypes = {
   children: Base.propTypes.children,
 };
+export const ContainerFluid = ({children, className = "container-fluid mt-2", ...rest}) => {
+  return (
+    <Container className={ className } {...rest}>
+      {children}
+    </Container>
+  )
+}
 
-export const Column = ({children, col="12", ...rest}) => {
+ContainerFluid.propTypes = {
+  ...Container.propTypes,
+};
+
+export const Column = ({children, className = "", col="12", ...rest}) => {
   const colInt = parseInt(col, 10);
 
   return (
-        <div {...rest} className={classNames({
+        <div {...rest} className={classNames(className, {
           "col": colInt === 0,
           "col-12": colInt === 12,
           "col-xl-3 col-lg-4 col-md-5 col-sm-12": colInt === 3,
@@ -63,7 +73,7 @@ export const DefaultContainer = ({children, ...rest}) => {
 
   return (
     <Container>
-      <Column>
+      <Column {...rest}>
         {children}
       </Column>
     </Container>
@@ -142,3 +152,7 @@ export const LoremContent = () => {
     </p>
   </>);
 }
+
+export const fullLayoutDecorator = (story, context) => <FullLayout>{story(context)}</FullLayout>;
+export const defaultDecorator = (story, context) => <DefaultContainer id="html-root">{story(context)}</DefaultContainer>;
+export const htmlRootDecorator = (story, context)=><div id="html-root">{story(context)}</div>;

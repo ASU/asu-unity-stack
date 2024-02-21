@@ -1,6 +1,10 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
+import React from "react";
+
+import { defaultDecorator } from "../../../../../shared/components/Layout";
+
 export default {
   title: "Atoms/Dividers/Templates",
+  decorators: [ defaultDecorator ],
 };
 
-export const Divider = createStory(<hr className="copy-divider" />);
+export const Divider = () => <hr className="copy-divider" />;
