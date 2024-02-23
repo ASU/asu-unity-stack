@@ -56,6 +56,7 @@
     "commitizen": "^4.2.3",
     "copy-webpack-plugin": "^8.1.1",
     "css-minimizer-webpack-plugin": "^2.0.0",
+    "cypress": "^13.6.6",
     "cz-conventional-changelog": "3.3.0",
     "dompurify": "^2.2.7",
     "eslint": "^7.24.0",
