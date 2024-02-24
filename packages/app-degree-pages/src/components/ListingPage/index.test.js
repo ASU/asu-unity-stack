@@ -28,7 +28,7 @@ const actionUrls = {
 
 /** @type {import("../../core/types/listing-page-types").ProgramListDataSource} */
 const dataSource = {
-  program: "graduate",
+  program: "undergraduate",
   cert: "true",
 };
 
@@ -71,7 +71,7 @@ describe("#ListingPage", () => {
   /** @param {AppProps} props  */
   async function renderListingPage(props) {
     await act(async () => {
-      component = await render(
+      component = render(
         <ListingPage
           appPathFolder={props.appPathFolder}
           actionUrls={props.actionUrls}
@@ -205,8 +205,8 @@ describe("#ListingPage", () => {
       await renderListingPage(customProps);
     });
 
-    it("should `Hero` section be undefined", async () => {
-      expect(container.querySelector(".uds-hero")).not.toBeInTheDocument();
+    it("`Hero` section should be undefined", async () => {
+      expect(container.querySelector("[data-testid='hero']")).not.toBeInTheDocument();
     });
 
     const cases = [
@@ -302,7 +302,7 @@ describe("#ListingPage", () => {
       });
     });
 
-    it("should remove one filter when the you click a summary tag", async () => {
+    it("should remove one filter when you click a summary tag", async () => {
       selectOptionFilters();
       const bthTags = component.getByTestId("summary-filter-tags");
 

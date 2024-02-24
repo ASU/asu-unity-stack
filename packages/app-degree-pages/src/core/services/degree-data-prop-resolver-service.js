@@ -40,7 +40,7 @@ function degreeDataPropResolverService(row = {}) {
     isUndergradProgram: () => isUndergradProgram(row),
     isGradProgram: () => !isUndergradProgram(row),
     isMinorOrCertificate: () => {
-      return !!(row["Degree"] === "Minor" || row["Degree"] === "Certificate");
+      return (row["Degree"] === "Minor" || row["Degree"] === "Certificate");
     },
     /** @returns {"undergrad" |  "graduate"} */
     getProgramType: () => (isUndergradProgram(row) ? "undergrad" : "graduate"),

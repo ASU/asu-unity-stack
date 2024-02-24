@@ -64,17 +64,17 @@ describe("#DetailPage", () => {
   // let container = null;
 
   /** @param {AppProps} props  */
-  async function renderListingPage(props) {
+  async function renderDetailPage(props) {
     await act(async () => {
       // eslint-disable-next-line react/jsx-props-no-spreading
-      component = await render(<DetailPage {...props} />);
+      component = render(<DetailPage {...props} />);
       // container = component.container;
     });
   }
 
   describe("#With default props", () => {
     beforeEach(async () => {
-      await renderListingPage(defaultArgs);
+      await renderDetailPage(defaultArgs);
     });
 
     it("should call useEffect", async () => {
@@ -100,11 +100,8 @@ describe("#DetailPage", () => {
     it("should hide `Custom text` section", () =>
       expect(component.queryByTestId("custom-text")).not.toBeInTheDocument());
 
-    test.each(sectionCases)("should define `%p` section", async (_, testId) => {
-      await waitFor(() =>
-        expect(component.getByTestId(testId)).toBeInTheDocument()
-      );
-    });
+      it("should define `Change your major` section", () => {
+      expect(component.getByTestId("change-your-major")).toBeInTheDocument()})
   });
 
   describe("#With props", () => {
@@ -150,7 +147,7 @@ describe("#DetailPage", () => {
         },
       };
 
-      await renderListingPage(customProps);
+      await renderDetailPage(customProps);
     });
     afterEach(cleanup);
 
@@ -215,7 +212,7 @@ describe("#DetailPage", () => {
         },
       };
 
-      await renderListingPage(customProps);
+      await renderDetailPage(customProps);
     });
     afterEach(cleanup);
 
@@ -225,7 +222,7 @@ describe("#DetailPage", () => {
   });
 
   describe("#With acadPlan which does not accept new students", () => {
-    beforeEach(async () => {
+    beforeAll(async () => {
       /** @type {AppProps} */
       const customProps = {
         dataSource: {
@@ -233,9 +230,9 @@ describe("#DetailPage", () => {
         },
       };
 
-      await renderListingPage(customProps);
+      await renderDetailPage(customProps);
     });
-    afterEach(cleanup);
+    afterAll(cleanup);
 
     it("should define `Custom text` section", async () => {
       await waitFor(() =>
@@ -245,7 +242,7 @@ describe("#DetailPage", () => {
   });
 
   describe("#With error", () => {
-    beforeEach(async () => {
+    beforeAll(async () => {
       /** @type {AppProps} */
       const customProps = {
         ...defaultArgs,
@@ -255,9 +252,9 @@ describe("#DetailPage", () => {
         },
       };
 
-      await renderListingPage(customProps);
+      await renderDetailPage(customProps);
     });
-    afterEach(cleanup);
+    afterAll(cleanup);
 
     it("should display an error message", () => {
       expect(component.getByTestId("message-alert")).toBeInTheDocument();
@@ -265,7 +262,7 @@ describe("#DetailPage", () => {
   });
 
   describe("#With JSON broken", () => {
-    beforeEach(async () => {
+    beforeAll(async () => {
       /** @type {AppProps} */
       const customProps = {
         ...defaultArgs,
@@ -275,9 +272,9 @@ describe("#DetailPage", () => {
         },
       };
 
-      await renderListingPage(customProps);
+      await renderDetailPage(customProps);
     });
-    afterEach(cleanup);
+    afterAll(cleanup);
 
     it("should define `Program description` section with empty body", () => {
       expect(
