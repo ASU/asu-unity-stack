@@ -56,7 +56,7 @@ function degreeDataPropResolverService(row = {}) {
       return mostRecentMajorMap?.url || "";
     },
     isUndergradProgram: () => isUndergradProgram(row),
-    isGradProgram: () => row["degreeType"] === "GR",
+    isGradProgram: () => row["degreeType"] === "GR", // GR is present for grad degrees and grad certificates
     isMinorOrCertificate: () =>
       row["degreeType"] === "UGCM" ||
       (row["degreeType"] === "GR" &&
@@ -106,7 +106,7 @@ function degreeDataPropResolverService(row = {}) {
         return onlineMajorMaps?.[onlineMajorMaps.length - 1]?.url;
       return mostRecentOnlineMajorMap?.url || "";
     },
-    hasCareerData: () => !!row["careerData"]?.length,
+    hasCareerData: () => row["careerData"]?.length,
     getCareerData: () => row["careerData"] || [],
     /** @return {Object[]} */
     getCampusList: () => row["campusesOffered"] || [],

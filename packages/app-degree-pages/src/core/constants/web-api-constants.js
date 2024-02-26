@@ -35,7 +35,10 @@ const detailPageDefaultDataSource = {
   mathIntensityCode,mathIntensityDescription,firstMathCourseRequired,
   mathRequired,emailAddr,campusesOffered,changeMajorRequirementsText,
   careerData,careerOpportunities,globalExperienceText,
-  firstMathCourseRequiredSupplementalText,stemOptText`,
+  firstMathCourseRequiredSupplementalText,stemOptText,
+  admissionsRequirementsText,transferAdmissionRequirementsText,
+  asuOnlineAcadPlanUrl,degreeType,degreeRequirements,
+  graduateDegreeAdditionalRequirements,minorCourseRequirements`,
 };
 
 export {
