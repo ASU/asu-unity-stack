@@ -28,7 +28,7 @@ const actionUrls = {
 
 /** @type {import("../../core/types/listing-page-types").ProgramListDataSource} */
 const dataSource = {
-  program: "undergraduate",
+  program: "undergrad",
   cert: "true",
 };
 
@@ -194,7 +194,6 @@ describe("#ListingPage", () => {
       /** @type {AppProps} */
       const customProps = {
         ...defaultArgs,
-        actionUrls: null,
         introContent: null,
         hasSearchBar: false,
         hasFilters: false,
@@ -258,18 +257,18 @@ describe("#ListingPage", () => {
       const btnApplyfilter = component.getByTestId("btn-apply-filter");
 
       fireEvent.change(locations, {
-        target: { value: locationOptions[0].value },
+        target: { value: locationOptions[3].value },
       });
       fireEvent.change(asuLocals, {
-        target: { value: asuLocalOptions[0].value },
+        target: { value: asuLocalOptions[3].value },
       });
       fireEvent.change(acceleratedConcurrent, {
         target: {
-          value: acceleratedConcurrentOptions[1].value,
+          value: acceleratedConcurrentOptions[2].value,
         },
       });
 
-      fireEvent.click(btnApplyfilter);
+      fireEvent.click(component.getByTestId("btn-apply-filter"));
     };
 
     it("should trigger apply a filter when the user type a keyword", async () => {
@@ -277,46 +276,35 @@ describe("#ListingPage", () => {
       const searchBarForm = component.getByTestId("search-bar-form");
       const programRows = component.getByTestId("program-rows");
 
-      // await waitFor(() => {
-      //   expect(programRows.children.length).toBe(16);
-      // });
+      expect(programRows.children.length).toBe(16);
 
-      fireEvent.change(searchField, {
-        target: {
-          value: "nonsense",
-        },
-      });
+
+      fireEvent.change(searchField, { target: { value: "nonsense" } });
 
       fireEvent.submit(searchBarForm);
 
-      await waitFor(() => {
-        expect(programRows.children.length).toBe(1);
-        expect(mockfilterData).toHaveBeenCalled();
-      });
+      const updatedProgramRows = await component.findByTestId("program-rows");
+      expect(updatedProgramRows.children.length).toBe(1);
     });
 
     it("should apply filters when you select options and click the button", async () => {
-      await waitFor(() => {
+      const programRows = await component.findByTestId("program-rows");
         selectOptionFilters();
         expect(mockfilterData).toHaveBeenCalled();
-      });
+        expect(programRows.children.length).toBe(16);
+
+      const programRows1 = await component.findByTestId("program-rows");
+      expect(programRows1.children.length).toBeLessThan(16);
     });
 
     it("should remove one filter when you click a summary tag", async () => {
-      selectOptionFilters();
-      const bthTags = component.getByTestId("summary-filter-tags");
-
-      await waitFor(() => {
+     selectOptionFilters();
+      const bthTags = await component.findByTestId("summary-filter-tags");
         expect(bthTags.children.length).toBe(3);
         fireEvent.click(bthTags.children[1]);
         expect(mockfilterData).toHaveBeenCalled();
-      });
-
-      await waitFor(() => {
-        const programRows = component.getByTestId("program-rows");
-        expect(programRows.children.length).toBeLessThan(16);
-        expect(bthTags.children.length).toBe(2);
-      });
+        const updatedBtnTags = await component.findByTestId("summary-filter-tags");
+        expect(updatedBtnTags.children.length).toBe(2);
     });
 
     it("should clear all filter when you click `Clear` button", async () => {
@@ -376,4 +364,4 @@ describe("#ListingPage", () => {
       expect(accordion).not.toBeVisible();
     });
   });
-});
+  });
