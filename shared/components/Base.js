@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-export const Base = ({children}) => <>{children && children}</>;
+export const Base = ({children}) => <>{children}</>;
 
 Base.propTypes = {
   children: PropTypes.oneOfType([
