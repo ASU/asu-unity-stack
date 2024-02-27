@@ -1,7 +1,8 @@
 const path = require("path");
 const PROJECT_DIR = path.resolve(__dirname, "../../");
 
-module.exports = {
+const config = {
+  staticDirs: ['../../dist'],
   stories: [
     "../../tests/**/*.percy.mdx",
     "../../tests/**/*.percy.@(js|jsx|ts|tsx)",
@@ -39,3 +40,5 @@ module.exports = {
     };
   },
 };
+
+export default config;

@@ -38,7 +38,7 @@
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "storybook": "storybook dev -p 9100",
     "percy": "build-storybook -c ./.storybook/percy -o ./percy-storybook && export PERCY_TOKEN=$PERCY_TOKEN_COMPONENTS_CORE && percy storybook ./percy-storybook",
-    "build-storybook": "storybook build -s ./dist -o ../../build/$npm_package_name",
+    "build-storybook": "storybook build -o ../../build/$npm_package_name",
     "jsdoc": "jsdoc -c jsdoc.config.js",
     "predocs": "mkdir -p ./docs",
     "docs": "jsdoc2md --no-cache -c jsdoc.config.js --files ./src/components > ./docs/README.props.md",

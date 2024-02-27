@@ -1,8 +1,7 @@
-const path = require("path");
-const PROJECT_DIR = path.resolve(__dirname, "../");
 const common = require("../webpack/webpack.common");
 
-module.exports = {
+const config = {
+  staticDirs: ['../dist'],
   addons: [
     "../../../.storybook-config",
     "../../../.storybook-config/dataLayerListener",
@@ -27,3 +26,5 @@ module.exports = {
     };
   },
 };
+
+export default config;

@@ -33,8 +33,8 @@
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "postbuild": "cp ./types/main.d.ts ./dist/main.d.ts",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
-    "storybook": "storybook dev -s ./dist -p 9050",
-    "build-storybook": "storybook build -s ./dist -o ../../build/$npm_package_name",
+    "storybook": "storybook dev -p 9050",
+    "build-storybook": "storybook build -o ../../build/$npm_package_name",
     "predocs": "mkdir -p ./docs",
     "docs": "jsdoc2md --no-cache -c jsdoc.config.js --files ./src > ./docs/README.props.md",
     "postdocs": "node ../../scripts/process-readme-props.js"

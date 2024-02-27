@@ -1,6 +1,5 @@
-const path = require("path");
-
-module.exports = {
+const config = {
+  staticDirs: ['../dist'],
   stories: ["../**/*.js.stories.mdx", "../**/*.stories.mdx", "../**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
     "./local-addon",
@@ -45,3 +44,5 @@ module.exports = {
     autodocs: true
   }
 };
+
+export default config;

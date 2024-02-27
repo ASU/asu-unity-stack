@@ -2,7 +2,8 @@ const path = require("path");
 const PROJECT_DIR = path.resolve(__dirname, "../");
 const common = require("../webpack/webpack.common");
 
-module.exports = {
+const config = {
+  staticDirs: ['../dist'],
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
     "../../../.storybook-config",
@@ -33,3 +34,5 @@ module.exports = {
     autodocs: true
   }
 };
+
+export default config;

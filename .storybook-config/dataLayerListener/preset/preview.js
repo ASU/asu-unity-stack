@@ -1,2 +1,10 @@
 import { withDataLayerListener } from "../withDataLayerListener";
-export const decorators = [withDataLayerListener];
+const decorators = [withDataLayerListener];
+
+
+/** @type { import('@storybook/react').Preview } */
+const preview = {
+  decorators,
+};
+
+export default preview;
