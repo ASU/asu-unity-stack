@@ -1,5 +1,4 @@
 // @ts-check
-import PropTypes from "prop-types";
 import React from "react";
 
 import { getCurrentScriptPath } from "../../../../../shared";
@@ -7,6 +6,7 @@ import {
   setClientId,
   pushDataLayerEventToGa,
 } from "../../core/utils/google-analytics";
+import { useRfiContext } from "../../core/utils/rfiContext";
 import {
   submissionFormFieldPrep,
   submissionSetHiddenFields,
@@ -19,26 +19,9 @@ import { RfiStepper } from "./RfiStepper";
 
 const currentScript = getCurrentScriptPath();
 
-const RfiMainForm = ({
-  appPathFolder,
-  campus,
-  actualCampus,
-  college,
-  department,
-  studentType,
-  areaOfInterest,
-  programOfInterest,
-  programOfInterestOptional,
-  isCertMinor,
-  country,
-  stateProvince,
-  successMsg,
-  test,
-  dataSourceDegreeSearch,
-  dataSourceAsuOnline,
-  dataSourceCountriesStates,
-  submissionUrl,
-}) => {
+const RfiMainForm = () => {
+  const { appPathFolder, test, submissionUrl } = useRfiContext();
+
   const RfiImage = `${
     appPathFolder || currentScript
   }/assets/img/WS2-DefaultImagev01-Final.png`;
@@ -53,22 +36,6 @@ const RfiMainForm = ({
             </div>
             <div className="uds-image-text-block-text-container">
               <RfiStepper
-                campus={campus}
-                actualCampus={actualCampus}
-                college={college}
-                department={department}
-                studentType={studentType}
-                areaOfInterest={areaOfInterest}
-                programOfInterest={programOfInterest}
-                programOfInterestOptional={programOfInterestOptional}
-                isCertMinor={isCertMinor}
-                country={country}
-                stateProvince={stateProvince}
-                successMsg={successMsg}
-                test={test}
-                dataSourceDegreeSearch={dataSourceDegreeSearch}
-                dataSourceAsuOnline={dataSourceAsuOnline}
-                dataSourceCountriesStates={dataSourceCountriesStates}
                 validationSchemas={[
                   programInterestForm.validationSchema,
                   aboutMeForm.validationSchema,
@@ -137,44 +104,6 @@ const RfiMainForm = ({
       </div>
     </div>
   );
-};
-
-// Props
-RfiMainForm.defaultProps = {
-  campus: undefined,
-  actualCampus: undefined,
-  college: undefined,
-  department: undefined,
-  studentType: undefined,
-  areaOfInterest: undefined,
-  programOfInterest: undefined,
-  programOfInterestOptional: false,
-  isCertMinor: false,
-  country: undefined,
-  stateProvince: undefined,
-  successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
-  test: false,
-};
-
-RfiMainForm.propTypes = {
-  appPathFolder: PropTypes.string,
-  campus: PropTypes.string,
-  actualCampus: PropTypes.string,
-  college: PropTypes.string,
-  department: PropTypes.string,
-  studentType: PropTypes.string,
-  areaOfInterest: PropTypes.string,
-  programOfInterest: PropTypes.string,
-  programOfInterestOptional: PropTypes.bool,
-  isCertMinor: PropTypes.bool,
-  country: PropTypes.string,
-  stateProvince: PropTypes.string,
-  successMsg: PropTypes.string,
-  test: PropTypes.bool,
-  dataSourceDegreeSearch: PropTypes.string.isRequired,
-  dataSourceAsuOnline: PropTypes.string.isRequired,
-  dataSourceCountriesStates: PropTypes.string.isRequired,
-  submissionUrl: PropTypes.string.isRequired,
 };
 
 export { RfiMainForm };

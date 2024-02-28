@@ -18,7 +18,7 @@ export interface RFIProps {
   dataSourceDegreeSearch?: string
   dataSourceAsuOnline?: string
   dataSourceCountriesStates?: string
-  ubmissionUrl: string
+  submissionUrl: string
 }
 
 export const AsuRfi: React.FunctionComponent<RFIProps>
