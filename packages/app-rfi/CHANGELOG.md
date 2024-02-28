@@ -1,3 +1,10 @@
+# [@asu/app-rfi-v2.2.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.1.0...@asu/app-rfi-v2.2.0) (2024-02-28)
+
+
+### Features
+
+* **app-rfi:** use DPL  DataSource ([95e8666](https://github.com/asu/asu-unity-stack/commit/95e86663493871019a66fa6e5ffe55dcbe0a6be0))
+
 # [@asu/app-rfi-v2.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.0.3...@asu/app-rfi-v2.1.0) (2024-01-11)
 
 
