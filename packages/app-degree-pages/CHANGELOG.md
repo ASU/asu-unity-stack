@@ -1,3 +1,10 @@
+# [@asu/app-degree-pages-v2.3.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.3.0...@asu/app-degree-pages-v2.3.1) (2024-02-29)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** updated career intro section ([e3e0152](https://github.com/asu/asu-unity-stack/commit/e3e0152b37296eb25e9382566ea339a0f5da1795))
+
 # [@asu/app-degree-pages-v2.3.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.2.0...@asu/app-degree-pages-v2.3.0) (2024-01-11)
 
 
