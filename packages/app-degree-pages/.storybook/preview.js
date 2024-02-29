@@ -12,6 +12,7 @@ export const parameters = {
   percy: {
     include: [
       "Program Listing Page: Default\$",
+      "Program Detail Page: Default\$",
     ],
   },
 };

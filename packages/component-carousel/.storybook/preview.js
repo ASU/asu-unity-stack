@@ -5,10 +5,10 @@ export const parameters = {
   layout: "fullscreen",
   percy: {
     include: [
-      /^Card Carousel\.*Three Item Carousel/,
-      /^Image Carousel\.*Image Carousel Default/,
-      /^Image Gallery Carousel\.*Image Carousel With More Content/,
-      /^testEnvironment\.*Testimonial Carousel Default/,
+      "Card Carousel: Three Item Carousel\$",
+      "Image Carousel: Image Carousel Default\$",
+      "Image Gallery Carousel: Image Carousel With More Content\$",
+      "Testimonial Carousel: Testimonial Carousel Default\$",
     ],
   },
 };

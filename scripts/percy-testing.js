@@ -24,11 +24,15 @@ const captureSnapshots = async () => {
       if (dirent.isDirectory()) {
         const packageDir = path.join(storybookDir, dirent.name);
         console.log(`Capturing snapshots for ${dirent.name}`);
-        const stdout = await execPromise(`percy storybook --dry-run --verbose ${packageDir}`);
-        console.log(stdout);
+        try {
+          const stdout = await execPromise(`percy storybook --dry-run --verbose ${packageDir}`);
+          console.log(stdout);
+        } catch (err) {
+          console.error(`Error capturing snapshots for ${dirent.name}:`, err);
+        }
       }
     }
-    // execPromise('percy build:finalize');
+    execPromise('percy build:finalize');
   } catch (err) {
     console.error("Error reading the storybook directory or capturing snapshots:", err);
   }

@@ -4,13 +4,13 @@ export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   percy: {
     include: [
-      /^Accordion\.*Default/,
-      /^AnchorMenu\//,
-      /^Article\//,
-      /^Card\.*Default/,
-      /Card\.*Event/,
-      /^Pagination\.*Default/,
-      /^TabbedPanels\.*Default/
+      "Accordion: Default\$",
+      "AnchorMenu",
+      "Article",
+      "Card: Default\$",
+      "Card: Event\$",
+      "Pagination: Default\$",
+      "TabbedPanels: Default\$",
     ],
   },
   backgrounds: {

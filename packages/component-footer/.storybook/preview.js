@@ -4,7 +4,7 @@ export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   percy: {
     include: [
-      /^ASU Footer\.*Default/,
+      "ASU Footer: Default\$",
     ],
   },
 };

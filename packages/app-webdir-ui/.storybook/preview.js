@@ -9,10 +9,10 @@ export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   percy: {
     include: [
-      /^Web Directory\.*Faculty Rank Web Directory/,
-      /^Web Directory\.*Web Directory Example People/,
-      /^Web Directory\.*Web Directory Example Departments/,
-      /^Search Page\.*Search Page Example/,
+      "Web Directory/Templates: Faculty Rank Web Directory\$",
+      "Web Directory/Templates: Web Directory Example People\$",
+      "Web Directory/Templates: Web Directory Example Departments\$",
+      "Search Page/Templates: Search Page Example\$"
     ],
   },
 };
