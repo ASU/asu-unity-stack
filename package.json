@@ -12,7 +12,7 @@
   "scripts": {
     "lerna-clean": "lerna clean && rm -rf ./node_modules",
     "lint": "lerna run lint",
-    "build-storybook": "rm -rf ./build && lerna run build-storybook && gulp",
+    "build-storybook": "lerna run build-storybook && gulp",
     "build-components-core": "lerna run --scope @asu/components-core build",
     "build-component-carousel": "lerna run --scope @asu/component-carousel build",
     "build": "lerna run --ignore @asu/components-core --ignore @asu/component-carousel build",

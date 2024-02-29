@@ -3405,15 +3405,6 @@
   resolved "https://registry.yarnpkg.com/@percy/sdk-utils/-/sdk-utils-1.28.0.tgz#479f5374aa34efe4a18e1fd290a2c328b670e7ed"
   integrity sha512-K4fziY+OXJJtNVfecO3jI3VQFuei2Lf8/5nlQvnx+U9v8fGFrkc0aE+gIlP3Ce5qzJbotgAlV1Dd0bZ2y7i7vw==
 
-"@percy/storybook@^4.3.4":
-  version "4.3.7"
-  resolved "https://registry.yarnpkg.com/@percy/storybook/-/storybook-4.3.7.tgz#31c73c418fed2eb7c4aa0b97c933b513dd6cc970"
-  integrity sha512-8Tu0EZfZ7Y0suw5iElXjJSMzcyO9pE9IQfzlbbE2tHj8yeQqokOeVNYKPcuKNR21iJfBSFH1fYQZAE1qGuOv+w==
-  dependencies:
-    "@percy/cli-command" "^1.24.0"
-    cross-spawn "^7.0.3"
-    qs "^6.11.0"
-
 "@percy/storybook@^5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@percy/storybook/-/storybook-5.0.1.tgz#6345ecd7dd900afa0a6ae968bbee6ccdc674fd5d"

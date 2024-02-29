@@ -28,6 +28,7 @@ const captureSnapshots = async () => {
         console.log(stdout);
       }
     }
+    // execPromise('percy build:finalize');
   } catch (err) {
     console.error("Error reading the storybook directory or capturing snapshots:", err);
   }
