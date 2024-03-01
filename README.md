@@ -1,7 +1,62 @@
 # ASU Unity Design System (UDS)
+
+## Table of Contents
+
+- [ASU Unity Design System (UDS)](#asu-unity-design-system-uds)
+  - [Table of Contents](#table-of-contents)
+  - [Quickstart Guide](#quickstart-guide)
+  - [❯ Visual Regression Testing](#-visual-regression-testing)
+  - [❯ Consuming Unity packages in your project:](#-consuming-unity-packages-in-your-project)
+  - [❯ How to use the private package registry:](#-how-to-use-the-private-package-registry)
+    - [TROUBLESHOOTING ERRORS](#troubleshooting-errors)
+  - [❯ Packages in this repository](#-packages-in-this-repository)
+  - [❯ Package Multi Output Targets](#-package-multi-output-targets)
+  - [Advanced Details for Unity Developers and Contributors](#advanced-details-for-unity-developers-and-contributors)
+  - [\> Dependencies](#-dependencies)
+  - [❯ Setup Local Development Environment](#-setup-local-development-environment)
+    - [Installing and using Lerna](#installing-and-using-lerna)
+    - [Install Node and Yarn](#install-node-and-yarn)
+      - [Installing Node engines](#installing-node-engines)
+      - [Installing Yarn](#installing-yarn)
+      - [Local development](#local-development)
+  - [❯ Adding dependencies to a package](#-adding-dependencies-to-a-package)
+  - [❯ Structure](#-structure)
+  - [❯ Building, Testing (from the package root at packages/\[package-name\])](#-building-testing-from-the-package-root-at-packagespackage-name)
+  - [❯ Running end-to-end testing (from the Git project root)](#-running-end-to-end-testing-from-the-git-project-root)
+  - [❯ CLI tools](#-cli-tools)
+    - [check-element-changes](#check-element-changes)
+    - [check-element-local-changes](#check-element-local-changes)
+  - [❯ Supplemental links](#-supplemental-links)
+  - [❯ Build process:](#-build-process)
+  - [\> Google Analytics integration](#-google-analytics-integration)
+      - [**`src/component.js`**](#srccomponentjs)
+      - [**`services/googleAnalytics.js`**](#servicesgoogleanalyticsjs)
+      - [**`src/component.html`**](#srccomponenthtml)
+      - [**`src/component.js`**](#srccomponentjs-1)
+  - [❯ Git commit guidelines:](#-git-commit-guidelines)
+    - [Examples](#examples)
+      - [Commit message with description and breaking change (Major version release)](#commit-message-with-description-and-breaking-change-major-version-release)
+      - [Commit message with scope](#commit-message-with-scope)
+      - [Commit message for a fix using an (optional) issue number.](#commit-message-for-a-fix-using-an-optional-issue-number)
+    - [Project Update!](#project-update)
+  - [❯ Contributing:](#-contributing)
+    - [See here for more information about publishing packages](#see-here-for-more-information-about-publishing-packages)
+    - [See the top answer on this stackoverflow question for why you may want to build against multiple node versions. Probably unnecessary for this workflow.](#see-the-top-answer-on-this-stackoverflow-question-for-why-you-may-want-to-build-against-multiple-node-versions-probably-unnecessary-for-this-workflow)
+
 ## Quickstart Guide
 
 Using the Unity Bootstrap Theme and React components for building ASU Web Standards 2.0 compliant web sites and apps.
+
+## ❯ Visual Regression Testing
+
+We use Percy for visual regression testing. Percy is a visual testing platform that allows us to take screenshots of our components and compare them to previous versions to ensure that changes to our components do not introduce visual regressions. Percy runs on every pull request against the main branch. If you are a contributor, you can view the Percy build approval link in the pull request template and approve the build if it looks good. To run tests locally in a dry-run mode, add the `--dry-run` flag in the `percy-test` script in the `scripts/percy-testing.js` file. This will allow you to see how many snapshots will be taken and whether the tests wil fail without uploading to percy cloud. Then run:
+
+```bash
+yarn build # build the project
+yarn build-storybook # build storybook
+export PERCY_PARALLEL_NONCE=RANDOM_STRING # set the PERCY_PARALLEL_NONCE environment variable to any random alphanumeric string.
+yarn percy-test # run percy tests
+```
 
 ## ❯ Consuming Unity packages in your project:
 

@@ -22,7 +22,7 @@
     "test:e2e": "jest",
     "prepublish-packages": "node scripts/copy-license.js",
     "publish-packages": "lerna exec --concurrency 1 -- npx --no-install semantic-release --debug -e semantic-release-monorepo",
-    "percy-test": "node ./scripts/percy-testing.js",
+    "percy-test": "export PERCY_PARALLEL_TOTAL=-1 && node ./scripts/percy-testing.js",
     "start": "node server/server.js",
     "stop": "node server/server.stop.js",
     "prepare": "husky install",

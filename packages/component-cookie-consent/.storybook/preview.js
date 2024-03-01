@@ -3,7 +3,7 @@ export const parameters = {
   layout: "fullscreen",
   percy: {
     exclude: [
-      '.*'
+      '\.*'
     ],
   },
 };
