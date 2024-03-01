@@ -74,6 +74,10 @@ spec:
         stage('Visual Regression Testing') {
           when {
               expression { env.CHANGE_TARGET == 'dev' }
+              changeset '**/packages/**'
+              expression {
+                sh(returnStatus: true, script: 'git diff origin/dev... --name-only | grep --quiet "^packages/.*"') == 0
+              }
           }
           steps {
               container('node18') {
