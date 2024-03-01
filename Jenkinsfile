@@ -75,6 +75,7 @@ spec:
                 }
             }
             steps {
+              echo 'testing'
             }
         }
         stage('Build') {
