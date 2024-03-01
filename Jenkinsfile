@@ -60,24 +60,6 @@ spec:
                 }
             }
         }
-        stage('dev test') {
-            when {
-                expression {
-                    echo "CHANGE_TARGET: ${env.CHANGE_TARGET}"
-                    return env.CHANGE_TARGET == 'dev'
-                }
-                expression {
-                    def gitDiffResult = sh(returnStdout: true, script: 'git diff origin/dev... --name-only')
-                    echo "git diff result: ${gitDiffResult}"
-                    def grepResult = sh(returnStatus: true, script: "echo '${gitDiffResult}' | grep --quiet '^packages/.*'")
-                    echo "grep result: ${grepResult}"
-                    return grepResult == 0
-                }
-            }
-            steps {
-              echo 'testing'
-            }
-        }
         stage('Build') {
             steps {
                 container('node18') {
@@ -92,11 +74,12 @@ spec:
         }
         stage('Visual Regression Testing') {
           when {
+            allOf {
               expression { env.CHANGE_TARGET == 'dev' }
-              changeset '**/packages/**'
-              expression {
+              expression { // Only run if there are changes in packages directory
                 sh(returnStatus: true, script: 'git diff origin/dev... --name-only | grep --quiet "^packages/.*"') == 0
               }
+            }
           }
           steps {
               container('node18') {
