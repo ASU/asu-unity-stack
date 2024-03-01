@@ -31,6 +31,7 @@ spec:
         RAW_GH_TOKEN = credentials('github-org-asu-pac')
         NPM_TOKEN = credentials('NPM_TOKEN')
         NODE_AUTH_TOKEN = credentials('github-org-asu-pac')
+        PERCY_TOKEN = credentials('PERCY_TOKEN')
     }
     options {
       buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
