@@ -38,7 +38,7 @@ spec:
       disableConcurrentBuilds()
     }
     stages {
-         stage('Developer release') {
+        stage('Developer release') {
             when {
                 branch 'testing'
             }
@@ -58,6 +58,23 @@ spec:
                     }
                   }
                 }
+            }
+        }
+        stage('dev test') {
+            when {
+                expression {
+                    echo "CHANGE_TARGET: ${env.CHANGE_TARGET}"
+                    return env.CHANGE_TARGET == 'dev'
+                }
+                expression {
+                    def gitDiffResult = sh(returnStdout: true, script: 'git diff origin/dev... --name-only')
+                    echo "git diff result: ${gitDiffResult}"
+                    def grepResult = sh(returnStatus: true, script: "echo '${gitDiffResult}' | grep --quiet '^packages/.*'")
+                    echo "grep result: ${grepResult}"
+                    return grepResult == 0
+                }
+            }
+            steps {
             }
         }
         stage('Build') {
