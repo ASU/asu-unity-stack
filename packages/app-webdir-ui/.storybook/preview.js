@@ -7,6 +7,14 @@ import "@asu/unity-bootstrap-theme/src/scss/unity-bootstrap-theme.bundle.scss";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
+  percy: {
+    include: [
+      "Web Directory/Templates: Faculty Rank Web Directory\$",
+      "Web Directory/Templates: Web Directory Example People\$",
+      "Web Directory/Templates: Web Directory Example Departments\$",
+      "Search Page/Templates: Search Page Example\$"
+    ],
+  },
 };
 
 export const argTypes = {

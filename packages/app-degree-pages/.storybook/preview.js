@@ -9,4 +9,10 @@ export const parameters = {
       order: [ListingPage.title, DetailPage.title],
     },
   },
+  percy: {
+    include: [
+      "Program Listing Page: Default\$",
+      "Program Detail Page: Default\$",
+    ],
+  },
 };
