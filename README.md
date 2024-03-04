@@ -5,7 +5,6 @@
 - [ASU Unity Design System (UDS)](#asu-unity-design-system-uds)
   - [Table of Contents](#table-of-contents)
   - [Quickstart Guide](#quickstart-guide)
-  - [Visual Regression Testing](#visual-regression-testing)
   - [Consuming Unity packages in your project:](#consuming-unity-packages-in-your-project)
   - [How to use the private package registry:](#how-to-use-the-private-package-registry)
     - [TROUBLESHOOTING ERRORS](#troubleshooting-errors)
@@ -23,6 +22,7 @@
   - [Structure](#structure)
   - [Building, Testing (from the package root at packages/\[package-name\])](#building-testing-from-the-package-root-at-packagespackage-name)
   - [Running end-to-end testing (from the Git project root)](#running-end-to-end-testing-from-the-git-project-root)
+  - [Visual Regression Testing](#visual-regression-testing)
   - [❯ CLI tools](#-cli-tools)
     - [check-element-changes](#check-element-changes)
     - [check-element-local-changes](#check-element-local-changes)
@@ -47,16 +47,6 @@
 
 Using the Unity Bootstrap Theme and React components for building ASU Web Standards 2.0 compliant web sites and apps.
 
-## Visual Regression Testing
-
-We use Percy for visual regression testing. Percy is a visual testing platform that allows us to take screenshots of our components and compare them to previous versions to ensure that changes to our components do not introduce visual regressions. Percy runs on every pull request against the main branch. If you are a contributor, you can view the Percy build approval link in the pull request template and approve the build if it looks good. To run tests locally in a dry-run mode, add the `--dry-run` flag in the `percy-test` script in the `scripts/percy-testing.js` file. This will allow you to see how many snapshots will be taken and whether the tests wil fail without uploading to percy cloud. Then run:
-
-```bash
-yarn build # build the project
-yarn build-storybook # build storybook
-export PERCY_PARALLEL_NONCE=RANDOM_STRING # set the PERCY_PARALLEL_NONCE environment variable to any random alphanumeric string.
-yarn percy-test # run percy tests
-```
 
 ## Consuming Unity packages in your project:
 
@@ -65,7 +55,7 @@ yarn percy-test # run percy tests
 @asu:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=YOUR_TOKEN_HERE
 ```
-2. Install the package using yarn or npm:
+1. Install the package using yarn or npm:
 ```yarn add @asu/<package-name>``` or ```npm install @asu/<package-name>```
 
 
@@ -100,17 +90,17 @@ This repository contains multiple packages which are managed and published using
 2. [app-degree-pages](./packages/app-degree-pages/README.md)
 3. [app-rfi](./packages/app-rfi/README.md)
 4. [app-webdir-ui](./packages/app-webdir-ui/README.md)
-4. [component-carousel](./packages/component-carousel/README.md)
-4. [component-cookie-consent](./packages/component-cookie-consent/README.md)
-5. [component-events](./packages/component-events/README.md)
-6. [component-footer](./packages/component-footer/README.md)
-7. [component-header](./packages/component-header/README.md) - standalone header component that doesn't require the ```unity-bootstrap-theme``` styles
-8. [component-news](./packages/component-news/README.md)
-9. [components-core](./packages/components-core/README.md)
-10. bootstrap4-theme - deprecated and removed. Archived copy in ```/packages-disabled```
-11. design-tokens - deprecated and removed. Archived copy in ```/packages-disabled```
-12. components-library - deprecated and removed. Archived copy in ```/packages-disabled```
-13. cookie-consent - deprecated and removed. Archived copy in ```/packages-disabled```
+5. [component-carousel](./packages/component-carousel/README.md)
+6. [component-cookie-consent](./packages/component-cookie-consent/README.md)
+7. [component-events](./packages/component-events/README.md)
+8. [component-footer](./packages/component-footer/README.md)
+9. [component-header](./packages/component-header/README.md) - standalone header component that doesn't require the ```unity-bootstrap-theme``` styles
+10. [component-news](./packages/component-news/README.md)
+11. [components-core](./packages/components-core/README.md)
+12. bootstrap4-theme - deprecated and removed. Archived copy in ```/packages-disabled```
+13. design-tokens - deprecated and removed. Archived copy in ```/packages-disabled```
+14. components-library - deprecated and removed. Archived copy in ```/packages-disabled```
+15. cookie-consent - deprecated and removed. Archived copy in ```/packages-disabled```
 
 ## Package Multi Output Targets
 
@@ -238,6 +228,18 @@ It's also possible to build a package from the git project root with a Yarn work
 yarn build # build the project
 yarn start & yarn test:e2e # start the testing server and run e2e tests
 yarn stop # stop the testing server
+```
+
+
+## Visual Regression Testing
+
+We use Percy for visual regression testing. Percy is a visual testing platform that allows us to take screenshots of our components and compare them to previous versions to ensure that changes to our components do not introduce visual regressions. Percy runs on every pull request against the main branch. If you are a contributor, you can view the Percy build approval link in the pull request template and approve the build if it looks good. To run tests locally in a dry-run mode, add the `--dry-run` flag in the `percy-test` script in the `scripts/percy-testing.js` file. This will allow you to see how many snapshots will be taken and whether the tests wil fail without uploading to percy cloud. Then run:
+
+```bash
+yarn build # build the project
+yarn build-storybook # build storybook
+export PERCY_PARALLEL_NONCE=RANDOM_STRING # set the PERCY_PARALLEL_NONCE environment variable to any random alphanumeric string.
+yarn percy-test # run percy tests
 ```
 
 
