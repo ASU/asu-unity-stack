@@ -55,7 +55,7 @@ Using the Unity Bootstrap Theme and React components for building ASU Web Standa
 @asu:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=YOUR_TOKEN_HERE
 ```
-1. Install the package using yarn or npm:
+2. Install the package using yarn or npm:
 ```yarn add @asu/<package-name>``` or ```npm install @asu/<package-name>```
 
 
