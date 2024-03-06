@@ -120,9 +120,14 @@ const ListView = ({ programs, totalRows, loading, actionUrls }) => {
 
   const { state } = useContext(AppContext);
   const columSettings = state?.listPageProps?.programList?.settings;
-  const columns = columSettings?.hideCollegeSchool
-    ? configColumns.filter(c => c.dataKey !== "CollegeSchool")
-    : configColumns;
+  let columns = configColumns;
+
+  if (state.listPageProps.programList.dataSource.program === "graduate") {
+    columns = columns.filter(c => c.dataKey !== "RequiredCourses");
+  }
+  if (columSettings?.hideCollegeSchool) {
+    columns = columns.filter(c => c.dataKey !== "CollegeSchool");
+  }
 
   const setOpenRowIndex = (rowIndex, selected) => {
     const rows = tbodyRef.current.children;

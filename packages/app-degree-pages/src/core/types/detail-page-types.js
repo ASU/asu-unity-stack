@@ -87,7 +87,7 @@
 
 /**
  * @typedef {Object} ProgramDescriptionProps
- * @property {ContentItem} content
+ * @property {ContentItem | string} content
  * @property {string} [stemOptText]
  */
 
@@ -95,8 +95,8 @@
  * @typedef {Object} RequiredCoursesProps
  * @property {string} onlineMajorMapURL
  * @property {string} majorMapOnCampusURL
- * @property {string} subPlnMajorMaps
- * @property {string} subPln
+ * @property {string[]} subPlnMajorMaps
+ * @property {Array} subPlns
  */
 
 /**

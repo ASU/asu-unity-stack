@@ -11,10 +11,10 @@ import { STEM_OPT_HEADER_TEXT } from "../../../../core/constants";
  * @param {ProgramDescriptionProps}  props
  * @returns
  */
-function ProgramDescription({ content, stemOptText }) {
+function ProgramDescription({ content, stemOptText, programNotFound }) {
   return (
     <div data-testid="program-description">
-      <h2>Program description</h2>
+      <h2>{programNotFound ? `Program not found` : `Program description`}</h2>
       <div
         data-testid="program-description-body"
         // eslint-disable-next-line react/no-danger
@@ -39,6 +39,7 @@ function ProgramDescription({ content, stemOptText }) {
 ProgramDescription.propTypes = {
   content: PropTypes.string,
   stemOptText: PropTypes.string,
+  programNotFound: PropTypes.bool,
 };
 
 export { ProgramDescription };

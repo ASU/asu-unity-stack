@@ -201,11 +201,57 @@ function degreeDataPropResolverService(row = {}) {
       return "Major";
     },
     getStemOptText: () => row["stemOptText"],
-    getSubPlnMajorMaps: () =>
-      row["majorMapSubplans"]
-        ?.map(planInfo => (planInfo.defualtFlag ? planInfo.url : null))
-        .filter(Boolean),
-    getSubPln: () => row["SubPln"], // TODO: What is this used for? What needs to be shown?
+    getSubPlnMajorMaps: () => {
+      if (!row["subplans"] || !row["majorMapSubplans"]) return [];
+      let subplans = [...row["subplans"]];
+      const majorMapSubplans = [...row["majorMapSubplans"]];
+
+      // Helper function to filter subplans
+      const filterSubplans = (subplansArr, acadSubPlanCode) => {
+        return subplansArr.filter(
+          subplan => subplan.acadSubPlanCode !== acadSubPlanCode
+        );
+      };
+
+      // Helper function to check if a subplan exists with a different acadSubPlanCode
+      const isDifferentSubplanExists = (subplansArr, acadSubPlanCode) => {
+        return subplansArr.some(
+          subplan => subplan.acadSubPlanCode !== acadSubPlanCode
+        );
+      };
+
+      const filteredMajorMapSubplans = [];
+
+      for (let i = majorMapSubplans.length - 1; i >= 0; i -= 1) {
+        // Break the loop if there are no more subplans
+        if (subplans.length === 0) break;
+
+        const currentMajorMapSubplan = majorMapSubplans[i];
+
+        // If defaultFlag is true, filter out the subplan with the same acadSubPlanCode
+        if (currentMajorMapSubplan.defaultFlag) {
+          subplans = filterSubplans(
+            subplans,
+            currentMajorMapSubplan.acadSubPlanCode
+          );
+          filteredMajorMapSubplans.push(currentMajorMapSubplan);
+        } else if (
+          isDifferentSubplanExists(
+            subplans,
+            currentMajorMapSubplan.acadSubPlanCode
+          )
+        ) {
+          subplans = filterSubplans(
+            subplans,
+            currentMajorMapSubplan.acadSubPlanCode
+          );
+          filteredMajorMapSubplans.push(currentMajorMapSubplan);
+        }
+      }
+
+      return filteredMajorMapSubplans;
+    },
+    getSubPln: () => row["subplans"],
   };
 }
 

@@ -7,10 +7,12 @@ import { DOMAIN_URL } from "../constants";
  * @param {object[]} links
  */
 const formatAcceleratedConcurrentLinks = links => {
-  return links.map(link => ({
-    title: link.acadPlanDescription,
-    url: link.academicOfficeUrl,
-  }));
+  return links
+    .map(link => ({
+      title: link.acadPlanDescription,
+      url: link.academicOfficeUrl,
+    }))
+    .sort((a, b) => a.title.localeCompare(b.title));
 };
 
 /**
