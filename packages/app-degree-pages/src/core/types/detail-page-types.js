@@ -95,8 +95,8 @@
  * @typedef {Object} RequiredCoursesProps
  * @property {string} onlineMajorMapURL
  * @property {string} majorMapOnCampusURL
- * @property {string[]} subPlnMajorMaps
- * @property {Array} subPlns
+ * @property {Array.<Object>} subPlnMajorMaps
+ * @property {Array.<Object>} subPlns
  */
 
 /**

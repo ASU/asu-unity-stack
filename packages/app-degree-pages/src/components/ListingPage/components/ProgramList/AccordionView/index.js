@@ -38,6 +38,9 @@ const WrapperSection = styled.div`
 const AccordionView = ({ programs, actionUrls }) => {
   const { state } = useContext(AppContext);
   const columSettings = state?.listPageProps?.programList?.settings;
+  const hideRequiredCoursesSection =
+    state?.listPageProps?.programList?.dataSource?.program === "graduate";
+
   /**
    * @type {{
    *   content: {
@@ -55,7 +58,15 @@ const AccordionView = ({ programs, actionUrls }) => {
         ? resolver.getOnlineMajorMapURL()
         : resolver.getGeneralDegreeMajorMap();
 
-      return `<a href=${directUrl}>${resolver.getRequiredCoursesLabel()} Map</a>`;
+      let directMapLink;
+
+      try {
+        const url = new URL(directUrl)?.toString();
+        directMapLink = `<a href=${url}>${resolver.getRequiredCoursesLabel()} Map</a>`;
+      } catch (error) {
+        return "";
+      }
+      return directMapLink;
     };
 
     const getAcceleratedConcurrent = () => `<div>
@@ -93,10 +104,14 @@ const AccordionView = ({ programs, actionUrls }) => {
           <strong>Degree:</strong>
           <br />${resolver.getDegree()}
         </li>
-        <li>
-          <strong>Required Courses:</strong>
-          <br />${getRequiredCourses()}
-        </li>
+        ${
+          !hideRequiredCoursesSection
+            ? `<li>
+              <strong>Required Courses:</strong>
+              <br />${getRequiredCourses()}
+            </li>`
+            : ""
+        }
         <li>
           <strong>Campus or location:</strong>
           <br />${resolver

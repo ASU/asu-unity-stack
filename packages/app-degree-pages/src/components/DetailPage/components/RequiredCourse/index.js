@@ -101,11 +101,18 @@ RequiredCourse.propTypes = {
   majorMapOnCampusURL: PropTypes.string,
   subPlnMajorMaps: PropTypes.arrayOf(
     PropTypes.shape({
-      SubplnMajorMapSubplanCode: PropTypes.string,
+      campus: PropTypes.string,
       acadSubPlanCode: PropTypes.string,
+      defaultFlag: PropTypes.bool,
+      url: PropTypes.string,
     })
   ),
-  subPlns: PropTypes.arrayOf(PropTypes.string),
+  subPlns: PropTypes.arrayOf(
+    PropTypes.shape({
+      acadSubPlanCode: PropTypes.string,
+      description: PropTypes.string,
+    })
+  ),
 };
 
 export { RequiredCourse };

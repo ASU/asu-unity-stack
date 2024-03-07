@@ -72,9 +72,9 @@ const columns = [
       let directMapLink;
 
       try {
-        const url = new URL(directUrl);
+        const url = new URL(directUrl)?.toString();
         directMapLink = (
-          <a href={directUrl}>{resolver.getRequiredCoursesLabel()} Map</a>
+          <a href={url}>{resolver.getRequiredCoursesLabel()} Map</a>
         );
       } catch (error) {
         return "";

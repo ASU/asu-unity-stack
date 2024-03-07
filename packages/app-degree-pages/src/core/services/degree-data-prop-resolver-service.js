@@ -203,7 +203,9 @@ function degreeDataPropResolverService(row = {}) {
     getStemOptText: () => row["stemOptText"],
     getSubPlnMajorMaps: () => {
       if (!row["subplans"] || !row["majorMapSubplans"]) return [];
-      let subplans = [...row["subplans"]];
+      let subplans = [...row["subplans"]]?.filter(
+        subpln => subpln.campusesOffered
+      );
       const majorMapSubplans = [...row["majorMapSubplans"]];
 
       // Helper function to filter subplans
