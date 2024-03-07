@@ -67,11 +67,18 @@ const columns = [
       const isOnline = resolver.isOnline();
       const directUrl = isOnline
         ? resolver.getOnlineMajorMapURL()
-        : resolver.getAsuCritTrackUrl();
+        : resolver.getGeneralDegreeMajorMap();
 
-      const directMapLink = (
-        <a href={directUrl}>{resolver.getRequiredCoursesLabel()} Map</a>
-      );
+      let directMapLink;
+
+      try {
+        const url = new URL(directUrl)?.toString();
+        directMapLink = (
+          <a href={url}>{resolver.getRequiredCoursesLabel()} Map</a>
+        );
+      } catch (error) {
+        return "";
+      }
 
       return directMapLink;
     },
@@ -90,14 +97,14 @@ const columns = [
           {resolver.getCampusList().map((location, index, campusList) => (
             <div key={genCampusId.next().value} className="cell-container">
               {/*  TODO: This link is currently deferred till we discover which URL to link */}
-              <span key={location}>{`${toTitleCase(
-                getFullCampusLocalText(location)
+              <span key={location.campusCode}>{`${toTitleCase(
+                getFullCampusLocalText(location.campusCode)
               )}${index < campusList.length - 1 ? ", " : ""}`}</span>
               <span>
                 <InfoButtonIcon
                   popover={{
-                    title: toTitleCase(location),
-                    body: () => fetch(mapTooltipLink(location)),
+                    title: toTitleCase(location.campusCode),
+                    body: () => fetch(mapTooltipLink(location.campusCode)),
                     withAuto: true,
                   }}
                 />
@@ -117,10 +124,10 @@ const columns = [
     sortable: true,
     contentTemplate: ({ resolver, actionUrls }) => (
       <div>
-        {resolver.getConcurrentDegrees().lenght > 0 && (
+        {resolver.getConcurrentDegrees().then(data => data).length > 0 && (
           <div className="cell-container">concurrent</div>
         )}
-        {resolver.getAccelerateDegrees().length > 0 && (
+        {resolver.hasConcurrentOrAccelerateDegrees() && (
           <div className="cell-container">
             <a href={accellerateDegreeLink(resolver, actionUrls.majorInfoUrl)}>
               4+1 years

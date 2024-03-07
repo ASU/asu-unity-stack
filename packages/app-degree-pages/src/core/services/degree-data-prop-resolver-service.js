@@ -1,28 +1,25 @@
 // @ts-check
 
 import { findCampusDefinition } from "../models";
+import { fetchAcademicPlans } from "../utils";
 
-const mathintensity = {
-  G: "General",
-  M: "Moderate",
-  S: "Substantial",
-  undefined: "",
-};
-
-// If Degree starts with a B, it's undergrad.
-// TODO Is there a better means of identifying undergrad programs?
-// Possibly AcadProg field (UG* is Undergrad and GR* is Graduate...
-// wouldn't give us minors and certs, though).
-const isUndergradProgram = row => row["Degree"]?.charAt(0) === "B";
+// Possible values are UG, GR, UGCM, and OTHR.
+const isUndergradProgram = row => row["degreeType"] === "UG";
 // Check if a program is still accepting new students
-const hasGraduateApplyDates = row =>
-  Object.keys(row["graduateApplyDates"] || {}).length > 0;
-const hasPlanDeadlines = row =>
-  Object.keys(row["planDeadlines"] || {}).length > 0;
+const hasGraduateApplyDates = row => row["applicationDeadlines"]?.length > 0;
+const hasPlanDeadlines = row => row["applicationDeadlines"]?.length > 0;
 const isValidActiveProgram = row =>
   Object.keys(row).length > 0
     ? hasPlanDeadlines(row) || hasGraduateApplyDates(row)
     : true;
+const getMajorityOwner = row => {
+  const { owners } = row;
+  if (!owners) return null;
+  const majorityOwner = owners.reduce((prev, curr) =>
+    prev.percentOwned > curr.percentOwned ? prev : curr
+  );
+  return majorityOwner;
+};
 
 /**
  *
@@ -32,36 +29,57 @@ const isValidActiveProgram = row =>
 // @ts-ignore
 function degreeDataPropResolverService(row = {}) {
   return {
-    getMajorDesc: () => row["Descr100"],
-    getInstitution: () => row["Institution"],
-    getAcadPlan: () => row["AcadPlan"],
-    getDegree: () => row["Degree"],
-    getDegreeMajorMap: () => row["degreeMajorMap"],
-    isUndergradProgram: () => isUndergradProgram(row),
-    isGradProgram: () => !isUndergradProgram(row),
-    isMinorOrCertificate: () => {
-      return !!(row["Degree"] === "Minor" || row["Degree"] === "Certificate");
+    getMajorDesc: () => row["acadPlanMarketingDescription"],
+    getInstitution: () => "ASU00",
+    getAcadPlan: () => row["acadPlanCode"],
+    /** @returns {string} */
+    getDegree: () => {
+      // Minors
+      let degree =
+        row["degreeDescriptionShort"] || row["acadPlanTypeDescription"];
+      if (degree === "CERT") {
+        degree = "Certificate";
+      }
+      return degree;
     },
+    /** @returns {string} */
+    getGeneralDegreeMajorMap: () => {
+      // TODO: Will there always be a default major map?
+      /**
+       * majorMapGeneral is an array of all general major maps, excluding online,
+       * including archived ones. The most recent has a defaultFlag key of true
+       */
+      const { majorMapGeneral } = row;
+      const mostRecentMajorMap = majorMapGeneral?.find(
+        obj => obj.defaultFlag === true
+      );
+      return mostRecentMajorMap?.url || "";
+    },
+    isUndergradProgram: () => isUndergradProgram(row),
+    isGradProgram: () => row["degreeType"] === "GR", // GR is present for grad degrees and grad certificates
+    isMinorOrCertificate: () =>
+      row["degreeType"] === "UGCM" ||
+      (row["degreeType"] === "GR" &&
+        row["acadPlanTypeDescription"] === "Certificate"),
     /** @returns {"undergrad" |  "graduate"} */
     getProgramType: () => (isUndergradProgram(row) ? "undergrad" : "graduate"),
-    getDegreeDesc: () => row["DegreeDescr"],
-    getDegreeDescLong: () => row["DegreeDescrlong"],
-    getDescrLongExtented: () => row["DescrlongExtns"],
-    getCurriculumUrl: () => row["CurriculumUrl"]?.trim(),
-    getDescrLongExtented5: () => row["DescrlongExtn5"],
-    getTransferAdmission: () => row["TransferAdmission"],
+    getDegreeDesc: () => row["degreeDescriptionLong"],
+    getDegreeDescLong: () => row["degreeDescriptionText"],
+    getFullDescription: () => row["fullDescription"],
+    getCurriculumUrl: () => row["asuOnlineAcadPlanUrl"]?.trim(),
+    getAdmissionsRequirementsText: () => row["admissionsRequirementsText"],
+    getMinorCourseRequirements: () => row["minorCourseRequirements"],
+    getTransferAdmission: () => row["transferAdmissionRequirementsText"],
     getGraduateRequirements: () => {
       /** @type {Array<Array>} */
-      const rawRequirement1 = row["gradAdditionalRequirements"];
+      const rawRequirement1 = row["graduateDegreeAdditionalRequirements"];
       let gradRequirement1 = "";
       if (rawRequirement1?.length > 0) {
         // requirement[0]: acadPlan. ex `LAAUDAUDD`
         // requirement[1]: brief decription of requirement
         // ex 88 credit hours, a written and oral comprehensive exam
         // requirement[2]: unknown code. ex AUD88AUDD
-        const flatRequirement1 = rawRequirement1
-          .map(requirement => requirement?.[1])
-          .join(", or<br />");
+        const flatRequirement1 = rawRequirement1.join(", or<br />");
 
         // AdmissionsDegRequirements
         gradRequirement1 = flatRequirement1 ? `<p>${flatRequirement1}</p>` : "";
@@ -71,87 +89,171 @@ function degreeDataPropResolverService(row = {}) {
       }
 
       /** @type {string} */
-      const gradRequirement2 = row["AdmissionsDegRequirements"];
+      const gradRequirement2 = row["degreeRequirements"]; // Only availble in graduate programs
 
       return `${gradRequirement1}${gradRequirement2}`;
     },
-    isOnline: () => row["managedOnlineCampus"],
-    getOnlineMajorMapURL: () => row["onlineMajorMapURL"],
-    getAsuCritTrackUrl: () => row["AsuCritTrackUrl"],
-    hasCareerData: () => !!row["careerData"]?.length,
+    isOnline: () => row["asuOnlineAcadPlanUrl"], // Returns null if online url is not available
+    // See getGeneralDegreeMajorMap for more info
+    getOnlineMajorMapURL: () => {
+      const onlineMajorMaps = row["majorMapOnline"];
+      // The required courses column will stay visible, with the graduate version of the degree
+      // listing page having most of them blank since only some will have a requireed courses link.
+      const mostRecentOnlineMajorMap = onlineMajorMaps?.find(
+        obj => obj.defaultFlag === true
+      );
+      if (!mostRecentOnlineMajorMap)
+        return onlineMajorMaps?.[onlineMajorMaps.length - 1]?.url;
+      return mostRecentOnlineMajorMap?.url || "";
+    },
+    hasCareerData: () => row["careerData"]?.length,
     getCareerData: () => row["careerData"] || [],
-    /** @return {string []} */
-    getCampusList: () => row["CampusStringArray"] || [],
+    /** @return {Object[]} */
+    getCampusList: () => row["campusesOffered"] || [],
     hasConcurrentOrAccelerateDegrees: () =>
-      !!row["accelerateDegrees"]?.length || !!row["concurrentDegrees"]?.length,
-    getAccelerateDegrees: () => row["accelerateDegrees"] || [],
-    getConcurrentDegrees: () => row["concurrentDegrees"] || [],
+      row["acceleratedAcadPlanCodes"]?.length ||
+      row["concurrentAcadPlanCodes"]?.length,
+    hasAccelerateDegrees: () => row["acceleratedAcadPlanCodes"]?.length,
+    hasConcurrentDegrees: () => row["concurrentAcadPlanCodes"]?.length,
+    getAccelerateDegrees: async () => {
+      if (!row["acceleratedAcadPlanCodes"]) return [];
+
+      return fetchAcademicPlans(row["acceleratedAcadPlanCodes"]);
+    },
+    getConcurrentDegrees: async () => {
+      if (!row["concurrentAcadPlanCodes"]) return [];
+
+      return fetchAcademicPlans(row["concurrentAcadPlanCodes"]);
+    },
     getCollegeDesc: () => {
       // webservice value example "for Design and the Arts, Herberger Institute"
       /** @type {String} */
-      const collegeDescRaw = row["CollegeDescr100"];
-      const collegeDesc = collegeDescRaw
-        ? collegeDescRaw.split(",").reverse().join(" ").trim()
-        : "";
-      return collegeDesc;
+      return getMajorityOwner(row)?.collegeDescription;
     },
-    getCollegeUrl: () => row["CollegeUrl"],
+    getCollegeUrl: () => {
+      return getMajorityOwner(row)?.collegeUrl || "";
+    },
     /** @return {string} */
-    getEmailAddress: () => row["EmailAddr"],
+    getEmailAddress: () => row["emailAddr"],
     /** @return {string} */
-    getPhone: () => row["Phone"],
+    getPhone: () => row["phoneNumber"]?.replace("/", "-"),
     /** @return {string} */
-    getDepartmentName: () => row["DepartmentName"],
+    getDepartmentName: () => getMajorityOwner(row)?.departmentDescription,
     /** @return {string} */
-    getPlanUrl: () => row["PlanUrl"],
+    getPlanUrl: () => row["academicOfficeUrl"],
     // AsuProgramFee
-    getAsuProgramFee: () => row["AsuProgramFee"],
-    hasAsuProgramFee: () => row["AsuProgramFee"] === "Y",
+    hasAsuProgramFee: () => row["additionalFee"],
     // AsuLangReqFlag
-    getAsuLangReqFlag: () => row["AsuLangReqFlag"],
-    hasAsuLangReqFlag: () => row["AsuLangReqFlag"] === "Y",
-    getAcadPlanText: () => row["asuAcadpLrfText"],
+    getAsuLangReqFlag: () => row["languageRequired"],
+    hasAsuLangReqFlag: () => row["languageRequired"],
     // asuMathReqFlag
-    getMathReqFlag: () => row["asuMathReqFlag"],
-    hasMathReqFlag: () => row["asuMathReqFlag"] === "Y",
-    getAdditionalMathReqCourse: () => row["additionalMathReqCourse"],
-    getOtherMathReqCourse: () => row["asuAcadpMrfText"],
-    getMathIntensity: () => mathintensity[row["MathIntensity"]],
-    getMathIntensityRawValue: () => row["MathIntensity"],
-    getMinMathReq: () => row["MinMathReq"] || "",
+    hasMathReqFlag: () => row["mathRequired"],
+    getOtherMathReqCourse: () => row["firstMathCourseRequiredSupplementalText"],
+    getMathIntensity: () => row["mathIntensityDescription"],
     /** @return {string} */
-    getMarketText: () => row["marketText"]?.trim(),
+    getMinMathReq: () => {
+      const mathInfoObject = row["firstMathCourseRequired"];
+      if (!mathInfoObject) return "";
+      const { subject, catalogNumber, description } = mathInfoObject;
+      return `${subject} ${catalogNumber} - ${description}`;
+    },
     /** @return {string} */
-    getAsuOfficeLoc: () => row["AsuOfficeLoc"] || "",
+    getMarketText: () => row["marketingText"]?.trim(),
     /** @return {string} */
-    getCampusWue: () => row["campusWue"] || "",
-    getConcurrentDegreeMajorMaps: () => row["concurrentDegreeMajorMaps"]?.[0],
-    getChangeMajor: () => row["ChangeMajor"],
-    getAsuCareerOpportunity: () => row["AsuCareerOpp"],
-    getGlobalExp: () => row["globalExp"]?.trim(),
+    getAsuOfficeLoc: () => row["academicOfficeLocation"] || "",
     /** @return {string} */
-    getCollegeAcadOrg: () => row["CollegeAcadOrg"],
+    getCampusWue: () => {
+      const campusList = row["campusesOffered"];
+      if (!campusList) return null;
+      return campusList?.find(campus => campus.wue === true)?.campusCode;
+    },
+    getConcurrentDegreeMajorMaps: () =>
+      fetchAcademicPlans(row["concurrentAcadPlanCodes"]),
+    getChangeMajor: () => row["changeMajorRequirementsText"],
+    getAsuCareerOpportunity: () => row["careerOpportunities"],
+    getGlobalExp: () => row["globalExperienceText"]?.trim(),
+    /** @return {string} */
+    getCollegeAcadOrg: () => getMajorityOwner(row)?.collegeAcadOrg,
     /** @return {Array} */
-    getCollegeAcadOrgJoint: () => row["CollegeAcadOrgJoint"],
+    getCollegeAcadOrgJoint: () => {
+      const { owners } = row;
+      if (!owners) return [];
+      const allCollegeAcadOrgs = owners.map(owner => owner.collegeAcadOrg);
+      return allCollegeAcadOrgs;
+    },
     /** @return {string} */
-    getDepartmentCode: () => row["DepartmentCode"],
+    getDepartmentCode: () => getMajorityOwner(row)?.departmentAcadCode,
     /** @return {Object.<string, string>} */
-    getGraduateApplyDates: () => row["graduateApplyDates"],
+    getGraduateApplyDates: () => row["applicationDeadlines"],
     hasGraduateApplyDates: () => hasGraduateApplyDates(row),
     /** @return {Object.<string, string>} */
-    getPlanDeadlines: () => row["planDeadlines"],
+    getPlanDeadlines: () => row["applicationDeadlines"],
     hasPlanDeadlines: () => hasPlanDeadlines(row),
     isValidActiveProgram: () => isValidActiveProgram(row),
-    getAsuDegSrchFlg: () => row["AsuDegSrchFlg"],
-    getAsuCustomText: () => row["AsuCustomText"],
+    /** @return {boolean} */
+    getAsuDegSrchFlg: () => row["activeInDegreeSearch"],
+    getAsuCustomText: () => row["customText"],
     getRequiredCoursesLabel: () => {
-      if (row["Degree"] === "Minor") return "Minor";
-      if (row["Degree"] === "Certificate") return "Certificate";
+      if (row["acadPlanTypeDescription"] === "Minor") return "Minor";
+      if (row["acadPlanTypeDescription"] === "Certificate")
+        return "Certificate";
 
       return "Major";
     },
-    getSubPlnMajorMaps: () => row["SubPlnMajorMaps"],
-    getSubPln: () => row["SubPln"],
+    getStemOptText: () => row["stemOptText"],
+    getSubPlnMajorMaps: () => {
+      if (!row["subplans"] || !row["majorMapSubplans"]) return [];
+      let subplans = [...row["subplans"]]?.filter(
+        subpln => subpln.campusesOffered
+      );
+      const majorMapSubplans = [...row["majorMapSubplans"]];
+
+      // Helper function to filter subplans
+      const filterSubplans = (subplansArr, acadSubPlanCode) => {
+        return subplansArr.filter(
+          subplan => subplan.acadSubPlanCode !== acadSubPlanCode
+        );
+      };
+
+      // Helper function to check if a subplan exists with a different acadSubPlanCode
+      const isDifferentSubplanExists = (subplansArr, acadSubPlanCode) => {
+        return subplansArr.some(
+          subplan => subplan.acadSubPlanCode !== acadSubPlanCode
+        );
+      };
+
+      const filteredMajorMapSubplans = [];
+
+      for (let i = majorMapSubplans.length - 1; i >= 0; i -= 1) {
+        // Break the loop if there are no more subplans
+        if (subplans.length === 0) break;
+
+        const currentMajorMapSubplan = majorMapSubplans[i];
+
+        // If defaultFlag is true, filter out the subplan with the same acadSubPlanCode
+        if (currentMajorMapSubplan.defaultFlag) {
+          subplans = filterSubplans(
+            subplans,
+            currentMajorMapSubplan.acadSubPlanCode
+          );
+          filteredMajorMapSubplans.push(currentMajorMapSubplan);
+        } else if (
+          isDifferentSubplanExists(
+            subplans,
+            currentMajorMapSubplan.acadSubPlanCode
+          )
+        ) {
+          subplans = filterSubplans(
+            subplans,
+            currentMajorMapSubplan.acadSubPlanCode
+          );
+          filteredMajorMapSubplans.push(currentMajorMapSubplan);
+        }
+      }
+
+      return filteredMajorMapSubplans;
+    },
+    getSubPln: () => row["subplans"],
   };
 }
 
@@ -168,7 +270,7 @@ function getCampusLocations(resolver) {
     url: "",
   });
 
-  const campusList = resolver.getCampusList();
+  const campusList = resolver.getCampusList().map(campus => campus.campusCode);
   if (campusList.length > 0)
     locations.push(
       ...campusList.map(

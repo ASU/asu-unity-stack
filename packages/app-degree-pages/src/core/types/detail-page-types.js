@@ -87,15 +87,16 @@
 
 /**
  * @typedef {Object} ProgramDescriptionProps
- * @property {ContentItem} content
+ * @property {ContentItem | string} content
+ * @property {string} [stemOptText]
  */
 
 /**
  * @typedef {Object} RequiredCoursesProps
  * @property {string} onlineMajorMapURL
  * @property {string} majorMapOnCampusURL
- * @property {string} subPlnMajorMaps
- * @property {string} subPln
+ * @property {Array.<Object>} subPlnMajorMaps
+ * @property {Array.<Object>} subPlns
  */
 
 /**
@@ -114,6 +115,7 @@
  * @property {boolean} isMinorOrCertificate
  * @property {string} additionalRequirements
  * @property {string} transferRequirements
+ * @property {string} minorRequirements
  */
 
 /**
@@ -184,10 +186,9 @@
 /**
  * @typedef {Object} ProgramDetailDataSource
  * @property {string} [endpoint]
- * @property {string} [method]
  * @property {"true" | "false"} [init]
  * @property {"true" | "false"} [cert]
- * @property {string} [fields]
+ * @property {string} [include]
  * @property {string} acadPlan
  */
 

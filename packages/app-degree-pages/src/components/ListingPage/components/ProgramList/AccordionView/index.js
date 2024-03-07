@@ -38,6 +38,9 @@ const WrapperSection = styled.div`
 const AccordionView = ({ programs, actionUrls }) => {
   const { state } = useContext(AppContext);
   const columSettings = state?.listPageProps?.programList?.settings;
+  const hideRequiredCoursesSection =
+    state?.listPageProps?.programList?.dataSource?.program === "graduate";
+
   /**
    * @type {{
    *   content: {
@@ -53,19 +56,27 @@ const AccordionView = ({ programs, actionUrls }) => {
       const isOnline = resolver.isOnline();
       const directUrl = isOnline
         ? resolver.getOnlineMajorMapURL()
-        : resolver.getAsuCritTrackUrl();
+        : resolver.getGeneralDegreeMajorMap();
 
-      return `<a href=${directUrl}>${resolver.getRequiredCoursesLabel()} Map</a>`;
+      let directMapLink;
+
+      try {
+        const url = new URL(directUrl)?.toString();
+        directMapLink = `<a href=${url}>${resolver.getRequiredCoursesLabel()} Map</a>`;
+      } catch (error) {
+        return "";
+      }
+      return directMapLink;
     };
 
     const getAcceleratedConcurrent = () => `<div>
         ${
-          resolver.getConcurrentDegrees().lenght > 0
+          resolver.hasConcurrentDegrees()
             ? "<div className='cell-container'>concurrent</div>"
             : ""
         }
         ${
-          resolver.getAccelerateDegrees().length > 0
+          resolver.hasAccelerateDegrees()
             ? `<div className="cell-container">
                 <a href=${accellerateDegreeLink(
                   resolver,
@@ -93,13 +104,20 @@ const AccordionView = ({ programs, actionUrls }) => {
           <strong>Degree:</strong>
           <br />${resolver.getDegree()}
         </li>
-        <li>
-          <strong>Required Courses:</strong>
-          <br />${getRequiredCourses()}
-        </li>
+        ${
+          !hideRequiredCoursesSection
+            ? `<li>
+              <strong>Required Courses:</strong>
+              <br />${getRequiredCourses()}
+            </li>`
+            : ""
+        }
         <li>
           <strong>Campus or location:</strong>
-          <br />${resolver.getCampusList().map(toTitleCase).join(", ")}
+          <br />${resolver
+            .getCampusList()
+            .map(item => toTitleCase(item.campusCode))
+            .join(", ")}
         </li>
         <li>
           <strong>Accelerated/Concurrent:</strong>
