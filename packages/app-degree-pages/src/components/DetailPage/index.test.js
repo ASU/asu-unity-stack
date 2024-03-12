@@ -100,8 +100,9 @@ describe("#DetailPage", () => {
     it("should hide `Custom text` section", () =>
       expect(component.queryByTestId("custom-text")).not.toBeInTheDocument());
 
-      it("should define `Change your major` section", () => {
-      expect(component.getByTestId("change-your-major")).toBeInTheDocument()})
+    it("should define `Change your major` section", () => {
+      expect(component.getByTestId("change-your-major")).toBeInTheDocument();
+    });
   });
 
   describe("#With props", () => {

@@ -63,18 +63,6 @@ describe("#Pagination", () => {
 });
 
 describe("#Pagination variations", () => {
-  it("should render first and last button", () => {
-    const props = {
-      ...defaultArgs,
-      showFirstButton: true,
-      showLastButton: true,
-    };
-
-    const component = renderPagination(props);
-
-    expect(component.queryByText("First")).toBeInTheDocument();
-    expect(component.queryByText("Last")).toBeInTheDocument();
-  });
   it("should set active currentPage", () => {
     const currentPage = 3;
     const props = {

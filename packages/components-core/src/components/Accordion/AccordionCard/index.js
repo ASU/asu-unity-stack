@@ -49,15 +49,12 @@ export const AccordionCard = ({ id, item, openCard, onClick }) => (
       </h4>
     </div>
     {item.content?.body && (
-      <div
-      id={`card-body-${id}`}
-      className={classNames("collapse", )}
-      >
-      <div
-        className="accordion-body"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={sanitizeDangerousMarkup(item.content.body)}
-      />
+      <div id={`card-body-${id}`} className={classNames("collapse")}>
+        <div
+          className="accordion-body"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={sanitizeDangerousMarkup(item.content.body)}
+        />
       </div>
     )}
   </div>

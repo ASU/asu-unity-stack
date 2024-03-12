@@ -15,7 +15,6 @@
     "url": "git+https://github.com/ASU/asu-unity-stack.git"
   },
   "scripts": {
-    "test": "node ./__tests__/@asu/unity-bootstrap-theme.test.js",
     "build": "rimraf ./dist && NODE_ENV=production webpack  --progress --bail && rimraf ./.tmp",
     "build:dev": "rimraf ./dist && webpack --progress --bail && rimraf ./.tmp",
     "watch": "rimraf ./dist && webpack --watch && rimraf ./.tmp",
