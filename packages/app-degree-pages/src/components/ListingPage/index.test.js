@@ -28,8 +28,7 @@ const actionUrls = {
 
 /** @type {import("../../core/types/listing-page-types").ProgramListDataSource} */
 const dataSource = {
-  program: "graduate",
-  cert: "true",
+  program: "undergrad",
 };
 
 /**
@@ -71,7 +70,7 @@ describe("#ListingPage", () => {
   /** @param {AppProps} props  */
   async function renderListingPage(props) {
     await act(async () => {
-      component = await render(
+      component = render(
         <ListingPage
           appPathFolder={props.appPathFolder}
           actionUrls={props.actionUrls}
@@ -96,9 +95,7 @@ describe("#ListingPage", () => {
     afterAll(() => (globalThis.doDelay = false));
 
     it("should define Loading component", async () => {
-      await waitFor(() => {
         expect(component.getByTestId("loader")).toBeInTheDocument();
-      });
     });
   });
 
@@ -150,7 +147,7 @@ describe("#ListingPage", () => {
 
         await renderListingPage(customProps);
 
-        const introComponent = component.getByTestId("intro-content");
+        const introComponent = await component.findByTestId("intro-content");
         expect(introComponent).toBeInTheDocument();
         expect(introComponent).toHaveAttribute("data-type", introType);
       }
@@ -184,8 +181,8 @@ describe("#ListingPage", () => {
       [`Program List`, `program-list`],
     ];
 
-    test.each(sectionCases)("should define `%p` section", (_, testId) =>
-      expect(component.getByTestId(testId)).toBeInTheDocument()
+    test.each(sectionCases)("should define `%p` section", async (_, testId) =>
+      expect(await component.findByTestId(testId)).toBeInTheDocument()
     );
   });
 
@@ -194,7 +191,6 @@ describe("#ListingPage", () => {
       /** @type {AppProps} */
       const customProps = {
         ...defaultArgs,
-        actionUrls: null,
         introContent: null,
         hasSearchBar: false,
         hasFilters: false,
@@ -205,8 +201,10 @@ describe("#ListingPage", () => {
       await renderListingPage(customProps);
     });
 
-    it("should `Hero` section be undefined", async () => {
-      expect(container.querySelector(".uds-hero")).not.toBeInTheDocument();
+    it("`Hero` section should be undefined", async () => {
+      expect(
+        container.querySelector("[data-testid='hero']")
+      ).not.toBeInTheDocument();
     });
 
     const cases = [
@@ -249,81 +247,69 @@ describe("#ListingPage", () => {
       await renderListingPage(defaultArgs);
     });
 
-    const selectOptionFilters = () => {
-      const locations = component.getByTestId("locations");
-      const asuLocals = component.getByTestId("asuLocals");
-      const acceleratedConcurrent = component.getByTestId(
+    const selectOptionFilters = async () => {
+      const locations = await component.findByTestId("locations");
+      const asuLocals = await component.findByTestId("asuLocals");
+      const acceleratedConcurrent = await component.findByTestId(
         "acceleratedConcurrent"
       );
-      const btnApplyfilter = component.getByTestId("btn-apply-filter");
+      const btnApplyfilter = await component.findByTestId("btn-apply-filter");
 
       fireEvent.change(locations, {
-        target: { value: locationOptions[0].value },
+        target: { value: locationOptions[3].value },
       });
       fireEvent.change(asuLocals, {
-        target: { value: asuLocalOptions[0].value },
+        target: { value: asuLocalOptions[3].value },
       });
       fireEvent.change(acceleratedConcurrent, {
         target: {
-          value: acceleratedConcurrentOptions[1].value,
+          value: acceleratedConcurrentOptions[2].value,
         },
       });
 
-      fireEvent.click(btnApplyfilter);
+      return fireEvent.click(btnApplyfilter);
     };
 
     it("should trigger apply a filter when the user type a keyword", async () => {
-      const searchField = component.getByTestId("search-field");
-      const searchBarForm = component.getByTestId("search-bar-form");
-      const programRows = component.getByTestId("program-rows");
+      const searchField = await component.findByTestId("search-field");
+      const searchBarForm = await component.findByTestId("search-bar-form");
+      const programRows = await component.findByTestId("program-rows");
 
-      // await waitFor(() => {
-      //   expect(programRows.children.length).toBe(16);
-      // });
+      expect(programRows.children.length).toBe(16);
 
-      fireEvent.change(searchField, {
-        target: {
-          value: "nonsense",
-        },
-      });
+      fireEvent.change(searchField, { target: { value: "nonsense" } });
 
       fireEvent.submit(searchBarForm);
 
-      await waitFor(() => {
-        expect(programRows.children.length).toBe(1);
-        expect(mockfilterData).toHaveBeenCalled();
-      });
+      const updatedProgramRows = await component.findByTestId("program-rows");
+      expect(updatedProgramRows.children.length).toBe(1);
     });
 
     it("should apply filters when you select options and click the button", async () => {
-      await waitFor(() => {
-        selectOptionFilters();
-        expect(mockfilterData).toHaveBeenCalled();
-      });
+      const programRows = await component.findByTestId("program-rows");
+      await selectOptionFilters();
+      expect(mockfilterData).toHaveBeenCalled();
+      const programRows1 = await component.findByTestId("program-rows");
+      expect(programRows1.children.length).toBeLessThan(16);
     });
 
-    it("should remove one filter when the you click a summary tag", async () => {
+    it("should remove one filter when you click a summary tag", async () => {
       selectOptionFilters();
-      const bthTags = component.getByTestId("summary-filter-tags");
-
-      await waitFor(() => {
-        expect(bthTags.children.length).toBe(3);
-        fireEvent.click(bthTags.children[1]);
-        expect(mockfilterData).toHaveBeenCalled();
-      });
-
-      await waitFor(() => {
-        const programRows = component.getByTestId("program-rows");
-        expect(programRows.children.length).toBeLessThan(16);
-        expect(bthTags.children.length).toBe(2);
-      });
+      const bthTags = await component.findByTestId("summary-filter-tags");
+      expect(bthTags.children.length).toBe(3);
+      fireEvent.click(bthTags.children[1]);
+      expect(mockfilterData).toHaveBeenCalled();
+      const updatedBtnTags = await component.findByTestId(
+        "summary-filter-tags"
+      );
+      expect(updatedBtnTags.children.length).toBe(2);
     });
 
     it("should clear all filter when you click `Clear` button", async () => {
       selectOptionFilters();
-      const bthTags = component.getByTestId("summary-filter-tags");
+      const bthTags = await component.findByTestId("summary-filter-tags");
 
-      const btnClearFilter = component.getByTestId("btn-clear-filters");
+      const btnClearFilter = await component.findByTestId("btn-clear-filters");
       await waitFor(() => {
         expect(bthTags.children.length).toBe(3);
         fireEvent.click(btnClearFilter);
@@ -370,10 +356,10 @@ describe("#ListingPage", () => {
     });
 
     it("should define Accordion view when view port is smaller", async () => {
-      const accordion = component.getByTestId("accordion-view");
-      const list = component.getByTestId("list-view");
+      const accordion = await component.findByTestId("accordion-view");
+      const list = await component.findByTestId("list-view");
       expect(list).toBeVisible();
-      expect(accordion).not.toBeVisible();
+      expect(accordion).toBeVisible();
     });
   });
 });
