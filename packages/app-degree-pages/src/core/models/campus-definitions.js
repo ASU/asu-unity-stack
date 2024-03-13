@@ -82,13 +82,13 @@ const campusDefinitions = {
 /**
  *
  * @param {string} campus
- * @param {string} programm
+ * @param {string} program
  */
-const findCampusDefinition = (campus, programm) => {
+const findCampusDefinition = (campus, program) => {
   const specialCases = ["TUCSN", "AWC"];
   const campusKey = campus.toUpperCase();
   const searchKey = specialCases.includes(campusKey)
-    ? `${campusKey}-${programm}`
+    ? `${campusKey}-${program}`
     : campusKey;
 
   return campusDefinitions[searchKey];

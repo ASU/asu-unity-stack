@@ -1,3 +1,11 @@
+# [@asu/unity-bootstrap-theme-v1.9.5](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.4...@asu/unity-bootstrap-theme-v1.9.5) (2024-03-05)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** adjust endorsed-logo css ([d20f238](https://github.com/ASU/asu-unity-stack/commit/d20f238f73005907edb36bb941fcbf84198fefdb))
+* **unity-bootstrap-theme:** use explicit var name ([a9e42ed](https://github.com/ASU/asu-unity-stack/commit/a9e42ed75d6eff375022306148cbba3b4a9c01ca))
+
 # [@asu/unity-bootstrap-theme-v1.9.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.3...@asu/unity-bootstrap-theme-v1.9.4) (2024-01-29)
 
 

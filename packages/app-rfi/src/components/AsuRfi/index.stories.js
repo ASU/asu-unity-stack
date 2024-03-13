@@ -57,7 +57,7 @@ export const RfiOnCollegePage = Template.bind({});
 RfiOnCollegePage.args = {
   campus: undefined, // ONLNE, GROUND, NOPREF
   actualCampus: undefined, // TEMPE, DTPHX, POLY, WEST, ONLNE...
-  college: "CGM", // CHI
+  college: "CHI", // CHI
   department: undefined,
   studentType: undefined, // graduate, undergrad
   areaOfInterest: undefined,
@@ -260,7 +260,7 @@ RfiDevTester.args = {
   stateProvince: undefined, // Only US states or CA provinces
   successMsg: "Success. <strong>You made it.</strong>",
   test: false,
-  dataSourceDegreeSearch: "https://degrees.apps.asu.edu/t5/service",
+  dataSourceDegreeSearch: "https://api.myasuplat-dpl.asu.edu/api/codeset",
   dataSourceAsuOnline:
     "https://cms.asuonline.asu.edu/lead-submissions-v3.5/programs",
   dataSourceCountriesStates:

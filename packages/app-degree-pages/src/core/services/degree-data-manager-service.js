@@ -27,64 +27,48 @@ function filterData({
     blacklistAcadPlans,
   },
 }) {
-  // ============================================================
-  // See WS2-1391 for details on why we use CollegeAcadOrgJoint field.
-  /** @param {PropResolver} resolver   */
-  const isValidCollegeAcadOrg = resolver =>
-    collegeAcadOrg
-      ? resolver.getCollegeAcadOrgJoint().includes(collegeAcadOrg)
-      : true;
-  // ============================================================
-  /** @param {PropResolver} resolver   */
-  const isValidDepartmentCode = resolver =>
-    departmentCode
-      ? resolver.getDepartmentCode().includes(departmentCode)
-      : true;
-  // ============================================================
-  /** @param {PropResolver} resolver   */
-  const isValidCampus = resolver =>
-    locations.length > 0
-      ? resolver
-          .getCampusList()
-          ?.some(campus => locations.some(loc => loc.value === campus))
-      : true;
-  // ============================================================
-  /** @param {Object.<string, []>} row  */
-  const isValidAcceleratedConcurrent = (row = {}) =>
-    isAccelConcValid(acceleratedConcurrent)
-      ? row[acceleratedConcurrent.value]?.length > 0
-      : true;
-  // ============================================================
-  /** @param {PropResolver} resolver   */
-  const isValidForKeyword = resolver =>
-    keyword ? resolver.getDescrLongExtented()?.includes?.(keyword) : true;
-  // ============================================================
-  /** @param {PropResolver} resolver   */
-  const isValidProgram = resolver =>
-    JSON.parse(showInactivePrograms) === false
-      ? resolver.isValidActiveProgram()
-      : true;
-  // ============================================================
-  /** @param {PropResolver} resolver   */
-  const isNotOnBlacklist = resolver =>
+  // See WS2-1391 for more details on why we use collegeAcadOrg
+  const filterByCollegeAcadOrg = resolver =>
+    !collegeAcadOrg ||
+    resolver.getCollegeAcadOrgJoint().includes(collegeAcadOrg);
+
+  const filterByDepartmentCode = resolver =>
+    !departmentCode || resolver.getDepartmentCode().includes(departmentCode);
+
+  const filterByCampus = resolver =>
+    !locations.length ||
+    resolver
+      .getCampusList()
+      ?.some(campus => locations.some(loc => loc.value === campus.campusCode));
+
+  const filterByAcceleratedConcurrent = (row = {}) =>
+    !isAccelConcValid(acceleratedConcurrent) ||
+    row[acceleratedConcurrent.value]?.length > 0;
+
+  const filterByKeyword = resolver =>
+    !keyword || resolver.getFullDescription()?.includes(keyword);
+
+  const filterByActiveProgram = resolver =>
+    JSON.parse(showInactivePrograms) || resolver.isValidActiveProgram();
+
+  const filterByBlacklist = resolver =>
     !blacklistAcadPlans?.includes(resolver.getAcadPlan());
-  // ============================================================
-  /** @param {Object.<string, any>} row  */
-  const doFilter = row => {
+
+  const applyFilters = row => {
     const resolver = degreeDataPropResolverService(row);
 
     return (
-      isValidProgram(resolver) &&
-      isValidCollegeAcadOrg(resolver) &&
-      isValidDepartmentCode(resolver) &&
-      isValidCampus(resolver) &&
-      isValidAcceleratedConcurrent(row) &&
-      isValidForKeyword(resolver) &&
-      isNotOnBlacklist(resolver)
+      filterByCollegeAcadOrg(resolver) &&
+      filterByDepartmentCode(resolver) &&
+      filterByCampus(resolver) &&
+      filterByAcceleratedConcurrent(row) &&
+      filterByKeyword(resolver) &&
+      filterByActiveProgram(resolver) &&
+      filterByBlacklist(resolver)
     );
   };
 
-  return programs.filter(doFilter);
+  return programs.filter(applyFilters);
 }
 
 /**
@@ -94,7 +78,9 @@ function filterData({
  */
 const sortPrograms = programs => {
   const sortedPrograms = programs.sort((p1, p2) =>
-    p1.Descr100.localeCompare(p2.Descr100)
+    p1.acadPlanMarketingDescription.localeCompare(
+      p2.acadPlanMarketingDescription
+    )
   );
 
   return sortedPrograms;

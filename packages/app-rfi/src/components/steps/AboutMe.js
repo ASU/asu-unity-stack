@@ -6,6 +6,9 @@ import React, { useEffect, useState } from "react";
 import * as Yup from "yup";
 
 import { trackGAEvent } from "../../../../../shared";
+import { KEY } from "../../core/utils/constants";
+import { fetchDegreesData } from "../../core/utils/fetchPrograms";
+import { useRfiContext } from "../../core/utils/rfiContext";
 import {
   RfiTextInput,
   RfiTextArea,
@@ -32,7 +35,7 @@ function createMarkup(output) {
 
 const RfiGdpr = ({ campus }) => {
   let gdprWording = `By submitting my information, I consent to ASU contacting me about education services using email, direct mail, SMS/texting and digital platforms. Message and data rates may apply. Consent is not required to receive services, and I can withdraw consent by contacting ASU at <a href="mailto:UnsubFutureStudentComm@asu.edu">UnsubFutureStudentComm@asu.edu</a> or as described in communications I receive. I consent to ASU’s <a href="https://asuonline.asu.edu/text-terms/">mobile terms and conditions</a> and <a href="https://asuonline.asu.edu/web-analytics-privacy-2/">Privacy Statements</a>, including the European Supplement.`;
-  if (campus === "ONLNE") {
+  if (campus === KEY.ONLNE) {
     gdprWording = `By submitting my information, I consent to ASU contacting me about educational services using automated calls, prerecorded voice messages, SMS/text messages or email at the information provided above. Message and data rates may apply. Consent is not required to receive services, and I may call ASU directly at <a href="tel:8662776589">866-277-6589</a>. I consent to ASU’s <a href="https://asuonline.asu.edu/text-terms/">mobile terms and conditions</a>, and <a href="https://asuonline.asu.edu/web-analytics-privacy-2/">Privacy Statements</a>, including the European Supplement.`;
   }
   return (
@@ -64,8 +67,46 @@ const RfiGdpr = ({ campus }) => {
   );
 };
 
+// Props
+
+RfiGdpr.propTypes = {
+  /* Formik value */
+  campus: PropTypes.string.isRequired,
+};
+
+const getGenericTermOptions = () => {
+  const termData = [];
+  const currMo = new Date().getMonth();
+  for (let i = 0; i < 5; i += 1) {
+    // Use i to calculate out years.
+    const year = new Date().getFullYear() + i;
+    const mil = year.toString();
+    const termSpring = mil.slice(0, 1) + mil.slice(2) + 1; // 1 == spring
+    const termFall = mil.slice(0, 1) + mil.slice(2) + 7; // 7 == fall
+    // Drop spring for current year.
+    if (i > 0) {
+      termData.push({
+        key: termSpring,
+        value: `${termSpring}:${year} Spring`,
+        text: `${year} Spring`,
+      });
+    }
+    // Drop fall for current year if currMo is greater than June.
+    if (i > 0 || currMo < 6) {
+      // Month is based off zero index.
+      termData.push({
+        key: termFall,
+        value: `${termFall}:${year} Fall`,
+        text: `${year} Fall`,
+      });
+    }
+  }
+  return termData;
+};
+
 const AboutMe = () => {
-  const [termOptions, setTermOptions] = useState([]);
+  const [termOptions, setTermOptions] = useState(getGenericTermOptions());
+  const { dataSourceAsuOnline, dataSourceDegreeSearch } = useRfiContext();
 
   // Surface values from Formik context
   const { values } = useFormikContext();
@@ -75,75 +116,38 @@ const AboutMe = () => {
     // IF degree is graduate and values.Campus !== ONLNE, call and get terms
     // for the specific program.
     if (
-      values.Campus !== "ONLNE" &&
-      values.CareerAndStudentType === "Readmission"
+      values.Campus !== KEY.ONLNE &&
+      values.CareerAndStudentType === KEY.READMISSION
     ) {
       // Degree Search REST API
       if (values.Interest2) {
-        const serviceUrl = `https://degrees.apps.asu.edu/t5/service?init=false&method=findDegreeByAcadPlan&acadPlan=${values.Interest2}&fields=applyInfo&program=graduate&cert=false`;
-        // Alternate field graduateAllApplyDates has similar data, but lacks a
-        // good label and appears like it might have more dupes.
-
-        fetch(serviceUrl)
-          .then(response => response.json())
-          .then(data => {
-            // Structure of response: data.programs[0].applyInfo
-            const {
-              programs: [{ applyInfo }],
-            } = data;
+        fetchDegreesData({
+          dataSourceDegreeSearch,
+          dataSourceAsuOnline,
+          Campus: values.Campus,
+          CareerAndStudentType: values.CareerAndStudentType,
+          Interest2: values.Interest2,
+        })
+          .then(([response, data]) => {
+            if (response === "Error") {
+              // eslint-disable-next-line no-console
+              console.error(data);
+              return;
+            }
             // Convert object to array so we can .sort and .map.
-            const termData = Object.entries(applyInfo)
-              .sort((a, b) => (a[1] > b[1] ? 1 : -1))
-              .map(termValue => ({
-                key: termValue[0].split(":")[2],
-                value: `${termValue[0].split(":")[2]}:${
-                  termValue[1].split(":")[0]
-                }`,
-                text: termValue[1].split(":")[0],
+            const termData = data[0].applicationDeadlines
+              ?.sort((a, b) => (a.strm > b.strm ? 1 : -1))
+              .map(({ strm, strmDescription }, i) => ({
+                key: `${i}`,
+                value: strm,
+                text: strmDescription,
               }));
-            // Dedupe based on object key property as dupe terms can occur due
-            // to multiple campus offerings.
-            // Explanation: https://stackoverflow.com/a/56768137
-            const dedupedTermData = [
-              ...new Map(termData.map(item => [item.key, item])).values(),
-            ];
-            setTermOptions(dedupedTermData);
+            if (termData && termData.length > 0) {
+              setTermOptions(termData);
+            }
           })
           .catch(error => new Error(error));
       }
-    } else {
-      // ELSE default to undergrad and build our own options.
-
-      // Term logic example: for term 2217, the 2 is for century, 21 for last 2 of
-      // year, 1 for spring, 7 for fall. We don't do summer, but it's 4, for
-      // reference.
-      const termData = [];
-      const currMo = new Date().getMonth();
-      for (let i = 0; i < 5; i += 1) {
-        // Use i to calculate out years.
-        const year = new Date().getFullYear() + i;
-        const mil = year.toString();
-        const termSpring = mil.slice(0, 1) + mil.slice(2) + 1; // 1 == spring
-        const termFall = mil.slice(0, 1) + mil.slice(2) + 7; // 7 == fall
-        // Drop spring for current year.
-        if (i > 0) {
-          termData.push({
-            key: termSpring,
-            value: `${termSpring}:${year} Spring`,
-            text: `${year} Spring`,
-          });
-        }
-        // Drop fall for current year if currMo is greater than June.
-        if (i > 0 || currMo < 6) {
-          // Month is based off zero index.
-          termData.push({
-            key: termFall,
-            value: `${termFall}:${year} Fall`,
-            text: `${year} Fall`,
-          });
-        }
-      }
-      setTermOptions(termData);
     }
   }, []); // Run once. If user changes degree, runs again on return to the step.
 
@@ -213,8 +217,8 @@ const AboutMe = () => {
         label="Postal code"
         id="ZipCode"
         name="ZipCode"
-        requiredIcon={values.Campus !== "ONLNE"}
-        required={values.Campus !== "ONLNE"}
+        requiredIcon={values.Campus !== KEY.ONLNE}
+        required={values.Campus !== KEY.ONLNE}
         onBlur={e =>
           trackGAEvent({
             ...defaultInputEvent,
@@ -229,8 +233,8 @@ const AboutMe = () => {
           id="EntryTerm"
           name="EntryTerm"
           options={termOptions}
-          requiredIcon={values.Campus !== "ONLNE"}
-          required={values.Campus !== "ONLNE"}
+          requiredIcon={values.Campus !== KEY.ONLNE}
+          required={values.Campus !== KEY.ONLNE}
           onBlur={e =>
             trackGAEvent({
               ...defaultInputEvent,
@@ -248,8 +252,8 @@ const AboutMe = () => {
           name="EntryTerm"
           helperText="The program you are interested in is not accepting new students at this time. Please select a different program of interest, and then select the semester you would like to start."
           disabled
-          requiredIcon={values.Campus !== "ONLNE"}
-          required={values.Campus !== "ONLNE"}
+          requiredIcon={values.Campus !== KEY.ONLNE}
+          required={values.Campus !== KEY.ONLNE}
           onBlur={e =>
             trackGAEvent({
               ...defaultInputEvent,
@@ -315,12 +319,6 @@ const aboutMeForm = {
     EntryTerm: undefined,
     GdprConsent: undefined,
   },
-};
-
-// Props
-
-RfiGdpr.propTypes = {
-  campus: PropTypes.string.isRequired,
 };
 
 export { aboutMeForm };

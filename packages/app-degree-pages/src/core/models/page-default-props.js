@@ -139,14 +139,14 @@ const resolveDefaultProps = appPathFolder => {
         mentors: {
           image: {
             url: `${detailImageFolder}/customize-mentor-600.jpg`,
-            altText: "Mentor network",
+            altText: "Career Services",
           },
-          title: "Mentor network",
-          text: "Students have access to a powerful online network of diverse mentors. Engaging with the ASU Mentor Network can help to build connections with professionals, both locally and globally, who share career advice, networks, and their own success stories.",
+          title: "Career Services",
+          text: "All students have access to ASU’s full-service career resources center. Get help writing your cover letter and building your resume, learn job interview skills, land an internship, and connect with hundreds of employers who are actively recruiting ASU graduates.",
           button: {
-            label: "ASU Mentor network",
+            label: "ASU Career Services",
             color: "maroon",
-            href: "https://mentorship.asu.edu",
+            href: "https://career.eoss.asu.edu/",
           },
         },
         honors: {

@@ -1,3 +1,37 @@
+# [@asu/app-degree-pages-v2.4.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.3.1...@asu/app-degree-pages-v2.4.0) (2024-03-07)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** added logic for minorOrCert check ([63358b7](https://github.com/asu/asu-unity-stack/commit/63358b7e9a630eac963b0f3ed213a7f22bcea29b))
+* **app-degree-pages:** added proptypes and removed section from graduate listing ([4c7bd04](https://github.com/asu/asu-unity-stack/commit/4c7bd04c87bd61093f1d0cd17d9bcd87f3d36775))
+* **app-degree-pages:** added wue check for campuses offered ([8c00620](https://github.com/asu/asu-unity-stack/commit/8c006204dd4b48ff1af9c0c9c5166347469c1cc1))
+* **app-degree-pages:** address pr issues ([a4ef677](https://github.com/asu/asu-unity-stack/commit/a4ef677b9f9731ac3fd8bd2873e6e29d8609d3b5))
+* **app-degree-pages:** addressed PR issues ([7f2084c](https://github.com/asu/asu-unity-stack/commit/7f2084c40e065e8eb4dbfd3ca9972b0efd8eda8d))
+* **app-degree-pages:** fixed errors when building ([e9ee4d0](https://github.com/asu/asu-unity-stack/commit/e9ee4d0c8653de94417d82220bab575e57e789e2))
+* **app-degree-pages:** fixed missing grad requirement info ([f1feb68](https://github.com/asu/asu-unity-stack/commit/f1feb68a9c741b48a6cc694637126cdf217a3ed5))
+* **app-degree-pages:** subplan links now match old service ([55b54c8](https://github.com/asu/asu-unity-stack/commit/55b54c83e4e0a00648054b741a2c1f155f9ba5d4))
+* **app-degree-pages:** timeout for fetchAcadPlans to 10s ([59e6102](https://github.com/asu/asu-unity-stack/commit/59e610228cf89e96dd5ca576846fbecfd264eae1))
+* **app-degree-pages:** update TODO's ([c411ebc](https://github.com/asu/asu-unity-stack/commit/c411ebcf26862ff69ecef36ff8754933e8a12361))
+
+
+### Features
+
+* **app-degree-pages:** add new utils and updated for new parameters ([36e87e5](https://github.com/asu/asu-unity-stack/commit/36e87e5855df71e0fa7ef142907e3e11b9593190))
+* **app-degree-pages:** added stemOpt section to program detail page ([b972d4a](https://github.com/asu/asu-unity-stack/commit/b972d4a92e262c38aeea4f4602de909696cfde0f))
+* **app-degree-pages:** updated default api endpoint data ([7c968c6](https://github.com/asu/asu-unity-stack/commit/7c968c61ee2dc4f2c081e52125db69a33968ce98))
+* **app-degree-pages:** updated Detail page component ([632dd78](https://github.com/asu/asu-unity-stack/commit/632dd7876473c38d95d18cc29a72d10438ccdd38))
+* **app-degree-pages:** updated Listing Page Component ([dd29536](https://github.com/asu/asu-unity-stack/commit/dd2953636afd6a751bd958a56dc2cfedeaf7339d))
+* **app-degree-pages:** updated resolver and filtering logic for degrees ([bfaf0c1](https://github.com/asu/asu-unity-stack/commit/bfaf0c174d4546ab6fd31a44c6972d1ce1aac862))
+* **app-degree-pages:** updating types and definitions for jsdocs ([d34d32f](https://github.com/asu/asu-unity-stack/commit/d34d32f2eeaf0fac17ba5e6a9aa6ca47cb01e00a))
+
+# [@asu/app-degree-pages-v2.3.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.3.0...@asu/app-degree-pages-v2.3.1) (2024-02-29)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** updated career intro section ([e3e0152](https://github.com/asu/asu-unity-stack/commit/e3e0152b37296eb25e9382566ea339a0f5da1795))
+
 # [@asu/app-degree-pages-v2.3.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.2.0...@asu/app-degree-pages-v2.3.0) (2024-01-11)
 
 

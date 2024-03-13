@@ -3,13 +3,14 @@
 import PropTypes from "prop-types";
 import React, { useEffect } from "react";
 
-import trackReactComponent from "../../../../../shared/services/componentDatalayer";
-
 // Requires peer dependency of @asu/unity-bootstrap-theme
 // We import the styles in .storybook/preview-head.html for Storybook
 // rendering, but otherwise, we only worry about using the correct markup and
 // tweaking a few styles
 
+import trackReactComponent from "../../../../../shared/services/componentDatalayer";
+import { DATA_SOURCE } from "../../core/utils/constants";
+import { RfiContext } from "../../core/utils/rfiContext";
 import { RfiMainForm } from "../stepper/RfiMainForm";
 import "./index.css";
 
@@ -50,35 +51,43 @@ const AsuRfi = props => {
         component: "AsuRfi",
         type: "NA",
         configuration: {
-          ...props
+          ...props,
         },
       });
     }
   }, []);
 
+  if (typeof submissionUrl === "undefined") {
+    return <></>;
+  }
+
   return (
-    <div>
-      <RfiMainForm
-        appPathFolder={appPathFolder}
-        campus={campus}
-        actualCampus={actualCampus}
-        college={college}
-        department={department}
-        studentType={studentType}
-        areaOfInterest={areaOfInterest}
-        programOfInterest={programOfInterest}
-        programOfInterestOptional={programOfInterestOptional}
-        isCertMinor={isCertMinor}
-        country={country}
-        stateProvince={stateProvince}
-        successMsg={successMsg}
-        test={test}
-        dataSourceDegreeSearch={dataSourceDegreeSearch}
-        dataSourceAsuOnline={dataSourceAsuOnline}
-        dataSourceCountriesStates={dataSourceCountriesStates}
-        submissionUrl={submissionUrl}
-      />
-    </div>
+    <RfiContext.Provider
+      value={{
+        appPathFolder,
+        campusType: campus,
+        filterByCampusCode: actualCampus,
+        filterByCollegeCode: college,
+        filterByDepartmentCode: department,
+        studentType,
+        areaOfInterest,
+        programOfInterest,
+        programOfInterestOptional,
+        isCertMinor,
+        country,
+        stateProvince,
+        successMsg,
+        test,
+        dataSourceDegreeSearch,
+        dataSourceAsuOnline,
+        dataSourceCountriesStates,
+        submissionUrl,
+      }}
+    >
+      <div>
+        <RfiMainForm />
+      </div>
+    </RfiContext.Provider>
   );
 };
 
@@ -99,20 +108,21 @@ AsuRfi.defaultProps = {
   stateProvince: undefined,
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
   test: false,
-  dataSourceDegreeSearch: "https://degrees.apps.asu.edu/t5/service",
-  dataSourceAsuOnline:
-    "https://cms.asuonline.asu.edu/lead-submissions-v3.5/programs",
-  dataSourceCountriesStates:
-    "https://api.myasuplat-dpl.asu.edu/api/codeset/countries",
+  dataSourceDegreeSearch: DATA_SOURCE.DEGREE_SEARCH,
+  dataSourceAsuOnline: DATA_SOURCE.ASU_ONLINE,
+  dataSourceCountriesStates: DATA_SOURCE.COUNTRIES_STATES,
 };
 
 AsuRfi.propTypes = {
   appPathFolder: PropTypes.string,
-  campus: PropTypes.string,
+  campus: PropTypes.oneOf(["GROUND", "ONLNE", "NOPREF"]),
+  /** Not be a complete list: "AWC", "CAC", "EAC", "LOSAN", "MESA", "POLY", "TEMPE", "WEST" */
   actualCampus: PropTypes.string,
+  /** Not be a complete list: "CAS", "CBA", "CES", "CHI", "CHL", "CLA", "CLW", "CUC" */
   college: PropTypes.string,
+  /** Not be a complete list: "CACCOUNTAN", "CBA", "CCIVIL", "CCRIMJUS", "CENGLISH", "CMARKET", "CSOFTENG", "CTHEATRE" */
   department: PropTypes.string,
-  studentType: PropTypes.string,
+  studentType: PropTypes.oneOf(["graduate", "undergrad"]),
   areaOfInterest: PropTypes.string,
   programOfInterest: PropTypes.string,
   programOfInterestOptional: PropTypes.bool,

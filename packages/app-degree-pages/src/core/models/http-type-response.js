@@ -49,7 +49,7 @@
  *     concurrentDegrees: any[];
  *     accelerateDegrees: any[];
  *     planCatDescr: any[];
- *     DescrlongExtn5: string;
+ *     admissionsRequirementsText: string;
  *     ChangeMajor: string;
  *     MathIntensity: string;
  *     CampusStringArray: string[];
