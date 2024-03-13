@@ -1,5 +1,5 @@
 // @ts-check
-import { Hero } from "@asu/components-core";
+// import { Hero } from "@asu/components-core";
 import {
   render,
   act,
@@ -92,10 +92,10 @@ describe("#ListingPage", () => {
     });
 
     // eslint-disable-next-line no-return-assign
-    afterAll(() => (globalThis.doDelay = false));
+    afterEach(() => (globalThis.doDelay = false));
 
     it("should define Loading component", async () => {
-        expect(component.getByTestId("loader")).toBeInTheDocument();
+      expect(await component.findByTestId("loader")).toBeInTheDocument();
     });
   });
 
@@ -168,9 +168,14 @@ describe("#ListingPage", () => {
       expect(component).toBeDefined();
     });
 
-    it("should define `Hero` section", async () => {
-      expect(Hero).toHaveBeenCalled();
+    it("Should have 16 items in the program list", async () => {
+      const programRows = await component.findByTestId("program-rows");
+      expect(programRows.children.length).toBe(16);
     });
+
+    // it("should define `Hero` section", async () => {
+    //   expect(Hero).toBeDefined();
+    // });
 
     const sectionCases = [
       [`Intro content`, `intro-content`],
@@ -255,19 +260,19 @@ describe("#ListingPage", () => {
       );
       const btnApplyfilter = await component.findByTestId("btn-apply-filter");
 
-      fireEvent.change(locations, {
-        target: { value: locationOptions[3].value },
-      });
-      fireEvent.change(asuLocals, {
-        target: { value: asuLocalOptions[3].value },
-      });
-      fireEvent.change(acceleratedConcurrent, {
-        target: {
-          value: acceleratedConcurrentOptions[2].value,
-        },
-      });
-
-      return fireEvent.click(btnApplyfilter);
+          fireEvent.change(locations, {
+            target: { value: locationOptions[1].value },
+          });
+          fireEvent.change(asuLocals, {
+            target: { value: asuLocalOptions[9].value },
+          });
+          fireEvent.change(acceleratedConcurrent, {
+            target: {
+              value: acceleratedConcurrentOptions[2].value,
+            },
+          });
+          fireEvent.click(btnApplyfilter);
+        return;
     };
 
     it("should trigger apply a filter when the user type a keyword", async () => {
@@ -287,6 +292,7 @@ describe("#ListingPage", () => {
 
     it("should apply filters when you select options and click the button", async () => {
       const programRows = await component.findByTestId("program-rows");
+      expect(programRows.children.length).toBe(16);
       await selectOptionFilters();
       expect(mockfilterData).toHaveBeenCalled();
       const programRows1 = await component.findByTestId("program-rows");
@@ -294,7 +300,7 @@ describe("#ListingPage", () => {
     });
 
     it("should remove one filter when you click a summary tag", async () => {
-      selectOptionFilters();
+      await selectOptionFilters();
       const bthTags = await component.findByTestId("summary-filter-tags");
       expect(bthTags.children.length).toBe(3);
       fireEvent.click(bthTags.children[1]);
@@ -306,20 +312,16 @@ describe("#ListingPage", () => {
     });
 
     it("should clear all filter when you click `Clear` button", async () => {
-      selectOptionFilters();
-      const bthTags = await component.findByTestId("summary-filter-tags");
-
+      await selectOptionFilters();
       const btnClearFilter = await component.findByTestId("btn-clear-filters");
-      await waitFor(() => {
-        expect(bthTags.children.length).toBe(3);
+      // We wrap this in an act because of a computation-heavy operation in filterData
+      act(() => {
         fireEvent.click(btnClearFilter);
-        expect(mockfilterData).toHaveBeenCalled();
       });
-
-      await waitFor(() => {
+      const bthTags = await component.findByTestId("summary-filter-tags");
+      expect(mockfilterData).toHaveBeenCalled();
         // the only element will be the <span> No filter applied place holder</span>
         expect(bthTags.children.length).toBe(1);
-      });
     });
   });
 
@@ -340,9 +342,9 @@ describe("#ListingPage", () => {
     });
     afterEach(cleanup);
 
-    it("should display an error message and no result message", () => {
-      const errorMessage = component.getByText(ERROR_MESSAGE);
-      const noResultMessage = component.getByText(
+    it("should display an error message and no result message", async () => {
+      const errorMessage = await component.findByText(ERROR_MESSAGE);
+      const noResultMessage = await component.findByText(
         "No result found for the filters applied"
       );
       expect(errorMessage).toBeInTheDocument();

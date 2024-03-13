@@ -5,9 +5,9 @@ import {
   listingPageDefaultDataSource,
 } from "../src/core/constants";
 import "./components-core-mock";
-import * as detailNoNewStudentData from "./data/degree-search-detail-no-new-student.json";
-import * as detailData from "./data/degree-search-detail.json";
-import * as listData from "./data/degree-search.json";
+import detailNoNewStudentData from "./data/degree-search-detail-no-new-student.json";
+import detailData from "./data/degree-search-detail.json";
+import listData from "./data/degree-search.json";
 
 const noNewStudentAcadPlan = "BABUSCLBA";
 
@@ -22,18 +22,18 @@ fetchMock.mockResponse(req => {
     return Promise.resolve(JSON.stringify(badResponse));
   }
 
-  let res = { programs: [] };
+  let res = [];
 
-  if (req.url.includes(listingPageDefaultDataSource.method)) {
+  if (req.url.includes(listingPageDefaultDataSource.endpoint)) {
     res = listData;
   } else if (req.url.includes(noNewStudentAcadPlan)) {
     res = detailNoNewStudentData;
-  } else if (req.url.includes(detailPageDefaultDataSource.method)) {
+  } else if (req.url.includes(detailPageDefaultDataSource.endpoint + "/")) {
     res = detailData;
   }
 
   if (globalThis.doDelay) {
-    return new Promise(resolve => setTimeout(() => resolve(res), 10));
+    return new Promise(resolve => setTimeout(() => resolve(res), 1000));
   }
   return Promise.resolve(JSON.stringify(res));
 });

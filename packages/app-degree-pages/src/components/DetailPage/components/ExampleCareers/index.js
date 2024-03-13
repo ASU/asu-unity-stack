@@ -26,10 +26,10 @@ function ExampleCareers({ tableData }) {
     >
       <h3>Example careers</h3>
       <p>
-        Career example titles and salaries listed below are not
-        necessarily entry level, and students should take into
-        consideration how years of experience, geographical location,
-        and required advanced degrees or certifications may affect pay scales.
+        Career example titles and salaries listed below are not necessarily
+        entry level, and students should take into consideration how years of
+        experience, geographical location, and required advanced degrees or
+        certifications may affect pay scales.
       </p>
       <div className="mt-4 mb-4">
         <Table data={tableData} />
