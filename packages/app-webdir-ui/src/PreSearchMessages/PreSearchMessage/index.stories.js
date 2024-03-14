@@ -1,11 +1,10 @@
 import React from "react";
 
-import { searchMessageComponentMap } from "../index";
-
 import {
   createComponent,
   createStory,
 } from "../../../../unity-bootstrap-theme/helpers/wrapper";
+import { searchMessageComponentMap } from "../index";
 
 export default createComponent("PreSearchMessage", "Atoms", "Template");
 

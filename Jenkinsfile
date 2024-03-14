@@ -72,6 +72,14 @@ spec:
                 }
             }
         }
+        stage('Test') {
+            steps {
+                container('node18') {
+                    echo '## Running jests tests...'
+                    sh 'yarn test'
+                }
+            }
+        }
         stage('Visual Regression Testing') {
           when {
             allOf {

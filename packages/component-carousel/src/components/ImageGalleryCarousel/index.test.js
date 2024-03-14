@@ -47,7 +47,7 @@ describe("#Image Gallery Carousel", () => {
   it("should render specified items on navigation track", () => {
     const bulletsElement = component.queryByTestId("bullets-container");
     const renderedItems = component.container.querySelectorAll(
-      "span.bullet-image-container"
+      "button.bullet-image-container"
     ).length;
     expect(bulletsElement).toBeInTheDocument();
     expect(imageItems).toBe(renderedItems);

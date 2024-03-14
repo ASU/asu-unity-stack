@@ -1,250 +1,923 @@
 {
-  "programs": [
-    {
-      "CollegeUrl": "https://wpcarey.asu.edu/",
-      "EmailAddr": "wpcareyacc@asu.edu",
-      "CurriculumUrl": "https://asuonline.asu.edu/online-degree-programs/undergraduate/accounting-degree/",
-      "CollegeDescr100": "Business, W. P. Carey School of",
-      "AsuOfficeLoc": "BA 223Q",
-      "AdmissionsDegRequirements": " ",
-      "graduateApplyDates": {},
-      "DescrlongExtns": "<p>The School of Accountancy's undergraduate BS program in accountancy offers two tracks during the senior year.</p><p>The accounting track is followed by most students and is designed to provide a rich educational experience.</p><p>The accounting master's internship is the track designed for the most highly qualified students who wish to commit to the MAcc or MTax program during the second semester of their junior year. The internship provides a particularly rich and individualized educational experience during the senior year. It includes a number of distinct advantages for students: a full-time paid internship for credit with a participating accountancy firm, early consideration for scholarships and possible eligibility for a GMAT waiver and a graduate application fee waiver for the MAcc or MTax program (eligibility is determined by the GPA at the time of application).</p>",
-      "DescrlongExtn5": "<p>Freshmen admission requirements: 1230 SAT Reasoning OR 25 ACT score, OR graduated in the top 8% of high school class, OR have an overall high school GPA of 3.40 in ASU competency courses (scale is 4.00 = \"A\").</p>\n<p>Freshmen should select an additional major when applying for admission. Additional choices may include any of the W. P. Carey business BA programs or any other degree program outside W. P. Carey School of Business. Students who are not admissible to a W. P. Carey business BS major and who did not select a second major or are not admissible to their second major choice will be placed in a business BA program in W. P. Carey School of Business.</p>\n<p>Readmission requirements: Students must meet freshman admission requirements by way of high school GPA, test score or class rank and must have a transfer GPA of 3.00 (if applicable) and a cumulative ASU GPA of 3.00.</p>",
-      "ChangeMajor": "<p>Students should visit the following W. P. Carey website to determine if they meet change of major requirements: <a href=\"https://students.wpcarey.asu.edu/degrees-and-advising/degree-programs/change-majors\">https://students.wpcarey.asu.edu/degrees-and-advising/degree-programs/change-majors</a>. Students ready to change their major should submit their request through W. P. Carey's Advising SOS website: <a href=\"https://apps.wpcarey.asu.edu/apps/advising/index.cfm\">https://apps.wpcarey.asu.edu/apps/advising/index.cfm</a>.</p>",
-      "MathIntensity": "M",
-      "CampusStringArray": ["TEMPE", "WEST", "ONLNE"],
-      "Phone": "480/965-3631",
-      "gradAdditionalRequirements": [],
-      "AsuDegSrchFlg": "Y",
-      "marketText": " ",
-      "AsuCustomText": "",
-      "AsuCritTrackUrl": "https://webapp4.asu.edu/programs/t5/roadmaps/ASU00/BAACCBS/null/ALL/2021",
-      "Degree": "BS",
-      "globalExp": "<p>Study abroad experiences open up new doors for accountancy majors. Students gain valuable skills employers want, such as communication, interpersonal skills and flexibility, and understanding international accounting methods helps students become more well-rounded and competitive in the accounting field. Students benefit from thinking about study abroad early, allowing for opportunities to take summer courses in places like Costa Rica or studying a full semester in Europe to gain a real-life perspective on business applications worldwide.</p><p>The W. P. Carey School of Business recommends the following study abroad programs for students majoring in accountancy: <a href=\"https://mystudyabroad.asu.edu/students/major/wp-carey/accountancy\">mystudyabroad.asu.edu/students/major/wp-carey/accountancy</a>.</p>",
-      "MinMathReq": "MAT  210 - Brief Calculus",
-      "AsuCareerOpp": "<p>The major in accountancy includes the essential academic preparation for students who are:</p><ul>\t<li>planning to pursue a graduate degree or attend law school</li>\t<li>pursuing professional careers in public, corporate and governmental accounting</li>\t<li>seeking positions in consulting or are planning to operate a business</li>\t<li>seeking positions in personal financial planning and portfolio analysis</li></ul><p>The U.S. Bureau of Labor Statistics&#39; Occupational Outlook Handbook (2018) states, &quot;Employment of accountants and auditors is projected to grow 10% between 2016 and 2026, faster than the average for all occupations.&quot;</p>",
-      "concurrentDegrees": [],
-      "PlanUrl": "https://wpcarey.asu.edu/undergraduate-degrees/accounting",
-      "accelerateDegrees": [
-        {
-          "CollegeUrlJoint": ["https://wpcarey.asu.edu/"],
-          "Descrlong": "",
-          "Descrshort": "5/14/13cw",
-          "degreeMajorMap": "",
-          "AsuOfficeLoc": "MCRD 350",
-          "CollegeDescrlongJoint": [
-            "The W. P. Carey School of Business offers you a nationally ranked business education with a comprehensive range of subjects at world-class levels. Talented undergraduates enjoy unique opportunities and experiences. The school  offers all business majors a Business Career Center to advance their career aspirations, and nearly 60,000 W. P. Carey School alumni span industries and continents, offering graduates lifelong networking and learning opportunities."
-          ],
-          "AdmissionsDegRequirements": "<p><strong>Required Core (3 credit hours)</strong><br>ACC 571 Taxation of Corporations and Shareholders (3)</p>\n<p><strong>Electives (24 credit hours)</strong></p>\n<p><strong>Culminating Experience (3 credit hours)</strong><br>ACC 589 International Taxation (3)</p>\n<p><strong>Additional Curriculum Information</strong><br>The Master of Taxation program is a nine-month, full-time, lock-step program that offers classes during the day and is completed in one academic year. Applicants must complete program prerequisites prior to admission to the program. Students should refer to the W. P. Carey graduate programs website for a current listing of required course prerequisites. Graduate-level accounting courses are only open to students admitted to the graduate program.</p>\n<p><br></p>",
-          "subplanDeadlines": {},
-          "Institution": "ASU00",
-          "Descr": "Taxation",
-          "DescrlongExtns": "<p>The nine-month MTax program is delivered by the W. P. Carey School of Accountancy and is highly ranked by the Public Accounting Report. The cutting-edge curriculum is structured to provide students with an in-depth working knowledge of the highly technical and demanding skills required to provide tax and business advice in the private and public sectors. Esteemed faculty experts bring real-world experience into each class, giving the degree even more long-term value. Students gain preparation for their career through case-based courses and team assignments.</p><p>Students dive into taxation in greater depth. Five of the 10 courses are technical, with small classes and personalized instruction.</p><p>The Master of Taxation program is designed for individuals who want to immerse themselves in full-time graduate studies, take classes during the day and fulfill course requirements for the CPA exam in Arizona and in California. Because of the quality of the Master of Taxation program, students gain the skills and knowledge needed to launch their careers, while opening the door to top hiring firms.</p>",
-          "CipCode": "52.1601",
-          "EffStatus": "A",
-          "ChangeMajor": " ",
-          "MathIntensity": " ",
-          "InternalDegree": "Y",
-          "AsuDegSrchFlg": "Y",
-          "marketText": "<p>Develop your understanding of taxation, with a data and analytics emphasis, from research faculty and former Big Four tax partners. Nearly one hundred percent of our domestic graduates are employed 90 days after graduation. Now that's strength in numbers.</p>",
-          "AsuCustomText": "",
-          "Degree": "MTAX",
-          "asuAcadpLrfText": " ",
-          "PlanUrl": "https://wpcarey.asu.edu/masters-programs/taxation",
-          "DiplomaPrintFl": "Y",
-          "CollegeAcadOrgJoint": ["CBA"],
-          "AsuNactvAppOvrd": "Y",
-          "YearsOfEducatnInteger": 0,
-          "CatalogUrl": " ",
-          "DepartmentNameJoint": ["WPC Graduate Programs"],
-          "CampusWueInfo": [
-            {
-              "isCampusWue": false,
-              "campusWue": "TEMPE"
-            }
-          ],
-          "asuChooseSndMjrFlg": "N",
-          "Reqdescr": "<p>Applicants must fulfill the requirements of both the Graduate College and the W. P. Carey School of Business.</p><p>Applicants are eligible to apply to the program if they have earned a bachelor's or master's degree, in any field, from a regionally accredited institution.</p><p>Applicants must have a minimum cumulative GPA of 3.00 (scale is 4.00 = \"A\") in the last 60 hours of their first bachelor's degree program, or applicants must have a minimum cumulative GPA of 3.00 (scale is 4.00 = \"A\") in an applicable master's degree program.</p><p>All applicants must submit:</p><ol>\t<li>graduate admission application and application fee</li>\t<li>official transcripts</li>\t<li>GMAT or GRE test scores</li>\t<li>one letter of recommendation</li>\t<li>current resume</li>\t<li>answers to short-answer questions</li>\t<li>proof of English proficiency</li></ol><p><strong>Additional Application Information</strong><br />An applicant whose native language is not English must provide proof of English proficiency regardless of current residency.</p><p>The letter of recommendation should comment on the student's motivation, commitment, achievements, work experience and opportunity for success in the program.</p><p>In addition to the ASU graduate admission application, applicants also must submit all supplemental application materials required by the W. P. Carey Graduate Programs Office. Complete application instructions may be obtained from the department's website.</p>",
-          "DepartmentName": "WPC Graduate Programs",
-          "AcadProg": "GRBA",
-          "DiplomaIndentInteger": 0,
-          "CollegeUrl": "https://wpcarey.asu.edu/",
-          "EmailAddr": "wpcareymasters@asu.edu",
-          "CurriculumUrl": " ",
-          "TrnscrDescr": "Taxation",
-          "DiplomaDescr": "W. P. Carey School of Business",
-          "CollegeDescr100": "Business, W. P. Carey School of",
-          "committeeId": " ",
-          "AcadPlan": "BATAMTAX",
-          "AsuMailCode": "4906",
-          "graduateApplyDates": {
-            "TEMPE:REG:2227": "2022-08-18:2022-07-02"
-          },
-          "transferAgreementInfo": [],
-          "EvaluatePlan": " ",
-          "DescrlongExtn5": "<p>Applicants must fulfill the requirements of both the Graduate College and the W. P. Carey School of Business.</p><p>Applicants are eligible to apply to the program if they have earned a bachelor's or master's degree, in any field, from a regionally accredited institution.</p><p>Applicants must have a minimum cumulative GPA of 3.00 (scale is 4.00 = \"A\") in the last 60 hours of their first bachelor's degree program, or applicants must have a minimum cumulative GPA of 3.00 (scale is 4.00 = \"A\") in an applicable master's degree program.</p><p>All applicants must submit:</p><ol>\t<li>graduate admission application and application fee</li>\t<li>official transcripts</li>\t<li>GMAT or GRE test scores</li>\t<li>one letter of recommendation</li>\t<li>current resume</li>\t<li>answers to short-answer questions</li>\t<li>proof of English proficiency</li></ol><p><strong>Additional Application Information</strong><br />An applicant whose native language is not English must provide proof of English proficiency regardless of current residency.</p><p>The letter of recommendation should comment on the student's motivation, commitment, achievements, work experience and opportunity for success in the program.</p><p>In addition to the ASU graduate admission application, applicants also must submit all supplemental application materials required by the W. P. Carey Graduate Programs Office. Complete application instructions may be obtained from the department's website.</p>",
-          "DegreeDescr": "Master of Taxation",
-          "DegreeDescrshort": "MTax",
-          "CampusStringArray": ["TEMPE"],
-          "CollegeDescrlong": "The W. P. Carey School of Business offers you a nationally ranked business education with a comprehensive range of subjects at world-class levels. Talented undergraduates enjoy unique opportunities and experiences. The school  offers all business majors a Business Career Center to advance their career aspirations, and nearly 60,000 W. P. Carey School alumni span industries and continents, offering graduates lifelong networking and learning opportunities.",
-          "DegreeDescrformal": "Master of Taxation",
-          "asuAcadpMrfText": " ",
-          "Phone": "480/965-3332",
-          "gradAdditionalRequirements": [
-            [
-              "BATAMTAX",
-              "30 credit hours including the required capstone course (ACC 589)",
-              "TAMCAPTAX"
-            ]
-          ],
-          "secondMajors": [],
-          "DegreeEducationLvl": "17",
-          "Descr254": " ",
-          "CollegeDescr100Joint": ["Business, W. P. Carey School of"],
-          "DegreeDescrlong": "\"The Master of Taxation is a specialized degree program designed to equip students with the highly technical and demanding skills required to provide tax and business advice in the private sector and to administer the tax laws in the public sector of the economy. The program prepares students for entry-level positions in taxation and provides graduate-level education for tax professionals who desire to enhance their skills.\r\n\"",
-          "asuMathReqFlag": " ",
-          "AcadPlanType": "MAJ",
-          "Notes": "Changed \"America's\" to \"the nation's\" in marketing text per editors and college approval 8/8/18. AA\nRemoved STEM category per college request 9/28/17. AA\n7/21/09 MADickson - fall only applications per Yahaira Hernandez",
-          "TrnscrIndentInteger": 0,
-          "DepartmentCode": "CBUSMBA",
-          "StudyField": " ",
-          "plusAlliance": " ",
-          "PlnReqtrmDflt": "P",
-          "graduateAllApplyDates": {
-            "TEMPE:REG:2237": "2023-08-17:2023-07-02",
-            "TEMPE:REG:2227": "2022-08-18:2022-07-02"
-          },
-          "CollegeAcadOrg": "CBA",
-          "globalExp": " ",
-          "AsuCareerOpp": "<p>The Master of Taxation includes the essential academic preparation for students who are interested in pursuing professional careers in public, corporate and governmental in tax and auditing.</p><p>The U.S. Bureau of Labor Statistics' Occupational Outlook Handbook (2019) states, employment for Financial Analysts is projected to grow between 4 and 6% between 2018 and 2028.</p><p>Career examples include:</p><ul>\t<li>budget analyst</li>\t<li>revenue agent</li>\t<li>tax auditor</li>\t<li>tax preparer</li></ul>",
-          "DepartmentCodeJoint": ["CBUSMBA"],
-          "Url1": "https://wpcarey.asu.edu/masters-programs/taxation",
-          "Url2": " ",
-          "Url3": " ",
-          "Url4": "https://www.youtube.com/embed/mYvcIKYBEkY",
-          "AsuAdmReqUrl": "https://wpcarey.asu.edu/masters-programs/accounting/deadlines",
-          "TrnscrPrintFl": "Y",
-          "planCatDescr": ["Business", "Computing and Mathematics"],
-          "TranscriptLevel": "20",
-          "AsuLangReqFlag": "N",
-          "planDeadlines": {
-            "TEMPE:REG:2227": "2022 Fall:2022-08-31:2022-08-31:null: "
-          },
-          "SubPln": {},
-          "managedOnlineCampus": false,
-          "globalDegree": " ",
-          "HegisCode": " ",
-          "careerData": [],
-          "DegreeNew": false,
-          "Descr100": "Taxation, MTax",
-          "AcadCareer": " ",
-          "FirstTermValid": "0000",
-          "SMISUrl": "https://www.youtube.com/embed/mYvcIKYBEkY",
-          "applyInfo": {
-            "TEMPE:REG:2227": "2022 Fall:2021-09-01:2022-08-31:2022-08-18:2022-08-18"
-          },
-          "AsuProgramFee": "N"
-        }
-      ],
-      "planCatDescr": [
-        "3 Year Fast Track:",
-        "Business",
-        "Computing and Mathematics",
-        "Fast Track Plans"
-      ],
-      "planDeadlines": {
-        "ONLNE:SESA:2221": "2022 Spring:null:2022-01-10:null: ",
-        "ONLNE:SESB:2224": "2022 Summer:null:2022-06-29:null: ",
-        "ONLNE:SESB:2221": "2022 Spring:null:2022-03-14:null: ",
-        "TEMPE:REG:2221": "2022 Spring:null:2022-01-10:null: ",
-        "ONLNE:SESA:2224": "2022 Summer:null:2022-05-16:null: ",
-        "WEST:REG:2221": "2022 Spring:null:2022-01-10:null: ",
-        "TEMPE:REG:2224": "2022 Summer:null:2022-06-29:null: ",
-        "ONLNE:SESA:2227": "2022 Fall:null:2022-08-18:null: ",
-        "WEST:REG:2224": "2022 Summer:null:2022-06-29:null: ",
-        "TEMPE:REG:2227": "2022 Fall:null:2022-08-23:null: ",
-        "ONLNE:SESB:2227": "2022 Fall:null:2022-10-12:null: ",
-        "WEST:REG:2227": "2022 Fall:null:2022-08-23:null: "
+  "acadPlanCode": "BAACCBS",
+  "acadPlanDescription": "Accountancy",
+  "acadPlanMarketingDescription": "Accountancy",
+  "acadPlanTranscriptDescription": "Accountancy",
+  "fullDescription": "<p>The W. P. Carey School of Accountancy works closely with its Professional Advisory Board to create a learning environment that emulates the real world by exploring applied processes and strategies. The BS program in accountancy prepares students by equipping them with critical thinking, team-building, communication and information technology skills, along with knowledge of accounting theories and procedures.</p>",
+  "acadPlanType": "MAJ",
+  "acadPlanTypeDescription": "Major",
+  "acadProgramCode": "UGBA",
+  "emailAddr": "wpcareyacc@asu.edu",
+  "emailAddrOnline": null,
+  "phoneNumber": "480/965-3631",
+  "languageRequired": false,
+  "mathIntensityCode": "M",
+  "mathIntensityDescription": "Moderate",
+  "mathRequired": true,
+  "firstMathCourseRequired": {
+      "courseId": "107269",
+      "subject": "MAT",
+      "catalogNumber": "210",
+      "description": "Brief Calculus"
+  },
+  "additionalFee": true,
+  "firstMathCourseRequiredSupplementalText": null,
+  "videoUrl": "https://player.vimeo.com/video/428636617",
+  "academicOfficeLocation": "BA 223Q",
+  "academicOfficeUrl": "https://wpcarey.asu.edu/undergraduate-degrees",
+  "customText": null,
+  "customAdmissionUrl": null,
+  "asuOnlineAcadPlanUrl": "https://asuonline.asu.edu/online-degree-programs/undergraduate/accounting-degree/",
+  "careerOpportunities": "<p>Accounting is a dynamic field, with diverse career opportunities in the private sector and in government agencies worldwide.</p><p>Graduates have the essential academic preparation and competitive edge they need for:</p><ul><li>a position in consulting</li><li>a position in personal financial planning and portfolio analysis</li><li>a professional career in public, corporate and governmental accounting</li><li>operating a business</li></ul><p>Graduates are also well-positioned to pursue a graduate degree or attend law school.</p>",
+  "professionalLicensureStandardText": "<p>ASU programs that may lead to professional licensure or certification are intended to prepare students for potential licensure or certification in Arizona. Completion of an ASU program may not meet educational requirements for licensure or certification in another state. For more information, students should visit the <a href=\"https://admission.asu.edu/academics/licensure\">ASU professional licensure</a> webpage.</p>",
+  "professionalLicensureAdditionalText": null,
+  "marketingText": null,
+  "globalExperienceText": "<p>As globalization continues to impact the way the world lives and works, international experiences have become vital to accountancy students. Through international study and internships, students can gain valuable skills that employers are looking for: communication and interpersonal skills, flexibility, motivation and a real-life perspective on business applications worldwide. Understanding international accounting methods helps students become more well-rounded and competitive in the accounting field. Accountancy students in particular benefit from thinking about participating in a <a href=\"https://goglobal.asu.edu/\">Global Education program</a> early in their program. Students can leverage global opportunities and learning, which are great assets as they prepare for internships; these programs also provide unique experiences that students can share with recruiters.</p><p>The W. P. Carey School of Business recommends <a href=\"https://goglobal.asu.edu/students/major/wp-carey/accountancy\">these programs</a> for students majoring in accountancy.</p>",
+  "globalDegreeText": null,
+  "degreeRequirements": null,
+  "admissionsRequirementsText": "<p>First-year admission requirements: 1230 SAT Reasoning or 25 ACT score, <strong>or</strong> graduated in the top 8% of high school class, or have an overall high school GPA of 3.40 in ASU competency courses (scale is 4.00 = \"A\").</p> <p>First-year applicants should select an additional major when applying for admission. Additional choices may include any of the W. P. Carey business BA programs or any other degree program outside the W. P. Carey School of Business. Students who are not admissible to a W. P. Carey business BS major and who did not select a second major or are not admissible to their second major choice will be placed in a business Bachelor of Arts program in the W. P. Carey School of Business.</p> <p>Readmission requirements: Students must meet first-year admission requirements by way of high school GPA, test score or class rank and must have a transfer GPA of 3.00 (if applicable) and a cumulative ASU GPA of 3.00.</p>",
+  "changeMajorRequirementsText": "<p>Students should visit the <a href=\"https://students.wpcarey.asu.edu/degrees-and-advising/degree-programs/change-majors\">W. P. Carey School of Business</a> website to determine if they meet change of major requirements. Students who are ready to change their major should submit their request through the school's <a href=\"https://students.wpcarey.asu.edu/advising-sos\">advising website</a>.</p>",
+  "transferAdmissionRequirementsText": "<p>Transfer admission requirements (30 or more credit hours after high school): transfer GPA of 3.00 and one of the following: 1160 (prior to March 2016) or 1230 SAT Reasoning (after March 2016) or 25 ACT score, <strong>or</strong> graduated in the top 8% of high school class, <strong>or</strong> have an overall high school GPA of 3.40 in ASU competency courses (scale is 4.00 = \"A\").</p> <p>Transfer students should select an additional major when applying for admission. Additional choices may include any of the school's BA programs or any other business or other degree program outside the W. P. Carey School of Business.</p> <p>Students who are admissible to the university but do not meet admission requirements for this program and who did not select a second major or are not admissible to their second major choice are placed in a Bachelor of Arts program in the W. P. Carey School of Business. Students not interested in the program or campus location may reach out to <a href=\"mailto:wpcareyug@asu.edu\">wpcareyug@asu.edu</a> for assistance in selecting another degree program.</p>",
+  "activeInDegreeSearch": true,
+  "applicantsMustChooseSecondMajor": true,
+  "majorMapCurrentYear": "2024",
+  "degreeDescriptionShort": "BS",
+  "degreeDescriptionLong": "Bachelor of Science",
+  "degreeDescriptionText": "An undergraduate degree that advances the understanding of the application of scientific analysis, experimentation, principles and facts in comprehending and solving problems. Advances the understanding of the crucial role of mathematical reasoning.",
+  "degreeEducationLevel": "13",
+  "planKeywords": [
+      "Banking",
+      "Accountant",
+      "Budget Analyst",
+      "auditing",
+      "tax",
+      "accounting",
+      "Controller",
+      "FBI",
+      "Auditor",
+      "money",
+      "CPA",
+      "Hedge Fund Manager",
+      "CIA",
+      "Actuary",
+      "finance"
+  ],
+  "stemOptText": null,
+  "minorCourseRequirements": null,
+  "owners": [
+      {
+          "percentOwned": 100,
+          "departmentAcadOrg": "CACCOUNTAN",
+          "departmentDescription": "School of Accountancy",
+          "collegeAcadOrg": "CBA",
+          "collegeDescription": "W. P. Carey School of Business",
+          "collegeAlphaSortDescription": "Business, W. P. Carey School of",
+          "collegeUrl": "https://wpcarey.asu.edu/"
+      }
+  ],
+  "majorMapGeneral": [
+      {
+          "acadSubPlanCode": null,
+          "campus": "ALL",
+          "timePeriod": "0708",
+          "timePeriodDescription": "2007 - 2008",
+          "url": "http://catalog.asu.edu/files/majormap07/BAACCBS.pdf",
+          "categoryType": "MM",
+          "defaultFlag": false
       },
-      "managedOnlineCampus": true,
-      "onlineMajorMapURL": "https://webapp4.asu.edu/programs/t5/roadmaps/ASU00/BAACCBS/null/ONLINE/2021",
-      "TransferAdmission": "<p>Transfer admission requirements (30 or more semester hours of credit after high school): transfer GPA of 3.00 and one of the following: 1160 (prior to March 2016) or 1230 SAT Reasoning (after March 2016) OR 25 ACT score OR must have graduated in the top 8% of their high school class OR have an overall high school GPA of 3.40 in ASU competency courses (scale is 4.00 = \"A\").</p>\n<p>Transfer students should select an additional major when applying for admission. Additional choices may include any of the W. P. Carey business BA programs or any other business or other degree program outside W. P. Carey School of Business.</p> <p>Students with fewer than 45 transfer hours who are not admissible to a W. P. Carey School of Business major and who did not select a second major or are not admissible to their second major choice are placed in the exploratory social and behavioral sciences program in University College.</p>\n<p>Students with more than 45 transfer hours who are not admissible to a W. P. Carey School of Business major and who did not select a second major or are not admissible to their second major choice are prompted in My ASU to select a new major.</p>",
-      "careerData": [
-        {
-          "careerDataAlterOnetTitle": "Accountant/Auditor",
-          "careerDataOnetTitle": "Accountants and Auditors",
-          "careerDataGrowth": 4.3,
-          "careerDataOnetCode": "13-2011.00",
-          "careerDataGreen": "",
-          "careerDataSalary": "$73,560",
-          "careerDataBrightOutlook": "BRIGHT"
-        },
-        {
-          "careerDataAlterOnetTitle": "Banking Examiner",
-          "careerDataOnetTitle": "Financial Examiners",
-          "careerDataGrowth": 7.3,
-          "careerDataOnetCode": "13-2061.00",
-          "careerDataGreen": "",
-          "careerDataSalary": "$81,430",
-          "careerDataBrightOutlook": "BRIGHT"
-        },
-        {
-          "careerDataAlterOnetTitle": "Budget Analyst",
-          "careerDataOnetTitle": "Budget Analysts",
-          "careerDataGrowth": 3.4,
-          "careerDataOnetCode": "13-2031.00",
-          "careerDataGreen": "",
-          "careerDataSalary": "$78,970",
-          "careerDataBrightOutlook": ""
-        },
-        {
-          "careerDataAlterOnetTitle": "Certified Financial Planner (CFP)",
-          "careerDataOnetTitle": "Personal Financial Advisors",
-          "careerDataGrowth": 4.4,
-          "careerDataOnetCode": "13-2052.00",
-          "careerDataGreen": "GREEN",
-          "careerDataSalary": "$89,330",
-          "careerDataBrightOutlook": ""
-        },
-        {
-          "careerDataAlterOnetTitle": "Cost Estimator",
-          "careerDataOnetTitle": "Cost Estimators",
-          "careerDataGrowth": -1.5,
-          "careerDataOnetCode": "13-1051.00",
-          "careerDataGreen": "",
-          "careerDataSalary": "$66,610",
-          "careerDataBrightOutlook": ""
-        },
-        {
-          "careerDataAlterOnetTitle": "Financial Analyst",
-          "careerDataOnetTitle": "Financial and Investment Analysts",
-          "careerDataGrowth": "",
-          "careerDataOnetCode": "13-2051.00",
-          "careerDataGreen": "GREEN",
-          "careerDataSalary": "",
-          "careerDataBrightOutlook": "BRIGHT"
-        },
-        {
-          "careerDataAlterOnetTitle": "Financial Manager",
-          "careerDataOnetTitle": "Financial Managers",
-          "careerDataGrowth": 15.5,
-          "careerDataOnetCode": "11-3031.00",
-          "careerDataGreen": "",
-          "careerDataSalary": "$134,180",
-          "careerDataBrightOutlook": "BRIGHT"
-        },
-        {
-          "careerDataAlterOnetTitle": "Intelligence Officer",
-          "careerDataOnetTitle": "Intelligence Analysts",
-          "careerDataGrowth": 1.1,
-          "careerDataOnetCode": "33-3021.06",
-          "careerDataGreen": "",
-          "careerDataSalary": "$86,940",
-          "careerDataBrightOutlook": ""
-        }
-      ],
-      "DepartmentName": "School of Accountancy",
-      "Descr100": "Accountancy"
-    }
-  ]
+      {
+          "acadSubPlanCode": null,
+          "campus": "ALL",
+          "timePeriod": "0809",
+          "timePeriodDescription": "2008 - 2009",
+          "url": "http://catalog.asu.edu/files/majormap08/BAACCBS.pdf",
+          "categoryType": "MM",
+          "defaultFlag": false
+      },
+      {
+          "acadSubPlanCode": null,
+          "campus": "ALL",
+          "timePeriod": "0910",
+          "timePeriodDescription": "2009 - 2010",
+          "url": "http://catalog.asu.edu/files/majormap09/BAACCBS.pdf",
+          "categoryType": "MM",
+          "defaultFlag": false
+      },
+      {
+          "acadSubPlanCode": null,
+          "campus": "ALL",
+          "timePeriod": "1011",
+          "timePeriodDescription": "2010 - 2011",
+          "url": "http://catalog.asu.edu/files/majormap10/BAACCBS.pdf",
+          "categoryType": "MM",
+          "defaultFlag": false
+      },
+      {
+          "acadSubPlanCode": null,
+          "campus": "ALL",
+          "timePeriod": "1112",
+          "timePeriodDescription": "2011 - 2012",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2011",
+          "categoryType": "MM",
+          "defaultFlag": false
+      },
+      {
+          "acadSubPlanCode": null,
+          "campus": "ALL",
+          "timePeriod": "1213",
+          "timePeriodDescription": "2012 - 2013",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2012",
+          "categoryType": "MM",
+          "defaultFlag": false
+      },
+      {
+          "acadSubPlanCode": null,
+          "campus": "ALL",
+          "timePeriod": "1314",
+          "timePeriodDescription": "2013 - 2014",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2013",
+          "categoryType": "MM",
+          "defaultFlag": false
+      },
+      {
+          "acadSubPlanCode": null,
+          "campus": "ALL",
+          "timePeriod": "1415",
+          "timePeriodDescription": "2014 - 2015",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2014",
+          "categoryType": "MM",
+          "defaultFlag": false
+      },
+      {
+          "acadSubPlanCode": null,
+          "campus": "ALL",
+          "timePeriod": "1516",
+          "timePeriodDescription": "2015 - 2016",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2015",
+          "categoryType": "MM",
+          "defaultFlag": false
+      },
+      {
+          "acadSubPlanCode": null,
+          "campus": "ALL",
+          "timePeriod": "1617",
+          "timePeriodDescription": "2016 - 2017",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2016",
+          "categoryType": "MM",
+          "defaultFlag": false
+      },
+      {
+          "acadSubPlanCode": null,
+          "campus": "ALL",
+          "timePeriod": "1718",
+          "timePeriodDescription": "2017 - 2018",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2017",
+          "categoryType": "MM",
+          "defaultFlag": false
+      },
+      {
+          "acadSubPlanCode": null,
+          "campus": "ALL",
+          "timePeriod": "1819",
+          "timePeriodDescription": "2018 - 2019",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2018",
+          "categoryType": "MM",
+          "defaultFlag": false
+      },
+      {
+          "acadSubPlanCode": null,
+          "campus": "ALL",
+          "timePeriod": "1920",
+          "timePeriodDescription": "2019 - 2020",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2019",
+          "categoryType": "MM",
+          "defaultFlag": false
+      },
+      {
+          "acadSubPlanCode": null,
+          "campus": "ALL",
+          "timePeriod": "2021",
+          "timePeriodDescription": "2020 - 2021",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2020",
+          "categoryType": "MM",
+          "defaultFlag": false
+      },
+      {
+          "acadSubPlanCode": null,
+          "campus": "ALL",
+          "timePeriod": "2122",
+          "timePeriodDescription": "2021 - 2022",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2021",
+          "categoryType": "MM",
+          "defaultFlag": false
+      },
+      {
+          "acadSubPlanCode": null,
+          "campus": "ALL",
+          "timePeriod": "2223",
+          "timePeriodDescription": "2022 - 2023",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2022",
+          "categoryType": "MM",
+          "defaultFlag": false
+      },
+      {
+          "acadSubPlanCode": null,
+          "campus": "ALL",
+          "timePeriod": "2324",
+          "timePeriodDescription": "2023 - 2024",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2023",
+          "categoryType": "MM",
+          "defaultFlag": true
+      }
+  ],
+  "majorMapSubplans": null,
+  "majorMapOnline": [
+      {
+          "acadSubPlanCode": null,
+          "campus": "ONLNE",
+          "timePeriod": "2021",
+          "timePeriodDescription": "2020 - 2021",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ONLINE/2020",
+          "categoryType": "ON",
+          "defaultFlag": false
+      },
+      {
+          "acadSubPlanCode": null,
+          "campus": "ONLNE",
+          "timePeriod": "2122",
+          "timePeriodDescription": "2021 - 2022",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ONLINE/2021",
+          "categoryType": "ON",
+          "defaultFlag": false
+      },
+      {
+          "acadSubPlanCode": null,
+          "campus": "ONLNE",
+          "timePeriod": "2223",
+          "timePeriodDescription": "2022 - 2023",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ONLINE/2022",
+          "categoryType": "ON",
+          "defaultFlag": false
+      },
+      {
+          "acadSubPlanCode": null,
+          "campus": "ONLNE",
+          "timePeriod": "2324",
+          "timePeriodDescription": "2023 - 2024",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ONLINE/2023",
+          "categoryType": "ON",
+          "defaultFlag": false
+      }
+  ],
+  "transferAgreements": [
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/maricopa",
+          "communityCollege": "Maricopa County Community College District",
+          "transferAgreementType": "MAPP",
+          "url": "https://degrees.apps.asu.edu/pathway/4643/2009/1100100066/false",
+          "timePeriod": "0910",
+          "timePeriodDescription": "2009 - 2010"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/az-western",
+          "communityCollege": "Arizona Western College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/pathway/5841/2010/1100100062/false",
+          "timePeriod": "1011",
+          "timePeriodDescription": "2010 - 2011"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/maricopa",
+          "communityCollege": "Maricopa County Community College District",
+          "transferAgreementType": "MAPP",
+          "url": "https://degrees.apps.asu.edu/pathway/4219/2010/1100100066/false",
+          "timePeriod": "1011",
+          "timePeriodDescription": "2010 - 2011"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/az-western",
+          "communityCollege": "Arizona Western College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2011",
+          "timePeriod": "1112",
+          "timePeriodDescription": "2011 - 2012"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/central-az",
+          "communityCollege": "Central Arizona College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2011",
+          "timePeriod": "1112",
+          "timePeriodDescription": "2011 - 2012"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/coconino",
+          "communityCollege": "Coconino Community College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2011",
+          "timePeriod": "1112",
+          "timePeriodDescription": "2011 - 2012"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/eastern-az",
+          "communityCollege": "Eastern Arizona College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2011",
+          "timePeriod": "1112",
+          "timePeriodDescription": "2011 - 2012"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/maricopa",
+          "communityCollege": "Maricopa County Community College District",
+          "transferAgreementType": "MAPP",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2011",
+          "timePeriod": "1112",
+          "timePeriodDescription": "2011 - 2012"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/pima",
+          "communityCollege": "Pima Community College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2011",
+          "timePeriod": "1112",
+          "timePeriodDescription": "2011 - 2012"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/yavapai",
+          "communityCollege": "Yavapai College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2011",
+          "timePeriod": "1112",
+          "timePeriodDescription": "2011 - 2012"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/az-western",
+          "communityCollege": "Arizona Western College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2012",
+          "timePeriod": "1213",
+          "timePeriodDescription": "2012 - 2013"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/central-az",
+          "communityCollege": "Central Arizona College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2012",
+          "timePeriod": "1213",
+          "timePeriodDescription": "2012 - 2013"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/coconino",
+          "communityCollege": "Coconino Community College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2012",
+          "timePeriod": "1213",
+          "timePeriodDescription": "2012 - 2013"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/eastern-az",
+          "communityCollege": "Eastern Arizona College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2012",
+          "timePeriod": "1213",
+          "timePeriodDescription": "2012 - 2013"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/maricopa",
+          "communityCollege": "Maricopa County Community College District",
+          "transferAgreementType": "MAPP",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2012",
+          "timePeriod": "1213",
+          "timePeriodDescription": "2012 - 2013"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/pima",
+          "communityCollege": "Pima Community College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2012",
+          "timePeriod": "1213",
+          "timePeriodDescription": "2012 - 2013"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/yavapai",
+          "communityCollege": "Yavapai College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2012",
+          "timePeriod": "1213",
+          "timePeriodDescription": "2012 - 2013"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/az-western",
+          "communityCollege": "Arizona Western College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2013",
+          "timePeriod": "1314",
+          "timePeriodDescription": "2013 - 2014"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/central-az",
+          "communityCollege": "Central Arizona College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2013",
+          "timePeriod": "1314",
+          "timePeriodDescription": "2013 - 2014"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/eastern-az",
+          "communityCollege": "Eastern Arizona College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2013",
+          "timePeriod": "1314",
+          "timePeriodDescription": "2013 - 2014"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/maricopa",
+          "communityCollege": "Maricopa County Community College District",
+          "transferAgreementType": "MAPP",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2013",
+          "timePeriod": "1314",
+          "timePeriodDescription": "2013 - 2014"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/pima",
+          "communityCollege": "Pima Community College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/major-map/ASU00/BAACCBS/null/ALL/2013",
+          "timePeriod": "1314",
+          "timePeriodDescription": "2013 - 2014"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/az-western",
+          "communityCollege": "Arizona Western College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/pathway/15879/2014/1100100062/false",
+          "timePeriod": "1415",
+          "timePeriodDescription": "2014 - 2015"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/central-az",
+          "communityCollege": "Central Arizona College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/pathway/16032/2014/1100102770/false",
+          "timePeriod": "1415",
+          "timePeriodDescription": "2014 - 2015"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/coconino",
+          "communityCollege": "Coconino Community College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/pathway/16229/2014/1100104071/false",
+          "timePeriod": "1415",
+          "timePeriodDescription": "2014 - 2015"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/eastern-az",
+          "communityCollege": "Eastern Arizona College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/pathway/16360/2014/1100100064/false",
+          "timePeriod": "1415",
+          "timePeriodDescription": "2014 - 2015"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/maricopa",
+          "communityCollege": "Maricopa County Community College District",
+          "transferAgreementType": "MAPP",
+          "url": "https://degrees.apps.asu.edu/pathway/17433/2014/1100100066/false",
+          "timePeriod": "1415",
+          "timePeriodDescription": "2014 - 2015"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/pima",
+          "communityCollege": "Pima Community College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/pathway/16538/2014/1100102766/false",
+          "timePeriod": "1415",
+          "timePeriodDescription": "2014 - 2015"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/az-western",
+          "communityCollege": "Arizona Western College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/pathway/21713/2015/1100100062/false",
+          "timePeriod": "1516",
+          "timePeriodDescription": "2015 - 2016"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/central-az",
+          "communityCollege": "Central Arizona College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/pathway/21922/2015/1100102770/false",
+          "timePeriod": "1516",
+          "timePeriodDescription": "2015 - 2016"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/coconino",
+          "communityCollege": "Coconino Community College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/pathway/22247/2015/1100104071/false",
+          "timePeriod": "1516",
+          "timePeriodDescription": "2015 - 2016"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/eastern-az",
+          "communityCollege": "Eastern Arizona College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/pathway/22342/2015/1100100064/false",
+          "timePeriod": "1516",
+          "timePeriodDescription": "2015 - 2016"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/maricopa",
+          "communityCollege": "Maricopa County Community College District",
+          "transferAgreementType": "MAPP",
+          "url": "https://degrees.apps.asu.edu/pathway/23296/2015/1100100066/false",
+          "timePeriod": "1516",
+          "timePeriodDescription": "2015 - 2016"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/mohave",
+          "communityCollege": "Mohave Community College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/pathway/24793/2015/1100103550/false",
+          "timePeriod": "1516",
+          "timePeriodDescription": "2015 - 2016"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/pima",
+          "communityCollege": "Pima Community College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/pathway/23689/2015/1100102766/false",
+          "timePeriod": "1516",
+          "timePeriodDescription": "2015 - 2016"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/yavapai",
+          "communityCollege": "Yavapai College",
+          "transferAgreementType": "TAG",
+          "url": "https://degrees.apps.asu.edu/pathway/23871/2015/1100100070/false",
+          "timePeriod": "1516",
+          "timePeriodDescription": "2015 - 2016"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/az-western",
+          "communityCollege": "Arizona Western College",
+          "transferAgreementType": "TAG",
+          "url": "https://webapp4.asu.edu/transferpathwaybuilder/public?year=2016&extOrgId=AWC&acadPlan=BAACCBS",
+          "timePeriod": "1617",
+          "timePeriodDescription": "2016 - 2017"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/central-az",
+          "communityCollege": "Central Arizona College",
+          "transferAgreementType": "TAG",
+          "url": "https://webapp4.asu.edu/transferpathwaybuilder/public?year=2016&extOrgId=CAC&acadPlan=BAACCBS",
+          "timePeriod": "1617",
+          "timePeriodDescription": "2016 - 2017"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/coconino",
+          "communityCollege": "Coconino Community College",
+          "transferAgreementType": "TAG",
+          "url": "https://webapp4.asu.edu/transferpathwaybuilder/public?year=2016&extOrgId=COCONINO&acadPlan=BAACCBS",
+          "timePeriod": "1617",
+          "timePeriodDescription": "2016 - 2017"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/eastern-az",
+          "communityCollege": "Eastern Arizona College",
+          "transferAgreementType": "TAG",
+          "url": "https://webapp4.asu.edu/transferpathwaybuilder/public?year=2016&extOrgId=EAC&acadPlan=BAACCBS",
+          "timePeriod": "1617",
+          "timePeriodDescription": "2016 - 2017"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/maricopa",
+          "communityCollege": "Maricopa County Community College District",
+          "transferAgreementType": "MAPP",
+          "url": "https://webapp4.asu.edu/transferpathwaybuilder/public?year=2016&extOrgId=MARICOPA&acadPlan=BAACCBS",
+          "timePeriod": "1617",
+          "timePeriodDescription": "2016 - 2017"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/mohave",
+          "communityCollege": "Mohave Community College",
+          "transferAgreementType": "TAG",
+          "url": "https://webapp4.asu.edu/transferpathwaybuilder/public?year=2016&extOrgId=MOHAVE&acadPlan=BAACCBS",
+          "timePeriod": "1617",
+          "timePeriodDescription": "2016 - 2017"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/pima",
+          "communityCollege": "Pima Community College",
+          "transferAgreementType": "TAG",
+          "url": "https://webapp4.asu.edu/transferpathwaybuilder/public?year=2016&extOrgId=PIMA&acadPlan=BAACCBS",
+          "timePeriod": "1617",
+          "timePeriodDescription": "2016 - 2017"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/yavapai",
+          "communityCollege": "Yavapai College",
+          "transferAgreementType": "TAG",
+          "url": "https://webapp4.asu.edu/transferpathwaybuilder/public?year=2016&extOrgId=YAVAPAI&acadPlan=BAACCBS",
+          "timePeriod": "1617",
+          "timePeriodDescription": "2016 - 2017"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/maricopa",
+          "communityCollege": "Maricopa County Community College District",
+          "transferAgreementType": "MAPP",
+          "url": "https://webapp4.asu.edu/transferpathwaybuilder/public?year=2017&extOrgId=MARICOPA&acadPlan=BAACCBS",
+          "timePeriod": "1718",
+          "timePeriodDescription": "2017 - 2018"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/maricopa",
+          "communityCollege": "Maricopa County Community College District",
+          "transferAgreementType": "MAPP",
+          "url": "https://webapp4.asu.edu/transferpathwaybuilder/public?year=2018&extOrgId=MARICOPA&acadPlan=BAACCBS",
+          "timePeriod": "1819",
+          "timePeriodDescription": "2018 - 2019"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/maricopa",
+          "communityCollege": "Maricopa County Community College District",
+          "transferAgreementType": "MAPP",
+          "url": "https://webapp4.asu.edu/transferpathwaybuilder/public?year=2019&extOrgId=MARICOPA&acadPlan=BAACCBS",
+          "timePeriod": "1920",
+          "timePeriodDescription": "2019 - 2020"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/maricopa",
+          "communityCollege": "Maricopa County Community College District",
+          "transferAgreementType": "MAPP",
+          "url": "https://webapp4.asu.edu/transferpathwaybuilder/public?year=2020&extOrgId=MARICOPA&acadPlan=BAACCBS",
+          "timePeriod": "2021",
+          "timePeriodDescription": "2020 - 2021"
+      },
+      {
+          "communityCollegeUrl": "http://transfer.asu.edu/maricopa",
+          "communityCollege": "Maricopa County Community College District",
+          "transferAgreementType": "MAPP",
+          "url": "https://webapp4.asu.edu/transferpathwaybuilder/public?year=2021&extOrgId=MARICOPA&acadPlan=BAACCBS",
+          "timePeriod": "2122",
+          "timePeriodDescription": "2021 - 2022"
+      }
+  ],
+  "careerData": [
+      {
+          "onetCode": "13-2011.00",
+          "onetTitle": "Accountants and Auditors",
+          "alternateTitle": "Accountant/Auditor",
+          "growth": 4.4,
+          "green": false,
+          "brightOutlook": true,
+          "salary": 78000
+      },
+      {
+          "onetCode": "13-2061.00",
+          "onetTitle": "Financial Examiners",
+          "alternateTitle": "Banking Examiner",
+          "growth": 19.5,
+          "green": false,
+          "brightOutlook": true,
+          "salary": 82210
+      },
+      {
+          "onetCode": "13-2031.00",
+          "onetTitle": "Budget Analysts",
+          "alternateTitle": "Budget Analyst",
+          "growth": 3.3,
+          "green": false,
+          "brightOutlook": false,
+          "salary": 82260
+      },
+      {
+          "onetCode": "13-2052.00",
+          "onetTitle": "Personal Financial Advisors",
+          "alternateTitle": "Certified Financial Planner (CFP)",
+          "growth": 12.8,
+          "green": false,
+          "brightOutlook": true,
+          "salary": 95390
+      },
+      {
+          "onetCode": "13-1051.00",
+          "onetTitle": "Cost Estimators",
+          "alternateTitle": "Cost Estimator",
+          "growth": -2.8,
+          "green": false,
+          "brightOutlook": false,
+          "salary": 71200
+      },
+      {
+          "onetCode": "13-2051.00",
+          "onetTitle": "Financial and Investment Analysts",
+          "alternateTitle": "Financial Analyst",
+          "growth": 7.6,
+          "green": false,
+          "brightOutlook": true,
+          "salary": 95080
+      },
+      {
+          "onetCode": "11-3031.00",
+          "onetTitle": "Financial Managers",
+          "alternateTitle": "Financial Manager",
+          "growth": 16.0,
+          "green": false,
+          "brightOutlook": true,
+          "salary": 139790
+      },
+      {
+          "onetCode": "33-3021.06",
+          "onetTitle": "Intelligence Analysts",
+          "alternateTitle": "Intelligence Officer",
+          "growth": 1.5,
+          "green": false,
+          "brightOutlook": false,
+          "salary": 86280
+      }
+  ],
+  "applicationDeadlines": [
+      {
+          "campus": "WEST",
+          "session": "REG",
+          "strm": "2244",
+          "strmDescription": "2024 Summer",
+          "applicationAcceptStartDate": null,
+          "applicationAcceptEndDate": null,
+          "sessionEndDate": "2024-07-01",
+          "termBeginDate": null,
+          "priorityApplicationDeadlineDate": null
+      },
+      {
+          "campus": "ONLNE",
+          "session": "SESA",
+          "strm": "2244",
+          "strmDescription": "2024 Summer",
+          "applicationAcceptStartDate": null,
+          "applicationAcceptEndDate": null,
+          "sessionEndDate": "2024-05-16",
+          "termBeginDate": null,
+          "priorityApplicationDeadlineDate": null
+      },
+      {
+          "campus": "ONLNE",
+          "session": "SESB",
+          "strm": "2244",
+          "strmDescription": "2024 Summer",
+          "applicationAcceptStartDate": null,
+          "applicationAcceptEndDate": null,
+          "sessionEndDate": "2024-07-01",
+          "termBeginDate": null,
+          "priorityApplicationDeadlineDate": null
+      },
+      {
+          "campus": "TEMPE",
+          "session": "REG",
+          "strm": "2244",
+          "strmDescription": "2024 Summer",
+          "applicationAcceptStartDate": null,
+          "applicationAcceptEndDate": null,
+          "sessionEndDate": "2024-07-01",
+          "termBeginDate": null,
+          "priorityApplicationDeadlineDate": null
+      },
+      {
+          "campus": "WEST",
+          "session": "REG",
+          "strm": "2247",
+          "strmDescription": "2024 Fall",
+          "applicationAcceptStartDate": null,
+          "applicationAcceptEndDate": null,
+          "sessionEndDate": "2024-08-22",
+          "termBeginDate": null,
+          "priorityApplicationDeadlineDate": null
+      },
+      {
+          "campus": "TEMPE",
+          "session": "REG",
+          "strm": "2247",
+          "strmDescription": "2024 Fall",
+          "applicationAcceptStartDate": null,
+          "applicationAcceptEndDate": null,
+          "sessionEndDate": "2024-08-22",
+          "termBeginDate": null,
+          "priorityApplicationDeadlineDate": null
+      },
+      {
+          "campus": "ONLNE",
+          "session": "SESA",
+          "strm": "2247",
+          "strmDescription": "2024 Fall",
+          "applicationAcceptStartDate": null,
+          "applicationAcceptEndDate": null,
+          "sessionEndDate": "2024-08-22",
+          "termBeginDate": null,
+          "priorityApplicationDeadlineDate": null
+      },
+      {
+          "campus": "ONLNE",
+          "session": "SESB",
+          "strm": "2247",
+          "strmDescription": "2024 Fall",
+          "applicationAcceptStartDate": null,
+          "applicationAcceptEndDate": null,
+          "sessionEndDate": "2024-10-16",
+          "termBeginDate": null,
+          "priorityApplicationDeadlineDate": null
+      }
+  ],
+  "acadPlanSpecialPairs": null,
+  "campusesOffered": [
+      {
+          "campusCode": "TEMPE",
+          "wue": false
+      },
+      {
+          "campusCode": "WEST",
+          "wue": false
+      },
+      {
+          "campusCode": "ONLNE",
+          "wue": false
+      }
+  ],
+  "subplans": [
+      {
+          "acadSubPlanCode": "ACC30GSPC",
+          "description": "3.0 Years",
+          "campusesOffered": null
+      }
+  ],
+  "planCategories": [
+      {
+          "categoryCode": "04",
+          "categoryDescription": "Business"
+      },
+      {
+          "categoryCode": "06",
+          "categoryDescription": "Computing and Mathematics"
+      },
+      {
+          "categoryCode": "25",
+          "categoryDescription": "Fast Track Plans"
+      },
+      {
+          "categoryCode": "FT3",
+          "categoryDescription": "3 Year Fast Track:"
+      }
+  ],
+  "additionalDeadlines": null,
+  "concurrentAcadPlanCodes": null,
+  "acceleratedAcadPlanCodes": [
+      "BAACCMACC",
+      "BATAMTAX"
+  ],
+  "learningOutcomes": null,
+  "graduateDegreeAdditionalRequirements": null,
+  "darsDegreeProgramMappings": [
+      {
+          "acadSubPlanCode": null,
+          "requirementFirstYearTerm": "0967",
+          "lastYearTerm": "2134",
+          "darsDegreeProgramCode": "BA ACC BS"
+      },
+      {
+          "acadSubPlanCode": null,
+          "requirementFirstYearTerm": "2137",
+          "lastYearTerm": "2204",
+          "darsDegreeProgramCode": "BA ACC BS"
+      },
+      {
+          "acadSubPlanCode": "ACC30GSPC",
+          "requirementFirstYearTerm": "2177",
+          "lastYearTerm": "2204",
+          "darsDegreeProgramCode": "BA ACC BS"
+      },
+      {
+          "acadSubPlanCode": "ACC30GSPC",
+          "requirementFirstYearTerm": "2207",
+          "lastYearTerm": "2244",
+          "darsDegreeProgramCode": "BA ACC BS"
+      },
+      {
+          "acadSubPlanCode": null,
+          "requirementFirstYearTerm": "2207",
+          "lastYearTerm": "2244",
+          "darsDegreeProgramCode": "BA ACC BS"
+      },
+      {
+          "acadSubPlanCode": "ACC30GSPC",
+          "requirementFirstYearTerm": "2247",
+          "lastYearTerm": "2254",
+          "darsDegreeProgramCode": "BA ACC BS"
+      },
+      {
+          "acadSubPlanCode": null,
+          "requirementFirstYearTerm": "2247",
+          "lastYearTerm": "2254",
+          "darsDegreeProgramCode": "BA ACC BS"
+      }
+  ],
+  "degreeType": "UG"
 }

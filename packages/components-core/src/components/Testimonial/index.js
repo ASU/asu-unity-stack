@@ -25,7 +25,7 @@ const Testimonial = ({ imageSource, imageAltText, quote, itemStyle = {} }) => (
       <Image
         src={imageSource}
         alt={imageAltText}
-        data-testid="testimonial-image"
+        dataTestId="testimonial-image"
         fetchPriority="high"
       />
     )}

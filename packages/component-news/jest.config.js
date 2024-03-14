@@ -8,4 +8,8 @@ module.exports = {
     "^.+\\.css$": "jest-transform-css",
     "\\.(jpg|jpeg|png|gif|webp|svg)$": "jest-transform-file",
   },
+  moduleNameMapper: {
+    "^@asu/components-core$": "<rootDir>/../components-core/src/index.js",
+    "\\.(css|less|sass|scss)$": "identity-obj-proxy",
+  },
 };
