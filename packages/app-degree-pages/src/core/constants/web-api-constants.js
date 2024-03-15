@@ -17,7 +17,7 @@ const listingPageDefaultDataSource = {
     academicOfficeLocation,marketingText,fullDescription,customText,
     mathIntensityCode,mathIntensityDescription,firstMathCourseRequired,
     mathRequired,emailAddr,campusesOffered,changeMajorRequirementsText,
-    additionalFee,firstMathCourseRequiredSupplementalText`,
+    additionalFee,firstMathCourseRequiredSupplementalText,degreeType`,
   degreeType: "UG",
 };
 

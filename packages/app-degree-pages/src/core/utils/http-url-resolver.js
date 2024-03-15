@@ -21,21 +21,31 @@ function urlResolver(dataSource, defaultDataSource) {
     // Convert `program` (from props) to `degreeType` for use as paramter
     // to accommodate Data Potluck API changes.
     const { program } = httpParameters;
-    httpParameters["degreeType"] = program === "undergrad" ? "UG" : "GR";
+
+    if (httpParameters.cert === "true" && program === "undergrad") {
+      httpParameters["degreeType"] = "UGCM";
+    } else if (program === "graduate") {
+      httpParameters["degreeType"] = "GR"
+    } else {
+      httpParameters["degreeType"] = "UG";
+    }
     delete httpParameters["program"];
   }
   if (httpParameters.acadPlan) {
     httpParameters.endpoint += `/${httpParameters.acadPlan}`;
     delete httpParameters["acadPlan"];
   }
-  if (httpParameters.cert === "true") {
-    httpParameters.degreeType = "UGCM";
-    delete httpParameters["cert"];
-  }
+
+  /** The following code is commented out because it is not used in the current implementation
+   * and the default will be to show only active programs.
+   * If we need to show inactive programs, we can reimplement this code.
+
   if (httpParameters.showInactivePrograms === "true") {
     delete httpParameters["showInactivePrograms"];
     delete httpParameters["filter"];
   }
+
+  */
 
   const { endpoint, include, ...keyValues } = httpParameters;
 

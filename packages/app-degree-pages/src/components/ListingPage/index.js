@@ -106,6 +106,8 @@ const ListingPage = ({
     departmentCode,
     showInactivePrograms,
     blacklistAcadPlans,
+    program,
+    cert: showCerts,
   } = programList.dataSource;
 
   /** @type {UseFiltersState} */
@@ -154,8 +156,9 @@ const ListingPage = ({
       filters: {
         collegeAcadOrg,
         departmentCode,
-        showInactivePrograms: showInactivePrograms ?? false,
         blacklistAcadPlans,
+        program,
+        showCerts
       },
     });
 
@@ -186,6 +189,7 @@ const ListingPage = ({
         keyword,
         showInactivePrograms: showInactivePrograms ?? false,
         blacklistAcadPlans,
+        program,
       },
     });
 
