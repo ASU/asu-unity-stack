@@ -223,7 +223,7 @@ const resolveListingHeroTitle = dataSource => {
   if (program === "undergrad") return "Undergraduate Degrees";
 
   if (program === "graduate" && cert === "true")
-    return "Graduate Degrees and Certificates";
+    return "Graduate Certificates";
 
   if (program === "graduate") return "Graduate Degrees";
 

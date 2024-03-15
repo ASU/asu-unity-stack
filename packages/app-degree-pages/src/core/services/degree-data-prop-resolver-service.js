@@ -56,6 +56,7 @@ function degreeDataPropResolverService(row = {}) {
       return mostRecentMajorMap?.url || "";
     },
     isUndergradProgram: () => isUndergradProgram(row),
+    isPhdOrMasters: () => row["degreeDescriptionShort"] !== "CERT", // Only called in functions that already checked if its a grad program
     isGradProgram: () => row["degreeType"] === "GR", // GR is present for grad degrees and grad certificates
     isMinorOrCertificate: () =>
       row["degreeType"] === "UGCM" ||
