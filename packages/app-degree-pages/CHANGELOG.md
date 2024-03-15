@@ -1,3 +1,10 @@
+# [@asu/app-degree-pages-v2.5.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.4.0...@asu/app-degree-pages-v2.5.0) (2024-03-15)
+
+
+### Features
+
+* **app-degree-pages:** added filtering for Grad options ([8d58087](https://github.com/asu/asu-unity-stack/commit/8d5808737c6d09a6d2e8345aace81bb65ec8321e))
+
 # [@asu/app-degree-pages-v2.4.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.3.1...@asu/app-degree-pages-v2.4.0) (2024-03-07)
 
 
