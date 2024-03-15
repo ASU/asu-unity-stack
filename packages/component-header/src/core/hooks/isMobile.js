@@ -6,7 +6,8 @@ import { useState, useEffect } from "react";
  */
 
 const useIsMobile = breakpoint => {
-  const [isMobile, setIsMobile] = useState(false);
+  const breakpointVal = parseInt(breakpoint.split("p")[0], 10);
+  const [isMobile, setIsMobile] = useState(window?.innerWidth <= breakpointVal);
   const isMobileQuery = window.matchMedia(`(max-width: ${breakpoint})`);
 
   const setMobile = e => {
@@ -15,14 +16,8 @@ const useIsMobile = breakpoint => {
 
   useEffect(() => {
     // Set window resize listener
-    isMobileQuery.addEventListener("change", e => setMobile(e));
-    return () => isMobileQuery.removeEventListener("change", e => setMobile(e));
-  }, []);
-
-  useEffect(() => {
-    // Set initial isMobile state
-    const breakpointVal = parseInt(breakpoint.split("p")[0], 10);
-    if (window?.innerWidth <= breakpointVal) setIsMobile(true);
+    isMobileQuery.addEventListener("change", setMobile);
+    return () => isMobileQuery.removeEventListener("change", setMobile);
   }, []);
 
   return isMobile;
