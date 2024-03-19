@@ -1,3 +1,10 @@
+# [@asu/component-header-v2.2.4](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.3...@asu/component-header-v2.2.4) (2024-03-19)
+
+
+### Bug Fixes
+
+* **component-header:** datalayer should only fire once for search ([c2f7660](https://github.com/asu/asu-unity-stack/commit/c2f7660f9f1ee4be7f67aa886af9812919de0502))
+
 # [@asu/component-header-v2.2.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.2...@asu/component-header-v2.2.3) (2024-01-25)
 
 
