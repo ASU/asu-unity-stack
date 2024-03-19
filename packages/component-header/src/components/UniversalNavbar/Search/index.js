@@ -12,9 +12,31 @@ const SEARCH_GA_EVENT = {
   event: "search",
   action: "type",
   name: "onenter",
-  section: "topbar",
   type: "main search",
+  region: "navbar",
+  section: "topbar",
 };
+
+function handleSearch(e) {
+  e.preventDefault();
+  /**
+   * Issue: Callback not currently available
+   * We need to ensure dataLayer events are being logged correctly
+   * Soluton might be in GA4 settings with a form event targeting the element ID
+   *
+   * This solution does not guarantee the event is logged before the page
+   * redirects.
+   * Preventing form submission with arbitrary timeout is always bad, but this
+   * may be small enough to not degrade the experience
+   *
+   * TODO: UDS-1612
+   */
+  setTimeout(() => e.target.submit(), 100);
+  return trackGAEvent({
+    ...SEARCH_GA_EVENT,
+    text: e.target.elements.q.value,
+  });
+}
 
 const Search = () => {
   const { breakpoint, searchUrl, site } = useAppContext();
@@ -27,13 +49,25 @@ const Search = () => {
   }, [open]);
 
   const handleChangeVisibility = () => {
-    setOpen(prevState => !prevState);
+    setOpen(prevState => {
+      const newState = !prevState;
+
+      trackGAEvent({
+        ...SEARCH_GA_EVENT,
+        event: "link",
+        action: "click",
+        name: "onclick",
+        text: newState ? "search icon" : "close search icon",
+      });
+      return newState;
+    });
   };
   return (
     <SearchWrapper
       // @ts-ignore
       breakpoint={breakpoint}
       action={searchUrl}
+      onSubmit={handleSearch}
       method="get"
       name="gs"
       className={open ? "open-search" : ""}
@@ -58,12 +92,6 @@ const Search = () => {
                 aria-labelledby="header-top-search"
                 placeholder="Search asu.edu"
                 required
-                onChange={e =>
-                  trackGAEvent({
-                    ...SEARCH_GA_EVENT,
-                    text: e.target.value,
-                  })
-                }
               />
               <button
                 type="button"
