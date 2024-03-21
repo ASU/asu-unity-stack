@@ -19,7 +19,7 @@
 }
 
 /* Apply CSS vars */
-ol, ul{
+ol, ul {
   max-width: var(--list-max-width);
   padding-top: var(--list-padding-top);
   padding-right: var(--list-padding-right);
@@ -48,8 +48,6 @@ ul.uds-list ul {
   --list-list-style: none;
 }
 
-
-
 /* Nested Unordered Lists */
 // ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul,
 // ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul,
@@ -58,8 +56,7 @@ ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul,
 ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul,
 ul>li>ul>li>ul>li>ul>li>ul>li>ul,
 ul>li>ul>li>ul>li>ul,
-ul>li>ul
-{
+ul>li>ul {
   --li-before-content: '\25E6 '; // open circle
 }
 
@@ -70,8 +67,7 @@ ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul,
 ul>li>ul>li>ul>li>ul>li>ul>li>ul>li>ul,
 ul>li>ul>li>ul>li>ul>li>ul,
 ul>li>ul>li>ul,
-ul
-{
+ul {
   --li-before-content: '\2022 '; // closed circle
 }
 
@@ -109,8 +105,6 @@ ul.uds-list,
     margin-left: -2rem;
   }
 }
-
-
 
 // General UL and OL rules.
 ul.uds-list,
@@ -194,13 +188,12 @@ ul.uds-list {
 // General OL rules.
 ol.uds-list,
 .uds-list ol {
-  // We manually manage the counter since we need to remove the trailing periods.
-
   @include uds-list-spacing;
+
   // Tweak the mix-in's left padding due to OL's needing more space for double
   // and triple digits. Not supported: > 3 digits.
   --list-padding-left: 3rem;
-
+  // We manually manage the counter since we need to remove the trailing periods.
   counter-reset: listcounter;
 
   & > li:before {
@@ -209,7 +202,6 @@ ol.uds-list,
     padding-right: .75rem;
     margin-left: -1.9rem;
   }
-
 
   // Adjust indent for double digits.
   li:nth-of-type(9) ~ li:before {
@@ -225,18 +217,21 @@ ol.uds-list,
     --list-padding-left: 1.5rem;
     --list-padding-right: #{$uds-size-spacing-0};
     max-width: 75ch;
+
     li {
       padding-bottom: 2rem;
       padding-left: $uds-size-spacing-6;
       margin-bottom: 3rem;
       border-bottom: 1px solid $uds-color-base-gray-4;
       font-weight: bold;
+
       span {
         padding-left: 0; // Text alignment below headline, tweaky due to oblong fix below.
         display: block;
         margin-top: 1rem;
         font-weight: normal;
       }
+
       &:before {
         --li-before-background-color: #{$uds-color-base-gray-7};
         --li-before-content: counter(listcounter); // Remove space because it messes with centering.
@@ -249,10 +244,12 @@ ol.uds-list,
         font-weight: bold;
       }
     }
+
     &.uds-steplist-gold li:before {
       --li-before-background-color: #{$uds-color-base-gold};
       --li-before-color: #{$uds-color-base-gray-7};
     }
+
     &.uds-steplist-maroon li:before {
       --li-before-background-color: #{$uds-color-base-maroon};
     }
