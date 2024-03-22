@@ -166,7 +166,7 @@ ul.uds-list {
   &.fa-ul {
     @include uds-list-spacing;
 
-    padding-left: 2.25rem; // Avoid icon clipping. fa-ul sets padding, Do not use cssVar
+    --list-padding-left: 2.25rem; // Avoid icon clipping.
     margin-left: 0rem;
     margin-bottom: 0rem;
     li .fa-li {
