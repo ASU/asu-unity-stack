@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.9.7](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.6...@asu/unity-bootstrap-theme-v1.9.7) (2024-03-22)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** contain list styles ([e6a16df](https://github.com/ASU/asu-unity-stack/commit/e6a16dfcbe7525ea0daf62b819ad333a63226a05))
+
 # [@asu/unity-bootstrap-theme-v1.9.6](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.5...@asu/unity-bootstrap-theme-v1.9.6) (2024-03-22)
 
 
