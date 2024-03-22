@@ -16,23 +16,23 @@
       margin-bottom: 0rem;
     }
   }
-}
 
-/* Apply CSS vars */
-ol, ul {
-  max-width: var(--list-max-width);
-  padding-top: var(--list-padding-top);
-  padding-right: var(--list-padding-right);
-  padding-bottom: var(--list-padding-bottom);
-  padding-left: var(--list-padding-left);
-  list-style: var(--list-list-style);
+  /* Apply CSS vars */
+  & {
+    max-width: var(--list-max-width);
+    padding-top: var(--list-padding-top);
+    padding-right: var(--list-padding-right);
+    padding-bottom: var(--list-padding-bottom);
+    padding-left: var(--list-padding-left);
+    list-style: var(--list-list-style);
 
-  li:before {
-    content: var(--li-before-content);
-    font-size: var(--li-before-font-size);
-    color: var(--li-before-color);
-    background-color: var(--li-before-background-color);
-    line-height: var(--li-before-line-height);
+    li:before {
+      content: var(--li-before-content);
+      font-size: var(--li-before-font-size);
+      color: var(--li-before-color);
+      background-color: var(--li-before-background-color);
+      line-height: var(--li-before-line-height);
+    }
   }
 }
 
@@ -166,7 +166,7 @@ ul.uds-list {
   &.fa-ul {
     @include uds-list-spacing;
 
-    padding-left: 2.25rem; // Avoid icon clipping. fa-ul sets padding, Do not use cssVar
+    --list-padding-left: 2.25rem; // Avoid icon clipping.
     margin-left: 0rem;
     margin-bottom: 0rem;
     li .fa-li {
