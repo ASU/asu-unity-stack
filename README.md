@@ -43,7 +43,6 @@
   - [❯ Contributing:](#-contributing)
     - [See here for more information about publishing packages](#see-here-for-more-information-about-publishing-packages)
     - [See the top answer on this stackoverflow question for why you may want to build against multiple node versions. Probably unnecessary for this workflow.](#see-the-top-answer-on-this-stackoverflow-question-for-why-you-may-want-to-build-against-multiple-node-versions-probably-unnecessary-for-this-workflow)
-  - [Deprecated Packages](#deprecated-packages-1)
 
 ## Quickstart Guide
 
@@ -402,6 +401,3 @@ Read contribution guide here: [CONTRIBUTING.md](./CONTRIBUTING.md)
 ### See [here](https://docs.github.com/en/actions/guides/publishing-nodejs-packages) for more information about publishing packages
 
 ### See [the top answer on this stackoverflow question](https://stackoverflow.com/questions/62819489/github-actions-why-build-with-different-node-versions) for why you may want to build against multiple node versions. Probably unnecessary for this workflow.
-
-## Deprecated Packages
-
