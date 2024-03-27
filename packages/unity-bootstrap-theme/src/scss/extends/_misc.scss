@@ -87,14 +87,14 @@ label {
 .card-event .card-header {
   border-top: solid 4px $gold;
 }
-.bg-dark a,
-.bg-primary a,
-.bg-black a {
+.bg-dark a:not(.btn, .nav-item),
+.bg-primary a:not(.btn, .nav-item),
+.bg-black a:not(.btn, .nav-item) {
   color: $light;
 }
-.bg-light a,
-.bg-secondary a,
-.bg-white a {
+.bg-light a:not(.btn, .nav-item),
+.bg-secondary a:not(.btn, .nav-item),
+.bg-white a:not(.btn, .nav-item) {
   color: $primary;
 }
 
