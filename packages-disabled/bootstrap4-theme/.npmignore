@@ -1,9 +1,0 @@
-node_modules
-tests
-*.test.*
-stories
-storybook-static
-stories.*
-.storybook
-webpack
-*.yml

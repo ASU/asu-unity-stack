@@ -1,7 +1,0 @@
-components
-node_modules
-properties
-.editorconfig
-.prettierignore
-.prettierrc.js
-config.js

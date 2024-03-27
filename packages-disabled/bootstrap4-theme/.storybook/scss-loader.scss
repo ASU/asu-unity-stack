@@ -1,9 +1,0 @@
-// Override image assets path for Storybook (relative path from /.storybook/preview.js)
-$image-assets-path: '../src/img';
-
-@import '../src/scss/bootstrap-asu.scss';
-
-// hack for "show code" btn in docs section, in order to be visible on top of the image for hero component
-.docs-story > div:nth-child(2) {
-  z-index: 99;
-}
