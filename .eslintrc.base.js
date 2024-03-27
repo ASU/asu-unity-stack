@@ -17,6 +17,7 @@ module.exports = {
   },
   extends: [
     "plugin:react/recommended",
+    "plugin:storybook/recommended",
     "airbnb",
     // Make this the last element so prettier config overrides other formatting rules
     "plugin:prettier/recommended",
@@ -31,6 +32,7 @@ module.exports = {
   },
   plugins: ["react", "jest"],
   rules: {
+    "jsx-a11y/control-has-associated-label": "off",
     "react/jsx-filename-extension": "off",
     "react/require-default-props": "off",
     "react/jsx-props-no-spreading": [1, { custom: "ignore" }],

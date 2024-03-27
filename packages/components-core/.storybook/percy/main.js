@@ -1,7 +1,8 @@
 const path = require("path");
 const PROJECT_DIR = path.resolve(__dirname, "../../");
 
-module.exports = {
+const config = {
+  staticDirs: ['../../dist'],
   stories: [
     "../../tests/**/*.percy.mdx",
     "../../tests/**/*.percy.@(js|jsx|ts|tsx)",
@@ -10,11 +11,10 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "storybook-css-modules-preset",
-    "@storybook/addon-knobs",
   ],
-  framework: "@storybook/react",
-  core: {
-    builder: "webpack5",
+  framework: {
+    name: "@storybook/react-webpack5",
+    options: {}
   },
   webpackFinal: config => {
     config.module.rules.push({
@@ -40,3 +40,5 @@ module.exports = {
     };
   },
 };
+
+export default config;

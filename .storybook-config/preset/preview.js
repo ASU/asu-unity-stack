@@ -2,16 +2,26 @@
 import { withColumns } from '../withColumns';
 import { customViewports } from '../viewports';
 
-export const globals = {
+const globals = {
   columns: false,
 };
 
-export const parameters = {
+const parameters = {
   viewport: { viewports: customViewports },
   controls: { expanded: true },
   layout: 'fullscreen'
 };
 
-export const decorators = [
+const decorators = [
   withColumns,
 ];
+
+
+/** @type { import('@storybook/react').Preview } */
+const preview = {
+  globals,
+  parameters,
+  decorators,
+};
+
+export default preview;

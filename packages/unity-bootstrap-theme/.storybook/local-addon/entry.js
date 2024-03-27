@@ -25,11 +25,11 @@ export const parameters = {
     code: null
   },
   docs:{
-    transformSource: (src,storyContext)=>{
-      let code = `${(document?.getElementById(`story--${storyContext.id}`)?.innerHTML || "")}`;
-      return formatWithHtmlParser(removeFontAwesomeChanges(code));
-    },
     source: {
+      transform: (src,storyContext)=>{
+        let code = `${(document?.getElementById(`story--${storyContext.id}`)?.innerHTML || "")}`;
+        return formatWithHtmlParser(removeFontAwesomeChanges(code));
+      },
       type:"auto"
     }
   }

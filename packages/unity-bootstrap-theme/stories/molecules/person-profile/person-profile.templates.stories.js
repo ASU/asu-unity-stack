@@ -1,38 +1,38 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
+import React from "react";
+
+import { defaultDecorator } from "../../../../../shared/components/Layout";
 import { Button } from "../../../../components-core/src/components/Button";
 import anonPic from "./anon.png";
 
-const extraOptions = {
-  size: {
-    name: "Size",
-    options: ["small", null],
-    defaultValue: null,
-    control: {
-      type: "radio",
-      labels: {
-        "small": "Small",
-        null: "Large",
+export default {
+  title: "Molecules/Person Profile/Templates",
+  decorators: [ defaultDecorator ],
+  argTypes:  {
+    size: {
+      name: "Size",
+      options: ["Small", "Large"],
+      mapping: {
+        "Small": "small",
+        "Large": "",
+      },
+      control: {
+        type: "radio",
       },
     },
+    fill: {
+      name: "Fill",
+      control: { type: "boolean" },
+    },
   },
-  fill: {
-    name: "Fill",
-    control: { type: "boolean" },
-    defaultValue: false,
+  args: {
+    size: "Large",
+    fill: false,
   },
 };
 
-export default createComponent(
-  "Person Profile",
-  "Molecules",
-  "Templates",
-  extraOptions
-);
-
-const PersonProfile = props => (
+const PersonProfile = ({size, fill}) => (
   <div
-    className={`uds-person-profile ${props.size} ${props.fill ? "fill" : ""}`}
+    className={`uds-person-profile ${size} ${fill ? "fill" : ""}`}
   >
     <div className="profile-img-container">
       <div
@@ -62,7 +62,7 @@ const PersonProfile = props => (
           <span>Edplus at ASU</span>
         </h4>
       </div>
-      {props.size !== "micro" && (
+      {size !== "micro" && (
         <ul className="person-contact-info">
           <li>
             <a
@@ -102,7 +102,7 @@ const PersonProfile = props => (
           </li>
         </ul>
       )}
-      {!["micro", "small"].includes(props.size) && (
+      {!["micro", "small"].includes(size) && (
         <div>
           <p className="person-description">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed
@@ -159,15 +159,12 @@ const PersonProfile = props => (
           </ul>
         </div>
       )}
-      {props.size === "small" && (
+      {size === "small" && (
         <Button color="maroon" size="small" label="View Profile" />
       )}
-      {props.size === "micro" && <span className="more-link">Edplus at ASU</span>}
+      {size === "micro" && <span className="more-link">Edplus at ASU</span>}
     </div>
   </div>
 );
 
-export const PersonProfileTemplate = createStory(PersonProfile, { initFunc });
-PersonProfileTemplate.args = {
-  template: 1,
-};
+export const PersonProfileTemplate = PersonProfile.bind({});

@@ -1,6 +1,5 @@
 // @ts-check
 import React from "react";
-import withMock from "storybook-addon-mock";
 
 import { CardGridNews } from "./index";
 
@@ -11,7 +10,9 @@ import { createMockParam } from "../../core/utils";
 export default {
   title: "News component/Card Grid News",
   component: CardGridNews,
-  decorators: [withMock],
+  parameters: {
+    mockData: createMockParam(),
+  },
 };
 
 const Template = args => <CardGridNews {...args} />;
@@ -30,9 +31,6 @@ Default.args = {
   dataSource: {
     url: "/api/mocks/feeds-json",
   },
-};
-Default.parameters = {
-  mockData: createMockParam(),
 };
 
 /**
@@ -58,9 +56,6 @@ WithCardButtonProps.args = {
     size: "default", //   "default" | "small" | "medium" | "large"
   },
 };
-WithCardButtonProps.parameters = {
-  mockData: createMockParam(),
-};
 
 /**
  * @type {{ args: FeedType, parameters: object}}
@@ -84,9 +79,6 @@ WithFilters.args = {
     // filters: "Health,Journalism",
   },
 };
-WithFilters.parameters = {
-  mockData: createMockParam(),
-};
 
 /**
  * @type {{ args: FeedType, parameters: object}}
@@ -107,9 +99,6 @@ WithMaxItems.args = {
   },
   maxItems: 3,
 };
-WithMaxItems.parameters = {
-  mockData: createMockParam(),
-};
 
 /**
  * @type {{ args: FeedType, parameters: object}}
@@ -119,7 +108,4 @@ WithNoHeader.args = {
   dataSource: {
     url: "/api/mocks/feeds-json",
   },
-};
-WithNoHeader.parameters = {
-  mockData: createMockParam(),
 };

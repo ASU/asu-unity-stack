@@ -1,7 +1,7 @@
 import React, { useEffect, useRef} from 'react';
 import { makeDecorator } from '@storybook/addons';
 
-import { GlobalElementsOnly as Footer } from "../../../stories/organisms/global-footer/global-footer.templates.stories";
+import { GlobalElementsOnly as Footer } from "../../../stories/organisms/global-footer/global-footer.templates";
 import { initFooterGA } from "../../../stories/organisms/global-footer/global-footer"
 
 export const withFooter = makeDecorator({
@@ -20,13 +20,13 @@ export const withFooter = makeDecorator({
     const { globals, parameters } = context;
 
     const footer = parameters?.footer;
-    const isFooterActive = `${globals.footer}` === 'true' && footer?.disable !== true;
+    const isFooterActive = (globals.footer == true && footer?.disable !== true) || footer.forced == true;
 
     const isStory = context.viewMode === 'story';
 
     return <>
       {storyFn(context)}
-      {isStory && isFooterActive && Footer }
+      {isStory && isFooterActive && <Footer /> }
     </>
   }
 });

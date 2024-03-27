@@ -1,6 +1,4 @@
-import { googleAnalytics } from "@asu/unity-bootstrap-theme/js/data-layer.js";
-
-export const initVideo = () => {
+function initVideo() {
   // common selectors
   const DOM_ELEMENT_VIDEO = "video";
   const DOM_ELEMENT_BTN_PLAY = "#playHeroVid";
@@ -50,6 +48,6 @@ export const initVideo = () => {
   $videoBtnPause?.addEventListener(EVENT_CLICK, handleBtnPauseEvent);
   $videoBtnPlay?.addEventListener(EVENT_CLICK, handleBtnPlayEvent);
 
-  // Init google analytics
-  googleAnalytics();
 };
+
+export { initVideo };

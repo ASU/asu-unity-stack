@@ -1,18 +1,13 @@
 import React from "react";
 
-import {
-  createComponent,
-  createStory,
-  layoutNames,
-} from "../../../unity-bootstrap-theme/helpers/wrapper";
+import { defaultDecorator } from "../../../../shared/components/Layout";
 import { staffConverter } from "../helpers/dataConverter";
 import data from "./mock-data";
 
-const extraOptions = {
+const argTypes = {
   size: {
     name: "Size",
     options: ["micro", "small", "large"],
-    defaultValue: "large",
     control: {
       type: "radio",
       labels: {
@@ -25,34 +20,34 @@ const extraOptions = {
   fill: {
     name: "Fill",
     control: { type: "boolean" },
-    defaultValue: false,
   },
 };
 
-export default createComponent(
-  "ProfileCard",
-  "Atoms",
-  "Templates",
-  extraOptions
-);
+export default {
+  title: "Atoms/ProfileCard/Templates",
 
-export const profileCardExample = createStory(
-  args => {
-    const profileCard = staffConverter({
-      datum: data,
-      options: {
-        size: args.size,
-        titleMatch: null,
-        profileURLBase: null,
-        fill: args.fill,
-      },
-    });
-
-    return (
-      <div className="container-fluid">
-        <div className="col col-sm-12 p-3">{profileCard}</div>
-      </div>
-    );
+  decorators: [defaultDecorator],
+  argTypes,
+  args: {
+    size: "large",
+    fill: false,
   },
-  { supportedTemplates: [layoutNames.ONE_COLUMN] }
-);
+};
+
+export const profileCardExample = args => {
+  const profileCard = staffConverter({
+    datum: data,
+    options: {
+      size: args.size,
+      titleMatch: null,
+      profileURLBase: null,
+      fill: args.fill,
+    },
+  });
+
+  return (
+    <div className="container-fluid">
+      <div className="col col-sm-12 p-3">{profileCard}</div>
+    </div>
+  );
+};

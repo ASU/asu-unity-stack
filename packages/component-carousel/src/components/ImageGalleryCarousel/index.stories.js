@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 // @ts-check
-import { text } from "@storybook/addon-knobs";
 import React from "react";
 
 import { ImageGalleryCarousel } from ".";
@@ -75,8 +74,6 @@ export default {
 const maxWidth = "600px";
 const maxHeight = "600px";
 
-const GROUP_STYLE = "Styles";
-
 /**
  *
  * @param {{ children: JSX.Element}} props
@@ -87,7 +84,7 @@ const Wrapper = ({ children = null }) => (
     className="container"
     style={{
       display: "flex",
-      maxHeight: text("Max Height", maxHeight, GROUP_STYLE),
+      maxHeight,
     }}
   >
     {children}
@@ -97,7 +94,7 @@ const Wrapper = ({ children = null }) => (
 export const ImageGalleryCarouselDefault = () => (
   <Wrapper>
     <ImageGalleryCarousel
-      maxWidth={text("Max Width", maxWidth, GROUP_STYLE)}
+      maxWidth={maxWidth}
       imageItems={imageGalleryCarouselItems}
     />
   </Wrapper>
@@ -106,7 +103,7 @@ export const ImageGalleryCarouselDefault = () => (
 export const ImageGalleryCarouselWithContent = () => (
   <Wrapper>
     <ImageGalleryCarousel
-      maxWidth={text("Max Width", maxWidth, GROUP_STYLE)}
+      maxWidth={maxWidth}
       imageItems={mockItemWithContent()}
       hasContent
     />
@@ -116,7 +113,7 @@ export const ImageGalleryCarouselWithContent = () => (
 export const ImageCarouselWithMoreContent = () => (
   <Wrapper>
     <ImageGalleryCarousel
-      maxWidth={text("Max Width", maxWidth, GROUP_STYLE)}
+      maxWidth={maxWidth}
       imageItems={mockItemWithMoreContent()}
       hasContent
     />

@@ -1,6 +1,5 @@
-import { googleAnalytics } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
-export const initVideo = () => {
+function initVideo() {
   // constants
   const DOM_ELEMENT_VIDEO = "video";
   const DOM_ELEMENT_VIDEO_BTN = ".uds-video-btn-play";
@@ -51,11 +50,11 @@ export const initVideo = () => {
   }
 
   // add event listeners
-  $videoPlayer.addEventListener(EVENT_CLICK, handleVideoPlayerClick);
-  $videoBtnPlay.addEventListener(EVENT_CLICK, handleBtnPlayClick);
-  $videoOverlay.addEventListener(EVENT_CLICK, handleOverlayClick);
-  $videoPlayer.addEventListener(EVENT_ENDED, handleVideoEnded);
+  $videoPlayer?.addEventListener(EVENT_CLICK, handleVideoPlayerClick);
+  $videoBtnPlay?.addEventListener(EVENT_CLICK, handleBtnPlayClick);
+  $videoOverlay?.addEventListener(EVENT_CLICK, handleOverlayClick);
+  $videoPlayer?.addEventListener(EVENT_ENDED, handleVideoEnded);
 
-  // Init google analytics
-  googleAnalytics();
 };
+
+export { initVideo };

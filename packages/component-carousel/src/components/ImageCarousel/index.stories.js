@@ -1,13 +1,12 @@
 /* eslint-disable react/prop-types */
 // @ts-check
-import { number, text } from "@storybook/addon-knobs";
 import React from "react";
 
 import { ImageCarousel } from ".";
 
 // eslint-disable-next-line jest/no-mocks-import
 import { imageCarouselItems } from "../../../__mocks__/data/props-mock";
-import { Basic as Header } from "../../../../unity-bootstrap-theme/stories/organisms/global-header/global-header.templates.stories";
+import { Basic as Header } from "../../../../unity-bootstrap-theme/stories/organisms/global-header/global-header.templates";
 
 const mockItemWithContent = () =>
   imageCarouselItems.map(item => ({
@@ -33,19 +32,28 @@ const mockItemWithMoreContent = () =>
 export default {
   component: ImageCarousel,
   title: "Image Carousel",
+  args: {
+    imageItems: [],
+    perView: 1,
+  },
+  argTypes: {
+    imageItems: {
+      table: { disable: true },
+    },
+    perView: {
+      control: { type: "range", min: 1, max: 3, step: 1 },
+    },
+  },
 };
 
 const maxWidth = "800px";
 // const maxHeight = "600px";
 
-const GROUP_STYLE = "Styles";
-
 /**
- *
- * @param {{ children: JSX.Element}} props
+ * @param {{ imageItems: Array, perView: number}} props
  * @returns { JSX.Element}
  */
-const Wrapper = ({ children }) => (
+const Wrapper = ({ imageItems, perView }) => (
   <div
     style={
       {
@@ -55,37 +63,26 @@ const Wrapper = ({ children }) => (
       }
     }
   >
-    {Header}
-    {children}
+    <Header />
+    <ImageCarousel
+      perView={perView}
+      maxWidth={maxWidth}
+      imageItems={imageItems}
+    />
   </div>
 );
 
-export const ImageCarouselDefault = () => (
-  <Wrapper>
-    <ImageCarousel
-      perView={number("Image per view", 1, { min: 0, max: 99 }, GROUP_STYLE)}
-      maxWidth={text("Max Width", maxWidth, GROUP_STYLE)}
-      imageItems={imageCarouselItems}
-    />
-  </Wrapper>
-);
+export const ImageCarouselDefault = Wrapper.bind({});
+ImageCarouselDefault.args = {
+  imageItems: imageCarouselItems,
+};
 
-export const ImageCarouselWithCaption = () => (
-  <Wrapper>
-    <ImageCarousel
-      perView={number("Image per view", 1, { min: 0, max: 99 }, GROUP_STYLE)}
-      maxWidth={text("Max Width", maxWidth, GROUP_STYLE)}
-      imageItems={mockItemWithContent()}
-    />
-  </Wrapper>
-);
+export const ImageCarouselWithCaption = Wrapper.bind({});
+ImageCarouselWithCaption.args = {
+  imageItems: mockItemWithContent(),
+};
 
-export const ImageCarouselWithMoreCaptionContent = () => (
-  <Wrapper>
-    <ImageCarousel
-      perView={number("Image per view", 1, { min: 0, max: 99 }, GROUP_STYLE)}
-      maxWidth={text("Max Width", maxWidth, GROUP_STYLE)}
-      imageItems={mockItemWithMoreContent()}
-    />
-  </Wrapper>
-);
+export const ImageCarouselWithMoreCaptionContent = Wrapper.bind({});
+ImageCarouselWithMoreCaptionContent.args = {
+  imageItems: mockItemWithMoreContent(),
+};

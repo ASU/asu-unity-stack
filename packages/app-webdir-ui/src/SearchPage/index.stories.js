@@ -2,15 +2,14 @@ import React from "react";
 
 import { SearchPage } from "./index";
 
-import {
-  createComponent,
-  createStory,
-  layoutNames,
-} from "../../../unity-bootstrap-theme/helpers/wrapper";
+import { FullLayout } from "../../../../shared/components/Layout";
 
-export default createComponent("Search Page", "Organisms", "Templates");
+export default {
+  title: "Organisms/Search Page/Templates",
+  decorators: [story => <FullLayout>{story()}</FullLayout>],
+};
 
-export const searchPageExample = createStory(
+export const searchPageExample = () => (
   <div className="uds-content-align">
     <SearchPage
       API_URL="https://test-asu-isearch.ws.asu.edu"
@@ -18,9 +17,5 @@ export const searchPageExample = createStory(
       loggedIn={false}
       // appPathFolder="/my/custom/path/to/component/root/example"
     />
-  </div>,
-  { supportedTemplates: [layoutNames.FULL_WIDTH] }
+  </div>
 );
-searchPageExample.args = {
-  template: 0,
-};

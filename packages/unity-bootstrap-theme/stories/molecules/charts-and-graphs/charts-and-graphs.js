@@ -1,7 +1,7 @@
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 
-export const initChart = () => {
+function initChart() {
   const GRAPH_PERCENTAGE_COMPLETE = 50;
   document.getElementById('percentage-display').innerHTML =
     GRAPH_PERCENTAGE_COMPLETE + '%';
@@ -28,3 +28,5 @@ export const initChart = () => {
 
   var myChart = new Chart(ctx, config);
 };
+
+export { initChart };

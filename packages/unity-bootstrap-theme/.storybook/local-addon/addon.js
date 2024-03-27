@@ -1,5 +1,6 @@
 import React from 'react';
-import { AddonPanel, Source } from '@storybook/components';
+import { AddonPanel } from '@storybook/components';
+import { Source } from '@storybook/blocks';
 import { addons, types } from '@storybook/addons';
 import { formatWithBabelParser } from './helpers';
 import { Toggle } from '../../../../.storybook-config/Toggle'
@@ -16,7 +17,7 @@ addons.register('local-addon', (api) => {
       const code = formatWithBabelParser(`${initFunc}`);
 
       return(
-        <AddonPanel key={key} active={active}>
+        <AddonPanel key={key} active={!!active}>
           <Source code={`${code}`} language='js' format={true} />
         </AddonPanel>
     )},

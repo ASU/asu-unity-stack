@@ -1,7 +1,12 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Icons", "Design");
+import React from "react";
 
-export const navigationalIcons = createStory(
+import { htmlRootDecorator } from "../../../../../shared/components/Layout.js";
+export default {
+  title: "Design/Icons",
+  decorators: [htmlRootDecorator],
+};
+
+export const navigationalIcons = () => (
   <div>
     <div className="container-fluid">
       <div className="row">
@@ -215,7 +220,7 @@ export const navigationalIcons = createStory(
   </div>
 );
 
-export const contactIcons = createStory(
+export const contactIcons = () => (
   <div className="container-fluid">
     <div className="row">
       <div className="col col-sm-12 col-md-4 p-4">
@@ -264,7 +269,7 @@ export const contactIcons = createStory(
   </div>
 );
 
-export const informationalIcons = createStory(
+export const informationalIcons = () => (
   <div className="container-fluid">
     <div className="row">
       <div className="col col-sm-12 col-md-4 p-4">
@@ -313,7 +318,7 @@ export const informationalIcons = createStory(
   </div>
 );
 
-export const socialMediaIcons = createStory(
+export const socialMediaIcons = () => (
   <div className="wrapper" id="wrapper-endorsed-footer">
     <div className="container" id="endorsed-footer">
       <div className="row">

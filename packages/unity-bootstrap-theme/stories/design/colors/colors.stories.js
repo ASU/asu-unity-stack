@@ -1,8 +1,13 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Colors", "Design");
+import React from "react";
 
-export const ColorPaletteComponent = createStory(
-  <div>
+import { htmlRootDecorator } from "../../../../../shared/components/Layout.js";
+export default {
+  title: "Design/Colors",
+  decorators: [htmlRootDecorator],
+};
+
+export const ColorPaletteComponent = () => (
+  <>
     <div className="container-fluid mt-2">
       <div className="row">
         <div className="col-12 pb-3">
@@ -127,10 +132,10 @@ export const ColorPaletteComponent = createStory(
         </div>
       </div>
     </div>
-  </div>
+  </>
 );
 
-export const CombinationsComponent = createStory(
+export const CombinationsComponent = () => (
   <div className="container-fluid mt-2">
     <div className="row">
       <div className="col-12 pb-3">

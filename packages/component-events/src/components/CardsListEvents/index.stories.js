@@ -1,5 +1,4 @@
 import React from "react";
-import withMock from "storybook-addon-mock";
 
 import { CardsListEvents } from ".";
 
@@ -10,7 +9,9 @@ import { createMockParam } from "../../core/utils";
 export default {
   title: "Events component/Cards List",
   component: CardsListEvents,
-  decorators: [withMock],
+  parameters: {
+    mockData: createMockParam(),
+  },
 };
 
 const Template = args => <CardsListEvents {...args} />;
@@ -29,9 +30,6 @@ Default.args = {
   dataSource: {
     url: "/api/mocks/feeds-json",
   },
-};
-Default.parameters = {
-  mockData: createMockParam(),
 };
 
 /**
@@ -70,9 +68,6 @@ WithMaxItems.args = {
   },
   maxItems: 4,
 };
-WithMaxItems.parameters = {
-  mockData: createMockParam(),
-};
 
 /**
  * @type {{ args: FeedType, parameters: object}}
@@ -82,7 +77,4 @@ WithNoHeader.args = {
   dataSource: {
     url: "/api/mocks/feeds-json",
   },
-};
-WithNoHeader.parameters = {
-  mockData: createMockParam(),
 };

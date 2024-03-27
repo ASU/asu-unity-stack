@@ -20,3 +20,7 @@ export const Default = () => `
 </div>
 `;
 */
+export default {
+  title: "Components/Back To Top Button",
+  excludeStories: /.*/,
+};

@@ -1,13 +1,12 @@
 import React from "react";
 
-import {
-  createComponent,
-  createStory,
-  layoutNames,
-} from "../../../unity-bootstrap-theme/helpers/wrapper";
+import { FullLayout } from "../../../../shared/components/Layout";
 import { WebDirectory } from "../WebDirectoryComponent/index";
 
-export default createComponent("Web Directory", "Organisms", "Templates");
+export default {
+  title: "Organisms/Web Directory/Templates",
+  decorators: [story => <FullLayout>{story()}</FullLayout>],
+};
 
 const display = {
   defaultSort: "last_name",
@@ -30,26 +29,19 @@ const filters = {
 };
 */
 
-export const facultyRankWebDirectory = createStory(
-  ({ ...args }) => {
-    return (
-      <div className="uds-content-align">
-        <WebDirectory
-          searchType="faculty_rank"
-          deptIds="1535"
-          API_URL="https://live-asu-isearch.ws.asu.edu/"
-          searchApiVersion="api/v1/"
-          filters={filters}
-          display={display}
-          // alphaFilter={args.alphaFilter}
-          // appPathFolder="/my/custom/path/to/component/root/example"
-        />
-      </div>
-    );
-  },
-  { supportedTemplates: [layoutNames.FULL_WIDTH] }
-);
-
-facultyRankWebDirectory.args = {
-  template: 0,
+export const facultyRankWebDirectory = args => {
+  return (
+    <div className="uds-content-align">
+      <WebDirectory
+        searchType="faculty_rank"
+        deptIds="1535"
+        API_URL="https://live-asu-isearch.ws.asu.edu/"
+        searchApiVersion="api/v1/"
+        filters={filters}
+        display={display}
+        // alphaFilter={args.alphaFilter}
+        // appPathFolder="/my/custom/path/to/component/root/example"
+      />
+    </div>
+  );
 };

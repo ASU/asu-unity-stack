@@ -1,42 +1,39 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
+import React from "react";
 
-const extraOptions = {
-  bgColor: {
-    name: "Background (With Border Only)",
-    options: [null, "uds-bg-gray", "uds-bg-dark"],
-    defaultValue: null,
-    control: {
-      type: "radio",
-      labels: {
-        "null": "None",
-        "uds-bg-gray": "uds-bg-gray",
-        "uds-bg-dark": "uds-bg-dark",
+import { defaultDecorator } from "../../../../../shared/components/Layout";
+
+export default {
+  title: "Molecules/Pagination/Templates",
+  decorators: [ defaultDecorator ],
+  argTypes: {
+    bgColor: {
+      name: "Background (With Border Only)",
+      options: ["None", "uds-bg-gray", "uds-bg-dark"],
+      mapping: {
+        "None": ""
+      },
+      control: {
+        type: "radio",
       },
     },
+    border: {
+      name: "Border",
+      control: { type: "boolean" },
+    },
   },
-  border: {
-    name: "Border",
-    control: { type: "boolean" },
-    defaultValue: false,
-  },
+  args:{
+    bgColor: "None",
+    border: false,
+  }
 };
 
-export default createComponent(
-  "Pagination",
-  "Molecules",
-  "Templates",
-  extraOptions
-);
-
-export const Basic = createStory(
-  args => {
+export const Basic = ({border, bgColor}) => {
     return (
       <nav aria-label="Page navigation example">
         <ul
           className={`pagination ${
-            args.border ? "justify-content-center border p-2" : ""
-          } ${args.bgColor}`}
+            border ? "justify-content-center border p-2" : ""
+          } ${bgColor}`}
         >
           <li className="page-item disabled">
             <a
@@ -102,9 +99,4 @@ export const Basic = createStory(
         </ul>
       </nav>
     );
-  },
-  { initFunc }
-);
-Basic.args = {
-  template: 1,
-};
+  };

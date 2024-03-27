@@ -2,11 +2,11 @@ import React from "react";
 
 import { QuickLinks } from "./index";
 
-import {
-  createComponent,
-  createStory,
-} from "../../../unity-bootstrap-theme/helpers/wrapper";
+import { defaultDecorator } from "../../../../shared/components/Layout";
 
-export default createComponent("QuickLinks", "Atoms", "Template");
+export default {
+  title: "Atoms/QuickLinks/Template",
+  decorators: [defaultDecorator],
+};
 
-export const preSearchMessage = createStory(<QuickLinks />);
+export const preSearchMessage = () => <QuickLinks />;

@@ -1,28 +1,22 @@
-import {
-  createComponent,
-  createStory,
-  layoutNames,
-} from "../../../helpers/wrapper.js";
+import React from "react";
 
-const extraOptions = {
-  left: {
-    name: "Content Left",
-    control: { type: "boolean" },
-    defaultValue: false,
+import { defaultDecorator } from "../../../../../shared/components/Layout";
+
+export default {
+  title: "Molecules/Content Sections/Image Overlap/Templates",
+  decorators: [ defaultDecorator ],
+  argTypes: {
+    left: {
+      name: "Content Left",
+      control: { type: "boolean" },
+    },
   },
+  args:{left: false},
 };
 
-export default createComponent(
-  "Content Sections/Image Overlap",
-  "Molecules",
-  "Templates",
-  extraOptions
-);
-
-export const ImageOverlapRightOrLeft = createStory(
-  args => {
+export const ImageOverlapRightOrLeft = ({left}) => {
     return (
-      <div className={`uds-image-overlap ${args.left ? "content-left" : ""}`}>
+      <div className={`uds-image-overlap ${left ? "content-left" : ""}`}>
         <img
           className="img-fluid"
           src="https://source.unsplash.com/WLUHO9A_xik/800x600"
@@ -50,11 +44,4 @@ export const ImageOverlapRightOrLeft = createStory(
         </div>
       </div>
     );
-  },
-  {
-    supportedTemplates: [layoutNames.ONE_COLUMN, layoutNames.TWO_COLUMN],
-  }
-);
-ImageOverlapRightOrLeft.args = {
-  template: 1,
-};
+  };

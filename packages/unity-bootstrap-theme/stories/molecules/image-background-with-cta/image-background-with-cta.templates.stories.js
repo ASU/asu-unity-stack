@@ -1,11 +1,13 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent(
-  "Content Sections/Image Background With Call To Action",
-  "Molecules",
-  "Templates"
-);
+import React from "react";
 
-export const Default = createStory(
+import { defaultDecorator } from "../../../../../shared/components/Layout.js";
+
+export default {
+  title: "Molecules/Content Sections/Image Background With Call To Action/Templates",
+  decorators: [ defaultDecorator ],
+};
+
+export const Default = () => (
   <section
     className="uds-image-background-with-cta"
     style={{
@@ -19,6 +21,3 @@ export const Default = createStory(
     </div>
   </section>
 );
-Default.args = {
-  template: 1,
-};

@@ -1,12 +1,5 @@
 /* eslint-disable react/prop-types */
 // @ts-check
-import {
-  withKnobs,
-  text,
-  boolean,
-  object,
-  select,
-} from "@storybook/addon-knobs";
 import React from "react";
 
 import { TestimonialCarousel } from ".";
@@ -22,148 +15,144 @@ import {
 export default {
   component: TestimonialCarousel,
   title: "Testimonial Carousel",
-  decorators: [withKnobs],
+  args: {
+    itemColor: "None",
+    itemTitleColor: "None",
+    itemQuoteColor: "None",
+    backgroundColor: "White",
+    testimonial: "NoImage",
+    hasNavButtons: true,
+    hasPositionIndicators: true,
+  },
+  argTypes: {
+    itemColor: {
+      name: "Item Color",
+      options: ["Gold", "Maroon", "Gold White Text", "None"],
+      control: { type: "radio" },
+      mapping: {
+        "Gold": ["accent-gold"],
+        "Maroon": ["accent-maroon"],
+        "Gold White Text": ["text-white", "accent-gold"],
+        "None": [],
+      },
+    },
+    itemTitleColor: {
+      name: "Item Title Color",
+      options: ["Highlight gold", "Highlight black", "None"],
+      control: { type: "radio" },
+      mapping: {
+        "Highlight gold": ["highlight-gold"],
+        "Highlight black": ["highlight-black"],
+        "None": [],
+      },
+    },
+    itemQuoteColor: {
+      name: "Item Quote Color",
+      options: ["White", "Maroon", "None"],
+      control: { type: "radio" },
+      mapping: {
+        White: ["text-white"],
+        Maroon: ["text-maroon"],
+        None: [],
+      },
+    },
+    backgroundColor: {
+      name: "Background Color",
+      options: ["White", "Gray", "Black"],
+      control: { type: "radio" },
+      mapping: {
+        White: [],
+        Gray: ["bg-gray-2"],
+        Black: ["bg-gray-7"],
+      },
+    },
+    testimonial: {
+      name: "Testimonial",
+      options: ["NoImage", "WithImage", "NoImage2", "WithImage2", "NoCitation"],
+      control: { type: "select" },
+      mapping: {
+        NoImage: testimonialNoImage,
+        WithImage: testimonialWithImage,
+        NoImage2: testimonialNoImage2,
+        WithImage2: testimonialWithImage2,
+        NoCitation: testimonialNoCitation,
+      },
+    },
+    hasNavButtons: {
+      control: { type: "boolean" },
+    },
+    hasPositionIndicators: {
+      control: { type: "boolean" },
+    },
+  },
 };
-
-const maxWidth = "500px";
-const itemColorCombinations = {
-  Gold: ["accent-gold"],
-  Maroon: ["accent-maroon"],
-  Gold_White_Text: ["text-white", "accent-gold"],
-  // eslint-disable-next-line quote-props
-  None: null,
-};
-
-const itemTitleColorCombinations = {
-  "Highlight gold": ["highlight-gold"],
-  "Highlight black": ["highlight-black"],
-  // eslint-disable-next-line quote-props
-  "None": null,
-};
-
-const itemQuoteColorCombinations = {
-  White: ["text-white"],
-  Maroon: ["text-maroon"],
-  None: null,
-};
-
-const backgroundColors = {
-  White: "",
-  Gray: "bg-gray-2",
-  Black: "bg-gray-7",
-};
-
-const GROUP_STYLE = "Styles";
 
 /**
  *
- * @param {{ children: JSX.Element}} props
+ * @param {{
+ * itemColor: Array,
+ * itemTitleColor: Array,
+ * itemQuoteColor: Array,
+ * backgroundColor: Array,
+ * testimonial: import(".").TestimonialItem[],
+ * hasNavButtons: boolean,
+ * hasPositionIndicators: boolean,
+ * }} props
  * @returns { JSX.Element}
  */
-const Wrapper = ({ children }) => (
-  <div
-    className={`container ${select(
-      "Background color",
-      backgroundColors,
-      backgroundColors.White,
-      GROUP_STYLE
-    )}`}
-  >
-    {children}
-  </div>
-);
-
-export const TestimonialCarouselDefault = () => (
-  <Wrapper>
+const Template = ({
+  itemColor,
+  itemTitleColor,
+  itemQuoteColor,
+  backgroundColor,
+  testimonial,
+  hasNavButtons,
+  hasPositionIndicators,
+}) => (
+  <div className={[`container`, ...backgroundColor].join(" ")}>
     <TestimonialCarousel
       itemStyle={{
-        containerCssClass: select(
-          "Item Color Combination",
-          itemColorCombinations,
-          itemColorCombinations.Gold,
-          GROUP_STYLE
-        ),
-        contentCssClass: select(
-          "Quote Content Color Combination",
-          itemQuoteColorCombinations,
-          itemQuoteColorCombinations.None,
-          GROUP_STYLE
-        ),
+        containerCssClass: itemColor,
+        contentCssClass: itemQuoteColor,
+        titleCssClass: itemTitleColor,
       }}
-      maxWidth={text("Max Width", maxWidth, GROUP_STYLE)}
-      hasNavButtons={boolean("Has Nav Buttons", true, GROUP_STYLE)}
-      hasPositionIndicators={boolean("Has Indicators", true, GROUP_STYLE)}
-      testimonialItems={object(
-        "Testimonials",
-        testimonialWithImage,
-        GROUP_STYLE
-      )}
-    />
-  </Wrapper>
-);
-
-export const TestimonialCarouselWithNoImage = () => (
-  <div className="container">
-    <TestimonialCarousel
-      itemStyle={{
-        containerCssClass: select(
-          "Item Color Combination",
-          itemColorCombinations,
-          itemColorCombinations.Gold
-        ),
-      }}
-      maxWidth={text("Max Width", maxWidth)}
-      hasNavButtons={boolean("Has Nav Buttons", true)}
-      hasPositionIndicators={boolean("Has Indicators", true)}
-      testimonialItems={object("Testimonials", testimonialNoImage)}
+      maxWidth="500px"
+      hasNavButtons={hasNavButtons}
+      hasPositionIndicators={hasPositionIndicators}
+      testimonialItems={testimonial}
     />
   </div>
 );
 
-export const TestimonialCarouselWithSlider = () => (
-  <div className="container">
-    <TestimonialCarousel
-      maxWidth={text("Max Width", maxWidth)}
-      hasNavButtons={boolean("Has Nav Buttons", true)}
-      hasPositionIndicators={boolean("Has Indicators", false)}
-      testimonialItems={object("Testimonials", testimonialWithImage2)}
-      itemStyle={{
-        containerCssClass: ["accent-gold"],
-      }}
-    />
-  </div>
-);
+export const TestimonialCarouselDefault = Template.bind({});
+TestimonialCarouselDefault.args = {
+  itemColor: "Gold",
+  testimonial: "WithImage",
+};
 
-export const TestimonialCarouselWithSliderAndPositionIndicatorDots = () => (
-  <div className="container">
-    <TestimonialCarousel
-      maxWidth={text("Max Width", maxWidth)}
-      hasNavButtons={boolean("Has Nav Buttons", true)}
-      hasPositionIndicators={boolean("Has Indicators", true)}
-      testimonialItems={object("Testimonials", testimonialNoImage2)}
-    />
-  </div>
-);
+export const TestimonialCarouselWithNoImage = Template.bind({});
+TestimonialCarouselWithNoImage.args = {
+  itemColor: "Gold",
+  testimonial: "NoImage",
+};
 
-export const TestimonialCarouselWithNoCitation = () => (
-  <div className="container">
-    <TestimonialCarousel
-      itemStyle={{
-        containerCssClass: select(
-          "Item Color Combination",
-          itemColorCombinations,
-          itemColorCombinations.Gold
-        ),
-        titleCssClass: select(
-          "Title Color Combination",
-          itemTitleColorCombinations,
-          itemTitleColorCombinations["Highlight gold"]
-        ),
-      }}
-      maxWidth={text("Max Width", maxWidth)}
-      hasNavButtons={boolean("Has Nav Buttons", true)}
-      hasPositionIndicators={boolean("Has Indicators", true)}
-      testimonialItems={object("Testimonials", testimonialNoCitation)}
-    />
-  </div>
-);
+export const TestimonialCarouselWithSlider = Template.bind({});
+TestimonialCarouselWithSlider.args = {
+  itemColor: "Gold",
+  testimonial: "WithImage2",
+  hasPositionIndicators: false,
+};
+
+export const TestimonialCarouselWithSliderAndPositionIndicatorDots =
+  Template.bind({});
+TestimonialCarouselWithSliderAndPositionIndicatorDots.args = {
+  testimonial: "NoImage2",
+};
+
+export const TestimonialCarouselWithNoCitation = Template.bind({});
+TestimonialCarouselWithNoCitation.args = {
+  itemColor: "Gold",
+  itemQuoteColor: "",
+  itemTitleColor: "Highlight gold",
+  testimonial: "NoCitation",
+};

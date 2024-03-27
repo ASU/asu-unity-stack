@@ -1,11 +1,13 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent(
-  "Content Sections/Quote On Image Background",
-  "Molecules",
-  "Templates"
-);
+import React from "react";
 
-export const Default = createStory(
+import { defaultDecorator } from "../../../../../shared/components/Layout";
+
+export default {
+  title: "Molecules/Content Sections/Quote On Image Background/Templates",
+  decorators: [ defaultDecorator ],
+};
+
+export const Default = () => (
   <div
     className="uds-quote-image-background"
     style={{
@@ -34,6 +36,3 @@ export const Default = createStory(
     </div>
   </div>
 );
-Default.args = {
-  template: 1,
-};

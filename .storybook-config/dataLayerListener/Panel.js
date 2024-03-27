@@ -1,7 +1,8 @@
 import React from "react";
 import { useAddonState, useChannel } from "@storybook/api";
 import { styled } from "@storybook/theming";
-import { AddonPanel, Source, Button } from "@storybook/components";
+import { AddonPanel, Button } from "@storybook/components";
+import { Source } from '@storybook/blocks';
 import { ADDON_ID, EVENTS } from "./constants.js";
 
 const SourceWrapper = styled(Source)({
