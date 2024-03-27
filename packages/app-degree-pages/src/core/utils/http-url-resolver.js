@@ -2,8 +2,8 @@
 
 /**
  *
- * @param {import("../types/listing-page-types").AppDataSource} dataSource
- * @param {import("../types/listing-page-types").AppDataSource} defaultDataSource
+ * @param {import("../types/listing-page-types").ProgramListDataSource} dataSource
+ * @param {import("../types/listing-page-types").ProgramListDataSource} defaultDataSource
  * @returns {string}
  */
 function urlResolver(dataSource, defaultDataSource) {
@@ -17,8 +17,42 @@ function urlResolver(dataSource, defaultDataSource) {
     httpParameters["collegeOrg"] = httpParameters["collegeAcadOrg"];
     delete httpParameters["collegeAcadOrg"];
   }
+  if (httpParameters.program) {
+    // Convert `program` (from props) to `degreeType` for use as paramter
+    // to accommodate Data Potluck API changes.
+    const { program } = httpParameters;
 
-  const { endpoint, fields, ...keyValues } = httpParameters;
+    if (httpParameters.cert === "true" && program === "undergrad") {
+      httpParameters["degreeType"] = "UGCM";
+    } else if (program === "graduate") {
+      httpParameters["degreeType"] = "GR"
+    } else {
+      httpParameters["degreeType"] = "UG";
+    }
+    delete httpParameters["program"];
+  }
+  if (httpParameters.acadPlan) {
+    httpParameters.endpoint += `/${httpParameters.acadPlan}`;
+    delete httpParameters["acadPlan"];
+  }
+
+  /** The following code is commented out because it is not used in the current implementation
+   * and the default will be to show only active programs.
+   * If we need to show inactive programs, we can reimplement this code.
+
+  if (httpParameters.showInactivePrograms === "true") {
+    delete httpParameters["showInactivePrograms"];
+    delete httpParameters["filter"];
+  }
+
+  */
+
+  const { endpoint, include, ...keyValues } = httpParameters;
+
+  const formattedIncludes = include
+    .split(",")
+    .map(item => `include=${item.trim()}`)
+    .join("&");
 
   const params = Object.keys(keyValues).reduce(
     (accumulator, paramName) =>
@@ -26,7 +60,7 @@ function urlResolver(dataSource, defaultDataSource) {
     ""
   );
 
-  return `${endpoint}?fields=${fields}${params}`;
+  return `${endpoint}?${params}&${formattedIncludes}`;
 }
 
 export { urlResolver };

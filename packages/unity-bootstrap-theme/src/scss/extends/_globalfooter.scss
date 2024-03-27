@@ -98,19 +98,36 @@ footer {
 
 // #endorsed-footer, mobile first design
 
-#endorsed-logo img {
-  width: 100%;
-  height: auto;
+#endorsed-logo {
+  --endorsed-logo-display: block;
+  --endorsed-logo-padding-top: 12px;
+  --endorsed-logo-padding-bottom: 12px;
+  --endorsed-logo-img-max-height: 100%;
+  --endorsed-logo-img-width: 100%;
+  @include media-breakpoint-up(md) {
+    & {
+      --endorsed-logo-display: flex;
+      --endorsed-logo-padding-top: 20px;
+      --endorsed-logo-padding-bottom: 20px;
+      --endorsed-logo-img-max-height: 6rem;
+      --endorsed-logo-img-width: auto;
+    }
+  }
+  padding-top: var(--endorsed-logo-padding-top);
+  padding-bottom: var(--endorsed-logo-padding-bottom);
+  display: var(--endorsed-logo-display);
+  align-items: center;
 
-  /* Transform here scales an image which has embedded padding so that
-  it aligns with the Bootstrap grid. */
-  transform: scale(1.13);
-
-  /* Once transformed, the endorsed logo will have approx 20px of vertical
-  "padding" between the top of the logo and black section border. Adding
-  12px provides an approximate 2rem top/bottom margin. */
-
-  margin: 12px 0;
+  img {
+    width: var(--endorsed-logo-img-width);
+    height: auto;
+    max-height: var(--endorsed-logo-img-max-height);
+    /* Transform here scales an image which has embedded padding so that
+    it aligns with the Bootstrap grid. */
+    transform: scale(1.13);
+    padding: 0;
+    margin: 0;
+  }
 }
 
 #endorsed-footer {
@@ -137,17 +154,6 @@ footer {
 
 // #endorsed-footer, up to desktop
 @include media-breakpoint-up(md) {
-  #endorsed-logo {
-    display: flex;
-    align-items: center;
-    img {
-      box-sizing: border-box;
-      padding: 0.5rem 0 0.5rem 0;
-      max-height: $uds-size-spacing-14;
-      width: auto;
-    }
-  }
-
   #social-media .nav {
     padding: $uds-size-spacing-5 0;
     justify-content: flex-end;

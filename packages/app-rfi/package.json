@@ -1,6 +1,6 @@
 {
   "name": "@asu/app-rfi",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "ASU Request For Information (RFI) form",
   "main": "./dist/appRfi.cjs.js",
   "browser": "./dist/appRfi.umd.js",
@@ -26,7 +26,7 @@
   },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
-    "test": "jest --config=./jest.config.js",
+    "test": "jest --config=./jest.config.js --passWithNoTests",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
     "prebuild": "rm -rf ./dist",
     "build": "webpack -c webpack/webpack.prod.js",

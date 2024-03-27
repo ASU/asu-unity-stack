@@ -7,6 +7,9 @@ import { Button, Progress } from "reactstrap";
 import * as Yup from "yup";
 
 import { trackGAEvent, sanitizeDangerousMarkup } from "../../../../../shared";
+import { KEY } from "../../core/utils/constants";
+import { fetchDegreesData } from "../../core/utils/fetchPrograms";
+import { useRfiContext } from "../../core/utils/rfiContext";
 
 const defaultButtonEvent = {
   event: "form",
@@ -27,28 +30,42 @@ const RfiStepper = props => {
   const [email, setEmail] = useState("");
   const section = mapSections[step];
 
+  const {
+    campusType,
+    studentType,
+    areaOfInterest,
+    programOfInterest,
+    programOfInterestOptional,
+    isCertMinor,
+    country,
+    stateProvince,
+    successMsg,
+    test,
+    dataSourceDegreeSearch,
+  } = useRfiContext();
+
   useEffect(() => {
     const fetchData = async () => {
       // If configured as a cert or minor and we have a program of interest, look
       // up the program's email address and set it in state for use in
       // isCertMinor render below.
-      const { dataSourceDegreeSearch, isCertMinor, programOfInterest } = props;
-      if (isCertMinor && programOfInterest) {
-        const serviceUrl =
-          `${dataSourceDegreeSearch}` +
-          `?init=false&method=findDegreeByAcadPlan&acadPlan=${programOfInterest}` +
-          `&fields=AcadPlan,EmailAddr&program=graduate&cert=true`;
 
-        const res = await fetch(serviceUrl)
-          .then(response => response.json())
-          .catch(error => new Error(error));
-        // Structure of response: response.programs[0].EmailAddr
-        if (res.programs) {
-          const {
-            programs: [{ EmailAddr }],
-          } = res;
-          setEmail(EmailAddr);
-        }
+      // Do we need this isCertMinor prop, or can we read the data to decide
+      if (isCertMinor && programOfInterest) {
+        fetchDegreesData({
+          dataSourceDegreeSearch,
+          Interest2: programOfInterest,
+        }).then(([response, data]) => {
+          if (response === "Error") {
+            // eslint-disable-next-line no-console
+            console.error(data);
+            return;
+          }
+          const { emailAddr, planType } = data[0];
+          if (emailAddr && planType === KEY.CER) {
+            setEmail(emailAddr);
+          }
+        });
       }
     };
 
@@ -70,7 +87,7 @@ const RfiStepper = props => {
   // See Formik validation flavors: https://formik.org/docs/guides/validation
   const validate = values => {
     const errors = {};
-    const { programOfInterest, programOfInterestOptional } = props;
+    // const { programOfInterest, programOfInterestOptional } = props;
     // If on step 1 and Interest1 is empty and we don't have a
     // ProgramOfInterest (aka Interest2) prop, require Interest1.
     if (step === 0 && !values.Interest1 && !programOfInterest) {
@@ -81,34 +98,20 @@ const RfiStepper = props => {
     if (
       step === 0 &&
       !values.Interest2 &&
-      (!programOfInterestOptional || values.Campus === "ONLNE")
+      (!programOfInterestOptional || values.Campus === KEY.ONLINE)
     ) {
       errors.Interest2 = "Error: Program of Interest is required";
     }
 
     // If on step 2 and Campus isn't ONLNE, EntryTerm is required.
-    if (step === 1 && values.Campus !== "ONLNE" && !values.EntryTerm) {
+    if (step === 1 && values.Campus !== KEY.ONLINE && !values.EntryTerm) {
       errors.EntryTerm = "Error: Entry term is required";
     }
     return errors;
   };
 
-  const {
-    validationSchemas,
-    initialValues,
-    formComponents,
-    handleSubmit,
-    // props
-    campus,
-    studentType,
-    areaOfInterest,
-    programOfInterest,
-    isCertMinor,
-    country,
-    stateProvince,
-    successMsg,
-    test,
-  } = props;
+  const { validationSchemas, initialValues, formComponents, handleSubmit } =
+    props;
   const schema = validationSchemas[step];
 
   // For the progress bar.
@@ -121,11 +124,11 @@ const RfiStepper = props => {
   }));
 
   // Intercede with initial values from props.
-  initValues.Campus = campus;
-  if (studentType === "graduate") {
-    initValues.CareerAndStudentType = "Readmission";
-  } else if (studentType === "undergrad") {
-    initValues.CareerAndStudentType = "First Time Freshman";
+  initValues.Campus = campusType;
+  if (studentType === KEY.GRADUATE) {
+    initValues.CareerAndStudentType = KEY.READMISSION;
+  } else if (studentType === KEY.UNDERGRAD) {
+    initValues.CareerAndStudentType = KEY.FRESHMAN;
   }
   initValues.Interest1 = areaOfInterest;
   initValues.Interest2 = programOfInterest;
@@ -148,7 +151,9 @@ const RfiStepper = props => {
       <div className="uds-rfi-form-wrapper rfi-cert-minor">
         <h2>Request information</h2>
         {email && emailRender}
-        <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(successMsg)} />
+        <div
+          dangerouslySetInnerHTML={sanitizeDangerousMarkup(`${successMsg}`)}
+        />
       </div>
     );
   }
@@ -208,36 +213,36 @@ const RfiStepper = props => {
             }, 400);
           }}
         >
-          {formik => {
-            // Render lastStep without stepper buttons.
-            if (step === lastStep) {
-              return (
-                <Form className="uds-form uds-rfi">
-                  {React.createElement(formComponent, props)}
-                </Form>
-              );
-            }
-            return (
-              <Form className="uds-form uds-rfi">
-                {React.createElement(formComponent, props)}
-
-                <div className="rfi-required-footnote" title="Required">
-                  <i
-                    className="fas fa-circle uds-field-required"
-                    aria-hidden="true"
-                  />{" "}
-                  Required
-                </div>
-                <RfiStepperButtons
-                  stepNum={step}
-                  lastStep={lastStep}
-                  section={section}
-                  handleBack={prev}
-                  submitting={formik.isSubmitting}
-                />
-              </Form>
-            );
-          }}
+          {formik => (
+            <Form className="uds-form uds-rfi">
+              {React.createElement(formComponent, props)}
+              {/* Render lastStep without stepper buttons. */}
+              {step !== lastStep && (
+                <>
+                  <div className="rfi-required-footnote" title="Required">
+                    <i
+                      className="fas fa-circle uds-field-required"
+                      aria-hidden="true"
+                    />{" "}
+                    Required
+                  </div>
+                  <RfiStepperButtons
+                    stepNum={step}
+                    lastStep={lastStep}
+                    section={section}
+                    handleBack={prev}
+                    submitting={formik.isSubmitting}
+                  />
+                </>
+              )}
+              {test &&
+                Object.entries(formik.values).map(([key, value]) => (
+                  <div key={key}>
+                    {key}: <strong>{value}</strong>
+                  </div>
+                ))}
+            </Form>
+          )}
         </Formik>
       </div>
     </div>
@@ -329,23 +334,6 @@ const RfiStepperButtons = ({
   </nav>
 );
 
-// Props
-RfiStepper.defaultProps = {
-  campus: undefined,
-  actualCampus: undefined,
-  college: undefined,
-  department: undefined,
-  studentType: undefined,
-  areaOfInterest: undefined,
-  programOfInterest: undefined,
-  programOfInterestOptional: false,
-  isCertMinor: false,
-  country: undefined,
-  stateProvince: undefined,
-  successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
-  test: false,
-};
-
 RfiStepper.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   validationSchemas: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -353,22 +341,6 @@ RfiStepper.propTypes = {
   initialValues: PropTypes.arrayOf(PropTypes.object).isRequired,
   formComponents: PropTypes.arrayOf(PropTypes.func).isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  campus: PropTypes.string,
-  actualCampus: PropTypes.string,
-  college: PropTypes.string,
-  department: PropTypes.string,
-  studentType: PropTypes.string,
-  areaOfInterest: PropTypes.string,
-  programOfInterest: PropTypes.string,
-  programOfInterestOptional: PropTypes.bool,
-  isCertMinor: PropTypes.bool,
-  country: PropTypes.string,
-  stateProvince: PropTypes.string,
-  successMsg: PropTypes.string,
-  test: PropTypes.bool,
-  dataSourceDegreeSearch: PropTypes.string.isRequired,
-  dataSourceAsuOnline: PropTypes.string.isRequired,
-  dataSourceCountriesStates: PropTypes.string.isRequired,
 };
 
 RfiStepperButtons.propTypes = {

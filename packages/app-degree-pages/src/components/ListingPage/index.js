@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 import React, { useEffect, useState, useContext } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
-import trackReactComponent from "../../../../../shared/services/componentDatalayer";
 import { useFetch } from "../../../../../shared";
+import trackReactComponent from "../../../../../shared/services/componentDatalayer";
 import {
   Loader,
   Main as MainSection,
@@ -106,6 +106,8 @@ const ListingPage = ({
     departmentCode,
     showInactivePrograms,
     blacklistAcadPlans,
+    program,
+    cert: showCerts,
   } = programList.dataSource;
 
   /** @type {UseFiltersState} */
@@ -124,7 +126,7 @@ const ListingPage = ({
   useListingPageLogger({
     dataSource: programList.dataSource,
     tableView,
-    programs: data?.programs,
+    programs: data,
     stateFilters,
   });
 
@@ -147,15 +149,16 @@ const ListingPage = ({
   }, [url]);
 
   useEffect(() => {
-    let dataInit = sortPrograms(data?.programs || []);
-    // apply buil-in filters
+    let dataInit = sortPrograms(data || []);
+    // apply built-in filters
     dataInit = filterData({
       programs: dataInit,
       filters: {
         collegeAcadOrg,
         departmentCode,
-        showInactivePrograms: showInactivePrograms ?? false,
         blacklistAcadPlans,
+        program,
+        showCerts
       },
     });
 
@@ -173,7 +176,7 @@ const ListingPage = ({
 
     setSearchLoading(true);
 
-    await doFetchPrograms(url);
+    doFetchPrograms(url);
 
     const filteredPrograms = filterData({
       programs: dataInitView,
@@ -186,6 +189,7 @@ const ListingPage = ({
         keyword,
         showInactivePrograms: showInactivePrograms ?? false,
         blacklistAcadPlans,
+        program,
       },
     });
 
@@ -209,26 +213,7 @@ const ListingPage = ({
    * @ignore
    */
   const onFilterApply = activeFilters => {
-    // TODO: consider to remove
-    // const { acceleratedConcurrent, locations, asuLocals } = activeFilters;
-    // ============================================================
-    // prevent search
-    // ============================================================
     if (loading || searchLoading) return;
-    // TODO: consider to remove
-    // TODO:I comment this block since does look to be ever called
-    // TODO: The filter acceleratedConcurrent?.value is always st least  "all"
-    // if (
-    //   !acceleratedConcurrent &&
-    //   acceleratedConcurrent?.value === "all" &&
-    //   locations.length === 0 &&
-    //   asuLocals.length === 0 &&
-    //   !collegeAcadOrg &&
-    //   !departmentCode
-    // ) {
-    //   return;
-    // }
-    // ============================================================
     applyFilters(activeFilters);
   };
 

@@ -114,6 +114,19 @@ Default.args = {
   introContent: null,
 };
 
+export const DefaultGraduate = Template.bind({});
+DefaultGraduate.args = {
+  ...defaultArgs,
+  introContent: null,
+  programList: {
+    ...defaultArgs.programList,
+    dataSource: {
+      ...defaultArgs.programList.dataSource,
+      program: "graduate",
+    },
+  },
+};
+
 /**
  * @type {{ args: AppProps }}
  */

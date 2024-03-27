@@ -6,11 +6,14 @@ import { DOMAIN_URL } from "../constants";
  *
  * @param {object[]} links
  */
-const formatAcceleratedConcurrentLinks = links =>
-  links.map(link => ({
-    title: link.Descr,
-    url: link.PlanUrl,
-  }));
+const formatAcceleratedConcurrentLinks = links => {
+  return links
+    .map(link => ({
+      title: link.acadPlanDescription,
+      url: link.academicOfficeUrl,
+    }))
+    .sort((a, b) => a.title.localeCompare(b.title));
+};
 
 /**
  *
@@ -20,13 +23,17 @@ const formatAcceleratedConcurrentLinks = links =>
 const formatCareerData = careerData =>
   careerData?.map(data => ({
     career: {
-      text: data.careerDataAlterOnetTitle,
-      url: `${DOMAIN_URL}/career-details/${data.careerDataOnetCode}`,
+      text: data.alternateTitle,
+      url: `${DOMAIN_URL}/career-details/${data.onetCode}`,
     },
-    growth: data.careerDataGrowth,
-    medianSalary: data.careerDataSalary,
-    brightOutlook: !!data.careerDataBrightOutlook,
-    greenOccupation: !!data.careerDataGreen,
+    growth: data.growth,
+    medianSalary: data.salary.toLocaleString("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 0,
+    }),
+    brightOutlook: !!data.brightOutlook,
+    greenOccupation: !!data.green,
   }));
 
 export { formatAcceleratedConcurrentLinks, formatCareerData };

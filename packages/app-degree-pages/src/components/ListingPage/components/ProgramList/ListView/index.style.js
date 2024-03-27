@@ -179,8 +179,8 @@ const Table = styled.table`
         &:not(:checked) + .desc-long::after {
           content: " ";
           height: 1rem;
-          background: #ffffff;
-          box-shadow: -1px -2px 20px 15px #f3f3f3;
+          background: rgba(250, 250, 250, 0.9);
+          box-shadow: -1px -2px 20px 15px #fafafa;
           width: 100%;
           position: absolute;
           bottom: 0;

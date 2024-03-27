@@ -23,68 +23,68 @@ function filterData({
     acceleratedConcurrent,
     locations = [],
     keyword,
-    showInactivePrograms,
     blacklistAcadPlans,
+    program,
+    showCerts,
   },
 }) {
-  // ============================================================
-  // See WS2-1391 for details on why we use CollegeAcadOrgJoint field.
-  /** @param {PropResolver} resolver   */
-  const isValidCollegeAcadOrg = resolver =>
-    collegeAcadOrg
-      ? resolver.getCollegeAcadOrgJoint().includes(collegeAcadOrg)
-      : true;
-  // ============================================================
-  /** @param {PropResolver} resolver   */
-  const isValidDepartmentCode = resolver =>
-    departmentCode
-      ? resolver.getDepartmentCode().includes(departmentCode)
-      : true;
-  // ============================================================
-  /** @param {PropResolver} resolver   */
-  const isValidCampus = resolver =>
-    locations.length > 0
-      ? resolver
-          .getCampusList()
-          ?.some(campus => locations.some(loc => loc.value === campus))
-      : true;
-  // ============================================================
-  /** @param {Object.<string, []>} row  */
-  const isValidAcceleratedConcurrent = (row = {}) =>
-    isAccelConcValid(acceleratedConcurrent)
-      ? row[acceleratedConcurrent.value]?.length > 0
-      : true;
-  // ============================================================
-  /** @param {PropResolver} resolver   */
-  const isValidForKeyword = resolver =>
-    keyword ? resolver.getDescrLongExtented()?.includes?.(keyword) : true;
-  // ============================================================
-  /** @param {PropResolver} resolver   */
-  const isValidProgram = resolver =>
-    JSON.parse(showInactivePrograms) === false
-      ? resolver.isValidActiveProgram()
-      : true;
-  // ============================================================
-  /** @param {PropResolver} resolver   */
-  const isNotOnBlacklist = resolver =>
+  // See WS2-1391 for more details on why we use collegeAcadOrg
+  const filterByCollegeAcadOrg = resolver =>
+    !collegeAcadOrg ||
+    resolver.getCollegeAcadOrgJoint().includes(collegeAcadOrg);
+
+  const filterByDepartmentCode = resolver =>
+    !departmentCode || resolver.getDepartmentCode().includes(departmentCode);
+
+  const filterByCampus = resolver =>
+    !locations.length ||
+    resolver
+      .getCampusList()
+      ?.some(campus => locations.some(loc => loc.value === campus.campusCode));
+
+  const filterByAcceleratedConcurrent = (row = {}) =>
+    !isAccelConcValid(acceleratedConcurrent) ||
+    row[acceleratedConcurrent.value]?.length > 0;
+
+  const filterByKeyword = resolver =>
+    !keyword || resolver.getFullDescription()?.includes(keyword);
+
+  const filterByBlacklist = resolver =>
     !blacklistAcadPlans?.includes(resolver.getAcadPlan());
-  // ============================================================
-  /** @param {Object.<string, any>} row  */
-  const doFilter = row => {
+
+  /**
+ * Filters graduate certificates based on the program type and whether certificates should be shown.
+ */
+const filterGraduateCerts = resolver => {
+  // If the program is undergraduate, always include it.
+  if (program === "undergrad") return true;
+
+  // If showing certificates is enabled and the program is graduate,
+  // include it only if it's a minor or certificate.
+  if (showCerts === "true" && program === "graduate") {
+    return resolver.isMinorOrCertificate();
+  }
+
+  // If the program is not undergraduate and showing certificates is not enabled
+  // include it only if it's a PhD or Masters. This also includes doctorate programs.
+  return resolver.isPhdOrMasters();
+}
+
+  const applyFilters = row => {
     const resolver = degreeDataPropResolverService(row);
 
     return (
-      isValidProgram(resolver) &&
-      isValidCollegeAcadOrg(resolver) &&
-      isValidDepartmentCode(resolver) &&
-      isValidCampus(resolver) &&
-      isValidAcceleratedConcurrent(row) &&
-      isValidForKeyword(resolver) &&
-      isNotOnBlacklist(resolver)
+      filterByCollegeAcadOrg(resolver) &&
+      filterByDepartmentCode(resolver) &&
+      filterByCampus(resolver) &&
+      filterByAcceleratedConcurrent(row) &&
+      filterByKeyword(resolver) &&
+      filterByBlacklist(resolver) &&
+      filterGraduateCerts(resolver)
     );
   };
 
-  return programs.filter(doFilter);
+  return programs.filter(applyFilters);
 }
 
 /**
@@ -94,7 +94,9 @@ function filterData({
  */
 const sortPrograms = programs => {
   const sortedPrograms = programs.sort((p1, p2) =>
-    p1.Descr100.localeCompare(p2.Descr100)
+    p1.acadPlanMarketingDescription.localeCompare(
+      p2.acadPlanMarketingDescription
+    )
   );
 
   return sortedPrograms;

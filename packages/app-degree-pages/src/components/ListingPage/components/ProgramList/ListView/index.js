@@ -40,7 +40,7 @@ const renderInfo = ({ resolver, id }) => {
         className="desc-long"
         id={id}
         dangerouslySetInnerHTML={sanitizeDangerousMarkup(
-          resolver.getDescrLongExtented()
+          resolver.getFullDescription()
         )}
       />
       <label
@@ -73,20 +73,18 @@ const renderExtraInfo = ({ resolver }) => (
   <div>
     <div>
       <strong>Additional Program Fee: </strong>
-      {resolver.hasAsuProgramFee() && "Yes"}
+      {resolver.hasAsuProgramFee() ? "Yes" : "No"}
     </div>
     <div>
       <strong>Second Language Requirement: </strong>
-      {resolver.hasAsuLangReqFlag()
-        ? resolver.getAcadPlanText() || "Yes"
-        : "No"}
+      {resolver.hasAsuLangReqFlag() ? "Yes" : "No"}
     </div>
 
-    <div>
-      {resolver.hasMathReqFlag() && (
+    {resolver.hasMathReqFlag() && (
+      <div>
         <div>
           <strong>First Required Math Course:</strong>
-          <span>{resolver.getAdditionalMathReqCourse()}</span>
+          <span>{resolver.getMinMathReq()}</span>
           {resolver.getOtherMathReqCourse() && (
             <span
               dangerouslySetInnerHTML={sanitizeDangerousMarkup(
@@ -95,13 +93,15 @@ const renderExtraInfo = ({ resolver }) => (
             />
           )}
         </div>
-      )}
-    </div>
+      </div>
+    )}
 
-    <div>
-      <strong>Math Intensity:</strong>
-      {resolver.getMathIntensity()}
-    </div>
+    {resolver.getMathIntensity() && (
+      <div>
+        <strong>Math Intensity:</strong>
+        {resolver.getMathIntensity()}
+      </div>
+    )}
   </div>
 );
 
@@ -120,9 +120,14 @@ const ListView = ({ programs, totalRows, loading, actionUrls }) => {
 
   const { state } = useContext(AppContext);
   const columSettings = state?.listPageProps?.programList?.settings;
-  const columns = columSettings?.hideCollegeSchool
-    ? configColumns.filter(c => c.dataKey !== "CollegeSchool")
-    : configColumns;
+  let columns = configColumns;
+
+  if (state.listPageProps.programList.dataSource.program === "graduate") {
+    columns = columns.filter(c => c.dataKey !== "RequiredCourses");
+  }
+  if (columSettings?.hideCollegeSchool) {
+    columns = columns.filter(c => c.dataKey !== "CollegeSchool");
+  }
 
   const setOpenRowIndex = (rowIndex, selected) => {
     const rows = tbodyRef.current.children;

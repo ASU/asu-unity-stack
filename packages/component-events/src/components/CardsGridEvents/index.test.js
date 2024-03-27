@@ -17,15 +17,18 @@ const defaultArgs = {
   dataSource: {
     url: "/api/mocks/feeds-json",
   },
+  maxItems: DEFAULT_MAX_ITEMS,
 };
 
 describe("#Cards Grid Events", () => {
   /** @type {import("@testing-library/react").RenderResult} */
   let component;
+  let container;
 
   const renderCardsGridEvents = async props => {
     await act(async () => {
-      component = await render(<CardsGridEvents {...{ ...props }} />);
+      component = render(<CardsGridEvents {...{ ...props }} />);
+      container = component.container;
     });
   };
 
@@ -54,11 +57,9 @@ describe("#Cards Grid Events", () => {
     });
     afterEach(cleanup);
 
-    it("should render custom number of cards", () => {
-      const renderedCards = component
-        .queryByTestId("grid-view-container")
-        .querySelectorAll("li");
-      expect(renderedCards.length).toBe(CUSTOM_MAX_ITEMS);
+    it("should render custom number of cards", async () => {
+      const renderedCards = await component.findByTestId("grid-view-container")
+      expect(renderedCards.children.length).toBe(CUSTOM_MAX_ITEMS);
     });
   });
 

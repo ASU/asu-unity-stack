@@ -1,9 +1,54 @@
 # ASU Unity Design System (UDS)
+
+## Table of Contents
+
+- [ASU Unity Design System (UDS)](#asu-unity-design-system-uds)
+  - [Table of Contents](#table-of-contents)
+  - [Quickstart Guide](#quickstart-guide)
+  - [Consuming Unity packages in your project:](#consuming-unity-packages-in-your-project)
+  - [How to use the private package registry:](#how-to-use-the-private-package-registry)
+    - [TROUBLESHOOTING ERRORS](#troubleshooting-errors)
+  - [Packages in this repository](#packages-in-this-repository)
+  - [Package Multi Output Targets](#package-multi-output-targets)
+  - [Advanced Details for Unity Developers and Contributors](#advanced-details-for-unity-developers-and-contributors)
+    - [Dependencies](#dependencies)
+  - [Setup Local Development Environment](#setup-local-development-environment)
+    - [Installing and using Lerna](#installing-and-using-lerna)
+    - [Install Node and Yarn](#install-node-and-yarn)
+      - [Installing Node engines](#installing-node-engines)
+      - [Installing Yarn](#installing-yarn)
+      - [Local development](#local-development)
+  - [Adding dependencies to a package](#adding-dependencies-to-a-package)
+  - [Structure](#structure)
+  - [Building, Testing (from the package root at packages/\[package-name\])](#building-testing-from-the-package-root-at-packagespackage-name)
+  - [Running end-to-end testing (from the Git project root)](#running-end-to-end-testing-from-the-git-project-root)
+  - [Visual Regression Testing](#visual-regression-testing)
+  - [❯ CLI tools](#-cli-tools)
+    - [check-element-changes](#check-element-changes)
+    - [check-element-local-changes](#check-element-local-changes)
+  - [Supplemental links](#supplemental-links)
+  - [Build process:](#build-process)
+  - [\> Google Analytics integration](#-google-analytics-integration)
+      - [**`src/component.js`**](#srccomponentjs)
+      - [**`services/googleAnalytics.js`**](#servicesgoogleanalyticsjs)
+      - [**`src/component.html`**](#srccomponenthtml)
+      - [**`src/component.js`**](#srccomponentjs-1)
+  - [Git commit guidelines:](#git-commit-guidelines)
+    - [Examples](#examples)
+      - [Commit message with description and breaking change (Major version release)](#commit-message-with-description-and-breaking-change-major-version-release)
+      - [Commit message with scope](#commit-message-with-scope)
+      - [Commit message for a fix using an (optional) issue number.](#commit-message-for-a-fix-using-an-optional-issue-number)
+    - [Project Update!](#project-update)
+  - [❯ Contributing:](#-contributing)
+    - [See here for more information about publishing packages](#see-here-for-more-information-about-publishing-packages)
+    - [See the top answer on this stackoverflow question for why you may want to build against multiple node versions. Probably unnecessary for this workflow.](#see-the-top-answer-on-this-stackoverflow-question-for-why-you-may-want-to-build-against-multiple-node-versions-probably-unnecessary-for-this-workflow)
+
 ## Quickstart Guide
 
 Using the Unity Bootstrap Theme and React components for building ASU Web Standards 2.0 compliant web sites and apps.
 
-## ❯ Consuming Unity packages in your project:
+
+## Consuming Unity packages in your project:
 
 1. You must configure your local NPM to use the ASU Unity Design System package registry. Add a ```.npmrc``` file to your project root or global .npmrc with the following contents:
 ```
@@ -14,7 +59,7 @@ Using the Unity Bootstrap Theme and React components for building ASU Web Standa
 ```yarn add @asu/<package-name>``` or ```npm install @asu/<package-name>```
 
 
-## ❯ How to use the private package registry:
+## How to use the private package registry:
 
 The ASU Unity Design System packages are published to GitHub's package registry. This is not the same as the NPM registry. To use the packages, you need to belong to ASU's GitHub organization and to configure your local NPM to use this registry.
 
@@ -36,7 +81,7 @@ In the new theme it is imported directly with  `@import "bootstrap/scss/function
 
 [This Slack thread](https://asu-tech.slack.com/archives/C01ABUVU8LQ/p1695234506292239) has some more information about this issue and using Gulp. *Must be a member of the ASU Community Slack workspace to view.*
 
-## ❯ Packages in this repository
+## Packages in this repository
 
 
 This repository contains multiple packages which are managed and published using [LernaJS](https://lerna.js.org/). For more information about each individual package, see the README located at the package root.
@@ -45,19 +90,19 @@ This repository contains multiple packages which are managed and published using
 2. [app-degree-pages](./packages/app-degree-pages/README.md)
 3. [app-rfi](./packages/app-rfi/README.md)
 4. [app-webdir-ui](./packages/app-webdir-ui/README.md)
-4. [component-carousel](./packages/component-carousel/README.md)
-4. [component-cookie-consent](./packages/component-cookie-consent/README.md)
-5. [component-events](./packages/component-events/README.md)
-6. [component-footer](./packages/component-footer/README.md)
-7. [component-header](./packages/component-header/README.md) - standalone header component that doesn't require the ```unity-bootstrap-theme``` styles
-8. [component-news](./packages/component-news/README.md)
-9. [components-core](./packages/components-core/README.md)
-10. bootstrap4-theme - deprecated and removed. Archived copy in ```/packages-disabled```
-11. design-tokens - deprecated and removed. Archived copy in ```/packages-disabled```
-12. components-library - deprecated and removed. Archived copy in ```/packages-disabled```
-13. cookie-consent - deprecated and removed. Archived copy in ```/packages-disabled```
+5. [component-carousel](./packages/component-carousel/README.md)
+6. [component-cookie-consent](./packages/component-cookie-consent/README.md)
+7. [component-events](./packages/component-events/README.md)
+8. [component-footer](./packages/component-footer/README.md)
+9. [component-header](./packages/component-header/README.md) - standalone header component that doesn't require the ```unity-bootstrap-theme``` styles
+10. [component-news](./packages/component-news/README.md)
+11. [components-core](./packages/components-core/README.md)
+12. bootstrap4-theme - deprecated and removed. Archived copy in ```/packages-disabled```
+13. design-tokens - deprecated and removed. Archived copy in ```/packages-disabled```
+14. components-library - deprecated and removed. Archived copy in ```/packages-disabled```
+15. cookie-consent - deprecated and removed. Archived copy in ```/packages-disabled```
 
-## ❯ Package Multi Output Targets
+## Package Multi Output Targets
 
 Due to [the many ways Javascript can be packaged as reusable modules](https://www.freecodecamp.org/news/javascript-modules-a-beginner-s-guide-783f7d7a5fcc/),
 Unity provides multiple target outputs. When built (or installed from the Unity package registry), the dist/ folder in a Unity **REACT component package** may
@@ -71,14 +116,14 @@ an HTML example illustrating how to implement the UMD approach.
 
 ## Advanced Details for Unity Developers and Contributors
 
-## > Dependencies
+### Dependencies
 
 In order to build the project, the dev environment needs to have the following programs installed:
 - Node.js
 - NPM
 - Yarn
 
-## ❯ Setup Local Development Environment
+## Setup Local Development Environment
 
 ### Installing and using Lerna
 
@@ -156,16 +201,16 @@ If you get errors during `yarn install` regarding failures to install packages f
 
 See the developer documentation on storybook at https://storybook.js.org/docs/basics/introduction/
 
-## ❯ Adding dependencies to a package
+## Adding dependencies to a package
 - If adding a dependency to a specific package, run `lerna exec yarn add <dependency-name> --scope=<package-name>` from the git root.
 - If removing, run `lerna exec yarn remove <dependency-name> --scope=<package-name>` from the git root.
 
-## ❯ Structure
+## Structure
  - packages/[package-name] - NPM package root
  - packages/[package-name]/src - Source code
  - packages/[package-name]/.storybook - Storybook configuration
 
-## ❯ Building, Testing (from the package root at packages/[package-name])
+## Building, Testing (from the package root at packages/[package-name])
 
 ```bash
 yarn build # build the project
@@ -177,12 +222,24 @@ It's also possible to build a package from the git project root with a Yarn work
 ```yarn workspace @asu/asu-brand build```
 
 
-## ❯ Running end-to-end testing (from the Git project root)
+## Running end-to-end testing (from the Git project root)
 
 ```bash
 yarn build # build the project
 yarn start & yarn test:e2e # start the testing server and run e2e tests
 yarn stop # stop the testing server
+```
+
+
+## Visual Regression Testing
+
+We use Percy for visual regression testing. Percy is a visual testing platform that allows us to take screenshots of our components and compare them to previous versions to ensure that changes to our components do not introduce visual regressions. Percy runs on every pull request against the main branch. If you are a contributor, you can view the Percy build approval link in the pull request template and approve the build if it looks good. To run tests locally in a dry-run mode, add the `--dry-run` flag in the `percy-test` script in the `scripts/percy-testing.js` file. This will allow you to see how many snapshots will be taken and whether the tests wil fail without uploading to percy cloud. Then run:
+
+```bash
+yarn build # build the project
+yarn build-storybook # build storybook
+export PERCY_PARALLEL_NONCE=RANDOM_STRING # set the PERCY_PARALLEL_NONCE environment variable to any random alphanumeric string.
+yarn percy-test # run percy tests
 ```
 
 
@@ -211,7 +268,7 @@ Find updates within the past 2 days by running the command  `node ./scripts/chec
 
 <img src = "./docs/assets/check-element-local-changes.png" />
 
-## ❯ Supplemental links
+## Supplemental links
 
  - Storybook (https://storybook.js.org/docs/basics/introduction/)
  - LernaJS (https://lerna.js.org/)
@@ -219,7 +276,7 @@ Find updates within the past 2 days by running the command  `node ./scripts/chec
  - Jest (https://jestjs.io/docs/en/getting-started)
  - Puppeteer (https://pptr.dev/)
 
-## ❯ Build process:
+## Build process:
 
 Whenever code is merged to the 'dev' branch, a build is kicked off by Jenkins which builds, tests, and then publishes packages to the 'dev' channel of our private npm registry.
 
@@ -271,7 +328,7 @@ Check [https://unity.web.asu.edu/](https://unity.web.asu.edu/) as well as the RE
 
 To read more about Google Tag Manager and dataLayer usage, see [here](https://www.analyticsmania.com/post/what-is-data-layer-in-google-tag-manager/).
 
-## ❯ Git commit guidelines:
+## Git commit guidelines:
 This repo uses semantic-release to automatically release new packages upon merging to the 'dev' or 'master' branches.
 
 In order to trigger a release, commit and Pull Request messages must be structured properly in order for semantic-release to accurately update packages versions, generate changelogs and publish packages.
