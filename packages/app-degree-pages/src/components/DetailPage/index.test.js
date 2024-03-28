@@ -223,11 +223,11 @@ describe("#DetailPage", () => {
   });
 
   describe("#With acadPlan which does not accept new students", () => {
-    beforeAll(async () => {
+    beforeEach(async () => {
       /** @type {AppProps} */
       const customProps = {
         dataSource: {
-          acadPlan: "BABUSCLBA", // no New accepted ßStudent AcadPlan
+          acadPlan: "BABUSCLBA", // Expected to return {"error": "acadPlan not found"}
         },
       };
 
@@ -235,10 +235,20 @@ describe("#DetailPage", () => {
     });
     afterAll(cleanup);
 
-    it("should define `Custom text` section", async () => {
-      await waitFor(() =>
-        expect(component.queryByTestId("custom-text")).toBeInTheDocument()
-      );
+    it("should show 'Program not found' in program description", async () => {
+      let programDescription = await component.findByTestId("program-description");
+      let programDescriptionHeader = programDescription.querySelector("h2");
+      expect(programDescriptionHeader).toHaveTextContent("Program not found");
+    });
+
+    it("should hide all sections", () => {
+      sectionCases.forEach(([_, testId]) => {
+        if (testId !== "program-description") {
+          expect(component.queryByTestId(testId)).not.toBeInTheDocument();
+        } else {
+          expect(component.queryByTestId(testId)).toBeInTheDocument();
+        }
+      });
     });
   });
 
