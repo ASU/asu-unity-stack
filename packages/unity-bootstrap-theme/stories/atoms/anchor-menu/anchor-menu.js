@@ -43,11 +43,11 @@ function initializeAnchorMenu () {
   });
 
   const shouldAttachNavbarOnLoad = window.scrollY > navbarInitialTop;
-    if (shouldAttachNavbarOnLoad) {
-      globalHeader.appendChild(navbar);
-      isNavbarAttached = true;
-      navbar.classList.add("uds-anchor-menu-attached");
-    }
+  if (shouldAttachNavbarOnLoad) {
+    globalHeader.appendChild(navbar);
+    isNavbarAttached = true;
+    navbar.classList.add("uds-anchor-menu-attached");
+  }
 
   window.addEventListener("scroll", function () {
     const navbarY = navbar.getBoundingClientRect().top;
