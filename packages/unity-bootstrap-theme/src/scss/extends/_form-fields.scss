@@ -366,6 +366,12 @@ form.uds-form {
   &.uds-form-gray7 {
     background-color: $uds-color-base-gray-7;
 
+    label, legend {
+      svg.uds-field-required {
+        color: $uds-color-font-dark-error;
+      }
+    }
+
     .form-control {
       &::placeholder {
         color: $uds-color-base-gray-4;
