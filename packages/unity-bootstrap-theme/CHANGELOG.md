@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.9.9](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.8...@asu/unity-bootstrap-theme-v1.9.9) (2024-04-01)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** remove problematic anchor styles ([3deceb5](https://github.com/ASU/asu-unity-stack/commit/3deceb57fe1d324d51e317f2078948cf43dd2c9b))
+
 # [@asu/unity-bootstrap-theme-v1.9.8](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.7...@asu/unity-bootstrap-theme-v1.9.8) (2024-03-27)
 
 
