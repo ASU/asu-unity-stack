@@ -37,6 +37,7 @@ const Search = () => {
       method="get"
       name="gs"
       className={open ? "open-search" : ""}
+      data-testid="universal-nav-search-form"
     >
       {!isMobile ? (
         <>
@@ -45,6 +46,7 @@ const Search = () => {
             aria-label="Search asu.edu"
             onClick={handleChangeVisibility}
             className="search-button"
+            data-testid="search-button"
           >
             <FontAwesomeIcon icon={faSearch} />
           </button>
@@ -70,6 +72,7 @@ const Search = () => {
                 aria-label="Search asu.edu"
                 onClick={handleChangeVisibility}
                 className="close-search"
+                data-testid="close-search"
               >
                 <FontAwesomeIcon icon={faTimes} />
               </button>
