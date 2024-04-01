@@ -87,16 +87,6 @@ label {
 .card-event .card-header {
   border-top: solid 4px $gold;
 }
-.bg-dark a:not(.btn, .nav-item),
-.bg-primary a:not(.btn, .nav-item),
-.bg-black a:not(.btn, .nav-item) {
-  color: $light;
-}
-.bg-light a:not(.btn, .nav-item),
-.bg-secondary a:not(.btn, .nav-item),
-.bg-white a:not(.btn, .nav-item) {
-  color: $primary;
-}
 
 .visually-hidden:not(:focus):not(:active),
 .visually-hidden-focusable:not(:focus):not(:active) {
