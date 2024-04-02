@@ -60,8 +60,8 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
   const [open, setOpen] = useState(false);
 
   // TODO: test this
-  const handleButtonClick = async () => {
-    await setOpen(!open);
+  const handleButtonClick = () => {
+    setOpen(!open);
     trackGAEvent({
       ...gaDefaultObject,
       text: "Expand ranking",
@@ -76,7 +76,9 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
       data-testid="info-layer"
     >
       <div className="content">
-        <div className="header">
+        <div className="header"
+        onClick={handleButtonClick}
+        >
           {isSmallSize(imageSize) ? (
             // eslint-disable-next-line react/no-danger
             <p dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)} />
@@ -89,7 +91,7 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
             className="btn btn-expand"
             aria-label="Expand ranking"
             type="button"
-            aria-expanded="false"
+            aria-expanded={`${open}`}
             data-toggle="collapse"
             data-target="#collapseExample"
           >
@@ -103,6 +105,7 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
         )}
         {readMoreLink && (
           <a
+          tabIndex={open ? 0 : -1}
             href={readMoreLink}
             aria-label="Read more"
             onClick={() => {
