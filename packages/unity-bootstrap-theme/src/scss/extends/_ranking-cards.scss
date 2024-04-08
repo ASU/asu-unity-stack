@@ -22,23 +22,21 @@
       .header {
         display: flex;
         align-items: flex-start;
-        justify-content: space-between;
         .btn-expand {
           margin: 0 0 0 $uds-size-spacing-1;
           padding: 0;
-          svg {
-            font-size: 1.25rem;
-            float: right;
-          }
-
-          &:focus {
-            // box-shadow: none !important;
+          background-color: unset;
+          border: none;
+          display: flex;
+          &:focus-visible {
+            outline: none;
           }
         }
         h4 {
           display: -webkit-box;
           -webkit-box-orient: vertical;
           overflow: hidden;
+          color: var(--bs-heading-color);
         }
         svg.fa-chevron-up,
         i.fa-chevron-up {
@@ -98,6 +96,18 @@
         max-width: 100%;
       }
     }
+    .info-layer {
+      a {
+        display: none;
+      }
+      &.active {
+        .content {
+          a {
+            display: block;
+          }
+      }
+    }
+    }
     .citation {
       padding-left: $uds-size-spacing-3;
       padding-right: $uds-size-spacing-3;
@@ -127,7 +137,10 @@
           }
         }
         p {
-          -webkit-line-clamp: 12;
+          -webkit-line-clamp: 10;
+        }
+        a {
+          display: none;
         }
       }
       &.active {
@@ -137,6 +150,9 @@
               min-height: unset;
               max-height: unset;
             }
+          }
+          a {
+            display: block;
           }
         }
       }
