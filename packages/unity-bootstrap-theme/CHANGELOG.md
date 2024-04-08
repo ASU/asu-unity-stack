@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.9.10](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.9...@asu/unity-bootstrap-theme-v1.9.10) (2024-04-08)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** updated anchor menu logic to account for header height ([15d1c88](https://github.com/ASU/asu-unity-stack/commit/15d1c88d51c4f6335923e5281aa20c0a2ad8f079))
+
 # [@asu/unity-bootstrap-theme-v1.9.9](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.8...@asu/unity-bootstrap-theme-v1.9.9) (2024-04-01)
 
 
