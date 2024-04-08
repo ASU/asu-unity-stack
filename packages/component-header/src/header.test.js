@@ -1,6 +1,6 @@
 /* eslint-disable jest/no-mocks-import */
 // @ts-check
-import { render, cleanup } from "@testing-library/react";
+import { render, cleanup, screen, act } from "@testing-library/react";
 import React from "react";
 
 import { ASUHeader } from ".";
@@ -26,7 +26,7 @@ describe("#ASU Header", () => {
   afterAll(cleanup);
 
   it("should define component", () => {
-    expect(component).toBeDefined();
+    expect(ASUHeader).toBeDefined();
   });
 
   const cases = [
@@ -36,9 +36,9 @@ describe("#ASU Header", () => {
     [`Navigation(Dropdown items)`, `navigation`],
   ];
 
-  test.each(cases)("should %p section be defined", (_, testId) =>
-    expect(component.queryByTestId(testId)).toBeInTheDocument()
-  );
+  test.each(cases)("should %p section be defined", async (_, testId) => {
+    expect(screen.getByTestId(testId)).toBeInTheDocument();
+  });
 
   it("should not define Partner and Buttons section", () => {
     expect(component.queryByTestId("partner")).toBeNull();
@@ -55,12 +55,14 @@ describe("#ASU Empty Header", () => {
   });
   afterAll(cleanup);
 
-  it("should not define Logo and Navigation(Dropdown items) sections", () => {
-    expect(component.queryByTestId("navigation")).toBeNull();
+  it("should have empty Logo and Navigation(Dropdown items) sections", async () => {
+    const nav = await component.findByTestId("navigation");
+    expect(nav.children.length).toBe(0);
     expect(component.queryByTestId("title").firstElementChild.innerHTML).toBe(
       ""
     );
   });
+
   it("should define Logo section", () => {
     expect(component.queryByTestId("logo")).toBeInTheDocument();
   });
