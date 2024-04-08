@@ -1,3 +1,11 @@
+# [@asu/component-header-v2.2.5](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.4...@asu/component-header-v2.2.5) (2024-04-08)
+
+
+### Bug Fixes
+
+* **component-header:** fixed CLS issue with mobile header ([0c05576](https://github.com/asu/asu-unity-stack/commit/0c05576f16adc2e4ff73da71b193e5fcf1b29abf))
+* **component-header:** refactored mobile hook to fix CLS ([ac48786](https://github.com/asu/asu-unity-stack/commit/ac487868db337180efe39b8b53ad05257dd35616))
+
 # [@asu/component-header-v2.2.4](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.3...@asu/component-header-v2.2.4) (2024-03-19)
 
 
