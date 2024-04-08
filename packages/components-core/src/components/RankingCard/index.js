@@ -60,14 +60,16 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
   const [open, setOpen] = useState(false);
 
   // TODO: test this
-  const handleButtonClick = () => {
-    setOpen(!open);
-    trackGAEvent({
-      ...gaDefaultObject,
-      text: "Expand ranking",
-      action: open ? AVAILABLE_GA_ACTIONS.OPEN : AVAILABLE_GA_ACTIONS.CLOSE,
-      section: heading,
-    });
+  const handleButtonClick = (event) => {
+    if (event.type === "click" || event.key === "Enter" || event.key === " ") {
+      setOpen(!open);
+      trackGAEvent({
+        ...gaDefaultObject,
+        text: "Expand ranking",
+        action: open ? AVAILABLE_GA_ACTIONS.OPEN : AVAILABLE_GA_ACTIONS.CLOSE,
+        section: heading,
+      });
+    }
   };
 
   return (
@@ -76,28 +78,47 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
       data-testid="info-layer"
     >
       <div className="content">
-        <div className="header"
-        onClick={handleButtonClick}
+        <div
+          className={classNames("header", {
+            [`closed`]: isSmallSize(imageSize) && !open,
+          })}
         >
-          {isSmallSize(imageSize) ? (
+          {isSmallSize(imageSize) && (
             // eslint-disable-next-line react/no-danger
-            <p dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)} />
-          ) : (
-            <h4>{heading}</h4>
-          )}
-          <button
+            <p
             onClick={handleButtonClick}
-            id="dispatch"
-            className="btn btn-expand"
-            aria-label="Expand ranking"
-            type="button"
-            aria-expanded={`${open}`}
-            data-toggle="collapse"
-            data-target="#collapseExample"
-          >
-            <i className="fas fa-chevron-up" />
-            <span className="visually-hidden">Expand</span>
-          </button>
+            dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)}
+            />
+          )}
+          {!isSmallSize(imageSize) && (
+            <button
+              onClick={handleButtonClick}
+              id="dispatch"
+              className="btn-expand"
+              aria-label="Expand ranking"
+              type="button"
+              aria-expanded={`${open}`}
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseExample"
+            >
+              <h4>{heading}</h4>
+              <i className="fas fa-chevron-up" />
+            </button>
+          )}
+          {isSmallSize(imageSize) && (
+            <button
+              onClick={handleButtonClick}
+              id="dispatch"
+              className="btn-expand small-card"
+              aria-label="Expand ranking"
+              type="button"
+              aria-expanded={`${open}`}
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseExample"
+            >
+              <i className="fas fa-chevron-up small-card" />
+            </button>
+          )}
         </div>
         {!isSmallSize(imageSize) && (
           // eslint-disable-next-line react/no-danger
@@ -105,7 +126,6 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
         )}
         {readMoreLink && (
           <a
-          tabIndex={open ? 0 : -1}
             href={readMoreLink}
             aria-label="Read more"
             onClick={() => {
@@ -116,7 +136,7 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
               });
             }}
           >
-            Read more
+            Read more <span className="visually-hidden">{heading}</span>
             <span
               className="fas icon-small fa-arrow-right"
               aria-hidden="true"
