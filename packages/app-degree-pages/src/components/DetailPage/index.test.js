@@ -1,7 +1,7 @@
 // @ts-check
 // import * as componentsCore from "@asu/components-core";
 import { Hero } from "@asu/components-core";
-import { render, act, waitFor, cleanup } from "@testing-library/react";
+import { render, act, cleanup } from "@testing-library/react";
 import React from "react";
 
 import { DetailPage } from "./index";
@@ -236,19 +236,28 @@ describe("#DetailPage", () => {
     afterAll(cleanup);
 
     it("should show 'Program not found' in program description", async () => {
-      let programDescription = await component.findByTestId("program-description");
-      let programDescriptionHeader = programDescription.querySelector("h2");
+      const programDescription = await component.findByTestId(
+        "program-description"
+      );
+      const programDescriptionHeader = programDescription.querySelector("h2");
       expect(programDescriptionHeader).toHaveTextContent("Program not found");
     });
 
-    it("should hide all sections", () => {
-      sectionCases.forEach(([_, testId]) => {
-        if (testId !== "program-description") {
-          expect(component.queryByTestId(testId)).not.toBeInTheDocument();
-        } else {
-          expect(component.queryByTestId(testId)).toBeInTheDocument();
-        }
+    it("should hide all sections except program description", () => {
+      // Filter out the "program-description" case
+      const filteredSectionCases = sectionCases.filter(
+        ([_, testId]) => testId !== "program-description"
+      );
+
+      // Test the filtered cases
+      filteredSectionCases.forEach(([_, testId]) => {
+        expect(component.queryByTestId(testId)).not.toBeInTheDocument();
       });
+
+      // Test the "program-description" case separately
+      expect(
+        component.queryByTestId("program-description")
+      ).toBeInTheDocument();
     });
   });
 
