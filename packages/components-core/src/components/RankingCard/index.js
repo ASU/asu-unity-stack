@@ -60,7 +60,7 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
   const [open, setOpen] = useState(false);
 
   // TODO: test this
-  const handleButtonClick = (event) => {
+  const handleButtonClick = event => {
     if (event.type === "click" || event.key === "Enter" || event.key === " ") {
       setOpen(!open);
       trackGAEvent({
@@ -85,39 +85,39 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
         >
           {isSmallSize(imageSize) && (
             // eslint-disable-next-line react/no-danger
-            <p
-            onClick={handleButtonClick}
-            dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)}
-            />
+            <p dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)} />
           )}
           {!isSmallSize(imageSize) && (
-            <button
-              onClick={handleButtonClick}
-              id="dispatch"
-              className="btn-expand"
-              aria-label="Expand ranking"
-              type="button"
-              aria-expanded={`${open}`}
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseExample"
-            >
-              <h4>{heading}</h4>
+            <>
+              <button
+                onClick={handleButtonClick}
+                id="dispatch"
+                className="btn-expand"
+                aria-label="Expand ranking"
+                type="button"
+                aria-expanded={open}
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseExample"
+              >
+                <h4>{heading}</h4>
+              </button>
               <i className="fas fa-chevron-up" />
-            </button>
+            </>
           )}
           {isSmallSize(imageSize) && (
-            <button
-              onClick={handleButtonClick}
-              id="dispatch"
-              className="btn-expand small-card"
-              aria-label="Expand ranking"
-              type="button"
-              aria-expanded={`${open}`}
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseExample"
-            >
-              <i className="fas fa-chevron-up small-card" />
-            </button>
+            <>
+              <button
+                onClick={handleButtonClick}
+                id="dispatch"
+                className="btn-expand small-card"
+                aria-label="Expand ranking"
+                type="button"
+                aria-expanded={open}
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseExample"
+              />
+              <i className="fas fa-chevron-up" />
+            </>
           )}
         </div>
         {!isSmallSize(imageSize) && (
@@ -128,6 +128,7 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
           <a
             href={readMoreLink}
             aria-label="Read more"
+            className="read-more"
             onClick={() => {
               trackGAEvent({
                 ...gaDefaultObject,
