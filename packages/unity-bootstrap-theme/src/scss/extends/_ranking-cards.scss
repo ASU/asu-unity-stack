@@ -116,6 +116,12 @@
         max-width: 100%;
       }
     }
+    &:has(.info-layer.active) {
+      img {
+        visibility: hidden;
+        transition: visibility .3s ease-in;
+      }
+    }
 
     .info-layer {
       a {
@@ -172,6 +178,13 @@
       object-fit: cover;
     }
 
+    &:has(.info-layer.active) {
+      img {
+        visibility: hidden;
+        transition: visibility .3s ease-in;
+      }
+    }
+
     .info-layer {
       .content {
         .header {
@@ -183,12 +196,15 @@
           }
         }
 
-        p {
+        > p {
           -webkit-line-clamp: 10;
+          visibility: hidden;
+          transition: visibility .3s ease-in;
         }
 
         a.read-more {
-          display: none;
+          visibility: hidden;
+          transition: visibility .3s ease-in;
         }
       }
 
@@ -201,8 +217,12 @@
             }
           }
 
+          > p {
+            visibility: visible;
+          }
+
           a.read-more {
-            display: block;
+            visibility: visible;
           }
         }
       }
