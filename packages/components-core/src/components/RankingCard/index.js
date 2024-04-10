@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import { trackGAEvent, sanitizeDangerousMarkup } from "../../../../../shared";
 // eslint-disable-next-line import/no-cycle
@@ -58,6 +58,9 @@ CitationWrapper.propTypes = {
 
 const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
   const [open, setOpen] = useState(false);
+  const uniqueIdRef = useRef(
+    `info-layer-${Math.floor(Math.random() * 100000)}`
+  );
 
   // TODO: test this
   const handleButtonClick = event => {
@@ -76,6 +79,7 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
     <div
       className={classNames("info-layer", { [`active`]: open })}
       data-testid="info-layer"
+      id={uniqueIdRef.current}
     >
       <div className="content">
         <div
@@ -96,8 +100,7 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
                 aria-label="Expand ranking"
                 type="button"
                 aria-expanded={open}
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseExample"
+                aria-controls={uniqueIdRef.current}
               >
                 <h4>{heading}</h4>
               </button>
@@ -113,8 +116,7 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
                 aria-label="Expand ranking"
                 type="button"
                 aria-expanded={open}
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseExample"
+                aria-controls={uniqueIdRef.current}
               />
               <i className="fas fa-chevron-up" />
             </>
