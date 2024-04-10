@@ -124,13 +124,13 @@
     }
 
     .info-layer {
-      a {
+      a.read-more {
         display: none;
       }
 
       &.active {
         .content {
-          a {
+          a.read-more {
             display: block;
           }
         }
