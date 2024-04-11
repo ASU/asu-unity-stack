@@ -168,6 +168,7 @@ export const TabbedPanels = (args) => {
           id="nav-home"
           role="tabpanel"
           aria-labelledby="nav-home-tab"
+          tabIndex="0"
         >
           TAB 1. <a href="#">This is an ordinary paragraph</a> that is long enough to wrap to
           multiple lines so that you can see how spacing looks. At vero eos et
@@ -181,6 +182,7 @@ export const TabbedPanels = (args) => {
           id="nav-profile"
           role="tabpanel"
           aria-labelledby="nav-profile-tab"
+          tabIndex="0"
         >
           TAB 2. This is an ordinary paragraph that is long enough to wrap to
           multiple lines so that you can see how spacing looks. At vero eos et
@@ -194,6 +196,7 @@ export const TabbedPanels = (args) => {
           id="nav-contact"
           role="tabpanel"
           aria-labelledby="nav-contact-tab"
+          tabIndex="0"
         >
           TAB 3. This is an ordinary paragraph that is long enough to wrap to
           multiple lines so that you can see how spacing looks. At vero eos et
@@ -207,6 +210,7 @@ export const TabbedPanels = (args) => {
           id="nav-another"
           role="tabpanel"
           aria-labelledby="nav-another-tab"
+          tabIndex="0"
         >
           TAB 4. This is an ordinary paragraph that is long enough to wrap to
           multiple lines so that you can see how spacing looks. At vero eos et
@@ -220,6 +224,7 @@ export const TabbedPanels = (args) => {
           id="nav-another-2"
           role="tabpanel"
           aria-labelledby="nav-another-2-tab"
+          tabIndex="0"
         >
           TAB 5. This is an ordinary paragraph that is long enough to wrap to
           multiple lines so that you can see how spacing looks. At vero eos et
@@ -233,6 +238,7 @@ export const TabbedPanels = (args) => {
           id="nav-another-3"
           role="tabpanel"
           aria-labelledby="nav-another-3-tab"
+          tabIndex="0"
         >
           TAB 6. This is an ordinary paragraph that is long enough to wrap to
           multiple lines so that you can see how spacing looks. At vero eos et
