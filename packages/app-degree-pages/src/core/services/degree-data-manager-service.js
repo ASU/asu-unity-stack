@@ -46,8 +46,11 @@ function filterData({
     !isAccelConcValid(acceleratedConcurrent) ||
     row[acceleratedConcurrent.value]?.length > 0;
 
-  const filterByKeyword = resolver =>
-    !keyword || resolver.getFullDescription()?.includes(keyword);
+    const filterByKeyword = (resolver, searchTerm) => {
+      if (!searchTerm) return true;
+      const regex = new RegExp(searchTerm, 'i');
+      return regex.test(resolver.getFullDescription());
+  };
 
   const filterByBlacklist = resolver =>
     !blacklistAcadPlans?.includes(resolver.getAcadPlan());
@@ -78,7 +81,7 @@ const filterGraduateCerts = resolver => {
       filterByDepartmentCode(resolver) &&
       filterByCampus(resolver) &&
       filterByAcceleratedConcurrent(row) &&
-      filterByKeyword(resolver) &&
+      filterByKeyword(resolver, keyword) &&
       filterByBlacklist(resolver) &&
       filterGraduateCerts(resolver)
     );
