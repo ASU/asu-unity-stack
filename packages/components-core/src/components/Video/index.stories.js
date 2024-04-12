@@ -10,10 +10,16 @@ import stockVideo from "../../assets/video/stock-video-person-drawing.mp4";
 /**
  * @typedef {import('.').VideoProps} VideoProps
  */
-
 export default {
   component: Video,
   title: "UDS/Video",
+  parameters: {
+    docs: {
+      description: {
+        component: ' '
+      },
+    },
+  },
 };
 
 /**
@@ -27,16 +33,23 @@ const Template = args => (
 );
 
 /**
- * @type {{ args: VideoProps}}
+ * @type {{ args: VideoProps, parameters: object}}
  */
 export const DefaultVideo = Template.bind({});
 DefaultVideo.args = {
   type: "video", // OPTIONAL
   url: stockVideo,
 };
+DefaultVideo.parameters = {
+  docs: {
+    description: {
+      story: ''
+    }
+  }
+};
 
 /**
- * @type {{ args: VideoProps}}
+ * @type {{ args: VideoProps, parameters: object}}
  */
 export const DefaultVideoWithCaption = Template.bind({});
 DefaultVideoWithCaption.args = {
@@ -44,22 +57,43 @@ DefaultVideoWithCaption.args = {
   url: stockVideo,
   caption: "Sample video",
 };
+DefaultVideoWithCaption.parameters = {
+  docs: {
+    description: {
+      story: ''
+    }
+  }
+};
 
 /**
- * @type {{ args: VideoProps}}
+ * @type {{ args: VideoProps, parameters: object}}
  */
 export const YoutubeVideo = Template.bind({});
 YoutubeVideo.args = {
   type: "youtube", // Required
   url: "https://www.youtube.com/embed/YW2p0ctzK9c",
 };
+YoutubeVideo.parameters = {
+  docs: {
+    description: {
+      story: ''
+    }
+  }
+};
 
 /**
- * @type {{ args: VideoProps}}
+ * @type {{ args: VideoProps, parameters: object}}
  */
 export const YoutubeVideoWithCaption = Template.bind({});
 YoutubeVideoWithCaption.args = {
   type: "youtube", // Required
   url: "https://www.youtube.com/embed/YW2p0ctzK9c",
   caption: "Sample youtube video",
+};
+YoutubeVideoWithCaption.parameters = {
+  docs: {
+    description: {
+      story: ''
+    }
+  }
 };

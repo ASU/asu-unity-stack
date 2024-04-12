@@ -11,6 +11,7 @@ import { Basic as Header } from "../../../../unity-bootstrap-theme/stories/organ
 export default {
   component: CardCarousel,
   title: "Card Carousel",
+  parameters: { controls: { disable: true } },
 };
 
 /**

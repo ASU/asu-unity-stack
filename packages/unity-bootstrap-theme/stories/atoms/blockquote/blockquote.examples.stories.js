@@ -5,6 +5,7 @@ import { defaultDecorator } from "../../../../../shared/components/Layout";
 export default {
   title: "Atoms/Blockquotes and Testimonials/Examples",
   decorators: [ defaultDecorator ],
+  parameters: { controls: { disable: true } },
 };
 
 export const BlockquoteNoImage = () => (

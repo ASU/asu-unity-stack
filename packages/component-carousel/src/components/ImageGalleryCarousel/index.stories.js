@@ -69,6 +69,7 @@ const mockItemWithMoreContent = () => {
 export default {
   component: ImageGalleryCarousel,
   title: "Image Gallery Carousel",
+  parameters: { controls: { disable: true } },
 };
 
 const maxWidth = "600px";

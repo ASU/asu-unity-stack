@@ -4,6 +4,7 @@ import { Container, Column, htmlRootDecorator } from "../../../../../shared/comp
 export default {
   title: "Design/Alignment",
   decorators: [htmlRootDecorator],
+  parameters: { controls: { disable: true } },
 };
 
 export const TemporaryStory = () => (

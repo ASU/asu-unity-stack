@@ -88,3 +88,4 @@ export const Accordion = () =>
       linkID="cardThree"
       bodyID="cardBodyThree" />
   </div>;
+Accordion.parameters = { controls: { disable: true } };

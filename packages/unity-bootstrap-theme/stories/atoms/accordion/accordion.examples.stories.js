@@ -5,6 +5,7 @@ import { htmlRootDecorator, Container, Column } from "../../../../../shared/comp
 export default {
   title: "Atoms/Accordions/Examples",
   decorators: [ htmlRootDecorator ],
+  parameters: { controls: { disable: true } },
 };
 
 export const FoldableCardDefaultOpen = () =>

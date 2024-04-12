@@ -4,6 +4,7 @@ import { htmlRootDecorator, Container, Column } from "../../../../../shared/comp
 export default {
   title: "Design/Backgrounds",
   decorators: [htmlRootDecorator],
+  parameters: { controls: { disable: true } },
 };
 
 export const approvedBackgroundColors = () => (

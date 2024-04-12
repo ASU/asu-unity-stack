@@ -4,6 +4,7 @@ import { htmlRootDecorator } from "../../../../../shared/components/Layout.js";
 export default {
   title: "Design/Icons",
   decorators: [htmlRootDecorator],
+  parameters: { controls: { disable: true } },
 };
 
 export const navigationalIcons = () => (
