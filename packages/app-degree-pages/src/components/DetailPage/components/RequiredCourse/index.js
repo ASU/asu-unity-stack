@@ -5,7 +5,6 @@ import React from "react";
 /** @typedef {import('../../../../core/types/detail-page-types').RequiredCoursesProps} RequiredCoursesProps */
 
 const CHANGEMAJOR_URL = "https://changemajor.apps.asu.edu/";
-const ONLINE = "ONLINE";
 
 const ONCAMPUS_TITLE = "On-campus students";
 const ONLINE_TITLE = "Online students";
