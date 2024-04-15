@@ -55,6 +55,7 @@ import { IntroImage } from "./components/IntroImage";
 import { IntroVideo } from "./components/IntroVideo";
 import { MarketText } from "./components/MarketText";
 import { NextSteps } from "./components/NextSteps";
+import { ProfessionalLicensure } from "./components/ProfessionalLicensure";
 import { ProgramContactInfo } from "./components/ProgramContactInfo";
 import { ProgramDescription } from "./components/ProgramDescription";
 import { RequiredCourse } from "./components/RequiredCourse";
@@ -321,6 +322,14 @@ const DetailPage = ({
                     tableData={formatCareerData(resolver.getCareerData())}
                   />
                 )}
+
+                {
+                  resolver.getProfessionalLicensureText() && (
+                    <ProfessionalLicensure
+                      content={resolver.getProfessionalLicensureText()}
+                    />
+                  )
+                }
 
                 {/* <CustomizeYourCollegeExperience /> */}
 
