@@ -1,3 +1,12 @@
+# [@asu/unity-bootstrap-theme-v1.9.11](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.10...@asu/unity-bootstrap-theme-v1.9.11) (2024-04-15)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** dark bg label color now matches UI kit ([0902375](https://github.com/ASU/asu-unity-stack/commit/0902375ac41620ccfa1458635eb2fe0ab7caa222))
+* **unity-bootstrap-theme:** form error on dark background contrast error ([12bcc24](https://github.com/ASU/asu-unity-stack/commit/12bcc24e8adecc195289ca8e01a01d736cc71376))
+* **unity-bootstrap-theme:** updated dark bg required color ([cb95b54](https://github.com/ASU/asu-unity-stack/commit/cb95b5440e2c2b493b423ccbe4e0b642e57e1c88))
+
 # [@asu/unity-bootstrap-theme-v1.9.10](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.9...@asu/unity-bootstrap-theme-v1.9.10) (2024-04-08)
 
 
