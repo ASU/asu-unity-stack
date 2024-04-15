@@ -3107,8 +3107,8 @@ Selects.args = {
 export const KitchenSinkForm = createStory(
   <div>
     <p>
-      <a href="https://getbootstrap.com/docs/4.0/components/forms/">
-        Bootstrap 4 form docs
+      <a href="https://getbootstrap.com/docs/5.0/forms/overview/">
+        Bootstrap 5 form docs
       </a>
     </p>
 
@@ -3261,8 +3261,8 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidat
   createStory(
     <div>
       <p>
-        <a href="https://getbootstrap.com/docs/4.0/components/forms/#validation">
-          Bootstrap 4 form docs regarding validation
+        <a href="https://getbootstrap.com/docs/5.0/forms/validation/">
+          Bootstrap 5 form docs regarding validation
         </a>
       </p>
 
@@ -3725,8 +3725,8 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedForm
   createStory(
     <div>
       <p>
-        <a href="https://getbootstrap.com/docs/4.0/components/forms/#validation">
-          Bootstrap 4 form docs regarding validation
+        <a href="https://getbootstrap.com/docs/5.0/forms/validation/">
+          Bootstrap 5 form docs regarding validation
         </a>
       </p>
 
@@ -4213,8 +4213,8 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidat
   createStory(
     <div>
       <p>
-        <a href="https://getbootstrap.com/docs/4.0/components/forms/#validation">
-          Bootstrap 4 form docs regarding validation
+        <a href="https://getbootstrap.com/docs/5.0/forms/validation/">
+          Bootstrap 5 form docs regarding validation
         </a>
       </p>
 
@@ -4695,8 +4695,8 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedForm
   createStory(
     <div>
       <p>
-        <a href="https://getbootstrap.com/docs/4.0/components/forms/#validation">
-          Bootstrap 4 form docs regarding validation
+        <a href="https://getbootstrap.com/docs/5.0/forms/validation/">
+          Bootstrap 5 form docs regarding validation
         </a>
       </p>
 

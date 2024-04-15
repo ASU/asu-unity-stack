@@ -5,6 +5,8 @@ form.uds-form {
     margin: 0 0 $uds-size-spacing-4 0;
   }
 
+  --invalid-feedback-light-background: #{map-get(map-get($form-validation-states, 'invalid'), 'color')};
+
   /* Labels */
   label,
   legend {
@@ -201,12 +203,12 @@ form.uds-form {
   &.was-validated {
     .form-control:invalid {
       border-style: solid;
-      border: 1px solid $uds-color-font-dark-error;
-      border-bottom: 8px solid $uds-color-font-dark-error;
+      border: 1px solid var(--invalid-feedback-light-background);
+      border-bottom: 8px solid var(--invalid-feedback-light-background);
       // BS4 input height led to border eating padding. Resolved in variable
       // overrides by setting input heights to auto.
       &:focus {
-        border-bottom: 8px solid $uds-color-font-dark-error !important;
+        border-bottom: 8px solid var(--invalid-feedback-light-background) !important;
       }
     }
     // Radios and checks individual labels shouldn't be colored.
@@ -248,12 +250,12 @@ form.uds-form {
   textarea.is-invalid:enabled,
   select.is-invalid:enabled {
     border-style: solid;
-    border: 1px solid $uds-color-font-dark-error;
-    border-bottom: 8px solid $uds-color-font-dark-error;
+    border: 1px solid var(--invalid-feedback-light-background);
+    border-bottom: 8px solid var(--invalid-feedback-light-background);
     // BS4 input height led to border eating padding. Resolved in variable
     // overrides by setting input heights to auto.
     &:focus {
-      border-bottom: 8px solid $uds-color-font-dark-error !important;
+      border-bottom: 8px solid var(--invalid-feedback-light-background) !important;
     }
   }
   /* checks and radios */
@@ -269,7 +271,7 @@ form.uds-form {
   select ~ div.is-invalid {
     margin-left: inherit;
     margin-top: inherit;
-    color: $uds-color-font-dark-error;
+    color: var(--invalid-feedback-light-background);
   }
   .invalid-feedback {
     display: inline-block;
@@ -278,7 +280,7 @@ form.uds-form {
     svg {
       // We don't implement svg icons as bkg images due to need for color
       // manipulation.
-      color: $uds-color-font-dark-error;
+      color: var(--invalid-feedback-light-background);
       margin-right: $uds-size-spacing-1;
     }
   }
@@ -364,12 +366,24 @@ form.uds-form {
   &.uds-form-gray7 {
     background-color: $uds-color-base-gray-7;
 
+    label, legend {
+      svg.uds-field-required {
+        color: $uds-color-base-gold;
+      }
+    }
+
     .form-control {
       &::placeholder {
         color: $uds-color-base-gray-4;
       }
       &.is-invalid::placeholder {
         color: $uds-color-base-gray-1;
+      }
+
+      &:invalid {
+        border-style: solid;
+        border: 1px solid $uds-color-font-dark-error;
+        border-bottom: 8px solid $uds-color-font-dark-error;
       }
 
       /* Disabled input */
@@ -405,7 +419,7 @@ form.uds-form {
     }
     &.was-validated select ~ small.is-invalid,
     &.was-validated select ~ div.is-invalid {
-      color: $uds-color-alerts-error;
+      color: $uds-color-font-dark-error;
     }
     /* TODO Likely we'll find more work to do with client side validation rules
       in order to take advantage of having both valid/invalid markup present.
@@ -491,21 +505,21 @@ form.uds-form {
     textarea.is-invalid,
     select.is-invalid {
       border-style: solid;
-      border: 1px solid $uds-color-alerts-error;
-      border-bottom: 8px solid $uds-color-alerts-error !important;
+      border: 1px solid $uds-color-font-dark-error;
+      border-bottom: 8px solid $uds-color-font-dark-error !important;
       // BS4 input height led to border eating padding. Resolved in variable
       // overrides by setting input heights to auto.
       &:focus {
-        border-bottom: 8px solid $uds-color-alerts-error !important;
+        border-bottom: 8px solid $uds-color-font-dark-error !important;
       }
     }
     .invalid-feedback {
       font-weight: bold;
-      color: $uds-color-alerts-error;
+      color: $uds-color-font-dark-error;
       svg {
         // We don't implement svg icons as bkg images due to need for color
         // manipulation.
-        color: $uds-color-alerts-error;
+        color: $uds-color-font-dark-error;
         margin-right: $uds-size-spacing-1;
       }
     }
