@@ -11,6 +11,11 @@ export default {
   title: "News component/Card List News",
   component: CardListlNews,
   parameters: {
+    docs: {
+      description: {
+        component: ' ',
+      },
+    },
     mockData: createMockParam(),
   },
 };
@@ -31,6 +36,13 @@ Default.args = {
   dataSource: {
     url: "/api/mocks/feeds-json",
   },
+};
+Default.parameters = {
+  docs: {
+    description: {
+      story: ' '
+    }
+  }
 };
 
 /**
@@ -56,6 +68,13 @@ WithCardButtonProps.args = {
     size: "default", //   "default" | "small" | "medium" | "large"
   },
 };
+WithCardButtonProps.parameters = {
+  docs: {
+    description: {
+      story: ' '
+    }
+  }
+};
 
 /**
  * @type {{ args: FeedType, parameters: object}}
@@ -79,6 +98,13 @@ WithFilters.args = {
     // filters: "Health,Journalism",
   },
 };
+WithFilters.parameters = {
+  docs: {
+    description: {
+      story: ' '
+    }
+  }
+};
 
 /**
  * @type {{ args: FeedType, parameters: object}}
@@ -99,6 +125,13 @@ WithMaxItems.args = {
   },
   maxItems: 2,
 };
+WithMaxItems.parameters = {
+  docs: {
+    description: {
+      story: ' '
+    }
+  }
+};
 
 /**
  * @type {{ args: FeedType, parameters: object}}
@@ -108,4 +141,11 @@ WithNoHeader.args = {
   dataSource: {
     url: "/api/mocks/feeds-json",
   },
+};
+WithNoHeader.parameters = {
+  docs: {
+    description: {
+      story: ' '
+    }
+  }
 };
