@@ -9,7 +9,6 @@ function initializeAnchorMenu () {
   const navbarOriginalParent = navbar.parentNode;
   const navbarOriginalNextSibling = navbar.nextSibling;
   const anchors = navbar.getElementsByClassName('nav-link');
-  const navbarInitialPosition = navbar.getBoundingClientRect().bottom;
   const anchorTargets = new Map();
   let previousScrollPosition = window.scrollY;
   let isNavbarAttached = false;  // Flag to track if navbar is attached to header
@@ -24,6 +23,7 @@ function initializeAnchorMenu () {
   let toolbarItemAdministrationTrayHeight = toolbarItemAdministrationTray ? toolbarItemAdministrationTray.offsetHeight : 0;
 
   let combinedToolbarHeightOffset = toolbarBarHeight + toolbarItemAdministrationTrayHeight;
+  const navbarInitialTop = navbar.getBoundingClientRect().top + window.scrollY - combinedToolbarHeightOffset;
 
   // Cache the anchor target elements
   for (let anchor of anchors) {
@@ -41,6 +41,13 @@ function initializeAnchorMenu () {
     target: '#uds-anchor-menu nav',
     rootMargin: '20%'
   });
+
+  const shouldAttachNavbarOnLoad = window.scrollY > navbarInitialTop;
+  if (shouldAttachNavbarOnLoad) {
+    globalHeader.appendChild(navbar);
+    isNavbarAttached = true;
+    navbar.classList.add("uds-anchor-menu-attached");
+  }
 
   window.addEventListener("scroll", function () {
     const navbarY = navbar.getBoundingClientRect().top;
@@ -63,13 +70,12 @@ function initializeAnchorMenu () {
     // If scrolling UP and past the initial navbar position
     if (
       window.scrollY < previousScrollPosition &&
-      (window.scrollY - navbarInitialPosition < (navbarInitialPosition - combinedToolbarHeightOffset) || window.scrollY === 0) && isNavbarAttached
+      window.scrollY <= navbarInitialTop && isNavbarAttached
     ) {
-        // Detach navbar and return to original position
-        navbarOriginalParent.insertBefore(navbar, navbarOriginalNextSibling);
-        isNavbarAttached = false;
-        navbar.classList.remove('uds-anchor-menu-attached');
-        previousScrollPosition = window.scrollY;
+      // Detach navbar and return to original position
+      navbarOriginalParent.insertBefore(navbar, navbarOriginalNextSibling);
+      isNavbarAttached = false;
+      navbar.classList.remove('uds-anchor-menu-attached');
     }
 
     previousScrollPosition = window.scrollY;

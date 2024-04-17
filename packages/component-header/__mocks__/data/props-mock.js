@@ -20,7 +20,18 @@ const defaultStateLoggedIn = {
   parentOrgUrl: "https://engineering.asu.edu",
   breakpoint: "Lg",
 };
-const emptyState = {};
+const emptyState = {
+  loggedIn: true,
+  userName: "",
+  logoutLink: "",
+  loginLink: "",
+  navTree: [],
+  title: "",
+  parentOrg: "",
+  parentOrgUrl: "",
+  breakpoint: ""
+};
+
 const withButtonsState = {
   navTree: navTreeWithButtons,
   title: "University Technology Office",

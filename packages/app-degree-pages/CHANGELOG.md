@@ -1,3 +1,10 @@
+# [@asu/app-degree-pages-v2.5.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.5.0...@asu/app-degree-pages-v2.5.1) (2024-04-15)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** fixed search function on listing page ([d348f44](https://github.com/asu/asu-unity-stack/commit/d348f44773a4cfa35f1e3ad541e1f29c412c9a59))
+
 # [@asu/app-degree-pages-v2.5.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.4.0...@asu/app-degree-pages-v2.5.0) (2024-03-15)
 
 
