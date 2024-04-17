@@ -1,46 +1,43 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
+import React from "react";
 
-/*
-We want to allow this component to change color, size, and disabled status.
-*/
-const extraOptions = {
-  color: {
-    name: "Color",
-    options: ["btn-gold", "btn-maroon", "btn-gray", "btn-dark"],
-    defaultValue: "btn-gold",
-    control: {
-      type: "radio",
-      labels: {
-        "btn-gold": "Gold",
-        "btn-maroon": "Maroon",
-        "btn-gray": "Gray",
-        "btn-dark": "Dark",
+import { defaultDecorator } from "../../../../../shared/components/Layout";
+
+export default {
+  title: "Atoms/Buttons/Templates",
+  decorators: [ defaultDecorator ],
+  args: {
+    color: "btn-gold",
+    size: "Large",
+    disabled: false,
+  },
+  argTypes: {
+    color: {
+      name: "Color",
+      options: ["btn-gold", "btn-maroon", "btn-gray", "btn-dark"],
+      control: {
+        type: "radio",
       },
     },
-  },
-  size: {
-    name: "Size",
-    options: ["btn-sm", "btn-md", null],
-    defaultValue: null,
-    control: {
-      type: "radio",
-      labels: {
-        "btn-sm": "Small",
-        "btn-md": "Medium",
-        null: "Large",
+    size: {
+      name: "Size",
+      options: ["Small", "Medium", "Large"],
+      mapping: {
+        "Small": "btn-sm",
+        "Medium": "btn-md",
+        "Large": null,
+      },
+      control: {
+        type: "radio",
       },
     },
+    disabled: {
+      name: "Disabled",
+      control: { type: "boolean" },
+    },
   },
-  disabled: {
-    name: "Disabled",
-    control: { type: "boolean" },
-    defaultValue: false,
-  },
-};
-export default createComponent("Buttons", "Atoms", "Templates", extraOptions);
+}
 
-export const BasicButton = createStory(
+export const BasicButton = (
   args => {
     return (
       <button
@@ -57,11 +54,10 @@ export const BasicButton = createStory(
         Button button
       </button>
     );
-  },
-  { initFunc }
+  }
 );
 
-export const ButtonAsLink = createStory(
+export const ButtonAsLink = (
   args => {
     return (
       <a
@@ -80,11 +76,10 @@ export const ButtonAsLink = createStory(
         Button button
       </a>
     );
-  },
-  { initFunc }
+  }
 );
 
-export const ButtonWithIcon = createStory(
+export const ButtonWithIcon = (
   args => {
     return (
       <a
@@ -103,11 +98,10 @@ export const ButtonWithIcon = createStory(
         <span className="fas fa-rocket"></span>&nbsp;&nbsp;Gold button
       </a>
     );
-  },
-  { initFunc }
+  }
 );
 
-export const ButtonTag = createStory(
+export const ButtonTag = () => (
   <a
     href="#"
     className=""
@@ -119,6 +113,11 @@ export const ButtonTag = createStory(
     data-ga-region="main content"
   >
     This is a default link
-  </a>,
-  { initFunc }
+  </a>
 );
+ButtonTag.argTypes ={
+  color: { table: { disable: true}},
+  size: { table: { disable: true}},
+  disabled: { table: { disable: true}},
+}
+ButtonTag.parameters = { controls: { disable: true } };

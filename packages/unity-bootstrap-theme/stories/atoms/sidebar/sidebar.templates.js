@@ -1,14 +1,7 @@
 import React from "react";
 
-import { defaultDecorator, htmlRootDecorator } from "../../../../../shared/components/Layout";
-
-export default {
-  title: "Atoms/Sidebar/Templates",
-  decorators: [ defaultDecorator ],
-  parameters: { controls: { disable: true } },
-};
-export const Sidebar = () => (
-  <div className="col-md-4">
+export const SidebarComponent = () =>
+  <>
     <h2>Lorem ipsum</h2>
     <div
       className="sidebar-toggler"
@@ -195,6 +188,5 @@ export const Sidebar = () => (
         </a>
       </div>
     </nav>
-    {/* end .sidebar */}
-  </div>
-);
+  </>;
+

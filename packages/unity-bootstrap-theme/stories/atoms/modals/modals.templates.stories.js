@@ -1,20 +1,37 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
+import React from "react";
 
-const extraOptions = {
-  open: {
-    name: "Open",
-    control: { type: "boolean" },
-    defaultValue: true,
+import { defaultDecorator } from "../../../../../shared/components/Layout";
+import { initModals as initFunc } from "./modals.js";
+
+export default {
+  title: "Atoms/Modals/Templates",
+  decorators: [ defaultDecorator ],
+  parameters: {
+    initFunc: {
+      disable: false,
+      code: initFunc
+    },
+    header: {
+      forced: true,
+    },
+    footer: {
+      forced: true,
+    }
+  },
+  args: {open: true},
+  argTypes: {
+    open: {
+      name: "Open",
+      control: { type: "boolean" },
+    },
   },
 };
 
-export default createComponent("Modals", "Atoms", "Templates", extraOptions);
-import { initModals as initFunc } from "./modals.js";
-
-export const ModalComponent = createStory(
-  args => {
-    return (
-      <div id="uds-modal" className={`uds-modal ${args.open ? "open" : ""}`}>
+export const ModalComponent = ({open}) => <>
+      <p style={{minHeight: "30vh"}}>
+        { open ? "Modal is open on page load" : "Modal was not triggered to open" }
+      </p>
+      <div id="uds-modal" className={`uds-modal ${open ? "open" : ""}`}>
         <div className="uds-modal-container">
           <button
             id="closeModalButton"
@@ -33,10 +50,4 @@ export const ModalComponent = createStory(
           <h1>Content</h1>
         </div>
       </div>
-    );
-  },
-  {
-    initFunc,
-    omitTemplate: true,
-  }
-);
+    </>;

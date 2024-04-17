@@ -1,25 +1,24 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
+import React from "react";
 
-const extraOptions = {
-  left: {
-    name: "Left",
-    control: { type: "boolean" },
-    defaultValue: true,
+import { defaultDecorator } from "../../../../../shared/components/Layout";
+
+export default {
+  title: "Molecules/Content Sections/Card And Image/Templates",
+  decorators: [ defaultDecorator ],
+  argTypes: {
+    left: {
+      name: "Left",
+      control: { type: "boolean" },
+    },
   },
+  args: {left: true},
 };
 
-export default createComponent(
-  "Content Sections/Card And Image",
-  "Molecules",
-  "Templates",
-  extraOptions
-);
-
-export const LeftFloatedCard = createStory(args => {
+export const LeftFloatedCard = ({left}) => {
   return (
     <div
       className={`uds-card-and-image ${
-        args.left ? "" : "uds-card-and-image-right"
+        left ? "" : "uds-card-and-image-right"
       }`}
       style={{
         backgroundImage:
@@ -68,16 +67,13 @@ export const LeftFloatedCard = createStory(args => {
       </div>
     </div>
   );
-});
-LeftFloatedCard.args = {
-  template: 1,
 };
 
-export const RightFloatedCard = createStory(args => {
+export const RightFloatedCard = ({left}) => {
   return (
     <div
       className={`uds-card-and-image ${
-        args.left ? "" : "uds-card-and-image-right"
+        left ? "" : "uds-card-and-image-right"
       }`}
       style={{
         backgroundImage:
@@ -111,8 +107,7 @@ export const RightFloatedCard = createStory(args => {
       </div>
     </div>
   );
-});
+};
 RightFloatedCard.args = {
-  template: 1,
   left: false,
 };

@@ -1,12 +1,17 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Accordions", "Atoms", "Templates");
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
+import React from "react";
 
-const FoldableCardElement = (
-  accordionID = null,
-  linkID = null,
-  bodyID = null
-) => (
+import { defaultDecorator } from "../../../../../shared/components/Layout.js";
+export default {
+  title: "Atoms/Accordions/Templates",
+  decorators: [defaultDecorator],
+};
+
+
+const Template = ({
+  accordionID = "",
+  linkID = "",
+  bodyID = ""
+}) => (
   <div className="accordion">
     <div className="accordion-item mt-3">
       <div className="accordion-header">
@@ -62,16 +67,25 @@ const FoldableCardElement = (
   </div>
 );
 
-export const FoldableCard = createStory(
-  FoldableCardElement("", "card", "cardBody"),
-  { initFunc }
-);
+export const FoldableCard = Template.bind({});
+FoldableCard.args = {
+  linkID: "card",
+  bodyID: "cardBody",
+}
 
-export const Accordion = createStory(
+export const Accordion = () =>
   <div className="accordion" id="accordionExample">
-    {FoldableCardElement("accordionExample", "cardOne", "cardBodyOne")}
-    {FoldableCardElement("accordionExample", "cardTwo", "cardBodyTwo")}
-    {FoldableCardElement("accordionExample", "cardThree", "cardBodyThree")}
-  </div>,
-  { initFunc }
-);
+    <Template
+      accordionID="accordionExample"
+      linkID="cardOne"
+      bodyID="cardBodyOne" />
+    <Template
+      accordionID="accordionExample"
+      linkID="cardTwo"
+      bodyID="cardBodyTwo" />
+    <Template
+      accordionID="accordionExample"
+      linkID="cardThree"
+      bodyID="cardBodyThree" />
+  </div>;
+Accordion.parameters = { controls: { disable: true } };

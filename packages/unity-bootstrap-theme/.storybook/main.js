@@ -1,6 +1,5 @@
-const path = require("path");
-
-module.exports = {
+const config = {
+  staticDirs: ['../dist'],
   stories: ["../**/*.js.stories.mdx", "../**/*.stories.mdx", "../**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
     "./local-addon",
@@ -14,12 +13,10 @@ module.exports = {
         backgrounds: false, // 👈 disable the backgrounds addon
       },
     },
-    "@storybook/addon-interactions",
-    "@storybook/addon-docs",
   ],
-  framework: "@storybook/react",
-  core: {
-    builder: "webpack5",
+  framework: {
+    name: "@storybook/react-webpack5",
+    options: {}
   },
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
@@ -42,4 +39,10 @@ module.exports = {
 
     return config;
   },
+
+  docs: {
+    autodocs: true
+  }
 };
+
+export default config;

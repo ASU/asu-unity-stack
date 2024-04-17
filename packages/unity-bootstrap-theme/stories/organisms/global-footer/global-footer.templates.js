@@ -3,7 +3,7 @@ import React from "react";
 import innovationLockup from "./200420-GlobalFooter-No1InnovationLockup.png";
 import endorsedLogo from "./ASU_UniversityTechOffice_2_Horiz_RGB_White_150ppi.png";
 
-export const GlobalElementsOnly = (
+export const GlobalElementsOnly = () => (
   <footer
     id="asu-footer"
     role="contentinfo"
@@ -145,7 +145,7 @@ export const GlobalElementsOnly = (
   </footer>
 );
 
-export const ZeroColumns = (
+export const ZeroColumns = () => (
   <footer
     id="asu-footer"
     role="contentinfo"
@@ -376,7 +376,7 @@ export const ZeroColumns = (
   </footer>
 );
 
-export const OneColumn = (
+export const OneColumn = () => (
   <footer
     id="asu-footer"
     role="contentinfo"
@@ -627,7 +627,7 @@ export const OneColumn = (
   </footer>
 );
 
-export const OneColumnNoLogoOrSocial = (
+export const OneColumnNoLogoOrSocial = () => (
   <footer
     id="asu-footer"
     role="contentinfo"
@@ -789,7 +789,7 @@ export const OneColumnNoLogoOrSocial = (
   </footer>
 );
 
-export const TwoColumns = (
+export const TwoColumns = () => (
   <footer
     id="asu-footer"
     role="contentinfo"
@@ -1085,7 +1085,7 @@ export const TwoColumns = (
   </footer>
 );
 
-export const ThreeColumns = (
+export const ThreeColumns = () => (
   <footer
     id="asu-footer"
     role="contentinfo"
@@ -1429,7 +1429,7 @@ export const ThreeColumns = (
   </footer>
 );
 
-export const FourColumns = (
+export const FourColumns = () => (
   <footer
     id="asu-footer"
     role="contentinfo"
@@ -1821,7 +1821,7 @@ export const FourColumns = (
   </footer>
 );
 
-export const FiveColumns = (
+export const FiveColumns = () => (
   <footer
     id="asu-footer"
     role="contentinfo"
@@ -2261,7 +2261,7 @@ export const FiveColumns = (
   </footer>
 );
 
-export const SixColumns = (
+export const SixColumns = () => (
   <footer
     id="asu-footer"
     role="contentinfo"

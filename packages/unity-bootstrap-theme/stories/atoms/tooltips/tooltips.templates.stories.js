@@ -1,32 +1,36 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
+import React from "react";
 
-const extraOptions = {
-  color: {
-    name: "Color",
-    options: ["white", "base-gray", "gray", "dark"],
-    defaultValue: "gray",
-    control: {
-      type: "radio",
-      labels: {
-        "white": "White",
-        "base-gray": "Base Gray",
-        "gray": "Gray",
-        "dark": "Dark",
+import { defaultDecorator } from "../../../../../shared/components/Layout";
+
+export default {
+  title: "Atoms/Tooltips/Templates",
+  decorators: [ defaultDecorator ],
+  args: {color: "Gray",},
+  argTypes: {
+    color: {
+      name: "Color",
+      options: ["White", "Base Gray", "Gray", "Dark"],
+      mapping: {
+        "White": "white",
+        "Base Gray": "base-gray",
+        "Gray": "gray",
+        "Dark": "dark",
+      },
+      control: {
+        type: "radio",
       },
     },
   },
 };
 
-export default createComponent("Tooltips", "Atoms", "Templates", extraOptions);
-
-export const Tooltips = createStory(args => {
+export const Tooltips = ({color}) => {
   return (
-    <div className={`uds-tooltip-bg-${args.color}`}>
+    <div className={`uds-tooltip-bg-${color}`}>
       <div className="uds-tooltip-container">
         <button
           tabIndex="0"
           className={`uds-tooltip uds-tooltip-${
-            args.color === "base-gray" ? "gray-1" : args.color
+            color === "base-gray" ? "gray-1" : color
           }`}
           aria-describedby="tooltip-desc-1"
         >
@@ -43,7 +47,4 @@ export const Tooltips = createStory(args => {
       </div>
     </div>
   );
-});
-Tooltips.args = {
-  template: 1,
 };

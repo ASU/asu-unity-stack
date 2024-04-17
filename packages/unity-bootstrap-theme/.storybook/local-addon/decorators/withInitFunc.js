@@ -12,7 +12,7 @@ export const withInitFunc = makeDecorator({
       if (typeof initFunc === "function") {
         initFunc()
       }
-    })
+    },[])
     return storyFn(context);
   }
 });

@@ -1,10 +1,4 @@
-export const initCalendar = function () {
-  const pushGAEvent = (event) => {
-    const { dataLayer } = window;
-    console.log(event);
-    if (dataLayer) dataLayer.push(event);
-  };
-
+function initCalendar() {
   const months = [
     'January',
     'February',
@@ -157,34 +151,7 @@ export const initCalendar = function () {
     render();
   };
 
-  document.addEventListener('click', (ev) => {
-    if (ev.target.id === 'prev-month') {
-      showCalendar(-1);
-    }
-    if (ev.target.id === 'next-month') {
-      showCalendar(1);
-    }
-
-    const name = ev.target.getAttribute('data-ga-name');
-    const event = ev.target.getAttribute('data-ga-event');
-    const action = ev.target.getAttribute('data-ga-action');
-    const type = ev.target.getAttribute('data-ga-type');
-    const section = ev.target.getAttribute('data-ga-section');
-    const region = ev.target.getAttribute('data-ga-region');
-    const text = ev.target.getAttribute('data-ga');
-    const component = ev.target.getAttribute('data-ga-component');
-
-    pushGAEvent({
-      name: name ? name.toLowerCase() : '',
-      event: event ? event.toLowerCase() : '',
-      action: action ? action.toLowerCase() : '',
-      type: type ? type.toLowerCase() : '',
-      section: section ? section.toLowerCase() : '',
-      region: region ? region.toLowerCase() : '',
-      text: text ? text.toLowerCase() : '',
-      component: component ? component.toLowerCase() : '',
-    });
-  });
-
   showCalendar(0);
 };
+
+export { initCalendar }
