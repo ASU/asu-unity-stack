@@ -5,6 +5,7 @@ import { defaultDecorator } from "../../../../../shared/components/Layout";
 export default {
   title: "Atoms/Breadcrumbs/Examples",
   decorators: [ defaultDecorator ],
+  parameters: { controls: { disable: true } },
 };
 
 export const BreadcrumbsAgainstWhiteBackground = () => (

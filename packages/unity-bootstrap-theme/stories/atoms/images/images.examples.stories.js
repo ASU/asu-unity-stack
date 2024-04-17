@@ -5,6 +5,7 @@ import { defaultDecorator } from "../../../../../shared/components/Layout";
 export default {
   title: "Atoms/Images/Examples",
   decorators: [ defaultDecorator ],
+  parameters: { controls: { disable: true } },
 };
 
 // Images in Bootstrap are made responsive with .img-fluid. max-width: 100%; and height: auto; are applied to the image so that it scales with the parent element.

@@ -11,6 +11,7 @@ export default {
       code: initFunc,
       disable: false,
     },
+    controls: { disable: true }
   }
 };
 

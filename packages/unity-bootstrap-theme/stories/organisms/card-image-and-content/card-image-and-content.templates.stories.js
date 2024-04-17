@@ -6,6 +6,7 @@ import { cardNoTemplates as Card } from "../../molecules/cards/cards.templates.s
 export default {
   title: "Organisms/Content Sections/Card Image And Content/Templates",
   decorators: [ fullLayoutDecorator ],
+  parameters: { controls: { disable: true } },
 };
 
 export const CardAndImageContent = ()=>(

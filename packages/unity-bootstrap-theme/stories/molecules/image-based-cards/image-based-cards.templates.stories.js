@@ -6,6 +6,7 @@ import cardsImage from '../cards/cards-image.jpg';
 export default {
   title: "Molecules/Image Based Cards/Templates",
   decorators: [ defaultDecorator ],
+  parameters: { controls: { disable: true } },
 };
 
 export const PortraitSM = () => (

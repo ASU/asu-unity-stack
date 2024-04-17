@@ -22,7 +22,8 @@ export default {
     initFunc: {
       disable: false,
       code: initFunc
-    }
+    },
+    controls: { disable: true }
   },
   decorators: [htmlRootDecorator]
 };

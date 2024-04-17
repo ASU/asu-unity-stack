@@ -7,6 +7,7 @@ import { rankingFunc as initRankFunc } from "./ranking-cards.js";
 
 export default {
   title: "Molecules/Cards/Examples",
+  parameters: { controls: { disable: true } },
 };
 
 export const cardImages = () => (

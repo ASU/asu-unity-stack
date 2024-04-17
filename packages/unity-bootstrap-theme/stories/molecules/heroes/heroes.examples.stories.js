@@ -8,6 +8,7 @@ import { initVideo as initFunc } from "./heroes-video";
 export default {
   title: "Molecules/Heroes/Examples",
   decorators: [ fullLayoutDecorator ],
+  parameters: { controls: { disable: true } },
 };
 
 export const HeroSmallOneButton = () => (

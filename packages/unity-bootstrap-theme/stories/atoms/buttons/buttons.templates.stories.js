@@ -120,3 +120,4 @@ ButtonTag.argTypes ={
   size: { table: { disable: true}},
   disabled: { table: { disable: true}},
 }
+ButtonTag.parameters = { controls: { disable: true } };

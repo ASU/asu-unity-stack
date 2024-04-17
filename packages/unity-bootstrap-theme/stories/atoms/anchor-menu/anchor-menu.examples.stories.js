@@ -13,7 +13,8 @@ export default {
     },
     header: {
       forced: true,
-    }
+    },
+    controls: { disable: true },
   },
   decorators: [ htmlRootDecorator ],
 };

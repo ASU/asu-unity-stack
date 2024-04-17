@@ -5,6 +5,7 @@ import { defaultDecorator } from "../../../../../shared/components/Layout";
 export default {
   title: "Molecules/Pagination/Examples",
   decorators: [ defaultDecorator ],
+  parameters: { controls: { disable: true } },
 };
 export const DisabledAndActiveStatesComponent = () => (
   <nav aria-label="pagination">

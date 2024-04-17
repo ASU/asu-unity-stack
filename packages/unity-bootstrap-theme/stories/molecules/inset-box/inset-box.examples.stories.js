@@ -61,6 +61,7 @@ export const ExampleWithBlockquote = () => (
     </div>
   </div>
 );
+ExampleWithBlockquote.parameters = { controls: { disable: true } };
 
 export const ExampleWithImageBackground = () => (
   <div
@@ -89,3 +90,4 @@ export const ExampleWithImageBackground = () => (
     </div>
   </div>
 );
+ExampleWithImageBackground.parameters = { controls: { disable: true } };

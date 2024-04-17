@@ -5,6 +5,7 @@ import { defaultDecorator } from "../../../../../shared/components/Layout";
 export default {
   title: "Atoms/Dividers/Examples",
   decorators: [ defaultDecorator ],
+  parameters: { controls: { disable: true } },
 };
 
 export const Divider = () => (
@@ -54,6 +55,3 @@ export const Divider = () => (
     </p>
   </div>
 );
-Divider.args = {
-  template: 1,
-};

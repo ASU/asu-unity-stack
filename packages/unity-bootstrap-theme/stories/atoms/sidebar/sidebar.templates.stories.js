@@ -5,6 +5,7 @@ import { defaultDecorator, htmlRootDecorator } from "../../../../../shared/compo
 export default {
   title: "Atoms/Sidebar/Templates",
   decorators: [ defaultDecorator ],
+  parameters: { controls: { disable: true } },
 };
 export const Sidebar = () => (
   <div className="col-md-4">

@@ -11,6 +11,7 @@ export default {
       code: initChart,
       disable: false,
     },
+    controls: { disable: true }
   },
 };
 

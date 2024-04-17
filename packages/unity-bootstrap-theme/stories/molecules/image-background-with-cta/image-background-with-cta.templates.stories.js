@@ -5,6 +5,7 @@ import { defaultDecorator } from "../../../../../shared/components/Layout.js";
 export default {
   title: "Molecules/Content Sections/Image Background With Call To Action/Templates",
   decorators: [ defaultDecorator ],
+  parameters: { controls: { disable: true } },
 };
 
 export const Default = () => (

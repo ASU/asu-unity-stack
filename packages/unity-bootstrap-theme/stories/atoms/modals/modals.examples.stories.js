@@ -14,7 +14,8 @@ export default {
     },
     footer: {
       forced: true,
-    }
+    },
+    controls: { disable: true }
   },
 };
 

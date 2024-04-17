@@ -162,9 +162,9 @@ export const OrderedListMultiLevel = ({bulletColor, backgroundColor}) => {
   );
 };
 
-export const MixedListMultiLevel = createStory(args => {
+export const MixedListMultiLevel = ({bulletColor, backgroundColor}) => {
   return (
-    <ol className={`uds-list ${args.bulletColor} ${args.backgroundColor}`}>
+    <ol className={`uds-list ${bulletColor} ${backgroundColor}`}>
       <li>
         Lorem ipsum dolor sit amet
         <ol>
@@ -222,15 +222,12 @@ export const MixedListMultiLevel = createStory(args => {
       <li>Lorem ipsum dolor sit amet</li>
     </ol>
   );
-});
-MixedListMultiLevel.args = {
-  template: 1,
 };
 
 
-export const Mixed2ListMultiLevel = createStory(args => {
+export const Mixed2ListMultiLevel = ({bulletColor, backgroundColor}) => {
   return (
-    <ul className={`uds-list ${args.bulletColor} ${args.backgroundColor}`}>
+    <ul className={`uds-list ${bulletColor} ${backgroundColor}`}>
       <li>
         Lorem ipsum dolor sit amet
         <ul >
@@ -288,7 +285,4 @@ export const Mixed2ListMultiLevel = createStory(args => {
       <li>Lorem ipsum dolor sit amet</li>
     </ul>
   );
-});
-Mixed2ListMultiLevel.args = {
-  template: 1,
 };

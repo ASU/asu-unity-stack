@@ -16,7 +16,8 @@ export default {
   parameters: {
     header: {
       disable: true
-    }
+    },
+    controls: { disable: true }
   }
 };
 
