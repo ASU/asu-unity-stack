@@ -42,7 +42,6 @@ Cards - Table of Contents
     --card-child-padding: #{$uds-size-spacing-3};
     & {
       .card-content-wrapper {
-        --card-content-wrapper-padding:1rem;
         --card-child-padding: 0;
         --card-child-margin: 0;
       }
@@ -119,10 +118,10 @@ Cards - Table of Contents
   content: '';
 }
 
-.card-img-top img,
 .card-img-top {
   --card-img-top-height: #{$card-image-top-height};
-  max-width: 100%;
+  max-width: var(--card-img-top-max-width, 100%);
+  min-width: var(--card-img-top-min-width);
   height: var(--card-img-top-height);
   object-fit: cover;
 
@@ -226,9 +225,18 @@ Cards - Table of Contents
     }
   }
 
-  .col-lg-6 .card-horizontal .card-img-top {
-    --card-img-top-height: auto;
-    max-width: 40%;
+  .col-lg-6 .card-horizontal {
+    & > a {
+      min-width: 40%;
+      width: 40%;
+      --card-img-top-max-width: 100%;
+      --card-img-top-min-width: 100%;
+    }
+    .card-img-top {
+      --card-img-top-height: auto;
+      --card-img-top-min-width: var(--card-img-top-min-width, 40%);
+      --card-img-top-max-width: var(--card-img-top-max-width, 40%);
+    }
   }
 }
 
@@ -426,10 +434,14 @@ Cards - Table of Contents
     flex-direction: column;
   }
 
-  .card-horizontal .card-img-top {
-    height: 160px !important;
-    max-width: 100% !important;
-    width: 100% !important;
+  .card-horizontal {
+    & > a {
+      width: 100% !important;
+    }
+    .card-img-top {
+      height: 160px !important;
+      --card-img-top-max-width: 100%;
+    }
   }
 
   .card-event.card-horizontal .card-content-wrapper {
@@ -454,11 +466,21 @@ Cards - Table of Contents
   margin-bottom: 0;
 }
 
-.card-horizontal .card-img-top {
-  height: auto;
-  max-width: 40%;
-  aspect-ratio: 2/3;
-  max-height: 400px;
+.card-horizontal {
+  & > a {
+    --card-img-top-max-width: 100%;
+    --card-img-top-min-width: 100%;
+    min-width: 40%;
+    width: 40%;
+    overflow: hidden;
+  }
+  .card-img-top {
+    height: auto;
+    max-width: var(--card-img-top-max-width, 40%);
+    min-width: var(--card-img-top-min-width, 40%);
+    aspect-ratio: 2/3;
+    max-height: 400px;
+  }
 }
 
 .card-event.card-horizontal .card-header {
