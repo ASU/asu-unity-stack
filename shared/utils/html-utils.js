@@ -1,5 +1,5 @@
 // @ts-check
-import { sanitize } from "dompurify";
+import sanitize from "dompurify";
 
 /**
  * @typedef {{

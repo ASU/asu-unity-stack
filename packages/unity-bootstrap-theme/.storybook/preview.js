@@ -1,4 +1,4 @@
-import "../src/scss/unity-bootstrap-theme.bundle.scss";
+import "../src/scss/unity-bootstrap-theme-bundle.scss";
 import { removeFontAwesomeChanges } from "./local-addon/helpers";
 
 // Import all the Bootstrap bundle

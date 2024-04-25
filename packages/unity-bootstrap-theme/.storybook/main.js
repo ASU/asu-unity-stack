@@ -1,10 +1,15 @@
+import { mergeConfig } from 'vite';
+import { default as localAddon } from "./local-addon/preset.js";
+// import { resolve } from 'path';
+
+/** @type {import('@storybook/react-vite').StorybookConfig} */
 const config = {
-  staticDirs: ['../dist'],
+  // staticDirs: ['../dist'],
   stories: ["../**/*.js.stories.mdx", "../**/*.stories.mdx", "../**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
-    "./local-addon",
-    "../../../.storybook-config",
-    "../../../.storybook-config/dataLayerListener",
+    // "./local-addon/preset.js",
+    // "../../../.storybook-config",
+    // "../../../.storybook-config/dataLayerListener",
     "@whitespace/storybook-addon-html",
     "@storybook/addon-links",
     {
@@ -15,30 +20,25 @@ const config = {
     },
   ],
   framework: {
-    name: "@storybook/react-webpack5",
+    name: "@storybook/react-vite",
     options: {}
   },
-  webpackFinal: async (config, { configType }) => {
-    // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
-    // You can change the configuration based on that.
-    // 'PRODUCTION' is used when building the static version of storybook.
+  async viteFinal(a, b, c) {
 
-    config.module.rules.push({
-      test: /\.scss$/,
-      use: [
-        "style-loader",
-        { loader: "css-loader", options: { importLoaders: 1 } },
-        {
-          loader: "sass-loader",
-          options: {},
+    // a.entry = Array.from(new Set(a.entry));
+    console.log("a", a)
+    // Be sure to return the customized config
+    return mergeConfig(a, {
+      // Customize the Vite config for Storybook
+      resolve: {
+        preserveSymlinks: true,
+        alias: {
+          // foo: 'bar'
         },
-      ],
+      },
     });
-
-    config.entry = Array.from(new Set(config.entry));
-
-    return config;
   },
+
 
   docs: {
     autodocs: true

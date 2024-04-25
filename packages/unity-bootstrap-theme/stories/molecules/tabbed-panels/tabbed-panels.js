@@ -1,4 +1,4 @@
-function initTabs() {
+export const initTabs = function () {
   "use strict";
   const DOM_ELEMENT_A = "a";
   const DOM_ELEMENT_BUTTON = "button";
@@ -165,4 +165,4 @@ function initTabs() {
   });
 };
 
-export {initTabs}
+export default initTabs;
