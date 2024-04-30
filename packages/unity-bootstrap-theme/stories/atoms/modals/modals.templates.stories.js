@@ -44,10 +44,15 @@ export const ModalComponent = ({open}) => <>
             data-ga-section="modal name/title"
             data-ga="close cross"
           >
-            <i className="fas fa-times fa-stack-1x"></i>
+            <i className="fas fa-times"></i>
             <span className="visually-hidden">Close</span>
           </button>
           <h1>Content</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod incididuntåç ut labore et dolore magna aliqua eiusmod tempo.
+          </p>
+          <button className="btn btn-primary">button</button>
         </div>
       </div>
     </>;
