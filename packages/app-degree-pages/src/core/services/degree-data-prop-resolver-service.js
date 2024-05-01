@@ -138,7 +138,12 @@ function degreeDataPropResolverService(row = {}) {
     getEmailAddress: () => row["emailAddr"],
     /** @return {string} */
     getPhone: () => row["phoneNumber"]?.replace("/", "-"),
-    getProfessionalLicensureText: () => row["professionalLicensureAdditionalText"] || row["professionalLicensureStandardText"],
+    /** @return {string} */
+    getProfessionalLicensureText: () => {
+      const standardText = row["professionalLicensureStandardText"] || "";
+      const additionalText = row["professionalLicensureAdditionalText"] || "";
+      return `${standardText}${additionalText}`;
+    },
     /** @return {string} */
     getDepartmentName: () => getMajorityOwner(row)?.departmentDescription,
     /** @return {string} */
