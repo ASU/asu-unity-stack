@@ -14,6 +14,7 @@ const parameters = {
       "Program Listing Page: Default\$",
       "Program Detail Page: Default\$",
     ],
+    waitForTimeout: 5000,
   },
 };
 
