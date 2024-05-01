@@ -9,9 +9,6 @@ const GridViewWrapper = styled.ul`
   row-gap: 24px;
   grid-template-columns: repeat(3, 1fr);
   li {
-    a {
-      height: 100%;
-    }
     .card-img-top {
       border-radius: 0 !important;
     }
@@ -27,9 +24,6 @@ const GridViewWrapper = styled.ul`
           margin-bottom: 24px;
         }
       }
-    }
-    .card-content-wrapper {
-      padding-top: 0 !important;
     }
   }
 `;
