@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.9.12](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.11...@asu/unity-bootstrap-theme-v1.9.12) (2024-05-01)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix Card image styles ([be3dfc5](https://github.com/ASU/asu-unity-stack/commit/be3dfc5dd056c8630369da47618aead9b894ae83))
+
 # [@asu/unity-bootstrap-theme-v1.9.11](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.10...@asu/unity-bootstrap-theme-v1.9.11) (2024-04-15)
 
 
