@@ -1,121 +1,118 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Backgrounds", "Design");
+import React from "react";
 
-export const approvedBackgroundColors = createStory(
-  <div className="container-fluid mt-2">
-    <div className="row">
-      <div className="col-12 pb-3">
-        <h3>
-          <span className="highlight-black">Approved Background Colors</span>
-        </h3>
-      </div>
+import { htmlRootDecorator, Container, Column } from "../../../../../shared/components/Layout.js";
+export default {
+  title: "Design/Backgrounds",
+  decorators: [htmlRootDecorator],
+  parameters: { controls: { disable: true } },
+};
 
-      <div className="col-sm-6">
-        <div className="background-panel gray-7-bg m-3"></div>
-      </div>
-      <div className="col-sm-6">
-        <div className="background-panel gray-2-bg m-3"></div>
-      </div>
-
-      <div className="col-sm-6">
-        <div className="background-panel gray-1-bg m-3"></div>
-      </div>
-      <div className="col-sm-6">
-        <div className="background-panel white-bg m-3"></div>
-      </div>
-    </div>
-  </div>
+export const approvedBackgroundColors = () => (
+  <Container>
+    <Column>
+      <h3>
+        <span className="highlight-black">Approved Background Colors</span>
+      </h3>
+    </Column>
+    <Column col="6">
+      <div className="background-panel gray-7-bg mb-3"></div>
+    </Column>
+    <Column col="6">
+      <div className="background-panel gray-2-bg mb-3"></div>
+    </Column>
+    <Column col="6">
+      <div className="background-panel gray-1-bg mb-3"></div>
+    </Column>
+    <Column col="6">
+      <div className="background-panel white-bg mb-3"></div>
+    </Column>
+  </Container>
 );
 
-export const approvedBackgroundPatterns = createStory(
-  <div className="container-fluid mt-2">
-    <div className="row">
-      <div className="col-12 pb-3">
+export const approvedBackgroundPatterns = () => (
+  <Container>
+      <Column>
         <h3>
           <span className="highlight-black">Approved Background Patterns</span>
         </h3>
-      </div>
+      </Column>
 
-      <div className="col-12 pb-3">
+      <Column>
         <h3>Learn to thrive morse code</h3>
-      </div>
-      <div className="col-sm-6">
-        <div className="background-panel bg morse-code-white m-3"></div>
-      </div>
-      <div className="col-sm-6">
-        <div className="background-panel bg morse-code-black m-3"></div>
-      </div>
+      </Column>
+      <Column col="6">
+        <div className="background-panel bg morse-code-white mb-3"></div>
+      </Column>
+      <Column col="6">
+        <div className="background-panel bg morse-code-black mb-3"></div>
+      </Column>
 
-      <div className="col-12 pb-3">
+      <Column>
         <h3>Network</h3>
-      </div>
-      <div className="col-sm-6">
-        <div className="background-panel bg network-white m-3"></div>
-      </div>
-      <div className="col-sm-6">
-        <div className="background-panel bg network-black m-3"></div>
-      </div>
+      </Column>
+      <Column col="6">
+        <div className="background-panel bg network-white mb-3"></div>
+      </Column>
+      <Column col="6">
+        <div className="background-panel bg network-black mb-3"></div>
+      </Column>
 
-      <div className="col-12 pb-3">
+      <Column>
         <h3>A Mountain topographical map</h3>
-      </div>
-      <div className="col-sm-6">
-        <div className="background-panel bg topo-white m-3"></div>
-      </div>
-      <div className="col-sm-6">
-        <div className="background-panel bg topo-black m-3"></div>
-      </div>
+      </Column>
+      <Column col="6">
+        <div className="background-panel bg topo-white mb-3"></div>
+      </Column>
+      <Column col="6">
+        <div className="background-panel bg topo-black mb-3"></div>
+      </Column>
 
-      <div className="col-12 pb-3">
+      <Column>
         <h3>Semiconductor</h3>
-      </div>
-      <div className="col-sm-6">
-        <div className="background-panel bg semiconductor-light m-3"></div>
-      </div>
-      <div className="col-sm-6">
-        <div className="background-panel bg semiconductor-dark m-3"></div>
-      </div>
+      </Column>
+      <Column col="6">
+        <div className="background-panel bg semiconductor-light mb-3"></div>
+      </Column>
+      <Column col="6">
+        <div className="background-panel bg semiconductor-dark mb-3"></div>
+      </Column>
 
-      <div className="col-12 pb-3">
+      <Column>
         <h3>Plus</h3>
-      </div>
-      <div className="col-sm-6">
-        <div className="background-panel bg plus-light m-3"></div>
-      </div>
-      <div className="col-sm-6">
-        <div className="background-panel bg plus-dark m-3"></div>
-      </div>
+      </Column>
+      <Column col="6">
+        <div className="background-panel bg plus-light mb-3"></div>
+      </Column>
+      <Column col="6">
+        <div className="background-panel bg plus-dark mb-3"></div>
+      </Column>
 
-      <div className="col-12 pb-3">
+      <Column>
         <h3>Arrows</h3>
-      </div>
-      <div className="col-sm-6">
-        <div className="background-panel bg arrows-light m-3"></div>
-      </div>
-      <div className="col-sm-6">
-        <div className="background-panel bg arrows-dark m-3"></div>
-      </div>
-    </div>
-  </div>
+      </Column>
+      <Column col="6">
+        <div className="background-panel bg arrows-light mb-3"></div>
+      </Column>
+      <Column col="6">
+        <div className="background-panel bg arrows-dark mb-3"></div>
+      </Column>
+  </Container>
 );
 
-export const imageBackgrounds = createStory(
-  <div className="container-fluid mt-2">
-    <div className="row">
-      <div className="col-12 pb-3">
-        <h3>
-          <span className="highlight-black">Image Backgrounds</span>
-        </h3>
-      </div>
-
-      <div className="col-sm-6">
-        <div className="background-panel image-bg m-3"></div>
-      </div>
-    </div>
-  </div>
+export const imageBackgrounds = () => (
+  <Container>
+    <Column>
+      <h3>
+        <span className="highlight-black">Image Backgrounds</span>
+      </h3>
+    </Column>
+    <Column col="6">
+      <div className="background-panel image-bg mb-3"></div>
+    </Column>
+  </Container>
 );
 
-export const backgroundsScaling = createStory(
+export const backgroundsScaling = () => (
   <div className="container-fluid max-size-container scaling-container">
     <span className="content-description">1920px max width</span>
     <div className="section-line"></div>
@@ -129,7 +126,7 @@ export const backgroundsScaling = createStory(
   </div>
 );
 
-export const PatternDividersAndBackgroundPatterns = createStory(
+export const PatternDividersAndBackgroundPatterns = () => (
   <div>
     <div className="container p-5">
       <h2>

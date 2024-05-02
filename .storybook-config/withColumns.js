@@ -13,7 +13,7 @@ export const withColumns = (StoryFn, context) => {
       context.viewMode === 'docs' ? `#anchor--${context.id} .docs-story` : '.sb-show-main';
 
     return `
-    ${selector}>*{opacity:.7}
+    ${selector}>#storybook-root{opacity:.7}
       ${selector} {
         background-size:
             calc(6 * var(--griddiv) - var(--gridgap)  ) 1px,

@@ -35,6 +35,13 @@ export default {
       },
     },
   },
+  parameters: {
+    docs: {
+      description: {
+        component: ' ',
+      },
+    },
+  },
 };
 
 const itemColorCombinations = {

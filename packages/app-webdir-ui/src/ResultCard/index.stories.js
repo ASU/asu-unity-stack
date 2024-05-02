@@ -1,27 +1,24 @@
 import React from "react";
 
-import {
-  createComponent,
-  createStory,
-  layoutNames,
-} from "../../../unity-bootstrap-theme/helpers/wrapper";
+import { defaultDecorator } from "../../../../shared/components/Layout";
 import { subdomainConverter } from "../helpers/dataConverter";
 import data from "./mock-data";
 
-const extraOptions = {
+const argTypes = {
   fill: {
     name: "Fill",
     control: { type: "boolean" },
-    defaultValue: true,
   },
 };
 
-export default createComponent(
-  "Results Card",
-  "Atoms",
-  "Templates",
-  extraOptions
-);
+export default {
+  title: "Atoms/Results Card/Templates",
+  decorators: [defaultDecorator],
+  argTypes,
+  args: {
+    fill: true,
+  },
+};
 const options = {
   GASource: "Search Results",
   localSection: true,
@@ -32,21 +29,18 @@ const resultsCard = subdomainConverter({
   options: { size: "full" },
 });
 
-export const resultsCardExample = createStory(
-  args => {
-    const newProps = {
-      ...resultsCard.props,
-      ...{ fill: args.fill },
-    };
-    const profile = {
-      ...resultsCard,
-      ...{ props: newProps },
-    };
-    return (
-      <div className="container-fluid">
-        <div className="col col-sm-12 p-3">{profile}</div>
-      </div>
-    );
-  },
-  { supportedTemplates: [layoutNames.ONE_COLUMN] }
-);
+export const resultsCardExample = args => {
+  const newProps = {
+    ...resultsCard.props,
+    ...{ fill: args.fill },
+  };
+  const profile = {
+    ...resultsCard,
+    ...{ props: newProps },
+  };
+  return (
+    <div className="container-fluid">
+      <div className="col col-sm-12 p-3">{profile}</div>
+    </div>
+  );
+};

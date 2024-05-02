@@ -4,7 +4,7 @@ import { removeFontAwesomeChanges } from "./local-addon/helpers";
 // Import all the Bootstrap bundle
 import "../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min";
 
-export const parameters = {
+const parameters = {
   options: {
     storySort: {
       order: [
@@ -72,3 +72,10 @@ export const parameters = {
     transform: (code) => removeFontAwesomeChanges(code)
   },
 };
+
+/** @type { import('@storybook/react').Preview } */
+const preview = {
+  parameters
+};
+
+export default preview;

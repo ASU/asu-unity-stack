@@ -1,48 +1,52 @@
 import React from "react";
 
-import { createComponent } from "../../../helpers/wrapper.js";
+import { defaultDecorator } from "../../../../../shared/components/Layout";
 import cardsImage from "./cards-image.jpg";
 
-const extraOptions = {
-  cardHeader: {
-    name: "Header ",
-    options: ["none", "image", "icon"],
-    defaultValue: "none",
-    control: {
-      type: "radio",
-      labels: {
-        none: "None",
-        image: "Image",
-        icon: "Icon",
+export default {
+  title: "Molecules/Cards/Templates",
+  decorators: [ defaultDecorator ],
+  argTypes: {
+    cardHeader: {
+      name: "Header ",
+      options: ["none", "image", "icon"],
+      control: {
+        type: "radio",
+        labels: {
+          none: "None",
+          image: "Image",
+          icon: "Icon",
+        },
+      },
+    },
+    event: {
+      name: "Event Details",
+      control: { type: "boolean" },
+    },
+    link: {
+      name: "Link",
+      control: { type: "boolean" },
+    },
+    tags: {
+      name: "Tags",
+      control: { type: "boolean" },
+    },
+    numButtons: {
+      name: "Number Of Buttons",
+      options: [0, 1, 2],
+      control: {
+        type: "radio",
       },
     },
   },
-  event: {
-    name: "Event Details",
-    control: { type: "boolean" },
-    defaultValue: false,
-  },
-  link: {
-    name: "Link",
-    control: { type: "boolean" },
-    defaultValue: false,
-  },
-  tags: {
-    name: "Tags",
-    control: { type: "boolean" },
-    defaultValue: false,
-  },
-  numButtons: {
-    name: "Number Of Buttons",
-    options: [0, 1, 2],
-    defaultValue: 0,
-    control: {
-      type: "radio",
-    },
+  args: {
+    cardHeader: "none",
+    event: false,
+    link: false,
+    tags: false,
+    numButtons: 0,
   },
 };
-
-export default createComponent("Cards", "Molecules", "Templates", extraOptions);
 
 export const cardNoTemplates = args => {
   return (

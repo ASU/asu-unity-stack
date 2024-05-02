@@ -1,17 +1,15 @@
-import {
-  createComponent,
-  createStory,
-  layoutNames,
-} from "../../../helpers/wrapper.js";
-import { cardNoTemplates as Card } from "../../molecules/cards/cards.templates.stories";
-export default createComponent(
-  "Content Sections/Card Image And Content",
-  "Organisms",
-  "Templates"
-);
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
+import React from "react";
 
-export const CardAndImageContent = createStory(
+import { fullLayoutDecorator } from "../../../../../shared/components/Layout.js";
+import { cardNoTemplates as Card } from "../../molecules/cards/cards.templates.stories";
+
+export default {
+  title: "Organisms/Content Sections/Card Image And Content/Templates",
+  decorators: [ fullLayoutDecorator ],
+  parameters: { controls: { disable: true } },
+};
+
+export const CardAndImageContent = ()=>(
   <div className="uds-card-image-and-content">
     <div
       className="uds-card-image-and-content-image-container"
@@ -32,20 +30,12 @@ export const CardAndImageContent = createStory(
         commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
         velit esse cillum.
       </div>
-      {Card({
-        cardHeader: "image",
-        event: false,
-        link: true,
-        tags: true,
-        numButtons: 1,
-      })}
+      <Card
+        cardHeader="image"
+        event={false}
+        link={true}
+        tags={true}
+        numButtons={1}/>
     </div>
-  </div>,
-  {
-    initFunc,
-    supportedTemplates: [layoutNames.FULL_WIDTH],
-  }
+  </div>
 );
-CardAndImageContent.args = {
-  template: 0,
-};

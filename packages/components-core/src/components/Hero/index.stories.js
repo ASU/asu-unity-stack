@@ -11,6 +11,13 @@ import { Hero } from ".";
 export default {
   component: Hero,
   title: "UDS/Heroes",
+  parameters: {
+    docs: {
+      description: {
+        component: ' ',
+      },
+    },
+  },
 };
 
 /**
@@ -27,7 +34,7 @@ const Template = ({ image, title, contents, contentsColor }) => (
 );
 
 /**
- * @type {{ args: HeroProps}}
+ * @type {{ args: HeroProps, parameters: object }}
  */
 export const HeroSmall = Template.bind({});
 
@@ -42,9 +49,16 @@ HeroSmall.args = {
     highlightColor: "gold",
   },
 };
+HeroSmall.parameters = {
+  docs: {
+    description: {
+      story: ' '
+    }
+  }
+};
 
 /**
- * @type {{ args: HeroProps}}
+ * @type {{ args: HeroProps, parameters: object }}
  */
 export const HeroLongTitle = Template.bind({});
 
@@ -60,9 +74,16 @@ HeroLongTitle.args = {
     maxWidth: "100%",
   },
 };
+HeroLongTitle.parameters = {
+  docs: {
+    description: {
+      story: ' '
+    }
+  }
+};
 
 /**
- * @type {{ args: HeroProps}}
+ * @type {{ args: HeroProps, parameters: object }}
  */
 export const HeroMedium = Template.bind({});
 
@@ -84,9 +105,16 @@ HeroMedium.args = {
     },
   ],
 };
+HeroMedium.parameters = {
+  docs: {
+    description: {
+      story: ' '
+    }
+  }
+};
 
 /**
- * @type {{ args: HeroProps}}
+ * @type {{ args: HeroProps, parameters: object }}
  */
 export const HeroLarge = Template.bind({});
 
@@ -107,4 +135,11 @@ HeroLarge.args = {
      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
     },
   ],
+};
+HeroLarge.parameters = {
+  docs: {
+    description: {
+      story: ' '
+    }
+  }
 };

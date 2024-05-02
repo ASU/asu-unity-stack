@@ -1,11 +1,12 @@
 import React from "react";
 
-import {
-  createComponent,
-  createStory,
-} from "../../../../unity-bootstrap-theme/helpers/wrapper";
+import { defaultDecorator } from "../../../../../shared/components/Layout";
 import { searchMessageComponentMap } from "../index";
 
-export default createComponent("PreSearchMessage", "Atoms", "Template");
+export default {
+  title: "Atoms/PreSearchMessage/Template",
 
-export const preSearchMessage = createStory(searchMessageComponentMap.all);
+  decorators: [defaultDecorator],
+};
+
+export const preSearchMessage = () => searchMessageComponentMap.all;

@@ -1,12 +1,15 @@
-import { googleAnalytics as initFunc } from '@asu/unity-bootstrap-theme/js/data-layer.js';
-import React from 'react';
+import React from "react";
 
-import { createComponent, createStory } from '../../../helpers/wrapper.js';
+import { defaultDecorator } from "../../../../../shared/components/Layout";
 import cardsImage from '../cards/cards-image.jpg';
 
-export default createComponent('Image Based Cards', 'Molecules', 'Templates');
+export default {
+  title: "Molecules/Image Based Cards/Templates",
+  decorators: [ defaultDecorator ],
+  parameters: { controls: { disable: true } },
+};
 
-export const PortraitSM = createStory(
+export const PortraitSM = () => (
   <div className="uds-image-based-card portrait-sm">
     <img
       src={cardsImage}
@@ -30,11 +33,10 @@ export const PortraitSM = createStory(
         Call to action button
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
-export const PortraitMD = createStory(
+export const PortraitMD = () => (
   <div className="uds-image-based-card portrait-md">
     <img
       src={cardsImage}
@@ -58,11 +60,10 @@ export const PortraitMD = createStory(
         Call to action button
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
-export const LandscapeSM = createStory(
+export const LandscapeSM = () => (
   <div className="uds-image-based-card landscape-sm">
     <img
       src={cardsImage}
@@ -86,11 +87,10 @@ export const LandscapeSM = createStory(
         Call to action button
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
-export const LandscapeMD = createStory(
+export const LandscapeMD = () => (
   <div className="uds-image-based-card landscape-md">
     <img
       src={cardsImage}
@@ -114,11 +114,10 @@ export const LandscapeMD = createStory(
         Call to action button
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
-export const LandscapeLG = createStory(
+export const LandscapeLG = () => (
   <div className="uds-image-based-card landscape-lg">
     <img
       src={cardsImage}
@@ -142,11 +141,10 @@ export const LandscapeLG = createStory(
         Call to action button
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
-export const SquareSM = createStory(
+export const SquareSM = () => (
   <div className="uds-image-based-card square-sm">
     <img
       src={cardsImage}
@@ -170,11 +168,10 @@ export const SquareSM = createStory(
         Call to action button
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
-export const SquareMD = createStory(
+export const SquareMD = () => (
   <div className="uds-image-based-card square-md">
     <img
       src={cardsImage}
@@ -198,11 +195,10 @@ export const SquareMD = createStory(
         Call to action button
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
 
-export const SquareLG = createStory(
+export const SquareLG = () => (
   <div className="uds-image-based-card square-lg">
     <img
       src={cardsImage}
@@ -226,6 +222,5 @@ export const SquareLG = createStory(
         Call to action button
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );

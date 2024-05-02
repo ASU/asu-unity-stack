@@ -1,12 +1,15 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent(
-  "Blockquotes and Testimonials",
-  "Atoms",
-  "Examples"
-);
+import React from "react";
 
-export const BlockquoteNoImage = createStory(
-  <div>
+import { defaultDecorator } from "../../../../../shared/components/Layout";
+
+export default {
+  title: "Atoms/Blockquotes and Testimonials/Examples",
+  decorators: [ defaultDecorator ],
+  parameters: { controls: { disable: true } },
+};
+
+export const BlockquoteNoImage = () => (
+  <>
     <div className="uds-blockquote accent-maroon uds-content-align">
       <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">
         <path d="M113.61,245.82H0V164.56q0-49.34,8.69-77.83T40.84,35.58Q64.29,12.95,100.67,0l22.24,46.9q-34,11.33-48.72,31.54T58.63,132.21h55Zm180,0H180V164.56q0-49.74,8.7-78T221,35.58Q244.65,12.95,280.63,0l22.24,46.9q-34,11.33-48.72,31.54t-15.57,53.77h55Z" />
@@ -47,14 +50,11 @@ export const BlockquoteNoImage = createStory(
         </blockquote>
       </div>
     </div>
-  </div>
+  </>
 );
-BlockquoteNoImage.args = {
-  template: 1,
-};
 
-export const BlockquoteWithImage = createStory(
-  <div>
+export const BlockquoteWithImage = () => (
+  <>
     <div className="uds-blockquote with-image uds-content-align">
       <img
         src="https://source.unsplash.com/WLUHO9A_xik/600x400"
@@ -108,11 +108,11 @@ export const BlockquoteWithImage = createStory(
         </blockquote>
       </div>
     </section>
-  </div>
+  </>
 );
 
-export const BlockquoteNoCitation = createStory(
-  <div>
+export const BlockquoteNoCitation = () => (
+  <>
     <div className="uds-blockquote no-citation with-image uds-content-align">
       <img
         src="https://source.unsplash.com/WLUHO9A_xik/300x300"
@@ -153,11 +153,11 @@ export const BlockquoteNoCitation = createStory(
         </blockquote>
       </div>
     </div>
-  </div>
+  </>
 );
 
-export const BlockquoteAltCitation = createStory(
-  <div>
+export const BlockquoteAltCitation = () => (
+  <>
     <div className="uds-blockquote alt-citation accent-gold uds-content-align">
       <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">
         <path d="M113.61,245.82H0V164.56q0-49.34,8.69-77.83T40.84,35.58Q64.29,12.95,100.67,0l22.24,46.9q-34,11.33-48.72,31.54T58.63,132.21h55Zm180,0H180V164.56q0-49.74,8.7-78T221,35.58Q244.65,12.95,280.63,0l22.24,46.9q-34,11.33-48.72,31.54t-15.57,53.77h55Z" />
@@ -194,11 +194,11 @@ export const BlockquoteAltCitation = createStory(
         </blockquote>
       </div>
     </section>
-  </div>
+  </>
 );
 
-export const TestimonialsNoImage = createStory(
-  <div>
+export const TestimonialsNoImage = () => (
+  <>
     <div className="uds-blockquote uds-testimonial accent-gold uds-content-align">
       <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">
         <path d="M113.61,245.82H0V164.56q0-49.34,8.69-77.83T40.84,35.58Q64.29,12.95,100.67,0l22.24,46.9q-34,11.33-48.72,31.54T58.63,132.21h55Zm180,0H180V164.56q0-49.74,8.7-78T221,35.58Q244.65,12.95,280.63,0l22.24,46.9q-34,11.33-48.72,31.54t-15.57,53.77h55Z" />
@@ -237,14 +237,11 @@ export const TestimonialsNoImage = createStory(
         </blockquote>
       </div>
     </div>
-  </div>
+  </>
 );
-TestimonialsNoImage.args = {
-  template: 1,
-};
 
-export const TestimonialsWithImage = createStory(
-  <div>
+export const TestimonialsWithImage = () => (
+  <>
     <div className="uds-blockquote uds-testimonial with-image alt-citation accent-maroon uds-content-align">
       <img
         src="https://source.unsplash.com/WLUHO9A_xik/600x400"
@@ -300,5 +297,5 @@ export const TestimonialsWithImage = createStory(
         </blockquote>
       </div>
     </div>
-  </div>
+  </>
 );

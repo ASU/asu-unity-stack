@@ -1,12 +1,7 @@
 // @ts-check
 // import { Hero } from "@asu/components-core";
-import {
-  render,
-  act,
-  waitFor,
-  fireEvent,
-  cleanup,
-} from "@testing-library/react";
+import { Hero } from "@asu/components-core";
+import { render, act, fireEvent, cleanup } from "@testing-library/react";
 import React from "react";
 
 import { ListingPage } from "./index";
@@ -173,9 +168,9 @@ describe("#ListingPage", () => {
       expect(programRows.children.length).toBe(16);
     });
 
-    // it("should define `Hero` section", async () => {
-    //   expect(Hero).toBeDefined();
-    // });
+    it("should define `Hero` section", async () => {
+      expect(Hero).toBeDefined();
+    });
 
     const sectionCases = [
       [`Intro content`, `intro-content`],
@@ -260,19 +255,18 @@ describe("#ListingPage", () => {
       );
       const btnApplyfilter = await component.findByTestId("btn-apply-filter");
 
-          fireEvent.change(locations, {
-            target: { value: locationOptions[1].value },
-          });
-          fireEvent.change(asuLocals, {
-            target: { value: asuLocalOptions[9].value },
-          });
-          fireEvent.change(acceleratedConcurrent, {
-            target: {
-              value: acceleratedConcurrentOptions[2].value,
-            },
-          });
-          fireEvent.click(btnApplyfilter);
-        return;
+      fireEvent.change(locations, {
+        target: { value: locationOptions[1].value },
+      });
+      fireEvent.change(asuLocals, {
+        target: { value: asuLocalOptions[9].value },
+      });
+      fireEvent.change(acceleratedConcurrent, {
+        target: {
+          value: acceleratedConcurrentOptions[2].value,
+        },
+      });
+      fireEvent.click(btnApplyfilter);
     };
 
     it("should trigger apply a filter when the user type a keyword", async () => {
@@ -320,8 +314,8 @@ describe("#ListingPage", () => {
       });
       const bthTags = await component.findByTestId("summary-filter-tags");
       expect(mockfilterData).toHaveBeenCalled();
-        // the only element will be the <span> No filter applied place holder</span>
-        expect(bthTags.children.length).toBe(1);
+      // the only element will be the <span> No filter applied place holder</span>
+      expect(bthTags.children.length).toBe(1);
     });
   });
 

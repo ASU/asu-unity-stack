@@ -5,7 +5,6 @@ import React from "react";
 /** @typedef {import('../../../../core/types/detail-page-types').RequiredCoursesProps} RequiredCoursesProps */
 
 const CHANGEMAJOR_URL = "https://changemajor.apps.asu.edu/";
-const ONLINE = "ONLINE";
 
 const ONCAMPUS_TITLE = "On-campus students";
 const ONLINE_TITLE = "Online students";
@@ -75,7 +74,7 @@ function RequiredCourse({
 
   // Template component for required courses section
   const RequiredCourseSection = () => (
-    <section className="container pl-0" data-testid="required-course">
+    <section className="container ps-0" data-testid="required-course">
       <h4>Required courses (major map)</h4>
       {oncampusLinks.length > 0 && renderLinks(ONCAMPUS_TITLE, oncampusLinks)}
       {onlineLinks.length > 0 && renderLinks(ONLINE_TITLE, onlineLinks)}

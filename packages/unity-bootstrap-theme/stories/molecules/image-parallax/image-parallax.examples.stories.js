@@ -1,10 +1,21 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
+import React from "react";
+
+import { defaultDecorator } from "../../../../../shared/components/Layout";
 import { initImageParallax as initFunc } from "./image-parallax";
 
-export default createComponent("Image Parallax", "Molecules", "Examples");
+export default {
+  title: "Molecules/Image Parallax/Examples",
+  decorators: [ defaultDecorator ],
+  parameters: {
+    initFunc: {
+      code: initFunc,
+      disable: false,
+    },
+    controls: { disable: true }
+  }
+};
 
-export const twoImagesInPageOfSections = createStory(
-  () => (
+export const twoImagesInPageOfSections = () =>
     <div>
       <div
         className="d-flex flex-column justify-content-center align-items-center"
@@ -86,13 +97,9 @@ export const twoImagesInPageOfSections = createStory(
           fetchpriority="high"
         />
       </section>
-    </div>
-  ),
-  { initFunc }
-);
+    </div>;
 
-export const twoImagesWithContentInPageOfSections = createStory(
-  () => (
+export const twoImagesWithContentInPageOfSections = () =>
     <div>
       <div
         className="d-flex flex-column justify-content-center align-items-center"
@@ -218,7 +225,4 @@ export const twoImagesWithContentInPageOfSections = createStory(
           </div>
         </div>
       </section>
-    </div>
-  ),
-  { initFunc }
-);
+    </div>;

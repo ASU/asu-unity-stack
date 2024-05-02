@@ -1,6 +1,5 @@
 // @ts-check
 import React from "react";
-import withMock from "storybook-addon-mock";
 
 import { CardCarouselNews } from "./index";
 
@@ -10,7 +9,14 @@ import { createMockParam } from "../../core/utils";
 export default {
   title: "News component/Carousel Card News",
   component: CardCarouselNews,
-  decorators: [withMock],
+  parameters: {
+    docs: {
+      description: {
+        component: '',
+      },
+    },
+    mockData: createMockParam(),
+  },
 };
 
 const Template = args => <CardCarouselNews {...args} />;
@@ -32,7 +38,11 @@ Default.args = {
   },
 };
 Default.parameters = {
-  mockData: createMockParam(),
+  docs: {
+    description: {
+      story: ''
+    }
+  }
 };
 
 /**
@@ -59,7 +69,11 @@ WithCardButtonProps.args = {
   },
 };
 WithCardButtonProps.parameters = {
-  mockData: createMockParam(),
+  docs: {
+    description: {
+      story: ''
+    }
+  }
 };
 
 /**
@@ -85,7 +99,11 @@ WithFilters.args = {
   },
 };
 WithFilters.parameters = {
-  mockData: createMockParam(),
+  docs: {
+    description: {
+      story: ''
+    }
+  }
 };
 
 /**
@@ -108,7 +126,11 @@ WithMaxItems.args = {
   maxItems: 10,
 };
 WithMaxItems.parameters = {
-  mockData: createMockParam(),
+  docs: {
+    description: {
+      story: ''
+    }
+  }
 };
 
 /**
@@ -121,5 +143,9 @@ WithNoHeader.args = {
   },
 };
 WithNoHeader.parameters = {
-  mockData: createMockParam(),
+  docs: {
+    description: {
+      story: ''
+    }
+  }
 };

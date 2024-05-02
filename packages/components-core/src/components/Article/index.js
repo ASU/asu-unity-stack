@@ -287,13 +287,11 @@ export const Article = ({
         )}
 
         <div className="row">
-          <div className="col col-12">
-            <p
+          <div className="col col-12"
               // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)}
               data-testid="body"
             />
-          </div>
         </div>
 
         {type === "news" && AuthorInfo()}

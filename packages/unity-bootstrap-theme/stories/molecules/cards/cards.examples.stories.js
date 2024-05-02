@@ -1,13 +1,16 @@
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
+import React from "react";
 
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
+import { defaultDecorator, htmlRootDecorator } from "../../../../../shared/components/Layout";
 import cardsImage from "./cards-image.jpg";
-import { rankingFunc as initRankFunc } from "./ranking-cards.js";
 import { horizontalCardsMap as horizontalCard } from "./cardVariations.js";
+import { rankingFunc as initRankFunc } from "./ranking-cards.js";
 
-export default createComponent("Cards", "Molecules", "Examples");
+export default {
+  title: "Molecules/Cards/Examples",
+  parameters: { controls: { disable: true } },
+};
 
-export const cardImages = createStory(
+export const cardImages = () => (
   <div style={{ width: "50%" }}>
     <div className="card">
       <img
@@ -57,8 +60,9 @@ export const cardImages = createStory(
     </div>
   </div>
 );
+cardImages.decorators = [ defaultDecorator ];
 
-export const cardTitles = createStory(
+export const cardTitles = () => (
   <div style={{ width: "50%" }}>
     <div className="card">
       <div className="card-header">
@@ -74,8 +78,9 @@ export const cardTitles = createStory(
     </div>
   </div>
 );
+cardTitles.decorators = [ defaultDecorator ];
 
-export const cardBody = createStory(
+export const cardBody = () => (
   <div className="card">
     <div className="card-header"></div>
     <div className="card-body">
@@ -87,8 +92,9 @@ export const cardBody = createStory(
     </div>
   </div>
 );
+cardBody.decorators = [ defaultDecorator ];
 
-export const cardEventInfo = createStory(
+export const cardEventInfo = () => (
   <div>
     <div className="card">
       <div className="card-header"></div>
@@ -159,8 +165,9 @@ export const cardEventInfo = createStory(
     </div>
   </div>
 );
+cardEventInfo.decorators = [ defaultDecorator ];
 
-export const cardTags = createStory(
+export const cardTags = () => (
   <div style={{ width: "50%" }}>
     <div className="card">
       <div className="card-header"></div>
@@ -193,8 +200,9 @@ export const cardTags = createStory(
     </div>
   </div>
 );
+cardTags.decorators = [ defaultDecorator ];
 
-export const cardDegree = createStory(
+export const cardDegree = () => (
   <div className="card card-degree">
     <img
       className="card-img-top"
@@ -261,11 +269,11 @@ export const cardDegree = createStory(
         test tag 3
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
+cardDegree.decorators = [ defaultDecorator ];
 
-export const cardStory = createStory(
+export const cardStory = () => (
   <div className="card card-story">
     <img
       className="card-img-top"
@@ -332,11 +340,11 @@ export const cardStory = createStory(
         test tag 3
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
+cardStory.decorators = [ defaultDecorator ];
 
-export const cardEvent = createStory(
+export const cardEvent = () => (
   <div className="card card-event">
     <img
       className="card-img-top"
@@ -417,11 +425,11 @@ export const cardEvent = createStory(
         test tag 3
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
+cardEvent.decorators = [ defaultDecorator ];
 
-export const cardVariations = createStory(
+export const cardVariations = () => (
   <div>
     <div className="container">
       <div className="row row-spaced pt-2 pb-2">
@@ -994,14 +1002,11 @@ export const cardVariations = createStory(
         </div>
       </div>
     </div>
-  </div>,
-  {
-    initFunc,
-    omitTemplate: true,
-  }
+  </div>
 );
+cardVariations.decorators = [htmlRootDecorator];
 
-export const horizontal = createStory(
+export const horizontal =
   args => {
     return (
       <div>
@@ -1019,25 +1024,21 @@ export const horizontal = createStory(
         {horizontalCard({ ...args, type: "story" })}
       </div>
     );
-  },
-  { initFunc, omitTemplate: false }
-);
+  }
+;
+horizontal.args = {
+  numCards: 1,
+};
 horizontal.argTypes = {
   numCards: {
     name: "Columns",
-    options: [1, 2, 3, 4],
-    defaultValue: 1,
-    control: {
-      type: "radio",
-    },
-  },
-  template: {
-    name: "Template",
-    control: false,
-  },
+    control: { type: "range", min: 1, max: 3, step: 1 },
+  }
 };
 
-export const checkboxStackedCard = createStory(
+horizontal.decorators = [ defaultDecorator ];
+
+export const checkboxStackedCard = () => (
   <div className="card card-checkbox-stacked">
     <div className="card-image-content">
       <div className="card-image-gradient checkbox-card">
@@ -1135,11 +1136,11 @@ export const checkboxStackedCard = createStory(
         test tag 3
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
+checkboxStackedCard.decorators = [ defaultDecorator ];
 
-export const checkboxInlineCard = createStory(
+export const checkboxInlineCard = () => (
   <div className="card card-checkbox-inline">
     <div className="card-image-content">
       <div className="card-image-gradient checkbox-card">
@@ -1237,11 +1238,11 @@ export const checkboxInlineCard = createStory(
         test tag 3
       </a>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
+checkboxInlineCard.decorators = [ defaultDecorator ];
 
-export const mediaTypeOverlayCard = createStory(
+export const mediaTypeOverlayCard = () => (
   <div className="container">
     <div className="row row-spaced pt-2 pb-2">
       <div className="col col-12 col-md-6 col-lg-4">
@@ -1443,14 +1444,11 @@ export const mediaTypeOverlayCard = createStory(
         </div>
       </span>
     </div>
-  </div>,
-  {
-    initFunc,
-    omitTemplate: true,
-  }
+  </div>
 );
+mediaTypeOverlayCard.decorators = [htmlRootDecorator];
 
-export const RankingCardLarge = createStory(
+export const RankingCardLarge = () => (
   <div className="card-ranking large-image">
     <img
       src={cardsImage}
@@ -1506,11 +1504,17 @@ export const RankingCardLarge = createStory(
         </a>
       </div>
     </div>
-  </div>,
-  { initFunc: initRankFunc }
+  </div>
 );
+RankingCardLarge.parameters = {
+  initFunc: {
+    code: initRankFunc,
+    disable: false,
+  },
+}
+RankingCardLarge.decorators = [ defaultDecorator ];
 
-export const RankingCardSmall = createStory(
+export const RankingCardSmall = () => (
   <div className="card-ranking small-image">
     <div className="image-wrapper">
       <img
@@ -1574,6 +1578,12 @@ export const RankingCardSmall = createStory(
         </a>
       </div>
     </div>
-  </div>,
-  { initFunc: initRankFunc }
+  </div>
 );
+RankingCardSmall.parameters = {
+  initFunc: {
+    code: initRankFunc,
+    disable: false,
+  },
+}
+RankingCardSmall.decorators = [ defaultDecorator ];

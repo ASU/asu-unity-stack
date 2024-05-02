@@ -1,15 +1,17 @@
-import {
-  createComponent,
-  createStory,
-  layoutNames,
-} from "../../../helpers/wrapper.js";
+import React from "react";
+
+import { fullLayoutDecorator } from "../../../../../shared/components/Layout.js";
 import stockVideo from "../../atoms/video/stock-video-person-drawing.mp4";
 import cardsImage from "../cards/cards-image.jpg";
 import { initVideo as initFunc } from "./heroes-video";
 
-export default createComponent("Heroes", "Molecules", "Examples");
+export default {
+  title: "Molecules/Heroes/Examples",
+  decorators: [ fullLayoutDecorator ],
+  parameters: { controls: { disable: true } },
+};
 
-export const HeroSmallOneButton = createStory(
+export const HeroSmallOneButton = () => (
   <div className="uds-hero-sm has-btn-row">
     <div className="hero-overlay"></div>
     <img
@@ -42,16 +44,10 @@ export const HeroSmallOneButton = createStory(
         Find out more
       </a>
     </div>
-  </div>,
-  {
-    initFunc
-  }
+  </div>
 );
-HeroSmallOneButton.args = {
-  template: 0,
-};
 
-export const HeroMediumTwoButtons = createStory(
+export const HeroMediumTwoButtons = () => (
   <div className="uds-hero-md has-btn-row">
     <div className="hero-overlay"></div>
     <img
@@ -100,16 +96,11 @@ export const HeroMediumTwoButtons = createStory(
         Sign up for our newsletter
       </a>
     </div>
-  </div>,
-  {
-    initFunc
-  }
+  </div>
 );
-HeroMediumTwoButtons.args = {
-  template: 0,
-};
 
-export const HeroLargeOneButton = createStory(
+
+export const HeroLargeOneButton = () => (
   <div className="uds-hero-lg has-btn-row">
     <div className="hero-overlay"></div>
     <img
@@ -145,99 +136,90 @@ export const HeroLargeOneButton = createStory(
         Find your degree
       </a>
     </div>
-  </div>,
-  {
-    initFunc
-  }
+  </div>
 );
-HeroLargeOneButton.args = {
-  template: 0,
+
+
+export const HeroVideo = () => (
+  <div className="uds-hero-lg uds-video-hero has-btn-row">
+    <div className="hero-overlay"></div>
+    <img
+      className="hero"
+      src={cardsImage}
+      alt="Sample placeholder image."
+      width="2560"
+      height="512"
+      loading="lazy"
+      decoding="async"
+      fetchpriority="high"
+    />
+    <video id="media-video" autoPlay muted loop>
+      <source src={stockVideo} />
+      Your browser does not support the video tag.
+    </video>
+    <div className="video-hero-controls">
+      <button
+        id="playHeroVid"
+        type="button"
+        className="btn btn-circle btn-circle-alt-white btn-circle-large"
+      >
+        <span className="fa fa-play"></span>
+        <span className="visually-hidden">Play hero video</span>
+      </button>
+      <button
+        id="pauseHeroVid"
+        type="button"
+        className="btn btn-circle btn-circle-alt-white btn-circle-large uds-video-btn-play"
+      >
+        <span className="fa fa-pause"></span>
+        <span className="visually-hidden">Pause</span>
+      </button>
+    </div>
+    <h1>
+      <span className="highlight-white">
+        Be a collaborator in exploring space
+      </span>
+    </h1>
+    <div className="content">
+      <p className="text-white">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod incididunt ut labore et dolore magna aliqua eiusmod tempo.
+      </p>
+    </div>
+    <div className="btn-row">
+      <a
+        href="#"
+        className="btn btn-maroon"
+        data-ga="Call to action"
+        data-ga-name="onclick"
+        data-ga-event="link"
+        data-ga-action="click"
+        data-ga-type="internal link"
+        data-ga-region="main content"
+        data-ga-secion="the new american university"
+      >
+        Call to Action
+      </a>
+      <a
+        href="#"
+        className="btn btn-gold"
+        data-ga="Call to action"
+        data-ga-name="onclick"
+        data-ga-event="link"
+        data-ga-action="click"
+        data-ga-type="internal link"
+        data-ga-region="main content"
+        data-ga-secion="the new american university"
+      >
+        Second Call to Action
+      </a>
+    </div>
+  </div>
+);
+HeroVideo.parameters = {
+  initFunc: {
+    code: initFunc,
+    disable: false,
+  },
 };
 
-export const HeroVideo = createStory(
-  args => {
-    return (
-      <div className="uds-hero-lg uds-video-hero has-btn-row">
-        <div className="hero-overlay"></div>
-        <img
-          className="hero"
-          src={cardsImage}
-          alt="Sample placeholder image."
-          width="2560"
-          height="512"
-          loading="lazy"
-          decoding="async"
-          fetchpriority="high"
-        />
-        <video id="media-video" autoPlay muted loop>
-          <source src={stockVideo} />
-          Your browser does not support the video tag.
-        </video>
-        <div className="video-hero-controls">
-          <button
-            id="playHeroVid"
-            type="button"
-            className="btn btn-circle btn-circle-alt-white btn-circle-large"
-          >
-            <span className="fa fa-play"></span>
-            <span className="visually-hidden">Play hero video</span>
-          </button>
-          <button
-            id="pauseHeroVid"
-            type="button"
-            className="btn btn-circle btn-circle-alt-white btn-circle-large uds-video-btn-play"
-          >
-            <span className="fa fa-pause"></span>
-            <span className="visually-hidden">Pause</span>
-          </button>
-        </div>
-        <h1>
-          <span className="highlight-white">
-            Be a collaborator in exploring space
-          </span>
-        </h1>
-        <div className="content">
-          <p className="text-white">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod incididunt ut labore et dolore magna aliqua eiusmod tempo.
-          </p>
-        </div>
-        <div className="btn-row">
-          <a
-            href="#"
-            className="btn btn-maroon"
-            data-ga="Call to action"
-            data-ga-name="onclick"
-            data-ga-event="link"
-            data-ga-action="click"
-            data-ga-type="internal link"
-            data-ga-region="main content"
-            data-ga-secion="the new american university"
-          >
-            Call to Action
-          </a>
-          <a
-            href="#"
-            className="btn btn-gold"
-            data-ga="Call to action"
-            data-ga-name="onclick"
-            data-ga-event="link"
-            data-ga-action="click"
-            data-ga-type="internal link"
-            data-ga-region="main content"
-            data-ga-secion="the new american university"
-          >
-            Second Call to Action
-          </a>
-        </div>
-      </div>
-    );
-  },
-  {
-    initFunc,
-    supportedTemplates: [layoutNames.FULL_WIDTH],
-  }
-);
-HeroVideo.args = {
-  template: 0,
-};

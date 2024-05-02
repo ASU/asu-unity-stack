@@ -1,3 +1,10 @@
+# [@asu/component-events-v2.1.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v2.1.0...@asu/component-events-v2.1.1) (2024-05-01)
+
+
+### Bug Fixes
+
+* **components-core:** fix Card image styles ([57ef568](https://github.com/asu/asu-unity-stack/commit/57ef568f50a0b0333b7f107ef15b45de187d19bd))
+
 # [@asu/component-events-v2.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v2.0.3...@asu/component-events-v2.1.0) (2024-01-11)
 
 

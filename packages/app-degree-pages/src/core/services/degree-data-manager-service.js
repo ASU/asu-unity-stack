@@ -46,29 +46,32 @@ function filterData({
     !isAccelConcValid(acceleratedConcurrent) ||
     row[acceleratedConcurrent.value]?.length > 0;
 
-  const filterByKeyword = resolver =>
-    !keyword || resolver.getFullDescription()?.includes(keyword);
+    const filterByKeyword = (resolver, searchTerm) => {
+      if (!searchTerm) return true;
+      const regex = new RegExp(searchTerm, 'i');
+      return regex.test(resolver.getFullDescription());
+  };
 
   const filterByBlacklist = resolver =>
     !blacklistAcadPlans?.includes(resolver.getAcadPlan());
 
   /**
- * Filters graduate certificates based on the program type and whether certificates should be shown.
- */
-const filterGraduateCerts = resolver => {
-  // If the program is undergraduate, always include it.
-  if (program === "undergrad") return true;
+   * Filters graduate certificates based on the program type and whether certificates should be shown.
+   */
+  const filterGraduateCerts = resolver => {
+    // If the program is undergraduate, always include it.
+    if (program === "undergrad") return true;
 
-  // If showing certificates is enabled and the program is graduate,
-  // include it only if it's a minor or certificate.
-  if (showCerts === "true" && program === "graduate") {
-    return resolver.isMinorOrCertificate();
-  }
+    // If showing certificates is enabled and the program is graduate,
+    // include it only if it's a minor or certificate.
+    if (showCerts === "true" && program === "graduate") {
+      return resolver.isMinorOrCertificate();
+    }
 
-  // If the program is not undergraduate and showing certificates is not enabled
-  // include it only if it's a PhD or Masters. This also includes doctorate programs.
-  return resolver.isPhdOrMasters();
-}
+    // If the program is not undergraduate and showing certificates is not enabled
+    // include it only if it's a PhD or Masters. This also includes doctorate programs.
+    return resolver.isPhdOrMasters();
+  };
 
   const applyFilters = row => {
     const resolver = degreeDataPropResolverService(row);
@@ -78,7 +81,7 @@ const filterGraduateCerts = resolver => {
       filterByDepartmentCode(resolver) &&
       filterByCampus(resolver) &&
       filterByAcceleratedConcurrent(row) &&
-      filterByKeyword(resolver) &&
+      filterByKeyword(resolver, keyword) &&
       filterByBlacklist(resolver) &&
       filterGraduateCerts(resolver)
     );
