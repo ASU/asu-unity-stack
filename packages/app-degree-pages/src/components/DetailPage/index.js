@@ -323,13 +323,11 @@ const DetailPage = ({
                   />
                 )}
 
-                {
-                  resolver.getProfessionalLicensureText() && (
-                    <ProfessionalLicensure
-                      content={resolver.getProfessionalLicensureText()}
-                    />
-                  )
-                }
+                {resolver.getProfessionalLicensureText() && (
+                  <ProfessionalLicensure
+                    content={resolver.getProfessionalLicensureText()}
+                  />
+                )}
 
                 {/* <CustomizeYourCollegeExperience /> */}
 

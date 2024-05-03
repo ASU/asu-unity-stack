@@ -139,10 +139,21 @@ function degreeDataPropResolverService(row = {}) {
     /** @return {string} */
     getPhone: () => row["phoneNumber"]?.replace("/", "-"),
     /** @return {string} */
-    getProfessionalLicensureText: () => {
+    getProfessionalLicensureText() {
       const standardText = row["professionalLicensureStandardText"] || "";
       const additionalText = row["professionalLicensureAdditionalText"] || "";
-      return `${standardText}${additionalText}`;
+      const combinedText = `${standardText}${additionalText}`;
+
+      try {
+        const doc = new DOMParser().parseFromString(combinedText, "text/html");
+        if (doc.querySelector("parsererror")) {
+          return "";
+        }
+      } catch (error) {
+        console.error("Error parsing HTML: ", error.message);
+        return "";
+      }
+      return combinedText;
     },
     /** @return {string} */
     getDepartmentName: () => getMajorityOwner(row)?.departmentDescription,
