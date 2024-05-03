@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.9.13](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.12...@asu/unity-bootstrap-theme-v1.9.13) (2024-05-03)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix parallax image styles/remove unused stories ([7e0aa5d](https://github.com/ASU/asu-unity-stack/commit/7e0aa5db2f3c38dda5821ed54ee93e01c49fee35))
+
 # [@asu/unity-bootstrap-theme-v1.9.12](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.11...@asu/unity-bootstrap-theme-v1.9.12) (2024-05-01)
 
 
