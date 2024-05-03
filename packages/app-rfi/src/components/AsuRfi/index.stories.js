@@ -45,7 +45,7 @@ RfiDefault.args = {
   isCertMinor: false,
   country: undefined,
   stateProvince: undefined, // Only US states or CA provinces - use full name.
-  successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
+  successMsg: undefined,
   test: false,
   dataSourceDegreeSearch: undefined, // "https://degrees.apps.asu.edu/t5/service",
   dataSourceAsuOnline: undefined, // "https://cms.asuonline.asu.edu/lead-submissions-v3.5/programs",
@@ -66,7 +66,7 @@ RfiOnCollegePage.args = {
   isCertMinor: false,
   country: undefined,
   stateProvince: undefined, // Only US states or CA provinces
-  successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
+  successMsg: undefined,
   test: false,
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
@@ -87,7 +87,7 @@ RfiOnCollegePageWithAreaOfInterest.args = {
   isCertMinor: false,
   country: undefined,
   stateProvince: undefined, // Only US states or CA provinces
-  successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
+  successMsg: undefined,
   test: false,
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
@@ -111,7 +111,7 @@ RfiOnDegreePageUndergraduate.args = {
   isCertMinor: false,
   country: undefined,
   stateProvince: undefined, // Only US states or CA provinces
-  successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
+  successMsg: undefined,
   test: false,
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
@@ -132,7 +132,7 @@ RfiOnDegreePageGraduate.args = {
   isCertMinor: false,
   country: undefined,
   stateProvince: undefined, // Only US states or CA provinces
-  successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
+  successMsg: undefined,
   test: false,
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
@@ -153,7 +153,7 @@ RfiOnCollegeDepartmentPage.args = {
   isCertMinor: false,
   country: undefined,
   stateProvince: undefined, // Only US states or CA provinces
-  successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
+  successMsg: undefined,
   test: false,
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
@@ -174,7 +174,7 @@ RfiOnNonAcademicUnitPage.args = {
   isCertMinor: false,
   country: undefined,
   stateProvince: undefined, // Only US states or CA provinces
-  successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
+  successMsg: undefined,
   test: false,
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
@@ -216,7 +216,7 @@ RfiOnCampaignLandingPage.args = {
   isCertMinor: false,
   country: "US",
   stateProvince: "New Mexico", // Only US states or CA provinces
-  successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
+  successMsg: undefined,
   test: false,
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
@@ -237,7 +237,7 @@ RfiTestMode.args = {
   isCertMinor: false,
   country: "US",
   stateProvince: "California", // Only US states or CA provinces
-  successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
+  successMsg: undefined,
   test: true,
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
