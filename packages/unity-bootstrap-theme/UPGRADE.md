@@ -52,7 +52,7 @@ Most design components' markup changed little or not at all in this update. A fe
 - The `card-header` class in accordions has been replaced with `accordion-header` and the `card-header-button` class has been replaced with `accordion-button`.
 - The `card-body` class in accordions has been replaced with `accordion-body`.
 
-  This mainly applies to the accordion component that is wrapped in the `accordion` class. See [these examples](https://https://unity.web.asu.edu/@asu/unity-bootstrap-theme/?path=/story/atoms-accordions-examples--color-accents&globals=backgrounds.grid:false) for the unity markup. *Classes in the footer have also been changed when there are dropdowns present. These are NOT wrapped in an `accordion` class wrapper.*
+  This mainly applies to the accordion component that is wrapped in the `accordion` class. See [these examples](https://https://asu.github.io/asu-unity-stack/@asu/unity-bootstrap-theme/?path=/story/atoms-accordions-examples--color-accents&globals=backgrounds.grid:false) for the unity markup. *Classes in the footer have also been changed when there are dropdowns present. These are NOT wrapped in an `accordion` class wrapper.*
 
   This does not apply to the sidebar as we use custom cards for that.
 
