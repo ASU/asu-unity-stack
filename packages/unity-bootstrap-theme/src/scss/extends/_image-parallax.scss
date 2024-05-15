@@ -4,11 +4,14 @@
   img {
     position: absolute;
     width: 100%;
+    object-fit: cover;
   }
 
   .parallax-container-content {
-    width: 600px;
-    position: absolute;
+    position: relative;
+    width: 75%;
+    min-width: 250px;
+    margin: auto;
     top: 150px;
     background-color: white;
     padding: $uds-size-spacing-6;
@@ -44,8 +47,10 @@
   height: 700px;
 
   .parallax-container-content {
-    height: 400px;
-    left: 75px;
+    width: 75%;
+    max-width: 550px;
+    min-width: 250px;
+    margin: auto;
 
     @media screen and (max-width: $uds-breakpoint-md) {
       left: 25px;
@@ -66,21 +71,6 @@
         margin-right: $uds-size-spacing-2;
         margin-top: 0;
       }
-    }
-  }
-}
-.asu-for-you {
-  height: 800px;
-  background-size: cover;
-  background-position: center;
-  background-image: url('https://ux-annual-report.ws.asu.edu/sites/all/libraries/Prototype/images/asuForYouBG.png');
-
-  .parallax-container-content {
-    height: 500px;
-    right: 75px;
-    @media screen and (max-width: $uds-breakpoint-md) {
-      right: 25px;
-      height: 450px;
     }
   }
 }

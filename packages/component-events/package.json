@@ -1,6 +1,6 @@
 {
   "name": "@asu/component-events",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "ASU Events component",
   "main": "./dist/asuEvents.cjs.js",
   "browser": "./dist/asuEvents.umd.js",
@@ -93,9 +93,7 @@
     "webpack-filter-warnings-plugin": "^1.2.1",
     "webpack-merge": "^5.8.0"
   },
-  "peerDependencies": {
-
-  },
+  "peerDependencies": {},
   "volta": {
     "extends": "../../package.json"
   }

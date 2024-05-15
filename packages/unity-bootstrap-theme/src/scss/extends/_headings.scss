@@ -54,6 +54,10 @@ h1, .h1 {
   line-height: $heading-one-line-height;
   letter-spacing: $heading-one-letter-spacing;
 
+  span[class^='highlight-'] {
+    padding: .5px 0;
+  }
+
   &.article {
     font-size: $heading-one-article-font-size;
     line-height: $heading-one-article-line-height;

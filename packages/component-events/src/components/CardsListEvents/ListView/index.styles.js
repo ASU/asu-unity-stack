@@ -26,9 +26,6 @@ const ListViewWrapper = styled.ul`
   @media (max-width: 992px) {
     .card {
       height: 100%;
-      .card-content-wrapper {
-        padding-top: 0 !important;
-      }
       .card-event-details {
         flex-direction: column;
         .card-event-icons {

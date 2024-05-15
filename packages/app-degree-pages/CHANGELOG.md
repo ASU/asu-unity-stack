@@ -1,3 +1,10 @@
+# [@asu/app-degree-pages-v2.5.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.5.1...@asu/app-degree-pages-v2.5.2) (2024-04-30)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** fix bs4 regression Spacing on filters ([a7bb031](https://github.com/asu/asu-unity-stack/commit/a7bb03132b558e9e817cc03b69952f287794e05f))
+
 # [@asu/app-degree-pages-v2.5.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.5.0...@asu/app-degree-pages-v2.5.1) (2024-04-15)
 
 

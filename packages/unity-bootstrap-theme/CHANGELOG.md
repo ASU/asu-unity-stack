@@ -1,3 +1,26 @@
+# [@asu/unity-bootstrap-theme-v1.9.14](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.13...@asu/unity-bootstrap-theme-v1.9.14) (2024-05-04)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fixed overlapping h1 when text wraps ([3c2d9dc](https://github.com/ASU/asu-unity-stack/commit/3c2d9dcbdc92b7115b78939934037e370b52fe57))
+* **unity-bootstrap-theme:** fixed pixel clipping in hero headings ([76e40d6](https://github.com/ASU/asu-unity-stack/commit/76e40d64d16332861a11dbfa828c5bd205808853))
+* **unity-bootstrap-theme:** fixed space between highlighted header ([03b0b23](https://github.com/ASU/asu-unity-stack/commit/03b0b23d907cc9ecaa51414fa0891d97734ea29c))
+
+# [@asu/unity-bootstrap-theme-v1.9.13](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.12...@asu/unity-bootstrap-theme-v1.9.13) (2024-05-03)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix parallax image styles/remove unused stories ([7e0aa5d](https://github.com/ASU/asu-unity-stack/commit/7e0aa5db2f3c38dda5821ed54ee93e01c49fee35))
+
+# [@asu/unity-bootstrap-theme-v1.9.12](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.11...@asu/unity-bootstrap-theme-v1.9.12) (2024-05-01)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix Card image styles ([be3dfc5](https://github.com/ASU/asu-unity-stack/commit/be3dfc5dd056c8630369da47618aead9b894ae83))
+
 # [@asu/unity-bootstrap-theme-v1.9.11](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.10...@asu/unity-bootstrap-theme-v1.9.11) (2024-04-15)
 
 

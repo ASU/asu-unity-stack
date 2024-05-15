@@ -1,9 +1,7 @@
 # ASU Unity Design System (UDS)
 
 ## Table of Contents
-
 - [ASU Unity Design System (UDS)](#asu-unity-design-system-uds)
-  - [Table of Contents](#table-of-contents)
   - [Quickstart Guide](#quickstart-guide)
   - [Consuming Unity packages in your project:](#consuming-unity-packages-in-your-project)
   - [How to use the private package registry:](#how-to-use-the-private-package-registry)
