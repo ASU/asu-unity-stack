@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.9.15](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.14...@asu/unity-bootstrap-theme-v1.9.15) (2024-05-17)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fixed image CTA style not wrapping ([6f6b686](https://github.com/ASU/asu-unity-stack/commit/6f6b686a630bb2a5234a4791110b270a3cb4ece8))
+
 # [@asu/unity-bootstrap-theme-v1.9.14](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.13...@asu/unity-bootstrap-theme-v1.9.14) (2024-05-04)
 
 
