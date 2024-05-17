@@ -14,6 +14,7 @@ const parameters = {
       "Web Directory/Templates: Web Directory Example Departments\$",
       "Search Page/Templates: Search Page Example\$"
     ],
+    waitForTimeout: 5000,
   },
 };
 
