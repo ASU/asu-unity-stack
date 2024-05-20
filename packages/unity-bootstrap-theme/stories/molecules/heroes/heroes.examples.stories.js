@@ -11,7 +11,7 @@ export default {
   parameters: { controls: { disable: true } },
 };
 
-export const HeroSmallOneButton = () => (
+export const HeroSmallWithButtons = () => (
   <div className="uds-hero-sm has-btn-row">
     <div className="hero-overlay"></div>
     <img
@@ -25,14 +25,27 @@ export const HeroSmallOneButton = () => (
       fetchpriority="high"
     />
     <h1>
-      <span className="highlight-gold">
+      <span className="text-white">
         ASU named prestigious university
       </span>
     </h1>
     <div className="btn-row">
       <a
         href="#"
-        className="btn btn-dark"
+        className="btn btn-primary btn-default"
+        data-ga="Call to action"
+        data-ga-name="onclick"
+        data-ga-event="link"
+        data-ga-action="click"
+        data-ga-type="internal link"
+        data-ga-region="main content"
+        data-ga-secion="the new american university"
+      >
+        Find out more
+      </a>
+      <a
+        href="#"
+        className="btn btn-gold"
         data-ga="Call to action"
         data-ga-name="onclick"
         data-ga-event="link"
@@ -61,7 +74,7 @@ export const HeroMediumTwoButtons = () => (
       fetchpriority="high"
     />
     <h1>
-      <span className="highlight-white">Turning the tide on our coral reefs</span>
+      <span className="text-white">Turning the tide on our coral reefs</span>
     </h1>
     <div className="content">
       <p className="text-white">
@@ -100,7 +113,7 @@ export const HeroMediumTwoButtons = () => (
 );
 
 
-export const HeroLargeOneButton = () => (
+export const HeroLargeWithButtons = () => (
   <div className="uds-hero-lg has-btn-row">
     <div className="hero-overlay"></div>
     <img
@@ -124,7 +137,7 @@ export const HeroLargeOneButton = () => (
     <div className="btn-row">
       <a
         href="#"
-        className="btn btn-default btn-gold"
+        className="btn btn-default btn-primary"
         data-ga="Read more"
         data-ga-name="onclick"
         data-ga-event="link"
@@ -134,6 +147,19 @@ export const HeroLargeOneButton = () => (
         data-ga-section="gettysburg address"
       >
         Find your degree
+      </a>
+      <a
+        href="#"
+        className="btn btn-default btn-gold"
+        data-ga="Read more"
+        data-ga-name="onclick"
+        data-ga-event="link"
+        data-ga-action="click"
+        data-ga-type="internal link"
+        data-ga-region="main content"
+        data-ga-section="gettysburg address"
+      >
+        Example link
       </a>
     </div>
   </div>
