@@ -48,6 +48,7 @@ function headingHeroHtmlTemplate({
     gold: "highlight-gold",
     black: "highlight-black",
     white: "highlight-white",
+    none: "text-white",
     undefined: "",
   };
 
@@ -63,6 +64,7 @@ function headingHeroHtmlTemplate({
         [imageSize[image?.size]]: image?.size,
       })}
     >
+      <div className="hero-overlay"></div>
       <HeroImage
         className="hero"
         src={image?.url}

@@ -18,6 +18,14 @@ export default {
       },
     },
   },
+  argTypes: {
+    title: {
+      control: {
+        type: 'object',
+      },
+      description: 'Options for highlightColor are gold, white, black, or none',
+    },
+  },
 };
 
 /**
@@ -46,7 +54,7 @@ HeroSmall.args = {
   },
   title: {
     text: "Heading with a long title 1",
-    highlightColor: "gold",
+    highlightColor: "none",
   },
 };
 HeroSmall.parameters = {
