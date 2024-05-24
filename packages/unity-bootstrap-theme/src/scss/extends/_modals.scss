@@ -40,6 +40,9 @@
     text-decoration: none;
     top: -$uds-size-spacing-7; // -56 px (24px away from top + 32px height of button)
     width: $uds-size-spacing-4 !important; // 2rem
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     .fa-xmark {
       color: $uds-color-base-gray-7;

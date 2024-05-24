@@ -45,6 +45,9 @@
     .close {
       opacity: 1;
       font-size: $uds-size-font-small;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       &:hover {
         opacity: 1;
