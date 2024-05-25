@@ -2,6 +2,7 @@
 import React from "react";
 
 import { trackGAEvent } from "../../../../../shared";
+import { FOOTER_URLS } from "../../core/constants";
 // @ts-ignore
 import innovationLogo from "../../assets/images/innovationLogo.png";
 
@@ -24,7 +25,7 @@ const Innovation = () => {
               <nav className="nav" aria-label="University Services">
                 <a
                   className="nav-link"
-                  href="https://www.asu.edu/about/locations-maps"
+                  href={FOOTER_URLS.MAPS_AND_LOCATIONS}
                   onFocus={() =>
                     trackGAEvent({
                       ...DEFAULT_GA_EVENT,
@@ -36,7 +37,7 @@ const Innovation = () => {
                 </a>
                 <a
                   className="nav-link"
-                  href="https://www.asu.edu/asujobs"
+                  href={FOOTER_URLS.JOBS}
                   onFocus={() =>
                     trackGAEvent({
                       ...DEFAULT_GA_EVENT,
@@ -48,7 +49,7 @@ const Innovation = () => {
                 </a>
                 <a
                   className="nav-link"
-                  href="https://isearch.asu.edu/"
+                  href={FOOTER_URLS.DIRECTORY}
                   onFocus={() =>
                     trackGAEvent({
                       ...DEFAULT_GA_EVENT,
@@ -60,7 +61,7 @@ const Innovation = () => {
                 </a>
                 <a
                   className="nav-link"
-                  href="https://www.asu.edu/about/contact"
+                  href={FOOTER_URLS.CONTACT_ASU}
                   onFocus={() =>
                     trackGAEvent({
                       ...DEFAULT_GA_EVENT,
@@ -72,7 +73,7 @@ const Innovation = () => {
                 </a>
                 <a
                   className="nav-link"
-                  href="https://my.asu.edu/"
+                  href={FOOTER_URLS.MY_ASU}
                   onFocus={() =>
                     trackGAEvent({
                       ...DEFAULT_GA_EVENT,
@@ -85,7 +86,7 @@ const Innovation = () => {
               </nav>
               <a
                 className="img-link"
-                href="https://www.asu.edu/rankings"
+                href={FOOTER_URLS.RANKINGS}
                 onFocus={() =>
                   trackGAEvent({
                     ...DEFAULT_GA_EVENT,
