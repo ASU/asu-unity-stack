@@ -67,7 +67,6 @@ const ASUSearchResultsList = ({
   const [subtitle, setSubtitle] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalResults, setTotalResults] = useState(null);
-  const [isAnon, setIsAnon] = useState(false);
   const cardSize = type === "micro" ? "micro" : "large";
   const searchList = useRef(null);
   const controller = new AbortController();
@@ -151,11 +150,8 @@ const ASUSearchResultsList = ({
                 GASource={GASource}
               />
             );
-          } else {
-            // setSubtitle(
-            //   `Results found: ${formattedResults.page.total_results}`
-            // );
           }
+
           setIsLoading(false);
           trackGAEvent({
             event: "search",
@@ -231,7 +227,7 @@ const ASUSearchResultsList = ({
           ) : (
             <div className="results-found">No results found</div>
           )}
-          {!hidePaginator && !isAnon && totalResults >= itemsPerPage && (
+          {!hidePaginator && totalResults >= itemsPerPage && (
             <Pagination
               type="default"
               background="white"

@@ -3,13 +3,13 @@
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 
+import trackReactComponent from "../../../../shared/services/componentDatalayer";
 import FacultyRankTabPanels from "../FacultyRankComponent";
 import { FilterComponent } from "../helpers/Filter";
 import { engineNames, engines } from "../helpers/search";
 import { SortPicker } from "../SearchPage/components/sort";
 import { ASUSearchResultsList } from "../SearchResultsList";
 import { WebDirLayout, FacultyRankLayout } from "./index.styles";
-import trackReactComponent from "../../../../shared/services/componentDatalayer";
 
 /**
  * React component for displaying web directory search results.
