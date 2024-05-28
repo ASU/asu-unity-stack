@@ -96,6 +96,7 @@ function getServiceUrl({
  * @returns {Promise<FetchDataSuccessResponse|FetchDataErrorResponse>}
  */
 export async function fetchDegreesData(params) {
+  console.log("fetchDegreeData");
   const serviceUrl = getServiceUrl(params);
   let options = {};
   if (params.Campus === KEY.ONLINE) {
@@ -106,6 +107,8 @@ export async function fetchDegreesData(params) {
       },
     };
   }
+
+  console.log(`fetch: ${serviceUrl.replace("https://", "")}`);
   return (
     fetch(serviceUrl, options)
       // Handle as text first due to encoding issues.

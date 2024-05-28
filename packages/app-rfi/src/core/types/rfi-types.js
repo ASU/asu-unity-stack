@@ -16,6 +16,7 @@
  * @property {string} [stateProvince]
  * @property {string} [successMsg]
  * @property {boolean} [test]
+ * @property {string} [appVariant]
  * @property {string} [dataSourceDegreeSearch]
  * @property {string} [dataSourceAsuOnline]
  * @property {string} [dataSourceCountriesStates]
@@ -24,7 +25,13 @@
 
 /**
  * @typedef {Object} RFIContext
+ * @property {object} [rfiProps]
+ * @property {import("formik").FormikContextType<any>} [formik]
+ * @property {function} [goBack]
+ * @property {import("typescript").JsxElement} [step]
  * @property {string} [appPathFolder]
+ * @property {import("../utils/datasource-helper").AcadPlan} degreeData
+ * @property {import("../utils/datasource-helper").AcadPlan[]} degreeDataList
  * @property {string} [campusType] // campus prop renamed for clarity
  * @property {string} [filterByCampusCode] // actualCampus prop renamed for clarity
  * @property {string} [filterByCollegeCode]  // college prop renamed for clarity

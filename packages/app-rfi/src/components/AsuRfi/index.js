@@ -1,25 +1,30 @@
 // @ts-check
 /* eslint react/jsx-props-no-spreading: "off" */
+import { Form, FormikProvider, useFormik } from "formik";
 import PropTypes from "prop-types";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 // Requires peer dependency of @asu/unity-bootstrap-theme
 // We import the styles in .storybook/preview-head.html for Storybook
 // rendering, but otherwise, we only worry about using the correct markup and
 // tweaking a few styles
 
+import { Progress } from "reactstrap";
+
 import trackReactComponent from "../../../../../shared/services/componentDatalayer";
+import { betterPropNames, useRfiState } from "../../core/utils/appState";
 import { DATA_SOURCE } from "../../core/utils/constants";
 import { RfiContext } from "../../core/utils/rfiContext";
 import { RfiMainForm } from "../stepper/RfiMainForm";
 import "./index.css";
+import { getCurrentScriptPath } from "../../../../../shared";
+import { Debug } from "../../Debug";
+import { RfiStepperButtons } from "../stepper/RfiStepper";
+
+const currentScriptPath = getCurrentScriptPath();
 
 /**
- * @typedef {import("../../core/types/rfi-types").RFIProps} RFIProps
- */
-
-/**
- * @param {RFIProps} props
+ * @param {import("../../core/types/rfi-types").RFIProps} props
  * @return {JSX.Element}
  */
 const AsuRfi = props => {
@@ -61,9 +66,12 @@ const AsuRfi = props => {
     return <></>;
   }
 
+  const rfiState = useRfiState(betterPropNames(props));
+  window["rfiState"] = rfiState;
   return (
     <RfiContext.Provider
       value={{
+        ...rfiState,
         appPathFolder,
         campusType: campus,
         filterByCampusCode: actualCampus,
@@ -85,7 +93,40 @@ const AsuRfi = props => {
       }}
     >
       <div>
-        <RfiMainForm />
+        <FormikProvider value={rfiState.formik}>
+          <RfiMainForm
+            rfiImage={`${
+              appPathFolder || currentScriptPath
+            }/assets/img/WS2-DefaultImagev01-Final.png`}
+          >
+            <div>
+              {rfiState.showProgress && (
+                <Progress
+                  value={Math.floor(
+                    (rfiState.stepNumber / rfiState.totalSteps) * 100
+                  )}
+                  aria-label="Progress bar"
+                  className="rfi-progress"
+                />
+              )}
+              <div className="uds-rfi-form-wrapper">
+                <Form className="uds-form uds-rfi">
+                  {rfiState.step}
+                  {rfiState.showStepButtons && (
+                    <RfiStepperButtons
+                      stepNumber={rfiState.stepNumber}
+                      totalSteps={rfiState.totalSteps}
+                      section={rfiState.step.props.section}
+                      handleBack={rfiState.goBack}
+                      submitting={rfiState.formik.isSubmitting}
+                    />
+                  )}
+                  {test && <Debug />}
+                </Form>
+              </div>
+            </div>
+          </RfiMainForm>
+        </FormikProvider>
       </div>
     </RfiContext.Provider>
   );

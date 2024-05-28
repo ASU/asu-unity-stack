@@ -10,6 +10,7 @@ import { trackGAEvent, sanitizeDangerousMarkup } from "../../../../../shared";
 import { KEY } from "../../core/utils/constants";
 import { fetchDegreesData } from "../../core/utils/fetchPrograms";
 import { useRfiContext } from "../../core/utils/rfiContext";
+import { Debug } from "../../Debug";
 
 const defaultButtonEvent = {
   event: "form",
@@ -179,7 +180,7 @@ const RfiStepper = props => {
       />
       <div className="uds-rfi-form-wrapper">
         {/* Don't display step details if we're on the success "step". */}
-        {step !== lastStep ? (
+        {step !== totalSteps ? (
           <div className="rfi-steps">{`Step ${step + 1} of ${totalSteps}`}</div>
         ) : undefined}
         <StepHeader />
@@ -198,7 +199,7 @@ const RfiStepper = props => {
               setSubmitting(false);
 
               // Submit on step before success/last step.
-              if (step === lastStep - 1) {
+              if (step === totalSteps - 1) {
                 handleSubmit(values);
                 // TODO add a check for success before resetting form and
                 // advancing? That way we could display a "try again in a few
@@ -216,8 +217,8 @@ const RfiStepper = props => {
           {formik => (
             <Form className="uds-form uds-rfi">
               {React.createElement(formComponent, props)}
-              {/* Render lastStep without stepper buttons. */}
-              {step !== lastStep && (
+              {/* Render totalSteps without stepper buttons. */}
+              {step !== totalSteps && (
                 <>
                   <div className="rfi-required-footnote" title="Required">
                     <i
@@ -227,20 +228,15 @@ const RfiStepper = props => {
                     Required
                   </div>
                   <RfiStepperButtons
-                    stepNum={step}
-                    lastStep={lastStep}
+                    stepNumber={step}
+                    totalSteps={totalSteps}
                     section={section}
                     handleBack={prev}
                     submitting={formik.isSubmitting}
                   />
                 </>
               )}
-              {test &&
-                Object.entries(formik.values).map(([key, value]) => (
-                  <div key={key}>
-                    {key}: <strong>{value}</strong>
-                  </div>
-                ))}
+              {test && <Debug />}
             </Form>
           )}
         </Formik>
@@ -260,79 +256,87 @@ const RfiStepper = props => {
 // rewrite happens, the FA switcheroo is happening a layer below the element
 // that in this case React is trying to remove.
 
-const RfiStepperButtons = ({
-  stepNum,
-  lastStep,
+export const RfiStepperButtons = ({
+  stepNumber,
+  totalSteps,
   section,
   handleBack,
   submitting,
-}) => (
-  <nav aria-label="Request information form" className="container">
-    <div className="row justify-content-end">
-      <div className="col-6">
-        {stepNum > 0 ? (
-          <Button
-            type="button"
-            onClick={() => {
-              handleBack();
-              trackGAEvent({
-                ...defaultButtonEvent,
-                section,
-                text: "prev",
-                component: `step ${stepNum + 1} of ${lastStep}`,
-              });
-            }}
-          >
-            <span>
-              <i className="fas fa-angle-left" aria-hidden="true" />
-            </span>{" "}
-            Prev
-          </Button>
-        ) : null}
+}) => {
+  return (
+    <>
+      <div className="rfi-required-footnote" title="Required">
+        <i className="fas fa-circle uds-field-required" aria-hidden="true" />{" "}
+        Required
       </div>
-      <div className="col-6 text-right">
-        {/* Note: rfi-button and rfi-button-stepN classes are used by GA */}
-        {stepNum < lastStep - 1 ? (
-          <Button
-            type="submit"
-            className={`rfi-button-step${stepNum + 1}`}
-            onClick={() =>
-              trackGAEvent({
-                ...defaultButtonEvent,
-                section,
-                text: "next",
-                component: `step ${stepNum + 1} of ${lastStep}`,
-              })
-            }
-          >
-            Next{" "}
-            <span>
-              <i className="fas fa-angle-right" aria-hidden="true" />
-            </span>
-          </Button>
-        ) : (
-          <Button
-            type="submit"
-            className="rfi-submit btn btn-gold"
-            disabled={!!submitting}
-            onClick={() =>
-              trackGAEvent({
-                ...defaultButtonEvent,
-                event: "form",
-                type: "submit",
-                section,
-                text: "submit",
-                component: `step ${stepNum + 1} of ${lastStep}`,
-              })
-            }
-          >
-            Submit
-          </Button>
-        )}
-      </div>
-    </div>
-  </nav>
-);
+      <nav aria-label="Request information form" className="container">
+        <div className="row justify-content-end">
+          <div className="col-6">
+            {stepNumber > 0 ? (
+              <Button
+                type="button"
+                onClick={() => {
+                  handleBack();
+                  trackGAEvent({
+                    ...defaultButtonEvent,
+                    section,
+                    text: "prev",
+                    component: `step ${stepNumber + 1} of ${totalSteps}`,
+                  });
+                }}
+              >
+                <span>
+                  <i className="fas fa-angle-left" aria-hidden="true" />
+                </span>{" "}
+                Prev
+              </Button>
+            ) : null}
+          </div>
+          <div className="col-6 text-right">
+            {/* Note: rfi-button and rfi-button-stepN classes are used by GA */}
+            {stepNumber < totalSteps - 1 ? (
+              <Button
+                type="submit"
+                className={`rfi-button-step${stepNumber + 1}`}
+                onClick={() =>
+                  trackGAEvent({
+                    ...defaultButtonEvent,
+                    section,
+                    text: "next",
+                    component: `step ${stepNumber + 1} of ${totalSteps}`,
+                  })
+                }
+              >
+                Next{" "}
+                <span>
+                  <i className="fas fa-angle-right" aria-hidden="true" />
+                </span>
+              </Button>
+            ) : (
+              <Button
+                type="submit"
+                className="rfi-submit btn btn-gold"
+                disabled={!!submitting}
+                onClick={() =>
+                  trackGAEvent({
+                    ...defaultButtonEvent,
+                    event: "form",
+                    type: "submit",
+                    section,
+                    text: "submit",
+                    component: `step ${stepNumber + 1} of ${totalSteps}`,
+                  })
+                }
+              >
+                Submit
+              </Button>
+            )}
+          </div>
+        </div>
+      </nav>
+    </>
+  );
+};
 
 RfiStepper.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
@@ -344,8 +348,8 @@ RfiStepper.propTypes = {
 };
 
 RfiStepperButtons.propTypes = {
-  stepNum: PropTypes.number.isRequired,
-  lastStep: PropTypes.number.isRequired,
+  stepNumber: PropTypes.number.isRequired,
+  totalSteps: PropTypes.number.isRequired,
   section: PropTypes.string,
   handleBack: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,

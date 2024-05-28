@@ -127,7 +127,7 @@ const veteranStatusOptions = [
 
 // Component
 
-const Optional = () => {
+export const Optional = () => {
   const { dataSourceCountriesStates } = useRfiContext();
   const [countryOptions, setCountries] = useState([
     {

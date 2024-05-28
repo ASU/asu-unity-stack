@@ -46,7 +46,9 @@ const RfiSelect = ({
           onBlur?.(e);
         }}
       >
-        <option defaultValue>Select&hellip;</option>
+        <option defaultValue value="">
+          Select&hellip;
+        </option>
         {options.map(option => (
           <option
             key={option.key ? option.key : option.value}

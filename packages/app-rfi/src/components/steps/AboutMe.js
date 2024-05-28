@@ -17,6 +17,7 @@ import {
   RfiPhone,
   RfiCheckboxSingle,
 } from "../controls";
+import { GdprConsent } from "./GdprConsent";
 
 const defaultInputEvent = {
   event: "form",
@@ -27,52 +28,7 @@ const defaultInputEvent = {
   component: "step 2 of 3",
 };
 
-function createMarkup(output) {
-  return { __html: output };
-}
-
 // Components
-
-const RfiGdpr = ({ campus }) => {
-  let gdprWording = `By submitting my information, I consent to ASU contacting me about education services using email, direct mail, SMS/texting and digital platforms. Message and data rates may apply. Consent is not required to receive services, and I can withdraw consent by contacting ASU at <a href="mailto:UnsubFutureStudentComm@asu.edu">UnsubFutureStudentComm@asu.edu</a> or as described in communications I receive. I consent to ASU’s <a href="https://asuonline.asu.edu/text-terms/">mobile terms and conditions</a> and <a href="https://asuonline.asu.edu/web-analytics-privacy-2/">Privacy Statements</a>, including the European Supplement.`;
-  if (campus === KEY.ONLNE) {
-    gdprWording = `By submitting my information, I consent to ASU contacting me about educational services using automated calls, prerecorded voice messages, SMS/text messages or email at the information provided above. Message and data rates may apply. Consent is not required to receive services, and I may call ASU directly at <a href="tel:8662776589">866-277-6589</a>. I consent to ASU’s <a href="https://asuonline.asu.edu/text-terms/">mobile terms and conditions</a>, and <a href="https://asuonline.asu.edu/web-analytics-privacy-2/">Privacy Statements</a>, including the European Supplement.`;
-  }
-  return (
-    <div className="rfi-consent">
-      <div
-        className="rfi-consent-wording"
-        dangerouslySetInnerHTML={createMarkup(gdprWording)}
-      />
-      <RfiCheckboxSingle
-        id="GdprConsent"
-        name="GdprConsent"
-        value="1"
-        requiredIcon
-        required
-        onBlur={e => {
-          trackGAEvent({
-            ...defaultInputEvent,
-            action: e.target.checked ? "click" : "unclick",
-            event: "select",
-            type: "checkbox",
-            section: "about me",
-            text: "i consent",
-          });
-        }}
-      >
-        I consent
-      </RfiCheckboxSingle>
-    </div>
-  );
-};
-
-// Props
-
-RfiGdpr.propTypes = {
-  /* Formik value */
-  campus: PropTypes.string.isRequired,
-};
 
 const getGenericTermOptions = () => {
   const termData = [];
@@ -104,9 +60,9 @@ const getGenericTermOptions = () => {
   return termData;
 };
 
-const AboutMe = () => {
+export const AboutMe = () => {
   const [termOptions, setTermOptions] = useState(getGenericTermOptions());
-  const { dataSourceAsuOnline, dataSourceDegreeSearch } = useRfiContext();
+  const { degreeData } = useRfiContext();
 
   // Surface values from Formik context
   const { values } = useFormikContext();
@@ -121,39 +77,23 @@ const AboutMe = () => {
     ) {
       // Degree Search REST API
       if (values.Interest2) {
-        fetchDegreesData({
-          dataSourceDegreeSearch,
-          dataSourceAsuOnline,
-          Campus: values.Campus,
-          CareerAndStudentType: values.CareerAndStudentType,
-          Interest2: values.Interest2,
-        })
-          .then(([response, data]) => {
-            if (response === "Error") {
-              // eslint-disable-next-line no-console
-              console.error(data);
-              return;
-            }
-            // Convert object to array so we can .sort and .map.
-            const termData = data[0].applicationDeadlines
-              ?.sort((a, b) => (a.strm > b.strm ? 1 : -1))
-              .map(({ strm, strmDescription }, i) => ({
-                key: `${i}`,
-                value: strm,
-                text: strmDescription,
-              }));
-            if (termData && termData.length > 0) {
-              setTermOptions(termData);
-            }
-          })
-          .catch(error => new Error(error));
+        // Convert object to array so we can .sort and .map.
+        const termData = degreeData.applicationDeadlines
+          ?.sort((a, b) => (a.strm > b.strm ? 1 : -1))
+          .map(({ strm, strmDescription }, i) => ({
+            key: `${i}`,
+            value: strm,
+            text: strmDescription,
+          }));
+        if (termData && termData.length > 0) {
+          setTermOptions(termData);
+        }
       }
     }
   }, []); // Run once. If user changes degree, runs again on return to the step.
 
   return (
     <>
-      <h3>About me</h3>
       <RfiEmailInput
         label="Email Address"
         id="EmailAddress"
@@ -263,7 +203,7 @@ const AboutMe = () => {
           }
         />
       )}
-      <RfiGdpr campus={values.Campus} />
+      <GdprConsent campus={values.Campus} />
     </>
   );
 };

@@ -26,13 +26,4 @@ const Success = () => {
   );
 };
 
-// Step configs
-
-const successForm = {
-  component: Success,
-  validationSchema: {},
-
-  initialValues: {},
-};
-
-export { successForm };
+export { Success };

@@ -12,30 +12,21 @@ import {
   STUDENT,
   KEY,
 } from "../../core/utils/constants";
-import { fetchDegreesData } from "../../core/utils/fetchPrograms";
 import { useRfiContext } from "../../core/utils/rfiContext";
 import { RfiSelect } from "../controls";
 
-/** @type {import("../../core/utils/datasource-helper").AcadPlan[]} */
-const emptyDegreeData = []; // This helps silence typescript error
-
 // Component
-const ProgramInterest = () => {
+export const ProgramInterest = () => {
   // Surface values from Formik context
   const { values, setFieldValue } = useFormikContext();
 
   const {
-    filterByCampusCode,
-    filterByCollegeCode,
-    dataSourceAsuOnline,
-    dataSourceDegreeSearch,
-    filterByDepartmentCode,
     programOfInterest,
     programOfInterestOptional,
-    test,
+    degreeDataList,
+    degreeData,
   } = useRfiContext();
 
-  const [degreeData, setDegreeData] = useState(emptyDegreeData);
   const [studentTypeOptions, setStudentTypeOptions] = useState(
     STUDENT_OPTIONS_DEFAULT
   );
@@ -46,36 +37,6 @@ const ProgramInterest = () => {
     FAILED_OPTIONS_DEFAULT
   );
 
-  // FETCH master degree data from Degree Search REST API.
-  useEffect(() => {
-    // TODO Possibly: implement sessionStorage, see pg 159 in Learning React
-    // HOLD on using sessionStorage due to limiting complexity while getting
-    // basic switching/fetching behaviors in place.
-    // Alternately, move to using react-query library.
-
-    // Fetch master of degree data.
-    fetchDegreesData({
-      dataSourceDegreeSearch,
-      dataSourceAsuOnline,
-      filterByDepartmentCode,
-      filterByCollegeCode,
-      filterByCampusCode,
-      Campus: values.Campus,
-      CareerAndStudentType: values.CareerAndStudentType,
-    }).then(([response, data]) => {
-      if (response === "Error") {
-        // eslint-disable-next-line no-console
-        console.error(data);
-        return;
-      }
-      if (test && window) {
-        // @ts-ignore
-        window.degreeData = data;
-      }
-      setDegreeData(data);
-    });
-  }, [values.Campus, values.CareerAndStudentType]); // Re-fetch if these change.
-
   // Campus and CareerAndStudentType
   useEffect(() => {
     // Setup Campus and CareerAndStudentType values, options and display if
@@ -84,41 +45,30 @@ const ProgramInterest = () => {
       // Call to get individual degree...
       // Currently only supporting Degree Search REST API degrees, but it
       // returns degrees with ONLNE campus, so perhaps is sufficient.
-      fetchDegreesData({
-        dataSourceDegreeSearch,
-        dataSourceAsuOnline,
-        Campus: values.Campus,
-        CareerAndStudentType: values.CareerAndStudentType,
-        Interest2: programOfInterest,
-      }).then(([response, data]) => {
-        if (response === "Error") {
-          // eslint-disable-next-line no-console
-          console.error(data);
-          return;
-        }
-        // Set Campus to NOPREF if a Campus value wasn't set via prop, since
-        // we'll have a mix of degree types because DS REST API also stores
-        // ONLNE degeees.
-        setFieldValue("Campus", values.Campus ? values.Campus : KEY.NOPREF);
-        // Update options for CareerAndStudentType
-        // If Degree starts with a B, it's undergrad.
-        // TODO Is there a better means of identifying undergrad programs?
-        // Possibly AcadProg field (UG* is Undergrad and GR* is Graduate...
-        // wouldn't give us minors and certs, though).
-        if (data[0].degreeType === KEY.UG) {
-          // PoI is undergrad degree.
-          // Set only undergrad options for studentTypeOptions.
 
-          setStudentTypeOptions([STUDENT.FRESHMAN, STUDENT.TRANSFER]);
-        } else {
-          // PoI is graduate degree.
-          // Setting the options here helps trigger dependent useEffects, even
-          // though we won't display this single option.
-          setStudentTypeOptions([STUDENT.READMISSION]);
-          // For Grad, set the value and we'll hide the field in the jsx.
-          setFieldValue("CareerAndStudentType", KEY.READMISSION); // Gradudate
-        }
-      });
+      // Set Campus to NOPREF if a Campus value wasn't set via prop, since
+      // we'll have a mix of degree types because DS REST API also stores
+      // ONLNE degeees.
+      setFieldValue("Interest1", "NA");
+      setFieldValue("Campus", values.Campus ? values.Campus : KEY.NOPREF);
+      // Update options for CareerAndStudentType
+      // If Degree starts with a B, it's undergrad.
+      // TODO Is there a better means of identifying undergrad programs?
+      // Possibly AcadProg field (UG* is Undergrad and GR* is Graduate...
+      // wouldn't give us minors and certs, though).
+      if (degreeData.degreeType === KEY.UG) {
+        // PoI is undergrad degree.
+        // Set only undergrad options for studentTypeOptions.
+
+        setStudentTypeOptions([STUDENT.FRESHMAN, STUDENT.TRANSFER]);
+      } else {
+        // PoI is graduate degree.
+        // Setting the options here helps trigger dependent useEffects, even
+        // though we won't display this single option.
+        setStudentTypeOptions([STUDENT.READMISSION]);
+        // For Grad, set the value and we'll hide the field in the jsx.
+        setFieldValue("CareerAndStudentType", KEY.READMISSION); // Gradudate
+      }
     }
   }, [degreeData]);
 
@@ -126,7 +76,7 @@ const ProgramInterest = () => {
   useEffect(() => {
     const aoiOptions = [
       ...new Set(
-        degreeData
+        degreeDataList
           .filter(({ planCategories }) => planCategories)
           .map(({ planCategories }) => planCategories)
           .flat()
@@ -140,11 +90,11 @@ const ProgramInterest = () => {
     } else {
       setAreaInterestOptions(aoiOptions);
     }
-  }, [degreeData, values.CareerAndStudentType, values.Campus]);
+  }, [degreeDataList, values.CareerAndStudentType, values.Campus]);
 
   // Interest2: programInterestOptions filter and set logic.
   useEffect(() => {
-    const poiOptions = degreeData
+    const poiOptions = degreeDataList
       .filter(
         ({ planCategories }) =>
           !values.Interest1 || planCategories.includes(values.Interest1)
@@ -161,7 +111,7 @@ const ProgramInterest = () => {
       setProgramInterestOptions(poiOptions);
     }
   }, [
-    degreeData,
+    degreeDataList,
     values.Campus,
     values.CareerAndStudentType,
     values.Interest1,
