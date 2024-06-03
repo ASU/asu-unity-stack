@@ -46,10 +46,10 @@ function filterData({
     !isAccelConcValid(acceleratedConcurrent) ||
     row[acceleratedConcurrent.value]?.length > 0;
 
-    const filterByKeyword = (resolver, searchTerm) => {
-      if (!searchTerm) return true;
-      const regex = new RegExp(searchTerm, 'i');
-      return regex.test(resolver.getFullDescription());
+  const filterByKeyword = (resolver, searchTerm) => {
+    if (!searchTerm) return true;
+    const regex = new RegExp(searchTerm, "i");
+    return regex.test(resolver.getFullDescription());
   };
 
   const filterByBlacklist = resolver =>

@@ -14,7 +14,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: ' ',
+        component: " ",
       },
     },
   },
@@ -52,9 +52,9 @@ HeroSmall.args = {
 HeroSmall.parameters = {
   docs: {
     description: {
-      story: ' '
-    }
-  }
+      story: " ",
+    },
+  },
 };
 
 /**
@@ -77,9 +77,9 @@ HeroLongTitle.args = {
 HeroLongTitle.parameters = {
   docs: {
     description: {
-      story: ' '
-    }
-  }
+      story: " ",
+    },
+  },
 };
 
 /**
@@ -108,9 +108,9 @@ HeroMedium.args = {
 HeroMedium.parameters = {
   docs: {
     description: {
-      story: ' '
-    }
-  }
+      story: " ",
+    },
+  },
 };
 
 /**
@@ -139,7 +139,7 @@ HeroLarge.args = {
 HeroLarge.parameters = {
   docs: {
     description: {
-      story: ' '
-    }
-  }
+      story: " ",
+    },
+  },
 };

@@ -17,7 +17,7 @@ export default {
       control: "select",
       options: ["true", "false"],
       description:
-        "Either 'true' or 'false'. If 'true', the header will be rendered as a div instead of a header element."
+        "Either 'true' or 'false'. If 'true', the header will be rendered as a div instead of a header element.",
     },
   },
 };
