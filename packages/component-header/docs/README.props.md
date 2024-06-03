@@ -113,27 +113,28 @@
 **Kind**: global typedef  
 **Properties**
 
-| Name | Type |
-| --- | --- |
-| isPartner | <code>boolean</code> | 
-| navTree | [<code>Array.&lt;NavTreeProps&gt;</code>](#NavTreeProps) | 
-| [title] | <code>string</code> | 
-| [baseUrl] | <code>string</code> | 
-| [parentOrg] | <code>string</code> | 
-| [parentOrgUrl] | <code>string</code> | 
-| partnerLogo | [<code>Logo</code>](#Logo) | 
-| logo | [<code>Logo</code>](#Logo) | 
-| loggedIn | <code>boolean</code> | 
-| userName | <code>string</code> | 
-| loginLink | <code>string</code> | 
-| [onLoginClick] | <code>function</code> | 
-| logoutLink | <code>string</code> | 
-| [onLogoutClick] | <code>function</code> | 
-| buttons | [<code>Array.&lt;Button&gt;</code>](#Button) | 
-| breakpoint | <code>&quot;Lg&quot;</code> \| <code>&quot;Xl&quot;</code> | 
-| animateTitle | <code>boolean</code> | 
-| expandOnHover | <code>boolean</code> | 
-| mobileNavTree | [<code>Array.&lt;NavTreeProps&gt;</code>](#NavTreeProps) | 
-| searchUrl | <code>string</code> | 
-| site | <code>string</code> | 
+| Name | Type | Description |
+| --- | --- | --- |
+| isPartner | <code>boolean</code> |  |
+| navTree | [<code>Array.&lt;NavTreeProps&gt;</code>](#NavTreeProps) |  |
+| [title] | <code>string</code> |  |
+| [baseUrl] | <code>string</code> |  |
+| [parentOrg] | <code>string</code> |  |
+| [parentOrgUrl] | <code>string</code> |  |
+| partnerLogo | [<code>Logo</code>](#Logo) |  |
+| logo | [<code>Logo</code>](#Logo) |  |
+| loggedIn | <code>boolean</code> |  |
+| userName | <code>string</code> |  |
+| loginLink | <code>string</code> |  |
+| [onLoginClick] | <code>function</code> |  |
+| logoutLink | <code>string</code> |  |
+| [onLogoutClick] | <code>function</code> |  |
+| buttons | [<code>Array.&lt;Button&gt;</code>](#Button) |  |
+| breakpoint | <code>&quot;Lg&quot;</code> \| <code>&quot;Xl&quot;</code> |  |
+| animateTitle | <code>boolean</code> |  |
+| expandOnHover | <code>boolean</code> |  |
+| mobileNavTree | [<code>Array.&lt;NavTreeProps&gt;</code>](#NavTreeProps) |  |
+| searchUrl | <code>string</code> |  |
+| site | <code>string</code> |  |
+| renderDiv | <code>string</code> | Can be either "true" or "false". |
 

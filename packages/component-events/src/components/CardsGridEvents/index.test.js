@@ -58,7 +58,7 @@ describe("#Cards Grid Events", () => {
     afterEach(cleanup);
 
     it("should render custom number of cards", async () => {
-      const renderedCards = await component.findByTestId("grid-view-container")
+      const renderedCards = await component.findByTestId("grid-view-container");
       expect(renderedCards.children.length).toBe(CUSTOM_MAX_ITEMS);
     });
   });

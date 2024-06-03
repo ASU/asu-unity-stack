@@ -458,13 +458,16 @@ export const performSearch = function ({
       if (restClientTag) {
         query = `${query}&client=${restClientTag}`;
       }
-      let validatedQueryUrl = validateAndCleanURL(query);
-      APICall = () => axios.get(validatedQueryUrl, { signal: controller.signal });
+      const validatedQueryUrl = validateAndCleanURL(query);
+      APICall = () =>
+        axios.get(validatedQueryUrl, { signal: controller.signal });
     } else {
       if (!filters) {
         return;
       }
-      let validatedTokenUrl = validateAndCleanURL(`${engine.API_URL}/session/token`);
+      const validatedTokenUrl = validateAndCleanURL(
+        `${engine.API_URL}/session/token`
+      );
       const tokenResponse = await axios.get(validatedTokenUrl);
       const headers = {
         "X-CSRF-Token": tokenResponse.data,
@@ -482,7 +485,7 @@ export const performSearch = function ({
       if (restClientTag) {
         query = `${query}?&client=${restClientTag}`;
       }
-      let validatedDataUrl = validateAndCleanURL(query);
+      const validatedDataUrl = validateAndCleanURL(query);
 
       APICall = () => axios.post(validatedDataUrl, data, { headers });
     }

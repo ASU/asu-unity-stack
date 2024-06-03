@@ -18,7 +18,15 @@
 <dd></dd>
 <dt><a href="#CardProps">CardProps</a> : <code>Object</code></dt>
 <dd></dd>
-<dt><a href="#ComponentType">ComponentType</a> : <code>Object</code></dt>
+<dt><a href="#FeedHeader">FeedHeader</a> : <code>Object</code></dt>
+<dd></dd>
+<dt><a href="#FeedCtaButton">FeedCtaButton</a> : <code>Object</code></dt>
+<dd></dd>
+<dt><a href="#FeedCardButton">FeedCardButton</a> : <code>Object</code></dt>
+<dd></dd>
+<dt><a href="#DataSource">DataSource</a> : <code>Object</code></dt>
+<dd></dd>
+<dt><a href="#FeedType">FeedType</a> : <code>Object</code></dt>
 <dd></dd>
 <dt><a href="#HeroProps">HeroProps</a> : <code>Object</code></dt>
 <dd></dd>
@@ -222,15 +230,65 @@
 | [showBorders] | <code>boolean</code> | 
 | [cardLink] | <code>string</code> | 
 
-<a name="ComponentType"></a>
+<a name="FeedHeader"></a>
 
-## ComponentType : <code>Object</code>
+## FeedHeader : <code>Object</code>
 **Kind**: global typedef  
 **Properties**
 
 | Name | Type |
 | --- | --- |
-| [numItems] | <code>number</code> | 
+| [color] | <code>&quot;white&quot;</code> \| <code>&quot;dark&quot;</code> | 
+| [text] | <code>string</code> | 
+
+<a name="FeedCtaButton"></a>
+
+## FeedCtaButton : <code>Object</code>
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type |
+| --- | --- |
+| [color] | <code>&quot;gold&quot;</code> \| <code>&quot;maroon&quot;</code> \| <code>&quot;gray&quot;</code> \| <code>&quot;dark&quot;</code> | 
+| [text] | <code>string</code> | 
+| [url] | <code>string</code> | 
+
+<a name="FeedCardButton"></a>
+
+## FeedCardButton : <code>Object</code>
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type |
+| --- | --- |
+| [color] | <code>&quot;gold&quot;</code> \| <code>&quot;maroon&quot;</code> \| <code>&quot;gray&quot;</code> \| <code>&quot;dark&quot;</code> | 
+| [text] | <code>string</code> | 
+| [size] | <code>&quot;default&quot;</code> \| <code>&quot;small&quot;</code> \| <code>&quot;medium&quot;</code> \| <code>&quot;large&quot;</code> | 
+
+<a name="DataSource"></a>
+
+## DataSource : <code>Object</code>
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type |
+| --- | --- |
+| [url] | <code>string</code> | 
+| [filters] | <code>string</code> | 
+
+<a name="FeedType"></a>
+
+## FeedType : <code>Object</code>
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type |
+| --- | --- |
+| [header] | [<code>FeedHeader</code>](#FeedHeader) | 
+| [ctaButton] | [<code>FeedCtaButton</code>](#FeedCtaButton) | 
+| [cardButton] | [<code>FeedCardButton</code>](#FeedCardButton) | 
+| [dataSource] | [<code>DataSource</code>](#DataSource) | 
+| [maxItems] | <code>number</code> | 
 
 <a name="HeroProps"></a>
 
@@ -598,7 +656,8 @@ This type set the `url` and `isActive` optional
 
 | Name | Type |
 | --- | --- |
-| content | [<code>ContentItem</code>](#ContentItem) | 
+| content | [<code>ContentItem</code>](#ContentItem) \| <code>string</code> | 
+| [stemOptText] | <code>string</code> | 
 
 <a name="RequiredCoursesProps"></a>
 
@@ -610,8 +669,8 @@ This type set the `url` and `isActive` optional
 | --- | --- |
 | onlineMajorMapURL | <code>string</code> | 
 | majorMapOnCampusURL | <code>string</code> | 
-| subPlnMajorMaps | <code>string</code> | 
-| subPln | <code>string</code> | 
+| subPlnMajorMaps | <code>Array.&lt;Object&gt;</code> | 
+| subPlns | <code>Array.&lt;Object&gt;</code> | 
 
 <a name="AtAGlanceProps"></a>
 
@@ -874,7 +933,7 @@ This type set the `url` and `isActive` optional
 | [init] | <code>&quot;true&quot;</code> \| <code>&quot;false&quot;</code> | 
 | [cert] | <code>&quot;true&quot;</code> \| <code>&quot;false&quot;</code> | 
 | [fields] | <code>string</code> | 
-| [program] | <code>string</code> | 
+| [program] | <code>&quot;undergrad&quot;</code> \| <code>&quot;graduate&quot;</code> | 
 | [collegeAcadOrg] | <code>string</code> | 
 | [acadPlan] | <code>string</code> | 
 | [departmentCode] | <code>string</code> | 

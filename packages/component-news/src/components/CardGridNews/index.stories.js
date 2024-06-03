@@ -13,7 +13,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: ' ',
+        component: " ",
       },
     },
     mockData: createMockParam(),
@@ -40,9 +40,9 @@ Default.args = {
 Default.parameters = {
   docs: {
     description: {
-      story: ' '
-    }
-  }
+      story: " ",
+    },
+  },
 };
 
 /**
@@ -71,9 +71,9 @@ WithCardButtonProps.args = {
 WithCardButtonProps.parameters = {
   docs: {
     description: {
-      story: ' '
-    }
-  }
+      story: " ",
+    },
+  },
 };
 
 /**
@@ -101,9 +101,9 @@ WithFilters.args = {
 WithFilters.parameters = {
   docs: {
     description: {
-      story: ' '
-    }
-  }
+      story: " ",
+    },
+  },
 };
 
 /**
@@ -128,9 +128,9 @@ WithMaxItems.args = {
 WithMaxItems.parameters = {
   docs: {
     description: {
-      story: ' '
-    }
-  }
+      story: " ",
+    },
+  },
 };
 
 /**
@@ -145,7 +145,7 @@ WithNoHeader.args = {
 WithNoHeader.parameters = {
   docs: {
     description: {
-      story: ''
-    }
-  }
+      story: "",
+    },
+  },
 };

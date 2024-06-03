@@ -16,7 +16,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: ' '
+        component: " ",
       },
     },
   },
@@ -43,9 +43,9 @@ DefaultVideo.args = {
 DefaultVideo.parameters = {
   docs: {
     description: {
-      story: ''
-    }
-  }
+      story: "",
+    },
+  },
 };
 
 /**
@@ -60,9 +60,9 @@ DefaultVideoWithCaption.args = {
 DefaultVideoWithCaption.parameters = {
   docs: {
     description: {
-      story: ''
-    }
-  }
+      story: "",
+    },
+  },
 };
 
 /**
@@ -76,9 +76,9 @@ YoutubeVideo.args = {
 YoutubeVideo.parameters = {
   docs: {
     description: {
-      story: ''
-    }
-  }
+      story: "",
+    },
+  },
 };
 
 /**
@@ -93,7 +93,7 @@ YoutubeVideoWithCaption.args = {
 YoutubeVideoWithCaption.parameters = {
   docs: {
     description: {
-      story: ''
-    }
-  }
+      story: "",
+    },
+  },
 };

@@ -57,7 +57,6 @@ Prop types for FacultyRankTabPanels component.
 | filters.expertise | <code>string</code> | Expertise filter. |
 | filters.title | <code>string</code> | Title filter. |
 | filters.campuses | <code>string</code> | Campuses filter. |
-| alphaFilter | <code>string</code> | Whether to enable the alpha filter. |
 
 <a name="ProfileCard"></a>
 

@@ -38,7 +38,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: ' ',
+        component: " ",
       },
     },
   },
