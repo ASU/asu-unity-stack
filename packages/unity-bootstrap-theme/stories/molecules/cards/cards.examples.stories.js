@@ -346,6 +346,7 @@ cardStory.decorators = [ defaultDecorator ];
 
 export const cardEvent = () => (
   <div className="card card-event">
+    <a href="#">
     <img
       className="card-img-top"
       src={cardsImage}
@@ -356,6 +357,7 @@ export const cardEvent = () => (
       decoding="async"
       fetchpriority="high"
     />
+    </a>
     <div className="card-header">
       <h3 className="card-title">
         <a href="#">Card default title</a>
