@@ -7,6 +7,7 @@ import {
   subdomainConverter,
   anonConverter,
 } from "./dataConverter";
+import { validateAndCleanURL } from "./validateUrl";
 
 const axios = require("axios");
 
@@ -457,12 +458,17 @@ export const performSearch = function ({
       if (restClientTag) {
         query = `${query}&client=${restClientTag}`;
       }
-      APICall = () => axios.get(query, { signal: controller.signal });
+      const validatedQueryUrl = validateAndCleanURL(query);
+      APICall = () =>
+        axios.get(validatedQueryUrl, { signal: controller.signal });
     } else {
       if (!filters) {
         return;
       }
-      const tokenResponse = await axios.get(`${engine.API_URL}/session/token`);
+      const validatedTokenUrl = validateAndCleanURL(
+        `${engine.API_URL}/session/token`
+      );
+      const tokenResponse = await axios.get(validatedTokenUrl);
       const headers = {
         "X-CSRF-Token": tokenResponse.data,
       };
@@ -479,8 +485,9 @@ export const performSearch = function ({
       if (restClientTag) {
         query = `${query}?&client=${restClientTag}`;
       }
+      const validatedDataUrl = validateAndCleanURL(query);
 
-      APICall = () => axios.post(query, data, { headers });
+      APICall = () => axios.post(validatedDataUrl, data, { headers });
     }
 
     APICall()

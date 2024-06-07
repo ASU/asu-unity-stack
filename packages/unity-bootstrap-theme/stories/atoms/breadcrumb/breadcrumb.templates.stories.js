@@ -1,28 +1,26 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
+import React from "react";
 
-const extraOptions = {
-  type: {
-    name: "Type",
-    options: ["bg-white", "bg-gray-1", "bg-gray-2", "bg-gray-7"],
-    defaultValue: "bg-white",
-    control: {
-      type: "radio",
-      labels: {
-        "bg-white": "bg-white",
-        "bg-gray-1": "bg-gray-1",
-        "bg-gray-2": "bg-gray-2",
-        "bg-gray-7": "bg-gray-7",
+import { defaultDecorator } from "../../../../../shared/components/Layout";
+
+export default {
+  title: "Atoms/Breadcrumbs/Templates",
+  args: {type: "bg-white"},
+  argTypes: {
+    type: {
+      name: "Type",
+      options: ["bg-white", "bg-gray-1", "bg-gray-2", "bg-gray-7"],
+      control: {
+        type: "radio",
       },
     },
   },
+  decorators: [ defaultDecorator ],
 };
 
-export default createComponent("Breadcrumbs", "Atoms", "Templates");
-
-export const BreadcrumbsAgainstWhiteBackground = createStory(args => {
+export const BreadcrumbsAgainstWhiteBackground = ({type}) => {
   return (
     <nav aria-label="breadcrumbs">
-      <ol className={`breadcrumb ${args.type}`}>
+      <ol className={`breadcrumb ${type}`}>
         <li className="breadcrumb-item">
           <a href="#">Home</a>
         </li>
@@ -35,4 +33,4 @@ export const BreadcrumbsAgainstWhiteBackground = createStory(args => {
       </ol>
     </nav>
   );
-});
+};

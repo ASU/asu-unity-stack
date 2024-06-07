@@ -1,29 +1,25 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Alignment", "Design");
+import React from "react";
 
-export const TemporaryStory = createStory(
-  <div className="container">
-    <div className="row">
-      <div className="col">
-        <div className="bg-gray-4" style={{ height: "300px" }}>
-          &nbsp;
-        </div>
-      </div>
-      <div className="col">
-        <div className="bg-gray-2" style={{ height: "300px" }}>
-          &nbsp;
-        </div>
-      </div>
-      <div className="col">
-        <div className="bg-gray-4" style={{ height: "300px" }}>
-          &nbsp;
-        </div>
-      </div>
-      <div className="col">
-        <div className="bg-gray-2" style={{ height: "300px" }}>
-          &nbsp;
-        </div>
-      </div>
-    </div>
-  </div>
-);
+import { Container, Column, htmlRootDecorator } from "../../../../../shared/components/Layout.js";
+export default {
+  title: "Design/Alignment",
+  decorators: [htmlRootDecorator],
+  parameters: { controls: { disable: true } },
+};
+
+export const TemporaryStory = () => (
+  <Container>
+    <Column col="0">
+      <div className="bg-gray-4" style={{ height: "300px" }}>&nbsp;</div>
+    </Column>
+    <Column col="0">
+      <div className="bg-gray-2" style={{ height: "300px" }}>&nbsp;</div>
+    </Column>
+    <Column col="0">
+      <div className="bg-gray-4" style={{ height: "300px" }}>&nbsp;</div>
+    </Column>
+    <Column col="0">
+      <div className="bg-gray-2" style={{ height: "300px" }}>&nbsp;</div>
+    </Column>
+  </Container>
+  );

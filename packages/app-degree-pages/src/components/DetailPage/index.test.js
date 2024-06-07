@@ -1,7 +1,7 @@
 // @ts-check
 // import * as componentsCore from "@asu/components-core";
 import { Hero } from "@asu/components-core";
-import { render, act, waitFor, cleanup } from "@testing-library/react";
+import { render, act, cleanup } from "@testing-library/react";
 import React from "react";
 
 import { DetailPage } from "./index";
@@ -223,11 +223,11 @@ describe("#DetailPage", () => {
   });
 
   describe("#With acadPlan which does not accept new students", () => {
-    beforeAll(async () => {
+    beforeEach(async () => {
       /** @type {AppProps} */
       const customProps = {
         dataSource: {
-          acadPlan: "BABUSCLBA", // no New accepted ßStudent AcadPlan
+          acadPlan: "BABUSCLBA", // Expected to return {"error": "acadPlan not found"}
         },
       };
 
@@ -235,10 +235,29 @@ describe("#DetailPage", () => {
     });
     afterAll(cleanup);
 
-    it("should define `Custom text` section", async () => {
-      await waitFor(() =>
-        expect(component.queryByTestId("custom-text")).toBeInTheDocument()
+    it("should show 'Program not found' in program description", async () => {
+      const programDescription = await component.findByTestId(
+        "program-description"
       );
+      const programDescriptionHeader = programDescription.querySelector("h2");
+      expect(programDescriptionHeader).toHaveTextContent("Program not found");
+    });
+
+    it("should hide all sections except program description", () => {
+      // Filter out the "program-description" case
+      const filteredSectionCases = sectionCases.filter(
+        ([_, testId]) => testId !== "program-description"
+      );
+
+      // Test the filtered cases
+      filteredSectionCases.forEach(([_, testId]) => {
+        expect(component.queryByTestId(testId)).not.toBeInTheDocument();
+      });
+
+      // Test the "program-description" case separately
+      expect(
+        component.queryByTestId("program-description")
+      ).toBeInTheDocument();
     });
   });
 

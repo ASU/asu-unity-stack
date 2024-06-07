@@ -1,7 +1,14 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Dividers", "Atoms", "Examples");
+import React from "react";
 
-export const Divider = createStory(
+import { defaultDecorator } from "../../../../../shared/components/Layout";
+
+export default {
+  title: "Atoms/Dividers/Examples",
+  decorators: [ defaultDecorator ],
+  parameters: { controls: { disable: true } },
+};
+
+export const Divider = () => (
   <div>
     <h2>
       <span className="highlight-gold">Horizontal Rules</span>
@@ -48,6 +55,3 @@ export const Divider = createStory(
     </p>
   </div>
 );
-Divider.args = {
-  template: 1,
-};

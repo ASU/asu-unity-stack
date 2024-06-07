@@ -1,8 +1,15 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Form Fields", "Atoms", "Examples");
+import React from "react";
+
+import { defaultDecorator } from "../../../../../shared/components/Layout";
+
+export default {
+  title: "Atoms/Form Fields/Examples",
+  decorators: [ defaultDecorator ],
+  parameters: { controls: { disable: true } },
+};
 import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 
-export const TextInputs = createStory(
+export const TextInputs = () => (
   <form className="uds-form">
     <div className="form-group">
       <label for="exampleDefaultInput">Default text input label</label>
@@ -134,14 +141,10 @@ export const TextInputs = createStory(
       document.getElementById('exampleFocusInput').focus();
       </script>
       */}
-  </form>,
-  { initFunc }
+  </form>
 );
-TextInputs.args = {
-  template: 1,
-};
 
-export const TextInputsVariousBackgrounds = createStory(
+export const TextInputsVariousBackgrounds = () => (
   <div>
     <div style={{ backgroundColor: "white" }}>
       {/* This div for Storybook display only. */}
@@ -509,7 +512,7 @@ export const TextInputsVariousBackgrounds = createStory(
   </div>
 );
 
-export const Textareas = createStory(
+export const Textareas = () => (
   <form className="uds-form">
     <div className="form-group">
       <label for="exampleFormControlTextareaDefault">Default textarea</label>
@@ -607,14 +610,10 @@ export const Textareas = createStory(
         message
       </small>
     </div>
-  </form>,
-  { initFunc }
+  </form>
 );
-Textareas.args = {
-  template: 1,
-};
 
-export const TextareasMultipleBackgrounds = createStory(
+export const TextareasMultipleBackgrounds = () => (
   <div>
     <div style={{ backgroundColor: "white" }}>
       {/* This div for Storybook display only. */}
@@ -974,7 +973,7 @@ export const TextareasMultipleBackgrounds = createStory(
   </div>
 );
 
-export const Checkboxes = createStory(
+export const Checkboxes = () => (
   <form className="uds-form">
     <div className="form-check">
       <input
@@ -1255,14 +1254,10 @@ export const Checkboxes = createStory(
         </label>
       </div>
     </fieldset>
-  </form>,
-  { initFunc }
+  </form>
 );
-Checkboxes.args = {
-  template: 1,
-};
 
-export const Radios = createStory(
+export const Radios = () => (
   <form className="uds-form">
     <fieldset>
       <legend>A Group of Radios</legend>
@@ -1513,14 +1508,10 @@ export const Radios = createStory(
         </label>
       </div>
     </fieldset>
-  </form>,
-  { initFunc }
+  </form>
 );
-Radios.args = {
-  template: 1,
-};
 
-export const CheckboxesAndRadiosWhiteBackground = createStory(
+export const CheckboxesAndRadiosWhiteBackground = () => (
   <div style={{ backgroundColor: "white" }}>
     {/* This div for Storybook display only. */}
     <form className="uds-form uds-form-white">
@@ -1883,7 +1874,7 @@ export const CheckboxesAndRadiosWhiteBackground = createStory(
   </div>
 );
 
-export const CheckboxesAndRadiosGray1Background = createStory(
+export const CheckboxesAndRadiosGray1Background = () => (
   <div style={{ backgroundColor: "#fafafa" }}>
     {/* This div for Storybook display only. */}
     <form className="uds-form uds-form-gray1">
@@ -2246,7 +2237,7 @@ export const CheckboxesAndRadiosGray1Background = createStory(
   </div>
 );
 
-export const CheckboxesAndRadiosGray2Background = createStory(
+export const CheckboxesAndRadiosGray2Background = () => (
   <div style={{ backgroundColor: "#e8e8e8" }}>
     {/* This div for Storybook display only. */}
     <form className="uds-form uds-form-gray2">
@@ -2609,7 +2600,7 @@ export const CheckboxesAndRadiosGray2Background = createStory(
   </div>
 );
 
-export const CheckboxesAndRadiosGray7Background = createStory(
+export const CheckboxesAndRadiosGray7Background = () => (
   <div style={{ backgroundColor: "#191919" }}>
     {/* This div for Storybook display only. */}
     <form className="uds-form uds-form-gray7">
@@ -2972,7 +2963,7 @@ export const CheckboxesAndRadiosGray7Background = createStory(
   </div>
 );
 
-export const Selects = createStory(
+export const Selects = () => (
   <form className="uds-form">
     <div className="form-group">
       <label for="exampleFormControlSelect1">Example select</label>
@@ -3097,18 +3088,14 @@ export const Selects = createStory(
         Form error message
       </small>
     </div>
-  </form>,
-  { initFunc }
+  </form>
 );
-Selects.args = {
-  template: 1,
-};
 
-export const KitchenSinkForm = createStory(
+export const KitchenSinkForm = () => (
   <div>
     <p>
-      <a href="https://getbootstrap.com/docs/4.0/components/forms/">
-        Bootstrap 4 form docs
+      <a href="https://getbootstrap.com/docs/5.0/forms/overview/">
+        Bootstrap 5 form docs
       </a>
     </p>
 
@@ -3258,11 +3245,11 @@ export const KitchenSinkForm = createStory(
 );
 
 export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidatedFormInNeedsValidationState =
-  createStory(
+  () => (
     <div>
       <p>
-        <a href="https://getbootstrap.com/docs/4.0/components/forms/#validation">
-          Bootstrap 4 form docs regarding validation
+        <a href="https://getbootstrap.com/docs/5.0/forms/validation/">
+          Bootstrap 5 form docs regarding validation
         </a>
       </p>
 
@@ -3722,11 +3709,11 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidat
   );
 
 export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedFormInWasValidatedState =
-  createStory(
+  () => (
     <div>
       <p>
-        <a href="https://getbootstrap.com/docs/4.0/components/forms/#validation">
-          Bootstrap 4 form docs regarding validation
+        <a href="https://getbootstrap.com/docs/5.0/forms/validation/">
+          Bootstrap 5 form docs regarding validation
         </a>
       </p>
 
@@ -4210,11 +4197,11 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedForm
   );
 
 export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidatedFormInNeedsValidationStateGray7Background =
-  createStory(
+  () => (
     <div>
       <p>
-        <a href="https://getbootstrap.com/docs/4.0/components/forms/#validation">
-          Bootstrap 4 form docs regarding validation
+        <a href="https://getbootstrap.com/docs/5.0/forms/validation/">
+          Bootstrap 5 form docs regarding validation
         </a>
       </p>
 
@@ -4692,11 +4679,11 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidat
   );
 
 export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedFormInWasValidatedStateGray7Background =
-  createStory(
+  () => (
     <div>
       <p>
-        <a href="https://getbootstrap.com/docs/4.0/components/forms/#validation">
-          Bootstrap 4 form docs regarding validation
+        <a href="https://getbootstrap.com/docs/5.0/forms/validation/">
+          Bootstrap 5 form docs regarding validation
         </a>
       </p>
 

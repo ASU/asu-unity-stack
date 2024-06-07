@@ -25,7 +25,7 @@ function urlResolver(dataSource, defaultDataSource) {
     if (httpParameters.cert === "true" && program === "undergrad") {
       httpParameters["degreeType"] = "UGCM";
     } else if (program === "graduate") {
-      httpParameters["degreeType"] = "GR"
+      httpParameters["degreeType"] = "GR";
     } else {
       httpParameters["degreeType"] = "UG";
     }

@@ -1,40 +1,46 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
+import React from "react";
 
-const extraOptions = {
-  bulletColor: {
-    name: "Bullet Color",
-    options: [null, "maroon", "gold"],
-    defaultValue: null,
-    control: {
-      type: "radio",
-      labels: {
-        null: "Default",
-        "maroon": "Maroon",
-        "gold": "Gold",
+import { defaultDecorator } from "../../../../../shared/components/Layout";
+
+export default {
+  title: "Atoms/List/Templates",
+  decorators: [ defaultDecorator ],
+  argTypes: {
+    bulletColor: {
+      name: "Bullet Color",
+      options: ["Default", "Maroon", "Gold"],
+      mapping: {
+        "Default": null,
+        "Maroon": "maroon",
+        "Gold": "gold",
+      },
+      control: {
+        type: "radio",
+      },
+    },
+    backgroundColor: {
+      name: "Background Color",
+      options: ["Default", "Smoke mode", "Light Smoke mode", "Dark mode"],
+      mapping: {
+        "Default": null,
+        "Smoke mode": "smokemode",
+        "Light Smoke mode": "light-smokemode",
+        "Dark mode": "darkmode",
+      },
+      control: {
+        type: "radio",
       },
     },
   },
-  backgroundColor: {
-    name: "Background Color",
-    options: [null, "smokemode", "light-smokemode", "darkmode"],
-    defaultValue: null,
-    control: {
-      type: "radio",
-      labels: {
-        null: "Default",
-        "smokemode": "Smoke mode",
-        "light-smokemode": "Light Smoke mode",
-        "darkmode": "Dark mode",
-      },
-    },
+  args: {
+    bulletColor: "Default",
+    backgroundColor: "Default",
   },
 };
 
-export default createComponent("List", "Atoms", "Templates", extraOptions);
-
-export const UnorderedList = createStory(args => {
+export const UnorderedList = ({bulletColor, backgroundColor}) => {
   return (
-    <ul className={`uds-list ${args.bulletColor} ${args.backgroundColor}`}>
+    <ul className={`uds-list ${bulletColor} ${backgroundColor}`}>
       <li>Lorem ipsum dolor sit amet</li>
       <li>
         Consectetur adipiscing lorem ipsum dolor sit amet, consectetur
@@ -45,11 +51,11 @@ export const UnorderedList = createStory(args => {
       <li>Sed do eiusmod tempor incididunt ut lorem ipsum dolor sit amet</li>
     </ul>
   );
-});
+};
 
-export const OrderedList = createStory(args => {
+export const OrderedList = ({bulletColor, backgroundColor}) => {
   return (
-    <ol className={`uds-list ${args.bulletColor} ${args.backgroundColor}`}>
+    <ol className={`uds-list ${bulletColor} ${backgroundColor}`}>
       <li>Lorem ipsum dolor sit amet</li>
       <li>
         Consectetur adipiscing lorem ipsum dolor sit amet, consectetur
@@ -99,11 +105,11 @@ export const OrderedList = createStory(args => {
       <li>Dolor sit amet, consectetur adipiscing elit.</li>
     </ol>
   );
-});
+};
 
-export const IconList = createStory(args => {
+export const IconList = ({bulletColor, backgroundColor}) => {
   return (
-    <ul className={`uds-list fa-ul ${args.bulletColor} ${args.backgroundColor}`}>
+    <ul className={`uds-list fa-ul ${bulletColor} ${backgroundColor}`}>
       <li>
         <span className="fa-li fas fa-rocket"></span>Lorem ipsum dolor sit amet
       </li>
@@ -129,14 +135,14 @@ export const IconList = createStory(args => {
       </li>
     </ul>
   );
-});
+};
 
-export const StepList = createStory(args => {
+export const StepList = ({bulletColor, backgroundColor}) => {
   return (
     <ol
       className={`uds-list uds-steplist ${
-        args.bulletColor !== "" ? "uds-steplist-" + args.bulletColor : ""
-      } ${args.backgroundColor}`}
+        bulletColor !== "" ? "uds-steplist-" + bulletColor : ""
+      } ${backgroundColor}`}
     >
       <li>
         This is a quintenary headline
@@ -167,12 +173,12 @@ export const StepList = createStory(args => {
       </li>
     </ol>
   );
-});
+};
 
-export const DisplayList = createStory(args => {
+export const DisplayList = ({bulletColor, backgroundColor}) => {
   return (
     <ul
-      className={`uds-list uds-display-list ${args.bulletColor} ${args.backgroundColor}`}
+      className={`uds-list uds-display-list ${bulletColor} ${backgroundColor}`}
     >
       <li>
         Lorem ipsum dolor sit amet
@@ -193,4 +199,4 @@ export const DisplayList = createStory(args => {
       </li>
     </ul>
   );
-});
+};

@@ -1,3 +1,49 @@
+# [@asu/unity-bootstrap-theme-v1.9.15](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.14...@asu/unity-bootstrap-theme-v1.9.15) (2024-05-17)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fixed image CTA style not wrapping ([6f6b686](https://github.com/ASU/asu-unity-stack/commit/6f6b686a630bb2a5234a4791110b270a3cb4ece8))
+
+# [@asu/unity-bootstrap-theme-v1.9.14](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.13...@asu/unity-bootstrap-theme-v1.9.14) (2024-05-04)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fixed overlapping h1 when text wraps ([3c2d9dc](https://github.com/ASU/asu-unity-stack/commit/3c2d9dcbdc92b7115b78939934037e370b52fe57))
+* **unity-bootstrap-theme:** fixed pixel clipping in hero headings ([76e40d6](https://github.com/ASU/asu-unity-stack/commit/76e40d64d16332861a11dbfa828c5bd205808853))
+* **unity-bootstrap-theme:** fixed space between highlighted header ([03b0b23](https://github.com/ASU/asu-unity-stack/commit/03b0b23d907cc9ecaa51414fa0891d97734ea29c))
+
+# [@asu/unity-bootstrap-theme-v1.9.13](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.12...@asu/unity-bootstrap-theme-v1.9.13) (2024-05-03)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix parallax image styles/remove unused stories ([7e0aa5d](https://github.com/ASU/asu-unity-stack/commit/7e0aa5db2f3c38dda5821ed54ee93e01c49fee35))
+
+# [@asu/unity-bootstrap-theme-v1.9.12](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.11...@asu/unity-bootstrap-theme-v1.9.12) (2024-05-01)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix Card image styles ([be3dfc5](https://github.com/ASU/asu-unity-stack/commit/be3dfc5dd056c8630369da47618aead9b894ae83))
+
+# [@asu/unity-bootstrap-theme-v1.9.11](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.10...@asu/unity-bootstrap-theme-v1.9.11) (2024-04-15)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** dark bg label color now matches UI kit ([0902375](https://github.com/ASU/asu-unity-stack/commit/0902375ac41620ccfa1458635eb2fe0ab7caa222))
+* **unity-bootstrap-theme:** form error on dark background contrast error ([12bcc24](https://github.com/ASU/asu-unity-stack/commit/12bcc24e8adecc195289ca8e01a01d736cc71376))
+* **unity-bootstrap-theme:** updated dark bg required color ([cb95b54](https://github.com/ASU/asu-unity-stack/commit/cb95b5440e2c2b493b423ccbe4e0b642e57e1c88))
+
+# [@asu/unity-bootstrap-theme-v1.9.10](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.9...@asu/unity-bootstrap-theme-v1.9.10) (2024-04-08)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** updated anchor menu logic to account for header height ([15d1c88](https://github.com/ASU/asu-unity-stack/commit/15d1c88d51c4f6335923e5281aa20c0a2ad8f079))
+
 # [@asu/unity-bootstrap-theme-v1.9.9](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.8...@asu/unity-bootstrap-theme-v1.9.9) (2024-04-01)
 
 

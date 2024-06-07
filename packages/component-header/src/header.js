@@ -5,8 +5,8 @@ import trackReactComponent from "../../../shared/services/componentDatalayer";
 import { HeaderMain } from "./components/HeaderMain";
 import { AppContextProvider } from "./core/context/app-context";
 import { HeaderPropTypes } from "./core/models/app-prop-types";
-import { Header, HeaderDiv } from "./header.styles";
 import { tryAddActivePage } from "./core/utils/helpers/active-page";
+import { Header, HeaderDiv } from "./header.styles";
 
 /**
  * @typedef {import("./core/models/types").HeaderProps} HeaderProps

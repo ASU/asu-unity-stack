@@ -1,7 +1,14 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Breadcrumbs", "Atoms", "Examples");
+import React from "react";
 
-export const BreadcrumbsAgainstWhiteBackground = createStory(
+import { defaultDecorator } from "../../../../../shared/components/Layout";
+
+export default {
+  title: "Atoms/Breadcrumbs/Examples",
+  decorators: [ defaultDecorator ],
+  parameters: { controls: { disable: true } },
+};
+
+export const BreadcrumbsAgainstWhiteBackground = () => (
   <nav aria-label="breadcrumbs">
     <ol className="breadcrumb bg-white">
       <li className="breadcrumb-item">
@@ -16,11 +23,8 @@ export const BreadcrumbsAgainstWhiteBackground = createStory(
     </ol>
   </nav>
 );
-BreadcrumbsAgainstWhiteBackground.args = {
-  template: 1,
-};
 
-export const BreadcrumbsAgainstGray1Background = createStory(
+export const BreadcrumbsAgainstGray1Background = () => (
   <nav aria-label="breadcrumbs">
     <ol className="breadcrumb bg-gray-1">
       <li className="breadcrumb-item">
@@ -36,7 +40,7 @@ export const BreadcrumbsAgainstGray1Background = createStory(
   </nav>
 );
 
-export const BreadcrumbsAgainstGray2Background = createStory(
+export const BreadcrumbsAgainstGray2Background = () => (
   <nav aria-label="breadcrumbs">
     <ol className="breadcrumb bg-gray-2">
       <li className="breadcrumb-item">
@@ -52,7 +56,7 @@ export const BreadcrumbsAgainstGray2Background = createStory(
   </nav>
 );
 
-export const FullWidthBreadcrumbsAgainstGray7Background = createStory(
+export const FullWidthBreadcrumbsAgainstGray7Background = () => (
   <section className="bg-gray-7">
     <nav className="uds-content-align" aria-label="breadcrumbs">
       <ol className="breadcrumb">

@@ -158,7 +158,7 @@ const ListingPage = ({
         departmentCode,
         blacklistAcadPlans,
         program,
-        showCerts
+        showCerts,
       },
     });
 

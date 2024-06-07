@@ -1,16 +1,15 @@
-import { googleAnalytics as initFunc } from '@asu/unity-bootstrap-theme/js/data-layer.js';
 import React from 'react';
 
-import { createComponent, createStory } from '../../../helpers/wrapper.js';
+import { defaultDecorator } from "../../../../../shared/components/Layout";
 import cardsImage from '../cards/cards-image.jpg';
 
-export default createComponent(
-  'Image Based Card And Hover',
-  'Molecules',
-  'Templates'
-);
+export default {
+  title: "Molecules/Image Based Card And Hover/Templates",
+  decorators: [ defaultDecorator ],
+  parameters: { controls: { disable: true } },
+};
 
-export const ImageBasedCardsWithCTA = createStory(
+export const ImageBasedCardsWithCTA = () => (
   <div className="content-section text-white">
     <div className="image-holder">
       <img src={cardsImage} alt="alt text" loading="lazy" decoding="async" />
@@ -41,6 +40,5 @@ export const ImageBasedCardsWithCTA = createStory(
         </div>
       </div>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );

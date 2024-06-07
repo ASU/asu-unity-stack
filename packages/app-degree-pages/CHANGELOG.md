@@ -1,3 +1,26 @@
+# [@asu/app-degree-pages-v2.5.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.5.2...@asu/app-degree-pages-v2.5.3) (2024-05-17)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** added Domparser api for basic html validation ([d7ea8be](https://github.com/asu/asu-unity-stack/commit/d7ea8bec0efd2cbc2699c77ed9eecab32f06e00c))
+* **app-degree-pages:** added ptofessional licensure section in degree detail page ([6d52463](https://github.com/asu/asu-unity-stack/commit/6d5246394356a3283cc03c083b4a0a89579aca72))
+* **app-degree-pages:** combined both professional licensure fields into one ([f455355](https://github.com/asu/asu-unity-stack/commit/f455355c3cf3fdab9243f654ee5747c9ec53ecae))
+
+# [@asu/app-degree-pages-v2.5.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.5.1...@asu/app-degree-pages-v2.5.2) (2024-04-30)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** fix bs4 regression Spacing on filters ([a7bb031](https://github.com/asu/asu-unity-stack/commit/a7bb03132b558e9e817cc03b69952f287794e05f))
+
+# [@asu/app-degree-pages-v2.5.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.5.0...@asu/app-degree-pages-v2.5.1) (2024-04-15)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** fixed search function on listing page ([d348f44](https://github.com/asu/asu-unity-stack/commit/d348f44773a4cfa35f1e3ad541e1f29c412c9a59))
+
 # [@asu/app-degree-pages-v2.5.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.4.0...@asu/app-degree-pages-v2.5.0) (2024-03-15)
 
 

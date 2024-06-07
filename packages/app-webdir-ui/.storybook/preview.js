@@ -5,7 +5,7 @@ import { useArgs } from '@storybook/client-api';
 
 import "@asu/unity-bootstrap-theme/src/scss/unity-bootstrap-theme.bundle.scss";
 
-export const parameters = {
+const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   percy: {
     include: [
@@ -14,10 +14,11 @@ export const parameters = {
       "Web Directory/Templates: Web Directory Example Departments\$",
       "Search Page/Templates: Search Page Example\$"
     ],
+    waitForTimeout: 5000,
   },
 };
 
-export const argTypes = {
+const argTypes = {
   searchParams: {
     name: "Url Search Parameters",
     control: {
@@ -26,7 +27,7 @@ export const argTypes = {
   }
 };
 
-export const args = {
+const args = {
   searchParams: {}
 };
 
@@ -59,7 +60,7 @@ const Wrapper = ({ args, updateArgs,...props},b,c) => {
   return props.children;
 }
 
-export const decorators = [
+const decorators = [
   (Story) => {
     const [args, updateArgs] = useArgs();
   return <MemoryRouter>
@@ -69,3 +70,13 @@ export const decorators = [
     </MemoryRouter>
   },
 ];
+
+/** @type { import('@storybook/react').Preview } */
+const preview = {
+  parameters,
+  argTypes,
+  args,
+  decorators,
+};
+
+export default preview;

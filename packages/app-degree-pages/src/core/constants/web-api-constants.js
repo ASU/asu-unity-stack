@@ -38,7 +38,8 @@ const detailPageDefaultDataSource = {
   firstMathCourseRequiredSupplementalText,stemOptText,
   admissionsRequirementsText,transferAdmissionRequirementsText,
   asuOnlineAcadPlanUrl,degreeType,degreeRequirements,
-  graduateDegreeAdditionalRequirements,minorCourseRequirements,subplans`,
+  graduateDegreeAdditionalRequirements,minorCourseRequirements,subplans,
+  professionalLicensureAdditionalText,professionalLicensureStandardText`,
 };
 
 export {

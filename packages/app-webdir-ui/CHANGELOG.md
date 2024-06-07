@@ -1,3 +1,17 @@
+# [@asu/app-webdir-ui-v3.4.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.4.1...@asu/app-webdir-ui-v3.4.2) (2024-05-08)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** add url validation for app-webdir-ui get and post requests ([82b69e8](https://github.com/asu/asu-unity-stack/commit/82b69e82afeea6b8cd053f1b401b0f9f4b889e93))
+
+# [@asu/app-webdir-ui-v3.4.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.4.0...@asu/app-webdir-ui-v3.4.1) (2024-04-29)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** Fix title undefined ([5fe4624](https://github.com/asu/asu-unity-stack/commit/5fe4624178123034b1c2e6d718a3f5f576e5c30e))
+
 # [@asu/app-webdir-ui-v3.4.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.3.5...@asu/app-webdir-ui-v3.4.0) (2024-01-11)
 
 

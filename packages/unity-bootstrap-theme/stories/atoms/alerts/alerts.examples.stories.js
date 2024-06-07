@@ -1,8 +1,13 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Alerts", "Atoms", "Examples");
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
+import React from "react";
 
-export const AlertsComponent = createStory(
+import { defaultDecorator } from "../../../../../shared/components/Layout";
+
+export default {
+  title: "Atoms/Alerts/Examples",
+  decorators: [ defaultDecorator ],
+  parameters: { controls: { disable: true } },
+};
+export const AlertsComponent = () => (
   <div>
     <div className="alert alert-warning alert-dismissable" role="alert">
       <div className="alert-icon">
@@ -120,9 +125,5 @@ export const AlertsComponent = createStory(
         </button>
       </div>
     </div>
-  </div>,
-  { initFunc }
+  </div>
 );
-AlertsComponent.args = {
-  template: 1,
-};

@@ -171,7 +171,7 @@ const getTitleFromProfile = (profile, titleMatch) => {
     if (profile.title_source.raw[deptIndex] === "titles") {
       matchedAffiliationTitle = profile.titles.raw[deptIndex];
     } else if (profile.working_title && profile.working_title.raw[0]) {
-      matchedAffiliationTitle = profile.working_title.raw[deptIndex];
+      matchedAffiliationTitle = profile.working_title.raw[0];
     }
     matchedAffiliationDept = profile.departments.raw[deptIndex];
 

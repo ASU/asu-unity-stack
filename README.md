@@ -1,14 +1,13 @@
 # ASU Unity Design System (UDS)
 
 ## Table of Contents
-
 - [ASU Unity Design System (UDS)](#asu-unity-design-system-uds)
-  - [Table of Contents](#table-of-contents)
   - [Quickstart Guide](#quickstart-guide)
   - [Consuming Unity packages in your project:](#consuming-unity-packages-in-your-project)
   - [How to use the private package registry:](#how-to-use-the-private-package-registry)
     - [TROUBLESHOOTING ERRORS](#troubleshooting-errors)
   - [Packages in this repository](#packages-in-this-repository)
+  - [Deprecated packages](#deprecated-packages)
   - [Package Multi Output Targets](#package-multi-output-targets)
   - [Advanced Details for Unity Developers and Contributors](#advanced-details-for-unity-developers-and-contributors)
     - [Dependencies](#dependencies)
@@ -97,10 +96,20 @@ This repository contains multiple packages which are managed and published using
 9. [component-header](./packages/component-header/README.md) - standalone header component that doesn't require the ```unity-bootstrap-theme``` styles
 10. [component-news](./packages/component-news/README.md)
 11. [components-core](./packages/components-core/README.md)
-12. bootstrap4-theme - deprecated and removed. Archived copy in ```/packages-disabled```
-13. design-tokens - deprecated and removed. Archived copy in ```/packages-disabled```
-14. components-library - deprecated and removed. Archived copy in ```/packages-disabled```
-15. cookie-consent - deprecated and removed. Archived copy in ```/packages-disabled```
+
+## Deprecated packages
+
+Previously deprecated packages were located inside the `packages-disabled` folder. We are no longer keeping these deprecated packages active in the repository. Deprecated packages can still be found in git history.
+
+1. [bootstrap4-theme](https://github.com/ASU/asu-unity-stack/tree/86368e5c656108169fe27cbc405e43c2cebae968/packages-disabled/bootstrap4-theme)
+2. [design-tokens](https://github.com/ASU/asu-unity-stack/tree/86368e5c656108169fe27cbc405e43c2cebae968/packages-disabled/design-tokens)
+3.  [components-library](https://github.com/ASU/asu-unity-stack/tree/86368e5c656108169fe27cbc405e43c2cebae968/packages-disabled/components-library)
+4.  [cookie-consent](https://github.com/ASU/asu-unity-stack/tree/86368e5c656108169fe27cbc405e43c2cebae968/packages-disabled/cookie-consent)
+5.  [app-asu-client-es6-example](https://github.com/ASU/asu-unity-stack/tree/86368e5c656108169fe27cbc405e43c2cebae968/packages-disabled/app-asu-client-es6-example)
+6.  [app-new-template](https://github.com/ASU/asu-unity-stack/tree/86368e5c656108169fe27cbc405e43c2cebae968/packages-disabled/app-new-template)
+7.  [component-forms](https://github.com/ASU/asu-unity-stack/tree/86368e5c656108169fe27cbc405e43c2cebae968/packages-disabled/component-forms)
+8.  [maps](https://github.com/ASU/asu-unity-stack/tree/86368e5c656108169fe27cbc405e43c2cebae968/packages-disabled/maps)
+
 
 ## Package Multi Output Targets
 

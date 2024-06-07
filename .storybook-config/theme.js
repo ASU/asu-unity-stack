@@ -7,7 +7,7 @@ export default create({
 
   brandTitle: 'Unity Design System Storybook',
   brandUrl: './',
-  brandImage: 'https://unity.web.asu.edu/@asu/unity-bootstrap-theme/static/media/arizona-state-university-logo.a161f814.png',
+  brandImage: 'https://asu.github.io/asu-unity-stack/@asu/unity-bootstrap-theme/static/media/arizona-state-university-logo.a161f814.png',
   brandTarget: '_self',
 
   //

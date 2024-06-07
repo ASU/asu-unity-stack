@@ -1,7 +1,13 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Typography", "Design");
+import React from "react";
 
-export const Componentfont = createStory(
+import { htmlRootDecorator } from "../../../../../shared/components/Layout.js";
+export default {
+  title: "Design/Typography",
+  decorators: [htmlRootDecorator],
+  parameters: { controls: { disable: true } },
+};
+
+export const Componentfont = () => (
   <div className="container">
     <div className="row">
       <div className="col col-sm-12 p-3">
@@ -29,7 +35,7 @@ export const Componentfont = createStory(
   </div>
 );
 
-export const ComponentbodyCopyWhite = createStory(
+export const ComponentbodyCopyWhite = () => (
   <div className="container bg-white">
     <div className="row">
       <div className="col col-sm-12 p-3">
@@ -62,7 +68,7 @@ export const ComponentbodyCopyWhite = createStory(
   </div>
 );
 
-export const ComponentbodyCopyGray1 = createStory(
+export const ComponentbodyCopyGray1 = () => (
   <div className="container bg-gray-1">
     <div className="row">
       <div className="col col-sm-12 p-3">
@@ -95,7 +101,7 @@ export const ComponentbodyCopyGray1 = createStory(
   </div>
 );
 
-export const ComponentbodyCopyGray2 = createStory(
+export const ComponentbodyCopyGray2 = () => (
   <div className="container bg-gray-2">
     <div className="row">
       <div className="col col-sm-12 p-3">
@@ -128,7 +134,7 @@ export const ComponentbodyCopyGray2 = createStory(
   </div>
 );
 
-export const ComponentbodyCopyGray7 = createStory(
+export const ComponentbodyCopyGray7 = () => (
   <div className="container bg-gray-7 text-white">
     <div className="row">
       <div className="col col-sm-12 p-3">
@@ -164,7 +170,7 @@ export const ComponentbodyCopyGray7 = createStory(
   </div>
 );
 
-export const ComponentASUHeadingsWhite = createStory(
+export const ComponentASUHeadingsWhite = () => (
   <div className="container bg-white">
     <div className="row">
       <div className="col col-sm-12 p-3">
@@ -179,7 +185,7 @@ export const ComponentASUHeadingsWhite = createStory(
   </div>
 );
 
-export const ComponentASUHeadingsGray1 = createStory(
+export const ComponentASUHeadingsGray1 = () => (
   <div className="container bg-gray-1">
     <div className="row">
       <div className="col col-sm-12 p-3">
@@ -194,7 +200,7 @@ export const ComponentASUHeadingsGray1 = createStory(
   </div>
 );
 
-export const ComponentASUHeadingsGray2 = createStory(
+export const ComponentASUHeadingsGray2 = () => (
   <div className="container bg-gray-2">
     <div className="row">
       <div className="col col-sm-12 p-3">
@@ -209,7 +215,7 @@ export const ComponentASUHeadingsGray2 = createStory(
   </div>
 );
 
-export const ComponentASUHeadingsGray7 = createStory(
+export const ComponentASUHeadingsGray7 = () => (
   <div className="container bg-gray-7 text-gray-1">
     <div className="row">
       <div className="col col-sm-12 p-3">
@@ -224,7 +230,7 @@ export const ComponentASUHeadingsGray7 = createStory(
   </div>
 );
 
-export const ComponentHighlightsWhite = createStory(
+export const ComponentHighlightsWhite = () => (
   <div className="container bg-white">
     <div className="row">
       <div className="col col-sm-12 p-3">
@@ -239,7 +245,7 @@ export const ComponentHighlightsWhite = createStory(
   </div>
 );
 
-export const ComponentHighlightsGray1 = createStory(
+export const ComponentHighlightsGray1 = () => (
   <div className="container bg-gray-1">
     <div className="row">
       <div className="col col-sm-12 p-3">
@@ -254,7 +260,7 @@ export const ComponentHighlightsGray1 = createStory(
   </div>
 );
 
-export const ComponentHighlightsGray2 = createStory(
+export const ComponentHighlightsGray2 = () => (
   <div className="container bg-gray-2">
     <div className="row">
       <div className="col col-sm-12 p-3">
@@ -272,7 +278,7 @@ export const ComponentHighlightsGray2 = createStory(
   </div>
 );
 
-export const ComponentHighlightsGray7 = createStory(
+export const ComponentHighlightsGray7 = () => (
   <div className="container bg-gray-7 text-gray-1">
     <div className="row">
       <div className="col col-sm-12 p-3">
@@ -287,7 +293,7 @@ export const ComponentHighlightsGray7 = createStory(
   </div>
 );
 
-export const ComponentASUHeadingsHighlights = createStory(
+export const ComponentASUHeadingsHighlights = () => (
   <div className="container">
     <div className="row">
       <div className="col col-sm-12 p-3">
@@ -313,7 +319,7 @@ export const ComponentASUHeadingsHighlights = createStory(
   </div>
 );
 
-export const ComponentASUHeadingsContentPage = createStory(
+export const ComponentASUHeadingsContentPage = () => (
   <div className="container">
     <div className="row">
       <div className="col col-sm-12 p-3">
@@ -454,7 +460,7 @@ export const ComponentASUHeadingsContentPage = createStory(
   </div>
 );
 
-export const ComponentLead = createStory(
+export const ComponentLead = () => (
   <div className="container">
     <div className="row">
       <div className="col col-sm-12 p-3">
@@ -467,7 +473,7 @@ export const ComponentLead = createStory(
   </div>
 );
 
-export const ComponentASUParagraphs = createStory(
+export const ComponentASUParagraphs = () => (
   <div className="container">
     <div className="row">
       <div className="col-sm-12 p-3">
@@ -506,7 +512,7 @@ export const ComponentASUParagraphs = createStory(
   </div>
 );
 
-export const ComponentInlineTextElements = createStory(
+export const ComponentInlineTextElements = () => (
   <div className="container">
     <div className="row">
       <div className="col-sm-12 p-3">

@@ -6,11 +6,12 @@ import { CardCarousel } from ".";
 
 // eslint-disable-next-line jest/no-mocks-import
 import { cardCarouselItems } from "../../../__mocks__/data/props-mock";
-import { Basic as Header } from "../../../../unity-bootstrap-theme/stories/organisms/global-header/global-header.templates.stories";
+import { Basic as Header } from "../../../../unity-bootstrap-theme/stories/organisms/global-header/global-header.templates";
 
 export default {
   component: CardCarousel,
   title: "Card Carousel",
+  parameters: { controls: { disable: true } },
 };
 
 /**
@@ -20,7 +21,7 @@ export default {
  */
 const Wrapper = ({ children }) => (
   <div>
-    {Header}
+    <Header />
     {children}
   </div>
 );
