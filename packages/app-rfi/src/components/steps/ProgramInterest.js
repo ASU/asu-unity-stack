@@ -21,6 +21,7 @@ export const ProgramInterest = () => {
   const { values, setFieldValue } = useFormikContext();
 
   const {
+    areaOfInterestOptional,
     programOfInterest,
     programOfInterestOptional,
     degreeDataList,
@@ -123,28 +124,8 @@ export const ProgramInterest = () => {
         To learn more about ASU or a specific program, fill out the form below
         then check your email.
       </p>
-      {
-        // Hide if we have a ProgramOfInterest prop.
-        // We have a useEffect above that sets the value.
-        programOfInterest === undefined && (
-          <RfiSelect
-            label="Which applies to you?"
-            id="Campus"
-            name="Campus"
-            options={CAMPUS_OPTIONS_DEFAULT}
-            requiredIcon
-            required
-            onBlur={e =>
-              trackGAEvent({
-                ...GA_EVENT_DEFAULT,
-                type: "Which applies to you?",
-                text: e.target.selectedOptions[0].innerText,
-              })
-            }
-          />
-        )
-      }
-      {
+
+      {/* {
         // Hide if we have a ProgramOfInterest prop and there is only one
         // option. We have a useEffect above that sets the value in the case
         // there's only one option.
@@ -166,28 +147,28 @@ export const ProgramInterest = () => {
             }
           />
         )
-      }
+      } */}
       {
         // Hide if we have a ProgramOfInterest prop.
-        programOfInterest === undefined && (
-          <RfiSelect
-            label="Area of interest"
-            id="Interest1"
-            name="Interest1"
-            options={areaInterestOptions}
-            requiredIcon
-            required
-            onBlur={e =>
-              trackGAEvent({
-                ...GA_EVENT_DEFAULT,
-                type: "Area of interest",
-                text: e.target.selectedOptions[0].innerText,
-              })
-            }
-          />
-        )
+        // programOfInterest === undefined && (
+        //   <RfiSelect
+        //     label="Area of interest"
+        //     id="Interest1"
+        //     name="Interest1"
+        //     options={areaInterestOptions}
+        //     requiredIcon={!areaOfInterestOptional}
+        //     required={!areaOfInterestOptional}
+        //     onBlur={e =>
+        //       trackGAEvent({
+        //         ...GA_EVENT_DEFAULT,
+        //         type: "Area of interest",
+        //         text: e.target.selectedOptions[0].innerText,
+        //       })
+        //     }
+        //   />
+        // )
       }
-      <RfiSelect
+      {/* <RfiSelect
         label="Program of interest"
         id="Interest2"
         name="Interest2"
@@ -204,7 +185,7 @@ export const ProgramInterest = () => {
             text: e.target.selectedOptions[0].innerText,
           })
         }
-      />
+      /> */}
     </>
   );
 };

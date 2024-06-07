@@ -40,7 +40,7 @@ RfiDefault.args = {
   department: undefined,
   studentType: undefined, // graduate, undergrad
   areaOfInterest: undefined,
-  areaOfInterestOptional: undefined,
+  areaOfInterestOptional: false,
   programOfInterest: undefined,
   programOfInterestOptional: false,
   isCertMinor: false,
@@ -63,7 +63,7 @@ RfiOnCollegePage.args = {
   department: undefined,
   studentType: undefined, // graduate, undergrad
   areaOfInterest: undefined,
-  areaOfInterestOptional: undefined,
+  areaOfInterestOptional: false,
   programOfInterest: undefined,
   programOfInterestOptional: false,
   isCertMinor: false,
@@ -86,7 +86,7 @@ RfiOnCollegePageWithAreaOfInterest.args = {
   department: undefined,
   studentType: undefined, // graduate, undergrad
   areaOfInterest: "STEM",
-  areaOfInterestOptional: undefined,
+  areaOfInterestOptional: false,
   programOfInterest: undefined,
   programOfInterestOptional: false,
   isCertMinor: false,
@@ -112,7 +112,7 @@ RfiOnDegreePageUndergraduate.args = {
   department: undefined,
   studentType: undefined, // graduate, undergrad
   areaOfInterest: undefined,
-  areaOfInterestOptional: undefined,
+  areaOfInterestOptional: false,
   programOfInterest: "TEESTEMBAE",
   programOfInterestOptional: false,
   isCertMinor: false,
@@ -135,7 +135,7 @@ RfiOnDegreePageGraduate.args = {
   department: undefined,
   studentType: undefined, // graduate, undergrad
   areaOfInterest: undefined,
-  areaOfInterestOptional: undefined,
+  areaOfInterestOptional: false,
   programOfInterest: "TBGMCIDMGM",
   programOfInterestOptional: false,
   isCertMinor: false,
@@ -158,7 +158,7 @@ RfiOnCollegeDepartmentPage.args = {
   department: "CINFOTECH",
   studentType: undefined, // graduate, undergrad
   areaOfInterest: undefined,
-  areaOfInterestOptional: undefined,
+  areaOfInterestOptional: false,
   programOfInterest: undefined,
   programOfInterestOptional: false,
   isCertMinor: false,
@@ -181,7 +181,7 @@ RfiOnNonAcademicUnitPage.args = {
   department: undefined,
   studentType: undefined, // graduate, undergrad
   areaOfInterest: "Health and Wellness",
-  areaOfInterestOptional: undefined,
+  areaOfInterestOptional: false,
   programOfInterest: undefined,
   programOfInterestOptional: true,
   isCertMinor: false,
@@ -204,7 +204,7 @@ RfiOnCertOrMinorPage.args = {
   department: undefined,
   studentType: undefined, // graduate, undergrad
   areaOfInterest: undefined,
-  areaOfInterestOptional: undefined,
+  areaOfInterestOptional: false,
   programOfInterest: "LAINSCERT",
   programOfInterestOptional: false,
   isCertMinor: true,
@@ -227,7 +227,7 @@ RfiOnCampaignLandingPage.args = {
   department: undefined,
   studentType: "graduate",
   areaOfInterest: undefined,
-  areaOfInterestOptional: undefined,
+  areaOfInterestOptional: false,
   programOfInterest: "BAGLSMS",
   programOfInterestOptional: false,
   isCertMinor: false,
@@ -250,7 +250,7 @@ RfiTestMode.args = {
   department: undefined,
   studentType: "graduate",
   areaOfInterest: "STEM",
-  areaOfInterestOptional: undefined,
+  areaOfInterestOptional: false,
   programOfInterest: "TSSMACSPHD",
   programOfInterestOptional: false,
   isCertMinor: false,
@@ -273,7 +273,7 @@ RfiDevTester.args = {
   department: undefined,
   studentType: "undergrad",
   areaOfInterest: undefined,
-  areaOfInterestOptional: undefined,
+  areaOfInterestOptional: false,
   programOfInterest: undefined,
   programOfInterestOptional: false,
   isCertMinor: false,

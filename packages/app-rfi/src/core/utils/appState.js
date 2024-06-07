@@ -103,7 +103,7 @@ export const useRfiState = props => {
     filterByCampusCode,
   } = props;
   const [stepNumber, setStepNumber] = useState(0);
-  const steps = variant;
+  const steps = variants[variant] || variants["rfiVariant1"];
   const [snapshot, setSnapshot] = useState(getInitialValues(props));
 
   const step = steps[stepNumber];
@@ -111,8 +111,8 @@ export const useRfiState = props => {
   const isLastStep = stepNumber === totalSteps - 1;
 
   const [degreeDataList, setDegreeDataList] = useState([]);
-  const [degreeData, setDegreeData] = useState({});
   const [certMinorEmail, setCertMinorEmail] = useState("");
+  const [degreeData, setDegreeData] = useState({});
   const [success, setSuccess] = useState();
 
   const goNext = values => {
@@ -121,7 +121,7 @@ export const useRfiState = props => {
   };
 
   const goBack = values => {
-    setSnapshot(values);
+    // setSnapshot(values);
     setStepNumber(Math.max(stepNumber - 1, 0));
   };
 
@@ -163,12 +163,21 @@ export const useRfiState = props => {
   //   };
   // }, []);
 
+  const formik = useFormik({
+    initialValues: snapshot,
+    validate: handleStepValidate,
+    onSubmit: handleSubmit,
+    validationSchema: step.props.validationSchema,
+  });
+
+
   useEffect(() => {
     const fetchData = async () => {
-      if (props.programOfInterest && props.isCertMinor) {
+      const Interest2 = props.programOfInterest || formik.values.Interest2
+      if (Interest2) {
         fetchDegreesData({
           dataSourceDegreeSearch: props.dataSourceDegreeSearch,
-          Interest2: props.programOfInterest,
+          Interest2,
         }).then(([response, data]) => {
           if (response === "Error") {
             // eslint-disable-next-line no-console
@@ -176,18 +185,19 @@ export const useRfiState = props => {
             return;
           }
           const { emailAddr, planType } = data[0];
-          if (emailAddr && planType === KEY.CER) {
+          setDegreeData(data[0]);
+          if (props.isCertMinor && emailAddr && planType === KEY.CER) {
             setCertMinorEmail(emailAddr);
-            setDegreeData(data[0]);
           }
         });
       }
     };
 
     fetchData();
-  }, []);
+  }, [formik.values.Interest2]);
 
   useEffect(() => {
+    console.log(formik.values.Campus, formik.values.CareerAndStudentType)
     const fetchData = async () => {
       fetchDegreesData({
         dataSourceDegreeSearch,
@@ -195,8 +205,8 @@ export const useRfiState = props => {
         filterByDepartmentCode,
         filterByCollegeCode,
         filterByCampusCode,
-        Campus: snapshot.Campus,
-        CareerAndStudentType: snapshot.CareerAndStudentType,
+        Campus: formik.values.Campus,
+        CareerAndStudentType: formik.values.CareerAndStudentType,
       }).then(([response, data]) => {
         if (response === "Error") {
           // eslint-disable-next-line no-console
@@ -212,14 +222,8 @@ export const useRfiState = props => {
     };
 
     fetchData();
-  }, [snapshot.Campus, snapshot.CareerAndStudentType]);
+  }, [formik.values.Campus, formik.values.CareerAndStudentType]);
 
-  const formik = useFormik({
-    initialValues: snapshot,
-    validate: handleStepValidate,
-    onSubmit: handleSubmit,
-    validationSchema: step.props.validationSchema,
-  });
   const returnObject = {
     degreeDataList,
     degreeData,

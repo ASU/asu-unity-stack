@@ -20,7 +20,7 @@ const Success = () => {
       <h3>Thanks for your request!</h3>
       <div
         className="rfi-success-msg-wrapper"
-        dangerouslySetInnerHTML={sanitizeDangerousMarkup(successMsg)}
+        dangerouslySetInnerHTML={sanitizeDangerousMarkup(`${successMsg}`)}
       />
     </div>
   );

@@ -5,52 +5,60 @@ import { KEY } from "../../core/utils/constants";
 import { AboutMe, aboutMeForm } from "../steps/AboutMe";
 import { Optional, optionalForm } from "../steps/Optional";
 import { ProgramInterest, programInterestForm } from "../steps/ProgramInterest";
+import { Campus } from "../steps/questions/Campus";
+import { CareerAndStudentType } from "../steps/questions/CareerAndStudentType.js";
+import { Interest1 } from "../steps/questions/Interest1";
+import { Interest2 } from "../steps/questions/Interest2";
+import { EmailAddress } from "../steps/questions/EmailAddress.js";
+import { FirstName } from "../steps/questions/FirstName.js";
+import { LastName } from "../steps/questions/LastName.js";
+import { Phone } from "../steps/questions/Phone.js";
+import { ZipCode } from "../steps/questions/ZipCode.js";
+import { EntryTerm } from "../steps/questions/EntryTerm.js";
+import { GdprConsent } from "../steps/questions/GdprConsent.js";
 
 const Step = ({ children }) => children;
 
 const variants = {
-  AppVariant1: [
+  rfiVariant1: [
     <Step
       section="Request information"
       onSubmit={(values, bag) => {
         console.log("Step1 onSubmit");
       }}
       validationSchema={Yup.object({
-        ...programInterestForm.validationSchema,
-        ...aboutMeForm.validationSchema,
+        Campus: Yup.string().required(
+          "Error: Which applies to you is required"
+        ),
+        CareerAndStudentType: Yup.string().required(
+          "Error: Student status is required"
+        ),
+        Interest1: Yup.string().required("Error: Area of Interest is required"),
+        Interest2: Yup.string().required(
+          "Error: Program of Interest is required"
+        ),
       })}
-      initialValues={programInterestForm.initialValues}
-      validate={(values, { programOfInterest, programOfInterestOptional }) => {
-        const errors = {};
-        // const { programOfInterest, programOfInterestOptional } = props;
-        // If on step 1 and Interest1 is empty and we don't have a
-        // ProgramOfInterest (aka Interest2) prop, require Interest1.
-        if (!values.Interest1 && !programOfInterest) {
-          errors.Interest1 = "Error: Area of Interest is required";
-        }
-        // If on step 1 and Interest2 is empty, and is not optional or campus is
-        // ONLNE, require Interest2.
-        if (
-          !values.Interest2 &&
-          (!programOfInterestOptional || values.Campus === KEY.ONLINE)
-        ) {
-          errors.Interest2 = "Error: Program of Interest is required";
-        }
-        // If on step 2 and Campus isn't ONLNE, EntryTerm is required.
-        if (values.Campus !== KEY.ONLINE && !values.EntryTerm) {
-          errors.EntryTerm = "Error: Entry term is required";
-        }
-
-        return errors;
-      }}
     >
       <h2>Request information</h2>
-      <ProgramInterest />
+      <p className="rfi-step1-intro">
+        To learn more about ASU or a specific program, fill out the form below
+        then check your email.
+      </p>
+      <Campus />
+      <CareerAndStudentType />
+      <Interest1 />
+      <Interest2 />
 
-      <AboutMe />
+      <EmailAddress />
+      <FirstName />
+      <LastName />
+      <Phone />
+      <ZipCode />
+      <EntryTerm />
+      <GdprConsent />
     </Step>,
   ],
-  AppVariant2: [
+  rfiVariant2: [
     <Step
       section="Request information"
       onSubmit={(values, bag) => {
@@ -58,12 +66,15 @@ const variants = {
       }}
       validationSchema={Yup.object(programInterestForm.validationSchema)}
       initialValues={programInterestForm.initialValues}
-      validate={(values, { programOfInterest, programOfInterestOptional }) => {
+      validate={(
+        values,
+        { programOfInterest, programOfInterestOptional, areaOfInterestOptional }
+      ) => {
         const errors = {};
         // const { programOfInterest, programOfInterestOptional } = props;
         // If on step 1 and Interest1 is empty and we don't have a
         // ProgramOfInterest (aka Interest2) prop, require Interest1.
-        if (!values.Interest1 && !programOfInterest) {
+        if (areaOfInterestOptional && !values.Interest1 && !programOfInterest) {
           errors.Interest1 = "Error: Area of Interest is required";
         }
         // If on step 1 and Interest2 is empty, and is not optional or campus is
@@ -79,7 +90,14 @@ const variants = {
       }}
     >
       <h2>Request information</h2>
-      <ProgramInterest />
+      <p className="rfi-step1-intro">
+        To learn more about ASU or a specific program, fill out the form below
+        then check your email.
+      </p>
+      <Campus />
+      <CareerAndStudentType />
+      <Interest1 />
+      <Interest2 />
     </Step>,
     <Step
       section="About me"
@@ -99,7 +117,7 @@ const variants = {
       <AboutMe />
     </Step>,
   ],
-  AppVariant3: [
+  rfiVariant3: [
     <Step
       section="Request information"
       onSubmit={(values, bag) => {

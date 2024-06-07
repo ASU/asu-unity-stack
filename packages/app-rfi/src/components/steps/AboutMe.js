@@ -17,7 +17,7 @@ import {
   RfiPhone,
   RfiCheckboxSingle,
 } from "../controls";
-import { GdprConsent } from "./GdprConsent";
+import { GdprConsent } from "./questions/GdprConsent";
 
 const defaultInputEvent = {
   event: "form",
@@ -100,7 +100,6 @@ export const AboutMe = () => {
         name="EmailAddress"
         requiredIcon
         required
-        autoFocus
         onBlur={e =>
           trackGAEvent({
             ...defaultInputEvent,
@@ -203,7 +202,6 @@ export const AboutMe = () => {
           }
         />
       )}
-      <GdprConsent campus={values.Campus} />
     </>
   );
 };

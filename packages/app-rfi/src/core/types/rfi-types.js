@@ -3,12 +3,14 @@
 /**
  * @typedef {Object} RFIProps
  * @property {string} [appPathFolder]
+ * @property {"rfiVariant1"|"rfiVariant2"|"rfiVariant3"} [variant]
  * @property {string} [campus]
  * @property {string} [actualCampus]
  * @property {string} [college]
  * @property {string} [department]
  * @property {string} [studentType]
  * @property {string} [areaOfInterest]
+ * @property {boolean} [areaOfInterestOptional]
  * @property {string} [programOfInterest]
  * @property {boolean} [programOfInterestOptional]
  * @property {boolean} [isCertMinor]
@@ -38,6 +40,7 @@
  * @property {string} [filterByDepartmentCode]  // department prop renamed for clarity
  * @property {string} [studentType]
  * @property {string} [areaOfInterest]
+ * @property {boolean} [areaOfInterestOptional]
  * @property {string} [programOfInterest]
  * @property {boolean} [programOfInterestOptional]
  * @property {boolean} [isCertMinor]

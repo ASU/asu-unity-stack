@@ -30,12 +30,14 @@ const currentScriptPath = getCurrentScriptPath();
 const AsuRfi = props => {
   const {
     appPathFolder,
+    variant,
     campus,
     actualCampus,
     college,
     department,
     studentType,
     areaOfInterest,
+    areaOfInterestOptional,
     programOfInterest,
     programOfInterestOptional,
     isCertMinor,
@@ -72,6 +74,7 @@ const AsuRfi = props => {
     <RfiContext.Provider
       value={{
         ...rfiState,
+        variant,
         appPathFolder,
         campusType: campus,
         filterByCampusCode: actualCampus,
@@ -79,6 +82,7 @@ const AsuRfi = props => {
         filterByDepartmentCode: department,
         studentType,
         areaOfInterest,
+        areaOfInterestOptional,
         programOfInterest,
         programOfInterestOptional,
         isCertMinor,
@@ -121,13 +125,13 @@ const AsuRfi = props => {
                       submitting={rfiState.formik.isSubmitting}
                     />
                   )}
-                  {test && <Debug />}
                 </Form>
               </div>
             </div>
           </RfiMainForm>
         </FormikProvider>
       </div>
+      {test && <Debug />}
     </RfiContext.Provider>
   );
 };
@@ -136,12 +140,14 @@ export { AsuRfi };
 
 // Props
 AsuRfi.defaultProps = {
+  variant: "rfiVariant1",
   campus: undefined,
   actualCampus: undefined,
   college: undefined,
   department: undefined,
   studentType: undefined,
   areaOfInterest: undefined,
+  areaOfInterestOptional: false,
   programOfInterest: undefined,
   programOfInterestOptional: false,
   isCertMinor: false,
@@ -156,6 +162,7 @@ AsuRfi.defaultProps = {
 
 AsuRfi.propTypes = {
   appPathFolder: PropTypes.string,
+  variant: PropTypes.oneOf(["rfiVariant1", "rfiVariant2", "rfiVariant3"]),
   campus: PropTypes.oneOf(["GROUND", "ONLNE", "NOPREF"]),
   /** Not be a complete list: "AWC", "CAC", "EAC", "LOSAN", "MESA", "POLY", "TEMPE", "WEST" */
   actualCampus: PropTypes.string,
@@ -165,6 +172,7 @@ AsuRfi.propTypes = {
   department: PropTypes.string,
   studentType: PropTypes.oneOf(["graduate", "undergrad"]),
   areaOfInterest: PropTypes.string,
+  areaOfInterestOptional: PropTypes.bool,
   programOfInterest: PropTypes.string,
   programOfInterestOptional: PropTypes.bool,
   isCertMinor: PropTypes.bool,
