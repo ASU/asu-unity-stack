@@ -33,10 +33,6 @@
           border: none;
           flex-grow: 1;
 
-          .fa-chevron-up {
-            font-size: 1.25rem;
-          }
-
           &:focus-visible {
             outline: none;
           }
@@ -55,7 +51,9 @@
         }
       }
 
-      > p {
+      > p,
+      .header > p
+      {
         display: -webkit-box;
         -webkit-box-orient: vertical;
         overflow: hidden;
@@ -90,7 +88,9 @@
           }
         }
 
-        > p {
+        > p,
+        .header > p
+        {
           -webkit-line-clamp: 12;
         }
       }
@@ -143,18 +143,6 @@
           }
 
           .btn-expand.small-card {
-            position: absolute;
-            width: 90%;
-            height: 104px;
-            margin: auto;
-
-            .fa-chevron-up {
-              position: relative;
-
-              @include media-breakpoint-down(md) {
-              }
-
-            }
           }
         }
       }
