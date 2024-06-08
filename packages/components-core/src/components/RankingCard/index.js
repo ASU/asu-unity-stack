@@ -112,13 +112,15 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
               <button
                 onClick={handleButtonClick}
                 id="dispatch"
-                className="btn-expand small-card"
+                className="btn btn-expand"
                 aria-label="Expand ranking"
                 type="button"
                 aria-expanded={open}
                 aria-controls={uniqueIdRef.current}
-              />
+              >
               <i className="fas fa-chevron-up" />
+
+              </button>
             </>
           )}
         </div>
