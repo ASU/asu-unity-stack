@@ -29,7 +29,7 @@ const filters = {
 };
 */
 
-export const facultyRankWebDirectory = args => {
+export const FacultyRankWebDirectory = args => {
   return (
     <div className="uds-content-align">
       <WebDirectory

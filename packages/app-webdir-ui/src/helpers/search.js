@@ -492,8 +492,6 @@ export const performSearch = function ({
 
     APICall()
       .then(res => {
-        // engine.inFlight = false;
-        // engine.abortController = null;
         const { data } = res;
         resolve(data);
       })

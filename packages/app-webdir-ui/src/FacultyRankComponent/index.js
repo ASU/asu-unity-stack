@@ -2,7 +2,6 @@ import { TabbedPanels, Tab } from "@asu/components-core";
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 
-import { FilterComponent } from "../helpers/Filter";
 import { engineNames, engines } from "../helpers/search";
 import { ASUSearchResultsList } from "../SearchResultsList";
 
@@ -52,13 +51,44 @@ const FacultyRankTabPanels = ({
 }) => {
   const [requestFilters, setRequestFilters] = useState({});
   const [tabChange, setTabChange] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [tabs, setTabs] = useState({});
   const RES_PER_PAGE = 6;
   const sort = "faculty_rank";
+
+  const searchUrl = new URL(
+    `${API_URL}${searchApiVersion}${
+      engines[engineNames.WEB_DIRECTORY_FACULTY_RANK].url
+    }`
+  );
+  searchUrl.searchParams.append("sort_by", searchType);
+  searchUrl.searchParams.append("dept_ids", deptIds);
+  searchUrl.searchParams.append("page", "1");
+  searchUrl.searchParams.append("size", "1");
+
+  const fetchRankGroupData = async rankGroup => {
+    const url = `${searchUrl}&rank_group=${rankGroup}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    return { rankGroup, length: data.results?.length };
+  };
 
   useEffect(() => {
     const tempFilters = { ...filters };
     tempFilters["deptIds"] = deptIds.split(",");
     setRequestFilters(tempFilters);
+
+    const promises = Object.keys(filtersData).map(fetchRankGroupData);
+    Promise.all(promises).then(results => {
+      const newTabs = results.reduce((acc, { rankGroup, length }) => {
+        if (length > 0) {
+          acc[rankGroup] = filtersData[rankGroup];
+        }
+        return acc;
+      }, {});
+      setTabs(newTabs);
+      setLoading(false);
+    });
   }, [deptIds, tabChange]);
 
   const engineParams = {
@@ -80,9 +110,17 @@ const FacultyRankTabPanels = ({
     faculty_rank: engineNames.WEB_DIRECTORY_FACULTY_RANK,
   };
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!Object.keys(tabs).length) {
+    return <div>No faculty rank data found for department {deptIds}</div>;
+  }
+
   return (
     <TabbedPanels onTabChange={setTabChange}>
-      {[1, 2, 3].map(rankGroup => (
+      {Object.keys(tabs).map(rankGroup => (
         <Tab
           key={rankGroup}
           id={`faculty-${rankGroup}`}
