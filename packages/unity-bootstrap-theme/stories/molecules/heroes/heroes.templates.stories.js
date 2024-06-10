@@ -52,7 +52,7 @@ const Hero = ({size}) => (
       fetchpriority="high"
     />
     <h1>
-      <span className="highlight-white">
+      <span className="text-white">
         Lorem ipsum dolor sit amet, consectetur adip
       </span>
     </h1>

@@ -145,7 +145,7 @@ h2 span.highlight,
 h3 span.highlight,
 .h3 span.highlight,
 h4 span.highlight,
-.h4 span.highlight, {
+.h4 span.highlight {
   &-gold {
     @include heading-highlight-small-box-shadow(
         $heading-highlight-gold-background-color,
