@@ -1,3 +1,10 @@
+# [@asu/components-core-v3.3.5](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.4...@asu/components-core-v3.3.5) (2024-06-10)
+
+
+### Bug Fixes
+
+* **components-core:** add new plain white text hero option ([7edb1b3](https://github.com/ASU/asu-unity-stack/commit/7edb1b3c0409ad86e26db236bc41ace81a7209e1))
+
 # [@asu/components-core-v3.3.4](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.3...@asu/components-core-v3.3.4) (2024-01-29)
 
 
