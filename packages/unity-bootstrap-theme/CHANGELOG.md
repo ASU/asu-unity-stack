@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.9.17](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.16...@asu/unity-bootstrap-theme-v1.9.17) (2024-06-10)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** large hero text now hidden on mobile ([665e7ce](https://github.com/ASU/asu-unity-stack/commit/665e7ceaa85d3973064ac07623ae09684be0add9))
+
 # [@asu/unity-bootstrap-theme-v1.9.16](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.15...@asu/unity-bootstrap-theme-v1.9.16) (2024-06-10)
 
 
