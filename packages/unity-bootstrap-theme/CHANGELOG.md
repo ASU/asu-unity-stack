@@ -1,3 +1,11 @@
+# [@asu/unity-bootstrap-theme-v1.9.16](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.15...@asu/unity-bootstrap-theme-v1.9.16) (2024-06-10)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** updated close button for alert,Banner,modals ([2313eec](https://github.com/ASU/asu-unity-stack/commit/2313eecb2df5d5c5b3e96cd186cf535e047fea26))
+* **unity-bootstrap-theme:** updated modal and allerts/banners to new mockups ([3228558](https://github.com/ASU/asu-unity-stack/commit/32285581c8b9360e67cd2a44e518a813a770fab5))
+
 # [@asu/unity-bootstrap-theme-v1.9.15](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.14...@asu/unity-bootstrap-theme-v1.9.15) (2024-05-17)
 
 
