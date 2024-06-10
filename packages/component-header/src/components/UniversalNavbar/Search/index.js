@@ -1,4 +1,3 @@
-// @ts-check
 import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useRef, useEffect } from "react";
@@ -17,27 +16,6 @@ const SEARCH_GA_EVENT = {
   section: "topbar",
 };
 
-function handleSearch(e) {
-  e.preventDefault();
-  /**
-   * Issue: Callback not currently available
-   * We need to ensure dataLayer events are being logged correctly
-   * Soluton might be in GA4 settings with a form event targeting the element ID
-   *
-   * This solution does not guarantee the event is logged before the page
-   * redirects.
-   * Preventing form submission with arbitrary timeout is always bad, but this
-   * may be small enough to not degrade the experience
-   *
-   * TODO: UDS-1612
-   */
-  setTimeout(() => e.target.submit(), 100);
-  return trackGAEvent({
-    ...SEARCH_GA_EVENT,
-    text: e.target.elements.q.value,
-  });
-}
-
 const Search = () => {
   const { breakpoint, searchUrl, site } = useAppContext();
   const isMobile = useIsMobile(breakpoint);
@@ -48,8 +26,32 @@ const Search = () => {
     if (open) inputRef.current.focus();
   }, [open]);
 
+  const handleSearch = (e) => {
+    const form = e.target;
+    e.preventDefault();
+    /**
+     * Issue: Callback not currently available
+     * We need to ensure dataLayer events are being logged correctly
+     * Soluton might be in GA4 settings with a form event targeting the element ID
+     *
+     * This solution does not guarantee the event is logged before the page
+     * redirects.
+     * Preventing form submission with arbitrary timeout is always bad, but this
+     * may be small enough to not degrade the experience
+     *
+     * TODO: UDS-1612
+     */
+    trackGAEvent({
+      ...SEARCH_GA_EVENT,
+      text: e.target.elements.q.value,
+    });
+    setTimeout(() => {
+      form.submit();
+    }, 100);
+  };
+
   const handleChangeVisibility = () => {
-    setOpen(prevState => {
+    setOpen((prevState) => {
       const newState = !prevState;
 
       trackGAEvent({
@@ -118,7 +120,7 @@ const Search = () => {
             aria-labelledby="header-top-search"
             placeholder="Search asu.edu"
             required
-            onChange={e =>
+            onChange={(e) =>
               trackGAEvent({
                 ...SEARCH_GA_EVENT,
                 text: e.target.value,
