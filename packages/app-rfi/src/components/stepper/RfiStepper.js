@@ -275,6 +275,7 @@ export const RfiStepperButtons = ({
             {stepNumber > 0 ? (
               <Button
                 type="button"
+                className="btn btn-primary"
                 onClick={() => {
                   handleBack();
                   trackGAEvent({
@@ -288,7 +289,7 @@ export const RfiStepperButtons = ({
                 <span>
                   <i className="fas fa-angle-left" aria-hidden="true" />
                 </span>{" "}
-                Prev
+                Previous
               </Button>
             ) : null}
           </div>
@@ -297,7 +298,7 @@ export const RfiStepperButtons = ({
             {stepNumber < totalSteps - 1 ? (
               <Button
                 type="submit"
-                className={`rfi-button-step${stepNumber + 1}`}
+                className={`btn btn-primary rfi-button-step${stepNumber + 1}`}
                 onClick={() =>
                   trackGAEvent({
                     ...defaultButtonEvent,
@@ -315,7 +316,7 @@ export const RfiStepperButtons = ({
             ) : (
               <Button
                 type="submit"
-                className="rfi-submit btn btn-gold"
+                className="rfi-submit btn btn-primary"
                 disabled={!!submitting}
                 onClick={() =>
                   trackGAEvent({
