@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.9.18](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.17...@asu/unity-bootstrap-theme-v1.9.18) (2024-06-10)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** added new styles for nav link ([7324e02](https://github.com/ASU/asu-unity-stack/commit/7324e028e637e03d2bc63fcc0f1f04f9abd9bacc))
+
 # [@asu/unity-bootstrap-theme-v1.9.17](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.16...@asu/unity-bootstrap-theme-v1.9.17) (2024-06-10)
 
 
