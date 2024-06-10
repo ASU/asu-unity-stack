@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v3.5.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.4.2...@asu/app-webdir-ui-v3.5.0) (2024-06-10)
+
+
+### Features
+
+* **app-webdir-ui:** hide empty faculty rank tabs ([d465e82](https://github.com/asu/asu-unity-stack/commit/d465e821b0e210e28b0288454f9fc19fd1cc2acc))
+
 # [@asu/app-webdir-ui-v3.4.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.4.1...@asu/app-webdir-ui-v3.4.2) (2024-05-08)
 
 
