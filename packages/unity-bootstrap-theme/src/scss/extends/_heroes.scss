@@ -258,6 +258,10 @@ div.uds-hero-md {
 div.uds-hero-lg {
   height: $uds-size-spacing-64;
 
+  .content {
+    display: none;
+  }
+
   h1 {
     margin-bottom: $uds-size-spacing-2;
   }
@@ -398,6 +402,10 @@ div.uds-hero-lg {
     height: 42.75rem;
     // TODO; remove this, it's a fallback for buttons without has-btn-row
     grid-template-rows: 1fr repeat(4, auto) $uds-size-spacing-6;
+
+    .content {
+      display: block;
+    }
 
     &.has-btn-row {
       grid-template-rows: 1fr repeat(4, auto) $uds-size-spacing-6;
