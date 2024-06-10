@@ -21,7 +21,7 @@
   &-container {
     background-color: $uds-color-background-white;
     flex: 1;
-    height: 530px;
+    height: fit-content;
     max-width: 1200px;
     opacity: 1;
     padding: 32px;
@@ -31,23 +31,27 @@
 
   &-close-btn {
     @extend .btn;
-    background-color: $uds-color-base-gray-4;
+    background-color: $uds-color-background-white;
     border: 1px solid transparent;
     height: $uds-size-spacing-4; // 2rem
-    opacity: 0.5;
     padding: 0.25rem;
     position: absolute;
     right: 0;
     text-decoration: none;
     top: -$uds-size-spacing-7; // -56 px (24px away from top + 32px height of button)
     width: $uds-size-spacing-4 !important; // 2rem
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    .fa-times {
+    .fa-xmark {
       color: $uds-color-base-gray-7;
+      font-size: $uds-size-font-small;
     }
 
     &:hover {
-      opacity: 1;
+      background-color: $uds-color-background-white;
+      opacity: .7;
     }
   }
 }

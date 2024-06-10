@@ -39,11 +39,15 @@
     flex: 2;
     margin-top: -$uds-size-spacing-2;
     margin-right: -$uds-size-spacing-2;
+    width: 12px;
 
     // Edits close button content (i.e. "X" inside bubble)
     .close {
       opacity: 1;
-      font-size: 1rem;
+      font-size: $uds-size-font-small;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       &:hover {
         opacity: 1;
