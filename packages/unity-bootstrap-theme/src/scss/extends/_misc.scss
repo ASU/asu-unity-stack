@@ -1,3 +1,23 @@
+@mixin footer-links {
+  color: $uds-color-base-gray-2;
+  line-height: $uds-size-spacing-3;
+  text-decoration: none;
+
+  &:hover {
+    color: $uds-color-base-gold;
+    text-decoration: underline;
+  }
+}
+
+// Separate Secondary Nav link that matches nav link used in global footer
+// Will be used in future efforts to make link more reusable.
+.secondary-nav-link {
+  @extend .nav-link;
+  color: $uds-color-base-white;
+  padding: 0 0 $uds-size-spacing-2;
+  @include footer-links;
+}
+
 .img-background {
   background-size: cover;
   background-repeat: no-repeat;
