@@ -54,7 +54,7 @@ export const Interest2 = () => {
       id="Interest2"
       name="Interest2"
       options={programInterestOptions}
-      disabled={programOfInterest !== undefined}
+      disabled={programOfInterest}
       requiredIcon={!programOfInterestOptional || values.Campus === KEY.ONLINE}
       required={!programOfInterestOptional || values.Campus === KEY.ONLINE}
       onBlur={e =>

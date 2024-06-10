@@ -83,7 +83,7 @@ const getInitialValues = props => ({
   Country: props.country,
   Zip: undefined,
   BirthDate: undefined,
-  MilitaryStatus: undefined,
+  MilitaryStatus: "No",
   Comments: undefined,
   Email: undefined,
 });
@@ -227,7 +227,6 @@ export const useRfiState = props => {
   const returnObject = {
     degreeDataList,
     degreeData,
-    showProgress: true,
     showStepButtons: true,
     props,
     formik,

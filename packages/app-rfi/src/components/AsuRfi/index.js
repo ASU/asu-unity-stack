@@ -104,17 +104,9 @@ const AsuRfi = props => {
             }/assets/img/WS2-DefaultImagev01-Final.png`}
           >
             <div>
-              {rfiState.showProgress && (
-                <Progress
-                  value={Math.floor(
-                    (rfiState.stepNumber / rfiState.totalSteps) * 100
-                  )}
-                  aria-label="Progress bar"
-                  className="rfi-progress"
-                />
-              )}
               <div className="uds-rfi-form-wrapper">
-                <Form className="uds-form uds-rfi">
+                {/* noValidate - disable browser validation and use Formik */}
+                <Form className="uds-form uds-rfi" noValidate>
                   {rfiState.step}
                   {rfiState.showStepButtons && (
                     <RfiStepperButtons
@@ -162,7 +154,7 @@ AsuRfi.defaultProps = {
 
 AsuRfi.propTypes = {
   appPathFolder: PropTypes.string,
-  variant: PropTypes.oneOf(["rfiVariant1", "rfiVariant2", "rfiVariant3"]),
+  variant: PropTypes.oneOf(["rfiVariant1", "rfiVariant2"]),
   campus: PropTypes.oneOf(["GROUND", "ONLNE", "NOPREF"]),
   /** Not be a complete list: "AWC", "CAC", "EAC", "LOSAN", "MESA", "POLY", "TEMPE", "WEST" */
   actualCampus: PropTypes.string,

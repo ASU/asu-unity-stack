@@ -15,7 +15,7 @@ export const Campus = () => {
     formik: { values },
   } = useRfiContext();
 
-  return programOfInterest !== undefined ? (
+  return programOfInterest ? (
     <input type="hidden" name="Campus" value={values.Campus || KEY.NOPREF} />
   ) : (
     <RfiSelect

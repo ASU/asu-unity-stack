@@ -33,6 +33,7 @@ const testSubmissionUrl = "https://httpbin.org/post";
 
 export const RfiDefault = Template.bind({});
 RfiDefault.args = {
+  variant: "rfiVariant1",
   appPathFolder: ".", // Optional
   campus: undefined, // ONLNE, GROUND, NOPREF
   actualCampus: undefined, // TEMPE, DTPHX, POLY, WEST, ONLNE...
@@ -47,7 +48,6 @@ RfiDefault.args = {
   country: undefined,
   stateProvince: undefined, // Only US states or CA provinces - use full name.
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
-  variant: "rfiVariant3",
   test: true,
   dataSourceDegreeSearch: undefined, // "https://degrees.apps.asu.edu/t5/service",
   dataSourceAsuOnline: undefined, // "https://cms.asuonline.asu.edu/lead-submissions-v3.5/programs",
@@ -57,6 +57,7 @@ RfiDefault.args = {
 
 export const RfiOnCollegePage = Template.bind({});
 RfiOnCollegePage.args = {
+  variant: "rfiVariant1",
   campus: undefined, // ONLNE, GROUND, NOPREF
   actualCampus: undefined, // TEMPE, DTPHX, POLY, WEST, ONLNE...
   college: "CHI", // CHI
@@ -70,7 +71,6 @@ RfiOnCollegePage.args = {
   country: undefined,
   stateProvince: undefined, // Only US states or CA provinces
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
-  variant: "rfiVariant3",
   test: true,
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
@@ -80,6 +80,7 @@ RfiOnCollegePage.args = {
 
 export const RfiOnCollegePageWithAreaOfInterest = Template.bind({});
 RfiOnCollegePageWithAreaOfInterest.args = {
+  variant: "rfiVariant1",
   campus: undefined, // ONLNE, GROUND, NOPREF
   actualCampus: undefined, // TEMPE, DTPHX, POLY, WEST, ONLNE...
   college: "CES",
@@ -93,7 +94,6 @@ RfiOnCollegePageWithAreaOfInterest.args = {
   country: undefined,
   stateProvince: undefined, // Only US states or CA provinces
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
-  variant: "rfiVariant3",
   test: true,
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
@@ -106,6 +106,7 @@ RfiOnCollegePageWithAreaOfInterest.args = {
 // Also, DS REST API returns degrees with ONLNE status, so perhaps it's covered.
 export const RfiOnDegreePageUndergraduate = Template.bind({});
 RfiOnDegreePageUndergraduate.args = {
+  variant: "rfiVariant1",
   campus: undefined, // ONLNE, GROUND, NOPREF
   actualCampus: undefined, // TEMPE, DTPHX, POLY, WEST, ONLNE...
   college: undefined,
@@ -119,7 +120,6 @@ RfiOnDegreePageUndergraduate.args = {
   country: undefined,
   stateProvince: undefined, // Only US states or CA provinces
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
-  variant: "rfiVariant3",
   test: true,
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
@@ -129,6 +129,7 @@ RfiOnDegreePageUndergraduate.args = {
 
 export const RfiOnDegreePageGraduate = Template.bind({});
 RfiOnDegreePageGraduate.args = {
+  variant: "rfiVariant1",
   campus: undefined, // ONLNE, GROUND, NOPREF
   actualCampus: undefined, // TEMPE, DTPHX, POLY, WEST, ONLNE...
   college: undefined,
@@ -142,7 +143,6 @@ RfiOnDegreePageGraduate.args = {
   country: undefined,
   stateProvince: undefined, // Only US states or CA provinces
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
-  variant: "rfiVariant3",
   test: true,
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
@@ -152,6 +152,7 @@ RfiOnDegreePageGraduate.args = {
 
 export const RfiOnCollegeDepartmentPage = Template.bind({});
 RfiOnCollegeDepartmentPage.args = {
+  variant: "rfiVariant1",
   campus: undefined, // ONLNE, GROUND, NOPREF
   actualCampus: undefined, // TEMPE, DTPHX, POLY, WEST, ONLNE...
   college: "CES",
@@ -165,7 +166,6 @@ RfiOnCollegeDepartmentPage.args = {
   country: undefined,
   stateProvince: undefined, // Only US states or CA provinces
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
-  variant: "rfiVariant3",
   test: true,
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
@@ -175,6 +175,7 @@ RfiOnCollegeDepartmentPage.args = {
 
 export const RfiOnNonAcademicUnitPage = Template.bind({});
 RfiOnNonAcademicUnitPage.args = {
+  variant: "rfiVariant1",
   campus: undefined, // ONLNE, GROUND, NOPREF
   actualCampus: undefined, // TEMPE, DTPHX, POLY, WEST, ONLNE...
   college: undefined,
@@ -188,7 +189,6 @@ RfiOnNonAcademicUnitPage.args = {
   country: undefined,
   stateProvince: undefined, // Only US states or CA provinces
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
-  variant: "rfiVariant3",
   test: true,
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
@@ -198,6 +198,7 @@ RfiOnNonAcademicUnitPage.args = {
 
 export const RfiOnCertOrMinorPage = Template.bind({});
 RfiOnCertOrMinorPage.args = {
+  variant: "rfiVariant1",
   campus: undefined, // ONLNE, GROUND, NOPREF
   actualCampus: undefined, // TEMPE, DTPHX, POLY, WEST, ONLNE...
   college: undefined,
@@ -211,7 +212,6 @@ RfiOnCertOrMinorPage.args = {
   country: undefined,
   stateProvince: undefined, // Only US states or CA provinces
   successMsg: `<div>A custom <strong>SuccessMsg</strong> suplied by you displays here.</div>`,
-  variant: "rfiVariant3",
   test: true,
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
@@ -221,6 +221,7 @@ RfiOnCertOrMinorPage.args = {
 
 export const RfiOnCampaignLandingPage = Template.bind({});
 RfiOnCampaignLandingPage.args = {
+  variant: "rfiVariant1",
   campus: undefined, // ONLNE, GROUND, NOPREF
   actualCampus: undefined, // TEMPE, DTPHX, POLY, WEST, ONLNE...
   college: undefined,
@@ -234,7 +235,6 @@ RfiOnCampaignLandingPage.args = {
   country: "US",
   stateProvince: "New Mexico", // Only US states or CA provinces
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
-  variant: "rfiVariant3",
   test: true,
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
@@ -244,6 +244,7 @@ RfiOnCampaignLandingPage.args = {
 
 export const RfiTestMode = Template.bind({});
 RfiTestMode.args = {
+  variant: "rfiVariant1",
   campus: "GROUND", // ONLNE, GROUND, NOPREF
   actualCampus: undefined, // TEMPE, DTPHX, POLY, WEST, ONLNE...
   college: undefined,
@@ -257,7 +258,6 @@ RfiTestMode.args = {
   country: "US",
   stateProvince: "California", // Only US states or CA provinces
   successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
-  variant: "rfiVariant3",
   test: true,
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
@@ -267,6 +267,7 @@ RfiTestMode.args = {
 
 export const RfiDevTester = Template.bind({});
 RfiDevTester.args = {
+  variant: "rfiVariant1",
   campus: undefined, // ONLNE, GROUND, NOPREF
   actualCampus: "POLY", // TEMPE, DTPHX, POLY, WEST, ONLNE...
   college: undefined,
@@ -280,7 +281,6 @@ RfiDevTester.args = {
   country: "DZ",
   stateProvince: undefined, // Only US states or CA provinces
   successMsg: "Success. <strong>You made it.</strong>",
-  variant: "rfiVariant3",
   test: true,
   dataSourceDegreeSearch: "https://api.myasuplat-dpl.asu.edu/api/codeset",
   dataSourceAsuOnline:

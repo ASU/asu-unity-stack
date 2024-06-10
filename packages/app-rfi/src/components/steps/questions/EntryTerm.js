@@ -60,7 +60,7 @@ export const EntryTerm = () => {
 
     if (
       degreeData.acadPlanCode &&
-      values.Campus !== KEY.ONLNE &&
+      values.Campus !== KEY.ONLINE &&
       degreeData.degreeType === KEY.GR
     ) {
       // Convert object to array so we can .sort and .map.
