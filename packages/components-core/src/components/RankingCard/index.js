@@ -103,8 +103,8 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
                 aria-controls={uniqueIdRef.current}
               >
                 <h4>{heading}</h4>
-              </button>
               <i className="fas fa-chevron-up" />
+              </button>
             </>
           )}
           {isSmallSize(imageSize) && (
