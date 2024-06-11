@@ -1,7 +1,7 @@
 export const FOOTER_URLS = {
   MAPS_AND_LOCATIONS: "https://www.asu.edu/about/locations-maps",
   JOBS: "https://cfo.asu.edu/applicant",
-  DIRECTORY: "https://isearch.asu.edu/asu-people",
+  DIRECTORY: "https://search.asu.edu/?search-tabs=web_dir_faculty_staff",
   CONTACT_ASU: "https://www.asu.edu/about/contact",
   MY_ASU: "https://my.asu.edu/",
   RANKINGS: "https://www.asu.edu/rankings",
