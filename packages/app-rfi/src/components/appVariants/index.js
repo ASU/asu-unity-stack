@@ -1,30 +1,28 @@
 import React from "react";
-import * as Yup from "yup";
 
-import { KEY } from "../../core/utils/constants";
-import { AboutMe, aboutMeForm } from "../steps/AboutMe";
-import { Optional, optionalForm } from "../steps/Optional";
-import { ProgramInterest, programInterestForm } from "../steps/ProgramInterest";
-import { Campus } from "../steps/questions/Campus";
-import { CareerAndStudentType } from "../steps/questions/CareerAndStudentType.js";
-import { Interest1 } from "../steps/questions/Interest1";
-import { Interest2 } from "../steps/questions/Interest2";
-import { EmailAddress } from "../steps/questions/EmailAddress";
-import { FirstName } from "../steps/questions/FirstName";
-import { LastName } from "../steps/questions/LastName";
-import { Phone } from "../steps/questions/Phone";
-import { ZipCode } from "../steps/questions/ZipCode";
-import { EntryTerm } from "../steps/questions/EntryTerm";
-import { GdprConsent } from "../steps/questions/GdprConsent";
-import { Country } from "../steps/questions/Country.js";
-import { MilitaryStatus } from "../steps/questions/MilitaryStatus.js";
-import { CampusProgramHasChoice } from "../steps/questions/CampusProgramHasChoice.js";
+import {
+  Campus,
+  CampusProgramHasChoice,
+  CareerAndStudentType,
+  Country,
+  EmailAddress,
+  EntryTerm,
+  FirstName,
+  GdprConsent,
+  Interest1,
+  Interest2,
+  LastName,
+  MilitaryStatus,
+  Phone,
+  ZipCode,
+  validation,
+} from "../steps/questions";
 
 const Step = ({ children }) => children;
 
 const variants = {
   rfiVariant1: [
-    <Step>
+    <Step validationSchema={validation}>
       <h2>Request information</h2>
       <p className="rfi-step1-intro">
         To learn more about ASU or a specific program, fill out the form below
@@ -47,7 +45,16 @@ const variants = {
     </Step>,
   ],
   rfiVariant2: [
-    <Step section="Request information">
+    <Step
+      section="Request information"
+      validationSchema={{
+        Campus: validation.Campus,
+        CareerAndStudentType: validation.CareerAndStudentType,
+        Interest1: validation.Interest1,
+        Interest2: validation.Interest2,
+        CampusProgramHasChoice: validation.CampusProgramHasChoice,
+      }}
+    >
       <h4>Step 1 of 2</h4>
       <h2>Request information</h2>
       <p className="rfi-step1-intro">
@@ -60,14 +67,25 @@ const variants = {
       <Interest2 />
       <CampusProgramHasChoice />
     </Step>,
-    <Step section="About me">
+    <Step
+      section="About me"
+      validationSchema={{
+        EmailAddress: validation.EmailAddress,
+        FirstName: validation.FirstName,
+        LastName: validation.LastName,
+        Phone: validation.Phone,
+        ZipCode: validation.ZipCode,
+        Country: validation.Country,
+        EntryTerm: validation.EntryTerm,
+        MilitaryStatus: validation.MilitaryStatus,
+        GdprConsent: validation.GdprConsent,
+      }}
+    >
       <h4>Step 2 of 2</h4>
       <h2>About me</h2>
-
       <EmailAddress />
       <FirstName />
       <LastName />
-
       <Phone />
       <ZipCode />
       <Country />

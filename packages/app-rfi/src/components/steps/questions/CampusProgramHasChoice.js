@@ -25,8 +25,8 @@ export const CampusProgramHasChoice = () => {
       {programOfInterest && hasOnlineCampus && (
         <RfiSelect
           label="Which applies to you?"
-          id="Campus"
-          name="Campus"
+          id="CampusProgramHasChoice"
+          name="CampusProgramHasChoice"
           options={CAMPUS_OPTIONS_DEFAULT}
           requiredIcon
           required

@@ -1,3 +1,5 @@
+
+import * as Yup from "yup";
 import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
 
@@ -167,7 +169,7 @@ export const useRfiState = props => {
     initialValues: snapshot,
     validate: handleStepValidate,
     onSubmit: handleSubmit,
-    validationSchema: step.props.validationSchema,
+    validationSchema: Yup.object(step.props.validationSchema),
   });
 
 

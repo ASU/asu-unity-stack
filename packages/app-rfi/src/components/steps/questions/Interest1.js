@@ -18,6 +18,7 @@ export const Interest1 = () => {
 
   const {
     programOfInterest,
+    areaOfInterestOptional,
     degreeDataList,
     degreeData,
     formik: { values },
@@ -43,6 +44,8 @@ export const Interest1 = () => {
     }
   }, [degreeDataList, values.CareerAndStudentType, values.Campus]);
 
+
+
   return areaInterestOptions.length === 1 ? (
     <input
       type="hidden"
@@ -55,8 +58,8 @@ export const Interest1 = () => {
       id="Interest1"
       name="Interest1"
       options={areaInterestOptions}
-      requiredIcon
-      required
+      requiredIcon={!areaOfInterestOptional}
+      required={!areaOfInterestOptional}
       onBlur={e =>
         trackGAEvent({
           ...GA_EVENT_DEFAULT,
