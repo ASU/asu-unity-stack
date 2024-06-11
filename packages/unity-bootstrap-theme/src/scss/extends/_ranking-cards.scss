@@ -51,9 +51,8 @@
         }
       }
 
-      > p,
-      .header > p
-      {
+      >p,
+      .header>p {
         display: -webkit-box;
         -webkit-box-orient: vertical;
         overflow: hidden;
@@ -62,7 +61,7 @@
         -webkit-line-clamp: 3;
       }
 
-      > a {
+      >a {
         font-size: $uds-size-font-small;
         font-weight: 600;
 
@@ -88,9 +87,8 @@
           }
         }
 
-        > p,
-        .header > p
-        {
+        >p,
+        .header>p {
           -webkit-line-clamp: 12;
         }
       }
@@ -116,6 +114,7 @@
         max-width: 100%;
       }
     }
+
     &:has(.info-layer.active) {
       img {
         visibility: hidden;
@@ -138,11 +137,8 @@
 
       .content {
         .header {
-          > p {
+          >p {
             width: 90%;
-          }
-
-          .btn-expand.small-card {
           }
         }
       }
@@ -176,15 +172,19 @@
     .info-layer {
       .content {
         .header {
-          h4 {
-            min-height: 52px; // To avoid having only one line
-            max-width: 300px; // To avoid having only one line
-            margin: 0 0 $uds-size-spacing-3;
-            -webkit-line-clamp: 2;
+          .btn-expand {
+            display: flex;
+
+            h4 {
+              min-height: 52px; // To avoid having only one line
+              max-width: 300px; // To avoid having only one line
+              margin: 0 0 $uds-size-spacing-3;
+              -webkit-line-clamp: 2;
+            }
           }
         }
 
-        > p {
+        >p {
           -webkit-line-clamp: 10;
           visibility: hidden;
           transition: visibility .3s ease-in;
@@ -205,7 +205,7 @@
             }
           }
 
-          > p {
+          >p {
             visibility: visible;
           }
 
