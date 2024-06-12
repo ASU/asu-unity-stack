@@ -1,3 +1,10 @@
+# [@asu/component-header-v2.2.6](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.5...@asu/component-header-v2.2.6) (2024-06-12)
+
+
+### Bug Fixes
+
+* **component-header:** fixed form submit null issue ([3da2ce1](https://github.com/asu/asu-unity-stack/commit/3da2ce1002cd8865c6cb29d74ea7c09087d9a17b))
+
 # [@asu/component-header-v2.2.5](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.4...@asu/component-header-v2.2.5) (2024-04-08)
 
 
