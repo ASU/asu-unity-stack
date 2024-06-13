@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { trackGAEvent } from "../../../../../../shared";
-import {
-  FAILED_OPTIONS_DEFAULT,
-  GA_EVENT_DEFAULT,
-  KEY,
-  STUDENT,
-  STUDENT_OPTIONS_DEFAULT,
-} from "../../../core/utils/constants";
+import { KEY } from "../../../core/utils/constants";
 import { useRfiContext } from "../../../core/utils/rfiContext";
 import { RfiSelect } from "../../controls";
 
@@ -46,10 +40,7 @@ export const EntryTerm = () => {
   const [required, setRequired] = useState(false);
 
   const {
-    programOfInterest,
-    degreeDataList,
     degreeData,
-    programOfInterestOptional,
     formik: { values },
   } = useRfiContext();
 
@@ -86,9 +77,6 @@ export const EntryTerm = () => {
 
   return (
     <>
-      {" "}
-      {/* {degreeData.acadPlanCode}
-      {JSON.stringify(degreeData.applicationDeadlines)} */}
       <RfiSelect
         label="When do you anticipate starting at ASU?"
         id="EntryTerm"

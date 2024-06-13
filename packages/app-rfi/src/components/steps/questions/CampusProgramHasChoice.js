@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { trackGAEvent } from "../../../../../../shared";
 import {
@@ -10,11 +10,7 @@ import { useRfiContext } from "../../../core/utils/rfiContext";
 import { RfiSelect } from "../../controls";
 
 export const CampusProgramHasChoice = () => {
-  const {
-    programOfInterest,
-    degreeData,
-    formik: { values },
-  } = useRfiContext();
+  const { programOfInterest, degreeData } = useRfiContext();
 
   const hasOnlineCampus =
     degreeData?.campusCodes?.includes &&

@@ -5,8 +5,6 @@ import {
   FAILED_OPTIONS_DEFAULT,
   GA_EVENT_DEFAULT,
   KEY,
-  STUDENT,
-  STUDENT_OPTIONS_DEFAULT,
 } from "../../../core/utils/constants";
 import { useRfiContext } from "../../../core/utils/rfiContext";
 import { RfiSelect } from "../../controls";
@@ -19,7 +17,6 @@ export const Interest2 = () => {
   const {
     programOfInterest,
     degreeDataList,
-    degreeData,
     programOfInterestOptional,
     formik: { values },
   } = useRfiContext();

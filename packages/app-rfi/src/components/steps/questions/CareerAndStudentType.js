@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 import { trackGAEvent } from "../../../../../../shared";
 import {
-  CAMPUS_OPTIONS_DEFAULT,
   GA_EVENT_DEFAULT,
   KEY,
   STUDENT,
@@ -16,18 +15,12 @@ export const CareerAndStudentType = () => {
     STUDENT_OPTIONS_DEFAULT
   );
 
-  const {
-    programOfInterest,
-    degreeData,
-    formik: { values },
-  } = useRfiContext();
+  const { programOfInterest, degreeData } = useRfiContext();
 
   useEffect(() => {
-    console.log(degreeData);
     if (programOfInterest && degreeData?.degreeType === KEY.UG) {
       // PoI is undergrad degree.
       // Set only undergrad options for studentTypeOptions.
-
       setStudentTypeOptions([STUDENT.FRESHMAN, STUDENT.TRANSFER]);
     } else if (programOfInterest) {
       // PoI is graduate degree.

@@ -4,9 +4,6 @@ import { trackGAEvent } from "../../../../../../shared";
 import {
   FAILED_OPTIONS_DEFAULT,
   GA_EVENT_DEFAULT,
-  KEY,
-  STUDENT,
-  STUDENT_OPTIONS_DEFAULT,
 } from "../../../core/utils/constants";
 import { useRfiContext } from "../../../core/utils/rfiContext";
 import { RfiSelect } from "../../controls";
@@ -17,10 +14,8 @@ export const Interest1 = () => {
   );
 
   const {
-    programOfInterest,
     areaOfInterestOptional,
     degreeDataList,
-    degreeData,
     formik: { values },
   } = useRfiContext();
 
@@ -43,8 +38,6 @@ export const Interest1 = () => {
       setAreaInterestOptions(aoiOptions);
     }
   }, [degreeDataList, values.CareerAndStudentType, values.Campus]);
-
-
 
   return areaInterestOptions.length === 1 ? (
     <input

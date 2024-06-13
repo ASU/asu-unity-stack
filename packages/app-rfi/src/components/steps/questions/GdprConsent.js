@@ -1,5 +1,5 @@
 /* eslint-disable react/no-danger */
-import React, { useState } from "react";
+import React from "react";
 
 import { trackGAEvent } from "../../../../../../shared";
 import { KEY } from "../../../core/utils/constants";
@@ -14,10 +14,6 @@ const defaultInputEvent = {
   region: "main content",
   component: "step 2 of 3",
 };
-
-function createMarkup(output) {
-  return { __html: output };
-}
 
 export const GdprConsent = () => {
   const {

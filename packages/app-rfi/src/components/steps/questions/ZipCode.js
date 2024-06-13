@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from "react";
 
 import { trackGAEvent } from "../../../../../../shared";
-import {
-  CAMPUS_OPTIONS_DEFAULT,
-  GA_EVENT_DEFAULT,
-  KEY,
-} from "../../../core/utils/constants";
+import { KEY } from "../../../core/utils/constants";
 import { useRfiContext } from "../../../core/utils/rfiContext";
-import { RfiPhone, RfiTextInput } from "../../controls";
+import { RfiTextInput } from "../../controls";
 
 export const ZipCode = () => {
   const [required, setRequired] = useState(false);
   const {
-    programOfInterest,
     formik: { values },
   } = useRfiContext();
 

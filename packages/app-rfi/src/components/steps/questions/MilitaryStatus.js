@@ -1,19 +1,6 @@
-// @ts-check
-import { useFormikContext } from "formik";
-import React, { useEffect, useState } from "react";
-import * as Yup from "yup";
+import React from "react";
 
-import { trackGAEvent } from "../../../../../../shared";
-import { useRfiContext } from "../../../core/utils/rfiContext";
-import {
-  RfiTextInput,
-  RfiDateInput,
-  RfiTextArea,
-  RfiSelect,
-  RfiRadioGroup,
-} from "../../controls";
-
-// Component
+import { RfiRadioGroup } from "../../controls";
 
 export const MilitaryStatus = () => {
   return (
@@ -25,15 +12,6 @@ export const MilitaryStatus = () => {
         { key: "0", text: "Yes", value: "Yes" },
         { key: "1", text: "No", value: "No" },
       ]}
-      // onClick={e =>
-      //   trackGAEvent({
-      //     // ...defaultGAEvent,
-      //     event: "select",
-      //     type: "Military/veteran status",
-      //     section: "more about me",
-      //     text: e.target.selectedOptions[0].innerText,
-      //   })
-      // }
     />
   );
 };

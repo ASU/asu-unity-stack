@@ -3,7 +3,7 @@
 /**
  * @typedef {Object} RFIProps
  * @property {string} [appPathFolder]
- * @property {"rfiVariant1"|"rfiVariant2"|"rfiVariant3"} [variant]
+ * @property {"rfiVariant1"|"rfiVariant2"} [variant]
  * @property {string} [campus]
  * @property {string} [actualCampus]
  * @property {string} [college]
@@ -18,7 +18,6 @@
  * @property {string} [stateProvince]
  * @property {string} [successMsg]
  * @property {boolean} [test]
- * @property {string} [appVariant]
  * @property {string} [dataSourceDegreeSearch]
  * @property {string} [dataSourceAsuOnline]
  * @property {string} [dataSourceCountriesStates]

@@ -1,11 +1,10 @@
-
-import * as Yup from "yup";
 import { useFormik } from "formik";
 import React, { useEffect, useState } from "react";
+import * as Yup from "yup";
 
 import { variants } from "../../components/appVariants";
-import { CertInfo } from "../../components/steps/CertInfo.js";
-import { Success } from "../../components/steps/Success.js";
+import { CertInfo } from "../../components/steps/CertInfo";
+import { Success } from "../../components/steps/Success";
 import { KEY } from "./constants";
 import { fetchDegreesData } from "./fetchPrograms";
 import { pushDataLayerEventToGa, setClientId } from "./google-analytics";
@@ -103,12 +102,13 @@ export const useRfiState = props => {
     filterByDepartmentCode,
     filterByCollegeCode,
     filterByCampusCode,
+    submissionUrl,
   } = props;
   const [stepNumber, setStepNumber] = useState(0);
   const steps = variants[variant] || variants["rfiVariant1"];
   const [snapshot, setSnapshot] = useState(getInitialValues(props));
 
-  const step = steps[stepNumber];
+  const step = steps[stepNumber] || steps[0]; // catch Storybook edge case
   const totalSteps = steps.length;
   const isLastStep = stepNumber === totalSteps - 1;
 
@@ -122,7 +122,7 @@ export const useRfiState = props => {
     setStepNumber(Math.min(stepNumber + 1, totalSteps - 1));
   };
 
-  const goBack = values => {
+  const goBack = () => {
     // setSnapshot(values);
     setStepNumber(Math.max(stepNumber - 1, 0));
   };
@@ -140,7 +140,7 @@ export const useRfiState = props => {
     }
     if (isLastStep) {
       console.log(values);
-      rfiSubmit(values, bag, test, () => setSuccess(true));
+      rfiSubmit(values, submissionUrl, test, () => setSuccess(true));
       return;
     }
     bag.setTouched({});
@@ -171,7 +171,6 @@ export const useRfiState = props => {
     onSubmit: handleSubmit,
     validationSchema: Yup.object(step.props.validationSchema),
   });
-
 
   useEffect(() => {
     const fetchData = async () => {
