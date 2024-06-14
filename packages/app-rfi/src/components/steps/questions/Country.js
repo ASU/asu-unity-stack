@@ -24,6 +24,9 @@ function getCountryOptions(resultsArrayOfObjects) {
  * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
  */
 export const Country = ({ gaData }) => {
+  const label = "Country of citizenship";
+  const name = "CitizenshipCountry";
+
   const { dataSourceCountriesStates } = useRfiContext();
   const [countryOptions, setCountries] = useState([
     {
@@ -44,16 +47,15 @@ export const Country = ({ gaData }) => {
 
   return (
     <RfiSelect
-      label="Country of citizenship"
-      id="CitizenshipCountry"
-      name="CitizenshipCountry"
+      label={label}
+      id={name}
+      name={name}
       options={countryOptions}
       onBlur={e =>
         trackGAEvent({
           ...gaData,
           event: "select",
-          type: "Country of citizenship",
-          section: "more about me",
+          type: label,
           text: e.target.selectedOptions[0].innerText,
         })
       }

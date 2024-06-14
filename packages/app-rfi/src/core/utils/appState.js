@@ -51,7 +51,6 @@ const rfiSubmit = (value, submissionUrl, test, callback = () => ({})) => {
     .then(response => response.json())
     .then(response => {
       // eslint-disable-goNext-line no-console
-      console.log("Successful submit:", response);
       callback(response);
     });
 };
@@ -147,23 +146,6 @@ export const useRfiState = props => {
     goNext(values);
   };
 
-  // dataSourceDegreeSearch: props.dataSourceDegreeSearch,
-  // dataSourceAsuOnline: props.dataSourceAsuOnline,
-  // dataSourceCountriesStates: props.dataSourceCountriesStates,
-  // submissionUrl: props.submissionUrl,
-
-  // useEffect(() => {
-  //   const handleClick = e => {
-  //     console.log(e);
-  //   };
-
-  //   window.addEventListener("click", handleClick);
-
-  //   return () => {
-  //     window.removeEventListener("click", handleClick);
-  //   };
-  // }, []);
-
   const formik = useFormik({
     initialValues: snapshot,
     validate: handleStepValidate,
@@ -173,8 +155,8 @@ export const useRfiState = props => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const Interest2 = props.programOfInterest || formik.values.Interest2
-      if (Interest2) {
+      const Interest2 = props.programOfInterest || formik.values.Interest2;
+      if (Interest2 && formik.values.Campus !== KEY.ONLINE) {
         fetchDegreesData({
           dataSourceDegreeSearch: props.dataSourceDegreeSearch,
           Interest2,
@@ -197,7 +179,6 @@ export const useRfiState = props => {
   }, [formik.values.Interest2]);
 
   useEffect(() => {
-    console.log(formik.values.Campus, formik.values.CareerAndStudentType)
     const fetchData = async () => {
       fetchDegreesData({
         dataSourceDegreeSearch,
@@ -243,8 +224,8 @@ export const useRfiState = props => {
     );
     return returnObject;
   }
-  console.log(success);
-  if (success) {
+
+  if (!success) {
     returnObject.showStepButtons = false;
     returnObject.step = <Success successMsg={props.successMsg} />;
 

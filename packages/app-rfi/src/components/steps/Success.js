@@ -17,7 +17,7 @@ export const Success = () => {
         aria-hidden="true"
       />
       <div className="rfi-submitted-sub-icon">Submitted</div>
-      <h3>Thank you for your interest in ASU.</h3>
+      <h3 className="h2">Thank you for your interest in ASU.</h3>
       {successMsg ? (
         <div
           className="rfi-success-msg-wrapper"

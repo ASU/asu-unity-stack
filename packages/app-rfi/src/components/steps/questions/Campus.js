@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
 import { CAMPUS_OPTIONS_DEFAULT, KEY } from "../../../core/utils/constants";
@@ -10,18 +10,28 @@ import { RfiSelect } from "../../controls";
  */
 export const Campus = ({ gaData }) => {
   const label = "Which applies to you?";
+  const name = "Campus";
+
   const {
     programOfInterest,
-    formik: { values },
+    formik: { values, setFieldValue },
   } = useRfiContext();
 
-  return programOfInterest ? (
-    <input type="hidden" name="Campus" value={values.Campus || KEY.NOPREF} />
-  ) : (
+  useEffect(() => {
+    if (programOfInterest) {
+      setFieldValue(name, values.Campus || KEY.NOPREF);
+    }
+  }, []);
+
+  if (programOfInterest) {
+    return <></>;
+  }
+
+  return (
     <RfiSelect
       label={label}
-      id="Campus"
-      name="Campus"
+      id={name}
+      name={name}
       options={CAMPUS_OPTIONS_DEFAULT}
       requiredIcon
       required

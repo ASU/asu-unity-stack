@@ -56,7 +56,7 @@ export const validation = {
   GdprConsent: Yup.boolean()
     .required("Error: Consent is required")
     .oneOf([true], "Consent is required"),
-  CitizenshipCountry: Yup.string(),
+  // CitizenshipCountry: Yup.string(),
   MilitaryStatus: Yup.string(),
 };
 

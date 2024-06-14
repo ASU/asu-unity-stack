@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
 import { KEY } from "../../../core/utils/constants";
@@ -9,27 +9,36 @@ import { RfiTextInput } from "../../controls";
  * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
  */
 export const ZipCode = ({ gaData }) => {
-  const [required, setRequired] = useState(false);
+  const label = "Postal code";
+  const name = "ZipCode";
+
   const {
-    formik: { values },
+    formik: { values, setFieldValue },
   } = useRfiContext();
 
-  // Term options
   useEffect(() => {
-    setRequired(values.Campus !== KEY.ONLINE);
+    if (values.Campus === KEY.ONLINE) {
+      setFieldValue(name, "NA");
+    } else if (values[name] === "NA") {
+      setFieldValue(name, "");
+    }
   }, [values.Campus]);
+
+  if (values.Campus === KEY.ONLINE) {
+    return <></>;
+  }
 
   return (
     <RfiTextInput
-      label="Postal code"
-      id="ZipCode"
-      name="ZipCode"
-      requiredIcon={required}
-      required={required}
+      label={label}
+      id={name}
+      name={name}
+      requiredIcon
+      required
       onBlur={e =>
         trackGAEvent({
           ...gaData,
-          section: "about me ^ zip code​",
+          type: label,
           text: e.target.value,
         })
       }

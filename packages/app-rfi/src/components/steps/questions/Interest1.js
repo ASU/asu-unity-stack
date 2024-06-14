@@ -9,14 +9,18 @@ import { RfiSelect } from "../../controls";
  * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
  */
 export const Interest1 = ({ gaData }) => {
+  const label = "Area of interest";
+  const name = "Interest1";
+
   const [areaInterestOptions, setAreaInterestOptions] = useState(
     FAILED_OPTIONS_DEFAULT
   );
 
   const {
+    programOfInterest,
     areaOfInterestOptional,
     degreeDataList,
-    formik: { values },
+    formik: { values, setFieldValue },
   } = useRfiContext();
 
   // Interest1: areaInterestOptions filter and set logic.
@@ -37,26 +41,37 @@ export const Interest1 = ({ gaData }) => {
     } else {
       setAreaInterestOptions(aoiOptions);
     }
-  }, [degreeDataList, values.CareerAndStudentType, values.Campus]);
 
-  return areaInterestOptions.length === 1 ? (
-    <input
-      type="hidden"
-      name="Interest1"
-      value={areaInterestOptions[0].value}
-    />
-  ) : (
+    if (programOfInterest || areaOfInterestOptional) {
+      setFieldValue(name, "NA");
+    } else if (!programOfInterest && values[name] === "NA") {
+      setFieldValue(name, "");
+    }
+  }, [
+    degreeDataList,
+    values.CareerAndStudentType,
+    values.Campus,
+    programOfInterest,
+    areaOfInterestOptional,
+  ]);
+
+  if (programOfInterest) {
+    return <></>;
+  }
+
+  return (
     <RfiSelect
-      label="Area of interest"
-      id="Interest1"
-      name="Interest1"
+      label={label}
+      id={name}
+      name={name}
       options={areaInterestOptions}
       requiredIcon={!areaOfInterestOptional}
       required={!areaOfInterestOptional}
       onBlur={e =>
         trackGAEvent({
           ...gaData,
-          type: "Area of interest",
+          event: "select",
+          type: label,
           text: e.target.selectedOptions[0].innerText,
         })
       }

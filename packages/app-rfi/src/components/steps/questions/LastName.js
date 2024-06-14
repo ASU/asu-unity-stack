@@ -7,17 +7,20 @@ import { RfiTextInput } from "../../controls";
  * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
  */
 export const LastName = ({ gaData }) => {
+  const label = "Last name";
+  const name = "LastName";
+
   return (
     <RfiTextInput
-      label="Last name"
-      id="LastName"
-      name="LastName"
+      label={label}
+      id={name}
+      name={name}
       requiredIcon
       required
       onBlur={e =>
         trackGAEvent({
           ...gaData,
-          section: "about me ^ last name​",
+          type: label,
           text: e.target.value,
         })
       }

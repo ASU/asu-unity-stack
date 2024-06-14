@@ -9,6 +9,9 @@ import { RfiSelect } from "../../controls";
  * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
  */
 export const CampusProgramHasChoice = ({ gaData }) => {
+  const label = "Which applies to you?";
+  const name = "CampusProgramHasChoice";
+
   const { programOfInterest, degreeData } = useRfiContext();
 
   const hasOnlineCampus =
@@ -19,16 +22,17 @@ export const CampusProgramHasChoice = ({ gaData }) => {
     <>
       {programOfInterest && hasOnlineCampus && (
         <RfiSelect
-          label="Which applies to you?"
-          id="CampusProgramHasChoice"
-          name="CampusProgramHasChoice"
+          label={label}
+          id={name}
+          name={name}
           options={CAMPUS_OPTIONS_DEFAULT}
           requiredIcon
           required
           onBlur={e =>
             trackGAEvent({
               ...gaData,
-              type: "Which applies to you?",
+              event: "select",
+              type: label,
               text: e.target.selectedOptions[0].innerText,
             })
           }

@@ -9,6 +9,9 @@ import { RfiSelect } from "../../controls";
  * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
  */
 export const Interest2 = ({ gaData }) => {
+  const label = "Program of interest";
+  const name = "Interest2";
+
   const [programInterestOptions, setProgramInterestOptions] = useState(
     FAILED_OPTIONS_DEFAULT
   );
@@ -17,14 +20,16 @@ export const Interest2 = ({ gaData }) => {
     programOfInterest,
     degreeDataList,
     programOfInterestOptional,
-    formik: { values },
+    formik: { values, setFieldValue },
   } = useRfiContext();
 
   useEffect(() => {
     const poiOptions = degreeDataList
       .filter(
         ({ planCategories }) =>
-          !values.Interest1 || planCategories.includes(values.Interest1)
+          !values.Interest1 ||
+          values.Interest1 === "NA" ||
+          planCategories.includes(values.Interest1)
       )
       .map(({ acadPlanCode: value, title: text }, i) => ({
         key: `${i}`,
@@ -37,18 +42,17 @@ export const Interest2 = ({ gaData }) => {
     } else {
       setProgramInterestOptions(poiOptions);
     }
-  }, [
-    degreeDataList,
-    values.Campus,
-    values.CareerAndStudentType,
-    values.Interest1,
-  ]);
+
+    if (programOfInterest) {
+      setFieldValue(name, programOfInterest);
+    }
+  }, [degreeDataList, values.Interest1, programOfInterest]);
 
   return (
     <RfiSelect
-      label="Program of interest"
-      id="Interest2"
-      name="Interest2"
+      label={label}
+      id={name}
+      name={name}
       options={programInterestOptions}
       disabled={!!programOfInterest}
       requiredIcon={!programOfInterestOptional || values.Campus === KEY.ONLINE}
@@ -56,7 +60,8 @@ export const Interest2 = ({ gaData }) => {
       onBlur={e =>
         trackGAEvent({
           ...gaData,
-          type: "Program of interest",
+          event: "select",
+          type: label,
           text: e.target.selectedOptions[0].innerText,
         })
       }

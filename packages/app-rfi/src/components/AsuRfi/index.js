@@ -139,7 +139,7 @@ AsuRfi.defaultProps = {
   isCertMinor: false,
   country: undefined,
   stateProvince: undefined,
-  successMsg: `Keep an eye on your inbox and in the meantime, check out some more of the <a href="https://www.asu.edu/about">amazing facts, figures, or other links</a> that ASU has to offer.`,
+  successMsg: undefined,
   test: false,
   dataSourceDegreeSearch: DATA_SOURCE.DEGREE_SEARCH,
   dataSourceAsuOnline: DATA_SOURCE.ASU_ONLINE,

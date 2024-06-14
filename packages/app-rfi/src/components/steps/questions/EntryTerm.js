@@ -39,12 +39,14 @@ const getGenericTermOptions = () => {
  * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
  */
 export const EntryTerm = ({ gaData }) => {
+  const label = "When do you anticipate starting at ASU?";
+  const name = "EntryTerm";
+
   const [termOptions, setTermOptions] = useState(getGenericTermOptions());
-  const [required, setRequired] = useState(false);
 
   const {
     degreeData,
-    formik: { values },
+    formik: { values, setFieldValue },
   } = useRfiContext();
 
   // Term options
@@ -73,26 +75,32 @@ export const EntryTerm = ({ gaData }) => {
     }
   }, [degreeData.applicationDeadlines]); // Run once. If user changes degree, runs again on return to the step.
 
-  // Term options
   useEffect(() => {
-    setRequired(values.Campus !== KEY.ONLINE);
+    if (values.Campus === KEY.ONLINE) {
+      setFieldValue(name, "NA");
+    } else if (values[name] === "NA") {
+      setFieldValue(name, "");
+    }
   }, [values.Campus]);
+
+  if (values.Campus === KEY.ONLINE) {
+    return <></>;
+  }
 
   return (
     <>
       <RfiSelect
-        label="When do you anticipate starting at ASU?"
-        id="EntryTerm"
-        name="EntryTerm"
+        label={label}
+        id={name}
+        name={name}
         options={termOptions}
-        requiredIcon={required}
-        required={required}
+        requiredIcon
+        required
         onBlur={e =>
           trackGAEvent({
             ...gaData,
             event: "select",
-            type: "When do you anticipate starting at ASU?",
-            section: "about me ^ When do you anticipate starting at ASU?​",
+            type: label,
             text: e.target.selectedOptions[0].innerText,
           })
         }

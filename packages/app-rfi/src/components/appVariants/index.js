@@ -4,7 +4,6 @@ import {
   Campus,
   CampusProgramHasChoice,
   CareerAndStudentType,
-  Country,
   EmailAddress,
   EntryTerm,
   FirstName,
@@ -62,7 +61,6 @@ const variants = {
       <LastName gaData={gaData1Of1} />
       <Phone gaData={gaData1Of1} />
       <ZipCode gaData={gaData1Of1} />
-      <Country gaData={gaData1Of1} />
       <EntryTerm gaData={gaData1Of1} />
       <MilitaryStatus gaData={gaData1Of1} />
       <GdprConsent gaData={gaData1Of1} />
@@ -112,7 +110,6 @@ const variants = {
       <LastName gaData={gaData2Of2} />
       <Phone gaData={gaData2Of2} />
       <ZipCode gaData={gaData2Of2} />
-      <Country gaData={gaData2Of2} />
       <EntryTerm gaData={gaData2Of2} />
       <MilitaryStatus gaData={gaData2Of2} />
       <GdprConsent gaData={gaData2Of2} />

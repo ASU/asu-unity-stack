@@ -7,17 +7,20 @@ import { RfiEmailInput } from "../../controls";
  * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
  */
 export const EmailAddress = ({ gaData }) => {
+  const label = "Email Address";
+  const name = "EmailAddress";
+
   return (
     <RfiEmailInput
-      label="Email Address"
-      id="EmailAddress"
-      name="EmailAddress"
+      label={label}
+      id={name}
+      name={name}
       requiredIcon
       required
       onBlur={e =>
         trackGAEvent({
           ...gaData,
-          section: "about me ^ email address​",
+          type: label,
           text: e.target.value,
         })
       }

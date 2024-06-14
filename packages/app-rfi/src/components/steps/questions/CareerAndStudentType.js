@@ -13,11 +13,18 @@ import { RfiSelect } from "../../controls";
  * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
  */
 export const CareerAndStudentType = ({ gaData }) => {
+  const label = "Select your student status";
+  const name = "CareerAndStudentType";
+
   const [studentTypeOptions, setStudentTypeOptions] = useState(
     STUDENT_OPTIONS_DEFAULT
   );
 
-  const { programOfInterest, degreeData } = useRfiContext();
+  const {
+    programOfInterest,
+    degreeData,
+    formik: { setFieldValue },
+  } = useRfiContext();
 
   useEffect(() => {
     if (programOfInterest && degreeData?.degreeType === KEY.UG) {
@@ -29,27 +36,25 @@ export const CareerAndStudentType = ({ gaData }) => {
       // Setting the options here helps trigger dependent useEffects, even
       // though we won't display this single option.
       setStudentTypeOptions([STUDENT.READMISSION]);
+      // setFieldValue(name, STUDENT.READMISSION.value);
     }
-  }, [degreeData.acadPlanCode]);
+  }, []);
 
   return studentTypeOptions.length === 1 ? (
-    <input
-      type="hidden"
-      name="CareerAndStudentType"
-      value={studentTypeOptions[0].value}
-    />
+    <input type="hidden" name={name} value={studentTypeOptions[0].value} />
   ) : (
     <RfiSelect
-      label="Select your student status"
-      id="CareerAndStudentType"
-      name="CareerAndStudentType"
+      label={label}
+      id={name}
+      name={name}
       options={studentTypeOptions}
       requiredIcon
       required
       onBlur={e =>
         trackGAEvent({
           ...gaData,
-          type: "Select your student status",
+          event: "select",
+          type: label,
           text: e.target.selectedOptions[0].innerText,
         })
       }
