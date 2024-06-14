@@ -57,9 +57,9 @@ const rfiSubmit = (value, submissionUrl, test, callback = () => ({})) => {
 
 export const betterPropNames = props => ({
   variant: props.variant || "rfiVariant1",
-  campusCode: props.actualCampus,
-  collegeAcadOrg: props.college,
-  departmentAcadOrg: props.department,
+  filterByCampusCode: props.actualCampus,
+  filterByCollegeCode: props.college,
+  filterByDepartmentCode: props.department,
   isTypeGraduate: props.studentType === "graduate",
   ...props,
 });
@@ -203,7 +203,13 @@ export const useRfiState = props => {
     };
 
     fetchData();
-  }, [formik.values.Campus, formik.values.CareerAndStudentType]);
+  }, [
+    formik.values.Campus,
+    formik.values.CareerAndStudentType,
+    filterByDepartmentCode,
+    filterByCollegeCode,
+    filterByCampusCode,
+  ]);
 
   const returnObject = {
     degreeDataList,

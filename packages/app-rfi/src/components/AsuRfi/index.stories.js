@@ -211,7 +211,7 @@ RfiOnCertOrMinorPage.args = {
   isCertMinor: true,
   country: undefined,
   stateProvince: undefined, // Only US states or CA provinces
-  successMsg: `<div>A custom <strong>SuccessMsg</strong> suplied by you displays here.</div>`,
+  successMsg: `<div>A custom <strong>SuccessMsg</strong> supplied by you displays here.</div>`,
   test: true,
   dataSourceDegreeSearch: undefined,
   dataSourceAsuOnline: undefined,
