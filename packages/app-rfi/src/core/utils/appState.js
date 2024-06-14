@@ -225,7 +225,7 @@ export const useRfiState = props => {
     return returnObject;
   }
 
-  if (!success) {
+  if (success) {
     returnObject.showStepButtons = false;
     returnObject.step = <Success successMsg={props.successMsg} />;
 
