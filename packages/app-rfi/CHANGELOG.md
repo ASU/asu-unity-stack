@@ -1,3 +1,11 @@
+# [@asu/app-rfi-v2.3.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.2.0...@asu/app-rfi-v2.3.0) (2024-06-14)
+
+
+### Features
+
+* **app-rfi:** phase2 ([13a7cb6](https://github.com/asu/asu-unity-stack/commit/13a7cb6265a7f6c4967053640d87b2322206eb08))
+* **app-rfi:** phase2 ([88153a9](https://github.com/asu/asu-unity-stack/commit/88153a94faddb277520f0b51abd43376540c1526))
+
 # [@asu/app-rfi-v2.2.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.1.0...@asu/app-rfi-v2.2.0) (2024-02-28)
 
 
