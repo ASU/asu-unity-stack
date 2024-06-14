@@ -25,6 +25,9 @@ export function submissionFormFieldPrep(payload) {
   }
   delete output.CareerAndStudentType;
 
+  output.Campus = output.CampusProgramHasChoice || output.Campus;
+  delete output.CampusProgramHasChoice;
+
   // Consolidate Zip and ZipCode, favoring Zip.
   output.Zip = output.Zip ? output.Zip : output.ZipCode;
   delete output.ZipCode;
@@ -39,14 +42,14 @@ export function submissionFormFieldPrep(payload) {
   // so in those cases, since it is an optional field, we drop the date from
   // the payload, considering it bad data. The regex test ensures there's 2
   // of / or - or . characters in the string. They can be mixed.
-  if (new RegExp(/[.|/|-].{2}/).test(output.BirthDate)) {
-    output.BirthDate = output.BirthDate
-      ? new Date(output.BirthDate).toISOString()
-      : undefined;
-  } else {
-    // Is invalid date in the eyes of toISOString(), so drop.
-    output.BirthDate = undefined;
-  }
+  // if (new RegExp(/[.|/|-].{2}/).test(output.BirthDate)) {
+  //   output.BirthDate = output.BirthDate
+  //     ? new Date(output.BirthDate).toISOString()
+  //     : undefined;
+  // } else {
+  //   // Is invalid date in the eyes of toISOString(), so drop.
+  //   output.BirthDate = undefined;
+  // }
 
   return output;
 }

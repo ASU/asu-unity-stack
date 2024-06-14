@@ -3,6 +3,7 @@ import { createContext, useContext } from "react";
 /** @typedef {import("../types/rfi-types").RFIContext} RFIContext */
 
 /** @type {RFIContext} */
+// @ts-ignore
 const defaultCtx = {};
 
 export const RfiContext = createContext(defaultCtx);

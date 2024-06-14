@@ -106,6 +106,7 @@ export async function fetchDegreesData(params) {
       },
     };
   }
+
   return (
     fetch(serviceUrl, options)
       // Handle as text first due to encoding issues.
