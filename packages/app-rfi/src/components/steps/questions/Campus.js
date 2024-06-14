@@ -1,15 +1,15 @@
 import React from "react";
 
-import { trackGAEvent } from "../../../../../../shared";
-import {
-  CAMPUS_OPTIONS_DEFAULT,
-  GA_EVENT_DEFAULT,
-  KEY,
-} from "../../../core/utils/constants";
+import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
+import { CAMPUS_OPTIONS_DEFAULT, KEY } from "../../../core/utils/constants";
 import { useRfiContext } from "../../../core/utils/rfiContext";
 import { RfiSelect } from "../../controls";
 
-export const Campus = () => {
+/**
+ * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
+ */
+export const Campus = ({ gaData }) => {
+  const label = "Which applies to you?";
   const {
     programOfInterest,
     formik: { values },
@@ -19,7 +19,7 @@ export const Campus = () => {
     <input type="hidden" name="Campus" value={values.Campus || KEY.NOPREF} />
   ) : (
     <RfiSelect
-      label="Which applies to you?"
+      label={label}
       id="Campus"
       name="Campus"
       options={CAMPUS_OPTIONS_DEFAULT}
@@ -27,11 +27,14 @@ export const Campus = () => {
       required
       onBlur={e =>
         trackGAEvent({
-          ...GA_EVENT_DEFAULT,
-          type: "Which applies to you?",
+          ...gaData,
+          event: "select",
+          type: label,
           text: e.target.selectedOptions[0].innerText,
         })
       }
     />
   );
 };
+
+Campus.propTypes = { gaData: gaEventPropTypes };

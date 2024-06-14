@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 
-import { trackGAEvent } from "../../../../../../shared";
-import {
-  FAILED_OPTIONS_DEFAULT,
-  GA_EVENT_DEFAULT,
-} from "../../../core/utils/constants";
+import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
+import { FAILED_OPTIONS_DEFAULT } from "../../../core/utils/constants";
 import { useRfiContext } from "../../../core/utils/rfiContext";
 import { RfiSelect } from "../../controls";
 
-export const Interest1 = () => {
+/**
+ * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
+ */
+export const Interest1 = ({ gaData }) => {
   const [areaInterestOptions, setAreaInterestOptions] = useState(
     FAILED_OPTIONS_DEFAULT
   );
@@ -55,7 +55,7 @@ export const Interest1 = () => {
       required={!areaOfInterestOptional}
       onBlur={e =>
         trackGAEvent({
-          ...GA_EVENT_DEFAULT,
+          ...gaData,
           type: "Area of interest",
           text: e.target.selectedOptions[0].innerText,
         })
@@ -63,3 +63,5 @@ export const Interest1 = () => {
     />
   );
 };
+
+Interest1.propTypes = { gaData: gaEventPropTypes };

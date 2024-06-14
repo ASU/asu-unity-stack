@@ -1,21 +1,15 @@
 /* eslint-disable react/no-danger */
 import React from "react";
 
-import { trackGAEvent } from "../../../../../../shared";
+import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
 import { KEY } from "../../../core/utils/constants";
 import { useRfiContext } from "../../../core/utils/rfiContext";
 import { RfiCheckboxSingle } from "../../controls";
 
-const defaultInputEvent = {
-  event: "form",
-  action: "click",
-  name: "onclick",
-  type: "click",
-  region: "main content",
-  component: "step 2 of 3",
-};
-
-export const GdprConsent = () => {
+/**
+ * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
+ */
+export const GdprConsent = ({ gaData }) => {
   const {
     formik: { values },
   } = useRfiContext();
@@ -72,7 +66,7 @@ export const GdprConsent = () => {
         required
         onBlur={e => {
           trackGAEvent({
-            ...defaultInputEvent,
+            ...gaData,
             action: e.target.checked ? "click" : "unclick",
             event: "select",
             type: "checkbox",
@@ -86,3 +80,5 @@ export const GdprConsent = () => {
     </div>
   );
 };
+
+GdprConsent.propTypes = { gaData: gaEventPropTypes };

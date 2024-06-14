@@ -122,7 +122,7 @@ export const useRfiState = props => {
     setStepNumber(Math.min(stepNumber + 1, totalSteps - 1));
   };
 
-  const goBack = () => {
+  const handleBack = () => {
     // setSnapshot(values);
     setStepNumber(Math.max(stepNumber - 1, 0));
   };
@@ -139,7 +139,6 @@ export const useRfiState = props => {
       await step.props.onSubmit(values, bag);
     }
     if (isLastStep) {
-      console.log(values);
       rfiSubmit(values, submissionUrl, test, () => setSuccess(true));
       return;
     }
@@ -231,7 +230,7 @@ export const useRfiState = props => {
     showStepButtons: true,
     props,
     formik,
-    goBack,
+    handleBack,
     step,
     totalSteps,
     stepNumber,

@@ -1,15 +1,14 @@
 import React from "react";
 
-import { trackGAEvent } from "../../../../../../shared";
-import {
-  CAMPUS_OPTIONS_DEFAULT,
-  GA_EVENT_DEFAULT,
-  KEY,
-} from "../../../core/utils/constants";
+import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
+import { CAMPUS_OPTIONS_DEFAULT, KEY } from "../../../core/utils/constants";
 import { useRfiContext } from "../../../core/utils/rfiContext";
 import { RfiSelect } from "../../controls";
 
-export const CampusProgramHasChoice = () => {
+/**
+ * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
+ */
+export const CampusProgramHasChoice = ({ gaData }) => {
   const { programOfInterest, degreeData } = useRfiContext();
 
   const hasOnlineCampus =
@@ -28,7 +27,7 @@ export const CampusProgramHasChoice = () => {
           required
           onBlur={e =>
             trackGAEvent({
-              ...GA_EVENT_DEFAULT,
+              ...gaData,
               type: "Which applies to you?",
               text: e.target.selectedOptions[0].innerText,
             })
@@ -37,4 +36,8 @@ export const CampusProgramHasChoice = () => {
       )}
     </>
   );
+};
+
+CampusProgramHasChoice.propTypes = {
+  gaData: gaEventPropTypes,
 };

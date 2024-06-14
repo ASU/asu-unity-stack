@@ -1,9 +1,12 @@
 import React from "react";
 
-import { trackGAEvent } from "../../../../../../shared";
+import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
 import { RfiEmailInput } from "../../controls";
 
-export const EmailAddress = () => {
+/**
+ * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
+ */
+export const EmailAddress = ({ gaData }) => {
   return (
     <RfiEmailInput
       label="Email Address"
@@ -13,6 +16,7 @@ export const EmailAddress = () => {
       required
       onBlur={e =>
         trackGAEvent({
+          ...gaData,
           section: "about me ^ email address​",
           text: e.target.value,
         })
@@ -20,3 +24,5 @@ export const EmailAddress = () => {
     />
   );
 };
+
+EmailAddress.propTypes = { gaData: gaEventPropTypes };

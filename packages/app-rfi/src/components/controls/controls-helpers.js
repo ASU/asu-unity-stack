@@ -4,6 +4,18 @@
 import PropTypes from "prop-types";
 import React from "react";
 
+// location? here or shared/services/googleAnalytics.js
+const GaEventPropTypes = {
+  event: PropTypes.string,
+  action: PropTypes.string,
+  name: PropTypes.string,
+  region: PropTypes.string,
+  section: PropTypes.string,
+  component: PropTypes.string,
+  type: PropTypes.string,
+  text: PropTypes.string,
+};
+
 const RfiLabel = ({ label, name, id, requiredIcon }) => (
   <label htmlFor={id || name}>
     {requiredIcon ? (
@@ -53,4 +65,4 @@ RfiError.propTypes = {
   isError: PropTypes.bool,
   metaError: PropTypes.string,
 };
-export { RfiLabel, RfiError };
+export { RfiLabel, RfiError, GaEventPropTypes };

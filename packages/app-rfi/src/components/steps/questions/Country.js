@@ -1,7 +1,6 @@
-// @ts-check
 import React, { useEffect, useState } from "react";
 
-import { trackGAEvent } from "../../../../../../shared";
+import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
 import { fetchCountries } from "../../../core/utils/fetchCountries";
 import { useRfiContext } from "../../../core/utils/rfiContext";
 import { RfiSelect } from "../../controls";
@@ -21,7 +20,10 @@ function getCountryOptions(resultsArrayOfObjects) {
 
 // Component
 
-export const Country = () => {
+/**
+ * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
+ */
+export const Country = ({ gaData }) => {
   const { dataSourceCountriesStates } = useRfiContext();
   const [countryOptions, setCountries] = useState([
     {
@@ -48,7 +50,7 @@ export const Country = () => {
       options={countryOptions}
       onBlur={e =>
         trackGAEvent({
-          // ...defaultGAEvent,
+          ...gaData,
           event: "select",
           type: "Country of citizenship",
           section: "more about me",
@@ -58,3 +60,5 @@ export const Country = () => {
     />
   );
 };
+
+Country.propTypes = { gaData: gaEventPropTypes };

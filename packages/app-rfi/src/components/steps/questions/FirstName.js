@@ -1,9 +1,12 @@
 import React from "react";
 
-import { trackGAEvent } from "../../../../../../shared";
+import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
 import { RfiTextInput } from "../../controls";
 
-export const FirstName = () => {
+/**
+ * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
+ */
+export const FirstName = ({ gaData }) => {
   return (
     <RfiTextInput
       label="First name"
@@ -13,6 +16,7 @@ export const FirstName = () => {
       required
       onBlur={e =>
         trackGAEvent({
+          ...gaData,
           section: "about me ^ first name​",
           text: e.target.value,
         })
@@ -20,3 +24,5 @@ export const FirstName = () => {
     />
   );
 };
+
+FirstName.propTypes = { gaData: gaEventPropTypes };

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-import { trackGAEvent } from "../../../../../../shared";
+import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
 import {
-  GA_EVENT_DEFAULT,
   KEY,
   STUDENT,
   STUDENT_OPTIONS_DEFAULT,
@@ -10,7 +9,10 @@ import {
 import { useRfiContext } from "../../../core/utils/rfiContext";
 import { RfiSelect } from "../../controls";
 
-export const CareerAndStudentType = () => {
+/**
+ * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
+ */
+export const CareerAndStudentType = ({ gaData }) => {
   const [studentTypeOptions, setStudentTypeOptions] = useState(
     STUDENT_OPTIONS_DEFAULT
   );
@@ -46,7 +48,7 @@ export const CareerAndStudentType = () => {
       required
       onBlur={e =>
         trackGAEvent({
-          ...GA_EVENT_DEFAULT,
+          ...gaData,
           type: "Select your student status",
           text: e.target.selectedOptions[0].innerText,
         })
@@ -54,3 +56,5 @@ export const CareerAndStudentType = () => {
     />
   );
 };
+
+CareerAndStudentType.propTypes = { gaData: gaEventPropTypes };

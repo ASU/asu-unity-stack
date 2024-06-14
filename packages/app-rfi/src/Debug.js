@@ -41,7 +41,8 @@ export const Debug = () => (
               padding: ".25rem .5rem",
               overflow: "auto",
               resize: "both",
-
+              width: "30vw",
+              height: "30vh",
             }}
           >
             {JSON.stringify(rest, null, 2)}

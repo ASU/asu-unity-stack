@@ -19,7 +19,7 @@ import { RfiMainForm } from "../stepper/RfiMainForm";
 import "./index.css";
 import { getCurrentScriptPath } from "../../../../../shared";
 import { Debug } from "../../Debug";
-import { RfiStepperButtons } from "../stepper/RfiStepper";
+import { RfiStepperButtons } from "../stepper/RfiStepperButtons";
 
 const currentScriptPath = getCurrentScriptPath();
 
@@ -109,13 +109,7 @@ const AsuRfi = props => {
                 <Form className="uds-form uds-rfi" noValidate>
                   {rfiState.step}
                   {rfiState.showStepButtons && (
-                    <RfiStepperButtons
-                      stepNumber={rfiState.stepNumber}
-                      totalSteps={rfiState.totalSteps}
-                      section={rfiState.step.props.section}
-                      handleBack={rfiState.goBack}
-                      submitting={rfiState.formik.isSubmitting}
-                    />
+                    <RfiStepperButtons {...rfiState} />
                   )}
                 </Form>
               </div>

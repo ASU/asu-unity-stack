@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 
-import { trackGAEvent } from "../../../../../../shared";
+import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
 import { KEY } from "../../../core/utils/constants";
 import { useRfiContext } from "../../../core/utils/rfiContext";
 import { RfiTextInput } from "../../controls";
 
-export const ZipCode = () => {
+/**
+ * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
+ */
+export const ZipCode = ({ gaData }) => {
   const [required, setRequired] = useState(false);
   const {
     formik: { values },
@@ -25,6 +28,7 @@ export const ZipCode = () => {
       required={required}
       onBlur={e =>
         trackGAEvent({
+          ...gaData,
           section: "about me ^ zip code​",
           text: e.target.value,
         })
@@ -32,3 +36,5 @@ export const ZipCode = () => {
     />
   );
 };
+
+ZipCode.propTypes = { gaData: gaEventPropTypes };

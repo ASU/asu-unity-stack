@@ -1,9 +1,12 @@
 import React from "react";
 
-import { trackGAEvent } from "../../../../../../shared";
+import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
 import { RfiPhone } from "../../controls";
 
-export const Phone = () => {
+/**
+ * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
+ */
+export const Phone = ({ gaData }) => {
   return (
     <RfiPhone
       label="Phone"
@@ -13,6 +16,7 @@ export const Phone = () => {
       required
       onBlur={e =>
         trackGAEvent({
+          ...gaData,
           section: "about me ^ phone number​",
           text: e.target.value,
         })
@@ -20,3 +24,5 @@ export const Phone = () => {
     />
   );
 };
+
+Phone.propTypes = { gaData: gaEventPropTypes };

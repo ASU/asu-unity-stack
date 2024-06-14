@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 
-import { trackGAEvent } from "../../../../../../shared";
-import {
-  FAILED_OPTIONS_DEFAULT,
-  GA_EVENT_DEFAULT,
-  KEY,
-} from "../../../core/utils/constants";
+import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
+import { FAILED_OPTIONS_DEFAULT, KEY } from "../../../core/utils/constants";
 import { useRfiContext } from "../../../core/utils/rfiContext";
 import { RfiSelect } from "../../controls";
 
-export const Interest2 = () => {
+/**
+ * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
+ */
+export const Interest2 = ({ gaData }) => {
   const [programInterestOptions, setProgramInterestOptions] = useState(
     FAILED_OPTIONS_DEFAULT
   );
@@ -51,12 +50,12 @@ export const Interest2 = () => {
       id="Interest2"
       name="Interest2"
       options={programInterestOptions}
-      disabled={programOfInterest}
+      disabled={!!programOfInterest}
       requiredIcon={!programOfInterestOptional || values.Campus === KEY.ONLINE}
       required={!programOfInterestOptional || values.Campus === KEY.ONLINE}
       onBlur={e =>
         trackGAEvent({
-          ...GA_EVENT_DEFAULT,
+          ...gaData,
           type: "Program of interest",
           text: e.target.selectedOptions[0].innerText,
         })
@@ -64,3 +63,5 @@ export const Interest2 = () => {
     />
   );
 };
+
+Interest2.propTypes = { gaData: gaEventPropTypes };

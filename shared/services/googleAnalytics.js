@@ -1,5 +1,19 @@
+import PropTypes from "prop-types";
+// @ts-check
+
+export const gaEventPropTypes = PropTypes.shape({
+  event: PropTypes.string,
+  action: PropTypes.string,
+  name: PropTypes.string,
+  region: PropTypes.string,
+  section: PropTypes.string,
+  component: PropTypes.string,
+  type: PropTypes.string,
+  text: PropTypes.string,
+});
+
 /**
- * @param {{
+ * @typedef {{
  *  event?: string
  *  action?: string
  *  name?: string
@@ -8,7 +22,11 @@
  *  text?: string
  *  region?:string
  *  component?: string
- * }} args
+ * }} GAEventObject
+ */
+
+/**
+ * @param {GAEventObject} args
  */
 const trackGAEvent = ({
   event = "",
@@ -20,6 +38,7 @@ const trackGAEvent = ({
   region = "",
   component = "",
 }) => {
+  // @ts-ignore
   const { dataLayer } = window;
   const e = {
     event: event.toLowerCase(),

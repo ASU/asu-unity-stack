@@ -1,8 +1,12 @@
 import React from "react";
 
+import { gaEventPropTypes } from "../../../../../../shared";
 import { RfiRadioGroup } from "../../controls";
 
-export const MilitaryStatus = () => {
+/**
+ * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
+ */
+export const MilitaryStatus = ({ gaData }) => {
   return (
     <RfiRadioGroup
       label="Have you served in the U.S. Military or are you a military dependent?"
@@ -15,3 +19,5 @@ export const MilitaryStatus = () => {
     />
   );
 };
+
+MilitaryStatus.propTypes = { gaData: gaEventPropTypes };

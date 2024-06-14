@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { trackGAEvent } from "../../../../../../shared";
+import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
 import { KEY } from "../../../core/utils/constants";
 import { useRfiContext } from "../../../core/utils/rfiContext";
 import { RfiSelect } from "../../controls";
@@ -35,7 +35,10 @@ const getGenericTermOptions = () => {
   return termData;
 };
 
-export const EntryTerm = () => {
+/**
+ * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
+ */
+export const EntryTerm = ({ gaData }) => {
   const [termOptions, setTermOptions] = useState(getGenericTermOptions());
   const [required, setRequired] = useState(false);
 
@@ -86,6 +89,7 @@ export const EntryTerm = () => {
         required={required}
         onBlur={e =>
           trackGAEvent({
+            ...gaData,
             event: "select",
             type: "When do you anticipate starting at ASU?",
             section: "about me ^ When do you anticipate starting at ASU?​",
@@ -96,3 +100,5 @@ export const EntryTerm = () => {
     </>
   );
 };
+
+EntryTerm.propTypes = { gaData: gaEventPropTypes };
