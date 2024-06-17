@@ -13,6 +13,8 @@ import {
   submissionSetHiddenFields,
 } from "./submission-helpers";
 
+const defaultVariant = "rfiVariant2";
+
 const rfiSubmit = (value, submissionUrl, test, callback = () => ({})) => {
   // MARSHALL FIELDS FOR THE PAYLOAD
 
@@ -56,7 +58,6 @@ const rfiSubmit = (value, submissionUrl, test, callback = () => ({})) => {
 };
 
 export const betterPropNames = props => ({
-  variant: props.variant || "rfiVariant1",
   filterByCampusCode: props.actualCampus,
   filterByCollegeCode: props.college,
   filterByDepartmentCode: props.department,
@@ -104,7 +105,7 @@ export const useRfiState = props => {
     submissionUrl,
   } = props;
   const [stepNumber, setStepNumber] = useState(0);
-  const steps = variants[variant] || variants["rfiVariant1"];
+  const steps = variants[variant] || variants[defaultVariant];
   const [snapshot, setSnapshot] = useState(getInitialValues(props));
 
   const step = steps[stepNumber] || steps[0]; // catch Storybook edge case
