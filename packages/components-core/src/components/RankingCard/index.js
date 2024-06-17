@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import PropTypes from "prop-types";
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 
 import { trackGAEvent, sanitizeDangerousMarkup } from "../../../../../shared";
 // eslint-disable-next-line import/no-cycle
@@ -58,11 +58,9 @@ CitationWrapper.propTypes = {
 
 const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
   const [open, setOpen] = useState(false);
-  const uniqueIdRef = useRef(
-    `info-layer-${Math.floor(Math.random() * 100000)}`
-  );
+  // TODO: Switch to useId when we upgrade to React 18
+  const uniqueId = `info-layer-${Math.floor(Math.random() * 100000)}`;
 
-  // TODO: test this
   const handleButtonClick = event => {
     if (event.type === "click" || event.key === "Enter" || event.key === " ") {
       setOpen(!open);
@@ -79,7 +77,7 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
     <div
       className={classNames("info-layer", { [`active`]: open })}
       data-testid="info-layer"
-      id={uniqueIdRef.current}
+      id={uniqueId}
     >
       <div className="content">
         <div
@@ -95,15 +93,14 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
             <>
               <button
                 onClick={handleButtonClick}
-                id="dispatch"
                 className="btn-expand"
                 aria-label="Expand ranking"
                 type="button"
                 aria-expanded={open}
-                aria-controls={uniqueIdRef.current}
+                aria-controls={uniqueId}
               >
                 <h4>{heading}</h4>
-              <i className="fas fa-chevron-up" />
+                <i className="fas fa-chevron-up" />
               </button>
             </>
           )}
@@ -111,15 +108,13 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
             <>
               <button
                 onClick={handleButtonClick}
-                id="dispatch"
                 className="btn btn-expand"
                 aria-label="Expand ranking"
                 type="button"
                 aria-expanded={open}
-                aria-controls={uniqueIdRef.current}
+                aria-controls={uniqueId}
               >
-              <i className="fas fa-chevron-up" />
-
+                <i className="fas fa-chevron-up" />
               </button>
             </>
           )}
