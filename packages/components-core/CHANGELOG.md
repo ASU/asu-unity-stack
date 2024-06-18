@@ -1,3 +1,16 @@
+# [@asu/components-core-v3.3.6](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.5...@asu/components-core-v3.3.6) (2024-06-18)
+
+
+### Bug Fixes
+
+* **components-core:** caret is now part of button ([767e932](https://github.com/ASU/asu-unity-stack/commit/767e932e173146088526b5ebf29fd1054fc6f5c3))
+* **components-core:** fixed Ranking card accessibility issues ([a7074dd](https://github.com/ASU/asu-unity-stack/commit/a7074dd37c3f9fd6c9f9c92ca395e688370a0b47))
+* **components-core:** ranking card accessibility "see more" fixed ([25afc1d](https://github.com/ASU/asu-unity-stack/commit/25afc1d95f76286504aab014ce6a3bc283901f34))
+* **components-core:** rearrange markup in ranking cards ([85a2fb9](https://github.com/ASU/asu-unity-stack/commit/85a2fb95c75b4c12c926091f7dd7cc8b58dd6db5))
+* **components-core:** remove useRef for ID generation ([85d0658](https://github.com/ASU/asu-unity-stack/commit/85d0658e21972fd8b16b00f5fb6d4afb38896fc1))
+* **components-core:** updated accessibility in Ranking Card ([53d4ec6](https://github.com/ASU/asu-unity-stack/commit/53d4ec60b81ea006993939780e9d64fc6b265386))
+* **components-core:** updated large ranking card accessibility ([183685f](https://github.com/ASU/asu-unity-stack/commit/183685fe1b68ac4d8de3c0814f8a3f64b34a3ce8))
+
 # [@asu/components-core-v3.3.5](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.4...@asu/components-core-v3.3.5) (2024-06-10)
 
 
