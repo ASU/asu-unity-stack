@@ -1,3 +1,11 @@
+# [@asu/app-rfi-v2.3.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.0...@asu/app-rfi-v2.3.1) (2024-06-18)
+
+
+### Bug Fixes
+
+* **app-rfi:** default variant 2 page ([56d3c46](https://github.com/asu/asu-unity-stack/commit/56d3c4671948b9fc8a2f783089db326dbc5a12ba))
+* **app-rfi:** fix ignored props ([47b9e36](https://github.com/asu/asu-unity-stack/commit/47b9e365a3eab88ae9fd0072003eb842beb74174))
+
 # [@asu/app-rfi-v2.3.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.2.0...@asu/app-rfi-v2.3.0) (2024-06-14)
 
 
