@@ -1,3 +1,16 @@
+# [@asu/unity-bootstrap-theme-v1.9.19](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.18...@asu/unity-bootstrap-theme-v1.9.19) (2024-06-18)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** adjusted Ranking card styles ([2dc14b1](https://github.com/ASU/asu-unity-stack/commit/2dc14b13b18bc39946591b4bfb556d8c0fa0106f))
+* **unity-bootstrap-theme:** fixed Ranking card styles for accessibility ([8b9179e](https://github.com/ASU/asu-unity-stack/commit/8b9179e4a6953aa12a1f3fd4715a130217faf433))
+* **unity-bootstrap-theme:** updated direct link styles ([86ad8da](https://github.com/ASU/asu-unity-stack/commit/86ad8dab59d964b49c9196f313e2af03ba0f1ea7))
+* **unity-bootstrap-theme:** updated ranking card btn focus styles ([3b663de](https://github.com/ASU/asu-unity-stack/commit/3b663de0ad7b5a8797bc5d20ae87ee27ec7b0626))
+* **unity-bootstrap-theme:** updated ranking card styles ([f2d6784](https://github.com/ASU/asu-unity-stack/commit/f2d6784aeb461dccc852faf8848a2c5983c78775))
+* **unity-bootstrap-theme:** updated styles for large ranking card changes ([0eafca0](https://github.com/ASU/asu-unity-stack/commit/0eafca0cf51ee4265145f4b3950aa22ca39e304f))
+* **unity-bootstrap-theme:** updated visibility for items on ranking card ([95d52ba](https://github.com/ASU/asu-unity-stack/commit/95d52ba55a419527a87ce566b40519983cdb2c3b))
+
 # [@asu/unity-bootstrap-theme-v1.9.18](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.17...@asu/unity-bootstrap-theme-v1.9.18) (2024-06-10)
 
 
