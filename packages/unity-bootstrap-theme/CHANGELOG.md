@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.9.20](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.19...@asu/unity-bootstrap-theme-v1.9.20) (2024-06-18)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix lg ranking card caret issue ([02d0239](https://github.com/ASU/asu-unity-stack/commit/02d023991c43697b95d6e89b5cace716c4e35c09))
+
 # [@asu/unity-bootstrap-theme-v1.9.19](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.18...@asu/unity-bootstrap-theme-v1.9.19) (2024-06-18)
 
 
