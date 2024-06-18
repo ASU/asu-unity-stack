@@ -1,4 +1,6 @@
 // @ts-check
+import { pushDataLayerEventToGa, setClientId } from "./google-analytics";
+
 /* Marshall and prepare values for submission payload. */
 export function submissionFormFieldPrep(payload) {
   // ADJUST AND PROCESS FORM FIELDS
@@ -78,3 +80,45 @@ export function submissionSetHiddenFields(payload, test) {
 
   return output;
 }
+
+export const rfiSubmit = (value, submissionUrl, test, callback = a => ({})) => {
+  // MARSHALL FIELDS FOR THE PAYLOAD
+
+  let payload = value;
+  payload = submissionFormFieldPrep(payload);
+  payload = submissionSetHiddenFields(payload, test);
+
+  // Patch ASUOnline clientid or enterpriseclientid and also
+  // ga_clientid onto payload.
+  // TODO Confirm sourcing for ga_clientid
+  payload = setClientId(payload);
+
+  // Google Analytics push to simulate submit button click
+  // after validation has occurred.
+  pushDataLayerEventToGa("rfi-submit");
+
+  if (test) {
+    // eslint-disable-goNext-line no-alert
+    alert(`SUBMITTED FORM \n${JSON.stringify(payload, null, 2)}`);
+  }
+
+  return fetch(
+    // NOTE: You can use relative URL for submission to client
+    // site proxy endpoint.
+    `${submissionUrl}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      // We convert the payload to JSON and send it as the
+      // POST body.
+      body: JSON.stringify(payload),
+    }
+  )
+    .then(response => response.json())
+    .then(response => {
+      // eslint-disable-goNext-line no-console
+      callback(response);
+    });
+};

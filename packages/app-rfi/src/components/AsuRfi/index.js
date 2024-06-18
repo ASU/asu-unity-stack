@@ -126,7 +126,7 @@ export { AsuRfi };
 
 // Props
 AsuRfi.defaultProps = {
-  variant: "rfiVariant1",
+  variant: undefined, // default set in appState
   campus: undefined,
   actualCampus: undefined,
   college: undefined,

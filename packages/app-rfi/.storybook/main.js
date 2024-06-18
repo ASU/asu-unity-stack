@@ -31,7 +31,7 @@ const config = {
   },
 
   docs: {
-    autodocs: true
+    autodocs: false
   }
 };
 

@@ -16,15 +16,18 @@ export const ZipCode = ({ gaData }) => {
     formik: { values, setFieldValue },
   } = useRfiContext();
 
+  const isNotUS = values.Country && values.Country !== "US";
+  const isOnline = values.Campus === KEY.ONLINE;
+
   useEffect(() => {
-    if (values.Campus === KEY.ONLINE) {
+    if (isNotUS || isOnline) {
       setFieldValue(name, "NA");
     } else if (values[name] === "NA") {
       setFieldValue(name, "");
     }
-  }, [values.Campus]);
+  }, [values.Campus, values.Country]);
 
-  if (values.Campus === KEY.ONLINE) {
+  if (isNotUS || isOnline) {
     return <></>;
   }
 
