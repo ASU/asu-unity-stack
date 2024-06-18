@@ -43,10 +43,17 @@ export const Interest2 = ({ gaData }) => {
       setProgramInterestOptions(poiOptions);
     }
 
-    if (programOfInterest) {
-      setFieldValue(name, programOfInterest);
+    if (programOfInterest || programOfInterestOptional) {
+      setFieldValue(name, programOfInterest || "NA");
+    } else if (!programOfInterest && values[name] === "NA") {
+      setFieldValue(name, "");
     }
-  }, [degreeDataList, values.Interest1, programOfInterest]);
+  }, [
+    degreeDataList,
+    values.Interest1,
+    programOfInterest,
+    programOfInterestOptional,
+  ]);
 
   return (
     <RfiSelect
@@ -55,8 +62,8 @@ export const Interest2 = ({ gaData }) => {
       name={name}
       options={programInterestOptions}
       disabled={!!programOfInterest}
-      requiredIcon={!programOfInterestOptional || values.Campus === KEY.ONLINE}
-      required={!programOfInterestOptional || values.Campus === KEY.ONLINE}
+      requiredIcon={!programOfInterestOptional && values.Campus !== KEY.ONLINE}
+      required={!programOfInterestOptional && values.Campus !== KEY.ONLINE}
       onBlur={e =>
         trackGAEvent({
           ...gaData,

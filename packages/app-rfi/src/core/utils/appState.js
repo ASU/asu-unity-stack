@@ -7,69 +7,36 @@ import { CertInfo } from "../../components/steps/CertInfo";
 import { Success } from "../../components/steps/Success";
 import { KEY } from "./constants";
 import { fetchDegreesData } from "./fetchPrograms";
-import { pushDataLayerEventToGa, setClientId } from "./google-analytics";
-import {
-  submissionFormFieldPrep,
-  submissionSetHiddenFields,
-} from "./submission-helpers";
+import { rfiSubmit } from "./submission-helpers";
 
 const defaultVariant = "rfiVariant2";
 
-const rfiSubmit = (value, submissionUrl, test, callback = () => ({})) => {
-  // MARSHALL FIELDS FOR THE PAYLOAD
-
-  let payload = value;
-  payload = submissionFormFieldPrep(payload);
-  payload = submissionSetHiddenFields(payload, test);
-
-  // Patch ASUOnline clientid or enterpriseclientid and also
-  // ga_clientid onto payload.
-  // TODO Confirm sourcing for ga_clientid
-  payload = setClientId(payload);
-
-  // Google Analytics push to simulate submit button click
-  // after validation has occurred.
-  pushDataLayerEventToGa("rfi-submit");
-
-  if (test) {
-    // eslint-disable-goNext-line no-alert
-    alert(`SUBMITTED FORM \n${JSON.stringify(payload, null, 2)}`);
+const gradPropToFormValue = type => {
+  if (type === KEY.GRADUATE) {
+    return KEY.READMISSION;
   }
-
-  return fetch(
-    // NOTE: You can use relative URL for submission to client
-    // site proxy endpoint.
-    `${submissionUrl}`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      // We convert the payload to JSON and send it as the
-      // POST body.
-      body: JSON.stringify(payload),
-    }
-  )
-    .then(response => response.json())
-    .then(response => {
-      // eslint-disable-goNext-line no-console
-      callback(response);
-    });
+  if (type === KEY.UNDERGRAD) {
+    return KEY.FRESHMAN;
+  }
+  return undefined;
 };
 
 export const betterPropNames = props => ({
   filterByCampusCode: props.actualCampus,
   filterByCollegeCode: props.college,
   filterByDepartmentCode: props.department,
-  isTypeGraduate: props.studentType === "graduate",
+  setValuePOI: props.programOfInterest,
+  setInitialValueCampusType: props.campus,
+  setInitialValueAOI: props.areaOfInterest,
+  setInitialValueGradType: gradPropToFormValue(props.studentType),
   ...props,
 });
 
 const getInitialValues = props => ({
-  Campus: props.campus,
-  CareerAndStudentType: props.studentType,
-  Interest1: props.areaOfInterest,
-  Interest2: props.programOfInterest,
+  Campus: props.setInitialValueCampusType,
+  CareerAndStudentType: props.setInitialValueGradType,
+  Interest1: props.setInitialValueAOI,
+  Interest2: props.setValuePOI,
   EmailAddress: undefined,
   FirstName: undefined,
   LastName: undefined,
@@ -78,15 +45,15 @@ const getInitialValues = props => ({
   EntryTerm: undefined,
   GdprConsent: false,
   CitizenshipCountry: undefined,
-  Street1: undefined,
-  City: undefined,
-  State: props.stateProvince,
+  // Street1: undefined,
+  // City: undefined,
+  // State: props.stateProvince,
   Country: props.country,
   Zip: undefined,
-  BirthDate: undefined,
+  // BirthDate: undefined,
   MilitaryStatus: "No",
-  Comments: undefined,
-  Email: undefined,
+  // Comments: undefined,
+  // Email: undefined,
 });
 
 /**
@@ -102,6 +69,7 @@ export const useRfiState = props => {
     filterByDepartmentCode,
     filterByCollegeCode,
     filterByCampusCode,
+    campus,
     submissionUrl,
   } = props;
   const [stepNumber, setStepNumber] = useState(0);
@@ -155,17 +123,27 @@ export const useRfiState = props => {
   });
 
   useEffect(() => {
+    // Fetch the selected acadPlan
     const fetchData = async () => {
-      const Interest2 = props.programOfInterest || formik.values.Interest2;
-      if (Interest2 && formik.values.Campus !== KEY.ONLINE) {
+      let Interest2 = props.programOfInterest || formik.values.Interest2;
+      Interest2 = Interest2 === "NA" ? undefined : Interest2;
+      // If
+      if (Interest2) {
         fetchDegreesData({
-          dataSourceDegreeSearch: props.dataSourceDegreeSearch,
+          dataSourceDegreeSearch,
+          dataSourceAsuOnline,
+          Campus: formik.values.Campus,
           Interest2,
         }).then(([response, data]) => {
           if (response === "Error") {
             // eslint-disable-next-line no-console
             console.error(data);
             return;
+          }
+
+          if (test) {
+            // @ts-ignore
+            console.log(data[0]);
           }
           const { emailAddr, planType } = data[0];
           setDegreeData(data[0]);
@@ -180,6 +158,7 @@ export const useRfiState = props => {
   }, [formik.values.Interest2]);
 
   useEffect(() => {
+    // Fetch List of acadPlans
     const fetchData = async () => {
       fetchDegreesData({
         dataSourceDegreeSearch,
@@ -195,9 +174,9 @@ export const useRfiState = props => {
           console.error(data);
           return;
         }
-        if (test && window) {
+        if (test) {
           // @ts-ignore
-          window.degreeData = data;
+          console.log(data);
         }
         setDegreeDataList(data);
       });
