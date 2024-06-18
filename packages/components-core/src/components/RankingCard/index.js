@@ -58,44 +58,66 @@ CitationWrapper.propTypes = {
 
 const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
   const [open, setOpen] = useState(false);
+  // TODO: Switch to useId when we upgrade to React 18
+  const uniqueId = `info-layer-${Math.floor(Math.random() * 100000)}`;
 
-  // TODO: test this
-  const handleButtonClick = async () => {
-    await setOpen(!open);
-    trackGAEvent({
-      ...gaDefaultObject,
-      text: "Expand ranking",
-      action: open ? AVAILABLE_GA_ACTIONS.OPEN : AVAILABLE_GA_ACTIONS.CLOSE,
-      section: heading,
-    });
+  const handleButtonClick = event => {
+    if (event.type === "click" || event.key === "Enter" || event.key === " ") {
+      setOpen(!open);
+      trackGAEvent({
+        ...gaDefaultObject,
+        text: "Expand ranking",
+        action: open ? AVAILABLE_GA_ACTIONS.OPEN : AVAILABLE_GA_ACTIONS.CLOSE,
+        section: heading,
+      });
+    }
   };
 
   return (
     <div
       className={classNames("info-layer", { [`active`]: open })}
       data-testid="info-layer"
+      id={uniqueId}
     >
       <div className="content">
-        <div className="header">
-          {isSmallSize(imageSize) ? (
+        <div
+          className={classNames("header", {
+            [`closed`]: isSmallSize(imageSize) && !open,
+          })}
+        >
+          {isSmallSize(imageSize) && (
             // eslint-disable-next-line react/no-danger
             <p dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)} />
-          ) : (
-            <h4>{heading}</h4>
           )}
-          <button
-            onClick={handleButtonClick}
-            id="dispatch"
-            className="btn btn-expand"
-            aria-label="Expand ranking"
-            type="button"
-            aria-expanded="false"
-            data-toggle="collapse"
-            data-target="#collapseExample"
-          >
-            <i className="fas fa-chevron-up" />
-            <span className="visually-hidden">Expand</span>
-          </button>
+          {!isSmallSize(imageSize) && (
+            <>
+              <button
+                onClick={handleButtonClick}
+                className="btn-expand"
+                aria-label="Expand ranking"
+                type="button"
+                aria-expanded={open}
+                aria-controls={uniqueId}
+              >
+                <h4>{heading}</h4>
+                <i className="fas fa-chevron-up" />
+              </button>
+            </>
+          )}
+          {isSmallSize(imageSize) && (
+            <>
+              <button
+                onClick={handleButtonClick}
+                className="btn btn-expand"
+                aria-label="Expand ranking"
+                type="button"
+                aria-expanded={open}
+                aria-controls={uniqueId}
+              >
+                <i className="fas fa-chevron-up" />
+              </button>
+            </>
+          )}
         </div>
         {!isSmallSize(imageSize) && (
           // eslint-disable-next-line react/no-danger
@@ -105,6 +127,7 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
           <a
             href={readMoreLink}
             aria-label="Read more"
+            className="read-more"
             onClick={() => {
               trackGAEvent({
                 ...gaDefaultObject,
@@ -113,7 +136,7 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
               });
             }}
           >
-            Read more
+            Read more <span className="visually-hidden">{heading}</span>
             <span
               className="fas icon-small fa-arrow-right"
               aria-hidden="true"
