@@ -19,6 +19,15 @@ export const DROPDOWNS_GA_EVENTS = {
   type: "click",
 };
 
+export const LINK_DEFAULT_PROPS = {
+  event: "link",
+  action: "click",
+  name: "onclick",
+  type: "internal link",
+  section: "main navbar",
+  text: "",
+};
+
 /**
  * @param {{ children: React.ReactNode }} props
  * @returns {JSX.Element}
@@ -99,6 +108,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
             text,
           }
         : {
+            ...LINK_DEFAULT_PROPS,
             text: link.type === "icon-home" ? "home button" : text,
           }
     );
