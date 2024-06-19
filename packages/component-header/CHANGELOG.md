@@ -1,3 +1,11 @@
+# [@asu/component-header-v2.2.7](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.6...@asu/component-header-v2.2.7) (2024-06-19)
+
+
+### Bug Fixes
+
+* **component-header:** add hardcoded 'region' to gtm info ([378e2d6](https://github.com/asu/asu-unity-stack/commit/378e2d61d98ed19cc27b1f1d615011e19e5075a9))
+* **component-header:** added default GTM info to link clicks ([c0aa391](https://github.com/asu/asu-unity-stack/commit/c0aa3918abf51c1362f3fac80e4d18b837325fcc))
+
 # [@asu/component-header-v2.2.6](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.5...@asu/component-header-v2.2.6) (2024-06-12)
 
 
