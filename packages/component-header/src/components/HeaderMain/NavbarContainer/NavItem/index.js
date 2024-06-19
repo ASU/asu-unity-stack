@@ -24,6 +24,7 @@ export const LINK_DEFAULT_PROPS = {
   action: "click",
   name: "onclick",
   type: "internal link",
+  region: "navbar",
   section: "main navbar",
   text: "",
 };
@@ -103,6 +104,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
       // @ts-ignore
       isDropdown
         ? {
+            ...LINK_DEFAULT_PROPS,
             ...DROPDOWNS_GA_EVENTS,
             action,
             text,
