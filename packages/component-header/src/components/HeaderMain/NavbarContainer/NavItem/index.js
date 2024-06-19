@@ -19,6 +19,16 @@ export const DROPDOWNS_GA_EVENTS = {
   type: "click",
 };
 
+export const LINK_DEFAULT_PROPS = {
+  event: "link",
+  action: "click",
+  name: "onclick",
+  type: "internal link",
+  region: "navbar",
+  section: "main navbar",
+  text: "",
+};
+
 /**
  * @param {{ children: React.ReactNode }} props
  * @returns {JSX.Element}
@@ -94,11 +104,13 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
       // @ts-ignore
       isDropdown
         ? {
+            ...LINK_DEFAULT_PROPS,
             ...DROPDOWNS_GA_EVENTS,
             action,
             text,
           }
         : {
+            ...LINK_DEFAULT_PROPS,
             text: link.type === "icon-home" ? "home button" : text,
           }
     );
