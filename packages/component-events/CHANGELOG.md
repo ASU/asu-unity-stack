@@ -1,3 +1,10 @@
+# [@asu/component-events-v2.1.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v2.1.1...@asu/component-events-v2.1.2) (2024-06-20)
+
+
+### Bug Fixes
+
+* **component-events:** lI elements should alway use 100% of UL width ([c3d9090](https://github.com/asu/asu-unity-stack/commit/c3d909058cc1fcd6df516774434895d019c6a1f5))
+
 # [@asu/component-events-v2.1.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v2.1.0...@asu/component-events-v2.1.1) (2024-05-01)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@asu/component-events",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "ASU Events component",
   "main": "./dist/asuEvents.cjs.js",
   "browser": "./dist/asuEvents.umd.js",
