@@ -7,6 +7,10 @@ const ListViewWrapper = styled.ul`
   display: flex;
   flex-direction: column;
   row-gap: 24px;
+  li {
+    max-width: 100%;
+    width: 100%;
+  }
   .card {
     height: 235px;
     .card-img-top {
