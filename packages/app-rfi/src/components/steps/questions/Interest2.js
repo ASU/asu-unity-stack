@@ -23,12 +23,14 @@ export const Interest2 = ({ gaData }) => {
     formik: { values, setFieldValue },
   } = useRfiContext();
 
+  const isRequired = !programOfInterestOptional && values.Campus !== KEY.ONLINE;
+
   useEffect(() => {
     const poiOptions = degreeDataList
       .filter(
         ({ planCategories }) =>
           !values.Interest1 ||
-          values.Interest1 === "NA" ||
+          values.Interest1 === KEY.FALSE_EMPTY ||
           planCategories.includes(values.Interest1)
       )
       .map(({ acadPlanCode: value, title: text }, i) => ({
@@ -43,9 +45,11 @@ export const Interest2 = ({ gaData }) => {
       setProgramInterestOptions(poiOptions);
     }
 
-    if (programOfInterest || programOfInterestOptional) {
-      setFieldValue(name, programOfInterest || "NA");
-    } else if (!programOfInterest && values[name] === "NA") {
+    if (programOfInterest) {
+      setFieldValue(name, programOfInterest);
+    } else if (!isRequired) {
+      setFieldValue(name, KEY.FALSE_EMPTY);
+    } else if (isRequired && values[name] === KEY.FALSE_EMPTY) {
       setFieldValue(name, "");
     }
   }, [

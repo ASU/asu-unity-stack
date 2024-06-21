@@ -12,6 +12,7 @@ export const KEY = {
   GR: "GR",
   UG: "UG",
   CER: "CER",
+  FALSE_EMPTY: "__NA__",
 };
 
 export const CAMPUS = {

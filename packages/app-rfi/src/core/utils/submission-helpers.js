@@ -1,20 +1,21 @@
 // @ts-check
+import { KEY } from "./constants";
 import { pushDataLayerEventToGa, setClientId } from "./google-analytics";
 
 /**
  * In order to make a field not required, we set the default or blank value
- * to "NA". This way we do not need to alter validation schemas. Remove all
- * "NA" values before we submit
+ * to {KEY.FALSE_EMPTY}. This way we do not need to alter validation schemas. Remove all
+ * {KEY.FALSE_EMPTY} values before we submit
  * @param {*} values
  * @returns {*}
  */
 const removeUnansweredFields = values =>
   Object.entries(values)
-    .filter(([key, value]) => value !== "NA")
+    .filter(([key, value]) => value !== KEY.FALSE_EMPTY)
     .reduce((result, [key, value]) => ({ ...result, [key]: value }), {});
 
 /* Marshall and prepare values for submission payload. */
-export function submissionFormFieldPrep(payload) {
+function submissionFormFieldPrep(payload) {
   // ADJUST AND PROCESS FORM FIELDS
 
   const output = payload;
@@ -68,7 +69,7 @@ export function submissionFormFieldPrep(payload) {
   return output;
 }
 
-export function submissionSetHiddenFields(payload, test) {
+function submissionSetHiddenFields(payload, test) {
   // "HIDDEN" FIELDS THAT DON'T APPEAR IN THE FORM.
 
   const output = payload;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
-import { FAILED_OPTIONS_DEFAULT } from "../../../core/utils/constants";
+import { FAILED_OPTIONS_DEFAULT, KEY } from "../../../core/utils/constants";
 import { useRfiContext } from "../../../core/utils/rfiContext";
 import { RfiSelect } from "../../controls";
 
@@ -43,8 +43,8 @@ export const Interest1 = ({ gaData }) => {
     }
 
     if (programOfInterest || areaOfInterestOptional) {
-      setFieldValue(name, "NA");
-    } else if (!programOfInterest && values[name] === "NA") {
+      setFieldValue(name, KEY.FALSE_EMPTY);
+    } else if (!programOfInterest && values[name] === KEY.FALSE_EMPTY) {
       setFieldValue(name, "");
     }
   }, [

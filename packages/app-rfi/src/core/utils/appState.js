@@ -126,7 +126,7 @@ export const useRfiState = props => {
     // Fetch the selected acadPlan
     const fetchData = async () => {
       let Interest2 = props.programOfInterest || formik.values.Interest2;
-      Interest2 = Interest2 === "NA" ? undefined : Interest2;
+      Interest2 = Interest2 === KEY.FALSE_EMPTY ? undefined : Interest2;
       // If
       if (Interest2) {
         fetchDegreesData({
