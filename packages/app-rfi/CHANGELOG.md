@@ -1,3 +1,15 @@
+# [@asu/app-rfi-v2.3.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.1...@asu/app-rfi-v2.3.2) (2024-06-22)
+
+
+### Bug Fixes
+
+* **app-rfi:** Always show CertInfo page if prop is true ([0846022](https://github.com/asu/asu-unity-stack/commit/084602243414633ac57e6e4a648302ac6bff3894))
+* **app-rfi:** fix section undefined ([97b16f4](https://github.com/asu/asu-unity-stack/commit/97b16f4522c3ea43059b82d081e92e4244960c66))
+* **app-rfi:** fix successMsg undefined ([534c29c](https://github.com/asu/asu-unity-stack/commit/534c29c977940f7bbe95866d2b041d4f712e879c))
+* **app-rfi:** remove unanswered fields ([2357431](https://github.com/asu/asu-unity-stack/commit/23574316ce9839d720166be55c80897b138e8a21))
+* **app-rfi:** remove unanswered fields ([8121f68](https://github.com/asu/asu-unity-stack/commit/8121f689d9ff58d5daa61953e7b2966dda339b1d))
+* **app-rfi:** Update consent text ([b5b6d3a](https://github.com/asu/asu-unity-stack/commit/b5b6d3a9d500a286600cd98946cee03311863693))
+
 # [@asu/app-rfi-v2.3.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.0...@asu/app-rfi-v2.3.1) (2024-06-18)
 
 
