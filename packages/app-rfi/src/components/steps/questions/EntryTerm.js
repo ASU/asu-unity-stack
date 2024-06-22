@@ -77,8 +77,8 @@ export const EntryTerm = ({ gaData }) => {
 
   useEffect(() => {
     if (values.Campus === KEY.ONLINE) {
-      setFieldValue(name, "NA");
-    } else if (values[name] === "NA") {
+      setFieldValue(name, KEY.FALSE_EMPTY);
+    } else if (values[name] === KEY.FALSE_EMPTY) {
       setFieldValue(name, "");
     }
   }, [values.Campus]);

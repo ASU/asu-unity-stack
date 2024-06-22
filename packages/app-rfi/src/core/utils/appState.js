@@ -71,6 +71,7 @@ export const useRfiState = props => {
     filterByCampusCode,
     campus,
     submissionUrl,
+    isCertMinor,
   } = props;
   const [stepNumber, setStepNumber] = useState(0);
   const steps = variants[variant] || variants[defaultVariant];
@@ -126,7 +127,7 @@ export const useRfiState = props => {
     // Fetch the selected acadPlan
     const fetchData = async () => {
       let Interest2 = props.programOfInterest || formik.values.Interest2;
-      Interest2 = Interest2 === "NA" ? undefined : Interest2;
+      Interest2 = Interest2 === KEY.FALSE_EMPTY ? undefined : Interest2;
       // If
       if (Interest2) {
         fetchDegreesData({
@@ -147,7 +148,7 @@ export const useRfiState = props => {
           }
           const { emailAddr, planType } = data[0];
           setDegreeData(data[0]);
-          if (props.isCertMinor && emailAddr && planType === KEY.CER) {
+          if (emailAddr) {
             setCertMinorEmail(emailAddr);
           }
         });
@@ -203,7 +204,8 @@ export const useRfiState = props => {
     stepNumber,
   };
 
-  if (certMinorEmail) {
+  // ERFI-58 Always show CertInfo page if prop is true
+  if (isCertMinor) {
     returnObject.showStepButtons = false;
     returnObject.step = (
       <CertInfo certMinorEmail={certMinorEmail} successMsg={props.successMsg} />

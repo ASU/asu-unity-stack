@@ -18,7 +18,11 @@ const CertInfo = ({ certMinorEmail, successMsg }) => {
     <div className="uds-rfi-form-wrapper rfi-cert-minor">
       <h2>Request information</h2>
       {certMinorEmail && emailRender}
-      <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(`${successMsg}`)} />
+      {successMsg && (
+        <div
+          dangerouslySetInnerHTML={sanitizeDangerousMarkup(`${successMsg}`)}
+        />
+      )}
     </div>
   );
 };
