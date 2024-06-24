@@ -108,7 +108,7 @@ const fillInBlanks = datum => {
 
 // If it's depts only - use that dept in place of primary_deptid
 
-const getTitleFromProfile = (profile, titleMatch) => {
+const getTitleFromProfile = (profile, titleMatch, titleInfo) => {
   // Note on title logic
   // - Engine WEB_DIRECTORY_PEOPLE_AND_DEPS supplies results with title logic
   //   already handled by the service.
@@ -207,6 +207,46 @@ const getTitleFromProfile = (profile, titleMatch) => {
       profile.primary_search_department_affiliation.raw[0];
   }
 
+  if (
+    titleInfo?.searchType === "people" ||
+    titleInfo?.searchType === "people_departments"
+  ) {
+    matchedAffiliationTitle = profile.working_title?.raw[0] ?? "";
+  }
+
+  if (titleInfo?.searchType === "departments") {
+    // Find matching values against titleMatch.depts
+    const deptValueMatch = profile.deptids.raw.filter(id =>
+      titleMatch.depts.includes(id)
+    );
+    // Use the first value matched to match on the deptids index.
+    const deptIndex = profile.deptids.raw.findIndex(
+      id => id === deptValueMatch[0]
+    );
+    if (profile.title_source.raw[deptIndex] === "titles") {
+      matchedAffiliationTitle = profile.titles.raw[deptIndex];
+    } else {
+      matchedAffiliationTitle = "";
+    }
+  }
+
+  if (titleInfo?.searchType === "faculty_rank") {
+    const deptValueMatch = profile.deptids.raw.filter(
+      id => id === titleInfo.deptIds
+    );
+    console.log("deptValueMatch", deptValueMatch);
+
+    const deptIndex = profile.deptids.raw.findIndex(
+      id => id === deptValueMatch[0]
+    );
+    if (profile.title_source.raw[deptIndex] === "titles") {
+      matchedAffiliationTitle = profile.titles.raw[deptIndex];
+      console.log("matchedAffiliationTitle", matchedAffiliationTitle);
+    } else {
+      matchedAffiliationTitle = "";
+    }
+  }
+
   return { matchedAffiliationTitle, matchedAffiliationDept };
 };
 
@@ -269,11 +309,16 @@ export const staffConverter = ({
     titleMatch: null,
     profileURLBase: null,
     fill: false,
+    titleInfo: null,
   },
   appPathFolder,
 }) => {
   const filledDatum = fillInBlanks(datum);
-  const titles = getTitleFromProfile(filledDatum, options.titleMatch);
+  const titles = getTitleFromProfile(
+    filledDatum,
+    options.titleMatch,
+    options.titleInfo
+  );
 
   // We use EID if it's available, otherwise we use the asurite_id.
   const profileURLBase = options.profileURLBase ?? "";
