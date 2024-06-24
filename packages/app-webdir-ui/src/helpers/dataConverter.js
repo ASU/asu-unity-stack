@@ -108,143 +108,46 @@ const fillInBlanks = datum => {
 
 // If it's depts only - use that dept in place of primary_deptid
 
+function findDeptIndex(profile, deptIds) {
+  const deptValueMatch = profile.deptids.raw.filter(id => deptIds.includes(id));
+  return profile.deptids.raw.findIndex(id => id === deptValueMatch[0]);
+}
+
+function getTitleAndDeptFromIndex(profile, index) {
+  let title = profile.titles?.raw[index];
+  let dept = profile.departments?.raw[index];
+  if (profile.title_source.raw[index] !== "titles" && profile.working_title?.raw[0]) {
+    title = profile.working_title.raw[0];
+  }
+  return { title, dept };
+}
+
 const getTitleFromProfile = (profile, titleMatch, titleInfo) => {
-  // Note on title logic
-  // - Engine WEB_DIRECTORY_PEOPLE_AND_DEPS supplies results with title logic
-  //   already handled by the service.
-  // - Engine WEB_DIRECTORY_DEPARTMENTS needs a little help with titles,
-  //   handled below using titleMatch.depts.
+  let matchedAffiliationTitle = profile.title || profile.working_title?.raw[0] || "";
+  let matchedAffiliationDept = profile.dept_name || profile.primary_search_department_affiliation?.raw[0] || "";
 
-  let matchedAffiliationTitle = null;
-  let matchedAffiliationDept = null;
-
-  if (profile.title) {
-    console.log("title from service");
-    // Here we can use the WEB_DIRECTORY_PEOPLE_AND_DEPS pre-matched title.
-    // We don't need to consult titleMatch.peopleDeps.
-    matchedAffiliationTitle = profile.title;
-    if (profile.dept_name) {
-      matchedAffiliationDept = profile.dept_name;
-    }
-  } else if (
-    titleMatch &&
-    titleMatch.depts &&
-    profile.deptids &&
-    profile.titles &&
-    profile.deptids.raw !== null &&
-    /*
-      If titleMatch.depts[0] is '',
-      then no deptIds were supplied to query.
-      We can't use titleMatch.depts in that case.
-    */
-    !!titleMatch.depts[0]
-  ) {
-    console.log("title from titleMatch.deps");
-    // A flow for WEB_DIRECTORY_DEPARTMENTS.
-    // Note: If someone is in two depts queried, there is no guarantee which
-    // title they'll get. When precision is needed, users should use the
-    // People or People in Departments component type.
-
-    // Find matching values against titleMatch.depts
-    const deptValueMatch = profile.deptids.raw.filter(id =>
-      titleMatch.depts.includes(id)
-    );
-    // Use the first value matched to match on the deptids index.
-    const deptIndex = profile.deptids.raw.findIndex(
-      id => id === deptValueMatch[0]
-    );
-    if (profile.title_source.raw[deptIndex] === "titles") {
-      matchedAffiliationTitle = profile.titles.raw[deptIndex];
-    } else if (profile.working_title) {
-      matchedAffiliationTitle = profile.working_title.raw[0];
-      if (!matchedAffiliationTitle) {
-        matchedAffiliationTitle = profile.titles.raw[deptIndex];
-      }
-    }
-    matchedAffiliationDept = profile.departments.raw[deptIndex];
-  } else if (profile.primary_deptid && profile.titles && profile.titles.raw) {
-    console.log("title from fallback1 to primary_deptid");
-    // Fallback to using primary_deptid from CMS to derive the match.
-    const deptIndex = profile.deptids.raw.findIndex(
-      id => id === profile.primary_deptid.raw
-    );
-    if (profile.title_source.raw[deptIndex] === "titles") {
-      matchedAffiliationTitle = profile.titles.raw[deptIndex];
-    } else if (profile.working_title && profile.working_title.raw[0]) {
-      matchedAffiliationTitle = profile.working_title.raw[0];
-    }
-    matchedAffiliationDept = profile.departments.raw[deptIndex];
-
-    // Used in directory component when dept id is provided with asurite
-    if (profile.primary_affiliation.raw === "COURTESY_AFFILIATE") {
-      matchedAffiliationTitle = profile.affiliations?.raw[0];
-      matchedAffiliationDept = profile.subaffiliations?.raw[0];
-    }
-  } else if (profile.primary_department && profile.primary_department.raw) {
-    console.log("title from fallback2 to primary_department");
-    // Fallback to using primary_department name to derive the match, using
-    // working_title. This condition is unlikely to be met. If we have one, we
-    // should have the other.
-    const deptIndex = profile.departments.raw.findIndex(
-      dept => dept === profile.primary_department.raw
-    );
-    if (
-      // profile.title_source.raw[0] === "workingTitle" &&
-      profile.working_title
-    ) {
-      matchedAffiliationTitle = profile.working_title.raw[0];
-    }
+  if (!profile.title && titleMatch?.depts?.[0]) {
+    const deptIndex = findDeptIndex(profile, titleMatch.depts);
+    ({ title: matchedAffiliationTitle, dept: matchedAffiliationDept } = getTitleAndDeptFromIndex(profile, deptIndex));
+  } else if (profile.primary_deptid && profile.titles?.raw) {
+    const deptIndex = findDeptIndex(profile, [profile.primary_deptid.raw]);
+    ({ title: matchedAffiliationTitle, dept: matchedAffiliationDept } = getTitleAndDeptFromIndex(profile, deptIndex));
+  } else if (profile.primary_department?.raw) {
+    const deptIndex = profile.departments.raw.findIndex(dept => dept === profile.primary_department.raw);
     matchedAffiliationDept = profile.departments.raw[deptIndex];
   } else if (profile.primary_affiliation.raw === "COURTESY_AFFILIATE") {
-    console.log("title from fallback to courtesy affiliate");
     matchedAffiliationTitle = profile.affiliations?.raw[0];
     matchedAffiliationDept = profile.subaffiliations?.raw[0];
-  } else {
-    console.log("title from fallback3 to hr values - final");
-    // Final fallback is to use the HR working title and department values.
-    matchedAffiliationTitle = profile.working_title.raw[0];
-    matchedAffiliationDept =
-      profile.primary_search_department_affiliation.raw[0];
-  }
-
-  if (
-    titleInfo?.searchType === "people" ||
-    titleInfo?.searchType === "people_departments"
-  ) {
-    matchedAffiliationTitle = profile.working_title?.raw[0] ?? "";
   }
 
   if (titleInfo?.searchType === "departments") {
-    // Find matching values against titleMatch.depts
-    const deptValueMatch = profile.deptids.raw.filter(id =>
-      titleMatch.depts.includes(id)
-    );
-    // Use the first value matched to match on the deptids index.
-    const deptIndex = profile.deptids.raw.findIndex(
-      id => id === deptValueMatch[0]
-    );
-    if (profile.title_source.raw[deptIndex] === "titles") {
-      matchedAffiliationTitle = profile.titles.raw[deptIndex];
-    } else {
-      matchedAffiliationTitle = "";
-    }
+    const deptIndex = findDeptIndex(profile, titleMatch.depts);
+    matchedAffiliationTitle = profile.titles?.raw[deptIndex] || "";
   }
 
   if (titleInfo?.searchType === "faculty_rank") {
-    const deptValueMatch = profile.deptids.raw.filter(
-      id => id === titleInfo.deptIds
-    );
-    console.log("deptValueMatch", deptValueMatch);
-
-    const deptIndex = profile.deptids.raw.findIndex(
-      id => id === deptValueMatch[0]
-    );
-    if (profile.title_source.raw[deptIndex] === "titles") {
-      matchedAffiliationTitle = profile.titles.raw[deptIndex];
-      console.log("matchedAffiliationTitle", matchedAffiliationTitle);
-    } else {
-      matchedAffiliationTitle = "";
-    }
+    const deptIndex = findDeptIndex(profile, [titleInfo.deptIds]);
+    matchedAffiliationTitle = profile.titles?.raw[deptIndex] || "";
   }
 
   return { matchedAffiliationTitle, matchedAffiliationDept };
