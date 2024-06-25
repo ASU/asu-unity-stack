@@ -1,3 +1,10 @@
+# [@asu/components-core-v3.3.7](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.6...@asu/components-core-v3.3.7) (2024-06-25)
+
+
+### Bug Fixes
+
+* **components-core:** remove import of bootstrap collapse in accordion ([88ebe12](https://github.com/ASU/asu-unity-stack/commit/88ebe12c845f1ea27c28998a2f8c186e2fe5f1a3))
+
 # [@asu/components-core-v3.3.6](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.5...@asu/components-core-v3.3.6) (2024-06-18)
 
 
