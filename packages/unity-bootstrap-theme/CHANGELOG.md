@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.9.21](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.20...@asu/unity-bootstrap-theme-v1.9.21) (2024-06-26)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix blue text issue on iPhone lg ranking card ([b47e5c2](https://github.com/ASU/asu-unity-stack/commit/b47e5c255fc89d9ad8aae0abcfe8c7f8f68f13d0))
+
 # [@asu/unity-bootstrap-theme-v1.9.20](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.19...@asu/unity-bootstrap-theme-v1.9.20) (2024-06-18)
 
 
