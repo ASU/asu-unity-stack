@@ -26,7 +26,7 @@ export const GlobalElementsOnly = () => (
                 </a>
                 <a
                   className="nav-link"
-                  href="https://www.asu.edu/asujobs"
+                  href="https://cfo.asu.edu/applicant"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
                   data-ga-footer="jobs"
@@ -35,7 +35,7 @@ export const GlobalElementsOnly = () => (
                 </a>
                 <a
                   className="nav-link"
-                  href="https://isearch.asu.edu/"
+                  href="https://search.asu.edu/?search-tabs=web_dir_faculty_staff"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
                   data-ga-footer="directory"
@@ -257,7 +257,7 @@ export const ZeroColumns = () => (
                 </a>
                 <a
                   className="nav-link"
-                  href="https://www.asu.edu/asujobs"
+                  href="https://cfo.asu.edu/applicant"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
                   data-ga-footer="jobs"
@@ -266,7 +266,7 @@ export const ZeroColumns = () => (
                 </a>
                 <a
                   className="nav-link"
-                  href="https://isearch.asu.edu/"
+                  href="https://search.asu.edu/?search-tabs=web_dir_faculty_staff"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
                   data-ga-footer="directory"
@@ -508,7 +508,7 @@ export const OneColumn = () => (
                 </a>
                 <a
                   className="nav-link"
-                  href="https://www.asu.edu/asujobs"
+                  href="https://cfo.asu.edu/applicant"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
                   data-ga-footer="jobs"
@@ -517,7 +517,7 @@ export const OneColumn = () => (
                 </a>
                 <a
                   className="nav-link"
-                  href="https://isearch.asu.edu/"
+                  href="https://search.asu.edu/?search-tabs=web_dir_faculty_staff"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
                   data-ga-footer="directory"
@@ -670,7 +670,7 @@ export const OneColumnNoLogoOrSocial = () => (
                 </a>
                 <a
                   className="nav-link"
-                  href="https://www.asu.edu/asujobs"
+                  href="https://cfo.asu.edu/applicant"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
                   data-ga-footer="jobs"
@@ -679,7 +679,7 @@ export const OneColumnNoLogoOrSocial = () => (
                 </a>
                 <a
                   className="nav-link"
-                  href="https://isearch.asu.edu/"
+                  href="https://search.asu.edu/?search-tabs=web_dir_faculty_staff"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
                   data-ga-footer="directory"
@@ -966,7 +966,7 @@ export const TwoColumns = () => (
                 </a>
                 <a
                   className="nav-link"
-                  href="https://www.asu.edu/asujobs"
+                  href="https://cfo.asu.edu/applicant"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
                   data-ga-footer="jobs"
@@ -975,7 +975,7 @@ export const TwoColumns = () => (
                 </a>
                 <a
                   className="nav-link"
-                  href="https://isearch.asu.edu/"
+                  href="https://search.asu.edu/?search-tabs=web_dir_faculty_staff"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
                   data-ga-footer="directory"
@@ -1310,7 +1310,7 @@ export const ThreeColumns = () => (
                 </a>
                 <a
                   className="nav-link"
-                  href="https://www.asu.edu/asujobs"
+                  href="https://cfo.asu.edu/applicant"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
                   data-ga-footer="jobs"
@@ -1319,7 +1319,7 @@ export const ThreeColumns = () => (
                 </a>
                 <a
                   className="nav-link"
-                  href="https://isearch.asu.edu/"
+                  href="https://search.asu.edu/?search-tabs=web_dir_faculty_staff"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
                   data-ga-footer="directory"
@@ -1702,7 +1702,7 @@ export const FourColumns = () => (
                 </a>
                 <a
                   className="nav-link"
-                  href="https://www.asu.edu/asujobs"
+                  href="https://cfo.asu.edu/applicant"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
                   data-ga-footer="jobs"
@@ -1711,7 +1711,7 @@ export const FourColumns = () => (
                 </a>
                 <a
                   className="nav-link"
-                  href="https://isearch.asu.edu/"
+                  href="https://search.asu.edu/?search-tabs=web_dir_faculty_staff"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
                   data-ga-footer="directory"
@@ -2142,7 +2142,7 @@ export const FiveColumns = () => (
                 </a>
                 <a
                   className="nav-link"
-                  href="https://www.asu.edu/asujobs"
+                  href="https://cfo.asu.edu/applicant"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
                   data-ga-footer="jobs"
@@ -2151,7 +2151,7 @@ export const FiveColumns = () => (
                 </a>
                 <a
                   className="nav-link"
-                  href="https://isearch.asu.edu/"
+                  href="https://search.asu.edu/?search-tabs=web_dir_faculty_staff"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
                   data-ga-footer="directory"
@@ -2624,7 +2624,7 @@ export const SixColumns = () => (
                 </a>
                 <a
                   className="nav-link"
-                  href="https://www.asu.edu/asujobs"
+                  href="https://cfo.asu.edu/applicant"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
                   data-ga-footer="jobs"
@@ -2633,7 +2633,7 @@ export const SixColumns = () => (
                 </a>
                 <a
                   className="nav-link"
-                  href="https://isearch.asu.edu/"
+                  href="https://search.asu.edu/?search-tabs=web_dir_faculty_staff"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="secondary footer"
                   data-ga-footer="directory"
