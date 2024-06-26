@@ -42,12 +42,13 @@
           display: -webkit-box;
           -webkit-box-orient: vertical;
           overflow: hidden;
-          color: var(--bs-heading-color);
+          color: $uds-color-base-gray-7;
         }
 
         svg.fa-chevron-up,
         i.fa-chevron-up {
           transition: all 0.3s ease-in-out;
+          color: $uds-color-base-gray-7;
         }
       }
 
