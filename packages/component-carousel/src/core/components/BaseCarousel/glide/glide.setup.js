@@ -224,17 +224,11 @@ function setupCaroarousel({
     // @ts-ignore
     const currentIndex = slider.index;
     const imageGalleryNav = gliderElement.querySelector(".navigation-slider");
-    if (imageGalleryNav) {
+    const imageNav = gliderElement.querySelector(".image-navigator-images");
+    if (imageGalleryNav && imageNav) {
       const images = imageGalleryNav.querySelectorAll(
         ".bullet-image-container"
       );
-      const inactiveImage = imageGalleryNav.querySelector(
-        ".bullet-image-container:not(.glide__bullet--active)"
-      );
-      const imageNav = gliderElement.querySelector(".image-navigator-images");
-
-      // glide centers bullets, 10px represents the extra width of the selected image
-      // const fullNavWidth = inactiveImage.offsetWidth * images.length + 10;
       const fullNavWidth = imageGalleryNav.clientWidth;
       const viewPadding = 82;
 
