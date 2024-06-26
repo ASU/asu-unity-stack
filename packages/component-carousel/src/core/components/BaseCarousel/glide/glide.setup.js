@@ -244,14 +244,14 @@ function setupCaroarousel({
         lastSlideRight > imageNavRect.right ||
         currentIndex <= images.length - 3
       ) {
-        if (currentIndex > 1) {
-          const pos = halfDiff - inactiveImage.offsetWidth * (currentIndex - 1);
-          imageGalleryNav.style.left = `${pos}px`;
-        } else {
+        if (currentIndex === 0 || fullNavWidth < imageNavRect.width) {
           const pos = halfDiff;
           imageGalleryNav.style.left = `${pos}px`;
+        } else {
+          const pos = halfDiff - inactiveImage.offsetWidth * (currentIndex - 1);
+          imageGalleryNav.style.left = `${pos}px`;
         }
-      } else {
+      } else if (fullNavWidth > imageNavRect.width) {
         const fromTarget = imageNavRect.right - 75 - lastSlideRight;
         const currentPos = parseFloat(
           imageGalleryNav.style.left.replace("px", "")
