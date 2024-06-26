@@ -1,3 +1,12 @@
+# [@asu/component-footer-v2.2.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.2.0...@asu/component-footer-v2.2.1) (2024-06-26)
+
+
+### Bug Fixes
+
+* **component-footer:** corrected footer links ([fe9b4a2](https://github.com/asu/asu-unity-stack/commit/fe9b4a24a5ac116c36eb2025fc35285487031f89))
+* **component-footer:** fixed isearch.asu.edu link ([d896ccb](https://github.com/asu/asu-unity-stack/commit/d896ccb8bbd805e7a77650b7318f3c4acec3fae8))
+* **component-footer:** updated path imports for URL's ([c0c84e9](https://github.com/asu/asu-unity-stack/commit/c0c84e9f5a03edd922b81405a0a96f374639e473))
+
 # [@asu/component-footer-v2.2.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.1.3...@asu/component-footer-v2.2.0) (2024-01-11)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@asu/component-footer",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "ASU implementation of global footer",
   "main": "./dist/asuFooter.cjs.js",
   "browser": "./dist/asuFooter.umd.js",
@@ -78,9 +78,7 @@
     "url-loader": "^4.1.1",
     "webpack-merge": "^5.8.0"
   },
-  "peerDependencies": {
-
-  },
+  "peerDependencies": {},
   "volta": {
     "extends": "../../package.json"
   }
