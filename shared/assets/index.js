@@ -1,4 +1,7 @@
-import * as _images from "./img";
+import * as _images from "./img/list";
+export { imageName } from "./img/named";
 
-export const imageArray = Object.values(_images).reduce((result,val)=>([...result,val.default]),[]);
-export const imageObject = Object.entries(_images).reduce((result,[key,val])=>({...result,[key]: val.default}),{});
+const _imageArray = Object.values(_images).reduce((result,val)=>([...result,val.default]),[]);
+
+export const imageArray = [ ..._imageArray, ..._imageArray, ..._imageArray, ..._imageArray, ..._imageArray ]; // make it bigger
+export const imageAny = () => imageArray[Math.floor(Math.random() * imageArray.length)]
