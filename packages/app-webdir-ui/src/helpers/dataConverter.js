@@ -105,12 +105,14 @@ const fillInBlanks = datum => {
   };
   return { ...full, ...datumAdjusted };
 };
+function isCustomTitle(profile, index) {
+  if (!profile.title_source?.raw) return false;
+  return profile.title_source?.raw[index] === "titles"
+}
 
-// If it's depts only - use that dept in place of primary_deptid
-
-function findDeptIndex(profile, deptIds) {
-  const deptValueMatch = profile.deptids.raw.filter(id => deptIds.includes(id));
-  return profile.deptids.raw.findIndex(id => id === deptValueMatch[0]);
+function findDeptIndex(profile, deptId = "") {
+  if (!deptId) return 0;
+  return profile.deptids?.raw?.findIndex(id => id === deptId);
 }
 
 function getTitleAndDeptFromIndex(profile, index) {
@@ -122,32 +124,78 @@ function getTitleAndDeptFromIndex(profile, index) {
   return { title, dept };
 }
 
+// See https://asudev.jira.com/browse/SCHWEB-1238 for title logic.
 const getTitleFromProfile = (profile, titleMatch, titleInfo) => {
-  let matchedAffiliationTitle = profile.title || profile.working_title?.raw[0] || "";
-  let matchedAffiliationDept = profile.dept_name || profile.primary_search_department_affiliation?.raw[0] || "";
+  let matchedAffiliationTitle =
+    profile.title || profile.working_title?.raw[0] || "";
+  let matchedAffiliationDept =
+    profile.dept_name ||
+    profile.primary_search_department_affiliation?.raw[0] ||
+    "";
 
-  if (!profile.title && titleMatch?.depts?.[0]) {
-    const deptIndex = findDeptIndex(profile, titleMatch.depts);
-    ({ title: matchedAffiliationTitle, dept: matchedAffiliationDept } = getTitleAndDeptFromIndex(profile, deptIndex));
-  } else if (profile.primary_deptid && profile.titles?.raw) {
-    const deptIndex = findDeptIndex(profile, [profile.primary_deptid.raw]);
-    ({ title: matchedAffiliationTitle, dept: matchedAffiliationDept } = getTitleAndDeptFromIndex(profile, deptIndex));
-  } else if (profile.primary_department?.raw) {
-    const deptIndex = profile.departments.raw.findIndex(dept => dept === profile.primary_department.raw);
+  if (
+    profile.primary_deptid?.raw &&
+    profile.titles?.raw &&
+    profile.primary_affiliation.raw !== "COURTESY_AFFILIATE"
+  ) {
+    const deptIndex = findDeptIndex(profile, profile.primary_deptid.raw);
+    ({ title: matchedAffiliationTitle, dept: matchedAffiliationDept } =
+      getTitleAndDeptFromIndex(profile, deptIndex));
+  } else if (
+    profile.primary_department?.raw &&
+    profile.primary_affiliation.raw !== "COURTESY_AFFILIATE"
+  ) {
+    const deptIndex = profile.departments.raw.findIndex(
+      dept => dept === profile.primary_department.raw
+    );
     matchedAffiliationDept = profile.departments.raw[deptIndex];
   } else if (profile.primary_affiliation.raw === "COURTESY_AFFILIATE") {
     matchedAffiliationTitle = profile.affiliations?.raw[0];
-    matchedAffiliationDept = profile.subaffiliations?.raw[0];
+    matchedAffiliationDept =
+      profile.primary_department?.raw || profile.subaffiliations?.raw[0];
   }
 
-  if (titleInfo?.searchType === "departments") {
-    const deptIndex = findDeptIndex(profile, titleMatch.depts);
-    matchedAffiliationTitle = profile.titles?.raw[deptIndex] || "";
+  if (
+    titleInfo?.searchType === "faculty_rank" ||
+    titleInfo?.searchType === "departments"
+  ) {
+    const primaryDeptIndex = findDeptIndex(profile, profile.primary_deptid.raw);
+
+    // Check if supplied deptids in the web directory include the users primary_deptid and is a custom title
+    if (
+      titleMatch.depts.includes(profile.primary_deptid?.raw) &&
+      isCustomTitle(profile, primaryDeptIndex)
+    ) {
+      matchedAffiliationTitle = profile.titles?.raw[primaryDeptIndex];
+      // Some users do not have a primary title, but do have a primary department, so we default to the titles field
+    } else if (
+      titleMatch.depts.includes(profile.primary_deptid?.raw) &&
+      !isCustomTitle(profile, primaryDeptIndex)
+    ) {
+      matchedAffiliationTitle =
+        profile.primary_title?.raw[0] ||
+        profile.titles?.raw[primaryDeptIndex] ||
+        "";
+    }
   }
 
-  if (titleInfo?.searchType === "faculty_rank") {
-    const deptIndex = findDeptIndex(profile, [titleInfo.deptIds]);
-    matchedAffiliationTitle = profile.titles?.raw[deptIndex] || "";
+  if (
+    titleInfo?.searchType === "people" ||
+    titleInfo?.searchType === "people_departments"
+  ) {
+    let deptIndex = findDeptIndex(profile, profile.primary_deptid?.raw);
+    if (isCustomTitle(profile, deptIndex)) {
+      matchedAffiliationTitle = profile.titles?.raw[deptIndex];
+    }
+    matchedAffiliationDept = profile.primary_department?.raw;
+    if (
+      profile.dept_id === "unaffiliated" &&
+      profile.primary_affiliation?.raw !== "COURTESY_AFFILIATE"
+    ) {
+      matchedAffiliationTitle = profile.working_title.raw[0];
+      matchedAffiliationDept =
+        profile.primary_search_department_affiliation?.raw[0];
+    }
   }
 
   return { matchedAffiliationTitle, matchedAffiliationDept };
