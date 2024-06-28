@@ -32,17 +32,13 @@ export const CareerAndStudentType = ({ gaData }) => {
       // Set only undergrad options for studentTypeOptions.
       setStudentTypeOptions([STUDENT.FRESHMAN, STUDENT.TRANSFER]);
     } else if (programOfInterest) {
-      // PoI is graduate degree.
-      // Setting the options here helps trigger dependent useEffects, even
-      // though we won't display this single option.
+      // PoI is graduate degree but we still show the option and default it to graduate.
       setStudentTypeOptions([STUDENT.READMISSION]);
-      // setFieldValue(name, STUDENT.READMISSION.value);
+      setFieldValue(name, STUDENT.READMISSION.value);
     }
-  }, []);
+  }, [degreeData]);
 
-  return studentTypeOptions.length === 1 ? (
-    <input type="hidden" name={name} value={studentTypeOptions[0].value} />
-  ) : (
+  return (
     <RfiSelect
       label={label}
       id={name}
@@ -59,7 +55,7 @@ export const CareerAndStudentType = ({ gaData }) => {
         })
       }
     />
-  );
+  )
 };
 
 CareerAndStudentType.propTypes = { gaData: gaEventPropTypes };
