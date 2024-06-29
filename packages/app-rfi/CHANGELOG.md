@@ -1,3 +1,10 @@
+# [@asu/app-rfi-v2.3.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.2...@asu/app-rfi-v2.3.3) (2024-06-29)
+
+
+### Bug Fixes
+
+* **app-rfi:** fixed CareerAndStudentType not showing and submit issue ([cfe6cc1](https://github.com/asu/asu-unity-stack/commit/cfe6cc14800e90235068d53d74f2639e02415b55))
+
 # [@asu/app-rfi-v2.3.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.1...@asu/app-rfi-v2.3.2) (2024-06-22)
 
 
