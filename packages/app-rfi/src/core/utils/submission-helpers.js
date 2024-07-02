@@ -133,9 +133,7 @@ const fetchPromise = fetch(`${submissionUrl}`, {
 
 // Race the fetch promise against the timeout promise
 return Promise.race([fetchPromise, timeoutPromise])
-  .then(response => {
-    // eslint-disable-next-line no-console
-    (test && console.log('Response or Timeout:', response))
+  .then(response => 
     callback(response);
-  });
+  );
 };
