@@ -1,3 +1,10 @@
+# [@asu/app-rfi-v2.3.5](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.4...@asu/app-rfi-v2.3.5) (2024-07-02)
+
+
+### Bug Fixes
+
+* **app-rfi:** add link for apply to ASU ([6ff9fc7](https://github.com/asu/asu-unity-stack/commit/6ff9fc733ffb2e7d6a217362f1ad5391351e53f9))
+
 # [@asu/app-rfi-v2.3.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.3...@asu/app-rfi-v2.3.4) (2024-07-02)
 
 
