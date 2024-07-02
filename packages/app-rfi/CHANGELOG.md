@@ -1,3 +1,11 @@
+# [@asu/app-rfi-v2.3.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.3...@asu/app-rfi-v2.3.4) (2024-07-02)
+
+
+### Bug Fixes
+
+* **app-rfi:** added timeout for form submission ([61d0254](https://github.com/asu/asu-unity-stack/commit/61d0254ab4aba2315af41030faa38a1a99d163df))
+* **app-rfi:** Update submission-helpers.js ([047b3ad](https://github.com/asu/asu-unity-stack/commit/047b3ad920a285ab1ceef76db4cdc6f50c6ce597))
+
 # [@asu/app-rfi-v2.3.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.2...@asu/app-rfi-v2.3.3) (2024-06-29)
 
 
