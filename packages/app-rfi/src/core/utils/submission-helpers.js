@@ -117,23 +117,22 @@ export const rfiSubmit = (value, submissionUrl, test, callback = a => ({})) => {
   }
 
   // timeout promise that resolves after 2 seconds
-const timeoutPromise = new Promise((resolve) => {
-  setTimeout(() => {
-    resolve({ status: 'timeout', message: 'Assumed success after timeout' });
-  }, 2000);
-});
+  const timeoutPromise = new Promise(resolve => {
+    setTimeout(() => {
+      resolve({ status: "timeout", message: "Assumed success after timeout" });
+    }, 2000);
+  });
 
-const fetchPromise = fetch(`${submissionUrl}`, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify(payload),
-}).then(response => response.json());
+  const fetchPromise = fetch(`${submissionUrl}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  }).then(response => response.json());
 
-// Race the fetch promise against the timeout promise
-return Promise.race([fetchPromise, timeoutPromise])
-  .then(response => 
-    callback(response);
+  // Race the fetch promise against the timeout promise
+  return Promise.race([fetchPromise, timeoutPromise]).then(response =>
+    callback(response)
   );
 };
