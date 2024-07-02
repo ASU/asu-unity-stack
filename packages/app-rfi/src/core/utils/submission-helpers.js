@@ -116,23 +116,23 @@ export const rfiSubmit = (value, submissionUrl, test, callback = a => ({})) => {
     alert(`SUBMITTED FORM \n${JSON.stringify(payload, null, 2)}`);
   }
 
-  return fetch(
-    // NOTE: You can use relative URL for submission to client
-    // site proxy endpoint.
-    `${submissionUrl}`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      // We convert the payload to JSON and send it as the
-      // POST body.
-      body: JSON.stringify(payload),
-    }
-  )
-    .then(response => response.json())
-    .then(response => {
-      // eslint-disable-goNext-line no-console
-      callback(response);
-    });
+  // timeout promise that resolves after 2 seconds
+  const timeoutPromise = new Promise(resolve => {
+    setTimeout(() => {
+      resolve({ status: "timeout", message: "Assumed success after timeout" });
+    }, 2000);
+  });
+
+  const fetchPromise = fetch(`${submissionUrl}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  }).then(response => response.json());
+
+  // Race the fetch promise against the timeout promise
+  return Promise.race([fetchPromise, timeoutPromise]).then(response =>
+    callback(response)
+  );
 };
