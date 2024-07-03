@@ -1,3 +1,10 @@
+# [@asu/app-rfi-v2.3.7](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.6...@asu/app-rfi-v2.3.7) (2024-07-03)
+
+
+### Bug Fixes
+
+* **app-rfi:** fix default of student status error ([38b91ab](https://github.com/asu/asu-unity-stack/commit/38b91ab6ae7ffa3a0f17d40527639b52ffb32b38))
+
 # [@asu/app-rfi-v2.3.6](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.5...@asu/app-rfi-v2.3.6) (2024-07-03)
 
 
