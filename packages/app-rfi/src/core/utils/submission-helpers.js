@@ -1,7 +1,7 @@
 // @ts-check
+import { deepCloner } from "../../../../../shared/utils";
 import { KEY } from "./constants";
 import { pushDataLayerEventToGa, setClientId } from "./google-analytics";
-import { deepCloner } from "../../../../../shared/utils";
 
 /**
  * In order to make a field not required, we set the default or blank value
@@ -118,25 +118,24 @@ export const rfiSubmit = (value, submissionUrl, test, callback = a => ({})) => {
   }
 
   // timeout promise that resolves after 2 seconds
-const timeoutPromise = new Promise((resolve) => {
-  setTimeout(() => {
-    resolve({ status: 'timeout', message: 'Assumed success after timeout' });
-  }, 2000);
-});
+  const timeoutPromise = new Promise(resolve => {
+    setTimeout(() => {
+      resolve({ status: "timeout", message: "Assumed success after timeout" });
+    }, 2000);
+  });
 
-const fetchPromise = fetch(`${submissionUrl}`, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify(payload),
-}).then(response => response.json());
+  const fetchPromise = fetch(`${submissionUrl}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  }).then(response => response.json());
 
-// Race the fetch promise against the timeout promise
-return Promise.race([fetchPromise, timeoutPromise])
-  .then(response => {
-    // eslint-disable-next-line no-console
-    (test && console.log('Response or Timeout:', response))
+  // Race the fetch promise against the timeout promise
+  return Promise.race([fetchPromise, timeoutPromise]).then(response => {
+    // eslint-disable-next-line
+    test && console.log("Response or Timeout:", response);
     callback(response);
   });
 };
