@@ -31,7 +31,7 @@ export const CareerAndStudentType = ({ gaData }) => {
       // PoI is undergrad degree.
       // Set only undergrad options for studentTypeOptions.
       setStudentTypeOptions([STUDENT.FRESHMAN, STUDENT.TRANSFER]);
-    } else if (programOfInterest) {
+    } else if (programOfInterest && degreeData?.degreeType === KEY.GR) {
       // PoI is graduate degree but we still show the option and default it to graduate.
       setStudentTypeOptions([STUDENT.READMISSION]);
       setFieldValue(name, STUDENT.READMISSION.value);
