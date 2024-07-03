@@ -1,6 +1,7 @@
 // @ts-check
 import { KEY } from "./constants";
 import { pushDataLayerEventToGa, setClientId } from "./google-analytics";
+import { deepCloner } from "../../../../../shared/utils";
 
 /**
  * In order to make a field not required, we set the default or blank value
@@ -97,7 +98,7 @@ function submissionSetHiddenFields(payload, test) {
 export const rfiSubmit = (value, submissionUrl, test, callback = a => ({})) => {
   // MARSHALL FIELDS FOR THE PAYLOAD
 
-  let payload = value;
+  let payload = deepCloner(value);
   payload = submissionFormFieldPrep(payload);
   payload = submissionSetHiddenFields(payload, test);
   payload = removeUnansweredFields(payload);

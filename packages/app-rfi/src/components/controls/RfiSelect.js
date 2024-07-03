@@ -44,7 +44,7 @@ const RfiSelect = ({
       <Field
         as="select"
         id={id}
-        className="form-control"
+        className="form-select"
         required={required}
         disabled={disabled}
         autoFocus={autoFocus}
