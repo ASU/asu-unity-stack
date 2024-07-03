@@ -22,7 +22,7 @@ function deepCloner(obj) {
   const objCopy = {};
   for (const key in obj) {
       if (obj.hasOwnProperty(key)) {
-          objCopy[key] = deepClone(obj[key]);
+          objCopy[key] = deepCloner(obj[key]);
       }
   }
   return objCopy;
