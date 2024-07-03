@@ -1,3 +1,11 @@
+# [@asu/app-rfi-v2.3.6](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.5...@asu/app-rfi-v2.3.6) (2024-07-03)
+
+
+### Bug Fixes
+
+* **app-rfi:** added correct class to select ([01584a0](https://github.com/asu/asu-unity-stack/commit/01584a0bd745b776c60d48f86ab48e1c3a77c520))
+* **app-rfi:** fix false error display on studentstatus ([1aa93ac](https://github.com/asu/asu-unity-stack/commit/1aa93ac548bfc60c4b3234f032b1b5db782827ef))
+
 # [@asu/app-rfi-v2.3.5](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.4...@asu/app-rfi-v2.3.5) (2024-07-02)
 
 
