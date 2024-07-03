@@ -64,9 +64,11 @@ export const Success = () => {
           </div>
           <h4>Take the next step</h4>
           <p>
-            If you’re ready, apply to ASU today. Your admission specialist can
-            help answer any questions you have about the enrollment process or
-            becoming a Sun Devil. If you are an on-campus student,{" "}
+            If you’re ready,{" "}
+            <a href="https://admission.asu.edu/apply">apply to ASU</a> today.
+            Your admission specialist can help answer any questions you have
+            about the enrollment process or becoming a Sun Devil. If you are an
+            on-campus student,{" "}
             <a href="https://admission.asu.edu/contact/undergraduate">
               contact your admission representative.
             </a>
