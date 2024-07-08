@@ -1,3 +1,10 @@
+# [@asu/app-rfi-v2.3.8](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.7...@asu/app-rfi-v2.3.8) (2024-07-08)
+
+
+### Bug Fixes
+
+* **app-rfi:** revert MilitaryStatus Field to multiple choice ([3a7b549](https://github.com/asu/asu-unity-stack/commit/3a7b54973b359904e9edc9575aced18a3d236a98))
+
 # [@asu/app-rfi-v2.3.7](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.6...@asu/app-rfi-v2.3.7) (2024-07-03)
 
 
