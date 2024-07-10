@@ -1,3 +1,10 @@
+# [@asu/app-rfi-v2.3.9](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.8...@asu/app-rfi-v2.3.9) (2024-07-10)
+
+
+### Bug Fixes
+
+* **app-rfi:** update gdpr links for on campus/ground ([8b18221](https://github.com/asu/asu-unity-stack/commit/8b182217375c94351d05eb28b1a5fce522cd57de))
+
 # [@asu/app-rfi-v2.3.8](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.7...@asu/app-rfi-v2.3.8) (2024-07-08)
 
 
