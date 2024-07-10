@@ -287,16 +287,23 @@ function getCampusLocations(resolver) {
     text: location,
     url: "",
   });
+  const getOnlineLocation = url => ({
+    text: "Online",
+    url,
+  });
 
   const campusList = resolver.getCampusList().map(campus => campus.campusCode);
-  if (campusList.length > 0)
+  if (campusList.length > 0) {
     locations.push(
       ...campusList.map(
         location =>
+          (location === "ONLNE" &&
+            getOnlineLocation(resolver.getCurriculumUrl())) ||
           findCampusDefinition(location, program) ||
           getDefaultLocation(location)
       )
     );
+  }
 
   const campusWueLocation = resolver.getCampusWue();
   if (campusWueLocation) {
