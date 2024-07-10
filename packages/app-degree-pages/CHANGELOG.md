@@ -1,3 +1,10 @@
+# [@asu/app-degree-pages-v2.5.5](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.5.4...@asu/app-degree-pages-v2.5.5) (2024-07-10)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** udpate at a glance online url ([bdbfb69](https://github.com/asu/asu-unity-stack/commit/bdbfb69c1230109cc5960a93d6538a5b11393399))
+
 # [@asu/app-degree-pages-v2.5.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.5.3...@asu/app-degree-pages-v2.5.4) (2024-06-26)
 
 
