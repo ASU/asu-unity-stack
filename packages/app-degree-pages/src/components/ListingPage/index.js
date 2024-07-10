@@ -6,6 +6,7 @@ import styled, { createGlobalStyle } from "styled-components";
 
 import { useFetch } from "../../../../../shared";
 import trackReactComponent from "../../../../../shared/services/componentDatalayer";
+import { Breadcrumbs } from "../DetailPage/components/Breadcrumbs";
 import {
   Loader,
   Main as MainSection,
@@ -269,6 +270,14 @@ const ListingPage = ({
       ) : null}
 
       <Main data-is-loading={loading} className="main-section dg-margin-top">
+      {introContent?.breadcrumbs && (
+                <div className="container mt-4 mb-0">
+                  <Breadcrumbs
+                    breadcrumbs={introContent.breadcrumbs}
+                    section={hero ? hero.title.text : ""}
+                  />
+                </div>
+              )}
         {introContent ? (
           <IntroContent
             applyNowUrl={

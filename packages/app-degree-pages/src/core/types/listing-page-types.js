@@ -21,7 +21,15 @@
  */
 
 /**
+ * @typedef {Object} BreadcrumbItem
+ * @property {string}  [url]
+ * @property {string}  text
+ * @property {boolean} [isActive]
+ */
+
+/**
  * @typedef {Object} IntroContentProps
+ * @property {Array.<BreadcrumbItem>} [breadcrumbs]
  * @property {string} [applyNowUrl]
  * @property {"text" | "text-media" | "text-image-overlay" | "text-photo-grid"} [type]
  * @property {ImageItem} [image]
