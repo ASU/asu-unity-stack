@@ -24,11 +24,11 @@ export const GdprConsent = ({ gaData }) => {
         UnsubFutureStudentComm@asu.edu
       </a>
       . I consent to ASU’s{" "}
-      <a href="https://asuonline.asu.edu/text-terms/">
+      <a href="https://asu.edu/about/text-message-terms">
         mobile terms and conditions
       </a>
       , and{" "}
-      <a href="https://asuonline.asu.edu/web-analytics-privacy-2/">
+      <a href="https://asu.edu/about/web-analytics-privacy">
         Privacy Statements
       </a>
       , including the European Supplement.
