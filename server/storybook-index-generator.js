@@ -153,9 +153,15 @@ module.exports = generateHTML = packages => `
       <div class="row my-6">
 
         <div class="col-md-6 pb-8">
-          <h2>Unity Design Kit</h2>
+          <h2>Unity Design System UI Kit</h2>
+          <p>Guidelines, standards, and best-practices for Unity Design System across all ASU web projects.</p>
+          <p><a class="btn btn-maroon btn-medium" href="https://zeroheight.com/9f0b32a56">Explore the UDS UI Kit</a></p>
+        </div>
+
+        <div class="col-md-6 pb-8">
+          <h2>Unity Design System Styles Library</h2>
           <p>A community-built design system built with Adobe XD.</p>
-          <p><a class="btn btn-maroon btn-medium" href="https://xd.adobe.com/view/56f6cb78-9af5-4b12-b4ce-ef319f71113f-03a5/">View the document</a></p>
+          <p><a class="btn btn-maroon btn-medium" href="https://shared-assets.adobe.com/link/fb14b288-bf63-47e0-5d30-384de5560455">View the document</a></p>
         </div>
 
         <div class="col-md-6 pb-8">

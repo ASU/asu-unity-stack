@@ -2,33 +2,15 @@
 
 <!-- Description of problem -->
 <!-- Solution -->
+<!-- Testing Steps -->
 
 ### Links
 
-- [Unity reference site](https://unity.web.asu.edu/)
 - [JIRA ticket](https://asudev.jira.com/browse/UDS-0000)
-- [Unity Design Kit](https://xd.adobe.com/view/56f6cb78-9af5-4b12-b4ce-ef319f71113f-03a5/)
+- [Unity reference site](https://asu.github.io/asu-unity-stack/)
+- [Unity Design Kit](https://shared-assets.adobe.com/link/fb14b288-bf63-47e0-5d30-384de5560455)
 
 ### FOR APPROVERS
 
 - [Percy build approval](https://percy.io/5eae92d9/-all-UDS-packages)
 
-### Checklist
-
-- [ ] Unity project successfully builds from root `yarn install` & `yarn build`
-- [ ] Commits do not contain multiple scopes
-- [ ] Add/updated examples
-- [ ] Add/updated READMEs/docs
-- [ ] No new console errors
-- [ ] Accessibility checks
-
-### Browsers
-
-- [ ] Chrome
-- [ ] Safari
-- [ ] Firefox
-- [ ] Edge
-
-### Images
-
-<!-- Provide screenshots -->
