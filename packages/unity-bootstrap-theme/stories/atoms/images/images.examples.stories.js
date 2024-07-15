@@ -117,7 +117,7 @@ export const LargeImagesDropShadowComponent = () => (
     <div className="uds-img uds-img-drop-shadow">
       <figure className="figure uds-figure XXuds-img-drop-shadow">
         <img
-          src={ imageName.demo4 }
+          src={ imageName.poly1 }
           className="uds-img figure-img img-fluid"
           alt="Random image with caption below. REPLACE with appropriate alt text for accessibility."
           width="800"
