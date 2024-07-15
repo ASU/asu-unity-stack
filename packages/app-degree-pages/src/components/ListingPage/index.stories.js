@@ -6,6 +6,7 @@ import { ListingPage } from "./index";
 
 import { DOMAIN_URL } from "../../core/constants";
 import { getStoryBookBaseUrl } from "../../core/utils";
+import { imageAny } from "../../../../../shared/assets";
 
 /**
  * @typedef {import('../../core/types/listing-page-types').ListingPageProps } AppProps
@@ -334,7 +335,7 @@ WithIntroTextMediaImage.args = {
       },
     ],
     image: {
-      url: "https://source.unsplash.com/random/800x400?a=1",
+      url: imageAny(),
     },
   },
   programList: {
@@ -425,7 +426,7 @@ WithIntroTextImageOverlay.args = {
       },
     ],
     image: {
-      url: "https://source.unsplash.com/random/800x600?a=1",
+      url: imageAny(),
     },
   },
   programList: {

@@ -5,6 +5,7 @@ import React from "react";
 
 import { DetailPage } from ".";
 
+import { imageName, imageAny } from "../../../../../shared/assets";
 import { getStoryBookBaseUrl } from "../../core/utils";
 
 /**
@@ -63,7 +64,7 @@ const Template = ({
       <div className="row">
         <h4>This is a just a Place holder</h4>
         <img
-          src="./examples/assets/img/request-form-information.jpeg"
+          src={imageName.requestFormInformation}
           alt=""
           style={{
             opacity: "0.7",
@@ -146,7 +147,7 @@ const defaultArgs = {
       },
     ],
     image: {
-      url: "https://source.unsplash.com/random/1200x750?college",
+      url: imageAny(),
       altText:
         "Random image. REPLACE with appropriate alt text for accessibility.",
     },
@@ -247,7 +248,7 @@ const defaultArgs = {
   // },
   careerOutlook: {
     image: {
-      url: "https://source.unsplash.com/random/1200x750?career",
+      url: imageAny(),
       altText:
         "Random image. REPLACE with appropriate alt text for accessibility.",
     },
@@ -258,7 +259,7 @@ const defaultArgs = {
   globalOpportunity: {
     //   hide: true, // OPTIONAL
     image: {
-      url: "https://source.unsplash.com/random/1200x750?job",
+      url: imageAny(),
       altText:
         "Random image. REPLACE with appropriate alt text for accessibility.",
     },
@@ -270,7 +271,7 @@ const defaultArgs = {
     cards: {
       faculty: {
         image: {
-          url: `https://source.unsplash.com/random/600x600?career`,
+          url: imageAny(),
           altText:
             "Random image. REPLACE with appropriate alt text for accessibility.",
         },
@@ -284,7 +285,7 @@ const defaultArgs = {
       },
       programs: {
         image: {
-          url: `https://source.unsplash.com/random/600x600?job`,
+          url: imageAny(),
           altText:
             "Random image. REPLACE with appropriate alt text for accessibility.",
         },
@@ -298,7 +299,7 @@ const defaultArgs = {
       },
       research: {
         image: {
-          url: `https://source.unsplash.com/random/600x600?person`,
+          url: imageAny(),
           altText:
             "Random image. REPLACE with appropriate alt text for accessibility.",
         },
@@ -312,7 +313,7 @@ const defaultArgs = {
       },
       inclusion: {
         image: {
-          url: `https://source.unsplash.com/random/600x600?online`,
+          url: imageAny(),
           altText:
             "Random image. REPLACE with appropriate alt text for accessibility.",
         },
@@ -326,7 +327,7 @@ const defaultArgs = {
       },
       mentors: {
         image: {
-          url: `https://source.unsplash.com/random/600x600?classroom`,
+          url: imageAny(),
           altText:
             "Random image. REPLACE with appropriate alt text for accessibility.",
         },
@@ -340,7 +341,7 @@ const defaultArgs = {
       },
       honors: {
         image: {
-          url: `https://source.unsplash.com/random/600x600?school`,
+          url: imageAny(),
           altText:
             "Random image. REPLACE with appropriate alt text for accessibility.",
         },
@@ -357,7 +358,7 @@ const defaultArgs = {
   attendOnline: {
     // hide: true,// OPTIONAL
     image: {
-      url: "https://source.unsplash.com/random/1200x750?classroom,online",
+      url: imageAny(),
       altText:
         "Random image. REPLACE with appropriate alt text for accessibility.",
     },

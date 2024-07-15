@@ -1,5 +1,6 @@
 // @ts-check
 import { getCurrentScriptPath } from "../../../../../shared";
+import { imageName } from "../../../../../shared/assets";
 
 const currentScriptPath = getCurrentScriptPath();
 
@@ -23,13 +24,13 @@ const resolveDefaultProps = appPathFolder => {
     dataSource: undefined,
     introContent: {
       image: {
-        url: `${detailImageFolder}/intro.jpg`,
+        url: imageName.intro01,
         altText: "Detail Page Degree",
       },
     },
     hero: {
       image: {
-        url: `${detailImageFolder}/hero.jpg`,
+        url: imageName.hero01,
         altText: "Detail Page Degree",
         size: "medium",
       },
@@ -86,7 +87,7 @@ const resolveDefaultProps = appPathFolder => {
       cards: {
         faculty: {
           image: {
-            url: `${detailImageFolder}/customize-faculty-600.jpg`,
+            url: imageName.faculty,
             altText: "World-class faculty",
           },
           title: "World-class faculty",
@@ -99,7 +100,7 @@ const resolveDefaultProps = appPathFolder => {
         },
         programs: {
           image: {
-            url: `${detailImageFolder}/customize-programs-600.jpg`,
+            url: imageName.programs,
             altText: "Highly ranked programs",
           },
           title: "Highly ranked programs",
@@ -112,7 +113,7 @@ const resolveDefaultProps = appPathFolder => {
         },
         research: {
           image: {
-            url: `${detailImageFolder}/customize-research-600.jpg`,
+            url: imageName.research,
             altText: "Research opportunities",
           },
           title: "Research opportunities",
@@ -125,7 +126,7 @@ const resolveDefaultProps = appPathFolder => {
         },
         inclusion: {
           image: {
-            url: `${detailImageFolder}/customize-inclusion-600.jpg`,
+            url: imageName.inclusion,
             altText: "An inclusive environment",
           },
           title: "An inclusive environment",
@@ -138,7 +139,7 @@ const resolveDefaultProps = appPathFolder => {
         },
         mentors: {
           image: {
-            url: `${detailImageFolder}/customize-mentor-600.jpg`,
+            url: imageName.mentor,
             altText: "Career Services",
           },
           title: "Career Services",
@@ -151,7 +152,7 @@ const resolveDefaultProps = appPathFolder => {
         },
         honors: {
           image: {
-            url: `${detailImageFolder}/customize-honors-600.jpg`,
+            url: imageName.honors,
             altText: "Global education",
           },
           title: "Global education",
@@ -166,19 +167,19 @@ const resolveDefaultProps = appPathFolder => {
     },
     globalOpportunity: {
       image: {
-        url: `${detailImageFolder}/global-opportunity.jpg`,
+        url: imageName.globalOpportunity,
         altText: "Global opportunity",
       },
     },
     careerOutlook: {
       image: {
-        url: `${detailImageFolder}/career-outlook.jpg`,
+        url: imageName.careerOutlook,
         altText: "Career Outlook",
       },
     },
     attendOnline: {
       image: {
-        url: `${detailImageFolder}/attend-online.jpg`,
+        url: imageName.attendOnline,
         altText: "Attend online",
       },
     },
@@ -193,7 +194,7 @@ const resolveDefaultProps = appPathFolder => {
     },
     hero: {
       image: {
-        url: `${listingImageFolder}/hero.jpg`,
+        url: imageName.hero02,
         altText: "Listing Page Degree",
         size: "medium",
       },

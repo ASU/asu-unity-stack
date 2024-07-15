@@ -119,7 +119,7 @@ describe("#ListingPage", () => {
               },
             ],
             image: {
-              url: "https://source.unsplash.com/random/800x600?a=1",
+              url: imageAny(),
             },
             photoGrid: {
               images: [
