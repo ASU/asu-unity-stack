@@ -156,7 +156,7 @@ export const Basic = () => (
                     id="menubar"
                   >
                     <div className="header-content-container">
-                      <nav className="navbar-nav" aria-label="Main SIte">
+                      <nav className="navbar-nav" aria-label="Site">
                         <a
                           className="nav-link nav-link-home active"
                           href="/"
@@ -498,7 +498,7 @@ export const DropDownMenus = () => (
                   </div>
                   <div className="collapse navbar-collapse w-100" id="menubar">
                     <div className="header-content-container">
-                      <nav className="navbar-nav" aria-label="Main SIte">
+                      <nav className="navbar-nav" aria-label="Site">
                         <a
                           className="nav-link nav-link-home"
                           href="/"
@@ -2079,7 +2079,7 @@ export const ScrolledState = () => (
                     id="menubar"
                   >
                     <div className="header-content-container">
-                      <nav className="navbar-nav" aria-label="Main SIte">
+                      <nav className="navbar-nav" aria-label="Site">
                         <a
                           className="nav-link nav-link-home active"
                           href="/"
@@ -2533,7 +2533,7 @@ export const Partner = () => (
                     id="menubar"
                   >
                     <div className="header-content-container">
-                      <nav className="navbar-nav" aria-label="Main SIte">
+                      <nav className="navbar-nav" aria-label="Site">
                         <a
                           className="nav-link nav-link-home active"
                           href="/"
