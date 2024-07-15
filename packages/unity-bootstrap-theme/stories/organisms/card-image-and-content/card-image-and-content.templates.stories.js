@@ -1,5 +1,6 @@
 import React from "react";
 
+import { imageName } from "../../../../../shared/assets";
 import { fullLayoutDecorator } from "../../../../../shared/components/Layout.js";
 import { cardNoTemplates as Card } from "../../molecules/cards/cards.templates.stories";
 
@@ -15,7 +16,7 @@ export const CardAndImageContent = ()=>(
       className="uds-card-image-and-content-image-container"
       style={{
         backgroundImage:
-          "linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/WLUHO9A_xik/1920x1200')",
+          `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('${imageName.hero01}')`,
       }}
     ></div>
     <div className="uds-card-image-and-content-content-container uds-content-align">
