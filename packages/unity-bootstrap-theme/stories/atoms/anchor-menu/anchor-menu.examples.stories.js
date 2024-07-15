@@ -1,5 +1,6 @@
 import React from "react";
 
+import { imageName } from "../../../../../shared/assets";
 import { htmlRootDecorator } from "../../../../../shared/components/Layout";
 import { initializeAnchorMenu as initFunc } from "./anchor-menu";
 
@@ -27,7 +28,7 @@ return (
         <div className="uds-hero-lg has-btn-row">
           <img
             className="hero"
-            src="https://source.unsplash.com/WLUHO9A_xik/1920x1000"
+            src={ imageName.hero02 }
             alt="Sample placeholder image."
             width="1920"
             height="1000"

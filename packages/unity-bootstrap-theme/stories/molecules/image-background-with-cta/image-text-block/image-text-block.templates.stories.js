@@ -1,5 +1,6 @@
 import React from "react";
 
+import { imageName } from "../../../../../../shared/assets";
 import { defaultDecorator } from "../../../../../../shared/components/Layout";
 
 export default {
@@ -49,7 +50,7 @@ export const ImageLeftOrRight = ({right, bgColor, extraContent}) =>
   >
     <div className="uds-image-text-block-image-container">
       <img
-        src="https://source.unsplash.com/WLUHO9A_xik/1200x750"
+        src={ imageName.cardsImage }
         className="img-fluid"
         alt="Random image. REPLACE with appropriate alt text for accessibility."
         width="1200"

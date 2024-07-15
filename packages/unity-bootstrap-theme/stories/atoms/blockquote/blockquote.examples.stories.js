@@ -1,5 +1,6 @@
 import React from "react";
 
+import { imageName } from "../../../../../shared/assets";
 import { defaultDecorator } from "../../../../../shared/components/Layout";
 
 export default {
@@ -57,7 +58,7 @@ export const BlockquoteWithImage = () => (
   <>
     <div className="uds-blockquote with-image uds-content-align">
       <img
-        src="https://source.unsplash.com/WLUHO9A_xik/600x400"
+        src={ imageName.anon }
         alt="Pretend this is Michael M. Crow, President of ASU"
         width="600"
         height="400"
@@ -84,7 +85,7 @@ export const BlockquoteWithImage = () => (
     <section className="bg-gray-2">
       <div className="uds-blockquote with-image reversed uds-content-align">
         <img
-          src="https://source.unsplash.com/WLUHO9A_xik/300x300"
+          src={ imageName.anon }
           alt="Pretend this is Michael M. Crow, President of ASU"
           width="300"
           height="300"
@@ -115,7 +116,7 @@ export const BlockquoteNoCitation = () => (
   <>
     <div className="uds-blockquote no-citation with-image uds-content-align">
       <img
-        src="https://source.unsplash.com/WLUHO9A_xik/300x300"
+        src={ imageName.anon }
         alt="Image of Walt Disney"
         width="300"
         height="300"
@@ -134,7 +135,7 @@ export const BlockquoteNoCitation = () => (
     <div className="bg-gray-7">
       <div className="uds-blockquote no-citation with-image reversed uds-content-align">
         <img
-          src="https://source.unsplash.com/WLUHO9A_xik/300x300"
+          src={ imageName.anon }
           alt="Image of Walt Disney"
           width="300"
           height="300"
@@ -244,7 +245,7 @@ export const TestimonialsWithImage = () => (
   <>
     <div className="uds-blockquote uds-testimonial with-image alt-citation accent-maroon uds-content-align">
       <img
-        src="https://source.unsplash.com/WLUHO9A_xik/600x400"
+        src={ imageName.anon }
         alt="Pretend this is Han Solo"
         width="600"
         height="400"
@@ -271,7 +272,7 @@ export const TestimonialsWithImage = () => (
     <div className="bg-gray-7">
       <div className="uds-blockquote uds-testimonial with-image alt-citation accent-gold text-white uds-content-align">
         <img
-          src="https://source.unsplash.com/WLUHO9A_xik/400x400"
+          src={ imageName.anon }
           alt="Pretend this is Han Solo"
           width="400"
           height="400"

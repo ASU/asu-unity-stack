@@ -1,5 +1,6 @@
 import React from "react";
 
+import { imageName } from "../../../../../shared/assets";
 import { defaultDecorator } from "../../../../../shared/components/Layout.js";
 
 export default {
@@ -68,7 +69,7 @@ export const BlockquoteWithImage = ({type, reversed}) => {
         } with-image ${reversed ? "reversed" : ""} uds-content-align`}
       >
         <img
-          src="https://source.unsplash.com/WLUHO9A_xik/600x400"
+          src={ imageName.anon }
           alt="Pretend this is Michael M. Crow, President of ASU"
           width="600"
           height="400"
