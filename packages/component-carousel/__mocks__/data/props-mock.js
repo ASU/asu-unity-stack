@@ -14,11 +14,15 @@ for (let index = 0; index < 8; index += 1) {
     ut labore et dolore magna aliqua eiusmod tempo.`;
 
   const imageSource = index === 5 ? "https://br0ken" : getImageFormat(index);
+  const imageAltText =
+    index === 5
+      ? "Intentionally broken image. Broken images look like this!"
+      : "Card image cap";
 
   cardCarouselItems.push({
     id: index,
     imageSource,
-    imageAltText: "Card image cap",
+    imageAltText,
     title: `Card ${index + 1}`,
     content,
     buttons: [
