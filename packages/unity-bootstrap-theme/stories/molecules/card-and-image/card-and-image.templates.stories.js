@@ -1,5 +1,6 @@
 import React from "react";
 
+import { imageName } from "../../../../../shared/assets";
 import { defaultDecorator } from "../../../../../shared/components/Layout";
 
 export default {
@@ -22,7 +23,7 @@ export const LeftFloatedCard = ({left}) => {
       }`}
       style={{
         backgroundImage:
-          "linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/WLUHO9A_xik/1920x1200')",
+          `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('${ imageName.hero02 }')`,
       }}
     >
       <div className="uds-content-align">
@@ -77,7 +78,7 @@ export const RightFloatedCard = ({left}) => {
       }`}
       style={{
         backgroundImage:
-          "linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/WLUHO9A_xik/1920x1200')",
+          `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('${ imageName.hero02 }')`,
       }}
     >
       <div className="uds-content-align">

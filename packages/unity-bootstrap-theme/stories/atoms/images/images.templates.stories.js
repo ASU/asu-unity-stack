@@ -1,5 +1,6 @@
 import React from "react";
 
+import { imageName } from "../../../../../shared/assets";
 import { defaultDecorator } from "../../../../../shared/components/Layout";
 
 export default {
@@ -18,7 +19,7 @@ export const LargeImageNoCaptionComponent = ({dropShadow}) => {
   return (
     <div className={`uds-img ${dropShadow ? "uds-img-drop-shadow" : ""}`}>
       <img
-        src="https://source.unsplash.com/random/1200x750"
+        src={ imageName.attendOnline }
         className="img-fluid"
         alt="Random image. REPLACE with appropriate alt text for accessibility."
         width="1200"
@@ -36,7 +37,7 @@ export const LargeImageCaptionComponent = ({dropShadow}) => {
     <div className={`uds-img ${dropShadow ? "uds-img-drop-shadow" : ""}`}>
       <figure className="figure uds-figure">
         <img
-          src="https://source.unsplash.com/random/800x600"
+          src={ imageName.demo1 }
           className="uds-img figure-img img-fluid"
           alt="Random image with caption below. REPLACE with appropriate alt text for accessibility."
           width="800"

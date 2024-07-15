@@ -1,5 +1,6 @@
 import React from "react";
 
+import { imageName } from "../../../../../shared/assets";
 import { defaultDecorator } from "../../../../../shared/components/Layout";
 import { initImageParallax as initFunc } from "./image-parallax";
 
@@ -44,7 +45,7 @@ export const twoImagesWithContentInPageOfSections = () =>
       </div>
       <section className="parallax-container carve-your-path">
         <img
-          src="https://source.unsplash.com/WLUHO9A_xik/1200x900"
+          src={ imageName.hero02 }
           alt="Img alt text"
           width="1200"
           height="900"
