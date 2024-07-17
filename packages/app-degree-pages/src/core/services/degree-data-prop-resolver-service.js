@@ -200,7 +200,7 @@ function degreeDataPropResolverService(row = {}) {
       return allCollegeAcadOrgs;
     },
     /** @return {string} */
-    getDepartmentCode: () => getMajorityOwner(row)?.departmentAcadCode,
+    getDepartmentCode: () => getMajorityOwner(row)?.departmentAcadOrg,
     /** @return {Object.<string, string>} */
     getGraduateApplyDates: () => row["applicationDeadlines"],
     hasGraduateApplyDates: () => hasGraduateApplyDates(row),
