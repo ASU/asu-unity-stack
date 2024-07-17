@@ -184,10 +184,8 @@ WithCollegeAcadOrgAndDepartmentCode.args = {
     dataSource: {
       // @ts-ignore
       ...Default.args.programList.dataSource,
-      // collegeAcadOrg: "CGF",
-      // departmentCode: "CSFIS",
-      collegeAcadOrg: "CES",
-      // departmentCode: "CGRAPHINFO",
+      departmentCode: "CPUBAFF",
+      collegeAcadOrg: "CPP",
     },
   },
 };
