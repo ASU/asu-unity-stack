@@ -1,3 +1,10 @@
+# [@asu/app-degree-pages-v2.5.6](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.5.5...@asu/app-degree-pages-v2.5.6) (2024-07-17)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** fix departmentCode issue in listing page ([b026b3a](https://github.com/asu/asu-unity-stack/commit/b026b3af35b8cc7e55b4decfeb4e017f8ac5e7ab))
+
 # [@asu/app-degree-pages-v2.5.5](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.5.4...@asu/app-degree-pages-v2.5.5) (2024-07-10)
 
 
