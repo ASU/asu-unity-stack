@@ -228,8 +228,8 @@ describe("#ListingPage", () => {
           ...defaultArgs.programList,
           dataSource: {
             ...defaultArgs.programList.dataSource,
-            collegeAcadOrg: "CES",
-            // departmentCode: "CGRAPHINFO",
+            collegeAcadOrg: "CHI",
+            departmentCode: "CARCH",
           },
         },
       };
@@ -239,6 +239,15 @@ describe("#ListingPage", () => {
     it("should call useEffect functions and `sortPrograms()`", () => {
       expect(mockSortPrograms).toHaveBeenCalled();
       expect(mockfilterData).toHaveBeenCalled();
+    });
+
+    it("should include only programs that match the `collegeAcadOrg` and `departmentCode`", async () => {
+      const programRows = await component.findByTestId("program-rows");
+      expect(programRows.children.length).toBe(10); // Only 5 degrees match both the `collegeAcadOrg` and `departmentCode` in our mock data
+      expect(programRows.children[0]).toHaveTextContent(
+        "Architectural Studies"
+      );
+      expect(programRows.children[2]).toHaveTextContent("Graphic Design");
     });
   });
 
