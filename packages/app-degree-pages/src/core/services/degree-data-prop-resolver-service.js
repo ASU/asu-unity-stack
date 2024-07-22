@@ -341,7 +341,6 @@ const hasValidAnchorMenu = anchorMenu => {
   );
   const hasExternalAnchors = anchorMenu?.externalAnchors?.length > 0;
   const res = hasExternalAnchors || validItemsInAnchorMenu.length > 0;
-  console.log(res, anchorMenu);
   return res;
 };
 
