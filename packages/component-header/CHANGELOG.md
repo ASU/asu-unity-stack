@@ -1,3 +1,11 @@
+# [@asu/component-header-v2.2.8](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.7...@asu/component-header-v2.2.8) (2024-07-22)
+
+
+### Bug Fixes
+
+* **component-header:** changed aria label header ([d13644f](https://github.com/asu/asu-unity-stack/commit/d13644ff3099dd8493dc5f25680ec456c5dc25cc))
+* **component-header:** update nav labels for accessibility ([70b1b88](https://github.com/asu/asu-unity-stack/commit/70b1b8866f60fa97c7f7bb31fa3a541cebd07099))
+
 # [@asu/component-header-v2.2.7](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.6...@asu/component-header-v2.2.7) (2024-06-19)
 
 
