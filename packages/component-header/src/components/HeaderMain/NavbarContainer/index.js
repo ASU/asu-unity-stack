@@ -35,7 +35,7 @@ const NavbarContainer = () => {
 
   return (
     // @ts-ignore
-    <Wrapper breakpoint={breakpoint} data-testid="navigation" aria-label="Main">
+    <Wrapper breakpoint={breakpoint} data-testid="navigation" aria-label="Site">
       {(navTree?.length || mobileNavTree?.length || buttons?.length) && (
         <div className="content-container">
           {(navTree?.length || mobileNavTree?.length) && (
