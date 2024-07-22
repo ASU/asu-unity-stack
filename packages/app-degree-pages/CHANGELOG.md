@@ -1,3 +1,10 @@
+# [@asu/app-degree-pages-v2.6.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.5.6...@asu/app-degree-pages-v2.6.0) (2024-07-22)
+
+
+### Features
+
+* **app-degree-pages:** add breadcrumbs to listing page ([1aec857](https://github.com/asu/asu-unity-stack/commit/1aec857d016a6664e32202e19bde5f72885609b9))
+
 # [@asu/app-degree-pages-v2.5.6](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.5.5...@asu/app-degree-pages-v2.5.6) (2024-07-17)
 
 
