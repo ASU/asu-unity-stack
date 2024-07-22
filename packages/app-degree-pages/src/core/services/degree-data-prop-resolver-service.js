@@ -343,9 +343,11 @@ const filterAnchorMenu = (anchorMenu, resolver) => {
  * @returns
  */
 const hasValidAnchorMenu = anchorMenu => {
-  const res =
-    Object.keys(anchorMenu).filter(key => key !== "externalAnchors").length >
-      0 || anchorMenu?.externalAnchors?.length > 0;
+  const validItemsInAnchorMenu = Object.values(anchorMenu).filter(
+    key => key === true
+  );
+  const hasExternalAnchors = anchorMenu?.externalAnchors?.length > 0;
+  const res = hasExternalAnchors || validItemsInAnchorMenu.length > 0;
   return res;
 };
 
