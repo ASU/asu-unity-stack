@@ -9,8 +9,8 @@ spec:
   securityContext:
     runAsUser: 1000 # default UID of jenkins user to node user in agent image
   containers:
-  - name: node18
-    image: 'node:18.16'
+  - name: node20
+    image: 'node:20.15'
     imagePullPolicy: Always
     command:
     - cat
@@ -43,7 +43,7 @@ spec:
                 branch 'testing'
             }
             steps {
-                container('node18') {
+                container('node20') {
                   script {
                     echo '## Configure .npmrc file for @asu registry...'
                     writeFile file: '.npmrc', text: '@asu:registry=https://npm.pkg.github.com/ \n' +
@@ -62,7 +62,7 @@ spec:
         }
         stage('Build') {
             steps {
-                container('node18') {
+                container('node20') {
                     echo '## Configure .npmrc file for Github Package registry...'
                     writeFile file: '.npmrc', text: '@asu:registry=https://npm.pkg.github.com/ \n' +
                       '//npm.pkg.github.com/:_authToken=' + env.RAW_GH_TOKEN_PSW
@@ -74,7 +74,7 @@ spec:
         }
         stage('Test') {
             steps {
-                container('node18') {
+                container('node20') {
                     echo '## Running jests tests...'
                     sh 'yarn test'
                 }
@@ -90,7 +90,7 @@ spec:
             }
           }
           steps {
-              container('node18') {
+              container('node20') {
                 echo 'building storybook...'
                 sh 'yarn build-storybook'
               }
@@ -105,7 +105,7 @@ spec:
                 branch 'dev'
             }
             steps {
-                container('node18') {
+                container('node20') {
                     script {
                       withEnv(["GH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
                       echo '## Publishing packages...'
@@ -120,7 +120,7 @@ spec:
               branch 'dev'
             }
             steps {
-                container('node18') {
+                container('node20') {
                     script {
                         echo '# Final, post-publish install and build to include just published pkgs...'
                         sh 'yarn install --frozen-lockfile'
