@@ -36,8 +36,7 @@
     "jsdoc": "jsdoc -c jsdoc.config.js",
     "predocs": "mkdir -p ./docs",
     "docs": "jsdoc2md -c jsdoc.config.js --files ./src/** > ./docs/README.props.md",
-    "postdocs": "node ../../scripts/process-readme-props.js",
-    "dev": "webpack-dev-server"
+    "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "dependencies": {
     "@asu/components-core": "^3.0.0",
