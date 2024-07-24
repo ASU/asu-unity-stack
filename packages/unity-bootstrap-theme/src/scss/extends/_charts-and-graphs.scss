@@ -13,18 +13,18 @@
   position: absolute;
   text-align: center;
 
-  p {
+  h4, span#percentage-display {
     margin: 0.5rem;
     font: normal normal bold 2.5rem Arial;
   }
 
   span {
-    font: normal normal bold 1.125rem Arial;
+    font: normal normal 700 1.125rem Arial;
     max-width: 60%;
   }
 
   @include media-breakpoint-down(md) {
-    h4 {
+    h4, p {
       font-size: 1.5rem;
     }
 
