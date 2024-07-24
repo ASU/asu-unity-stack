@@ -46,7 +46,6 @@
     "url": "https://github.com/ASU/asu-unity-stack.git"
   },
   "devDependencies": {
-    "@americanexpress/purgecss-loader": "^2.0.0",
     "@commitlint/cli": "^12.0.1",
     "@commitlint/config-conventional": "^12.0.1",
     "@commitlint/config-lerna-scopes": "^12.0.1",
