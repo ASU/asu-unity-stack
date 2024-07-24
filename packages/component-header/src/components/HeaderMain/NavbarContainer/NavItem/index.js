@@ -116,17 +116,50 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
     );
   };
 
-  const handleClick = e => {
-    if (link.items) {
+  const handleKeyDown = e => {
+    const { key } = e;
+    const navigableKeys = [
+      "ArrowUp",
+      "ArrowDown",
+      "ArrowLeft",
+      "ArrowRight",
+      "Enter",
+      " ",
+      "Escape",
+      "Click",
+    ];
+    if (navigableKeys.includes(key)) {
       e.preventDefault();
-      if (!expandOnHover && !isMobile) {
+      if (key === "Escape" && opened) {
         setItemOpened();
-      } else if (isMobile) {
-        setItemOpened();
+        return;
       }
+      // Handle Enter or Space key
+      if (key === "Enter" || key === " ") {
+        if (link.items) {
+          if (!expandOnHover && !isMobile) {
+            setItemOpened();
+          } else if (isMobile) {
+            setItemOpened();
+          }
+        }
+        dispatchGAEvent();
+        link.onClick?.(e);
+      }
+      if (key === "ArrowDown" || key === "ArrowRight") {
+        if (opened) {
+          const dropdownItems = document.querySelectorAll(
+            `.header-dropdown-${link.id} li.nav-link a`
+          );
+          if (dropdownItems.length) {
+            dropdownItems[0].focus();
+          }
+        }
+      }
+    } else if (e.type === "click" && link.items) {
+      e.preventDefault();
+      setItemOpened();
     }
-    dispatchGAEvent();
-    link.onClick?.(e);
   };
 
   const handleOnMouseEnterLeave = () => {
@@ -146,14 +179,14 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
     >
       {/* @ts-ignore */}
       <a
-        onClick={handleClick}
+        onKeyDown={handleKeyDown}
+        onClick={handleKeyDown}
         href={link.href}
-        aria-expanded={() => "true"} // eslint-disable-line no-nested-ternary
+        {...(link.items ? { "aria-expanded": opened } : {})}
         aria-owns={link.items ? `dropdown-${link.id}` : null}
         className={`${link.class ? link.class : ""}${
           link.selected ? " nav-item-selected" : ""
         }${opened ? " open-link" : ""}`}
-        tabIndex={0}
         data-testid="nav-item"
         title={
           link.type === "icon-home" && title ? `${title} home page` : link.text
@@ -170,6 +203,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
           dropdownName={link.text}
           classes={`header-dropdown-${link.id} ${opened ? "opened" : ""}`}
           listId={`dropdown-${link.id}`}
+          setItemOpened={setItemOpened}
         />
       )}
     </NavItemWrapper>

@@ -24,7 +24,14 @@ import { DropdownWrapper } from "./index.styles";
  * @returns {JSX.Element}
  */
 
-const DropdownItem = ({ dropdownName, items, buttons, classes, listId }) => {
+const DropdownItem = ({
+  dropdownName,
+  items,
+  buttons,
+  classes,
+  listId,
+  setItemOpened,
+}) => {
   const { breakpoint } = useAppContext();
   const isMega = items?.length > 2;
   const dropdownRef = useRef(null);
@@ -41,6 +48,26 @@ const DropdownItem = ({ dropdownName, items, buttons, classes, listId }) => {
 
   const stopPropagation = e => {
     e.stopPropagation();
+  };
+
+  const focusOnNextLink = e => {
+    stopPropagation(e);
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      const nextLink = e.target.parentElement.nextElementSibling?.firstChild;
+      if (nextLink) {
+        nextLink.focus();
+      }
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      const prevLink =
+        e.target.parentElement.previousElementSibling?.firstChild;
+      if (prevLink) {
+        prevLink.focus();
+      }
+    } else if (e.key === "Escape") {
+      setItemOpened();
+    }
   };
 
   const renderItem = (link, index) => {
@@ -72,6 +99,7 @@ const DropdownItem = ({ dropdownName, items, buttons, classes, listId }) => {
         <a
           href={link.href}
           onClick={stopPropagation}
+          onKeyDown={focusOnNextLink}
           onFocus={() =>
             trackGAEvent({ text: link.text, component: dropdownName })
           }
@@ -130,6 +158,7 @@ DropdownItem.propTypes = {
   buttons: PropTypes.arrayOf(PropTypes.shape(ButtonPropTypes)),
   classes: PropTypes.string,
   listId: PropTypes.string,
+  setItemOpened: PropTypes.func,
 };
 
 export { DropdownItem };

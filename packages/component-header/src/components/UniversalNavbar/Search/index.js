@@ -27,7 +27,7 @@ const Search = () => {
     if (open) inputRef.current.focus();
   }, [open]);
 
-  const handleSearch = (e) => {
+  const handleSearch = e => {
     const form = e.target;
     e.preventDefault();
     /**
@@ -52,7 +52,7 @@ const Search = () => {
   };
 
   const handleChangeVisibility = () => {
-    setOpen((prevState) => {
+    setOpen(prevState => {
       const newState = !prevState;
 
       trackGAEvent({
@@ -121,7 +121,7 @@ const Search = () => {
             aria-labelledby="header-top-search"
             placeholder="Search asu.edu"
             required
-            onChange={(e) =>
+            onChange={e =>
               trackGAEvent({
                 ...SEARCH_GA_EVENT,
                 text: e.target.value,
