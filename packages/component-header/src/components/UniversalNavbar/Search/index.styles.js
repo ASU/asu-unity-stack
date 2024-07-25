@@ -20,7 +20,6 @@ const SearchWrapper = styled.form`
     color: #495057;
     border: 1px solid #707070;
     margin: 0.5rem 0;
-    display: unset;
     &:focus {
       border-color: transparent;
     }
