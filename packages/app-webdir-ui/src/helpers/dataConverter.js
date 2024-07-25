@@ -167,7 +167,9 @@ const getTitleFromProfile = (profile, titleMatch, titleInfo) => {
       isCustomTitle(profile, primaryDeptIndex)
     ) {
       matchedAffiliationTitle = profile.titles?.raw[primaryDeptIndex];
-      // Some users do not have a primary title, but do have a primary department, so we default to the titles field
+      matchedAffiliationDept = profile.departments?.raw[primaryDeptIndex];
+
+      // Check if supplied deptids in the web directory include the users primary_deptid and is not a custom title
     } else if (
       titleMatch.depts.includes(profile.primary_deptid?.raw) &&
       !isCustomTitle(profile, primaryDeptIndex)
@@ -176,6 +178,19 @@ const getTitleFromProfile = (profile, titleMatch, titleInfo) => {
         profile.primary_title?.raw[0] ||
         profile.titles?.raw[primaryDeptIndex] ||
         "";
+
+      // Use first valid dept supplied in web directory and display the title and department based on that
+    } else {
+      const firstDepartmentSupplied = titleMatch.depts.find(dept =>
+        profile.deptids?.raw.includes(dept)
+      );
+      const deptIndex = findDeptIndex(profile, firstDepartmentSupplied);
+      if (isCustomTitle(profile, deptIndex)) {
+        matchedAffiliationTitle = profile.titles?.raw[deptIndex];
+      } else {
+        matchedAffiliationTitle = "";
+      }
+      matchedAffiliationDept = profile.departments?.raw[deptIndex];
     }
   }
 
