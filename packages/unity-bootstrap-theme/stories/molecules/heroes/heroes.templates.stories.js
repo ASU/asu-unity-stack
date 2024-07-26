@@ -107,7 +107,7 @@ const Hero = ({size, title, titleColors, subTitle, subTitleColors}) => (
       fetchpriority="high"
     />
     {subTitle ? (
-    <hgroup>
+    <header>
       <p className="hero-subtitle">
         <span className={subTitleColors}>
           {subTitle}
@@ -118,7 +118,7 @@ const Hero = ({size, title, titleColors, subTitle, subTitleColors}) => (
           {title}
         </span>
       </h1>
-    </hgroup>) :
+    </header>) :
     (
       <h1>
         <span className={titleColors}>

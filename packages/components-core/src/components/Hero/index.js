@@ -77,7 +77,7 @@ function headingHeroHtmlTemplate({
 
   if (title && subTitle) {
     titleElement = (
-      <hgroup>
+      <header>
         <p className="hero-subtitle" data-testid="hero-subtitle">
           <span
             className={classNames({
@@ -90,7 +90,7 @@ function headingHeroHtmlTemplate({
           </span>
         </p>
         {titleElement}
-      </hgroup>
+      </header>
     );
   }
 
