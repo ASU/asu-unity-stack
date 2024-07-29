@@ -60,6 +60,7 @@ NavLinkIcon.propTypes = {
 
 const NavItem = ({ link, setItemOpened, itemOpened }) => {
   const clickRef = useRef(null);
+  const parentLink = useRef(null);
   const opened = link.id === itemOpened;
   const { breakpoint, expandOnHover, title } = useAppContext();
   const isMobile = useIsMobile(breakpoint);
@@ -191,6 +192,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
         title={
           link.type === "icon-home" && title ? `${title} home page` : link.text
         }
+        ref={parentLink}
       >
         {renderNavLinks}
       </a>
@@ -204,6 +206,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
           classes={`header-dropdown-${link.id} ${opened ? "opened" : ""}`}
           listId={`dropdown-${link.id}`}
           setItemOpened={setItemOpened}
+          parentLink={parentLink?.current}
         />
       )}
     </NavItemWrapper>

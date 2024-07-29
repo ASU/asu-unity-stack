@@ -15,6 +15,9 @@ import { DropdownWrapper } from "./index.styles";
  *  items: [object][]
  *  buttons: Button[]
  *  classes?: string,
+ *  listId: string
+ *  setItemOpened: Function
+ *  parentLink: React.RefObject<HTMLElement> | null
  * }} DropdownItemProps
  */
 
@@ -31,6 +34,7 @@ const DropdownItem = ({
   classes,
   listId,
   setItemOpened,
+  parentLink,
 }) => {
   const { breakpoint } = useAppContext();
   const isMega = items?.length > 2;
@@ -67,6 +71,9 @@ const DropdownItem = ({
       }
     } else if (e.key === "Escape") {
       setItemOpened();
+      if (parentLink) {
+        parentLink.focus();
+      }
     }
   };
 
@@ -159,6 +166,9 @@ DropdownItem.propTypes = {
   classes: PropTypes.string,
   listId: PropTypes.string,
   setItemOpened: PropTypes.func,
+  parentLink: PropTypes.shape({
+    focus: PropTypes.func,
+  }),
 };
 
 export { DropdownItem };
