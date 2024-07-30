@@ -39,6 +39,12 @@ const SearchPageLayout = styled.div`
       a:not(:last-child) {
         margin-right: 16px;
       }
+      .desktop-button {
+        display: inline;
+      }
+      .mobile-button {
+        display: none;
+      }
     }
   }
 
@@ -76,6 +82,12 @@ const SearchPageLayout = styled.div`
         a:not(:last-child) {
           margin-bottom: 16px;
         }
+        .desktop-button {
+            display: none;
+          }
+          .mobile-button {
+            display: inline;
+          }
       }
     }
   }

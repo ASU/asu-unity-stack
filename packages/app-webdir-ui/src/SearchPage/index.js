@@ -164,19 +164,42 @@ function SearchPage({
           </div>
         </form>
         <div className="profile-options">
-          <Button
-            color="gray"
-            icon={["fas", "lock"]}
-            label="Edit my profile"
-            href="/profile-edit"
-          />
-          {loggedIn && deptAdmin && (
+          <div className="desktop-button">
             <Button
               color="gray"
               icon={["fas", "lock"]}
-              label="Department admin"
-              href="/groups"
+              label="Edit my profile"
+              href="/profile-edit"
             />
+          </div>
+          <div className="mobile-button">
+            <Button
+              color="gray"
+              icon={["fas", "lock"]}
+              label="Edit my profile"
+              href="/profile-edit"
+              size="small"
+            />
+          </div>
+          {loggedIn && deptAdmin && (
+            <>
+              <div className="desktop-button">
+                <Button
+                  color="gray"
+                  icon={["fas", "lock"]}
+                  label="Department admin"
+                  href="/groups"
+                />
+              </div>
+              <div className="mobile-button">
+                <Button
+                  color="gray"
+                  icon={["fas", "lock"]}
+                  label="Department admin"
+                  href="/groups"
+                />
+              </div>
+            </>
           )}
         </div>
       </div>
