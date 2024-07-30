@@ -153,6 +153,11 @@ const getTitleFromProfile = (profile, titleMatch, titleInfo) => {
     matchedAffiliationTitle = profile.affiliations?.raw[0];
     matchedAffiliationDept =
       profile.primary_department?.raw || profile.subaffiliations?.raw[0];
+    // Check if the primary dept has a custom title
+    let primaryDeptIndex = findDeptIndex(profile, profile.primary_deptid.raw);
+    if (isCustomTitle(profile, primaryDeptIndex)) {
+      matchedAffiliationTitle = profile.titles?.raw[primaryDeptIndex];
+    }
   }
 
   if (
