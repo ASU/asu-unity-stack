@@ -4,7 +4,7 @@
   "license": "MIT",
   "volta": {
     "node": "20.15.1",
-    "yarn": "1.22.10"
+    "yarn": "4.3.1"
   },
   "workspaces": [
     "packages/*"
@@ -102,7 +102,6 @@
     "webpack-merge": "^5.7.3",
     "webpack-node-externals": "^2.5.0"
   },
-  "dependencies": {},
   "config": {
     "commitizen": {
       "path": "./scripts/conventional-commits.js"

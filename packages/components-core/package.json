@@ -9,7 +9,6 @@
   "author": "Nathan Rollins <nathan.rollins@asu.edu>",
   "homepage": "https://github.com/ASU/asu-unity-stack#readme",
   "license": "MIT",
-  "private": false,
   "files": [
     "examples/*",
     "dist/*",

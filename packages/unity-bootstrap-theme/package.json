@@ -6,7 +6,6 @@
   "homepage": "https://github.com/ASU/asu-unity-stack#readme",
   "license": "MIT",
   "main": "./src/index.js",
-  "private": false,
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
@@ -90,6 +89,5 @@
   },
   "volta": {
     "extends": "../../package.json"
-  },
-  "dependencies": {}
+  }
 }

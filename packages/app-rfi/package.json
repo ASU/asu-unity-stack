@@ -90,7 +90,6 @@
     "yup": "^0.28.1",
     "yup-phone": "^1.2.19"
   },
-  "peerDependencies": {},
   "volta": {
     "extends": "../../package.json"
   }

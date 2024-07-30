@@ -8,7 +8,6 @@
   "types": "./dist/main.d.ts",
   "author": "Michele Di Benedetto",
   "license": "MIT",
-  "private": false,
   "files": [
     "examples/*",
     "dist/*",
@@ -96,7 +95,6 @@
     "terser-webpack-plugin": "^5.1.1",
     "webpack-merge": "^5.8.0"
   },
-  "peerDependencies": {},
   "volta": {
     "extends": "../../package.json"
   }

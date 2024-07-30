@@ -8,7 +8,6 @@
   "types": "./dist/main.d.ts",
   "author": "Nicolas Baudon",
   "license": "MIT",
-  "private": false,
   "files": [
     "examples/*",
     "dist/*",
@@ -93,7 +92,6 @@
     "webpack-filter-warnings-plugin": "^1.2.1",
     "webpack-merge": "^5.8.0"
   },
-  "peerDependencies": {},
   "volta": {
     "extends": "../../package.json"
   }

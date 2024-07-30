@@ -8,7 +8,6 @@
   "types": "./dist/main.d.ts",
   "author": "Nicolas Baudon",
   "license": "MIT",
-  "private": false,
   "files": [
     "examples/*",
     "dist/*",
