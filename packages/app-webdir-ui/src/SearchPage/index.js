@@ -144,23 +144,12 @@ function SearchPage({
               onKeyDown={inputKeyPress}
               ref={inputRef}
             />
-            <div className="desktop-button">
               <Button
                 color="maroon"
                 icon={["fas", "search"]}
                 label="Search"
                 onClick={() => doSearch()}
               />
-            </div>
-            <div className="mobile-button">
-              <Button
-                color="maroon"
-                icon={["fas", "search"]}
-                label="Search"
-                onClick={() => doSearch()}
-                size="small"
-              />
-            </div>
           </div>
         </form>
         <div className="profile-options">
