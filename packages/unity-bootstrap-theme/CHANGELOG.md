@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.10.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.10.0...@asu/unity-bootstrap-theme-v1.10.1) (2024-07-31)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix A11y issue with incorrect Hero Heading structure ([0b4c5e8](https://github.com/ASU/asu-unity-stack/commit/0b4c5e8efb92c7f9082f2e23f2659c6d3753f2d9))
+
 # [@asu/unity-bootstrap-theme-v1.10.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.21...@asu/unity-bootstrap-theme-v1.10.0) (2024-07-31)
 
 
