@@ -37,12 +37,12 @@ export default {
 export const Banner = ({color}) => {
     return (
       <section className={color}>
-        <div className="banner uds-content-align" role="banner">
+        <div className="banner uds-content-align">
           <div className="banner-icon">
-            <span title="Banner" className="fa fa-icon fa-bell"></span>
+            <span className="fa fa-icon fa-bell"></span>
           </div>
           <div className="banner-content">
-            <h3>Stay up-to-date on what's new at ASU</h3>
+            <h1 tabIndex={0}>Stay up-to-date on what's new at ASU</h1>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud{" "}
@@ -51,14 +51,12 @@ export const Banner = ({color}) => {
           <div className="banner-buttons">
             <a
               href="https://provost.asu.edu/sync/students"
-              role="button"
               className="btn btn-sm btn-dark"
             >
               Info. on teaching and learning remotely
             </a>
             <a
               href="https://students.asu.edu/faq"
-              role="button"
               className="btn btn-sm btn-dark"
             >
               FAQ Page
