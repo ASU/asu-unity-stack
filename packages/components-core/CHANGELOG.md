@@ -1,3 +1,10 @@
+# [@asu/components-core-v3.3.8](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.7...@asu/components-core-v3.3.8) (2024-07-31)
+
+
+### Bug Fixes
+
+* **components-core:** fix A11y issue with incorrect Hero Heading structure ([bddc4bd](https://github.com/ASU/asu-unity-stack/commit/bddc4bd62a606fe2b6e0ae670688bb7587dfa426))
+
 # [@asu/components-core-v3.3.7](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.6...@asu/components-core-v3.3.7) (2024-06-25)
 
 
