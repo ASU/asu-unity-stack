@@ -546,7 +546,7 @@ Cards - Table of Contents
     h5 {
       margin: 0;
 
-      a {
+      a, button {
         padding: 1rem var(--card-child-padding);
         color: $uds-color-base-gray-7;
         text-decoration: none;
@@ -565,6 +565,13 @@ Cards - Table of Contents
         &.collapsed i.fa-chevron-up {
           transform: rotate(180deg);
         }
+      }
+
+      button {
+        width: 100%;
+        background: transparent;
+        border: 0;
+        font-weight: bold;
       }
     }
 
@@ -593,13 +600,20 @@ Cards - Table of Contents
   border-left: 1px solid $uds-color-base-gray-3;
 
   .accordion-header {
-    h4 a {
+    h4 a, h4 button {
       padding-top: $uds-size-spacing-4;
       padding-bottom: $uds-size-spacing-4;
 
       &:hover {
         background-color: transparent;
       }
+    }
+
+    h4 button {
+      width: 100%;
+      background: transparent;
+      border: 0;
+      font-weight: bold;
     }
 
     svg {
