@@ -58,22 +58,27 @@ function headingHeroHtmlTemplate({
     undefined: "",
   };
 
-  return (
-    <div
-      className={classNames(`uds-hero`, {
-        [imageSize[image?.size]]: image?.size,
-      })}
-    >
-      <div className="hero-overlay"></div>
-      <HeroImage
-        className="hero"
-        src={image?.url}
-        alt={image?.altText}
-        data-testid="hero-image"
-      />
+  let titleElement = <></>;
 
-      {subTitle && (
-        <div role="doc-subtitle" data-testid="hero-subtitle">
+  if (title) {
+    titleElement = (
+      <h1 style={{ maxWidth: title.maxWidth || "" }} data-testid="hero-title">
+        <span
+          className={classNames({
+            [textColor[title.color]]: title.color,
+            [highlightColor[title.highlightColor]]: title.highlightColor,
+          })}
+        >
+          {title.text}
+        </span>
+      </h1>
+    );
+  }
+
+  if (title && subTitle) {
+    titleElement = (
+      <header>
+        <p className="hero-subtitle" data-testid="hero-subtitle">
           <span
             className={classNames({
               [textColor[subTitle.color]]: subTitle.color,
@@ -83,22 +88,26 @@ function headingHeroHtmlTemplate({
           >
             {subTitle.text}
           </span>
-        </div>
-      )}
+        </p>
+        {titleElement}
+      </header>
+    );
+  }
 
-      {title && (
-        <h1 style={{ maxWidth: title.maxWidth || "" }} data-testid="hero-title">
-          <span
-            className={classNames({
-              [textColor[title.color]]: title.color,
-              [highlightColor[title.highlightColor]]: title.highlightColor,
-            })}
-          >
-            {title.text}
-          </span>
-        </h1>
-      )}
-
+  return (
+    <div
+      className={classNames(`uds-hero`, {
+        [imageSize[image?.size]]: image?.size,
+      })}
+    >
+      <div className="hero-overlay" />
+      <HeroImage
+        className="hero"
+        src={image?.url}
+        alt={image?.altText}
+        data-testid="hero-image"
+      />
+      {titleElement}
       {contents && (
         <div
           data-testid="hero-content"

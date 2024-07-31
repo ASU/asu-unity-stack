@@ -1,6 +1,5 @@
 import React from "react";
 
-import { imageName } from "../../../../../shared/assets";
 import { defaultDecorator } from "../../../../../shared/components/Layout";
 
 export default {
