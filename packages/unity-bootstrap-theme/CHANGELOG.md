@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.10.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.21...@asu/unity-bootstrap-theme-v1.10.0) (2024-07-31)
+
+
+### Features
+
+* **unity-bootstrap-theme:** modified _banner.scss, banners.templates.stories.js for accessibility ([044bab1](https://github.com/ASU/asu-unity-stack/commit/044bab18d2eefd925acf7f7479a4eec1819bdea5))
+
 # [@asu/unity-bootstrap-theme-v1.9.21](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.9.20...@asu/unity-bootstrap-theme-v1.9.21) (2024-06-26)
 
 
