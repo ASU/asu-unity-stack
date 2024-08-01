@@ -21,6 +21,9 @@ const AnchorMenuWrapper = styled.div`
     h4 {
       align-items: center;
     }
+    h2 {
+      align-items: center;
+    }
     i {
       transition: all 0.3s;
     }
