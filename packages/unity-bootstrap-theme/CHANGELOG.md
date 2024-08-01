@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.11.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.10.1...@asu/unity-bootstrap-theme-v1.11.0) (2024-08-01)
+
+
+### Features
+
+* **unity-bootstrap-theme:** changed h4 to h2 and added styles for this change ([d1bd183](https://github.com/ASU/asu-unity-stack/commit/d1bd1830d88c3408a29a56c8caf9718c5df2af21))
+
 # [@asu/unity-bootstrap-theme-v1.10.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.10.0...@asu/unity-bootstrap-theme-v1.10.1) (2024-07-31)
 
 
