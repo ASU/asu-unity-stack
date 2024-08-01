@@ -1,9 +1,9 @@
 {
   "name": "@asu/unity-react-core",
   "version": "0.0.1",
-  "main": "./dist/libCore.cjs.js",
-  "browser": "./dist/libCore.umd.js",
-  "module": "./dist/libCore.es.js",
+  "main": "./dist/unity-react-core.umd.js",
+  "module": "./dist/unity-react-core.mjs",
+  "type": "module",
   "types": "./dist/main.d.ts",
   "description": "Core UDS React UI components required by other higher-order React packages",
   "author": "Nathan Rollins <nathan.rollins@asu.edu>",
@@ -32,7 +32,7 @@
     "test": "jest --config=./jest.config.js --silent --coverage",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
     "prebuild": "rm -rf ./dist",
-    "build": "webpack -c webpack/webpack.prod.js",
+    "build": "vite build",
     "postbuild": "cp ./types/main.d.ts ./dist/main.d.ts",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "storybook": "storybook dev",
@@ -82,7 +82,9 @@
     "storybook": "^7.6.14",
     "storybook-css-modules-preset": "^1.1.1",
     "style-loader": "^3.3.1",
+    "terser": "^5.31.3",
     "vite": "^5.3.5",
+    "vite-plugin-static-copy": "^1.0.6",
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
@@ -102,8 +104,8 @@
   "exports": {
     "./*": "./*",
     ".": {
-      "import": "./dist/libCore.es.js",
-      "require": "./dist/libCore.cjs.js"
+      "import": "./dist/unity-react-core.mjs",
+      "require": "./dist/unity-react-core.umd.js"
     }
   },
   "volta": {

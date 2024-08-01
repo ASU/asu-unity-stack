@@ -21,9 +21,9 @@ export default {
   argTypes: {
     title: {
       control: {
-        type: 'object',
+        type: "object",
       },
-      description: 'Options for highlightColor are gold, white, black, or none',
+      description: "Options for highlightColor are gold, white, black, or none",
     },
   },
 };

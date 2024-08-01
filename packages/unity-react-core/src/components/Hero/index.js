@@ -64,7 +64,7 @@ function headingHeroHtmlTemplate({
         [imageSize[image?.size]]: image?.size,
       })}
     >
-      <div className="hero-overlay"></div>
+      <div className="hero-overlay" />
       <HeroImage
         className="hero"
         src={image?.url}
