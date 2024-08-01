@@ -1,6 +1,6 @@
 {
   "name": "@asu/components-core",
-  "version": "3.3.8",
+  "version": "4.0.0",
   "main": "./dist/libCore.cjs.js",
   "browser": "./dist/libCore.umd.js",
   "module": "./dist/libCore.es.js",

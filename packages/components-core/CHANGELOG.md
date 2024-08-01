@@ -1,3 +1,18 @@
+# [@asu/components-core-v4.0.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.8...@asu/components-core-v4.0.0) (2024-08-01)
+
+
+### Bug Fixes
+
+* **components-core:** switch h4 to h2 on AnchorMenu ([bfde9f2](https://github.com/ASU/asu-unity-stack/commit/bfde9f281bfffa4a62592292be6743e795cc0cd4))
+
+
+### BREAKING CHANGES
+
+* **components-core:** It is necessary to replicate the changes from the unity-bootstrap-theme in the
+component-core.
+
+UDS-1773
+
 # [@asu/components-core-v3.3.8](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.7...@asu/components-core-v3.3.8) (2024-07-31)
 
 
