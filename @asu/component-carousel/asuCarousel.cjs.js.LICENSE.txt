@@ -10,8 +10,6 @@ object-assign
  * Released under the MIT License.
  */
 
-/*! For license information please see libCore.es.js.LICENSE.txt */
-
 /** @license React v0.20.2
  * scheduler.production.min.js
  *

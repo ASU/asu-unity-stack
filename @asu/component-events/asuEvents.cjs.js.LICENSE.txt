@@ -1,5 +1,3 @@
-/*! For license information please see libCore.es.js.LICENSE.txt */
-
 /** @license React v16.13.1
  * react-is.production.min.js
  *
