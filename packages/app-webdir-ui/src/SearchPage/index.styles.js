@@ -36,14 +36,17 @@ const SearchPageLayout = styled.div`
     .profile-options {
       display: flex;
       flex-direction: row;
-      a:not(:last-child) {
-        margin-right: 16px;
-      }
       .desktop-button {
         display: inline;
+        &:not(:nth-last-child(2)) {
+          margin-right: 24px;
+        }
       }
       .mobile-button {
         display: none;
+        &:not(:last-child) {
+          margin-bottom: 24px;
+        }
       }
     }
   }
@@ -83,11 +86,11 @@ const SearchPageLayout = styled.div`
           margin-bottom: 16px;
         }
         .desktop-button {
-            display: none;
-          }
-          .mobile-button {
-            display: inline;
-          }
+          display: none;
+        }
+        .mobile-button {
+          display: inline;
+        }
       }
     }
   }

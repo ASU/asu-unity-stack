@@ -144,12 +144,12 @@ function SearchPage({
               onKeyDown={inputKeyPress}
               ref={inputRef}
             />
-              <Button
-                color="maroon"
-                icon={["fas", "search"]}
-                label="Search"
-                onClick={() => doSearch()}
-              />
+            <Button
+              color="maroon"
+              icon={["fas", "search"]}
+              label="Search"
+              onClick={() => doSearch()}
+            />
           </div>
         </form>
         <div className="profile-options">
@@ -186,6 +186,7 @@ function SearchPage({
                   icon={["fas", "lock"]}
                   label="Department admin"
                   href="/groups"
+                  size="small"
                 />
               </div>
             </>
