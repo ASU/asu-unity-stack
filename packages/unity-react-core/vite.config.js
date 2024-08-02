@@ -1,8 +1,6 @@
-import { defineConfig, transformWithEsbuild, loadEnv } from "vite";
+import { defineConfig, transformWithEsbuild } from "vite";
 import { resolve } from "path";
 import react from "@vitejs/plugin-react";
-import { viteStaticCopy } from "vite-plugin-static-copy";
-import pkg from './package.json';
 
 export default defineConfig({
   build: {
@@ -21,10 +19,10 @@ export default defineConfig({
         },
       },
     },
-    minify: false,
+    minify: true,
   },
   define: {
-    "process.env.NODE_ENV": JSON.stringify("development"),
+    "process.env.NODE_ENV": JSON.stringify("production"),
   },
   plugins: [
     {
@@ -32,8 +30,6 @@ export default defineConfig({
       async transform(code, id) {
         if (!id.match(/src\/.*\.js$/)) return null;
 
-        // Use the exposed transform from vite, instead of directly
-        // transforming with esbuild
         return transformWithEsbuild(code, id, {
           loader: "jsx",
           jsx: "automatic",
@@ -41,13 +37,5 @@ export default defineConfig({
       },
     },
     react(),
-    viteStaticCopy({
-      targets: [
-        {
-          src: "types/main.d.ts",
-          dest: "",
-        },
-      ],
-    }),
   ],
 });
