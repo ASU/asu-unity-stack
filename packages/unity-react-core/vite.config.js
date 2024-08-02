@@ -1,7 +1,8 @@
-import { defineConfig, transformWithEsbuild } from "vite";
+import { defineConfig, transformWithEsbuild, loadEnv } from "vite";
 import { resolve } from "path";
 import react from "@vitejs/plugin-react";
 import { viteStaticCopy } from "vite-plugin-static-copy";
+import pkg from './package.json';
 
 export default defineConfig({
   build: {
@@ -11,15 +12,19 @@ export default defineConfig({
       formats: ["es", "cjs", "umd"],
     },
     rollupOptions: {
+      input: resolve(__dirname, "src/index.js"),
       external: ["react", "react-dom"],
       output: {
         globals: {
           "react": "React",
-          "react-dom": "ReactDOM",
+          "react-dom": "ReactDOM"
         },
       },
     },
-    minify: true,
+    minify: false,
+  },
+  define: {
+    "process.env.NODE_ENV": JSON.stringify("development"),
   },
   plugins: [
     {

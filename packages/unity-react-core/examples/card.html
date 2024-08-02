@@ -38,7 +38,7 @@
     ></script>
     <!-- *************************************************************** -->
     <!-- include bundled scripts from packages -->
-    <script src="../dist/libCore.umd.js"></script>
+    <script src="../dist/unity-react-core.umd.cjs"></script>
   </head>
 
   <body>
@@ -53,12 +53,14 @@
         <div id="story-card"></div>
         <div id="horizontal-card"></div>
         <div id="asu-news-card"></div>
+        <div id="clickable-card"></div>
       </div>
     </div>
 
     <script>
       // Setup and initialize cards options.
-      AsuWebCore.initCard({
+      console.log("u", unityReactCore);
+      unityReactCore.initCard({
         targetSelector: "#default-card",
         props: {
           type: "default",
@@ -93,7 +95,7 @@
           ],
         },
       });
-      AsuWebCore.initRankingCard({
+      unityReactCore.initRankingCard({
         targetSelector: "#ranking-card",
         props: {
           imageSize: 'small',
@@ -105,7 +107,7 @@
           citation: "My happy citation.",
         },
       });
-      AsuWebCore.initCard({
+      unityReactCore.initCard({
         targetSelector: "#icon-card",
         props: {
           type: "default",
@@ -122,7 +124,7 @@
           icon: ["fas", "newspaper"],
         },
       });
-      AsuWebCore.initCard({
+      unityReactCore.initCard({
         targetSelector: "#degree-card",
         props: {
           type: "degree",
@@ -133,7 +135,7 @@
           body: "Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
         },
       });
-      AsuWebCore.initCard({
+      unityReactCore.initCard({
         targetSelector: "#event-card",
         props: {
           type: "event",
@@ -154,7 +156,7 @@
           ],
         },
       });
-      AsuWebCore.initCard({
+      unityReactCore.initCard({
         targetSelector: "#story-card",
         props: {
           type: "story",
@@ -179,7 +181,7 @@
           ],
         },
       });
-      AsuWebCore.initCard({
+      unityReactCore.initCard({
         targetSelector: "#clickable-card",
         props: {
           type: "story",
@@ -195,7 +197,7 @@
           ],
         },
       });
-      AsuWebCore.initCard({
+      unityReactCore.initCard({
         targetSelector: "#horizontal-card",
         props: {
           type: "story",
@@ -211,7 +213,7 @@
           ],
         },
       });
-      AsuWebCore.initCard({
+      unityReactCore.initCard({
         targetSelector: "#asu-news-card",
         props: {
           type: "story",
