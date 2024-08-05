@@ -54,7 +54,7 @@ const DropdownItem = ({
     e.stopPropagation();
   };
 
-  const focusOnNextLink = e => {
+  const handleLinkFocus = e => {
     stopPropagation(e);
     if (e.key === "ArrowDown") {
       e.preventDefault();
@@ -106,7 +106,7 @@ const DropdownItem = ({
         <a
           href={link.href}
           onClick={stopPropagation}
-          onKeyDown={focusOnNextLink}
+          onKeyDown={handleLinkFocus}
           onFocus={() =>
             trackGAEvent({ text: link.text, component: dropdownName })
           }
