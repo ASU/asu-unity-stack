@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.11.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.11.0...@asu/unity-bootstrap-theme-v1.11.1) (2024-08-05)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix storybook image ([113039f](https://github.com/ASU/asu-unity-stack/commit/113039f558875094f0fbde25213dc3780173a189))
+
 # [@asu/unity-bootstrap-theme-v1.11.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.10.1...@asu/unity-bootstrap-theme-v1.11.0) (2024-08-01)
 
 
