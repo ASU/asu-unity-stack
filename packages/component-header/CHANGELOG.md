@@ -1,3 +1,17 @@
+# [@asu/component-header-v2.3.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.8...@asu/component-header-v2.3.0) (2024-08-05)
+
+
+### Bug Fixes
+
+* **component-header:** add escape functionality when inside of menu dropdown ([373fcec](https://github.com/asu/asu-unity-stack/commit/373fcecf79f73e224b99a96989c304a729e9cd2d))
+* **component-header:** add keyboard navigation ([01bde2a](https://github.com/asu/asu-unity-stack/commit/01bde2a2d4e74cb5281edc2b453b5d603f5e7a67))
+
+
+### Features
+
+* **component-header:** removed display:unset on Header hidden inputs ([f029963](https://github.com/asu/asu-unity-stack/commit/f029963cf35da423438fce5a249e57e5161f1362))
+* **component-header:** return display:unset and change the selector for the styles to input[name=q] ([606ca9b](https://github.com/asu/asu-unity-stack/commit/606ca9bb30c30012eb861e6a3adf94ad130cb580))
+
 # [@asu/component-header-v2.2.8](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.7...@asu/component-header-v2.2.8) (2024-07-22)
 
 
