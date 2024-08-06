@@ -91,7 +91,7 @@ yarn test
 
 ```HTML
 <!-- Provide target divs for two carousels. Must have unique ids. -->
-<div id="default-card"></div>
+<div id="default-card"> </div>
 <div id="icon-card"></div>
 
 <!-- Include font awesome -->
