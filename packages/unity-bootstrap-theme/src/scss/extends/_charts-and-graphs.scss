@@ -41,6 +41,7 @@
 
 .uds-charts-and-graphs-overlay p {
   @extend %shared-styles;
+  margin-bottom: 0;
 }
 
 canvas {
