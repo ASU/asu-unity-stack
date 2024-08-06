@@ -6,7 +6,7 @@
   max-width: 350px;
 }
 
-.uds-charts-and-graphs-overlay {
+%shared-styles {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -32,6 +32,15 @@
       font-size: 1rem;
     }
   }
+}
+
+.uds-charts-and-graphs-overlay {
+  @extend %shared-styles;
+  justify-content: center;
+}
+
+.uds-charts-and-graphs-overlay p {
+  @extend %shared-styles;
 }
 
 canvas {

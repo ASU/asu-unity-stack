@@ -19,7 +19,7 @@ export const DonutChartMarkUp = () => (
   <div className="uds-charts-and-graphs-container">
     <div className="uds-charts-and-graphs-overlay">
       <p>
-        <span id="percentage-display"></span><br/>
+        <span id="percentage-display"></span>
         <span>Fact goes here</span>
       </p>
     </div>
