@@ -1,3 +1,15 @@
+# [@asu/components-core-v4.1.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v4.0.0...@asu/components-core-v4.1.0) (2024-08-07)
+
+
+### Bug Fixes
+
+* **components-core:** just a small change to create pr ([64cde43](https://github.com/ASU/asu-unity-stack/commit/64cde43e6dad644877b2e41b198c76876a586145))
+
+
+### Features
+
+* **unity-bootstrap-theme:** added styles for focus on accordions ([145c4a1](https://github.com/ASU/asu-unity-stack/commit/145c4a10faf783a918973b7d300392d44d22d217))
+
 # [@asu/components-core-v4.0.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.8...@asu/components-core-v4.0.0) (2024-08-01)
 
 
