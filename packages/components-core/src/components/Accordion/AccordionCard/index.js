@@ -24,12 +24,12 @@ export const AccordionCard = ({ id, item, openCard, onClick }) => (
   >
     <div className="accordion-header">
       <h4>
-        <a
+        <button
+          type="button"
           data-testid="accordion-opener"
           className={classNames({ [`collapsed`]: id !== openCard })}
           data-bs-toggle="collapse"
           href={`#card-body-${id}`}
-          role="button"
           aria-expanded={id === openCard}
           aria-controls={`card-body-${id}`}
           onClick={e => onClick(e, id, item.content?.header)}
@@ -45,7 +45,7 @@ export const AccordionCard = ({ id, item, openCard, onClick }) => (
             item.content?.header
           )}
           <i className="fas fa-chevron-up" />
-        </a>
+        </button>
       </h4>
     </div>
     {item.content?.body && (

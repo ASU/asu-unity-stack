@@ -16,7 +16,7 @@ const Template = ({
     <div className="accordion-item mt-3">
       <div className="accordion-header">
         <h3>
-          <a
+          <button
             id={`${linkID}`}
             data-bs-toggle="collapse"
             className="collapsed"
@@ -33,7 +33,7 @@ const Template = ({
           >
             This card unfolds.
             <span className="fas fa-chevron-up"></span>
-          </a>
+          </button>
         </h3>
       </div>
       <div
