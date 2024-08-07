@@ -634,11 +634,12 @@ __metadata:
     "@storybook/addon-essentials": "npm:^7.6.14"
     "@storybook/addon-interactions": "npm:^7.6.14"
     "@storybook/addon-links": "npm:^7.6.14"
-    "@storybook/builder-vite": "npm:^8.2.6"
+    "@storybook/builder-vite": "npm:^7"
     "@storybook/react": "npm:^7.6.14"
     "@storybook/react-vite": "npm:^7"
     "@testing-library/jest-dom": "npm:^5.14.1"
     "@testing-library/react": "npm:^12.0.0"
+    "@vitejs/plugin-react": "npm:^4.3.1"
     babel-jest: "npm:^26.6.3"
     babel-loader: "npm:^8.2.2"
     classnames: "npm:^2.2.6"
@@ -774,7 +775,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:^7.20.12":
+"@babel/core@npm:^7.20.12, @babel/core@npm:^7.24.5":
   version: 7.25.2
   resolution: "@babel/core@npm:7.25.2"
   dependencies:
@@ -1959,7 +1960,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-react-jsx-self@npm:^7.18.6":
+"@babel/plugin-transform-react-jsx-self@npm:^7.18.6, @babel/plugin-transform-react-jsx-self@npm:^7.24.5":
   version: 7.24.7
   resolution: "@babel/plugin-transform-react-jsx-self@npm:7.24.7"
   dependencies:
@@ -1970,7 +1971,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-react-jsx-source@npm:^7.19.6":
+"@babel/plugin-transform-react-jsx-source@npm:^7.19.6, @babel/plugin-transform-react-jsx-source@npm:^7.24.1":
   version: 7.24.7
   resolution: "@babel/plugin-transform-react-jsx-source@npm:7.24.7"
   dependencies:
@@ -6775,7 +6776,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/builder-vite@npm:7.6.20":
+"@storybook/builder-vite@npm:7.6.20, @storybook/builder-vite@npm:^7":
   version: 7.6.20
   resolution: "@storybook/builder-vite@npm:7.6.20"
   dependencies:
@@ -6808,36 +6809,6 @@ __metadata:
     vite-plugin-glimmerx:
       optional: true
   checksum: 10c0/b26a146844dc87b1ff343b32c279eabd68de995da49e8c25c02291246847d2a4070a6d4cf2311298e2c41895d17995e397b1319edeef2876bfc8aba4609f56df
-  languageName: node
-  linkType: hard
-
-"@storybook/builder-vite@npm:^8.2.6":
-  version: 8.2.6
-  resolution: "@storybook/builder-vite@npm:8.2.6"
-  dependencies:
-    "@storybook/csf-plugin": "npm:8.2.6"
-    "@types/find-cache-dir": "npm:^3.2.1"
-    browser-assert: "npm:^1.2.1"
-    es-module-lexer: "npm:^1.5.0"
-    express: "npm:^4.19.2"
-    find-cache-dir: "npm:^3.0.0"
-    fs-extra: "npm:^11.1.0"
-    magic-string: "npm:^0.30.0"
-    ts-dedent: "npm:^2.0.0"
-  peerDependencies:
-    "@preact/preset-vite": "*"
-    storybook: ^8.2.6
-    typescript: ">= 4.3.x"
-    vite: ^4.0.0 || ^5.0.0
-    vite-plugin-glimmerx: "*"
-  peerDependenciesMeta:
-    "@preact/preset-vite":
-      optional: true
-    typescript:
-      optional: true
-    vite-plugin-glimmerx:
-      optional: true
-  checksum: 10c0/229cf333f07bfe890f7eaf8986c1723177b7d877e7491e0ca207e1dec3d27f1f76a9463eb8a218c306ce405970a2a00f59651463ca75339b85de8e7eee123926
   languageName: node
   linkType: hard
 
@@ -7157,17 +7128,6 @@ __metadata:
     "@storybook/csf-tools": "npm:7.6.20"
     unplugin: "npm:^1.3.1"
   checksum: 10c0/ddcce2cef7e3872a720f5eb07d64e37791ea42a5a0c6d608bf730f06b707bbbaa0c778fd429a564d83f3d7244695e82ae5e3e62d0b46d2f77f65ebba9c9d37e7
-  languageName: node
-  linkType: hard
-
-"@storybook/csf-plugin@npm:8.2.6":
-  version: 8.2.6
-  resolution: "@storybook/csf-plugin@npm:8.2.6"
-  dependencies:
-    unplugin: "npm:^1.3.1"
-  peerDependencies:
-    storybook: ^8.2.6
-  checksum: 10c0/f83474d45158cfd27a7e338dfdce2d246757181b7a438ec002e27903ff93e777cd90b76f5cfdbad8d8e6d551d428131ac3bc4f3562cc96171dc22fc4d0a1b16a
   languageName: node
   linkType: hard
 
@@ -7866,7 +7826,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/babel__core@npm:^7.0.0, @types/babel__core@npm:^7.1.14, @types/babel__core@npm:^7.1.7, @types/babel__core@npm:^7.18.0":
+"@types/babel__core@npm:^7.0.0, @types/babel__core@npm:^7.1.14, @types/babel__core@npm:^7.1.7, @types/babel__core@npm:^7.18.0, @types/babel__core@npm:^7.20.5":
   version: 7.20.5
   resolution: "@types/babel__core@npm:7.20.5"
   dependencies:
@@ -8670,6 +8630,21 @@ __metadata:
   peerDependencies:
     vite: ^4.1.0-beta.0
   checksum: 10c0/259a92a303cd736240dc0d3282d1261339e7bbcf51c5b326868c910b35d4bd22a360334b2dafa5bfc7f3e935f2cd0fdc7ccb6ec6b519b81017c4c4812cd05290
+  languageName: node
+  linkType: hard
+
+"@vitejs/plugin-react@npm:^4.3.1":
+  version: 4.3.1
+  resolution: "@vitejs/plugin-react@npm:4.3.1"
+  dependencies:
+    "@babel/core": "npm:^7.24.5"
+    "@babel/plugin-transform-react-jsx-self": "npm:^7.24.5"
+    "@babel/plugin-transform-react-jsx-source": "npm:^7.24.1"
+    "@types/babel__core": "npm:^7.20.5"
+    react-refresh: "npm:^0.14.2"
+  peerDependencies:
+    vite: ^4.2.0 || ^5.0.0
+  checksum: 10c0/39a027feddfd6b3e307121d79631462ef1aae05714ba7a2f9a73d240d0f89c2bf281132568eb27b55d6ddaf08d86ad1bd8b0066090240e570de8c6320eb9a903
   languageName: node
   linkType: hard
 
@@ -13750,7 +13725,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"es-module-lexer@npm:^1.2.1, es-module-lexer@npm:^1.4.1, es-module-lexer@npm:^1.5.0":
+"es-module-lexer@npm:^1.2.1, es-module-lexer@npm:^1.4.1":
   version: 1.5.4
   resolution: "es-module-lexer@npm:1.5.4"
   checksum: 10c0/300a469488c2f22081df1e4c8398c78db92358496e639b0df7f89ac6455462aaf5d8893939087c1a1cbcbf20eed4610c70e0bcb8f3e4b0d80a5d2611c539408c
@@ -14820,7 +14795,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express@npm:^4.17.1, express@npm:^4.17.3, express@npm:^4.19.2":
+"express@npm:^4.17.1, express@npm:^4.17.3":
   version: 4.19.2
   resolution: "express@npm:4.19.2"
   dependencies:
@@ -24847,7 +24822,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-refresh@npm:^0.14.0":
+"react-refresh@npm:^0.14.0, react-refresh@npm:^0.14.2":
   version: 0.14.2
   resolution: "react-refresh@npm:0.14.2"
   checksum: 10c0/875b72ef56b147a131e33f2abd6ec059d1989854b3ff438898e4f9310bfcc73acff709445b7ba843318a953cb9424bcc2c05af2b3d80011cee28f25aef3e2ebb

@@ -23,8 +23,10 @@ export default defineConfig({
   },
   define: {
     "process.env.NODE_ENV": JSON.stringify("production"),
+    global: {}
   },
   plugins: [
+    react(),
     {
       name: "treat-js-files-as-jsx",
       async transform(code, id) {
@@ -36,6 +38,5 @@ export default defineConfig({
         });
       },
     },
-    react(),
   ],
 });
