@@ -140,7 +140,9 @@ span.page-link {
 }
 @include media-breakpoint-down(md) {
   .pagination {
-    gap: .4rem;
+    gap: 0rem;
+    padding-right: 0.2rem;
+    padding-left: 0.2rem;
   }
   a.page-link {
     font-size: 14px;
