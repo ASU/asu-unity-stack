@@ -1,3 +1,15 @@
+# [@asu/unity-bootstrap-theme-v1.12.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.11.1...@asu/unity-bootstrap-theme-v1.12.0) (2024-08-07)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** switch anchor to button on accordions header and added styles ([914e9ee](https://github.com/ASU/asu-unity-stack/commit/914e9ee5d57363284558f6f275fa7c6858a05b3b))
+
+
+### Features
+
+* **unity-bootstrap-theme:** added styles for focus on accordions ([145c4a1](https://github.com/ASU/asu-unity-stack/commit/145c4a10faf783a918973b7d300392d44d22d217))
+
 # [@asu/unity-bootstrap-theme-v1.11.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.11.0...@asu/unity-bootstrap-theme-v1.11.1) (2024-08-05)
 
 
