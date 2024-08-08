@@ -1,3 +1,17 @@
+# [@asu/unity-bootstrap-theme-v1.13.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.12.0...@asu/unity-bootstrap-theme-v1.13.0) (2024-08-08)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** added margin-bottom=0 on p ([a692f16](https://github.com/ASU/asu-unity-stack/commit/a692f161a1edf544708f47638c26850cc615d4f1))
+
+
+### Features
+
+* **unity-bootstrap-theme:** added css styles for p in donuts ([cc4a536](https://github.com/ASU/asu-unity-stack/commit/cc4a536486291725c67793c751170cffdd204c1e))
+* **unity-bootstrap-theme:** added new styles to the donut chart ([b3d10e7](https://github.com/ASU/asu-unity-stack/commit/b3d10e7b9b38ed6b3f0bd5aff18a9224cd8cd7ee))
+* **unity-bootstrap-theme:** update markup for charts and graphs ([86f7a04](https://github.com/ASU/asu-unity-stack/commit/86f7a041a7870c15c7062dc8fa11aa1f87911368))
+
 # [@asu/unity-bootstrap-theme-v1.12.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.11.1...@asu/unity-bootstrap-theme-v1.12.0) (2024-08-07)
 
 
