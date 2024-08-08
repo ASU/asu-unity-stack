@@ -64,6 +64,9 @@ spec:
                 container('node20') {
                   withEnv(["GITHUB_AUTH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
                     echo '## Install and build Unity monorepo...'
+                    sh 'yarn -v'
+                    sh 'node -v'
+                    sh 'npm -v'
                     sh 'yarn install'
                     sh 'yarn build'
                   }
