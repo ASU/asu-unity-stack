@@ -67,7 +67,7 @@ spec:
                     writeFile file: '.npmrc', text: '@asu:registry=https://npm.pkg.github.com/ \n' +
                       '//npm.pkg.github.com/:_authToken=' + env.RAW_GH_TOKEN_PSW
                     echo '## Install and build Unity monorepo...'
-                    sh 'yarn install --immutable'
+                    sh 'yarn install'
                     sh 'yarn build'
                   }
                 }
