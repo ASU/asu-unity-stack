@@ -1,5 +1,4 @@
 const path = require("path");
-const PROJECT_DIR = path.resolve(__dirname, "../");
 
 export default {
   staticDirs: ['../dist'],
