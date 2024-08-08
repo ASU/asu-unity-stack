@@ -2,7 +2,8 @@
 
 ## Table of Contents
 - [ASU Unity Design System (UDS)](#asu-unity-design-system-uds)
-  - [Quickstart Guide](#quickstart-guide)
+  - [Table of Contents](#table-of-contents)
+  - [Pre-requisites:](#pre-requisites)
   - [Consuming Unity packages in your project:](#consuming-unity-packages-in-your-project)
   - [How to use the private package registry:](#how-to-use-the-private-package-registry)
     - [TROUBLESHOOTING ERRORS](#troubleshooting-errors)
@@ -42,9 +43,10 @@
     - [See here for more information about publishing packages](#see-here-for-more-information-about-publishing-packages)
     - [See the top answer on this stackoverflow question for why you may want to build against multiple node versions. Probably unnecessary for this workflow.](#see-the-top-answer-on-this-stackoverflow-question-for-why-you-may-want-to-build-against-multiple-node-versions-probably-unnecessary-for-this-workflow)
 
-## Quickstart Guide
+## Pre-requisites:
 
-Using the Unity Bootstrap Theme and React components for building ASU Web Standards 2.0 compliant web sites and apps.
+- Node.js (v20.15.1 or higher)
+- Yarn (v4)
 
 
 ## Consuming Unity packages in your project:
