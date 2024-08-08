@@ -54,12 +54,13 @@ const c = {
       output: {
         entryFileNames: (chunkInfo) => {
           if (chunkInfo.name.includes('index.esm')) {
-            return 'js/bootstrap.[format]';
+            return 'js/bootstrap.bundle.min.[format]';
           }
           return "js/[name].[format]";
         },
         chunkFileNames: "js/[name].[format]",
         assetFileNames: '[name][extname]',
+        format: 'es',
       },
     },
   },
