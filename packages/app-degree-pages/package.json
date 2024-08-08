@@ -43,7 +43,7 @@
     "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "dependencies": {
-    "@asu/components-core": "^3.1.0",
+    "@asu/components-core": "^3.0.0",
     "@popperjs/core": "^2.9.2",
     "classnames": "^2.3.1",
     "prop-types": "^15.7.2",
