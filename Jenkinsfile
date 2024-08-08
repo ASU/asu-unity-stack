@@ -63,9 +63,6 @@ spec:
             steps {
                 container('node20') {
                   withEnv(["GITHUB_AUTH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
-                    echo '## Configure .npmrc file for Github Package registry...'
-                    writeFile file: '.npmrc', text: '@asu:registry=https://npm.pkg.github.com/ \n' +
-                      '//npm.pkg.github.com/:_authToken=' + env.RAW_GH_TOKEN_PSW
                     echo '## Install and build Unity monorepo...'
                     sh 'yarn install'
                     sh 'yarn build'
