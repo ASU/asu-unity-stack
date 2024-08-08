@@ -45,8 +45,8 @@ spec:
             steps {
                 container('node20') {
                   script {
-                    echo '## Configure .npmrc file for @asu registry...'
-                    writeFile file: '.env.yarn', text: 'GITHUB_AUTH_TOKEN=' + env.RAW_GH_TOKEN_PSW
+                    echo '## Configure env file for @asu registry...'
+                    writeFile file: '.env', text: 'GITHUB_AUTH_TOKEN=' + env.RAW_GH_TOKEN_PSW
                     echo '## Install and build Unity monorepo...'
                     sh 'yarn install --immutable'
                     sh 'yarn build'
@@ -62,12 +62,14 @@ spec:
         stage('Build') {
             steps {
                 container('node20') {
+                  withEnv(["GITHUB_AUTH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
                     echo '## Configure .npmrc file for Github Package registry...'
                     writeFile file: '.npmrc', text: '@asu:registry=https://npm.pkg.github.com/ \n' +
                       '//npm.pkg.github.com/:_authToken=' + env.RAW_GH_TOKEN_PSW
                     echo '## Install and build Unity monorepo...'
                     sh 'yarn install --immutable'
                     sh 'yarn build'
+                  }
                 }
             }
         }
