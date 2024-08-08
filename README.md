@@ -48,16 +48,22 @@
 - Node.js (v20.15.1 or higher)
 - Yarn (v4)
 
+This monorepo uses Yarn 4 Workspaces to manage dependencies and build packages. This means that you should use Yarn to install and manage dependencies, and to run scripts. If you don't have Yarn installed, you can install it by running ```npm install -g yarn```.
+
 
 ## Consuming Unity packages in your project:
+
+Follow the steps beklow if you want to consume the Unity packages in your own project.
 
 1. You must configure your local NPM to use the ASU Unity Design System package registry. Add a ```.npmrc``` file to your project root or global .npmrc with the following contents:
 ```
 @asu:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=YOUR_TOKEN_HERE
 ```
-2. Install the package using yarn or npm:
-```yarn add @asu/<package-name>``` or ```npm install @asu/<package-name>```
+2. Install the package using npm:
+```npm install @asu/<package-name>```
+
+If using yarn2+, follow the steps below.
 
 
 ## How to use the private package registry:
@@ -66,8 +72,8 @@ The ASU Unity Design System packages are published to GitHub's package registry.
 
 1. Clone the monorepo using ```git clone``` or download the zip file from GitHub.
 2. If you don't already have it [request access to the Unity Design System GitHub Repo](https://asu.edu/webservices).
-3. Once you have access, there is a ```.npmrc.example``` file in the root of this project with the correct scope of the ```@asu``` packages. Make a copy and name it ```.npmrc``` and replace the ```YOUR_TOKEN_HERE``` with a [GitHub Personal Access Token](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authenticating-to-github-packages) to have a project-based configuration for adding Unity package dependencies to your project. Alternately, some users may wish to include these configurations in the ```.npmrc``` in their HOME folder, or in another project's ```.npmrc``` instead.
-4. The first line in the ```.npmrc``` tells NPM that all packages with the ```@asu``` scope should be obtained from our Github package registry. If you receive errors when trying to install packages saying you are not authorized, typically this means your local machine is not set up with the Personal Access Token to access Github.  You can fix this as well as learn more about working with the GitHub package registry by following the instructions at https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry
+3. Once you have access, there is a ```.env.yarn.example``` file in the root of this project with the correct environment variable name used in the ```.yarnrc.yml``` file. Make a copy and name it ```.env.yarn``` and replace the ```YOUR_TOKEN_HERE``` with a [GitHub Personal Access Token](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authenticating-to-github-packages) to have a project-based configuration for adding Unity package dependencies to your project.
+4. The environment variable in the ```.env.yarn``` file is used in the ```.yarnrc.yml``` file to authenticate with the GitHub package registry. The ```.yarnrc.yml``` file is used by Yarn to configure the package registry.
 5. Test installing packages using yarn or npm inside of another NPM project:
 ```yarn add @asu/design-tokens```
 
@@ -283,7 +289,7 @@ Find updates within the past 2 days by running the command  `node ./scripts/chec
 
  - Storybook (https://storybook.js.org/docs/basics/introduction/)
  - LernaJS (https://lerna.js.org/)
- - Yarn Workspaces (https://classic.yarnpkg.com/en/docs/workspaces/)
+ - Yarn Workspaces (https://yarnpkg.com/features/workspaces)
  - Jest (https://jestjs.io/docs/en/getting-started)
  - Puppeteer (https://pptr.dev/)
 

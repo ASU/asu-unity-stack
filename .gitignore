@@ -120,3 +120,5 @@ tests/__image_snapshots__/__diff_output__
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+*.env.*
+!.env.yarn.example
