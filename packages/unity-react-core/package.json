@@ -35,7 +35,7 @@
     "build": "yarn prebuild && vite build && yarn postbuild",
     "postbuild": "cp ./types/main.d.ts ./dist/main.d.ts",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
-    "storybook": "storybook dev",
+    "storybook": "storybook dev -p 9200",
     "percy": "build-storybook -c ./.storybook/percy -o ./percy-storybook && export PERCY_TOKEN=$PERCY_TOKEN_COMPONENTS_CORE && percy storybook ./percy-storybook",
     "build-storybook": "storybook build -o ../../build/$npm_package_name",
     "jsdoc": "jsdoc -c jsdoc.config.js",
