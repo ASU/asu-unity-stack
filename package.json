@@ -106,5 +106,6 @@
     "commitizen": {
       "path": "./scripts/conventional-commits.js"
     }
-  }
+  },
+  "packageManager": "yarn@4.3.1"
 }
