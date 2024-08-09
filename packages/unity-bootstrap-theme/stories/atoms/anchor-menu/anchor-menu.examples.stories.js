@@ -57,7 +57,7 @@ return (
         >
           <div className="container">
             <div className="uds-anchor-menu-wrapper">
-              <h4
+              <h2
                 data-bs-toggle="collapse"
                 data-bs-target="#collapseExample"
                 aria-expanded="false"
@@ -68,7 +68,7 @@ return (
                 data-ga="On this page"
               >
                 On This Page: <span className="fas fa-chevron-down"></span>
-              </h4>
+              </h2>
               <div id="collapseExample" className="card card-body collapse">
                 <nav className="nav" aria-label="Same Page">
                   <a

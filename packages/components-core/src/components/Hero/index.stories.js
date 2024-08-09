@@ -2,6 +2,8 @@
 // @ts-check
 import React from "react";
 
+import { imageName } from "../../../../../shared/assets";
+
 import { Hero } from ".";
 
 /**
@@ -32,14 +34,7 @@ export default {
  * @param {HeroProps} props
  * @returns {JSX.Element}
  */
-const Template = ({ image, title, contents, contentsColor }) => (
-  <Hero
-    title={title}
-    image={image}
-    contents={contents}
-    contentsColor={contentsColor}
-  />
-);
+const Template = props => <Hero {...props} />;
 
 /**
  * @type {{ args: HeroProps, parameters: object }}
@@ -48,9 +43,13 @@ export const HeroSmall = Template.bind({});
 
 HeroSmall.args = {
   image: {
-    url: "https://source.unsplash.com/WLUHO9A_xik/800x400?a=1",
+    url: imageName.hero01,
     altText: "Hero image",
     size: "small",
+  },
+  subTitle: {
+    text: "Sub title",
+    highlightColor: "black",
   },
   title: {
     text: "Heading with a long title 1",
@@ -72,7 +71,7 @@ export const HeroLongTitle = Template.bind({});
 
 HeroLongTitle.args = {
   image: {
-    url: "https://source.unsplash.com/WLUHO9A_xik/800x400?a=1",
+    url: imageName.hero01,
     altText: "Hero image",
     size: "small",
   },
@@ -80,6 +79,10 @@ HeroLongTitle.args = {
     text: "Heading with a long title 2",
     highlightColor: "gold",
     maxWidth: "100%",
+  },
+  subTitle: {
+    text: "Sub title",
+    highlightColor: "black",
   },
 };
 HeroLongTitle.parameters = {
@@ -97,13 +100,17 @@ export const HeroMedium = Template.bind({});
 
 HeroMedium.args = {
   image: {
-    url: "https://source.unsplash.com/WLUHO9A_xik/800x400?a=1",
+    url: imageName.hero01,
     altText: "Hero image",
     size: "medium",
   },
   title: {
     text: "Heading 1",
     highlightColor: "black",
+  },
+  subTitle: {
+    text: "Sub title",
+    highlightColor: "gold",
   },
   contentsColor: "white",
   contents: [
@@ -128,13 +135,17 @@ export const HeroLarge = Template.bind({});
 
 HeroLarge.args = {
   image: {
-    url: "https://source.unsplash.com/WLUHO9A_xik/800x400?a=1",
+    url: imageName.hero01,
     altText: "Hero image",
     size: "large",
   },
   title: {
     text: "Heading 1",
     color: "white",
+  },
+  subTitle: {
+    text: "Sub title",
+    highlightColor: "black",
   },
   contentsColor: "white",
   contents: [

@@ -15,6 +15,9 @@ import { DropdownWrapper } from "./index.styles";
  *  items: [object][]
  *  buttons: Button[]
  *  classes?: string,
+ *  listId: string
+ *  setItemOpened: Function
+ *  parentLink: React.RefObject<HTMLElement> | null
  * }} DropdownItemProps
  */
 
@@ -24,7 +27,15 @@ import { DropdownWrapper } from "./index.styles";
  * @returns {JSX.Element}
  */
 
-const DropdownItem = ({ dropdownName, items, buttons, classes, listId }) => {
+const DropdownItem = ({
+  dropdownName,
+  items,
+  buttons,
+  classes,
+  listId,
+  setItemOpened,
+  parentLink,
+}) => {
   const { breakpoint } = useAppContext();
   const isMega = items?.length > 2;
   const dropdownRef = useRef(null);
@@ -41,6 +52,29 @@ const DropdownItem = ({ dropdownName, items, buttons, classes, listId }) => {
 
   const stopPropagation = e => {
     e.stopPropagation();
+  };
+
+  const handleLinkFocus = e => {
+    stopPropagation(e);
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      const nextLink = e.target.parentElement.nextElementSibling?.firstChild;
+      if (nextLink) {
+        nextLink.focus();
+      }
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      const prevLink =
+        e.target.parentElement.previousElementSibling?.firstChild;
+      if (prevLink) {
+        prevLink.focus();
+      }
+    } else if (e.key === "Escape") {
+      setItemOpened();
+      if (parentLink) {
+        parentLink.focus();
+      }
+    }
   };
 
   const renderItem = (link, index) => {
@@ -72,6 +106,7 @@ const DropdownItem = ({ dropdownName, items, buttons, classes, listId }) => {
         <a
           href={link.href}
           onClick={stopPropagation}
+          onKeyDown={handleLinkFocus}
           onFocus={() =>
             trackGAEvent({ text: link.text, component: dropdownName })
           }
@@ -130,6 +165,10 @@ DropdownItem.propTypes = {
   buttons: PropTypes.arrayOf(PropTypes.shape(ButtonPropTypes)),
   classes: PropTypes.string,
   listId: PropTypes.string,
+  setItemOpened: PropTypes.func,
+  parentLink: PropTypes.shape({
+    focus: PropTypes.func,
+  }),
 };
 
 export { DropdownItem };

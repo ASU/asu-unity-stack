@@ -15,7 +15,7 @@ export const FoldableCardDefaultOpen = () =>
       <div className="accordion-item mt-3">
         <div className="accordion-header">
           <h3>
-            <a
+            <button
               id="example-header-3"
               data-bs-toggle="collapse"
               className="collapse"
@@ -32,7 +32,7 @@ export const FoldableCardDefaultOpen = () =>
               >
               This card starts off in an unfolded state.
               <span className="fas fa-chevron-up"></span>
-            </a>
+            </button>
           </h3>
         </div>
         <div
@@ -74,7 +74,7 @@ export const ColorAccents = () =>
       <div className="accordion-item mt-3">
         <div className="accordion-header">
           <h4>
-            <a
+            <button
               id="cardOne"
               className="collapsed"
               href="#cardBodyOne"
@@ -91,7 +91,7 @@ export const ColorAccents = () =>
             >
               Accordion gold color (default).
               <span className="fas fa-chevron-up"></span>
-            </a>
+            </button>
           </h4>
         </div>
         {/* end .accordion-header */}
@@ -125,7 +125,7 @@ export const ColorAccents = () =>
       <div className="accordion-item mt-3 accordion-item-maroon">
         <div className="accordion-header">
           <h4>
-            <a
+            <button
               id="cardTwo"
               className="collapsed"
               data-bs-toggle="collapse"
@@ -142,7 +142,7 @@ export const ColorAccents = () =>
             >
               Accordion maroon color.
               <span className="fas fa-chevron-up"></span>
-            </a>
+            </button>
           </h4>
         </div>
         <div
@@ -178,7 +178,7 @@ export const ColorAccents = () =>
       <div className="accordion-item mt-3 accordion-item-gray">
         <div className="accordion-header">
           <h4>
-            <a
+            <button
               id="cardThree"
               className="collapsed"
               data-bs-toggle="collapse"
@@ -195,7 +195,7 @@ export const ColorAccents = () =>
             >
               Accordion gray color.
               <span className="fas fa-chevron-up"></span>
-            </a>
+            </button>
           </h4>
         </div>
         <div
@@ -227,7 +227,7 @@ export const ColorAccents = () =>
       <div className="accordion-item mt-3 accordion-item-dark">
         <div className="accordion-header">
           <h4>
-            <a
+            <button
               id="cardFour"
               className="collapsed"
               href="#cardBodyFour"
@@ -245,7 +245,7 @@ export const ColorAccents = () =>
             >
               Accordion dark color.
               <span className="fas fa-chevron-up"></span>
-            </a>
+            </button>
           </h4>
         </div>
         {/* end .accordion-header */}
@@ -286,7 +286,7 @@ export const IncludedIcons = () =>
       <div className="accordion-item mt-3">
         <div className="accordion-header accordion-header-icon">
           <h4>
-            <a
+            <button
               id="cardOne"
               className="collapsed"
               href="#cardBodyOne"
@@ -306,7 +306,7 @@ export const IncludedIcons = () =>
                 Accordion with icon and gold color.
               </span>
               <span className="fas fa-chevron-up"></span>
-            </a>
+            </button>
           </h4>
         </div>
         {/* end .accordion-header */}
@@ -340,7 +340,7 @@ export const IncludedIcons = () =>
       <div className="accordion-item mt-3 accordion-item-maroon">
         <div className="accordion-header accordion-header-icon">
           <h4>
-            <a
+            <button
               id="cardTwo"
               className="collapsed"
               data-bs-toggle="collapse"
@@ -360,7 +360,7 @@ export const IncludedIcons = () =>
                 Accordion with icon and maroon color.
               </span>
               <span className="fas fa-chevron-up"></span>
-            </a>
+            </button>
           </h4>
         </div>
         <div
@@ -403,7 +403,7 @@ export const DisableFold = () =>
       <div className="accordion-item mt-3 desktop-disable-lg">
         <div className="accordion-header">
           <h4>
-            <a
+            <button
               id="example-header-2"
               data-bs-toggle="collapse"
               href="#example-content-2"
@@ -420,7 +420,7 @@ export const DisableFold = () =>
               >
               This will become an foldable card at the lg breakpoint.
               <span className="fas fa-chevron-up"></span>
-            </a>
+            </button>
           </h4>
         </div>
         <div
@@ -446,7 +446,7 @@ export const DisableFold = () =>
       <div className="accordion-item mt-3 desktop-disable-xl">
         <div className="accordion-header">
           <h4>
-            <a
+            <button
               id="example-header-3"
               data-bs-toggle="collapse"
               className="collapsed"
@@ -463,7 +463,7 @@ export const DisableFold = () =>
               >
               Collapses to an foldable card at the xl breakpoint.
               <span className="fas fa-chevron-up"></span>
-            </a>
+            </button>
           </h4>
         </div>
         <div
