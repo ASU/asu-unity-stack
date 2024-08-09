@@ -511,7 +511,26 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@asu/components-core@npm:^3.0.0, @asu/components-core@workspace:packages/components-core":
+"@asu/components-core@npm:^3.0.0":
+  version: 3.3.8
+  resolution: "@asu/components-core@npm:3.3.8::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40asu%2Fcomponents-core%2F3.3.8%2Fad2ca007b5be0a22721e42b72d7b9d66b493cae6"
+  dependencies:
+    classnames: "npm:^2.2.6"
+    date-fns: "npm:^2.19.0"
+    phone-fns: "npm:^3.2.3"
+    prop-types: "npm:^15.7.2"
+    styled-components: "npm:^5.3.0"
+  peerDependencies:
+    react: ">= 16.14.0 < 18"
+    react-dom: ">= 16.14.0 < 18"
+    react-router-dom: ">= 5.2.0 < 7"
+    react-share: ^4.4.0
+    reactstrap: ^8.9.0
+  checksum: 10c0/0ba2291627e3c85317c3fa313bb300672927d44cafbc5dfc34933fdbbc0f90f525314501ff82116c7a52c22b5d93db9f1913a056a06addb6a336d8c4de4aa840
+  languageName: node
+  linkType: hard
+
+"@asu/components-core@workspace:packages/components-core":
   version: 0.0.0-use.local
   resolution: "@asu/components-core@workspace:packages/components-core"
   dependencies:
