@@ -1,3 +1,44 @@
+# [@asu/components-core-v4.1.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v4.0.0...@asu/components-core-v4.1.0) (2024-08-07)
+
+
+### Bug Fixes
+
+* **components-core:** just a small change to create pr ([64cde43](https://github.com/ASU/asu-unity-stack/commit/64cde43e6dad644877b2e41b198c76876a586145))
+
+
+### Features
+
+* **unity-bootstrap-theme:** added styles for focus on accordions ([145c4a1](https://github.com/ASU/asu-unity-stack/commit/145c4a10faf783a918973b7d300392d44d22d217))
+
+# [@asu/components-core-v4.0.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.8...@asu/components-core-v4.0.0) (2024-08-01)
+
+
+### Bug Fixes
+
+* **components-core:** switch h4 to h2 on AnchorMenu ([bfde9f2](https://github.com/ASU/asu-unity-stack/commit/bfde9f281bfffa4a62592292be6743e795cc0cd4))
+
+
+### BREAKING CHANGES
+
+* **components-core:** It is necessary to replicate the changes from the unity-bootstrap-theme in the
+component-core.
+
+UDS-1773
+
+# [@asu/components-core-v3.3.8](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.7...@asu/components-core-v3.3.8) (2024-07-31)
+
+
+### Bug Fixes
+
+* **components-core:** fix A11y issue with incorrect Hero Heading structure ([bddc4bd](https://github.com/ASU/asu-unity-stack/commit/bddc4bd62a606fe2b6e0ae670688bb7587dfa426))
+
+# [@asu/components-core-v3.3.7](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.6...@asu/components-core-v3.3.7) (2024-06-25)
+
+
+### Bug Fixes
+
+* **components-core:** remove import of bootstrap collapse in accordion ([88ebe12](https://github.com/ASU/asu-unity-stack/commit/88ebe12c845f1ea27c28998a2f8c186e2fe5f1a3))
+
 # [@asu/components-core-v3.3.6](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.5...@asu/components-core-v3.3.6) (2024-06-18)
 
 

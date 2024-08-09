@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import React, { useEffect } from "react";
 
 import { RfiLabel, RfiError } from "./controls-helpers";
+import { KEY } from "../../core/utils/constants";
 
 // Note: We use a mix of Field and useField here to circumvent issues
 // experienced using solely one of the other.
@@ -30,7 +31,7 @@ const RfiSelect = ({
   // NOTE: We implement custom validation related to RfiSelect in
   // RfiStepper.js in order to manage dependency logic across steps.
 
-  const defaultSelectValue = required ? "" : "NA";
+  const defaultSelectValue = required ? "" : KEY.FALSE_EMPTY;
   useEffect(() => {
     if (!required && !helpers.touched && values[name] === undefined) {
       helpers.setValue(defaultSelectValue);
@@ -43,7 +44,7 @@ const RfiSelect = ({
       <Field
         as="select"
         id={id}
-        className="form-control"
+        className="form-select"
         required={required}
         disabled={disabled}
         autoFocus={autoFocus}

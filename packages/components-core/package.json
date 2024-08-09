@@ -1,6 +1,6 @@
 {
   "name": "@asu/components-core",
-  "version": "3.3.6",
+  "version": "4.1.0",
   "main": "./dist/libCore.cjs.js",
   "browser": "./dist/libCore.umd.js",
   "module": "./dist/libCore.es.js",
@@ -68,7 +68,7 @@
     "jest": "^26.6.3",
     "jest-fetch-mock": "^3.0.3",
     "jest-image-snapshot": "^4.4.1",
-    "jest-transform-css": "^2.1.0",
+    "jest-transform-css": "^6.0.1",
     "jest-transform-file": "^1.1.1",
     "jsdom-screenshot": "^4.0.0",
     "postcss": "^8.4.19",

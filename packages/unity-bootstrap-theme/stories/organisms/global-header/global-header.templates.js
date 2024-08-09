@@ -14,7 +14,7 @@ export const Basic = () => (
         <div className="container-xl">
           <div className="row">
             <div id="header-top" className="col-12">
-              <nav className="nav" aria-label="ASU">
+              <nav className="nav" aria-label="ASU Global">
                 <a
                   className="nav-link visually-hidden-focusable"
                   href="#skip-to-content"
@@ -156,7 +156,7 @@ export const Basic = () => (
                     id="menubar"
                   >
                     <div className="header-content-container">
-                      <nav className="navbar-nav" aria-label="Main">
+                      <nav className="navbar-nav" aria-label="Site">
                         <a
                           className="nav-link nav-link-home active"
                           href="/"
@@ -352,7 +352,7 @@ export const DropDownMenus = () => (
         <div className="container-xl">
           <div className="row">
             <div id="header-top" className="col-12">
-              <nav className="nav" aria-label="ASU">
+              <nav className="nav" aria-label="Asu Global">
                 <a
                   className="nav-link visually-hidden-focusable"
                   href="#skip-to-content"
@@ -498,7 +498,7 @@ export const DropDownMenus = () => (
                   </div>
                   <div className="collapse navbar-collapse w-100" id="menubar">
                     <div className="header-content-container">
-                      <nav className="navbar-nav" aria-label="Main">
+                      <nav className="navbar-nav" aria-label="Site">
                         <a
                           className="nav-link nav-link-home"
                           href="/"
@@ -1442,7 +1442,7 @@ export const NoNavigation = () => (
         <div className="container-xl">
           <div className="row">
             <div id="header-top" className="col-12">
-              <nav className="nav" aria-label="ASU">
+              <nav className="nav" aria-label="Asu Global">
                 <a
                   className="nav-link visually-hidden-focusable"
                   href="#skip-to-content"
@@ -1682,7 +1682,7 @@ export const NoNavigationAndWithButtons = () => (
         <div className="container-xl">
           <div className="row">
             <div id="header-top" className="col-12">
-              <nav className="nav" aria-label="ASU">
+              <nav className="nav" aria-label="Asu Global">
                 <a
                   className="nav-link visually-hidden-focusable"
                   href="#skip-to-content"
@@ -1937,7 +1937,7 @@ export const ScrolledState = () => (
         <div className="container-xl">
           <div className="row">
             <div id="header-top" className="col-12">
-              <nav className="nav" aria-label="ASU">
+              <nav className="nav" aria-label="Asu Global">
                 <a
                   className="nav-link visually-hidden-focusable"
                   href="#skip-to-content"
@@ -2079,7 +2079,7 @@ export const ScrolledState = () => (
                     id="menubar"
                   >
                     <div className="header-content-container">
-                      <nav className="navbar-nav" aria-label="Main">
+                      <nav className="navbar-nav" aria-label="Site">
                         <a
                           className="nav-link nav-link-home active"
                           href="/"
@@ -2384,7 +2384,7 @@ export const Partner = () => (
         <div className="container-xl">
           <div className="row">
             <div id="header-top" className="col-12">
-              <nav className="nav" aria-label="ASU">
+              <nav className="nav" aria-label="Asu Global">
                 <a
                   className="nav-link visually-hidden-focusable"
                   href="#skip-to-content"
@@ -2533,7 +2533,7 @@ export const Partner = () => (
                     id="menubar"
                   >
                     <div className="header-content-container">
-                      <nav className="navbar-nav" aria-label="Main">
+                      <nav className="navbar-nav" aria-label="Site">
                         <a
                           className="nav-link nav-link-home active"
                           href="/"

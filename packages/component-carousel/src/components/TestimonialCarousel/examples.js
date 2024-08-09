@@ -1,5 +1,7 @@
 // @ts-check
 
+import { imageName } from "../../../../../shared/assets";
+
 /**
  * @typedef {import('.').TestimonialItem} TestimonialItem
  */
@@ -12,7 +14,7 @@ const testimonialNoCitation = [
       content:
         "Laughter is timeless, imagination has no age, dreams are forever.",
     },
-    imageSource: `https://source.unsplash.com/random/300x300?a=1`,
+    imageSource: imageName.anon,
     imageAltText: `Image of Walt Disney`,
   },
   {
@@ -22,7 +24,7 @@ const testimonialNoCitation = [
       content: `We keep opening new doors and doing new things,
       because we’recurious and curiosity keeps leading us down new paths.`,
     },
-    imageSource: `https://source.unsplash.com/random/300x300?a=1`,
+    imageSource: imageName.anon,
     imageAltText: `Image of Walt Disney`,
   },
 ];
@@ -80,7 +82,7 @@ const testimonialWithImage = [
         name: `Han Solo`,
       },
     },
-    imageSource: `https://source.unsplash.com/random/400x400?a=1`,
+    imageSource: imageName.anon,
     imageAltText: `Pretend this is Han Solo`,
   },
   {
@@ -91,7 +93,7 @@ const testimonialWithImage = [
         name: `Han Solo`,
       },
     },
-    imageSource: `https://source.unsplash.com/random/400x400?a=1`,
+    imageSource: imageName.anon,
     imageAltText: `Pretend this is Han Solo`,
   },
 ];
@@ -129,7 +131,7 @@ const testimonialWithImage2 = [
         description: `ASU Charter`,
       },
     },
-    imageSource: `https://source.unsplash.com/random/400x400?a=1`,
+    imageSource: imageName.anon,
     imageAltText: `Pretend this is Michael M. Crow, President of ASU`,
   },
   {
@@ -141,7 +143,7 @@ const testimonialWithImage2 = [
         description: `ASU Charter`,
       },
     },
-    imageSource: `https://source.unsplash.com/random/300x300?a=1`,
+    imageSource: imageName.anon,
     imageAltText: `Pretend this is Michael M. Crow, President of ASU`,
   },
 ];

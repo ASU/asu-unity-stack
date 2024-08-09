@@ -1,3 +1,38 @@
+# [@asu/app-degree-pages-v2.6.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.6.0...@asu/app-degree-pages-v2.6.1) (2024-07-22)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** fixed error in anchor menu detail page ([4bf5020](https://github.com/asu/asu-unity-stack/commit/4bf502090d6ece5654e4f87b6a1429a2115163fc))
+
+# [@asu/app-degree-pages-v2.6.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.5.6...@asu/app-degree-pages-v2.6.0) (2024-07-22)
+
+
+### Features
+
+* **app-degree-pages:** add breadcrumbs to listing page ([1aec857](https://github.com/asu/asu-unity-stack/commit/1aec857d016a6664e32202e19bde5f72885609b9))
+
+# [@asu/app-degree-pages-v2.5.6](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.5.5...@asu/app-degree-pages-v2.5.6) (2024-07-17)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** fix departmentCode issue in listing page ([b026b3a](https://github.com/asu/asu-unity-stack/commit/b026b3af35b8cc7e55b4decfeb4e017f8ac5e7ab))
+
+# [@asu/app-degree-pages-v2.5.5](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.5.4...@asu/app-degree-pages-v2.5.5) (2024-07-10)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** udpate at a glance online url ([bdbfb69](https://github.com/asu/asu-unity-stack/commit/bdbfb69c1230109cc5960a93d6538a5b11393399))
+
+# [@asu/app-degree-pages-v2.5.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.5.3...@asu/app-degree-pages-v2.5.4) (2024-06-26)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** fix accordion closing/open issue ([d260fad](https://github.com/asu/asu-unity-stack/commit/d260fad7426cc06dcb2f5e689f8ed82a32c84d7c))
+
 # [@asu/app-degree-pages-v2.5.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.5.2...@asu/app-degree-pages-v2.5.3) (2024-05-17)
 
 

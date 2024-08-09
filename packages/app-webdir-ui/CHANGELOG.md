@@ -1,3 +1,12 @@
+# [@asu/app-webdir-ui-v3.5.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.5.0...@asu/app-webdir-ui-v3.5.1) (2024-08-02)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** change search page button size ([014fd1d](https://github.com/asu/asu-unity-stack/commit/014fd1dfca15106b3b8ded270e82e11c083e6789))
+* **app-webdir-ui:** dept admin button size fix and button margins fix ([2787f6e](https://github.com/asu/asu-unity-stack/commit/2787f6ecb21acf1831a0e679c8c688969612fd8f))
+* **app-webdir-ui:** search button consistent size ([7760842](https://github.com/asu/asu-unity-stack/commit/7760842403ef49ac34fc220a185e1f28961edcf1))
+
 # [@asu/app-webdir-ui-v3.5.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.4.2...@asu/app-webdir-ui-v3.5.0) (2024-06-10)
 
 

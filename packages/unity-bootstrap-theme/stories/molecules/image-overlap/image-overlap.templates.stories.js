@@ -1,5 +1,6 @@
 import React from "react";
 
+import { imageName } from "../../../../../shared/assets";
 import { defaultDecorator } from "../../../../../shared/components/Layout";
 
 export default {
@@ -19,7 +20,7 @@ export const ImageOverlapRightOrLeft = ({left}) => {
       <div className={`uds-image-overlap ${left ? "content-left" : ""}`}>
         <img
           className="img-fluid"
-          src="https://source.unsplash.com/WLUHO9A_xik/800x600"
+          src={ imageName.demo1 }
           alt="Generic image from PlaceIMG"
           width="800"
           height="600"

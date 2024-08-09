@@ -1,6 +1,6 @@
 {
   "name": "@asu/app-webdir-ui",
-  "version": "3.5.0",
+  "version": "3.5.1",
   "description": "App Webdir UI",
   "main": "./dist/webdirUI.cjs.js",
   "browser": "./dist/webdirUI.umd.js",
@@ -36,8 +36,7 @@
     "jsdoc": "jsdoc -c jsdoc.config.js",
     "predocs": "mkdir -p ./docs",
     "docs": "jsdoc2md -c jsdoc.config.js --files ./src/** > ./docs/README.props.md",
-    "postdocs": "node ../../scripts/process-readme-props.js",
-    "dev": "webpack-dev-server"
+    "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "dependencies": {
     "@asu/components-core": "^3.0.0",
@@ -77,7 +76,7 @@
     "jest": "^26.6.3",
     "jest-fetch-mock": "^3.0.3",
     "jest-image-snapshot": "^4.4.1",
-    "jest-transform-css": "^2.1.0",
+    "jest-transform-css": "^6.0.1",
     "jest-transform-file": "^1.1.1",
     "jsdoc": "^3.6.7",
     "jsdoc-plugin-typescript": "^2.0.6",

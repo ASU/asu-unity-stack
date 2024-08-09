@@ -4,6 +4,51 @@ import React from "react";
 import { fullLayoutDecorator } from "../../../../../shared/components/Layout.js";
 import cardsImage from "../cards/cards-image.jpg";
 
+const titleArgs = {
+  title: {
+    name: "Title",
+    control: {
+      type: "text"
+    }
+  },
+  titleColors: {
+    name: "Title Colors",
+    options: ["Black Text", "White Text", "Black Background", "Gold Background"],
+    mapping: {
+      "Black Text": "",
+      "White Text": "text-white",
+      "Black Background": "text-white highlight-black",
+      "Gold Background": "highlight-gold",
+    },
+    control: {
+      type: "radio",
+    },
+  },
+}
+
+const subTitleArgs = {
+  subTitle: {
+    name: "Sub Title",
+    control: {
+      type: "text"
+    }
+  },
+  subTitleColors: {
+    name: "Sub Title Colors",
+    options: ["Black Text", "White Text", "Black Background", "Gold Background"],
+    mapping: {
+      "Black Text": "",
+      "White Text": "text-white",
+      "Black Background": "text-white highlight-black",
+      "Gold Background": "highlight-gold",
+    },
+    control: {
+      type: "radio",
+    },
+  },
+}
+
+
 const heroArgTypes = {
   size: {
     name: "Size",
@@ -17,7 +62,16 @@ const heroArgTypes = {
       type: "radio",
     },
   },
+  ...titleArgs,
+  ...subTitleArgs,
 };
+
+const heroDefaultArgs = {
+  title: "Default Title",
+  titleColors: "White Text",
+  subTitle: "",
+  subTitleColors: "White Text",
+}
 
 const storyHeroArgTypes = {
   size: {
@@ -31,14 +85,15 @@ const storyHeroArgTypes = {
       type: "radio",
     },
   },
-};;
+};
 
 export default {
   title: "Molecules/Heroes/Templates",
   decorators: [ fullLayoutDecorator ],
+
 };
 
-const Hero = ({size}) => (
+const Hero = ({size, title, titleColors, subTitle, subTitleColors}) => (
   <div className={`${size} has-btn-row`}>
     <div className="hero-overlay"></div>
     <img
@@ -51,11 +106,26 @@ const Hero = ({size}) => (
       decoding="async"
       fetchpriority="high"
     />
-    <h1>
-      <span className="text-white">
-        Lorem ipsum dolor sit amet, consectetur adip
-      </span>
-    </h1>
+    {subTitle ? (
+    <header>
+      <p className="hero-subtitle">
+        <span className={subTitleColors}>
+          {subTitle}
+        </span>
+      </p>
+      <h1>
+        <span className={titleColors}>
+          {title}
+        </span>
+      </h1>
+    </header>) :
+    (
+      <h1>
+        <span className={titleColors}>
+          {title}
+        </span>
+      </h1>)
+    }
     <div className="content">
       <p className="text-white">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -94,19 +164,22 @@ const Hero = ({size}) => (
 );
 export const HeroSmall = Hero.bind({});
 HeroSmall.args = {
-  size: "Small"
+  size: "Small",
+  ...heroDefaultArgs,
 }
 HeroSmall.argTypes = heroArgTypes;
 
 export const HeroMedium = Hero.bind({});
 HeroMedium.args = {
-  size: "Medium"
+  size: "Medium",
+  ...heroDefaultArgs,
 }
 
 HeroMedium.argTypes = heroArgTypes;
 export const HeroLarge = Hero.bind({});
 HeroLarge.args = {
-  size: "Large"
+  size: "Large",
+  ...heroDefaultArgs,
 }
 
 HeroLarge.argTypes = heroArgTypes;

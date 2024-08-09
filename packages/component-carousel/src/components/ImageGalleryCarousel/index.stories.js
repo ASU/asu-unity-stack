@@ -72,7 +72,7 @@ export default {
   parameters: { controls: { disable: true } },
 };
 
-const maxWidth = "600px";
+const maxWidth = "996px";
 const maxHeight = "600px";
 
 /**

@@ -21,8 +21,8 @@ export const ZipCode = ({ gaData }) => {
 
   useEffect(() => {
     if (isNotUS || isOnline) {
-      setFieldValue(name, "NA");
-    } else if (values[name] === "NA") {
+      setFieldValue(name, KEY.FALSE_EMPTY);
+    } else if (values[name] === KEY.FALSE_EMPTY) {
       setFieldValue(name, "");
     }
   }, [values.Campus, values.Country]);

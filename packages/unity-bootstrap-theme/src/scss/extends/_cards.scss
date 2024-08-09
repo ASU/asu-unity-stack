@@ -546,7 +546,7 @@ Cards - Table of Contents
     h5 {
       margin: 0;
 
-      a {
+      a, button {
         padding: 1rem var(--card-child-padding);
         color: $uds-color-base-gray-7;
         text-decoration: none;
@@ -566,6 +566,22 @@ Cards - Table of Contents
           transform: rotate(180deg);
         }
       }
+
+      button {
+        width: 100%;
+        background: transparent;
+        border: 0;
+        font-weight: bold;
+
+        &:focus {
+          outline: none!important;
+          box-shadow: 0 0 0 1px $uds-color-base-gray-7 !important;
+          border: 1px solid $uds-color-base-gray-7 !important;
+          margin: 4px;
+          width: -webkit-fill-available;
+        }
+      }
+
     }
 
     + div > .accordion-body, + .accordion-body{ // TODO: remove '+ .accordion-body' after next major breaking change release. This is for backward compatibility
@@ -593,13 +609,20 @@ Cards - Table of Contents
   border-left: 1px solid $uds-color-base-gray-3;
 
   .accordion-header {
-    h4 a {
+    h4 a, h4 button {
       padding-top: $uds-size-spacing-4;
       padding-bottom: $uds-size-spacing-4;
 
       &:hover {
         background-color: transparent;
       }
+    }
+
+    h4 button {
+      width: 100%;
+      background: transparent;
+      border: 0;
+      font-weight: bold;
     }
 
     svg {

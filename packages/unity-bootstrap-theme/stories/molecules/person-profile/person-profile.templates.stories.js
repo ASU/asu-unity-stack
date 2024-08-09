@@ -1,5 +1,6 @@
 import React from "react";
 
+import { imageName } from "../../../../../shared/assets";
 import { defaultDecorator } from "../../../../../shared/components/Layout";
 import { Button } from "../../../../components-core/src/components/Button";
 import anonPic from "./anon.png";
@@ -41,7 +42,7 @@ const PersonProfile = ({size, fill}) => (
       >
         <img
           className="profile-img"
-          src="https://source.unsplash.com/WLUHO9A_xik/300x300"
+          src={ imageName.demo1 }
           alt="John Smith"
           width="300"
           height="300"

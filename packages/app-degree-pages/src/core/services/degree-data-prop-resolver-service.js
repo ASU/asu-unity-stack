@@ -200,7 +200,7 @@ function degreeDataPropResolverService(row = {}) {
       return allCollegeAcadOrgs;
     },
     /** @return {string} */
-    getDepartmentCode: () => getMajorityOwner(row)?.departmentAcadCode,
+    getDepartmentCode: () => getMajorityOwner(row)?.departmentAcadOrg,
     /** @return {Object.<string, string>} */
     getGraduateApplyDates: () => row["applicationDeadlines"],
     hasGraduateApplyDates: () => hasGraduateApplyDates(row),
@@ -287,16 +287,23 @@ function getCampusLocations(resolver) {
     text: location,
     url: "",
   });
+  const getOnlineLocation = url => ({
+    text: "Online",
+    url,
+  });
 
   const campusList = resolver.getCampusList().map(campus => campus.campusCode);
-  if (campusList.length > 0)
+  if (campusList.length > 0) {
     locations.push(
       ...campusList.map(
         location =>
+          (location === "ONLNE" &&
+            getOnlineLocation(resolver.getCurriculumUrl())) ||
           findCampusDefinition(location, program) ||
           getDefaultLocation(location)
       )
     );
+  }
 
   const campusWueLocation = resolver.getCampusWue();
   if (campusWueLocation) {
@@ -336,9 +343,11 @@ const filterAnchorMenu = (anchorMenu, resolver) => {
  * @returns
  */
 const hasValidAnchorMenu = anchorMenu => {
-  const res =
-    Object.keys(anchorMenu).filter(key => key !== "externalAnchors").length >
-      0 || anchorMenu?.externalAnchors?.length > 0;
+  const validItemsInAnchorMenu = Object.values(anchorMenu).filter(
+    key => key === true
+  );
+  const hasExternalAnchors = anchorMenu?.externalAnchors?.length > 0;
+  const res = hasExternalAnchors || validItemsInAnchorMenu.length > 0;
   return res;
 };
 

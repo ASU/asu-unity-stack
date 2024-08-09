@@ -1,5 +1,6 @@
 import React from "react";
 
+import { imageName } from "../../../../../shared/assets";
 import { defaultDecorator } from "../../../../../shared/components/Layout";
 
 export default {
@@ -68,7 +69,7 @@ export const ExampleWithImageBackground = () => (
     className="uds-inset-box-container image-background"
     style={{
       backgroundImage:
-        "linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/WLUHO9A_xik')",
+        `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('${ imageName.hero02 }')`,
     }}
   >
     <div className="uds-inset-box-content">

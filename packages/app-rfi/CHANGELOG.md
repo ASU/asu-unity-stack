@@ -1,3 +1,66 @@
+# [@asu/app-rfi-v2.3.9](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.8...@asu/app-rfi-v2.3.9) (2024-07-10)
+
+
+### Bug Fixes
+
+* **app-rfi:** update gdpr links for on campus/ground ([8b18221](https://github.com/asu/asu-unity-stack/commit/8b182217375c94351d05eb28b1a5fce522cd57de))
+
+# [@asu/app-rfi-v2.3.8](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.7...@asu/app-rfi-v2.3.8) (2024-07-08)
+
+
+### Bug Fixes
+
+* **app-rfi:** revert MilitaryStatus Field to multiple choice ([3a7b549](https://github.com/asu/asu-unity-stack/commit/3a7b54973b359904e9edc9575aced18a3d236a98))
+
+# [@asu/app-rfi-v2.3.7](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.6...@asu/app-rfi-v2.3.7) (2024-07-03)
+
+
+### Bug Fixes
+
+* **app-rfi:** fix default of student status error ([38b91ab](https://github.com/asu/asu-unity-stack/commit/38b91ab6ae7ffa3a0f17d40527639b52ffb32b38))
+
+# [@asu/app-rfi-v2.3.6](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.5...@asu/app-rfi-v2.3.6) (2024-07-03)
+
+
+### Bug Fixes
+
+* **app-rfi:** added correct class to select ([01584a0](https://github.com/asu/asu-unity-stack/commit/01584a0bd745b776c60d48f86ab48e1c3a77c520))
+* **app-rfi:** fix false error display on studentstatus ([1aa93ac](https://github.com/asu/asu-unity-stack/commit/1aa93ac548bfc60c4b3234f032b1b5db782827ef))
+
+# [@asu/app-rfi-v2.3.5](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.4...@asu/app-rfi-v2.3.5) (2024-07-02)
+
+
+### Bug Fixes
+
+* **app-rfi:** add link for apply to ASU ([6ff9fc7](https://github.com/asu/asu-unity-stack/commit/6ff9fc733ffb2e7d6a217362f1ad5391351e53f9))
+
+# [@asu/app-rfi-v2.3.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.3...@asu/app-rfi-v2.3.4) (2024-07-02)
+
+
+### Bug Fixes
+
+* **app-rfi:** added timeout for form submission ([61d0254](https://github.com/asu/asu-unity-stack/commit/61d0254ab4aba2315af41030faa38a1a99d163df))
+* **app-rfi:** Update submission-helpers.js ([047b3ad](https://github.com/asu/asu-unity-stack/commit/047b3ad920a285ab1ceef76db4cdc6f50c6ce597))
+
+# [@asu/app-rfi-v2.3.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.2...@asu/app-rfi-v2.3.3) (2024-06-29)
+
+
+### Bug Fixes
+
+* **app-rfi:** fixed CareerAndStudentType not showing and submit issue ([cfe6cc1](https://github.com/asu/asu-unity-stack/commit/cfe6cc14800e90235068d53d74f2639e02415b55))
+
+# [@asu/app-rfi-v2.3.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.1...@asu/app-rfi-v2.3.2) (2024-06-22)
+
+
+### Bug Fixes
+
+* **app-rfi:** Always show CertInfo page if prop is true ([0846022](https://github.com/asu/asu-unity-stack/commit/084602243414633ac57e6e4a648302ac6bff3894))
+* **app-rfi:** fix section undefined ([97b16f4](https://github.com/asu/asu-unity-stack/commit/97b16f4522c3ea43059b82d081e92e4244960c66))
+* **app-rfi:** fix successMsg undefined ([534c29c](https://github.com/asu/asu-unity-stack/commit/534c29c977940f7bbe95866d2b041d4f712e879c))
+* **app-rfi:** remove unanswered fields ([2357431](https://github.com/asu/asu-unity-stack/commit/23574316ce9839d720166be55c80897b138e8a21))
+* **app-rfi:** remove unanswered fields ([8121f68](https://github.com/asu/asu-unity-stack/commit/8121f689d9ff58d5daa61953e7b2966dda339b1d))
+* **app-rfi:** Update consent text ([b5b6d3a](https://github.com/asu/asu-unity-stack/commit/b5b6d3a9d500a286600cd98946cee03311863693))
+
 # [@asu/app-rfi-v2.3.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.0...@asu/app-rfi-v2.3.1) (2024-06-18)
 
 

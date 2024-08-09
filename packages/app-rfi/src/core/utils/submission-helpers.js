@@ -1,8 +1,22 @@
 // @ts-check
+import { KEY } from "./constants";
 import { pushDataLayerEventToGa, setClientId } from "./google-analytics";
+import { deepCloner } from "../../../../../shared/utils";
+
+/**
+ * In order to make a field not required, we set the default or blank value
+ * to {KEY.FALSE_EMPTY}. This way we do not need to alter validation schemas. Remove all
+ * {KEY.FALSE_EMPTY} values before we submit
+ * @param {*} values
+ * @returns {*}
+ */
+const removeUnansweredFields = values =>
+  Object.entries(values)
+    .filter(([key, value]) => value !== KEY.FALSE_EMPTY)
+    .reduce((result, [key, value]) => ({ ...result, [key]: value }), {});
 
 /* Marshall and prepare values for submission payload. */
-export function submissionFormFieldPrep(payload) {
+function submissionFormFieldPrep(payload) {
   // ADJUST AND PROCESS FORM FIELDS
 
   const output = payload;
@@ -56,7 +70,7 @@ export function submissionFormFieldPrep(payload) {
   return output;
 }
 
-export function submissionSetHiddenFields(payload, test) {
+function submissionSetHiddenFields(payload, test) {
   // "HIDDEN" FIELDS THAT DON'T APPEAR IN THE FORM.
 
   const output = payload;
@@ -84,9 +98,10 @@ export function submissionSetHiddenFields(payload, test) {
 export const rfiSubmit = (value, submissionUrl, test, callback = a => ({})) => {
   // MARSHALL FIELDS FOR THE PAYLOAD
 
-  let payload = value;
+  let payload = deepCloner(value);
   payload = submissionFormFieldPrep(payload);
   payload = submissionSetHiddenFields(payload, test);
+  payload = removeUnansweredFields(payload);
 
   // Patch ASUOnline clientid or enterpriseclientid and also
   // ga_clientid onto payload.
@@ -102,23 +117,23 @@ export const rfiSubmit = (value, submissionUrl, test, callback = a => ({})) => {
     alert(`SUBMITTED FORM \n${JSON.stringify(payload, null, 2)}`);
   }
 
-  return fetch(
-    // NOTE: You can use relative URL for submission to client
-    // site proxy endpoint.
-    `${submissionUrl}`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      // We convert the payload to JSON and send it as the
-      // POST body.
-      body: JSON.stringify(payload),
-    }
-  )
-    .then(response => response.json())
-    .then(response => {
-      // eslint-disable-goNext-line no-console
-      callback(response);
-    });
+  // timeout promise that resolves after 2 seconds
+  const timeoutPromise = new Promise(resolve => {
+    setTimeout(() => {
+      resolve({ status: "timeout", message: "Assumed success after timeout" });
+    }, 2000);
+  });
+
+  const fetchPromise = fetch(`${submissionUrl}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  }).then(response => response.json());
+
+  // Race the fetch promise against the timeout promise
+  return Promise.race([fetchPromise, timeoutPromise]).then(response =>
+    callback(response)
+  );
 };

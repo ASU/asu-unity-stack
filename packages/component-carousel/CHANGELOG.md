@@ -1,3 +1,12 @@
+# [@asu/component-carousel-v2.0.5](https://github.com/asu/asu-unity-stack/compare/@asu/component-carousel-v2.0.4...@asu/component-carousel-v2.0.5) (2024-06-26)
+
+
+### Bug Fixes
+
+* **component-carousel:** refactor navScroll ([8ff438b](https://github.com/asu/asu-unity-stack/commit/8ff438b819432fc826302564939cc4c331a6dac3))
+* **component-carousel:** remove unused vars ([986f63f](https://github.com/asu/asu-unity-stack/commit/986f63f377626a62f451b641d6a4000964c49e27))
+* **component-carousel:** thumbnail navigation should only scroll when items are off screen ([437d9da](https://github.com/asu/asu-unity-stack/commit/437d9dae819ecbf3ca51469beb88c0e22a27195a))
+
 # [@asu/component-carousel-v2.0.4](https://github.com/asu/asu-unity-stack/compare/@asu/component-carousel-v2.0.3...@asu/component-carousel-v2.0.4) (2023-08-04)
 
 

@@ -3,7 +3,7 @@
   "private": true,
   "license": "MIT",
   "volta": {
-    "node": "18.16.0",
+    "node": "20.15.1",
     "yarn": "1.22.10"
   },
   "workspaces": [
@@ -46,7 +46,6 @@
     "url": "https://github.com/ASU/asu-unity-stack.git"
   },
   "devDependencies": {
-    "@americanexpress/purgecss-loader": "^2.0.0",
     "@commitlint/cli": "^12.0.1",
     "@commitlint/config-conventional": "^12.0.1",
     "@commitlint/config-lerna-scopes": "^12.0.1",
@@ -56,9 +55,9 @@
     "@storybook/addons": "^7.6.14",
     "@storybook/api": "^7.6.14",
     "@storybook/components": "^7.6.14",
-    "@storybook/theming": "^7.6.14",
-    "@storybook/react": "^7.6.14",
     "@storybook/core-events": "^7.6.14",
+    "@storybook/react": "^7.6.14",
+    "@storybook/theming": "^7.6.14",
     "@types/node": "^20.0.0",
     "clean-webpack-plugin": "^3.0.0",
     "commitizen": "^4.2.3",
@@ -87,7 +86,7 @@
     "inquirer": "^8.0.0",
     "inquirer-autocomplete-prompt": "^2.0.0",
     "lerna": "^6.4.1",
-    "mini-css-extract-plugin": "^1.4.1",
+    "mini-css-extract-plugin": "^2.0.0",
     "nunjucks": "^3.2.0",
     "prettier": "^2.2.1",
     "purgecss-webpack-plugin": "^4.0.3",
@@ -100,7 +99,6 @@
     "webpack-bundle-analyzer": "^4.4.1",
     "webpack-cli": "^4.6.0",
     "webpack-dashboard": "^3.3.1",
-    "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.7.3",
     "webpack-node-externals": "^2.5.0"
   },

@@ -19,7 +19,7 @@ import { trackGAEvent } from "../../../../../shared";
 export const RfiStepperButtons = ({
   stepNumber,
   totalSteps,
-  step: { props: section = "" },
+  step,
   handleBack,
   formik: { isSubmitting },
 }) => {
@@ -43,7 +43,7 @@ export const RfiStepperButtons = ({
                     name: "onclick",
                     type: "click",
                     region: "main content",
-                    section,
+                    section: step.props.section,
                     text: "prev",
                     component: `step ${stepNumber + 1} of ${totalSteps}`,
                   });
@@ -68,7 +68,7 @@ export const RfiStepperButtons = ({
                     name: "onclick",
                     type: "click",
                     region: "main content",
-                    section,
+                    section: step.props.section,
                     text: "next",
                     component: `step ${stepNumber + 1} of ${totalSteps}`,
                   })
@@ -91,7 +91,7 @@ export const RfiStepperButtons = ({
                     region: "main content",
                     event: "form",
                     type: "submit",
-                    section,
+                    section: step.props.section,
                     text: "submit",
                     component: `step ${stepNumber + 1} of ${totalSteps}`,
                   })

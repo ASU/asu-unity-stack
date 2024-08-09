@@ -2,6 +2,7 @@
 import React from "react";
 
 import { trackGAEvent } from "../../../../../shared";
+import { LEGAL_URLS } from "../../core/constants";
 
 const DEFAULT_GA_EVENT = {
   type: "internal link",
@@ -30,7 +31,7 @@ const Legal = () => {
             >
               <a
                 className="nav-link"
-                href="https://www.asu.edu/about/copyright-trademark"
+                href={LEGAL_URLS.COPYRIGHT_AND_TRADEMARK}
                 onFocus={() =>
                   trackGAEvent({
                     ...DEFAULT_GA_EVENT,
@@ -42,7 +43,7 @@ const Legal = () => {
               </a>
               <a
                 className="nav-link"
-                href={`https://accessibility.asu.edu/report?a11yref=${getURL()}`}
+                href={`${LEGAL_URLS.ACCESSIBILITY_REPORT}?a11yref=${getURL()}`}
                 onFocus={() =>
                   trackGAEvent({
                     ...DEFAULT_GA_EVENT,
@@ -54,7 +55,7 @@ const Legal = () => {
               </a>
               <a
                 className="nav-link"
-                href="https://www.asu.edu/about/privacy"
+                href={LEGAL_URLS.PRIVACY}
                 onFocus={() =>
                   trackGAEvent({
                     ...DEFAULT_GA_EVENT,
@@ -66,7 +67,7 @@ const Legal = () => {
               </a>
               <a
                 className="nav-link"
-                href="https://www.asu.edu/about/terms-of-use"
+                href={LEGAL_URLS.TERMS_OF_USE}
                 onFocus={() =>
                   trackGAEvent({
                     ...DEFAULT_GA_EVENT,
@@ -78,7 +79,7 @@ const Legal = () => {
               </a>
               <a
                 className="nav-link"
-                href="https://www.asu.edu/emergency/"
+                href={LEGAL_URLS.EMERGENCY}
                 onFocus={() =>
                   trackGAEvent({
                     ...DEFAULT_GA_EVENT,
