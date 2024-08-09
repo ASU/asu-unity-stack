@@ -20,7 +20,6 @@
 
   span {
     font: normal normal 700 1.125rem Arial;
-    max-width: 60%;
   }
 
   @include media-breakpoint-down(md) {
@@ -37,6 +36,7 @@
 .uds-charts-and-graphs-overlay {
   @extend %shared-styles;
   justify-content: center;
+  width: 60%;
 }
 
 .uds-charts-and-graphs-overlay p {
