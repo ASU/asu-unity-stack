@@ -15,6 +15,17 @@
     "@jridgewell/gen-mapping" "^0.3.5"
     "@jridgewell/trace-mapping" "^0.3.24"
 
+"@asu/components-core@^3.0.0", "@asu/components-core@^3.1.0":
+  version "3.3.8"
+  resolved "https://npm.pkg.github.com/download/@asu/components-core/3.3.8/ad2ca007b5be0a22721e42b72d7b9d66b493cae6#ad2ca007b5be0a22721e42b72d7b9d66b493cae6"
+  integrity sha512-OxKvmTc6Vrijph0nMQ6HWJzysXldSrhfqb+yZ90Agd/3/SENh4ErD8MWZmUwLuuUDFijYx3vajjhAbfV8Zc0IA==
+  dependencies:
+    classnames "^2.2.6"
+    date-fns "^2.19.0"
+    phone-fns "^3.2.3"
+    prop-types "^15.7.2"
+    styled-components "^5.3.0"
+
 "@aw-web-design/x-default-browser@1.4.126":
   version "1.4.126"
   resolved "https://registry.yarnpkg.com/@aw-web-design/x-default-browser/-/x-default-browser-1.4.126.tgz#43e4bd8f0314ed907a8718d7e862a203af79bc16"
