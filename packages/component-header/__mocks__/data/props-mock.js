@@ -1,5 +1,29 @@
 import { basicNavTree, navTreeWithButtons } from "../../src/core/utils";
 
+const testNavTreeWithOnClickEventAndNoHref = [
+  {
+    text: "Home",
+    selected: false,
+    onClick: () => {
+      console.log("Home clicked");
+    }
+  },
+  {
+    text: "Test 1",
+    selected: false,
+    onClick: () => {
+      console.log("Test 1 clicked");
+    }
+  },
+  {
+    text: "Fun",
+    selected: false,
+    onClick: () => {
+      console.log("Test 2 clicked");
+    }
+  }
+];
+
 const defaultState = {
   loggedIn: false,
   userName: "",
@@ -72,6 +96,14 @@ const onHoverState = {
   expandOnHover: true,
   breakpoint: "Lg",
 };
+const withOnClickAndNoHref = {
+  navTree: testNavTreeWithOnClickEventAndNoHref,
+  title: "Ira A. Fulton Schools of Engineering",
+  parentOrg:
+    "School of Computing, Informatics, and Decisions Systems Engineering",
+  parentOrgUrl: "https://engineering.asu.edu",
+  loggedIn: false,
+};
 
 export {
   defaultState,
@@ -80,4 +112,6 @@ export {
   withButtonsState,
   partnersState,
   onHoverState,
+  withOnClickAndNoHref,
+  testNavTreeWithOnClickEventAndNoHref
 };

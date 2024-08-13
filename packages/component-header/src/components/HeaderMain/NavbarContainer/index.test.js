@@ -8,6 +8,7 @@ import { NavbarContainer } from ".";
 import {
   defaultState,
   onHoverState,
+  testNavTreeWithOnClickEventAndNoHref
 } from "../../../../__mocks__/data/props-mock";
 import { AppContextProvider } from "../../../core/context/app-context";
 
@@ -70,5 +71,33 @@ describe("#Navbar Container Component opened/closed on hover", () => {
     fireEvent.mouseEnter(navItems[0].parentElement);
     fireEvent.mouseLeave(navItems[0].parentElement);
     expect(navItems[0].className).not.toContain("open-link");
+  });
+});
+
+describe("#Navbar Container Component with onClick and no href", () => {
+  /** @type {import("@testing-library/react").RenderResult} */
+  let component;
+  let navItems;
+  let onClick = jest.fn();
+
+  beforeEach(() => {
+    component = renderNavbarContainer({
+      title: "Ira A. Fulton Schools of Engineering",
+  parentOrg:
+    "School of Computing, Informatics, and Decisions Systems Engineering",
+  parentOrgUrl: "https://engineering.asu.edu",
+  loggedIn: false,
+  navTree: testNavTreeWithOnClickEventAndNoHref.map(item => ({
+    ...item,
+    onClick: () => onClick()
+  }))
+    });
+    navItems = component.queryAllByTestId("nav-item");
+  });
+  afterAll(cleanup);
+
+  it("should call onClick", () => {
+    fireEvent.click(navItems[0]);
+    expect(onClick).toHaveBeenCalled();
   });
 });
