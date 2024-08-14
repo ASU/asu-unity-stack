@@ -187,7 +187,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
         onClick={handleKeyDown}
         href={link.href}
         {...(link.items ? { "aria-expanded": opened } : {})}
-        {...(!link.href ? {tabIndex: 0} : {})}
+        {...(!link.href ? { tabIndex: 0 } : {})}
         aria-owns={link.items ? `dropdown-${link.id}` : null}
         className={`${link.class ? link.class : ""}${
           link.selected ? " nav-item-selected" : ""

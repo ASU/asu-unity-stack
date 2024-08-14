@@ -8,7 +8,7 @@ import { NavbarContainer } from ".";
 import {
   defaultState,
   onHoverState,
-  testNavTreeWithOnClickEventAndNoHref
+  testNavTreeWithOnClickEventAndNoHref,
 } from "../../../../__mocks__/data/props-mock";
 import { AppContextProvider } from "../../../core/context/app-context";
 
@@ -78,18 +78,19 @@ describe("#Navbar Container Component with onClick and no href", () => {
   /** @type {import("@testing-library/react").RenderResult} */
   let component;
   let navItems;
-  let onClick = jest.fn();
+  const onClick = jest.fn();
 
   beforeEach(() => {
     component = renderNavbarContainer({
       title: "Ira A. Fulton Schools of Engineering",
-      parentOrg: "School of Computing, Informatics, and Decisions Systems Engineering",
+      parentOrg:
+        "School of Computing, Informatics, and Decisions Systems Engineering",
       parentOrgUrl: "https://engineering.asu.edu",
       loggedIn: false,
       navTree: testNavTreeWithOnClickEventAndNoHref.map(item => ({
         ...item,
-        onClick: item.items?.length ? undefined : () => onClick()
-      }))
+        onClick: item.items?.length ? undefined : () => onClick(),
+      })),
     });
     navItems = component.queryAllByTestId("nav-item");
   });

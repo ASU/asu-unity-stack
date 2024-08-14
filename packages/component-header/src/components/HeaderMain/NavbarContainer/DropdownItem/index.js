@@ -7,7 +7,68 @@ import { useAppContext } from "../../../../core/context/app-context";
 import { ButtonPropTypes } from "../../../../core/models/app-prop-types";
 import { Button } from "../../../Button";
 import { DropdownWrapper } from "./index.styles";
-import { LINK_DEFAULT_PROPS } from "../NavItem";
+
+const LINK_DEFAULT_PROPS = {
+  event: "link",
+  action: "click",
+  name: "onclick",
+  type: "internal link",
+  region: "navbar",
+  section: "main navbar",
+  text: "",
+};
+
+const HeadingItem = ({ text }) => <h3 className="ul-heading">{text}</h3>;
+
+HeadingItem.propTypes = {
+  text: PropTypes.string,
+};
+
+const ButtonItem = ({ link, dropdownName, handleLinkEvent }) => (
+  <li className="nav-button">
+    <Button
+      text={link.text}
+      color={link.color || "dark"}
+      href={link.href}
+      onClick={e => handleLinkEvent(e, link)}
+      onKeyDown={handleLinkEvent}
+      onFocus={() => trackGAEvent({ text: link.text, component: dropdownName })}
+    />
+  </li>
+);
+
+ButtonItem.propTypes = {
+  link: PropTypes.shape({
+    text: PropTypes.string,
+    color: PropTypes.string,
+    href: PropTypes.string,
+  }),
+  dropdownName: PropTypes.string,
+  handleLinkEvent: PropTypes.func,
+};
+
+const LinkItem = ({ link, dropdownName, handleLinkEvent }) => (
+  <li className="nav-link">
+    <a
+      {...(!link.href ? { tabIndex: 0 } : {})}
+      href={link.href}
+      onClick={e => handleLinkEvent(e, link)}
+      onKeyDown={e => handleLinkEvent(e, link)}
+      onFocus={() => trackGAEvent({ text: link.text, component: dropdownName })}
+    >
+      {link.text}
+    </a>
+  </li>
+);
+
+LinkItem.propTypes = {
+  link: PropTypes.shape({
+    text: PropTypes.string,
+    href: PropTypes.string,
+  }),
+  dropdownName: PropTypes.string,
+  handleLinkEvent: PropTypes.func,
+};
 
 /**
  * @typedef { import("../../../../core/models/types").Button } Button
@@ -53,7 +114,7 @@ const DropdownItem = ({
 
   const handleLinkEvent = (e, link) => {
     const { key, type, target } = e;
-    const parentElement = target.parentElement;
+    const { parentElement } = target;
 
     const focusNextLink = () => {
       const nextLink = parentElement.nextElementSibling?.firstChild;
@@ -81,39 +142,6 @@ const DropdownItem = ({
       trackGAEvent({ ...LINK_DEFAULT_PROPS, text: link.text });
     }
   };
-
-  const HeadingItem = ({ text }) => <h3 className="ul-heading">{text}</h3>;
-
-  const ButtonItem = ({ link, dropdownName }) => (
-    <li className="nav-button">
-      <Button
-        text={link.text}
-        color={link.color || "dark"}
-        href={link.href}
-        onClick={e => handleLinkEvent(e, link)}
-        onKeyDown={handleLinkEvent}
-        onFocus={() =>
-          trackGAEvent({ text: link.text, component: dropdownName })
-        }
-      />
-    </li>
-  );
-
-  const LinkItem = ({ link, dropdownName }) => (
-    <li className="nav-link">
-      <a
-        {...(!link.href ? { tabIndex: 0 } : {})}
-        href={link.href}
-        onClick={e => handleLinkEvent(e, link)}
-        onKeyDown={e => handleLinkEvent(e, link)}
-        onFocus={() =>
-          trackGAEvent({ text: link.text, component: dropdownName })
-        }
-      >
-        {link.text}
-      </a>
-    </li>
-  );
 
   const renderItem = (link, index) => {
     const key = `${link.text}-${link.href || index}`;
@@ -167,7 +195,14 @@ const DropdownItem = ({
 
 DropdownItem.propTypes = {
   dropdownName: PropTypes.string,
-  items: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.object)),
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      text: PropTypes.string,
+      selected: PropTypes.bool,
+      onClick: PropTypes.func,
+      href: PropTypes.string,
+    })
+  ),
   buttons: PropTypes.arrayOf(PropTypes.shape(ButtonPropTypes)),
   classes: PropTypes.string,
   listId: PropTypes.string,
