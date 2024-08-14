@@ -1,3 +1,10 @@
+# [@asu/app-degree-pages-v2.6.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.6.1...@asu/app-degree-pages-v2.6.2) (2024-08-14)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** update example careers disclaimer ([759a3a1](https://github.com/asu/asu-unity-stack/commit/759a3a1cf9095b2db77916a67048a94d4f704ca6))
+
 # [@asu/app-degree-pages-v2.6.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.6.0...@asu/app-degree-pages-v2.6.1) (2024-07-22)
 
 
