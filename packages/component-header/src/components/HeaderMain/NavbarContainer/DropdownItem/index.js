@@ -7,6 +7,7 @@ import { useAppContext } from "../../../../core/context/app-context";
 import { ButtonPropTypes } from "../../../../core/models/app-prop-types";
 import { Button } from "../../../Button";
 import { DropdownWrapper } from "./index.styles";
+import { LINK_DEFAULT_PROPS } from "../NavItem";
 
 /**
  * @typedef { import("../../../../core/models/types").Button } Button
@@ -22,11 +23,9 @@ import { DropdownWrapper } from "./index.styles";
  */
 
 /**
- *
  * @param {DropdownItemProps} props
  * @returns {JSX.Element}
  */
-
 const DropdownItem = ({
   dropdownName,
   items,
@@ -50,71 +49,79 @@ const DropdownItem = ({
     }
   }, []);
 
-  const stopPropagation = e => {
-    e.stopPropagation();
-  };
+  const stopPropagation = e => e.stopPropagation();
 
-  const handleLinkFocus = e => {
+  const handleLinkEvent = (e, link) => {
+    const { key, type, target } = e;
+    const parentElement = target.parentElement;
+
+    const focusNextLink = () => {
+      const nextLink = parentElement.nextElementSibling?.firstChild;
+      if (nextLink) nextLink.focus();
+    };
+
+    const focusPrevLink = () => {
+      const prevLink = parentElement.previousElementSibling?.firstChild;
+      if (prevLink) prevLink.focus();
+    };
+
     stopPropagation(e);
-    if (e.key === "ArrowDown") {
+
+    if (key === "ArrowDown") {
       e.preventDefault();
-      const nextLink = e.target.parentElement.nextElementSibling?.firstChild;
-      if (nextLink) {
-        nextLink.focus();
-      }
-    } else if (e.key === "ArrowUp") {
+      focusNextLink();
+    } else if (key === "ArrowUp") {
       e.preventDefault();
-      const prevLink =
-        e.target.parentElement.previousElementSibling?.firstChild;
-      if (prevLink) {
-        prevLink.focus();
-      }
-    } else if (e.key === "Escape") {
+      focusPrevLink();
+    } else if (key === "Escape") {
       setItemOpened();
-      if (parentLink) {
-        parentLink.focus();
-      }
+      if (parentLink) parentLink.focus();
+    } else if (key === "Enter" || key === " " || type === "click") {
+      link?.onClick?.(e);
+      trackGAEvent({ ...LINK_DEFAULT_PROPS, text: link.text });
     }
   };
+
+  const HeadingItem = ({ text }) => <h3 className="ul-heading">{text}</h3>;
+
+  const ButtonItem = ({ link, dropdownName }) => (
+    <li className="nav-button">
+      <Button
+        text={link.text}
+        color={link.color || "dark"}
+        href={link.href}
+        onClick={e => handleLinkEvent(e, link)}
+        onKeyDown={handleLinkEvent}
+        onFocus={() =>
+          trackGAEvent({ text: link.text, component: dropdownName })
+        }
+      />
+    </li>
+  );
+
+  const LinkItem = ({ link, dropdownName }) => (
+    <li className="nav-link">
+      <a
+        {...(!link.href ? { tabIndex: 0 } : {})}
+        href={link.href}
+        onClick={e => handleLinkEvent(e, link)}
+        onKeyDown={e => handleLinkEvent(e, link)}
+        onFocus={() =>
+          trackGAEvent({ text: link.text, component: dropdownName })
+        }
+      >
+        {link.text}
+      </a>
+    </li>
+  );
 
   const renderItem = (link, index) => {
     const key = `${link.text}-${link.href || index}`;
-    if (link.type === "heading") {
-      return (
-        <h3 key={key} className="ul-heading">
-          {link.text}
-        </h3>
-      );
-    }
-    if (link.type === "button") {
-      return (
-        <li key={key} className="nav-button">
-          <Button
-            text={link.text}
-            color={link.color || "dark"}
-            href={link.href}
-            onClick={stopPropagation}
-            onFocus={() =>
-              trackGAEvent({ text: link.text, component: dropdownName })
-            }
-          />
-        </li>
-      );
-    }
-    return (
-      <li key={key} className="nav-link">
-        <a
-          href={link.href}
-          onClick={stopPropagation}
-          onKeyDown={handleLinkFocus}
-          onFocus={() =>
-            trackGAEvent({ text: link.text, component: dropdownName })
-          }
-        >
-          {link.text}
-        </a>
-      </li>
-    );
+    if (link.type === "heading")
+      return <HeadingItem key={key} text={link.text} />;
+    if (link.type === "button")
+      return <ButtonItem key={key} link={link} dropdownName={dropdownName} />;
+    return <LinkItem key={key} link={link} dropdownName={dropdownName} />;
   };
 
   return (
@@ -123,7 +130,6 @@ const DropdownItem = ({
       className={`${classes}${alignedRight ? " aligned-right" : ""}${
         isMega ? " mega" : ""
       }`}
-      // @ts-ignore
       breakpoint={breakpoint}
     >
       <div
