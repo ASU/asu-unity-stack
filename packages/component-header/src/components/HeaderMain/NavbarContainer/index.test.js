@@ -83,14 +83,13 @@ describe("#Navbar Container Component with onClick and no href", () => {
   beforeEach(() => {
     component = renderNavbarContainer({
       title: "Ira A. Fulton Schools of Engineering",
-  parentOrg:
-    "School of Computing, Informatics, and Decisions Systems Engineering",
-  parentOrgUrl: "https://engineering.asu.edu",
-  loggedIn: false,
-  navTree: testNavTreeWithOnClickEventAndNoHref.map(item => ({
-    ...item,
-    onClick: () => onClick()
-  }))
+      parentOrg: "School of Computing, Informatics, and Decisions Systems Engineering",
+      parentOrgUrl: "https://engineering.asu.edu",
+      loggedIn: false,
+      navTree: testNavTreeWithOnClickEventAndNoHref.map(item => ({
+        ...item,
+        onClick: item.items?.length ? undefined : () => onClick()
+      }))
     });
     navItems = component.queryAllByTestId("nav-item");
   });
@@ -99,5 +98,11 @@ describe("#Navbar Container Component with onClick and no href", () => {
   it("should call onClick", () => {
     fireEvent.click(navItems[0]);
     expect(onClick).toHaveBeenCalled();
+  });
+
+  it("should open up the dropdown on the 3rd link", () => {
+    fireEvent.click(navItems[2]);
+    const dropdown = component.container.querySelector("#dropdown-2");
+    expect(dropdown).toBeVisible();
   });
 });

@@ -16,11 +16,23 @@ const testNavTreeWithOnClickEventAndNoHref = [
     }
   },
   {
-    text: "Fun",
+    text: "Test 2",
     selected: false,
-    onClick: () => {
-      console.log("Test 2 clicked");
-    }
+    items: [
+      [
+        {
+          text: "Sublink 1",
+          selected: false,
+          onClick: () => {
+            console.log("Sublink 1 clicked");
+          },
+        },
+        {
+          href: "https://www.asu.edu/",
+          text: "Sublink 2",
+        },
+      ],
+    ]
   }
 ];
 
