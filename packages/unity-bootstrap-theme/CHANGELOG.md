@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.13.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.13.0...@asu/unity-bootstrap-theme-v1.13.1) (2024-08-16)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** removed width from span in commons styles ([c230a6b](https://github.com/ASU/asu-unity-stack/commit/c230a6b89deb8b97db2b19ac9c0d5d29edd6c33b))
+
 # [@asu/unity-bootstrap-theme-v1.13.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.12.0...@asu/unity-bootstrap-theme-v1.13.0) (2024-08-08)
 
 
