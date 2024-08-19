@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { trackGAEvent } from "../../core/services/googleAnalytics";
+import { trackGAEvent } from "../../../../../shared";
 
 const gaDefaultObject = {
   name: "onclick",

@@ -1,8 +1,8 @@
 // @ts-check
 import React from "react";
 
+import { trackGAEvent } from "../../../../../shared";
 import { useAppContext } from "../../core/context/app-context";
-import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { Wrapper } from "./index.styles";
 import { Login } from "./Login";
 import { Search } from "./Search";
@@ -34,7 +34,7 @@ const UniversalNavbar = () => {
     >
       <div className="container-xl">
         <div className="header-top">
-          <nav className="nav" aria-label="ASU">
+          <nav className="nav" aria-label="ASU Global">
             <div className="links-container">
               <a
                 className="nav-link visually-hidden-focusable"

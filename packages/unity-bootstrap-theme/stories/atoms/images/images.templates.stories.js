@@ -1,20 +1,25 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
+import React from "react";
 
-const extraOptions = {
-  dropShadow: {
-    name: "Drop Shadow",
-    control: { type: "boolean" },
-    defaultValue: false,
+import { imageName } from "../../../../../shared/assets";
+import { defaultDecorator } from "../../../../../shared/components/Layout";
+
+export default {
+  title: "Atoms/Images/Templates",
+  decorators: [ defaultDecorator ],
+  args: {dropShadow: false},
+  argTypes: {
+    dropShadow: {
+      name: "Drop Shadow",
+      control: { type: "boolean" },
+    },
   },
 };
 
-export default createComponent("Images", "Atoms", "Templates", extraOptions);
-
-export const LargeImageNoCaptionComponent = createStory(args => {
+export const LargeImageNoCaptionComponent = ({dropShadow}) => {
   return (
-    <div className={`uds-img ${args.dropShadow ? "uds-img-drop-shadow" : ""}`}>
+    <div className={`uds-img ${dropShadow ? "uds-img-drop-shadow" : ""}`}>
       <img
-        src="https://source.unsplash.com/random/1200x750"
+        src={ imageName.attendOnline }
         className="img-fluid"
         alt="Random image. REPLACE with appropriate alt text for accessibility."
         width="1200"
@@ -25,14 +30,14 @@ export const LargeImageNoCaptionComponent = createStory(args => {
       />
     </div>
   );
-});
+};
 
-export const LargeImageCaptionComponent = createStory(args => {
+export const LargeImageCaptionComponent = ({dropShadow}) => {
   return (
-    <div className={`uds-img ${args.dropShadow ? "uds-img-drop-shadow" : ""}`}>
+    <div className={`uds-img ${dropShadow ? "uds-img-drop-shadow" : ""}`}>
       <figure className="figure uds-figure">
         <img
-          src="https://source.unsplash.com/random/800x600"
+          src={ imageName.demo1 }
           className="uds-img figure-img img-fluid"
           alt="Random image with caption below. REPLACE with appropriate alt text for accessibility."
           width="800"
@@ -52,4 +57,4 @@ export const LargeImageCaptionComponent = createStory(args => {
       </figure>
     </div>
   );
-});
+};

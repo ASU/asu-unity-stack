@@ -351,14 +351,15 @@ For example, if you want to use the `npm` package `lite-server` follow these ste
 
 # Storybook
 
- - [Card Carousel](https://unity.web.asu.edu/@asu/component-carousel/index.html?path=/story/card-carousel--three-item-carousel)
- - [Image Carousel](https://unity.web.asu.edu/@asu/component-carousel/index.html?path=/story/image-carousel--image-carousel-default)
- - [Image Galllery Carousel](https://unity.web.asu.edu/@asu/component-carousel/index.html?path=/story/image-gallery-carousel--image-gallery-carousel-default)
- - [Testomonial Carousel](https://unity.web.asu.edu/@asu/component-carousel/index.html?path=/story/testimonial-carousel--testimonial-carousel-default)
+ - [Card Carousel](https://asu.github.io/asu-unity-stack/@asu/component-carousel/index.html?path=/story/card-carousel--three-item-carousel)
+ - [Image Carousel](https://asu.github.io/asu-unity-stack/@asu/component-carousel/index.html?path=/story/image-carousel--image-carousel-default)
+ - [Image Galllery Carousel](https://asu.github.io/asu-unity-stack/@asu/component-carousel/index.html?path=/story/image-gallery-carousel--image-gallery-carousel-default)
+ - [Testomonial Carousel](https://asu.github.io/asu-unity-stack/@asu/component-carousel/index.html?path=/story/testimonial-carousel--testimonial-carousel-default)
 
 # UX documents
 
-- [XD Carousel](https://xd.adobe.com/view/56f6cb78-9af5-4b12-b4ce-ef319f71113f-03a5/screen/c4656960-099f-4e74-9f14-7647a5053621/)
+- [XD Carousel](https://assets.adobe.com/public/fb14b288-bf63-47e0-5d30-384de5560455/1d2d856b-86c3-4f0e-b388-f32115a27c56)
+- [XD Carousel (old version)](https://xd.adobe.com/view/56f6cb78-9af5-4b12-b4ce-ef319f71113f-03a5/screen/c4656960-099f-4e74-9f14-7647a5053621/)
 
 
 ## Future improvements

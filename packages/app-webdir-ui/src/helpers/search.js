@@ -7,6 +7,7 @@ import {
   subdomainConverter,
   anonConverter,
 } from "./dataConverter";
+import { validateAndCleanURL } from "./validateUrl";
 
 const axios = require("axios");
 
@@ -19,6 +20,21 @@ export const engineNames = {
   WEB_DIRECTORY_PEOPLE_AND_DEPS: "profiles_dept_and_people",
   WEB_DIRECTORY_FACULTY_RANK: "web_dir_faculty_rank",
 };
+
+/**
+ * Logs a click event for analysis and improvement of search results.
+ *
+ * @param {string} query - The search query.
+ * @param {string} docId - The ID of the clicked document.
+ * @param {string} reqId - The request ID associated with the query.
+ * @param {string[]} tags - An array of tags associated with the click event.
+ * @param {Object} props - Additional properties and configuration options.
+ * @param {boolean} props.loggedIn - Whether the user is logged in.
+ * @param {string} props.API_URL - The base API URL.
+ * @param {string} props.searchApiVersion - The search API version.
+ * @returns {Promise} A promise that resolves when the click event is logged.
+ * @throws {Error} If there's an issue with logging the click event.
+ */
 
 export function logClick(query, docId, reqId, tags, { ...props }) {
   async function sendData(resolve, reject) {
@@ -52,6 +68,12 @@ export function logClick(query, docId, reqId, tags, { ...props }) {
 
   return new Promise(sendData);
 }
+/** Returns the top result with the highest score from a list of results.
+ *
+ * @param {Object[]} results - The list of results to search.
+ * @param {string} engineName - The name of the search engine.
+ * @returns {Object|null} The top result or null if no results meet the threshold.
+ */
 
 const getTopResult = (results, engineName) => {
   const topResult = results.reduce((prev, curr) => {
@@ -68,6 +90,20 @@ const getTopResult = (results, engineName) => {
   }
   return null;
 };
+
+/**
+ * Formats search results for display, including selecting the top result.
+ *
+ * @param {Object} options - Options for formatting the results.
+ * @param {string} options.engineName - The name of the search engine.
+ * @param {Object} options.results - The search results to format.
+ * @param {string} options.cardSize - The size of the result cards.
+ * @param {string} options.appPathFolder - The application path folder.
+ * @param {string|null} options.localSection - The local section information.
+ * @param {Object} options.props - Additional properties and configuration options.
+ * @returns {Object} Formatted search results.
+ */
+
 const standardFormatter = ({
   engineName,
   results,
@@ -347,6 +383,8 @@ export const performSearch = function ({
   display,
   rankGroup,
   controller,
+  size,
+  restClientTag,
 }) {
   async function search(resolve, reject) {
     const currentSort = engine.supportedSortTypes.includes(sort) ? sort : "";
@@ -386,6 +424,10 @@ export const performSearch = function ({
         const deptIDValues = filters.deptIds.map(n => `${n}`).join(",");
         query = `${query}&dept_ids=${deptIDValues}`;
       }
+      if (display?.doNotDisplayProfiles) {
+        const doNotDisplayProfilesParam = `profiles_to_exclude=${display.doNotDisplayProfiles}`;
+        query = `${query}&${doNotDisplayProfilesParam}`;
+      }
       if (filters && filters.peopleIds) {
         const asuriteIDParam = filters.peopleIds.map(n => `${n}`).join(",");
         query = `${query}&asurite_ids=${asuriteIDParam}`;
@@ -413,48 +455,44 @@ export const performSearch = function ({
       if (rankGroup) {
         query = `${query}&rank_group=${rankGroup}`;
       }
-      APICall = () => axios.get(query, { signal: controller.signal });
+      if (restClientTag) {
+        query = `${query}&client=${restClientTag}`;
+      }
+      const validatedQueryUrl = validateAndCleanURL(query);
+      APICall = () =>
+        axios.get(validatedQueryUrl, { signal: controller.signal });
     } else {
       if (!filters) {
         return;
       }
-      const tokenResponse = await axios.get(`${engine.API_URL}/session/token`);
+      const validatedTokenUrl = validateAndCleanURL(
+        `${engine.API_URL}/session/token`
+      );
+      const tokenResponse = await axios.get(validatedTokenUrl);
       const headers = {
         "X-CSRF-Token": tokenResponse.data,
       };
       const data = {
-        "size":
-          filters.peopleInDepts < itemsPerPage
-            ? filters.peopleInDepts.length
-            : itemsPerPage,
-        "page": page || "",
+        "size": size,
+        "page": page,
         "sort-by": currentSort || "",
         "full_records": true,
         "profiles": filters.peopleInDepts,
         "last_init": filters.lastInit || null,
+        "profiles_to_exclude": display.doNotDisplayProfiles || null,
       };
-      APICall = () => axios.post(query, data, { headers });
+
+      if (restClientTag) {
+        query = `${query}?&client=${restClientTag}`;
+      }
+      const validatedDataUrl = validateAndCleanURL(query);
+
+      APICall = () => axios.post(validatedDataUrl, data, { headers });
     }
 
     APICall()
       .then(res => {
-        // engine.inFlight = false;
-        // engine.abortController = null;
         const { data } = res;
-        if (
-          engine.method === "POST" &&
-          (sort === "last_name_desc" || sort === "last_name_asc")
-        ) {
-          data.sort((a, b) =>
-            a.full_record.display_last_name.raw.localeCompare(
-              b.full_record.display_last_name.raw
-            )
-          );
-
-          if (sort === "last_name_desc") {
-            data.reverse();
-          }
-        }
         resolve(data);
       })
       .catch(err => {
@@ -464,30 +502,4 @@ export const performSearch = function ({
       });
   }
   return new Promise(search);
-};
-
-export const filterOutResults = (results, stringOfProfilesToExclude) => {
-  let arrOfTotalResults;
-  let filteredResults;
-  if (!Array.isArray(results)) {
-    arrOfTotalResults = results.results;
-  } else {
-    arrOfTotalResults = results;
-  }
-  const tempProfilesToFilterOut = stringOfProfilesToExclude
-    .split(",")
-    .map(x => x.trim());
-  if (arrOfTotalResults[0].asurite_id.raw) {
-    filteredResults = arrOfTotalResults.filter(x => {
-      return !tempProfilesToFilterOut.includes(x.asurite_id.raw);
-    });
-  } else {
-    filteredResults = arrOfTotalResults.filter(x => {
-      return !tempProfilesToFilterOut.includes(x.asurite_id);
-    });
-  }
-  if (!Array.isArray(results)) {
-    return { meta: { ...results.meta }, results: filteredResults };
-  }
-  return filteredResults;
 };

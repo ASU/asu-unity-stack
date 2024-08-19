@@ -1,21 +1,25 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Accordions", "Atoms", "Templates");
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
+import React from "react";
 
-const FoldableCardElement = (
-  accordionID = null,
-  linkID = null,
-  bodyID = null
-) => (
+import { defaultDecorator } from "../../../../../shared/components/Layout.js";
+export default {
+  title: "Atoms/Accordions/Templates",
+  decorators: [defaultDecorator],
+};
+
+
+const Template = ({
+  accordionID = "",
+  linkID = "",
+  bodyID = ""
+}) => (
   <div className="accordion">
     <div className="accordion-item mt-3">
       <div className="accordion-header">
         <h3>
-          <a
+          <button
             id={`${linkID}`}
-            className="collapsed"
             data-bs-toggle="collapse"
-            data-bs-target={bodyID ? `#${bodyID}` : ""}
+            className="collapsed"
             href={bodyID ? `#${bodyID}` : ""}
             role="button"
             aria-expanded="false"
@@ -29,46 +33,59 @@ const FoldableCardElement = (
           >
             This card unfolds.
             <span className="fas fa-chevron-up"></span>
-          </a>
+          </button>
         </h3>
       </div>
       <div
         id={`${bodyID}`}
-        className="collapse accordion-body"
+        className="collapse"
         aria-labelledby={`${linkID}`}
         data-bs-parent={accordionID ? `#${accordionID}` : ""}
       >
-        <h4>This is a quaternary headline</h4>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-          veniam, quis nostrud
-        </p>
-        <h5>This is a level five headline. There's a fancy word for that too.</h5>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-          veniam, quis nostrud
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor
-        </p>
+        <div className="accordion-body">
+          <h4>This is a quaternary headline</h4>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud
+          </p>
+          <h5>
+            This is a level five headline. There's a fancy word for that too.
+          </h5>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor
+          </p>
+        </div>
       </div>
     </div>
   </div>
 );
 
-export const FoldableCard = createStory(
-  FoldableCardElement("", "card", "cardBody"),
-  { initFunc }
-);
+export const FoldableCard = Template.bind({});
+FoldableCard.args = {
+  linkID: "card",
+  bodyID: "cardBody",
+}
 
-export const Accordion = createStory(
+export const Accordion = () =>
   <div className="accordion" id="accordionExample">
-    {FoldableCardElement("accordionExample", "cardOne", "cardBodyOne")}
-    {FoldableCardElement("accordionExample", "cardTwo", "cardBodyTwo")}
-    {FoldableCardElement("accordionExample", "cardThree", "cardBodyThree")}
-  </div>,
-  { initFunc }
-);
+    <Template
+      accordionID="accordionExample"
+      linkID="cardOne"
+      bodyID="cardBodyOne" />
+    <Template
+      accordionID="accordionExample"
+      linkID="cardTwo"
+      bodyID="cardBodyTwo" />
+    <Template
+      accordionID="accordionExample"
+      linkID="cardThree"
+      bodyID="cardBodyThree" />
+  </div>;
+Accordion.parameters = { controls: { disable: true } };

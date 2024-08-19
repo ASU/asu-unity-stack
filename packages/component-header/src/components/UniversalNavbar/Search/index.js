@@ -3,17 +3,18 @@ import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useRef, useEffect } from "react";
 
+import { trackGAEvent } from "../../../../../../shared";
 import { useAppContext } from "../../../core/context/app-context";
 import { useIsMobile } from "../../../core/hooks/isMobile";
-import { trackGAEvent } from "../../../core/services/googleAnalytics";
 import { SearchWrapper } from "./index.styles";
 
 const SEARCH_GA_EVENT = {
   event: "search",
   action: "type",
   name: "onenter",
-  section: "topbar",
   type: "main search",
+  region: "navbar",
+  section: "topbar",
 };
 
 const Search = () => {
@@ -26,17 +27,54 @@ const Search = () => {
     if (open) inputRef.current.focus();
   }, [open]);
 
+  const handleSearch = e => {
+    const form = e.target;
+    e.preventDefault();
+    /**
+     * Issue: Callback not currently available
+     * We need to ensure dataLayer events are being logged correctly
+     * Soluton might be in GA4 settings with a form event targeting the element ID
+     *
+     * This solution does not guarantee the event is logged before the page
+     * redirects.
+     * Preventing form submission with arbitrary timeout is always bad, but this
+     * may be small enough to not degrade the experience
+     *
+     * TODO: UDS-1612
+     */
+    trackGAEvent({
+      ...SEARCH_GA_EVENT,
+      text: e.target.elements.q.value,
+    });
+    setTimeout(() => {
+      form.submit();
+    }, 100);
+  };
+
   const handleChangeVisibility = () => {
-    setOpen(prevState => !prevState);
+    setOpen(prevState => {
+      const newState = !prevState;
+
+      trackGAEvent({
+        ...SEARCH_GA_EVENT,
+        event: "link",
+        action: "click",
+        name: "onclick",
+        text: newState ? "search icon" : "close search icon",
+      });
+      return newState;
+    });
   };
   return (
     <SearchWrapper
       // @ts-ignore
       breakpoint={breakpoint}
       action={searchUrl}
+      onSubmit={handleSearch}
       method="get"
       name="gs"
       className={open ? "open-search" : ""}
+      data-testid="universal-nav-search-form"
     >
       {!isMobile ? (
         <>
@@ -45,6 +83,7 @@ const Search = () => {
             aria-label="Search asu.edu"
             onClick={handleChangeVisibility}
             className="search-button"
+            data-testid="search-button"
           >
             <FontAwesomeIcon icon={faSearch} />
           </button>
@@ -58,18 +97,13 @@ const Search = () => {
                 aria-labelledby="header-top-search"
                 placeholder="Search asu.edu"
                 required
-                onChange={e =>
-                  trackGAEvent({
-                    ...SEARCH_GA_EVENT,
-                    text: e.target.value,
-                  })
-                }
               />
               <button
                 type="button"
                 aria-label="Search asu.edu"
                 onClick={handleChangeVisibility}
                 className="close-search"
+                data-testid="close-search"
               >
                 <FontAwesomeIcon icon={faTimes} />
               </button>

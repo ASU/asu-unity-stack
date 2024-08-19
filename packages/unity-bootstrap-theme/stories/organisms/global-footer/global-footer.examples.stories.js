@@ -1,6 +1,5 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Global Footer", "Organisms", "Examples", {footer: null, template: null});
-
+import { htmlRootDecorator } from "../../../../../shared/components/Layout.js";
+import { initFooterGA as initFunc } from "./global-footer";
 import {
   GlobalElementsOnly,
   ZeroColumns,
@@ -11,19 +10,29 @@ import {
   FourColumns,
   FiveColumns,
   SixColumns,
-} from "./global-footer.templates.stories.js";
-import { initFooterGA as initFunc } from "./global-footer";
+} from "./global-footer.templates.js";
 
-const options = {
-  initFunc,
-  omitTemplate: true
-}
-export const GlobalElementsOnlyExample = createStory(GlobalElementsOnly, options);
-export const ZeroColumnsExample = createStory(ZeroColumns, options);
-export const OneColumnExample = createStory(OneColumn, options);
-export const OneColumnNoLogoOrSocialExample = createStory(OneColumnNoLogoOrSocial, options);
-export const TwoColumnsExample = createStory(TwoColumns, options);
-export const ThreeColumnsExample = createStory(ThreeColumns, options);
-export const FourColumnsExample = createStory(FourColumns, options);
-export const FiveColumnsExample = createStory(FiveColumns, options);
-export const SixColumnsExample = createStory(SixColumns, options);
+export default {
+  title: "Organisms/Global Footer/Examples",
+  argTypes: {},
+  parameters: {
+    footer: {
+      disable: true
+    },
+    initFunc: {
+      disable: false,
+      code: initFunc
+    },
+    controls: { disable: true }
+  },
+  decorators: [htmlRootDecorator]
+};
+export const GlobalElementsOnlyExample = GlobalElementsOnly.bind({});
+export const ZeroColumnsExample = ZeroColumns.bind({});
+export const OneColumnExample = OneColumn.bind({});
+export const OneColumnNoLogoOrSocialExample = OneColumnNoLogoOrSocial.bind({});
+export const TwoColumnsExample = TwoColumns.bind({});
+export const ThreeColumnsExample = ThreeColumns.bind({});
+export const FourColumnsExample = FourColumns.bind({});
+export const FiveColumnsExample = FiveColumns.bind({});
+export const SixColumnsExample = SixColumns.bind({});

@@ -1,3 +1,103 @@
+# [@asu/component-header-v2.3.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.8...@asu/component-header-v2.3.0) (2024-08-05)
+
+
+### Bug Fixes
+
+* **component-header:** add escape functionality when inside of menu dropdown ([373fcec](https://github.com/asu/asu-unity-stack/commit/373fcecf79f73e224b99a96989c304a729e9cd2d))
+* **component-header:** add keyboard navigation ([01bde2a](https://github.com/asu/asu-unity-stack/commit/01bde2a2d4e74cb5281edc2b453b5d603f5e7a67))
+
+
+### Features
+
+* **component-header:** removed display:unset on Header hidden inputs ([f029963](https://github.com/asu/asu-unity-stack/commit/f029963cf35da423438fce5a249e57e5161f1362))
+* **component-header:** return display:unset and change the selector for the styles to input[name=q] ([606ca9b](https://github.com/asu/asu-unity-stack/commit/606ca9bb30c30012eb861e6a3adf94ad130cb580))
+
+# [@asu/component-header-v2.2.8](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.7...@asu/component-header-v2.2.8) (2024-07-22)
+
+
+### Bug Fixes
+
+* **component-header:** changed aria label header ([d13644f](https://github.com/asu/asu-unity-stack/commit/d13644ff3099dd8493dc5f25680ec456c5dc25cc))
+* **component-header:** update nav labels for accessibility ([70b1b88](https://github.com/asu/asu-unity-stack/commit/70b1b8866f60fa97c7f7bb31fa3a541cebd07099))
+
+# [@asu/component-header-v2.2.7](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.6...@asu/component-header-v2.2.7) (2024-06-19)
+
+
+### Bug Fixes
+
+* **component-header:** add hardcoded 'region' to gtm info ([378e2d6](https://github.com/asu/asu-unity-stack/commit/378e2d61d98ed19cc27b1f1d615011e19e5075a9))
+* **component-header:** added default GTM info to link clicks ([c0aa391](https://github.com/asu/asu-unity-stack/commit/c0aa3918abf51c1362f3fac80e4d18b837325fcc))
+
+# [@asu/component-header-v2.2.6](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.5...@asu/component-header-v2.2.6) (2024-06-12)
+
+
+### Bug Fixes
+
+* **component-header:** fixed form submit null issue ([3da2ce1](https://github.com/asu/asu-unity-stack/commit/3da2ce1002cd8865c6cb29d74ea7c09087d9a17b))
+
+# [@asu/component-header-v2.2.5](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.4...@asu/component-header-v2.2.5) (2024-04-08)
+
+
+### Bug Fixes
+
+* **component-header:** fixed CLS issue with mobile header ([0c05576](https://github.com/asu/asu-unity-stack/commit/0c05576f16adc2e4ff73da71b193e5fcf1b29abf))
+* **component-header:** refactored mobile hook to fix CLS ([ac48786](https://github.com/asu/asu-unity-stack/commit/ac487868db337180efe39b8b53ad05257dd35616))
+
+# [@asu/component-header-v2.2.4](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.3...@asu/component-header-v2.2.4) (2024-03-19)
+
+
+### Bug Fixes
+
+* **component-header:** datalayer should only fire once for search ([c2f7660](https://github.com/asu/asu-unity-stack/commit/c2f7660f9f1ee4be7f67aa886af9812919de0502))
+
+# [@asu/component-header-v2.2.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.2...@asu/component-header-v2.2.3) (2024-01-25)
+
+
+### Bug Fixes
+
+* **component-header:** selected prop only on top level navTree items ([30594a7](https://github.com/asu/asu-unity-stack/commit/30594a713b829f20af181aceb23dbe56fb778914))
+
+# [@asu/component-header-v2.2.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.1...@asu/component-header-v2.2.2) (2024-01-24)
+
+
+### Bug Fixes
+
+* **component-header:** skip active page if navTree undefined/empty ([5097170](https://github.com/asu/asu-unity-stack/commit/509717057defaa96bb11c19acc81fdb27e53e8c0))
+
+# [@asu/component-header-v2.2.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.0...@asu/component-header-v2.2.1) (2024-01-24)
+
+
+### Bug Fixes
+
+* **component-header:** trigger build ([b0f7b65](https://github.com/asu/asu-unity-stack/commit/b0f7b6506d0bbc687f75f959decf583509141e9f))
+
+# [@asu/component-header-v2.2.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.1.0...@asu/component-header-v2.2.0) (2024-01-11)
+
+
+### Bug Fixes
+
+* **component-header:** modified global gtm function props ([1ecc70a](https://github.com/asu/asu-unity-stack/commit/1ecc70ada5a80586ce658dab44b41cd7b6ad5778))
+* renamed shared folder to match sahred/services ([860c6f4](https://github.com/asu/asu-unity-stack/commit/860c6f44d42119956cbaa36d8c9d8798613c76fa))
+
+
+### Features
+
+* **component-header:** added gtm global variable tracking ([af81988](https://github.com/asu/asu-unity-stack/commit/af8198840da386a9268ecdcb8c1a891284c2175e))
+
+# [@asu/component-header-v2.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.8...@asu/component-header-v2.1.0) (2023-11-28)
+
+
+### Features
+
+* **component-header:** added prop to conditionally render header as div instead of header element ([5cc9d90](https://github.com/asu/asu-unity-stack/commit/5cc9d907481de814659da62c06e2ad5f11bfe60e))
+
+# [@asu/component-header-v2.0.8](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.7...@asu/component-header-v2.0.8) (2023-11-17)
+
+
+### Bug Fixes
+
+* **component-header:** update Peer Dependency Components-core to allow version 2 or 3 ([bb3eb07](https://github.com/asu/asu-unity-stack/commit/bb3eb07e50f4811d3a78d38c4304a3a45b3568c7))
+
 # [@asu/component-header-v2.0.8-testing.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.7...@asu/component-header-v2.0.8-testing.1) (2023-10-20)
 
 

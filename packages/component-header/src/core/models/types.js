@@ -1,64 +1,63 @@
 // @ts-check
 
+// @ts-check
+
 /**
- * @typedef {{
- *    alt: string
- *    title: string
- *    src: string
- *    mobileSrc: string
- *    brandLink: string
- *  }} Logo
+ * @typedef {object} Logo
+ * @property {string} alt
+ * @property {string} title
+ * @property {string} src
+ * @property {string} mobileSrc
+ * @property {string} brandLink
  */
 
 /**
- * @typedef {{
- *  href: string
- *  color?: "gold" | "maroon" | "light" | "dark"
- *  text: string
- *  classes?: string
- *  onClick?: () => void
- *  onFocus?: () => void
- *  }} Button
+ * @typedef {object} Button
+ * @property {string} href
+ * @property {("gold"|"maroon"|"light"|"dark")} [color]
+ * @property {string} text
+ * @property {string} [classes]
+ * @property {function} [onClick]
+ * @property {function} [onFocus]
  */
 
 /**
- * @typedef {{
- *  id: number
- *  href?: string
- *  text?: string
- *  type?: string
- *  selected?: boolean
- *  items?: [object][]
- *  buttons?: Button[]
- *  class?: string
- *  onClick?: (e) => void
- * }} NavTreeProps
+ * @typedef {object} NavTreeProps
+ * @property {number} id
+ * @property {string} [href]
+ * @property {string} [text]
+ * @property {string} [type]
+ * @property {boolean} [selected]
+ * @property {object[]} [items]
+ * @property {Button[]} [buttons]
+ * @property {string} [class]
+ * @property {function} [onClick]
  */
 
 /**
- * @typedef {{
- *  isPartner: boolean
- *  navTree: NavTreeProps[]
- *  title?: string
- *  baseUrl?: string
- *  parentOrg?:  string
- *  parentOrgUrl?: string
- *  partnerLogo: Logo
- *  logo: Logo
- *  loggedIn: boolean
- *  userName: string
- *  loginLink: string
- *  onLoginClick?: (e) => void
- *  logoutLink:  string
- *  onLogoutClick?: (e) => void
- *  buttons: Button[]
- *  breakpoint: "Lg" | "Xl"
- *  animateTitle: boolean
- *  expandOnHover: boolean
- *  mobileNavTree: NavTreeProps[]
- *  searchUrl: string
- *  site: string
- * }} HeaderProps
+ * @typedef {object} HeaderProps
+ * @property {boolean} isPartner
+ * @property {NavTreeProps[]} navTree
+ * @property {string} [title]
+ * @property {string} [baseUrl]
+ * @property {string} [parentOrg]
+ * @property {string} [parentOrgUrl]
+ * @property {Logo} partnerLogo
+ * @property {Logo} logo
+ * @property {boolean} loggedIn
+ * @property {string} userName
+ * @property {string} loginLink
+ * @property {function} [onLoginClick]
+ * @property {string} logoutLink
+ * @property {function} [onLogoutClick]
+ * @property {Button[]} buttons
+ * @property {("Lg"|"Xl")} breakpoint
+ * @property {boolean} animateTitle
+ * @property {boolean} expandOnHover
+ * @property {NavTreeProps[]} mobileNavTree
+ * @property {string} searchUrl
+ * @property {string} site
+ * @property {string} renderDiv - Can be either "true" or "false".
  */
 
 export const JSDOC = "jsdoc";

@@ -72,6 +72,23 @@ const defaultArgs = {
   actionUrls,
   hero: null,
   introContent: {
+    breadcrumbs: [
+      {
+        text: "Academic programs",
+        url: "#",
+      },
+      {
+        text: "Undergraduate degrees",
+        // this is just an example working on Storybook
+        url: `${getStoryBookBaseUrl()}?path=/story/program-listing-page--default`,
+      },
+      {
+        text: "Degree title",
+        // this is just an example working on Storybook
+        url: `${getStoryBookBaseUrl()}?path=/story/program-detail-page--with-content`,
+        isActive: true,
+      },
+    ],
     type: "text",
     title: {
       text: "This is introductory marketing copy. Lorem ipsum dolor sit amet",
@@ -111,7 +128,19 @@ const defaultArgs = {
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs,
+};
+
+export const DefaultGraduate = Template.bind({});
+DefaultGraduate.args = {
+  ...defaultArgs,
   introContent: null,
+  programList: {
+    ...defaultArgs.programList,
+    dataSource: {
+      ...defaultArgs.programList.dataSource,
+      program: "graduate",
+    },
+  },
 };
 
 /**
@@ -171,10 +200,8 @@ WithCollegeAcadOrgAndDepartmentCode.args = {
     dataSource: {
       // @ts-ignore
       ...Default.args.programList.dataSource,
-      // collegeAcadOrg: "CGF",
-      // departmentCode: "CSFIS",
-      collegeAcadOrg: "CES",
-      // departmentCode: "CGRAPHINFO",
+      departmentCode: "CPUBAFF",
+      collegeAcadOrg: "CPP",
     },
   },
 };

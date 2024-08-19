@@ -1,4 +1,4 @@
-export * from "./PreSearchMessage";
+export * from "./PreSearchMessages";
 export * from "./ProfileCard";
 export * from "./ResultCard";
 export * from "./SearchPage";

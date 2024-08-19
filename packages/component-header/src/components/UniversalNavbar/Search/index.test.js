@@ -29,21 +29,18 @@ describe("#Search Component", () => {
     expect(component).toBeDefined();
   });
 
-  it("should show search field", () => {
-    const searchButton = component.container.querySelector(".search-button");
+  it("should open and close the universal search field", async () => {
+    const searchButton = await component.findByTestId("search-button");
     fireEvent.click(searchButton);
-    expect(component.container.firstElementChild.className).toContain(
-      "open-search"
-    );
-  });
 
-  it("should close search field", () => {
-    const searchButton = component.container.querySelector(".search-button");
-    fireEvent.click(searchButton);
-    const closeButton = component.container.querySelector(".close-search");
+    const searchField = await component.findByPlaceholderText("Search asu.edu");
+    expect(searchField).toBeVisible();
+
+    const closeButton = await component.findByTestId("close-search");
     fireEvent.click(closeButton);
-    expect(component.container.firstElementChild.className).not.toContain(
-      "open-search"
-    );
+
+    const searchFieldAfterClose =
+      component.queryByPlaceholderText("Search asu.edu");
+    expect(searchFieldAfterClose).not.toBeInTheDocument();
   });
 });

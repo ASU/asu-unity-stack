@@ -1,8 +1,13 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Sidebar", "Atoms", "Templates");
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
+import React from "react";
 
-export const Sidebar = createStory(
+import { defaultDecorator, htmlRootDecorator } from "../../../../../shared/components/Layout";
+
+export default {
+  title: "Atoms/Sidebar/Templates",
+  decorators: [ defaultDecorator ],
+  parameters: { controls: { disable: true } },
+};
+export const Sidebar = () => (
   <div className="col-md-4">
     <h2>Lorem ipsum</h2>
     <div
@@ -191,9 +196,5 @@ export const Sidebar = createStory(
       </div>
     </nav>
     {/* end .sidebar */}
-  </div>,
-  { initFunc }
+  </div>
 );
-Sidebar.args = {
-  template: 1,
-};

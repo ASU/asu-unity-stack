@@ -23,12 +23,12 @@ const TabHeader = forwardRef(function TabHeader(props, ref) {
         },
         scrollIntoView() {
           const middle =
-            inputRef.current.offsetWidth / 2 + inputRef.current.offsetLeft;
+            inputRef.current?.offsetWidth / 2 + inputRef.current.offsetLeft;
           const targetMiddle =
-            inputRef.current.offsetParent.scrollLeft +
-            inputRef.current.offsetParent.offsetWidth / 2;
+            inputRef.current?.offsetParent?.scrollLeft +
+            inputRef.current?.offsetParent?.offsetWidth / 2;
 
-          inputRef.current.offsetParent.scrollBy({
+          inputRef.current?.offsetParent?.scrollBy({
             left: middle - targetMiddle,
           });
         },

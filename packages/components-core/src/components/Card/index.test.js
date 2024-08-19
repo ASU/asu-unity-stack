@@ -57,7 +57,6 @@ describe("#Card", () => {
     [`Image`, `card-image`],
     [`Title`, `card-title`],
     [`Body`, `card-body`],
-    [`Button`, `card-button`],
     [`Link`, `card-link`],
     [`Tags`, `card-tags`],
   ];

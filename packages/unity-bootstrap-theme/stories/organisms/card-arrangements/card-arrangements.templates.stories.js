@@ -1,54 +1,47 @@
 import React from "react";
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
+
+import { defaultDecorator } from "../../../../../shared/components/Layout.js";
 import { cardNoTemplates as Card } from "../../molecules/cards/cards.templates.stories";
 import { horizontalCardsMap as horizontalCard } from "../../molecules/cards/cardVariations.js"
-const extraOptions = {
-  numCards: {
-    name: "Columns",
-    options: [1, 2, 3, 4, 5, 6],
-    defaultValue: 2,
-    control: {
-      type: "radio",
+
+export default {
+  title: "Organisms/Content Sections/Card Arrangements/Templates",
+  decorators: [ defaultDecorator ],
+  argTypes: {
+    numCards: {
+      name: "Columns",
+      control: { type: "range", min: 1, max: 6, step: 1 },
     },
-  },
-  vertical: {
-    name: "Vertical",
-    control: { type: "boolean" },
-    defaultValue: false,
-  },
-  autoArrangement: {
-    name: "Auto Arrangement",
-    control: { type: "boolean" },
-    defaultValue: false,
-  },
-  cardType: {
-    name: "Card Type",
-    options: ["", "degree", "event", "story"],
-    defaultValue: "story",
-    control: {
-      type: "radio",
-      labels: {
-        "": "Default",
-        degree: "Degree",
-        event: "Event",
-        story: "Story",
+    vertical: {
+      name: "Vertical",
+      control: { type: "boolean" },
+    },
+    autoArrangement: {
+      name: "Auto Arrangement",
+      control: { type: "boolean" },
+    },
+    cardType: {
+      name: "Card Type",
+      options: ["default", "degree", "event", "story"],
+      mapping: {
+        "Default": "",
+      },
+      control: {
+        type: "radio",
       },
     },
   },
-  template: null
+  args: {
+    cardType: "story",
+    autoArrangement: false,
+    vertical: false,
+    numCards: 2,
+  },
 };
 
-export default createComponent(
-  "Content Sections/Card Arrangements",
-  "Organisms",
-  "Templates",
-  extraOptions
-);
-
-export const CardArrangement = createStory(
-  args => {
-    const cards = Array.from(Array(args.numCards)).map(() => {
+export const CardArrangement =
+  ({cardType,autoArrangement,vertical,numCards}) => {
+    const cards = Array.from(Array(numCards)).map(() => {
       return Card({
         cardHeader: "image",
         event: false,
@@ -60,12 +53,12 @@ export const CardArrangement = createStory(
     return (
       <div
         className={`uds-card-arrangement ${
-          args.vertical ? "uds-card-arrangement-vertical" : ""
+          vertical ? "uds-card-arrangement-vertical" : ""
         }`}
       >
         <div className="uds-card-arrangement-content-container">
           <h2>Lorem ipsum dolor sit amet</h2>
-          {args.vertical && (
+          {vertical && (
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -84,35 +77,35 @@ export const CardArrangement = createStory(
         </div>
         <div
           className={`uds-card-arrangement-card-container  ${
-            args.autoArrangement ? "auto-arrangement" : ""
+            autoArrangement ? "auto-arrangement" : ""
           }`}
         >
           {cards}
         </div>
       </div>
     );
-  },
-  { initFunc }
-);
+  };
 CardArrangement.args = {
-  template: 1,
   numCards: 2,
 };
+CardArrangement.argTypes = {
+  cardType: {table:{disable:true}}
+}
 
-export const CardArrangementHorizontal = createStory(
-  args => {
-    const cards = Array.from(Array(args.numCards)).map((x) => {
-      return horizontalCard(args.cardType);
+export const CardArrangementHorizontal =
+({cardType,autoArrangement,vertical,numCards}) => {
+    const cards = Array.from(Array(numCards)).map((x) => {
+      return horizontalCard(cardType);
     });
     return (
       <div
         className={`uds-card-arrangement ${
-          args.vertical ? "uds-card-arrangement-vertical" : ""
+          vertical ? "uds-card-arrangement-vertical" : ""
         }`}
       >
         <div className="uds-card-arrangement-content-container">
           <h2>Lorem ipsum dolor sit amet</h2>
-          {args.vertical && (
+          {vertical && (
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -131,18 +124,16 @@ export const CardArrangementHorizontal = createStory(
         </div>
         <div
           className={`uds-card-arrangement-card-container  ${
-            args.autoArrangement ? "auto-arrangement" : ""
+            autoArrangement ? "auto-arrangement" : ""
           }`}
         >
       {cards}
         </div>
       </div>
     );
-  },
-  { initFunc }
-);
+  }
+;
 
 CardArrangementHorizontal.args = {
-  template: 1,
   numCards: 2,
 };

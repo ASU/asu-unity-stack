@@ -17,35 +17,43 @@
     background-color: white;
     height: 104px;
     cursor: pointer;
+
     .content {
       flex-grow: 1;
+
       .header {
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
+
         .btn-expand {
           margin: 0 0 0 $uds-size-spacing-1;
           padding: 0;
-          svg {
-            font-size: 1.25rem;
-            float: right;
-          }
+          background-color: unset;
+          border: none;
+          flex-grow: 1;
 
-          &:focus {
-            box-shadow: none !important;
+          &:focus-visible {
+            outline: none;
           }
         }
+
         h4 {
           display: -webkit-box;
           -webkit-box-orient: vertical;
           overflow: hidden;
+          color: $uds-color-base-gray-7;
         }
+
         svg.fa-chevron-up,
         i.fa-chevron-up {
           transition: all 0.3s ease-in-out;
+          color: $uds-color-base-gray-7;
         }
       }
-      p {
+
+      >p,
+      .header>p {
         display: -webkit-box;
         -webkit-box-orient: vertical;
         overflow: hidden;
@@ -53,32 +61,40 @@
         line-height: 1.25rem;
         -webkit-line-clamp: 3;
       }
-      a {
+
+      >a {
         font-size: $uds-size-font-small;
         font-weight: 600;
+
         .icon-small {
           margin-left: 5px;
           font-size: $uds-size-font-small;
         }
       }
     }
+
     &.active {
       height: 100%;
+
       .content {
         .header {
           h4 {
             display: block;
           }
+
           svg.fa-chevron-up,
           i.fa-chevron-up {
             transform: rotate(180deg);
           }
         }
-        p {
+
+        >p,
+        .header>p {
           -webkit-line-clamp: 12;
         }
       }
     }
+
     .icons {
       display: flex;
       font-size: $uds-size-spacing-3;
@@ -94,10 +110,41 @@
       display: flex;
       justify-content: center;
       align-items: center;
+
       img {
         max-width: 100%;
       }
     }
+
+    &:has(.info-layer.active) {
+      img {
+        visibility: hidden;
+        transition: visibility .3s ease-in;
+      }
+    }
+
+    .info-layer {
+      a.read-more {
+        display: none;
+      }
+
+      &.active {
+        .content {
+          a.read-more {
+            display: block;
+          }
+        }
+      }
+
+      .content {
+        .header {
+          >p {
+            width: 90%;
+          }
+        }
+      }
+    }
+
     .citation {
       padding-left: $uds-size-spacing-3;
       padding-right: $uds-size-spacing-3;
@@ -105,7 +152,7 @@
   }
 
   &.large-image {
-    > img {
+    img {
       z-index: 0;
       position: absolute;
       top: 50%;
@@ -116,20 +163,41 @@
       object-fit: cover;
     }
 
+    &:has(.info-layer.active) {
+      img {
+        visibility: hidden;
+        transition: visibility .3s ease-in;
+      }
+    }
+
     .info-layer {
       .content {
         .header {
-          h4 {
-            min-height: 52px; // To avoid having only one line
-            max-width: 300px; // To avoid having only one line
-            margin: 0 0 $uds-size-spacing-3;
-            -webkit-line-clamp: 2;
+          .btn-expand {
+            display: flex;
+            justify-content: space-between;
+
+            h4 {
+              min-height: 52px; // To avoid having only one line
+              max-width: 300px; // To avoid having only one line
+              margin: 0 0 $uds-size-spacing-3;
+              -webkit-line-clamp: 2;
+            }
           }
         }
-        p {
-          -webkit-line-clamp: 12;
+
+        >p {
+          -webkit-line-clamp: 10;
+          visibility: hidden;
+          transition: visibility .3s ease-in;
+        }
+
+        a.read-more {
+          visibility: hidden;
+          transition: visibility .3s ease-in;
         }
       }
+
       &.active {
         .content {
           .header {
@@ -137,6 +205,14 @@
               min-height: unset;
               max-height: unset;
             }
+          }
+
+          >p {
+            visibility: visible;
+          }
+
+          a.read-more {
+            visibility: visible;
           }
         }
       }

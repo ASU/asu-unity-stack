@@ -3,9 +3,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { Field, useField, useFormikContext } from "formik";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useEffect } from "react";
 
 import { RfiLabel, RfiError } from "./controls-helpers";
+import { KEY } from "../../core/utils/constants";
 
 // Note: We use a mix of Field and useField here to circumvent issues
 // experienced using solely one of the other.
@@ -30,13 +31,20 @@ const RfiSelect = ({
   // NOTE: We implement custom validation related to RfiSelect in
   // RfiStepper.js in order to manage dependency logic across steps.
 
+  const defaultSelectValue = required ? "" : KEY.FALSE_EMPTY;
+  useEffect(() => {
+    if (!required && !helpers.touched && values[name] === undefined) {
+      helpers.setValue(defaultSelectValue);
+    }
+  }, []);
+
   return (
     <div className="form-group">
       <RfiLabel label={label} name={name} id={id} requiredIcon={requiredIcon} />
       <Field
         as="select"
         id={id}
-        className="form-control"
+        className="form-select"
         required={required}
         disabled={disabled}
         autoFocus={autoFocus}
@@ -46,7 +54,9 @@ const RfiSelect = ({
           onBlur?.(e);
         }}
       >
-        <option defaultValue>Select&hellip;</option>
+        <option defaultValue value={defaultSelectValue}>
+          Select&hellip;
+        </option>
         {options.map(option => (
           <option
             key={option.key ? option.key : option.value}

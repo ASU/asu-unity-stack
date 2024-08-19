@@ -78,6 +78,8 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  *    acceleratedConcurrent?: FilterOption
  *    showInactivePrograms?: boolean | "true" | "false"
  *    blacklistAcadPlans?: Array
+ *    showCerts?: "true" | "false"
+ *    program: "undergrad" | "graduate"
  * }} FiltersState
  */
 

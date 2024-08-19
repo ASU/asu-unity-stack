@@ -1,7 +1,8 @@
 // @ts-check
 import { Card, FeedContext } from "@asu/components-core";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
+import trackReactComponent from "../../../../../shared/services/componentDatalayer";
 import { feedCardButtonShape } from "../../../../components-core/src/components/FeedAnatomy/feed-prop-types";
 import { BaseFeed } from "../../core/components/BaseFeed";
 import { defaultProps } from "../../core/constants/default-props";
@@ -67,12 +68,30 @@ const ListTemplate = ({ cardButton }) => {
 /**
  * @param {FeedType} props
  */
-const CardListlNews = ({ cardButton, ...props }) => (
-  // Calling the high order component that fetch the data
-  <BaseFeed {...props}>
-    <ListTemplate cardButton={{ ...defaultProps.cardButton, ...cardButton }} />
-  </BaseFeed>
-);
+const CardListlNews = ({ cardButton, ...props }) => {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      trackReactComponent({
+        packageName: "component-news",
+        component: "CardListlNews",
+        type: "NA",
+        configuration: {
+          cardButton,
+          ...props,
+        },
+      });
+    }
+  }, []);
+
+  return (
+    // Calling the high order component that fetch the data
+    <BaseFeed {...props}>
+      <ListTemplate
+        cardButton={{ ...defaultProps.cardButton, ...cardButton }}
+      />
+    </BaseFeed>
+  );
+};
 
 CardListlNews.propTypes = { ...BaseFeed.propTypes, feedCardButtonShape };
 

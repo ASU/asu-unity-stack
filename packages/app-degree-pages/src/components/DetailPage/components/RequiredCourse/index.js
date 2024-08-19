@@ -5,7 +5,6 @@ import React from "react";
 /** @typedef {import('../../../../core/types/detail-page-types').RequiredCoursesProps} RequiredCoursesProps */
 
 const CHANGEMAJOR_URL = "https://changemajor.apps.asu.edu/";
-const ONLINE = "ONLINE";
 
 const ONCAMPUS_TITLE = "On-campus students";
 const ONLINE_TITLE = "Online students";
@@ -20,13 +19,14 @@ function RequiredCourse({
   onlineMajorMapURL = "",
   majorMapOnCampusURL = "",
   subPlnMajorMaps = [],
-  subPln = [],
+  subPlns = [],
 }) {
-  const isOnlineURL = url => {
-    return url.includes(ONLINE);
+  const getSubPlnDescription = subPlnCode => {
+    const matchingSubPln = subPlns.find(
+      subPln => subPln.acadSubPlanCode === subPlnCode
+    );
+    return matchingSubPln ? matchingSubPln.description : "";
   };
-
-  const getSubPlnDescription = subPlnCode => subPln[subPlnCode] || "";
 
   // add link to array of links if url is not empty
   const addLink = (url, text, arr) => {
@@ -42,23 +42,11 @@ function RequiredCourse({
   const oncampusLinks = [];
   const onlineLinks = [];
 
-  if (subPlnMajorMaps.length > 0) {
-    subPlnMajorMaps.forEach(item => {
-      if (!isOnlineURL(item.SubPlnMajorMapUrl)) {
-        const planDescription = getSubPlnDescription(
-          item.SubplnMajorMapSubplanCode
-        );
-        const bulletText = `${VIEW_MAJOR_MAP_WITH_SLASH} ${planDescription}`;
-        addLink(item.SubPlnMajorMapUrl, bulletText, oncampusLinks);
-      } else {
-        const planDescription = getSubPlnDescription(
-          item.SubplnMajorMapSubplanCode
-        );
-        const bulletText = `${VIEW_MAJOR_MAP_WITH_SLASH} ${planDescription}`;
-        addLink(item.SubPlnMajorMapUrl, bulletText, onlineLinks);
-      }
-    });
-  }
+  subPlnMajorMaps.forEach(item => {
+    const planDescription = getSubPlnDescription(item.acadSubPlanCode);
+    const bulletText = `${VIEW_MAJOR_MAP_WITH_SLASH} ${planDescription}`;
+    addLink(item.url, bulletText, oncampusLinks);
+  });
 
   if (majorMapOnCampusURL) {
     addLink(majorMapOnCampusURL, VIEW_MAJOR_MAP, oncampusLinks);
@@ -86,7 +74,7 @@ function RequiredCourse({
 
   // Template component for required courses section
   const RequiredCourseSection = () => (
-    <section className="container pl-0" data-testid="required-course">
+    <section className="container ps-0" data-testid="required-course">
       <h4>Required courses (major map)</h4>
       {oncampusLinks.length > 0 && renderLinks(ONCAMPUS_TITLE, oncampusLinks)}
       {onlineLinks.length > 0 && renderLinks(ONLINE_TITLE, onlineLinks)}
@@ -112,11 +100,18 @@ RequiredCourse.propTypes = {
   majorMapOnCampusURL: PropTypes.string,
   subPlnMajorMaps: PropTypes.arrayOf(
     PropTypes.shape({
-      SubplnMajorMapSubplanCode: PropTypes.string,
-      SubPlnMajorMapUrl: PropTypes.string,
+      campus: PropTypes.string,
+      acadSubPlanCode: PropTypes.string,
+      defaultFlag: PropTypes.bool,
+      url: PropTypes.string,
     })
   ),
-  subPln: PropTypes.objectOf(PropTypes.string),
+  subPlns: PropTypes.arrayOf(
+    PropTypes.shape({
+      acadSubPlanCode: PropTypes.string,
+      description: PropTypes.string,
+    })
+  ),
 };
 
 export { RequiredCourse };

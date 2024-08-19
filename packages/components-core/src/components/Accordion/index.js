@@ -2,8 +2,8 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
+import { trackGAEvent } from "../../../../../shared";
 import { accordionCardPropTypes } from "../../core/models/shared-prop-types";
-import { trackGAEvent } from "../../core/services/googleAnalytics";
 import { AccordionCard } from "./AccordionCard";
 
 const defaultGAEvent = {

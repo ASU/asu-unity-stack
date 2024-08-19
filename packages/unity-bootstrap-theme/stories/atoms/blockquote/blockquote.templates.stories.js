@@ -1,39 +1,41 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
+import React from "react";
 
-const extraOptions = {
-  type: {
-    name: "Color",
-    options: [null, "bg-gray-2", "bg-gray-7"],
-    defaultValue: null,
-    control: {
-      type: "radio",
-      labels: {
-        null: "On White",
-        "bg-gray-2": "On Gray",
-        "bg-gray-7": "On Black",
+import { imageName } from "../../../../../shared/assets";
+import { defaultDecorator } from "../../../../../shared/components/Layout.js";
+
+export default {
+  title: "Atoms/Blockquotes and Testimonials/Templates",
+  args: {
+    type: "On White",
+    reversed: false,
+  },
+  argTypes: {
+    type: {
+      name: "Color",
+      options: ["On White", "On Gray", "On Black"],
+      mapping: {
+        "On White": null,
+        "On Gray": "bg-gray-2",
+        "On Black": "bg-gray-7",
+      },
+      control: {
+        type: "radio",
       },
     },
+    reversed: {
+      name: "Reversed",
+      control: { type: "boolean" },
+    },
   },
-  reversed: {
-    name: "Reversed",
-    control: { type: "boolean" },
-    defaultValue: false,
-  },
+  decorators: [ defaultDecorator ],
 };
 
-export default createComponent(
-  "Blockquotes and Testimonials",
-  "Atoms",
-  "Templates",
-  extraOptions
-);
-
-export const BasicBlockquote = createStory(args => {
+export const BasicBlockquote = ({type}) => {
   return (
-    <div className={args.type}>
+    <div className={type}>
       <div
         className={`uds-blockquote ${
-          args.type === "bg-gray-7" ? "accent-gold text-white" : "accent-maroon"
+          type === "bg-gray-7" ? "accent-gold text-white" : "accent-maroon"
         } uds-content-align`}
       >
         <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">
@@ -56,18 +58,18 @@ export const BasicBlockquote = createStory(args => {
       </div>
     </div>
   );
-});
+};
 
-export const BlockquoteWithImage = createStory(args => {
+export const BlockquoteWithImage = ({type, reversed}) => {
   return (
-    <div className={args.type}>
+    <div className={type}>
       <div
         className={`uds-blockquote ${
-          args.type === "bg-gray-7" ? "accent-gold text-white" : "accent-maroon"
-        } with-image ${args.reversed ? "reversed" : ""} uds-content-align`}
+          type === "bg-gray-7" ? "accent-gold text-white" : "accent-maroon"
+        } with-image ${reversed ? "reversed" : ""} uds-content-align`}
       >
         <img
-          src="https://source.unsplash.com/WLUHO9A_xik/600x400"
+          src={ imageName.anon }
           alt="Pretend this is Michael M. Crow, President of ASU"
           width="600"
           height="400"
@@ -93,4 +95,4 @@ export const BlockquoteWithImage = createStory(args => {
       </div>
     </div>
   );
-});
+};

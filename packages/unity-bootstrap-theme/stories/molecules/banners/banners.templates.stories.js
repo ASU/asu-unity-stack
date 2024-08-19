@@ -1,44 +1,48 @@
-import {
-  createComponent,
-  createStory,
-  layoutNames,
-} from "../../../helpers/wrapper.js";
+import React from "react";
+
+import { fullLayoutDecorator } from "../../../../../shared/components/Layout";
 import { initBanner as initFunc } from "./banner";
 
-const extraOptions = {
-  color: {
-    name: "Color",
-    options: ["banner-orange", "banner-blue", "banner-gray", "banner-black"],
-    defaultValue: "banner-orange",
-    control: {
-      type: "radio",
-      labels: {
-        "banner-orange": "Orange",
-        "banner-blue": "Blue",
-        "banner-gray": "Gray",
-        "banner-black": "Black",
+
+
+export default {
+  title: "Molecules/Banners/Templates",
+  decorators: [ fullLayoutDecorator ],
+  parameters: {
+    initFunc: {
+      code: initFunc,
+      disable: false,
+    },
+  },
+  argTypes: {
+    color: {
+      name: "Color",
+      options: ["Orange", "Blue", "Gray", "Black"],
+      mapping: {
+        "Orange": "banner-orange",
+        "Blue": "banner-blue",
+        "Gray": "banner-gray",
+        "Black": "banner-black",
+      },
+      control: {
+        type: "radio",
       },
     },
   },
+  args: {
+    color: "Orange",
+  },
 };
 
-export default createComponent(
-  "Banners",
-  "Molecules",
-  "Templates",
-  extraOptions
-);
-
-export const Banner = createStory(
-  args => {
+export const Banner = ({color}) => {
     return (
-      <section className={`${args.color}`}>
-        <div className="banner uds-content-align" role="banner">
+      <section className={color}>
+        <div className="banner uds-content-align">
           <div className="banner-icon">
-            <span title="Banner" className="fa fa-icon fa-bell"></span>
+            <span className="fa fa-icon fa-bell"></span>
           </div>
           <div className="banner-content">
-            <h3>Stay up-to-date on what's new at ASU</h3>
+            <h1 tabIndex={0}>Stay up-to-date on what's new at ASU</h1>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud{" "}
@@ -47,14 +51,12 @@ export const Banner = createStory(
           <div className="banner-buttons">
             <a
               href="https://provost.asu.edu/sync/students"
-              role="button"
               className="btn btn-sm btn-dark"
             >
               Info. on teaching and learning remotely
             </a>
             <a
               href="https://students.asu.edu/faq"
-              role="button"
               className="btn btn-sm btn-dark"
             >
               FAQ Page
@@ -72,13 +74,4 @@ export const Banner = createStory(
         </div>
       </section>
     );
-  },
-  {
-    initFunc,
-    supportedTemplates: [layoutNames.FULL_WIDTH],
-  }
-);
-Banner.args = {
-  template: 0,
-  color: "banner-orange",
-};
+  };

@@ -9,7 +9,7 @@ const SearchWrapper = styled.form`
   .search-button {
     transition: cubic-bezier(0.19, 1, 0.19, 1);
   }
-  input {
+  input[name="q"] {
     width: 200px;
     background-color: #ffffff;
     border: 0;

@@ -224,40 +224,35 @@ function setupCaroarousel({
     // @ts-ignore
     const currentIndex = slider.index;
     const imageGalleryNav = gliderElement.querySelector(".navigation-slider");
-    if (imageGalleryNav) {
+    const imageNav = gliderElement.querySelector(".image-navigator-images");
+    if (imageGalleryNav && imageNav) {
       const images = imageGalleryNav.querySelectorAll(
         ".bullet-image-container"
       );
-      const inactiveImage = imageGalleryNav.querySelector(
-        ".bullet-image-container:not(.glide__bullet--active)"
-      );
-      const imageNav = gliderElement.querySelector(".image-navigator-images");
+      const fullNavWidth = imageGalleryNav.clientWidth;
+      const viewPadding = 82;
 
-      // glide centers bullets, 10px represents the extra width of the selected image
-      const fullNavWidth = inactiveImage.offsetWidth * images.length + 10;
-      const halfDiff = (fullNavWidth - imageNav.offsetWidth) / 2;
+      const currentSlide = images[currentIndex];
+      const imageNavLeft = imageNav.getBoundingClientRect().x;
 
-      const lastSlide = images[images.length - 1];
-      const lastSlideRight = lastSlide.getBoundingClientRect().right;
-      const imageNavRect = imageNav.getBoundingClientRect();
-      if (
-        lastSlideRight > imageNavRect.right ||
-        currentIndex <= images.length - 3
-      ) {
-        if (currentIndex > 1) {
-          const pos = halfDiff - inactiveImage.offsetWidth * (currentIndex - 1);
-          imageGalleryNav.style.left = `${pos}px`;
-        } else {
-          const pos = halfDiff;
-          imageGalleryNav.style.left = `${pos}px`;
-        }
-      } else {
-        const fromTarget = imageNavRect.right - 75 - lastSlideRight;
-        const currentPos = parseFloat(
-          imageGalleryNav.style.left.replace("px", "")
-        );
-        const newPos = currentPos + fromTarget;
-        imageGalleryNav.style.left = `${newPos}px`;
+      const currentLeft =
+        imageGalleryNav.getBoundingClientRect().x - imageNavLeft;
+      const currentSlideLeft =
+        currentSlide.getBoundingClientRect().x - imageNavLeft;
+      const currentSlideRight =
+        currentSlide.getBoundingClientRect().x +
+        currentSlide.getBoundingClientRect().width -
+        imageNavLeft;
+
+      if (currentIndex === 0 || currentSlideLeft <= 0 + viewPadding) {
+        imageGalleryNav.style.left = `${
+          currentLeft - currentSlideLeft + viewPadding
+        }px`;
+      } else if (currentSlideRight >= fullNavWidth - viewPadding) {
+        const outsideAmount = currentSlideRight - fullNavWidth;
+        imageGalleryNav.style.left = `${
+          currentLeft - outsideAmount - viewPadding
+        }px`;
       }
     }
 

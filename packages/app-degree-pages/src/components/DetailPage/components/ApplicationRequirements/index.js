@@ -1,15 +1,12 @@
 /* eslint-disable react/no-danger */
 // @ts-check
-import {
-  Accordion,
-  Button,
-  sanitizeDangerousMarkup,
-} from "@asu/components-core";
+import { Accordion, Button } from "@asu/components-core";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
 
+import { sanitizeDangerousMarkup } from "../../../../../../../shared";
 import { progDetailSectionIds } from "../../../../core/models";
 
 /**
@@ -57,7 +54,7 @@ const undergraduateTemplate = ({
   /** @type {import("src/core/types/shared-local-types").AccordionCard[]} */
   const undergradRequirements = [];
 
-  if (additionalRequirements.trim())
+  if (additionalRequirements?.trim())
     undergradRequirements.push({
       content: {
         header: "Additional Requirements",
@@ -65,7 +62,7 @@ const undergraduateTemplate = ({
       },
     });
 
-  if (transferRequirements.trim())
+  if (transferRequirements?.trim())
     undergradRequirements.push({
       content: {
         header: "Transfer Admission Requirements",
@@ -114,9 +111,10 @@ function ApplicationRequirements({
   transferRequirements,
   isMinorOrCertificate,
   additionalRequirements,
+  minorRequirements,
 }) {
   let reqsLabel;
-  if (graduateRequirements) {
+  if (graduateRequirements || isMinorOrCertificate) {
     reqsLabel = !isMinorOrCertificate
       ? "Degree requirements"
       : "Program requirements";
@@ -134,10 +132,10 @@ function ApplicationRequirements({
         <h2>
           <span className="highlight-gold">{reqsLabel}</span>
         </h2>
-        {graduateRequirements ? (
+        {graduateRequirements || isMinorOrCertificate ? (
           <div
             dangerouslySetInnerHTML={sanitizeDangerousMarkup(
-              graduateRequirements
+              graduateRequirements || minorRequirements
             )}
           />
         ) : (
@@ -148,7 +146,7 @@ function ApplicationRequirements({
         )}
       </section>
 
-      {graduateRequirements ? (
+      {graduateRequirements || isMinorOrCertificate ? (
         <section
           id={progDetailSectionIds.degreeRequirements.targetIdName}
           data-testid="degree-requirements"
@@ -172,6 +170,7 @@ ApplicationRequirements.propTypes = {
   transferRequirements: PropTypes.string,
   isMinorOrCertificate: PropTypes.bool,
   additionalRequirements: PropTypes.string,
+  minorRequirements: PropTypes.string,
 };
 
 export { ApplicationRequirements };

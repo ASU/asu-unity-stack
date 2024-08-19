@@ -3,9 +3,7 @@ import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 
-import { trackGAEvent } from "../../core/services/googleAnalytics";
-import { iff } from "../../core/utils/conditionals";
-import { createRange } from "../../core/utils/numbers";
+import { createRange, iff, trackGAEvent } from "../../../../../shared";
 import { PageItem } from "./PageItem";
 
 const defaultGAEvent = {

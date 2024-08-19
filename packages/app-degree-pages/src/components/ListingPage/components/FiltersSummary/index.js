@@ -1,8 +1,8 @@
 // @ts-check
-import { idGenerator } from "@asu/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 
+import { idGenerator } from "../../../../../../../shared";
 import { filterValueShape, isAccelConcValid } from "../../../../core/models";
 
 /**
@@ -41,7 +41,7 @@ function FiltersSummary({
         onClick={() => onRemove(filterName, filter)}
         className="btn btn-tag btn-tag-alt-white d-inline-flex align-items-center me-2"
       >
-        <span className="pr-1">{text}</span>
+        <span className="pe-1">{text}</span>
         <i className="fas fa-times" />
       </span>
     );

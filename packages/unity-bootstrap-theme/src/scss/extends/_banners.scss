@@ -18,8 +18,11 @@
   .banner-content {
     flex: 5;
     margin-right: $uds-size-spacing-4;
-    h3 {
+    h3, h1 {
       margin: $uds-size-spacing-1 $uds-size-spacing-0;
+      font-size: 1.5rem;
+      letter-spacing: -.0525rem;
+      line-height: 1.75rem;
     }
   }
   .banner-buttons {
@@ -39,11 +42,15 @@
     flex: 2;
     margin-top: -$uds-size-spacing-2;
     margin-right: -$uds-size-spacing-2;
+    width: 12px;
 
     // Edits close button content (i.e. "X" inside bubble)
     .close {
       opacity: 1;
-      font-size: 1rem;
+      font-size: $uds-size-font-small;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       &:hover {
         opacity: 1;
@@ -112,8 +119,11 @@
     .banner-content {
       margin-bottom: $uds-size-spacing-2;
 
-      h3 {
+      h3, h1 {
         margin-bottom: $uds-size-spacing-2;
+        font-size: 1.5rem;
+        letter-spacing: -.0525rem;
+        line-height: 1.75rem;
       }
     }
     .banner-close {

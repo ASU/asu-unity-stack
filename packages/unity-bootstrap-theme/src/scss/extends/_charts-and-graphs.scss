@@ -6,25 +6,24 @@
   max-width: 350px;
 }
 
-.uds-charts-and-graphs-overlay {
+%shared-styles {
   display: flex;
   align-items: center;
   flex-direction: column;
   position: absolute;
   text-align: center;
 
-  h4 {
+  h4, span#percentage-display {
     margin: 0.5rem;
     font: normal normal bold 2.5rem Arial;
   }
 
   span {
-    font: normal normal bold 1.125rem Arial;
-    max-width: 60%;
+    font: normal normal 700 1.125rem Arial;
   }
 
   @include media-breakpoint-down(md) {
-    h4 {
+    h4, p {
       font-size: 1.5rem;
     }
 
@@ -32,6 +31,17 @@
       font-size: 1rem;
     }
   }
+}
+
+.uds-charts-and-graphs-overlay {
+  @extend %shared-styles;
+  justify-content: center;
+  width: 60%;
+}
+
+.uds-charts-and-graphs-overlay p {
+  @extend %shared-styles;
+  margin-bottom: 0;
 }
 
 canvas {

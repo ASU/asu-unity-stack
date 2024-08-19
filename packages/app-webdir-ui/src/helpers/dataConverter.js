@@ -171,7 +171,7 @@ const getTitleFromProfile = (profile, titleMatch) => {
     if (profile.title_source.raw[deptIndex] === "titles") {
       matchedAffiliationTitle = profile.titles.raw[deptIndex];
     } else if (profile.working_title && profile.working_title.raw[0]) {
-      matchedAffiliationTitle = profile.working_title.raw[deptIndex];
+      matchedAffiliationTitle = profile.working_title.raw[0];
     }
     matchedAffiliationDept = profile.departments.raw[deptIndex];
 
@@ -245,6 +245,23 @@ const formatImageUrl = baseUrl => {
   return url.toString();
 };
 
+/**
+ * Shared props for converter functions.
+ * @typedef {Object} SharedProps
+ * @property {Object} datum - The staff data to convert.
+ * @property {string} [size="small"] - The size of the ProfileCard.
+ * @property {string|null} [titleMatch=null] - The title to match for filtering.
+ * @property {string|null} [profileURLBase=null] - The base URL for profile links.
+ * @property {boolean} [fill=false] - Whether to fill in missing data.
+ * @property {string} appPathFolder - The application path folder.
+ */
+
+/**
+ * Converts staff data into ProfileCard components.
+ * @param {SharedProps} props
+ * @returns {JSX.Element} The converted staff data.
+ */
+
 export const staffConverter = ({
   datum,
   options = {
@@ -260,9 +277,10 @@ export const staffConverter = ({
 
   // We use EID if it's available, otherwise we use the asurite_id.
   const profileURLBase = options.profileURLBase ?? "";
-  const asuriteEID = filledDatum.eid.raw
-    ? filledDatum.eid.raw.toString()
-    : filledDatum.asurite_id.raw.toString();
+  const asuriteEID =
+    filledDatum.eid.raw && filledDatum.eid.raw !== "0"
+      ? filledDatum.eid.raw.toString()
+      : filledDatum.asurite_id.raw.toString();
   if (appPathFolder) {
     anonImg = `${appPathFolder}/img/anon.png`;
   }
@@ -299,6 +317,12 @@ export const staffConverter = ({
   );
 };
 
+/**
+ * Converts student data into ProfileCard components.
+ * @param {SharedProps} props
+ * @returns {JSX.Element} The converted student data.
+ */
+
 export const studentsConverter = ({
   datum,
   options = {
@@ -311,9 +335,10 @@ export const studentsConverter = ({
   if (appPathFolder) {
     anonImg = `${appPathFolder}/img/anon.png`;
   }
-  const asuriteEID = filledDatum.eid.raw
-    ? filledDatum.eid.raw.toString()
-    : filledDatum.asurite_id.raw.toString();
+  const asuriteEID =
+    filledDatum.eid.raw && filledDatum.eid.raw !== "0"
+      ? filledDatum.eid.raw.toString()
+      : filledDatum.asurite_id.raw.toString();
 
   const imgURLProp = formatImageUrl(filledDatum.photo_url.raw);
 
@@ -340,6 +365,12 @@ export const studentsConverter = ({
     />
   );
 };
+
+/**
+ * Converts data into ProfileCard components.
+ * @param {SharedProps} props
+ * @returns {JSX.Element} The converted faculty data.
+ */
 
 export const anonConverter = (
   datum,
@@ -373,6 +404,21 @@ export const anonConverter = (
     />
   );
 };
+
+/**
+ * Converts subdomain data to a ResultCard component.
+ *
+ * @param {Object} options - Options for configuring the conversion.
+ * @param {Object} options.datum - The subdomain data to convert.
+ * @param {string} [options.size="small"] - The size of the ResultCard.
+ * @param {boolean} [options.fill=false] - Whether to fill in missing data.
+ * @param {string} appPathFolder - The application path folder.
+ * @param {function} [logClick=() => {}] - A callback function to log clicks.
+ * @param {string} requestId - The request ID.
+ * @param {string|null} [localSection=null] - The local section information.
+ * @param {Object} props - Additional props to pass to the ResultCard component.
+ * @returns {JSX.Element} The ResultCard component.
+ */
 
 export const subdomainConverter = ({
   datum,

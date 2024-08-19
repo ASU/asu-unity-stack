@@ -1,16 +1,22 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent("Images", "Atoms", "Examples");
+import React from "react";
+
+import { imageName } from "../../../../../shared/assets";
+import { defaultDecorator } from "../../../../../shared/components/Layout";
+
+export default {
+  title: "Atoms/Images/Examples",
+  decorators: [ defaultDecorator ],
+  parameters: { controls: { disable: true } },
+};
 
 // Images in Bootstrap are made responsive with .img-fluid. max-width: 100%; and height: auto; are applied to the image so that it scales with the parent element.
 
-// Random photos sourced from Unsplash: https://source.unsplash.com
-
 // TODO Consider employing JS to enforce 255 character max for captions.
 
-export const LargeImageNoCaptionComponent = createStory(
+export const LargeImageNoCaptionComponent = () => (
   <div className="uds-img">
     <img
-      src="https://source.unsplash.com/WLUHO9A_xik/1200x750"
+      src={ imageName.attendOnline }
       className="img-fluid"
       alt="Random image. REPLACE with appropriate alt text for accessibility."
       width="1200"
@@ -21,14 +27,11 @@ export const LargeImageNoCaptionComponent = createStory(
     />
   </div>
 );
-LargeImageNoCaptionComponent.args = {
-  template: 1,
-};
 
-export const LargeImageNoCaptionComponentBorderless = createStory(
+export const LargeImageNoCaptionComponentBorderless = () => (
   <div className="uds-img borderless">
     <img
-      src="https://source.unsplash.com/WLUHO9A_xik/1200x750"
+      src={ imageName.careerOutlook }
       className="img-fluid"
       alt="Random image. REPLACE with appropriate alt text for accessibility."
       width="1200"
@@ -39,15 +42,12 @@ export const LargeImageNoCaptionComponentBorderless = createStory(
     />
   </div>
 );
-LargeImageNoCaptionComponentBorderless.args = {
-  template: 1,
-};
 
-export const LargeImageCaptionComponent = createStory(
+export const LargeImageCaptionComponent = () => (
   <div className="uds-img">
     <figure className="figure uds-figure">
       <img
-        src="https://source.unsplash.com/WLUHO9A_xik/800x600"
+        src={ imageName.demo1 }
         className="uds-img figure-img img-fluid"
         alt="Random image with caption below. REPLACE with appropriate alt text for accessibility."
         width="800"
@@ -67,15 +67,12 @@ export const LargeImageCaptionComponent = createStory(
     </figure>
   </div>
 );
-LargeImageCaptionComponent.args = {
-  template: 1,
-};
 
-export const LargeImageCaptionComponentBorderless = createStory(
+export const LargeImageCaptionComponentBorderless = () => (
   <div className="uds-img borderless">
     <figure className="figure uds-figure">
       <img
-        src="https://source.unsplash.com/WLUHO9A_xik/800x600"
+        src={ imageName.demo2 }
         className="uds-img figure-img img-fluid"
         alt="Random image with caption below. REPLACE with appropriate alt text for accessibility."
         width="800"
@@ -95,16 +92,13 @@ export const LargeImageCaptionComponentBorderless = createStory(
     </figure>
   </div>
 );
-LargeImageCaptionComponentBorderless.args = {
-  template: 1,
-};
 
-export const LargeImagesDropShadowComponent = createStory(
+export const LargeImagesDropShadowComponent = () => (
   <div>
     {/* Component start */}
     <div className="uds-img uds-img-drop-shadow">
       <img
-        src="https://source.unsplash.com/WLUHO9A_xik/800x600"
+        src={ imageName.demo3 }
         className="uds-img XXuds-img-drop-shadow img-fluid"
         alt="Random image with dropshadow. REPLACE with appropriate alt text."
         width="800"
@@ -123,7 +117,7 @@ export const LargeImagesDropShadowComponent = createStory(
     <div className="uds-img uds-img-drop-shadow">
       <figure className="figure uds-figure XXuds-img-drop-shadow">
         <img
-          src="https://source.unsplash.com/WLUHO9A_xik/800x600"
+          src={ imageName.poly1 }
           className="uds-img figure-img img-fluid"
           alt="Random image with caption below. REPLACE with appropriate alt text for accessibility."
           width="800"
@@ -154,7 +148,7 @@ export const LargeImagesDropShadowComponent = createStory(
   </div>
 );
 
-export const SmallImagesComponent = createStory(
+export const SmallImagesComponent = () => (
   <div>
     <p>
       The .uds-img element takes up 100% of its container. For small images,
@@ -169,7 +163,7 @@ export const SmallImagesComponent = createStory(
       {/* Component start */}
       <div className="uds-img">
         <img
-          src="https://source.unsplash.com/WLUHO9A_xik/800x600"
+          src={ imageName.demo1 }
           className="uds-img img-fluid"
           alt="Random image with dropshadow. REPLACE with appropriate alt text."
           width="800"
@@ -190,7 +184,7 @@ export const SmallImagesComponent = createStory(
       <div className="uds-img uds-img-drop-shadow">
         <figure className="figure uds-figure">
           <img
-            src="https://source.unsplash.com/WLUHO9A_xik/800x600"
+            src={ imageName.demo2 }
             className="uds-img figure-img img-fluid"
             alt="Random image with caption below. REPLACE with appropriate alt text for accessibility."
             width="800"

@@ -1,58 +1,54 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
+import React from "react";
 
-const extraOptions = {
-  numColumns: {
-    name: "Number of columns",
-    options: ["two-columns", "three-columns", "four-columns"],
-    defaultValue: "two-columns",
-    control: {
-      type: "radio",
-      labels: {
-        "two-columns": "two-columns",
-        "three-columns": "three-columns",
-        "four-columns": "four-columns",
+import { defaultDecorator } from "../../../../../shared/components/Layout";
+
+export default {
+  title: "Organisms/Grid Links/Templates",
+  args: {
+    numColumns: "two-columns",
+    bgColor: "None",
+    textColor: "None",
+  },
+  argTypes: {
+    numColumns: {
+      name: "Number of columns",
+      options: ["two-columns", "three-columns", "four-columns"],
+      control: {
+        type: "radio",
       },
     },
-  },
-  bgColor: {
-    name: "BackGround Color",
-    options: [null, "bg-gray-1", "bg-gray-7"],
-    defaultValue: null,
-    control: {
-      type: "radio",
-      labels: {
-        null: "None",
+    bgColor: {
+      name: "BackGround Color",
+      options: ["None", "bg-gray-1", "bg-gray-7"],
+      mapping: {
+        None: null,
         "bg-gray-1": "bg-gray-1",
         "bg-gray-7": "bg-gray-7",
       },
+      control: {
+        type: "radio",
+      },
     },
-  },
-  textColor: {
-    name: "Text color",
-    options: [null, "text-gold", "text-white"],
-    defaultValue: null,
-    control: {
-      type: "radio",
-      labels: {
-        null: "None",
+    textColor: {
+      name: "Text color",
+      options: ["None", "text-gold", "text-white"],
+      mapping: {
+        None: null,
         "text-gold": "text-gold",
         "text-white": "text-white",
       },
+      control: {
+        type: "radio",
+      },
     },
   },
+  decorators: [defaultDecorator],
 };
 
-export default createComponent(
-  "Grid Links",
-  "Organisms",
-  "Templates",
-  extraOptions
-);
-
-export const BackgroundWhiteStory = createStory(args => {
+export const BackgroundWhiteStory = ({bgColor, numColumns, textColor}) => {
   return (
-    <section className={args.bgColor}>
-      <div className={`uds-grid-links ${args.numColumns} ${args.textColor}`}>
+    <section className={bgColor}>
+      <div className={['uds-grid-links', numColumns, textColor].join(' ')}>
         <a href="#">
           <span className="fa fa-fw fa-university"></span>First-year student
         </a>
@@ -80,8 +76,7 @@ export const BackgroundWhiteStory = createStory(args => {
       </div>
     </section>
   );
-});
+};
 BackgroundWhiteStory.args = {
-  template: 1,
   numColumns: "two-columns",
 };

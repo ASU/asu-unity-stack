@@ -1,3 +1,29 @@
+# [@asu/component-events-v2.1.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v2.1.1...@asu/component-events-v2.1.2) (2024-06-20)
+
+
+### Bug Fixes
+
+* **component-events:** lI elements should alway use 100% of UL width ([c3d9090](https://github.com/asu/asu-unity-stack/commit/c3d909058cc1fcd6df516774434895d019c6a1f5))
+
+# [@asu/component-events-v2.1.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v2.1.0...@asu/component-events-v2.1.1) (2024-05-01)
+
+
+### Bug Fixes
+
+* **components-core:** fix Card image styles ([57ef568](https://github.com/asu/asu-unity-stack/commit/57ef568f50a0b0333b7f107ef15b45de187d19bd))
+
+# [@asu/component-events-v2.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v2.0.3...@asu/component-events-v2.1.0) (2024-01-11)
+
+
+### Bug Fixes
+
+* renamed shared folder to match sahred/services ([860c6f4](https://github.com/asu/asu-unity-stack/commit/860c6f44d42119956cbaa36d8c9d8798613c76fa))
+
+
+### Features
+
+* **component-events:** added gtm global variable tracking ([21b3d70](https://github.com/asu/asu-unity-stack/commit/21b3d705e6df264899992e6acabebd0993fb1301))
+
 # [@asu/component-events-v2.0.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v2.0.2...@asu/component-events-v2.0.3) (2023-07-24)
 
 

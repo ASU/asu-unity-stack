@@ -1,16 +1,20 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
-export default createComponent(
-  "Content Sections/Quote On Image Background",
-  "Molecules",
-  "Templates"
-);
+import React from "react";
 
-export const Default = createStory(
+import { imageName } from "../../../../../shared/assets";
+import { defaultDecorator } from "../../../../../shared/components/Layout";
+
+export default {
+  title: "Molecules/Content Sections/Quote On Image Background/Templates",
+  decorators: [ defaultDecorator ],
+  parameters: { controls: { disable: true } },
+};
+
+export const Default = () => (
   <div
     className="uds-quote-image-background"
     style={{
       backgroundImage:
-        "linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('https://source.unsplash.com/WLUHO9A_xik/1920x1200')",
+        `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('${ imageName.hero02 }')`,
     }}
   >
     <div className="uds-content-align">
@@ -34,6 +38,3 @@ export const Default = createStory(
     </div>
   </div>
 );
-Default.args = {
-  template: 1,
-};

@@ -1,132 +1,105 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
+import React from "react";
 
-const extraOptions = {
-  fixed: {
-    name: "Fixed",
-    control: { type: "boolean" },
-    defaultValue: false,
+import { defaultDecorator } from "../../../../../shared/components/Layout";
+import {initializeFixedTable as initFunc} from "./tables";
+
+export default {
+  title: "Molecules/Tables/Templates",
+  decorators: [ defaultDecorator ],
+  argTypes: {
+    fixed: {
+      name: "Fixed",
+      control: { type: "boolean" },
+    },
+    columns: {
+      control: { type: "range", min: 4, max: 14, step: 1 },
+    }
   },
+  args: {
+    fixed: false,
+    columns: 5,
+  },
+  parameters: {
+    initFunc: {
+      code: initFunc,
+      disable: false,
+    },
+  }
 };
 
-export default createComponent(
-  "Tables",
-  "Molecules",
-  "Templates",
-  extraOptions
-);
-import "./tables";
+const makingUpFakeNumbers = (a,b,c) => Math.round(a*(b+c)).toLocaleString('en-US');
 
-export const DefaultComponent = createStory(
-  <div className="uds-table" tabIndex="0">
-    <table>
-      <thead>
-        <tr>
-          <th scope="col">Enrollment</th>
-          <th scope="col">Fall 2016</th>
-          <th scope="col">Fall 2017</th>
-          <th scope="col">Fall 2018</th>
-          <th scope="col">Fall 2019</th>
-          <th scope="col">Fall 2020</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">
-            <p>
-              use of <code>&lt;a&gt;</code> in cells{" "}
-              <a href="#">example link</a>
-            </p>
-          </th>
-          <td>
-            <p>
-              Lorem ipsum dolor sit amet <a href="#">consectetur</a> adipisicing
-              elit. Officia, vero. Quasi temporibus mollitia, quia doloribus
-              quam tenetur a eos iste repellendus distinctio vitae velit aperiam
-              esse facere odio qui ipsa.
-            </p>
-          </td>
-          <td>71,946</td>
-          <td>71,946</td>
-          <td>71,946</td>
-          <td>71,946</td>
-        </tr>
-        <tr>
-          <th scope="row" className="indent">
-            Tempe
-          </th>
-          <td>51,869</td>
-          <td>51,869</td>
-          <td>51,869</td>
-          <td>51,869</td>
-          <td>51,869</td>
-        </tr>
-        <tr>
-          <th scope="row" className="indent">
-            Downtown
-          </th>
-          <td>11,737</td>
-          <td>11,737</td>
-          <td>11,737</td>
-          <td>11,737</td>
-          <td>11,737</td>
-        </tr>
-        <tr>
-          <th scope="row" className="indent">
-            Polytechnic
-          </th>
-          <td>4,380</td>
-          <td>4,380</td>
-          <td>4,380</td>
-          <td>4,380</td>
-          <td>4,380</td>
-        </tr>
-        <tr>
-          <th scope="row" className="indent">
-            West
-          </th>
-          <td>3,663</td>
-          <td>3,663</td>
-          <td>3,663</td>
-          <td>3,663</td>
-          <td>3,663</td>
-        </tr>
-        <tr>
-          <th scope="row" className="indent">
-            Thunderbird
-          </th>
-          <td>297</td>
-          <td>297</td>
-          <td>297</td>
-          <td>297</td>
-          <td>297</td>
-        </tr>
-        <tr>
-          <th scope="row" className="normal">
-            Skysong Campus
-          </th>
-          <td>26,200</td>
-          <td>26,200</td>
-          <td>26,200</td>
-          <td>26,200</td>
-          <td>26,200</td>
-        </tr>
-        <tr>
-          <th scope="row">Total</th>
-          <td>98,146</td>
-          <td>98,146</td>
-          <td>98,146</td>
-          <td>98,146</td>
-          <td>98,146</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-);
-DefaultComponent.args = {
-  template: 1,
-};
+const Table = ({columns}) => {
+  let year = 2024;
+  const arr = (new Array(columns)).fill(null).map((v, i)=>year-i).reverse();
+return <table>
+<thead>
+  <tr>
+    <th scope="col">Enrollment</th>
+    {arr.map((v, i)=><th scope="col" key={i}>Fall {v}</th>)}
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <th scope="row"><p>
+      use of <code>&lt;a&gt;</code> in cells{" "}
+      <a href="#">example link</a>
+    </p>Metropolitan campus population</th>
+    {arr.map((v, i)=><td key={i}>{makingUpFakeNumbers(v,35,i)}</td>)}
+  </tr>
+  <tr>
+    <th scope="row" className="indent">
+      Tempe
+    </th>
+    {arr.map((v, i)=><td key={i}>{makingUpFakeNumbers(v,25,i)}</td>)}
+  </tr>
+  <tr>
+    <th scope="row" className="indent">
+      Downtown
+    </th>
+    {arr.map((v, i)=><td key={i}>{makingUpFakeNumbers(v,7,i)}</td>)}
+  </tr>
+  <tr>
+    <th scope="row" className="indent">
+      Polytechnic
+    </th>
+    {arr.map((v, i)=><td key={i}>{makingUpFakeNumbers(v,1.6,i/2)}</td>)}
+  </tr>
+  <tr>
+    <th scope="row" className="indent">
+      West
+    </th>
+    {arr.map((v, i)=><td key={i}>{makingUpFakeNumbers(v,.8,i/4)}</td>)}
+  </tr>
+  <tr>
+    <th scope="row" className="indent">
+      Thunderbird
+    </th>
+    {arr.map((v, i)=><td key={i}>{makingUpFakeNumbers(v,.1,i/10)}</td>)}
+  </tr>
+  <tr>
+    <th scope="row" className="normal">
+      Skysong Campus
+    </th>
+    {arr.map((v, i)=><td key={i}>{makingUpFakeNumbers(v,5,i/5)}</td>)}
+  </tr>
+  <tr>
+    <th scope="row">Total</th>
+    {arr.map((v, i)=><td key={i}>{makingUpFakeNumbers(v,50,i)}</td>)}
+  </tr>
+</tbody>
+</table>
+}
 
-export const FixedComponent = createStory(
+const Template = ({fixed, columns}) => {
+  if (!fixed){
+    return (
+      <div className="uds-table" tabIndex="0">
+        <Table columns={columns}/>
+      </div>
+    );
+  }
+  return (
   <div className="uds-table-fixed-wrapper">
     <div className="scroll-control previous">
       <button type="button" className="btn btn-circle btn-circle-alt-gray">
@@ -143,153 +116,19 @@ export const FixedComponent = createStory(
     </div>
 
     <div className="uds-table uds-table-fixed" tabIndex="0">
-      <table>
-        <thead>
-          <tr>
-            <th scope="col">Enrollment</th>
-            <th scope="col">Fall 2012</th>
-            <th scope="col">Fall 2013</th>
-            <th scope="col">Fall 2014</th>
-            <th scope="col">Fall 2015</th>
-            <th scope="col">Fall 2016</th>
-            <th scope="col">Fall 2017</th>
-            <th scope="col">Fall 2018</th>
-            <th scope="col">Fall 2019</th>
-            <th scope="col">Fall 2020</th>
-            <th scope="col">Fall 2021</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Metropolitan campus population</th>
-            <td>71,946</td>
-            <td>71,946</td>
-            <td>71,946</td>
-            <td>71,946</td>
-            <td>71,946</td>
-            <td>71,946</td>
-            <td>71,946</td>
-            <td>71,946</td>
-            <td>71,946</td>
-            <td>71,946</td>
-          </tr>
-          <tr>
-            <th scope="row" className="indent">
-              Tempe
-            </th>
-            <td>51,869</td>
-            <td>51,869</td>
-            <td>51,869</td>
-            <td>51,869</td>
-            <td>51,869</td>
-            <td>51,869</td>
-            <td>51,869</td>
-            <td>51,869</td>
-            <td>51,869</td>
-            <td>51,869</td>
-          </tr>
-          <tr>
-            <th scope="row" className="indent">
-              Downtown
-            </th>
-            <td>11,737</td>
-            <td>11,737</td>
-            <td>11,737</td>
-            <td>11,737</td>
-            <td>11,737</td>
-            <td>11,737</td>
-            <td>11,737</td>
-            <td>11,737</td>
-            <td>11,737</td>
-            <td>11,737</td>
-          </tr>
-          <tr>
-            <th scope="row" className="indent">
-              Polytechnic
-            </th>
-            <td>4,380</td>
-            <td>4,380</td>
-            <td>4,380</td>
-            <td>4,380</td>
-            <td>4,380</td>
-            <td>4,380</td>
-            <td>4,380</td>
-            <td>4,380</td>
-            <td>4,380</td>
-            <td>4,380</td>
-          </tr>
-          <tr>
-            <th scope="row" className="indent">
-              West
-            </th>
-            <td>3,663</td>
-            <td>3,663</td>
-            <td>3,663</td>
-            <td>3,663</td>
-            <td>3,663</td>
-            <td>3,663</td>
-            <td>3,663</td>
-            <td>3,663</td>
-            <td>3,663</td>
-            <td>3,663</td>
-          </tr>
-          <tr>
-            <th scope="row" className="indent">
-              Thunderbird
-            </th>
-            <td>297</td>
-            <td>297</td>
-            <td>297</td>
-            <td>297</td>
-            <td>297</td>
-            <td>297</td>
-            <td>297</td>
-            <td>297</td>
-            <td>297</td>
-            <td>297</td>
-          </tr>
-          <tr>
-            <th scope="row" className="normal">
-              Skysong Campus
-            </th>
-            <td>26,200</td>
-            <td>26,200</td>
-            <td>26,200</td>
-            <td>26,200</td>
-            <td>26,200</td>
-            <td>26,200</td>
-            <td>26,200</td>
-            <td>26,200</td>
-            <td>26,200</td>
-            <td>26,200</td>
-          </tr>
-          <tr>
-            <th scope="row">Total</th>
-            <td>98,146</td>
-            <td>98,146</td>
-            <td>98,146</td>
-            <td>98,146</td>
-            <td>98,146</td>
-            <td>98,146</td>
-            <td>98,146</td>
-            <td>98,146</td>
-            <td>98,146</td>
-            <td>98,146</td>
-          </tr>
-        </tbody>
-      </table>
+      <Table columns={columns}/>
     </div>
-  </div>,
-  {
-    initFunc: triggerDOMContentLoaded,
-  }
-);
+  </div>
+)};
 
-function triggerDOMContentLoaded() {
-  if (document.readyState !== "loading")
-    window.dispatchEvent(new Event("DOMContentLoaded"));
+export const DefaultComponent = Template.bind({});
+DefaultComponent.args = {
+  fixed: false,
+  columns: 3,
 }
 
+export const FixedComponent = Template.bind({});
 FixedComponent.args = {
-  template: 1,
-};
+  fixed: true,
+  columns: 7,
+}

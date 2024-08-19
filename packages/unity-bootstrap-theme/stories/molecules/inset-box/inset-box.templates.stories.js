@@ -1,30 +1,31 @@
-import { createComponent, createStory } from "../../../helpers/wrapper.js";
+import React from "react";
 
-const extraOptions = {
-  background: {
-    name: "Background",
-    options: ["white-bg", "gray-1-bg", "gray-2-bg", "gray-7-bg"],
-    defaultValue: "white-bg",
-    control: {
-      type: "radio",
-      labels: {
-        "white-bg": "White",
-        "gray-1-bg": "Gray 1",
-        "gray-2-bg": "Gray 2",
-        "gray-7-bg": "Gray 3",
+import { defaultDecorator } from "../../../../../shared/components/Layout";
+
+export default {
+  title: "Molecules/Content Sections/Inset Box/Templates",
+  decorators: [ defaultDecorator ],
+  argTypes: {
+    background: {
+      name: "Background",
+      options: ["White", "Gray 1", "Gray 2", "Gray 7"],
+      mapping: {
+        "White": "white-bg",
+        "Gray 1": "gray-1-bg",
+        "Gray 2": "gray-2-bg",
+        "Gray 7": "gray-7-bg",
+      },
+      control: {
+        type: "radio",
       },
     },
   },
+  args: {
+    background: "White",
+  },
 };
 
-export default createComponent(
-  "Content Sections/Inset Box",
-  "Molecules",
-  "Templates",
-  extraOptions
-);
-
-export const Default = createStory(({ background }) => (
+export const Default = ({ background }) => (
   <div className={`uds-inset-box-container ${background}`}>
     <div className="uds-inset-box-content">
       <h3>Lorem ipsum dolor sit amet</h3>
@@ -45,8 +46,4 @@ export const Default = createStory(({ background }) => (
       </a>
     </div>
   </div>
-));
-Default.args = {
-  template: 1,
-  background: "white-bg",
-};
+);

@@ -1,3 +1,121 @@
+# [@asu/components-core-v4.1.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v4.0.0...@asu/components-core-v4.1.0) (2024-08-07)
+
+
+### Bug Fixes
+
+* **components-core:** just a small change to create pr ([64cde43](https://github.com/ASU/asu-unity-stack/commit/64cde43e6dad644877b2e41b198c76876a586145))
+
+
+### Features
+
+* **unity-bootstrap-theme:** added styles for focus on accordions ([145c4a1](https://github.com/ASU/asu-unity-stack/commit/145c4a10faf783a918973b7d300392d44d22d217))
+
+# [@asu/components-core-v4.0.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.8...@asu/components-core-v4.0.0) (2024-08-01)
+
+
+### Bug Fixes
+
+* **components-core:** switch h4 to h2 on AnchorMenu ([bfde9f2](https://github.com/ASU/asu-unity-stack/commit/bfde9f281bfffa4a62592292be6743e795cc0cd4))
+
+
+### BREAKING CHANGES
+
+* **components-core:** It is necessary to replicate the changes from the unity-bootstrap-theme in the
+component-core.
+
+UDS-1773
+
+# [@asu/components-core-v3.3.8](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.7...@asu/components-core-v3.3.8) (2024-07-31)
+
+
+### Bug Fixes
+
+* **components-core:** fix A11y issue with incorrect Hero Heading structure ([bddc4bd](https://github.com/ASU/asu-unity-stack/commit/bddc4bd62a606fe2b6e0ae670688bb7587dfa426))
+
+# [@asu/components-core-v3.3.7](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.6...@asu/components-core-v3.3.7) (2024-06-25)
+
+
+### Bug Fixes
+
+* **components-core:** remove import of bootstrap collapse in accordion ([88ebe12](https://github.com/ASU/asu-unity-stack/commit/88ebe12c845f1ea27c28998a2f8c186e2fe5f1a3))
+
+# [@asu/components-core-v3.3.6](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.5...@asu/components-core-v3.3.6) (2024-06-18)
+
+
+### Bug Fixes
+
+* **components-core:** caret is now part of button ([767e932](https://github.com/ASU/asu-unity-stack/commit/767e932e173146088526b5ebf29fd1054fc6f5c3))
+* **components-core:** fixed Ranking card accessibility issues ([a7074dd](https://github.com/ASU/asu-unity-stack/commit/a7074dd37c3f9fd6c9f9c92ca395e688370a0b47))
+* **components-core:** ranking card accessibility "see more" fixed ([25afc1d](https://github.com/ASU/asu-unity-stack/commit/25afc1d95f76286504aab014ce6a3bc283901f34))
+* **components-core:** rearrange markup in ranking cards ([85a2fb9](https://github.com/ASU/asu-unity-stack/commit/85a2fb95c75b4c12c926091f7dd7cc8b58dd6db5))
+* **components-core:** remove useRef for ID generation ([85d0658](https://github.com/ASU/asu-unity-stack/commit/85d0658e21972fd8b16b00f5fb6d4afb38896fc1))
+* **components-core:** updated accessibility in Ranking Card ([53d4ec6](https://github.com/ASU/asu-unity-stack/commit/53d4ec60b81ea006993939780e9d64fc6b265386))
+* **components-core:** updated large ranking card accessibility ([183685f](https://github.com/ASU/asu-unity-stack/commit/183685fe1b68ac4d8de3c0814f8a3f64b34a3ce8))
+
+# [@asu/components-core-v3.3.5](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.4...@asu/components-core-v3.3.5) (2024-06-10)
+
+
+### Bug Fixes
+
+* **components-core:** add new plain white text hero option ([7edb1b3](https://github.com/ASU/asu-unity-stack/commit/7edb1b3c0409ad86e26db236bc41ace81a7209e1))
+
+# [@asu/components-core-v3.3.4](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.3...@asu/components-core-v3.3.4) (2024-01-29)
+
+
+### Bug Fixes
+
+* **components-core:** switched to relative import for less packages to install ([06c2869](https://github.com/ASU/asu-unity-stack/commit/06c28690150b7086e4a67357db77609c3fc077fc))
+* **components-core:** wrap accordion body with collapse class for smoother animation ([0c792d3](https://github.com/ASU/asu-unity-stack/commit/0c792d3ddfa91803895d62d4984ac27f944d11b0))
+
+# [@asu/components-core-v3.3.3](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.2...@asu/components-core-v3.3.3) (2024-01-22)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix card padding inconsistancies ([4a858f8](https://github.com/ASU/asu-unity-stack/commit/4a858f8a8a646edd0255cd1e5e5c7f0e507d0e7d))
+
+# [@asu/components-core-v3.3.2](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.1...@asu/components-core-v3.3.2) (2024-01-11)
+
+
+### Bug Fixes
+
+* slight changes ([f07b430](https://github.com/ASU/asu-unity-stack/commit/f07b4306a01bda66e2a53d54b9aa35d821ee0c1f))
+
+# [@asu/components-core-v3.3.1](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.3.0...@asu/components-core-v3.3.1) (2023-12-04)
+
+
+### Bug Fixes
+
+* **components-core:** allow sanitized html in image citation ([269fa92](https://github.com/ASU/asu-unity-stack/commit/269fa92f449372666e0d307b00a65f95117cdfa6))
+
+# [@asu/components-core-v3.3.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.2.0...@asu/components-core-v3.3.0) (2023-12-04)
+
+
+### Bug Fixes
+
+* **components-core:** added classes to image renders in Image component ([6b7687f](https://github.com/ASU/asu-unity-stack/commit/6b7687f42f408d88555fb7e793594aa48e2769d9))
+* **components-core:** fixed rendering of wrapper div around images ([1a8a075](https://github.com/ASU/asu-unity-stack/commit/1a8a075ad22e12b05fe726cb0d837efdb94a504c))
+* **components-core:** updated news and story cards to match ws ([dc1e9b1](https://github.com/ASU/asu-unity-stack/commit/dc1e9b13ad5e991a3733a0e0e7dd7e1c4c1928a1))
+
+
+### Features
+
+* **components-core:** added new props in image component ([b70bc76](https://github.com/ASU/asu-unity-stack/commit/b70bc76d61943331f51011d1ad95065fe4e64faa))
+* **components-core:** updated stories and conditional rendering for Image component ([9d10537](https://github.com/ASU/asu-unity-stack/commit/9d10537e92e40ef5d077b22aaee2a4c7c0c68d13))
+
+# [@asu/components-core-v3.2.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.1.4...@asu/components-core-v3.2.0) (2023-11-20)
+
+
+### Bug Fixes
+
+* **components-core:** export initFuncs ([5da35a2](https://github.com/ASU/asu-unity-stack/commit/5da35a2b6bebd56e054754beb40a5d40df3e38b7))
+* **components-core:** fix components-core init ([38bdb42](https://github.com/ASU/asu-unity-stack/commit/38bdb42bf9243f6ffaf0a615e769388b22a2ef66))
+
+
+### Features
+
+* **components-core:** add InitImage ([4139660](https://github.com/ASU/asu-unity-stack/commit/41396609a2f483cc1ff2fc52e984b1fc551afd4f))
+
 # [@asu/components-core-v3.1.4](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v3.1.3...@asu/components-core-v3.1.4) (2023-10-18)
 
 

@@ -1,7 +1,19 @@
 import "@asu/unity-bootstrap-theme/src/scss/unity-bootstrap-theme.bundle.scss";
+import "../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 
-export const parameters = {
+const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
+  percy: {
+    include: [
+      "Accordion: Default\$",
+      "AnchorMenu",
+      "Article",
+      "Card: Default\$",
+      "Card: Event\$",
+      "Pagination: Default\$",
+      "TabbedPanels: Default\$",
+    ],
+  },
   backgrounds: {
     values: [
       {
@@ -15,3 +27,10 @@ export const parameters = {
     ],
   },
 };
+
+/** @type { import('@storybook/react').Preview } */
+const preview = {
+  parameters
+};
+
+export default preview;

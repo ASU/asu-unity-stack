@@ -1,11 +1,10 @@
 // @ts-check
-import { idGenerator } from "@asu/components-core";
 import React, { useState } from "react";
 
+import { idGenerator, trackGAEvent } from "../../../../../../shared";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useAppContext } from "../../../core/context/app-context";
 import { useIsMobile } from "../../../core/hooks/isMobile";
-import { trackGAEvent } from "../../../core/services/googleAnalytics";
 import { Button } from "../../Button";
 import { UniversalNavbar } from "../../UniversalNavbar";
 import { Wrapper } from "./index.styles";
@@ -36,7 +35,7 @@ const NavbarContainer = () => {
 
   return (
     // @ts-ignore
-    <Wrapper breakpoint={breakpoint} data-testid="navigation" aria-label="Main">
+    <Wrapper breakpoint={breakpoint} data-testid="navigation" aria-label="Site">
       {(navTree?.length || mobileNavTree?.length || buttons?.length) && (
         <div className="content-container">
           {(navTree?.length || mobileNavTree?.length) && (

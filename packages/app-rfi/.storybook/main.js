@@ -2,16 +2,19 @@ const path = require("path");
 const PROJECT_DIR = path.resolve(__dirname, "../");
 const common = require("../webpack/webpack.common");
 
-module.exports = {
+const config = {
+  staticDirs: ['../dist'],
   stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
+    "../../../.storybook-config",
+    "../../../.storybook-config/dataLayerListener",
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "storybook-css-modules-preset",
   ],
-  framework: "@storybook/react",
-  core: {
-    builder: "webpack5",
+  framework: {
+    name: "@storybook/react-webpack5",
+    options: {}
   },
   webpackFinal: config => {
     return {
@@ -26,4 +29,10 @@ module.exports = {
       },
     };
   },
+
+  docs: {
+    autodocs: false
+  }
 };
+
+export default config;

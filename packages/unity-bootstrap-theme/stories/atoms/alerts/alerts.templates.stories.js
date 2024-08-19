@@ -1,36 +1,36 @@
-import {
-  createComponent,
-  createStory,
-  layoutNames,
-} from "../../../helpers/wrapper.js";
-import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
+import React from "react";
 
-const extraOptions = {
-  type: {
-    name: "type",
-    options: ["alert-warning", "alert-success", "alert-info", "alert-danger"],
-    defaultValue: "alert-success",
-    control: {
-      type: "radio",
-      labels: {
-        "alert-warning": "Warning",
-        "alert-success": "Success",
-        "alert-info": "Info",
-        "alert-danger": "Danger",
+import { defaultDecorator } from "../../../../../shared/components/Layout.js";
+
+export default {
+  title: "Atoms/Alerts/Templates",
+  args: {
+    type: "Success",
+    dismissable: false,
+  },
+  argTypes: {
+    type: {
+      name: "type",
+      options: ["Warning", "Success", "Info", "Danger"],
+      mapping: {
+        "Warning": "alert-warning",
+        "Success": "alert-success",
+        "Info": "alert-info",
+        "Danger": "alert-danger",
+      },
+      control: {
+        type: "radio",
       },
     },
+    dismissable: {
+      name: "Dismissable",
+      control: { type: "boolean" },
+    },
   },
-  dismissable: {
-    name: "Dismissable",
-    control: { type: "boolean" },
-    defaultValue: false,
-  },
+  decorators: [ defaultDecorator ],
 };
 
-export default createComponent("Alerts", "Atoms", "Templates", extraOptions);
-
-export const Alert = createStory(
-  args => {
+export const Alert = (args) => {
     return (
       <div
         className={`alert ${args.type} ${
@@ -70,13 +70,4 @@ export const Alert = createStory(
         )}
       </div>
     );
-  },
-  {
-    initFunc,
-    supportedTemplates: [
-      layoutNames.FULL_WIDTH,
-      layoutNames.ONE_COLUMN,
-      layoutNames.TWO_COLUMN,
-    ],
-  }
-);
+  };

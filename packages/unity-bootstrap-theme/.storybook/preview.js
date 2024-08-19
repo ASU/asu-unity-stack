@@ -1,9 +1,10 @@
 import "../src/scss/unity-bootstrap-theme.bundle.scss";
+import { removeFontAwesomeChanges } from "./local-addon/helpers";
 
 // Import all the Bootstrap bundle
 import "../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min";
 
-export const parameters = {
+const parameters = {
   options: {
     storySort: {
       order: [
@@ -28,13 +29,30 @@ export const parameters = {
             'Navbar options', ['Readme', '*'],
             'No navigation', ['Readme', '*'],
             'Additional considerations', ['Readme', '*'],
-            'Mobile Breakpoint' ['Readme', '*'],
+            'Mobile Breakpoint', ['Readme', '*'],
           ],
           'Content Sections', ['Readme', '*'],
           'Hero', ['Readme', '*'],
         ],
       ],
     },
+  },
+  percy: {
+    include: [
+      "Ranking Card Large",
+      "Ranking Card Small",
+      ".*Cards\.*Horizontal\$",
+      "Card Variations",
+      "Card Story",
+      ".*Anchor Menu\\.*",
+      ".*Accordions.*Foldable Card\$",
+      ".*Tabbed Panels.*",
+      ".*Global Header.*Basic Example.*",
+      ".*Global Footer.*One Column Example.*",
+      ".*Global Footer.*Two Columns Example.*",
+      ".*Heroes.*Hero Video.*",
+      ".*Heroes.*Hero Large One Button.*",
+    ],
   },
   layout: 'fullscreen',
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -51,12 +69,13 @@ export const parameters = {
     },
     root: "#html-root", // can be customized to wrap an element
     removeComments: /^\s*\s*$/,
-    transform: (code) => {
-      // remove Fontawesome transforming span into svg
-      code = code.replace(/<svg.*?<\/svg>/gi, "");
-      code = code.replace(/(<!--\s)(<span.*?class=.*?fa-.*?><\/span>)(\s-->)/gi, "$2");
-      code = code.replace(/(<!--\s)(<i.*?class=.*?fa-.*?><\/i>)(\s-->)/gi, "$2");
-      return code;
-    }
+    transform: (code) => removeFontAwesomeChanges(code)
   },
 };
+
+/** @type { import('@storybook/react').Preview } */
+const preview = {
+  parameters
+};
+
+export default preview;

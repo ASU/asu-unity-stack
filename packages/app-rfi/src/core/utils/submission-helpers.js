@@ -1,6 +1,22 @@
 // @ts-check
+import { KEY } from "./constants";
+import { pushDataLayerEventToGa, setClientId } from "./google-analytics";
+import { deepCloner } from "../../../../../shared/utils";
+
+/**
+ * In order to make a field not required, we set the default or blank value
+ * to {KEY.FALSE_EMPTY}. This way we do not need to alter validation schemas. Remove all
+ * {KEY.FALSE_EMPTY} values before we submit
+ * @param {*} values
+ * @returns {*}
+ */
+const removeUnansweredFields = values =>
+  Object.entries(values)
+    .filter(([key, value]) => value !== KEY.FALSE_EMPTY)
+    .reduce((result, [key, value]) => ({ ...result, [key]: value }), {});
+
 /* Marshall and prepare values for submission payload. */
-export function submissionFormFieldPrep(payload) {
+function submissionFormFieldPrep(payload) {
   // ADJUST AND PROCESS FORM FIELDS
 
   const output = payload;
@@ -25,6 +41,9 @@ export function submissionFormFieldPrep(payload) {
   }
   delete output.CareerAndStudentType;
 
+  output.Campus = output.CampusProgramHasChoice || output.Campus;
+  delete output.CampusProgramHasChoice;
+
   // Consolidate Zip and ZipCode, favoring Zip.
   output.Zip = output.Zip ? output.Zip : output.ZipCode;
   delete output.ZipCode;
@@ -39,19 +58,19 @@ export function submissionFormFieldPrep(payload) {
   // so in those cases, since it is an optional field, we drop the date from
   // the payload, considering it bad data. The regex test ensures there's 2
   // of / or - or . characters in the string. They can be mixed.
-  if (new RegExp(/[.|/|-].{2}/).test(output.BirthDate)) {
-    output.BirthDate = output.BirthDate
-      ? new Date(output.BirthDate).toISOString()
-      : undefined;
-  } else {
-    // Is invalid date in the eyes of toISOString(), so drop.
-    output.BirthDate = undefined;
-  }
+  // if (new RegExp(/[.|/|-].{2}/).test(output.BirthDate)) {
+  //   output.BirthDate = output.BirthDate
+  //     ? new Date(output.BirthDate).toISOString()
+  //     : undefined;
+  // } else {
+  //   // Is invalid date in the eyes of toISOString(), so drop.
+  //   output.BirthDate = undefined;
+  // }
 
   return output;
 }
 
-export function submissionSetHiddenFields(payload, test) {
+function submissionSetHiddenFields(payload, test) {
   // "HIDDEN" FIELDS THAT DON'T APPEAR IN THE FORM.
 
   const output = payload;
@@ -75,3 +94,46 @@ export function submissionSetHiddenFields(payload, test) {
 
   return output;
 }
+
+export const rfiSubmit = (value, submissionUrl, test, callback = a => ({})) => {
+  // MARSHALL FIELDS FOR THE PAYLOAD
+
+  let payload = deepCloner(value);
+  payload = submissionFormFieldPrep(payload);
+  payload = submissionSetHiddenFields(payload, test);
+  payload = removeUnansweredFields(payload);
+
+  // Patch ASUOnline clientid or enterpriseclientid and also
+  // ga_clientid onto payload.
+  // TODO Confirm sourcing for ga_clientid
+  payload = setClientId(payload);
+
+  // Google Analytics push to simulate submit button click
+  // after validation has occurred.
+  pushDataLayerEventToGa("rfi-submit");
+
+  if (test) {
+    // eslint-disable-goNext-line no-alert
+    alert(`SUBMITTED FORM \n${JSON.stringify(payload, null, 2)}`);
+  }
+
+  // timeout promise that resolves after 2 seconds
+  const timeoutPromise = new Promise(resolve => {
+    setTimeout(() => {
+      resolve({ status: "timeout", message: "Assumed success after timeout" });
+    }, 2000);
+  });
+
+  const fetchPromise = fetch(`${submissionUrl}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  }).then(response => response.json());
+
+  // Race the fetch promise against the timeout promise
+  return Promise.race([fetchPromise, timeoutPromise]).then(response =>
+    callback(response)
+  );
+};

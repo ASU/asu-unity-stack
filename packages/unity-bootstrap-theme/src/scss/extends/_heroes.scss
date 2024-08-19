@@ -73,9 +73,33 @@ div[class^="uds-hero"] {
   align-content: flex-end;
   margin-bottom: $uds-size-spacing-8;
 
+  header {
+    display: grid;
+    grid-column: 2;
+    grid-row: 2;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    p {
+      margin: 0;
+    }
+
+    h1,
+    .h1,
+    [role="doc-subtitle"], // UDS is deprecatated doc-subtitle as a Selector
+    .hero-subtitle,
+    a.btn,
+    a.uds-modal-close-btn,
+    .content,
+    .btn-row {
+      grid-column: 1;
+    }
+  }
+
   // Column alignment for decendent items
   h1,
-  [role="doc-subtitle"],
+  [role="doc-subtitle"], // UDS is deprecatated doc-subtitle as a Selector
+  .hero-subtitle,
   a.btn,
   .content,
   .btn-row {
@@ -92,7 +116,8 @@ div[class^="uds-hero"] {
     object-fit: cover;
   }
 
-  [role="doc-subtitle"] {
+  [role="doc-subtitle"], // UDS is deprecatated doc-subtitle as a Selector
+  .hero-subtitle {
     @include like-h3;
     display: inline-block;
     grid-row: 2;
@@ -258,6 +283,10 @@ div.uds-hero-md {
 div.uds-hero-lg {
   height: $uds-size-spacing-64;
 
+  .content {
+    display: none;
+  }
+
   h1 {
     margin-bottom: $uds-size-spacing-2;
   }
@@ -303,7 +332,8 @@ div.uds-hero-lg {
 
     // Column alignment for decendent items
     h1,
-    [role="doc-subtitle"],
+    [role="doc-subtitle"], // UDS is deprecatated doc-subtitle as a Selector
+    .hero-subtitle,
     a.btn,
     .content,
     .btn-row {
@@ -399,6 +429,10 @@ div.uds-hero-lg {
     // TODO; remove this, it's a fallback for buttons without has-btn-row
     grid-template-rows: 1fr repeat(4, auto) $uds-size-spacing-6;
 
+    .content {
+      display: block;
+    }
+
     &.has-btn-row {
       grid-template-rows: 1fr repeat(4, auto) $uds-size-spacing-6;
       .content {
@@ -437,7 +471,8 @@ div.uds-hero-lg {
 
     // Column alignment for decendent items
     h1,
-    [role="doc-subtitle"],
+    [role="doc-subtitle"], // UDS is deprecatated doc-subtitle as a Selector
+    .hero-subtitle,
     a.btn,
     .content,
     .btn-row {
@@ -452,7 +487,8 @@ div.uds-hero-lg {
 
     // Column alignment for decendent items
     h1,
-    [role="doc-subtitle"],
+    [role="doc-subtitle"], // UDS is deprecatated doc-subtitle as a Selector
+    .hero-subtitle,
     a.btn,
     .content,
     .btn-row {

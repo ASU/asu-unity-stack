@@ -1,9 +1,9 @@
 // @ts-check
-import { sanitizeDangerousMarkup } from "@asu/components-core";
 import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
 
+import { sanitizeDangerousMarkup } from "../../../../../../../shared";
 import { progDetailSectionIds } from "../../../../core/models";
 
 const WrapperContainer = styled.div`

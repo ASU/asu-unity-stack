@@ -17,6 +17,7 @@ const defaultArgs = {
   dataSource: {
     url: "/api/mocks/feeds-json",
   },
+  maxItems: DEFAULT_MAX_ITEMS,
 };
 
 describe("#Cards Grid News", () => {

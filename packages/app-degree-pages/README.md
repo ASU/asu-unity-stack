@@ -1,5 +1,6 @@
 # ASU Degree Pages
 
+
 ASU Web Standards-based implementation of the Degree page component
 
 
@@ -314,7 +315,7 @@ You can find an extended example of how to set `ListingPage` props [here](/packa
 
     <link
       rel="stylesheet"
-      href="https://unity.web.asu.edu/@asu/unity-bootstrap-theme/css/unity-bootstrap-theme.bundle.css"
+      href="https://asu.github.io/asu-unity-stack/@asu/unity-bootstrap-theme/css/unity-bootstrap-theme.bundle.css"
     />
 
     <!-- *************************************************************** -->
@@ -355,7 +356,7 @@ You can find an extended example of how to set `DetailPage` props [here](/packag
 
     <link
       rel="stylesheet"
-      href="https://unity.web.asu.edu/@asu/unity-bootstrap-theme/css/unity-bootstrap-theme.bundle.css"
+      href="https://asu.github.io/asu-unity-stack/@asu/unity-bootstrap-theme/css/unity-bootstrap-theme.bundle.css"
     />
 
     <!-- *************************************************************** -->
@@ -411,8 +412,8 @@ All the requirements for version 1 of this component were covered, further enhan
 
 # Storybook
 
-- [Listing page](https://unity.web.asu.edu/@asu/app-degree-pages/index.html?path=/story/program-listing-page--default)
-- [Detail page](https://unity.web.asu.edu/@asu/app-degree-pages/index.html?path=/story/program-detail-page--default
+- [Listing page](https://asu.github.io/asu-unity-stack/@asu/app-degree-pages/index.html?path=/story/program-listing-page--default)
+- [Detail page](https://asu.github.io/asu-unity-stack/@asu/app-degree-pages/index.html?path=/story/program-detail-page--default
 )
 # UX documents
 
@@ -429,8 +430,8 @@ All the requirements for version 1 of this component were covered, further enhan
 
 - [Font Awesome](https://fontawesome.com/)
     - [CDN link](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js)
-- [ASU unity-bootstrap-theme](https://unity.web.asu.edu/@asu/unity-bootstrap-theme)
-    - [CDN link](https://unity.web.asu.edu/@asu/unity-bootstrap-theme/css/unity-bootstrap-theme.bundle.css)
+- [ASU unity-bootstrap-theme](https://asu.github.io/asu-unity-stack/@asu/unity-bootstrap-theme)
+    - [CDN link](https://asu.github.io/asu-unity-stack/@asu/unity-bootstrap-theme/css/unity-bootstrap-theme.bundle.css)
 - [React](https://reactjs.org/)
 - [Add React to a Website](https://reactjs.org/docs/add-react-to-a-website.html)
 - [Jest APIs](https://jestjs.io/docs/api)

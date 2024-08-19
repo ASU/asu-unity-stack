@@ -1,3 +1,32 @@
+# [@asu/component-footer-v2.2.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.2.0...@asu/component-footer-v2.2.1) (2024-06-26)
+
+
+### Bug Fixes
+
+* **component-footer:** corrected footer links ([fe9b4a2](https://github.com/asu/asu-unity-stack/commit/fe9b4a24a5ac116c36eb2025fc35285487031f89))
+* **component-footer:** fixed isearch.asu.edu link ([d896ccb](https://github.com/asu/asu-unity-stack/commit/d896ccb8bbd805e7a77650b7318f3c4acec3fae8))
+* **component-footer:** updated path imports for URL's ([c0c84e9](https://github.com/asu/asu-unity-stack/commit/c0c84e9f5a03edd922b81405a0a96f374639e473))
+
+# [@asu/component-footer-v2.2.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.1.3...@asu/component-footer-v2.2.0) (2024-01-11)
+
+
+### Bug Fixes
+
+* **component-footer:** modified global gtm function props ([691dd51](https://github.com/asu/asu-unity-stack/commit/691dd5194311c58ed6cc6ca5daf723fc27054eb4))
+* renamed shared folder to match sahred/services ([860c6f4](https://github.com/asu/asu-unity-stack/commit/860c6f44d42119956cbaa36d8c9d8798613c76fa))
+
+
+### Features
+
+* **component-footer:** added gtm global variable tracking ([be023d4](https://github.com/asu/asu-unity-stack/commit/be023d4c51e16a614f5a5965bb21dc1bc3f0efb0))
+
+# [@asu/component-footer-v2.1.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.1.2...@asu/component-footer-v2.1.3) (2023-11-17)
+
+
+### Bug Fixes
+
+* **component-footer:** update Peer Dependency Components-core to allow version 2 or 3 ([1ee7d61](https://github.com/asu/asu-unity-stack/commit/1ee7d618609c93d882ef832b901486f54e73d6e7))
+
 # [@asu/component-footer-v2.1.3-testing.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.1.2...@asu/component-footer-v2.1.3-testing.1) (2023-10-20)
 
 

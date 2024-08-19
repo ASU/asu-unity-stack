@@ -3,7 +3,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { Field, useFormikContext } from "formik";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
@@ -22,6 +22,10 @@ const RfiPhone = ({
 }) => {
   // Surface values from Formik context
   const { values } = useFormikContext();
+  const [disableCountryGuess, setDisableCountryGuess] = useState(
+    // values from Formik
+    values.Phone?.charAt(0) === "1" && values.Country.toUpperCase() === "CA"
+  );
 
   return (
     <Field name={name}>
@@ -36,8 +40,9 @@ const RfiPhone = ({
               requiredIcon={requiredIcon}
             />
             <PhoneInput
+              disableCountryGuess={disableCountryGuess}
               inputProps={{
-                name: { name },
+                name,
                 // eslint-disable-next-line object-shorthand
                 required: required,
               }}
@@ -56,6 +61,10 @@ const RfiPhone = ({
                 // exist, no errors are thrown. Better way to do this?
                 // @ts-ignore
                 const phoneCountryCode = country.countryCode.toUpperCase();
+                setDisableCountryGuess(
+                  // values from this component Not Formik
+                  phone.charAt(0) === "1" && phoneCountryCode === "CA"
+                );
                 setFieldValue("Country", phoneCountryCode);
                 setFieldValue("CitizenshipCountry", phoneCountryCode);
               }}

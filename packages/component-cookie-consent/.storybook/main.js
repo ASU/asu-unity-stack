@@ -1,15 +1,18 @@
 const common = require("../webpack/webpack.common");
 
-module.exports = {
+const config = {
+  staticDirs: ['../dist'],
   addons: [
+    "../../../.storybook-config",
+    "../../../.storybook-config/dataLayerListener",
     "@storybook/addon-controls",
     "@storybook/addon-viewport",
     "@storybook/addon-a11y",
   ],
   stories: ["../src/*.stories.js"],
-  framework: "@storybook/react",
-  core: {
-    builder: "webpack5",
+  framework: {
+    name: "@storybook/react-webpack5",
+    options: {}
   },
   webpackFinal: async config => {
     return {
@@ -22,4 +25,10 @@ module.exports = {
       },
     };
   },
+
+  docs: {
+    autodocs: true
+  }
 };
+
+export default config;

@@ -28,7 +28,7 @@ View component examples and source code below.
 const Template = args => (
   <div className="container">
     <div className={classNames("row", "row-spaced", "pt-2", "pb-2")}>
-      <div className={classNames("col", "col-12", "col-md-6", "col-lg-4")}>
+      <div className={classNames("col", "col-12")}>
         <Card {...args} />
       </div>
     </div>
@@ -130,7 +130,8 @@ Event.args = {
   horizontal: false,
   image: "https://source.unsplash.com/WLUHO9A_xik/300x200",
   imageAltText: "An example image",
-  title: "Event title Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore exercitationem ad voluptatem dolore dolores nulla ipsam quo distinctio expedita doloribus nisi similique obcaecati velit illo autem numquam iusto, rem nesciunt repellendus laborum. Rerum quisquam, soluta aspernatur a harum dolor ducimus nulla. Itaque aliquam cum fugiat error esse ipsam rerum consectetur!",
+  title:
+    "Event title Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore exercitationem ad voluptatem dolore dolores nulla ipsam quo distinctio expedita doloribus nisi similique obcaecati velit illo autem numquam iusto, rem nesciunt repellendus laborum. Rerum quisquam, soluta aspernatur a harum dolor ducimus nulla. Itaque aliquam cum fugiat error esse ipsam rerum consectetur!",
   cardLink: "#example-link",
   body: "<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
   eventFormat: "stack",

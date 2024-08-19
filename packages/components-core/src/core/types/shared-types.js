@@ -62,7 +62,7 @@
  * @property {string} [maxWidth]
  * @property {Array.<string>}  [cssClass]
  * @property {"black"|"white"} [color]
- * @property {"gold"|"black"|"white"} [highlightColor]
+ * @property {"gold"|"black"|"white"|"none"} [highlightColor]
  */
 
 /**
