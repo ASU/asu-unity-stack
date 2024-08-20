@@ -10,12 +10,13 @@ import { engineNames, engines } from "../helpers/search";
 import { SortPicker } from "../SearchPage/components/sort";
 import { ASUSearchResultsList } from "../SearchResultsList";
 import { WebDirLayout, FacultyRankLayout } from "./index.styles";
+import { FILTER_CHOICES } from "../helpers/constants.js";
 
 /**
  * React component for displaying web directory search results.
  *
  * @param {Object} props - The props for configuring the WebDirectory component.
- * @param {string} props.searchType - The type of web directory search (e.g., 'departments', 'people').
+ * @param {"departments" | "faculty_rank" | "people" | "people_departments"} props.searchType - The type of web directory search (e.g., 'departments', 'people').
  * @param {string} props.ids - The IDs used for searching (e.g., department IDs, ASURITE IDs).
  * @param {string} props.deptIds - The department IDs for searching.
  * @param {string} props.API_URL - The API URL for performing the search.
@@ -162,34 +163,7 @@ function WebDirectory({
           {alphaFilter === "true" && (
             <FilterComponent
               filterLabel="Filter By Last Initial"
-              choices={[
-                "A",
-                "B",
-                "C",
-                "D",
-                "E",
-                "F",
-                "G",
-                "H",
-                "I",
-                "J",
-                "K",
-                "L",
-                "M",
-                "N",
-                "O",
-                "P",
-                "Q",
-                "R",
-                "S",
-                "T",
-                "U",
-                "V",
-                "W",
-                "X",
-                "Y",
-                "Z",
-              ]}
+              choices={FILTER_CHOICES}
               onChoose={filterLetter =>
                 setRequestFilters({ ...requestFilters, lastInit: filterLetter })
               }

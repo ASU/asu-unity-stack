@@ -395,6 +395,7 @@ export const performSearch = function ({
       : "https://dev-asu-isearch.ws.asu.edu/api/v1/";
 
     let query = `${searchURLOrDefault}${engine.url}`;
+    let tokenResponse = null;
 
     let APICall = null;
     if (engine.method === "GET") {
@@ -469,7 +470,7 @@ export const performSearch = function ({
       const validatedTokenUrl = validateAndCleanURL(
         `${engine.API_URL}/session/token`
       );
-      const tokenResponse = await axios.get(validatedTokenUrl);
+      tokenResponse = await axios.get(validatedTokenUrl);
       const headers = {
         "X-CSRF-Token": tokenResponse.data,
       };
