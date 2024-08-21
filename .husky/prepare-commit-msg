@@ -3,4 +3,9 @@
 # don't execute if in CI context
 [ -n "$CI" ] && exit 0
 
+# Exit if the commit message is being created by a rebase, merge, or another Git operation
+if [ -n "$2" ]; then
+  exit 0
+fi
+
 exec < /dev/tty && git cz --hook || true

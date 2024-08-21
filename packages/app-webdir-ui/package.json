@@ -27,7 +27,7 @@
     "test": "jest --config=./jest.config.js --passWithNoTests --silent --coverage",
     "test-update-snapshot": "yarn test -- -u",
     "prebuild": "rm -rf ./dist",
-    "build": "webpack -c webpack/webpack.prod.js",
+    "build": "vite build && cp -r src/assets dist/",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
     "storybook": "storybook dev -p 9030",
@@ -43,9 +43,6 @@
     "@babel/preset-react": "^7.14.5",
     "axios": "^1.6.0",
     "prop-types": "^15.7.2",
-    "react": ">= 16.14.0 < 18",
-    "react-dom": ">= 16.14.0 < 18",
-    "react-router-dom": "^6.2.1",
     "styled-components": "^5.3.0"
   },
   "devDependencies": {
@@ -92,6 +89,11 @@
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^5.1.1",
     "webpack-filter-warnings-plugin": "^1.2.1"
+  },
+  "peerDependencies": {
+    "react": ">= 16.14.0 < 18",
+    "react-dom": ">= 16.14.0 < 18",
+    "react-router-dom": "^6.2.1"
   },
   "volta": {
     "extends": "../../package.json"

@@ -62,8 +62,6 @@ __metadata:
     jsdoc-ts-utils: "npm:^2.0.1"
     jsdom-screenshot: "npm:^4.0.0"
     prop-types: "npm:^15.7.2"
-    react: "npm:>= 16.14.0 < 18"
-    react-dom: "npm:>= 16.14.0 < 18"
     react-popper: "npm:^2.2.5"
     react-tooltip: "npm:^4.2.21"
     sass-loader: "npm:^11.1.0"
@@ -75,6 +73,9 @@ __metadata:
     styled-components: "npm:^5.3.0"
     terser-webpack-plugin: "npm:^5.1.1"
     webpack-merge: "npm:^5.8.0"
+  peerDependencies:
+    react: ">= 16.14.0 < 18"
+    react-dom: ">= 16.14.0 < 18"
   languageName: unknown
   linkType: soft
 
@@ -114,8 +115,6 @@ __metadata:
     jsdom-screenshot: "npm:^4.0.0"
     postcss: "npm:^8.4.19"
     prop-types: "npm:^15.7.2"
-    react: "npm:>= 16.14.0 < 18"
-    react-dom: "npm:>= 16.14.0 < 18"
     react-phone-input-2: "npm:^2.14.0"
     reactstrap: "npm:^8.9.0"
     semantic-release: "npm:^17.4.2"
@@ -126,6 +125,9 @@ __metadata:
     webpack-merge: "npm:^5.8.0"
     yup: "npm:^0.28.1"
     yup-phone: "npm:^1.2.19"
+  peerDependencies:
+    react: ">= 16.14.0 < 18"
+    react-dom: ">= 16.14.0 < 18"
   languageName: unknown
   linkType: soft
 
@@ -173,9 +175,6 @@ __metadata:
     postcss-loader: "npm:^6.1.1"
     prop-types: "npm:^15.7.2"
     raw-loader: "npm:^4.0.2"
-    react: "npm:>= 16.14.0 < 18"
-    react-dom: "npm:>= 16.14.0 < 18"
-    react-router-dom: "npm:^6.2.1"
     sass: "npm:^1.39.2"
     sass-loader: "npm:^10"
     semantic-release: "npm:^17.4.2"
@@ -185,69 +184,10 @@ __metadata:
     styled-components: "npm:^5.3.0"
     terser-webpack-plugin: "npm:^5.1.1"
     webpack-filter-warnings-plugin: "npm:^1.2.1"
-  languageName: unknown
-  linkType: soft
-
-"@asu/component-carousel@workspace:packages/component-carousel":
-  version: 0.0.0-use.local
-  resolution: "@asu/component-carousel@workspace:packages/component-carousel"
-  dependencies:
-    "@asu/components-core": "npm:^3.0.0"
-    "@babel/core": "npm:^7.13.14"
-    "@babel/plugin-syntax-jsx": "npm:^7.14.5"
-    "@babel/plugin-transform-react-jsx": "npm:^7.13.12"
-    "@babel/plugin-transform-runtime": "npm:^7.14.5"
-    "@fortawesome/fontawesome-svg-core": "npm:^6.4.2"
-    "@fortawesome/free-brands-svg-icons": "npm:^6.4.2"
-    "@fortawesome/free-regular-svg-icons": "npm:^6.4.2"
-    "@fortawesome/free-solid-svg-icons": "npm:^6.4.2"
-    "@fortawesome/react-fontawesome": "npm:^0.2.0"
-    "@glidejs/glide": "npm:^3.4.1"
-    "@storybook/addon-a11y": "npm:^7.6.14"
-    "@storybook/addon-essentials": "npm:^7.6.14"
-    "@storybook/addon-links": "npm:^7.6.14"
-    "@storybook/react": "npm:^7.6.14"
-    "@storybook/react-webpack5": "npm:^7.6.14"
-    "@testing-library/jest-dom": "npm:^5.14.1"
-    "@testing-library/react": "npm:^12.0.0"
-    autoprefixer: "npm:^10.4.14"
-    babel-loader: "npm:^8.2.2"
-    classnames: "npm:^2.3.1"
-    clean-webpack-plugin: "npm:^4.0.0-alpha.0"
-    copy-webpack-plugin: "npm:^8.1.1"
-    css-loader: "npm:^5.2.0"
-    date-fns: "npm:^2.21.3"
-    dompurify: "npm:^2.2.8"
-    eslint-plugin-storybook: "npm:^0.6.15"
-    file-loader: "npm:^6.2.0"
-    identity-obj-proxy: "npm:^3.0.0"
-    jest: "npm:^26.6.3"
-    jest-fetch-mock: "npm:^3.0.3"
-    jest-image-snapshot: "npm:^4.4.1"
-    jest-transform-file: "npm:^1.1.1"
-    jsdoc: "npm:^3.6.7"
-    jsdoc-plugin-typescript: "npm:^2.0.6"
-    jsdoc-to-markdown: "npm:5.0.0"
-    jsdoc-ts-utils: "npm:^2.0.1"
-    jsdom-screenshot: "npm:^4.0.0"
-    mini-css-extract-plugin: "npm:^1.6.0"
-    phone-fns: "npm:^3.2.3"
-    postcss: "npm:^8.4.19"
-    postcss-flexbugs-fixes: "npm:^5.0.2"
-    prop-types: "npm:^15.7.2"
-    react: "npm:>= 16.14.0 < 18"
-    react-dom: "npm:>= 16.14.0 < 18"
-    sass: "npm:^1.39.2"
-    sass-loader: "npm:^10"
-    semantic-release: "npm:^17.4.2"
-    semantic-release-monorepo: "npm:^7.0.4"
-    storybook: "npm:^7.6.14"
-    storybook-css-modules-preset: "npm:^1.1.1"
-    style-loader: "npm:^2.0.0"
-    terser-webpack-plugin: "npm:^5.1.1"
-    url-loader: "npm:^4.1.1"
-    webpack-merge: "npm:^5.8.0"
-    webpack-node-externals: "npm:^3.0.0"
+  peerDependencies:
+    react: ">= 16.14.0 < 18"
+    react-dom: ">= 16.14.0 < 18"
+    react-router-dom: ^6.2.1
   languageName: unknown
   linkType: soft
 
@@ -311,7 +251,6 @@ __metadata:
     "@asu/components-core": "npm:^3.0.0"
     "@babel/core": "npm:^7.13.14"
     "@babel/plugin-syntax-jsx": "npm:^7.14.5"
-    "@babel/plugin-transform-react-jsx": "npm:^7.13.12"
     "@babel/plugin-transform-runtime": "npm:^7.14.5"
     "@storybook/addon-a11y": "npm:^7.6.14"
     "@storybook/addon-essentials": "npm:^7.6.14"
@@ -343,8 +282,6 @@ __metadata:
     postcss-loader: "npm:^6.1.1"
     prop-types: "npm:^15.7.2"
     raw-loader: "npm:^4.0.2"
-    react: "npm:>= 16.14.0 < 18"
-    react-dom: "npm:>= 16.14.0 < 18"
     sass: "npm:^1.39.2"
     sass-loader: "npm:^10"
     semantic-release: "npm:^17.4.2"
@@ -356,6 +293,9 @@ __metadata:
     terser-webpack-plugin: "npm:^5.1.1"
     webpack-filter-warnings-plugin: "npm:^1.2.1"
     webpack-merge: "npm:^5.8.0"
+  peerDependencies:
+    react: ">= 16.14.0 < 18"
+    react-dom: ">= 16.14.0 < 18"
   languageName: unknown
   linkType: soft
 
@@ -365,7 +305,6 @@ __metadata:
   dependencies:
     "@babel/core": "npm:^7.13.14"
     "@babel/plugin-syntax-jsx": "npm:^7.14.5"
-    "@babel/plugin-transform-react-jsx": "npm:^7.13.12"
     "@fortawesome/fontawesome-svg-core": "npm:^6.4.2"
     "@fortawesome/free-brands-svg-icons": "npm:^6.4.2"
     "@fortawesome/free-solid-svg-icons": "npm:^6.4.2"
@@ -388,8 +327,6 @@ __metadata:
     jest-transform-file: "npm:^1.1.1"
     jsdom-screenshot: "npm:^4.0.0"
     prop-types: "npm:^15.7.2"
-    react: "npm:>= 16.14.0 < 18"
-    react-dom: "npm:>= 16.14.0 < 18"
     sass-loader: "npm:^11.1.0"
     semantic-release: "npm:^17.4.2"
     semantic-release-monorepo: "npm:^7.0.4"
@@ -398,6 +335,9 @@ __metadata:
     terser-webpack-plugin: "npm:^5.1.1"
     url-loader: "npm:^4.1.1"
     webpack-merge: "npm:^5.8.0"
+  peerDependencies:
+    react: ">= 16.14.0 < 18"
+    react-dom: ">= 16.14.0 < 18"
   languageName: unknown
   linkType: soft
 
@@ -461,8 +401,6 @@ __metadata:
     "@babel/plugin-syntax-jsx": "npm:^7.14.5"
     "@babel/plugin-transform-react-jsx": "npm:^7.13.12"
     "@babel/plugin-transform-runtime": "npm:^7.14.5"
-    "@babel/preset-env": "npm:^7.15.0"
-    "@babel/preset-react": "npm:^7.14.5"
     "@babel/runtime": "npm:^7.15.3"
     "@babel/runtime-corejs3": "npm:^7.15.3"
     "@storybook/addon-a11y": "npm:^7.6.14"
@@ -495,8 +433,6 @@ __metadata:
     postcss-loader: "npm:^6.1.1"
     prop-types: "npm:^15.7.2"
     raw-loader: "npm:^4.0.2"
-    react: "npm:>= 16.14.0 < 18"
-    react-dom: "npm:>= 16.14.0 < 18"
     sass: "npm:^1.39.2"
     sass-loader: "npm:^10"
     semantic-release: "npm:^17.4.2"
@@ -508,6 +444,9 @@ __metadata:
     terser-webpack-plugin: "npm:^5.1.1"
     webpack-filter-warnings-plugin: "npm:^1.2.1"
     webpack-merge: "npm:^5.8.0"
+  peerDependencies:
+    react: ">= 16.14.0 < 18"
+    react-dom: ">= 16.14.0 < 18"
   languageName: unknown
   linkType: soft
 
@@ -652,6 +591,7 @@ __metadata:
     "@babel/core": "npm:^7.21.3"
     "@babel/plugin-transform-runtime": "npm:^7.19.6"
     "@babel/preset-env": "npm:^7.20.2"
+    "@glidejs/glide": "npm:^3.4.1"
     "@percy/cli": "npm:^1.28"
     "@percy/storybook": "npm:^4.3.4"
     "@storybook/addon-essentials": "npm:^7.6.14"
@@ -671,6 +611,7 @@ __metadata:
     eslint-plugin-storybook: "npm:^0.6.15"
     file-loader: "npm:^6.2.0"
     glob: "npm:^7.1.6"
+    identity-obj-proxy: "npm:^3"
     jest: "npm:^26.6.3"
     jest-fetch-mock: "npm:^3.0.3"
     jest-image-snapshot: "npm:^4.4.1"
@@ -3359,15 +3300,6 @@ __metadata:
   dependencies:
     "@fortawesome/fontawesome-common-types": "npm:6.6.0"
   checksum: 10c0/1135a22ff274939da477496f550b6750a1b5fd0ddd0c09bddb1874f2c183a5c8edb519de2cebf6454b12a8457c3eec587bdb6f68e96140cceeb6d02c1ec35479
-  languageName: node
-  linkType: hard
-
-"@fortawesome/free-regular-svg-icons@npm:^6.4.2":
-  version: 6.6.0
-  resolution: "@fortawesome/free-regular-svg-icons@npm:6.6.0"
-  dependencies:
-    "@fortawesome/fontawesome-common-types": "npm:6.6.0"
-  checksum: 10c0/c682a6d7c6bdce492eee5b15a6647f9c436ce04f337080b7061cc04a739b5eb95224f7cdc7d865cf08fea837d4d1b1541849a3183534956e176896a969220d45
   languageName: node
   linkType: hard
 
@@ -9633,6 +9565,7 @@ __metadata:
     "@storybook/react": "npm:^7.6.14"
     "@storybook/theming": "npm:^7.6.14"
     "@types/node": "npm:^20.0.0"
+    "@vitejs/plugin-react": "npm:^4.3.1"
     clean-webpack-plugin: "npm:^3.0.0"
     commitizen: "npm:^4.2.3"
     copy-webpack-plugin: "npm:^8.1.1"
@@ -9668,7 +9601,7 @@ __metadata:
     semantic-release: "npm:18.0.1"
     semantic-release-monorepo: "npm:^7.0.4"
     start-server-and-test: "npm:^1.9.1"
-    typescript: "npm:^4.0.0"
+    vite: "npm:^5.3.5"
     webpack: "npm:^5.32.0"
     webpack-bundle-analyzer: "npm:^4.4.1"
     webpack-cli: "npm:^4.6.0"
@@ -12412,7 +12345,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"date-fns@npm:^2.16.1, date-fns@npm:^2.19.0, date-fns@npm:^2.21.3":
+"date-fns@npm:^2.16.1, date-fns@npm:^2.19.0":
   version: 2.30.0
   resolution: "date-fns@npm:2.30.0"
   dependencies:
@@ -13007,7 +12940,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dompurify@npm:^2.2.7, dompurify@npm:^2.2.8":
+"dompurify@npm:^2.2.7":
   version: 2.5.6
   resolution: "dompurify@npm:2.5.6"
   checksum: 10c0/ee7e7d17982b1017a20982a2d57a0463d7fbb67f7b92a13ecf772e5e6acf0a529a19e3e31d725b05d5a2524d40e0aeb7ebc4be0aff396a6345bd6f2749fe560d
@@ -17020,7 +16953,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"identity-obj-proxy@npm:^3.0.0":
+"identity-obj-proxy@npm:^3":
   version: 3.0.0
   resolution: "identity-obj-proxy@npm:3.0.0"
   dependencies:
@@ -20797,19 +20730,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mini-css-extract-plugin@npm:^1.6.0":
-  version: 1.6.2
-  resolution: "mini-css-extract-plugin@npm:1.6.2"
-  dependencies:
-    loader-utils: "npm:^2.0.0"
-    schema-utils: "npm:^3.0.0"
-    webpack-sources: "npm:^1.1.0"
-  peerDependencies:
-    webpack: ^4.4.0 || ^5.0.0
-  checksum: 10c0/138c008f8a510012266d2834227e75181feeffd09e89e9cde0a63f17be3d64ea3ddbba01036aac9c8a969462c0142285659a20c294e8d01ba948aa1124affdc2
-  languageName: node
-  linkType: hard
-
 "mini-css-extract-plugin@npm:^2.0.0, mini-css-extract-plugin@npm:^2.7.5":
   version: 2.9.0
   resolution: "mini-css-extract-plugin@npm:2.9.0"
@@ -23399,15 +23319,6 @@ __metadata:
   peerDependencies:
     postcss: ^8.2.15
   checksum: 10c0/7d3fc0b0d90599606fc083327a7c24390f90270a94a0119af4b74815d518948581579281f63b9bfa62e2644edf59bc9e725dc04ea5ba213f697804f3fb4dd8dc
-  languageName: node
-  linkType: hard
-
-"postcss-flexbugs-fixes@npm:^5.0.2":
-  version: 5.0.2
-  resolution: "postcss-flexbugs-fixes@npm:5.0.2"
-  peerDependencies:
-    postcss: ^8.1.4
-  checksum: 10c0/b413f73cc3c005f33479df95e1357467c28183e62ba8b25e06b8590b2a69e60d624f07824c0ff85fb1dfdd5bb7dfa321dad0885d42ec3c8f000669960b30894f
   languageName: node
   linkType: hard
 
@@ -26667,13 +26578,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"source-list-map@npm:^2.0.0":
-  version: 2.0.1
-  resolution: "source-list-map@npm:2.0.1"
-  checksum: 10c0/2e5e421b185dcd857f46c3c70e2e711a65d717b78c5f795e2e248c9d67757882ea989b80ebc08cf164eeeda5f4be8aa95d3b990225070b2daaaf3257c5958149
-  languageName: node
-  linkType: hard
-
 "source-map-js@npm:>=0.6.2 <2.0.0, source-map-js@npm:^1.0.1, source-map-js@npm:^1.2.0":
   version: 1.2.0
   resolution: "source-map-js@npm:1.2.0"
@@ -28534,7 +28438,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^3 || ^4, typescript@npm:^4.0.0":
+"typescript@npm:^3 || ^4":
   version: 4.9.5
   resolution: "typescript@npm:4.9.5"
   bin:
@@ -28544,7 +28448,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A^3 || ^4#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^4.0.0#optional!builtin<compat/typescript>":
+"typescript@patch:typescript@npm%3A^3 || ^4#optional!builtin<compat/typescript>":
   version: 4.9.5
   resolution: "typescript@patch:typescript@npm%3A4.9.5#optional!builtin<compat/typescript>::version=4.9.5&hash=289587"
   bin:
@@ -29502,16 +29406,6 @@ __metadata:
   version: 3.0.0
   resolution: "webpack-node-externals@npm:3.0.0"
   checksum: 10c0/9f645a4dc8e122dac43cdc8c1367d4b44af20c79632438b633acc1b4fe64ea7ba1ad6ab61bd0fc46e1b873158c48d8c7a25a489cdab1f31299f00eb3b81cfc61
-  languageName: node
-  linkType: hard
-
-"webpack-sources@npm:^1.1.0":
-  version: 1.4.3
-  resolution: "webpack-sources@npm:1.4.3"
-  dependencies:
-    source-list-map: "npm:^2.0.0"
-    source-map: "npm:~0.6.1"
-  checksum: 10c0/78dafb3e1e297d3f4eb6204311e8c64d28cd028f82887ba33aaf03fffc82482d8e1fdf6de25a60f4dde621d3565f4c3b1bfb350f09add8f4e54e00279ff3db5e
   languageName: node
   linkType: hard
 

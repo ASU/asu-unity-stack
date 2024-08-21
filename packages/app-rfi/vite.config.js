@@ -7,9 +7,9 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, "src/index.js"),
-      name: "unityReactCore",
+      name: "AsuRfi",
       formats: ["es", "cjs", "umd"],
-      fileName: (format) => `unityReactCore.${format}.js`,
+      fileName: (format) => `appRfi.${format}.js`,
     },
     rollupOptions: {
       input: resolve(__dirname, "src/index.js"),
@@ -21,7 +21,7 @@ export default defineConfig({
         },
       },
     },
-    minify: "terser",
+    minify: true,
     cssCodeSplit: false,
   },
   esbuild: {
@@ -53,7 +53,7 @@ export default defineConfig({
       generateBundle(options, bundle) {
         for (const file of Object.values(bundle)) {
           if (file.type === 'asset' && file.fileName.endsWith('.css')) {
-            const jsFile = Object.values(bundle).find(f => f.type === 'chunk' && f.fileName.endsWith('.js'));
+            const jsFile = Object.values(bundle).find(f => f.type === 'chunk' && (f.fileName.endsWith('.js') || f.fileName.endsWith('.mjs')));
             if (jsFile) {
               jsFile.code += `\n(function() {
                 var css = \`${file.source.toString().replace(/`/g, '\\`').replace(/\$/g, '\\$')}\`;
@@ -71,6 +71,6 @@ export default defineConfig({
           }
         }
       }
-    }
+    },
   ],
 });

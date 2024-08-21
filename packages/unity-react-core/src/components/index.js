@@ -14,3 +14,4 @@ export * from "./RankingCard";
 export * from "./TabbedPanels";
 export * from "./Testimonial";
 export * from "./Video";
+export * from "./ComponentCarousel/components";

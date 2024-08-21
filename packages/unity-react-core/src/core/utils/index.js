@@ -10,6 +10,12 @@ import { ButtonIconOnly } from "../../components/ButtonIconOnly";
 import { ButtonTag } from "../../components/ButtonTag";
 // eslint-disable-next-line import/no-cycle
 import { Card } from "../../components/Card";
+import {
+  initCardCarousel,
+  initTestimonialCarousel,
+  initImageCarousel,
+  initImageGalleryCarousel,
+} from "../../components/ComponentCarousel";
 import { Hero } from "../../components/Hero";
 import { Image } from "../../components/Image";
 import { Pagination } from "../../components/Pagination";

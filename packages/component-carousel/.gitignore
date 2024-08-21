@@ -1,6 +1,0 @@
-node_modules
-/*.log
-
-package-lock.json
-docs/**
-!docs/README.props.md
