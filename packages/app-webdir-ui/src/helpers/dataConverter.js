@@ -135,7 +135,7 @@ const getTitleFromProfile = (profile, titleMatch, titleInfo) => {
       matchedAffiliationDept: profile.dept_name,
     };
   }
-  if (typeof profile.title === "string" && profile.dept_name) {
+  if ((typeof profile.title === "string" || profile.title) && profile.dept_name) {
     return {
       matchedAffiliationTitle: profile.title,
       matchedAffiliationDept: profile.dept_name,

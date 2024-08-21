@@ -14,7 +14,7 @@ export class ProfileService {
   }
 
   async fetchProfiles(profiles) {
-    const url = this.processURL(
+    const url = ProfileService.processURL(
       `${this.engine.API_URL}${this.engine.searchApiVersion}/webdir-profiles/department`
     );
     const response = await axios.post(url, {
@@ -65,6 +65,9 @@ export class ProfileService {
   // This main method is called from the SearchResultsList component and adds a
   // "title" and "dept_name" field to the individual results. Used in dataConverter.js
   async processProfiles(term, filteredResults) {
+    if (!this.engine.doTitleLogic) {
+      return filteredResults;
+    }
     if (term) {
       return this.#getProfilesForTerm(filteredResults);
     }
