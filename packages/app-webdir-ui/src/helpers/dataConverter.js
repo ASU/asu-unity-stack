@@ -107,7 +107,7 @@ const fillInBlanks = datum => {
 };
 function isCustomTitle(profile, index) {
   if (!profile.title_source?.raw) return false;
-  return profile.title_source?.raw[index] === "titles"
+  return profile.title_source?.raw[index] === "titles";
 }
 
 function findDeptIndex(profile, deptId = "") {
@@ -117,8 +117,11 @@ function findDeptIndex(profile, deptId = "") {
 
 function getTitleAndDeptFromIndex(profile, index) {
   let title = profile.titles?.raw[index];
-  let dept = profile.departments?.raw[index];
-  if (profile.title_source?.raw[index] !== "titles" && profile.working_title?.raw[0]) {
+  const dept = profile.departments?.raw[index];
+  if (
+    profile.title_source?.raw[index] !== "titles" &&
+    profile.working_title?.raw[0]
+  ) {
     title = profile.working_title?.raw[0];
   }
   return { title, dept };
@@ -126,11 +129,17 @@ function getTitleAndDeptFromIndex(profile, index) {
 
 // See https://asudev.jira.com/browse/SCHWEB-1238 for title logic.
 const getTitleFromProfile = (profile, titleMatch, titleInfo) => {
-
   if (Array.isArray(profile.title) && profile.title[0] && profile.dept_name) {
-    return { matchedAffiliationTitle: profile.title[0], matchedAffiliationDept: profile.dept_name };
-  } else if (typeof profile.title === "string" && profile.dept_name) {
-    return { matchedAffiliationTitle: profile.title, matchedAffiliationDept: profile.dept_name };
+    return {
+      matchedAffiliationTitle: profile.title[0],
+      matchedAffiliationDept: profile.dept_name,
+    };
+  }
+  if (typeof profile.title === "string" && profile.dept_name) {
+    return {
+      matchedAffiliationTitle: profile.title,
+      matchedAffiliationDept: profile.dept_name,
+    };
   }
 
   let matchedAffiliationTitle =
@@ -161,7 +170,10 @@ const getTitleFromProfile = (profile, titleMatch, titleInfo) => {
     matchedAffiliationDept =
       profile.primary_department?.raw || profile.subaffiliations?.raw[0];
     // Check if the primary dept has a custom title
-    let primaryDeptIndex = findDeptIndex(profile, profile.primary_deptid?.raw);
+    const primaryDeptIndex = findDeptIndex(
+      profile,
+      profile.primary_deptid?.raw
+    );
     if (isCustomTitle(profile, primaryDeptIndex)) {
       matchedAffiliationTitle = profile.titles?.raw[primaryDeptIndex];
     }
@@ -171,7 +183,10 @@ const getTitleFromProfile = (profile, titleMatch, titleInfo) => {
     titleInfo?.searchType === "faculty_rank" ||
     titleInfo?.searchType === "departments"
   ) {
-    const primaryDeptIndex = findDeptIndex(profile, profile.primary_deptid?.raw);
+    const primaryDeptIndex = findDeptIndex(
+      profile,
+      profile.primary_deptid?.raw
+    );
 
     // Check if supplied deptids in the web directory include the users primary_deptid and is a custom title
     if (
@@ -210,7 +225,7 @@ const getTitleFromProfile = (profile, titleMatch, titleInfo) => {
     titleInfo?.searchType === "people" ||
     titleInfo?.searchType === "people_departments"
   ) {
-    let deptIndex = findDeptIndex(profile, profile.primary_deptid?.raw);
+    const deptIndex = findDeptIndex(profile, profile.primary_deptid?.raw);
     if (isCustomTitle(profile, deptIndex)) {
       matchedAffiliationTitle = profile.titles?.raw[deptIndex];
     }

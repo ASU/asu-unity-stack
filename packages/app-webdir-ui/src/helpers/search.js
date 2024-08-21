@@ -196,10 +196,9 @@ const webDirDeptsFormatter = ({
   }
   // filters.peopleInDepts indicates a WEB_DIRECTORY_PEOPLE_AND_DEPS flow.
   // filters.deptIds indicates a WEB_DIRECTORY_DEPARTMENTS flow.
-  const titleOverwrite =
-    filters?.peopleInDepts
-      ? { peopleInDeps: filters.peopleInDepts }
-      : { depts: filters?.deptIds };
+  const titleOverwrite = filters?.peopleInDepts
+    ? { peopleInDeps: filters.peopleInDepts }
+    : { depts: filters?.deptIds };
 
   return {
     tab: engines[engineName].name,

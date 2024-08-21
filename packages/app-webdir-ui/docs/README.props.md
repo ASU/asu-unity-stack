@@ -173,7 +173,7 @@ React component for displaying web directory search results.
 | Param | Type | Description |
 | --- | --- | --- |
 | props | <code>Object</code> | The props for configuring the WebDirectory component. |
-| props.searchType | <code>string</code> | The type of web directory search (e.g., 'departments', 'people'). |
+| props.searchType | <code>&quot;departments&quot;</code> \| <code>&quot;faculty\_rank&quot;</code> \| <code>&quot;people&quot;</code> \| <code>&quot;people\_departments&quot;</code> | The type of web directory search (e.g., 'departments', 'people'). |
 | props.ids | <code>string</code> | The IDs used for searching (e.g., department IDs, ASURITE IDs). |
 | props.deptIds | <code>string</code> | The department IDs for searching. |
 | props.API_URL | <code>string</code> | The API URL for performing the search. |

@@ -5,8 +5,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { trackGAEvent } from "../../../../shared";
 import { performSearch } from "../helpers/search";
 import { SearchMessage } from "../SearchPage/components/SearchMessage";
+import { ProfileService } from "./dataFormatter";
 import { SearchResultsList } from "./index.styles";
-import { ProfileService } from "./dataFormatter"
 
 /*
   'type' must be 'micro', 'preview', or 'full'.
@@ -98,7 +98,10 @@ const ASUSearchResultsList = ({
         }
 
         const profileService = new ProfileService(engine, filters);
-        filteredResults = await profileService.processProfiles(term, filteredResults);
+        filteredResults = await profileService.processProfiles(
+          term,
+          filteredResults
+        );
 
         const formattedResults = engine.formatter({
           results: filteredResults,
@@ -133,17 +136,19 @@ const ASUSearchResultsList = ({
           setTotalResults(formattedResults.page.total_results);
         }
 
-        const resultsWithProps = formattedResults.results.map((profile, idx) => {
-          const newProps = {
-            ...profile.props,
-            ...{ key: idx, GASource },
-          };
-          return {
-            ...profile,
-            ...{ props: newProps },
-            key: profile.props?.children?.key ?? idx,
-          };
-        });
+        const resultsWithProps = formattedResults.results.map(
+          (profile, idx) => {
+            const newProps = {
+              ...profile.props,
+              ...{ key: idx, GASource },
+            };
+            return {
+              ...profile,
+              ...{ props: newProps },
+              key: profile.props?.children?.key ?? idx,
+            };
+          }
+        );
 
         if (setPromotedResult) {
           setPromotedResult(formattedResults.topResult);

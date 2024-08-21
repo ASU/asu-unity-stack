@@ -1,4 +1,6 @@
+/* eslint-disable camelcase */
 import axios from "axios";
+
 import { validateAndCleanURL } from "../helpers/validateUrl";
 
 export class ProfileService {
@@ -7,7 +9,7 @@ export class ProfileService {
     this.filters = filters;
   }
 
-  processURL(url) {
+  static processURL(url) {
     return validateAndCleanURL(url);
   }
 
@@ -64,11 +66,11 @@ export class ProfileService {
   // "title" and "dept_name" field to the individual results. Used in dataConverter.js
   async processProfiles(term, filteredResults) {
     if (term) {
-      return await this.#getProfilesForTerm(filteredResults);
-    } else if (this.engine.method === "GET") {
-      return await this.#getProfilesForGET(filteredResults);
-    } else {
-      return filteredResults;
+      return this.#getProfilesForTerm(filteredResults);
     }
+    if (this.engine.method === "GET") {
+      return this.#getProfilesForGET(filteredResults);
+    }
+    return filteredResults;
   }
 }
