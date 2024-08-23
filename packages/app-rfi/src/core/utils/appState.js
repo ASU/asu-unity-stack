@@ -51,7 +51,7 @@ const getInitialValues = props => ({
   Country: props.country,
   Zip: undefined,
   // BirthDate: undefined,
-  MilitaryStatus: "No",
+  MilitaryStatus: "None",
   // Comments: undefined,
   // Email: undefined,
 });
