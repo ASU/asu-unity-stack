@@ -8,7 +8,6 @@
   "types": "./dist/main.d.ts",
   "author": "Michele Dibenedetto",
   "license": "MIT",
-  "private": false,
   "files": [
     "examples/*",
     "dist/*",
@@ -27,9 +26,8 @@
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
     "test": "jest --config=./jest.config.js --passWithNoTests --silent --coverage",
-    "prebuild": "rm -rf ./dist",
     "test-update-snapshot": "yarn test -- -u",
-    "build": "webpack -c webpack/webpack.prod.js",
+    "build": "vite build && yarn postbuild",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "postbuild": "cp ./types/main.d.ts ./dist/main.d.ts",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
@@ -37,17 +35,17 @@
     "build-storybook": "storybook build -o ../../build/$npm_package_name",
     "jsdoc": "jsdoc -c jsdoc.config.js",
     "predocs": "mkdir -p ./docs",
-    "docs": "jsdoc2md --no-cache -c jsdoc.config.js --files ./src/components > ./docs/README.props.md",
+    "docs": "yarn predocs && jsdoc2md --no-cache -c jsdoc.config.js --files ./src/components > ./docs/README.props.md && yarn postdocs",
     "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "dependencies": {
     "@asu/components-core": "^3.0.0",
-    "@babel/preset-env": "^7.15.0",
-    "@babel/preset-react": "^7.14.5",
     "prop-types": "^15.7.2",
-    "react": ">= 16.14.0 < 18",
-    "react-dom": ">= 16.14.0 < 18",
     "styled-components": "^5.3.0"
+  },
+  "peerDependencies": {
+    "react": ">= 16.14.0 < 18",
+    "react-dom": ">= 16.14.0 < 18"
   },
   "devDependencies": {
     "@babel/core": "^7.13.14",
@@ -95,9 +93,6 @@
     "terser-webpack-plugin": "^5.1.1",
     "webpack-filter-warnings-plugin": "^1.2.1",
     "webpack-merge": "^5.8.0"
-  },
-  "peerDependencies": {
-
   },
   "volta": {
     "extends": "../../package.json"

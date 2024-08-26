@@ -1,0 +1,117 @@
+{
+  "name": "@asu/unity-react-core",
+  "version": "0.0.1",
+  "main": "./dist/unity-react-core.umd.js",
+  "module": "./dist/unity-react-core.mjs",
+  "browser": "./dist/unity-react-core.umd.cjs",
+  "types": "./dist/public/types/main.d.ts",
+  "description": "Core UDS React UI components required by other higher-order React packages",
+  "author": "Nathan Rollins <nathan.rollins@asu.edu>",
+  "homepage": "https://github.com/ASU/asu-unity-stack#readme",
+  "license": "MIT",
+  "files": [
+    "examples/*",
+    "dist/*",
+    "docs/*",
+    "CHANGELOG.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ASU/asu-unity-stack.git",
+    "directory": "packages/components-core"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/@asu"
+  },
+  "bugs": {
+    "url": "https://github.com/ASU/asu-unity-stack/issues"
+  },
+  "scripts": {
+    "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
+    "test": "jest --config=./jest.config.js --silent --coverage",
+    "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
+    "prebuild": "rm -rf ./dist",
+    "build": "yarn prebuild && vite build && yarn postbuild",
+    "postbuild": "cp ./types/main.d.ts ./dist/main.d.ts",
+    "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
+    "storybook": "storybook dev -p 9200",
+    "percy": "build-storybook -c ./.storybook/percy -o ./percy-storybook && export PERCY_TOKEN=$PERCY_TOKEN_COMPONENTS_CORE && percy storybook ./percy-storybook",
+    "build-storybook": "storybook build -o ../../build/$npm_package_name",
+    "jsdoc": "jsdoc -c jsdoc.config.js",
+    "predocs": "mkdir -p ./docs",
+    "docs": "jsdoc2md --no-cache -c jsdoc.config.js --files ./src/components > ./docs/README.props.md",
+    "postdocs": "node ../../scripts/process-readme-props.js"
+  },
+  "devDependencies": {
+    "@asu/unity-bootstrap-theme": "^1.0.0",
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.21.3",
+    "@babel/plugin-transform-runtime": "^7.19.6",
+    "@babel/preset-env": "^7.20.2",
+    "@percy/cli": "^1.28",
+    "@percy/storybook": "^4.3.4",
+    "@storybook/addon-essentials": "^7.6.14",
+    "@storybook/addon-interactions": "^7.6.14",
+    "@storybook/addon-links": "^7.6.14",
+    "@storybook/builder-vite": "^7",
+    "@storybook/react": "^7.6.14",
+    "@storybook/react-vite": "^7",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "babel-jest": "^26.6.3",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.0",
+    "eslint-plugin-storybook": "^0.6.15",
+    "file-loader": "^6.2.0",
+    "glob": "^7.1.6",
+    "identity-obj-proxy": "^3",
+    "jest": "^26.6.3",
+    "jest-fetch-mock": "^3.0.3",
+    "jest-image-snapshot": "^4.4.1",
+    "jest-transform-css": "^6.0.1",
+    "jest-transform-file": "^1.1.1",
+    "jsdom-screenshot": "^4.0.0",
+    "postcss": "^8.4.19",
+    "react": ">= 16.14.0 < 18",
+    "react-dom": ">= 16.14.0 < 18",
+    "react-router-dom": "^6.2.1",
+    "react-share": "^4.4.0",
+    "reactstrap": "^8.9.0",
+    "semantic-release": "^17.4.2",
+    "semantic-release-monorepo": "^7.0.4",
+    "storybook": "^7.6.14",
+    "storybook-css-modules-preset": "^1.1.1",
+    "style-loader": "^3.3.1",
+    "terser": "^5.31.3",
+    "vite": "^5.3.5",
+    "vite-plugin-static-copy": "^1.0.6",
+    "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "@glidejs/glide": "^3.4.1",
+    "classnames": "^2.2.6",
+    "date-fns": "^2.19.0",
+    "phone-fns": "^3.2.3",
+    "prop-types": "^15.7.2",
+    "styled-components": "^5.3.0"
+  },
+  "peerDependencies": {
+    "react": ">= 16.14.0 < 18",
+    "react-dom": ">= 16.14.0 < 18",
+    "react-router-dom": ">= 5.2.0 < 7",
+    "react-share": "^4.4.0",
+    "reactstrap": "^8.9.0"
+  },
+  "exports": {
+    "./*": "./*",
+    ".": {
+      "import": "./dist/unity-react-core.mjs",
+      "require": "./dist/unity-react-core.umd.js"
+    }
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}
