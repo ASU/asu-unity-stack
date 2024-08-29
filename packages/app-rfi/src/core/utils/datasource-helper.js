@@ -56,14 +56,8 @@ export const normalizeDegreeData = data => {
             ({ categoryDescription }) => categoryDescription
           ) || [],
 
-        // curr.acadPlanDescription string
-        //   title = (Degree not included)
-        //   title (Certificate) = (ex Degree is a Cert)
-        title: `${curr.acadPlanDescription}${
-          curr.degreeDescriptionShort && curr.acadPlanType !== KEY.CER
-            ? ` (${curr.degreeDescriptionShort})`
-            : ``
-        }`,
+        // curr.acadPlanMarketingDescription string
+        title: curr.acadPlanMarketingDescription,
       };
       acc.push(p);
     }

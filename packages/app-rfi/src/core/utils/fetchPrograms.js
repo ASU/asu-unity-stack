@@ -43,7 +43,7 @@ function getServiceUrl({
   if (Interest2) {
     serviceUrl =
       `${dataSourceDegreeSearch}/acad-plan/${Interest2}` +
-      `?include=degreeDescriptionShort` +
+      `?include=acadPlanMarketingDescription` +
       `&include=degreeDescriptionLong` +
       `&include=campusesOffered` +
       `&include=planCategories` +
@@ -78,7 +78,7 @@ function getServiceUrl({
     `${dataSourceDegreeSearch}/acad-plans` +
     `?filter=activeInDegreeSearch` +
     `${parameter}` +
-    `&include=degreeDescriptionShort` +
+    `&include=acadPlanMarketingDescription` +
     `&include=degreeDescriptionLong` +
     `&include=campusesOffered` +
     `&include=planCategories` +
