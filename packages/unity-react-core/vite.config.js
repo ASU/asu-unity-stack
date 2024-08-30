@@ -1,7 +1,8 @@
-import { defineConfig, transformWithEsbuild } from "vite";
-import { resolve } from "path";
 import react from "@vitejs/plugin-react";
-import pkg from './package.json';
+import { resolve } from "path";
+import { defineConfig, transformWithEsbuild } from "vite";
+
+import pkg from "./package.json";
 
 export default defineConfig({
   build: {
@@ -9,7 +10,7 @@ export default defineConfig({
       entry: resolve(__dirname, "src/index.js"),
       name: "unityReactCore",
       formats: ["es", "cjs", "umd"],
-      fileName: (format) => `unityReactCore.${format}.js`,
+      fileName: format => `unityReactCore.${format}.js`,
     },
     rollupOptions: {
       input: resolve(__dirname, "src/index.js"),
@@ -17,7 +18,7 @@ export default defineConfig({
       output: {
         globals: {
           "react": "React",
-          "react-dom": "ReactDOM"
+          "react-dom": "ReactDOM",
         },
       },
     },
@@ -25,17 +26,17 @@ export default defineConfig({
     cssCodeSplit: false,
   },
   esbuild: {
-    legalComments: 'none',
+    legalComments: "none",
     keepNames: false,
   },
   define: {
-    process: {env: {NODE_ENV: process.env.NODE_ENV}},
-    global: {}
+    process: { env: { NODE_ENV: process.env.NODE_ENV } },
+    global: {},
   },
   plugins: [
     react({
       jsxRuntime: "automatic",
-		}),
+    }),
     {
       name: "treat-js-files-as-jsx",
       async transform(code, id) {
@@ -48,15 +49,21 @@ export default defineConfig({
       },
     },
     {
-      name: 'inline-css',
-      enforce: 'post',
-      generateBundle(options, bundle) {
-        for (const file of Object.values(bundle)) {
-          if (file.type === 'asset' && file.fileName.endsWith('.css')) {
-            const jsFile = Object.values(bundle).find(f => f.type === 'chunk' && f.fileName.endsWith('.js'));
+      name: "inline-css",
+      enforce: "post",
+      generateBundle: (options, bundle) => {
+        // eslint-disable-next-line array-callback-return
+        Object.values(bundle).map(file => {
+          if (file.type === "asset" && file.fileName.endsWith(".css")) {
+            const jsFile = Object.values(bundle).find(
+              f => f.type === "chunk" && f.fileName.endsWith(".js")
+            );
             if (jsFile) {
               jsFile.code += `\n(function() {
-                var css = \`${file.source.toString().replace(/`/g, '\\`').replace(/\$/g, '\\$')}\`;
+                var css = \`${file.source
+                  .toString()
+                  .replace(/`/g, "\\`")
+                  .replace(/\$/g, "\\$")}\`;
                 var style = document.createElement('style');
                 style.type = 'text/css';
                 if (style.styleSheet) {
@@ -67,10 +74,11 @@ export default defineConfig({
                 document.head.appendChild(style);
               })();`;
             }
+            // eslint-disable-next-line no-param-reassign
             delete bundle[file.fileName];
           }
-        }
-      }
-    }
+        });
+      },
+    },
   ],
 });
