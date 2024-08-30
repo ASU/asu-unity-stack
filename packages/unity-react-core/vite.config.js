@@ -22,11 +22,11 @@ export default defineConfig({
         },
       },
     },
-    minify: "terser",
-    cssCodeSplit: false,
+    minify: true,
+    cssCodeSplit: true,
   },
   esbuild: {
-    legalComments: "none",
+    legalComments: "eof",
     keepNames: false,
   },
   define: {
