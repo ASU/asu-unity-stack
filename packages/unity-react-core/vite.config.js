@@ -1,6 +1,6 @@
 import react from "@vitejs/plugin-react";
 import { resolve } from "path";
-import { defineConfig, transformWithEsbuild } from "vite";
+import { defineConfig } from "vite";
 
 import pkg from "./package.json";
 
@@ -37,17 +37,6 @@ export default defineConfig({
     react({
       jsxRuntime: "automatic",
     }),
-    {
-      name: "treat-js-files-as-jsx",
-      async transform(code, id) {
-        if (!id.match(/src\/.*\.js$/)) return null;
-
-        return transformWithEsbuild(code, id, {
-          loader: "jsx",
-          jsx: "automatic",
-        });
-      },
-    },
     {
       name: "inline-css",
       enforce: "post",
