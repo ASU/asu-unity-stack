@@ -23,7 +23,7 @@
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
   <!-- *************************************************************** -->
   <!-- include bundled scripts from packages -->
-  <script src="../dist/libCore.umd.js"></script>
+  <script src="../dist/components/Button.umd.js"></script>
 </head>
 
 <body>
@@ -40,14 +40,14 @@
 
   <script>
     // Setup and initialize button options.
-    AsuWebCore.initButton({
+    initButton({
       targetSelector: "#default-button",
       props: {
         label: "Default Button",
         onClick: () => alert('Button clicked'),
       },
     });
-    AsuWebCore.initButton({
+    initButton({
       targetSelector: "#icon-button",
       props: {
         color: "gold",
@@ -56,7 +56,7 @@
         onClick: () => alert('Button clicked'),
       },
     });
-    AsuWebCore.initButton({
+    initButton({
       targetSelector: "#small-gold-button",
       props: {
         color: "gold",
@@ -65,7 +65,7 @@
         size: "small",
       },
     });
-    AsuWebCore.initButton({
+    initButton({
       targetSelector: "#link-button",
       props: {
         color: "maroon",
@@ -73,7 +73,7 @@
         label: "Link Button",
       },
     });
-    AsuWebCore.initButton({
+    initButton({
       targetSelector: "#blank-link-button",
       props: {
         color: "maroon",

@@ -23,7 +23,7 @@
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
   <!-- *************************************************************** -->
   <!-- include bundled scripts from packages -->
-  <script src="../dist/libCore.umd.js"></script>
+  <script src="../dist/components/Testimonial.umd.js"></script>
 </head>
 
 <body>
@@ -59,7 +59,7 @@
     };
 
     // Setup and initialize testimonial options.
-    AsuWebCore.initTestimonial({
+    initTestimonial({
       targetSelector: "#default-testimonial",
       props: {
         quote: {
@@ -71,7 +71,7 @@
         },
       },
     });
-    AsuWebCore.initTestimonial({
+    initTestimonial({
       targetSelector: "#with-image-testimonial",
       props: {
         quote: {
@@ -88,7 +88,7 @@
         },
       },
     });
-    AsuWebCore.initTestimonial({
+    initTestimonial({
       targetSelector: "#no-image-testimonial",
       props: {
         quote: {
@@ -103,7 +103,7 @@
         },
       },
     });
-    AsuWebCore.initTestimonial({
+    initTestimonial({
       targetSelector: "#with-citation-testimonial",
       props: {
         quote: {
@@ -120,7 +120,7 @@
         },
       },
     });
-    AsuWebCore.initTestimonial({
+    initTestimonial({
       targetSelector: "#highlight-gold-testimonial",
       props: {
         quote: {

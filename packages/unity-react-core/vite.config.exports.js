@@ -1,23 +1,53 @@
 import { defineConfig, transformWithEsbuild } from "vite";
 import { resolve } from "path";
+import { readdirSync } from "fs";
 import react from "@vitejs/plugin-react";
-import pkg from './package.json';
+import pkg from "./package.json";
+
+const COMPONENT = parseInt(process.env.NUMBER);
+const componentsToIgnore = ["FeedAnatomy", "Loader"];
+
+if (isNaN(COMPONENT)) {
+  throw new Error("Error parsing number", COMPONENT);
+}
+
+function getComponentEntries() {
+  const componentsDir = resolve(__dirname, "src/components");
+  const files = readdirSync(componentsDir);
+  const entries = [];
+
+  files.forEach(file => {
+    if (file.endsWith(".js")) return;
+    if (componentsToIgnore.some(component => file.includes(component))) return;
+    const name = file.replace(/\.[^/.]+$/, "");
+    entries.push({
+      location: resolve(componentsDir, `${name}/init.js`),
+      name,
+    });
+  });
+  return entries;
+};
+
+const { location: LOCATION, name: EXPORT_NAME } =
+  getComponentEntries()[COMPONENT];
 
 export default defineConfig({
   build: {
+    emptyOutDir: false,
+    outDir: "dist/components",
     lib: {
-      entry: resolve(__dirname, "src/index.js"),
-      name: "unityReactCore",
-      formats: ["es", "cjs", "umd"],
-      fileName: (format) => `unityReactCore.${format}.js`,
+      entry: LOCATION,
+      name: `init${EXPORT_NAME}`,
+      formats: ["umd"],
+      fileName: format => `${EXPORT_NAME}.${format}.js`,
     },
     rollupOptions: {
-      input: resolve(__dirname, "src/index.js"),
+      input: LOCATION,
       external: [...Object.keys(pkg.peerDependencies)],
       output: {
         globals: {
           "react": "React",
-          "react-dom": "ReactDOM"
+          "react-dom": "ReactDOM",
         },
       },
     },
@@ -29,13 +59,13 @@ export default defineConfig({
     keepNames: false,
   },
   define: {
-    process: {env: {NODE_ENV: process.env.NODE_ENV}},
-    global: {}
+    process: { env: { NODE_ENV: process.env.NODE_ENV } },
+    global: {},
   },
   plugins: [
     react({
       jsxRuntime: "automatic",
-		}),
+    }),
     {
       name: "treat-js-files-as-jsx",
       async transform(code, id) {

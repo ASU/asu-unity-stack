@@ -23,7 +23,7 @@
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
   <!-- *************************************************************** -->
   <!-- include bundled scripts from packages -->
-  <script src="../dist/libCore.umd.js"></script>
+  <script src="../dist/components/ButtonIconOnly.umd.js"></script>
 </head>
 
 <body>
@@ -39,7 +39,7 @@
 
   <script>
     // Setup and initialize button icon only options.
-    AsuWebCore.initButtonIconOnly({
+    initButtonIconOnly({
       targetSelector: "#default-button",
       props: {
         color: "white",
@@ -47,7 +47,7 @@
         onClick: () => alert("Button clicked"),
       },
     });
-    AsuWebCore.initButtonIconOnly({
+    initButtonIconOnly({
       targetSelector: "#close-button",
       props: {
         color: "white",
@@ -55,7 +55,7 @@
         onClick: () => alert("Button clicked"),
       },
     });
-    AsuWebCore.initButtonIconOnly({
+    initButtonIconOnly({
       targetSelector: "#next-button",
       props: {
         color: "white",
@@ -64,7 +64,7 @@
         onClick: () => alert("Button clicked"),
       },
     });
-    AsuWebCore.initButtonIconOnly({
+    initButtonIconOnly({
       targetSelector: "#prev-button",
       props: {
         color: "white",

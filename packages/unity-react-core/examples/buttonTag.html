@@ -23,7 +23,7 @@
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
   <!-- *************************************************************** -->
   <!-- include bundled scripts from packages -->
-  <script src="../dist/libCore.umd.js"></script>
+  <script src="../dist/components/ButtonTag.umd.js"></script>
 </head>
 
 <body>
@@ -37,7 +37,7 @@
 
   <script>
     // Setup and initialize button tags options.
-    AsuWebCore.initButtonTag({
+    initButtonTag({
       targetSelector: "#tag-button",
       props: {
         label: "Tag Button",
@@ -45,7 +45,7 @@
         onClick: () => alert('Tag button clicked'),
       },
     });
-    AsuWebCore.initButtonTag({
+    initButtonTag({
       targetSelector: "#tag-link",
       props: {
         label: "Tag Link",

@@ -28,7 +28,7 @@
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
   <!-- *************************************************************** -->
   <!-- include bundled scripts from packages -->
-  <script src="../dist/libCore.umd.js"></script>
+  <script src="../dist/components/Pagination.umd.js"></script>
 </head>
 
 <body>
@@ -45,7 +45,7 @@
 
   <script>
     // Setup and initialize pagination options.
-    AsuWebCore.initPagination({
+    initPagination({
       targetSelector: "#default-pagination",
       props: {
         type: "default",
@@ -53,7 +53,7 @@
         totalPages: 4,
       },
     });
-    AsuWebCore.initPagination({
+    initPagination({
       targetSelector: "#bordered-pagination",
       props: {
         type: "bordered",
@@ -63,15 +63,15 @@
         showLastButton: true,
       },
     });
-    AsuWebCore.initPagination({
+    initPagination({
       targetSelector: "#gray1-pagination",
       props: { type: "default", background: "gray1", currentPage: 5 },
     });
-    AsuWebCore.initPagination({
+    initPagination({
       targetSelector: "#gray2-pagination",
       props: { type: "default", background: "gray2" },
     });
-    AsuWebCore.initPagination({
+    initPagination({
       targetSelector: "#gray7-pagination",
       props: { type: "default", background: "gray7" },
     });
