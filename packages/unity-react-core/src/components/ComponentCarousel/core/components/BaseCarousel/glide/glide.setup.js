@@ -163,6 +163,26 @@ function setNavButtonGradient(gliderElement, currentIndex, buttonCount) {
   }
 }
 
+function updateNonVisibleSlides(gliderElement, currentIndex, perView) {
+  const slides = gliderElement.querySelectorAll(".glide__slide");
+
+  const startVisibleIndex = currentIndex;
+  const endVisibleIndex = Math.min(
+    slides.length - 1,
+    currentIndex + perView - 1
+  );
+
+  slides.forEach((slide, index) => {
+    if (index < startVisibleIndex || index > endVisibleIndex) {
+      slide.setAttribute("aria-hidden", "true");
+      slide.setAttribute("tabindex", "-1");
+    } else {
+      slide.setAttribute("aria-hidden", "false");
+      slide.removeAttribute("tabindex");
+    }
+  });
+}
+
 /**
  *
  * @param {{
@@ -223,6 +243,7 @@ function setupCaroarousel({
 
     // @ts-ignore
     const currentIndex = slider.index;
+    updateNonVisibleSlides(gliderElement, currentIndex, perView);
     const imageGalleryNav = gliderElement.querySelector(".navigation-slider");
     const imageNav = gliderElement.querySelector(".image-navigator-images");
     if (imageGalleryNav && imageNav) {
