@@ -1,3 +1,11 @@
+# [@asu/app-rfi-v2.3.10](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.9...@asu/app-rfi-v2.3.10) (2024-09-04)
+
+
+### Bug Fixes
+
+* **app-rfi:** Update Military to radio button ([311f872](https://github.com/asu/asu-unity-stack/commit/311f872c0ec809f33a89a8ec1cdb0a8a2720cc28))
+* **app-rfi:** update plan title to use market description ([72be88b](https://github.com/asu/asu-unity-stack/commit/72be88bbc7d500a940e9480e75d57de3a46f5833))
+
 # [@asu/app-rfi-v2.3.9](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.8...@asu/app-rfi-v2.3.9) (2024-07-10)
 
 
