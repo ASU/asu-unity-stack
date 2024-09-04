@@ -148,8 +148,22 @@ const DropdownItem = ({
     if (link.type === "heading")
       return <HeadingItem key={key} text={link.text} />;
     if (link.type === "button")
-      return <ButtonItem key={key} link={link} dropdownName={dropdownName} />;
-    return <LinkItem key={key} link={link} dropdownName={dropdownName} />;
+      return (
+        <ButtonItem
+          key={key}
+          link={link}
+          dropdownName={dropdownName}
+          handleLinkEvent={handleLinkEvent}
+        />
+      );
+    return (
+      <LinkItem
+        key={key}
+        link={link}
+        dropdownName={dropdownName}
+        handleLinkEvent={handleLinkEvent}
+      />
+    );
   };
 
   return (
