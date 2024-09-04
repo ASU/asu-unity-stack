@@ -189,10 +189,12 @@ function updateNonVisibleSlides(gliderElement, currentIndex, perView) {
       // Slide is not visible
       slide.setAttribute("aria-hidden", "true");
       slide.setAttribute("tabindex", "-1");
+      slide.setAttribute("inert", "");
     } else {
       // Slide is visible
       slide.setAttribute("aria-hidden", "false");
       slide.removeAttribute("tabindex");
+      slide.removeAttribute("inert");
     }
   });
 }
