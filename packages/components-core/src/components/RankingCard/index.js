@@ -94,7 +94,6 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
               <button
                 onClick={handleButtonClick}
                 className="btn-expand"
-                aria-label="Expand ranking"
                 type="button"
                 aria-expanded={open}
                 aria-controls={uniqueId}
@@ -109,11 +108,11 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
               <button
                 onClick={handleButtonClick}
                 className="btn btn-expand"
-                aria-label="Expand ranking"
                 type="button"
                 aria-expanded={open}
                 aria-controls={uniqueId}
               >
+                <span className="visually-hidden">{heading}</span>
                 <i className="fas fa-chevron-up" />
               </button>
             </>
@@ -126,7 +125,6 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
         {readMoreLink && (
           <a
             href={readMoreLink}
-            aria-label="Read more"
             className="read-more"
             onClick={() => {
               trackGAEvent({
