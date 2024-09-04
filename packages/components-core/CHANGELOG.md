@@ -1,3 +1,10 @@
+# [@asu/components-core-v4.1.1](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v4.1.0...@asu/components-core-v4.1.1) (2024-09-04)
+
+
+### Bug Fixes
+
+* **components-core:** updated small ranking card for accessibility ([377fde0](https://github.com/ASU/asu-unity-stack/commit/377fde084b3ed96d0b1548dae05054f627f4f233))
+
 # [@asu/components-core-v4.1.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v4.0.0...@asu/components-core-v4.1.0) (2024-08-07)
 
 
