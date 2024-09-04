@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.14.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.14.0...@asu/unity-bootstrap-theme-v1.14.1) (2024-09-04)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** update ranking card styles ([7730295](https://github.com/ASU/asu-unity-stack/commit/77302957faefc9dd85385dffc3dc2a05400f555e))
+
 # [@asu/unity-bootstrap-theme-v1.14.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.13.1...@asu/unity-bootstrap-theme-v1.14.0) (2024-09-04)
 
 
