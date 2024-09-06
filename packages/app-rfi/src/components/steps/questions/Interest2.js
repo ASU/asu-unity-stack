@@ -23,7 +23,7 @@ export const Interest2 = ({ gaData }) => {
     formik: { values, setFieldValue },
   } = useRfiContext();
 
-  const isRequired = !programOfInterestOptional && values.Campus !== KEY.ONLINE;
+  const isRequired = !programOfInterestOptional;
 
   useEffect(() => {
     const poiOptions = degreeDataList
@@ -66,8 +66,8 @@ export const Interest2 = ({ gaData }) => {
       name={name}
       options={programInterestOptions}
       disabled={!!programOfInterest}
-      requiredIcon={!programOfInterestOptional && values.Campus !== KEY.ONLINE}
-      required={!programOfInterestOptional && values.Campus !== KEY.ONLINE}
+      requiredIcon={isRequired}
+      required={isRequired}
       onBlur={e =>
         trackGAEvent({
           ...gaData,
