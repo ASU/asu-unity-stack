@@ -4,7 +4,7 @@
 const defaultProps = {
   header: {
     color: "dark",
-    text: "Knowledge and enterprise news",
+    text: "",
   },
   ctaButton: {
     color: "gold",
