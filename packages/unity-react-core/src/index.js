@@ -17,6 +17,7 @@ import {
 export * from "./components/FeedAnatomy";
 export * from "./components/TabbedPanels";
 export * from "./core/utils";
+export * from "./components/ComponentCarousel/components"
 
 export {
   Accordion,

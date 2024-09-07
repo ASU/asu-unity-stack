@@ -1,4 +1,3 @@
-const common = require("../webpack/webpack.common");
 
 const config = {
   staticDirs: ['../dist'],
@@ -11,21 +10,11 @@ const config = {
   ],
   stories: ["../src/**/*.stories.js"],
   framework: {
-    name: "@storybook/react-webpack5",
-    options: {}
+    name: "@storybook/react-vite"
   },
-  webpackFinal: async config => {
-    return {
-      ...config,
-      resolve: {
-        extensions: [".js", ".jsx"],
-        alias: {
-          ...common.resolve.alias,
-        },
-      },
-    };
+  core: {
+    builder: "@storybook/builder-vite"
   },
-
   docs: {
     autodocs: true
   }

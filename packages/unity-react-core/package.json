@@ -108,8 +108,8 @@
   "exports": {
     "./*": "./*",
     ".": {
-      "import": "./dist/unity-react-core.es.js",
-      "require": "./dist/unity-react-core.umd.js"
+      "import": "./dist/unityReactCore.es.js",
+      "require": "./dist/unityReactCore.umd.js"
     }
   },
   "volta": {

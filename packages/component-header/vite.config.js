@@ -23,14 +23,9 @@ export default defineConfig({
     },
     minify: "terser",
     cssCodeSplit: false,
-    terserOptions: {
-      format: {
-        comments: false
-      }
-    },
   },
   esbuild: {
-    legalComments: 'external',
+    legalComments: 'eof',
     keepNames: false,
   },
   define: {
