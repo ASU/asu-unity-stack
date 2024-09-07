@@ -9,7 +9,7 @@ import {
 } from "./dataConverter";
 import { validateAndCleanURL } from "./validateUrl";
 
-const axios = require("axios");
+import axios from "axios";
 
 export const engineNames = {
   FACULTY: "web_dir_faculty_staff",
