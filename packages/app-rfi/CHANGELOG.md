@@ -1,3 +1,11 @@
+# [@asu/app-rfi-v2.3.11](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.10...@asu/app-rfi-v2.3.11) (2024-09-09)
+
+
+### Bug Fixes
+
+* **app-rfi:** Entry dates should not have dups ([a223aa3](https://github.com/asu/asu-unity-stack/commit/a223aa32cb2bf2699a3e2fa8b738240a0091c3a3))
+* **app-rfi:** programOfInterest required, unless optional prop ([ec1ca4c](https://github.com/asu/asu-unity-stack/commit/ec1ca4cdedaec84882cda5309addb857ff49a41c))
+
 # [@asu/app-rfi-v2.3.10](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.9...@asu/app-rfi-v2.3.10) (2024-09-04)
 
 
