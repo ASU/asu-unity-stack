@@ -28,6 +28,7 @@
     "url": "https://github.com/ASU/asu-unity-stack/issues"
   },
   "scripts": {
+    "create": "plop",
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
     "test": "jest --config=./jest.config.js --silent --coverage",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
@@ -73,6 +74,7 @@
     "jest-transform-css": "^6.0.1",
     "jest-transform-file": "^1.1.1",
     "jsdom-screenshot": "^4.0.0",
+    "plop": "2.7.6",
     "postcss": "^8.4.19",
     "react": ">= 16.14.0 < 18",
     "react-dom": ">= 16.14.0 < 18",
