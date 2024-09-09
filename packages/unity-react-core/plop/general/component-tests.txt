@@ -1,0 +1,37 @@
+import { render, cleanup } from "@testing-library/react";
+import React from "react";
+
+import {{properCase componentName}} from ".";
+
+const defaultProps = {
+  title: "Title",
+  customProp: "Story 1",
+  children: "text",
+};
+
+const renderComponent = props => {
+  return render(<{{properCase componentName}} {...props} />);
+};
+
+describe("{{properCase componentName}} tests", () => {
+  /** @type {import("@testing-library/react").RenderResult} */
+  let component;
+
+  beforeEach(() => {
+    component = renderComponent(defaultProps);
+  });
+
+  afterEach(cleanup);
+
+  it("calls x when y", () => {
+    expect(1).toBe(1);
+  });
+
+  it("should do  x when y", () => {
+    expect(2).toBe(2);
+  });
+
+  it("should define component", () => {
+    expect(component).toBeDefined();
+  });
+});
