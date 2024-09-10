@@ -1,3 +1,10 @@
+# [@asu/component-header-v2.3.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.3.1...@asu/component-header-v2.3.2) (2024-09-10)
+
+
+### Bug Fixes
+
+* **component-header:** fix keyboard clickable in menu item ([fe20e42](https://github.com/asu/asu-unity-stack/commit/fe20e425d2170f397baa4f9931a6f48c87829e50))
+
 # [@asu/component-header-v2.3.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.3.0...@asu/component-header-v2.3.1) (2024-09-04)
 
 
