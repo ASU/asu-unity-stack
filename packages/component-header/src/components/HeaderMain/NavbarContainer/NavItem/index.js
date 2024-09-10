@@ -118,6 +118,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
   };
 
   const handleKeyDown = e => {
+    if (!link.items && link.href) return;
     const { key } = e;
     const navigableKeys = [
       "ArrowUp",
