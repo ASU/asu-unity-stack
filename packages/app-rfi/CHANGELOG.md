@@ -1,3 +1,10 @@
+# [@asu/app-rfi-v2.3.13](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.12...@asu/app-rfi-v2.3.13) (2024-09-11)
+
+
+### Bug Fixes
+
+* **app-rfi:** fix undefined error when program optional ([6ac3cae](https://github.com/asu/asu-unity-stack/commit/6ac3cae9ba7979174542db1f8fa53f586b1a091a))
+
 # [@asu/app-rfi-v2.3.12](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.11...@asu/app-rfi-v2.3.12) (2024-09-11)
 
 
