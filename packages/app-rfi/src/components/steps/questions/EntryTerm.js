@@ -55,7 +55,7 @@ export const EntryTerm = ({ gaData }) => {
     // for the specific program.
 
     if (
-      degreeData.acadPlanCode &&
+      degreeData.acadPlanKey &&
       values.Campus !== KEY.ONLINE &&
       degreeData.degreeType === KEY.GR
     ) {
