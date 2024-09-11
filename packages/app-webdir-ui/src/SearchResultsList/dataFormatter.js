@@ -18,7 +18,7 @@ export class ProfileService {
       `${this.engine.API_URL}${this.engine.searchApiVersion}/webdir-profiles/department?client=webdir`
     );
     const response = await axios.post(url, {
-      full_records: true,
+      full_records: false,
       profiles,
     });
     return response.data;
