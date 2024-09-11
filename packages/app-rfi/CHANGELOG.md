@@ -1,3 +1,10 @@
+# [@asu/app-rfi-v2.3.12](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.11...@asu/app-rfi-v2.3.12) (2024-09-11)
+
+
+### Bug Fixes
+
+* **app-rfi:** campusProgram has choice update api if Campus changes ([083ad23](https://github.com/asu/asu-unity-stack/commit/083ad234e4291cb559f30d4aa6035c449c1e72ca))
+
 # [@asu/app-rfi-v2.3.11](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.10...@asu/app-rfi-v2.3.11) (2024-09-09)
 
 
