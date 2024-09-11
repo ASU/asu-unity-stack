@@ -13,12 +13,19 @@ export class ProfileService {
     return validateAndCleanURL(url);
   }
 
-  async fetchProfiles(profiles) {
+  /**
+   * Fetches profiles from the API
+   * @param {Array} profiles - Array of profiles to fetch
+   * @param {Boolean} fullRecords - Whether to fetch full records or not
+   * @returns {Promise} - The response from the API
+   * @memberof ProfileService
+   * */
+  async fetchProfilesFromApi(profiles, fullRecords = false) {
     const url = ProfileService.processURL(
       `${this.engine.API_URL}${this.engine.searchApiVersion}/webdir-profiles/department?client=webdir`
     );
     const response = await axios.post(url, {
-      full_records: false,
+      full_records: fullRecords,
       profiles,
     });
     return response.data;
@@ -30,7 +37,7 @@ export class ProfileService {
       dept_id: null,
     }));
 
-    const data = await this.fetchProfiles(profiles);
+    const data = await this.fetchProfilesFromApi(profiles);
 
     return {
       ...filteredResults,
@@ -50,7 +57,7 @@ export class ProfileService {
       ),
     }));
 
-    const data = await this.fetchProfiles(profiles);
+    const data = await this.fetchProfilesFromApi(profiles);
 
     return {
       ...filteredResults,
