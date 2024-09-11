@@ -19,6 +19,22 @@ export default {
 
 const testingDefaultArgs = { ...defaultArgs, test: true };
 
+export const AreaOfInterestOptional = {
+  render: Template.bind({}),
+  args: {
+    ...testingDefaultArgs,
+    areaOfInterestOptional: true,
+  },
+};
+
+export const ProgramOfInterestOptional = {
+  render: Template.bind({}),
+  args: {
+    ...testingDefaultArgs,
+    programOfInterestOptional: true,
+  },
+};
+
 export const OnlineProgramWithConcentration = {
   render: Template.bind({}),
   args: {
