@@ -186,13 +186,19 @@ export const useRfiState = props => {
           console.log(data);
         }
         setDegreeDataList(data);
-        if (formik.values.Interest2) {
+
+        if (
+          formik.values.Interest2 &&
+          formik.values.Interest2 !== KEY.FALSE_EMPTY
+        ) {
           const selectedDegree = data.find(
             plan =>
               plan.acadPlanCode === formik.values.Interest2 || // check for PLAN pattern
               plan.acadCode === formik.values.Interest2 // check for PROGRAM-PLAN pattern
           );
-          setForceUpdatedPlan(selectedDegree.acadPlanKey);
+          if (selectedDegree?.acadPlanKey) {
+            setForceUpdatedPlan(selectedDegree.acadPlanKey);
+          }
         }
       });
     };
