@@ -187,14 +187,7 @@ function WebDirectory({
               }
               sort={sort}
               hidePaginator={display?.usePager !== "1"}
-              filters={{
-                ...requestFilters,
-                titleInfo: {
-                  searchType,
-                  deptIds,
-                  ids,
-                },
-              }}
+              filters={requestFilters}
               profilesToFilterOut={display?.doNotDisplayProfiles}
               display={display}
               appPathFolder={appPathFolder}
@@ -210,14 +203,7 @@ function WebDirectory({
       <FacultyRankTabPanels
         {...enginesWithParams[searchTypeEngineMap[searchType]]}
         alphaFilter={alphaFilter}
-        filters={{
-          ...requestFilters,
-          titleInfo: {
-            searchType,
-            deptIds,
-            ids,
-          },
-        }}
+        filters={requestFilters}
       />
     </FacultyRankLayout>
   );

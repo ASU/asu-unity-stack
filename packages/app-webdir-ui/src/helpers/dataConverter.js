@@ -105,142 +105,20 @@ const fillInBlanks = datum => {
   };
   return { ...full, ...datumAdjusted };
 };
-function isCustomTitle(profile, index) {
-  if (!profile.title_source?.raw) return false;
-  return profile.title_source?.raw[index] === "titles";
-}
-
-function findDeptIndex(profile, deptId = "") {
-  if (!deptId) return 0;
-  return profile.deptids?.raw?.findIndex(id => id === deptId);
-}
-
-function getTitleAndDeptFromIndex(profile, index) {
-  let title = profile.titles?.raw[index];
-  const dept = profile.departments?.raw[index];
-  if (
-    profile.title_source?.raw[index] !== "titles" &&
-    profile.working_title?.raw[0]
-  ) {
-    title = profile.working_title?.raw[0];
-  }
-  return { title, dept };
-}
 
 // See https://asudev.jira.com/browse/SCHWEB-1238 for title logic.
-const getTitleFromProfile = (profile, titleMatch, titleInfo) => {
+const getTitleFromProfile = profile => {
   if (Array.isArray(profile.title) && profile.title[0] && profile.dept_name) {
     return {
       matchedAffiliationTitle: profile.title[0],
       matchedAffiliationDept: profile.dept_name,
     };
   }
-  if ((typeof profile.title === "string" || profile.title) && profile.dept_name) {
-    return {
-      matchedAffiliationTitle: profile.title,
-      matchedAffiliationDept: profile.dept_name,
-    };
-  }
 
-  let matchedAffiliationTitle =
-    profile.title || profile.working_title?.raw[0] || "";
-  let matchedAffiliationDept =
-    profile.dept_name ||
-    profile.primary_search_department_affiliation?.raw[0] ||
-    "";
-
-  if (
-    profile.primary_deptid?.raw &&
-    profile.titles?.raw &&
-    profile.primary_affiliation?.raw !== "COURTESY_AFFILIATE"
-  ) {
-    const deptIndex = findDeptIndex(profile, profile.primary_deptid?.raw);
-    ({ title: matchedAffiliationTitle, dept: matchedAffiliationDept } =
-      getTitleAndDeptFromIndex(profile, deptIndex));
-  } else if (
-    profile.primary_department?.raw &&
-    profile.primary_affiliation?.raw !== "COURTESY_AFFILIATE"
-  ) {
-    const deptIndex = profile.departments?.raw.findIndex(
-      dept => dept === profile.primary_department?.raw
-    );
-    matchedAffiliationDept = profile.departments?.raw[deptIndex];
-  } else if (profile.primary_affiliation?.raw === "COURTESY_AFFILIATE") {
-    matchedAffiliationTitle = profile.affiliations?.raw[0];
-    matchedAffiliationDept =
-      profile.primary_department?.raw || profile.subaffiliations?.raw[0];
-    // Check if the primary dept has a custom title
-    const primaryDeptIndex = findDeptIndex(
-      profile,
-      profile.primary_deptid?.raw
-    );
-    if (isCustomTitle(profile, primaryDeptIndex)) {
-      matchedAffiliationTitle = profile.titles?.raw[primaryDeptIndex];
-    }
-  }
-
-  if (
-    titleInfo?.searchType === "faculty_rank" ||
-    titleInfo?.searchType === "departments"
-  ) {
-    const primaryDeptIndex = findDeptIndex(
-      profile,
-      profile.primary_deptid?.raw
-    );
-
-    // Check if supplied deptids in the web directory include the users primary_deptid and is a custom title
-    if (
-      titleMatch.depts.includes(profile.primary_deptid?.raw) &&
-      isCustomTitle(profile, primaryDeptIndex)
-    ) {
-      matchedAffiliationTitle = profile.titles?.raw[primaryDeptIndex];
-      matchedAffiliationDept = profile.departments?.raw[primaryDeptIndex];
-
-      // Check if supplied deptids in the web directory include the users primary_deptid and is not a custom title
-    } else if (
-      titleMatch.depts.includes(profile.primary_deptid?.raw) &&
-      !isCustomTitle(profile, primaryDeptIndex)
-    ) {
-      matchedAffiliationTitle =
-        profile.primary_title?.raw[0] ||
-        profile.titles?.raw[primaryDeptIndex] ||
-        "";
-
-      // Use first valid dept supplied in web directory and display the title and department based on that
-    } else {
-      const firstDepartmentSupplied = titleMatch.depts.find(dept =>
-        profile.deptids?.raw.includes(dept)
-      );
-      const deptIndex = findDeptIndex(profile, firstDepartmentSupplied);
-      if (isCustomTitle(profile, deptIndex)) {
-        matchedAffiliationTitle = profile.titles?.raw[deptIndex];
-      } else {
-        matchedAffiliationTitle = "";
-      }
-      matchedAffiliationDept = profile.departments?.raw[deptIndex];
-    }
-  }
-
-  if (
-    titleInfo?.searchType === "people" ||
-    titleInfo?.searchType === "people_departments"
-  ) {
-    const deptIndex = findDeptIndex(profile, profile.primary_deptid?.raw);
-    if (isCustomTitle(profile, deptIndex)) {
-      matchedAffiliationTitle = profile.titles?.raw[deptIndex];
-    }
-    matchedAffiliationDept = profile.primary_department?.raw;
-    if (
-      profile.dept_id === "unaffiliated" &&
-      profile.primary_affiliation?.raw !== "COURTESY_AFFILIATE"
-    ) {
-      matchedAffiliationTitle = profile.working_title?.raw[0];
-      matchedAffiliationDept =
-        profile.primary_search_department_affiliation?.raw[0];
-    }
-  }
-
-  return { matchedAffiliationTitle, matchedAffiliationDept };
+  return {
+    matchedAffiliationTitle: profile.title,
+    matchedAffiliationDept: profile.dept_name,
+  };
 };
 
 /**
@@ -283,7 +161,6 @@ const formatImageUrl = baseUrl => {
  * @typedef {Object} SharedProps
  * @property {Object} datum - The staff data to convert.
  * @property {string} [size="small"] - The size of the ProfileCard.
- * @property {string|null} [titleMatch=null] - The title to match for filtering.
  * @property {string|null} [profileURLBase=null] - The base URL for profile links.
  * @property {boolean} [fill=false] - Whether to fill in missing data.
  * @property {string} appPathFolder - The application path folder.
@@ -299,19 +176,13 @@ export const staffConverter = ({
   datum,
   options = {
     size: "small",
-    titleMatch: null,
     profileURLBase: null,
     fill: false,
-    titleInfo: null,
   },
   appPathFolder,
 }) => {
   const filledDatum = fillInBlanks(datum);
-  const titles = getTitleFromProfile(
-    filledDatum,
-    options.titleMatch,
-    options.titleInfo
-  );
+  const titles = getTitleFromProfile(filledDatum);
 
   // We use EID if it's available, otherwise we use the asurite_id.
   const profileURLBase = options.profileURLBase ?? "";

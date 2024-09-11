@@ -194,11 +194,6 @@ const webDirDeptsFormatter = ({
       return filters.peopleIds.includes(r.asurite_id.raw);
     });
   }
-  // filters.peopleInDepts indicates a WEB_DIRECTORY_PEOPLE_AND_DEPS flow.
-  // filters.deptIds indicates a WEB_DIRECTORY_DEPARTMENTS flow.
-  const titleOverwrite = filters?.peopleInDepts
-    ? { peopleInDeps: filters.peopleInDepts }
-    : { depts: filters?.deptIds };
 
   return {
     tab: engines[engineName].name,
@@ -209,9 +204,7 @@ const webDirDeptsFormatter = ({
           datum: result,
           options: {
             size: "large",
-            titleMatch: titleOverwrite,
             profileURLBase: "https://search.asu.edu",
-            titleInfo: filters?.titleInfo,
           },
           appPathFolder,
         });
@@ -240,7 +233,7 @@ export const engines = {
         appPathFolder,
       }),
     needsTerm: true,
-    doTitleLogic: true
+    doTitleLogic: true,
   },
   [engineNames.STUDENTS]: {
     name: engineNames.STUDENTS,
@@ -258,7 +251,7 @@ export const engines = {
         appPathFolder,
       }),
     needsTerm: true,
-    doTitleLogic: false
+    doTitleLogic: false,
   },
   [engineNames.SITES]: {
     name: engineNames.SITES,
@@ -286,7 +279,7 @@ export const engines = {
       );
     },
     needsTerm: true,
-    doTitleLogic: false
+    doTitleLogic: false,
   },
   [engineNames.SITES_LOCAL]: {
     name: engineNames.SITES_LOCAL,
@@ -314,7 +307,7 @@ export const engines = {
       });
     },
     needsTerm: true,
-    doTitleLogic: false
+    doTitleLogic: false,
   },
   [engineNames.WEB_DIRECTORY_DEPARTMENTS]: {
     name: engineNames.WEB_DIRECTORY_DEPARTMENTS,
@@ -338,7 +331,7 @@ export const engines = {
         appPathFolder,
       }),
     needsTerm: false,
-    doTitleLogic: true
+    doTitleLogic: true,
   },
   [engineNames.WEB_DIRECTORY_FACULTY_RANK]: {
     name: engineNames.WEB_DIRECTORY_FACULTY_RANK,
@@ -357,7 +350,7 @@ export const engines = {
         appPathFolder,
       }),
     needsTerm: false,
-    doTitleLogic: true
+    doTitleLogic: true,
   },
   [engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS]: {
     name: engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
@@ -376,7 +369,7 @@ export const engines = {
         appPathFolder,
       }),
     needsTerm: false,
-    doTitleLogic: true
+    doTitleLogic: true,
   },
 };
 
