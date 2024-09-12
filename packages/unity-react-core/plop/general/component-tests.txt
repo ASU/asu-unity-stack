@@ -1,7 +1,7 @@
 import { render, cleanup } from "@testing-library/react";
 import React from "react";
 
-import {{properCase componentName}} from ".";
+import {{properCase componentName}} from "./{{properCase componentName}}";
 
 const defaultProps = {
   title: "Title",

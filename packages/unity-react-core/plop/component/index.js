@@ -12,12 +12,12 @@ module.exports = plop => {
     actions: [
       {
         type: "add",
-        path: "src/components/{{properCase componentName}}/index.jsx",
+        path: "src/components/{{properCase componentName}}/{{properCase componentName}}.jsx",
         templateFile: "plop/component/component-js.txt",
       },
       {
         type: "add",
-        path: "src/components/{{properCase componentName}}/index.styles.js",
+        path: "src/components/{{properCase componentName}}/{{properCase componentName}}.styles.js",
         templateFile: "plop/component/component-styles-js.txt",
       },
       {
@@ -27,12 +27,12 @@ module.exports = plop => {
       },
       {
         type: "add",
-        path: "src/components/{{properCase componentName}}/index.stories.jsx",
+        path: "src/components/{{properCase componentName}}/{{properCase componentName}}.stories.jsx",
         templateFile: "plop/general/component-stories-js.txt",
       },
       {
         type: "add",
-        path: "src/components/{{properCase componentName}}/index.test.js",
+        path: "src/components/{{properCase componentName}}/{{properCase componentName}}.test.js",
         templateFile: "plop/general/component-tests.txt",
       },
       {

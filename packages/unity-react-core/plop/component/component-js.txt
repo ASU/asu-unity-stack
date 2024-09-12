@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import { trackGAEvent } from "../../../../../shared";
-import { {{properCase componentName}}Wrapper } from "./index.styles";
+import { {{properCase componentName}}Wrapper } from "./{{properCase componentName}}.styles";
 
 const defaultGAEvent = {
   name: "onclick",
