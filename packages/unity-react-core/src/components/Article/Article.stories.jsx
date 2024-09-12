@@ -1,7 +1,7 @@
 /* eslint react/jsx-props-no-spreading: "off" */
 import React from "react";
 
-import { Article } from ".";
+import { Article } from "./Article";
 
 export default {
   title: "UDS/Article",

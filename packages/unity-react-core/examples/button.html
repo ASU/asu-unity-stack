@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Button component - Example page</title>
   <!-- CSS only -->
-  <link rel="stylesheet" href="https://asu.github.io/asu-unity-stack/@asu/unity-bootstrap-theme/css/unity-bootstrap-theme.bundle.css" />
+  <link rel="stylesheet" href="../../unity-bootstrap-theme/dist/unity-bootstrap-theme2.css" />
 
   <!-- Load FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -23,7 +23,7 @@
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
   <!-- *************************************************************** -->
   <!-- include bundled scripts from packages -->
-  <script src="../dist/libCore.umd.js"></script>
+  <script src="../dist/unityReactCore.umd.js"></script>
 </head>
 
 <body>
@@ -40,14 +40,14 @@
 
   <script>
     // Setup and initialize button options.
-    AsuWebCore.initButton({
+    unityReactCore.initButton({
       targetSelector: "#default-button",
       props: {
         label: "Default Button",
         onClick: () => alert('Button clicked'),
       },
     });
-    AsuWebCore.initButton({
+    unityReactCore.initButton({
       targetSelector: "#icon-button",
       props: {
         color: "gold",
@@ -56,7 +56,7 @@
         onClick: () => alert('Button clicked'),
       },
     });
-    AsuWebCore.initButton({
+    unityReactCore.initButton({
       targetSelector: "#small-gold-button",
       props: {
         color: "gold",
@@ -65,7 +65,7 @@
         size: "small",
       },
     });
-    AsuWebCore.initButton({
+    unityReactCore.initButton({
       targetSelector: "#link-button",
       props: {
         color: "maroon",
@@ -73,7 +73,7 @@
         label: "Link Button",
       },
     });
-    AsuWebCore.initButton({
+    unityReactCore.initButton({
       targetSelector: "#blank-link-button",
       props: {
         color: "maroon",

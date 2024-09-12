@@ -1,7 +1,7 @@
 /* eslint react/jsx-props-no-spreading: "off" */
 import React from "react";
 
-import { Accordion } from ".";
+import { Accordion } from "./Accordion";
 
 export default {
   title: "UDS/Accordion",

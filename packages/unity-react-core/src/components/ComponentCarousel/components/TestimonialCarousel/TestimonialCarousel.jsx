@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { Testimonial } from "../../../Testimonial";
+import { Testimonial } from "../../../Testimonial/Testimonial";
 import { BaseCarousel } from "../../core/components/BaseCarousel";
 
 /**

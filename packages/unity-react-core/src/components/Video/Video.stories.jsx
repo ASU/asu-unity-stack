@@ -2,13 +2,13 @@
 // @ts-check
 import React from "react";
 
-import { Video } from ".";
+import { Video } from "./Video";
 
 // @ts-ignore
 import stockVideo from "../../assets/video/stock-video-person-drawing.mp4";
 
 /**
- * @typedef {import('.').VideoProps} VideoProps
+ * @typedef {import('./Video').VideoProps} VideoProps
  */
 export default {
   component: Video,

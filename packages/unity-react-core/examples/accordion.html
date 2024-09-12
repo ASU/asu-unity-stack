@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Anchor Menu Component - Example page</title>
   <!-- CSS only -->
-  <link rel="stylesheet" href="https://asu.github.io/asu-unity-stack/@asu/unity-bootstrap-theme/css/unity-bootstrap-theme.bundle.css" />
+  <link rel="stylesheet" href="../../unity-bootstrap-theme/dist/unity-bootstrap-theme2.css" />
 
   <!-- Load FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -23,7 +23,7 @@
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
   <!-- *************************************************************** -->
   <!-- include bundled scripts from packages -->
-  <script src="../dist/libCore.umd.js"></script>
+  <script src="../dist/unityReactCore.umd.js"></script>
 </head>
 
 <body>
@@ -38,7 +38,7 @@
 
   <script>
     // Setup and initialize article options.
-    AsuWebCore.initAccordion({
+    unityReactCore.initAccordion({
       targetSelector: "#accordion-component",
       props: {
         cards: [
@@ -67,7 +67,7 @@
         openedCard: 3, // Prop based on card position on the screen
       },
     });
-    AsuWebCore.initAccordion({
+    unityReactCore.initAccordion({
         targetSelector: "#colors-accordion-component",
         props: {
           cards: [
@@ -105,7 +105,7 @@
           ],
         },
       });
-      AsuWebCore.initAccordion({
+      unityReactCore.initAccordion({
           targetSelector: "#icons-accordion-component",
           props: {
             cards: [

@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import React from "react";
 
-import { RankingCard } from ".";
+import { RankingCard } from "./RankingCard";
 
 export default {
   title: "UDS/Ranking Card",

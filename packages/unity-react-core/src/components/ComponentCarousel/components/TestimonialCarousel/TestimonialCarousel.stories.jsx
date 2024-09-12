@@ -2,8 +2,6 @@
 // @ts-check
 import React from "react";
 
-import { TestimonialCarousel } from ".";
-
 import {
   testimonialNoImage,
   testimonialWithImage,
@@ -11,6 +9,7 @@ import {
   testimonialWithImage2,
   testimonialNoCitation,
 } from "./examples";
+import { TestimonialCarousel } from "./TestimonialCarousel";
 
 export default {
   component: TestimonialCarousel,

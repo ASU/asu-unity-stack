@@ -4,11 +4,11 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import { trackGAEvent, sanitizeDangerousMarkup } from "../../../../../shared";
-import { Button } from "../Button";
-import { ButtonTag } from "../ButtonTag";
+import { Button } from "../Button/Button";
+import { ButtonTag } from "../ButtonTag/ButtonTag";
 // eslint-disable-next-line import/no-cycle
-import { Image } from "../Image";
-import { CardWrapper } from "./index.styles";
+import { Image } from "../Image/Image";
+import { CardWrapper } from "./Card.styles";
 import { emailAddressParser } from "./utils/emailAddressParser";
 
 const gaDefaultObject = {

@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { Card } from "../../../Card";
+import { Card } from "../../../Card/Card";
 import { BaseCarousel } from "../../core/components/BaseCarousel";
 
 /**

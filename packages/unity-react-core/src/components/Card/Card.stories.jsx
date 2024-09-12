@@ -2,7 +2,7 @@
 import classNames from "classnames";
 import React from "react";
 
-import { Card } from ".";
+import { Card } from "./Card";
 
 export default {
   title: "UDS/Card",

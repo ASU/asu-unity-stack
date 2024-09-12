@@ -5,7 +5,7 @@ import React from "react";
 
 import { spreadClasses } from "../../../../../shared";
 // eslint-disable-next-line import/no-cycle
-import { Image } from "../Image";
+import { Image } from "../Image/Image";
 
 /**
  * @typedef {import('../../core/types/testimonial-types').TestimonialProps} TestimonialProps

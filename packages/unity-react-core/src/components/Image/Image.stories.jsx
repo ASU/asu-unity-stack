@@ -1,7 +1,7 @@
 // @ts-check
 import React from "react";
 
-import { Image } from ".";
+import { Image } from "./Image";
 
 export default {
   title: "UDS/Image",

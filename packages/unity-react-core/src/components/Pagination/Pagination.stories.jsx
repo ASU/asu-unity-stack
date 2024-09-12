@@ -2,7 +2,7 @@
 import classNames from "classnames";
 import React from "react";
 
-import { Pagination } from ".";
+import { Pagination } from "./Pagination";
 
 export default {
   title: "UDS/Pagination",

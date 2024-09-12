@@ -2,7 +2,7 @@
 // @ts-check
 import React from "react";
 
-import { Testimonial } from ".";
+import { Testimonial } from "./Testimonial";
 
 export default {
   title: "UDS/Testimonial",

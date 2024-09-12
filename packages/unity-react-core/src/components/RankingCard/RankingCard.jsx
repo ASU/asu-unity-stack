@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 import { trackGAEvent, sanitizeDangerousMarkup } from "../../../../../shared";
 // eslint-disable-next-line import/no-cycle
-import { Image } from "../Image";
+import { Image } from "../Image/Image";
 
 const gaDefaultObject = {
   name: "onclick",

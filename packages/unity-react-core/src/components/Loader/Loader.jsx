@@ -1,6 +1,6 @@
 import React from "react";
 
-import { LoaderWrapper } from "./index.styles";
+import { LoaderWrapper } from "./Loader.styles";
 
 const Loader = () => (
   <LoaderWrapper>

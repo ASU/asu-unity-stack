@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 
 import { createRange, iff, trackGAEvent } from "../../../../../shared";
-import { PageItem } from "./PageItem";
+import { PageItem } from "./PageItem/PageItem";
 
 const defaultGAEvent = {
   event: "select",

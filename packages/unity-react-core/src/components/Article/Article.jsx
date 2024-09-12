@@ -15,8 +15,8 @@ import {
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 
 import { sanitizeDangerousMarkup } from "../../../../../shared";
-import { Button } from "../Button";
-import { Wrapper, EventInfoWrapper } from "./index.styles";
+import { Button } from "../Button/Button";
+import { Wrapper, EventInfoWrapper } from "./Article.styles";
 
 /**
  * @typedef {import('../../core/types/article-types').ArticleProps} ArticleProps

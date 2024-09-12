@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 import { trackGAEvent } from "../../../../../shared";
 import { accordionCardPropTypes } from "../../core/models/shared-prop-types";
-import { AccordionCard } from "./AccordionCard";
+import { AccordionCard } from "./AccordionCard/AccordionCard";
 
 const defaultGAEvent = {
   event: "collapse",

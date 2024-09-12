@@ -2,10 +2,10 @@
 // @ts-check
 import React from "react";
 
-import { Hero } from ".";
+import { Hero } from "./Hero";
 
 /**
- * @typedef {import('.').HeroProps} HeroProps
+ * @typedef {import('./Hero').HeroProps} HeroProps
  */
 
 export default {

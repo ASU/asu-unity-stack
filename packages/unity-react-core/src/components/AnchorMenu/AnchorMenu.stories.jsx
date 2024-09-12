@@ -2,7 +2,7 @@
 import classNames from "classnames";
 import React from "react";
 
-import { AnchorMenu } from ".";
+import { AnchorMenu } from "./AnchorMenu";
 
 export default {
   title: "UDS/AnchorMenu",

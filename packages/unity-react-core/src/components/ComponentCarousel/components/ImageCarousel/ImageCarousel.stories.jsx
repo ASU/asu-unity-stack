@@ -2,10 +2,9 @@
 // @ts-check
 import React from "react";
 
-import { ImageCarousel } from ".";
-
 // eslint-disable-next-line jest/no-mocks-import
 import { imageCarouselItems } from "../../../../../__mocks__/data/props-mock";
+import { ImageCarousel } from "./ImageCarousel";
 
 const mockItemWithContent = () =>
   imageCarouselItems.map(item => ({

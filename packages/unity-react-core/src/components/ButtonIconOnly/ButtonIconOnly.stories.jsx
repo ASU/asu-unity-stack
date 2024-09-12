@@ -1,7 +1,7 @@
 /* eslint react/jsx-props-no-spreading: "off" */
 import React from "react";
 
-import { ButtonIconOnly } from ".";
+import { ButtonIconOnly } from "./ButtonIconOnly";
 
 export default {
   title: "UDS/ButtonIconOnly",

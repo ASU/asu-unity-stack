@@ -2,10 +2,9 @@
 // @ts-check
 import React from "react";
 
-import { CardCarousel } from ".";
-
 // eslint-disable-next-line jest/no-mocks-import
 import { cardCarouselItems } from "../../../../../__mocks__/data/props-mock";
+import { CardCarousel } from "./CardCarousel";
 
 export default {
   component: CardCarousel,

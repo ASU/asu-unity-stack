@@ -1,7 +1,7 @@
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 
-import { TabbedPanels, Tab } from "./index";
+import { TabbedPanels, Tab } from "./TabbedPanels";
 
 export default {
   title: "UDS/TabbedPanels",

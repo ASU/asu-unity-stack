@@ -10,8 +10,8 @@ import {
   trackGAEvent,
   useMediaQuery,
 } from "../../../../../shared";
-import { Button } from "../Button";
-import { AnchorMenuWrapper } from "./index.styles";
+import { Button } from "../Button/Button";
+import { AnchorMenuWrapper } from "./AnchorMenu.styles";
 
 const menuTitle = "On This Page";
 

@@ -7,7 +7,7 @@ import {
   contentPropType,
   imagePropType,
 } from "../../core/models/shared-prop-types";
-import { HeroImage } from "./index.styles";
+import { HeroImage } from "./Hero.styles";
 
 /**
  * @typedef {import('../../core/types/hero-types').HeroProps} HeroProps
