@@ -142,19 +142,15 @@ blockquote:before {
 }
 
 .uds-blockquote {
-
   blockquote {
-
     p:last-of-type:after {
       content: '\201D';
     }
   }
-
 }
 
 
 .uds-blockquoteAnimated {
-
   h2 {
     font-size: 4rem;
     letter-spacing: -.14rem;
@@ -165,7 +161,6 @@ blockquote:before {
   a {
     color: $black;
   }
-
 }
 
 .pen-yellow {
