@@ -1,3 +1,10 @@
+# [@asu/component-news-v2.1.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-news-v2.1.0...@asu/component-news-v2.1.1) (2024-09-13)
+
+
+### Bug Fixes
+
+* **component-news:** remove KE from default news header ([0c4bcdf](https://github.com/asu/asu-unity-stack/commit/0c4bcdf74bcd24def7e141ede7656bb658a6d8c8))
+
 # [@asu/component-news-v2.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-news-v2.0.3...@asu/component-news-v2.1.0) (2024-01-11)
 
 
