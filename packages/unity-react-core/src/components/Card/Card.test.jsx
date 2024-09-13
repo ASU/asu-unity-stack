@@ -3,7 +3,7 @@
 import { render, cleanup } from "@testing-library/react";
 import React from "react";
 
-import { Card } from ".";
+import { Card } from "./Card";
 
 const defaultArgs = {
   type: "default",

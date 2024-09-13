@@ -3,7 +3,7 @@
 import { render, cleanup } from "@testing-library/react";
 import React from "react";
 
-import { Hero } from ".";
+import { Hero } from "./Hero";
 
 const defaultArgs = {
   image: {

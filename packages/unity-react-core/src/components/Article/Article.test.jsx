@@ -3,7 +3,7 @@
 import { render, cleanup } from "@testing-library/react";
 import React from "react";
 
-import { Article } from ".";
+import { Article } from "./Article";
 
 const defaultArgs = {
   type: "news",

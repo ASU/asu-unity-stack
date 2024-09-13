@@ -1,7 +1,7 @@
 import { render, cleanup } from "@testing-library/react";
 import React from "react";
 
-import { Image } from ".";
+import { Image } from "./Image";
 
 const renderImage = props => {
   return render(<Image {...{ ...props }} />);

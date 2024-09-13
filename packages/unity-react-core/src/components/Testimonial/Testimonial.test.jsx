@@ -3,7 +3,7 @@
 import { render, cleanup } from "@testing-library/react";
 import React from "react";
 
-import { Testimonial } from ".";
+import { Testimonial } from "./Testimonial";
 
 const defaultArgs = {
   quote: {

@@ -2,7 +2,7 @@
 import { render, fireEvent, cleanup } from "@testing-library/react";
 import React from "react";
 
-import { Accordion } from "./index";
+import { Accordion } from "./Accordion";
 
 const defaultArgs = {
   cards: [

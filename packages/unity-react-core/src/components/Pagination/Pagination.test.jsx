@@ -3,7 +3,7 @@
 import { render, cleanup, fireEvent } from "@testing-library/react";
 import React from "react";
 
-import { Pagination } from ".";
+import { Pagination } from "./Pagination";
 
 const onChangeSpy = jest.fn();
 const totalPages = 4;

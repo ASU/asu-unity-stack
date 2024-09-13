@@ -1,7 +1,7 @@
 import { render, fireEvent, cleanup } from "@testing-library/react";
 import React from "react";
 
-import { RankingCard } from "./index";
+import { RankingCard } from "./RankingCard";
 
 const rankingCardLarge = {
   imageSize: "large",

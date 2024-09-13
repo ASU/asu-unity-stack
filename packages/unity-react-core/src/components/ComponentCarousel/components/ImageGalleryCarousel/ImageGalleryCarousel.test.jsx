@@ -3,10 +3,9 @@
 import { render, cleanup, fireEvent } from "@testing-library/react";
 import React from "react";
 
-import { ImageGalleryCarousel } from "./index";
-
 // eslint-disable-next-line jest/no-mocks-import
 import { imageGalleryCarouselProps } from "../../../../../__mocks__/data/props-mock";
+import { ImageGalleryCarousel } from "./ImageGalleryCarousel";
 
 const imageItems = imageGalleryCarouselProps.imageItems.length;
 

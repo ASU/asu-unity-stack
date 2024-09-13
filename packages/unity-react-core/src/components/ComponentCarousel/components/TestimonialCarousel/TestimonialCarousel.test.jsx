@@ -3,10 +3,9 @@
 import { render, cleanup, fireEvent } from "@testing-library/react";
 import React from "react";
 
-import { TestimonialCarousel } from "./index";
-
 // eslint-disable-next-line jest/no-mocks-import
 import { testimonialCarouselProps } from "../../../../../__mocks__/data/props-mock";
+import { TestimonialCarousel } from "./TestimonialCarousel";
 
 const renderTestimonialCarousel = props => {
   return render(<TestimonialCarousel {...{ ...props }} />);

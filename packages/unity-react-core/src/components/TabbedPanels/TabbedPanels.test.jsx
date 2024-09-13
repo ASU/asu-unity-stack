@@ -3,7 +3,7 @@
 import { render, cleanup } from "@testing-library/react";
 import React from "react";
 
-import { TabbedPanels, Tab } from ".";
+import { TabbedPanels, Tab } from "./TabbedPanels";
 
 const tabbedPanelsDefaultArgs = {
   bgColor: "bg-dark",

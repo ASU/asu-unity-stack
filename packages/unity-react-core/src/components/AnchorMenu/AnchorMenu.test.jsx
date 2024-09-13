@@ -2,9 +2,8 @@
 import { render, fireEvent, cleanup } from "@testing-library/react";
 import React from "react";
 
-import { AnchorMenu } from ".";
-
-import { Containers } from "./index.stories";
+import { AnchorMenu } from "./AnchorMenu";
+import { Containers } from "./AnchorMenu.stories";
 
 const defaultArgs = {
   items: [

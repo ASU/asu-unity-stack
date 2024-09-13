@@ -3,7 +3,7 @@
 import { render, fireEvent, cleanup } from "@testing-library/react";
 import React from "react";
 
-import { ButtonTag } from ".";
+import { ButtonTag } from "./ButtonTag";
 
 const buttonOnClick = jest.fn();
 const linkUrl = "/#mock-link";

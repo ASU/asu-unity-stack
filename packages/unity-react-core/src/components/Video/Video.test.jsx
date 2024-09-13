@@ -3,7 +3,7 @@
 import { render, cleanup } from "@testing-library/react";
 import React from "react";
 
-import { Video } from ".";
+import { Video } from "./Video";
 
 const defaultArgs = {
   type: "video",
