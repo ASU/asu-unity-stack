@@ -1,0 +1,15 @@
+// @ts-check
+
+/**
+ * @typedef {Object} {{properCase componentName}}Props
+ * @property {JSX.Element | JSX.Element[]} children
+ * @property {string} title
+ * @property {string} customProp
+ */
+
+/**
+ * This help VSCODE and JSOC to recognize the syntax
+ * `import(FILE_PATH).EXPORTED_THING`
+ *  @ignore
+ */
+export const JSDOC = "jsdoc";

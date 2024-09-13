@@ -6,6 +6,7 @@
     "node": "20.15.1",
     "yarn": "4.4.0"
   },
+  "packageManager": "yarn@4.4.0",
   "workspaces": [
     "packages/*"
   ],
@@ -53,6 +54,7 @@
     "@semantic-release/git": "10.0.1",
     "@storybook/addons": "^7.6.14",
     "@storybook/api": "^7.6.14",
+    "@storybook/blocks": "^7.6.14",
     "@storybook/components": "^7.6.14",
     "@storybook/core-events": "^7.6.14",
     "@storybook/react": "^7.6.14",
@@ -90,6 +92,8 @@
     "nunjucks": "^3.2.0",
     "prettier": "^2.2.1",
     "purgecss-webpack-plugin": "^4.0.3",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
     "rimraf": "^3.0.2",
     "semantic-release": "18.0.1",
     "semantic-release-monorepo": "^7.0.4",
@@ -106,6 +110,5 @@
     "commitizen": {
       "path": "./scripts/conventional-commits.js"
     }
-  },
-  "packageManager": "yarn@4.4.0"
+  }
 }

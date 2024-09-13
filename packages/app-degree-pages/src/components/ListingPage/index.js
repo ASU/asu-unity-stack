@@ -6,7 +6,6 @@ import styled, { createGlobalStyle } from "styled-components";
 
 import { useFetch } from "../../../../../shared";
 import trackReactComponent from "../../../../../shared/services/componentDatalayer";
-import { Breadcrumbs } from "../DetailPage/components/Breadcrumbs";
 import {
   Loader,
   Main as MainSection,
@@ -30,6 +29,7 @@ import {
 } from "../../core/models/app-prop-types";
 import { filterData, sortPrograms } from "../../core/services";
 import { urlResolver } from "../../core/utils";
+import { Breadcrumbs } from "../DetailPage/components/Breadcrumbs";
 import { BrowseTitle } from "./components/BrowseTitle";
 import { Filters, INITIAL_FILTER_STATE } from "./components/Filters";
 import { FiltersSummary } from "./components/FiltersSummary";
@@ -270,14 +270,14 @@ const ListingPage = ({
       ) : null}
 
       <Main data-is-loading={loading} className="main-section dg-margin-top">
-      {introContent?.breadcrumbs && (
-                <div className="container mt-4 mb-0">
-                  <Breadcrumbs
-                    breadcrumbs={introContent.breadcrumbs}
-                    section={hero ? hero.title.text : ""}
-                  />
-                </div>
-              )}
+        {introContent?.breadcrumbs && (
+          <div className="container mt-4 mb-0">
+            <Breadcrumbs
+              breadcrumbs={introContent.breadcrumbs}
+              section={hero ? hero.title.text : ""}
+            />
+          </div>
+        )}
         {introContent ? (
           <IntroContent
             applyNowUrl={

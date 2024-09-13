@@ -1,0 +1,66 @@
+import PropTypes from "prop-types";
+import React from "react";
+
+import { trackGAEvent } from "../../../../../shared";
+import { {{properCase componentName}}Wrapper } from "./{{properCase componentName}}.styles";
+
+const defaultGAEvent = {
+  name: "onclick",
+  event: "link",
+  action: "click",
+  type: "internal link",
+  region: "main content",
+};
+
+/**
+ * @typedef {import('../../core/types/{{dashCase componentName}}-types.js').{{properCase componentName}}Props} {{properCase componentName}}Props
+ */
+
+/**
+ * @param { {{properCase componentName}}Props } props
+ * @returns {JSX.Element}
+ */
+
+export const {{properCase componentName}} = ({ title, customProp = "defaultValue", children }) => {
+
+  const trackEvent = () => {
+    trackGAEvent({
+      ...defaultGAEvent,
+      section: title,
+      text: customProp,
+    });
+  };
+
+  return (
+    <{{properCase componentName}}Wrapper>
+      My awesome component with customProp =
+      <button
+        type="button"
+        onClick={() => {
+          trackEvent();
+        }}
+      >
+        {customProp}
+      </button>
+      {children}
+    </{{properCase componentName}}Wrapper>
+  );
+};
+
+{{properCase componentName}}.propTypes = {
+  /**
+   * Child or Children
+   */
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
+  ]),
+  /**
+   * Title
+   */
+  title: PropTypes.string.isRequired,
+  /**
+   * Custom Prop
+   */
+  customProp: PropTypes.string.isRequired,
+};
