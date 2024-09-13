@@ -1,7 +1,7 @@
 // @ts-check
+import { deepCloner } from "../../../../../shared/utils";
 import { KEY } from "./constants";
 import { pushDataLayerEventToGa, setClientId } from "./google-analytics";
-import { deepCloner } from "../../../../../shared/utils";
 
 /**
  * In order to make a field not required, we set the default or blank value

@@ -2,9 +2,9 @@
 // @ts-check
 import React from "react";
 
-import { imageName } from "../../../../../shared/assets";
-
 import { Hero } from ".";
+
+import { imageName } from "../../../../../shared/assets";
 
 /**
  * @typedef {import('.').HeroProps} HeroProps
@@ -23,9 +23,9 @@ export default {
   argTypes: {
     title: {
       control: {
-        type: 'object',
+        type: "object",
       },
-      description: 'Options for highlightColor are gold, white, black, or none',
+      description: "Options for highlightColor are gold, white, black, or none",
     },
   },
 };
