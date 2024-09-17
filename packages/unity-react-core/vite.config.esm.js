@@ -21,7 +21,7 @@ function getComponentEntries() {
     if (componentsToIgnore.some(component => file.includes(component))) return;
     const name = file.replace(/\.[^/.]+$/, "");
     entries.push({
-      location: resolve(componentsDir, `${name}/index.js`),
+      location: resolve(componentsDir, `${name}/${name}.jsx`),
       name,
     });
   });

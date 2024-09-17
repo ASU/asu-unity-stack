@@ -1,4 +1,4 @@
-# ASU Components Core
+# ASU Unity React Core
 
 ASU React Core Components.
 
@@ -17,30 +17,51 @@ import { <COMPONENT_NAME> } from 'dist/esm/components/<COMPONENT_NAME>';
 For example, to import the `Accordion` component:
 
 ```js
-import { Accordion } from '@asu/components-core/dist/esm/components/Accordion';
+import { Accordion } from '@asu/unity-react-core/dist/esm/components/Accordion';
 ```
 
 #### Using UMD in the Browser
 
-If you prefer to initialize components directly in the browser using a script tag, you can use the following path for UMD modules:
+If you prefer to initialize components directly in the browser using a script tag, you can use the following path for UMD module:
 
 ```html
-<script src="@asu/components-core/dist/umd/components/<COMPONENT_NAME>.js"></script>
+<script src="@asu/components-core/dist/unityReactCore.umd.js"></script>
+<script>
+    unityReactCore.initAccordion({
+      targetSelector: "#accordion-component",
+      props: {
+        cards: [
+          {
+            content: {
+              header: "Accordion Card 1",
+              body:
+                "<h4>Quatrenary Headline</h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p><h5>This is a level five headline. There's a fancy word for that too.</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>",
+            },
+          },
+          {
+            content: {
+              header: "Accordion Card 2",
+              body:
+                "<h4>Quatrenary Headline</h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p><h5>This is a level five headline. There's a fancy word for that too.</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>",
+            },
+          },
+          {
+            content: {
+              header: "Accordion Card 3, opened card",
+              body:
+                "<h4>Quatrenary Headline</h4><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p><h5>This is a level five headline. There's a fancy word for that too.</h5><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>",
+            },
+          },
+        ],
+        openedCard: 3, // Prop based on card position on the screen
+      },
+    });
+  </script>
 ```
-
-For example, when using the `Accordion` component via UMD, the script exports an initialization function called `initAccordion`. This function takes two arguments:
+This init component function already contains the correct React initialization code, so you don't need to worry about rendering it yourself.
 
 1. **targetSelector** (string): The selector for the DOM element where you want to initialize the component.
 2. **props** (object): The props to be passed to the component.
-
-Example usage:
-
-```html
-<script src="dist/umd/components/Accordion.js"></script>
-<script>
-  initAccordion('#accordionContainer', { prop1: 'value1', prop2: 'value2' });
-</script>
-```
 
 ## Architecture details
 

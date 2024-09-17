@@ -15,14 +15,14 @@ import {
   initTestimonialCarousel,
   initImageCarousel,
   initImageGalleryCarousel,
-} from "../../components/ComponentCarousel";
-import { Hero } from "../../components/Hero";
-import { Image } from "../../components/Image";
-import { Pagination } from "../../components/Pagination";
-import { RankingCard } from "../../components/RankingCard";
-import { Testimonial } from "../../components/Testimonial";
-import { TabbedPanels } from "../../components/TabbedPanels";
-import { Video } from "../../components/Video";
+} from "../../components/ComponentCarousel/ComponentCarousel";
+import { Hero } from "../../components/Hero/Hero";
+import { Image } from "../../components/Image/Image";
+import { Pagination } from "../../components/Pagination/Pagination";
+import { RankingCard } from "../../components/RankingCard/RankingCard";
+import { Testimonial } from "../../components/Testimonial/Testimonial";
+import { TabbedPanels } from "../../components/TabbedPanels/TabbedPanels";
+import { Video } from "../../components/Video/Video";
 
 /**
  * @typedef {Object} ComponentProps
