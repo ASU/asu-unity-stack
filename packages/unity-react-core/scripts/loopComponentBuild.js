@@ -31,11 +31,10 @@ const buildComponents = async () => {
     const promises = [];
     for (let i = 0; i < folders.length; i++) {
       const buildEsmCommand = `NUMBER=${i} yarn build-individual-esm-components`;
-      const buildUmdCommand = `NUMBER=${i} yarn build-individual-components`;
       promises.push(runCommand(buildEsmCommand));
-      promises.push(runCommand(buildUmdCommand));
     }
     await Promise.all(promises);
+    console.log("\x1b[32m✓ Individual ESM components built successfully\x1b[0m");
   } catch (error) {
     throw new Error("Error building individual components", error);
   }
