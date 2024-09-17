@@ -5,6 +5,43 @@ ASU React Core Components.
 This component is the react implementation of some of the components of the Bootstrap 4 theme package.
 All of these components are listed [below](#examples---quick-links).
 
+## Importing Components
+
+### Using ES Modules (ESM)
+If you are importing components using ES modules, you can import only the components you need, this will reduce the size of the bundle drastically:
+
+```js
+import { <COMPONENT_NAME> } from 'dist/esm/components/<COMPONENT_NAME>';
+```
+
+For example, to import the `Accordion` component:
+
+```js
+import { Accordion } from '@asu/components-core/dist/esm/components/Accordion';
+```
+
+#### Using UMD in the Browser
+
+If you prefer to initialize components directly in the browser using a script tag, you can use the following path for UMD modules:
+
+```html
+<script src="@asu/components-core/dist/umd/components/<COMPONENT_NAME>.js"></script>
+```
+
+For example, when using the `Accordion` component via UMD, the script exports an initialization function called `initAccordion`. This function takes two arguments:
+
+1. **targetSelector** (string): The selector for the DOM element where you want to initialize the component.
+2. **props** (object): The props to be passed to the component.
+
+Example usage:
+
+```html
+<script src="dist/umd/components/Accordion.js"></script>
+<script>
+  initAccordion('#accordionContainer', { prop1: 'value1', prop2: 'value2' });
+</script>
+```
+
 ## Architecture details
 
 As this package is intended to be the react core components package, each of these components are built in isolation, thats mean that, each component, was thougth to be used in different scenarios in the same way.

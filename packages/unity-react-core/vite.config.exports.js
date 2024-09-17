@@ -34,7 +34,7 @@ const { location: LOCATION, name: EXPORT_NAME } =
 export default defineConfig({
   build: {
     emptyOutDir: false,
-    outDir: "dist/components",
+    outDir: "dist/umd/components",
     lib: {
       entry: LOCATION,
       name: `init${EXPORT_NAME}`,

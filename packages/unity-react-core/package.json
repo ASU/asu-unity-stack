@@ -33,7 +33,8 @@
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
     "build": "vite build -c vite.config.js && yarn loop && yarn postbuild",
     "build-individual-components": "NUMBER=$NUMBER vite build -c vite.config.exports.js",
-    "loop": "node ./scripts/loop.js",
+    "build-individual-esm-components": "NUMBER=$NUMBER vite build -c vite.config.esm.js",
+    "loop": "node ./scripts/loopComponentBuild.js",
     "postbuild": "cp ./types/main.d.ts ./dist/main.d.ts",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "storybook": "storybook dev -p 9200",
@@ -101,9 +102,7 @@
   "peerDependencies": {
     "react": ">= 16.14.0 < 18",
     "react-dom": ">= 16.14.0 < 18",
-    "react-router-dom": ">= 5.2.0 < 7",
-    "react-share": "^4.4.0",
-    "reactstrap": "^8.9.0"
+    "react-router-dom": ">= 5.2.0 < 7"
   },
   "exports": {
     "./*": "./*",
