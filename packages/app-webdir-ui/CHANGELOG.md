@@ -1,3 +1,22 @@
+# [@asu/app-webdir-ui-v3.6.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.5.1...@asu/app-webdir-ui-v3.6.0) (2024-09-17)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** add custom titles to courtesy affiliate search results ([53dfbe1](https://github.com/asu/asu-unity-stack/commit/53dfbe1b7846c9aad92858d620f249dace07b2de))
+* **app-webdir-ui:** added prodile service class for reusability ([3387375](https://github.com/asu/asu-unity-stack/commit/33873759956fc5f1cd61700af2ad84f5bfed701f))
+* **app-webdir-ui:** added student and site fallback logic ([e0a634a](https://github.com/asu/asu-unity-stack/commit/e0a634a58431c4df9a4efcd606d4a79d9097da6f))
+* **app-webdir-ui:** do not retrieve full records on second search ([e49ba7d](https://github.com/asu/asu-unity-stack/commit/e49ba7d919c6f0e486ccc01e1a1eb156e16d36b4))
+* **app-webdir-ui:** fix logic for web directory in dept and faculty rank types ([e5270a3](https://github.com/asu/asu-unity-stack/commit/e5270a3e4297da9ecb9773c3564b5bd29d0f3cca))
+* **app-webdir-ui:** refactored title logic ([cfa4bba](https://github.com/asu/asu-unity-stack/commit/cfa4bba09ff6b6bb0231a2aebf22317ca15f0269))
+* **app-webdir-ui:** remove old title logic ([7c742f0](https://github.com/asu/asu-unity-stack/commit/7c742f0350e80c6ebc6a8d702c412e3f8ac0b34a))
+* **app-webdir-ui:** update logic ([d15a041](https://github.com/asu/asu-unity-stack/commit/d15a0410bc6dc9d21f5808470b1fadd755befa54))
+
+
+### Features
+
+* **app-webdir-ui:** updated title logic in directory components ([ca46602](https://github.com/asu/asu-unity-stack/commit/ca46602ce197b4e422f01c81e72629af9d0a4a0b))
+
 # [@asu/app-webdir-ui-v3.5.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.5.0...@asu/app-webdir-ui-v3.5.1) (2024-08-02)
 
 
