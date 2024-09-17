@@ -21,7 +21,7 @@ function getComponentEntries() {
     if (componentsToIgnore.some(component => file.includes(component))) return;
     const name = file.replace(/\.[^/.]+$/, "");
     entries.push({
-      location: resolve(componentsDir, `${name}/init.js`),
+      location: resolve(componentsDir, `${name}/index.js`),
       name,
     });
   });
@@ -34,11 +34,11 @@ const { location: LOCATION, name: EXPORT_NAME } =
 export default defineConfig({
   build: {
     emptyOutDir: false,
-    outDir: "dist/umd/components",
+    outDir: "dist/esm/components",
     lib: {
       entry: LOCATION,
       name: `init${EXPORT_NAME}`,
-      formats: ["umd"],
+      formats: ["es"],
       fileName: format => `${EXPORT_NAME}.${format}.js`,
     },
     rollupOptions: {
@@ -48,7 +48,7 @@ export default defineConfig({
         globals: {
           "react": "React",
           "react-dom": "ReactDOM",
-        },
+        }
       },
     },
     minify: true,
