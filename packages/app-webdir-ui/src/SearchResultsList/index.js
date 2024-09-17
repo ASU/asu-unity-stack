@@ -5,6 +5,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { trackGAEvent } from "../../../../shared";
 import { performSearch } from "../helpers/search";
 import { SearchMessage } from "../SearchPage/components/SearchMessage";
+import { ProfileService } from "./dataFormatter";
 import { SearchResultsList } from "./index.styles";
 
 /*
@@ -71,101 +72,116 @@ const ASUSearchResultsList = ({
   const searchList = useRef(null);
   const controller = new AbortController();
 
-  const doSearch = (page = currentPage) => {
+  const doSearch = async (page = currentPage) => {
     if ((term && term.length > 0) || !engine.needsTerm) {
       setIsLoading(true);
-      performSearch({
-        engine,
-        term,
-        page,
-        itemsPerPage,
-        sort,
-        filters,
-        display,
-        rankGroup,
-        controller,
-        size: display?.profilesPerPage,
-        restClientTag,
-      })
-        .then(res => {
-          const filteredResults = res;
-          if (sort === "employee_weight" && engine?.name === "people_in_dept") {
-            filteredResults.results = filteredResults.results.filter(result => {
-              return Object.keys(result).length > 1;
-            });
-          }
-          const formattedResults = engine.formatter({
-            results: filteredResults,
-            page,
-            itemsPerPage,
-            cardSize,
-            filters,
-            appPathFolder: appPathFolder || engine.appPathFolder,
-            localSection,
-            props: {
-              API_URL: engine.API_URL,
-              searchApiVersion: engine.searchApiVersion,
-              loggedIn,
-            },
-          });
-          if (registerResults) {
-            registerResults(formattedResults.page.total_results);
-          }
-          if (engine.method === "GET") {
-            if (sort === "employee_weight") {
-              setCurrentPage(formattedResults.page.current + 1);
-            } else {
-              setCurrentPage(formattedResults.page.current);
-            }
-          }
-          if (engine.method === "POST") {
-            setTotalResults(filteredResults[0]?.total_results); // Each result has the total_results property
-          } else {
-            setTotalResults(formattedResults.page.total_results);
-          }
-          const resultsWithProps = formattedResults.results.map(
-            (profile, idx) => {
-              const newProps = {
-                ...profile.props,
-                ...{ key: idx, GASource },
-              };
-              return {
-                ...profile,
-                ...{ props: newProps },
-                key: profile.props?.children?.key ?? idx,
-              };
-            }
-          );
-          if (setPromotedResult) {
-            setPromotedResult(formattedResults.topResult);
-          }
-          setResults(resultsWithProps);
-          if (showSearchMessage) {
-            setSubtitle(
-              <SearchMessage
-                term={term}
-                number={formattedResults.page.total_results}
-                loggedIn={loggedIn}
-                engine={engine.name}
-                GASource={GASource}
-              />
-            );
-          }
-
-          setIsLoading(false);
-          trackGAEvent({
-            event: "search",
-            action: "type",
-            name: "onenter",
-            type: "search asu.edu",
-            section: "search",
-            text: term,
-          });
-        })
-        .catch(err => {
-          console.error(err);
-          setIsLoading(false);
+      try {
+        const res = await performSearch({
+          engine,
+          term,
+          page,
+          itemsPerPage,
+          sort,
+          filters,
+          display,
+          rankGroup,
+          controller,
+          size: display?.profilesPerPage,
+          restClientTag,
         });
+
+        let filteredResults = res;
+        if (sort === "employee_weight" && engine?.name === "people_in_dept") {
+          filteredResults.results = filteredResults.results.filter(result => {
+            return Object.keys(result).length > 1;
+          });
+        }
+
+        const profileService = new ProfileService(engine, filters);
+        filteredResults = await profileService.processProfiles(
+          term,
+          filteredResults
+        );
+
+        const formattedResults = engine.formatter({
+          results: filteredResults,
+          page,
+          itemsPerPage,
+          cardSize,
+          filters,
+          appPathFolder: appPathFolder || engine.appPathFolder,
+          localSection,
+          props: {
+            API_URL: engine.API_URL,
+            searchApiVersion: engine.searchApiVersion,
+            loggedIn,
+          },
+        });
+
+        if (registerResults) {
+          registerResults(formattedResults.page.total_results);
+        }
+
+        if (engine.method === "GET") {
+          if (sort === "employee_weight") {
+            setCurrentPage(formattedResults.page.current + 1);
+          } else {
+            setCurrentPage(formattedResults.page.current);
+          }
+        }
+
+        if (engine.method === "POST") {
+          setTotalResults(filteredResults[0]?.total_results); // Each result has the total_results property
+        } else {
+          setTotalResults(formattedResults.page.total_results);
+        }
+
+        const resultsWithProps = formattedResults.results.map(
+          (profile, idx) => {
+            const newProps = {
+              ...profile.props,
+              ...{ key: idx, GASource },
+            };
+            return {
+              ...profile,
+              ...{ props: newProps },
+              key: profile.props?.children?.key ?? idx,
+            };
+          }
+        );
+
+        if (setPromotedResult) {
+          setPromotedResult(formattedResults.topResult);
+        }
+
+        setResults(resultsWithProps);
+
+        if (showSearchMessage) {
+          setSubtitle(
+            <SearchMessage
+              term={term}
+              number={formattedResults.page.total_results}
+              loggedIn={loggedIn}
+              engine={engine.name}
+              GASource={GASource}
+            />
+          );
+        }
+
+        setIsLoading(false);
+        trackGAEvent({
+          event: "search",
+          action: "type",
+          name: "onenter",
+          type: "search asu.edu",
+          section: "search",
+          text: term,
+        });
+      } catch (err) {
+        console.error(err);
+        setIsLoading(false);
+        setResults([]);
+      }
     }
   };
 
