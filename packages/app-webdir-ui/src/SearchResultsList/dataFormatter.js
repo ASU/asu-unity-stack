@@ -4,10 +4,12 @@ import axios from "axios";
 import { validateAndCleanURL } from "../helpers/validateUrl";
 
 export class ProfileService {
+  #sessionTokenPromise;
+
   constructor(engine, filters) {
     this.engine = engine;
     this.filters = filters;
-    this._sessionTokenPromise = null;
+    this.#sessionTokenPromise = null;
   }
 
   static processURL(url) {
@@ -42,17 +44,17 @@ export class ProfileService {
   }
 
   async getSessionToken() {
-    if (!this._sessionTokenPromise) {
+    if (!this.#sessionTokenPromise) {
       const url = ProfileService.processURL(
         `${this.engine.API_URL}/session/token`
       );
-      this._sessionTokenPromise = (async () => {
+      this.#sessionTokenPromise = (async () => {
         const response = await axios.get(url);
         this.sessionToken = response.data;
         return this.sessionToken;
       })();
     }
-    return this._sessionTokenPromise;
+    return this.#sessionTokenPromise;
   }
 
   async #getProfilesForSearch(filteredResults) {
