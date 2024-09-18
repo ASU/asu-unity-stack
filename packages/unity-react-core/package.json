@@ -18,7 +18,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/ASU/asu-unity-stack.git",
-    "directory": "packages/components-core"
+    "directory": "packages/unity-react-core"
   },
   "publishConfig": {
     "access": "public",
@@ -32,8 +32,9 @@
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
     "test": "jest --config=./jest.config.js --silent --coverage",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
-    "prebuild": "rm -rf ./dist",
-    "build": "yarn prebuild && vite build && yarn postbuild",
+    "build": "vite build -c vite.config.js && yarn loop && yarn postbuild",
+    "build-individual-esm-components": "NUMBER=$NUMBER vite build -c vite.config.esm.js",
+    "loop": "node ./scripts/loopComponentBuild.js",
     "postbuild": "cp ./types/main.d.ts ./dist/main.d.ts",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "storybook": "storybook dev -p 9200",
@@ -102,15 +103,13 @@
   "peerDependencies": {
     "react": ">= 16.14.0 < 18",
     "react-dom": ">= 16.14.0 < 18",
-    "react-router-dom": ">= 5.2.0 < 7",
-    "react-share": "^4.4.0",
-    "reactstrap": "^8.9.0"
+    "react-router-dom": ">= 5.2.0 < 7"
   },
   "exports": {
     "./*": "./*",
     ".": {
-      "import": "./dist/unity-react-core.mjs",
-      "require": "./dist/unity-react-core.umd.js"
+      "import": "./dist/unityReactCore.es.js",
+      "require": "./dist/unityReactCore.umd.js"
     }
   },
   "volta": {

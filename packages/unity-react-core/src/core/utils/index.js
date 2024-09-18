@@ -15,12 +15,13 @@ import {
   initTestimonialCarousel,
   initImageCarousel,
   initImageGalleryCarousel,
-} from "../../components/ComponentCarousel";
+} from "../../components/ComponentCarousel/ComponentCarousel";
 import { Hero } from "../../components/Hero/Hero";
 import { Image } from "../../components/Image/Image";
 import { Pagination } from "../../components/Pagination/Pagination";
 import { RankingCard } from "../../components/RankingCard/RankingCard";
 import { Testimonial } from "../../components/Testimonial/Testimonial";
+import { TabbedPanels } from "../../components/TabbedPanels/TabbedPanels";
 import { Video } from "../../components/Video/Video";
 
 /**
@@ -35,7 +36,11 @@ import { Video } from "../../components/Video/Video";
  * @param {ComponentProps} props
  */
 const RenderReact = (component, props, target) => {
-  ReactDOM.render(React.createElement(component, props), target);
+  try {
+    ReactDOM.render(React.createElement(component, props), target);
+  } catch (err) {
+   throw new Error(`Error rendering React component: ${err}`);
+  }
 };
 
 /**
@@ -115,3 +120,16 @@ export const initTestimonial = ({ targetSelector, props }) =>
  */
 export const initVideo = ({ targetSelector, props }) =>
   RenderReact(Video, props, document.querySelector(targetSelector));
+
+/**
+ * @param {ComponentProps} props
+ */
+export const initTabbedPanels = ({ targetSelector, props }) =>
+  RenderReact(TabbedPanels, props, document.querySelector(targetSelector));
+
+export {
+  initCardCarousel,
+  initTestimonialCarousel,
+  initImageCarousel,
+  initImageGalleryCarousel,
+}

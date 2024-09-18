@@ -32,12 +32,16 @@ export default defineConfig({
     global: {}
   },
   plugins: [
-    react({
-      jsxRuntime: "automatic",
-		}),
+    react(),
     {
       name: "treat-js-files-as-jsx",
       async transform(code, id) {
+        if (id.includes(".js")) {
+          return transformWithEsbuild(code, id, {
+            loader: "jsx",
+            jsx: "automatic",
+          });
+        }
         if (!id.match(/src\/.*\.js$/)) return null;
 
         return transformWithEsbuild(code, id, {
