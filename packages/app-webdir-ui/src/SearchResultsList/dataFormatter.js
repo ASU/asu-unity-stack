@@ -4,9 +4,12 @@ import axios from "axios";
 import { validateAndCleanURL } from "../helpers/validateUrl";
 
 export class ProfileService {
+  #sessionTokenPromise;
+
   constructor(engine, filters) {
     this.engine = engine;
     this.filters = filters;
+    this.#sessionTokenPromise = null;
   }
 
   static processURL(url) {
@@ -21,14 +24,37 @@ export class ProfileService {
    * @memberof ProfileService
    * */
   async fetchProfilesFromApi(profiles, fullRecords = false) {
+    await this.getSessionToken();
     const url = ProfileService.processURL(
       `${this.engine.API_URL}${this.engine.searchApiVersion}/webdir-profiles/department?client=webdir`
     );
-    const response = await axios.post(url, {
-      full_records: fullRecords,
-      profiles,
-    });
+    const response = await axios.post(
+      url,
+      {
+        full_records: fullRecords,
+        profiles,
+      },
+      {
+        headers: {
+          "X-CSRF-Token": this.sessionToken,
+        },
+      }
+    );
     return response.data;
+  }
+
+  async getSessionToken() {
+    if (!this.#sessionTokenPromise) {
+      const url = ProfileService.processURL(
+        `${this.engine.API_URL}/session/token`
+      );
+      this.#sessionTokenPromise = (async () => {
+        const response = await axios.get(url);
+        this.sessionToken = response.data;
+        return this.sessionToken;
+      })();
+    }
+    return this.#sessionTokenPromise;
   }
 
   async #getProfilesForSearch(filteredResults) {
@@ -77,6 +103,7 @@ export class ProfileService {
     if (!this.engine.doTitleLogic) {
       return filteredResults;
     }
+    await this.getSessionToken();
     /**
      * If term is present, request is coming from search page
      */
