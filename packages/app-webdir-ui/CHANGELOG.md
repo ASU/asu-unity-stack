@@ -1,3 +1,11 @@
+# [@asu/app-webdir-ui-v3.6.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.6.0...@asu/app-webdir-ui-v3.6.1) (2024-09-18)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** fix dangling underscore linting error ([8c4f27e](https://github.com/asu/asu-unity-stack/commit/8c4f27e2c36416653a444b3e3e950f7945cb2c90))
+* **app-webdir-ui:** retrieve token on search results list ([90aff3c](https://github.com/asu/asu-unity-stack/commit/90aff3c71b24709adb90b00f507f2733f21c32dc))
+
 # [@asu/app-webdir-ui-v3.6.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.5.1...@asu/app-webdir-ui-v3.6.0) (2024-09-17)
 
 
