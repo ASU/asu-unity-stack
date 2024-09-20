@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v3.6.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.6.1...@asu/app-webdir-ui-v3.6.2) (2024-09-20)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** prevent SearchResultsList from fetching titles when there are no results ([b6b3450](https://github.com/asu/asu-unity-stack/commit/b6b3450e0d9801ea9b20902c69260b3e25c39b95))
+
 # [@asu/app-webdir-ui-v3.6.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v3.6.0...@asu/app-webdir-ui-v3.6.1) (2024-09-18)
 
 
