@@ -100,9 +100,11 @@ export class ProfileService {
    * "title" and "dept_name" field to the individual results used in dataConverter.js
    */
   async processProfiles(term, filteredResults) {
-    if (!this.engine.doTitleLogic) {
+    if (this.engine.method === "POST") return filteredResults;
+    if (!this.engine.doTitleLogic || filteredResults.results.length < 1) {
       return filteredResults;
     }
+
     await this.getSessionToken();
     /**
      * If term is present, request is coming from search page
