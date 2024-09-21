@@ -35,7 +35,6 @@ const c = {
     sourcemap: true,
     cssMinify: true,
     cssCodeSplit: true,
-
     lib: {
       entry: [
         resolve(__dirname, 'src/scss/unity-bootstrap-theme.bundle.scss'),
@@ -45,7 +44,7 @@ const c = {
         resolve(__dirname, 'src/js/global-header.js'),
         resolve(__dirname, 'src/js/data-layer.js'),
         resolve(__dirname, '../../node_modules/bootstrap/js/index.esm.js'),
-      ]
+      ],
     },
     outDir: 'dist',
     rollupOptions: {
@@ -61,6 +60,7 @@ const c = {
         chunkFileNames: "js/[name].[format]",
         assetFileNames: '[name][extname]',
         format: 'es',
+
       },
     },
   },
