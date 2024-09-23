@@ -1,3 +1,11 @@
+# [@asu/component-carousel-v2.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-carousel-v2.0.5...@asu/component-carousel-v2.1.0) (2024-09-05)
+
+
+### Features
+
+* **component-carousel:** added aria-hidden for unvisible cards ([2572edd](https://github.com/asu/asu-unity-stack/commit/2572edd664ca511fe07d73ff7796fc25a7d38ffe))
+* **component-carousel:** added inert to invisible cards ([db6d3e0](https://github.com/asu/asu-unity-stack/commit/db6d3e045fcea2b53094e42cd241133987e4559d))
+
 # [@asu/component-carousel-v2.0.5](https://github.com/asu/asu-unity-stack/compare/@asu/component-carousel-v2.0.4...@asu/component-carousel-v2.0.5) (2024-06-26)
 
 

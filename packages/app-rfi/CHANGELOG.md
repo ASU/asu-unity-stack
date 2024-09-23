@@ -1,3 +1,33 @@
+# [@asu/app-rfi-v2.3.13](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.12...@asu/app-rfi-v2.3.13) (2024-09-11)
+
+
+### Bug Fixes
+
+* **app-rfi:** fix undefined error when program optional ([6ac3cae](https://github.com/asu/asu-unity-stack/commit/6ac3cae9ba7979174542db1f8fa53f586b1a091a))
+
+# [@asu/app-rfi-v2.3.12](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.11...@asu/app-rfi-v2.3.12) (2024-09-11)
+
+
+### Bug Fixes
+
+* **app-rfi:** campusProgram has choice update api if Campus changes ([083ad23](https://github.com/asu/asu-unity-stack/commit/083ad234e4291cb559f30d4aa6035c449c1e72ca))
+
+# [@asu/app-rfi-v2.3.11](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.10...@asu/app-rfi-v2.3.11) (2024-09-09)
+
+
+### Bug Fixes
+
+* **app-rfi:** Entry dates should not have dups ([a223aa3](https://github.com/asu/asu-unity-stack/commit/a223aa32cb2bf2699a3e2fa8b738240a0091c3a3))
+* **app-rfi:** programOfInterest required, unless optional prop ([ec1ca4c](https://github.com/asu/asu-unity-stack/commit/ec1ca4cdedaec84882cda5309addb857ff49a41c))
+
+# [@asu/app-rfi-v2.3.10](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.9...@asu/app-rfi-v2.3.10) (2024-09-04)
+
+
+### Bug Fixes
+
+* **app-rfi:** Update Military to radio button ([311f872](https://github.com/asu/asu-unity-stack/commit/311f872c0ec809f33a89a8ec1cdb0a8a2720cc28))
+* **app-rfi:** update plan title to use market description ([72be88b](https://github.com/asu/asu-unity-stack/commit/72be88bbc7d500a940e9480e75d57de3a46f5833))
+
 # [@asu/app-rfi-v2.3.9](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.8...@asu/app-rfi-v2.3.9) (2024-07-10)
 
 

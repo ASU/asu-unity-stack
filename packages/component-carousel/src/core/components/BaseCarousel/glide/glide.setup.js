@@ -164,6 +164,42 @@ function setNavButtonGradient(gliderElement, currentIndex, buttonCount) {
 }
 
 /**
+ * Update ARIA attributes on slides that are not currently visible.
+ *
+ * When a slide is not visible, we set aria-hidden to true and tabindex to
+ * -1 to remove it from the accessibility tree. When a slide is visible, we
+ * set aria-hidden to false and remove tabindex to make it accessible.
+ *
+ * @param {HTMLElement} gliderElement - The element that contains the slides.
+ * @param {number} currentIndex - The index of the currently active slide.
+ * @param {number} perView - The number of slides that are visible at a time.
+ */
+function updateNonVisibleSlides(gliderElement, currentIndex, perView) {
+  const slides = gliderElement.querySelectorAll(".glide__slide");
+  // Get first visible slide
+  const startVisibleIndex = currentIndex;
+  // Get last visible slide
+  const endVisibleIndex = Math.min(
+    slides.length - 1,
+    currentIndex + perView - 1
+  );
+
+  slides.forEach((slide, index) => {
+    if (index < startVisibleIndex || index > endVisibleIndex) {
+      // Slide is not visible
+      slide.setAttribute("aria-hidden", "true");
+      slide.setAttribute("tabindex", "-1");
+      slide.setAttribute("inert", "");
+    } else {
+      // Slide is visible
+      slide.setAttribute("aria-hidden", "false");
+      slide.removeAttribute("tabindex");
+      slide.removeAttribute("inert");
+    }
+  });
+}
+
+/**
  *
  * @param {{
  *  instanceName: string
@@ -223,6 +259,7 @@ function setupCaroarousel({
 
     // @ts-ignore
     const currentIndex = slider.index;
+    updateNonVisibleSlides(gliderElement, currentIndex, perView);
     const imageGalleryNav = gliderElement.querySelector(".navigation-slider");
     const imageNav = gliderElement.querySelector(".image-navigator-images");
     if (imageGalleryNav && imageNav) {

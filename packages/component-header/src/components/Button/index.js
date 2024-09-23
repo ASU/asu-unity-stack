@@ -17,6 +17,7 @@ const Button = ({ href, color, text, classes, onClick, onFocus }) => {
   return (
     <ButtonWrapper
       href={href}
+      {...(!href ? { tabIndex: 0 } : {})}
       className={`button-${color} ${classes ?? ""}`}
       onClick={onClick}
       onFocus={onFocus}

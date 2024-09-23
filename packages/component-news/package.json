@@ -1,6 +1,6 @@
 {
   "name": "@asu/component-news",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "ASU News component",
   "main": "./dist/asuNews.cjs.js",
   "browser": "./dist/asuNews.umd.js",
@@ -96,9 +96,7 @@
     "webpack-filter-warnings-plugin": "^1.2.1",
     "webpack-merge": "^5.8.0"
   },
-  "peerDependencies": {
-
-  },
+  "peerDependencies": {},
   "volta": {
     "extends": "../../package.json"
   }

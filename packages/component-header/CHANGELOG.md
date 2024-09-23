@@ -1,3 +1,19 @@
+# [@asu/component-header-v2.3.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.3.1...@asu/component-header-v2.3.2) (2024-09-10)
+
+
+### Bug Fixes
+
+* **component-header:** fix keyboard clickable in menu item ([fe20e42](https://github.com/asu/asu-unity-stack/commit/fe20e425d2170f397baa4f9931a6f48c87829e50))
+
+# [@asu/component-header-v2.3.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.3.0...@asu/component-header-v2.3.1) (2024-09-04)
+
+
+### Bug Fixes
+
+* **component-header:** added onClick event to dropdown sublinks ([af7d216](https://github.com/asu/asu-unity-stack/commit/af7d21692e9c4150dfedee88a1d22a4c292e14f5))
+* **component-header:** fixed navtree with onclick not getting called ([b43b6da](https://github.com/asu/asu-unity-stack/commit/b43b6daeea0b091564ea4a2077b3c03ab363b676))
+* **component-header:** fixed prop that was not passed in properly ([caf6458](https://github.com/asu/asu-unity-stack/commit/caf6458d12c64c0ae04ea19824a45366185a6d17))
+
 # [@asu/component-header-v2.3.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.2.8...@asu/component-header-v2.3.0) (2024-08-05)
 
 

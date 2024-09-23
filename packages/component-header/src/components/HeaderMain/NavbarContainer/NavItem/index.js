@@ -118,6 +118,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
   };
 
   const handleKeyDown = e => {
+    if (!link.items && link.href) return;
     const { key } = e;
     const navigableKeys = [
       "ArrowUp",
@@ -160,6 +161,9 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
     } else if (e.type === "click" && link.items) {
       e.preventDefault();
       setItemOpened();
+    } else if (e.type === "click") {
+      dispatchGAEvent();
+      link.onClick?.(e);
     }
   };
 
@@ -184,6 +188,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
         onClick={handleKeyDown}
         href={link.href}
         {...(link.items ? { "aria-expanded": opened } : {})}
+        {...(!link.href ? { tabIndex: 0 } : {})}
         aria-owns={link.items ? `dropdown-${link.id}` : null}
         className={`${link.class ? link.class : ""}${
           link.selected ? " nav-item-selected" : ""

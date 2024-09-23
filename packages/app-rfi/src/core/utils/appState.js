@@ -51,7 +51,7 @@ const getInitialValues = props => ({
   Country: props.country,
   Zip: undefined,
   // BirthDate: undefined,
-  MilitaryStatus: "No",
+  MilitaryStatus: "None",
   // Comments: undefined,
   // Email: undefined,
 });
@@ -69,10 +69,12 @@ export const useRfiState = props => {
     filterByDepartmentCode,
     filterByCollegeCode,
     filterByCampusCode,
-    campus,
     submissionUrl,
     isCertMinor,
   } = props;
+  const [loaded, setLoaded] = useState(false);
+  const [forceUpdatedPlan, setForceUpdatedPlan] = useState();
+  const [campusProgramHasChoice, setCampusProgramHasChoice] = useState();
   const [stepNumber, setStepNumber] = useState(0);
   const steps = variants[variant] || variants[defaultVariant];
   const [snapshot, setSnapshot] = useState(getInitialValues(props));
@@ -133,7 +135,8 @@ export const useRfiState = props => {
         fetchDegreesData({
           dataSourceDegreeSearch,
           dataSourceAsuOnline,
-          Campus: formik.values.Campus,
+          CareerAndStudentType: formik.values.CareerAndStudentType,
+          Campus: formik.values.CampusProgramHasChoice || formik.values.Campus,
           Interest2,
         }).then(([response, data]) => {
           if (response === "Error") {
@@ -151,7 +154,10 @@ export const useRfiState = props => {
           if (emailAddr) {
             setCertMinorEmail(emailAddr);
           }
+          setLoaded(true);
         });
+      } else {
+        setLoaded(true);
       }
     };
 
@@ -167,7 +173,7 @@ export const useRfiState = props => {
         filterByDepartmentCode,
         filterByCollegeCode,
         filterByCampusCode,
-        Campus: formik.values.Campus,
+        Campus: formik.values.CampusProgramHasChoice || formik.values.Campus,
         CareerAndStudentType: formik.values.CareerAndStudentType,
       }).then(([response, data]) => {
         if (response === "Error") {
@@ -180,11 +186,29 @@ export const useRfiState = props => {
           console.log(data);
         }
         setDegreeDataList(data);
+
+        if (
+          formik.values.Interest2 &&
+          formik.values.Interest2 !== KEY.FALSE_EMPTY
+        ) {
+          const selectedDegree = data.find(
+            plan =>
+              plan.acadPlanCode === formik.values.Interest2 || // check for PLAN pattern
+              plan.acadCode === formik.values.Interest2 // check for PROGRAM-PLAN pattern
+          );
+          if (selectedDegree?.acadPlanKey) {
+            setForceUpdatedPlan(selectedDegree.acadPlanKey);
+          }
+        }
       });
     };
 
-    fetchData();
+    if (loaded) {
+      fetchData();
+    }
   }, [
+    loaded,
+    formik.values.CampusProgramHasChoice,
     formik.values.Campus,
     formik.values.CareerAndStudentType,
     filterByDepartmentCode,
@@ -193,6 +217,9 @@ export const useRfiState = props => {
   ]);
 
   const returnObject = {
+    forceUpdatedPlan,
+    campusProgramHasChoice,
+    setCampusProgramHasChoice,
     degreeDataList,
     degreeData,
     showStepButtons: true,

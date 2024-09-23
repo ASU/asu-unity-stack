@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
 import { CAMPUS_OPTIONS_DEFAULT, KEY } from "../../../core/utils/constants";
@@ -12,11 +12,22 @@ export const CampusProgramHasChoice = ({ gaData }) => {
   const label = "Which applies to you?";
   const name = "CampusProgramHasChoice";
 
-  const { programOfInterest, degreeData } = useRfiContext();
+  const {
+    programOfInterest,
+    degreeData,
+    campusProgramHasChoice,
+    setCampusProgramHasChoice,
+  } = useRfiContext();
 
   const hasOnlineCampus =
-    degreeData?.campusCodes?.includes &&
-    degreeData.campusCodes.includes(KEY.ONLINE);
+    campusProgramHasChoice ||
+    (degreeData?.campusCodes?.includes &&
+      degreeData.campusCodes.includes(KEY.ONLINE));
+
+  useEffect(() => {
+    // Once true, it will always be true, even if other conditions change
+    setCampusProgramHasChoice(hasOnlineCampus || campusProgramHasChoice);
+  }, [degreeData?.campusCodes]);
 
   return (
     <>
