@@ -4,6 +4,11 @@ import { AsuRfi } from "..";
 import { DATA_SOURCE, KEY } from "../../core/utils/constants";
 import { defaultArgs, Template } from "./story.helper";
 
+/**
+ * Add/Remove Codes as needed that have certain behavoirs
+ * NHNTRBS - rfiDisplay:false - campus:ground & Online
+ */
+
 export default {
   title: "UDS/Testing",
   component: AsuRfi,

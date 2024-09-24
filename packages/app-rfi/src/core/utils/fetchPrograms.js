@@ -48,6 +48,7 @@ function getServiceUrl({
       `&include=campusesOffered` +
       `&include=planCategories` +
       `&include=degreeType` +
+      `&include=rfiDisplay` +
       `&include=applicationDeadlines` +
       ``;
     return serviceUrl;
@@ -82,6 +83,7 @@ function getServiceUrl({
     `&include=degreeDescriptionLong` +
     `&include=campusesOffered` +
     `&include=planCategories` +
+    `&include=rfiDisplay` +
     `&include=degreeType` +
     ``;
 
