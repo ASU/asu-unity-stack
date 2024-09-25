@@ -234,7 +234,7 @@ export const useRfiState = props => {
 
   // ERFI-159 Do not render if a programOfInterest prop has rfiDisplay = false
   // 'showForm' will allow the root '/AsuRfi/index.js` to exit before rendering
-  if (props.programOfInterest && !degreeData?.rfiDisplay) {
+  if (props.programOfInterest && degreeData.rfiDisplay === false) {
     returnObject.showForm = false;
     return returnObject;
   }
