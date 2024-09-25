@@ -30,6 +30,16 @@ function getServiceUrl({
   let serviceUrl;
   let parameter = "";
 
+  const includeFields = [
+    "acadPlanMarketingDescription",
+    "degreeDescriptionLong",
+    "campusesOffered",
+    "planCategories",
+    "rfiDisplay",
+    "degreeType",
+    // "applicationDeadlines", // This can double the response size
+  ].map(term => `include=${term}`).join("&");
+
   // ASUOnline API
   if (Campus === KEY.ONLINE) {
     parameter +=
@@ -42,14 +52,8 @@ function getServiceUrl({
 
   if (Interest2) {
     serviceUrl =
-      `${dataSourceDegreeSearch}/acad-plan/${Interest2}` +
-      `?include=acadPlanMarketingDescription` +
-      `&include=degreeDescriptionLong` +
-      `&include=campusesOffered` +
-      `&include=planCategories` +
-      `&include=degreeType` +
-      `&include=applicationDeadlines` +
-      ``;
+      `${dataSourceDegreeSearch}/acad-plan/${Interest2}?` +
+      `include=applicationDeadlines${includeFields}`
     return serviceUrl;
   }
 
@@ -75,15 +79,8 @@ function getServiceUrl({
   );
 
   serviceUrl =
-    `${dataSourceDegreeSearch}/acad-plans` +
-    `?filter=activeInDegreeSearch` +
-    `${parameter}` +
-    `&include=acadPlanMarketingDescription` +
-    `&include=degreeDescriptionLong` +
-    `&include=campusesOffered` +
-    `&include=planCategories` +
-    `&include=degreeType` +
-    ``;
+    `${dataSourceDegreeSearch}/acad-plans?filter=activeInDegreeSearch` +
+    `${parameter}&${includeFields}`;
 
   return serviceUrl;
 }
