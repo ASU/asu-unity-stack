@@ -69,7 +69,11 @@ const AsuRfi = props => {
   }
 
   const rfiState = useRfiState(betterPropNames(props));
-  window["rfiState"] = rfiState;
+
+  if (!rfiState.showForm) {
+    return <></>;
+  }
+
   return (
     <RfiContext.Provider
       value={{
