@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.14.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.14.1...@asu/unity-bootstrap-theme-v1.14.2) (2024-09-23)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix padding in image background with cta ([49e29fa](https://github.com/ASU/asu-unity-stack/commit/49e29fab71c1bf1e66578f64f8901f2aa9cca205))
+
 # [@asu/unity-bootstrap-theme-v1.14.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.14.0...@asu/unity-bootstrap-theme-v1.14.1) (2024-09-04)
 
 
