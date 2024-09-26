@@ -1,6 +1,6 @@
 import { defineConfig, transformWithEsbuild } from "vite";
 import { resolve } from "path";
-import { readdirSync } from "fs";
+import { readdirSync, existsSync } from "fs";
 import react from "@vitejs/plugin-react";
 import pkg from "./package.json";
 
@@ -20,10 +20,23 @@ function getComponentEntries() {
     if (file.endsWith(".js")) return;
     if (componentsToIgnore.some(component => file.includes(component))) return;
     const name = file.replace(/\.[^/.]+$/, "");
-    entries.push({
-      location: resolve(componentsDir, `${name}/${name}.jsx`),
-      name,
-    });
+    let location = resolve(componentsDir, `${name}/${name}.jsx`)
+    if (!existsSync(location)) {
+      location = resolve(componentsDir, `${name}/${name}.tsx`)
+    }
+    if (existsSync(location)) {
+      entries.push({
+        location,
+        name,
+      });
+    } else {
+      console.log(`
+
+        ${name} - ${location} Was not added to entries!
+
+
+        `);
+    }
   });
   return entries;
 };

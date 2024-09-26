@@ -1,35 +1,27 @@
-import { render, cleanup } from "@testing-library/react";
+import { render, cleanup, RenderResult } from "@testing-library/react";
 import React from "react";
+import { expect, describe, it, afterEach, beforeEach } from 'vitest';
 
-import {{properCase componentName}} from "./{{properCase componentName}}";
+import { CustomPropType, {{properCase componentName}}, {{properCase componentName}}Props } from "./{{properCase componentName}}";
 
-const defaultProps = {
-  title: "Title",
-  customProp: "Story 1",
-  children: "text",
+const defaultProps: {{properCase componentName}}Props = {
+  title: "Header",
+  customProp: CustomPropType.GR,
+  children: "Content",
 };
 
-const renderComponent = props => {
+const renderComponent = (props:{{properCase componentName}}Props) => {
   return render(<{{properCase componentName}} {...props} />);
 };
 
 describe("{{properCase componentName}} tests", () => {
-  /** @type {import("@testing-library/react").RenderResult} */
-  let component;
+  let component:RenderResult;
 
   beforeEach(() => {
     component = renderComponent(defaultProps);
   });
 
   afterEach(cleanup);
-
-  it("calls x when y", () => {
-    expect(1).toBe(1);
-  });
-
-  it("should do  x when y", () => {
-    expect(2).toBe(2);
-  });
 
   it("should define component", () => {
     expect(component).toBeDefined();

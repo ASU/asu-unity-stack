@@ -7,7 +7,8 @@ export default {
 };
 
 const defaultProps = {
-  customProp: "Story 1"
+  title: "Header",
+  children: "Content",
 }
 
 const {{camelCase componentName}}Template = args => <{{properCase componentName}} {...args} />;
@@ -23,11 +24,11 @@ export const Overview = {
 export const Story2 = {
   render: args => {
     return <div>
-        <{{properCase componentName}} {...args} />;
+        <{{properCase componentName}} {...args} />
       </div>
   },
   args: {
     ...defaultProps,
-    customProp: "Story 2"
+    children: <p>paragraph</p>
   }
 };

@@ -2,9 +2,8 @@
 
 /**
  * @typedef {Object} {{properCase componentName}}Props
- * @property {JSX.Element | JSX.Element[]} children
  * @property {string} title
- * @property {string} customProp
+ * @property {JSX.Element | JSX.Element[] | string} children
  */
 
 /**
