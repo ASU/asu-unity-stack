@@ -2,10 +2,11 @@
 // @ts-check
 import { render, fireEvent, cleanup } from "@testing-library/react";
 import React from "react";
+import { expect, describe, it, afterEach, beforeEach, vi } from "vitest";
 
 import { ButtonIconOnly } from "./ButtonIconOnly";
 
-const buttonOnClick = jest.fn();
+const buttonOnClick = vi.fn();
 
 const defaultArgs = {
   color: "white",
