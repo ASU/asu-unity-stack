@@ -5,7 +5,7 @@ import React from "react";
 import { Pagination } from "./Pagination";
 
 export default {
-  title: "UDS/Pagination",
+  title: "Pagination",
   component: Pagination,
   parameters: {
     docs: {

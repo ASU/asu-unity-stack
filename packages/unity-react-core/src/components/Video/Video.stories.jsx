@@ -12,7 +12,7 @@ import { Video } from "./Video";
  */
 export default {
   component: Video,
-  title: "UDS/Video",
+  title: "Video",
   parameters: {
     docs: {
       description: {

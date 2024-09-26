@@ -4,7 +4,7 @@ import { MemoryRouter } from "react-router-dom";
 import { TabbedPanels, Tab } from "./TabbedPanels";
 
 export default {
-  title: "UDS/TabbedPanels",
+  title: "TabbedPanels",
   component: TabbedPanels,
 };
 

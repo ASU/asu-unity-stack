@@ -10,7 +10,7 @@ import { Hero } from "./Hero";
 
 export default {
   component: Hero,
-  title: "UDS/Heroes",
+  title: "Heroes",
   parameters: {
     docs: {
       description: {

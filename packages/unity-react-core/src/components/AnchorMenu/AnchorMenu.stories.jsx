@@ -5,7 +5,7 @@ import React from "react";
 import { AnchorMenu } from "./AnchorMenu";
 
 export default {
-  title: "UDS/AnchorMenu",
+  title: "AnchorMenu",
   component: AnchorMenu,
   excludeStories: ["Containers"],
   parameters: {
