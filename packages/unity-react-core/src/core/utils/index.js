@@ -16,6 +16,7 @@ import {
   initImageCarousel,
   initImageGalleryCarousel,
 } from "../../components/ComponentCarousel/ComponentCarousel";
+import { Divider } from "../../components/Divider/Divider.tsx";
 import { Hero } from "../../components/Hero/Hero";
 import { Image } from "../../components/Image/Image";
 import { Pagination } from "../../components/Pagination/Pagination";
@@ -123,6 +124,12 @@ export const initVideo = ({ targetSelector, props }) =>
  */
 export const initTabbedPanels = ({ targetSelector, props }) =>
   RenderReact(TabbedPanels, props, document.querySelector(targetSelector));
+
+/**
+  * @param {ComponentProps} props
+  */
+export const initDivider = ({ targetSelector, props }) =>
+  RenderReact(Divider, props, document.querySelector(targetSelector));
 
 export {
   initCardCarousel,
