@@ -27,27 +27,24 @@ const renderAnchorMenu = props => {
   );
 };
 
-describe("#Anchor Menu", () => {
+describe.skip("#Anchor Menu", () => {
   /** @type {import("@testing-library/react").RenderResult} */
   let component;
 
-  // beforeEach(() => {
-  //   Object.defineProperty(window, "scrollTo", { value: spyScrollTo });
-  //   component = renderAnchorMenu(defaultArgs);
-  // });
-  // afterEach(cleanup);
-  it("TODO", () => {
-    expect(true);
+  beforeEach(() => {
+    Object.defineProperty(window, "scrollTo", { value: spyScrollTo });
+    component = renderAnchorMenu(defaultArgs);
+  });
+  afterEach(cleanup);
+
+  it("should define the component", () => {
+    expect(screen.getAllByRole("anchor-menu-container")).toBeDefined();
   });
 
-  // it("should define the component", () => {
-  //   expect(screen.getAllByRole("anchor-menu-container")).toBeDefined();
-  // });
-
-  // it("should scroll to the section specified", async () => {
-  //   const itemExample = "first-container";
-  //   const anchor = await component.findByTestId(`anchor-item-${itemExample}`);
-  //   fireEvent.click(anchor);
-  //   expect(spyScrollTo).toHaveBeenCalled();
-  // });
+  it("should scroll to the section specified", async () => {
+    const itemExample = "first-container";
+    const anchor = await component.findByTestId(`anchor-item-${itemExample}`);
+    fireEvent.click(anchor);
+    expect(spyScrollTo).toHaveBeenCalled();
+  });
 });

@@ -16,6 +16,7 @@ const defaultArgs = {
     },
   },
   imageSource: "https://placeimg.com/400/400/any",
+  imageAltText: "describe the image",
 };
 
 const renderTestimonial = props => {

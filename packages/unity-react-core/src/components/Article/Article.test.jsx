@@ -20,17 +20,14 @@ const defaultArgs = {
   breadcrumbs: [
     {
       title: "Home",
-      key: "home",
       url: "/",
     },
     {
       title: "Second nav item",
-      key: "events",
       url: "/events",
     },
     {
       title: "Current page",
-      key: "current",
       url: "/events/current-article",
       active: true,
     },

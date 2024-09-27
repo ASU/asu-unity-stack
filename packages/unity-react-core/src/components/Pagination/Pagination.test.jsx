@@ -21,7 +21,7 @@ const renderPagination = props => {
   return render(<Pagination {...{ ...props }} />, {});
 };
 
-describe("#Pagination", async () => {
+describe("#Pagination", () => {
   /** @type {import("@testing-library/react").RenderResult} */
   let component;
 
@@ -60,7 +60,7 @@ describe("#Pagination", async () => {
   });
 });
 
-describe("#Pagination variations", async () => {
+describe("#Pagination variations", () => {
   it("should set active currentPage", async () => {
     const currentPage = 3;
     const props = {
