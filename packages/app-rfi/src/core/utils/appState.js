@@ -222,6 +222,7 @@ export const useRfiState = props => {
     setCampusProgramHasChoice,
     degreeDataList,
     degreeData,
+    showForm: true,
     showStepButtons: true,
     props,
     formik,
@@ -230,6 +231,13 @@ export const useRfiState = props => {
     totalSteps,
     stepNumber,
   };
+
+  // ERFI-159 Do not render if a programOfInterest prop has rfiDisplay = false
+  // 'showForm' will allow the root '/AsuRfi/index.js` to exit before rendering
+  if (props.programOfInterest && degreeData.rfiDisplay === false) {
+    returnObject.showForm = false;
+    return returnObject;
+  }
 
   // ERFI-58 Always show CertInfo page if prop is true
   if (isCertMinor) {

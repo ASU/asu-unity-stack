@@ -12,6 +12,7 @@
  * @prop {string[]} planCategories
  * @prop {[{strm: string, strmDescription: string}]} [applicationDeadlines]
  * @prop {string} title
+ * @prop {boolean} rfiDisplay
  */
 
 import { KEY } from "./constants";
@@ -68,6 +69,9 @@ export const normalizeDegreeData = data => {
 
         // curr.acadPlanMarketingDescription string
         title: curr.acadPlanMarketingDescription,
+
+        // should program be included in results
+        rfiDisplay: curr.rfiDisplay,
       };
       acc.push(p);
     }
@@ -106,6 +110,9 @@ export const normalizeDegreeData = data => {
 
         // Already formated title (BS)
         title: curr.title,
+
+        // Online Api does not have this field so we are going to always set it to true
+        rfiDisplay: true,
       };
       acc.push(p);
     }

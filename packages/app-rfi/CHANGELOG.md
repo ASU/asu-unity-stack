@@ -1,3 +1,12 @@
+# [@asu/app-rfi-v2.4.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.13...@asu/app-rfi-v2.4.0) (2024-09-25)
+
+
+### Features
+
+* **app-rfi:** only display plan if rfiDisplay true ([2527a58](https://github.com/asu/asu-unity-stack/commit/2527a58c7a2c9204044df013256d1a97321d6a65))
+* **app-rfi:** RFI form not displayed message ([0dfe49c](https://github.com/asu/asu-unity-stack/commit/0dfe49cfabbb9ca07290a5ccef6c47cd656d0b20))
+* **app-rfi:** rfiDisplay false renders blank ([9f1983a](https://github.com/asu/asu-unity-stack/commit/9f1983ad9db7dc62f94d8aa73e348b64490e9c79))
+
 # [@asu/app-rfi-v2.3.13](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.12...@asu/app-rfi-v2.3.13) (2024-09-11)
 
 
