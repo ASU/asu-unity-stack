@@ -160,6 +160,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
       }
     } else if (e.type === "click" && link.items) {
       e.preventDefault();
+      dispatchGAEvent();
       setItemOpened();
     } else if (e.type === "click") {
       dispatchGAEvent();
