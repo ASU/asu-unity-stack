@@ -49,6 +49,7 @@
     "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "devDependencies": {
+    "@asu/lib": "*",
     "@asu/unity-bootstrap-theme": "^1.0.0",
     "@babel/cli": "^7.19.3",
     "@babel/core": "^7.21.3",

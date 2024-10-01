@@ -1,10 +1,10 @@
-// @ts-check
-/* eslint react/jsx-props-no-spreading: "off" */
+
 import classNames from "classnames";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { FC } from "react";
 
-import { trackGAEvent } from "../../../../../shared";
+import { trackGAEvent } from "@asu/lib";
+import { ButtonProps } from "src/core/types/shared-types";
 
 const gaDefaultObject = {
   name: "onclick",
@@ -14,15 +14,7 @@ const gaDefaultObject = {
   region: "main content",
 };
 
-/**
- * @typedef {import('../../core/types/shared-types').ButtonProps} ButtonProps
- */
-
-/**
- * @param {ButtonProps} props
- * @returns {JSX.Element}
- */
-export const Button = ({
+export const Button:FC<ButtonProps> = ({
   label,
   cardTitle,
   ariaLabel,
@@ -52,7 +44,7 @@ export const Button = ({
     Tag = "a";
   }
 
-  const handleClick = text => {
+  const handleClick = (text:string) => {
     trackGAEvent({ ...gaDefaultObject, text, section: cardTitle });
     onClick?.();
   };
