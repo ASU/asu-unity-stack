@@ -1,4 +1,4 @@
 export * from "./hooks";
 export * from "./utils";
 export * from "./services/googleAnalytics";
-export * from "./services/componentDatalayer";
+export { default as trackReactComponent } from "./services/componentDatalayer";
