@@ -9,7 +9,7 @@ import {
   throttle,
   trackGAEvent,
   useMediaQuery,
-} from "../../../../../shared";
+} from "@shared";
 import { Button } from "../Button/Button";
 import { AnchorMenuWrapper } from "./AnchorMenu.styles";
 

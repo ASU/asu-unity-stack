@@ -13,6 +13,9 @@
     "rootDir": "./src",
     "allowSyntheticDefaultImports": true,
     "plugins": [{ "name": "typescript-plugin-css-modules" }],
+    "paths": {
+      "@shared": ["./../../shared"],
+    }
   },
   "include": [
     "src/**/*",

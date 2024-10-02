@@ -1,6 +1,6 @@
 // @ts-check
 
-import { imageName } from "../../../../../../../shared/assets";
+import { imageName } from "../@shared/assets";
 
 /**
  * @typedef {import('./TestimonialCarousel').TestimonialItem} TestimonialItem
