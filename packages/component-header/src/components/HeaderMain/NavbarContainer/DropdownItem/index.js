@@ -32,7 +32,6 @@ const ButtonItem = ({ link, dropdownName, handleLinkEvent }) => (
       href={link.href}
       onClick={e => handleLinkEvent(e, link)}
       onKeyDown={handleLinkEvent}
-      onFocus={() => trackGAEvent({ text: link.text, component: dropdownName })}
     />
   </li>
 );
