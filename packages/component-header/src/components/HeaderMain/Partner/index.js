@@ -44,7 +44,7 @@ const Partner = () => {
       </a>
       <a
         href={asuLogo?.brandLink ?? "https://asu.edu"}
-        onFocus={() => trackGAEvent({ text: "asu logo" })}
+        onClick={() => trackGAEvent({ text: "asu logo" })}
       >
         <img
           className="vert"

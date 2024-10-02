@@ -55,7 +55,7 @@ const Title = () => {
         <a
           className={`subunit-name ${active ? "active" : ""}`}
           href={baseUrl}
-          onFocus={() =>
+          onClick={() =>
             trackGAEvent({
               event: "link",
               action: "click",
@@ -83,7 +83,7 @@ const Title = () => {
       <a
         className={`title-subunit-name ${active ? "active" : ""}`}
         href={baseUrl}
-        onFocus={() => trackGAEvent({ text: title })}
+        onClick={() => trackGAEvent({ text: title })}
         title={`${title} home page`}
       >
         {title}
