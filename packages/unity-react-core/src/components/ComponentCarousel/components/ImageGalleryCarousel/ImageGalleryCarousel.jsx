@@ -20,7 +20,7 @@ const calculateHeightNeeded = (content, width) => {
   const charactersPerLine = width / 6;
 
   const linesNeeded =
-    parseInt(content.length / charactersPerLine, 10) + brCount;
+    parseInt(`${content.length / charactersPerLine}`, 10) + brCount;
 
   return linesNeeded * 20;
 };
@@ -56,6 +56,7 @@ const sharedProps = {
  * @ignore
  */
 const htmlTemplate = ({ id, imageSource, imageAltText }) => ({
+  // @ts-ignore
   id,
   item: (
     <div className="uds-img">
@@ -95,6 +96,7 @@ const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
   };
 
   useEffect(() => {
+    /** @type {HTMLElement} */
     const textArea = document.querySelector(
       `.image-gallery figcaption .uds-caption-text div`
     );
@@ -203,7 +205,6 @@ const ImageGalleryCarousel = ({
           instanceName={instanceName}
           hasContent={hasContent}
           imageItems={imageItems}
-          maxWidth={maxWidth}
         />
       )}
       removeSideBackground={imageItems.length <= 1}

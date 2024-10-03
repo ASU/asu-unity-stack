@@ -43,6 +43,7 @@ const htmlTemplate = (
   cardHorizontal,
   cardEventFormat
 ) => ({
+  // @ts-ignore
   id,
   item: (
     <Card
@@ -68,7 +69,7 @@ const htmlTemplate = (
  * @returns { JSX.Element }
  */
 const CardCarousel = ({
-  perView = 0,
+  perView: perViewProp = 0,
   cardItems,
   cardType = "default",
   cardEventFormat = "stack",
@@ -77,6 +78,7 @@ const CardCarousel = ({
   maxWidth = undefined,
   imageAutoSize = true,
 }) => {
+  const perView = parseInt(`${perViewProp}`);
   const carouselItems = cardItems.map(item =>
     htmlTemplate(item, cardType, cardHorizontal, cardEventFormat)
   );

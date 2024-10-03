@@ -1,17 +1,28 @@
 {
-  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "moduleResolution": "bundler",
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM"],
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "resolveJsonModule": true,
+    "isolatedModules": true,
     "allowImportingTsExtensions": true,
-    "noEmit": false,
-    "jsx": "react-jsx",
-    "emitDeclarationOnly":true,
+    // "noEmit": false,
+    "noEmit": true,
+    "jsx": "react",
+    // "jsx": "react-jsx",
+
+    // "moduleResolution": "bundler",
+    "moduleResolution": "Node",
+    // "emitDeclarationOnly":true,
     "module": "ESNext",
     "declaration": true,
     "declarationDir": "dist/types",
     "sourceMap": true,
     "allowJs": true,
-    "rootDir": ".",
+    // "rootDir": ".",
     "allowSyntheticDefaultImports": true,
     "plugins": [{ "name": "typescript-plugin-css-modules" }],
     "paths": {

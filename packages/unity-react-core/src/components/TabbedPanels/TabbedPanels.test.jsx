@@ -13,10 +13,14 @@ const tabbedPanelsDefaultArgs = {
 const renderTabbedPanels = props => {
   return render(
     <TabbedPanels {...{ ...props }}>
-      <Tab id="one" title="One">
+      <Tab id="one"
+      // @ts-ignore
+      title="One">
         <div>One</div>
       </Tab>
-      <Tab id="two" title="Two">
+      <Tab id="two"
+      // @ts-ignore
+      title="Two">
         <div>Two</div>
       </Tab>
     </TabbedPanels>

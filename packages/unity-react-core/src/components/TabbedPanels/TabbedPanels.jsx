@@ -1,4 +1,4 @@
-// @ts-check
+
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 

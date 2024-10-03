@@ -31,6 +31,7 @@ const htmlTemplate = (
   { id, imageSource, imageAltText, quote },
   itemStyle = {}
 ) => ({
+  // @ts-ignore
   id,
   item: (
     <Testimonial
