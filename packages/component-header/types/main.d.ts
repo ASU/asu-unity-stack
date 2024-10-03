@@ -14,7 +14,7 @@ export interface Button {
   text: string;
   classes?: string;
   onClick?: () => void;
-  onFocus?: () => void;
+  onClick?: () => void;
 }
 
 export interface NavTreeProps {

@@ -18,7 +18,7 @@
  * @property {string} text
  * @property {string} [classes]
  * @property {function} [onClick]
- * @property {function} [onFocus]
+ * @property {function} [onClick]
  */
 
 /**

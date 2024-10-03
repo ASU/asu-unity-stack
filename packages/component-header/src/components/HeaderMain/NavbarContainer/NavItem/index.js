@@ -118,7 +118,10 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
   };
 
   const handleKeyDown = e => {
-    if (!link.items && link.href) return;
+    if (!link.items && link.href) {
+      trackGAEvent({ ...LINK_DEFAULT_PROPS, text: link.text });
+      return;
+    }
     const { key } = e;
     const navigableKeys = [
       "ArrowUp",
@@ -160,6 +163,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
       }
     } else if (e.type === "click" && link.items) {
       e.preventDefault();
+      dispatchGAEvent();
       setItemOpened();
     } else if (e.type === "click") {
       dispatchGAEvent();
