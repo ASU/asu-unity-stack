@@ -21,7 +21,7 @@ export const RfiStepperButtons = ({
   totalSteps,
   step,
   handleBack,
-  formik: { isSubmitting },
+  formik: { submitCount },
 }) => {
   return (
     <>
@@ -83,7 +83,7 @@ export const RfiStepperButtons = ({
               <Button
                 type="submit"
                 className="rfi-submit btn btn-primary"
-                disabled={!!isSubmitting}
+                disabled={submitCount > 0}
                 onClick={() =>
                   trackGAEvent({
                     action: "click",
