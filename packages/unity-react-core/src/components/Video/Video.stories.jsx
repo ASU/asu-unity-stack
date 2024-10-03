@@ -11,8 +11,8 @@ import { Video } from "./Video";
  * @typedef {import('./Video').VideoProps} VideoProps
  */
 export default {
+  title: "Components/Video",
   component: Video,
-  title: "Video",
   parameters: {
     docs: {
       description: {

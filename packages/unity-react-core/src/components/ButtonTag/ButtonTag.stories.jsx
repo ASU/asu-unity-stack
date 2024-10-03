@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 import { ButtonTag } from "./ButtonTag";
 
 export default {
-  title: "ButtonTag",
+  title: "Components/ButtonTag",
   component: ButtonTag,
   parameters: {
     docs: {

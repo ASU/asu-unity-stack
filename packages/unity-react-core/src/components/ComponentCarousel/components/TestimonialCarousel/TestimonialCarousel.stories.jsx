@@ -12,8 +12,8 @@ import {
 import { TestimonialCarousel } from "./TestimonialCarousel";
 
 export default {
+  title: "Components/Testimonial Carousel",
   component: TestimonialCarousel,
-  title: "Testimonial Carousel",
   args: {
     itemColor: "None",
     itemTitleColor: "None",
@@ -93,7 +93,7 @@ export default {
  * itemTitleColor: Array,
  * itemQuoteColor: Array,
  * backgroundColor: Array,
- * testimonial: import(".").TestimonialItem[],
+ * testimonial: import("./TestimonialCarousel").TestimonialItem[],
  * hasNavButtons: boolean,
  * hasPositionIndicators: boolean,
  * }} props

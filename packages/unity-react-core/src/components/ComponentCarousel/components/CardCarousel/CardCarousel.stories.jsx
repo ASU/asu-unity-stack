@@ -7,8 +7,8 @@ import { cardCarouselItems } from "../../../../../__mocks__/data/props-mock";
 import { CardCarousel } from "./CardCarousel";
 
 export default {
+  title: "Components/Card Carousel",
   component: CardCarousel,
-  title: "Card Carousel",
   parameters: { controls: { disable: true } },
 };
 

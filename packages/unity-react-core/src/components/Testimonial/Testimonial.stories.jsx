@@ -5,7 +5,7 @@ import React from "react";
 import { Testimonial } from "./Testimonial";
 
 export default {
-  title: "Testimonial",
+  title: "Components/Testimonial",
   component: Testimonial,
   decorators: [
     (Story, context) => {

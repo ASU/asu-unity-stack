@@ -9,8 +9,8 @@ import { Hero } from "./Hero";
  */
 
 export default {
+  title: "Components/Heroes",
   component: Hero,
-  title: "Heroes",
   parameters: {
     docs: {
       description: {

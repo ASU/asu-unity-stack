@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 import { Button } from "./Button";
 
 export default {
-  title: "Button",
+  title: "Components/Button",
   component: Button,
   parameters: {
     docs: {
