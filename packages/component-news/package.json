@@ -91,6 +91,7 @@
     "storybook-addon-mock": "^4.3.0",
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^5.1.1",
+    "vite": "^5.3.5",
     "webpack-filter-warnings-plugin": "^1.2.1",
     "webpack-merge": "^5.8.0"
   },
