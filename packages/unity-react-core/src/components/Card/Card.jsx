@@ -1,5 +1,5 @@
 // @ts-check
-import { trackGAEvent, sanitizeDangerousMarkup } from "@shared";
+import { trackGAEvent, sanitizeDangerousMarkup } from "./../../../../../shared";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";

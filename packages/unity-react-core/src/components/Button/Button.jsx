@@ -1,6 +1,6 @@
 // @ts-check
 /* eslint react/jsx-props-no-spreading: "off" */
-import { trackGAEvent } from "@shared";
+import { trackGAEvent } from "./../../../../../shared";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";

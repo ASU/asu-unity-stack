@@ -1,5 +1,5 @@
 // @ts-check
-import { trackGAEvent } from "@shared";
+import { trackGAEvent } from "./../../../../../shared";
 import React from "react";
 import styled from "styled-components";
 

@@ -1,4 +1,4 @@
-import { imageArray } from "@shared/assets";
+import { imageArray } from "./../../../../shared/assets";
 import { testimonialWithImage } from "../../src/components/ComponentCarousel/components/TestimonialCarousel/examples";
 
 const getImageFormat = index => imageArray[index];

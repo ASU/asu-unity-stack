@@ -1,4 +1,4 @@
-import { trackGAEvent } from "@shared";
+import { trackGAEvent } from "./../../../../../shared";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 

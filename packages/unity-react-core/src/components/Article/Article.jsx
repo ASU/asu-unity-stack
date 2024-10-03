@@ -1,5 +1,5 @@
 // @ts-check
-import { sanitizeDangerousMarkup } from "@shared";
+import { sanitizeDangerousMarkup } from "./../../../../../shared";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";

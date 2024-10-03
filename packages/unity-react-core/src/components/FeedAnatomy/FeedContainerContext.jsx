@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 // @ts-check
-import { useFetch } from "@shared";
+import { useFetch } from "./../../../../../shared";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, createContext } from "react";
 import styled from "styled-components";

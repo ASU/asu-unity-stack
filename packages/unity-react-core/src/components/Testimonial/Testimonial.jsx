@@ -1,6 +1,6 @@
 /* eslint-disable react/require-default-props */
 // @ts-check
-import { spreadClasses } from "@shared";
+import { spreadClasses } from "./../../../../../shared";
 import PropTypes from "prop-types";
 import React from "react";
 
