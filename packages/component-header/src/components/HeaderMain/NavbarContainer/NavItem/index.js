@@ -121,7 +121,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
     if (!link.items && link.href) {
       trackGAEvent({ ...LINK_DEFAULT_PROPS, text: link.text });
       return;
-    };
+    }
     const { key } = e;
     const navigableKeys = [
       "ArrowUp",

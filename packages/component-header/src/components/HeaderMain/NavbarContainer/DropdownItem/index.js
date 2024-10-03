@@ -53,7 +53,6 @@ const LinkItem = ({ link, dropdownName, handleLinkEvent }) => (
       href={link.href}
       onClick={e => handleLinkEvent(e, link)}
       onKeyDown={e => handleLinkEvent(e, link)}
-      onClick={() => trackGAEvent({ text: link.text, component: dropdownName })}
     >
       {link.text}
     </a>

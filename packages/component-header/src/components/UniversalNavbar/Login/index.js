@@ -45,7 +45,7 @@ const Login = () => {
                 ...DEFAULT_GA_EVENT,
                 text: "sign out",
               });
-              onLogoutClick?.(e)
+              onLogoutClick?.(e);
             }}
           >
             Sign Out
@@ -58,8 +58,8 @@ const Login = () => {
             trackGAEvent({
               ...DEFAULT_GA_EVENT,
               text: "sign in",
-            })
-            onLoginClick?.(e)
+            });
+            onLoginClick?.(e);
           }}
         >
           Sign In

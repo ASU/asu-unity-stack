@@ -9,12 +9,12 @@ import { Search } from "./Search";
 
 const DEFAULT_GA_EVENT = {
   event: "link",
-action: "click",
-name: "onclick",
-region: "navbar",
-type: "internal link",
-section: "topbar",
-text: ""
+  action: "click",
+  name: "onclick",
+  region: "navbar",
+  type: "internal link",
+  section: "topbar",
+  text: "",
 };
 
 const UniversalNavbar = () => {
@@ -28,7 +28,7 @@ const UniversalNavbar = () => {
       console.error(error);
       return "";
     }
-  };
+  }
 
   const universalNavLinks = [
     {
@@ -49,7 +49,7 @@ const UniversalNavbar = () => {
     {
       className: "nav-link",
       href: "https://my.asu.edu",
-      text: "My ASU"
+      text: "My ASU",
     },
     {
       className: "nav-link",
