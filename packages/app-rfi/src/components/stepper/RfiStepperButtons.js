@@ -117,6 +117,6 @@ RfiStepperButtons.propTypes = {
   }),
   handleBack: PropTypes.func.isRequired,
   formik: PropTypes.shape({
-    submitCount: PropTypes.bool.isRequired,
+    submitCount: PropTypes.number.isRequired,
   }),
 };
