@@ -83,7 +83,17 @@ const Title = () => {
       <a
         className={`title-subunit-name ${active ? "active" : ""}`}
         href={baseUrl}
-        onClick={() => trackGAEvent({ text: title })}
+        onClick={() =>
+          trackGAEvent({
+            event: "link",
+            action: "click",
+            name: "onclick",
+            region: "navbar",
+            type: "internal link",
+            section: "main navbar",
+            text: title,
+          })
+        }
         title={`${title} home page`}
       >
         {title}
