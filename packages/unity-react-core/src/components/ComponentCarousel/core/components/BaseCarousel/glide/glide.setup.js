@@ -234,7 +234,7 @@ function setupCaroarousel({
   // Attatch event listener and instruct slide to go left and right
   /** @type {HTMLElement} */
   let gliderElement = document.querySelector(`#${instanceName}`);
-  gliderElement.addEventListener("keyup", (event) => {
+  gliderElement.addEventListener("keyup", event => {
     /** @type {KeyboardEventInit} */
     const e = event;
     if (e.keyCode === 39) {

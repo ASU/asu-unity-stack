@@ -78,7 +78,7 @@ const CardCarousel = ({
   maxWidth = undefined,
   imageAutoSize = true,
 }) => {
-  const perView = parseInt(`${perViewProp}`);
+  const perView = parseInt(`${perViewProp}`, 10);
   const carouselItems = cardItems.map(item =>
     htmlTemplate(item, cardType, cardHorizontal, cardEventFormat)
   );

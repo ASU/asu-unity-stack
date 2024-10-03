@@ -69,7 +69,7 @@ const ImageCarousel = ({
   maxWidth = undefined,
   imageAutoSize = true,
 }) => {
-  const perView = parseInt(`${perViewProp}`);
+  const perView = parseInt(`${perViewProp}`, 10);
   const carouselItems = imageItems.map(htmlTemplate);
   const activateGlideActions = imageItems.length > perView;
 

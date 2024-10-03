@@ -1,9 +1,9 @@
 // @ts-check
+import { createRange, iff, trackGAEvent } from "@shared";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 
-import { createRange, iff, trackGAEvent } from "@shared";
 import { PageItem } from "./PageItem/PageItem";
 
 const defaultGAEvent = {

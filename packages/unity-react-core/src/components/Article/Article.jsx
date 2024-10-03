@@ -1,4 +1,5 @@
 // @ts-check
+import { sanitizeDangerousMarkup } from "@shared";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
@@ -14,7 +15,6 @@ import {
 } from "react-share";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 
-import { sanitizeDangerousMarkup } from "@shared";
 import { Button } from "../Button/Button";
 import { Wrapper, EventInfoWrapper } from "./Article.styles";
 

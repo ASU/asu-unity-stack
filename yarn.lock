@@ -614,6 +614,7 @@ __metadata:
     classnames: "npm:^2.2.6"
     css-loader: "npm:^5.2.0"
     date-fns: "npm:^2.19.0"
+    eslint: "npm:^8.37.0"
     eslint-plugin-storybook: "npm:^0.6.15"
     file-loader: "npm:^6.2.0"
     glob: "npm:^7.1.6"

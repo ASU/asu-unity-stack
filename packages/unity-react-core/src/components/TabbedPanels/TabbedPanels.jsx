@@ -1,8 +1,7 @@
-
+import { trackGAEvent } from "@shared";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
-import { trackGAEvent } from "@shared";
 import { NavControls, TabHeader } from "./components";
 
 function useRefs() {

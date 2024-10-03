@@ -1,9 +1,9 @@
 /* eslint-disable react/require-default-props */
 // @ts-check
+import { spreadClasses } from "@shared";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { spreadClasses } from "@shared";
 // eslint-disable-next-line import/no-cycle
 import { Image } from "../Image/Image";
 

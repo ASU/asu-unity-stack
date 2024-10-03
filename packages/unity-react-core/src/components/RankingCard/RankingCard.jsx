@@ -1,8 +1,8 @@
+import { trackGAEvent, sanitizeDangerousMarkup } from "@shared";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
-import { trackGAEvent, sanitizeDangerousMarkup } from "@shared";
 // eslint-disable-next-line import/no-cycle
 import { Image } from "../Image/Image";
 
