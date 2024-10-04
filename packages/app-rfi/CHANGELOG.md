@@ -1,3 +1,14 @@
+# [@asu/app-rfi-v2.4.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.4.0...@asu/app-rfi-v2.4.1) (2024-10-04)
+
+
+### Bug Fixes
+
+* **app-rfi:** account for steps counting as submits ([24abdfd](https://github.com/asu/asu-unity-stack/commit/24abdfd02e83d493ce935509ae152124263bb27a))
+* **app-rfi:** get prop type right ([2192fd9](https://github.com/asu/asu-unity-stack/commit/2192fd95057792ce29e7ed930c1021d960cfab5b))
+* **app-rfi:** missing prop update ([57855a8](https://github.com/asu/asu-unity-stack/commit/57855a8b45b7e31a230e0ffd1ed6251a6cce149c))
+* **app-rfi:** remove timeout for testing. add prop definition. linting fixes ([ad7bd44](https://github.com/asu/asu-unity-stack/commit/ad7bd44ed0f49a4f7f78d638d897b1f0806cb7ca))
+* **app-rfi:** use submitCount to prevent dupes ([09274ae](https://github.com/asu/asu-unity-stack/commit/09274ae2634c1758ddff094e9552aa420fb298a9))
+
 # [@asu/app-rfi-v2.4.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.13...@asu/app-rfi-v2.4.0) (2024-09-25)
 
 
