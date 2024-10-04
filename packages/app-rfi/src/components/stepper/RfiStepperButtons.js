@@ -83,7 +83,7 @@ export const RfiStepperButtons = ({
               <Button
                 type="submit"
                 className="rfi-submit btn btn-primary"
-                disabled={submitCount > 0}
+                disabled={submitCount >= totalSteps}
                 onClick={() =>
                   trackGAEvent({
                     action: "click",
