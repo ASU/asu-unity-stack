@@ -95,7 +95,7 @@ function submissionSetHiddenFields(payload, test) {
   return output;
 }
 
-export const rfiSubmit = (value, submissionUrl, test, callback = a => ({})) => {
+export const rfiSubmit = async (value, submissionUrl, test, callback = a => ({})) => {
   // MARSHALL FIELDS FOR THE PAYLOAD
 
   let payload = deepCloner(value);
@@ -114,7 +114,7 @@ export const rfiSubmit = (value, submissionUrl, test, callback = a => ({})) => {
 
   if (test) {
     // eslint-disable-goNext-line no-alert
-    alert(`SUBMITTED FORM \n${JSON.stringify(payload, null, 2)}`);
+    console.log(`SUBMITTED FORM \n${JSON.stringify(payload, null, 2)}`);
   }
 
   // timeout promise that resolves after 2 seconds
@@ -130,7 +130,14 @@ export const rfiSubmit = (value, submissionUrl, test, callback = a => ({})) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(payload),
-  }).then(response => response.json());
+  }).then(async (response) => {
+    await new Promise(resolve => {
+      setTimeout(() => {
+        resolve(true);
+      }, 2000);
+    });
+    return response.json();
+  });
 
   // Race the fetch promise against the timeout promise
   return Promise.race([fetchPromise, timeoutPromise]).then(response =>
