@@ -343,6 +343,57 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@asu/component-header-footer@workspace:packages/component-header-footer":
+  version: 0.0.0-use.local
+  resolution: "@asu/component-header-footer@workspace:packages/component-header-footer"
+  dependencies:
+    "@babel/core": "npm:^7.13.14"
+    "@babel/plugin-syntax-jsx": "npm:^7.14.5"
+    "@babel/plugin-transform-react-jsx": "npm:^7.13.12"
+    "@babel/plugin-transform-runtime": "npm:^7.14.5"
+    "@storybook/addon-a11y": "npm:^7.6.14"
+    "@storybook/addon-essentials": "npm:^7.6.14"
+    "@storybook/addon-links": "npm:^7.6.14"
+    "@storybook/react": "npm:^7.6.14"
+    "@storybook/react-webpack5": "npm:^7.6.14"
+    "@testing-library/jest-dom": "npm:^5.14.1"
+    "@testing-library/react": "npm:^12.0.0"
+    babel-loader: "npm:^8.2.2"
+    clean-webpack-plugin: "npm:^4.0.0-alpha.0"
+    copy-webpack-plugin: "npm:^9.0.1"
+    css-loader: "npm:^5.2.4"
+    dotenv-webpack: "npm:^7.0.3"
+    eslint-plugin-storybook: "npm:^0.6.15"
+    express: "npm:^4.17.1"
+    file-loader: "npm:^6.2.0"
+    html-webpack-plugin: "npm:^5.3.2"
+    http-proxy-middleware: "npm:^2.0.0"
+    jest: "npm:^26.6.3"
+    jest-image-snapshot: "npm:^4.4.1"
+    jest-transform-css: "npm:^6.0.1"
+    jest-transform-file: "npm:^1.1.1"
+    jsdom-screenshot: "npm:^4.0.0"
+    postcss-loader: "npm:^6.1.1"
+    prop-types: "npm:^15.7.2"
+    raw-loader: "npm:^4.0.2"
+    sass-loader: "npm:^11.1.0"
+    semantic-release: "npm:^17.4.2"
+    semantic-release-monorepo: "npm:^7.0.4"
+    storybook: "npm:^7.6.14"
+    style-loader: "npm:^2.0.0"
+    styled-components: "npm:^5.3.0"
+    terser-webpack-plugin: "npm:^5.1.1"
+    webpack-filter-warnings-plugin: "npm:^1.2.1"
+    webpack-merge: "npm:^5.8.0"
+  peerDependencies:
+    "@fortawesome/fontawesome-svg-core": ^6.4.2
+    "@fortawesome/free-solid-svg-icons": ^6.4.2
+    "@fortawesome/react-fontawesome": ^0.2.0
+    react: ">= 16.14.0 < 18"
+    react-dom: ">= 16.14.0 < 18"
+  languageName: unknown
+  linkType: soft
+
 "@asu/component-header@workspace:packages/component-header":
   version: 0.0.0-use.local
   resolution: "@asu/component-header@workspace:packages/component-header"
