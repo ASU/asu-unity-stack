@@ -87,6 +87,7 @@ export const useRfiState = props => {
   const [certMinorEmail, setCertMinorEmail] = useState("");
   const [degreeData, setDegreeData] = useState({});
   const [success, setSuccess] = useState();
+  const [rfiSubmitting, setRfiSubmitting] = useState(false);
 
   const goNext = values => {
     setSnapshot(values);
@@ -110,7 +111,11 @@ export const useRfiState = props => {
       await step.props.onSubmit(values, bag);
     }
     if (isLastStep) {
-      rfiSubmit(values, submissionUrl, test, () => setSuccess(true));
+      setRfiSubmitting(true);
+      rfiSubmit(values, submissionUrl, test, () => {
+        setRfiSubmitting(false);
+        setSuccess(true);
+      });
       return;
     }
     bag.setTouched({});
@@ -227,6 +232,7 @@ export const useRfiState = props => {
     props,
     formik,
     handleBack,
+    rfiSubmitting,
     step,
     totalSteps,
     stepNumber,
