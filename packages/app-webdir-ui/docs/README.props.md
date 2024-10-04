@@ -61,7 +61,7 @@
 ## FacultyRankTabPanels() : <code>Object</code>
 Prop types for FacultyRankTabPanels component.
 
-**Kind**: global function  
+**Kind**: global function
 **Properties**
 
 | Name | Type | Description |
@@ -87,8 +87,8 @@ Prop types for FacultyRankTabPanels component.
 ## ProfileCard(props) ⇒ <code>JSX.Element</code>
 React component for displaying a user's profile card.
 
-**Kind**: global function  
-**Returns**: <code>JSX.Element</code> - The ProfileCard component.  
+**Kind**: global function
+**Returns**: <code>JSX.Element</code> - The ProfileCard component.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -117,8 +117,8 @@ React component for displaying a user's profile card.
 ## ResultCard(props) ⇒ <code>JSX.Element</code>
 React component for displaying a search result card.
 
-**Kind**: global function  
-**Returns**: <code>JSX.Element</code> - The ResultCard component.  
+**Kind**: global function
+**Returns**: <code>JSX.Element</code> - The ResultCard component.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -140,8 +140,8 @@ React component for displaying a search result card.
 ## SearchPage(props) ⇒ <code>JSX.Element</code>
 React component for the ASU search page.
 
-**Kind**: global function  
-**Returns**: <code>JSX.Element</code> - The SearchPage component.  
+**Kind**: global function
+**Returns**: <code>JSX.Element</code> - The SearchPage component.
 
 | Param | Type | Description |
 | --- | --- | --- |

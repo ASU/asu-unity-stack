@@ -55,18 +55,47 @@ export const EntryTerm = ({ gaData }) => {
     // for the specific program.
 
     if (
-      degreeData.acadPlanCode &&
+      degreeData.acadPlanKey &&
       values.Campus !== KEY.ONLINE &&
       degreeData.degreeType === KEY.GR
     ) {
-      // Convert object to array so we can .sort and .map.
       const termData = degreeData.applicationDeadlines
         ?.sort((a, b) => (a.strm > b.strm ? 1 : -1))
-        .map(({ strm, strmDescription }, i) => ({
-          key: `${i}`,
-          value: strm,
-          text: strmDescription,
-        }));
+        /**
+         * if program is offered at more than one campus it is possible for each
+         * campus to duplicate the entry date. Since this list does not show the
+         * campus, we need to check and remove duplicate items.
+         *
+         * Example (item 1 and 3):
+         * "applicationDeadlines": [
+          {
+              "campus": "ONLNE",
+              "strm": "2251",
+              "strmDescription": "2025 Spring",
+              ...
+          },
+          {
+              "campus": "ONLNE",
+              "strm": "2257",
+              "strmDescription": "2025 Fall",
+              ...
+          },{
+              "campus": "TEMPE",
+              "strm": "2251",
+              "strmDescription": "2025 Spring",
+              ...
+          },
+         */
+        .reduce((result, { strm, strmDescription }) => {
+          if (!result.find(item => item.value === strm)) {
+            result.push({
+              key: `${strm}`,
+              value: strm,
+              text: strmDescription,
+            });
+          }
+          return result;
+        }, []);
       if (termData && termData.length > 0) {
         setTermOptions(termData);
       }

@@ -1,3 +1,53 @@
+# [@asu/app-rfi-v2.4.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.4.0...@asu/app-rfi-v2.4.1) (2024-10-04)
+
+
+### Bug Fixes
+
+* **app-rfi:** account for steps counting as submits ([24abdfd](https://github.com/asu/asu-unity-stack/commit/24abdfd02e83d493ce935509ae152124263bb27a))
+* **app-rfi:** get prop type right ([2192fd9](https://github.com/asu/asu-unity-stack/commit/2192fd95057792ce29e7ed930c1021d960cfab5b))
+* **app-rfi:** missing prop update ([57855a8](https://github.com/asu/asu-unity-stack/commit/57855a8b45b7e31a230e0ffd1ed6251a6cce149c))
+* **app-rfi:** remove timeout for testing. add prop definition. linting fixes ([ad7bd44](https://github.com/asu/asu-unity-stack/commit/ad7bd44ed0f49a4f7f78d638d897b1f0806cb7ca))
+* **app-rfi:** use submitCount to prevent dupes ([09274ae](https://github.com/asu/asu-unity-stack/commit/09274ae2634c1758ddff094e9552aa420fb298a9))
+
+# [@asu/app-rfi-v2.4.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.13...@asu/app-rfi-v2.4.0) (2024-09-25)
+
+
+### Features
+
+* **app-rfi:** only display plan if rfiDisplay true ([2527a58](https://github.com/asu/asu-unity-stack/commit/2527a58c7a2c9204044df013256d1a97321d6a65))
+* **app-rfi:** RFI form not displayed message ([0dfe49c](https://github.com/asu/asu-unity-stack/commit/0dfe49cfabbb9ca07290a5ccef6c47cd656d0b20))
+* **app-rfi:** rfiDisplay false renders blank ([9f1983a](https://github.com/asu/asu-unity-stack/commit/9f1983ad9db7dc62f94d8aa73e348b64490e9c79))
+
+# [@asu/app-rfi-v2.3.13](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.12...@asu/app-rfi-v2.3.13) (2024-09-11)
+
+
+### Bug Fixes
+
+* **app-rfi:** fix undefined error when program optional ([6ac3cae](https://github.com/asu/asu-unity-stack/commit/6ac3cae9ba7979174542db1f8fa53f586b1a091a))
+
+# [@asu/app-rfi-v2.3.12](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.11...@asu/app-rfi-v2.3.12) (2024-09-11)
+
+
+### Bug Fixes
+
+* **app-rfi:** campusProgram has choice update api if Campus changes ([083ad23](https://github.com/asu/asu-unity-stack/commit/083ad234e4291cb559f30d4aa6035c449c1e72ca))
+
+# [@asu/app-rfi-v2.3.11](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.10...@asu/app-rfi-v2.3.11) (2024-09-09)
+
+
+### Bug Fixes
+
+* **app-rfi:** Entry dates should not have dups ([a223aa3](https://github.com/asu/asu-unity-stack/commit/a223aa32cb2bf2699a3e2fa8b738240a0091c3a3))
+* **app-rfi:** programOfInterest required, unless optional prop ([ec1ca4c](https://github.com/asu/asu-unity-stack/commit/ec1ca4cdedaec84882cda5309addb857ff49a41c))
+
+# [@asu/app-rfi-v2.3.10](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.9...@asu/app-rfi-v2.3.10) (2024-09-04)
+
+
+### Bug Fixes
+
+* **app-rfi:** Update Military to radio button ([311f872](https://github.com/asu/asu-unity-stack/commit/311f872c0ec809f33a89a8ec1cdb0a8a2720cc28))
+* **app-rfi:** update plan title to use market description ([72be88b](https://github.com/asu/asu-unity-stack/commit/72be88bbc7d500a940e9480e75d57de3a46f5833))
+
 # [@asu/app-rfi-v2.3.9](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.3.8...@asu/app-rfi-v2.3.9) (2024-07-10)
 
 
