@@ -113,8 +113,7 @@ export const useRfiState = props => {
     if (isLastStep) {
       setRfiSubmitting(true);
       rfiSubmit(values, submissionUrl, test, () => {
-
-      setRfiSubmitting(false);
+        setRfiSubmitting(false);
         setSuccess(true);
       });
       return;

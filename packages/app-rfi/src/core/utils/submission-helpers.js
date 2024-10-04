@@ -1,7 +1,7 @@
 // @ts-check
+import { deepCloner } from "../../../../../shared/utils";
 import { KEY } from "./constants";
 import { pushDataLayerEventToGa, setClientId } from "./google-analytics";
-import { deepCloner } from "../../../../../shared/utils";
 
 /**
  * In order to make a field not required, we set the default or blank value
@@ -95,7 +95,12 @@ function submissionSetHiddenFields(payload, test) {
   return output;
 }
 
-export const rfiSubmit = async (value, submissionUrl, test, callback = a => ({})) => {
+export const rfiSubmit = async (
+  value,
+  submissionUrl,
+  test,
+  callback = a => ({})
+) => {
   // MARSHALL FIELDS FOR THE PAYLOAD
 
   let payload = deepCloner(value);
@@ -130,14 +135,7 @@ export const rfiSubmit = async (value, submissionUrl, test, callback = a => ({})
       "Content-Type": "application/json",
     },
     body: JSON.stringify(payload),
-  }).then(async (response) => {
-    await new Promise(resolve => {
-      setTimeout(() => {
-        resolve(true);
-      }, 2000);
-    });
-    return response.json();
-  });
+  }).then(response => response.json());
 
   // Race the fetch promise against the timeout promise
   return Promise.race([fetchPromise, timeoutPromise]).then(response =>

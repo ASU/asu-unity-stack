@@ -2,6 +2,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { Button } from "reactstrap";
+
 import { trackGAEvent } from "../../../../../shared";
 // Note on the spans around the FA i tags below:
 // When the host site/app deploys FA such that it replaces the i's with svg
@@ -114,6 +115,7 @@ RfiStepperButtons.propTypes = {
     }),
   }),
   handleBack: PropTypes.func.isRequired,
+  rfiSubmitting: PropTypes.bool.isRequired,
   formik: PropTypes.shape({
     isSubmitting: PropTypes.bool.isRequired,
   }),
