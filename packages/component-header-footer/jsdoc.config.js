@@ -8,8 +8,10 @@ module.exports = {
     ...coreConfig.source,
     include: [
       ...coreConfig.source.include,
-      "./src/core/models",
-      "./src/components",
+      "./src/header/core/models",
+      "./src/footer/core/models",
+      "./src/header/components",
+      "./src/footer/components",
     ],
   },
 };

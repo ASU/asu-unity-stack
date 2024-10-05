@@ -39,9 +39,7 @@ describe("#Social", () => {
       const element = component.queryByTestId(testId);
       expect(element).toBeInTheDocument();
       expect(element).not.toBeNull();
-      if (element) {
-        expect(element.nodeName.toLowerCase()).toBe("a");
-      }
+      expect(element?.nodeName.toLowerCase()).toBe("a");
     }
   );
 });

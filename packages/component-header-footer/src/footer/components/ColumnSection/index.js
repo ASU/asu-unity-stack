@@ -17,7 +17,7 @@ import { Accordion } from "../../../../../unity-react-core/dist/esm/components/A
 
 const ColumnSection = ({ columnIndex, column: { title, links } }) => {
   const [show, setShow] = useState(false);
-  const isWindowDefined = typeof window !== 'undefined';
+  const isWindowDefined = typeof window !== "undefined";
   const initialMatches = isWindowDefined ? window.innerWidth >= 1260 : false;
   const [isLgDesktop, setIsLgDesktop] = useState(initialMatches);
 
@@ -45,6 +45,7 @@ const ColumnSection = ({ columnIndex, column: { title, links } }) => {
               aria-expanded={show || isLgDesktop}
               aria-controls={`footlink-${columnIndex}`}
               onClick={handleToggle}
+              type="button"
             >
               {title}
               <FontAwesomeIcon

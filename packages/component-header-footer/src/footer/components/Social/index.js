@@ -12,6 +12,7 @@ import React from "react";
 
 // @ts-ignore
 import { trackGAEvent } from "../../../../../../shared";
+// @ts-ignore
 import endorsedLogo from "../../assets/images/endorsedLogo.png";
 
 const DEFAULT_GA_EVENT = {

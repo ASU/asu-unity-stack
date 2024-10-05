@@ -88,8 +88,8 @@
     "yup-phone": "^1.2.19"
   },
   "peerDependencies": {
-    "react": ">= 16.14.0 < 18",
-    "react-dom": ">= 16.14.0 < 18"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "volta": {
     "extends": "../../package.json"

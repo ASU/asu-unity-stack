@@ -6,7 +6,10 @@ import React from "react";
 
 import { ASUFooter } from ".";
 
-import { completeState, emptyStateFooter } from "../../__mocks__/data/props-mock";
+import {
+  completeState,
+  emptyStateFooter,
+} from "../../__mocks__/data/props-mock";
 
 const renderFooter = props => {
   return render(<ASUFooter {...{ ...props }} />);

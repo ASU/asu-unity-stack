@@ -27,8 +27,8 @@ const ContactComponent = ({
             )}
             {contributionLink && (
               <p
-              className="contribute-button"
-              data-testid="contact-contribution-link"
+                className="contribute-button"
+                data-testid="contact-contribution-link"
               >
                 <Button
                   color="gold"
@@ -76,4 +76,4 @@ ContactComponent.propTypes = {
   }),
 };
 
-export { ContactComponent};
+export { ContactComponent };

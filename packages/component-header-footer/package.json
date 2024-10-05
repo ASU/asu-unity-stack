@@ -27,22 +27,23 @@
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
     "test": "jest --config=./jest.config.js --silent --coverage",
     "test-update-snapshot": "yarn test -- -u",
-    "build": "vite build && cp -r src/assets dist/ && yarn postbuild",
+    "build": "VITE_COMPONENT_TO_BUILD=header vite build && VITE_COMPONENT_TO_BUILD=footer vite build && yarn postbuild",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "postbuild": "cp ./types/main.d.ts ./dist/main.d.ts",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
     "storybook": "storybook dev -p 9080",
     "predocs": "mkdir -p ./docs",
-    "docs": "yarn predocs && jsdoc2md --no-cache -c jsdoc.config.js --files ./src/components > ./docs/README.props.md && yarn postdocs",
+    "docs": "yarn predocs && jsdoc2md --no-cache -c jsdoc.config.js --files ./src/*/components > ./docs/README.props.md && yarn postdocs",
     "postdocs": "node ../../scripts/process-readme-props.js",
     "build-storybook": "storybook build -o ../../build/$npm_package_name"
   },
   "peerDependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-brands-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "react": ">= 16.14.0 < 18",
-    "react-dom": ">= 16.14.0 < 18"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.13.14",
