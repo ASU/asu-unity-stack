@@ -87,7 +87,7 @@
 | text | <code>string</code> | 
 | [classes] | <code>string</code> | 
 | [onClick] | <code>function</code> | 
-| [onFocus] | <code>function</code> | 
+| [onClick] | <code>function</code> | 
 
 <a name="NavTreeProps"></a>
 

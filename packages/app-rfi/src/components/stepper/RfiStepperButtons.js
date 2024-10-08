@@ -4,7 +4,6 @@ import React from "react";
 import { Button } from "reactstrap";
 
 import { trackGAEvent } from "../../../../../shared";
-
 // Note on the spans around the FA i tags below:
 // When the host site/app deploys FA such that it replaces the i's with svg
 // tags, when React tries to rewrite the DOM we get hit with the error
@@ -15,12 +14,12 @@ import { trackGAEvent } from "../../../../../shared";
 // The solution I hit on was to wrap the i's with spans so when the DOM
 // rewrite happens, the FA switcheroo is happening a layer below the element
 // that in this case React is trying to remove.
-
 export const RfiStepperButtons = ({
   stepNumber,
   totalSteps,
   step,
   handleBack,
+  rfiSubmitting,
   formik: { isSubmitting },
 }) => {
   return (
@@ -83,7 +82,7 @@ export const RfiStepperButtons = ({
               <Button
                 type="submit"
                 className="rfi-submit btn btn-primary"
-                disabled={!!isSubmitting}
+                disabled={!!isSubmitting || rfiSubmitting}
                 onClick={() =>
                   trackGAEvent({
                     action: "click",
@@ -116,6 +115,7 @@ RfiStepperButtons.propTypes = {
     }),
   }),
   handleBack: PropTypes.func.isRequired,
+  rfiSubmitting: PropTypes.bool.isRequired,
   formik: PropTypes.shape({
     isSubmitting: PropTypes.bool.isRequired,
   }),

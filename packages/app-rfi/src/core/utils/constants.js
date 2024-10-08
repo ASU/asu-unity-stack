@@ -13,6 +13,10 @@ export const KEY = {
   UG: "UG",
   CER: "CER",
   FALSE_EMPTY: "__NA__",
+  /** @type {"rfiVariant1"} */
+  VARIANT1: "rfiVariant1",
+  /** @type {"rfiVariant2"} */
+  VARIANT2: "rfiVariant2",
 };
 
 export const CAMPUS = {

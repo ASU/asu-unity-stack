@@ -5,7 +5,12 @@ import { trackGAEvent } from "../../../../../../shared";
 import { useAppContext } from "../../../core/context/app-context";
 import { LoginWrapper } from "./index.styles";
 
-const DEFAUL_GA_EVENT = {
+const DEFAULT_GA_EVENT = {
+  event: "link",
+  action: "click",
+  name: "onclick",
+  region: "navbar",
+  type: "internal link",
   section: "topbar",
 };
 
@@ -35,13 +40,13 @@ const Login = () => {
           <a
             className="signout"
             href={logoutLink}
-            onFocus={() =>
+            onClick={e => {
               trackGAEvent({
-                ...DEFAUL_GA_EVENT,
+                ...DEFAULT_GA_EVENT,
                 text: "sign out",
-              })
-            }
-            onClick={e => onLogoutClick?.(e)}
+              });
+              onLogoutClick?.(e);
+            }}
           >
             Sign Out
           </a>
@@ -49,13 +54,13 @@ const Login = () => {
       ) : (
         <a
           href={loginLink}
-          onFocus={() =>
+          onClick={e => {
             trackGAEvent({
-              ...DEFAUL_GA_EVENT,
+              ...DEFAULT_GA_EVENT,
               text: "sign in",
-            })
-          }
-          onClick={e => onLoginClick?.(e)}
+            });
+            onLoginClick?.(e);
+          }}
         >
           Sign In
         </a>

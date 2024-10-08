@@ -17,23 +17,33 @@ export const Interest2 = ({ gaData }) => {
   );
 
   const {
+    forceUpdatedPlan,
     programOfInterest,
     degreeDataList,
     programOfInterestOptional,
     formik: { values, setFieldValue },
   } = useRfiContext();
 
-  const isRequired = !programOfInterestOptional && values.Campus !== KEY.ONLINE;
+  const isRequired = !programOfInterestOptional;
 
   useEffect(() => {
     const poiOptions = degreeDataList
+      .filter(({ rfiDisplay, acadPlanKey }) => {
+        if (programOfInterest && programOfInterest === acadPlanKey) {
+          return true;
+        }
+        if (rfiDisplay) {
+          return true;
+        }
+        return false;
+      })
       .filter(
         ({ planCategories }) =>
           !values.Interest1 ||
           values.Interest1 === KEY.FALSE_EMPTY ||
           planCategories.includes(values.Interest1)
       )
-      .map(({ acadPlanCode: value, title: text }, i) => ({
+      .map(({ acadPlanKey: value, title: text }, i) => ({
         key: `${i}`,
         value,
         text,
@@ -45,7 +55,21 @@ export const Interest2 = ({ gaData }) => {
       setProgramInterestOptions(poiOptions);
     }
 
-    if (programOfInterest) {
+    const planIsOnline = values.Interest2?.indexOf("-") > -1;
+    const campusIsOnline =
+      (values.CampusProgramHasChoice || values.Campus) === KEY.ONLINE;
+    const wrongApi =
+      (campusIsOnline && !planIsOnline) || (!campusIsOnline && planIsOnline);
+    const shouldForceUpdate = wrongApi && forceUpdatedPlan !== values.Interest2;
+
+    if (shouldForceUpdate) {
+      // If values.CampusProgramHasChoice changes the API between (DPL/ONLINE)
+      // Interest2 will no longer match the acadPlanKey format and will need to
+      // be updated to match the API. This logic is found in appState, but that
+      // file does not have access to update the Formik Value.
+      setFieldValue(name, forceUpdatedPlan);
+    } else if (wrongApi && programOfInterest) {
+      // Initially set Interest2 with the prop value programOfInterest
       setFieldValue(name, programOfInterest);
     } else if (!isRequired) {
       setFieldValue(name, KEY.FALSE_EMPTY);
@@ -53,6 +77,7 @@ export const Interest2 = ({ gaData }) => {
       setFieldValue(name, "");
     }
   }, [
+    forceUpdatedPlan,
     degreeDataList,
     values.Interest1,
     programOfInterest,
@@ -66,8 +91,8 @@ export const Interest2 = ({ gaData }) => {
       name={name}
       options={programInterestOptions}
       disabled={!!programOfInterest}
-      requiredIcon={!programOfInterestOptional && values.Campus !== KEY.ONLINE}
-      required={!programOfInterestOptional && values.Campus !== KEY.ONLINE}
+      requiredIcon={isRequired}
+      required={isRequired}
       onBlur={e =>
         trackGAEvent({
           ...gaData,

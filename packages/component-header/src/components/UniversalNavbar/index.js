@@ -7,8 +7,14 @@ import { Wrapper } from "./index.styles";
 import { Login } from "./Login";
 import { Search } from "./Search";
 
-const DEFAUL_GA_EVENT = {
+const DEFAULT_GA_EVENT = {
+  event: "link",
+  action: "click",
+  name: "onclick",
+  region: "navbar",
+  type: "internal link",
   section: "topbar",
+  text: "",
 };
 
 const UniversalNavbar = () => {
@@ -24,6 +30,34 @@ const UniversalNavbar = () => {
     }
   }
 
+  const universalNavLinks = [
+    {
+      className: "nav-link visually-hidden-focusable",
+      href: "#skip-to-content",
+      text: "Skip to main content",
+    },
+    {
+      className: "nav-link visually-hidden-focusable",
+      href: `https://accessibility.asu.edu/report?a11yref=${getURL()}`,
+      text: "Report an accessibility problem",
+    },
+    {
+      className: "nav-link",
+      href: "https://asu.edu",
+      text: "ASU Home",
+    },
+    {
+      className: "nav-link",
+      href: "https://my.asu.edu",
+      text: "My ASU",
+    },
+    {
+      className: "nav-link",
+      href: "https://www.asu.edu/academics/colleges-schools",
+      text: "Colleges and Schools",
+    },
+  ];
+
   return (
     <Wrapper
       // @ts-ignore
@@ -36,48 +70,18 @@ const UniversalNavbar = () => {
         <div className="header-top">
           <nav className="nav" aria-label="ASU Global">
             <div className="links-container">
-              <a
-                className="nav-link visually-hidden-focusable"
-                href="#skip-to-content"
-              >
-                Skip to main content
-              </a>
-              <a
-                className="nav-link visually-hidden-focusable"
-                href={`https://accessibility.asu.edu/report?a11yref=${getURL()}`}
-              >
-                Report an accessibility problem
-              </a>
-              <a
-                className="nav-link"
-                href="https://asu.edu"
-                onFocus={() =>
-                  trackGAEvent({ ...DEFAUL_GA_EVENT, text: "asu home" })
-                }
-              >
-                ASU Home
-              </a>
-              <a
-                className="nav-link"
-                href="https://my.asu.edu"
-                onFocus={() =>
-                  trackGAEvent({ ...DEFAUL_GA_EVENT, text: "my asu" })
-                }
-              >
-                My ASU
-              </a>
-              <a
-                className="nav-link"
-                href="https://www.asu.edu/academics/colleges-schools"
-                onFocus={() =>
-                  trackGAEvent({
-                    ...DEFAUL_GA_EVENT,
-                    text: "colleges and schools",
-                  })
-                }
-              >
-                Colleges and Schools
-              </a>
+              {universalNavLinks.map(link => (
+                <a
+                  key={link.href}
+                  className={link.className}
+                  href={link.href}
+                  onClick={() =>
+                    trackGAEvent({ ...DEFAULT_GA_EVENT, text: link.text })
+                  }
+                >
+                  {link.text}
+                </a>
+              ))}
               <Login />
             </div>
             <Search />

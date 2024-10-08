@@ -29,7 +29,6 @@ const ButtonPropTypes = {
   href: PropTypes.string.isRequired,
   classes: PropTypes.string,
   onClick: PropTypes.func,
-  onFocus: PropTypes.func,
 };
 
 const NavTreePropTypes = PropTypes.shape({

@@ -1,6 +1,8 @@
 /* eslint no-use-before-define: ["warn", {"variables": true}] */
 // ^^^ Set to "warn" instead of default "error" as we're not throwing any
 // ReferenceError's and attempts to resolve resulted in other problems.
+import axios from "axios";
+
 import {
   staffConverter,
   studentsConverter,
@@ -8,8 +10,6 @@ import {
   anonConverter,
 } from "./dataConverter";
 import { validateAndCleanURL } from "./validateUrl";
-
-import axios from "axios";
 
 export const engineNames = {
   FACULTY: "web_dir_faculty_staff",
@@ -194,12 +194,6 @@ const webDirDeptsFormatter = ({
       return filters.peopleIds.includes(r.asurite_id.raw);
     });
   }
-  // filters.peopleInDepts indicates a WEB_DIRECTORY_PEOPLE_AND_DEPS flow.
-  // filters.deptIds indicates a WEB_DIRECTORY_DEPARTMENTS flow.
-  const titleOverwrite =
-    !!filters && filters.peopleInDepts
-      ? { peopleInDeps: filters.peopleInDepts }
-      : { depts: filters?.deptIds };
 
   return {
     tab: engines[engineName].name,
@@ -210,7 +204,6 @@ const webDirDeptsFormatter = ({
           datum: result,
           options: {
             size: "large",
-            titleMatch: titleOverwrite,
             profileURLBase: "https://search.asu.edu",
           },
           appPathFolder,
@@ -240,6 +233,7 @@ export const engines = {
         appPathFolder,
       }),
     needsTerm: true,
+    doTitleLogic: true,
   },
   [engineNames.STUDENTS]: {
     name: engineNames.STUDENTS,
@@ -257,6 +251,7 @@ export const engines = {
         appPathFolder,
       }),
     needsTerm: true,
+    doTitleLogic: false,
   },
   [engineNames.SITES]: {
     name: engineNames.SITES,
@@ -284,6 +279,7 @@ export const engines = {
       );
     },
     needsTerm: true,
+    doTitleLogic: false,
   },
   [engineNames.SITES_LOCAL]: {
     name: engineNames.SITES_LOCAL,
@@ -311,6 +307,7 @@ export const engines = {
       });
     },
     needsTerm: true,
+    doTitleLogic: false,
   },
   [engineNames.WEB_DIRECTORY_DEPARTMENTS]: {
     name: engineNames.WEB_DIRECTORY_DEPARTMENTS,
@@ -334,6 +331,7 @@ export const engines = {
         appPathFolder,
       }),
     needsTerm: false,
+    doTitleLogic: true,
   },
   [engineNames.WEB_DIRECTORY_FACULTY_RANK]: {
     name: engineNames.WEB_DIRECTORY_FACULTY_RANK,
@@ -352,6 +350,7 @@ export const engines = {
         appPathFolder,
       }),
     needsTerm: false,
+    doTitleLogic: true,
   },
   [engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS]: {
     name: engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS,
@@ -370,6 +369,7 @@ export const engines = {
         appPathFolder,
       }),
     needsTerm: false,
+    doTitleLogic: true,
   },
 };
 
@@ -394,6 +394,7 @@ export const performSearch = function ({
       : "https://dev-asu-isearch.ws.asu.edu/api/v1/";
 
     let query = `${searchURLOrDefault}${engine.url}`;
+    let tokenResponse = null;
 
     let APICall = null;
     if (engine.method === "GET") {
@@ -468,7 +469,7 @@ export const performSearch = function ({
       const validatedTokenUrl = validateAndCleanURL(
         `${engine.API_URL}/session/token`
       );
-      const tokenResponse = await axios.get(validatedTokenUrl);
+      tokenResponse = await axios.get(validatedTokenUrl);
       const headers = {
         "X-CSRF-Token": tokenResponse.data,
       };

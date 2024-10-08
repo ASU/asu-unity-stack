@@ -7,40 +7,46 @@ import React from "react";
 
 import { RfiError, RfiLabel } from "./controls-helpers";
 
-const RfiRadioGroup = ({ name, id, options, label }) => (
-  <Field as="div" name={name}>
-    {({
-      field,
-      // eslint-disable-next-line no-unused-vars
-      form: { touched, errors },
-      meta,
-    }) => {
-      const isError = meta.error;
-      return (
-        <fieldset>
-          <RfiLabel label={label} name={name} id={id} />
-          <RfiError isError={isError} metaError={meta.error} />
-          {options.map(option => (
-            <div
-              className="form-check"
-              key={option.key ? option.key : option.value}
-            >
-              <Field
-                type="radio"
-                id={name + option.key}
-                {...field}
-                value={option.value}
-              />{" "}
-              <label htmlFor={name + option.key} className="form-check-label">
-                {option.text}
-              </label>
-            </div>
-          ))}
-        </fieldset>
-      );
-    }}
-  </Field>
-);
+const RfiRadioGroup = ({ name, id, options, label, onBlur }) => {
+  return (
+    <Field as="div" name={name}>
+      {({
+        field,
+        // eslint-disable-next-line no-unused-vars
+        form: { touched, errors },
+        meta,
+      }) => {
+        const isError = meta.error;
+        return (
+          <fieldset>
+            <RfiLabel label={label} name={name} id={id} />
+            <RfiError isError={isError} metaError={meta.error} />
+            {options.map(option => (
+              <div
+                className="form-check"
+                key={option.key ? option.key : option.value}
+              >
+                <Field
+                  type="radio"
+                  id={name + option.key}
+                  {...field}
+                  value={option.value}
+                  onChange={e => {
+                    field.onChange?.(e);
+                    onBlur?.(e);
+                  }}
+                />{" "}
+                <label htmlFor={name + option.key} className="form-check-label">
+                  {option.text}
+                </label>
+              </div>
+            ))}
+          </fieldset>
+        );
+      }}
+    </Field>
+  );
+};
 
 RfiRadioGroup.propTypes = {
   label: PropTypes.string.isRequired,
@@ -53,6 +59,7 @@ RfiRadioGroup.propTypes = {
       text: PropTypes.string.isRequired,
     })
   ).isRequired,
+  onBlur: PropTypes.func,
 };
 
 export { RfiRadioGroup };
