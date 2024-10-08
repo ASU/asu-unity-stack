@@ -24,6 +24,7 @@
       font: normal normal bold 2.5rem Arial;
       flex: 1;
       max-width: 784px;
+      padding-bottom: $uds-size-spacing-4;
     }
   }
 }
@@ -47,7 +48,6 @@
 
       & > span {
         font-size: $uds-size-font-xxl; // 2rem
-        margin-bottom: $uds-size-spacing-4; // 2rem
         max-width: 512px;
       }
     }

@@ -1,3 +1,29 @@
+# [@asu/unity-bootstrap-theme-v1.14.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.14.1...@asu/unity-bootstrap-theme-v1.14.2) (2024-09-23)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix padding in image background with cta ([49e29fa](https://github.com/ASU/asu-unity-stack/commit/49e29fab71c1bf1e66578f64f8901f2aa9cca205))
+
+# [@asu/unity-bootstrap-theme-v1.14.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.14.0...@asu/unity-bootstrap-theme-v1.14.1) (2024-09-04)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** update ranking card styles ([7730295](https://github.com/ASU/asu-unity-stack/commit/77302957faefc9dd85385dffc3dc2a05400f555e))
+
+# [@asu/unity-bootstrap-theme-v1.14.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.13.1...@asu/unity-bootstrap-theme-v1.14.0) (2024-09-04)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** added css for long pagination on mobile ([7b99512](https://github.com/ASU/asu-unity-stack/commit/7b9951283d5b2d9bf2999362f2e4f4ca090bd3a8))
+
+
+### Features
+
+* **unity-bootstrap-theme:** add table caption styles ([310739c](https://github.com/ASU/asu-unity-stack/commit/310739c0f973328152d08cc890ad80d5864857e9))
+
 # [@asu/unity-bootstrap-theme-v1.13.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.13.0...@asu/unity-bootstrap-theme-v1.13.1) (2024-08-16)
 
 

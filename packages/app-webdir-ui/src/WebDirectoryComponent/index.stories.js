@@ -61,7 +61,7 @@ export const webDirectoryExamplePeople = args => {
     <div className="uds-content-align">
       <WebDirectory
         searchType="people"
-        ids=",mcrow:454517,mdenke:1350,jagarc50:1350,lhillzev:1353"
+        ids="mcrow:454517,mdenke:1350,jagarc50:1350,lhillzev:1353"
         API_URL="https://test-asu-isearch.ws.asu.edu"
         searchApiVersion="/api/v1/"
         display={display}

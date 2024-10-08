@@ -74,6 +74,15 @@
       }
     }
   }
+
+  caption, figcaption {
+    background-color: var(--bs-gray-1);
+    caption-side: top;
+    font-size: 0.85rem;
+    padding: 1rem;
+    text-align: center;
+    word-break: break-word;
+  }
 }
 
 .uds-table-fixed {

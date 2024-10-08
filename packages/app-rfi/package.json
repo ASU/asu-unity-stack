@@ -1,6 +1,6 @@
 {
   "name": "@asu/app-rfi",
-  "version": "2.3.9",
+  "version": "2.4.1",
   "description": "ASU Request For Information (RFI) form",
   "main": "./dist/appRfi.cjs.js",
   "browser": "./dist/appRfi.umd.js",
@@ -88,8 +88,8 @@
     "yup-phone": "^1.2.19"
   },
   "peerDependencies": {
-    "react": ">= 16.14.0 < 18",
-    "react-dom": ">= 16.14.0 < 18"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "volta": {
     "extends": "../../package.json"

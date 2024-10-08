@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 
 import { Accordion } from "../../components/Accordion/Accordion";
 import { AnchorMenu } from "../../components/AnchorMenu/AnchorMenu";
@@ -36,11 +36,8 @@ import { Video } from "../../components/Video/Video";
  * @param {ComponentProps} props
  */
 const RenderReact = (component, props, target) => {
-  try {
-    ReactDOM.render(React.createElement(component, props), target);
-  } catch (err) {
-    throw new Error(`Error rendering React component: ${err}`);
-  }
+  const root = createRoot(target);
+  root.render(React.createElement(component, props));
 };
 
 /**

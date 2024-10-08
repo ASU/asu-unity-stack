@@ -69,7 +69,17 @@ const AsuRfi = props => {
   }
 
   const rfiState = useRfiState(betterPropNames(props));
-  window["rfiState"] = rfiState;
+
+  const noRfiAvailable = `RFI form not displayed. ${programOfInterest} has rfiDisplay set to false or does not exist`;
+  useEffect(() => {
+    if (!rfiState.showForm) {
+      console.log(noRfiAvailable);
+    }
+  }, [rfiState.showForm]);
+  if (!rfiState.showForm) {
+    return <div style={{ display: "none" }}>{noRfiAvailable}</div>;
+  }
+
   return (
     <RfiContext.Provider
       value={{
