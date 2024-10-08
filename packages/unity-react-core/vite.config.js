@@ -1,5 +1,5 @@
 import react from "@vitejs/plugin-react";
-import { resolve } from "path";
+import path, { resolve } from "path";
 import { defineConfig } from "vite";
 
 import pkg from "./package.json";
@@ -70,4 +70,9 @@ export default defineConfig({
       },
     },
   ],
+  resolve: {
+    alias: {
+      "@shared": path.resolve(__dirname, "./../../shared"),
+    },
+  },
 });

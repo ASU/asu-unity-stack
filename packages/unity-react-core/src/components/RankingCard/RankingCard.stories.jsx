@@ -4,7 +4,7 @@ import React from "react";
 import { RankingCard } from "./RankingCard";
 
 export default {
-  title: "UDS/Ranking Card",
+  title: "Components/Ranking Card",
   component: RankingCard,
 };
 

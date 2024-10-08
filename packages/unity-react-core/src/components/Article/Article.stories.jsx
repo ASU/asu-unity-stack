@@ -4,7 +4,7 @@ import React from "react";
 import { Article } from "./Article";
 
 export default {
-  title: "UDS/Article",
+  title: "Components/Article",
   component: Article,
   parameters: {
     docs: {

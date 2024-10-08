@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { trackGAEvent } from "../../../services/googleAnalytics";
+import { trackGAEvent } from "../../../../../../../../../shared";
 import { NextButton } from "./NextButton";
 import { PrevButton } from "./PrevButton";
 

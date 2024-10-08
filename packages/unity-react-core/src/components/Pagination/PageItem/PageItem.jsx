@@ -40,7 +40,7 @@ export const PageItem = ({
             [`page-link-icon`]: pageLinkIcon,
           })}
           onClick={onClick}
-          data-testid="page-link"
+          data-testid={dataId ? `pagination-${dataId}` : "page-link"}
           data-id={dataId}
           aria-current={selectedPage ? "page" : null}
           aria-disabled={ariaDisabled}

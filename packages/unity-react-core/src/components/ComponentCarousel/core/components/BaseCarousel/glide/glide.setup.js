@@ -232,13 +232,17 @@ function setupCaroarousel({
   // Implement glidejs event listeners.
 
   // Attatch event listener and instruct slide to go left and right
+  /** @type {HTMLElement} */
   let gliderElement = document.querySelector(`#${instanceName}`);
-  gliderElement.addEventListener("keyup", e => {
+  gliderElement.addEventListener("keyup", event => {
+    /** @type {KeyboardEventInit} */
+    const e = event;
     if (e.keyCode === 39) {
       slider.go(">");
     } else if (e.keyCode === 37) {
       slider.go("<");
     } else if (e.keyCode === 13) {
+      // @ts-ignore
       slider.go(document.activeElement.dataset.glideDir);
     }
   });
@@ -246,6 +250,7 @@ function setupCaroarousel({
   // On build.before event...
   slider.on("build.before", () => {
     // Set .slider-start for starting gradient styles.
+    /** @type {HTMLElement} */
     gliderElement = document.querySelector(`#${instanceName}`);
     if (!gliderElement) return; // necessary. it breaks on resize
     gliderElement.classList.add("slider-start");
@@ -260,6 +265,7 @@ function setupCaroarousel({
     // @ts-ignore
     const currentIndex = slider.index;
     updateNonVisibleSlides(gliderElement, currentIndex, perView);
+    /** @type {HTMLElement} */
     const imageGalleryNav = gliderElement.querySelector(".navigation-slider");
     const imageNav = gliderElement.querySelector(".image-navigator-images");
     if (imageGalleryNav && imageNav) {

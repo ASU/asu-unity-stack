@@ -13,6 +13,10 @@
  * @property {string} [dataTestId]
  * @property {string} [cardLink]
  * @property {string} [title]
+ * @property {string} [caption]
+ * @property {string} [captionTitle]
+ * @property {boolean} [border]
+ * @property {boolean} [dropShadow]
  */
 
 /**

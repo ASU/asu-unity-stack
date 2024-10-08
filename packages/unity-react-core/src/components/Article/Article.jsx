@@ -171,18 +171,13 @@ export const Article = ({
   };
 
   const activeBreadcrumb = item => {
-    if (item.active) {
-      return (
-        <BreadcrumbItem active tag="li" className="breadcrumb-item">
-          <BreadcrumbItem tag="a" href={item.url}>
-            {item.title}
-          </BreadcrumbItem>
-        </BreadcrumbItem>
-      );
-    }
-
     return (
-      <BreadcrumbItem tag="li" className="breadcrumb-item">
+      <BreadcrumbItem
+        key={item.title}
+        active={item.active}
+        tag="li"
+        className="breadcrumb-item"
+      >
         <BreadcrumbItem tag="a" href={item.url}>
           {item.title}
         </BreadcrumbItem>

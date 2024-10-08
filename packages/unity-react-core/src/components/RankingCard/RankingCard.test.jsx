@@ -1,5 +1,6 @@
 import { render, fireEvent, cleanup } from "@testing-library/react";
 import React from "react";
+import { expect, describe, it, afterEach, beforeEach, test } from "vitest";
 
 import { RankingCard } from "./RankingCard";
 

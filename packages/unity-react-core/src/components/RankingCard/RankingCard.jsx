@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 
 import { trackGAEvent, sanitizeDangerousMarkup } from "../../../../../shared";
-// eslint-disable-next-line import/no-cycle
 import { Image } from "../Image/Image";
+
+// eslint-disable-next-line import/no-cycle
 
 const gaDefaultObject = {
   name: "onclick",

@@ -1,11 +1,13 @@
 /* eslint-disable react/jsx-props-no-spreading */
 // @ts-check
-import { render, cleanup, fireEvent } from "@testing-library/react";
+import { render, cleanup, fireEvent, screen } from "@testing-library/react";
+import { userEvent } from "@testing-library/user-event";
 import React from "react";
+import { expect, describe, it, afterEach, test, beforeEach, vi } from "vitest";
 
 import { Pagination } from "./Pagination";
 
-const onChangeSpy = jest.fn();
+const onChangeSpy = vi.fn();
 const totalPages = 4;
 
 const defaultArgs = {
@@ -16,7 +18,7 @@ const defaultArgs = {
 };
 
 const renderPagination = props => {
-  return render(<Pagination {...{ ...props }} />);
+  return render(<Pagination {...{ ...props }} />, {});
 };
 
 describe("#Pagination", () => {
@@ -29,51 +31,46 @@ describe("#Pagination", () => {
   afterEach(cleanup);
 
   it("should define component", () => {
-    expect(component).toBeDefined();
+    expect(screen.getByTestId("pagination")).toBeDefined();
   });
 
   it("should call 'onChange' method on pagination item change", () => {
-    const clickableElement = component.queryAllByTestId("page-link")[0];
+    const clickableElement = screen.queryAllByTestId("page-link")[0];
     fireEvent.click(clickableElement);
     expect(onChangeSpy).toHaveBeenCalled();
   });
 
-  it("should 'active' selected item", () => {
-    const clickableElement = component.queryAllByTestId("page-link")[0];
-    fireEvent.click(clickableElement);
-    setTimeout(() =>
-      expect(clickableElement.parentElement.className).toContain("active")
-    );
+  it("should 'active' selected item", async () => {
+    const clickableElement = screen.queryAllByTestId("page-link")[0];
+    await fireEvent.click(clickableElement);
+    expect(clickableElement.parentElement.className).toContain("active");
   });
 
   it("should disable prev button at the beginning of the pagination elements list", () => {
-    const element = component.queryAllByTestId("page-link")[0].parentElement;
+    const element = screen.queryByTestId("pagination-prev").parentElement;
     expect(element.className).toContain("disabled");
   });
 
-  it("should disable next button at the end of the pagination elements list", () => {
+  it("should disable next button at the end of the pagination elements list", async () => {
     const clickableElement =
-      component.queryAllByTestId("page-link")[totalPages];
-    const nextButton = component.queryByText("Next");
-    fireEvent.click(clickableElement);
-    setTimeout(() =>
-      expect(nextButton.parentElement.className).toContain("disabled")
-    );
+      screen.queryAllByTestId("page-link")[totalPages - 1];
+    const nextButton = await screen.getByTestId("pagination-next");
+    await fireEvent.click(clickableElement);
+    expect(nextButton.parentElement.className).toContain("disabled");
   });
 });
 
 describe("#Pagination variations", () => {
-  it("should set active currentPage", () => {
+  it("should set active currentPage", async () => {
     const currentPage = 3;
     const props = {
       ...defaultArgs,
       currentPage,
     };
 
-    const component = renderPagination(props);
+    const component = await renderPagination(props);
     const paginationItem =
-      component.queryAllByTestId("page-link")[currentPage].parentElement;
-
+      screen.queryAllByTestId("page-link")[currentPage - 1].parentElement;
     expect(paginationItem.className).toContain("active");
   });
 });

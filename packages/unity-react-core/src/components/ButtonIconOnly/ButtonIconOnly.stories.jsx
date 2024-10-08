@@ -4,7 +4,7 @@ import React from "react";
 import { ButtonIconOnly } from "./ButtonIconOnly";
 
 export default {
-  title: "UDS/ButtonIconOnly",
+  title: "Components/ButtonIconOnly",
   component: ButtonIconOnly,
   parameters: {
     docs: {

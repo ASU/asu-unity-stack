@@ -5,7 +5,7 @@ import React from "react";
 import { Card } from "./Card";
 
 export default {
-  title: "UDS/Card",
+  title: "Components/Card",
   component: Card,
   parameters: {
     docs: {

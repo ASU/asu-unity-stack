@@ -1,10 +1,11 @@
+// @ts-nocheck
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 
 import { TabbedPanels, Tab } from "./TabbedPanels";
 
 export default {
-  title: "UDS/TabbedPanels",
+  title: "Components/TabbedPanels",
   component: TabbedPanels,
 };
 

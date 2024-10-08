@@ -4,7 +4,7 @@ import React from "react";
 import { Image } from "./Image";
 
 export default {
-  title: "UDS/Image",
+  title: "Components/Image",
   component: Image,
   parameters: {
     docs: {

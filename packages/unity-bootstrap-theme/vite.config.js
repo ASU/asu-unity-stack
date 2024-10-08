@@ -1,6 +1,6 @@
+import react from "@vitejs/plugin-react";
 import { resolve } from 'path';
 import { defineConfig, transformWithEsbuild } from 'vite';
-import react from "@vitejs/plugin-react";
 
 import pkg from './package.json';
 /** @typedef {import('vite').UserConfig} UserConfig */

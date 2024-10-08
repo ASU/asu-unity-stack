@@ -28,8 +28,8 @@ const mockItemWithMoreContent = () =>
   }));
 
 export default {
+  title: "Components/Image Carousel",
   component: ImageCarousel,
-  title: "Image Carousel",
   args: {
     imageItems: [],
     perView: 1,

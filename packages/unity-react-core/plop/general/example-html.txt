@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Button component - Example page</title>
+  <title>{{properCase componentName}} component - Example page</title>
   <!-- CSS only -->
   <link rel="stylesheet" href="../../unity-bootstrap-theme/dist/unity-bootstrap-theme2.css" />
 
@@ -19,6 +19,11 @@
 
   <!-- *************************************************************** -->
   <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <!-- ATTENTION! IF REACT IS NOT BUNDLED INTO THE LIBRARY UNCOMMENT
+        THOSE LINES BELOW
+      -->
+  <!-- *************************************************************** -->
   <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
   <!-- *************************************************************** -->
@@ -28,58 +33,18 @@
 
 <body>
   <div class="container">
-    <div class="d-flex justify-content-center border p-4">
-      <!-- Provide target elements. -->
-      <div id="default-button"></div>
-      <div id="icon-button"></div>
-      <div id="small-gold-button"></div>
-      <div id="link-button"></div>
-      <div id="blank-link-button"></div>
+    <div class="border p-4">
+      <div id="default-{{dashCase componentName}}"></div>
     </div>
   </div>
 
   <script>
-    // Setup and initialize button options.
-    unityReactCore.initButton({
-      targetSelector: "#default-button",
+    // Setup and initialize {{dashCase componentName}} options.
+    unityReactCore.init{{properCase componentName}}({
+      targetSelector: "#default-{{dashCase componentName}}",
       props: {
-        label: "Default Button",
-        onClick: () => alert('Button clicked'),
-      },
-    });
-    unityReactCore.initButton({
-      targetSelector: "#icon-button",
-      props: {
-        color: "gold",
-        icon: ["fab", "drupal"],
-        label: "Icon Button",
-        onClick: () => alert('Button clicked'),
-      },
-    });
-    unityReactCore.initButton({
-      targetSelector: "#small-gold-button",
-      props: {
-        color: "gold",
-        label: "Small Gold Button",
-        onClick: () => alert('Button clicked'),
-        size: "small",
-      },
-    });
-    unityReactCore.initButton({
-      targetSelector: "#link-button",
-      props: {
-        color: "maroon",
-        href: "/#example-link",
-        label: "Link Button",
-      },
-    });
-    unityReactCore.initButton({
-      targetSelector: "#blank-link-button",
-      props: {
-        color: "maroon",
-        href: "/#example-link",
-        label: "Link Button",
-        target: "_blank",
+        title: "Header",
+        children: "Content",
       },
     });
   </script>

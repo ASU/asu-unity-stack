@@ -66,8 +66,8 @@ const mockItemWithMoreContent = () => {
 };
 
 export default {
+  title: "Components/Image Gallery Carousel",
   component: ImageGalleryCarousel,
-  title: "Image Gallery Carousel",
   parameters: { controls: { disable: true } },
 };
 

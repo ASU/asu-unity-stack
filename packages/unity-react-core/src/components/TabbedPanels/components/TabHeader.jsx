@@ -1,3 +1,8 @@
+// @ts-nocheck
+
+/**
+ * TODO: Fix type errors
+ * */
 import PropTypes from "prop-types";
 import React, { forwardRef, useRef, useImperativeHandle } from "react";
 
