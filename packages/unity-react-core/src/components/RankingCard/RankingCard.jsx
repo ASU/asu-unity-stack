@@ -1,10 +1,11 @@
-import { trackGAEvent, sanitizeDangerousMarkup } from "./../../../../../shared";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
 
-// eslint-disable-next-line import/no-cycle
+import { trackGAEvent, sanitizeDangerousMarkup } from "../../../../../shared";
 import { Image } from "../Image/Image";
+
+// eslint-disable-next-line import/no-cycle
 
 const gaDefaultObject = {
   name: "onclick",

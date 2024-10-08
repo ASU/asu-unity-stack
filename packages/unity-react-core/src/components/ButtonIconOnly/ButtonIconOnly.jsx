@@ -1,7 +1,8 @@
 // @ts-check
-import { trackGAEvent } from "./../../../../../shared";
 import PropTypes from "prop-types";
 import React from "react";
+
+import { trackGAEvent } from "../../../../../shared";
 
 const gaDefaultObject = {
   name: "onclick",

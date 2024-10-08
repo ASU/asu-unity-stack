@@ -3,26 +3,18 @@
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM"],
-    "skipLibCheck": true,
-
-    /* Bundler mode */
     "resolveJsonModule": true,
     "isolatedModules": true,
     "allowImportingTsExtensions": true,
-    // "noEmit": false,
     "noEmit": true,
     "jsx": "react",
-    // "jsx": "react-jsx",
-
-    // "moduleResolution": "bundler",
-    "moduleResolution": "Node",
-    // "emitDeclarationOnly":true,
-    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "module": "ES2015",
     "declaration": true,
     "declarationDir": "dist/types",
     "sourceMap": true,
     "allowJs": true,
-    // "rootDir": ".",
+    "checkJs": true,
     "allowSyntheticDefaultImports": true,
     "plugins": [{ "name": "typescript-plugin-css-modules" }],
     "paths": {
@@ -33,5 +25,9 @@
   "include": [
     "src/**/*",
     "types/**/*"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
   ]
 }

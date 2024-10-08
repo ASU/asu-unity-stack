@@ -1,9 +1,9 @@
 // @ts-check
-import { trackGAEvent, sanitizeDangerousMarkup } from "./../../../../../shared";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 
+import { trackGAEvent, sanitizeDangerousMarkup } from "../../../../../shared";
 import { Button } from "../Button/Button";
 import { ButtonTag } from "../ButtonTag/ButtonTag";
 // eslint-disable-next-line import/no-cycle

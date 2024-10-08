@@ -1,7 +1,8 @@
-import { trackGAEvent } from "./../../../../../shared";
+// @ts-nocheck
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
+import { trackGAEvent } from "../../../../../shared";
 import { NavControls, TabHeader } from "./components";
 
 function useRefs() {
@@ -42,7 +43,7 @@ const TabbedPanels = ({
   initialTab = "",
   children,
   bgColor = "",
-  onTabChange = () => {},
+  onTabChange = arg => {},
 }) => {
   const childrenArray = React.Children.toArray(children);
   const isMounted = useRef(false);

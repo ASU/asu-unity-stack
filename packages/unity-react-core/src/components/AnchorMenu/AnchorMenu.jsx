@@ -1,15 +1,15 @@
 // @ts-check
+import classNames from "classnames";
+import PropTypes from "prop-types";
+import React, { useState, useEffect, useRef } from "react";
+
 import {
   debounce,
   queryFirstFocusable,
   throttle,
   trackGAEvent,
   useMediaQuery,
-} from "./../../../../../shared";
-import classNames from "classnames";
-import PropTypes from "prop-types";
-import React, { useState, useEffect, useRef } from "react";
-
+} from "../../../../../shared";
 import { Button } from "../Button/Button";
 import { AnchorMenuWrapper } from "./AnchorMenu.styles";
 

@@ -3,7 +3,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { trackGAEvent } from "../../../services/googleAnalytics";
+import { trackGAEvent } from "../../../../../../../../../shared";
 
 const defaultGAEvent = {
   event: "select",

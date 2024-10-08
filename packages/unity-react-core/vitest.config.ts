@@ -13,4 +13,10 @@ export default defineConfig({
       "@shared": resolve(__dirname, "./../../shared"),
     }
   },
-})
+});
+
+declare global {
+  interface Window{
+    dataLayer: any[];
+  }
+}

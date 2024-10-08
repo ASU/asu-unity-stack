@@ -1,11 +1,11 @@
 // ts-check
 
 /**
- * @typedef {import("../../../../components-core/src/core/types/testimonial-types").TestimonialStyle} TestimonialStyle
+ * @typedef {import("../../../../../../unity-react-core/src/core/types/testimonial-types").TestimonialStyle} TestimonialStyle
  * */
 
 /**
- * @typedef {import("../../../../components-core/src/core/types/testimonial-types").TestimonialQuote} TestimonialQuote
+ * @typedef {import("../../../../../../unity-react-core/src/core/types/testimonial-types").TestimonialQuote} TestimonialQuote
  * */
 
 /**
