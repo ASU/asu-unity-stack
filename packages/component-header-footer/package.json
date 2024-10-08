@@ -27,7 +27,7 @@
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
     "test": "jest --config=./jest.config.js --silent --coverage",
     "test-update-snapshot": "yarn test -- -u",
-    "build": "VITE_COMPONENT_TO_BUILD=header vite build && VITE_COMPONENT_TO_BUILD=footer vite build && yarn postbuild",
+    "build": "vite build && yarn postbuild",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "postbuild": "cp ./types/main.d.ts ./dist/main.d.ts",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",

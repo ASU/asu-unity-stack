@@ -4,8 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes, { shape, arrayOf } from "prop-types";
 import React, { useState, useEffect } from "react";
 
-import { Accordion } from "../../../../../unity-react-core/dist/esm/components/Accordion.es";
-
 /**
  * @typedef {import("../../core/models/types").Column} Column
  */
@@ -31,7 +29,11 @@ const ColumnSection = ({ columnIndex, column: { title, links } }) => {
   }, []);
 
   const handleToggle = () => {
-    setShow(!show);
+    if (isLgDesktop) {
+      setShow(true);
+    } else {
+      setShow(!show);
+    }
   };
 
   return (
@@ -46,6 +48,7 @@ const ColumnSection = ({ columnIndex, column: { title, links } }) => {
               aria-controls={`footlink-${columnIndex}`}
               onClick={handleToggle}
               type="button"
+              disabled={isLgDesktop}
             >
               {title}
               <FontAwesomeIcon

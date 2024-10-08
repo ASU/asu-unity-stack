@@ -10,10 +10,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes, { shape } from "prop-types";
 import React from "react";
 
-// @ts-ignore
 import { trackGAEvent } from "../../../../../../shared";
+import { getCurrentScriptPath } from "../../../../../../shared/utils";
+
 // @ts-ignore
-import endorsedLogo from "../../assets/images/endorsedLogo.png";
+
+const currentScriptPath = getCurrentScriptPath();
+const endorsedLogo = `${currentScriptPath}assets/images/endorsedLogo.png`;
 
 const DEFAULT_GA_EVENT = {
   type: "external link",

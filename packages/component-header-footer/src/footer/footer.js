@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 
 import trackReactComponent from "../../../../shared/services/componentDatalayer";
 import { Social, Legal, Innovation, ContactComponent } from "./components";
-import "./_styles.scss";
+import { StyledFooter } from "./index.styles";
 
 const Base = () => {
   return (
@@ -23,7 +23,7 @@ const ASUFooter = ({ social, contact }) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       trackReactComponent({
-        packageName: "component-footer",
+        packageName: "component-StyledFooter",
         component: "Component Footer",
         type: "NA",
         configuration: {
@@ -35,11 +35,11 @@ const ASUFooter = ({ social, contact }) => {
   }, []);
 
   return (
-    <footer role="contentinfo">
+    <StyledFooter role="contentinfo">
       {social && <Social social={social} />}
       {contact && <ContactComponent contact={contact} />}
       <Base />
-    </footer>
+    </StyledFooter>
   );
 };
 

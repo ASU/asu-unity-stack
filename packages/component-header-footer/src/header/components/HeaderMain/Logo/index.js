@@ -9,7 +9,7 @@ import { useAppContext } from "../../../core/context/app-context";
 import { LogoWrapper } from "./index.styles";
 
 const currentScriptPath = getCurrentScriptPath();
-console.log("currentScriptPath", currentScriptPath);
+
 const vertLogo = `${currentScriptPath}assets/img/arizona-state-university-logo-vertical.png`;
 const horizLogo = `${currentScriptPath}assets/img/arizona-state-university-logo.png`;
 
