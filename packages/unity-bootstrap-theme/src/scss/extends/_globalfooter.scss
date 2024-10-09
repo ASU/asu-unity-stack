@@ -288,6 +288,10 @@ footer {
 
     .nav-link {
       padding: 0;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }
@@ -323,6 +327,10 @@ footer {
 
 #footer-colophon .nav-link {
   padding: 0;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 // #footer-colophon, Mobile
