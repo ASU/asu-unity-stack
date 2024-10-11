@@ -1,8 +1,8 @@
 // @ts-check
 
 function getCurrentScriptPath() {
-  // @ts-ignore
   const match = (
+    // @ts-ignore
     (document.currentScript && document.currentScript.src) ||
     ""
   ).match(/(.*\/)/);

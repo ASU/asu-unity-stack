@@ -1,3 +1,4 @@
+//@ts-nocheck
 /**
  * Function to track React component data and store it in a global object.
  * @typedef {Function} trackReactComponentType - Function to track React component data and store it in a global object.

@@ -1,7 +1,7 @@
 // load brand rules (former design tokens)
 @import "custom-asu-variables";
 // default path for image assets (assuming the images will be hosted from the web root). Storybook and themes override this for their particular path needs
-$image-assets-path: "../img" !default;
+$image-assets-path: "/img" !default;
 
 /*
   TODO: all imports below belong to the previous bootstrap 4 package, you have to check each import and be careful when removing it.

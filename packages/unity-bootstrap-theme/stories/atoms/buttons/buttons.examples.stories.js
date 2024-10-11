@@ -1,10 +1,8 @@
 import React from "react";
 
-import { defaultDecorator } from "../../../../../shared/components/Layout";
 
 export default {
   title: "Atoms/Buttons/Examples",
-  decorators: [ defaultDecorator ],
   parameters: { controls: { disable: true } },
 };
 import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";

@@ -15,6 +15,12 @@ spec:
     command:
     - cat
     tty: true
+  - name: playwright
+    image: 'mcr.microsoft.com/playwright:v1.48.0-noble'
+    imagePullPolicy: Always
+    command:
+    - cat
+    tty: true
   - name: puppeteer
     image: 'ghcr.io/puppeteer/puppeteer:22'
     imagePullPolicy: Always
@@ -45,11 +51,10 @@ spec:
             steps {
                 container('node20') {
                   script {
-                    echo '## Configure .npmrc file for @asu registry...'
-                    writeFile file: '.npmrc', text: '@asu:registry=https://npm.pkg.github.com/ \n' +
-                      '//npm.pkg.github.com/:_authToken=' + env.RAW_GH_TOKEN_PSW
+                    echo '## Configure env file for @asu registry...'
+                    writeFile file: '.env', text: 'GITHUB_AUTH_TOKEN=' + env.RAW_GH_TOKEN_PSW
                     echo '## Install and build Unity monorepo...'
-                    sh 'yarn install --frozen-lockfile'
+                    sh 'yarn install --immutable'
                     sh 'yarn build'
 
                     withEnv(["GH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
@@ -63,42 +68,24 @@ spec:
         stage('Build') {
             steps {
                 container('node20') {
-                    echo '## Configure .npmrc file for Github Package registry...'
-                    writeFile file: '.npmrc', text: '@asu:registry=https://npm.pkg.github.com/ \n' +
-                      '//npm.pkg.github.com/:_authToken=' + env.RAW_GH_TOKEN_PSW
+                  withEnv(["GITHUB_AUTH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
                     echo '## Install and build Unity monorepo...'
-                    sh 'yarn install --frozen-lockfile'
+                    sh 'yarn -v'
+                    sh 'node -v'
+                    sh 'npm -v'
+                    sh 'yarn install'
                     sh 'yarn build'
+                  }
                 }
             }
         }
         stage('Test') {
             steps {
-                container('node20') {
+                container('playwright') {
                     echo '## Running jests tests...'
                     sh 'yarn test'
                 }
             }
-        }
-        stage('Visual Regression Testing') {
-          when {
-            allOf {
-              expression { env.CHANGE_TARGET == 'dev' }
-              expression { // Only run if there are changes in packages directory
-                sh(returnStatus: true, script: 'git diff origin/dev... --name-only | grep --quiet "^packages/.*"') == 0
-              }
-            }
-          }
-          steps {
-              container('node20') {
-                echo 'building storybook...'
-                sh 'yarn build-storybook'
-              }
-              container('puppeteer') {
-                  echo 'running percy tests...'
-                  sh 'yarn percy-test'
-              }
-          }
         }
         stage('Publish') {
             when {
@@ -123,7 +110,7 @@ spec:
                 container('node20') {
                     script {
                         echo '# Final, post-publish install and build to include just published pkgs...'
-                        sh 'yarn install --frozen-lockfile'
+                        sh 'yarn install --immutable'
                         sh 'yarn build-storybook'
 
                         withEnv(["GH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {

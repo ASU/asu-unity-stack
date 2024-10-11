@@ -1,6 +1,4 @@
-
-import React from "react";
-import { useMemo, useEffect } from '@storybook/addons';
+import React, { useMemo, useEffect } from "react";
 import { clearStyles, addStyle } from './helpers/styleInjection';
 
 export const withColumns = (StoryFn, context) => {
@@ -29,6 +27,8 @@ export const withColumns = (StoryFn, context) => {
             linear-gradient(90deg,var(--gridbg) var(--gridcol), var(--gridbg2) -1px),
             linear-gradient(90deg,var(--gridbg) var(--gridcol), var(--gridbg2) -1px),
             linear-gradient(90deg,var(--gridbg) var(--gridcol), var(--gridbg2) -1px),
+/*...*/
+/*...*/
             linear-gradient(90deg,var(--gridbg) var(--gridcol), var(--gridbg2) -1px),
             linear-gradient(-90deg,var(--gridbg) var(--gridcol), var(--gridbg2) -1px),
             linear-gradient(-90deg,var(--gridbg) var(--gridcol), var(--gridbg2) -1px),
@@ -70,7 +70,7 @@ export const withColumns = (StoryFn, context) => {
         }
     }
     `;
-  });
+  }, [context.viewMode, context.id]);
 
   useEffect(() => {
     const selectorId =
@@ -85,7 +85,5 @@ export const withColumns = (StoryFn, context) => {
     addStyle(selectorId, columnsStyles);
   }, [isActive, columnsStyles, globals]);
 
-  return <>
-    <StoryFn />
-  </>
+  return StoryFn();
 };
