@@ -18,8 +18,7 @@ const renderImageCarousel = props => {
   return render(<ImageCarousel {...{ ...props }} />);
 };
 
-// TODO
-describe.skip("#Image Carousel", () => {
+describe("#Image Carousel", () => {
   /** @type {import("@testing-library/react").RenderResult} */
   let component;
 
@@ -42,18 +41,17 @@ describe.skip("#Image Carousel", () => {
     expect(arrowsElement).toBeInTheDocument();
   });
 
-  it("should scroll the slider on arrow button click", () => {
+  it("should scroll the slider on arrow button click", async () => {
     const arrowButton = component
       .queryByTestId("arrows-container")
       .getElementsByClassName("glide__arrow--next")[0];
     fireEvent.click(arrowButton);
-    setTimeout(() => {
+    await new Promise(resolve => setTimeout(resolve, 400));
       const targetElement =
         component.container.querySelectorAll("li.glide__slide")[1];
       expect(targetElement.getAttribute("class")).toContain(
         "glide__slide--active"
       );
-    });
   });
 
   it("should render specified items", () => {
@@ -64,7 +62,7 @@ describe.skip("#Image Carousel", () => {
   });
 });
 
-describe.skip("Image Carousel with content", () => {
+describe("Image Carousel with content", () => {
   /** @type {import("@testing-library/react").RenderResult} */
   let component;
   const props = { ...imageCarouselProps, imageItems: mockItemWithContent() };

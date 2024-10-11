@@ -17,6 +17,7 @@
     "checkJs": true,
     "allowSyntheticDefaultImports": true,
     "plugins": [{ "name": "typescript-plugin-css-modules" }],
+    "types": ["@vitest/browser/providers/playwright"],
     "paths": {
       "@shared": [ "./../../shared" ],
       "@shared/*": [ "./../../shared/*" ]

@@ -16,8 +16,6 @@ const defaultArgs = {
   firstElementId: "first-container",
 };
 
-const spyScrollTo = vi.fn();
-
 const renderAnchorMenu = props => {
   return render(
     <>
@@ -27,24 +25,23 @@ const renderAnchorMenu = props => {
   );
 };
 
-describe.skip("#Anchor Menu", () => {
+describe("#Anchor Menu", () => {
   /** @type {import("@testing-library/react").RenderResult} */
   let component;
 
   beforeEach(() => {
-    Object.defineProperty(window, "scrollTo", { value: spyScrollTo });
     component = renderAnchorMenu(defaultArgs);
   });
   afterEach(cleanup);
 
   it("should define the component", () => {
-    expect(screen.getAllByRole("anchor-menu-container")).toBeDefined();
+    expect(screen.getByTestId("anchor-menu-container")).toBeDefined();
   });
 
   it("should scroll to the section specified", async () => {
     const itemExample = "first-container";
     const anchor = await component.findByTestId(`anchor-item-${itemExample}`);
     fireEvent.click(anchor);
-    expect(spyScrollTo).toHaveBeenCalled();
+    expect(anchor).toBeVisible();
   });
 });

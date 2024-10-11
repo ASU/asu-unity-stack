@@ -9,11 +9,10 @@ import { cardCarouselProps } from "../../../../../__mocks__/data/props-mock";
 import { CardCarousel } from "./CardCarousel";
 
 const renderCardCarousel = props => {
-  return render(<CardCarousel {...{ ...props }} />);
+  return render(<CardCarousel {...props } />);
 };
 
-// TODO
-describe.skip("#Card Carousel", () => {
+describe("#Card Carousel", () => {
   /** @type {import("@testing-library/react").RenderResult} */
   let component;
 
@@ -43,17 +42,17 @@ describe.skip("#Card Carousel", () => {
     expect(expectedItems).toBe(renderedItems);
   });
 
-  it("should scroll the slider on arrow button click", () => {
+  it("should scroll the slider on arrow button click", async () => {
     const arrowButton = component
       .queryByTestId("arrows-container")
       .getElementsByClassName("glide__arrow--next")[0];
     fireEvent.click(arrowButton);
-    setTimeout(() => {
+    await new Promise(resolve => setTimeout(resolve, 400));
       const targetElement =
-        component.container.querySelectorAll("li.glide__slide")[1];
+        component.container.querySelectorAll("li.glide__slide")[1]
+        expect(targetElement).toBeVisible();
       expect(targetElement.getAttribute("class")).toContain(
         "glide__slide--active"
       );
-    });
   });
 });

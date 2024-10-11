@@ -58,8 +58,10 @@ describe("#Article", () => {
     [`Body`, `body`],
   ];
 
-  it.each(sections)("should define %p section", (_, testId) =>
-    expect(component.queryByTestId(testId)).toBeInTheDocument()
+  it.each(sections)("should define %p section", (_, testId) => {
+    const element = component.queryByTestId(testId)
+    expect(element).toBeInTheDocument()
+  }
   );
 });
 
