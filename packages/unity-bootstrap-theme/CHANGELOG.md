@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.15.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.14.2...@asu/unity-bootstrap-theme-v1.15.0) (2024-10-11)
+
+
+### Features
+
+* **unity-bootstrap-theme:** added blockquote animated block ([d61863f](https://github.com/ASU/asu-unity-stack/commit/d61863f4e3cdcfd1410595b2ec030548098b7959))
+
 # [@asu/unity-bootstrap-theme-v1.14.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.14.1...@asu/unity-bootstrap-theme-v1.14.2) (2024-09-23)
 
 
