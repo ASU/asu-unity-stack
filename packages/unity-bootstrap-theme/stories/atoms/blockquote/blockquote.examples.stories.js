@@ -198,6 +198,28 @@ export const BlockquoteAltCitation = () => (
   </>
 );
 
+export const BlockquoteAnimated = () => (
+  <>
+    <div className="uds-blockquoteAnimated accent-maroon uds-content-align">
+      <blockquote>
+        <h4><strong>The ASU difference:</strong></h4>
+        <h2>
+          <p>
+          We are measured not by whom we exclude, but by <mark className="pen-yellow">whom we include</mark> and
+          <mark className="pen-yellow"> how they succeed</mark>
+          </p>
+        </h2>
+        <div className="citation">
+          <div className="citation-content">
+            <cite className="description">Excerpt from ASU charter</cite>
+          </div>
+        </div>
+      </blockquote>
+    </div>
+
+  </>
+);
+
 export const TestimonialsNoImage = () => (
   <>
     <div className="uds-blockquote uds-testimonial accent-gold uds-content-align">

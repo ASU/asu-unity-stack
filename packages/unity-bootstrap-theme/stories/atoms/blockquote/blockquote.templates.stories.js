@@ -2,9 +2,16 @@ import React from "react";
 
 import { imageName } from "../../../../../shared/assets";
 import { defaultDecorator } from "../../../../../shared/components/Layout.js";
+import { initializeBlockquoteAnimation as doAnimate } from "./blockquote-animated";
 
 export default {
   title: "Atoms/Blockquotes and Testimonials/Templates",
+  parameters: {
+    initFunc: {
+      disable: false,
+      code: doAnimate,
+    },
+  },
   args: {
     type: "On White",
     reversed: false,
@@ -89,6 +96,33 @@ export const BlockquoteWithImage = ({type, reversed}) => {
             <div className="citation-content">
               <cite className="name">Michael M. Crow</cite>
               <cite className="description">ASU Charter</cite>
+            </div>
+          </div>
+        </blockquote>
+      </div>
+    </div>
+  );
+};
+
+export const BlockquoteAnimated = ({type}) => {
+  return (
+    <div className={type}>
+      <div
+        className={`uds-blockquoteAnimated ${
+          type === "bg-gray-7" ? "accent-gold text-white" : "accent-maroon"
+        } uds-content-align`}
+      >
+        <blockquote>
+          <h4><strong>The ASU difference:</strong></h4>
+          <h2>
+            <p>
+            We are measured not by whom we exclude, but by <mark className="pen-yellow">whom we include</mark> and
+            <mark className="pen-yellow"> how they succeed</mark>
+            </p>
+          </h2>
+          <div className="citation">
+            <div className="citation-content">
+              <cite className="description">Excerpt from ASU charter</cite>
             </div>
           </div>
         </blockquote>
