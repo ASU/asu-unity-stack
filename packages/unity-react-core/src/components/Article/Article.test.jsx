@@ -59,10 +59,9 @@ describe("#Article", () => {
   ];
 
   it.each(sections)("should define %p section", (_, testId) => {
-    const element = component.queryByTestId(testId)
-    expect(element).toBeInTheDocument()
-  }
-  );
+    const element = component.queryByTestId(testId);
+    expect(element).toBeInTheDocument();
+  });
 });
 
 describe("#News Article", () => {

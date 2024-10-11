@@ -9,7 +9,7 @@ import { cardCarouselProps } from "../../../../../__mocks__/data/props-mock";
 import { CardCarousel } from "./CardCarousel";
 
 const renderCardCarousel = props => {
-  return render(<CardCarousel {...props } />);
+  return render(<CardCarousel {...props} />);
 };
 
 describe("#Card Carousel", () => {
@@ -48,11 +48,11 @@ describe("#Card Carousel", () => {
       .getElementsByClassName("glide__arrow--next")[0];
     fireEvent.click(arrowButton);
     await new Promise(resolve => setTimeout(resolve, 400));
-      const targetElement =
-        component.container.querySelectorAll("li.glide__slide")[1]
-        expect(targetElement).toBeVisible();
-      expect(targetElement.getAttribute("class")).toContain(
-        "glide__slide--active"
-      );
+    const targetElement =
+      component.container.querySelectorAll("li.glide__slide")[1];
+    expect(targetElement).toBeVisible();
+    expect(targetElement.getAttribute("class")).toContain(
+      "glide__slide--active"
+    );
   });
 });

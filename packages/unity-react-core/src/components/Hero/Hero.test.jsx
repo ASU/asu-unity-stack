@@ -47,9 +47,9 @@ describe("#Hero", () => {
     [`Content`, `hero-content`],
   ];
 
-  test.each(sections)("should define %p section", (_, testId) =>
-    expect(component.queryByTestId(testId)).toBeInTheDocument()
-  );
+  test.each(sections)("should define %p section", async (_, testId) => {
+    await expect(component.queryByTestId(testId)).toBeInTheDocument();
+  });
 });
 
 describe("#Hero without content and subtitle", () => {

@@ -43,7 +43,7 @@ describe("#Testimonial", () => {
     [`Citation`, `testimonial-citation`],
   ];
 
-  test.each(elements)("should define %p element", (_, testId) =>
-    expect(component.queryByTestId(testId)).toBeInTheDocument()
-  );
+  test.each(elements)("should define %p element", (_, testId) => {
+      expect(component.queryByTestId(testId)).toBeInTheDocument();
+  });
 });

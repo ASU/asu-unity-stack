@@ -1,5 +1,7 @@
 /// <reference types="vitest/config" />
 
+import type { ExpectPollOptions } from '@vitest/expect';
+
 import { defineConfig } from 'vite';
 import { resolve } from "path";
 

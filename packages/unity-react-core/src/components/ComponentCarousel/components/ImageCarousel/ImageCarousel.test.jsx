@@ -47,11 +47,11 @@ describe("#Image Carousel", () => {
       .getElementsByClassName("glide__arrow--next")[0];
     fireEvent.click(arrowButton);
     await new Promise(resolve => setTimeout(resolve, 400));
-      const targetElement =
-        component.container.querySelectorAll("li.glide__slide")[1];
-      expect(targetElement.getAttribute("class")).toContain(
-        "glide__slide--active"
-      );
+    const targetElement =
+      component.container.querySelectorAll("li.glide__slide")[1];
+    expect(targetElement.getAttribute("class")).toContain(
+      "glide__slide--active"
+    );
   });
 
   it("should render specified items", () => {

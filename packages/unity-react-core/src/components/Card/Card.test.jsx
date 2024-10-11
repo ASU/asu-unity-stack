@@ -62,9 +62,9 @@ describe("#Card", () => {
     [`Tags`, `card-tags`],
   ];
 
-  test.each(sections)("should define %p element", (_, testId) =>
-    expect(component.queryByTestId(testId)).toBeInTheDocument()
-  );
+  test.each(sections)("should define %p element", async (_, testId) => {
+    await expect(component.queryByTestId(testId)).toBeInTheDocument();
+  });
 });
 
 describe("#Card options", () => {
