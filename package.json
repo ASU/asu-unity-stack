@@ -18,7 +18,7 @@
     "build": " yarn prebuild && lerna run --ignore @asu/components-core --ignore @asu/component-carousel build && yarn postbuild",
     "prebuild": "yarn build-components-core && yarn lint",
     "postbuild": "lerna run --ignore=@asu/unity-bootstrap-theme docs",
-    "test": "lerna run test --stream",
+    "test": "lerna run test --stream --parallel",
     "test:e2e": "jest",
     "prepublish-packages": "node scripts/copy-license.js",
     "publish-packages": "yarn prepublish-packages && lerna exec --concurrency 1 -- npx --no-install semantic-release --debug -e semantic-release-monorepo",

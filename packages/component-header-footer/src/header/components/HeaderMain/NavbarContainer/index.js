@@ -51,7 +51,17 @@ const NavbarContainer = () => {
                 <Button
                   {...button}
                   key={button.text}
-                  onFocus={() => trackGAEvent({ text: button.text })}
+                  onClick={() =>
+                    trackGAEvent({
+                      event: "link",
+                      action: "click",
+                      name: "onclick",
+                      region: "navbar",
+                      type: "internal link",
+                      section: "main navbar",
+                      text: button.text,
+                    })
+                  }
                 />
               ))}
             </form>
