@@ -43,10 +43,10 @@ describe("#Card Carousel", () => {
   });
 
   it("should scroll the slider on arrow button click", async () => {
-    const arrowButton = component
-      .queryByTestId("arrows-container")
-      .getElementsByClassName("glide__arrow--next")[0];
-    fireEvent.click(arrowButton);
+    const arrowButton = component?.queryByTestId("arrows-container")?.getElementsByClassName("glide__arrow--next")[0];
+    if (arrowButton) {
+      fireEvent.click(arrowButton);
+    }
     await new Promise(resolve => setTimeout(resolve, 400));
     const targetElement =
       component.container.querySelectorAll("li.glide__slide")[1];

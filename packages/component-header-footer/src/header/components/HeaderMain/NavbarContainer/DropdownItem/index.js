@@ -1,3 +1,4 @@
+// @ts-check
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 
@@ -31,7 +32,6 @@ const ButtonItem = ({ link, dropdownName, handleLinkEvent }) => (
       color={link.color || "dark"}
       href={link.href}
       onClick={e => handleLinkEvent(e, link)}
-      onKeyDown={handleLinkEvent}
     />
   </li>
 );
@@ -96,13 +96,16 @@ const DropdownItem = ({
 }) => {
   const { breakpoint } = useAppContext();
   const isMega = items?.length > 2;
+  /**
+   * @type {React.MutableRefObject<HTMLDivElement|null>}
+   */
   const dropdownRef = useRef(null);
   const [alignedRight, setAlignedRight] = useState(false);
   const MULTIPLE_SUBMENUS = items?.length > 1;
 
   useEffect(() => {
     if (window && dropdownRef.current) {
-      const elPosition = dropdownRef.current.getBoundingClientRect().left;
+      const elPosition = dropdownRef?.current?.getBoundingClientRect().left;
       const breakpointPosition = window.innerWidth * 0.55;
       setAlignedRight(elPosition > breakpointPosition);
     }
@@ -134,7 +137,7 @@ const DropdownItem = ({
       focusPrevLink();
     } else if (key === "Escape") {
       setItemOpened();
-      if (parentLink) parentLink.focus();
+      if (parentLink?.current) parentLink.current.focus();
     } else if (key === "Enter" || key === " " || type === "click") {
       link?.onClick?.(e);
       trackGAEvent({ ...LINK_DEFAULT_PROPS, text: link.text });
@@ -172,10 +175,7 @@ const DropdownItem = ({
       }`}
       breakpoint={breakpoint}
     >
-      <div
-        id={MULTIPLE_SUBMENUS ? listId : null}
-        className="dropdown-container"
-      >
+      <div id={MULTIPLE_SUBMENUS ? listId : ""} className="dropdown-container">
         {items?.map((item, index0) => {
           const genKey = idGenerator(`dropdown-item-${index0}-`);
           const key = genKey.next().value;
@@ -221,6 +221,7 @@ DropdownItem.propTypes = {
   setItemOpened: PropTypes.func,
   parentLink: PropTypes.shape({
     focus: PropTypes.func,
+    current: PropTypes.instanceOf(HTMLElement),
   }),
 };
 

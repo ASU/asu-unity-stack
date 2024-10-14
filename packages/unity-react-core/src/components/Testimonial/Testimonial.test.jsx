@@ -44,6 +44,6 @@ describe("#Testimonial", () => {
   ];
 
   test.each(elements)("should define %p element", (_, testId) => {
-      expect(component.queryByTestId(testId)).toBeInTheDocument();
+    expect(component.queryByTestId(testId)).toBeInTheDocument();
   });
 });

@@ -11,7 +11,6 @@ import { NavTreePropTypes } from "../../../../core/models/app-prop-types";
 import { DropdownItem } from "../DropdownItem";
 import { NavItemWrapper } from "./index.styles";
 
-
 export const DROPDOWNS_GA_EVENTS = {
   event: "collapse",
   type: "click",
