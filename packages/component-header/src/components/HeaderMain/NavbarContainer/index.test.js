@@ -79,6 +79,7 @@ describe("#Navbar Container Component with onClick and no href", () => {
   let component;
   let navItems;
   const onClick = jest.fn();
+  const subMenuOnClick = jest.fn();
 
   beforeEach(() => {
     component = renderNavbarContainer({
@@ -90,6 +91,12 @@ describe("#Navbar Container Component with onClick and no href", () => {
       navTree: testNavTreeWithOnClickEventAndNoHref.map(item => ({
         ...item,
         onClick: item.items?.length ? undefined : () => onClick(),
+        items: item.items?.map(subMenu =>
+          subMenu.map(subItem => ({
+            ...subItem,
+            onClick: subItem.onClick ? () => subMenuOnClick() : () => undefined,
+          }))
+        ) || undefined,
       })),
     });
     navItems = component.queryAllByTestId("nav-item");
@@ -99,6 +106,13 @@ describe("#Navbar Container Component with onClick and no href", () => {
   it("should call onClick", () => {
     fireEvent.click(navItems[0]);
     expect(onClick).toHaveBeenCalled();
+  });
+
+  it("should call onClick on subitem", () => {
+    fireEvent.click(navItems[2]);
+    const subItems = component.getAllByTestId("submenu-item");
+    fireEvent.click(subItems[0]);
+    expect(subMenuOnClick).toHaveBeenCalled();
   });
 
   it("should open up the dropdown on the 3rd link", () => {
