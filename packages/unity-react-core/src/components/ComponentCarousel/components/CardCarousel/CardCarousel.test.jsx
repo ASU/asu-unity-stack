@@ -43,7 +43,9 @@ describe("#Card Carousel", () => {
   });
 
   it("should scroll the slider on arrow button click", async () => {
-    const arrowButton = component?.queryByTestId("arrows-container")?.getElementsByClassName("glide__arrow--next")[0];
+    const arrowButton = component
+      ?.queryByTestId("arrows-container")
+      ?.getElementsByClassName("glide__arrow--next")[0];
     if (arrowButton) {
       fireEvent.click(arrowButton);
     }
