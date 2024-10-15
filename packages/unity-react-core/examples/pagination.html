@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pagination component - Example page</title>
   <!-- CSS only -->
-  <link rel="stylesheet" href="https://asu.github.io/asu-unity-stack/@asu/unity-bootstrap-theme/css/unity-bootstrap-theme.bundle.css" />
+  <link rel="stylesheet" href="../../unity-bootstrap-theme/dist/unity-bootstrap-theme2.css" />
 
   <!-- Load FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -24,11 +24,11 @@
          THOSE LINES BELOW
       -->
   <!-- *************************************************************** -->
-  <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin></script>
   <!-- *************************************************************** -->
   <!-- include bundled scripts from packages -->
-  <script src="../dist/libCore.umd.js"></script>
+  <script src="../dist/unityReactCore.umd.js"></script>
 </head>
 
 <body>
@@ -45,7 +45,7 @@
 
   <script>
     // Setup and initialize pagination options.
-    AsuWebCore.initPagination({
+    unityReactCore.initPagination({
       targetSelector: "#default-pagination",
       props: {
         type: "default",
@@ -53,7 +53,7 @@
         totalPages: 4,
       },
     });
-    AsuWebCore.initPagination({
+    unityReactCore.initPagination({
       targetSelector: "#bordered-pagination",
       props: {
         type: "bordered",
@@ -63,15 +63,15 @@
         showLastButton: true,
       },
     });
-    AsuWebCore.initPagination({
+    unityReactCore.initPagination({
       targetSelector: "#gray1-pagination",
       props: { type: "default", background: "gray1", currentPage: 5 },
     });
-    AsuWebCore.initPagination({
+    unityReactCore.initPagination({
       targetSelector: "#gray2-pagination",
       props: { type: "default", background: "gray2" },
     });
-    AsuWebCore.initPagination({
+    unityReactCore.initPagination({
       targetSelector: "#gray7-pagination",
       props: { type: "default", background: "gray7" },
     });

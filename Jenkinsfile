@@ -15,6 +15,12 @@ spec:
     command:
     - cat
     tty: true
+  - name: playwright
+    image: 'mcr.microsoft.com/playwright:v1.48.0-noble'
+    imagePullPolicy: Always
+    command:
+    - cat
+    tty: true
   - name: puppeteer
     image: 'ghcr.io/puppeteer/puppeteer:22'
     imagePullPolicy: Always
@@ -75,31 +81,11 @@ spec:
         }
         stage('Test') {
             steps {
-                container('node20') {
+                container('playwright') {
                     echo '## Running jests tests...'
                     sh 'yarn test'
                 }
             }
-        }
-        stage('Visual Regression Testing') {
-          when {
-            allOf {
-              expression { env.CHANGE_TARGET == 'dev' }
-              expression { // Only run if there are changes in packages directory
-                sh(returnStatus: true, script: 'git diff origin/dev... --name-only | grep --quiet "^packages/.*"') == 0
-              }
-            }
-          }
-          steps {
-              container('node20') {
-                echo 'building storybook...'
-                sh 'yarn build-storybook'
-              }
-              container('puppeteer') {
-                  echo 'running percy tests...'
-                  sh 'yarn percy-test'
-              }
-          }
         }
         stage('Publish') {
             when {

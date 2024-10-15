@@ -1,5 +1,7 @@
 /**
  * @typedef {object} AcadPlan
+ * @prop {string} acadPlanKey
+ * @prop {string} acadCode
  * @prop {string} acadPlanCode
  * @prop {string[]} [departmentCodes]
  * @prop {string[]} [collegeCodes]
@@ -10,6 +12,7 @@
  * @prop {string[]} planCategories
  * @prop {[{strm: string, strmDescription: string}]} [applicationDeadlines]
  * @prop {string} title
+ * @prop {boolean} rfiDisplay
  */
 
 import { KEY } from "./constants";
@@ -28,6 +31,14 @@ export const normalizeDegreeData = data => {
         applicationDeadlines: curr.applicationDeadlines?.map(
           ({ strm, strmDescription }) => ({ strm, strmDescription })
         ),
+
+        // plan Key is how RFI handles selecting the program
+        acadPlanKey: curr.acadPlanCode,
+
+        // EX: PROGRAM-PLAN
+        acadCode: `${curr.acadProgramCode}-${curr.acadPlanCode}`,
+
+        // EX: PLAN
         acadPlanCode: curr.acadPlanCode,
 
         // curr.campusesOffered array || null
@@ -56,14 +67,11 @@ export const normalizeDegreeData = data => {
             ({ categoryDescription }) => categoryDescription
           ) || [],
 
-        // curr.acadPlanDescription string
-        //   title = (Degree not included)
-        //   title (Certificate) = (ex Degree is a Cert)
-        title: `${curr.acadPlanDescription}${
-          curr.degreeDescriptionShort && curr.acadPlanType !== KEY.CER
-            ? ` (${curr.degreeDescriptionShort})`
-            : ``
-        }`,
+        // curr.acadPlanMarketingDescription string
+        title: curr.acadPlanMarketingDescription,
+
+        // should program be included in results
+        rfiDisplay: curr.rfiDisplay,
       };
       acc.push(p);
     }
@@ -71,8 +79,16 @@ export const normalizeDegreeData = data => {
       /** @type {AcadPlan} */
       const p = {
         applicationDeadlines: undefined,
-        // Online wants curr.code (which contains progcode-plancode)
-        acadPlanCode: curr.code,
+
+        // plan Key is how RFI handles selecting the program
+        acadPlanKey: curr.code,
+
+        // EX: PROGRAM-PLAN most of the time
+        // sometimes PROGRAM-PLAN--concentration (LWLW-LWLGSMLEGS--CONFLICTLAW)
+        acadCode: curr.code,
+
+        // EX: PLAN
+        acadPlanCode: curr.plancode,
 
         // always undefined
         campusCodes: undefined,
@@ -94,6 +110,9 @@ export const normalizeDegreeData = data => {
 
         // Already formated title (BS)
         title: curr.title,
+
+        // Online Api does not have this field so we are going to always set it to true
+        rfiDisplay: true,
       };
       acc.push(p);
     }

@@ -132,9 +132,6 @@ describe("#ListingPage", () => {
                 {
                   url: "examples/assets/img/demo-phot-3.jpeg",
                 },
-                {
-                  url: "examples/assets/img/demo-phot-4.jpeg",
-                },
               ],
             },
           },

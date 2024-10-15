@@ -3,7 +3,7 @@ import { FeedContext } from "@asu/components-core";
 import React, { useContext, useEffect } from "react";
 
 import trackReactComponent from "../../../../../shared/services/componentDatalayer";
-import { CardCarousel } from "../../../../unity-react-core/src/components/ComponentCarousel/components/CardCarousel";
+import { CardCarousel } from "../../../../unity-react-core/src/components/ComponentCarousel/components/CardCarousel/CardCarousel";
 import { BaseFeed } from "../../core/components/BaseFeed";
 import { defaultProps } from "../../core/constants/default-props";
 import { NewsWrapper } from "./index.styles";

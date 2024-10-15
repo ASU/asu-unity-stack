@@ -1,6 +1,6 @@
 {
   "name": "@asu/app-rfi",
-  "version": "2.3.9",
+  "version": "2.4.1",
   "description": "ASU Request For Information (RFI) form",
   "main": "./dist/appRfi.cjs.js",
   "browser": "./dist/appRfi.umd.js",
@@ -65,7 +65,7 @@
     "jest-image-snapshot": "^4.4.1",
     "jest-transform-css": "^6.0.1",
     "jest-transform-file": "^1.1.1",
-    "jsdoc": "^3.6.7",
+    "jsdoc": "4",
     "jsdoc-plugin-typescript": "^2.0.6",
     "jsdoc-to-markdown": "5.0.0",
     "jsdoc-ts-utils": "^2.0.1",
@@ -83,13 +83,13 @@
     "formik": "^2.1.4",
     "prop-types": "^15.7.2",
     "react-phone-input-2": "^2.14.0",
-    "reactstrap": "^8.9.0",
+    "reactstrap": "^9",
     "yup": "^0.28.1",
     "yup-phone": "^1.2.19"
   },
   "peerDependencies": {
-    "react": ">= 16.14.0 < 18",
-    "react-dom": ">= 16.14.0 < 18"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "volta": {
     "extends": "../../package.json"

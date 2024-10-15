@@ -3,7 +3,7 @@
 import { imageName } from "../../../../../../../shared/assets";
 
 /**
- * @typedef {import('.').TestimonialItem} TestimonialItem
+ * @typedef {import('./TestimonialCarousel').TestimonialItem} TestimonialItem
  */
 
 const testimonialNoCitation = [

@@ -1,27 +1,28 @@
 // @ts-nocheck
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 
-import { Accordion } from "../../components/Accordion";
-import { AnchorMenu } from "../../components/AnchorMenu";
-import { Article } from "../../components/Article";
-import { Button } from "../../components/Button";
-import { ButtonIconOnly } from "../../components/ButtonIconOnly";
-import { ButtonTag } from "../../components/ButtonTag";
+import { Accordion } from "../../components/Accordion/Accordion";
+import { AnchorMenu } from "../../components/AnchorMenu/AnchorMenu";
+import { Article } from "../../components/Article/Article";
+import { Button } from "../../components/Button/Button";
+import { ButtonIconOnly } from "../../components/ButtonIconOnly/ButtonIconOnly";
+import { ButtonTag } from "../../components/ButtonTag/ButtonTag";
 // eslint-disable-next-line import/no-cycle
-import { Card } from "../../components/Card";
+import { Card } from "../../components/Card/Card";
 import {
   initCardCarousel,
   initTestimonialCarousel,
   initImageCarousel,
   initImageGalleryCarousel,
-} from "../../components/ComponentCarousel";
-import { Hero } from "../../components/Hero";
-import { Image } from "../../components/Image";
-import { Pagination } from "../../components/Pagination";
-import { RankingCard } from "../../components/RankingCard";
-import { Testimonial } from "../../components/Testimonial";
-import { Video } from "../../components/Video";
+} from "../../components/ComponentCarousel/ComponentCarousel";
+import { Hero } from "../../components/Hero/Hero";
+import { Image } from "../../components/Image/Image";
+import { Pagination } from "../../components/Pagination/Pagination";
+import { RankingCard } from "../../components/RankingCard/RankingCard";
+import { TabbedPanels } from "../../components/TabbedPanels/TabbedPanels";
+import { Testimonial } from "../../components/Testimonial/Testimonial";
+import { Video } from "../../components/Video/Video";
 
 /**
  * @typedef {Object} ComponentProps
@@ -35,7 +36,8 @@ import { Video } from "../../components/Video";
  * @param {ComponentProps} props
  */
 const RenderReact = (component, props, target) => {
-  ReactDOM.render(React.createElement(component, props), target);
+  const root = createRoot(target);
+  root.render(React.createElement(component, props));
 };
 
 /**
@@ -115,3 +117,16 @@ export const initTestimonial = ({ targetSelector, props }) =>
  */
 export const initVideo = ({ targetSelector, props }) =>
   RenderReact(Video, props, document.querySelector(targetSelector));
+
+/**
+ * @param {ComponentProps} props
+ */
+export const initTabbedPanels = ({ targetSelector, props }) =>
+  RenderReact(TabbedPanels, props, document.querySelector(targetSelector));
+
+export {
+  initCardCarousel,
+  initTestimonialCarousel,
+  initImageCarousel,
+  initImageGalleryCarousel,
+};

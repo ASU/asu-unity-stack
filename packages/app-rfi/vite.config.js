@@ -25,7 +25,7 @@ export default defineConfig({
     cssCodeSplit: false,
   },
   esbuild: {
-    legalComments: 'none',
+    legalComments: 'eof',
     keepNames: false,
   },
   define: {
@@ -33,9 +33,7 @@ export default defineConfig({
     global: {}
   },
   plugins: [
-    react({
-      jsxRuntime: "automatic",
-		}),
+    react(),
     {
       name: "treat-js-files-as-jsx",
       async transform(code, id) {

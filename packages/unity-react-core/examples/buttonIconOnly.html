@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Button Icon Only component - Example page</title>
   <!-- CSS only -->
-  <link rel="stylesheet" href="https://asu.github.io/asu-unity-stack/@asu/unity-bootstrap-theme/css/unity-bootstrap-theme.bundle.css" />
+  <link rel="stylesheet" href="../../unity-bootstrap-theme/dist/unity-bootstrap-theme2.css" />
 
   <!-- Load FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -19,11 +19,11 @@
 
   <!-- *************************************************************** -->
   <!-- Load React. -->
-  <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin></script>
   <!-- *************************************************************** -->
   <!-- include bundled scripts from packages -->
-  <script src="../dist/libCore.umd.js"></script>
+  <script src="../dist/unityReactCore.umd.js"></script>
 </head>
 
 <body>
@@ -39,7 +39,7 @@
 
   <script>
     // Setup and initialize button icon only options.
-    AsuWebCore.initButtonIconOnly({
+    unityReactCore.initButtonIconOnly({
       targetSelector: "#default-button",
       props: {
         color: "white",
@@ -47,7 +47,7 @@
         onClick: () => alert("Button clicked"),
       },
     });
-    AsuWebCore.initButtonIconOnly({
+    unityReactCore.initButtonIconOnly({
       targetSelector: "#close-button",
       props: {
         color: "white",
@@ -55,7 +55,7 @@
         onClick: () => alert("Button clicked"),
       },
     });
-    AsuWebCore.initButtonIconOnly({
+    unityReactCore.initButtonIconOnly({
       targetSelector: "#next-button",
       props: {
         color: "white",
@@ -64,7 +64,7 @@
         onClick: () => alert("Button clicked"),
       },
     });
-    AsuWebCore.initButtonIconOnly({
+    unityReactCore.initButtonIconOnly({
       targetSelector: "#prev-button",
       props: {
         color: "white",

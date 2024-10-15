@@ -16,21 +16,21 @@
     <!-- CSS only -->
     <link
       rel="stylesheet"
-      href="https://asu.github.io/asu-unity-stack/@asu/unity-bootstrap-theme/css/unity-bootstrap-theme.bundle.css"
+      href="../../unity-bootstrap-theme/dist/unity-bootstrap-theme2.css"
     />
 
     <!-- *************************************************************** -->
     <script
-      src="https://unpkg.com/react@17/umd/react.production.min.js"
+      src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"
       crossorigin
     ></script>
     <script
-      src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"
+      src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"
       crossorigin
     ></script>
     <!-- *************************************************************** -->
     <!-- include bundled scripts from packages -->
-    <script src="../dist/libCore.umd.js"></script>
+    <script src="../dist/unityReactCore.umd.js"></script>
   </head>
   <body>
     <div class="container">
@@ -72,7 +72,7 @@
        */
 
       // Setup and initialize the component
-      AsuWebCore.initVideo({
+      unityReactCore.initVideo({
         targetSelector: "#default-video",
         props: {
           type: "video", // OPTIONAL
@@ -80,7 +80,7 @@
         },
       });
       // Setup and initialize the component
-      AsuWebCore.initVideo({
+      unityReactCore.initVideo({
         targetSelector: "#default-video-with-caption",
         props: {
           type: "video", // OPTIONAL
@@ -89,7 +89,7 @@
         },
       });
       // Setup and initialize the component
-      AsuWebCore.initVideo({
+      unityReactCore.initVideo({
         targetSelector: "#youtube-video",
         props: {
           type: "youtube", // Required
@@ -97,7 +97,7 @@
         },
       });
       // Setup and initialize the component
-      AsuWebCore.initVideo({
+      unityReactCore.initVideo({
         targetSelector: "#youtube-video-with-caption",
         props: {
           type: "youtube", // Required
