@@ -15,3 +15,4 @@ export * from "./TabbedPanels/TabbedPanels";
 export * from "./Testimonial/Testimonial";
 export * from "./Video/Video";
 export * from "./ComponentCarousel/components";
+export * from "./SystemAlert/SystemAlert.tsx";
