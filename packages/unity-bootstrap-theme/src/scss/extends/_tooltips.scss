@@ -7,9 +7,22 @@
   }
 }
 
-div.uds-tooltip-container {
+.uds-tooltip-container {
   display: inline-block;
   position: relative;
+
+  [aria-describedby] {
+    + [role="tooltip"] {
+      visibility: hidden;
+    }
+  }
+
+  [aria-describedby]:focus,
+  [aria-describedby]:hover {
+    + [role="tooltip"] {
+      visibility: visible;
+    }
+  }
 }
 
 button.uds-tooltip {

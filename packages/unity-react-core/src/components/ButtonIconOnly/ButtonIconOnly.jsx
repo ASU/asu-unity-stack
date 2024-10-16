@@ -27,6 +27,7 @@ export const ButtonIconOnly = ({
   onClick,
   size,
   cardTitle,
+  ...rest
 }) => {
   const handleClick = text => {
     trackGAEvent({ ...gaDefaultObject, text, section: cardTitle });
@@ -42,6 +43,7 @@ export const ButtonIconOnly = ({
       ref={innerRef}
       onClick={() => handleClick(`${icon?.[1]} icon`)}
       aria-label="Close"
+      {...rest}
     >
       <i className={`${icon?.[0]} fa-${icon?.[1]}`} />
     </button>
