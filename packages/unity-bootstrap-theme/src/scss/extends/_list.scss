@@ -11,7 +11,7 @@
 
   li {
     margin-bottom: 1rem;
-
+    position:relative;
     &:last-of-type {
       margin-bottom: 0rem;
     }
@@ -111,7 +111,7 @@ ul.uds-list,
 ol.uds-list {
   // Maroon lists
   &.maroon {
-    li:before {
+    li {
       --li-before-color: #{$uds-color-base-maroon};
     }
   }
@@ -125,16 +125,12 @@ ol.uds-list {
     background-color: $uds-color-base-gray-7;
     color: $uds-color-base-gray-2;
     // Default white list bullets (for dark mode)
-    li:before {
+    li {
       --li-before-color: #{$uds-color-base-gray-2};
     }
     // Gold list bullets (for dark mode)
-    &.gold li:before {
+    &.gold li {
       --li-before-color: #{$uds-color-base-gold};
-    }
-    // Gold list icon bullets (for dark mode)
-    &.gold li .fa-li {
-      color: $uds-color-base-gold;
     }
     &.uds-steplist li:before {
       --li-before-background-color: #{$uds-color-base-gray-2};
@@ -171,17 +167,19 @@ ul.uds-list {
     margin-bottom: 0rem;
     li .fa-li {
       left: -2.5rem;
+      color: var(--li-before-color);
     }
-    li:before {
+    li:not(.blank-icon):before {
       --li-before-content: none;
+
       vertical-align: middle;
       padding-right: 1rem;
       margin-left: -1.5rem;
     }
     // Maroon icon bullets
-    &.maroon li .fa-li {
-      color: $uds-color-base-maroon;
-    }
+    // &.maroon li .fa-li {
+    //   color: $uds-color-base-maroon;
+    // }
   }
 }
 
