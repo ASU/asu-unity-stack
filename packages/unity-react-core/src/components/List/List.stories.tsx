@@ -2,6 +2,7 @@ import type { StoryFn, StoryContext } from '@storybook/react';
 import React from "react";
 import { List, ListProps } from "./List";
 import { ItemListStyleColor, ListBackgroundColor, ListComponentType, ListElementType } from "./ListConstants.js";
+import { item, item2, lorem } from './list.helper.js';
 
 const decorator = (story:StoryFn, context: StoryContext) =>
   <div className="container"><div className="row">{story(context.args, context)}</div></div>;
@@ -11,10 +12,6 @@ export default {
   component: List,
   decorators: [decorator]
 };
-
-const lorem = "Lorem ipsum dolor sit amet, adipiscing elit.";
-const item = { content: lorem };
-const item2 = { content: ["Title", lorem] };
 
 const listTemplate = (args: ListProps) => {
   return <List {...args} />
