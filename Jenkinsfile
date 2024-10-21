@@ -91,7 +91,7 @@ spec:
                     sh 'yarn install --immutable'
                     sh 'yarn npm audit --all --severity critical'
                     script {
-                        def result = sh(script: 'yarn npm audit --all --severity moderatee --json', returnStdout: true).trim()
+                        def result = sh(script: 'yarn npm audit --all --severity moderate --json', returnStdout: true).trim()
                         def auditData = readJSON text: result
                         slackSend channel: '#prdfam-uds-ci', color: 'warning', message: "@uds-developers High vulnerabilties found: ${auditData}"
                     }
