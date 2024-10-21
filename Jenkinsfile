@@ -70,9 +70,6 @@ spec:
                 container('node20') {
                   withEnv(["GITHUB_AUTH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
                     echo '## Install and build Unity monorepo...'
-                    sh 'yarn -v'
-                    sh 'node -v'
-                    sh 'npm -v'
                     sh 'yarn install'
                     sh 'yarn build'
                   }
@@ -90,13 +87,13 @@ spec:
         stage('Security Check') {
             steps {
                 container('node20') {
+                    sh 'yarn'
                     echo '## Running security checks...'
-                    sh 'yarn npm audit --all --severity critical'
+                    sh 'yarn npm audit --all --recursive --severity critical'
                     script {
-                        def result = sh(script: 'yarn npm audit --all --severity moderate', returnStatus: true)
-                        if (result != 0) {
-                            slackSend(channel: 'prdfam-uds-ci', message: 'High security vulnerabilities found')
-                        }
+                        def result = sh(script: 'yarn npm audit --all --severity moderatee --json', returnStdout: true).trim()
+                        def auditData = readJSON text: result
+                        slackSend channel: '#prdfam-uds-ci', color: 'warning', message: "@uds-developers High vulnerabilties found: ${auditData}"
                     }
                 }
             }
