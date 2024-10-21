@@ -91,12 +91,27 @@ spec:
                     sh 'yarn install --immutable'
                     sh 'yarn npm audit --all --severity critical'
                     script {
-                        def result = sh(script: 'yarn npm audit --all --severity moderate --json', returnStdout: true).trim()
-                        def auditData = readJSON text: result
-                        slackSend channel: '#prdfam-uds-ci', color: 'warning', message: "@uds-developers High vulnerabilties found: ${auditData}"
+                    def result = sh(
+                        script: 'yarn npm audit --all --severity moderate --json',
+                        returnStdout: true,
+                        returnStatus: false
+                    ).trim()
+
+                    if (result) {
+                      try {
+                          def auditData = readJSON text: result
+                          slackSend(
+                              channel: '#prdfam-uds-ci',
+                              color: 'warning',
+                              message: "@uds-developers High vulnerabilities found: ${auditData}"
+                          )
+                      } catch (Exception e) {
+                          echo "Warning: Failed to parse audit results: ${e.getMessage()}"
+                      }
+                    }
                     }
                   }
-                }
+              }
             }
         }
         stage('Publish') {
