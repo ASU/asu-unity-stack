@@ -87,6 +87,20 @@ spec:
                 }
             }
         }
+        stage('Security Check') {
+            steps {
+                container('node20') {
+                    echo '## Running security checks...'
+                    sh 'yarn npm audit --all --severity critical'
+                    script {
+                        def result = sh(script: 'yarn npm audit --all --severity moderate', returnStatus: true)
+                        if (result != 0) {
+                            slackSend(channel: 'prdfam-uds-ci', message: 'High security vulnerabilities found')
+                        }
+                    }
+                }
+            }
+        }
         stage('Publish') {
             when {
                 branch 'dev'
