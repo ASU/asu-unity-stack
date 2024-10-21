@@ -87,7 +87,7 @@ spec:
         stage('Security Check') {
             steps {
                 container('node20') {
-                    sh 'yarn'
+                    sh 'yarn install --immutable'
                     echo '## Running security checks...'
                     sh 'yarn npm audit --all --recursive --severity critical'
                     script {
