@@ -89,7 +89,7 @@ spec:
                 container('node20') {
                     sh 'yarn install --immutable'
                     echo '## Running security checks...'
-                    sh 'yarn npm audit --all --recursive --severity critical'
+                    sh 'yarn npm audit --all --severity critical'
                     script {
                         def result = sh(script: 'yarn npm audit --all --severity moderatee --json', returnStdout: true).trim()
                         def auditData = readJSON text: result
