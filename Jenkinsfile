@@ -52,7 +52,6 @@ spec:
                 container('node20') {
                   script {
                     echo '## Configure env file for @asu registry...'
-                    writeFile file: '.env', text: 'GITHUB_AUTH_TOKEN=' + env.RAW_GH_TOKEN_PSW
                     echo '## Install and build Unity monorepo...'
                     sh 'yarn install --immutable'
                     sh 'yarn build'
@@ -87,14 +86,16 @@ spec:
         stage('Security Check') {
             steps {
                 container('node20') {
-                    sh 'yarn install --immutable'
+                  withEnv(["GITHUB_AUTH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
                     echo '## Running security checks...'
+                    sh 'yarn install --immutable'
                     sh 'yarn npm audit --all --severity critical'
                     script {
                         def result = sh(script: 'yarn npm audit --all --severity moderatee --json', returnStdout: true).trim()
                         def auditData = readJSON text: result
                         slackSend channel: '#prdfam-uds-ci', color: 'warning', message: "@uds-developers High vulnerabilties found: ${auditData}"
                     }
+                  }
                 }
             }
         }
