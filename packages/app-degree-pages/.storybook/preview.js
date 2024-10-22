@@ -9,13 +9,6 @@ const parameters = {
       order: [`${ListingPage.title}`, `${DetailPage.title}`],
     },
   },
-  percy: {
-    include: [
-      "Program Listing Page: Default\$",
-      "Program Detail Page: Default\$",
-    ],
-    waitForTimeout: 5000,
-  },
 };
 
 /** @type { import('@storybook/react').Preview } */

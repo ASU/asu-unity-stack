@@ -23,7 +23,6 @@
   - [Structure](#structure)
   - [Building, Testing (from the package root at packages/\[package-name\])](#building-testing-from-the-package-root-at-packagespackage-name)
   - [Running end-to-end testing (from the Git project root)(currently disabled)](#running-end-to-end-testing-from-the-git-project-rootcurrently-disabled)
-  - [Visual Regression Testing](#visual-regression-testing)
   - [❯ CLI tools](#-cli-tools)
     - [check-element-changes](#check-element-changes)
     - [check-element-local-changes](#check-element-local-changes)
@@ -252,18 +251,6 @@ It's also possible to build a package from the git project root with a Yarn work
 yarn build # build the project
 yarn start & yarn test:e2e # start the testing server and run e2e tests
 yarn stop # stop the testing server
-```
-
-
-## Visual Regression Testing
-
-We use Percy for visual regression testing. Percy is a visual testing platform that allows us to take screenshots of our components and compare them to previous versions to ensure that changes to our components do not introduce visual regressions. Percy runs on every pull request against the main branch. If you are a contributor, you can view the Percy build approval link in the pull request template and approve the build if it looks good. To run tests locally in a dry-run mode, add the `--dry-run` flag in the `percy-test` script in the `scripts/percy-testing.js` file. This will allow you to see how many snapshots will be taken and whether the tests wil fail without uploading to percy cloud. Then run:
-
-```bash
-yarn build # build the project
-yarn build-storybook # build storybook
-export PERCY_PARALLEL_NONCE=RANDOM_STRING # set the PERCY_PARALLEL_NONCE environment variable to any random alphanumeric string.
-yarn percy-test # run percy tests
 ```
 
 

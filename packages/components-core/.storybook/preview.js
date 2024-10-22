@@ -3,17 +3,6 @@ import "../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 
 const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
-  percy: {
-    include: [
-      "Accordion: Default\$",
-      "AnchorMenu",
-      "Article",
-      "Card: Default\$",
-      "Card: Event\$",
-      "Pagination: Default\$",
-      "TabbedPanels: Default\$",
-    ],
-  },
   backgrounds: {
     values: [
       {
