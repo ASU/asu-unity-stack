@@ -92,14 +92,14 @@ spec:
                     sh 'yarn npm audit --all --severity critical'
                     script {
                     def result = sh(
-                        script: 'yarn npm audit --all --severity moderate --json',
+                        script: 'yarn npm audit --all --severity high --json',
                         returnStatus: true
                     )
                     if (result != 0) {
                       slackSend(
                           channel: '#prd-uds',
                           color: 'warning',
-                          message: "@uds-developers TESTING: ${env.RUN_DISPLAY_URL}"
+                          message: "@uds-developers Action might be needed: ${env.RUN_DISPLAY_URL}"
                       )
                     }
                     }
