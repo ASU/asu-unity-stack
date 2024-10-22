@@ -93,8 +93,7 @@ spec:
                     script {
                     def result = sh(
                         script: 'yarn npm audit --all --severity moderate --json',
-                        returnStdout: true,
-                        returnStatus: false
+                        returnStatus: true
                     ).trim()
 
                     if (result) {
