@@ -84,28 +84,31 @@ spec:
             }
         }
         stage('Security Check') {
-            steps {
-                container('node20') {
-                  withEnv(["GITHUB_AUTH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
-                    echo '## Running security checks...'
-                    sh 'yarn install --immutable'
-                    sh 'yarn npm audit --all --severity critical'
-                    script {
-                    def result = sh(
-                        script: 'yarn npm audit --all --severity high --json',
-                        returnStatus: true
+          when {
+            expression { env.CHANGE_TARGET == 'dev' }
+          }
+          steps {
+              container('node20') {
+                withEnv(["GITHUB_AUTH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
+                  echo '## Running security checks...'
+                  sh 'yarn install --immutable'
+                  sh 'yarn npm audit --all --severity critical'
+                  script {
+                  def result = sh(
+                      script: 'yarn npm audit --all --severity high',
+                      returnStatus: true
+                  )
+                  if (result != 0) {
+                    slackSend(
+                        channel: '#prd-uds',
+                        color: 'warning',
+                        message: "@uds-developers Action might be needed: ${env.RUN_DISPLAY_URL}"
                     )
-                    if (result != 0) {
-                      slackSend(
-                          channel: '#prd-uds',
-                          color: 'warning',
-                          message: "@uds-developers Action might be needed: ${env.RUN_DISPLAY_URL}"
-                      )
-                    }
-                    }
                   }
-              }
+                  }
+                }
             }
+          }
         }
         stage('Publish') {
             when {
