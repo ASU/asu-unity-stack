@@ -88,25 +88,20 @@ spec:
                 container('node20') {
                   withEnv(["GITHUB_AUTH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
                     echo '## Running security checks...'
+                    sh 'printenv'
                     sh 'yarn install --immutable'
                     sh 'yarn npm audit --all --severity critical'
                     script {
                     def result = sh(
                         script: 'yarn npm audit --all --severity moderate --json',
                         returnStatus: true
-                    ).trim()
-
-                    if (result) {
-                      try {
-                          def auditData = readJSON text: result
-                          slackSend(
-                              channel: '#prdfam-uds-ci',
-                              color: 'warning',
-                              message: "@uds-developers High vulnerabilities found: ${auditData}"
-                          )
-                      } catch (Exception e) {
-                          echo "Warning: Failed to parse audit results: ${e.getMessage()}"
-                      }
+                    )
+                    if (result != 0) {
+                      slackSend(
+                          channel: '#prdfam-uds-ci',
+                          color: 'warning',
+                          message: "@uds-developers High vulnerabilities found: ${JENKINS_URL}job/${JOB_NAME}/${BUILD_NUMBER}/console"
+                      )
                     }
                     }
                   }
