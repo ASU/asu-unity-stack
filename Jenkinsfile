@@ -88,7 +88,6 @@ spec:
                 container('node20') {
                   withEnv(["GITHUB_AUTH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
                     echo '## Running security checks...'
-                    sh 'printenv'
                     sh 'yarn install --immutable'
                     sh 'yarn npm audit --all --severity critical'
                     script {
@@ -98,9 +97,9 @@ spec:
                     )
                     if (result != 0) {
                       slackSend(
-                          channel: '#prdfam-uds-ci',
+                          channel: '#prd-uds',
                           color: 'warning',
-                          message: "@uds-developers High vulnerabilities found: ${JENKINS_URL}job/${JOB_NAME}/${BUILD_NUMBER}/console"
+                          message: "@uds-developers TESTING: ${env.RUN_DISPLAY_URL}"
                       )
                     }
                     }
