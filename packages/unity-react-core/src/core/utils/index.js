@@ -17,6 +17,7 @@ import {
   initImageGalleryCarousel,
 } from "../../components/ComponentCarousel/ComponentCarousel";
 import { Hero } from "../../components/Hero/Hero";
+import { List } from "../../components/List/List.tsx";
 import { Image } from "../../components/Image/Image";
 import { Pagination } from "../../components/Pagination/Pagination";
 import { RankingCard } from "../../components/RankingCard/RankingCard";
@@ -130,3 +131,10 @@ export {
   initImageCarousel,
   initImageGalleryCarousel,
 };
+
+/**
+ * @param {ComponentProps} props
+ */
+export const initList = ({ targetSelector, props }) =>
+  RenderReact(List, props, document.querySelector(targetSelector));
+
