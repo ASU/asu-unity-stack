@@ -270,7 +270,8 @@ const StyledFooter = styled.footer`
           text-decoration: none;
           display: block;
 
-          &:hover, &:focus {
+          &:hover,
+          &:focus {
             color: var(--color-base-gold);
             text-decoration: underline;
           }

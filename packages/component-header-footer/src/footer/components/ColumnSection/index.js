@@ -31,26 +31,15 @@ const ColumnSection = ({ columnIndex, column: { title, links } }) => {
     return () => mediaWatcher.removeEventListener("change", handleMediaChange);
   }, []);
 
-  const handleToggle = () => {
-    if (isLgDesktop) {
-      setShow(true);
-      return;
-    }
-
-    setShow(prev => {
-      const showingContent = !prev;
-      handleAnimation(showingContent);
-      return showingContent;
-    });
-  };
-
-  const handleAnimation = (showingContent) => {
+  const handleAnimation = showingContent => {
     const accordionBody = accordionBodyRef?.current;
     if (!accordionBody) return;
     accordionBody.classList.add("collapsing");
     const animation = accordionBody.animate(
       [
-        { maxHeight: showingContent ? `${accordionBody.scrollHeight}px` : "0px" },
+        {
+          maxHeight: showingContent ? `${accordionBody.scrollHeight}px` : "0px",
+        },
       ],
       {
         duration: 350,
@@ -67,6 +56,19 @@ const ColumnSection = ({ columnIndex, column: { title, links } }) => {
         accordionBody.classList.remove("show");
       }
     };
+  };
+
+  const handleToggle = () => {
+    if (isLgDesktop) {
+      setShow(true);
+      return;
+    }
+
+    setShow(prev => {
+      const showingContent = !prev;
+      handleAnimation(showingContent);
+      return showingContent;
+    });
   };
 
   return (
@@ -93,7 +95,7 @@ const ColumnSection = ({ columnIndex, column: { title, links } }) => {
         </div>
         <div
           id={`footlink-${columnIndex}`}
-          className={`accordion-body`}
+          className="accordion-body"
           role="region"
           aria-labelledby={`footlink-header-${columnIndex}`}
           ref={accordionBodyRef}
