@@ -2,7 +2,7 @@
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes, { shape, arrayOf } from "prop-types";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 /**
  * @typedef {import("../../core/models/types").Column} Column
@@ -19,6 +19,9 @@ const ColumnSection = ({ columnIndex, column: { title, links } }) => {
   const initialMatches = isWindowDefined ? window.innerWidth >= 1260 : false;
   const [isLgDesktop, setIsLgDesktop] = useState(initialMatches);
 
+  /** @type {React.RefObject<HTMLDivElement> | null} */
+  const accordionBodyRef = useRef(null);
+
   useEffect(() => {
     const mediaWatcher = window.matchMedia("screen and (min-width: 1260px)");
     const handleMediaChange = e => setIsLgDesktop(e.matches);
@@ -28,12 +31,44 @@ const ColumnSection = ({ columnIndex, column: { title, links } }) => {
     return () => mediaWatcher.removeEventListener("change", handleMediaChange);
   }, []);
 
+  const handleAnimation = showingContent => {
+    const accordionBody = accordionBodyRef?.current;
+    if (!accordionBody) return;
+    accordionBody.classList.add("collapsing");
+    const animation = accordionBody.animate(
+      [
+        {
+          maxHeight: showingContent ? `${accordionBody.scrollHeight}px` : "0px",
+        },
+      ],
+      {
+        duration: 350,
+        easing: "ease-in-out",
+        fill: "forwards",
+      }
+    );
+
+    animation.onfinish = () => {
+      accordionBody.classList.remove("collapsing");
+      if (showingContent) {
+        accordionBody.classList.add("show");
+      } else {
+        accordionBody.classList.remove("show");
+      }
+    };
+  };
+
   const handleToggle = () => {
     if (isLgDesktop) {
       setShow(true);
-    } else {
-      setShow(!show);
+      return;
     }
+
+    setShow(prev => {
+      const showingContent = !prev;
+      handleAnimation(showingContent);
+      return showingContent;
+    });
   };
 
   return (
@@ -60,9 +95,10 @@ const ColumnSection = ({ columnIndex, column: { title, links } }) => {
         </div>
         <div
           id={`footlink-${columnIndex}`}
-          className={`accordion-body ${show ? "show" : ""}`}
+          className="accordion-body"
           role="region"
           aria-labelledby={`footlink-header-${columnIndex}`}
+          ref={accordionBodyRef}
         >
           {links.map(link => (
             <a

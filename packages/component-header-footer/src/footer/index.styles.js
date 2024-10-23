@@ -251,14 +251,16 @@ const StyledFooter = styled.footer`
       }
 
       .accordion-body {
-        max-height: 0px;
+        display: none;
         overflow: hidden;
-        transition: max-height 0.35s ease-out;
 
+        &.collapsing {
+          display: block;
+          max-height: 0px;
+        }
         &.show {
           display: block;
-          max-height: 800px;
-          transition: max-height 0.4s ease-in-out;
+          max-height: 1000px;
         }
 
         .nav-link {
@@ -268,7 +270,8 @@ const StyledFooter = styled.footer`
           text-decoration: none;
           display: block;
 
-          &:hover {
+          &:hover,
+          &:focus {
             color: var(--color-base-gold);
             text-decoration: underline;
           }
