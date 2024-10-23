@@ -37,7 +37,6 @@ spec:
         RAW_GH_TOKEN = credentials('github-org-asu-pac')
         NPM_TOKEN = credentials('NPM_TOKEN')
         NODE_AUTH_TOKEN = credentials('github-org-asu-pac')
-        PERCY_TOKEN = credentials('PERCY_TOKEN')
     }
     options {
       buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
@@ -52,7 +51,6 @@ spec:
                 container('node20') {
                   script {
                     echo '## Configure env file for @asu registry...'
-                    writeFile file: '.env', text: 'GITHUB_AUTH_TOKEN=' + env.RAW_GH_TOKEN_PSW
                     echo '## Install and build Unity monorepo...'
                     sh 'yarn install --immutable'
                     sh 'yarn build'
@@ -70,9 +68,6 @@ spec:
                 container('node20') {
                   withEnv(["GITHUB_AUTH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
                     echo '## Install and build Unity monorepo...'
-                    sh 'yarn -v'
-                    sh 'node -v'
-                    sh 'npm -v'
                     sh 'yarn install'
                     sh 'yarn build'
                   }
@@ -86,6 +81,33 @@ spec:
                     sh 'yarn test'
                 }
             }
+        }
+        stage('Security Check') {
+          when {
+            expression { env.CHANGE_TARGET == 'dev' }
+          }
+          steps {
+              container('node20') {
+                withEnv(["GITHUB_AUTH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
+                  echo '## Running security checks...'
+                  sh 'yarn install --immutable'
+                  sh 'yarn npm audit --all --severity critical'
+                  script {
+                  def result = sh(
+                      script: 'yarn npm audit --all --severity high',
+                      returnStatus: true
+                  )
+                  if (result != 0) {
+                    slackSend(
+                        channel: '#prd-uds',
+                        color: 'warning',
+                        message: "@uds-developers Action might be needed: ${env.RUN_DISPLAY_URL}"
+                    )
+                  }
+                  }
+                }
+            }
+          }
         }
         stage('Publish') {
             when {
