@@ -12,7 +12,7 @@ export default {
 export const searchPageExample = () => (
   <div className="uds-content-align">
     <SearchPage
-      API_URL="https://test-asu-isearch.ws.asu.edu"
+      API_URL="https://search.asu.edu"
       searchApiVersion="/api/v1/"
       loggedIn={false}
       // appPathFolder="/my/custom/path/to/component/root/example"

@@ -46,6 +46,9 @@ const SearchResultsList = styled.div`
     span {
       font-weight: bold;
     }
+    .person-address span {
+      font-weight: normal;
+    }
   }
   .results-title-small {
     margin-bottom: 32px;
