@@ -75,12 +75,16 @@ Desktop styles
       li:not(:first-child) {
         margin-left: $uds-size-spacing-3;
       }
+      li:nth-child(-n + 2) {
+        white-space: nowrap;
+      }
       &.person-contact-info {
         margin-bottom: $uds-size-spacing-2;
         .person-address {
           display: flex;
           flex-direction: column;
           margin: 0;
+          font-weight: normal;
         }
       }
       &.person-social-medias a {
