@@ -1,6 +1,6 @@
 import React from "react";
 
-import innovationLockup from "./2024-ranked-1.png";
+import innovationLockup from "./../../../src/img/innovation-lockup/on-gold/footer-rank.png";
 import endorsedLogo from "./ASU_UniversityTechOffice_2_Horiz_RGB_White_150ppi.png";
 
 export const GlobalElementsOnly = () => (
