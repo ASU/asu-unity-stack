@@ -203,7 +203,7 @@ module.exports = generateHTML = packages => `
                 href="https://www.asu.edu/rankings"
               >
                 <img
-                  src="./@asu/unity-bootstrap-theme/img/innovation-lockup/on-gold/200420-GlobalFooter-No1InnovationLockup.png"
+                  src="./@asu/unity-bootstrap-theme/img/innovation-lockup/on-gold/2024-ranked-1.png"
                   alt="Number one in the U.S. for innovation. #1 ASU, #2 Stanford, #3 MIT. - U.S. News and World Report, 5 years, 2016-2020"
                 />
               </a>
