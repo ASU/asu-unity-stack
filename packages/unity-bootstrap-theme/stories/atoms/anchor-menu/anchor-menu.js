@@ -1,5 +1,3 @@
-const bootstrap = require('bootstrap');
-
 function initializeAnchorMenu () {
   const HEADER_IDS = ['asu-header', 'asuHeader'];
 
@@ -32,16 +30,6 @@ function initializeAnchorMenu () {
     anchorTargets.set(anchor, target);
   }
 
-  /*
-    Bootstrap needs to be loaded as a variable in order for this to work.
-    An alternative is to remove this and add the data-bs-spy="scroll" data-bs-target="#uds-anchor-menu nav" attributes to the body tag
-    See https://getbootstrap.com/docs/5.3/components/scrollspy/ for more info
-  */
-  const scrollSpy = new bootstrap.ScrollSpy(body, {
-    target: '#uds-anchor-menu nav',
-    rootMargin: '20%'
-  });
-
   const shouldAttachNavbarOnLoad = window.scrollY > navbarInitialTop;
   if (shouldAttachNavbarOnLoad) {
     globalHeader.appendChild(navbar);
@@ -49,7 +37,29 @@ function initializeAnchorMenu () {
     navbar.classList.add("uds-anchor-menu-attached");
   }
 
+  /**
+   * Calculates the percentage of an element that is visible in the viewport.
+   *
+   * @param {Element} el The element to calculate the visible percentage for.
+   * @return {number} The percentage of the element that is visible in the viewport.
+   */
+  function calculateVisiblePercentage(el) {
+  }
+
   window.addEventListener("scroll", function () {
+    const elements = document.querySelectorAll('[id^="webspark-anchor-link--"]');
+    let max = 0;
+    elements.forEach(function(el) {
+      const parentVisiblePercentage = calculateVisiblePercentage(el.parentNode);
+      if (parentVisiblePercentage > 0 && parentVisiblePercentage > max) {
+        max = parentVisiblePercentage;
+        document.querySelector('[href="#' + el.id + '"]').classList.add('active');
+        document.querySelectorAll('a[href^="#webspark-anchor-link--"]:not([href="#' + el.id + '"])').forEach(function(e) {
+          e.classList.remove('active');
+        });
+      }
+    });
+
     const navbarY = navbar.getBoundingClientRect().top;
     const headerHeight = globalHeader.classList.contains("scrolled") ?  globalHeader.offsetHeight - 32 : globalHeader.offsetHeight; // 32 is the set height of the gray toolbar above the global header.
 

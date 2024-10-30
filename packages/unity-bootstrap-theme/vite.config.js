@@ -1,6 +1,6 @@
 import react from "@vitejs/plugin-react";
 import { resolve } from 'path';
-import { defineConfig, transformWithEsbuild } from 'vite';
+import { defineConfig, transformWithEsbuild, loadEnv } from 'vite';
 
 import pkg from './package.json';
 /** @typedef {import('vite').UserConfig} UserConfig */
@@ -32,7 +32,7 @@ const c = {
   },
   build: {
     emptyOutDir: true,
-    sourcemap: true,
+    sourcemap: false,
     cssMinify: true,
     cssCodeSplit: true,
     lib: {
@@ -41,9 +41,6 @@ const c = {
         resolve(__dirname, 'src/scss/unity-bootstrap-theme.scss'),
         resolve(__dirname, 'src/scss/unity-bootstrap-header.scss'),
         resolve(__dirname, 'src/scss/unity-bootstrap-footer.scss'),
-        resolve(__dirname, 'src/js/global-header.js'),
-        resolve(__dirname, 'src/js/data-layer.js'),
-        resolve(__dirname, '../../node_modules/bootstrap/js/index.esm.js'),
       ],
     },
     outDir: 'dist',
@@ -52,15 +49,10 @@ const c = {
       treeshake: true,
       output: {
         entryFileNames: (chunkInfo) => {
-          if (chunkInfo.name.includes('index.esm')) {
-            return 'js/bootstrap.bundle.min.[format]';
-          }
-          return "js/[name].[format]";
+          return "js/unityBootstrap.bundle.js";
         },
-        chunkFileNames: "js/[name].[format]",
+        chunkFileNames: "js/[name].[format].js",
         assetFileNames: '[name][extname]',
-        format: 'es',
-
       },
     },
   },
@@ -81,4 +73,22 @@ const c = {
   },
 };
 
-export default defineConfig(c);
+export default defineConfig(({ mode}) => {
+  const env = loadEnv(mode, process.cwd(), 'VITE_');
+  if (env.VITE_BUILD_UMD === 'true') {
+    return {
+      ...c,
+      build: {
+        ...c.build,
+        emptyOutDir: false,
+        lib: {
+          ...c.build.lib,
+          entry: resolve(__dirname, 'src/js/index.js'),
+          formats: ['amd'],
+          fileName: 'unity-bootstrap-theme.bundle.js',
+        },
+    }
+  }
+};
+  return c;
+});
