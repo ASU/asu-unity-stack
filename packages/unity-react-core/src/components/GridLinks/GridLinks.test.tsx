@@ -4,8 +4,8 @@ import { expect, describe, it, afterEach, beforeEach } from "vitest";
 
 import { GridLinks, GridLinksProps } from "./GridLinks";
 import {
-  gridLinksNumColumns,
-  gridLinksTextColor,
+  GridLinksNumColumnsType,
+  GridLinksTextColorType,
 } from "./GridLinksConstants";
 
 const gridLinkItems = [
@@ -31,9 +31,9 @@ const gridLinkItems = [
   },
 ];
 const defaultProps = {
-  numColumns: gridLinksNumColumns.TWO_COLUMNS,
-  textColor: gridLinksTextColor.NONE,
-  gridLinkItems: gridLinkItems,
+  numColumns: GridLinksNumColumnsType.TWO_COLUMNS,
+  textColor: GridLinksTextColorType.NONE,
+  gridLinkItems,
   // children: "Content to be displayed",
 };
 

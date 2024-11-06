@@ -1,7 +1,7 @@
 // @ts-check
 import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 import React from "react";
-import { expect, describe, it, afterEach, beforeEach, vi } from "vitest";
+import { expect, describe, it, afterEach, beforeEach } from "vitest";
 
 import { AnchorMenu } from "./AnchorMenu";
 import { Containers } from "./AnchorMenu.stories";

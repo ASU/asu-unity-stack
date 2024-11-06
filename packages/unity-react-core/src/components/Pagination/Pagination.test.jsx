@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
 // @ts-check
 import { render, cleanup, fireEvent, screen } from "@testing-library/react";
-import { userEvent } from "@testing-library/user-event";
+// import { userEvent } from "@testing-library/user-event";
 import React from "react";
-import { expect, describe, it, afterEach, test, beforeEach, vi } from "vitest";
+import { expect, describe, it, afterEach, beforeEach, vi } from "vitest";
 
 import { Pagination } from "./Pagination";
 
@@ -23,10 +23,10 @@ const renderPagination = props => {
 
 describe("#Pagination", () => {
   /** @type {import("@testing-library/react").RenderResult} */
-  let component;
+  // let component;
 
   beforeEach(() => {
-    component = renderPagination(defaultArgs);
+    // component = renderPagination(defaultArgs);
   });
   afterEach(cleanup);
 
@@ -68,7 +68,7 @@ describe("#Pagination variations", () => {
       currentPage,
     };
 
-    const component = await renderPagination(props);
+    await renderPagination(props);
     const paginationItem =
       screen.queryAllByTestId("page-link")[currentPage - 1].parentElement;
     expect(paginationItem.className).toContain("active");

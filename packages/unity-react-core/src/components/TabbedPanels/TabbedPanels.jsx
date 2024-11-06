@@ -43,7 +43,7 @@ const TabbedPanels = ({
   initialTab = "",
   children,
   bgColor = "",
-  onTabChange = arg => {},
+  onTabChange = () => {},
 }) => {
   const childrenArray = React.Children.toArray(children);
   const isMounted = useRef(false);

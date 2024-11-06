@@ -75,6 +75,7 @@ export const Image = ({
             {captionTitle && <h3>{captionTitle}</h3>}
             <span
               className="uds-caption-text"
+              // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={sanitizeDangerousMarkup(caption)}
             />
           </figcaption>

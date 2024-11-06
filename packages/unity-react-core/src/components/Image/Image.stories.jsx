@@ -18,22 +18,22 @@ export default {
 
 const Template = args => <Image {...args} />;
 
-export const imageWithNoCaption = Template.bind({});
-imageWithNoCaption.args = {
+export const ImageWithNoCaption = Template.bind({});
+ImageWithNoCaption.args = {
   src: "https://source.unsplash.com/WLUHO9A_xik/800x600",
   alt: "Placeholder image",
   border: true,
 };
 
-export const imageWithNoCaptionBorderless = Template.bind({});
-imageWithNoCaptionBorderless.args = {
+export const ImageWithNoCaptionBorderless = Template.bind({});
+ImageWithNoCaptionBorderless.args = {
   src: "https://source.unsplash.com/WLUHO9A_xik/800x600",
   alt: "Placeholder image",
   border: false,
 };
 
-export const imageWithCaption = Template.bind({});
-imageWithCaption.args = {
+export const ImageWithCaption = Template.bind({});
+ImageWithCaption.args = {
   src: "https://source.unsplash.com/WLUHO9A_xik/800x600",
   alt: "Placeholder image",
   caption: "This is a <a href='#'>caption</a>.",
@@ -41,8 +41,8 @@ imageWithCaption.args = {
   border: true,
 };
 
-export const imageWithCaptionAndDropshadow = Template.bind({});
-imageWithCaptionAndDropshadow.args = {
+export const ImageWithCaptionAndDropshadow = Template.bind({});
+ImageWithCaptionAndDropshadow.args = {
   src: "https://source.unsplash.com/WLUHO9A_xik/800x600",
   alt: "Placeholder image",
   caption: "This is a <a href='#'>caption</a>.",

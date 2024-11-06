@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import React from "react";
-import { imageAny } from "../../../../../shared/assets";
 
+import { imageAny } from "../../../../../shared/assets";
 import { RankingCard } from "./RankingCard";
 
 export default {

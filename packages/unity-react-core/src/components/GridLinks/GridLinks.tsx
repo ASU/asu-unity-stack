@@ -1,8 +1,9 @@
 import React, { ReactElement } from "react";
+
 import {
-  gridLinksNumColumns,
-  gridLinksTextColor,
-  gridLinksTextColorClassName,
+  GridLinksNumColumnsType,
+  GridLinksTextColorClassName,
+  GridLinksTextColorType,
 } from "./GridLinksConstants";
 
 export interface GridLinksProps {
@@ -13,11 +14,11 @@ export interface GridLinksProps {
   /**
    * Number of columns.
    */
-  numColumns?: gridLinksNumColumns;
+  numColumns?: GridLinksNumColumnsType;
   /**
    * Text color.
    */
-  textColor?: gridLinksTextColor;
+  textColor?: GridLinksTextColorType;
   /**
    * The element where we will position the dialog beside.
    */
@@ -36,13 +37,13 @@ export const GridLinks: React.FC<GridLinksProps> = ({
         className={[
           "uds-grid-links",
           numColumns,
-          gridLinksTextColorClassName[textColor],
+          GridLinksTextColorClassName[textColor],
         ].join(" ")}
       >
         {gridLinkItems &&
-          gridLinkItems.map((item, index) => (
-            <a key={index} href={item.href}>
-              <span className={`fa fa-fw ${item.icon}`}></span>
+          gridLinkItems.map(item => (
+            <a key={`${item.label}_${item.href}`} href={item.href}>
+              <span className={`fa fa-fw ${item.icon}`} />
               {item.label}
             </a>
           ))}

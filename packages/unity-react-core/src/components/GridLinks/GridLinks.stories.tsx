@@ -1,11 +1,11 @@
-import React from "react";
+import React, { FC } from "react";
 
 import { GridLinks, GridLinksProps } from "./GridLinks";
 import {
-  gridLinksNumColumns,
-  gridLinksTextColor,
-  gridLinksBgColor,
-  gridLinksBgColorClassName,
+  GridLinksNumColumnsType,
+  GridLinksTextColorType,
+  GridLinksBgColorType,
+  GridLinksBgColorClassName,
 } from "./GridLinksConstants";
 
 export default {
@@ -57,24 +57,28 @@ const gridLinkItems = [
 ];
 
 const defaultStoryProps = {
-  numColumns: gridLinksNumColumns.TWO_COLUMNS,
-  textColor: gridLinksTextColor.NONE,
-  gridLinkItems: gridLinkItems,
+  numColumns: GridLinksNumColumnsType.TWO_COLUMNS,
+  textColor: GridLinksTextColorType.NONE,
+  gridLinkItems,
   // children: "Content to be displayed",
   // bgColor is used story section wrapper, not in component.
-  bgColor: gridLinksBgColor.NONE,
+  bgColor: GridLinksBgColorType.NONE,
 };
 
-const defaultBgColor = gridLinksBgColor.NONE;
+const defaultBgColor = GridLinksBgColorType.NONE;
 
-const gridLinksTemplate = ({ bgColor, ...args }) => (
-  <section className={gridLinksBgColorClassName[bgColor]}>
-    <GridLinks {...(args as GridLinksProps)} />
-  </section>
+const GridLinksTemplate: FC<
+  GridLinksProps & { bgColor: GridLinksBgColorType }
+> = ({ bgColor = defaultBgColor, ...args }) => (
+  <>
+    <section className={GridLinksBgColorClassName[bgColor]}>
+      <GridLinks {...args} />
+    </section>
+  </>
 );
 
 export const Overview = {
-  render: gridLinksTemplate.bind({}),
+  render: GridLinksTemplate.bind({}),
   name: "GridLinks",
   args: {
     ...defaultStoryProps,

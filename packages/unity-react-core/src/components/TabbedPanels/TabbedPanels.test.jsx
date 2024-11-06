@@ -2,7 +2,7 @@
 // @ts-check
 import { render, cleanup } from "@testing-library/react";
 import React from "react";
-import { expect, describe, it, afterEach, beforeEach, test } from "vitest";
+import { expect, describe, it, afterEach, beforeEach } from "vitest";
 
 import { TabbedPanels, Tab } from "./TabbedPanels";
 

@@ -56,6 +56,10 @@
 | --- | --- |
 | props | <code>DropdownItemProps</code> | 
 
+<a name="DropdownItem..dropdownRef"></a>
+
+### DropdownItem~dropdownRef : <code>React.MutableRefObject.&lt;(HTMLDivElement\|null)&gt;</code>
+**Kind**: inner constant of [<code>DropdownItem</code>](#DropdownItem)  
 <a name="NavLinkIcon"></a>
 
 ## NavLinkIcon(props) ⇒ <code>JSX.Element</code>
