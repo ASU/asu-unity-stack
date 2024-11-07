@@ -1,9 +1,9 @@
 
+import { PagePaths } from "~/routes/config";
 import Card from "../components/Card";
 import PackageCards from "../components/PackageCards";
-import { routerUrl } from "../hooks/useRoutes";
 
-export const Home = () => {
+const Home = () => {
   return (
     <>
       <div className="uds-hero-sm">
@@ -44,27 +44,27 @@ export const Home = () => {
                 title="ASU Header"
                 description="Guidelines, requirements and best practices for using the ASU
               Branded Header in your site."
-                href={routerUrl.HEADERGUIDE}
+                href={PagePaths.HEADERGUIDE}
                 isRoute={true}
                 linkLabel="View the guide"
                 />
             <Card
               title="Google Tag Manager and data layer"
               description="Ensure your site or application has the necessary analytics integrations."
-              href={routerUrl.DATALAYERGUIDE}
+              href={PagePaths.DATALAYERGUIDE}
               isRoute={true}
               linkLabel="GTM and data layer guide"
               />
             <Card
               title="Unity Design System Package Registry"
               description={<>
-                <a target="_blank" href="https://github.com/ASU/asu-unity-stack#-how-to-use-the-private-package-registry">
+                <a target="_blank" rel="noreferrer" href="https://github.com/ASU/asu-unity-stack#-how-to-use-the-private-package-registry">
                   Learn how to use the private package registry
                 </a>{" "}
                 to incorporate Unity packages in your site or application. Note:
                 You must belong to the ASU GitHub organization to access these
                 packages.{" "}
-                <a target="_blank" href="https://asu.edu/webservices">
+                <a target="_blank" rel="noreferrer" href="https://asu.edu/webservices">
                   Request access to the Unity Design System GitHub Repo
                 </a>{" "}
                 if you need that.
@@ -78,3 +78,5 @@ export const Home = () => {
     </>
   );
 };
+
+export default Home;

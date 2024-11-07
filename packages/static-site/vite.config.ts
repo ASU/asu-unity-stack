@@ -1,26 +1,76 @@
-import { defineConfig, loadEnv, UserConfig } from 'vite';
+import { defineConfig, loadEnv, UserConfig, searchForWorkspaceRoot } from 'vite';
 import react from '@vitejs/plugin-react';
 import mkcert from 'vite-plugin-mkcert';
+import { resolve } from 'path';
+import { createMpaPlugin, createPages, Page } from "vite-plugin-virtual-mpa";
+import { configRoutes } from './src/routes/config2';
 
-export default defineConfig(({ mode }):UserConfig =>
+const config = defineConfig(({ mode }):UserConfig =>
   {
-    const env = loadEnv(mode, process.cwd(), 'VITE_');
+    const packageRoot = process.cwd();
+    const workspaceRoot = searchForWorkspaceRoot(packageRoot);
+    const serverOptions = {
+      port: 4200,
+      host: "localhost.asu.edu",
+      https: true,
+      middlewares: (server) => {
+        server.use('/', (req, res, next) => {
 
-    return {
-      base: './',
-      plugins: [react(), mkcert()],
-      server: {
-        port: 4200,
-        host: "localhost.asu.edu",
-        https: true,
+          if (req.url.endsWith("/") || req.url.endsWith(".html")) {
+            req.url = '/index.html';
+          }
+          next()
+        });
+
+        return server
       },
-      build: {
-        outDir:  '../../build',
-        emptyOutDir: false,
-      },
-      define: {
-        __APP_ENV__: JSON.stringify(env.APP_ENV),
+      fs: {
+        allow: [
+          workspaceRoot,
+          '..',
+        ],
       },
     };
+
+    return {
+      appType: "mpa",
+      root: './src',
+      base: './',
+      plugins: [
+        react(),
+        mkcert(),
+        createMpaPlugin({
+          pages: createPages(configRoutes),
+          transformHtml(html, ctx) {
+            return {
+              html,
+              tags: [
+                {
+                  tag: "title",
+                  injectTo: "head",
+                  children: ctx.page.data.title,
+                },
+              ],
+            };
+          },
+        }),
+      ],
+      publicDir: resolve(packageRoot, 'public'),
+      assetsInclude: ['**/*.ico'],
+      server: serverOptions,
+      preview: serverOptions,
+      build: {
+        outDir: resolve(workspaceRoot, 'build'),
+        emptyOutDir: false,
+        sourcemap: true,
+      },
+      resolve: {
+        alias: {
+          '~': resolve(__dirname, './src'),
+        },
+      }
+    } as UserConfig;
   }
-)
+);
+
+export default config;

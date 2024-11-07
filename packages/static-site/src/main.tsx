@@ -1,37 +1,51 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
-import "./index.css";
+import App from "~/App.tsx";
+import "~/index.css";
 
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { Home } from "./pages/Home.tsx";
-import { HeaderGuide } from "./pages/HeaderGuide.tsx";
-import { DataLayerGuide } from "./pages/DataLayerGuide.tsx";
+import { RouteObject, RouterProvider, createBrowserRouter } from "react-router-dom";
+import Pages from "~/pages/index";
+import { configRoutes } from "~/routes/config";
+import { Page } from "vite-plugin-virtual-mpa";
+import { getBaseUrl } from "~/utils/baseUrl";
 
-import { routerUrl } from "./hooks/useRoutes.ts";
+/**
+ * Create duplicate routes for paths ending with "/" and "/index.html"
+ * @param {Page[]} c
+ * @returns {RouteObject[]}
+ */
+const createRoutesFromConfig = (c: Page[]) => {
+  const r: RouteObject[] = [];
+  c.forEach(({data}) => {
+    const Component = Pages[data?.componentName];
+    r.push({
+      path: data?.path,
+      element: <Component />,
+      children: [
+        {
+          path: `${ data?.path }index.html`,
+          index: true,
+          element: <Component />,
+        }
 
-const routes = [
+      ]
+    });
+
+  });
+  console.log(r)
+  return r;
+};
+
+const router = createBrowserRouter([
   {
-    path: routerUrl.HOME,
+    path: "/",
     element: <App />,
-    children: [
-      {
-        path: routerUrl.HOME,
-        element: <Home />,
-      },
-      {
-        path: routerUrl.HEADERGUIDE,
-        element: <HeaderGuide/>,
-      },
-      {
-        path: routerUrl.DATALAYERGUIDE,
-        element: <DataLayerGuide/>,
-      },
-    ],
+    children: createRoutesFromConfig(configRoutes as Page[]),
   },
-];
+], { basename: getBaseUrl() });
 
-const router = createBrowserRouter(routes);
+console.log(router)
+
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>

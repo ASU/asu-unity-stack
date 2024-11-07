@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { useRoutes } from "../hooks/useRoutes";
 import { Link } from "react-router-dom";
+import { PagePaths } from "~/routes/config";
 
 const gtmCodes = {
   universal: "GTM-KDWN8Z",
@@ -49,8 +49,7 @@ const GtmCodeExample: FC<{ gtmCode: string }> = ({ gtmCode }) => {
   );
 };
 
-export const DataLayerGuide = () => {
-  const { HEADERGUIDE } = useRoutes();
+const DataLayerGuide = () => {
   return (
     <div className="container">
       <div className="row">
@@ -74,7 +73,7 @@ export const DataLayerGuide = () => {
           <h2>Google Tag Manager</h2>
           <p>
             Before implementing Google Tag Manager yourself, please review the{" "}
-            <Link to={HEADERGUIDE}>options for obtaining the ASU Header</Link>. Some
+            <Link to={PagePaths.HEADERGUIDE}>options for obtaining the ASU Header</Link>. Some
             options provide the ASU Google Tag Manager code automatically
             bundled.
           </p>
@@ -143,8 +142,8 @@ export const DataLayerGuide = () => {
 
           <p>
             Enterprise sites should implement the ASU Enterprise QA GTM on their
-            "DEV" environment, and the ASU Enterprise Production GTM on their
-            "QA" and "Production" environments. This may be configured using
+            &quot;DEV&quot; environment, and the ASU Enterprise Production GTM on their
+            &quot;QA&quot; and &quot;Production&quot; environments. This may be configured using
             environmental variables. Each environment has its own GTM ID
             associated with it and care must be taken to use the appropriate GTM
             ID for each application environment.
@@ -205,7 +204,7 @@ export const DataLayerGuide = () => {
             Add event listeners to your code to capture click and change events
             related to your `data-ga` attributes and to push that event to the
             data layer. As a help to get you started, the
-            `unity-bootstrap-theme` package's `dist/js/data-layer.js` file can
+            `unity-bootstrap-theme` package&apos;s `dist/js/data-layer.js` file can
             serve as a starting point or as a reference for implementing your
             own data layer push code.
           </p>
@@ -244,3 +243,5 @@ export const DataLayerGuide = () => {
     </div>
   );
 };
+
+export default DataLayerGuide;

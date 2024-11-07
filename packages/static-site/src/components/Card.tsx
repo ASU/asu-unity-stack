@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Link } from "react-router-dom";
+import { getRelativePath } from "~/utils/baseUrl";
 
 export interface CardProps {
   title: string;
@@ -17,16 +17,16 @@ const Card:FC<CardProps> = ({title, description, href,linkLabel, isRoute}) => {
       </p>
       <p>
         {isRoute ? (
-          <Link
-            to={href}
-            className="btn btn-maroon btn-medium"
+          <a
+          className="btn btn-maroon btn-medium"
+          href={getRelativePath(href)}
           >
-            {linkLabel}
-          </Link>
+          {linkLabel}
+          </a>
         ) : (
         <a
           className="btn btn-maroon btn-medium"
-          target="_blank"
+          target="_blank" rel="noreferrer"
           href={href}
           >
           {linkLabel}
