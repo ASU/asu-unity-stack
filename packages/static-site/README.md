@@ -10,3 +10,4 @@
   - Windows file location `C:\Windows\System32\Drivers\etc\hosts`
 
 - Development site can be viewed https://localhost.asu.edu:4200/
+- While developing, only pages within this app will be available. References to storybook packages are built outside of this app. (ex: `./@asu/unity-bootstrap-theme/index.html`)
