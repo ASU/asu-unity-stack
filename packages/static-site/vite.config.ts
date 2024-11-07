@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import mkcert from 'vite-plugin-mkcert';
 import { resolve } from 'path';
 import { createMpaPlugin, createPages, Page } from "vite-plugin-virtual-mpa";
-import { configRoutes } from './src/routes/config2';
+import { configRoutes } from './src/routes/config';
 
 const config = defineConfig(({ mode }):UserConfig =>
   {

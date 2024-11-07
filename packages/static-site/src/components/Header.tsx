@@ -20,7 +20,7 @@ function Navbar() {
   } as HeaderProps;
 
   return (
-    <div style={{ position: "sticky", zIndex: "20" }}>
+    <div style={{ position: "sticky", zIndex: "31" }}>
       <ASUHeader {...headerProps} />
     </div>
   );
