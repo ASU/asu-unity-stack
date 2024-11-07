@@ -1,8 +1,8 @@
-import { defineConfig, loadEnv, UserConfig, searchForWorkspaceRoot } from 'vite';
+import { defineConfig, UserConfig, searchForWorkspaceRoot } from 'vite';
 import react from '@vitejs/plugin-react';
 import mkcert from 'vite-plugin-mkcert';
 import { resolve } from 'path';
-import { createMpaPlugin, createPages, Page } from "vite-plugin-virtual-mpa";
+import { createMpaPlugin, createPages } from "vite-plugin-virtual-mpa";
 import { configRoutes } from './src/routes/config';
 
 const config = defineConfig(({ mode }):UserConfig =>
@@ -14,7 +14,7 @@ const config = defineConfig(({ mode }):UserConfig =>
       host: "localhost.asu.edu",
       https: true,
       middlewares: (server) => {
-        server.use('/', (req, res, next) => {
+        server.use('/', (req, _, next) => {
 
           if (req.url.endsWith("/") || req.url.endsWith(".html")) {
             req.url = '/index.html';

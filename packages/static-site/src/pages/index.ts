@@ -9,4 +9,6 @@ const Pages = {
   [PageName.DATALAYERGUIDE]: DataLayerGuide,
 } as const;
 
+export type AppPagesType = typeof Pages;
+
 export default Pages;

@@ -4,7 +4,7 @@ import App from "~/App.tsx";
 import "~/index.css";
 
 import { RouteObject, RouterProvider, createBrowserRouter } from "react-router-dom";
-import Pages from "~/pages/index";
+import Pages, { AppPagesType } from "~/pages/index";
 import { configRoutes } from "~/routes/config";
 import { Page } from "vite-plugin-virtual-mpa";
 import { getBaseUrl } from "~/utils/baseUrl";
@@ -17,9 +17,9 @@ import { getBaseUrl } from "~/utils/baseUrl";
 const createRoutesFromConfig = (c: Page[]) => {
   const r: RouteObject[] = [];
   c.forEach(({data}) => {
-    const Component = Pages[data?.componentName];
+    const Component = Pages[data?.componentName as keyof AppPagesType];
     r.push({
-      path: data?.path,
+      path: data?.path as string,
       element: <Component />,
       children: [
         {
