@@ -1,12 +1,4655 @@
-/*! For license information please see degreePages.es.js.LICENSE.txt */
-import*as e from"react";import*as t from"react-dom";var n={672:function(e){e.exports=function(){function e(t){return e="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e(t)}function t(e,n){return t=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e},t(e,n)}function n(e,r,a){return n=function(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(e){return!1}}()?Reflect.construct:function(e,n,r){var a=[null];a.push.apply(a,n);var o=new(Function.bind.apply(e,a));return r&&t(o,r.prototype),o},n.apply(null,arguments)}function r(e){return function(e){if(Array.isArray(e))return a(e)}(e)||function(e){if("undefined"!=typeof Symbol&&null!=e[Symbol.iterator]||null!=e["@@iterator"])return Array.from(e)}(e)||function(e,t){if(e){if("string"==typeof e)return a(e,t);var n=Object.prototype.toString.call(e).slice(8,-1);return"Object"===n&&e.constructor&&(n=e.constructor.name),"Map"===n||"Set"===n?Array.from(e):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?a(e,t):void 0}}(e)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function a(e,t){(null==t||t>e.length)&&(t=e.length);for(var n=0,r=new Array(t);n<t;n++)r[n]=e[n];return r}var o=Object.hasOwnProperty,i=Object.setPrototypeOf,l=Object.isFrozen,c=Object.getPrototypeOf,s=Object.getOwnPropertyDescriptor,u=Object.freeze,d=Object.seal,f=Object.create,m="undefined"!=typeof Reflect&&Reflect,p=m.apply,g=m.construct;p||(p=function(e,t,n){return e.apply(t,n)}),u||(u=function(e){return e}),d||(d=function(e){return e}),g||(g=function(e,t){return n(e,r(t))});var h,v=A(Array.prototype.forEach),y=A(Array.prototype.pop),b=A(Array.prototype.push),w=A(String.prototype.toLowerCase),E=A(String.prototype.toString),x=A(String.prototype.match),k=A(String.prototype.replace),C=A(String.prototype.indexOf),O=A(String.prototype.trim),S=A(RegExp.prototype.test),N=(h=TypeError,function(){for(var e=arguments.length,t=new Array(e),n=0;n<e;n++)t[n]=arguments[n];return g(h,t)});function A(e){return function(t){for(var n=arguments.length,r=new Array(n>1?n-1:0),a=1;a<n;a++)r[a-1]=arguments[a];return p(e,t,r)}}function T(e,t,n){var r;n=null!==(r=n)&&void 0!==r?r:w,i&&i(e,null);for(var a=t.length;a--;){var o=t[a];if("string"==typeof o){var c=n(o);c!==o&&(l(t)||(t[a]=c),o=c)}e[o]=!0}return e}function P(e){var t,n=f(null);for(t in e)!0===p(o,e,[t])&&(n[t]=e[t]);return n}function R(e,t){for(;null!==e;){var n=s(e,t);if(n){if(n.get)return A(n.get);if("function"==typeof n.value)return A(n.value)}e=c(e)}return function(e){return console.warn("fallback value for",e),null}}var L=u(["a","abbr","acronym","address","area","article","aside","audio","b","bdi","bdo","big","blink","blockquote","body","br","button","canvas","caption","center","cite","code","col","colgroup","content","data","datalist","dd","decorator","del","details","dfn","dialog","dir","div","dl","dt","element","em","fieldset","figcaption","figure","font","footer","form","h1","h2","h3","h4","h5","h6","head","header","hgroup","hr","html","i","img","input","ins","kbd","label","legend","li","main","map","mark","marquee","menu","menuitem","meter","nav","nobr","ol","optgroup","option","output","p","picture","pre","progress","q","rp","rt","ruby","s","samp","section","select","shadow","small","source","spacer","span","strike","strong","style","sub","summary","sup","table","tbody","td","template","textarea","tfoot","th","thead","time","tr","track","tt","u","ul","var","video","wbr"]),j=u(["svg","a","altglyph","altglyphdef","altglyphitem","animatecolor","animatemotion","animatetransform","circle","clippath","defs","desc","ellipse","filter","font","g","glyph","glyphref","hkern","image","line","lineargradient","marker","mask","metadata","mpath","path","pattern","polygon","polyline","radialgradient","rect","stop","style","switch","symbol","text","textpath","title","tref","tspan","view","vkern"]),D=u(["feBlend","feColorMatrix","feComponentTransfer","feComposite","feConvolveMatrix","feDiffuseLighting","feDisplacementMap","feDistantLight","feFlood","feFuncA","feFuncB","feFuncG","feFuncR","feGaussianBlur","feImage","feMerge","feMergeNode","feMorphology","feOffset","fePointLight","feSpecularLighting","feSpotLight","feTile","feTurbulence"]),I=u(["animate","color-profile","cursor","discard","fedropshadow","font-face","font-face-format","font-face-name","font-face-src","font-face-uri","foreignobject","hatch","hatchpath","mesh","meshgradient","meshpatch","meshrow","missing-glyph","script","set","solidcolor","unknown","use"]),M=u(["math","menclose","merror","mfenced","mfrac","mglyph","mi","mlabeledtr","mmultiscripts","mn","mo","mover","mpadded","mphantom","mroot","mrow","ms","mspace","msqrt","mstyle","msub","msup","msubsup","mtable","mtd","mtext","mtr","munder","munderover"]),_=u(["maction","maligngroup","malignmark","mlongdiv","mscarries","mscarry","msgroup","mstack","msline","msrow","semantics","annotation","annotation-xml","mprescripts","none"]),U=u(["#text"]),F=u(["accept","action","align","alt","autocapitalize","autocomplete","autopictureinpicture","autoplay","background","bgcolor","border","capture","cellpadding","cellspacing","checked","cite","class","clear","color","cols","colspan","controls","controlslist","coords","crossorigin","datetime","decoding","default","dir","disabled","disablepictureinpicture","disableremoteplayback","download","draggable","enctype","enterkeyhint","face","for","headers","height","hidden","high","href","hreflang","id","inputmode","integrity","ismap","kind","label","lang","list","loading","loop","low","max","maxlength","media","method","min","minlength","multiple","muted","name","nonce","noshade","novalidate","nowrap","open","optimum","pattern","placeholder","playsinline","poster","preload","pubdate","radiogroup","readonly","rel","required","rev","reversed","role","rows","rowspan","spellcheck","scope","selected","shape","size","sizes","span","srclang","start","src","srcset","step","style","summary","tabindex","title","translate","type","usemap","valign","value","width","xmlns","slot"]),z=u(["accent-height","accumulate","additive","alignment-baseline","ascent","attributename","attributetype","azimuth","basefrequency","baseline-shift","begin","bias","by","class","clip","clippathunits","clip-path","clip-rule","color","color-interpolation","color-interpolation-filters","color-profile","color-rendering","cx","cy","d","dx","dy","diffuseconstant","direction","display","divisor","dur","edgemode","elevation","end","fill","fill-opacity","fill-rule","filter","filterunits","flood-color","flood-opacity","font-family","font-size","font-size-adjust","font-stretch","font-style","font-variant","font-weight","fx","fy","g1","g2","glyph-name","glyphref","gradientunits","gradienttransform","height","href","id","image-rendering","in","in2","k","k1","k2","k3","k4","kerning","keypoints","keysplines","keytimes","lang","lengthadjust","letter-spacing","kernelmatrix","kernelunitlength","lighting-color","local","marker-end","marker-mid","marker-start","markerheight","markerunits","markerwidth","maskcontentunits","maskunits","max","mask","media","method","mode","min","name","numoctaves","offset","operator","opacity","order","orient","orientation","origin","overflow","paint-order","path","pathlength","patterncontentunits","patterntransform","patternunits","points","preservealpha","preserveaspectratio","primitiveunits","r","rx","ry","radius","refx","refy","repeatcount","repeatdur","restart","result","rotate","scale","seed","shape-rendering","specularconstant","specularexponent","spreadmethod","startoffset","stddeviation","stitchtiles","stop-color","stop-opacity","stroke-dasharray","stroke-dashoffset","stroke-linecap","stroke-linejoin","stroke-miterlimit","stroke-opacity","stroke","stroke-width","style","surfacescale","systemlanguage","tabindex","targetx","targety","transform","transform-origin","text-anchor","text-decoration","text-rendering","textlength","type","u1","u2","unicode","values","viewbox","visibility","version","vert-adv-y","vert-origin-x","vert-origin-y","width","word-spacing","wrap","writing-mode","xchannelselector","ychannelselector","x","x1","x2","xmlns","y","y1","y2","z","zoomandpan"]),q=u(["accent","accentunder","align","bevelled","close","columnsalign","columnlines","columnspan","denomalign","depth","dir","display","displaystyle","encoding","fence","frame","height","href","id","largeop","length","linethickness","lspace","lquote","mathbackground","mathcolor","mathsize","mathvariant","maxsize","minsize","movablelimits","notation","numalign","open","rowalign","rowlines","rowspacing","rowspan","rspace","rquote","scriptlevel","scriptminsize","scriptsizemultiplier","selection","separator","separators","stretchy","subscriptshift","supscriptshift","symmetric","voffset","width","xmlns"]),H=u(["xlink:href","xml:id","xlink:title","xml:space","xmlns:xlink"]),$=d(/\{\{[\w\W]*|[\w\W]*\}\}/gm),B=d(/<%[\w\W]*|[\w\W]*%>/gm),G=d(/\${[\w\W]*}/gm),W=d(/^data-[\-\w.\u00B7-\uFFFF]/),V=d(/^aria-[\-\w]+$/),Y=d(/^(?:(?:(?:f|ht)tps?|mailto|tel|callto|cid|xmpp):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i),K=d(/^(?:\w+script|data):/i),X=d(/[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205F\u3000]/g),Z=d(/^html$/i),J=d(/^[a-z][.\w]*(-[.\w]+)+$/i),Q=function(){return"undefined"==typeof window?null:window};var ee=function t(){var n=arguments.length>0&&void 0!==arguments[0]?arguments[0]:Q(),a=function(e){return t(e)};if(a.version="2.5.6",a.removed=[],!n||!n.document||9!==n.document.nodeType)return a.isSupported=!1,a;var o=n.document,i=n.document,l=n.DocumentFragment,c=n.HTMLTemplateElement,s=n.Node,d=n.Element,f=n.NodeFilter,m=n.NamedNodeMap,p=void 0===m?n.NamedNodeMap||n.MozNamedAttrMap:m,g=n.HTMLFormElement,h=n.DOMParser,A=n.trustedTypes,ee=d.prototype,te=R(ee,"cloneNode"),ne=R(ee,"nextSibling"),re=R(ee,"childNodes"),ae=R(ee,"parentNode");if("function"==typeof c){var oe=i.createElement("template");oe.content&&oe.content.ownerDocument&&(i=oe.content.ownerDocument)}var ie=function(t,n){if("object"!==e(t)||"function"!=typeof t.createPolicy)return null;var r=null,a="data-tt-policy-suffix";n.currentScript&&n.currentScript.hasAttribute(a)&&(r=n.currentScript.getAttribute(a));var o="dompurify"+(r?"#"+r:"");try{return t.createPolicy(o,{createHTML:function(e){return e},createScriptURL:function(e){return e}})}catch(e){return console.warn("TrustedTypes policy "+o+" could not be created."),null}}(A,o),le=ie?ie.createHTML(""):"",ce=i,se=ce.implementation,ue=ce.createNodeIterator,de=ce.createDocumentFragment,fe=ce.getElementsByTagName,me=o.importNode,pe={};try{pe=P(i).documentMode?i.documentMode:{}}catch(e){}var ge={};a.isSupported="function"==typeof ae&&se&&void 0!==se.createHTMLDocument&&9!==pe;var he,ve,ye=$,be=B,we=G,Ee=W,xe=V,ke=K,Ce=X,Oe=J,Se=Y,Ne=null,Ae=T({},[].concat(r(L),r(j),r(D),r(M),r(U))),Te=null,Pe=T({},[].concat(r(F),r(z),r(q),r(H))),Re=Object.seal(Object.create(null,{tagNameCheck:{writable:!0,configurable:!1,enumerable:!0,value:null},attributeNameCheck:{writable:!0,configurable:!1,enumerable:!0,value:null},allowCustomizedBuiltInElements:{writable:!0,configurable:!1,enumerable:!0,value:!1}})),Le=null,je=null,De=!0,Ie=!0,Me=!1,_e=!0,Ue=!1,Fe=!0,ze=!1,qe=!1,He=!1,$e=!1,Be=!1,Ge=!1,We=!0,Ve=!1,Ye=!0,Ke=!1,Xe={},Ze=null,Je=T({},["annotation-xml","audio","colgroup","desc","foreignobject","head","iframe","math","mi","mn","mo","ms","mtext","noembed","noframes","noscript","plaintext","script","style","svg","template","thead","title","video","xmp"]),Qe=null,et=T({},["audio","video","img","source","image","track"]),tt=null,nt=T({},["alt","class","for","id","label","name","pattern","placeholder","role","summary","title","value","style","xmlns"]),rt="http://www.w3.org/1998/Math/MathML",at="http://www.w3.org/2000/svg",ot="http://www.w3.org/1999/xhtml",it=ot,lt=!1,ct=null,st=T({},[rt,at,ot],E),ut=["application/xhtml+xml","text/html"],dt=null,ft=i.createElement("form"),mt=function(e){return e instanceof RegExp||e instanceof Function},pt=function(t){dt&&dt===t||(t&&"object"===e(t)||(t={}),t=P(t),he=he=-1===ut.indexOf(t.PARSER_MEDIA_TYPE)?"text/html":t.PARSER_MEDIA_TYPE,ve="application/xhtml+xml"===he?E:w,Ne="ALLOWED_TAGS"in t?T({},t.ALLOWED_TAGS,ve):Ae,Te="ALLOWED_ATTR"in t?T({},t.ALLOWED_ATTR,ve):Pe,ct="ALLOWED_NAMESPACES"in t?T({},t.ALLOWED_NAMESPACES,E):st,tt="ADD_URI_SAFE_ATTR"in t?T(P(nt),t.ADD_URI_SAFE_ATTR,ve):nt,Qe="ADD_DATA_URI_TAGS"in t?T(P(et),t.ADD_DATA_URI_TAGS,ve):et,Ze="FORBID_CONTENTS"in t?T({},t.FORBID_CONTENTS,ve):Je,Le="FORBID_TAGS"in t?T({},t.FORBID_TAGS,ve):{},je="FORBID_ATTR"in t?T({},t.FORBID_ATTR,ve):{},Xe="USE_PROFILES"in t&&t.USE_PROFILES,De=!1!==t.ALLOW_ARIA_ATTR,Ie=!1!==t.ALLOW_DATA_ATTR,Me=t.ALLOW_UNKNOWN_PROTOCOLS||!1,_e=!1!==t.ALLOW_SELF_CLOSE_IN_ATTR,Ue=t.SAFE_FOR_TEMPLATES||!1,Fe=!1!==t.SAFE_FOR_XML,ze=t.WHOLE_DOCUMENT||!1,$e=t.RETURN_DOM||!1,Be=t.RETURN_DOM_FRAGMENT||!1,Ge=t.RETURN_TRUSTED_TYPE||!1,He=t.FORCE_BODY||!1,We=!1!==t.SANITIZE_DOM,Ve=t.SANITIZE_NAMED_PROPS||!1,Ye=!1!==t.KEEP_CONTENT,Ke=t.IN_PLACE||!1,Se=t.ALLOWED_URI_REGEXP||Se,it=t.NAMESPACE||ot,Re=t.CUSTOM_ELEMENT_HANDLING||{},t.CUSTOM_ELEMENT_HANDLING&&mt(t.CUSTOM_ELEMENT_HANDLING.tagNameCheck)&&(Re.tagNameCheck=t.CUSTOM_ELEMENT_HANDLING.tagNameCheck),t.CUSTOM_ELEMENT_HANDLING&&mt(t.CUSTOM_ELEMENT_HANDLING.attributeNameCheck)&&(Re.attributeNameCheck=t.CUSTOM_ELEMENT_HANDLING.attributeNameCheck),t.CUSTOM_ELEMENT_HANDLING&&"boolean"==typeof t.CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements&&(Re.allowCustomizedBuiltInElements=t.CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements),Ue&&(Ie=!1),Be&&($e=!0),Xe&&(Ne=T({},r(U)),Te=[],!0===Xe.html&&(T(Ne,L),T(Te,F)),!0===Xe.svg&&(T(Ne,j),T(Te,z),T(Te,H)),!0===Xe.svgFilters&&(T(Ne,D),T(Te,z),T(Te,H)),!0===Xe.mathMl&&(T(Ne,M),T(Te,q),T(Te,H))),t.ADD_TAGS&&(Ne===Ae&&(Ne=P(Ne)),T(Ne,t.ADD_TAGS,ve)),t.ADD_ATTR&&(Te===Pe&&(Te=P(Te)),T(Te,t.ADD_ATTR,ve)),t.ADD_URI_SAFE_ATTR&&T(tt,t.ADD_URI_SAFE_ATTR,ve),t.FORBID_CONTENTS&&(Ze===Je&&(Ze=P(Ze)),T(Ze,t.FORBID_CONTENTS,ve)),Ye&&(Ne["#text"]=!0),ze&&T(Ne,["html","head","body"]),Ne.table&&(T(Ne,["tbody"]),delete Le.tbody),u&&u(t),dt=t)},gt=T({},["mi","mo","mn","ms","mtext"]),ht=T({},["foreignobject","annotation-xml"]),vt=T({},["title","style","font","a","script"]),yt=T({},j);T(yt,D),T(yt,I);var bt=T({},M);T(bt,_);var wt=function(e){b(a.removed,{element:e});try{e.parentNode.removeChild(e)}catch(t){try{e.outerHTML=le}catch(t){e.remove()}}},Et=function(e,t){try{b(a.removed,{attribute:t.getAttributeNode(e),from:t})}catch(e){b(a.removed,{attribute:null,from:t})}if(t.removeAttribute(e),"is"===e&&!Te[e])if($e||Be)try{wt(t)}catch(e){}else try{t.setAttribute(e,"")}catch(e){}},xt=function(e){var t,n;if(He)e="<remove></remove>"+e;else{var r=x(e,/^[\r\n\t ]+/);n=r&&r[0]}"application/xhtml+xml"===he&&it===ot&&(e='<html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>'+e+"</body></html>");var a=ie?ie.createHTML(e):e;if(it===ot)try{t=(new h).parseFromString(a,he)}catch(e){}if(!t||!t.documentElement){t=se.createDocument(it,"template",null);try{t.documentElement.innerHTML=lt?le:a}catch(e){}}var o=t.body||t.documentElement;return e&&n&&o.insertBefore(i.createTextNode(n),o.childNodes[0]||null),it===ot?fe.call(t,ze?"html":"body")[0]:ze?t.documentElement:o},kt=function(e){return ue.call(e.ownerDocument||e,e,f.SHOW_ELEMENT|f.SHOW_COMMENT|f.SHOW_TEXT|f.SHOW_PROCESSING_INSTRUCTION|f.SHOW_CDATA_SECTION,null,!1)},Ct=function(e){return e instanceof g&&("string"!=typeof e.nodeName||"string"!=typeof e.textContent||"function"!=typeof e.removeChild||!(e.attributes instanceof p)||"function"!=typeof e.removeAttribute||"function"!=typeof e.setAttribute||"string"!=typeof e.namespaceURI||"function"!=typeof e.insertBefore||"function"!=typeof e.hasChildNodes)},Ot=function(t){return"object"===e(s)?t instanceof s:t&&"object"===e(t)&&"number"==typeof t.nodeType&&"string"==typeof t.nodeName},St=function(e,t,n){ge[e]&&v(ge[e],(function(e){e.call(a,t,n,dt)}))},Nt=function(e){var t;if(St("beforeSanitizeElements",e,null),Ct(e))return wt(e),!0;if(S(/[\u0080-\uFFFF]/,e.nodeName))return wt(e),!0;var n=ve(e.nodeName);if(St("uponSanitizeElement",e,{tagName:n,allowedTags:Ne}),e.hasChildNodes()&&!Ot(e.firstElementChild)&&(!Ot(e.content)||!Ot(e.content.firstElementChild))&&S(/<[/\w]/g,e.innerHTML)&&S(/<[/\w]/g,e.textContent))return wt(e),!0;if("select"===n&&S(/<template/i,e.innerHTML))return wt(e),!0;if(7===e.nodeType)return wt(e),!0;if(Fe&&8===e.nodeType&&S(/<[/\w]/g,e.data))return wt(e),!0;if(!Ne[n]||Le[n]){if(!Le[n]&&Tt(n)){if(Re.tagNameCheck instanceof RegExp&&S(Re.tagNameCheck,n))return!1;if(Re.tagNameCheck instanceof Function&&Re.tagNameCheck(n))return!1}if(Ye&&!Ze[n]){var r=ae(e)||e.parentNode,o=re(e)||e.childNodes;if(o&&r)for(var i=o.length-1;i>=0;--i){var l=te(o[i],!0);l.__removalCount=(e.__removalCount||0)+1,r.insertBefore(l,ne(e))}}return wt(e),!0}return e instanceof d&&!function(e){var t=ae(e);t&&t.tagName||(t={namespaceURI:it,tagName:"template"});var n=w(e.tagName),r=w(t.tagName);return!!ct[e.namespaceURI]&&(e.namespaceURI===at?t.namespaceURI===ot?"svg"===n:t.namespaceURI===rt?"svg"===n&&("annotation-xml"===r||gt[r]):Boolean(yt[n]):e.namespaceURI===rt?t.namespaceURI===ot?"math"===n:t.namespaceURI===at?"math"===n&&ht[r]:Boolean(bt[n]):e.namespaceURI===ot?!(t.namespaceURI===at&&!ht[r])&&!(t.namespaceURI===rt&&!gt[r])&&!bt[n]&&(vt[n]||!yt[n]):!("application/xhtml+xml"!==he||!ct[e.namespaceURI]))}(e)?(wt(e),!0):"noscript"!==n&&"noembed"!==n&&"noframes"!==n||!S(/<\/no(script|embed|frames)/i,e.innerHTML)?(Ue&&3===e.nodeType&&(t=e.textContent,t=k(t,ye," "),t=k(t,be," "),t=k(t,we," "),e.textContent!==t&&(b(a.removed,{element:e.cloneNode()}),e.textContent=t)),St("afterSanitizeElements",e,null),!1):(wt(e),!0)},At=function(e,t,n){if(We&&("id"===t||"name"===t)&&(n in i||n in ft))return!1;if(Ie&&!je[t]&&S(Ee,t));else if(De&&S(xe,t));else if(!Te[t]||je[t]){if(!(Tt(e)&&(Re.tagNameCheck instanceof RegExp&&S(Re.tagNameCheck,e)||Re.tagNameCheck instanceof Function&&Re.tagNameCheck(e))&&(Re.attributeNameCheck instanceof RegExp&&S(Re.attributeNameCheck,t)||Re.attributeNameCheck instanceof Function&&Re.attributeNameCheck(t))||"is"===t&&Re.allowCustomizedBuiltInElements&&(Re.tagNameCheck instanceof RegExp&&S(Re.tagNameCheck,n)||Re.tagNameCheck instanceof Function&&Re.tagNameCheck(n))))return!1}else if(tt[t]);else if(S(Se,k(n,Ce,"")));else if("src"!==t&&"xlink:href"!==t&&"href"!==t||"script"===e||0!==C(n,"data:")||!Qe[e])if(Me&&!S(ke,k(n,Ce,"")));else if(n)return!1;return!0},Tt=function(e){return"annotation-xml"!==e&&x(e,Oe)},Pt=function(t){var n,r,o,i;St("beforeSanitizeAttributes",t,null);var l=t.attributes;if(l){var c={attrName:"",attrValue:"",keepAttr:!0,allowedAttributes:Te};for(i=l.length;i--;){var s=n=l[i],u=s.name,d=s.namespaceURI;if(r="value"===u?n.value:O(n.value),o=ve(u),c.attrName=o,c.attrValue=r,c.keepAttr=!0,c.forceKeepAttr=void 0,St("uponSanitizeAttribute",t,c),r=c.attrValue,Fe&&S(/((--!?|])>)|<\/(style|title)/i,r))Et(u,t);else if(!c.forceKeepAttr&&(Et(u,t),c.keepAttr))if(_e||!S(/\/>/i,r)){Ue&&(r=k(r,ye," "),r=k(r,be," "),r=k(r,we," "));var f=ve(t.nodeName);if(At(f,o,r)){if(!Ve||"id"!==o&&"name"!==o||(Et(u,t),r="user-content-"+r),ie&&"object"===e(A)&&"function"==typeof A.getAttributeType)if(d);else switch(A.getAttributeType(f,o)){case"TrustedHTML":r=ie.createHTML(r);break;case"TrustedScriptURL":r=ie.createScriptURL(r)}try{d?t.setAttributeNS(d,u,r):t.setAttribute(u,r),Ct(t)?wt(t):y(a.removed)}catch(e){}}}else Et(u,t)}St("afterSanitizeAttributes",t,null)}},Rt=function e(t){var n,r=kt(t);for(St("beforeSanitizeShadowDOM",t,null);n=r.nextNode();)St("uponSanitizeShadowNode",n,null),Nt(n)||(n.content instanceof l&&e(n.content),Pt(n));St("afterSanitizeShadowDOM",t,null)};return a.sanitize=function(t){var r,i,c,u,d,f=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};if((lt=!t)&&(t="\x3c!--\x3e"),"string"!=typeof t&&!Ot(t)){if("function"!=typeof t.toString)throw N("toString is not a function");if("string"!=typeof(t=t.toString()))throw N("dirty is not a string, aborting")}if(!a.isSupported){if("object"===e(n.toStaticHTML)||"function"==typeof n.toStaticHTML){if("string"==typeof t)return n.toStaticHTML(t);if(Ot(t))return n.toStaticHTML(t.outerHTML)}return t}if(qe||pt(f),a.removed=[],"string"==typeof t&&(Ke=!1),Ke){if(t.nodeName){var m=ve(t.nodeName);if(!Ne[m]||Le[m])throw N("root node is forbidden and cannot be sanitized in-place")}}else if(t instanceof s)1===(i=(r=xt("\x3c!----\x3e")).ownerDocument.importNode(t,!0)).nodeType&&"BODY"===i.nodeName||"HTML"===i.nodeName?r=i:r.appendChild(i);else{if(!$e&&!Ue&&!ze&&-1===t.indexOf("<"))return ie&&Ge?ie.createHTML(t):t;if(!(r=xt(t)))return $e?null:Ge?le:""}r&&He&&wt(r.firstChild);for(var p=kt(Ke?t:r);c=p.nextNode();)3===c.nodeType&&c===u||Nt(c)||(c.content instanceof l&&Rt(c.content),Pt(c),u=c);if(u=null,Ke)return t;if($e){if(Be)for(d=de.call(r.ownerDocument);r.firstChild;)d.appendChild(r.firstChild);else d=r;return(Te.shadowroot||Te.shadowrootmod)&&(d=me.call(o,d,!0)),d}var g=ze?r.outerHTML:r.innerHTML;return ze&&Ne["!doctype"]&&r.ownerDocument&&r.ownerDocument.doctype&&r.ownerDocument.doctype.name&&S(Z,r.ownerDocument.doctype.name)&&(g="<!DOCTYPE "+r.ownerDocument.doctype.name+">\n"+g),Ue&&(g=k(g,ye," "),g=k(g,be," "),g=k(g,we," ")),ie&&Ge?ie.createHTML(g):g},a.setConfig=function(e){pt(e),qe=!0},a.clearConfig=function(){dt=null,qe=!1},a.isValidAttribute=function(e,t,n){dt||pt({});var r=ve(e),a=ve(t);return At(r,a,n)},a.addHook=function(e,t){"function"==typeof t&&(ge[e]=ge[e]||[],b(ge[e],t))},a.removeHook=function(e){if(ge[e])return y(ge[e])},a.removeHooks=function(e){ge[e]&&(ge[e]=[])},a.removeAllHooks=function(){ge={}},a}();return ee}()},396:(e,t,n)=>{var r=n(261),a={childContextTypes:!0,contextType:!0,contextTypes:!0,defaultProps:!0,displayName:!0,getDefaultProps:!0,getDerivedStateFromError:!0,getDerivedStateFromProps:!0,mixins:!0,propTypes:!0,type:!0},o={name:!0,length:!0,prototype:!0,caller:!0,callee:!0,arguments:!0,arity:!0},i={$$typeof:!0,compare:!0,defaultProps:!0,displayName:!0,propTypes:!0,type:!0},l={};function c(e){return r.isMemo(e)?i:l[e.$$typeof]||a}l[r.ForwardRef]={$$typeof:!0,render:!0,defaultProps:!0,displayName:!0,propTypes:!0},l[r.Memo]=i;var s=Object.defineProperty,u=Object.getOwnPropertyNames,d=Object.getOwnPropertySymbols,f=Object.getOwnPropertyDescriptor,m=Object.getPrototypeOf,p=Object.prototype;e.exports=function e(t,n,r){if("string"!=typeof n){if(p){var a=m(n);a&&a!==p&&e(t,a,r)}var i=u(n);d&&(i=i.concat(d(n)));for(var l=c(t),g=c(n),h=0;h<i.length;++h){var v=i[h];if(!(o[v]||r&&r[v]||g&&g[v]||l&&l[v])){var y=f(n,v);try{s(t,v,y)}catch(e){}}}}return t}},856:(e,t,n)=>{var r=n(183);function a(){}function o(){}o.resetWarningCache=a,e.exports=function(){function e(e,t,n,a,o,i){if(i!==r){var l=new Error("Calling PropTypes validators directly is not supported by the `prop-types` package. Use PropTypes.checkPropTypes() to call them. Read more at http://fb.me/use-check-prop-types");throw l.name="Invariant Violation",l}}function t(){return e}e.isRequired=e;var n={array:e,bigint:e,bool:e,func:e,number:e,object:e,string:e,symbol:e,any:e,arrayOf:t,element:e,elementType:e,instanceOf:t,node:e,objectOf:t,oneOf:t,oneOfType:t,shape:t,exact:t,checkPropTypes:o,resetWarningCache:a};return n.PropTypes=n,n}},598:(e,t,n)=>{e.exports=n(856)()},183:e=>{e.exports="SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED"},505:(e,t)=>{var n="function"==typeof Symbol&&Symbol.for,r=n?Symbol.for("react.element"):60103,a=n?Symbol.for("react.portal"):60106,o=n?Symbol.for("react.fragment"):60107,i=n?Symbol.for("react.strict_mode"):60108,l=n?Symbol.for("react.profiler"):60114,c=n?Symbol.for("react.provider"):60109,s=n?Symbol.for("react.context"):60110,u=n?Symbol.for("react.async_mode"):60111,d=n?Symbol.for("react.concurrent_mode"):60111,f=n?Symbol.for("react.forward_ref"):60112,m=n?Symbol.for("react.suspense"):60113,p=n?Symbol.for("react.suspense_list"):60120,g=n?Symbol.for("react.memo"):60115,h=n?Symbol.for("react.lazy"):60116,v=n?Symbol.for("react.block"):60121,y=n?Symbol.for("react.fundamental"):60117,b=n?Symbol.for("react.responder"):60118,w=n?Symbol.for("react.scope"):60119;function E(e){if("object"==typeof e&&null!==e){var t=e.$$typeof;switch(t){case r:switch(e=e.type){case u:case d:case o:case l:case i:case m:return e;default:switch(e=e&&e.$$typeof){case s:case f:case h:case g:case c:return e;default:return t}}case a:return t}}}function x(e){return E(e)===d}t.AsyncMode=u,t.ConcurrentMode=d,t.ContextConsumer=s,t.ContextProvider=c,t.Element=r,t.ForwardRef=f,t.Fragment=o,t.Lazy=h,t.Memo=g,t.Portal=a,t.Profiler=l,t.StrictMode=i,t.Suspense=m,t.isAsyncMode=function(e){return x(e)||E(e)===u},t.isConcurrentMode=x,t.isContextConsumer=function(e){return E(e)===s},t.isContextProvider=function(e){return E(e)===c},t.isElement=function(e){return"object"==typeof e&&null!==e&&e.$$typeof===r},t.isForwardRef=function(e){return E(e)===f},t.isFragment=function(e){return E(e)===o},t.isLazy=function(e){return E(e)===h},t.isMemo=function(e){return E(e)===g},t.isPortal=function(e){return E(e)===a},t.isProfiler=function(e){return E(e)===l},t.isStrictMode=function(e){return E(e)===i},t.isSuspense=function(e){return E(e)===m},t.isValidElementType=function(e){return"string"==typeof e||"function"==typeof e||e===o||e===d||e===l||e===i||e===m||e===p||"object"==typeof e&&null!==e&&(e.$$typeof===h||e.$$typeof===g||e.$$typeof===c||e.$$typeof===s||e.$$typeof===f||e.$$typeof===y||e.$$typeof===b||e.$$typeof===w||e.$$typeof===v)},t.typeOf=E},261:(e,t,n)=>{e.exports=n(505)},499:e=>{e.exports=function(e,t,n,r){var a=n?n.call(r,e,t):void 0;if(void 0!==a)return!!a;if(e===t)return!0;if("object"!=typeof e||!e||"object"!=typeof t||!t)return!1;var o=Object.keys(e),i=Object.keys(t);if(o.length!==i.length)return!1;for(var l=Object.prototype.hasOwnProperty.bind(t),c=0;c<o.length;c++){var s=o[c];if(!l(s))return!1;var u=e[s],d=t[s];if(!1===(a=n?n.call(r,u,d,s):void 0)||void 0===a&&u!==d)return!1}return!0}},541:(e,t,n)=>{var r=n(998).default;function a(){e.exports=a=function(){return n},e.exports.__esModule=!0,e.exports.default=e.exports;var t,n={},o=Object.prototype,i=o.hasOwnProperty,l=Object.defineProperty||function(e,t,n){e[t]=n.value},c="function"==typeof Symbol?Symbol:{},s=c.iterator||"@@iterator",u=c.asyncIterator||"@@asyncIterator",d=c.toStringTag||"@@toStringTag";function f(e,t,n){return Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}),e[t]}try{f({},"")}catch(t){f=function(e,t,n){return e[t]=n}}function m(e,t,n,r){var a=t&&t.prototype instanceof w?t:w,o=Object.create(a.prototype),i=new j(r||[]);return l(o,"_invoke",{value:T(e,n,i)}),o}function p(e,t,n){try{return{type:"normal",arg:e.call(t,n)}}catch(e){return{type:"throw",arg:e}}}n.wrap=m;var g="suspendedStart",h="suspendedYield",v="executing",y="completed",b={};function w(){}function E(){}function x(){}var k={};f(k,s,(function(){return this}));var C=Object.getPrototypeOf,O=C&&C(C(D([])));O&&O!==o&&i.call(O,s)&&(k=O);var S=x.prototype=w.prototype=Object.create(k);function N(e){["next","throw","return"].forEach((function(t){f(e,t,(function(e){return this._invoke(t,e)}))}))}function A(e,t){function n(a,o,l,c){var s=p(e[a],e,o);if("throw"!==s.type){var u=s.arg,d=u.value;return d&&"object"==r(d)&&i.call(d,"__await")?t.resolve(d.__await).then((function(e){n("next",e,l,c)}),(function(e){n("throw",e,l,c)})):t.resolve(d).then((function(e){u.value=e,l(u)}),(function(e){return n("throw",e,l,c)}))}c(s.arg)}var a;l(this,"_invoke",{value:function(e,r){function o(){return new t((function(t,a){n(e,r,t,a)}))}return a=a?a.then(o,o):o()}})}function T(e,n,r){var a=g;return function(o,i){if(a===v)throw Error("Generator is already running");if(a===y){if("throw"===o)throw i;return{value:t,done:!0}}for(r.method=o,r.arg=i;;){var l=r.delegate;if(l){var c=P(l,r);if(c){if(c===b)continue;return c}}if("next"===r.method)r.sent=r._sent=r.arg;else if("throw"===r.method){if(a===g)throw a=y,r.arg;r.dispatchException(r.arg)}else"return"===r.method&&r.abrupt("return",r.arg);a=v;var s=p(e,n,r);if("normal"===s.type){if(a=r.done?y:h,s.arg===b)continue;return{value:s.arg,done:r.done}}"throw"===s.type&&(a=y,r.method="throw",r.arg=s.arg)}}}function P(e,n){var r=n.method,a=e.iterator[r];if(a===t)return n.delegate=null,"throw"===r&&e.iterator.return&&(n.method="return",n.arg=t,P(e,n),"throw"===n.method)||"return"!==r&&(n.method="throw",n.arg=new TypeError("The iterator does not provide a '"+r+"' method")),b;var o=p(a,e.iterator,n.arg);if("throw"===o.type)return n.method="throw",n.arg=o.arg,n.delegate=null,b;var i=o.arg;return i?i.done?(n[e.resultName]=i.value,n.next=e.nextLoc,"return"!==n.method&&(n.method="next",n.arg=t),n.delegate=null,b):i:(n.method="throw",n.arg=new TypeError("iterator result is not an object"),n.delegate=null,b)}function R(e){var t={tryLoc:e[0]};1 in e&&(t.catchLoc=e[1]),2 in e&&(t.finallyLoc=e[2],t.afterLoc=e[3]),this.tryEntries.push(t)}function L(e){var t=e.completion||{};t.type="normal",delete t.arg,e.completion=t}function j(e){this.tryEntries=[{tryLoc:"root"}],e.forEach(R,this),this.reset(!0)}function D(e){if(e||""===e){var n=e[s];if(n)return n.call(e);if("function"==typeof e.next)return e;if(!isNaN(e.length)){var a=-1,o=function n(){for(;++a<e.length;)if(i.call(e,a))return n.value=e[a],n.done=!1,n;return n.value=t,n.done=!0,n};return o.next=o}}throw new TypeError(r(e)+" is not iterable")}return E.prototype=x,l(S,"constructor",{value:x,configurable:!0}),l(x,"constructor",{value:E,configurable:!0}),E.displayName=f(x,d,"GeneratorFunction"),n.isGeneratorFunction=function(e){var t="function"==typeof e&&e.constructor;return!!t&&(t===E||"GeneratorFunction"===(t.displayName||t.name))},n.mark=function(e){return Object.setPrototypeOf?Object.setPrototypeOf(e,x):(e.__proto__=x,f(e,d,"GeneratorFunction")),e.prototype=Object.create(S),e},n.awrap=function(e){return{__await:e}},N(A.prototype),f(A.prototype,u,(function(){return this})),n.AsyncIterator=A,n.async=function(e,t,r,a,o){void 0===o&&(o=Promise);var i=new A(m(e,t,r,a),o);return n.isGeneratorFunction(t)?i:i.next().then((function(e){return e.done?e.value:i.next()}))},N(S),f(S,d,"Generator"),f(S,s,(function(){return this})),f(S,"toString",(function(){return"[object Generator]"})),n.keys=function(e){var t=Object(e),n=[];for(var r in t)n.push(r);return n.reverse(),function e(){for(;n.length;){var r=n.pop();if(r in t)return e.value=r,e.done=!1,e}return e.done=!0,e}},n.values=D,j.prototype={constructor:j,reset:function(e){if(this.prev=0,this.next=0,this.sent=this._sent=t,this.done=!1,this.delegate=null,this.method="next",this.arg=t,this.tryEntries.forEach(L),!e)for(var n in this)"t"===n.charAt(0)&&i.call(this,n)&&!isNaN(+n.slice(1))&&(this[n]=t)},stop:function(){this.done=!0;var e=this.tryEntries[0].completion;if("throw"===e.type)throw e.arg;return this.rval},dispatchException:function(e){if(this.done)throw e;var n=this;function r(r,a){return l.type="throw",l.arg=e,n.next=r,a&&(n.method="next",n.arg=t),!!a}for(var a=this.tryEntries.length-1;a>=0;--a){var o=this.tryEntries[a],l=o.completion;if("root"===o.tryLoc)return r("end");if(o.tryLoc<=this.prev){var c=i.call(o,"catchLoc"),s=i.call(o,"finallyLoc");if(c&&s){if(this.prev<o.catchLoc)return r(o.catchLoc,!0);if(this.prev<o.finallyLoc)return r(o.finallyLoc)}else if(c){if(this.prev<o.catchLoc)return r(o.catchLoc,!0)}else{if(!s)throw Error("try statement without catch or finally");if(this.prev<o.finallyLoc)return r(o.finallyLoc)}}}},abrupt:function(e,t){for(var n=this.tryEntries.length-1;n>=0;--n){var r=this.tryEntries[n];if(r.tryLoc<=this.prev&&i.call(r,"finallyLoc")&&this.prev<r.finallyLoc){var a=r;break}}a&&("break"===e||"continue"===e)&&a.tryLoc<=t&&t<=a.finallyLoc&&(a=null);var o=a?a.completion:{};return o.type=e,o.arg=t,a?(this.method="next",this.next=a.finallyLoc,b):this.complete(o)},complete:function(e,t){if("throw"===e.type)throw e.arg;return"break"===e.type||"continue"===e.type?this.next=e.arg:"return"===e.type?(this.rval=this.arg=e.arg,this.method="return",this.next="end"):"normal"===e.type&&t&&(this.next=t),b},finish:function(e){for(var t=this.tryEntries.length-1;t>=0;--t){var n=this.tryEntries[t];if(n.finallyLoc===e)return this.complete(n.completion,n.afterLoc),L(n),b}},catch:function(e){for(var t=this.tryEntries.length-1;t>=0;--t){var n=this.tryEntries[t];if(n.tryLoc===e){var r=n.completion;if("throw"===r.type){var a=r.arg;L(n)}return a}}throw Error("illegal catch attempt")},delegateYield:function(e,n,r){return this.delegate={iterator:D(e),resultName:n,nextLoc:r},"next"===this.method&&(this.arg=t),b}},n}e.exports=a,e.exports.__esModule=!0,e.exports.default=e.exports},998:e=>{function t(n){return e.exports=t="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e.exports.__esModule=!0,e.exports.default=e.exports,t(n)}e.exports=t,e.exports.__esModule=!0,e.exports.default=e.exports},192:(e,t,n)=>{var r=n(541)();e.exports=r;try{regeneratorRuntime=r}catch(e){"object"==typeof globalThis?globalThis.regeneratorRuntime=r:Function("r","regeneratorRuntime = r")(r)}},530:(e,t)=>{var n;!function(){var r={}.hasOwnProperty;function a(){for(var e="",t=0;t<arguments.length;t++){var n=arguments[t];n&&(e=i(e,o(n)))}return e}function o(e){if("string"==typeof e||"number"==typeof e)return e;if("object"!=typeof e)return"";if(Array.isArray(e))return a.apply(null,e);if(e.toString!==Object.prototype.toString&&!e.toString.toString().includes("[native code]"))return e.toString();var t="";for(var n in e)r.call(e,n)&&e[n]&&(t=i(t,n));return t}function i(e,t){return t?e?e+" "+t:e+t:e}e.exports?(a.default=a,e.exports=a):void 0===(n=function(){return a}.apply(t,[]))||(e.exports=n)}()}},r={};function a(e){var t=r[e];if(void 0!==t)return t.exports;var o=r[e]={exports:{}};return n[e].call(o.exports,o,o.exports,a),o.exports}a.n=e=>{var t=e&&e.__esModule?()=>e.default:()=>e;return a.d(t,{a:t}),t},a.d=(e,t)=>{for(var n in t)a.o(t,n)&&!a.o(e,n)&&Object.defineProperty(e,n,{enumerable:!0,get:t[n]})},a.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),a.nc=void 0;var o={};function i(e,t,n,r,a,o,i){try{var l=e[o](i),c=l.value}catch(e){return void n(e)}l.done?t(c):Promise.resolve(c).then(r,a)}function l(e){return function(){var t=this,n=arguments;return new Promise((function(r,a){var o=e.apply(t,n);function l(e){i(o,r,a,l,c,"next",e)}function c(e){i(o,r,a,l,c,"throw",e)}l(void 0)}))}}function c(e){return c="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},c(e)}function s(e,t,n){return(t=function(e){var t=function(e){if("object"!=c(e)||!e)return e;var t=e[Symbol.toPrimitive];if(void 0!==t){var n=t.call(e,"string");if("object"!=c(n))return n;throw new TypeError("@@toPrimitive must return a primitive value.")}return String(e)}(e);return"symbol"==c(t)?t:t+""}(t))in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function u(e,t){(null==t||t>e.length)&&(t=e.length);for(var n=0,r=Array(t);n<t;n++)r[n]=e[n];return r}function d(e,t){if(e){if("string"==typeof e)return u(e,t);var n={}.toString.call(e).slice(8,-1);return"Object"===n&&e.constructor&&(n=e.constructor.name),"Map"===n||"Set"===n?Array.from(e):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?u(e,t):void 0}}function f(e,t){return function(e){if(Array.isArray(e))return e}(e)||function(e,t){var n=null==e?null:"undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(null!=n){var r,a,o,i,l=[],c=!0,s=!1;try{if(o=(n=n.call(e)).next,0===t){if(Object(n)!==n)return;c=!1}else for(;!(c=(r=o.call(n)).done)&&(l.push(r.value),l.length!==t);c=!0);}catch(e){s=!0,a=e}finally{try{if(!c&&null!=n.return&&(i=n.return(),Object(i)!==i))return}finally{if(s)throw a}}return l}}(e,t)||d(e,t)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function m(e,t){return t||(t=e.slice(0)),Object.freeze(Object.defineProperties(e,{raw:{value:Object.freeze(t)}}))}a.d(o,{Pg:()=>is,G6:()=>ac,M_:()=>cs,TG:()=>ss});var p=a(192),g=a.n(p);const h=(v={Component:()=>e.Component,Fragment:()=>e.Fragment,createContext:()=>e.createContext,createElement:()=>e.createElement,createRef:()=>e.createRef,default:()=>e.default,forwardRef:()=>e.forwardRef,useCallback:()=>e.useCallback,useContext:()=>e.useContext,useEffect:()=>e.useEffect,useImperativeHandle:()=>e.useImperativeHandle,useLayoutEffect:()=>e.useLayoutEffect,useMemo:()=>e.useMemo,useRef:()=>e.useRef,useState:()=>e.useState},y={},a.d(y,v),y);var v,y;const b=(e=>{var t={};return a.d(t,e),t})({default:()=>t.default});var w={651:function(e){e.exports=function(){function e(t){return(e="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(t)}function t(e,n){return t=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e},t(e,n)}function n(e,r,a){return n=function(){if("undefined"==typeof Reflect||!Reflect.construct)return!1;if(Reflect.construct.sham)return!1;if("function"==typeof Proxy)return!0;try{return Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){}))),!0}catch(e){return!1}}()?Reflect.construct:function(e,n,r){var a=[null];a.push.apply(a,n);var o=new(Function.bind.apply(e,a));return r&&t(o,r.prototype),o},n.apply(null,arguments)}function r(e){return function(e){if(Array.isArray(e))return a(e)}(e)||function(e){if("undefined"!=typeof Symbol&&null!=e[Symbol.iterator]||null!=e["@@iterator"])return Array.from(e)}(e)||function(e,t){if(e){if("string"==typeof e)return a(e,t);var n=Object.prototype.toString.call(e).slice(8,-1);return"Object"===n&&e.constructor&&(n=e.constructor.name),"Map"===n||"Set"===n?Array.from(e):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?a(e,t):void 0}}(e)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function a(e,t){(null==t||t>e.length)&&(t=e.length);for(var n=0,r=new Array(t);n<t;n++)r[n]=e[n];return r}var o=Object.hasOwnProperty,i=Object.setPrototypeOf,l=Object.isFrozen,c=Object.getPrototypeOf,s=Object.getOwnPropertyDescriptor,u=Object.freeze,d=Object.seal,f=Object.create,m="undefined"!=typeof Reflect&&Reflect,p=m.apply,g=m.construct;p||(p=function(e,t,n){return e.apply(t,n)}),u||(u=function(e){return e}),d||(d=function(e){return e}),g||(g=function(e,t){return n(e,r(t))});var h,v=A(Array.prototype.forEach),y=A(Array.prototype.pop),b=A(Array.prototype.push),w=A(String.prototype.toLowerCase),E=A(String.prototype.toString),x=A(String.prototype.match),k=A(String.prototype.replace),C=A(String.prototype.indexOf),O=A(String.prototype.trim),S=A(RegExp.prototype.test),N=(h=TypeError,function(){for(var e=arguments.length,t=new Array(e),n=0;n<e;n++)t[n]=arguments[n];return g(h,t)});function A(e){return function(t){for(var n=arguments.length,r=new Array(n>1?n-1:0),a=1;a<n;a++)r[a-1]=arguments[a];return p(e,t,r)}}function T(e,t,n){var r;n=null!==(r=n)&&void 0!==r?r:w,i&&i(e,null);for(var a=t.length;a--;){var o=t[a];if("string"==typeof o){var c=n(o);c!==o&&(l(t)||(t[a]=c),o=c)}e[o]=!0}return e}function P(e){var t,n=f(null);for(t in e)!0===p(o,e,[t])&&(n[t]=e[t]);return n}function R(e,t){for(;null!==e;){var n=s(e,t);if(n){if(n.get)return A(n.get);if("function"==typeof n.value)return A(n.value)}e=c(e)}return function(e){return console.warn("fallback value for",e),null}}var L=u(["a","abbr","acronym","address","area","article","aside","audio","b","bdi","bdo","big","blink","blockquote","body","br","button","canvas","caption","center","cite","code","col","colgroup","content","data","datalist","dd","decorator","del","details","dfn","dialog","dir","div","dl","dt","element","em","fieldset","figcaption","figure","font","footer","form","h1","h2","h3","h4","h5","h6","head","header","hgroup","hr","html","i","img","input","ins","kbd","label","legend","li","main","map","mark","marquee","menu","menuitem","meter","nav","nobr","ol","optgroup","option","output","p","picture","pre","progress","q","rp","rt","ruby","s","samp","section","select","shadow","small","source","spacer","span","strike","strong","style","sub","summary","sup","table","tbody","td","template","textarea","tfoot","th","thead","time","tr","track","tt","u","ul","var","video","wbr"]),j=u(["svg","a","altglyph","altglyphdef","altglyphitem","animatecolor","animatemotion","animatetransform","circle","clippath","defs","desc","ellipse","filter","font","g","glyph","glyphref","hkern","image","line","lineargradient","marker","mask","metadata","mpath","path","pattern","polygon","polyline","radialgradient","rect","stop","style","switch","symbol","text","textpath","title","tref","tspan","view","vkern"]),D=u(["feBlend","feColorMatrix","feComponentTransfer","feComposite","feConvolveMatrix","feDiffuseLighting","feDisplacementMap","feDistantLight","feFlood","feFuncA","feFuncB","feFuncG","feFuncR","feGaussianBlur","feImage","feMerge","feMergeNode","feMorphology","feOffset","fePointLight","feSpecularLighting","feSpotLight","feTile","feTurbulence"]),I=u(["animate","color-profile","cursor","discard","fedropshadow","font-face","font-face-format","font-face-name","font-face-src","font-face-uri","foreignobject","hatch","hatchpath","mesh","meshgradient","meshpatch","meshrow","missing-glyph","script","set","solidcolor","unknown","use"]),M=u(["math","menclose","merror","mfenced","mfrac","mglyph","mi","mlabeledtr","mmultiscripts","mn","mo","mover","mpadded","mphantom","mroot","mrow","ms","mspace","msqrt","mstyle","msub","msup","msubsup","mtable","mtd","mtext","mtr","munder","munderover"]),_=u(["maction","maligngroup","malignmark","mlongdiv","mscarries","mscarry","msgroup","mstack","msline","msrow","semantics","annotation","annotation-xml","mprescripts","none"]),U=u(["#text"]),F=u(["accept","action","align","alt","autocapitalize","autocomplete","autopictureinpicture","autoplay","background","bgcolor","border","capture","cellpadding","cellspacing","checked","cite","class","clear","color","cols","colspan","controls","controlslist","coords","crossorigin","datetime","decoding","default","dir","disabled","disablepictureinpicture","disableremoteplayback","download","draggable","enctype","enterkeyhint","face","for","headers","height","hidden","high","href","hreflang","id","inputmode","integrity","ismap","kind","label","lang","list","loading","loop","low","max","maxlength","media","method","min","minlength","multiple","muted","name","nonce","noshade","novalidate","nowrap","open","optimum","pattern","placeholder","playsinline","poster","preload","pubdate","radiogroup","readonly","rel","required","rev","reversed","role","rows","rowspan","spellcheck","scope","selected","shape","size","sizes","span","srclang","start","src","srcset","step","style","summary","tabindex","title","translate","type","usemap","valign","value","width","xmlns","slot"]),z=u(["accent-height","accumulate","additive","alignment-baseline","ascent","attributename","attributetype","azimuth","basefrequency","baseline-shift","begin","bias","by","class","clip","clippathunits","clip-path","clip-rule","color","color-interpolation","color-interpolation-filters","color-profile","color-rendering","cx","cy","d","dx","dy","diffuseconstant","direction","display","divisor","dur","edgemode","elevation","end","fill","fill-opacity","fill-rule","filter","filterunits","flood-color","flood-opacity","font-family","font-size","font-size-adjust","font-stretch","font-style","font-variant","font-weight","fx","fy","g1","g2","glyph-name","glyphref","gradientunits","gradienttransform","height","href","id","image-rendering","in","in2","k","k1","k2","k3","k4","kerning","keypoints","keysplines","keytimes","lang","lengthadjust","letter-spacing","kernelmatrix","kernelunitlength","lighting-color","local","marker-end","marker-mid","marker-start","markerheight","markerunits","markerwidth","maskcontentunits","maskunits","max","mask","media","method","mode","min","name","numoctaves","offset","operator","opacity","order","orient","orientation","origin","overflow","paint-order","path","pathlength","patterncontentunits","patterntransform","patternunits","points","preservealpha","preserveaspectratio","primitiveunits","r","rx","ry","radius","refx","refy","repeatcount","repeatdur","restart","result","rotate","scale","seed","shape-rendering","specularconstant","specularexponent","spreadmethod","startoffset","stddeviation","stitchtiles","stop-color","stop-opacity","stroke-dasharray","stroke-dashoffset","stroke-linecap","stroke-linejoin","stroke-miterlimit","stroke-opacity","stroke","stroke-width","style","surfacescale","systemlanguage","tabindex","targetx","targety","transform","transform-origin","text-anchor","text-decoration","text-rendering","textlength","type","u1","u2","unicode","values","viewbox","visibility","version","vert-adv-y","vert-origin-x","vert-origin-y","width","word-spacing","wrap","writing-mode","xchannelselector","ychannelselector","x","x1","x2","xmlns","y","y1","y2","z","zoomandpan"]),q=u(["accent","accentunder","align","bevelled","close","columnsalign","columnlines","columnspan","denomalign","depth","dir","display","displaystyle","encoding","fence","frame","height","href","id","largeop","length","linethickness","lspace","lquote","mathbackground","mathcolor","mathsize","mathvariant","maxsize","minsize","movablelimits","notation","numalign","open","rowalign","rowlines","rowspacing","rowspan","rspace","rquote","scriptlevel","scriptminsize","scriptsizemultiplier","selection","separator","separators","stretchy","subscriptshift","supscriptshift","symmetric","voffset","width","xmlns"]),H=u(["xlink:href","xml:id","xlink:title","xml:space","xmlns:xlink"]),$=d(/\{\{[\w\W]*|[\w\W]*\}\}/gm),B=d(/<%[\w\W]*|[\w\W]*%>/gm),G=d(/\${[\w\W]*}/gm),W=d(/^data-[\-\w.\u00B7-\uFFFF]/),V=d(/^aria-[\-\w]+$/),Y=d(/^(?:(?:(?:f|ht)tps?|mailto|tel|callto|cid|xmpp):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i),K=d(/^(?:\w+script|data):/i),X=d(/[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205F\u3000]/g),Z=d(/^html$/i),J=d(/^[a-z][.\w]*(-[.\w]+)+$/i),Q=function t(){var n=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"undefined"==typeof window?null:window,a=function(e){return t(e)};if(a.version="2.5.6",a.removed=[],!n||!n.document||9!==n.document.nodeType)return a.isSupported=!1,a;var o=n.document,i=n.document,l=n.DocumentFragment,c=n.HTMLTemplateElement,s=n.Node,d=n.Element,f=n.NodeFilter,m=n.NamedNodeMap,p=void 0===m?n.NamedNodeMap||n.MozNamedAttrMap:m,g=n.HTMLFormElement,h=n.DOMParser,A=n.trustedTypes,Q=d.prototype,ee=R(Q,"cloneNode"),te=R(Q,"nextSibling"),ne=R(Q,"childNodes"),re=R(Q,"parentNode");if("function"==typeof c){var ae=i.createElement("template");ae.content&&ae.content.ownerDocument&&(i=ae.content.ownerDocument)}var oe=function(t,n){if("object"!==e(t)||"function"!=typeof t.createPolicy)return null;var r=null,a="data-tt-policy-suffix";n.currentScript&&n.currentScript.hasAttribute(a)&&(r=n.currentScript.getAttribute(a));var o="dompurify"+(r?"#"+r:"");try{return t.createPolicy(o,{createHTML:function(e){return e},createScriptURL:function(e){return e}})}catch(e){return console.warn("TrustedTypes policy "+o+" could not be created."),null}}(A,o),ie=oe?oe.createHTML(""):"",le=i,ce=le.implementation,se=le.createNodeIterator,ue=le.createDocumentFragment,de=le.getElementsByTagName,fe=o.importNode,me={};try{me=P(i).documentMode?i.documentMode:{}}catch(e){}var pe={};a.isSupported="function"==typeof re&&ce&&void 0!==ce.createHTMLDocument&&9!==me;var ge,he,ve=$,ye=B,be=G,we=W,Ee=V,xe=K,ke=X,Ce=J,Oe=Y,Se=null,Ne=T({},[].concat(r(L),r(j),r(D),r(M),r(U))),Ae=null,Te=T({},[].concat(r(F),r(z),r(q),r(H))),Pe=Object.seal(Object.create(null,{tagNameCheck:{writable:!0,configurable:!1,enumerable:!0,value:null},attributeNameCheck:{writable:!0,configurable:!1,enumerable:!0,value:null},allowCustomizedBuiltInElements:{writable:!0,configurable:!1,enumerable:!0,value:!1}})),Re=null,Le=null,je=!0,De=!0,Ie=!1,Me=!0,_e=!1,Ue=!0,Fe=!1,ze=!1,qe=!1,He=!1,$e=!1,Be=!1,Ge=!0,We=!1,Ve=!0,Ye=!1,Ke={},Xe=null,Ze=T({},["annotation-xml","audio","colgroup","desc","foreignobject","head","iframe","math","mi","mn","mo","ms","mtext","noembed","noframes","noscript","plaintext","script","style","svg","template","thead","title","video","xmp"]),Je=null,Qe=T({},["audio","video","img","source","image","track"]),et=null,tt=T({},["alt","class","for","id","label","name","pattern","placeholder","role","summary","title","value","style","xmlns"]),nt="http://www.w3.org/1998/Math/MathML",rt="http://www.w3.org/2000/svg",at="http://www.w3.org/1999/xhtml",ot=at,it=!1,lt=null,ct=T({},[nt,rt,at],E),st=["application/xhtml+xml","text/html"],ut=null,dt=i.createElement("form"),ft=function(e){return e instanceof RegExp||e instanceof Function},mt=function(t){ut&&ut===t||(t&&"object"===e(t)||(t={}),t=P(t),ge=ge=-1===st.indexOf(t.PARSER_MEDIA_TYPE)?"text/html":t.PARSER_MEDIA_TYPE,he="application/xhtml+xml"===ge?E:w,Se="ALLOWED_TAGS"in t?T({},t.ALLOWED_TAGS,he):Ne,Ae="ALLOWED_ATTR"in t?T({},t.ALLOWED_ATTR,he):Te,lt="ALLOWED_NAMESPACES"in t?T({},t.ALLOWED_NAMESPACES,E):ct,et="ADD_URI_SAFE_ATTR"in t?T(P(tt),t.ADD_URI_SAFE_ATTR,he):tt,Je="ADD_DATA_URI_TAGS"in t?T(P(Qe),t.ADD_DATA_URI_TAGS,he):Qe,Xe="FORBID_CONTENTS"in t?T({},t.FORBID_CONTENTS,he):Ze,Re="FORBID_TAGS"in t?T({},t.FORBID_TAGS,he):{},Le="FORBID_ATTR"in t?T({},t.FORBID_ATTR,he):{},Ke="USE_PROFILES"in t&&t.USE_PROFILES,je=!1!==t.ALLOW_ARIA_ATTR,De=!1!==t.ALLOW_DATA_ATTR,Ie=t.ALLOW_UNKNOWN_PROTOCOLS||!1,Me=!1!==t.ALLOW_SELF_CLOSE_IN_ATTR,_e=t.SAFE_FOR_TEMPLATES||!1,Ue=!1!==t.SAFE_FOR_XML,Fe=t.WHOLE_DOCUMENT||!1,He=t.RETURN_DOM||!1,$e=t.RETURN_DOM_FRAGMENT||!1,Be=t.RETURN_TRUSTED_TYPE||!1,qe=t.FORCE_BODY||!1,Ge=!1!==t.SANITIZE_DOM,We=t.SANITIZE_NAMED_PROPS||!1,Ve=!1!==t.KEEP_CONTENT,Ye=t.IN_PLACE||!1,Oe=t.ALLOWED_URI_REGEXP||Oe,ot=t.NAMESPACE||at,Pe=t.CUSTOM_ELEMENT_HANDLING||{},t.CUSTOM_ELEMENT_HANDLING&&ft(t.CUSTOM_ELEMENT_HANDLING.tagNameCheck)&&(Pe.tagNameCheck=t.CUSTOM_ELEMENT_HANDLING.tagNameCheck),t.CUSTOM_ELEMENT_HANDLING&&ft(t.CUSTOM_ELEMENT_HANDLING.attributeNameCheck)&&(Pe.attributeNameCheck=t.CUSTOM_ELEMENT_HANDLING.attributeNameCheck),t.CUSTOM_ELEMENT_HANDLING&&"boolean"==typeof t.CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements&&(Pe.allowCustomizedBuiltInElements=t.CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements),_e&&(De=!1),$e&&(He=!0),Ke&&(Se=T({},r(U)),Ae=[],!0===Ke.html&&(T(Se,L),T(Ae,F)),!0===Ke.svg&&(T(Se,j),T(Ae,z),T(Ae,H)),!0===Ke.svgFilters&&(T(Se,D),T(Ae,z),T(Ae,H)),!0===Ke.mathMl&&(T(Se,M),T(Ae,q),T(Ae,H))),t.ADD_TAGS&&(Se===Ne&&(Se=P(Se)),T(Se,t.ADD_TAGS,he)),t.ADD_ATTR&&(Ae===Te&&(Ae=P(Ae)),T(Ae,t.ADD_ATTR,he)),t.ADD_URI_SAFE_ATTR&&T(et,t.ADD_URI_SAFE_ATTR,he),t.FORBID_CONTENTS&&(Xe===Ze&&(Xe=P(Xe)),T(Xe,t.FORBID_CONTENTS,he)),Ve&&(Se["#text"]=!0),Fe&&T(Se,["html","head","body"]),Se.table&&(T(Se,["tbody"]),delete Re.tbody),u&&u(t),ut=t)},pt=T({},["mi","mo","mn","ms","mtext"]),gt=T({},["foreignobject","annotation-xml"]),ht=T({},["title","style","font","a","script"]),vt=T({},j);T(vt,D),T(vt,I);var yt=T({},M);T(yt,_);var bt=function(e){b(a.removed,{element:e});try{e.parentNode.removeChild(e)}catch(t){try{e.outerHTML=ie}catch(t){e.remove()}}},wt=function(e,t){try{b(a.removed,{attribute:t.getAttributeNode(e),from:t})}catch(e){b(a.removed,{attribute:null,from:t})}if(t.removeAttribute(e),"is"===e&&!Ae[e])if(He||$e)try{bt(t)}catch(e){}else try{t.setAttribute(e,"")}catch(e){}},Et=function(e){var t,n;if(qe)e="<remove></remove>"+e;else{var r=x(e,/^[\r\n\t ]+/);n=r&&r[0]}"application/xhtml+xml"===ge&&ot===at&&(e='<html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>'+e+"</body></html>");var a=oe?oe.createHTML(e):e;if(ot===at)try{t=(new h).parseFromString(a,ge)}catch(e){}if(!t||!t.documentElement){t=ce.createDocument(ot,"template",null);try{t.documentElement.innerHTML=it?ie:a}catch(e){}}var o=t.body||t.documentElement;return e&&n&&o.insertBefore(i.createTextNode(n),o.childNodes[0]||null),ot===at?de.call(t,Fe?"html":"body")[0]:Fe?t.documentElement:o},xt=function(e){return se.call(e.ownerDocument||e,e,f.SHOW_ELEMENT|f.SHOW_COMMENT|f.SHOW_TEXT|f.SHOW_PROCESSING_INSTRUCTION|f.SHOW_CDATA_SECTION,null,!1)},kt=function(e){return e instanceof g&&("string"!=typeof e.nodeName||"string"!=typeof e.textContent||"function"!=typeof e.removeChild||!(e.attributes instanceof p)||"function"!=typeof e.removeAttribute||"function"!=typeof e.setAttribute||"string"!=typeof e.namespaceURI||"function"!=typeof e.insertBefore||"function"!=typeof e.hasChildNodes)},Ct=function(t){return"object"===e(s)?t instanceof s:t&&"object"===e(t)&&"number"==typeof t.nodeType&&"string"==typeof t.nodeName},Ot=function(e,t,n){pe[e]&&v(pe[e],(function(e){e.call(a,t,n,ut)}))},St=function(e){var t;if(Ot("beforeSanitizeElements",e,null),kt(e))return bt(e),!0;if(S(/[\u0080-\uFFFF]/,e.nodeName))return bt(e),!0;var n=he(e.nodeName);if(Ot("uponSanitizeElement",e,{tagName:n,allowedTags:Se}),e.hasChildNodes()&&!Ct(e.firstElementChild)&&(!Ct(e.content)||!Ct(e.content.firstElementChild))&&S(/<[/\w]/g,e.innerHTML)&&S(/<[/\w]/g,e.textContent))return bt(e),!0;if("select"===n&&S(/<template/i,e.innerHTML))return bt(e),!0;if(7===e.nodeType)return bt(e),!0;if(Ue&&8===e.nodeType&&S(/<[/\w]/g,e.data))return bt(e),!0;if(!Se[n]||Re[n]){if(!Re[n]&&At(n)){if(Pe.tagNameCheck instanceof RegExp&&S(Pe.tagNameCheck,n))return!1;if(Pe.tagNameCheck instanceof Function&&Pe.tagNameCheck(n))return!1}if(Ve&&!Xe[n]){var r=re(e)||e.parentNode,o=ne(e)||e.childNodes;if(o&&r)for(var i=o.length-1;i>=0;--i){var l=ee(o[i],!0);l.__removalCount=(e.__removalCount||0)+1,r.insertBefore(l,te(e))}}return bt(e),!0}return e instanceof d&&!function(e){var t=re(e);t&&t.tagName||(t={namespaceURI:ot,tagName:"template"});var n=w(e.tagName),r=w(t.tagName);return!!lt[e.namespaceURI]&&(e.namespaceURI===rt?t.namespaceURI===at?"svg"===n:t.namespaceURI===nt?"svg"===n&&("annotation-xml"===r||pt[r]):Boolean(vt[n]):e.namespaceURI===nt?t.namespaceURI===at?"math"===n:t.namespaceURI===rt?"math"===n&&gt[r]:Boolean(yt[n]):e.namespaceURI===at?!(t.namespaceURI===rt&&!gt[r])&&!(t.namespaceURI===nt&&!pt[r])&&!yt[n]&&(ht[n]||!vt[n]):!("application/xhtml+xml"!==ge||!lt[e.namespaceURI]))}(e)?(bt(e),!0):"noscript"!==n&&"noembed"!==n&&"noframes"!==n||!S(/<\/no(script|embed|frames)/i,e.innerHTML)?(_e&&3===e.nodeType&&(t=e.textContent,t=k(t,ve," "),t=k(t,ye," "),t=k(t,be," "),e.textContent!==t&&(b(a.removed,{element:e.cloneNode()}),e.textContent=t)),Ot("afterSanitizeElements",e,null),!1):(bt(e),!0)},Nt=function(e,t,n){if(Ge&&("id"===t||"name"===t)&&(n in i||n in dt))return!1;if(De&&!Le[t]&&S(we,t));else if(je&&S(Ee,t));else if(!Ae[t]||Le[t]){if(!(At(e)&&(Pe.tagNameCheck instanceof RegExp&&S(Pe.tagNameCheck,e)||Pe.tagNameCheck instanceof Function&&Pe.tagNameCheck(e))&&(Pe.attributeNameCheck instanceof RegExp&&S(Pe.attributeNameCheck,t)||Pe.attributeNameCheck instanceof Function&&Pe.attributeNameCheck(t))||"is"===t&&Pe.allowCustomizedBuiltInElements&&(Pe.tagNameCheck instanceof RegExp&&S(Pe.tagNameCheck,n)||Pe.tagNameCheck instanceof Function&&Pe.tagNameCheck(n))))return!1}else if(et[t]);else if(S(Oe,k(n,ke,"")));else if("src"!==t&&"xlink:href"!==t&&"href"!==t||"script"===e||0!==C(n,"data:")||!Je[e])if(Ie&&!S(xe,k(n,ke,"")));else if(n)return!1;return!0},At=function(e){return"annotation-xml"!==e&&x(e,Ce)},Tt=function(t){var n,r,o,i;Ot("beforeSanitizeAttributes",t,null);var l=t.attributes;if(l){var c={attrName:"",attrValue:"",keepAttr:!0,allowedAttributes:Ae};for(i=l.length;i--;){var s=n=l[i],u=s.name,d=s.namespaceURI;if(r="value"===u?n.value:O(n.value),o=he(u),c.attrName=o,c.attrValue=r,c.keepAttr=!0,c.forceKeepAttr=void 0,Ot("uponSanitizeAttribute",t,c),r=c.attrValue,Ue&&S(/((--!?|])>)|<\/(style|title)/i,r))wt(u,t);else if(!c.forceKeepAttr&&(wt(u,t),c.keepAttr))if(Me||!S(/\/>/i,r)){_e&&(r=k(r,ve," "),r=k(r,ye," "),r=k(r,be," "));var f=he(t.nodeName);if(Nt(f,o,r)){if(!We||"id"!==o&&"name"!==o||(wt(u,t),r="user-content-"+r),oe&&"object"===e(A)&&"function"==typeof A.getAttributeType)if(d);else switch(A.getAttributeType(f,o)){case"TrustedHTML":r=oe.createHTML(r);break;case"TrustedScriptURL":r=oe.createScriptURL(r)}try{d?t.setAttributeNS(d,u,r):t.setAttribute(u,r),kt(t)?bt(t):y(a.removed)}catch(e){}}}else wt(u,t)}Ot("afterSanitizeAttributes",t,null)}},Pt=function e(t){var n,r=xt(t);for(Ot("beforeSanitizeShadowDOM",t,null);n=r.nextNode();)Ot("uponSanitizeShadowNode",n,null),St(n)||(n.content instanceof l&&e(n.content),Tt(n));Ot("afterSanitizeShadowDOM",t,null)};return a.sanitize=function(t){var r,i,c,u,d,f=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{};if((it=!t)&&(t="\x3c!--\x3e"),"string"!=typeof t&&!Ct(t)){if("function"!=typeof t.toString)throw N("toString is not a function");if("string"!=typeof(t=t.toString()))throw N("dirty is not a string, aborting")}if(!a.isSupported){if("object"===e(n.toStaticHTML)||"function"==typeof n.toStaticHTML){if("string"==typeof t)return n.toStaticHTML(t);if(Ct(t))return n.toStaticHTML(t.outerHTML)}return t}if(ze||mt(f),a.removed=[],"string"==typeof t&&(Ye=!1),Ye){if(t.nodeName){var m=he(t.nodeName);if(!Se[m]||Re[m])throw N("root node is forbidden and cannot be sanitized in-place")}}else if(t instanceof s)1===(i=(r=Et("\x3c!----\x3e")).ownerDocument.importNode(t,!0)).nodeType&&"BODY"===i.nodeName||"HTML"===i.nodeName?r=i:r.appendChild(i);else{if(!He&&!_e&&!Fe&&-1===t.indexOf("<"))return oe&&Be?oe.createHTML(t):t;if(!(r=Et(t)))return He?null:Be?ie:""}r&&qe&&bt(r.firstChild);for(var p=xt(Ye?t:r);c=p.nextNode();)3===c.nodeType&&c===u||St(c)||(c.content instanceof l&&Pt(c.content),Tt(c),u=c);if(u=null,Ye)return t;if(He){if($e)for(d=ue.call(r.ownerDocument);r.firstChild;)d.appendChild(r.firstChild);else d=r;return(Ae.shadowroot||Ae.shadowrootmod)&&(d=fe.call(o,d,!0)),d}var g=Fe?r.outerHTML:r.innerHTML;return Fe&&Se["!doctype"]&&r.ownerDocument&&r.ownerDocument.doctype&&r.ownerDocument.doctype.name&&S(Z,r.ownerDocument.doctype.name)&&(g="<!DOCTYPE "+r.ownerDocument.doctype.name+">\n"+g),_e&&(g=k(g,ve," "),g=k(g,ye," "),g=k(g,be," ")),oe&&Be?oe.createHTML(g):g},a.setConfig=function(e){mt(e),ze=!0},a.clearConfig=function(){ut=null,ze=!1},a.isValidAttribute=function(e,t,n){ut||mt({});var r=he(e),a=he(t);return Nt(r,a,n)},a.addHook=function(e,t){"function"==typeof t&&(pe[e]=pe[e]||[],b(pe[e],t))},a.removeHook=function(e){if(pe[e])return y(pe[e])},a.removeHooks=function(e){pe[e]&&(pe[e]=[])},a.removeAllHooks=function(){pe={}},a}();return Q}()},985:(e,t,n)=>{var r=n(524),a={childContextTypes:!0,contextType:!0,contextTypes:!0,defaultProps:!0,displayName:!0,getDefaultProps:!0,getDerivedStateFromError:!0,getDerivedStateFromProps:!0,mixins:!0,propTypes:!0,type:!0},o={name:!0,length:!0,prototype:!0,caller:!0,callee:!0,arguments:!0,arity:!0},i={$$typeof:!0,compare:!0,defaultProps:!0,displayName:!0,propTypes:!0,type:!0},l={};function c(e){return r.isMemo(e)?i:l[e.$$typeof]||a}l[r.ForwardRef]={$$typeof:!0,render:!0,defaultProps:!0,displayName:!0,propTypes:!0},l[r.Memo]=i;var s=Object.defineProperty,u=Object.getOwnPropertyNames,d=Object.getOwnPropertySymbols,f=Object.getOwnPropertyDescriptor,m=Object.getPrototypeOf,p=Object.prototype;e.exports=function e(t,n,r){if("string"!=typeof n){if(p){var a=m(n);a&&a!==p&&e(t,a,r)}var i=u(n);d&&(i=i.concat(d(n)));for(var l=c(t),g=c(n),h=0;h<i.length;++h){var v=i[h];if(!(o[v]||r&&r[v]||g&&g[v]||l&&l[v])){var y=f(n,v);try{s(t,v,y)}catch(e){}}}}return t}},999:(e,t,n)=>{var r=n(848);function a(){}function o(){}o.resetWarningCache=a,e.exports=function(){function e(e,t,n,a,o,i){if(i!==r){var l=new Error("Calling PropTypes validators directly is not supported by the `prop-types` package. Use PropTypes.checkPropTypes() to call them. Read more at http://fb.me/use-check-prop-types");throw l.name="Invariant Violation",l}}function t(){return e}e.isRequired=e;var n={array:e,bigint:e,bool:e,func:e,number:e,object:e,string:e,symbol:e,any:e,arrayOf:t,element:e,elementType:e,instanceOf:t,node:e,objectOf:t,oneOf:t,oneOfType:t,shape:t,exact:t,checkPropTypes:o,resetWarningCache:a};return n.PropTypes=n,n}},67:(e,t,n)=>{e.exports=n(999)()},848:e=>{e.exports="SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED"},320:(e,t)=>{var n="function"==typeof Symbol&&Symbol.for,r=n?Symbol.for("react.element"):60103,a=n?Symbol.for("react.portal"):60106,o=n?Symbol.for("react.fragment"):60107,i=n?Symbol.for("react.strict_mode"):60108,l=n?Symbol.for("react.profiler"):60114,c=n?Symbol.for("react.provider"):60109,s=n?Symbol.for("react.context"):60110,u=n?Symbol.for("react.async_mode"):60111,d=n?Symbol.for("react.concurrent_mode"):60111,f=n?Symbol.for("react.forward_ref"):60112,m=n?Symbol.for("react.suspense"):60113,p=n?Symbol.for("react.suspense_list"):60120,g=n?Symbol.for("react.memo"):60115,h=n?Symbol.for("react.lazy"):60116,v=n?Symbol.for("react.block"):60121,y=n?Symbol.for("react.fundamental"):60117,b=n?Symbol.for("react.responder"):60118,w=n?Symbol.for("react.scope"):60119;function E(e){if("object"==typeof e&&null!==e){var t=e.$$typeof;switch(t){case r:switch(e=e.type){case u:case d:case o:case l:case i:case m:return e;default:switch(e=e&&e.$$typeof){case s:case f:case h:case g:case c:return e;default:return t}}case a:return t}}}function x(e){return E(e)===d}t.AsyncMode=u,t.ConcurrentMode=d,t.ContextConsumer=s,t.ContextProvider=c,t.Element=r,t.ForwardRef=f,t.Fragment=o,t.Lazy=h,t.Memo=g,t.Portal=a,t.Profiler=l,t.StrictMode=i,t.Suspense=m,t.isAsyncMode=function(e){return x(e)||E(e)===u},t.isConcurrentMode=x,t.isContextConsumer=function(e){return E(e)===s},t.isContextProvider=function(e){return E(e)===c},t.isElement=function(e){return"object"==typeof e&&null!==e&&e.$$typeof===r},t.isForwardRef=function(e){return E(e)===f},t.isFragment=function(e){return E(e)===o},t.isLazy=function(e){return E(e)===h},t.isMemo=function(e){return E(e)===g},t.isPortal=function(e){return E(e)===a},t.isProfiler=function(e){return E(e)===l},t.isStrictMode=function(e){return E(e)===i},t.isSuspense=function(e){return E(e)===m},t.isValidElementType=function(e){return"string"==typeof e||"function"==typeof e||e===o||e===d||e===l||e===i||e===m||e===p||"object"==typeof e&&null!==e&&(e.$$typeof===h||e.$$typeof===g||e.$$typeof===c||e.$$typeof===s||e.$$typeof===f||e.$$typeof===y||e.$$typeof===b||e.$$typeof===w||e.$$typeof===v)},t.typeOf=E},524:(e,t,n)=>{e.exports=n(320)},146:e=>{e.exports=function(e,t,n,r){var a=n?n.call(r,e,t):void 0;if(void 0!==a)return!!a;if(e===t)return!0;if("object"!=typeof e||!e||"object"!=typeof t||!t)return!1;var o=Object.keys(e),i=Object.keys(t);if(o.length!==i.length)return!1;for(var l=Object.prototype.hasOwnProperty.bind(t),c=0;c<o.length;c++){var s=o[c];if(!l(s))return!1;var u=e[s],d=t[s];if(!1===(a=n?n.call(r,u,d,s):void 0)||void 0===a&&u!==d)return!1}return!0}},373:(e,t)=>{var n;!function(){var r={}.hasOwnProperty;function a(){for(var e="",t=0;t<arguments.length;t++){var n=arguments[t];n&&(e=i(e,o(n)))}return e}function o(e){if("string"==typeof e||"number"==typeof e)return e;if("object"!=typeof e)return"";if(Array.isArray(e))return a.apply(null,e);if(e.toString!==Object.prototype.toString&&!e.toString.toString().includes("[native code]"))return e.toString();var t="";for(var n in e)r.call(e,n)&&e[n]&&(t=i(t,n));return t}function i(e,t){return t?e?e+" "+t:e+t:e}e.exports?(a.default=a,e.exports=a):void 0===(n=function(){return a}.apply(t,[]))||(e.exports=n)}()}},E={};function x(e){var t=E[e];if(void 0!==t)return t.exports;var n=E[e]={exports:{}};return w[e].call(n.exports,n,n.exports,x),n.exports}x.n=e=>{var t=e&&e.__esModule?()=>e.default:()=>e;return x.d(t,{a:t}),t},x.d=(e,t)=>{for(var n in t)x.o(t,n)&&!x.o(e,n)&&Object.defineProperty(e,n,{enumerable:!0,get:t[n]})},x.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),x.nc=void 0;var k={};x.d(k,{nD:()=>B,n_:()=>St,n9:()=>sn,$n:()=>V,ef:()=>dn,fy:()=>mn,Zp:()=>vn,TR:()=>jn,Pb:()=>On,Ur:()=>Cn,_Q:()=>Ln,lq:()=>In,_V:()=>pn,dK:()=>Un,Fx:()=>Bn,oz:()=>Yn,YT:()=>Kn,Gm:()=>Xn,Ce:()=>Jn,qm:()=>An,fh:()=>Pn,Od:()=>Nn,fZ:()=>Tn,RE:()=>Sn,hZ:()=>tr,Nq:()=>nr,NJ:()=>rr,bO:()=>ar,oP:()=>or,jl:()=>ir,PP:()=>lr,BB:()=>cr,Q9:()=>sr,vW:()=>dr,VE:()=>ur,_v:()=>fr,uP:()=>mr});var C=x(67),O=x.n(C);const S=(N={Component:()=>h.Component,createContext:()=>h.createContext,createElement:()=>h.createElement,default:()=>h.default,forwardRef:()=>h.forwardRef,useCallback:()=>h.useCallback,useContext:()=>h.useContext,useEffect:()=>h.useEffect,useImperativeHandle:()=>h.useImperativeHandle,useMemo:()=>h.useMemo,useRef:()=>h.useRef,useState:()=>h.useState},A={},x.d(A,N),A);var N,A;const T=(e,t,n)=>e?t:n,P=e=>(e||[]).join(" ");var R=x(651);const L=e=>({__html:(0,R.sanitize)(e)}),j=(e,t,n)=>{let r=e;const a=[];for(;r<t;)r>0&&r<=n&&a.push(r),r+=1;return a};let D,I=!1;O().shape({event:O().string,action:O().string,name:O().string,region:O().string,section:O().string,component:O().string,type:O().string,text:O().string});const M=({event:e="",action:t="",name:n="",type:r="",section:a="",text:o="",region:i="",component:l=""})=>{const{dataLayer:c}=window,s={event:e.toLowerCase(),action:t.toLowerCase(),name:n.toLowerCase(),type:r.toLowerCase(),region:i.toLowerCase(),section:a.toLowerCase(),text:o.toLowerCase(),component:l.toLowerCase()};c&&c.push(s)},_=O().shape({url:O().string,altText:O().string,cssClass:O().arrayOf(O().string),size:O().oneOf(["small","medium","large"])}),U=O().shape({text:O().string,maxWidth:O().string,cssClass:O().arrayOf(O().string),highlightColor:O().oneOf(["gold","black"])}),F=O().shape({color:O().oneOf(["gold","maroon","gray","dark"]),content:O().shape({icon:O().string,header:O().string,body:O().string})});var z=x(373),q=x.n(z);const H=({id:e,item:t,openCard:n,onClick:r})=>S.default.createElement("div",{className:q()("accordion-item","mt-3",{[`accordion-item-${t.color}`]:t.color,"accordion-header-icon":t.content?.icon})},S.default.createElement("div",{className:"accordion-header"},S.default.createElement("h4",null,S.default.createElement("a",{"data-testid":"accordion-opener",className:q()({collapsed:e!==n}),"data-bs-toggle":"collapse",href:`#card-body-${e}`,role:"button","aria-expanded":e===n,"aria-controls":`card-body-${e}`,onClick:n=>r(n,e,t.content?.header)},t.content?.icon?S.default.createElement("span",{className:"accordion-icon"},S.default.createElement("i",{className:`${t.content.icon?.[0]} fa-${t.content.icon?.[1]} me-2`}),t.content.header):t.content?.header,S.default.createElement("i",{className:"fas fa-chevron-up"})))),t.content?.body&&S.default.createElement("div",{id:`card-body-${e}`,className:q()("collapse")},S.default.createElement("div",{className:"accordion-body",dangerouslySetInnerHTML:L(t.content.body)})));H.propTypes={id:O().number,item:F,openCard:O().number,onClick:O().func};const $={event:"collapse",name:"onclick",type:"click",region:"main content"},B=({cards:e,openedCard:t})=>{const[n,r]=(0,S.useState)(t),a=(e,t)=>{M({...$,action:t,text:e})},o=(t,o,i)=>{t.preventDefault(),(n===o||n)&&a(e[n-1].content.header,"close"),n!==o?(r(o),a(i,"open")):r(null)};return S.default.createElement("div",{className:"accordion"},e?.map(((e,t)=>e.content.body&&e.content.header&&S.default.createElement(H,{key:t+1,id:t+1,item:e,openCard:n,onClick:o}))))};function G(){return G=Object.assign?Object.assign.bind():function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)({}).hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},G.apply(null,arguments)}B.propTypes={cards:O().arrayOf(F).isRequired,openedCard:O().number};const W={name:"onclick",event:"link",action:"click",type:"internal link",region:"main content"},V=({label:e,cardTitle:t,ariaLabel:n,block:r,color:a,disabled:o,element:i,href:l,icon:c,innerRef:s,onClick:u,size:d,classes:f,target:m,...p})=>{const g=q()("btn",{[`btn-${a}`]:!0,"btn-md":"small"===d,"btn-sm":"xsmall"===d,"btn-block":r,disabled:o});let h=i;return l&&"button"===i&&(h="a"),S.default.createElement(h,G({type:"button"===h&&u?"button":void 0},p,{className:q()(f)||g,href:l,ref:s,onClick:()=>(M({...W,text:e,section:t}),void u?.()),"aria-label":n,target:"a"===h?m:null}),c&&S.default.createElement("i",{className:`${c?.[0]} fa-${c?.[1]} me-1`}),e)};V.propTypes={label:O().string,cardTitle:O().string,ariaLabel:O().string,block:O().bool,color:O().oneOf(["gold","maroon","gray","dark"]),disabled:O().bool,element:O().oneOfType([O().func,O().string,O().shape({$$typeof:O().symbol,render:O().func}),O().arrayOf(O().oneOfType([O().func,O().string,O().shape({$$typeof:O().symbol,render:O().func})]))]),href:O().string,icon:O().arrayOf(O().string),innerRef:O().oneOfType([O().object,O().func,O().string]),onClick:O().func,size:O().oneOf(["default","small","xsmall"]),classes:O().arrayOf(O().string),target:O().oneOf(["_blank","_self","_top","_parent"])},V.defaultProps={label:"",cardTitle:"",ariaLabel:void 0,block:void 0,color:"gray",disabled:void 0,element:"button",href:void 0,icon:void 0,innerRef:void 0,onClick:void 0,size:"default",classes:void 0,target:"_self"};var Y=x(524),K=x(146),X=x.n(K);const Z=function(e){function t(e,r,c,s,f){for(var m,p,g,h,w,x=0,k=0,C=0,O=0,S=0,L=0,D=g=m=0,M=0,_=0,U=0,F=0,z=c.length,q=z-1,H="",$="",B="",G="";M<z;){if(p=c.charCodeAt(M),M===q&&0!==k+O+C+x&&(0!==k&&(p=47===k?10:47),O=C=x=0,z++,q++),0===k+O+C+x){if(M===q&&(0<_&&(H=H.replace(d,"")),0<H.trim().length)){switch(p){case 32:case 9:case 59:case 13:case 10:break;default:H+=c.charAt(M)}p=59}switch(p){case 123:for(m=(H=H.trim()).charCodeAt(0),g=1,F=++M;M<z;){switch(p=c.charCodeAt(M)){case 123:g++;break;case 125:g--;break;case 47:switch(p=c.charCodeAt(M+1)){case 42:case 47:e:{for(D=M+1;D<q;++D)switch(c.charCodeAt(D)){case 47:if(42===p&&42===c.charCodeAt(D-1)&&M+2!==D){M=D+1;break e}break;case 10:if(47===p){M=D+1;break e}}M=D}}break;case 91:p++;case 40:p++;case 34:case 39:for(;M++<q&&c.charCodeAt(M)!==p;);}if(0===g)break;M++}if(g=c.substring(F,M),0===m&&(m=(H=H.replace(u,"").trim()).charCodeAt(0)),64===m){switch(0<_&&(H=H.replace(d,"")),p=H.charCodeAt(1)){case 100:case 109:case 115:case 45:_=r;break;default:_=R}if(F=(g=t(r,_,g,p,f+1)).length,0<j&&(w=l(3,g,_=n(R,H,U),r,A,N,F,p,f,s),H=_.join(""),void 0!==w&&0===(F=(g=w.trim()).length)&&(p=0,g="")),0<F)switch(p){case 115:H=H.replace(E,i);case 100:case 109:case 45:g=H+"{"+g+"}";break;case 107:g=(H=H.replace(v,"$1 $2"))+"{"+g+"}",g=1===P||2===P&&o("@"+g,3)?"@-webkit-"+g+"@"+g:"@"+g;break;default:g=H+g,112===s&&($+=g,g="")}else g=""}else g=t(r,n(r,H,U),g,s,f+1);B+=g,g=U=_=D=m=0,H="",p=c.charCodeAt(++M);break;case 125:case 59:if(1<(F=(H=(0<_?H.replace(d,""):H).trim()).length))switch(0===D&&(m=H.charCodeAt(0),45===m||96<m&&123>m)&&(F=(H=H.replace(" ",":")).length),0<j&&void 0!==(w=l(1,H,r,e,A,N,$.length,s,f,s))&&0===(F=(H=w.trim()).length)&&(H="\0\0"),m=H.charCodeAt(0),p=H.charCodeAt(1),m){case 0:break;case 64:if(105===p||99===p){G+=H+c.charAt(M);break}default:58!==H.charCodeAt(F-1)&&($+=a(H,m,p,H.charCodeAt(2)))}U=_=D=m=0,H="",p=c.charCodeAt(++M)}}switch(p){case 13:case 10:47===k?k=0:0===1+m&&107!==s&&0<H.length&&(_=1,H+="\0"),0<j*I&&l(0,H,r,e,A,N,$.length,s,f,s),N=1,A++;break;case 59:case 125:if(0===k+O+C+x){N++;break}default:switch(N++,h=c.charAt(M),p){case 9:case 32:if(0===O+x+k)switch(S){case 44:case 58:case 9:case 32:h="";break;default:32!==p&&(h=" ")}break;case 0:h="\\0";break;case 12:h="\\f";break;case 11:h="\\v";break;case 38:0===O+k+x&&(_=U=1,h="\f"+h);break;case 108:if(0===O+k+x+T&&0<D)switch(M-D){case 2:112===S&&58===c.charCodeAt(M-3)&&(T=S);case 8:111===L&&(T=L)}break;case 58:0===O+k+x&&(D=M);break;case 44:0===k+C+O+x&&(_=1,h+="\r");break;case 34:case 39:0===k&&(O=O===p?0:0===O?p:O);break;case 91:0===O+k+C&&x++;break;case 93:0===O+k+C&&x--;break;case 41:0===O+k+x&&C--;break;case 40:0===O+k+x&&(0===m&&(2*S+3*L==533||(m=1)),C++);break;case 64:0===k+C+O+x+D+g&&(g=1);break;case 42:case 47:if(!(0<O+x+C))switch(k){case 0:switch(2*p+3*c.charCodeAt(M+1)){case 235:k=47;break;case 220:F=M,k=42}break;case 42:47===p&&42===S&&F+2!==M&&(33===c.charCodeAt(F+2)&&($+=c.substring(F,M+1)),h="",k=0)}}0===k&&(H+=h)}L=S,S=p,M++}if(0<(F=$.length)){if(_=r,0<j&&void 0!==(w=l(2,$,_,e,A,N,F,s,f,s))&&0===($=w).length)return G+$+B;if($=_.join(",")+"{"+$+"}",0!=P*T){switch(2!==P||o($,2)||(T=0),T){case 111:$=$.replace(b,":-moz-$1")+$;break;case 112:$=$.replace(y,"::-webkit-input-$1")+$.replace(y,"::-moz-$1")+$.replace(y,":-ms-input-$1")+$}T=0}}return G+$+B}function n(e,t,n){var a=t.trim().split(g);t=a;var o=a.length,i=e.length;switch(i){case 0:case 1:var l=0;for(e=0===i?"":e[0]+" ";l<o;++l)t[l]=r(e,t[l],n).trim();break;default:var c=l=0;for(t=[];l<o;++l)for(var s=0;s<i;++s)t[c++]=r(e[s]+" ",a[l],n).trim()}return t}function r(e,t,n){var r=t.charCodeAt(0);switch(33>r&&(r=(t=t.trim()).charCodeAt(0)),r){case 38:return t.replace(h,"$1"+e.trim());case 58:return e.trim()+t.replace(h,"$1"+e.trim());default:if(0<1*n&&0<t.indexOf("\f"))return t.replace(h,(58===e.charCodeAt(0)?"":"$1")+e.trim())}return e+t}function a(e,t,n,r){var i=e+";",l=2*t+3*n+4*r;if(944===l){e=i.indexOf(":",9)+1;var c=i.substring(e,i.length-1).trim();return c=i.substring(0,e).trim()+c+";",1===P||2===P&&o(c,1)?"-webkit-"+c+c:c}if(0===P||2===P&&!o(i,1))return i;switch(l){case 1015:return 97===i.charCodeAt(10)?"-webkit-"+i+i:i;case 951:return 116===i.charCodeAt(3)?"-webkit-"+i+i:i;case 963:return 110===i.charCodeAt(5)?"-webkit-"+i+i:i;case 1009:if(100!==i.charCodeAt(4))break;case 969:case 942:return"-webkit-"+i+i;case 978:return"-webkit-"+i+"-moz-"+i+i;case 1019:case 983:return"-webkit-"+i+"-moz-"+i+"-ms-"+i+i;case 883:if(45===i.charCodeAt(8))return"-webkit-"+i+i;if(0<i.indexOf("image-set(",11))return i.replace(S,"$1-webkit-$2")+i;break;case 932:if(45===i.charCodeAt(4))switch(i.charCodeAt(5)){case 103:return"-webkit-box-"+i.replace("-grow","")+"-webkit-"+i+"-ms-"+i.replace("grow","positive")+i;case 115:return"-webkit-"+i+"-ms-"+i.replace("shrink","negative")+i;case 98:return"-webkit-"+i+"-ms-"+i.replace("basis","preferred-size")+i}return"-webkit-"+i+"-ms-"+i+i;case 964:return"-webkit-"+i+"-ms-flex-"+i+i;case 1023:if(99!==i.charCodeAt(8))break;return"-webkit-box-pack"+(c=i.substring(i.indexOf(":",15)).replace("flex-","").replace("space-between","justify"))+"-webkit-"+i+"-ms-flex-pack"+c+i;case 1005:return m.test(i)?i.replace(f,":-webkit-")+i.replace(f,":-moz-")+i:i;case 1e3:switch(t=(c=i.substring(13).trim()).indexOf("-")+1,c.charCodeAt(0)+c.charCodeAt(t)){case 226:c=i.replace(w,"tb");break;case 232:c=i.replace(w,"tb-rl");break;case 220:c=i.replace(w,"lr");break;default:return i}return"-webkit-"+i+"-ms-"+c+i;case 1017:if(-1===i.indexOf("sticky",9))break;case 975:switch(t=(i=e).length-10,l=(c=(33===i.charCodeAt(t)?i.substring(0,t):i).substring(e.indexOf(":",7)+1).trim()).charCodeAt(0)+(0|c.charCodeAt(7))){case 203:if(111>c.charCodeAt(8))break;case 115:i=i.replace(c,"-webkit-"+c)+";"+i;break;case 207:case 102:i=i.replace(c,"-webkit-"+(102<l?"inline-":"")+"box")+";"+i.replace(c,"-webkit-"+c)+";"+i.replace(c,"-ms-"+c+"box")+";"+i}return i+";";case 938:if(45===i.charCodeAt(5))switch(i.charCodeAt(6)){case 105:return c=i.replace("-items",""),"-webkit-"+i+"-webkit-box-"+c+"-ms-flex-"+c+i;case 115:return"-webkit-"+i+"-ms-flex-item-"+i.replace(k,"")+i;default:return"-webkit-"+i+"-ms-flex-line-pack"+i.replace("align-content","").replace(k,"")+i}break;case 973:case 989:if(45!==i.charCodeAt(3)||122===i.charCodeAt(4))break;case 931:case 953:if(!0===O.test(e))return 115===(c=e.substring(e.indexOf(":")+1)).charCodeAt(0)?a(e.replace("stretch","fill-available"),t,n,r).replace(":fill-available",":stretch"):i.replace(c,"-webkit-"+c)+i.replace(c,"-moz-"+c.replace("fill-",""))+i;break;case 962:if(i="-webkit-"+i+(102===i.charCodeAt(5)?"-ms-"+i:"")+i,211===n+r&&105===i.charCodeAt(13)&&0<i.indexOf("transform",10))return i.substring(0,i.indexOf(";",27)+1).replace(p,"$1-webkit-$2")+i}return i}function o(e,t){var n=e.indexOf(1===t?":":"{"),r=e.substring(0,3!==t?n:10);return n=e.substring(n+1,e.length-1),D(2!==t?r:r.replace(C,"$1"),n,t)}function i(e,t){var n=a(t,t.charCodeAt(0),t.charCodeAt(1),t.charCodeAt(2));return n!==t+";"?n.replace(x," or ($1)").substring(4):"("+t+")"}function l(e,t,n,r,a,o,i,l,c,u){for(var d,f=0,m=t;f<j;++f)switch(d=L[f].call(s,e,m,n,r,a,o,i,l,c,u)){case void 0:case!1:case!0:case null:break;default:m=d}if(m!==t)return m}function c(e){return void 0!==(e=e.prefix)&&(D=null,e?"function"!=typeof e?P=1:(P=2,D=e):P=0),c}function s(e,n){var r=e;if(33>r.charCodeAt(0)&&(r=r.trim()),r=[r],0<j){var a=l(-1,n,r,r,A,N,0,0,0,0);void 0!==a&&"string"==typeof a&&(n=a)}var o=t(R,r,n,0,0);return 0<j&&void 0!==(a=l(-2,o,r,r,A,N,o.length,0,0,0))&&(o=a),T=0,N=A=1,o}var u=/^\0+/g,d=/[\0\r\f]/g,f=/: */g,m=/zoo|gra/,p=/([,: ])(transform)/g,g=/,\r+?/g,h=/([\t\r\n ])*\f?&/g,v=/@(k\w+)\s*(\S*)\s*/,y=/::(place)/g,b=/:(read-only)/g,w=/[svh]\w+-[tblr]{2}/,E=/\(\s*(.*)\s*\)/g,x=/([\s\S]*?);/g,k=/-self|flex-/g,C=/[^]*?(:[rp][el]a[\w-]+)[^]*/,O=/stretch|:\s*\w+\-(?:conte|avail)/,S=/([^-])(image-set\()/,N=1,A=1,T=0,P=1,R=[],L=[],j=0,D=null,I=0;return s.use=function e(t){switch(t){case void 0:case null:j=L.length=0;break;default:if("function"==typeof t)L[j++]=t;else if("object"==typeof t)for(var n=0,r=t.length;n<r;++n)e(t[n]);else I=0|!!t}return e},s.set=c,void 0!==e&&c(e),s},J={animationIterationCount:1,borderImageOutset:1,borderImageSlice:1,borderImageWidth:1,boxFlex:1,boxFlexGroup:1,boxOrdinalGroup:1,columnCount:1,columns:1,flex:1,flexGrow:1,flexPositive:1,flexShrink:1,flexNegative:1,flexOrder:1,gridRow:1,gridRowEnd:1,gridRowSpan:1,gridRowStart:1,gridColumn:1,gridColumnEnd:1,gridColumnSpan:1,gridColumnStart:1,msGridRow:1,msGridRowSpan:1,msGridColumn:1,msGridColumnSpan:1,fontWeight:1,lineHeight:1,opacity:1,order:1,orphans:1,tabSize:1,widows:1,zIndex:1,zoom:1,WebkitLineClamp:1,fillOpacity:1,floodOpacity:1,stopOpacity:1,strokeDasharray:1,strokeDashoffset:1,strokeMiterlimit:1,strokeOpacity:1,strokeWidth:1};var Q,ee,te=/^((children|dangerouslySetInnerHTML|key|ref|autoFocus|defaultValue|defaultChecked|innerHTML|suppressContentEditableWarning|suppressHydrationWarning|valueLink|abbr|accept|acceptCharset|accessKey|action|allow|allowUserMedia|allowPaymentRequest|allowFullScreen|allowTransparency|alt|async|autoComplete|autoPlay|capture|cellPadding|cellSpacing|challenge|charSet|checked|cite|classID|className|cols|colSpan|content|contentEditable|contextMenu|controls|controlsList|coords|crossOrigin|data|dateTime|decoding|default|defer|dir|disabled|disablePictureInPicture|disableRemotePlayback|download|draggable|encType|enterKeyHint|form|formAction|formEncType|formMethod|formNoValidate|formTarget|frameBorder|headers|height|hidden|high|href|hrefLang|htmlFor|httpEquiv|id|inputMode|integrity|is|keyParams|keyType|kind|label|lang|list|loading|loop|low|marginHeight|marginWidth|max|maxLength|media|mediaGroup|method|min|minLength|multiple|muted|name|nonce|noValidate|open|optimum|pattern|placeholder|playsInline|poster|preload|profile|radioGroup|readOnly|referrerPolicy|rel|required|reversed|role|rows|rowSpan|sandbox|scope|scoped|scrolling|seamless|selected|shape|size|sizes|slot|span|spellCheck|src|srcDoc|srcLang|srcSet|start|step|style|summary|tabIndex|target|title|translate|type|useMap|value|width|wmode|wrap|about|datatype|inlist|prefix|property|resource|typeof|vocab|autoCapitalize|autoCorrect|autoSave|color|incremental|fallback|inert|itemProp|itemScope|itemType|itemID|itemRef|on|option|results|security|unselectable|accentHeight|accumulate|additive|alignmentBaseline|allowReorder|alphabetic|amplitude|arabicForm|ascent|attributeName|attributeType|autoReverse|azimuth|baseFrequency|baselineShift|baseProfile|bbox|begin|bias|by|calcMode|capHeight|clip|clipPathUnits|clipPath|clipRule|colorInterpolation|colorInterpolationFilters|colorProfile|colorRendering|contentScriptType|contentStyleType|cursor|cx|cy|d|decelerate|descent|diffuseConstant|direction|display|divisor|dominantBaseline|dur|dx|dy|edgeMode|elevation|enableBackground|end|exponent|externalResourcesRequired|fill|fillOpacity|fillRule|filter|filterRes|filterUnits|floodColor|floodOpacity|focusable|fontFamily|fontSize|fontSizeAdjust|fontStretch|fontStyle|fontVariant|fontWeight|format|from|fr|fx|fy|g1|g2|glyphName|glyphOrientationHorizontal|glyphOrientationVertical|glyphRef|gradientTransform|gradientUnits|hanging|horizAdvX|horizOriginX|ideographic|imageRendering|in|in2|intercept|k|k1|k2|k3|k4|kernelMatrix|kernelUnitLength|kerning|keyPoints|keySplines|keyTimes|lengthAdjust|letterSpacing|lightingColor|limitingConeAngle|local|markerEnd|markerMid|markerStart|markerHeight|markerUnits|markerWidth|mask|maskContentUnits|maskUnits|mathematical|mode|numOctaves|offset|opacity|operator|order|orient|orientation|origin|overflow|overlinePosition|overlineThickness|panose1|paintOrder|pathLength|patternContentUnits|patternTransform|patternUnits|pointerEvents|points|pointsAtX|pointsAtY|pointsAtZ|preserveAlpha|preserveAspectRatio|primitiveUnits|r|radius|refX|refY|renderingIntent|repeatCount|repeatDur|requiredExtensions|requiredFeatures|restart|result|rotate|rx|ry|scale|seed|shapeRendering|slope|spacing|specularConstant|specularExponent|speed|spreadMethod|startOffset|stdDeviation|stemh|stemv|stitchTiles|stopColor|stopOpacity|strikethroughPosition|strikethroughThickness|string|stroke|strokeDasharray|strokeDashoffset|strokeLinecap|strokeLinejoin|strokeMiterlimit|strokeOpacity|strokeWidth|surfaceScale|systemLanguage|tableValues|targetX|targetY|textAnchor|textDecoration|textRendering|textLength|to|transform|u1|u2|underlinePosition|underlineThickness|unicode|unicodeBidi|unicodeRange|unitsPerEm|vAlphabetic|vHanging|vIdeographic|vMathematical|values|vectorEffect|version|vertAdvY|vertOriginX|vertOriginY|viewBox|viewTarget|visibility|widths|wordSpacing|writingMode|x|xHeight|x1|x2|xChannelSelector|xlinkActuate|xlinkArcrole|xlinkHref|xlinkRole|xlinkShow|xlinkTitle|xlinkType|xmlBase|xmlns|xmlnsXlink|xmlLang|xmlSpace|y|y1|y2|yChannelSelector|z|zoomAndPan|for|class|autofocus)|(([Dd][Aa][Tt][Aa]|[Aa][Rr][Ii][Aa]|x)-.*))$/,ne=(Q=function(e){return te.test(e)||111===e.charCodeAt(0)&&110===e.charCodeAt(1)&&e.charCodeAt(2)<91},ee=Object.create(null),function(e){return void 0===ee[e]&&(ee[e]=Q(e)),ee[e]}),re=x(985),ae=x.n(re);function oe(){return(oe=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e}).apply(this,arguments)}var ie=function(e,t){for(var n=[e[0]],r=0,a=t.length;r<a;r+=1)n.push(t[r],e[r+1]);return n},le=function(e){return null!==e&&"object"==typeof e&&"[object Object]"===(e.toString?e.toString():Object.prototype.toString.call(e))&&!(0,Y.typeOf)(e)},ce=Object.freeze([]),se=Object.freeze({});function ue(e){return"function"==typeof e}function de(e){return e.displayName||e.name||"Component"}function fe(e){return e&&"string"==typeof e.styledComponentId}var me="undefined"!=typeof process&&void 0!==process.env&&(process.env.REACT_APP_SC_ATTR||process.env.SC_ATTR)||"data-styled",pe="undefined"!=typeof window&&"HTMLElement"in window,ge=Boolean("boolean"==typeof SC_DISABLE_SPEEDY?SC_DISABLE_SPEEDY:"undefined"!=typeof process&&void 0!==process.env&&(void 0!==process.env.REACT_APP_SC_DISABLE_SPEEDY&&""!==process.env.REACT_APP_SC_DISABLE_SPEEDY?"false"!==process.env.REACT_APP_SC_DISABLE_SPEEDY&&process.env.REACT_APP_SC_DISABLE_SPEEDY:void 0!==process.env.SC_DISABLE_SPEEDY&&""!==process.env.SC_DISABLE_SPEEDY&&"false"!==process.env.SC_DISABLE_SPEEDY&&process.env.SC_DISABLE_SPEEDY));function he(e){for(var t=arguments.length,n=new Array(t>1?t-1:0),r=1;r<t;r++)n[r-1]=arguments[r];throw new Error("An error occurred. See https://git.io/JUIaE#"+e+" for more information."+(n.length>0?" Args: "+n.join(", "):""))}var ve=function(){function e(e){this.groupSizes=new Uint32Array(512),this.length=512,this.tag=e}var t=e.prototype;return t.indexOfGroup=function(e){for(var t=0,n=0;n<e;n++)t+=this.groupSizes[n];return t},t.insertRules=function(e,t){if(e>=this.groupSizes.length){for(var n=this.groupSizes,r=n.length,a=r;e>=a;)(a<<=1)<0&&he(16,""+e);this.groupSizes=new Uint32Array(a),this.groupSizes.set(n),this.length=a;for(var o=r;o<a;o++)this.groupSizes[o]=0}for(var i=this.indexOfGroup(e+1),l=0,c=t.length;l<c;l++)this.tag.insertRule(i,t[l])&&(this.groupSizes[e]++,i++)},t.clearGroup=function(e){if(e<this.length){var t=this.groupSizes[e],n=this.indexOfGroup(e),r=n+t;this.groupSizes[e]=0;for(var a=n;a<r;a++)this.tag.deleteRule(n)}},t.getGroup=function(e){var t="";if(e>=this.length||0===this.groupSizes[e])return t;for(var n=this.groupSizes[e],r=this.indexOfGroup(e),a=r+n,o=r;o<a;o++)t+=this.tag.getRule(o)+"/*!sc*/\n";return t},e}(),ye=new Map,be=new Map,we=1,Ee=function(e){if(ye.has(e))return ye.get(e);for(;be.has(we);)we++;var t=we++;return ye.set(e,t),be.set(t,e),t},xe=function(e){return be.get(e)},ke=function(e,t){t>=we&&(we=t+1),ye.set(e,t),be.set(t,e)},Ce="style["+me+'][data-styled-version="5.3.11"]',Oe=new RegExp("^"+me+'\\.g(\\d+)\\[id="([\\w\\d-]+)"\\].*?"([^"]*)'),Se=function(e,t,n){for(var r,a=n.split(","),o=0,i=a.length;o<i;o++)(r=a[o])&&e.registerName(t,r)},Ne=function(e,t){for(var n=(t.textContent||"").split("/*!sc*/\n"),r=[],a=0,o=n.length;a<o;a++){var i=n[a].trim();if(i){var l=i.match(Oe);if(l){var c=0|parseInt(l[1],10),s=l[2];0!==c&&(ke(s,c),Se(e,s,l[3]),e.getTag().insertRules(c,r)),r.length=0}else r.push(i)}}},Ae=function(){return x.nc},Te=function(e){var t=document.head,n=e||t,r=document.createElement("style"),a=function(e){for(var t=e.childNodes,n=t.length;n>=0;n--){var r=t[n];if(r&&1===r.nodeType&&r.hasAttribute(me))return r}}(n),o=void 0!==a?a.nextSibling:null;r.setAttribute(me,"active"),r.setAttribute("data-styled-version","5.3.11");var i=Ae();return i&&r.setAttribute("nonce",i),n.insertBefore(r,o),r},Pe=function(){function e(e){var t=this.element=Te(e);t.appendChild(document.createTextNode("")),this.sheet=function(e){if(e.sheet)return e.sheet;for(var t=document.styleSheets,n=0,r=t.length;n<r;n++){var a=t[n];if(a.ownerNode===e)return a}he(17)}(t),this.length=0}var t=e.prototype;return t.insertRule=function(e,t){try{return this.sheet.insertRule(t,e),this.length++,!0}catch(e){return!1}},t.deleteRule=function(e){this.sheet.deleteRule(e),this.length--},t.getRule=function(e){var t=this.sheet.cssRules[e];return void 0!==t&&"string"==typeof t.cssText?t.cssText:""},e}(),Re=function(){function e(e){var t=this.element=Te(e);this.nodes=t.childNodes,this.length=0}var t=e.prototype;return t.insertRule=function(e,t){if(e<=this.length&&e>=0){var n=document.createTextNode(t),r=this.nodes[e];return this.element.insertBefore(n,r||null),this.length++,!0}return!1},t.deleteRule=function(e){this.element.removeChild(this.nodes[e]),this.length--},t.getRule=function(e){return e<this.length?this.nodes[e].textContent:""},e}(),Le=function(){function e(e){this.rules=[],this.length=0}var t=e.prototype;return t.insertRule=function(e,t){return e<=this.length&&(this.rules.splice(e,0,t),this.length++,!0)},t.deleteRule=function(e){this.rules.splice(e,1),this.length--},t.getRule=function(e){return e<this.length?this.rules[e]:""},e}(),je=pe,De={isServer:!pe,useCSSOMInjection:!ge},Ie=function(){function e(e,t,n){void 0===e&&(e=se),void 0===t&&(t={}),this.options=oe({},De,{},e),this.gs=t,this.names=new Map(n),this.server=!!e.isServer,!this.server&&pe&&je&&(je=!1,function(e){for(var t=document.querySelectorAll(Ce),n=0,r=t.length;n<r;n++){var a=t[n];a&&"active"!==a.getAttribute(me)&&(Ne(e,a),a.parentNode&&a.parentNode.removeChild(a))}}(this))}e.registerId=function(e){return Ee(e)};var t=e.prototype;return t.reconstructWithOptions=function(t,n){return void 0===n&&(n=!0),new e(oe({},this.options,{},t),this.gs,n&&this.names||void 0)},t.allocateGSInstance=function(e){return this.gs[e]=(this.gs[e]||0)+1},t.getTag=function(){return this.tag||(this.tag=(n=(t=this.options).isServer,r=t.useCSSOMInjection,a=t.target,e=n?new Le(a):r?new Pe(a):new Re(a),new ve(e)));var e,t,n,r,a},t.hasNameForId=function(e,t){return this.names.has(e)&&this.names.get(e).has(t)},t.registerName=function(e,t){if(Ee(e),this.names.has(e))this.names.get(e).add(t);else{var n=new Set;n.add(t),this.names.set(e,n)}},t.insertRules=function(e,t,n){this.registerName(e,t),this.getTag().insertRules(Ee(e),n)},t.clearNames=function(e){this.names.has(e)&&this.names.get(e).clear()},t.clearRules=function(e){this.getTag().clearGroup(Ee(e)),this.clearNames(e)},t.clearTag=function(){this.tag=void 0},t.toString=function(){return function(e){for(var t=e.getTag(),n=t.length,r="",a=0;a<n;a++){var o=xe(a);if(void 0!==o){var i=e.names.get(o),l=t.getGroup(a);if(i&&l&&i.size){var c=me+".g"+a+'[id="'+o+'"]',s="";void 0!==i&&i.forEach((function(e){e.length>0&&(s+=e+",")})),r+=""+l+c+'{content:"'+s+'"}/*!sc*/\n'}}}return r}(this)},e}(),Me=/(a)(d)/gi,_e=function(e){return String.fromCharCode(e+(e>25?39:97))};function Ue(e){var t,n="";for(t=Math.abs(e);t>52;t=t/52|0)n=_e(t%52)+n;return(_e(t%52)+n).replace(Me,"$1-$2")}var Fe=function(e,t){for(var n=t.length;n;)e=33*e^t.charCodeAt(--n);return e},ze=function(e){return Fe(5381,e)};function qe(e){for(var t=0;t<e.length;t+=1){var n=e[t];if(ue(n)&&!fe(n))return!1}return!0}var He=ze("5.3.11"),$e=function(){function e(e,t,n){this.rules=e,this.staticRulesId="",this.isStatic=(void 0===n||n.isStatic)&&qe(e),this.componentId=t,this.baseHash=Fe(He,t),this.baseStyle=n,Ie.registerId(t)}return e.prototype.generateAndInjectStyles=function(e,t,n){var r=this.componentId,a=[];if(this.baseStyle&&a.push(this.baseStyle.generateAndInjectStyles(e,t,n)),this.isStatic&&!n.hash)if(this.staticRulesId&&t.hasNameForId(r,this.staticRulesId))a.push(this.staticRulesId);else{var o=it(this.rules,e,t,n).join(""),i=Ue(Fe(this.baseHash,o)>>>0);if(!t.hasNameForId(r,i)){var l=n(o,"."+i,void 0,r);t.insertRules(r,i,l)}a.push(i),this.staticRulesId=i}else{for(var c=this.rules.length,s=Fe(this.baseHash,n.hash),u="",d=0;d<c;d++){var f=this.rules[d];if("string"==typeof f)u+=f;else if(f){var m=it(f,e,t,n),p=Array.isArray(m)?m.join(""):m;s=Fe(s,p+d),u+=p}}if(u){var g=Ue(s>>>0);if(!t.hasNameForId(r,g)){var h=n(u,"."+g,void 0,r);t.insertRules(r,g,h)}a.push(g)}}return a.join(" ")},e}(),Be=/^\s*\/\/.*$/gm,Ge=[":","[",".","#"];function We(e){var t,n,r,a,o=void 0===e?se:e,i=o.options,l=void 0===i?se:i,c=o.plugins,s=void 0===c?ce:c,u=new Z(l),d=[],f=function(e){function t(t){if(t)try{e(t+"}")}catch(e){}}return function(n,r,a,o,i,l,c,s,u,d){switch(n){case 1:if(0===u&&64===r.charCodeAt(0))return e(r+";"),"";break;case 2:if(0===s)return r+"/*|*/";break;case 3:switch(s){case 102:case 112:return e(a[0]+r),"";default:return r+(0===d?"/*|*/":"")}case-2:r.split("/*|*/}").forEach(t)}}}((function(e){d.push(e)})),m=function(e,r,o){return 0===r&&-1!==Ge.indexOf(o[n.length])||o.match(a)?e:"."+t};function p(e,o,i,l){void 0===l&&(l="&");var c=e.replace(Be,""),s=o&&i?i+" "+o+" { "+c+" }":c;return t=l,n=o,r=new RegExp("\\"+n+"\\b","g"),a=new RegExp("(\\"+n+"\\b){2,}"),u(i||!o?"":o,s)}return u.use([].concat(s,[function(e,t,a){2===e&&a.length&&a[0].lastIndexOf(n)>0&&(a[0]=a[0].replace(r,m))},f,function(e){if(-2===e){var t=d;return d=[],t}}])),p.hash=s.length?s.reduce((function(e,t){return t.name||he(15),Fe(e,t.name)}),5381).toString():"",p}var Ve=S.default.createContext(),Ye=(Ve.Consumer,S.default.createContext()),Ke=(Ye.Consumer,new Ie),Xe=We();function Ze(){return(0,S.useContext)(Ve)||Ke}function Je(e){var t=(0,S.useState)(e.stylisPlugins),n=t[0],r=t[1],a=Ze(),o=(0,S.useMemo)((function(){var t=a;return e.sheet?t=e.sheet:e.target&&(t=t.reconstructWithOptions({target:e.target},!1)),e.disableCSSOMInjection&&(t=t.reconstructWithOptions({useCSSOMInjection:!1})),t}),[e.disableCSSOMInjection,e.sheet,e.target]),i=(0,S.useMemo)((function(){return We({options:{prefix:!e.disableVendorPrefixes},plugins:n})}),[e.disableVendorPrefixes,n]);return(0,S.useEffect)((function(){X()(n,e.stylisPlugins)||r(e.stylisPlugins)}),[e.stylisPlugins]),S.default.createElement(Ve.Provider,{value:o},S.default.createElement(Ye.Provider,{value:i},e.children))}var Qe=function(){function e(e,t){var n=this;this.inject=function(e,t){void 0===t&&(t=Xe);var r=n.name+t.hash;e.hasNameForId(n.id,r)||e.insertRules(n.id,r,t(n.rules,r,"@keyframes"))},this.toString=function(){return he(12,String(n.name))},this.name=e,this.id="sc-keyframes-"+e,this.rules=t}return e.prototype.getName=function(e){return void 0===e&&(e=Xe),this.name+e.hash},e}(),et=/([A-Z])/,tt=/([A-Z])/g,nt=/^ms-/,rt=function(e){return"-"+e.toLowerCase()};function at(e){return et.test(e)?e.replace(tt,rt).replace(nt,"-ms-"):e}var ot=function(e){return null==e||!1===e||""===e};function it(e,t,n,r){if(Array.isArray(e)){for(var a,o=[],i=0,l=e.length;i<l;i+=1)""!==(a=it(e[i],t,n,r))&&(Array.isArray(a)?o.push.apply(o,a):o.push(a));return o}return ot(e)?"":fe(e)?"."+e.styledComponentId:ue(e)?"function"!=typeof(c=e)||c.prototype&&c.prototype.isReactComponent||!t?e:it(e(t),t,n,r):e instanceof Qe?n?(e.inject(n,r),e.getName(r)):e:le(e)?function e(t,n){var r,a,o=[];for(var i in t)t.hasOwnProperty(i)&&!ot(t[i])&&(Array.isArray(t[i])&&t[i].isCss||ue(t[i])?o.push(at(i)+":",t[i],";"):le(t[i])?o.push.apply(o,e(t[i],i)):o.push(at(i)+": "+(r=i,(null==(a=t[i])||"boolean"==typeof a||""===a?"":"number"!=typeof a||0===a||r in J||r.startsWith("--")?String(a).trim():a+"px")+";")));return n?[n+" {"].concat(o,["}"]):o}(e):e.toString();var c}var lt=function(e){return Array.isArray(e)&&(e.isCss=!0),e};function ct(e){for(var t=arguments.length,n=new Array(t>1?t-1:0),r=1;r<t;r++)n[r-1]=arguments[r];return ue(e)||le(e)?lt(it(ie(ce,[e].concat(n)))):0===n.length&&1===e.length&&"string"==typeof e[0]?e:lt(it(ie(e,n)))}new Set;var st=/[!"#$%&'()*+,./:;<=>?@[\\\]^`{|}~-]+/g,ut=/(^-|-$)/g;function dt(e){return e.replace(st,"-").replace(ut,"")}function ft(e){return"string"==typeof e&&!0}var mt=function(e){return"function"==typeof e||"object"==typeof e&&null!==e&&!Array.isArray(e)},pt=function(e){return"__proto__"!==e&&"constructor"!==e&&"prototype"!==e};function gt(e,t,n){var r=e[n];mt(t)&&mt(r)?ht(r,t):e[n]=t}function ht(e){for(var t=arguments.length,n=new Array(t>1?t-1:0),r=1;r<t;r++)n[r-1]=arguments[r];for(var a=0,o=n;a<o.length;a++){var i=o[a];if(mt(i))for(var l in i)pt(l)&&gt(e,i[l],l)}return e}var vt=S.default.createContext();vt.Consumer;var yt={};function bt(e,t,n){var r=fe(e),a=!ft(e),o=t.attrs,i=void 0===o?ce:o,l=t.componentId,c=void 0===l?function(e,t){var n="string"!=typeof e?"sc":dt(e);yt[n]=(yt[n]||0)+1;var r=n+"-"+function(e){return Ue(ze(e)>>>0)}("5.3.11"+n+yt[n]);return t?t+"-"+r:r}(t.displayName,t.parentComponentId):l,s=t.displayName,u=void 0===s?function(e){return ft(e)?"styled."+e:"Styled("+de(e)+")"}(e):s,d=t.displayName&&t.componentId?dt(t.displayName)+"-"+t.componentId:t.componentId||c,f=r&&e.attrs?Array.prototype.concat(e.attrs,i).filter(Boolean):i,m=t.shouldForwardProp;r&&e.shouldForwardProp&&(m=t.shouldForwardProp?function(n,r,a){return e.shouldForwardProp(n,r,a)&&t.shouldForwardProp(n,r,a)}:e.shouldForwardProp);var p,g=new $e(n,d,r?e.componentStyle:void 0),h=g.isStatic&&0===i.length,v=function(e,t){return function(e,t,n,r){var a=e.attrs,o=e.componentStyle,i=e.defaultProps,l=e.foldedComponentIds,c=e.shouldForwardProp,s=e.styledComponentId,u=e.target,d=function(e,t,n){void 0===e&&(e=se);var r=oe({},t,{theme:e}),a={};return n.forEach((function(e){var t,n,o,i=e;for(t in ue(i)&&(i=i(r)),i)r[t]=a[t]="className"===t?(n=a[t],o=i[t],n&&o?n+" "+o:n||o):i[t]})),[r,a]}(function(e,t,n){return void 0===n&&(n=se),e.theme!==n.theme&&e.theme||t||n.theme}(t,(0,S.useContext)(vt),i)||se,t,a),f=d[0],m=d[1],p=function(e,t,n){var r=Ze(),a=(0,S.useContext)(Ye)||Xe;return t?e.generateAndInjectStyles(se,r,a):e.generateAndInjectStyles(n,r,a)}(o,r,f),g=n,h=m.$as||t.$as||m.as||t.as||u,v=ft(h),y=m!==t?oe({},t,{},m):t,b={};for(var w in y)"$"!==w[0]&&"as"!==w&&("forwardedAs"===w?b.as=y[w]:(c?c(w,ne,h):!v||ne(w))&&(b[w]=y[w]));return t.style&&m.style!==t.style&&(b.style=oe({},t.style,{},m.style)),b.className=Array.prototype.concat(l,s,p!==s?p:null,t.className,m.className).filter(Boolean).join(" "),b.ref=g,(0,S.createElement)(h,b)}(p,e,t,h)};return v.displayName=u,(p=S.default.forwardRef(v)).attrs=f,p.componentStyle=g,p.displayName=u,p.shouldForwardProp=m,p.foldedComponentIds=r?Array.prototype.concat(e.foldedComponentIds,e.styledComponentId):ce,p.styledComponentId=d,p.target=r?e.target:e,p.withComponent=function(e){var r=t.componentId,a=function(e,t){if(null==e)return{};var n,r,a={},o=Object.keys(e);for(r=0;r<o.length;r++)n=o[r],t.indexOf(n)>=0||(a[n]=e[n]);return a}(t,["componentId"]),o=r&&r+"-"+(ft(e)?e:dt(de(e)));return bt(e,oe({},a,{attrs:f,componentId:o}),n)},Object.defineProperty(p,"defaultProps",{get:function(){return this._foldedDefaultProps},set:function(t){this._foldedDefaultProps=r?ht({},e.defaultProps,t):t}}),Object.defineProperty(p,"toString",{value:function(){return"."+p.styledComponentId}}),a&&ae()(p,e,{attrs:!0,componentStyle:!0,displayName:!0,foldedComponentIds:!0,shouldForwardProp:!0,styledComponentId:!0,target:!0,withComponent:!0}),p}var wt,Et=function(e){return function e(t,n,r){if(void 0===r&&(r=se),!(0,Y.isValidElementType)(n))return he(1,String(n));var a=function(){return t(n,r,ct.apply(void 0,arguments))};return a.withConfig=function(a){return e(t,n,oe({},r,{},a))},a.attrs=function(a){return e(t,n,oe({},r,{attrs:Array.prototype.concat(r.attrs,a).filter(Boolean)}))},a}(bt,e)};["a","abbr","address","area","article","aside","audio","b","base","bdi","bdo","big","blockquote","body","br","button","canvas","caption","cite","code","col","colgroup","data","datalist","dd","del","details","dfn","dialog","div","dl","dt","em","embed","fieldset","figcaption","figure","footer","form","h1","h2","h3","h4","h5","h6","head","header","hgroup","hr","html","i","iframe","img","input","ins","kbd","keygen","label","legend","li","link","main","map","mark","marquee","menu","menuitem","meta","meter","nav","noscript","object","ol","optgroup","option","output","p","param","picture","pre","progress","q","rp","rt","ruby","s","samp","script","section","select","small","source","span","strong","style","sub","summary","sup","table","tbody","td","textarea","tfoot","th","thead","time","title","tr","track","u","ul","var","video","wbr","circle","clipPath","defs","ellipse","foreignObject","g","image","line","linearGradient","marker","mask","path","pattern","polygon","polyline","radialGradient","rect","stop","svg","text","textPath","tspan"].forEach((function(e){Et[e]=Et(e)})),(wt=function(e,t){this.rules=e,this.componentId=t,this.isStatic=qe(e),Ie.registerId(this.componentId+1)}.prototype).createStyles=function(e,t,n,r){var a=r(it(this.rules,t,n,r).join(""),""),o=this.componentId+e;n.insertRules(o,o,a)},wt.removeStyles=function(e,t){t.clearRules(this.componentId+e)},wt.renderStyles=function(e,t,n,r){e>2&&Ie.registerId(this.componentId+e),this.removeStyles(e,n),this.createStyles(e,t,n,r)},function(){var e=function(){var e=this;this._emitSheetCSS=function(){var t=e.instance.toString();if(!t)return"";var n=Ae();return"<style "+[n&&'nonce="'+n+'"',me+'="true"','data-styled-version="5.3.11"'].filter(Boolean).join(" ")+">"+t+"</style>"},this.getStyleTags=function(){return e.sealed?he(2):e._emitSheetCSS()},this.getStyleElement=function(){var t;if(e.sealed)return he(2);var n=((t={})[me]="",t["data-styled-version"]="5.3.11",t.dangerouslySetInnerHTML={__html:e.instance.toString()},t),r=Ae();return r&&(n.nonce=r),[S.default.createElement("style",oe({},n,{key:"sc-0-0"}))]},this.seal=function(){e.sealed=!0},this.instance=new Ie({isServer:!0}),this.sealed=!1}.prototype;e.collectStyles=function(e){return this.sealed?he(2):S.default.createElement(Je,{sheet:this.instance},e)},e.interleaveWithNodeStream=function(e){return he(3)}}();const xt=Et,kt=xt.div`
+import ht, { Component as Qc, createContext as Ws, forwardRef as Vs, useRef as Ir, useImperativeHandle as eu, useId as tu, useContext as Yt, createElement as Gs, useState as ft, useEffect as Tt, useLayoutEffect as ru, useMemo as Ys, Fragment as Zs, createRef as nu } from "react";
+import Xs from "react-dom";
+function Ui(e) {
+  return e && e.__esModule && Object.prototype.hasOwnProperty.call(e, "default") ? e.default : e;
+}
+var Ks = { exports: {} }, wn = {};
+var Lo;
+function au() {
+  if (Lo) return wn;
+  Lo = 1;
+  var e = ht, t = Symbol.for("react.element"), r = Symbol.for("react.fragment"), n = Object.prototype.hasOwnProperty, a = e.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner, s = { key: !0, ref: !0, __self: !0, __source: !0 };
+  function d(f, h, m) {
+    var C, _ = {}, O = null, U = null;
+    m !== void 0 && (O = "" + m), h.key !== void 0 && (O = "" + h.key), h.ref !== void 0 && (U = h.ref);
+    for (C in h) n.call(h, C) && !s.hasOwnProperty(C) && (_[C] = h[C]);
+    if (f && f.defaultProps) for (C in h = f.defaultProps, h) _[C] === void 0 && (_[C] = h[C]);
+    return { $$typeof: t, type: f, key: O, ref: U, props: _, _owner: a.current };
+  }
+  return wn.Fragment = r, wn.jsx = d, wn.jsxs = d, wn;
+}
+Ks.exports = au();
+var p = Ks.exports;
+function zi(e) {
+  return e && e.__esModule && Object.prototype.hasOwnProperty.call(e, "default") ? e.default : e;
+}
+var Js = { exports: {} }, Sn = {}, Mo;
+function iu() {
+  if (Mo) return Sn;
+  Mo = 1;
+  var e = ht, t = Symbol.for("react.element"), r = Symbol.for("react.fragment"), n = Object.prototype.hasOwnProperty, a = e.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner, s = { key: !0, ref: !0, __self: !0, __source: !0 };
+  function d(f, h, m) {
+    var C, _ = {}, O = null, U = null;
+    m !== void 0 && (O = "" + m), h.key !== void 0 && (O = "" + h.key), h.ref !== void 0 && (U = h.ref);
+    for (C in h) n.call(h, C) && !s.hasOwnProperty(C) && (_[C] = h[C]);
+    if (f && f.defaultProps) for (C in h = f.defaultProps, h) _[C] === void 0 && (_[C] = h[C]);
+    return { $$typeof: t, type: f, key: O, ref: U, props: _, _owner: a.current };
+  }
+  return Sn.Fragment = r, Sn.jsx = d, Sn.jsxs = d, Sn;
+}
+Js.exports = iu();
+var H = Js.exports, Qs = { exports: {} }, za, Fo;
+function ou() {
+  if (Fo) return za;
+  Fo = 1;
+  var e = "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED";
+  return za = e, za;
+}
+var Ba, $o;
+function su() {
+  if ($o) return Ba;
+  $o = 1;
+  var e = ou();
+  function t() {
+  }
+  function r() {
+  }
+  return r.resetWarningCache = t, Ba = function() {
+    function n(d, f, h, m, C, _) {
+      if (_ !== e) {
+        var O = new Error(
+          "Calling PropTypes validators directly is not supported by the `prop-types` package. Use PropTypes.checkPropTypes() to call them. Read more at http://fb.me/use-check-prop-types"
+        );
+        throw O.name = "Invariant Violation", O;
+      }
+    }
+    n.isRequired = n;
+    function a() {
+      return n;
+    }
+    var s = {
+      array: n,
+      bigint: n,
+      bool: n,
+      func: n,
+      number: n,
+      object: n,
+      string: n,
+      symbol: n,
+      any: n,
+      arrayOf: a,
+      element: n,
+      elementType: n,
+      instanceOf: a,
+      node: n,
+      objectOf: a,
+      oneOf: a,
+      oneOfType: a,
+      shape: a,
+      exact: a,
+      checkPropTypes: r,
+      resetWarningCache: t
+    };
+    return s.PropTypes = s, s;
+  }, Ba;
+}
+Qs.exports = su()();
+var lu = Qs.exports;
+const l = /* @__PURE__ */ zi(lu), cu = l.shape({
+  url: l.string,
+  altText: l.string,
+  cssClass: l.arrayOf(l.string),
+  size: l.oneOf(["small", "medium", "large"])
+}), qa = l.shape({
+  text: l.string,
+  maxWidth: l.string,
+  cssClass: l.arrayOf(l.string),
+  highlightColor: l.oneOf(["gold", "black"])
+}), el = l.shape({
+  color: l.oneOf(["gold", "maroon", "gray", "dark"]),
+  content: l.shape({
+    icon: l.string,
+    header: l.string,
+    body: l.string
+  })
+}), Bi = l.shape({
+  text: l.string,
+  name: l.string,
+  event: l.string,
+  action: l.string,
+  type: l.string,
+  region: l.string,
+  section: l.string,
+  component: l.string
+});
+var tl = { exports: {} };
+(function(e) {
+  (function() {
+    var t = {}.hasOwnProperty;
+    function r() {
+      for (var s = "", d = 0; d < arguments.length; d++) {
+        var f = arguments[d];
+        f && (s = a(s, n(f)));
+      }
+      return s;
+    }
+    function n(s) {
+      if (typeof s == "string" || typeof s == "number")
+        return s;
+      if (typeof s != "object")
+        return "";
+      if (Array.isArray(s))
+        return r.apply(null, s);
+      if (s.toString !== Object.prototype.toString && !s.toString.toString().includes("[native code]"))
+        return s.toString();
+      var d = "";
+      for (var f in s)
+        t.call(s, f) && s[f] && (d = a(d, f));
+      return d;
+    }
+    function a(s, d) {
+      return d ? s ? s + " " + d : s + d : s;
+    }
+    e.exports ? (r.default = r, e.exports = r) : window.classNames = r;
+  })();
+})(tl);
+var uu = tl.exports;
+const dt = /* @__PURE__ */ zi(uu);
+function du(e) {
+  const [t, r] = ft(!1);
+  return Tt(() => {
+    const n = window.matchMedia(e);
+    n.matches !== t && r(n.matches);
+    const a = () => {
+      r(n.matches);
+    };
+    return n.addEventListener("change", a), () => n.removeEventListener("change", a);
+  }, [t, e]), t;
+}
+const Uo = (e, t, r) => e ? t : r, pu = (e) => (e || []).join(" ");
+function Er(e) {
+  "@babel/helpers - typeof";
+  return Er = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(t) {
+    return typeof t;
+  } : function(t) {
+    return t && typeof Symbol == "function" && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t;
+  }, Er(e);
+}
+function mi(e, t) {
+  return mi = Object.setPrototypeOf || function(r, n) {
+    return r.__proto__ = n, r;
+  }, mi(e, t);
+}
+function fu() {
+  if (typeof Reflect > "u" || !Reflect.construct || Reflect.construct.sham) return !1;
+  if (typeof Proxy == "function") return !0;
+  try {
+    return Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {
+    })), !0;
+  } catch {
+    return !1;
+  }
+}
+function sa(e, t, r) {
+  return fu() ? sa = Reflect.construct : sa = function(n, a, s) {
+    var d = [null];
+    d.push.apply(d, a);
+    var f = Function.bind.apply(n, d), h = new f();
+    return s && mi(h, s.prototype), h;
+  }, sa.apply(null, arguments);
+}
+function sr(e) {
+  return hu(e) || mu(e) || gu(e) || yu();
+}
+function hu(e) {
+  if (Array.isArray(e)) return gi(e);
+}
+function mu(e) {
+  if (typeof Symbol < "u" && e[Symbol.iterator] != null || e["@@iterator"] != null) return Array.from(e);
+}
+function gu(e, t) {
+  if (e) {
+    if (typeof e == "string") return gi(e, t);
+    var r = Object.prototype.toString.call(e).slice(8, -1);
+    if (r === "Object" && e.constructor && (r = e.constructor.name), r === "Map" || r === "Set") return Array.from(e);
+    if (r === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r)) return gi(e, t);
+  }
+}
+function gi(e, t) {
+  (t == null || t > e.length) && (t = e.length);
+  for (var r = 0, n = new Array(t); r < t; r++) n[r] = e[r];
+  return n;
+}
+function yu() {
+  throw new TypeError(`Invalid attempt to spread non-iterable instance.
+In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
+}
+var bu = Object.hasOwnProperty, zo = Object.setPrototypeOf, vu = Object.isFrozen, xu = Object.getPrototypeOf, wu = Object.getOwnPropertyDescriptor, Ct = Object.freeze, qt = Object.seal, Su = Object.create, rl = typeof Reflect < "u" && Reflect, ma = rl.apply, yi = rl.construct;
+ma || (ma = function(e, t, r) {
+  return e.apply(t, r);
+});
+Ct || (Ct = function(e) {
+  return e;
+});
+qt || (qt = function(e) {
+  return e;
+});
+yi || (yi = function(e, t) {
+  return sa(e, sr(t));
+});
+var ku = Ht(Array.prototype.forEach), Bo = Ht(Array.prototype.pop), kn = Ht(Array.prototype.push), la = Ht(String.prototype.toLowerCase), Ha = Ht(String.prototype.toString), qo = Ht(String.prototype.match), ir = Ht(String.prototype.replace), Tu = Ht(String.prototype.indexOf), Cu = Ht(String.prototype.trim), wt = Ht(RegExp.prototype.test), Wa = Au(TypeError);
+function Ht(e) {
+  return function(t) {
+    for (var r = arguments.length, n = new Array(r > 1 ? r - 1 : 0), a = 1; a < r; a++)
+      n[a - 1] = arguments[a];
+    return ma(e, t, n);
+  };
+}
+function Au(e) {
+  return function() {
+    for (var t = arguments.length, r = new Array(t), n = 0; n < t; n++)
+      r[n] = arguments[n];
+    return yi(e, r);
+  };
+}
+function Ne(e, t, r) {
+  var n;
+  r = (n = r) !== null && n !== void 0 ? n : la, zo && zo(e, null);
+  for (var a = t.length; a--; ) {
+    var s = t[a];
+    if (typeof s == "string") {
+      var d = r(s);
+      d !== s && (vu(t) || (t[a] = d), s = d);
+    }
+    e[s] = !0;
+  }
+  return e;
+}
+function $r(e) {
+  var t = Su(null), r;
+  for (r in e)
+    ma(bu, e, [r]) === !0 && (t[r] = e[r]);
+  return t;
+}
+function Xn(e, t) {
+  for (; e !== null; ) {
+    var r = wu(e, t);
+    if (r) {
+      if (r.get)
+        return Ht(r.get);
+      if (typeof r.value == "function")
+        return Ht(r.value);
+    }
+    e = xu(e);
+  }
+  function n(a) {
+    return console.warn("fallback value for", a), null;
+  }
+  return n;
+}
+var Ho = Ct(["a", "abbr", "acronym", "address", "area", "article", "aside", "audio", "b", "bdi", "bdo", "big", "blink", "blockquote", "body", "br", "button", "canvas", "caption", "center", "cite", "code", "col", "colgroup", "content", "data", "datalist", "dd", "decorator", "del", "details", "dfn", "dialog", "dir", "div", "dl", "dt", "element", "em", "fieldset", "figcaption", "figure", "font", "footer", "form", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "html", "i", "img", "input", "ins", "kbd", "label", "legend", "li", "main", "map", "mark", "marquee", "menu", "menuitem", "meter", "nav", "nobr", "ol", "optgroup", "option", "output", "p", "picture", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "section", "select", "shadow", "small", "source", "spacer", "span", "strike", "strong", "style", "sub", "summary", "sup", "table", "tbody", "td", "template", "textarea", "tfoot", "th", "thead", "time", "tr", "track", "tt", "u", "ul", "var", "video", "wbr"]), Va = Ct(["svg", "a", "altglyph", "altglyphdef", "altglyphitem", "animatecolor", "animatemotion", "animatetransform", "circle", "clippath", "defs", "desc", "ellipse", "filter", "font", "g", "glyph", "glyphref", "hkern", "image", "line", "lineargradient", "marker", "mask", "metadata", "mpath", "path", "pattern", "polygon", "polyline", "radialgradient", "rect", "stop", "style", "switch", "symbol", "text", "textpath", "title", "tref", "tspan", "view", "vkern"]), Ga = Ct(["feBlend", "feColorMatrix", "feComponentTransfer", "feComposite", "feConvolveMatrix", "feDiffuseLighting", "feDisplacementMap", "feDistantLight", "feFlood", "feFuncA", "feFuncB", "feFuncG", "feFuncR", "feGaussianBlur", "feImage", "feMerge", "feMergeNode", "feMorphology", "feOffset", "fePointLight", "feSpecularLighting", "feSpotLight", "feTile", "feTurbulence"]), _u = Ct(["animate", "color-profile", "cursor", "discard", "fedropshadow", "font-face", "font-face-format", "font-face-name", "font-face-src", "font-face-uri", "foreignobject", "hatch", "hatchpath", "mesh", "meshgradient", "meshpatch", "meshrow", "missing-glyph", "script", "set", "solidcolor", "unknown", "use"]), Ya = Ct(["math", "menclose", "merror", "mfenced", "mfrac", "mglyph", "mi", "mlabeledtr", "mmultiscripts", "mn", "mo", "mover", "mpadded", "mphantom", "mroot", "mrow", "ms", "mspace", "msqrt", "mstyle", "msub", "msup", "msubsup", "mtable", "mtd", "mtext", "mtr", "munder", "munderover"]), Eu = Ct(["maction", "maligngroup", "malignmark", "mlongdiv", "mscarries", "mscarry", "msgroup", "mstack", "msline", "msrow", "semantics", "annotation", "annotation-xml", "mprescripts", "none"]), Wo = Ct(["#text"]), Vo = Ct(["accept", "action", "align", "alt", "autocapitalize", "autocomplete", "autopictureinpicture", "autoplay", "background", "bgcolor", "border", "capture", "cellpadding", "cellspacing", "checked", "cite", "class", "clear", "color", "cols", "colspan", "controls", "controlslist", "coords", "crossorigin", "datetime", "decoding", "default", "dir", "disabled", "disablepictureinpicture", "disableremoteplayback", "download", "draggable", "enctype", "enterkeyhint", "face", "for", "headers", "height", "hidden", "high", "href", "hreflang", "id", "inputmode", "integrity", "ismap", "kind", "label", "lang", "list", "loading", "loop", "low", "max", "maxlength", "media", "method", "min", "minlength", "multiple", "muted", "name", "nonce", "noshade", "novalidate", "nowrap", "open", "optimum", "pattern", "placeholder", "playsinline", "poster", "preload", "pubdate", "radiogroup", "readonly", "rel", "required", "rev", "reversed", "role", "rows", "rowspan", "spellcheck", "scope", "selected", "shape", "size", "sizes", "span", "srclang", "start", "src", "srcset", "step", "style", "summary", "tabindex", "title", "translate", "type", "usemap", "valign", "value", "width", "xmlns", "slot"]), Za = Ct(["accent-height", "accumulate", "additive", "alignment-baseline", "ascent", "attributename", "attributetype", "azimuth", "basefrequency", "baseline-shift", "begin", "bias", "by", "class", "clip", "clippathunits", "clip-path", "clip-rule", "color", "color-interpolation", "color-interpolation-filters", "color-profile", "color-rendering", "cx", "cy", "d", "dx", "dy", "diffuseconstant", "direction", "display", "divisor", "dur", "edgemode", "elevation", "end", "fill", "fill-opacity", "fill-rule", "filter", "filterunits", "flood-color", "flood-opacity", "font-family", "font-size", "font-size-adjust", "font-stretch", "font-style", "font-variant", "font-weight", "fx", "fy", "g1", "g2", "glyph-name", "glyphref", "gradientunits", "gradienttransform", "height", "href", "id", "image-rendering", "in", "in2", "k", "k1", "k2", "k3", "k4", "kerning", "keypoints", "keysplines", "keytimes", "lang", "lengthadjust", "letter-spacing", "kernelmatrix", "kernelunitlength", "lighting-color", "local", "marker-end", "marker-mid", "marker-start", "markerheight", "markerunits", "markerwidth", "maskcontentunits", "maskunits", "max", "mask", "media", "method", "mode", "min", "name", "numoctaves", "offset", "operator", "opacity", "order", "orient", "orientation", "origin", "overflow", "paint-order", "path", "pathlength", "patterncontentunits", "patterntransform", "patternunits", "points", "preservealpha", "preserveaspectratio", "primitiveunits", "r", "rx", "ry", "radius", "refx", "refy", "repeatcount", "repeatdur", "restart", "result", "rotate", "scale", "seed", "shape-rendering", "specularconstant", "specularexponent", "spreadmethod", "startoffset", "stddeviation", "stitchtiles", "stop-color", "stop-opacity", "stroke-dasharray", "stroke-dashoffset", "stroke-linecap", "stroke-linejoin", "stroke-miterlimit", "stroke-opacity", "stroke", "stroke-width", "style", "surfacescale", "systemlanguage", "tabindex", "targetx", "targety", "transform", "transform-origin", "text-anchor", "text-decoration", "text-rendering", "textlength", "type", "u1", "u2", "unicode", "values", "viewbox", "visibility", "version", "vert-adv-y", "vert-origin-x", "vert-origin-y", "width", "word-spacing", "wrap", "writing-mode", "xchannelselector", "ychannelselector", "x", "x1", "x2", "xmlns", "y", "y1", "y2", "z", "zoomandpan"]), Go = Ct(["accent", "accentunder", "align", "bevelled", "close", "columnsalign", "columnlines", "columnspan", "denomalign", "depth", "dir", "display", "displaystyle", "encoding", "fence", "frame", "height", "href", "id", "largeop", "length", "linethickness", "lspace", "lquote", "mathbackground", "mathcolor", "mathsize", "mathvariant", "maxsize", "minsize", "movablelimits", "notation", "numalign", "open", "rowalign", "rowlines", "rowspacing", "rowspan", "rspace", "rquote", "scriptlevel", "scriptminsize", "scriptsizemultiplier", "selection", "separator", "separators", "stretchy", "subscriptshift", "supscriptshift", "symmetric", "voffset", "width", "xmlns"]), Kn = Ct(["xlink:href", "xml:id", "xlink:title", "xml:space", "xmlns:xlink"]), ju = qt(/\{\{[\w\W]*|[\w\W]*\}\}/gm), Ou = qt(/<%[\w\W]*|[\w\W]*%>/gm), Nu = qt(/\${[\w\W]*}/gm), Ru = qt(/^data-[\-\w.\u00B7-\uFFFF]/), Iu = qt(/^aria-[\-\w]+$/), Du = qt(
+  /^(?:(?:(?:f|ht)tps?|mailto|tel|callto|cid|xmpp):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i
+  // eslint-disable-line no-useless-escape
+), Pu = qt(/^(?:\w+script|data):/i), Lu = qt(
+  /[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205F\u3000]/g
+  // eslint-disable-line no-control-regex
+), Mu = qt(/^html$/i), Fu = qt(/^[a-z][.\w]*(-[.\w]+)+$/i), $u = function() {
+  return typeof window > "u" ? null : window;
+}, Uu = function(e, t) {
+  if (Er(e) !== "object" || typeof e.createPolicy != "function")
+    return null;
+  var r = null, n = "data-tt-policy-suffix";
+  t.currentScript && t.currentScript.hasAttribute(n) && (r = t.currentScript.getAttribute(n));
+  var a = "dompurify" + (r ? "#" + r : "");
+  try {
+    return e.createPolicy(a, {
+      createHTML: function(s) {
+        return s;
+      },
+      createScriptURL: function(s) {
+        return s;
+      }
+    });
+  } catch {
+    return console.warn("TrustedTypes policy " + a + " could not be created."), null;
+  }
+};
+function nl() {
+  var e = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : $u(), t = function(b) {
+    return nl(b);
+  };
+  if (t.version = "2.5.7", t.removed = [], !e || !e.document || e.document.nodeType !== 9)
+    return t.isSupported = !1, t;
+  var r = e.document, n = e.document, a = e.DocumentFragment, s = e.HTMLTemplateElement, d = e.Node, f = e.Element, h = e.NodeFilter, m = e.NamedNodeMap, C = m === void 0 ? e.NamedNodeMap || e.MozNamedAttrMap : m, _ = e.HTMLFormElement, O = e.DOMParser, U = e.trustedTypes, E = f.prototype, S = Xn(E, "cloneNode"), I = Xn(E, "nextSibling"), F = Xn(E, "childNodes"), $ = Xn(E, "parentNode");
+  if (typeof s == "function") {
+    var X = n.createElement("template");
+    X.content && X.content.ownerDocument && (n = X.content.ownerDocument);
+  }
+  var G = Uu(U, r), T = G ? G.createHTML("") : "", oe = n, ce = oe.implementation, Se = oe.createNodeIterator, Ie = oe.createDocumentFragment, $e = oe.getElementsByTagName, De = r.importNode, fe = {};
+  try {
+    fe = $r(n).documentMode ? n.documentMode : {};
+  } catch {
+  }
+  var ue = {};
+  t.isSupported = typeof $ == "function" && ce && ce.createHTMLDocument !== void 0 && fe !== 9;
+  var Ce = ju, ge = Ou, He = Nu, Ae = Ru, _e = Iu, Fe = Pu, We = Lu, Ve = Fu, B = Du, R = null, z = Ne({}, [].concat(sr(Ho), sr(Va), sr(Ga), sr(Ya), sr(Wo))), q = null, v = Ne({}, [].concat(sr(Vo), sr(Za), sr(Go), sr(Kn))), Y = Object.seal(Object.create(null, {
+    tagNameCheck: {
+      writable: !0,
+      configurable: !1,
+      enumerable: !0,
+      value: null
+    },
+    attributeNameCheck: {
+      writable: !0,
+      configurable: !1,
+      enumerable: !0,
+      value: null
+    },
+    allowCustomizedBuiltInElements: {
+      writable: !0,
+      configurable: !1,
+      enumerable: !0,
+      value: !1
+    }
+  })), j = null, ie = null, re = !0, ee = !0, K = !1, se = !0, he = !1, ne = !0, de = !1, ae = !1, ye = !1, Ue = !1, me = !1, nt = !1, Xe = !0, we = !1, J = "user-content-", pe = !0, at = !1, et = {}, Me = null, ur = Ne({}, ["annotation-xml", "audio", "colgroup", "desc", "foreignobject", "head", "iframe", "math", "mi", "mn", "mo", "ms", "mtext", "noembed", "noframes", "noscript", "plaintext", "script", "style", "svg", "template", "thead", "title", "video", "xmp"]), dr = null, mr = Ne({}, ["audio", "video", "img", "source", "image", "track"]), jt = null, Mt = Ne({}, ["alt", "class", "for", "id", "label", "name", "pattern", "placeholder", "role", "summary", "title", "value", "style", "xmlns"]), Ot = "http://www.w3.org/1998/Math/MathML", Nt = "http://www.w3.org/2000/svg", lt = "http://www.w3.org/1999/xhtml", bt = lt, Zt = !1, mt = null, gr = Ne({}, [Ot, Nt, lt], Ha), ut, Be = ["application/xhtml+xml", "text/html"], Xt = "text/html", ke, pt = null, _t = n.createElement("form"), Ft = function(b) {
+    return b instanceof RegExp || b instanceof Function;
+  }, vt = function(b) {
+    pt && pt === b || ((!b || Er(b) !== "object") && (b = {}), b = $r(b), ut = // eslint-disable-next-line unicorn/prefer-includes
+    Be.indexOf(b.PARSER_MEDIA_TYPE) === -1 ? ut = Xt : ut = b.PARSER_MEDIA_TYPE, ke = ut === "application/xhtml+xml" ? Ha : la, R = "ALLOWED_TAGS" in b ? Ne({}, b.ALLOWED_TAGS, ke) : z, q = "ALLOWED_ATTR" in b ? Ne({}, b.ALLOWED_ATTR, ke) : v, mt = "ALLOWED_NAMESPACES" in b ? Ne({}, b.ALLOWED_NAMESPACES, Ha) : gr, jt = "ADD_URI_SAFE_ATTR" in b ? Ne(
+      $r(Mt),
+      // eslint-disable-line indent
+      b.ADD_URI_SAFE_ATTR,
+      // eslint-disable-line indent
+      ke
+      // eslint-disable-line indent
+    ) : Mt, dr = "ADD_DATA_URI_TAGS" in b ? Ne(
+      $r(mr),
+      // eslint-disable-line indent
+      b.ADD_DATA_URI_TAGS,
+      // eslint-disable-line indent
+      ke
+      // eslint-disable-line indent
+    ) : mr, Me = "FORBID_CONTENTS" in b ? Ne({}, b.FORBID_CONTENTS, ke) : ur, j = "FORBID_TAGS" in b ? Ne({}, b.FORBID_TAGS, ke) : {}, ie = "FORBID_ATTR" in b ? Ne({}, b.FORBID_ATTR, ke) : {}, et = "USE_PROFILES" in b ? b.USE_PROFILES : !1, re = b.ALLOW_ARIA_ATTR !== !1, ee = b.ALLOW_DATA_ATTR !== !1, K = b.ALLOW_UNKNOWN_PROTOCOLS || !1, se = b.ALLOW_SELF_CLOSE_IN_ATTR !== !1, he = b.SAFE_FOR_TEMPLATES || !1, ne = b.SAFE_FOR_XML !== !1, de = b.WHOLE_DOCUMENT || !1, Ue = b.RETURN_DOM || !1, me = b.RETURN_DOM_FRAGMENT || !1, nt = b.RETURN_TRUSTED_TYPE || !1, ye = b.FORCE_BODY || !1, Xe = b.SANITIZE_DOM !== !1, we = b.SANITIZE_NAMED_PROPS || !1, pe = b.KEEP_CONTENT !== !1, at = b.IN_PLACE || !1, B = b.ALLOWED_URI_REGEXP || B, bt = b.NAMESPACE || lt, Y = b.CUSTOM_ELEMENT_HANDLING || {}, b.CUSTOM_ELEMENT_HANDLING && Ft(b.CUSTOM_ELEMENT_HANDLING.tagNameCheck) && (Y.tagNameCheck = b.CUSTOM_ELEMENT_HANDLING.tagNameCheck), b.CUSTOM_ELEMENT_HANDLING && Ft(b.CUSTOM_ELEMENT_HANDLING.attributeNameCheck) && (Y.attributeNameCheck = b.CUSTOM_ELEMENT_HANDLING.attributeNameCheck), b.CUSTOM_ELEMENT_HANDLING && typeof b.CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements == "boolean" && (Y.allowCustomizedBuiltInElements = b.CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements), he && (ee = !1), me && (Ue = !0), et && (R = Ne({}, sr(Wo)), q = [], et.html === !0 && (Ne(R, Ho), Ne(q, Vo)), et.svg === !0 && (Ne(R, Va), Ne(q, Za), Ne(q, Kn)), et.svgFilters === !0 && (Ne(R, Ga), Ne(q, Za), Ne(q, Kn)), et.mathMl === !0 && (Ne(R, Ya), Ne(q, Go), Ne(q, Kn))), b.ADD_TAGS && (R === z && (R = $r(R)), Ne(R, b.ADD_TAGS, ke)), b.ADD_ATTR && (q === v && (q = $r(q)), Ne(q, b.ADD_ATTR, ke)), b.ADD_URI_SAFE_ATTR && Ne(jt, b.ADD_URI_SAFE_ATTR, ke), b.FORBID_CONTENTS && (Me === ur && (Me = $r(Me)), Ne(Me, b.FORBID_CONTENTS, ke)), pe && (R["#text"] = !0), de && Ne(R, ["html", "head", "body"]), R.table && (Ne(R, ["tbody"]), delete j.tbody), Ct && Ct(b), pt = b);
+  }, pr = Ne({}, ["mi", "mo", "mn", "ms", "mtext"]), Kt = Ne({}, ["annotation-xml"]), yr = Ne({}, ["title", "style", "font", "a", "script"]), Et = Ne({}, Va);
+  Ne(Et, Ga), Ne(Et, _u);
+  var $t = Ne({}, Ya);
+  Ne($t, Eu);
+  var Cr = function(b) {
+    var x = $(b);
+    (!x || !x.tagName) && (x = {
+      namespaceURI: bt,
+      tagName: "template"
+    });
+    var N = la(b.tagName), Z = la(x.tagName);
+    return mt[b.namespaceURI] ? b.namespaceURI === Nt ? x.namespaceURI === lt ? N === "svg" : x.namespaceURI === Ot ? N === "svg" && (Z === "annotation-xml" || pr[Z]) : !!Et[N] : b.namespaceURI === Ot ? x.namespaceURI === lt ? N === "math" : x.namespaceURI === Nt ? N === "math" && Kt[Z] : !!$t[N] : b.namespaceURI === lt ? x.namespaceURI === Nt && !Kt[Z] || x.namespaceURI === Ot && !pr[Z] ? !1 : !$t[N] && (yr[N] || !Et[N]) : !!(ut === "application/xhtml+xml" && mt[b.namespaceURI]) : !1;
+  }, it = function(b) {
+    kn(t.removed, {
+      element: b
+    });
+    try {
+      b.parentNode.removeChild(b);
+    } catch {
+      try {
+        b.outerHTML = T;
+      } catch {
+        b.remove();
+      }
+    }
+  }, Rt = function(b, x) {
+    try {
+      kn(t.removed, {
+        attribute: x.getAttributeNode(b),
+        from: x
+      });
+    } catch {
+      kn(t.removed, {
+        attribute: null,
+        from: x
+      });
+    }
+    if (x.removeAttribute(b), b === "is" && !q[b])
+      if (Ue || me)
+        try {
+          it(x);
+        } catch {
+        }
+      else
+        try {
+          x.setAttribute(b, "");
+        } catch {
+        }
+  }, Ut = function(b) {
+    var x, N;
+    if (ye)
+      b = "<remove></remove>" + b;
+    else {
+      var Z = qo(b, /^[\r\n\t ]+/);
+      N = Z && Z[0];
+    }
+    ut === "application/xhtml+xml" && bt === lt && (b = '<html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>' + b + "</body></html>");
+    var le = G ? G.createHTML(b) : b;
+    if (bt === lt)
+      try {
+        x = new O().parseFromString(le, ut);
+      } catch {
+      }
+    if (!x || !x.documentElement) {
+      x = ce.createDocument(bt, "template", null);
+      try {
+        x.documentElement.innerHTML = Zt ? T : le;
+      } catch {
+      }
+    }
+    var Te = x.body || x.documentElement;
+    return b && N && Te.insertBefore(n.createTextNode(N), Te.childNodes[0] || null), bt === lt ? $e.call(x, de ? "html" : "body")[0] : de ? x.documentElement : Te;
+  }, fr = function(b) {
+    return Se.call(
+      b.ownerDocument || b,
+      b,
+      // eslint-disable-next-line no-bitwise
+      h.SHOW_ELEMENT | h.SHOW_COMMENT | h.SHOW_TEXT | h.SHOW_PROCESSING_INSTRUCTION | h.SHOW_CDATA_SECTION,
+      null,
+      !1
+    );
+  }, zt = function(b) {
+    return b instanceof _ && (typeof b.nodeName != "string" || typeof b.textContent != "string" || typeof b.removeChild != "function" || !(b.attributes instanceof C) || typeof b.removeAttribute != "function" || typeof b.setAttribute != "function" || typeof b.namespaceURI != "string" || typeof b.insertBefore != "function" || typeof b.hasChildNodes != "function");
+  }, xt = function(b) {
+    return Er(d) === "object" ? b instanceof d : b && Er(b) === "object" && typeof b.nodeType == "number" && typeof b.nodeName == "string";
+  }, ct = function(b, x, N) {
+    ue[b] && ku(ue[b], function(Z) {
+      Z.call(t, x, N, pt);
+    });
+  }, It = function(b) {
+    var x;
+    if (ct("beforeSanitizeElements", b, null), zt(b) || wt(/[\u0080-\uFFFF]/, b.nodeName))
+      return it(b), !0;
+    var N = ke(b.nodeName);
+    if (ct("uponSanitizeElement", b, {
+      tagName: N,
+      allowedTags: R
+    }), b.hasChildNodes() && !xt(b.firstElementChild) && (!xt(b.content) || !xt(b.content.firstElementChild)) && wt(/<[/\w]/g, b.innerHTML) && wt(/<[/\w]/g, b.textContent) || N === "select" && wt(/<template/i, b.innerHTML) || b.nodeType === 7 || ne && b.nodeType === 8 && wt(/<[/\w]/g, b.data))
+      return it(b), !0;
+    if (!R[N] || j[N]) {
+      if (!j[N] && Jt(N) && (Y.tagNameCheck instanceof RegExp && wt(Y.tagNameCheck, N) || Y.tagNameCheck instanceof Function && Y.tagNameCheck(N)))
+        return !1;
+      if (pe && !Me[N]) {
+        var Z = $(b) || b.parentNode, le = F(b) || b.childNodes;
+        if (le && Z)
+          for (var Te = le.length, je = Te - 1; je >= 0; --je) {
+            var qe = S(le[je], !0);
+            qe.__removalCount = (b.__removalCount || 0) + 1, Z.insertBefore(qe, I(b));
+          }
+      }
+      return it(b), !0;
+    }
+    return b instanceof f && !Cr(b) || (N === "noscript" || N === "noembed" || N === "noframes") && wt(/<\/no(script|embed|frames)/i, b.innerHTML) ? (it(b), !0) : (he && b.nodeType === 3 && (x = b.textContent, x = ir(x, Ce, " "), x = ir(x, ge, " "), x = ir(x, He, " "), b.textContent !== x && (kn(t.removed, {
+      element: b.cloneNode()
+    }), b.textContent = x)), ct("afterSanitizeElements", b, null), !1);
+  }, br = function(b, x, N) {
+    if (Xe && (x === "id" || x === "name") && (N in n || N in _t))
+      return !1;
+    if (!(ee && !ie[x] && wt(Ae, x)) && !(re && wt(_e, x))) {
+      if (!q[x] || ie[x]) {
+        if (
+          // First condition does a very basic check if a) it's basically a valid custom element tagname AND
+          // b) if the tagName passes whatever the user has configured for CUSTOM_ELEMENT_HANDLING.tagNameCheck
+          // and c) if the attribute name passes whatever the user has configured for CUSTOM_ELEMENT_HANDLING.attributeNameCheck
+          !(Jt(b) && (Y.tagNameCheck instanceof RegExp && wt(Y.tagNameCheck, b) || Y.tagNameCheck instanceof Function && Y.tagNameCheck(b)) && (Y.attributeNameCheck instanceof RegExp && wt(Y.attributeNameCheck, x) || Y.attributeNameCheck instanceof Function && Y.attributeNameCheck(x)) || // Alternative, second condition checks if it's an `is`-attribute, AND
+          // the value passes whatever the user has configured for CUSTOM_ELEMENT_HANDLING.tagNameCheck
+          x === "is" && Y.allowCustomizedBuiltInElements && (Y.tagNameCheck instanceof RegExp && wt(Y.tagNameCheck, N) || Y.tagNameCheck instanceof Function && Y.tagNameCheck(N)))
+        ) return !1;
+      } else if (!jt[x] && !wt(B, ir(N, We, "")) && !((x === "src" || x === "xlink:href" || x === "href") && b !== "script" && Tu(N, "data:") === 0 && dr[b]) && !(K && !wt(Fe, ir(N, We, ""))) && N)
+        return !1;
+    }
+    return !0;
+  }, Jt = function(b) {
+    return b !== "annotation-xml" && qo(b, Ve);
+  }, Bt = function(b) {
+    var x, N, Z, le;
+    ct("beforeSanitizeAttributes", b, null);
+    var Te = b.attributes;
+    if (Te) {
+      var je = {
+        attrName: "",
+        attrValue: "",
+        keepAttr: !0,
+        allowedAttributes: q
+      };
+      for (le = Te.length; le--; ) {
+        x = Te[le];
+        var qe = x, ot = qe.name, Pe = qe.namespaceURI;
+        if (N = ot === "value" ? x.value : Cu(x.value), Z = ke(ot), je.attrName = Z, je.attrValue = N, je.keepAttr = !0, je.forceKeepAttr = void 0, ct("uponSanitizeAttribute", b, je), N = je.attrValue, !je.forceKeepAttr && (Rt(ot, b), !!je.keepAttr)) {
+          if (!se && wt(/\/>/i, N)) {
+            Rt(ot, b);
+            continue;
+          }
+          he && (N = ir(N, Ce, " "), N = ir(N, ge, " "), N = ir(N, He, " "));
+          var kt = ke(b.nodeName);
+          if (br(kt, Z, N)) {
+            if (we && (Z === "id" || Z === "name") && (Rt(ot, b), N = J + N), ne && wt(/((--!?|])>)|<\/(style|title)/i, N)) {
+              Rt(ot, b);
+              continue;
+            }
+            if (G && Er(U) === "object" && typeof U.getAttributeType == "function" && !Pe)
+              switch (U.getAttributeType(kt, Z)) {
+                case "TrustedHTML": {
+                  N = G.createHTML(N);
+                  break;
+                }
+                case "TrustedScriptURL": {
+                  N = G.createScriptURL(N);
+                  break;
+                }
+              }
+            try {
+              Pe ? b.setAttributeNS(Pe, ot, N) : b.setAttribute(ot, N), zt(b) ? it(b) : Bo(t.removed);
+            } catch {
+            }
+          }
+        }
+      }
+      ct("afterSanitizeAttributes", b, null);
+    }
+  }, Qt = function b(x) {
+    var N, Z = fr(x);
+    for (ct("beforeSanitizeShadowDOM", x, null); N = Z.nextNode(); )
+      ct("uponSanitizeShadowNode", N, null), !It(N) && (N.content instanceof a && b(N.content), Bt(N));
+    ct("afterSanitizeShadowDOM", x, null);
+  };
+  return t.sanitize = function(b) {
+    var x = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {}, N, Z, le, Te, je;
+    if (Zt = !b, Zt && (b = "<!-->"), typeof b != "string" && !xt(b))
+      if (typeof b.toString == "function") {
+        if (b = b.toString(), typeof b != "string")
+          throw Wa("dirty is not a string, aborting");
+      } else
+        throw Wa("toString is not a function");
+    if (!t.isSupported) {
+      if (Er(e.toStaticHTML) === "object" || typeof e.toStaticHTML == "function") {
+        if (typeof b == "string")
+          return e.toStaticHTML(b);
+        if (xt(b))
+          return e.toStaticHTML(b.outerHTML);
+      }
+      return b;
+    }
+    if (ae || vt(x), t.removed = [], typeof b == "string" && (at = !1), at) {
+      if (b.nodeName) {
+        var qe = ke(b.nodeName);
+        if (!R[qe] || j[qe])
+          throw Wa("root node is forbidden and cannot be sanitized in-place");
+      }
+    } else if (b instanceof d)
+      N = Ut("<!---->"), Z = N.ownerDocument.importNode(b, !0), Z.nodeType === 1 && Z.nodeName === "BODY" || Z.nodeName === "HTML" ? N = Z : N.appendChild(Z);
+    else {
+      if (!Ue && !he && !de && // eslint-disable-next-line unicorn/prefer-includes
+      b.indexOf("<") === -1)
+        return G && nt ? G.createHTML(b) : b;
+      if (N = Ut(b), !N)
+        return Ue ? null : nt ? T : "";
+    }
+    N && ye && it(N.firstChild);
+    for (var ot = fr(at ? b : N); le = ot.nextNode(); )
+      le.nodeType === 3 && le === Te || It(le) || (le.content instanceof a && Qt(le.content), Bt(le), Te = le);
+    if (Te = null, at)
+      return b;
+    if (Ue) {
+      if (me)
+        for (je = Ie.call(N.ownerDocument); N.firstChild; )
+          je.appendChild(N.firstChild);
+      else
+        je = N;
+      return (q.shadowroot || q.shadowrootmod) && (je = De.call(r, je, !0)), je;
+    }
+    var Pe = de ? N.outerHTML : N.innerHTML;
+    return de && R["!doctype"] && N.ownerDocument && N.ownerDocument.doctype && N.ownerDocument.doctype.name && wt(Mu, N.ownerDocument.doctype.name) && (Pe = "<!DOCTYPE " + N.ownerDocument.doctype.name + `>
+` + Pe), he && (Pe = ir(Pe, Ce, " "), Pe = ir(Pe, ge, " "), Pe = ir(Pe, He, " ")), G && nt ? G.createHTML(Pe) : Pe;
+  }, t.setConfig = function(b) {
+    vt(b), ae = !0;
+  }, t.clearConfig = function() {
+    pt = null, ae = !1;
+  }, t.isValidAttribute = function(b, x, N) {
+    pt || vt({});
+    var Z = ke(b), le = ke(x);
+    return br(Z, le, N);
+  }, t.addHook = function(b, x) {
+    typeof x == "function" && (ue[b] = ue[b] || [], kn(ue[b], x));
+  }, t.removeHook = function(b) {
+    if (ue[b])
+      return Bo(ue[b]);
+  }, t.removeHooks = function(b) {
+    ue[b] && (ue[b] = []);
+  }, t.removeAllHooks = function() {
+    ue = {};
+  }, t;
+}
+var zu = nl();
+function Bu(e) {
+  return (e ? document.querySelector(e) : document).querySelector(
+    'button, [href], input, select, textarea, [tabIndex]:not([tabIndex="-1"])'
+  );
+}
+const Wr = (e) => ({ __html: zu.sanitize(e) }), Yo = (e, t, r) => {
+  let n = e;
+  const a = [];
+  for (; n < t; )
+    n > 0 && n <= r && a.push(n), n += 1;
+  return a;
+};
+let Xa = !1;
+const qu = (e, t) => {
+  Xa || (Xa = !0, setTimeout(() => {
+    e(), Xa = !1;
+  }, t));
+};
+let Zo;
+const Hu = (e, t) => {
+  window.clearTimeout(Zo), Zo = window.setTimeout(e, t);
+};
+l.shape({
+  event: l.string,
+  action: l.string,
+  name: l.string,
+  region: l.string,
+  section: l.string,
+  component: l.string,
+  type: l.string,
+  text: l.string
+});
+const al = ({
+  event: e = "",
+  action: t = "",
+  name: r = "",
+  type: n = "",
+  section: a = "",
+  text: s = "",
+  region: d = "",
+  component: f = ""
+}) => {
+  const { dataLayer: h } = window, m = {
+    event: e.toLowerCase(),
+    action: t.toLowerCase(),
+    name: r.toLowerCase(),
+    type: n.toLowerCase(),
+    region: d.toLowerCase(),
+    section: a.toLowerCase(),
+    text: s.toLowerCase(),
+    component: f.toLowerCase()
+  };
+  h && h.push(m);
+};
+var Ur = {}, Xo;
+function Wu() {
+  if (Xo) return Ur;
+  Xo = 1;
+  var e = ht;
+  function t(i) {
+    for (var u = "https://reactjs.org/docs/error-decoder.html?invariant=" + i, y = 1; y < arguments.length; y++) u += "&args[]=" + encodeURIComponent(arguments[y]);
+    return "Minified React error #" + i + "; visit " + u + " for the full message or use the non-minified dev environment for full errors and additional helpful warnings.";
+  }
+  var r = Object.prototype.hasOwnProperty, n = /^[:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD][:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\-.0-9\u00B7\u0300-\u036F\u203F-\u2040]*$/, a = {}, s = {};
+  function d(i) {
+    return r.call(s, i) ? !0 : r.call(a, i) ? !1 : n.test(i) ? s[i] = !0 : (a[i] = !0, !1);
+  }
+  function f(i, u, y, k, M, D, W) {
+    this.acceptsBooleans = u === 2 || u === 3 || u === 4, this.attributeName = k, this.attributeNamespace = M, this.mustUseProperty = y, this.propertyName = i, this.type = u, this.sanitizeURL = D, this.removeEmptyString = W;
+  }
+  var h = {};
+  "children dangerouslySetInnerHTML defaultValue defaultChecked innerHTML suppressContentEditableWarning suppressHydrationWarning style".split(" ").forEach(function(i) {
+    h[i] = new f(i, 0, !1, i, null, !1, !1);
+  }), [["acceptCharset", "accept-charset"], ["className", "class"], ["htmlFor", "for"], ["httpEquiv", "http-equiv"]].forEach(function(i) {
+    var u = i[0];
+    h[u] = new f(u, 1, !1, i[1], null, !1, !1);
+  }), ["contentEditable", "draggable", "spellCheck", "value"].forEach(function(i) {
+    h[i] = new f(i, 2, !1, i.toLowerCase(), null, !1, !1);
+  }), ["autoReverse", "externalResourcesRequired", "focusable", "preserveAlpha"].forEach(function(i) {
+    h[i] = new f(i, 2, !1, i, null, !1, !1);
+  }), "allowFullScreen async autoFocus autoPlay controls default defer disabled disablePictureInPicture disableRemotePlayback formNoValidate hidden loop noModule noValidate open playsInline readOnly required reversed scoped seamless itemScope".split(" ").forEach(function(i) {
+    h[i] = new f(i, 3, !1, i.toLowerCase(), null, !1, !1);
+  }), ["checked", "multiple", "muted", "selected"].forEach(function(i) {
+    h[i] = new f(i, 3, !0, i, null, !1, !1);
+  }), ["capture", "download"].forEach(function(i) {
+    h[i] = new f(i, 4, !1, i, null, !1, !1);
+  }), ["cols", "rows", "size", "span"].forEach(function(i) {
+    h[i] = new f(i, 6, !1, i, null, !1, !1);
+  }), ["rowSpan", "start"].forEach(function(i) {
+    h[i] = new f(i, 5, !1, i.toLowerCase(), null, !1, !1);
+  });
+  var m = /[\-:]([a-z])/g;
+  function C(i) {
+    return i[1].toUpperCase();
+  }
+  "accent-height alignment-baseline arabic-form baseline-shift cap-height clip-path clip-rule color-interpolation color-interpolation-filters color-profile color-rendering dominant-baseline enable-background fill-opacity fill-rule flood-color flood-opacity font-family font-size font-size-adjust font-stretch font-style font-variant font-weight glyph-name glyph-orientation-horizontal glyph-orientation-vertical horiz-adv-x horiz-origin-x image-rendering letter-spacing lighting-color marker-end marker-mid marker-start overline-position overline-thickness paint-order panose-1 pointer-events rendering-intent shape-rendering stop-color stop-opacity strikethrough-position strikethrough-thickness stroke-dasharray stroke-dashoffset stroke-linecap stroke-linejoin stroke-miterlimit stroke-opacity stroke-width text-anchor text-decoration text-rendering underline-position underline-thickness unicode-bidi unicode-range units-per-em v-alphabetic v-hanging v-ideographic v-mathematical vector-effect vert-adv-y vert-origin-x vert-origin-y word-spacing writing-mode xmlns:xlink x-height".split(" ").forEach(function(i) {
+    var u = i.replace(
+      m,
+      C
+    );
+    h[u] = new f(u, 1, !1, i, null, !1, !1);
+  }), "xlink:actuate xlink:arcrole xlink:role xlink:show xlink:title xlink:type".split(" ").forEach(function(i) {
+    var u = i.replace(m, C);
+    h[u] = new f(u, 1, !1, i, "http://www.w3.org/1999/xlink", !1, !1);
+  }), ["xml:base", "xml:lang", "xml:space"].forEach(function(i) {
+    var u = i.replace(m, C);
+    h[u] = new f(u, 1, !1, i, "http://www.w3.org/XML/1998/namespace", !1, !1);
+  }), ["tabIndex", "crossOrigin"].forEach(function(i) {
+    h[i] = new f(i, 1, !1, i.toLowerCase(), null, !1, !1);
+  }), h.xlinkHref = new f("xlinkHref", 1, !1, "xlink:href", "http://www.w3.org/1999/xlink", !0, !1), ["src", "href", "action", "formAction"].forEach(function(i) {
+    h[i] = new f(i, 1, !1, i.toLowerCase(), null, !0, !0);
+  });
+  var _ = {
+    animationIterationCount: !0,
+    aspectRatio: !0,
+    borderImageOutset: !0,
+    borderImageSlice: !0,
+    borderImageWidth: !0,
+    boxFlex: !0,
+    boxFlexGroup: !0,
+    boxOrdinalGroup: !0,
+    columnCount: !0,
+    columns: !0,
+    flex: !0,
+    flexGrow: !0,
+    flexPositive: !0,
+    flexShrink: !0,
+    flexNegative: !0,
+    flexOrder: !0,
+    gridArea: !0,
+    gridRow: !0,
+    gridRowEnd: !0,
+    gridRowSpan: !0,
+    gridRowStart: !0,
+    gridColumn: !0,
+    gridColumnEnd: !0,
+    gridColumnSpan: !0,
+    gridColumnStart: !0,
+    fontWeight: !0,
+    lineClamp: !0,
+    lineHeight: !0,
+    opacity: !0,
+    order: !0,
+    orphans: !0,
+    tabSize: !0,
+    widows: !0,
+    zIndex: !0,
+    zoom: !0,
+    fillOpacity: !0,
+    floodOpacity: !0,
+    stopOpacity: !0,
+    strokeDasharray: !0,
+    strokeDashoffset: !0,
+    strokeMiterlimit: !0,
+    strokeOpacity: !0,
+    strokeWidth: !0
+  }, O = ["Webkit", "ms", "Moz", "O"];
+  Object.keys(_).forEach(function(i) {
+    O.forEach(function(u) {
+      u = u + i.charAt(0).toUpperCase() + i.substring(1), _[u] = _[i];
+    });
+  });
+  var U = /["'&<>]/;
+  function E(i) {
+    if (typeof i == "boolean" || typeof i == "number") return "" + i;
+    i = "" + i;
+    var u = U.exec(i);
+    if (u) {
+      var y = "", k, M = 0;
+      for (k = u.index; k < i.length; k++) {
+        switch (i.charCodeAt(k)) {
+          case 34:
+            u = "&quot;";
+            break;
+          case 38:
+            u = "&amp;";
+            break;
+          case 39:
+            u = "&#x27;";
+            break;
+          case 60:
+            u = "&lt;";
+            break;
+          case 62:
+            u = "&gt;";
+            break;
+          default:
+            continue;
+        }
+        M !== k && (y += i.substring(M, k)), M = k + 1, y += u;
+      }
+      i = M !== k ? y + i.substring(M, k) : y;
+    }
+    return i;
+  }
+  var S = /([A-Z])/g, I = /^ms-/, F = Array.isArray;
+  function $(i, u) {
+    return { insertionMode: i, selectedValue: u };
+  }
+  function X(i, u, y) {
+    switch (u) {
+      case "select":
+        return $(1, y.value != null ? y.value : y.defaultValue);
+      case "svg":
+        return $(2, null);
+      case "math":
+        return $(3, null);
+      case "foreignObject":
+        return $(1, null);
+      case "table":
+        return $(4, null);
+      case "thead":
+      case "tbody":
+      case "tfoot":
+        return $(5, null);
+      case "colgroup":
+        return $(7, null);
+      case "tr":
+        return $(6, null);
+    }
+    return 4 <= i.insertionMode || i.insertionMode === 0 ? $(1, null) : i;
+  }
+  var G = /* @__PURE__ */ new Map();
+  function T(i, u, y) {
+    if (typeof y != "object") throw Error(t(62));
+    u = !0;
+    for (var k in y) if (r.call(y, k)) {
+      var M = y[k];
+      if (M != null && typeof M != "boolean" && M !== "") {
+        if (k.indexOf("--") === 0) {
+          var D = E(k);
+          M = E(("" + M).trim());
+        } else {
+          D = k;
+          var W = G.get(D);
+          W !== void 0 || (W = E(D.replace(S, "-$1").toLowerCase().replace(I, "-ms-")), G.set(D, W)), D = W, M = typeof M == "number" ? M === 0 || r.call(_, k) ? "" + M : M + "px" : E(("" + M).trim());
+        }
+        u ? (u = !1, i.push(' style="', D, ":", M)) : i.push(";", D, ":", M);
+      }
+    }
+    u || i.push('"');
+  }
+  function oe(i, u, y, k) {
+    switch (y) {
+      case "style":
+        T(i, u, k);
+        return;
+      case "defaultValue":
+      case "defaultChecked":
+      case "innerHTML":
+      case "suppressContentEditableWarning":
+      case "suppressHydrationWarning":
+        return;
+    }
+    if (!(2 < y.length) || y[0] !== "o" && y[0] !== "O" || y[1] !== "n" && y[1] !== "N") {
+      if (u = h.hasOwnProperty(y) ? h[y] : null, u !== null) {
+        switch (typeof k) {
+          case "function":
+          case "symbol":
+            return;
+          case "boolean":
+            if (!u.acceptsBooleans) return;
+        }
+        switch (y = u.attributeName, u.type) {
+          case 3:
+            k && i.push(" ", y, '=""');
+            break;
+          case 4:
+            k === !0 ? i.push(" ", y, '=""') : k !== !1 && i.push(" ", y, '="', E(k), '"');
+            break;
+          case 5:
+            isNaN(k) || i.push(" ", y, '="', E(k), '"');
+            break;
+          case 6:
+            !isNaN(k) && 1 <= k && i.push(" ", y, '="', E(k), '"');
+            break;
+          default:
+            u.sanitizeURL && (k = "" + k), i.push(" ", y, '="', E(k), '"');
+        }
+      } else if (d(y)) {
+        switch (typeof k) {
+          case "function":
+          case "symbol":
+            return;
+          case "boolean":
+            if (u = y.toLowerCase().slice(0, 5), u !== "data-" && u !== "aria-") return;
+        }
+        i.push(" ", y, '="', E(k), '"');
+      }
+    }
+  }
+  function ce(i, u, y) {
+    if (u != null) {
+      if (y != null) throw Error(t(60));
+      if (typeof u != "object" || !("__html" in u)) throw Error(t(61));
+      u = u.__html, u != null && i.push("" + u);
+    }
+  }
+  function Se(i) {
+    var u = "";
+    return e.Children.forEach(i, function(y) {
+      y != null && (u += y);
+    }), u;
+  }
+  function Ie(i, u, y, k) {
+    i.push(fe(y));
+    var M = y = null, D;
+    for (D in u) if (r.call(u, D)) {
+      var W = u[D];
+      if (W != null) switch (D) {
+        case "children":
+          y = W;
+          break;
+        case "dangerouslySetInnerHTML":
+          M = W;
+          break;
+        default:
+          oe(i, k, D, W);
+      }
+    }
+    return i.push(">"), ce(i, M, y), typeof y == "string" ? (i.push(E(y)), null) : y;
+  }
+  var $e = /^[a-zA-Z][a-zA-Z:_\.\-\d]*$/, De = /* @__PURE__ */ new Map();
+  function fe(i) {
+    var u = De.get(i);
+    if (u === void 0) {
+      if (!$e.test(i)) throw Error(t(65, i));
+      u = "<" + i, De.set(i, u);
+    }
+    return u;
+  }
+  function ue(i, u, y, k, M) {
+    switch (u) {
+      case "select":
+        i.push(fe("select"));
+        var D = null, W = null;
+        for (Ee in y) if (r.call(y, Ee)) {
+          var te = y[Ee];
+          if (te != null) switch (Ee) {
+            case "children":
+              D = te;
+              break;
+            case "dangerouslySetInnerHTML":
+              W = te;
+              break;
+            case "defaultValue":
+            case "value":
+              break;
+            default:
+              oe(i, k, Ee, te);
+          }
+        }
+        return i.push(">"), ce(i, W, D), D;
+      case "option":
+        W = M.selectedValue, i.push(fe("option"));
+        var be = te = null, xe = null, Ee = null;
+        for (D in y) if (r.call(y, D)) {
+          var st = y[D];
+          if (st != null) switch (D) {
+            case "children":
+              te = st;
+              break;
+            case "selected":
+              xe = st;
+              break;
+            case "dangerouslySetInnerHTML":
+              Ee = st;
+              break;
+            case "value":
+              be = st;
+            default:
+              oe(i, k, D, st);
+          }
+        }
+        if (W != null) if (y = be !== null ? "" + be : Se(te), F(W)) {
+          for (k = 0; k < W.length; k++)
+            if ("" + W[k] === y) {
+              i.push(' selected=""');
+              break;
+            }
+        } else "" + W === y && i.push(' selected=""');
+        else xe && i.push(' selected=""');
+        return i.push(">"), ce(i, Ee, te), te;
+      case "textarea":
+        i.push(fe("textarea")), Ee = W = D = null;
+        for (te in y) if (r.call(y, te) && (be = y[te], be != null)) switch (te) {
+          case "children":
+            Ee = be;
+            break;
+          case "value":
+            D = be;
+            break;
+          case "defaultValue":
+            W = be;
+            break;
+          case "dangerouslySetInnerHTML":
+            throw Error(t(91));
+          default:
+            oe(
+              i,
+              k,
+              te,
+              be
+            );
+        }
+        if (D === null && W !== null && (D = W), i.push(">"), Ee != null) {
+          if (D != null) throw Error(t(92));
+          if (F(Ee) && 1 < Ee.length) throw Error(t(93));
+          D = "" + Ee;
+        }
+        return typeof D == "string" && D[0] === `
+` && i.push(`
+`), D !== null && i.push(E("" + D)), null;
+      case "input":
+        i.push(fe("input")), be = Ee = te = D = null;
+        for (W in y) if (r.call(y, W) && (xe = y[W], xe != null)) switch (W) {
+          case "children":
+          case "dangerouslySetInnerHTML":
+            throw Error(t(399, "input"));
+          case "defaultChecked":
+            be = xe;
+            break;
+          case "defaultValue":
+            te = xe;
+            break;
+          case "checked":
+            Ee = xe;
+            break;
+          case "value":
+            D = xe;
+            break;
+          default:
+            oe(i, k, W, xe);
+        }
+        return Ee !== null ? oe(i, k, "checked", Ee) : be !== null && oe(i, k, "checked", be), D !== null ? oe(i, k, "value", D) : te !== null && oe(i, k, "value", te), i.push("/>"), null;
+      case "menuitem":
+        i.push(fe("menuitem"));
+        for (var tr in y) if (r.call(y, tr) && (D = y[tr], D != null)) switch (tr) {
+          case "children":
+          case "dangerouslySetInnerHTML":
+            throw Error(t(400));
+          default:
+            oe(i, k, tr, D);
+        }
+        return i.push(">"), null;
+      case "title":
+        i.push(fe("title")), D = null;
+        for (st in y) if (r.call(y, st) && (W = y[st], W != null)) switch (st) {
+          case "children":
+            D = W;
+            break;
+          case "dangerouslySetInnerHTML":
+            throw Error(t(434));
+          default:
+            oe(i, k, st, W);
+        }
+        return i.push(">"), D;
+      case "listing":
+      case "pre":
+        i.push(fe(u)), W = D = null;
+        for (be in y) if (r.call(y, be) && (te = y[be], te != null)) switch (be) {
+          case "children":
+            D = te;
+            break;
+          case "dangerouslySetInnerHTML":
+            W = te;
+            break;
+          default:
+            oe(i, k, be, te);
+        }
+        if (i.push(">"), W != null) {
+          if (D != null) throw Error(t(60));
+          if (typeof W != "object" || !("__html" in W)) throw Error(t(61));
+          y = W.__html, y != null && (typeof y == "string" && 0 < y.length && y[0] === `
+` ? i.push(`
+`, y) : i.push("" + y));
+        }
+        return typeof D == "string" && D[0] === `
+` && i.push(`
+`), D;
+      case "area":
+      case "base":
+      case "br":
+      case "col":
+      case "embed":
+      case "hr":
+      case "img":
+      case "keygen":
+      case "link":
+      case "meta":
+      case "param":
+      case "source":
+      case "track":
+      case "wbr":
+        i.push(fe(u));
+        for (var rr in y) if (r.call(y, rr) && (D = y[rr], D != null)) switch (rr) {
+          case "children":
+          case "dangerouslySetInnerHTML":
+            throw Error(t(399, u));
+          default:
+            oe(i, k, rr, D);
+        }
+        return i.push("/>"), null;
+      case "annotation-xml":
+      case "color-profile":
+      case "font-face":
+      case "font-face-src":
+      case "font-face-uri":
+      case "font-face-format":
+      case "font-face-name":
+      case "missing-glyph":
+        return Ie(
+          i,
+          y,
+          u,
+          k
+        );
+      case "html":
+        return M.insertionMode === 0 && i.push("<!DOCTYPE html>"), Ie(i, y, u, k);
+      default:
+        if (u.indexOf("-") === -1 && typeof y.is != "string") return Ie(i, y, u, k);
+        i.push(fe(u)), W = D = null;
+        for (xe in y) if (r.call(y, xe) && (te = y[xe], te != null)) switch (xe) {
+          case "children":
+            D = te;
+            break;
+          case "dangerouslySetInnerHTML":
+            W = te;
+            break;
+          case "style":
+            T(i, k, te);
+            break;
+          case "suppressContentEditableWarning":
+          case "suppressHydrationWarning":
+            break;
+          default:
+            d(xe) && typeof te != "function" && typeof te != "symbol" && i.push(" ", xe, '="', E(te), '"');
+        }
+        return i.push(">"), ce(i, W, D), D;
+    }
+  }
+  function Ce(i, u, y) {
+    if (i.push('<!--$?--><template id="'), y === null) throw Error(t(395));
+    return i.push(y), i.push('"></template>');
+  }
+  function ge(i, u, y, k) {
+    switch (y.insertionMode) {
+      case 0:
+      case 1:
+        return i.push('<div hidden id="'), i.push(u.segmentPrefix), u = k.toString(16), i.push(u), i.push('">');
+      case 2:
+        return i.push('<svg aria-hidden="true" style="display:none" id="'), i.push(u.segmentPrefix), u = k.toString(16), i.push(u), i.push('">');
+      case 3:
+        return i.push('<math aria-hidden="true" style="display:none" id="'), i.push(u.segmentPrefix), u = k.toString(16), i.push(u), i.push('">');
+      case 4:
+        return i.push('<table hidden id="'), i.push(u.segmentPrefix), u = k.toString(16), i.push(u), i.push('">');
+      case 5:
+        return i.push('<table hidden><tbody id="'), i.push(u.segmentPrefix), u = k.toString(16), i.push(u), i.push('">');
+      case 6:
+        return i.push('<table hidden><tr id="'), i.push(u.segmentPrefix), u = k.toString(16), i.push(u), i.push('">');
+      case 7:
+        return i.push('<table hidden><colgroup id="'), i.push(u.segmentPrefix), u = k.toString(16), i.push(u), i.push('">');
+      default:
+        throw Error(t(397));
+    }
+  }
+  function He(i, u) {
+    switch (u.insertionMode) {
+      case 0:
+      case 1:
+        return i.push("</div>");
+      case 2:
+        return i.push("</svg>");
+      case 3:
+        return i.push("</math>");
+      case 4:
+        return i.push("</table>");
+      case 5:
+        return i.push("</tbody></table>");
+      case 6:
+        return i.push("</tr></table>");
+      case 7:
+        return i.push("</colgroup></table>");
+      default:
+        throw Error(t(397));
+    }
+  }
+  var Ae = /[<\u2028\u2029]/g;
+  function _e(i) {
+    return JSON.stringify(i).replace(Ae, function(u) {
+      switch (u) {
+        case "<":
+          return "\\u003c";
+        case "\u2028":
+          return "\\u2028";
+        case "\u2029":
+          return "\\u2029";
+        default:
+          throw Error("escapeJSStringsForInstructionScripts encountered a match it does not know how to replace. this means the match regex and the replacement characters are no longer in sync. This is a bug in React");
+      }
+    });
+  }
+  function Fe(i, u) {
+    return u = u === void 0 ? "" : u, { bootstrapChunks: [], startInlineScript: "<script>", placeholderPrefix: u + "P:", segmentPrefix: u + "S:", boundaryPrefix: u + "B:", idPrefix: u, nextSuspenseID: 0, sentCompleteSegmentFunction: !1, sentCompleteBoundaryFunction: !1, sentClientRenderFunction: !1, generateStaticMarkup: i };
+  }
+  function We(i, u, y, k) {
+    return y.generateStaticMarkup ? (i.push(E(u)), !1) : (u === "" ? i = k : (k && i.push("<!-- -->"), i.push(E(u)), i = !0), i);
+  }
+  var Ve = Object.assign, B = Symbol.for("react.element"), R = Symbol.for("react.portal"), z = Symbol.for("react.fragment"), q = Symbol.for("react.strict_mode"), v = Symbol.for("react.profiler"), Y = Symbol.for("react.provider"), j = Symbol.for("react.context"), ie = Symbol.for("react.forward_ref"), re = Symbol.for("react.suspense"), ee = Symbol.for("react.suspense_list"), K = Symbol.for("react.memo"), se = Symbol.for("react.lazy"), he = Symbol.for("react.scope"), ne = Symbol.for("react.debug_trace_mode"), de = Symbol.for("react.legacy_hidden"), ae = Symbol.for("react.default_value"), ye = Symbol.iterator;
+  function Ue(i) {
+    if (i == null) return null;
+    if (typeof i == "function") return i.displayName || i.name || null;
+    if (typeof i == "string") return i;
+    switch (i) {
+      case z:
+        return "Fragment";
+      case R:
+        return "Portal";
+      case v:
+        return "Profiler";
+      case q:
+        return "StrictMode";
+      case re:
+        return "Suspense";
+      case ee:
+        return "SuspenseList";
+    }
+    if (typeof i == "object") switch (i.$$typeof) {
+      case j:
+        return (i.displayName || "Context") + ".Consumer";
+      case Y:
+        return (i._context.displayName || "Context") + ".Provider";
+      case ie:
+        var u = i.render;
+        return i = i.displayName, i || (i = u.displayName || u.name || "", i = i !== "" ? "ForwardRef(" + i + ")" : "ForwardRef"), i;
+      case K:
+        return u = i.displayName || null, u !== null ? u : Ue(i.type) || "Memo";
+      case se:
+        u = i._payload, i = i._init;
+        try {
+          return Ue(i(u));
+        } catch {
+        }
+    }
+    return null;
+  }
+  var me = {};
+  function nt(i, u) {
+    if (i = i.contextTypes, !i) return me;
+    var y = {}, k;
+    for (k in i) y[k] = u[k];
+    return y;
+  }
+  var Xe = null;
+  function we(i, u) {
+    if (i !== u) {
+      i.context._currentValue2 = i.parentValue, i = i.parent;
+      var y = u.parent;
+      if (i === null) {
+        if (y !== null) throw Error(t(401));
+      } else {
+        if (y === null) throw Error(t(401));
+        we(i, y);
+      }
+      u.context._currentValue2 = u.value;
+    }
+  }
+  function J(i) {
+    i.context._currentValue2 = i.parentValue, i = i.parent, i !== null && J(i);
+  }
+  function pe(i) {
+    var u = i.parent;
+    u !== null && pe(u), i.context._currentValue2 = i.value;
+  }
+  function at(i, u) {
+    if (i.context._currentValue2 = i.parentValue, i = i.parent, i === null) throw Error(t(402));
+    i.depth === u.depth ? we(i, u) : at(i, u);
+  }
+  function et(i, u) {
+    var y = u.parent;
+    if (y === null) throw Error(t(402));
+    i.depth === y.depth ? we(i, y) : et(i, y), u.context._currentValue2 = u.value;
+  }
+  function Me(i) {
+    var u = Xe;
+    u !== i && (u === null ? pe(i) : i === null ? J(u) : u.depth === i.depth ? we(u, i) : u.depth > i.depth ? at(u, i) : et(u, i), Xe = i);
+  }
+  var ur = { isMounted: function() {
+    return !1;
+  }, enqueueSetState: function(i, u) {
+    i = i._reactInternals, i.queue !== null && i.queue.push(u);
+  }, enqueueReplaceState: function(i, u) {
+    i = i._reactInternals, i.replace = !0, i.queue = [u];
+  }, enqueueForceUpdate: function() {
+  } };
+  function dr(i, u, y, k) {
+    var M = i.state !== void 0 ? i.state : null;
+    i.updater = ur, i.props = y, i.state = M;
+    var D = { queue: [], replace: !1 };
+    i._reactInternals = D;
+    var W = u.contextType;
+    if (i.context = typeof W == "object" && W !== null ? W._currentValue2 : k, W = u.getDerivedStateFromProps, typeof W == "function" && (W = W(y, M), M = W == null ? M : Ve({}, M, W), i.state = M), typeof u.getDerivedStateFromProps != "function" && typeof i.getSnapshotBeforeUpdate != "function" && (typeof i.UNSAFE_componentWillMount == "function" || typeof i.componentWillMount == "function")) if (u = i.state, typeof i.componentWillMount == "function" && i.componentWillMount(), typeof i.UNSAFE_componentWillMount == "function" && i.UNSAFE_componentWillMount(), u !== i.state && ur.enqueueReplaceState(i, i.state, null), D.queue !== null && 0 < D.queue.length) if (u = D.queue, W = D.replace, D.queue = null, D.replace = !1, W && u.length === 1) i.state = u[0];
+    else {
+      for (D = W ? u[0] : i.state, M = !0, W = W ? 1 : 0; W < u.length; W++) {
+        var te = u[W];
+        te = typeof te == "function" ? te.call(i, D, y, k) : te, te != null && (M ? (M = !1, D = Ve({}, D, te)) : Ve(D, te));
+      }
+      i.state = D;
+    }
+    else D.queue = null;
+  }
+  var mr = { id: 1, overflow: "" };
+  function jt(i, u, y) {
+    var k = i.id;
+    i = i.overflow;
+    var M = 32 - Mt(k) - 1;
+    k &= ~(1 << M), y += 1;
+    var D = 32 - Mt(u) + M;
+    if (30 < D) {
+      var W = M - M % 5;
+      return D = (k & (1 << W) - 1).toString(32), k >>= W, M -= W, { id: 1 << 32 - Mt(u) + M | y << M | k, overflow: D + i };
+    }
+    return { id: 1 << D | y << M | k, overflow: i };
+  }
+  var Mt = Math.clz32 ? Math.clz32 : lt, Ot = Math.log, Nt = Math.LN2;
+  function lt(i) {
+    return i >>>= 0, i === 0 ? 32 : 31 - (Ot(i) / Nt | 0) | 0;
+  }
+  function bt(i, u) {
+    return i === u && (i !== 0 || 1 / i === 1 / u) || i !== i && u !== u;
+  }
+  var Zt = typeof Object.is == "function" ? Object.is : bt, mt = null, gr = null, ut = null, Be = null, Xt = !1, ke = !1, pt = 0, _t = null, Ft = 0;
+  function vt() {
+    if (mt === null) throw Error(t(321));
+    return mt;
+  }
+  function pr() {
+    if (0 < Ft) throw Error(t(312));
+    return { memoizedState: null, queue: null, next: null };
+  }
+  function Kt() {
+    return Be === null ? ut === null ? (Xt = !1, ut = Be = pr()) : (Xt = !0, Be = ut) : Be.next === null ? (Xt = !1, Be = Be.next = pr()) : (Xt = !0, Be = Be.next), Be;
+  }
+  function yr() {
+    gr = mt = null, ke = !1, ut = null, Ft = 0, Be = _t = null;
+  }
+  function Et(i, u) {
+    return typeof u == "function" ? u(i) : u;
+  }
+  function $t(i, u, y) {
+    if (mt = vt(), Be = Kt(), Xt) {
+      var k = Be.queue;
+      if (u = k.dispatch, _t !== null && (y = _t.get(k), y !== void 0)) {
+        _t.delete(k), k = Be.memoizedState;
+        do
+          k = i(k, y.action), y = y.next;
+        while (y !== null);
+        return Be.memoizedState = k, [k, u];
+      }
+      return [Be.memoizedState, u];
+    }
+    return i = i === Et ? typeof u == "function" ? u() : u : y !== void 0 ? y(u) : u, Be.memoizedState = i, i = Be.queue = { last: null, dispatch: null }, i = i.dispatch = it.bind(null, mt, i), [Be.memoizedState, i];
+  }
+  function Cr(i, u) {
+    if (mt = vt(), Be = Kt(), u = u === void 0 ? null : u, Be !== null) {
+      var y = Be.memoizedState;
+      if (y !== null && u !== null) {
+        var k = y[1];
+        e: if (k === null) k = !1;
+        else {
+          for (var M = 0; M < k.length && M < u.length; M++) if (!Zt(u[M], k[M])) {
+            k = !1;
+            break e;
+          }
+          k = !0;
+        }
+        if (k) return y[0];
+      }
+    }
+    return i = i(), Be.memoizedState = [i, u], i;
+  }
+  function it(i, u, y) {
+    if (25 <= Ft) throw Error(t(301));
+    if (i === mt) if (ke = !0, i = { action: y, next: null }, _t === null && (_t = /* @__PURE__ */ new Map()), y = _t.get(u), y === void 0) _t.set(u, i);
+    else {
+      for (u = y; u.next !== null; ) u = u.next;
+      u.next = i;
+    }
+  }
+  function Rt() {
+    throw Error(t(394));
+  }
+  function Ut() {
+  }
+  var fr = { readContext: function(i) {
+    return i._currentValue2;
+  }, useContext: function(i) {
+    return vt(), i._currentValue2;
+  }, useMemo: Cr, useReducer: $t, useRef: function(i) {
+    mt = vt(), Be = Kt();
+    var u = Be.memoizedState;
+    return u === null ? (i = { current: i }, Be.memoizedState = i) : u;
+  }, useState: function(i) {
+    return $t(Et, i);
+  }, useInsertionEffect: Ut, useLayoutEffect: function() {
+  }, useCallback: function(i, u) {
+    return Cr(function() {
+      return i;
+    }, u);
+  }, useImperativeHandle: Ut, useEffect: Ut, useDebugValue: Ut, useDeferredValue: function(i) {
+    return vt(), i;
+  }, useTransition: function() {
+    return vt(), [
+      !1,
+      Rt
+    ];
+  }, useId: function() {
+    var i = gr.treeContext, u = i.overflow;
+    i = i.id, i = (i & ~(1 << 32 - Mt(i) - 1)).toString(32) + u;
+    var y = zt;
+    if (y === null) throw Error(t(404));
+    return u = pt++, i = ":" + y.idPrefix + "R" + i, 0 < u && (i += "H" + u.toString(32)), i + ":";
+  }, useMutableSource: function(i, u) {
+    return vt(), u(i._source);
+  }, useSyncExternalStore: function(i, u, y) {
+    if (y === void 0) throw Error(t(407));
+    return y();
+  } }, zt = null, xt = e.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentDispatcher;
+  function ct(i) {
+    return console.error(i), null;
+  }
+  function It() {
+  }
+  function br(i, u, y, k, M, D, W, te, be) {
+    var xe = [], Ee = /* @__PURE__ */ new Set();
+    return u = { destination: null, responseState: u, progressiveChunkSize: k, status: 0, fatalError: null, nextSegmentId: 0, allPendingTasks: 0, pendingRootTasks: 0, completedRootSegment: null, abortableTasks: Ee, pingedTasks: xe, clientRenderedBoundaries: [], completedBoundaries: [], partialBoundaries: [], onError: M === void 0 ? ct : M, onAllReady: It, onShellReady: W === void 0 ? It : W, onShellError: It, onFatalError: It }, y = Bt(u, 0, null, y, !1, !1), y.parentFlushed = !0, i = Jt(u, i, null, y, Ee, me, null, mr), xe.push(i), u;
+  }
+  function Jt(i, u, y, k, M, D, W, te) {
+    i.allPendingTasks++, y === null ? i.pendingRootTasks++ : y.pendingTasks++;
+    var be = { node: u, ping: function() {
+      var xe = i.pingedTasks;
+      xe.push(be), xe.length === 1 && dn(i);
+    }, blockedBoundary: y, blockedSegment: k, abortSet: M, legacyContext: D, context: W, treeContext: te };
+    return M.add(be), be;
+  }
+  function Bt(i, u, y, k, M, D) {
+    return { status: 0, id: -1, index: u, parentFlushed: !1, chunks: [], children: [], formatContext: k, boundary: y, lastPushedText: M, textEmbedded: D };
+  }
+  function Qt(i, u) {
+    if (i = i.onError(u), i != null && typeof i != "string") throw Error('onError returned something with a type other than "string". onError should return a string and may return null or undefined but must not return anything else. It received something of type "' + typeof i + '" instead');
+    return i;
+  }
+  function b(i, u) {
+    var y = i.onShellError;
+    y(u), y = i.onFatalError, y(u), i.destination !== null ? (i.status = 2, i.destination.destroy(u)) : (i.status = 1, i.fatalError = u);
+  }
+  function x(i, u, y, k, M) {
+    for (mt = {}, gr = u, pt = 0, i = y(k, M); ke; ) ke = !1, pt = 0, Ft += 1, Be = null, i = y(k, M);
+    return yr(), i;
+  }
+  function N(i, u, y, k) {
+    var M = y.render(), D = k.childContextTypes;
+    if (D != null) {
+      var W = u.legacyContext;
+      if (typeof y.getChildContext != "function") k = W;
+      else {
+        y = y.getChildContext();
+        for (var te in y) if (!(te in D)) throw Error(t(108, Ue(k) || "Unknown", te));
+        k = Ve({}, W, y);
+      }
+      u.legacyContext = k, Te(i, u, M), u.legacyContext = W;
+    } else Te(i, u, M);
+  }
+  function Z(i, u) {
+    if (i && i.defaultProps) {
+      u = Ve({}, u), i = i.defaultProps;
+      for (var y in i) u[y] === void 0 && (u[y] = i[y]);
+      return u;
+    }
+    return u;
+  }
+  function le(i, u, y, k, M) {
+    if (typeof y == "function") if (y.prototype && y.prototype.isReactComponent) {
+      M = nt(y, u.legacyContext);
+      var D = y.contextType;
+      D = new y(k, typeof D == "object" && D !== null ? D._currentValue2 : M), dr(D, y, k, M), N(i, u, D, y);
+    } else {
+      D = nt(y, u.legacyContext), M = x(i, u, y, k, D);
+      var W = pt !== 0;
+      if (typeof M == "object" && M !== null && typeof M.render == "function" && M.$$typeof === void 0) dr(M, y, k, D), N(i, u, M, y);
+      else if (W) {
+        k = u.treeContext, u.treeContext = jt(k, 1, 0);
+        try {
+          Te(i, u, M);
+        } finally {
+          u.treeContext = k;
+        }
+      } else Te(i, u, M);
+    }
+    else if (typeof y == "string") {
+      switch (M = u.blockedSegment, D = ue(M.chunks, y, k, i.responseState, M.formatContext), M.lastPushedText = !1, W = M.formatContext, M.formatContext = X(W, y, k), qe(i, u, D), M.formatContext = W, y) {
+        case "area":
+        case "base":
+        case "br":
+        case "col":
+        case "embed":
+        case "hr":
+        case "img":
+        case "input":
+        case "keygen":
+        case "link":
+        case "meta":
+        case "param":
+        case "source":
+        case "track":
+        case "wbr":
+          break;
+        default:
+          M.chunks.push("</", y, ">");
+      }
+      M.lastPushedText = !1;
+    } else {
+      switch (y) {
+        case de:
+        case ne:
+        case q:
+        case v:
+        case z:
+          Te(i, u, k.children);
+          return;
+        case ee:
+          Te(i, u, k.children);
+          return;
+        case he:
+          throw Error(t(343));
+        case re:
+          e: {
+            y = u.blockedBoundary, M = u.blockedSegment, D = k.fallback, k = k.children, W = /* @__PURE__ */ new Set();
+            var te = { id: null, rootSegmentID: -1, parentFlushed: !1, pendingTasks: 0, forceClientRender: !1, completedSegments: [], byteSize: 0, fallbackAbortableTasks: W, errorDigest: null }, be = Bt(i, M.chunks.length, te, M.formatContext, !1, !1);
+            M.children.push(be), M.lastPushedText = !1;
+            var xe = Bt(i, 0, null, M.formatContext, !1, !1);
+            xe.parentFlushed = !0, u.blockedBoundary = te, u.blockedSegment = xe;
+            try {
+              if (qe(
+                i,
+                u,
+                k
+              ), i.responseState.generateStaticMarkup || xe.lastPushedText && xe.textEmbedded && xe.chunks.push("<!-- -->"), xe.status = 1, kt(te, xe), te.pendingTasks === 0) break e;
+            } catch (Ee) {
+              xe.status = 4, te.forceClientRender = !0, te.errorDigest = Qt(i, Ee);
+            } finally {
+              u.blockedBoundary = y, u.blockedSegment = M;
+            }
+            u = Jt(i, D, y, be, W, u.legacyContext, u.context, u.treeContext), i.pingedTasks.push(u);
+          }
+          return;
+      }
+      if (typeof y == "object" && y !== null) switch (y.$$typeof) {
+        case ie:
+          if (k = x(i, u, y.render, k, M), pt !== 0) {
+            y = u.treeContext, u.treeContext = jt(y, 1, 0);
+            try {
+              Te(i, u, k);
+            } finally {
+              u.treeContext = y;
+            }
+          } else Te(i, u, k);
+          return;
+        case K:
+          y = y.type, k = Z(y, k), le(i, u, y, k, M);
+          return;
+        case Y:
+          if (M = k.children, y = y._context, k = k.value, D = y._currentValue2, y._currentValue2 = k, W = Xe, Xe = k = { parent: W, depth: W === null ? 0 : W.depth + 1, context: y, parentValue: D, value: k }, u.context = k, Te(i, u, M), i = Xe, i === null) throw Error(t(403));
+          k = i.parentValue, i.context._currentValue2 = k === ae ? i.context._defaultValue : k, i = Xe = i.parent, u.context = i;
+          return;
+        case j:
+          k = k.children, k = k(y._currentValue2), Te(i, u, k);
+          return;
+        case se:
+          M = y._init, y = M(y._payload), k = Z(y, k), le(
+            i,
+            u,
+            y,
+            k,
+            void 0
+          );
+          return;
+      }
+      throw Error(t(130, y == null ? y : typeof y, ""));
+    }
+  }
+  function Te(i, u, y) {
+    if (u.node = y, typeof y == "object" && y !== null) {
+      switch (y.$$typeof) {
+        case B:
+          le(i, u, y.type, y.props, y.ref);
+          return;
+        case R:
+          throw Error(t(257));
+        case se:
+          var k = y._init;
+          y = k(y._payload), Te(i, u, y);
+          return;
+      }
+      if (F(y)) {
+        je(i, u, y);
+        return;
+      }
+      if (y === null || typeof y != "object" ? k = null : (k = ye && y[ye] || y["@@iterator"], k = typeof k == "function" ? k : null), k && (k = k.call(y))) {
+        if (y = k.next(), !y.done) {
+          var M = [];
+          do
+            M.push(y.value), y = k.next();
+          while (!y.done);
+          je(i, u, M);
+        }
+        return;
+      }
+      throw i = Object.prototype.toString.call(y), Error(t(31, i === "[object Object]" ? "object with keys {" + Object.keys(y).join(", ") + "}" : i));
+    }
+    typeof y == "string" ? (k = u.blockedSegment, k.lastPushedText = We(u.blockedSegment.chunks, y, i.responseState, k.lastPushedText)) : typeof y == "number" && (k = u.blockedSegment, k.lastPushedText = We(u.blockedSegment.chunks, "" + y, i.responseState, k.lastPushedText));
+  }
+  function je(i, u, y) {
+    for (var k = y.length, M = 0; M < k; M++) {
+      var D = u.treeContext;
+      u.treeContext = jt(D, k, M);
+      try {
+        qe(i, u, y[M]);
+      } finally {
+        u.treeContext = D;
+      }
+    }
+  }
+  function qe(i, u, y) {
+    var k = u.blockedSegment.formatContext, M = u.legacyContext, D = u.context;
+    try {
+      return Te(i, u, y);
+    } catch (be) {
+      if (yr(), typeof be == "object" && be !== null && typeof be.then == "function") {
+        y = be;
+        var W = u.blockedSegment, te = Bt(i, W.chunks.length, null, W.formatContext, W.lastPushedText, !0);
+        W.children.push(te), W.lastPushedText = !1, i = Jt(i, u.node, u.blockedBoundary, te, u.abortSet, u.legacyContext, u.context, u.treeContext).ping, y.then(i, i), u.blockedSegment.formatContext = k, u.legacyContext = M, u.context = D, Me(D);
+      } else throw u.blockedSegment.formatContext = k, u.legacyContext = M, u.context = D, Me(D), be;
+    }
+  }
+  function ot(i) {
+    var u = i.blockedBoundary;
+    i = i.blockedSegment, i.status = 3, er(this, u, i);
+  }
+  function Pe(i, u, y) {
+    var k = i.blockedBoundary;
+    i.blockedSegment.status = 3, k === null ? (u.allPendingTasks--, u.status !== 2 && (u.status = 2, u.destination !== null && u.destination.push(null))) : (k.pendingTasks--, k.forceClientRender || (k.forceClientRender = !0, i = y === void 0 ? Error(t(432)) : y, k.errorDigest = u.onError(i), k.parentFlushed && u.clientRenderedBoundaries.push(k)), k.fallbackAbortableTasks.forEach(function(M) {
+      return Pe(M, u, y);
+    }), k.fallbackAbortableTasks.clear(), u.allPendingTasks--, u.allPendingTasks === 0 && (k = u.onAllReady, k()));
+  }
+  function kt(i, u) {
+    if (u.chunks.length === 0 && u.children.length === 1 && u.children[0].boundary === null) {
+      var y = u.children[0];
+      y.id = u.id, y.parentFlushed = !0, y.status === 1 && kt(i, y);
+    } else i.completedSegments.push(u);
+  }
+  function er(i, u, y) {
+    if (u === null) {
+      if (y.parentFlushed) {
+        if (i.completedRootSegment !== null) throw Error(t(389));
+        i.completedRootSegment = y;
+      }
+      i.pendingRootTasks--, i.pendingRootTasks === 0 && (i.onShellError = It, u = i.onShellReady, u());
+    } else u.pendingTasks--, u.forceClientRender || (u.pendingTasks === 0 ? (y.parentFlushed && y.status === 1 && kt(u, y), u.parentFlushed && i.completedBoundaries.push(u), u.fallbackAbortableTasks.forEach(ot, i), u.fallbackAbortableTasks.clear()) : y.parentFlushed && y.status === 1 && (kt(u, y), u.completedSegments.length === 1 && u.parentFlushed && i.partialBoundaries.push(u)));
+    i.allPendingTasks--, i.allPendingTasks === 0 && (i = i.onAllReady, i());
+  }
+  function dn(i) {
+    if (i.status !== 2) {
+      var u = Xe, y = xt.current;
+      xt.current = fr;
+      var k = zt;
+      zt = i.responseState;
+      try {
+        var M = i.pingedTasks, D;
+        for (D = 0; D < M.length; D++) {
+          var W = M[D], te = i, be = W.blockedSegment;
+          if (be.status === 0) {
+            Me(W.context);
+            try {
+              Te(te, W, W.node), te.responseState.generateStaticMarkup || be.lastPushedText && be.textEmbedded && be.chunks.push("<!-- -->"), W.abortSet.delete(W), be.status = 1, er(te, W.blockedBoundary, be);
+            } catch (Dt) {
+              if (yr(), typeof Dt == "object" && Dt !== null && typeof Dt.then == "function") {
+                var xe = W.ping;
+                Dt.then(xe, xe);
+              } else {
+                W.abortSet.delete(W), be.status = 4;
+                var Ee = W.blockedBoundary, st = Dt, tr = Qt(te, st);
+                if (Ee === null ? b(te, st) : (Ee.pendingTasks--, Ee.forceClientRender || (Ee.forceClientRender = !0, Ee.errorDigest = tr, Ee.parentFlushed && te.clientRenderedBoundaries.push(Ee))), te.allPendingTasks--, te.allPendingTasks === 0) {
+                  var rr = te.onAllReady;
+                  rr();
+                }
+              }
+            } finally {
+            }
+          }
+        }
+        M.splice(0, D), i.destination !== null && Kr(i, i.destination);
+      } catch (Dt) {
+        Qt(i, Dt), b(i, Dt);
+      } finally {
+        zt = k, xt.current = y, y === fr && Me(u);
+      }
+    }
+  }
+  function Dr(i, u, y) {
+    switch (y.parentFlushed = !0, y.status) {
+      case 0:
+        var k = y.id = i.nextSegmentId++;
+        return y.lastPushedText = !1, y.textEmbedded = !1, i = i.responseState, u.push('<template id="'), u.push(i.placeholderPrefix), i = k.toString(16), u.push(i), u.push('"></template>');
+      case 1:
+        y.status = 2;
+        var M = !0;
+        k = y.chunks;
+        var D = 0;
+        y = y.children;
+        for (var W = 0; W < y.length; W++) {
+          for (M = y[W]; D < M.index; D++) u.push(k[D]);
+          M = Pr(i, u, M);
+        }
+        for (; D < k.length - 1; D++) u.push(k[D]);
+        return D < k.length && (M = u.push(k[D])), M;
+      default:
+        throw Error(t(390));
+    }
+  }
+  function Pr(i, u, y) {
+    var k = y.boundary;
+    if (k === null) return Dr(i, u, y);
+    if (k.parentFlushed = !0, k.forceClientRender) return i.responseState.generateStaticMarkup || (k = k.errorDigest, u.push("<!--$!-->"), u.push("<template"), k && (u.push(' data-dgst="'), k = E(k), u.push(k), u.push('"')), u.push("></template>")), Dr(i, u, y), i = i.responseState.generateStaticMarkup ? !0 : u.push("<!--/$-->"), i;
+    if (0 < k.pendingTasks) {
+      k.rootSegmentID = i.nextSegmentId++, 0 < k.completedSegments.length && i.partialBoundaries.push(k);
+      var M = i.responseState, D = M.nextSuspenseID++;
+      return M = M.boundaryPrefix + D.toString(16), k = k.id = M, Ce(u, i.responseState, k), Dr(i, u, y), u.push("<!--/$-->");
+    }
+    if (k.byteSize > i.progressiveChunkSize) return k.rootSegmentID = i.nextSegmentId++, i.completedBoundaries.push(k), Ce(u, i.responseState, k.id), Dr(i, u, y), u.push("<!--/$-->");
+    if (i.responseState.generateStaticMarkup || u.push("<!--$-->"), y = k.completedSegments, y.length !== 1) throw Error(t(391));
+    return Pr(i, u, y[0]), i = i.responseState.generateStaticMarkup ? !0 : u.push("<!--/$-->"), i;
+  }
+  function pn(i, u, y) {
+    return ge(u, i.responseState, y.formatContext, y.id), Pr(i, u, y), He(u, y.formatContext);
+  }
+  function fn(i, u, y) {
+    for (var k = y.completedSegments, M = 0; M < k.length; M++) hn(i, u, y, k[M]);
+    if (k.length = 0, i = i.responseState, k = y.id, y = y.rootSegmentID, u.push(i.startInlineScript), i.sentCompleteBoundaryFunction ? u.push('$RC("') : (i.sentCompleteBoundaryFunction = !0, u.push('function $RC(a,b){a=document.getElementById(a);b=document.getElementById(b);b.parentNode.removeChild(b);if(a){a=a.previousSibling;var f=a.parentNode,c=a.nextSibling,e=0;do{if(c&&8===c.nodeType){var d=c.data;if("/$"===d)if(0===e)break;else e--;else"$"!==d&&"$?"!==d&&"$!"!==d||e++}d=c.nextSibling;f.removeChild(c);c=d}while(c);for(;b.firstChild;)f.insertBefore(b.firstChild,c);a.data="$";a._reactRetry&&a._reactRetry()}};$RC("')), k === null) throw Error(t(395));
+    return y = y.toString(16), u.push(k), u.push('","'), u.push(i.segmentPrefix), u.push(y), u.push('")<\/script>');
+  }
+  function hn(i, u, y, k) {
+    if (k.status === 2) return !0;
+    var M = k.id;
+    if (M === -1) {
+      if ((k.id = y.rootSegmentID) === -1) throw Error(t(392));
+      return pn(i, u, k);
+    }
+    return pn(i, u, k), i = i.responseState, u.push(i.startInlineScript), i.sentCompleteSegmentFunction ? u.push('$RS("') : (i.sentCompleteSegmentFunction = !0, u.push('function $RS(a,b){a=document.getElementById(a);b=document.getElementById(b);for(a.parentNode.removeChild(a);a.firstChild;)b.parentNode.insertBefore(a.firstChild,b);b.parentNode.removeChild(b)};$RS("')), u.push(i.segmentPrefix), M = M.toString(16), u.push(M), u.push('","'), u.push(i.placeholderPrefix), u.push(M), u.push('")<\/script>');
+  }
+  function Kr(i, u) {
+    try {
+      var y = i.completedRootSegment;
+      if (y !== null && i.pendingRootTasks === 0) {
+        Pr(i, u, y), i.completedRootSegment = null;
+        var k = i.responseState.bootstrapChunks;
+        for (y = 0; y < k.length - 1; y++) u.push(k[y]);
+        y < k.length && u.push(k[y]);
+      }
+      var M = i.clientRenderedBoundaries, D;
+      for (D = 0; D < M.length; D++) {
+        var W = M[D];
+        k = u;
+        var te = i.responseState, be = W.id, xe = W.errorDigest, Ee = W.errorMessage, st = W.errorComponentStack;
+        if (k.push(te.startInlineScript), te.sentClientRenderFunction ? k.push('$RX("') : (te.sentClientRenderFunction = !0, k.push('function $RX(b,c,d,e){var a=document.getElementById(b);a&&(b=a.previousSibling,b.data="$!",a=a.dataset,c&&(a.dgst=c),d&&(a.msg=d),e&&(a.stck=e),b._reactRetry&&b._reactRetry())};$RX("')), be === null) throw Error(t(395));
+        if (k.push(be), k.push('"'), xe || Ee || st) {
+          k.push(",");
+          var tr = _e(xe || "");
+          k.push(tr);
+        }
+        if (Ee || st) {
+          k.push(",");
+          var rr = _e(Ee || "");
+          k.push(rr);
+        }
+        if (st) {
+          k.push(",");
+          var Dt = _e(st);
+          k.push(Dt);
+        }
+        if (!k.push(")<\/script>")) {
+          i.destination = null, D++, M.splice(0, D);
+          return;
+        }
+      }
+      M.splice(0, D);
+      var Lr = i.completedBoundaries;
+      for (D = 0; D < Lr.length; D++) if (!fn(i, u, Lr[D])) {
+        i.destination = null, D++, Lr.splice(0, D);
+        return;
+      }
+      Lr.splice(0, D);
+      var vr = i.partialBoundaries;
+      for (D = 0; D < vr.length; D++) {
+        var gn = vr[D];
+        e: {
+          M = i, W = u;
+          var Mr = gn.completedSegments;
+          for (te = 0; te < Mr.length; te++) if (!hn(M, W, gn, Mr[te])) {
+            te++, Mr.splice(0, te);
+            var Mn = !1;
+            break e;
+          }
+          Mr.splice(0, te), Mn = !0;
+        }
+        if (!Mn) {
+          i.destination = null, D++, vr.splice(0, D);
+          return;
+        }
+      }
+      vr.splice(0, D);
+      var Ar = i.completedBoundaries;
+      for (D = 0; D < Ar.length; D++) if (!fn(i, u, Ar[D])) {
+        i.destination = null, D++, Ar.splice(0, D);
+        return;
+      }
+      Ar.splice(0, D);
+    } finally {
+      i.allPendingTasks === 0 && i.pingedTasks.length === 0 && i.clientRenderedBoundaries.length === 0 && i.completedBoundaries.length === 0 && u.push(null);
+    }
+  }
+  function Pn(i, u) {
+    try {
+      var y = i.abortableTasks;
+      y.forEach(function(k) {
+        return Pe(k, i, u);
+      }), y.clear(), i.destination !== null && Kr(i, i.destination);
+    } catch (k) {
+      Qt(i, k), b(i, k);
+    }
+  }
+  function Ln() {
+  }
+  function mn(i, u, y, k) {
+    var M = !1, D = null, W = "", te = { push: function(xe) {
+      return xe !== null && (W += xe), !0;
+    }, destroy: function(xe) {
+      M = !0, D = xe;
+    } }, be = !1;
+    if (i = br(i, Fe(y, u ? u.identifierPrefix : void 0), { insertionMode: 1, selectedValue: null }, 1 / 0, Ln, void 0, function() {
+      be = !0;
+    }), dn(i), Pn(i, k), i.status === 1) i.status = 2, te.destroy(i.fatalError);
+    else if (i.status !== 2 && i.destination === null) {
+      i.destination = te;
+      try {
+        Kr(i, te);
+      } catch (xe) {
+        Qt(i, xe), b(i, xe);
+      }
+    }
+    if (M) throw D;
+    if (!be) throw Error(t(426));
+    return W;
+  }
+  return Ur.renderToNodeStream = function() {
+    throw Error(t(207));
+  }, Ur.renderToStaticMarkup = function(i, u) {
+    return mn(i, u, !0, 'The server used "renderToStaticMarkup" which does not support Suspense. If you intended to have the server wait for the suspended component please switch to "renderToReadableStream" which supports Suspense on the server');
+  }, Ur.renderToStaticNodeStream = function() {
+    throw Error(t(208));
+  }, Ur.renderToString = function(i, u) {
+    return mn(i, u, !1, 'The server used "renderToString" which does not support Suspense. If you intended for this Suspense boundary to render the fallback content on the server consider throwing an Error somewhere within the Suspense boundary. If you intended to have the server wait for the suspended component please switch to "renderToReadableStream" which supports Suspense on the server');
+  }, Ur.version = "18.3.1", Ur;
+}
+var Jn = {}, Ko;
+function Vu() {
+  if (Ko) return Jn;
+  Ko = 1;
+  var e = ht;
+  function t(o) {
+    for (var c = "https://reactjs.org/docs/error-decoder.html?invariant=" + o, g = 1; g < arguments.length; g++) c += "&args[]=" + encodeURIComponent(arguments[g]);
+    return "Minified React error #" + o + "; visit " + c + " for the full message or use the non-minified dev environment for full errors and additional helpful warnings.";
+  }
+  var r = null, n = 0;
+  function a(o, c) {
+    if (c.length !== 0) if (512 < c.length) 0 < n && (o.enqueue(new Uint8Array(r.buffer, 0, n)), r = new Uint8Array(512), n = 0), o.enqueue(c);
+    else {
+      var g = r.length - n;
+      g < c.length && (g === 0 ? o.enqueue(r) : (r.set(c.subarray(0, g), n), o.enqueue(r), c = c.subarray(g)), r = new Uint8Array(512), n = 0), r.set(c, n), n += c.length;
+    }
+  }
+  function s(o, c) {
+    return a(o, c), !0;
+  }
+  function d(o) {
+    r && 0 < n && (o.enqueue(new Uint8Array(r.buffer, 0, n)), r = null, n = 0);
+  }
+  var f = new TextEncoder();
+  function h(o) {
+    return f.encode(o);
+  }
+  function m(o) {
+    return f.encode(o);
+  }
+  function C(o, c) {
+    typeof o.error == "function" ? o.error(c) : o.close();
+  }
+  var _ = Object.prototype.hasOwnProperty, O = /^[:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD][:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\-.0-9\u00B7\u0300-\u036F\u203F-\u2040]*$/, U = {}, E = {};
+  function S(o) {
+    return _.call(E, o) ? !0 : _.call(U, o) ? !1 : O.test(o) ? E[o] = !0 : (U[o] = !0, !1);
+  }
+  function I(o, c, g, w, L, P, V) {
+    this.acceptsBooleans = c === 2 || c === 3 || c === 4, this.attributeName = w, this.attributeNamespace = L, this.mustUseProperty = g, this.propertyName = o, this.type = c, this.sanitizeURL = P, this.removeEmptyString = V;
+  }
+  var F = {};
+  "children dangerouslySetInnerHTML defaultValue defaultChecked innerHTML suppressContentEditableWarning suppressHydrationWarning style".split(" ").forEach(function(o) {
+    F[o] = new I(o, 0, !1, o, null, !1, !1);
+  }), [["acceptCharset", "accept-charset"], ["className", "class"], ["htmlFor", "for"], ["httpEquiv", "http-equiv"]].forEach(function(o) {
+    var c = o[0];
+    F[c] = new I(c, 1, !1, o[1], null, !1, !1);
+  }), ["contentEditable", "draggable", "spellCheck", "value"].forEach(function(o) {
+    F[o] = new I(o, 2, !1, o.toLowerCase(), null, !1, !1);
+  }), ["autoReverse", "externalResourcesRequired", "focusable", "preserveAlpha"].forEach(function(o) {
+    F[o] = new I(o, 2, !1, o, null, !1, !1);
+  }), "allowFullScreen async autoFocus autoPlay controls default defer disabled disablePictureInPicture disableRemotePlayback formNoValidate hidden loop noModule noValidate open playsInline readOnly required reversed scoped seamless itemScope".split(" ").forEach(function(o) {
+    F[o] = new I(o, 3, !1, o.toLowerCase(), null, !1, !1);
+  }), ["checked", "multiple", "muted", "selected"].forEach(function(o) {
+    F[o] = new I(o, 3, !0, o, null, !1, !1);
+  }), ["capture", "download"].forEach(function(o) {
+    F[o] = new I(o, 4, !1, o, null, !1, !1);
+  }), ["cols", "rows", "size", "span"].forEach(function(o) {
+    F[o] = new I(o, 6, !1, o, null, !1, !1);
+  }), ["rowSpan", "start"].forEach(function(o) {
+    F[o] = new I(o, 5, !1, o.toLowerCase(), null, !1, !1);
+  });
+  var $ = /[\-:]([a-z])/g;
+  function X(o) {
+    return o[1].toUpperCase();
+  }
+  "accent-height alignment-baseline arabic-form baseline-shift cap-height clip-path clip-rule color-interpolation color-interpolation-filters color-profile color-rendering dominant-baseline enable-background fill-opacity fill-rule flood-color flood-opacity font-family font-size font-size-adjust font-stretch font-style font-variant font-weight glyph-name glyph-orientation-horizontal glyph-orientation-vertical horiz-adv-x horiz-origin-x image-rendering letter-spacing lighting-color marker-end marker-mid marker-start overline-position overline-thickness paint-order panose-1 pointer-events rendering-intent shape-rendering stop-color stop-opacity strikethrough-position strikethrough-thickness stroke-dasharray stroke-dashoffset stroke-linecap stroke-linejoin stroke-miterlimit stroke-opacity stroke-width text-anchor text-decoration text-rendering underline-position underline-thickness unicode-bidi unicode-range units-per-em v-alphabetic v-hanging v-ideographic v-mathematical vector-effect vert-adv-y vert-origin-x vert-origin-y word-spacing writing-mode xmlns:xlink x-height".split(" ").forEach(function(o) {
+    var c = o.replace(
+      $,
+      X
+    );
+    F[c] = new I(c, 1, !1, o, null, !1, !1);
+  }), "xlink:actuate xlink:arcrole xlink:role xlink:show xlink:title xlink:type".split(" ").forEach(function(o) {
+    var c = o.replace($, X);
+    F[c] = new I(c, 1, !1, o, "http://www.w3.org/1999/xlink", !1, !1);
+  }), ["xml:base", "xml:lang", "xml:space"].forEach(function(o) {
+    var c = o.replace($, X);
+    F[c] = new I(c, 1, !1, o, "http://www.w3.org/XML/1998/namespace", !1, !1);
+  }), ["tabIndex", "crossOrigin"].forEach(function(o) {
+    F[o] = new I(o, 1, !1, o.toLowerCase(), null, !1, !1);
+  }), F.xlinkHref = new I("xlinkHref", 1, !1, "xlink:href", "http://www.w3.org/1999/xlink", !0, !1), ["src", "href", "action", "formAction"].forEach(function(o) {
+    F[o] = new I(o, 1, !1, o.toLowerCase(), null, !0, !0);
+  });
+  var G = {
+    animationIterationCount: !0,
+    aspectRatio: !0,
+    borderImageOutset: !0,
+    borderImageSlice: !0,
+    borderImageWidth: !0,
+    boxFlex: !0,
+    boxFlexGroup: !0,
+    boxOrdinalGroup: !0,
+    columnCount: !0,
+    columns: !0,
+    flex: !0,
+    flexGrow: !0,
+    flexPositive: !0,
+    flexShrink: !0,
+    flexNegative: !0,
+    flexOrder: !0,
+    gridArea: !0,
+    gridRow: !0,
+    gridRowEnd: !0,
+    gridRowSpan: !0,
+    gridRowStart: !0,
+    gridColumn: !0,
+    gridColumnEnd: !0,
+    gridColumnSpan: !0,
+    gridColumnStart: !0,
+    fontWeight: !0,
+    lineClamp: !0,
+    lineHeight: !0,
+    opacity: !0,
+    order: !0,
+    orphans: !0,
+    tabSize: !0,
+    widows: !0,
+    zIndex: !0,
+    zoom: !0,
+    fillOpacity: !0,
+    floodOpacity: !0,
+    stopOpacity: !0,
+    strokeDasharray: !0,
+    strokeDashoffset: !0,
+    strokeMiterlimit: !0,
+    strokeOpacity: !0,
+    strokeWidth: !0
+  }, T = ["Webkit", "ms", "Moz", "O"];
+  Object.keys(G).forEach(function(o) {
+    T.forEach(function(c) {
+      c = c + o.charAt(0).toUpperCase() + o.substring(1), G[c] = G[o];
+    });
+  });
+  var oe = /["'&<>]/;
+  function ce(o) {
+    if (typeof o == "boolean" || typeof o == "number") return "" + o;
+    o = "" + o;
+    var c = oe.exec(o);
+    if (c) {
+      var g = "", w, L = 0;
+      for (w = c.index; w < o.length; w++) {
+        switch (o.charCodeAt(w)) {
+          case 34:
+            c = "&quot;";
+            break;
+          case 38:
+            c = "&amp;";
+            break;
+          case 39:
+            c = "&#x27;";
+            break;
+          case 60:
+            c = "&lt;";
+            break;
+          case 62:
+            c = "&gt;";
+            break;
+          default:
+            continue;
+        }
+        L !== w && (g += o.substring(L, w)), L = w + 1, g += c;
+      }
+      o = L !== w ? g + o.substring(L, w) : g;
+    }
+    return o;
+  }
+  var Se = /([A-Z])/g, Ie = /^ms-/, $e = Array.isArray, De = m("<script>"), fe = m("<\/script>"), ue = m('<script src="'), Ce = m('<script type="module" src="'), ge = m('" async=""><\/script>'), He = /(<\/|<)(s)(cript)/gi;
+  function Ae(o, c, g, w) {
+    return "" + c + (g === "s" ? "\\u0073" : "\\u0053") + w;
+  }
+  function _e(o, c, g, w, L) {
+    o = o === void 0 ? "" : o, c = c === void 0 ? De : m('<script nonce="' + ce(c) + '">');
+    var P = [];
+    if (g !== void 0 && P.push(c, h(("" + g).replace(He, Ae)), fe), w !== void 0) for (g = 0; g < w.length; g++) P.push(ue, h(ce(w[g])), ge);
+    if (L !== void 0) for (w = 0; w < L.length; w++) P.push(Ce, h(ce(L[w])), ge);
+    return { bootstrapChunks: P, startInlineScript: c, placeholderPrefix: m(o + "P:"), segmentPrefix: m(o + "S:"), boundaryPrefix: o + "B:", idPrefix: o, nextSuspenseID: 0, sentCompleteSegmentFunction: !1, sentCompleteBoundaryFunction: !1, sentClientRenderFunction: !1 };
+  }
+  function Fe(o, c) {
+    return { insertionMode: o, selectedValue: c };
+  }
+  function We(o) {
+    return Fe(o === "http://www.w3.org/2000/svg" ? 2 : o === "http://www.w3.org/1998/Math/MathML" ? 3 : 0, null);
+  }
+  function Ve(o, c, g) {
+    switch (c) {
+      case "select":
+        return Fe(1, g.value != null ? g.value : g.defaultValue);
+      case "svg":
+        return Fe(2, null);
+      case "math":
+        return Fe(3, null);
+      case "foreignObject":
+        return Fe(1, null);
+      case "table":
+        return Fe(4, null);
+      case "thead":
+      case "tbody":
+      case "tfoot":
+        return Fe(5, null);
+      case "colgroup":
+        return Fe(7, null);
+      case "tr":
+        return Fe(6, null);
+    }
+    return 4 <= o.insertionMode || o.insertionMode === 0 ? Fe(1, null) : o;
+  }
+  var B = m("<!-- -->");
+  function R(o, c, g, w) {
+    return c === "" ? w : (w && o.push(B), o.push(h(ce(c))), !0);
+  }
+  var z = /* @__PURE__ */ new Map(), q = m(' style="'), v = m(":"), Y = m(";");
+  function j(o, c, g) {
+    if (typeof g != "object") throw Error(t(62));
+    c = !0;
+    for (var w in g) if (_.call(g, w)) {
+      var L = g[w];
+      if (L != null && typeof L != "boolean" && L !== "") {
+        if (w.indexOf("--") === 0) {
+          var P = h(ce(w));
+          L = h(ce(("" + L).trim()));
+        } else {
+          P = w;
+          var V = z.get(P);
+          V !== void 0 || (V = m(ce(P.replace(Se, "-$1").toLowerCase().replace(Ie, "-ms-"))), z.set(P, V)), P = V, L = typeof L == "number" ? L === 0 || _.call(G, w) ? h("" + L) : h(L + "px") : h(ce(("" + L).trim()));
+        }
+        c ? (c = !1, o.push(q, P, v, L)) : o.push(Y, P, v, L);
+      }
+    }
+    c || o.push(ee);
+  }
+  var ie = m(" "), re = m('="'), ee = m('"'), K = m('=""');
+  function se(o, c, g, w) {
+    switch (g) {
+      case "style":
+        j(o, c, w);
+        return;
+      case "defaultValue":
+      case "defaultChecked":
+      case "innerHTML":
+      case "suppressContentEditableWarning":
+      case "suppressHydrationWarning":
+        return;
+    }
+    if (!(2 < g.length) || g[0] !== "o" && g[0] !== "O" || g[1] !== "n" && g[1] !== "N") {
+      if (c = F.hasOwnProperty(g) ? F[g] : null, c !== null) {
+        switch (typeof w) {
+          case "function":
+          case "symbol":
+            return;
+          case "boolean":
+            if (!c.acceptsBooleans) return;
+        }
+        switch (g = h(c.attributeName), c.type) {
+          case 3:
+            w && o.push(ie, g, K);
+            break;
+          case 4:
+            w === !0 ? o.push(ie, g, K) : w !== !1 && o.push(ie, g, re, h(ce(w)), ee);
+            break;
+          case 5:
+            isNaN(w) || o.push(ie, g, re, h(ce(w)), ee);
+            break;
+          case 6:
+            !isNaN(w) && 1 <= w && o.push(ie, g, re, h(ce(w)), ee);
+            break;
+          default:
+            c.sanitizeURL && (w = "" + w), o.push(ie, g, re, h(ce(w)), ee);
+        }
+      } else if (S(g)) {
+        switch (typeof w) {
+          case "function":
+          case "symbol":
+            return;
+          case "boolean":
+            if (c = g.toLowerCase().slice(0, 5), c !== "data-" && c !== "aria-") return;
+        }
+        o.push(ie, h(g), re, h(ce(w)), ee);
+      }
+    }
+  }
+  var he = m(">"), ne = m("/>");
+  function de(o, c, g) {
+    if (c != null) {
+      if (g != null) throw Error(t(60));
+      if (typeof c != "object" || !("__html" in c)) throw Error(t(61));
+      c = c.__html, c != null && o.push(h("" + c));
+    }
+  }
+  function ae(o) {
+    var c = "";
+    return e.Children.forEach(o, function(g) {
+      g != null && (c += g);
+    }), c;
+  }
+  var ye = m(' selected=""');
+  function Ue(o, c, g, w) {
+    o.push(we(g));
+    var L = g = null, P;
+    for (P in c) if (_.call(c, P)) {
+      var V = c[P];
+      if (V != null) switch (P) {
+        case "children":
+          g = V;
+          break;
+        case "dangerouslySetInnerHTML":
+          L = V;
+          break;
+        default:
+          se(o, w, P, V);
+      }
+    }
+    return o.push(he), de(o, L, g), typeof g == "string" ? (o.push(h(ce(g))), null) : g;
+  }
+  var me = m(`
+`), nt = /^[a-zA-Z][a-zA-Z:_\.\-\d]*$/, Xe = /* @__PURE__ */ new Map();
+  function we(o) {
+    var c = Xe.get(o);
+    if (c === void 0) {
+      if (!nt.test(o)) throw Error(t(65, o));
+      c = m("<" + o), Xe.set(o, c);
+    }
+    return c;
+  }
+  var J = m("<!DOCTYPE html>");
+  function pe(o, c, g, w, L) {
+    switch (c) {
+      case "select":
+        o.push(we("select"));
+        var P = null, V = null;
+        for (Oe in g) if (_.call(g, Oe)) {
+          var Q = g[Oe];
+          if (Q != null) switch (Oe) {
+            case "children":
+              P = Q;
+              break;
+            case "dangerouslySetInnerHTML":
+              V = Q;
+              break;
+            case "defaultValue":
+            case "value":
+              break;
+            default:
+              se(o, w, Oe, Q);
+          }
+        }
+        return o.push(he), de(o, V, P), P;
+      case "option":
+        V = L.selectedValue, o.push(we("option"));
+        var ve = Q = null, Le = null, Oe = null;
+        for (P in g) if (_.call(g, P)) {
+          var rt = g[P];
+          if (rt != null) switch (P) {
+            case "children":
+              Q = rt;
+              break;
+            case "selected":
+              Le = rt;
+              break;
+            case "dangerouslySetInnerHTML":
+              Oe = rt;
+              break;
+            case "value":
+              ve = rt;
+            default:
+              se(o, w, P, rt);
+          }
+        }
+        if (V != null) if (g = ve !== null ? "" + ve : ae(Q), $e(V)) {
+          for (w = 0; w < V.length; w++)
+            if ("" + V[w] === g) {
+              o.push(ye);
+              break;
+            }
+        } else "" + V === g && o.push(ye);
+        else Le && o.push(ye);
+        return o.push(he), de(o, Oe, Q), Q;
+      case "textarea":
+        o.push(we("textarea")), Oe = V = P = null;
+        for (Q in g) if (_.call(g, Q) && (ve = g[Q], ve != null)) switch (Q) {
+          case "children":
+            Oe = ve;
+            break;
+          case "value":
+            P = ve;
+            break;
+          case "defaultValue":
+            V = ve;
+            break;
+          case "dangerouslySetInnerHTML":
+            throw Error(t(91));
+          default:
+            se(o, w, Q, ve);
+        }
+        if (P === null && V !== null && (P = V), o.push(he), Oe != null) {
+          if (P != null) throw Error(t(92));
+          if ($e(Oe) && 1 < Oe.length) throw Error(t(93));
+          P = "" + Oe;
+        }
+        return typeof P == "string" && P[0] === `
+` && o.push(me), P !== null && o.push(h(ce("" + P))), null;
+      case "input":
+        o.push(we("input")), ve = Oe = Q = P = null;
+        for (V in g) if (_.call(g, V) && (Le = g[V], Le != null)) switch (V) {
+          case "children":
+          case "dangerouslySetInnerHTML":
+            throw Error(t(399, "input"));
+          case "defaultChecked":
+            ve = Le;
+            break;
+          case "defaultValue":
+            Q = Le;
+            break;
+          case "checked":
+            Oe = Le;
+            break;
+          case "value":
+            P = Le;
+            break;
+          default:
+            se(o, w, V, Le);
+        }
+        return Oe !== null ? se(
+          o,
+          w,
+          "checked",
+          Oe
+        ) : ve !== null && se(o, w, "checked", ve), P !== null ? se(o, w, "value", P) : Q !== null && se(o, w, "value", Q), o.push(ne), null;
+      case "menuitem":
+        o.push(we("menuitem"));
+        for (var Lt in g) if (_.call(g, Lt) && (P = g[Lt], P != null)) switch (Lt) {
+          case "children":
+          case "dangerouslySetInnerHTML":
+            throw Error(t(400));
+          default:
+            se(o, w, Lt, P);
+        }
+        return o.push(he), null;
+      case "title":
+        o.push(we("title")), P = null;
+        for (rt in g) if (_.call(g, rt) && (V = g[rt], V != null)) switch (rt) {
+          case "children":
+            P = V;
+            break;
+          case "dangerouslySetInnerHTML":
+            throw Error(t(434));
+          default:
+            se(o, w, rt, V);
+        }
+        return o.push(he), P;
+      case "listing":
+      case "pre":
+        o.push(we(c)), V = P = null;
+        for (ve in g) if (_.call(g, ve) && (Q = g[ve], Q != null)) switch (ve) {
+          case "children":
+            P = Q;
+            break;
+          case "dangerouslySetInnerHTML":
+            V = Q;
+            break;
+          default:
+            se(o, w, ve, Q);
+        }
+        if (o.push(he), V != null) {
+          if (P != null) throw Error(t(60));
+          if (typeof V != "object" || !("__html" in V)) throw Error(t(61));
+          g = V.__html, g != null && (typeof g == "string" && 0 < g.length && g[0] === `
+` ? o.push(me, h(g)) : o.push(h("" + g)));
+        }
+        return typeof P == "string" && P[0] === `
+` && o.push(me), P;
+      case "area":
+      case "base":
+      case "br":
+      case "col":
+      case "embed":
+      case "hr":
+      case "img":
+      case "keygen":
+      case "link":
+      case "meta":
+      case "param":
+      case "source":
+      case "track":
+      case "wbr":
+        o.push(we(c));
+        for (var nr in g) if (_.call(g, nr) && (P = g[nr], P != null)) switch (nr) {
+          case "children":
+          case "dangerouslySetInnerHTML":
+            throw Error(t(399, c));
+          default:
+            se(o, w, nr, P);
+        }
+        return o.push(ne), null;
+      case "annotation-xml":
+      case "color-profile":
+      case "font-face":
+      case "font-face-src":
+      case "font-face-uri":
+      case "font-face-format":
+      case "font-face-name":
+      case "missing-glyph":
+        return Ue(o, g, c, w);
+      case "html":
+        return L.insertionMode === 0 && o.push(J), Ue(o, g, c, w);
+      default:
+        if (c.indexOf("-") === -1 && typeof g.is != "string") return Ue(o, g, c, w);
+        o.push(we(c)), V = P = null;
+        for (Le in g) if (_.call(g, Le) && (Q = g[Le], Q != null)) switch (Le) {
+          case "children":
+            P = Q;
+            break;
+          case "dangerouslySetInnerHTML":
+            V = Q;
+            break;
+          case "style":
+            j(o, w, Q);
+            break;
+          case "suppressContentEditableWarning":
+          case "suppressHydrationWarning":
+            break;
+          default:
+            S(Le) && typeof Q != "function" && typeof Q != "symbol" && o.push(ie, h(Le), re, h(ce(Q)), ee);
+        }
+        return o.push(he), de(o, V, P), P;
+    }
+  }
+  var at = m("</"), et = m(">"), Me = m('<template id="'), ur = m('"></template>'), dr = m("<!--$-->"), mr = m('<!--$?--><template id="'), jt = m('"></template>'), Mt = m("<!--$!-->"), Ot = m("<!--/$-->"), Nt = m("<template"), lt = m('"'), bt = m(' data-dgst="');
+  m(' data-msg="'), m(' data-stck="');
+  var Zt = m("></template>");
+  function mt(o, c, g) {
+    if (a(o, mr), g === null) throw Error(t(395));
+    return a(o, g), s(o, jt);
+  }
+  var gr = m('<div hidden id="'), ut = m('">'), Be = m("</div>"), Xt = m('<svg aria-hidden="true" style="display:none" id="'), ke = m('">'), pt = m("</svg>"), _t = m('<math aria-hidden="true" style="display:none" id="'), Ft = m('">'), vt = m("</math>"), pr = m('<table hidden id="'), Kt = m('">'), yr = m("</table>"), Et = m('<table hidden><tbody id="'), $t = m('">'), Cr = m("</tbody></table>"), it = m('<table hidden><tr id="'), Rt = m('">'), Ut = m("</tr></table>"), fr = m('<table hidden><colgroup id="'), zt = m('">'), xt = m("</colgroup></table>");
+  function ct(o, c, g, w) {
+    switch (g.insertionMode) {
+      case 0:
+      case 1:
+        return a(o, gr), a(o, c.segmentPrefix), a(o, h(w.toString(16))), s(o, ut);
+      case 2:
+        return a(o, Xt), a(o, c.segmentPrefix), a(o, h(w.toString(16))), s(o, ke);
+      case 3:
+        return a(o, _t), a(o, c.segmentPrefix), a(o, h(w.toString(16))), s(o, Ft);
+      case 4:
+        return a(o, pr), a(o, c.segmentPrefix), a(o, h(w.toString(16))), s(o, Kt);
+      case 5:
+        return a(o, Et), a(o, c.segmentPrefix), a(o, h(w.toString(16))), s(o, $t);
+      case 6:
+        return a(o, it), a(o, c.segmentPrefix), a(o, h(w.toString(16))), s(o, Rt);
+      case 7:
+        return a(
+          o,
+          fr
+        ), a(o, c.segmentPrefix), a(o, h(w.toString(16))), s(o, zt);
+      default:
+        throw Error(t(397));
+    }
+  }
+  function It(o, c) {
+    switch (c.insertionMode) {
+      case 0:
+      case 1:
+        return s(o, Be);
+      case 2:
+        return s(o, pt);
+      case 3:
+        return s(o, vt);
+      case 4:
+        return s(o, yr);
+      case 5:
+        return s(o, Cr);
+      case 6:
+        return s(o, Ut);
+      case 7:
+        return s(o, xt);
+      default:
+        throw Error(t(397));
+    }
+  }
+  var br = m('function $RS(a,b){a=document.getElementById(a);b=document.getElementById(b);for(a.parentNode.removeChild(a);a.firstChild;)b.parentNode.insertBefore(a.firstChild,b);b.parentNode.removeChild(b)};$RS("'), Jt = m('$RS("'), Bt = m('","'), Qt = m('")<\/script>'), b = m('function $RC(a,b){a=document.getElementById(a);b=document.getElementById(b);b.parentNode.removeChild(b);if(a){a=a.previousSibling;var f=a.parentNode,c=a.nextSibling,e=0;do{if(c&&8===c.nodeType){var d=c.data;if("/$"===d)if(0===e)break;else e--;else"$"!==d&&"$?"!==d&&"$!"!==d||e++}d=c.nextSibling;f.removeChild(c);c=d}while(c);for(;b.firstChild;)f.insertBefore(b.firstChild,c);a.data="$";a._reactRetry&&a._reactRetry()}};$RC("'), x = m('$RC("'), N = m('","'), Z = m('")<\/script>'), le = m('function $RX(b,c,d,e){var a=document.getElementById(b);a&&(b=a.previousSibling,b.data="$!",a=a.dataset,c&&(a.dgst=c),d&&(a.msg=d),e&&(a.stck=e),b._reactRetry&&b._reactRetry())};$RX("'), Te = m('$RX("'), je = m('"'), qe = m(")<\/script>"), ot = m(","), Pe = /[<\u2028\u2029]/g;
+  function kt(o) {
+    return JSON.stringify(o).replace(Pe, function(c) {
+      switch (c) {
+        case "<":
+          return "\\u003c";
+        case "\u2028":
+          return "\\u2028";
+        case "\u2029":
+          return "\\u2029";
+        default:
+          throw Error("escapeJSStringsForInstructionScripts encountered a match it does not know how to replace. this means the match regex and the replacement characters are no longer in sync. This is a bug in React");
+      }
+    });
+  }
+  var er = Object.assign, dn = Symbol.for("react.element"), Dr = Symbol.for("react.portal"), Pr = Symbol.for("react.fragment"), pn = Symbol.for("react.strict_mode"), fn = Symbol.for("react.profiler"), hn = Symbol.for("react.provider"), Kr = Symbol.for("react.context"), Pn = Symbol.for("react.forward_ref"), Ln = Symbol.for("react.suspense"), mn = Symbol.for("react.suspense_list"), i = Symbol.for("react.memo"), u = Symbol.for("react.lazy"), y = Symbol.for("react.scope"), k = Symbol.for("react.debug_trace_mode"), M = Symbol.for("react.legacy_hidden"), D = Symbol.for("react.default_value"), W = Symbol.iterator;
+  function te(o) {
+    if (o == null) return null;
+    if (typeof o == "function") return o.displayName || o.name || null;
+    if (typeof o == "string") return o;
+    switch (o) {
+      case Pr:
+        return "Fragment";
+      case Dr:
+        return "Portal";
+      case fn:
+        return "Profiler";
+      case pn:
+        return "StrictMode";
+      case Ln:
+        return "Suspense";
+      case mn:
+        return "SuspenseList";
+    }
+    if (typeof o == "object") switch (o.$$typeof) {
+      case Kr:
+        return (o.displayName || "Context") + ".Consumer";
+      case hn:
+        return (o._context.displayName || "Context") + ".Provider";
+      case Pn:
+        var c = o.render;
+        return o = o.displayName, o || (o = c.displayName || c.name || "", o = o !== "" ? "ForwardRef(" + o + ")" : "ForwardRef"), o;
+      case i:
+        return c = o.displayName || null, c !== null ? c : te(o.type) || "Memo";
+      case u:
+        c = o._payload, o = o._init;
+        try {
+          return te(o(c));
+        } catch {
+        }
+    }
+    return null;
+  }
+  var be = {};
+  function xe(o, c) {
+    if (o = o.contextTypes, !o) return be;
+    var g = {}, w;
+    for (w in o) g[w] = c[w];
+    return g;
+  }
+  var Ee = null;
+  function st(o, c) {
+    if (o !== c) {
+      o.context._currentValue = o.parentValue, o = o.parent;
+      var g = c.parent;
+      if (o === null) {
+        if (g !== null) throw Error(t(401));
+      } else {
+        if (g === null) throw Error(t(401));
+        st(o, g);
+      }
+      c.context._currentValue = c.value;
+    }
+  }
+  function tr(o) {
+    o.context._currentValue = o.parentValue, o = o.parent, o !== null && tr(o);
+  }
+  function rr(o) {
+    var c = o.parent;
+    c !== null && rr(c), o.context._currentValue = o.value;
+  }
+  function Dt(o, c) {
+    if (o.context._currentValue = o.parentValue, o = o.parent, o === null) throw Error(t(402));
+    o.depth === c.depth ? st(o, c) : Dt(o, c);
+  }
+  function Lr(o, c) {
+    var g = c.parent;
+    if (g === null) throw Error(t(402));
+    o.depth === g.depth ? st(o, g) : Lr(o, g), c.context._currentValue = c.value;
+  }
+  function vr(o) {
+    var c = Ee;
+    c !== o && (c === null ? rr(o) : o === null ? tr(c) : c.depth === o.depth ? st(c, o) : c.depth > o.depth ? Dt(c, o) : Lr(c, o), Ee = o);
+  }
+  var gn = { isMounted: function() {
+    return !1;
+  }, enqueueSetState: function(o, c) {
+    o = o._reactInternals, o.queue !== null && o.queue.push(c);
+  }, enqueueReplaceState: function(o, c) {
+    o = o._reactInternals, o.replace = !0, o.queue = [c];
+  }, enqueueForceUpdate: function() {
+  } };
+  function Mr(o, c, g, w) {
+    var L = o.state !== void 0 ? o.state : null;
+    o.updater = gn, o.props = g, o.state = L;
+    var P = { queue: [], replace: !1 };
+    o._reactInternals = P;
+    var V = c.contextType;
+    if (o.context = typeof V == "object" && V !== null ? V._currentValue : w, V = c.getDerivedStateFromProps, typeof V == "function" && (V = V(g, L), L = V == null ? L : er({}, L, V), o.state = L), typeof c.getDerivedStateFromProps != "function" && typeof o.getSnapshotBeforeUpdate != "function" && (typeof o.UNSAFE_componentWillMount == "function" || typeof o.componentWillMount == "function")) if (c = o.state, typeof o.componentWillMount == "function" && o.componentWillMount(), typeof o.UNSAFE_componentWillMount == "function" && o.UNSAFE_componentWillMount(), c !== o.state && gn.enqueueReplaceState(o, o.state, null), P.queue !== null && 0 < P.queue.length) if (c = P.queue, V = P.replace, P.queue = null, P.replace = !1, V && c.length === 1) o.state = c[0];
+    else {
+      for (P = V ? c[0] : o.state, L = !0, V = V ? 1 : 0; V < c.length; V++) {
+        var Q = c[V];
+        Q = typeof Q == "function" ? Q.call(o, P, g, w) : Q, Q != null && (L ? (L = !1, P = er({}, P, Q)) : er(P, Q));
+      }
+      o.state = P;
+    }
+    else P.queue = null;
+  }
+  var Mn = { id: 1, overflow: "" };
+  function Ar(o, c, g) {
+    var w = o.id;
+    o = o.overflow;
+    var L = 32 - Fn(w) - 1;
+    w &= ~(1 << L), g += 1;
+    var P = 32 - Fn(c) + L;
+    if (30 < P) {
+      var V = L - L % 5;
+      return P = (w & (1 << V) - 1).toString(32), w >>= V, L -= V, { id: 1 << 32 - Fn(c) + L | g << L | w, overflow: P + o };
+    }
+    return { id: 1 << P | g << L | w, overflow: o };
+  }
+  var Fn = Math.clz32 ? Math.clz32 : Wc, qc = Math.log, Hc = Math.LN2;
+  function Wc(o) {
+    return o >>>= 0, o === 0 ? 32 : 31 - (qc(o) / Hc | 0) | 0;
+  }
+  function Vc(o, c) {
+    return o === c && (o !== 0 || 1 / o === 1 / c) || o !== o && c !== c;
+  }
+  var Gc = typeof Object.is == "function" ? Object.is : Vc, xr = null, Ra = null, $n = null, tt = null, yn = !1, Un = !1, bn = 0, _r = null, zn = 0;
+  function Fr() {
+    if (xr === null) throw Error(t(321));
+    return xr;
+  }
+  function vo() {
+    if (0 < zn) throw Error(t(312));
+    return { memoizedState: null, queue: null, next: null };
+  }
+  function Ia() {
+    return tt === null ? $n === null ? (yn = !1, $n = tt = vo()) : (yn = !0, tt = $n) : tt.next === null ? (yn = !1, tt = tt.next = vo()) : (yn = !0, tt = tt.next), tt;
+  }
+  function Da() {
+    Ra = xr = null, Un = !1, $n = null, zn = 0, tt = _r = null;
+  }
+  function xo(o, c) {
+    return typeof c == "function" ? c(o) : c;
+  }
+  function wo(o, c, g) {
+    if (xr = Fr(), tt = Ia(), yn) {
+      var w = tt.queue;
+      if (c = w.dispatch, _r !== null && (g = _r.get(w), g !== void 0)) {
+        _r.delete(w), w = tt.memoizedState;
+        do
+          w = o(w, g.action), g = g.next;
+        while (g !== null);
+        return tt.memoizedState = w, [w, c];
+      }
+      return [tt.memoizedState, c];
+    }
+    return o = o === xo ? typeof c == "function" ? c() : c : g !== void 0 ? g(c) : c, tt.memoizedState = o, o = tt.queue = { last: null, dispatch: null }, o = o.dispatch = Yc.bind(null, xr, o), [tt.memoizedState, o];
+  }
+  function So(o, c) {
+    if (xr = Fr(), tt = Ia(), c = c === void 0 ? null : c, tt !== null) {
+      var g = tt.memoizedState;
+      if (g !== null && c !== null) {
+        var w = g[1];
+        e: if (w === null) w = !1;
+        else {
+          for (var L = 0; L < w.length && L < c.length; L++) if (!Gc(c[L], w[L])) {
+            w = !1;
+            break e;
+          }
+          w = !0;
+        }
+        if (w) return g[0];
+      }
+    }
+    return o = o(), tt.memoizedState = [o, c], o;
+  }
+  function Yc(o, c, g) {
+    if (25 <= zn) throw Error(t(301));
+    if (o === xr) if (Un = !0, o = { action: g, next: null }, _r === null && (_r = /* @__PURE__ */ new Map()), g = _r.get(c), g === void 0) _r.set(c, o);
+    else {
+      for (c = g; c.next !== null; ) c = c.next;
+      c.next = o;
+    }
+  }
+  function Zc() {
+    throw Error(t(394));
+  }
+  function Bn() {
+  }
+  var ko = { readContext: function(o) {
+    return o._currentValue;
+  }, useContext: function(o) {
+    return Fr(), o._currentValue;
+  }, useMemo: So, useReducer: wo, useRef: function(o) {
+    xr = Fr(), tt = Ia();
+    var c = tt.memoizedState;
+    return c === null ? (o = { current: o }, tt.memoizedState = o) : c;
+  }, useState: function(o) {
+    return wo(xo, o);
+  }, useInsertionEffect: Bn, useLayoutEffect: function() {
+  }, useCallback: function(o, c) {
+    return So(function() {
+      return o;
+    }, c);
+  }, useImperativeHandle: Bn, useEffect: Bn, useDebugValue: Bn, useDeferredValue: function(o) {
+    return Fr(), o;
+  }, useTransition: function() {
+    return Fr(), [!1, Zc];
+  }, useId: function() {
+    var o = Ra.treeContext, c = o.overflow;
+    o = o.id, o = (o & ~(1 << 32 - Fn(o) - 1)).toString(32) + c;
+    var g = qn;
+    if (g === null) throw Error(t(404));
+    return c = bn++, o = ":" + g.idPrefix + "R" + o, 0 < c && (o += "H" + c.toString(32)), o + ":";
+  }, useMutableSource: function(o, c) {
+    return Fr(), c(o._source);
+  }, useSyncExternalStore: function(o, c, g) {
+    if (g === void 0) throw Error(t(407));
+    return g();
+  } }, qn = null, Pa = e.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentDispatcher;
+  function Xc(o) {
+    return console.error(o), null;
+  }
+  function vn() {
+  }
+  function Kc(o, c, g, w, L, P, V, Q, ve) {
+    var Le = [], Oe = /* @__PURE__ */ new Set();
+    return c = { destination: null, responseState: c, progressiveChunkSize: w === void 0 ? 12800 : w, status: 0, fatalError: null, nextSegmentId: 0, allPendingTasks: 0, pendingRootTasks: 0, completedRootSegment: null, abortableTasks: Oe, pingedTasks: Le, clientRenderedBoundaries: [], completedBoundaries: [], partialBoundaries: [], onError: L === void 0 ? Xc : L, onAllReady: P === void 0 ? vn : P, onShellReady: V === void 0 ? vn : V, onShellError: Q === void 0 ? vn : Q, onFatalError: ve === void 0 ? vn : ve }, g = Hn(c, 0, null, g, !1, !1), g.parentFlushed = !0, o = La(c, o, null, g, Oe, be, null, Mn), Le.push(o), c;
+  }
+  function La(o, c, g, w, L, P, V, Q) {
+    o.allPendingTasks++, g === null ? o.pendingRootTasks++ : g.pendingTasks++;
+    var ve = { node: c, ping: function() {
+      var Le = o.pingedTasks;
+      Le.push(ve), Le.length === 1 && Oo(o);
+    }, blockedBoundary: g, blockedSegment: w, abortSet: L, legacyContext: P, context: V, treeContext: Q };
+    return L.add(ve), ve;
+  }
+  function Hn(o, c, g, w, L, P) {
+    return { status: 0, id: -1, index: c, parentFlushed: !1, chunks: [], children: [], formatContext: w, boundary: g, lastPushedText: L, textEmbedded: P };
+  }
+  function xn(o, c) {
+    if (o = o.onError(c), o != null && typeof o != "string") throw Error('onError returned something with a type other than "string". onError should return a string and may return null or undefined but must not return anything else. It received something of type "' + typeof o + '" instead');
+    return o;
+  }
+  function Wn(o, c) {
+    var g = o.onShellError;
+    g(c), g = o.onFatalError, g(c), o.destination !== null ? (o.status = 2, C(o.destination, c)) : (o.status = 1, o.fatalError = c);
+  }
+  function To(o, c, g, w, L) {
+    for (xr = {}, Ra = c, bn = 0, o = g(w, L); Un; ) Un = !1, bn = 0, zn += 1, tt = null, o = g(w, L);
+    return Da(), o;
+  }
+  function Co(o, c, g, w) {
+    var L = g.render(), P = w.childContextTypes;
+    if (P != null) {
+      var V = c.legacyContext;
+      if (typeof g.getChildContext != "function") w = V;
+      else {
+        g = g.getChildContext();
+        for (var Q in g) if (!(Q in P)) throw Error(t(108, te(w) || "Unknown", Q));
+        w = er({}, V, g);
+      }
+      c.legacyContext = w, Pt(o, c, L), c.legacyContext = V;
+    } else Pt(o, c, L);
+  }
+  function Ao(o, c) {
+    if (o && o.defaultProps) {
+      c = er({}, c), o = o.defaultProps;
+      for (var g in o) c[g] === void 0 && (c[g] = o[g]);
+      return c;
+    }
+    return c;
+  }
+  function Ma(o, c, g, w, L) {
+    if (typeof g == "function") if (g.prototype && g.prototype.isReactComponent) {
+      L = xe(g, c.legacyContext);
+      var P = g.contextType;
+      P = new g(w, typeof P == "object" && P !== null ? P._currentValue : L), Mr(P, g, w, L), Co(o, c, P, g);
+    } else {
+      P = xe(g, c.legacyContext), L = To(o, c, g, w, P);
+      var V = bn !== 0;
+      if (typeof L == "object" && L !== null && typeof L.render == "function" && L.$$typeof === void 0) Mr(L, g, w, P), Co(o, c, L, g);
+      else if (V) {
+        w = c.treeContext, c.treeContext = Ar(w, 1, 0);
+        try {
+          Pt(o, c, L);
+        } finally {
+          c.treeContext = w;
+        }
+      } else Pt(o, c, L);
+    }
+    else if (typeof g == "string") {
+      switch (L = c.blockedSegment, P = pe(L.chunks, g, w, o.responseState, L.formatContext), L.lastPushedText = !1, V = L.formatContext, L.formatContext = Ve(V, g, w), Fa(o, c, P), L.formatContext = V, g) {
+        case "area":
+        case "base":
+        case "br":
+        case "col":
+        case "embed":
+        case "hr":
+        case "img":
+        case "input":
+        case "keygen":
+        case "link":
+        case "meta":
+        case "param":
+        case "source":
+        case "track":
+        case "wbr":
+          break;
+        default:
+          L.chunks.push(at, h(g), et);
+      }
+      L.lastPushedText = !1;
+    } else {
+      switch (g) {
+        case M:
+        case k:
+        case pn:
+        case fn:
+        case Pr:
+          Pt(o, c, w.children);
+          return;
+        case mn:
+          Pt(o, c, w.children);
+          return;
+        case y:
+          throw Error(t(343));
+        case Ln:
+          e: {
+            g = c.blockedBoundary, L = c.blockedSegment, P = w.fallback, w = w.children, V = /* @__PURE__ */ new Set();
+            var Q = { id: null, rootSegmentID: -1, parentFlushed: !1, pendingTasks: 0, forceClientRender: !1, completedSegments: [], byteSize: 0, fallbackAbortableTasks: V, errorDigest: null }, ve = Hn(o, L.chunks.length, Q, L.formatContext, !1, !1);
+            L.children.push(ve), L.lastPushedText = !1;
+            var Le = Hn(o, 0, null, L.formatContext, !1, !1);
+            Le.parentFlushed = !0, c.blockedBoundary = Q, c.blockedSegment = Le;
+            try {
+              if (Fa(
+                o,
+                c,
+                w
+              ), Le.lastPushedText && Le.textEmbedded && Le.chunks.push(B), Le.status = 1, Vn(Q, Le), Q.pendingTasks === 0) break e;
+            } catch (Oe) {
+              Le.status = 4, Q.forceClientRender = !0, Q.errorDigest = xn(o, Oe);
+            } finally {
+              c.blockedBoundary = g, c.blockedSegment = L;
+            }
+            c = La(o, P, g, ve, V, c.legacyContext, c.context, c.treeContext), o.pingedTasks.push(c);
+          }
+          return;
+      }
+      if (typeof g == "object" && g !== null) switch (g.$$typeof) {
+        case Pn:
+          if (w = To(o, c, g.render, w, L), bn !== 0) {
+            g = c.treeContext, c.treeContext = Ar(g, 1, 0);
+            try {
+              Pt(o, c, w);
+            } finally {
+              c.treeContext = g;
+            }
+          } else Pt(o, c, w);
+          return;
+        case i:
+          g = g.type, w = Ao(g, w), Ma(o, c, g, w, L);
+          return;
+        case hn:
+          if (L = w.children, g = g._context, w = w.value, P = g._currentValue, g._currentValue = w, V = Ee, Ee = w = { parent: V, depth: V === null ? 0 : V.depth + 1, context: g, parentValue: P, value: w }, c.context = w, Pt(o, c, L), o = Ee, o === null) throw Error(t(403));
+          w = o.parentValue, o.context._currentValue = w === D ? o.context._defaultValue : w, o = Ee = o.parent, c.context = o;
+          return;
+        case Kr:
+          w = w.children, w = w(g._currentValue), Pt(o, c, w);
+          return;
+        case u:
+          L = g._init, g = L(g._payload), w = Ao(g, w), Ma(o, c, g, w, void 0);
+          return;
+      }
+      throw Error(t(
+        130,
+        g == null ? g : typeof g,
+        ""
+      ));
+    }
+  }
+  function Pt(o, c, g) {
+    if (c.node = g, typeof g == "object" && g !== null) {
+      switch (g.$$typeof) {
+        case dn:
+          Ma(o, c, g.type, g.props, g.ref);
+          return;
+        case Dr:
+          throw Error(t(257));
+        case u:
+          var w = g._init;
+          g = w(g._payload), Pt(o, c, g);
+          return;
+      }
+      if ($e(g)) {
+        _o(o, c, g);
+        return;
+      }
+      if (g === null || typeof g != "object" ? w = null : (w = W && g[W] || g["@@iterator"], w = typeof w == "function" ? w : null), w && (w = w.call(g))) {
+        if (g = w.next(), !g.done) {
+          var L = [];
+          do
+            L.push(g.value), g = w.next();
+          while (!g.done);
+          _o(o, c, L);
+        }
+        return;
+      }
+      throw o = Object.prototype.toString.call(g), Error(t(31, o === "[object Object]" ? "object with keys {" + Object.keys(g).join(", ") + "}" : o));
+    }
+    typeof g == "string" ? (w = c.blockedSegment, w.lastPushedText = R(c.blockedSegment.chunks, g, o.responseState, w.lastPushedText)) : typeof g == "number" && (w = c.blockedSegment, w.lastPushedText = R(c.blockedSegment.chunks, "" + g, o.responseState, w.lastPushedText));
+  }
+  function _o(o, c, g) {
+    for (var w = g.length, L = 0; L < w; L++) {
+      var P = c.treeContext;
+      c.treeContext = Ar(P, w, L);
+      try {
+        Fa(o, c, g[L]);
+      } finally {
+        c.treeContext = P;
+      }
+    }
+  }
+  function Fa(o, c, g) {
+    var w = c.blockedSegment.formatContext, L = c.legacyContext, P = c.context;
+    try {
+      return Pt(o, c, g);
+    } catch (ve) {
+      if (Da(), typeof ve == "object" && ve !== null && typeof ve.then == "function") {
+        g = ve;
+        var V = c.blockedSegment, Q = Hn(o, V.chunks.length, null, V.formatContext, V.lastPushedText, !0);
+        V.children.push(Q), V.lastPushedText = !1, o = La(o, c.node, c.blockedBoundary, Q, c.abortSet, c.legacyContext, c.context, c.treeContext).ping, g.then(o, o), c.blockedSegment.formatContext = w, c.legacyContext = L, c.context = P, vr(P);
+      } else throw c.blockedSegment.formatContext = w, c.legacyContext = L, c.context = P, vr(P), ve;
+    }
+  }
+  function Jc(o) {
+    var c = o.blockedBoundary;
+    o = o.blockedSegment, o.status = 3, jo(this, c, o);
+  }
+  function Eo(o, c, g) {
+    var w = o.blockedBoundary;
+    o.blockedSegment.status = 3, w === null ? (c.allPendingTasks--, c.status !== 2 && (c.status = 2, c.destination !== null && c.destination.close())) : (w.pendingTasks--, w.forceClientRender || (w.forceClientRender = !0, o = g === void 0 ? Error(t(432)) : g, w.errorDigest = c.onError(o), w.parentFlushed && c.clientRenderedBoundaries.push(w)), w.fallbackAbortableTasks.forEach(function(L) {
+      return Eo(L, c, g);
+    }), w.fallbackAbortableTasks.clear(), c.allPendingTasks--, c.allPendingTasks === 0 && (w = c.onAllReady, w()));
+  }
+  function Vn(o, c) {
+    if (c.chunks.length === 0 && c.children.length === 1 && c.children[0].boundary === null) {
+      var g = c.children[0];
+      g.id = c.id, g.parentFlushed = !0, g.status === 1 && Vn(o, g);
+    } else o.completedSegments.push(c);
+  }
+  function jo(o, c, g) {
+    if (c === null) {
+      if (g.parentFlushed) {
+        if (o.completedRootSegment !== null) throw Error(t(389));
+        o.completedRootSegment = g;
+      }
+      o.pendingRootTasks--, o.pendingRootTasks === 0 && (o.onShellError = vn, c = o.onShellReady, c());
+    } else c.pendingTasks--, c.forceClientRender || (c.pendingTasks === 0 ? (g.parentFlushed && g.status === 1 && Vn(c, g), c.parentFlushed && o.completedBoundaries.push(c), c.fallbackAbortableTasks.forEach(Jc, o), c.fallbackAbortableTasks.clear()) : g.parentFlushed && g.status === 1 && (Vn(c, g), c.completedSegments.length === 1 && c.parentFlushed && o.partialBoundaries.push(c)));
+    o.allPendingTasks--, o.allPendingTasks === 0 && (o = o.onAllReady, o());
+  }
+  function Oo(o) {
+    if (o.status !== 2) {
+      var c = Ee, g = Pa.current;
+      Pa.current = ko;
+      var w = qn;
+      qn = o.responseState;
+      try {
+        var L = o.pingedTasks, P;
+        for (P = 0; P < L.length; P++) {
+          var V = L[P], Q = o, ve = V.blockedSegment;
+          if (ve.status === 0) {
+            vr(V.context);
+            try {
+              Pt(Q, V, V.node), ve.lastPushedText && ve.textEmbedded && ve.chunks.push(B), V.abortSet.delete(V), ve.status = 1, jo(Q, V.blockedBoundary, ve);
+            } catch (ar) {
+              if (Da(), typeof ar == "object" && ar !== null && typeof ar.then == "function") {
+                var Le = V.ping;
+                ar.then(Le, Le);
+              } else {
+                V.abortSet.delete(V), ve.status = 4;
+                var Oe = V.blockedBoundary, rt = ar, Lt = xn(Q, rt);
+                if (Oe === null ? Wn(Q, rt) : (Oe.pendingTasks--, Oe.forceClientRender || (Oe.forceClientRender = !0, Oe.errorDigest = Lt, Oe.parentFlushed && Q.clientRenderedBoundaries.push(Oe))), Q.allPendingTasks--, Q.allPendingTasks === 0) {
+                  var nr = Q.onAllReady;
+                  nr();
+                }
+              }
+            } finally {
+            }
+          }
+        }
+        L.splice(0, P), o.destination !== null && $a(o, o.destination);
+      } catch (ar) {
+        xn(o, ar), Wn(o, ar);
+      } finally {
+        qn = w, Pa.current = g, g === ko && vr(c);
+      }
+    }
+  }
+  function Gn(o, c, g) {
+    switch (g.parentFlushed = !0, g.status) {
+      case 0:
+        var w = g.id = o.nextSegmentId++;
+        return g.lastPushedText = !1, g.textEmbedded = !1, o = o.responseState, a(c, Me), a(c, o.placeholderPrefix), o = h(w.toString(16)), a(c, o), s(c, ur);
+      case 1:
+        g.status = 2;
+        var L = !0;
+        w = g.chunks;
+        var P = 0;
+        g = g.children;
+        for (var V = 0; V < g.length; V++) {
+          for (L = g[V]; P < L.index; P++) a(c, w[P]);
+          L = Yn(o, c, L);
+        }
+        for (; P < w.length - 1; P++) a(c, w[P]);
+        return P < w.length && (L = s(c, w[P])), L;
+      default:
+        throw Error(t(390));
+    }
+  }
+  function Yn(o, c, g) {
+    var w = g.boundary;
+    if (w === null) return Gn(o, c, g);
+    if (w.parentFlushed = !0, w.forceClientRender) w = w.errorDigest, s(c, Mt), a(c, Nt), w && (a(c, bt), a(c, h(ce(w))), a(c, lt)), s(c, Zt), Gn(o, c, g);
+    else if (0 < w.pendingTasks) {
+      w.rootSegmentID = o.nextSegmentId++, 0 < w.completedSegments.length && o.partialBoundaries.push(w);
+      var L = o.responseState, P = L.nextSuspenseID++;
+      L = m(L.boundaryPrefix + P.toString(16)), w = w.id = L, mt(c, o.responseState, w), Gn(o, c, g);
+    } else if (w.byteSize > o.progressiveChunkSize) w.rootSegmentID = o.nextSegmentId++, o.completedBoundaries.push(w), mt(c, o.responseState, w.id), Gn(o, c, g);
+    else {
+      if (s(c, dr), g = w.completedSegments, g.length !== 1) throw Error(t(391));
+      Yn(o, c, g[0]);
+    }
+    return s(c, Ot);
+  }
+  function No(o, c, g) {
+    return ct(c, o.responseState, g.formatContext, g.id), Yn(o, c, g), It(c, g.formatContext);
+  }
+  function Ro(o, c, g) {
+    for (var w = g.completedSegments, L = 0; L < w.length; L++) Io(o, c, g, w[L]);
+    if (w.length = 0, o = o.responseState, w = g.id, g = g.rootSegmentID, a(c, o.startInlineScript), o.sentCompleteBoundaryFunction ? a(c, x) : (o.sentCompleteBoundaryFunction = !0, a(c, b)), w === null) throw Error(t(395));
+    return g = h(g.toString(16)), a(c, w), a(c, N), a(c, o.segmentPrefix), a(c, g), s(c, Z);
+  }
+  function Io(o, c, g, w) {
+    if (w.status === 2) return !0;
+    var L = w.id;
+    if (L === -1) {
+      if ((w.id = g.rootSegmentID) === -1) throw Error(t(392));
+      return No(o, c, w);
+    }
+    return No(o, c, w), o = o.responseState, a(c, o.startInlineScript), o.sentCompleteSegmentFunction ? a(c, Jt) : (o.sentCompleteSegmentFunction = !0, a(c, br)), a(c, o.segmentPrefix), L = h(L.toString(16)), a(c, L), a(c, Bt), a(c, o.placeholderPrefix), a(c, L), s(c, Qt);
+  }
+  function $a(o, c) {
+    r = new Uint8Array(512), n = 0;
+    try {
+      var g = o.completedRootSegment;
+      if (g !== null && o.pendingRootTasks === 0) {
+        Yn(o, c, g), o.completedRootSegment = null;
+        var w = o.responseState.bootstrapChunks;
+        for (g = 0; g < w.length - 1; g++) a(c, w[g]);
+        g < w.length && s(c, w[g]);
+      }
+      var L = o.clientRenderedBoundaries, P;
+      for (P = 0; P < L.length; P++) {
+        var V = L[P];
+        w = c;
+        var Q = o.responseState, ve = V.id, Le = V.errorDigest, Oe = V.errorMessage, rt = V.errorComponentStack;
+        if (a(w, Q.startInlineScript), Q.sentClientRenderFunction ? a(w, Te) : (Q.sentClientRenderFunction = !0, a(
+          w,
+          le
+        )), ve === null) throw Error(t(395));
+        a(w, ve), a(w, je), (Le || Oe || rt) && (a(w, ot), a(w, h(kt(Le || "")))), (Oe || rt) && (a(w, ot), a(w, h(kt(Oe || "")))), rt && (a(w, ot), a(w, h(kt(rt)))), s(w, qe);
+      }
+      L.splice(0, P);
+      var Lt = o.completedBoundaries;
+      for (P = 0; P < Lt.length; P++) Ro(o, c, Lt[P]);
+      Lt.splice(0, P), d(c), r = new Uint8Array(512), n = 0;
+      var nr = o.partialBoundaries;
+      for (P = 0; P < nr.length; P++) {
+        var ar = nr[P];
+        e: {
+          L = o, V = c;
+          var Zn = ar.completedSegments;
+          for (Q = 0; Q < Zn.length; Q++) if (!Io(
+            L,
+            V,
+            ar,
+            Zn[Q]
+          )) {
+            Q++, Zn.splice(0, Q);
+            var Po = !1;
+            break e;
+          }
+          Zn.splice(0, Q), Po = !0;
+        }
+        if (!Po) {
+          o.destination = null, P++, nr.splice(0, P);
+          return;
+        }
+      }
+      nr.splice(0, P);
+      var Ua = o.completedBoundaries;
+      for (P = 0; P < Ua.length; P++) Ro(o, c, Ua[P]);
+      Ua.splice(0, P);
+    } finally {
+      d(c), o.allPendingTasks === 0 && o.pingedTasks.length === 0 && o.clientRenderedBoundaries.length === 0 && o.completedBoundaries.length === 0 && c.close();
+    }
+  }
+  function Do(o, c) {
+    try {
+      var g = o.abortableTasks;
+      g.forEach(function(w) {
+        return Eo(w, o, c);
+      }), g.clear(), o.destination !== null && $a(o, o.destination);
+    } catch (w) {
+      xn(o, w), Wn(o, w);
+    }
+  }
+  return Jn.renderToReadableStream = function(o, c) {
+    return new Promise(function(g, w) {
+      var L, P, V = new Promise(function(Oe, rt) {
+        P = Oe, L = rt;
+      }), Q = Kc(o, _e(c ? c.identifierPrefix : void 0, c ? c.nonce : void 0, c ? c.bootstrapScriptContent : void 0, c ? c.bootstrapScripts : void 0, c ? c.bootstrapModules : void 0), We(c ? c.namespaceURI : void 0), c ? c.progressiveChunkSize : void 0, c ? c.onError : void 0, P, function() {
+        var Oe = new ReadableStream({ type: "bytes", pull: function(rt) {
+          if (Q.status === 1) Q.status = 2, C(rt, Q.fatalError);
+          else if (Q.status !== 2 && Q.destination === null) {
+            Q.destination = rt;
+            try {
+              $a(Q, rt);
+            } catch (Lt) {
+              xn(Q, Lt), Wn(Q, Lt);
+            }
+          }
+        }, cancel: function() {
+          Do(Q);
+        } }, { highWaterMark: 0 });
+        Oe.allReady = V, g(Oe);
+      }, function(Oe) {
+        V.catch(function() {
+        }), w(Oe);
+      }, L);
+      if (c && c.signal) {
+        var ve = c.signal, Le = function() {
+          Do(Q, ve.reason), ve.removeEventListener("abort", Le);
+        };
+        ve.addEventListener("abort", Le);
+      }
+      Oo(Q);
+    });
+  }, Jn.version = "18.3.1", Jn;
+}
+var on, il;
+on = Wu(), il = Vu();
+on.version;
+on.renderToString;
+on.renderToStaticMarkup;
+on.renderToNodeStream;
+on.renderToStaticNodeStream;
+il.renderToReadableStream;
+const Gu = "staticMarkup";
+function Yu() {
+  const e = tu().indexOf(Gu) > -1 ? !0 : void 0;
+  return {
+    isBootstrap: e,
+    isReact: e ? void 0 : !0
+  };
+}
+const Zr = ({ gaData: e, prefix: t = "", children: r }) => {
+  const { isReact: n } = Yu(), { onClick: a, ...s } = r.props;
+  if (n)
+    return ht.cloneElement(r, {
+      ...s,
+      onClick: (h) => (al(e), a ? a(h) : !0)
+    });
+  let d = "";
+  ["input", "header", "header-input"].includes(t) && (d = `-${t}`);
+  const f = {
+    [`data-ga${d}`]: e.text,
+    [`data-ga${d}-name`]: e.name,
+    [`data-ga${d}-event`]: e.event,
+    [`data-ga${d}-action`]: e.action,
+    [`data-ga${d}-type`]: e.type,
+    [`data-ga${d}-region`]: e.region,
+    [`data-ga${d}-section`]: e.section,
+    [`data-ga${d}-component`]: e.component
+  };
+  return ht.cloneElement(r, {
+    ...s,
+    onClick: a,
+    ...f
+  });
+}, ol = ({ id: e, item: t, openCard: r, onClick: n, gaData: a }) => {
+  var s, d, f, h, m, C;
+  const _ = e === r, O = _ ? "open" : "close";
+  return /* @__PURE__ */ H.jsxs(
+    "div",
+    {
+      className: dt("accordion-item", "mt-3", {
+        [`accordion-item-${t.color}`]: t.color,
+        "accordion-header-icon": (s = t.content) == null ? void 0 : s.icon
+      }),
+      children: [
+        /* @__PURE__ */ H.jsx("div", { className: "accordion-header", children: /* @__PURE__ */ H.jsx("h4", { children: /* @__PURE__ */ H.jsx(
+          Zr,
+          {
+            gaData: { ...a, action: O, text: t.content.header },
+            children: /* @__PURE__ */ H.jsxs(
+              "a",
+              {
+                "data-testid": "accordion-opener",
+                className: dt({ collapsed: !_ }),
+                "data-bs-toggle": "collapse",
+                href: `#card-body-${e}`,
+                role: "button",
+                "aria-expanded": _,
+                "aria-controls": `card-body-${e}`,
+                onClick: (U) => n(U, e),
+                children: [
+                  (d = t.content) != null && d.icon ? /* @__PURE__ */ H.jsxs("span", { className: "accordion-icon", children: [
+                    /* @__PURE__ */ H.jsx(
+                      "i",
+                      {
+                        className: `${(f = t.content.icon) == null ? void 0 : f[0]} fa-${(h = t.content.icon) == null ? void 0 : h[1]} me-2`
+                      }
+                    ),
+                    t.content.header
+                  ] }) : (m = t.content) == null ? void 0 : m.header,
+                  /* @__PURE__ */ H.jsx("i", { className: "fas fa-chevron-up" })
+                ]
+              }
+            )
+          }
+        ) }) }),
+        ((C = t.content) == null ? void 0 : C.body) && /* @__PURE__ */ H.jsx(
+          "div",
+          {
+            id: `card-body-${e}`,
+            className: dt("collapse", { show: _ }),
+            children: /* @__PURE__ */ H.jsx(
+              "div",
+              {
+                className: "accordion-body",
+                dangerouslySetInnerHTML: Wr(t.content.body)
+              }
+            )
+          }
+        )
+      ]
+    }
+  );
+};
+ol.propTypes = {
+  id: l.number,
+  item: el,
+  openCard: l.number,
+  onClick: l.func,
+  // eslint-disable-next-line react/forbid-prop-types
+  gaData: l.object
+};
+const Zu = {
+  event: "collapse",
+  name: "onclick",
+  type: "click",
+  region: "main content"
+}, qi = ({ cards: e, openedCard: t }) => {
+  const [r, n] = ft(t), a = (s, d) => {
+    s.preventDefault(), n(r !== d ? d : null);
+  };
+  return /* @__PURE__ */ H.jsx("div", { className: "accordion", children: e == null ? void 0 : e.map(
+    (s, d) => s.content.body && s.content.header && /* @__PURE__ */ H.jsx(
+      ol,
+      {
+        id: d + 1,
+        item: s,
+        openCard: r,
+        onClick: a,
+        gaData: Zu
+      },
+      d + 1
+    )
+  ) });
+};
+qi.propTypes = {
+  /**
+   * Cards to show in the accordion component
+   */
+  cards: l.arrayOf(el).isRequired,
+  /**
+   * Opened card based on rendered card position
+   */
+  openedCard: l.number
+};
+const Xu = {
+  name: "onclick",
+  event: "link",
+  action: "click",
+  type: "internal link",
+  region: "main content"
+}, Tr = ({
+  label: e,
+  cardTitle: t,
+  gaData: r,
+  ariaLabel: n,
+  block: a,
+  color: s,
+  disabled: d,
+  element: f,
+  href: h,
+  icon: m,
+  innerRef: C,
+  onClick: _,
+  size: O,
+  classes: U,
+  target: E,
+  ...S
+}) => {
+  const I = dt("btn", {
+    [`btn-${s}`]: !0,
+    "btn-md": O === "small",
+    "btn-sm": O === "xsmall",
+    "btn-block": a,
+    disabled: d
+  });
+  let F = f;
+  return h && f === "button" && (F = "a"), /* @__PURE__ */ H.jsx(
+    Zr,
+    {
+      gaData: {
+        ...Xu,
+        section: t,
+        // @deprecated - remove at some point
+        ...r,
+        text: e
+      },
+      children: /* @__PURE__ */ H.jsxs(
+        F,
+        {
+          type: F === "button" && _ ? "button" : void 0,
+          ...S,
+          className: dt(U) || I,
+          href: h,
+          ref: C,
+          onClick: _,
+          "aria-label": n,
+          target: F === "a" ? E : null,
+          children: [
+            m && /* @__PURE__ */ H.jsx("i", { className: `${m == null ? void 0 : m[0]} fa-${m == null ? void 0 : m[1]} me-1` }),
+            e
+          ]
+        }
+      )
+    }
+  );
+};
+Tr.propTypes = {
+  /**
+   * Button label
+   */
+  label: l.string,
+  /**
+   * @deprecated
+   * Card title, use `gaData.section` instead
+   */
+  cardTitle: l.string,
+  /**
+   * Google Analytics event data
+   */
+  gaData: Bi,
+  /**
+    ARIA label for accessibility
+  */
+  ariaLabel: l.string,
+  /**
+    Render button as a block-button?
+  */
+  block: l.bool,
+  /**
+    Button background color
+  */
+  color: l.oneOf(["gold", "maroon", "gray", "dark"]),
+  /**
+    Disable the button?
+  */
+  disabled: l.bool,
+  /**
+    Pass in a Component to override default button element.
+    For example: react-router Link
+  */
+  element: l.oneOfType([
+    l.func,
+    l.string,
+    l.shape({ $$typeof: l.symbol, render: l.func }),
+    l.arrayOf(
+      l.oneOfType([
+        l.func,
+        l.string,
+        l.shape({ $$typeof: l.symbol, render: l.func })
+      ])
+    )
+  ]),
+  /**
+    Link target url; will cause button to be rendered as `<a>` link
+  */
+  href: l.string,
+  /**
+    React Font Awesome icon prefix and name string to be rendered in button label. Ex: ['fab', 'drupal']
+  */
+  icon: l.arrayOf(l.string),
+  /**
+   * ref will only get you a reference to the Button component, use innerRef to
+   * get a reference to the DOM element (for things like focus management).
+   */
+  innerRef: l.oneOfType([
+    l.object,
+    l.func,
+    l.string
+  ]),
+  /**
+    Event handler function for `<button>`
+  */
+  onClick: l.func,
+  /**
+    Button size
+  */
+  size: l.oneOf(["default", "small", "xsmall"]),
+  /**
+    Classes to add to button
+  */
+  classes: l.arrayOf(l.string),
+  /**
+   Link target type
+   */
+  target: l.oneOf(["_blank", "_self", "_top", "_parent"])
+};
+Tr.defaultProps = {
+  label: "",
+  cardTitle: "",
+  ariaLabel: void 0,
+  block: void 0,
+  color: "gray",
+  disabled: void 0,
+  element: "button",
+  href: void 0,
+  icon: void 0,
+  innerRef: void 0,
+  onClick: void 0,
+  size: "default",
+  classes: void 0,
+  target: "_self"
+};
+var sl = { exports: {} }, Ke = {}, Jo;
+function Ku() {
+  if (Jo) return Ke;
+  Jo = 1;
+  var e = Symbol.for("react.transitional.element"), t = Symbol.for("react.portal"), r = Symbol.for("react.fragment"), n = Symbol.for("react.strict_mode"), a = Symbol.for("react.profiler"), s = Symbol.for("react.consumer"), d = Symbol.for("react.context"), f = Symbol.for("react.forward_ref"), h = Symbol.for("react.suspense"), m = Symbol.for("react.suspense_list"), C = Symbol.for("react.memo"), _ = Symbol.for("react.lazy"), O = Symbol.for("react.offscreen"), U = Symbol.for("react.client.reference");
+  function E(S) {
+    if (typeof S == "object" && S !== null) {
+      var I = S.$$typeof;
+      switch (I) {
+        case e:
+          switch (S = S.type, S) {
+            case r:
+            case a:
+            case n:
+            case h:
+            case m:
+              return S;
+            default:
+              switch (S = S && S.$$typeof, S) {
+                case d:
+                case f:
+                case _:
+                case C:
+                  return S;
+                case s:
+                  return S;
+                default:
+                  return I;
+              }
+          }
+        case t:
+          return I;
+      }
+    }
+  }
+  return Ke.ContextConsumer = s, Ke.ContextProvider = d, Ke.Element = e, Ke.ForwardRef = f, Ke.Fragment = r, Ke.Lazy = _, Ke.Memo = C, Ke.Portal = t, Ke.Profiler = a, Ke.StrictMode = n, Ke.Suspense = h, Ke.SuspenseList = m, Ke.isContextConsumer = function(S) {
+    return E(S) === s;
+  }, Ke.isContextProvider = function(S) {
+    return E(S) === d;
+  }, Ke.isElement = function(S) {
+    return typeof S == "object" && S !== null && S.$$typeof === e;
+  }, Ke.isForwardRef = function(S) {
+    return E(S) === f;
+  }, Ke.isFragment = function(S) {
+    return E(S) === r;
+  }, Ke.isLazy = function(S) {
+    return E(S) === _;
+  }, Ke.isMemo = function(S) {
+    return E(S) === C;
+  }, Ke.isPortal = function(S) {
+    return E(S) === t;
+  }, Ke.isProfiler = function(S) {
+    return E(S) === a;
+  }, Ke.isStrictMode = function(S) {
+    return E(S) === n;
+  }, Ke.isSuspense = function(S) {
+    return E(S) === h;
+  }, Ke.isSuspenseList = function(S) {
+    return E(S) === m;
+  }, Ke.isValidElementType = function(S) {
+    return typeof S == "string" || typeof S == "function" || S === r || S === a || S === n || S === h || S === m || S === O || typeof S == "object" && S !== null && (S.$$typeof === _ || S.$$typeof === C || S.$$typeof === d || S.$$typeof === s || S.$$typeof === f || S.$$typeof === U || S.getModuleId !== void 0);
+  }, Ke.typeOf = E, Ke;
+}
+sl.exports = Ku();
+var Hi = sl.exports;
+function Ju(e) {
+  function t(B, R, z, q, v) {
+    for (var Y = 0, j = 0, ie = 0, re = 0, ee, K, se = 0, he = 0, ne, de = ne = ee = 0, ae = 0, ye = 0, Ue = 0, me = 0, nt = z.length, Xe = nt - 1, we, J = "", pe = "", at = "", et = "", Me; ae < nt; ) {
+      if (K = z.charCodeAt(ae), ae === Xe && j + re + ie + Y !== 0 && (j !== 0 && (K = j === 47 ? 10 : 47), re = ie = Y = 0, nt++, Xe++), j + re + ie + Y === 0) {
+        if (ae === Xe && (0 < ye && (J = J.replace(O, "")), 0 < J.trim().length)) {
+          switch (K) {
+            case 32:
+            case 9:
+            case 59:
+            case 13:
+            case 10:
+              break;
+            default:
+              J += z.charAt(ae);
+          }
+          K = 59;
+        }
+        switch (K) {
+          case 123:
+            for (J = J.trim(), ee = J.charCodeAt(0), ne = 1, me = ++ae; ae < nt; ) {
+              switch (K = z.charCodeAt(ae)) {
+                case 123:
+                  ne++;
+                  break;
+                case 125:
+                  ne--;
+                  break;
+                case 47:
+                  switch (K = z.charCodeAt(ae + 1)) {
+                    case 42:
+                    case 47:
+                      e: {
+                        for (de = ae + 1; de < Xe; ++de)
+                          switch (z.charCodeAt(de)) {
+                            case 47:
+                              if (K === 42 && z.charCodeAt(de - 1) === 42 && ae + 2 !== de) {
+                                ae = de + 1;
+                                break e;
+                              }
+                              break;
+                            case 10:
+                              if (K === 47) {
+                                ae = de + 1;
+                                break e;
+                              }
+                          }
+                        ae = de;
+                      }
+                  }
+                  break;
+                case 91:
+                  K++;
+                case 40:
+                  K++;
+                case 34:
+                case 39:
+                  for (; ae++ < Xe && z.charCodeAt(ae) !== K; )
+                    ;
+              }
+              if (ne === 0) break;
+              ae++;
+            }
+            switch (ne = z.substring(me, ae), ee === 0 && (ee = (J = J.replace(_, "").trim()).charCodeAt(0)), ee) {
+              case 64:
+                switch (0 < ye && (J = J.replace(O, "")), K = J.charCodeAt(1), K) {
+                  case 100:
+                  case 109:
+                  case 115:
+                  case 45:
+                    ye = R;
+                    break;
+                  default:
+                    ye = He;
+                }
+                if (ne = t(R, ye, ne, K, v + 1), me = ne.length, 0 < _e && (ye = r(He, J, Ue), Me = f(3, ne, ye, R, ue, fe, me, K, v, q), J = ye.join(""), Me !== void 0 && (me = (ne = Me.trim()).length) === 0 && (K = 0, ne = "")), 0 < me) switch (K) {
+                  case 115:
+                    J = J.replace(oe, d);
+                  case 100:
+                  case 109:
+                  case 45:
+                    ne = J + "{" + ne + "}";
+                    break;
+                  case 107:
+                    J = J.replace($, "$1 $2"), ne = J + "{" + ne + "}", ne = ge === 1 || ge === 2 && s("@" + ne, 3) ? "@-webkit-" + ne + "@" + ne : "@" + ne;
+                    break;
+                  default:
+                    ne = J + ne, q === 112 && (ne = (pe += ne, ""));
+                }
+                else ne = "";
+                break;
+              default:
+                ne = t(R, r(R, J, Ue), ne, q, v + 1);
+            }
+            at += ne, ne = Ue = ye = de = ee = 0, J = "", K = z.charCodeAt(++ae);
+            break;
+          case 125:
+          case 59:
+            if (J = (0 < ye ? J.replace(O, "") : J).trim(), 1 < (me = J.length)) switch (de === 0 && (ee = J.charCodeAt(0), ee === 45 || 96 < ee && 123 > ee) && (me = (J = J.replace(" ", ":")).length), 0 < _e && (Me = f(1, J, R, B, ue, fe, pe.length, q, v, q)) !== void 0 && (me = (J = Me.trim()).length) === 0 && (J = "\0\0"), ee = J.charCodeAt(0), K = J.charCodeAt(1), ee) {
+              case 0:
+                break;
+              case 64:
+                if (K === 105 || K === 99) {
+                  et += J + z.charAt(ae);
+                  break;
+                }
+              default:
+                J.charCodeAt(me - 1) !== 58 && (pe += a(J, ee, K, J.charCodeAt(2)));
+            }
+            Ue = ye = de = ee = 0, J = "", K = z.charCodeAt(++ae);
+        }
+      }
+      switch (K) {
+        case 13:
+        case 10:
+          j === 47 ? j = 0 : 1 + ee === 0 && q !== 107 && 0 < J.length && (ye = 1, J += "\0"), 0 < _e * We && f(0, J, R, B, ue, fe, pe.length, q, v, q), fe = 1, ue++;
+          break;
+        case 59:
+        case 125:
+          if (j + re + ie + Y === 0) {
+            fe++;
+            break;
+          }
+        default:
+          switch (fe++, we = z.charAt(ae), K) {
+            case 9:
+            case 32:
+              if (re + Y + j === 0) switch (se) {
+                case 44:
+                case 58:
+                case 9:
+                case 32:
+                  we = "";
+                  break;
+                default:
+                  K !== 32 && (we = " ");
+              }
+              break;
+            case 0:
+              we = "\\0";
+              break;
+            case 12:
+              we = "\\f";
+              break;
+            case 11:
+              we = "\\v";
+              break;
+            case 38:
+              re + j + Y === 0 && (ye = Ue = 1, we = "\f" + we);
+              break;
+            case 108:
+              if (re + j + Y + Ce === 0 && 0 < de) switch (ae - de) {
+                case 2:
+                  se === 112 && z.charCodeAt(ae - 3) === 58 && (Ce = se);
+                case 8:
+                  he === 111 && (Ce = he);
+              }
+              break;
+            case 58:
+              re + j + Y === 0 && (de = ae);
+              break;
+            case 44:
+              j + ie + re + Y === 0 && (ye = 1, we += "\r");
+              break;
+            case 34:
+            case 39:
+              j === 0 && (re = re === K ? 0 : re === 0 ? K : re);
+              break;
+            case 91:
+              re + j + ie === 0 && Y++;
+              break;
+            case 93:
+              re + j + ie === 0 && Y--;
+              break;
+            case 41:
+              re + j + Y === 0 && ie--;
+              break;
+            case 40:
+              if (re + j + Y === 0) {
+                if (ee === 0) switch (2 * se + 3 * he) {
+                  case 533:
+                    break;
+                  default:
+                    ee = 1;
+                }
+                ie++;
+              }
+              break;
+            case 64:
+              j + ie + re + Y + de + ne === 0 && (ne = 1);
+              break;
+            case 42:
+            case 47:
+              if (!(0 < re + Y + ie)) switch (j) {
+                case 0:
+                  switch (2 * K + 3 * z.charCodeAt(ae + 1)) {
+                    case 235:
+                      j = 47;
+                      break;
+                    case 220:
+                      me = ae, j = 42;
+                  }
+                  break;
+                case 42:
+                  K === 47 && se === 42 && me + 2 !== ae && (z.charCodeAt(me + 2) === 33 && (pe += z.substring(me, ae + 1)), we = "", j = 0);
+              }
+          }
+          j === 0 && (J += we);
+      }
+      he = se, se = K, ae++;
+    }
+    if (me = pe.length, 0 < me) {
+      if (ye = R, 0 < _e && (Me = f(2, pe, ye, B, ue, fe, me, q, v, q), Me !== void 0 && (pe = Me).length === 0)) return et + pe + at;
+      if (pe = ye.join(",") + "{" + pe + "}", ge * Ce !== 0) {
+        switch (ge !== 2 || s(pe, 2) || (Ce = 0), Ce) {
+          case 111:
+            pe = pe.replace(G, ":-moz-$1") + pe;
+            break;
+          case 112:
+            pe = pe.replace(X, "::-webkit-input-$1") + pe.replace(X, "::-moz-$1") + pe.replace(X, ":-ms-input-$1") + pe;
+        }
+        Ce = 0;
+      }
+    }
+    return et + pe + at;
+  }
+  function r(B, R, z) {
+    var q = R.trim().split(I);
+    R = q;
+    var v = q.length, Y = B.length;
+    switch (Y) {
+      case 0:
+      case 1:
+        var j = 0;
+        for (B = Y === 0 ? "" : B[0] + " "; j < v; ++j)
+          R[j] = n(B, R[j], z).trim();
+        break;
+      default:
+        var ie = j = 0;
+        for (R = []; j < v; ++j)
+          for (var re = 0; re < Y; ++re)
+            R[ie++] = n(B[re] + " ", q[j], z).trim();
+    }
+    return R;
+  }
+  function n(B, R, z) {
+    var q = R.charCodeAt(0);
+    switch (33 > q && (q = (R = R.trim()).charCodeAt(0)), q) {
+      case 38:
+        return R.replace(F, "$1" + B.trim());
+      case 58:
+        return B.trim() + R.replace(F, "$1" + B.trim());
+      default:
+        if (0 < 1 * z && 0 < R.indexOf("\f")) return R.replace(F, (B.charCodeAt(0) === 58 ? "" : "$1") + B.trim());
+    }
+    return B + R;
+  }
+  function a(B, R, z, q) {
+    var v = B + ";", Y = 2 * R + 3 * z + 4 * q;
+    if (Y === 944) {
+      B = v.indexOf(":", 9) + 1;
+      var j = v.substring(B, v.length - 1).trim();
+      return j = v.substring(0, B).trim() + j + ";", ge === 1 || ge === 2 && s(j, 1) ? "-webkit-" + j + j : j;
+    }
+    if (ge === 0 || ge === 2 && !s(v, 1)) return v;
+    switch (Y) {
+      case 1015:
+        return v.charCodeAt(10) === 97 ? "-webkit-" + v + v : v;
+      case 951:
+        return v.charCodeAt(3) === 116 ? "-webkit-" + v + v : v;
+      case 963:
+        return v.charCodeAt(5) === 110 ? "-webkit-" + v + v : v;
+      case 1009:
+        if (v.charCodeAt(4) !== 100) break;
+      case 969:
+      case 942:
+        return "-webkit-" + v + v;
+      case 978:
+        return "-webkit-" + v + "-moz-" + v + v;
+      case 1019:
+      case 983:
+        return "-webkit-" + v + "-moz-" + v + "-ms-" + v + v;
+      case 883:
+        if (v.charCodeAt(8) === 45) return "-webkit-" + v + v;
+        if (0 < v.indexOf("image-set(", 11)) return v.replace(De, "$1-webkit-$2") + v;
+        break;
+      case 932:
+        if (v.charCodeAt(4) === 45) switch (v.charCodeAt(5)) {
+          case 103:
+            return "-webkit-box-" + v.replace("-grow", "") + "-webkit-" + v + "-ms-" + v.replace("grow", "positive") + v;
+          case 115:
+            return "-webkit-" + v + "-ms-" + v.replace("shrink", "negative") + v;
+          case 98:
+            return "-webkit-" + v + "-ms-" + v.replace("basis", "preferred-size") + v;
+        }
+        return "-webkit-" + v + "-ms-" + v + v;
+      case 964:
+        return "-webkit-" + v + "-ms-flex-" + v + v;
+      case 1023:
+        if (v.charCodeAt(8) !== 99) break;
+        return j = v.substring(v.indexOf(":", 15)).replace("flex-", "").replace("space-between", "justify"), "-webkit-box-pack" + j + "-webkit-" + v + "-ms-flex-pack" + j + v;
+      case 1005:
+        return E.test(v) ? v.replace(U, ":-webkit-") + v.replace(U, ":-moz-") + v : v;
+      case 1e3:
+        switch (j = v.substring(13).trim(), R = j.indexOf("-") + 1, j.charCodeAt(0) + j.charCodeAt(R)) {
+          case 226:
+            j = v.replace(T, "tb");
+            break;
+          case 232:
+            j = v.replace(T, "tb-rl");
+            break;
+          case 220:
+            j = v.replace(T, "lr");
+            break;
+          default:
+            return v;
+        }
+        return "-webkit-" + v + "-ms-" + j + v;
+      case 1017:
+        if (v.indexOf("sticky", 9) === -1) break;
+      case 975:
+        switch (R = (v = B).length - 10, j = (v.charCodeAt(R) === 33 ? v.substring(0, R) : v).substring(B.indexOf(":", 7) + 1).trim(), Y = j.charCodeAt(0) + (j.charCodeAt(7) | 0)) {
+          case 203:
+            if (111 > j.charCodeAt(8)) break;
+          case 115:
+            v = v.replace(j, "-webkit-" + j) + ";" + v;
+            break;
+          case 207:
+          case 102:
+            v = v.replace(j, "-webkit-" + (102 < Y ? "inline-" : "") + "box") + ";" + v.replace(j, "-webkit-" + j) + ";" + v.replace(j, "-ms-" + j + "box") + ";" + v;
+        }
+        return v + ";";
+      case 938:
+        if (v.charCodeAt(5) === 45) switch (v.charCodeAt(6)) {
+          case 105:
+            return j = v.replace("-items", ""), "-webkit-" + v + "-webkit-box-" + j + "-ms-flex-" + j + v;
+          case 115:
+            return "-webkit-" + v + "-ms-flex-item-" + v.replace(Se, "") + v;
+          default:
+            return "-webkit-" + v + "-ms-flex-line-pack" + v.replace("align-content", "").replace(Se, "") + v;
+        }
+        break;
+      case 973:
+      case 989:
+        if (v.charCodeAt(3) !== 45 || v.charCodeAt(4) === 122) break;
+      case 931:
+      case 953:
+        if ($e.test(B) === !0) return (j = B.substring(B.indexOf(":") + 1)).charCodeAt(0) === 115 ? a(B.replace("stretch", "fill-available"), R, z, q).replace(":fill-available", ":stretch") : v.replace(j, "-webkit-" + j) + v.replace(j, "-moz-" + j.replace("fill-", "")) + v;
+        break;
+      case 962:
+        if (v = "-webkit-" + v + (v.charCodeAt(5) === 102 ? "-ms-" + v : "") + v, z + q === 211 && v.charCodeAt(13) === 105 && 0 < v.indexOf("transform", 10)) return v.substring(0, v.indexOf(";", 27) + 1).replace(S, "$1-webkit-$2") + v;
+    }
+    return v;
+  }
+  function s(B, R) {
+    var z = B.indexOf(R === 1 ? ":" : "{"), q = B.substring(0, R !== 3 ? z : 10);
+    return z = B.substring(z + 1, B.length - 1), Fe(R !== 2 ? q : q.replace(Ie, "$1"), z, R);
+  }
+  function d(B, R) {
+    var z = a(R, R.charCodeAt(0), R.charCodeAt(1), R.charCodeAt(2));
+    return z !== R + ";" ? z.replace(ce, " or ($1)").substring(4) : "(" + R + ")";
+  }
+  function f(B, R, z, q, v, Y, j, ie, re, ee) {
+    for (var K = 0, se = R, he; K < _e; ++K)
+      switch (he = Ae[K].call(C, B, se, z, q, v, Y, j, ie, re, ee)) {
+        case void 0:
+        case !1:
+        case !0:
+        case null:
+          break;
+        default:
+          se = he;
+      }
+    if (se !== R) return se;
+  }
+  function h(B) {
+    switch (B) {
+      case void 0:
+      case null:
+        _e = Ae.length = 0;
+        break;
+      default:
+        if (typeof B == "function") Ae[_e++] = B;
+        else if (typeof B == "object") for (var R = 0, z = B.length; R < z; ++R)
+          h(B[R]);
+        else We = !!B | 0;
+    }
+    return h;
+  }
+  function m(B) {
+    return B = B.prefix, B !== void 0 && (Fe = null, B ? typeof B != "function" ? ge = 1 : (ge = 2, Fe = B) : ge = 0), m;
+  }
+  function C(B, R) {
+    var z = B;
+    if (33 > z.charCodeAt(0) && (z = z.trim()), Ve = z, z = [Ve], 0 < _e) {
+      var q = f(-1, R, z, z, ue, fe, 0, 0, 0, 0);
+      q !== void 0 && typeof q == "string" && (R = q);
+    }
+    var v = t(He, z, R, 0, 0);
+    return 0 < _e && (q = f(-2, v, z, z, ue, fe, v.length, 0, 0, 0), q !== void 0 && (v = q)), Ve = "", Ce = 0, fe = ue = 1, v;
+  }
+  var _ = /^\0+/g, O = /[\0\r\f]/g, U = /: */g, E = /zoo|gra/, S = /([,: ])(transform)/g, I = /,\r+?/g, F = /([\t\r\n ])*\f?&/g, $ = /@(k\w+)\s*(\S*)\s*/, X = /::(place)/g, G = /:(read-only)/g, T = /[svh]\w+-[tblr]{2}/, oe = /\(\s*(.*)\s*\)/g, ce = /([\s\S]*?);/g, Se = /-self|flex-/g, Ie = /[^]*?(:[rp][el]a[\w-]+)[^]*/, $e = /stretch|:\s*\w+\-(?:conte|avail)/, De = /([^-])(image-set\()/, fe = 1, ue = 1, Ce = 0, ge = 1, He = [], Ae = [], _e = 0, Fe = null, We = 0, Ve = "";
+  return C.use = h, C.set = m, e !== void 0 && m(e), C;
+}
+var Qu = {
+  animationIterationCount: 1,
+  borderImageOutset: 1,
+  borderImageSlice: 1,
+  borderImageWidth: 1,
+  boxFlex: 1,
+  boxFlexGroup: 1,
+  boxOrdinalGroup: 1,
+  columnCount: 1,
+  columns: 1,
+  flex: 1,
+  flexGrow: 1,
+  flexPositive: 1,
+  flexShrink: 1,
+  flexNegative: 1,
+  flexOrder: 1,
+  gridRow: 1,
+  gridRowEnd: 1,
+  gridRowSpan: 1,
+  gridRowStart: 1,
+  gridColumn: 1,
+  gridColumnEnd: 1,
+  gridColumnSpan: 1,
+  gridColumnStart: 1,
+  msGridRow: 1,
+  msGridRowSpan: 1,
+  msGridColumn: 1,
+  msGridColumnSpan: 1,
+  fontWeight: 1,
+  lineHeight: 1,
+  opacity: 1,
+  order: 1,
+  orphans: 1,
+  tabSize: 1,
+  widows: 1,
+  zIndex: 1,
+  zoom: 1,
+  WebkitLineClamp: 1,
+  // SVG-related properties
+  fillOpacity: 1,
+  floodOpacity: 1,
+  stopOpacity: 1,
+  strokeDasharray: 1,
+  strokeDashoffset: 1,
+  strokeMiterlimit: 1,
+  strokeOpacity: 1,
+  strokeWidth: 1
+};
+function ed(e) {
+  var t = /* @__PURE__ */ Object.create(null);
+  return function(r) {
+    return t[r] === void 0 && (t[r] = e(r)), t[r];
+  };
+}
+var td = /^((children|dangerouslySetInnerHTML|key|ref|autoFocus|defaultValue|defaultChecked|innerHTML|suppressContentEditableWarning|suppressHydrationWarning|valueLink|abbr|accept|acceptCharset|accessKey|action|allow|allowUserMedia|allowPaymentRequest|allowFullScreen|allowTransparency|alt|async|autoComplete|autoPlay|capture|cellPadding|cellSpacing|challenge|charSet|checked|cite|classID|className|cols|colSpan|content|contentEditable|contextMenu|controls|controlsList|coords|crossOrigin|data|dateTime|decoding|default|defer|dir|disabled|disablePictureInPicture|disableRemotePlayback|download|draggable|encType|enterKeyHint|fetchpriority|fetchPriority|form|formAction|formEncType|formMethod|formNoValidate|formTarget|frameBorder|headers|height|hidden|high|href|hrefLang|htmlFor|httpEquiv|id|inputMode|integrity|is|keyParams|keyType|kind|label|lang|list|loading|loop|low|marginHeight|marginWidth|max|maxLength|media|mediaGroup|method|min|minLength|multiple|muted|name|nonce|noValidate|open|optimum|pattern|placeholder|playsInline|poster|preload|profile|radioGroup|readOnly|referrerPolicy|rel|required|reversed|role|rows|rowSpan|sandbox|scope|scoped|scrolling|seamless|selected|shape|size|sizes|slot|span|spellCheck|src|srcDoc|srcLang|srcSet|start|step|style|summary|tabIndex|target|title|translate|type|useMap|value|width|wmode|wrap|about|datatype|inlist|prefix|property|resource|typeof|vocab|autoCapitalize|autoCorrect|autoSave|color|incremental|fallback|inert|itemProp|itemScope|itemType|itemID|itemRef|on|option|results|security|unselectable|accentHeight|accumulate|additive|alignmentBaseline|allowReorder|alphabetic|amplitude|arabicForm|ascent|attributeName|attributeType|autoReverse|azimuth|baseFrequency|baselineShift|baseProfile|bbox|begin|bias|by|calcMode|capHeight|clip|clipPathUnits|clipPath|clipRule|colorInterpolation|colorInterpolationFilters|colorProfile|colorRendering|contentScriptType|contentStyleType|cursor|cx|cy|d|decelerate|descent|diffuseConstant|direction|display|divisor|dominantBaseline|dur|dx|dy|edgeMode|elevation|enableBackground|end|exponent|externalResourcesRequired|fill|fillOpacity|fillRule|filter|filterRes|filterUnits|floodColor|floodOpacity|focusable|fontFamily|fontSize|fontSizeAdjust|fontStretch|fontStyle|fontVariant|fontWeight|format|from|fr|fx|fy|g1|g2|glyphName|glyphOrientationHorizontal|glyphOrientationVertical|glyphRef|gradientTransform|gradientUnits|hanging|horizAdvX|horizOriginX|ideographic|imageRendering|in|in2|intercept|k|k1|k2|k3|k4|kernelMatrix|kernelUnitLength|kerning|keyPoints|keySplines|keyTimes|lengthAdjust|letterSpacing|lightingColor|limitingConeAngle|local|markerEnd|markerMid|markerStart|markerHeight|markerUnits|markerWidth|mask|maskContentUnits|maskUnits|mathematical|mode|numOctaves|offset|opacity|operator|order|orient|orientation|origin|overflow|overlinePosition|overlineThickness|panose1|paintOrder|pathLength|patternContentUnits|patternTransform|patternUnits|pointerEvents|points|pointsAtX|pointsAtY|pointsAtZ|preserveAlpha|preserveAspectRatio|primitiveUnits|r|radius|refX|refY|renderingIntent|repeatCount|repeatDur|requiredExtensions|requiredFeatures|restart|result|rotate|rx|ry|scale|seed|shapeRendering|slope|spacing|specularConstant|specularExponent|speed|spreadMethod|startOffset|stdDeviation|stemh|stemv|stitchTiles|stopColor|stopOpacity|strikethroughPosition|strikethroughThickness|string|stroke|strokeDasharray|strokeDashoffset|strokeLinecap|strokeLinejoin|strokeMiterlimit|strokeOpacity|strokeWidth|surfaceScale|systemLanguage|tableValues|targetX|targetY|textAnchor|textDecoration|textRendering|textLength|to|transform|u1|u2|underlinePosition|underlineThickness|unicode|unicodeBidi|unicodeRange|unitsPerEm|vAlphabetic|vHanging|vIdeographic|vMathematical|values|vectorEffect|version|vertAdvY|vertOriginX|vertOriginY|viewBox|viewTarget|visibility|widths|wordSpacing|writingMode|x|xHeight|x1|x2|xChannelSelector|xlinkActuate|xlinkArcrole|xlinkHref|xlinkRole|xlinkShow|xlinkTitle|xlinkType|xmlBase|xmlns|xmlnsXlink|xmlLang|xmlSpace|y|y1|y2|yChannelSelector|z|zoomAndPan|for|class|autofocus)|(([Dd][Aa][Tt][Aa]|[Aa][Rr][Ii][Aa]|x)-.*))$/, Qo = /* @__PURE__ */ ed(
+  function(e) {
+    return td.test(e) || e.charCodeAt(0) === 111 && e.charCodeAt(1) === 110 && e.charCodeAt(2) < 91;
+  }
+  /* Z+1 */
+), ll = { exports: {} }, Ge = {}, es;
+function rd() {
+  if (es) return Ge;
+  es = 1;
+  var e = typeof Symbol == "function" && Symbol.for, t = e ? Symbol.for("react.element") : 60103, r = e ? Symbol.for("react.portal") : 60106, n = e ? Symbol.for("react.fragment") : 60107, a = e ? Symbol.for("react.strict_mode") : 60108, s = e ? Symbol.for("react.profiler") : 60114, d = e ? Symbol.for("react.provider") : 60109, f = e ? Symbol.for("react.context") : 60110, h = e ? Symbol.for("react.async_mode") : 60111, m = e ? Symbol.for("react.concurrent_mode") : 60111, C = e ? Symbol.for("react.forward_ref") : 60112, _ = e ? Symbol.for("react.suspense") : 60113, O = e ? Symbol.for("react.suspense_list") : 60120, U = e ? Symbol.for("react.memo") : 60115, E = e ? Symbol.for("react.lazy") : 60116, S = e ? Symbol.for("react.block") : 60121, I = e ? Symbol.for("react.fundamental") : 60117, F = e ? Symbol.for("react.responder") : 60118, $ = e ? Symbol.for("react.scope") : 60119;
+  function X(T) {
+    if (typeof T == "object" && T !== null) {
+      var oe = T.$$typeof;
+      switch (oe) {
+        case t:
+          switch (T = T.type, T) {
+            case h:
+            case m:
+            case n:
+            case s:
+            case a:
+            case _:
+              return T;
+            default:
+              switch (T = T && T.$$typeof, T) {
+                case f:
+                case C:
+                case E:
+                case U:
+                case d:
+                  return T;
+                default:
+                  return oe;
+              }
+          }
+        case r:
+          return oe;
+      }
+    }
+  }
+  function G(T) {
+    return X(T) === m;
+  }
+  return Ge.AsyncMode = h, Ge.ConcurrentMode = m, Ge.ContextConsumer = f, Ge.ContextProvider = d, Ge.Element = t, Ge.ForwardRef = C, Ge.Fragment = n, Ge.Lazy = E, Ge.Memo = U, Ge.Portal = r, Ge.Profiler = s, Ge.StrictMode = a, Ge.Suspense = _, Ge.isAsyncMode = function(T) {
+    return G(T) || X(T) === h;
+  }, Ge.isConcurrentMode = G, Ge.isContextConsumer = function(T) {
+    return X(T) === f;
+  }, Ge.isContextProvider = function(T) {
+    return X(T) === d;
+  }, Ge.isElement = function(T) {
+    return typeof T == "object" && T !== null && T.$$typeof === t;
+  }, Ge.isForwardRef = function(T) {
+    return X(T) === C;
+  }, Ge.isFragment = function(T) {
+    return X(T) === n;
+  }, Ge.isLazy = function(T) {
+    return X(T) === E;
+  }, Ge.isMemo = function(T) {
+    return X(T) === U;
+  }, Ge.isPortal = function(T) {
+    return X(T) === r;
+  }, Ge.isProfiler = function(T) {
+    return X(T) === s;
+  }, Ge.isStrictMode = function(T) {
+    return X(T) === a;
+  }, Ge.isSuspense = function(T) {
+    return X(T) === _;
+  }, Ge.isValidElementType = function(T) {
+    return typeof T == "string" || typeof T == "function" || T === n || T === m || T === s || T === a || T === _ || T === O || typeof T == "object" && T !== null && (T.$$typeof === E || T.$$typeof === U || T.$$typeof === d || T.$$typeof === f || T.$$typeof === C || T.$$typeof === I || T.$$typeof === F || T.$$typeof === $ || T.$$typeof === S);
+  }, Ge.typeOf = X, Ge;
+}
+ll.exports = rd();
+var nd = ll.exports, Wi = nd, ad = {
+  childContextTypes: !0,
+  contextType: !0,
+  contextTypes: !0,
+  defaultProps: !0,
+  displayName: !0,
+  getDefaultProps: !0,
+  getDerivedStateFromError: !0,
+  getDerivedStateFromProps: !0,
+  mixins: !0,
+  propTypes: !0,
+  type: !0
+}, id = {
+  name: !0,
+  length: !0,
+  prototype: !0,
+  caller: !0,
+  callee: !0,
+  arguments: !0,
+  arity: !0
+}, od = {
+  $$typeof: !0,
+  render: !0,
+  defaultProps: !0,
+  displayName: !0,
+  propTypes: !0
+}, cl = {
+  $$typeof: !0,
+  compare: !0,
+  defaultProps: !0,
+  displayName: !0,
+  propTypes: !0,
+  type: !0
+}, Vi = {};
+Vi[Wi.ForwardRef] = od;
+Vi[Wi.Memo] = cl;
+function ts(e) {
+  return Wi.isMemo(e) ? cl : Vi[e.$$typeof] || ad;
+}
+var sd = Object.defineProperty, ld = Object.getOwnPropertyNames, rs = Object.getOwnPropertySymbols, cd = Object.getOwnPropertyDescriptor, ud = Object.getPrototypeOf, ns = Object.prototype;
+function ul(e, t, r) {
+  if (typeof t != "string") {
+    if (ns) {
+      var n = ud(t);
+      n && n !== ns && ul(e, n, r);
+    }
+    var a = ld(t);
+    rs && (a = a.concat(rs(t)));
+    for (var s = ts(e), d = ts(t), f = 0; f < a.length; ++f) {
+      var h = a[f];
+      if (!id[h] && !(r && r[h]) && !(d && d[h]) && !(s && s[h])) {
+        var m = cd(t, h);
+        try {
+          sd(e, h, m);
+        } catch {
+        }
+      }
+    }
+  }
+  return e;
+}
+var dd = ul;
+const pd = /* @__PURE__ */ zi(dd);
+var Ze = { env: { NODE_ENV: "production" } };
+function Sr() {
+  return (Sr = Object.assign || function(e) {
+    for (var t = 1; t < arguments.length; t++) {
+      var r = arguments[t];
+      for (var n in r) Object.prototype.hasOwnProperty.call(r, n) && (e[n] = r[n]);
+    }
+    return e;
+  }).apply(this, arguments);
+}
+var as = function(e, t) {
+  for (var r = [e[0]], n = 0, a = t.length; n < a; n += 1) r.push(t[n], e[n + 1]);
+  return r;
+}, bi = function(e) {
+  return e !== null && typeof e == "object" && (e.toString ? e.toString() : Object.prototype.toString.call(e)) === "[object Object]" && !Hi.typeOf(e);
+}, ga = Object.freeze([]), Or = Object.freeze({});
+function On(e) {
+  return typeof e == "function";
+}
+function vi(e) {
+  return Ze.env.NODE_ENV !== "production" && typeof e == "string" && e || e.displayName || e.name || "Component";
+}
+function Gi(e) {
+  return e && typeof e.styledComponentId == "string";
+}
+var en = typeof Ze < "u" && Ze.env !== void 0 && (Ze.env.REACT_APP_SC_ATTR || Ze.env.SC_ATTR) || "data-styled", Yi = typeof window < "u" && "HTMLElement" in window, fd = !!(typeof SC_DISABLE_SPEEDY == "boolean" ? SC_DISABLE_SPEEDY : typeof Ze < "u" && Ze.env !== void 0 && (Ze.env.REACT_APP_SC_DISABLE_SPEEDY !== void 0 && Ze.env.REACT_APP_SC_DISABLE_SPEEDY !== "" ? Ze.env.REACT_APP_SC_DISABLE_SPEEDY !== "false" && Ze.env.REACT_APP_SC_DISABLE_SPEEDY : Ze.env.SC_DISABLE_SPEEDY !== void 0 && Ze.env.SC_DISABLE_SPEEDY !== "" ? Ze.env.SC_DISABLE_SPEEDY !== "false" && Ze.env.SC_DISABLE_SPEEDY : Ze.env.NODE_ENV !== "production")), hd = Ze.env.NODE_ENV !== "production" ? { 1: `Cannot create styled-component for component: %s.
+
+`, 2: `Can't collect styles once you've consumed a \`ServerStyleSheet\`'s styles! \`ServerStyleSheet\` is a one off instance for each server-side render cycle.
+
+- Are you trying to reuse it across renders?
+- Are you accidentally calling collectStyles twice?
+
+`, 3: `Streaming SSR is only supported in a Node.js environment; Please do not try to call this method in the browser.
+
+`, 4: `The \`StyleSheetManager\` expects a valid target or sheet prop!
+
+- Does this error occur on the client and is your target falsy?
+- Does this error occur on the server and is the sheet falsy?
+
+`, 5: `The clone method cannot be used on the client!
+
+- Are you running in a client-like environment on the server?
+- Are you trying to run SSR on the client?
+
+`, 6: `Trying to insert a new style tag, but the given Node is unmounted!
+
+- Are you using a custom target that isn't mounted?
+- Does your document not have a valid head element?
+- Have you accidentally removed a style tag manually?
+
+`, 7: 'ThemeProvider: Please return an object from your "theme" prop function, e.g.\n\n```js\ntheme={() => ({})}\n```\n\n', 8: `ThemeProvider: Please make your "theme" prop an object.
+
+`, 9: "Missing document `<head>`\n\n", 10: `Cannot find a StyleSheet instance. Usually this happens if there are multiple copies of styled-components loaded at once. Check out this issue for how to troubleshoot and fix the common cases where this situation can happen: https://github.com/styled-components/styled-components/issues/1941#issuecomment-417862021
+
+`, 11: `_This error was replaced with a dev-time warning, it will be deleted for v4 final._ [createGlobalStyle] received children which will not be rendered. Please use the component without passing children elements.
+
+`, 12: "It seems you are interpolating a keyframe declaration (%s) into an untagged string. This was supported in styled-components v3, but is not longer supported in v4 as keyframes are now injected on-demand. Please wrap your string in the css\\`\\` helper which ensures the styles are injected correctly. See https://www.styled-components.com/docs/api#css\n\n", 13: `%s is not a styled component and cannot be referred to via component selector. See https://www.styled-components.com/docs/advanced#referring-to-other-components for more details.
+
+`, 14: `ThemeProvider: "theme" prop is required.
+
+`, 15: "A stylis plugin has been supplied that is not named. We need a name for each plugin to be able to prevent styling collisions between different stylis configurations within the same app. Before you pass your plugin to `<StyleSheetManager stylisPlugins={[]}>`, please make sure each plugin is uniquely-named, e.g.\n\n```js\nObject.defineProperty(importedPlugin, 'name', { value: 'some-unique-name' });\n```\n\n", 16: `Reached the limit of how many styled components may be created at group %s.
+You may only create up to 1,073,741,824 components. If you're creating components dynamically,
+as for instance in your render method then you may be running into this limitation.
+
+`, 17: `CSSStyleSheet could not be found on HTMLStyleElement.
+Has styled-components' style tag been unmounted or altered by another script?
+` } : {};
+function md() {
+  for (var e = arguments.length <= 0 ? void 0 : arguments[0], t = [], r = 1, n = arguments.length; r < n; r += 1) t.push(r < 0 || arguments.length <= r ? void 0 : arguments[r]);
+  return t.forEach(function(a) {
+    e = e.replace(/%[a-z]/, a);
+  }), e;
+}
+function sn(e) {
+  for (var t = arguments.length, r = new Array(t > 1 ? t - 1 : 0), n = 1; n < t; n++) r[n - 1] = arguments[n];
+  throw Ze.env.NODE_ENV === "production" ? new Error("An error occurred. See https://git.io/JUIaE#" + e + " for more information." + (r.length > 0 ? " Args: " + r.join(", ") : "")) : new Error(md.apply(void 0, [hd[e]].concat(r)).trim());
+}
+var gd = function() {
+  function e(r) {
+    this.groupSizes = new Uint32Array(512), this.length = 512, this.tag = r;
+  }
+  var t = e.prototype;
+  return t.indexOfGroup = function(r) {
+    for (var n = 0, a = 0; a < r; a++) n += this.groupSizes[a];
+    return n;
+  }, t.insertRules = function(r, n) {
+    if (r >= this.groupSizes.length) {
+      for (var a = this.groupSizes, s = a.length, d = s; r >= d; ) (d <<= 1) < 0 && sn(16, "" + r);
+      this.groupSizes = new Uint32Array(d), this.groupSizes.set(a), this.length = d;
+      for (var f = s; f < d; f++) this.groupSizes[f] = 0;
+    }
+    for (var h = this.indexOfGroup(r + 1), m = 0, C = n.length; m < C; m++) this.tag.insertRule(h, n[m]) && (this.groupSizes[r]++, h++);
+  }, t.clearGroup = function(r) {
+    if (r < this.length) {
+      var n = this.groupSizes[r], a = this.indexOfGroup(r), s = a + n;
+      this.groupSizes[r] = 0;
+      for (var d = a; d < s; d++) this.tag.deleteRule(a);
+    }
+  }, t.getGroup = function(r) {
+    var n = "";
+    if (r >= this.length || this.groupSizes[r] === 0) return n;
+    for (var a = this.groupSizes[r], s = this.indexOfGroup(r), d = s + a, f = s; f < d; f++) n += this.tag.getRule(f) + `/*!sc*/
+`;
+    return n;
+  }, e;
+}(), ca = /* @__PURE__ */ new Map(), ya = /* @__PURE__ */ new Map(), _n = 1, Qn = function(e) {
+  if (ca.has(e)) return ca.get(e);
+  for (; ya.has(_n); ) _n++;
+  var t = _n++;
+  return Ze.env.NODE_ENV !== "production" && ((0 | t) < 0 || t > 1 << 30) && sn(16, "" + t), ca.set(e, t), ya.set(t, e), t;
+}, yd = function(e) {
+  return ya.get(e);
+}, bd = function(e, t) {
+  t >= _n && (_n = t + 1), ca.set(e, t), ya.set(t, e);
+}, vd = "style[" + en + '][data-styled-version="5.3.11"]', xd = new RegExp("^" + en + '\\.g(\\d+)\\[id="([\\w\\d-]+)"\\].*?"([^"]*)'), wd = function(e, t, r) {
+  for (var n, a = r.split(","), s = 0, d = a.length; s < d; s++) (n = a[s]) && e.registerName(t, n);
+}, Sd = function(e, t) {
+  for (var r = (t.textContent || "").split(`/*!sc*/
+`), n = [], a = 0, s = r.length; a < s; a++) {
+    var d = r[a].trim();
+    if (d) {
+      var f = d.match(xd);
+      if (f) {
+        var h = 0 | parseInt(f[1], 10), m = f[2];
+        h !== 0 && (bd(m, h), wd(e, m, f[3]), e.getTag().insertRules(h, n)), n.length = 0;
+      } else n.push(d);
+    }
+  }
+}, kd = function() {
+  return typeof __webpack_nonce__ < "u" ? __webpack_nonce__ : null;
+}, dl = function(e) {
+  var t = document.head, r = e || t, n = document.createElement("style"), a = function(f) {
+    for (var h = f.childNodes, m = h.length; m >= 0; m--) {
+      var C = h[m];
+      if (C && C.nodeType === 1 && C.hasAttribute(en)) return C;
+    }
+  }(r), s = a !== void 0 ? a.nextSibling : null;
+  n.setAttribute(en, "active"), n.setAttribute("data-styled-version", "5.3.11");
+  var d = kd();
+  return d && n.setAttribute("nonce", d), r.insertBefore(n, s), n;
+}, Td = function() {
+  function e(r) {
+    var n = this.element = dl(r);
+    n.appendChild(document.createTextNode("")), this.sheet = function(a) {
+      if (a.sheet) return a.sheet;
+      for (var s = document.styleSheets, d = 0, f = s.length; d < f; d++) {
+        var h = s[d];
+        if (h.ownerNode === a) return h;
+      }
+      sn(17);
+    }(n), this.length = 0;
+  }
+  var t = e.prototype;
+  return t.insertRule = function(r, n) {
+    try {
+      return this.sheet.insertRule(n, r), this.length++, !0;
+    } catch {
+      return !1;
+    }
+  }, t.deleteRule = function(r) {
+    this.sheet.deleteRule(r), this.length--;
+  }, t.getRule = function(r) {
+    var n = this.sheet.cssRules[r];
+    return n !== void 0 && typeof n.cssText == "string" ? n.cssText : "";
+  }, e;
+}(), Cd = function() {
+  function e(r) {
+    var n = this.element = dl(r);
+    this.nodes = n.childNodes, this.length = 0;
+  }
+  var t = e.prototype;
+  return t.insertRule = function(r, n) {
+    if (r <= this.length && r >= 0) {
+      var a = document.createTextNode(n), s = this.nodes[r];
+      return this.element.insertBefore(a, s || null), this.length++, !0;
+    }
+    return !1;
+  }, t.deleteRule = function(r) {
+    this.element.removeChild(this.nodes[r]), this.length--;
+  }, t.getRule = function(r) {
+    return r < this.length ? this.nodes[r].textContent : "";
+  }, e;
+}(), Ad = function() {
+  function e(r) {
+    this.rules = [], this.length = 0;
+  }
+  var t = e.prototype;
+  return t.insertRule = function(r, n) {
+    return r <= this.length && (this.rules.splice(r, 0, n), this.length++, !0);
+  }, t.deleteRule = function(r) {
+    this.rules.splice(r, 1), this.length--;
+  }, t.getRule = function(r) {
+    return r < this.length ? this.rules[r] : "";
+  }, e;
+}(), is = Yi, _d = { isServer: !Yi, useCSSOMInjection: !fd }, pl = function() {
+  function e(r, n, a) {
+    r === void 0 && (r = Or), n === void 0 && (n = {}), this.options = Sr({}, _d, {}, r), this.gs = n, this.names = new Map(a), this.server = !!r.isServer, !this.server && Yi && is && (is = !1, function(s) {
+      for (var d = document.querySelectorAll(vd), f = 0, h = d.length; f < h; f++) {
+        var m = d[f];
+        m && m.getAttribute(en) !== "active" && (Sd(s, m), m.parentNode && m.parentNode.removeChild(m));
+      }
+    }(this));
+  }
+  e.registerId = function(r) {
+    return Qn(r);
+  };
+  var t = e.prototype;
+  return t.reconstructWithOptions = function(r, n) {
+    return n === void 0 && (n = !0), new e(Sr({}, this.options, {}, r), this.gs, n && this.names || void 0);
+  }, t.allocateGSInstance = function(r) {
+    return this.gs[r] = (this.gs[r] || 0) + 1;
+  }, t.getTag = function() {
+    return this.tag || (this.tag = (a = (n = this.options).isServer, s = n.useCSSOMInjection, d = n.target, r = a ? new Ad(d) : s ? new Td(d) : new Cd(d), new gd(r)));
+    var r, n, a, s, d;
+  }, t.hasNameForId = function(r, n) {
+    return this.names.has(r) && this.names.get(r).has(n);
+  }, t.registerName = function(r, n) {
+    if (Qn(r), this.names.has(r)) this.names.get(r).add(n);
+    else {
+      var a = /* @__PURE__ */ new Set();
+      a.add(n), this.names.set(r, a);
+    }
+  }, t.insertRules = function(r, n, a) {
+    this.registerName(r, n), this.getTag().insertRules(Qn(r), a);
+  }, t.clearNames = function(r) {
+    this.names.has(r) && this.names.get(r).clear();
+  }, t.clearRules = function(r) {
+    this.getTag().clearGroup(Qn(r)), this.clearNames(r);
+  }, t.clearTag = function() {
+    this.tag = void 0;
+  }, t.toString = function() {
+    return function(r) {
+      for (var n = r.getTag(), a = n.length, s = "", d = 0; d < a; d++) {
+        var f = yd(d);
+        if (f !== void 0) {
+          var h = r.names.get(f), m = n.getGroup(d);
+          if (h && m && h.size) {
+            var C = en + ".g" + d + '[id="' + f + '"]', _ = "";
+            h !== void 0 && h.forEach(function(O) {
+              O.length > 0 && (_ += O + ",");
+            }), s += "" + m + C + '{content:"' + _ + `"}/*!sc*/
+`;
+          }
+        }
+      }
+      return s;
+    }(this);
+  }, e;
+}(), Ed = /(a)(d)/gi, os = function(e) {
+  return String.fromCharCode(e + (e > 25 ? 39 : 97));
+};
+function xi(e) {
+  var t, r = "";
+  for (t = Math.abs(e); t > 52; t = t / 52 | 0) r = os(t % 52) + r;
+  return (os(t % 52) + r).replace(Ed, "$1-$2");
+}
+var qr = function(e, t) {
+  for (var r = t.length; r; ) e = 33 * e ^ t.charCodeAt(--r);
+  return e;
+}, fl = function(e) {
+  return qr(5381, e);
+};
+function jd(e) {
+  for (var t = 0; t < e.length; t += 1) {
+    var r = e[t];
+    if (On(r) && !Gi(r)) return !1;
+  }
+  return !0;
+}
+var Od = fl("5.3.11"), Nd = function() {
+  function e(t, r, n) {
+    this.rules = t, this.staticRulesId = "", this.isStatic = Ze.env.NODE_ENV === "production" && (n === void 0 || n.isStatic) && jd(t), this.componentId = r, this.baseHash = qr(Od, r), this.baseStyle = n, pl.registerId(r);
+  }
+  return e.prototype.generateAndInjectStyles = function(t, r, n) {
+    var a = this.componentId, s = [];
+    if (this.baseStyle && s.push(this.baseStyle.generateAndInjectStyles(t, r, n)), this.isStatic && !n.hash) if (this.staticRulesId && r.hasNameForId(a, this.staticRulesId)) s.push(this.staticRulesId);
+    else {
+      var d = tn(this.rules, t, r, n).join(""), f = xi(qr(this.baseHash, d) >>> 0);
+      if (!r.hasNameForId(a, f)) {
+        var h = n(d, "." + f, void 0, a);
+        r.insertRules(a, f, h);
+      }
+      s.push(f), this.staticRulesId = f;
+    }
+    else {
+      for (var m = this.rules.length, C = qr(this.baseHash, n.hash), _ = "", O = 0; O < m; O++) {
+        var U = this.rules[O];
+        if (typeof U == "string") _ += U, Ze.env.NODE_ENV !== "production" && (C = qr(C, U + O));
+        else if (U) {
+          var E = tn(U, t, r, n), S = Array.isArray(E) ? E.join("") : E;
+          C = qr(C, S + O), _ += S;
+        }
+      }
+      if (_) {
+        var I = xi(C >>> 0);
+        if (!r.hasNameForId(a, I)) {
+          var F = n(_, "." + I, void 0, a);
+          r.insertRules(a, I, F);
+        }
+        s.push(I);
+      }
+    }
+    return s.join(" ");
+  }, e;
+}(), Rd = /^\s*\/\/.*$/gm, Id = [":", "[", ".", "#"];
+function Dd(e) {
+  var t, r, n, a, s = Or, d = s.options, f = d === void 0 ? Or : d, h = s.plugins, m = h === void 0 ? ga : h, C = new Ju(f), _ = [], O = /* @__PURE__ */ function(S) {
+    function I(F) {
+      if (F) try {
+        S(F + "}");
+      } catch {
+      }
+    }
+    return function(F, $, X, G, T, oe, ce, Se, Ie, $e) {
+      switch (F) {
+        case 1:
+          if (Ie === 0 && $.charCodeAt(0) === 64) return S($ + ";"), "";
+          break;
+        case 2:
+          if (Se === 0) return $ + "/*|*/";
+          break;
+        case 3:
+          switch (Se) {
+            case 102:
+            case 112:
+              return S(X[0] + $), "";
+            default:
+              return $ + ($e === 0 ? "/*|*/" : "");
+          }
+        case -2:
+          $.split("/*|*/}").forEach(I);
+      }
+    };
+  }(function(S) {
+    _.push(S);
+  }), U = function(S, I, F) {
+    return I === 0 && Id.indexOf(F[r.length]) !== -1 || F.match(a) ? S : "." + t;
+  };
+  function E(S, I, F, $) {
+    $ === void 0 && ($ = "&");
+    var X = S.replace(Rd, ""), G = I && F ? F + " " + I + " { " + X + " }" : X;
+    return t = $, r = I, n = new RegExp("\\" + r + "\\b", "g"), a = new RegExp("(\\" + r + "\\b){2,}"), C(F || !I ? "" : I, G);
+  }
+  return C.use([].concat(m, [function(S, I, F) {
+    S === 2 && F.length && F[0].lastIndexOf(r) > 0 && (F[0] = F[0].replace(n, U));
+  }, O, function(S) {
+    if (S === -2) {
+      var I = _;
+      return _ = [], I;
+    }
+  }])), E.hash = m.length ? m.reduce(function(S, I) {
+    return I.name || sn(15), qr(S, I.name);
+  }, 5381).toString() : "", E;
+}
+var hl = ht.createContext();
+hl.Consumer;
+var ml = ht.createContext(), Pd = (ml.Consumer, new pl()), wi = Dd();
+function Ld() {
+  return Yt(hl) || Pd;
+}
+function Md() {
+  return Yt(ml) || wi;
+}
+var Fd = function() {
+  function e(t, r) {
+    var n = this;
+    this.inject = function(a, s) {
+      s === void 0 && (s = wi);
+      var d = n.name + s.hash;
+      a.hasNameForId(n.id, d) || a.insertRules(n.id, d, s(n.rules, d, "@keyframes"));
+    }, this.toString = function() {
+      return sn(12, String(n.name));
+    }, this.name = t, this.id = "sc-keyframes-" + t, this.rules = r;
+  }
+  return e.prototype.getName = function(t) {
+    return t === void 0 && (t = wi), this.name + t.hash;
+  }, e;
+}(), $d = /([A-Z])/, Ud = /([A-Z])/g, zd = /^ms-/, Bd = function(e) {
+  return "-" + e.toLowerCase();
+};
+function ss(e) {
+  return $d.test(e) ? e.replace(Ud, Bd).replace(zd, "-ms-") : e;
+}
+var ls = function(e) {
+  return e == null || e === !1 || e === "";
+};
+function tn(e, t, r, n) {
+  if (Array.isArray(e)) {
+    for (var a, s = [], d = 0, f = e.length; d < f; d += 1) (a = tn(e[d], t, r, n)) !== "" && (Array.isArray(a) ? s.push.apply(s, a) : s.push(a));
+    return s;
+  }
+  if (ls(e)) return "";
+  if (Gi(e)) return "." + e.styledComponentId;
+  if (On(e)) {
+    if (typeof (m = e) != "function" || m.prototype && m.prototype.isReactComponent || !t) return e;
+    var h = e(t);
+    return Ze.env.NODE_ENV !== "production" && Hi.isElement(h) && console.warn(vi(e) + " is not a styled component and cannot be referred to via component selector. See https://www.styled-components.com/docs/advanced#referring-to-other-components for more details."), tn(h, t, r, n);
+  }
+  var m;
+  return e instanceof Fd ? r ? (e.inject(r, n), e.getName(n)) : e : bi(e) ? function C(_, O) {
+    var U, E, S = [];
+    for (var I in _) _.hasOwnProperty(I) && !ls(_[I]) && (Array.isArray(_[I]) && _[I].isCss || On(_[I]) ? S.push(ss(I) + ":", _[I], ";") : bi(_[I]) ? S.push.apply(S, C(_[I], I)) : S.push(ss(I) + ": " + (U = I, (E = _[I]) == null || typeof E == "boolean" || E === "" ? "" : typeof E != "number" || E === 0 || U in Qu || U.startsWith("--") ? String(E).trim() : E + "px") + ";"));
+    return O ? [O + " {"].concat(S, ["}"]) : S;
+  }(e) : e.toString();
+}
+var cs = function(e) {
+  return Array.isArray(e) && (e.isCss = !0), e;
+};
+function qd(e) {
+  for (var t = arguments.length, r = new Array(t > 1 ? t - 1 : 0), n = 1; n < t; n++) r[n - 1] = arguments[n];
+  return On(e) || bi(e) ? cs(tn(as(ga, [e].concat(r)))) : r.length === 0 && e.length === 1 && typeof e[0] == "string" ? e : cs(tn(as(e, r)));
+}
+var us = /invalid hook call/i, ea = /* @__PURE__ */ new Set(), Hd = function(e, t) {
+  if (Ze.env.NODE_ENV !== "production") {
+    var r = "The component " + e + (t ? ' with the id of "' + t + '"' : "") + ` has been created dynamically.
+You may see this warning because you've called styled inside another component.
+To resolve this only create new StyledComponents outside of any render method and function component.`, n = console.error;
+    try {
+      var a = !0;
+      console.error = function(s) {
+        if (us.test(s)) a = !1, ea.delete(r);
+        else {
+          for (var d = arguments.length, f = new Array(d > 1 ? d - 1 : 0), h = 1; h < d; h++) f[h - 1] = arguments[h];
+          n.apply(void 0, [s].concat(f));
+        }
+      }, Ir(), a && !ea.has(r) && (console.warn(r), ea.add(r));
+    } catch (s) {
+      us.test(s.message) && ea.delete(r);
+    } finally {
+      console.error = n;
+    }
+  }
+}, Wd = function(e, t, r) {
+  return r === void 0 && (r = Or), e.theme !== r.theme && e.theme || t || r.theme;
+}, Vd = /[!"#$%&'()*+,./:;<=>?@[\\\]^`{|}~-]+/g, Gd = /(^-|-$)/g;
+function Ka(e) {
+  return e.replace(Vd, "-").replace(Gd, "");
+}
+var Yd = function(e) {
+  return xi(fl(e) >>> 0);
+};
+function ta(e) {
+  return typeof e == "string" && (Ze.env.NODE_ENV === "production" || e.charAt(0) === e.charAt(0).toLowerCase());
+}
+var Si = function(e) {
+  return typeof e == "function" || typeof e == "object" && e !== null && !Array.isArray(e);
+}, Zd = function(e) {
+  return e !== "__proto__" && e !== "constructor" && e !== "prototype";
+};
+function Xd(e, t, r) {
+  var n = e[r];
+  Si(t) && Si(n) ? gl(n, t) : e[r] = t;
+}
+function gl(e) {
+  for (var t = arguments.length, r = new Array(t > 1 ? t - 1 : 0), n = 1; n < t; n++) r[n - 1] = arguments[n];
+  for (var a = 0, s = r; a < s.length; a++) {
+    var d = s[a];
+    if (Si(d)) for (var f in d) Zd(f) && Xd(e, d[f], f);
+  }
+  return e;
+}
+var yl = ht.createContext();
+yl.Consumer;
+var Ja = {};
+function bl(e, t, r) {
+  var n = Gi(e), a = !ta(e), s = t.attrs, d = s === void 0 ? ga : s, f = t.componentId, h = f === void 0 ? function($, X) {
+    var G = typeof $ != "string" ? "sc" : Ka($);
+    Ja[G] = (Ja[G] || 0) + 1;
+    var T = G + "-" + Yd("5.3.11" + G + Ja[G]);
+    return X ? X + "-" + T : T;
+  }(t.displayName, t.parentComponentId) : f, m = t.displayName, C = m === void 0 ? function($) {
+    return ta($) ? "styled." + $ : "Styled(" + vi($) + ")";
+  }(e) : m, _ = t.displayName && t.componentId ? Ka(t.displayName) + "-" + t.componentId : t.componentId || h, O = n && e.attrs ? Array.prototype.concat(e.attrs, d).filter(Boolean) : d, U = t.shouldForwardProp;
+  n && e.shouldForwardProp && (U = t.shouldForwardProp ? function($, X, G) {
+    return e.shouldForwardProp($, X, G) && t.shouldForwardProp($, X, G);
+  } : e.shouldForwardProp);
+  var E, S = new Nd(r, _, n ? e.componentStyle : void 0), I = S.isStatic && d.length === 0, F = function($, X) {
+    return function(G, T, oe, ce) {
+      var Se = G.attrs, Ie = G.componentStyle, $e = G.defaultProps, De = G.foldedComponentIds, fe = G.shouldForwardProp, ue = G.styledComponentId, Ce = G.target, ge = function(q, v, Y) {
+        q === void 0 && (q = Or);
+        var j = Sr({}, v, { theme: q }), ie = {};
+        return Y.forEach(function(re) {
+          var ee, K, se, he = re;
+          for (ee in On(he) && (he = he(j)), he) j[ee] = ie[ee] = ee === "className" ? (K = ie[ee], se = he[ee], K && se ? K + " " + se : K || se) : he[ee];
+        }), [j, ie];
+      }(Wd(T, Yt(yl), $e) || Or, T, Se), He = ge[0], Ae = ge[1], _e = function(q, v, Y, j) {
+        var ie = Ld(), re = Md(), ee = v ? q.generateAndInjectStyles(Or, ie, re) : q.generateAndInjectStyles(Y, ie, re);
+        return Ze.env.NODE_ENV !== "production" && !v && j && j(ee), ee;
+      }(Ie, ce, He, Ze.env.NODE_ENV !== "production" ? G.warnTooManyClasses : void 0), Fe = oe, We = Ae.$as || T.$as || Ae.as || T.as || Ce, Ve = ta(We), B = Ae !== T ? Sr({}, T, {}, Ae) : T, R = {};
+      for (var z in B) z[0] !== "$" && z !== "as" && (z === "forwardedAs" ? R.as = B[z] : (fe ? fe(z, Qo, We) : !Ve || Qo(z)) && (R[z] = B[z]));
+      return T.style && Ae.style !== T.style && (R.style = Sr({}, T.style, {}, Ae.style)), R.className = Array.prototype.concat(De, ue, _e !== ue ? _e : null, T.className, Ae.className).filter(Boolean).join(" "), R.ref = Fe, Gs(We, R);
+    }(E, $, X, I);
+  };
+  return F.displayName = C, (E = ht.forwardRef(F)).attrs = O, E.componentStyle = S, E.displayName = C, E.shouldForwardProp = U, E.foldedComponentIds = n ? Array.prototype.concat(e.foldedComponentIds, e.styledComponentId) : ga, E.styledComponentId = _, E.target = n ? e.target : e, E.withComponent = function($) {
+    var X = t.componentId, G = function(oe, ce) {
+      if (oe == null) return {};
+      var Se, Ie, $e = {}, De = Object.keys(oe);
+      for (Ie = 0; Ie < De.length; Ie++) Se = De[Ie], ce.indexOf(Se) >= 0 || ($e[Se] = oe[Se]);
+      return $e;
+    }(t, ["componentId"]), T = X && X + "-" + (ta($) ? $ : Ka(vi($)));
+    return bl($, Sr({}, G, { attrs: O, componentId: T }), r);
+  }, Object.defineProperty(E, "defaultProps", { get: function() {
+    return this._foldedDefaultProps;
+  }, set: function($) {
+    this._foldedDefaultProps = n ? gl({}, e.defaultProps, $) : $;
+  } }), Ze.env.NODE_ENV !== "production" && (Hd(C, _), E.warnTooManyClasses = /* @__PURE__ */ function($, X) {
+    var G = {}, T = !1;
+    return function(oe) {
+      if (!T && (G[oe] = !0, Object.keys(G).length >= 200)) {
+        var ce = X ? ' with the id of "' + X + '"' : "";
+        console.warn("Over 200 classes were generated for component " + $ + ce + `.
+Consider using the attrs method, together with a style object for frequently changed styles.
+Example:
+  const Component = styled.div.attrs(props => ({
+    style: {
+      background: props.background,
+    },
+  }))\`width: 100%;\`
+
+  <Component />`), T = !0, G = {};
+      }
+    };
+  }(C, _)), Object.defineProperty(E, "toString", { value: function() {
+    return "." + E.styledComponentId;
+  } }), a && pd(E, e, { attrs: !0, componentStyle: !0, displayName: !0, foldedComponentIds: !0, shouldForwardProp: !0, styledComponentId: !0, target: !0, withComponent: !0 }), E;
+}
+var cr = function(e) {
+  return function t(r, n, a) {
+    if (a === void 0 && (a = Or), !Hi.isValidElementType(n)) return sn(1, String(n));
+    var s = function() {
+      return r(n, a, qd.apply(void 0, arguments));
+    };
+    return s.withConfig = function(d) {
+      return t(r, n, Sr({}, a, {}, d));
+    }, s.attrs = function(d) {
+      return t(r, n, Sr({}, a, { attrs: Array.prototype.concat(a.attrs, d).filter(Boolean) }));
+    }, s;
+  }(bl, e);
+};
+["a", "abbr", "address", "area", "article", "aside", "audio", "b", "base", "bdi", "bdo", "big", "blockquote", "body", "br", "button", "canvas", "caption", "cite", "code", "col", "colgroup", "data", "datalist", "dd", "del", "details", "dfn", "dialog", "div", "dl", "dt", "em", "embed", "fieldset", "figcaption", "figure", "footer", "form", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "html", "i", "iframe", "img", "input", "ins", "kbd", "keygen", "label", "legend", "li", "link", "main", "map", "mark", "marquee", "menu", "menuitem", "meta", "meter", "nav", "noscript", "object", "ol", "optgroup", "option", "output", "p", "param", "picture", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "script", "section", "select", "small", "source", "span", "strong", "style", "sub", "summary", "sup", "table", "tbody", "td", "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "u", "ul", "var", "video", "wbr", "circle", "clipPath", "defs", "ellipse", "foreignObject", "g", "image", "line", "linearGradient", "marker", "mask", "path", "pattern", "polygon", "polyline", "radialGradient", "rect", "stop", "svg", "text", "textPath", "tspan"].forEach(function(e) {
+  cr[e] = cr(e);
+});
+Ze.env.NODE_ENV !== "production" && typeof navigator < "u" && navigator.product === "ReactNative" && console.warn(`It looks like you've imported 'styled-components' on React Native.
+Perhaps you're looking to import 'styled-components/native'?
+Read more about this at https://www.styled-components.com/docs/basics#react-native`), Ze.env.NODE_ENV !== "production" && Ze.env.NODE_ENV !== "test" && typeof window < "u" && (window["__styled-components-init__"] = window["__styled-components-init__"] || 0, window["__styled-components-init__"] === 1 && console.warn(`It looks like there are several instances of 'styled-components' initialized in this application. This may cause dynamic styles to not render properly, errors during the rehydration process, a missing theme prop, and makes your application bigger without good reason.
+
+See https://s-c.sh/2BAXzed for more info.`), window["__styled-components-init__"] += 1);
+const Kd = cr.div`
   &.sticky {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     &.with-header {
-      top: ${({requiresAltMenuSpacing:e})=>e?"112px":"142px"};
+      top: ${({ requiresAltMenuSpacing: e }) => e ? "112px" : "142px"};
       @media (max-width: 992px) {
         top: 110px;
       }
@@ -34,7 +4677,530 @@ import*as e from"react";import*as t from"react-dom";var n={672:function(e){e.exp
       text-align: center !important;
     }
   }
-`,Ct="On This Page",Ot={event:"collapse",name:"onclick",type:"click",text:Ct},St=({items:e,firstElementId:t,focusFirstFocusableElement:n=!1})=>{const r=(0,S.useRef)(null),a=function(e){const[t,n]=(0,S.useState)(!1);return(0,S.useEffect)((()=>{const r=window.matchMedia(e);r.matches!==t&&n(r.matches);const a=()=>{n(r.matches)};return r.addEventListener("change",a),()=>r.removeEventListener("change",a)}),[t,e]),t}("(max-width: 991px)"),[o,i]=(0,S.useState)({hasHeader:!1,hasAltMenuSpacing:!1,containerClass:"container-xl",activeContainer:"",showMenu:!1,sticky:!1}),l=a?110:142,c=()=>{const n={},a=window.scrollY,c=document.getElementById(t)?.getBoundingClientRect().top;c>=0&&(n.sticky=!1,n.activeContainer=""),a>r.current.getBoundingClientRect().top&&(n.sticky=!0);const s=o.hasHeader?l+103:103;e?.forEach((({targetIdName:e})=>{const t=document.getElementById(e),r=t?.getBoundingClientRect().top-s,a=t?.getBoundingClientRect().bottom-s;r<0&&a>0&&(n.activeContainer=e)})),i((e=>({...e,...n})))},s=()=>{var e;e=c,I||(I=!0,setTimeout((()=>{e(),I=!1}),150)),(e=>{window.clearTimeout(D),D=window.setTimeout(e,150)})(c)};function u(e=null){if(null===e)return o.containerClass;const t=Object.values(e.classList).filter((e=>["container-sm","container-md","container","container-lg","container-xl","container-fluid"].includes(e)));return t.length>0?t.join(" "):u(e.parentElement)}return(0,S.useEffect)((()=>{const e=document.getElementById(t)||null,n={hasHeader:!!(document.getElementById("asu-header")||document.getElementById("headerContainer")||document.getElementById("asuHeader")),hasAltMenuSpacing:!!document.getElementById("degreeDetailPageContainer"),containerClass:u(e)};i((e=>({...e,...n})))}),[]),(0,S.useEffect)((()=>(window?.addEventListener("scroll",s),()=>window.removeEventListener("scroll",s))),[o.hasHeader]),e?.length>0&&S.default.createElement(kt,{requiresAltMenuSpacing:o.hasAltMenuSpacing,ref:r,className:q()("uds-anchor-menu","uds-anchor-menu-expanded-lg","mb-4",{sticky:o.sticky,"with-header":o.hasHeader}),style:o.showMenu?{borderBottom:0}:{}},S.default.createElement("div",{className:`${o.containerClass} uds-anchor-menu-wrapper`},a?S.default.createElement("button",{className:q()("mobile-menu-toggler",{"show-menu":o.showMenu}),type:"button",onClick:()=>{M({...Ot,action:o.showMenu?"close":"open"}),i((e=>({...e,showMenu:!e.showMenu})))},"data-bs-toggle":"collapse","data-bs-target":"#collapseAnchorMenu","aria-controls":"collapseAnchorMenu"},S.default.createElement("h4",null,Ct,":",S.default.createElement("i",{className:"fas fa-chevron-down"}))):S.default.createElement("h4",null,Ct,":"),S.default.createElement("div",{"data-testid":"anchor-menu-container",id:"collapseAnchorMenu",className:q()("card","card-body","collapse",{show:o.showMenu})},S.default.createElement("nav",{"data-testid":"anchor-menu",className:"nav","aria-label":Ct},e?.map((e=>S.default.createElement(V,{"data-testid":`anchor-item-${e.targetIdName}`,key:e.targetIdName,classes:q()("nav-link",{active:o.activeContainer===e.targetIdName}).split(" "),ariaLabel:e.text,label:e.text,icon:e.icon,onClick:()=>(e=>{const t=window.scrollY-(o.hasHeader?l+100:100),i=a?410:90;let c=document.getElementById(e)?.getBoundingClientRect().top+t;var s;r.current.classList.contains("sticky")||(c-=i),n&&(s=`#${e}`,(s?document.querySelector(s):document).querySelector('button, [href], input, select, textarea, [tabIndex]:not([tabIndex="-1"])'))?.focus(),window.scrollTo({top:c,behavior:"smooth"})})(e.targetIdName)})))))))};St.propTypes={items:O().arrayOf(O().shape({text:O().string.isRequired,targetIdName:O().string.isRequired,icon:O().arrayOf(O().string)})).isRequired,firstElementId:O().string.isRequired,focusFirstFocusableElement:O().bool};var Nt,At=(Nt=function(e,t){return Nt=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(e,t){e.__proto__=t}||function(e,t){for(var n in t)Object.prototype.hasOwnProperty.call(t,n)&&(e[n]=t[n])},Nt(e,t)},function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Class extends value "+String(t)+" is not a constructor or null");function n(){this.constructor=e}Nt(e,t),e.prototype=null===t?Object.create(t):(n.prototype=t.prototype,new n)}),Tt=function(e){function t(t){var n=e.call(this,t)||this;return n.name="AssertionError",n}return At(t,e),t}(Error);function Pt(e,t){if(!e)throw new Tt(t)}function Rt(e){var t=Object.entries(e).filter((function(e){return null!=e[1]})).map((function(e){var t=e[0],n=e[1];return"".concat(encodeURIComponent(t),"=").concat(encodeURIComponent(String(n)))}));return t.length>0?"?".concat(t.join("&")):""}var Lt=function(){var e=function(t,n){return e=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(e,t){e.__proto__=t}||function(e,t){for(var n in t)Object.prototype.hasOwnProperty.call(t,n)&&(e[n]=t[n])},e(t,n)};return function(t,n){if("function"!=typeof n&&null!==n)throw new TypeError("Class extends value "+String(n)+" is not a constructor or null");function r(){this.constructor=t}e(t,n),t.prototype=null===n?Object.create(n):(r.prototype=n.prototype,new r)}}(),jt=function(){return jt=Object.assign||function(e){for(var t,n=1,r=arguments.length;n<r;n++)for(var a in t=arguments[n])Object.prototype.hasOwnProperty.call(t,a)&&(e[a]=t[a]);return e},jt.apply(this,arguments)},Dt=function(e,t){var n={};for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&t.indexOf(r)<0&&(n[r]=e[r]);if(null!=e&&"function"==typeof Object.getOwnPropertySymbols){var a=0;for(r=Object.getOwnPropertySymbols(e);a<r.length;a++)t.indexOf(r[a])<0&&Object.prototype.propertyIsEnumerable.call(e,r[a])&&(n[r[a]]=e[r[a]])}return n};const It=function(e){function t(){var t=null!==e&&e.apply(this,arguments)||this;return t.openShareDialog=function(e){var n,r,a=t.props,o=a.onShareWindowClose,i=a.windowHeight,l=void 0===i?400:i,c=a.windowPosition,s=void 0===c?"windowCenter":c,u=a.windowWidth,d=void 0===u?550:u;!function(e,t,n){var r=t.height,a=t.width,o=Dt(t,["height","width"]),i=jt({height:r,width:a,location:"no",toolbar:"no",status:"no",directories:"no",menubar:"no",scrollbars:"yes",resizable:"no",centerscreen:"yes",chrome:"yes"},o),l=window.open(e,"",Object.keys(i).map((function(e){return"".concat(e,"=").concat(i[e])})).join(", "));if(n)var c=window.setInterval((function(){try{(null===l||l.closed)&&(window.clearInterval(c),n(l))}catch(e){console.error(e)}}),1e3)}(e,jt({height:l,width:d},"windowCenter"===s?(n=d,r=l,{left:window.outerWidth/2+(window.screenX||window.screenLeft||0)-n/2,top:window.outerHeight/2+(window.screenY||window.screenTop||0)-r/2}):function(e,t){return{top:(window.screen.height-t)/2,left:(window.screen.width-e)/2}}(d,l)),o)},t.handleClick=function(e){return n=t,a=function(){var t,n,r,a,o,i,l,c,s,u;return function(e,t){var n,r,a,o,i={label:0,sent:function(){if(1&a[0])throw a[1];return a[1]},trys:[],ops:[]};return o={next:l(0),throw:l(1),return:l(2)},"function"==typeof Symbol&&(o[Symbol.iterator]=function(){return this}),o;function l(o){return function(l){return function(o){if(n)throw new TypeError("Generator is already executing.");for(;i;)try{if(n=1,r&&(a=2&o[0]?r.return:o[0]?r.throw||((a=r.return)&&a.call(r),0):r.next)&&!(a=a.call(r,o[1])).done)return a;switch(r=0,a&&(o=[2&o[0],a.value]),o[0]){case 0:case 1:a=o;break;case 4:return i.label++,{value:o[1],done:!1};case 5:i.label++,r=o[1],o=[0];continue;case 7:o=i.ops.pop(),i.trys.pop();continue;default:if(!((a=(a=i.trys).length>0&&a[a.length-1])||6!==o[0]&&2!==o[0])){i=0;continue}if(3===o[0]&&(!a||o[1]>a[0]&&o[1]<a[3])){i.label=o[1];break}if(6===o[0]&&i.label<a[1]){i.label=a[1],a=o;break}if(a&&i.label<a[2]){i.label=a[2],i.ops.push(o);break}a[2]&&i.ops.pop(),i.trys.pop();continue}o=t.call(e,i)}catch(e){o=[6,e],r=0}finally{n=a=0}if(5&o[0])throw o[1];return{value:o[0]?o[1]:void 0,done:!0}}([o,l])}}}(this,(function(d){switch(d.label){case 0:return t=this.props,n=t.beforeOnClick,r=t.disabled,a=t.networkLink,o=t.onClick,i=t.url,l=t.openShareDialogOnClick,c=t.opts,s=a(i,c),r?[2]:(e.preventDefault(),n?!(f=u=n())||"object"!=typeof f&&"function"!=typeof f||"function"!=typeof f.then?[3,2]:[4,u]:[3,2]);case 1:d.sent(),d.label=2;case 2:return l&&this.openShareDialog(s),o&&o(e,s),[2]}var f}))},new((r=void 0)||(r=Promise))((function(e,t){function o(e){try{l(a.next(e))}catch(e){t(e)}}function i(e){try{l(a.throw(e))}catch(e){t(e)}}function l(t){var n;t.done?e(t.value):(n=t.value,n instanceof r?n:new r((function(e){e(n)}))).then(o,i)}l((a=a.apply(n,[])).next())}));var n,r,a},t}return Lt(t,e),t.prototype.render=function(){var e=this.props,t=(e.beforeOnClick,e.children),n=e.className,r=e.disabled,a=e.disabledStyle,o=e.forwardedRef,i=(e.networkLink,e.networkName),l=(e.onShareWindowClose,e.openShareDialogOnClick,e.opts,e.resetButtonStyle),c=e.style,s=(e.url,e.windowHeight,e.windowPosition,e.windowWidth,Dt(e,["beforeOnClick","children","className","disabled","disabledStyle","forwardedRef","networkLink","networkName","onShareWindowClose","openShareDialogOnClick","opts","resetButtonStyle","style","url","windowHeight","windowPosition","windowWidth"])),u=q()("react-share__ShareButton",{"react-share__ShareButton--disabled":!!r,disabled:!!r},n),d=jt(jt(l?{backgroundColor:"transparent",border:"none",padding:0,font:"inherit",color:"inherit",cursor:"pointer"}:{},c),r&&a);return S.default.createElement("button",jt({},s,{"aria-label":s["aria-label"]||i,className:u,onClick:this.handleClick,ref:o,style:d}),t)},t.defaultProps={disabledStyle:{opacity:.6},openShareDialogOnClick:!0,resetButtonStyle:!0},t}(S.Component);var Mt=function(){return Mt=Object.assign||function(e){for(var t,n=1,r=arguments.length;n<r;n++)for(var a in t=arguments[n])Object.prototype.hasOwnProperty.call(t,a)&&(e[a]=t[a]);return e},Mt.apply(this,arguments)};const _t=function(e,t,n,r){function a(a,o){var i=n(a),l=Mt({},a);return Object.keys(i).forEach((function(e){delete l[e]})),S.default.createElement(It,Mt({},r,l,{forwardedRef:o,networkName:e,networkLink:t,opts:n(a)}))}return a.displayName="ShareButton-".concat(e),(0,S.forwardRef)(a)},Ut=_t("facebook",(function(e,t){var n=t.quote,r=t.hashtag;return Pt(e,"facebook.url"),"https://www.facebook.com/sharer/sharer.php"+Rt({u:e,quote:n,hashtag:r})}),(function(e){return{quote:e.quote,hashtag:e.hashtag}}),{windowWidth:550,windowHeight:400});var Ft=function(){return Ft=Object.assign||function(e){for(var t,n=1,r=arguments.length;n<r;n++)for(var a in t=arguments[n])Object.prototype.hasOwnProperty.call(t,a)&&(e[a]=t[a]);return e},Ft.apply(this,arguments)};function zt(e){var t=function(t){var n=t.bgStyle,r=t.borderRadius,a=t.iconFillColor,o=t.round,i=t.size,l=function(e,t){var n={};for(var r in e)Object.prototype.hasOwnProperty.call(e,r)&&t.indexOf(r)<0&&(n[r]=e[r]);if(null!=e&&"function"==typeof Object.getOwnPropertySymbols){var a=0;for(r=Object.getOwnPropertySymbols(e);a<r.length;a++)t.indexOf(r[a])<0&&Object.prototype.propertyIsEnumerable.call(e,r[a])&&(n[r[a]]=e[r[a]])}return n}(t,["bgStyle","borderRadius","iconFillColor","round","size"]);return S.default.createElement("svg",Ft({viewBox:"0 0 64 64",width:i,height:i},l),o?S.default.createElement("circle",{cx:"32",cy:"32",r:"31",fill:e.color,style:n}):S.default.createElement("rect",{width:"64",height:"64",rx:r,ry:r,fill:e.color,style:n}),S.default.createElement("path",{d:e.path,fill:a}))};return t.defaultProps={bgStyle:{},borderRadius:0,iconFillColor:"white",size:64},t}const qt=zt({color:"#3b5998",networkName:"facebook",path:"M34.1,47V33.3h4.6l0.7-5.3h-5.3v-3.4c0-1.5,0.4-2.6,2.6-2.6l2.8,0v-4.8c-0.5-0.1-2.2-0.2-4.1-0.2 c-4.1,0-6.9,2.5-6.9,7V28H24v5.3h4.6V47H34.1z"}),Ht=_t("twitter",(function(e,t){var n=t.title,r=t.via,a=t.hashtags,o=void 0===a?[]:a,i=t.related,l=void 0===i?[]:i;return Pt(e,"twitter.url"),Pt(Array.isArray(o),"twitter.hashtags is not an array"),Pt(Array.isArray(l),"twitter.related is not an array"),"https://twitter.com/share"+Rt({url:e,text:n,via:r,hashtags:o.length>0?o.join(","):void 0,related:l.length>0?l.join(","):void 0})}),(function(e){return{hashtags:e.hashtags,title:e.title,via:e.via,related:e.related}}),{windowWidth:550,windowHeight:400}),$t=zt({color:"#00aced",networkName:"twitter",path:"M48,22.1c-1.2,0.5-2.4,0.9-3.8,1c1.4-0.8,2.4-2.1,2.9-3.6c-1.3,0.8-2.7,1.3-4.2,1.6 C41.7,19.8,40,19,38.2,19c-3.6,0-6.6,2.9-6.6,6.6c0,0.5,0.1,1,0.2,1.5c-5.5-0.3-10.3-2.9-13.5-6.9c-0.6,1-0.9,2.1-0.9,3.3 c0,2.3,1.2,4.3,2.9,5.5c-1.1,0-2.1-0.3-3-0.8c0,0,0,0.1,0,0.1c0,3.2,2.3,5.8,5.3,6.4c-0.6,0.1-1.1,0.2-1.7,0.2c-0.4,0-0.8,0-1.2-0.1 c0.8,2.6,3.3,4.5,6.1,4.6c-2.2,1.8-5.1,2.8-8.2,2.8c-0.5,0-1.1,0-1.6-0.1c2.9,1.9,6.4,2.9,10.1,2.9c12.1,0,18.7-10,18.7-18.7 c0-0.3,0-0.6,0-0.8C46,24.5,47.1,23.4,48,22.1z"}),Bt=_t("email",(function(e,t){var n=t.subject,r=t.body,a=t.separator;return"mailto:"+Rt({subject:n,body:r?r+a+e:e})}),(function(e){return{subject:e.subject,body:e.body,separator:e.separator||" "}}),{openShareDialogOnClick:!1,onClick:function(e,t){window.location.href=t}}),Gt=zt({color:"#7f7f7f",networkName:"email",path:"M17,22v20h30V22H17z M41.1,25L32,32.1L22.9,25H41.1z M20,39V26.6l12,9.3l12-9.3V39H20z"}),Wt=_t("linkedin",(function(e,t){var n=t.title,r=t.summary,a=t.source;return Pt(e,"linkedin.url"),"https://linkedin.com/shareArticle"+Rt({url:e,mini:"true",title:n,summary:r,source:a})}),(function(e){return{title:e.title,summary:e.summary,source:e.source}}),{windowWidth:750,windowHeight:600}),Vt=zt({color:"#007fb1",networkName:"linkedin",path:"M20.4,44h5.4V26.6h-5.4V44z M23.1,18c-1.7,0-3.1,1.4-3.1,3.1c0,1.7,1.4,3.1,3.1,3.1 c1.7,0,3.1-1.4,3.1-3.1C26.2,19.4,24.8,18,23.1,18z M39.5,26.2c-2.6,0-4.4,1.4-5.1,2.8h-0.1v-2.4h-5.2V44h5.4v-8.6 c0-2.3,0.4-4.5,3.2-4.5c2.8,0,2.8,2.6,2.8,4.6V44H46v-9.5C46,29.8,45,26.2,39.5,26.2z"});function Yt(e,t){if(null==e)return{};var n={};for(var r in e)if({}.hasOwnProperty.call(e,r)){if(t.includes(r))continue;n[r]=e[r]}return n}function Kt(e,t){return void 0===e&&(e=""),void 0===t&&(t=void 0),t?e.split(" ").map((function(e){return t[e]||e})).join(" "):e}var Xt="object"==typeof window&&window.Element||function(){};O().oneOfType([O().string,O().func,function(e,t,n){if(!(e[t]instanceof Xt))return new Error("Invalid prop `"+t+"` supplied to `"+n+"`. Expected prop to be an instance of Element. Validation failed.")},O().shape({current:O().any})]);var Zt=O().oneOfType([O().func,O().string,O().shape({$$typeof:O().symbol,render:O().func}),O().arrayOf(O().oneOfType([O().func,O().string,O().shape({$$typeof:O().symbol,render:O().func})]))]);"undefined"==typeof window||!window.document||window.document.createElement;var Jt=["className","cssModule","active","tag"],Qt={tag:Zt,active:O().bool,className:O().string,cssModule:O().object},en=function(e){var t=e.className,n=e.cssModule,r=e.active,a=e.tag,o=Yt(e,Jt),i=Kt(q()(t,!!r&&"active","breadcrumb-item"),n);return S.default.createElement(a,G({},o,{className:i,"aria-current":r?"page":void 0}))};en.propTypes=Qt,en.defaultProps={tag:"li"};const tn=en;var nn=["className","listClassName","cssModule","children","tag","listTag","aria-label"],rn={tag:Zt,listTag:Zt,className:O().string,listClassName:O().string,cssModule:O().object,children:O().node,"aria-label":O().string},an=function(e){var t=e.className,n=e.listClassName,r=e.cssModule,a=e.children,o=e.tag,i=e.listTag,l=e["aria-label"],c=Yt(e,nn),s=Kt(q()(t),r),u=Kt(q()("breadcrumb",n),r);return S.default.createElement(o,G({},c,{className:s,"aria-label":l}),S.default.createElement(i,{className:u},a))};an.propTypes=rn,an.defaultProps={tag:"nav",listTag:"ol","aria-label":"breadcrumb"};const on=an,ln=xt.div`
+`, ua = "On This Page", Jd = {
+  event: "collapse",
+  name: "onclick",
+  type: "click",
+  text: ua
+}, vl = ({
+  items: e,
+  firstElementId: t,
+  focusFirstFocusableElement: r = !1
+}) => {
+  const n = Ir(null), a = du("(max-width: 991px)"), [s, d] = ft({
+    hasHeader: !1,
+    hasAltMenuSpacing: !1,
+    containerClass: "container-xl",
+    activeContainer: "",
+    showMenu: !1,
+    sticky: !1
+  }), f = a ? 110 : 142, h = () => {
+    var S;
+    const I = {}, F = window.scrollY, $ = (S = document.getElementById(t)) == null ? void 0 : S.getBoundingClientRect().top, X = 103;
+    $ >= 0 && (I.sticky = !1, I.activeContainer = ""), F > n.current.getBoundingClientRect().top && (I.sticky = !0);
+    const G = s.hasHeader ? f + X : X;
+    e == null || e.forEach(({ targetIdName: T }) => {
+      const oe = document.getElementById(T), ce = (oe == null ? void 0 : oe.getBoundingClientRect().top) - G, Se = (oe == null ? void 0 : oe.getBoundingClientRect().bottom) - G;
+      ce < 0 && Se > 0 && (I.activeContainer = T);
+    }), d((T) => ({
+      ...T,
+      ...I
+    }));
+  }, m = () => {
+    qu(h, 150), Hu(h, 150);
+  }, C = () => !!(document.getElementById("asu-header") || document.getElementById("headerContainer") || document.getElementById("asuHeader")), _ = () => !!document.getElementById(
+    "degreeDetailPageContainer"
+  );
+  function O(S = null) {
+    if (S === null) return s.containerClass;
+    const I = Object.values(S.classList).filter(
+      (F) => [
+        "container-sm",
+        "container-md",
+        "container",
+        "container-lg",
+        "container-xl",
+        "container-fluid"
+      ].includes(F)
+    );
+    return I.length > 0 ? I.join(" ") : O(S.parentElement);
+  }
+  Tt(() => {
+    const S = document.getElementById(t) || null, I = {
+      hasHeader: C(),
+      hasAltMenuSpacing: _(),
+      containerClass: O(S)
+    };
+    d((F) => ({
+      ...F,
+      ...I
+    }));
+  }, []), Tt(() => (window == null || window.addEventListener("scroll", m), () => window.removeEventListener("scroll", m)), [s.hasHeader]);
+  const U = (S) => {
+    var I, F;
+    const $ = window.scrollY - (s.hasHeader ? f + 100 : 100), X = a ? 410 : 90;
+    let G = ((I = document.getElementById(S)) == null ? void 0 : I.getBoundingClientRect().top) + $;
+    n.current.classList.contains("sticky") || (G -= X), r && ((F = Bu(`#${S}`)) == null || F.focus()), window.scrollTo({ top: G, behavior: "smooth" });
+  }, E = () => {
+    d((S) => ({
+      ...S,
+      showMenu: !S.showMenu
+    }));
+  };
+  return (e == null ? void 0 : e.length) > 0 && /* @__PURE__ */ H.jsx(
+    Kd,
+    {
+      requiresAltMenuSpacing: s.hasAltMenuSpacing,
+      ref: n,
+      className: dt(
+        "uds-anchor-menu",
+        "uds-anchor-menu-expanded-lg",
+        "mb-4",
+        {
+          sticky: s.sticky,
+          "with-header": s.hasHeader
+        }
+      ),
+      style: s.showMenu ? { borderBottom: 0 } : {},
+      children: /* @__PURE__ */ H.jsxs("div", { className: `${s.containerClass} uds-anchor-menu-wrapper`, children: [
+        a ? /* @__PURE__ */ H.jsx(
+          Zr,
+          {
+            gaData: {
+              ...Jd,
+              action: s.showMenu ? "close" : "open"
+            },
+            children: /* @__PURE__ */ H.jsx(
+              "button",
+              {
+                className: dt("mobile-menu-toggler", {
+                  "show-menu": s.showMenu
+                }),
+                type: "button",
+                onClick: E,
+                "data-bs-toggle": "collapse",
+                "data-bs-target": "#collapseAnchorMenu",
+                "aria-controls": "collapseAnchorMenu",
+                children: /* @__PURE__ */ H.jsxs("h4", { children: [
+                  ua,
+                  ":",
+                  /* @__PURE__ */ H.jsx("i", { className: "fas fa-chevron-down" })
+                ] })
+              }
+            )
+          }
+        ) : /* @__PURE__ */ H.jsxs("h4", { children: [
+          ua,
+          ":"
+        ] }),
+        /* @__PURE__ */ H.jsx(
+          "div",
+          {
+            "data-testid": "anchor-menu-container",
+            id: "collapseAnchorMenu",
+            className: dt("card", "card-body", "collapse", {
+              show: s.showMenu
+            }),
+            children: /* @__PURE__ */ H.jsx(
+              "nav",
+              {
+                "data-testid": "anchor-menu",
+                className: "nav",
+                "aria-label": ua,
+                children: e == null ? void 0 : e.map((S) => (
+                  // Use this package button
+                  // @ts-ignore
+                  /* @__PURE__ */ H.jsx(
+                    Tr,
+                    {
+                      "data-testid": `anchor-item-${S.targetIdName}`,
+                      classes: dt("nav-link", {
+                        active: s.activeContainer === S.targetIdName
+                      }).split(" "),
+                      ariaLabel: S.text,
+                      label: S.text,
+                      icon: S.icon,
+                      onClick: () => U(S.targetIdName)
+                    },
+                    S.targetIdName
+                  )
+                ))
+              }
+            )
+          }
+        )
+      ] })
+    }
+  );
+};
+vl.propTypes = {
+  /**
+   * Anchor menu items
+   */
+  items: l.arrayOf(
+    l.shape({
+      text: l.string.isRequired,
+      targetIdName: l.string.isRequired,
+      icon: l.arrayOf(l.string)
+    })
+  ).isRequired,
+  /**
+   * First next sibling element of the anchor menu
+   */
+  firstElementId: l.string.isRequired,
+  /**
+   * If true it focus the first focusable element into the section
+   * If false it focus the next menu item into the nav bar
+   */
+  focusFirstFocusableElement: l.bool
+};
+function Aa(e) {
+  var t = Object.entries(e).filter(function(r) {
+    var n = r[1];
+    return n != null;
+  }).map(function(r) {
+    var n = r[0], a = r[1];
+    return "".concat(encodeURIComponent(n), "=").concat(encodeURIComponent(String(a)));
+  });
+  return t.length > 0 ? "?".concat(t.join("&")) : "";
+}
+var Qd = /* @__PURE__ */ function() {
+  var e = function(t, r) {
+    return e = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(n, a) {
+      n.__proto__ = a;
+    } || function(n, a) {
+      for (var s in a) Object.prototype.hasOwnProperty.call(a, s) && (n[s] = a[s]);
+    }, e(t, r);
+  };
+  return function(t, r) {
+    if (typeof r != "function" && r !== null)
+      throw new TypeError("Class extends value " + String(r) + " is not a constructor or null");
+    e(t, r);
+    function n() {
+      this.constructor = t;
+    }
+    t.prototype = r === null ? Object.create(r) : (n.prototype = r.prototype, new n());
+  };
+}(), Vr = function() {
+  return Vr = Object.assign || function(e) {
+    for (var t, r = 1, n = arguments.length; r < n; r++) {
+      t = arguments[r];
+      for (var a in t) Object.prototype.hasOwnProperty.call(t, a) && (e[a] = t[a]);
+    }
+    return e;
+  }, Vr.apply(this, arguments);
+}, ep = function(e, t, r, n) {
+  function a(s) {
+    return s instanceof r ? s : new r(function(d) {
+      d(s);
+    });
+  }
+  return new (r || (r = Promise))(function(s, d) {
+    function f(C) {
+      try {
+        m(n.next(C));
+      } catch (_) {
+        d(_);
+      }
+    }
+    function h(C) {
+      try {
+        m(n.throw(C));
+      } catch (_) {
+        d(_);
+      }
+    }
+    function m(C) {
+      C.done ? s(C.value) : a(C.value).then(f, h);
+    }
+    m((n = n.apply(e, [])).next());
+  });
+}, tp = function(e, t) {
+  var r = { label: 0, sent: function() {
+    if (s[0] & 1) throw s[1];
+    return s[1];
+  }, trys: [], ops: [] }, n, a, s, d;
+  return d = { next: f(0), throw: f(1), return: f(2) }, typeof Symbol == "function" && (d[Symbol.iterator] = function() {
+    return this;
+  }), d;
+  function f(m) {
+    return function(C) {
+      return h([m, C]);
+    };
+  }
+  function h(m) {
+    if (n) throw new TypeError("Generator is already executing.");
+    for (; r; ) try {
+      if (n = 1, a && (s = m[0] & 2 ? a.return : m[0] ? a.throw || ((s = a.return) && s.call(a), 0) : a.next) && !(s = s.call(a, m[1])).done) return s;
+      switch (a = 0, s && (m = [m[0] & 2, s.value]), m[0]) {
+        case 0:
+        case 1:
+          s = m;
+          break;
+        case 4:
+          return r.label++, { value: m[1], done: !1 };
+        case 5:
+          r.label++, a = m[1], m = [0];
+          continue;
+        case 7:
+          m = r.ops.pop(), r.trys.pop();
+          continue;
+        default:
+          if (s = r.trys, !(s = s.length > 0 && s[s.length - 1]) && (m[0] === 6 || m[0] === 2)) {
+            r = 0;
+            continue;
+          }
+          if (m[0] === 3 && (!s || m[1] > s[0] && m[1] < s[3])) {
+            r.label = m[1];
+            break;
+          }
+          if (m[0] === 6 && r.label < s[1]) {
+            r.label = s[1], s = m;
+            break;
+          }
+          if (s && r.label < s[2]) {
+            r.label = s[2], r.ops.push(m);
+            break;
+          }
+          s[2] && r.ops.pop(), r.trys.pop();
+          continue;
+      }
+      m = t.call(e, r);
+    } catch (C) {
+      m = [6, C], a = 0;
+    } finally {
+      n = s = 0;
+    }
+    if (m[0] & 5) throw m[1];
+    return { value: m[0] ? m[1] : void 0, done: !0 };
+  }
+}, xl = function(e, t) {
+  var r = {};
+  for (var n in e) Object.prototype.hasOwnProperty.call(e, n) && t.indexOf(n) < 0 && (r[n] = e[n]);
+  if (e != null && typeof Object.getOwnPropertySymbols == "function")
+    for (var a = 0, n = Object.getOwnPropertySymbols(e); a < n.length; a++)
+      t.indexOf(n[a]) < 0 && Object.prototype.propertyIsEnumerable.call(e, n[a]) && (r[n[a]] = e[n[a]]);
+  return r;
+}, rp = function(e) {
+  return !!e && (typeof e == "object" || typeof e == "function") && typeof e.then == "function";
+}, np = function(e, t) {
+  return {
+    left: window.outerWidth / 2 + (window.screenX || window.screenLeft || 0) - e / 2,
+    top: window.outerHeight / 2 + (window.screenY || window.screenTop || 0) - t / 2
+  };
+}, ap = function(e, t) {
+  return {
+    top: (window.screen.height - t) / 2,
+    left: (window.screen.width - e) / 2
+  };
+};
+function ip(e, t, r) {
+  var n = t.height, a = t.width, s = xl(t, ["height", "width"]), d = Vr({ height: n, width: a, location: "no", toolbar: "no", status: "no", directories: "no", menubar: "no", scrollbars: "yes", resizable: "no", centerscreen: "yes", chrome: "yes" }, s), f = window.open(e, "", Object.keys(d).map(function(m) {
+    return "".concat(m, "=").concat(d[m]);
+  }).join(", "));
+  if (r)
+    var h = window.setInterval(function() {
+      try {
+        (f === null || f.closed) && (window.clearInterval(h), r(f));
+      } catch (m) {
+        console.error(m);
+      }
+    }, 1e3);
+  return f;
+}
+var op = (
+  /** @class */
+  function(e) {
+    Qd(t, e);
+    function t() {
+      var r = e !== null && e.apply(this, arguments) || this;
+      return r.openShareDialog = function(n) {
+        var a = r.props, s = a.onShareWindowClose, d = a.windowHeight, f = d === void 0 ? 400 : d, h = a.windowPosition, m = h === void 0 ? "windowCenter" : h, C = a.windowWidth, _ = C === void 0 ? 550 : C, O = Vr({ height: f, width: _ }, m === "windowCenter" ? np(_, f) : ap(_, f));
+        ip(n, O, s);
+      }, r.handleClick = function(n) {
+        return ep(r, void 0, void 0, function() {
+          var a, s, d, f, h, m, C, _, O, U;
+          return tp(this, function(E) {
+            switch (E.label) {
+              case 0:
+                return a = this.props, s = a.beforeOnClick, d = a.disabled, f = a.networkLink, h = a.onClick, m = a.url, C = a.openShareDialogOnClick, _ = a.opts, O = f(m, _), d ? [
+                  2
+                  /*return*/
+                ] : (n.preventDefault(), s ? (U = s(), rp(U) ? [4, U] : [3, 2]) : [3, 2]);
+              case 1:
+                E.sent(), E.label = 2;
+              case 2:
+                return C && this.openShareDialog(O), h && h(n, O), [
+                  2
+                  /*return*/
+                ];
+            }
+          });
+        });
+      }, r;
+    }
+    return t.prototype.render = function() {
+      var r = this.props;
+      r.beforeOnClick;
+      var n = r.children, a = r.className, s = r.disabled, d = r.disabledStyle, f = r.forwardedRef;
+      r.networkLink;
+      var h = r.networkName;
+      r.onShareWindowClose, r.openShareDialogOnClick, r.opts;
+      var m = r.resetButtonStyle, C = r.style;
+      r.url, r.windowHeight, r.windowPosition, r.windowWidth;
+      var _ = xl(r, ["beforeOnClick", "children", "className", "disabled", "disabledStyle", "forwardedRef", "networkLink", "networkName", "onShareWindowClose", "openShareDialogOnClick", "opts", "resetButtonStyle", "style", "url", "windowHeight", "windowPosition", "windowWidth"]), O = dt("react-share__ShareButton", {
+        "react-share__ShareButton--disabled": !!s,
+        disabled: !!s
+      }, a), U = Vr(Vr(m ? { backgroundColor: "transparent", border: "none", padding: 0, font: "inherit", color: "inherit", cursor: "pointer" } : {}, C), s && d);
+      return ht.createElement("button", Vr({}, _, { "aria-label": _["aria-label"] || h, className: O, onClick: this.handleClick, ref: f, style: U }), n);
+    }, t.defaultProps = {
+      disabledStyle: { opacity: 0.6 },
+      openShareDialogOnClick: !0,
+      resetButtonStyle: !0
+    }, t;
+  }(Qc)
+), ba = function() {
+  return ba = Object.assign || function(e) {
+    for (var t, r = 1, n = arguments.length; r < n; r++) {
+      t = arguments[r];
+      for (var a in t) Object.prototype.hasOwnProperty.call(t, a) && (e[a] = t[a]);
+    }
+    return e;
+  }, ba.apply(this, arguments);
+};
+function _a(e, t, r, n) {
+  function a(s, d) {
+    var f = r(s), h = ba({}, s), m = Object.keys(f);
+    return m.forEach(function(C) {
+      delete h[C];
+    }), ht.createElement(op, ba({}, n, h, { forwardedRef: d, networkName: e, networkLink: t, opts: r(s) }));
+  }
+  return a.displayName = "ShareButton-".concat(e), Vs(a);
+}
+function sp(e, t) {
+  var r = t.subject, n = t.body, a = t.separator;
+  return "mailto:" + Aa({ subject: r, body: n ? n + a + e : e });
+}
+_a("email", sp, function(e) {
+  return {
+    subject: e.subject,
+    body: e.body,
+    separator: e.separator || " "
+  };
+}, {
+  openShareDialogOnClick: !1,
+  onClick: function(e, t) {
+    window.location.href = t;
+  }
+});
+var lp = /* @__PURE__ */ function() {
+  var e = function(t, r) {
+    return e = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(n, a) {
+      n.__proto__ = a;
+    } || function(n, a) {
+      for (var s in a) Object.prototype.hasOwnProperty.call(a, s) && (n[s] = a[s]);
+    }, e(t, r);
+  };
+  return function(t, r) {
+    if (typeof r != "function" && r !== null)
+      throw new TypeError("Class extends value " + String(r) + " is not a constructor or null");
+    e(t, r);
+    function n() {
+      this.constructor = t;
+    }
+    t.prototype = r === null ? Object.create(r) : (n.prototype = r.prototype, new n());
+  };
+}(), cp = (
+  /** @class */
+  function(e) {
+    lp(t, e);
+    function t(r) {
+      var n = e.call(this, r) || this;
+      return n.name = "AssertionError", n;
+    }
+    return t;
+  }(Error)
+);
+function En(e, t) {
+  if (!e)
+    throw new cp(t);
+}
+function up(e, t) {
+  var r = t.quote, n = t.hashtag;
+  return En(e, "facebook.url"), "https://www.facebook.com/sharer/sharer.php" + Aa({
+    u: e,
+    quote: r,
+    hashtag: n
+  });
+}
+_a("facebook", up, function(e) {
+  return {
+    quote: e.quote,
+    hashtag: e.hashtag
+  };
+}, {
+  windowWidth: 550,
+  windowHeight: 400
+});
+function dp(e, t) {
+  var r = t.title, n = t.summary, a = t.source;
+  return En(e, "linkedin.url"), "https://linkedin.com/shareArticle" + Aa({ url: e, mini: "true", title: r, summary: n, source: a });
+}
+_a("linkedin", dp, function(e) {
+  var t = e.title, r = e.summary, n = e.source;
+  return { title: t, summary: r, source: n };
+}, {
+  windowWidth: 750,
+  windowHeight: 600
+});
+function pp(e, t) {
+  var r = t.title, n = t.via, a = t.hashtags, s = a === void 0 ? [] : a, d = t.related, f = d === void 0 ? [] : d;
+  return En(e, "twitter.url"), En(Array.isArray(s), "twitter.hashtags is not an array"), En(Array.isArray(f), "twitter.related is not an array"), "https://twitter.com/share" + Aa({
+    url: e,
+    text: r,
+    via: n,
+    hashtags: s.length > 0 ? s.join(",") : void 0,
+    related: f.length > 0 ? f.join(",") : void 0
+  });
+}
+_a("twitter", pp, function(e) {
+  return {
+    hashtags: e.hashtags,
+    title: e.title,
+    via: e.via,
+    related: e.related
+  };
+}, {
+  windowWidth: 550,
+  windowHeight: 400
+});
+function ki(e) {
+  "@babel/helpers - typeof";
+  return ki = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(t) {
+    return typeof t;
+  } : function(t) {
+    return t && typeof Symbol == "function" && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t;
+  }, ki(e);
+}
+var fp = (typeof window > "u" ? "undefined" : ki(window)) === "object" && window.Element || function() {
+};
+function hp(e, t, r) {
+  if (!(e[t] instanceof fp))
+    return new Error("Invalid prop `" + t + "` supplied to `" + r + "`. Expected prop to be an instance of Element. Validation failed.");
+}
+l.oneOfType([l.string, l.func, hp, l.shape({
+  current: l.any
+})]);
+var Ti = l.oneOfType([l.func, l.string, l.shape({
+  $$typeof: l.symbol,
+  render: l.func
+}), l.arrayOf(l.oneOfType([l.func, l.string, l.shape({
+  $$typeof: l.symbol,
+  render: l.func
+})]))]);
+l.string, l.node, l.string, l.object, l.string;
+l.bool, l.string, l.object;
+cr.div`
   &.news-container h2 {
     font-size: 48px;
   }
@@ -156,7 +5322,8 @@ import*as e from"react";import*as t from"react-dom";var n={672:function(e){e.exp
   .event-author-info {
     margin-top: 24px;
   }
-`,cn=xt.div`
+`;
+cr.div`
   border-top: 1px solid black;
   h4 {
     margin-top: 0;
@@ -164,7 +5331,239 @@ import*as e from"react";import*as t from"react-dom";var n={672:function(e){e.exp
   .react-share__ShareButton {
     margin-right: 24px;
   }
-`,sn=({type:e,articleUrl:t,publicationDate:n,title:r,body:a,authorEmail:o,authorName:i,authorPhone:l,authorTitle:c,breadcrumbs:s,calendarUrl:u,eventLocation:d,eventTime:f,headerImageUrl:m,registrationUrl:p,zoomUrl:g})=>{const h=q()("col","col-12",{"col-lg-8":"event"===e&&(p||g||u)});return S.default.createElement(S.default.Fragment,null,m&&"event"!==e&&S.default.createElement("div",{"data-testid":"uds-hero",className:"uds-hero uds-hero-md",style:{backgroundImage:`linear-gradient(180deg, #19191900 0%, #191919c9 100%), url(${m})`}}),S.default.createElement(ln,{className:`container ${e}-container wrapper-container`},s&&S.default.createElement("div",{className:"row pt-4","data-testid":"breadcrumbs"},S.default.createElement("div",{className:"col col-12"},S.default.createElement(on,{listClassName:"breadcrumb"},s.map((e=>(e=>e.active?S.default.createElement(tn,{active:!0,tag:"li",className:"breadcrumb-item"},S.default.createElement(tn,{tag:"a",href:e.url},e.title)):S.default.createElement(tn,{tag:"li",className:"breadcrumb-item"},S.default.createElement(tn,{tag:"a",href:e.url},e.title)))(e)))))),S.default.createElement("div",{className:"row pb-2 pt-3"},S.default.createElement("div",{className:h},S.default.createElement("h2",{"data-testid":"title"},r)),"event"===e&&S.default.createElement("div",{className:"col col-lg-4 col-xs-12"},(p||g)&&(p?S.default.createElement("div",{className:"card-button uds-button"},S.default.createElement(V,{color:"maroon",href:p,label:"Register"})):S.default.createElement("div",{className:"card-button uds-button"},S.default.createElement(V,{color:"maroon",href:g,label:"Attend on Zoom"}))),u&&S.default.createElement("div",{className:"card-button uds-button"},S.default.createElement(V,{color:"gray",size:"small",href:u,label:"Add to calendar"})))),"event"===e?S.default.createElement("div",{className:"row row-spaced pt-3 mb-2"},f&&S.default.createElement("div",{className:"col col-lg-4 col-md-6 col-sm-12"},S.default.createElement("h4",null,S.default.createElement("i",{className:"far fa-calendar"}),"Date and time:"),S.default.createElement("div",{dangerouslySetInnerHTML:L(f)})),(p&&g||d)&&S.default.createElement("div",{className:"col col-12 col-lg-4 col-md-6"},S.default.createElement("h4",null,S.default.createElement("i",{className:"fas fa-map-marker-alt"}),"Location:"),S.default.createElement("div",{dangerouslySetInnerHTML:L(d)}),p&&g&&S.default.createElement("a",{href:g},"Attend on Zoom"))):S.default.createElement("div",{className:"row row-spaced pt-2"},S.default.createElement("div",{className:"col col-12"},S.default.createElement("div",{className:"article-social-media"},S.default.createElement(Ut,{url:t,quote:r},S.default.createElement(qt,{size:28,borderRadius:4,bgStyle:{fill:"maroon"}})),S.default.createElement(Ht,{url:t,quote:r},S.default.createElement($t,{size:28,borderRadius:4,bgStyle:{fill:"maroon"}})),S.default.createElement(Wt,{url:t,quote:r},S.default.createElement(Vt,{size:28,borderRadius:4,bgStyle:{fill:"maroon"}}))),n&&S.default.createElement("i",{className:"news-date"},n))),S.default.createElement("div",{className:"row"},S.default.createElement("div",{className:"col col-12",dangerouslySetInnerHTML:L(a),"data-testid":"body"})),"news"===e&&S.default.createElement("div",{className:"row pb-2","data-testid":"author-info"},S.default.createElement("div",{className:"col col-12"},S.default.createElement("div",{className:"author highlight-gold"},i),c&&S.default.createElement("div",{className:"author-title"},c),o&&S.default.createElement("div",{className:"author-contact"},S.default.createElement("span",{className:"icon-bg"},S.default.createElement("i",{className:"fas fa-envelope"})),S.default.createElement("a",{href:`mailto: ${o}`},o)),l&&S.default.createElement("div",{className:"author-contact"},S.default.createElement("span",{className:"icon-bg"},S.default.createElement("i",{className:"fas fa-phone"})),S.default.createElement("a",{href:`tel: ${l}`},l)))),"event"===e&&S.default.createElement(cn,{className:"row row-spaced mt-3 pt-6 pb-2 event-info","data-testid":"event-info"},S.default.createElement("div",{className:"col col-lg-4 col-md-6 col-12"},S.default.createElement("h4",null,"For more information contact:"),S.default.createElement("div",{className:"event-author"},i),S.default.createElement("div",{className:"event-author-title"},c),(o||l)&&S.default.createElement("div",{className:"event-author-info"},o&&S.default.createElement("div",null,S.default.createElement("a",{href:`mailto: ${o}`},o)),l&&S.default.createElement("div",null,S.default.createElement("a",{href:`tel: ${l}`},l)))),S.default.createElement("div",{className:"col col-lg-4 col-md-6 col-12"},S.default.createElement("h4",null,"Share this event:"),S.default.createElement("div",{className:"article-social-media"},S.default.createElement(Ut,{url:t,quote:r},S.default.createElement(qt,{size:28,borderRadius:4,bgStyle:{fill:"maroon"}})),S.default.createElement(Ht,{url:t,quote:r},S.default.createElement($t,{size:28,borderRadius:4,bgStyle:{fill:"maroon"}})),S.default.createElement(Bt,{url:o,quote:r},S.default.createElement(Gt,{size:28,borderRadius:4,bgStyle:{fill:"maroon"}})),S.default.createElement(Wt,{url:t,quote:r},S.default.createElement(Vt,{size:28,borderRadius:4,bgStyle:{fill:"maroon"}})))))))};sn.propTypes={type:O().oneOf(["event","news"]),articleUrl:O().string.isRequired,publicationDate:O().string.isRequired,title:O().string.isRequired,body:O().string.isRequired,authorEmail:O().string,authorName:O().string.isRequired,authorPhone:O().string,authorTitle:O().string,breadcrumbs:O().arrayOf(O().shape({title:O().string,url:O().string,active:O().bool})),calendarUrl:O().string,headerImageUrl:O().string,eventLocation:O().string,eventTime:O().string,registrationUrl:O().string,zoomUrl:O().string},sn.defaultProps={type:"news",authorEmail:void 0,authorPhone:void 0,authorTitle:void 0,breadcrumbs:void 0,calendarUrl:void 0,headerImageUrl:void 0,eventLocation:void 0,eventTime:void 0,registrationUrl:void 0,zoomUrl:void 0};const un={name:"onclick",event:"link",action:"click",type:"internal link",region:"main content"},dn=({color:e,icon:t,innerRef:n,onClick:r,size:a,cardTitle:o})=>S.default.createElement("button",{type:"button",className:`btn btn-circle btn-circle-alt-${e} ${"large"===a&&"btn-circle-large"}`,ref:n,onClick:()=>(M({...un,text:`${t?.[1]} icon`,section:o}),void r?.()),"aria-label":"Close"},S.default.createElement("i",{className:`${t?.[0]} fa-${t?.[1]}`}));dn.propTypes={color:O().oneOf(["white","gray","black"]),icon:O().arrayOf(O().string),innerRef:O().oneOfType([O().object,O().func,O().string]),onClick:O().func,cardTitle:O().string,size:O().oneOf(["large","small"])},dn.defaultProps={color:"gray",icon:void 0,innerRef:void 0,onClick:void 0,size:"small",cardTitle:""};const fn={name:"onclick",event:"link",action:"click",type:"internal link",region:"main content"},mn=({label:e,cardTitle:t,ariaLabel:n,color:r,disabled:a,element:o,innerRef:i,href:l,onClick:c,...s})=>{const u=q()("btn","btn-tag",{"btn-tag-alt-white":"white"===r,"btn-tag-alt-gray":"gray"===r,"btn-tag-alt-dark":"dark"===r,disabled:a});let d=o;return l&&"button"===o&&(d="a"),S.default.createElement(d,G({type:"button"===d&&c?"button":void 0},s,{className:u,href:l,ref:i,onClick:()=>(M({...fn,text:e,section:t}),void c?.()),"aria-label":n}),e)};mn.propTypes={label:O().string,cardTitle:O().string,ariaLabel:O().string,color:O().oneOf(["white","gray","dark"]),disabled:O().bool,element:O().oneOfType([O().func,O().string,O().shape({$$typeof:O().symbol,render:O().func}),O().arrayOf(O().oneOfType([O().func,O().string,O().shape({$$typeof:O().symbol,render:O().func})]))]),href:O().string,innerRef:O().oneOfType([O().object,O().func,O().string]),onClick:O().func},mn.defaultProps={label:"",cardTitle:"",ariaLabel:void 0,color:"gray",disabled:void 0,element:"button",href:void 0,innerRef:void 0,onClick:void 0};const pn=({src:e,alt:t,cssClasses:n,loading:r="lazy",decoding:a="async",dataTestId:o,fetchPriority:i="auto",width:l,height:c,cardLink:s,title:u,caption:d,captionTitle:f,border:m,dropShadow:p})=>{const g={src:e,alt:t,loading:r,decoding:a,fetchpriority:i,...n?.length>0&&{className:P(n)},...o&&{"data-testid":o},...l&&{width:l},...c&&{height:c}},h=q()("uds-img",{borderless:!m,"uds-img-drop-shadow":p}),v=e=>{const t=e?`${g.className} ${e}`:g.className;return s?S.default.createElement("a",{href:s},S.default.createElement("img",G({},g,{className:t})),S.default.createElement("span",{className:"visually-hidden"},u)):S.default.createElement("img",G({},g,{className:t}))};return S.default.createElement(S.default.Fragment,null,d?S.default.createElement("div",{className:h},S.default.createElement("figure",{className:"figure uds-figure"},v(),d&&S.default.createElement("figcaption",{className:"figure-caption uds-figure-caption"},f&&S.default.createElement("h3",null,f),S.default.createElement("span",{className:"uds-caption-text",dangerouslySetInnerHTML:L(d)})))):v(h))};pn.propTypes={src:O().string.isRequired,alt:O().string.isRequired,cssClasses:O().arrayOf(O().string),loading:O().oneOf(["lazy","eager"]),decoding:O().oneOf(["sync","async","auto"]),fetchPriority:O().oneOf(["auto","high","low"]),width:O().string,height:O().string,dataTestId:O().string,cardLink:O().string,title:O().string,caption:O().string,captionTitle:O().string,border:O().bool,dropShadow:O().bool};const gn=xt.div`
+`;
+l.oneOf(["event", "news"]), l.string.isRequired, l.string.isRequired, l.string.isRequired, l.string.isRequired, l.string, l.string.isRequired, l.string, l.string, l.arrayOf(
+  l.shape({
+    title: l.string,
+    url: l.string,
+    active: l.bool
+  })
+), l.string, l.string, l.string, l.string, l.string, l.string;
+l.oneOf(["white", "gray", "black"]), l.arrayOf(l.string), l.oneOfType([
+  l.object,
+  l.func,
+  l.string
+]), l.func, l.string, l.oneOf(["large", "small"]), l.string;
+const mp = {
+  name: "onclick",
+  event: "link",
+  action: "click",
+  type: "internal link",
+  region: "main content"
+}, Zi = ({
+  label: e,
+  cardTitle: t,
+  gaData: r,
+  ariaLabel: n,
+  color: a,
+  disabled: s,
+  element: d = "button",
+  innerRef: f,
+  href: h,
+  onClick: m,
+  ...C
+}) => {
+  const _ = dt("btn", "btn-tag", {
+    "btn-tag-alt-white": a === "white",
+    "btn-tag-alt-gray": a === "gray",
+    "btn-tag-alt-dark": a === "dark",
+    disabled: s
+  });
+  let O = d;
+  return h && d === "button" && (O = "a"), /* @__PURE__ */ H.jsx(
+    Zr,
+    {
+      gaData: {
+        ...mp,
+        section: t,
+        // @deprecated - remove at some point
+        ...r,
+        text: e
+      },
+      children: /* @__PURE__ */ H.jsx(
+        O,
+        {
+          type: O === "button" && m ? "button" : void 0,
+          ...C,
+          className: _,
+          href: h,
+          ref: f,
+          onClick: m,
+          "aria-label": n,
+          children: e
+        }
+      )
+    }
+  );
+};
+Zi.propTypes = {
+  /**
+    Button tag label
+  */
+  label: l.string,
+  /**
+   * @deprecated
+   * Card title, use `gaData.section` instead
+   */
+  cardTitle: l.string,
+  /**
+   * Google Analytics event data
+   */
+  gaData: Bi,
+  /**
+    ARIA label for accessibility
+  */
+  ariaLabel: l.string,
+  /**
+    Button background color
+  */
+  color: l.oneOf(["white", "gray", "dark"]),
+  /**
+    Disable the button?
+  */
+  disabled: l.bool,
+  /**
+    Pass in a Component to override default button element.
+    For example: react-router Link
+  */
+  element: l.oneOfType([
+    l.func,
+    l.string,
+    l.shape({ $$typeof: l.symbol, render: l.func }),
+    l.arrayOf(
+      l.oneOfType([
+        l.func,
+        l.string,
+        l.shape({ $$typeof: l.symbol, render: l.func })
+      ])
+    )
+  ]),
+  /**
+    Link target url; will cause button to be rendered as `<a>` link
+  */
+  href: l.string,
+  /**
+   * ref will only get you a reference to the Button component, use innerRef to
+   * get a reference to the DOM element (for things like focus management).
+   */
+  innerRef: l.oneOfType([
+    l.object,
+    l.func,
+    l.string
+  ]),
+  /**
+    Event handler function for `<button>`
+  */
+  onClick: l.func
+};
+Zi.defaultProps = {
+  label: "",
+  cardTitle: "",
+  ariaLabel: void 0,
+  color: "gray",
+  disabled: void 0,
+  element: "button",
+  href: void 0,
+  innerRef: void 0,
+  onClick: void 0
+};
+const wl = ({
+  src: e,
+  alt: t,
+  cssClasses: r,
+  loading: n = "lazy",
+  decoding: a = "async",
+  dataTestId: s,
+  fetchPriority: d = "auto",
+  width: f,
+  height: h,
+  cardLink: m,
+  title: C,
+  caption: _,
+  captionTitle: O,
+  border: U,
+  dropShadow: E
+}) => {
+  const S = {
+    src: e,
+    alt: t,
+    loading: n,
+    decoding: a,
+    fetchpriority: d,
+    // React attribute bug workaround
+    ...(r == null ? void 0 : r.length) > 0 && { className: pu(r) },
+    ...s && { "data-testid": s },
+    ...f && { width: f },
+    ...h && { height: h }
+  }, I = dt("uds-img", {
+    borderless: !U,
+    "uds-img-drop-shadow": E
+  }), F = (X) => {
+    const G = X ? `${S.className} ${X}` : S.className;
+    return m ? /* @__PURE__ */ H.jsxs("a", { href: m, children: [
+      /* @__PURE__ */ H.jsx("img", { ...S, className: G }),
+      /* @__PURE__ */ H.jsx("span", { className: "visually-hidden", children: C })
+    ] }) : (
+      // eslint-disable-next-line jsx-a11y/alt-text, react/jsx-props-no-spreading
+      /* @__PURE__ */ H.jsx("img", { ...S, className: G })
+    );
+  }, $ = () => /* @__PURE__ */ H.jsx("div", { className: I, children: /* @__PURE__ */ H.jsxs("figure", { className: "figure uds-figure", children: [
+    F(),
+    _ && /* @__PURE__ */ H.jsxs("figcaption", { className: "figure-caption uds-figure-caption", children: [
+      O && /* @__PURE__ */ H.jsx("h3", { children: O }),
+      /* @__PURE__ */ H.jsx(
+        "span",
+        {
+          className: "uds-caption-text",
+          dangerouslySetInnerHTML: Wr(_)
+        }
+      )
+    ] })
+  ] }) });
+  return /* @__PURE__ */ H.jsx(H.Fragment, { children: _ ? $() : F(I) });
+};
+wl.propTypes = {
+  /**
+   * Image source (We keep the same name as in the whole project)
+   */
+  src: l.string.isRequired,
+  /**
+   * Image alt text
+   */
+  alt: l.string.isRequired,
+  /**
+   * Array classes for the image
+   */
+  cssClasses: l.arrayOf(l.string),
+  /**
+   * Image loading mode
+   */
+  loading: l.oneOf(["lazy", "eager"]),
+  /**
+   * Image decoding mode
+   */
+  decoding: l.oneOf(["sync", "async", "auto"]),
+  /**
+   * Image fetch priority mode
+   */
+  fetchPriority: l.oneOf(["auto", "high", "low"]),
+  /**
+   * Width of the image
+   */
+  width: l.string,
+  /**
+   * Height of the image
+   */
+  height: l.string,
+  dataTestId: l.string,
+  cardLink: l.string,
+  title: l.string,
+  caption: l.string,
+  captionTitle: l.string,
+  border: l.bool,
+  dropShadow: l.bool
+};
+const gp = cr.div`
   &.cards-components a + &.cards-components a {
     margin-left: 5px;
   }
@@ -174,7 +5573,442 @@ import*as e from"react";import*as t from"react-dom";var n={672:function(e){e.exp
   .card-button .btn {
     margin: 0;
   }
-`,hn={name:"onclick",event:"link",action:"click",type:"internal link",region:"main content"},vn=({type:e,width:t,horizontal:n,image:r,imageAltText:a,title:o,icon:i,body:l,eventFormat:c,eventLocation:s,eventTime:u,buttons:d,linkLabel:f,linkUrl:m,tags:p,showBorders:g,cardLink:h})=>S.default.createElement(yn,{type:e,width:t,horizontal:n,image:r,imageAltText:a,title:o,icon:i,body:l,eventFormat:c,eventLocation:s,eventTime:u,buttons:d,linkLabel:f,linkUrl:m,tags:p,showBorders:g,cardLink:h});vn.propTypes={type:O().oneOf(["default","degree","event","news","story"]),width:O().oneOf(["25%","50%","75%","100%"]),horizontal:O().bool,title:O().string.isRequired,icon:O().arrayOf(O().string),body:O().string,eventFormat:O().oneOf(["stack","inline"]),eventLocation:O().string,eventTime:O().string,image:O().string,imageAltText:O().string,buttons:O().arrayOf(O().shape({ariaLabel:O().string,color:O().oneOf(["gold","maroon","gray","dark"]),icon:O().arrayOf(O().string),href:O().string,label:O().string,onClick:O().func,size:O().oneOf(["default","small","xsmall"]),target:O().oneOf(["_blank","_self","_top","_parent"])})),linkLabel:O().string,linkUrl:O().string,tags:O().arrayOf(O().shape({ariaLabel:O().string,color:O().oneOf(["white","gray","dark"]),href:O().string,label:O().string,onClick:O().func})),showBorders:O().bool,cardLink:O().string},vn.defaultProps={type:"default",width:"100%",horizontal:!1,body:void 0,eventFormat:"stack",eventTime:void 0,eventLocation:void 0,icon:void 0,image:void 0,imageAltText:void 0,buttons:void 0,linkLabel:void 0,linkUrl:void 0,tags:void 0,showBorders:!0};const yn=({type:e,width:t,horizontal:n,image:r,imageAltText:a,title:o,icon:i,body:l,eventFormat:c,eventLocation:s,eventTime:u,buttons:d,linkLabel:f,linkUrl:m,tags:p,showBorders:g,cardLink:h})=>{const v=q()("card","cards-components",{"card-degree":"degree"===e,"card-event":"event"===e,"card-story":"story"===e,[`w-${t.replace("%","")}`]:"100%"!==t,"card-horizontal":n,borderless:!g});return S.default.createElement(S.default.Fragment,null,S.default.createElement(gn,{className:v,"data-testid":"card-container"},!!r&&S.default.createElement(pn,{src:r,alt:a,dataTestId:"card-image",cssClasses:["card-img-top"],cardLink:h,title:o}),!r&&i&&S.default.createElement("i",{className:`${i?.[0]} fa-${i?.[1]} fa-2x card-icon-top`,"data-testid":"card-icon"}),n?S.default.createElement("div",{className:"card-content-wrapper"},S.default.createElement(bn,{type:e,body:l,eventFormat:c,eventLocation:s,eventTime:u,title:o,buttons:d,linkLabel:f,linkUrl:m,tags:p,cardLink:h})):S.default.createElement(bn,{type:e,body:l,eventFormat:c,eventLocation:s,eventTime:u,title:o,buttons:d,linkLabel:f,linkUrl:m,tags:p,cardLink:h})))};yn.propTypes={type:O().oneOf(["default","degree","event","news","story"]),width:O().oneOf(["25%","50%","75%","100%"]),horizontal:O().bool,title:O().string.isRequired,icon:O().arrayOf(O().string),body:O().string,eventFormat:O().oneOf(["stack","inline"]),eventLocation:O().string,eventTime:O().string,image:O().string,imageAltText:O().string,buttons:O().arrayOf(O().shape({ariaLabel:O().string,color:O().oneOf(["gold","maroon","gray","dark"]),icon:O().arrayOf(O().string),href:O().string,label:O().string,onClick:O().func,size:O().oneOf(["default","small","xsmall"]),target:O().oneOf(["_blank","_self","_top","_parent"])})),linkLabel:O().string,linkUrl:O().string,tags:O().arrayOf(O().shape({ariaLabel:O().string,color:O().oneOf(["white","gray","dark"]),href:O().string,label:O().string,onClick:O().func})),showBorders:O().bool,cardLink:O().string},yn.defaultProps={type:"default",width:"100%",horizontal:!1,body:"",eventFormat:"stack",eventTime:"",eventLocation:"",icon:void 0,image:"",imageAltText:"",buttons:void 0,linkLabel:void 0,linkUrl:void 0,tags:void 0,showBorders:!0};const bn=({type:e,body:t,eventFormat:n,eventLocation:r,eventTime:a,title:o,buttons:i,linkLabel:l,linkUrl:c,tags:s,cardLink:u})=>{return S.default.createElement(S.default.Fragment,null,!!o&&S.default.createElement("div",{className:"card-header","data-testid":"card-title"},S.default.createElement("h3",{className:"card-title"},u?S.default.createElement("a",{href:u},o):o)),!!t&&S.default.createElement("div",{className:"card-body","data-testid":"card-body"},S.default.createElement("div",{dangerouslySetInnerHTML:L(t)})),"event"===e&&(a||r)&&S.default.createElement(wn,{eventFormat:n,eventTime:a,eventLocation:r}),i&&S.default.createElement("div",{className:"card-buttons"},i.map((e=>S.default.createElement("div",{className:"card-button","data-testid":"card-button",key:`${e.label}-${e.href}`},S.default.createElement(V,{ariaLabel:e.ariaLabel,color:e.color,icon:e.icon,href:e.href,label:e.label,onClick:e.onClick,size:e.size,target:e.target,cardTitle:o}))))),c&&l&&S.default.createElement("div",{className:"card-link","data-testid":"card-link"},S.default.createElement("a",{href:(d=c,d.startsWith("https://")||d.startsWith("http://")||!/^[A-Z0-9._+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(d)?d:`mailto:${d}`),onClick:()=>M({...hn,section:o,text:l})},l)),s&&S.default.createElement("div",{className:"card-tags","data-testid":"card-tags"},s.map((e=>S.default.createElement(mn,{key:`${e.label}-${e.href}`,ariaLabel:e.ariaLabel,color:e.color,href:e.href,label:e.label,onClick:e.onClick,cardTitle:o})))));var d};bn.propTypes={type:O().oneOf(["default","degree","event","news","story"]),body:O().string,eventFormat:O().oneOf(["stack","inline"]),eventLocation:O().string,eventTime:O().string,title:O().string.isRequired,buttons:O().arrayOf(O().shape({ariaLabel:O().string,color:O().oneOf(["gold","maroon","gray","dark"]),icon:O().arrayOf(O().string),href:O().string,label:O().string,onClick:O().func,size:O().oneOf(["default","small","xsmall"]),target:O().oneOf(["_blank","_self","_top","_parent"])})),linkLabel:O().string,linkUrl:O().string,tags:O().arrayOf(O().shape({ariaLabel:O().string,color:O().oneOf(["white","gray","dark"]),href:O().string,label:O().string,onClick:O().func})),cardLink:O().string},bn.defaultProps={type:"default",body:"",eventFormat:"stack",eventLocation:"",eventTime:"",buttons:void 0,linkLabel:void 0,linkUrl:void 0,tags:void 0};const wn=({eventFormat:e,eventTime:t,eventLocation:n})=>"inline"===e?S.default.createElement("div",{className:"card-event-details"},t&&S.default.createElement("div",{className:"card-event-icons"},S.default.createElement("div",null,S.default.createElement("i",{className:"far fa-calendar"})),S.default.createElement("div",{dangerouslySetInnerHTML:L(t)})),n&&S.default.createElement("div",{className:"card-event-icons"},S.default.createElement("div",null,S.default.createElement("i",{className:"fas fa-map-marker-alt"})),S.default.createElement("div",{dangerouslySetInnerHTML:L(n)}))):S.default.createElement(S.default.Fragment,null,t&&S.default.createElement("div",{className:"card-event-details"},S.default.createElement("div",{className:"card-event-icons"},S.default.createElement("div",null,S.default.createElement("i",{className:"far fa-calendar"})),S.default.createElement("div",{dangerouslySetInnerHTML:L(t)}))),n&&S.default.createElement("div",{className:"card-event-details"},S.default.createElement("div",{className:"card-event-icons"},S.default.createElement("div",null,S.default.createElement("i",{className:"fas fa-map-marker-alt"})),S.default.createElement("span",null,S.default.createElement("div",{dangerouslySetInnerHTML:L(n)})))));wn.propTypes={eventFormat:O().oneOf(["stack","inline"]),eventLocation:O().string,eventTime:O().string},wn.defaultProps={eventFormat:"stack",eventLocation:"",eventTime:""};const En=xt.div`
+`, yp = (e) => /^[A-Z0-9._+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(e), bp = (e) => !e.startsWith("https://") && !e.startsWith("http://") && yp(e) ? `mailto:${e}` : e, vp = {
+  name: "onclick",
+  event: "link",
+  action: "click",
+  type: "internal link",
+  region: "main content"
+}, gt = ({
+  type: e,
+  width: t,
+  horizontal: r,
+  image: n,
+  imageAltText: a,
+  title: s,
+  icon: d,
+  body: f,
+  eventFormat: h,
+  eventLocation: m,
+  eventTime: C,
+  buttons: _,
+  linkLabel: O,
+  linkUrl: U,
+  tags: E,
+  showBorders: S,
+  cardLink: I
+}) => /* @__PURE__ */ H.jsx(
+  Xi,
+  {
+    type: e,
+    width: t,
+    horizontal: r,
+    image: n,
+    imageAltText: a,
+    title: s,
+    icon: d,
+    body: f,
+    eventFormat: h,
+    eventLocation: m,
+    eventTime: C,
+    buttons: _,
+    linkLabel: O,
+    linkUrl: U,
+    tags: E,
+    showBorders: S,
+    cardLink: I
+  }
+);
+gt.propTypes = {
+  /**
+   * Type of card
+   */
+  type: l.oneOf(["default", "degree", "event", "news", "story"]),
+  /**
+   * Width of card
+   */
+  width: l.oneOf(["25%", "50%", "75%", "100%"]),
+  /**
+   * Enable horizontal mode
+   */
+  horizontal: l.bool,
+  /**
+   * Card title
+   */
+  title: l.string.isRequired,
+  /**
+    React Font Awesome icon prefix and name string to be rendered in button label. Ex: ['fab', 'drupal']
+  */
+  icon: l.arrayOf(l.string),
+  /**
+   * Card body content
+   */
+  body: l.string,
+  /**
+   * Event info format
+   */
+  eventFormat: l.oneOf(["stack", "inline"]),
+  /**
+   * Location
+   */
+  eventLocation: l.string,
+  /**
+   * Event start time
+   */
+  eventTime: l.string,
+  /**
+   * Card header image
+   */
+  image: l.string,
+  /**
+   * Card header image alt text
+   */
+  imageAltText: l.string,
+  /**
+   * Buttons
+   */
+  buttons: l.arrayOf(
+    l.shape({
+      ariaLabel: l.string,
+      color: l.oneOf(["gold", "maroon", "gray", "dark"]),
+      icon: l.arrayOf(l.string),
+      href: l.string,
+      label: l.string,
+      onClick: l.func,
+      size: l.oneOf(["default", "small", "xsmall"]),
+      target: l.oneOf(["_blank", "_self", "_top", "_parent"])
+    })
+  ),
+  linkLabel: l.string,
+  linkUrl: l.string,
+  /**
+   * Tags
+   */
+  tags: l.arrayOf(
+    l.shape({
+      ariaLabel: l.string,
+      color: l.oneOf(["white", "gray", "dark"]),
+      href: l.string,
+      label: l.string,
+      onClick: l.func
+    })
+  ),
+  /**
+   * Remove card borders
+   */
+  showBorders: l.bool,
+  /**
+   * Card link
+   */
+  cardLink: l.string
+};
+gt.defaultProps = {
+  type: "default",
+  width: "100%",
+  horizontal: !1,
+  body: void 0,
+  eventFormat: "stack",
+  eventTime: void 0,
+  eventLocation: void 0,
+  icon: void 0,
+  image: void 0,
+  imageAltText: void 0,
+  buttons: void 0,
+  linkLabel: void 0,
+  linkUrl: void 0,
+  tags: void 0,
+  showBorders: !0
+};
+const Xi = ({
+  type: e,
+  width: t,
+  horizontal: r,
+  image: n,
+  imageAltText: a,
+  title: s,
+  icon: d,
+  body: f,
+  eventFormat: h,
+  eventLocation: m,
+  eventTime: C,
+  buttons: _,
+  linkLabel: O,
+  linkUrl: U,
+  tags: E,
+  showBorders: S,
+  cardLink: I
+}) => {
+  const F = dt("card", "cards-components", {
+    "card-degree": e === "degree",
+    "card-event": e === "event",
+    "card-story": e === "story",
+    [`w-${t.replace("%", "")}`]: t !== "100%",
+    "card-horizontal": r,
+    borderless: !S
+  });
+  return /* @__PURE__ */ H.jsx(H.Fragment, { children: /* @__PURE__ */ H.jsxs(gp, { className: F, "data-testid": "card-container", children: [
+    !!n && /* @__PURE__ */ H.jsx(
+      wl,
+      {
+        src: n,
+        alt: a,
+        dataTestId: "card-image",
+        cssClasses: ["card-img-top"],
+        cardLink: I,
+        title: s
+      }
+    ),
+    !n && d && /* @__PURE__ */ H.jsx(
+      "i",
+      {
+        className: `${d == null ? void 0 : d[0]} fa-${d == null ? void 0 : d[1]} fa-2x card-icon-top`,
+        "data-testid": "card-icon"
+      }
+    ),
+    r ? /* @__PURE__ */ H.jsx("div", { className: "card-content-wrapper", children: /* @__PURE__ */ H.jsx(
+      va,
+      {
+        type: e,
+        body: f,
+        eventFormat: h,
+        eventLocation: m,
+        eventTime: C,
+        title: s,
+        buttons: _,
+        linkLabel: O,
+        linkUrl: U,
+        tags: E,
+        cardLink: I
+      }
+    ) }) : /* @__PURE__ */ H.jsx(
+      va,
+      {
+        type: e,
+        body: f,
+        eventFormat: h,
+        eventLocation: m,
+        eventTime: C,
+        title: s,
+        buttons: _,
+        linkLabel: O,
+        linkUrl: U,
+        tags: E,
+        cardLink: I
+      }
+    )
+  ] }) });
+};
+Xi.propTypes = {
+  type: l.oneOf(["default", "degree", "event", "news", "story"]),
+  width: l.oneOf(["25%", "50%", "75%", "100%"]),
+  horizontal: l.bool,
+  title: l.string.isRequired,
+  icon: l.arrayOf(l.string),
+  // React Font Awesome icon prefix and name string to be rendered in button label. Ex: ['fab', 'drupal']
+  body: l.string,
+  eventFormat: l.oneOf(["stack", "inline"]),
+  eventLocation: l.string,
+  eventTime: l.string,
+  image: l.string,
+  imageAltText: l.string,
+  buttons: l.arrayOf(
+    l.shape({
+      ariaLabel: l.string,
+      color: l.oneOf(["gold", "maroon", "gray", "dark"]),
+      icon: l.arrayOf(l.string),
+      href: l.string,
+      label: l.string,
+      onClick: l.func,
+      size: l.oneOf(["default", "small", "xsmall"]),
+      target: l.oneOf(["_blank", "_self", "_top", "_parent"])
+    })
+  ),
+  linkLabel: l.string,
+  linkUrl: l.string,
+  tags: l.arrayOf(
+    l.shape({
+      ariaLabel: l.string,
+      color: l.oneOf(["white", "gray", "dark"]),
+      href: l.string,
+      label: l.string,
+      onClick: l.func
+    })
+  ),
+  showBorders: l.bool,
+  cardLink: l.string
+};
+Xi.defaultProps = {
+  type: "default",
+  width: "100%",
+  horizontal: !1,
+  body: "",
+  eventFormat: "stack",
+  eventTime: "",
+  eventLocation: "",
+  icon: void 0,
+  image: "",
+  imageAltText: "",
+  buttons: void 0,
+  linkLabel: void 0,
+  linkUrl: void 0,
+  tags: void 0,
+  showBorders: !0
+};
+const va = ({
+  type: e,
+  body: t,
+  eventFormat: r,
+  eventLocation: n,
+  eventTime: a,
+  title: s,
+  buttons: d,
+  linkLabel: f,
+  linkUrl: h,
+  tags: m,
+  cardLink: C
+}) => /* @__PURE__ */ H.jsxs(H.Fragment, { children: [
+  !!s && /* @__PURE__ */ H.jsx("div", { className: "card-header", "data-testid": "card-title", children: /* @__PURE__ */ H.jsx("h3", { className: "card-title", children: C ? /* @__PURE__ */ H.jsx("a", { href: C, children: s }) : s }) }),
+  !!t && /* @__PURE__ */ H.jsx("div", { className: "card-body", "data-testid": "card-body", children: /* @__PURE__ */ H.jsx("div", { dangerouslySetInnerHTML: Wr(t) }) }),
+  e === "event" && (a || n) && /* @__PURE__ */ H.jsx(
+    Ki,
+    {
+      eventFormat: r,
+      eventTime: a,
+      eventLocation: n
+    }
+  ),
+  d && /* @__PURE__ */ H.jsx("div", { className: "card-buttons", children: d.map((_) => /* @__PURE__ */ H.jsx(
+    "div",
+    {
+      className: "card-button",
+      "data-testid": "card-button",
+      children: /* @__PURE__ */ H.jsx(
+        Tr,
+        {
+          ariaLabel: _.ariaLabel,
+          color: _.color,
+          icon: _.icon,
+          href: _.href,
+          label: _.label,
+          onClick: _.onClick,
+          size: _.size,
+          target: _.target,
+          cardTitle: s
+        }
+      )
+    },
+    `${_.label}-${_.href}`
+  )) }),
+  h && f && /* @__PURE__ */ H.jsx("div", { className: "card-link", "data-testid": "card-link", children: /* @__PURE__ */ H.jsx(
+    Zr,
+    {
+      gaData: {
+        ...vp,
+        section: s,
+        text: f
+      },
+      children: /* @__PURE__ */ H.jsx("a", { href: bp(h), children: f })
+    }
+  ) }),
+  m && /* @__PURE__ */ H.jsx("div", { className: "card-tags", "data-testid": "card-tags", children: m.map((_) => (
+    // @ts-ignore
+    /* @__PURE__ */ H.jsx(
+      Zi,
+      {
+        ariaLabel: _.ariaLabel,
+        color: _.color,
+        href: _.href,
+        label: _.label,
+        onClick: _.onClick,
+        cardTitle: s
+      },
+      `${_.label}-${_.href}`
+    )
+  )) })
+] });
+va.propTypes = {
+  type: l.oneOf(["default", "degree", "event", "news", "story"]),
+  body: l.string,
+  eventFormat: l.oneOf(["stack", "inline"]),
+  eventLocation: l.string,
+  eventTime: l.string,
+  title: l.string.isRequired,
+  buttons: l.arrayOf(
+    l.shape({
+      ariaLabel: l.string,
+      color: l.oneOf(["gold", "maroon", "gray", "dark"]),
+      icon: l.arrayOf(l.string),
+      href: l.string,
+      label: l.string,
+      onClick: l.func,
+      size: l.oneOf(["default", "small", "xsmall"]),
+      target: l.oneOf(["_blank", "_self", "_top", "_parent"])
+    })
+  ),
+  linkLabel: l.string,
+  linkUrl: l.string,
+  tags: l.arrayOf(
+    l.shape({
+      ariaLabel: l.string,
+      color: l.oneOf(["white", "gray", "dark"]),
+      href: l.string,
+      label: l.string,
+      onClick: l.func
+    })
+  ),
+  cardLink: l.string
+};
+va.defaultProps = {
+  type: "default",
+  body: "",
+  eventFormat: "stack",
+  eventLocation: "",
+  eventTime: "",
+  buttons: void 0,
+  linkLabel: void 0,
+  linkUrl: void 0,
+  tags: void 0
+};
+const Ki = ({ eventFormat: e, eventTime: t, eventLocation: r }) => e === "inline" ? /* @__PURE__ */ H.jsxs("div", { className: "card-event-details", children: [
+  t && /* @__PURE__ */ H.jsxs("div", { className: "card-event-icons", children: [
+    /* @__PURE__ */ H.jsx("div", { children: /* @__PURE__ */ H.jsx("i", { className: "far fa-calendar" }) }),
+    /* @__PURE__ */ H.jsx("div", { dangerouslySetInnerHTML: Wr(t) })
+  ] }),
+  r && /* @__PURE__ */ H.jsxs("div", { className: "card-event-icons", children: [
+    /* @__PURE__ */ H.jsx("div", { children: /* @__PURE__ */ H.jsx("i", { className: "fas fa-map-marker-alt" }) }),
+    /* @__PURE__ */ H.jsx(
+      "div",
+      {
+        dangerouslySetInnerHTML: Wr(r)
+      }
+    )
+  ] })
+] }) : /* @__PURE__ */ H.jsxs(H.Fragment, { children: [
+  t && /* @__PURE__ */ H.jsx("div", { className: "card-event-details", children: /* @__PURE__ */ H.jsxs("div", { className: "card-event-icons", children: [
+    /* @__PURE__ */ H.jsx("div", { children: /* @__PURE__ */ H.jsx("i", { className: "far fa-calendar" }) }),
+    /* @__PURE__ */ H.jsx("div", { dangerouslySetInnerHTML: Wr(t) })
+  ] }) }),
+  r && /* @__PURE__ */ H.jsx("div", { className: "card-event-details", children: /* @__PURE__ */ H.jsxs("div", { className: "card-event-icons", children: [
+    /* @__PURE__ */ H.jsx("div", { children: /* @__PURE__ */ H.jsx("i", { className: "fas fa-map-marker-alt" }) }),
+    /* @__PURE__ */ H.jsx("span", { children: /* @__PURE__ */ H.jsx(
+      "div",
+      {
+        dangerouslySetInnerHTML: Wr(r)
+      }
+    ) })
+  ] }) })
+] });
+Ki.propTypes = {
+  eventFormat: l.oneOf(["stack", "inline"]),
+  eventLocation: l.string,
+  eventTime: l.string
+};
+Ki.defaultProps = {
+  eventFormat: "stack",
+  eventLocation: "",
+  eventTime: ""
+};
+cr.div`
   display: inline-block;
   position: relative;
   width: 80px;
@@ -208,19 +6042,6669 @@ import*as e from"react";import*as t from"react-dom";var n={672:function(e){e.exp
       transform: rotate(360deg);
     }
   }
-`,xn=()=>S.default.createElement(En,null,S.default.createElement("div",null),S.default.createElement("div",null),S.default.createElement("div",null),S.default.createElement("div",null)),kn=xt.section``,Cn=(0,S.createContext)(null),On=({defaultProps:e,dataSource:t,noFeedText:n,renderHeader:r,renderBody:a,dataTransformer:o=e=>e,dataFilter:i=e=>e,maxItems:l})=>{const[{data:c,loading:s,error:u},d]=(()=>{const[e,t]=(0,S.useState)(),[n,r]=(0,S.useState)(!1),[a,o]=(0,S.useState)(!1),[i,l]=(0,S.useState)("");return(0,S.useEffect)((()=>{i&&(()=>{o(null),r(!0);try{fetch(i).then((e=>e.json())).then((e=>{t(e),r(!1)})).catch((e=>{o(e),r(!1)}))}catch(e){o(e)}})()}),[i]),[{data:e,loading:n,error:a},l]})(),[f,m]=(0,S.useState)([]),p={...e.dataSource,...t};return(0,S.useEffect)((()=>{d(p?.url)}),[p?.url]),(0,S.useEffect)((()=>{const e=c?.nodes.map(o),n=e?.filter((e=>i(e,t?.filters)));m(l?n?.slice(0,l):n)}),[c]),S.default.createElement(Cn.Provider,{value:{feeds:f}},S.default.createElement(kn,null,r,u?S.default.createElement("span",null,"Error, try again!"):S.default.createElement(S.default.Fragment,null,s&&!f?.length&&S.default.createElement("div",{className:"text-center mt-4"},S.default.createElement(xn,null)),f?.length?a:!s&&S.default.createElement("p",{className:"text-center"},n))))};On.propTypes={renderHeader:O().element,renderBody:O().element,maxItems:O().number,dataTransformer:O().func,dataFilter:O().func,noFeedText:O().string};const Sn=O().shape({color:O().oneOf(["white","dark"]),text:O().string}),Nn=O().shape({color:O().oneOf(["gold","maroon","gray","dark"]),text:O().string}),An=O().shape({color:O().oneOf(["gold","maroon","gray","dark"]),text:O().string,size:O().string}),Tn=O().shape({url:O().string,filters:O().string}),Pn=O().shape({header:Sn,ctaButton:Nn,dataSource:Tn,maxItems:O().number}),Rn=xt.div`
+`;
+cr.section``;
+Ws(null);
+l.element, l.element, l.number, l.func, l.func, l.string;
+const xp = l.shape({
+  color: l.oneOf(["white", "dark"]),
+  text: l.string
+}), wp = l.shape({
+  color: l.oneOf(["gold", "maroon", "gray", "dark"]),
+  text: l.string
+});
+l.shape({
+  color: l.oneOf(["gold", "maroon", "gray", "dark"]),
+  text: l.string,
+  size: l.string
+});
+const Sp = l.shape({
+  url: l.string,
+  filters: l.string
+});
+l.shape({
+  header: xp,
+  ctaButton: wp,
+  dataSource: Sp,
+  maxItems: l.number
+});
+cr.div`
   @media screen and (min-width: 768px) {
     & {
       display: inline-flex;
       justify-content: flex-end;
     }
   }
-`,Ln=({defaultProps:e,header:t,ctaButton:n})=>{const r={...e.header,...t},a={...e.ctaButton,...n};return S.default.createElement("div",{className:"row justify-content-between align-items-center pb-6","data-testid":"feed-header"},S.default.createElement("div",{className:"col-sm-12 col-md-9"},S.default.createElement("h2",{className:`text-${r.color}`},r.text)),S.default.createElement(Rn,{className:"col-sm-12 col-md-3"},S.default.createElement("a",{className:`btn btn-${a.color}`,href:a.url,onClick:()=>M({event:"link",action:"click",name:"onclick",type:"internal link",region:"main content",section:r.text,text:a.text})},a.text)))};Ln.propTypes={defaultProps:Pn,header:Sn,ctaButton:Nn};const jn=({children:e})=>S.default.createElement("div",{className:"row","data-testid":"feed-body"},S.default.createElement("div",{className:"col"},e));jn.propTypes={children:O().element};const Dn=xt.img`
+`;
+l.element;
+const kp = cr.img`
   width: 100%;
-`,In=e=>{const t=e.type||"heading-hero";return{"heading-hero":()=>function({image:e,subTitle:t,title:n,contents:r,contentsColor:a}){const o={gold:"highlight-gold",black:"highlight-black",white:"highlight-white",none:"text-white",undefined:""},i={black:"text-dark",white:"text-white",undefined:""};let l=S.default.createElement(S.default.Fragment,null);return n&&(l=S.default.createElement("h1",{style:{maxWidth:n.maxWidth||""},"data-testid":"hero-title"},S.default.createElement("span",{className:q()({[i[n.color]]:n.color,[o[n.highlightColor]]:n.highlightColor})},n.text))),n&&t&&(l=S.default.createElement("header",null,S.default.createElement("p",{className:"hero-subtitle","data-testid":"hero-subtitle"},S.default.createElement("span",{className:q()({[i[t.color]]:t.color,[o[t.highlightColor]]:t.highlightColor})},t.text)),l)),S.default.createElement("div",{className:q()("uds-hero",{[{small:"uds-hero-sm",medium:"uds-hero-md",large:"uds-hero-lg",undefined:""}[e?.size]]:e?.size})},S.default.createElement("div",{className:"hero-overlay"}),S.default.createElement(Dn,{className:"hero",src:e?.url,alt:e?.altText,"data-testid":"hero-image"}),l,r&&S.default.createElement("div",{"data-testid":"hero-content",className:q()("content",{[i[a]]:a})},r.map(((e,t)=>S.default.createElement("p",{key:`content-${t}`},e.text)))))}(e),"story-hero":()=>function({image:e,title:t,contents:n}){return console.log({image:e,title:t,contents:n}),S.default.createElement("div",null,"TODO: to be implemented")}(e),undefined:()=>(console.error(`the type '${t}' is not supported by the 'Hero' component.`),null)}[t]()};In.propTypes={type:O().oneOf(["heading-hero","story-hero"]),image:_,title:U,subTitle:U,contents:O().arrayOf(U),contentsColor:O().string};const Mn=({dataId:e,isClickeable:t,disabled:n,pageLinkIcon:r,selectedPage:a,onClick:o,ellipses:i,ariaLabel:l,children:c,ariaDisabled:s})=>S.default.createElement("li",{className:q()("page-item",{disabled:n,active:a,elipses:i})},t?S.default.createElement("button",{type:"button","aria-label":l,className:q()("page-link",{"page-link-icon":r}),onClick:o,"data-testid":"page-link","data-id":e,"aria-current":a?"page":null,"aria-disabled":s},c,a&&S.default.createElement("span",{className:"visually-hidden"},"(current)")):S.default.createElement("span",{className:"page-link","data-testid":"page-link"},c));Mn.propTypes={isClickeable:O().bool,disabled:O().bool,pageLinkIcon:O().bool,selectedPage:O().bool,dataId:O().string,onClick:O().func,children:O().node,ellipses:O().bool,ariaLabel:O().string,ariaDisabled:O().bool},Mn.defaultProps={isClickeable:!1,disabled:!1,pageLinkIcon:!1,selectedPage:!1,onClick:()=>{}};const _n={event:"select",action:"click",name:"onclick",type:"pagination",region:"main content"},Un=({type:e,background:t,currentPage:n,totalPages:r,onChange:a})=>{const[o,i]=(0,S.useState)(null);(0,S.useEffect)((()=>{i(n)}),[n]);const l=(e,t)=>{const n={first:1,prev:1===o?1:o-1,next:o===r?r:o+1,last:r}[t]??t;i(n),(e=>{M({..._n,text:`page ${e}`})})(n),a?.(e,n)};return S.default.createElement("nav",{"aria-label":"Pagination","data-testid":"pagination"},S.default.createElement("ul",{className:q()("pagination","justify-content-center","pt-2","pb-2",{border:"bordered"===e,"uds-bg-gray1":"gray1"===t,"uds-bg-gray":"gray2"===t,"uds-bg-dark":"gray7"===t})},S.default.createElement(Mn,{dataId:"prev",isClickeable:!0,disabled:1===o,pageLinkIcon:!0,onClick:e=>l(e,"prev"),ariaDisabled:1===o,ariaLabel:"Previous Page"}),(()=>{const e=T(o===r-1,2,o===r?3:1),t=T(1===o,3,2===o?2:1),n=[...j(o-e,o,r),...j(o,o+1+t,r)];return S.default.createElement(S.default.Fragment,null,1!==n[0]&&S.default.createElement(Mn,{ariaLabel:`Page 1 of ${r}`,isClickeable:!0,selectedPage:1===o,onClick:e=>l(e,"first")},"1"),n[0]>2&&S.default.createElement(Mn,{ellipses:!0},"..."),n.map((e=>S.default.createElement(Mn,{ariaLabel:`Page ${e} of ${r}`,isClickeable:!0,key:e,selectedPage:o===e,onClick:t=>l(t,e)},e))),n[n.length-1]<r-1&&S.default.createElement(Mn,{ellipses:!0},"..."),n[n.length-1]!==r&&S.default.createElement(Mn,{isClickeable:!0,ariaLabel:`Page ${r} of ${r}`,selectedPage:o===r,onClick:e=>l(e,"last")},r))})(),S.default.createElement(Mn,{dataId:"next",isClickeable:!0,ariaDisabled:o===r,disabled:o===r,pageLinkIcon:!0,onClick:e=>l(e,"next"),ariaLabel:"Next Page"})))};Un.propTypes={type:O().oneOf(["default","bordered"]).isRequired,background:O().oneOf(["white","gray1","gray2","gray7"]).isRequired,currentPage:O().number,totalPages:O().number,onChange:O().func.isRequired},Un.defaultProps={currentPage:1,totalPages:10};const Fn={name:"onclick",event:"link",action:"click",type:"internal link",region:"main content"},zn=e=>"small"===e,qn=({size:e,image:t,imageAlt:n})=>zn(e)?S.default.createElement("div",{className:"image-wrapper"},S.default.createElement(pn,{src:t,alt:n,fetchPriority:"high"})):S.default.createElement(pn,{src:t,alt:n,fetchPriority:"high"});qn.propTypes={size:O().oneOf(["small","large"]),image:O().string.isRequired,imageAlt:O().string.isRequired};const Hn=({heading:e,citation:t})=>S.default.createElement("div",{className:"citation"},S.default.createElement("h4",null,e),S.default.createElement("p",null,"— ",t));Hn.propTypes={heading:O().string.isRequired,citation:O().string.isRequired};const $n=({imageSize:e,body:t,heading:n,readMoreLink:r})=>{const[a,o]=(0,S.useState)(!1),i=`info-layer-${Math.floor(1e5*Math.random())}`,l=e=>{"click"!==e.type&&"Enter"!==e.key&&" "!==e.key||(o(!a),M({...Fn,text:"Expand ranking",action:a?"open":"close",section:n}))};return S.default.createElement("div",{className:q()("info-layer",{active:a}),"data-testid":"info-layer",id:i},S.default.createElement("div",{className:"content"},S.default.createElement("div",{className:q()("header",{closed:zn(e)&&!a})},zn(e)&&S.default.createElement("p",{dangerouslySetInnerHTML:L(t)}),!zn(e)&&S.default.createElement(S.default.Fragment,null,S.default.createElement("button",{onClick:l,className:"btn-expand","aria-label":"Expand ranking",type:"button","aria-expanded":a,"aria-controls":i},S.default.createElement("h4",null,n),S.default.createElement("i",{className:"fas fa-chevron-up"}))),zn(e)&&S.default.createElement(S.default.Fragment,null,S.default.createElement("button",{onClick:l,className:"btn btn-expand","aria-label":"Expand ranking",type:"button","aria-expanded":a,"aria-controls":i},S.default.createElement("i",{className:"fas fa-chevron-up"})))),!zn(e)&&S.default.createElement("p",{dangerouslySetInnerHTML:L(t)}),r&&S.default.createElement("a",{href:r,"aria-label":"Read more",className:"read-more",onClick:()=>{M({...Fn,section:n,text:"read more"})}},"Read more ",S.default.createElement("span",{className:"visually-hidden"},n),S.default.createElement("span",{className:"fas icon-small fa-arrow-right","aria-hidden":"true"}))))};$n.propTypes={imageSize:O().oneOf(["small","large"]),body:O().string.isRequired,heading:O().string.isRequired,readMoreLink:O().string};const Bn=({imageSize:e="large",image:t,imageAlt:n,heading:r,body:a,readMoreLink:o="",citation:i})=>S.default.createElement("div",{className:q()("card-ranking",{"large-image":"large"===e,"small-image":"small"===e})},S.default.createElement(qn,{size:e,image:t,imageAlt:n}),zn(e)&&S.default.createElement(Hn,{heading:r,citation:i}),S.default.createElement($n,{imageSize:e,body:a,heading:r,readMoreLink:o}));Bn.propTypes={imageSize:O().oneOf(["small","large"]).isRequired,image:O().string.isRequired,imageAlt:O().string.isRequired,heading:O().string.isRequired,body:O().string.isRequired,readMoreLink:O().string,citation:O().string};const Gn=xt.div`
+`;
+function Tp({ image: e, title: t, contents: r }) {
+  return console.log({ image: e, title: t, contents: r }), /* @__PURE__ */ H.jsx("div", { children: "TODO: to be implemented" });
+}
+function Cp({
+  image: e,
+  subTitle: t,
+  title: r,
+  contents: n,
+  contentsColor: a
+}) {
+  const s = {
+    small: "uds-hero-sm",
+    medium: "uds-hero-md",
+    large: "uds-hero-lg",
+    undefined: ""
+  }, d = {
+    gold: "highlight-gold",
+    black: "highlight-black",
+    white: "highlight-white",
+    none: "text-white",
+    undefined: ""
+  }, f = {
+    black: "text-dark",
+    white: "text-white",
+    undefined: ""
+  };
+  return /* @__PURE__ */ H.jsxs(
+    "div",
+    {
+      className: dt("uds-hero", {
+        [s[e == null ? void 0 : e.size]]: e == null ? void 0 : e.size
+      }),
+      children: [
+        /* @__PURE__ */ H.jsx("div", { className: "hero-overlay" }),
+        /* @__PURE__ */ H.jsx(
+          kp,
+          {
+            className: "hero",
+            src: e == null ? void 0 : e.url,
+            alt: e == null ? void 0 : e.altText,
+            "data-testid": "hero-image"
+          }
+        ),
+        t && /* @__PURE__ */ H.jsx("div", { role: "doc-subtitle", "data-testid": "hero-subtitle", children: /* @__PURE__ */ H.jsx(
+          "span",
+          {
+            className: dt({
+              [f[t.color]]: t.color,
+              [d[t.highlightColor]]: t.highlightColor
+            }),
+            children: t.text
+          }
+        ) }),
+        r && /* @__PURE__ */ H.jsx("h1", { style: { maxWidth: r.maxWidth || "" }, "data-testid": "hero-title", children: /* @__PURE__ */ H.jsx(
+          "span",
+          {
+            className: dt({
+              [f[r.color]]: r.color,
+              [d[r.highlightColor]]: r.highlightColor
+            }),
+            children: r.text
+          }
+        ) }),
+        n && /* @__PURE__ */ H.jsx(
+          "div",
+          {
+            "data-testid": "hero-content",
+            className: dt("content", {
+              [f[a]]: a
+            }),
+            children: n.map((h, m) => (
+              // eslint-disable-next-line react/no-array-index-key
+              /* @__PURE__ */ H.jsx("p", { children: h.text }, `content-${m}`)
+            ))
+          }
+        )
+      ]
+    }
+  );
+}
+const Rn = (e) => {
+  const t = e.type || "heading-hero";
+  return {
+    "heading-hero": () => Cp(e),
+    "story-hero": () => Tp(e),
+    undefined: () => (console.error(
+      `the type '${t}' is not supported by the 'Hero' component.`
+    ), null)
+  }[t]();
+};
+Rn.propTypes = {
+  type: l.oneOf(["heading-hero", "story-hero"]),
+  image: cu,
+  title: qa,
+  subTitle: qa,
+  contents: l.arrayOf(qa),
+  contentsColor: l.string
+};
+const wr = ({
+  dataId: e,
+  isClickeable: t,
+  disabled: r,
+  pageLinkIcon: n,
+  selectedPage: a,
+  onClick: s,
+  ellipses: d,
+  ariaLabel: f,
+  children: h,
+  ariaDisabled: m
+}) => /* @__PURE__ */ H.jsx(
+  "li",
+  {
+    className: dt("page-item", {
+      disabled: r,
+      active: a,
+      elipses: d
+    }),
+    children: t ? /* @__PURE__ */ H.jsxs(
+      "button",
+      {
+        type: "button",
+        "aria-label": f,
+        className: dt("page-link", {
+          "page-link-icon": n
+        }),
+        onClick: s,
+        "data-testid": e ? `pagination-${e}` : "page-link",
+        "data-id": e,
+        "aria-current": a ? "page" : null,
+        "aria-disabled": m,
+        children: [
+          h,
+          a && /* @__PURE__ */ H.jsx("span", { className: "visually-hidden", children: "(current)" })
+        ]
+      }
+    ) : /* @__PURE__ */ H.jsx("span", { className: "page-link", "data-testid": "page-link", children: h })
+  }
+);
+wr.propTypes = {
+  isClickeable: l.bool,
+  disabled: l.bool,
+  pageLinkIcon: l.bool,
+  selectedPage: l.bool,
+  dataId: l.string,
+  onClick: l.func,
+  children: l.node,
+  ellipses: l.bool,
+  ariaLabel: l.string,
+  ariaDisabled: l.bool
+};
+wr.defaultProps = {
+  isClickeable: !1,
+  disabled: !1,
+  pageLinkIcon: !1,
+  selectedPage: !1,
+  onClick: () => {
+  }
+};
+const Ap = {
+  event: "select",
+  action: "click",
+  name: "onclick",
+  type: "pagination",
+  region: "main content"
+}, Ji = ({
+  type: e,
+  background: t,
+  currentPage: r,
+  totalPages: n,
+  onChange: a
+}) => {
+  const [s, d] = ft(null);
+  Tt(() => {
+    d(r);
+  }, [r]);
+  const f = (C) => {
+    al({ ...Ap, text: `page ${C}` });
+  }, h = (C, _) => {
+    const O = {
+      first: 1,
+      prev: s === 1 ? 1 : s - 1,
+      next: s === n ? n : s + 1,
+      last: n
+    }[_] ?? _;
+    d(O), f(O), a == null || a(C, O);
+  }, m = () => {
+    const C = Uo(
+      s === n - 1,
+      2,
+      s === n ? 3 : 1
+    ), _ = Uo(
+      s === 1,
+      3,
+      s === 2 ? 2 : 1
+    ), O = Yo(
+      s - C,
+      s,
+      n
+    ), U = Yo(
+      s,
+      s + 1 + _,
+      n
+    ), E = [...O, ...U];
+    return /* @__PURE__ */ H.jsxs(H.Fragment, { children: [
+      E[0] !== 1 && /* @__PURE__ */ H.jsx(
+        wr,
+        {
+          ariaLabel: `Page 1 of ${n}`,
+          isClickeable: !0,
+          selectedPage: s === 1,
+          onClick: (S) => h(S, "first"),
+          children: "1"
+        }
+      ),
+      E[0] > 2 && /* @__PURE__ */ H.jsx(wr, { ellipses: !0, children: "..." }),
+      E.map((S) => /* @__PURE__ */ H.jsx(
+        wr,
+        {
+          ariaLabel: `Page ${S} of ${n}`,
+          isClickeable: !0,
+          selectedPage: s === S,
+          onClick: (I) => h(I, S),
+          children: S
+        },
+        S
+      )),
+      E[E.length - 1] < n - 1 && /* @__PURE__ */ H.jsx(wr, { ellipses: !0, children: "..." }),
+      E[E.length - 1] !== n && /* @__PURE__ */ H.jsx(
+        wr,
+        {
+          isClickeable: !0,
+          ariaLabel: `Page ${n} of ${n}`,
+          selectedPage: s === n,
+          onClick: (S) => h(S, "last"),
+          children: n
+        }
+      )
+    ] });
+  };
+  return /* @__PURE__ */ H.jsx("nav", { "aria-label": "Pagination", "data-testid": "pagination", children: /* @__PURE__ */ H.jsxs(
+    "ul",
+    {
+      className: dt(
+        "pagination",
+        "justify-content-center",
+        "pt-2",
+        "pb-2",
+        {
+          border: e === "bordered",
+          "uds-bg-gray1": t === "gray1",
+          "uds-bg-gray": t === "gray2",
+          "uds-bg-dark": t === "gray7"
+        }
+      ),
+      children: [
+        /* @__PURE__ */ H.jsx(
+          wr,
+          {
+            dataId: "prev",
+            isClickeable: !0,
+            disabled: s === 1,
+            pageLinkIcon: !0,
+            onClick: (C) => h(C, "prev"),
+            ariaDisabled: s === 1,
+            ariaLabel: "Previous Page"
+          }
+        ),
+        m(),
+        /* @__PURE__ */ H.jsx(
+          wr,
+          {
+            dataId: "next",
+            isClickeable: !0,
+            ariaDisabled: s === n,
+            disabled: s === n,
+            pageLinkIcon: !0,
+            onClick: (C) => h(C, "next"),
+            ariaLabel: "Next Page"
+          }
+        )
+      ]
+    }
+  ) });
+};
+Ji.propTypes = {
+  /**
+   * Type of pagination
+   */
+  type: l.oneOf(["default", "bordered"]).isRequired,
+  /**
+   * Background of pagination
+   */
+  background: l.oneOf(["white", "gray1", "gray2", "gray7"]).isRequired,
+  /**
+   * Current page
+   */
+  currentPage: l.number,
+  /**
+   * Total number of pages
+   */
+  totalPages: l.number,
+  /**
+   * Callback fired when the page is changed.
+   */
+  onChange: l.func.isRequired
+};
+Ji.defaultProps = {
+  currentPage: 1,
+  totalPages: 10
+};
+l.oneOf(["small", "large"]), l.string.isRequired, l.string.isRequired, l.string;
+l.oneOf(["small", "large"]).isRequired, l.string.isRequired, l.string.isRequired, l.string.isRequired, l.string.isRequired, l.string, l.string;
+cr.div`
   button {
     padding: 16px 0;
     border: none;
     outline: none;
   }
-`,Wn=({hidePrev:e,hideNext:t,clickPrev:n,clickNext:r})=>S.default.createElement(Gn,null,!e&&S.default.createElement("button",{className:"scroll-control-prev",type:"button",onClick:n,tabIndex:-1},S.default.createElement("span",{className:"carousel-control-prev-icon","aria-hidden":"true"}),S.default.createElement("span",{className:"visually-hidden"},"Previous")),!t&&S.default.createElement("button",{className:"scroll-control-next",type:"button",onClick:r,tabIndex:-1},S.default.createElement("span",{className:"carousel-control-next-icon","aria-hidden":"true"}),S.default.createElement("span",{className:"visually-hidden"},"Next")));Wn.propTypes={hidePrev:O().bool,hideNext:O().bool,clickPrev:O().func.isRequired,clickNext:O().func.isRequired};const Vn=(0,S.forwardRef)((function(e,t){const{id:n,selected:r,title:a,selectTab:o,leftKeyPressed:i,rightKeyPressed:l,icon:c}=e,s=(0,S.useRef)(null);return(0,S.useImperativeHandle)(t,(()=>({focus(){s.current.focus()},scrollIntoView(){const e=s.current?.offsetWidth/2+s.current.offsetLeft,t=s.current?.offsetParent?.scrollLeft+s.current?.offsetParent?.offsetWidth/2;s.current?.offsetParent?.scrollBy({left:e-t})}})),[]),S.default.createElement("a",{ref:s,className:"nav-item nav-link "+(r?"active":""),id:n,href:`#nav-${n}`,role:"tab","aria-controls":`nav-${n}`,"aria-selected":r,onClick:e=>o(e,n,a),onKeyDown:e=>{37===e.keyCode?(e.preventDefault(),i()):39===e.keyCode&&(e.preventDefault(),l())},tabIndex:r?"":"-1"},a," ",c&&S.default.createElement("i",{className:`${c?.[0]} fa-${c?.[1]} me-1`}))}));Vn.propTypes={id:O().string.isRequired,selected:O().bool.isRequired,title:O().string.isRequired,selectTab:O().func.isRequired,leftKeyPressed:O().func.isRequired,rightKeyPressed:O().func.isRequired,icon:O().arrayOf(O().string)};const Yn=({id:e,bgColor:t,selected:n,children:r})=>n&&S.default.createElement("div",{className:`tab-pane fade show ${n?"show active":""} ${"bg-dark"===t?"text-white":""}`,id:`nav-${e}`,role:"tabpanel","aria-labelledby":`nav-${e}-tab`},r);Yn.propTypes={id:O().string.isRequired,bgColor:O().string,selected:O().bool,children:O().oneOfType([O().array,O().element])};const Kn=({initialTab:e="",children:t,bgColor:n="",onTabChange:r=()=>{}})=>{const a=S.default.Children.toArray(t),o=(0,S.useRef)(!1),[i,l]=(0,S.useState)(e&&"null"!==e?e:a[0].props.id),c=(0,S.useRef)(null),[s,u]=function(){const e=(0,S.useRef)({}),t=(0,S.useCallback)((t=>n=>{e.current[t]=n}),[]);return[e,t]}(),d=e=>{r(e),s.current[e]?.focus(),l(e)},[f,m]=(0,S.useState)(0),[p,g]=(0,S.useState)();(0,S.useEffect)((()=>{const e=()=>{m(c.current.scrollLeft)};return c.current.addEventListener("scroll",e),e(),()=>{c.current&&c.current.removeEventListener("scroll",e)}}),[p]),(0,S.useEffect)((()=>{const e=()=>{g(c.current.scrollWidth-c.current.offsetWidth)};return window.addEventListener("resize",e),e(),()=>{c.current&&window.removeEventListener("resize",e)}}),[]),(0,S.useEffect)((()=>{s.current[i]?.scrollIntoView()}),[i]),(0,S.useEffect)((()=>{o.current&&e&&"null"!==e&&i!==e&&l(e)}),[e]),(0,S.useEffect)((()=>{o.current=!0}),[]);const h=e=>{M({event:"select",action:"click",name:"onclick",type:"carousel",region:"main content",text:e})},v=a.map((e=>S.default.cloneElement(e,{bgColor:n,selected:i===e.props.id}))),y=e=>{const t=c.current,n=t.scrollWidth-t.clientWidth;let r=t.scrollLeft+200*e;r=Math.max(0,Math.min(n,r)),t.scrollTo({left:r,behavior:"smooth"})},b=(e,t,n)=>{M({event:"link",action:"click",name:"onclick",type:"internal link",text:n}),e.preventDefault(),d(t)},w=(e=!0)=>{const t=a.length,n=e?1:-1,r=a.findIndex((e=>e.props.id===i)),o=a[(t+r+n)%t].props.id;d(o)};let E="uds-tabbed-panels";return"bg-dark"===n&&(E+=" uds-tabbed-panels-dark"),S.default.createElement("div",{className:n},S.default.createElement("nav",{className:E},S.default.createElement("div",{className:"nav nav-tabs",role:"tablist",ref:c},a.map(((e,t)=>S.default.createElement(Vn,{ref:u(e.props.id),id:e.props.id,title:e.props.title,selected:i===e.props.id,selectTab:b,key:e.props.id,leftKeyPressed:()=>w(!1),rightKeyPressed:()=>w(),icon:e.props.icon,index:t})))),S.default.createElement(Wn,{hidePrev:f<=0,hideNext:f>=p,clickPrev:()=>{y(-1),h("left chevron")},clickNext:()=>{y(1),h("right chevron")}})),S.default.createElement("div",{className:"tab-content",tabIndex:0,role:"tabpanel",id:"nav-tabContent"},v))};Kn.propTypes={initialTab:O().string,children:O().arrayOf(O().element).isRequired,bgColor:O().string,onTabChange:O().func};const Xn=({imageSource:e,imageAltText:t,quote:n,itemStyle:r={}})=>S.default.createElement("div",{className:`uds-blockquote uds-testimonial ${e?"with-image":""} ${P(r.containerCssClass)}`},e&&S.default.createElement(pn,{src:e,alt:t,dataTestId:"testimonial-image",fetchPriority:"high"}),S.default.createElement("svg",{role:"presentation",viewBox:"0 0 302.87 245.82"},S.default.createElement("path",{d:"M113.61,245.82H0V164.56q0-49.34,8.69-77.83T40.84,35.58Q64.29,12.95,100.67,0l22.24,46.9q-34,11.33-48.72,31.54T58.63,132.21h55Zm180,0H180V164.56q0-49.74,8.7-78T221,35.58Q244.65,12.95,280.63,0l22.24,46.9q-34,11.33-48.72,31.54t-15.57,53.77h55Z"})),S.default.createElement("blockquote",{style:{paddingLeft:0}},n.title&&S.default.createElement("h3",{className:"text-center","data-testid":"testimonial-title"},S.default.createElement("span",{className:P(r.titleCssClass)},n.title)),n.content&&S.default.createElement("p",{className:P(r.contentCssClass),"data-testid":"testimonial-content"},n.content),(!!n.cite?.name||!!n.cite?.description)&&S.default.createElement("div",{className:"citation","data-testid":"testimonial-citation"},S.default.createElement("cite",{className:"name"},n.cite.name),n.cite&&S.default.createElement("cite",{className:"description"},n.cite.description))));Xn.propTypes={quote:O().shape({title:O().string,content:O().string,cite:O().shape({name:O().string,description:O().string})}).isRequired,imageSource:O().string,imageAltText:O().string,itemStyle:O().shape({containerCssClass:O().arrayOf(O().string),titleCssClass:O().arrayOf(O().string),contentCssClass:O().arrayOf(O().string)})};const Zn={name:"onclick",event:"link",action:"click",type:"internal link",region:"main content",text:"play button"},Jn=e=>{const{type:t="video",url:n="",vttUrl:r,title:a="",caption:o,className:i,controls:l=!0}=e;return"youtube"===t?(({title:e="",caption:t,url:n="",className:r})=>S.default.createElement("div",{className:q()(`uds-video-container ${r}`,{"uds-video-with-caption":t})},S.default.createElement("div",{className:"uds-video-player youtube-video"},S.default.createElement("iframe",{title:e,src:n})),t&&S.default.createElement("figure",{"data-testid":"video-caption"},S.default.createElement("figcaption",null,t))))({url:n,title:a,caption:o,className:i}):(({url:e="",vttUrl:t,caption:n,title:r="",className:a,controls:o=!0})=>{const i=(0,S.useRef)(null);return S.default.createElement("div",{className:q()(`uds-video-container ${a}`,{"uds-video-with-caption":n})},S.default.createElement("div",{className:"uds-video-player"},S.default.createElement("video",{ref:i,title:r,onClick:()=>{M({...Zn,section:r})},playsInline:!0,controls:o||!0},S.default.createElement("source",{src:e}),S.default.createElement("track",{src:t,kind:"captions",srcLang:"en",label:"english_captions"}))),n&&S.default.createElement("figure",{"data-testid":"video-caption"},S.default.createElement("figcaption",null,n)))})({url:n,vttUrl:r,title:a,caption:o,className:i,controls:l})};Jn.propTypes={type:O().oneOf(["video","youtube"]),url:O().string,vttUrl:O().string,title:O().string,className:O().string,caption:O().string,controls:O().bool};const Qn=(e=>{var t={};return x.d(t,e),t})({default:()=>b.default}),er=(e,t,n)=>{Qn.default.render(S.default.createElement(e,t),n)},tr=({targetSelector:e,props:t})=>er(B,t,document.querySelector(e)),nr=({targetSelector:e,props:t})=>er(St,t,document.querySelector(e)),rr=({targetSelector:e,props:t})=>er(sn,t,document.querySelector(e)),ar=({targetSelector:e,props:t})=>er(V,t,document.querySelector(e)),or=({targetSelector:e,props:t})=>er(dn,t,document.querySelector(e)),ir=({targetSelector:e,props:t})=>er(mn,t,document.querySelector(e)),lr=({targetSelector:e,props:t})=>er(vn,t,document.querySelector(e)),cr=({targetSelector:e,props:t})=>er(In,t,document.querySelector(e)),sr=({targetSelector:e,props:t})=>er(pn,t,document.querySelector(e)),ur=({targetSelector:e,props:t})=>er(Bn,t,document.querySelector(e)),dr=({targetSelector:e,props:t})=>er(Un,t,document.querySelector(e)),fr=({targetSelector:e,props:t})=>er(Xn,t,document.querySelector(e)),mr=({targetSelector:e,props:t})=>er(Jn,t,document.querySelector(e));var pr=k.nD,gr=k.n_,hr=k.$n,vr=k.Zp,yr=k.lq,br=k.dK,wr=k.Ce,Er=a(598),xr=a.n(Er),kr=a(261),Cr=a(499),Or=a.n(Cr);const Sr=function(e){function t(e,r,c,s,f){for(var m,p,g,h,w,x=0,k=0,C=0,O=0,S=0,L=0,D=g=m=0,M=0,_=0,U=0,F=0,z=c.length,q=z-1,H="",$="",B="",G="";M<z;){if(p=c.charCodeAt(M),M===q&&0!==k+O+C+x&&(0!==k&&(p=47===k?10:47),O=C=x=0,z++,q++),0===k+O+C+x){if(M===q&&(0<_&&(H=H.replace(d,"")),0<H.trim().length)){switch(p){case 32:case 9:case 59:case 13:case 10:break;default:H+=c.charAt(M)}p=59}switch(p){case 123:for(m=(H=H.trim()).charCodeAt(0),g=1,F=++M;M<z;){switch(p=c.charCodeAt(M)){case 123:g++;break;case 125:g--;break;case 47:switch(p=c.charCodeAt(M+1)){case 42:case 47:e:{for(D=M+1;D<q;++D)switch(c.charCodeAt(D)){case 47:if(42===p&&42===c.charCodeAt(D-1)&&M+2!==D){M=D+1;break e}break;case 10:if(47===p){M=D+1;break e}}M=D}}break;case 91:p++;case 40:p++;case 34:case 39:for(;M++<q&&c.charCodeAt(M)!==p;);}if(0===g)break;M++}if(g=c.substring(F,M),0===m&&(m=(H=H.replace(u,"").trim()).charCodeAt(0)),64===m){switch(0<_&&(H=H.replace(d,"")),p=H.charCodeAt(1)){case 100:case 109:case 115:case 45:_=r;break;default:_=R}if(F=(g=t(r,_,g,p,f+1)).length,0<j&&(w=l(3,g,_=n(R,H,U),r,A,N,F,p,f,s),H=_.join(""),void 0!==w&&0===(F=(g=w.trim()).length)&&(p=0,g="")),0<F)switch(p){case 115:H=H.replace(E,i);case 100:case 109:case 45:g=H+"{"+g+"}";break;case 107:g=(H=H.replace(v,"$1 $2"))+"{"+g+"}",g=1===P||2===P&&o("@"+g,3)?"@-webkit-"+g+"@"+g:"@"+g;break;default:g=H+g,112===s&&($+=g,g="")}else g=""}else g=t(r,n(r,H,U),g,s,f+1);B+=g,g=U=_=D=m=0,H="",p=c.charCodeAt(++M);break;case 125:case 59:if(1<(F=(H=(0<_?H.replace(d,""):H).trim()).length))switch(0===D&&(m=H.charCodeAt(0),45===m||96<m&&123>m)&&(F=(H=H.replace(" ",":")).length),0<j&&void 0!==(w=l(1,H,r,e,A,N,$.length,s,f,s))&&0===(F=(H=w.trim()).length)&&(H="\0\0"),m=H.charCodeAt(0),p=H.charCodeAt(1),m){case 0:break;case 64:if(105===p||99===p){G+=H+c.charAt(M);break}default:58!==H.charCodeAt(F-1)&&($+=a(H,m,p,H.charCodeAt(2)))}U=_=D=m=0,H="",p=c.charCodeAt(++M)}}switch(p){case 13:case 10:47===k?k=0:0===1+m&&107!==s&&0<H.length&&(_=1,H+="\0"),0<j*I&&l(0,H,r,e,A,N,$.length,s,f,s),N=1,A++;break;case 59:case 125:if(0===k+O+C+x){N++;break}default:switch(N++,h=c.charAt(M),p){case 9:case 32:if(0===O+x+k)switch(S){case 44:case 58:case 9:case 32:h="";break;default:32!==p&&(h=" ")}break;case 0:h="\\0";break;case 12:h="\\f";break;case 11:h="\\v";break;case 38:0===O+k+x&&(_=U=1,h="\f"+h);break;case 108:if(0===O+k+x+T&&0<D)switch(M-D){case 2:112===S&&58===c.charCodeAt(M-3)&&(T=S);case 8:111===L&&(T=L)}break;case 58:0===O+k+x&&(D=M);break;case 44:0===k+C+O+x&&(_=1,h+="\r");break;case 34:case 39:0===k&&(O=O===p?0:0===O?p:O);break;case 91:0===O+k+C&&x++;break;case 93:0===O+k+C&&x--;break;case 41:0===O+k+x&&C--;break;case 40:0===O+k+x&&(0===m&&(2*S+3*L==533||(m=1)),C++);break;case 64:0===k+C+O+x+D+g&&(g=1);break;case 42:case 47:if(!(0<O+x+C))switch(k){case 0:switch(2*p+3*c.charCodeAt(M+1)){case 235:k=47;break;case 220:F=M,k=42}break;case 42:47===p&&42===S&&F+2!==M&&(33===c.charCodeAt(F+2)&&($+=c.substring(F,M+1)),h="",k=0)}}0===k&&(H+=h)}L=S,S=p,M++}if(0<(F=$.length)){if(_=r,0<j&&void 0!==(w=l(2,$,_,e,A,N,F,s,f,s))&&0===($=w).length)return G+$+B;if($=_.join(",")+"{"+$+"}",0!=P*T){switch(2!==P||o($,2)||(T=0),T){case 111:$=$.replace(b,":-moz-$1")+$;break;case 112:$=$.replace(y,"::-webkit-input-$1")+$.replace(y,"::-moz-$1")+$.replace(y,":-ms-input-$1")+$}T=0}}return G+$+B}function n(e,t,n){var a=t.trim().split(g);t=a;var o=a.length,i=e.length;switch(i){case 0:case 1:var l=0;for(e=0===i?"":e[0]+" ";l<o;++l)t[l]=r(e,t[l],n).trim();break;default:var c=l=0;for(t=[];l<o;++l)for(var s=0;s<i;++s)t[c++]=r(e[s]+" ",a[l],n).trim()}return t}function r(e,t,n){var r=t.charCodeAt(0);switch(33>r&&(r=(t=t.trim()).charCodeAt(0)),r){case 38:return t.replace(h,"$1"+e.trim());case 58:return e.trim()+t.replace(h,"$1"+e.trim());default:if(0<1*n&&0<t.indexOf("\f"))return t.replace(h,(58===e.charCodeAt(0)?"":"$1")+e.trim())}return e+t}function a(e,t,n,r){var i=e+";",l=2*t+3*n+4*r;if(944===l){e=i.indexOf(":",9)+1;var c=i.substring(e,i.length-1).trim();return c=i.substring(0,e).trim()+c+";",1===P||2===P&&o(c,1)?"-webkit-"+c+c:c}if(0===P||2===P&&!o(i,1))return i;switch(l){case 1015:return 97===i.charCodeAt(10)?"-webkit-"+i+i:i;case 951:return 116===i.charCodeAt(3)?"-webkit-"+i+i:i;case 963:return 110===i.charCodeAt(5)?"-webkit-"+i+i:i;case 1009:if(100!==i.charCodeAt(4))break;case 969:case 942:return"-webkit-"+i+i;case 978:return"-webkit-"+i+"-moz-"+i+i;case 1019:case 983:return"-webkit-"+i+"-moz-"+i+"-ms-"+i+i;case 883:if(45===i.charCodeAt(8))return"-webkit-"+i+i;if(0<i.indexOf("image-set(",11))return i.replace(S,"$1-webkit-$2")+i;break;case 932:if(45===i.charCodeAt(4))switch(i.charCodeAt(5)){case 103:return"-webkit-box-"+i.replace("-grow","")+"-webkit-"+i+"-ms-"+i.replace("grow","positive")+i;case 115:return"-webkit-"+i+"-ms-"+i.replace("shrink","negative")+i;case 98:return"-webkit-"+i+"-ms-"+i.replace("basis","preferred-size")+i}return"-webkit-"+i+"-ms-"+i+i;case 964:return"-webkit-"+i+"-ms-flex-"+i+i;case 1023:if(99!==i.charCodeAt(8))break;return"-webkit-box-pack"+(c=i.substring(i.indexOf(":",15)).replace("flex-","").replace("space-between","justify"))+"-webkit-"+i+"-ms-flex-pack"+c+i;case 1005:return m.test(i)?i.replace(f,":-webkit-")+i.replace(f,":-moz-")+i:i;case 1e3:switch(t=(c=i.substring(13).trim()).indexOf("-")+1,c.charCodeAt(0)+c.charCodeAt(t)){case 226:c=i.replace(w,"tb");break;case 232:c=i.replace(w,"tb-rl");break;case 220:c=i.replace(w,"lr");break;default:return i}return"-webkit-"+i+"-ms-"+c+i;case 1017:if(-1===i.indexOf("sticky",9))break;case 975:switch(t=(i=e).length-10,l=(c=(33===i.charCodeAt(t)?i.substring(0,t):i).substring(e.indexOf(":",7)+1).trim()).charCodeAt(0)+(0|c.charCodeAt(7))){case 203:if(111>c.charCodeAt(8))break;case 115:i=i.replace(c,"-webkit-"+c)+";"+i;break;case 207:case 102:i=i.replace(c,"-webkit-"+(102<l?"inline-":"")+"box")+";"+i.replace(c,"-webkit-"+c)+";"+i.replace(c,"-ms-"+c+"box")+";"+i}return i+";";case 938:if(45===i.charCodeAt(5))switch(i.charCodeAt(6)){case 105:return c=i.replace("-items",""),"-webkit-"+i+"-webkit-box-"+c+"-ms-flex-"+c+i;case 115:return"-webkit-"+i+"-ms-flex-item-"+i.replace(k,"")+i;default:return"-webkit-"+i+"-ms-flex-line-pack"+i.replace("align-content","").replace(k,"")+i}break;case 973:case 989:if(45!==i.charCodeAt(3)||122===i.charCodeAt(4))break;case 931:case 953:if(!0===O.test(e))return 115===(c=e.substring(e.indexOf(":")+1)).charCodeAt(0)?a(e.replace("stretch","fill-available"),t,n,r).replace(":fill-available",":stretch"):i.replace(c,"-webkit-"+c)+i.replace(c,"-moz-"+c.replace("fill-",""))+i;break;case 962:if(i="-webkit-"+i+(102===i.charCodeAt(5)?"-ms-"+i:"")+i,211===n+r&&105===i.charCodeAt(13)&&0<i.indexOf("transform",10))return i.substring(0,i.indexOf(";",27)+1).replace(p,"$1-webkit-$2")+i}return i}function o(e,t){var n=e.indexOf(1===t?":":"{"),r=e.substring(0,3!==t?n:10);return n=e.substring(n+1,e.length-1),D(2!==t?r:r.replace(C,"$1"),n,t)}function i(e,t){var n=a(t,t.charCodeAt(0),t.charCodeAt(1),t.charCodeAt(2));return n!==t+";"?n.replace(x," or ($1)").substring(4):"("+t+")"}function l(e,t,n,r,a,o,i,l,c,u){for(var d,f=0,m=t;f<j;++f)switch(d=L[f].call(s,e,m,n,r,a,o,i,l,c,u)){case void 0:case!1:case!0:case null:break;default:m=d}if(m!==t)return m}function c(e){return void 0!==(e=e.prefix)&&(D=null,e?"function"!=typeof e?P=1:(P=2,D=e):P=0),c}function s(e,n){var r=e;if(33>r.charCodeAt(0)&&(r=r.trim()),r=[r],0<j){var a=l(-1,n,r,r,A,N,0,0,0,0);void 0!==a&&"string"==typeof a&&(n=a)}var o=t(R,r,n,0,0);return 0<j&&void 0!==(a=l(-2,o,r,r,A,N,o.length,0,0,0))&&(o=a),T=0,N=A=1,o}var u=/^\0+/g,d=/[\0\r\f]/g,f=/: */g,m=/zoo|gra/,p=/([,: ])(transform)/g,g=/,\r+?/g,h=/([\t\r\n ])*\f?&/g,v=/@(k\w+)\s*(\S*)\s*/,y=/::(place)/g,b=/:(read-only)/g,w=/[svh]\w+-[tblr]{2}/,E=/\(\s*(.*)\s*\)/g,x=/([\s\S]*?);/g,k=/-self|flex-/g,C=/[^]*?(:[rp][el]a[\w-]+)[^]*/,O=/stretch|:\s*\w+\-(?:conte|avail)/,S=/([^-])(image-set\()/,N=1,A=1,T=0,P=1,R=[],L=[],j=0,D=null,I=0;return s.use=function e(t){switch(t){case void 0:case null:j=L.length=0;break;default:if("function"==typeof t)L[j++]=t;else if("object"==typeof t)for(var n=0,r=t.length;n<r;++n)e(t[n]);else I=0|!!t}return e},s.set=c,void 0!==e&&c(e),s},Nr={animationIterationCount:1,borderImageOutset:1,borderImageSlice:1,borderImageWidth:1,boxFlex:1,boxFlexGroup:1,boxOrdinalGroup:1,columnCount:1,columns:1,flex:1,flexGrow:1,flexPositive:1,flexShrink:1,flexNegative:1,flexOrder:1,gridRow:1,gridRowEnd:1,gridRowSpan:1,gridRowStart:1,gridColumn:1,gridColumnEnd:1,gridColumnSpan:1,gridColumnStart:1,msGridRow:1,msGridRowSpan:1,msGridColumn:1,msGridColumnSpan:1,fontWeight:1,lineHeight:1,opacity:1,order:1,orphans:1,tabSize:1,widows:1,zIndex:1,zoom:1,WebkitLineClamp:1,fillOpacity:1,floodOpacity:1,stopOpacity:1,strokeDasharray:1,strokeDashoffset:1,strokeMiterlimit:1,strokeOpacity:1,strokeWidth:1};function Ar(e){var t=Object.create(null);return function(n){return void 0===t[n]&&(t[n]=e(n)),t[n]}}var Tr=/^((children|dangerouslySetInnerHTML|key|ref|autoFocus|defaultValue|defaultChecked|innerHTML|suppressContentEditableWarning|suppressHydrationWarning|valueLink|abbr|accept|acceptCharset|accessKey|action|allow|allowUserMedia|allowPaymentRequest|allowFullScreen|allowTransparency|alt|async|autoComplete|autoPlay|capture|cellPadding|cellSpacing|challenge|charSet|checked|cite|classID|className|cols|colSpan|content|contentEditable|contextMenu|controls|controlsList|coords|crossOrigin|data|dateTime|decoding|default|defer|dir|disabled|disablePictureInPicture|disableRemotePlayback|download|draggable|encType|enterKeyHint|form|formAction|formEncType|formMethod|formNoValidate|formTarget|frameBorder|headers|height|hidden|high|href|hrefLang|htmlFor|httpEquiv|id|inputMode|integrity|is|keyParams|keyType|kind|label|lang|list|loading|loop|low|marginHeight|marginWidth|max|maxLength|media|mediaGroup|method|min|minLength|multiple|muted|name|nonce|noValidate|open|optimum|pattern|placeholder|playsInline|poster|preload|profile|radioGroup|readOnly|referrerPolicy|rel|required|reversed|role|rows|rowSpan|sandbox|scope|scoped|scrolling|seamless|selected|shape|size|sizes|slot|span|spellCheck|src|srcDoc|srcLang|srcSet|start|step|style|summary|tabIndex|target|title|translate|type|useMap|value|width|wmode|wrap|about|datatype|inlist|prefix|property|resource|typeof|vocab|autoCapitalize|autoCorrect|autoSave|color|incremental|fallback|inert|itemProp|itemScope|itemType|itemID|itemRef|on|option|results|security|unselectable|accentHeight|accumulate|additive|alignmentBaseline|allowReorder|alphabetic|amplitude|arabicForm|ascent|attributeName|attributeType|autoReverse|azimuth|baseFrequency|baselineShift|baseProfile|bbox|begin|bias|by|calcMode|capHeight|clip|clipPathUnits|clipPath|clipRule|colorInterpolation|colorInterpolationFilters|colorProfile|colorRendering|contentScriptType|contentStyleType|cursor|cx|cy|d|decelerate|descent|diffuseConstant|direction|display|divisor|dominantBaseline|dur|dx|dy|edgeMode|elevation|enableBackground|end|exponent|externalResourcesRequired|fill|fillOpacity|fillRule|filter|filterRes|filterUnits|floodColor|floodOpacity|focusable|fontFamily|fontSize|fontSizeAdjust|fontStretch|fontStyle|fontVariant|fontWeight|format|from|fr|fx|fy|g1|g2|glyphName|glyphOrientationHorizontal|glyphOrientationVertical|glyphRef|gradientTransform|gradientUnits|hanging|horizAdvX|horizOriginX|ideographic|imageRendering|in|in2|intercept|k|k1|k2|k3|k4|kernelMatrix|kernelUnitLength|kerning|keyPoints|keySplines|keyTimes|lengthAdjust|letterSpacing|lightingColor|limitingConeAngle|local|markerEnd|markerMid|markerStart|markerHeight|markerUnits|markerWidth|mask|maskContentUnits|maskUnits|mathematical|mode|numOctaves|offset|opacity|operator|order|orient|orientation|origin|overflow|overlinePosition|overlineThickness|panose1|paintOrder|pathLength|patternContentUnits|patternTransform|patternUnits|pointerEvents|points|pointsAtX|pointsAtY|pointsAtZ|preserveAlpha|preserveAspectRatio|primitiveUnits|r|radius|refX|refY|renderingIntent|repeatCount|repeatDur|requiredExtensions|requiredFeatures|restart|result|rotate|rx|ry|scale|seed|shapeRendering|slope|spacing|specularConstant|specularExponent|speed|spreadMethod|startOffset|stdDeviation|stemh|stemv|stitchTiles|stopColor|stopOpacity|strikethroughPosition|strikethroughThickness|string|stroke|strokeDasharray|strokeDashoffset|strokeLinecap|strokeLinejoin|strokeMiterlimit|strokeOpacity|strokeWidth|surfaceScale|systemLanguage|tableValues|targetX|targetY|textAnchor|textDecoration|textRendering|textLength|to|transform|u1|u2|underlinePosition|underlineThickness|unicode|unicodeBidi|unicodeRange|unitsPerEm|vAlphabetic|vHanging|vIdeographic|vMathematical|values|vectorEffect|version|vertAdvY|vertOriginX|vertOriginY|viewBox|viewTarget|visibility|widths|wordSpacing|writingMode|x|xHeight|x1|x2|xChannelSelector|xlinkActuate|xlinkArcrole|xlinkHref|xlinkRole|xlinkShow|xlinkTitle|xlinkType|xmlBase|xmlns|xmlnsXlink|xmlLang|xmlSpace|y|y1|y2|yChannelSelector|z|zoomAndPan|for|class|autofocus)|(([Dd][Aa][Tt][Aa]|[Aa][Rr][Ii][Aa]|x)-.*))$/,Pr=Ar((function(e){return Tr.test(e)||111===e.charCodeAt(0)&&110===e.charCodeAt(1)&&e.charCodeAt(2)<91})),Rr=a(396),Lr=a.n(Rr);function jr(){return(jr=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e}).apply(this,arguments)}var Dr=function(e,t){for(var n=[e[0]],r=0,a=t.length;r<a;r+=1)n.push(t[r],e[r+1]);return n},Ir=function(e){return null!==e&&"object"==typeof e&&"[object Object]"===(e.toString?e.toString():Object.prototype.toString.call(e))&&!(0,kr.typeOf)(e)},Mr=Object.freeze([]),_r=Object.freeze({});function Ur(e){return"function"==typeof e}function Fr(e){return e.displayName||e.name||"Component"}function zr(e){return e&&"string"==typeof e.styledComponentId}var qr="undefined"!=typeof process&&void 0!==process.env&&(process.env.REACT_APP_SC_ATTR||process.env.SC_ATTR)||"data-styled",Hr="undefined"!=typeof window&&"HTMLElement"in window,$r=Boolean("boolean"==typeof SC_DISABLE_SPEEDY?SC_DISABLE_SPEEDY:"undefined"!=typeof process&&void 0!==process.env&&(void 0!==process.env.REACT_APP_SC_DISABLE_SPEEDY&&""!==process.env.REACT_APP_SC_DISABLE_SPEEDY?"false"!==process.env.REACT_APP_SC_DISABLE_SPEEDY&&process.env.REACT_APP_SC_DISABLE_SPEEDY:void 0!==process.env.SC_DISABLE_SPEEDY&&""!==process.env.SC_DISABLE_SPEEDY&&"false"!==process.env.SC_DISABLE_SPEEDY&&process.env.SC_DISABLE_SPEEDY)),Br={};function Gr(e){for(var t=arguments.length,n=new Array(t>1?t-1:0),r=1;r<t;r++)n[r-1]=arguments[r];throw new Error("An error occurred. See https://git.io/JUIaE#"+e+" for more information."+(n.length>0?" Args: "+n.join(", "):""))}var Wr=function(){function e(e){this.groupSizes=new Uint32Array(512),this.length=512,this.tag=e}var t=e.prototype;return t.indexOfGroup=function(e){for(var t=0,n=0;n<e;n++)t+=this.groupSizes[n];return t},t.insertRules=function(e,t){if(e>=this.groupSizes.length){for(var n=this.groupSizes,r=n.length,a=r;e>=a;)(a<<=1)<0&&Gr(16,""+e);this.groupSizes=new Uint32Array(a),this.groupSizes.set(n),this.length=a;for(var o=r;o<a;o++)this.groupSizes[o]=0}for(var i=this.indexOfGroup(e+1),l=0,c=t.length;l<c;l++)this.tag.insertRule(i,t[l])&&(this.groupSizes[e]++,i++)},t.clearGroup=function(e){if(e<this.length){var t=this.groupSizes[e],n=this.indexOfGroup(e),r=n+t;this.groupSizes[e]=0;for(var a=n;a<r;a++)this.tag.deleteRule(n)}},t.getGroup=function(e){var t="";if(e>=this.length||0===this.groupSizes[e])return t;for(var n=this.groupSizes[e],r=this.indexOfGroup(e),a=r+n,o=r;o<a;o++)t+=this.tag.getRule(o)+"/*!sc*/\n";return t},e}(),Vr=new Map,Yr=new Map,Kr=1,Xr=function(e){if(Vr.has(e))return Vr.get(e);for(;Yr.has(Kr);)Kr++;var t=Kr++;return Vr.set(e,t),Yr.set(t,e),t},Zr=function(e){return Yr.get(e)},Jr=function(e,t){t>=Kr&&(Kr=t+1),Vr.set(e,t),Yr.set(t,e)},Qr="style["+qr+'][data-styled-version="5.3.11"]',ea=new RegExp("^"+qr+'\\.g(\\d+)\\[id="([\\w\\d-]+)"\\].*?"([^"]*)'),ta=function(e,t,n){for(var r,a=n.split(","),o=0,i=a.length;o<i;o++)(r=a[o])&&e.registerName(t,r)},na=function(e,t){for(var n=(t.textContent||"").split("/*!sc*/\n"),r=[],a=0,o=n.length;a<o;a++){var i=n[a].trim();if(i){var l=i.match(ea);if(l){var c=0|parseInt(l[1],10),s=l[2];0!==c&&(Jr(s,c),ta(e,s,l[3]),e.getTag().insertRules(c,r)),r.length=0}else r.push(i)}}},ra=function(){return a.nc},aa=function(e){var t=document.head,n=e||t,r=document.createElement("style"),a=function(e){for(var t=e.childNodes,n=t.length;n>=0;n--){var r=t[n];if(r&&1===r.nodeType&&r.hasAttribute(qr))return r}}(n),o=void 0!==a?a.nextSibling:null;r.setAttribute(qr,"active"),r.setAttribute("data-styled-version","5.3.11");var i=ra();return i&&r.setAttribute("nonce",i),n.insertBefore(r,o),r},oa=function(){function e(e){var t=this.element=aa(e);t.appendChild(document.createTextNode("")),this.sheet=function(e){if(e.sheet)return e.sheet;for(var t=document.styleSheets,n=0,r=t.length;n<r;n++){var a=t[n];if(a.ownerNode===e)return a}Gr(17)}(t),this.length=0}var t=e.prototype;return t.insertRule=function(e,t){try{return this.sheet.insertRule(t,e),this.length++,!0}catch(e){return!1}},t.deleteRule=function(e){this.sheet.deleteRule(e),this.length--},t.getRule=function(e){var t=this.sheet.cssRules[e];return void 0!==t&&"string"==typeof t.cssText?t.cssText:""},e}(),ia=function(){function e(e){var t=this.element=aa(e);this.nodes=t.childNodes,this.length=0}var t=e.prototype;return t.insertRule=function(e,t){if(e<=this.length&&e>=0){var n=document.createTextNode(t),r=this.nodes[e];return this.element.insertBefore(n,r||null),this.length++,!0}return!1},t.deleteRule=function(e){this.element.removeChild(this.nodes[e]),this.length--},t.getRule=function(e){return e<this.length?this.nodes[e].textContent:""},e}(),la=function(){function e(e){this.rules=[],this.length=0}var t=e.prototype;return t.insertRule=function(e,t){return e<=this.length&&(this.rules.splice(e,0,t),this.length++,!0)},t.deleteRule=function(e){this.rules.splice(e,1),this.length--},t.getRule=function(e){return e<this.length?this.rules[e]:""},e}(),ca=Hr,sa={isServer:!Hr,useCSSOMInjection:!$r},ua=function(){function e(e,t,n){void 0===e&&(e=_r),void 0===t&&(t={}),this.options=jr({},sa,{},e),this.gs=t,this.names=new Map(n),this.server=!!e.isServer,!this.server&&Hr&&ca&&(ca=!1,function(e){for(var t=document.querySelectorAll(Qr),n=0,r=t.length;n<r;n++){var a=t[n];a&&"active"!==a.getAttribute(qr)&&(na(e,a),a.parentNode&&a.parentNode.removeChild(a))}}(this))}e.registerId=function(e){return Xr(e)};var t=e.prototype;return t.reconstructWithOptions=function(t,n){return void 0===n&&(n=!0),new e(jr({},this.options,{},t),this.gs,n&&this.names||void 0)},t.allocateGSInstance=function(e){return this.gs[e]=(this.gs[e]||0)+1},t.getTag=function(){return this.tag||(this.tag=(n=(t=this.options).isServer,r=t.useCSSOMInjection,a=t.target,e=n?new la(a):r?new oa(a):new ia(a),new Wr(e)));var e,t,n,r,a},t.hasNameForId=function(e,t){return this.names.has(e)&&this.names.get(e).has(t)},t.registerName=function(e,t){if(Xr(e),this.names.has(e))this.names.get(e).add(t);else{var n=new Set;n.add(t),this.names.set(e,n)}},t.insertRules=function(e,t,n){this.registerName(e,t),this.getTag().insertRules(Xr(e),n)},t.clearNames=function(e){this.names.has(e)&&this.names.get(e).clear()},t.clearRules=function(e){this.getTag().clearGroup(Xr(e)),this.clearNames(e)},t.clearTag=function(){this.tag=void 0},t.toString=function(){return function(e){for(var t=e.getTag(),n=t.length,r="",a=0;a<n;a++){var o=Zr(a);if(void 0!==o){var i=e.names.get(o),l=t.getGroup(a);if(i&&l&&i.size){var c=qr+".g"+a+'[id="'+o+'"]',s="";void 0!==i&&i.forEach((function(e){e.length>0&&(s+=e+",")})),r+=""+l+c+'{content:"'+s+'"}/*!sc*/\n'}}}return r}(this)},e}(),da=/(a)(d)/gi,fa=function(e){return String.fromCharCode(e+(e>25?39:97))};function ma(e){var t,n="";for(t=Math.abs(e);t>52;t=t/52|0)n=fa(t%52)+n;return(fa(t%52)+n).replace(da,"$1-$2")}var pa=function(e,t){for(var n=t.length;n;)e=33*e^t.charCodeAt(--n);return e},ga=function(e){return pa(5381,e)};function ha(e){for(var t=0;t<e.length;t+=1){var n=e[t];if(Ur(n)&&!zr(n))return!1}return!0}var va=ga("5.3.11"),ya=function(){function e(e,t,n){this.rules=e,this.staticRulesId="",this.isStatic=(void 0===n||n.isStatic)&&ha(e),this.componentId=t,this.baseHash=pa(va,t),this.baseStyle=n,ua.registerId(t)}return e.prototype.generateAndInjectStyles=function(e,t,n){var r=this.componentId,a=[];if(this.baseStyle&&a.push(this.baseStyle.generateAndInjectStyles(e,t,n)),this.isStatic&&!n.hash)if(this.staticRulesId&&t.hasNameForId(r,this.staticRulesId))a.push(this.staticRulesId);else{var o=Ma(this.rules,e,t,n).join(""),i=ma(pa(this.baseHash,o)>>>0);if(!t.hasNameForId(r,i)){var l=n(o,"."+i,void 0,r);t.insertRules(r,i,l)}a.push(i),this.staticRulesId=i}else{for(var c=this.rules.length,s=pa(this.baseHash,n.hash),u="",d=0;d<c;d++){var f=this.rules[d];if("string"==typeof f)u+=f;else if(f){var m=Ma(f,e,t,n),p=Array.isArray(m)?m.join(""):m;s=pa(s,p+d),u+=p}}if(u){var g=ma(s>>>0);if(!t.hasNameForId(r,g)){var h=n(u,"."+g,void 0,r);t.insertRules(r,g,h)}a.push(g)}}return a.join(" ")},e}(),ba=/^\s*\/\/.*$/gm,wa=[":","[",".","#"];function Ea(e){var t,n,r,a,o=void 0===e?_r:e,i=o.options,l=void 0===i?_r:i,c=o.plugins,s=void 0===c?Mr:c,u=new Sr(l),d=[],f=function(e){function t(t){if(t)try{e(t+"}")}catch(e){}}return function(n,r,a,o,i,l,c,s,u,d){switch(n){case 1:if(0===u&&64===r.charCodeAt(0))return e(r+";"),"";break;case 2:if(0===s)return r+"/*|*/";break;case 3:switch(s){case 102:case 112:return e(a[0]+r),"";default:return r+(0===d?"/*|*/":"")}case-2:r.split("/*|*/}").forEach(t)}}}((function(e){d.push(e)})),m=function(e,r,o){return 0===r&&-1!==wa.indexOf(o[n.length])||o.match(a)?e:"."+t};function p(e,o,i,l){void 0===l&&(l="&");var c=e.replace(ba,""),s=o&&i?i+" "+o+" { "+c+" }":c;return t=l,n=o,r=new RegExp("\\"+n+"\\b","g"),a=new RegExp("(\\"+n+"\\b){2,}"),u(i||!o?"":o,s)}return u.use([].concat(s,[function(e,t,a){2===e&&a.length&&a[0].lastIndexOf(n)>0&&(a[0]=a[0].replace(r,m))},f,function(e){if(-2===e){var t=d;return d=[],t}}])),p.hash=s.length?s.reduce((function(e,t){return t.name||Gr(15),pa(e,t.name)}),5381).toString():"",p}var xa=h.default.createContext(),ka=(xa.Consumer,h.default.createContext()),Ca=(ka.Consumer,new ua),Oa=Ea();function Sa(){return(0,h.useContext)(xa)||Ca}function Na(){return(0,h.useContext)(ka)||Oa}function Aa(e){var t=(0,h.useState)(e.stylisPlugins),n=t[0],r=t[1],a=Sa(),o=(0,h.useMemo)((function(){var t=a;return e.sheet?t=e.sheet:e.target&&(t=t.reconstructWithOptions({target:e.target},!1)),e.disableCSSOMInjection&&(t=t.reconstructWithOptions({useCSSOMInjection:!1})),t}),[e.disableCSSOMInjection,e.sheet,e.target]),i=(0,h.useMemo)((function(){return Ea({options:{prefix:!e.disableVendorPrefixes},plugins:n})}),[e.disableVendorPrefixes,n]);return(0,h.useEffect)((function(){Or()(n,e.stylisPlugins)||r(e.stylisPlugins)}),[e.stylisPlugins]),h.default.createElement(xa.Provider,{value:o},h.default.createElement(ka.Provider,{value:i},e.children))}var Ta=function(){function e(e,t){var n=this;this.inject=function(e,t){void 0===t&&(t=Oa);var r=n.name+t.hash;e.hasNameForId(n.id,r)||e.insertRules(n.id,r,t(n.rules,r,"@keyframes"))},this.toString=function(){return Gr(12,String(n.name))},this.name=e,this.id="sc-keyframes-"+e,this.rules=t}return e.prototype.getName=function(e){return void 0===e&&(e=Oa),this.name+e.hash},e}(),Pa=/([A-Z])/,Ra=/([A-Z])/g,La=/^ms-/,ja=function(e){return"-"+e.toLowerCase()};function Da(e){return Pa.test(e)?e.replace(Ra,ja).replace(La,"-ms-"):e}var Ia=function(e){return null==e||!1===e||""===e};function Ma(e,t,n,r){if(Array.isArray(e)){for(var a,o=[],i=0,l=e.length;i<l;i+=1)""!==(a=Ma(e[i],t,n,r))&&(Array.isArray(a)?o.push.apply(o,a):o.push(a));return o}return Ia(e)?"":zr(e)?"."+e.styledComponentId:Ur(e)?"function"!=typeof(c=e)||c.prototype&&c.prototype.isReactComponent||!t?e:Ma(e(t),t,n,r):e instanceof Ta?n?(e.inject(n,r),e.getName(r)):e:Ir(e)?function e(t,n){var r,a,o=[];for(var i in t)t.hasOwnProperty(i)&&!Ia(t[i])&&(Array.isArray(t[i])&&t[i].isCss||Ur(t[i])?o.push(Da(i)+":",t[i],";"):Ir(t[i])?o.push.apply(o,e(t[i],i)):o.push(Da(i)+": "+(r=i,(null==(a=t[i])||"boolean"==typeof a||""===a?"":"number"!=typeof a||0===a||r in Nr||r.startsWith("--")?String(a).trim():a+"px")+";")));return n?[n+" {"].concat(o,["}"]):o}(e):e.toString();var c}var _a=function(e){return Array.isArray(e)&&(e.isCss=!0),e};function Ua(e){for(var t=arguments.length,n=new Array(t>1?t-1:0),r=1;r<t;r++)n[r-1]=arguments[r];return Ur(e)||Ir(e)?_a(Ma(Dr(Mr,[e].concat(n)))):0===n.length&&1===e.length&&"string"==typeof e[0]?e:_a(Ma(Dr(e,n)))}new Set;var Fa=function(e,t,n){return void 0===n&&(n=_r),e.theme!==n.theme&&e.theme||t||n.theme},za=/[!"#$%&'()*+,./:;<=>?@[\\\]^`{|}~-]+/g,qa=/(^-|-$)/g;function Ha(e){return e.replace(za,"-").replace(qa,"")}var $a=function(e){return ma(ga(e)>>>0)};function Ba(e){return"string"==typeof e&&!0}var Ga=function(e){return"function"==typeof e||"object"==typeof e&&null!==e&&!Array.isArray(e)},Wa=function(e){return"__proto__"!==e&&"constructor"!==e&&"prototype"!==e};function Va(e,t,n){var r=e[n];Ga(t)&&Ga(r)?Ya(r,t):e[n]=t}function Ya(e){for(var t=arguments.length,n=new Array(t>1?t-1:0),r=1;r<t;r++)n[r-1]=arguments[r];for(var a=0,o=n;a<o.length;a++){var i=o[a];if(Ga(i))for(var l in i)Wa(l)&&Va(e,i[l],l)}return e}var Ka=h.default.createContext();Ka.Consumer;var Xa={};function Za(e,t,n){var r=zr(e),a=!Ba(e),o=t.attrs,i=void 0===o?Mr:o,l=t.componentId,c=void 0===l?function(e,t){var n="string"!=typeof e?"sc":Ha(e);Xa[n]=(Xa[n]||0)+1;var r=n+"-"+$a("5.3.11"+n+Xa[n]);return t?t+"-"+r:r}(t.displayName,t.parentComponentId):l,s=t.displayName,u=void 0===s?function(e){return Ba(e)?"styled."+e:"Styled("+Fr(e)+")"}(e):s,d=t.displayName&&t.componentId?Ha(t.displayName)+"-"+t.componentId:t.componentId||c,f=r&&e.attrs?Array.prototype.concat(e.attrs,i).filter(Boolean):i,m=t.shouldForwardProp;r&&e.shouldForwardProp&&(m=t.shouldForwardProp?function(n,r,a){return e.shouldForwardProp(n,r,a)&&t.shouldForwardProp(n,r,a)}:e.shouldForwardProp);var p,g=new ya(n,d,r?e.componentStyle:void 0),v=g.isStatic&&0===i.length,y=function(e,t){return function(e,t,n,r){var a=e.attrs,o=e.componentStyle,i=e.defaultProps,l=e.foldedComponentIds,c=e.shouldForwardProp,s=e.styledComponentId,u=e.target,d=function(e,t,n){void 0===e&&(e=_r);var r=jr({},t,{theme:e}),a={};return n.forEach((function(e){var t,n,o,i=e;for(t in Ur(i)&&(i=i(r)),i)r[t]=a[t]="className"===t?(n=a[t],o=i[t],n&&o?n+" "+o:n||o):i[t]})),[r,a]}(Fa(t,(0,h.useContext)(Ka),i)||_r,t,a),f=d[0],m=d[1],p=function(e,t,n){var r=Sa(),a=Na();return t?e.generateAndInjectStyles(_r,r,a):e.generateAndInjectStyles(n,r,a)}(o,r,f),g=n,v=m.$as||t.$as||m.as||t.as||u,y=Ba(v),b=m!==t?jr({},t,{},m):t,w={};for(var E in b)"$"!==E[0]&&"as"!==E&&("forwardedAs"===E?w.as=b[E]:(c?c(E,Pr,v):!y||Pr(E))&&(w[E]=b[E]));return t.style&&m.style!==t.style&&(w.style=jr({},t.style,{},m.style)),w.className=Array.prototype.concat(l,s,p!==s?p:null,t.className,m.className).filter(Boolean).join(" "),w.ref=g,(0,h.createElement)(v,w)}(p,e,t,v)};return y.displayName=u,(p=h.default.forwardRef(y)).attrs=f,p.componentStyle=g,p.displayName=u,p.shouldForwardProp=m,p.foldedComponentIds=r?Array.prototype.concat(e.foldedComponentIds,e.styledComponentId):Mr,p.styledComponentId=d,p.target=r?e.target:e,p.withComponent=function(e){var r=t.componentId,a=function(e,t){if(null==e)return{};var n,r,a={},o=Object.keys(e);for(r=0;r<o.length;r++)n=o[r],t.indexOf(n)>=0||(a[n]=e[n]);return a}(t,["componentId"]),o=r&&r+"-"+(Ba(e)?e:Ha(Fr(e)));return Za(e,jr({},a,{attrs:f,componentId:o}),n)},Object.defineProperty(p,"defaultProps",{get:function(){return this._foldedDefaultProps},set:function(t){this._foldedDefaultProps=r?Ya({},e.defaultProps,t):t}}),Object.defineProperty(p,"toString",{value:function(){return"."+p.styledComponentId}}),a&&Lr()(p,e,{attrs:!0,componentStyle:!0,displayName:!0,foldedComponentIds:!0,shouldForwardProp:!0,styledComponentId:!0,target:!0,withComponent:!0}),p}var Ja=function(e){return function e(t,n,r){if(void 0===r&&(r=_r),!(0,kr.isValidElementType)(n))return Gr(1,String(n));var a=function(){return t(n,r,Ua.apply(void 0,arguments))};return a.withConfig=function(a){return e(t,n,jr({},r,{},a))},a.attrs=function(a){return e(t,n,jr({},r,{attrs:Array.prototype.concat(r.attrs,a).filter(Boolean)}))},a}(Za,e)};["a","abbr","address","area","article","aside","audio","b","base","bdi","bdo","big","blockquote","body","br","button","canvas","caption","cite","code","col","colgroup","data","datalist","dd","del","details","dfn","dialog","div","dl","dt","em","embed","fieldset","figcaption","figure","footer","form","h1","h2","h3","h4","h5","h6","head","header","hgroup","hr","html","i","iframe","img","input","ins","kbd","keygen","label","legend","li","link","main","map","mark","marquee","menu","menuitem","meta","meter","nav","noscript","object","ol","optgroup","option","output","p","param","picture","pre","progress","q","rp","rt","ruby","s","samp","script","section","select","small","source","span","strong","style","sub","summary","sup","table","tbody","td","textarea","tfoot","th","thead","time","title","tr","track","u","ul","var","video","wbr","circle","clipPath","defs","ellipse","foreignObject","g","image","line","linearGradient","marker","mask","path","pattern","polygon","polyline","radialGradient","rect","stop","svg","text","textPath","tspan"].forEach((function(e){Ja[e]=Ja(e)}));var Qa=function(){function e(e,t){this.rules=e,this.componentId=t,this.isStatic=ha(e),ua.registerId(this.componentId+1)}var t=e.prototype;return t.createStyles=function(e,t,n,r){var a=r(Ma(this.rules,t,n,r).join(""),""),o=this.componentId+e;n.insertRules(o,o,a)},t.removeStyles=function(e,t){t.clearRules(this.componentId+e)},t.renderStyles=function(e,t,n,r){e>2&&ua.registerId(this.componentId+e),this.removeStyles(e,n),this.createStyles(e,t,n,r)},e}();function eo(e){for(var t=arguments.length,n=new Array(t>1?t-1:0),r=1;r<t;r++)n[r-1]=arguments[r];var a=Ua.apply(void 0,[e].concat(n)),o="sc-global-"+$a(JSON.stringify(a)),i=new Qa(a,o);function l(e){var t=Sa(),n=Na(),r=(0,h.useContext)(Ka),a=(0,h.useRef)(t.allocateGSInstance(o)).current;return t.server&&c(a,e,t,r,n),(0,h.useLayoutEffect)((function(){if(!t.server)return c(a,e,t,r,n),function(){return i.removeStyles(a,t)}}),[a,e,t,r,n]),null}function c(e,t,n,r,a){if(i.isStatic)i.renderStyles(e,Br,n,a);else{var o=jr({},t,{theme:Fa(t,r,l.defaultProps)});i.renderStyles(e,o,n,a)}}return h.default.memo(l)}!function(){var e=function(){var e=this;this._emitSheetCSS=function(){var t=e.instance.toString();if(!t)return"";var n=ra();return"<style "+[n&&'nonce="'+n+'"',qr+'="true"','data-styled-version="5.3.11"'].filter(Boolean).join(" ")+">"+t+"</style>"},this.getStyleTags=function(){return e.sealed?Gr(2):e._emitSheetCSS()},this.getStyleElement=function(){var t;if(e.sealed)return Gr(2);var n=((t={})[qr]="",t["data-styled-version"]="5.3.11",t.dangerouslySetInnerHTML={__html:e.instance.toString()},t),r=ra();return r&&(n.nonce=r),[h.default.createElement("style",jr({},n,{key:"sc-0-0"}))]},this.seal=function(){e.sealed=!0},this.instance=new ua({isServer:!0}),this.sealed=!1}.prototype;e.collectStyles=function(e){return this.sealed?Gr(2):h.default.createElement(Aa,{sheet:this.instance},e)},e.interleaveWithNodeStream=function(e){return Gr(3)}}();const to=Ja;var no=function(){var e=f((0,h.useState)(),2),t=e[0],n=e[1],r=f((0,h.useState)(!1),2),a=r[0],o=r[1],i=f((0,h.useState)(!1),2),l=i[0],c=i[1],s=f((0,h.useState)(""),2),u=s[0],d=s[1];return(0,h.useEffect)((function(){u&&function(){c(null),o(!0);try{fetch(u).then((function(e){return e.json()})).then((function(e){n(e),o(!1)})).catch((function(e){c(e),o(!1)}))}catch(e){c(e)}}()}),[u]),[{data:t,loading:a,error:l},d]},ro=function(e){return(e||[]).join(" ")},ao=a(672),oo=function(e){return{__html:(0,ao.sanitize)(e)}};function io(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"id-",t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:0;return g().mark((function n(){var r;return g().wrap((function(n){for(;;)switch(n.prev=n.next){case 0:r=t;case 1:return r+=1,n.next=5,e+r;case 5:n.next=1;break;case 7:case"end":return n.stop()}}),n)}))()}xr().shape({event:xr().string,action:xr().string,name:xr().string,region:xr().string,section:xr().string,component:xr().string,type:xr().string,text:xr().string});const lo=function(e){var t=e.packageName,n=void 0===t?"":t,r=e.component,a=void 0===r?"":r,o=e.type,i=void 0===o?"":o,l=e.configuration,c=void 0===l?{}:l;n&&a?(window.uds=window.uds||{},window.uds.package=window.uds.package||{},window.uds.package[n]={component:a,type:i,configuration:c}):console.error("trackReactComponent: Missing required arguments.")};var co,so=function(e){var t=e.href,n=void 0===t?null:t;return h.default.createElement(hr,{label:"Apply now",ariaLabel:"Apply now",href:n,color:"gold"})};function uo(e){var t=e.message,n=e.type,r=f((0,h.useState)(""),2),a=r[0],o=r[1],i={error:{className:"alert-danger",icon:"fa-exclamation-triangle",ariaLabel:"Error"},info:{className:"alert-info",icon:"fa-info-circle",ariaLabel:"Information"}}[n];return h.default.createElement("div",{"data-testid":"message-alert",className:"alert ".concat(i.className),role:"alert",style:{display:a,position:"sticky",top:0,zIndex:100}},h.default.createElement("div",{className:"alert-icon"},h.default.createElement("span",{"aria-label":i.ariaLabel,className:"fa fa-icon ".concat(i.icon)})),h.default.createElement("div",{className:"alert-content"},t),h.default.createElement("div",{className:"alert-close"},h.default.createElement("button",{type:"button",className:"btn btn-circle btn-circle-alt-black close","aria-label":"Close",onClick:function(){return o("none")}},h.default.createElement("i",{className:"fas fa-times"}))))}function fo(e){var t=e.message;return h.default.createElement(uo,{message:t,type:"error"})}function mo(e){var t=e.message;return h.default.createElement(uo,{message:t,type:"info"})}so.propTypes={href:xr().string},xr().string,uo.propTypes={type:xr().oneOf(["error","info"]).isRequired,message:xr().string.isRequired};var po=to.div(co||(co=m(["\n  --width: 100px;\n  --color: red;\n\n  width: calc(var(--width) + 0px);\n  height: calc((var(--width) / 3) - 10px);\n  // position: absolute;\n  // top: 50%;\n  // left: 50%;\n  transform: translateX(-50%) translateY(-50%);\n\n  .ball-loader-ball {\n    will-change: transform;\n\n    height: calc((var(--width) / 3) - 10px);\n    width: calc((var(--width) / 3) - 10px);\n\n    border-radius: 50%;\n    background-color: lightBlue;\n    position: absolute;\n    -webkit-animation: grow 1s ease-in-out infinite alternate;\n    animation: grow 1s ease-in-out infinite alternate;\n\n    &.ball1 {\n      left: 0;\n      transform-origin: 100% 50%;\n    }\n    &.ball2 {\n      left: 50%;\n      transform: translateX(-50%) scale(1);\n      animation-delay: 0.33s;\n    }\n    &.ball3 {\n      right: 0;\n      animation-delay: 0.66s;\n    }\n  }\n\n  @keyframes grow {\n    to {\n      transform: translateX(-50%) scale(0);\n    }\n  }\n"])));function go(){return h.default.createElement(po,{"data-testid":"loader",className:"container ball-loader mt-4"},h.default.createElement("div",{className:"ball-loader-ball ball1"}),h.default.createElement("div",{className:"ball-loader-ball ball2"}),h.default.createElement("div",{className:"ball-loader-ball ball3"}))}function ho(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,r)}return n}function vo(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?ho(Object(n),!0).forEach((function(t){s(e,t,n[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):ho(Object(n)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))}))}return e}xr().shape({color:xr().oneOf(["gold","maroon","gray","dark"]),content:xr().shape({icon:xr().string,header:xr().string,body:xr().string})});var yo,bo=xr().shape({ariaLabel:xr().string,color:xr().oneOf(["gold","maroon","gray","dark"]),icon:xr().string,href:xr().string,label:xr().string,onClick:xr().func,size:xr().oneOf(["default","small","xsmall"])}),wo={url:xr().string,altText:xr().string,cssClass:xr().arrayOf(xr().string)},Eo={text:xr().string,cssClass:xr().arrayOf(xr().string)},xo={type:xr().oneOf(["video","youtube"]),url:xr().string,altText:xr().string,vttUrl:xr().string,title:xr().string},ko={url:xr().string,text:xr().string,isActive:xr().bool},Co=xr().shape(vo({},wo)),Oo=xr().shape(vo({},Eo)),So=xr().shape(vo({},xo)),No=xr().shape(vo({},ko)),Ao=xr().shape({id:xr().string,sourceType:xr().oneOf(["api","shared-data-source","static-json"]),sharedDataSourceId:xr().string,data:xr().arrayOf(xr().object),apiUrl:xr().string}),To=xr().shape({text:xr().string,url:xr().string}),Po=xr().shape({icon:xr().arrayOf(xr().string),title:xr().string,content:xr().string,buttonLink:bo}),Ro=xr().arrayOf(xr().shape({title:xr().string,url:xr().string})),Lo=xr().shape({career:No,growth:xr().oneOfType([xr().number,xr().string]),medianSalary:xr().string,brightOutlook:xr().bool,greenOccupation:xr().bool}),jo={hideCollegeSchool:xr().bool,defaultView:xr().oneOf(["list-view","grid-view"]),cardDefaultImage:Co},Do=xr().shape(vo({},jo)),Io={atAGlance:xr().bool,applicationRequirements:xr().bool,changeMajorRequirements:xr().bool,nextSteps:xr().bool,affordingCollege:xr().bool,flexibleDegreeOptions:xr().bool,careerOutlook:xr().bool,exampleCareers:xr().bool,customizeYourCollegeExperience:xr().bool,globalOpportunity:xr().bool,attendOnline:xr().bool,whyChooseAsu:xr().bool,programContactInfo:xr().bool,externalAnchors:xr().arrayOf(xr().shape({targetIdName:xr().string,text:xr().string}))},Mo=xr().shape({image:Co,title:xr().string,text:xr().string,button:bo}),_o=xr().shape({faculty:Mo,programs:Mo,research:Mo,inclusion:Mo,mentors:Mo,honors:Mo}),Uo={hide:xr().bool,sectionIntroText:xr().string,cards:_o,defaultCards:_o},Fo=(xr().shape(vo({},Io)),xr().shape({id:xr().oneOfType([xr().string,xr().number]),value:xr().string})),zo=xr().shape({locations:xr().arrayOf(Fo),asuLocals:xr().arrayOf(Fo),acceleratedConcurrent:Fo}),qo=Object.values({h1:"h1",h2:"h2",h3:"h3",h4:"h4",h5:"h5",h6:"h6"}),Ho={offeredBy:{icon:"university",title:"Offered by"},locations:{icon:"map-marker-alt",title:"Location"},firstRequirementMathCourse:{icon:"pencil-alt",title:"First Required math Course"},mathIntensity:{icon:"calculator",title:"Math intensity"},timeCommitment:{icon:"calendar-alt",title:"Time commitment"}},$o="grid-view",Bo="list-view",Go="degree-list-programs",Wo="Sorry, Something went wrong.",Vo=(yo=(document.currentScript&&document.currentScript.src||"").match(/(.*\/)/))&&yo.length>0?yo[0].substr(0,yo[0].length-1):"/",Yo=function(e){if("string"==typeof e)return"Degrees";var t=e.program,n=e.cert;return"undergrad"===t&&"true"===n?"Undergraduate Minors and Certificates":"undergrad"===t?"Undergraduate Degrees":"graduate"===t&&"true"===n?"Graduate Certificates":"graduate"===t?"Graduate Degrees":"Degrees"},Ko=[{id:0,value:"DTPHX",text:"Downtown Phoenix campus"},{id:1,value:"POLY",text:"Polytechnic campus"},{id:2,value:"TEMPE",text:"Tempe campus"},{id:3,value:"WEST",text:"West Valley campus"},{id:4,value:"ONLNE",text:"ASU Online"}],Xo=Ko[4],Zo=[{id:0,value:"COCHS",text:"ASU at Cochise"},{id:1,value:"LOSAN",text:"ASU at Los Angeles"},{id:2,value:"NEAZ",text:"ASU at Northeastern Arizona"},{id:3,value:"PIMA",text:"ASU at Pima"},{id:4,value:"CAC",text:"ASU at Pinal"},{id:5,value:"EAC",text:"ASU at TheGilaValley"},{id:6,value:"TUCSN",text:"ASU at Tucson"},{id:7,value:"YAVAP",text:"ASU at Yavapai"},{id:8,value:"AWC",text:"ASU at Yuma"},{id:9,value:"MESACITYCR",text:"ASU at Mesa City Center"},{id:10,value:"CALHC",text:"Colleges at Lake Havasu City"}],Jo=[{id:0,value:"all",text:"All"},{id:1,value:"acceleratedAcadPlanCodes",text:"Accelerated"},{id:2,value:"concurrentAcadPlanCodes",text:"Concurrent"}],Qo=Jo[0],ei=function(e){return(null==e?void 0:e.value)&&"all"!==(null==e?void 0:e.value)},ti={atAGlance:{targetIdName:"at-a-glange",text:"At a glance"},applicationRequirements:{targetIdName:"application-requirements",text:"App. Requirements"},degreeRequirements:{targetIdName:"degree-requirements",text:"Degree Requirements"},changeMajorRequirements:{targetIdName:"change-major-requirements",text:"Change Major Requirement"},nextSteps:{targetIdName:"next-steps",text:"Next Steps"},affordingCollege:{targetIdName:"affording-college",text:"Affording College"},flexibleDegreeOptions:{targetIdName:"flexible-degree-options",text:"Flexible Degree Options",acceleratedId:"flexible-accelerated-options",concurrentId:"flexible-concurrent-options"},careerOutlook:{targetIdName:"career-outlook",text:"Career outlook"},exampleCareers:{targetIdName:"example-careers",text:"Example Careers"},globalOpportunity:{targetIdName:"global-opportunity",text:"Global opportunities"},attendOnline:{targetIdName:"attend-online",text:"Attend Online"},whyChooseAsu:{targetIdName:"why-choose-asu",text:"Why Choose ASU"},programContactInfo:{targetIdName:"program-contact-info",text:"Program Contact Information"}},ni={TEMPE:{text:"Tempe campus",url:"https://campus.asu.edu/tempe"},POLY:{text:"Polytechnic campus",url:"https://campus.asu.edu/polytechnic"},WEST:{text:"West Valley campus",url:"https://campus.asu.edu/west"},DTPHX:{text:"Downtown Phoenix campus",url:"https://campus.asu.edu/downtown-phoenix"},EAC:{text:"",url:"https://admission.asu.edu/transfer/thegilavalley"},CAC:{text:"",url:"https://admission.asu.edu/transfer/pinal"},ONLNE:{text:"Online",url:"https://asuonline.asu.edu"},CALHC:{text:"Lake Havasu",url:"https://havasu.asu.edu"},COCHS:{text:"",url:"https://admission.asu.edu/transfer/asu-cochise"},WASHD:{text:"",url:"https://washingtondc.asu.edu"},YAVAP:{text:"",url:"https://admission.asu.edu/transfer/asuyavapai"},PIMA:{text:"",url:"https://admission.asu.edu/transfer/pima"},NEAZ:{text:"",url:"https://admission.asu.edu/transfer/asu-northeastern-arizona"},LOSAN:{text:"ASU@Los Angeles",url:"https://california.asu.edu"},"TUCSN-undergrad":{text:"",url:"https://transfer.asu.edu/tucson"},"TUCSN-graduate":{text:"",url:"https://admission.asu.edu/contact/graduate"},MXCTY:{text:"",url:"https://admission.asu.edu/contact/graduate"},"AWC-undergrad":{text:"",url:"https://admission.asu.edu/transfer/asu-yuma"},"AWC-graduate":{text:"",url:"https://admission.asu.edu/contact/graduate"}},ri=function(e,t){var n=e.toUpperCase(),r=["TUCSN","AWC"].includes(n)?"".concat(n,"-").concat(t):n;return ni[r]};function ai(e){var t,n,r=e.anchorMenu,a=null==r||null===(t=r.externalAnchors)||void 0===t?void 0:t.map((function(e){var t=e.targetIdName,n=e.text;return{targetIdName:t.startsWith("#")?t.substring(1):t,text:n,icon:null}})),o=Object.keys(ti).filter((function(e){return r[e]})).map((function(e){return ti[e]})).concat(a||[]);return h.default.createElement(gr,{items:o,firstElementId:null===(n=o[0])||void 0===n?void 0:n.targetIdName,focusFirstFocusableElement:!1})}ai.propTypes={anchorMenu:xr().shape(Io)};var oi="https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plan/",ii={endpoint:"https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plans",filter:"activeInDegreeSearch",include:"applicationDeadlines,owners,acadPlanMarketingDescription,\n    acadPlanCode,degreeDescriptionShort,acadPlanDescription,\n    degreeDescriptionText,majorMapSubplans,majorMapOnline,majorMapGeneral,\n    acceleratedAcadPlanCodes,concurrentAcadPlanCodes,academicOfficeUrl,\n    academicOfficeLocation,marketingText,fullDescription,customText,\n    mathIntensityCode,mathIntensityDescription,firstMathCourseRequired,\n    mathRequired,emailAddr,campusesOffered,changeMajorRequirementsText,\n    additionalFee,firstMathCourseRequiredSupplementalText,degreeType",degreeType:"UG"},li={acadPlan:null,endpoint:"https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plan",include:"applicationDeadlines,owners,acadPlanMarketingDescription,\n  acadPlanCode,degreeDescriptionShort,acadPlanDescription,\n  degreeDescriptionText,majorMapSubplans,majorMapOnline,majorMapGeneral,\n  acceleratedAcadPlanCodes,concurrentAcadPlanCodes,academicOfficeUrl,\n  academicOfficeLocation,marketingText,fullDescription,customText,\n  mathIntensityCode,mathIntensityDescription,firstMathCourseRequired,\n  mathRequired,emailAddr,campusesOffered,changeMajorRequirementsText,\n  careerData,careerOpportunities,globalExperienceText,\n  firstMathCourseRequiredSupplementalText,stemOptText,\n  admissionsRequirementsText,transferAdmissionRequirementsText,\n  asuOnlineAcadPlanUrl,degreeType,degreeRequirements,\n  graduateDegreeAdditionalRequirements,minorCourseRequirements,subplans,\n  professionalLicensureAdditionalText,professionalLicensureStandardText"},ci=function(e){return e.map((function(e){return{title:e.acadPlanDescription,url:e.academicOfficeUrl}})).sort((function(e,t){return e.title.localeCompare(t.title)}))},si=["endpoint","include"];function ui(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,r)}return n}function di(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?ui(Object(n),!0).forEach((function(t){s(e,t,n[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):ui(Object(n)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))}))}return e}function fi(e,t){var n=di(di({},t),e);if(n.collegeAcadOrg&&(n.collegeOrg=n.collegeAcadOrg,delete n.collegeAcadOrg),n.program){var r=n.program;"true"===n.cert&&"undergrad"===r?n.degreeType="UGCM":n.degreeType="graduate"===r?"GR":"UG",delete n.program}n.acadPlan&&(n.endpoint+="/".concat(n.acadPlan),delete n.acadPlan);var a=n.endpoint,o=n.include,i=function(e,t){if(null==e)return{};var n,r,a=function(e,t){if(null==e)return{};var n={};for(var r in e)if({}.hasOwnProperty.call(e,r)){if(t.includes(r))continue;n[r]=e[r]}return n}(e,t);if(Object.getOwnPropertySymbols){var o=Object.getOwnPropertySymbols(e);for(r=0;r<o.length;r++)n=o[r],t.includes(n)||{}.propertyIsEnumerable.call(e,n)&&(a[n]=e[n])}return a}(n,si),l=o.split(",").map((function(e){return"include=".concat(e.trim())})).join("&"),c=Object.keys(i).reduce((function(e,t){return"".concat(e,"&").concat(t,"=").concat(n[t])}),"");return"".concat(a,"?").concat(c,"&").concat(l)}function mi(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"h2";return qo.includes(e.component)?e.component:t}function pi(e){return"string"!=typeof e?console.error("Invalid string",e):null==e?void 0:e.replace(/\w\S*/g,(function(e){return e.charAt(0).toUpperCase()+e.substr(1).toLowerCase()}))}function gi(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,r)}return n}function hi(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?gi(Object(n),!0).forEach((function(t){s(e,t,n[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):gi(Object(n)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))}))}return e}var vi,yi,bi,wi="AsuDevTools",Ei={isDebug:!1};function xi(e){return ki.apply(this,arguments)}function ki(){return ki=l(g().mark((function e(t){var n;return g().wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(null==t||!t.length){e.next=5;break}return e.next=3,Promise.all(t.map(function(){var e=l(g().mark((function e(t){var n,r;return g().wrap((function(e){for(;;)switch(e.prev=e.next){case 0:return e.prev=0,e.next=3,Promise.race([fetch("".concat(oi).concat(t,"?include=academicOfficeUrl&include=acadPlanDescription")),new Promise((function(e,t){return setTimeout((function(){return t(new Error("timeout"))}),1e4)}))]);case 3:return n=e.sent,e.next=6,n.json();case 6:return r=e.sent,e.abrupt("return",r);case 10:return e.prev=10,e.t0=e.catch(0),console.error("Error fetching academic plan for code ".concat(t,":"),e.t0),e.abrupt("return",null);case 14:case"end":return e.stop()}}),e,null,[[0,10]])})));return function(t){return e.apply(this,arguments)}}()));case 3:return n=e.sent,e.abrupt("return",n.filter((function(e){return null!==e})));case 5:return e.abrupt("return",[]);case 6:case"end":return e.stop()}}),e)}))),ki.apply(this,arguments)}function Ci(e){var t=e.contents,n=void 0===t?[]:t,r=io("paragrap-");return h.default.createElement(h.default.Fragment,null,n.map((function(e){return t=e.text,/<\/?[a-z][\s\S]*>/i.test(t)?h.default.createElement("div",{key:r.next().value,dangerouslySetInnerHTML:oo(e.text)}):h.default.createElement("p",{key:r.next().value,className:"".concat(ro(e.cssClass))},e.text);var t})))}window.__AsuDevTools={enableDebug:function(e){var t=JSON.stringify(hi(hi({},Ei),{},{isDebug:e}));localStorage.setItem(wi,t)}},Ci.propTypes={contents:xr().arrayOf(Oo)};var Oi,Si,Ni=eo(vi||(vi=m(["\n  .uds-image-overlap {\n    padding-top: 0;\n    width: auto;\n    align-items: center;\n\n    &:after{\n      height: 100%;\n    }\n    @media (max-width: 768px) {\n      padding-top: 1.5rem !important;\n    }\n  }\n"]))),Ai=to.div(yi||(yi=m(["\n  .uds-image-overlap.content-right &.content-wrapper,\n  .uds-image-overlap.content-left &.content-wrapper {\n    height: fit-content;\n  }\n\n  @media (max-width: 768px) {\n    & {\n      font-size: 0.9rem;\n    }\n  }\n\n  @media (min-width: 992px) {\n    .uds-image-overlap.content-left &.content-wrapper {\n      padding-left: 0;\n    }\n\n    .uds-image-overlap.content-right &.content-wrapper {\n      padding: 2.5rem;\n\n      h2 {\n        margin-top: 0;\n      }\n    }\n  }\n"]))),Ti=to.img(bi||(bi=m(["\n  .uds-image-overlap & {\n    width: 100%;\n    height: 100%;\n    grid-row: 2/5;\n    object-fit: cover;\n  }\n\n  .uds-image-overlap.content-right & {\n    grid-row: 1 / span 3;\n  }\n"])));function Pi(e){var t=e.title,n=e.image,r=e.contentDirection,a=void 0===r?"left":r,o=e.contents,i=void 0===o?[]:o,l=e.contentChildren,c=void 0===l?null:l,s=e.headingTag,u=void 0===s?"H3":s,d=(0,h.useRef)(),f=(0,h.useRef)(),m=mi(u);function p(){var e=d.current.offsetHeight;f.current.style.height="".concat(1.2*e,"px")}return(0,h.useEffect)((function(){var e;p();var t=function(){clearTimeout(e),e=setTimeout((function(){return p()}),150)};return window.addEventListener("resize",t),function(){return window.removeEventListener("resize",t)}}),[f,d]),h.default.createElement("div",{className:"uds-image-overlap content-".concat(a)},h.default.createElement(Ni,null),h.default.createElement(Ti,{ref:f,className:"img-fluid",src:null==n?void 0:n.url,alt:null==n?void 0:n.altText,onError:function(e){e.currentTarget.style.display="none"}}),h.default.createElement(Ai,{ref:d,className:"content-wrapper"},h.default.createElement(m,null,h.default.createElement("span",{className:"highlight-gold"},t)),h.default.createElement(Ci,{contents:i}),c))}Pi.propTypes={headingTag:xr().string,title:xr().string,contentDirection:xr().oneOf(["left","right"]),contents:xr().arrayOf(xr().shape({text:xr().string})),image:Co,contentChildren:xr().element};var Ri,Li=eo(Oi||(Oi=m(["\n  :root {\n    --uds-dp-section-margin: 96px;\n  }\n\n  @media (max-width: 768px) {\n    :root {\n      --uds-dp-section-margin: 48px;\n    }\n  }\n\n  .element-focus:focus {\n    outline: none;\n    box-shadow: 0px 0px 0px 2px #fff, 0px 0px 0px 4px #191919 !important;\n  }\n\n  div[class^=uds-hero] h1 {\n    margin-left: 0.15em;\n\n    span {\n      margin-left: 0;\n    }\n  }\n\n  h1 span.highlight-gold,\n  h2 span.highlight-gold{\n    margin-left: 0.15em;\n  }\n\n  .card > .card-buttons {\n    padding-bottom: 8px !important;\n  }\n"]))),ji=to.main(Si||(Si=m(["\n  &.dg-margin-top {\n    margin-top: var(--uds-dp-section-margin);\n  }\n\n  &.main-section > section:not(.no-space),\n  & > section section:not(.no-space) {\n    margin-bottom: var(--uds-dp-section-margin);\n\n    & > * {\n      margin-top: 0;\n      padding-top: 0;\n    }\n\n    & h2 {\n      line-height: 1;\n    }\n  }\n"])));to.div(Ri||(Ri=m(['\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: 1070;\n  display: block;\n  max-width: 276px;\n  background-color: #fff;\n  background-clip: padding-box;\n  border: 1px solid rgba(0, 0, 0, 0.2);\n  border-radius: 0.3rem;\n  display: none;\n\n  &[data-width-auto="true"] {\n    max-width: none;\n  }\n\n  &[data-show="true"] {\n    display: block;\n  }\n\n  & .popover-header {\n    padding: 0.5rem 1rem;\n    margin-bottom: 0;\n    font-size: 1rem;\n    background-color: #f0f0f0;\n    border-bottom: 1px solid #d8d8d8;\n    border-top-left-radius: calc(0.3rem - 1px);\n    border-top-right-radius: calc(0.3rem - 1px);\n  }\n\n  & .popover-body {\n    padding: 1rem 1rem;\n    color: #212529;\n  }\n\n  #arrow,\n  #arrow::before {\n    position: absolute;\n    width: 8px;\n    height: 8px;\n    background: inherit;\n  }\n\n  #arrow {\n    visibility: hidden;\n  }\n\n  #arrow::before {\n    visibility: visible;\n    content: "";\n    transform: rotate(45deg);\n  }\n\n  &[data-popper-placement^="top"] > #arrow {\n    bottom: -4px;\n  }\n\n  &[data-popper-placement^="bottom"] > #arrow {\n    top: -4px;\n  }\n\n  &[data-popper-placement^="left"] > #arrow {\n    right: -4px;\n  }\n\n  &[data-popper-placement^="right"] > #arrow {\n    left: -4px;\n  }\n'])));var Di=function(e){return h.default.createElement("span",null)},Ii=function(e){var t=e.onClick,n=void 0===t?function(){return null}:t,r=e.ariaLabel,a=e.ariaControls;return function(e){var t=e.baseIconClassName1,n=e.baseIconAriaLabel1,r=e.baseIconStyle1,a=e.baseIconAriaLabel2,o=e.baseIconClassName2,i=e.baseIconStyle2,l=e.ariaLabel,c=e.ariaControls,s=e.dataId,u=e.onClick,d=void 0===u?function(){return null}:u,m=f((0,h.useState)(!1),2),p=m[0],g=m[1],v=function(e,t,n,r){return h.default.createElement("span",{style:{cursor:"pointer",display:t}},h.default.createElement("i",{className:"".concat(e),"aria-label":n,title:n,style:r}))},y=function(){g(!p),d(!p)},b=h.default.createElement("span",{"data-testid":s,role:"button",className:"element-focus",tabIndex:0,onKeyDown:function(e){return"Enter"===e.key&&y()},onClick:y,"aria-label":l,"aria-expanded":p,"aria-controls":c},v(t,p?"":"none",n,r),v(o,p?"none":"",a,i));return(0,h.useMemo)((function(){return b}),[p])}({dataId:e.dataId,baseIconClassName1:"fas fa-chevron-up",baseIconClassName2:"fas fa-chevron-down",onClick:n,ariaLabel:r,ariaControls:a})},Mi=(0,h.createContext)(null),_i=function(e){var t=e.listPageProps,n=e.detailPageProps,r=e.children,a=(0,h.useMemo)((function(){return e=(t||n).appPathFolder,a="".concat(r=e||Vo,"/assets/img/detail-page"),o="".concat(r,"/assets/img/listing-page"),{detailPageDefault:{dataSource:void 0,introContent:{image:{url:"".concat(a,"/intro.jpg"),altText:"Detail Page Degree"}},hero:{image:{url:"".concat(a,"/hero.jpg"),altText:"Detail Page Degree",size:"medium"},title:{text:"Detail Page Degree",color:"black",highlightColor:"gold",maxWidth:"100%"}},nextSteps:{cards:{learnMore:{icon:["fas","info-circle"],title:"Learn more about our programs",content:"Tell us what type of student you are and we'll get you the information you need.",buttonLink:{label:"Request information",ariaLabel:"Request information",color:"maroon",href:"https://admission.asu.edu/contact/request-info"}},apply:{icon:["fas","file-alt"],title:"Apply to program",content:"Arizona State University invites first-year, transfer, international, graduate and online students to apply for admission using our online application.",buttonLink:{label:"Apply now",ariaLabel:"Apply now",color:"maroon",href:"https://admission.asu.edu/apply"}},visit:{icon:["fas","map-marker-alt"],title:"Visit our campus",content:"An Experience ASU visit includes a presentation on admissions, scholarships and financial aid, student housing, getting involved on campus and much more.You will also go on a student-led walking tour of campus.",buttonLink:{label:"Schedule a visit",ariaLabel:"Schedule a visit",color:"maroon",href:"https://visit.asu.edu/"}}}},whyChooseAsu:{sectionIntroText:"ASU offers students excellent academics and unique opportunities to customize your college experience and give you an edge, including undergraduate research, internships, access to state-of-the-art facilities, and opportunities to work with world-class faculty and scientists.",cards:{faculty:{image:{url:"".concat(a,"/customize-faculty-600.jpg"),altText:"World-class faculty"},title:"World-class faculty",text:"The ASU faculty is at the forefront nationally in advancing research and discovery. Our faculty members inspire new ways of thinking, innovating and solving problems socially, culturally and economically in our region and in the international community.",button:{label:"Faculty excellence",color:"maroon",href:"https://www.asu.edu/academics/faculty-excellence"}},programs:{image:{url:"".concat(a,"/customize-programs-600.jpg"),altText:"Highly ranked programs"},title:"Highly ranked programs",text:"A leading service ranking the excellence and innovation of the nation’s top universities, U.S. News & World Report rates many ASU programs among the top 25 in the country, including more than thirty programs ranked in the nation's top 10.",button:{label:"ASU rankings",color:"maroon",href:"https://www.asu.edu/rankings"}},research:{image:{url:"".concat(a,"/customize-research-600.jpg"),altText:"Research opportunities"},title:"Research opportunities",text:"Students have the opportunity to work with mentors who are experts in their fields and establish professional connections that may last a lifetime. Engage in meaningful research and gain experience that may make you more competitive in the job market.",button:{label:"Research opportunities",color:"maroon",href:"https://provost.asu.edu/uresearch"}},inclusion:{image:{url:"".concat(a,"/customize-inclusion-600.jpg"),altText:"An inclusive environment"},title:"An inclusive environment",text:"ASU defines our success not by whom we exclude, but by whom we include and how our students succeed. Our educational programs are designed to broaden access to a quality education and support our students’ success.",button:{label:"ASU Charter",color:"maroon",href:"https://www.asu.edu/about/charter-mission"}},mentors:{image:{url:"".concat(a,"/customize-mentor-600.jpg"),altText:"Career Services"},title:"Career Services",text:"All students have access to ASU’s full-service career resources center. Get help writing your cover letter and building your resume, learn job interview skills, land an internship, and connect with hundreds of employers who are actively recruiting ASU graduates.",button:{label:"ASU Career Services",color:"maroon",href:"https://career.eoss.asu.edu/"}},honors:{image:{url:"".concat(a,"/customize-honors-600.jpg"),altText:"Global education"},title:"Global education",text:"ASU offers more than 300 Global Education programs in over 65 different countries. Whether you are interested in studying abroad, internships, research or service learning, there's a program for you!",button:{label:"Explore",color:"maroon",href:"https://goglobal.asu.edu"}}}},globalOpportunity:{image:{url:"".concat(a,"/global-opportunity.jpg"),altText:"Global opportunity"}},careerOutlook:{image:{url:"".concat(a,"/career-outlook.jpg"),altText:"Career Outlook"}},attendOnline:{image:{url:"".concat(a,"/attend-online.jpg"),altText:"Attend online"}}},listingPageDefault:{actionUrls:{applyNowUrl:"https://admission.asu.edu/apply"},hero:{image:{url:"".concat(o,"/hero.jpg"),altText:"Listing Page Degree",size:"medium"}},programList:void 0}};var e,r,a,o}),[]),o={detailPageDefault:a.detailPageDefault,listingPageDefault:a.listingPageDefault},i={listPageProps:t,detailPageProps:n};return h.default.createElement(Mi.Provider,{value:{state:i,defaultState:o}},r)};_i.propTypes={children:xr().oneOfType([xr().arrayOf(xr().element),xr().element]),listPageProps:xr().shape({}),detailPageProps:xr().shape({})};function Ui(e){return function(e){if(Array.isArray(e))return u(e)}(e)||function(e){if("undefined"!=typeof Symbol&&null!=e[Symbol.iterator]||null!=e["@@iterator"])return Array.from(e)}(e)||d(e)||function(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function Fi(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,r)}return n}var zi=function(e){return"UG"===e.degreeType},qi=function(e){var t;return(null===(t=e.applicationDeadlines)||void 0===t?void 0:t.length)>0},Hi=function(e){var t;return(null===(t=e.applicationDeadlines)||void 0===t?void 0:t.length)>0},$i=function(e){return!(Object.keys(e).length>0)||Hi(e)||qi(e)},Bi=function(e){var t=e.owners;return t?t.reduce((function(e,t){return e.percentOwned>t.percentOwned?e:t})):null};function Gi(){var e,t,n=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};return{getMajorDesc:function(){return n.acadPlanMarketingDescription},getInstitution:function(){return"ASU00"},getAcadPlan:function(){return n.acadPlanCode},getDegree:function(){var e=n.degreeDescriptionShort||n.acadPlanTypeDescription;return"CERT"===e&&(e="Certificate"),e},getGeneralDegreeMajorMap:function(){var e=n.majorMapGeneral,t=null==e?void 0:e.find((function(e){return!0===e.defaultFlag}));return(null==t?void 0:t.url)||""},isUndergradProgram:function(){return zi(n)},isPhdOrMasters:function(){return"CERT"!==n.degreeDescriptionShort},isGradProgram:function(){return"GR"===n.degreeType},isMinorOrCertificate:function(){return"UGCM"===n.degreeType||"GR"===n.degreeType&&"Certificate"===n.acadPlanTypeDescription},getProgramType:function(){return zi(n)?"undergrad":"graduate"},getDegreeDesc:function(){return n.degreeDescriptionLong},getDegreeDescLong:function(){return n.degreeDescriptionText},getFullDescription:function(){return n.fullDescription},getCurriculumUrl:function(){var e;return null===(e=n.asuOnlineAcadPlanUrl)||void 0===e?void 0:e.trim()},getAdmissionsRequirementsText:function(){return n.admissionsRequirementsText},getMinorCourseRequirements:function(){return n.minorCourseRequirements},getTransferAdmission:function(){return n.transferAdmissionRequirementsText},getGraduateRequirements:function(){var e=n.graduateDegreeAdditionalRequirements,t="";if(!((null==e?void 0:e.length)>0))return t=n.degreeMajorMap,"".concat(t);var r=e.join(", or<br />");t=r?"<p>".concat(r,"</p>"):"";var a=n.degreeRequirements;return"".concat(t).concat(a)},isOnline:function(){return n.asuOnlineAcadPlanUrl},getOnlineMajorMapURL:function(){var e,t=n.majorMapOnline,r=null==t?void 0:t.find((function(e){return!0===e.defaultFlag}));return r?(null==r?void 0:r.url)||"":null==t||null===(e=t[t.length-1])||void 0===e?void 0:e.url},hasCareerData:function(){var e;return null===(e=n.careerData)||void 0===e?void 0:e.length},getCareerData:function(){return n.careerData||[]},getCampusList:function(){return n.campusesOffered||[]},hasConcurrentOrAccelerateDegrees:function(){var e,t;return(null===(e=n.acceleratedAcadPlanCodes)||void 0===e?void 0:e.length)||(null===(t=n.concurrentAcadPlanCodes)||void 0===t?void 0:t.length)},hasAccelerateDegrees:function(){var e;return null===(e=n.acceleratedAcadPlanCodes)||void 0===e?void 0:e.length},hasConcurrentDegrees:function(){var e;return null===(e=n.concurrentAcadPlanCodes)||void 0===e?void 0:e.length},getAccelerateDegrees:(t=l(g().mark((function e(){return g().wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(n.acceleratedAcadPlanCodes){e.next=2;break}return e.abrupt("return",[]);case 2:return e.abrupt("return",xi(n.acceleratedAcadPlanCodes));case 3:case"end":return e.stop()}}),e)}))),function(){return t.apply(this,arguments)}),getConcurrentDegrees:(e=l(g().mark((function e(){return g().wrap((function(e){for(;;)switch(e.prev=e.next){case 0:if(n.concurrentAcadPlanCodes){e.next=2;break}return e.abrupt("return",[]);case 2:return e.abrupt("return",xi(n.concurrentAcadPlanCodes));case 3:case"end":return e.stop()}}),e)}))),function(){return e.apply(this,arguments)}),getCollegeDesc:function(){var e;return null===(e=Bi(n))||void 0===e?void 0:e.collegeDescription},getCollegeUrl:function(){var e;return(null===(e=Bi(n))||void 0===e?void 0:e.collegeUrl)||""},getEmailAddress:function(){return n.emailAddr},getPhone:function(){var e;return null===(e=n.phoneNumber)||void 0===e?void 0:e.replace("/","-")},getProfessionalLicensureText:function(){var e=n.professionalLicensureStandardText||"",t=n.professionalLicensureAdditionalText||"",r="".concat(e).concat(t);try{if((new DOMParser).parseFromString(r,"text/html").querySelector("parsererror"))return""}catch(e){return console.error("Error parsing HTML: ",e.message),""}return r},getDepartmentName:function(){var e;return null===(e=Bi(n))||void 0===e?void 0:e.departmentDescription},getPlanUrl:function(){return n.academicOfficeUrl},hasAsuProgramFee:function(){return n.additionalFee},getAsuLangReqFlag:function(){return n.languageRequired},hasAsuLangReqFlag:function(){return n.languageRequired},hasMathReqFlag:function(){return n.mathRequired},getOtherMathReqCourse:function(){return n.firstMathCourseRequiredSupplementalText},getMathIntensity:function(){return n.mathIntensityDescription},getMinMathReq:function(){var e=n.firstMathCourseRequired;if(!e)return"";var t=e.subject,r=e.catalogNumber,a=e.description;return"".concat(t," ").concat(r," - ").concat(a)},getMarketText:function(){var e;return null===(e=n.marketingText)||void 0===e?void 0:e.trim()},getAsuOfficeLoc:function(){return n.academicOfficeLocation||""},getCampusWue:function(){var e,t=n.campusesOffered;return t?null==t||null===(e=t.find((function(e){return!0===e.wue})))||void 0===e?void 0:e.campusCode:null},getConcurrentDegreeMajorMaps:function(){return xi(n.concurrentAcadPlanCodes)},getChangeMajor:function(){return n.changeMajorRequirementsText},getAsuCareerOpportunity:function(){return n.careerOpportunities},getGlobalExp:function(){var e;return null===(e=n.globalExperienceText)||void 0===e?void 0:e.trim()},getCollegeAcadOrg:function(){var e;return null===(e=Bi(n))||void 0===e?void 0:e.collegeAcadOrg},getCollegeAcadOrgJoint:function(){var e=n.owners;return e?e.map((function(e){return e.collegeAcadOrg})):[]},getDepartmentCode:function(){var e;return null===(e=Bi(n))||void 0===e?void 0:e.departmentAcadOrg},getGraduateApplyDates:function(){return n.applicationDeadlines},hasGraduateApplyDates:function(){return qi(n)},getPlanDeadlines:function(){return n.applicationDeadlines},hasPlanDeadlines:function(){return Hi(n)},isValidActiveProgram:function(){return $i(n)},getAsuDegSrchFlg:function(){return n.activeInDegreeSearch},getAsuCustomText:function(){return n.customText},getRequiredCoursesLabel:function(){return"Minor"===n.acadPlanTypeDescription?"Minor":"Certificate"===n.acadPlanTypeDescription?"Certificate":"Major"},getStemOptText:function(){return n.stemOptText},getSubPlnMajorMaps:function(){var e;if(!n.subplans||!n.majorMapSubplans)return[];for(var t=null===(e=Ui(n.subplans))||void 0===e?void 0:e.filter((function(e){return e.campusesOffered})),r=Ui(n.majorMapSubplans),a=function(e,t){return e.filter((function(e){return e.acadSubPlanCode!==t}))},o=function(e,t){return e.some((function(e){return e.acadSubPlanCode!==t}))},i=[],l=r.length-1;l>=0&&0!==t.length;l-=1){var c=r[l];(c.defaultFlag||o(t,c.acadSubPlanCode))&&(t=a(t,c.acadSubPlanCode),i.push(c))}return i},getSubPln:function(){return n.subplans}}}function Wi(e){var t=e.getProgramType(),n=[],r=function(e){return{text:e,url:""}},a=e.getCampusList().map((function(e){return e.campusCode}));a.length>0&&n.push.apply(n,Ui(a.map((function(n){return"ONLNE"===n&&{text:"Online",url:e.getCurriculumUrl()}||ri(n,t)||r(n)}))));var o=e.getCampusWue();return o&&n.push(ri(o,t)||r(o)),n}function Vi(e,t){var n=t||"";return n.replaceAll("{INSTITUTION_CODE}",e.getInstitution()).replaceAll("{ACAD_PLAN_CODE}",e.getAcadPlan())}function Yi(e,t){var n=Vi(e,t);return"".concat(n,"#").concat(ti.flexibleDegreeOptions.acceleratedId)}function Ki(e){var t=e.programs,n=void 0===t?[]:t,r=e.filters,a=r.collegeAcadOrg,o=r.departmentCode,i=r.acceleratedConcurrent,l=r.locations,c=void 0===l?[]:l,s=r.keyword,u=r.blacklistAcadPlans,d=r.program,f=r.showCerts;return n.filter((function(e){var t=Gi(e);return function(e){return!a||e.getCollegeAcadOrgJoint().includes(a)}(t)&&function(e){return!o||e.getDepartmentCode().includes(o)}(t)&&function(e){var t;return!c.length||(null===(t=e.getCampusList())||void 0===t?void 0:t.some((function(e){return c.some((function(t){return t.value===e.campusCode}))})))}(t)&&function(){var e,t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};return!ei(i)||(null===(e=t[i.value])||void 0===e?void 0:e.length)>0}(e)&&function(e,t){return!t||new RegExp(t,"i").test(e.getFullDescription())}(t,s)&&function(e){return!(null!=u&&u.includes(e.getAcadPlan()))}(t)&&function(e){return"undergrad"===d||("true"===f&&"graduate"===d?e.isMinorOrCertificate():e.isPhdOrMasters())}(t)}))}var Xi=function(e){var t=e.event,n=void 0===t?"":t,r=e.action,a=void 0===r?"":r,o=e.name,i=void 0===o?"":o,l=e.type,c=void 0===l?"":l,s=e.section,u=void 0===s?"":s,d=e.text,f=void 0===d?"":d,m=e.region,p=void 0===m?"":m,g=e.component,h=void 0===g?"":g,v=window.dataLayer,y={event:n.toLowerCase(),action:a.toLowerCase(),name:i.toLowerCase(),type:c.toLowerCase(),region:p.toLowerCase(),section:u.toLowerCase(),text:f.toLowerCase(),component:h.toLowerCase()};v&&v.push(y)};function Zi(e){var t=e.breadcrumbs,n=e.section,r=io("breadcrumb-");return t&&h.default.createElement("nav",{"aria-label":"breadcrumbs","data-testid":"breadcrumbs"},h.default.createElement("ol",{className:"breadcrumb bg-white"},t.map((function(e){return null!=e&&e.isActive?h.default.createElement("li",{key:r.next().value,className:"breadcrumb-item active","aria-current":"page"},h.default.createElement("a",{href:null==e?void 0:e.url,onClick:function(){return Xi({event:"link",action:"click",name:"onclick",type:"internal link",region:"main content",section:n,text:e.text})}},e.text)):h.default.createElement("li",{key:r.next().value,className:"breadcrumb-item"},h.default.createElement("a",{href:null==e?void 0:e.url,onClick:function(){return Xi({event:"link",action:"click",name:"onclick",type:"internal link",region:"main content",section:n,text:e.text})}},e.text))}))))}Zi.propTypes={breadcrumbs:xr().arrayOf(No),section:xr().string};var Ji,Qi,el=function(){return h.default.createElement("div",{className:"container","data-testid":"browse-title"},h.default.createElement("h2",null,h.default.createElement("span",{className:"highlight-gold"},"Browse degrees")))},tl=function(e){var t=e.id,n=e.label,r=e.selected,a=e.multiple,o=e.options,i=e.onChange;return h.default.createElement("div",{className:"form-group"},h.default.createElement("label",{htmlFor:t},n),h.default.createElement("select",{className:"form-select",id:t,"data-testid":t,multiple:a,onChange:function(e){return i(t,e)},value:r},null==o?void 0:o.map((function(e){return h.default.createElement("option",{key:e.id,id:e.id,value:e.value},e.text)}))))},nl=to.div(Ji||(Ji=m(["\n  .hint-container {\n    margin-top: -1.25rem;\n    margin-bottom: 2rem;\n  }\n\n  @media (max-width: 768px) {\n    .hint-container {\n      display: none;\n    }\n    .filter-action-buttons {\n      & {\n        * {\n          margin: 0;\n        }\n        .btn-link {\n          padding: 1rem;\n        }\n      }\n    }\n  }\n"]))),rl=to.button(Qi||(Qi=m(["\n  font-weight: 400;\n  text-decoration: underline;\n"])));function al(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,r)}return n}function ol(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?al(Object(n),!0).forEach((function(t){s(e,t,n[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):al(Object(n)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))}))}return e}var il,ll,cl={event:"select",action:"click",name:"onclick"},sl={event:"link",action:"click",name:"onclick",type:"internal link"},ul={isActive:!1,locations:[],asuLocals:[],acceleratedConcurrent:{value:"all",text:""},keyword:null,blacklistAcadPlans:[]},dl=function(e){return{id:e.id,value:e.value,text:e.text}},fl=function(e,t){Xi(ol(ol({},cl),{},{type:e,text:t}))},ml=function(e){Xi(ol(ol({},sl),{},{text:e}))},pl=function(e){var t=e.value,n=e.onChange,r=e.onApply,a=e.onClean,o=function(e,r){var a=r.target.selectedOptions,o=[],i=[],l=Array.from(a,dl),c=t.locations,s=t.asuLocals;({locationsRender:function(){o=l,i=s},asuLocalsRender:function(){i=l,o=c}})["".concat(e,"Render")](),n(ol(ol({},t),{},{locations:o,asuLocals:i})),fl({locations:"location or online",asuLocals:"as local"}[e],l.map((function(e){return e.text})).join(", "))};return h.default.createElement(nl,{className:"container","data-testid":"filters"},h.default.createElement("h4",null,"Filter your results"),h.default.createElement("form",{className:"mt-3 uds-form row"},h.default.createElement("div",{className:"col-lg-4 col-md-12"},h.default.createElement(tl,{multiple:!0,id:"locations",label:"Campuses or online",selected:t.locations.map((function(e){return e.value})),options:Ko,onChange:o})),h.default.createElement("div",{className:"col-lg-4 col-md-12"},h.default.createElement(tl,{multiple:!0,id:"asuLocals",label:"ASU location, ASU Local",selected:t.asuLocals.map((function(e){return e.value})),options:Zo,onChange:o})),h.default.createElement("div",{className:"col-lg-4 col-md-12"},h.default.createElement(tl,{id:"acceleratedConcurrent",label:"Accelerated, Concurrent",selected:t.acceleratedConcurrent.value,options:Jo,onChange:function(e,r){var a=r.target.selectedOptions;n(ol(ol({},t),{},s({},e,dl(a[0])))),fl("accelerated/concurrent",dl(a[0]).text)}}))),h.default.createElement("div",{className:"hint-container"},h.default.createElement("p",null,h.default.createElement("small",null,"*CTRL + Click to select multiple"))),h.default.createElement("div",{className:"filter-action-buttons"},h.default.createElement(hr,{"data-testid":"btn-apply-filter",color:"maroon",label:"Apply filters",ariaLabel:"Apply filters",size:"default",onClick:function(){null==r||r(ol(ol({},t),{},{isActive:!0})),ml("apply filters")}}),h.default.createElement(rl,{"data-testid":"btn-clear-filters",className:"btn btn-link",onClick:function(){n(ul),null==a||a(),ml("clean filters")}},"Clear filters")))};function gl(e){var t=e.value,n=void 0===t?{}:t,r=n.isActive,a=n.locations,o=n.asuLocals,i=n.acceleratedConcurrent,l=e.onRemove,c=io("filter-"),s=(null==a?void 0:a.length)+(null==o?void 0:o.length)+(ei(i)?1:0),u=function(e,t){var n=t.text;return h.default.createElement("span",{key:c.next().value,tabIndex:-1,role:"button","aria-label":"Remove filter ".concat(n),"data-filter-id":e,onKeyDown:function(){return l(e,t)},onClick:function(){return l(e,t)},className:"btn btn-tag btn-tag-alt-white d-inline-flex align-items-center me-2"},h.default.createElement("span",{className:"pe-1"},n),h.default.createElement("i",{className:"fas fa-times"}))};return h.default.createElement("div",{"data-testid":"filters-summary"},h.default.createElement("header",null,h.default.createElement("strong",null,"Applied filters")),h.default.createElement("div",{"data-testid":"summary-filter-tags"},r&&0!==s?h.default.createElement(h.default.Fragment,null,a.map((function(e){return u("locations",e)})),o.map((function(e){return u("asuLocals",e)})),(ei(i)?[i]:[]).map((function(e){return u("acceleratedConcurrent",e)}))):h.default.createElement("span",null,"No filters applied")))}function hl(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,r)}return n}function vl(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?hl(Object(n),!0).forEach((function(t){s(e,t,n[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):hl(Object(n)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))}))}return e}pl.propTypes={value:zo,onChange:xr().func,onApply:xr().func,onClean:xr().func},gl.propTypes={value:zo,onRemove:xr().func};var yl=to.div(il||(il=m(["\n  .photo-item {\n    padding-bottom: 1.25rem;\n  }\n"]))),bl=to.section(ll||(ll=m(["\n  @media (max-width: 480px) {\n    .uds-img,\n    .uds-video-container {\n      margin: 0;\n    }\n  }\n"]))),wl=function(e){var t=e.applyNowUrl,n=e.type,r=e.title,a=e.contents,o=e.image,i=e.video,l=e.photoGrid,c={text:function(){return function(e){var t=e.applyNowUrl,n=e.title,r=e.contents,a=mi(n);return h.default.createElement("section",{className:"container","data-type":"text","data-testid":"intro-content"},h.default.createElement("div",{className:"row"},h.default.createElement("div",{className:"col-sm-12 col-md-5"},h.default.createElement(a,{className:"mt-0"},h.default.createElement("span",{className:"".concat(ro(n.cssClass))},n.text))),h.default.createElement("div",{className:"col-sm-12 col-md-7"},h.default.createElement(Ci,{contents:r}),h.default.createElement(so,{href:t}))))}({applyNowUrl:t,title:r,contents:a})},"text-media":function(){return function(e){var t=e.applyNowUrl,n=e.title,r=e.contents,a=e.image,o=e.video,i=mi(n);return h.default.createElement(bl,{className:"container","data-type":"text-media","data-testid":"intro-content"},h.default.createElement("div",{className:"row gy-3"},h.default.createElement("div",{className:"col-sm-12 col-md-5"},h.default.createElement(i,{className:"mt-0"},h.default.createElement("span",{className:"".concat(ro(n.cssClass))},n.text)),h.default.createElement(Ci,{contents:r}),h.default.createElement(so,{href:t})),h.default.createElement("div",{className:"col-sm-12 col-md-7 mt-2 mt-sm-0"},o&&h.default.createElement(wr,{type:o.type,url:o.url,vttUrl:o.vttUrl,title:o.title,className:"mt-0"}),a&&h.default.createElement("div",{className:"uds-img"},h.default.createElement("img",{src:a.url,className:"img-fluid",alt:a.altText})))))}({applyNowUrl:t,title:r,contents:a,image:o,video:i})},"text-image-overlay":function(){return function(e){var t=e.applyNowUrl,n=e.title,r=e.contents,a=e.image;return h.default.createElement("section",{className:"container","data-type":"text-image-overlay","data-testid":"intro-content"},h.default.createElement("div",{className:"row"},h.default.createElement("div",{className:"col-md-12"},h.default.createElement(Pi,{title:n.text,contents:r,image:a,contentDirection:"right",contentChildren:h.default.createElement("div",{className:"mt-2"},h.default.createElement(so,{href:t}))}))))}({applyNowUrl:t,title:r,contents:a,image:o})},"text-photo-grid":function(){return function(e){var t=e.applyNowUrl,n=e.title,r=e.contents,a=e.photoGrid,o=mi(n);return h.default.createElement("section",{className:"container","data-type":"text-photo-grid","data-testid":"intro-content"},h.default.createElement("div",{className:"row"},h.default.createElement("div",{className:"col-sm-12 col-md-5"},h.default.createElement(o,{className:"mt-0"},h.default.createElement("span",{className:"".concat(ro(n.cssClass))},n.text)),h.default.createElement(Ci,{contents:r}),h.default.createElement(so,{href:t})),h.default.createElement("div",{className:"col-sm-12 col-md-7 d-none d-sm-none d-md-block"},h.default.createElement(yl,{className:"row"},a.images.map((function(e,t){return h.default.createElement("div",{className:"photo-item col-sm-12 col-md-6 col-lg-6",key:"img-".concat(t+1)},h.default.createElement("img",{className:"mg-fluid ".concat(ro(e.cssClass)),src:e.url,alt:e.altText,style:{maxWidth:"100%"}}))}))))))}({applyNowUrl:t,title:r,contents:a,image:o,photoGrid:l})},undefined:function(){return console.error("the type '".concat(n,"' is not supported by the 'IntroContent' component.")),null}};return c[n]()};wl.propTypes={applyNowUrl:xr().string,type:xr().oneOf(["text","text-media","text-image-overlay","text-photo-grid"]).isRequired,video:xr().shape(vl({},xo)),image:xr().shape(vl({},wo)),header:Oo,title:xr().shape(vl(vl({},Eo),{},{component:xr().oneOf(qo)})),contents:xr().arrayOf(Oo),photoGrid:xr().shape({images:xr().arrayOf(Co)})};var El,xl={programs:xr().arrayOf(xr().object),totalRows:xr().number,loading:xr().bool,actionUrls:xr().shape({applyNowUrl:xr().string,majorInfoUrl:xr().string,majorInfoOnlineUrl:xr().string}),degreesPerPage:xr().number};function kl(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,r)}return n}var Cl,Ol=to.div(El||(El=m(["\n  & {\n    ul {\n      margin-top: 1.5rem;\n      margin-bottom: 0;\n      list-style: none;\n      padding: 0;\n\n      li:not(:last-child) {\n        margin-bottom: 1rem;\n      }\n    }\n  }\n  .accordion .card.card-foldable {\n    border-bottom: 1px solid #d0d0d0;\n  }\n"]))),Sl=function(e){var t,n,r=e.programs,a=e.actionUrls,o=(0,h.useContext)(Mi).state,i=null==o||null===(t=o.listPageProps)||void 0===t||null===(t=t.programList)||void 0===t?void 0:t.settings,l="graduate"===(null==o||null===(n=o.listPageProps)||void 0===n||null===(n=n.programList)||void 0===n||null===(n=n.dataSource)||void 0===n?void 0:n.program),c=r.map((function(e){var t=Gi(e);return{content:{header:t.getMajorDesc(),body:"<ul>\n        <li>\n          <strong>Major:</strong>\n          <br />\n            <a href=".concat(Vi(t,a.majorInfoUrl),">\n              ").concat(t.getMajorDesc(),"\n            </a>\n        </li>\n        <li>\n          <strong>Degree:</strong>\n          <br />").concat(t.getDegree(),"\n        </li>\n        ").concat(l?"":"<li>\n              <strong>Required Courses:</strong>\n              <br />".concat(function(){var e,n=t.isOnline()?t.getOnlineMajorMapURL():t.getGeneralDegreeMajorMap();try{var r,a=null===(r=new URL(n))||void 0===r?void 0:r.toString();e="<a href=".concat(a,">").concat(t.getRequiredCoursesLabel()," Map</a>")}catch(e){return""}return e}(),"\n            </li>"),"\n        <li>\n          <strong>Campus or location:</strong>\n          <br />").concat(t.getCampusList().map((function(e){return pi(e.campusCode)})).join(", "),"\n        </li>\n        <li>\n          <strong>Accelerated/Concurrent:</strong>\n          <br />").concat("<div>\n        ".concat(t.hasConcurrentDegrees()?"<div className='cell-container'>concurrent</div>":"","\n        ").concat(t.hasAccelerateDegrees()?'<div className="cell-container">\n                <a href='.concat(Yi(t,a.majorInfoUrl),">\n                  4+1 years\n                </a>\n              </div>"):"","\n    </div>")||"-","\n        </li>\n        ").concat(null!=i&&i.hideCollegeSchool?"":" <li>\n                  <strong>College/School:</strong>\n                  <br />\n                  <a href=".concat(t.getCollegeUrl(),">\n                    ").concat(t.getCollegeDesc(),"\n                  </a>\n                </li>"),"\n      </ul>")}}}));return h.default.createElement(Ol,{"data-testid":"accordion-view"},h.default.createElement(pr,{cards:c}))};Sl.propTypes=function(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?kl(Object(n),!0).forEach((function(t){s(e,t,n[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):kl(Object(n)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))}))}return e}({},xl);var Nl=to.section(Cl||(Cl=m(["\n  margin: auto;\n\n  .card-buttons {\n    display: flex;\n    flex-direction: row;\n    justify-content: flex-start;\n    flex-wrap: wrap;\n    gap: 1rem;\n    order: 3;\n    margin: 0 1rem 1rem;\n\n    .card-button {\n      column-gap: 0;\n      padding: 0;\n      width: fit-content;\n    }\n    .card-button .btn {\n      margin: 0;\n    }\n  }\n"])));function Al(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,r)}return n}function Tl(e){var t,n=e.programs,r=e.loading,a=e.actionUrls,o=(0,h.useContext)(Mi),i=o.defaultState,l=o.state,c=null==l||null===(t=l.listPageProps)||void 0===t||null===(t=t.programList)||void 0===t||null===(t=t.settings)||void 0===t||null===(t=t.cardDefaultImage)||void 0===t?void 0:t.url,s=i.detailPageDefault.hero.image.url,u=c||s;return h.default.createElement(Nl,{id:Go,className:"container row","data-loading":r,"data-testid":"grid-view"},n.map((function(e){var t=Gi(e);return h.default.createElement("div",{className:"col col-sm-12 col-md-4 col-lg-3 mb-2"},h.default.createElement(vr,{type:"degree",horizontal:!1,clickable:!1,image:u,imageAltText:"An example image",title:t.getMajorDesc(),linkLabel:"View Program Details",linkUrl:Vi(t,a.majorInfoUrl),buttons:[{color:"maroon",size:"small",label:"Reqeuest Info",href:""},{color:"gold",size:"small",label:"Apply",href:a.applyNowUrl}]}))})))}Tl.propTypes=function(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?Al(Object(n),!0).forEach((function(t){s(e,t,n[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):Al(Object(n)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))}))}return e}({},xl);var Pl,Rl,Ll=[{dataKey:"Major",label:"Major",className:"major",sortable:!0,contentTemplate:function(e){var t=e.resolver,n=e.rowIndex,r=e.actionUrls,a=e.onClick;return h.default.createElement("div",{className:"cell-container"},h.default.createElement("a",{href:Vi(t,null==r?void 0:r.majorInfoUrl)},t.getMajorDesc()),h.default.createElement(Ii,{dataId:"show-row-detail",ariaLabel:"".concat(t.getMajorDesc()," arrow"),ariaControls:"row-info-".concat(n),onClick:function(e){return a(n,e)}}))}},{dataKey:"Degree",label:"Degree",className:"degree",contentTemplate:function(e){var t=e.resolver;return h.default.createElement("div",{className:"cell-container"},h.default.createElement("span",null,t.getDegree()),h.default.createElement(Di,{popover:{title:t.getDegreeDesc(),body:t.getDegreeDescLong(),withAuto:!1}}))}},{dataKey:"RequiredCourses",label:"Required Courses",className:"required-course",contentTemplate:function(e){var t,n=e.resolver,r=n.isOnline()?n.getOnlineMajorMapURL():n.getGeneralDegreeMajorMap();try{var a,o=null===(a=new URL(r))||void 0===a?void 0:a.toString();t=h.default.createElement("a",{href:o},n.getRequiredCoursesLabel()," Map")}catch(e){return""}return t}},{dataKey:"Location",label:"Campus or location",className:"campus-location",sortable:!0,contentTemplate:function(e){var t=e.resolver,n=io("campus-");return h.default.createElement("div",null,t.getCampusList().map((function(e,t,r){return h.default.createElement("div",{key:n.next().value,className:"cell-container"},h.default.createElement("span",{key:e.campusCode},"".concat(pi((a=e.campusCode,(null===(o=[].concat(Ko,Zo,Jo).find((function(e){return e.value===a})))||void 0===o?void 0:o.text)||a))).concat(t<r.length-1?", ":"")),h.default.createElement("span",null,h.default.createElement(Di,{popover:{title:pi(e.campusCode),body:function(){return fetch((e.campusCode,""))},withAuto:!0}})));var a,o})))}},{dataKey:"AcceleratedConcurrent",label:"Accelerated/ Concurrent",className:"accelerated-concurrent",sortable:!0,contentTemplate:function(e){var t=e.resolver,n=e.actionUrls;return h.default.createElement("div",null,t.getConcurrentDegrees().then((function(e){return e})).length>0&&h.default.createElement("div",{className:"cell-container"},"concurrent"),t.hasConcurrentOrAccelerateDegrees()&&h.default.createElement("div",{className:"cell-container"},h.default.createElement("a",{href:Yi(t,n.majorInfoUrl)},"4+1 years"),h.default.createElement(Di,{popover:{title:"4+1 years",body:function(){return fetch((t.getAcadPlan(),""))},withAuto:!1}})))}},{dataKey:"CollegeSchool",label:"College/School",className:"college",sortable:!0,contentTemplate:function(e){var t=e.resolver;return h.default.createElement("a",{href:t.getCollegeUrl()},t.getCollegeDesc())}}],jl=Ua(Pl||(Pl=m(['\n  @keyframes loading {\n    40% {\n      background-position: 100% 0;\n    }\n    100% {\n      background-position: 100% 0;\n    }\n  }\n\n  &[data-loading="true"] {\n    td {\n      position: relative;\n\n      .bar {\n        background-color: #e7e7e7;\n        height: 14px;\n        border-radius: 7px;\n        width: 80%;\n      }\n\n      &:after {\n        position: absolute;\n        transform: translateY(-50%);\n        top: 50%;\n        left: 0;\n        content: "";\n        display: block;\n        width: 100%;\n        height: 24px;\n        background-image: linear-gradient(\n          100deg,\n          rgba(255, 255, 255, 0),\n          rgba(255, 255, 255, 0.5) 60%,\n          rgba(255, 255, 255, 0) 80%\n        );\n        background-size: 200px 24px;\n        background-position: -100px 0;\n        background-repeat: no-repeat;\n        animation: loading 1s infinite;\n      }\n    }\n  }\n']))),Dl=to.table(Rl||(Rl=m(["\n  ",'\n  --table-border-color: #e5e5e5;\n\n  background-color: #fafafa;\n  border: 1px solid var(--table-border-color);\n  border-collapse: collapse;\n  padding: 5px;\n\n  width: 100%;\n  margin: 0 auto;\n  clear: both;\n  border-spacing: 0;\n\n  a {\n    text-decoration: none;\n  }\n\n  thead {\n    background: #d0d0d0;\n    th {\n      outline: none;\n      :focus {\n        box-shadow: 0px 0px 0px 2px #fff, 0px 0px 0px 4px #191919 !important;\n      }\n    }\n  }\n\n  th,\n  td {\n    padding: 8px 12px;\n    // display: inline-block;\n  }\n\n  tr {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: baseline;\n    flex-wrap: wrap;\n\n    td {\n      vertical-align: top;\n    }\n\n    .major {\n      width: 250px;\n      a {\n        font-weight: 700;\n      }\n    }\n\n    .degree {\n      width: 75px;\n    }\n\n    .required-course {\n      width: 100px;\n    }\n\n    .campus-location {\n      width: 90px;\n      & > div {\n        width: fit-content;\n      }\n    }\n\n    .accelerated-concurrent {\n      width: 120px;\n    }\n\n    .college {\n      width: 210px;\n    }\n\n    .compare-fav {\n      // width: 180px;\n    }\n\n    .apply-info {\n      width: 168px;\n      & .btn {\n        width: fit-content;\n        :first-child {\n          margin-bottom: 0.5rem;\n        }\n      }\n    }\n  }\n\n  tbody {\n    tr {\n      border: 1px solid var(--table-border-color);\n      border-top: 0;\n\n      &:not(.row-info):hover {\n        background-color: #e8e8e8;\n      }\n\n      .info-apply .cell-container {\n        display: flex;\n        flex-direction: column;\n        align-items: flex-end;\n        gap: 0.5rem;\n      }\n\n      td .cell-container {\n        display: flex;\n        flex-direction: row;\n        justify-content: space-between;\n        gap: 0.5rem;\n      }\n    }\n\n    tr.row-info {\n      td > div {\n        position: relative;\n      }\n\n      input.togle-more-text {\n        opacity: 0;\n        position: absolute;\n        pointer-events: none;\n\n        &:checked + .desc-long {\n          max-height: fit-content;\n          overflow: auto;\n        }\n\n        &:not(:checked) + .desc-long::after {\n          content: " ";\n          height: 1rem;\n          background: rgba(250, 250, 250, 0.9);\n          box-shadow: -1px -2px 20px 15px #fafafa;\n          width: 100%;\n          position: absolute;\n          bottom: 0;\n        }\n\n        &:checked + .desc-long + .label-more-less {\n          .label-more {\n            display: none;\n          }\n          .label-less {\n            display: inline;\n          }\n        }\n\n        &:not(:checked) + .desc-long + .label-more-less {\n          .label-more {\n            display: inline;\n          }\n          .label-less {\n            display: none;\n          }\n        }\n      }\n\n      .desc-long {\n        max-height: 200px;\n        overflow: hidden;\n        transform: max-width 0.6;\n        p:last-child {\n          margin-bottom: 0;\n        }\n      }\n\n      label.label-more-less {\n        cursor: pointer;\n        line-height: normal;\n        color: #8c1d40;\n        text-align: right;\n        border: 0;\n        margin: 0;\n        font-weight: 400;\n        display: inline;\n        position: absolute;\n        bottom: 0.2rem;\n        right: -2.5rem;\n      }\n    }\n\n    tr.row-info {\n      td:first-child {\n        flex-basis: 55%;\n      }\n\n      td:last-child {\n      }\n    }\n\n    tr:not([data-is-open="true"]) + tr.row-info {\n      overflow: hidden;\n      height: 0;\n    }\n\n    tr[data-is-open="true"] + tr.row-info {\n      height: auto;\n    }\n  }\n'])),jl);function Il(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,r)}return n}var Ml,_l=io("row-"),Ul=function(e){var t,n=e.programs,r=e.totalRows,a=e.loading,o=e.actionUrls,i=h.default.useRef(null),l=h.default.useRef(null),c=(0,h.useContext)(Mi).state,s=null==c||null===(t=c.listPageProps)||void 0===t||null===(t=t.programList)||void 0===t?void 0:t.settings,u=Ll;"graduate"===c.listPageProps.programList.dataSource.program&&(u=u.filter((function(e){return"RequiredCourses"!==e.dataKey}))),null!=s&&s.hideCollegeSchool&&(u=u.filter((function(e){return"CollegeSchool"!==e.dataKey})));var d=function(e,t){var n=l.current.children;Array.prototype.forEach.call(n,(function(t,n){return n!==e&&t.setAttribute("data-is-open","false")})),l.current.children[e].setAttribute("data-is-open",String(t))};return h.default.createElement("section",{className:"container mb-4","data-testid":"list-view"},h.default.createElement(Dl,{id:Go,ref:i,"data-loading":a,title:"".concat(r," program found")},h.default.createElement("thead",null,h.default.createElement("tr",{role:"row"},u.map((function(e){var t;return h.default.createElement("th",{key:e.dataKey,tabIndex:0,className:"".concat(e.className),scope:"col","aria-label":e.ariaLabel},(null===(t=e.headerTemplate)||void 0===t?void 0:t.call(e))||h.default.createElement("span",null,e.label))})))),h.default.createElement("tbody",{ref:l,"data-testid":"program-rows"},0===n.length?h.default.createElement("tr",{role:"presentation"},h.default.createElement("td",{colSpan:u.length,"aria-label":"No result found for the filters applied"}," ")):null,n.map((function(e,t){var n=_l.next().value,r=2*t,a=Gi(e);return h.default.createElement(h.Fragment,{key:n},h.default.createElement("tr",{key:n,role:"row"},u.map((function(t){var i;return h.default.createElement("td",{key:"".concat(n,"-").concat(t.dataKey),className:"".concat(t.className)},null===(i=t.contentTemplate)||void 0===i?void 0:i.call(t,{resolver:a,col:t,row:e,rowIndex:r,onClick:d,actionUrls:o}))}))),h.default.createElement("tr",{key:"".concat(n,"-row-info"),id:"row-info-".concat(r),className:"row-info"},h.default.createElement("td",{key:"".concat(n,"-info"),colSpan:3},function(e){var t=e.resolver,n=e.id,r=(0,h.createRef)();return h.default.createElement("div",null,h.default.createElement("header",null,h.default.createElement("strong",null,"Program Description:")),h.default.createElement("input",{className:"togle-more-text",type:"checkbox",id:"#".concat(n)}),h.default.createElement("div",{className:"desc-long",id:n,dangerouslySetInnerHTML:oo(t.getFullDescription())}),h.default.createElement("label",{ref:r,className:"label-more-less element-focus",htmlFor:"#".concat(n),role:"button",tabIndex:0,onKeyDown:function(e){"Enter"===e.key&&(null==r||r.current.click())}},h.default.createElement("span",{"data-testid":"more-text",className:"label-more"},"[...more]"),h.default.createElement("span",{"data-testid":"less-text",className:"label-less"},"[...less]")))}({resolver:a,id:"".concat(n,"-more-text")})),h.default.createElement("td",{key:"".concat(n,"-extra-info"),colSpan:2},function(e){var t=e.resolver;return h.default.createElement("div",null,h.default.createElement("div",null,h.default.createElement("strong",null,"Additional Program Fee: "),t.hasAsuProgramFee()?"Yes":"No"),h.default.createElement("div",null,h.default.createElement("strong",null,"Second Language Requirement: "),t.hasAsuLangReqFlag()?"Yes":"No"),t.hasMathReqFlag()&&h.default.createElement("div",null,h.default.createElement("div",null,h.default.createElement("strong",null,"First Required Math Course:"),h.default.createElement("span",null,t.getMinMathReq()),t.getOtherMathReqCourse()&&h.default.createElement("span",{dangerouslySetInnerHTML:oo(t.getOtherMathReqCourse())}))),t.getMathIntensity()&&h.default.createElement("div",null,h.default.createElement("strong",null,"Math Intensity:"),t.getMathIntensity()))}({resolver:a}))))})))))};function Fl(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,r)}return n}function zl(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?Fl(Object(n),!0).forEach((function(t){s(e,t,n[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):Fl(Object(n)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))}))}return e}Ul.propTypes=function(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?Il(Object(n),!0).forEach((function(t){s(e,t,n[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):Il(Object(n)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))}))}return e}({},xl);var ql,Hl=eo(Ml||(Ml=m(['\n\n  .mobile-view {\n    display: none;\n  }\n  [data-view-type="list-view"] {\n    @media (max-width: 768px) {\n      .desktop-view {\n        display: none;\n      }\n      .mobile-view {\n        display: block;\n        .card-foldable .card-header h4 a {\n          color: #8c1d40;\n        }\n      }\n    }\n  }\n']))),$l=s(s({},$o,Tl),Bo,Ul);function Bl(e){var t,n=e.dataViewComponent,r=e.loading,a=e.programs,o=e.actionUrls,i=e.degreesPerPage;i?"number"!=typeof i&&(t=parseInt(i,10)):t=8;var l,c,s=i||t,u=(l=a.length,c=s,Math.floor(l/c)+(l%c>0?1:0)),d=$l[n],m=f((0,h.useState)([]),2),p=m[0],g=m[1];return(0,h.useEffect)((function(){g(a.slice(0,s))}),[a]),h.default.createElement("section",{"data-testid":"program-list","data-view-type":n},h.default.createElement(Hl,null),h.default.createElement("div",{className:"desktop-view"},h.default.createElement(d,{loading:r,programs:p,totalRows:null==a?void 0:a.length,actionUrls:o,degreesPerPage:i||t})),h.default.createElement("div",{className:"mobile-view mb-2"},h.default.createElement(Sl,{loading:r,programs:p,totalRows:null==a?void 0:a.length,actionUrls:o,degreesPerPage:i||t})),a.length>0?h.default.createElement(br,{totalNumbers:7,type:"default",background:"white",totalPages:u,onChange:function(e,t){var n=(t-1)*s,r=n+s;g(a.slice(n,r))},showFirstButton:!0,showLastButton:!0}):h.default.createElement("section",{className:"container no-space"},h.default.createElement(mo,{message:"No result found for the filters applied"})))}Bl.propTypes=zl(zl({dataViewComponent:xr().string},xl),{},{degreesPerPage:xr().number});var Gl,Wl,Vl,Yl=to.div(ql||(ql=m(['\n  label[for="search-field"] {\n    margin-bottom: 0;\n  }\n\n  &[data-searching="true"] button {\n    transform: scale(1.05);\n    box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px #191919 !important;\n  }\n']))),Kl=function(e){var t,n=e.value,r=e.onChange,a=e.onSearch,o=f((0,h.useState)(!1),2),i=o[0],l=o[1];return(0,h.useEffect)((function(){return function(){return clearTimeout(t)}}),[]),h.default.createElement(Yl,{className:"container mt-5","data-searching":i,"data-testid":"search-bar"},h.default.createElement("form",{"data-testid":"search-bar-form",className:"uds-form p-0 col-md-6 col-sm-12",onSubmit:function(e){e.preventDefault(),a(),l(!0),t=setTimeout((function(){return l(!1)}),500),clearTimeout(t)}},h.default.createElement("div",{className:"form-group mb-0 me-2"},h.default.createElement("label",{htmlFor:"search-field"},"Search"),h.default.createElement("div",{className:"d-flex row align-items-baseline g-3"},h.default.createElement("div",{className:"col-sm-12 col-md-6 align-self-end"},h.default.createElement("input",{"data-testid":"search-field",id:"search-field",value:n,type:"text",className:"form-control",placeholder:"Search degree programs",onChange:function(e){var t;r(e.target.value),t=e.target.value,Xi({event:"search",action:"type",name:"onenter",type:"search degree programs",text:t})}})),h.default.createElement("div",{className:"col-sm-12 col-md-6 mt-2 mt-sm-0"},h.default.createElement(hr,{"data-testid":"search-button",color:"maroon",label:"Search now",ariaLabel:"Search now",size:"default",onClick:a}))))))};function Xl(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,r)}return n}function Zl(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?Xl(Object(n),!0).forEach((function(t){s(e,t,n[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):Xl(Object(n)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))}))}return e}Kl.propTypes={value:xr().string,onChange:xr().func,onSearch:xr().func};var Jl=to(ji)(Gl||(Gl=m(["\n  .filter-switch-container {\n    gap: 1rem;\n  }\n  @media (max-width: 768px) {\n    & {\n      font-size: 0.9rem;\n    }\n  }\n"]))),Ql=eo(Wl||(Wl=m(["\n  @media (max-width: 480px) {\n      div[class^=uds-hero] {\n        grid-template-rows: 1fr auto auto 1.5rem auto;\n    }\n  }\n"]))),ec=to.div.attrs({className:"container"})(Vl||(Vl=m(["\n  border-bottom: 1px solid #d0d0d0;\n  margin-bottom: calc(var(--uds-dp-section-margin) / 2);\n  padding-bottom: calc(var(--uds-dp-section-margin) / 2);\n"]))),tc=function(e){e.appPathFolder;var t,n=e.actionUrls,r=e.hasSearchBar,a=void 0===r||r,o=e.hasFilters,i=void 0===o||o,c=e.hero,u=e.introContent,d=e.programList,m=e.degreesPerPage,p=f(no(),2),v=p[0],y=v.data,b=v.loading,w=v.error,E=p[1],x=f((0,h.useState)(!1),2),k=x[0],C=x[1],O=f((0,h.useState)([]),2),S=O[0],N=O[1],A=f((0,h.useState)([]),2),T=A[0],P=A[1],R=f((0,h.useState)(""),2),L=R[0],j=R[1],D=null===(t=d.settings)||void 0===t?void 0:t.defaultView,I=[Bo,$o].includes(D)?D:Bo,M=f((0,h.useState)(I),2),_=M[0],U=(M[1],fi(d.dataSource,ii)),F=(0,h.useContext)(Mi).defaultState.listingPageDefault,z=d.dataSource,q=z.collegeAcadOrg,H=z.departmentCode,$=z.showInactivePrograms,B=z.blacklistAcadPlans,G=z.program,W=z.cert,V=f((0,h.useState)(Zl({},ul)),2),Y=V[0],K=V[1],X=f((0,h.useState)(Zl({},ul)),2),Z=X[0],J=X[1];(function(e){var t=e.dataSource,n=e.tableView,r=void 0===n?[]:n,a=e.programs,o=e.stateFilters,i=t.collegeAcadOrg,l=t.departmentCode;(0,h.useEffect)((function(){if(a&&(null==(e=JSON.parse(localStorage.getItem(wi)))?void 0:e.isDebug)){var e,t="background:#eee; -webkit-text-stroke: 1px black; color: tomato; padding-left: 0.5rem;",n="font-size:24px;",c="font-size: 18px; margin-left: 0.5rem;";console.group("<< ASU Degree Page >>"),console.log("%c🏫 Listing Page Programs 📚",t+"font-size:30px;"),console.log("%cTotal programs found: ".concat(a.length),t+c),console.log("%cPrograms found",t+c),console.log(a),console.log("%cTotal programs loaded: ".concat(r.length),t+c),console.log("%cPrograms loaded",t+c),console.log(r),console.log("%cPage Filters",t+n),console.log("%c- collegeAcadOrg:".concat(i),t+c),console.log("%c- departmentCode:".concat(l),t+c),console.log("%cSearch Filters",t+n),console.log(o),console.groupEnd()}}))})({dataSource:d.dataSource,tableView:S,programs:y,stateFilters:Y}),(0,h.useEffect)((function(){"undefined"!=typeof window&&lo({packageName:"app-degree-pages",component:"ListingPage",type:"NA",configuration:{programList:d,degreesPerPage:m}})}),[]),(0,h.useEffect)((function(){E(U)}),[U]),(0,h.useEffect)((function(){var e=(y||[]).sort((function(e,t){return e.acadPlanMarketingDescription.localeCompare(t.acadPlanMarketingDescription)}));e=Ki({programs:e,filters:{collegeAcadOrg:q,departmentCode:H,blacklistAcadPlans:B,program:G,showCerts:W}}),P(e),N(e)}),[y,m]);var Q=function(){var e=l(g().mark((function e(t){var n,r,a,o,i;return g().wrap((function(e){for(;;)switch(e.prev=e.next){case 0:n=t.acceleratedConcurrent,r=t.locations,a=t.asuLocals,o=t.keyword,C(!0),E(U),i=Ki({programs:T,filters:{collegeAcadOrg:q,departmentCode:H,acceleratedConcurrent:n,locations:a.length>0?r.concat(Xo):r,keyword:o,showInactivePrograms:null!=$&&$,blacklistAcadPlans:B,program:G}}),K(Zl({},t)),J(Zl({},t)),N(i),C(!1);case 8:case"end":return e.stop()}}),e)})));return function(t){return e.apply(this,arguments)}}(),ee=function(){var e=l(g().mark((function e(){var t;return g().wrap((function(e){for(;;)switch(e.prev=e.next){case 0:t=Zl(Zl({},Z),{},{keyword:L}),Q(t);case 2:case"end":return e.stop()}}),e)})));return function(){return e.apply(this,arguments)}}(),te=function(){var e=l(g().mark((function e(t){return g().wrap((function(e){for(;;)switch(e.prev=e.next){case 0:K(t);case 1:case"end":return e.stop()}}),e)})));return function(t){return e.apply(this,arguments)}}();return h.default.createElement(h.default.Fragment,null,h.default.createElement(Li,null),h.default.createElement(Ql,null),w&&h.default.createElement(fo,{message:Wo}),null!=c&&c.hide?null:h.default.createElement("section",{"data-testid":"hero"},h.default.createElement(yr,{image:(null==c?void 0:c.image)||F.hero.image,title:Zl(Zl({text:Yo(d.dataSource),highlightColor:"gold"},null==c?void 0:c.title),{},{maxWidth:"100%"}),contents:null==c?void 0:c.contents})),h.default.createElement(Jl,{"data-is-loading":b,className:"main-section dg-margin-top"},(null==u?void 0:u.breadcrumbs)&&h.default.createElement("div",{className:"container mt-4 mb-0"},h.default.createElement(Zi,{breadcrumbs:u.breadcrumbs,section:c?c.title.text:""})),u?h.default.createElement(wl,{applyNowUrl:(null==n?void 0:n.applyNowUrl)||F.actionUrls.applyNowUrl,type:u.type,header:u.header,title:u.title,contents:u.contents,image:u.image,video:u.video,photoGrid:u.photoGrid}):null,a||i?h.default.createElement("section",{className:"no-space"},h.default.createElement(el,null),a?h.default.createElement(Kl,{value:L,onChange:j,onSearch:ee}):null,i?h.default.createElement(pl,{value:Y,onChange:te,onApply:function(e){b||k||Q(e)},onClean:function(){K(ul),J(ul),N(T),j("")}}):null,h.default.createElement(ec,null)):null,h.default.createElement("section",{className:"container"},h.default.createElement("div",{className:"d-flex justify-content-between filter-switch-container"},i?h.default.createElement(gl,{value:Z,onRemove:function(e,t){var n=t.value,r="acceleratedConcurrent"===e?Qo:Z[e].filter((function(e){return e.value!==n})),a=Zl(Zl({},Z),{},s({},e,r));Q(a)}}):null)),b||k?h.default.createElement(go,null):h.default.createElement(Bl,{dataViewComponent:_,loading:b||k,programs:S,actionUrls:n,degreesPerPage:m})))};tc.propTypes={appPathFolder:xr().string,actionUrls:xr().shape({applyNowUrl:xr().string}),hasSearchBar:xr().bool,hasFilters:xr().bool,hero:xr().shape(yr.propTypes),introContent:xr().shape(wl.propTypes),programList:xr().shape({dataSource:Ao,settings:Do}),degreesPerPage:xr().number};var nc,rc,ac=function(e){return h.default.createElement(_i,{listPageProps:e},h.default.createElement(tc,e))};ac.propTypes=tc.propTypes;var oc=to.section(nc||(nc=m(["\n  position: relative;\n  padding-top: var(--uds-dp-section-margin);\n  padding-bottom: var(--uds-dp-section-margin);\n"]))),ic=to.div(rc||(rc=m(['\n  background-image: url("https://asu.github.io/asu-unity-stack/@asu/unity-bootstrap-theme/static/media/TopoPatternWhite.529b0b3d.png");\n  background-position: center;\n  background-size: contain;\n  position: absolute;\n  top: 0;\n  left: 50%;\n  transform: translateX(-50%);\n  width: 100vw;\n  max-width: 1920px;\n  height: 100%;\n  z-index: -1;\n'])));function lc(){return h.default.createElement(oc,{className:"container",id:ti.affordingCollege.targetIdName,"data-testid":"affording-college"},h.default.createElement(ic,null),h.default.createElement("h2",null,h.default.createElement("span",{className:"highlight-gold"},"Affording college")),h.default.createElement("div",{className:"mt-2 row"},h.default.createElement("div",{className:"mt-2 col-12 col-md-6 col-lg-4"},h.default.createElement(vr,{icon:["fas","calculator"],title:"Tuition estimator",body:"The tuition estimator shows the tuition and fee breakdown for your particular major, campus and residency status without financial aid.",buttons:[{label:"Estimate tuition and fees",ariaLabel:"Estimate tuition and fees",color:"maroon",href:"https://tuition.asu.edu/cost-calculator/tuition"}]})),h.default.createElement("div",{className:"mt-2 col-12 col-md-6 col-lg-4"},h.default.createElement(vr,{icon:["fas","award"],title:"Scholarships",body:"Scholarships are a type of aid that does not need to be paid back. Some you apply for and some are automatic.",buttons:[{label:"Learn about scholarships",ariaLabel:"Learn about scholarships",color:"maroon",href:"https://scholarships.asu.edu/"}]})),h.default.createElement("div",{className:"mt-2 col-12 col-md-6 col-lg-4"},h.default.createElement(vr,{icon:["fas","hand-holding-usd"],title:"Financial aid",body:"There are many financial aid options available for students. In fact, more than 80 percent of all ASU students receive some form of financial assistance every year.",buttons:[{label:"Explore financial aid",ariaLabel:"Explore financial aid",color:"maroon",href:"https://tuition.asu.edu/financial-aid"}]}))))}var cc,sc=a(530),uc=a.n(sc),dc=to.ul(cc||(cc=m(["\n  display: inline-flex;\n  list-style: none;\n  padding: 0;\n  gap: 1rem;\n\n  @media (max-width: 768px) {\n    flex-direction: column;\n    .btn {\n      width: max-content;\n      margin-left: 0;\n      &:not(:first-child) {\n        margin-top: 1rem;\n      }\n    }\n  }\n"])));function fc(e){var t,n=e.graduateRequirements,r=e.transferRequirements,a=e.isMinorOrCertificate,o=e.additionalRequirements,i=e.minorRequirements;return t=n||a?a?"Program requirements":"Degree requirements":a?"Program requirements":"Admission requirements",h.default.createElement(h.default.Fragment,null,h.default.createElement("section",{id:ti.applicationRequirements.targetIdName,"data-testid":"application-requirements"},h.default.createElement("h2",null,h.default.createElement("span",{className:"highlight-gold"},t)),n||a?h.default.createElement("div",{dangerouslySetInnerHTML:oo(n||i)}):function(e){var t=e.transferRequirements,n=void 0===t?"":t,r=e.additionalRequirements,a=void 0===r?"":r,o=[];return null!=a&&a.trim()&&o.push({content:{header:"Additional Requirements",body:a}}),null!=n&&n.trim()&&o.push({content:{header:"Transfer Admission Requirements",body:n}}),h.default.createElement(h.default.Fragment,null,h.default.createElement("p",null,"All students are required to meet general university admission requirements"),h.default.createElement(dc,{className:uc()("",{"mb-0":0===o.length})},[{label:"Freshman",href:"https://admission.asu.edu/freshman/apply"},{label:"Transfer",href:"https://admission.asu.edu/transfer/apply"},{label:"International",href:"https://admission.asu.edu/international/undergrad-apply"},{label:"Readmission",href:"https://admission.asu.edu/undergrad/readmission"}].map((function(e){var t=e.label,n=e.href;return h.default.createElement("li",{key:t},h.default.createElement(hr,{ariaLabel:t,color:"maroon",href:n,label:t,size:"small"}))}))),o.length>0&&h.default.createElement("div",{className:"mt-2 mb-4"},h.default.createElement(pr,{cards:o,openedCard:1})))}({transferRequirements:r,additionalRequirements:o})),n||a?h.default.createElement("section",{id:ti.degreeRequirements.targetIdName,"data-testid":"degree-requirements"},h.default.createElement("h2",null,h.default.createElement("span",{className:"highlight-gold"},"Admission requirements")),h.default.createElement("div",{dangerouslySetInnerHTML:oo(o)})):null)}fc.propTypes={graduateRequirements:xr().string,transferRequirements:xr().string,isMinorOrCertificate:xr().bool,additionalRequirements:xr().string,minorRequirements:xr().string};var mc=function(e){var t=e.item,n=e.type,r=io("glance-");return h.default.createElement("li",null,h.default.createElement("i",{className:"fas fa-".concat(Ho[n].icon," fa-li")}),h.default.createElement("strong",null,Ho[n].title,": "),"object"===c(t)?t.map((function(e,n){var a=["","#"].includes(e.url)?null:e.url,o="";return n>0&&n<t.length-1&&(o=", "),n===t.length-1&&t.length>1&&(o=" or "),h.default.createElement(h.Fragment,{key:r.next().value},o,h.default.createElement("a",{href:a,rel:"noreferrer",target:"_blank"},e.text))})):t)};mc.propTypes={item:xr().oneOfType([xr().arrayOf(To),xr().string]),type:xr().string};var pc,gc=function(e){var t=e.offeredBy,n=e.locations,r=e.firstRequirementMathCourse,a=e.mathIntensity,o=e.timeCommitment;return h.default.createElement("section",{id:ti.atAGlance.targetIdName,"data-testid":"at-aglance"},h.default.createElement("h2",null,h.default.createElement("span",{className:"highlight-gold"},"At a glance: program details")),h.default.createElement("ul",{className:"uds-list fa-ul maroon pt-2 pb-0 pe-0"},t&&h.default.createElement(mc,{item:[t],type:"offeredBy"}),n&&h.default.createElement(mc,{item:n,type:"locations"}),r&&h.default.createElement(mc,{item:r,type:"firstRequirementMathCourse"}),a&&h.default.createElement(mc,{item:a,type:"mathIntensity"}),o&&h.default.createElement(mc,{item:o,type:"timeCommitment"})))};function hc(e){var t=e.image,n=e.learnMoreLink,r=e.contents,a="linear-gradient(180deg, #19191900 0%, #191919c9 100%),"+"url('".concat(t.url,"')"),o=io("attend-online-");return h.default.createElement("section",{id:ti.attendOnline.targetIdName,className:"uds-card-and-image",style:{backgroundImage:a},"data-testid":"attend-online"},h.default.createElement("div",{className:"uds-card-and-image-container"},h.default.createElement("div",{className:"card card-centered"},h.default.createElement("i",{className:"fas fa-wifi fa-2x card-icon-top"}),h.default.createElement("div",{className:"card-header"},h.default.createElement("h3",{className:"card-title"},"Attend online")),h.default.createElement("div",{className:"card-body"},r?r.map((function(e){return h.default.createElement("p",{key:o.next().value},e)})):h.default.createElement("p",null,"\nASU offers this program in an online format\n with multiple enrollment sessions throughout\n  the year. Applicants may view the program\n   description and request more information.")),h.default.createElement("div",{className:"card-button"},h.default.createElement(hr,{label:"Learn about online options",ariaLabel:"Learn about online options",href:n,color:"maroon",size:"small"})))))}gc.propTypes={offeredBy:To.isRequired,locations:xr().arrayOf(To).isRequired,firstRequirementMathCourse:xr().string.isRequired,mathIntensity:xr().string,timeCommitment:xr().string},hc.propTypes={learnMoreLink:xr().string,image:Co,contents:xr().arrayOf(xr().shape({text:xr().string}))};var vc,yc=to.section(pc||(pc=m(["\n  width: 100%;\n  & a {\n    word-break: break-word;\n  }\n"]))),bc=function(e){var t=e.contents,n=e.image;return h.default.createElement(yc,{id:ti.careerOutlook.targetIdName,"data-testid":"career-outlook"},h.default.createElement(Pi,{headingTag:"H2",title:ti.careerOutlook.text,contents:t,image:n}))};bc.propTypes=Pi.propTypes;var wc,Ec,xc=to.div(vc||(vc=m(["\n  & p:last-of-type {\n    margin-bottom: 0;\n  }\n\n  & a {\n    word-break: break-word;\n  }\n"])));function kc(e){var t=e.content;return h.default.createElement("section",{id:ti.changeMajorRequirements.targetIdName,className:"change-your-major","data-testid":"change-your-major"},h.default.createElement("h2",null,h.default.createElement("span",{className:"highlight-gold"},"Change your major requirements for current students")),h.default.createElement(xc,{dangerouslySetInnerHTML:oo(t)}))}function Cc(e){var t=e.content,n=void 0===t?"":t;return h.default.createElement("div",{"data-testid":"custom-text",className:"mt-3",dangerouslySetInnerHTML:oo(n)})}kc.propTypes={content:xr().string},Cc.propTypes={content:xr().string};var Oc,Sc="\n  width: unset !important;\n  min-width: unset !important;\n",Nc=to.i(wc||(wc=m(["\n  color: #fecc41;\n  font-size: 1.2rem;\n  ","\n"])),Sc),Ac=to.i(Ec||(Ec=m(["\n  color: #78be21;\n  ","\n"])),Sc);function Tc(e){var t=e.data;return h.default.createElement("div",{className:"uds-table mb-1"},h.default.createElement("table",null,h.default.createElement("thead",null,h.default.createElement("tr",null,h.default.createElement("th",{scope:"col"},"Career"),h.default.createElement("th",{scope:"col",className:"text-end"},"Growth*"),h.default.createElement("th",{scope:"col",className:"text-end"},"Median Salary*"))),h.default.createElement("tbody",null,null==t?void 0:t.map((function(e){return h.default.createElement("tr",{key:e.career.url},h.default.createElement("th",{scope:"row",style:{fontWeight:"normal"}},h.default.createElement("a",{href:e.career.url,target:"_blank",rel:"noreferrer"},e.career.text),e.greenOccupation&&h.default.createElement(Ac,{className:"fas fa-leaf ms-1"}),e.brightOutlook&&h.default.createElement(Nc,{className:"fas fa-sun ms-1"})),h.default.createElement("td",{className:"text-end"},+e.growth,"%"),h.default.createElement("td",{className:"text-end"},e.medianSalary||0))})))))}function Pc(e){var t=e.tableData;return h.default.createElement("section",{id:ti.exampleCareers.targetIdName,className:"container","data-testid":"example-careers"},h.default.createElement("h3",null,"Example careers"),h.default.createElement("p",null,"Example job titles and salaries listed below are not necessarily entry level, and students should take into consideration how years of experience and geographical location may affect pay scales. Some jobs also may require advanced degrees, certifications or state-specific licensure."),h.default.createElement("div",{className:"mt-4 mb-4"},h.default.createElement(Tc,{data:t}),h.default.createElement("p",null,h.default.createElement("small",null,"* Data obtained from the Occupational Information Network (O*NET) under sponsorship of the U.S. Department of Labor/Employment and Training Administration (USDOL/ETA)."))),h.default.createElement("div",{className:"d-flex"},h.default.createElement("p",{className:"me-3"},h.default.createElement(Nc,{className:"fas fa-sun me-1"}),"Bright outlook"),h.default.createElement("p",null,h.default.createElement(Ac,{className:"fas fa-leaf me-1"}),"Green occupation")))}Tc.propTypes={data:xr().arrayOf(Lo)},Pc.propTypes={tableData:xr().arrayOf(Lo)};var Rc,Lc=to.ul(Oc||(Oc=m(["\n  list-style-type: none;\n  padding-left: 0px;\n  display: flex;\n  flex-direction: column;\n  flex-wrap: wrap;\n  max-height: 320px;\n  li:not(:last-child) {\n    margin-bottom: 1rem;\n  }\n  @media (max-width: 767px) {\n    max-height: 100%;\n  }\n"]))),jc=function(e){var t=e.id,n=e.title,r=e.links;return h.default.createElement("div",{id:t,className:"mt-4"},h.default.createElement("h3",null,n),h.default.createElement("p",null,"This program allows students to obtain both a bachelor's and master's degree in as little as five years. It is offered as an accelerated bachelor's and master's degree with:"),h.default.createElement(Lc,{className:"mt-3 mb-3"},r.map((function(e,t){return h.default.createElement("li",{key:"".concat(e.title,"-").concat(t)},h.default.createElement("a",{href:e.url,target:"_blank",rel:"noreferrer"},e.title))}))),h.default.createElement("p",{className:"mb-0"},"Acceptance to the graduate program requires a separate application. During their junior year, eligible students will be advised by their academic departments to apply."))};function Dc(e){var t=e.acceleratedLinks,n=e.concurrentLinks;return h.default.createElement("section",{id:ti.flexibleDegreeOptions.targetIdName,className:"container","data-testid":"flexible-degree-options"},h.default.createElement("h2",null,h.default.createElement("span",{className:"highlight-gold"},"Flexible degree options")),!!t.length&&h.default.createElement(jc,{id:ti.flexibleDegreeOptions.acceleratedId,title:"Accelerated program options",links:t}),!!n.length&&h.default.createElement(jc,{id:ti.flexibleDegreeOptions.concurrentId,title:"Concurrent degree program",links:n}))}jc.propTypes={id:xr().string,title:xr().string,links:Ro},Dc.propTypes={acceleratedLinks:Ro,concurrentLinks:Ro};var Ic=to.section(Rc||(Rc=m(["\n  width: 100%;\n  & a {\n    word-break: break-word;\n  }\n"]))),Mc=function(e){var t=e.contents,n=e.image;return h.default.createElement(Ic,{id:ti.globalOpportunity.targetIdName,"data-testid":"global-opportunity"},h.default.createElement(Pi,{headingTag:"H2",title:ti.globalOpportunity.text,contents:t,image:n}))};function _c(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,r)}return n}Mc.propTypes=Pi.propTypes;var Uc=function(e){var t=e.url,n=e.altText;return h.default.createElement("div",{className:"uds-img pt-3 pb-3","data-testid":"intro-image"},h.default.createElement("img",{src:t,className:"img-fluid",alt:n}))};Uc.propTypes=function(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?_c(Object(n),!0).forEach((function(t){s(e,t,n[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):_c(Object(n)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))}))}return e}({},wo);var Fc,zc=function(e,t){if("youtube"!==e)return t;var n=t.match(/^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/);return n&&11===n[7].length?"https://www.youtube.com/embed/".concat(n[7]):t};function qc(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,r)}return n}var Hc,$c=to.div(Fc||(Fc=m(["\n  .uds-video-container {\n    margin: 0;\n    margin-top: 1.5rem;\n    margin-bottom: 1.5rem;\n  }\n"]))),Bc=function(e){var t=e.type,n=e.url,r=e.vttUrl,a=e.title;return h.default.createElement($c,{"data-testid":"intro-video"},h.default.createElement(wr,{type:t,url:zc(t,n),vttUrl:r,title:a,controls:!0}))};function Gc(e){var t=e.contents,n=void 0===t?[]:t;return h.default.createElement("div",{"data-testid":"market-text"},n.map((function(e,t){return h.default.createElement("div",{key:"content-".concat(t+1),className:"mt-3 ".concat(ro(e.cssClass)),dangerouslySetInnerHTML:oo(e.text)})})))}function Wc(e){var t,n,r,a,o,i,l,c,s,u,d,f,m,p,g,v,y,b,w,E,x,k,C,O,S=e.cards,N=e.defaultCards;return h.default.createElement("section",{className:"container",id:ti.nextSteps.targetIdName,"data-testid":"next-steps"},h.default.createElement("h2",null,"Next steps to attend ASU"),h.default.createElement("div",{className:"mt-2 row"},h.default.createElement("div",{className:"mt-2 col-12 col-md-6 col-lg-4"},h.default.createElement(vr,{icon:null!==(t=null==S||null===(n=S.learnMore)||void 0===n?void 0:n.icon)&&void 0!==t?t:N.learnMore.icon,title:null!==(r=null==S||null===(a=S.learnMore)||void 0===a?void 0:a.title)&&void 0!==r?r:N.learnMore.title,body:null!==(o=null==S||null===(i=S.learnMore)||void 0===i?void 0:i.content)&&void 0!==o?o:N.learnMore.content,buttons:[null!==(l=null==S||null===(c=S.learnMore)||void 0===c?void 0:c.buttonLink)&&void 0!==l?l:N.learnMore.buttonLink]})),h.default.createElement("div",{className:"mt-2 col-12 col-md-6 col-lg-4"},h.default.createElement(vr,{icon:null!==(s=null==S||null===(u=S.apply)||void 0===u?void 0:u.icon)&&void 0!==s?s:N.apply.icon,title:null!==(d=null==S||null===(f=S.apply)||void 0===f?void 0:f.title)&&void 0!==d?d:N.apply.title,body:null!==(m=null==S||null===(p=S.apply)||void 0===p?void 0:p.content)&&void 0!==m?m:N.apply.content,buttons:[null!==(g=null==S||null===(v=S.apply)||void 0===v?void 0:v.buttonLink)&&void 0!==g?g:N.apply.buttonLink]})),h.default.createElement("div",{className:"mt-2 col-12 col-md-6 col-lg-4"},h.default.createElement(vr,{icon:null!==(y=null==S||null===(b=S.visit)||void 0===b?void 0:b.icon)&&void 0!==y?y:N.visit.icon,title:null!==(w=null==S||null===(E=S.visit)||void 0===E?void 0:E.title)&&void 0!==w?w:N.visit.title,body:null!==(x=null==S||null===(k=S.visit)||void 0===k?void 0:k.content)&&void 0!==x?x:N.visit.content,buttons:[null!==(C=null==S||null===(O=S.visit)||void 0===O?void 0:O.buttonLink)&&void 0!==C?C:N.visit.buttonLink]}))))}function Vc(e){var t=e.content,n=void 0===t?"":t;return h.default.createElement("section",{className:"container","data-testid":"professional-licensure"},h.default.createElement("h3",null,"Professional licensure"),h.default.createElement("p",{dangerouslySetInnerHTML:oo(n)}))}function Yc(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,r)}return n}function Kc(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?Yc(Object(n),!0).forEach((function(t){s(e,t,n[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):Yc(Object(n)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))}))}return e}Bc.propTypes=function(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?qc(Object(n),!0).forEach((function(t){s(e,t,n[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):qc(Object(n)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))}))}return e}({},xo),Gc.propTypes={contents:xr().arrayOf(Oo)},Wc.propTypes={cards:xr().shape({learnMore:Po,apply:Po,visit:Po}),defaultCards:xr().shape({learnMore:Po,apply:Po,visit:Po})},Vc.propTypes={content:xr().node};var Xc={event:"link",action:"click",name:"onclick",type:"internal link",region:"main content",section:"Program contact information"},Zc=to.ul(Hc||(Hc=m(["\n  list-style: none;\n  margin-left: 0rem;\n  padding-left: 0rem;\n\n  & li {\n    display: flex;\n    align-items: center;\n    :not(:first-child) {\n      display: flex;\n      padding-bottom: 0.5rem;\n    }\n\n    :first-child div {\n      display: flex;\n    }\n\n    :nth-of-type(2) {\n      padding-bottom: 2rem;\n    }\n\n    > div {\n      display: flex;\n      align-items: center;\n    }\n\n    .c-icon,\n    i {\n      font-size: 1rem;\n      margin-right: 0.5rem;\n    }\n\n    .office-loc {\n      margin-left: 1.5rem;\n    }\n  }\n"])));function Jc(e){var t=e.department,n=e.asuOfficeLoc,r=e.email,a=e.phone;return h.default.createElement("section",{id:ti.programContactInfo.targetIdName,"data-testid":"program-contact-info"},h.default.createElement("h2",null,h.default.createElement("span",{className:"highlight-gold"},"Program contact information")),h.default.createElement("p",null,"If you have questions related to admission, please fill out the request information form above and an admission specialist will contact you directly. For questions regarding faculty or courses, please use the contact information below."),h.default.createElement(Zc,{className:"text-maroon"},h.default.createElement("li",null,h.default.createElement("div",null,h.default.createElement("i",{className:"c-icon fas icon-small fa-map-marker-alt",title:"Department  Address"}),h.default.createElement("a",{href:t.url,onClick:function(){return Xi(Kc(Kc({},Xc),{},{text:t.text}))}},t.text))),h.default.createElement("li",null,h.default.createElement("div",{className:"c-icon text-dark office-loc"},n)),h.default.createElement("li",null,h.default.createElement("i",{className:"c-icon fas icon-small fa-envelope",title:"Email"}),h.default.createElement("a",{href:"mailto:".concat(r.url||r.text),onClick:function(){return Xi(Kc(Kc({},Xc),{},{text:r.text}))}},r.text)),h.default.createElement("li",null,h.default.createElement("i",{className:"c-icon fas icon-small fa-phone",title:"Phone"}),h.default.createElement("a",{href:"tel:".concat(a),onClick:function(){return Xi(Kc(Kc({},Xc),{},{text:a}))}},a))))}function Qc(e){var t=e.content,n=e.stemOptText,r=e.programNotFound;return h.default.createElement("div",{"data-testid":"program-description"},h.default.createElement("h2",null,r?"Program not found":"Program description"),h.default.createElement("div",{"data-testid":"program-description-body",dangerouslySetInnerHTML:oo(t)}),n&&h.default.createElement(h.default.Fragment,null,h.default.createElement("p",null,h.default.createElement("strong",null,"STEM-OPT for international students on F-1 visas")),h.default.createElement("div",{"data-testid":"stem-opt-text",dangerouslySetInnerHTML:oo(n)})))}Jc.propTypes={department:No,asuOfficeLoc:xr().string,email:No,phone:xr().string},Qc.propTypes={content:xr().string,stemOptText:xr().string,programNotFound:xr().bool};var es="View major map";function ts(e){var t=e.onlineMajorMapURL,n=void 0===t?"":t,r=e.majorMapOnCampusURL,a=void 0===r?"":r,o=e.subPlnMajorMaps,i=void 0===o?[]:o,l=e.subPlns,c=void 0===l?[]:l,s=function(e,t,n){e&&n.push({href:e,text:t})},u=[],d=[];i.forEach((function(e){var t,n,r=(t=e.acadSubPlanCode,(n=c.find((function(e){return e.acadSubPlanCode===t})))?n.description:""),a="".concat("View major map -"," ").concat(r);s(e.url,a,u)})),a&&s(a,es,u),n&&s(n,es,d);var f=function(e,t){return h.default.createElement(h.default.Fragment,null,h.default.createElement("h5",null,e),h.default.createElement("ul",{className:"mb-3"},t.map((function(e){return h.default.createElement("li",{key:e.href},h.default.createElement("a",{href:e.href},e.text))}))))};return null!=i&&i.length||n||a?h.default.createElement("section",{className:"container ps-0","data-testid":"required-course"},h.default.createElement("h4",null,"Required courses (major map)"),u.length>0&&f("On-campus students",u),d.length>0&&f("Online students",d),h.default.createElement("div",{className:"mt-3"},h.default.createElement("strong",null,"What if:")," See how your courses can be applied to another major and find out how to ",h.default.createElement("a",{href:"https://changemajor.apps.asu.edu/"},"change your major"))):h.default.createElement("div",null)}ts.propTypes={onlineMajorMapURL:xr().string,majorMapOnCampusURL:xr().string,subPlnMajorMaps:xr().arrayOf(xr().shape({campus:xr().string,acadSubPlanCode:xr().string,defaultFlag:xr().bool,url:xr().string})),subPlns:xr().arrayOf(xr().shape({acadSubPlanCode:xr().string,description:xr().string}))};var ns=function(e){var t,n,r,a,o,i,l,c,s,u,d,f,m,p,g,v,y,b,w,E,x,k,C,O,S,N,A,T,P,R,L,j,D,I,M,_,U,F,z,q,H,$,B,G,W,V,Y,K,X,Z,J,Q,ee,te,ne,re,ae,oe,ie,le,ce=e.sectionIntroText,se=e.cards,ue=e.defaultCards;return h.default.createElement("section",{id:ti.whyChooseAsu.targetIdName,className:"container","data-testid":"why-choose-asu"},h.default.createElement("h2",null,"Why choose ASU"),h.default.createElement("div",{dangerouslySetInnerHTML:oo(ce)}),h.default.createElement("div",{className:"mt-2 row"},h.default.createElement("div",{className:"mt-2 col-12 col-md-6 col-lg-4"},h.default.createElement(vr,{image:null!==(t=null==se||null===(n=se.faculty)||void 0===n||null===(n=n.image)||void 0===n?void 0:n.url)&&void 0!==t?t:ue.faculty.image.url,imageAltText:null!==(r=null==se||null===(a=se.faculty)||void 0===a||null===(a=a.image)||void 0===a?void 0:a.altText)&&void 0!==r?r:ue.faculty.image.altText,title:null!==(o=null==se||null===(i=se.faculty)||void 0===i?void 0:i.title)&&void 0!==o?o:ue.faculty.title,body:null!==(l=null==se||null===(c=se.faculty)||void 0===c?void 0:c.text)&&void 0!==l?l:ue.faculty.text,buttons:[null!==(s=null==se||null===(u=se.faculty)||void 0===u?void 0:u.button)&&void 0!==s?s:ue.faculty.button]})),h.default.createElement("div",{className:"mt-2 col-12 col-md-6 col-lg-4"},h.default.createElement(vr,{image:null!==(d=null==se||null===(f=se.programs)||void 0===f||null===(f=f.image)||void 0===f?void 0:f.url)&&void 0!==d?d:ue.programs.image.url,imageAltText:null!==(m=null==se||null===(p=se.programs)||void 0===p||null===(p=p.image)||void 0===p?void 0:p.altText)&&void 0!==m?m:ue.programs.image.altText,title:null!==(g=null==se||null===(v=se.programs)||void 0===v?void 0:v.title)&&void 0!==g?g:ue.programs.title,body:null!==(y=null==se||null===(b=se.programs)||void 0===b?void 0:b.text)&&void 0!==y?y:ue.programs.text,buttons:[null!==(w=null==se||null===(E=se.programs)||void 0===E?void 0:E.button)&&void 0!==w?w:ue.programs.button]})),h.default.createElement("div",{className:"mt-2 col-12 col-md-6 col-lg-4"},h.default.createElement(vr,{image:null!==(x=null==se||null===(k=se.research)||void 0===k||null===(k=k.image)||void 0===k?void 0:k.url)&&void 0!==x?x:ue.research.image.url,imageAltText:null!==(C=null==se||null===(O=se.research)||void 0===O||null===(O=O.image)||void 0===O?void 0:O.altText)&&void 0!==C?C:ue.research.image.altText,title:null!==(S=null==se||null===(N=se.research)||void 0===N?void 0:N.title)&&void 0!==S?S:ue.research.title,body:null!==(A=null==se||null===(T=se.research)||void 0===T?void 0:T.text)&&void 0!==A?A:ue.research.text,buttons:[null!==(P=null==se||null===(R=se.research)||void 0===R?void 0:R.button)&&void 0!==P?P:ue.research.button]})),h.default.createElement("div",{className:"mt-2 col-12 col-md-6 col-lg-4"},h.default.createElement(vr,{image:null!==(L=null==se||null===(j=se.inclusion)||void 0===j||null===(j=j.image)||void 0===j?void 0:j.url)&&void 0!==L?L:ue.inclusion.image.url,imageAltText:null!==(D=null==se||null===(I=se.inclusion)||void 0===I||null===(I=I.image)||void 0===I?void 0:I.altText)&&void 0!==D?D:ue.inclusion.image.altText,title:null!==(M=null==se||null===(_=se.inclusion)||void 0===_?void 0:_.title)&&void 0!==M?M:ue.inclusion.title,body:null!==(U=null==se||null===(F=se.inclusion)||void 0===F?void 0:F.text)&&void 0!==U?U:ue.inclusion.text,buttons:[null!==(z=null==se||null===(q=se.inclusion)||void 0===q?void 0:q.button)&&void 0!==z?z:ue.inclusion.button]})),h.default.createElement("div",{className:"mt-2 col-12 col-md-6 col-lg-4"},h.default.createElement(vr,{image:null!==(H=null==se||null===($=se.mentors)||void 0===$||null===($=$.image)||void 0===$?void 0:$.url)&&void 0!==H?H:ue.mentors.image.url,imageAltText:null!==(B=null==se||null===(G=se.mentors)||void 0===G||null===(G=G.image)||void 0===G?void 0:G.altText)&&void 0!==B?B:ue.mentors.image.altText,title:null!==(W=null==se||null===(V=se.mentors)||void 0===V?void 0:V.title)&&void 0!==W?W:ue.mentors.title,body:null!==(Y=null==se||null===(K=se.mentors)||void 0===K?void 0:K.text)&&void 0!==Y?Y:ue.mentors.text,buttons:[null!==(X=null==se||null===(Z=se.mentors)||void 0===Z?void 0:Z.button)&&void 0!==X?X:ue.mentors.button]})),h.default.createElement("div",{className:"mt-2 col-12 col-md-6 col-lg-4"},h.default.createElement(vr,{image:null!==(J=null==se||null===(Q=se.honors)||void 0===Q||null===(Q=Q.image)||void 0===Q?void 0:Q.url)&&void 0!==J?J:ue.honors.image.url,imageAltText:null!==(ee=null==se||null===(te=se.honors)||void 0===te||null===(te=te.image)||void 0===te?void 0:te.altText)&&void 0!==ee?ee:ue.honors.image.altText,title:null!==(ne=null==se||null===(re=se.honors)||void 0===re?void 0:re.title)&&void 0!==ne?ne:ue.honors.title,body:null!==(ae=null==se||null===(oe=se.honors)||void 0===oe?void 0:oe.text)&&void 0!==ae?ae:ue.honors.text,buttons:[null!==(ie=null==se||null===(le=se.honors)||void 0===le?void 0:le.button)&&void 0!==ie?ie:ue.honors.button]}))))};function rs(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var r=Object.getOwnPropertySymbols(e);t&&(r=r.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,r)}return n}function as(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?rs(Object(n),!0).forEach((function(t){s(e,t,n[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):rs(Object(n)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))}))}return e}ns.propTypes=Uo;var os=function(e){e.appPathFolder;var t,n,r,a,o=e.dataSource,i=e.anchorMenu,l=e.hero,c=e.introContent,u=e.atAGlance,d=e.applicationRequirements,m=e.changeMajorRequirements,p=e.affordingCollege,g=e.flexibleDegreeOptions,v=e.careerOutlook,y=e.exampleCareers,b=e.globalOpportunity,w=e.attendOnline,E=e.programContactInfo,x=e.nextSteps,k=e.whyChooseAsu,C=f(no(),2),O=C[0],S=O.data,N=O.loading,A=O.error,T=C[1],P=f((0,h.useState)(Gi({})),2),R=P[0],L=P[1],j=f((0,h.useState)({accelerateData:[],concurrentData:[]}),2),D=j[0],I=j[1],M=fi(o,li),_=(0,h.useContext)(Mi).defaultState.detailPageDefault;(0,h.useEffect)((function(){"undefined"!=typeof window&&lo({packageName:"app-degree-pages",component:"DetailPage",type:"NA",configuration:{dataSource:o}})}),[]),(0,h.useEffect)((function(){T(M)}),[M]),(0,h.useEffect)((function(){if(S){var e=Gi(S);L(e),e.hasConcurrentOrAccelerateDegrees()&&(t=[e.getAccelerateDegrees(),e.getConcurrentDegrees()],n=I,Promise.all(t).then((function(e){var t=e[0],r=e[1];n({accelerateData:t,concurrentData:r})})).catch((function(){n({accelerateData:[],concurrentData:[]})})))}var t,n}),[S]);var U,F=function(e,t){var n=function(e){for(var t=1;t<arguments.length;t++){var n=null!=arguments[t]?arguments[t]:{};t%2?Fi(Object(n),!0).forEach((function(t){s(e,t,n[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(n)):Fi(Object(n)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(n,t))}))}return e}({},e);return n.globalOpportunity&&!t.getGlobalExp()&&(n.globalOpportunity=!1),n.careerOutlook&&!t.getAsuCareerOpportunity()&&(n.careerOutlook=!1),n.attendOnline&&!t.getCurriculumUrl()&&(n.attendOnline=!1),n}(i,R);return h.default.createElement(h.default.Fragment,null,h.default.createElement(Li,null),A&&h.default.createElement(fo,{message:Wo}),!(null!=l&&l.hide)&&h.default.createElement("section",null,h.default.createElement(yr,{image:(null==l?void 0:l.image)||_.hero.image,title:as(as({},_.hero.title),{},{text:R.getMajorDesc()},null==l?void 0:l.title),contents:null==l?void 0:l.contents})),!N&&function(e){var t,n=Object.values(e).filter((function(e){return!0===e}));return(null==e||null===(t=e.externalAnchors)||void 0===t?void 0:t.length)>0||n.length>0}(F)&&h.default.createElement(ai,{anchorMenu:F}),h.default.createElement(ji,{as:"div","data-is-loading":N,className:"main-section"},N&&h.default.createElement(go,null),!N&&(null!=S&&S.error?h.default.createElement("section",{className:"container mt-4 mb-0"},h.default.createElement(Qc,{content:"This degree is not found.\n  This may be a temporary issue. Please try again in 5 minutes.\n  If the issue persists, the degree may no longer be available.",programNotFound:!0})):h.default.createElement("section",{className:"container mt-4 mb-0"},(null==c?void 0:c.breadcrumbs)&&h.default.createElement("div",{className:"row col-12"},h.default.createElement(Zi,{breadcrumbs:c.breadcrumbs,section:l?l.title.text:R.getMajorDesc()})),h.default.createElement("div",{className:"row flex-column-reverse flex-sm-row"},h.default.createElement("div",{className:"col col-sm-12 col-md-7 col-lg-7"},h.default.createElement("section",{className:"intro"},!R.isValidActiveProgram()&&h.default.createElement(Cc,{content:R.getAsuCustomText()}),!(null!=c&&c.hideMarketText)&&((null==c?void 0:c.contents)||R.getMarketText())&&h.default.createElement(Gc,{contents:(null==c?void 0:c.contents)||[{text:R.getMarketText()}]}),!(null!=c&&c.hideProgramDesc)&&h.default.createElement(Qc,{content:R.getFullDescription(),stemOptText:R.getStemOptText()})),!(null!=u&&u.hide)&&h.default.createElement(gc,{offeredBy:(null==u?void 0:u.offeredBy)||{text:R.getCollegeDesc(),url:R.getCollegeUrl()},locations:(null==u?void 0:u.locations)||Wi(R),firstRequirementMathCourse:(null==u?void 0:u.firstRequirementMathCourse)||R.getMinMathReq(),mathIntensity:(null==u?void 0:u.mathIntensity)||R.getMathIntensity()}),!(null!=c&&c.hideRequiredCourses)&&!R.isMinorOrCertificate()&&h.default.createElement(ts,{onlineMajorMapURL:R.getOnlineMajorMapURL(),majorMapOnCampusURL:R.getGeneralDegreeMajorMap(),subPlnMajorMaps:R.getSubPlnMajorMaps(),subPlns:R.getSubPln()}),!(null!=d&&d.hide)&&h.default.createElement(fc,{graduateRequirements:R.isGradProgram()?R.getGraduateRequirements():null,isMinorOrCertificate:R.isMinorOrCertificate(),minorRequirements:R.getMinorCourseRequirements(),additionalRequirements:R.getAdmissionsRequirementsText(),transferRequirements:R.getTransferAdmission()}),!(null!=m&&m.hide)&&!R.isMinorOrCertificate()&&!R.isGradProgram()&&h.default.createElement(kc,{content:R.getChangeMajor()})),h.default.createElement("div",{className:"col col-sm-12 col-md-5 col-lg-5"},(null==c?void 0:c.video)&&h.default.createElement(Bc,{type:c.video.type,url:c.video.url,vttUrl:c.video.vttUrl,title:c.video.title}),!(null!=c&&c.video)&&h.default.createElement(Uc,{url:(null==c||null===(t=c.image)||void 0===t?void 0:t.url)||_.introContent.image.url,altText:(null==c||null===(n=c.image)||void 0===n?void 0:n.altText)||_.introContent.image.altText}))),h.default.createElement("div",{className:"row"},!(null!=x&&x.hide)&&!R.isMinorOrCertificate()&&h.default.createElement(Wc,{cards:null==x?void 0:x.cards,defaultCards:_.nextSteps.cards}),!(null!=p&&p.hide)&&h.default.createElement(lc,null),!(null!=g&&g.hide)&&R.hasConcurrentOrAccelerateDegrees()&&h.default.createElement(Dc,{acceleratedLinks:ci(D.accelerateData),concurrentLinks:ci(D.concurrentData)}),!(null!=v&&v.hide)&&R.getAsuCareerOpportunity()&&h.default.createElement(bc,{image:(null==v?void 0:v.image)||_.careerOutlook.image,contents:[{text:R.getAsuCareerOpportunity()}]}),!(null!=y&&y.hide)&&R.hasCareerData()&&h.default.createElement(Pc,{tableData:(U=R.getCareerData(),null==U?void 0:U.map((function(e){return{career:{text:e.alternateTitle,url:"".concat("https://degrees.apps.asu.edu","/career-details/").concat(e.onetCode)},growth:e.growth,medianSalary:e.salary.toLocaleString("en-US",{style:"currency",currency:"USD",maximumFractionDigits:0}),brightOutlook:!!e.brightOutlook,greenOccupation:!!e.green}})))}),R.getProfessionalLicensureText()&&h.default.createElement(Vc,{content:R.getProfessionalLicensureText()}),!(null!=b&&b.hide)&&R.getGlobalExp()&&h.default.createElement(Mc,{contents:[{text:R.getGlobalExp()}],image:(null==b?void 0:b.image)||_.globalOpportunity.image}),!(null!=k&&k.hide)&&h.default.createElement(ns,{sectionIntroText:(null==k?void 0:k.sectionIntroText)||_.whyChooseAsu.sectionIntroText,cards:null==k?void 0:k.cards,defaultCards:_.whyChooseAsu.cards}),!(null!=w&&w.hide)&&R.isOnline()&&h.default.createElement(hc,{learnMoreLink:R.getCurriculumUrl(),image:(null==w?void 0:w.image)||_.attendOnline.image})),!(null!=E&&E.hide)&&h.default.createElement("div",{className:"row"},h.default.createElement("div",{className:"col col-sm-12 col-md-6 col-lg-6 "},h.default.createElement(Jc,{department:{text:R.getDepartmentName(),url:(null==E||null===(r=E.department)||void 0===r?void 0:r.url)||R.getPlanUrl()},email:{text:R.getEmailAddress(),url:(null==E||null===(a=E.email)||void 0===a?void 0:a.url)||R.getEmailAddress()},asuOfficeLoc:R.getAsuOfficeLoc(),phone:R.getPhone()})))))))};os.propTypes={appPathFolder:xr().string,dataSource:Ao,anchorMenu:xr().shape(Io),hero:xr().shape(yr.propTypes),introContent:xr().shape({hideMarketText:xr().bool,hideProgramDesc:xr().bool,hideRequiredCourses:xr().bool,breadcrumbs:(0,Er.arrayOf)(No),contents:(0,Er.arrayOf)(xr().object),video:So,image:Co}),atAGlance:xr().shape({hide:xr().bool,offeredBy:No,locations:(0,Er.arrayOf)(No),firstRequirementMathCourse:xr().string,mathIntensity:xr().string,timeCommitment:xr().string}),applicationRequirements:xr().shape({hide:xr().bool}),changeMajorRequirements:xr().shape({hide:xr().bool}),affordingCollege:xr().shape({hide:xr().bool}),flexibleDegreeOptions:xr().shape({hide:xr().bool}),careerOutlook:xr().shape({hide:xr().bool,image:Co}),exampleCareers:xr().shape({hide:xr().bool}),globalOpportunity:xr().shape({hide:xr().bool,image:Co}),attendOnline:xr().shape({hide:xr().bool,image:Co}),programContactInfo:xr().shape({hide:xr().bool,department:xr().string,email:xr().string}),nextSteps:xr().shape({hide:xr().bool,cards:xr().arrayOf(Po)}),whyChooseAsu:xr().shape(Uo)};var is=function(e){return h.default.createElement(_i,{detailPageProps:e},h.default.createElement(os,e))};is.propTypes=os.propTypes;var ls=function(e,t,n){var r=document.querySelector(n);b.default.render(h.default.createElement(e,t),r)},cs=function(e){var t=e.targetSelector,n=e.props;ls(ac,n,t)},ss=function(e){var t=e.targetSelector,n=e.props;ls(is,n,t)},us=o.Pg,ds=o.G6,fs=o.M_,ms=o.TG;export{us as DetailPage,ds as ListingPage,fs as initListingPage,ms as initProgramDetailPage};
+`;
+l.object, l.bool, l.bool, l.func.isRequired;
+const _p = Vs(function(e, t) {
+  const {
+    id: r,
+    selected: n,
+    title: a,
+    selectTab: s,
+    leftKeyPressed: d,
+    rightKeyPressed: f,
+    icon: h,
+    gaData: m
+  } = e, C = Ir(null);
+  eu(
+    t,
+    () => ({
+      focus() {
+        C.current.focus();
+      },
+      scrollIntoView() {
+        var O, U, E, S, I, F, $;
+        const X = ((O = C.current) == null ? void 0 : O.offsetWidth) / 2 + C.current.offsetLeft, G = ((E = (U = C.current) == null ? void 0 : U.offsetParent) == null ? void 0 : E.scrollLeft) + ((I = (S = C.current) == null ? void 0 : S.offsetParent) == null ? void 0 : I.offsetWidth) / 2;
+        ($ = (F = C.current) == null ? void 0 : F.offsetParent) == null || $.scrollBy({
+          left: X - G
+        });
+      }
+    }),
+    []
+  );
+  const _ = (O) => {
+    O.keyCode === 37 ? (O.preventDefault(), d()) : O.keyCode === 39 && (O.preventDefault(), f());
+  };
+  return /* @__PURE__ */ H.jsx(Zr, { gaData: { ...m, text: a }, children: /* @__PURE__ */ H.jsxs(
+    "a",
+    {
+      ref: C,
+      className: `nav-item nav-link ${n ? "active" : ""}`,
+      id: r,
+      href: `#nav-${r}`,
+      role: "tab",
+      "aria-controls": `nav-${r}`,
+      "aria-selected": n,
+      onClick: (O) => s(O, r, a),
+      onKeyDown: _,
+      tabIndex: n ? "" : "-1",
+      children: [
+        a,
+        " ",
+        h && /* @__PURE__ */ H.jsx("i", { className: `${h == null ? void 0 : h[0]} fa-${h == null ? void 0 : h[1]} me-1` })
+      ]
+    }
+  ) });
+});
+_p.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  gaData: l.object,
+  id: l.string.isRequired,
+  selected: l.bool.isRequired,
+  title: l.string.isRequired,
+  selectTab: l.func.isRequired,
+  leftKeyPressed: l.func.isRequired,
+  rightKeyPressed: l.func.isRequired,
+  icon: l.arrayOf(l.string)
+};
+l.string.isRequired, l.string, l.bool, l.oneOfType([l.array, l.element]);
+l.string, l.arrayOf(l.element).isRequired, l.string, l.func;
+l.shape({
+  title: l.string,
+  content: l.string,
+  cite: l.shape({
+    name: l.string,
+    description: l.string
+  })
+}).isRequired, l.string, l.string, l.shape({
+  containerCssClass: l.arrayOf(l.string),
+  titleCssClass: l.arrayOf(l.string),
+  contentCssClass: l.arrayOf(l.string)
+});
+const Ep = {
+  name: "onclick",
+  event: "link",
+  action: "click",
+  type: "internal link",
+  region: "main content",
+  text: "play button"
+}, jp = ({
+  url: e = "",
+  vttUrl: t,
+  caption: r,
+  title: n = "",
+  className: a,
+  controls: s = !0
+}) => {
+  const d = Ir(null);
+  return /* @__PURE__ */ H.jsxs(
+    "div",
+    {
+      className: dt(`uds-video-container ${a}`, {
+        "uds-video-with-caption": r
+      }),
+      children: [
+        /* @__PURE__ */ H.jsx("div", { className: "uds-video-player", children: /* @__PURE__ */ H.jsx(Zr, { gaData: { ...Ep, section: n }, children: /* @__PURE__ */ H.jsxs(
+          "video",
+          {
+            ref: d,
+            title: n,
+            playsInline: !0,
+            controls: s || !0,
+            children: [
+              /* @__PURE__ */ H.jsx("source", { src: e }),
+              /* @__PURE__ */ H.jsx(
+                "track",
+                {
+                  src: t,
+                  kind: "captions",
+                  srcLang: "en",
+                  label: "english_captions"
+                }
+              )
+            ]
+          }
+        ) }) }),
+        r && /* @__PURE__ */ H.jsx("figure", { "data-testid": "video-caption", children: /* @__PURE__ */ H.jsx("figcaption", { children: r }) })
+      ]
+    }
+  );
+}, Op = ({ title: e = "", caption: t, url: r = "", className: n }) => /* @__PURE__ */ H.jsxs(
+  "div",
+  {
+    className: dt(`uds-video-container ${n}`, {
+      "uds-video-with-caption": t
+    }),
+    children: [
+      /* @__PURE__ */ H.jsx("div", { className: "uds-video-player youtube-video", children: /* @__PURE__ */ H.jsx("iframe", { title: e, src: r }) }),
+      t && /* @__PURE__ */ H.jsx("figure", { "data-testid": "video-caption", children: /* @__PURE__ */ H.jsx("figcaption", { children: t }) })
+    ]
+  }
+), Qi = (e) => {
+  const {
+    type: t = "video",
+    url: r = "",
+    vttUrl: n,
+    title: a = "",
+    caption: s,
+    className: d,
+    controls: f = !0
+  } = e;
+  return t === "youtube" ? Op({ url: r, title: a, caption: s, className: d }) : jp({
+    url: r,
+    vttUrl: n,
+    title: a,
+    caption: s,
+    className: d,
+    controls: f
+  });
+};
+Qi.propTypes = {
+  type: l.oneOf(["video", "youtube"]),
+  url: l.string,
+  vttUrl: l.string,
+  title: l.string,
+  className: l.string,
+  caption: l.string,
+  controls: l.bool
+};
+l.oneOfType([
+  l.element,
+  l.arrayOf(l.element)
+]).isRequired;
+l.number.isRequired;
+l.arrayOf(l.string).isRequired, l.func;
+l.func;
+l.func;
+l.arrayOf(l.element);
+l.element, l.func;
+l.arrayOf(l.object);
+var Np = !1;
+try {
+  var ds = Object.defineProperty({}, "passive", {
+    get: function() {
+      Np = !0;
+    }
+  });
+  window.addEventListener("testPassive", null, ds), window.removeEventListener("testPassive", null, ds);
+} catch {
+}
+l.number, l.string, l.string, l.arrayOf(l.object).isRequired, l.string, l.func, l.string, l.string, l.func, l.bool, l.bool, l.bool, l.bool, l.bool, l.bool, l.bool, l.bool;
+l.string.isRequired, l.arrayOf(
+  l.shape({
+    title: l.string.isRequired,
+    content: l.string,
+    eventLocation: l.string,
+    eventTime: l.string,
+    image: l.string,
+    imageAltText: l.string,
+    buttons: gt.propTypes.buttons,
+    linkLabel: l.string,
+    linkUrl: l.string,
+    tags: gt.propTypes.tags
+  })
+).isRequired, gt.propTypes.type, gt.propTypes.eventFormat, gt.propTypes.horizontal, l.string, l.string, l.bool;
+l.number.isRequired, l.arrayOf(l.object).isRequired, l.string, l.string, l.bool;
+const xa = {
+  imageItems: l.arrayOf(
+    l.shape({
+      id: l.number,
+      imageSource: l.string,
+      thumbnailSource: l.string,
+      imageAltText: l.string,
+      content: l.oneOfType([l.string, l.element])
+    })
+  ),
+  hasContent: l.bool
+};
+l.string, xa.imageItems, xa.hasContent;
+xa.imageItems.isRequired, xa.hasContent, l.string, l.string, l.bool;
+l.arrayOf(
+  l.shape({
+    title: l.string,
+    content: l.string,
+    cite: l.shape({
+      name: l.string,
+      description: l.string
+    })
+  })
+).isRequired, l.shape({
+  containerCssClass: l.arrayOf(l.string),
+  titleCssClass: l.arrayOf(l.string),
+  contentCssClass: l.arrayOf(l.string)
+}), l.string, l.string, l.bool, l.bool, l.bool;
+var ps = Xs;
+ps.createRoot, ps.hydrateRoot;
+(function() {
+  var e = `@charset "UTF-8";.glide{position:relative;width:100%;box-sizing:border-box}.glide *{box-sizing:inherit}.glide__track{overflow:hidden}.glide__slides{position:relative;width:100%;list-style:none;backface-visibility:hidden;transform-style:preserve-3d;touch-action:pan-Y;overflow:hidden;margin:0;padding:0;white-space:nowrap;display:flex;flex-wrap:nowrap;will-change:transform}.glide__slides--dragging{-webkit-user-select:none;user-select:none}.glide__slide{width:100%;height:100%;flex-shrink:0;white-space:normal;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent}.glide__slide a{-webkit-user-select:none;user-select:none;-webkit-user-drag:none;-moz-user-select:none;-ms-user-select:none}.glide__arrows,.glide__bullets{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}.glide--rtl{direction:rtl}@media only screen and (min-width: 1260px){.container .aligned-carousel{margin-left:-124px!important}}.glide{display:flex;flex-direction:column;gap:32px;position:relative}[data-image-auto-size=true] .glide__slides .glide__slide{height:auto;position:relative;display:inline-flex;justify-content:center}[data-image-auto-size=true] .glide__slides .glide__slide>div.uds-img{display:flex;width:100%;max-width:100%}[data-image-auto-size=true] .glide__slides .glide__slide>div.uds-img img{flex-grow:1;object-fit:cover}[data-image-auto-size=true] .glide__slides .glide__slide>div.uds-img img.uds-img{max-width:100%}[data-image-auto-size=true] .glide__slides .glide__slide>div.uds-img figure.uds-figure{display:flex;justify-content:space-between;flex-direction:column}.glide .glide__track{position:relative}.glide .glide__track .glide__slides{margin-bottom:0;touch-action:auto}.glide .glide__track .glide__slides .glide__slide .card{width:100%}@media only screen and (min-width: 576px){.glide[data-has-shadow=true] .glide__track.slider-start:after{background:linear-gradient(to left,#19191933,48px,#fff0 96px);content:" ";height:100%;position:absolute;pointer-events:none;width:100%;top:0}.glide[data-has-shadow=true] .glide__track.slider-mid:after{background:linear-gradient(to right,#19191933,48px,#fff0 96px),linear-gradient(to left,#19191933,48px,#fff0 96px);content:" ";height:100%;position:absolute;pointer-events:none;width:100%;top:0}.glide[data-has-shadow=true] .glide__track.slider-end:after{background:linear-gradient(to right,#19191933,48px,#fff0 96px);content:" ";height:100%;position:absolute;pointer-events:none;width:100%;top:0}}.glide__arrows{z-index:2;align-self:center}.glide__arrows .glide__arrow{color:#191919;width:4rem;height:4rem;margin:0 .75rem;background-color:#e8e8e8;border:1px solid #d0d0d0;border-radius:50%;font-size:1.3rem;text-shadow:0 .25em .5em rgba(0,0,0,.1);opacity:1;cursor:pointer;transition:opacity .15s ease,border .3s ease-in-out;line-height:1}.glide__arrows .glide__arrow.glide__arrow--disabled{color:#e8e8e8;background-color:#fafafa;border:1px solid #e8e8e8;opacity:1}.glide__arrows .glide__arrow:focus{outline:none}.glide__arrows .glide__arrow:hover{border-color:#fff}.glide__arrows .glide__arrow--left{left:2em}.glide__arrows .glide__arrow--right{right:2em}.glide__arrows .glide__arrow--disabled{opacity:.33}.glide__bullets{z-index:2;list-style:none;max-width:100%;display:flex;justify-content:center}.glide__bullet{transition:all .3s ease-in-out;background-color:#d0d0d0;width:1rem;height:1rem;padding:0;border-radius:50%;border:2px solid transparent;cursor:pointer;line-height:0;margin:.375rem}.glide__bullet:focus{outline:none}.glide__bullet:hover,.glide__bullet:focus{border:1px solid #d0d0d0;background-color:#191919}.glide__bullet--active{background-color:#191919}.glide.aligned-carousel{width:1448px;margin:auto}.glide.image-gallery{gap:0;overflow:hidden}.glide.image-gallery .glide__track{border:1px solid #d0d0d0}.glide.image-gallery .glide__track:after{content:none}.glide.image-gallery .glide__track .glide__slides{margin-bottom:0;height:100%}.glide.image-gallery .glide__track .glide__slides li.glide__slide{display:list-item}.glide.image-gallery .glide__track .glide__slides .glide__slide>div.uds-img{height:100%}.glide.image-gallery .glide__track .glide__slides .glide__slide>div.uds-img img{object-fit:cover;border:none}.glide.image-gallery .image-gallery-action-area{border:1px solid #d0d0d0;border-top:0}.glide.image-gallery .image-gallery-action-area[data-has-content=true] .image-navigator{border-bottom:1px solid #d0d0d0}.glide.image-gallery .image-gallery-action-area[data-has-content=true] .uds-caption-text{padding:1rem 0;display:inline-block}.glide.image-gallery .image-gallery-action-area[data-has-content=true] .uds-caption-text>div{height:auto!important}.glide.image-gallery figcaption{padding:0 .75rem;font-size:.75rem}.glide.image-gallery .image-navigator{position:relative}.glide.image-gallery .image-navigator .image-navigator-images{min-height:64px;padding-top:1rem;padding-bottom:1rem;width:100%;margin:auto;overflow:hidden}.glide.image-gallery .image-navigator .image-navigator-images.slider-start:after{background:linear-gradient(to left,#19191933,48px,#fff0 96px);content:" ";height:100%;position:absolute;pointer-events:none;width:100%;top:0}.glide.image-gallery .image-navigator .image-navigator-images.slider-mid:after{background:linear-gradient(to right,#19191933,48px,#fff0 96px),linear-gradient(to left,#19191933,48px,#fff0 96px);content:" ";height:100%;position:absolute;pointer-events:none;width:100%;top:0}.glide.image-gallery .image-navigator .image-navigator-images.slider-end:after{background:linear-gradient(to right,#19191933,48px,#fff0 96px);content:" ";height:100%;position:absolute;pointer-events:none;width:100%;top:0}.glide.image-gallery .image-navigator .image-navigator-images .navigation-slider{position:relative;left:0}.glide.image-gallery .image-navigator .image-navigator-images .navigation-slider .glide__bullets{position:relative}.glide.image-gallery .image-navigator .image-navigator-images .navigation-slider .glide__bullets .bullet-image-container{position:relative;margin:0 .5rem;height:48px;border:0;padding:0}.glide.image-gallery .image-navigator .image-navigator-images .navigation-slider .glide__bullets .bullet-image-container:first-child{margin-left:16rem}.glide.image-gallery .image-navigator .image-navigator-images .navigation-slider .glide__bullets .bullet-image-container .bullet-image{flex-basis:auto;width:88px;height:100%;border-radius:0;border:0;z-index:2;object-fit:cover;margin:0}.glide.image-gallery .image-navigator .image-navigator-images .navigation-slider .glide__bullets .bullet-image-container:focus{box-shadow:0 0 0 2px #fff,0 0 0 4px #191919!important}.glide.image-gallery .image-navigator .image-navigator-images .navigation-slider .glide__bullets .glide__bullet--active{background-color:transparent;border:5px solid #ffc627}.glide.image-gallery .image-navigator .glide__arrows{width:100%;display:flex;justify-content:space-between;align-items:center}.glide.image-gallery .image-navigator .glide__arrows .glide__arrow{width:2.5rem;height:2.5rem;display:flex;align-items:center;justify-content:center;z-index:3;position:absolute;background-color:#fff}.glide.image-gallery .image-navigator .glide__arrows .glide__arrow:hover{border-color:#d0d0d0}.glide.image-gallery .image-navigator .glide__arrows .glide__arrow .arrow-icon{font-size:1rem}.glide.image-gallery .image-navigator .glide__arrows .glide__arrow.glide__arrow--prev{left:0}.glide.image-gallery .image-navigator .glide__arrows .glide__arrow.glide__arrow--next{right:0}@media only screen and (max-width: 576px){.glide{gap:21px}.glide:not(.glide.image-gallery) .glide__bullets{display:none}.glide.image-gallery{width:100%;margin:auto!important}.glide.image-gallery .image-navigator .image-navigator-images .glide__arrows .glide__arrow{display:none}}@media only screen and (max-width: 1260px){.glide.aligned-carousel{width:100%}}.glide--swipeable{cursor:grab;cursor:-moz-grab;cursor:-webkit-grab}.glide--dragging{cursor:grabbing;cursor:-moz-grabbing;cursor:-webkit-grabbing}.glide[data-remove-side-background=true]:after,.glide[data-remove-side-background=true]:before{content:none}.glide button:focus,.glide a:focus,.glide input:focus,.glide textarea:focus,.glide select:focus{outline:none!important;box-shadow:0 0 0 2px #fff,0 0 0 4px #191919!important}.glide.image-gallery,.glide.image-carousel{margin:auto}.glide.image-gallery[role=figure],.glide.image-gallery figure.uds-figure,.glide.image-carousel[role=figure],.glide.image-carousel figure.uds-figure{margin:0}.glide.image-gallery[role=figure] figcaption *,.glide.image-gallery[role=figure] .uds-caption-text,.glide.image-gallery figure.uds-figure figcaption *,.glide.image-gallery figure.uds-figure .uds-caption-text,.glide.image-carousel[role=figure] figcaption *,.glide.image-carousel[role=figure] .uds-caption-text,.glide.image-carousel figure.uds-figure figcaption *,.glide.image-carousel figure.uds-figure .uds-caption-text{color:#191919;max-width:100%}
+`, t = document.createElement("style");
+  t.type = "text/css", t.styleSheet ? t.styleSheet.cssText = e : t.appendChild(document.createTextNode(e)), document.head.appendChild(t);
+})();
+var Sl = { exports: {} }, Qa, fs;
+function Rp() {
+  if (fs) return Qa;
+  fs = 1;
+  var e = "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED";
+  return Qa = e, Qa;
+}
+var ei, hs;
+function Ip() {
+  if (hs) return ei;
+  hs = 1;
+  var e = Rp();
+  function t() {
+  }
+  function r() {
+  }
+  return r.resetWarningCache = t, ei = function() {
+    function n(d, f, h, m, C, _) {
+      if (_ !== e) {
+        var O = new Error(
+          "Calling PropTypes validators directly is not supported by the `prop-types` package. Use PropTypes.checkPropTypes() to call them. Read more at http://fb.me/use-check-prop-types"
+        );
+        throw O.name = "Invariant Violation", O;
+      }
+    }
+    n.isRequired = n;
+    function a() {
+      return n;
+    }
+    var s = {
+      array: n,
+      bigint: n,
+      bool: n,
+      func: n,
+      number: n,
+      object: n,
+      string: n,
+      symbol: n,
+      any: n,
+      arrayOf: a,
+      element: n,
+      elementType: n,
+      instanceOf: a,
+      node: n,
+      objectOf: a,
+      oneOf: a,
+      oneOfType: a,
+      shape: a,
+      exact: a,
+      checkPropTypes: r,
+      resetWarningCache: t
+    };
+    return s.PropTypes = s, s;
+  }, ei;
+}
+Sl.exports = Ip()();
+var da = Sl.exports;
+const A = /* @__PURE__ */ Ui(da);
+var kl = { exports: {} }, Je = {};
+var ms;
+function Dp() {
+  if (ms) return Je;
+  ms = 1;
+  var e = Symbol.for("react.transitional.element"), t = Symbol.for("react.portal"), r = Symbol.for("react.fragment"), n = Symbol.for("react.strict_mode"), a = Symbol.for("react.profiler"), s = Symbol.for("react.consumer"), d = Symbol.for("react.context"), f = Symbol.for("react.forward_ref"), h = Symbol.for("react.suspense"), m = Symbol.for("react.suspense_list"), C = Symbol.for("react.memo"), _ = Symbol.for("react.lazy"), O = Symbol.for("react.offscreen"), U = Symbol.for("react.client.reference");
+  function E(S) {
+    if (typeof S == "object" && S !== null) {
+      var I = S.$$typeof;
+      switch (I) {
+        case e:
+          switch (S = S.type, S) {
+            case r:
+            case a:
+            case n:
+            case h:
+            case m:
+              return S;
+            default:
+              switch (S = S && S.$$typeof, S) {
+                case d:
+                case f:
+                case _:
+                case C:
+                  return S;
+                case s:
+                  return S;
+                default:
+                  return I;
+              }
+          }
+        case t:
+          return I;
+      }
+    }
+  }
+  return Je.ContextConsumer = s, Je.ContextProvider = d, Je.Element = e, Je.ForwardRef = f, Je.Fragment = r, Je.Lazy = _, Je.Memo = C, Je.Portal = t, Je.Profiler = a, Je.StrictMode = n, Je.Suspense = h, Je.SuspenseList = m, Je.isContextConsumer = function(S) {
+    return E(S) === s;
+  }, Je.isContextProvider = function(S) {
+    return E(S) === d;
+  }, Je.isElement = function(S) {
+    return typeof S == "object" && S !== null && S.$$typeof === e;
+  }, Je.isForwardRef = function(S) {
+    return E(S) === f;
+  }, Je.isFragment = function(S) {
+    return E(S) === r;
+  }, Je.isLazy = function(S) {
+    return E(S) === _;
+  }, Je.isMemo = function(S) {
+    return E(S) === C;
+  }, Je.isPortal = function(S) {
+    return E(S) === t;
+  }, Je.isProfiler = function(S) {
+    return E(S) === a;
+  }, Je.isStrictMode = function(S) {
+    return E(S) === n;
+  }, Je.isSuspense = function(S) {
+    return E(S) === h;
+  }, Je.isSuspenseList = function(S) {
+    return E(S) === m;
+  }, Je.isValidElementType = function(S) {
+    return typeof S == "string" || typeof S == "function" || S === r || S === a || S === n || S === h || S === m || S === O || typeof S == "object" && S !== null && (S.$$typeof === _ || S.$$typeof === C || S.$$typeof === d || S.$$typeof === s || S.$$typeof === f || S.$$typeof === U || S.getModuleId !== void 0);
+  }, Je.typeOf = E, Je;
+}
+kl.exports = Dp();
+var eo = kl.exports;
+function Pp(e) {
+  function t(B, R, z, q, v) {
+    for (var Y = 0, j = 0, ie = 0, re = 0, ee, K, se = 0, he = 0, ne, de = ne = ee = 0, ae = 0, ye = 0, Ue = 0, me = 0, nt = z.length, Xe = nt - 1, we, J = "", pe = "", at = "", et = "", Me; ae < nt; ) {
+      if (K = z.charCodeAt(ae), ae === Xe && j + re + ie + Y !== 0 && (j !== 0 && (K = j === 47 ? 10 : 47), re = ie = Y = 0, nt++, Xe++), j + re + ie + Y === 0) {
+        if (ae === Xe && (0 < ye && (J = J.replace(O, "")), 0 < J.trim().length)) {
+          switch (K) {
+            case 32:
+            case 9:
+            case 59:
+            case 13:
+            case 10:
+              break;
+            default:
+              J += z.charAt(ae);
+          }
+          K = 59;
+        }
+        switch (K) {
+          case 123:
+            for (J = J.trim(), ee = J.charCodeAt(0), ne = 1, me = ++ae; ae < nt; ) {
+              switch (K = z.charCodeAt(ae)) {
+                case 123:
+                  ne++;
+                  break;
+                case 125:
+                  ne--;
+                  break;
+                case 47:
+                  switch (K = z.charCodeAt(ae + 1)) {
+                    case 42:
+                    case 47:
+                      e: {
+                        for (de = ae + 1; de < Xe; ++de)
+                          switch (z.charCodeAt(de)) {
+                            case 47:
+                              if (K === 42 && z.charCodeAt(de - 1) === 42 && ae + 2 !== de) {
+                                ae = de + 1;
+                                break e;
+                              }
+                              break;
+                            case 10:
+                              if (K === 47) {
+                                ae = de + 1;
+                                break e;
+                              }
+                          }
+                        ae = de;
+                      }
+                  }
+                  break;
+                case 91:
+                  K++;
+                case 40:
+                  K++;
+                case 34:
+                case 39:
+                  for (; ae++ < Xe && z.charCodeAt(ae) !== K; )
+                    ;
+              }
+              if (ne === 0) break;
+              ae++;
+            }
+            switch (ne = z.substring(me, ae), ee === 0 && (ee = (J = J.replace(_, "").trim()).charCodeAt(0)), ee) {
+              case 64:
+                switch (0 < ye && (J = J.replace(O, "")), K = J.charCodeAt(1), K) {
+                  case 100:
+                  case 109:
+                  case 115:
+                  case 45:
+                    ye = R;
+                    break;
+                  default:
+                    ye = He;
+                }
+                if (ne = t(R, ye, ne, K, v + 1), me = ne.length, 0 < _e && (ye = r(He, J, Ue), Me = f(3, ne, ye, R, ue, fe, me, K, v, q), J = ye.join(""), Me !== void 0 && (me = (ne = Me.trim()).length) === 0 && (K = 0, ne = "")), 0 < me) switch (K) {
+                  case 115:
+                    J = J.replace(oe, d);
+                  case 100:
+                  case 109:
+                  case 45:
+                    ne = J + "{" + ne + "}";
+                    break;
+                  case 107:
+                    J = J.replace($, "$1 $2"), ne = J + "{" + ne + "}", ne = ge === 1 || ge === 2 && s("@" + ne, 3) ? "@-webkit-" + ne + "@" + ne : "@" + ne;
+                    break;
+                  default:
+                    ne = J + ne, q === 112 && (ne = (pe += ne, ""));
+                }
+                else ne = "";
+                break;
+              default:
+                ne = t(R, r(R, J, Ue), ne, q, v + 1);
+            }
+            at += ne, ne = Ue = ye = de = ee = 0, J = "", K = z.charCodeAt(++ae);
+            break;
+          case 125:
+          case 59:
+            if (J = (0 < ye ? J.replace(O, "") : J).trim(), 1 < (me = J.length)) switch (de === 0 && (ee = J.charCodeAt(0), ee === 45 || 96 < ee && 123 > ee) && (me = (J = J.replace(" ", ":")).length), 0 < _e && (Me = f(1, J, R, B, ue, fe, pe.length, q, v, q)) !== void 0 && (me = (J = Me.trim()).length) === 0 && (J = "\0\0"), ee = J.charCodeAt(0), K = J.charCodeAt(1), ee) {
+              case 0:
+                break;
+              case 64:
+                if (K === 105 || K === 99) {
+                  et += J + z.charAt(ae);
+                  break;
+                }
+              default:
+                J.charCodeAt(me - 1) !== 58 && (pe += a(J, ee, K, J.charCodeAt(2)));
+            }
+            Ue = ye = de = ee = 0, J = "", K = z.charCodeAt(++ae);
+        }
+      }
+      switch (K) {
+        case 13:
+        case 10:
+          j === 47 ? j = 0 : 1 + ee === 0 && q !== 107 && 0 < J.length && (ye = 1, J += "\0"), 0 < _e * We && f(0, J, R, B, ue, fe, pe.length, q, v, q), fe = 1, ue++;
+          break;
+        case 59:
+        case 125:
+          if (j + re + ie + Y === 0) {
+            fe++;
+            break;
+          }
+        default:
+          switch (fe++, we = z.charAt(ae), K) {
+            case 9:
+            case 32:
+              if (re + Y + j === 0) switch (se) {
+                case 44:
+                case 58:
+                case 9:
+                case 32:
+                  we = "";
+                  break;
+                default:
+                  K !== 32 && (we = " ");
+              }
+              break;
+            case 0:
+              we = "\\0";
+              break;
+            case 12:
+              we = "\\f";
+              break;
+            case 11:
+              we = "\\v";
+              break;
+            case 38:
+              re + j + Y === 0 && (ye = Ue = 1, we = "\f" + we);
+              break;
+            case 108:
+              if (re + j + Y + Ce === 0 && 0 < de) switch (ae - de) {
+                case 2:
+                  se === 112 && z.charCodeAt(ae - 3) === 58 && (Ce = se);
+                case 8:
+                  he === 111 && (Ce = he);
+              }
+              break;
+            case 58:
+              re + j + Y === 0 && (de = ae);
+              break;
+            case 44:
+              j + ie + re + Y === 0 && (ye = 1, we += "\r");
+              break;
+            case 34:
+            case 39:
+              j === 0 && (re = re === K ? 0 : re === 0 ? K : re);
+              break;
+            case 91:
+              re + j + ie === 0 && Y++;
+              break;
+            case 93:
+              re + j + ie === 0 && Y--;
+              break;
+            case 41:
+              re + j + Y === 0 && ie--;
+              break;
+            case 40:
+              if (re + j + Y === 0) {
+                if (ee === 0) switch (2 * se + 3 * he) {
+                  case 533:
+                    break;
+                  default:
+                    ee = 1;
+                }
+                ie++;
+              }
+              break;
+            case 64:
+              j + ie + re + Y + de + ne === 0 && (ne = 1);
+              break;
+            case 42:
+            case 47:
+              if (!(0 < re + Y + ie)) switch (j) {
+                case 0:
+                  switch (2 * K + 3 * z.charCodeAt(ae + 1)) {
+                    case 235:
+                      j = 47;
+                      break;
+                    case 220:
+                      me = ae, j = 42;
+                  }
+                  break;
+                case 42:
+                  K === 47 && se === 42 && me + 2 !== ae && (z.charCodeAt(me + 2) === 33 && (pe += z.substring(me, ae + 1)), we = "", j = 0);
+              }
+          }
+          j === 0 && (J += we);
+      }
+      he = se, se = K, ae++;
+    }
+    if (me = pe.length, 0 < me) {
+      if (ye = R, 0 < _e && (Me = f(2, pe, ye, B, ue, fe, me, q, v, q), Me !== void 0 && (pe = Me).length === 0)) return et + pe + at;
+      if (pe = ye.join(",") + "{" + pe + "}", ge * Ce !== 0) {
+        switch (ge !== 2 || s(pe, 2) || (Ce = 0), Ce) {
+          case 111:
+            pe = pe.replace(G, ":-moz-$1") + pe;
+            break;
+          case 112:
+            pe = pe.replace(X, "::-webkit-input-$1") + pe.replace(X, "::-moz-$1") + pe.replace(X, ":-ms-input-$1") + pe;
+        }
+        Ce = 0;
+      }
+    }
+    return et + pe + at;
+  }
+  function r(B, R, z) {
+    var q = R.trim().split(I);
+    R = q;
+    var v = q.length, Y = B.length;
+    switch (Y) {
+      case 0:
+      case 1:
+        var j = 0;
+        for (B = Y === 0 ? "" : B[0] + " "; j < v; ++j)
+          R[j] = n(B, R[j], z).trim();
+        break;
+      default:
+        var ie = j = 0;
+        for (R = []; j < v; ++j)
+          for (var re = 0; re < Y; ++re)
+            R[ie++] = n(B[re] + " ", q[j], z).trim();
+    }
+    return R;
+  }
+  function n(B, R, z) {
+    var q = R.charCodeAt(0);
+    switch (33 > q && (q = (R = R.trim()).charCodeAt(0)), q) {
+      case 38:
+        return R.replace(F, "$1" + B.trim());
+      case 58:
+        return B.trim() + R.replace(F, "$1" + B.trim());
+      default:
+        if (0 < 1 * z && 0 < R.indexOf("\f")) return R.replace(F, (B.charCodeAt(0) === 58 ? "" : "$1") + B.trim());
+    }
+    return B + R;
+  }
+  function a(B, R, z, q) {
+    var v = B + ";", Y = 2 * R + 3 * z + 4 * q;
+    if (Y === 944) {
+      B = v.indexOf(":", 9) + 1;
+      var j = v.substring(B, v.length - 1).trim();
+      return j = v.substring(0, B).trim() + j + ";", ge === 1 || ge === 2 && s(j, 1) ? "-webkit-" + j + j : j;
+    }
+    if (ge === 0 || ge === 2 && !s(v, 1)) return v;
+    switch (Y) {
+      case 1015:
+        return v.charCodeAt(10) === 97 ? "-webkit-" + v + v : v;
+      case 951:
+        return v.charCodeAt(3) === 116 ? "-webkit-" + v + v : v;
+      case 963:
+        return v.charCodeAt(5) === 110 ? "-webkit-" + v + v : v;
+      case 1009:
+        if (v.charCodeAt(4) !== 100) break;
+      case 969:
+      case 942:
+        return "-webkit-" + v + v;
+      case 978:
+        return "-webkit-" + v + "-moz-" + v + v;
+      case 1019:
+      case 983:
+        return "-webkit-" + v + "-moz-" + v + "-ms-" + v + v;
+      case 883:
+        if (v.charCodeAt(8) === 45) return "-webkit-" + v + v;
+        if (0 < v.indexOf("image-set(", 11)) return v.replace(De, "$1-webkit-$2") + v;
+        break;
+      case 932:
+        if (v.charCodeAt(4) === 45) switch (v.charCodeAt(5)) {
+          case 103:
+            return "-webkit-box-" + v.replace("-grow", "") + "-webkit-" + v + "-ms-" + v.replace("grow", "positive") + v;
+          case 115:
+            return "-webkit-" + v + "-ms-" + v.replace("shrink", "negative") + v;
+          case 98:
+            return "-webkit-" + v + "-ms-" + v.replace("basis", "preferred-size") + v;
+        }
+        return "-webkit-" + v + "-ms-" + v + v;
+      case 964:
+        return "-webkit-" + v + "-ms-flex-" + v + v;
+      case 1023:
+        if (v.charCodeAt(8) !== 99) break;
+        return j = v.substring(v.indexOf(":", 15)).replace("flex-", "").replace("space-between", "justify"), "-webkit-box-pack" + j + "-webkit-" + v + "-ms-flex-pack" + j + v;
+      case 1005:
+        return E.test(v) ? v.replace(U, ":-webkit-") + v.replace(U, ":-moz-") + v : v;
+      case 1e3:
+        switch (j = v.substring(13).trim(), R = j.indexOf("-") + 1, j.charCodeAt(0) + j.charCodeAt(R)) {
+          case 226:
+            j = v.replace(T, "tb");
+            break;
+          case 232:
+            j = v.replace(T, "tb-rl");
+            break;
+          case 220:
+            j = v.replace(T, "lr");
+            break;
+          default:
+            return v;
+        }
+        return "-webkit-" + v + "-ms-" + j + v;
+      case 1017:
+        if (v.indexOf("sticky", 9) === -1) break;
+      case 975:
+        switch (R = (v = B).length - 10, j = (v.charCodeAt(R) === 33 ? v.substring(0, R) : v).substring(B.indexOf(":", 7) + 1).trim(), Y = j.charCodeAt(0) + (j.charCodeAt(7) | 0)) {
+          case 203:
+            if (111 > j.charCodeAt(8)) break;
+          case 115:
+            v = v.replace(j, "-webkit-" + j) + ";" + v;
+            break;
+          case 207:
+          case 102:
+            v = v.replace(j, "-webkit-" + (102 < Y ? "inline-" : "") + "box") + ";" + v.replace(j, "-webkit-" + j) + ";" + v.replace(j, "-ms-" + j + "box") + ";" + v;
+        }
+        return v + ";";
+      case 938:
+        if (v.charCodeAt(5) === 45) switch (v.charCodeAt(6)) {
+          case 105:
+            return j = v.replace("-items", ""), "-webkit-" + v + "-webkit-box-" + j + "-ms-flex-" + j + v;
+          case 115:
+            return "-webkit-" + v + "-ms-flex-item-" + v.replace(Se, "") + v;
+          default:
+            return "-webkit-" + v + "-ms-flex-line-pack" + v.replace("align-content", "").replace(Se, "") + v;
+        }
+        break;
+      case 973:
+      case 989:
+        if (v.charCodeAt(3) !== 45 || v.charCodeAt(4) === 122) break;
+      case 931:
+      case 953:
+        if ($e.test(B) === !0) return (j = B.substring(B.indexOf(":") + 1)).charCodeAt(0) === 115 ? a(B.replace("stretch", "fill-available"), R, z, q).replace(":fill-available", ":stretch") : v.replace(j, "-webkit-" + j) + v.replace(j, "-moz-" + j.replace("fill-", "")) + v;
+        break;
+      case 962:
+        if (v = "-webkit-" + v + (v.charCodeAt(5) === 102 ? "-ms-" + v : "") + v, z + q === 211 && v.charCodeAt(13) === 105 && 0 < v.indexOf("transform", 10)) return v.substring(0, v.indexOf(";", 27) + 1).replace(S, "$1-webkit-$2") + v;
+    }
+    return v;
+  }
+  function s(B, R) {
+    var z = B.indexOf(R === 1 ? ":" : "{"), q = B.substring(0, R !== 3 ? z : 10);
+    return z = B.substring(z + 1, B.length - 1), Fe(R !== 2 ? q : q.replace(Ie, "$1"), z, R);
+  }
+  function d(B, R) {
+    var z = a(R, R.charCodeAt(0), R.charCodeAt(1), R.charCodeAt(2));
+    return z !== R + ";" ? z.replace(ce, " or ($1)").substring(4) : "(" + R + ")";
+  }
+  function f(B, R, z, q, v, Y, j, ie, re, ee) {
+    for (var K = 0, se = R, he; K < _e; ++K)
+      switch (he = Ae[K].call(C, B, se, z, q, v, Y, j, ie, re, ee)) {
+        case void 0:
+        case !1:
+        case !0:
+        case null:
+          break;
+        default:
+          se = he;
+      }
+    if (se !== R) return se;
+  }
+  function h(B) {
+    switch (B) {
+      case void 0:
+      case null:
+        _e = Ae.length = 0;
+        break;
+      default:
+        if (typeof B == "function") Ae[_e++] = B;
+        else if (typeof B == "object") for (var R = 0, z = B.length; R < z; ++R)
+          h(B[R]);
+        else We = !!B | 0;
+    }
+    return h;
+  }
+  function m(B) {
+    return B = B.prefix, B !== void 0 && (Fe = null, B ? typeof B != "function" ? ge = 1 : (ge = 2, Fe = B) : ge = 0), m;
+  }
+  function C(B, R) {
+    var z = B;
+    if (33 > z.charCodeAt(0) && (z = z.trim()), Ve = z, z = [Ve], 0 < _e) {
+      var q = f(-1, R, z, z, ue, fe, 0, 0, 0, 0);
+      q !== void 0 && typeof q == "string" && (R = q);
+    }
+    var v = t(He, z, R, 0, 0);
+    return 0 < _e && (q = f(-2, v, z, z, ue, fe, v.length, 0, 0, 0), q !== void 0 && (v = q)), Ve = "", Ce = 0, fe = ue = 1, v;
+  }
+  var _ = /^\0+/g, O = /[\0\r\f]/g, U = /: */g, E = /zoo|gra/, S = /([,: ])(transform)/g, I = /,\r+?/g, F = /([\t\r\n ])*\f?&/g, $ = /@(k\w+)\s*(\S*)\s*/, X = /::(place)/g, G = /:(read-only)/g, T = /[svh]\w+-[tblr]{2}/, oe = /\(\s*(.*)\s*\)/g, ce = /([\s\S]*?);/g, Se = /-self|flex-/g, Ie = /[^]*?(:[rp][el]a[\w-]+)[^]*/, $e = /stretch|:\s*\w+\-(?:conte|avail)/, De = /([^-])(image-set\()/, fe = 1, ue = 1, Ce = 0, ge = 1, He = [], Ae = [], _e = 0, Fe = null, We = 0, Ve = "";
+  return C.use = h, C.set = m, e !== void 0 && m(e), C;
+}
+var Lp = {
+  animationIterationCount: 1,
+  borderImageOutset: 1,
+  borderImageSlice: 1,
+  borderImageWidth: 1,
+  boxFlex: 1,
+  boxFlexGroup: 1,
+  boxOrdinalGroup: 1,
+  columnCount: 1,
+  columns: 1,
+  flex: 1,
+  flexGrow: 1,
+  flexPositive: 1,
+  flexShrink: 1,
+  flexNegative: 1,
+  flexOrder: 1,
+  gridRow: 1,
+  gridRowEnd: 1,
+  gridRowSpan: 1,
+  gridRowStart: 1,
+  gridColumn: 1,
+  gridColumnEnd: 1,
+  gridColumnSpan: 1,
+  gridColumnStart: 1,
+  msGridRow: 1,
+  msGridRowSpan: 1,
+  msGridColumn: 1,
+  msGridColumnSpan: 1,
+  fontWeight: 1,
+  lineHeight: 1,
+  opacity: 1,
+  order: 1,
+  orphans: 1,
+  tabSize: 1,
+  widows: 1,
+  zIndex: 1,
+  zoom: 1,
+  WebkitLineClamp: 1,
+  // SVG-related properties
+  fillOpacity: 1,
+  floodOpacity: 1,
+  stopOpacity: 1,
+  strokeDasharray: 1,
+  strokeDashoffset: 1,
+  strokeMiterlimit: 1,
+  strokeOpacity: 1,
+  strokeWidth: 1
+};
+function Mp(e) {
+  var t = /* @__PURE__ */ Object.create(null);
+  return function(r) {
+    return t[r] === void 0 && (t[r] = e(r)), t[r];
+  };
+}
+var Fp = /^((children|dangerouslySetInnerHTML|key|ref|autoFocus|defaultValue|defaultChecked|innerHTML|suppressContentEditableWarning|suppressHydrationWarning|valueLink|abbr|accept|acceptCharset|accessKey|action|allow|allowUserMedia|allowPaymentRequest|allowFullScreen|allowTransparency|alt|async|autoComplete|autoPlay|capture|cellPadding|cellSpacing|challenge|charSet|checked|cite|classID|className|cols|colSpan|content|contentEditable|contextMenu|controls|controlsList|coords|crossOrigin|data|dateTime|decoding|default|defer|dir|disabled|disablePictureInPicture|disableRemotePlayback|download|draggable|encType|enterKeyHint|fetchpriority|fetchPriority|form|formAction|formEncType|formMethod|formNoValidate|formTarget|frameBorder|headers|height|hidden|high|href|hrefLang|htmlFor|httpEquiv|id|inputMode|integrity|is|keyParams|keyType|kind|label|lang|list|loading|loop|low|marginHeight|marginWidth|max|maxLength|media|mediaGroup|method|min|minLength|multiple|muted|name|nonce|noValidate|open|optimum|pattern|placeholder|playsInline|poster|preload|profile|radioGroup|readOnly|referrerPolicy|rel|required|reversed|role|rows|rowSpan|sandbox|scope|scoped|scrolling|seamless|selected|shape|size|sizes|slot|span|spellCheck|src|srcDoc|srcLang|srcSet|start|step|style|summary|tabIndex|target|title|translate|type|useMap|value|width|wmode|wrap|about|datatype|inlist|prefix|property|resource|typeof|vocab|autoCapitalize|autoCorrect|autoSave|color|incremental|fallback|inert|itemProp|itemScope|itemType|itemID|itemRef|on|option|results|security|unselectable|accentHeight|accumulate|additive|alignmentBaseline|allowReorder|alphabetic|amplitude|arabicForm|ascent|attributeName|attributeType|autoReverse|azimuth|baseFrequency|baselineShift|baseProfile|bbox|begin|bias|by|calcMode|capHeight|clip|clipPathUnits|clipPath|clipRule|colorInterpolation|colorInterpolationFilters|colorProfile|colorRendering|contentScriptType|contentStyleType|cursor|cx|cy|d|decelerate|descent|diffuseConstant|direction|display|divisor|dominantBaseline|dur|dx|dy|edgeMode|elevation|enableBackground|end|exponent|externalResourcesRequired|fill|fillOpacity|fillRule|filter|filterRes|filterUnits|floodColor|floodOpacity|focusable|fontFamily|fontSize|fontSizeAdjust|fontStretch|fontStyle|fontVariant|fontWeight|format|from|fr|fx|fy|g1|g2|glyphName|glyphOrientationHorizontal|glyphOrientationVertical|glyphRef|gradientTransform|gradientUnits|hanging|horizAdvX|horizOriginX|ideographic|imageRendering|in|in2|intercept|k|k1|k2|k3|k4|kernelMatrix|kernelUnitLength|kerning|keyPoints|keySplines|keyTimes|lengthAdjust|letterSpacing|lightingColor|limitingConeAngle|local|markerEnd|markerMid|markerStart|markerHeight|markerUnits|markerWidth|mask|maskContentUnits|maskUnits|mathematical|mode|numOctaves|offset|opacity|operator|order|orient|orientation|origin|overflow|overlinePosition|overlineThickness|panose1|paintOrder|pathLength|patternContentUnits|patternTransform|patternUnits|pointerEvents|points|pointsAtX|pointsAtY|pointsAtZ|preserveAlpha|preserveAspectRatio|primitiveUnits|r|radius|refX|refY|renderingIntent|repeatCount|repeatDur|requiredExtensions|requiredFeatures|restart|result|rotate|rx|ry|scale|seed|shapeRendering|slope|spacing|specularConstant|specularExponent|speed|spreadMethod|startOffset|stdDeviation|stemh|stemv|stitchTiles|stopColor|stopOpacity|strikethroughPosition|strikethroughThickness|string|stroke|strokeDasharray|strokeDashoffset|strokeLinecap|strokeLinejoin|strokeMiterlimit|strokeOpacity|strokeWidth|surfaceScale|systemLanguage|tableValues|targetX|targetY|textAnchor|textDecoration|textRendering|textLength|to|transform|u1|u2|underlinePosition|underlineThickness|unicode|unicodeBidi|unicodeRange|unitsPerEm|vAlphabetic|vHanging|vIdeographic|vMathematical|values|vectorEffect|version|vertAdvY|vertOriginX|vertOriginY|viewBox|viewTarget|visibility|widths|wordSpacing|writingMode|x|xHeight|x1|x2|xChannelSelector|xlinkActuate|xlinkArcrole|xlinkHref|xlinkRole|xlinkShow|xlinkTitle|xlinkType|xmlBase|xmlns|xmlnsXlink|xmlLang|xmlSpace|y|y1|y2|yChannelSelector|z|zoomAndPan|for|class|autofocus)|(([Dd][Aa][Tt][Aa]|[Aa][Rr][Ii][Aa]|x)-.*))$/, gs = /* @__PURE__ */ Mp(
+  function(e) {
+    return Fp.test(e) || e.charCodeAt(0) === 111 && e.charCodeAt(1) === 110 && e.charCodeAt(2) < 91;
+  }
+  /* Z+1 */
+), Tl = { exports: {} }, Ye = {};
+var ys;
+function $p() {
+  if (ys) return Ye;
+  ys = 1;
+  var e = typeof Symbol == "function" && Symbol.for, t = e ? Symbol.for("react.element") : 60103, r = e ? Symbol.for("react.portal") : 60106, n = e ? Symbol.for("react.fragment") : 60107, a = e ? Symbol.for("react.strict_mode") : 60108, s = e ? Symbol.for("react.profiler") : 60114, d = e ? Symbol.for("react.provider") : 60109, f = e ? Symbol.for("react.context") : 60110, h = e ? Symbol.for("react.async_mode") : 60111, m = e ? Symbol.for("react.concurrent_mode") : 60111, C = e ? Symbol.for("react.forward_ref") : 60112, _ = e ? Symbol.for("react.suspense") : 60113, O = e ? Symbol.for("react.suspense_list") : 60120, U = e ? Symbol.for("react.memo") : 60115, E = e ? Symbol.for("react.lazy") : 60116, S = e ? Symbol.for("react.block") : 60121, I = e ? Symbol.for("react.fundamental") : 60117, F = e ? Symbol.for("react.responder") : 60118, $ = e ? Symbol.for("react.scope") : 60119;
+  function X(T) {
+    if (typeof T == "object" && T !== null) {
+      var oe = T.$$typeof;
+      switch (oe) {
+        case t:
+          switch (T = T.type, T) {
+            case h:
+            case m:
+            case n:
+            case s:
+            case a:
+            case _:
+              return T;
+            default:
+              switch (T = T && T.$$typeof, T) {
+                case f:
+                case C:
+                case E:
+                case U:
+                case d:
+                  return T;
+                default:
+                  return oe;
+              }
+          }
+        case r:
+          return oe;
+      }
+    }
+  }
+  function G(T) {
+    return X(T) === m;
+  }
+  return Ye.AsyncMode = h, Ye.ConcurrentMode = m, Ye.ContextConsumer = f, Ye.ContextProvider = d, Ye.Element = t, Ye.ForwardRef = C, Ye.Fragment = n, Ye.Lazy = E, Ye.Memo = U, Ye.Portal = r, Ye.Profiler = s, Ye.StrictMode = a, Ye.Suspense = _, Ye.isAsyncMode = function(T) {
+    return G(T) || X(T) === h;
+  }, Ye.isConcurrentMode = G, Ye.isContextConsumer = function(T) {
+    return X(T) === f;
+  }, Ye.isContextProvider = function(T) {
+    return X(T) === d;
+  }, Ye.isElement = function(T) {
+    return typeof T == "object" && T !== null && T.$$typeof === t;
+  }, Ye.isForwardRef = function(T) {
+    return X(T) === C;
+  }, Ye.isFragment = function(T) {
+    return X(T) === n;
+  }, Ye.isLazy = function(T) {
+    return X(T) === E;
+  }, Ye.isMemo = function(T) {
+    return X(T) === U;
+  }, Ye.isPortal = function(T) {
+    return X(T) === r;
+  }, Ye.isProfiler = function(T) {
+    return X(T) === s;
+  }, Ye.isStrictMode = function(T) {
+    return X(T) === a;
+  }, Ye.isSuspense = function(T) {
+    return X(T) === _;
+  }, Ye.isValidElementType = function(T) {
+    return typeof T == "string" || typeof T == "function" || T === n || T === m || T === s || T === a || T === _ || T === O || typeof T == "object" && T !== null && (T.$$typeof === E || T.$$typeof === U || T.$$typeof === d || T.$$typeof === f || T.$$typeof === C || T.$$typeof === I || T.$$typeof === F || T.$$typeof === $ || T.$$typeof === S);
+  }, Ye.typeOf = X, Ye;
+}
+Tl.exports = $p();
+var Up = Tl.exports, to = Up, zp = {
+  childContextTypes: !0,
+  contextType: !0,
+  contextTypes: !0,
+  defaultProps: !0,
+  displayName: !0,
+  getDefaultProps: !0,
+  getDerivedStateFromError: !0,
+  getDerivedStateFromProps: !0,
+  mixins: !0,
+  propTypes: !0,
+  type: !0
+}, Bp = {
+  name: !0,
+  length: !0,
+  prototype: !0,
+  caller: !0,
+  callee: !0,
+  arguments: !0,
+  arity: !0
+}, qp = {
+  $$typeof: !0,
+  render: !0,
+  defaultProps: !0,
+  displayName: !0,
+  propTypes: !0
+}, Cl = {
+  $$typeof: !0,
+  compare: !0,
+  defaultProps: !0,
+  displayName: !0,
+  propTypes: !0,
+  type: !0
+}, ro = {};
+ro[to.ForwardRef] = qp;
+ro[to.Memo] = Cl;
+function bs(e) {
+  return to.isMemo(e) ? Cl : ro[e.$$typeof] || zp;
+}
+var Hp = Object.defineProperty, Wp = Object.getOwnPropertyNames, vs = Object.getOwnPropertySymbols, Vp = Object.getOwnPropertyDescriptor, Gp = Object.getPrototypeOf, xs = Object.prototype;
+function Al(e, t, r) {
+  if (typeof t != "string") {
+    if (xs) {
+      var n = Gp(t);
+      n && n !== xs && Al(e, n, r);
+    }
+    var a = Wp(t);
+    vs && (a = a.concat(vs(t)));
+    for (var s = bs(e), d = bs(t), f = 0; f < a.length; ++f) {
+      var h = a[f];
+      if (!Bp[h] && !(r && r[h]) && !(d && d[h]) && !(s && s[h])) {
+        var m = Vp(t, h);
+        try {
+          Hp(e, h, m);
+        } catch {
+        }
+      }
+    }
+  }
+  return e;
+}
+var Yp = Al;
+const Zp = /* @__PURE__ */ Ui(Yp);
+var ze = { env: { NODE_ENV: "production" } };
+function hr() {
+  return (hr = Object.assign || function(e) {
+    for (var t = 1; t < arguments.length; t++) {
+      var r = arguments[t];
+      for (var n in r) Object.prototype.hasOwnProperty.call(r, n) && (e[n] = r[n]);
+    }
+    return e;
+  }).apply(this, arguments);
+}
+var ws = function(e, t) {
+  for (var r = [e[0]], n = 0, a = t.length; n < a; n += 1) r.push(t[n], e[n + 1]);
+  return r;
+}, Ci = function(e) {
+  return e !== null && typeof e == "object" && (e.toString ? e.toString() : Object.prototype.toString.call(e)) === "[object Object]" && !eo.typeOf(e);
+}, wa = Object.freeze([]), Nr = Object.freeze({});
+function Nn(e) {
+  return typeof e == "function";
+}
+function Ai(e) {
+  return ze.env.NODE_ENV !== "production" && typeof e == "string" && e || e.displayName || e.name || "Component";
+}
+function no(e) {
+  return e && typeof e.styledComponentId == "string";
+}
+var rn = typeof ze < "u" && ze.env !== void 0 && (ze.env.REACT_APP_SC_ATTR || ze.env.SC_ATTR) || "data-styled", ao = typeof window < "u" && "HTMLElement" in window, Xp = !!(typeof SC_DISABLE_SPEEDY == "boolean" ? SC_DISABLE_SPEEDY : typeof ze < "u" && ze.env !== void 0 && (ze.env.REACT_APP_SC_DISABLE_SPEEDY !== void 0 && ze.env.REACT_APP_SC_DISABLE_SPEEDY !== "" ? ze.env.REACT_APP_SC_DISABLE_SPEEDY !== "false" && ze.env.REACT_APP_SC_DISABLE_SPEEDY : ze.env.SC_DISABLE_SPEEDY !== void 0 && ze.env.SC_DISABLE_SPEEDY !== "" ? ze.env.SC_DISABLE_SPEEDY !== "false" && ze.env.SC_DISABLE_SPEEDY : ze.env.NODE_ENV !== "production")), Kp = {}, Jp = ze.env.NODE_ENV !== "production" ? { 1: `Cannot create styled-component for component: %s.
+
+`, 2: `Can't collect styles once you've consumed a \`ServerStyleSheet\`'s styles! \`ServerStyleSheet\` is a one off instance for each server-side render cycle.
+
+- Are you trying to reuse it across renders?
+- Are you accidentally calling collectStyles twice?
+
+`, 3: `Streaming SSR is only supported in a Node.js environment; Please do not try to call this method in the browser.
+
+`, 4: `The \`StyleSheetManager\` expects a valid target or sheet prop!
+
+- Does this error occur on the client and is your target falsy?
+- Does this error occur on the server and is the sheet falsy?
+
+`, 5: `The clone method cannot be used on the client!
+
+- Are you running in a client-like environment on the server?
+- Are you trying to run SSR on the client?
+
+`, 6: `Trying to insert a new style tag, but the given Node is unmounted!
+
+- Are you using a custom target that isn't mounted?
+- Does your document not have a valid head element?
+- Have you accidentally removed a style tag manually?
+
+`, 7: 'ThemeProvider: Please return an object from your "theme" prop function, e.g.\n\n```js\ntheme={() => ({})}\n```\n\n', 8: `ThemeProvider: Please make your "theme" prop an object.
+
+`, 9: "Missing document `<head>`\n\n", 10: `Cannot find a StyleSheet instance. Usually this happens if there are multiple copies of styled-components loaded at once. Check out this issue for how to troubleshoot and fix the common cases where this situation can happen: https://github.com/styled-components/styled-components/issues/1941#issuecomment-417862021
+
+`, 11: `_This error was replaced with a dev-time warning, it will be deleted for v4 final._ [createGlobalStyle] received children which will not be rendered. Please use the component without passing children elements.
+
+`, 12: "It seems you are interpolating a keyframe declaration (%s) into an untagged string. This was supported in styled-components v3, but is not longer supported in v4 as keyframes are now injected on-demand. Please wrap your string in the css\\`\\` helper which ensures the styles are injected correctly. See https://www.styled-components.com/docs/api#css\n\n", 13: `%s is not a styled component and cannot be referred to via component selector. See https://www.styled-components.com/docs/advanced#referring-to-other-components for more details.
+
+`, 14: `ThemeProvider: "theme" prop is required.
+
+`, 15: "A stylis plugin has been supplied that is not named. We need a name for each plugin to be able to prevent styling collisions between different stylis configurations within the same app. Before you pass your plugin to `<StyleSheetManager stylisPlugins={[]}>`, please make sure each plugin is uniquely-named, e.g.\n\n```js\nObject.defineProperty(importedPlugin, 'name', { value: 'some-unique-name' });\n```\n\n", 16: `Reached the limit of how many styled components may be created at group %s.
+You may only create up to 1,073,741,824 components. If you're creating components dynamically,
+as for instance in your render method then you may be running into this limitation.
+
+`, 17: `CSSStyleSheet could not be found on HTMLStyleElement.
+Has styled-components' style tag been unmounted or altered by another script?
+` } : {};
+function Qp() {
+  for (var e = arguments.length <= 0 ? void 0 : arguments[0], t = [], r = 1, n = arguments.length; r < n; r += 1) t.push(r < 0 || arguments.length <= r ? void 0 : arguments[r]);
+  return t.forEach(function(a) {
+    e = e.replace(/%[a-z]/, a);
+  }), e;
+}
+function ln(e) {
+  for (var t = arguments.length, r = new Array(t > 1 ? t - 1 : 0), n = 1; n < t; n++) r[n - 1] = arguments[n];
+  throw ze.env.NODE_ENV === "production" ? new Error("An error occurred. See https://git.io/JUIaE#" + e + " for more information." + (r.length > 0 ? " Args: " + r.join(", ") : "")) : new Error(Qp.apply(void 0, [Jp[e]].concat(r)).trim());
+}
+var ef = function() {
+  function e(r) {
+    this.groupSizes = new Uint32Array(512), this.length = 512, this.tag = r;
+  }
+  var t = e.prototype;
+  return t.indexOfGroup = function(r) {
+    for (var n = 0, a = 0; a < r; a++) n += this.groupSizes[a];
+    return n;
+  }, t.insertRules = function(r, n) {
+    if (r >= this.groupSizes.length) {
+      for (var a = this.groupSizes, s = a.length, d = s; r >= d; ) (d <<= 1) < 0 && ln(16, "" + r);
+      this.groupSizes = new Uint32Array(d), this.groupSizes.set(a), this.length = d;
+      for (var f = s; f < d; f++) this.groupSizes[f] = 0;
+    }
+    for (var h = this.indexOfGroup(r + 1), m = 0, C = n.length; m < C; m++) this.tag.insertRule(h, n[m]) && (this.groupSizes[r]++, h++);
+  }, t.clearGroup = function(r) {
+    if (r < this.length) {
+      var n = this.groupSizes[r], a = this.indexOfGroup(r), s = a + n;
+      this.groupSizes[r] = 0;
+      for (var d = a; d < s; d++) this.tag.deleteRule(a);
+    }
+  }, t.getGroup = function(r) {
+    var n = "";
+    if (r >= this.length || this.groupSizes[r] === 0) return n;
+    for (var a = this.groupSizes[r], s = this.indexOfGroup(r), d = s + a, f = s; f < d; f++) n += this.tag.getRule(f) + `/*!sc*/
+`;
+    return n;
+  }, e;
+}(), pa = /* @__PURE__ */ new Map(), Sa = /* @__PURE__ */ new Map(), jn = 1, ra = function(e) {
+  if (pa.has(e)) return pa.get(e);
+  for (; Sa.has(jn); ) jn++;
+  var t = jn++;
+  return ze.env.NODE_ENV !== "production" && ((0 | t) < 0 || t > 1 << 30) && ln(16, "" + t), pa.set(e, t), Sa.set(t, e), t;
+}, tf = function(e) {
+  return Sa.get(e);
+}, rf = function(e, t) {
+  t >= jn && (jn = t + 1), pa.set(e, t), Sa.set(t, e);
+}, nf = "style[" + rn + '][data-styled-version="5.3.11"]', af = new RegExp("^" + rn + '\\.g(\\d+)\\[id="([\\w\\d-]+)"\\].*?"([^"]*)'), of = function(e, t, r) {
+  for (var n, a = r.split(","), s = 0, d = a.length; s < d; s++) (n = a[s]) && e.registerName(t, n);
+}, sf = function(e, t) {
+  for (var r = (t.textContent || "").split(`/*!sc*/
+`), n = [], a = 0, s = r.length; a < s; a++) {
+    var d = r[a].trim();
+    if (d) {
+      var f = d.match(af);
+      if (f) {
+        var h = 0 | parseInt(f[1], 10), m = f[2];
+        h !== 0 && (rf(m, h), of(e, m, f[3]), e.getTag().insertRules(h, n)), n.length = 0;
+      } else n.push(d);
+    }
+  }
+}, lf = function() {
+  return typeof __webpack_nonce__ < "u" ? __webpack_nonce__ : null;
+}, _l = function(e) {
+  var t = document.head, r = e || t, n = document.createElement("style"), a = function(f) {
+    for (var h = f.childNodes, m = h.length; m >= 0; m--) {
+      var C = h[m];
+      if (C && C.nodeType === 1 && C.hasAttribute(rn)) return C;
+    }
+  }(r), s = a !== void 0 ? a.nextSibling : null;
+  n.setAttribute(rn, "active"), n.setAttribute("data-styled-version", "5.3.11");
+  var d = lf();
+  return d && n.setAttribute("nonce", d), r.insertBefore(n, s), n;
+}, cf = function() {
+  function e(r) {
+    var n = this.element = _l(r);
+    n.appendChild(document.createTextNode("")), this.sheet = function(a) {
+      if (a.sheet) return a.sheet;
+      for (var s = document.styleSheets, d = 0, f = s.length; d < f; d++) {
+        var h = s[d];
+        if (h.ownerNode === a) return h;
+      }
+      ln(17);
+    }(n), this.length = 0;
+  }
+  var t = e.prototype;
+  return t.insertRule = function(r, n) {
+    try {
+      return this.sheet.insertRule(n, r), this.length++, !0;
+    } catch {
+      return !1;
+    }
+  }, t.deleteRule = function(r) {
+    this.sheet.deleteRule(r), this.length--;
+  }, t.getRule = function(r) {
+    var n = this.sheet.cssRules[r];
+    return n !== void 0 && typeof n.cssText == "string" ? n.cssText : "";
+  }, e;
+}(), uf = function() {
+  function e(r) {
+    var n = this.element = _l(r);
+    this.nodes = n.childNodes, this.length = 0;
+  }
+  var t = e.prototype;
+  return t.insertRule = function(r, n) {
+    if (r <= this.length && r >= 0) {
+      var a = document.createTextNode(n), s = this.nodes[r];
+      return this.element.insertBefore(a, s || null), this.length++, !0;
+    }
+    return !1;
+  }, t.deleteRule = function(r) {
+    this.element.removeChild(this.nodes[r]), this.length--;
+  }, t.getRule = function(r) {
+    return r < this.length ? this.nodes[r].textContent : "";
+  }, e;
+}(), df = function() {
+  function e(r) {
+    this.rules = [], this.length = 0;
+  }
+  var t = e.prototype;
+  return t.insertRule = function(r, n) {
+    return r <= this.length && (this.rules.splice(r, 0, n), this.length++, !0);
+  }, t.deleteRule = function(r) {
+    this.rules.splice(r, 1), this.length--;
+  }, t.getRule = function(r) {
+    return r < this.length ? this.rules[r] : "";
+  }, e;
+}(), Ss = ao, pf = { isServer: !ao, useCSSOMInjection: !Xp }, ka = function() {
+  function e(r, n, a) {
+    r === void 0 && (r = Nr), n === void 0 && (n = {}), this.options = hr({}, pf, {}, r), this.gs = n, this.names = new Map(a), this.server = !!r.isServer, !this.server && ao && Ss && (Ss = !1, function(s) {
+      for (var d = document.querySelectorAll(nf), f = 0, h = d.length; f < h; f++) {
+        var m = d[f];
+        m && m.getAttribute(rn) !== "active" && (sf(s, m), m.parentNode && m.parentNode.removeChild(m));
+      }
+    }(this));
+  }
+  e.registerId = function(r) {
+    return ra(r);
+  };
+  var t = e.prototype;
+  return t.reconstructWithOptions = function(r, n) {
+    return n === void 0 && (n = !0), new e(hr({}, this.options, {}, r), this.gs, n && this.names || void 0);
+  }, t.allocateGSInstance = function(r) {
+    return this.gs[r] = (this.gs[r] || 0) + 1;
+  }, t.getTag = function() {
+    return this.tag || (this.tag = (a = (n = this.options).isServer, s = n.useCSSOMInjection, d = n.target, r = a ? new df(d) : s ? new cf(d) : new uf(d), new ef(r)));
+    var r, n, a, s, d;
+  }, t.hasNameForId = function(r, n) {
+    return this.names.has(r) && this.names.get(r).has(n);
+  }, t.registerName = function(r, n) {
+    if (ra(r), this.names.has(r)) this.names.get(r).add(n);
+    else {
+      var a = /* @__PURE__ */ new Set();
+      a.add(n), this.names.set(r, a);
+    }
+  }, t.insertRules = function(r, n, a) {
+    this.registerName(r, n), this.getTag().insertRules(ra(r), a);
+  }, t.clearNames = function(r) {
+    this.names.has(r) && this.names.get(r).clear();
+  }, t.clearRules = function(r) {
+    this.getTag().clearGroup(ra(r)), this.clearNames(r);
+  }, t.clearTag = function() {
+    this.tag = void 0;
+  }, t.toString = function() {
+    return function(r) {
+      for (var n = r.getTag(), a = n.length, s = "", d = 0; d < a; d++) {
+        var f = tf(d);
+        if (f !== void 0) {
+          var h = r.names.get(f), m = n.getGroup(d);
+          if (h && m && h.size) {
+            var C = rn + ".g" + d + '[id="' + f + '"]', _ = "";
+            h !== void 0 && h.forEach(function(O) {
+              O.length > 0 && (_ += O + ",");
+            }), s += "" + m + C + '{content:"' + _ + `"}/*!sc*/
+`;
+          }
+        }
+      }
+      return s;
+    }(this);
+  }, e;
+}(), ff = /(a)(d)/gi, ks = function(e) {
+  return String.fromCharCode(e + (e > 25 ? 39 : 97));
+};
+function _i(e) {
+  var t, r = "";
+  for (t = Math.abs(e); t > 52; t = t / 52 | 0) r = ks(t % 52) + r;
+  return (ks(t % 52) + r).replace(ff, "$1-$2");
+}
+var Hr = function(e, t) {
+  for (var r = t.length; r; ) e = 33 * e ^ t.charCodeAt(--r);
+  return e;
+}, El = function(e) {
+  return Hr(5381, e);
+};
+function jl(e) {
+  for (var t = 0; t < e.length; t += 1) {
+    var r = e[t];
+    if (Nn(r) && !no(r)) return !1;
+  }
+  return !0;
+}
+var hf = El("5.3.11"), mf = function() {
+  function e(t, r, n) {
+    this.rules = t, this.staticRulesId = "", this.isStatic = ze.env.NODE_ENV === "production" && (n === void 0 || n.isStatic) && jl(t), this.componentId = r, this.baseHash = Hr(hf, r), this.baseStyle = n, ka.registerId(r);
+  }
+  return e.prototype.generateAndInjectStyles = function(t, r, n) {
+    var a = this.componentId, s = [];
+    if (this.baseStyle && s.push(this.baseStyle.generateAndInjectStyles(t, r, n)), this.isStatic && !n.hash) if (this.staticRulesId && r.hasNameForId(a, this.staticRulesId)) s.push(this.staticRulesId);
+    else {
+      var d = Yr(this.rules, t, r, n).join(""), f = _i(Hr(this.baseHash, d) >>> 0);
+      if (!r.hasNameForId(a, f)) {
+        var h = n(d, "." + f, void 0, a);
+        r.insertRules(a, f, h);
+      }
+      s.push(f), this.staticRulesId = f;
+    }
+    else {
+      for (var m = this.rules.length, C = Hr(this.baseHash, n.hash), _ = "", O = 0; O < m; O++) {
+        var U = this.rules[O];
+        if (typeof U == "string") _ += U, ze.env.NODE_ENV !== "production" && (C = Hr(C, U + O));
+        else if (U) {
+          var E = Yr(U, t, r, n), S = Array.isArray(E) ? E.join("") : E;
+          C = Hr(C, S + O), _ += S;
+        }
+      }
+      if (_) {
+        var I = _i(C >>> 0);
+        if (!r.hasNameForId(a, I)) {
+          var F = n(_, "." + I, void 0, a);
+          r.insertRules(a, I, F);
+        }
+        s.push(I);
+      }
+    }
+    return s.join(" ");
+  }, e;
+}(), gf = /^\s*\/\/.*$/gm, yf = [":", "[", ".", "#"];
+function bf(e) {
+  var t, r, n, a, s = Nr, d = s.options, f = d === void 0 ? Nr : d, h = s.plugins, m = h === void 0 ? wa : h, C = new Pp(f), _ = [], O = /* @__PURE__ */ function(S) {
+    function I(F) {
+      if (F) try {
+        S(F + "}");
+      } catch {
+      }
+    }
+    return function(F, $, X, G, T, oe, ce, Se, Ie, $e) {
+      switch (F) {
+        case 1:
+          if (Ie === 0 && $.charCodeAt(0) === 64) return S($ + ";"), "";
+          break;
+        case 2:
+          if (Se === 0) return $ + "/*|*/";
+          break;
+        case 3:
+          switch (Se) {
+            case 102:
+            case 112:
+              return S(X[0] + $), "";
+            default:
+              return $ + ($e === 0 ? "/*|*/" : "");
+          }
+        case -2:
+          $.split("/*|*/}").forEach(I);
+      }
+    };
+  }(function(S) {
+    _.push(S);
+  }), U = function(S, I, F) {
+    return I === 0 && yf.indexOf(F[r.length]) !== -1 || F.match(a) ? S : "." + t;
+  };
+  function E(S, I, F, $) {
+    $ === void 0 && ($ = "&");
+    var X = S.replace(gf, ""), G = I && F ? F + " " + I + " { " + X + " }" : X;
+    return t = $, r = I, n = new RegExp("\\" + r + "\\b", "g"), a = new RegExp("(\\" + r + "\\b){2,}"), C(F || !I ? "" : I, G);
+  }
+  return C.use([].concat(m, [function(S, I, F) {
+    S === 2 && F.length && F[0].lastIndexOf(r) > 0 && (F[0] = F[0].replace(n, U));
+  }, O, function(S) {
+    if (S === -2) {
+      var I = _;
+      return _ = [], I;
+    }
+  }])), E.hash = m.length ? m.reduce(function(S, I) {
+    return I.name || ln(15), Hr(S, I.name);
+  }, 5381).toString() : "", E;
+}
+var Ol = ht.createContext();
+Ol.Consumer;
+var Nl = ht.createContext(), vf = (Nl.Consumer, new ka()), Ei = bf();
+function Rl() {
+  return Yt(Ol) || vf;
+}
+function Il() {
+  return Yt(Nl) || Ei;
+}
+var xf = function() {
+  function e(t, r) {
+    var n = this;
+    this.inject = function(a, s) {
+      s === void 0 && (s = Ei);
+      var d = n.name + s.hash;
+      a.hasNameForId(n.id, d) || a.insertRules(n.id, d, s(n.rules, d, "@keyframes"));
+    }, this.toString = function() {
+      return ln(12, String(n.name));
+    }, this.name = t, this.id = "sc-keyframes-" + t, this.rules = r;
+  }
+  return e.prototype.getName = function(t) {
+    return t === void 0 && (t = Ei), this.name + t.hash;
+  }, e;
+}(), wf = /([A-Z])/, Sf = /([A-Z])/g, kf = /^ms-/, Tf = function(e) {
+  return "-" + e.toLowerCase();
+};
+function Ts(e) {
+  return wf.test(e) ? e.replace(Sf, Tf).replace(kf, "-ms-") : e;
+}
+var Cs = function(e) {
+  return e == null || e === !1 || e === "";
+};
+function Yr(e, t, r, n) {
+  if (Array.isArray(e)) {
+    for (var a, s = [], d = 0, f = e.length; d < f; d += 1) (a = Yr(e[d], t, r, n)) !== "" && (Array.isArray(a) ? s.push.apply(s, a) : s.push(a));
+    return s;
+  }
+  if (Cs(e)) return "";
+  if (no(e)) return "." + e.styledComponentId;
+  if (Nn(e)) {
+    if (typeof (m = e) != "function" || m.prototype && m.prototype.isReactComponent || !t) return e;
+    var h = e(t);
+    return ze.env.NODE_ENV !== "production" && eo.isElement(h) && console.warn(Ai(e) + " is not a styled component and cannot be referred to via component selector. See https://www.styled-components.com/docs/advanced#referring-to-other-components for more details."), Yr(h, t, r, n);
+  }
+  var m;
+  return e instanceof xf ? r ? (e.inject(r, n), e.getName(n)) : e : Ci(e) ? function C(_, O) {
+    var U, E, S = [];
+    for (var I in _) _.hasOwnProperty(I) && !Cs(_[I]) && (Array.isArray(_[I]) && _[I].isCss || Nn(_[I]) ? S.push(Ts(I) + ":", _[I], ";") : Ci(_[I]) ? S.push.apply(S, C(_[I], I)) : S.push(Ts(I) + ": " + (U = I, (E = _[I]) == null || typeof E == "boolean" || E === "" ? "" : typeof E != "number" || E === 0 || U in Lp || U.startsWith("--") ? String(E).trim() : E + "px") + ";"));
+    return O ? [O + " {"].concat(S, ["}"]) : S;
+  }(e) : e.toString();
+}
+var As = function(e) {
+  return Array.isArray(e) && (e.isCss = !0), e;
+};
+function io(e) {
+  for (var t = arguments.length, r = new Array(t > 1 ? t - 1 : 0), n = 1; n < t; n++) r[n - 1] = arguments[n];
+  return Nn(e) || Ci(e) ? As(Yr(ws(wa, [e].concat(r)))) : r.length === 0 && e.length === 1 && typeof e[0] == "string" ? e : As(Yr(ws(e, r)));
+}
+var _s = /invalid hook call/i, na = /* @__PURE__ */ new Set(), Dl = function(e, t) {
+  if (ze.env.NODE_ENV !== "production") {
+    var r = "The component " + e + (t ? ' with the id of "' + t + '"' : "") + ` has been created dynamically.
+You may see this warning because you've called styled inside another component.
+To resolve this only create new StyledComponents outside of any render method and function component.`, n = console.error;
+    try {
+      var a = !0;
+      console.error = function(s) {
+        if (_s.test(s)) a = !1, na.delete(r);
+        else {
+          for (var d = arguments.length, f = new Array(d > 1 ? d - 1 : 0), h = 1; h < d; h++) f[h - 1] = arguments[h];
+          n.apply(void 0, [s].concat(f));
+        }
+      }, Ir(), a && !na.has(r) && (console.warn(r), na.add(r));
+    } catch (s) {
+      _s.test(s.message) && na.delete(r);
+    } finally {
+      console.error = n;
+    }
+  }
+}, Pl = function(e, t, r) {
+  return r === void 0 && (r = Nr), e.theme !== r.theme && e.theme || t || r.theme;
+}, Cf = /[!"#$%&'()*+,./:;<=>?@[\\\]^`{|}~-]+/g, Af = /(^-|-$)/g;
+function ti(e) {
+  return e.replace(Cf, "-").replace(Af, "");
+}
+var Ll = function(e) {
+  return _i(El(e) >>> 0);
+};
+function aa(e) {
+  return typeof e == "string" && (ze.env.NODE_ENV === "production" || e.charAt(0) === e.charAt(0).toLowerCase());
+}
+var ji = function(e) {
+  return typeof e == "function" || typeof e == "object" && e !== null && !Array.isArray(e);
+}, _f = function(e) {
+  return e !== "__proto__" && e !== "constructor" && e !== "prototype";
+};
+function Ef(e, t, r) {
+  var n = e[r];
+  ji(t) && ji(n) ? Ml(n, t) : e[r] = t;
+}
+function Ml(e) {
+  for (var t = arguments.length, r = new Array(t > 1 ? t - 1 : 0), n = 1; n < t; n++) r[n - 1] = arguments[n];
+  for (var a = 0, s = r; a < s.length; a++) {
+    var d = s[a];
+    if (ji(d)) for (var f in d) _f(f) && Ef(e, d[f], f);
+  }
+  return e;
+}
+var oo = ht.createContext();
+oo.Consumer;
+var ri = {};
+function Fl(e, t, r) {
+  var n = no(e), a = !aa(e), s = t.attrs, d = s === void 0 ? wa : s, f = t.componentId, h = f === void 0 ? function($, X) {
+    var G = typeof $ != "string" ? "sc" : ti($);
+    ri[G] = (ri[G] || 0) + 1;
+    var T = G + "-" + Ll("5.3.11" + G + ri[G]);
+    return X ? X + "-" + T : T;
+  }(t.displayName, t.parentComponentId) : f, m = t.displayName, C = m === void 0 ? function($) {
+    return aa($) ? "styled." + $ : "Styled(" + Ai($) + ")";
+  }(e) : m, _ = t.displayName && t.componentId ? ti(t.displayName) + "-" + t.componentId : t.componentId || h, O = n && e.attrs ? Array.prototype.concat(e.attrs, d).filter(Boolean) : d, U = t.shouldForwardProp;
+  n && e.shouldForwardProp && (U = t.shouldForwardProp ? function($, X, G) {
+    return e.shouldForwardProp($, X, G) && t.shouldForwardProp($, X, G);
+  } : e.shouldForwardProp);
+  var E, S = new mf(r, _, n ? e.componentStyle : void 0), I = S.isStatic && d.length === 0, F = function($, X) {
+    return function(G, T, oe, ce) {
+      var Se = G.attrs, Ie = G.componentStyle, $e = G.defaultProps, De = G.foldedComponentIds, fe = G.shouldForwardProp, ue = G.styledComponentId, Ce = G.target, ge = function(q, v, Y) {
+        q === void 0 && (q = Nr);
+        var j = hr({}, v, { theme: q }), ie = {};
+        return Y.forEach(function(re) {
+          var ee, K, se, he = re;
+          for (ee in Nn(he) && (he = he(j)), he) j[ee] = ie[ee] = ee === "className" ? (K = ie[ee], se = he[ee], K && se ? K + " " + se : K || se) : he[ee];
+        }), [j, ie];
+      }(Pl(T, Yt(oo), $e) || Nr, T, Se), He = ge[0], Ae = ge[1], _e = function(q, v, Y, j) {
+        var ie = Rl(), re = Il(), ee = v ? q.generateAndInjectStyles(Nr, ie, re) : q.generateAndInjectStyles(Y, ie, re);
+        return ze.env.NODE_ENV !== "production" && !v && j && j(ee), ee;
+      }(Ie, ce, He, ze.env.NODE_ENV !== "production" ? G.warnTooManyClasses : void 0), Fe = oe, We = Ae.$as || T.$as || Ae.as || T.as || Ce, Ve = aa(We), B = Ae !== T ? hr({}, T, {}, Ae) : T, R = {};
+      for (var z in B) z[0] !== "$" && z !== "as" && (z === "forwardedAs" ? R.as = B[z] : (fe ? fe(z, gs, We) : !Ve || gs(z)) && (R[z] = B[z]));
+      return T.style && Ae.style !== T.style && (R.style = hr({}, T.style, {}, Ae.style)), R.className = Array.prototype.concat(De, ue, _e !== ue ? _e : null, T.className, Ae.className).filter(Boolean).join(" "), R.ref = Fe, Gs(We, R);
+    }(E, $, X, I);
+  };
+  return F.displayName = C, (E = ht.forwardRef(F)).attrs = O, E.componentStyle = S, E.displayName = C, E.shouldForwardProp = U, E.foldedComponentIds = n ? Array.prototype.concat(e.foldedComponentIds, e.styledComponentId) : wa, E.styledComponentId = _, E.target = n ? e.target : e, E.withComponent = function($) {
+    var X = t.componentId, G = function(oe, ce) {
+      if (oe == null) return {};
+      var Se, Ie, $e = {}, De = Object.keys(oe);
+      for (Ie = 0; Ie < De.length; Ie++) Se = De[Ie], ce.indexOf(Se) >= 0 || ($e[Se] = oe[Se]);
+      return $e;
+    }(t, ["componentId"]), T = X && X + "-" + (aa($) ? $ : ti(Ai($)));
+    return Fl($, hr({}, G, { attrs: O, componentId: T }), r);
+  }, Object.defineProperty(E, "defaultProps", { get: function() {
+    return this._foldedDefaultProps;
+  }, set: function($) {
+    this._foldedDefaultProps = n ? Ml({}, e.defaultProps, $) : $;
+  } }), ze.env.NODE_ENV !== "production" && (Dl(C, _), E.warnTooManyClasses = /* @__PURE__ */ function($, X) {
+    var G = {}, T = !1;
+    return function(oe) {
+      if (!T && (G[oe] = !0, Object.keys(G).length >= 200)) {
+        var ce = X ? ' with the id of "' + X + '"' : "";
+        console.warn("Over 200 classes were generated for component " + $ + ce + `.
+Consider using the attrs method, together with a style object for frequently changed styles.
+Example:
+  const Component = styled.div.attrs(props => ({
+    style: {
+      background: props.background,
+    },
+  }))\`width: 100%;\`
+
+  <Component />`), T = !0, G = {};
+      }
+    };
+  }(C, _)), Object.defineProperty(E, "toString", { value: function() {
+    return "." + E.styledComponentId;
+  } }), a && Zp(E, e, { attrs: !0, componentStyle: !0, displayName: !0, foldedComponentIds: !0, shouldForwardProp: !0, styledComponentId: !0, target: !0, withComponent: !0 }), E;
+}
+var Qe = function(e) {
+  return function t(r, n, a) {
+    if (a === void 0 && (a = Nr), !eo.isValidElementType(n)) return ln(1, String(n));
+    var s = function() {
+      return r(n, a, io.apply(void 0, arguments));
+    };
+    return s.withConfig = function(d) {
+      return t(r, n, hr({}, a, {}, d));
+    }, s.attrs = function(d) {
+      return t(r, n, hr({}, a, { attrs: Array.prototype.concat(a.attrs, d).filter(Boolean) }));
+    }, s;
+  }(Fl, e);
+};
+["a", "abbr", "address", "area", "article", "aside", "audio", "b", "base", "bdi", "bdo", "big", "blockquote", "body", "br", "button", "canvas", "caption", "cite", "code", "col", "colgroup", "data", "datalist", "dd", "del", "details", "dfn", "dialog", "div", "dl", "dt", "em", "embed", "fieldset", "figcaption", "figure", "footer", "form", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "html", "i", "iframe", "img", "input", "ins", "kbd", "keygen", "label", "legend", "li", "link", "main", "map", "mark", "marquee", "menu", "menuitem", "meta", "meter", "nav", "noscript", "object", "ol", "optgroup", "option", "output", "p", "param", "picture", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "script", "section", "select", "small", "source", "span", "strong", "style", "sub", "summary", "sup", "table", "tbody", "td", "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "u", "ul", "var", "video", "wbr", "circle", "clipPath", "defs", "ellipse", "foreignObject", "g", "image", "line", "linearGradient", "marker", "mask", "path", "pattern", "polygon", "polyline", "radialGradient", "rect", "stop", "svg", "text", "textPath", "tspan"].forEach(function(e) {
+  Qe[e] = Qe(e);
+});
+var jf = function() {
+  function e(r, n) {
+    this.rules = r, this.componentId = n, this.isStatic = jl(r), ka.registerId(this.componentId + 1);
+  }
+  var t = e.prototype;
+  return t.createStyles = function(r, n, a, s) {
+    var d = s(Yr(this.rules, n, a, s).join(""), ""), f = this.componentId + r;
+    a.insertRules(f, f, d);
+  }, t.removeStyles = function(r, n) {
+    n.clearRules(this.componentId + r);
+  }, t.renderStyles = function(r, n, a, s) {
+    r > 2 && ka.registerId(this.componentId + r), this.removeStyles(r, a), this.createStyles(r, n, a, s);
+  }, e;
+}();
+function Ea(e) {
+  for (var t = arguments.length, r = new Array(t > 1 ? t - 1 : 0), n = 1; n < t; n++) r[n - 1] = arguments[n];
+  var a = io.apply(void 0, [e].concat(r)), s = "sc-global-" + Ll(JSON.stringify(a)), d = new jf(a, s);
+  function f(m) {
+    var C = Rl(), _ = Il(), O = Yt(oo), U = Ir(C.allocateGSInstance(s)).current;
+    return ze.env.NODE_ENV !== "production" && ht.Children.count(m.children) && console.warn("The global style component " + s + " was given child JSX. createGlobalStyle does not render children."), ze.env.NODE_ENV !== "production" && a.some(function(E) {
+      return typeof E == "string" && E.indexOf("@import") !== -1;
+    }) && console.warn("Please do not use @import CSS syntax in createGlobalStyle at this time, as the CSSOM APIs we use in production do not handle it well. Instead, we recommend using a library such as react-helmet to inject a typical <link> meta tag to the stylesheet, or simply embedding it manually in your index.html <head> section for a simpler app."), C.server && h(U, m, C, O, _), ru(function() {
+      if (!C.server) return h(U, m, C, O, _), function() {
+        return d.removeStyles(U, C);
+      };
+    }, [U, m, C, O, _]), null;
+  }
+  function h(m, C, _, O, U) {
+    if (d.isStatic) d.renderStyles(m, Kp, _, U);
+    else {
+      var E = hr({}, C, { theme: Pl(C, O, f.defaultProps) });
+      d.renderStyles(m, E, _, U);
+    }
+  }
+  return ze.env.NODE_ENV !== "production" && Dl(s), ht.memo(f);
+}
+ze.env.NODE_ENV !== "production" && typeof navigator < "u" && navigator.product === "ReactNative" && console.warn(`It looks like you've imported 'styled-components' on React Native.
+Perhaps you're looking to import 'styled-components/native'?
+Read more about this at https://www.styled-components.com/docs/basics#react-native`), ze.env.NODE_ENV !== "production" && ze.env.NODE_ENV !== "test" && typeof window < "u" && (window["__styled-components-init__"] = window["__styled-components-init__"] || 0, window["__styled-components-init__"] === 1 && console.warn(`It looks like there are several instances of 'styled-components' initialized in this application. This may cause dynamic styles to not render properly, errors during the rehydration process, a missing theme prop, and makes your application bigger without good reason.
+
+See https://s-c.sh/2BAXzed for more info.`), window["__styled-components-init__"] += 1);
+const $l = () => {
+  const [e, t] = ft(), [r, n] = ft(!1), [a, s] = ft(!1), [d, f] = ft("");
+  return Tt(() => {
+    if (!d) return;
+    (() => {
+      s(null), n(!0);
+      try {
+        fetch(d).then((m) => m.json()).then((m) => {
+          t(m), n(!1);
+        }).catch((m) => {
+          s(m), n(!1);
+        });
+      } catch (m) {
+        s(m);
+      }
+    })();
+  }, [d]), [{ data: e, loading: r, error: a }, f];
+}, nn = (e) => (e || []).join(" ");
+function jr(e) {
+  "@babel/helpers - typeof";
+  return jr = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(t) {
+    return typeof t;
+  } : function(t) {
+    return t && typeof Symbol == "function" && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t;
+  }, jr(e);
+}
+function Oi(e, t) {
+  return Oi = Object.setPrototypeOf || function(n, a) {
+    return n.__proto__ = a, n;
+  }, Oi(e, t);
+}
+function Of() {
+  if (typeof Reflect > "u" || !Reflect.construct || Reflect.construct.sham) return !1;
+  if (typeof Proxy == "function") return !0;
+  try {
+    return Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {
+    })), !0;
+  } catch {
+    return !1;
+  }
+}
+function fa(e, t, r) {
+  return Of() ? fa = Reflect.construct : fa = function(a, s, d) {
+    var f = [null];
+    f.push.apply(f, s);
+    var h = Function.bind.apply(a, f), m = new h();
+    return d && Oi(m, d.prototype), m;
+  }, fa.apply(null, arguments);
+}
+function lr(e) {
+  return Nf(e) || Rf(e) || If(e) || Df();
+}
+function Nf(e) {
+  if (Array.isArray(e)) return Ni(e);
+}
+function Rf(e) {
+  if (typeof Symbol < "u" && e[Symbol.iterator] != null || e["@@iterator"] != null) return Array.from(e);
+}
+function If(e, t) {
+  if (e) {
+    if (typeof e == "string") return Ni(e, t);
+    var r = Object.prototype.toString.call(e).slice(8, -1);
+    if (r === "Object" && e.constructor && (r = e.constructor.name), r === "Map" || r === "Set") return Array.from(e);
+    if (r === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(r)) return Ni(e, t);
+  }
+}
+function Ni(e, t) {
+  (t == null || t > e.length) && (t = e.length);
+  for (var r = 0, n = new Array(t); r < t; r++) n[r] = e[r];
+  return n;
+}
+function Df() {
+  throw new TypeError(`Invalid attempt to spread non-iterable instance.
+In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
+}
+var Pf = Object.hasOwnProperty, Es = Object.setPrototypeOf, Lf = Object.isFrozen, Mf = Object.getPrototypeOf, Ff = Object.getOwnPropertyDescriptor, At = Object.freeze, Wt = Object.seal, $f = Object.create, Ul = typeof Reflect < "u" && Reflect, Ta = Ul.apply, Ri = Ul.construct;
+Ta || (Ta = function(t, r, n) {
+  return t.apply(r, n);
+});
+At || (At = function(t) {
+  return t;
+});
+Wt || (Wt = function(t) {
+  return t;
+});
+Ri || (Ri = function(t, r) {
+  return fa(t, lr(r));
+});
+var Uf = Vt(Array.prototype.forEach), js = Vt(Array.prototype.pop), Tn = Vt(Array.prototype.push), ha = Vt(String.prototype.toLowerCase), ni = Vt(String.prototype.toString), Os = Vt(String.prototype.match), or = Vt(String.prototype.replace), zf = Vt(String.prototype.indexOf), Bf = Vt(String.prototype.trim), St = Vt(RegExp.prototype.test), ai = qf(TypeError);
+function Vt(e) {
+  return function(t) {
+    for (var r = arguments.length, n = new Array(r > 1 ? r - 1 : 0), a = 1; a < r; a++)
+      n[a - 1] = arguments[a];
+    return Ta(e, t, n);
+  };
+}
+function qf(e) {
+  return function() {
+    for (var t = arguments.length, r = new Array(t), n = 0; n < t; n++)
+      r[n] = arguments[n];
+    return Ri(e, r);
+  };
+}
+function Re(e, t, r) {
+  var n;
+  r = (n = r) !== null && n !== void 0 ? n : ha, Es && Es(e, null);
+  for (var a = t.length; a--; ) {
+    var s = t[a];
+    if (typeof s == "string") {
+      var d = r(s);
+      d !== s && (Lf(t) || (t[a] = d), s = d);
+    }
+    e[s] = !0;
+  }
+  return e;
+}
+function zr(e) {
+  var t = $f(null), r;
+  for (r in e)
+    Ta(Pf, e, [r]) === !0 && (t[r] = e[r]);
+  return t;
+}
+function ia(e, t) {
+  for (; e !== null; ) {
+    var r = Ff(e, t);
+    if (r) {
+      if (r.get)
+        return Vt(r.get);
+      if (typeof r.value == "function")
+        return Vt(r.value);
+    }
+    e = Mf(e);
+  }
+  function n(a) {
+    return console.warn("fallback value for", a), null;
+  }
+  return n;
+}
+var Ns = At(["a", "abbr", "acronym", "address", "area", "article", "aside", "audio", "b", "bdi", "bdo", "big", "blink", "blockquote", "body", "br", "button", "canvas", "caption", "center", "cite", "code", "col", "colgroup", "content", "data", "datalist", "dd", "decorator", "del", "details", "dfn", "dialog", "dir", "div", "dl", "dt", "element", "em", "fieldset", "figcaption", "figure", "font", "footer", "form", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "html", "i", "img", "input", "ins", "kbd", "label", "legend", "li", "main", "map", "mark", "marquee", "menu", "menuitem", "meter", "nav", "nobr", "ol", "optgroup", "option", "output", "p", "picture", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "section", "select", "shadow", "small", "source", "spacer", "span", "strike", "strong", "style", "sub", "summary", "sup", "table", "tbody", "td", "template", "textarea", "tfoot", "th", "thead", "time", "tr", "track", "tt", "u", "ul", "var", "video", "wbr"]), ii = At(["svg", "a", "altglyph", "altglyphdef", "altglyphitem", "animatecolor", "animatemotion", "animatetransform", "circle", "clippath", "defs", "desc", "ellipse", "filter", "font", "g", "glyph", "glyphref", "hkern", "image", "line", "lineargradient", "marker", "mask", "metadata", "mpath", "path", "pattern", "polygon", "polyline", "radialgradient", "rect", "stop", "style", "switch", "symbol", "text", "textpath", "title", "tref", "tspan", "view", "vkern"]), oi = At(["feBlend", "feColorMatrix", "feComponentTransfer", "feComposite", "feConvolveMatrix", "feDiffuseLighting", "feDisplacementMap", "feDistantLight", "feFlood", "feFuncA", "feFuncB", "feFuncG", "feFuncR", "feGaussianBlur", "feImage", "feMerge", "feMergeNode", "feMorphology", "feOffset", "fePointLight", "feSpecularLighting", "feSpotLight", "feTile", "feTurbulence"]), Hf = At(["animate", "color-profile", "cursor", "discard", "fedropshadow", "font-face", "font-face-format", "font-face-name", "font-face-src", "font-face-uri", "foreignobject", "hatch", "hatchpath", "mesh", "meshgradient", "meshpatch", "meshrow", "missing-glyph", "script", "set", "solidcolor", "unknown", "use"]), si = At(["math", "menclose", "merror", "mfenced", "mfrac", "mglyph", "mi", "mlabeledtr", "mmultiscripts", "mn", "mo", "mover", "mpadded", "mphantom", "mroot", "mrow", "ms", "mspace", "msqrt", "mstyle", "msub", "msup", "msubsup", "mtable", "mtd", "mtext", "mtr", "munder", "munderover"]), Wf = At(["maction", "maligngroup", "malignmark", "mlongdiv", "mscarries", "mscarry", "msgroup", "mstack", "msline", "msrow", "semantics", "annotation", "annotation-xml", "mprescripts", "none"]), Rs = At(["#text"]), Is = At(["accept", "action", "align", "alt", "autocapitalize", "autocomplete", "autopictureinpicture", "autoplay", "background", "bgcolor", "border", "capture", "cellpadding", "cellspacing", "checked", "cite", "class", "clear", "color", "cols", "colspan", "controls", "controlslist", "coords", "crossorigin", "datetime", "decoding", "default", "dir", "disabled", "disablepictureinpicture", "disableremoteplayback", "download", "draggable", "enctype", "enterkeyhint", "face", "for", "headers", "height", "hidden", "high", "href", "hreflang", "id", "inputmode", "integrity", "ismap", "kind", "label", "lang", "list", "loading", "loop", "low", "max", "maxlength", "media", "method", "min", "minlength", "multiple", "muted", "name", "nonce", "noshade", "novalidate", "nowrap", "open", "optimum", "pattern", "placeholder", "playsinline", "poster", "preload", "pubdate", "radiogroup", "readonly", "rel", "required", "rev", "reversed", "role", "rows", "rowspan", "spellcheck", "scope", "selected", "shape", "size", "sizes", "span", "srclang", "start", "src", "srcset", "step", "style", "summary", "tabindex", "title", "translate", "type", "usemap", "valign", "value", "width", "xmlns", "slot"]), li = At(["accent-height", "accumulate", "additive", "alignment-baseline", "ascent", "attributename", "attributetype", "azimuth", "basefrequency", "baseline-shift", "begin", "bias", "by", "class", "clip", "clippathunits", "clip-path", "clip-rule", "color", "color-interpolation", "color-interpolation-filters", "color-profile", "color-rendering", "cx", "cy", "d", "dx", "dy", "diffuseconstant", "direction", "display", "divisor", "dur", "edgemode", "elevation", "end", "fill", "fill-opacity", "fill-rule", "filter", "filterunits", "flood-color", "flood-opacity", "font-family", "font-size", "font-size-adjust", "font-stretch", "font-style", "font-variant", "font-weight", "fx", "fy", "g1", "g2", "glyph-name", "glyphref", "gradientunits", "gradienttransform", "height", "href", "id", "image-rendering", "in", "in2", "k", "k1", "k2", "k3", "k4", "kerning", "keypoints", "keysplines", "keytimes", "lang", "lengthadjust", "letter-spacing", "kernelmatrix", "kernelunitlength", "lighting-color", "local", "marker-end", "marker-mid", "marker-start", "markerheight", "markerunits", "markerwidth", "maskcontentunits", "maskunits", "max", "mask", "media", "method", "mode", "min", "name", "numoctaves", "offset", "operator", "opacity", "order", "orient", "orientation", "origin", "overflow", "paint-order", "path", "pathlength", "patterncontentunits", "patterntransform", "patternunits", "points", "preservealpha", "preserveaspectratio", "primitiveunits", "r", "rx", "ry", "radius", "refx", "refy", "repeatcount", "repeatdur", "restart", "result", "rotate", "scale", "seed", "shape-rendering", "specularconstant", "specularexponent", "spreadmethod", "startoffset", "stddeviation", "stitchtiles", "stop-color", "stop-opacity", "stroke-dasharray", "stroke-dashoffset", "stroke-linecap", "stroke-linejoin", "stroke-miterlimit", "stroke-opacity", "stroke", "stroke-width", "style", "surfacescale", "systemlanguage", "tabindex", "targetx", "targety", "transform", "transform-origin", "text-anchor", "text-decoration", "text-rendering", "textlength", "type", "u1", "u2", "unicode", "values", "viewbox", "visibility", "version", "vert-adv-y", "vert-origin-x", "vert-origin-y", "width", "word-spacing", "wrap", "writing-mode", "xchannelselector", "ychannelselector", "x", "x1", "x2", "xmlns", "y", "y1", "y2", "z", "zoomandpan"]), Ds = At(["accent", "accentunder", "align", "bevelled", "close", "columnsalign", "columnlines", "columnspan", "denomalign", "depth", "dir", "display", "displaystyle", "encoding", "fence", "frame", "height", "href", "id", "largeop", "length", "linethickness", "lspace", "lquote", "mathbackground", "mathcolor", "mathsize", "mathvariant", "maxsize", "minsize", "movablelimits", "notation", "numalign", "open", "rowalign", "rowlines", "rowspacing", "rowspan", "rspace", "rquote", "scriptlevel", "scriptminsize", "scriptsizemultiplier", "selection", "separator", "separators", "stretchy", "subscriptshift", "supscriptshift", "symmetric", "voffset", "width", "xmlns"]), oa = At(["xlink:href", "xml:id", "xlink:title", "xml:space", "xmlns:xlink"]), Vf = Wt(/\{\{[\w\W]*|[\w\W]*\}\}/gm), Gf = Wt(/<%[\w\W]*|[\w\W]*%>/gm), Yf = Wt(/\${[\w\W]*}/gm), Zf = Wt(/^data-[\-\w.\u00B7-\uFFFF]/), Xf = Wt(/^aria-[\-\w]+$/), Kf = Wt(
+  /^(?:(?:(?:f|ht)tps?|mailto|tel|callto|cid|xmpp):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i
+  // eslint-disable-line no-useless-escape
+), Jf = Wt(/^(?:\w+script|data):/i), Qf = Wt(
+  /[\u0000-\u0020\u00A0\u1680\u180E\u2000-\u2029\u205F\u3000]/g
+  // eslint-disable-line no-control-regex
+), eh = Wt(/^html$/i), th = Wt(/^[a-z][.\w]*(-[.\w]+)+$/i), rh = function() {
+  return typeof window > "u" ? null : window;
+}, nh = function(t, r) {
+  if (jr(t) !== "object" || typeof t.createPolicy != "function")
+    return null;
+  var n = null, a = "data-tt-policy-suffix";
+  r.currentScript && r.currentScript.hasAttribute(a) && (n = r.currentScript.getAttribute(a));
+  var s = "dompurify" + (n ? "#" + n : "");
+  try {
+    return t.createPolicy(s, {
+      createHTML: function(f) {
+        return f;
+      },
+      createScriptURL: function(f) {
+        return f;
+      }
+    });
+  } catch {
+    return console.warn("TrustedTypes policy " + s + " could not be created."), null;
+  }
+};
+function zl() {
+  var e = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : rh(), t = function(x) {
+    return zl(x);
+  };
+  if (t.version = "2.5.7", t.removed = [], !e || !e.document || e.document.nodeType !== 9)
+    return t.isSupported = !1, t;
+  var r = e.document, n = e.document, a = e.DocumentFragment, s = e.HTMLTemplateElement, d = e.Node, f = e.Element, h = e.NodeFilter, m = e.NamedNodeMap, C = m === void 0 ? e.NamedNodeMap || e.MozNamedAttrMap : m, _ = e.HTMLFormElement, O = e.DOMParser, U = e.trustedTypes, E = f.prototype, S = ia(E, "cloneNode"), I = ia(E, "nextSibling"), F = ia(E, "childNodes"), $ = ia(E, "parentNode");
+  if (typeof s == "function") {
+    var X = n.createElement("template");
+    X.content && X.content.ownerDocument && (n = X.content.ownerDocument);
+  }
+  var G = nh(U, r), T = G ? G.createHTML("") : "", oe = n, ce = oe.implementation, Se = oe.createNodeIterator, Ie = oe.createDocumentFragment, $e = oe.getElementsByTagName, De = r.importNode, fe = {};
+  try {
+    fe = zr(n).documentMode ? n.documentMode : {};
+  } catch {
+  }
+  var ue = {};
+  t.isSupported = typeof $ == "function" && ce && ce.createHTMLDocument !== void 0 && fe !== 9;
+  var Ce = Vf, ge = Gf, He = Yf, Ae = Zf, _e = Xf, Fe = Jf, We = Qf, Ve = th, B = Kf, R = null, z = Re({}, [].concat(lr(Ns), lr(ii), lr(oi), lr(si), lr(Rs))), q = null, v = Re({}, [].concat(lr(Is), lr(li), lr(Ds), lr(oa))), Y = Object.seal(Object.create(null, {
+    tagNameCheck: {
+      writable: !0,
+      configurable: !1,
+      enumerable: !0,
+      value: null
+    },
+    attributeNameCheck: {
+      writable: !0,
+      configurable: !1,
+      enumerable: !0,
+      value: null
+    },
+    allowCustomizedBuiltInElements: {
+      writable: !0,
+      configurable: !1,
+      enumerable: !0,
+      value: !1
+    }
+  })), j = null, ie = null, re = !0, ee = !0, K = !1, se = !0, he = !1, ne = !0, de = !1, ae = !1, ye = !1, Ue = !1, me = !1, nt = !1, Xe = !0, we = !1, J = "user-content-", pe = !0, at = !1, et = {}, Me = null, ur = Re({}, ["annotation-xml", "audio", "colgroup", "desc", "foreignobject", "head", "iframe", "math", "mi", "mn", "mo", "ms", "mtext", "noembed", "noframes", "noscript", "plaintext", "script", "style", "svg", "template", "thead", "title", "video", "xmp"]), dr = null, mr = Re({}, ["audio", "video", "img", "source", "image", "track"]), jt = null, Mt = Re({}, ["alt", "class", "for", "id", "label", "name", "pattern", "placeholder", "role", "summary", "title", "value", "style", "xmlns"]), Ot = "http://www.w3.org/1998/Math/MathML", Nt = "http://www.w3.org/2000/svg", lt = "http://www.w3.org/1999/xhtml", bt = lt, Zt = !1, mt = null, gr = Re({}, [Ot, Nt, lt], ni), ut, Be = ["application/xhtml+xml", "text/html"], Xt = "text/html", ke, pt = null, _t = n.createElement("form"), Ft = function(x) {
+    return x instanceof RegExp || x instanceof Function;
+  }, vt = function(x) {
+    pt && pt === x || ((!x || jr(x) !== "object") && (x = {}), x = zr(x), ut = // eslint-disable-next-line unicorn/prefer-includes
+    Be.indexOf(x.PARSER_MEDIA_TYPE) === -1 ? ut = Xt : ut = x.PARSER_MEDIA_TYPE, ke = ut === "application/xhtml+xml" ? ni : ha, R = "ALLOWED_TAGS" in x ? Re({}, x.ALLOWED_TAGS, ke) : z, q = "ALLOWED_ATTR" in x ? Re({}, x.ALLOWED_ATTR, ke) : v, mt = "ALLOWED_NAMESPACES" in x ? Re({}, x.ALLOWED_NAMESPACES, ni) : gr, jt = "ADD_URI_SAFE_ATTR" in x ? Re(
+      zr(Mt),
+      // eslint-disable-line indent
+      x.ADD_URI_SAFE_ATTR,
+      // eslint-disable-line indent
+      ke
+      // eslint-disable-line indent
+    ) : Mt, dr = "ADD_DATA_URI_TAGS" in x ? Re(
+      zr(mr),
+      // eslint-disable-line indent
+      x.ADD_DATA_URI_TAGS,
+      // eslint-disable-line indent
+      ke
+      // eslint-disable-line indent
+    ) : mr, Me = "FORBID_CONTENTS" in x ? Re({}, x.FORBID_CONTENTS, ke) : ur, j = "FORBID_TAGS" in x ? Re({}, x.FORBID_TAGS, ke) : {}, ie = "FORBID_ATTR" in x ? Re({}, x.FORBID_ATTR, ke) : {}, et = "USE_PROFILES" in x ? x.USE_PROFILES : !1, re = x.ALLOW_ARIA_ATTR !== !1, ee = x.ALLOW_DATA_ATTR !== !1, K = x.ALLOW_UNKNOWN_PROTOCOLS || !1, se = x.ALLOW_SELF_CLOSE_IN_ATTR !== !1, he = x.SAFE_FOR_TEMPLATES || !1, ne = x.SAFE_FOR_XML !== !1, de = x.WHOLE_DOCUMENT || !1, Ue = x.RETURN_DOM || !1, me = x.RETURN_DOM_FRAGMENT || !1, nt = x.RETURN_TRUSTED_TYPE || !1, ye = x.FORCE_BODY || !1, Xe = x.SANITIZE_DOM !== !1, we = x.SANITIZE_NAMED_PROPS || !1, pe = x.KEEP_CONTENT !== !1, at = x.IN_PLACE || !1, B = x.ALLOWED_URI_REGEXP || B, bt = x.NAMESPACE || lt, Y = x.CUSTOM_ELEMENT_HANDLING || {}, x.CUSTOM_ELEMENT_HANDLING && Ft(x.CUSTOM_ELEMENT_HANDLING.tagNameCheck) && (Y.tagNameCheck = x.CUSTOM_ELEMENT_HANDLING.tagNameCheck), x.CUSTOM_ELEMENT_HANDLING && Ft(x.CUSTOM_ELEMENT_HANDLING.attributeNameCheck) && (Y.attributeNameCheck = x.CUSTOM_ELEMENT_HANDLING.attributeNameCheck), x.CUSTOM_ELEMENT_HANDLING && typeof x.CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements == "boolean" && (Y.allowCustomizedBuiltInElements = x.CUSTOM_ELEMENT_HANDLING.allowCustomizedBuiltInElements), he && (ee = !1), me && (Ue = !0), et && (R = Re({}, lr(Rs)), q = [], et.html === !0 && (Re(R, Ns), Re(q, Is)), et.svg === !0 && (Re(R, ii), Re(q, li), Re(q, oa)), et.svgFilters === !0 && (Re(R, oi), Re(q, li), Re(q, oa)), et.mathMl === !0 && (Re(R, si), Re(q, Ds), Re(q, oa))), x.ADD_TAGS && (R === z && (R = zr(R)), Re(R, x.ADD_TAGS, ke)), x.ADD_ATTR && (q === v && (q = zr(q)), Re(q, x.ADD_ATTR, ke)), x.ADD_URI_SAFE_ATTR && Re(jt, x.ADD_URI_SAFE_ATTR, ke), x.FORBID_CONTENTS && (Me === ur && (Me = zr(Me)), Re(Me, x.FORBID_CONTENTS, ke)), pe && (R["#text"] = !0), de && Re(R, ["html", "head", "body"]), R.table && (Re(R, ["tbody"]), delete j.tbody), At && At(x), pt = x);
+  }, pr = Re({}, ["mi", "mo", "mn", "ms", "mtext"]), Kt = Re({}, ["annotation-xml"]), yr = Re({}, ["title", "style", "font", "a", "script"]), Et = Re({}, ii);
+  Re(Et, oi), Re(Et, Hf);
+  var $t = Re({}, si);
+  Re($t, Wf);
+  var Cr = function(x) {
+    var N = $(x);
+    (!N || !N.tagName) && (N = {
+      namespaceURI: bt,
+      tagName: "template"
+    });
+    var Z = ha(x.tagName), le = ha(N.tagName);
+    return mt[x.namespaceURI] ? x.namespaceURI === Nt ? N.namespaceURI === lt ? Z === "svg" : N.namespaceURI === Ot ? Z === "svg" && (le === "annotation-xml" || pr[le]) : !!Et[Z] : x.namespaceURI === Ot ? N.namespaceURI === lt ? Z === "math" : N.namespaceURI === Nt ? Z === "math" && Kt[le] : !!$t[Z] : x.namespaceURI === lt ? N.namespaceURI === Nt && !Kt[le] || N.namespaceURI === Ot && !pr[le] ? !1 : !$t[Z] && (yr[Z] || !Et[Z]) : !!(ut === "application/xhtml+xml" && mt[x.namespaceURI]) : !1;
+  }, it = function(x) {
+    Tn(t.removed, {
+      element: x
+    });
+    try {
+      x.parentNode.removeChild(x);
+    } catch {
+      try {
+        x.outerHTML = T;
+      } catch {
+        x.remove();
+      }
+    }
+  }, Rt = function(x, N) {
+    try {
+      Tn(t.removed, {
+        attribute: N.getAttributeNode(x),
+        from: N
+      });
+    } catch {
+      Tn(t.removed, {
+        attribute: null,
+        from: N
+      });
+    }
+    if (N.removeAttribute(x), x === "is" && !q[x])
+      if (Ue || me)
+        try {
+          it(N);
+        } catch {
+        }
+      else
+        try {
+          N.setAttribute(x, "");
+        } catch {
+        }
+  }, Ut = function(x) {
+    var N, Z;
+    if (ye)
+      x = "<remove></remove>" + x;
+    else {
+      var le = Os(x, /^[\r\n\t ]+/);
+      Z = le && le[0];
+    }
+    ut === "application/xhtml+xml" && bt === lt && (x = '<html xmlns="http://www.w3.org/1999/xhtml"><head></head><body>' + x + "</body></html>");
+    var Te = G ? G.createHTML(x) : x;
+    if (bt === lt)
+      try {
+        N = new O().parseFromString(Te, ut);
+      } catch {
+      }
+    if (!N || !N.documentElement) {
+      N = ce.createDocument(bt, "template", null);
+      try {
+        N.documentElement.innerHTML = Zt ? T : Te;
+      } catch {
+      }
+    }
+    var je = N.body || N.documentElement;
+    return x && Z && je.insertBefore(n.createTextNode(Z), je.childNodes[0] || null), bt === lt ? $e.call(N, de ? "html" : "body")[0] : de ? N.documentElement : je;
+  }, fr = function(x) {
+    return Se.call(
+      x.ownerDocument || x,
+      x,
+      // eslint-disable-next-line no-bitwise
+      h.SHOW_ELEMENT | h.SHOW_COMMENT | h.SHOW_TEXT | h.SHOW_PROCESSING_INSTRUCTION | h.SHOW_CDATA_SECTION,
+      null,
+      !1
+    );
+  }, zt = function(x) {
+    return x instanceof _ && (typeof x.nodeName != "string" || typeof x.textContent != "string" || typeof x.removeChild != "function" || !(x.attributes instanceof C) || typeof x.removeAttribute != "function" || typeof x.setAttribute != "function" || typeof x.namespaceURI != "string" || typeof x.insertBefore != "function" || typeof x.hasChildNodes != "function");
+  }, xt = function(x) {
+    return jr(d) === "object" ? x instanceof d : x && jr(x) === "object" && typeof x.nodeType == "number" && typeof x.nodeName == "string";
+  }, ct = function(x, N, Z) {
+    ue[x] && Uf(ue[x], function(le) {
+      le.call(t, N, Z, pt);
+    });
+  }, It = function(x) {
+    var N;
+    if (ct("beforeSanitizeElements", x, null), zt(x) || St(/[\u0080-\uFFFF]/, x.nodeName))
+      return it(x), !0;
+    var Z = ke(x.nodeName);
+    if (ct("uponSanitizeElement", x, {
+      tagName: Z,
+      allowedTags: R
+    }), x.hasChildNodes() && !xt(x.firstElementChild) && (!xt(x.content) || !xt(x.content.firstElementChild)) && St(/<[/\w]/g, x.innerHTML) && St(/<[/\w]/g, x.textContent) || Z === "select" && St(/<template/i, x.innerHTML) || x.nodeType === 7 || ne && x.nodeType === 8 && St(/<[/\w]/g, x.data))
+      return it(x), !0;
+    if (!R[Z] || j[Z]) {
+      if (!j[Z] && Jt(Z) && (Y.tagNameCheck instanceof RegExp && St(Y.tagNameCheck, Z) || Y.tagNameCheck instanceof Function && Y.tagNameCheck(Z)))
+        return !1;
+      if (pe && !Me[Z]) {
+        var le = $(x) || x.parentNode, Te = F(x) || x.childNodes;
+        if (Te && le)
+          for (var je = Te.length, qe = je - 1; qe >= 0; --qe) {
+            var ot = S(Te[qe], !0);
+            ot.__removalCount = (x.__removalCount || 0) + 1, le.insertBefore(ot, I(x));
+          }
+      }
+      return it(x), !0;
+    }
+    return x instanceof f && !Cr(x) || (Z === "noscript" || Z === "noembed" || Z === "noframes") && St(/<\/no(script|embed|frames)/i, x.innerHTML) ? (it(x), !0) : (he && x.nodeType === 3 && (N = x.textContent, N = or(N, Ce, " "), N = or(N, ge, " "), N = or(N, He, " "), x.textContent !== N && (Tn(t.removed, {
+      element: x.cloneNode()
+    }), x.textContent = N)), ct("afterSanitizeElements", x, null), !1);
+  }, br = function(x, N, Z) {
+    if (Xe && (N === "id" || N === "name") && (Z in n || Z in _t))
+      return !1;
+    if (!(ee && !ie[N] && St(Ae, N))) {
+      if (!(re && St(_e, N))) {
+        if (!q[N] || ie[N]) {
+          if (
+            // First condition does a very basic check if a) it's basically a valid custom element tagname AND
+            // b) if the tagName passes whatever the user has configured for CUSTOM_ELEMENT_HANDLING.tagNameCheck
+            // and c) if the attribute name passes whatever the user has configured for CUSTOM_ELEMENT_HANDLING.attributeNameCheck
+            !(Jt(x) && (Y.tagNameCheck instanceof RegExp && St(Y.tagNameCheck, x) || Y.tagNameCheck instanceof Function && Y.tagNameCheck(x)) && (Y.attributeNameCheck instanceof RegExp && St(Y.attributeNameCheck, N) || Y.attributeNameCheck instanceof Function && Y.attributeNameCheck(N)) || // Alternative, second condition checks if it's an `is`-attribute, AND
+            // the value passes whatever the user has configured for CUSTOM_ELEMENT_HANDLING.tagNameCheck
+            N === "is" && Y.allowCustomizedBuiltInElements && (Y.tagNameCheck instanceof RegExp && St(Y.tagNameCheck, Z) || Y.tagNameCheck instanceof Function && Y.tagNameCheck(Z)))
+          ) return !1;
+        } else if (!jt[N]) {
+          if (!St(B, or(Z, We, ""))) {
+            if (!((N === "src" || N === "xlink:href" || N === "href") && x !== "script" && zf(Z, "data:") === 0 && dr[x])) {
+              if (!(K && !St(Fe, or(Z, We, "")))) {
+                if (Z)
+                  return !1;
+              }
+            }
+          }
+        }
+      }
+    }
+    return !0;
+  }, Jt = function(x) {
+    return x !== "annotation-xml" && Os(x, Ve);
+  }, Bt = function(x) {
+    var N, Z, le, Te;
+    ct("beforeSanitizeAttributes", x, null);
+    var je = x.attributes;
+    if (je) {
+      var qe = {
+        attrName: "",
+        attrValue: "",
+        keepAttr: !0,
+        allowedAttributes: q
+      };
+      for (Te = je.length; Te--; ) {
+        N = je[Te];
+        var ot = N, Pe = ot.name, kt = ot.namespaceURI;
+        if (Z = Pe === "value" ? N.value : Bf(N.value), le = ke(Pe), qe.attrName = le, qe.attrValue = Z, qe.keepAttr = !0, qe.forceKeepAttr = void 0, ct("uponSanitizeAttribute", x, qe), Z = qe.attrValue, !qe.forceKeepAttr && (Rt(Pe, x), !!qe.keepAttr)) {
+          if (!se && St(/\/>/i, Z)) {
+            Rt(Pe, x);
+            continue;
+          }
+          he && (Z = or(Z, Ce, " "), Z = or(Z, ge, " "), Z = or(Z, He, " "));
+          var er = ke(x.nodeName);
+          if (br(er, le, Z)) {
+            if (we && (le === "id" || le === "name") && (Rt(Pe, x), Z = J + Z), ne && St(/((--!?|])>)|<\/(style|title)/i, Z)) {
+              Rt(Pe, x);
+              continue;
+            }
+            if (G && jr(U) === "object" && typeof U.getAttributeType == "function" && !kt)
+              switch (U.getAttributeType(er, le)) {
+                case "TrustedHTML": {
+                  Z = G.createHTML(Z);
+                  break;
+                }
+                case "TrustedScriptURL": {
+                  Z = G.createScriptURL(Z);
+                  break;
+                }
+              }
+            try {
+              kt ? x.setAttributeNS(kt, Pe, Z) : x.setAttribute(Pe, Z), zt(x) ? it(x) : js(t.removed);
+            } catch {
+            }
+          }
+        }
+      }
+      ct("afterSanitizeAttributes", x, null);
+    }
+  }, Qt = function b(x) {
+    var N, Z = fr(x);
+    for (ct("beforeSanitizeShadowDOM", x, null); N = Z.nextNode(); )
+      ct("uponSanitizeShadowNode", N, null), !It(N) && (N.content instanceof a && b(N.content), Bt(N));
+    ct("afterSanitizeShadowDOM", x, null);
+  };
+  return t.sanitize = function(b) {
+    var x = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {}, N, Z, le, Te, je;
+    if (Zt = !b, Zt && (b = "<!-->"), typeof b != "string" && !xt(b))
+      if (typeof b.toString == "function") {
+        if (b = b.toString(), typeof b != "string")
+          throw ai("dirty is not a string, aborting");
+      } else
+        throw ai("toString is not a function");
+    if (!t.isSupported) {
+      if (jr(e.toStaticHTML) === "object" || typeof e.toStaticHTML == "function") {
+        if (typeof b == "string")
+          return e.toStaticHTML(b);
+        if (xt(b))
+          return e.toStaticHTML(b.outerHTML);
+      }
+      return b;
+    }
+    if (ae || vt(x), t.removed = [], typeof b == "string" && (at = !1), at) {
+      if (b.nodeName) {
+        var qe = ke(b.nodeName);
+        if (!R[qe] || j[qe])
+          throw ai("root node is forbidden and cannot be sanitized in-place");
+      }
+    } else if (b instanceof d)
+      N = Ut("<!---->"), Z = N.ownerDocument.importNode(b, !0), Z.nodeType === 1 && Z.nodeName === "BODY" || Z.nodeName === "HTML" ? N = Z : N.appendChild(Z);
+    else {
+      if (!Ue && !he && !de && // eslint-disable-next-line unicorn/prefer-includes
+      b.indexOf("<") === -1)
+        return G && nt ? G.createHTML(b) : b;
+      if (N = Ut(b), !N)
+        return Ue ? null : nt ? T : "";
+    }
+    N && ye && it(N.firstChild);
+    for (var ot = fr(at ? b : N); le = ot.nextNode(); )
+      le.nodeType === 3 && le === Te || It(le) || (le.content instanceof a && Qt(le.content), Bt(le), Te = le);
+    if (Te = null, at)
+      return b;
+    if (Ue) {
+      if (me)
+        for (je = Ie.call(N.ownerDocument); N.firstChild; )
+          je.appendChild(N.firstChild);
+      else
+        je = N;
+      return (q.shadowroot || q.shadowrootmod) && (je = De.call(r, je, !0)), je;
+    }
+    var Pe = de ? N.outerHTML : N.innerHTML;
+    return de && R["!doctype"] && N.ownerDocument && N.ownerDocument.doctype && N.ownerDocument.doctype.name && St(eh, N.ownerDocument.doctype.name) && (Pe = "<!DOCTYPE " + N.ownerDocument.doctype.name + `>
+` + Pe), he && (Pe = or(Pe, Ce, " "), Pe = or(Pe, ge, " "), Pe = or(Pe, He, " ")), G && nt ? G.createHTML(Pe) : Pe;
+  }, t.setConfig = function(b) {
+    vt(b), ae = !0;
+  }, t.clearConfig = function() {
+    pt = null, ae = !1;
+  }, t.isValidAttribute = function(b, x, N) {
+    pt || vt({});
+    var Z = ke(b), le = ke(x);
+    return br(Z, le, N);
+  }, t.addHook = function(b, x) {
+    typeof x == "function" && (ue[b] = ue[b] || [], Tn(ue[b], x));
+  }, t.removeHook = function(b) {
+    if (ue[b])
+      return js(ue[b]);
+  }, t.removeHooks = function(b) {
+    ue[b] && (ue[b] = []);
+  }, t.removeAllHooks = function() {
+    ue = {};
+  }, t;
+}
+var ah = zl();
+const Gt = (e) => ({ __html: ah.sanitize(e) });
+function* Xr(e = "id-", t = 0) {
+  let r = t;
+  for (; ; )
+    r += 1, yield e + r;
+}
+function ih() {
+  const e = (
+    // @ts-ignore
+    (document.currentScript && document.currentScript.src || "").match(/(.*\/)/)
+  );
+  return e && e.length > 0 ? e[0].substr(0, e[0].length - 1) : "/";
+}
+A.shape({
+  event: A.string,
+  action: A.string,
+  name: A.string,
+  region: A.string,
+  section: A.string,
+  component: A.string,
+  type: A.string,
+  text: A.string
+});
+function Bl({
+  packageName: e = "",
+  component: t = "",
+  type: r = "",
+  configuration: n = {}
+}) {
+  if (!e || !t) {
+    console.error("trackReactComponent: Missing required arguments.");
+    return;
+  }
+  window.uds = window.uds || {}, window.uds.package = window.uds.package || {}, window.uds.package[e] = {
+    component: t,
+    type: r,
+    configuration: n
+  };
+}
+const In = ({ href: e = null }) => (
+  // @ts-ignore
+  /* @__PURE__ */ p.jsx(Tr, { label: "Apply now", ariaLabel: "Apply now", href: e, color: "gold" })
+);
+In.propTypes = {
+  href: A.string
+};
+A.string;
+function so({ message: e, type: t }) {
+  const [r, n] = ft(""), s = {
+    error: {
+      className: "alert-danger",
+      icon: "fa-exclamation-triangle",
+      ariaLabel: "Error"
+    },
+    info: {
+      className: "alert-info",
+      icon: "fa-info-circle",
+      ariaLabel: "Information"
+    }
+  }[t];
+  return /* @__PURE__ */ p.jsxs(
+    "div",
+    {
+      "data-testid": "message-alert",
+      className: `alert ${s.className}`,
+      role: "alert",
+      style: {
+        display: r,
+        position: "sticky",
+        top: 0,
+        zIndex: 100
+      },
+      children: [
+        /* @__PURE__ */ p.jsx("div", { className: "alert-icon", children: /* @__PURE__ */ p.jsx(
+          "span",
+          {
+            "aria-label": s.ariaLabel,
+            className: `fa fa-icon ${s.icon}`
+          }
+        ) }),
+        /* @__PURE__ */ p.jsx("div", { className: "alert-content", children: e }),
+        /* @__PURE__ */ p.jsx("div", { className: "alert-close", children: /* @__PURE__ */ p.jsx(
+          "button",
+          {
+            type: "button",
+            className: "btn btn-circle btn-circle-alt-black close",
+            "aria-label": "Close",
+            onClick: () => n("none"),
+            children: /* @__PURE__ */ p.jsx("i", { className: "fas fa-times" })
+          }
+        ) })
+      ]
+    }
+  );
+}
+so.propTypes = {
+  type: A.oneOf(["error", "info"]).isRequired,
+  message: A.string.isRequired
+};
+function ql({ message: e }) {
+  return /* @__PURE__ */ p.jsx(so, { message: e, type: "error" });
+}
+function oh({ message: e }) {
+  return /* @__PURE__ */ p.jsx(so, { message: e, type: "info" });
+}
+const sh = Qe.div`
+  --width: 100px;
+  --color: red;
+
+  width: calc(var(--width) + 0px);
+  height: calc((var(--width) / 3) - 10px);
+  // position: absolute;
+  // top: 50%;
+  // left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+
+  .ball-loader-ball {
+    will-change: transform;
+
+    height: calc((var(--width) / 3) - 10px);
+    width: calc((var(--width) / 3) - 10px);
+
+    border-radius: 50%;
+    background-color: lightBlue;
+    position: absolute;
+    -webkit-animation: grow 1s ease-in-out infinite alternate;
+    animation: grow 1s ease-in-out infinite alternate;
+
+    &.ball1 {
+      left: 0;
+      transform-origin: 100% 50%;
+    }
+    &.ball2 {
+      left: 50%;
+      transform: translateX(-50%) scale(1);
+      animation-delay: 0.33s;
+    }
+    &.ball3 {
+      right: 0;
+      animation-delay: 0.66s;
+    }
+  }
+
+  @keyframes grow {
+    to {
+      transform: translateX(-50%) scale(0);
+    }
+  }
+`;
+function Hl() {
+  return /* @__PURE__ */ p.jsxs(sh, { "data-testid": "loader", className: "container ball-loader mt-4", children: [
+    /* @__PURE__ */ p.jsx("div", { className: "ball-loader-ball ball1" }),
+    /* @__PURE__ */ p.jsx("div", { className: "ball-loader-ball ball2" }),
+    /* @__PURE__ */ p.jsx("div", { className: "ball-loader-ball ball3" })
+  ] });
+}
+A.shape({
+  color: A.oneOf(["gold", "maroon", "gray", "dark"]),
+  content: A.shape({
+    icon: A.string,
+    header: A.string,
+    body: A.string
+  })
+});
+const Wl = A.shape({
+  ariaLabel: A.string,
+  color: A.oneOf(["gold", "maroon", "gray", "dark"]),
+  icon: A.string,
+  href: A.string,
+  label: A.string,
+  onClick: A.func,
+  size: A.oneOf(["default", "small", "xsmall"])
+}), lo = {
+  url: A.string,
+  altText: A.string,
+  cssClass: A.arrayOf(A.string)
+}, Vl = {
+  text: A.string,
+  cssClass: A.arrayOf(A.string)
+}, co = {
+  type: A.oneOf(["video", "youtube"]),
+  url: A.string,
+  altText: A.string,
+  vttUrl: A.string,
+  title: A.string
+}, lh = {
+  url: A.string,
+  text: A.string,
+  isActive: A.bool
+}, kr = A.shape({
+  ...lo
+}), Ca = A.shape({
+  ...Vl
+}), ch = A.shape({
+  ...co
+}), Gr = A.shape({
+  ...lh
+}), Gl = A.shape({
+  id: A.string,
+  sourceType: A.oneOf(["api", "shared-data-source", "static-json"]),
+  // default `api`
+  sharedDataSourceId: A.string,
+  // only if `dataSourceType == "shared-data-source"``
+  // eslint-disable-next-line react/forbid-prop-types
+  data: A.arrayOf(A.object),
+  // only if `dataSourceType == "static-json"``
+  apiUrl: A.string
+  // only if `dataSourceType == "api"``
+}), Ii = A.shape({
+  text: A.string,
+  url: A.string
+}), Br = A.shape({
+  icon: A.arrayOf(A.string),
+  title: A.string,
+  content: A.string,
+  buttonLink: Wl
+}), Di = A.arrayOf(
+  A.shape({
+    title: A.string,
+    url: A.string
+  })
+), Yl = A.shape({
+  career: Gr,
+  growth: A.oneOfType([A.number, A.string]),
+  medianSalary: A.string,
+  brightOutlook: A.bool,
+  greenOccupation: A.bool
+}), uh = {
+  hideCollegeSchool: A.bool,
+  defaultView: A.oneOf(["list-view", "grid-view"]),
+  cardDefaultImage: kr
+}, dh = A.shape({
+  ...uh
+}), uo = {
+  atAGlance: A.bool,
+  applicationRequirements: A.bool,
+  changeMajorRequirements: A.bool,
+  nextSteps: A.bool,
+  affordingCollege: A.bool,
+  flexibleDegreeOptions: A.bool,
+  careerOutlook: A.bool,
+  exampleCareers: A.bool,
+  customizeYourCollegeExperience: A.bool,
+  globalOpportunity: A.bool,
+  attendOnline: A.bool,
+  whyChooseAsu: A.bool,
+  programContactInfo: A.bool,
+  externalAnchors: A.arrayOf(
+    A.shape({
+      targetIdName: A.string,
+      text: A.string
+    })
+  )
+}, Jr = A.shape({
+  image: kr,
+  title: A.string,
+  text: A.string,
+  button: Wl
+}), Ps = A.shape({
+  faculty: Jr,
+  programs: Jr,
+  research: Jr,
+  inclusion: Jr,
+  mentors: Jr,
+  honors: Jr
+}), Zl = {
+  hide: A.bool,
+  sectionIntroText: A.string,
+  cards: Ps,
+  defaultCards: Ps
+};
+A.shape({
+  ...uo
+});
+const ci = A.shape({
+  id: A.oneOfType([A.string, A.number]),
+  value: A.string
+}), Xl = A.shape({
+  locations: A.arrayOf(ci),
+  asuLocals: A.arrayOf(ci),
+  acceleratedConcurrent: ci
+}), ph = {
+  h1: "h1",
+  h2: "h2",
+  h3: "h3",
+  h4: "h4",
+  h5: "h5",
+  h6: "h6"
+}, Kl = Object.values(ph), Ls = {
+  offeredBy: { icon: "university", title: "Offered by" },
+  locations: { icon: "map-marker-alt", title: "Location" },
+  firstRequirementMathCourse: {
+    icon: "pencil-alt",
+    title: "First Required math Course"
+  },
+  mathIntensity: { icon: "calculator", title: "Math intensity" },
+  timeCommitment: { icon: "calendar-alt", title: "Time commitment" }
+}, Jl = "grid-view", Pi = "list-view", Ql = "degree-list-programs", ec = "Sorry, Something went wrong.", fh = "STEM-OPT for international students on F-1 visas", hh = `This degree is not found.
+  This may be a temporary issue. Please try again in 5 minutes.
+  If the issue persists, the degree may no longer be available.`, mh = ih(), gh = (e) => {
+  const t = e || mh, r = `${t}/assets/img/detail-page`, n = `${t}/assets/img/listing-page`, a = {
+    dataSource: void 0,
+    introContent: {
+      image: {
+        url: `${r}/intro.jpg`,
+        altText: "Detail Page Degree"
+      }
+    },
+    hero: {
+      image: {
+        url: `${r}/hero.jpg`,
+        altText: "Detail Page Degree",
+        size: "medium"
+      },
+      title: {
+        text: "Detail Page Degree",
+        color: "black",
+        highlightColor: "gold",
+        maxWidth: "100%"
+      }
+    },
+    nextSteps: {
+      cards: {
+        learnMore: {
+          icon: ["fas", "info-circle"],
+          title: "Learn more about our programs",
+          content: "Tell us what type of student you are and we'll get you the information you need.",
+          buttonLink: {
+            label: "Request information",
+            ariaLabel: "Request information",
+            color: "maroon",
+            href: "https://admission.asu.edu/contact/request-info"
+          }
+        },
+        apply: {
+          icon: ["fas", "file-alt"],
+          title: "Apply to program",
+          content: "Arizona State University invites first-year, transfer, international, graduate and online students to apply for admission using our online application.",
+          buttonLink: {
+            label: "Apply now",
+            ariaLabel: "Apply now",
+            color: "maroon",
+            href: "https://admission.asu.edu/apply"
+          }
+        },
+        visit: {
+          icon: ["fas", "map-marker-alt"],
+          title: "Visit our campus",
+          content: "An Experience ASU visit includes a presentation on admissions, scholarships and financial aid, student housing, getting involved on campus and much more.You will also go on a student-led walking tour of campus.",
+          buttonLink: {
+            label: "Schedule a visit",
+            ariaLabel: "Schedule a visit",
+            color: "maroon",
+            href: "https://visit.asu.edu/"
+          }
+        }
+      }
+    },
+    whyChooseAsu: {
+      sectionIntroText: "ASU offers students excellent academics and unique opportunities to customize your college experience and give you an edge, including undergraduate research, internships, access to state-of-the-art facilities, and opportunities to work with world-class faculty and scientists.",
+      cards: {
+        faculty: {
+          image: {
+            url: `${r}/customize-faculty-600.jpg`,
+            altText: "World-class faculty"
+          },
+          title: "World-class faculty",
+          text: "The ASU faculty is at the forefront nationally in advancing research and discovery. Our faculty members inspire new ways of thinking, innovating and solving problems socially, culturally and economically in our region and in the international community.",
+          button: {
+            label: "Faculty excellence",
+            color: "maroon",
+            href: "https://www.asu.edu/academics/faculty-excellence"
+          }
+        },
+        programs: {
+          image: {
+            url: `${r}/customize-programs-600.jpg`,
+            altText: "Highly ranked programs"
+          },
+          title: "Highly ranked programs",
+          text: "A leading service ranking the excellence and innovation of the nation’s top universities, U.S. News & World Report rates many ASU programs among the top 25 in the country, including more than thirty programs ranked in the nation's top 10.",
+          button: {
+            label: "ASU rankings",
+            color: "maroon",
+            href: "https://www.asu.edu/rankings"
+          }
+        },
+        research: {
+          image: {
+            url: `${r}/customize-research-600.jpg`,
+            altText: "Research opportunities"
+          },
+          title: "Research opportunities",
+          text: "Students have the opportunity to work with mentors who are experts in their fields and establish professional connections that may last a lifetime. Engage in meaningful research and gain experience that may make you more competitive in the job market.",
+          button: {
+            label: "Research opportunities",
+            color: "maroon",
+            href: "https://provost.asu.edu/uresearch"
+          }
+        },
+        inclusion: {
+          image: {
+            url: `${r}/customize-inclusion-600.jpg`,
+            altText: "An inclusive environment"
+          },
+          title: "An inclusive environment",
+          text: "ASU defines our success not by whom we exclude, but by whom we include and how our students succeed. Our educational programs are designed to broaden access to a quality education and support our students’ success.",
+          button: {
+            label: "ASU Charter",
+            color: "maroon",
+            href: "https://www.asu.edu/about/charter-mission"
+          }
+        },
+        mentors: {
+          image: {
+            url: `${r}/customize-mentor-600.jpg`,
+            altText: "Career Services"
+          },
+          title: "Career Services",
+          text: "All students have access to ASU’s full-service career resources center. Get help writing your cover letter and building your resume, learn job interview skills, land an internship, and connect with hundreds of employers who are actively recruiting ASU graduates.",
+          button: {
+            label: "ASU Career Services",
+            color: "maroon",
+            href: "https://career.eoss.asu.edu/"
+          }
+        },
+        honors: {
+          image: {
+            url: `${r}/customize-honors-600.jpg`,
+            altText: "Global education"
+          },
+          title: "Global education",
+          text: "ASU offers more than 300 Global Education programs in over 65 different countries. Whether you are interested in studying abroad, internships, research or service learning, there's a program for you!",
+          button: {
+            label: "Explore",
+            color: "maroon",
+            href: "https://goglobal.asu.edu"
+          }
+        }
+      }
+    },
+    globalOpportunity: {
+      image: {
+        url: `${r}/global-opportunity.jpg`,
+        altText: "Global opportunity"
+      }
+    },
+    careerOutlook: {
+      image: {
+        url: `${r}/career-outlook.jpg`,
+        altText: "Career Outlook"
+      }
+    },
+    attendOnline: {
+      image: {
+        url: `${r}/attend-online.jpg`,
+        altText: "Attend online"
+      }
+    }
+  }, s = {
+    actionUrls: {
+      applyNowUrl: "https://admission.asu.edu/apply"
+    },
+    hero: {
+      image: {
+        url: `${n}/hero.jpg`,
+        altText: "Listing Page Degree",
+        size: "medium"
+      }
+    },
+    programList: void 0
+  };
+  return {
+    detailPageDefault: a,
+    listingPageDefault: s
+  };
+}, yh = (e) => {
+  if (typeof e == "string") return "Degrees";
+  const { program: t, cert: r } = e;
+  return t === "undergrad" && r === "true" ? "Undergraduate Minors and Certificates" : t === "undergrad" ? "Undergraduate Degrees" : t === "graduate" && r === "true" ? "Graduate Certificates" : t === "graduate" ? "Graduate Degrees" : "Degrees";
+}, po = [
+  { id: 0, value: "DTPHX", text: "Downtown Phoenix campus" },
+  { id: 1, value: "POLY", text: "Polytechnic campus" },
+  { id: 2, value: "TEMPE", text: "Tempe campus" },
+  { id: 3, value: "WEST", text: "West Valley campus" },
+  { id: 4, value: "ONLNE", text: "ASU Online" }
+], bh = po[4], tc = [
+  { id: 0, value: "COCHS", text: "ASU at Cochise" },
+  { id: 1, value: "LOSAN", text: "ASU at Los Angeles" },
+  { id: 2, value: "NEAZ", text: "ASU at Northeastern Arizona" },
+  { id: 3, value: "PIMA", text: "ASU at Pima" },
+  { id: 4, value: "CAC", text: "ASU at Pinal" },
+  { id: 5, value: "EAC", text: "ASU at TheGilaValley" },
+  { id: 6, value: "TUCSN", text: "ASU at Tucson" },
+  { id: 7, value: "YAVAP", text: "ASU at Yavapai" },
+  { id: 8, value: "AWC", text: "ASU at Yuma" },
+  { id: 9, value: "MESACITYCR", text: "ASU at Mesa City Center" },
+  { id: 10, value: "CALHC", text: "Colleges at Lake Havasu City" }
+], fo = [
+  {
+    id: 0,
+    value: "all",
+    text: "All"
+  },
+  {
+    id: 1,
+    value: "acceleratedAcadPlanCodes",
+    text: "Accelerated"
+  },
+  {
+    id: 2,
+    value: "concurrentAcadPlanCodes",
+    text: "Concurrent"
+  }
+], vh = fo[0], Li = (e) => (e == null ? void 0 : e.value) && (e == null ? void 0 : e.value) !== "all", xh = (e) => {
+  var t;
+  return ((t = [
+    ...po,
+    ...tc,
+    ...fo
+  ].find(({ value: r }) => r === e)) == null ? void 0 : t.text) || e;
+}, yt = {
+  atAGlance: {
+    targetIdName: "at-a-glange",
+    text: "At a glance"
+  },
+  applicationRequirements: {
+    targetIdName: "application-requirements",
+    text: "App. Requirements"
+  },
+  degreeRequirements: {
+    targetIdName: "degree-requirements",
+    text: "Degree Requirements"
+  },
+  changeMajorRequirements: {
+    targetIdName: "change-major-requirements",
+    text: "Change Major Requirement"
+  },
+  nextSteps: {
+    targetIdName: "next-steps",
+    text: "Next Steps"
+  },
+  affordingCollege: {
+    targetIdName: "affording-college",
+    text: "Affording College"
+  },
+  flexibleDegreeOptions: {
+    targetIdName: "flexible-degree-options",
+    text: "Flexible Degree Options",
+    acceleratedId: "flexible-accelerated-options",
+    concurrentId: "flexible-concurrent-options"
+  },
+  careerOutlook: {
+    targetIdName: "career-outlook",
+    text: "Career outlook"
+  },
+  exampleCareers: {
+    targetIdName: "example-careers",
+    text: "Example Careers"
+  },
+  // TODO: To be implemented
+  // customizeYourCollegeExperience?: CustomizeYourCollegeExperienceProps
+  globalOpportunity: {
+    targetIdName: "global-opportunity",
+    text: "Global opportunities"
+  },
+  attendOnline: {
+    targetIdName: "attend-online",
+    text: "Attend Online"
+  },
+  whyChooseAsu: {
+    targetIdName: "why-choose-asu",
+    text: "Why Choose ASU"
+  },
+  programContactInfo: {
+    targetIdName: "program-contact-info",
+    text: "Program Contact Information"
+  }
+}, wh = {
+  TEMPE: {
+    text: "Tempe campus",
+    url: "https://campus.asu.edu/tempe"
+  },
+  POLY: {
+    text: "Polytechnic campus",
+    url: "https://campus.asu.edu/polytechnic"
+  },
+  WEST: {
+    text: "West Valley campus",
+    url: "https://campus.asu.edu/west"
+  },
+  DTPHX: {
+    text: "Downtown Phoenix campus",
+    url: "https://campus.asu.edu/downtown-phoenix"
+  },
+  EAC: {
+    text: "",
+    url: "https://admission.asu.edu/transfer/thegilavalley"
+  },
+  CAC: {
+    text: "",
+    url: "https://admission.asu.edu/transfer/pinal"
+  },
+  ONLNE: {
+    text: "Online",
+    url: "https://asuonline.asu.edu"
+  },
+  CALHC: {
+    text: "Lake Havasu",
+    url: "https://havasu.asu.edu"
+  },
+  COCHS: {
+    text: "",
+    url: "https://admission.asu.edu/transfer/asu-cochise"
+  },
+  WASHD: {
+    text: "",
+    url: "https://washingtondc.asu.edu"
+  },
+  YAVAP: {
+    text: "",
+    url: "https://admission.asu.edu/transfer/asuyavapai"
+  },
+  PIMA: {
+    text: "",
+    url: "https://admission.asu.edu/transfer/pima"
+  },
+  NEAZ: {
+    text: "",
+    url: "https://admission.asu.edu/transfer/asu-northeastern-arizona"
+  },
+  LOSAN: {
+    text: "ASU@Los Angeles",
+    url: "https://california.asu.edu"
+  },
+  "TUCSN-undergrad": {
+    text: "",
+    url: "https://transfer.asu.edu/tucson"
+  },
+  "TUCSN-graduate": {
+    text: "",
+    url: "https://admission.asu.edu/contact/graduate"
+  },
+  MXCTY: {
+    text: "",
+    url: "https://admission.asu.edu/contact/graduate"
+  },
+  "AWC-undergrad": {
+    text: "",
+    url: "https://admission.asu.edu/transfer/asu-yuma"
+  },
+  "AWC-graduate": {
+    text: "",
+    url: "https://admission.asu.edu/contact/graduate"
+  }
+}, Ms = (e, t) => {
+  const r = ["TUCSN", "AWC"], n = e.toUpperCase(), a = r.includes(n) ? `${n}-${t}` : n;
+  return wh[a];
+};
+function rc({ anchorMenu: e }) {
+  var n, a;
+  const t = (n = e == null ? void 0 : e.externalAnchors) == null ? void 0 : n.map((s) => {
+    const { targetIdName: d, text: f } = s;
+    return {
+      targetIdName: d.startsWith("#") ? d.substring(1) : d,
+      text: f,
+      icon: null
+    };
+  }), r = Object.keys(yt).filter((s) => e[s]).map((s) => yt[s]).concat(t || []);
+  return /* @__PURE__ */ p.jsx(
+    vl,
+    {
+      items: r,
+      firstElementId: (a = r[0]) == null ? void 0 : a.targetIdName,
+      focusFirstFocusableElement: !1
+    }
+  );
+}
+rc.propTypes = {
+  anchorMenu: A.shape(uo)
+};
+function Sh(e, t) {
+  const r = Math.floor(e / t), n = e % t;
+  return r + (n > 0 ? 1 : 0);
+}
+const kh = "https://degrees.apps.asu.edu", Th = "https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plan/", Ch = {
+  endpoint: "https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plans",
+  filter: "activeInDegreeSearch",
+  include: `applicationDeadlines,owners,acadPlanMarketingDescription,
+    acadPlanCode,degreeDescriptionShort,acadPlanDescription,
+    degreeDescriptionText,majorMapSubplans,majorMapOnline,majorMapGeneral,
+    acceleratedAcadPlanCodes,concurrentAcadPlanCodes,academicOfficeUrl,
+    academicOfficeLocation,marketingText,fullDescription,customText,
+    mathIntensityCode,mathIntensityDescription,firstMathCourseRequired,
+    mathRequired,emailAddr,campusesOffered,changeMajorRequirementsText,
+    additionalFee,firstMathCourseRequiredSupplementalText,degreeType`,
+  degreeType: "UG"
+}, Ah = {
+  acadPlan: null,
+  endpoint: "https://api.myasuplat-dpl.asu.edu/api/codeset/acad-plan",
+  include: `applicationDeadlines,owners,acadPlanMarketingDescription,
+  acadPlanCode,degreeDescriptionShort,acadPlanDescription,
+  degreeDescriptionText,majorMapSubplans,majorMapOnline,majorMapGeneral,
+  acceleratedAcadPlanCodes,concurrentAcadPlanCodes,academicOfficeUrl,
+  academicOfficeLocation,marketingText,fullDescription,customText,
+  mathIntensityCode,mathIntensityDescription,firstMathCourseRequired,
+  mathRequired,emailAddr,campusesOffered,changeMajorRequirementsText,
+  careerData,careerOpportunities,globalExperienceText,
+  firstMathCourseRequiredSupplementalText,stemOptText,
+  admissionsRequirementsText,transferAdmissionRequirementsText,
+  asuOnlineAcadPlanUrl,degreeType,degreeRequirements,
+  graduateDegreeAdditionalRequirements,minorCourseRequirements,subplans,
+  professionalLicensureAdditionalText,professionalLicensureStandardText`
+}, Fs = (e) => e.map((t) => ({
+  title: t.acadPlanDescription,
+  url: t.academicOfficeUrl
+})).sort((t, r) => t.title.localeCompare(r.title)), _h = (e) => e == null ? void 0 : e.map((t) => ({
+  career: {
+    text: t.alternateTitle,
+    url: `${kh}/career-details/${t.onetCode}`
+  },
+  growth: t.growth,
+  medianSalary: t.salary.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0
+  }),
+  brightOutlook: !!t.brightOutlook,
+  greenOccupation: !!t.green
+}));
+function nc(e, t) {
+  const r = { ...t, ...e };
+  if (r.collegeAcadOrg && (r.collegeOrg = r.collegeAcadOrg, delete r.collegeAcadOrg), r.program) {
+    const { program: h } = r;
+    r.cert === "true" && h === "undergrad" ? r.degreeType = "UGCM" : h === "graduate" ? r.degreeType = "GR" : r.degreeType = "UG", delete r.program;
+  }
+  r.acadPlan && (r.endpoint += `/${r.acadPlan}`, delete r.acadPlan);
+  const { endpoint: n, include: a, ...s } = r, d = a.split(",").map((h) => `include=${h.trim()}`).join("&"), f = Object.keys(s).reduce(
+    (h, m) => `${h}&${m}=${r[m]}`,
+    ""
+  );
+  return `${n}?${f}&${d}`;
+}
+function ja(e, t = "h2") {
+  return (
+    /** @type {keyof JSX.IntrinsicElements} */
+    Kl.includes(e.component) ? e.component : t
+  );
+}
+function Mi(e) {
+  return typeof e != "string" ? console.error("Invalid string", e) : e == null ? void 0 : e.replace(
+    /\w\S*/g,
+    (t) => t.charAt(0).toUpperCase() + t.substr(1).toLowerCase()
+  );
+}
+function Eh(e) {
+  return /<\/?[a-z][\s\S]*>/i.test(e);
+}
+const ac = "AsuDevTools", jh = {
+  isDebug: !1
+};
+function Oh() {
+  const e = JSON.parse(localStorage.getItem(ac));
+  return e == null ? void 0 : e.isDebug;
+}
+window.__AsuDevTools = {
+  enableDebug(e) {
+    const t = JSON.stringify({
+      ...jh,
+      isDebug: e
+    });
+    localStorage.setItem(ac, t);
+  }
+};
+async function ui(e) {
+  return e != null && e.length ? (await Promise.all(
+    e.map(async (r) => {
+      try {
+        return await (await Promise.race([
+          fetch(
+            `${Th}${r}?include=academicOfficeUrl&include=acadPlanDescription`
+          ),
+          // Timeout after 5 seconds
+          new Promise(
+            (s, d) => setTimeout(() => d(new Error("timeout")), 1e4)
+          )
+        ])).json();
+      } catch (n) {
+        return console.error(
+          `Error fetching academic plan for code ${r}:`,
+          n
+        ), null;
+      }
+    })
+  )).filter((r) => r !== null) : [];
+}
+function Nh(e, t) {
+  Promise.all(e).then((r) => {
+    const n = r[0], a = r[1];
+    t({ accelerateData: n, concurrentData: a });
+  }).catch(() => {
+    t({ accelerateData: [], concurrentData: [] });
+  });
+}
+function Dn({ contents: e = [] }) {
+  const t = Xr("paragrap-");
+  return /* @__PURE__ */ p.jsx(p.Fragment, { children: e.map(
+    (r) => Eh(r.text) ? /* @__PURE__ */ p.jsx(
+      "div",
+      {
+        dangerouslySetInnerHTML: Gt(r.text)
+      },
+      t.next().value
+    ) : /* @__PURE__ */ p.jsx(
+      "p",
+      {
+        className: `${nn(r.cssClass)}`,
+        children: r.text
+      },
+      t.next().value
+    )
+  ) });
+}
+Dn.propTypes = {
+  contents: A.arrayOf(Ca)
+};
+const Rh = Ea`
+  .uds-image-overlap {
+    padding-top: 0;
+    width: auto;
+    align-items: center;
+
+    &:after{
+      height: 100%;
+    }
+    @media (max-width: 768px) {
+      padding-top: 1.5rem !important;
+    }
+  }
+`, Ih = Qe.div`
+  .uds-image-overlap.content-right &.content-wrapper,
+  .uds-image-overlap.content-left &.content-wrapper {
+    height: fit-content;
+  }
+
+  @media (max-width: 768px) {
+    & {
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .uds-image-overlap.content-left &.content-wrapper {
+      padding-left: 0;
+    }
+
+    .uds-image-overlap.content-right &.content-wrapper {
+      padding: 2.5rem;
+
+      h2 {
+        margin-top: 0;
+      }
+    }
+  }
+`, Dh = Qe.img`
+  .uds-image-overlap & {
+    width: 100%;
+    height: 100%;
+    grid-row: 2/5;
+    object-fit: cover;
+  }
+
+  .uds-image-overlap.content-right & {
+    grid-row: 1 / span 3;
+  }
+`;
+function cn({
+  title: e,
+  image: t,
+  contentDirection: r = "left",
+  contents: n = [],
+  contentChildren: a = null,
+  headingTag: s = "H3"
+}) {
+  const d = Ir(), f = Ir(), h = ja(s);
+  function m() {
+    const _ = d.current.offsetHeight;
+    f.current.style.height = `${_ * 1.2}px`;
+  }
+  return Tt(() => {
+    m();
+    let C;
+    const _ = () => {
+      clearTimeout(C), C = setTimeout(() => m(), 150);
+    };
+    return window.addEventListener("resize", _), () => window.removeEventListener("resize", _);
+  }, [f, d]), /* @__PURE__ */ p.jsxs("div", { className: `uds-image-overlap content-${r}`, children: [
+    /* @__PURE__ */ p.jsx(Rh, {}),
+    /* @__PURE__ */ p.jsx(
+      Dh,
+      {
+        ref: f,
+        className: "img-fluid",
+        src: t == null ? void 0 : t.url,
+        alt: t == null ? void 0 : t.altText,
+        onError: (C) => {
+          C.currentTarget.style.display = "none";
+        }
+      }
+    ),
+    /* @__PURE__ */ p.jsxs(Ih, { ref: d, className: "content-wrapper", children: [
+      /* @__PURE__ */ p.jsx(h, { children: /* @__PURE__ */ p.jsx("span", { className: "highlight-gold", children: e }) }),
+      /* @__PURE__ */ p.jsx(Dn, { contents: n }),
+      a
+    ] })
+  ] });
+}
+cn.propTypes = {
+  headingTag: A.string,
+  title: A.string,
+  contentDirection: A.oneOf(["left", "right"]),
+  contents: A.arrayOf(
+    A.shape({
+      text: A.string
+    })
+  ),
+  image: kr,
+  contentChildren: A.element
+};
+const ic = Ea`
+  :root {
+    --uds-dp-section-margin: 96px;
+  }
+
+  @media (max-width: 768px) {
+    :root {
+      --uds-dp-section-margin: 48px;
+    }
+  }
+
+  .element-focus:focus {
+    outline: none;
+    box-shadow: 0px 0px 0px 2px #fff, 0px 0px 0px 4px #191919 !important;
+  }
+
+  div[class^=uds-hero] h1 {
+    margin-left: 0.15em;
+
+    span {
+      margin-left: 0;
+    }
+  }
+
+  h1 span.highlight-gold,
+  h2 span.highlight-gold{
+    margin-left: 0.15em;
+  }
+
+  .card > .card-buttons {
+    padding-bottom: 8px !important;
+  }
+`, oc = Qe.main`
+  &.dg-margin-top {
+    margin-top: var(--uds-dp-section-margin);
+  }
+
+  &.main-section > section:not(.no-space),
+  & > section section:not(.no-space) {
+    margin-bottom: var(--uds-dp-section-margin);
+
+    & > * {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    & h2 {
+      line-height: 1;
+    }
+  }
+`;
+function Ph({
+  baseIconClassName1: e,
+  baseIconAriaLabel1: t,
+  baseIconStyle1: r,
+  baseIconAriaLabel2: n,
+  baseIconClassName2: a,
+  baseIconStyle2: s,
+  ariaLabel: d,
+  ariaControls: f,
+  dataId: h,
+  onClick: m = () => null
+}) {
+  const [C, _] = ft(!1), O = (S, I, F, $) => /* @__PURE__ */ p.jsx(
+    "span",
+    {
+      style: {
+        cursor: "pointer",
+        display: I
+      },
+      children: /* @__PURE__ */ p.jsx(
+        "i",
+        {
+          className: `${S}`,
+          "aria-label": F,
+          title: F,
+          style: $
+        }
+      )
+    }
+  ), U = () => {
+    _(!C), m(!C);
+  }, E = /* @__PURE__ */ p.jsxs(
+    "span",
+    {
+      "data-testid": h,
+      role: "button",
+      className: "element-focus",
+      tabIndex: 0,
+      onKeyDown: (S) => S.key === "Enter" && U(),
+      onClick: U,
+      "aria-label": d,
+      "aria-expanded": C,
+      "aria-controls": f,
+      children: [
+        O(
+          e,
+          C ? "" : "none",
+          t,
+          r
+        ),
+        O(
+          a,
+          C ? "none" : "",
+          n,
+          s
+        )
+      ]
+    }
+  );
+  return Ys(() => E, [C]);
+}
+Qe.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1070;
+  display: block;
+  max-width: 276px;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
+  display: none;
+
+  &[data-width-auto="true"] {
+    max-width: none;
+  }
+
+  &[data-show="true"] {
+    display: block;
+  }
+
+  & .popover-header {
+    padding: 0.5rem 1rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #d8d8d8;
+    border-top-left-radius: calc(0.3rem - 1px);
+    border-top-right-radius: calc(0.3rem - 1px);
+  }
+
+  & .popover-body {
+    padding: 1rem 1rem;
+    color: #212529;
+  }
+
+  #arrow,
+  #arrow::before {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: inherit;
+  }
+
+  #arrow {
+    visibility: hidden;
+  }
+
+  #arrow::before {
+    visibility: visible;
+    content: "";
+    transform: rotate(45deg);
+  }
+
+  &[data-popper-placement^="top"] > #arrow {
+    bottom: -4px;
+  }
+
+  &[data-popper-placement^="bottom"] > #arrow {
+    top: -4px;
+  }
+
+  &[data-popper-placement^="left"] > #arrow {
+    right: -4px;
+  }
+
+  &[data-popper-placement^="right"] > #arrow {
+    left: -4px;
+  }
+`;
+const di = (e) => /* @__PURE__ */ p.jsx("span", {}), Lh = ({
+  onClick: e = () => null,
+  ariaLabel: t,
+  ariaControls: r,
+  dataId: n
+}) => Ph({
+  dataId: n,
+  baseIconClassName1: "fas fa-chevron-up",
+  baseIconClassName2: "fas fa-chevron-down",
+  onClick: e,
+  ariaLabel: t,
+  ariaControls: r
+}), un = Ws(null), ho = ({ listPageProps: e, detailPageProps: t, children: r }) => {
+  const { detailPageDefault: n, listingPageDefault: a } = Ys(
+    () => gh((e || t).appPathFolder),
+    []
+  ), s = {
+    detailPageDefault: n,
+    listingPageDefault: a
+  }, d = {
+    listPageProps: e,
+    detailPageProps: t
+  };
+  return /* @__PURE__ */ p.jsx(
+    un.Provider,
+    {
+      value: {
+        state: d,
+        defaultState: s
+      },
+      children: r
+    }
+  );
+};
+ho.propTypes = {
+  children: A.oneOfType([
+    A.arrayOf(A.element),
+    A.element
+  ]),
+  listPageProps: A.shape({}),
+  detailPageProps: A.shape({})
+};
+const Mh = ({
+  dataSource: e,
+  tableView: t = [],
+  programs: r,
+  stateFilters: n
+}) => {
+  const { collegeAcadOrg: a, departmentCode: s } = e;
+  Tt(() => {
+    if (!r || !Oh()) return;
+    const d = "background:#eee; -webkit-text-stroke: 1px black; color: tomato; padding-left: 0.5rem;", f = "font-size:30px;", h = "font-size:24px;", m = "font-size: 18px; margin-left: 0.5rem;";
+    console.group("<< ASU Degree Page >>"), console.log("%c🏫 Listing Page Programs 📚", d + f), console.log(
+      `%cTotal programs found: ${r.length}`,
+      d + m
+    ), console.log("%cPrograms found", d + m), console.log(r), console.log(
+      `%cTotal programs loaded: ${t.length}`,
+      d + m
+    ), console.log("%cPrograms loaded", d + m), console.log(t), console.log("%cPage Filters", d + h), console.log(
+      `%c- collegeAcadOrg:${a}`,
+      d + m
+    ), console.log(
+      `%c- departmentCode:${s}`,
+      d + m
+    ), console.log("%cSearch Filters", d + h), console.log(n), console.groupEnd();
+  });
+}, $s = (e) => e.degreeType === "UG", sc = (e) => {
+  var t;
+  return ((t = e.applicationDeadlines) == null ? void 0 : t.length) > 0;
+}, lc = (e) => {
+  var t;
+  return ((t = e.applicationDeadlines) == null ? void 0 : t.length) > 0;
+}, Fh = (e) => Object.keys(e).length > 0 ? lc(e) || sc(e) : !0, Cn = (e) => {
+  const { owners: t } = e;
+  return t ? t.reduce(
+    (n, a) => n.percentOwned > a.percentOwned ? n : a
+  ) : null;
+};
+function an(e = {}) {
+  return {
+    getMajorDesc: () => e.acadPlanMarketingDescription,
+    getInstitution: () => "ASU00",
+    getAcadPlan: () => e.acadPlanCode,
+    /** @returns {string} */
+    getDegree: () => {
+      let t = e.degreeDescriptionShort || e.acadPlanTypeDescription;
+      return t === "CERT" && (t = "Certificate"), t;
+    },
+    /** @returns {string} */
+    getGeneralDegreeMajorMap: () => {
+      const { majorMapGeneral: t } = e, r = t == null ? void 0 : t.find(
+        (n) => n.defaultFlag === !0
+      );
+      return (r == null ? void 0 : r.url) || "";
+    },
+    isUndergradProgram: () => $s(e),
+    isPhdOrMasters: () => e.degreeDescriptionShort !== "CERT",
+    // Only called in functions that already checked if its a grad program
+    isGradProgram: () => e.degreeType === "GR",
+    // GR is present for grad degrees and grad certificates
+    isMinorOrCertificate: () => e.degreeType === "UGCM" || e.degreeType === "GR" && e.acadPlanTypeDescription === "Certificate",
+    /** @returns {"undergrad" |  "graduate"} */
+    getProgramType: () => $s(e) ? "undergrad" : "graduate",
+    getDegreeDesc: () => e.degreeDescriptionLong,
+    getDegreeDescLong: () => e.degreeDescriptionText,
+    getFullDescription: () => e.fullDescription,
+    getCurriculumUrl: () => {
+      var t;
+      return (t = e.asuOnlineAcadPlanUrl) == null ? void 0 : t.trim();
+    },
+    getAdmissionsRequirementsText: () => e.admissionsRequirementsText,
+    getMinorCourseRequirements: () => e.minorCourseRequirements,
+    getTransferAdmission: () => e.transferAdmissionRequirementsText,
+    getGraduateRequirements: () => {
+      const t = e.graduateDegreeAdditionalRequirements;
+      let r = "";
+      if ((t == null ? void 0 : t.length) > 0) {
+        const a = t.join(", or<br />");
+        r = a ? `<p>${a}</p>` : "";
+      } else
+        return r = e.degreeMajorMap, `${r}`;
+      const n = e.degreeRequirements;
+      return `${r}${n}`;
+    },
+    isOnline: () => e.asuOnlineAcadPlanUrl,
+    // Returns null if online url is not available
+    // See getGeneralDegreeMajorMap for more info
+    getOnlineMajorMapURL: () => {
+      var n;
+      const t = e.majorMapOnline, r = t == null ? void 0 : t.find(
+        (a) => a.defaultFlag === !0
+      );
+      return r ? (r == null ? void 0 : r.url) || "" : (n = t == null ? void 0 : t[t.length - 1]) == null ? void 0 : n.url;
+    },
+    hasCareerData: () => {
+      var t;
+      return (t = e.careerData) == null ? void 0 : t.length;
+    },
+    getCareerData: () => e.careerData || [],
+    /** @return {Object[]} */
+    getCampusList: () => e.campusesOffered || [],
+    hasConcurrentOrAccelerateDegrees: () => {
+      var t, r;
+      return ((t = e.acceleratedAcadPlanCodes) == null ? void 0 : t.length) || ((r = e.concurrentAcadPlanCodes) == null ? void 0 : r.length);
+    },
+    hasAccelerateDegrees: () => {
+      var t;
+      return (t = e.acceleratedAcadPlanCodes) == null ? void 0 : t.length;
+    },
+    hasConcurrentDegrees: () => {
+      var t;
+      return (t = e.concurrentAcadPlanCodes) == null ? void 0 : t.length;
+    },
+    getAccelerateDegrees: async () => e.acceleratedAcadPlanCodes ? ui(e.acceleratedAcadPlanCodes) : [],
+    getConcurrentDegrees: async () => e.concurrentAcadPlanCodes ? ui(e.concurrentAcadPlanCodes) : [],
+    getCollegeDesc: () => {
+      var t;
+      return (t = Cn(e)) == null ? void 0 : t.collegeDescription;
+    },
+    getCollegeUrl: () => {
+      var t;
+      return ((t = Cn(e)) == null ? void 0 : t.collegeUrl) || "";
+    },
+    /** @return {string} */
+    getEmailAddress: () => e.emailAddr,
+    /** @return {string} */
+    getPhone: () => {
+      var t;
+      return (t = e.phoneNumber) == null ? void 0 : t.replace("/", "-");
+    },
+    /** @return {string} */
+    getProfessionalLicensureText() {
+      const t = e.professionalLicensureStandardText || "", r = e.professionalLicensureAdditionalText || "", n = `${t}${r}`;
+      try {
+        if (new DOMParser().parseFromString(n, "text/html").querySelector("parsererror"))
+          return "";
+      } catch (a) {
+        return console.error("Error parsing HTML: ", a.message), "";
+      }
+      return n;
+    },
+    /** @return {string} */
+    getDepartmentName: () => {
+      var t;
+      return (t = Cn(e)) == null ? void 0 : t.departmentDescription;
+    },
+    /** @return {string} */
+    getPlanUrl: () => e.academicOfficeUrl,
+    // AsuProgramFee
+    hasAsuProgramFee: () => e.additionalFee,
+    // AsuLangReqFlag
+    getAsuLangReqFlag: () => e.languageRequired,
+    hasAsuLangReqFlag: () => e.languageRequired,
+    // asuMathReqFlag
+    hasMathReqFlag: () => e.mathRequired,
+    getOtherMathReqCourse: () => e.firstMathCourseRequiredSupplementalText,
+    getMathIntensity: () => e.mathIntensityDescription,
+    /** @return {string} */
+    getMinMathReq: () => {
+      const t = e.firstMathCourseRequired;
+      if (!t) return "";
+      const { subject: r, catalogNumber: n, description: a } = t;
+      return `${r} ${n} - ${a}`;
+    },
+    /** @return {string} */
+    getMarketText: () => {
+      var t;
+      return (t = e.marketingText) == null ? void 0 : t.trim();
+    },
+    /** @return {string} */
+    getAsuOfficeLoc: () => e.academicOfficeLocation || "",
+    /** @return {string} */
+    getCampusWue: () => {
+      var r;
+      const t = e.campusesOffered;
+      return t ? (r = t == null ? void 0 : t.find((n) => n.wue === !0)) == null ? void 0 : r.campusCode : null;
+    },
+    getConcurrentDegreeMajorMaps: () => ui(e.concurrentAcadPlanCodes),
+    getChangeMajor: () => e.changeMajorRequirementsText,
+    getAsuCareerOpportunity: () => e.careerOpportunities,
+    getGlobalExp: () => {
+      var t;
+      return (t = e.globalExperienceText) == null ? void 0 : t.trim();
+    },
+    /** @return {string} */
+    getCollegeAcadOrg: () => {
+      var t;
+      return (t = Cn(e)) == null ? void 0 : t.collegeAcadOrg;
+    },
+    /** @return {Array} */
+    getCollegeAcadOrgJoint: () => {
+      const { owners: t } = e;
+      return t ? t.map((n) => n.collegeAcadOrg) : [];
+    },
+    /** @return {string} */
+    getDepartmentCode: () => {
+      var t;
+      return (t = Cn(e)) == null ? void 0 : t.departmentAcadOrg;
+    },
+    /** @return {Object.<string, string>} */
+    getGraduateApplyDates: () => e.applicationDeadlines,
+    hasGraduateApplyDates: () => sc(e),
+    /** @return {Object.<string, string>} */
+    getPlanDeadlines: () => e.applicationDeadlines,
+    hasPlanDeadlines: () => lc(e),
+    isValidActiveProgram: () => Fh(e),
+    /** @return {boolean} */
+    getAsuDegSrchFlg: () => e.activeInDegreeSearch,
+    getAsuCustomText: () => e.customText,
+    getRequiredCoursesLabel: () => e.acadPlanTypeDescription === "Minor" ? "Minor" : e.acadPlanTypeDescription === "Certificate" ? "Certificate" : "Major",
+    getStemOptText: () => e.stemOptText,
+    getSubPlnMajorMaps: () => {
+      if (!e.subplans || !e.majorMapSubplans) return [];
+      let t = [...e.subplans].filter(
+        (d) => d.campusesOffered
+      );
+      const r = [...e.majorMapSubplans], n = (d, f) => d.filter(
+        (h) => h.acadSubPlanCode !== f
+      ), a = (d, f) => d.some(
+        (h) => h.acadSubPlanCode !== f
+      ), s = [];
+      for (let d = r.length - 1; d >= 0 && t.length !== 0; d -= 1) {
+        const f = r[d];
+        (f.defaultFlag || a(
+          t,
+          f.acadSubPlanCode
+        )) && (t = n(
+          t,
+          f.acadSubPlanCode
+        ), s.push(f));
+      }
+      return s;
+    },
+    getSubPln: () => e.subplans
+  };
+}
+function $h(e) {
+  const t = e.getProgramType(), r = [], n = (f) => ({
+    text: f,
+    url: ""
+  }), a = (f) => ({
+    text: "Online",
+    url: f
+  }), s = e.getCampusList().map((f) => f.campusCode);
+  s.length > 0 && r.push(
+    ...s.map(
+      (f) => f === "ONLNE" && a(e.getCurriculumUrl()) || Ms(f, t) || n(f)
+    )
+  );
+  const d = e.getCampusWue();
+  return d && r.push(
+    Ms(d, t) || n(d)
+  ), r;
+}
+const Uh = (e, t) => {
+  const r = { ...e };
+  return r.globalOpportunity && !t.getGlobalExp() && (r.globalOpportunity = !1), r.careerOutlook && !t.getAsuCareerOpportunity() && (r.careerOutlook = !1), r.attendOnline && !t.getCurriculumUrl() && (r.attendOnline = !1), r;
+}, zh = (e) => {
+  var a;
+  const t = Object.values(e).filter(
+    (s) => s === !0
+  );
+  return ((a = e == null ? void 0 : e.externalAnchors) == null ? void 0 : a.length) > 0 || t.length > 0;
+};
+function Bh(e) {
+  return "";
+}
+function qh(e) {
+  return "";
+}
+function Hh() {
+  return "";
+}
+function Oa(e, t) {
+  let r = t || "";
+  return r = r.replaceAll("{INSTITUTION_CODE}", e.getInstitution()).replaceAll("{ACAD_PLAN_CODE}", e.getAcadPlan()), r;
+}
+function cc(e, t) {
+  return `${Oa(e, t)}#${yt.flexibleDegreeOptions.acceleratedId}`;
+}
+function Us({
+  programs: e = [],
+  filters: {
+    collegeAcadOrg: t,
+    departmentCode: r,
+    acceleratedConcurrent: n,
+    locations: a = [],
+    keyword: s,
+    blacklistAcadPlans: d,
+    program: f,
+    showCerts: h
+  }
+}) {
+  const m = (F) => !t || F.getCollegeAcadOrgJoint().includes(t), C = (F) => !r || F.getDepartmentCode().includes(r), _ = (F) => {
+    var $;
+    return !a.length || (($ = F.getCampusList()) == null ? void 0 : $.some((X) => a.some((G) => G.value === X.campusCode)));
+  }, O = (F = {}) => {
+    var $;
+    return !Li(n) || (($ = F[n.value]) == null ? void 0 : $.length) > 0;
+  }, U = (F, $) => $ ? new RegExp($, "i").test(F.getFullDescription()) : !0, E = (F) => !(d != null && d.includes(F.getAcadPlan())), S = (F) => f === "undergrad" ? !0 : h === "true" && f === "graduate" ? F.isMinorOrCertificate() : F.isPhdOrMasters(), I = (F) => {
+    const $ = an(F);
+    return m($) && C($) && _($) && O(F) && U($, s) && E($) && S($);
+  };
+  return e.filter(I);
+}
+const Wh = (e) => e.sort(
+  (r, n) => r.acadPlanMarketingDescription.localeCompare(
+    n.acadPlanMarketingDescription
+  )
+), Rr = ({
+  event: e = "",
+  action: t = "",
+  name: r = "",
+  type: n = "",
+  section: a = "",
+  text: s = "",
+  region: d = "",
+  component: f = ""
+}) => {
+  const { dataLayer: h } = window, m = {
+    event: e.toLowerCase(),
+    action: t.toLowerCase(),
+    name: r.toLowerCase(),
+    type: n.toLowerCase(),
+    region: d.toLowerCase(),
+    section: a.toLowerCase(),
+    text: s.toLowerCase(),
+    component: f.toLowerCase()
+  };
+  h && h.push(m);
+};
+function mo({ breadcrumbs: e, section: t }) {
+  const r = Xr("breadcrumb-");
+  return e && /* @__PURE__ */ p.jsx("nav", { "aria-label": "breadcrumbs", "data-testid": "breadcrumbs", children: /* @__PURE__ */ p.jsx("ol", { className: "breadcrumb bg-white", children: e.map(
+    (n) => n != null && n.isActive ? /* @__PURE__ */ p.jsx(
+      "li",
+      {
+        className: "breadcrumb-item active",
+        "aria-current": "page",
+        children: /* @__PURE__ */ p.jsx(
+          "a",
+          {
+            href: n == null ? void 0 : n.url,
+            onClick: () => Rr({
+              event: "link",
+              action: "click",
+              name: "onclick",
+              type: "internal link",
+              region: "main content",
+              section: t,
+              text: n.text
+            }),
+            children: n.text
+          }
+        )
+      },
+      r.next().value
+    ) : /* @__PURE__ */ p.jsx("li", { className: "breadcrumb-item", children: /* @__PURE__ */ p.jsx(
+      "a",
+      {
+        href: n == null ? void 0 : n.url,
+        onClick: () => Rr({
+          event: "link",
+          action: "click",
+          name: "onclick",
+          type: "internal link",
+          region: "main content",
+          section: t,
+          text: n.text
+        }),
+        children: n.text
+      }
+    ) }, r.next().value)
+  ) }) });
+}
+mo.propTypes = {
+  breadcrumbs: A.arrayOf(Gr),
+  section: A.string
+};
+const Vh = () => /* @__PURE__ */ p.jsx("div", { className: "container", "data-testid": "browse-title", children: /* @__PURE__ */ p.jsx("h2", { children: /* @__PURE__ */ p.jsx("span", { className: "highlight-gold", children: "Browse degrees" }) }) }), pi = ({
+  id: e,
+  label: t,
+  selected: r,
+  multiple: n,
+  options: a,
+  onChange: s
+}) => /* @__PURE__ */ p.jsxs("div", { className: "form-group", children: [
+  /* @__PURE__ */ p.jsx("label", { htmlFor: e, children: t }),
+  /* @__PURE__ */ p.jsx(
+    "select",
+    {
+      className: "form-select",
+      id: e,
+      "data-testid": e,
+      multiple: n,
+      onChange: (d) => s(e, d),
+      value: r,
+      children: a == null ? void 0 : a.map((d) => /* @__PURE__ */ p.jsx("option", { id: d.id, value: d.value, children: d.text }, d.id))
+    }
+  )
+] }), Gh = Qe.div`
+  .hint-container {
+    margin-top: -1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .hint-container {
+      display: none;
+    }
+    .filter-action-buttons {
+      & {
+        * {
+          margin: 0;
+        }
+        .btn-link {
+          padding: 1rem;
+        }
+      }
+    }
+  }
+`, Yh = Qe.button`
+  font-weight: 400;
+  text-decoration: underline;
+`, Zh = {
+  event: "select",
+  action: "click",
+  name: "onclick"
+}, Xh = {
+  event: "link",
+  action: "click",
+  name: "onclick",
+  type: "internal link"
+}, An = {
+  isActive: !1,
+  locations: [],
+  asuLocals: [],
+  acceleratedConcurrent: { value: "all", text: "" },
+  keyword: null,
+  blacklistAcadPlans: []
+}, fi = (e) => ({
+  id: e.id,
+  value: e.value,
+  text: e.text
+}), Kh = (e) => e.map((t) => t.text).join(", "), zs = (e, t) => {
+  Rr({ ...Zh, type: e, text: t });
+}, Bs = (e) => {
+  Rr({ ...Xh, text: e });
+}, uc = ({ value: e, onChange: t, onApply: r, onClean: n }) => {
+  const a = (
+    /**
+    * @param {string} targetId
+    * @param {{ target: HTMLSelectElement}} event
+    */
+    (h, { target: { selectedOptions: m } }) => {
+      let C = [], _ = [];
+      const O = Array.from(m, fi), { locations: U, asuLocals: E } = e;
+      ({
+        locationsRender: () => {
+          C = O, _ = E;
+        },
+        asuLocalsRender: () => {
+          _ = O, C = U;
+        }
+      })[`${h}Render`](), t({
+        ...e,
+        locations: C,
+        asuLocals: _
+      }), zs({
+        locations: "location or online",
+        asuLocals: "as local"
+      }[h], Kh(O));
+    }
+  ), s = (
+    /**
+    * @param {string} targetId
+    * @param {{ target: HTMLSelectElement}} event
+    */
+    (h, { target: { selectedOptions: m } }) => {
+      t({ ...e, [h]: fi(m[0]) }), zs(
+        "accelerated/concurrent",
+        fi(m[0]).text
+      );
+    }
+  ), d = () => {
+    r == null || r({
+      ...e,
+      isActive: !0
+    });
+  }, f = () => {
+    t(An), n == null || n();
+  };
+  return /* @__PURE__ */ p.jsxs(Gh, { className: "container", "data-testid": "filters", children: [
+    /* @__PURE__ */ p.jsx("h4", { children: "Filter your results" }),
+    /* @__PURE__ */ p.jsxs("form", { className: "mt-3 uds-form row", children: [
+      /* @__PURE__ */ p.jsx("div", { className: "col-lg-4 col-md-12", children: /* @__PURE__ */ p.jsx(
+        pi,
+        {
+          multiple: !0,
+          id: "locations",
+          label: "Campuses or online",
+          selected: e.locations.map((h) => h.value),
+          options: po,
+          onChange: a
+        }
+      ) }),
+      /* @__PURE__ */ p.jsx("div", { className: "col-lg-4 col-md-12", children: /* @__PURE__ */ p.jsx(
+        pi,
+        {
+          multiple: !0,
+          id: "asuLocals",
+          label: "ASU location, ASU Local",
+          selected: e.asuLocals.map((h) => h.value),
+          options: tc,
+          onChange: a
+        }
+      ) }),
+      /* @__PURE__ */ p.jsx("div", { className: "col-lg-4 col-md-12", children: /* @__PURE__ */ p.jsx(
+        pi,
+        {
+          id: "acceleratedConcurrent",
+          label: "Accelerated, Concurrent",
+          selected: e.acceleratedConcurrent.value,
+          options: fo,
+          onChange: s
+        }
+      ) })
+    ] }),
+    /* @__PURE__ */ p.jsx("div", { className: "hint-container", children: /* @__PURE__ */ p.jsx("p", { children: /* @__PURE__ */ p.jsx("small", { children: "*CTRL + Click to select multiple" }) }) }),
+    /* @__PURE__ */ p.jsxs("div", { className: "filter-action-buttons", children: [
+      /* @__PURE__ */ p.jsx(
+        Tr,
+        {
+          "data-testid": "btn-apply-filter",
+          color: "maroon",
+          label: "Apply filters",
+          ariaLabel: "Apply filters",
+          size: "default",
+          onClick: () => {
+            d(), Bs("apply filters");
+          }
+        }
+      ),
+      /* @__PURE__ */ p.jsx(
+        Yh,
+        {
+          "data-testid": "btn-clear-filters",
+          className: "btn btn-link",
+          onClick: () => {
+            f(), Bs("clean filters");
+          },
+          children: "Clear filters"
+        }
+      )
+    ] })
+  ] });
+};
+uc.propTypes = {
+  value: Xl,
+  onChange: A.func,
+  onApply: A.func,
+  onClean: A.func
+};
+function dc({
+  value: { isActive: e, locations: t, asuLocals: r, acceleratedConcurrent: n } = {},
+  onRemove: a
+}) {
+  const s = Xr("filter-"), d = (t == null ? void 0 : t.length) + (r == null ? void 0 : r.length) + (Li(n) ? 1 : 0), f = (h, m) => {
+    const { text: C } = m;
+    return /* @__PURE__ */ p.jsxs(
+      "span",
+      {
+        tabIndex: -1,
+        role: "button",
+        "aria-label": `Remove filter ${C}`,
+        "data-filter-id": h,
+        onKeyDown: () => a(h, m),
+        onClick: () => a(h, m),
+        className: "btn btn-tag btn-tag-alt-white d-inline-flex align-items-center me-2",
+        children: [
+          /* @__PURE__ */ p.jsx("span", { className: "pe-1", children: C }),
+          /* @__PURE__ */ p.jsx("i", { className: "fas fa-times" })
+        ]
+      },
+      s.next().value
+    );
+  };
+  return /* @__PURE__ */ p.jsxs("div", { "data-testid": "filters-summary", children: [
+    /* @__PURE__ */ p.jsx("header", { children: /* @__PURE__ */ p.jsx("strong", { children: "Applied filters" }) }),
+    /* @__PURE__ */ p.jsx("div", { "data-testid": "summary-filter-tags", children: !e || d === 0 ? /* @__PURE__ */ p.jsx("span", { children: "No filters applied" }) : /* @__PURE__ */ p.jsxs(p.Fragment, { children: [
+      t.map((h) => f("locations", h)),
+      r.map((h) => f("asuLocals", h)),
+      (Li(n) ? [n] : []).map((h) => f("acceleratedConcurrent", h))
+    ] }) })
+  ] });
+}
+dc.propTypes = {
+  value: Xl,
+  onRemove: A.func
+};
+const Jh = Qe.div`
+  .photo-item {
+    padding-bottom: 1.25rem;
+  }
+`, Qh = Qe.section`
+  @media (max-width: 480px) {
+    .uds-img,
+    .uds-video-container {
+      margin: 0;
+    }
+  }
+`;
+function em({
+  applyNowUrl: e,
+  title: t,
+  contents: r,
+  photoGrid: n
+}) {
+  const a = ja(t);
+  return /* @__PURE__ */ p.jsx(
+    "section",
+    {
+      className: "container",
+      "data-type": "text-photo-grid",
+      "data-testid": "intro-content",
+      children: /* @__PURE__ */ p.jsxs("div", { className: "row", children: [
+        /* @__PURE__ */ p.jsxs("div", { className: "col-sm-12 col-md-5", children: [
+          /* @__PURE__ */ p.jsx(a, { className: "mt-0", children: /* @__PURE__ */ p.jsx("span", { className: `${nn(t.cssClass)}`, children: t.text }) }),
+          /* @__PURE__ */ p.jsx(Dn, { contents: r }),
+          /* @__PURE__ */ p.jsx(In, { href: e })
+        ] }),
+        /* @__PURE__ */ p.jsx("div", { className: "col-sm-12 col-md-7 d-none d-sm-none d-md-block", children: /* @__PURE__ */ p.jsx(Jh, { className: "row", children: n.images.map((s, d) => /* @__PURE__ */ p.jsx(
+          "div",
+          {
+            className: "photo-item col-sm-12 col-md-6 col-lg-6",
+            children: /* @__PURE__ */ p.jsx(
+              "img",
+              {
+                className: `mg-fluid ${nn(s.cssClass)}`,
+                src: s.url,
+                alt: s.altText,
+                style: { maxWidth: "100%" }
+              }
+            )
+          },
+          `img-${d + 1}`
+        )) }) })
+      ] })
+    }
+  );
+}
+function tm({
+  applyNowUrl: e,
+  title: t,
+  contents: r,
+  image: n,
+  video: a
+}) {
+  const s = ja(t);
+  return /* @__PURE__ */ p.jsx(
+    Qh,
+    {
+      className: "container",
+      "data-type": "text-media",
+      "data-testid": "intro-content",
+      children: /* @__PURE__ */ p.jsxs("div", { className: "row gy-3", children: [
+        /* @__PURE__ */ p.jsxs("div", { className: "col-sm-12 col-md-5", children: [
+          /* @__PURE__ */ p.jsx(s, { className: "mt-0", children: /* @__PURE__ */ p.jsx("span", { className: `${nn(t.cssClass)}`, children: t.text }) }),
+          /* @__PURE__ */ p.jsx(Dn, { contents: r }),
+          /* @__PURE__ */ p.jsx(In, { href: e })
+        ] }),
+        /* @__PURE__ */ p.jsxs("div", { className: "col-sm-12 col-md-7 mt-2 mt-sm-0", children: [
+          a && /* @__PURE__ */ p.jsx(
+            Qi,
+            {
+              type: a.type,
+              url: a.url,
+              vttUrl: a.vttUrl,
+              title: a.title,
+              className: "mt-0"
+            }
+          ),
+          n && /* @__PURE__ */ p.jsx("div", { className: "uds-img", children: /* @__PURE__ */ p.jsx("img", { src: n.url, className: "img-fluid", alt: n.altText }) })
+        ] })
+      ] })
+    }
+  );
+}
+function rm({
+  applyNowUrl: e,
+  title: t,
+  contents: r,
+  image: n
+}) {
+  return /* @__PURE__ */ p.jsx(
+    "section",
+    {
+      className: "container",
+      "data-type": "text-image-overlay",
+      "data-testid": "intro-content",
+      children: /* @__PURE__ */ p.jsx("div", { className: "row", children: /* @__PURE__ */ p.jsx("div", { className: "col-md-12", children: /* @__PURE__ */ p.jsx(
+        cn,
+        {
+          title: t.text,
+          contents: r,
+          image: n,
+          contentDirection: "right",
+          contentChildren: /* @__PURE__ */ p.jsx("div", { className: "mt-2", children: /* @__PURE__ */ p.jsx(In, { href: e }) })
+        }
+      ) }) })
+    }
+  );
+}
+const nm = ({ applyNowUrl: e, title: t, contents: r }) => {
+  const n = ja(t);
+  return /* @__PURE__ */ p.jsx("section", { className: "container", "data-type": "text", "data-testid": "intro-content", children: /* @__PURE__ */ p.jsxs("div", { className: "row", children: [
+    /* @__PURE__ */ p.jsx("div", { className: "col-sm-12 col-md-5", children: /* @__PURE__ */ p.jsx(n, { className: "mt-0", children: /* @__PURE__ */ p.jsx("span", { className: `${nn(t.cssClass)}`, children: t.text }) }) }),
+    /* @__PURE__ */ p.jsxs("div", { className: "col-sm-12 col-md-7", children: [
+      /* @__PURE__ */ p.jsx(Dn, { contents: r }),
+      /* @__PURE__ */ p.jsx(In, { href: e })
+    ] })
+  ] }) });
+}, go = ({
+  applyNowUrl: e,
+  type: t,
+  title: r,
+  contents: n,
+  image: a,
+  video: s,
+  photoGrid: d
+}) => ({
+  text: () => nm({ applyNowUrl: e, title: r, contents: n }),
+  "text-media": () => tm({
+    applyNowUrl: e,
+    title: r,
+    contents: n,
+    image: a,
+    video: s
+  }),
+  "text-image-overlay": () => rm({ applyNowUrl: e, title: r, contents: n, image: a }),
+  "text-photo-grid": () => em({
+    applyNowUrl: e,
+    title: r,
+    contents: n,
+    image: a,
+    photoGrid: d
+  }),
+  undefined: () => (console.error(
+    `the type '${t}' is not supported by the 'IntroContent' component.`
+  ), null)
+})[t]();
+go.propTypes = {
+  applyNowUrl: A.string,
+  type: A.oneOf([
+    "text",
+    "text-media",
+    "text-image-overlay",
+    "text-photo-grid"
+  ]).isRequired,
+  video: A.shape({ ...co }),
+  image: A.shape({ ...lo }),
+  header: Ca,
+  title: A.shape({
+    ...Vl,
+    component: A.oneOf(Kl)
+  }),
+  contents: A.arrayOf(Ca),
+  photoGrid: A.shape({
+    images: A.arrayOf(kr)
+  })
+};
+const Na = {
+  programs: A.arrayOf(A.object),
+  totalRows: A.number,
+  loading: A.bool,
+  actionUrls: A.shape({
+    applyNowUrl: A.string,
+    majorInfoUrl: A.string,
+    majorInfoOnlineUrl: A.string
+  }),
+  degreesPerPage: A.number
+}, am = Qe.div`
+  & {
+    ul {
+      margin-top: 1.5rem;
+      margin-bottom: 0;
+      list-style: none;
+      padding: 0;
+
+      li:not(:last-child) {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+  .accordion .card.card-foldable {
+    border-bottom: 1px solid #d0d0d0;
+  }
+`, pc = ({ programs: e, actionUrls: t }) => {
+  var d, f, h, m, C;
+  const { state: r } = Yt(un), n = (f = (d = r == null ? void 0 : r.listPageProps) == null ? void 0 : d.programList) == null ? void 0 : f.settings, a = ((C = (m = (h = r == null ? void 0 : r.listPageProps) == null ? void 0 : h.programList) == null ? void 0 : m.dataSource) == null ? void 0 : C.program) === "graduate", s = e.map((_) => {
+    const O = an(_), U = () => {
+      var $;
+      const I = O.isOnline() ? O.getOnlineMajorMapURL() : O.getGeneralDegreeMajorMap();
+      let F;
+      try {
+        F = `<a href=${($ = new URL(I)) == null ? void 0 : $.toString()}>${O.getRequiredCoursesLabel()} Map</a>`;
+      } catch {
+        return "";
+      }
+      return F;
+    }, E = () => `<div>
+        ${O.hasConcurrentDegrees() ? "<div className='cell-container'>concurrent</div>" : ""}
+        ${O.hasAccelerateDegrees() ? `<div className="cell-container">
+                <a href=${cc(
+      O,
+      t.majorInfoUrl
+    )}>
+                  4+1 years
+                </a>
+              </div>` : ""}
+    </div>`;
+    return {
+      content: {
+        header: O.getMajorDesc(),
+        body: `<ul>
+        <li>
+          <strong>Major:</strong>
+          <br />
+            <a href=${Oa(O, t.majorInfoUrl)}>
+              ${O.getMajorDesc()}
+            </a>
+        </li>
+        <li>
+          <strong>Degree:</strong>
+          <br />${O.getDegree()}
+        </li>
+        ${a ? "" : `<li>
+              <strong>Required Courses:</strong>
+              <br />${U()}
+            </li>`}
+        <li>
+          <strong>Campus or location:</strong>
+          <br />${O.getCampusList().map((S) => Mi(S.campusCode)).join(", ")}
+        </li>
+        <li>
+          <strong>Accelerated/Concurrent:</strong>
+          <br />${E() || "-"}
+        </li>
+        ${n != null && n.hideCollegeSchool ? "" : ` <li>
+                  <strong>College/School:</strong>
+                  <br />
+                  <a href=${O.getCollegeUrl()}>
+                    ${O.getCollegeDesc()}
+                  </a>
+                </li>`}
+      </ul>`
+      }
+    };
+  });
+  return /* @__PURE__ */ p.jsx(am, { "data-testid": "accordion-view", children: /* @__PURE__ */ p.jsx(qi, { cards: s }) });
+};
+pc.propTypes = {
+  ...Na
+};
+const im = Qe.section`
+  margin: auto;
+
+  .card-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    order: 3;
+    margin: 0 1rem 1rem;
+
+    .card-button {
+      column-gap: 0;
+      padding: 0;
+      width: fit-content;
+    }
+    .card-button .btn {
+      margin: 0;
+    }
+  }
+`;
+function fc({ programs: e, loading: t, actionUrls: r }) {
+  var h, m, C, _;
+  const { defaultState: n, state: a } = Yt(un), s = (_ = (C = (m = (h = a == null ? void 0 : a.listPageProps) == null ? void 0 : h.programList) == null ? void 0 : m.settings) == null ? void 0 : C.cardDefaultImage) == null ? void 0 : _.url, d = n.detailPageDefault.hero.image.url, f = s || d;
+  return /* @__PURE__ */ p.jsx(
+    im,
+    {
+      id: Ql,
+      className: "container row",
+      "data-loading": t,
+      "data-testid": "grid-view",
+      children: e.map((O) => {
+        const U = an(O);
+        return /* @__PURE__ */ p.jsx("div", { className: "col col-sm-12 col-md-4 col-lg-3 mb-2", children: /* @__PURE__ */ p.jsx(
+          gt,
+          {
+            type: "degree",
+            horizontal: !1,
+            clickable: !1,
+            image: f,
+            imageAltText: "An example image",
+            title: U.getMajorDesc(),
+            linkLabel: "View Program Details",
+            linkUrl: Oa(U, r.majorInfoUrl),
+            buttons: [
+              {
+                color: "maroon",
+                size: "small",
+                label: "Reqeuest Info",
+                href: Hh()
+              },
+              {
+                color: "gold",
+                size: "small",
+                label: "Apply",
+                href: r.applyNowUrl
+              }
+            ]
+          }
+        ) });
+      })
+    }
+  );
+}
+fc.propTypes = {
+  ...Na
+};
+const om = [
+  {
+    dataKey: "Major",
+    label: "Major",
+    className: "major",
+    sortable: !0,
+    contentTemplate: ({ resolver: e, rowIndex: t, actionUrls: r, onClick: n }) => /* @__PURE__ */ p.jsxs("div", { className: "cell-container", children: [
+      /* @__PURE__ */ p.jsx("a", { href: Oa(e, r == null ? void 0 : r.majorInfoUrl), children: e.getMajorDesc() }),
+      /* @__PURE__ */ p.jsx(
+        Lh,
+        {
+          dataId: "show-row-detail",
+          ariaLabel: `${e.getMajorDesc()} arrow`,
+          ariaControls: `row-info-${t}`,
+          onClick: (a) => n(t, a)
+        }
+      )
+    ] })
+  },
+  {
+    dataKey: "Degree",
+    label: "Degree",
+    className: "degree",
+    contentTemplate: ({ resolver: e }) => /* @__PURE__ */ p.jsxs("div", { className: "cell-container", children: [
+      /* @__PURE__ */ p.jsx("span", { children: e.getDegree() }),
+      /* @__PURE__ */ p.jsx(
+        di,
+        {
+          popover: {
+            title: e.getDegreeDesc(),
+            body: e.getDegreeDescLong(),
+            withAuto: !1
+          }
+        }
+      )
+    ] })
+  },
+  {
+    dataKey: "RequiredCourses",
+    label: "Required Courses",
+    className: "required-course",
+    contentTemplate: ({ resolver: e }) => {
+      var a;
+      const r = e.isOnline() ? e.getOnlineMajorMapURL() : e.getGeneralDegreeMajorMap();
+      let n;
+      try {
+        const s = (a = new URL(r)) == null ? void 0 : a.toString();
+        n = /* @__PURE__ */ p.jsxs("a", { href: s, children: [
+          e.getRequiredCoursesLabel(),
+          " Map"
+        ] });
+      } catch {
+        return "";
+      }
+      return n;
+    }
+  },
+  {
+    dataKey: "Location",
+    label: "Campus or location",
+    className: "campus-location",
+    sortable: !0,
+    contentTemplate: ({ resolver: e }) => {
+      const t = Xr("campus-");
+      return /* @__PURE__ */ p.jsx("div", { children: e.getCampusList().map((r, n, a) => /* @__PURE__ */ p.jsxs("div", { className: "cell-container", children: [
+        /* @__PURE__ */ p.jsx("span", { children: `${Mi(
+          xh(r.campusCode)
+        )}${n < a.length - 1 ? ", " : ""}` }, r.campusCode),
+        /* @__PURE__ */ p.jsx("span", { children: /* @__PURE__ */ p.jsx(
+          di,
+          {
+            popover: {
+              title: Mi(r.campusCode),
+              body: () => fetch(Bh(r.campusCode)),
+              withAuto: !0
+            }
+          }
+        ) })
+      ] }, t.next().value)) });
+    }
+  },
+  // TODO: THIS COMPONENT IS CURRENTLY DEFERRED
+  {
+    dataKey: "AcceleratedConcurrent",
+    label: "Accelerated/ Concurrent",
+    className: "accelerated-concurrent",
+    sortable: !0,
+    contentTemplate: ({ resolver: e, actionUrls: t }) => /* @__PURE__ */ p.jsxs("div", { children: [
+      e.getConcurrentDegrees().then((r) => r).length > 0 && /* @__PURE__ */ p.jsx("div", { className: "cell-container", children: "concurrent" }),
+      e.hasConcurrentOrAccelerateDegrees() && /* @__PURE__ */ p.jsxs("div", { className: "cell-container", children: [
+        /* @__PURE__ */ p.jsx("a", { href: cc(e, t.majorInfoUrl), children: "4+1 years" }),
+        /* @__PURE__ */ p.jsx(
+          di,
+          {
+            popover: {
+              title: "4+1 years",
+              body: () => fetch(qh(e.getAcadPlan())),
+              withAuto: !1
+            }
+          }
+        )
+      ] })
+    ] })
+  },
+  {
+    dataKey: "CollegeSchool",
+    label: "College/School",
+    className: "college",
+    sortable: !0,
+    contentTemplate: ({ resolver: e }) => /* @__PURE__ */ p.jsx("a", { href: e.getCollegeUrl(), children: e.getCollegeDesc() })
+  }
+  // TODO: THIS COMPONENT IS CURRENTLY DEFERRED
+  // {
+  //   dataKey: "compare-fav",
+  //   label: "Compare and favorite",
+  //   className: "compare-fav",
+  //   // todo: refactor this solution
+  //   headerTemplate: () => (
+  //     <div>
+  //       <InfoButtonIcon
+  //         onMouseOver={null}
+  //         onClick={() => alert("Compare and favorite: info....")}
+  //       />
+  //     </div>
+  //   ),
+  //   contentTemplate: ({ row, rowIndex }) => (
+  //     <form className="uds-form cell-container">
+  //       <div className="form-check m-0">
+  //         <input
+  //           className="form-check-input"
+  //           type="checkbox"
+  //           id={`fav-button-${rowIndex}`}
+  //           value="option1"
+  //         />
+  //         <label
+  //           className="form-check-label"
+  //           htmlFor={`fav-button-${rowIndex}`}
+  //         >
+  //           &nbsp;
+  //         </label>
+  //       </div>
+  //       <FavButton onClick={() => saveFav(row["AcadPlan"])} />
+  //     </form>
+  //   ),
+  // },
+  // TODO: THIS COMPONENT IS CURRENTLY DEFERRED
+  // {
+  //   dataKey: "compare-apply-info",
+  //   label: "",
+  //   hasInfo: true,
+  //   ariaLabel: "Apply Now or Request Info",
+  //   className: "apply-info",
+  //   contentTemplate: ({ resolver }) => (
+  //     <div className="row flex-column  align-items-end p-1">
+  //       <ApplyNow
+  //         onClick={() =>
+  //           // todo: refactor this solution
+  //           alert("APPLY NOW: TODO...")
+  //         }
+  //       />
+  //       <RequestInfo
+  //         href={requestInfoLink(
+  //           resolver.getAcadPlan(),
+  //           resolver.getMajorDesc(),
+  //           resolver.getEmailAddress()
+  //         )}
+  //       />
+  //     </div>
+  //   ),
+  // },
+], sm = io`
+  @keyframes loading {
+    40% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: 100% 0;
+    }
+  }
+
+  &[data-loading="true"] {
+    td {
+      position: relative;
+
+      .bar {
+        background-color: #e7e7e7;
+        height: 14px;
+        border-radius: 7px;
+        width: 80%;
+      }
+
+      &:after {
+        position: absolute;
+        transform: translateY(-50%);
+        top: 50%;
+        left: 0;
+        content: "";
+        display: block;
+        width: 100%;
+        height: 24px;
+        background-image: linear-gradient(
+          100deg,
+          rgba(255, 255, 255, 0),
+          rgba(255, 255, 255, 0.5) 60%,
+          rgba(255, 255, 255, 0) 80%
+        );
+        background-size: 200px 24px;
+        background-position: -100px 0;
+        background-repeat: no-repeat;
+        animation: loading 1s infinite;
+      }
+    }
+  }
+`, lm = Qe.table`
+  ${sm}
+  --table-border-color: #e5e5e5;
+
+  background-color: #fafafa;
+  border: 1px solid var(--table-border-color);
+  border-collapse: collapse;
+  padding: 5px;
+
+  width: 100%;
+  margin: 0 auto;
+  clear: both;
+  border-spacing: 0;
+
+  a {
+    text-decoration: none;
+  }
+
+  thead {
+    background: #d0d0d0;
+    th {
+      outline: none;
+      :focus {
+        box-shadow: 0px 0px 0px 2px #fff, 0px 0px 0px 4px #191919 !important;
+      }
+    }
+  }
+
+  th,
+  td {
+    padding: 8px 12px;
+    // display: inline-block;
+  }
+
+  tr {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+
+    td {
+      vertical-align: top;
+    }
+
+    .major {
+      width: 250px;
+      a {
+        font-weight: 700;
+      }
+    }
+
+    .degree {
+      width: 75px;
+    }
+
+    .required-course {
+      width: 100px;
+    }
+
+    .campus-location {
+      width: 90px;
+      & > div {
+        width: fit-content;
+      }
+    }
+
+    .accelerated-concurrent {
+      width: 120px;
+    }
+
+    .college {
+      width: 210px;
+    }
+
+    .compare-fav {
+      // width: 180px;
+    }
+
+    .apply-info {
+      width: 168px;
+      & .btn {
+        width: fit-content;
+        :first-child {
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      border: 1px solid var(--table-border-color);
+      border-top: 0;
+
+      &:not(.row-info):hover {
+        background-color: #e8e8e8;
+      }
+
+      .info-apply .cell-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0.5rem;
+      }
+
+      td .cell-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 0.5rem;
+      }
+    }
+
+    tr.row-info {
+      td > div {
+        position: relative;
+      }
+
+      input.togle-more-text {
+        opacity: 0;
+        position: absolute;
+        pointer-events: none;
+
+        &:checked + .desc-long {
+          max-height: fit-content;
+          overflow: auto;
+        }
+
+        &:not(:checked) + .desc-long::after {
+          content: " ";
+          height: 1rem;
+          background: rgba(250, 250, 250, 0.9);
+          box-shadow: -1px -2px 20px 15px #fafafa;
+          width: 100%;
+          position: absolute;
+          bottom: 0;
+        }
+
+        &:checked + .desc-long + .label-more-less {
+          .label-more {
+            display: none;
+          }
+          .label-less {
+            display: inline;
+          }
+        }
+
+        &:not(:checked) + .desc-long + .label-more-less {
+          .label-more {
+            display: inline;
+          }
+          .label-less {
+            display: none;
+          }
+        }
+      }
+
+      .desc-long {
+        max-height: 200px;
+        overflow: hidden;
+        transform: max-width 0.6;
+        p:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      label.label-more-less {
+        cursor: pointer;
+        line-height: normal;
+        color: #8c1d40;
+        text-align: right;
+        border: 0;
+        margin: 0;
+        font-weight: 400;
+        display: inline;
+        position: absolute;
+        bottom: 0.2rem;
+        right: -2.5rem;
+      }
+    }
+
+    tr.row-info {
+      td:first-child {
+        flex-basis: 55%;
+      }
+
+      td:last-child {
+      }
+    }
+
+    tr:not([data-is-open="true"]) + tr.row-info {
+      overflow: hidden;
+      height: 0;
+    }
+
+    tr[data-is-open="true"] + tr.row-info {
+      height: auto;
+    }
+  }
+`, cm = ({ resolver: e, id: t }) => {
+  const r = nu(), n = (a) => {
+    a.key === "Enter" && (r == null || r.current.click());
+  };
+  return /* @__PURE__ */ p.jsxs("div", { children: [
+    /* @__PURE__ */ p.jsx("header", { children: /* @__PURE__ */ p.jsx("strong", { children: "Program Description:" }) }),
+    /* @__PURE__ */ p.jsx("input", { className: "togle-more-text", type: "checkbox", id: `#${t}` }),
+    /* @__PURE__ */ p.jsx(
+      "div",
+      {
+        className: "desc-long",
+        id: t,
+        dangerouslySetInnerHTML: Gt(
+          e.getFullDescription()
+        )
+      }
+    ),
+    /* @__PURE__ */ p.jsxs(
+      "label",
+      {
+        ref: r,
+        className: "label-more-less element-focus",
+        htmlFor: `#${t}`,
+        role: "button",
+        tabIndex: 0,
+        onKeyDown: n,
+        children: [
+          /* @__PURE__ */ p.jsx("span", { "data-testid": "more-text", className: "label-more", children: "[...more]" }),
+          /* @__PURE__ */ p.jsx("span", { "data-testid": "less-text", className: "label-less", children: "[...less]" })
+        ]
+      }
+    )
+  ] });
+}, um = ({ resolver: e }) => /* @__PURE__ */ p.jsxs("div", { children: [
+  /* @__PURE__ */ p.jsxs("div", { children: [
+    /* @__PURE__ */ p.jsx("strong", { children: "Additional Program Fee: " }),
+    e.hasAsuProgramFee() ? "Yes" : "No"
+  ] }),
+  /* @__PURE__ */ p.jsxs("div", { children: [
+    /* @__PURE__ */ p.jsx("strong", { children: "Second Language Requirement: " }),
+    e.hasAsuLangReqFlag() ? "Yes" : "No"
+  ] }),
+  e.hasMathReqFlag() && /* @__PURE__ */ p.jsx("div", { children: /* @__PURE__ */ p.jsxs("div", { children: [
+    /* @__PURE__ */ p.jsx("strong", { children: "First Required Math Course:" }),
+    /* @__PURE__ */ p.jsx("span", { children: e.getMinMathReq() }),
+    e.getOtherMathReqCourse() && /* @__PURE__ */ p.jsx(
+      "span",
+      {
+        dangerouslySetInnerHTML: Gt(
+          e.getOtherMathReqCourse()
+        )
+      }
+    )
+  ] }) }),
+  e.getMathIntensity() && /* @__PURE__ */ p.jsxs("div", { children: [
+    /* @__PURE__ */ p.jsx("strong", { children: "Math Intensity:" }),
+    e.getMathIntensity()
+  ] })
+] }), dm = Xr("row-"), hc = ({ programs: e, totalRows: t, loading: r, actionUrls: n }) => {
+  var C, _;
+  const a = ht.useRef(null), s = ht.useRef(null), { state: d } = Yt(un), f = (_ = (C = d == null ? void 0 : d.listPageProps) == null ? void 0 : C.programList) == null ? void 0 : _.settings;
+  let h = om;
+  d.listPageProps.programList.dataSource.program === "graduate" && (h = h.filter((O) => O.dataKey !== "RequiredCourses")), f != null && f.hideCollegeSchool && (h = h.filter((O) => O.dataKey !== "CollegeSchool"));
+  const m = (O, U) => {
+    const E = s.current.children;
+    Array.prototype.forEach.call(
+      E,
+      (I, F) => F !== O && I.setAttribute("data-is-open", "false")
+    ), s.current.children[O].setAttribute("data-is-open", String(U));
+  };
+  return /* @__PURE__ */ p.jsx("section", { className: "container mb-4", "data-testid": "list-view", children: /* @__PURE__ */ p.jsxs(
+    lm,
+    {
+      id: Ql,
+      ref: a,
+      "data-loading": r,
+      title: `${t} program found`,
+      children: [
+        /* @__PURE__ */ p.jsx("thead", { children: /* @__PURE__ */ p.jsx("tr", { role: "row", children: h.map((O) => {
+          var U;
+          return /* @__PURE__ */ p.jsx(
+            "th",
+            {
+              tabIndex: 0,
+              className: `${O.className}`,
+              scope: "col",
+              "aria-label": O.ariaLabel,
+              children: ((U = O.headerTemplate) == null ? void 0 : U.call(O)) || /* @__PURE__ */ p.jsx("span", { children: O.label })
+            },
+            O.dataKey
+          );
+        }) }) }),
+        /* @__PURE__ */ p.jsxs("tbody", { ref: s, "data-testid": "program-rows", children: [
+          e.length === 0 ? /* @__PURE__ */ p.jsx("tr", { role: "presentation", children: /* @__PURE__ */ p.jsx(
+            "td",
+            {
+              colSpan: h.length,
+              "aria-label": "No result found for the filters applied",
+              children: " "
+            }
+          ) }) : null,
+          // programs
+          e.map((O, U) => {
+            const E = dm.next().value, S = U * 2, I = an(O);
+            return /* @__PURE__ */ p.jsxs(Zs, { children: [
+              /* @__PURE__ */ p.jsx("tr", { role: "row", children: h.map((F) => {
+                var $;
+                return /* @__PURE__ */ p.jsx(
+                  "td",
+                  {
+                    className: `${F.className}`,
+                    children: ($ = F.contentTemplate) == null ? void 0 : $.call(F, {
+                      resolver: I,
+                      col: F,
+                      row: O,
+                      rowIndex: S,
+                      onClick: m,
+                      actionUrls: n
+                    })
+                  },
+                  `${E}-${F.dataKey}`
+                );
+              }) }, E),
+              /* @__PURE__ */ p.jsxs(
+                "tr",
+                {
+                  id: `row-info-${S}`,
+                  className: "row-info",
+                  children: [
+                    /* @__PURE__ */ p.jsx("td", { colSpan: 3, children: cm({ resolver: I, id: `${E}-more-text` }) }, `${E}-info`),
+                    /* @__PURE__ */ p.jsx("td", { colSpan: 2, children: um({ resolver: I }) }, `${E}-extra-info`)
+                  ]
+                },
+                `${E}-row-info`
+              )
+            ] }, E);
+          })
+        ] })
+      ]
+    }
+  ) });
+};
+hc.propTypes = {
+  ...Na
+};
+const pm = Ea`
+
+  .mobile-view {
+    display: none;
+  }
+  [data-view-type="list-view"] {
+    @media (max-width: 768px) {
+      .desktop-view {
+        display: none;
+      }
+      .mobile-view {
+        display: block;
+        .card-foldable .card-header h4 a {
+          color: #8c1d40;
+        }
+      }
+    }
+  }
+`, fm = {
+  [Jl]: fc,
+  [Pi]: hc
+};
+function mc({
+  dataViewComponent: e,
+  loading: t,
+  programs: r,
+  actionUrls: n,
+  degreesPerPage: a
+}) {
+  let s;
+  a ? typeof a != "number" && (s = parseInt(a, 10)) : s = 8;
+  const d = a || s, f = Sh(r.length, d), h = fm[e], [m, C] = ft([]), _ = (O, U) => {
+    const E = (U - 1) * d, S = E + d;
+    C(r.slice(E, S));
+  };
+  return Tt(() => {
+    C(r.slice(0, d));
+  }, [r]), /* @__PURE__ */ p.jsxs("section", { "data-testid": "program-list", "data-view-type": e, children: [
+    /* @__PURE__ */ p.jsx(pm, {}),
+    /* @__PURE__ */ p.jsx("div", { className: "desktop-view", children: /* @__PURE__ */ p.jsx(
+      h,
+      {
+        loading: t,
+        programs: m,
+        totalRows: r == null ? void 0 : r.length,
+        actionUrls: n,
+        degreesPerPage: a || s
+      }
+    ) }),
+    /* @__PURE__ */ p.jsx("div", { className: "mobile-view mb-2", children: /* @__PURE__ */ p.jsx(
+      pc,
+      {
+        loading: t,
+        programs: m,
+        totalRows: r == null ? void 0 : r.length,
+        actionUrls: n,
+        degreesPerPage: a || s
+      }
+    ) }),
+    r.length > 0 ? /* @__PURE__ */ p.jsx(
+      Ji,
+      {
+        totalNumbers: 7,
+        type: "default",
+        background: "white",
+        totalPages: f,
+        onChange: _,
+        showFirstButton: !0,
+        showLastButton: !0
+      }
+    ) : /* @__PURE__ */ p.jsx("section", { className: "container no-space", children: /* @__PURE__ */ p.jsx(oh, { message: "No result found for the filters applied" }) })
+  ] });
+}
+mc.propTypes = {
+  dataViewComponent: A.string,
+  ...Na,
+  degreesPerPage: A.number
+};
+const hm = Qe.div`
+  label[for="search-field"] {
+    margin-bottom: 0;
+  }
+
+  &[data-searching="true"] button {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px #191919 !important;
+  }
+`, gc = ({ value: e, onChange: t, onSearch: r }) => {
+  const [n, a] = ft(!1);
+  let s;
+  Tt(() => () => clearTimeout(s), []);
+  const d = (f) => {
+    Rr({
+      event: "search",
+      action: "type",
+      name: "onenter",
+      type: "search degree programs",
+      text: f
+    });
+  };
+  return /* @__PURE__ */ p.jsx(
+    hm,
+    {
+      className: "container mt-5",
+      "data-searching": n,
+      "data-testid": "search-bar",
+      children: /* @__PURE__ */ p.jsx(
+        "form",
+        {
+          "data-testid": "search-bar-form",
+          className: "uds-form p-0 col-md-6 col-sm-12",
+          onSubmit: (f) => {
+            f.preventDefault(), r(), a(!0), s = setTimeout(() => a(!1), 500), clearTimeout(s);
+          },
+          children: /* @__PURE__ */ p.jsxs("div", { className: "form-group mb-0 me-2", children: [
+            /* @__PURE__ */ p.jsx("label", { htmlFor: "search-field", children: "Search" }),
+            /* @__PURE__ */ p.jsxs("div", { className: "d-flex row align-items-baseline g-3", children: [
+              /* @__PURE__ */ p.jsx("div", { className: "col-sm-12 col-md-6 align-self-end", children: /* @__PURE__ */ p.jsx(
+                "input",
+                {
+                  "data-testid": "search-field",
+                  id: "search-field",
+                  value: e,
+                  type: "text",
+                  className: "form-control",
+                  placeholder: "Search degree programs",
+                  onChange: (f) => {
+                    t(f.target.value), d(f.target.value);
+                  }
+                }
+              ) }),
+              /* @__PURE__ */ p.jsx("div", { className: "col-sm-12 col-md-6 mt-2 mt-sm-0", children: /* @__PURE__ */ p.jsx(
+                Tr,
+                {
+                  "data-testid": "search-button",
+                  color: "maroon",
+                  label: "Search now",
+                  ariaLabel: "Search now",
+                  size: "default",
+                  onClick: r
+                }
+              ) })
+            ] })
+          ] })
+        }
+      )
+    }
+  );
+};
+gc.propTypes = {
+  value: A.string,
+  onChange: A.func,
+  onSearch: A.func
+};
+const mm = Qe(oc)`
+  .filter-switch-container {
+    gap: 1rem;
+  }
+  @media (max-width: 768px) {
+    & {
+      font-size: 0.9rem;
+    }
+  }
+`, gm = Ea`
+  @media (max-width: 480px) {
+      div[class^=uds-hero] {
+        grid-template-rows: 1fr auto auto 1.5rem auto;
+    }
+  }
+`, ym = Qe.div.attrs({ className: "container" })`
+  border-bottom: 1px solid #d0d0d0;
+  margin-bottom: calc(var(--uds-dp-section-margin) / 2);
+  padding-bottom: calc(var(--uds-dp-section-margin) / 2);
+`, yo = ({
+  appPathFolder: e,
+  actionUrls: t,
+  hasSearchBar: r = !0,
+  hasFilters: n = !0,
+  hero: a,
+  introContent: s,
+  programList: d,
+  degreesPerPage: f
+}) => {
+  var Y;
+  const [{ data: h, loading: m, error: C }, _] = $l(), [O, U] = ft(!1), [E, S] = ft([]), [I, F] = ft([]), [$, X] = ft(""), G = (Y = d.settings) == null ? void 0 : Y.defaultView, T = [Pi, Jl].includes(G) ? G : Pi, [oe, ce] = ft(T), Se = nc(d.dataSource, Ch), { defaultState: Ie } = Yt(un), { listingPageDefault: $e } = Ie, {
+    collegeAcadOrg: De,
+    departmentCode: fe,
+    showInactivePrograms: ue,
+    blacklistAcadPlans: Ce,
+    program: ge,
+    cert: He
+  } = d.dataSource, [Ae, _e] = ft({
+    ...An
+  }), [Fe, We] = ft({
+    ...An
+  });
+  Mh({
+    dataSource: d.dataSource,
+    tableView: E,
+    programs: h,
+    stateFilters: Ae
+  }), Tt(() => {
+    typeof window < "u" && Bl({
+      packageName: "app-degree-pages",
+      component: "ListingPage",
+      type: "NA",
+      configuration: {
+        programList: d,
+        degreesPerPage: f
+      }
+    });
+  }, []), Tt(() => {
+    _(Se);
+  }, [Se]), Tt(() => {
+    let j = Wh(h || []);
+    j = Us({
+      programs: j,
+      filters: {
+        collegeAcadOrg: De,
+        departmentCode: fe,
+        blacklistAcadPlans: Ce,
+        program: ge,
+        showCerts: He
+      }
+    }), F(j), S(j);
+  }, [h, f]);
+  const Ve = async (j) => {
+    const { acceleratedConcurrent: ie, locations: re, asuLocals: ee, keyword: K } = j;
+    U(!0), _(Se);
+    const se = Us({
+      programs: I,
+      filters: {
+        collegeAcadOrg: De,
+        departmentCode: fe,
+        acceleratedConcurrent: ie,
+        locations: ee.length > 0 ? re.concat(bh) : re,
+        keyword: K,
+        showInactivePrograms: ue ?? !1,
+        blacklistAcadPlans: Ce,
+        program: ge
+      }
+    });
+    _e({ ...j }), We({ ...j }), S(se), U(!1);
+  }, B = async () => {
+    const j = {
+      ...Fe,
+      keyword: $
+    };
+    Ve(j);
+  }, R = (j) => {
+    m || O || Ve(j);
+  }, z = async (j) => {
+    _e(j);
+  }, q = () => {
+    _e(An), We(An), S(I), X("");
+  }, v = (j, { value: ie }) => {
+    const re = j === "acceleratedConcurrent" ? vh : Fe[j].filter((K) => K.value !== ie), ee = {
+      ...Fe,
+      [j]: re
+    };
+    Ve(ee);
+  };
+  return /* @__PURE__ */ p.jsxs(p.Fragment, { children: [
+    /* @__PURE__ */ p.jsx(ic, {}),
+    /* @__PURE__ */ p.jsx(gm, {}),
+    C && /* @__PURE__ */ p.jsx(ql, { message: ec }),
+    a != null && a.hide ? null : /* @__PURE__ */ p.jsx("section", { "data-testid": "hero", children: /* @__PURE__ */ p.jsx(
+      Rn,
+      {
+        image: (a == null ? void 0 : a.image) || $e.hero.image,
+        title: {
+          text: yh(d.dataSource),
+          highlightColor: "gold",
+          ...a == null ? void 0 : a.title,
+          maxWidth: "100%"
+        },
+        contents: a == null ? void 0 : a.contents
+      }
+    ) }),
+    /* @__PURE__ */ p.jsxs(mm, { "data-is-loading": m, className: "main-section dg-margin-top", children: [
+      (s == null ? void 0 : s.breadcrumbs) && /* @__PURE__ */ p.jsx("div", { className: "container mt-4 mb-0", children: /* @__PURE__ */ p.jsx(
+        mo,
+        {
+          breadcrumbs: s.breadcrumbs,
+          section: a ? a.title.text : ""
+        }
+      ) }),
+      s ? /* @__PURE__ */ p.jsx(
+        go,
+        {
+          applyNowUrl: (t == null ? void 0 : t.applyNowUrl) || $e.actionUrls.applyNowUrl,
+          type: s.type,
+          header: s.header,
+          title: s.title,
+          contents: s.contents,
+          image: s.image,
+          video: s.video,
+          photoGrid: s.photoGrid
+        }
+      ) : null,
+      r || n ? /* @__PURE__ */ p.jsxs("section", { className: "no-space", children: [
+        /* @__PURE__ */ p.jsx(Vh, {}),
+        r ? /* @__PURE__ */ p.jsx(
+          gc,
+          {
+            value: $,
+            onChange: X,
+            onSearch: B
+          }
+        ) : null,
+        n ? /* @__PURE__ */ p.jsx(
+          uc,
+          {
+            value: Ae,
+            onChange: z,
+            onApply: R,
+            onClean: q
+          }
+        ) : null,
+        /* @__PURE__ */ p.jsx(ym, {})
+      ] }) : null,
+      /* @__PURE__ */ p.jsx("section", { className: "container", children: /* @__PURE__ */ p.jsx("div", { className: "d-flex justify-content-between filter-switch-container", children: n ? /* @__PURE__ */ p.jsx(
+        dc,
+        {
+          value: Fe,
+          onRemove: v
+        }
+      ) : null }) }),
+      m || O ? /* @__PURE__ */ p.jsx(Hl, {}) : /* @__PURE__ */ p.jsx(
+        mc,
+        {
+          dataViewComponent: oe,
+          loading: m || O,
+          programs: E,
+          actionUrls: t,
+          degreesPerPage: f
+        }
+      )
+    ] })
+  ] });
+};
+yo.propTypes = {
+  appPathFolder: A.string,
+  actionUrls: A.shape({
+    applyNowUrl: A.string
+  }),
+  hasSearchBar: A.bool,
+  hasFilters: A.bool,
+  hero: A.shape(Rn.propTypes),
+  introContent: A.shape(go.propTypes),
+  programList: A.shape({
+    dataSource: Gl,
+    settings: dh
+  }),
+  degreesPerPage: A.number
+};
+const yc = (e) => /* @__PURE__ */ p.jsx(ho, { listPageProps: e, children: /* @__PURE__ */ p.jsx(yo, { ...e }) });
+yc.propTypes = yo.propTypes;
+const bm = Qe.section`
+  position: relative;
+  padding-top: var(--uds-dp-section-margin);
+  padding-bottom: var(--uds-dp-section-margin);
+`, vm = Qe.div`
+  background-image: url("https://asu.github.io/asu-unity-stack/@asu/unity-bootstrap-theme/static/media/TopoPatternWhite.529b0b3d.png");
+  background-position: center;
+  background-size: contain;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  max-width: 1920px;
+  height: 100%;
+  z-index: -1;
+`;
+function xm() {
+  return /* @__PURE__ */ p.jsxs(
+    bm,
+    {
+      className: "container",
+      id: yt.affordingCollege.targetIdName,
+      "data-testid": "affording-college",
+      children: [
+        /* @__PURE__ */ p.jsx(vm, {}),
+        /* @__PURE__ */ p.jsx("h2", { children: /* @__PURE__ */ p.jsx("span", { className: "highlight-gold", children: "Affording college" }) }),
+        /* @__PURE__ */ p.jsxs("div", { className: "mt-2 row", children: [
+          /* @__PURE__ */ p.jsx("div", { className: "mt-2 col-12 col-md-6 col-lg-4", children: /* @__PURE__ */ p.jsx(
+            gt,
+            {
+              icon: ["fas", "calculator"],
+              title: "Tuition estimator",
+              body: "The tuition estimator shows the tuition and fee breakdown for your particular major, campus and residency status without financial aid.",
+              buttons: [
+                {
+                  label: "Estimate tuition and fees",
+                  ariaLabel: "Estimate tuition and fees",
+                  color: "maroon",
+                  href: "https://tuition.asu.edu/cost-calculator/tuition"
+                }
+              ]
+            }
+          ) }),
+          /* @__PURE__ */ p.jsx("div", { className: "mt-2 col-12 col-md-6 col-lg-4", children: /* @__PURE__ */ p.jsx(
+            gt,
+            {
+              icon: ["fas", "award"],
+              title: "Scholarships",
+              body: "Scholarships are a type of aid that does not need to be paid back. Some you apply for and some are automatic.",
+              buttons: [
+                {
+                  label: "Learn about scholarships",
+                  ariaLabel: "Learn about scholarships",
+                  color: "maroon",
+                  href: "https://scholarships.asu.edu/"
+                }
+              ]
+            }
+          ) }),
+          /* @__PURE__ */ p.jsx("div", { className: "mt-2 col-12 col-md-6 col-lg-4", children: /* @__PURE__ */ p.jsx(
+            gt,
+            {
+              icon: ["fas", "hand-holding-usd"],
+              title: "Financial aid",
+              body: "There are many financial aid options available for students. In fact, more than 80 percent of all ASU students receive some form of financial assistance every year.",
+              buttons: [
+                {
+                  label: "Explore financial aid",
+                  ariaLabel: "Explore financial aid",
+                  color: "maroon",
+                  href: "https://tuition.asu.edu/financial-aid"
+                }
+              ]
+            }
+          ) })
+        ] })
+      ]
+    }
+  );
+}
+var bc = { exports: {} };
+(function(e) {
+  (function() {
+    var t = {}.hasOwnProperty;
+    function r() {
+      for (var s = "", d = 0; d < arguments.length; d++) {
+        var f = arguments[d];
+        f && (s = a(s, n(f)));
+      }
+      return s;
+    }
+    function n(s) {
+      if (typeof s == "string" || typeof s == "number")
+        return s;
+      if (typeof s != "object")
+        return "";
+      if (Array.isArray(s))
+        return r.apply(null, s);
+      if (s.toString !== Object.prototype.toString && !s.toString.toString().includes("[native code]"))
+        return s.toString();
+      var d = "";
+      for (var f in s)
+        t.call(s, f) && s[f] && (d = a(d, f));
+      return d;
+    }
+    function a(s, d) {
+      return d ? s ? s + " " + d : s + d : s;
+    }
+    e.exports ? (r.default = r, e.exports = r) : window.classNames = r;
+  })();
+})(bc);
+var wm = bc.exports;
+const Sm = /* @__PURE__ */ Ui(wm), km = Qe.ul`
+  display: inline-flex;
+  list-style: none;
+  padding: 0;
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    .btn {
+      width: max-content;
+      margin-left: 0;
+      &:not(:first-child) {
+        margin-top: 1rem;
+      }
+    }
+  }
+`, Tm = ({
+  transferRequirements: e = "",
+  additionalRequirements: t = ""
+}) => {
+  const r = [
+    {
+      label: "Freshman",
+      href: "https://admission.asu.edu/freshman/apply"
+    },
+    { label: "Transfer", href: "https://admission.asu.edu/transfer/apply" },
+    {
+      label: "International",
+      href: "https://admission.asu.edu/international/undergrad-apply"
+    },
+    {
+      label: "Readmission",
+      href: "https://admission.asu.edu/undergrad/readmission"
+    }
+  ], n = [];
+  return t != null && t.trim() && n.push({
+    content: {
+      header: "Additional Requirements",
+      body: t
+    }
+  }), e != null && e.trim() && n.push({
+    content: {
+      header: "Transfer Admission Requirements",
+      body: e
+    }
+  }), /* @__PURE__ */ p.jsxs(p.Fragment, { children: [
+    /* @__PURE__ */ p.jsx("p", { children: "All students are required to meet general university admission requirements" }),
+    /* @__PURE__ */ p.jsx(
+      km,
+      {
+        className: Sm("", {
+          "mb-0": n.length === 0
+        }),
+        children: r.map(({ label: a, href: s }) => /* @__PURE__ */ p.jsx("li", { children: /* @__PURE__ */ p.jsx(
+          Tr,
+          {
+            ariaLabel: a,
+            color: "maroon",
+            href: s,
+            label: a,
+            size: "small"
+          }
+        ) }, a))
+      }
+    ),
+    n.length > 0 && /* @__PURE__ */ p.jsx("div", { className: "mt-2 mb-4", children: /* @__PURE__ */ p.jsx(qi, { cards: n, openedCard: 1 }) })
+  ] });
+};
+function vc({
+  graduateRequirements: e,
+  transferRequirements: t,
+  isMinorOrCertificate: r,
+  additionalRequirements: n,
+  minorRequirements: a
+}) {
+  let s;
+  return e || r ? s = r ? "Program requirements" : "Degree requirements" : s = r ? "Program requirements" : "Admission requirements", /* @__PURE__ */ p.jsxs(p.Fragment, { children: [
+    /* @__PURE__ */ p.jsxs(
+      "section",
+      {
+        id: yt.applicationRequirements.targetIdName,
+        "data-testid": "application-requirements",
+        children: [
+          /* @__PURE__ */ p.jsx("h2", { children: /* @__PURE__ */ p.jsx("span", { className: "highlight-gold", children: s }) }),
+          e || r ? /* @__PURE__ */ p.jsx(
+            "div",
+            {
+              dangerouslySetInnerHTML: Gt(
+                e || a
+              )
+            }
+          ) : Tm({
+            transferRequirements: t,
+            additionalRequirements: n
+          })
+        ]
+      }
+    ),
+    e || r ? /* @__PURE__ */ p.jsxs(
+      "section",
+      {
+        id: yt.degreeRequirements.targetIdName,
+        "data-testid": "degree-requirements",
+        children: [
+          /* @__PURE__ */ p.jsx("h2", { children: /* @__PURE__ */ p.jsx("span", { className: "highlight-gold", children: "Admission requirements" }) }),
+          /* @__PURE__ */ p.jsx(
+            "div",
+            {
+              dangerouslySetInnerHTML: Gt(
+                n
+              )
+            }
+          )
+        ]
+      }
+    ) : null
+  ] });
+}
+vc.propTypes = {
+  graduateRequirements: A.string,
+  transferRequirements: A.string,
+  isMinorOrCertificate: A.bool,
+  additionalRequirements: A.string,
+  minorRequirements: A.string
+};
+const Qr = ({ item: e, type: t }) => {
+  const r = Xr("glance-"), n = () => typeof e == "object" ? e.map((a, s) => {
+    const d = ["", "#"].includes(a.url) ? null : a.url;
+    let f = "";
+    return s > 0 && s < e.length - 1 && (f = ", "), s === e.length - 1 && e.length > 1 && (f = " or "), /* @__PURE__ */ p.jsxs(Zs, { children: [
+      f,
+      /* @__PURE__ */ p.jsx("a", { href: d, rel: "noreferrer", target: "_blank", children: a.text })
+    ] }, r.next().value);
+  }) : e;
+  return /* @__PURE__ */ p.jsxs("li", { children: [
+    /* @__PURE__ */ p.jsx("i", { className: `fas fa-${Ls[t].icon} fa-li` }),
+    /* @__PURE__ */ p.jsxs("strong", { children: [
+      Ls[t].title,
+      ": "
+    ] }),
+    n()
+  ] });
+};
+Qr.propTypes = {
+  item: A.oneOfType([
+    A.arrayOf(Ii),
+    A.string
+  ]),
+  type: A.string
+};
+const xc = ({
+  offeredBy: e,
+  locations: t,
+  firstRequirementMathCourse: r,
+  mathIntensity: n,
+  timeCommitment: a
+}) => /* @__PURE__ */ p.jsxs(
+  "section",
+  {
+    id: yt.atAGlance.targetIdName,
+    "data-testid": "at-aglance",
+    children: [
+      /* @__PURE__ */ p.jsx("h2", { children: /* @__PURE__ */ p.jsx("span", { className: "highlight-gold", children: "At a glance: program details" }) }),
+      /* @__PURE__ */ p.jsxs("ul", { className: "uds-list fa-ul maroon pt-2 pb-0 pe-0", children: [
+        e && /* @__PURE__ */ p.jsx(Qr, { item: [e], type: "offeredBy" }),
+        t && /* @__PURE__ */ p.jsx(Qr, { item: t, type: "locations" }),
+        r && /* @__PURE__ */ p.jsx(
+          Qr,
+          {
+            item: r,
+            type: "firstRequirementMathCourse"
+          }
+        ),
+        n && /* @__PURE__ */ p.jsx(Qr, { item: n, type: "mathIntensity" }),
+        a && /* @__PURE__ */ p.jsx(Qr, { item: a, type: "timeCommitment" })
+      ] })
+    ]
+  }
+);
+xc.propTypes = {
+  offeredBy: Ii.isRequired,
+  locations: A.arrayOf(Ii).isRequired,
+  firstRequirementMathCourse: A.string.isRequired,
+  mathIntensity: A.string,
+  timeCommitment: A.string
+};
+const Cm = `
+ASU offers this program in an online format
+ with multiple enrollment sessions throughout
+  the year. Applicants may view the program
+   description and request more information.`;
+function wc({ image: e, learnMoreLink: t, contents: r }) {
+  const n = `linear-gradient(180deg, #19191900 0%, #191919c9 100%),url('${e.url}')`, a = Xr("attend-online-");
+  return /* @__PURE__ */ p.jsx(
+    "section",
+    {
+      id: yt.attendOnline.targetIdName,
+      className: "uds-card-and-image",
+      style: {
+        backgroundImage: n
+      },
+      "data-testid": "attend-online",
+      children: /* @__PURE__ */ p.jsx("div", { className: "uds-card-and-image-container", children: /* @__PURE__ */ p.jsxs("div", { className: "card card-centered", children: [
+        /* @__PURE__ */ p.jsx("i", { className: "fas fa-wifi fa-2x card-icon-top" }),
+        /* @__PURE__ */ p.jsx("div", { className: "card-header", children: /* @__PURE__ */ p.jsx("h3", { className: "card-title", children: "Attend online" }) }),
+        /* @__PURE__ */ p.jsx("div", { className: "card-body", children: r ? r.map((s) => /* @__PURE__ */ p.jsx("p", { children: s }, a.next().value)) : /* @__PURE__ */ p.jsx("p", { children: Cm }) }),
+        /* @__PURE__ */ p.jsx("div", { className: "card-button", children: /* @__PURE__ */ p.jsx(
+          Tr,
+          {
+            label: "Learn about online options",
+            ariaLabel: "Learn about online options",
+            href: t,
+            color: "maroon",
+            size: "small"
+          }
+        ) })
+      ] }) })
+    }
+  );
+}
+wc.propTypes = {
+  learnMoreLink: A.string,
+  image: kr,
+  contents: A.arrayOf(
+    A.shape({
+      text: A.string
+    })
+  )
+};
+const Am = Qe.section`
+  width: 100%;
+  & a {
+    word-break: break-word;
+  }
+`, Sc = ({ contents: e, image: t }) => /* @__PURE__ */ p.jsx(
+  Am,
+  {
+    id: yt.careerOutlook.targetIdName,
+    "data-testid": "career-outlook",
+    children: /* @__PURE__ */ p.jsx(
+      cn,
+      {
+        headingTag: "H2",
+        title: yt.careerOutlook.text,
+        contents: e,
+        image: t
+      }
+    )
+  }
+);
+Sc.propTypes = cn.propTypes;
+const _m = Qe.div`
+  & p:last-of-type {
+    margin-bottom: 0;
+  }
+
+  & a {
+    word-break: break-word;
+  }
+`;
+function kc({ content: e }) {
+  return /* @__PURE__ */ p.jsxs(
+    "section",
+    {
+      id: yt.changeMajorRequirements.targetIdName,
+      className: "change-your-major",
+      "data-testid": "change-your-major",
+      children: [
+        /* @__PURE__ */ p.jsx("h2", { children: /* @__PURE__ */ p.jsx("span", { className: "highlight-gold", children: "Change your major requirements for current students" }) }),
+        /* @__PURE__ */ p.jsx(
+          _m,
+          {
+            dangerouslySetInnerHTML: Gt(e)
+          }
+        )
+      ]
+    }
+  );
+}
+kc.propTypes = {
+  content: A.string
+};
+function Tc({ content: e = "" }) {
+  return /* @__PURE__ */ p.jsx(
+    "div",
+    {
+      "data-testid": "custom-text",
+      className: "mt-3",
+      dangerouslySetInnerHTML: Gt(e)
+    }
+  );
+}
+Tc.propTypes = {
+  content: A.string
+};
+const Cc = `
+  width: unset !important;
+  min-width: unset !important;
+`, Ac = Qe.i`
+  color: #fecc41;
+  font-size: 1.2rem;
+  ${Cc}
+`, _c = Qe.i`
+  color: #78be21;
+  ${Cc}
+`;
+function Ec({ data: e }) {
+  return /* @__PURE__ */ p.jsx("div", { className: "uds-table mb-1", children: /* @__PURE__ */ p.jsxs("table", { children: [
+    /* @__PURE__ */ p.jsx("thead", { children: /* @__PURE__ */ p.jsxs("tr", { children: [
+      /* @__PURE__ */ p.jsx("th", { scope: "col", children: "Career" }),
+      /* @__PURE__ */ p.jsx("th", { scope: "col", className: "text-end", children: "Growth*" }),
+      /* @__PURE__ */ p.jsx("th", { scope: "col", className: "text-end", children: "Median Salary*" })
+    ] }) }),
+    /* @__PURE__ */ p.jsx("tbody", { children: e == null ? void 0 : e.map((t) => /* @__PURE__ */ p.jsxs("tr", { children: [
+      /* @__PURE__ */ p.jsxs("th", { scope: "row", style: { fontWeight: "normal" }, children: [
+        /* @__PURE__ */ p.jsx("a", { href: t.career.url, target: "_blank", rel: "noreferrer", children: t.career.text }),
+        t.greenOccupation && /* @__PURE__ */ p.jsx(_c, { className: "fas fa-leaf ms-1" }),
+        t.brightOutlook && /* @__PURE__ */ p.jsx(Ac, { className: "fas fa-sun ms-1" })
+      ] }),
+      /* @__PURE__ */ p.jsxs("td", { className: "text-end", children: [
+        +t.growth,
+        "%"
+      ] }),
+      /* @__PURE__ */ p.jsx("td", { className: "text-end", children: t.medianSalary || 0 })
+    ] }, t.career.url)) })
+  ] }) });
+}
+Ec.propTypes = {
+  data: A.arrayOf(Yl)
+};
+function jc({ tableData: e }) {
+  return /* @__PURE__ */ p.jsxs(
+    "section",
+    {
+      id: yt.exampleCareers.targetIdName,
+      className: "container",
+      "data-testid": "example-careers",
+      children: [
+        /* @__PURE__ */ p.jsx("h3", { children: "Example careers" }),
+        /* @__PURE__ */ p.jsx("p", { children: "Example job titles and salaries listed below are not necessarily entry level, and students should take into consideration how years of experience and geographical location may affect pay scales. Some jobs also may require advanced degrees, certifications or state-specific licensure." }),
+        /* @__PURE__ */ p.jsxs("div", { className: "mt-4 mb-4", children: [
+          /* @__PURE__ */ p.jsx(Ec, { data: e }),
+          /* @__PURE__ */ p.jsx("p", { children: /* @__PURE__ */ p.jsx("small", { children: "* Data obtained from the Occupational Information Network (O*NET) under sponsorship of the U.S. Department of Labor/Employment and Training Administration (USDOL/ETA)." }) })
+        ] }),
+        /* @__PURE__ */ p.jsxs("div", { className: "d-flex", children: [
+          /* @__PURE__ */ p.jsxs("p", { className: "me-3", children: [
+            /* @__PURE__ */ p.jsx(Ac, { className: "fas fa-sun me-1" }),
+            "Bright outlook"
+          ] }),
+          /* @__PURE__ */ p.jsxs("p", { children: [
+            /* @__PURE__ */ p.jsx(_c, { className: "fas fa-leaf me-1" }),
+            "Green occupation"
+          ] })
+        ] })
+      ]
+    }
+  );
+}
+jc.propTypes = {
+  tableData: A.arrayOf(Yl)
+};
+const Em = Qe.ul`
+  list-style-type: none;
+  padding-left: 0px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 320px;
+  li:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+  @media (max-width: 767px) {
+    max-height: 100%;
+  }
+`, Fi = ({ id: e, title: t, links: r }) => /* @__PURE__ */ p.jsxs("div", { id: e, className: "mt-4", children: [
+  /* @__PURE__ */ p.jsx("h3", { children: t }),
+  /* @__PURE__ */ p.jsx("p", { children: "This program allows students to obtain both a bachelor's and master's degree in as little as five years. It is offered as an accelerated bachelor's and master's degree with:" }),
+  /* @__PURE__ */ p.jsx(Em, { className: "mt-3 mb-3", children: r.map((n, a) => (
+    // eslint-disable-next-line react/no-array-index-key
+    /* @__PURE__ */ p.jsx("li", { children: /* @__PURE__ */ p.jsx("a", { href: n.url, target: "_blank", rel: "noreferrer", children: n.title }) }, `${n.title}-${a}`)
+  )) }),
+  /* @__PURE__ */ p.jsx("p", { className: "mb-0", children: "Acceptance to the graduate program requires a separate application. During their junior year, eligible students will be advised by their academic departments to apply." })
+] });
+Fi.propTypes = {
+  id: A.string,
+  title: A.string,
+  links: Di
+};
+function Oc({ acceleratedLinks: e, concurrentLinks: t }) {
+  return /* @__PURE__ */ p.jsxs(
+    "section",
+    {
+      id: yt.flexibleDegreeOptions.targetIdName,
+      className: "container",
+      "data-testid": "flexible-degree-options",
+      children: [
+        /* @__PURE__ */ p.jsx("h2", { children: /* @__PURE__ */ p.jsx("span", { className: "highlight-gold", children: "Flexible degree options" }) }),
+        !!e.length && /* @__PURE__ */ p.jsx(
+          Fi,
+          {
+            id: yt.flexibleDegreeOptions.acceleratedId,
+            title: "Accelerated program options",
+            links: e
+          }
+        ),
+        !!t.length && /* @__PURE__ */ p.jsx(
+          Fi,
+          {
+            id: yt.flexibleDegreeOptions.concurrentId,
+            title: "Concurrent degree program",
+            links: t
+          }
+        )
+      ]
+    }
+  );
+}
+Oc.propTypes = {
+  acceleratedLinks: Di,
+  concurrentLinks: Di
+};
+const jm = Qe.section`
+  width: 100%;
+  & a {
+    word-break: break-word;
+  }
+`, Nc = ({ contents: e, image: t }) => /* @__PURE__ */ p.jsx(
+  jm,
+  {
+    id: yt.globalOpportunity.targetIdName,
+    "data-testid": "global-opportunity",
+    children: /* @__PURE__ */ p.jsx(
+      cn,
+      {
+        headingTag: "H2",
+        title: yt.globalOpportunity.text,
+        contents: e,
+        image: t
+      }
+    )
+  }
+);
+Nc.propTypes = cn.propTypes;
+const Rc = ({ url: e, altText: t }) => /* @__PURE__ */ p.jsx("div", { className: "uds-img pt-3 pb-3", "data-testid": "intro-image", children: /* @__PURE__ */ p.jsx("img", { src: e, className: "img-fluid", alt: t }) });
+Rc.propTypes = { ...lo };
+const Om = (e, t) => {
+  if (e !== "youtube")
+    return t;
+  const r = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/, n = t.match(r);
+  return n && n[7].length === 11 ? `https://www.youtube.com/embed/${n[7]}` : t;
+}, Nm = Qe.div`
+  .uds-video-container {
+    margin: 0;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+`, Ic = ({ type: e, url: t, vttUrl: r, title: n }) => /* @__PURE__ */ p.jsx(Nm, { "data-testid": "intro-video", children: /* @__PURE__ */ p.jsx(
+  Qi,
+  {
+    type: e,
+    url: Om(e, t),
+    vttUrl: r,
+    title: n,
+    controls: !0
+  }
+) });
+Ic.propTypes = { ...co };
+function Dc({ contents: e = [] }) {
+  return /* @__PURE__ */ p.jsx("div", { "data-testid": "market-text", children: e.map((t, r) => /* @__PURE__ */ p.jsx(
+    "div",
+    {
+      className: `mt-3 ${nn(t.cssClass)}`,
+      dangerouslySetInnerHTML: Gt(t.text)
+    },
+    `content-${r + 1}`
+  )) });
+}
+Dc.propTypes = {
+  contents: A.arrayOf(Ca)
+};
+function Pc({ cards: e, defaultCards: t }) {
+  var r, n, a, s, d, f, h, m, C, _, O, U;
+  return /* @__PURE__ */ p.jsxs(
+    "section",
+    {
+      className: "container",
+      id: yt.nextSteps.targetIdName,
+      "data-testid": "next-steps",
+      children: [
+        /* @__PURE__ */ p.jsx("h2", { children: "Next steps to attend ASU" }),
+        /* @__PURE__ */ p.jsxs("div", { className: "mt-2 row", children: [
+          /* @__PURE__ */ p.jsx("div", { className: "mt-2 col-12 col-md-6 col-lg-4", children: /* @__PURE__ */ p.jsx(
+            gt,
+            {
+              icon: ((r = e == null ? void 0 : e.learnMore) == null ? void 0 : r.icon) ?? t.learnMore.icon,
+              title: ((n = e == null ? void 0 : e.learnMore) == null ? void 0 : n.title) ?? t.learnMore.title,
+              body: ((a = e == null ? void 0 : e.learnMore) == null ? void 0 : a.content) ?? t.learnMore.content,
+              buttons: [
+                ((s = e == null ? void 0 : e.learnMore) == null ? void 0 : s.buttonLink) ?? t.learnMore.buttonLink
+              ]
+            }
+          ) }),
+          /* @__PURE__ */ p.jsx("div", { className: "mt-2 col-12 col-md-6 col-lg-4", children: /* @__PURE__ */ p.jsx(
+            gt,
+            {
+              icon: ((d = e == null ? void 0 : e.apply) == null ? void 0 : d.icon) ?? t.apply.icon,
+              title: ((f = e == null ? void 0 : e.apply) == null ? void 0 : f.title) ?? t.apply.title,
+              body: ((h = e == null ? void 0 : e.apply) == null ? void 0 : h.content) ?? t.apply.content,
+              buttons: [
+                ((m = e == null ? void 0 : e.apply) == null ? void 0 : m.buttonLink) ?? t.apply.buttonLink
+              ]
+            }
+          ) }),
+          /* @__PURE__ */ p.jsx("div", { className: "mt-2 col-12 col-md-6 col-lg-4", children: /* @__PURE__ */ p.jsx(
+            gt,
+            {
+              icon: ((C = e == null ? void 0 : e.visit) == null ? void 0 : C.icon) ?? t.visit.icon,
+              title: ((_ = e == null ? void 0 : e.visit) == null ? void 0 : _.title) ?? t.visit.title,
+              body: ((O = e == null ? void 0 : e.visit) == null ? void 0 : O.content) ?? t.visit.content,
+              buttons: [
+                ((U = e == null ? void 0 : e.visit) == null ? void 0 : U.buttonLink) ?? t.visit.buttonLink
+              ]
+            }
+          ) })
+        ] })
+      ]
+    }
+  );
+}
+Pc.propTypes = {
+  cards: A.shape({
+    learnMore: Br,
+    apply: Br,
+    visit: Br
+  }),
+  defaultCards: A.shape({
+    learnMore: Br,
+    apply: Br,
+    visit: Br
+  })
+};
+function Lc({ content: e = "" }) {
+  return /* @__PURE__ */ p.jsxs("section", { className: "container", "data-testid": "professional-licensure", children: [
+    /* @__PURE__ */ p.jsx("h3", { children: "Professional licensure" }),
+    /* @__PURE__ */ p.jsx("p", { dangerouslySetInnerHTML: Gt(e) })
+  ] });
+}
+Lc.propTypes = {
+  content: A.node
+};
+const hi = {
+  event: "link",
+  action: "click",
+  name: "onclick",
+  type: "internal link",
+  region: "main content",
+  section: "Program contact information"
+}, Rm = Qe.ul`
+  list-style: none;
+  margin-left: 0rem;
+  padding-left: 0rem;
+
+  & li {
+    display: flex;
+    align-items: center;
+    :not(:first-child) {
+      display: flex;
+      padding-bottom: 0.5rem;
+    }
+
+    :first-child div {
+      display: flex;
+    }
+
+    :nth-of-type(2) {
+      padding-bottom: 2rem;
+    }
+
+    > div {
+      display: flex;
+      align-items: center;
+    }
+
+    .c-icon,
+    i {
+      font-size: 1rem;
+      margin-right: 0.5rem;
+    }
+
+    .office-loc {
+      margin-left: 1.5rem;
+    }
+  }
+`;
+function Mc({ department: e, asuOfficeLoc: t, email: r, phone: n }) {
+  return /* @__PURE__ */ p.jsxs(
+    "section",
+    {
+      id: yt.programContactInfo.targetIdName,
+      "data-testid": "program-contact-info",
+      children: [
+        /* @__PURE__ */ p.jsx("h2", { children: /* @__PURE__ */ p.jsx("span", { className: "highlight-gold", children: "Program contact information" }) }),
+        /* @__PURE__ */ p.jsx("p", { children: "If you have questions related to admission, please fill out the request information form above and an admission specialist will contact you directly. For questions regarding faculty or courses, please use the contact information below." }),
+        /* @__PURE__ */ p.jsxs(Rm, { className: "text-maroon", children: [
+          /* @__PURE__ */ p.jsx("li", { children: /* @__PURE__ */ p.jsxs("div", { children: [
+            /* @__PURE__ */ p.jsx(
+              "i",
+              {
+                className: "c-icon fas icon-small fa-map-marker-alt",
+                title: "Department  Address"
+              }
+            ),
+            /* @__PURE__ */ p.jsx(
+              "a",
+              {
+                href: e.url,
+                onClick: () => Rr({ ...hi, text: e.text }),
+                children: e.text
+              }
+            )
+          ] }) }),
+          /* @__PURE__ */ p.jsx("li", { children: /* @__PURE__ */ p.jsx("div", { className: "c-icon text-dark office-loc", children: t }) }),
+          /* @__PURE__ */ p.jsxs("li", { children: [
+            /* @__PURE__ */ p.jsx("i", { className: "c-icon fas icon-small fa-envelope", title: "Email" }),
+            /* @__PURE__ */ p.jsx(
+              "a",
+              {
+                href: `mailto:${r.url || r.text}`,
+                onClick: () => Rr({ ...hi, text: r.text }),
+                children: r.text
+              }
+            )
+          ] }),
+          /* @__PURE__ */ p.jsxs("li", { children: [
+            /* @__PURE__ */ p.jsx("i", { className: "c-icon fas icon-small fa-phone", title: "Phone" }),
+            /* @__PURE__ */ p.jsx(
+              "a",
+              {
+                href: `tel:${n}`,
+                onClick: () => Rr({ ...hi, text: n }),
+                children: n
+              }
+            )
+          ] })
+        ] })
+      ]
+    }
+  );
+}
+Mc.propTypes = {
+  department: Gr,
+  asuOfficeLoc: A.string,
+  email: Gr,
+  phone: A.string
+};
+function $i({ content: e, stemOptText: t, programNotFound: r }) {
+  return /* @__PURE__ */ p.jsxs("div", { "data-testid": "program-description", children: [
+    /* @__PURE__ */ p.jsx("h2", { children: r ? "Program not found" : "Program description" }),
+    /* @__PURE__ */ p.jsx(
+      "div",
+      {
+        "data-testid": "program-description-body",
+        dangerouslySetInnerHTML: Gt(e)
+      }
+    ),
+    t && /* @__PURE__ */ p.jsxs(p.Fragment, { children: [
+      /* @__PURE__ */ p.jsx("p", { children: /* @__PURE__ */ p.jsx("strong", { children: fh }) }),
+      /* @__PURE__ */ p.jsx(
+        "div",
+        {
+          "data-testid": "stem-opt-text",
+          dangerouslySetInnerHTML: Gt(t)
+        }
+      )
+    ] })
+  ] });
+}
+$i.propTypes = {
+  content: A.string,
+  stemOptText: A.string,
+  programNotFound: A.bool
+};
+const Im = "https://changemajor.apps.asu.edu/", Dm = "On-campus students", Pm = "Online students", Lm = "View major map -", qs = "View major map";
+function Fc({
+  onlineMajorMapURL: e = "",
+  majorMapOnCampusURL: t = "",
+  subPlnMajorMaps: r = [],
+  subPlns: n = []
+}) {
+  const a = (C) => {
+    const _ = n.find(
+      (O) => O.acadSubPlanCode === C
+    );
+    return _ ? _.description : "";
+  }, s = (C, _, O) => {
+    C && O.push({
+      href: C,
+      text: _
+    });
+  }, d = [], f = [];
+  r.forEach((C) => {
+    const _ = a(C.acadSubPlanCode), O = `${Lm} ${_}`;
+    s(C.url, O, d);
+  }), t && s(t, qs, d), e && s(e, qs, f);
+  const h = (C, _) => /* @__PURE__ */ p.jsxs(p.Fragment, { children: [
+    /* @__PURE__ */ p.jsx("h5", { children: C }),
+    /* @__PURE__ */ p.jsx("ul", { className: "mb-3", children: _.map((O) => /* @__PURE__ */ p.jsx("li", { children: /* @__PURE__ */ p.jsx("a", { href: O.href, children: O.text }) }, O.href)) })
+  ] }), m = () => /* @__PURE__ */ p.jsxs("section", { className: "container ps-0", "data-testid": "required-course", children: [
+    /* @__PURE__ */ p.jsx("h4", { children: "Required courses (major map)" }),
+    d.length > 0 && h(Dm, d),
+    f.length > 0 && h(Pm, f),
+    /* @__PURE__ */ p.jsxs("div", { className: "mt-3", children: [
+      /* @__PURE__ */ p.jsx("strong", { children: "What if:" }),
+      " See how your courses can be applied to another major and find out how to ",
+      /* @__PURE__ */ p.jsx("a", { href: Im, children: "change your major" })
+    ] })
+  ] });
+  return !(r != null && r.length) && !e && !t ? /* @__PURE__ */ p.jsx("div", {}) : m();
+}
+Fc.propTypes = {
+  onlineMajorMapURL: A.string,
+  majorMapOnCampusURL: A.string,
+  subPlnMajorMaps: A.arrayOf(
+    A.shape({
+      campus: A.string,
+      acadSubPlanCode: A.string,
+      defaultFlag: A.bool,
+      url: A.string
+    })
+  ),
+  subPlns: A.arrayOf(
+    A.shape({
+      acadSubPlanCode: A.string,
+      description: A.string
+    })
+  )
+};
+const $c = ({ sectionIntroText: e, cards: t, defaultCards: r }) => {
+  var n, a, s, d, f, h, m, C, _, O, U, E, S, I, F, $, X, G, T, oe, ce, Se, Ie, $e, De, fe, ue, Ce, ge, He, Ae, _e, Fe, We, Ve, B, R, z, q, v, Y, j;
+  return /* @__PURE__ */ p.jsxs(
+    "section",
+    {
+      id: yt.whyChooseAsu.targetIdName,
+      className: "container",
+      "data-testid": "why-choose-asu",
+      children: [
+        /* @__PURE__ */ p.jsx("h2", { children: "Why choose ASU" }),
+        /* @__PURE__ */ p.jsx(
+          "div",
+          {
+            dangerouslySetInnerHTML: Gt(e)
+          }
+        ),
+        /* @__PURE__ */ p.jsxs("div", { className: "mt-2 row", children: [
+          /* @__PURE__ */ p.jsx("div", { className: "mt-2 col-12 col-md-6 col-lg-4", children: /* @__PURE__ */ p.jsx(
+            gt,
+            {
+              image: ((a = (n = t == null ? void 0 : t.faculty) == null ? void 0 : n.image) == null ? void 0 : a.url) ?? r.faculty.image.url,
+              imageAltText: ((d = (s = t == null ? void 0 : t.faculty) == null ? void 0 : s.image) == null ? void 0 : d.altText) ?? r.faculty.image.altText,
+              title: ((f = t == null ? void 0 : t.faculty) == null ? void 0 : f.title) ?? r.faculty.title,
+              body: ((h = t == null ? void 0 : t.faculty) == null ? void 0 : h.text) ?? r.faculty.text,
+              buttons: [((m = t == null ? void 0 : t.faculty) == null ? void 0 : m.button) ?? r.faculty.button]
+            }
+          ) }),
+          /* @__PURE__ */ p.jsx("div", { className: "mt-2 col-12 col-md-6 col-lg-4", children: /* @__PURE__ */ p.jsx(
+            gt,
+            {
+              image: ((_ = (C = t == null ? void 0 : t.programs) == null ? void 0 : C.image) == null ? void 0 : _.url) ?? r.programs.image.url,
+              imageAltText: ((U = (O = t == null ? void 0 : t.programs) == null ? void 0 : O.image) == null ? void 0 : U.altText) ?? r.programs.image.altText,
+              title: ((E = t == null ? void 0 : t.programs) == null ? void 0 : E.title) ?? r.programs.title,
+              body: ((S = t == null ? void 0 : t.programs) == null ? void 0 : S.text) ?? r.programs.text,
+              buttons: [((I = t == null ? void 0 : t.programs) == null ? void 0 : I.button) ?? r.programs.button]
+            }
+          ) }),
+          /* @__PURE__ */ p.jsx("div", { className: "mt-2 col-12 col-md-6 col-lg-4", children: /* @__PURE__ */ p.jsx(
+            gt,
+            {
+              image: (($ = (F = t == null ? void 0 : t.research) == null ? void 0 : F.image) == null ? void 0 : $.url) ?? r.research.image.url,
+              imageAltText: ((G = (X = t == null ? void 0 : t.research) == null ? void 0 : X.image) == null ? void 0 : G.altText) ?? r.research.image.altText,
+              title: ((T = t == null ? void 0 : t.research) == null ? void 0 : T.title) ?? r.research.title,
+              body: ((oe = t == null ? void 0 : t.research) == null ? void 0 : oe.text) ?? r.research.text,
+              buttons: [((ce = t == null ? void 0 : t.research) == null ? void 0 : ce.button) ?? r.research.button]
+            }
+          ) }),
+          /* @__PURE__ */ p.jsx("div", { className: "mt-2 col-12 col-md-6 col-lg-4", children: /* @__PURE__ */ p.jsx(
+            gt,
+            {
+              image: ((Ie = (Se = t == null ? void 0 : t.inclusion) == null ? void 0 : Se.image) == null ? void 0 : Ie.url) ?? r.inclusion.image.url,
+              imageAltText: ((De = ($e = t == null ? void 0 : t.inclusion) == null ? void 0 : $e.image) == null ? void 0 : De.altText) ?? r.inclusion.image.altText,
+              title: ((fe = t == null ? void 0 : t.inclusion) == null ? void 0 : fe.title) ?? r.inclusion.title,
+              body: ((ue = t == null ? void 0 : t.inclusion) == null ? void 0 : ue.text) ?? r.inclusion.text,
+              buttons: [
+                ((Ce = t == null ? void 0 : t.inclusion) == null ? void 0 : Ce.button) ?? r.inclusion.button
+              ]
+            }
+          ) }),
+          /* @__PURE__ */ p.jsx("div", { className: "mt-2 col-12 col-md-6 col-lg-4", children: /* @__PURE__ */ p.jsx(
+            gt,
+            {
+              image: ((He = (ge = t == null ? void 0 : t.mentors) == null ? void 0 : ge.image) == null ? void 0 : He.url) ?? r.mentors.image.url,
+              imageAltText: ((_e = (Ae = t == null ? void 0 : t.mentors) == null ? void 0 : Ae.image) == null ? void 0 : _e.altText) ?? r.mentors.image.altText,
+              title: ((Fe = t == null ? void 0 : t.mentors) == null ? void 0 : Fe.title) ?? r.mentors.title,
+              body: ((We = t == null ? void 0 : t.mentors) == null ? void 0 : We.text) ?? r.mentors.text,
+              buttons: [((Ve = t == null ? void 0 : t.mentors) == null ? void 0 : Ve.button) ?? r.mentors.button]
+            }
+          ) }),
+          /* @__PURE__ */ p.jsx("div", { className: "mt-2 col-12 col-md-6 col-lg-4", children: /* @__PURE__ */ p.jsx(
+            gt,
+            {
+              image: ((R = (B = t == null ? void 0 : t.honors) == null ? void 0 : B.image) == null ? void 0 : R.url) ?? r.honors.image.url,
+              imageAltText: ((q = (z = t == null ? void 0 : t.honors) == null ? void 0 : z.image) == null ? void 0 : q.altText) ?? r.honors.image.altText,
+              title: ((v = t == null ? void 0 : t.honors) == null ? void 0 : v.title) ?? r.honors.title,
+              body: ((Y = t == null ? void 0 : t.honors) == null ? void 0 : Y.text) ?? r.honors.text,
+              buttons: [((j = t == null ? void 0 : t.honors) == null ? void 0 : j.button) ?? r.honors.button]
+            }
+          ) })
+        ] })
+      ]
+    }
+  );
+};
+$c.propTypes = Zl;
+const bo = ({
+  appPathFolder: e,
+  dataSource: t,
+  anchorMenu: r,
+  hero: n,
+  introContent: a,
+  atAGlance: s,
+  applicationRequirements: d,
+  changeMajorRequirements: f,
+  affordingCollege: h,
+  flexibleDegreeOptions: m,
+  careerOutlook: C,
+  exampleCareers: _,
+  globalOpportunity: O,
+  attendOnline: U,
+  programContactInfo: E,
+  nextSteps: S,
+  whyChooseAsu: I
+}) => {
+  var ue, Ce, ge, He;
+  const [{ data: F, loading: $, error: X }, G] = $l(), [T, oe] = ft(an({})), [ce, Se] = ft({ accelerateData: [], concurrentData: [] }), Ie = nc(t, Ah), { defaultState: $e } = Yt(un), { detailPageDefault: De } = $e;
+  Tt(() => {
+    typeof window < "u" && Bl({
+      packageName: "app-degree-pages",
+      component: "DetailPage",
+      type: "NA",
+      configuration: {
+        dataSource: t
+      }
+    });
+  }, []), Tt(() => {
+    G(Ie);
+  }, [Ie]), Tt(() => {
+    if (F) {
+      const Ae = an(F);
+      oe(Ae), Ae.hasConcurrentOrAccelerateDegrees() && Nh(
+        [
+          Ae.getAccelerateDegrees(),
+          Ae.getConcurrentDegrees()
+        ],
+        Se
+      );
+    }
+  }, [F]);
+  const fe = Uh(r, T);
+  return /* @__PURE__ */ p.jsxs(p.Fragment, { children: [
+    /* @__PURE__ */ p.jsx(ic, {}),
+    X && /* @__PURE__ */ p.jsx(ql, { message: ec }),
+    !(n != null && n.hide) && /* @__PURE__ */ p.jsx("section", { children: /* @__PURE__ */ p.jsx(
+      Rn,
+      {
+        image: (n == null ? void 0 : n.image) || De.hero.image,
+        title: {
+          ...De.hero.title,
+          text: T.getMajorDesc(),
+          ...n == null ? void 0 : n.title
+        },
+        contents: n == null ? void 0 : n.contents
+      }
+    ) }),
+    !$ && zh(fe) && /* @__PURE__ */ p.jsx(rc, { anchorMenu: fe }),
+    /* @__PURE__ */ p.jsxs(oc, { as: "div", "data-is-loading": $, className: "main-section", children: [
+      $ && /* @__PURE__ */ p.jsx(Hl, {}),
+      !$ && (F != null && F.error ? /* @__PURE__ */ p.jsx("section", { className: "container mt-4 mb-0", children: /* @__PURE__ */ p.jsx(
+        $i,
+        {
+          content: hh,
+          programNotFound: !0
+        }
+      ) }) : /* @__PURE__ */ p.jsxs("section", { className: "container mt-4 mb-0", children: [
+        (a == null ? void 0 : a.breadcrumbs) && /* @__PURE__ */ p.jsx("div", { className: "row col-12", children: /* @__PURE__ */ p.jsx(
+          mo,
+          {
+            breadcrumbs: a.breadcrumbs,
+            section: n ? n.title.text : T.getMajorDesc()
+          }
+        ) }),
+        /* @__PURE__ */ p.jsxs("div", { className: "row flex-column-reverse flex-sm-row", children: [
+          /* @__PURE__ */ p.jsxs("div", { className: "col col-sm-12 col-md-7 col-lg-7", children: [
+            /* @__PURE__ */ p.jsxs("section", { className: "intro", children: [
+              !T.isValidActiveProgram() && /* @__PURE__ */ p.jsx(Tc, { content: T.getAsuCustomText() }),
+              !(a != null && a.hideMarketText) && ((a == null ? void 0 : a.contents) || T.getMarketText()) && /* @__PURE__ */ p.jsx(
+                Dc,
+                {
+                  contents: (a == null ? void 0 : a.contents) || [
+                    { text: T.getMarketText() }
+                  ]
+                }
+              ),
+              !(a != null && a.hideProgramDesc) && /* @__PURE__ */ p.jsx(
+                $i,
+                {
+                  content: T.getFullDescription(),
+                  stemOptText: T.getStemOptText()
+                }
+              )
+            ] }),
+            !(s != null && s.hide) && /* @__PURE__ */ p.jsx(
+              xc,
+              {
+                offeredBy: (s == null ? void 0 : s.offeredBy) || {
+                  text: T.getCollegeDesc(),
+                  url: T.getCollegeUrl()
+                },
+                locations: (s == null ? void 0 : s.locations) || $h(T),
+                firstRequirementMathCourse: (s == null ? void 0 : s.firstRequirementMathCourse) || T.getMinMathReq(),
+                mathIntensity: (s == null ? void 0 : s.mathIntensity) || T.getMathIntensity()
+              }
+            ),
+            !(a != null && a.hideRequiredCourses) && !T.isMinorOrCertificate() && /* @__PURE__ */ p.jsx(
+              Fc,
+              {
+                onlineMajorMapURL: T.getOnlineMajorMapURL(),
+                majorMapOnCampusURL: T.getGeneralDegreeMajorMap(),
+                subPlnMajorMaps: T.getSubPlnMajorMaps(),
+                subPlns: T.getSubPln()
+              }
+            ),
+            !(d != null && d.hide) && /* @__PURE__ */ p.jsx(
+              vc,
+              {
+                graduateRequirements: T.isGradProgram() ? T.getGraduateRequirements() : null,
+                isMinorOrCertificate: T.isMinorOrCertificate(),
+                minorRequirements: T.getMinorCourseRequirements(),
+                additionalRequirements: T.getAdmissionsRequirementsText(),
+                transferRequirements: T.getTransferAdmission()
+              }
+            ),
+            !(f != null && f.hide) && !T.isMinorOrCertificate() && !T.isGradProgram() && /* @__PURE__ */ p.jsx(kc, { content: T.getChangeMajor() })
+          ] }),
+          /* @__PURE__ */ p.jsxs("div", { className: "col col-sm-12 col-md-5 col-lg-5", children: [
+            (a == null ? void 0 : a.video) && /* @__PURE__ */ p.jsx(
+              Ic,
+              {
+                type: a.video.type,
+                url: a.video.url,
+                vttUrl: a.video.vttUrl,
+                title: a.video.title
+              }
+            ),
+            !(a != null && a.video) && /* @__PURE__ */ p.jsx(
+              Rc,
+              {
+                url: ((ue = a == null ? void 0 : a.image) == null ? void 0 : ue.url) || De.introContent.image.url,
+                altText: ((Ce = a == null ? void 0 : a.image) == null ? void 0 : Ce.altText) || De.introContent.image.altText
+              }
+            )
+          ] })
+        ] }),
+        /* @__PURE__ */ p.jsxs("div", { className: "row", children: [
+          !(S != null && S.hide) && !T.isMinorOrCertificate() && /* @__PURE__ */ p.jsx(
+            Pc,
+            {
+              cards: S == null ? void 0 : S.cards,
+              defaultCards: De.nextSteps.cards
+            }
+          ),
+          !(h != null && h.hide) && /* @__PURE__ */ p.jsx(xm, {}),
+          !(m != null && m.hide) && T.hasConcurrentOrAccelerateDegrees() && /* @__PURE__ */ p.jsx(
+            Oc,
+            {
+              acceleratedLinks: Fs(
+                ce.accelerateData
+              ),
+              concurrentLinks: Fs(
+                ce.concurrentData
+              )
+            }
+          ),
+          !(C != null && C.hide) && T.getAsuCareerOpportunity() && /* @__PURE__ */ p.jsx(
+            Sc,
+            {
+              image: (C == null ? void 0 : C.image) || De.careerOutlook.image,
+              contents: [{ text: T.getAsuCareerOpportunity() }]
+            }
+          ),
+          !(_ != null && _.hide) && T.hasCareerData() && /* @__PURE__ */ p.jsx(
+            jc,
+            {
+              tableData: _h(T.getCareerData())
+            }
+          ),
+          T.getProfessionalLicensureText() && /* @__PURE__ */ p.jsx(
+            Lc,
+            {
+              content: T.getProfessionalLicensureText()
+            }
+          ),
+          !(O != null && O.hide) && T.getGlobalExp() && /* @__PURE__ */ p.jsx(
+            Nc,
+            {
+              contents: [{ text: T.getGlobalExp() }],
+              image: (O == null ? void 0 : O.image) || De.globalOpportunity.image
+            }
+          ),
+          !(I != null && I.hide) && /* @__PURE__ */ p.jsx(
+            $c,
+            {
+              sectionIntroText: (I == null ? void 0 : I.sectionIntroText) || De.whyChooseAsu.sectionIntroText,
+              cards: I == null ? void 0 : I.cards,
+              defaultCards: De.whyChooseAsu.cards
+            }
+          ),
+          !(U != null && U.hide) && T.isOnline() && /* @__PURE__ */ p.jsx(
+            wc,
+            {
+              learnMoreLink: T.getCurriculumUrl(),
+              image: (U == null ? void 0 : U.image) || De.attendOnline.image
+            }
+          )
+        ] }),
+        !(E != null && E.hide) && /* @__PURE__ */ p.jsx("div", { className: "row", children: /* @__PURE__ */ p.jsx("div", { className: "col col-sm-12 col-md-6 col-lg-6 ", children: /* @__PURE__ */ p.jsx(
+          Mc,
+          {
+            department: {
+              text: T.getDepartmentName(),
+              url: ((ge = E == null ? void 0 : E.department) == null ? void 0 : ge.url) || T.getPlanUrl()
+            },
+            email: {
+              text: T.getEmailAddress(),
+              url: ((He = E == null ? void 0 : E.email) == null ? void 0 : He.url) || T.getEmailAddress()
+            },
+            asuOfficeLoc: T.getAsuOfficeLoc(),
+            phone: T.getPhone()
+          }
+        ) }) })
+      ] }))
+    ] })
+  ] });
+};
+bo.propTypes = {
+  appPathFolder: A.string,
+  dataSource: Gl,
+  anchorMenu: A.shape(uo),
+  hero: A.shape(Rn.propTypes),
+  introContent: A.shape({
+    hideMarketText: A.bool,
+    hideProgramDesc: A.bool,
+    hideRequiredCourses: A.bool,
+    breadcrumbs: da.arrayOf(Gr),
+    // eslint-disable-next-line react/forbid-prop-types
+    contents: da.arrayOf(A.object),
+    video: ch,
+    image: kr
+  }),
+  atAGlance: A.shape({
+    hide: A.bool,
+    offeredBy: Gr,
+    locations: da.arrayOf(Gr),
+    firstRequirementMathCourse: A.string,
+    mathIntensity: A.string,
+    timeCommitment: A.string
+  }),
+  applicationRequirements: A.shape({ hide: A.bool }),
+  changeMajorRequirements: A.shape({ hide: A.bool }),
+  affordingCollege: A.shape({ hide: A.bool }),
+  flexibleDegreeOptions: A.shape({ hide: A.bool }),
+  careerOutlook: A.shape({
+    hide: A.bool,
+    image: kr
+  }),
+  exampleCareers: A.shape({ hide: A.bool }),
+  globalOpportunity: A.shape({
+    hide: A.bool,
+    image: kr
+  }),
+  attendOnline: A.shape({
+    hide: A.bool,
+    image: kr
+  }),
+  programContactInfo: A.shape({
+    hide: A.bool,
+    department: A.string,
+    email: A.string
+  }),
+  nextSteps: A.shape({
+    hide: A.bool,
+    cards: A.arrayOf(Br)
+  }),
+  whyChooseAsu: A.shape(Zl)
+};
+const Uc = (e) => /* @__PURE__ */ p.jsx(ho, { detailPageProps: e, children: /* @__PURE__ */ p.jsx(bo, { ...e }) });
+Uc.propTypes = bo.propTypes;
+var zc, Hs = Xs;
+zc = Hs.createRoot, Hs.hydrateRoot;
+const Bc = (e, t, r) => {
+  const n = document.querySelector(r);
+  zc(n).render(ht.createElement(e, t));
+}, $m = ({ targetSelector: e, props: t }) => {
+  Bc(yc, t, e);
+}, Um = ({ targetSelector: e, props: t }) => {
+  Bc(Uc, t, e);
+};
+export {
+  Uc as DetailPage,
+  yc as ListingPage,
+  $m as initListingPage,
+  Um as initProgramDetailPage
+};
+/**
+ * @license React
+ * react-jsx-runtime.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+/*!
+	Copyright (c) 2018 Jed Watson.
+	Licensed under the MIT License (MIT), see
+	http://jedwatson.github.io/classnames
+*/
+/*! @license DOMPurify 2.5.7 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/2.5.7/LICENSE */
+/**
+ * @license React
+ * react-dom-server-legacy.browser.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+/**
+ * @license React
+ * react-dom-server.browser.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+/**
+ * @license React
+ * react-is.production.js
+ *
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+/** @license React v16.13.1
+ * react-is.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+/*!
+ * Glide.js v3.6.2
+ * (c) 2013-2024 Jędrzej Chałubek (https://github.com/jedrzejchalubek/)
+ * Released under the MIT License.
+ */

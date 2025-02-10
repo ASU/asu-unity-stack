@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 Page Not Found</title>
+</head>
+
+<body style="text-align: center;">
+  <h1>Oops, page not found!</h1>
+  <p>Redirecting to home in 3 seconds</p>
+
+  <script>
+    function redirect() {
+      setTimeout(function () {
+        // returns ROOTFOLDER, ex: https://asu.github.io/ROOTFOLDER/path/does/not/exist
+        const ghFolderRoot = window.location.pathname.split("/")[1];
+        window.location.replace(`/${ghFolderRoot}`); // Redirect to homepage
+      }, 3000);
+    }
+    redirect();
+  </script>
+</body>
+
+</html>

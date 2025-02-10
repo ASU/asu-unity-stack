@@ -1,0 +1,1 @@
+import{r as e}from"./index-Cs7sjTYM.js";const t=(r,o)=>(e.useEffect(()=>(setTimeout(()=>{o.globals.shouldReload=!0},100),()=>{o.globals.shouldReload&&window.location.reload()}),[]),r());export{t as f};

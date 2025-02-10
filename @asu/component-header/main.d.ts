@@ -4,7 +4,7 @@ export interface Logo {
   alt: string;
   src: string;
   mobileSrc: string;
-  brandLink: string;
+  brandLink?: string;
 }
 
 
@@ -13,7 +13,6 @@ export interface Button {
   color?: "gold" | "maroon" | "light" | "dark";
   text: string;
   classes?: string;
-  onClick?: () => void;
   onClick?: () => void;
 }
 
