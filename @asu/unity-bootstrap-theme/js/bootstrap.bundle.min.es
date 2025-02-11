@@ -1340,7 +1340,6 @@ function Dt(n, t) {
   var e = t, s = e.placement, i = s === void 0 ? n.placement : s, r = e.strategy, o = r === void 0 ? n.strategy : r, a = e.boundary, l = a === void 0 ? vs : a, h = e.rootBoundary, u = h === void 0 ? qe : h, p = e.elementContext, _ = p === void 0 ? Tt : p, d = e.altBoundary, A = d === void 0 ? !1 : d, m = e.padding, E = m === void 0 ? 0 : m, T = Ms(typeof E != "number" ? E : Rs(E, Mt)), w = _ === Tt ? bs : Tt, O = n.rects.popper, g = n.elements[A ? w : _], v = Zr(_t(g) ? g : g.contextElement || it(n.elements.popper), l, u, o), b = Nt(n.elements.reference), y = Vs({
     reference: b,
     element: O,
-    strategy: "absolute",
     placement: i
   }), S = Ye(Object.assign({}, O, y)), N = _ === Tt ? S : b, C = {
     top: v.top - N.top + T.top,
@@ -1510,7 +1509,6 @@ function ro(n) {
   t.modifiersData[e] = Vs({
     reference: t.rects.reference,
     element: t.rects.popper,
-    strategy: "absolute",
     placement: t.placement
   });
 }
