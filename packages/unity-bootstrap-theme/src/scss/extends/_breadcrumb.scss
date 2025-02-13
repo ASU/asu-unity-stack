@@ -19,6 +19,9 @@
     }
   }
 }
+.bg-gray-7 a{
+  color: #ffc627;
+}
 // WS2-1036 and UDS-1129 hide breadcrumb on mobile
 @media screen and (max-width: $uds-breakpoint-sm) {
   .breadcrumb {
