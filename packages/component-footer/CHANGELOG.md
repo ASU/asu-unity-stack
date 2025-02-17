@@ -1,3 +1,24 @@
+# [@asu/component-footer-v2.3.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.2.3...@asu/component-footer-v2.3.0) (2025-02-11)
+
+
+### Features
+
+* **components-core:** added component-carousel to components-core ([8677db8](https://github.com/asu/asu-unity-stack/commit/8677db8f92c15f768c35951fbbd85f254f437de0))
+
+# [@asu/component-footer-v2.3.0-testing.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.2.3...@asu/component-footer-v2.3.0-testing.1) (2025-02-11)
+
+
+### Features
+
+* **components-core:** added component-carousel to components-core ([8677db8](https://github.com/asu/asu-unity-stack/commit/8677db8f92c15f768c35951fbbd85f254f437de0))
+
+# [@asu/component-footer-v2.2.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.2.2...@asu/component-footer-v2.2.3) (2025-01-14)
+
+
+### Bug Fixes
+
+* **component-footer:** updated the ranked footer graphic ([f398095](https://github.com/asu/asu-unity-stack/commit/f39809513b98537386f591cbf4ee09288c823907))
+
 # [@asu/component-footer-v2.2.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.2.1...@asu/component-footer-v2.2.2) (2024-11-13)
 
 
@@ -28,6 +49,13 @@
 * **component-footer:** added gtm global variable tracking ([be023d4](https://github.com/asu/asu-unity-stack/commit/be023d4c51e16a614f5a5965bb21dc1bc3f0efb0))
 
 # [@asu/component-footer-v2.1.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.1.2...@asu/component-footer-v2.1.3) (2023-11-17)
+
+
+### Bug Fixes
+
+* **component-footer:** update Peer Dependency Components-core to allow version 2 or 3 ([1ee7d61](https://github.com/asu/asu-unity-stack/commit/1ee7d618609c93d882ef832b901486f54e73d6e7))
+
+# [@asu/component-footer-v2.1.3-testing.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.1.2...@asu/component-footer-v2.1.3-testing.1) (2023-10-20)
 
 
 ### Bug Fixes

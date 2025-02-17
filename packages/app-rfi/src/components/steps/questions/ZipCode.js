@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
-import { KEY } from "../../../core/utils/constants";
+import { KEY, PII_VALUE } from "../../../core/utils/constants";
 import { useRfiContext } from "../../../core/utils/rfiContext";
 import { RfiTextInput } from "../../controls";
 
@@ -42,7 +42,7 @@ export const ZipCode = ({ gaData }) => {
         trackGAEvent({
           ...gaData,
           type: label,
-          text: e.target.value,
+          text: PII_VALUE,
         })
       }
     />

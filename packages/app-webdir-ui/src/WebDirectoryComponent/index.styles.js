@@ -11,6 +11,13 @@ const WebDirLayout = styled.div`
     "results results";
   grid-column-gap: 100px;
 
+  .uds-grid > .row {
+    gap: 1rem;
+    & > div {
+    flex: 0 0 282px;
+    }
+  }
+
   .sort {
     grid-area: sort;
   }
@@ -37,6 +44,12 @@ const WebDirLayout = styled.div`
 const FacultyRankLayout = styled.div`
   display: flex;
   flex-wrap: wrap;
+  .uds-grid > .row {
+    gap: 1rem;
+    & > div {
+    flex: 0 0 282px;
+    }
+  }
   .view-toggle {
     width: 100%;
     justify-content: flex-start;

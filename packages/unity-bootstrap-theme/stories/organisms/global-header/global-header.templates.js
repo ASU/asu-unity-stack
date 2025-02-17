@@ -1,6 +1,7 @@
 import React from "react";
-import horizlogo from "./arizona-state-university-logo.png";
+
 import vertlogo from "./arizona-state-university-logo-vertical.png";
+import horizlogo from "./arizona-state-university-logo.png";
 import starbucksLogo from "./asu-starbucks.png";
 
 export const Basic = () => (

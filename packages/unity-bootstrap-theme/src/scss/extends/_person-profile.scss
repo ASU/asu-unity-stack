@@ -126,12 +126,13 @@ Desktop styles
       margin-bottom: 16px;
       .profile-img-placeholder {
         width: var(--grid-pic-size);
-        height: var(--grid-pic-size);
+        height: fit-content;
         max-width: 100%;
         .profile-img {
           width: var(--grid-pic-size);
-          height: var(--grid-pic-size);
           max-width: 100%;
+          height: auto;
+          aspect-ratio: 1 / 1;
         }
       }
     }

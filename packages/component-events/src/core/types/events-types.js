@@ -1,7 +1,7 @@
 // ts-check
 
 /**
- * @typedef {import("../../../../components-core/src/core/types/feed-types").FeedType} FeedType
+ * @typedef {import("../../../../unity-react-core/src/core/types/feed-types").FeedType} FeedType
  * */
 
 /**

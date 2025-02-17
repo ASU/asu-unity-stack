@@ -5,8 +5,8 @@ import { Field, useField, useFormikContext } from "formik";
 import PropTypes from "prop-types";
 import React, { useEffect } from "react";
 
-import { RfiLabel, RfiError } from "./controls-helpers";
 import { KEY } from "../../core/utils/constants";
+import { RfiLabel, RfiError } from "./controls-helpers";
 
 // Note: We use a mix of Field and useField here to circumvent issues
 // experienced using solely one of the other.

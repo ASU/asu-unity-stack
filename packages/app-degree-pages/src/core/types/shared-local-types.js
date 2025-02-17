@@ -14,11 +14,11 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
 /** @typedef {DegreeDataPropResolverServiceType} DegreeDataPropResolver */
 
 /**
- * @typedef {import("@asu/components-core").ImageProps} ImageProps
+ * @typedef {import("@asu/unity-react-core").ImageComponentProps} ImageProps
  */
 
 /**
- * @typedef {import("@asu/components-core").VideoProps} VideoItem
+ * @typedef {import("@asu/unity-react-core").VideoProps} VideoItem
  */
 
 /** This type set the `text` optional
@@ -29,7 +29,7 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  */
 
 /**
- * @typedef {import("@asu/components-core").ImageProps} ImageItem
+ * @typedef {import("@asu/unity-react-core").ImageComponentProps} ImageItem
  */
 
 /**
@@ -40,7 +40,7 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  */
 
 /**
- * @typedef {import("@asu/components-core").CardProps} CardProps
+ * @typedef {import("@asu/unity-react-core").CardProps} CardProps
  */
 
 /**

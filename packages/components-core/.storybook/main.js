@@ -21,7 +21,7 @@ const config = {
       test: /\.scss$/,
       use: [
         "style-loader",
-        { loader: "css-loader", options: { importLoaders: 1 } },
+        { loader: "css-loader", options: { importLoaders: 1, url: false } },
         {
           loader: "sass-loader",
           options: {},

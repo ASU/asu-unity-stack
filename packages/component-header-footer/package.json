@@ -1,0 +1,102 @@
+{
+  "name": "@asu/component-header-footer",
+  "version": "1.0.2",
+  "description": "ASU Global Header and Footer",
+  "main": "./dist/asuHeaderFooter.cjs.js",
+  "browser": "./dist/asuHeaderFooter.umd.js",
+  "module": "./dist/asuHeaderFooter.es.js",
+  "types": "./dist/main.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/asuHeaderFooter.es.js",
+      "require": "./dist/asuHeaderFooter.cjs.js",
+      "types": "./dist/main.d.ts"
+    },
+    "./*": "./*"
+  },
+  "author": "UDS Team",
+  "license": "MIT",
+  "files": [
+    "examples/*",
+    "dist/*",
+    "docs/*",
+    "CHANGELOG.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/asu/asu-unity-stack.git",
+    "directory": "packages/component-header-footer"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
+  },
+  "scripts": {
+    "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
+    "test": "jest --config=./jest.config.js --silent --coverage",
+    "test-update-snapshot": "yarn test -- -u",
+    "build": "vite build && yarn postbuild",
+    "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
+    "postbuild": "cp ./types/main.d.ts ./dist/main.d.ts",
+    "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
+    "storybook": "storybook dev -p 9080",
+    "predocs": "mkdir -p ./docs",
+    "docs": "yarn predocs && jsdoc2md --no-cache -c jsdoc.config.js --files ./src/*/components > ./docs/README.props.md && yarn postdocs",
+    "postdocs": "node ../../scripts/process-readme-props.js",
+    "build-storybook": "storybook build -o ../../build/$npm_package_name"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-brands-svg-icons": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0"
+  },
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.14",
+    "@babel/plugin-syntax-jsx": "^7.14.5",
+    "@babel/plugin-transform-react-jsx": "^7.13.12",
+    "@babel/plugin-transform-runtime": "^7.14.5",
+    "@storybook/addon-a11y": "^7.6.14",
+    "@storybook/addon-essentials": "^7.6.14",
+    "@storybook/addon-links": "^7.6.14",
+    "@storybook/react": "^7.6.14",
+    "@storybook/react-webpack5": "^7.6.14",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^16.0.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "babel-loader": "^8.2.2",
+    "copy-webpack-plugin": "^9.0.1",
+    "css-loader": "^5.2.4",
+    "dotenv-webpack": "^7.0.3",
+    "eslint-plugin-storybook": "^0.6.15",
+    "express": "^4.17.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.2",
+    "http-proxy-middleware": "^2.0.0",
+    "jest": "^26.6.3",
+    "jest-image-snapshot": "^4.4.1",
+    "jest-transform-css": "^6.0.1",
+    "jest-transform-file": "^1.1.1",
+    "jsdom-screenshot": "^4.0.0",
+    "postcss-loader": "^6.1.1",
+    "prop-types": "^15.7.2",
+    "raw-loader": "^4.0.2",
+    "sass-loader": "^11.1.0",
+    "semantic-release": "^22",
+    "semantic-release-monorepo": "^8.0.2",
+    "storybook": "^7.6.14",
+    "style-loader": "^2.0.0",
+    "styled-components": "^5.3.0",
+    "terser-webpack-plugin": "^5.1.1",
+    "vite": "^5.3.5",
+    "webpack-filter-warnings-plugin": "^1.2.1",
+    "webpack-merge": "^5.8.0"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

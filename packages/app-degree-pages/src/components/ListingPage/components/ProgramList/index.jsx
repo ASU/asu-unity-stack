@@ -1,0 +1,139 @@
+// @ts-check
+import { Pagination } from "@asu/unity-react-core";
+import PropTypes from "prop-types";
+import React, { useEffect, useState } from "react";
+import { createGlobalStyle } from "styled-components";
+
+import { InfoAlert } from "../../../../core/components";
+import { GRID_VIEW_ID, LIST_VIEW_ID } from "../../../../core/models";
+import { computePages } from "../../../../core/utils";
+import { AccordionView } from "./AccordionView";
+import { GridView } from "./GridView";
+import { ListView } from "./ListView";
+import { degreeListPropTypes } from "./programs-prop-types";
+
+const GlobalStyle = createGlobalStyle`
+
+  .mobile-view {
+    display: none;
+  }
+  [data-view-type="list-view"] {
+    @media (max-width: 768px) {
+      .desktop-view {
+        display: none;
+      }
+      .mobile-view {
+        display: block;
+        .card-foldable .card-header h4 a {
+          color: #8c1d40;
+        }
+      }
+    }
+  }
+`;
+
+/**
+ *  @typedef {{
+ *    programs: Object[]
+ *    loading: boolean
+ *    totalRows?: number
+ *    actionUrls: import("src/core/types/listing-page-types").ActionUrlProps
+ *    degreesPerPage: number
+ * }} GridListingProps
+ */
+
+/**
+ * @type {Object.<string, ListView |  GridView>}
+ */
+const programViewer = {
+  [GRID_VIEW_ID]: GridView,
+  [LIST_VIEW_ID]: ListView,
+};
+
+/**
+ *
+ * @param {{
+ *  dataViewComponent: GRID_VIEW_ID | LIST_VIEW_ID
+ * } & GridListingProps} props
+ */
+function ProgramList({
+  dataViewComponent,
+  loading,
+  programs,
+  actionUrls,
+  degreesPerPage,
+}) {
+  // Check if degreesPerPage is provided and is a number, if not set a default value
+  let defaultDegreesPerPage;
+  if (!degreesPerPage) {
+    defaultDegreesPerPage = 8;
+  } else if (typeof degreesPerPage !== "number") {
+    defaultDegreesPerPage = parseInt(degreesPerPage, 10);
+  }
+
+  const ROW_PAGES = degreesPerPage || defaultDegreesPerPage;
+  const TOTAL_PAGES = computePages(programs.length, ROW_PAGES);
+  const ProgramsViewer = programViewer[dataViewComponent];
+  const [tableView, setTableView] = useState([]);
+
+  const onPageChange = (_, newPage) => {
+    const fromRecord = (newPage - 1) * ROW_PAGES;
+    const toRecord = fromRecord + ROW_PAGES;
+
+    setTableView(programs.slice(fromRecord, toRecord));
+  };
+
+  useEffect(() => {
+    setTableView(programs.slice(0, ROW_PAGES));
+  }, [programs]);
+
+  return (
+    <section data-testid="program-list" data-view-type={dataViewComponent}>
+      <GlobalStyle />
+
+      <div className="desktop-view">
+        <ProgramsViewer
+          loading={loading}
+          programs={tableView}
+          totalRows={programs?.length}
+          actionUrls={actionUrls}
+          degreesPerPage={degreesPerPage || defaultDegreesPerPage}
+        />
+      </div>
+
+      <div className="mobile-view mb-2">
+        <AccordionView
+          loading={loading}
+          programs={tableView}
+          totalRows={programs?.length}
+          actionUrls={actionUrls}
+          degreesPerPage={degreesPerPage || defaultDegreesPerPage}
+        />
+      </div>
+
+      {programs.length > 0 ? (
+        <Pagination
+          totalNumbers={7}
+          type="default"
+          background="white"
+          totalPages={TOTAL_PAGES}
+          onChange={onPageChange}
+          showFirstButton
+          showLastButton
+        />
+      ) : (
+        <section className="container no-space">
+          <InfoAlert message="No result found for the filters applied" />
+        </section>
+      )}
+    </section>
+  );
+}
+
+ProgramList.propTypes = {
+  dataViewComponent: PropTypes.string,
+  ...degreeListPropTypes,
+  degreesPerPage: PropTypes.number,
+};
+
+export { ProgramList, GridView, ListView };

@@ -1,11 +1,11 @@
 // @ts-check
 
 /**
- * @typedef {import("@asu/components-core").ImageProps} ImageItem
+ * @typedef {import("@asu/unity-react-core").ImageProps} ImageItem
  */
 
 /**
- * @typedef {import("@asu/components-core").ButtonProps} ButtonProps
+ * @typedef {import("@asu/unity-react-core").ButtonProps} ButtonProps
  */
 
 /** @typedef {"h1"|"h2"|"h3"|"h4"|"h5"|"h6"} tagHeadings */

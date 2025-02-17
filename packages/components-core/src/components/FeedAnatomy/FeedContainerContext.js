@@ -9,14 +9,17 @@ import { Loader } from "../Loader";
 
 const Container = styled.section``;
 
-const FeedContext = createContext(null);
+const FeedContext = createContext({ feeds: [] });
 
 /**
  * This component is the HOC(high order component) used on component-events and component-news packages
  * @param {{
  *  renderHeader: JSX.Element
  *  renderBody: JSX.Element
- *  dataSource: import("../../core/types/feed-types").DataSource
+ *  dataSource: {
+ *   url: string
+ *  filters: string
+ * }
  *  maxItems?: number
  *  dataTransformer?: (data: object) => object
  *  dataFilter?: (data: object, filters: string) => object

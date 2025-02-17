@@ -1,5 +1,3 @@
-const common = require("../webpack/webpack.common");
-
 const config = {
   staticDirs: ['../dist'],
   addons: [
@@ -11,24 +9,13 @@ const config = {
     "@storybook/addon-a11y",
     'storybook-addon-mock',
   ],
-  stories: ["../src/**/*.stories.js"],
+  stories: ["../src/**/*.stories.{js,jsx,ts,tsx}"],
+  core: {
+    builder: '@storybook/builder-vite'
+  },
   framework: {
-    name: "@storybook/react-webpack5",
-    options: {}
+    name: "@storybook/react-vite",
   },
-  webpackFinal: async config => {
-    return {
-      ...config,
-      module: { ...config.module, rules: common.module.rules },
-      resolve: {
-        extensions: [".js", ".jsx"],
-        alias: {
-          ...common.resolve.alias,
-        },
-      },
-    };
-  },
-
   docs: {
     autodocs: true
   }

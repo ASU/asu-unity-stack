@@ -1,3 +1,21 @@
+# [@asu/app-degree-pages-v3.0.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.6.2...@asu/app-degree-pages-v3.0.0) (2025-02-11)
+
+
+### Bug Fixes
+
+* **unity-react-core:** update package json ([414cd0f](https://github.com/asu/asu-unity-stack/commit/414cd0f6bf60a07275b80088e3475c96fb1bcc7c))
+
+
+### Features
+
+* **app-degree-pages:** updated dependecies to new unity-react-core package ([20d6e6a](https://github.com/asu/asu-unity-stack/commit/20d6e6a48d1c8c28d6ca2afefd2eef81a37ffe6e))
+* **components-core:** added component-carousel to components-core ([8677db8](https://github.com/asu/asu-unity-stack/commit/8677db8f92c15f768c35951fbbd85f254f437de0))
+
+
+### BREAKING CHANGES
+
+* **app-degree-pages:** Replaced dependency
+
 # [@asu/app-degree-pages-v2.6.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v2.6.1...@asu/app-degree-pages-v2.6.2) (2024-08-14)
 
 

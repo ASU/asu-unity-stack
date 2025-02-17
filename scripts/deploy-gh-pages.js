@@ -34,8 +34,6 @@ if(typeof process?.env?.GH_TOKEN !== "undefined") {
   console.log(`options object`, options, `\n`);
 }
 
-require('./deploy-check');
-
 ghpages.publish('build', options, function(err){
   if(err) {
     // Error

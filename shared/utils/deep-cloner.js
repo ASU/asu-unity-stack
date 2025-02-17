@@ -13,7 +13,7 @@ function deepCloner(obj) {
   if (Array.isArray(obj)) {
       const arrCopy = [];
       for (let i = 0; i < obj.length; i++) {
-          arrCopy[i] = deepClone(obj[i]);
+          arrCopy[i] = deepCloner(obj[i]);
       }
       return arrCopy;
   }

@@ -1,3 +1,16 @@
+# [@asu/components-core-v4.2.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v4.1.1...@asu/components-core-v4.2.0) (2025-02-11)
+
+
+### Bug Fixes
+
+* **components-core:** remove deprecated message ([3628bad](https://github.com/ASU/asu-unity-stack/commit/3628bad8f8229ac2ca42be1846064fd39f00154b))
+* **unity-react-core:** update package.json ([7eabcca](https://github.com/ASU/asu-unity-stack/commit/7eabcca01058eb26a1954fd26831b7ebbf1ea161))
+
+
+### Features
+
+* **components-core:** added component-carousel to components-core ([8677db8](https://github.com/ASU/asu-unity-stack/commit/8677db8f92c15f768c35951fbbd85f254f437de0))
+
 # [@asu/components-core-v4.1.1](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v4.1.0...@asu/components-core-v4.1.1) (2024-09-04)
 
 

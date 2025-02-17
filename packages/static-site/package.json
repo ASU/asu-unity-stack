@@ -1,0 +1,42 @@
+{
+  "name": "@asu/static-site",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite serve",
+    "build:dev": "tsc && vite build --mode dev",
+    "build": "tsc && vite build --mode prod",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@asu/component-header-footer": "^1.0.0",
+    "@asu/unity-bootstrap-theme": "^1.20",
+    "@asu/unity-react-core": "^1.0.0",
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-brands-svg-icons": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.37",
+    "@types/react-dom": "^18.0.11",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "^8.45.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "typescript": "^5.0.2",
+    "vite": "^5.3.5",
+    "vite-plugin-mkcert": "^1.16.0",
+    "vite-plugin-virtual-mpa": "^1.12.1"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

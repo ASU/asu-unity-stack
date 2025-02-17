@@ -14,7 +14,7 @@ The initialization, for plain Javascript, of each component is the same as all t
 - `createElement`: this is provided by React. It creates a new React element. Click to read more about [createElement](https://reactjs.org/docs/react-api.html#createelement) and [react without jsx](https://reactjs.org/docs/react-without-jsx.html).
 - `render`: this is provided by ReactDOM library. It is used to render the react element in the DOM. Click to read more about [render](https://reactjs.org/docs/react-dom.html).
   The way it works is: when the initializer function is called, this creates the element with the props provided and the react component.Then it is rendered on the DOM.
-  We also have configured [Percy](https://percy.io/) to manage all the visual regression tests. The tests included can be found [here](./src/percyTests/testPage.percy.js). These tests runs on a test stage in the CI pipeline and then are pushed to the percy dashboard. More information about this integration can be found [here](../../tests/README.md#visual-regression-testing).
+
 
 ## Component props documentation
 

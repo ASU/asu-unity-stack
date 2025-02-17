@@ -1,4 +1,4 @@
-import { TabbedPanels, Tab } from "@asu/components-core";
+import { TabbedPanels, Tab } from "@asu/unity-react-core";
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 

@@ -1,4 +1,4 @@
-import { Button, TabbedPanels, Tab } from "@asu/components-core";
+import { Button, TabbedPanels, Tab } from "@asu/unity-react-core";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "react-router-dom";

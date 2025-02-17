@@ -10,8 +10,8 @@
     "baseUrl": "./",
     "jsx": "react",
     "paths": {
-      "@components-core": [
-        "../components-core/src"
+      "@unity-react-core": [
+        "../unity-react-core/src"
       ],
       "@utils": [
         "./src/core/utils"

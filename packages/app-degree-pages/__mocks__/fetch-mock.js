@@ -1,39 +1,52 @@
-import fetchMock from "jest-fetch-mock";
-
+import { vi } from 'vitest';
 import {
   detailPageDefaultDataSource,
   listingPageDefaultDataSource,
 } from "../src/core/constants";
-import "./components-core-mock";
+import "./unity-react-core-mock";
 import detailNoNewStudentData from "./data/degree-search-detail-no-new-student.json";
 import detailData from "./data/degree-search-detail.json";
 import listData from "./data/degree-search.json";
 
 const noNewStudentAcadPlan = "BABUSCLBA";
 
-// mock all fetch() calls
-fetchMock.enableMocks();
-fetchMock.mockResponse(req => {
-  if (req.url.includes("dummy-error-url")) {
+// Mock fetch globally
+const mockFetch = vi.fn();
+
+vi.stubGlobal('fetch', mockFetch);
+
+// Setup the mock implementation
+mockFetch.mockImplementation(async (url) => {
+  if (url.includes("dummy-error-url")) {
     return Promise.reject(new Error("dummy error"));
   }
-  if (req.url.includes("dummy-broken-json")) {
+
+  if (url.includes("dummy-broken-json")) {
     const badResponse = { programs: undefined };
-    return Promise.resolve(JSON.stringify(badResponse));
+    return new Response(JSON.stringify(badResponse));
   }
 
   let res = [];
 
-  if (req.url.includes(listingPageDefaultDataSource.endpoint)) {
+  if (url.includes(listingPageDefaultDataSource.endpoint)) {
     res = listData;
-  } else if (req.url.includes(noNewStudentAcadPlan)) {
+  } else if (url.includes(noNewStudentAcadPlan)) {
     res = detailNoNewStudentData;
-  } else if (req.url.includes(detailPageDefaultDataSource.endpoint + "/")) {
+  } else if (url.includes(detailPageDefaultDataSource.endpoint + "/")) {
     res = detailData;
   }
 
   if (globalThis.doDelay) {
-    return new Promise(resolve => setTimeout(() => resolve(res), 1000));
+    await new Promise(resolve => setTimeout(resolve, 1000));
   }
-  return Promise.resolve(JSON.stringify(res));
+
+  return new Response(JSON.stringify(res), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' }
+  });
+});
+
+// Optional: Reset mocks between tests
+beforeEach(() => {
+  mockFetch.mockClear();
 });

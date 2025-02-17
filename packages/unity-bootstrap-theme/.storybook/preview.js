@@ -37,23 +37,6 @@ const parameters = {
       ],
     },
   },
-  percy: {
-    include: [
-      "Ranking Card Large",
-      "Ranking Card Small",
-      ".*Cards\.*Horizontal\$",
-      "Card Variations",
-      "Card Story",
-      ".*Anchor Menu\\.*",
-      ".*Accordions.*Foldable Card\$",
-      ".*Tabbed Panels.*",
-      ".*Global Header.*Basic Example.*",
-      ".*Global Footer.*One Column Example.*",
-      ".*Global Footer.*Two Columns Example.*",
-      ".*Heroes.*Hero Video.*",
-      ".*Heroes.*Hero Large One Button.*",
-    ],
-  },
   layout: 'fullscreen',
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {

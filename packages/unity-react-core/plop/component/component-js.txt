@@ -1,0 +1,38 @@
+import PropTypes from "prop-types";
+import React from "react";
+
+import { {{properCase componentName}}Wrapper } from "./{{properCase componentName}}.styles";
+
+/**
+ * @typedef {import('../../core/types/{{dashCase componentName}}-types.js').{{properCase componentName}}Props} {{properCase componentName}}Props
+ */
+
+/**
+ * @param { {{properCase componentName}}Props } props
+ * @returns {JSX.Element}
+ */
+
+export const {{properCase componentName}} = ({ title, children }) => {
+
+  return (
+    <{{properCase componentName}}Wrapper>
+      {title}
+      {children}
+    </{{properCase componentName}}Wrapper>
+  );
+};
+
+{{properCase componentName}}.propTypes = {
+  /**
+   * Title
+   */
+  title: PropTypes.string,
+  /**
+   * Child or Children
+   */
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
+    PropTypes.string,
+  ]),
+};

@@ -1,4 +1,3 @@
-// import { googleAnalytics as initFunc } from "@asu/unity-bootstrap-theme/js/data-layer.js";
 import React from "react";
 
 import { Container, Column, LoremContent } from "../../../../../shared/components/Layout.js";

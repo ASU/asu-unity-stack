@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hero component - Example page</title>
+    <!-- CSS only -->
+    <link
+      rel="stylesheet"
+      href="../../unity-bootstrap-theme/dist/unity-bootstrap-theme2.css"
+    />
+
+    <!-- Load FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/v4-shims.min.js"
+      integrity="sha512-1ND726aZWs77iIUxmOoCUGluOmCT9apImcOVOcDCOSVAUxk3ZSJcuGsHoJ+i4wIOhXieZZx6rY9s6i5xEy1RPg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- *************************************************************** -->
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <!-- ATTENTION! IF REACT IS NOT BUNDLED INTO THE LIBRARY UNCOMMENT
+        THOSE LINES BELOW
+     -->
+    <!-- *************************************************************** -->
+    <script
+      src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"
+      crossorigin
+    ></script>
+    <!-- *************************************************************** -->
+    <!-- include bundled scripts from packages -->
+    <script src="../dist/unityReactCore.umd.js"></script>
+  </head>
+  <body>
+    <div id="hero"></div>
+    <div class="container">
+      <div class="d-flex justify-content-center border p-4">
+        Put here your content
+      </div>
+    </div>
+
+    <script>
+      // Setup and initialize the testimonial carousel.
+      unityReactCore.initHero({
+        targetSelector: "#hero",
+        props: {
+          image: {
+            url: "https://source.unsplash.com/random/800x400?a=1",
+            altText: "Hero image",
+            size: "small", // small | medium | large
+          },
+          subTitle: {
+            text: "Subtitle 1",
+            highlightColor: "white",
+            // color: "white" // "black"
+          },
+          title: {
+            text: "Heading 1",
+            highlightColor: "gold",
+            // color: "white" // "black"
+          },
+          // `contents` is optional
+          contentsColor: "white", // "black"
+          contents: [
+            {
+              text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
+            },
+          ],
+        },
+      });
+    </script>
+    <script src="./js/example-helper.js"></script>
+  </body>
+</html>

@@ -1,6 +1,6 @@
 // @ts-check
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 
 import { CardsGridEvents, CardsListEvents } from "../../components";
 
@@ -13,7 +13,8 @@ import { CardsGridEvents, CardsListEvents } from "../../components";
  */
 
 const RenderReact = (component, props, target) => {
-  ReactDOM.render(React.createElement(component, props), target);
+  const root = createRoot(target);
+  root.render(React.createElement(component, props));
 };
 
 /**

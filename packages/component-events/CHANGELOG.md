@@ -1,3 +1,21 @@
+# [@asu/component-events-v3.0.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v2.1.2...@asu/component-events-v3.0.0) (2025-02-11)
+
+
+### Bug Fixes
+
+* **unity-react-core:** update package json ([414cd0f](https://github.com/asu/asu-unity-stack/commit/414cd0f6bf60a07275b80088e3475c96fb1bcc7c))
+
+
+### Features
+
+* **component-events:** replace components-core with unity-react-core ([fce4d1e](https://github.com/asu/asu-unity-stack/commit/fce4d1e8996d330538ebf9abe065b5b480c655a8))
+* **components-core:** added component-carousel to components-core ([8677db8](https://github.com/asu/asu-unity-stack/commit/8677db8f92c15f768c35951fbbd85f254f437de0))
+
+
+### BREAKING CHANGES
+
+* **component-events:** Replace components-core with unity-react-core
+
 # [@asu/component-events-v2.1.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v2.1.1...@asu/component-events-v2.1.2) (2024-06-20)
 
 

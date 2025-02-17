@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    // "rootDir": ".",
+    "composite": true,
+    "paths": {
+      "@shared": [ "./../../shared" ],
+      "@shared/*": [ "./../../shared/*" ]
+    }
+  }
+}

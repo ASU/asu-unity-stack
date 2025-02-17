@@ -1,3 +1,44 @@
+# [@asu/unity-bootstrap-theme-v1.21.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.21.0...@asu/unity-bootstrap-theme-v1.21.1) (2025-02-12)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** pagination active state page changed to a perfect circle ([4eb253f](https://github.com/ASU/asu-unity-stack/commit/4eb253f9b6d3b48a38ac869ea14230628a30e092))
+
+# [@asu/unity-bootstrap-theme-v1.21.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.20.2...@asu/unity-bootstrap-theme-v1.21.0) (2025-02-11)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** allow span,i alert-icon tags ([3a7b4ad](https://github.com/ASU/asu-unity-stack/commit/3a7b4ad8ecc676ec4526d36a7f0e31ccb39e178c))
+* **unity-bootstrap-theme:** apply a11y breadcrumbs min size ([fbd32cc](https://github.com/ASU/asu-unity-stack/commit/fbd32cc8f419bc97ea794553e7158a92af3ca215))
+* **unity-bootstrap-theme:** breadcrumbs ([73180a5](https://github.com/ASU/asu-unity-stack/commit/73180a52d8a193d409c368d4109e2072819c8f11))
+* **unity-bootstrap-theme:** style tweak to support rendering non-svg icons ([6010c42](https://github.com/ASU/asu-unity-stack/commit/6010c4233d9cf01fd6260fc9ae2cb2a14dffb0e0))
+* **unity-react-core:** update package.json ([7eabcca](https://github.com/ASU/asu-unity-stack/commit/7eabcca01058eb26a1954fd26831b7ebbf1ea161))
+
+
+### Features
+
+* **components-core:** added component-carousel to components-core ([8677db8](https://github.com/ASU/asu-unity-stack/commit/8677db8f92c15f768c35951fbbd85f254f437de0))
+* **unity-bootstrap-theme:** banner icon styles ([3304cf4](https://github.com/ASU/asu-unity-stack/commit/3304cf4d818a6f6ab85652afcde346d5e5fa6ccf))
+* **unity-bootstrap-theme:** rank cards native BS ([f799b7c](https://github.com/ASU/asu-unity-stack/commit/f799b7cbb693005ce4783b878c498bfe1d10535f))
+* **unity-react-core:** form elements ([bf2d04b](https://github.com/ASU/asu-unity-stack/commit/bf2d04b64439e2bbe433d9a8c68271a09dafe29c))
+
+# [@asu/unity-bootstrap-theme-v1.20.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.20.1...@asu/unity-bootstrap-theme-v1.20.2) (2025-01-17)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix profile squishing grid view ([a53688f](https://github.com/ASU/asu-unity-stack/commit/a53688f022c35b7e33fe706360da150fe115b597))
+
+# [@asu/unity-bootstrap-theme-v1.20.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.20.0...@asu/unity-bootstrap-theme-v1.20.1) (2025-01-14)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** breadcrumbs final active link changed to black ([debc183](https://github.com/ASU/asu-unity-stack/commit/debc1839b3d0d71da8101290ea492ba1d27ff336))
+* **unity-bootstrap-theme:** requested to remove !important ([9f7e7fa](https://github.com/ASU/asu-unity-stack/commit/9f7e7faf5d96e558805789decfb53a698e341b26))
+
 # [@asu/unity-bootstrap-theme-v1.20.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.19.1...@asu/unity-bootstrap-theme-v1.20.0) (2025-01-06)
 
 

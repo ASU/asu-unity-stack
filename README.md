@@ -4,9 +4,9 @@
 
 - [ASU Unity Design System (UDS)](#asu-unity-design-system-uds)
   - [Table of Contents](#table-of-contents)
-  - [Quickstart Guide](#quickstart-guide)
-  - [Consuming Unity packages in your project:](#consuming-unity-packages-in-your-project)
-  - [How to use the private package registry:](#how-to-use-the-private-package-registry)
+  - [Pre-requisites:](#pre-requisites)
+  - [Consuming Unity packages in your separate project:](#consuming-unity-packages-in-your-separate-project)
+  - [If you want to clone the entire repository and work on the packages:](#if-you-want-to-clone-the-entire-repository-and-work-on-the-packages)
     - [TROUBLESHOOTING ERRORS](#troubleshooting-errors)
   - [Packages in this repository](#packages-in-this-repository)
   - [Cookie Consent](#cookie-consent)
@@ -23,8 +23,7 @@
   - [Adding dependencies to a package](#adding-dependencies-to-a-package)
   - [Structure](#structure)
   - [Building, Testing (from the package root at packages/\[package-name\])](#building-testing-from-the-package-root-at-packagespackage-name)
-  - [Running end-to-end testing (from the Git project root)](#running-end-to-end-testing-from-the-git-project-root)
-  - [Visual Regression Testing](#visual-regression-testing)
+  - [Running end-to-end testing (from the Git project root)(currently disabled)](#running-end-to-end-testing-from-the-git-project-rootcurrently-disabled)
   - [❯ CLI tools](#-cli-tools)
     - [check-element-changes](#check-element-changes)
     - [check-element-local-changes](#check-element-local-changes)
@@ -45,38 +44,64 @@
     - [See here for more information about publishing packages](#see-here-for-more-information-about-publishing-packages)
     - [See the top answer on this stackoverflow question for why you may want to build against multiple node versions. Probably unnecessary for this workflow.](#see-the-top-answer-on-this-stackoverflow-question-for-why-you-may-want-to-build-against-multiple-node-versions-probably-unnecessary-for-this-workflow)
 
-## Quickstart Guide
+## Pre-requisites:
 
-Using the Unity Bootstrap Theme and React components for building ASU Web Standards 2.0 compliant web sites and apps.
+- Node.js (v20.15.1 or higher)
+- Yarn (v4.4.0)
+
+This workflow uses Volta version 1.1.1. Install that version using
+```bash
+sh getvolta/getvolta.sh --version 1.1.1
+```
+- Verify that a yarnrc.yml file is not in your home folder or any parent directory. Yarn4+ will use that as default instead of the project's version of that file.
 
 
-## Consuming Unity packages in your project:
+## Consuming Unity packages in your separate project:
+
+Follow the steps below if you want to consume the Unity packages in your own project.
 
 1. You must configure your local NPM to use the ASU Unity Design System package registry. Add a ```.npmrc``` file to your project root or global .npmrc with the following contents:
 ```
 @asu:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=YOUR_TOKEN_HERE
 ```
-2. Install the package using yarn or npm:
-```yarn add @asu/<package-name>``` or ```npm install @asu/<package-name>```
+2. Install the package using npm:
+```npm install @asu/<package-name>```
+
+If using yarn2+:
+
+1. Add the following to your .yarnrc.yml file:
+```Yaml
+npmScopes:
+  asu:
+    npmAuthToken: "${GITHUB_AUTH_TOKEN-fallback}"
+    npmPublishRegistry: "https://npm.pkg.github.com"
+    npmRegistryServer: "https://npm.pkg.github.com"
+```
+2. Add the following to your .env.yarn file:
+```env
+GITHUB_AUTH_TOKEN=YOUR_AUTH_TOKEN_HERE
+```
 
 
-## How to use the private package registry:
+## If you want to clone the entire repository and work on the packages:
 
 The ASU Unity Design System packages are published to GitHub's package registry. This is not the same as the NPM registry. To use the packages, you need to belong to ASU's GitHub organization and to configure your local NPM to use this registry.
 
 1. Clone the monorepo using ```git clone``` or download the zip file from GitHub.
 2. If you don't already have it [request access to the Unity Design System GitHub Repo](https://asu.edu/webservices).
-3. Once you have access, there is a ```.npmrc.example``` file in the root of this project with the correct scope of the ```@asu``` packages. Make a copy and name it ```.npmrc``` and replace the ```YOUR_TOKEN_HERE``` with a [GitHub Personal Access Token](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authenticating-to-github-packages) to have a project-based configuration for adding Unity package dependencies to your project. Alternately, some users may wish to include these configurations in the ```.npmrc``` in their HOME folder, or in another project's ```.npmrc``` instead.
-4. The first line in the ```.npmrc``` tells NPM that all packages with the ```@asu``` scope should be obtained from our Github package registry. If you receive errors when trying to install packages saying you are not authorized, typically this means your local machine is not set up with the Personal Access Token to access Github.  You can fix this as well as learn more about working with the GitHub package registry by following the instructions at https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry
-5. Test installing packages using yarn or npm inside of another NPM project:
-```yarn add @asu/design-tokens```
+3. Once you have access, there is a ```.env.yarn.example``` file in the root of this project with the correct environment variable name used in the ```.yarnrc.yml``` file. Make a copy and name it ```.env.yarn``` and replace the ```YOUR_AUTH_TOKEN_HERE``` with a [GitHub Personal Access Token](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authenticating-to-github-packages) to have a project-based configuration for adding Unity package dependencies to your project.
+4. The environment variable in the ```.env.yarn``` file is used in the ```.yarnrc.yml``` file to authenticate with the GitHub package registry. The ```.yarnrc.yml``` file is used by Yarn to configure the package registry.
 
 ### TROUBLESHOOTING ERRORS
 
 If you get errors having to do with yarn not being able to find a package on the registry, try running ```yarn config list``` at the project root and look for the ```registry:``` key under yarn config. If it is not set to ```https://registry.yarnpkg.com``` then run ```yarn config delete registry``` and recheck config.
 
-For custom compilation and sub-themes using the `unity-bootstrap-theme` package, make sure your bundling/compilation tool is compatible with the scss. For example, if you are using Gulp for scss compilation, you will need to handle the new module imports used in our Webpack configuration.
+We no longer use Gulp in our build process and have switched from webpack to vite. This shouldnt be an issue for most users.
+
+For custom compilation and sub-themes using the `unity-bootstrap-theme` package, make sure your bundling/compilation tool is compatible with the scss. For example, if you are using Gulp for scss compilation, you will need to handle the new module imports used in our Vite configuration.
+
+Verify that a yarnrc.yml file is not in your home folder or any parent directory. Yarn4+ will use that as default instead of the project's version of that file.
 
 In the old `bootstrap4-theme` package, we would import the Bootstrap scss with `@import "../../node_modules/bootstrap/scss/root";`
 In the new theme it is imported directly with  `@import "bootstrap/scss/functions";`
@@ -92,13 +117,14 @@ This repository contains multiple packages which are managed and published using
 2. [app-degree-pages](./packages/app-degree-pages/README.md)
 3. [app-rfi](./packages/app-rfi/README.md)
 4. [app-webdir-ui](./packages/app-webdir-ui/README.md)
-5. [component-carousel](./packages/component-carousel/README.md)
+5. [component-carousel](./packages/component-carousel/README.md)(deprecated)
 6. [component-cookie-consent](./packages/component-cookie-consent/README.md)
 7. [component-events](./packages/component-events/README.md)
 8. [component-footer](./packages/component-footer/README.md)
 9. [component-header](./packages/component-header/README.md) - standalone header component that doesn't require the ```unity-bootstrap-theme``` styles
 10. [component-news](./packages/component-news/README.md)
 11. [components-core](./packages/components-core/README.md)
+12. [unity-react-core](./packages/unity-react-core/README.md) *Now includes the component carousel package*
 
 ## Cookie Consent
 
@@ -116,6 +142,7 @@ Previously deprecated packages were located inside the `packages-disabled` folde
 6.  [app-new-template](https://github.com/ASU/asu-unity-stack/tree/86368e5c656108169fe27cbc405e43c2cebae968/packages-disabled/app-new-template)
 7.  [component-forms](https://github.com/ASU/asu-unity-stack/tree/86368e5c656108169fe27cbc405e43c2cebae968/packages-disabled/component-forms)
 8.  [maps](https://github.com/ASU/asu-unity-stack/tree/86368e5c656108169fe27cbc405e43c2cebae968/packages-disabled/maps)
+9.  [component-carousel](https://github.com/ASU/asu-unity-stack/blob/b5cc906aa26148208a0458355b9bf6d2f6bec149/packages/component-carousel/package.json)
 
 
 ## Package Multi Output Targets
@@ -143,7 +170,7 @@ In order to build the project, the dev environment needs to have the following p
 
 ### Installing and using Lerna
 
-Lerna is used as monorepo management tool. To take advantage of it, It can be installed globally by running ``` npm install -g lerna ```. After running that, ```npx nx graph``` can be used to visualize the dependency linking in the monorepo as such
+Lerna is used as monorepo management tool. To take advantage of it, It can be installed globally by running ``` npm install -g lerna ``` or you can just run ```npx lerna [command]``` after installing this monorepo. After running that, ```npx nx graph``` can be used to visualize the dependency linking in the monorepo as such
 
 <img src="./docs/assets/nx-graph-example.png" alt="visualization of nx graph" style="height: 244px; width:608px;"/>
 
@@ -162,7 +189,7 @@ Adhering to the standard Volta installation instructions would introduce a weakp
 For MacOS, execute the following commands in your terminal to use our vetted copy of the installer. From the root of your checkout:
 
 ```
-bash ./getvolta/getvolta.sh
+bash ./getvolta/getvolta.sh --version 1.1.1
 ```
 
 When deemed necessary, we'll review newer versions of the installer from https://get.volta.sh/ and update our copy of getvolta.sh.
@@ -177,12 +204,12 @@ When you install a tool to your toolchain, you always choose a default version o
 For example, you can select your default version of node by installing a particular version:
 
 ```
-volta install node@14.15.5
+volta install node@20.15.1
 ```
 
 You don’t need to specify a precise version, in which case Volta will choose a suitable version to match your request:
 ```
-volta install node@14
+volta install node@20
 ```
 
 You can also specify latest—or even leave off the version entirely, and Volta will choose the latest LTS release:
@@ -218,11 +245,11 @@ If you get errors during `yarn install` regarding failures to install packages f
 See the developer documentation on storybook at https://storybook.js.org/docs/basics/introduction/
 
 ## Adding dependencies to a package
-- If adding a dependency to a specific package, run `lerna exec yarn add <dependency-name> --scope=<package-name>` from the git root.
-- If removing, run `lerna exec yarn remove <dependency-name> --scope=<package-name>` from the git root.
+- If adding a dependency to a specific package, you can cd into the root of that package and run the `yarn add` command.
+- If removing, just run the `yarn remove` command.
 
 ## Structure
- - packages/[package-name] - NPM package root
+ - packages/[package-name] - NPM/YARN package root
  - packages/[package-name]/src - Source code
  - packages/[package-name]/.storybook - Storybook configuration
 
@@ -238,24 +265,12 @@ It's also possible to build a package from the git project root with a Yarn work
 ```yarn workspace @asu/asu-brand build```
 
 
-## Running end-to-end testing (from the Git project root)
+## Running end-to-end testing (from the Git project root)(currently disabled)
 
 ```bash
 yarn build # build the project
 yarn start & yarn test:e2e # start the testing server and run e2e tests
 yarn stop # stop the testing server
-```
-
-
-## Visual Regression Testing
-
-We use Percy for visual regression testing. Percy is a visual testing platform that allows us to take screenshots of our components and compare them to previous versions to ensure that changes to our components do not introduce visual regressions. Percy runs on every pull request against the main branch. If you are a contributor, you can view the Percy build approval link in the pull request template and approve the build if it looks good. To run tests locally in a dry-run mode, add the `--dry-run` flag in the `percy-test` script in the `scripts/percy-testing.js` file. This will allow you to see how many snapshots will be taken and whether the tests wil fail without uploading to percy cloud. Then run:
-
-```bash
-yarn build # build the project
-yarn build-storybook # build storybook
-export PERCY_PARALLEL_NONCE=RANDOM_STRING # set the PERCY_PARALLEL_NONCE environment variable to any random alphanumeric string.
-yarn percy-test # run percy tests
 ```
 
 
@@ -288,7 +303,7 @@ Find updates within the past 2 days by running the command  `node ./scripts/chec
 
  - Storybook (https://storybook.js.org/docs/basics/introduction/)
  - LernaJS (https://lerna.js.org/)
- - Yarn Workspaces (https://classic.yarnpkg.com/en/docs/workspaces/)
+ - Yarn Workspaces (https://yarnpkg.com/features/workspaces)
  - Jest (https://jestjs.io/docs/en/getting-started)
  - Puppeteer (https://pptr.dev/)
 

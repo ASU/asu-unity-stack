@@ -1,6 +1,7 @@
 module.exports = {
   verbose: true,
   testEnvironment: "jsdom",
+  preset: "ts-jest",
   setupFilesAfterEnv: ["./setupTests.js"],
   transform: {
     "^.+\\.js$": "babel-jest",
@@ -9,7 +10,7 @@ module.exports = {
     "\\.(jpg|jpeg|png|gif|webp|svg)$": "jest-transform-file",
   },
   moduleNameMapper: {
-    "^@asu/components-core$": "<rootDir>/../components-core/src/index.js",
+    "^@asu/unity-react-core$": "<rootDir>/../unity-react-core/src/index.js",
     "\\.(css|less|sass|scss)$": "identity-obj-proxy",
   },
 };

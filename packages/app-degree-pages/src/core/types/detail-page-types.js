@@ -1,19 +1,19 @@
 // @ts-check
 
 /**
- * @typedef {import("@asu/components-core").HeroProps} HeroProps
+ * @typedef {import("@asu/unity-react-core").HeroProps} HeroProps
  */
 
 /**
- * @typedef {import("@asu/components-core").ImageProps} ImageItem
+ * @typedef {import("@asu/unity-react-core").ImageComponentProps} ImageItem
  */
 
 /**
- * @typedef {import("@asu/components-core").VideoProps} VideoItem
+ * @typedef {import("@asu/unity-react-core").VideoProps} VideoItem
  */
 
 /**
- * @typedef {import("@asu/components-core").AnchorMenuItem} AnchorMenuItem
+ * @typedef {import("@asu/unity-react-core").AnchorMenuProps} AnchorMenuItem
  */
 
 /**

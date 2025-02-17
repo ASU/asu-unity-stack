@@ -1,6 +1,6 @@
 {
   "name": "@asu/app-rfi",
-  "version": "2.4.1",
+  "version": "3.0.0",
   "description": "ASU Request For Information (RFI) form",
   "main": "./dist/appRfi.cjs.js",
   "browser": "./dist/appRfi.umd.js",
@@ -28,8 +28,7 @@
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
     "test": "jest --config=./jest.config.js --passWithNoTests",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
-    "prebuild": "rm -rf ./dist",
-    "build": "webpack -c webpack/webpack.prod.js",
+    "build": "vite build && cp -r src/assets dist/",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "postbuild": "cp ./types/main.d.ts ./dist/main.d.ts",
     "storybook": "storybook dev -p 9020",
@@ -55,6 +54,7 @@
     "@storybook/react": "^7.6.14",
     "@storybook/react-webpack5": "^7.6.14",
     "@testing-library/react": "^11.2.6",
+    "@vitejs/plugin-react": "^4.3.1",
     "babel-loader": "^8.2.2",
     "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^5.2.0",
@@ -66,31 +66,33 @@
     "jest-image-snapshot": "^4.4.1",
     "jest-transform-css": "^6.0.1",
     "jest-transform-file": "^1.1.1",
-    "jsdoc": "^3.6.7",
+    "jsdoc": "4",
     "jsdoc-plugin-typescript": "^2.0.6",
     "jsdoc-to-markdown": "5.0.0",
     "jsdoc-ts-utils": "^2.0.1",
     "jsdom-screenshot": "^4.0.0",
     "postcss": "^8.4.19",
-    "semantic-release": "^17.4.2",
-    "semantic-release-monorepo": "^7.0.4",
+    "semantic-release": "^22",
+    "semantic-release-monorepo": "^8.0.2",
     "storybook": "^7.6.14",
     "storybook-css-modules-preset": "^1.1.1",
     "style-loader": "^2.0.0",
+    "vite": "^5.3.5",
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "@asu/components-core": "^3.0.0",
+    "@asu/unity-react-core": "^1.0.0",
     "formik": "^2.1.4",
     "prop-types": "^15.7.2",
-    "react": ">= 16.14.0 < 18",
-    "react-dom": ">= 16.14.0 < 18",
     "react-phone-input-2": "^2.14.0",
-    "reactstrap": "^8.9.0",
+    "reactstrap": "^9",
     "yup": "^0.28.1",
     "yup-phone": "^1.2.19"
   },
-  "peerDependencies": {},
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
   "volta": {
     "extends": "../../package.json"
   }

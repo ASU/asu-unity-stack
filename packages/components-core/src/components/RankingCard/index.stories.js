@@ -1,7 +1,9 @@
 import classNames from "classnames";
 import React from "react";
-import { imageAny } from "../../../../../shared/assets";
+
 import { RankingCard } from ".";
+
+import { imageAny } from "../../../../../shared/assets";
 
 export default {
   title: "UDS/Ranking Card",

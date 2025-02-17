@@ -1,3 +1,10 @@
+# [@asu/component-header-v2.4.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.3.3...@asu/component-header-v2.4.0) (2025-02-11)
+
+
+### Features
+
+* **components-core:** added component-carousel to components-core ([8677db8](https://github.com/asu/asu-unity-stack/commit/8677db8f92c15f768c35951fbbd85f254f437de0))
+
 # [@asu/component-header-v2.3.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.3.2...@asu/component-header-v2.3.3) (2024-10-03)
 
 
@@ -120,6 +127,13 @@
 * **component-header:** added prop to conditionally render header as div instead of header element ([5cc9d90](https://github.com/asu/asu-unity-stack/commit/5cc9d907481de814659da62c06e2ad5f11bfe60e))
 
 # [@asu/component-header-v2.0.8](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.7...@asu/component-header-v2.0.8) (2023-11-17)
+
+
+### Bug Fixes
+
+* **component-header:** update Peer Dependency Components-core to allow version 2 or 3 ([bb3eb07](https://github.com/asu/asu-unity-stack/commit/bb3eb07e50f4811d3a78d38c4304a3a45b3568c7))
+
+# [@asu/component-header-v2.0.8-testing.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-v2.0.7...@asu/component-header-v2.0.8-testing.1) (2023-10-20)
 
 
 ### Bug Fixes

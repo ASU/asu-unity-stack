@@ -9,7 +9,8 @@ addons.register(ADDON_ID, () => {
     type: types.PANEL,
     title: function title(){
       const [{ dataLayer }] = useAddonState(ADDON_ID, {
-        dataLayer: []
+        dataLayer: [],
+        filter: "!gtm.",
       });
       return `Data Layer${dataLayer.length ? ` (${dataLayer.length})`: ``}`;
     },

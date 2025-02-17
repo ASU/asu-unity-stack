@@ -28,15 +28,14 @@ export const Interest2 = ({ gaData }) => {
 
   useEffect(() => {
     const poiOptions = degreeDataList
-      .filter(
-        ({rfiDisplay, acadPlanKey}) => {
-          if (programOfInterest && programOfInterest === acadPlanKey) {
-            return true;
-          }
-          if (rfiDisplay) {
-            return true;
-          }
-          return false;
+      .filter(({ rfiDisplay, acadPlanKey }) => {
+        if (programOfInterest && programOfInterest === acadPlanKey) {
+          return true;
+        }
+        if (rfiDisplay) {
+          return true;
+        }
+        return false;
       })
       .filter(
         ({ planCategories }) =>

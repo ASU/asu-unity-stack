@@ -1,3 +1,33 @@
+# [@asu/app-rfi-v3.0.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.4.2...@asu/app-rfi-v3.0.0) (2025-02-11)
+
+
+### Bug Fixes
+
+* **unity-react-core:** update package json ([414cd0f](https://github.com/asu/asu-unity-stack/commit/414cd0f6bf60a07275b80088e3475c96fb1bcc7c))
+
+
+### Features
+
+* **app-rfi:** updated to new unity-react-core package ([3647744](https://github.com/asu/asu-unity-stack/commit/36477446a78e1308a98a88c78f2f6fb07683bb19))
+* **components-core:** added component-carousel to components-core ([8677db8](https://github.com/asu/asu-unity-stack/commit/8677db8f92c15f768c35951fbbd85f254f437de0))
+
+
+### BREAKING CHANGES
+
+* **app-rfi:** Replaced components-core with unity-react-core
+
+# [@asu/app-rfi-v2.4.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.4.1...@asu/app-rfi-v2.4.2) (2025-01-30)
+
+
+### Bug Fixes
+
+* **app-rfi:** prevent sending pii to data layer ([9bef080](https://github.com/asu/asu-unity-stack/commit/9bef080877a1d855c3949e409cd87f056e49ff52))
+
+
+### Reverts
+
+* Revert "fix(app-rfi): ga track default disabled for pii" ([ca8207e](https://github.com/asu/asu-unity-stack/commit/ca8207e6df7d3473f95173c18b7766148dc1f32a))
+
 # [@asu/app-rfi-v2.4.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v2.4.0...@asu/app-rfi-v2.4.1) (2024-10-04)
 
 

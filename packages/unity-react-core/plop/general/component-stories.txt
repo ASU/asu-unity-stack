@@ -1,0 +1,34 @@
+import React from "react";
+import { {{properCase componentName}} } from "./{{properCase componentName}}";
+
+export default {
+  title: "{{properCase componentName}}",
+  component: {{properCase componentName}},
+};
+
+const defaultProps = {
+  title: "Header",
+  children: "Content",
+}
+
+const {{camelCase componentName}}Template = args => <{{properCase componentName}} {...args} />;
+
+export const Overview = {
+  render: {{camelCase componentName}}Template.bind({}),
+  name: "Story 1",
+  args: {
+    ...defaultProps,
+  }
+};
+
+export const Story2 = {
+  render: args => {
+    return <div>
+        <{{properCase componentName}} {...args} />
+      </div>
+  },
+  args: {
+    ...defaultProps,
+    children: <p>paragraph</p>
+  }
+};

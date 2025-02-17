@@ -1,7 +1,7 @@
+import { NavControls } from "@asu/unity-react-core";
 import PropTypes from "prop-types";
 import React, { useState, useRef, useEffect } from "react";
 
-import { NavControls } from "../../../../components-core/src/components/TabbedPanels/components/NavControls";
 import { FilterContainer } from "./index.styles";
 
 /**

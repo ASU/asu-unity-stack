@@ -19,10 +19,10 @@ This is the Storybook reference site for the Unity Bootstrap theme. Browse the d
 
 We bundle the necessary CSS  and Javascript in the `dist/` folder. There are more options so you don't have to include CSS you don't use.
 
-* `dist/css/unity-bootstrap-theme.bundle.css` - base theme with header and footer CSS
-* `dist/css/unity-bootstrap-theme.css` - base theme without header and footer CSS
-* `dist/css/unity-bootstrap-header.css` (optional) - header CSS only - don't use if using the Unity `component-header` React component
-* `dist/css/unity-bootstrap-footer.css` (optional) - footer CSS only - don't use if using the Unity `component-footer` React component
+* `dist/unity-bootstrap-theme.bundle.css` - base theme with header and footer CSS
+* `dist/unity-bootstrap-theme.css` - base theme without header and footer CSS
+* `dist/unity-bootstrap-header.css` (optional) - header CSS only - don't use if using the Unity `component-header` React component
+* `dist/unity-bootstrap-footer.css` (optional) - footer CSS only - don't use if using the Unity `component-footer` React component
 
 ## ❯ How to  use the Unity Storybook reference site
 
@@ -31,14 +31,7 @@ Some components also have controls so you can make changes and see how those cha
 
 ## ❯ How to use the private package registry
 
-The ASU Unity Design System packages are published to GitHub's package registry. This is not exactly the same as using the NPM registry. To use the packages, you need to belong to ASU's GitHub organization and to configure your local NPM config to use this registry.
-
-1. Clone the monorepo using ```git clone``` or download the zip file from GitHub.
-2. If you don't already have it [request access to the Unity Design System GitHub Repo](https://asu.edu/webservices).
-3. Once you have access, there is a ```.npmrc.example``` file in the root of this project with the correct scope of the ```@asu``` packages. Make a copy and name it ```.npmrc``` and replace the ```YOUR_TOKEN_HERE``` with a [GitHub Personal Access Token](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authenticating-to-github-packages) to have a project-based configuration for adding Unity package dependencies to your project. Alternately, some users may wish to include these configurations in the ```.npmrc``` in their HOME folder, or in another project's ```.npmrc``` instead.
-4. The first line in the ```.npmrc``` tells NPM that all packages with the ```@asu``` scope should be obtained from our Github package registry. If you receive errors when trying to install packages saying you are not authorized, typically this means your local machine is not set up with the Personal Access Token to access Github.  You can fix this as well as learn more about working with the GitHub package registry by following the instructions at https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry
-5. Test installing packages using yarn or npm inside of another NPM project:
-```yarn add @asu/design-tokens```
+See the [Unity README](https://github.com/ASU/asu-unity-stack?tab=readme-ov-file#how-to-use-the-private-package-registry) for instructions on how to use the private package registry.
 
 ### TROUBLESHOOTING ERRORS
 

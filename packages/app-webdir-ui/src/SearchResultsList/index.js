@@ -1,4 +1,4 @@
-import { Button, Pagination } from "@asu/components-core";
+import { Button, Pagination } from "@asu/unity-react-core";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 

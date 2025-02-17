@@ -77,7 +77,7 @@ const AsuRfi = props => {
     }
   }, [rfiState.showForm]);
   if (!rfiState.showForm) {
-    return <div style={{display: "none"}}>{noRfiAvailable}</div>;
+    return <div style={{ display: "none" }}>{noRfiAvailable}</div>;
   }
 
   return (

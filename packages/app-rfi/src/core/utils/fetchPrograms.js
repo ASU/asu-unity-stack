@@ -38,7 +38,9 @@ function getServiceUrl({
     "rfiDisplay",
     "degreeType",
     // "applicationDeadlines", // This can double the response size
-  ].map(term => `include=${term}`).join("&");
+  ]
+    .map(term => `include=${term}`)
+    .join("&");
 
   // ASUOnline API
   if (Campus === KEY.ONLINE) {
@@ -53,7 +55,7 @@ function getServiceUrl({
   if (Interest2) {
     serviceUrl =
       `${dataSourceDegreeSearch}/acad-plan/${Interest2}?` +
-      `include=applicationDeadlines${includeFields}`
+      `include=applicationDeadlines${includeFields}`;
     return serviceUrl;
   }
 

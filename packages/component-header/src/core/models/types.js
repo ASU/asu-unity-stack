@@ -8,7 +8,7 @@
  * @property {string} title
  * @property {string} src
  * @property {string} mobileSrc
- * @property {string} brandLink
+ * @property {string} [brandLink]
  */
 
 /**

@@ -4,6 +4,7 @@ import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
 import { fetchCountries } from "../../../core/utils/fetchCountries";
 import { useRfiContext } from "../../../core/utils/rfiContext";
 import { RfiSelect } from "../../controls";
+import { PII_VALUE } from "../../../core/utils/constants";
 
 // Options
 function getCountryOptions(resultsArrayOfObjects) {
@@ -56,7 +57,7 @@ export const Country = ({ gaData }) => {
           ...gaData,
           event: "select",
           type: label,
-          text: e.target.selectedOptions[0].innerText,
+          text: PII_VALUE,
         })
       }
     />

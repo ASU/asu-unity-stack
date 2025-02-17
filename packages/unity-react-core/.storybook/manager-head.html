@@ -1,0 +1,11 @@
+<style>
+  /*
+  There is probably a better way to do this. This style is a hack to hide the
+  global toggles "framework selector" in the Storybook toolbar on the Docs page.
+  'Remount component' is not shown on the Docs page. So if .sb-bar does not contain a button with the title 'Remount component',
+  then hide the framework selector.
+  */
+  .sb-bar > div:not(:has(button[title='Remount component'])) [title='Framework to use'] {
+      display: none;
+  }
+</style>

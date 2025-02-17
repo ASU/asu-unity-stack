@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM"],
+    "resolveJsonModule": true,
+    "emitDeclarationOnly": true,
+    "declarationDir": "./dist/types",
+    "jsx": "react",
+    "allowImportingTsExtensions": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node16",
+    "rootDir": "src",
+    "rootDirs": ["src", "../../shared"],
+    "module": "node16",
+    "declaration": true,
+    "sourceMap": true,
+    "allowJs": true,
+    "checkJs": true,
+    "allowSyntheticDefaultImports": true,
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
+    "types": ["@vitest/browser/providers/playwright"],
+    "paths": {
+      "@asu/unity-bootstrap-theme": [ "./../unity-bootstrap-theme" ],
+      "@asu/unity-bootstrap-theme/*": [ "./../unity-bootstrap-theme/*" ]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "types/**/*",
+    "src/vite-env.d.ts",
+    "shared/**/*"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "src/**/*.test.*",
+    "__mocks__",
+    "src/**/*.stories.*",
+    "shared",
+    "../../shared/**/*",
+    "shared/**/*",
+    "@shared/**/*"
+  ]
+}

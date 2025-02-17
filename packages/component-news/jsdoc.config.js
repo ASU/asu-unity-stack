@@ -8,7 +8,7 @@ module.exports = {
     ...coreConfig.source,
     include: [
       ...coreConfig.source.include,
-      "../components-core/src/core/types",
+      "../unity-react-core/src/core/types",
       "./src/core/types",
       "./src/components",
     ],

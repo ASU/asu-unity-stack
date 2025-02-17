@@ -2,6 +2,7 @@ import React from "react";
 
 import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
 import { RfiPhone } from "../../controls";
+import { PII_VALUE } from "../../../core/utils/constants";
 
 /**
  * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
@@ -21,7 +22,7 @@ export const Phone = ({ gaData }) => {
         trackGAEvent({
           ...gaData,
           type: label,
-          text: e.target.value,
+          text: PII_VALUE,
         })
       }
     />

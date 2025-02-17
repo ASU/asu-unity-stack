@@ -9,7 +9,7 @@
 
   .banner-icon {
     text-align: left;
-    svg {
+    svg, i, span {
       font-size: $uds-size-spacing-4;
       margin: calc(#{$uds-size-spacing-1} / 2) $uds-size-spacing-4
         calc(#{$uds-size-spacing-1} / 2) 0;
@@ -111,7 +111,7 @@
       flex: 1;
       margin-bottom: $uds-size-spacing-1;
 
-      svg {
+      svg, i, span {
         font-size: $uds-size-spacing-5;
         margin: $uds-size-spacing-0;
       }

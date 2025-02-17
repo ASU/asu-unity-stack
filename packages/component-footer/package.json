@@ -1,6 +1,6 @@
 {
   "name": "@asu/component-footer",
-  "version": "2.2.2",
+  "version": "2.3.0",
   "description": "ASU implementation of global footer",
   "main": "./dist/asuFooter.cjs.js",
   "browser": "./dist/asuFooter.umd.js",
@@ -8,7 +8,6 @@
   "types": "./dist/main.d.ts",
   "author": "Conner Shannon",
   "license": "MIT",
-  "private": false,
   "files": [
     "examples/*",
     "dist/*",
@@ -28,26 +27,22 @@
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
     "test": "jest --config=./jest.config.js --silent --coverage",
     "test-update-snapshot": "yarn test -- -u",
-    "prebuild": "rm -rf ./dist",
-    "build": "webpack -c webpack/webpack.prod.js",
+    "build": "vite build && yarn postbuild",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "postbuild": "cp ./types/main.d.ts ./dist/main.d.ts",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
     "storybook": "storybook dev -p 9070",
     "predocs": "mkdir -p ./docs",
-    "docs": "jsdoc2md --no-cache -c jsdoc.config.js --files ./src/components > ./docs/README.props.md",
+    "docs": "yarn predocs && jsdoc2md --no-cache -c jsdoc.config.js --files ./src/components > ./docs/README.props.md && yarn postdocs",
     "postdocs": "node ../../scripts/process-readme-props.js",
     "build-storybook": "storybook build -o ../../build/$npm_package_name"
   },
   "dependencies": {
-    "@babel/plugin-transform-react-jsx": "^7.13.12",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-brands-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "prop-types": "^15.7.2",
-    "react": ">= 16.14.0 < 18",
-    "react-dom": ">= 16.14.0 < 18"
+    "prop-types": "^15.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.13.14",
@@ -58,9 +53,9 @@
     "@storybook/react": "^7.6.14",
     "@storybook/react-webpack5": "^7.6.14",
     "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0",
+    "@testing-library/react": "^16.0.0",
+    "@vitejs/plugin-react": "^4.3.1",
     "babel-loader": "^8.2.2",
-    "clean-webpack-plugin": "^4.0.0-alpha.0",
     "copy-webpack-plugin": "^8.1.1",
     "css-loader": "^5.2.4",
     "eslint-plugin-storybook": "^0.6.15",
@@ -68,17 +63,22 @@
     "jest-image-snapshot": "^4.4.1",
     "jest-transform-css": "^6.0.1",
     "jest-transform-file": "^1.1.1",
+    "jsdoc": "4",
     "jsdom-screenshot": "^4.0.0",
     "sass-loader": "^11.1.0",
-    "semantic-release": "^17.4.2",
-    "semantic-release-monorepo": "^7.0.4",
+    "semantic-release": "^22",
+    "semantic-release-monorepo": "^8.0.2",
     "storybook": "^7.6.14",
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^5.1.1",
     "url-loader": "^4.1.1",
+    "vite": "^5.3.5",
     "webpack-merge": "^5.8.0"
   },
-  "peerDependencies": {},
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
   "volta": {
     "extends": "../../package.json"
   }

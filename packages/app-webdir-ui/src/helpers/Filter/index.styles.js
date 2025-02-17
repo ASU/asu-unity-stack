@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const FilterContainer = styled.fieldset`
-  width: 100%;
+  width: 85%;
   margin: 0 0 2rem 0;
 
   .choices-wrapper {

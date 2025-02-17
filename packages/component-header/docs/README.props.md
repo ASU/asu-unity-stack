@@ -72,7 +72,7 @@
 | title | <code>string</code> | 
 | src | <code>string</code> | 
 | mobileSrc | <code>string</code> | 
-| brandLink | <code>string</code> | 
+| [brandLink] | <code>string</code> | 
 
 <a name="Button"></a>
 
@@ -87,7 +87,7 @@
 | text | <code>string</code> | 
 | [classes] | <code>string</code> | 
 | [onClick] | <code>function</code> | 
-| [onFocus] | <code>function</code> | 
+| [onClick] | <code>function</code> | 
 
 <a name="NavTreeProps"></a>
 

@@ -1,7 +1,7 @@
 /* eslint-disable quote-props */
 // @ts-check
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 
 import { iSearchApp } from "../SearchPage/withRouter";
 import { WebDirectoryComponent } from "../WebDirectoryComponent/withRouter";
@@ -18,7 +18,8 @@ import { WebDirectoryComponent } from "../WebDirectoryComponent/withRouter";
  */
 const RenderReactSearch = (component, props, targetSelector) => {
   const target = document.querySelector(targetSelector);
-  ReactDOM.render(React.createElement(component, props), target);
+  const root = createRoot(target);
+  root.render(React.createElement(component, props));
 };
 
 /**
@@ -26,7 +27,8 @@ const RenderReactSearch = (component, props, targetSelector) => {
  */
 const RenderReactWebDirectory = (component, props, targetSelector) => {
   const target = document.querySelector(targetSelector);
-  ReactDOM.render(React.createElement(component, props), target);
+  const root = createRoot(target);
+  root.render(React.createElement(component, props));
 };
 
 /**

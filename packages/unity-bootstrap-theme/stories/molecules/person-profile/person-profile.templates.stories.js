@@ -2,7 +2,7 @@ import React from "react";
 
 import { imageName } from "../../../../../shared/assets";
 import { defaultDecorator } from "../../../../../shared/components/Layout";
-import { Button } from "../../../../components-core/src/components/Button";
+import { Button } from "../../../../unity-react-core/src/components/Button/Button";
 import anonPic from "./anon.png";
 
 export default {

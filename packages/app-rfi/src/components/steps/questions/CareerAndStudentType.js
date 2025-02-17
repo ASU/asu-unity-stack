@@ -55,7 +55,7 @@ export const CareerAndStudentType = ({ gaData }) => {
         })
       }
     />
-  )
+  );
 };
 
 CareerAndStudentType.propTypes = { gaData: gaEventPropTypes };

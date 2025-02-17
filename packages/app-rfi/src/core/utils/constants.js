@@ -89,3 +89,7 @@ export const DATA_SOURCE = {
   ASU_ONLINE: "https://cms.asuonline.asu.edu/lead-submissions-v3.5/programs",
   COUNTRIES_STATES: "https://api.myasuplat-dpl.asu.edu/api/codeset/countries",
 };
+
+// Personally Identifiable Information (PII)
+// UDS-1943 : Fields containing PII should not send the PII to data layer
+export const PII_VALUE = "REDACTED";
