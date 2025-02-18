@@ -1,0 +1,1 @@
+import t from"./index.stories-Dy3GZnfc.js";import o from"./index.stories-D2RBijDx.js";import"./index-BU9RufXh.js";import"./index-B2SEcK1p.js";import"./_commonjsHelpers-B3tUAs5q.js";import"./index-BEWoeB4E.js";const r={actions:{argTypesRegex:"^on[A-Z].*"},options:{storySort:{order:[`${t.title}`,`${o.title}`]}}},n={parameters:r};export{n as default};
