@@ -1,0 +1,1 @@
+import{p as e}from"./googleAnalytics-bhG-ZSut.js";function u(t){return(t?document.querySelector(t):document).querySelector('button, [href], input, select, textarea, [tabIndex]:not([tabIndex="-1"])')}const a=t=>({__html:e.sanitize(t)});export{u as q,a as s};
