@@ -6585,19 +6585,20 @@ const Di = ({ gaData: e }) => {
   );
 };
 Di.propTypes = { gaData: ct };
-const ji = ({ gaData: e }) => {
-  const t = "Email Address", r = "EmailAddress";
+const ji = ({ gaData: e, autoFocus: t }) => {
+  const r = "Email Address", n = "EmailAddress";
   return /* @__PURE__ */ h.jsx(
     la,
     {
-      label: t,
-      id: r,
-      name: r,
+      label: r,
+      id: n,
+      name: n,
       requiredIcon: !0,
       required: !0,
-      onBlur: (n) => Je({
+      autoFocus: t,
+      onBlur: (i) => Je({
         ...e,
-        type: t,
+        type: r,
         text: en
       })
     }
@@ -6999,7 +7000,7 @@ const tt = {
         children: [
           /* @__PURE__ */ h.jsx("h4", { children: "Step 2 of 2" }),
           /* @__PURE__ */ h.jsx("h2", { children: "About me" }),
-          /* @__PURE__ */ h.jsx(ji, { gaData: kt }),
+          /* @__PURE__ */ h.jsx(ji, { autoFocus: !0, gaData: kt }),
           /* @__PURE__ */ h.jsx(Pi, { gaData: kt }),
           /* @__PURE__ */ h.jsx(ki, { gaData: kt }),
           /* @__PURE__ */ h.jsx(qi, { gaData: kt }),
