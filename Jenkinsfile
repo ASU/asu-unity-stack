@@ -89,6 +89,7 @@ spec:
               script {
                 echo '## Build storybook'
                 sh 'yarn build-storybook'
+                stash includes: 'build/**', name: 'static-storybook-artifacts'
               }
             }
             container('aws-cli') {
@@ -254,8 +255,7 @@ spec:
                 container('node20') {
                     script {
                         echo '# Final, post-publish install and build to include just published pkgs...'
-                        unstash name: 'build-artifacts'
-                        sh 'yarn build-storybook'
+                        unstash name: 'static-storybook-artifacts'
 
                         withEnv(["GH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
                           // Must pass branch name "dev" and "PUSH" for script to deploy
