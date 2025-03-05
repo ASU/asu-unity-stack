@@ -255,6 +255,7 @@ spec:
                 container('node20') {
                     script {
                         echo '# Final, post-publish install and build to include just published pkgs...'
+                        unstash name: 'build-artifacts'
                         unstash name: 'static-storybook-artifacts'
 
                         withEnv(["GH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
