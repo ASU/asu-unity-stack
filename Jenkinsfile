@@ -75,6 +75,7 @@ spec:
                     echo '## Install and build Unity monorepo...'
                     sh 'yarn install'
                     sh 'yarn build'
+                    stash includes: 'node_modules/**,packages/**/dist/**,packages/**/node_modules/**', name: 'build-artifacts'
                   }
                 }
             }
@@ -209,7 +210,7 @@ spec:
               container('node20') {
                 withEnv(["GITHUB_AUTH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
                   echo '## Running security checks...'
-                  sh 'yarn install --immutable'
+                  unstash name: 'build-artifacts'
                   sh 'yarn npm audit --all --severity critical'
                   script {
                   def result = sh(
@@ -253,7 +254,7 @@ spec:
                 container('node20') {
                     script {
                         echo '# Final, post-publish install and build to include just published pkgs...'
-                        sh 'yarn install --immutable'
+                        unstash name: 'build-artifacts'
                         sh 'yarn build-storybook'
 
                         withEnv(["GH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
