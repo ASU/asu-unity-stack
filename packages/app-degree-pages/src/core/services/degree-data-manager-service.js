@@ -49,7 +49,18 @@ function filterData({
   const filterByKeyword = (resolver, searchTerm) => {
     if (!searchTerm) return true;
     const regex = new RegExp(searchTerm, "i");
-    return regex.test(resolver.getFullDescription());
+    const title = regex.test(resolver.getMajorDesc());
+    const description = regex.test(resolver.getFullDescription());
+    if (title){
+      return true;
+    } else if (description) {
+      return true;
+    }
+    else {
+      return false;
+    }
+
+
   };
 
   const filterByBlacklist = resolver =>
