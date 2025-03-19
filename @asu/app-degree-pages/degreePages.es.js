@@ -6340,7 +6340,7 @@ Ko.propTypes = {
    */
   totalPages: l.number,
   /**
-   * Callback fired when the page is changed.
+   * Callback fired when the page is changed
    */
   onChange: l.func.isRequired
 };
