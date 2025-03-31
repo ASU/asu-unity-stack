@@ -6119,8 +6119,8 @@ const Logo = () => {
           {
             className: "vert",
             src: (logo == null ? void 0 : logo.src) ?? vertLogo,
-            alt: (logo == null ? void 0 : logo.alt) ?? "Arizona State University",
-            title: (logo == null ? void 0 : logo.title) ?? "ASU home page",
+            alt: (logo == null ? void 0 : logo.alt) ?? "Arizona State University logo",
+            title: (logo == null ? void 0 : logo.title) ?? "ASU homepage",
             width: "303",
             height: "234",
             decoding: "async",
@@ -6132,8 +6132,8 @@ const Logo = () => {
           {
             className: "horiz",
             src: (logo == null ? void 0 : logo.mobileSrc) ?? horizLogo,
-            alt: (logo == null ? void 0 : logo.alt) ?? "Arizona State University",
-            title: (logo == null ? void 0 : logo.title) ?? "ASU home page",
+            alt: (logo == null ? void 0 : logo.alt) ?? "Arizona State University logo",
+            title: (logo == null ? void 0 : logo.title) ?? "ASU homepage",
             width: "400",
             height: "72",
             decoding: "async",
@@ -6961,7 +6961,7 @@ const Partner = () => {
               {
                 className: "vert",
                 src: (asuLogo == null ? void 0 : asuLogo.src) ?? asuVertLogo,
-                alt: (asuLogo == null ? void 0 : asuLogo.alt) ?? "Arizona State University",
+                alt: (asuLogo == null ? void 0 : asuLogo.alt) ?? "Arizona State University logo",
                 width: "303",
                 height: "234",
                 decoding: "async",
@@ -6973,7 +6973,7 @@ const Partner = () => {
               {
                 className: "horiz",
                 src: (asuLogo == null ? void 0 : asuLogo.mobileSrc) ?? asuHorizLogo,
-                alt: (asuLogo == null ? void 0 : asuLogo.alt) ?? "Arizona State University",
+                alt: (asuLogo == null ? void 0 : asuLogo.alt) ?? "Arizona State University logo",
                 width: "400",
                 height: "72",
                 decoding: "async",
