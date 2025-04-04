@@ -1,0 +1,9 @@
+import"./chunk-HLWAVYOI-ShxplKH0.js";import{M as s}from"./index-1PEYly1T.js";import{j as e}from"./jsx-runtime-8P-18mTY.js";import{useMDXComponents as a}from"./index-Rw-mr-m5.js";import"./iframe-BjAzcu9a.js";import"../sb-preview/runtime.js";import"./index-Cs7sjTYM.js";import"./_commonjsHelpers-BosuxZz1.js";import"./react-18-D3KMmV-X.js";import"./index-CkEJZZAx.js";import"./index-Cu4lwwaE.js";import"./index-CyMZ2tJ-.js";import"./index-DrFu-skq.js";function r(t){const n=Object.assign({h1:"h1",p:"p",a:"a"},a(),t.components);return e.jsxs(e.Fragment,{children:[e.jsx(s,{title:"Organisms/Global Header/Docs/Additional considerations"}),`
+`,e.jsx(n.h1,{id:"additional-considerations-when-implementing-the-header",children:"Additional considerations when implementing the Header"}),`
+`,e.jsx(n.p,{children:`Public-facing ASU sites on the asu.edu domain are required to implement
+the ASU Header and also expected to use the ASU Cookie Consent component
+and the ASU Universal Google Tag Manager as a general rule. More details
+on the various requirements and options for obtaining these essential
+components can be found in the`}),`
+`,e.jsxs(n.p,{children:[e.jsx(n.a,{href:"https://asu.github.io/asu-unity-stack/asuheader",target:"_blank",rel:"nofollow noopener noreferrer",children:"ASU Header guide"}),` and
+`,e.jsx(n.a,{href:"https://asu.github.io/asu-unity-stack/gtm-datalayer",target:"_blank",rel:"nofollow noopener noreferrer",children:"Google Tag Manager and data layer guide"}),"."]})]})}function i(t={}){const{wrapper:n}=Object.assign({},a(),t.components);return n?e.jsx(n,{...t,children:e.jsx(r,{...t})}):r(t)}const d=()=>{throw new Error("Docs-only story")};d.parameters={docsOnly:!0};const o={title:"Organisms/Global Header/Docs/Additional considerations",tags:["stories-mdx"],includeStories:["__page"]};o.parameters=o.parameters||{};o.parameters.docs={...o.parameters.docs||{},page:i};const y=["__page"];export{y as __namedExportsOrder,d as __page,o as default};
