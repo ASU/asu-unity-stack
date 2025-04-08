@@ -50,6 +50,8 @@
     "@commitlint/config-lerna-scopes": "^19.7.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
+    "@siteimprove/alfa-playwright": "^0.78.1",
+    "@siteimprove/alfa-test-utils": "^0.78.1",
     "@storybook/addons": "^7.6.14",
     "@storybook/api": "^7.6.14",
     "@storybook/blocks": "^7.6.14",
