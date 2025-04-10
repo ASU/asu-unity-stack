@@ -272,6 +272,7 @@ spec:
             }
             steps {
                 container('playwright') {
+                  script {
                     def acessibilityTestResults = sh(
                         script: 'yarn test:accessibility',
                         returnStatus: true
@@ -289,6 +290,7 @@ spec:
                             message: "@uds-developers Accessibility Testing, Please Ignore: ${env.RUN_DISPLAY_URL}"
                         )
                     }
+                  }
                 }
             }
         }
