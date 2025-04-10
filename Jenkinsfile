@@ -266,5 +266,31 @@ spec:
                 }
             }
         }
+        stage('Accessibility testing') {
+            when {
+                branch 'uds-1892'
+            }
+            steps {
+                container('playwright') {
+                    def acessibilityTestResults = sh(
+                        script: 'yarn test:accessibility',
+                        returnStatus: true
+                    )
+                    if (acessibilityTestResults != 0) {
+                        slackSend(
+                            channel: '#prd-uds',
+                            color: 'warning',
+                            message: "@uds-developers Action might be needed: ${env.RUN_DISPLAY_URL}"
+                        )
+                    } else {
+                        slackSend(
+                            channel: '#prd-uds',
+                            color: 'warning',
+                            message: "@uds-developers Accessibility Testing, Please Ignore: ${env.RUN_DISPLAY_URL}"
+                        )
+                    }
+                }
+            }
+        }
     }
 }
