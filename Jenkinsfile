@@ -268,7 +268,7 @@ spec:
         }
         stage('Accessibility testing') {
             when {
-                branch 'uds-1892'
+                branch 'dev'
             }
             steps {
                 container('playwright') {
