@@ -121,6 +121,8 @@ test.describe("Storybook Accessibility Tests with Siteimprove", () => {
             url: storyUrl,
             error: error.message,
           });
+        } finally {
+          await context.close();
         }
       }
 
@@ -151,7 +153,6 @@ test.describe("Storybook Accessibility Tests with Siteimprove", () => {
       } else {
         console.log("No accessibility violations found! 🎉");
       }
-    },
-    { timeout: 30000 }
+    }
   );
 });

@@ -26,6 +26,7 @@
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}' --ignore-path ../../.eslintignore",
     "test": "vitest --watch=false",
+    "test:accessibility": "playwright test",
     "test-update-snapshot": "yarn test -- -u",
     "e2e-ci": "concurrently --kill-others \"yarn storybook\" \"yarn cy:run\"",
     "e2e": "yarn cy:open",

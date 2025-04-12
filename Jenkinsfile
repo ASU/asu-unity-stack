@@ -279,15 +279,9 @@ spec:
                     )
                     if (acessibilityTestResults != 0) {
                         slackSend(
-                            channel: '#prd-uds',
+                            channel: '#prdfam-uds-ci',
                             color: 'warning',
-                            message: "@uds-developers Action might be needed: ${env.RUN_DISPLAY_URL}"
-                        )
-                    } else {
-                        slackSend(
-                            channel: '#prd-uds',
-                            color: 'warning',
-                            message: "@uds-developers Accessibility Testing, Please Ignore: ${env.RUN_DISPLAY_URL}"
+                            message: "@uds-developers Accessibility tests failed.: ${env.RUN_DISPLAY_URL} \n Pull Branch and run tests locally to see report"
                         )
                     }
                   }
