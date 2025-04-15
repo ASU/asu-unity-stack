@@ -68,6 +68,7 @@ blockquote:before {
 
   }
 
+
   .citation {
     display: flex;
 
@@ -182,18 +183,28 @@ blockquote:before {
 3. Blockquote, mobile only
 ------------------------------------------------------------------- */
 
+
 @include media-breakpoint-down(sm) {
-  .uds-blockquote.no-cite.with-image {
+  .uds-blockquote, .uds-blockquoteAnimated {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 
-    blockquote,
-    h3 {
-      text-align: center;
+    svg {
+      margin-bottom: $uds-size-spacing-1;
+      width: $uds-size-spacing-5;
+    }
+
+    blockquote {
+      width: 100%;
+    }
+
+    .citation {
+      width: 100%;
     }
   }
 }
+
 
 /*------------------------------------------------------------------
 4. Blockquote, desktop
