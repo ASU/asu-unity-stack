@@ -4,7 +4,6 @@ import { Playwright } from "@siteimprove/alfa-playwright";
 import path from "path";
 import fs from "fs";
 import { storiesToTest } from "./stories-to-test.mjs";
-import searchPageJsonData from "../__mocks__/data/degree-search.json" assert { type: "json" };
 import detailPageJsonData from "../__mocks__/data/degree-search-detail.json" assert { type: "json" };
 
 const STORYBOOK_URL = "http://localhost:9010";
