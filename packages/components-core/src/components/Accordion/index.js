@@ -58,7 +58,7 @@ const Accordion = ({ cards, openedCard }) => {
   };
 
   return (
-    <div className="accordion">
+    <div className="accordion" tabIndex="0">
       {cards?.map(
         (card, key) =>
           card.content.body &&
