@@ -1,3 +1,11 @@
+# [@asu/unity-react-core-v1.0.7](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.0.6...@asu/unity-react-core-v1.0.7) (2025-03-28)
+
+
+### Bug Fixes
+
+* **unity-react-core:** change pagination ellipses and display ([77d4ede](https://github.com/ASU/asu-unity-stack/commit/77d4ede3a313103d5d7e63049a7ba310c748acea))
+* **unity-react-core:** change the number of pages displayed ([171ea80](https://github.com/ASU/asu-unity-stack/commit/171ea80f15248e42275c1ed95d4ef2cb22a82c40))
+
 # [@asu/unity-react-core-v1.0.6](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.0.5...@asu/unity-react-core-v1.0.6) (2025-03-19)
 
 

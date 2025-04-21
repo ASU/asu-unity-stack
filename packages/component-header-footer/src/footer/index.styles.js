@@ -28,6 +28,11 @@ const StyledFooter = styled.footer`
     font-family: Arial, Helvetica, "Nimbus Sans L", "Liberation Sans", FreeSans,
       sans-serif;
     line-height: 1.5rem;
+
+    a:focus, button:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px var(--color-base-white), 0 0 0 4px var(--color-base-grey-7) !important;
+    }
   }
 
   .btn,
@@ -131,6 +136,12 @@ const StyledFooter = styled.footer`
     #social-media {
       .nav {
         padding-bottom: 1.5rem;
+
+        .nav-link .social-icon {
+          &:hover {
+            color: var(--color-base-white);
+          }
+        }
 
         @media (min-width: 768px) {
           padding: 2.5rem 0;
@@ -271,8 +282,7 @@ const StyledFooter = styled.footer`
           text-decoration: none;
           display: block;
 
-          &:hover,
-          &:focus {
+          &:hover {
             color: var(--color-base-gold);
             text-decoration: underline;
           }
@@ -282,6 +292,7 @@ const StyledFooter = styled.footer`
           padding: 0;
           display: block;
           min-height: fit-content;
+          overflow: visible;
         }
       }
     }

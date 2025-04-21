@@ -1,6 +1,6 @@
 {
   "name": "@asu/app-rfi",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "ASU Request For Information (RFI) form",
   "main": "./dist/appRfi.cjs.js",
   "browser": "./dist/appRfi.umd.js",

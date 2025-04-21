@@ -49,7 +49,7 @@ const Partner = () => {
         <img
           className="vert"
           src={asuLogo?.src ?? asuVertLogo}
-          alt={asuLogo?.alt ?? "Arizona State University"}
+          alt={asuLogo?.alt ?? "Arizona State University logo"}
           width="303"
           height="234"
           decoding="async"
@@ -60,7 +60,7 @@ const Partner = () => {
         <img
           className="horiz"
           src={asuLogo?.mobileSrc ?? asuHorizLogo}
-          alt={asuLogo?.alt ?? "Arizona State University"}
+          alt={asuLogo?.alt ?? "Arizona State University logo"}
           width="400"
           height="72"
           decoding="async"

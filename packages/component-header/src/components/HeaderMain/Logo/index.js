@@ -32,8 +32,8 @@ const Logo = () => {
       <img
         className="vert"
         src={logo?.src ?? vertLogo}
-        alt={logo?.alt ?? "Arizona State University"}
-        title={logo?.title ?? "ASU home page"}
+        alt={logo?.alt ?? "Arizona State University logo"}
+        title={logo?.title ?? "ASU homepage"}
         width="303"
         height="234"
         decoding="async"
@@ -43,8 +43,8 @@ const Logo = () => {
       <img
         className="horiz"
         src={logo?.mobileSrc ?? horizLogo}
-        alt={logo?.alt ?? "Arizona State University"}
-        title={logo?.title ?? "ASU home page"}
+        alt={logo?.alt ?? "Arizona State University logo"}
+        title={logo?.title ?? "ASU homepage"}
         width="400"
         height="72"
         decoding="async"

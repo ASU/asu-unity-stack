@@ -1,3 +1,25 @@
+# [@asu/component-header-footer-v1.0.7](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.6...@asu/component-header-footer-v1.0.7) (2025-04-18)
+
+
+### Bug Fixes
+
+* **component-header-footer:** removed aria-labelledby and added span for desktop ([a67d7df](https://github.com/asu/asu-unity-stack/commit/a67d7df86122ab283910d7a01e6006c33c6f88e3))
+
+# [@asu/component-header-footer-v1.0.6](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.5...@asu/component-header-footer-v1.0.6) (2025-04-01)
+
+
+### Bug Fixes
+
+* **component-header-footer:** add correct outline for footer links and buttons onfocus ([201a77a](https://github.com/asu/asu-unity-stack/commit/201a77aec078cb98f84dd5c3e2e322872f9769dd))
+
+# [@asu/component-header-footer-v1.0.5](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.4...@asu/component-header-footer-v1.0.5) (2025-03-31)
+
+
+### Bug Fixes
+
+* **component-header-footer:** fixing variable name ([499e391](https://github.com/asu/asu-unity-stack/commit/499e39106e5584522c5feab466ab33a31c20c5a4))
+* **component-header-footer:** updated logo alt and title from brand header ([f952066](https://github.com/asu/asu-unity-stack/commit/f95206680c29589a536a8c8739fa3bde8f4d95d1))
+
 # [@asu/component-header-footer-v1.0.4](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.3...@asu/component-header-footer-v1.0.4) (2025-03-19)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@asu/component-header-footer",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "ASU Global Header and Footer",
   "main": "./dist/asuHeaderFooter.cjs.js",
   "browser": "./dist/asuHeaderFooter.umd.js",

@@ -1,5 +1,6 @@
 import react from "@vitejs/plugin-react";
-import { resolve } from "path";
+import path, { resolve } from "path";
+import fs from "fs";
 import { defineConfig, transformWithEsbuild } from "vite";
 
 import pkg from "./package.json";
@@ -21,6 +22,16 @@ const c = {
         });
       },
     },
+    {
+      name: 'copy-bootstrap-umd-to-dist',
+      // See https://vite.dev/guide/api-plugin#universal-hooks for closeBundle info
+      closeBundle() {
+        const srcPath = path.resolve(__dirname, "../../node_modules", 'bootstrap/dist/js/bootstrap.bundle.min.js');
+        const destDir = path.resolve(__dirname, 'dist/js/bootstrap.bundle.min.js');
+
+        fs.copyFileSync(srcPath, destDir);
+      }
+    }
   ],
   optimizeDeps: {
     esbuildOptions: {

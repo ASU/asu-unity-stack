@@ -69,6 +69,7 @@ const Social = ({ social: { logoUrl, unitLogo, mediaLinks } }) => {
                     <FontAwesomeIcon
                       title="Facebook Social Media Icon"
                       icon={faFacebookSquare}
+                      className="social-icon"
                     />
                   </a>
                 )}
@@ -87,6 +88,7 @@ const Social = ({ social: { logoUrl, unitLogo, mediaLinks } }) => {
                     <FontAwesomeIcon
                       title="Twitter Social Media Icon"
                       icon={faSquareXTwitter}
+                      className="social-icon"
                     />
                   </a>
                 )}
@@ -105,6 +107,7 @@ const Social = ({ social: { logoUrl, unitLogo, mediaLinks } }) => {
                     <FontAwesomeIcon
                       title="Instagram Social Media Icon"
                       icon={faInstagramSquare}
+                      className="social-icon"
                     />
                   </a>
                 )}
@@ -123,6 +126,7 @@ const Social = ({ social: { logoUrl, unitLogo, mediaLinks } }) => {
                     <FontAwesomeIcon
                       title="YouTube Social Media Icon"
                       icon={faYoutubeSquare}
+                      className="social-icon"
                     />
                   </a>
                 )}
@@ -141,6 +145,7 @@ const Social = ({ social: { logoUrl, unitLogo, mediaLinks } }) => {
                     <FontAwesomeIcon
                       title="LinkedIn Social Media Icon"
                       icon={faLinkedin}
+                      className="social-icon"
                     />
                   </a>
                 )}

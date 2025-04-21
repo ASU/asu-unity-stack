@@ -1,3 +1,52 @@
+# [@asu/unity-bootstrap-theme-v1.23.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.23.0...@asu/unity-bootstrap-theme-v1.23.1) (2025-04-18)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** notification Banner button enlarged and gap between buttons reduced ([439ad1d](https://github.com/ASU/asu-unity-stack/commit/439ad1d09de5cb64e6d02d472e47b0268244fd4c))
+* **unity-bootstrap-theme:** notification Banner size enlarged and gap reduced ([30c71f1](https://github.com/ASU/asu-unity-stack/commit/30c71f181a699f1105747cbda7e1d3a0f0791ac2))
+
+# [@asu/unity-bootstrap-theme-v1.23.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.22.0...@asu/unity-bootstrap-theme-v1.23.0) (2025-04-16)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** added style for small and medium hero ([64002b9](https://github.com/ASU/asu-unity-stack/commit/64002b904d50c4ae9aee7377327fc9b58425b0cd))
+* **unity-bootstrap-theme:** changed height to min-height on hero-overlay classes ([f1b2991](https://github.com/ASU/asu-unity-stack/commit/f1b299190c384c97793d1aecbf690b7737dcaf15))
+
+
+### Features
+
+* **unity-bootstrap-theme:** changed heigth to min-heigth on div.uds-hero-lg ([0e0c04b](https://github.com/ASU/asu-unity-stack/commit/0e0c04b558758836963fdffc526dbdbe7e793445))
+
+# [@asu/unity-bootstrap-theme-v1.22.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.21.6...@asu/unity-bootstrap-theme-v1.22.0) (2025-04-09)
+
+
+### Features
+
+* **unity-bootstrap-theme:** added visually-hidden text for Tags ([a5f4d37](https://github.com/ASU/asu-unity-stack/commit/a5f4d379e269a04fa17c8cc79c748d065e321876))
+
+# [@asu/unity-bootstrap-theme-v1.21.6](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.21.5...@asu/unity-bootstrap-theme-v1.21.6) (2025-04-03)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** spacing changed between Radio button and text ([b1ddd21](https://github.com/ASU/asu-unity-stack/commit/b1ddd21ef1bdd2a5f5d996e9d856fc0847f3e6cf))
+
+# [@asu/unity-bootstrap-theme-v1.21.5](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.21.4...@asu/unity-bootstrap-theme-v1.21.5) (2025-04-01)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** added hover white to footer's social icon ([d855ea1](https://github.com/ASU/asu-unity-stack/commit/d855ea156ccf0be0dbe1f9fac437ca9902f117e4))
+
+# [@asu/unity-bootstrap-theme-v1.21.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.21.3...@asu/unity-bootstrap-theme-v1.21.4) (2025-03-21)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** add bundled UMD bootstrap file to package dist ([75be0fc](https://github.com/ASU/asu-unity-stack/commit/75be0fc08fc418401a8acb52ae76783811b2f446))
+
 # [@asu/unity-bootstrap-theme-v1.21.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.21.2...@asu/unity-bootstrap-theme-v1.21.3) (2025-03-07)
 
 

@@ -9,7 +9,7 @@ submission payload and add the host's source ID (which serves as an API key and
 identifier) to the payload, and then send it off to the RFI submissions service
 which processes and routes the submissions to Undergrad, Grad, and ASUOnline
 middleware destinations so that the RFI request ultimately lands in the
-appropriate Salesforce destination.
+appropriate Salesforce destination. 
 
 ## Installation and Requirements
 

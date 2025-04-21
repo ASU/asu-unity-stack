@@ -25,6 +25,14 @@ form.uds-form {
     &.uds-form-label-disabled {
       color: $uds-color-base-gray-6;
     }
+
+    &.form-check-label::before{
+      margin-left: 0.4rem;
+    }
+
+    &.form-check-label::after{
+      margin-left: 0.4rem;
+    }
   }
 
   /* Helper text */

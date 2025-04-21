@@ -144,14 +144,18 @@ export const cardNoTemplates = args => {
       )}
       {args.tags && (
         <div className="card-tags">
+          <h3 className="visually-hidden">Tags:</h3>
           <a className="btn btn-tag btn-tag-alt-white" href="#">
             test tag
+            <span className="visually-hidden"> tag</span>
           </a>
           <a className="btn btn-tag btn-tag-alt-white" href="#">
             test tag 2
+            <span className="visually-hidden"> tag</span>
           </a>
           <a className="btn btn-tag btn-tag-alt-white" href="#">
             test tag 3
+            <span className="visually-hidden"> tag</span>
           </a>
         </div>
       )}
