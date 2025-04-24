@@ -45,7 +45,8 @@
     "predocs": "mkdir -p ./docs",
     "docs": "jsdoc2md --no-cache -c jsdoc.config.js --files ./src/components > ./docs/README.props.md",
     "postdocs": "node ../../scripts/process-readme-props.js",
-    "test:browser": "vitest --workspace=vitest.workspace.ts"
+    "test:browser": "vitest --workspace=vitest.workspace.ts",
+    "run-check-changes": "tsx ./scripts/check-changes.tsx"
   },
   "devDependencies": {
     "@asu/unity-bootstrap-theme": "^1.21.3",

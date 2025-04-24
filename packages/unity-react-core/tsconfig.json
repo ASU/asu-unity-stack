@@ -32,7 +32,8 @@
     "src/**/*.jsx",
     "types/**/*",
     "src/vite-env.d.ts",
-    "shared/**/*"
+    "shared/**/*",
+    "./scripts/check-changes.tsx"
   ],
   "exclude": [
     "dist",
