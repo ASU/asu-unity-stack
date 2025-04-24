@@ -23,7 +23,6 @@
     .content {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       max-height: calc(100% - $uds-size-spacing-2);
       flex-grow: 1;
 
@@ -54,6 +53,8 @@
         i.fa-chevron-up {
           transition: all 0.3s ease-in-out;
           color: $uds-color-base-gray-7;
+          height: .875rem;
+          width: .875rem;
         }
       }
 
@@ -195,7 +196,6 @@
           padding-bottom: var(--ranking-card-text-padding);
           .btn-expand {
             display: flex;
-            justify-content: space-between;
             align-items: baseline;
 
             h4 {
@@ -207,8 +207,8 @@
         }
 
         > p {
-          line-clamp: 13;
-          -webkit-line-clamp: 13;
+          line-clamp: 15;
+          -webkit-line-clamp: 15;
           visibility: hidden;
           transition: visibility .3s ease-in;
           margin: 0;
