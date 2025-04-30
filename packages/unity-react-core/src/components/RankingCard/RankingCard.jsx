@@ -82,7 +82,7 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
               {isSmall ? (
                 <span className="visually-hidden">{heading}</span>
               ) : (
-                <h4 className="h5" >{heading}</h4>
+                <h4 >{heading}</h4>
               )}
               <i className="fas fa-chevron-up" />
             </button>
@@ -148,7 +148,7 @@ export const RankingCard = ({
 
       {isSmall && (
         <div className="citation">
-          <h4 className="h5">{heading}</h4>
+          <h4>{heading}</h4>
           <p>— {citation}</p>
         </div>
       )}
