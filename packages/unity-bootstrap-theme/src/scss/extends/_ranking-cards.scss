@@ -4,7 +4,7 @@
   border: 1px solid $uds-color-base-gray-3;
   overflow: hidden;
 
-  --ranking-card-text-padding: 1.25rem;
+  --ranking-card-text-padding: 1.5rem;
 
   .info-layer {
     display: flex;
@@ -50,11 +50,10 @@
         }
 
         svg.fa-chevron-up,
-        i.fa-chevron-up {
+        i.fa-chevron-up,
+        .fa-chevron-up {
           transition: all 0.3s ease-in-out;
           color: $uds-color-base-gray-7;
-          height: .875rem;
-          width: .875rem;
         }
       }
 
@@ -63,13 +62,13 @@
         display: -webkit-box;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        font-size: $uds-size-font-tiny;
+        font-size: $uds-size-font-small;
+        line-height: 1.2rem;
         -webkit-line-clamp: 3;
         line-clamp: 3;
       }
 
       >a.read-more {
-        font-size: $uds-size-font-small;
         font-weight: 600;
         margin-top: auto;
 
@@ -98,8 +97,8 @@
 
         >p,
         .header>p {
-          line-clamp: 18;
-          -webkit-line-clamp: 18;
+          line-clamp: 22;
+          -webkit-line-clamp: 22;
         }
       }
     }
@@ -164,7 +163,7 @@
       padding-right: var(--ranking-card-text-padding);
 
       p {
-        font-size: $uds-size-font-small;
+        font-size: $uds-size-font-medium;
       }
     }
   }
@@ -207,8 +206,8 @@
         }
 
         > p {
-          line-clamp: 15;
-          -webkit-line-clamp: 15;
+          line-clamp: 18;
+          -webkit-line-clamp: 18;
           visibility: hidden;
           transition: visibility .3s ease-in;
           margin: 0;
