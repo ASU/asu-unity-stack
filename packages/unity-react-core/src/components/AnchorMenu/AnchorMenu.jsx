@@ -179,6 +179,10 @@ export const AnchorMenu = ({
       queryFirstFocusable(`#${container}`)?.focus();
 
     window.scrollTo({ top: scrollTo, behavior: "smooth" });
+    setState(prevState => ({
+      ...prevState,
+      showMenu: false,
+    }));
   };
 
   const handleMenuVisibility = () => {
@@ -207,7 +211,7 @@ export const AnchorMenu = ({
         style={state.showMenu ? { borderBottom: 0 } : {}}
       >
         <div className={`${state.containerClass} uds-anchor-menu-wrapper`}>
-          {isSmallDevice ? (
+          {(isSmallDevice || isBootstrap) ? (
             <GaEventWrapper
               gaData={{
                 ...defaultMobileGAEvent,
@@ -219,9 +223,9 @@ export const AnchorMenu = ({
                   [`show-menu`]: state.showMenu,
                 })}
                 type="button"
-                onClick={handleMenuVisibility}
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseAnchorMenu"
+                onClick={isReact && handleMenuVisibility}
+                data-bs-toggle={isBootstrap && "collapse"}
+                data-bs-target={isBootstrap && "#collapseAnchorMenu"}
                 aria-controls="collapseAnchorMenu"
               >
                 <h4>
@@ -261,6 +265,8 @@ export const AnchorMenu = ({
                     isReact && (() => handleClickLink(item.targetIdName))
                   }
                   href={isBootstrap && `#${item.targetIdName}`}
+                  data-bs-toggle={isBootstrap && "collapse"}
+                  data-bs-target={isBootstrap && "#collapseAnchorMenu"}
                 />
               ))}
             </nav>
