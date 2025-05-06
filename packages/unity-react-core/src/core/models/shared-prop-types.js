@@ -18,7 +18,7 @@ const contentPropType = PropTypes.shape({
 const accordionCardPropTypes = PropTypes.shape({
   color: PropTypes.oneOf(["gold", "maroon", "gray", "dark"]),
   content: PropTypes.shape({
-    icon: PropTypes.string,
+    icon: PropTypes.arrayOf(PropTypes.string),
     header: PropTypes.string,
     body: PropTypes.string,
   }),

@@ -2,10 +2,6 @@
 import { withColumns } from '../withColumns';
 import { customViewports } from '../viewports';
 
-export const globals = {
-  columns: false,
-};
-
 export const initialGlobals = {
   columns: false,
 };
@@ -23,7 +19,6 @@ export const decorators = [
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
-  globals,
   initialGlobals,
   parameters,
   decorators,

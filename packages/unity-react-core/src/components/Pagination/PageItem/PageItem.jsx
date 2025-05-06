@@ -14,11 +14,11 @@ import React from "react";
  */
 export const PageItem = ({
   dataId,
-  isClickeable,
-  disabled,
-  pageLinkIcon,
-  selectedPage,
-  onClick,
+  isClickeable = false,
+  disabled = false,
+  pageLinkIcon = false,
+  selectedPage = false,
+  onClick = () => {},
   ellipses,
   ariaLabel,
   children,
@@ -68,12 +68,4 @@ PageItem.propTypes = {
   ellipses: PropTypes.bool,
   ariaLabel: PropTypes.string,
   ariaDisabled: PropTypes.bool,
-};
-
-PageItem.defaultProps = {
-  isClickeable: false,
-  disabled: false,
-  pageLinkIcon: false,
-  selectedPage: false,
-  onClick: () => {},
 };

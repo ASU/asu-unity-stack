@@ -1,3 +1,4 @@
+import { EventHandler } from "./bootstrap-helper";
 
 function initVideo() {
   // constants
@@ -56,5 +57,7 @@ function initVideo() {
   $videoPlayer?.addEventListener(EVENT_ENDED, handleVideoEnded);
 
 };
+
+EventHandler.on(window, 'load.uds.video', initVideo);
 
 export { initVideo };

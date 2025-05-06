@@ -1,5 +1,6 @@
-function initializeBlockquoteAnimation () {
-  window.addEventListener("load", () => {
+import { EventHandler } from "./bootstrap-helper";
+
+function initBlockquoteAnimation () {
     // Find all marks with a class starting with pen-
     const markers = document.querySelectorAll('mark[class^="pen-"]');
 
@@ -24,7 +25,8 @@ function initializeBlockquoteAnimation () {
     markers.forEach((mark) => {
       observer.observe(mark);
     });
-  });
 }
 
-export { initializeBlockquoteAnimation };
+EventHandler.on(window, 'load.uds.blockquote-animation', initBlockquoteAnimation);
+
+export { initBlockquoteAnimation };

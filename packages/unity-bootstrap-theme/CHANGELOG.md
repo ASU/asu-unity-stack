@@ -1,3 +1,72 @@
+# [@asu/unity-bootstrap-theme-v1.25.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.24.1...@asu/unity-bootstrap-theme-v1.25.0) (2025-05-01)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** changed margin-top to padding-top on uds-anchor-menu-wrapper ([f14c513](https://github.com/ASU/asu-unity-stack/commit/f14c513c09b50a2d8bda5fbfe0221a1b096cfb34))
+
+
+### Features
+
+* **unity-bootstrap-theme:** added margin-top on uds-anchor-menu-wrapper ([08ac674](https://github.com/ASU/asu-unity-stack/commit/08ac674b9516a8b0ac221606a0af7f3d82ca9d3a))
+
+# [@asu/unity-bootstrap-theme-v1.24.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.24.0...@asu/unity-bootstrap-theme-v1.24.1) (2025-04-29)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** added style only for a tags into Images ([61c9ad7](https://github.com/ASU/asu-unity-stack/commit/61c9ad7e8aa9d530959e8ff79a8d81d35d0d5bfc))
+* **unity-bootstrap-theme:** removed unnecesary z-index ([a130196](https://github.com/ASU/asu-unity-stack/commit/a1301963fff6fd208250eff2284741d4e025ae64))
+
+# [@asu/unity-bootstrap-theme-v1.24.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.23.2...@asu/unity-bootstrap-theme-v1.24.0) (2025-04-24)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** update build to include js ([804ce9a](https://github.com/ASU/asu-unity-stack/commit/804ce9acc756acb6031012b9cf9b6fb2aeb5a2ff))
+
+
+### Features
+
+* **unity-bootstrap-theme:** update dist files and README docs for usage ([0900210](https://github.com/ASU/asu-unity-stack/commit/090021037959d12925a9551ef3235b483a774b68))
+
+# [@asu/unity-bootstrap-theme-v1.23.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.23.1...@asu/unity-bootstrap-theme-v1.23.2) (2025-04-21)
+
+
+### Bug Fixes
+
+* **component-events:** added style to fix a:focus ([de0e708](https://github.com/ASU/asu-unity-stack/commit/de0e70889ffae0770538d993c8a13d1cc346ba89))
+* **component-news:** removed margin from focus and added to a tag into card-title ([9629f6f](https://github.com/ASU/asu-unity-stack/commit/9629f6fb7203a2fcf2d28e7d2e453efe1ddb15d0))
+* **unity-bootstrap-theme:** fix focus styles for card titles ([ffa430d](https://github.com/ASU/asu-unity-stack/commit/ffa430de81b8cd345b431a48c693308ff9b1b43b))
+
+# [@asu/unity-bootstrap-theme-v1.23.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.23.0...@asu/unity-bootstrap-theme-v1.23.1) (2025-04-18)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** notification Banner button enlarged and gap between buttons reduced ([439ad1d](https://github.com/ASU/asu-unity-stack/commit/439ad1d09de5cb64e6d02d472e47b0268244fd4c))
+* **unity-bootstrap-theme:** notification Banner size enlarged and gap reduced ([30c71f1](https://github.com/ASU/asu-unity-stack/commit/30c71f181a699f1105747cbda7e1d3a0f0791ac2))
+
+# [@asu/unity-bootstrap-theme-v1.23.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.22.0...@asu/unity-bootstrap-theme-v1.23.0) (2025-04-16)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** added style for small and medium hero ([64002b9](https://github.com/ASU/asu-unity-stack/commit/64002b904d50c4ae9aee7377327fc9b58425b0cd))
+* **unity-bootstrap-theme:** changed height to min-height on hero-overlay classes ([f1b2991](https://github.com/ASU/asu-unity-stack/commit/f1b299190c384c97793d1aecbf690b7737dcaf15))
+
+
+### Features
+
+* **unity-bootstrap-theme:** changed heigth to min-heigth on div.uds-hero-lg ([0e0c04b](https://github.com/ASU/asu-unity-stack/commit/0e0c04b558758836963fdffc526dbdbe7e793445))
+
+# [@asu/unity-bootstrap-theme-v1.22.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.21.6...@asu/unity-bootstrap-theme-v1.22.0) (2025-04-09)
+
+
+### Features
+
+* **unity-bootstrap-theme:** added visually-hidden text for Tags ([a5f4d37](https://github.com/ASU/asu-unity-stack/commit/a5f4d379e269a04fa17c8cc79c748d065e321876))
+
 # [@asu/unity-bootstrap-theme-v1.21.6](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.21.5...@asu/unity-bootstrap-theme-v1.21.6) (2025-04-03)
 
 

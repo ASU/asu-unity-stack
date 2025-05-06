@@ -1,4 +1,5 @@
-(function(){
+import { EventHandler } from "./bootstrap-helper";
+
   const initGlobalHeader = () => {
     // Scroll state
     const handleWindowScroll = () => {
@@ -9,7 +10,7 @@
       : headerEl?.classList.remove('scrolled');
     };
 
-    window.addEventListener('scroll', handleWindowScroll);
+    EventHandler.on(window, 'scroll.uds.header', handleWindowScroll);
   };
 
   window.initGlobalHeader = window.initGlobalHeader || initGlobalHeader;
@@ -18,4 +19,7 @@
    * Example:
    *   window.initGlobalHeader();
    */
-})();
+
+  EventHandler.on(window, 'load.uds.global-header', initGlobalHeader);
+
+export { initGlobalHeader };

@@ -8,7 +8,8 @@ import { RfiSelect } from "../../controls";
 /**
  * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
  */
-export const Campus = ({ gaData }) => {
+// eslint-disable-next-line react/prop-types
+export const Campus = ({ gaData, autoFocus}) => {
   const label = "Which applies to you?";
   const name = "Campus";
 
@@ -35,6 +36,7 @@ export const Campus = ({ gaData }) => {
       options={CAMPUS_OPTIONS_DEFAULT}
       requiredIcon
       required
+      autoFocus={autoFocus}
       onBlur={e =>
         trackGAEvent({
           ...gaData,

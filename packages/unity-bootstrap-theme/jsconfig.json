@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM"],
+    "resolveJsonModule": true,
+    "jsx": "react",
+    "allowImportingTsExtensions": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node16",
+    "module": "node16",
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "@shared/*": [ "../../shared/*" ],
+    },
+  },
+  "include": [
+    "src/**/*",
+    "stories/**/*",
+    "../../shared/**/*",
+  ],
+}

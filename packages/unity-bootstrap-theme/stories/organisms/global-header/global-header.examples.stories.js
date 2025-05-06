@@ -8,12 +8,15 @@ import {
   NoNavigationAndWithButtons,
   ScrolledState,
   Partner,
-} from "./global-header.templates.js";
+} from "./global-header.templates.jsx";
 
 export default {
   title: "Organisms/Global Header/Examples",
   decorators: [ htmlRootDecorator ],
   parameters: {
+    initFunc: {
+      disable: false,
+    },
     header: {
       disable: true
     },

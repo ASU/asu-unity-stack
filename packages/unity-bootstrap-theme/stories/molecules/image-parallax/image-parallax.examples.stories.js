@@ -2,14 +2,12 @@ import React from "react";
 
 import { imageName } from "../../../../../shared/assets";
 import { defaultDecorator } from "../../../../../shared/components/Layout";
-import { initImageParallax as initFunc } from "./image-parallax";
 
 export default {
   title: "Molecules/Image Parallax/Examples",
   decorators: [ defaultDecorator ],
   parameters: {
     initFunc: {
-      code: initFunc,
       disable: false,
     },
     controls: { disable: true }

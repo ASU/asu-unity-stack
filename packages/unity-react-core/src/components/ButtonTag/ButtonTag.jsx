@@ -24,11 +24,11 @@ const gaDefaultObject = {
  * @returns {JSX.Element}
  */
 export const ButtonTag = ({
-  label,
-  cardTitle,
+  label = "",
+  cardTitle = "",
   gaData,
   ariaLabel,
-  color,
+  color = "gray",
   disabled,
   element = "button",
   innerRef,
@@ -136,16 +136,4 @@ ButtonTag.propTypes = {
     Event handler function for `<button>`
   */
   onClick: PropTypes.func,
-};
-
-ButtonTag.defaultProps = {
-  label: "",
-  cardTitle: "",
-  ariaLabel: undefined,
-  color: "gray",
-  disabled: undefined,
-  element: "button",
-  href: undefined,
-  innerRef: undefined,
-  onClick: undefined,
 };

@@ -219,7 +219,11 @@ export const BlockquoteAnimated = () => (
 
   </>
 );
-
+BlockquoteAnimated.parameters = {
+  initFunc: {
+    disable: false,
+  },
+};
 export const TestimonialsNoImage = () => (
   <>
     <div className="uds-blockquote uds-testimonial accent-gold uds-content-align">

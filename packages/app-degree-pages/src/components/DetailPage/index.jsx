@@ -258,6 +258,7 @@ const DetailPage = ({
                       minorRequirements={resolver.getMinorCourseRequirements()}
                       additionalRequirements={resolver.getAdmissionsRequirementsText()}
                       transferRequirements={resolver.getTransferAdmission()}
+                      majorMapURL={resolver.getGeneralDegreeMajorMap()}
                     />
                   )}
 

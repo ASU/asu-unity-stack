@@ -1,3 +1,24 @@
+# [@asu/component-header-footer-v1.0.9](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.8...@asu/component-header-footer-v1.0.9) (2025-05-06)
+
+
+### Bug Fixes
+
+* **component-header-footer:** update alt for innovation logo ([d32a7b9](https://github.com/asu/asu-unity-stack/commit/d32a7b9571811a9909708475a9ed3f6218bcc437))
+
+# [@asu/component-header-footer-v1.0.8](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.7...@asu/component-header-footer-v1.0.8) (2025-05-01)
+
+
+### Bug Fixes
+
+* **component-header-footer:** added focusout event to NavItem ([b7eea2e](https://github.com/asu/asu-unity-stack/commit/b7eea2eae897fab10761806932dcc0e172936d54))
+
+# [@asu/component-header-footer-v1.0.7](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.6...@asu/component-header-footer-v1.0.7) (2025-04-18)
+
+
+### Bug Fixes
+
+* **component-header-footer:** removed aria-labelledby and added span for desktop ([a67d7df](https://github.com/asu/asu-unity-stack/commit/a67d7df86122ab283910d7a01e6006c33c6f88e3))
+
 # [@asu/component-header-footer-v1.0.6](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.5...@asu/component-header-footer-v1.0.6) (2025-04-01)
 
 

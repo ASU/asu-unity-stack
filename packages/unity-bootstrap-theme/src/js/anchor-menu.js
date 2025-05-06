@@ -1,9 +1,15 @@
-const bootstrap = require('bootstrap');
+import { EventHandler } from "./bootstrap-helper";
 
-function initializeAnchorMenu () {
+function initAnchorMenu () {
   const HEADER_IDS = ['asu-header', 'asuHeader'];
 
   const globalHeaderId = HEADER_IDS.find((id) => document.getElementById(id));
+
+  if (globalHeaderId === undefined) {
+    // Asu header not found in the DOM.
+    return;
+  }
+
   const globalHeader = document.getElementById(globalHeaderId);
   const navbar = document.getElementById('uds-anchor-menu');
   const navbarOriginalParent = navbar.parentNode;
@@ -115,4 +121,6 @@ function initializeAnchorMenu () {
   }
 };
 
-export { initializeAnchorMenu };
+EventHandler.on(window, 'load.uds.anchor-menu', initAnchorMenu);
+
+export { initAnchorMenu };

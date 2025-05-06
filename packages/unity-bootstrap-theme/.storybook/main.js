@@ -4,6 +4,7 @@ export default {
   staticDirs: ['../dist'],
   stories: ["../stories/**/*.stories.mdx", "../stories/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
+    "./local-addon",
     "../../../.storybook-config",
     "../../../.storybook-config/dataLayerListener",
     "@whitespace/storybook-addon-html",

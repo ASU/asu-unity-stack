@@ -27,7 +27,7 @@ import { Wrapper, EventInfoWrapper } from "./Article.styles";
  * @returns {JSX.Element}
  */
 export const Article = ({
-  type,
+  type = "news",
   articleUrl,
   publicationDate,
   title,
@@ -192,7 +192,11 @@ export const Article = ({
           data-testid="uds-hero"
           className="uds-hero uds-hero-md"
           style={{
-            backgroundImage: `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url(${headerImageUrl})`,
+            // @ts-ignore
+            "--color1": "#19191900",
+            "--color2": "#191919c9",
+            // moved colors to variable because hex color in linear-gradient breaks react
+            "backgroundImage": `linear-gradient(180deg, var(--color1) 0%, var(--color2) 100%), url(${headerImageUrl})`,
           }}
         />
       )}
@@ -368,18 +372,4 @@ Article.propTypes = {
    * URL for a Zoom button
    */
   zoomUrl: PropTypes.string,
-};
-
-Article.defaultProps = {
-  type: "news",
-  authorEmail: undefined,
-  authorPhone: undefined,
-  authorTitle: undefined,
-  breadcrumbs: undefined,
-  calendarUrl: undefined,
-  headerImageUrl: undefined,
-  eventLocation: undefined,
-  eventTime: undefined,
-  registrationUrl: undefined,
-  zoomUrl: undefined,
 };

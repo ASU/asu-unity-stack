@@ -1,7 +1,6 @@
 import React from "react";
 
 import { defaultDecorator } from "../../../../../shared/components/Layout";
-import { initModals as initFunc } from "./modals.js";
 
 export default {
   title: "Atoms/Modals/Templates",
@@ -9,14 +8,13 @@ export default {
   parameters: {
     initFunc: {
       disable: false,
-      code: initFunc
     },
     header: {
       forced: true,
     },
     footer: {
       forced: true,
-    }
+    },
   },
   args: {open: true},
   argTypes: {

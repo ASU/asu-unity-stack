@@ -1,3 +1,20 @@
+# [@asu/app-degree-pages-v3.0.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.0.3...@asu/app-degree-pages-v3.0.4) (2025-04-22)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** show major map link if application-requirements are null ([9b7618b](https://github.com/asu/asu-unity-stack/commit/9b7618b4d7e35ea931771de48af5402aba71db5a))
+* **app-degree-pages:** update view majormap to use same style as undergraduateTemplate ([6954dc5](https://github.com/asu/asu-unity-stack/commit/6954dc51f0eb2866deb5590d9f9c524795105a52))
+
+# [@asu/app-degree-pages-v3.0.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.0.2...@asu/app-degree-pages-v3.0.3) (2025-04-08)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** changes ([43046a8](https://github.com/asu/asu-unity-stack/commit/43046a8f36984a5cfaf583051697ac546291ca50))
+* **app-degree-pages:** improve the search relevancy by displaying title matches first ([ad9b0bc](https://github.com/asu/asu-unity-stack/commit/ad9b0bc4f0f9373905e72f22f46697fe29be656c))
+* **app-degree-pages:** improving search relevancy ([20e4e20](https://github.com/asu/asu-unity-stack/commit/20e4e20f31c609be24cd8a4f97957c797c2b38ce))
+
 # [@asu/app-degree-pages-v3.0.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.0.1...@asu/app-degree-pages-v3.0.2) (2025-03-03)
 
 

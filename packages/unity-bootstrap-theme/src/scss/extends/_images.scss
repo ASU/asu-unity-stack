@@ -27,6 +27,16 @@
     img.img-original {
       width: initial;
     }
+
+    a:has(img) {
+
+      &:focus {
+        display: flex;
+        position: relative;
+      }
+
+    }
+
     .uds-figure-caption {
       border: 1px solid $uds-color-base-gray-3;
       border-top: none;

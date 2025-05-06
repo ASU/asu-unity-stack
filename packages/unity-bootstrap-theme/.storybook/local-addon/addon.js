@@ -1,8 +1,6 @@
 import React from 'react';
 import { AddonPanel } from '@storybook/components';
-import { Source } from '@storybook/blocks';
 import { addons, types } from '@storybook/addons';
-import { formatWithBabelParser } from './helpers';
 import { Toggle } from '../../../../.storybook-config/Toggle'
 
 addons.register('local-addon', (api) => {
@@ -12,13 +10,12 @@ addons.register('local-addon', (api) => {
     type: types.PANEL,
     paramKey: 'initFunc',
     render: ({active, key}) => {
-      const data = api.getCurrentStoryData();
-      const initFunc = data?.parameters?.initFunc?.code || '';
-      const code = formatWithBabelParser(`${initFunc}`);
-
       return(
         <AddonPanel key={key} active={!!active}>
-          <Source code={`${code}`} language='js' format={true} />
+          <div style={{ padding: '20px', fontSize: '1rem'}}>
+            This component requires Javascript. <br/><br/>
+            View the documentation on <a href="./index.html?path=/docs/get-started-get-started--docs#-including-unity-in-your-project">including unity in your project</a>
+          </div>
         </AddonPanel>
     )},
   });

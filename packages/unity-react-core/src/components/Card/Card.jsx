@@ -29,22 +29,22 @@ const gaDefaultObject = {
  * @returns {JSX.Element}
  */
 export const Card = ({
-  type,
-  width,
-  horizontal,
+  type = "default",
+  width = "100%",
+  horizontal = false,
   image,
   imageAltText,
   title,
   icon,
   body,
-  eventFormat,
+  eventFormat = "stack",
   eventLocation,
   eventTime,
   buttons,
   linkLabel,
   linkUrl,
   tags,
-  showBorders,
+  showBorders = true,
   cardLink,
 }) => {
   return (
@@ -154,44 +154,26 @@ Card.propTypes = {
   cardLink: PropTypes.string,
 };
 
-Card.defaultProps = {
-  type: "default",
-  width: "100%",
-  horizontal: false,
-  body: undefined,
-  eventFormat: "stack",
-  eventTime: undefined,
-  eventLocation: undefined,
-  icon: undefined,
-  image: undefined,
-  imageAltText: undefined,
-  buttons: undefined,
-  linkLabel: undefined,
-  linkUrl: undefined,
-  tags: undefined,
-  showBorders: true,
-};
-
 /*
  * Sub-components defined after this
  */
 const BaseCard = ({
-  type,
-  width,
-  horizontal,
-  image,
-  imageAltText,
+  type = "default",
+  width = "100%",
+  horizontal = false,
+  image = "",
+  imageAltText = "",
   title,
-  icon,
-  body,
-  eventFormat,
-  eventLocation,
-  eventTime,
-  buttons,
-  linkLabel,
-  linkUrl,
-  tags,
-  showBorders,
+  icon = undefined,
+  body = "",
+  eventFormat = "stack",
+  eventLocation = "",
+  eventTime = "",
+  buttons = undefined,
+  linkLabel = undefined,
+  linkUrl = undefined,
+  tags = undefined,
+  showBorders = true,
   cardLink,
 }) => {
   const cardClass = classNames("card", "cards-components", {
@@ -297,35 +279,17 @@ BaseCard.propTypes = {
   cardLink: PropTypes.string,
 };
 
-BaseCard.defaultProps = {
-  type: "default",
-  width: "100%",
-  horizontal: false,
-  body: "",
-  eventFormat: "stack",
-  eventTime: "",
-  eventLocation: "",
-  icon: undefined,
-  image: "",
-  imageAltText: "",
-  buttons: undefined,
-  linkLabel: undefined,
-  linkUrl: undefined,
-  tags: undefined,
-  showBorders: true,
-};
-
 const CardContent = ({
-  type,
-  body,
-  eventFormat,
-  eventLocation,
-  eventTime,
+  type = "default",
+  body = "",
+  eventFormat = "stack",
+  eventLocation = "",
+  eventTime = "",
   title,
-  buttons,
-  linkLabel,
-  linkUrl,
-  tags,
+  buttons = undefined,
+  linkLabel = undefined,
+  linkUrl = undefined,
+  tags = undefined,
   cardLink,
 }) => (
   <>
@@ -438,19 +402,11 @@ CardContent.propTypes = {
   cardLink: PropTypes.string,
 };
 
-CardContent.defaultProps = {
-  type: "default",
-  body: "",
-  eventFormat: "stack",
-  eventLocation: "",
-  eventTime: "",
-  buttons: undefined,
-  linkLabel: undefined,
-  linkUrl: undefined,
-  tags: undefined,
-};
-
-const EventInfo = ({ eventFormat, eventTime, eventLocation }) => {
+const EventInfo = ({
+  eventFormat = "stack",
+  eventLocation = "",
+  eventTime = "",
+}) => {
   if (eventFormat === "inline") {
     return (
       <div className="card-event-details">
@@ -515,10 +471,4 @@ EventInfo.propTypes = {
   eventFormat: PropTypes.oneOf(["stack", "inline"]),
   eventLocation: PropTypes.string,
   eventTime: PropTypes.string,
-};
-
-EventInfo.defaultProps = {
-  eventFormat: "stack",
-  eventLocation: "",
-  eventTime: "",
 };

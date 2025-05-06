@@ -66,6 +66,8 @@ label {
 .card-title a {
   color: $uds-color-base-gray-7;
   text-decoration: none;
+  display: inline-block;
+  margin: 4px;
 }
 .card-title a:hover {
   text-decoration: underline;
@@ -126,4 +128,5 @@ textarea:focus,
 select:focus {
   outline: none !important;
   box-shadow: 0px 0px 0px 2px $uds-color-base-white, 0px 0px 0px 4px $uds-color-base-gray-7 !important;
+  z-index: 1;
 }

@@ -102,6 +102,29 @@ const undergraduateTemplate = ({
   );
 };
 
+const viewCurriculum = majorMapURL => {
+  const label = "View Curriculum";
+  return (
+    <>
+      <p>
+        View curriculum below for a detailed list of courses and other
+        requirements.
+      </p>
+      <ButtonList>
+        <li>
+          <Button
+            ariaLabel={label}
+            color="maroon"
+            href={majorMapURL}
+            label={label}
+            size="small"
+          />
+        </li>
+      </ButtonList>
+    </>
+  );
+};
+
 /**
  * @param {ApplicationRequirementsProps} props
  * @returns {JSX.Element}
@@ -112,17 +135,33 @@ function ApplicationRequirements({
   isMinorOrCertificate,
   additionalRequirements,
   minorRequirements,
+  majorMapURL,
 }) {
-  let reqsLabel;
-  if (graduateRequirements || isMinorOrCertificate) {
-    reqsLabel = !isMinorOrCertificate
-      ? "Degree requirements"
-      : "Program requirements";
-  } else {
-    reqsLabel = !isMinorOrCertificate
-      ? "Admission requirements"
-      : "Program requirements";
+  if (!graduateRequirements && !isMinorOrCertificate) {
+    // if the program is not a graduate program AND not a minor/certificate
+    // we only show the undergraduate template
+    return (
+      <section
+        id={progDetailSectionIds.applicationRequirements.targetIdName}
+        data-testid="application-requirements"
+      >
+        <h2>
+          <span className="highlight-gold">Admission requirements</span>
+        </h2>
+        {undergraduateTemplate({
+          transferRequirements,
+          additionalRequirements,
+        })}
+      </section>
+    );
   }
+
+  const reqsLabel = !isMinorOrCertificate
+    ? "Degree requirements"
+    : "Program requirements";
+
+  const requirements = graduateRequirements || minorRequirements;
+
   return (
     <>
       <section
@@ -132,35 +171,28 @@ function ApplicationRequirements({
         <h2>
           <span className="highlight-gold">{reqsLabel}</span>
         </h2>
-        {graduateRequirements || isMinorOrCertificate ? (
+        {requirements ? (
           <div
-            dangerouslySetInnerHTML={sanitizeDangerousMarkup(
-              graduateRequirements || minorRequirements
-            )}
+            dangerouslySetInnerHTML={sanitizeDangerousMarkup(requirements)}
           />
         ) : (
-          undergraduateTemplate({
-            transferRequirements,
-            additionalRequirements,
-          })
+          viewCurriculum(majorMapURL)
         )}
       </section>
 
-      {graduateRequirements || isMinorOrCertificate ? (
-        <section
-          id={progDetailSectionIds.degreeRequirements.targetIdName}
-          data-testid="degree-requirements"
-        >
-          <h2>
-            <span className="highlight-gold">Admission requirements</span>
-          </h2>
-          <div
-            dangerouslySetInnerHTML={sanitizeDangerousMarkup(
-              additionalRequirements
-            )}
-          />
-        </section>
-      ) : null}
+      <section
+        id={progDetailSectionIds.degreeRequirements.targetIdName}
+        data-testid="degree-requirements"
+      >
+        <h2>
+          <span className="highlight-gold">Admission requirements</span>
+        </h2>
+        <div
+          dangerouslySetInnerHTML={sanitizeDangerousMarkup(
+            additionalRequirements
+          )}
+        />
+      </section>
     </>
   );
 }
@@ -171,6 +203,7 @@ ApplicationRequirements.propTypes = {
   isMinorOrCertificate: PropTypes.bool,
   additionalRequirements: PropTypes.string,
   minorRequirements: PropTypes.string,
+  majorMapURL: PropTypes.string,
 };
 
 export { ApplicationRequirements };

@@ -73,6 +73,9 @@ export default defineConfig({
       },
     },
   ],
+  // optimizeDeps: {
+  //   force: true,
+  // },
   resolve: {
     alias: {
       "@shared": path.resolve(__dirname, "./../../shared"),

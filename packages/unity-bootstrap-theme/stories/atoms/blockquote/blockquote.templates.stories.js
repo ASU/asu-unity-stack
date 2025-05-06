@@ -2,15 +2,10 @@ import React from "react";
 
 import { imageName } from "../../../../../shared/assets";
 import { defaultDecorator } from "../../../../../shared/components/Layout.js";
-import { initializeBlockquoteAnimation as doAnimate } from "./blockquote-animated";
 
 export default {
   title: "Atoms/Blockquotes and Testimonials/Templates",
   parameters: {
-    initFunc: {
-      disable: false,
-      code: doAnimate,
-    },
   },
   args: {
     type: "On White",

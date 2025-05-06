@@ -1,19 +1,12 @@
 import React from "react";
 
 import { fullLayoutDecorator } from "../../../../../shared/components/Layout";
-import { initBanner as initFunc } from "./banner";
 
 
 
 export default {
   title: "Molecules/Banners/Templates",
   decorators: [ fullLayoutDecorator ],
-  parameters: {
-    initFunc: {
-      code: initFunc,
-      disable: false,
-    },
-  },
   argTypes: {
     color: {
       name: "Color",
@@ -32,11 +25,16 @@ export default {
   args: {
     color: "Orange",
   },
+  parameters: {
+    initFunc: {
+      disable: false,
+    },
+  },
 };
 
 export const Banner = ({color}) => {
     return (
-      <section className={color}>
+      <section role="alert" className={`${color} alert  alert-banner`}>
         <div className="banner uds-content-align">
           <div className="banner-icon">
             <span className="fa fa-icon fa-bell"></span>
@@ -67,6 +65,7 @@ export const Banner = ({color}) => {
               type="button"
               className="btn btn-circle btn-circle-alt-black close"
               aria-label="Close"
+              data-bs-dismiss="alert"
             >
               <i className="fas fa-times"></i>
             </button>

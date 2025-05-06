@@ -1,3 +1,5 @@
+import { EventHandler } from "./bootstrap-helper";
+
 function initModals() {
   document
     .getElementById('openModalButton')
@@ -11,5 +13,7 @@ function initModals() {
       document.getElementById('uds-modal').classList.remove('open');
     });
 };
+
+EventHandler.on(window, 'load.uds.modals', initModals);
 
 export { initModals };

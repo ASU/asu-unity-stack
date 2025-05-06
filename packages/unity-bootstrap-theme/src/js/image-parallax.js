@@ -1,3 +1,5 @@
+import { EventHandler } from "./bootstrap-helper";
+
 export const initImageParallax = () => {
   const MAGIC_PARALLAX_FACTOR = 1.2;
 
@@ -91,7 +93,7 @@ export const initImageParallax = () => {
   // dataLayer elements focus event listener
   const elements = document.querySelectorAll('[data-ga-image-parallax]');
   elements.forEach((element) =>
-    element.addEventListener('focus', () => {
+    EventHandler.on(element, 'focus.uds.image-parallax', () => {
       const args = {
         section: element
           .getAttribute('data-ga-image-parallax-section')
@@ -103,13 +105,11 @@ export const initImageParallax = () => {
   );
 
   // Window management
-  window.addEventListener('DOMContentLoaded', function () {
-    manage_image_sizes();
-  });
+  manage_image_sizes();
 
-  window.addEventListener('resize', function () {
-    manage_image_sizes();
-  });
+  EventHandler.on(window, 'resize.uds.image-parallax', manage_image_sizes);
 
-  window.addEventListener('scroll', scrollHandler);
+  EventHandler.on(window, 'scroll.uds.image-parallax', scrollHandler);
 };
+
+EventHandler.on(window, 'load.uds.image-parallax', initImageParallax);

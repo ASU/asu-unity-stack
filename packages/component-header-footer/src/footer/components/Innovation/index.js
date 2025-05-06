@@ -95,7 +95,7 @@ const Innovation = () => {
               >
                 <img
                   src={innovationLogo}
-                  alt="Repeatedly ranked #1 in innovation (ASU ahead of MIT and Stanford), sustainability (ASU ahead of Stanford and UC Berkeley), and global impact (ASU ahead of MIT and Penn State)"
+                  alt="Repeatedly ranked #1, 20+ lists in the last 3 years"
                   width="459"
                   height="100"
                   loading="lazy"

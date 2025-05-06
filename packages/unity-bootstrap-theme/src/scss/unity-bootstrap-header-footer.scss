@@ -1,0 +1,12 @@
+@import "shared";
+
+// 8. Add additional custom code here
+
+// import bootstrap core
+// @import "bootstrap/scss/bootstrap";
+// css Bootstrap doesn't have variables for
+// @import "unity-bootstrap-theme-extends";
+@import 'extends/global-header';
+@import 'extends/globalfooter';
+
+@import 'end-style';

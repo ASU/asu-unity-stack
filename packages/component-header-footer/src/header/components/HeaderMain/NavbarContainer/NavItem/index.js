@@ -68,9 +68,24 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
         setItemOpened();
       }
     };
+
+    const handleFocusOut = () => {
+      setTimeout(() => {
+        const node = clickRef.current;
+        if (opened && node && !node.contains(document.activeElement)) {
+          setItemOpened();
+        }
+      }, 0);
+    };
+
+    const node = clickRef.current;
+
     document.addEventListener("click", handleClickOutside, true);
+    node?.addEventListener("focusout", handleFocusOut);
+
     return () => {
       document.removeEventListener("click", handleClickOutside, true);
+      node?.removeEventListener("focusout", handleFocusOut);
     };
   }, [opened]);
 

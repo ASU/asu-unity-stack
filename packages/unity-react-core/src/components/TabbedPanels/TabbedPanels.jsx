@@ -10,6 +10,7 @@
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
+import { throttle, debounce } from "../../../../../shared";
 import { useBaseSpecificFramework } from "../GaEventWrapper/useBaseSpecificFramework";
 import { NavControls, TabHeader } from "./components";
 
@@ -26,19 +27,23 @@ function useRefs() {
   return [refs, register];
 }
 
-const Tab = ({ id, bgColor, selected, children }) =>
-  selected && (
-    <div
-      className={`tab-pane fade show ${selected ? "show active" : ""} ${
-        bgColor === "bg-dark" ? "text-white" : ""
-      }`}
-      id={`nav-${id}`}
-      role="tabpanel"
-      aria-labelledby={`nav-${id}-tab`}
-    >
-      {children}
-    </div>
+const Tab = ({ id, bgColor, selected, children }) => {
+  const { isBootstrap } = useBaseSpecificFramework();
+  return (
+    (selected || isBootstrap) && (
+      <div
+        className={`tab-pane fade show ${selected ? "show active" : ""} ${
+          bgColor === "bg-dark" ? "text-white" : ""
+        }`}
+        id={`nav-${id}`}
+        role="tabpanel"
+        aria-labelledby={`nav-${id}-tab`}
+      >
+        {children}
+      </div>
+    )
   );
+};
 
 Tab.propTypes = {
   id: PropTypes.string.isRequired,
@@ -54,13 +59,15 @@ const TabbedPanels = ({
   onTabChange = _ => {},
 }) => {
   const childrenArray = React.Children.toArray(children);
+  if (childrenArray.length === 0) {
+    return null;
+  }
   const isMounted = useRef(false);
   const [activeTabID, setActiveTabID] = useState(
     initialTab && initialTab !== "null" ? initialTab : childrenArray[0].props.id
   );
   const headerTabs = useRef(null);
   const [headerTabItems, setHeaderTabItems] = useRefs();
-  const { isReact, isBootstrap } = useBaseSpecificFramework();
 
   const updateActiveTabID = tab => {
     onTabChange(tab);
@@ -72,31 +79,47 @@ const TabbedPanels = ({
   const [scrollLeft, setScrollLeft] = useState(0);
   const [scrollableWidth, setScrollableWidth] = useState();
 
+  const handleResize = () => {
+    setScrollableWidth(
+      headerTabs.current?.scrollWidth - headerTabs.current?.offsetWidth
+    );
+  };
+
+  const handleScroll = () => {
+    setScrollLeft(headerTabs.current?.scrollLeft);
+  };
+
+  const throttleScroll = () => {
+    const timeout = 150;
+    // prevent function from being called excessively
+    throttle(handleScroll, timeout);
+    // ensure function executes after scrolling stops
+    debounce(handleScroll, timeout);
+  };
+
+  const throttleResize = () => {
+    const timeout = 150;
+    // prevent function from being called excessively
+    throttle(handleResize, timeout);
+    // ensure function executes after scrolling stops
+    debounce(handleResize, timeout);
+  };
+
   useEffect(() => {
-    const onScroll = () => {
-      setScrollLeft(headerTabs.current.scrollLeft);
-    };
-    headerTabs.current.addEventListener("scroll", onScroll);
-    onScroll();
+    headerTabs.current.addEventListener("scroll", throttleScroll);
+    handleScroll();
     return () => {
       if (headerTabs.current) {
-        headerTabs.current.removeEventListener("scroll", onScroll);
+        headerTabs.current.removeEventListener("scroll", throttleScroll);
       }
     };
   }, [scrollableWidth]);
 
   useEffect(() => {
-    const onResize = () => {
-      setScrollableWidth(
-        headerTabs.current.scrollWidth - headerTabs.current.offsetWidth
-      );
-    };
-    window.addEventListener("resize", onResize);
-    onResize();
+    window.addEventListener("resize", throttleResize);
+    handleResize();
     return () => {
-      if (headerTabs.current) {
-        window.removeEventListener("resize", onResize);
-      }
+      window.removeEventListener("resize", throttleResize);
     };
   }, []);
 
@@ -190,10 +213,10 @@ const TabbedPanels = ({
                 title={child.props.title}
                 selected={activeTabID === child.props.id}
                 gaData={trackLinkEvent}
-                selectTab={isReact && switchToTab}
+                selectTab={switchToTab}
                 key={child.props.id}
-                leftKeyPressed={isReact && (() => incrementIndex(false))}
-                rightKeyPressed={isReact && (() => incrementIndex())}
+                leftKeyPressed={() => incrementIndex(false)}
+                rightKeyPressed={() => incrementIndex()}
                 icon={child.props.icon}
                 index={index}
               />
@@ -205,7 +228,7 @@ const TabbedPanels = ({
           hidePrev={scrollLeft <= 0}
           hideNext={scrollLeft >= scrollableWidth}
           gaData={trackArrowsEvent}
-          slideNav={isReact && slideNav}
+          slideNav={slideNav}
         />
       </nav>
       <div

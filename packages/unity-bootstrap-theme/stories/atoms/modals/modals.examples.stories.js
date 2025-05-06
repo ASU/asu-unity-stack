@@ -1,13 +1,10 @@
 import React from "react";
 
-import { initModals as initFunc } from "./modals.js";
-
 export default {
   title: "Atoms/Modals/Examples",
   parameters: {
     initFunc: {
       disable: false,
-      code: initFunc
     },
     header: {
       forced: true,

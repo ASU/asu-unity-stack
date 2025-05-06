@@ -76,28 +76,31 @@ const ColumnSection = ({ columnIndex, column: { title, links } }) => {
       <div className="card accordion-item desktop-disable-xl">
         <div className="accordion-header">
           <div className="h5">
-            <button
-              id={`footlink-header-${columnIndex}`}
-              className="accordion-button"
-              aria-expanded={show || isLgDesktop}
-              aria-controls={`footlink-${columnIndex}`}
-              onClick={handleToggle}
-              type="button"
-              disabled={isLgDesktop}
-            >
-              {title}
-              <FontAwesomeIcon
-                className={show || isLgDesktop ? "open" : ""}
-                icon={faChevronDown}
-              />
-            </button>
+            {isLgDesktop ? (
+              <p className="accordion-button">{title}</p>
+            ) : (
+              <button
+                id={`footlink-header-${columnIndex}`}
+                className="accordion-button"
+                aria-expanded={show || isLgDesktop}
+                aria-controls={`footlink-${columnIndex}`}
+                onClick={handleToggle}
+                type="button"
+                disabled={isLgDesktop}
+              >
+                {title}
+                <FontAwesomeIcon
+                  className={show || isLgDesktop ? "open" : ""}
+                  icon={faChevronDown}
+                />
+              </button>
+            )}
           </div>
         </div>
         <div
           id={`footlink-${columnIndex}`}
           className="accordion-body"
           role="region"
-          aria-labelledby={`footlink-header-${columnIndex}`}
           ref={accordionBodyRef}
         >
           {links.map(link => (

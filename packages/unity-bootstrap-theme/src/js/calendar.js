@@ -1,3 +1,5 @@
+import { EventHandler } from "./bootstrap-helper";
+
 function initCalendar() {
   const months = [
     'January',
@@ -81,6 +83,11 @@ function initCalendar() {
 
   const render = () => {
     const calendarContainer = document.getElementById('calendar');
+
+  if (!calendarContainer) {
+    return;
+  }
+
     calendarContainer.innerHTML = `
       <h2><span class="highlight-black">${months[state.month]} ${
       state.year
@@ -153,5 +160,7 @@ function initCalendar() {
 
   showCalendar(0);
 };
+
+EventHandler.on(window, 'load.uds.calendar', initCalendar);
 
 export { initCalendar }

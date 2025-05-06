@@ -1,7 +1,6 @@
 import React from "react";
 
 import { defaultDecorator } from "../../../../../shared/components/Layout";
-import {initializeFixedTable as initFunc} from "./tables";
 
 export default {
   title: "Molecules/Tables/Templates",
@@ -19,12 +18,6 @@ export default {
     fixed: false,
     columns: 5,
   },
-  parameters: {
-    initFunc: {
-      code: initFunc,
-      disable: false,
-    },
-  }
 };
 
 const makingUpFakeNumbers = (a,b,c) => Math.round(a*(b+c)).toLocaleString('en-US');
@@ -132,3 +125,9 @@ FixedComponent.args = {
   fixed: true,
   columns: 7,
 }
+FixedComponent.parameters = {
+  initFunc: {
+    disable: false,
+  },
+};
+

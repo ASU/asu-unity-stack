@@ -1,4 +1,5 @@
-(function(){
+import { EventHandler } from "./bootstrap-helper";
+
   function initDataLayer() {
     /**
      * Push events to data layer (Google Analytics)
@@ -144,6 +145,23 @@
         });
       })
     );
+
+    document.querySelectorAll('[data-ga-footer]').forEach((element) =>
+      element.addEventListener('focus', () => {
+        const args = {
+          type: element.getAttribute('data-ga-footer-type').toLowerCase(),
+          section: element.getAttribute('data-ga-footer-section').toLowerCase(),
+          text: element.getAttribute('data-ga-footer').toLowerCase(),
+        };
+        pushGAEvent({
+          event: 'link',
+          action: 'click',
+          name: 'onclick',
+          region: 'footer',
+          ...args,
+        });
+      })
+    );
   }
 
   /* Function must be initialized after document load
@@ -151,4 +169,7 @@
    *   window.initDataLayer();
    */
   window.initDataLayer = window.initDataLayer || initDataLayer;
-})();
+
+  EventHandler.on(window, 'load.uds.data-layer', initDataLayer);
+
+export { initDataLayer };

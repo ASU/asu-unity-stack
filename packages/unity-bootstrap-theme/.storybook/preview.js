@@ -1,8 +1,13 @@
+import "./eventSpy.js";
 import "../src/scss/unity-bootstrap-theme.bundle.scss";
+import { default as bootstrap } from "bootstrap/js/index.umd.js";
+globalThis.bootstrap = bootstrap;
+import { default as udsBootstrap } from "../src/js/unity-bootstrap.js";
+globalThis.udsBootstrap = udsBootstrap;
+
 import { removeFontAwesomeChanges } from "./local-addon/helpers";
 
-// Import all the Bootstrap bundle
-import "../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min";
+import { windowLoadEvent } from "./decorators.jsx";
 
 const parameters = {
   options: {
@@ -58,7 +63,8 @@ const parameters = {
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
-  parameters
+  parameters,
+    decorators: [windowLoadEvent],
 };
 
 export default preview;

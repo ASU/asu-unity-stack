@@ -1,11 +1,21 @@
-import { Chart, registerables } from 'chart.js';
-Chart.register(...registerables);
+import * as Chart from 'chart.js';
+
+import { EventHandler } from './bootstrap-helper';
 
 function initChart() {
+  Chart.Chart.register(...Chart.registerables);
+
   const GRAPH_PERCENTAGE_COMPLETE = 50;
+
+  var ctx = document.getElementById('uds-donut');
+
+  if (!ctx) {
+      // id="uds-donut" not found in the DOM.
+    return;
+  }
+
   document.getElementById('percentage-display').innerHTML =
     GRAPH_PERCENTAGE_COMPLETE + '%';
-  var ctx = document.getElementById('uds-donut');
 
   const config = {
     type: 'doughnut',
@@ -26,7 +36,9 @@ function initChart() {
     },
   };
 
-  var myChart = new Chart(ctx, config);
+  var myChart = new Chart.Chart(ctx, config);
 };
+
+EventHandler.on(window, 'load.uds.chart', initChart);
 
 export { initChart };

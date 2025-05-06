@@ -4,14 +4,17 @@
  * Fixed table should display scroll buttons when hovering over scrollable
  * portion of table, and hide them when hovering over fixed column or when
  * mouse exits table.
- *
- * The scroll buttons must be outside the table container, within the table wrapper,
- * due to the absolute positioning requirements. Because the table scrolls,
- * if they were to be absolutely positioned in the same container as the table,
- * they would scroll with it.
- */
+*
+* The scroll buttons must be outside the table container, within the table wrapper,
+* due to the absolute positioning requirements. Because the table scrolls,
+* if they were to be absolutely positioned in the same container as the table,
+* they would scroll with it.
+*/
 
-function initializeFixedTable() {
+import { EventHandler } from "./bootstrap-helper";
+
+
+function initFixedTable() {
   function setPreButtonPosition() {
     const wrapperSelector = '.uds-table-fixed-wrapper';
     const tableSelector = '.uds-table.uds-table-fixed table';
@@ -43,12 +46,12 @@ function initializeFixedTable() {
       const nextButton = wrapper.querySelector(nextScrollSelector);
 
       ['click', 'focus'].forEach((eventName) => {
-        prevButton.addEventListener(eventName, function () {
+        EventHandler.on(prevButton, eventName, function () {
           /* Scroll can't go beyond it's bounds, it won't go lower than 0 */
           container.scrollLeft -= 100;
         });
 
-        nextButton.addEventListener(eventName, function () {
+        EventHandler.on(nextButton, eventName, function () {
           container.scrollLeft += 100;
         });
       });
@@ -66,9 +69,11 @@ function initializeFixedTable() {
   }
   setPreButtonPosition();
   setButtonLiListeners();
-  window.addEventListener('resize', function () {
+  EventHandler.on(window, 'resize', function () {
     debounce(setPreButtonPosition, 100)();
   });
 }
 
-export { initializeFixedTable };
+EventHandler.on(window, 'load.uds.fixed-table', initFixedTable);
+
+export { initFixedTable };

@@ -117,6 +117,7 @@
  * @property {string} additionalRequirements
  * @property {string} transferRequirements
  * @property {string} minorRequirements
+ * @property {string} majorMapURL
  */
 
 /**

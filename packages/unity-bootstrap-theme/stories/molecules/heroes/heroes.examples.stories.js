@@ -3,7 +3,6 @@ import React from "react";
 import { fullLayoutDecorator } from "../../../../../shared/components/Layout.js";
 import stockVideo from "../../atoms/video/stock-video-person-drawing.mp4";
 import cardsImage from "../cards/cards-image.jpg";
-import { initVideo as initFunc } from "./heroes-video";
 
 export default {
   title: "Molecules/Heroes/Examples",
@@ -242,10 +241,9 @@ export const HeroVideo = () => (
     </div>
   </div>
 );
+
 HeroVideo.parameters = {
   initFunc: {
-    code: initFunc,
     disable: false,
   },
 };
-

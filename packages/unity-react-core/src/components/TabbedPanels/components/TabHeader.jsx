@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 import React, { forwardRef, useRef, useImperativeHandle } from "react";
 
 import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
+import { useBaseSpecificFramework } from "../../GaEventWrapper/useBaseSpecificFramework";
 
 /**
  * @typedef {Object} TabHeaderProps
@@ -26,6 +27,7 @@ const TabHeader = forwardRef(function TabHeader(props, ref) {
     icon,
     gaData,
   } = props;
+  const { isReact, isBootstrap } = useBaseSpecificFramework();
 
   const inputRef = useRef(null);
 
@@ -71,8 +73,9 @@ const TabHeader = forwardRef(function TabHeader(props, ref) {
         role="tab"
         aria-controls={`nav-${id}`}
         aria-selected={selected}
-        onClick={e => selectTab(e, id, title)}
-        onKeyDown={func}
+        data-bs-toggle={isBootstrap && "tab"}
+        onClick={isReact && (e => selectTab(e, id, title))}
+        onKeyDown={isReact && func}
         tabIndex={selected ? "" : "-1"}
       >
         {title} {icon && <i className={`${icon?.[0]} fa-${icon?.[1]} me-1`} />}
