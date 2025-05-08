@@ -41,9 +41,9 @@ const HeaderGuide = () => {
             CMS modules and plugins providing the ASU header should implement it
             using the{" "}
             <a
-              href={getRelativePath("@asu/components-header-footer/index.html")}
+              href={getRelativePath("@asu/component-header-footer/index.html")}
             >
-              @asu/components-header
+              @asu/component-header-footer
             </a>{" "}
             package and should also implement the Google Tag Manager code.
             Modules and plugins should provide configurability so that Cookie
