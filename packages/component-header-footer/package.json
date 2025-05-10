@@ -33,7 +33,8 @@
   },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
-    "test": "jest --config=./jest.config.js --silent --coverage",
+    "test": "jest --config=./jest.config.js --silent --coverage && yarn test-datalayer",
+    "test-datalayer": "playwright test tests/dataLayer-header.spec.mjs",
     "test-update-snapshot": "yarn test -- -u",
     "build": "vite build && yarn postbuild",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
