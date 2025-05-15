@@ -188,6 +188,41 @@ DefaultWithCertificate.args = {
 };
 
 /**
+ * @type {{ args: AppProps }}
+ */
+export const GradWithCertificate = Template.bind({});
+GradWithCertificate.args = {
+  ...defaultArgs,
+  introContent: null,
+  programList: {
+    ...defaultArgs.programList,
+    dataSource: {
+      ...defaultArgs.programList.dataSource,
+      program: "graduate",
+      cert: "true",
+      showInactivePrograms: "true",
+    },
+  },
+};
+/**
+ * @type {{ args: AppProps }}
+ */
+export const AllWithCertificate = Template.bind({});
+AllWithCertificate.args = {
+  ...defaultArgs,
+  introContent: null,
+  programList: {
+    ...defaultArgs.programList,
+    dataSource: {
+      ...defaultArgs.programList.dataSource,
+      program: "all",
+      cert: "true",
+      showInactivePrograms: "true",
+    },
+  },
+};
+
+/**
  * @type {{ args: AppProps}}
  */
 export const WithCollegeAcadOrgAndDepartmentCode = Template.bind({});

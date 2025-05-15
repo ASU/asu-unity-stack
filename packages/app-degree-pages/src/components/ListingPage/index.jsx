@@ -91,7 +91,7 @@ const ListingPage = ({
   const [dataInitView, setDataInitView] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState("");
   // start set default data view
-  const settingDefaultView = programList.settings?.defaultView;
+  const settingDefaultView = programList?.settings?.defaultView;
   const defaultView = [LIST_VIEW_ID, GRID_VIEW_ID].includes(settingDefaultView)
     ? settingDefaultView
     : LIST_VIEW_ID;
