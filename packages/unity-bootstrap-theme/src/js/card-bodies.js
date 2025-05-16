@@ -28,11 +28,14 @@ function initCardBodies() {
       const visibleTextElement = document.createElement('div');
       visibleTextElement.id = visibleTextElementId;
       visibleTextElement.textContent = visibleText;
-      visibleTextElement.setAttribute('hidden', 'true');
+      visibleTextElement.style.position = 'absolute';
+      visibleTextElement.style.top = '0';
+      visibleTextElement.style.zIndex = '-1';
 
       cardBody.appendChild(visibleTextElement);
 
       paragraph.setAttribute('aria-describedby', visibleTextElementId);
+      paragraph.setAttribute('aria-hidden', 'true');
     }
   });
 
