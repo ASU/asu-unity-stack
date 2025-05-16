@@ -196,6 +196,7 @@
           .btn-expand {
             display: flex;
             align-items: baseline;
+            justify-content: space-between;
 
             h4 {
               margin: 0;
@@ -206,8 +207,8 @@
         }
 
         > p {
-          line-clamp: 18;
-          -webkit-line-clamp: 18;
+          line-clamp: 15;
+          -webkit-line-clamp: 15;
           visibility: hidden;
           transition: visibility .3s ease-in;
           margin: 0;
