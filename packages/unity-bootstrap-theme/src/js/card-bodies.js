@@ -28,10 +28,7 @@ function initCardBodies() {
       const visibleTextElement = document.createElement('div');
       visibleTextElement.id = visibleTextElementId;
       visibleTextElement.textContent = visibleText;
-      visibleTextElement.style.position = 'absolute';
-      visibleTextElement.style.left = '-9999px';
-      visibleTextElement.style.top = '-9999px';
-      visibleTextElement.setAttribute('aria-hidden', 'true');
+      visibleTextElement.setAttribute('hidden', 'true');
 
       cardBody.appendChild(visibleTextElement);
 
