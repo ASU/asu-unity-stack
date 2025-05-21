@@ -42,22 +42,8 @@ function initCardBodies() {
       }
       visibleText = tempText + '...';
 
-      // Create a new hidden element to store the truncated text
-      const visibleTextElementId = `visible-text-${Math.random().toString(36).substring(7)}`;
-      const visibleTextElement = document.createElement('div');
-      visibleTextElement.id = visibleTextElementId;
-      visibleTextElement.textContent = visibleText;
-      visibleTextElement.style.position = 'absolute';
-      visibleTextElement.style.top = '0';
-      visibleTextElement.style.zIndex = '-1';
+      paragraph.setAttribute('aria-label', visibleText);
 
-      // Add the hidden element to the DOM
-      cardBody.appendChild(visibleTextElement);
-
-      paragraph.setAttribute('aria-describedby', visibleTextElementId);
-
-      // Hide the original paragraph from screen readers
-      paragraph.setAttribute('aria-hidden', 'true');
     }
   });
 
