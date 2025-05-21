@@ -44,15 +44,18 @@ const formatAMPM = date => {
  */
 export const formatTime = (startTime, endTime) => {
   const standardizedStartTime = standardizeTime(startTime);
-  const standardizedEndTime = standardizeTime(endTime);
   let formatedStartTime = stringifyDate(new Date(standardizedStartTime));
-  let formatedEndTime = stringifyDate(new Date(standardizedEndTime));
   formatedStartTime = formatAMPM(new Date(formatedStartTime));
-  formatedEndTime = formatAMPM(new Date(formatedEndTime));
-  if (startTime === endTime) {
+
+  if (!endTime || startTime === endTime) {
     return formatedStartTime;
   }
-  return `${formatedStartTime} - ${formatedEndTime}`;
+
+  const standardizedEndTime = standardizeTime(endTime);
+  let formatedEndTime = stringifyDate(new Date(standardizedEndTime));
+  formatedEndTime = formatAMPM(new Date(formatedEndTime));
+
+  return `${formatedStartTime} -<span class="visually-hidden">through</span> ${formatedEndTime}`;
 };
 
 /**
