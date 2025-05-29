@@ -1,5 +1,12 @@
 // @ts-check
 import DOMPurify from "dompurify";
+import { JSDOM } from 'jsdom';
+
+let DOMPurifyInstanceServerCompatible = DOMPurify;
+if (typeof window === 'undefined') {
+  const { window: jsdomWindow } = new JSDOM('');
+  DOMPurifyInstanceServerCompatible = DOMPurify(jsdomWindow);
+}
 
 /**
  * @typedef {{
@@ -25,7 +32,7 @@ function queryFirstFocusable(targetSelector) {
  * @returns {Object}
  */
 export const sanitizeDangerousMarkup = content => {
-  return { __html: DOMPurify.sanitize(content) };
+  return { __html: DOMPurifyInstanceServerCompatible.sanitize(content) };
 };
 
 export { queryFirstFocusable };
