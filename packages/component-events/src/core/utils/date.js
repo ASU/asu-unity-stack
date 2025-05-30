@@ -55,7 +55,7 @@ export const formatTime = (startTime, endTime) => {
   let formatedEndTime = stringifyDate(new Date(standardizedEndTime));
   formatedEndTime = formatAMPM(new Date(formatedEndTime));
 
-  return `${formatedStartTime} -<span class="visually-hidden">through</span> ${formatedEndTime}`;
+  return `${formatedStartTime} to ${formatedEndTime}`;
 };
 
 /**
