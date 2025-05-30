@@ -1,0 +1,2 @@
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./DocsRenderer-NNNQARDV-DO4lxhM1.js","./chunk-HLWAVYOI-BP5gCTHn.js","./iframe-ClUt_M_Z.js","./index-RYns6xqu.js","./react-18-CWbnM-_i.js","./index-Cu4lwwaE.js","./index-HRfTNzeJ.js","./index-DrFu-skq.js"])))=>i.map(i=>d[i]);
+import{_ as e}from"./iframe-ClUt_M_Z.js";import"../sb-preview/runtime.js";var a={docs:{renderer:async()=>{let{DocsRenderer:r}=await e(()=>import("./DocsRenderer-NNNQARDV-DO4lxhM1.js"),__vite__mapDeps([0,1,2,3,4,5,6,7]),import.meta.url);return new r}}};export{a as parameters};
