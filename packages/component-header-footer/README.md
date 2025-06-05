@@ -1,21 +1,13 @@
 # ASU Header
-ASU Web Standards-based implementation of global header.
+ASU Web Standards-based implementation of global header and footer.
 
 ## CLI Commands
 
 ``` bash
 # add component-footer
-yarn add @asu/component-header
-
-
-# run storybook
-yarn storybook
-
-# build for production with minification
-yarn build
-
-# run tests
-yarn test
+yarn add @asu/component-header-footer
+# or if you use npm
+npm install @asu/component-header-footer
 
 ```
 
@@ -29,13 +21,13 @@ yarn test
 
 ### Default import
 ```JAVASCRIPT
-    import { ASUHeader } from '@asu/component-header@dev'
+    import { ASUHeader, ASUFooter } from '@asu/component-header-footer'
 ```
 
 ### Aliased import
 ```JAVASCRIPT
-  import { ASUHeader as Header } from '@asu/component-header@dev'
+  import { ASUHeader as Header, ASUFooter as Footer } from '@asu/component-header-footer'
 ```
 
 ### Import for use in HTML page
-You can find an example of how to set `ASUHeader` props [here](/packages/component-header/examples/global-header.html)
+You can find an example of how to set `ASUHeader` props for use in a browser [here](/packages/component-header/examples/global-header.html)
