@@ -247,10 +247,7 @@ export const AnchorMenu = ({
                   ariaLabel={item.text}
                   label={item.text}
                   icon={item.icon}
-                  onClick={() => {
-                    handleClickLink(item.targetIdName);
-                    handleMenuVisibility();
-                  }}
+                  onClick={() => handleClickLink(item.targetIdName)}
                 />
               ))}
             </nav>
