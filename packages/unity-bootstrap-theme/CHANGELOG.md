@@ -1,3 +1,18 @@
+# [@asu/unity-bootstrap-theme-v1.26.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.25.2...@asu/unity-bootstrap-theme-v1.26.0) (2025-06-09)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** added styles to hidden box ([0524735](https://github.com/ASU/asu-unity-stack/commit/05247354f7dd56b3ca9de676b025f8b644a2304c))
+* **unity-bootstrap-theme:** fixing visible text paragraph ([3e023c2](https://github.com/ASU/asu-unity-stack/commit/3e023c236b3c64b41432e260083fb2df05a2dea2))
+* **unity-bootstrap-theme:** removed aria-hidden ([d4dc1a2](https://github.com/ASU/asu-unity-stack/commit/d4dc1a2d8f354ef39f80034818ecc72830c44618))
+
+
+### Features
+
+* **unity-bootstrap-theme:** added js for trucate aria-describedby on card-body ([971d134](https://github.com/ASU/asu-unity-stack/commit/971d134800f91d64f463c7ba7de878cd55e71757))
+* **unity-bootstrap-theme:** setup aria-label for p ([486628e](https://github.com/ASU/asu-unity-stack/commit/486628eb81c50553f75de4940e35b0112a0b3468))
+
 # [@asu/unity-bootstrap-theme-v1.25.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.25.1...@asu/unity-bootstrap-theme-v1.25.2) (2025-05-30)
 
 
