@@ -2,6 +2,7 @@
 import { initAnchorMenu } from "./anchor-menu.js";
 import { initBlockquoteAnimation } from "./blockquote-animated.js";
 import { initCalendar } from "./calendar.js";
+import { initCardBodies } from "./card-bodies.js";
 import { initRankingCard } from "./card-ranking.js";
 import { initChart } from "./charts-and-graphs.js";
 import { initDataLayer } from "./data-layer.js";
@@ -28,6 +29,7 @@ const unityBootstrap = {
   initRankingCard,
   initTabbedPanels,
   initVideo,
+  initCardBodies,
 }
 
 export default unityBootstrap;
