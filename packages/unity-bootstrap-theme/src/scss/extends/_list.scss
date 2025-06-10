@@ -5,7 +5,7 @@
   --list-padding-top: 0;
   --list-padding-right: 0;
   --list-padding-bottom: 3rem;
-  --list-padding-left: 2rem;
+  --list-padding-left: 3rem;
   --list-list-style: none;
   --li-before-line-height: 1.5rem;
 
@@ -32,6 +32,10 @@
       color: var(--li-before-color);
       background-color: var(--li-before-background-color);
       line-height: var(--li-before-line-height);
+      left: -3rem;
+      text-align: right;
+      position: absolute;
+      width: 2rem;
     }
   }
 }
@@ -44,7 +48,6 @@ ul.uds-list ul {
   --list-padding-top: 1rem;
   --list-padding-right: 0;
   --list-padding-bottom: 0;
-  --list-padding-left: 1.5rem;
   --list-list-style: none;
 }
 
@@ -101,8 +104,6 @@ ul.uds-list,
   & > li:before{
     --li-before-font-size: 2rem;
     vertical-align: middle;
-    padding-right: 1.25rem; // Magic number.;
-    margin-left: -2rem;
   }
 }
 
@@ -162,7 +163,6 @@ ul.uds-list {
   &.fa-ul {
     @include uds-list-spacing;
 
-    --list-padding-left: 2.25rem; // Avoid icon clipping.
     margin-left: 0rem;
     margin-bottom: 0rem;
     li .fa-li {
@@ -197,17 +197,10 @@ ol.uds-list,
   & > li:before {
     --li-before-font-size: 1rem;
     counter-increment: listcounter;
-    padding-right: .75rem;
-    margin-left: -1.9rem;
-  }
-
-  // Adjust indent for double digits.
-  li:nth-of-type(9) ~ li:before {
-    margin-left: -2.4rem;
-  }
-  // Adjust indent for triple digits.
-  li:nth-of-type(99) ~ li:before {
-    margin-left: -2.9rem;
+    left: -3rem;
+    text-align: right;
+    position: absolute;
+    width: 2rem;
   }
 
   // Step List styles
@@ -236,10 +229,13 @@ ol.uds-list,
         --li-before-color: #{$uds-color-base-gray-1};
         --li-before-font-size: 1.25rem;
         border-radius: 50rem;
-        padding: 0.5rem 0.8rem; // Following is more true to XD step circle sizing, but looks less rounded: padding: 0.4rem 0.6rem;
+        padding: 0.4rem 0.8rem;
         margin-right: 2rem;
         margin-left: -4.5rem;
         font-weight: bold;
+        position: absolute;
+        left: auto;
+        width: auto;
       }
     }
 

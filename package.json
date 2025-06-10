@@ -17,7 +17,7 @@
     "build-storybook": "lerna run build-storybook --stream --parallel && yarn build-static-site",
     "build": "yarn prebuild && lerna run build --ignore=@asu/unity-react-core --stream --parallel && yarn postbuild",
     "prebuild": "lerna run build --scope=@asu/unity-react-core && yarn lint",
-    "postbuild": "lerna run --ignore=@asu/unity-bootstrap-theme docs",
+    "postbuild": "node -e \"process.env.CI && require('child_process').execSync('lerna run --ignore=@asu/unity-bootstrap-theme docs', {stdio: 'inherit'})\"",
     "test": "lerna run test --stream --parallel",
     "test:e2e": "jest",
     "prepublish-packages": "node scripts/copy-license.js && node scripts/copy-release-rc.js",

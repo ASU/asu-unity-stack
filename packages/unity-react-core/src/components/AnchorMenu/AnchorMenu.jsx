@@ -19,8 +19,8 @@ import {
 } from "../../../../../shared";
 import { Button } from "../Button/Button";
 import { GaEventWrapper } from "../GaEventWrapper/GaEventWrapper";
-import { AnchorMenuWrapper } from "./AnchorMenu.styles";
 import { useBaseSpecificFramework } from "../GaEventWrapper/useBaseSpecificFramework";
+import { AnchorMenuWrapper } from "./AnchorMenu.styles";
 
 const menuTitle = "On This Page";
 
@@ -44,7 +44,6 @@ export const AnchorMenu = ({
   firstElementId,
   focusFirstFocusableElement = false,
 }) => {
-
   const { isReact, isBootstrap } = useBaseSpecificFramework();
 
   const anchorMenuRef = useRef(null);

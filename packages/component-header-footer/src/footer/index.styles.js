@@ -29,7 +29,8 @@ const StyledFooter = styled.footer`
       sans-serif;
     line-height: 1.5rem;
 
-    a:focus, button:focus {
+    a:focus,
+    button:focus {
       outline: none;
       box-shadow: 0 0 0 2px var(--color-base-white), 0 0 0 4px var(--color-base-grey-7) !important;
       -webkit-tap-highlight-color: transparent;

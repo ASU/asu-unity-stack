@@ -96,7 +96,7 @@ const ProfileCard = ({ ...props }) => {
           <ul className="person-contact-info">
             {props.email && (
               <li>
-                <span className="fas fa-envelope"/>
+                <span className="fas fa-envelope" />
                 <a
                   onClick={() => sendEvent(props.email)}
                   href={`mailto:${props.email.toLowerCase()}`}
@@ -108,7 +108,7 @@ const ProfileCard = ({ ...props }) => {
             )}
             {formattedTelephone && (
               <li>
-                <span className="fas fa-phone"/>
+                <span className="fas fa-phone" />
                 <a
                   onClick={() => sendEvent(formattedTelephone)}
                   href={`tel:${formattedTelephone}`}

@@ -1,8 +1,8 @@
 import React from "react";
 
 import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
-import { RfiEmailInput } from "../../controls";
 import { PII_VALUE } from "../../../core/utils/constants";
+import { RfiEmailInput } from "../../controls";
 
 /**
  * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props

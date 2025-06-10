@@ -91,12 +91,15 @@ describe("#Navbar Container Component with onClick and no href", () => {
       navTree: testNavTreeWithOnClickEventAndNoHref.map(item => ({
         ...item,
         onClick: item.items?.length ? undefined : () => onClick(),
-        items: item.items?.map(subMenu =>
-          subMenu.map(subItem => ({
-            ...subItem,
-            onClick: subItem.onClick ? () => subMenuOnClick() : () => undefined,
-          }))
-        ) || undefined,
+        items:
+          item.items?.map(subMenu =>
+            subMenu.map(subItem => ({
+              ...subItem,
+              onClick: subItem.onClick
+                ? () => subMenuOnClick()
+                : () => undefined,
+            }))
+          ) || undefined,
       })),
     });
     navItems = component.queryAllByTestId("nav-item");

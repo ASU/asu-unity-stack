@@ -61,7 +61,6 @@ export const Pagination = ({
   };
 
   const renderPages = () => {
-
     if (totalPages < 5) {
       return (
         <>
@@ -119,7 +118,7 @@ export const Pagination = ({
             1
           </PageItem>
         )}
-        {selectedPage > (totalPages - displayMinimumPages ) && (
+        {selectedPage > totalPages - displayMinimumPages && (
           <PageItem
             isClickeable
             ariaLabel={`Page 2 of ${totalPages}`}
@@ -144,10 +143,10 @@ export const Pagination = ({
         {renderedPages[renderedPages.length - 1] < totalPages - 1 && (
           <PageItem ellipses>...</PageItem>
         )}
-        {selectedPage < displayMinimumPages + 1  && (
+        {selectedPage < displayMinimumPages + 1 && (
           <PageItem
             isClickeable
-            ariaLabel={`Page ${totalPages-1} of ${totalPages}`}
+            ariaLabel={`Page ${totalPages - 1} of ${totalPages}`}
             selectedPage={selectedPage === totalPages - 1}
             onClick={e => handleChangePage(e, totalPages - 1)}
           >

@@ -40,7 +40,7 @@ describe("#Button", () => {
 
   it("should call onClick", () => {
     fireEvent.click(element);
-    expect(buttonOnClick).toBeCalledTimes(1);
+    expect(buttonOnClick).toHaveBeenCalledTimes(1);
   });
 });
 

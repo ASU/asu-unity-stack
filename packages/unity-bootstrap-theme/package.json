@@ -1,6 +1,6 @@
 {
   "name": "@asu/unity-bootstrap-theme",
-  "version": "1.25.0",
+  "version": "1.25.2",
   "description": "Please see @asu/unity-react-core for up-to-date stories and examples.\nBase UI theme for ASU Web Standards 2.0 developed with Bootstrap 5",
   "homepage": "https://github.com/ASU/asu-unity-stack#readme",
   "license": "MIT",

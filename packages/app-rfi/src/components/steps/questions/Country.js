@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 
 import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
+import { PII_VALUE } from "../../../core/utils/constants";
 import { fetchCountries } from "../../../core/utils/fetchCountries";
 import { useRfiContext } from "../../../core/utils/rfiContext";
 import { RfiSelect } from "../../controls";
-import { PII_VALUE } from "../../../core/utils/constants";
 
 // Options
 function getCountryOptions(resultsArrayOfObjects) {

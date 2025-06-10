@@ -213,13 +213,13 @@ DropdownItem.propTypes = {
   dropdownName: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.arrayOf(
-    PropTypes.shape({
-      text: PropTypes.string,
-      selected: PropTypes.bool,
-      onClick: PropTypes.func,
-      href: PropTypes.string,
-    })
-  )
+      PropTypes.shape({
+        text: PropTypes.string,
+        selected: PropTypes.bool,
+        onClick: PropTypes.func,
+        href: PropTypes.string,
+      })
+    )
   ),
   buttons: PropTypes.arrayOf(PropTypes.shape(ButtonPropTypes)),
   classes: PropTypes.string,

@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
-import { NavControlButtons } from "./NavControls.styles";
 import { useBaseSpecificFramework } from "../../GaEventWrapper/useBaseSpecificFramework";
+import { NavControlButtons } from "./NavControls.styles";
 
 /**
  * @typedef {Object} NavControlsProps

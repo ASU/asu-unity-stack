@@ -231,10 +231,7 @@ const DetailPage = ({
                       mathIntensity={
                         atAGlance?.mathIntensity || resolver.getMathIntensity()
                       }
-                      stemOptText={
-                        resolver.hasStemOptText()
-                      }
-
+                      stemOptText={resolver.hasStemOptText()}
                     />
                   )}
                   {!introContent?.hideRequiredCourses &&

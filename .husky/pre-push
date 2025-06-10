@@ -1,2 +1,10 @@
 #!/bin/sh
-# yarn test
+[ -n "$CI" ] && exit 0
+
+echo "Running build and tests..."
+yarn test && yarn build
+
+if [ $? -ne 0 ]; then
+  echo "Build or tests failed. Please fix errors before pushing."
+  exit 1
+fi
