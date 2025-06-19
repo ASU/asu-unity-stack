@@ -6103,9 +6103,13 @@ const Oc = ht.shape({
   const o = t >= 12 ? "p.m." : "a.m.";
   return t %= 12, t = t || 12, a = a < 10 ? `0${a}` : a, `${t}:${a} ${o}`;
 }, $i = (e, t) => {
-  const a = ya(e), o = ya(t);
-  let c = Do(new Date(a)), f = Do(new Date(o));
-  return c = jo(new Date(c)), f = jo(new Date(f)), e === t ? c : `${c} - ${f}`;
+  const a = ya(e);
+  let o = Do(new Date(a));
+  if (o = jo(new Date(o)), !t || e === t)
+    return o;
+  const c = ya(t);
+  let f = Do(new Date(c));
+  return f = jo(new Date(f)), `${o} to ${f}`;
 }, In = (e, t) => {
   const a = ya(e);
   return {
