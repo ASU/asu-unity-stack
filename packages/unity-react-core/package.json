@@ -32,7 +32,6 @@
     "dev": "yarn storybook & yarn testui",
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
     "test": "vitest --watch=false && yarn test-datalayer",
-    "test-datalayer": "playwright test tests/dataLayer.spec.mjs",
     "test:accessibility": "playwright test",
     "testui": "vitest --ui",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",

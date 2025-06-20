@@ -5,6 +5,11 @@ export default defineConfig({
   ...defaultConfig,
   use: {
     baseURL: 'http://localhost:9080',
-    trace: 'on-firstt-retry',
+    trace: 'on-first-retry',
   },
-});
+  webServer: {
+      command: 'yarn storybook',
+      port: 9080,
+      reuseExistingServer: !process.env.CI,
+    },
+  });
