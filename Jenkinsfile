@@ -273,11 +273,11 @@ spec:
             steps {
                 container('playwright') {
                   script {
-                    def acessibilityTestResults = sh(
+                    def accessibilityTestResults = sh(
                         script: 'yarn test:accessibility',
                         returnStatus: true
                     )
-                    if (acessibilityTestResults != 0) {
+                    if (accessibilityTestResults != 0) {
                         slackSend(
                             channel: '#prdfam-uds-ci',
                             color: 'warning',
