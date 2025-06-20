@@ -17,6 +17,7 @@ const timestamp = new Date().toISOString().replace(/:/g, "-");
 
 test.describe("Storybook Accessibility Tests with Siteimprove", () => {
   let storyIndex;
+  let storiesToTestArray = [];
 
   test.beforeAll(async () => {
     try {
@@ -27,132 +28,91 @@ test.describe("Storybook Accessibility Tests with Siteimprove", () => {
         );
       }
       storyIndex = await response.json();
+
+      // Filter stories to test and store them
+      storiesToTestArray = Object.entries(storyIndex.entries).filter(([key]) =>
+        storiesToTest.some(story => key.includes(story))
+      );
     } catch (error) {
       console.error("Error fetching storybook index:", error);
     }
   });
 
-  test(
-    "Components should pass Siteimprove accessibility tests",
-    async ({ browser, page }) => {
+  for (const storyToTest of storiesToTest) {
+    test(`${storyToTest} should pass accessibility tests`, async ({ page }) => {
       if (!storyIndex) {
-        console.error(
-          "Skipping test because storybook index could not be fetched"
-        );
+        test.skip("Storybook index could not be fetched");
         return;
       }
 
-      const accessibilityViolations = [];
-      const reportFilePath = path.join(
-        reportDir,
-        `siteimprove-report-${timestamp}.json`
+      const storyEntry = storiesToTestArray.find(([key]) =>
+        key.includes(storyToTest)
       );
 
-      const allResults = [];
+      if (!storyEntry) {
+        test.skip(`Story ${storyToTest} not found in storybook index`);
+        return;
+      }
 
-      let count = 0;
-      const stories = Object.entries(storyIndex.entries).filter(([key]) =>
-        storiesToTest.some(story => key.includes(story))
-      );
-      const totalStories = stories.length;
+      const [storyId, story] = storyEntry;
+      const encodedStoryId = encodeURIComponent(story.id);
+      const storyUrl = `${STORYBOOK_URL}/iframe.html?id=${encodedStoryId}&viewMode=story`;
 
-      for (const [storyId, story] of stories) {
-        const encodedStoryId = encodeURIComponent(story.id);
-        const storyUrl = `${STORYBOOK_URL}/iframe.html?id=${encodedStoryId}&viewMode=story`;
+      console.log(`Testing: ${story.title}`);
 
-        count++;
-        console.log(`Testing (${count}/${totalStories}): ${story.title}`);
+      try {
+        await page.goto(storyUrl);
 
-        const context = await browser.newContext();
-        const page = await context.newPage();
+        const document = await page.evaluateHandle(() => window.document);
+        const alfaPage = await Playwright.toPage(document);
 
-        try {
-          await page.goto(storyUrl);
+        const alfaResult = await Audit.run(alfaPage, {
+          rules: { include: Rules.wcag21aaFilter },
+        });
 
-          const document = await page.evaluateHandle(() => window.document);
-          const alfaPage = await Playwright.toPage(document);
+        Logging.fromAudit(alfaResult).print();
 
-          const alfaResult = await Audit.run(alfaPage, {
-            rules: { include: Rules.wcag21aaFilter },
-          });
+        const failingRules = alfaResult.resultAggregates.filter(
+          aggregate => aggregate.failed > 0
+        );
 
-          Logging.fromAudit(alfaResult).print();
+        const violations = Logging.fromAudit(alfaResult).toJSON().logs[1].logs;
 
-          const failingRules = alfaResult.resultAggregates.filter(
-            aggregate => aggregate.failed > 0
+        // Save individual report in local development
+        if (!process.env.CI && violations.length > 0) {
+          const individualReportPath = path.join(
+            reportDir,
+            `${storyToTest}-${timestamp}.json`
           );
-
-          const violations =
-            Logging.fromAudit(alfaResult).toJSON().logs[1].logs;
-
-          if (failingRules.size > 0) {
-            console.log(
-              `Found ${violations.length} violations in ${story.title}`
-            );
-
-            const result = {
-              component: story.title,
-              storyId: storyId,
-              url: storyUrl,
-              violations: violations,
-            };
-
-            accessibilityViolations.push(result);
-            allResults.push(result);
-          } else {
-            allResults.push({
-              component: story.title,
-              storyId: storyId,
-              url: storyUrl,
-              violations: [],
-            });
-          }
-        } catch (error) {
-          console.error(`Error testing ${story.title}:`, error);
-          accessibilityViolations.push({
-            component: story.title,
-            storyId: storyId,
-            error: error.message,
-          });
-
-          allResults.push({
+          fs.writeFileSync(individualReportPath, JSON.stringify({
             component: story.title,
             storyId: storyId,
             url: storyUrl,
-            error: error.message,
-          });
-        } finally {
-          await context.close();
+            violations: violations,
+          }, null, 2));
+          console.log(`Saved report for ${story.title} to: ${individualReportPath}`);
         }
+
+        if (failingRules.size > 0) {
+          console.error(`Found ${violations.length} violations in ${story.title}`);
+
+          // Create a detailed error message
+          const violationSummary = violations.map(v =>
+            `- ${v.message || 'Accessibility violation'}`
+          ).join('\n');
+
+          expect(
+            violations.length,
+            `Accessibility violations found in ${story.title}:\n${violationSummary}`
+          ).toBe(0);
+        } else {
+          console.log(`✅ No accessibility violations found in ${story.title}`);
+        }
+
+      } catch (error) {
+        console.error(`Error testing ${story.title}:`, error);
+        throw new Error(`Failed to test ${story.title}: ${error.message}`);
       }
-
-      // Save the full report as JSON only in local development
-      if (!process.env.CI) {
-        fs.writeFileSync(reportFilePath, JSON.stringify(allResults, null, 2));
-        console.log(`Saved detailed JSON report to: ${reportFilePath}`);
-      }
-
-      if (accessibilityViolations.length > 0) {
-        console.error("Accessibility violations found:");
-
-        const totalViolations = accessibilityViolations.reduce(
-          (acc, result) =>
-            acc + (result.violations ? result.violations.length : 0),
-          0
-        );
-
-        console.error(
-          `\nTotal components with issues: ${accessibilityViolations.length}`
-        );
-        console.error(`Total violations: ${totalViolations}`);
-
-        expect(
-          accessibilityViolations.length,
-          `The test found ${accessibilityViolations.length} components with accessibility issues`
-        ).toBe(0);
-      } else {
-        console.log("No accessibility violations found! 🎉");
-      }
-    }
-  );
+    });
+  }
 });

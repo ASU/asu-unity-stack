@@ -30,7 +30,7 @@ for (const config of testUrls) {
 
       await page.waitForSelector('[data-testid="accordion-opener"]');
 
-      const openers = await page.$$('[data-testid="accordion-opener"]');
+      const openers = await page.getByTestId('accordion-opener').all();
       expect(openers.length).toBeGreaterThan(0);
 
       const dataLayerInit = await page.evaluate(() => Array.isArray(window.dataLayer));
