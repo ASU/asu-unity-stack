@@ -153,6 +153,10 @@ Cards - Table of Contents
   flex-grow: 1;
 }
 
+.card:not(:has(.card-header)) .card-body {
+  margin-top: var(--card-child-padding);
+}
+
 .card-link {
   margin-left: var(--card-child-margin);
   margin-right: var(--card-child-margin);
