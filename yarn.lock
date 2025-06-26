@@ -745,7 +745,6 @@ __metadata:
     style-loader: "npm:^3.3.1"
     styled-components: "npm:^5.3.0"
     terser: "npm:^5.31.3"
-    tsx: "npm:^4.19.3"
     typescript: "npm:5.6.2"
     vite: "npm:^5.3.5"
     vite-plugin-static-copy: "npm:^1.0.6"
