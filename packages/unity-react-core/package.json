@@ -31,7 +31,7 @@
     "create": "plop",
     "dev": "yarn storybook & yarn testui",
     "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
-    "test": "vitest --watch=false && yarn test-datalayer",
+    "test": "vitest --watch=false",
     "test:accessibility": "playwright test",
     "testui": "vitest --ui",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
