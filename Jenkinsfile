@@ -266,5 +266,27 @@ spec:
                 }
             }
         }
+        stage('Accessibility testing') {
+            when {
+                branch 'dev'
+            }
+            steps {
+                container('playwright') {
+                  script {
+                    def accessibilityTestResults = sh(
+                        script: 'yarn test:accessibility',
+                        returnStatus: true
+                    )
+                    if (accessibilityTestResults != 0) {
+                        slackSend(
+                            channel: '#prdfam-uds-ci',
+                            color: 'warning',
+                            message: "@uds-developers Accessibility tests failed.: ${env.RUN_DISPLAY_URL} \n Pull Branch and run tests locally to see report"
+                        )
+                    }
+                  }
+                }
+            }
+        }
     }
 }
