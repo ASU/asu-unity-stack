@@ -1,3 +1,10 @@
+# [@asu/app-degree-pages-v3.0.5](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.0.4...@asu/app-degree-pages-v3.0.5) (2025-06-27)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** fix accessibility with options ID listing page ([0833f25](https://github.com/asu/asu-unity-stack/commit/0833f2517131661c5d15b14b7e7e6e047abde4f9))
+
 # [@asu/app-degree-pages-v3.0.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.0.3...@asu/app-degree-pages-v3.0.4) (2025-04-22)
 
 
