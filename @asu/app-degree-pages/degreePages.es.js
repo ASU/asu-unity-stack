@@ -9959,7 +9959,15 @@ const Bm = () => /* @__PURE__ */ d.jsx("div", { className: "container", "data-te
       multiple: n,
       onChange: (p) => s(e, p),
       value: r,
-      children: o == null ? void 0 : o.map((p) => /* @__PURE__ */ d.jsx("option", { id: p.id, value: p.value, children: p.text }, p.id))
+      children: o == null ? void 0 : o.map((p) => /* @__PURE__ */ d.jsx(
+        "option",
+        {
+          id: `${p.value}-${p.id}`,
+          value: p.value,
+          children: p.text
+        },
+        p.id
+      ))
     }
   )
 ] }), Wm = Ye.div`
