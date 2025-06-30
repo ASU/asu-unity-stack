@@ -1,3 +1,13 @@
+# [@asu/unity-bootstrap-theme-v1.26.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.26.0...@asu/unity-bootstrap-theme-v1.26.1) (2025-06-30)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** update line clamp for ranking card ([25506a2](https://github.com/ASU/asu-unity-stack/commit/25506a2dde022c9f23e7c664c285487c05725c2f))
+* **unity-bootstrap-theme:** update ranking card styles ([f6e6ea9](https://github.com/ASU/asu-unity-stack/commit/f6e6ea90160ed8b46fe8e2d4785092e8975e2998))
+* **unity-bootstrap-theme:** update ranking card styles ([1492e29](https://github.com/ASU/asu-unity-stack/commit/1492e295c87344b42482947d002fdb779a39e5c5))
+* **unity-bootstrap-theme:** update ranking card styles ([bbe3272](https://github.com/ASU/asu-unity-stack/commit/bbe32720cec059a2b8d8a52fd05413b942b592a2))
+
 # [@asu/unity-bootstrap-theme-v1.26.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.25.2...@asu/unity-bootstrap-theme-v1.26.0) (2025-06-09)
 
 
