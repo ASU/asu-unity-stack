@@ -1,11 +1,10 @@
 import React from "react";
-
-import { defaultDecorator } from "../../../../../shared/components/Layout";
+import { defaultDecorator } from "@asu/shared";
 
 export default {
   title: "Atoms/Tooltips/Templates",
-  decorators: [ defaultDecorator ],
-  args: {color: "Gray",},
+  decorators: [defaultDecorator],
+  args: { color: "Gray" },
   argTypes: {
     color: {
       name: "Color",
@@ -23,7 +22,7 @@ export default {
   },
 };
 
-export const Tooltips = ({color}) => {
+export const Tooltips = ({ color }) => {
   return (
     <div className={`uds-tooltip-bg-${color}`}>
       <div className="uds-tooltip-container">
@@ -40,8 +39,14 @@ export const Tooltips = ({color}) => {
           </span>
           <span className="uds-tooltip-visually-hidden">Notifications</span>
         </button>
-        <div role="tooltip" className="uds-tooltip-description" id="tooltip-desc-1">
-          <span className="uds-tooltip-heading">Lorem ipsum dolor sit amet</span>
+        <div
+          role="tooltip"
+          className="uds-tooltip-description"
+          id="tooltip-desc-1"
+        >
+          <span className="uds-tooltip-heading">
+            Lorem ipsum dolor sit amet
+          </span>
           Other content
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { FullLayout } from "../../../../shared/components/Layout";
+import { FullLayout } from "@asu/shared";
 import { WebDirectory } from "../WebDirectoryComponent/index";
 
 export default {

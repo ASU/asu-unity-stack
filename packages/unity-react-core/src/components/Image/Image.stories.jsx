@@ -1,14 +1,15 @@
 // @ts-check
-import React from "react";
 
 // @ts-ignore
-import img1 from "../../../../../shared/assets/img/named/img001.jpg";
+import img1 from "@asu/shared";
 // @ts-ignore
-import img2 from "../../../../../shared/assets/img/named/img002.jpg";
+import img2 from "@asu/shared";
 // @ts-ignore
-import img3 from "../../../../../shared/assets/img/named/img003.jpg";
+import img3 from "@asu/shared";
 // @ts-ignore
-import img4 from "../../../../../shared/assets/img/named/img004.jpg";
+import img4 from "@asu/shared";
+import React from "react";
+
 import { Image } from "./Image";
 
 export default {
@@ -69,7 +70,6 @@ const GridTemplate = args => {
       }}
     >
       {[...Array(20)].map((_, idx) => {
-        // eslint-disable-next-line react/no-array-index-key
         return <Image key={idx} {...args} />;
       })}
     </div>

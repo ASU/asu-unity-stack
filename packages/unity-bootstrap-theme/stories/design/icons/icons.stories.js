@@ -1,6 +1,5 @@
 import React from "react";
-
-import { htmlRootDecorator } from "../../../../../shared/components/Layout.js";
+import { htmlRootDecorator } from "@asu/shared";
 export default {
   title: "Design/Icons",
   decorators: [htmlRootDecorator],
@@ -260,7 +259,10 @@ export const contactIcons = () => (
           className="fas icon-large fa-map-marker-alt"
           title="Address Icon"
         ></span>
-        <span className="fas icon-xl fa-map-marker-alt" title="Address Icon"></span>
+        <span
+          className="fas icon-xl fa-map-marker-alt"
+          title="Address Icon"
+        ></span>
         <span
           className="fas icon-xxl fa-map-marker-alt"
           title="Address Icon"
@@ -277,9 +279,15 @@ export const informationalIcons = () => (
         <h4>
           <em>Info Icon</em>
         </h4>
-        <span className="fas icon-small fa-info-circle" title="Info Icon"></span>
+        <span
+          className="fas icon-small fa-info-circle"
+          title="Info Icon"
+        ></span>
         <span className="fas icon-base fa-info-circle" title="Info Icon"></span>
-        <span className="fas icon-large fa-info-circle" title="Info Icon"></span>
+        <span
+          className="fas icon-large fa-info-circle"
+          title="Info Icon"
+        ></span>
         <span className="fas icon-xl fa-info-circle" title="Info Icon"></span>
         <span className="fas icon-xxl fa-info-circle" title="Info Icon"></span>
       </div>
@@ -309,7 +317,10 @@ export const informationalIcons = () => (
           className="fas icon-large fa-file-download"
           title="Download Icon"
         ></span>
-        <span className="fas icon-xl fa-file-download" title="Download Icon"></span>
+        <span
+          className="fas icon-xl fa-file-download"
+          title="Download Icon"
+        ></span>
         <span
           className="fas icon-xxl fa-file-download"
           title="Download Icon"
@@ -351,7 +362,10 @@ export const socialMediaIcons = () => (
               <span title="LinkedIn" className="fab fa-linkedin"></span>
             </a>
             <a className="nav-link" href="#">
-              <span title="Instagram" className="fab fa-instagram-square"></span>
+              <span
+                title="Instagram"
+                className="fab fa-instagram-square"
+              ></span>
             </a>
             <a className="nav-link" href="#">
               <span title="YouTube" className="fab fa-youtube-square"></span>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
+import { gaEventPropTypes, trackGAEvent } from "@asu/shared";
 import { PII_VALUE } from "../../../core/utils/constants";
 import { fetchCountries } from "../../../core/utils/fetchCountries";
 import { useRfiContext } from "../../../core/utils/rfiContext";
@@ -10,7 +10,7 @@ import { RfiSelect } from "../../controls";
 function getCountryOptions(resultsArrayOfObjects) {
   let i = 1;
   // TODO Resolve eslint error when dust settles. Not hurting anything for now.
-  // eslint-disable-next-line no-return-assign
+
   const results = resultsArrayOfObjects.map(co => ({
     key: (i += 1).toString(),
     value: co.countryCodeTwoChar,
@@ -22,7 +22,7 @@ function getCountryOptions(resultsArrayOfObjects) {
 // Component
 
 /**
- * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
+ * @param {{ gaData: import("@asu/shared").GAEventObject}} props
  */
 export const Country = ({ gaData }) => {
   const label = "Country of citizenship";

@@ -1,10 +1,9 @@
 import React from "react";
-
-import { defaultDecorator, htmlRootDecorator } from "../../../../../shared/components/Layout";
+import { defaultDecorator, htmlRootDecorator } from "@asu/shared";
 
 export default {
   title: "Atoms/Sidebar/Templates",
-  decorators: [ defaultDecorator ],
+  decorators: [defaultDecorator],
   parameters: { controls: { disable: true } },
 };
 export const Sidebar = () => (

@@ -2,7 +2,7 @@ import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { ImageBasedCard } from "./ImageBasedCard";
 // @ts-ignore
-import { imageArray } from "@shared/assets";
+import { imageArray } from "@asu/shared";
 
 const meta: Meta<typeof ImageBasedCard> = {
   title: "Components/ImageBasedCard",

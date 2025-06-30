@@ -1,8 +1,8 @@
+import img from "@asu/shared";
 import classNames from "classnames";
 import React from "react";
 
 // @ts-ignore
-import img from "../../../../../shared/assets/img/named/img001.jpg";
 import { RankingCard } from "./RankingCard";
 
 export default {

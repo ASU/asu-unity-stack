@@ -1,8 +1,7 @@
-/* eslint-disable react/no-danger */
 // @ts-check
 import React from "react";
 
-import { sanitizeDangerousMarkup } from "../../../../../shared";
+import { sanitizeDangerousMarkup } from "@asu/shared";
 import { useRfiContext } from "../../core/utils/rfiContext";
 
 // Component

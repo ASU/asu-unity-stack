@@ -1,7 +1,6 @@
-/* eslint-disable import/no-extraneous-dependencies */
+import { trackGAEvent } from "@asu/shared";
 import React from "react";
 
-import { trackGAEvent } from "../../../../../../../shared";
 // @ts-check
 import asuVertLogo from "../../../../../public/assets/img/arizona-state-university-logo-vertical.png";
 import asuHorizLogo from "../../../../../public/assets/img/arizona-state-university-logo.png";
@@ -36,7 +35,7 @@ const Partner = () => {
           height="81"
           decoding="async"
           // @ts-ignore
-          // eslint-disable-next-line
+
           fetchpriority="high"
         />
       </a>
@@ -52,7 +51,7 @@ const Partner = () => {
           height="234"
           decoding="async"
           // @ts-ignore
-          // eslint-disable-next-line
+
           fetchpriority="high"
         />
         <img
@@ -63,7 +62,7 @@ const Partner = () => {
           height="72"
           decoding="async"
           // @ts-ignore
-          // eslint-disable-next-line
+
           fetchpriority="high"
         />
       </a>

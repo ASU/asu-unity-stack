@@ -1,6 +1,6 @@
 // DISABLED@ts-check
 /* eslint-disable no-unused-vars */
-/* eslint-disable react/jsx-props-no-spreading */
+
 import { Field, useField, useFormikContext } from "formik";
 import PropTypes from "prop-types";
 import React, { useEffect } from "react";

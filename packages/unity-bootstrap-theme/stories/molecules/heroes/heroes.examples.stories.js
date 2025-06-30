@@ -1,12 +1,11 @@
 import React from "react";
-
-import { fullLayoutDecorator } from "../../../../../shared/components/Layout.js";
+import { fullLayoutDecorator } from "@asu/shared";
 import stockVideo from "../../atoms/video/stock-video-person-drawing.mp4";
 import cardsImage from "../cards/cards-image.jpg";
 
 export default {
   title: "Molecules/Heroes/Examples",
-  decorators: [ fullLayoutDecorator ],
+  decorators: [fullLayoutDecorator],
   parameters: { controls: { disable: true } },
 };
 
@@ -24,9 +23,7 @@ export const HeroSmallWithButtons = () => (
       fetchpriority="high"
     />
     <h1>
-      <span className="text-white">
-        ASU named prestigious university
-      </span>
+      <span className="text-white">ASU named prestigious university</span>
     </h1>
     <div className="btn-row">
       <a
@@ -77,7 +74,10 @@ export const HeroMediumTwoButtons = () => (
     </h1>
     <div className="content">
       <p className="text-white">
-        ASU is creating a new $25 million collaboration that will fuse state-of-the-art science programs with the leadership and cultural knowledge of Hawaii’s community partners to preserve and restore vitality to Hawaii's coral reefs and the health of its coastlines.
+        ASU is creating a new $25 million collaboration that will fuse
+        state-of-the-art science programs with the leadership and cultural
+        knowledge of Hawaii’s community partners to preserve and restore
+        vitality to Hawaii's coral reefs and the health of its coastlines.
       </p>
     </div>
     <div className="btn-row">
@@ -111,7 +111,6 @@ export const HeroMediumTwoButtons = () => (
   </div>
 );
 
-
 export const HeroLargeWithButtons = () => (
   <div className="uds-hero-lg has-btn-row">
     <div className="hero-overlay"></div>
@@ -130,7 +129,8 @@ export const HeroLargeWithButtons = () => (
     </h1>
     <div className="content">
       <p className="text-white">
-        As the New American University, ASU offers a world-class academic experience designed for the 21st century learner.
+        As the New American University, ASU offers a world-class academic
+        experience designed for the 21st century learner.
       </p>
     </div>
     <div className="btn-row">
@@ -163,7 +163,6 @@ export const HeroLargeWithButtons = () => (
     </div>
   </div>
 );
-
 
 export const HeroVideo = () => (
   <div className="uds-hero-lg uds-video-hero has-btn-row">
@@ -207,8 +206,8 @@ export const HeroVideo = () => (
     </h1>
     <div className="content">
       <p className="text-white">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-        eiusmod incididunt ut labore et dolore magna aliqua eiusmod tempo.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        incididunt ut labore et dolore magna aliqua eiusmod tempo.
       </p>
     </div>
     <div className="btn-row">

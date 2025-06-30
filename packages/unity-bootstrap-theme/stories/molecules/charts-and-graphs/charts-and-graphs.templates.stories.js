@@ -1,15 +1,14 @@
 import React from "react";
-
-import { defaultDecorator } from "../../../../../shared/components/Layout";
+import { defaultDecorator } from "@asu/shared";
 
 export default {
   title: "Molecules/Charts And Graphs/Templates",
-  decorators: [ defaultDecorator ],
+  decorators: [defaultDecorator],
   parameters: {
     initFunc: {
       disable: false,
     },
-    controls: { disable: true }
+    controls: { disable: true },
   },
 };
 

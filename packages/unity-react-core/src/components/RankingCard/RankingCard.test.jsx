@@ -1,9 +1,11 @@
+import { imageAny } from "@asu/shared";
 import { render, fireEvent, cleanup } from "@testing-library/react";
 import React from "react";
 import { expect, describe, it, afterEach, beforeEach } from "vitest";
 
+const img = imageAny();
+
 // @ts-ignore
-import img from "../../../../../shared/assets/img/named/img001.jpg";
 import { RankingCard } from "./RankingCard";
 
 const rankingCardLarge = {

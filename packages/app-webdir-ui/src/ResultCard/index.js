@@ -1,7 +1,7 @@
 import React from "react";
 import { useSearchParams } from "react-router-dom";
 
-import { trackGAEvent } from "../../../../shared";
+import { trackGAEvent } from "@asu/shared";
 import { ResultCardTemplate } from "./index.styles";
 import { resultCardType } from "./models";
 

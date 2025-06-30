@@ -30,6 +30,6 @@ const unityBootstrap = {
   initTabbedPanels,
   initVideo,
   initCardBodies,
-}
+};
 
 export default unityBootstrap;

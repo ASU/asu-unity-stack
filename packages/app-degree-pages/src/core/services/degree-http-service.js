@@ -1,4 +1,3 @@
-/* eslint-disable no-shadow */
 // @ts-check
 
 import { progDetailSectionIds } from "../models";

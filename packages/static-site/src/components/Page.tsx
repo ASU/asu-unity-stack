@@ -11,7 +11,7 @@ export default function Page(props: LayoutProps) {
       <Header />
       <div style={{ paddingTop: "139px" }} />
       <main id="mainContent" style={{ paddingBottom: "96px" }}>
-      <div id="skip-to-content" className="visually-hidden" />
+        <div id="skip-to-content" className="visually-hidden" />
         {props.children}
       </main>
       <Footer />

@@ -1,4 +1,3 @@
-/* eslint-disable no-alert */
 // @ts-check
 import { Card } from "@asu/unity-react-core";
 import React, { useContext } from "react";

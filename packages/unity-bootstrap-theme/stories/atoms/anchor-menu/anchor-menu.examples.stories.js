@@ -1,8 +1,7 @@
 import React from "react";
-
-import { imageName } from "../../../../../shared/assets";
-import { htmlRootDecorator } from "../../../../../shared/components/Layout";
-import {getLoremSentences} from "../../../../../shared/constants/strings";
+import { imageName } from "@asu/shared";
+import { htmlRootDecorator } from "@asu/shared";
+import { getLoremSentences } from "@asu/shared";
 
 export default {
   title: "Atoms/Anchor Menu",
@@ -149,31 +148,31 @@ export const AnchorMenu = () => {
               <p>{getLoremSentences(40, loremOffset++ * 3)}</p>
             </div>
             <div className="py-2">
-              <h2  id="first" >     first    </h2>
+              <h2 id="first"> first </h2>
               <p>First. {getLoremSentences(40, loremOffset++ * 3)}</p>
               <p>First. {getLoremSentences(50, loremOffset++ * 3)}</p>
               <p>First. {getLoremSentences(10, loremOffset++ * 3)}</p>
             </div>
-            <div  className="py-2">
-              <h2  id="second">     second   </h2>
+            <div className="py-2">
+              <h2 id="second"> second </h2>
               <p>Second. {getLoremSentences(20, loremOffset++ * 3)}</p>
               <p>Second. {getLoremSentences(50, loremOffset++ * 3)}</p>
               <p>Second. {getLoremSentences(60, loremOffset++ * 3)}</p>
             </div>
             <div className="py-2">
-              <h2  id="third" >     third     </h2>
+              <h2 id="third"> third </h2>
               <p>Third. {getLoremSentences(20, loremOffset++ * 3)}</p>
               <p>Third. {getLoremSentences(10, loremOffset++ * 3)}</p>
               <p>Third. {getLoremSentences(40, loremOffset++ * 3)}</p>
               <p>Third. {getLoremSentences(10, loremOffset++ * 3)}</p>
             </div>
-            <div  className="py-2">
-              <h2  id="fourth">     fourth   </h2>
+            <div className="py-2">
+              <h2 id="fourth"> fourth </h2>
               <p>Fourth. {getLoremSentences(70, loremOffset++ * 3)}</p>
               <p>Fourth. {getLoremSentences(40, loremOffset++ * 3)}</p>
             </div>
             <div className="py-2">
-              <h2  id="fifth" >     fifth    </h2>
+              <h2 id="fifth"> fifth </h2>
               <p>Fifth. {getLoremSentences(40, loremOffset++ * 3)}</p>
               <p>Fifth. {getLoremSentences(10, loremOffset++ * 3)}</p>
               <p>Fifth. {getLoremSentences(30, loremOffset++ * 3)}</p>

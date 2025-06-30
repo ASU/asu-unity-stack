@@ -66,8 +66,6 @@ MessageAlert.propTypes = {
   message: PropTypes.string.isRequired,
 };
 
-/* eslint-disable react/prop-types */
-
 /**
  * @param {{ message: string }} props
  */
@@ -81,6 +79,5 @@ function ErrorAlert({ message }) {
 function InfoAlert({ message }) {
   return <MessageAlert message={message} type="info" />;
 }
-/* eslint-enable react/prop-types */
 
 export { ErrorAlert, InfoAlert };

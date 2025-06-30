@@ -2,7 +2,7 @@ import { Button, Pagination } from "@asu/unity-react-core";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 
-import { trackGAEvent } from "../../../../shared";
+import { trackGAEvent } from "@asu/shared";
 import Grid from "../grid/grid";
 import { performSearch } from "../helpers/search";
 import { SearchMessage } from "../SearchPage/components/SearchMessage";
@@ -289,7 +289,7 @@ const ASUSearchResultsList = ({
 ASUSearchResultsList.propTypes = {
   term: PropTypes.string,
   type: PropTypes.string,
-  // eslint-disable-next-line react/forbid-prop-types
+
   engine: PropTypes.object,
   seeAllResultsText: PropTypes.string,
   sort: PropTypes.string,
@@ -301,7 +301,7 @@ ASUSearchResultsList.propTypes = {
   setPromotedResult: PropTypes.func,
   hidePaginator: PropTypes.bool,
   registerResults: PropTypes.func,
-  // eslint-disable-next-line react/forbid-prop-types
+
   filters: PropTypes.object,
   loggedIn: PropTypes.bool,
   profilesToFilterOut: PropTypes.string,

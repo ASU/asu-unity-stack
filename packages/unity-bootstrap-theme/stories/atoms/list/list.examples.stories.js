@@ -1,18 +1,17 @@
 import React from "react";
-
-import { defaultDecorator } from "../../../../../shared/components/Layout";
+import { defaultDecorator } from "@asu/shared";
 
 export default {
   title: "Atoms/List/Examples",
-  decorators: [ defaultDecorator ],
+  decorators: [defaultDecorator],
   argTypes: {
     bulletColor: {
       name: "Bullet Color",
       options: ["Default", "Maroon", "Gold"],
       mapping: {
-        "Default": null,
-        "Maroon": "maroon",
-        "Gold": "gold",
+        Default: null,
+        Maroon: "maroon",
+        Gold: "gold",
       },
       control: {
         type: "radio",
@@ -38,7 +37,7 @@ export default {
   },
 };
 
-export const UnorderedListMultiLevel = ({bulletColor, backgroundColor}) => {
+export const UnorderedListMultiLevel = ({ bulletColor, backgroundColor }) => {
   return (
     <ul className={`uds-list ${bulletColor} ${backgroundColor}`}>
       <li>
@@ -100,7 +99,7 @@ export const UnorderedListMultiLevel = ({bulletColor, backgroundColor}) => {
   );
 };
 
-export const OrderedListMultiLevel = ({bulletColor, backgroundColor}) => {
+export const OrderedListMultiLevel = ({ bulletColor, backgroundColor }) => {
   return (
     <ol className={`uds-list ${bulletColor} ${backgroundColor}`}>
       <li>
@@ -162,7 +161,7 @@ export const OrderedListMultiLevel = ({bulletColor, backgroundColor}) => {
   );
 };
 
-export const MixedListMultiLevel = ({bulletColor, backgroundColor}) => {
+export const MixedListMultiLevel = ({ bulletColor, backgroundColor }) => {
   return (
     <ol className={`uds-list ${bulletColor} ${backgroundColor}`}>
       <li>
@@ -224,13 +223,12 @@ export const MixedListMultiLevel = ({bulletColor, backgroundColor}) => {
   );
 };
 
-
-export const Mixed2ListMultiLevel = ({bulletColor, backgroundColor}) => {
+export const Mixed2ListMultiLevel = ({ bulletColor, backgroundColor }) => {
   return (
     <ul className={`uds-list ${bulletColor} ${backgroundColor}`}>
       <li>
         Lorem ipsum dolor sit amet
-        <ul >
+        <ul>
           <li>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -240,7 +238,7 @@ export const Mixed2ListMultiLevel = ({bulletColor, backgroundColor}) => {
                 <ul className="uds-list">
                   <li>
                     Lorem ipsum dolor sit amet
-                    <ul >
+                    <ul>
                       <li>
                         Lorem ipsum dolor sit amet
                         <ol className="uds-list">
@@ -255,10 +253,10 @@ export const Mixed2ListMultiLevel = ({bulletColor, backgroundColor}) => {
                                     <ul className="uds-list">
                                       <li>
                                         Lorem ipsum dolor sit amet
-                                          <ul className="uds-list">
-                                            <li>Lorem ipsum dolor sit amet</li>
-                                            <li>Lorem ipsum dolor sit amet</li>
-                                          </ul>
+                                        <ul className="uds-list">
+                                          <li>Lorem ipsum dolor sit amet</li>
+                                          <li>Lorem ipsum dolor sit amet</li>
+                                        </ul>
                                       </li>
                                       <li>Lorem ipsum dolor sit amet</li>
                                     </ul>

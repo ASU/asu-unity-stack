@@ -1,5 +1,4 @@
 // @ts-nocheck
-/* eslint-disable no-undef, func-names, no-unused-vars, no-plusplus */
 
 /* dataLayer event push to GA. */
 export function pushDataLayerEventToGa(eventValue) {

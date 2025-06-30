@@ -7,16 +7,16 @@
  *
  *
  */
-import classNames from "classnames";
-import PropTypes from "prop-types";
-import React, { useState, useEffect, useRef } from "react";
-
 import {
   debounce,
   queryFirstFocusable,
   throttle,
   useMediaQuery,
-} from "../../../../../shared";
+} from "@asu/shared";
+import classNames from "classnames";
+import PropTypes from "prop-types";
+import React, { useState, useEffect, useRef } from "react";
+
 import { Button } from "../Button/Button";
 import { GaEventWrapper } from "../GaEventWrapper/GaEventWrapper";
 import { useBaseSpecificFramework } from "../GaEventWrapper/useBaseSpecificFramework";
