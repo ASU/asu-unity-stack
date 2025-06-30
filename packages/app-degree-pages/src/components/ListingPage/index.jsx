@@ -1,11 +1,10 @@
 // @ts-check
 import { Hero } from "@asu/unity-react-core";
+import { useFetch, trackReactComponent } from "@asu/shared";
 import PropTypes from "prop-types";
 import React, { useEffect, useState, useContext } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
-import { useFetch } from "../../../../../shared";
-import trackReactComponent from "../../../../../shared/services/componentDatalayer";
 import {
   Loader,
   Main as MainSection,
@@ -249,7 +248,10 @@ const ListingPage = ({
 
   return (
     <>
+
+      {/* @ts-ignore */}
       <ThemeStyle />
+      {/* @ts-ignore */}
       <ListingStyle />
 
       {error && <ErrorAlert message={ERROR_MESSAGE} />}

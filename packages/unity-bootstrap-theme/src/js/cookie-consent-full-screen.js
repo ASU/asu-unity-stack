@@ -131,7 +131,9 @@ function addCookieConsentAccessibility() {
     });
   });
   document.addEventListener("CassieTemplateInitialized", function () {
-    const preBannerDiv = document.querySelector(".cassie-pre-banner.cassie-bottom");
+    const preBannerDiv = document.querySelector(
+      ".cassie-pre-banner.cassie-bottom"
+    );
     const CloseX = document.createElement("button");
     const XIcon = document.createElement("i");
     XIcon.classList.add("fas");

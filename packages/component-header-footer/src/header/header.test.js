@@ -1,4 +1,3 @@
-/* eslint-disable jest/no-mocks-import */
 // @ts-check
 import { render, cleanup, screen, act } from "@testing-library/react";
 import React from "react";

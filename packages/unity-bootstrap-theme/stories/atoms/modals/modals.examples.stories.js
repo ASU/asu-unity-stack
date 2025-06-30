@@ -1,5 +1,4 @@
 import React from "react";
-
 export default {
   title: "Atoms/Modals/Examples",
   parameters: {
@@ -12,12 +11,12 @@ export default {
     footer: {
       forced: true,
     },
-    controls: { disable: true }
+    controls: { disable: true },
   },
 };
 
 export const ModalComponent = () => (
-  <div id="html-root" style={{minHeight: "60vh"}}>
+  <div id="html-root" style={{ minHeight: "60vh" }}>
     <div className="container-fluid">
       <button id="openModalButton" className="btn btn-dark">
         Show modal

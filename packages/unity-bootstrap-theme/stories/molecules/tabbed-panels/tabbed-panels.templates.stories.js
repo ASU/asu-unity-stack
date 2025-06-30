@@ -6,7 +6,7 @@ const extraOptions = {
     control: {
       type: "radio",
       labels: {
-        null: "None",
+        "null": "None",
         "bg-grayscale-7": "bg-grayscale-7",
         "bg-grayscale-6": "bg-grayscale-6",
         "bg-dark": "bg-dark",
@@ -15,13 +15,14 @@ const extraOptions = {
   },
 };
 
-export const TabbedPanels = (args) => {
+export const TabbedPanels = args => {
   return (
     <div className={args.bgColor}>
       <h2>Tabbed panels</h2>
       <nav
-        className={`uds-tabbed-panels uds-content-align ${args.bgColor === "bg-dark" ? "uds-tabbed-panels-dark" : ""
-          }`}
+        className={`uds-tabbed-panels uds-content-align ${
+          args.bgColor === "bg-dark" ? "uds-tabbed-panels-dark" : ""
+        }`}
       >
         <div
           className="nav nav-tabs"
@@ -139,7 +140,10 @@ export const TabbedPanels = (args) => {
           data-ga-region="main content"
           data-ga="left chevron"
         >
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span
+            className="carousel-control-prev-icon"
+            aria-hidden="true"
+          ></span>
           <span className="visually-hidden">Previous</span>
         </a>
         <a
@@ -155,28 +159,33 @@ export const TabbedPanels = (args) => {
           data-ga-region="main content"
           data-ga="right chevron"
         >
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span
+            className="carousel-control-next-icon"
+            aria-hidden="true"
+          ></span>
           <span className="visually-hidden">Next</span>
         </a>
       </nav>
       <div className="tab-content" id="nav-tabContent">
         <div
-          className={`tab-pane fade show active ${args.bgColor === "bg-dark" ? "text-white" : ""
-            }`}
+          className={`tab-pane fade show active ${
+            args.bgColor === "bg-dark" ? "text-white" : ""
+          }`}
           id="nav-home"
           role="tabpanel"
           aria-labelledby="nav-home-tab"
           tabIndex="0"
         >
-          TAB 1. <a href="#">This is an ordinary paragraph</a> that is long enough to wrap to
-          multiple lines so that you can see how spacing looks. At vero eos et
-          accusam et justo duo dolores et ea rebu.
+          TAB 1. <a href="#">This is an ordinary paragraph</a> that is long
+          enough to wrap to multiple lines so that you can see how spacing
+          looks. At vero eos et accusam et justo duo dolores et ea rebu.
           <br />
           Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
         </div>
         <div
-          className={`tab-pane fade ${args.bgColor === "bg-dark" ? "text-white" : ""
-            }`}
+          className={`tab-pane fade ${
+            args.bgColor === "bg-dark" ? "text-white" : ""
+          }`}
           id="nav-profile"
           role="tabpanel"
           aria-labelledby="nav-profile-tab"
@@ -189,8 +198,9 @@ export const TabbedPanels = (args) => {
           Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
         </div>
         <div
-          className={`tab-pane fade ${args.bgColor === "bg-dark" ? "text-white" : ""
-            }`}
+          className={`tab-pane fade ${
+            args.bgColor === "bg-dark" ? "text-white" : ""
+          }`}
           id="nav-contact"
           role="tabpanel"
           aria-labelledby="nav-contact-tab"
@@ -203,8 +213,9 @@ export const TabbedPanels = (args) => {
           Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
         </div>
         <div
-          className={`tab-pane fade ${args.bgColor === "bg-dark" ? "text-white" : ""
-            }`}
+          className={`tab-pane fade ${
+            args.bgColor === "bg-dark" ? "text-white" : ""
+          }`}
           id="nav-another"
           role="tabpanel"
           aria-labelledby="nav-another-tab"
@@ -217,8 +228,9 @@ export const TabbedPanels = (args) => {
           Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
         </div>
         <div
-          className={`tab-pane fade ${args.bgColor === "bg-dark" ? "text-white" : ""
-            }`}
+          className={`tab-pane fade ${
+            args.bgColor === "bg-dark" ? "text-white" : ""
+          }`}
           id="nav-another-2"
           role="tabpanel"
           aria-labelledby="nav-another-2-tab"
@@ -231,8 +243,9 @@ export const TabbedPanels = (args) => {
           Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
         </div>
         <div
-          className={`tab-pane fade ${args.bgColor === "bg-dark" ? "text-white" : ""
-            }`}
+          className={`tab-pane fade ${
+            args.bgColor === "bg-dark" ? "text-white" : ""
+          }`}
           id="nav-another-3"
           role="tabpanel"
           aria-labelledby="nav-another-3-tab"
@@ -247,12 +260,12 @@ export const TabbedPanels = (args) => {
       </div>
     </div>
   );
-}
+};
 
 export default {
   title: "Molecules/Tabbed Panels",
   component: TabbedPanels,
-  argTypes: {...extraOptions},
+  argTypes: { ...extraOptions },
   parameters: {
     initFunc: {
       disable: false,

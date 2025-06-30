@@ -1,6 +1,5 @@
 import React from "react";
 
-// eslint-disable-next-line import/no-unresolved
 import endorsedLogo from "./assets/images/endorsedLogo.png";
 import { ASUFooter } from "./footer";
 
@@ -9,7 +8,6 @@ export default {
   component: ASUFooter,
 };
 
-/* eslint-disable-next-line react/jsx-props-no-spreading */
 const Template = args => <ASUFooter {...args} />;
 
 export const Default = Template.bind({});

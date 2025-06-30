@@ -1,6 +1,5 @@
 import React from "react";
-
-import { htmlRootDecorator, Container, Column } from "../../../../../shared/components/Layout.js";
+import { htmlRootDecorator, Container, Column } from "@asu/shared";
 export default {
   title: "Design/Backgrounds",
   decorators: [htmlRootDecorator],
@@ -31,71 +30,71 @@ export const approvedBackgroundColors = () => (
 
 export const approvedBackgroundPatterns = () => (
   <Container>
-      <Column>
-        <h3>
-          <span className="highlight-black">Approved Background Patterns</span>
-        </h3>
-      </Column>
+    <Column>
+      <h3>
+        <span className="highlight-black">Approved Background Patterns</span>
+      </h3>
+    </Column>
 
-      <Column>
-        <h3>Learn to thrive morse code</h3>
-      </Column>
-      <Column col="6">
-        <div className="background-panel bg morse-code-white mb-3"></div>
-      </Column>
-      <Column col="6">
-        <div className="background-panel bg morse-code-black mb-3"></div>
-      </Column>
+    <Column>
+      <h3>Learn to thrive morse code</h3>
+    </Column>
+    <Column col="6">
+      <div className="background-panel bg morse-code-white mb-3"></div>
+    </Column>
+    <Column col="6">
+      <div className="background-panel bg morse-code-black mb-3"></div>
+    </Column>
 
-      <Column>
-        <h3>Network</h3>
-      </Column>
-      <Column col="6">
-        <div className="background-panel bg network-white mb-3"></div>
-      </Column>
-      <Column col="6">
-        <div className="background-panel bg network-black mb-3"></div>
-      </Column>
+    <Column>
+      <h3>Network</h3>
+    </Column>
+    <Column col="6">
+      <div className="background-panel bg network-white mb-3"></div>
+    </Column>
+    <Column col="6">
+      <div className="background-panel bg network-black mb-3"></div>
+    </Column>
 
-      <Column>
-        <h3>A Mountain topographical map</h3>
-      </Column>
-      <Column col="6">
-        <div className="background-panel bg topo-white mb-3"></div>
-      </Column>
-      <Column col="6">
-        <div className="background-panel bg topo-black mb-3"></div>
-      </Column>
+    <Column>
+      <h3>A Mountain topographical map</h3>
+    </Column>
+    <Column col="6">
+      <div className="background-panel bg topo-white mb-3"></div>
+    </Column>
+    <Column col="6">
+      <div className="background-panel bg topo-black mb-3"></div>
+    </Column>
 
-      <Column>
-        <h3>Semiconductor</h3>
-      </Column>
-      <Column col="6">
-        <div className="background-panel bg semiconductor-light mb-3"></div>
-      </Column>
-      <Column col="6">
-        <div className="background-panel bg semiconductor-dark mb-3"></div>
-      </Column>
+    <Column>
+      <h3>Semiconductor</h3>
+    </Column>
+    <Column col="6">
+      <div className="background-panel bg semiconductor-light mb-3"></div>
+    </Column>
+    <Column col="6">
+      <div className="background-panel bg semiconductor-dark mb-3"></div>
+    </Column>
 
-      <Column>
-        <h3>Plus</h3>
-      </Column>
-      <Column col="6">
-        <div className="background-panel bg plus-light mb-3"></div>
-      </Column>
-      <Column col="6">
-        <div className="background-panel bg plus-dark mb-3"></div>
-      </Column>
+    <Column>
+      <h3>Plus</h3>
+    </Column>
+    <Column col="6">
+      <div className="background-panel bg plus-light mb-3"></div>
+    </Column>
+    <Column col="6">
+      <div className="background-panel bg plus-dark mb-3"></div>
+    </Column>
 
-      <Column>
-        <h3>Arrows</h3>
-      </Column>
-      <Column col="6">
-        <div className="background-panel bg arrows-light mb-3"></div>
-      </Column>
-      <Column col="6">
-        <div className="background-panel bg arrows-dark mb-3"></div>
-      </Column>
+    <Column>
+      <h3>Arrows</h3>
+    </Column>
+    <Column col="6">
+      <div className="background-panel bg arrows-light mb-3"></div>
+    </Column>
+    <Column col="6">
+      <div className="background-panel bg arrows-dark mb-3"></div>
+    </Column>
   </Container>
 );
 

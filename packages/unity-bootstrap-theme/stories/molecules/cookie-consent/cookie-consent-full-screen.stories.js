@@ -11,7 +11,5 @@ export const FullScreenBannerCookieConsent = () => {
     allCookieConsentJS();
   }, []);
 
-  return (
-    <div id="full-screen"></div>
-  );
-}
+  return <div id="full-screen"></div>;
+};

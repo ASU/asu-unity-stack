@@ -85,7 +85,6 @@ describe("#ListingPage", () => {
       await renderListingPage(defaultArgs);
     });
 
-    // eslint-disable-next-line no-return-assign
     afterEach(() => (globalThis.doDelay = false));
 
     it("should define Loading component", async () => {

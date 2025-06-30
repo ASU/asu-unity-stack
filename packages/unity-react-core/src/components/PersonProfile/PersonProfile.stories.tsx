@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { PersonProfile, SocialMediaPlatform } from "./PersonProfile";
-// @ts-ignore
-import img from "@shared/assets/img/named/anon.png";
+import {imageAny} from "@asu/shared";
+
+const img = imageAny();
 
 const meta: Meta<typeof PersonProfile> = {
   title: "Components/PersonProfile",

@@ -13,36 +13,55 @@ const parameters = {
   options: {
     storySort: {
       order: [
-        'Get Started',
-        'Design', ['Readme', '*'],
+        "Get Started",
+        "Design",
+        ["Readme", "*"],
         [
-          'Colors', ['Readme', '*'],
-          'Typography', ['Readme', '*'],
-          'Layout', ['Readme', '*'],
-          'Icons', ['Readme', '*'],
-          'Backgrounds', ['Readme', '*'],
-          'Focus States', ['Readme', '*'],
+          "Colors",
+          ["Readme", "*"],
+          "Typography",
+          ["Readme", "*"],
+          "Layout",
+          ["Readme", "*"],
+          "Icons",
+          ["Readme", "*"],
+          "Backgrounds",
+          ["Readme", "*"],
+          "Focus States",
+          ["Readme", "*"],
         ],
-        'Atoms', ['Readme', '*'],
-        'Molecules', ['Readme', '*'],
-        'Organisms', ['Readme', '*'],
+        "Atoms",
+        ["Readme", "*"],
+        "Molecules",
+        ["Readme", "*"],
+        "Organisms",
+        ["Readme", "*"],
         [
-          'Global Header', ['Readme', '*'],
+          "Global Header",
+          ["Readme", "*"],
           [
-            'Header top', ['Readme', '*'],
-            'Header main', ['Readme', '*'],
-            'Navbar options', ['Readme', '*'],
-            'No navigation', ['Readme', '*'],
-            'Additional considerations', ['Readme', '*'],
-            'Mobile Breakpoint', ['Readme', '*'],
+            "Header top",
+            ["Readme", "*"],
+            "Header main",
+            ["Readme", "*"],
+            "Navbar options",
+            ["Readme", "*"],
+            "No navigation",
+            ["Readme", "*"],
+            "Additional considerations",
+            ["Readme", "*"],
+            "Mobile Breakpoint",
+            ["Readme", "*"],
           ],
-          'Content Sections', ['Readme', '*'],
-          'Hero', ['Readme', '*'],
+          "Content Sections",
+          ["Readme", "*"],
+          "Hero",
+          ["Readme", "*"],
         ],
       ],
     },
   },
-  layout: 'fullscreen',
+  layout: "fullscreen",
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
     matchers: {
@@ -57,14 +76,14 @@ const parameters = {
     },
     root: "#html-root", // can be customized to wrap an element
     removeComments: /^\s*\s*$/,
-    transform: (code) => removeFontAwesomeChanges(code)
+    transform: code => removeFontAwesomeChanges(code),
   },
 };
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
   parameters,
-    decorators: [windowLoadEvent],
+  decorators: [windowLoadEvent],
 };
 
 export default preview;

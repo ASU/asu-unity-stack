@@ -1,9 +1,8 @@
-/* eslint-disable react/jsx-props-no-spreading */
 // @ts-check
+import img from "@asu/shared";
 import React from "react";
 
 // @ts-ignore
-import img from "../../../../../shared/assets/img/named/img006.jpg";
 import { Testimonial } from "./Testimonial";
 
 export default {
@@ -51,14 +50,14 @@ const itemColorCombinations = {
   Gold: ["accent-gold"],
   Maroon: ["accent-maroon"],
   Gold_White_Text: ["text-white", "accent-gold"],
-  // eslint-disable-next-line quote-props
+
   None: null,
 };
 
 const itemTitleColorCombinations = {
   "Highlight gold": ["highlight-gold"],
   "Highlight black": ["highlight-black"],
-  // eslint-disable-next-line quote-props
+
   "None": null,
 };
 
@@ -68,7 +67,6 @@ const itemQuoteColorCombinations = {
   None: null,
 };
 
-// eslint-disable-next-line react/prop-types, react/jsx-props-no-spreading
 const Template = args => <Testimonial {...args} />;
 
 export const Default = Template.bind({});

@@ -13,13 +13,16 @@ const packages: Record<string, { default: PackageJson }> = import.meta.glob(
 );
 
 export const DeprecatedPackageCards = () => {
-
   const cards: CardWrapperProps[] = [];
 
   for (const key in packages) {
     const p = packages[key].default;
     const deprecated = p.deprecated ? p.deprecated : false;
-    if (p.private !== true && deprecated !== false && typeof deprecated === "string") {
+    if (
+      p.private !== true &&
+      deprecated !== false &&
+      typeof deprecated === "string"
+    ) {
       cards.push({
         title: p.name,
         description: deprecated,
@@ -40,7 +43,6 @@ export const DeprecatedPackageCards = () => {
 };
 
 const PackageCards = () => {
-
   const cards: CardWrapperProps[] = [];
 
   for (const key in packages) {

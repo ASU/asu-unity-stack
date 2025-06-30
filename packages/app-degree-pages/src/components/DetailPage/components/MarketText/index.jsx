@@ -1,11 +1,8 @@
 // @ts-check
+import { sanitizeDangerousMarkup, spreadClasses } from "@asu/shared";
 import PropTypes from "prop-types";
 import React from "react";
 
-import {
-  sanitizeDangerousMarkup,
-  spreadClasses,
-} from "../../../../../../../shared";
 import { contentPropShape } from "../../../../core/models/app-prop-types";
 
 /**
@@ -24,7 +21,6 @@ function MarketText({ contents = [] }) {
         <div
           key={`content-${index + 1}`}
           className={`mt-3 ${spreadClasses(content.cssClass)}`}
-          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={sanitizeDangerousMarkup(content.text)}
         />
       ))}

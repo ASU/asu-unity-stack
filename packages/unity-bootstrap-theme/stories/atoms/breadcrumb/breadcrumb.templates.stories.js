@@ -1,10 +1,9 @@
 import React from "react";
-
-import { defaultDecorator } from "../../../../../shared/components/Layout";
+import { defaultDecorator } from "@asu/shared";
 
 export default {
   title: "Atoms/Breadcrumbs/Templates",
-  args: {type: "bg-white"},
+  args: { type: "bg-white" },
   argTypes: {
     type: {
       name: "Type",
@@ -14,10 +13,10 @@ export default {
       },
     },
   },
-  decorators: [ defaultDecorator ],
+  decorators: [defaultDecorator],
 };
 
-export const BreadcrumbsAgainstWhiteBackground = ({type}) => {
+export const BreadcrumbsAgainstWhiteBackground = ({ type }) => {
   return (
     <nav aria-label="breadcrumbs">
       <ol className={`breadcrumb ${type}`}>

@@ -1,8 +1,11 @@
-import { ASUHeader, NavTreeProps, HeaderProps } from "@asu/component-header-footer";
+import {
+  ASUHeader,
+  NavTreeProps,
+  HeaderProps,
+} from "@asu/component-header-footer";
 import desktopLogo from "../images/arizona-state-university-logo-vertical.png";
 import mobileLogo from "../images/arizona-state-university-logo.png";
 import useGetNavBar from "../hooks/useGetNavBar";
-
 
 function Navbar() {
   const navBar: NavTreeProps[] = useGetNavBar();

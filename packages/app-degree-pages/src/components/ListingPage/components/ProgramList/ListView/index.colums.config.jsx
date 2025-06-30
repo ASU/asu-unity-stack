@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 // @ts-check
+import { idGenerator } from "@asu/shared";
 import React from "react";
 
-import { idGenerator } from "../../../../../../../../shared";
 import {
   ChevronIconButton,
   InfoButtonIcon,
@@ -20,7 +20,6 @@ import {
 import { toTitleCase } from "../../../../../core/utils";
 /** @typedef {import("../../../../../core/types/grid-column-types").GridColumn}  GridColumn */
 
-/* eslint-disable react/prop-types, no-alert, no-console */
 /** @type {GridColumn []} */
 const columns = [
   {
@@ -216,6 +215,5 @@ const columns = [
   //   ),
   // },
 ];
-/* eslint-enable react/prop-types, no-alert, no-console */
 
 export { columns };

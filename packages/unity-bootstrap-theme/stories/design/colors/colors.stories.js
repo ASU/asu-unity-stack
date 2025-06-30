@@ -1,6 +1,5 @@
 import React from "react";
-
-import { htmlRootDecorator } from "../../../../../shared/components/Layout.js";
+import { htmlRootDecorator } from "@asu/shared";
 export default {
   title: "Design/Colors",
   decorators: [htmlRootDecorator],

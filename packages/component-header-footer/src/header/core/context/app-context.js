@@ -8,7 +8,6 @@ const breakpoints = { Lg: "992px", Xl: "1260px" };
 const AppContext = createContext();
 
 const AppContextProvider = ({ initialValue, children }) => {
-  // eslint-disable-next-line react/jsx-no-constructed-context-values
   const value = {
     ...initialValue,
     breakpoint: breakpoints[initialValue.breakpoint],

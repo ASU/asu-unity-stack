@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
+import { gaEventPropTypes, trackGAEvent } from "@asu/shared";
 import { KEY } from "../../../core/utils/constants";
 import { useRfiContext } from "../../../core/utils/rfiContext";
 import { RfiSelect } from "../../controls";
@@ -36,7 +36,7 @@ const getGenericTermOptions = () => {
 };
 
 /**
- * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
+ * @param {{ gaData: import("@asu/shared").GAEventObject}} props
  */
 export const EntryTerm = ({ gaData }) => {
   const label = "When do you anticipate starting at ASU?";

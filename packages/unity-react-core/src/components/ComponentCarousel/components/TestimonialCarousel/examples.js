@@ -1,7 +1,7 @@
 // @ts-check
 
 // @ts-ignore
-import { imageName } from "../../../../../../../shared/assets";
+import { imageName } from "@asu/shared";
 
 /**
  * @typedef {import('./TestimonialCarousel').TestimonialItem} TestimonialItem

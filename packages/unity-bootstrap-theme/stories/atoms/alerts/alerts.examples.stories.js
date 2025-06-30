@@ -1,10 +1,9 @@
 import React from "react";
-
-import { defaultDecorator } from "../../../../../shared/components/Layout";
+import { defaultDecorator } from "@asu/shared";
 
 export default {
   title: "Atoms/Alerts/Examples",
-  decorators: [ defaultDecorator ],
+  decorators: [defaultDecorator],
   parameters: { controls: { disable: true } },
 };
 export const AlertsComponent = () => (
@@ -96,7 +95,10 @@ export const AlertsComponent = () => (
 
     <div className="alert alert-danger" role="alert">
       <div className="alert-icon">
-        <span title="Error" className="fa fa-icon fa-exclamation-triangle"></span>
+        <span
+          title="Error"
+          className="fa fa-icon fa-exclamation-triangle"
+        ></span>
       </div>
       <div className="alert-content">
         Error (red): This is a danger alert used specifically for errors. It is

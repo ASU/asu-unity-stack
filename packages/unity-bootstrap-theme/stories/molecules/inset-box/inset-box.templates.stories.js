@@ -1,10 +1,9 @@
 import React from "react";
-
-import { defaultDecorator } from "../../../../../shared/components/Layout";
+import { defaultDecorator } from "@asu/shared";
 
 export default {
   title: "Molecules/Content Sections/Inset Box/Templates",
-  decorators: [ defaultDecorator ],
+  decorators: [defaultDecorator],
   argTypes: {
     background: {
       name: "Background",

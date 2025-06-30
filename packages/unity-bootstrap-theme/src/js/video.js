@@ -55,9 +55,8 @@ function initVideo() {
   $videoBtnPlay?.addEventListener(EVENT_CLICK, handleBtnPlayClick);
   $videoOverlay?.addEventListener(EVENT_CLICK, handleOverlayClick);
   $videoPlayer?.addEventListener(EVENT_ENDED, handleVideoEnded);
+}
 
-};
-
-EventHandler.on(window, 'load.uds.video', initVideo);
+EventHandler.on(window, "load.uds.video", initVideo);
 
 export { initVideo };

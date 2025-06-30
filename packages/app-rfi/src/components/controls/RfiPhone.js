@@ -1,6 +1,6 @@
 // @ts-check
 /* eslint-disable no-unused-vars */
-/* eslint-disable react/jsx-props-no-spreading */
+
 import { Field, useFormikContext } from "formik";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
@@ -43,7 +43,7 @@ const RfiPhone = ({
               disableCountryGuess={disableCountryGuess}
               inputProps={{
                 name,
-                // eslint-disable-next-line object-shorthand
+
                 required: required,
               }}
               {...field}

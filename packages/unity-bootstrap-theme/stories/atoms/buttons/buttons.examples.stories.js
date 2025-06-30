@@ -1,6 +1,5 @@
 import React from "react";
 
-
 export default {
   title: "Atoms/Buttons/Examples",
   parameters: { controls: { disable: true } },
@@ -48,12 +47,15 @@ export const ButtonColorsComponent = () => (
     </button>
     <hr />
     <form className="uds-form">
-      <input className="btn-maroon btn btn-primary" type="submit" value="Send message"></input>
+      <input
+        className="btn-maroon btn btn-primary"
+        type="submit"
+        value="Send message"
+      ></input>
     </form>
     <hr />
   </div>
 );
-
 
 const sizesDemoStyle = {
   display: "inline-grid",
@@ -403,53 +405,52 @@ const demoButtonStyle = {
   paddingTop: "10px",
 };
 
-const TestButtons =
-  () =>
-    <div>
-      <div style={demoButtonStyle}>
-        <button type="button" className="btn btn-gold">
-          Gold
-        </button>
-      </div>
-      <div style={demoButtonStyle}>
-        <button type="button" className="btn btn-maroon">
-          Maroon
-        </button>
-      </div>
-      <div style={demoButtonStyle}>
-        <button type="button" className="btn btn-link">
-          Link
-        </button>
-      </div>
-      <div style={demoButtonStyle}>
-        <button type="button" className="btn btn-light">
-          Light
-        </button>
-      </div>
-      <div style={demoButtonStyle}>
-        <button type="button" className="btn btn-dark">
-          Dark
-        </button>
-      </div>
-      <div style={demoButtonStyle}>
-        <button type="button" className="btn btn-success">
-          Alert: Success
-        </button>
-      </div>
-      <div style={demoButtonStyle}>
-        <button type="button" className="btn btn-danger">
-          Alert: Danger
-        </button>
-      </div>
-      <div style={demoButtonStyle}>
-        <button type="button" className="btn btn-warning">
-          Alert: Warning
-        </button>
-      </div>
-      <div style={demoButtonStyle}>
-        <button type="button" className="btn btn-info">
-          Alert: Info
-        </button>
-      </div>
+const TestButtons = () => (
+  <div>
+    <div style={demoButtonStyle}>
+      <button type="button" className="btn btn-gold">
+        Gold
+      </button>
     </div>
-  ;
+    <div style={demoButtonStyle}>
+      <button type="button" className="btn btn-maroon">
+        Maroon
+      </button>
+    </div>
+    <div style={demoButtonStyle}>
+      <button type="button" className="btn btn-link">
+        Link
+      </button>
+    </div>
+    <div style={demoButtonStyle}>
+      <button type="button" className="btn btn-light">
+        Light
+      </button>
+    </div>
+    <div style={demoButtonStyle}>
+      <button type="button" className="btn btn-dark">
+        Dark
+      </button>
+    </div>
+    <div style={demoButtonStyle}>
+      <button type="button" className="btn btn-success">
+        Alert: Success
+      </button>
+    </div>
+    <div style={demoButtonStyle}>
+      <button type="button" className="btn btn-danger">
+        Alert: Danger
+      </button>
+    </div>
+    <div style={demoButtonStyle}>
+      <button type="button" className="btn btn-warning">
+        Alert: Warning
+      </button>
+    </div>
+    <div style={demoButtonStyle}>
+      <button type="button" className="btn btn-info">
+        Alert: Info
+      </button>
+    </div>
+  </div>
+);

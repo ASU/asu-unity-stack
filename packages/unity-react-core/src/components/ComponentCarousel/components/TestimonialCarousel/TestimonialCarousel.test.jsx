@@ -1,10 +1,8 @@
-/* eslint-disable react/jsx-props-no-spreading */
 // @ts-check
 import { render, cleanup, fireEvent } from "@testing-library/react";
 import React from "react";
 import { expect, describe, it, afterEach, beforeEach } from "vitest";
 
-// eslint-disable-next-line jest/no-mocks-import
 import { testimonialCarouselProps } from "../../../../../__mocks__/data/props-mock";
 import { TestimonialCarousel } from "./TestimonialCarousel";
 

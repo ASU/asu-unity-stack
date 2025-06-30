@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 
-import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
+import { gaEventPropTypes, trackGAEvent } from "@asu/shared";
 import { CAMPUS_OPTIONS_DEFAULT, KEY } from "../../../core/utils/constants";
 import { useRfiContext } from "../../../core/utils/rfiContext";
 import { RfiSelect } from "../../controls";
 
 /**
- * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
+ * @param {{ gaData: import("@asu/shared").GAEventObject}} props
  */
-// eslint-disable-next-line react/prop-types
+
 export const Campus = ({ gaData, autoFocus }) => {
   const label = "Which applies to you?";
   const name = "Campus";

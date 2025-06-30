@@ -1,6 +1,5 @@
 import React from "react";
-
-import { htmlRootDecorator } from "../../../../../shared/components/Layout.js";
+import { htmlRootDecorator } from "@asu/shared";
 export default {
   title: "Design/Typography",
   decorators: [htmlRootDecorator],
@@ -175,7 +174,9 @@ export const ComponentASUHeadingsWhite = () => (
     <div className="row">
       <div className="col col-sm-12 p-3">
         <h1>Heading 1</h1>
-        <h1 className="article">Heading 1 - Long Headlines and Article Titles</h1>
+        <h1 className="article">
+          Heading 1 - Long Headlines and Article Titles
+        </h1>
         <h2>Heading 2</h2>
         <h3>Heading 3</h3>
         <h4>Heading 4</h4>
@@ -190,7 +191,9 @@ export const ComponentASUHeadingsGrayscale7 = () => (
     <div className="row">
       <div className="col col-sm-12 p-3">
         <h1>Heading 1</h1>
-        <h1 className="article">Heading 1 - Long Headlines and Article Titles</h1>
+        <h1 className="article">
+          Heading 1 - Long Headlines and Article Titles
+        </h1>
         <h2>Heading 2</h2>
         <h3>Heading 3</h3>
         <h4>Heading 4</h4>
@@ -205,7 +208,9 @@ export const ComponentASUHeadingsGrayscale6 = () => (
     <div className="row">
       <div className="col col-sm-12 p-3">
         <h1>Heading 1</h1>
-        <h1 className="article">Heading 1 - Long Headlines and Article Titles</h1>
+        <h1 className="article">
+          Heading 1 - Long Headlines and Article Titles
+        </h1>
         <h2>Heading 2</h2>
         <h3>Heading 3</h3>
         <h4>Heading 4</h4>
@@ -220,7 +225,9 @@ export const ComponentASUHeadingsGrayscale1 = () => (
     <div className="row">
       <div className="col col-sm-12 p-3">
         <h1>Heading 1</h1>
-        <h1 className="article">Heading 1 - Long Headlines and Article Titles</h1>
+        <h1 className="article">
+          Heading 1 - Long Headlines and Article Titles
+        </h1>
         <h2>Heading 2</h2>
         <h3>Heading 3</h3>
         <h4>Heading 4</h4>

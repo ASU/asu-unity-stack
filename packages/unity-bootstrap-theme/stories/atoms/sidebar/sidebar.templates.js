@@ -1,6 +1,5 @@
 import React from "react";
-
-export const SidebarComponent = () =>
+export const SidebarComponent = () => (
   <>
     <h2>Lorem ipsum</h2>
     <div
@@ -188,5 +187,5 @@ export const SidebarComponent = () =>
         </a>
       </div>
     </nav>
-  </>;
-
+  </>
+);

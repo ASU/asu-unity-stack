@@ -1,11 +1,9 @@
 import React from "react";
-
-import { imageName } from "../../../../../../shared/assets";
-import { defaultDecorator } from "../../../../../../shared/components/Layout";
+import { imageName, defaultDecorator } from "@asu/shared";
 
 export default {
   title: "Molecules/Content Sections/Image And Text Block/Templates",
-  decorators: [ defaultDecorator ],
+  decorators: [defaultDecorator],
   argTypes: {
     right: {
       name: "Right",
@@ -15,7 +13,7 @@ export default {
       name: "Background Color",
       options: ["None", "grayscale-7-bg", "grayscale-6-bg", "grayscale-1-bg"],
       mapping: {
-        "None": null,
+        None: null,
       },
       control: {
         type: "radio",
@@ -33,16 +31,18 @@ export default {
   },
 };
 
-const ContentBlock = () => <p>
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
-ab illo inventore veritatis et quasi architecto beatae vitae dicta
-sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
-qui ratione voluptatem sequi nesciunt. Neque porro quisquam est.
-</p>;
+const ContentBlock = () => (
+  <p>
+    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+    doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+    veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+    ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+    consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
+    porro quisquam est.
+  </p>
+);
 
-export const ImageLeftOrRight = ({right, bgColor, extraContent}) =>
+export const ImageLeftOrRight = ({ right, bgColor, extraContent }) => (
   <div
     className={`uds-image-text-block-container ${
       right ? "uds-image-text-block-container-right" : ""
@@ -50,7 +50,7 @@ export const ImageLeftOrRight = ({right, bgColor, extraContent}) =>
   >
     <div className="uds-image-text-block-image-container">
       <img
-        src={ imageName.cardsImage }
+        src={imageName.cardsImage}
         className="img-fluid"
         alt="Random image. REPLACE with appropriate alt text for accessibility."
         width="1200"
@@ -63,31 +63,27 @@ export const ImageLeftOrRight = ({right, bgColor, extraContent}) =>
     <div className={`uds-image-text-block-text-container ${bgColor}`}>
       <h3>This is a heading</h3>
       <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h4>
-      <ContentBlock/>
-      {
-        extraContent && <>
-        <ContentBlock/>
-        <ContentBlock/>
+      <ContentBlock />
+      {extraContent && (
+        <>
+          <ContentBlock />
+          <ContentBlock />
         </>
-      }
+      )}
       <div className="uds-buttons py-1">
         <a
           href="#"
-          className={`btn ${
-            bgColor === "grayscale-1-bg" ? "btn-gold" : "btn-dark"
-          }`}
+          className={`btn ${bgColor === "grayscale-1-bg" ? "btn-gold" : "btn-dark"}`}
         >
           Button link here
         </a>
         <a
           href="#"
-          className={`btn ${
-            bgColor === "grayscale-1-bg" ? "btn-gold" : "btn-dark"
-          }`}
+          className={`btn ${bgColor === "grayscale-1-bg" ? "btn-gold" : "btn-dark"}`}
         >
           Button link here
         </a>
       </div>
     </div>
   </div>
-;
+);

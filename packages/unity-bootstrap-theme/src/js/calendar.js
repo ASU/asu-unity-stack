@@ -2,29 +2,29 @@ import { EventHandler } from "./bootstrap-helper";
 
 function initCalendar() {
   const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
   const desktopDaysOfWeek = [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
   ];
-  const mobileDaysOfWeek = ['Su', 'M', 'Tu', 'W', 'Th', 'F', 'Sa'];
+  const mobileDaysOfWeek = ["Su", "M", "Tu", "W", "Th", "F", "Sa"];
   const gridsize = 42;
 
   const state = {
@@ -47,7 +47,7 @@ function initCalendar() {
         state.month - 1,
         prevMonthDate
       ).toLocaleString();
-      dates.push({ key: key, date: prevMonthDate, monthClass: 'prev' });
+      dates.push({ key: key, date: prevMonthDate, monthClass: "prev" });
     }
 
     // Days of the current month to show in the grid
@@ -61,11 +61,11 @@ function initCalendar() {
         dates.push({
           key: key,
           date: i,
-          monthClass: 'current',
-          todayClass: 'today',
+          monthClass: "current",
+          todayClass: "today",
         });
       } else {
-        dates.push({ key: key, date: i, monthClass: 'current' });
+        dates.push({ key: key, date: i, monthClass: "current" });
       }
     }
 
@@ -74,7 +74,7 @@ function initCalendar() {
       const count = gridsize - dates.length;
       for (let i = 1; i <= count; i++) {
         const key = new Date(state.year, state.month + 1, i).toLocaleString();
-        dates.push({ key: key, date: i, monthClass: 'next' });
+        dates.push({ key: key, date: i, monthClass: "next" });
       }
     }
 
@@ -82,11 +82,11 @@ function initCalendar() {
   };
 
   const render = () => {
-    const calendarContainer = document.getElementById('calendar');
+    const calendarContainer = document.getElementById("calendar");
 
-  if (!calendarContainer) {
-    return;
-  }
+    if (!calendarContainer) {
+      return;
+    }
 
     calendarContainer.innerHTML = `
       <h2><span class="highlight-black">${months[state.month]} ${
@@ -94,15 +94,15 @@ function initCalendar() {
     }</span></h2>
       <div class="calendar-grid">
         <div class="heading desktop">
-          ${desktopDaysOfWeek.map((day) => `<p>${day}</p>`).join('')}
+          ${desktopDaysOfWeek.map(day => `<p>${day}</p>`).join("")}
         </div>
         <div class="heading mobile">
-          ${mobileDaysOfWeek.map((day) => `<p>${day}</p>`).join('')}
+          ${mobileDaysOfWeek.map(day => `<p>${day}</p>`).join("")}
         </div>
         <div class="body">
           ${datesForGrid(state.year, state.month)
             .map(
-              (date) =>
+              date =>
                 `<h3 id="${date.key}" class="calendar-item ${
                   date.monthClass
                 }" ${
@@ -110,14 +110,14 @@ function initCalendar() {
                     ? `aria-label="${date.todayClass[0].toUpperCase()}${date.todayClass.slice(
                         1
                       )}"`
-                    : ''
+                    : ""
                 }>
-                  <span class="${date.todayClass ? date.todayClass : ''}">${
+                  <span class="${date.todayClass ? date.todayClass : ""}">${
                   date.date
                 }</span>
                 </h3>`
             )
-            .join('')}
+            .join("")}
         </div>
       </div>
       <div class="calendar-nav">
@@ -151,7 +151,7 @@ function initCalendar() {
   `;
   };
 
-  const showCalendar = (monthIndicator) => {
+  const showCalendar = monthIndicator => {
     var date = new Date(state.year, state.month + monthIndicator);
     state.year = date.getFullYear();
     state.month = date.getMonth();
@@ -159,8 +159,8 @@ function initCalendar() {
   };
 
   showCalendar(0);
-};
+}
 
-EventHandler.on(window, 'load.uds.calendar', initCalendar);
+EventHandler.on(window, "load.uds.calendar", initCalendar);
 
-export { initCalendar }
+export { initCalendar };

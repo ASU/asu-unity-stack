@@ -1,14 +1,13 @@
-/* eslint-disable jest/no-mocks-import */
 // @ts-check
+import { trackGAEvent } from "@asu/shared";
 import { render, fireEvent, cleanup } from "@testing-library/react";
 import React from "react";
 
 import { NavbarContainer, BUTTON_ERROR_MESSAGE } from ".";
 
-import { trackGAEvent } from "../../../../../../../shared";
 import { AppContextProvider } from "../../../core/context/app-context";
 
-jest.mock("../../../../../../../shared", () => ({
+jest.mock("@asu/shared", () => ({
   idGenerator: jest.fn().mockImplementation(function* () {
     yield "test-id";
   }),
