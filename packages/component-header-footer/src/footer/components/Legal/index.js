@@ -55,18 +55,6 @@ const Legal = () => {
               </a>
               <a
                 className="nav-link"
-                href={LEGAL_URLS.PRIVACY}
-                onFocus={() =>
-                  trackGAEvent({
-                    ...DEFAULT_GA_EVENT,
-                    text: "privacy",
-                  })
-                }
-              >
-                Privacy
-              </a>
-              <a
-                className="nav-link"
                 href={LEGAL_URLS.TERMS_OF_USE}
                 onFocus={() =>
                   trackGAEvent({
@@ -89,6 +77,24 @@ const Legal = () => {
               >
                 Emergency
               </a>
+              <a
+                className="nav-link"
+                href={LEGAL_URLS.PRIVACY}
+                onFocus={() =>
+                  trackGAEvent({
+                    ...DEFAULT_GA_EVENT,
+                    text: "privacy",
+                  })
+                }
+              >
+                Privacy
+              </a>
+              <button
+                id="manualConsentoptout"
+                className="nav-link text-gray-5 text-align-right"
+              >
+                Manage my privacy settings
+              </button>
             </nav>
           </div>
         </div>
