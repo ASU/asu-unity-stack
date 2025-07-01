@@ -111,15 +111,6 @@ export const GlobalElementsOnly = () => (
               </a>
               <a
                 className="nav-link"
-                href="https://www.asu.edu/about/privacy"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="tertiary footer"
-                data-ga-footer="privacy"
-              >
-                Privacy
-              </a>
-              <a
-                className="nav-link"
                 href="https://www.asu.edu/about/terms-of-use"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -136,7 +127,21 @@ export const GlobalElementsOnly = () => (
               >
                 Emergency
               </a>
-
+              <a
+                className="nav-link"
+                href="https://www.asu.edu/about/privacy"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="tertiary footer"
+                data-ga-footer="privacy"
+              >
+                Privacy
+              </a>
+              <button
+                id="manualConsentoptout"
+                className="nav-link text-gray-5 text-align-right"
+              >
+                Manage my privacy settings
+              </button>
             </nav>
           </div>
         </div>
@@ -342,15 +347,6 @@ export const ZeroColumns = () => (
               </a>
               <a
                 className="nav-link"
-                href="https://www.asu.edu/about/privacy"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="tertiary footer"
-                data-ga-footer="privacy"
-              >
-                Privacy
-              </a>
-              <a
-                className="nav-link"
                 href="https://www.asu.edu/about/terms-of-use"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -367,7 +363,21 @@ export const ZeroColumns = () => (
               >
                 Emergency
               </a>
-
+              <a
+                className="nav-link"
+                href="https://www.asu.edu/about/privacy"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="tertiary footer"
+                data-ga-footer="privacy"
+              >
+                Privacy
+              </a>
+              <button
+                id="manualConsentoptout"
+                className="nav-link text-gray-5 text-align-right"
+              >
+                Manage my privacy settings
+              </button>
             </nav>
           </div>
         </div>
@@ -593,15 +603,6 @@ export const OneColumn = () => (
               </a>
               <a
                 className="nav-link"
-                href="https://www.asu.edu/about/privacy"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="tertiary footer"
-                data-ga-footer="privacy"
-              >
-                Privacy
-              </a>
-              <a
-                className="nav-link"
                 href="https://www.asu.edu/about/terms-of-use"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -618,7 +619,21 @@ export const OneColumn = () => (
               >
                 Emergency
               </a>
-
+              <a
+                className="nav-link"
+                href="https://www.asu.edu/about/privacy"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="tertiary footer"
+                data-ga-footer="privacy"
+              >
+                Privacy
+              </a>
+              <button
+                id="manualConsentoptout"
+                className="nav-link text-gray-5 text-align-right"
+              >
+                Manage my privacy settings
+              </button>
             </nav>
           </div>
         </div>
@@ -755,15 +770,6 @@ export const OneColumnNoLogoOrSocial = () => (
               </a>
               <a
                 className="nav-link"
-                href="https://www.asu.edu/about/privacy"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="tertiary footer"
-                data-ga-footer="privacy"
-              >
-                Privacy
-              </a>
-              <a
-                className="nav-link"
                 href="https://www.asu.edu/about/terms-of-use"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -780,7 +786,21 @@ export const OneColumnNoLogoOrSocial = () => (
               >
                 Emergency
               </a>
-
+              <a
+                className="nav-link"
+                href="https://www.asu.edu/about/privacy"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="tertiary footer"
+                data-ga-footer="privacy"
+              >
+                Privacy
+              </a>
+              <button
+                id="manualConsentoptout"
+                className="nav-link text-gray-5 text-align-right"
+              >
+                Manage my privacy settings
+              </button>
             </nav>
           </div>
         </div>
@@ -1051,15 +1071,6 @@ export const TwoColumns = () => (
               </a>
               <a
                 className="nav-link"
-                href="https://www.asu.edu/about/privacy"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="tertiary footer"
-                data-ga-footer="privacy"
-              >
-                Privacy
-              </a>
-              <a
-                className="nav-link"
                 href="https://www.asu.edu/about/terms-of-use"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -1076,7 +1087,21 @@ export const TwoColumns = () => (
               >
                 Emergency
               </a>
-
+              <a
+                className="nav-link"
+                href="https://www.asu.edu/about/privacy"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="tertiary footer"
+                data-ga-footer="privacy"
+              >
+                Privacy
+              </a>
+              <button
+                id="manualConsentoptout"
+                className="nav-link text-gray-5 text-align-right"
+              >
+                Manage my privacy settings
+              </button>
             </nav>
           </div>
         </div>
@@ -1395,15 +1420,6 @@ export const ThreeColumns = () => (
               </a>
               <a
                 className="nav-link"
-                href="https://www.asu.edu/about/privacy"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="tertiary footer"
-                data-ga-footer="privacy"
-              >
-                Privacy
-              </a>
-              <a
-                className="nav-link"
                 href="https://www.asu.edu/about/terms-of-use"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -1420,7 +1436,21 @@ export const ThreeColumns = () => (
               >
                 Emergency
               </a>
-
+              <a
+                className="nav-link"
+                href="https://www.asu.edu/about/privacy"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="tertiary footer"
+                data-ga-footer="privacy"
+              >
+                Privacy
+              </a>
+              <button
+                id="manualConsentoptout"
+                className="nav-link text-gray-5 text-align-right"
+              >
+                Manage my privacy settings
+              </button>
             </nav>
           </div>
         </div>
@@ -1787,15 +1817,6 @@ export const FourColumns = () => (
               </a>
               <a
                 className="nav-link"
-                href="https://www.asu.edu/about/privacy"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="tertiary footer"
-                data-ga-footer="privacy"
-              >
-                Privacy
-              </a>
-              <a
-                className="nav-link"
                 href="https://www.asu.edu/about/terms-of-use"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -1812,7 +1833,21 @@ export const FourColumns = () => (
               >
                 Emergency
               </a>
-
+              <a
+                className="nav-link"
+                href="https://www.asu.edu/about/privacy"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="tertiary footer"
+                data-ga-footer="privacy"
+              >
+                Privacy
+              </a>
+              <button
+                id="manualConsentoptout"
+                className="nav-link text-gray-5 text-align-right"
+              >
+                Manage my privacy settings
+              </button>
             </nav>
           </div>
         </div>
@@ -2227,15 +2262,6 @@ export const FiveColumns = () => (
               </a>
               <a
                 className="nav-link"
-                href="https://www.asu.edu/about/privacy"
-                data-ga-footer-type="internal link"
-                data-ga-footer-section="tertiary footer"
-                data-ga-footer="privacy"
-              >
-                Privacy
-              </a>
-              <a
-                className="nav-link"
                 href="https://www.asu.edu/about/terms-of-use"
                 data-ga-footer-type="internal link"
                 data-ga-footer-section="tertiary footer"
@@ -2252,7 +2278,21 @@ export const FiveColumns = () => (
               >
                 Emergency
               </a>
-
+              <a
+                className="nav-link"
+                href="https://www.asu.edu/about/privacy"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="tertiary footer"
+                data-ga-footer="privacy"
+              >
+                Privacy
+              </a>
+              <button
+                id="manualConsentoptout"
+                className="nav-link text-gray-5 text-align-right"
+              >
+                Manage my privacy settings
+              </button>
             </nav>
           </div>
         </div>
@@ -2710,15 +2750,6 @@ export const SixColumns = () => (
                 </a>
                 <a
                   className="nav-link"
-                  href="https://www.asu.edu/about/privacy"
-                  data-ga-footer-type="internal link"
-                  data-ga-footer-section="tertiary footer"
-                  data-ga-footer="privacy"
-                >
-                  Privacy
-                </a>
-                <a
-                  className="nav-link"
                   href="https://www.asu.edu/about/terms-of-use"
                   data-ga-footer-type="internal link"
                   data-ga-footer-section="tertiary footer"
@@ -2735,6 +2766,21 @@ export const SixColumns = () => (
                 >
                   Emergency
                 </a>
+                <a
+                  className="nav-link"
+                  href="https://www.asu.edu/about/privacy"
+                  data-ga-footer-type="internal link"
+                  data-ga-footer-section="tertiary footer"
+                  data-ga-footer="privacy"
+                >
+                  Privacy
+                </a>
+                <button
+                  id="manualConsentoptout"
+                  className="nav-link text-gray-5 text-align-right"
+                >
+                  Manage my privacy settings
+                </button>
               </nav>
             </div>
           </div>
