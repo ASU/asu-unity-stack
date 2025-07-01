@@ -90,6 +90,7 @@ const Legal = () => {
                 Privacy
               </a>
               <button
+                type="button"
                 id="manualConsentoptout"
                 className="nav-link text-gray-5 text-align-right"
               >
