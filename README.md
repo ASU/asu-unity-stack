@@ -9,7 +9,6 @@
   - [If you want to clone the entire repository and work on the packages:](#if-you-want-to-clone-the-entire-repository-and-work-on-the-packages)
     - [TROUBLESHOOTING ERRORS](#troubleshooting-errors)
   - [Packages in this repository](#packages-in-this-repository)
-  - [Cookie Consent](#cookie-consent)
   - [Deprecated packages](#deprecated-packages)
   - [Package Multi Output Targets](#package-multi-output-targets)
   - [Advanced Details for Unity Developers and Contributors](#advanced-details-for-unity-developers-and-contributors)
@@ -118,17 +117,12 @@ This repository contains multiple packages which are managed and published using
 3. [app-rfi](./packages/app-rfi/README.md)
 4. [app-webdir-ui](./packages/app-webdir-ui/README.md)
 5. [component-carousel](./packages/component-carousel/README.md)(deprecated)
-6. [component-cookie-consent](./packages/component-cookie-consent/README.md)
-7. [component-events](./packages/component-events/README.md)
-8. [component-footer](./packages/component-footer/README.md)
-9. [component-header](./packages/component-header/README.md) - standalone header component that doesn't require the ```unity-bootstrap-theme``` styles
-10. [component-news](./packages/component-news/README.md)
-11. [components-core](./packages/components-core/README.md)
-12. [unity-react-core](./packages/unity-react-core/README.md) *Now includes the component carousel package*
-
-## Cookie Consent
-
-The CSS for the cookie consent banner can be found in [unity-bootstrap-theme](./packages/unity-bootstrap-theme/src/css/cookie-consent.css). The JavaScript for the cookie consent banner can be found in [unity-bootstrap-theme as well in the JS location](./packages/unity-bootstrap-theme/src/js/cookie-consent.js). The Javascript can be placed in a script tag or included in a bundle. The CSS can be included in a bundle or included in a style tag.
+6. [component-events](./packages/component-events/README.md)
+7. [component-footer](./packages/component-footer/README.md)
+8. [component-header](./packages/component-header/README.md) - standalone header component that doesn't require the ```unity-bootstrap-theme``` styles
+9. [component-news](./packages/component-news/README.md)
+10. [components-core](./packages/components-core/README.md)
+11. [unity-react-core](./packages/unity-react-core/README.md) *Now includes the component carousel package*
 
 ## Deprecated packages
 
@@ -137,12 +131,11 @@ Previously deprecated packages were located inside the `packages-disabled` folde
 1. [bootstrap4-theme](https://github.com/ASU/asu-unity-stack/tree/86368e5c656108169fe27cbc405e43c2cebae968/packages-disabled/bootstrap4-theme)
 2. [design-tokens](https://github.com/ASU/asu-unity-stack/tree/86368e5c656108169fe27cbc405e43c2cebae968/packages-disabled/design-tokens)
 3.  [components-library](https://github.com/ASU/asu-unity-stack/tree/86368e5c656108169fe27cbc405e43c2cebae968/packages-disabled/components-library)
-4.  [cookie-consent](https://github.com/ASU/asu-unity-stack/tree/86368e5c656108169fe27cbc405e43c2cebae968/packages-disabled/cookie-consent)
-5.  [app-asu-client-es6-example](https://github.com/ASU/asu-unity-stack/tree/86368e5c656108169fe27cbc405e43c2cebae968/packages-disabled/app-asu-client-es6-example)
-6.  [app-new-template](https://github.com/ASU/asu-unity-stack/tree/86368e5c656108169fe27cbc405e43c2cebae968/packages-disabled/app-new-template)
-7.  [component-forms](https://github.com/ASU/asu-unity-stack/tree/86368e5c656108169fe27cbc405e43c2cebae968/packages-disabled/component-forms)
-8.  [maps](https://github.com/ASU/asu-unity-stack/tree/86368e5c656108169fe27cbc405e43c2cebae968/packages-disabled/maps)
-9.  [component-carousel](https://github.com/ASU/asu-unity-stack/blob/b5cc906aa26148208a0458355b9bf6d2f6bec149/packages/component-carousel/package.json)
+4.  [app-asu-client-es6-example](https://github.com/ASU/asu-unity-stack/tree/86368e5c656108169fe27cbc405e43c2cebae968/packages-disabled/app-asu-client-es6-example)
+5.  [app-new-template](https://github.com/ASU/asu-unity-stack/tree/86368e5c656108169fe27cbc405e43c2cebae968/packages-disabled/app-new-template)
+6.  [component-forms](https://github.com/ASU/asu-unity-stack/tree/86368e5c656108169fe27cbc405e43c2cebae968/packages-disabled/component-forms)
+7.  [maps](https://github.com/ASU/asu-unity-stack/tree/86368e5c656108169fe27cbc405e43c2cebae968/packages-disabled/maps)
+8.  [component-carousel](https://github.com/ASU/asu-unity-stack/blob/b5cc906aa26148208a0458355b9bf6d2f6bec149/packages/component-carousel/package.json)
 
 
 ## Package Multi Output Targets

@@ -38,7 +38,11 @@ const SelectFormGroup = ({
       value={selected}
     >
       {options?.map(option => (
-        <option key={option.id} id={`${option.value}-${option.id}`} value={option.value}>
+        <option
+          key={option.id}
+          id={`${option.value}-${option.id}`}
+          value={option.value}
+        >
           {option.text}
         </option>
       ))}

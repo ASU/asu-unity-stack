@@ -28,8 +28,8 @@ const HeaderGuide = () => {
             >
               @asu/component-header-footer
             </a>{" "}
-            package. This version of the header does not bundle Cookie Consent
-            or Google Tag Manager. Site developers using this header should read
+            package. This version of the header does not bundle Google Tag Manager.
+            Site developers using this header should read
             the{" "}
             <Link to={PagePaths.DATALAYERGUIDE}>GTM and Data Layer guide </Link>
           </p>
@@ -46,12 +46,11 @@ const HeaderGuide = () => {
               @asu/component-header-footer
             </a>{" "}
             package and should also implement the Google Tag Manager code.
-            Modules and plugins should provide configurability so that Cookie
-            Consent can be disabled for sites that are not public-facing, and
-            configurability so GTM can be disabled and so multiple Google Tag
-            Manager IDs may be used. Additional GTM IDs should be additive and
-            not overwrite the ASU Universal GTM ID. Header modules and plugins
-            are to be shipped with their respective CMS platform distributions.
+            Modules and plugins should provide configurability so that GTM
+            can be disabled and so multiple Google Tag Manager IDs may be used.
+            Additional GTM IDs should be additive and not overwrite the
+            ASU Universal GTM ID. Header modules and plugins are to be
+            shipped with their respective CMS platform distributions.
           </p>
 
           <h3>Unity Bootstrap Theme header</h3>
@@ -62,8 +61,8 @@ const HeaderGuide = () => {
               @asu/unity-bootstrap-theme
             </a>{" "}
             package is a plain HTML and CSS Web Standards 2 header
-            implementation built without embedded components for Cookie Consent
-            and Google Tag Manager. Site developers should add Google Tag
+            implementation built without Google Tag Manager.
+            Site developers should add Google Tag
             Manager code snippets to their sites. See{" "}
             <Link to={PagePaths.DATALAYERGUIDE}>GTM info</Link>
           </p>

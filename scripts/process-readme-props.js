@@ -11,7 +11,6 @@ const packages = [
   "component-header",
   "component-news",
   "components-core",
-  "component-cookie-consent",
 ];
 
 const processFile = docPath => {
