@@ -43,7 +43,7 @@ const Legal = () => {
               </a>
               <a
                 className="nav-link"
-                href={`${LEGAL_URLS.ACCESSIBILITY_REPORT}?a11yref=${getURL()}`}
+                href={`${LEGAL_URLS.ACCESSIBILITY_REPORT}#a11yref=${getURL()}`}
                 onFocus={() =>
                   trackGAEvent({
                     ...DEFAULT_GA_EVENT,
