@@ -19,3 +19,4 @@ export * from "./numbers";
 export * from "./script-utils";
 export * from "./timers";
 export * from "./deep-cloner";
+export * from "./scroll-helper";
