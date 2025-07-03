@@ -350,3 +350,24 @@ footer {
     @include nav-to-grid;
   }
 }
+
+/*------------------------------------------------------------------
+8. Footer Colophon - Cookie Consent
+--------------------------------------------------------------------*/
+.footer-legal-links,
+.footer-menu,
+.nav {
+  &.colophon #manualConsentoptout, #manualConsentoptout {
+    color: $uds-color-base-gray-5;
+    border: none;
+    background-color: transparent;
+    width: auto;
+    cursor: pointer;
+    padding: 0;
+    text-align: right;
+    justify-self: end;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
