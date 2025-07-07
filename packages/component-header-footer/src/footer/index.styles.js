@@ -110,8 +110,9 @@ const StyledFooter = styled.footer`
     --endorsed-logo-display: block;
     --endorsed-logo-padding-top: 12px;
     --endorsed-logo-padding-bottom: 12px;
-    --endorsed-logo-img-max-height: 100%;
+    --endorsed-logo-img-max-height: 6rem;
     --endorsed-logo-img-width: 100%;
+    --endorsed-logo-img-max-width: 320px;
     padding-top: var(--endorsed-logo-padding-top);
     padding-bottom: var(--endorsed-logo-padding-bottom);
     display: var(--endorsed-logo-display);
@@ -119,6 +120,7 @@ const StyledFooter = styled.footer`
 
     img {
       width: var(--endorsed-logo-img-width);
+      max-width: var(--endorsed-logo-img-max-width);
       height: auto;
       max-height: var(--endorsed-logo-img-max-height);
       transform: scale(1.13);
