@@ -1,3 +1,11 @@
+# [@asu/components-core-v4.3.1](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v4.3.0...@asu/components-core-v4.3.1) (2025-07-07)
+
+
+### Bug Fixes
+
+* **components-core:** added tabindex and focus css for accordion wrapper ([b6b3046](https://github.com/ASU/asu-unity-stack/commit/b6b304691f5f11fde1e4e14304e4909ffb0cae03))
+* **components-core:** removed tabIndex 0 from Accordion ([2dd45e2](https://github.com/ASU/asu-unity-stack/commit/2dd45e2b919a8010bb4d1da56ec4c1749bbe240a))
+
 # [@asu/components-core-v4.3.0](https://github.com/ASU/asu-unity-stack/compare/@asu/components-core-v4.2.0...@asu/components-core-v4.3.0) (2025-02-18)
 
 
