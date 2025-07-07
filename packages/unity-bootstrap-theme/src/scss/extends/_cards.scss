@@ -553,7 +553,8 @@ Cards - Table of Contents
       margin: 0;
 
       a, button {
-        padding: 1rem var(--card-child-padding);
+        margin: .4rem .3rem;
+        padding: .6rem .7rem;
         color: $uds-color-base-gray-7;
         text-decoration: none;
         display: flex;
@@ -691,6 +692,7 @@ Cards - Table of Contents
 7. Accordion
 --------------------------------------------------------------------*/
 .accordion {
+
   .accordion-item {
     border-bottom: 1px solid $uds-color-base-gray-3;
     border-top: 1px solid $uds-color-base-gray-3;
