@@ -1,3 +1,11 @@
+# [@asu/unity-bootstrap-theme-v1.26.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.26.1...@asu/unity-bootstrap-theme-v1.26.2) (2025-07-07)
+
+
+### Bug Fixes
+
+* **components-core:** added tabindex and focus css for accordion wrapper ([b6b3046](https://github.com/ASU/asu-unity-stack/commit/b6b304691f5f11fde1e4e14304e4909ffb0cae03))
+* **unity-bootstrap-theme:** split padding value to margin and padding ([a55da8a](https://github.com/ASU/asu-unity-stack/commit/a55da8a5157d3a6e6e4be1aeda89ed443c749270))
+
 # [@asu/unity-bootstrap-theme-v1.26.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.26.0...@asu/unity-bootstrap-theme-v1.26.1) (2025-06-30)
 
 
