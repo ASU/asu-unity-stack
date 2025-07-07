@@ -1,6 +1,8 @@
-import img from "@asu/shared";
+import { imageAny } from "@asu/shared";
 import classNames from "classnames";
 import React from "react";
+
+const img = imageAny();
 
 // @ts-ignore
 import { RankingCard } from "./RankingCard";

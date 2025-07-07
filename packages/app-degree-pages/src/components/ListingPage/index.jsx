@@ -248,7 +248,6 @@ const ListingPage = ({
 
   return (
     <>
-
       {/* @ts-ignore */}
       <ThemeStyle />
       {/* @ts-ignore */}
