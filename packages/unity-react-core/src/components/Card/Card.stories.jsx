@@ -1,7 +1,7 @@
-/* eslint react/jsx-props-no-spreading: "off" */
-import img1 from "@asu/shared";
+import { imageAny } from "@asu/shared";
 import classNames from "classnames";
 import React from "react";
+const img1 = imageAny(); // Placeholder for an example image
 
 // @ts-ignore
 import { Card } from "./Card";

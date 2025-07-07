@@ -1,6 +1,8 @@
 // @ts-check
-import img from "@asu/shared";
+import { imageAny } from "@asu/shared";
 import React from "react";
+
+const img = imageAny();
 
 // @ts-ignore
 import { Testimonial } from "./Testimonial";

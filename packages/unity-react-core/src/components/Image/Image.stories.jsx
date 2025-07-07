@@ -1,14 +1,12 @@
 // @ts-check
 
-// @ts-ignore
-import img1 from "@asu/shared";
-// @ts-ignore
-import img2 from "@asu/shared";
-// @ts-ignore
-import img3 from "@asu/shared";
-// @ts-ignore
-import img4 from "@asu/shared";
+import { imageAny } from "@asu/shared";
 import React from "react";
+
+const img1 = imageAny(); // Placeholder for an example image
+const img2 = imageAny(); // Placeholder for an example image
+const img3 = imageAny(); // Placeholder for an example image
+const img4 = imageAny(); // Placeholder for an example image
 
 import { Image } from "./Image";
 
