@@ -44,4 +44,4 @@ export const imageName = {
   poly1: poly1.default,
   requestFormInformation: requestFormInformation.default,
   ws2DefaultImagev01Final: ws2DefaultImagev01Final.default,
-}
+};

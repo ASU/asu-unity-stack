@@ -70,7 +70,7 @@ export const loremStrings = [
   `Suspendisse potenti.`,
   `Duis dictum ac elit at elementum.`,
   `In sit amet hendrerit lacus.`,
-]
+];
 
 /**
  * @param {number} [length] Number of Sentences
@@ -81,5 +81,8 @@ export const getLoremSentences = (length = 1, offset = 0) => {
   if (length < 1) {
     return loremStrings[(0 + offset) % loremStrings.length];
   }
-  return Array.from({ length }, (_, i) => loremStrings[(i + offset) % loremStrings.length]).join(' ');
-}
+  return Array.from(
+    { length },
+    (_, i) => loremStrings[(i + offset) % loremStrings.length]
+  ).join(" ");
+};
