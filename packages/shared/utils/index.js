@@ -1,16 +1,3 @@
-// import { spreadClasses } from "./css-utils";
-// import { sanitizeDangerousMarkup } from "./html-utils";
-// import { idGenerator } from "./id-generator";
-// import { getCurrentScriptPath } from "./script-utils";
-
-// export {
-//   sanitizeDangerousMarkup,
-//   spreadClasses,
-//   idGenerator,
-//   getCurrentScriptPath,
-// };
-
-
 export * from "./conditionals";
 export * from "./css-utils";
 export * from "./html-utils";

@@ -13,12 +13,12 @@ function trackReactComponent({
   packageName = "",
   component = "",
   type = "",
-  configuration = {}
+  configuration = {},
 }) {
   if (!packageName || !component) {
-      console.error("trackReactComponent: Missing required arguments.");
-      return;
-  };
+    console.error("trackReactComponent: Missing required arguments.");
+    return;
+  }
 
   /*
   Initialize or retrieve the global object to store component data.
@@ -37,10 +37,10 @@ function trackReactComponent({
 
   // Store component data in the global object using the provided componentName.
   window.uds.package[packageName] = {
-      component: component,
-      type: type,
-      configuration: configuration
+    component: component,
+    type: type,
+    configuration: configuration,
   };
- };
+}
 
-export {trackReactComponent};
+export { trackReactComponent };

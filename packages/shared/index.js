@@ -7,6 +7,4 @@ export * from "./components/Layout";
 export * from "./services/componentDatalayer";
 export * from "./assets/img/list";
 export * from "./assets/img/named";
-export * from "./assets"
-
-
+export * from "./assets";
