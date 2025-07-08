@@ -146,6 +146,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@asu/app-webdir-ui@workspace:packages/app-webdir-ui"
   dependencies:
+    "@asu/shared": "npm:*"
     "@asu/unity-react-core": "npm:^1.0.0"
     "@babel/core": "npm:^7.13.14"
     "@babel/plugin-syntax-jsx": "npm:^7.14.5"
