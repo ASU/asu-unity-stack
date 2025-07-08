@@ -146,6 +146,8 @@ const fileName = `${componentName}-${OLD_DATE}.html`;
 const filePath = path.join(__dirname, fileName);
 
 fs.writeFileSync(filePath, html, 'utf8');}
-const args = process.argv.slice(2);
-console.log(args)
+const args = process.argv.slice(0);
+if (args[2]) {
+  convertToHTML(args[2]);
+}
 export {convertToHTML}

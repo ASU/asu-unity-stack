@@ -1,4 +1,4 @@
-const { execSync } = require("child_process");
+const { execSync, spawnSync } = require("child_process");
 const { fstat } = require("fs");
 const fs = require('fs');
 // import {convertToHTML} from "./check-changes";
@@ -21,8 +21,9 @@ const printTitle = (text = "") => {
 // Process files
 //=====================================================
 
-const args = process.argv.slice(2);
-const daysAgo = args[1];
+const args = process.argv.slice(1);
+const daysAgo = args [2];
+console.log(daysAgo);
 
 const runGit = function (command) {
   let commitHash = null;
@@ -60,12 +61,17 @@ const gitCheckout = `git worktree add scripts/temp ${commitHash}`;
 const runCheckout = runGit(gitCheckout);
 
 const targetDir = "scripts/temp/packages/unity-react-core/scripts";
+const dir = "scripts/temp/packages/unity-react-core"
 const srcDir = "packages/unity-react-core/scripts/check-changes.tsx"
 fs.copyFileSync(srcDir, targetDir+"/check-changes.tsx")
-process.chdir(targetDir);
-execSync(`npx tsx check-changes.tsx ${OLD_DATE_HTML}`);
+process.chdir(dir);
+//execSync(`npx tsx check-changes.tsx ${OLD_DATE_HTML}`);
 console.log(process.cwd());
-
+const output = spawnSync("npx", ["tsx", "scripts/check-changes.tsx", OLD_DATE_HTML], {
+  stdio: "inherit"
+});
+console.log(`Output: ${JSON.stringify(output)}`);
+execSync(`git worktree remove --force /Users/etloaner/Desktop/ASU/asu-unity-stack/scripts/temp`);
 
 //convertToHTML(OLD_DATE_HTML);
 
