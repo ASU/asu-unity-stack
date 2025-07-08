@@ -473,6 +473,10 @@ __metadata:
 "@asu/shared@npm:*, @asu/shared@workspace:packages/shared":
   version: 0.0.0-use.local
   resolution: "@asu/shared@workspace:packages/shared"
+  dependencies:
+    "@types/prop-types": "npm:^15"
+    classnames: "npm:^2.3.1"
+    prop-types: "npm:^15.7.2"
   languageName: unknown
   linkType: soft
 
@@ -9326,6 +9330,13 @@ __metadata:
   version: 15.7.14
   resolution: "@types/prop-types@npm:15.7.14"
   checksum: 10c0/1ec775160bfab90b67a782d735952158c7e702ca4502968aa82565bd8e452c2de8601c8dfe349733073c31179116cf7340710160d3836aa8a1ef76d1532893b1
+  languageName: node
+  linkType: hard
+
+"@types/prop-types@npm:^15":
+  version: 15.7.15
+  resolution: "@types/prop-types@npm:15.7.15"
+  checksum: 10c0/b59aad1ad19bf1733cf524fd4e618196c6c7690f48ee70a327eb450a42aab8e8a063fbe59ca0a5701aebe2d92d582292c0fb845ea57474f6a15f6994b0e260b2
   languageName: node
   linkType: hard
 

@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 /**
  * @template E
  * @typedef {{
- *    data: E
+ *    data: E | null
  *    loading: boolean
  *    error: object
  * }} FetchResponse
@@ -25,9 +25,9 @@ import { useState, useEffect } from "react";
  * @returns {[FetchResponse<T>, FetchCallback]}
  */
 const useFetch = () => {
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
   const [url, setUrl] = useState("");
 
   useEffect(() => {
