@@ -2,13 +2,13 @@
   & {
     padding-left: 0;
   }
-  &.bg-gray-7 {
+  &.bg-grayscale-1 {
     a {
       color: $uds-color-base-gold;
     }
     li.active {
       &, a {
-        color: $uds-color-base-gray-1;
+        color: $uds-color-base-grayscale-7;
       }
     }
   }

@@ -25,8 +25,8 @@
   a {
     display: flex;
     @include like-an-h4;
-    border: 1px solid $uds-color-base-gray-3;
-    color: $uds-color-base-gray-7;
+    border: 1px solid $uds-color-base-grayscale-5;
+    color: $uds-color-base-grayscale-1;
     background-color: $uds-color-base-white;
     padding: $uds-size-spacing-3;
     text-decoration: none;
@@ -42,12 +42,12 @@
 
   &.text-gold a {
     color: $uds-color-base-gold;
-    background-color: $uds-color-base-gray-7;
+    background-color: $uds-color-base-grayscale-1;
   }
 
   &.text-white a {
     color: $uds-color-base-white;
-    background-color: $uds-color-base-gray-7;
+    background-color: $uds-color-base-grayscale-1;
   }
 }
 

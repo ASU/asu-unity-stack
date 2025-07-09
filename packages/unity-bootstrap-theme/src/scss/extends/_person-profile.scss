@@ -30,8 +30,8 @@ Desktop styles
   max-width: var(--max-width);
 
   &.fill {
-    background-color: $uds-color-base-gray-1;
-    border: 1px solid $uds-color-base-gray-3;
+    background-color: $uds-color-base-grayscale-7;
+    border: 1px solid $uds-color-base-grayscale-5;
     padding: 32px;
   }
   .profile-img-container {
@@ -97,7 +97,7 @@ Desktop styles
         }
       }
       &.person-social-medias a {
-        color: $uds-color-base-gray-7;
+        color: $uds-color-base-grayscale-1;
         font-size: 1.75rem;
       }
     }

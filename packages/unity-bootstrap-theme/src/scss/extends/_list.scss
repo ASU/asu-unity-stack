@@ -123,19 +123,19 @@ ol.uds-list {
 
     margin-left: 0rem;
     margin-bottom: 0rem;
-    background-color: $uds-color-base-gray-7;
-    color: $uds-color-base-gray-2;
+    background-color: $uds-color-base-grayscale-1;
+    color: $uds-color-base-grayscale-6;
     // Default white list bullets (for dark mode)
     li {
-      --li-before-color: #{$uds-color-base-gray-2};
+      --li-before-color: #{$uds-color-base-grayscale-6};
     }
     // Gold list bullets (for dark mode)
     &.gold li {
       --li-before-color: #{$uds-color-base-gold};
     }
     &.uds-steplist li:before {
-      --li-before-background-color: #{$uds-color-base-gray-2};
-      --li-before-color: #{$uds-color-base-gray-7};
+      --li-before-background-color: #{$uds-color-base-grayscale-6};
+      --li-before-color: #{$uds-color-base-grayscale-1};
     }
   }
 
@@ -145,7 +145,7 @@ ol.uds-list {
 
     margin-left: 0rem;
     margin-bottom: 0rem;
-    background-color: $uds-color-base-gray-2;
+    background-color: $uds-color-base-grayscale-6;
   }
 
   // Light smoke mode.
@@ -154,7 +154,7 @@ ol.uds-list {
 
     margin-left: 0rem; // Reused token
     margin-bottom: 0rem; // Reused token
-    background-color: $uds-color-base-gray-1; // Magic background color.
+    background-color: $uds-color-base-grayscale-7; // Magic background color.
   }
 }
 
@@ -213,7 +213,7 @@ ol.uds-list,
       padding-bottom: 2rem;
       padding-left: $uds-size-spacing-6;
       margin-bottom: 3rem;
-      border-bottom: 1px solid $uds-color-base-gray-4;
+      border-bottom: 1px solid $uds-color-base-grayscale-4;
       font-weight: bold;
 
       span {
@@ -224,9 +224,9 @@ ol.uds-list,
       }
 
       &:before {
-        --li-before-background-color: #{$uds-color-base-gray-7};
+        --li-before-background-color: #{$uds-color-base-grayscale-1};
         --li-before-content: counter(listcounter); // Remove space because it messes with centering.
-        --li-before-color: #{$uds-color-base-gray-1};
+        --li-before-color: #{$uds-color-base-grayscale-7};
         --li-before-font-size: 1.25rem;
         border-radius: 50rem;
         padding: 0.4rem 0.8rem;
@@ -241,7 +241,7 @@ ol.uds-list,
 
     &.uds-steplist-gold li:before {
       --li-before-background-color: #{$uds-color-base-gold};
-      --li-before-color: #{$uds-color-base-gray-7};
+      --li-before-color: #{$uds-color-base-grayscale-1};
     }
 
     &.uds-steplist-maroon li:before {

@@ -15,7 +15,7 @@ Footer - Table of Contents
 --------------------------------------------------------------------*/
 
 @mixin footer-links {
-  color: $uds-color-base-gray-2;
+  color: $uds-color-base-grayscale-6;
   line-height: $uds-size-spacing-3;
   text-decoration: none;
 
@@ -66,7 +66,7 @@ footer {
 
 #wrapper-endorsed-footer {
   a {
-    color: $uds-color-base-gray-2;
+    color: $uds-color-base-grayscale-6;
   }
 }
 
@@ -79,16 +79,16 @@ footer {
   a {
     margin-right: $uds-size-spacing-3;
     text-decoration: none;
-    color: $uds-color-base-gray-7;
+    color: $uds-color-base-grayscale-1;
   }
 }
 
 #wrapper-footer-colophon {
-  background-color: $uds-color-base-gray-2;
+  background-color: $uds-color-base-grayscale-6;
   a {
     margin-right: $uds-size-spacing-3;
     text-decoration: none;
-    color: $uds-color-base-gray-7;
+    color: $uds-color-base-grayscale-1;
   }
 }
 
@@ -138,7 +138,7 @@ footer {
 
     .nav-link {
       font-size: $uds-size-icon-base;
-      color: $uds-color-base-gray-4;
+      color: $uds-color-base-grayscale-4;
       line-height: 1;
       padding-top: 7px; // Magic number. Reducing the padding by 1px to make the height = 48px.
 
@@ -208,7 +208,7 @@ footer {
       padding-left: 0;
 
       a, button {
-        color: $uds-color-base-gray-2;
+        color: $uds-color-base-grayscale-6;
         padding: $uds-size-spacing-3 0;
         text-decoration: none;
 
