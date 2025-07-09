@@ -2,35 +2,36 @@
 // Reference: https://hub.asu.edu/brand-hq/brand-standards/color-palette
 
 $white: $uds-color-base-white;
-$gray-1: $uds-color-base-gray-1;
-$gray-2: $uds-color-base-gray-2;
-$gray-3: $uds-color-base-gray-3;
-$gray-4: $uds-color-base-gray-4;
-$gray-5: $uds-color-base-gray-5;
-$gray-6: $uds-color-base-gray-6;
-$gray-7: $uds-color-base-gray-7;
+$grayscale-7: $uds-color-base-grayscale-7;
+$grayscale-6: $uds-color-base-grayscale-6;
+$grayscale-5: $uds-color-base-grayscale-5;
+$grayscale-4: $uds-color-base-grayscale-4;
+$grayscale-3: $uds-color-base-grayscale-3;
+$grayscale-2: $uds-color-base-grayscale-2;
+$grayscale-1: $uds-color-base-grayscale-1;
 
-$body-color: $uds-color-base-gray-7;
+$body-color: $uds-color-base-grayscale-1;
 
 $grays: ();
 
+// Deprecated aliases for grays (incorrect reversed order)
 $grays: map-merge(
   (
-    '1': $gray-1,
-    '2': $gray-2,
-    '3': $gray-3,
-    '4': $gray-4,
-    '5': $gray-5,
-    '6': $gray-6,
-    '7': $gray-7,
+    '1': $grayscale-7,
+    '2': $grayscale-6,
+    '3': $grayscale-5,
+    '4': $grayscale-4,
+    '5': $grayscale-3,
+    '6': $grayscale-2,
+    '7': $grayscale-1,
   ),
   $grays
 );
 
 $gold: $uds-color-base-gold;
 $maroon: $uds-color-base-maroon;
-$dark: $uds-color-base-gray-7;
-$light: $uds-color-base-gray-2;
+$dark: $uds-color-base-grayscale-1;
+$light: $uds-color-base-grayscale-6;
 $blue: $uds-color-base-blue;
 $green: $uds-color-base-green;
 $orange: $uds-color-base-orange;
@@ -74,15 +75,15 @@ $theme-colors: map-merge(
     'warning': $warning,
     'danger': $danger,
     'light': $light,
-    'gray': $gray-4,
+    'gray': $grayscale-4,
     'dark': $dark,
-    'gray-1': $gray-1,
-    'gray-2': $gray-2,
-    'gray-3': $gray-3,
-    'gray-4': $gray-4,
-    'gray-5': $gray-5,
-    'gray-6': $gray-6,
-    'gray-7': $gray-7,
+    'grayscale-1': $grayscale-1,
+    'grayscale-2': $grayscale-2,
+    'grayscale-3': $grayscale-3,
+    'grayscale-4': $grayscale-4,
+    'grayscale-5': $grayscale-5,
+    'grayscale-6': $grayscale-6,
+    'grayscale-7': $grayscale-7,
   ),
   $theme-colors
 );
@@ -114,7 +115,7 @@ $card-cap-bg: rgba($white, 0.03);
 
 $nav-tabs-link-color: $dark;
 $nav-tabs-border-width: 1px;
-$nav-tabs-border-color: $gray-3;
+$nav-tabs-border-color: $grayscale-5;
 $nav-tabs-border-radius: 0;
 $nav-tabs-link-active-color: $maroon;
 $nav-tabs-link-active-border-color: $maroon;
