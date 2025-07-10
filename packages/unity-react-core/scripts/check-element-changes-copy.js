@@ -64,6 +64,10 @@ const targetDir = "scripts/temp/packages/unity-react-core/scripts";
 const dir = "scripts/temp/packages/unity-react-core"
 const srcDir = "packages/unity-react-core/scripts/check-changes.tsx"
 fs.copyFileSync(srcDir, targetDir+"/check-changes.tsx")
+/**
+ *
+ * 1. OJAS TODO: We dont actually need to change directory, we can pass in the directory to the spawnSync command as the argument cwd: <directory>
+ */
 process.chdir(dir);
 //execSync(`npx tsx check-changes.tsx ${OLD_DATE_HTML}`);
 console.log(process.cwd());
@@ -71,6 +75,33 @@ const output = spawnSync("npx", ["tsx", "scripts/check-changes.tsx", OLD_DATE_HT
   stdio: "inherit"
 });
 console.log(`Output: ${JSON.stringify(output)}`);
+
+/**
+ * * 5. OJAS TODO: We know the name of old components file and the location, so we can
+ * read it using fs.readFileSync after creating the OLD_FILE_LOCATION variable
+ * Example:
+ * const OLD_FILE_LOCATION = path.join(targetDir, `components-${OLD_DATE_HTML}.json`)
+ * const oldDateComponentObjectWithHtml = JSON.parse(fs.readFileSync(OLD_FILE_LOCATION, 'utf8))
+ */
+
+
+
+/**
+ * 6. OJAS TODO: We can run the spawnSync("npx", ["tsx" command again but in the same directory of this file
+ * and we can pass in today's date. You can create a date at the current time by just instantiating `new Date()`
+ * and then you can get the month day and year same as in parseDateForHTML above
+ */
+
+
+/**
+ * 7. OJAS TODO: Now that we have the current date components in a json file from step 6,
+ * we can read that file and compare that to the old data, `oldDateComponentObjectWithHtml`
+ */
+
+
+
+
+
 execSync(`git worktree remove --force /Users/etloaner/Desktop/ASU/asu-unity-stack/scripts/temp`);
 
 //convertToHTML(OLD_DATE_HTML);
