@@ -5,9 +5,9 @@ import React, { ComponentProps } from "react";
 export const formBackground = [
   "",
   "uds-form-white",
-  "uds-form-gray1",
-  "uds-form-gray2",
-  "uds-form-gray7",
+  "uds-form-grayscale7",
+  "uds-form-grayscale6",
+  "uds-form-grayscale1",
 ] as const;
 
 export interface FormProps extends ComponentProps<"form"> {

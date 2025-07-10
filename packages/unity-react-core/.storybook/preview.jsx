@@ -17,11 +17,11 @@ const parameters = {
   backgrounds: {
     values: [
       {
-        name: "Gray 2",
+        name: "Grayscale 6",
         value: "#e8e8e8",
       },
       {
-        name: "Gray 3",
+        name: "Grayscale 5",
         value: "#d0d0d0",
       },
     ],

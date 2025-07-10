@@ -177,9 +177,9 @@ export const Pagination = ({
           "pb-2",
           {
             [`border`]: type === "bordered",
-            [`uds-bg-gray1`]: background === "gray1",
-            [`uds-bg-gray`]: background === "gray2",
-            [`uds-bg-dark`]: background === "gray7",
+            [`uds-bg-grayscale7`]: background === "grayscale7",
+            [`uds-bg-gray`]: background === "grayscale6",
+            [`uds-bg-dark`]: background === "grayscale1",
           }
         )}
       >
@@ -215,7 +215,7 @@ Pagination.propTypes = {
   /**
    * Background of pagination
    */
-  background: PropTypes.oneOf(["white", "gray1", "gray2", "gray7"]).isRequired,
+  background: PropTypes.oneOf(["white", "grayscale7", "grayscale6", "grayscale1"]).isRequired,
   /**
    * Current page
    */
