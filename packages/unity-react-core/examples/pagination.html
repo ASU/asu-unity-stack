@@ -38,9 +38,9 @@ integrity="sha512-uKQ39gEGiyUJl4AI6L+ekBdGKpGw4xJ55+xyJG7YFlJokPNYegn9KwQ3P8A7aF
       <!-- Provide target divs for two carousels. Must have unique ids or class name. -->
       <div id="default-pagination"></div>
       <div id="bordered-pagination"></div>
-      <div id="gray1-pagination"></div>
-      <div id="gray2-pagination"></div>
-      <div id="gray7-pagination"></div>
+      <div id="grayscale7-pagination"></div>
+      <div id="grayscale6-pagination"></div>
+      <div id="grayscale1-pagination"></div>
     </div>
   </div>
 
@@ -65,16 +65,16 @@ integrity="sha512-uKQ39gEGiyUJl4AI6L+ekBdGKpGw4xJ55+xyJG7YFlJokPNYegn9KwQ3P8A7aF
       },
     });
     unityReactCore.initPagination({
-      targetSelector: "#gray1-pagination",
-      props: { type: "default", background: "gray1", currentPage: 5 },
+      targetSelector: "#grayscale7-pagination",
+      props: { type: "default", background: "grayscale7", currentPage: 5 },
     });
     unityReactCore.initPagination({
-      targetSelector: "#gray2-pagination",
-      props: { type: "default", background: "gray2" },
+      targetSelector: "#grayscale6-pagination",
+      props: { type: "default", background: "grayscale6" },
     });
     unityReactCore.initPagination({
-      targetSelector: "#gray7-pagination",
-      props: { type: "default", background: "gray7" },
+      targetSelector: "#grayscale1-pagination",
+      props: { type: "default", background: "grayscale1" },
     });
   </script>
   <script src="./js/example-helper.js"></script>

@@ -5,7 +5,7 @@ $glide-element-separator: "__" !default;
 $glide-modifier-separator: "--" !default;
 $uds-breakpoint-sm: 576px;
 $uds-breakpoint-lg: 1260px;
-$uds-color-base-gray-7: #191919;
+$uds-color-base-grayscale-1: #191919;
 $uds-color-brand-gold: #ffc627; // ASU Gold brand color
 
 @mixin shadow {
@@ -433,7 +433,7 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
 
       figcaption *,
       .uds-caption-text {
-        color: $uds-color-base-gray-7;
+        color: $uds-color-base-grayscale-1;
         max-width: 100%;
       }
     }

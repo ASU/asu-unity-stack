@@ -50,16 +50,16 @@ Bordered.args = {
   showLastButton: true,
 };
 
-export const Gray1Background = Template.bind({});
-Gray1Background.args = { type: "default", background: "gray1", currentPage: 7 };
+export const Grayscale7Background = Template.bind({});
+Grayscale7Background.args = { type: "default", background: "grayscale7", currentPage: 7 };
 
-export const Gray2Background = Template.bind({});
-Gray2Background.args = {
+export const Grayscale6Background = Template.bind({});
+Grayscale6Background.args = {
   type: "default",
-  background: "gray2",
+  background: "grayscale6",
   currentPage: 5,
   totalNumbers: 5,
 };
 
-export const Gray7Background = Template.bind({});
-Gray7Background.args = { type: "default", background: "gray7" };
+export const Grayscale1Background = Template.bind({});
+Grayscale1Background.args = { type: "default", background: "grayscale1" };

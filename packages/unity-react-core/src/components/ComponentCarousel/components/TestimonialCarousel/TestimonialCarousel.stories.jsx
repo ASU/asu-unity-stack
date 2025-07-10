@@ -65,8 +65,8 @@ export default {
       control: { type: "radio" },
       mapping: {
         White: [],
-        Gray: ["bg-gray-2"],
-        Black: ["bg-gray-7"],
+        Gray: ["bg-grayscale-6"],
+        Black: ["bg-grayscale-1"],
       },
     },
     testimonial: {

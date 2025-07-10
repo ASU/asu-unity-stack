@@ -5,8 +5,8 @@ import { gridLinksNumColumns, gridLinksTextColor } from "./GridLinksConstants";
 
 const gridLinksBgColorClassName = {
   "None": "",
-  "Gray 1": "bg-gray-1",
-  "Gray 7": "bg-gray-7",
+  "Grayscale 7": "bg-grayscale-7",
+  "Grayscale 1": "bg-grayscale-1",
 };
 
 export default {
