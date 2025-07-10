@@ -30,7 +30,7 @@ export const Tooltips = ({color}) => {
         <button
           tabIndex="0"
           className={`uds-tooltip uds-tooltip-${
-            color === "base-gray" ? "gray-1" : color
+            color === "base-gray" ? "grayscale-7" : color
           }`}
           aria-describedby="tooltip-desc-1"
         >

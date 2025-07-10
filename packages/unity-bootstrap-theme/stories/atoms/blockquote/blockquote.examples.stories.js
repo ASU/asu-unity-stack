@@ -31,7 +31,7 @@ export const BlockquoteNoImage = () => (
       </blockquote>
     </div>
 
-    <div className="bg-gray-7">
+    <div className="bg-grayscale-1">
       <div className="uds-blockquote accent-gold text-white uds-content-align">
         <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">
           <path d="M113.61,245.82H0V164.56q0-49.34,8.69-77.83T40.84,35.58Q64.29,12.95,100.67,0l22.24,46.9q-34,11.33-48.72,31.54T58.63,132.21h55Zm180,0H180V164.56q0-49.74,8.7-78T221,35.58Q244.65,12.95,280.63,0l22.24,46.9q-34,11.33-48.72,31.54t-15.57,53.77h55Z" />
@@ -82,7 +82,7 @@ export const BlockquoteWithImage = () => (
       </blockquote>
     </div>
 
-    <section className="bg-gray-2">
+    <section className="bg-grayscale-6">
       <div className="uds-blockquote with-image reversed uds-content-align">
         <img
           src={ imageName.anon }
@@ -132,7 +132,7 @@ export const BlockquoteNoCitation = () => (
       </blockquote>
     </div>
 
-    <div className="bg-gray-7">
+    <div className="bg-grayscale-1">
       <div className="uds-blockquote no-citation with-image reversed uds-content-align">
         <img
           src={ imageName.anon }
@@ -177,7 +177,7 @@ export const BlockquoteAltCitation = () => (
       </blockquote>
     </div>
 
-    <section className="bg-gray-1">
+    <section className="bg-grayscale-7">
       <div className="uds-blockquote alt-citation accent-maroon uds-content-align">
         <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">
           <path d="M113.61,245.82H0V164.56q0-49.34,8.69-77.83T40.84,35.58Q64.29,12.95,100.67,0l22.24,46.9q-34,11.33-48.72,31.54T58.63,132.21h55Zm180,0H180V164.56q0-49.74,8.7-78T221,35.58Q244.65,12.95,280.63,0l22.24,46.9q-34,11.33-48.72,31.54t-15.57,53.77h55Z" />
@@ -244,7 +244,7 @@ export const TestimonialsNoImage = () => (
       </blockquote>
     </div>
 
-    <div className="bg-gray-2">
+    <div className="bg-grayscale-6">
       <div className="uds-blockquote uds-testimonial accent-maroon uds-content-align">
         <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">
           <path d="M113.61,245.82H0V164.56q0-49.34,8.69-77.83T40.84,35.58Q64.29,12.95,100.67,0l22.24,46.9q-34,11.33-48.72,31.54T58.63,132.21h55Zm180,0H180V164.56q0-49.74,8.7-78T221,35.58Q244.65,12.95,280.63,0l22.24,46.9q-34,11.33-48.72,31.54t-15.57,53.77h55Z" />
@@ -295,7 +295,7 @@ export const TestimonialsWithImage = () => (
       </blockquote>
     </div>
 
-    <div className="bg-gray-7">
+    <div className="bg-grayscale-1">
       <div className="uds-blockquote uds-testimonial with-image alt-citation accent-gold text-white uds-content-align">
         <img
           src={ imageName.anon }

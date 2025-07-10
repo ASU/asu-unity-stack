@@ -68,8 +68,8 @@ export const ComponentbodyCopyWhite = () => (
   </div>
 );
 
-export const ComponentbodyCopyGray1 = () => (
-  <div className="container bg-gray-1">
+export const ComponentbodyCopyGrayscale7 = () => (
+  <div className="container bg-grayscale-7">
     <div className="row">
       <div className="col col-sm-12 p-3">
         <p>
@@ -101,8 +101,8 @@ export const ComponentbodyCopyGray1 = () => (
   </div>
 );
 
-export const ComponentbodyCopyGray2 = () => (
-  <div className="container bg-gray-2">
+export const ComponentbodyCopyGrayscale6 = () => (
+  <div className="container bg-grayscale-6">
     <div className="row">
       <div className="col col-sm-12 p-3">
         <p>
@@ -134,8 +134,8 @@ export const ComponentbodyCopyGray2 = () => (
   </div>
 );
 
-export const ComponentbodyCopyGray7 = () => (
-  <div className="container bg-gray-7 text-white">
+export const ComponentbodyCopyGrayscale1 = () => (
+  <div className="container bg-grayscale-1 text-white">
     <div className="row">
       <div className="col col-sm-12 p-3">
         <p>
@@ -185,8 +185,8 @@ export const ComponentASUHeadingsWhite = () => (
   </div>
 );
 
-export const ComponentASUHeadingsGray1 = () => (
-  <div className="container bg-gray-1">
+export const ComponentASUHeadingsGrayscale7 = () => (
+  <div className="container bg-grayscale-7">
     <div className="row">
       <div className="col col-sm-12 p-3">
         <h1>Heading 1</h1>
@@ -200,8 +200,8 @@ export const ComponentASUHeadingsGray1 = () => (
   </div>
 );
 
-export const ComponentASUHeadingsGray2 = () => (
-  <div className="container bg-gray-2">
+export const ComponentASUHeadingsGrayscale6 = () => (
+  <div className="container bg-grayscale-6">
     <div className="row">
       <div className="col col-sm-12 p-3">
         <h1>Heading 1</h1>
@@ -215,8 +215,8 @@ export const ComponentASUHeadingsGray2 = () => (
   </div>
 );
 
-export const ComponentASUHeadingsGray7 = () => (
-  <div className="container bg-gray-7 text-gray-1">
+export const ComponentASUHeadingsGrayscale1 = () => (
+  <div className="container bg-grayscale-1 text-grayscale-7">
     <div className="row">
       <div className="col col-sm-12 p-3">
         <h1>Heading 1</h1>
@@ -245,8 +245,8 @@ export const ComponentHighlightsWhite = () => (
   </div>
 );
 
-export const ComponentHighlightsGray1 = () => (
-  <div className="container bg-gray-1">
+export const ComponentHighlightsGrayscale7 = () => (
+  <div className="container bg-grayscale-7">
     <div className="row">
       <div className="col col-sm-12 p-3">
         <h3>
@@ -260,8 +260,8 @@ export const ComponentHighlightsGray1 = () => (
   </div>
 );
 
-export const ComponentHighlightsGray2 = () => (
-  <div className="container bg-gray-2">
+export const ComponentHighlightsGrayscale6 = () => (
+  <div className="container bg-grayscale-6">
     <div className="row">
       <div className="col col-sm-12 p-3">
         <h3>
@@ -278,8 +278,8 @@ export const ComponentHighlightsGray2 = () => (
   </div>
 );
 
-export const ComponentHighlightsGray7 = () => (
-  <div className="container bg-gray-7 text-gray-1">
+export const ComponentHighlightsGrayscale1 = () => (
+  <div className="container bg-grayscale-1 text-grayscale-7">
     <div className="row">
       <div className="col col-sm-12 p-3">
         <h3>

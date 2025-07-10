@@ -9,7 +9,7 @@ export default {
 };
 
 const DefaultExample = ({buttonText = ""}) =>
-    <div className="uds-inset-box-container gray-1-bg">
+    <div className="uds-inset-box-container grayscale-7-bg">
       <div className="uds-inset-box-content">
         <h3>Lorem ipsum dolor sit amet</h3>
         <p>
@@ -42,7 +42,7 @@ BasicExampleWithStackButton.args = {
 };
 
 export const ExampleWithBlockquote = () => (
-  <div className="uds-inset-box-container gray-2-bg">
+  <div className="uds-inset-box-container grayscale-6-bg">
     <div className="uds-inset-box-content">
       <div className="uds-blockquote uds-testimonial accent-gold">
         <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">

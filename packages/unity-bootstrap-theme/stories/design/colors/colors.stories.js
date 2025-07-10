@@ -81,29 +81,29 @@ export const ColorPaletteComponent = () => (
           <h4 className="visually-hidden">Accessibility bypass</h4>
         </div>
         <div className="col-md-3">
-          <div className="bg-gray-1 p-3">
-            <h5>Gray 1</h5>
+          <div className="bg-grayscale-7 p-3">
+            <h5>Grayscale 7</h5>
             <p>#FAFAFA</p>
             <p>rgb(250, 250, 250)</p>
           </div>
         </div>
         <div className="col-md-3">
-          <div className="bg-gray-2 p-3">
-            <h5>Gray 2</h5>
+          <div className="bg-grayscale-6 p-3">
+            <h5>Grayscale 6</h5>
             <p>#E8E8E8</p>
             <p>rgb(232, 232, 232)</p>
           </div>
         </div>
         <div className="col-md-3">
-          <div className="bg-gray-3 p-3">
-            <h5>Gray 3</h5>
+          <div className="bg-grayscale-5 p-3">
+            <h5>Grayscale 5</h5>
             <p>#D0D0D0</p>
             <p>rgb(209, 209, 209)</p>
           </div>
         </div>
         <div className="col-md-3">
-          <div className="bg-gray-4 p-3">
-            <h5>Gray 4</h5>
+          <div className="bg-grayscale-4 p-3">
+            <h5>Grayscale 4</h5>
             <p>#BFBFBF</p>
             <p>rgb(191, 191, 191)</p>
           </div>
@@ -111,22 +111,22 @@ export const ColorPaletteComponent = () => (
       </div>
       <div className="row py-md-3">
         <div className="col-md-3">
-          <div className="bg-gray-5 p-3 text-light">
-            <h5>Gray 5</h5>
+          <div className="bg-grayscale-3 p-3 text-light">
+            <h5>Grayscale 3</h5>
             <p>#747474</p>
             <p>rgb(116, 116, 116)</p>
           </div>
         </div>
         <div className="col-md-3">
-          <div className="bg-gray-6 p-3 text-light">
-            <h5>Gray 6</h5>
+          <div className="bg-grayscale-2 p-3 text-light">
+            <h5>Grayscale 2</h5>
             <p>#484848</p>
             <p>rgb(72, 72, 72)</p>
           </div>
         </div>
         <div className="col-md-3">
-          <div className="bg-gray-7 p-3 text-light">
-            <h5 className="">Gray 7</h5>
+          <div className="bg-grayscale-1 p-3 text-light">
+            <h5 className="">Grayscale 1</h5>
             <p>#191919</p>
             <p>rgb(25, 25, 25)</p>
           </div>
@@ -164,7 +164,7 @@ export const CombinationsComponent = () => (
         </div>
       </div>
       <div className="col-sm-6">
-        <div className="bg-gray-1 p-3">
+        <div className="bg-grayscale-7 p-3">
           <h3>This is a tertiary headline</h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit,{" "}
@@ -184,7 +184,7 @@ export const CombinationsComponent = () => (
 
     <div className="row pt-3">
       <div className="col-sm-6">
-        <div className="bg-gray-2 p-3">
+        <div className="bg-grayscale-6 p-3">
           <h3>This is a tertiary headline</h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit,{" "}
@@ -201,7 +201,7 @@ export const CombinationsComponent = () => (
         </div>
       </div>
       <div className="col-sm-6">
-        <div className="bg-gray-7 text-white p-3">
+        <div className="bg-grayscale-1 text-white p-3">
           <h3>This is a tertiary headline</h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit,{" "}
