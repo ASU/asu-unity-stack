@@ -11,7 +11,7 @@ export default {
     },
     bgColor: {
       name: "Background Color",
-      options: ["None", "gray-1-bg", "gray-2-bg", "gray-7-bg"],
+      options: ["None", "grayscale-7-bg", "grayscale-6-bg", "grayscale-1-bg"],
       mapping: {
         None: null,
       },
@@ -73,13 +73,17 @@ export const ImageLeftOrRight = ({ right, bgColor, extraContent }) => (
       <div className="uds-buttons py-1">
         <a
           href="#"
-          className={`btn ${bgColor === "gray-7-bg" ? "btn-gold" : "btn-dark"}`}
+          className={`btn ${
+            bgColor === "grayscale-1-bg" ? "btn-gold" : "btn-dark"
+          }`}
         >
           Button link here
         </a>
         <a
           href="#"
-          className={`btn ${bgColor === "gray-7-bg" ? "btn-gold" : "btn-dark"}`}
+          className={`btn ${
+            bgColor === "grayscale-1-bg" ? "btn-gold" : "btn-dark"
+          }`}
         >
           Button link here
         </a>

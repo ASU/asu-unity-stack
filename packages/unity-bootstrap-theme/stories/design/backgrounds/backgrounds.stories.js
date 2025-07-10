@@ -14,13 +14,13 @@ export const approvedBackgroundColors = () => (
       </h3>
     </Column>
     <Column col="6">
-      <div className="background-panel gray-7-bg mb-3"></div>
+      <div className="background-panel grayscale-1-bg mb-3"></div>
     </Column>
     <Column col="6">
-      <div className="background-panel gray-2-bg mb-3"></div>
+      <div className="background-panel grayscale-6-bg mb-3"></div>
     </Column>
     <Column col="6">
-      <div className="background-panel gray-1-bg mb-3"></div>
+      <div className="background-panel grayscale-7-bg mb-3"></div>
     </Column>
     <Column col="6">
       <div className="background-panel white-bg mb-3"></div>

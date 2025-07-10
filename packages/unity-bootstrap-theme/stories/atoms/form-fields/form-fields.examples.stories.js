@@ -240,23 +240,23 @@ export const TextInputsVariousBackgrounds = () => (
 
     <div style={{ backgroundColor: "#fafafa" }}>
       {/* This div for Storybook display only. */}
-      <form className="uds-form uds-form-gray1">
+      <form className="uds-form uds-form-grayscale7">
         <div className="form-group">
-          <label for="exampleDefaultInputGray1">Default text input label</label>
+          <label for="exampleDefaultInputGrayscale7">Default text input label</label>
           <input
             type="text"
             className="form-control"
-            id="exampleDefaultInputGray1"
+            id="exampleDefaultInputGrayscale7"
             placeholder="Helper text"
           />
         </div>
 
         <div className="form-group">
-          <label for="exampleFocusInputGray1">Focus text input label</label>
+          <label for="exampleFocusInputGrayscale7">Focus text input label</label>
           <input
             type="text"
             className="form-control"
-            id="exampleFocusInputGray1"
+            id="exampleFocusInputGrayscale7"
             placeholder="Helper text"
             value="Focus me to see focus style"
           />
@@ -264,7 +264,7 @@ export const TextInputsVariousBackgrounds = () => (
 
         <div className="form-group">
           <label
-            for="exampleDisabledInputGray1"
+            for="exampleDisabledInputGrayscale7"
             className="uds-form-label-disabled"
           >
             Disabled text input label
@@ -272,22 +272,22 @@ export const TextInputsVariousBackgrounds = () => (
           <input
             type="text"
             className="form-control"
-            id="exampleDisabledInputGray1"
+            id="exampleDisabledInputGrayscale7"
             placeholder="Helper text"
             disabled
           />
         </div>
 
         <div className="form-group">
-          <label for="exampleErrorInputGray1">Error text input label</label>
+          <label for="exampleErrorInputGrayscale7">Error text input label</label>
           <input
             type="text"
             className="form-control is-invalid"
-            id="exampleErrorInputGray1"
-            aria-describedby="errorHelpGray1"
+            id="exampleErrorInputGrayscale7"
+            aria-describedby="errorHelpGrayscale7"
             placeholder="Helper text"
           />
-          <small id="errorHelpGray1" className="form-text invalid-feedback">
+          <small id="errorHelpGrayscale7" className="form-text invalid-feedback">
             <span
               title="Alert"
               className="fa fa-icon fa-exclamation-triangle"
@@ -297,30 +297,30 @@ export const TextInputsVariousBackgrounds = () => (
         </div>
 
         <div className="form-group">
-          <label for="exampleSuccessInputGray1">Success text input label</label>
+          <label for="exampleSuccessInputGrayscale7">Success text input label</label>
           <input
             type="text"
             className="form-control is-valid"
-            id="exampleSuccessInputGray1"
-            aria-describedby="successHelpGray1"
+            id="exampleSuccessInputGrayscale7"
+            aria-describedby="successHelpGrayscale7"
             placeholder="Helper text"
             value="Input text"
           />
-          <small id="successHelpGray1" className="form-text valid-feedback">
+          <small id="successHelpGrayscale7" className="form-text valid-feedback">
             <span title="Alert" className="fa fa-icon fa-check-circle"></span>
             Success message
           </small>
         </div>
 
         <div className="form-group">
-          <label for="exampleTrailingIconInputGray1">
+          <label for="exampleTrailingIconInputGrayscale7">
             Trailing icon text input label
           </label>
           <div className="input-group input-group-trailing-icon">
             <input
               type="text"
               className="form-control"
-              id="exampleTrailingIconInputGray1"
+              id="exampleTrailingIconInputGrayscale7"
               placeholder="Helper text"
             />
             <span className="far fa-icon fa-calendar" aria-hidden="true"></span>
@@ -331,23 +331,23 @@ export const TextInputsVariousBackgrounds = () => (
 
     <div style={{ backgroundColor: "#e8e8e8" }}>
       {/* This div for Storybook display only. */}
-      <form className="uds-form uds-form-gray2">
+      <form className="uds-form uds-form-grayscale6">
         <div className="form-group">
-          <label for="exampleDefaultInputGray2">Default text input label</label>
+          <label for="exampleDefaultInputGrayscale6">Default text input label</label>
           <input
             type="text"
             className="form-control"
-            id="exampleDefaultInputGray2"
+            id="exampleDefaultInputGrayscale6"
             placeholder="Helper text"
           />
         </div>
 
         <div className="form-group">
-          <label for="exampleFocusInputGray2">Focus text input label</label>
+          <label for="exampleFocusInputGrayscale6">Focus text input label</label>
           <input
             type="text"
             className="form-control"
-            id="exampleFocusInputGray2"
+            id="exampleFocusInputGrayscale6"
             placeholder="Helper text"
             value="Focus me to see focus style"
           />
@@ -355,7 +355,7 @@ export const TextInputsVariousBackgrounds = () => (
 
         <div className="form-group">
           <label
-            for="exampleDisabledInputGray2"
+            for="exampleDisabledInputGrayscale6"
             className="uds-form-label-disabled"
           >
             Disabled text input label
@@ -363,22 +363,22 @@ export const TextInputsVariousBackgrounds = () => (
           <input
             type="text"
             className="form-control"
-            id="exampleDisabledInputGray2"
+            id="exampleDisabledInputGrayscale6"
             placeholder="Helper text"
             disabled
           />
         </div>
 
         <div className="form-group">
-          <label for="exampleErrorInputGray2">Error text input label</label>
+          <label for="exampleErrorInputGrayscale6">Error text input label</label>
           <input
             type="text"
             className="form-control is-invalid"
-            id="exampleErrorInputGray2"
-            aria-describedby="errorHelpGray2"
+            id="exampleErrorInputGrayscale6"
+            aria-describedby="errorHelpGrayscale6"
             placeholder="Helper text"
           />
-          <small id="errorHelpGray2" className="form-text invalid-feedback">
+          <small id="errorHelpGrayscale6" className="form-text invalid-feedback">
             <span
               title="Alert"
               className="fa fa-icon fa-exclamation-triangle"
@@ -388,30 +388,30 @@ export const TextInputsVariousBackgrounds = () => (
         </div>
 
         <div className="form-group">
-          <label for="exampleSuccessInputGray2">Success text input label</label>
+          <label for="exampleSuccessInputGrayscale6">Success text input label</label>
           <input
             type="text"
             className="form-control is-valid"
-            id="exampleSuccessInputGray2"
-            aria-describedby="successHelpGray2"
+            id="exampleSuccessInputGrayscale6"
+            aria-describedby="successHelpGrayscale6"
             placeholder="Helper text"
             value="Input text"
           />
-          <small id="successHelpGray2" className="form-text valid-feedback">
+          <small id="successHelpGrayscale6" className="form-text valid-feedback">
             <span title="Alert" className="fa fa-icon fa-check-circle"></span>
             Success message
           </small>
         </div>
 
         <div className="form-group">
-          <label for="exampleTrailingIconInputGray2">
+          <label for="exampleTrailingIconInputGrayscale6">
             Trailing icon text input label
           </label>
           <div className="input-group input-group-trailing-icon">
             <input
               type="text"
               className="form-control"
-              id="exampleTrailingIconInputGray2"
+              id="exampleTrailingIconInputGrayscale6"
               placeholder="Helper text"
             />
             <span className="far fa-icon fa-calendar" aria-hidden="true"></span>
@@ -422,23 +422,23 @@ export const TextInputsVariousBackgrounds = () => (
 
     <div style={{ backgroundColor: "#191919" }}>
       {/* This div for Storybook display only. */}
-      <form className="uds-form uds-form-gray7">
+      <form className="uds-form uds-form-grayscale1">
         <div className="form-group">
-          <label for="exampleDefaultInputGray7">Default text input label</label>
+          <label for="exampleDefaultInputGrayscale1">Default text input label</label>
           <input
             type="text"
             className="form-control"
-            id="exampleDefaultInputGray7"
+            id="exampleDefaultInputGrayscale1"
             placeholder="Helper text"
           />
         </div>
 
         <div className="form-group">
-          <label for="exampleFocusInputGray7">Focus text input label</label>
+          <label for="exampleFocusInputGrayscale1">Focus text input label</label>
           <input
             type="text"
             className="form-control"
-            id="exampleFocusInputGray7"
+            id="exampleFocusInputGrayscale1"
             placeholder="Helper text"
             value="Focus me to see focus style"
           />
@@ -446,7 +446,7 @@ export const TextInputsVariousBackgrounds = () => (
 
         <div className="form-group">
           <label
-            for="exampleDisabledInputGray7"
+            for="exampleDisabledInputGrayscale1"
             className="uds-form-label-disabled"
           >
             Disabled text input label
@@ -454,22 +454,22 @@ export const TextInputsVariousBackgrounds = () => (
           <input
             type="text"
             className="form-control"
-            id="exampleDisabledInputGray7"
+            id="exampleDisabledInputGrayscale1"
             placeholder="Helper text"
             disabled
           />
         </div>
 
         <div className="form-group">
-          <label for="exampleErrorInputGray7">Error text input label</label>
+          <label for="exampleErrorInputGrayscale1">Error text input label</label>
           <input
             type="text"
             className="form-control is-invalid"
-            id="exampleErrorInputGray7"
-            aria-describedby="errorHelpGray7"
+            id="exampleErrorInputGrayscale1"
+            aria-describedby="errorHelpGrayscale1"
             placeholder="Helper text"
           />
-          <small id="errorHelpGray7" className="form-text invalid-feedback">
+          <small id="errorHelpGrayscale1" className="form-text invalid-feedback">
             <span
               title="Alert"
               className="fa fa-icon fa-exclamation-triangle"
@@ -479,30 +479,30 @@ export const TextInputsVariousBackgrounds = () => (
         </div>
 
         <div className="form-group">
-          <label for="exampleSuccessInputGray7">Success text input label</label>
+          <label for="exampleSuccessInputGrayscale1">Success text input label</label>
           <input
             type="text"
             className="form-control is-valid"
-            id="exampleSuccessInputGray7"
-            aria-describedby="successHelpGray7"
+            id="exampleSuccessInputGrayscale1"
+            aria-describedby="successHelpGrayscale1"
             placeholder="Helper text"
             value="Input text"
           />
-          <small id="successHelpGray7" className="form-text valid-feedback">
+          <small id="successHelpGrayscale1" className="form-text valid-feedback">
             <span title="Alert" className="fa fa-icon fa-check-circle"></span>
             Success message
           </small>
         </div>
 
         <div className="form-group">
-          <label for="exampleTrailingIconInputGray7">
+          <label for="exampleTrailingIconInputGrayscale1">
             Trailing icon text input label
           </label>
           <div className="input-group input-group-trailing-icon">
             <input
               type="text"
               className="form-control"
-              id="exampleTrailingIconInputGray7"
+              id="exampleTrailingIconInputGrayscale1"
               placeholder="Helper text"
             />
             <span className="far fa-icon fa-calendar" aria-hidden="true"></span>
@@ -710,26 +710,26 @@ export const TextareasMultipleBackgrounds = () => (
 
     <div style={{ backgroundColor: "#fafafa" }}>
       {/* This div for Storybook display only. */}
-      <form className="uds-form uds-form-gray1">
+      <form className="uds-form uds-form-grayscale7">
         <div className="form-group">
-          <label for="exampleFormControlTextareaDefaultGray1">
+          <label for="exampleFormControlTextareaDefaultGrayscale7">
             Default textarea
           </label>
           <textarea
             className="form-control"
-            id="exampleFormControlTextareaDefaultGray1"
+            id="exampleFormControlTextareaDefaultGrayscale7"
             rows="3"
             placeholder="Enter your textarea content..."
           ></textarea>
         </div>
 
         <div className="form-group">
-          <label for="exampleFormControlTextareaFocusGray1">
+          <label for="exampleFormControlTextareaFocusGrayscale7">
             Focus textarea
           </label>
           <textarea
             className="form-control"
-            id="exampleFormControlTextareaFocusGray1"
+            id="exampleFormControlTextareaFocusGrayscale7"
             rows="3"
           >
             Focus here to see the focus state.
@@ -738,14 +738,14 @@ export const TextareasMultipleBackgrounds = () => (
 
         <div className="form-group">
           <label
-            for="exampleFormControlTextareaDisabledGray1"
+            for="exampleFormControlTextareaDisabledGrayscale7"
             className="uds-form-label-disabled"
           >
             Disabled textarea
           </label>
           <textarea
             className="form-control"
-            id="exampleFormControlTextareaDisabledGray1"
+            id="exampleFormControlTextareaDisabledGrayscale7"
             rows="3"
             placeholder="I got some content."
             disabled
@@ -753,17 +753,17 @@ export const TextareasMultipleBackgrounds = () => (
         </div>
 
         <div className="form-group">
-          <label for="exampleFormControlTextareaErrorGray1">
+          <label for="exampleFormControlTextareaErrorGrayscale7">
             Error textarea
           </label>
           <textarea
             className="form-control is-invalid"
-            aria-describedby="errorTextareaHelpGray1"
-            id="exampleFormControlTextareaErrorGray1"
+            aria-describedby="errorTextareaHelpGrayscale7"
+            id="exampleFormControlTextareaErrorGrayscale7"
             rows="3"
           ></textarea>
           <small
-            id="errorTextareaHelpGray1"
+            id="errorTextareaHelpGrayscale7"
             className="form-textarea invalid-feedback"
           >
             <span
@@ -775,19 +775,19 @@ export const TextareasMultipleBackgrounds = () => (
         </div>
 
         <div className="form-group">
-          <label for="exampleFormControlTextareaSuccessGray1">
+          <label for="exampleFormControlTextareaSuccessGrayscale7">
             Success textarea
           </label>
           <textarea
             className="form-control is-valid"
-            aria-describedby="successTextareaHelpGray1"
-            id="exampleFormControlTextareaSuccessGray1"
+            aria-describedby="successTextareaHelpGrayscale7"
+            id="exampleFormControlTextareaSuccessGrayscale7"
             rows="3"
           >
             Agreeable content was entered.
           </textarea>
           <small
-            id="successTextareaHelpGray1"
+            id="successTextareaHelpGrayscale7"
             className="form-textarea valid-feedback"
           >
             <span title="Alert" className="fa fa-icon fa-check-circle"></span>
@@ -799,26 +799,26 @@ export const TextareasMultipleBackgrounds = () => (
 
     <div style={{ backgroundColor: "#e8e8e8" }}>
       {/* This div for Storybook display only. */}
-      <form className="uds-form uds-form-gray2">
+      <form className="uds-form uds-form-grayscale6">
         <div className="form-group">
-          <label for="exampleFormControlTextareaDefaultGray2">
+          <label for="exampleFormControlTextareaDefaultGrayscale6">
             Default textarea
           </label>
           <textarea
             className="form-control"
-            id="exampleFormControlTextareaDefaultGray2"
+            id="exampleFormControlTextareaDefaultGrayscale6"
             rows="3"
             placeholder="Enter your textarea content..."
           ></textarea>
         </div>
 
         <div className="form-group">
-          <label for="exampleFormControlTextareaFocusGray2">
+          <label for="exampleFormControlTextareaFocusGrayscale6">
             Focus textarea
           </label>
           <textarea
             className="form-control"
-            id="exampleFormControlTextareaFocusGray2"
+            id="exampleFormControlTextareaFocusGrayscale6"
             rows="3"
           >
             Focus here to see the focus state.
@@ -827,14 +827,14 @@ export const TextareasMultipleBackgrounds = () => (
 
         <div className="form-group">
           <label
-            for="exampleFormControlTextareaDisabledGray2"
+            for="exampleFormControlTextareaDisabledGrayscale6"
             className="uds-form-label-disabled"
           >
             Disabled textarea
           </label>
           <textarea
             className="form-control"
-            id="exampleFormControlTextareaDisabledGray2"
+            id="exampleFormControlTextareaDisabledGrayscale6"
             rows="3"
             placeholder="I got some content."
             disabled
@@ -842,17 +842,17 @@ export const TextareasMultipleBackgrounds = () => (
         </div>
 
         <div className="form-group">
-          <label for="exampleFormControlTextareaErrorGray2">
+          <label for="exampleFormControlTextareaErrorGrayscale6">
             Error textarea
           </label>
           <textarea
             className="form-control is-invalid"
-            aria-describedby="errorTextareaHelpGray2"
-            id="exampleFormControlTextareaErrorGray2"
+            aria-describedby="errorTextareaHelpGrayscale6"
+            id="exampleFormControlTextareaErrorGrayscale6"
             rows="3"
           ></textarea>
           <small
-            id="errorTextareaHelpGray2"
+            id="errorTextareaHelpGrayscale6"
             className="form-textarea invalid-feedback"
           >
             <span
@@ -864,19 +864,19 @@ export const TextareasMultipleBackgrounds = () => (
         </div>
 
         <div className="form-group">
-          <label for="exampleFormControlTextareaSuccessGray2">
+          <label for="exampleFormControlTextareaSuccessGrayscale6">
             Success textarea
           </label>
           <textarea
             className="form-control is-valid"
-            aria-describedby="successTextareaHelpGray2"
-            id="exampleFormControlTextareaSuccessGray2"
+            aria-describedby="successTextareaHelpGrayscale6"
+            id="exampleFormControlTextareaSuccessGrayscale6"
             rows="3"
           >
             Agreeable content was entered.
           </textarea>
           <small
-            id="successTextareaHelpGray2"
+            id="successTextareaHelpGrayscale6"
             className="form-textarea valid-feedback"
           >
             <span title="Alert" className="fa fa-icon fa-check-circle"></span>
@@ -888,26 +888,26 @@ export const TextareasMultipleBackgrounds = () => (
 
     <div style={{ backgroundColor: "#191919" }}>
       {/* This div for Storybook display only. */}
-      <form className="uds-form uds-form-gray7">
+      <form className="uds-form uds-form-grayscale1">
         <div className="form-group">
-          <label for="exampleFormControlTextareaDefaultGray7">
+          <label for="exampleFormControlTextareaDefaultGrayscale1">
             Default textarea
           </label>
           <textarea
             className="form-control"
-            id="exampleFormControlTextareaDefaultGray7"
+            id="exampleFormControlTextareaDefaultGrayscale1"
             rows="3"
             placeholder="Enter your textarea content..."
           ></textarea>
         </div>
 
         <div className="form-group">
-          <label for="exampleFormControlTextareaFocusGray7">
+          <label for="exampleFormControlTextareaFocusGrayscale1">
             Focus textarea
           </label>
           <textarea
             className="form-control"
-            id="exampleFormControlTextareaFocusGray7"
+            id="exampleFormControlTextareaFocusGrayscale1"
             rows="3"
           >
             Focus here to see the focus state.
@@ -916,14 +916,14 @@ export const TextareasMultipleBackgrounds = () => (
 
         <div className="form-group">
           <label
-            for="exampleFormControlTextareaDisabledGray7"
+            for="exampleFormControlTextareaDisabledGrayscale1"
             className="uds-form-label-disabled"
           >
             Disabled textarea
           </label>
           <textarea
             className="form-control"
-            id="exampleFormControlTextareaDisabledGray7"
+            id="exampleFormControlTextareaDisabledGrayscale1"
             rows="3"
             placeholder="I got some content."
             disabled
@@ -931,17 +931,17 @@ export const TextareasMultipleBackgrounds = () => (
         </div>
 
         <div className="form-group">
-          <label for="exampleFormControlTextareaErrorGray7">
+          <label for="exampleFormControlTextareaErrorGrayscale1">
             Error textarea
           </label>
           <textarea
             className="form-control is-invalid"
-            aria-describedby="errorTextareaHelpGray7"
-            id="exampleFormControlTextareaErrorGray7"
+            aria-describedby="errorTextareaHelpGrayscale1"
+            id="exampleFormControlTextareaErrorGrayscale1"
             rows="3"
           ></textarea>
           <small
-            id="errorTextareaHelpGray7"
+            id="errorTextareaHelpGrayscale1"
             className="form-textarea invalid-feedback"
           >
             <span
@@ -953,19 +953,19 @@ export const TextareasMultipleBackgrounds = () => (
         </div>
 
         <div className="form-group">
-          <label for="exampleFormControlTextareaSuccessGray7">
+          <label for="exampleFormControlTextareaSuccessGrayscale1">
             Success textarea
           </label>
           <textarea
             className="form-control is-valid"
-            aria-describedby="successTextareaHelpGray7"
-            id="exampleFormControlTextareaSuccessGray7"
+            aria-describedby="successTextareaHelpGrayscale1"
+            id="exampleFormControlTextareaSuccessGrayscale1"
             rows="3"
           >
             Agreeable content was entered.
           </textarea>
           <small
-            id="successTextareaHelpGray7"
+            id="successTextareaHelpGrayscale1"
             className="form-textarea valid-feedback"
           >
             <span title="Alert" className="fa fa-icon fa-check-circle"></span>
@@ -1899,10 +1899,10 @@ export const CheckboxesAndRadiosWhiteBackground = () => (
   </div>
 );
 
-export const CheckboxesAndRadiosGray1Background = () => (
+export const CheckboxesAndRadiosGrayscale7Background = () => (
   <div style={{ backgroundColor: "#fafafa" }}>
     {/* This div for Storybook display only. */}
-    <form className="uds-form uds-form-gray1">
+    <form className="uds-form uds-form-grayscale7">
       <div className="form-check">
         <input
           className="form-check-input"
@@ -2274,10 +2274,10 @@ export const CheckboxesAndRadiosGray1Background = () => (
   </div>
 );
 
-export const CheckboxesAndRadiosGray2Background = () => (
+export const CheckboxesAndRadiosGrayscale6Background = () => (
   <div style={{ backgroundColor: "#e8e8e8" }}>
     {/* This div for Storybook display only. */}
-    <form className="uds-form uds-form-gray2">
+    <form className="uds-form uds-form-grayscale6">
       <div className="form-check">
         <input
           className="form-check-input"
@@ -2649,10 +2649,10 @@ export const CheckboxesAndRadiosGray2Background = () => (
   </div>
 );
 
-export const CheckboxesAndRadiosGray7Background = () => (
+export const CheckboxesAndRadiosGrayscale1Background = () => (
   <div style={{ backgroundColor: "#191919" }}>
     {/* This div for Storybook display only. */}
-    <form className="uds-form uds-form-gray7">
+    <form className="uds-form uds-form-grayscale1">
       <div className="form-check">
         <input
           className="form-check-input"
@@ -4291,7 +4291,7 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedForm
     </div>
   );
 
-export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidatedFormInNeedsValidationStateGray7Background =
+export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidatedFormInNeedsValidationStateGrayscale1Background =
   () => (
     <div>
       <p>
@@ -4308,7 +4308,7 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidat
 
       <div style={{ backgroundColor: "#191919" }}>
         {/* This div for Storybook display only. */}
-        <form className="uds-form needs-validation uds-form-gray7">
+        <form className="uds-form needs-validation uds-form-grayscale1">
           <div className="form-group">
             <label for="myTextInput">
               <span
@@ -4779,7 +4779,7 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidat
     </div>
   );
 
-export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedFormInWasValidatedStateGray7Background =
+export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedFormInWasValidatedStateGrayscale1Background =
   () => (
     <div>
       <p>
@@ -4796,7 +4796,7 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedForm
 
       <div style={{ backgroundColor: "#191919" }}>
         {/* This div for Storybook display only. */}
-        <form className="uds-form was-validated uds-form-gray7">
+        <form className="uds-form was-validated uds-form-grayscale1">
           <div className="form-group">
             <label for="myTextInput">
               <span

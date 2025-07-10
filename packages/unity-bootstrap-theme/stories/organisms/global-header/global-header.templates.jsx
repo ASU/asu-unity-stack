@@ -2452,9 +2452,9 @@ export const ScrolledState = () => (
           height: "500px",
         }}
       ></div>
-      <div className="bg-gray-6" style={{ height: "70vh" }}></div>
-      <div className="bg-gray-5" style={{ height: "70vh" }}></div>
-      <div className="bg-gray-4" style={{ height: "70vh" }}></div>
+      <div className="bg-grayscale-2" style={{ height: "70vh" }}></div>
+      <div className="bg-grayscale-3" style={{ height: "70vh" }}></div>
+      <div className="bg-grayscale-4" style={{ height: "70vh" }}></div>
     </main>
   </>
 );
