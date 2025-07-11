@@ -59,6 +59,10 @@ const SearchWrapper = styled.form`
         margin: 0;
       }
     }
+
+    input[name="q"] {
+      width: 100%;
+    }
   }
 `;
 
