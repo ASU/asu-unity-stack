@@ -1,3 +1,13 @@
+# [@asu/unity-bootstrap-theme-v1.26.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.26.2...@asu/unity-bootstrap-theme-v1.26.3) (2025-07-11)
+
+
+### Bug Fixes
+
+* **component-header-footer:** updating footer to included privacy button ([fd022c4](https://github.com/ASU/asu-unity-stack/commit/fd022c45ca846c1fa1e2213e951fa431e2b483a6))
+* styles for manual consent opt out ([b028c9f](https://github.com/ASU/asu-unity-stack/commit/b028c9fb6ba32aeaa6dd1dbfb1cdf572e2356740))
+* styles for manual consent opt out version 2 ([35f4452](https://github.com/ASU/asu-unity-stack/commit/35f4452c3c32ff13c71dbbac5c9386774b3bf001))
+* **unity-bootstrap-theme:** blockquotes in mobile view too compressed, need to stack ([84cb73f](https://github.com/ASU/asu-unity-stack/commit/84cb73f260ded56e088555da91debc999f872889))
+
 # [@asu/unity-bootstrap-theme-v1.26.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.26.1...@asu/unity-bootstrap-theme-v1.26.2) (2025-07-07)
 
 
