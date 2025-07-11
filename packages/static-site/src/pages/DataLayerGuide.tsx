@@ -12,10 +12,7 @@ export const bookmarklet = `javascript:(${watchDataLayer.toString()
   .replace(/\s+/g, " ")})();`
 
 const gtmCodes = {
-  universal: "GTM-KDWN8Z",
-  etDev: "GTM-PX7M299",
-  etQA: "GTM-W3FGR6T",
-  etProd: "GTM-WPVTBHL",
+  universal: "GTM-KDWN8Z"
 };
 
 const GtmCodeExample: FC<{ gtmCode: string }> = ({ gtmCode }) => {
@@ -92,27 +89,6 @@ const DataLayerGuide = () => {
             bundled.
           </p>
 
-          <h3>Benefits of Becoming part of GTM Product Community:</h3>
-          <ul>
-            <li>
-              Receive consultation/assistance with GTM implementation and
-              maintenance
-            </li>
-            <li>
-              Receive information on any changes being made to Enterprise UTO
-              GTM and how any changes might affect your site
-            </li>
-            <li>Provide feedback for any changes submitted</li>
-            <li>
-              Become a member of the larger GTM community as a member of a
-              private slack channel to keep up with all the latest GTM news
-            </li>
-            <li>
-              Coming Soon — Link to Service Now Request to register site –
-              https://asu.service-now.com/xxxxxxx
-            </li>
-          </ul>
-
           <h3>Best Practices for Implementing GTM</h3>
           <p>Install on test site first</p>
           <ul>
@@ -155,15 +131,6 @@ const DataLayerGuide = () => {
           <p>Most ASU sites should implement the ASU Universal GTM.</p>
 
           <p>
-            Enterprise sites should implement the ASU Enterprise QA GTM on their
-            &quot;DEV&quot; environment, and the ASU Enterprise Production GTM on their
-            &quot;QA&quot; and &quot;Production&quot; environments. This may be configured using
-            environmental variables. Each environment has its own GTM ID
-            associated with it and care must be taken to use the appropriate GTM
-            ID for each application environment.
-          </p>
-
-          <p>
             Some units have their own GTM IDs. When multiple GTM IDs need to be
             used in a single site or application, follow the guidance on{" "}
             <a href="https://developers.google.com/tag-manager/devguide#multiple-containers">
@@ -174,15 +141,6 @@ const DataLayerGuide = () => {
 
           <h3>ASU universal GTM code</h3>
           <GtmCodeExample gtmCode={gtmCodes.universal} />
-
-          <h3>ET Enterprise Webapp Development GTM</h3>
-          <GtmCodeExample gtmCode={gtmCodes.etDev} />
-
-          <h3>ET Enterprise Webapp QA GTM</h3>
-          <GtmCodeExample gtmCode={gtmCodes.etQA} />
-
-          <h3>ET Enterprise Webapp Production GTM</h3>
-          <GtmCodeExample gtmCode={gtmCodes.etProd} />
 
           <a id="datalayer"></a>
           <h2>Adding the data layer</h2>

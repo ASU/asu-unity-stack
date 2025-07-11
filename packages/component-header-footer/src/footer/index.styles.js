@@ -32,7 +32,8 @@ const StyledFooter = styled.footer`
     a:focus,
     button:focus {
       outline: none;
-      box-shadow: 0 0 0 2px var(--color-base-white), 0 0 0 4px var(--color-base-grey-7) !important;
+      box-shadow: 0 0 0 2px var(--color-base-white),
+        0 0 0 4px var(--color-base-grey-7) !important;
       -webkit-tap-highlight-color: transparent;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
@@ -407,6 +408,27 @@ const StyledFooter = styled.footer`
             justify-self: end;
           }
         }
+      }
+    }
+  }
+
+  //footer manual consent opt-out
+  .footer-legal-links,
+  .footer-menu,
+  .nav {
+    &.colophon #manualConsentoptout,
+    #manualConsentoptout {
+      color: #484848;
+      border: none;
+      background-color: transparent;
+      width: auto;
+      cursor: pointer;
+      padding: 0;
+      text-align: right;
+      justify-self: end;
+      font-size: 1rem;
+      &:hover {
+        text-decoration: underline;
       }
     }
   }
