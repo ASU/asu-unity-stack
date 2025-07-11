@@ -1,3 +1,13 @@
+# [@asu/component-header-footer-v1.0.11](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.10...@asu/component-header-footer-v1.0.11) (2025-07-11)
+
+
+### Bug Fixes
+
+* button type for cookie consent opt out is now a button ([f7cff20](https://github.com/asu/asu-unity-stack/commit/f7cff2084614f88213535d5c3f186d508c5eff1d))
+* **component-header-footer:** updating footer to included privacy button ([fd022c4](https://github.com/asu/asu-unity-stack/commit/fd022c45ca846c1fa1e2213e951fa431e2b483a6))
+* styles for manual consent opt out ([b028c9f](https://github.com/asu/asu-unity-stack/commit/b028c9fb6ba32aeaa6dd1dbfb1cdf572e2356740))
+* styles for manual consent opt out version 2 ([35f4452](https://github.com/asu/asu-unity-stack/commit/35f4452c3c32ff13c71dbbac5c9386774b3bf001))
+
 # [@asu/component-header-footer-v1.0.10](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.9...@asu/component-header-footer-v1.0.10) (2025-05-13)
 
 
