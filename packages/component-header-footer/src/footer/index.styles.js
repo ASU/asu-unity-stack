@@ -418,7 +418,7 @@ const StyledFooter = styled.footer`
   .nav {
     &.colophon #manualConsentoptout,
     #manualConsentoptout {
-      color: #747474;
+      color: #484848;
       border: none;
       background-color: transparent;
       width: auto;
