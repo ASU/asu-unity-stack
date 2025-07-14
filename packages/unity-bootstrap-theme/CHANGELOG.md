@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.26.5](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.26.4...@asu/unity-bootstrap-theme-v1.26.5) (2025-07-14)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix school image styles in global footer ([e31f753](https://github.com/ASU/asu-unity-stack/commit/e31f75336f71a2f51a5e03d1d13069c38891688b))
+
 # [@asu/unity-bootstrap-theme-v1.26.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.26.3...@asu/unity-bootstrap-theme-v1.26.4) (2025-07-14)
 
 
