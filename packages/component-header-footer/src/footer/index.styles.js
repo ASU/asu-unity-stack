@@ -412,6 +412,27 @@ const StyledFooter = styled.footer`
     }
   }
 
+  //footer manual consent opt-out
+  .footer-legal-links,
+  .footer-menu,
+  .nav {
+    &.colophon #manualConsentoptout,
+    #manualConsentoptout {
+      color: #484848;
+      border: none;
+      background-color: transparent;
+      width: auto;
+      cursor: pointer;
+      padding: 0;
+      text-align: right;
+      justify-self: end;
+      font-size: 1rem;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
   // Bootstrap Default Stylings
   .row {
     --bs-gutter-x: 24px;
