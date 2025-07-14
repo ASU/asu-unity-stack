@@ -135,10 +135,7 @@ export const GlobalElementsOnly = () => (
               >
                 Privacy
               </a>
-              <button
-                type="button"
-                id="manualConsentoptout"
-              >
+              <button type="button" id="manualConsentoptout">
                 Manage my privacy settings
               </button>
             </nav>
@@ -371,10 +368,7 @@ export const ZeroColumns = () => (
               >
                 Privacy
               </a>
-              <button
-              type="button"
-                id="manualConsentoptout"
-              >
+              <button type="button" id="manualConsentoptout">
                 Manage my privacy settings
               </button>
             </nav>
@@ -627,10 +621,7 @@ export const OneColumn = () => (
               >
                 Privacy
               </a>
-              <button
-              type="button"
-                id="manualConsentoptout"
-              >
+              <button type="button" id="manualConsentoptout">
                 Manage my privacy settings
               </button>
             </nav>
@@ -794,10 +785,7 @@ export const OneColumnNoLogoOrSocial = () => (
               >
                 Privacy
               </a>
-              <button
-              type="button"
-                id="manualConsentoptout"
-              >
+              <button type="button" id="manualConsentoptout">
                 Manage my privacy settings
               </button>
             </nav>
@@ -1095,10 +1083,7 @@ export const TwoColumns = () => (
               >
                 Privacy
               </a>
-              <button
-              type="button"
-                id="manualConsentoptout"
-              >
+              <button type="button" id="manualConsentoptout">
                 Manage my privacy settings
               </button>
             </nav>
@@ -1444,10 +1429,7 @@ export const ThreeColumns = () => (
               >
                 Privacy
               </a>
-              <button
-              type="button"
-                id="manualConsentoptout"
-              >
+              <button type="button" id="manualConsentoptout">
                 Manage my privacy settings
               </button>
             </nav>
@@ -1841,10 +1823,7 @@ export const FourColumns = () => (
               >
                 Privacy
               </a>
-              <button
-              type="button"
-                id="manualConsentoptout"
-              >
+              <button type="button" id="manualConsentoptout">
                 Manage my privacy settings
               </button>
             </nav>
@@ -2286,10 +2265,7 @@ export const FiveColumns = () => (
               >
                 Privacy
               </a>
-              <button
-              type="button"
-                id="manualConsentoptout"
-              >
+              <button type="button" id="manualConsentoptout">
                 Manage my privacy settings
               </button>
             </nav>
@@ -2774,10 +2750,7 @@ export const SixColumns = () => (
                 >
                   Privacy
                 </a>
-                <button
-                  type="button"
-                  id="manualConsentoptout"
-                >
+                <button type="button" id="manualConsentoptout">
                   Manage my privacy settings
                 </button>
               </nav>
