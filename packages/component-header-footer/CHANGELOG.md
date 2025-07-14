@@ -1,3 +1,11 @@
+# [@asu/component-header-footer-v1.0.12](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.11...@asu/component-header-footer-v1.0.12) (2025-07-14)
+
+
+### Bug Fixes
+
+* **component-header-footer:** fix school logo in footer styles ([f25e7c1](https://github.com/asu/asu-unity-stack/commit/f25e7c1fce0ead0f3f2be0d50cd3faeb91d82f8e))
+* **component-header-footer:** update url params for a11y to use fragments instead of params ([9f0481a](https://github.com/asu/asu-unity-stack/commit/9f0481ae63b465dea65452b1e93bd58596d5ac87))
+
 # [@asu/component-header-footer-v1.0.11](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.10...@asu/component-header-footer-v1.0.11) (2025-07-11)
 
 
