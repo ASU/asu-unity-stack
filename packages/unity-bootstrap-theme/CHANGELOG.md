@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.26.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.26.3...@asu/unity-bootstrap-theme-v1.26.4) (2025-07-14)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** cSS Padding added to images without header ([5d3a4f2](https://github.com/ASU/asu-unity-stack/commit/5d3a4f2170346ca5f5b4a8a17fcbcb1c9a4f863c))
+
 # [@asu/unity-bootstrap-theme-v1.26.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.26.2...@asu/unity-bootstrap-theme-v1.26.3) (2025-07-11)
 
 
