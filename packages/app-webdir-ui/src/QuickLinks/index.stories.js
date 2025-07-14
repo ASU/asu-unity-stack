@@ -2,7 +2,7 @@ import React from "react";
 
 import { QuickLinks } from "./index";
 
-import { defaultDecorator } from "../../../../shared/components/Layout";
+import { defaultDecorator } from "@asu/shared";
 
 export default {
   title: "Atoms/QuickLinks/Template",

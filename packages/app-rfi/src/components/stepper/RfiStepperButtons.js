@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import { Button } from "reactstrap";
 
-import { trackGAEvent } from "../../../../../shared";
+import { trackGAEvent } from "@asu/shared";
 // Note on the spans around the FA i tags below:
 // When the host site/app deploys FA such that it replaces the i's with svg
 // tags, when React tries to rewrite the DOM we get hit with the error

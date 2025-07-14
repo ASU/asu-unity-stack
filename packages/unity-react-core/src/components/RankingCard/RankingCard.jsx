@@ -1,8 +1,8 @@
+import { sanitizeDangerousMarkup } from "@asu/shared";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { useState, useId } from "react";
 
-import { sanitizeDangerousMarkup } from "../../../../../shared";
 import { GaEventWrapper } from "../GaEventWrapper/GaEventWrapper";
 import { useBaseSpecificFramework } from "../GaEventWrapper/useBaseSpecificFramework";
 import { Image } from "../Image/Image";
@@ -52,7 +52,6 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
           })}
         >
           {isSmall && (
-            // eslint-disable-next-line react/no-danger
             <p dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)} />
           )}
           <GaEventWrapper
@@ -82,14 +81,13 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
               {isSmall ? (
                 <span className="visually-hidden">{heading}</span>
               ) : (
-                <h4 >{heading}</h4>
+                <h4>{heading}</h4>
               )}
               <i className="fas fa-chevron-up" />
             </button>
           </GaEventWrapper>
         </div>
         {!isSmall && (
-          // eslint-disable-next-line react/no-danger
           <p dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)} />
         )}
         {readMoreLink && (

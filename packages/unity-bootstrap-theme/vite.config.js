@@ -4,13 +4,17 @@ import { defineConfig, transformWithEsbuild } from "vite";
 
 import pkg from "./package.json";
 
-const getName = ({originalFileNames}) => {
+const getName = ({ originalFileNames }) => {
   // regex matches string after last slash and before the last dot
   // e.g. /path/to/file.css -> file
   // e.g. /path/to/file.min.css -> file.min
-  const name = originalFileNames?.at(0)?.match(/\/([^/]*)?\..*$/).at(1) || "[name]";
+  const name =
+    originalFileNames
+      ?.at(0)
+      ?.match(/\/([^/]*)?\..*$/)
+      .at(1) || "[name]";
   return name;
-}
+};
 
 /** @type {import('vite').UserConfig} */
 const c = {
@@ -54,9 +58,9 @@ const c = {
         globals: {
           "chart.js": "Chart",
         },
-        entryFileNames: (info) => `js/${getName(info)}.[format].js`,
-        chunkFileNames: (info) => `js/${getName(info)}.[format].js`,
-        assetFileNames: (info) => `css/${getName(info)}.[ext]`,
+        entryFileNames: info => `js/${getName(info)}.[format].js`,
+        chunkFileNames: info => `js/${getName(info)}.[format].js`,
+        assetFileNames: info => `css/${getName(info)}.[ext]`,
       },
     },
   },
@@ -78,8 +82,8 @@ const c = {
   resolve: {
     alias: [
       {
-        find: "@shared",
-        replacement: resolve(__dirname, "../../shared"),
+        find: "@asu/shared",
+        replacement: resolve(__dirname, "../shared"),
       },
     ],
   },

@@ -1,29 +1,25 @@
 import React from "react";
-
-import { imageName } from "../../../../../shared/assets";
-import { defaultDecorator } from "../../../../../shared/components/Layout";
+import { imageName } from "@asu/shared";
+import { defaultDecorator } from "@asu/shared";
 
 export default {
   title: "Molecules/Content Sections/Card And Image/Templates",
-  decorators: [ defaultDecorator ],
+  decorators: [defaultDecorator],
   argTypes: {
     left: {
       name: "Left",
       control: { type: "boolean" },
     },
   },
-  args: {left: true},
+  args: { left: true },
 };
 
-export const LeftFloatedCard = ({left}) => {
+export const LeftFloatedCard = ({ left }) => {
   return (
     <div
-      className={`uds-card-and-image ${
-        left ? "" : "uds-card-and-image-right"
-      }`}
+      className={`uds-card-and-image ${left ? "" : "uds-card-and-image-right"}`}
       style={{
-        backgroundImage:
-          `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('${ imageName.hero02 }')`,
+        backgroundImage: `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('${imageName.hero02}')`,
       }}
     >
       <div className="uds-content-align">
@@ -70,15 +66,12 @@ export const LeftFloatedCard = ({left}) => {
   );
 };
 
-export const RightFloatedCard = ({left}) => {
+export const RightFloatedCard = ({ left }) => {
   return (
     <div
-      className={`uds-card-and-image ${
-        left ? "" : "uds-card-and-image-right"
-      }`}
+      className={`uds-card-and-image ${left ? "" : "uds-card-and-image-right"}`}
       style={{
-        backgroundImage:
-          `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('${ imageName.hero02 }')`,
+        backgroundImage: `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('${imageName.hero02}')`,
       }}
     >
       <div className="uds-content-align">

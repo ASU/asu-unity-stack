@@ -1,11 +1,10 @@
 import React from "react";
-
-import { defaultDecorator } from "../../../../../shared/components/Layout";
-import cardsImage from '../cards/cards-image.jpg';
+import { defaultDecorator } from "@asu/shared";
+import cardsImage from "../cards/cards-image.jpg";
 
 export default {
   title: "Molecules/Image Based Cards/Templates",
-  decorators: [ defaultDecorator ],
+  decorators: [defaultDecorator],
   parameters: { controls: { disable: true } },
 };
 

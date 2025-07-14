@@ -1,9 +1,9 @@
 // @ts-check
+import { trackGAEvent } from "@asu/shared";
 import { faTimes, faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 
-import { trackGAEvent } from "../../../../../../shared";
 import { useAppContext } from "../../core/context/app-context";
 import { useIsMobile } from "../../core/hooks/isMobile";
 import { UniversalNavbar } from "../UniversalNavbar";

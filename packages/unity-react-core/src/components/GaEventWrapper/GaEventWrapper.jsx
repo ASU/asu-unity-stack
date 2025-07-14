@@ -27,10 +27,10 @@
  * @param {GaEventWrapper} props - The props for the component.
  * @returns {import("react").ReactElement} The wrapped child element with GA tracking.
  */
+import { trackGAEvent } from "@asu/shared";
 import React from "react";
 
 // @ts-ignore
-import { trackGAEvent } from "../../../../../shared";
 import { useBaseSpecificFramework } from "./useBaseSpecificFramework";
 
 /**

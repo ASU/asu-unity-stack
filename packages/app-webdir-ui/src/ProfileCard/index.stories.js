@@ -1,6 +1,6 @@
 import React from "react";
 
-import { defaultDecorator } from "../../../../shared/components/Layout";
+import { defaultDecorator } from "@asu/shared";
 import { staffConverter } from "../helpers/dataConverter";
 import data from "./mock-data";
 

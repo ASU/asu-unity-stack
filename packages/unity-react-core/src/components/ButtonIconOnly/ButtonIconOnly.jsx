@@ -53,7 +53,6 @@ export const ButtonIconOnly = ({
         ref={innerRef}
         aria-label="Close"
         onClick={handleClick}
-        // eslint-disable-next-line react/jsx-props-no-spreading
         {...rest}
       >
         <i className={`${icon?.[0]} fa-${icon?.[1]}`} />

@@ -1,13 +1,12 @@
-/* eslint-disable react/no-danger */
 import React from "react";
 
-import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
+import { gaEventPropTypes, trackGAEvent } from "@asu/shared";
 import { KEY } from "../../../core/utils/constants";
 import { useRfiContext } from "../../../core/utils/rfiContext";
 import { RfiCheckboxSingle } from "../../controls";
 
 /**
- * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
+ * @param {{ gaData: import("@asu/shared").GAEventObject}} props
  */
 export const GdprConsent = ({ gaData }) => {
   const {

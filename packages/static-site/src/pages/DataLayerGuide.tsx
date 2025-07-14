@@ -3,16 +3,17 @@ import { Link } from "react-router-dom";
 import { PagePaths } from "~/routes/config";
 import { default as watchDataLayer } from "~/utils/watchDataLayerBookmarklet?raw";
 
-export const bookmarklet = `javascript:(${watchDataLayer.toString()
+export const bookmarklet = `javascript:(${watchDataLayer
+  .toString()
   // remove line breaks
-  .replace(/\n/g,"")
+  .replace(/\n/g, "")
   // remove comments
   .replace(/\/\*.*?\*\//g, "")
   // replace multiple spaces with a single space
-  .replace(/\s+/g, " ")})();`
+  .replace(/\s+/g, " ")})();`;
 
 const gtmCodes = {
-  universal: "GTM-KDWN8Z"
+  universal: "GTM-KDWN8Z",
 };
 
 const GtmCodeExample: FC<{ gtmCode: string }> = ({ gtmCode }) => {
@@ -74,9 +75,7 @@ const DataLayerGuide = () => {
               </a>
             </li>
             <li>
-              <a href="#watchdatalayer">
-                Watching the data layer
-              </a>
+              <a href="#watchdatalayer">Watching the data layer</a>
             </li>
           </ul>
 
@@ -84,8 +83,10 @@ const DataLayerGuide = () => {
           <h2>Google Tag Manager</h2>
           <p>
             Before implementing Google Tag Manager yourself, please review the{" "}
-            <Link to={PagePaths.HEADERGUIDE}>options for obtaining the ASU Header</Link>. Some
-            options provide the ASU Google Tag Manager code automatically
+            <Link to={PagePaths.HEADERGUIDE}>
+              options for obtaining the ASU Header
+            </Link>
+            . Some options provide the ASU Google Tag Manager code automatically
             bundled.
           </p>
 
@@ -177,12 +178,15 @@ const DataLayerGuide = () => {
             related to your `data-ga` attributes and to push that event to the
             data layer. As a help to get you started, the
             `unity-bootstrap-theme` package&apos;s{" "}
-            <a href="https://github.com/ASU/asu-unity-stack/blob/dev/packages/unity-bootstrap-theme/src/js/data-layer.js" target="_blank" rel="noreferrer">
+            <a
+              href="https://github.com/ASU/asu-unity-stack/blob/dev/packages/unity-bootstrap-theme/src/js/data-layer.js"
+              target="_blank"
+              rel="noreferrer"
+            >
               src/js/data-layer.js
             </a>{" "}
-            file can
-            serve as a starting point or as a reference for implementing your
-            own data layer push code.
+            file can serve as a starting point or as a reference for
+            implementing your own data layer push code.
           </p>
 
           <p>
@@ -191,9 +195,10 @@ const DataLayerGuide = () => {
             Bootstrap header: <br />
           </p>
           <p>
-            Including the following script tag will automatically initialize the GA push events and header scroll
-            behavior and should be placed in the <strong>{`<head>`}</strong> tag of your HTML.
-            The script has event listeners to initialize on the window load event.
+            Including the following script tag will automatically initialize the
+            GA push events and header scroll behavior and should be placed in
+            the <strong>{`<head>`}</strong> tag of your HTML. The script has
+            event listeners to initialize on the window load event.
           </p>
           <pre>
             <code>
@@ -203,7 +208,10 @@ const DataLayerGuide = () => {
             </code>
           </pre>
           <p>
-            If for some reason your setup includes the script after the window load event has already occurred, you can call the initialization functions directly, by using the global variable <strong>{`unityBootstrap`}</strong>.
+            If for some reason your setup includes the script after the window
+            load event has already occurred, you can call the initialization
+            functions directly, by using the global variable{" "}
+            <strong>{`unityBootstrap`}</strong>.
           </p>
           <pre>
             <code>
@@ -222,32 +230,27 @@ const DataLayerGuide = () => {
           <p>
             Drag this link to your bookmarks bar. When you are on a page with
             data layer events, clicking the bookmarklet will execute a tiny
-            script which will output data layer events to the console.<br/><br/>
+            script which will output data layer events to the console.
+            <br />
+            <br />
             <a href={bookmarklet}>Watch DataLayer</a>
           </p>
-            <h3>
-              Only Run Code You Trust
-              </h3>
-            <p>
-              As a user, always exercise caution when running code. Only click
-              or add bookmarklets if at least one of the following applies:
-                <ul>
-                  <li>
-                    The source is reputable.
-                  </li>
-                  <li>
-                    You understand JavaScript and have reviewed the code
-                    yourself.
-                  </li>
-                  <li>
-                    A trusted individual who knows JavaScript has reviewed the
-                    code for you.
-                  </li>
-                </ul>
-
-
-            </p>
-            <h3>Bookmarklet Source code</h3>
+          <h3>Only Run Code You Trust</h3>
+          <p>
+            As a user, always exercise caution when running code. Only click or
+            add bookmarklets if at least one of the following applies:
+            <ul>
+              <li>The source is reputable.</li>
+              <li>
+                You understand JavaScript and have reviewed the code yourself.
+              </li>
+              <li>
+                A trusted individual who knows JavaScript has reviewed the code
+                for you.
+              </li>
+            </ul>
+          </p>
+          <h3>Bookmarklet Source code</h3>
           <pre>
             <code>
               {`

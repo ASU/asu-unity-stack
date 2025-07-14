@@ -1,25 +1,25 @@
 import { EventHandler } from "./bootstrap-helper";
 
-  const initGlobalHeader = () => {
-    // Scroll state
-    const handleWindowScroll = () => {
-      const headerEl = document.getElementById('asu-header');
-      const curPos = window.scrollY;
-      curPos > headerEl?.getBoundingClientRect().top
-      ? headerEl?.classList.add('scrolled')
-      : headerEl?.classList.remove('scrolled');
-    };
-
-    EventHandler.on(window, 'scroll.uds.header', handleWindowScroll);
+const initGlobalHeader = () => {
+  // Scroll state
+  const handleWindowScroll = () => {
+    const headerEl = document.getElementById("asu-header");
+    const curPos = window.scrollY;
+    curPos > headerEl?.getBoundingClientRect().top
+      ? headerEl?.classList.add("scrolled")
+      : headerEl?.classList.remove("scrolled");
   };
 
-  window.initGlobalHeader = window.initGlobalHeader || initGlobalHeader;
+  EventHandler.on(window, "scroll.uds.header", handleWindowScroll);
+};
 
-  /* Function must be initialized after document load
-   * Example:
-   *   window.initGlobalHeader();
-   */
+window.initGlobalHeader = window.initGlobalHeader || initGlobalHeader;
 
-  EventHandler.on(window, 'load.uds.global-header', initGlobalHeader);
+/* Function must be initialized after document load
+ * Example:
+ *   window.initGlobalHeader();
+ */
+
+EventHandler.on(window, "load.uds.global-header", initGlobalHeader);
 
 export { initGlobalHeader };

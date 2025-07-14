@@ -1,10 +1,11 @@
+import { imageAny } from "@asu/shared";
 import { render, cleanup } from "@testing-library/react";
 import React from "react";
 import { expect, describe, it, afterEach, beforeEach } from "vitest";
 
 // @ts-ignore
-import img from "../../../../../shared/assets/img/named/img001.jpg";
 import { Image } from "./Image";
+const img = imageAny();
 
 const renderImage = props => {
   return render(<Image {...{ ...props }} />);

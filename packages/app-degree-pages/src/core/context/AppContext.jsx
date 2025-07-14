@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 // @ts-check
 import PropTypes from "prop-types";
 import React, { createContext, useMemo } from "react";

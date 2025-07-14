@@ -8,7 +8,7 @@ import { Article } from "../../components/Article/Article";
 import { Button } from "../../components/Button/Button";
 import { ButtonIconOnly } from "../../components/ButtonIconOnly/ButtonIconOnly";
 import { ButtonTag } from "../../components/ButtonTag/ButtonTag";
-// eslint-disable-next-line import/no-cycle
+
 import { Card } from "../../components/Card/Card";
 import {
   initCardCarousel,

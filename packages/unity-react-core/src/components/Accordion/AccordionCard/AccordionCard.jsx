@@ -1,9 +1,9 @@
 // @ts-check
+import { sanitizeDangerousMarkup } from "@asu/shared";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { sanitizeDangerousMarkup } from "../../../../../../shared";
 import { accordionCardPropTypes } from "../../../core/models/shared-prop-types";
 import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
 
@@ -70,7 +70,6 @@ export const AccordionCard = ({ id, item, openCard, onClick, gaData }) => {
         >
           <div
             className="accordion-body"
-            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={sanitizeDangerousMarkup(item.content.body)}
           />
         </div>
@@ -84,6 +83,6 @@ AccordionCard.propTypes = {
   item: accordionCardPropTypes,
   openCard: PropTypes.number,
   onClick: PropTypes.func,
-  // eslint-disable-next-line react/forbid-prop-types
+
   gaData: PropTypes.object,
 };

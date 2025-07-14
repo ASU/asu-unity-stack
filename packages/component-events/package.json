@@ -24,7 +24,7 @@
     "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
-    "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
+    "lint": "eslint --fix 'src/**/*.{js,jsx}' ",
     "test": "vitest --watch=false",
     "test-update-snapshot": "yarn test -- -u",
     "build": "vite build && yarn postbuild",
@@ -59,7 +59,6 @@
     "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^5.2.4",
     "dotenv-webpack": "^7.0.3",
-    "eslint-plugin-storybook": "^0.6.15",
     "express": "^4.17.1",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.2",

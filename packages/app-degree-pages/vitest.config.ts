@@ -11,10 +11,5 @@ export default defineConfig({
     globals: true,
     include: ['./src/**/*.{test,spec}.{js,ts,jsx,tsx}'],
   },
-  resolve: {
-    alias: {
-      "@shared": resolve(__dirname, "./../../shared"),
-    }
-  },
 });
 

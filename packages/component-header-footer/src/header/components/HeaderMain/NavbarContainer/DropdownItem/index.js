@@ -1,9 +1,8 @@
 // @ts-check
+import { idGenerator, trackGAEvent } from "@asu/shared";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 
-import { idGenerator, trackGAEvent } from "../../../../../../../../shared";
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { useAppContext } from "../../../../core/context/app-context";
 import { ButtonPropTypes } from "../../../../core/models/app-prop-types";
 import { Button } from "../../../Button";

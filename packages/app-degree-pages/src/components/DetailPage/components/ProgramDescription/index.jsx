@@ -1,7 +1,7 @@
+import { sanitizeDangerousMarkup } from "@asu/shared";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { sanitizeDangerousMarkup } from "../../../../../../../shared";
 import { STEM_OPT_HEADER_TEXT } from "../../../../core/constants";
 
 /** @typedef {import('../../../../core/types/detail-page-types').ProgramDescriptionProps} ProgramDescriptionProps */
@@ -17,7 +17,6 @@ function ProgramDescription({ content, stemOptText, programNotFound }) {
       <h2>{programNotFound ? `Program not found` : `Program description`}</h2>
       <div
         data-testid="program-description-body"
-        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={sanitizeDangerousMarkup(content)}
       />
       {stemOptText && (
@@ -27,7 +26,6 @@ function ProgramDescription({ content, stemOptText, programNotFound }) {
           </p>
           <div
             data-testid="stem-opt-text"
-            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={sanitizeDangerousMarkup(stemOptText)}
           />
         </>

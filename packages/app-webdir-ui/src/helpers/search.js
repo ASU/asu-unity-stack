@@ -181,9 +181,8 @@ const webDirDeptsFormatter = ({
   let localPage = 1;
   if (engines[engineName].name === engineNames.WEB_DIRECTORY_PEOPLE_AND_DEPS) {
     localResults = results.map(datum => {
-      // eslint-disable-next-line camelcase
       const { full_record, ...basicFields } = datum;
-      // eslint-disable-next-line camelcase
+
       return { ...basicFields, ...full_record };
     });
   } else {

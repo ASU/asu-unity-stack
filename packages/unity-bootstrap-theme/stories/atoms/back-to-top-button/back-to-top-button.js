@@ -1,5 +1,5 @@
 (function () {
-  window.addEventListener('DOMContentLoaded', function () {
+  window.addEventListener("DOMContentLoaded", function () {
     let hasScrolledToNecessaryDepth = false;
     // Safari || Chrome, Firefox, IE, Opera
     let previousScrollPosition =
@@ -12,8 +12,8 @@
       // If back at top, hide the button
       if (currentScrollPosition === 0) {
         hasScrolledToNecessaryDepth = false;
-        document.getElementById('uds-back-to-top').className =
-          'uds-back-to-top-button';
+        document.getElementById("uds-back-to-top").className =
+          "uds-back-to-top-button";
       }
       // If scrolling past 150% vh, allow button to be displayed once scrolling back up
       else if (
@@ -27,16 +27,16 @@
         hasScrolledToNecessaryDepth &&
         currentScrollPosition < previousScrollPosition
       ) {
-        document.getElementById('uds-back-to-top').className =
-          'uds-back-to-top-button uds-back-to-top-button-show';
+        document.getElementById("uds-back-to-top").className =
+          "uds-back-to-top-button uds-back-to-top-button-show";
       }
 
       previousScrollPosition = currentScrollPosition;
     };
 
     document
-      .getElementById('uds-back-to-top')
-      .addEventListener('click', scrollToTop);
+      .getElementById("uds-back-to-top")
+      .addEventListener("click", scrollToTop);
   });
 
   const scrollToTop = () => {

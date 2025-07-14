@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
+import { gaEventPropTypes, trackGAEvent } from "@asu/shared";
 import {
   KEY,
   STUDENT,
@@ -10,7 +10,7 @@ import { useRfiContext } from "../../../core/utils/rfiContext";
 import { RfiSelect } from "../../controls";
 
 /**
- * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
+ * @param {{ gaData: import("@asu/shared").GAEventObject}} props
  */
 export const CareerAndStudentType = ({ gaData }) => {
   const label = "Select your student status";

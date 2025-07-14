@@ -30,7 +30,7 @@
   "scripts": {
     "create": "plop",
     "dev": "yarn storybook & yarn testui",
-    "lint": "eslint --fix 'src/**/*.{js,jsx}' --ignore-path ../../.eslintignore",
+    "lint": "eslint --fix 'src/**/*.{js,jsx}' ",
     "test": "vitest --watch=false",
     "test:accessibility": "playwright test",
     "testui": "vitest --ui",
@@ -49,6 +49,7 @@
     "test:browser": "vitest --workspace=vitest.workspace.ts"
   },
   "devDependencies": {
+    "@asu/shared": "*",
     "@asu/unity-bootstrap-theme": "^1.21.3",
     "@babel/cli": "^7.19.3",
     "@babel/core": "^7.21.3",
@@ -85,8 +86,6 @@
     "babel-loader": "^8.2.2",
     "chromium-bidi": "^3.0.0",
     "css-loader": "^5.2.0",
-    "eslint": "^8.37.0",
-    "eslint-plugin-storybook": "^0.11.2",
     "file-loader": "^6.2.0",
     "glob": "^7.1.6",
     "html-entities": "^2.3.1",

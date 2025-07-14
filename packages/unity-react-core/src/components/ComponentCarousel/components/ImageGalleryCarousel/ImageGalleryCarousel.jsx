@@ -129,7 +129,6 @@ const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
     const currentSlider = document.querySelector(`#${instanceName}`);
 
     function onDataCurrentIndexChange(mutations) {
-      // eslint-disable-next-line no-restricted-syntax
       for (const mutation of mutations) {
         if (mutation && mutation.attributeName === ATTR_INDEX) {
           return onItemClick(+currentSlider.getAttribute(ATTR_INDEX));
@@ -169,7 +168,7 @@ const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
         >
           <div className="uds-caption-text">
             {title ? <h3>{title}</h3> : null}
-            {/* eslint-disable-next-line react/no-danger */}
+            {}
             <div dangerouslySetInnerHTML={{ __html: content }} />
           </div>
         </figcaption>

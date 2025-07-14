@@ -1,8 +1,8 @@
-/* eslint react/jsx-props-no-spreading: "off" */
+import { imageAny } from "@asu/shared";
 import React from "react";
+const img = imageAny();
 
 // @ts-ignore
-import img from "../../../../../shared/assets/img/named/hero01.jpg";
 import { Article } from "./Article";
 
 export default {

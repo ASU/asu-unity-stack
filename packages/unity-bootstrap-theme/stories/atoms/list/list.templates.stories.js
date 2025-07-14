@@ -1,18 +1,17 @@
 import React from "react";
-
-import { defaultDecorator } from "../../../../../shared/components/Layout";
+import { defaultDecorator } from "@asu/shared";
 
 export default {
   title: "Atoms/List/Templates",
-  decorators: [ defaultDecorator ],
+  decorators: [defaultDecorator],
   argTypes: {
     bulletColor: {
       name: "Bullet Color",
       options: ["Default", "Maroon", "Gold"],
       mapping: {
-        "Default": null,
-        "Maroon": "maroon",
-        "Gold": "gold",
+        Default: null,
+        Maroon: "maroon",
+        Gold: "gold",
       },
       control: {
         type: "radio",
@@ -38,7 +37,7 @@ export default {
   },
 };
 
-export const UnorderedList = ({bulletColor, backgroundColor}) => {
+export const UnorderedList = ({ bulletColor, backgroundColor }) => {
   return (
     <ul className={`uds-list ${bulletColor} ${backgroundColor}`}>
       <li>Lorem ipsum dolor sit amet</li>
@@ -53,7 +52,7 @@ export const UnorderedList = ({bulletColor, backgroundColor}) => {
   );
 };
 
-export const OrderedList = ({bulletColor, backgroundColor}) => {
+export const OrderedList = ({ bulletColor, backgroundColor }) => {
   return (
     <ol className={`uds-list ${bulletColor} ${backgroundColor}`}>
       <li>Lorem ipsum dolor sit amet</li>
@@ -107,24 +106,24 @@ export const OrderedList = ({bulletColor, backgroundColor}) => {
   );
 };
 
-export const IconList = ({bulletColor, backgroundColor}) => {
+export const IconList = ({ bulletColor, backgroundColor }) => {
   return (
     <ul className={`uds-list fa-ul ${bulletColor} ${backgroundColor}`}>
       <li>
         <span className="fa-li fas fa-rocket"></span>Lorem ipsum dolor sit amet
       </li>
       <li>
-        <span className="fa-li fas fa-bus"></span>Consectetur adipiscing lorem ipsum
-        dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        <span className="fa-li fas fa-bus"></span>Consectetur adipiscing lorem
+        ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
         incididunt ut labore et dolore magna aliqua.
       </li>
       <li>
-        <span className="fa-li fas fa-car"></span>Ipsum dolor sit amet, consectetur
-        adipiscing elit.
+        <span className="fa-li fas fa-car"></span>Ipsum dolor sit amet,
+        consectetur adipiscing elit.
       </li>
       <li>
-        <span className="fa-li fas fa-bicycle"></span>We hide icons from assistive
-        technology in these examples, but whether to hide using
+        <span className="fa-li fas fa-bicycle"></span>We hide icons from
+        assistive technology in these examples, but whether to hide using
         aria-hidden="true" or not should be determined by the developer based on
         whether the icons are intended as decoration only or are intended to
         convey meaning. See{" "}
@@ -137,7 +136,7 @@ export const IconList = ({bulletColor, backgroundColor}) => {
   );
 };
 
-export const StepList = ({bulletColor, backgroundColor}) => {
+export const StepList = ({ bulletColor, backgroundColor }) => {
   return (
     <ol
       className={`uds-list uds-steplist ${
@@ -175,7 +174,7 @@ export const StepList = ({bulletColor, backgroundColor}) => {
   );
 };
 
-export const DisplayList = ({bulletColor, backgroundColor}) => {
+export const DisplayList = ({ bulletColor, backgroundColor }) => {
   return (
     <ul
       className={`uds-list uds-display-list ${bulletColor} ${backgroundColor}`}

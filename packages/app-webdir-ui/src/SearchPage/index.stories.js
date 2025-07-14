@@ -2,7 +2,7 @@ import React from "react";
 
 import { SearchPage } from "./index";
 
-import { FullLayout } from "../../../../shared/components/Layout";
+import { FullLayout } from "@asu/shared";
 
 export default {
   title: "Organisms/Search Page/Templates",

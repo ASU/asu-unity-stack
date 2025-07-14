@@ -1,17 +1,11 @@
 import React from "react";
-
-import { defaultDecorator } from "../../../../../shared/components/Layout.js";
+import { defaultDecorator } from "@asu/shared";
 export default {
   title: "Atoms/Accordions/Templates",
   decorators: [defaultDecorator],
 };
 
-
-const Template = ({
-  accordionID = "",
-  linkID = "",
-  bodyID = ""
-}) => (
+const Template = ({ accordionID = "", linkID = "", bodyID = "" }) => (
   <div className="accordion">
     <div className="accordion-item mt-3">
       <div className="accordion-header">
@@ -71,21 +65,25 @@ export const FoldableCard = Template.bind({});
 FoldableCard.args = {
   linkID: "card",
   bodyID: "cardBody",
-}
+};
 
-export const Accordion = () =>
+export const Accordion = () => (
   <div className="accordion" id="accordionExample">
     <Template
       accordionID="accordionExample"
       linkID="cardOne"
-      bodyID="cardBodyOne" />
+      bodyID="cardBodyOne"
+    />
     <Template
       accordionID="accordionExample"
       linkID="cardTwo"
-      bodyID="cardBodyTwo" />
+      bodyID="cardBodyTwo"
+    />
     <Template
       accordionID="accordionExample"
       linkID="cardThree"
-      bodyID="cardBodyThree" />
-  </div>;
+      bodyID="cardBodyThree"
+    />
+  </div>
+);
 Accordion.parameters = { controls: { disable: true } };
