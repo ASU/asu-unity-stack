@@ -126,6 +126,18 @@ export const GlobalElementsOnly = () => (
               >
                 Emergency
               </a>
+              <a
+                className="nav-link"
+                href="https://www.asu.edu/about/privacy"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="tertiary footer"
+                data-ga-footer="privacy"
+              >
+                Privacy
+              </a>
+              <button type="button" id="manualConsentoptout">
+                Manage my privacy settings
+              </button>
             </nav>
           </div>
         </div>
@@ -347,6 +359,18 @@ export const ZeroColumns = () => (
               >
                 Emergency
               </a>
+              <a
+                className="nav-link"
+                href="https://www.asu.edu/about/privacy"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="tertiary footer"
+                data-ga-footer="privacy"
+              >
+                Privacy
+              </a>
+              <button type="button" id="manualConsentoptout">
+                Manage my privacy settings
+              </button>
             </nav>
           </div>
         </div>
@@ -588,6 +612,18 @@ export const OneColumn = () => (
               >
                 Emergency
               </a>
+              <a
+                className="nav-link"
+                href="https://www.asu.edu/about/privacy"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="tertiary footer"
+                data-ga-footer="privacy"
+              >
+                Privacy
+              </a>
+              <button type="button" id="manualConsentoptout">
+                Manage my privacy settings
+              </button>
             </nav>
           </div>
         </div>
@@ -740,6 +776,18 @@ export const OneColumnNoLogoOrSocial = () => (
               >
                 Emergency
               </a>
+              <a
+                className="nav-link"
+                href="https://www.asu.edu/about/privacy"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="tertiary footer"
+                data-ga-footer="privacy"
+              >
+                Privacy
+              </a>
+              <button type="button" id="manualConsentoptout">
+                Manage my privacy settings
+              </button>
             </nav>
           </div>
         </div>
@@ -1026,6 +1074,18 @@ export const TwoColumns = () => (
               >
                 Emergency
               </a>
+              <a
+                className="nav-link"
+                href="https://www.asu.edu/about/privacy"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="tertiary footer"
+                data-ga-footer="privacy"
+              >
+                Privacy
+              </a>
+              <button type="button" id="manualConsentoptout">
+                Manage my privacy settings
+              </button>
             </nav>
           </div>
         </div>
@@ -1360,6 +1420,18 @@ export const ThreeColumns = () => (
               >
                 Emergency
               </a>
+              <a
+                className="nav-link"
+                href="https://www.asu.edu/about/privacy"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="tertiary footer"
+                data-ga-footer="privacy"
+              >
+                Privacy
+              </a>
+              <button type="button" id="manualConsentoptout">
+                Manage my privacy settings
+              </button>
             </nav>
           </div>
         </div>
@@ -1742,6 +1814,18 @@ export const FourColumns = () => (
               >
                 Emergency
               </a>
+              <a
+                className="nav-link"
+                href="https://www.asu.edu/about/privacy"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="tertiary footer"
+                data-ga-footer="privacy"
+              >
+                Privacy
+              </a>
+              <button type="button" id="manualConsentoptout">
+                Manage my privacy settings
+              </button>
             </nav>
           </div>
         </div>
@@ -2172,6 +2256,18 @@ export const FiveColumns = () => (
               >
                 Emergency
               </a>
+              <a
+                className="nav-link"
+                href="https://www.asu.edu/about/privacy"
+                data-ga-footer-type="internal link"
+                data-ga-footer-section="tertiary footer"
+                data-ga-footer="privacy"
+              >
+                Privacy
+              </a>
+              <button type="button" id="manualConsentoptout">
+                Manage my privacy settings
+              </button>
             </nav>
           </div>
         </div>
@@ -2654,10 +2750,7 @@ export const SixColumns = () => (
                 >
                   Privacy
                 </a>
-                <button
-                  type="button"
-                  id="manualConsentoptout"
-                >
+                <button type="button" id="manualConsentoptout">
                   Manage my privacy settings
                 </button>
               </nav>

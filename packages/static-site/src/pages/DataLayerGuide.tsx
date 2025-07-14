@@ -13,7 +13,7 @@ export const bookmarklet = `javascript:(${watchDataLayer
   .replace(/\s+/g, " ")})();`;
 
 const gtmCodes = {
-  universal: "GTM-KDWN8Z"
+  universal: "GTM-KDWN8Z",
 };
 
 const GtmCodeExample: FC<{ gtmCode: string }> = ({ gtmCode }) => {
