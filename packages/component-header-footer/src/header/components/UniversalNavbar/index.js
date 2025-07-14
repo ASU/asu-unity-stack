@@ -38,7 +38,7 @@ const UniversalNavbar = () => {
     },
     {
       className: "nav-link visually-hidden-focusable",
-      href: `https://accessibility.asu.edu/report?a11yref=${getURL()}`,
+      href: `https://accessibility.asu.edu/report#a11yref=${getURL()}`,
       text: "Report an accessibility problem",
     },
     {
