@@ -104,6 +104,7 @@ footer {
   --endorsed-logo-padding-bottom: 12px;
   --endorsed-logo-img-max-height: 100%;
   --endorsed-logo-img-width: 100%;
+  --endorsed-logo-img-max-width: 320px;
   @include media-breakpoint-up(md) {
     & {
       --endorsed-logo-display: flex;
@@ -120,6 +121,7 @@ footer {
 
   img {
     width: var(--endorsed-logo-img-width);
+    max-width: var(--endorsed-logo-img-max-width);
     height: auto;
     max-height: var(--endorsed-logo-img-max-height);
     /* Transform here scales an image which has embedded padding so that
