@@ -22,7 +22,11 @@ function urlResolver(dataSource, defaultDataSource) {
     // to accommodate Data Potluck API changes.
     const { program } = httpParameters;
 
-    if (httpParameters.cert === "true" && program === "undergrad") {
+    if (httpParameters.cert === "true" && program === "all") {
+      httpParameters["degreeType"] = "GR,UGCM";
+    } else if (program === "all") {
+      httpParameters["degreeType"] = "GR,UG";
+    } else if (httpParameters.cert === "true" && program === "undergrad") {
       httpParameters["degreeType"] = "UGCM";
     } else if (program === "graduate") {
       httpParameters["degreeType"] = "GR";
@@ -47,20 +51,34 @@ function urlResolver(dataSource, defaultDataSource) {
 
   */
 
-  const { endpoint, include, ...keyValues } = httpParameters;
+  const { endpoint, ...keyValues } = httpParameters;
 
-  const formattedIncludes = include
-    .split(",")
-    .map(item => `include=${item.trim()}`)
-    .join("&");
+  const splitParamsContainingCommas = (paramName, csvString) => {
+    // httpParameters that are arrays format to send to API should have 1 paramName seperated by commas
+    // input: paramName = "foo", csvString = ["bar", "baz"]
+    // output: "foo=bar,baz"
+    if (Array.isArray(csvString)) {
+      return `${paramName}=${csvString}`;
+    }
+    // If the paramName is a string already including commas, we need to split it into multiple params
+    // input: paramName = "foo", csvString = "bar,baz"
+    // output: "foo=bar&foo=baz"
+    return csvString
+      .split(",")
+      .map(item => `${paramName}=${item.trim()}`)
+      .join("&");
+  };
 
   const params = Object.keys(keyValues).reduce(
     (accumulator, paramName) =>
-      `${accumulator}&${paramName}=${httpParameters[paramName]}`,
+      `${accumulator}&${splitParamsContainingCommas(
+        paramName,
+        httpParameters[paramName]
+      )}`,
     ""
   );
 
-  return `${endpoint}?${params}&${formattedIncludes}`;
+  return `${endpoint}?${params}`;
 }
 
 export { urlResolver };
