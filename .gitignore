@@ -122,3 +122,4 @@ tests/__image_snapshots__/__diff_output__
 !.yarn/versions
 *.env.*
 !.env.yarn.example
+.last-run.json

@@ -51,7 +51,11 @@ Bordered.args = {
 };
 
 export const Grayscale7Background = Template.bind({});
-Grayscale7Background.args = { type: "default", background: "grayscale7", currentPage: 7 };
+Grayscale7Background.args = {
+  type: "default",
+  background: "grayscale7",
+  currentPage: 7,
+};
 
 export const Grayscale6Background = Template.bind({});
 Grayscale6Background.args = {

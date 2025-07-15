@@ -215,7 +215,12 @@ Pagination.propTypes = {
   /**
    * Background of pagination
    */
-  background: PropTypes.oneOf(["white", "grayscale7", "grayscale6", "grayscale1"]).isRequired,
+  background: PropTypes.oneOf([
+    "white",
+    "grayscale7",
+    "grayscale6",
+    "grayscale1",
+  ]).isRequired,
   /**
    * Current page
    */
