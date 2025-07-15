@@ -73,13 +73,17 @@ export const ImageLeftOrRight = ({ right, bgColor, extraContent }) => (
       <div className="uds-buttons py-1">
         <a
           href="#"
-          className={`btn ${bgColor === "grayscale-1-bg" ? "btn-gold" : "btn-dark"}`}
+          className={`btn ${
+            bgColor === "grayscale-1-bg" ? "btn-gold" : "btn-dark"
+          }`}
         >
           Button link here
         </a>
         <a
           href="#"
-          className={`btn ${bgColor === "grayscale-1-bg" ? "btn-gold" : "btn-dark"}`}
+          className={`btn ${
+            bgColor === "grayscale-1-bg" ? "btn-gold" : "btn-dark"
+          }`}
         >
           Button link here
         </a>
