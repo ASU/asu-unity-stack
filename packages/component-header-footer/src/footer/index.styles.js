@@ -16,11 +16,11 @@ const StyledFooter = styled.footer`
   // Variables
   --color-divider-darker: #1e1e1e;
   --color-base-white: #ffffff;
-  --color-base-grey-2: #e8e8e8;
+  --color-base-gray-6: #e8e8e8;
   --color-base-gold: #ffc627;
   --color-divider-lighter: #393939;
-  --color-base-grey-7: #191919;
-  --color-base-grey-4: #bfbfbf;
+  --color-base-gray-1: #191919;
+  --color-base-gray-4: #bfbfbf;
 
   // Base Styles
   * {
@@ -33,7 +33,7 @@ const StyledFooter = styled.footer`
     button:focus {
       outline: none;
       box-shadow: 0 0 0 2px var(--color-base-white),
-        0 0 0 4px var(--color-base-grey-7) !important;
+        0 0 0 4px var(--color-base-gray-1) !important;
       -webkit-tap-highlight-color: transparent;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
@@ -81,7 +81,7 @@ const StyledFooter = styled.footer`
 
   #wrapper-endorsed-footer {
     a {
-      color: var(--color-base-grey-2);
+      color: var(--color-base-gray-6);
     }
 
     & + #wrapper-footer-columns {
@@ -94,7 +94,7 @@ const StyledFooter = styled.footer`
   }
 
   #wrapper-footer-colophon {
-    background-color: var(--color-base-grey-2);
+    background-color: var(--color-base-gray-6);
   }
 
   #wrapper-footer-innovation,
@@ -102,7 +102,7 @@ const StyledFooter = styled.footer`
     a {
       margin-right: 1.5rem;
       text-decoration: none;
-      color: var(--color-base-grey-7);
+      color: var(--color-base-gray-1);
     }
   }
 
@@ -158,7 +158,7 @@ const StyledFooter = styled.footer`
       .nav-link {
         padding: 0.75rem 1rem 0.5rem 1rem;
         font-size: 2rem;
-        color: var(--color-base-grey-4);
+        color: var(--color-base-gray-4);
         line-height: 1;
         padding-top: 7px;
 
@@ -184,7 +184,7 @@ const StyledFooter = styled.footer`
         margin-bottom: 1.5rem;
 
         a {
-          color: var(--color-base-grey-2);
+          color: var(--color-base-gray-6);
           line-height: 1.5rem;
           text-decoration: underline;
 
@@ -224,7 +224,7 @@ const StyledFooter = styled.footer`
 
         a,
         .accordion-button {
-          color: var(--color-base-grey-2);
+          color: var(--color-base-gray-6);
           padding: 1.5rem 0;
           text-decoration: none;
           background: none;
@@ -282,7 +282,7 @@ const StyledFooter = styled.footer`
         }
 
         .nav-link {
-          color: var(--color-base-grey-2);
+          color: var(--color-base-gray-6);
           padding: 0 0 1rem;
           line-height: 1.5rem;
           text-decoration: none;
