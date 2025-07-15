@@ -1,11 +1,15 @@
-import { adjustShrinkingElementIfAboveViewport } from "@shared";
+import { adjustShrinkingElementIfAboveViewport } from "@asu/shared";
 
 import { EventHandler } from "./bootstrap-helper";
 
 function initCollapse() {
-  function accordionClick({target}) {
+  function accordionClick({ target }) {
     const targetHref = target.getAttribute("href");
-    if (target.getAttribute("data-bs-toggle") !== "collapse" || !targetHref || !targetHref.includes("#")) {
+    if (
+      target.getAttribute("data-bs-toggle") !== "collapse" ||
+      !targetHref ||
+      !targetHref.includes("#")
+    ) {
       return; // Exit the function - not a collapse link
     }
 
@@ -13,7 +17,9 @@ function initCollapse() {
      * Find the first accordion that is currently collapsing or expanding
      * Function will determine if scroll adjustment is needed
      */
-    adjustShrinkingElementIfAboveViewport(document.querySelector(".collapsing"));
+    adjustShrinkingElementIfAboveViewport(
+      document.querySelector(".collapsing")
+    );
   }
   EventHandler.on(document, "click.uds.collapse", accordionClick);
 }

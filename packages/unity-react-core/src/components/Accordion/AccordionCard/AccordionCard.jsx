@@ -92,7 +92,6 @@ export const AccordionCard = forwardRef(
           >
             <div
               className="accordion-body"
-              // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={sanitizeDangerousMarkup(
                 item.content.body
               )}

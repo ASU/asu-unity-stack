@@ -1,8 +1,7 @@
-/* eslint-disable no-plusplus */
 /* eslint react/jsx-props-no-spreading: "off" */
 import React from "react";
 
-import { getLoremSentences } from "../../../../../shared/constants/strings";
+import { getLoremSentences } from "@asu/shared";
 import { Accordion } from "./Accordion";
 
 export default {

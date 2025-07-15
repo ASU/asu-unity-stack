@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import React, { useId, useRef, useState } from "react";
 
-import { adjustShrinkingElementIfAboveViewport } from "../../../../../shared";
+import { adjustShrinkingElementIfAboveViewport } from "@asu/shared";
 import { accordionCardPropTypes } from "../../core/models/shared-prop-types";
 import { AccordionCard } from "./AccordionCard/AccordionCard";
 
@@ -52,7 +52,6 @@ const Accordion = ({ cards, openedCard }) => {
               ref={element => {
                 cardsRef.current[key] = element;
               }}
-              // eslint-disable-next-line react/no-array-index-key
               key={key + 1}
               id={key + 1}
               parentId={parentId}

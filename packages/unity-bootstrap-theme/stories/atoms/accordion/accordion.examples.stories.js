@@ -7,11 +7,15 @@ export default {
   parameters: { controls: { disable: true } },
 };
 
-export const Default = () =>
-<Container>
-  <Column>
-    <a target="_parent" href="../../@asu/unity-react-core/index.html?path=/story/components-accordion--default">Accordion has moved to @asu/unity-react-core</a>
-
-  </Column>
-</Container>;
-
+export const Default = () => (
+  <Container>
+    <Column>
+      <a
+        target="_parent"
+        href="../../@asu/unity-react-core/index.html?path=/story/components-accordion--default"
+      >
+        Accordion has moved to @asu/unity-react-core
+      </a>
+    </Column>
+  </Container>
+);
