@@ -132,16 +132,6 @@ const DataLayerGuide = () => {
           <p>Most ASU sites should implement the ASU Universal GTM.</p>
 
           <p>
-            Enterprise sites should implement the ASU Enterprise QA GTM on their
-            &quot;DEV&quot; environment, and the ASU Enterprise Production GTM
-            on their &quot;QA&quot; and &quot;Production&quot; environments.
-            This may be configured using environmental variables. Each
-            environment has its own GTM ID associated with it and care must be
-            taken to use the appropriate GTM ID for each application
-            environment.
-          </p>
-
-          <p>
             Some units have their own GTM IDs. When multiple GTM IDs need to be
             used in a single site or application, follow the guidance on{" "}
             <a href="https://developers.google.com/tag-manager/devguide#multiple-containers">
