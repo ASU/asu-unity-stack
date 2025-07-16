@@ -5,6 +5,19 @@
     1rem;
 }
 
+@mixin clickable-area($min-width: 80px, $min-height: 44px) {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    min-width: $min-width;
+    min-height: $min-height;
+    z-index: -1;
+    inset: 0;
+    margin: auto;
+  }
+}
+
 // Extra styles that don't have bootstrap variables to override
 .btn {
   text-decoration: none;
@@ -20,11 +33,14 @@
   }
   &.btn-md {
     @include btn-md;
+    @include clickable-area(80px, 44px);
   }
   &.btn-sm {
     font-size: 0.75rem;
     padding: $uds-component-button-padding-y-small
       $uds-component-button-padding-x-small;
+
+    @include clickable-area(64px, 44px);
   }
   &.btn-tag {
     font-size: 0.75rem;
