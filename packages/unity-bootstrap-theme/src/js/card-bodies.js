@@ -12,6 +12,7 @@ function initCardBodies() {
   const cardBodies = document.querySelectorAll('.card-body');
 
   // If there are no cardBodies and you have not yet exceeded 3 retries
+  let retryCount = 0;
   if (cardBodies.length === 0 && retryCount < 3) {
     setTimeout(() => initCardBodies(retryCount + 1), 500);
     return;
