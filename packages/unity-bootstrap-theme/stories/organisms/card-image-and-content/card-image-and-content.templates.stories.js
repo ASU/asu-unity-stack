@@ -1,22 +1,20 @@
 import React from "react";
-
-import { imageName } from "../../../../../shared/assets";
-import { fullLayoutDecorator } from "../../../../../shared/components/Layout.js";
+import { imageName } from "@asu/shared";
+import { fullLayoutDecorator } from "@asu/shared";
 import { cardNoTemplates as Card } from "../../molecules/cards/cards.templates.stories";
 
 export default {
   title: "Organisms/Content Sections/Card Image And Content/Templates",
-  decorators: [ fullLayoutDecorator ],
+  decorators: [fullLayoutDecorator],
   parameters: { controls: { disable: true } },
 };
 
-export const CardAndImageContent = ()=>(
+export const CardAndImageContent = () => (
   <div className="uds-card-image-and-content">
     <div
       className="uds-card-image-and-content-image-container"
       style={{
-        backgroundImage:
-          `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('${imageName.hero01}')`,
+        backgroundImage: `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('${imageName.hero01}')`,
       }}
     ></div>
     <div className="uds-card-image-and-content-content-container uds-content-align">
@@ -36,7 +34,8 @@ export const CardAndImageContent = ()=>(
         event={false}
         link={true}
         tags={true}
-        numButtons={1}/>
+        numButtons={1}
+      />
     </div>
   </div>
 );

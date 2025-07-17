@@ -1,13 +1,13 @@
 import React from "react";
 
-import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
+import { gaEventPropTypes, trackGAEvent } from "@asu/shared";
 import { PII_VALUE } from "../../../core/utils/constants";
 import { RfiEmailInput } from "../../controls";
 
 /**
- * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
+ * @param {{ gaData: import("@asu/shared").GAEventObject}} props
  */
-// eslint-disable-next-line react/prop-types
+
 export const EmailAddress = ({ gaData, autoFocus }) => {
   const label = "Email Address";
   const name = "EmailAddress";

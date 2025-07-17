@@ -1,11 +1,10 @@
 import React from "react";
-
-import { imageName } from "../../../../../shared/assets";
-import { defaultDecorator } from "../../../../../shared/components/Layout";
+import { imageName } from "@asu/shared";
+import { defaultDecorator } from "@asu/shared";
 
 export default {
   title: "Atoms/Images/Examples",
-  decorators: [ defaultDecorator ],
+  decorators: [defaultDecorator],
   parameters: { controls: { disable: true } },
 };
 
@@ -16,7 +15,7 @@ export default {
 export const LargeImageNoCaptionComponent = () => (
   <div className="uds-img">
     <img
-      src={ imageName.attendOnline }
+      src={imageName.attendOnline}
       className="img-fluid"
       alt="Random image. REPLACE with appropriate alt text for accessibility."
       width="1200"
@@ -31,7 +30,7 @@ export const LargeImageNoCaptionComponent = () => (
 export const LargeImageNoCaptionComponentBorderless = () => (
   <div className="uds-img borderless">
     <img
-      src={ imageName.careerOutlook }
+      src={imageName.careerOutlook}
       className="img-fluid"
       alt="Random image. REPLACE with appropriate alt text for accessibility."
       width="1200"
@@ -47,7 +46,7 @@ export const LargeImageCaptionComponent = () => (
   <div className="uds-img">
     <figure className="figure uds-figure">
       <img
-        src={ imageName.demo1 }
+        src={imageName.demo1}
         className="uds-img figure-img img-fluid"
         alt="Random image with caption below. REPLACE with appropriate alt text for accessibility."
         width="800"
@@ -72,7 +71,7 @@ export const LargeImageCaptionComponentBorderless = () => (
   <div className="uds-img borderless">
     <figure className="figure uds-figure">
       <img
-        src={ imageName.demo2 }
+        src={imageName.demo2}
         className="uds-img figure-img img-fluid"
         alt="Random image with caption below. REPLACE with appropriate alt text for accessibility."
         width="800"
@@ -98,7 +97,7 @@ export const LargeImagesDropShadowComponent = () => (
     {/* Component start */}
     <div className="uds-img uds-img-drop-shadow">
       <img
-        src={ imageName.demo3 }
+        src={imageName.demo3}
         className="uds-img XXuds-img-drop-shadow img-fluid"
         alt="Random image with dropshadow. REPLACE with appropriate alt text."
         width="800"
@@ -117,7 +116,7 @@ export const LargeImagesDropShadowComponent = () => (
     <div className="uds-img uds-img-drop-shadow">
       <figure className="figure uds-figure XXuds-img-drop-shadow">
         <img
-          src={ imageName.poly1 }
+          src={imageName.poly1}
           className="uds-img figure-img img-fluid"
           alt="Random image with caption below. REPLACE with appropriate alt text for accessibility."
           width="800"
@@ -163,7 +162,7 @@ export const SmallImagesComponent = () => (
       {/* Component start */}
       <div className="uds-img">
         <img
-          src={ imageName.demo1 }
+          src={imageName.demo1}
           className="uds-img img-fluid"
           alt="Random image with dropshadow. REPLACE with appropriate alt text."
           width="800"
@@ -184,7 +183,7 @@ export const SmallImagesComponent = () => (
       <div className="uds-img uds-img-drop-shadow">
         <figure className="figure uds-figure">
           <img
-            src={ imageName.demo2 }
+            src={imageName.demo2}
             className="uds-img figure-img img-fluid"
             alt="Random image with caption below. REPLACE with appropriate alt text for accessibility."
             width="800"

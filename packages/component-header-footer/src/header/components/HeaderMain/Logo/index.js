@@ -1,7 +1,6 @@
-/* eslint-disable import/no-extraneous-dependencies */
+import { trackGAEvent } from "@asu/shared";
 import React from "react";
 
-import { trackGAEvent } from "../../../../../../../shared";
 import vertLogo from "../../../../../public/assets/img/arizona-state-university-logo-vertical.png";
 import horizLogo from "../../../../../public/assets/img/arizona-state-university-logo.png";
 import { useAppContext } from "../../../core/context/app-context";
@@ -25,7 +24,6 @@ const Logo = () => {
         width="303"
         height="234"
         decoding="async"
-        // eslint-disable-next-line
         fetchpriority="high"
       />
       <img
@@ -36,7 +34,6 @@ const Logo = () => {
         width="400"
         height="72"
         decoding="async"
-        // eslint-disable-next-line
         fetchpriority="high"
       />
     </LogoWrapper>

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-import { gaEventPropTypes, trackGAEvent } from "../../../../../../shared";
+import { gaEventPropTypes, trackGAEvent } from "@asu/shared";
 import { FAILED_OPTIONS_DEFAULT, KEY } from "../../../core/utils/constants";
 import { useRfiContext } from "../../../core/utils/rfiContext";
 import { RfiSelect } from "../../controls";
 
 /**
- * @param {{ gaData: import("../../../../../../shared/services/googleAnalytics").GAEventObject}} props
+ * @param {{ gaData: import("@asu/shared").GAEventObject}} props
  */
 export const Interest1 = ({ gaData }) => {
   const label = "Area of interest";

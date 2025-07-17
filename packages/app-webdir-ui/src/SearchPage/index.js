@@ -74,9 +74,8 @@ function SearchPage({
 
   const updateSearchParams = (param, newValue) => {
     const newParams = {};
-    // eslint-disable-next-line no-restricted-syntax
+
     for (const entry of searchParams.entries()) {
-      // eslint-disable-next-line prefer-destructuring
       newParams[entry[0]] = entry[1];
     }
     newParams[param] = newValue;

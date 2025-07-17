@@ -8,9 +8,8 @@ function initRankingCard() {
   EventHandler.on($toggleIcon, "click", function () {
     $infoLayer?.classList.toggle("active");
   });
+}
 
-};
-
-EventHandler.on(window, 'load.uds.ranking-card', initRankingCard);
+EventHandler.on(window, "load.uds.ranking-card", initRankingCard);
 
 export { initRankingCard };

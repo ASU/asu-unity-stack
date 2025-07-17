@@ -2,7 +2,7 @@
 import { CardCarousel, FeedContext } from "@asu/unity-react-core";
 import React, { useContext, useEffect } from "react";
 
-import trackReactComponent from "../../../../../shared/services/componentDatalayer";
+import { trackReactComponent } from "@asu/shared";
 import { BaseFeed } from "../../core/components/BaseFeed";
 import { defaultProps } from "../../core/constants/default-props";
 import { NewsWrapper } from "./index.styles";
@@ -32,7 +32,7 @@ const cardRow = (feed, index, cardButton) => ({
 /**
  * @param {import("../../core/types/news-types").TemplateProps} props
  */
-// eslint-disable-next-line react/prop-types
+
 const CarouselTemplate = ({ cardButton }) => {
   const { feeds } = useContext(FeedContext); // Reading the "feeds" object from the context
   const cardItems = feeds?.map((feed, index) =>

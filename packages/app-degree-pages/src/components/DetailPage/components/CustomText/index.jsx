@@ -1,8 +1,7 @@
 // @ts-check
+import { sanitizeDangerousMarkup } from "@asu/shared";
 import PropTypes from "prop-types";
 import React from "react";
-
-import { sanitizeDangerousMarkup } from "../../../../../../../shared";
 
 /**
  * @param {{content: string}} props
@@ -13,7 +12,6 @@ function CustomText({ content = "" }) {
     <div
       data-testid="custom-text"
       className="mt-3"
-      // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={sanitizeDangerousMarkup(content)}
     />
   );

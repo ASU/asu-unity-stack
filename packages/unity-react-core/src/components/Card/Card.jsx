@@ -1,12 +1,12 @@
 // @ts-check
+import { sanitizeDangerousMarkup } from "@asu/shared";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { sanitizeDangerousMarkup } from "../../../../../shared";
 import { Button } from "../Button/Button";
 import { ButtonTag } from "../ButtonTag/ButtonTag";
-// eslint-disable-next-line import/no-cycle
+
 import { GaEventWrapper } from "../GaEventWrapper/GaEventWrapper";
 import { Image } from "../Image/Image";
 import { CardWrapper } from "./Card.styles";
@@ -302,7 +302,7 @@ const CardContent = ({
     )}
     {!!body && (
       <div className="card-body" data-testid="card-body">
-        {/* eslint-disable-next-line react/no-danger */}
+        {}
         <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)} />
       </div>
     )}
@@ -415,7 +415,7 @@ const EventInfo = ({
             <div>
               <i className="far fa-calendar" />
             </div>
-            {/* eslint-disable-next-line react/no-danger */}
+            {}
             <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventTime)} />
           </div>
         )}
@@ -425,7 +425,6 @@ const EventInfo = ({
               <i className="fas fa-map-marker-alt" />
             </div>
             <div
-              // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventLocation)}
             />
           </div>
@@ -443,7 +442,7 @@ const EventInfo = ({
             <div>
               <i className="far fa-calendar" />
             </div>
-            {/* eslint-disable-next-line react/no-danger */}
+            {}
             <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventTime)} />
           </div>
         </div>
@@ -456,7 +455,6 @@ const EventInfo = ({
             </div>
             <span>
               <div
-                // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventLocation)}
               />
             </span>

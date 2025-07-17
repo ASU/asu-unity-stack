@@ -1,7 +1,7 @@
 // @ts-check
+import { trackGAEvent } from "@asu/shared";
 import React from "react";
 
-import { trackGAEvent } from "../../../../../../shared";
 import { LEGAL_URLS } from "../../core/constants";
 
 const DEFAULT_GA_EVENT = {
@@ -43,7 +43,7 @@ const Legal = () => {
               </a>
               <a
                 className="nav-link"
-                href={`${LEGAL_URLS.ACCESSIBILITY_REPORT}?a11yref=${getURL()}`}
+                href={`${LEGAL_URLS.ACCESSIBILITY_REPORT}#a11yref=${getURL()}`}
                 onFocus={() =>
                   trackGAEvent({
                     ...DEFAULT_GA_EVENT,
@@ -52,18 +52,6 @@ const Legal = () => {
                 }
               >
                 Accessibility
-              </a>
-              <a
-                className="nav-link"
-                href={LEGAL_URLS.PRIVACY}
-                onFocus={() =>
-                  trackGAEvent({
-                    ...DEFAULT_GA_EVENT,
-                    text: "privacy",
-                  })
-                }
-              >
-                Privacy
               </a>
               <a
                 className="nav-link"
@@ -89,6 +77,21 @@ const Legal = () => {
               >
                 Emergency
               </a>
+              <a
+                className="nav-link"
+                href={LEGAL_URLS.PRIVACY}
+                onFocus={() =>
+                  trackGAEvent({
+                    ...DEFAULT_GA_EVENT,
+                    text: "privacy",
+                  })
+                }
+              >
+                Privacy
+              </a>
+              <button type="button" id="manualConsentoptout">
+                Manage my privacy settings
+              </button>
             </nav>
           </div>
         </div>

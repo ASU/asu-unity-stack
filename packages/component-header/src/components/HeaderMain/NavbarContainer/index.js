@@ -1,8 +1,7 @@
 // @ts-check
+import { idGenerator, trackGAEvent } from "@asu/shared";
 import React, { useState } from "react";
 
-import { idGenerator, trackGAEvent } from "../../../../../../shared";
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { useAppContext } from "../../../core/context/app-context";
 import { useIsMobile } from "../../../core/hooks/isMobile";
 import { Button } from "../../Button";

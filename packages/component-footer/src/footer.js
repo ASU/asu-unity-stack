@@ -1,8 +1,8 @@
 // @ts-check
+import { trackReactComponent } from "@asu/shared";
 import { shape } from "prop-types";
 import React, { useEffect } from "react";
 
-import trackReactComponent from "../../../shared/services/componentDatalayer";
 import { Social, Legal, Innovation, Contact } from "./components";
 
 const Base = () => {

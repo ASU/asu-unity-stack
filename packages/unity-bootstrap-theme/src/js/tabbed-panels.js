@@ -138,7 +138,7 @@ function initTabbedPanels() {
     });
 }
 
-EventHandler.on(window, 'load.uds.tabs', initTabbedPanels);
+EventHandler.on(window, "load.uds.tabs", initTabbedPanels);
 
 // window.addEventListener("load.uds.tabs", initTabs, true);
 

@@ -1,12 +1,9 @@
+import { spreadClasses, sanitizeDangerousMarkup } from "@asu/shared";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { spreadClasses } from "../../../../../shared";
 // @ts-ignore
-import { sanitizeDangerousMarkup } from "../../../../../shared/utils";
-
-// eslint-disable-next-line import/no-cycle
 
 /**
  * @typedef {import('../../core/types/image-types').ImageComponentProps} ImageComponentProps
@@ -61,12 +58,11 @@ export const Image = ({
       : imageProps.className;
     return cardLink ? (
       <a href={cardLink}>
-        {/* eslint-disable-next-line jsx-a11y/alt-text, react/jsx-props-no-spreading */}
+        {}
         <img {...imageProps} className={combinedClasses} />
         <span className="visually-hidden">{title}</span>
       </a>
     ) : (
-      // eslint-disable-next-line jsx-a11y/alt-text, react/jsx-props-no-spreading
       <img {...imageProps} className={combinedClasses} />
     );
   };

@@ -78,9 +78,7 @@ function filterData({
     // If the program is undergraduate, always include it.
     if (program === "undergrad") return true;
 
-    // If showing certificates is enabled and the program is graduate,
-    // include it only if it's a minor or certificate.
-    if (showCerts === "true" && program === "graduate") {
+    if (showCerts === "true") {
       return resolver.isMinorOrCertificate();
     }
 

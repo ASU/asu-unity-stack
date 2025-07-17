@@ -1,8 +1,6 @@
-/* eslint-disable react/prop-types */
 // @ts-check
 import React from "react";
 
-// eslint-disable-next-line jest/no-mocks-import
 import { imageCarouselItems } from "../../../../../__mocks__/data/props-mock";
 import { ImageCarousel } from "./ImageCarousel";
 

@@ -1,0 +1,40 @@
+{
+  "name": "@asu/shared",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "description": "Shared utilities, hooks, services, and components for ASU Unity Stack packages",
+  "author": "ASU Unity Stack Team",
+  "homepage": "https://github.com/ASU/asu-unity-stack#readme",
+  "license": "MIT",
+  "files": [
+    "assets/*",
+    "components/*",
+    "constants/*",
+    "hooks/*",
+    "services/*",
+    "types/*",
+    "utils/*",
+    "index.js",
+    "index.d.ts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ASU/asu-unity-stack.git",
+    "directory": "packages/shared"
+  },
+  "bugs": {
+    "url": "https://github.com/ASU/asu-unity-stack/issues"
+  },
+  "dependencies": {
+    "classnames": "^2.3.1",
+    "prop-types": "^15.7.2"
+  },
+  "devDependencies": {
+    "@types/prop-types": "^15"
+  },
+  "scripts": {
+    "lint": "eslint --fix"
+  }
+}

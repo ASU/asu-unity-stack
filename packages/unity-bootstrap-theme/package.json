@@ -1,6 +1,6 @@
 {
   "name": "@asu/unity-bootstrap-theme",
-  "version": "1.26.0",
+  "version": "1.26.5",
   "description": "Please see @asu/unity-react-core for up-to-date stories and examples.\nBase UI theme for ASU Web Standards 2.0 developed with Bootstrap 5",
   "homepage": "https://github.com/ASU/asu-unity-stack#readme",
   "license": "MIT",
@@ -27,6 +27,7 @@
     "css-lint:fix": "stylelint \"**/*.{css,scss}\" --fix --cache --cache-location .cache/.stylelintcache --rd"
   },
   "devDependencies": {
+    "@asu/shared": "*",
     "@babel/cli": "^7.19.3",
     "@babel/core": "^7.21.3",
     "@babel/plugin-transform-runtime": "^7.19.6",
@@ -50,8 +51,6 @@
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.2",
     "css-minimizer-webpack-plugin": "^4.2.2",
-    "eslint": "^8.37.0",
-    "eslint-plugin-storybook": "^0.6.15",
     "eslint-webpack-plugin": "^4.0.0",
     "image-minimizer-webpack-plugin": "^3.8.2",
     "mini-css-extract-plugin": "^2.7.5",

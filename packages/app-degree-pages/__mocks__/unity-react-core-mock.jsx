@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 // @ts-check
 import * as asuCore from "@asu/unity-react-core";
-import * as React from "react";
+import React from "react";
 import { vi } from "vitest"
 
 const {

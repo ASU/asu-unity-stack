@@ -85,7 +85,6 @@ const TabHeader = forwardRef(function TabHeader(props, ref) {
 });
 
 TabHeader.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   gaData: PropTypes.object,
   id: PropTypes.string.isRequired,
   selected: PropTypes.bool.isRequired,

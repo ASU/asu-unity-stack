@@ -32,7 +32,8 @@ const StyledFooter = styled.footer`
     a:focus,
     button:focus {
       outline: none;
-      box-shadow: 0 0 0 2px var(--color-base-white), 0 0 0 4px var(--color-base-grey-7) !important;
+      box-shadow: 0 0 0 2px var(--color-base-white),
+        0 0 0 4px var(--color-base-grey-7) !important;
       -webkit-tap-highlight-color: transparent;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
@@ -110,8 +111,9 @@ const StyledFooter = styled.footer`
     --endorsed-logo-display: block;
     --endorsed-logo-padding-top: 12px;
     --endorsed-logo-padding-bottom: 12px;
-    --endorsed-logo-img-max-height: 100%;
+    --endorsed-logo-img-max-height: 6rem;
     --endorsed-logo-img-width: 100%;
+    --endorsed-logo-img-max-width: 320px;
     padding-top: var(--endorsed-logo-padding-top);
     padding-bottom: var(--endorsed-logo-padding-bottom);
     display: var(--endorsed-logo-display);
@@ -119,6 +121,7 @@ const StyledFooter = styled.footer`
 
     img {
       width: var(--endorsed-logo-img-width);
+      max-width: var(--endorsed-logo-img-max-width);
       height: auto;
       max-height: var(--endorsed-logo-img-max-height);
       transform: scale(1.13);
@@ -407,6 +410,27 @@ const StyledFooter = styled.footer`
             justify-self: end;
           }
         }
+      }
+    }
+  }
+
+  //footer manual consent opt-out
+  .footer-legal-links,
+  .footer-menu,
+  .nav {
+    &.colophon #manualConsentoptout,
+    #manualConsentoptout {
+      color: #484848;
+      border: none;
+      background-color: transparent;
+      width: auto;
+      cursor: pointer;
+      padding: 0;
+      text-align: right;
+      justify-self: end;
+      font-size: 1rem;
+      &:hover {
+        text-decoration: underline;
       }
     }
   }

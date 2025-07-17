@@ -1,11 +1,8 @@
 /* eslint react/jsx-props-no-spreading: "off" */
+import { getLoremSentences, titleCaseDefinition } from "@asu/shared";
 import classNames from "classnames";
 import React from "react";
 
-import {
-  getLoremSentences,
-  titleCaseDefinition,
-} from "../../../../../shared/constants/strings";
 import { Basic as Header } from "../../../../unity-bootstrap-theme/stories/organisms/global-header/global-header.templates";
 import { Divider } from "../Divider/Divider";
 import { useBaseSpecificFramework } from "../GaEventWrapper/useBaseSpecificFramework";

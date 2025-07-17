@@ -1,44 +1,41 @@
 import React from "react";
-
-import { imageName } from "../../../../../shared/assets";
-import { defaultDecorator } from "../../../../../shared/components/Layout";
+import { imageName } from "@asu/shared";
+import { defaultDecorator } from "@asu/shared";
 
 export default {
   title: "Molecules/Content Sections/Inset Box/Examples",
-  decorators: [ defaultDecorator ],
+  decorators: [defaultDecorator],
 };
 
-const DefaultExample = ({buttonText = ""}) =>
-    <div className="uds-inset-box-container gray-1-bg">
-      <div className="uds-inset-box-content">
-        <h3>Lorem ipsum dolor sit amet</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod
-          tempo.
-        </p>
-        <div className="uds-inset-box-buttons">
-          <a href="#" className="btn btn-dark">
-            {buttonText || "Button link here"}
-          </a>
-          <a href="#" className="btn btn-dark">
-            {buttonText || "Button link here"}
-          </a>
-        </div>
-        <a href="#" className="">
-          Regular text link here
+const DefaultExample = ({ buttonText = "" }) => (
+  <div className="uds-inset-box-container gray-1-bg">
+    <div className="uds-inset-box-content">
+      <h3>Lorem ipsum dolor sit amet</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.
+      </p>
+      <div className="uds-inset-box-buttons">
+        <a href="#" className="btn btn-dark">
+          {buttonText || "Button link here"}
+        </a>
+        <a href="#" className="btn btn-dark">
+          {buttonText || "Button link here"}
         </a>
       </div>
+      <a href="#" className="">
+        Regular text link here
+      </a>
     </div>
-  ;
-
+  </div>
+);
 export const BasicExample = DefaultExample.bind({});
 BasicExample.args = {
   buttonText: "Button Link here",
-}
+};
 export const BasicExampleWithStackButton = DefaultExample.bind({});
 BasicExampleWithStackButton.args = {
-  buttonText: "Button link here with very long text"
+  buttonText: "Button link here with very long text",
 };
 
 export const ExampleWithBlockquote = () => (
@@ -68,8 +65,7 @@ export const ExampleWithImageBackground = () => (
   <div
     className="uds-inset-box-container image-background"
     style={{
-      backgroundImage:
-        `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('${ imageName.hero02 }')`,
+      backgroundImage: `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('${imageName.hero02}')`,
     }}
   >
     <div className="uds-inset-box-content">

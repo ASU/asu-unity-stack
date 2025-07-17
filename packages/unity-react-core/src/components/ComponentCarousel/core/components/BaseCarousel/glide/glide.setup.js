@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-expressions */
 // @ts-check
 import Glide from "@glidejs/glide";
 

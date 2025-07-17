@@ -1,11 +1,10 @@
 // @ts-check
 import { Hero } from "@asu/unity-react-core";
+import { useFetch, trackReactComponent } from "@asu/shared";
 import PropTypes from "prop-types";
 import React, { useEffect, useState, useContext } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
-import { useFetch } from "../../../../../shared";
-import trackReactComponent from "../../../../../shared/services/componentDatalayer";
 import {
   Loader,
   Main as MainSection,
@@ -91,7 +90,7 @@ const ListingPage = ({
   const [dataInitView, setDataInitView] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState("");
   // start set default data view
-  const settingDefaultView = programList.settings?.defaultView;
+  const settingDefaultView = programList?.settings?.defaultView;
   const defaultView = [LIST_VIEW_ID, GRID_VIEW_ID].includes(settingDefaultView)
     ? settingDefaultView
     : LIST_VIEW_ID;
@@ -249,7 +248,9 @@ const ListingPage = ({
 
   return (
     <>
+      {/* @ts-ignore */}
       <ThemeStyle />
+      {/* @ts-ignore */}
       <ListingStyle />
 
       {error && <ErrorAlert message={ERROR_MESSAGE} />}

@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 
-export const windowLoadEvent = (storyFn) => {
+export const windowLoadEvent = storyFn => {
   const mount = () => {
     // console.log("sb mounting");
 
     // custom events created by eventSpy.js to allow storybook to dispatch load events after the page is loaded
     document.dispatchEvent(new Event("sb_DOMContentLoaded"));
-    window.dispatchEvent(new Event('sb_load'));
-  }
+    window.dispatchEvent(new Event("sb_load"));
+  };
 
   const unmount = () => {
     // console.log("sb unmounting");
@@ -20,14 +20,14 @@ export const windowLoadEvent = (storyFn) => {
     // variable to prevent calling mount function before the page is reloaded
     window.unloading = true;
     window.location.reload();
-  }
+  };
 
   useEffect(() => {
     if (!window.unloading) {
-      mount()
+      mount();
     }
-    return unmount
+    return unmount;
   }, []);
 
   return storyFn();
-}
+};

@@ -32,6 +32,11 @@ export default defineConfig({
     process: {env: {NODE_ENV: process.env.NODE_ENV}},
     global: {}
   },
+  resolve: {
+    alias: {
+      "@asu/shared": resolve(__dirname, "../shared"),
+    }
+  },
   plugins: [
     react(),
     {

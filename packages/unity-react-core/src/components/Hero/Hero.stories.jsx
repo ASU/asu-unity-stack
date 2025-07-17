@@ -1,11 +1,9 @@
-/* eslint-disable react/prop-types */
 // @ts-check
+import { imageAny } from "@asu/shared";
 import React from "react";
-
-// @ts-ignore
-import img1 from "../../../../../shared/assets/img/named/hero01.jpg";
 import { Hero } from "./Hero";
 
+const img1 = imageAny();
 /**
  * @typedef {import('./Hero').HeroProps} HeroProps
  */

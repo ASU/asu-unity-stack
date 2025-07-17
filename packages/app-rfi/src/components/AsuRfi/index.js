@@ -11,13 +11,12 @@ import React, { useEffect, useState } from "react";
 
 import { Progress } from "reactstrap";
 
-import trackReactComponent from "../../../../../shared/services/componentDatalayer";
 import { betterPropNames, useRfiState } from "../../core/utils/appState";
 import { DATA_SOURCE } from "../../core/utils/constants";
 import { RfiContext } from "../../core/utils/rfiContext";
 import { RfiMainForm } from "../stepper/RfiMainForm";
 import "./index.css";
-import { getCurrentScriptPath } from "../../../../../shared";
+import { getCurrentScriptPath, trackReactComponent } from "@asu/shared";
 import { Debug } from "../../Debug";
 import { RfiStepperButtons } from "../stepper/RfiStepperButtons";
 

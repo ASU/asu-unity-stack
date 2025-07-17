@@ -7,10 +7,10 @@
  *
  *
  */
+import { throttle, debounce } from "@asu/shared";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
-import { throttle, debounce } from "../../../../../shared";
 import { useBaseSpecificFramework } from "../GaEventWrapper/useBaseSpecificFramework";
 import { NavControls, TabHeader } from "./components";
 

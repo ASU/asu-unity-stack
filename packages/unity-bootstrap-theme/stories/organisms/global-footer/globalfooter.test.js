@@ -1,5 +1,4 @@
-describe('Examples', () => {
-
+describe("Examples", () => {
   // These tests may require a little explanation. For each story written for this package,
   // there should be a visual snapshot test for that story. That is what each of these code blocks are.
   // the text should be a grammatically sensible sensible statement of what is expected from the test result.
@@ -10,13 +9,12 @@ describe('Examples', () => {
   // 3. The url slug at the end, following "?path=/story/" needs to be copied to the end of the page.goto() url:
   //    'http://localhost:9009/iframe.html?id=<paste-here>'
 
-  it('examples visually look correct', async () => {
+  it("examples visually look correct", async () => {
     // APIs from jest-puppeteer
-    await page.goto('http://localhost:9009/iframe.html?id=examples--story-1');
+    await page.goto("http://localhost:9009/iframe.html?id=examples--story-1");
     const image = await page.screenshot();
 
     // API from jest-image-snapshot
     expect(image).toMatchImageSnapshot();
   });
-
 });
