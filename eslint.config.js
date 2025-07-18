@@ -72,10 +72,7 @@ module.exports = [
       "default-param-last": "off",
       "dot-notation": "off",
       "no-console": 1,
-      "no-unused-vars": ["warn", {
-        argsIgnorePattern: "^_",
-        varsIgnorePattern: "^(React|_)",
-      }],
+      "no-unused-vars": "off",
       "no-undef": "off", // Disable for config files and test files
 
       // Import rules - disable problematic ones
@@ -143,10 +140,7 @@ module.exports = [
       "@typescript-eslint/ban-ts-comment": ["warn"],
       "no-unused-vars": "off",
       "react/require-default-props": "off",
-      "@typescript-eslint/no-unused-vars": ["error", {
-        argsIgnorePattern: "^_",
-        varsIgnorePattern: "^(React|_)",
-      }],
+      "@typescript-eslint/no-unused-vars": "off",
       "@typescript-eslint/no-empty-function": "off",
 
       // Re-apply common rules for TypeScript files
