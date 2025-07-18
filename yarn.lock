@@ -498,7 +498,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:^6.0.0"
     "@typescript-eslint/parser": "npm:^6.0.0"
     "@vitejs/plugin-react": "npm:^4.3.1"
-    eslint-plugin-react-hooks: "npm:^4.6.0"
+    eslint-plugin-react-hooks: "npm:^5"
     eslint-plugin-react-refresh: "npm:^0.4.3"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
@@ -12503,7 +12503,7 @@ __metadata:
     eslint-plugin-jsx-a11y: "npm:^6.10.2"
     eslint-plugin-prettier: "npm:^5.5.1"
     eslint-plugin-react: "npm:^7.37.4"
-    eslint-plugin-react-hooks: "npm:^4"
+    eslint-plugin-react-hooks: "npm:^5"
     eslint-plugin-storybook: "npm:^9.0.13"
     gh-pages: "npm:^6.0.0"
     globals: "npm:^16.2.0"
@@ -12514,7 +12514,7 @@ __metadata:
     mini-css-extract-plugin: "npm:^2.0.0"
     nunjucks: "npm:^3.2.0"
     playwright: "npm:1.50.1"
-    prettier: "npm:^2.2.1"
+    prettier: "npm:^3"
     purgecss-webpack-plugin: "npm:^4.0.3"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
@@ -17194,12 +17194,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react-hooks@npm:^4, eslint-plugin-react-hooks@npm:^4.6.0":
-  version: 4.6.2
-  resolution: "eslint-plugin-react-hooks@npm:4.6.2"
+"eslint-plugin-react-hooks@npm:^5":
+  version: 5.2.0
+  resolution: "eslint-plugin-react-hooks@npm:5.2.0"
   peerDependencies:
-    eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0
-  checksum: 10c0/4844e58c929bc05157fb70ba1e462e34f1f4abcbc8dd5bbe5b04513d33e2699effb8bca668297976ceea8e7ebee4e8fc29b9af9d131bcef52886feaa2308b2cc
+    eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
+  checksum: 10c0/1c8d50fa5984c6dea32470651807d2922cc3934cf3425e78f84a24c2dfd972e7f019bee84aefb27e0cf2c13fea0ac1d4473267727408feeb1c56333ca1489385
   languageName: node
   linkType: hard
 
@@ -27882,12 +27882,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.2.1, prettier@npm:^2.7.1, prettier@npm:^2.8.0, prettier@npm:^2.8.1, prettier@npm:^2.8.7":
+"prettier@npm:^2.7.1, prettier@npm:^2.8.0, prettier@npm:^2.8.1, prettier@npm:^2.8.7":
   version: 2.8.8
   resolution: "prettier@npm:2.8.8"
   bin:
     prettier: bin-prettier.js
   checksum: 10c0/463ea8f9a0946cd5b828d8cf27bd8b567345cf02f56562d5ecde198b91f47a76b7ac9eae0facd247ace70e927143af6135e8cf411986b8cb8478784a4d6d724a
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^3":
+  version: 3.6.2
+  resolution: "prettier@npm:3.6.2"
+  bin:
+    prettier: bin/prettier.cjs
+  checksum: 10c0/488cb2f2b99ec13da1e50074912870217c11edaddedeadc649b1244c749d15ba94e846423d062e2c4c9ae683e2d65f754de28889ba06e697ac4f988d44f45812
   languageName: node
   linkType: hard
 
