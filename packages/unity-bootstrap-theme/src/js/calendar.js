@@ -90,8 +90,8 @@ function initCalendar() {
 
     calendarContainer.innerHTML = `
       <h2><span class="highlight-black">${months[state.month]} ${
-      state.year
-    }</span></h2>
+        state.year
+      }</span></h2>
       <div class="calendar-grid">
         <div class="heading desktop">
           ${desktopDaysOfWeek.map(day => `<p>${day}</p>`).join("")}
@@ -113,8 +113,8 @@ function initCalendar() {
                     : ""
                 }>
                   <span class="${date.todayClass ? date.todayClass : ""}">${
-                  date.date
-                }</span>
+                    date.date
+                  }</span>
                 </h3>`
             )
             .join("")}
