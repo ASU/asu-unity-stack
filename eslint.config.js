@@ -7,6 +7,7 @@ const js = require("@eslint/js");
 const importPlugin = require("eslint-plugin-import");
 const jsxA11y = require("eslint-plugin-jsx-a11y");
 const prettier = require("eslint-plugin-prettier");
+const eslintPluginPrettier = require("eslint-config-prettier");
 
 module.exports = [
   js.configs.recommended,
@@ -31,6 +32,7 @@ module.exports = [
       import: importPlugin,
       "jsx-a11y": jsxA11y,
       prettier,
+      eslintPluginPrettier
     },
     settings: {
       react: {
