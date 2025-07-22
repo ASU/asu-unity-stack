@@ -26,16 +26,6 @@ export interface SidebarProps {
   links: Link[];
 }
 
-const SidebarItem: React.FC<SidebarItemProps | Link> = ({
-  href,
-  text,
-  isActive,
-}) => (
-  <a href={href} className={`nav-link${isActive ? " is-active" : ""}`}>
-    {text}
-  </a>
-);
-
 export const SidebarMenu: React.FC<SidebarProps> = ({ title, links }) => {
   return (
     <div className="col-xl-3 col-lg-4 col-md-5 col-sm-12">
@@ -58,8 +48,8 @@ export const SidebarMenu: React.FC<SidebarProps> = ({ title, links }) => {
       >
         {links.map((link, index) => {
           if (link.items) {
-            const isExpanded = link.items.some(({ isActive }) => isActive);
             // Render dropdown card
+            const isExpanded = link.items.some(({ isActive }) => isActive);
             return (
               <div key={link.text} className="card card-foldable">
                 <div className="card-header">
@@ -68,7 +58,9 @@ export const SidebarMenu: React.FC<SidebarProps> = ({ title, links }) => {
                   >
                     <a
                       id={`card${index}`}
-                      className="collapsed nav-link"
+                      className={`collapsed nav-link${
+                        isExpanded ? " is-active" : ""
+                      }`}
                       href={`#cardBody${index}`}
                       data-bs-toggle="collapse"
                       data-bs-target={`#cardBody${index}`}
@@ -87,7 +79,13 @@ export const SidebarMenu: React.FC<SidebarProps> = ({ title, links }) => {
                   data-bs-parent=".sidebar"
                 >
                   {link.items.map(item => (
-                    <SidebarItem key={`${item.text}${item.href}`} {...item} />
+                    <a
+                      key={`${item.text}${item.href}`}
+                      href={item.href}
+                      className={`nav-link`}
+                    >
+                      {item.text}
+                    </a>
                   ))}
                 </div>
               </div>
@@ -99,7 +97,12 @@ export const SidebarMenu: React.FC<SidebarProps> = ({ title, links }) => {
                 key={`${link.text}${link.href}`}
                 className="nav-link-container"
               >
-                <SidebarItem {...link} />
+                <a
+                  className={`nav-link${link.isActive ? " is-active" : ""}`}
+                  href={link.href}
+                >
+                  {link.text}
+                </a>
               </div>
             );
           }
