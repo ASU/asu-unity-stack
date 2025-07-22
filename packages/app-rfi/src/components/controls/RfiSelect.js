@@ -1,5 +1,4 @@
 // DISABLED@ts-check
-/* eslint-disable no-unused-vars */
 
 import { Field, useField, useFormikContext } from "formik";
 import PropTypes from "prop-types";

@@ -159,7 +159,11 @@ module.exports = [
         ignoreRestSiblings: true,
       }],
       "react/require-default-props": "off",
-      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": ["warn", {
+        argsIgnorePattern: "^_",
+        varsIgnorePattern: "^(React|_|expect|test|describe|it|beforeEach|afterEach|beforeAll|afterAll|jest|vi|fixture|page)$",
+        ignoreRestSiblings: true,
+      }],
       "@typescript-eslint/no-empty-function": "off",
 
       // Re-apply common rules for TypeScript files
