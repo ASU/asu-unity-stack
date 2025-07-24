@@ -142,7 +142,7 @@ footer {
       font-size: $uds-size-icon-base;
       color: $uds-color-base-gray-4;
       line-height: 1;
-      padding-top: 7px; // Magic number. Reducing the padding by 1px to make the height = 48px.
+      padding: 7px 16px; // Magic number. Reducing the padding by 1px to make the height = 48px.
 
       :hover {
         color: $uds-color-base-white;

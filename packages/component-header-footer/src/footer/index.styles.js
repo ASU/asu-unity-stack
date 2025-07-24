@@ -170,7 +170,7 @@ const StyledFooter = styled.footer`
 
         &:last-child {
           @media (min-width: 768px) {
-            padding-right: 0;
+            /* padding-right: 0; */
           }
         }
       }
