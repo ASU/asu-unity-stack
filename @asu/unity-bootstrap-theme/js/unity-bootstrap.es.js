@@ -165,7 +165,9 @@ function z() {
   const s = document.getElementById(t), a = document.getElementById("uds-anchor-menu"), l = a.parentNode, n = a.nextSibling, e = a.getElementsByClassName("nav-link"), r = /* @__PURE__ */ new Map();
   let i = window.scrollY, c = !1;
   const d = document.body;
-  let f = document.getElementById("toolbar-bar"), g = document.getElementById("toolbar-item-administration-tray"), p = f ? f.offsetHeight : 0, y = g ? g.offsetHeight : 0, h = p + y;
+  let f = document.getElementById("toolbar-bar"), g = document.getElementById(
+    "toolbar-item-administration-tray"
+  ), p = f ? f.offsetHeight : 0, y = g ? g.offsetHeight : 0, h = p + y;
   const u = a.getBoundingClientRect().top + window.scrollY - h;
   for (let w of e) {
     const L = w.getAttribute("href").replace("#", ""), v = document.getElementById(L);
@@ -174,10 +176,14 @@ function z() {
   new bootstrap.ScrollSpy(d, {
     target: "#uds-anchor-menu nav",
     rootMargin: "20%"
-  }), window.scrollY > u && (s.appendChild(a), c = !0, a.classList.add("uds-anchor-menu-attached")), window.addEventListener("scroll", function() {
-    const w = a.getBoundingClientRect().top, L = s.classList.contains("scrolled") ? s.offsetHeight - 32 : s.offsetHeight;
-    window.scrollY > i && w > 0 && w < L && (c || (s.appendChild(a), c = !0, a.classList.add("uds-anchor-menu-attached")), i = window.scrollY), window.scrollY < i && window.scrollY <= u && c && (l.insertBefore(a, n), c = !1, a.classList.remove("uds-anchor-menu-attached")), i = window.scrollY;
-  }, { passive: !0 });
+  }), window.scrollY > u && (s.appendChild(a), c = !0, a.classList.add("uds-anchor-menu-attached")), window.addEventListener(
+    "scroll",
+    function() {
+      const w = a.getBoundingClientRect().top, L = s.classList.contains("scrolled") ? s.offsetHeight - 32 : s.offsetHeight;
+      window.scrollY > i && w > 0 && w < L && (c || (s.appendChild(a), c = !0, a.classList.add("uds-anchor-menu-attached")), i = window.scrollY), window.scrollY < i && window.scrollY <= u && c && (l.insertBefore(a, n), c = !1, a.classList.remove("uds-anchor-menu-attached")), i = window.scrollY;
+    },
+    { passive: !0 }
+  );
   for (let [w, L] of r)
     w.addEventListener("click", function(v) {
       v.preventDefault();
@@ -206,7 +212,11 @@ function j() {
     t.observe(s);
   });
 }
-m.on(window, "load.uds.blockquote-animation", j);
+m.on(
+  window,
+  "load.uds.blockquote-animation",
+  j
+);
 function G() {
   const o = [
     "January",
@@ -323,7 +333,10 @@ function $() {
       let f = "";
       const g = l.split(" ");
       let p = 0, y = "";
-      for (; p < g.length && ft(y + (y ? " " : "") + g[p], a) <= d; )
+      for (; p < g.length && ft(
+        y + (y ? " " : "") + g[p],
+        a
+      ) <= d; )
         y += (y ? " " : "") + g[p], p++;
       f = y + "...";
       const h = `visible-text-${Math.random().toString(36).substring(7)}`, u = document.createElement("div");
