@@ -8,7 +8,7 @@
  *
  */
 import PropTypes from "prop-types";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 
 import { BaseCarousel } from "../../core/components/BaseCarousel";
 import {
@@ -92,21 +92,26 @@ const htmlTemplate = ({ id, imageSource, imageAltText }) => ({
  * @returns { JSX.Element }
  */
 const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
-  if (!imageItems || imageItems.length === 0) {
-    return null;
-  }
   const ATTR_INDEX = "data-current-index";
-  const [title, setTitle] = useState(imageItems[0].title);
+  const [title, setTitle] = useState(imageItems?.[0]?.title || "");
+  const [content, setContent] = useState(imageItems?.[0]?.content || "");
 
-  const [content, setContent] = useState(imageItems[0].content);
-
-  const onItemClick = currentIndex => {
-    const item = imageItems[currentIndex];
-    setTitle(item.title);
-    setContent(item.content);
-  };
+  const onItemClick = useCallback(
+    currentIndex => {
+      const item = imageItems?.[currentIndex];
+      if (item) {
+        setTitle(item.title);
+        setContent(item.content);
+      }
+    },
+    [imageItems]
+  );
 
   useEffect(() => {
+    if (!imageItems || imageItems.length === 0) {
+      return;
+    }
+
     /** @type {HTMLElement} */
     const textArea = document.querySelector(
       `.image-gallery figcaption .uds-caption-text div`
@@ -127,21 +132,35 @@ const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
     }
 
     const currentSlider = document.querySelector(`#${instanceName}`);
+    if (!currentSlider) {
+      return;
+    }
 
     function onDataCurrentIndexChange(mutations) {
       for (const mutation of mutations) {
         if (mutation && mutation.attributeName === ATTR_INDEX) {
-          return onItemClick(+currentSlider.getAttribute(ATTR_INDEX));
+          const index = currentSlider.getAttribute(ATTR_INDEX);
+          if (index !== null) {
+            onItemClick(+index);
+          }
+          return;
         }
       }
-      return null;
     }
 
     const observer = new MutationObserver(onDataCurrentIndexChange);
     observer.observe(currentSlider, {
       attributes: true,
     });
-  }, [instanceName]);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [instanceName, imageItems, onItemClick]);
+
+  if (!imageItems || imageItems.length === 0) {
+    return null;
+  }
 
   const bulletItems = imageItems.map(item => item.imageSource);
   return (

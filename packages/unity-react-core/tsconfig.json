@@ -17,6 +17,7 @@
     "allowJs": true,
     "checkJs": true,
     "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
     "plugins": [{ "name": "typescript-plugin-css-modules" }],
     "types": ["@vitest/browser/providers/playwright"],
     "paths": {
