@@ -1,3 +1,4 @@
+const {diffChars, createPatch} = require('diff');
 const { execSync, spawnSync } = require("child_process");
 const { fstat } = require("fs");
 const fs = require('fs');
@@ -31,9 +32,9 @@ const runGit = function (command) {
   return eg.toString();
 };
 
-const parseDateForHTML = () => {
+const parseDateForHTML = (days=0) => {
   const d = new Date();
-  d.setDate(d.getDate() - daysAgo);
+  d.setDate(d.getDate() - days);
   return d.getMonth() + 1 + "-" + d.getDate() + "-" + d.getFullYear();
 };
 
@@ -47,7 +48,7 @@ const parseDateForGIT = () => {
   return old_Date;
 };
 
-const OLD_DATE_HTML = parseDateForHTML();
+const OLD_DATE_HTML = parseDateForHTML(daysAgo);
 
 const old_date_git = parseDateForGIT();
 
@@ -68,13 +69,13 @@ fs.copyFileSync(srcDir, targetDir+"/check-changes.tsx")
  *
  * 1. OJAS TODO: We dont actually need to change directory, we can pass in the directory to the spawnSync command as the argument cwd: <directory>
  */
-process.chdir(dir);
+
 //execSync(`npx tsx check-changes.tsx ${OLD_DATE_HTML}`);
 console.log(process.cwd());
 const output = spawnSync("npx", ["tsx", "scripts/check-changes.tsx", OLD_DATE_HTML], {
-  stdio: "inherit"
+  stdio: "inherit",
+  cwd: dir
 });
-console.log(`Output: ${JSON.stringify(output)}`);
 
 /**
  * * 5. OJAS TODO: We know the name of old components file and the location, so we can
@@ -83,6 +84,10 @@ console.log(`Output: ${JSON.stringify(output)}`);
  * const OLD_FILE_LOCATION = path.join(targetDir, `components-${OLD_DATE_HTML}.json`)
  * const oldDateComponentObjectWithHtml = JSON.parse(fs.readFileSync(OLD_FILE_LOCATION, 'utf8))
  */
+const OLD_FILE_LOCATION = path.join(targetDir, `components-${OLD_DATE_HTML}.json`);
+const oldDateComponentObjectWithHtml = JSON.parse(
+  fs.readFileSync(OLD_FILE_LOCATION, 'utf8')
+)
 
 
 
@@ -91,18 +96,37 @@ console.log(`Output: ${JSON.stringify(output)}`);
  * and we can pass in today's date. You can create a date at the current time by just instantiating `new Date()`
  * and then you can get the month day and year same as in parseDateForHTML above
  */
+const currentOutput = spawnSync("npx", ["tsx", "packages/unity-react-core/scripts/check-changes.tsx", parseDateForHTML()], {
+  stdio: "inherit"
+});
 
 
 /**
  * 7. OJAS TODO: Now that we have the current date components in a json file from step 6,
  * we can read that file and compare that to the old data, `oldDateComponentObjectWithHtml`
  */
+const currFilewithHtml = JSON.parse(
+  fs.readFileSync(`packages/unity-react-core/scripts/components-${parseDateForHTML()}.json`, 'utf8')
+);
+
+for(const[key, value] of Object.entries(currFilewithHtml)){
+  try{
+    const htmlStr = currFilewithHtml[key].html
+    const oldHtmlStr = oldDateComponentObjectWithHtml[key].html
+    const differences = diffChars(oldHtmlStr, htmlStr);
+    console.log(differences);
+  } catch(error){
+    console.log(error, key);
+  }
+}
 
 
 
 
 
-execSync(`git worktree remove --force /Users/etloaner/Desktop/ASU/asu-unity-stack/scripts/temp`);
+
+
+//execSync(`git worktree remove --force /Users/etloaner/Desktop/ASU/asu-unity-stack/scripts/temp`);
 
 //convertToHTML(OLD_DATE_HTML);
 
