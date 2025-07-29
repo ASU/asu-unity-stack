@@ -147,7 +147,11 @@ function initAnchorMenu() {
     previousScrollPosition = window.scrollY;
   };
 
-  window.addEventListener("scroll", () => throttle(scrollHandlerLogic, SCROLL_DELAY), { passive: true });
+  window.addEventListener(
+    "scroll",
+    () => throttle(scrollHandlerLogic, SCROLL_DELAY),
+    { passive: true }
+  );
 
   // Set click event of anchors
   for (let [anchor, anchorTarget] of anchorTargets) {
