@@ -1,4 +1,3 @@
-/* eslint-disable react/no-array-index-key */
 // @ts-check
 import PropTypes from "prop-types";
 import React from "react";
@@ -20,7 +19,6 @@ const defaultGAEvent = {
  * @returns { JSX.Element }
  */
 const BaseBulletItemContainer = ({ children }) => (
-  // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
   <div
     role="group"
     className="glide__bullets"
@@ -100,7 +98,7 @@ const ImageBulletItems = ({ imageItems, onItemClick = () => null }) => {
         loading="lazy"
         decoding="async"
         // @ts-ignore
-        // eslint-disable-next-line
+
         fetchpriority="low"
       />
     </button>

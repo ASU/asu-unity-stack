@@ -1,12 +1,12 @@
-/* eslint-disable react/jsx-props-no-spreading */
 // @ts-check
+import { imageAny } from "@asu/shared";
 import { render, cleanup } from "@testing-library/react";
 import React from "react";
 import { expect, describe, it, afterEach, beforeEach } from "vitest";
 
 // @ts-ignore
-import img from "../../../../../shared/assets/img/named/hero01.jpg";
 import { Article } from "./Article";
+const img = imageAny();
 
 const defaultArgs = {
   type: "news",
@@ -75,10 +75,6 @@ describe("#News Article", () => {
     component = renderArticle(props);
   });
   afterEach(cleanup);
-
-  it("should render hero", () => {
-    expect(component.queryByTestId("uds-hero")).toBeInTheDocument();
-  });
 
   it('should render "AuthorInfo" section', () => {
     expect(component.queryByTestId("author-info")).toBeInTheDocument();

@@ -1,7 +1,7 @@
 // @ts-check
+import { trackGAEvent } from "@asu/shared";
 import React from "react";
 
-import { trackGAEvent } from "../../../../../../shared";
 import innovationLogo from "../../../../public/assets/images/innovationLogo.png";
 import { FOOTER_URLS } from "../../core/constants";
 

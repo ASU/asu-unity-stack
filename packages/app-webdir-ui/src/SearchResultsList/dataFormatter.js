@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import axios from "axios";
 
 import { validateAndCleanURL } from "../helpers/validateUrl";

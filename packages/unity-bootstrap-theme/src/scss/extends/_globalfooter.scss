@@ -104,6 +104,7 @@ footer {
   --endorsed-logo-padding-bottom: 12px;
   --endorsed-logo-img-max-height: 100%;
   --endorsed-logo-img-width: 100%;
+  --endorsed-logo-img-max-width: 320px;
   @include media-breakpoint-up(md) {
     & {
       --endorsed-logo-display: flex;
@@ -120,6 +121,7 @@ footer {
 
   img {
     width: var(--endorsed-logo-img-width);
+    max-width: var(--endorsed-logo-img-max-width);
     height: auto;
     max-height: var(--endorsed-logo-img-max-height);
     /* Transform here scales an image which has embedded padding so that
@@ -140,7 +142,7 @@ footer {
       font-size: $uds-size-icon-base;
       color: $uds-color-base-gray-4;
       line-height: 1;
-      padding-top: 7px; // Magic number. Reducing the padding by 1px to make the height = 48px.
+      padding: 7px 16px; // Magic number. Reducing the padding by 1px to make the height = 48px.
 
       :hover {
         color: $uds-color-base-white;
@@ -348,5 +350,28 @@ footer {
 @include media-breakpoint-down(md) {
   #footer-colophon {
     @include nav-to-grid;
+  }
+}
+
+/*------------------------------------------------------------------
+8. Footer Colophon - Cookie Consent
+--------------------------------------------------------------------*/
+.footer-legal-links,
+.footer-menu,
+.nav {
+  &.colophon #manualConsentoptout,
+  #manualConsentoptout {
+    color: #484848;
+    border: none;
+    background-color: transparent;
+    width: auto;
+    cursor: pointer;
+    padding: 0;
+    text-align: right;
+    justify-self: end;
+    font-size: 1rem;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

@@ -2,7 +2,7 @@ import React from "react";
 
 import { WebDirectory } from "./index";
 
-import { FullLayout } from "../../../../shared/components/Layout";
+import { FullLayout } from "@asu/shared";
 
 export default {
   title: "Organisms/Web Directory/Templates",

@@ -6,18 +6,18 @@
     "resolveJsonModule": true,
     "emitDeclarationOnly": true,
     "declarationDir": "./dist/types",
-    "jsx": "react",
+    "jsx": "react-jsx",
     "allowImportingTsExtensions": true,
     "esModuleInterop": true,
-    "moduleResolution": "node16",
+    "moduleResolution": "bundler",
     "rootDir": "src",
-    "rootDirs": ["src", "../../shared"],
-    "module": "node16",
+    "module": "esnext",
     "declaration": true,
     "sourceMap": true,
     "allowJs": true,
     "checkJs": true,
     "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
     "plugins": [{ "name": "typescript-plugin-css-modules" }],
     "types": ["@vitest/browser/providers/playwright"],
     "paths": {
@@ -31,18 +31,11 @@
     "src/**/*.js",
     "src/**/*.jsx",
     "types/**/*",
-    "src/vite-env.d.ts",
-    "shared/**/*"
+    "src/vite-env.d.ts"
   ],
   "exclude": [
     "dist",
     "node_modules",
-    "src/**/*.test.*",
-    "__mocks__",
-    "src/**/*.stories.*",
-    "shared",
-    "../../shared/**/*",
-    "shared/**/*",
-    "@shared/**/*"
+    "__mocks__"
   ]
 }

@@ -3,19 +3,17 @@ import { Link } from "react-router-dom";
 import { PagePaths } from "~/routes/config";
 import { default as watchDataLayer } from "~/utils/watchDataLayerBookmarklet?raw";
 
-export const bookmarklet = `javascript:(${watchDataLayer.toString()
+export const bookmarklet = `javascript:(${watchDataLayer
+  .toString()
   // remove line breaks
-  .replace(/\n/g,"")
+  .replace(/\n/g, "")
   // remove comments
   .replace(/\/\*.*?\*\//g, "")
   // replace multiple spaces with a single space
-  .replace(/\s+/g, " ")})();`
+  .replace(/\s+/g, " ")})();`;
 
 const gtmCodes = {
   universal: "GTM-KDWN8Z",
-  etDev: "GTM-PX7M299",
-  etQA: "GTM-W3FGR6T",
-  etProd: "GTM-WPVTBHL",
 };
 
 const GtmCodeExample: FC<{ gtmCode: string }> = ({ gtmCode }) => {
@@ -77,9 +75,7 @@ const DataLayerGuide = () => {
               </a>
             </li>
             <li>
-              <a href="#watchdatalayer">
-                Watching the data layer
-              </a>
+              <a href="#watchdatalayer">Watching the data layer</a>
             </li>
           </ul>
 
@@ -87,31 +83,12 @@ const DataLayerGuide = () => {
           <h2>Google Tag Manager</h2>
           <p>
             Before implementing Google Tag Manager yourself, please review the{" "}
-            <Link to={PagePaths.HEADERGUIDE}>options for obtaining the ASU Header</Link>. Some
-            options provide the ASU Google Tag Manager code automatically
+            <Link to={PagePaths.HEADERGUIDE}>
+              options for obtaining the ASU Header
+            </Link>
+            . Some options provide the ASU Google Tag Manager code automatically
             bundled.
           </p>
-
-          <h3>Benefits of Becoming part of GTM Product Community:</h3>
-          <ul>
-            <li>
-              Receive consultation/assistance with GTM implementation and
-              maintenance
-            </li>
-            <li>
-              Receive information on any changes being made to Enterprise UTO
-              GTM and how any changes might affect your site
-            </li>
-            <li>Provide feedback for any changes submitted</li>
-            <li>
-              Become a member of the larger GTM community as a member of a
-              private slack channel to keep up with all the latest GTM news
-            </li>
-            <li>
-              Coming Soon — Link to Service Now Request to register site –
-              https://asu.service-now.com/xxxxxxx
-            </li>
-          </ul>
 
           <h3>Best Practices for Implementing GTM</h3>
           <p>Install on test site first</p>
@@ -155,15 +132,6 @@ const DataLayerGuide = () => {
           <p>Most ASU sites should implement the ASU Universal GTM.</p>
 
           <p>
-            Enterprise sites should implement the ASU Enterprise QA GTM on their
-            &quot;DEV&quot; environment, and the ASU Enterprise Production GTM on their
-            &quot;QA&quot; and &quot;Production&quot; environments. This may be configured using
-            environmental variables. Each environment has its own GTM ID
-            associated with it and care must be taken to use the appropriate GTM
-            ID for each application environment.
-          </p>
-
-          <p>
             Some units have their own GTM IDs. When multiple GTM IDs need to be
             used in a single site or application, follow the guidance on{" "}
             <a href="https://developers.google.com/tag-manager/devguide#multiple-containers">
@@ -174,15 +142,6 @@ const DataLayerGuide = () => {
 
           <h3>ASU universal GTM code</h3>
           <GtmCodeExample gtmCode={gtmCodes.universal} />
-
-          <h3>ET Enterprise Webapp Development GTM</h3>
-          <GtmCodeExample gtmCode={gtmCodes.etDev} />
-
-          <h3>ET Enterprise Webapp QA GTM</h3>
-          <GtmCodeExample gtmCode={gtmCodes.etQA} />
-
-          <h3>ET Enterprise Webapp Production GTM</h3>
-          <GtmCodeExample gtmCode={gtmCodes.etProd} />
 
           <a id="datalayer"></a>
           <h2>Adding the data layer</h2>
@@ -219,12 +178,15 @@ const DataLayerGuide = () => {
             related to your `data-ga` attributes and to push that event to the
             data layer. As a help to get you started, the
             `unity-bootstrap-theme` package&apos;s{" "}
-            <a href="https://github.com/ASU/asu-unity-stack/blob/dev/packages/unity-bootstrap-theme/src/js/data-layer.js" target="_blank" rel="noreferrer">
+            <a
+              href="https://github.com/ASU/asu-unity-stack/blob/dev/packages/unity-bootstrap-theme/src/js/data-layer.js"
+              target="_blank"
+              rel="noreferrer"
+            >
               src/js/data-layer.js
             </a>{" "}
-            file can
-            serve as a starting point or as a reference for implementing your
-            own data layer push code.
+            file can serve as a starting point or as a reference for
+            implementing your own data layer push code.
           </p>
 
           <p>
@@ -233,9 +195,10 @@ const DataLayerGuide = () => {
             Bootstrap header: <br />
           </p>
           <p>
-            Including the following script tag will automatically initialize the GA push events and header scroll
-            behavior and should be placed in the <strong>{`<head>`}</strong> tag of your HTML.
-            The script has event listeners to initialize on the window load event.
+            Including the following script tag will automatically initialize the
+            GA push events and header scroll behavior and should be placed in
+            the <strong>{`<head>`}</strong> tag of your HTML. The script has
+            event listeners to initialize on the window load event.
           </p>
           <pre>
             <code>
@@ -245,7 +208,10 @@ const DataLayerGuide = () => {
             </code>
           </pre>
           <p>
-            If for some reason your setup includes the script after the window load event has already occurred, you can call the initialization functions directly, by using the global variable <strong>{`unityBootstrap`}</strong>.
+            If for some reason your setup includes the script after the window
+            load event has already occurred, you can call the initialization
+            functions directly, by using the global variable{" "}
+            <strong>{`unityBootstrap`}</strong>.
           </p>
           <pre>
             <code>
@@ -264,32 +230,27 @@ const DataLayerGuide = () => {
           <p>
             Drag this link to your bookmarks bar. When you are on a page with
             data layer events, clicking the bookmarklet will execute a tiny
-            script which will output data layer events to the console.<br/><br/>
+            script which will output data layer events to the console.
+            <br />
+            <br />
             <a href={bookmarklet}>Watch DataLayer</a>
           </p>
-            <h3>
-              Only Run Code You Trust
-              </h3>
-            <p>
-              As a user, always exercise caution when running code. Only click
-              or add bookmarklets if at least one of the following applies:
-                <ul>
-                  <li>
-                    The source is reputable.
-                  </li>
-                  <li>
-                    You understand JavaScript and have reviewed the code
-                    yourself.
-                  </li>
-                  <li>
-                    A trusted individual who knows JavaScript has reviewed the
-                    code for you.
-                  </li>
-                </ul>
-
-
-            </p>
-            <h3>Bookmarklet Source code</h3>
+          <h3>Only Run Code You Trust</h3>
+          <p>
+            As a user, always exercise caution when running code. Only click or
+            add bookmarklets if at least one of the following applies:
+            <ul>
+              <li>The source is reputable.</li>
+              <li>
+                You understand JavaScript and have reviewed the code yourself.
+              </li>
+              <li>
+                A trusted individual who knows JavaScript has reviewed the code
+                for you.
+              </li>
+            </ul>
+          </p>
+          <h3>Bookmarklet Source code</h3>
           <pre>
             <code>
               {`

@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 // @ts-check
 import { render, cleanup, fireEvent, screen } from "@testing-library/react";
 import React from "react";

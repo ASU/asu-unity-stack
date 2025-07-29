@@ -11,7 +11,7 @@ function App(): JSX.Element {
       <ScrollRestoration />
       <Outlet />
     </Page>
-);
+  );
 }
 
 export default App;

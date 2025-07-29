@@ -1,3 +1,17 @@
+# [@asu/app-degree-pages-v3.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.0.5...@asu/app-degree-pages-v3.1.0) (2025-07-14)
+
+
+### Features
+
+* **app-degree-pages:** allow list view including both  GR and UGCM certs ([8dd70c4](https://github.com/asu/asu-unity-stack/commit/8dd70c41c0993d3e9f5d4c1c8bb518a2086e944f))
+
+# [@asu/app-degree-pages-v3.0.5](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.0.4...@asu/app-degree-pages-v3.0.5) (2025-06-27)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** fix accessibility with options ID listing page ([0833f25](https://github.com/asu/asu-unity-stack/commit/0833f2517131661c5d15b14b7e7e6e047abde4f9))
+
 # [@asu/app-degree-pages-v3.0.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.0.3...@asu/app-degree-pages-v3.0.4) (2025-04-22)
 
 

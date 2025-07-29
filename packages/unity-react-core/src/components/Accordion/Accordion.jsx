@@ -40,7 +40,6 @@ const Accordion = ({ cards, openedCard }) => {
           card.content.body &&
           card.content.header && (
             <AccordionCard
-              // eslint-disable-next-line react/no-array-index-key
               key={key + 1}
               id={key + 1}
               item={card}

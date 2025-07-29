@@ -1,12 +1,12 @@
-/* eslint-disable react/jsx-props-no-spreading */
 // @ts-check
+import { imageAny } from "@asu/shared";
 import { render, cleanup } from "@testing-library/react";
 import React from "react";
 import { expect, describe, it, afterEach, beforeEach, test } from "vitest";
 
 // @ts-ignore
-import img1 from "../../../../../shared/assets/img/named/hero01.jpg";
 import { Hero } from "./Hero";
+const img1 = imageAny();
 
 const defaultArgs = {
   image: {

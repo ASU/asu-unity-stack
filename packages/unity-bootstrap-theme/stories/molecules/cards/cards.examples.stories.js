@@ -1,6 +1,5 @@
 import React from "react";
-
-import { defaultDecorator, htmlRootDecorator } from "../../../../../shared/components/Layout";
+import { defaultDecorator, htmlRootDecorator } from "@asu/shared";
 import cardsImage from "./cards-image.jpg";
 import { horizontalCardsMap as horizontalCard } from "./cardVariations.js";
 
@@ -59,7 +58,7 @@ export const cardImages = () => (
     </div>
   </div>
 );
-cardImages.decorators = [ defaultDecorator ];
+cardImages.decorators = [defaultDecorator];
 
 export const cardTitles = () => (
   <div style={{ width: "50%" }}>
@@ -77,7 +76,7 @@ export const cardTitles = () => (
     </div>
   </div>
 );
-cardTitles.decorators = [ defaultDecorator ];
+cardTitles.decorators = [defaultDecorator];
 
 export const cardBody = () => (
   <div className="card">
@@ -91,7 +90,7 @@ export const cardBody = () => (
     </div>
   </div>
 );
-cardBody.decorators = [ defaultDecorator ];
+cardBody.decorators = [defaultDecorator];
 
 export const cardEventInfo = () => (
   <div>
@@ -164,7 +163,7 @@ export const cardEventInfo = () => (
     </div>
   </div>
 );
-cardEventInfo.decorators = [ defaultDecorator ];
+cardEventInfo.decorators = [defaultDecorator];
 
 export const cardTags = () => (
   <div style={{ width: "50%" }}>
@@ -1026,26 +1025,24 @@ export const cardVariations = () => (
 );
 cardVariations.decorators = [htmlRootDecorator];
 
-export const horizontal =
-  args => {
-    return (
-      <div>
-        {horizontalCard({ ...args, type: null })}
-        <hr />
+export const horizontal = args => {
+  return (
+    <div>
+      {horizontalCard({ ...args, type: null })}
+      <hr />
 
-        {horizontalCard({ ...args, type: "degree" })}
+      {horizontalCard({ ...args, type: "degree" })}
 
-        <hr />
+      <hr />
 
-        {horizontalCard({ ...args, type: "event" })}
+      {horizontalCard({ ...args, type: "event" })}
 
-        <hr />
+      <hr />
 
-        {horizontalCard({ ...args, type: "story" })}
-      </div>
-    );
-  }
-;
+      {horizontalCard({ ...args, type: "story" })}
+    </div>
+  );
+};
 horizontal.args = {
   numCards: 1,
 };
@@ -1053,10 +1050,10 @@ horizontal.argTypes = {
   numCards: {
     name: "Columns",
     control: { type: "range", min: 1, max: 3, step: 1 },
-  }
+  },
 };
 
-horizontal.decorators = [ defaultDecorator ];
+horizontal.decorators = [defaultDecorator];
 
 export const checkboxStackedCard = () => (
   <div className="card card-checkbox-stacked">
@@ -1535,7 +1532,7 @@ RankingCardLarge.parameters = {
     disable: false,
   },
 };
-RankingCardLarge.decorators = [ defaultDecorator ];
+RankingCardLarge.decorators = [defaultDecorator];
 
 export const RankingCardSmall = () => (
   <div className="card-ranking small-image">
@@ -1608,4 +1605,4 @@ RankingCardSmall.parameters = {
     disable: false,
   },
 };
-RankingCardSmall.decorators = [ defaultDecorator ];
+RankingCardSmall.decorators = [defaultDecorator];

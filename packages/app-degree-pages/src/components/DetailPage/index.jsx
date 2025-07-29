@@ -1,11 +1,11 @@
 // @ts-check
 import { Hero } from "@asu/unity-react-core";
+import { useFetch, trackReactComponent } from "@asu/shared";
 import PropTypes, { arrayOf } from "prop-types";
 import React, { useContext, useEffect, useState } from "react";
 
 // @ts-ignore
-import { useFetch } from "../../../../../shared";
-import trackReactComponent from "../../../../../shared/services/componentDatalayer";
+
 import {
   ErrorAlert,
   Loader,
@@ -405,7 +405,7 @@ DetailPage.propTypes = {
     hideProgramDesc: PropTypes.bool,
     hideRequiredCourses: PropTypes.bool,
     breadcrumbs: arrayOf(linkPropShape),
-    // eslint-disable-next-line react/forbid-prop-types
+
     contents: arrayOf(PropTypes.object),
     video: videoPropShape,
     image: imagePropShape,

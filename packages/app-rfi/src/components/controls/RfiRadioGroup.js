@@ -1,6 +1,6 @@
 // @ts-check
 /* eslint-disable no-unused-vars */
-/* eslint-disable react/jsx-props-no-spreading */
+
 import { Field } from "formik";
 import PropTypes from "prop-types";
 import React from "react";
@@ -12,7 +12,7 @@ const RfiRadioGroup = ({ name, id, options, label, onBlur }) => {
     <Field as="div" name={name}>
       {({
         field,
-        // eslint-disable-next-line no-unused-vars
+
         form: { touched, errors },
         meta,
       }) => {

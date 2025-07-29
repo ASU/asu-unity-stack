@@ -79,7 +79,7 @@ const DegreeDataPropResolverServiceType = degreeDataPropResolverService({});
  *    showInactivePrograms?: boolean | "true" | "false"
  *    blacklistAcadPlans?: Array
  *    showCerts?: "true" | "false"
- *    program: "undergrad" | "graduate"
+ *    program: "undergrad" | "graduate" | "all"
  * }} FiltersState
  */
 

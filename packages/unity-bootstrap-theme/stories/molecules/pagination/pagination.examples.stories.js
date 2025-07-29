@@ -1,10 +1,9 @@
 import React from "react";
-
-import { defaultDecorator } from "../../../../../shared/components/Layout";
+import { defaultDecorator } from "@asu/shared";
 
 export default {
   title: "Molecules/Pagination/Examples",
-  decorators: [ defaultDecorator ],
+  decorators: [defaultDecorator],
   parameters: { controls: { disable: true } },
 };
 export const DisabledAndActiveStatesComponent = () => (
@@ -68,7 +67,11 @@ export const DisabledAndActiveStatesComponent = () => (
         </a>
       </li>
       <li className="page-item">
-        <a aria-label="Next page" className="page-link page-link-icon" href="#" />
+        <a
+          aria-label="Next page"
+          className="page-link page-link-icon"
+          href="#"
+        />
       </li>
     </ul>
   </nav>
@@ -151,8 +154,12 @@ export const LargeNumbersComponent = () => (
         </a>
       </li>
       <li className="page-item">
-        <a aria-label="next page" className="page-link page-link-icon" href="#" />
+        <a
+          aria-label="next page"
+          className="page-link page-link-icon"
+          href="#"
+        />
       </li>
     </ul>
   </nav>
-  );
+);

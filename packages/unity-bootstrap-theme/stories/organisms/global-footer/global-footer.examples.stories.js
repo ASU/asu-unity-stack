@@ -1,4 +1,4 @@
-import { htmlRootDecorator } from "../../../../../shared/components/Layout.js";
+import { htmlRootDecorator } from "@asu/shared";
 import {
   GlobalElementsOnly,
   ZeroColumns,
@@ -19,11 +19,11 @@ export default {
       disable: false,
     },
     footer: {
-      disable: true
+      disable: true,
     },
-    controls: { disable: true }
+    controls: { disable: true },
   },
-  decorators: [htmlRootDecorator]
+  decorators: [htmlRootDecorator],
 };
 export const GlobalElementsOnlyExample = GlobalElementsOnly.bind({});
 export const ZeroColumnsExample = ZeroColumns.bind({});

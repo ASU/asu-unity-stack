@@ -12,7 +12,5 @@ export const MaxWidthCookieConsent = () => {
     allCookieConsentJS();
   }, []);
 
-  return (
-    <div></div>
-  );
-}
+  return <div></div>;
+};

@@ -1,7 +1,6 @@
-/* eslint-disable import/no-extraneous-dependencies */
+import { getCurrentScriptPath, trackGAEvent } from "@asu/shared";
 import React from "react";
 
-import { getCurrentScriptPath, trackGAEvent } from "../../../../../../shared";
 // @ts-check
 import { useAppContext } from "../../../core/context/app-context";
 import { PartnerLogosWrapper } from "./index.styles";
@@ -38,7 +37,7 @@ const Partner = () => {
           height="81"
           decoding="async"
           // @ts-ignore
-          // eslint-disable-next-line
+
           fetchpriority="high"
         />
       </a>
@@ -54,7 +53,7 @@ const Partner = () => {
           height="234"
           decoding="async"
           // @ts-ignore
-          // eslint-disable-next-line
+
           fetchpriority="high"
         />
         <img
@@ -65,7 +64,7 @@ const Partner = () => {
           height="72"
           decoding="async"
           // @ts-ignore
-          // eslint-disable-next-line
+
           fetchpriority="high"
         />
       </a>

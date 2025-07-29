@@ -42,7 +42,7 @@ const FacultyTab = ({ engines, term, sort, onSortChange }) => {
 
 FacultyTab.propTypes = {
   term: PropTypes.string,
-  // eslint-disable-next-line react/forbid-prop-types
+
   engines: PropTypes.object,
   sort: PropTypes.string,
   onSortChange: PropTypes.func,

@@ -1,4 +1,5 @@
 // @ts-check
+import { trackGAEvent } from "@asu/shared";
 import {
   faFacebookSquare,
   faInstagramSquare,
@@ -10,7 +11,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes, { shape } from "prop-types";
 import React from "react";
 
-import { trackGAEvent } from "../../../../../../shared";
 // @ts-expect-error
 import endorsedLogo from "../../../../public/assets/images/endorsedLogo.png";
 

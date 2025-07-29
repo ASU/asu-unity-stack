@@ -47,7 +47,6 @@ const NavControls = ({ gaData, hidePrev, hideNext, slideNav }) => {
 };
 
 NavControls.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   gaData: PropTypes.object,
   hidePrev: PropTypes.bool,
   hideNext: PropTypes.bool,

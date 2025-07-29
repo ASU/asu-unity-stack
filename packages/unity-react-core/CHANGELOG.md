@@ -1,3 +1,18 @@
+# [@asu/unity-react-core-v1.1.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.1.2...@asu/unity-react-core-v1.1.3) (2025-06-30)
+
+
+### Bug Fixes
+
+* **unity-react-core:** change class of header ranking card for styling ([ada0d67](https://github.com/ASU/asu-unity-stack/commit/ada0d677de7c9701e8225a6af6353f93e9d1be8b))
+* **unity-react-core:** update jsx for ranking card ([40f3711](https://github.com/ASU/asu-unity-stack/commit/40f371137789d9b71af8a85e03427dc6c7b8c017))
+
+# [@asu/unity-react-core-v1.1.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.1.1...@asu/unity-react-core-v1.1.2) (2025-06-04)
+
+
+### Bug Fixes
+
+* **unity-react-core:** adding Grays to code kit ([dd6f5c1](https://github.com/ASU/asu-unity-stack/commit/dd6f5c12cb586e6039b57dc617758dcc4127cb64))
+
 # [@asu/unity-react-core-v1.1.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.1.0...@asu/unity-react-core-v1.1.1) (2025-05-30)
 
 

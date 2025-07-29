@@ -49,9 +49,8 @@ function initHeroesVideo() {
   // set event listeners
   $videoBtnPause?.addEventListener(EVENT_CLICK, handleBtnPauseEvent);
   $videoBtnPlay?.addEventListener(EVENT_CLICK, handleBtnPlayEvent);
+}
 
-};
-
-EventHandler.on(window, 'load.uds.heroes-video', initHeroesVideo);
+EventHandler.on(window, "load.uds.heroes-video", initHeroesVideo);
 
 export { initHeroesVideo };

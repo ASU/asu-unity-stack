@@ -1,3 +1,72 @@
+# [@asu/unity-bootstrap-theme-v1.27.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.26.5...@asu/unity-bootstrap-theme-v1.27.0) (2025-07-24)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** focus state centered ([00fce2c](https://github.com/ASU/asu-unity-stack/commit/00fce2cf45780d9e6f38b404f88c04a98481f2ef))
+
+
+### Features
+
+* **unity-bootstrap-theme:** increase font size from 12px up to 16px in uds-figure-caption ([6d80be8](https://github.com/ASU/asu-unity-stack/commit/6d80be86e5653f78f7b2375566907a13bff9f1bb))
+
+# [@asu/unity-bootstrap-theme-v1.26.5](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.26.4...@asu/unity-bootstrap-theme-v1.26.5) (2025-07-14)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix school image styles in global footer ([e31f753](https://github.com/ASU/asu-unity-stack/commit/e31f75336f71a2f51a5e03d1d13069c38891688b))
+
+# [@asu/unity-bootstrap-theme-v1.26.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.26.3...@asu/unity-bootstrap-theme-v1.26.4) (2025-07-14)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** cSS Padding added to images without header ([5d3a4f2](https://github.com/ASU/asu-unity-stack/commit/5d3a4f2170346ca5f5b4a8a17fcbcb1c9a4f863c))
+
+# [@asu/unity-bootstrap-theme-v1.26.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.26.2...@asu/unity-bootstrap-theme-v1.26.3) (2025-07-11)
+
+
+### Bug Fixes
+
+* **component-header-footer:** updating footer to included privacy button ([fd022c4](https://github.com/ASU/asu-unity-stack/commit/fd022c45ca846c1fa1e2213e951fa431e2b483a6))
+* styles for manual consent opt out ([b028c9f](https://github.com/ASU/asu-unity-stack/commit/b028c9fb6ba32aeaa6dd1dbfb1cdf572e2356740))
+* styles for manual consent opt out version 2 ([35f4452](https://github.com/ASU/asu-unity-stack/commit/35f4452c3c32ff13c71dbbac5c9386774b3bf001))
+* **unity-bootstrap-theme:** blockquotes in mobile view too compressed, need to stack ([84cb73f](https://github.com/ASU/asu-unity-stack/commit/84cb73f260ded56e088555da91debc999f872889))
+
+# [@asu/unity-bootstrap-theme-v1.26.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.26.1...@asu/unity-bootstrap-theme-v1.26.2) (2025-07-07)
+
+
+### Bug Fixes
+
+* **components-core:** added tabindex and focus css for accordion wrapper ([b6b3046](https://github.com/ASU/asu-unity-stack/commit/b6b304691f5f11fde1e4e14304e4909ffb0cae03))
+* **unity-bootstrap-theme:** split padding value to margin and padding ([a55da8a](https://github.com/ASU/asu-unity-stack/commit/a55da8a5157d3a6e6e4be1aeda89ed443c749270))
+
+# [@asu/unity-bootstrap-theme-v1.26.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.26.0...@asu/unity-bootstrap-theme-v1.26.1) (2025-06-30)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** update line clamp for ranking card ([25506a2](https://github.com/ASU/asu-unity-stack/commit/25506a2dde022c9f23e7c664c285487c05725c2f))
+* **unity-bootstrap-theme:** update ranking card styles ([f6e6ea9](https://github.com/ASU/asu-unity-stack/commit/f6e6ea90160ed8b46fe8e2d4785092e8975e2998))
+* **unity-bootstrap-theme:** update ranking card styles ([1492e29](https://github.com/ASU/asu-unity-stack/commit/1492e295c87344b42482947d002fdb779a39e5c5))
+* **unity-bootstrap-theme:** update ranking card styles ([bbe3272](https://github.com/ASU/asu-unity-stack/commit/bbe32720cec059a2b8d8a52fd05413b942b592a2))
+
+# [@asu/unity-bootstrap-theme-v1.26.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.25.2...@asu/unity-bootstrap-theme-v1.26.0) (2025-06-09)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** added styles to hidden box ([0524735](https://github.com/ASU/asu-unity-stack/commit/05247354f7dd56b3ca9de676b025f8b644a2304c))
+* **unity-bootstrap-theme:** fixing visible text paragraph ([3e023c2](https://github.com/ASU/asu-unity-stack/commit/3e023c236b3c64b41432e260083fb2df05a2dea2))
+* **unity-bootstrap-theme:** removed aria-hidden ([d4dc1a2](https://github.com/ASU/asu-unity-stack/commit/d4dc1a2d8f354ef39f80034818ecc72830c44618))
+
+
+### Features
+
+* **unity-bootstrap-theme:** added js for trucate aria-describedby on card-body ([971d134](https://github.com/ASU/asu-unity-stack/commit/971d134800f91d64f463c7ba7de878cd55e71757))
+* **unity-bootstrap-theme:** setup aria-label for p ([486628e](https://github.com/ASU/asu-unity-stack/commit/486628eb81c50553f75de4940e35b0112a0b3468))
+
 # [@asu/unity-bootstrap-theme-v1.25.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.25.1...@asu/unity-bootstrap-theme-v1.25.2) (2025-05-30)
 
 

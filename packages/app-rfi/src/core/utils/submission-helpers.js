@@ -1,5 +1,5 @@
 // @ts-check
-import { deepCloner } from "../../../../../shared/utils";
+import { deepCloner } from "@asu/shared";
 import { KEY } from "./constants";
 import { pushDataLayerEventToGa, setClientId } from "./google-analytics";
 

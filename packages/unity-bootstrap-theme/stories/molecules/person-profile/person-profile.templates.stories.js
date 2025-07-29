@@ -1,20 +1,19 @@
 import React from "react";
-
-import { imageName } from "../../../../../shared/assets";
-import { defaultDecorator } from "../../../../../shared/components/Layout";
+import { imageName } from "@asu/shared";
+import { defaultDecorator } from "@asu/shared";
 import { Button } from "../../../../unity-react-core/src/components/Button/Button";
 import anonPic from "./anon.png";
 
 export default {
   title: "Molecules/Person Profile/Templates",
-  decorators: [ defaultDecorator ],
-  argTypes:  {
+  decorators: [defaultDecorator],
+  argTypes: {
     size: {
       name: "Size",
       options: ["Small", "Large"],
       mapping: {
-        "Small": "small",
-        "Large": "",
+        Small: "small",
+        Large: "",
       },
       control: {
         type: "radio",
@@ -31,10 +30,8 @@ export default {
   },
 };
 
-const PersonProfile = ({size, fill}) => (
-  <div
-    className={`uds-person-profile ${size} ${fill ? "fill" : ""}`}
-  >
+const PersonProfile = ({ size, fill }) => (
+  <div className={`uds-person-profile ${size} ${fill ? "fill" : ""}`}>
     <div className="profile-img-container">
       <div
         className="profile-img-placeholder"
@@ -42,7 +39,7 @@ const PersonProfile = ({size, fill}) => (
       >
         <img
           className="profile-img"
-          src={ imageName.demo1 }
+          src={imageName.demo1}
           alt="John Smith"
           width="300"
           height="300"

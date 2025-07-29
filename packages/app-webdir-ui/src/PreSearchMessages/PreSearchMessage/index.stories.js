@@ -1,6 +1,6 @@
 import React from "react";
 
-import { defaultDecorator } from "../../../../../shared/components/Layout";
+import { defaultDecorator } from "@asu/shared";
 import { searchMessageComponentMap } from "../index";
 
 export default {

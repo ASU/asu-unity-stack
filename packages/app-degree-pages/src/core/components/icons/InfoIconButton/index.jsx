@@ -1,13 +1,10 @@
 // TODO: THIS COMPONENT IS CURRENTLY DEFERRED
 
-/* eslint-disable react/no-danger */
-/* eslint-disable react/prop-types */
 // @ts-check
 import { createPopper } from "@popperjs/core";
+import { sanitizeDangerousMarkup } from "@asu/shared";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-
-import { sanitizeDangerousMarkup } from "../../../../../../../shared";
 
 const Tooltip = styled.div`
   position: absolute;

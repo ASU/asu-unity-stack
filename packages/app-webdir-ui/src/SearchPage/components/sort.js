@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useId } from "react";
 
-import { trackGAEvent } from "../../../../../shared";
+import { trackGAEvent } from "@asu/shared";
 import { SortLayout } from "./index.styles";
 
 /**

@@ -11,8 +11,7 @@
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin></script>
   <!-- *************************************************************** -->
   <!-- include bundled scripts from packages -->
-  <script src="../dist/vendor.umd.js"></script>
-  <script src="../dist/asuHeader.umd.js"></script>
+  <script src="../dist/asuHeaderFooter.umd.js"></script>
 </head>
 
 <body>
@@ -23,130 +22,131 @@
       Scroll section
     </h1>
   </div>
+  <div id="footer-container"></div>
 
   <script>
-    const navTree =[
-        {
-          href: "/",
-          text: "Home",
-          type: "icon-home",
-          selected: true,
-          class: "test-class",
-        },
-        {
-          text: "Degree programs",
-          href: "#",
-          items: [
-            [
-              {
-                href: "https://www.asu.edu/?feature=newsevents",
-                text: "Mauris viverra, sem nec",
-              },
-              {
-                href: "https://www.asu.edu/?feature=academics",
-                text: "Academics",
-              },
-              {
-                href: "https://www.asu.edu/?feature=research",
-                text: "Research",
-              },
-              {
-                href: "https://www.asu.edu/?feature=athletics",
-                text: "Athletics",
-              },
-              {
-                href: "https://www.asu.edu/?feature=alumni",
-                text: "Alumni",
-              },
-              {
-                href: "https://www.asu.edu/?feature=giving",
-                text: "Giving",
-              },
-              {
-                href: "https://www.asu.edu/?feature=president",
-                text: "President",
-              },
-              {
-                href: "https://www.asu.edu/about",
-                text: "About ASU",
-              },
-            ],
+    const navTree = [
+      {
+        href: "/",
+        text: "Home",
+        type: "icon-home",
+        selected: true,
+        class: "test-class",
+      },
+      {
+        text: "Degree programs",
+        href: "#",
+        items: [
+          [
+            {
+              href: "https://www.asu.edu/?feature=newsevents",
+              text: "Mauris viverra, sem nec",
+            },
+            {
+              href: "https://www.asu.edu/?feature=academics",
+              text: "Academics",
+            },
+            {
+              href: "https://www.asu.edu/?feature=research",
+              text: "Research",
+            },
+            {
+              href: "https://www.asu.edu/?feature=athletics",
+              text: "Athletics",
+            },
+            {
+              href: "https://www.asu.edu/?feature=alumni",
+              text: "Alumni",
+            },
+            {
+              href: "https://www.asu.edu/?feature=giving",
+              text: "Giving",
+            },
+            {
+              href: "https://www.asu.edu/?feature=president",
+              text: "President",
+            },
+            {
+              href: "https://www.asu.edu/about",
+              text: "About ASU",
+            },
           ],
-        },
+        ],
+      },
 
-        {
-          text: "People",
-          href: "#",
-        },
-        {
-          text: "My ASU",
-          href: "#",
-        },
-        {
-          text: "Two Column 1",
-          href: "/",
-          items: [
-            [
-              {
-                type: "heading",
-                text: "Column 1",
-              },
-              {
-                href: "https://www.asu.edu/",
-                text: "Pellentesque ornare",
-              },
-              {
-                href: "https://www.asu.edu/",
-                text: "Curabitur viverra arcu nisl",
-              },
-              {
-                href: "https://www.asu.edu/?feature=athletics",
-                text: "Aenean pharetra",
-              },
-              {
-                href: "https://www.asu.edu/?feature=alumni",
-                text: "Pellentesque",
-              },
-              {
-                href: "https://www.asu.edu/?feature=giving",
-                text: "Donec sagittis nulla",
-              },
-              {
-                href: "https://www.asu.edu/?feature=president",
-                text: "Quisque fringilla",
-              },
-              {
-                href: "https://www.asu.edu/about",
-                text: "Integer vel gravida lectus",
-              },
-            ],
-            [
-              {
-                href: "https://www.asu.edu/?feature=newsevents",
-                type: "heading",
-                text: "Ut quis",
-              },
-              {
-                href: "https://www.asu.edu/?feature=academics",
-                text: "Nunc in libero odio",
-              },
-              {
-                href: "https://www.asu.edu/?feature=research",
-                text: "Maecenas quam elit",
-              },
-              {
-                href: "https://www.asu.edu/?feature=academics",
-                text: "Ut at vehicula neque",
-              },
-              {
-                href: "https://www.asu.edu/?feature=athletics",
-                type: "button",
-                text: "Sed molestie",
-              },
-            ],
+      {
+        text: "People",
+        href: "#",
+      },
+      {
+        text: "My ASU",
+        href: "#",
+      },
+      {
+        text: "Two Column 1",
+        href: "/",
+        items: [
+          [
+            {
+              type: "heading",
+              text: "Column 1",
+            },
+            {
+              href: "https://www.asu.edu/",
+              text: "Pellentesque ornare",
+            },
+            {
+              href: "https://www.asu.edu/",
+              text: "Curabitur viverra arcu nisl",
+            },
+            {
+              href: "https://www.asu.edu/?feature=athletics",
+              text: "Aenean pharetra",
+            },
+            {
+              href: "https://www.asu.edu/?feature=alumni",
+              text: "Pellentesque",
+            },
+            {
+              href: "https://www.asu.edu/?feature=giving",
+              text: "Donec sagittis nulla",
+            },
+            {
+              href: "https://www.asu.edu/?feature=president",
+              text: "Quisque fringilla",
+            },
+            {
+              href: "https://www.asu.edu/about",
+              text: "Integer vel gravida lectus",
+            },
           ],
-        },
-        {
+          [
+            {
+              href: "https://www.asu.edu/?feature=newsevents",
+              type: "heading",
+              text: "Ut quis",
+            },
+            {
+              href: "https://www.asu.edu/?feature=academics",
+              text: "Nunc in libero odio",
+            },
+            {
+              href: "https://www.asu.edu/?feature=research",
+              text: "Maecenas quam elit",
+            },
+            {
+              href: "https://www.asu.edu/?feature=academics",
+              text: "Ut at vehicula neque",
+            },
+            {
+              href: "https://www.asu.edu/?feature=athletics",
+              type: "button",
+              text: "Sed molestie",
+            },
+          ],
+        ],
+      },
+      {
         text: "Mega Menu (5 Col)",
         href: "#",
         buttons: [
@@ -310,7 +310,7 @@
         ],
       },
     ];
-    AsuHeader.initGlobalHeader({
+    AsuHeaderFooter.initGlobalHeader({
       targetSelector: "#header-container",
       props: {
         loggedIn: false,
@@ -338,7 +338,60 @@
         site: "subdomain",
       },
     });
+  AsuHeaderFooter.initASUFooter({
+      targetSelector: "#footer-container",
+      props: {
+        social: {
+        logoUrl: "https://asu.github.io/asu-unity-stack/@asu/component-header-footer/assets/endorsedLogo-DPPmUtP1.png",
+        unitLogo: "https://asu.github.io/asu-unity-stack/@asu/component-header-footer/assets/endorsedLogo-DPPmUtP1.png",
+        mediaLinks: {
+          facebook: "https://facebook.com",
+          twitter: "https://twitter.com/?lang=en",
+          instagram: "https://instagram.com",
+          linkedIn: "https://www.linkedin.com/",
+          youtube: "https://www.youtube.com/",
+        },
+      },
+      contact: {
+        title: "Complete Name of College, School or Unit Title Should Go Here",
+        contactLink: "#",
+        contributionLink: "#",
+        columns: [
+          {
+            title: "Column One",
+            links: [
+              {
+                url: "#",
+                title: "link",
+                text: "Biological and Health Systems Computing",
+              },
+              {
+                url: "#",
+                title: "link",
+                text: "Informatics and Decision Systems Electrical",
+              },
+              {
+                url: "#",
+                title: "link",
+                text: "Computer and Energy Matter",
+              },
+              {
+                url: "#",
+                title: "link",
+                text: "Transport and Energy Sustainability and the Built Environment",
+              },
+              {
+                url: "#",
+                title: "link",
+                text: "The Polytechnic School",
+              },
+            ],
+          },
+        ],
+      }
+      },
+    });
   </script>
-</body>
+  </body>
 
 </html>

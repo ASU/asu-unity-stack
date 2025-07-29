@@ -31,28 +31,24 @@ const TabHeader = forwardRef(function TabHeader(props, ref) {
 
   const inputRef = useRef(null);
 
-  useImperativeHandle(
-    ref,
-    () => {
-      return {
-        focus() {
-          inputRef.current.focus();
-        },
-        scrollIntoView() {
-          const middle =
-            inputRef.current?.offsetWidth / 2 + inputRef.current.offsetLeft;
-          const targetMiddle =
-            inputRef.current?.offsetParent?.scrollLeft +
-            inputRef.current?.offsetParent?.offsetWidth / 2;
+  useImperativeHandle(ref, () => {
+    return {
+      focus() {
+        inputRef.current.focus();
+      },
+      scrollIntoView() {
+        const middle =
+          inputRef.current?.offsetWidth / 2 + inputRef.current.offsetLeft;
+        const targetMiddle =
+          inputRef.current?.offsetParent?.scrollLeft +
+          inputRef.current?.offsetParent?.offsetWidth / 2;
 
-          inputRef.current?.offsetParent?.scrollBy({
-            left: middle - targetMiddle,
-          });
-        },
-      };
-    },
-    []
-  );
+        inputRef.current?.offsetParent?.scrollBy({
+          left: middle - targetMiddle,
+        });
+      },
+    };
+  }, []);
 
   const func = e => {
     if (e.keyCode === 37) {
@@ -85,7 +81,6 @@ const TabHeader = forwardRef(function TabHeader(props, ref) {
 });
 
 TabHeader.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   gaData: PropTypes.object,
   id: PropTypes.string.isRequired,
   selected: PropTypes.bool.isRequired,

@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 // @ts-check
 const KEY = "AsuDevTools";
 const devTools = {

@@ -1,9 +1,0 @@
-node_modules
-build
-dist
-lib
-esm
-**/*.spec.ts
-**/*spec.ts
-**/*.d.ts
-**/graphql-schema.ts?

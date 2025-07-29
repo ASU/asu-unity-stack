@@ -1,8 +1,8 @@
 // @ts-check
 import { Card } from "@asu/unity-react-core";
+import { sanitizeDangerousMarkup } from "@asu/shared";
 import React from "react";
 
-import { sanitizeDangerousMarkup } from "../../../../../../../shared";
 import {
   whyChooseAsuShape,
   progDetailSectionIds,
@@ -25,7 +25,6 @@ const WhyChooseAsu = ({ sectionIntroText, cards, defaultCards }) => {
     >
       <h2>Why choose ASU</h2>
       <div
-        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={sanitizeDangerousMarkup(sectionIntroText)}
       />
       <div className="mt-2 row">

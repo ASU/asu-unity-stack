@@ -52,7 +52,7 @@
  * @property {"true" | "false"} [init]
  * @property {"true" | "false"} [cert]
  * @property {string} [fields]
- * @property {"undergrad" | "graduate"} [program]
+ * @property {"undergrad" | "graduate" | "all"} [program]
  * @property {string} [collegeAcadOrg]
  * @property {string} [acadPlan]
  * @property {string} [departmentCode]

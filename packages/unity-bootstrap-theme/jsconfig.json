@@ -10,13 +10,9 @@
     "moduleResolution": "node16",
     "module": "node16",
     "allowSyntheticDefaultImports": true,
-    "paths": {
-      "@shared/*": [ "../../shared/*" ],
-    },
   },
   "include": [
     "src/**/*",
-    "stories/**/*",
-    "../../shared/**/*",
+    "stories/**/*"
   ],
 }

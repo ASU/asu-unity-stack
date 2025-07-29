@@ -1,4 +1,5 @@
 // @ts-check
+import { sanitizeDangerousMarkup } from "@asu/shared";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
@@ -14,7 +15,6 @@ import {
 } from "react-share";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 
-import { sanitizeDangerousMarkup } from "../../../../../shared";
 import { Button } from "../Button/Button";
 import { Wrapper, EventInfoWrapper } from "./Article.styles";
 
@@ -163,7 +163,7 @@ export const Article = ({
           <i className="fas fa-map-marker-alt" />
           Location:
         </h4>
-        {/* eslint-disable-next-line react/no-danger */}
+        {}
         <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventLocation)} />
         {registrationUrl && zoomUrl && <a href={zoomUrl}>Attend on Zoom</a>}
       </div>
@@ -242,7 +242,6 @@ export const Article = ({
                   Date and time:
                 </h4>
                 <div
-                  // eslint-disable-next-line react/no-danger
                   dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventTime)}
                 />
               </div>
@@ -288,7 +287,6 @@ export const Article = ({
         <div className="row">
           <div
             className="col col-12"
-            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)}
             data-testid="body"
           />
