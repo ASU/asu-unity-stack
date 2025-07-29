@@ -1,37 +1,5 @@
 import { EventHandler } from "./bootstrap-helper";
-
-/**
- * Throttles a function so it's called at most once during a specified delay.
- *
- * @param {function} func The function to throttle.
- * @param {number} delay The delay in milliseconds.
- * @return {function} The throttled function.
- */
-function throttle(func, delay) {
-  let timeoutId;
-  let lastArgs;
-  let lastThis;
-  let calledDuringDelay = false;
-
-  return function (...args) {
-    lastArgs = args;
-    lastThis = this;
-
-    if (!timeoutId) {
-      func.apply(lastThis, lastArgs);
-      calledDuringDelay = false;
-      timeoutId = setTimeout(() => {
-        timeoutId = null;
-        if (calledDuringDelay) {
-          func.apply(lastThis, lastArgs);
-          calledDuringDelay = false;
-        }
-      }, delay);
-    } else {
-      calledDuringDelay = true;
-    }
-  };
-}
+import { throttle } from "@asu/shared";
 
 /**
  * Initializes the anchor menu functionality.
@@ -179,9 +147,7 @@ function initAnchorMenu() {
     previousScrollPosition = window.scrollY;
   };
 
-  const throttledScrollHandler = throttle(scrollHandlerLogic, SCROLL_DELAY);
-
-  window.addEventListener("scroll", throttledScrollHandler, { passive: true });
+  window.addEventListener("scroll", () => throttle(scrollHandlerLogic, SCROLL_DELAY), { passive: true });
 
   // Set click event of anchors
   for (let [anchor, anchorTarget] of anchorTargets) {
