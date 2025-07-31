@@ -34,6 +34,10 @@ const FeedHeader = ({
 }) => {
   const header = { ...defaultProps.header, ...pHeeder };
   const ctaButton = { ...defaultProps.ctaButton, ...pCtaButton };
+  const HeaderTag = header.tag || "h2";
+  const isNotH2 = HeaderTag !== "h2";
+
+  const headerClassName = `text-${header.color} ${isNotH2 ? "h2" : ""}`.trim();
 
   return (
     <div
@@ -41,7 +45,7 @@ const FeedHeader = ({
       data-testid="feed-header"
     >
       <div className="col-sm-12 col-md-9">
-        <h2 className={`text-${header.color}`}>{header.text}</h2>
+        <HeaderTag className={headerClassName}>{header.text}</HeaderTag>
       </div>
       <ButtonColumn className="col-sm-12 col-md-3">
         <GaEventWrapper
