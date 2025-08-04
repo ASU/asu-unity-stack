@@ -1,3 +1,16 @@
+# [@asu/unity-bootstrap-theme-v1.28.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.27.0...@asu/unity-bootstrap-theme-v1.28.0) (2025-08-04)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** add retry logic to initCardBoodies to for .card-body elemtns ([9310021](https://github.com/ASU/asu-unity-stack/commit/9310021b3c86f0e365fe37ec5b764c4778f8f546))
+* **unity-bootstrap-theme:** initialized retryCount var ([b0656ed](https://github.com/ASU/asu-unity-stack/commit/b0656ed394a25c591e39d19e919a69ba75c8628f))
+
+
+### Features
+
+* **unity-bootstrap-theme:** changed margin and padding for List ([4fc2fcd](https://github.com/ASU/asu-unity-stack/commit/4fc2fcd8f97b3662f888efcc1b07fbdf9127ec1b))
+
 # [@asu/unity-bootstrap-theme-v1.27.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.26.5...@asu/unity-bootstrap-theme-v1.27.0) (2025-07-24)
 
 
