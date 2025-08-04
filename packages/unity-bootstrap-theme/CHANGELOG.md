@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.28.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.28.0...@asu/unity-bootstrap-theme-v1.28.1) (2025-08-04)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** added scss selector for a.btn disabled ([b58ee6a](https://github.com/ASU/asu-unity-stack/commit/b58ee6ac6d8fdaa73648e72ff5478510d0efdbc2))
+
 # [@asu/unity-bootstrap-theme-v1.28.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.27.0...@asu/unity-bootstrap-theme-v1.28.0) (2025-08-04)
 
 
