@@ -8,8 +8,7 @@ import { EventHandler } from "./bootstrap-helper";
  * @return {void} This function does not return any value.
  */
 function initCardBodies() {
-
-  const cardBodies = document.querySelectorAll('.card-body');
+  const cardBodies = document.querySelectorAll(".card-body");
 
   // If there are no cardBodies and you have not yet exceeded 3 retries
   let retryCount = 0;
@@ -20,12 +19,12 @@ function initCardBodies() {
 
   // If after 3 attempts there are still no cardBodies, we simply exit
   if (cardBodies.length === 0) {
-    console.warn('No .card-body found after 3 retries.');
+    console.warn("No .card-body found after 3 retries.");
     return;
   }
 
   cardBodies.forEach((cardBody, index) => {
-    const paragraph = cardBody.querySelector('div p');
+    const paragraph = cardBody.querySelector("div p");
     const originalText = paragraph.textContent;
     const style = window.getComputedStyle(cardBody);
 
@@ -37,51 +36,58 @@ function initCardBodies() {
     const fontSize = parseFloat(style.fontSize);
 
     // Calculate the actual line height. If lineHeight is not a number, estimate using fontSize
-    const actualLineHeight = isNaN(lineHeight) ? parseFloat(style.lineHeight) * fontSize : lineHeight;
+    const actualLineHeight = isNaN(lineHeight)
+      ? parseFloat(style.lineHeight) * fontSize
+      : lineHeight;
 
     // Calculate the maximum height allowed for the paragraph (lines × line height)
     const maxHeight = lineClamp * actualLineHeight;
 
     // Check if the paragraph exceeds the maximum allowed height
     if (paragraph.offsetHeight >= maxHeight) {
-      let visibleText = '';
-      const words = originalText.split(' ');
+      let visibleText = "";
+      const words = originalText.split(" ");
       let visibleWordCount = 0;
-      let tempText = '';
+      let tempText = "";
 
       // Add words one by one until the text height exceeds the max allowed height
-      while (visibleWordCount < words.length && getTextHeight(tempText + (tempText ? ' ' : '') + words[visibleWordCount], paragraph) <= maxHeight) {
-        tempText += (tempText ? ' ' : '') + words[visibleWordCount];
+      while (
+        visibleWordCount < words.length &&
+        getTextHeight(
+          tempText + (tempText ? " " : "") + words[visibleWordCount],
+          paragraph
+        ) <= maxHeight
+      ) {
+        tempText += (tempText ? " " : "") + words[visibleWordCount];
         visibleWordCount++;
       }
-      visibleText = tempText + '...';
+      visibleText = tempText + "...";
 
       // Create a new hidden element to store the truncated text
-      const visibleTextElementId = `visible-text-${Math.random().toString(36).substring(7)}`;
-      const visibleTextElement = document.createElement('div');
+      const visibleTextElementId = `visible-text-${Math.random()
+        .toString(36)
+        .substring(7)}`;
+      const visibleTextElement = document.createElement("div");
       visibleTextElement.id = visibleTextElementId;
       visibleTextElement.textContent = visibleText;
-      visibleTextElement.style.position = 'absolute';
+      visibleTextElement.style.position = "absolute";
       visibleTextElement.style.top = `${paragraph.offsetTop}px`;
       visibleTextElement.style.left = `${paragraph.offsetLeft}px`;
       visibleTextElement.style.width = `${paragraph.offsetWidth}px`;
       visibleTextElement.style.height = `${paragraph.offsetHeight}px`;
-      visibleTextElement.style.opacity = '0';
-      visibleTextElement.style.pointerEvents = 'none';
-      visibleTextElement.style.zIndex = '1';
+      visibleTextElement.style.opacity = "0";
+      visibleTextElement.style.pointerEvents = "none";
+      visibleTextElement.style.zIndex = "1";
 
       // Add the hidden element to the DOM
       cardBody.appendChild(visibleTextElement);
 
-      paragraph.setAttribute('aria-describedby', visibleTextElementId);
+      paragraph.setAttribute("aria-describedby", visibleTextElementId);
 
       // Hide the original paragraph from screen readers
-      paragraph.setAttribute('aria-hidden', 'true');
-
+      paragraph.setAttribute("aria-hidden", "true");
     }
   });
-
-
 }
 
 /**
@@ -96,7 +102,7 @@ function getTextHeight(text, element) {
   const tempElement = document.createElement(element.tagName);
   tempElement.style.font = window.getComputedStyle(element).font;
   tempElement.style.width = window.getComputedStyle(element).width;
-  tempElement.style.whiteSpace = 'pre-wrap';
+  tempElement.style.whiteSpace = "pre-wrap";
   tempElement.textContent = text;
   document.body.appendChild(tempElement);
   const height = tempElement.offsetHeight;
@@ -104,6 +110,6 @@ function getTextHeight(text, element) {
   return height;
 }
 
-EventHandler.on(window, 'load.uds.card-bodies', initCardBodies);
+EventHandler.on(window, "load.uds.card-bodies", initCardBodies);
 
 export { initCardBodies };
