@@ -1,7 +1,7 @@
 import * as k from "chart.js";
 const at = () => window.jQuery && !document.body.hasAttribute("data-bs-no-jquery") ? window.jQuery : null, st = /[^.]*(?=\..*)\.|.*/, rt = /\..*/, it = /::\d+$/, D = {};
-let H = 1;
-const q = {
+let P = 1;
+const R = {
   mouseenter: "mouseover",
   mouseleave: "mouseout"
 }, ct = /* @__PURE__ */ new Set([
@@ -52,172 +52,172 @@ const q = {
   "abort",
   "scroll"
 ]);
-function R(o, t) {
-  return t && `${t}::${H++}` || o.uidEvent || H++;
+function V(o, e) {
+  return e && `${e}::${P++}` || o.uidEvent || P++;
 }
-function V(o) {
-  const t = R(o);
-  return o.uidEvent = t, D[t] = D[t] || {}, D[t];
+function Y(o) {
+  const e = V(o);
+  return o.uidEvent = e, D[e] = D[e] || {}, D[e];
 }
-function lt(o, t) {
-  return function s(a) {
-    return N(a, { delegateTarget: o }), s.oneOff && m.off(o, a.type, t), t.apply(o, [a]);
+function lt(o, e) {
+  return function a(s) {
+    return N(s, { delegateTarget: o }), a.oneOff && w.off(o, s.type, e), e.apply(o, [s]);
   };
 }
-function dt(o, t, s) {
-  return function a(l) {
-    const n = o.querySelectorAll(t);
-    for (let { target: e } = l; e && e !== this; e = e.parentNode)
-      for (const r of n)
-        if (r === e)
-          return N(l, { delegateTarget: e }), a.oneOff && m.off(o, l.type, t, s), s.apply(e, [l]);
+function dt(o, e, a) {
+  return function s(r) {
+    const n = o.querySelectorAll(e);
+    for (let { target: t } = r; t && t !== this; t = t.parentNode)
+      for (const i of n)
+        if (i === t)
+          return N(r, { delegateTarget: t }), s.oneOff && w.off(o, r.type, e, a), a.apply(t, [r]);
   };
 }
-function Y(o, t, s = null) {
-  return Object.values(o).find((a) => a.callable === t && a.delegationSelector === s);
+function W(o, e, a = null) {
+  return Object.values(o).find((s) => s.callable === e && s.delegationSelector === a);
 }
-function W(o, t, s) {
-  const a = typeof t == "string", l = a ? s : t || s;
-  let n = F(o);
-  return ct.has(n) || (n = o), [a, l, n];
+function F(o, e, a) {
+  const s = typeof e == "string", r = s ? a : e || a;
+  let n = z(o);
+  return ct.has(n) || (n = o), [s, r, n];
 }
-function P(o, t, s, a, l) {
-  if (typeof t != "string" || !o)
+function q(o, e, a, s, r) {
+  if (typeof e != "string" || !o)
     return;
-  let [n, e, r] = W(t, s, a);
-  t in q && (e = ((y) => function(h) {
-    if (!h.relatedTarget || h.relatedTarget !== h.delegateTarget && !h.delegateTarget.contains(h.relatedTarget))
-      return y.call(this, h);
-  })(e));
-  const i = V(o), c = i[r] || (i[r] = {}), d = Y(c, e, n ? s : null);
+  let [n, t, i] = F(e, a, s);
+  e in R && (t = ((y) => function(p) {
+    if (!p.relatedTarget || p.relatedTarget !== p.delegateTarget && !p.delegateTarget.contains(p.relatedTarget))
+      return y.call(this, p);
+  })(t));
+  const c = Y(o), l = c[i] || (c[i] = {}), d = W(l, t, n ? a : null);
   if (d) {
-    d.oneOff = d.oneOff && l;
+    d.oneOff = d.oneOff && r;
     return;
   }
-  const f = R(e, t.replace(st, "")), g = n ? dt(o, s, e) : lt(o, e);
-  g.delegationSelector = n ? s : null, g.callable = e, g.oneOff = l, g.uidEvent = f, c[f] = g, o.addEventListener(r, g, n);
+  const u = V(t, e.replace(st, "")), f = n ? dt(o, a, t) : lt(o, t);
+  f.delegationSelector = n ? a : null, f.callable = t, f.oneOff = r, f.uidEvent = u, l[u] = f, o.addEventListener(i, f, n);
 }
-function O(o, t, s, a, l) {
-  const n = Y(t[s], a, l);
-  n && (o.removeEventListener(s, n, !!l), delete t[s][n.uidEvent]);
+function O(o, e, a, s, r) {
+  const n = W(e[a], s, r);
+  n && (o.removeEventListener(a, n, !!r), delete e[a][n.uidEvent]);
 }
-function ut(o, t, s, a) {
-  const l = t[s] || {};
-  for (const [n, e] of Object.entries(l))
-    n.includes(a) && O(o, t, s, e.callable, e.delegationSelector);
+function ut(o, e, a, s) {
+  const r = e[a] || {};
+  for (const [n, t] of Object.entries(r))
+    n.includes(s) && O(o, e, a, t.callable, t.delegationSelector);
 }
-function F(o) {
-  return o = o.replace(rt, ""), q[o] || o;
+function z(o) {
+  return o = o.replace(rt, ""), R[o] || o;
 }
-const m = {
-  on(o, t, s, a) {
-    P(o, t, s, a, !1);
+const w = {
+  on(o, e, a, s) {
+    q(o, e, a, s, !1);
   },
-  one(o, t, s, a) {
-    P(o, t, s, a, !0);
+  one(o, e, a, s) {
+    q(o, e, a, s, !0);
   },
-  off(o, t, s, a) {
-    if (typeof t != "string" || !o)
+  off(o, e, a, s) {
+    if (typeof e != "string" || !o)
       return;
-    const [l, n, e] = W(t, s, a), r = e !== t, i = V(o), c = i[e] || {}, d = t.startsWith(".");
+    const [r, n, t] = F(e, a, s), i = t !== e, c = Y(o), l = c[t] || {}, d = e.startsWith(".");
     if (typeof n < "u") {
-      if (!Object.keys(c).length)
+      if (!Object.keys(l).length)
         return;
-      O(o, i, e, n, l ? s : null);
+      O(o, c, t, n, r ? a : null);
       return;
     }
     if (d)
-      for (const f of Object.keys(i))
-        ut(o, i, f, t.slice(1));
-    for (const [f, g] of Object.entries(c)) {
-      const p = f.replace(it, "");
-      (!r || t.includes(p)) && O(o, i, e, g.callable, g.delegationSelector);
+      for (const u of Object.keys(c))
+        ut(o, c, u, e.slice(1));
+    for (const [u, f] of Object.entries(l)) {
+      const g = u.replace(it, "");
+      (!i || e.includes(g)) && O(o, c, t, f.callable, f.delegationSelector);
     }
   },
-  trigger(o, t, s) {
-    if (typeof t != "string" || !o)
+  trigger(o, e, a) {
+    if (typeof e != "string" || !o)
       return null;
-    const a = at(), l = F(t), n = t !== l;
-    let e = null, r = !0, i = !0, c = !1;
-    n && a && (e = a.Event(t, s), a(o).trigger(e), r = !e.isPropagationStopped(), i = !e.isImmediatePropagationStopped(), c = e.isDefaultPrevented());
-    const d = N(new Event(t, { bubbles: r, cancelable: !0 }), s);
-    return c && d.preventDefault(), i && o.dispatchEvent(d), d.defaultPrevented && e && e.preventDefault(), d;
+    const s = at(), r = z(e), n = e !== r;
+    let t = null, i = !0, c = !0, l = !1;
+    n && s && (t = s.Event(e, a), s(o).trigger(t), i = !t.isPropagationStopped(), c = !t.isImmediatePropagationStopped(), l = t.isDefaultPrevented());
+    const d = N(new Event(e, { bubbles: i, cancelable: !0 }), a);
+    return l && d.preventDefault(), c && o.dispatchEvent(d), d.defaultPrevented && t && t.preventDefault(), d;
   }
 };
-function N(o, t = {}) {
-  for (const [s, a] of Object.entries(t))
+function N(o, e = {}) {
+  for (const [a, s] of Object.entries(e))
     try {
-      o[s] = a;
+      o[a] = s;
     } catch {
-      Object.defineProperty(o, s, {
+      Object.defineProperty(o, a, {
         configurable: !0,
         get() {
-          return a;
+          return s;
         }
       });
     }
   return o;
 }
-function z() {
-  const t = ["asu-header", "asuHeader"].find((w) => document.getElementById(w));
-  if (t === void 0)
+function j() {
+  const e = ["asu-header", "asuHeader"].find((b) => document.getElementById(b));
+  if (e === void 0)
     return;
-  const s = document.getElementById(t), a = document.getElementById("uds-anchor-menu"), l = a.parentNode, n = a.nextSibling, e = a.getElementsByClassName("nav-link"), r = /* @__PURE__ */ new Map();
-  let i = window.scrollY, c = !1;
+  const a = document.getElementById(e), s = document.getElementById("uds-anchor-menu"), r = s.parentNode, n = s.nextSibling, t = s.getElementsByClassName("nav-link"), i = /* @__PURE__ */ new Map();
+  let c = window.scrollY, l = !1;
   const d = document.body;
-  let f = document.getElementById("toolbar-bar"), g = document.getElementById(
+  let u = document.getElementById("toolbar-bar"), f = document.getElementById(
     "toolbar-item-administration-tray"
-  ), p = f ? f.offsetHeight : 0, y = g ? g.offsetHeight : 0, h = p + y;
-  const u = a.getBoundingClientRect().top + window.scrollY - h;
-  for (let w of e) {
-    const L = w.getAttribute("href").replace("#", ""), v = document.getElementById(L);
-    r.set(w, v);
+  ), g = u ? u.offsetHeight : 0, y = f ? f.offsetHeight : 0, p = g + y;
+  const h = s.getBoundingClientRect().top + window.scrollY - p;
+  for (let b of t) {
+    const L = b.getAttribute("href").replace("#", ""), v = document.getElementById(L);
+    i.set(b, v);
   }
   new bootstrap.ScrollSpy(d, {
     target: "#uds-anchor-menu nav",
     rootMargin: "20%"
-  }), window.scrollY > u && (s.appendChild(a), c = !0, a.classList.add("uds-anchor-menu-attached")), window.addEventListener(
+  }), window.scrollY > h && (a.appendChild(s), l = !0, s.classList.add("uds-anchor-menu-attached")), window.addEventListener(
     "scroll",
     function() {
-      const w = a.getBoundingClientRect().top, L = s.classList.contains("scrolled") ? s.offsetHeight - 32 : s.offsetHeight;
-      window.scrollY > i && w > 0 && w < L && (c || (s.appendChild(a), c = !0, a.classList.add("uds-anchor-menu-attached")), i = window.scrollY), window.scrollY < i && window.scrollY <= u && c && (l.insertBefore(a, n), c = !1, a.classList.remove("uds-anchor-menu-attached")), i = window.scrollY;
+      const b = s.getBoundingClientRect().top, L = a.classList.contains("scrolled") ? a.offsetHeight - 32 : a.offsetHeight;
+      window.scrollY > c && b > 0 && b < L && (l || (a.appendChild(s), l = !0, s.classList.add("uds-anchor-menu-attached")), c = window.scrollY), window.scrollY < c && window.scrollY <= h && l && (r.insertBefore(s, n), l = !1, s.classList.remove("uds-anchor-menu-attached")), c = window.scrollY;
     },
     { passive: !0 }
   );
-  for (let [w, L] of r)
-    w.addEventListener("click", function(v) {
+  for (let [b, L] of i)
+    b.addEventListener("click", function(v) {
       v.preventDefault();
-      let S = L.getBoundingClientRect().top - a.offsetHeight;
-      window.scrollY === 0 && (S += 65), a.classList.contains("uds-anchor-menu-sticky") || (window.scrollY > 0 && (S += 24), S -= s.offsetHeight), window.scrollBy({
-        top: S,
+      let C = L.getBoundingClientRect().top - s.offsetHeight;
+      window.scrollY === 0 && (C += 65), s.classList.contains("uds-anchor-menu-sticky") || (window.scrollY > 0 && (C += 24), C -= a.offsetHeight), window.scrollBy({
+        top: C,
         behavior: "smooth"
       });
-      const x = a.querySelector(".nav-link.active");
+      const x = s.querySelector(".nav-link.active");
       x && x.classList.remove("active"), v.target.classList.add("active");
     });
 }
-m.on(window, "load.uds.anchor-menu", z);
-function j() {
-  const o = document.querySelectorAll('mark[class^="pen-"]'), t = new IntersectionObserver(
-    (s) => {
-      s.forEach((a) => {
-        a.isIntersecting ? a.target.classList.add("animate-bg-in-scroll") : a.target.classList.remove("animate-bg-in-scroll");
+w.on(window, "load.uds.anchor-menu", j);
+function G() {
+  const o = document.querySelectorAll('mark[class^="pen-"]'), e = new IntersectionObserver(
+    (a) => {
+      a.forEach((s) => {
+        s.isIntersecting ? s.target.classList.add("animate-bg-in-scroll") : s.target.classList.remove("animate-bg-in-scroll");
       });
     },
     {
       threshold: 0.1
     }
   );
-  o.forEach((s) => {
-    t.observe(s);
+  o.forEach((a) => {
+    e.observe(a);
   });
 }
-m.on(
+w.on(
   window,
   "load.uds.blockquote-animation",
-  j
+  G
 );
-function G() {
+function $() {
   const o = [
     "January",
     "February",
@@ -231,7 +231,7 @@ function G() {
     "October",
     "November",
     "December"
-  ], t = [
+  ], e = [
     "Sunday",
     "Monday",
     "Tuesday",
@@ -239,53 +239,53 @@ function G() {
     "Thursday",
     "Friday",
     "Saturday"
-  ], s = ["Su", "M", "Tu", "W", "Th", "F", "Sa"], l = {
+  ], a = ["Su", "M", "Tu", "W", "Th", "F", "Sa"], r = {
     month: (/* @__PURE__ */ new Date()).getMonth(),
     year: (/* @__PURE__ */ new Date()).getFullYear()
-  }, n = (i, c) => {
-    const d = /* @__PURE__ */ new Date(), f = [], g = new Date(i, c).getDay(), p = new Date(i, c + 1, 0).getDate(), y = new Date(i, c, 0).getDate();
-    for (let h = 1; h <= g; h++) {
-      const u = y - g + h, E = new Date(
-        l.year,
-        l.month - 1,
-        u
+  }, n = (c, l) => {
+    const d = /* @__PURE__ */ new Date(), u = [], f = new Date(c, l).getDay(), g = new Date(c, l + 1, 0).getDate(), y = new Date(c, l, 0).getDate();
+    for (let p = 1; p <= f; p++) {
+      const h = y - f + p, m = new Date(
+        r.year,
+        r.month - 1,
+        h
       ).toLocaleString();
-      f.push({ key: E, date: u, monthClass: "prev" });
+      u.push({ key: m, date: h, monthClass: "prev" });
     }
-    for (let h = 1; h <= p; h++) {
-      const u = new Date(l.year, l.month, h).toLocaleString();
-      h === d.getDate() && l.month === d.getMonth() && l.year === d.getFullYear() ? f.push({
-        key: u,
-        date: h,
+    for (let p = 1; p <= g; p++) {
+      const h = new Date(r.year, r.month, p).toLocaleString();
+      p === d.getDate() && r.month === d.getMonth() && r.year === d.getFullYear() ? u.push({
+        key: h,
+        date: p,
         monthClass: "current",
         todayClass: "today"
-      }) : f.push({ key: u, date: h, monthClass: "current" });
+      }) : u.push({ key: h, date: p, monthClass: "current" });
     }
-    if (f.length < 42) {
-      const h = 42 - f.length;
-      for (let u = 1; u <= h; u++) {
-        const E = new Date(l.year, l.month + 1, u).toLocaleString();
-        f.push({ key: E, date: u, monthClass: "next" });
+    if (u.length < 42) {
+      const p = 42 - u.length;
+      for (let h = 1; h <= p; h++) {
+        const m = new Date(r.year, r.month + 1, h).toLocaleString();
+        u.push({ key: m, date: h, monthClass: "next" });
       }
     }
-    return f;
-  }, e = () => {
-    const i = document.getElementById("calendar");
-    i && (i.innerHTML = `
-      <h2><span class="highlight-black">${o[l.month]} ${l.year}</span></h2>
+    return u;
+  }, t = () => {
+    const c = document.getElementById("calendar");
+    c && (c.innerHTML = `
+      <h2><span class="highlight-black">${o[r.month]} ${r.year}</span></h2>
       <div class="calendar-grid">
         <div class="heading desktop">
-          ${t.map((c) => `<p>${c}</p>`).join("")}
+          ${e.map((l) => `<p>${l}</p>`).join("")}
         </div>
         <div class="heading mobile">
-          ${s.map((c) => `<p>${c}</p>`).join("")}
+          ${a.map((l) => `<p>${l}</p>`).join("")}
         </div>
         <div class="body">
-          ${n(l.year, l.month).map(
-      (c) => `<h3 id="${c.key}" class="calendar-item ${c.monthClass}" ${c.todayClass ? `aria-label="${c.todayClass[0].toUpperCase()}${c.todayClass.slice(
+          ${n(r.year, r.month).map(
+      (l) => `<h3 id="${l.key}" class="calendar-item ${l.monthClass}" ${l.todayClass ? `aria-label="${l.todayClass[0].toUpperCase()}${l.todayClass.slice(
         1
       )}"` : ""}>
-                  <span class="${c.todayClass ? c.todayClass : ""}">${c.date}</span>
+                  <span class="${l.todayClass ? l.todayClass : ""}">${l.date}</span>
                 </h3>`
     ).join("")}
         </div>
@@ -320,52 +320,61 @@ function G() {
       </div>
   `);
   };
-  ((i) => {
-    var c = new Date(l.year, l.month + i);
-    l.year = c.getFullYear(), l.month = c.getMonth(), e();
+  ((c) => {
+    var l = new Date(r.year, r.month + c);
+    r.year = l.getFullYear(), r.month = l.getMonth(), t();
   })(0);
 }
-m.on(window, "load.uds.calendar", G);
-function $() {
-  document.querySelectorAll(".card-body").forEach((t, s) => {
-    const a = t.querySelector("div p"), l = a.textContent, n = window.getComputedStyle(t), e = parseInt(n.webkitLineClamp || n.lineClamp), r = parseFloat(n.lineHeight), i = parseFloat(n.fontSize), c = isNaN(r) ? parseFloat(n.lineHeight) * i : r, d = e * c;
-    if (a.offsetHeight >= d) {
+w.on(window, "load.uds.calendar", $);
+function I() {
+  const o = document.querySelectorAll(".card-body");
+  if (o.length === 0 && 0 < 3) {
+    setTimeout(() => I(), 500);
+    return;
+  }
+  if (o.length === 0) {
+    console.warn("No .card-body found after 3 retries.");
+    return;
+  }
+  o.forEach((a, s) => {
+    const r = a.querySelector("div p"), n = r.textContent, t = window.getComputedStyle(a), i = parseInt(t.webkitLineClamp || t.lineClamp), c = parseFloat(t.lineHeight), l = parseFloat(t.fontSize), d = isNaN(c) ? parseFloat(t.lineHeight) * l : c, u = i * d;
+    if (r.offsetHeight >= u) {
       let f = "";
-      const g = l.split(" ");
-      let p = 0, y = "";
-      for (; p < g.length && ft(
-        y + (y ? " " : "") + g[p],
-        a
-      ) <= d; )
-        y += (y ? " " : "") + g[p], p++;
-      f = y + "...";
-      const h = `visible-text-${Math.random().toString(36).substring(7)}`, u = document.createElement("div");
-      u.id = h, u.textContent = f, u.style.position = "absolute", u.style.top = `${a.offsetTop}px`, u.style.left = `${a.offsetLeft}px`, u.style.width = `${a.offsetWidth}px`, u.style.height = `${a.offsetHeight}px`, u.style.opacity = "0", u.style.pointerEvents = "none", u.style.zIndex = "1", t.appendChild(u), a.setAttribute("aria-describedby", h), a.setAttribute("aria-hidden", "true");
+      const g = n.split(" ");
+      let y = 0, p = "";
+      for (; y < g.length && ft(
+        p + (p ? " " : "") + g[y],
+        r
+      ) <= u; )
+        p += (p ? " " : "") + g[y], y++;
+      f = p + "...";
+      const h = `visible-text-${Math.random().toString(36).substring(7)}`, m = document.createElement("div");
+      m.id = h, m.textContent = f, m.style.position = "absolute", m.style.top = `${r.offsetTop}px`, m.style.left = `${r.offsetLeft}px`, m.style.width = `${r.offsetWidth}px`, m.style.height = `${r.offsetHeight}px`, m.style.opacity = "0", m.style.pointerEvents = "none", m.style.zIndex = "1", a.appendChild(m), r.setAttribute("aria-describedby", h), r.setAttribute("aria-hidden", "true");
     }
   });
 }
-function ft(o, t) {
-  const s = document.createElement(t.tagName);
-  s.style.font = window.getComputedStyle(t).font, s.style.width = window.getComputedStyle(t).width, s.style.whiteSpace = "pre-wrap", s.textContent = o, document.body.appendChild(s);
-  const a = s.offsetHeight;
-  return document.body.removeChild(s), a;
+function ft(o, e) {
+  const a = document.createElement(e.tagName);
+  a.style.font = window.getComputedStyle(e).font, a.style.width = window.getComputedStyle(e).width, a.style.whiteSpace = "pre-wrap", a.textContent = o, document.body.appendChild(a);
+  const s = a.offsetHeight;
+  return document.body.removeChild(a), s;
 }
-m.on(window, "load.uds.card-bodies", $);
+w.on(window, "load.uds.card-bodies", I);
 function K() {
-  const o = document.querySelector(".info-layer"), t = document.getElementById("dispatch");
-  m.on(t, "click", function() {
+  const o = document.querySelector(".info-layer"), e = document.getElementById("dispatch");
+  w.on(e, "click", function() {
     o == null || o.classList.toggle("active");
   });
 }
-m.on(window, "load.uds.ranking-card", K);
+w.on(window, "load.uds.ranking-card", K);
 function U() {
   k.Chart.register(...k.registerables);
   const o = 50;
-  var t = document.getElementById("uds-donut");
-  if (!t)
+  var e = document.getElementById("uds-donut");
+  if (!e)
     return;
   document.getElementById("percentage-display").innerHTML = o + "%";
-  const s = {
+  const a = {
     type: "doughnut",
     data: {
       datasets: [
@@ -383,98 +392,98 @@ function U() {
       //maintainAspectRatio: false, // remove if want static size
     }
   };
-  new k.Chart(t, s);
+  new k.Chart(e, a);
 }
-m.on(window, "load.uds.chart", U);
-function I() {
-  var t, s, a, l;
+w.on(window, "load.uds.chart", U);
+function M() {
+  var e, a, s, r;
   const o = (n) => {
     window.dataLayer = window.dataLayer || [];
-    const { dataLayer: e } = window;
-    e && e.push(n);
+    const { dataLayer: t } = window;
+    t && t.push(n);
   };
-  (t = document.querySelectorAll("[data-ga-header]")) == null || t.forEach(
+  (e = document.querySelectorAll("[data-ga-header]")) == null || e.forEach(
     (n) => n.addEventListener("click", () => {
-      const e = n.getAttribute("data-ga-header-event") || "link";
-      let r = n.getAttribute("data-ga-header-action") || "click";
-      const i = n.getAttribute("aria-expanded");
-      i && (r = i === "false" ? "open" : "close");
-      const c = n.getAttribute("data-ga-header-type") || "internal link", d = n.getAttribute("data-ga-header-section") || "main navbar", f = n.getAttribute("data-ga-header") || "", g = n.getAttribute("data-ga-header-component");
+      const t = n.getAttribute("data-ga-header-event") || "link";
+      let i = n.getAttribute("data-ga-header-action") || "click";
+      const c = n.getAttribute("aria-expanded");
+      c && (i = c === "false" ? "open" : "close");
+      const l = n.getAttribute("data-ga-header-type") || "internal link", d = n.getAttribute("data-ga-header-section") || "main navbar", u = n.getAttribute("data-ga-header") || "", f = n.getAttribute("data-ga-header-component");
       o({
         name: "onclick",
-        event: e.toLowerCase(),
-        action: r.toLowerCase(),
-        type: c.toLowerCase(),
+        event: t.toLowerCase(),
+        action: i.toLowerCase(),
+        type: l.toLowerCase(),
         section: d.toLowerCase(),
         region: "navbar",
-        text: f.toLowerCase(),
-        ...g && {
-          component: g.toLowerCase()
+        text: u.toLowerCase(),
+        ...f && {
+          component: f.toLowerCase()
         }
       });
     })
-  ), (s = document.querySelectorAll("[data-ga-input-header-event]")) == null || s.forEach(
-    (n) => n.addEventListener("change", (e) => {
-      const r = n.getAttribute("data-ga-input-header-event") || "", i = e.target.value || "";
+  ), (a = document.querySelectorAll("[data-ga-input-header-event]")) == null || a.forEach(
+    (n) => n.addEventListener("change", (t) => {
+      const i = n.getAttribute("data-ga-input-header-event") || "", c = t.target.value || "";
       o({
         name: "onenter",
         action: "type",
         type: "main search",
         section: "topbar",
         region: "navbar",
-        text: i.toLowerCase(),
-        event: r.toLowerCase()
+        text: c.toLowerCase(),
+        event: i.toLowerCase()
       });
     })
-  ), (a = document.querySelectorAll("[data-ga]")) == null || a.forEach(
+  ), (s = document.querySelectorAll("[data-ga]")) == null || s.forEach(
     (n) => n.addEventListener("click", () => {
-      const e = n.getAttribute("data-ga-name") || "", r = n.getAttribute("data-ga-event") || "";
-      let i = n.getAttribute("data-ga-action") || "";
-      const c = n.getAttribute("aria-expanded");
-      c && (i = c === "false" ? "open" : "close");
-      const d = n.getAttribute("data-ga-type") || "", f = n.getAttribute("data-ga-section") || "", g = n.getAttribute("data-ga-region") || "", p = n.getAttribute("data-ga") || "", y = n.getAttribute("data-ga-component") || "";
+      const t = n.getAttribute("data-ga-name") || "", i = n.getAttribute("data-ga-event") || "";
+      let c = n.getAttribute("data-ga-action") || "";
+      const l = n.getAttribute("aria-expanded");
+      l && (c = l === "false" ? "open" : "close");
+      const d = n.getAttribute("data-ga-type") || "", u = n.getAttribute("data-ga-section") || "", f = n.getAttribute("data-ga-region") || "", g = n.getAttribute("data-ga") || "", y = n.getAttribute("data-ga-component") || "";
       o({
-        name: e.toLowerCase(),
-        event: r.toLowerCase(),
-        action: i.toLowerCase(),
+        name: t.toLowerCase(),
+        event: i.toLowerCase(),
+        action: c.toLowerCase(),
         type: d.toLowerCase(),
-        section: f.toLowerCase(),
-        region: g.toLowerCase(),
-        text: p.toLowerCase(),
+        section: u.toLowerCase(),
+        region: f.toLowerCase(),
+        text: g.toLowerCase(),
         component: y.toLowerCase()
       });
     })
-  ), (l = document.querySelectorAll("[data-ga-input]")) == null || l.forEach(
-    (n) => n.addEventListener("change", (e) => {
-      const r = n.getAttribute("data-ga-input-name") || "", i = n.getAttribute("data-ga-input-action") || "", c = n.getAttribute("data-ga-input") || "", d = n.getAttribute("data-ga-input-region") || "", f = n.getAttribute("data-ga-input-section") || "";
-      let g = n.getAttribute("data-ga-input-event") || "", p;
-      switch (c) {
+  ), (r = document.querySelectorAll("[data-ga-input]")) == null || r.forEach(
+    (n) => n.addEventListener("change", (t) => {
+      const i = n.getAttribute("data-ga-input-name") || "", c = n.getAttribute("data-ga-input-action") || "", l = n.getAttribute("data-ga-input") || "", d = n.getAttribute("data-ga-input-region") || "", u = n.getAttribute("data-ga-input-section") || "";
+      let f = n.getAttribute("data-ga-input-event") || "", g;
+      switch (l) {
         case "checkbox":
-          p = e.target.labels[0].textContent || "", g = e.target.checked ? g : "deselect";
+          g = t.target.labels[0].textContent || "", f = t.target.checked ? f : "deselect";
           break;
         case "radio button":
-          p = e.target.labels[0].textContent || "";
+          g = t.target.labels[0].textContent || "";
           break;
         case "blur":
-          p = e.target.value.toLowerCase() || "";
+          g = t.target.value.toLowerCase() || "";
           break;
         default:
-          p = [...e.target.selectedOptions].map((y) => y.value).join(",") || "";
+          g = [...t.target.selectedOptions].map((y) => y.value).join(",") || "";
           break;
       }
       o({
-        name: r.toLowerCase(),
-        event: g.toLowerCase(),
-        action: i.toLowerCase(),
-        type: c.toLowerCase(),
-        section: f.toLowerCase(),
+        name: i.toLowerCase(),
+        event: f.toLowerCase(),
+        action: c.toLowerCase(),
+        type: l.toLowerCase(),
+        section: u.toLowerCase(),
         region: d.toLowerCase(),
-        text: p.toLowerCase()
+        text: g.toLowerCase()
       });
     })
   ), document.querySelectorAll("[data-ga-footer]").forEach(
     (n) => n.addEventListener("focus", () => {
-      const e = {
+      const t = {
         type: n.getAttribute("data-ga-footer-type").toLowerCase(),
         section: n.getAttribute("data-ga-footer-section").toLowerCase(),
         text: n.getAttribute("data-ga-footer").toLowerCase()
@@ -484,203 +493,203 @@ function I() {
         action: "click",
         name: "onclick",
         region: "footer",
-        ...e
+        ...t
       });
     })
   );
 }
-window.initDataLayer = window.initDataLayer || I;
-m.on(window, "load.uds.data-layer", I);
+window.initDataLayer = window.initDataLayer || M;
+w.on(window, "load.uds.data-layer", M);
 const B = () => {
   const o = () => {
-    const t = document.getElementById("asu-header");
-    window.scrollY > (t == null ? void 0 : t.getBoundingClientRect().top) ? t == null || t.classList.add("scrolled") : t == null || t.classList.remove("scrolled");
+    const e = document.getElementById("asu-header");
+    window.scrollY > (e == null ? void 0 : e.getBoundingClientRect().top) ? e == null || e.classList.add("scrolled") : e == null || e.classList.remove("scrolled");
   };
-  m.on(window, "scroll.uds.header", o);
+  w.on(window, "scroll.uds.header", o);
 };
 window.initGlobalHeader = window.initGlobalHeader || B;
-m.on(window, "load.uds.global-header", B);
+w.on(window, "load.uds.global-header", B);
 function X() {
-  const o = "video", t = "#playHeroVid", s = "#pauseHeroVid", a = "click", l = "block", n = "none", e = document.querySelector(o), r = document.querySelector(t), i = document.querySelector(s);
-  function c(p) {
-    p.paused ? p.play() : p.pause();
+  const o = "video", e = "#playHeroVid", a = "#pauseHeroVid", s = "click", r = "block", n = "none", t = document.querySelector(o), i = document.querySelector(e), c = document.querySelector(a);
+  function l(g) {
+    g.paused ? g.play() : g.pause();
   }
-  function d(p, y) {
-    getComputedStyle(p).display === n ? (y.style.display = n, p.style.display = l, p.focus()) : (p.style.display = n, y.style.display = l, y.focus());
+  function d(g, y) {
+    getComputedStyle(g).display === n ? (y.style.display = n, g.style.display = r, g.focus()) : (g.style.display = n, y.style.display = r, y.focus());
   }
-  function f(p) {
-    p.stopPropagation(), d(r, i), c(e);
+  function u(g) {
+    g.stopPropagation(), d(i, c), l(t);
   }
-  function g(p) {
-    p.stopPropagation(), d(r, i), c(e);
+  function f(g) {
+    g.stopPropagation(), d(i, c), l(t);
   }
-  i == null || i.addEventListener(a, f), r == null || r.addEventListener(a, g);
+  c == null || c.addEventListener(s, u), i == null || i.addEventListener(s, f);
 }
-m.on(window, "load.uds.heroes-video", X);
+w.on(window, "load.uds.heroes-video", X);
 const Q = () => {
-  const t = () => {
-    document.querySelectorAll(".parallax-container").forEach((e) => {
-      const r = e.querySelector("img"), i = e.offsetHeight - r.height * 1.2, c = r.dataset.parallaxType === "scroll-to" ? window.innerHeight : window.innerHeight + e.offsetHeight, d = e.getBoundingClientRect().top, g = (window.innerHeight - d) / c;
-      if (g < 0)
-        r.style.top = i + "px";
-      else if (g > 1)
-        r.style.top = "0";
+  const e = () => {
+    document.querySelectorAll(".parallax-container").forEach((t) => {
+      const i = t.querySelector("img"), c = t.offsetHeight - i.height * 1.2, l = i.dataset.parallaxType === "scroll-to" ? window.innerHeight : window.innerHeight + t.offsetHeight, d = t.getBoundingClientRect().top, f = (window.innerHeight - d) / l;
+      if (f < 0)
+        i.style.top = c + "px";
+      else if (f > 1)
+        i.style.top = "0";
       else {
-        const p = i * (1 - g);
-        r.style.top = p + "px";
+        const g = c * (1 - f);
+        i.style.top = g + "px";
       }
     });
-  }, s = (e) => {
-    const r = e.parentNode, i = e.width, c = e.height;
-    let d = r.offsetWidth / i, f = 0, g = c * d, p = i * d;
-    const y = +e.dataset.parallaxFactor || 1.2;
-    !e.dataset.noScale && g < r.offsetHeight * y && (d = r.offsetHeight * y / g, g *= d, p *= d, f = (p - r.offsetWidth) / 2 * -1), e.style.height = g + "px", e.style.left = f + "px";
-  }, a = () => {
-    document.querySelectorAll(".parallax-container img").forEach((e, r) => {
-      e.complete ? s(e) : e.onload = () => s(e);
+  }, a = (t) => {
+    const i = t.parentNode, c = t.width, l = t.height;
+    let d = i.offsetWidth / c, u = 0, f = l * d, g = c * d;
+    const y = +t.dataset.parallaxFactor || 1.2;
+    !t.dataset.noScale && f < i.offsetHeight * y && (d = i.offsetHeight * y / f, f *= d, g *= d, u = (g - i.offsetWidth) / 2 * -1), t.style.height = f + "px", t.style.left = u + "px";
+  }, s = () => {
+    document.querySelectorAll(".parallax-container img").forEach((t, i) => {
+      t.complete ? a(t) : t.onload = () => a(t);
     });
-  }, l = (e) => {
-    const { dataLayer: r } = window, i = {
+  }, r = (t) => {
+    const { dataLayer: i } = window, c = {
       event: "link",
       action: "click",
       name: "onclick",
       type: "internal link",
       region: "main content",
-      ...e
+      ...t
     };
-    r && r.push(i);
+    i && i.push(c);
   };
   document.querySelectorAll("[data-ga-image-parallax]").forEach(
-    (e) => m.on(e, "focus.uds.image-parallax", () => {
-      const r = {
-        section: e.getAttribute("data-ga-image-parallax-section").toLowerCase(),
-        text: e.getAttribute("data-ga-image-parallax").toLowerCase()
+    (t) => w.on(t, "focus.uds.image-parallax", () => {
+      const i = {
+        section: t.getAttribute("data-ga-image-parallax-section").toLowerCase(),
+        text: t.getAttribute("data-ga-image-parallax").toLowerCase()
       };
-      l(r);
+      r(i);
     })
-  ), a(), m.on(window, "resize.uds.image-parallax", a), m.on(window, "scroll.uds.image-parallax", t);
+  ), s(), w.on(window, "resize.uds.image-parallax", s), w.on(window, "scroll.uds.image-parallax", e);
 };
-m.on(window, "load.uds.image-parallax", Q);
+w.on(window, "load.uds.image-parallax", Q);
 function J() {
-  var o, t;
+  var o, e;
   (o = document.getElementById("openModalButton")) == null || o.addEventListener("click", function() {
     document.getElementById("uds-modal").classList.add("open");
-  }), (t = document.getElementById("closeModalButton")) == null || t.addEventListener("click", function() {
+  }), (e = document.getElementById("closeModalButton")) == null || e.addEventListener("click", function() {
     document.getElementById("uds-modal").classList.remove("open");
   });
 }
-m.on(window, "load.uds.modals", J);
+w.on(window, "load.uds.modals", J);
 function Z() {
-  const o = "a", t = "button", s = ".nav-tabs", a = ".nav-item", l = ".uds-tabbed-panels", n = ".scroll-control-prev", e = ".scroll-control-next", r = "click", i = "scroll", c = "focus", d = "none", f = "block", y = (h) => {
-    [o, t].includes(h.target.localName) && h.target.focus();
+  const o = "a", e = "button", a = ".nav-tabs", s = ".nav-item", r = ".uds-tabbed-panels", n = ".scroll-control-prev", t = ".scroll-control-next", i = "click", c = "scroll", l = "focus", d = "none", u = "block", y = (p) => {
+    [o, e].includes(p.target.localName) && p.target.focus();
   };
-  document.querySelectorAll(l).forEach((h) => {
-    const u = h.querySelector(s), E = h.querySelectorAll(a), w = h.querySelector(
+  document.querySelectorAll(r).forEach((p) => {
+    const h = p.querySelector(a), m = p.querySelectorAll(s), b = p.querySelector(
       n
-    ), L = h.querySelector(
-      e
+    ), L = p.querySelector(
+      t
     );
     let v = 0;
-    h.addEventListener(r, function(b) {
-      y(b);
+    p.addEventListener(i, function(E) {
+      y(E);
     });
-    const S = (b, C, _) => {
-      C.preventDefault();
-      const nt = getComputedStyle(u).left.replace("px", "");
+    const C = (E, S, _) => {
+      S.preventDefault();
+      const nt = getComputedStyle(h).left.replace("px", "");
       let T = parseInt(nt, 10);
-      _ === 1 && v > 0 && (v -= 1), v < E.length - 1 && _ == -1 && (v += 1), u.dataset.scrollPosition = v, T = 0;
+      _ === 1 && v > 0 && (v -= 1), v < m.length - 1 && _ == -1 && (v += 1), h.dataset.scrollPosition = v, T = 0;
       for (var A = 0; A < v; A++)
-        T += E[A].offsetWidth + parseInt(getComputedStyle(E[A]).marginLeft, 10) + parseInt(getComputedStyle(E[A]).marginRight, 10);
-      u.scrollLeft = T, M(b, T);
-    }, M = (b, C) => {
-      const _ = u.scrollWidth - C;
-      v == 0 ? w.style.display = d : w.style.display = f, _ <= h.offsetWidth ? L.style.display = d : L.style.display = f;
+        T += m[A].offsetWidth + parseInt(getComputedStyle(m[A]).marginLeft, 10) + parseInt(getComputedStyle(m[A]).marginRight, 10);
+      h.scrollLeft = T, H(E, T);
+    }, H = (E, S) => {
+      const _ = h.scrollWidth - S;
+      v == 0 ? b.style.display = d : b.style.display = u, _ <= p.offsetWidth ? L.style.display = d : L.style.display = u;
     };
-    u.addEventListener(i, (b) => {
-      const C = b.target.scrollLeft, _ = u.offsetWidth + C + 10 >= u.scrollWidth;
-      w.style.display = C < 10 ? d : f, L.style.display = _ ? d : f;
-    }), E.forEach((b) => {
-      b.addEventListener(c, function(C) {
-        b.scrollIntoView();
+    h.addEventListener(c, (E) => {
+      const S = E.target.scrollLeft, _ = h.offsetWidth + S + 10 >= h.scrollWidth;
+      b.style.display = S < 10 ? d : u, L.style.display = _ ? d : u;
+    }), m.forEach((E) => {
+      E.addEventListener(l, function(S) {
+        E.scrollIntoView();
       });
-    }), L.addEventListener(r, function(b) {
-      window.innerWidth > 992 && S(this, b, -1);
-    }), w.addEventListener(r, function(b) {
-      window.innerWidth > 992 && S(this, b, 1);
-    }), w.style.display = d;
-    const x = u.scrollWidth, ot = h.offsetWidth;
+    }), L.addEventListener(i, function(E) {
+      window.innerWidth > 992 && C(this, E, -1);
+    }), b.addEventListener(i, function(E) {
+      window.innerWidth > 992 && C(this, E, 1);
+    }), b.style.display = d;
+    const x = h.scrollWidth, ot = p.offsetWidth;
     x <= ot && (L.style.display = d);
   });
 }
-m.on(window, "load.uds.tabs", Z);
+w.on(window, "load.uds.tabs", Z);
 function tt() {
   function o() {
-    const a = ".uds-table-fixed-wrapper", l = ".uds-table.uds-table-fixed table", n = ".scroll-control.previous";
-    document.querySelectorAll(a).forEach((r, i) => {
-      const c = r.querySelector(l);
-      c.setAttribute("id", "uds-table-" + i);
-      const d = c.querySelector("tbody tr > *"), f = r.querySelector(n);
-      f.style.left = d.offsetWidth + "px";
+    const s = ".uds-table-fixed-wrapper", r = ".uds-table.uds-table-fixed table", n = ".scroll-control.previous";
+    document.querySelectorAll(s).forEach((i, c) => {
+      const l = i.querySelector(r);
+      l.setAttribute("id", "uds-table-" + c);
+      const d = l.querySelector("tbody tr > *"), u = i.querySelector(n);
+      u.style.left = d.offsetWidth + "px";
     });
   }
-  function t() {
-    const a = ".uds-table-fixed", l = ".uds-table-fixed-wrapper", n = ".scroll-control.previous", e = ".scroll-control.next";
-    document.querySelectorAll(l).forEach((i, c) => {
-      const d = i.querySelector(a), f = i.querySelector(n), g = i.querySelector(e);
-      ["click", "focus"].forEach((p) => {
-        m.on(f, p, function() {
+  function e() {
+    const s = ".uds-table-fixed", r = ".uds-table-fixed-wrapper", n = ".scroll-control.previous", t = ".scroll-control.next";
+    document.querySelectorAll(r).forEach((c, l) => {
+      const d = c.querySelector(s), u = c.querySelector(n), f = c.querySelector(t);
+      ["click", "focus"].forEach((g) => {
+        w.on(u, g, function() {
           d.scrollLeft -= 100;
-        }), m.on(g, p, function() {
+        }), w.on(f, g, function() {
           d.scrollLeft += 100;
         });
       });
     });
   }
-  function s(a, l) {
+  function a(s, r) {
     let n;
-    return (...e) => {
+    return (...t) => {
       clearTimeout(n), n = setTimeout(() => {
-        a.apply(this, e);
-      }, l);
+        s.apply(this, t);
+      }, r);
     };
   }
-  o(), t(), m.on(window, "resize", function() {
-    s(o, 100)();
+  o(), e(), w.on(window, "resize", function() {
+    a(o, 100)();
   });
 }
-m.on(window, "load.uds.fixed-table", tt);
+w.on(window, "load.uds.fixed-table", tt);
 function et() {
-  const o = "video", t = ".uds-video-btn-play", s = ".uds-video-overlay", a = "click", l = "ended", n = "flex", e = "none", r = document.querySelector(o), i = document.querySelector(s), c = document.querySelector(t);
-  function d(u) {
-    u.style.display === e ? u.style.display = n : u.style.display = e;
+  const o = "video", e = ".uds-video-btn-play", a = ".uds-video-overlay", s = "click", r = "ended", n = "flex", t = "none", i = document.querySelector(o), c = document.querySelector(a), l = document.querySelector(e);
+  function d(h) {
+    h.style.display === t ? h.style.display = n : h.style.display = t;
   }
-  function f(u) {
-    u.paused ? u.play() : u.pause();
+  function u(h) {
+    h.paused ? h.play() : h.pause();
   }
-  function g(u) {
-    f(this), d(this.nextElementSibling);
+  function f(h) {
+    u(this), d(this.nextElementSibling);
   }
-  function p(u) {
-    u.stopPropagation();
-    const E = this.parentNode;
-    d(E), f(r);
+  function g(h) {
+    h.stopPropagation();
+    const m = this.parentNode;
+    d(m), u(i);
   }
-  function y(u) {
-    d(this), f(r);
+  function y(h) {
+    d(this), u(i);
   }
-  function h(u) {
-    d(i);
+  function p(h) {
+    d(c);
   }
-  r == null || r.addEventListener(a, g), c == null || c.addEventListener(a, p), i == null || i.addEventListener(a, y), r == null || r.addEventListener(l, h);
+  i == null || i.addEventListener(s, f), l == null || l.addEventListener(s, g), c == null || c.addEventListener(s, y), i == null || i.addEventListener(r, p);
 }
-m.on(window, "load.uds.video", et);
+w.on(window, "load.uds.video", et);
 const pt = {
   // Banner, // code updated to use bootstrap alert so we don't need this
-  initAnchorMenu: z,
-  initBlockquoteAnimation: j,
-  initCalendar: G,
+  initAnchorMenu: j,
+  initBlockquoteAnimation: G,
+  initCalendar: $,
   initChart: U,
-  initDataLayer: I,
+  initDataLayer: M,
   initFixedTable: tt,
   initGlobalHeader: B,
   initHeroesVideo: X,
@@ -689,7 +698,7 @@ const pt = {
   initRankingCard: K,
   initTabbedPanels: Z,
   initVideo: et,
-  initCardBodies: $
+  initCardBodies: I
 };
 export {
   pt as default
