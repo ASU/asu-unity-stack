@@ -1,3 +1,10 @@
+# [@asu/component-header-footer-v1.0.13](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.12...@asu/component-header-footer-v1.0.13) (2025-07-24)
+
+
+### Bug Fixes
+
+* **component-header-footer:** fix social icon focus styles ([f58b6bb](https://github.com/asu/asu-unity-stack/commit/f58b6bb3e617c1c12ca9ed9d9b2a8f4e7ba4cfb2))
+
 # [@asu/component-header-footer-v1.0.12](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.11...@asu/component-header-footer-v1.0.12) (2025-07-14)
 
 

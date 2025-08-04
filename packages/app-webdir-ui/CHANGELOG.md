@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v5.0.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.3...@asu/app-webdir-ui-v5.0.4) (2025-07-24)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** add @asu/shared to dependencies ([b41a445](https://github.com/asu/asu-unity-stack/commit/b41a44540c5b2a28e070cebcc93413b0b7b63160))
+
 # [@asu/app-webdir-ui-v5.0.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.2...@asu/app-webdir-ui-v5.0.3) (2025-03-12)
 
 

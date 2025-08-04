@@ -1,3 +1,15 @@
+# [@asu/unity-bootstrap-theme-v1.27.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.26.5...@asu/unity-bootstrap-theme-v1.27.0) (2025-07-24)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** focus state centered ([00fce2c](https://github.com/ASU/asu-unity-stack/commit/00fce2cf45780d9e6f38b404f88c04a98481f2ef))
+
+
+### Features
+
+* **unity-bootstrap-theme:** increase font size from 12px up to 16px in uds-figure-caption ([6d80be8](https://github.com/ASU/asu-unity-stack/commit/6d80be86e5653f78f7b2375566907a13bff9f1bb))
+
 # [@asu/unity-bootstrap-theme-v1.26.5](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.26.4...@asu/unity-bootstrap-theme-v1.26.5) (2025-07-14)
 
 

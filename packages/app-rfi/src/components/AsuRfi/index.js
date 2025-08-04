@@ -63,10 +63,6 @@ const AsuRfi = props => {
     }
   }, []);
 
-  if (typeof submissionUrl === "undefined") {
-    return <></>;
-  }
-
   const rfiState = useRfiState(betterPropNames(props));
 
   const noRfiAvailable = `RFI form not displayed. ${programOfInterest} has rfiDisplay set to false or does not exist`;
@@ -75,6 +71,11 @@ const AsuRfi = props => {
       console.log(noRfiAvailable);
     }
   }, [rfiState.showForm]);
+
+  if (typeof submissionUrl === "undefined") {
+    return <></>;
+  }
+
   if (!rfiState.showForm) {
     return <div style={{ display: "none" }}>{noRfiAvailable}</div>;
   }
