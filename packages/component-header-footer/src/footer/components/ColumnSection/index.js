@@ -9,7 +9,11 @@ import React, { useState, useEffect, useRef } from "react";
  */
 
 /**
- * @param {{ columnIndex: number, column: Column, isOpen?: boolean, onToggle?: () => void }} props
+ * @param {Object} props - The component props
+ * @param {number} props.columnIndex - The index of the column
+ * @param {Column} props.column - The column data object
+ * @param {boolean} [props.isOpen=false] - Whether the column is initially open
+ * @param {Function} [props.onToggle] - Optional callback function for toggle events
  * @returns {JSX.Element}
  */
 
