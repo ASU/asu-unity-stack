@@ -1,3 +1,10 @@
+# [@asu/component-header-footer-v1.0.14](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.13...@asu/component-header-footer-v1.0.14) (2025-08-11)
+
+
+### Bug Fixes
+
+* **component-header-footer:** fix footer clashing classes with bootstrap JS ([59a3d43](https://github.com/asu/asu-unity-stack/commit/59a3d434a754287ac7369f9669353ff03e8b5aea))
+
 # [@asu/component-header-footer-v1.0.13](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.12...@asu/component-header-footer-v1.0.13) (2025-07-24)
 
 
