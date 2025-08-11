@@ -9,18 +9,35 @@ import React, { useState, useEffect, useRef } from "react";
  */
 
 /**
- * @param {{ columnIndex: number, column: Column }} props
+ * @param {Object} props - The component props
+ * @param {number} props.columnIndex - The index of the column
+ * @param {Column} props.column - The column data object
+ * @param {boolean} [props.isOpen=false] - Whether the column is initially open
+ * @param {Function} [props.onToggle] - Optional callback function for toggle events
  * @returns {JSX.Element}
  */
 
-const ColumnSection = ({ columnIndex, column: { title, links } }) => {
-  const [show, setShow] = useState(false);
+const ColumnSection = ({
+  columnIndex,
+  column: { title, links },
+  isOpen = false,
+  onToggle,
+}) => {
+  const [show, setShow] = useState(isOpen);
   const isWindowDefined = typeof window !== "undefined";
   const initialMatches = isWindowDefined ? window.innerWidth >= 1260 : false;
   const [isLgDesktop, setIsLgDesktop] = useState(initialMatches);
 
   /** @type {React.RefObject<HTMLDivElement> | null} */
   const accordionBodyRef = useRef(null);
+
+  // Update local state when prop changes
+  useEffect(() => {
+    if (!isLgDesktop && onToggle) {
+      handleAnimation(isOpen);
+    }
+    setShow(isOpen);
+  }, [isOpen, isLgDesktop, onToggle]);
 
   useEffect(() => {
     const mediaWatcher = window.matchMedia("screen and (min-width: 1260px)");
@@ -33,8 +50,8 @@ const ColumnSection = ({ columnIndex, column: { title, links } }) => {
 
   const handleAnimation = showingContent => {
     const accordionBody = accordionBodyRef?.current;
-    if (!accordionBody) return;
-    accordionBody.classList.add("collapsing");
+    if (!accordionBody || !accordionBody.animate) return;
+    accordionBody.classList.add("footer-collapsing");
     const animation = accordionBody.animate(
       [
         {
@@ -42,18 +59,18 @@ const ColumnSection = ({ columnIndex, column: { title, links } }) => {
         },
       ],
       {
-        duration: 350,
+        duration: 250,
         easing: "ease-in-out",
         fill: "forwards",
       }
     );
 
     animation.onfinish = () => {
-      accordionBody.classList.remove("collapsing");
+      accordionBody.classList.remove("footer-collapsing");
       if (showingContent) {
-        accordionBody.classList.add("show");
+        accordionBody.classList.add("footer-column-show");
       } else {
-        accordionBody.classList.remove("show");
+        accordionBody.classList.remove("footer-column-show");
       }
     };
   };
@@ -64,24 +81,29 @@ const ColumnSection = ({ columnIndex, column: { title, links } }) => {
       return;
     }
 
-    setShow(prev => {
-      const showingContent = !prev;
-      handleAnimation(showingContent);
-      return showingContent;
-    });
+    if (onToggle) {
+      onToggle();
+    } else {
+      // Fallback for backward compatibility
+      setShow(prev => {
+        const showingContent = !prev;
+        handleAnimation(showingContent);
+        return showingContent;
+      });
+    }
   };
 
   return (
     <div className="col-xl flex-footer testname-column">
       <div className="card accordion-item desktop-disable-xl">
-        <div className="accordion-header">
+        <div className="footer-accordion-header">
           <div className="h5">
             {isLgDesktop ? (
               <p className="accordion-button">{title}</p>
             ) : (
               <button
                 id={`footlink-header-${columnIndex}`}
-                className="accordion-button"
+                className="footer-accordion-button"
                 aria-expanded={show || isLgDesktop}
                 aria-controls={`footlink-${columnIndex}`}
                 onClick={handleToggle}
@@ -90,7 +112,7 @@ const ColumnSection = ({ columnIndex, column: { title, links } }) => {
               >
                 {title}
                 <FontAwesomeIcon
-                  className={show || isLgDesktop ? "open" : ""}
+                  className={show || isLgDesktop ? "column-open" : ""}
                   icon={faChevronDown}
                 />
               </button>
@@ -99,7 +121,7 @@ const ColumnSection = ({ columnIndex, column: { title, links } }) => {
         </div>
         <div
           id={`footlink-${columnIndex}`}
-          className="accordion-body"
+          className="footer-accordion-body"
           role="region"
           ref={accordionBodyRef}
         >
@@ -131,6 +153,8 @@ ColumnSection.propTypes = {
       })
     ),
   }),
+  isOpen: PropTypes.bool,
+  onToggle: PropTypes.func,
 };
 
 export { ColumnSection };
