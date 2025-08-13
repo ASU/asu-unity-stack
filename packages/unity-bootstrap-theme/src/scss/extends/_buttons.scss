@@ -5,15 +5,12 @@
     1rem;
 }
 
-@mixin clickable-area($min-width: 80px, $min-height: 44px) {
+@mixin clickable-area() {
   position: relative;
   &::before {
     content: "";
     position: absolute;
-    min-width: $min-width;
-    min-height: $min-height;
-    z-index: -1;
-    inset: 0;
+    inset: -10px;
     margin: auto;
   }
 }
@@ -24,6 +21,8 @@
   font-weight: bold;
   white-space: nowrap;
   width: max-content !important;
+  @include clickable-area();
+
   &::first-letter {
     text-transform: uppercase;
   }
@@ -33,14 +32,11 @@
   }
   &.btn-md {
     @include btn-md;
-    @include clickable-area(80px, 44px);
   }
   &.btn-sm {
     font-size: 0.75rem;
     padding: $uds-component-button-padding-y-small
       $uds-component-button-padding-x-small;
-
-    @include clickable-area(64px, 44px);
   }
   &.btn-tag {
     font-size: 0.75rem;
