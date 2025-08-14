@@ -27,6 +27,18 @@ const RfiLabel = ({ label, name, id, requiredIcon }) => (
   </label>
 );
 
+const RfiLegend = ({ label, requiredIcon }) => (
+  <legend className="fw-bold">
+    {requiredIcon ? (
+      <span title="Required">
+        <i className="fas fa-circle uds-field-required" aria-hidden="true" />
+      </span>
+    ) : null}
+    &nbsp;
+    {label}
+  </legend>
+);
+
 const RfiError = ({ isError, metaError }) => (
   <div role="alert">
     {isError ? (
@@ -64,4 +76,4 @@ RfiError.propTypes = {
   isError: PropTypes.bool,
   metaError: PropTypes.string,
 };
-export { RfiLabel, RfiError, GaEventPropTypes };
+export { RfiLabel, RfiLegend, RfiError, GaEventPropTypes };
