@@ -53,7 +53,7 @@ const SearchWrapper = styled.form`
         left: 0.5rem;
         transform: translate(0, -50%);
       }
-      input {
+      input[name="q"] {
         width: 100%;
         border: unset;
         margin: 0;
