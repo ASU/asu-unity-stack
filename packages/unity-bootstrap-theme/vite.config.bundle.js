@@ -33,6 +33,10 @@ export default defineConfig((/** @type {import('vite').ConfigEnv} */ _) => {
         },
       },
     ],
+    define: {
+    process: {env: {NODE_ENV: process.env.NODE_ENV}}, // import.meta not available in cjs
+    global: {}
+  },
     build: {
       ...baseConfig.build,
       emptyOutDir: false,
