@@ -1,18 +1,18 @@
-/* eslint-disable jest/no-mocks-import */
 // @ts-check
+import { trackGAEvent } from "@asu/shared";
 import { render, fireEvent, cleanup } from "@testing-library/react";
 import React from "react";
-import { trackGAEvent } from "../../../../../../../shared";
 
-jest.mock("../../../../../../../shared", () => ({
+import { NavbarContainer, BUTTON_ERROR_MESSAGE } from ".";
+
+import { AppContextProvider } from "../../../core/context/app-context";
+
+jest.mock("@asu/shared", () => ({
   idGenerator: jest.fn().mockImplementation(function* () {
     yield "test-id";
   }),
   trackGAEvent: jest.fn(),
 }));
-
-import { NavbarContainer, BUTTON_ERROR_MESSAGE } from ".";
-import { AppContextProvider } from "../../../core/context/app-context";
 
 const stateWithButtons = {
   navTree: [
@@ -66,12 +66,12 @@ const stateWithButtons = {
   buttons: [
     { text: "Login", href: "/login" },
     { text: "Sign Up", onClick: jest.fn() },
-    { text: "Contact", onClick: jest.fn(), href: "#" }
+    { text: "Contact", onClick: jest.fn(), href: "#" },
   ],
-  breakpoint: "lg"
+  breakpoint: "lg",
 };
 
-const renderNavbarContainer = (props) => {
+const renderNavbarContainer = props => {
   return render(
     <AppContextProvider initialValue={props}>
       <NavbarContainer />
@@ -133,7 +133,9 @@ describe("#NavbarContainer Button Tests", () => {
   it("should log an error for buttons with both onClick and href", () => {
     cleanup();
 
-    const consoleErrorSpy = jest.spyOn(console, "error").mockImplementation(() => {});
+    const consoleErrorSpy = jest
+      .spyOn(console, "error")
+      .mockImplementation(() => {});
 
     renderNavbarContainer(stateWithButtons);
 
@@ -145,13 +147,14 @@ describe("#NavbarContainer Button Tests", () => {
   it("should not render buttons section when no buttons exist in context", () => {
     const stateWithoutButtons = {
       ...stateWithButtons,
-      buttons: []
+      buttons: [],
     };
 
     cleanup();
     const noButtonsComponent = renderNavbarContainer(stateWithoutButtons);
 
-    const buttonsContainer = noButtonsComponent.queryByTestId("buttons-container");
+    const buttonsContainer =
+      noButtonsComponent.queryByTestId("buttons-container");
     expect(buttonsContainer).not.toBeInTheDocument();
   });
 });

@@ -58,9 +58,7 @@ const Grid = ({
 
   return (
     <div className={`uds-grid ${className || ""}`}>
-      <div className={`row ${rowClassName || ""}`}>
-        {renderContent()}
-      </div>
+      <div className={`row ${rowClassName || ""}`}>{renderContent()}</div>
     </div>
   );
 };

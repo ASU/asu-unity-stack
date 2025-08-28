@@ -46,9 +46,7 @@ export const AtAGlance = ({
         {timeCommitment && (
           <GlanceItem item={timeCommitment} type="timeCommitment" />
         )}
-        {stemOptText && (
-          <GlanceItem item={stemOptText} type="stemOptText" />
-        )}
+        {stemOptText && <GlanceItem item={stemOptText} type="stemOptText" />}
       </ul>
     </section>
   );

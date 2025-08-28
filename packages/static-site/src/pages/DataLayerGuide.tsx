@@ -1,12 +1,19 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
 import { PagePaths } from "~/routes/config";
+import { default as watchDataLayer } from "~/utils/watchDataLayerBookmarklet?raw";
+
+export const bookmarklet = `javascript:(${watchDataLayer
+  .toString()
+  // remove line breaks
+  .replace(/\n/g, "")
+  // remove comments
+  .replace(/\/\*.*?\*\//g, "")
+  // replace multiple spaces with a single space
+  .replace(/\s+/g, " ")})();`;
 
 const gtmCodes = {
   universal: "GTM-KDWN8Z",
-  etDev: "GTM-PX7M299",
-  etQA: "GTM-W3FGR6T",
-  etProd: "GTM-WPVTBHL",
 };
 
 const GtmCodeExample: FC<{ gtmCode: string }> = ({ gtmCode }) => {
@@ -16,13 +23,13 @@ const GtmCodeExample: FC<{ gtmCode: string }> = ({ gtmCode }) => {
    */
 
   const headScript = `
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','${gtmCode}');</script>
-  <!-- End Google Tag Manager -->`;
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','${gtmCode}');</script>
+    <!-- End Google Tag Manager -->`;
   const bodyScript = `
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${gtmCode}"
@@ -67,37 +74,21 @@ const DataLayerGuide = () => {
                 Adding the data layer to your site or application
               </a>
             </li>
+            <li>
+              <a href="#watchdatalayer">Watching the data layer</a>
+            </li>
           </ul>
 
           <a id="gtm"></a>
           <h2>Google Tag Manager</h2>
           <p>
             Before implementing Google Tag Manager yourself, please review the{" "}
-            <Link to={PagePaths.HEADERGUIDE}>options for obtaining the ASU Header</Link>. Some
-            options provide the ASU Google Tag Manager code automatically
+            <Link to={PagePaths.HEADERGUIDE}>
+              options for obtaining the ASU Header
+            </Link>
+            . Some options provide the ASU Google Tag Manager code automatically
             bundled.
           </p>
-
-          <h3>Benefits of Becoming part of GTM Product Community:</h3>
-          <ul>
-            <li>
-              Receive consultation/assistance with GTM implementation and
-              maintenance
-            </li>
-            <li>
-              Receive information on any changes being made to Enterprise UTO
-              GTM and how any changes might affect your site
-            </li>
-            <li>Provide feedback for any changes submitted</li>
-            <li>
-              Become a member of the larger GTM community as a member of a
-              private slack channel to keep up with all the latest GTM news
-            </li>
-            <li>
-              Coming Soon — Link to Service Now Request to register site –
-              https://asu.service-now.com/xxxxxxx
-            </li>
-          </ul>
 
           <h3>Best Practices for Implementing GTM</h3>
           <p>Install on test site first</p>
@@ -131,7 +122,7 @@ const DataLayerGuide = () => {
           <p>
             To implement Google Tag Manager, insert the appropriate snippets
             found below within the body tag of your HTML as close to the top of
-            the page as possible. Further details can be found in the
+            the page as possible. Further details can be found in the{" "}
             <a href="https://developers.google.com/tag-manager/quickstart">
               Google Tag Manager Quickstart Guide
             </a>
@@ -141,17 +132,8 @@ const DataLayerGuide = () => {
           <p>Most ASU sites should implement the ASU Universal GTM.</p>
 
           <p>
-            Enterprise sites should implement the ASU Enterprise QA GTM on their
-            &quot;DEV&quot; environment, and the ASU Enterprise Production GTM on their
-            &quot;QA&quot; and &quot;Production&quot; environments. This may be configured using
-            environmental variables. Each environment has its own GTM ID
-            associated with it and care must be taken to use the appropriate GTM
-            ID for each application environment.
-          </p>
-
-          <p>
             Some units have their own GTM IDs. When multiple GTM IDs need to be
-            used in a single site or application, follow the guidance on
+            used in a single site or application, follow the guidance on{" "}
             <a href="https://developers.google.com/tag-manager/devguide#multiple-containers">
               Multiple Containers on a Page
             </a>
@@ -160,15 +142,6 @@ const DataLayerGuide = () => {
 
           <h3>ASU universal GTM code</h3>
           <GtmCodeExample gtmCode={gtmCodes.universal} />
-
-          <h3>ET Enterprise Webapp Development GTM</h3>
-          <GtmCodeExample gtmCode={gtmCodes.etDev} />
-
-          <h3>ET Enterprise Webapp QA GTM</h3>
-          <GtmCodeExample gtmCode={gtmCodes.etQA} />
-
-          <h3>ET Enterprise Webapp Production GTM</h3>
-          <GtmCodeExample gtmCode={gtmCodes.etProd} />
 
           <a id="datalayer"></a>
           <h2>Adding the data layer</h2>
@@ -184,7 +157,7 @@ const DataLayerGuide = () => {
           </p>
 
           <p>
-            Follow the instructions for
+            Follow the instructions for{" "}
             <a href="https://developers.google.com/tag-platform/tag-manager/web/datalayer">
               creating the Data Layer
             </a>{" "}
@@ -204,9 +177,16 @@ const DataLayerGuide = () => {
             Add event listeners to your code to capture click and change events
             related to your `data-ga` attributes and to push that event to the
             data layer. As a help to get you started, the
-            `unity-bootstrap-theme` package&apos;s `dist/js/data-layer.js` file can
-            serve as a starting point or as a reference for implementing your
-            own data layer push code.
+            `unity-bootstrap-theme` package&apos;s{" "}
+            <a
+              href="https://github.com/ASU/asu-unity-stack/blob/dev/packages/unity-bootstrap-theme/src/js/data-layer.js"
+              target="_blank"
+              rel="noreferrer"
+            >
+              src/js/data-layer.js
+            </a>{" "}
+            file can serve as a starting point or as a reference for
+            implementing your own data layer push code.
           </p>
 
           <p>
@@ -214,29 +194,69 @@ const DataLayerGuide = () => {
             behavior similar to the following code snippet if you implement the
             Bootstrap header: <br />
           </p>
+          <p>
+            Including the following script tag will automatically initialize the
+            GA push events and header scroll behavior and should be placed in
+            the <strong>{`<head>`}</strong> tag of your HTML. The script has
+            event listeners to initialize on the window load event.
+          </p>
           <pre>
             <code>
               {`
-            <script type="text/javascript" src="example/path/to/@asu/unity-bootstrap-theme/js/data-layer.js"></head> </script></head>
-            <script type="text/javascript" src="./@asu/unity-bootstrap-theme/js/global-header.js"></head> </script></head>
+  <script type="text/javascript" src="example/path/to/@asu/unity-bootstrap-theme/js/unity-bootstrap.umd.js"/>
             `}
             </code>
           </pre>
           <p>
-            Then, the following code should be placed towards the bottom of your
-            html doc or deferred. This initializes the data layer and the global
-            header classes
+            If for some reason your setup includes the script after the window
+            load event has already occurred, you can call the initialization
+            functions directly, by using the global variable{" "}
+            <strong>{`unityBootstrap`}</strong>.
           </p>
           <pre>
-            {" "}
             <code>
               {`
-            <script></head>
-              window.initDataLayer();
-              window.initGlobalHeader();
-            </script></head>
+  <script>
+    /* Only use if the script did not automatically initialize with the window load event */
+    unityBootstrap.initDataLayer();
+    unityBootstrap.initGlobalHeader();
+  </script>
             `}
-            </code>{" "}
+            </code>
+          </pre>
+
+          <a id="watchdatalayer"></a>
+          <h2>Watching the data layer</h2>
+          <p>
+            Drag this link to your bookmarks bar. When you are on a page with
+            data layer events, clicking the bookmarklet will execute a tiny
+            script which will output data layer events to the console.
+            <br />
+            <br />
+            <a href={bookmarklet}>Watch DataLayer</a>
+          </p>
+          <h3>Only Run Code You Trust</h3>
+          <p>
+            As a user, always exercise caution when running code. Only click or
+            add bookmarklets if at least one of the following applies:
+            <ul>
+              <li>The source is reputable.</li>
+              <li>
+                You understand JavaScript and have reviewed the code yourself.
+              </li>
+              <li>
+                A trusted individual who knows JavaScript has reviewed the code
+                for you.
+              </li>
+            </ul>
+          </p>
+          <h3>Bookmarklet Source code</h3>
+          <pre>
+            <code>
+              {`
+${watchDataLayer.toString()}
+              `}
+            </code>
           </pre>
         </div>
       </div>

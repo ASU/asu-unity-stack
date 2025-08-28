@@ -97,6 +97,20 @@ export const useRfiState = props => {
   const handleBack = () => {
     // setSnapshot(values);
     setStepNumber(Math.max(stepNumber - 1, 0));
+    setTimeout(() => {
+      // Try to find the form with both 'uds-form' and 'uds-rfi' classes
+      const rfiForm = document.querySelector("form.uds-form.uds-rfi");
+
+      if (rfiForm) {
+        // Find the first input or select element inside the form
+        const firstField = rfiForm.querySelector("input, select");
+
+        if (firstField) {
+          // Set focus on the found input or select element
+          firstField.focus();
+        }
+      }
+    }, 0); // Execute after current call stack is cleared (non-blocking)
   };
 
   const handleStepValidate = values => {

@@ -1,4 +1,3 @@
-
 export const PageName = {
   HOME: "HOME",
   HEADERGUIDE: "HEADERGUIDE",
@@ -6,9 +5,9 @@ export const PageName = {
 };
 
 export const PagePaths = {
-  "HOME": "/",
-  "HEADERGUIDE": "/asuheader/",
-  "DATALAYERGUIDE": "/gtm-datalayer/",
+  HOME: "/",
+  HEADERGUIDE: "/asuheader/",
+  DATALAYERGUIDE: "/gtm-datalayer/",
 };
 
 export const configRoutes = [

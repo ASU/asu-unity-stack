@@ -61,18 +61,18 @@ div[class^='uds-hero'] {
   }
 
   &.uds-hero-sm {
-    height: $uds-size-spacing-32;
+    min-height: $uds-size-spacing-32;
     .hero-body {
       display: none;
     }
   }
 
   &.uds-hero-md {
-    height: $uds-size-spacing-64;
+    min-height: $uds-size-spacing-64;
   }
 
   &.uds-hero-lg {
-    height: 42.75rem;
+    min-height: 42.75rem;
   }
 }
 

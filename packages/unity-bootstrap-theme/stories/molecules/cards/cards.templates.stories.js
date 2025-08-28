@@ -1,11 +1,10 @@
 import React from "react";
-
-import { defaultDecorator } from "../../../../../shared/components/Layout";
+import { defaultDecorator } from "@asu/shared";
 import cardsImage from "./cards-image.jpg";
 
 export default {
   title: "Molecules/Cards/Templates",
-  decorators: [ defaultDecorator ],
+  decorators: [defaultDecorator],
   argTypes: {
     cardHeader: {
       name: "Header ",
@@ -74,9 +73,9 @@ export const cardNoTemplates = args => {
       </div>
       <div className="card-body">
         <p className="card-text">
-          Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit
-          amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua eiusmod tempo.
+          Body copy goes here. Limit to 5 lines max. Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+          labore et dolore magna aliqua eiusmod tempo.
         </p>
       </div>
       {args.event && (
@@ -144,14 +143,16 @@ export const cardNoTemplates = args => {
       )}
       {args.tags && (
         <div className="card-tags">
+          <h3 className="visually-hidden">Tags:</h3>
           <a className="btn btn-tag btn-tag-alt-white" href="#">
             test tag
+            <span className="visually-hidden"> tag</span>
           </a>
           <a className="btn btn-tag btn-tag-alt-white" href="#">
-            test tag 2
+            test tag 2<span className="visually-hidden"> tag</span>
           </a>
           <a className="btn btn-tag btn-tag-alt-white" href="#">
-            test tag 3
+            test tag 3<span className="visually-hidden"> tag</span>
           </a>
         </div>
       )}

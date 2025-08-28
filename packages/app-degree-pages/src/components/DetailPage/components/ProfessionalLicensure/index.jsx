@@ -1,7 +1,6 @@
+import { sanitizeDangerousMarkup } from "@asu/shared";
 import PropTypes from "prop-types";
 import React from "react";
-
-import { sanitizeDangerousMarkup } from "../../../../../../../shared";
 
 function ProfessionalLicensure({ content = "" }) {
   return (

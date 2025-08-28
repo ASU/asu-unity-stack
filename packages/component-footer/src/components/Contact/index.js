@@ -5,9 +5,9 @@ import React from "react";
 import { ColumnSection } from "../ColumnSection";
 
 /**
- * @typedef {import("../../core/models/types").Contact} Contact
+ * @typedef {import("../../core/models/types").Contact} ContactProps
  *
- * @param {{contact: Contact}} props
+ * @param {{contact: ContactProps}} props
  */
 
 const Contact = ({

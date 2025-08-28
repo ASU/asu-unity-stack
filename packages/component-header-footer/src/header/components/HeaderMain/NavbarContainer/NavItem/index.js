@@ -1,10 +1,10 @@
 // @ts-check
+import { trackGAEvent } from "@asu/shared";
 import { faChevronDown, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 import React, { useRef, useEffect, useMemo } from "react";
 
-import { trackGAEvent } from "../../../../../../../../shared";
 import { useAppContext } from "../../../../core/context/app-context";
 import { useIsMobile } from "../../../../core/hooks/isMobile";
 import { NavTreePropTypes } from "../../../../core/models/app-prop-types";
@@ -68,9 +68,24 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
         setItemOpened();
       }
     };
+
+    const handleFocusOut = () => {
+      setTimeout(() => {
+        const node = clickRef.current;
+        if (opened && node && !node.contains(document.activeElement)) {
+          setItemOpened();
+        }
+      }, 0);
+    };
+
+    const node = clickRef.current;
+
     document.addEventListener("click", handleClickOutside, true);
+    node?.addEventListener("focusout", handleFocusOut);
+
     return () => {
       document.removeEventListener("click", handleClickOutside, true);
+      node?.removeEventListener("focusout", handleFocusOut);
     };
   }, [opened]);
 

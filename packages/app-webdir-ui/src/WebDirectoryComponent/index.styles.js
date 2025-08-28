@@ -14,7 +14,7 @@ const WebDirLayout = styled.div`
   .uds-grid > .row {
     gap: 1rem;
     & > div {
-    flex: 0 0 282px;
+      flex: 0 0 282px;
     }
   }
 
@@ -47,7 +47,7 @@ const FacultyRankLayout = styled.div`
   .uds-grid > .row {
     gap: 1rem;
     & > div {
-    flex: 0 0 282px;
+      flex: 0 0 282px;
     }
   }
   .view-toggle {

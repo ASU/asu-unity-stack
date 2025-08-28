@@ -1,9 +1,13 @@
 const path = require("path");
 
 export default {
-  staticDirs: ['../dist'],
-  stories: ["../stories/**/*.stories.mdx", "../stories/**/*.stories.@(js|jsx|ts|tsx)"],
+  staticDirs: ["../dist"],
+  stories: [
+    "../stories/**/*.stories.mdx",
+    "../stories/**/*.stories.@(js|jsx|ts|tsx)",
+  ],
   addons: [
+    "./local-addon",
     "../../../.storybook-config",
     "../../../.storybook-config/dataLayerListener",
     "@whitespace/storybook-addon-html",
@@ -12,12 +16,12 @@ export default {
     "storybook-css-modules-preset",
   ],
   core: {
-    builder: '@storybook/builder-vite'
+    builder: "@storybook/builder-vite",
   },
   framework: {
     name: "@storybook/react-vite",
   },
   docs: {
-    autodocs: true
-  }
+    autodocs: true,
+  },
 };

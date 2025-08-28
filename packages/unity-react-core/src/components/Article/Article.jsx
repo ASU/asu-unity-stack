@@ -1,4 +1,5 @@
 // @ts-check
+import { sanitizeDangerousMarkup } from "@asu/shared";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
@@ -14,7 +15,6 @@ import {
 } from "react-share";
 import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 
-import { sanitizeDangerousMarkup } from "../../../../../shared";
 import { Button } from "../Button/Button";
 import { Wrapper, EventInfoWrapper } from "./Article.styles";
 
@@ -27,7 +27,7 @@ import { Wrapper, EventInfoWrapper } from "./Article.styles";
  * @returns {JSX.Element}
  */
 export const Article = ({
-  type,
+  type = "news",
   articleUrl,
   publicationDate,
   title,
@@ -163,7 +163,7 @@ export const Article = ({
           <i className="fas fa-map-marker-alt" />
           Location:
         </h4>
-        {/* eslint-disable-next-line react/no-danger */}
+        {}
         <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventLocation)} />
         {registrationUrl && zoomUrl && <a href={zoomUrl}>Attend on Zoom</a>}
       </div>
@@ -192,7 +192,11 @@ export const Article = ({
           data-testid="uds-hero"
           className="uds-hero uds-hero-md"
           style={{
-            backgroundImage: `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url(${headerImageUrl})`,
+            // @ts-ignore
+            "--color1": "#19191900",
+            "--color2": "#191919c9",
+            // moved colors to variable because hex color in linear-gradient breaks react
+            "backgroundImage": `linear-gradient(180deg, var(--color1) 0%, var(--color2) 100%), url(${headerImageUrl})`,
           }}
         />
       )}
@@ -238,7 +242,6 @@ export const Article = ({
                   Date and time:
                 </h4>
                 <div
-                  // eslint-disable-next-line react/no-danger
                   dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventTime)}
                 />
               </div>
@@ -284,7 +287,6 @@ export const Article = ({
         <div className="row">
           <div
             className="col col-12"
-            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)}
             data-testid="body"
           />
@@ -368,18 +370,4 @@ Article.propTypes = {
    * URL for a Zoom button
    */
   zoomUrl: PropTypes.string,
-};
-
-Article.defaultProps = {
-  type: "news",
-  authorEmail: undefined,
-  authorPhone: undefined,
-  authorTitle: undefined,
-  breadcrumbs: undefined,
-  calendarUrl: undefined,
-  headerImageUrl: undefined,
-  eventLocation: undefined,
-  eventTime: undefined,
-  registrationUrl: undefined,
-  zoomUrl: undefined,
 };

@@ -1,8 +1,8 @@
+import { sanitizeDangerousMarkup } from "@asu/shared";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { useState, useId } from "react";
 
-import { sanitizeDangerousMarkup } from "../../../../../shared";
 import { GaEventWrapper } from "../GaEventWrapper/GaEventWrapper";
 import { useBaseSpecificFramework } from "../GaEventWrapper/useBaseSpecificFramework";
 import { Image } from "../Image/Image";
@@ -52,7 +52,6 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
           })}
         >
           {isSmall && (
-            // eslint-disable-next-line react/no-danger
             <p dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)} />
           )}
           <GaEventWrapper
@@ -89,7 +88,6 @@ const InfoLayerWrapper = ({ imageSize, body, heading, readMoreLink }) => {
           </GaEventWrapper>
         </div>
         {!isSmall && (
-          // eslint-disable-next-line react/no-danger
           <p dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)} />
         )}
         {readMoreLink && (

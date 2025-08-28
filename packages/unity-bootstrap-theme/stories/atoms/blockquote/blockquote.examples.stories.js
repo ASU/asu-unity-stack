@@ -1,11 +1,10 @@
 import React from "react";
-
-import { imageName } from "../../../../../shared/assets";
-import { defaultDecorator } from "../../../../../shared/components/Layout";
+import { imageName } from "@asu/shared";
+import { defaultDecorator } from "@asu/shared";
 
 export default {
   title: "Atoms/Blockquotes and Testimonials/Examples",
-  decorators: [ defaultDecorator ],
+  decorators: [defaultDecorator],
   parameters: { controls: { disable: true } },
 };
 
@@ -58,7 +57,7 @@ export const BlockquoteWithImage = () => (
   <>
     <div className="uds-blockquote with-image uds-content-align">
       <img
-        src={ imageName.anon }
+        src={imageName.anon}
         alt="Pretend this is Michael M. Crow, President of ASU"
         width="600"
         height="400"
@@ -85,7 +84,7 @@ export const BlockquoteWithImage = () => (
     <section className="bg-gray-2">
       <div className="uds-blockquote with-image reversed uds-content-align">
         <img
-          src={ imageName.anon }
+          src={imageName.anon}
           alt="Pretend this is Michael M. Crow, President of ASU"
           width="300"
           height="300"
@@ -116,7 +115,7 @@ export const BlockquoteNoCitation = () => (
   <>
     <div className="uds-blockquote no-citation with-image uds-content-align">
       <img
-        src={ imageName.anon }
+        src={imageName.anon}
         alt="Image of Walt Disney"
         width="300"
         height="300"
@@ -135,7 +134,7 @@ export const BlockquoteNoCitation = () => (
     <div className="bg-gray-7">
       <div className="uds-blockquote no-citation with-image reversed uds-content-align">
         <img
-          src={ imageName.anon }
+          src={imageName.anon}
           alt="Image of Walt Disney"
           width="300"
           height="300"
@@ -202,11 +201,14 @@ export const BlockquoteAnimated = () => (
   <>
     <div className="uds-blockquoteAnimated accent-maroon uds-content-align">
       <blockquote>
-        <h4><strong>The ASU difference:</strong></h4>
+        <h4>
+          <strong>The ASU difference:</strong>
+        </h4>
         <h2>
           <p>
-          We are measured not by whom we exclude, but by <mark className="pen-yellow">whom we include</mark> and
-          <mark className="pen-yellow"> how they succeed</mark>
+            We are measured not by whom we exclude, but by{" "}
+            <mark className="pen-yellow">whom we include</mark> and
+            <mark className="pen-yellow"> how they succeed</mark>
           </p>
         </h2>
         <div className="citation">
@@ -216,10 +218,13 @@ export const BlockquoteAnimated = () => (
         </div>
       </blockquote>
     </div>
-
   </>
 );
-
+BlockquoteAnimated.parameters = {
+  initFunc: {
+    disable: false,
+  },
+};
 export const TestimonialsNoImage = () => (
   <>
     <div className="uds-blockquote uds-testimonial accent-gold uds-content-align">
@@ -267,7 +272,7 @@ export const TestimonialsWithImage = () => (
   <>
     <div className="uds-blockquote uds-testimonial with-image alt-citation accent-maroon uds-content-align">
       <img
-        src={ imageName.anon }
+        src={imageName.anon}
         alt="Pretend this is Han Solo"
         width="600"
         height="400"
@@ -294,7 +299,7 @@ export const TestimonialsWithImage = () => (
     <div className="bg-gray-7">
       <div className="uds-blockquote uds-testimonial with-image alt-citation accent-gold text-white uds-content-align">
         <img
-          src={ imageName.anon }
+          src={imageName.anon}
           alt="Pretend this is Han Solo"
           width="400"
           height="400"

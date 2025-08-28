@@ -1,13 +1,10 @@
 import React from "react";
-
 // @ts-ignore
 import stockVideo from "./stock-video-person-drawing.mp4";
-import { initVideo as initFunc } from "./video";
-
 
 export default {
   title: "Atoms/Videos/Templates",
-  args:{content:false},
+  args: { content: false },
   argTypes: {
     content: {
       name: "Content",
@@ -17,16 +14,13 @@ export default {
   parameters: {
     initFunc: {
       disable: false,
-      code: initFunc
     },
   },
 };
 
-export const Default = ({content}) =>
+export const Default = ({ content }) => (
   <div
-    className={`uds-video-container ${
-      content ? "uds-video-with-caption" : ""
-    }`}
+    className={`uds-video-container ${content ? "uds-video-with-caption" : ""}`}
   >
     <div className="uds-video-player">
       <video caption="Example video">
@@ -60,13 +54,12 @@ export const Default = ({content}) =>
         <figcaption>Photo by Dent/ASU Now</figcaption>
       </figure>
     )}
-  </div>;
+  </div>
+);
 
-export const YoutubeVideo = ({content}) =>
+export const YoutubeVideo = ({ content }) => (
   <div
-    className={`uds-video-container ${
-      content ? "uds-video-with-caption" : ""
-    }`}
+    className={`uds-video-container ${content ? "uds-video-with-caption" : ""}`}
   >
     <div className="uds-video-player youtube-video">
       <iframe
@@ -79,4 +72,5 @@ export const YoutubeVideo = ({content}) =>
         <figcaption>Photo by Dent/ASU Now</figcaption>
       </figure>
     )}
-  </div>;
+  </div>
+);

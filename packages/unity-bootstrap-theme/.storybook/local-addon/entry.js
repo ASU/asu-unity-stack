@@ -1,47 +1,36 @@
-import {
-  removeFontAwesomeChanges,
-  formatWithHtmlParser
-} from './helpers';
+import { removeFontAwesomeChanges, formatWithHtmlParser } from "./helpers";
 
-import { withFooter } from './decorators/withFooter';
-import { withHeader } from './decorators/withHeader';
-import { withInitFunc } from './decorators/withInitFunc';
-import { withLoadEvent } from './decorators/withLoadEvent';
-
-import "../../src/js/data-layer.js";
+import { withFooter } from "./decorators/withFooter";
+import { withHeader } from "./decorators/withHeader";
 
 export const parameters = {
   header: {
-    disable: false
+    disable: false,
   },
   footer: {
-    disable: false
+    disable: false,
   },
   loadEvent: {
-    disable: false
+    disable: false,
   },
   initFunc: {
     disable: true,
-    code: null
   },
-  docs:{
+  docs: {
     source: {
-      transform: (src,storyContext)=>{
-        let code = `${(document?.getElementById(`story--${storyContext.id}`)?.innerHTML || "")}`;
+      transform: (src, storyContext) => {
+        let code = `${
+          document?.getElementById(`story--${storyContext.id}`)?.innerHTML || ""
+        }`;
         return formatWithHtmlParser(removeFontAwesomeChanges(code));
       },
-      type:"auto"
-    }
-  }
-}
+      type: "auto",
+    },
+  },
+};
 
 export const globals = {
   header: false,
-  footer: false
-}
-export const decorators = [
-  withLoadEvent,
-  withInitFunc,
-  withHeader,
-  withFooter,
-]
+  footer: false,
+};
+export const decorators = [withHeader, withFooter];

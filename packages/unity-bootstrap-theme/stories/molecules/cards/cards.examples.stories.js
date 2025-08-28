@@ -1,9 +1,7 @@
 import React from "react";
-
-import { defaultDecorator, htmlRootDecorator } from "../../../../../shared/components/Layout";
+import { defaultDecorator, htmlRootDecorator } from "@asu/shared";
 import cardsImage from "./cards-image.jpg";
 import { horizontalCardsMap as horizontalCard } from "./cardVariations.js";
-import { rankingFunc as initRankFunc } from "./ranking-cards.js";
 
 export default {
   title: "Molecules/Cards/Examples",
@@ -60,7 +58,7 @@ export const cardImages = () => (
     </div>
   </div>
 );
-cardImages.decorators = [ defaultDecorator ];
+cardImages.decorators = [defaultDecorator];
 
 export const cardTitles = () => (
   <div style={{ width: "50%" }}>
@@ -78,7 +76,7 @@ export const cardTitles = () => (
     </div>
   </div>
 );
-cardTitles.decorators = [ defaultDecorator ];
+cardTitles.decorators = [defaultDecorator];
 
 export const cardBody = () => (
   <div className="card">
@@ -92,7 +90,7 @@ export const cardBody = () => (
     </div>
   </div>
 );
-cardBody.decorators = [ defaultDecorator ];
+cardBody.decorators = [defaultDecorator];
 
 export const cardEventInfo = () => (
   <div>
@@ -165,21 +163,23 @@ export const cardEventInfo = () => (
     </div>
   </div>
 );
-cardEventInfo.decorators = [ defaultDecorator ];
+cardEventInfo.decorators = [defaultDecorator];
 
 export const cardTags = () => (
   <div style={{ width: "50%" }}>
     <div className="card">
       <div className="card-header"></div>
       <div className="card-tags">
+        <h3 className="visually-hidden">Tags:</h3>
         <a className="btn btn-tag btn-tag-alt-white" href="#">
           test tag
+          <span className="visually-hidden"> tag</span>
         </a>
         <a className="btn btn-tag btn-tag-alt-white" href="#">
-          test tag 2
+          test tag 2<span className="visually-hidden"> tag</span>
         </a>
         <a className="btn btn-tag btn-tag-alt-white" href="#">
-          test tag 3
+          test tag 3<span className="visually-hidden"> tag</span>
         </a>
       </div>
     </div>
@@ -193,14 +193,24 @@ export const cardTags = () => (
         background class too.
       </div>
       <div className="card-tags">
-        <span className="badge text-bg-gray-2">No button class</span>
-        <span className="badge text-bg-gray-2">No hover effects</span>
-        <span className="badge text-bg-gray-7">Dark mode</span>
+        <h3 className="visually-hidden">Tags:</h3>
+        <span className="badge text-bg-gray-2">
+          No button class
+          <span className="visually-hidden"> tag</span>
+        </span>
+        <span className="badge text-bg-gray-2">
+          No hover effects
+          <span className="visually-hidden"> tag</span>
+        </span>
+        <span className="badge text-bg-gray-7">
+          Dark mode
+          <span className="visually-hidden"> tag</span>
+        </span>
       </div>
     </div>
   </div>
 );
-cardTags.decorators = [ defaultDecorator ];
+cardTags.decorators = [defaultDecorator];
 
 export const cardDegree = () => (
   <div className="card card-degree">
@@ -259,19 +269,20 @@ export const cardDegree = () => (
       </a>
     </div>
     <div className="card-tags">
+      <h3 className="visually-hidden">Tags:</h3>
       <a className="btn btn-tag btn-tag-alt-white" href="#">
-        test tag
+        test tag<span className="visually-hidden"> tag</span>
       </a>
       <a className="btn btn-tag btn-tag-alt-white" href="#">
-        test tag 2
+        test tag 2<span className="visually-hidden"> tag</span>
       </a>
       <a className="btn btn-tag btn-tag-alt-white" href="#">
-        test tag 3
+        test tag 3<span className="visually-hidden"> tag</span>
       </a>
     </div>
   </div>
 );
-cardDegree.decorators = [ defaultDecorator ];
+cardDegree.decorators = [defaultDecorator];
 
 export const cardStory = () => (
   <div className="card card-story">
@@ -330,33 +341,34 @@ export const cardStory = () => (
       </a>
     </div>
     <div className="card-tags">
+      <h3 className="visually-hidden">Tags:</h3>
       <a className="btn btn-tag btn-tag-alt-white" href="#">
-        test tag
+        test tag<span className="visually-hidden"> tag</span>
       </a>
       <a className="btn btn-tag btn-tag-alt-white" href="#">
-        test tag 2
+        test tag 2<span className="visually-hidden"> tag</span>
       </a>
       <a className="btn btn-tag btn-tag-alt-white" href="#">
-        test tag 3
+        test tag 3<span className="visually-hidden"> tag</span>
       </a>
     </div>
   </div>
 );
-cardStory.decorators = [ defaultDecorator ];
+cardStory.decorators = [defaultDecorator];
 
 export const cardEvent = () => (
   <div className="card card-event">
     <a href="#">
-    <img
-      className="card-img-top"
-      src={cardsImage}
-      alt="Card image cap"
-      width="600"
-      height="337"
-      loading="lazy"
-      decoding="async"
-      fetchpriority="high"
-    />
+      <img
+        className="card-img-top"
+        src={cardsImage}
+        alt="Card image cap"
+        width="600"
+        height="337"
+        loading="lazy"
+        decoding="async"
+        fetchpriority="high"
+      />
     </a>
     <div className="card-header">
       <h3 className="card-title">
@@ -417,19 +429,20 @@ export const cardEvent = () => (
       </a>
     </div>
     <div className="card-tags">
+      <h3 className="visually-hidden">Tags:</h3>
       <a className="btn btn-tag btn-tag-alt-white" href="#">
-        test tag
+        test tag<span className="visually-hidden"> tag</span>
       </a>
       <a className="btn btn-tag btn-tag-alt-white" href="#">
-        test tag 2
+        test tag 2<span className="visually-hidden"> tag</span>
       </a>
       <a className="btn btn-tag btn-tag-alt-white" href="#">
-        test tag 3
+        test tag 3<span className="visually-hidden"> tag</span>
       </a>
     </div>
   </div>
 );
-cardEvent.decorators = [ defaultDecorator ];
+cardEvent.decorators = [defaultDecorator];
 
 export const cardVariations = () => (
   <div>
@@ -515,14 +528,15 @@ export const cardVariations = () => (
               </a>
             </div>
             <div className="card-tags">
+              <h3 className="visually-hidden">Tags:</h3>
               <a className="btn btn-tag btn-tag-alt-white" href="#">
-                test tag
+                test tag<span className="visually-hidden"> tag</span>
               </a>
               <a className="btn btn-tag btn-tag-alt-white" href="#">
-                test tag 2
+                test tag 2<span className="visually-hidden"> tag</span>
               </a>
               <a className="btn btn-tag btn-tag-alt-white" href="#">
-                test tag 3
+                test tag 3<span className="visually-hidden"> tag</span>
               </a>
             </div>
           </div>
@@ -561,14 +575,15 @@ export const cardVariations = () => (
               </a>
             </div>
             <div className="card-tags">
+              <h3 className="visually-hidden">Tags:</h3>
               <a className="btn btn-tag btn-tag-alt-white" href="#">
-                test tag
+                test tag<span className="visually-hidden"> tag</span>
               </a>
               <a className="btn btn-tag btn-tag-alt-white" href="#">
-                test tag 2
+                test tag 2<span className="visually-hidden"> tag</span>
               </a>
               <a className="btn btn-tag btn-tag-alt-white" href="#">
-                test tag 3
+                test tag 3<span className="visually-hidden"> tag</span>
               </a>
             </div>
           </div>
@@ -624,14 +639,15 @@ export const cardVariations = () => (
               </div>
             </div>
             <div className="card-tags">
+              <h3 className="visually-hidden">Tags:</h3>
               <a className="btn btn-tag btn-tag-alt-white" href="#">
-                test tag
+                test tag<span className="visually-hidden"> tag</span>
               </a>
               <a className="btn btn-tag btn-tag-alt-white" href="#">
-                test tag 2
+                test tag 2<span className="visually-hidden"> tag</span>
               </a>
               <a className="btn btn-tag btn-tag-alt-white" href="#">
-                test tag 3
+                test tag 3<span className="visually-hidden"> tag</span>
               </a>
             </div>
           </div>
@@ -777,14 +793,15 @@ export const cardVariations = () => (
               </a>
             </div>
             <div className="card-tags">
+              <h3 className="visually-hidden">Tags:</h3>
               <a className="btn btn-tag btn-tag-alt-white" href="#">
-                test tag
+                test tag<span className="visually-hidden"> tag</span>
               </a>
               <a className="btn btn-tag btn-tag-alt-white" href="#">
-                test tag 2
+                test tag 2<span className="visually-hidden"> tag</span>
               </a>
               <a className="btn btn-tag btn-tag-alt-white" href="#">
-                test tag 3
+                test tag 3<span className="visually-hidden"> tag</span>
               </a>
             </div>
           </div>
@@ -1008,26 +1025,24 @@ export const cardVariations = () => (
 );
 cardVariations.decorators = [htmlRootDecorator];
 
-export const horizontal =
-  args => {
-    return (
-      <div>
-        {horizontalCard({ ...args, type: null })}
-        <hr />
+export const horizontal = args => {
+  return (
+    <div>
+      {horizontalCard({ ...args, type: null })}
+      <hr />
 
-        {horizontalCard({ ...args, type: "degree" })}
+      {horizontalCard({ ...args, type: "degree" })}
 
-        <hr />
+      <hr />
 
-        {horizontalCard({ ...args, type: "event" })}
+      {horizontalCard({ ...args, type: "event" })}
 
-        <hr />
+      <hr />
 
-        {horizontalCard({ ...args, type: "story" })}
-      </div>
-    );
-  }
-;
+      {horizontalCard({ ...args, type: "story" })}
+    </div>
+  );
+};
 horizontal.args = {
   numCards: 1,
 };
@@ -1035,10 +1050,10 @@ horizontal.argTypes = {
   numCards: {
     name: "Columns",
     control: { type: "range", min: 1, max: 3, step: 1 },
-  }
+  },
 };
 
-horizontal.decorators = [ defaultDecorator ];
+horizontal.decorators = [defaultDecorator];
 
 export const checkboxStackedCard = () => (
   <div className="card card-checkbox-stacked">
@@ -1128,19 +1143,20 @@ export const checkboxStackedCard = () => (
       </a>
     </div>
     <div className="card-tags">
+      <h3 className="visually-hidden">Tags:</h3>
       <a className="btn btn-tag btn-tag-alt-white" href="#">
-        test tag
+        test tag<span className="visually-hidden"> tag</span>
       </a>
       <a className="btn btn-tag btn-tag-alt-white" href="#">
-        test tag 2
+        test tag 2<span className="visually-hidden"> tag</span>
       </a>
       <a className="btn btn-tag btn-tag-alt-white" href="#">
-        test tag 3
+        test tag 3<span className="visually-hidden"> tag</span>
       </a>
     </div>
   </div>
 );
-checkboxStackedCard.decorators = [ defaultDecorator ];
+checkboxStackedCard.decorators = [defaultDecorator];
 
 export const checkboxInlineCard = () => (
   <div className="card card-checkbox-inline">
@@ -1230,19 +1246,20 @@ export const checkboxInlineCard = () => (
       </a>
     </div>
     <div className="card-tags">
+      <h3 className="visually-hidden">Tags:</h3>
       <a className="btn btn-tag btn-tag-alt-white" href="#">
-        test tag
+        test tag<span className="visually-hidden"> tag</span>
       </a>
       <a className="btn btn-tag btn-tag-alt-white" href="#">
-        test tag 2
+        test tag 2<span className="visually-hidden"> tag</span>
       </a>
       <a className="btn btn-tag btn-tag-alt-white" href="#">
-        test tag 3
+        test tag 3<span className="visually-hidden"> tag</span>
       </a>
     </div>
   </div>
 );
-checkboxInlineCard.decorators = [ defaultDecorator ];
+checkboxInlineCard.decorators = [defaultDecorator];
 
 export const mediaTypeOverlayCard = () => (
   <div className="container">
@@ -1314,14 +1331,15 @@ export const mediaTypeOverlayCard = () => (
             </a>
           </div>
           <div className="card-tags">
+            <h3 className="visually-hidden">Tags:</h3>
             <a className="btn btn-tag btn-tag-alt-white" href="#">
-              test tag
+              test tag<span className="visually-hidden"> tag</span>
             </a>
             <a className="btn btn-tag btn-tag-alt-white" href="#">
-              test tag 2
+              test tag 2<span className="visually-hidden"> tag</span>
             </a>
             <a className="btn btn-tag btn-tag-alt-white" href="#">
-              test tag 3
+              test tag 3<span className="visually-hidden"> tag</span>
             </a>
           </div>
         </div>
@@ -1393,14 +1411,15 @@ export const mediaTypeOverlayCard = () => (
             </a>
           </div>
           <div className="card-tags">
+            <h3 className="visually-hidden">Tags:</h3>
             <a className="btn btn-tag btn-tag-alt-white" href="#">
-              test tag
+              test tag<span className="visually-hidden"> tag</span>
             </a>
             <a className="btn btn-tag btn-tag-alt-white" href="#">
-              test tag 2
+              test tag 2<span className="visually-hidden"> tag</span>
             </a>
             <a className="btn btn-tag btn-tag-alt-white" href="#">
-              test tag 3
+              test tag 3<span className="visually-hidden"> tag</span>
             </a>
           </div>
         </div>
@@ -1510,11 +1529,10 @@ export const RankingCardLarge = () => (
 );
 RankingCardLarge.parameters = {
   initFunc: {
-    code: initRankFunc,
     disable: false,
   },
-}
-RankingCardLarge.decorators = [ defaultDecorator ];
+};
+RankingCardLarge.decorators = [defaultDecorator];
 
 export const RankingCardSmall = () => (
   <div className="card-ranking small-image">
@@ -1584,8 +1602,7 @@ export const RankingCardSmall = () => (
 );
 RankingCardSmall.parameters = {
   initFunc: {
-    code: initRankFunc,
     disable: false,
   },
-}
-RankingCardSmall.decorators = [ defaultDecorator ];
+};
+RankingCardSmall.decorators = [defaultDecorator];

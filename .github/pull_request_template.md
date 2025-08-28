@@ -8,6 +8,14 @@
 <!-- Solution -->
 <!-- Testing Steps -->
 
+## Checklist
+
+- [ ] Tests pass for relevant code changes
+
+## Important Reminders
+<!-- Add meaningful tests -->
+<!-- Remove tests that do not provide value -->
+
 ### Links
 
 - [JIRA ticket](https://asudev.jira.com/browse/UDS-0000)

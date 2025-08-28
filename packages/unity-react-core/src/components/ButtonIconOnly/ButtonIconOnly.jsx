@@ -22,12 +22,12 @@ const gaDefaultObject = {
  * @returns {JSX.Element}
  */
 export const ButtonIconOnly = ({
-  color,
-  icon,
-  innerRef,
-  onClick,
-  size,
-  cardTitle,
+  color = "gray",
+  icon = undefined,
+  innerRef = undefined,
+  onClick = undefined,
+  size = "small",
+  cardTitle = "",
   className,
   gaData,
   ...rest
@@ -53,7 +53,6 @@ export const ButtonIconOnly = ({
         ref={innerRef}
         aria-label="Close"
         onClick={handleClick}
-        // eslint-disable-next-line react/jsx-props-no-spreading
         {...rest}
       >
         <i className={`${icon?.[0]} fa-${icon?.[1]}`} />
@@ -98,13 +97,4 @@ ButtonIconOnly.propTypes = {
   */
   size: PropTypes.oneOf(["large", "small"]),
   className: PropTypes.string,
-};
-
-ButtonIconOnly.defaultProps = {
-  color: "gray",
-  icon: undefined,
-  innerRef: undefined,
-  onClick: undefined,
-  size: "small",
-  cardTitle: "",
 };

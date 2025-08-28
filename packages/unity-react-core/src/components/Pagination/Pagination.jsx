@@ -7,11 +7,11 @@
  *
  *
  */
+import { createRange, iff, trackGAEvent } from "@asu/shared";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 
-import { createRange, iff, trackGAEvent } from "../../../../../shared";
 import { PageItem } from "./PageItem/PageItem";
 
 const defaultGAEvent = {
@@ -33,8 +33,8 @@ const defaultGAEvent = {
 export const Pagination = ({
   type,
   background,
-  currentPage,
-  totalPages,
+  currentPage = 1,
+  totalPages = 10,
   onChange,
 }) => {
   const [selectedPage, setSelectedPage] = useState(null);
@@ -61,7 +61,6 @@ export const Pagination = ({
   };
 
   const renderPages = () => {
-
     if (totalPages < 5) {
       return (
         <>
@@ -119,7 +118,7 @@ export const Pagination = ({
             1
           </PageItem>
         )}
-        {selectedPage > (totalPages - displayMinimumPages ) && (
+        {selectedPage > totalPages - displayMinimumPages && (
           <PageItem
             isClickeable
             ariaLabel={`Page 2 of ${totalPages}`}
@@ -144,10 +143,10 @@ export const Pagination = ({
         {renderedPages[renderedPages.length - 1] < totalPages - 1 && (
           <PageItem ellipses>...</PageItem>
         )}
-        {selectedPage < displayMinimumPages + 1  && (
+        {selectedPage < displayMinimumPages + 1 && (
           <PageItem
             isClickeable
-            ariaLabel={`Page ${totalPages-1} of ${totalPages}`}
+            ariaLabel={`Page ${totalPages - 1} of ${totalPages}`}
             selectedPage={selectedPage === totalPages - 1}
             onClick={e => handleChangePage(e, totalPages - 1)}
           >
@@ -229,9 +228,4 @@ Pagination.propTypes = {
    * Callback fired when the page is changed
    */
   onChange: PropTypes.func.isRequired,
-};
-
-Pagination.defaultProps = {
-  currentPage: 1,
-  totalPages: 10,
 };

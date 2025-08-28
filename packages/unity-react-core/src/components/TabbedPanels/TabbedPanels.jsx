@@ -7,6 +7,7 @@
  *
  *
  */
+import { throttle, debounce } from "@asu/shared";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
@@ -26,8 +27,14 @@ function useRefs() {
   return [refs, register];
 }
 
-const Tab = ({ id, bgColor, selected, children }) =>
-  selected && (
+const Tab = ({ id, bgColor, selected, children }) => {
+  const { isBootstrap } = useBaseSpecificFramework();
+
+  if (!(selected || isBootstrap)) {
+    return null;
+  }
+
+  return (
     <div
       className={`tab-pane fade show ${selected ? "show active" : ""} ${
         bgColor === "bg-dark" ? "text-white" : ""
@@ -39,6 +46,7 @@ const Tab = ({ id, bgColor, selected, children }) =>
       {children}
     </div>
   );
+};
 
 Tab.propTypes = {
   id: PropTypes.string.isRequired,
@@ -54,55 +62,72 @@ const TabbedPanels = ({
   onTabChange = _ => {},
 }) => {
   const childrenArray = React.Children.toArray(children);
+
+  // Move all hooks before any early returns
   const isMounted = useRef(false);
   const [activeTabID, setActiveTabID] = useState(
-    initialTab && initialTab !== "null" ? initialTab : childrenArray[0].props.id
+    initialTab && initialTab !== "null"
+      ? initialTab
+      : childrenArray[0]?.props?.id || ""
   );
   const headerTabs = useRef(null);
   const [headerTabItems, setHeaderTabItems] = useRefs();
-  const { isReact, isBootstrap } = useBaseSpecificFramework();
-
-  const updateActiveTabID = tab => {
-    onTabChange(tab);
-
-    headerTabItems.current[tab]?.focus();
-    setActiveTabID(tab);
-  };
-
   const [scrollLeft, setScrollLeft] = useState(0);
   const [scrollableWidth, setScrollableWidth] = useState();
 
-  useEffect(() => {
-    const onScroll = () => {
-      setScrollLeft(headerTabs.current.scrollLeft);
-    };
-    headerTabs.current.addEventListener("scroll", onScroll);
-    onScroll();
-    return () => {
-      if (headerTabs.current) {
-        headerTabs.current.removeEventListener("scroll", onScroll);
-      }
-    };
-  }, [scrollableWidth]);
-
-  useEffect(() => {
-    const onResize = () => {
-      setScrollableWidth(
-        headerTabs.current.scrollWidth - headerTabs.current.offsetWidth
-      );
-    };
-    window.addEventListener("resize", onResize);
-    onResize();
-    return () => {
-      if (headerTabs.current) {
-        window.removeEventListener("resize", onResize);
-      }
-    };
+  const handleResize = useCallback(() => {
+    setScrollableWidth(
+      headerTabs.current?.scrollWidth - headerTabs.current?.offsetWidth
+    );
   }, []);
 
+  const handleScroll = useCallback(() => {
+    setScrollLeft(headerTabs.current?.scrollLeft);
+  }, []);
+
+  const throttleScroll = useCallback(() => {
+    const timeout = 150;
+    // prevent function from being called excessively
+    throttle(handleScroll, timeout);
+    // ensure function executes after scrolling stops
+    debounce(handleScroll, timeout);
+  }, [handleScroll]);
+
+  const throttleResize = useCallback(() => {
+    const timeout = 150;
+    // prevent function from being called excessively
+    throttle(handleResize, timeout);
+    // ensure function executes after scrolling stops
+    debounce(handleResize, timeout);
+  }, [handleResize]);
+
+  // Move all useEffect hooks before early return
   useEffect(() => {
-    headerTabItems.current[activeTabID]?.scrollIntoView();
-  }, [activeTabID]);
+    const currentHeaderTabs = headerTabs.current;
+    if (currentHeaderTabs) {
+      currentHeaderTabs.addEventListener("scroll", throttleScroll);
+      handleScroll();
+    }
+    return () => {
+      if (currentHeaderTabs) {
+        currentHeaderTabs.removeEventListener("scroll", throttleScroll);
+      }
+    };
+  }, [scrollableWidth, throttleScroll, handleScroll]);
+
+  useEffect(() => {
+    window.addEventListener("resize", throttleResize);
+    handleResize();
+    return () => {
+      window.removeEventListener("resize", throttleResize);
+    };
+  }, [throttleResize, handleResize]);
+
+  useEffect(() => {
+    if (headerTabItems.current[activeTabID]) {
+      headerTabItems.current[activeTabID].scrollIntoView();
+    }
+  }, [activeTabID, headerTabItems]);
 
   useEffect(() => {
     if (
@@ -113,11 +138,23 @@ const TabbedPanels = ({
     ) {
       setActiveTabID(initialTab);
     }
-  }, [initialTab]);
+  }, [initialTab, activeTabID]);
 
   useEffect(() => {
     isMounted.current = true;
   }, []);
+
+  // Early return check after all hooks
+  if (childrenArray.length === 0) {
+    return null;
+  }
+
+  const updateActiveTabID = tab => {
+    onTabChange(tab);
+
+    headerTabItems.current[tab]?.focus();
+    setActiveTabID(tab);
+  };
 
   const trackArrowsEvent = {
     event: "select",
@@ -190,10 +227,10 @@ const TabbedPanels = ({
                 title={child.props.title}
                 selected={activeTabID === child.props.id}
                 gaData={trackLinkEvent}
-                selectTab={isReact && switchToTab}
+                selectTab={switchToTab}
                 key={child.props.id}
-                leftKeyPressed={isReact && (() => incrementIndex(false))}
-                rightKeyPressed={isReact && (() => incrementIndex())}
+                leftKeyPressed={() => incrementIndex(false)}
+                rightKeyPressed={() => incrementIndex()}
                 icon={child.props.icon}
                 index={index}
               />
@@ -205,7 +242,7 @@ const TabbedPanels = ({
           hidePrev={scrollLeft <= 0}
           hideNext={scrollLeft >= scrollableWidth}
           gaData={trackArrowsEvent}
-          slideNav={isReact && slideNav}
+          slideNav={slideNav}
         />
       </nav>
       <div

@@ -34,7 +34,7 @@ const LocalTab = ({ engines, term, site, loggedIn }) => {
 
 LocalTab.propTypes = {
   term: PropTypes.string,
-  // eslint-disable-next-line react/forbid-prop-types
+
   engines: PropTypes.object,
   site: PropTypes.string,
   loggedIn: PropTypes.bool,

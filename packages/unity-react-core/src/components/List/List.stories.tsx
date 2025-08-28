@@ -10,11 +10,29 @@ const decorator = (story:StoryFn, context: StoryContext) =>
 export default {
   title: "Components/List",
   component: List,
+  args: {
+    multiplier: 1,
+  },
+  argTypes: {
+    multiplier: {
+      name: "Multiplier",
+      description: "Storybook control - Number of times to repeat the items.",
+      control: {
+        type: "number",
+        min: 1,
+        max: 111,
+        step: 1,
+      },
+    },
+  },
   decorators: [decorator]
 };
 
-const listTemplate = (args: ListProps) => {
-  return <List {...args} />
+const listTemplate = (args: ListProps & { multiplier: number }) => {
+  const multiplier = args.multiplier > 0 ? args.multiplier : 1;
+  return (
+    <List {...args} items={new Array(multiplier).fill(args.items).flat()} />
+  );
 };
 
 export const UnorderedList = {

@@ -24,21 +24,21 @@ const gaDefaultObject = {
  * @returns {JSX.Element}
  */
 export const Button = ({
-  label,
-  cardTitle,
+  label = "",
+  cardTitle = "",
   gaData,
   ariaLabel,
   block,
-  color,
+  color = "gray",
   disabled,
-  element,
+  element = "button",
   href,
   icon,
   innerRef,
   onClick,
-  size,
+  size = "default",
   classes,
-  target,
+  target = "_self",
   ...props
 }) => {
   const btnClasses = classNames("btn", {
@@ -163,21 +163,4 @@ Button.propTypes = {
    Link target type
    */
   target: PropTypes.oneOf(["_blank", "_self", "_top", "_parent"]),
-};
-
-Button.defaultProps = {
-  label: "",
-  cardTitle: "",
-  ariaLabel: undefined,
-  block: undefined,
-  color: "gray",
-  disabled: undefined,
-  element: "button",
-  href: undefined,
-  icon: undefined,
-  innerRef: undefined,
-  onClick: undefined,
-  size: "default",
-  classes: undefined,
-  target: "_self",
 };

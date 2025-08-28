@@ -65,7 +65,6 @@ describe("#DetailPage", () => {
   /** @param {AppProps} props  */
   async function renderDetailPage(props) {
     await act(async () => {
-      // eslint-disable-next-line react/jsx-props-no-spreading
       component = render(<DetailPage {...props} />);
       // container = component.container;
     });

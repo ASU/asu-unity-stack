@@ -27,13 +27,23 @@
     img.img-original {
       width: initial;
     }
+
+    a:has(img) {
+
+      &:focus {
+        display: flex;
+        position: relative;
+      }
+
+    }
+
     .uds-figure-caption {
       border: 1px solid $uds-color-base-gray-3;
       border-top: none;
       opacity: 1;
       background: $uds-color-background-white 0% 0% no-repeat padding-box;
       padding: 2rem;
-      font-size: $uds-size-font-tiny;
+      font-size: $uds-size-font-medium;
       h3, .h3 {
         color: $uds-color-base-gray-7;
         margin: 0 0 1rem 0;

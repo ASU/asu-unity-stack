@@ -168,7 +168,7 @@ const AllTab = ({
 
 AllTab.propTypes = {
   term: PropTypes.string,
-  // eslint-disable-next-line react/forbid-prop-types
+
   engines: PropTypes.object,
   site: PropTypes.string,
   goToTab: PropTypes.func,

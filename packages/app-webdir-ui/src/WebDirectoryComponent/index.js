@@ -3,7 +3,7 @@
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 
-import trackReactComponent from "../../../../shared/services/componentDatalayer";
+import { trackReactComponent } from "@asu/shared";
 import FacultyRankTabPanels from "../FacultyRankComponent";
 import { FILTER_CHOICES } from "../helpers/constants";
 import { FilterComponent } from "../helpers/Filter";

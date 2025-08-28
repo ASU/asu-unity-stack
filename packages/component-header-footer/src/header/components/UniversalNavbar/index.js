@@ -1,7 +1,7 @@
 // @ts-check
+import { trackGAEvent } from "@asu/shared";
 import React from "react";
 
-import { trackGAEvent } from "../../../../../../shared";
 import { useAppContext } from "../../core/context/app-context";
 import { Wrapper } from "./index.styles";
 import { Login } from "./Login";
@@ -38,7 +38,7 @@ const UniversalNavbar = () => {
     },
     {
       className: "nav-link visually-hidden-focusable",
-      href: `https://accessibility.asu.edu/report?a11yref=${getURL()}`,
+      href: `https://accessibility.asu.edu/report#a11yref=${getURL()}`,
       text: "Report an accessibility problem",
     },
     {

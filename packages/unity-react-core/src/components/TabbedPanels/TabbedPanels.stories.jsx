@@ -7,10 +7,6 @@ import { TabbedPanels, Tab } from "./TabbedPanels";
 export default {
   title: "Components/TabbedPanels",
   component: TabbedPanels,
-  globals: {
-    framework: "react",
-  },
-  tags: ["!bootstrap"],
 };
 
 const Template = () => {

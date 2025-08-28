@@ -91,7 +91,6 @@ function degreeDataPropResolverService(row = {}) {
       /** @type {string} */
       const gradRequirement2 = row["degreeRequirements"] || "";
       return `${gradRequirement1}${gradRequirement2}`;
-
     },
     isOnline: () => row["asuOnlineAcadPlanUrl"], // Returns null if online url is not available
     // See getGeneralDegreeMajorMap for more info
@@ -222,9 +221,8 @@ function degreeDataPropResolverService(row = {}) {
       const text = row["stemOptText"];
       if (text && text !== "") {
         return "Yes";
-      } else {
-        return "No";
       }
+      return "No";
     },
     getSubPlnMajorMaps: () => {
       if (!row["subplans"] || !row["majorMapSubplans"]) return [];

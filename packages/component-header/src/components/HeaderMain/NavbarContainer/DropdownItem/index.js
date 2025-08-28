@@ -1,8 +1,7 @@
+import { idGenerator, trackGAEvent } from "@asu/shared";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 
-import { idGenerator, trackGAEvent } from "../../../../../../../shared";
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { useAppContext } from "../../../../core/context/app-context";
 import { ButtonPropTypes } from "../../../../core/models/app-prop-types";
 import { Button } from "../../../Button";
@@ -213,13 +212,13 @@ DropdownItem.propTypes = {
   dropdownName: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.arrayOf(
-    PropTypes.shape({
-      text: PropTypes.string,
-      selected: PropTypes.bool,
-      onClick: PropTypes.func,
-      href: PropTypes.string,
-    })
-  )
+      PropTypes.shape({
+        text: PropTypes.string,
+        selected: PropTypes.bool,
+        onClick: PropTypes.func,
+        href: PropTypes.string,
+      })
+    )
   ),
   buttons: PropTypes.arrayOf(PropTypes.shape(ButtonPropTypes)),
   classes: PropTypes.string,

@@ -1,2 +1,18 @@
 #!/bin/sh
-# yarn test
+[ -n "$CI" ] && exit 0
+
+# Check for skip checks via environment variable
+# Usage:
+# - Run with env var:  SKIP_PUSH_HOOK=1 git push
+if [ "$SKIP_PUSH_HOOK" = "1" ]; then
+  echo "Skipping build and tests..."
+  exit 0
+else
+  echo "Running build and tests..."
+  yarn test && yarn build
+
+  if [ $? -ne 0 ]; then
+    echo "Build or tests failed. Please fix errors before pushing or use 'SKIP_PUSH_HOOK=1 git push' to skip."
+    exit 1
+  fi
+fi

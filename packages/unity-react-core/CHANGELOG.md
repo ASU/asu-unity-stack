@@ -1,3 +1,37 @@
+# [@asu/unity-react-core-v1.1.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.1.2...@asu/unity-react-core-v1.1.3) (2025-06-30)
+
+
+### Bug Fixes
+
+* **unity-react-core:** change class of header ranking card for styling ([ada0d67](https://github.com/ASU/asu-unity-stack/commit/ada0d677de7c9701e8225a6af6353f93e9d1be8b))
+* **unity-react-core:** update jsx for ranking card ([40f3711](https://github.com/ASU/asu-unity-stack/commit/40f371137789d9b71af8a85e03427dc6c7b8c017))
+
+# [@asu/unity-react-core-v1.1.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.1.1...@asu/unity-react-core-v1.1.2) (2025-06-04)
+
+
+### Bug Fixes
+
+* **unity-react-core:** adding Grays to code kit ([dd6f5c1](https://github.com/ASU/asu-unity-stack/commit/dd6f5c12cb586e6039b57dc617758dcc4127cb64))
+
+# [@asu/unity-react-core-v1.1.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.1.0...@asu/unity-react-core-v1.1.1) (2025-05-30)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** standardize all list types  margins ([345dc84](https://github.com/ASU/asu-unity-stack/commit/345dc8465b93b21838778269c7020577afafa8de))
+
+# [@asu/unity-react-core-v1.1.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.0.7...@asu/unity-react-core-v1.1.0) (2025-04-24)
+
+
+### Bug Fixes
+
+* **unity-react-core:** update sb to use uds js ([118efeb](https://github.com/ASU/asu-unity-stack/commit/118efeb5732c3bf881737b72cff9032acc2181d8))
+
+
+### Features
+
+* **unity-react-core:** update storybook to use renamed file unity-bootstrap.js ([7425469](https://github.com/ASU/asu-unity-stack/commit/74254693eaf2ca71e23963ffaa4b836c5f4a1bdc))
+
 # [@asu/unity-react-core-v1.0.7](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.0.6...@asu/unity-react-core-v1.0.7) (2025-03-28)
 
 

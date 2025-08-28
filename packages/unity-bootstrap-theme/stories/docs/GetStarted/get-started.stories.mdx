@@ -17,12 +17,39 @@ This is the Storybook reference site for the Unity Bootstrap theme. Browse the d
 
 ## ❯ Including Unity in your project
 
-We bundle the necessary CSS  and Javascript in the `dist/` folder. There are more options so you don't have to include CSS you don't use.
+We bundle the necessary CSS and Javascript in the `dist/` folder. There are more options so you don't have to include CSS you don't use.
+### CSS
+* `dist/css/unity-bootstrap-theme.bundle.css` - base theme with header and footer CSS
+* `dist/css/unity-bootstrap-theme.css` - base theme without header and footer CSS
+* `dist/css/unity-bootstrap-header-footer.css` (optional) - header and footer CSS only - don't use if using the Unity `component-header-footer` React component
 
-* `dist/unity-bootstrap-theme.bundle.css` - base theme with header and footer CSS
-* `dist/unity-bootstrap-theme.css` - base theme without header and footer CSS
-* `dist/unity-bootstrap-header.css` (optional) - header CSS only - don't use if using the Unity `component-header` React component
-* `dist/unity-bootstrap-footer.css` (optional) - footer CSS only - don't use if using the Unity `component-footer` React component
+### Javascript
+All you need to do is include the script on your page, the scripts will execute with the window load event.
+We provide 3 formats ("UMD", "CJS", "ES").
+
+* Unity File Formats
+  * `dist/js/unity-bootstrap.umd.js` (universal)
+    * creates a global variable `unityBootstrap` if you need to manaully call the init function ex: `unityBootstrap.initAnchorMenu()`
+  * `dist/js/unity-bootstrap.cjs.js` (common js)
+  * `dist/js/unity-bootstrap.es.js` (module)
+* Vendor Files
+  * `dist/js/bootstrap.bundle.min.js` (unaltered bootstrap version)
+  * `dist/js/chart.min.js` (only needed if you are using the donut chart)
+
+* Exports:
+  * `initAnchorMenu`
+  * `initBlockquoteAnimation`
+  * `initCalendar`
+  * `initChart`
+  * `initDataLayer`
+  * `initFixedTable`
+  * `initGlobalHeader`
+  * `initHeroesVideo`
+  * `initImageParallax`
+  * `initModals`
+  * `initRankingCard`
+  * `initTabbedPanels`
+  * `initVideo`
 
 ## ❯ How to  use the Unity Storybook reference site
 

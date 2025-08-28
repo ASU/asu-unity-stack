@@ -1,3 +1,71 @@
+# [@asu/component-header-footer-v1.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.14...@asu/component-header-footer-v1.1.0) (2025-08-21)
+
+
+### Features
+
+* **component-header-footer:** added mobile style for search input ([2181de5](https://github.com/asu/asu-unity-stack/commit/2181de5e09571aca685e4a4dcc4ba97099feac49))
+* **component-header-footer:** applied soma feedback ([d1cbddb](https://github.com/asu/asu-unity-stack/commit/d1cbddb12fe5201c3448be362fdccfb2e57bad65))
+
+# [@asu/component-header-footer-v1.0.14](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.13...@asu/component-header-footer-v1.0.14) (2025-08-11)
+
+
+### Bug Fixes
+
+* **component-header-footer:** fix footer clashing classes with bootstrap JS ([59a3d43](https://github.com/asu/asu-unity-stack/commit/59a3d434a754287ac7369f9669353ff03e8b5aea))
+
+# [@asu/component-header-footer-v1.0.13](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.12...@asu/component-header-footer-v1.0.13) (2025-07-24)
+
+
+### Bug Fixes
+
+* **component-header-footer:** fix social icon focus styles ([f58b6bb](https://github.com/asu/asu-unity-stack/commit/f58b6bb3e617c1c12ca9ed9d9b2a8f4e7ba4cfb2))
+
+# [@asu/component-header-footer-v1.0.12](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.11...@asu/component-header-footer-v1.0.12) (2025-07-14)
+
+
+### Bug Fixes
+
+* **component-header-footer:** fix school logo in footer styles ([f25e7c1](https://github.com/asu/asu-unity-stack/commit/f25e7c1fce0ead0f3f2be0d50cd3faeb91d82f8e))
+* **component-header-footer:** update url params for a11y to use fragments instead of params ([9f0481a](https://github.com/asu/asu-unity-stack/commit/9f0481ae63b465dea65452b1e93bd58596d5ac87))
+
+# [@asu/component-header-footer-v1.0.11](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.10...@asu/component-header-footer-v1.0.11) (2025-07-11)
+
+
+### Bug Fixes
+
+* button type for cookie consent opt out is now a button ([f7cff20](https://github.com/asu/asu-unity-stack/commit/f7cff2084614f88213535d5c3f186d508c5eff1d))
+* **component-header-footer:** updating footer to included privacy button ([fd022c4](https://github.com/asu/asu-unity-stack/commit/fd022c45ca846c1fa1e2213e951fa431e2b483a6))
+* styles for manual consent opt out ([b028c9f](https://github.com/asu/asu-unity-stack/commit/b028c9fb6ba32aeaa6dd1dbfb1cdf572e2356740))
+* styles for manual consent opt out version 2 ([35f4452](https://github.com/asu/asu-unity-stack/commit/35f4452c3c32ff13c71dbbac5c9386774b3bf001))
+
+# [@asu/component-header-footer-v1.0.10](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.9...@asu/component-header-footer-v1.0.10) (2025-05-13)
+
+
+### Bug Fixes
+
+* **component-header-footer:** fix footer mobile column styles ([4654ef9](https://github.com/asu/asu-unity-stack/commit/4654ef95a727261b6f73aaeeea9b5ce88f6ed813))
+
+# [@asu/component-header-footer-v1.0.9](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.8...@asu/component-header-footer-v1.0.9) (2025-05-06)
+
+
+### Bug Fixes
+
+* **component-header-footer:** update alt for innovation logo ([d32a7b9](https://github.com/asu/asu-unity-stack/commit/d32a7b9571811a9909708475a9ed3f6218bcc437))
+
+# [@asu/component-header-footer-v1.0.8](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.7...@asu/component-header-footer-v1.0.8) (2025-05-01)
+
+
+### Bug Fixes
+
+* **component-header-footer:** added focusout event to NavItem ([b7eea2e](https://github.com/asu/asu-unity-stack/commit/b7eea2eae897fab10761806932dcc0e172936d54))
+
+# [@asu/component-header-footer-v1.0.7](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.6...@asu/component-header-footer-v1.0.7) (2025-04-18)
+
+
+### Bug Fixes
+
+* **component-header-footer:** removed aria-labelledby and added span for desktop ([a67d7df](https://github.com/asu/asu-unity-stack/commit/a67d7df86122ab283910d7a01e6006c33c6f88e3))
+
 # [@asu/component-header-footer-v1.0.6](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.5...@asu/component-header-footer-v1.0.6) (2025-04-01)
 
 

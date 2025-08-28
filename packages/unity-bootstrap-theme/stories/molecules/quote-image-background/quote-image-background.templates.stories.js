@@ -1,11 +1,10 @@
 import React from "react";
-
-import { imageName } from "../../../../../shared/assets";
-import { defaultDecorator } from "../../../../../shared/components/Layout";
+import { imageName } from "@asu/shared";
+import { defaultDecorator } from "@asu/shared";
 
 export default {
   title: "Molecules/Content Sections/Quote On Image Background/Templates",
-  decorators: [ defaultDecorator ],
+  decorators: [defaultDecorator],
   parameters: { controls: { disable: true } },
 };
 
@@ -13,8 +12,7 @@ export const Default = () => (
   <div
     className="uds-quote-image-background"
     style={{
-      backgroundImage:
-        `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('${ imageName.hero02 }')`,
+      backgroundImage: `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('${imageName.hero02}')`,
     }}
   >
     <div className="uds-content-align">

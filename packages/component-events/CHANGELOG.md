@@ -1,3 +1,11 @@
+# [@asu/component-events-v3.0.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v3.0.0...@asu/component-events-v3.0.1) (2025-06-19)
+
+
+### Bug Fixes
+
+* **component-events:** add screen reader time readout for events ([5dab486](https://github.com/asu/asu-unity-stack/commit/5dab486a5652f841a11023b42642ef228e85a75a))
+* **component-events:** changed hyphen to "to" in event cards ([27adab8](https://github.com/asu/asu-unity-stack/commit/27adab8dc5fe5b47e4b1b701c4e5ecdddb3c2e88))
+
 # [@asu/component-events-v3.0.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v2.1.2...@asu/component-events-v3.0.0) (2025-02-11)
 
 

@@ -49,12 +49,11 @@ const htmlTemplate = ({ id, imageSource, imageAltText, title, content }) => ({
           >
             <div className="uds-caption-text">
               {!title ? (
-                // eslint-disable-next-line react/no-danger
                 <div dangerouslySetInnerHTML={{ __html: content }} />
               ) : (
                 <>
                   <h3>{title}</h3>
-                  {/* eslint-disable-next-line react/no-danger */}
+                  {}
                   <div dangerouslySetInnerHTML={{ __html: content }} />
                 </>
               )}
@@ -103,7 +102,7 @@ const ImageCarousel = ({
 
 ImageCarousel.propTypes = {
   perView: PropTypes.number.isRequired,
-  // eslint-disable-next-line react/forbid-prop-types
+
   imageItems: PropTypes.arrayOf(PropTypes.object).isRequired,
   width: PropTypes.string,
   maxWidth: PropTypes.string,

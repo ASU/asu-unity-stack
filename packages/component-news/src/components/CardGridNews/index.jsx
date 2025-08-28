@@ -2,7 +2,7 @@
 import { Card, feedCardButtonShape, FeedContext } from "@asu/unity-react-core";
 import React, { useContext, useEffect } from "react";
 
-import trackReactComponent from "../../../../../shared/services/componentDatalayer";
+import { trackReactComponent } from "@asu/shared";
 import { BaseFeed } from "../../core/components/BaseFeed";
 import { defaultProps } from "../../core/constants/default-props";
 import { parseInterests } from "../../core/utils";
@@ -46,14 +46,13 @@ const gridRow = (feed, cardButton) => (
 /**
  * @param {import("../../core/types/news-types").TemplateProps} props
  */
-// eslint-disable-next-line react/prop-types
+
 const GridTemplate = ({ cardButton }) => {
   const { feeds } = useContext(FeedContext); // Reading the "feeds" object from the context
 
   return (
     <NewsWrapper className="row row-spaced" data-testid="grid-view-container">
       {feeds?.map((feed, index) => (
-        // eslint-disable-next-line react/no-array-index-key
         <React.Fragment key={index}>{gridRow(feed, cardButton)}</React.Fragment>
       ))}
     </NewsWrapper>

@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 import React, { forwardRef, useRef, useImperativeHandle } from "react";
 
 import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
+import { useBaseSpecificFramework } from "../../GaEventWrapper/useBaseSpecificFramework";
 
 /**
  * @typedef {Object} TabHeaderProps
@@ -26,31 +27,28 @@ const TabHeader = forwardRef(function TabHeader(props, ref) {
     icon,
     gaData,
   } = props;
+  const { isReact, isBootstrap } = useBaseSpecificFramework();
 
   const inputRef = useRef(null);
 
-  useImperativeHandle(
-    ref,
-    () => {
-      return {
-        focus() {
-          inputRef.current.focus();
-        },
-        scrollIntoView() {
-          const middle =
-            inputRef.current?.offsetWidth / 2 + inputRef.current.offsetLeft;
-          const targetMiddle =
-            inputRef.current?.offsetParent?.scrollLeft +
-            inputRef.current?.offsetParent?.offsetWidth / 2;
+  useImperativeHandle(ref, () => {
+    return {
+      focus() {
+        inputRef.current.focus();
+      },
+      scrollIntoView() {
+        const middle =
+          inputRef.current?.offsetWidth / 2 + inputRef.current.offsetLeft;
+        const targetMiddle =
+          inputRef.current?.offsetParent?.scrollLeft +
+          inputRef.current?.offsetParent?.offsetWidth / 2;
 
-          inputRef.current?.offsetParent?.scrollBy({
-            left: middle - targetMiddle,
-          });
-        },
-      };
-    },
-    []
-  );
+        inputRef.current?.offsetParent?.scrollBy({
+          left: middle - targetMiddle,
+        });
+      },
+    };
+  }, []);
 
   const func = e => {
     if (e.keyCode === 37) {
@@ -71,8 +69,9 @@ const TabHeader = forwardRef(function TabHeader(props, ref) {
         role="tab"
         aria-controls={`nav-${id}`}
         aria-selected={selected}
-        onClick={e => selectTab(e, id, title)}
-        onKeyDown={func}
+        data-bs-toggle={isBootstrap && "tab"}
+        onClick={isReact && (e => selectTab(e, id, title))}
+        onKeyDown={isReact && func}
         tabIndex={selected ? "" : "-1"}
       >
         {title} {icon && <i className={`${icon?.[0]} fa-${icon?.[1]} me-1`} />}
@@ -82,7 +81,6 @@ const TabHeader = forwardRef(function TabHeader(props, ref) {
 });
 
 TabHeader.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   gaData: PropTypes.object,
   id: PropTypes.string.isRequired,
   selected: PropTypes.bool.isRequired,

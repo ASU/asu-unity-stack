@@ -1,10 +1,11 @@
+import "./eventSpy.js";
 import "@asu/unity-bootstrap-theme/src/scss/unity-bootstrap-theme.bundle.scss";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import * as bootstrap from "bootstrap/dist/js/bootstrap.bundle.min.js";
+globalThis.bootstrap = bootstrap;
+
+import "@asu/unity-bootstrap-theme/src/js/unity-bootstrap.js";
 import { globalDecorators } from "./decorators.tsx";
 import { Container } from "./docPage.tsx";
-import "@asu/unity-bootstrap-theme/src/js/data-layer.js";
-
-const sourceCodeRootSelector = "#html-root";
 
 const parameters = {
   controls: { expanded: true },
@@ -24,13 +25,6 @@ const parameters = {
         value: "#d0d0d0",
       },
     ],
-  },
-  html: {
-    prettier: {
-      tabWidth: 4,
-      htmlWhitespaceSensitivity: "ignore",
-    },
-    root: sourceCodeRootSelector,
   },
   docs: {
     // Table of contents stopped working, so I disabled it.

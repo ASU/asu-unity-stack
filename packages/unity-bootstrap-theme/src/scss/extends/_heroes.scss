@@ -79,6 +79,7 @@ div[class^="uds-hero"] {
     grid-row: 2;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
+    margin-top: $uds-size-spacing-10;
 
     p {
       margin: 0;
@@ -211,7 +212,7 @@ div[class^="uds-hero"] {
 }
 
 div.uds-hero-sm {
-  height: $uds-size-spacing-32;
+  min-height: $uds-size-spacing-32;
   grid-template-rows: 1fr auto auto 3rem;
 
   h1,
@@ -244,7 +245,7 @@ div.uds-hero-sm {
     }
 
     .hero-overlay {
-      height: $uds-size-spacing-32;
+      min-height: $uds-size-spacing-32;
     }
   }
 
@@ -254,7 +255,7 @@ div.uds-hero-sm {
 }
 
 div.uds-hero-md {
-  height: 21rem;
+  min-height: 21rem;
   // by design, the hero-md has no content on mobile, change grid template rows and hide .content
   grid-template-rows: 1fr auto auto 3rem;
 
@@ -270,7 +271,7 @@ div.uds-hero-md {
     }
 
     .hero-overlay {
-      height: 21rem;
+      min-height: 21rem;
     }
   }
 
@@ -281,7 +282,7 @@ div.uds-hero-md {
 }
 
 div.uds-hero-lg {
-  height: $uds-size-spacing-64;
+  min-height: $uds-size-spacing-64;
 
   .content {
     display: none;
@@ -307,7 +308,7 @@ div.uds-hero-lg {
     }
 
     .hero-overlay {
-      height: $uds-size-spacing-64;
+      min-height: $uds-size-spacing-64;
     }
   }
 
@@ -378,7 +379,7 @@ div.uds-hero-lg {
     grid-template-rows: 1fr auto auto $uds-size-spacing-7;
     &.has-btn-row {
       .btn-row {
-        top: 14.5rem;
+        top: 92%;
       }
     }
 
@@ -390,7 +391,7 @@ div.uds-hero-lg {
   }
 
   div.uds-hero-md {
-    height: $uds-size-spacing-64;
+    min-height: $uds-size-spacing-64;
     // TODO; remove this, it's a fallback for buttons without has-btn-row
     grid-template-rows: 1fr repeat(4, auto) $uds-size-spacing-6;
     h1 {
@@ -419,13 +420,13 @@ div.uds-hero-lg {
       }
 
       .hero-overlay {
-        height: $uds-size-spacing-64;
+        min-height: $uds-size-spacing-64;
       }
     }
   }
 
   div.uds-hero-lg {
-    height: 42.75rem;
+    min-height: 42.75rem;
     // TODO; remove this, it's a fallback for buttons without has-btn-row
     grid-template-rows: 1fr repeat(4, auto) $uds-size-spacing-6;
 
@@ -448,7 +449,7 @@ div.uds-hero-lg {
       }
 
       .hero-overlay {
-        height: 42.75rem;
+        min-height: 42.75rem;
       }
     }
 
@@ -497,7 +498,7 @@ div.uds-hero-lg {
   }
 
   div.uds-hero-lg {
-    height: 42.75rem;
+    min-height: 42.75rem;
 
     &.uds-video-hero {
       position: relative;

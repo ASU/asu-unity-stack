@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
+import { useBaseSpecificFramework } from "../../GaEventWrapper/useBaseSpecificFramework";
 import { NavControlButtons } from "./NavControls.styles";
 
 /**
@@ -12,14 +13,15 @@ import { NavControlButtons } from "./NavControls.styles";
  * @property {() => void} slideNav
  */
 const NavControls = ({ gaData, hidePrev, hideNext, slideNav }) => {
+  const { isReact, isBootstrap } = useBaseSpecificFramework();
   return (
     <NavControlButtons>
-      {!hidePrev && (
+      {(!hidePrev || isBootstrap) && (
         <GaEventWrapper gaData={{ ...gaData, text: "left chevron" }}>
           <button
             className="scroll-control-prev"
             type="button"
-            onClick={() => slideNav(-1)}
+            onClick={isReact && (() => slideNav(-1))}
             tabIndex={-1}
           >
             <span className="carousel-control-prev-icon" aria-hidden="true" />
@@ -27,12 +29,12 @@ const NavControls = ({ gaData, hidePrev, hideNext, slideNav }) => {
           </button>
         </GaEventWrapper>
       )}
-      {!hideNext && (
+      {(!hideNext || isBootstrap) && (
         <GaEventWrapper gaData={{ ...gaData, text: "right chevron" }}>
           <button
             className="scroll-control-next"
             type="button"
-            onClick={() => slideNav(1)}
+            onClick={isReact && (() => slideNav(1))}
             tabIndex={-1}
           >
             <span className="carousel-control-next-icon" aria-hidden="true" />
@@ -45,7 +47,6 @@ const NavControls = ({ gaData, hidePrev, hideNext, slideNav }) => {
 };
 
 NavControls.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   gaData: PropTypes.object,
   hidePrev: PropTypes.bool,
   hideNext: PropTypes.bool,

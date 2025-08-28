@@ -1,10 +1,9 @@
 import React from "react";
-
-import { defaultDecorator } from "../../../../../shared/components/Layout";
+import { defaultDecorator } from "@asu/shared";
 
 export default {
   title: "Atoms/Buttons/Templates",
-  decorators: [ defaultDecorator ],
+  decorators: [defaultDecorator],
   args: {
     color: "btn-gold",
     size: "Large",
@@ -22,9 +21,9 @@ export default {
       name: "Size",
       options: ["Small", "Medium", "Large"],
       mapping: {
-        "Small": "btn-sm",
-        "Medium": "btn-md",
-        "Large": null,
+        Small: "btn-sm",
+        Medium: "btn-md",
+        Large: null,
       },
       control: {
         type: "radio",
@@ -35,71 +34,65 @@ export default {
       control: { type: "boolean" },
     },
   },
-}
+};
 
-export const BasicButton = (
-  args => {
-    return (
-      <button
-        className={`btn ${args.color} ${args.size}`}
-        disabled={args.disabled}
-        type="submit"
-        data-ga="Button button"
-        data-ga-name="onclick"
-        data-ga-event="link"
-        data-ga-action="click"
-        data-ga-type="internal link"
-        data-ga-region="main content"
-      >
-        Button button
-      </button>
-    );
-  }
-);
+export const BasicButton = args => {
+  return (
+    <button
+      className={`btn ${args.color} ${args.size}`}
+      disabled={args.disabled}
+      type="submit"
+      data-ga="Button button"
+      data-ga-name="onclick"
+      data-ga-event="link"
+      data-ga-action="click"
+      data-ga-type="internal link"
+      data-ga-region="main content"
+    >
+      Button button
+    </button>
+  );
+};
 
-export const ButtonAsLink = (
-  args => {
-    return (
-      <a
-        href="#"
-        className={`btn ${args.color} ${args.size} ${
-          args.disabled ? "disabled" : ""
-        }`}
-        role="button"
-        data-ga="Button button"
-        data-ga-name="onclick"
-        data-ga-event="link"
-        data-ga-action="click"
-        data-ga-type="internal link"
-        data-ga-region="main content"
-      >
-        Button button
-      </a>
-    );
-  }
-);
+export const ButtonAsLink = args => {
+  return (
+    <a
+      href="#"
+      className={`btn ${args.color} ${args.size} ${
+        args.disabled ? "disabled" : ""
+      }`}
+      role="button"
+      data-ga="Button button"
+      data-ga-name="onclick"
+      data-ga-event="link"
+      data-ga-action="click"
+      data-ga-type="internal link"
+      data-ga-region="main content"
+    >
+      Button button
+    </a>
+  );
+};
 
-export const ButtonWithIcon = (
-  args => {
-    return (
-      <a
-        href="#"
-        className={`btn ${args.color} ${args.size} ${
-          args.disabled ? "disabled" : ""
-        }`}
-        role="button"
-        data-ga="Gold button"
-        data-ga-name="onclick"
-        data-ga-event="link"
-        data-ga-action="click"
-        data-ga-type="internal link"
-        data-ga-region="main content"
-      >
-        <span className="fas fa-rocket"></span>&nbsp;&nbsp;Gold button
-      </a>
-    );
-  }
-);
+export const ButtonWithIcon = args => {
+  return (
+    <a
+      href="#"
+      className={`btn ${args.color} ${args.size} ${
+        args.disabled ? "disabled" : ""
+      }`}
+      role="button"
+      data-ga="Gold button"
+      data-ga-name="onclick"
+      data-ga-event="link"
+      data-ga-action="click"
+      data-ga-type="internal link"
+      data-ga-region="main content"
+    >
+      <span className="fas fa-rocket"></span>&nbsp;&nbsp;Gold button
+    </a>
+  );
+};
 
 export const ButtonTag = () => (
   <a
@@ -115,9 +108,9 @@ export const ButtonTag = () => (
     This is a default link
   </a>
 );
-ButtonTag.argTypes ={
-  color: { table: { disable: true}},
-  size: { table: { disable: true}},
-  disabled: { table: { disable: true}},
-}
+ButtonTag.argTypes = {
+  color: { table: { disable: true } },
+  size: { table: { disable: true } },
+  disabled: { table: { disable: true } },
+};
 ButtonTag.parameters = { controls: { disable: true } };

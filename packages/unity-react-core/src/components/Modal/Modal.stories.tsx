@@ -4,10 +4,9 @@ import { Modal } from "./Modal";
 export default {
   title: "Components/Modal",
   component: Modal,
-  globals: {
-    framework: "react",
+  args: {
+    open: false,
   },
-  tags: ["!bootstrap"],
 };
 
 const modalTemplate = args => <Modal {...args} />;

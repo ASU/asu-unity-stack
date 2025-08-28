@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 /* eslint react/jsx-props-no-spreading: "off" */
 // @ts-check
 import React from "react";

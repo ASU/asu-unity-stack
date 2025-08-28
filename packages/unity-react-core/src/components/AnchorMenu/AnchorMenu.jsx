@@ -7,18 +7,19 @@
  *
  *
  */
-import classNames from "classnames";
-import PropTypes from "prop-types";
-import React, { useState, useEffect, useRef } from "react";
-
 import {
   debounce,
   queryFirstFocusable,
   throttle,
   useMediaQuery,
-} from "../../../../../shared";
+} from "@asu/shared";
+import classNames from "classnames";
+import PropTypes from "prop-types";
+import React, { useState, useEffect, useRef } from "react";
+
 import { Button } from "../Button/Button";
 import { GaEventWrapper } from "../GaEventWrapper/GaEventWrapper";
+import { useBaseSpecificFramework } from "../GaEventWrapper/useBaseSpecificFramework";
 import { AnchorMenuWrapper } from "./AnchorMenu.styles";
 
 const menuTitle = "On This Page";
@@ -43,6 +44,8 @@ export const AnchorMenu = ({
   firstElementId,
   focusFirstFocusableElement = false,
 }) => {
+  const { isReact, isBootstrap } = useBaseSpecificFramework();
+
   const anchorMenuRef = useRef(null);
   const isSmallDevice = useMediaQuery("(max-width: 991px)");
   const [state, setState] = useState({
@@ -190,6 +193,7 @@ export const AnchorMenu = ({
         // @ts-ignore
         requiresAltMenuSpacing={state.hasAltMenuSpacing}
         ref={anchorMenuRef}
+        id="uds-anchor-menu"
         className={classNames(
           "uds-anchor-menu",
           "uds-anchor-menu-expanded-lg",
@@ -252,7 +256,10 @@ export const AnchorMenu = ({
                   ariaLabel={item.text}
                   label={item.text}
                   icon={item.icon}
-                  onClick={() => handleClickLink(item.targetIdName)}
+                  onClick={
+                    isReact && (() => handleClickLink(item.targetIdName))
+                  }
+                  href={isBootstrap && `#${item.targetIdName}`}
                 />
               ))}
             </nav>

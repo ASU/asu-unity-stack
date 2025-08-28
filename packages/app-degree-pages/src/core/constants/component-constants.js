@@ -22,7 +22,7 @@ const glanceItemsMap = {
   },
   mathIntensity: { icon: "calculator", title: "Math intensity" },
   timeCommitment: { icon: "calendar-alt", title: "Time commitment" },
-  stemOptText: {icon: "star", title: "STEM-OPT extension eligible"}
+  stemOptText: { icon: "star", title: "STEM-OPT extension eligible" },
 };
 
 const GRID_VIEW_ID = "grid-view";

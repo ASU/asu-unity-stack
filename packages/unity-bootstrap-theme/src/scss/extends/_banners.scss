@@ -29,14 +29,21 @@
     flex: 3;
     a,
     button {
-      margin-top: $uds-size-spacing-1;
-      margin-bottom: $uds-size-spacing-1;
+      margin-top: calc($uds-size-spacing-1 / 2);
+      margin-bottom: calc($uds-size-spacing-1 / 2);
       margin-left: 0;
     }
     // Do buttons in their own flexbox, column-style, no stretching.
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
+    a.btn.btn-sm.btn-dark{
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
   .banner-close {
     flex: 2;
