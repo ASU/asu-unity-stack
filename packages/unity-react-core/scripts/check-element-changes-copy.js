@@ -64,7 +64,9 @@ const runCheckout = runGit(gitCheckout);
 const targetDir = "scripts/temp/packages/unity-react-core/scripts";
 const dir = "scripts/temp/packages/unity-react-core"
 const srcDir = "packages/unity-react-core/scripts/check-changes.tsx"
+const htmlDir = "shared/utils/html-utils.js"
 fs.copyFileSync(srcDir, targetDir+"/check-changes.tsx")
+fs.copyFileSync(htmlDir, "scripts/temp/"+htmlDir)
 /**
  *
  * 1. OJAS TODO: We dont actually need to change directory, we can pass in the directory to the spawnSync command as the argument cwd: <directory>
@@ -114,6 +116,7 @@ for(const[key, value] of Object.entries(currFilewithHtml)){
     const htmlStr = currFilewithHtml[key].html
     const oldHtmlStr = oldDateComponentObjectWithHtml[key].html
     const differences = diffChars(oldHtmlStr, htmlStr);
+    console.log("x")
     console.log(differences);
   } catch(error){
     console.log(error, key);
@@ -126,7 +129,7 @@ for(const[key, value] of Object.entries(currFilewithHtml)){
 
 
 
-//execSync(`git worktree remove --force /Users/etloaner/Desktop/ASU/asu-unity-stack/scripts/temp`);
+execSync(`git worktree remove --force scripts/temp`);
 
 //convertToHTML(OLD_DATE_HTML);
 
