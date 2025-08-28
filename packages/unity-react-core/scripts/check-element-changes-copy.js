@@ -64,7 +64,7 @@ const runCheckout = runGit(gitCheckout);
 const targetDir = "scripts/temp/packages/unity-react-core/scripts";
 const dir = "scripts/temp/packages/unity-react-core"
 const srcDir = "packages/unity-react-core/scripts/check-changes.tsx"
-const htmlDir = "shared/utils/html-utils.js"
+const htmlDir = "packages/shared/utils/html-utils.js"
 fs.copyFileSync(srcDir, targetDir+"/check-changes.tsx")
 fs.copyFileSync(htmlDir, "scripts/temp/"+htmlDir)
 /**
