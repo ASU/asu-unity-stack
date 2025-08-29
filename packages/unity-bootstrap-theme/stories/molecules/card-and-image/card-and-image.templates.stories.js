@@ -18,6 +18,8 @@ export const LeftFloatedCard = ({ left }) => {
   return (
     <div
       className={`uds-card-and-image ${left ? "" : "uds-card-and-image-right"}`}
+      role="image"
+      aria-hidden="true"
       style={{
         backgroundImage: `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('${imageName.hero02}')`,
       }}
@@ -70,6 +72,8 @@ export const RightFloatedCard = ({ left }) => {
   return (
     <div
       className={`uds-card-and-image ${left ? "" : "uds-card-and-image-right"}`}
+      role="image"
+      aria-hidden="true"
       style={{
         backgroundImage: `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('${imageName.hero02}')`,
       }}

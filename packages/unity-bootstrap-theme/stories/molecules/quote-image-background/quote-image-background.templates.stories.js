@@ -11,6 +11,8 @@ export default {
 export const Default = () => (
   <div
     className="uds-quote-image-background"
+    role="image"
+    aria-hidden="true"
     style={{
       backgroundImage: `linear-gradient(180deg, #19191900 0%, #191919c9 100%), url('${imageName.hero02}')`,
     }}
