@@ -7,6 +7,7 @@ import React from "react";
 
 /**
  * @typedef {import('../../core/types/image-types').ImageComponentProps} ImageComponentProps
+ * @typedef {import('../../core/types/image-types').ImageItemProps} ImageItemProps
  */
 
 /**
@@ -14,11 +15,11 @@ import React from "react";
  */
 
 /**
- * @param {ImageComponentProps} props
+ * Base Image component for rendering individual images
+ * @param {ImageItemProps} props
  * @returns {JSX.Element}
  */
-
-export const Image = ({
+const BaseImage = ({
   src,
   alt,
   cssClasses,
@@ -89,15 +90,80 @@ export const Image = ({
   );
 };
 
+/**
+ * @param {ImageComponentProps} props
+ * @returns {JSX.Element}
+ */
+
+export const Image = ({
+  src,
+  alt,
+  cssClasses,
+  loading = "lazy",
+  decoding = "async",
+  dataTestId,
+  fetchPriority = "auto",
+  width,
+  height,
+  cardLink,
+  title,
+  caption,
+  captionTitle,
+  border,
+  dropShadow,
+  images,
+  columns,
+}) => {
+  // If images array is provided, render multiple images
+  if (images && Array.isArray(images) && images.length > 0) {
+    const containerClasses = classNames("uds-card-arrangement-card-container", {
+      "auto-arrangement": !columns || columns === "0",
+      "three-columns": columns === "3",
+      "four-columns": columns === "4",
+    });
+
+    return (
+      <div className="uds-card-arrangement">
+        <div className={containerClasses}>
+          {images.map((imageItem, index) => (
+            <BaseImage key={index} {...imageItem} />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // Otherwise render single image (backward compatibility)
+  return (
+    <BaseImage
+      src={src}
+      alt={alt}
+      cssClasses={cssClasses}
+      loading={loading}
+      decoding={decoding}
+      dataTestId={dataTestId}
+      fetchPriority={fetchPriority}
+      width={width}
+      height={height}
+      cardLink={cardLink}
+      title={title}
+      caption={caption}
+      captionTitle={captionTitle}
+      border={border}
+      dropShadow={dropShadow}
+    />
+  );
+};
+
 Image.propTypes = {
   /**
    * Image source (We keep the same name as in the whole project)
    */
-  src: PropTypes.string.isRequired,
+  src: PropTypes.string,
   /**
    * Image alt text
    */
-  alt: PropTypes.string.isRequired,
+  alt: PropTypes.string,
   /**
    * Array classes for the image
    */
@@ -129,4 +195,28 @@ Image.propTypes = {
   captionTitle: PropTypes.string,
   border: PropTypes.bool,
   dropShadow: PropTypes.bool,
+  /**
+   * Array of image objects for multiple images display
+   */
+  images: PropTypes.arrayOf(PropTypes.shape({
+    src: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
+    cssClasses: PropTypes.arrayOf(PropTypes.string),
+    loading: PropTypes.oneOf(["lazy", "eager"]),
+    decoding: PropTypes.oneOf(["sync", "async", "auto"]),
+    fetchPriority: PropTypes.oneOf(["auto", "high", "low"]),
+    width: PropTypes.string,
+    height: PropTypes.string,
+    dataTestId: PropTypes.string,
+    cardLink: PropTypes.string,
+    title: PropTypes.string,
+    caption: PropTypes.string,
+    captionTitle: PropTypes.string,
+    border: PropTypes.bool,
+    dropShadow: PropTypes.bool,
+  })),
+  /**
+   * Number of columns for multiple images display (0 for auto, 3 for three columns, 4 for four columns)
+   */
+  columns: PropTypes.oneOf(["0", "3", "4"]),
 };

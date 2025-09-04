@@ -73,3 +73,60 @@ describe("RankingCard small layout", () => {
     expect(infoLayer).toHaveClass("show");
   });
 });
+
+describe("Multiple RankingCards", () => {
+  const multipleRankingCardsArgs = {
+    columns: "2",
+    cards: [
+      {
+        imageSize: "large",
+        image: img,
+        imageAlt: "First ranking image",
+        heading: "Most Innovative University",
+        body: "ASU has topped U.S. News & World Report's Most Innovative Schools list since 2016.",
+        readMoreLink: "https://www.asu.edu/",
+      },
+      {
+        imageSize: "small",
+        image: img,
+        imageAlt: "Second ranking image",
+        heading: "Top Online Programs",
+        body: "ASU Online is ranked #1 for innovation.",
+        readMoreLink: "https://www.asu.edu/",
+        citation: "U.S. News & World Report 2023",
+      },
+    ],
+  };
+
+  let component;
+
+  beforeEach(() => {
+    component = renderRankingCard(multipleRankingCardsArgs);
+  });
+
+  afterEach(cleanup);
+
+  it("should render multiple ranking cards container", () => {
+    const parentContainer = component.container.querySelector(".uds-card-arrangement");
+    const cardContainer = component.container.querySelector(".uds-card-arrangement-card-container");
+    expect(parentContainer).toBeInTheDocument();
+    expect(cardContainer).toBeInTheDocument();
+  });
+
+  it("should render correct number of ranking cards", () => {
+    const cards = component.container.querySelectorAll(".card-ranking");
+    expect(cards).toHaveLength(2);
+  });
+
+  it("should apply auto-arrangement class", () => {
+    const container = component.container.querySelector(".auto-arrangement");
+    expect(container).toBeInTheDocument();
+  });
+
+  it("should apply four-columns class when columns is 4", () => {
+    const fourColumnArgs = { ...multipleRankingCardsArgs, columns: "4" };
+    component = renderRankingCard(fourColumnArgs);
+    const container = component.container.querySelector(".four-columns");
+    expect(container).toBeInTheDocument();
+  });
+});

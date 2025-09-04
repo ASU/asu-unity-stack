@@ -46,7 +46,53 @@ export const Card = ({
   tags,
   showBorders = true,
   cardLink,
+  cards = [],
+  columns = "0",
 }) => {
+  // If multiple cards are provided, render them in a card container
+  if (cards.length > 1) {
+    const getColumnClass = () => {
+      switch (columns) {
+        case "2":
+          return "";
+        case "3":
+          return "three-columns";
+        case "4":
+          return "four-columns";
+        default:
+          return "";
+      }
+    };
+
+    return (
+        <div className={classNames("uds-card-arrangement-card-container", "auto-arrangement", getColumnClass())}>
+          {cards.map((card, index) => (
+            <BaseCard
+              key={index}
+              type={card.type || type}
+              width={card.width || width}
+              horizontal={card.horizontal !== undefined ? card.horizontal : horizontal}
+              image={card.image}
+              imageAltText={card.imageAltText}
+              title={card.title}
+              icon={card.icon}
+              body={card.body}
+              eventFormat={card.eventFormat || eventFormat}
+              eventLocation={card.eventLocation}
+              eventTime={card.eventTime}
+              buttons={card.buttons}
+              linkLabel={card.linkLabel}
+              linkUrl={card.linkUrl}
+              tags={card.tags}
+              showBorders={card.showBorders !== undefined ? card.showBorders : showBorders}
+              cardLink={card.cardLink}
+            />
+          ))}
+        </div>
+    );
+  }
+
+  // Single card - render as before
   return (
     <BaseCard
       type={type}
@@ -86,7 +132,7 @@ Card.propTypes = {
   /**
    * Card title
    */
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   /**
     React Font Awesome icon prefix and name string to be rendered in button label. Ex: ['fab', 'drupal']
   */
@@ -152,6 +198,53 @@ Card.propTypes = {
    * Card link
    */
   cardLink: PropTypes.string,
+  /**
+   * Array of card objects for rendering multiple cards
+   */
+  cards: PropTypes.arrayOf(
+    PropTypes.shape({
+      type: PropTypes.oneOf(["default", "degree", "event", "news", "story"]),
+      width: PropTypes.oneOf(["25%", "50%", "75%", "100%"]),
+      horizontal: PropTypes.bool,
+      title: PropTypes.string.isRequired,
+      icon: PropTypes.arrayOf(PropTypes.string),
+      body: PropTypes.string,
+      eventFormat: PropTypes.oneOf(["stack", "inline"]),
+      eventLocation: PropTypes.string,
+      eventTime: PropTypes.string,
+      image: PropTypes.string,
+      imageAltText: PropTypes.string,
+      buttons: PropTypes.arrayOf(
+        PropTypes.shape({
+          ariaLabel: PropTypes.string,
+          color: PropTypes.oneOf(["gold", "maroon", "gray", "dark"]),
+          icon: PropTypes.arrayOf(PropTypes.string),
+          href: PropTypes.string,
+          label: PropTypes.string,
+          onClick: PropTypes.func,
+          size: PropTypes.oneOf(["default", "small", "xsmall"]),
+          target: PropTypes.oneOf(["_blank", "_self", "_top", "_parent"]),
+        })
+      ),
+      linkLabel: PropTypes.string,
+      linkUrl: PropTypes.string,
+      tags: PropTypes.arrayOf(
+        PropTypes.shape({
+          ariaLabel: PropTypes.string,
+          color: PropTypes.oneOf(["white", "gray", "dark"]),
+          href: PropTypes.string,
+          label: PropTypes.string,
+          onClick: PropTypes.func,
+        })
+      ),
+      showBorders: PropTypes.bool,
+      cardLink: PropTypes.string,
+    })
+  ),
+  /**
+   * Number of columns for multiple cards layout (0, 2, 3, or 4)
+   */
+  columns: PropTypes.oneOf(["0", "2", "3", "4"]),
 };
 
 /*

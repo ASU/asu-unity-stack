@@ -7,6 +7,10 @@ import { GaEventWrapper } from "../GaEventWrapper/GaEventWrapper";
 import { useBaseSpecificFramework } from "../GaEventWrapper/useBaseSpecificFramework";
 import { Image } from "../Image/Image";
 
+/**
+ * @typedef {import('../../core/types/ranking-card-types').RankingCardProps} RankingCardProps
+ */
+
 const gaDefaultObject = {
   name: "onclick",
   event: "link",
@@ -119,7 +123,7 @@ InfoLayerWrapper.propTypes = {
   readMoreLink: PropTypes.string,
 };
 
-export const RankingCard = ({
+const BaseRankingCard = ({
   imageSize = "large",
   image,
   imageAlt,
@@ -161,27 +165,100 @@ export const RankingCard = ({
   );
 };
 
+BaseRankingCard.propTypes = {
+  imageSize: PropTypes.oneOf(["small", "large"]),
+  image: PropTypes.string.isRequired,
+  imageAlt: PropTypes.string.isRequired,
+  heading: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  readMoreLink: PropTypes.string,
+  citation: PropTypes.string,
+};
+
+/**
+ * @param {RankingCardProps} props
+ * @returns {JSX.Element}
+ */
+export const RankingCard = ({
+  imageSize = "large",
+  image,
+  imageAlt,
+  heading,
+  body,
+  readMoreLink = "",
+  citation,
+  cards = [],
+  columns = "0",
+}) => {
+  // If multiple cards are provided, render them in a card container
+  if (cards.length > 1) {
+    const getColumnClass = () => {
+      switch (columns) {
+        case "2":
+          return "";
+        case "3":
+          return "three-columns";
+        case "4":
+          return "four-columns";
+        default:
+          return "";
+      }
+    };
+
+    return (
+      <div className="uds-card-arrangement">
+        <div className={classNames("uds-card-arrangement-card-container", "auto-arrangement", getColumnClass())}>
+          {cards.map((card, index) => (
+            <BaseRankingCard
+              key={index}
+              imageSize={card.imageSize || imageSize}
+              image={card.image}
+              imageAlt={card.imageAlt}
+              heading={card.heading}
+              body={card.body}
+              readMoreLink={card.readMoreLink || readMoreLink}
+              citation={card.citation}
+            />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <BaseRankingCard
+      imageSize={imageSize}
+      image={image}
+      imageAlt={imageAlt}
+      heading={heading}
+      body={body}
+      readMoreLink={readMoreLink}
+      citation={citation}
+    />
+  );
+};
+
 RankingCard.propTypes = {
   /**
    * Size of ranking card
    */
-  imageSize: PropTypes.oneOf(["small", "large"]).isRequired,
+  imageSize: PropTypes.oneOf(["small", "large"]),
   /**
    * Ranking card image
    */
-  image: PropTypes.string.isRequired,
+  image: PropTypes.string,
   /**
    * Card header image alt text
    */
-  imageAlt: PropTypes.string.isRequired,
+  imageAlt: PropTypes.string,
   /**
    * Ranking card heading
    */
-  heading: PropTypes.string.isRequired,
+  heading: PropTypes.string,
   /**
    * Ranking card body content
    */
-  body: PropTypes.string.isRequired,
+  body: PropTypes.string,
   /**
    * Link for read more
    */
@@ -190,4 +267,22 @@ RankingCard.propTypes = {
    * Ranking card citation content (Required for small size only)
    */
   citation: PropTypes.string,
+  /**
+   * Array of ranking card objects for rendering multiple cards
+   */
+  cards: PropTypes.arrayOf(
+    PropTypes.shape({
+      imageSize: PropTypes.oneOf(["small", "large"]),
+      image: PropTypes.string.isRequired,
+      imageAlt: PropTypes.string.isRequired,
+      heading: PropTypes.string.isRequired,
+      body: PropTypes.string.isRequired,
+      readMoreLink: PropTypes.string,
+      citation: PropTypes.string,
+    })
+  ),
+  /**
+   * Number of columns for multiple cards layout (0, 2, 3, or 4)
+   */
+  columns: PropTypes.oneOf(["0", "2", "3", "4"]),
 };

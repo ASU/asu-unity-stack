@@ -328,3 +328,132 @@ AsuNewsStory.parameters = {
     },
   },
 };
+
+const MultipleCardsTemplate = args => (
+  <div className="container">
+    <div className={classNames("row", "row-spaced", "pt-2", "pb-2")}>
+      <div className={classNames("col", "col-12")}>
+        <Card {...args} />
+      </div>
+    </div>
+  </div>
+);
+
+export const MultipleCardsTwoColumns = MultipleCardsTemplate.bind({});
+MultipleCardsTwoColumns.args = {
+  columns: "2",
+  cards: [
+    {
+      title: "First Card",
+      body: "This is the first card in a two-column layout.",
+      image: img1,
+      imageAltText: "First card image",
+      type: "default",
+    },
+    {
+      title: "Second Card",
+      body: "This is the second card in a two-column layout.",
+      image: img1,
+      imageAltText: "Second card image",
+      type: "default",
+    },
+    {
+      title: "Third Card",
+      body: "This is the third card in a two-column layout.",
+      image: img1,
+      imageAltText: "Third card image",
+      type: "default",
+    },
+    {
+      title: "Fourth Card",
+      body: "This is the fourth card in a two-column layout.",
+      image: img1,
+      imageAltText: "Fourth card image",
+      type: "default",
+    },
+  ],
+};
+
+export const MultipleCardsFourColumns = MultipleCardsTemplate.bind({});
+MultipleCardsFourColumns.args = {
+  columns: "4",
+  cards: [
+    {
+      title: "First Card",
+      body: "This is the first card in a four-column layout.",
+      image: img1,
+      imageAltText: "First card image",
+      type: "default",
+    },
+    {
+      title: "Second Card",
+      body: "This is the second card in a four-column layout.",
+      image: img1,
+      imageAltText: "Second card image",
+      type: "default",
+    },
+    {
+      title: "Third Card",
+      body: "This is the third card in a four-column layout.",
+      image: img1,
+      imageAltText: "Third card image",
+      type: "default",
+    },
+    {
+      title: "Fourth Card",
+      body: "This is the fourth card in a four-column layout.",
+      image: img1,
+      imageAltText: "Fourth card image",
+      type: "default",
+    },
+  ],
+};
+
+export const MultipleCardsThreeColumns = MultipleCardsTemplate.bind({});
+MultipleCardsThreeColumns.args = {
+  columns: "3",
+  cards: [
+    {
+      title: "First Card",
+      body: "This is the first card in a three-column layout.",
+      image: img1,
+      imageAltText: "First card image",
+      type: "default",
+    },
+    {
+      title: "Second Card",
+      body: "This is the second card in a three-column layout.",
+      image: img1,
+      imageAltText: "Second card image",
+      type: "default",
+    },
+    {
+      title: "Third Card",
+      body: "This is the third card in a three-column layout.",
+      image: img1,
+      imageAltText: "Third card image",
+      type: "default",
+    },
+    {
+      title: "Fourth Card",
+      body: "This is the fourth card in a three-column layout.",
+      image: img1,
+      imageAltText: "Fourth card image",
+      type: "default",
+    },
+    {
+      title: "Fifth Card",
+      body: "This is the fifth card in a three-column layout.",
+      image: img1,
+      imageAltText: "Fifth card image",
+      type: "default",
+    },
+    {
+      title: "Sixth Card",
+      body: "This is the sixth card in a three-column layout.",
+      image: img1,
+      imageAltText: "Sixth card image",
+      type: "default",
+    },
+  ],
+};

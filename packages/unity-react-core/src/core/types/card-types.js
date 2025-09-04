@@ -11,6 +11,29 @@
  * @property {boolean} [horizontal]
  * @property {string} [image]
  * @property {string} [imageAltText]
+ * @property {string} [title]
+ * @property {string[]} [icon]
+ * @property {string} [body]
+ * @property {string} [eventLocation]
+ * @property {string} [eventTime]
+ * @property {string} [linkLabel]
+ * @property {string} [linkUrl]
+ * @property {ButtonProps[]} [buttons]
+ * @property {"stack"|"inline"} [eventFormat]
+ * @property {"25%"|"50%"|"75%"|"100%"} [width]
+ * @property {TagsProps[]} [tags]
+ * @property {boolean} [showBorders]
+ * @property {string} [cardLink]
+ * @property {CardItemProps[]} [cards]
+ * @property {"0"|"2"|"3"|"4"} [columns]
+ */
+
+/**
+ * @typedef {Object} CardItemProps
+ * @property {string} [type]
+ * @property {boolean} [horizontal]
+ * @property {string} [image]
+ * @property {string} [imageAltText]
  * @property {string} title
  * @property {string[]} [icon]
  * @property {string} [body]

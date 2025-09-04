@@ -100,4 +100,52 @@ describe("#Card options", () => {
       className
     );
   });
+
+  describe("Multiple Cards", () => {
+    const multipleCardsArgs = {
+      columns: "2",
+      cards: [
+        {
+          title: "First Card",
+          body: "First card body text",
+          image: "https://picsum.photos/300/200",
+          imageAltText: "First card image",
+        },
+        {
+          title: "Second Card",
+          body: "Second card body text",
+          image: "https://picsum.photos/300/200",
+          imageAltText: "Second card image",
+        },
+      ],
+    };
+
+    beforeEach(() => {
+      component = renderCard(multipleCardsArgs);
+    });
+
+    it("should render multiple cards container", () => {
+      const parentContainer = component.container.querySelector(".uds-card-arrangement");
+      const cardContainer = component.container.querySelector(".uds-card-arrangement-card-container");
+      expect(parentContainer).toBeInTheDocument();
+      expect(cardContainer).toBeInTheDocument();
+    });
+
+    it("should render correct number of cards", () => {
+      const cards = component.container.querySelectorAll(".card");
+      expect(cards).toHaveLength(2);
+    });
+
+    it("should apply auto-arrangement class", () => {
+      const container = component.container.querySelector(".auto-arrangement");
+      expect(container).toBeInTheDocument();
+    });
+
+    it("should apply four-columns class when columns is 4", () => {
+      const fourColumnArgs = { ...multipleCardsArgs, columns: "4" };
+      component = renderCard(fourColumnArgs);
+      const container = component.container.querySelector(".four-columns");
+      expect(container).toBeInTheDocument();
+    });
+  });
 });

@@ -80,3 +80,81 @@ GridImages.args = {
   width: "100%",
   src: img4,
 };
+
+const MultipleImagesTemplate = args => <Image {...args} />;
+
+export const TwoImagesAutoArrangement = MultipleImagesTemplate.bind({});
+TwoImagesAutoArrangement.args = {
+  images: [
+    {
+      src: img1,
+      alt: "First image",
+      border: true,
+      caption: "Caption for first image",
+      captionTitle: "First Image Title",
+    },
+    {
+      src: img2,
+      alt: "Second image", 
+      border: true,
+      caption: "Caption for second image",
+      captionTitle: "Second Image Title",
+      dropShadow: true,
+    },
+  ],
+  columns: "0",
+};
+
+export const ThreeImagesArrangement = MultipleImagesTemplate.bind({});
+ThreeImagesArrangement.args = {
+  images: [
+    {
+      src: img1,
+      alt: "First image",
+      border: true,
+      caption: "Caption for first image",
+    },
+    {
+      src: img2,
+      alt: "Second image",
+      border: true,
+      caption: "Caption for second image",
+      dropShadow: true,
+    },
+    {
+      src: img3,
+      alt: "Third image",
+      border: true,
+      caption: "Caption for third image",
+    },
+  ],
+  columns: "3",
+};
+
+export const FourImagesArrangement = MultipleImagesTemplate.bind({});
+FourImagesArrangement.args = {
+  images: [
+    {
+      src: img1,
+      alt: "First image",
+      border: true,
+    },
+    {
+      src: img2,
+      alt: "Second image",
+      border: true,
+      dropShadow: true,
+    },
+    {
+      src: img3,
+      alt: "Third image",
+      border: true,
+    },
+    {
+      src: img4,
+      alt: "Fourth image",
+      border: true,
+    },
+  ],
+  columns: "4",
+};
