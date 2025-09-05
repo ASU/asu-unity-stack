@@ -107,8 +107,12 @@ describe("Multiple RankingCards", () => {
   afterEach(cleanup);
 
   it("should render multiple ranking cards container", () => {
-    const parentContainer = component.container.querySelector(".uds-card-arrangement");
-    const cardContainer = component.container.querySelector(".uds-card-arrangement-card-container");
+    const parentContainer = component.container.querySelector(
+      ".uds-card-arrangement"
+    );
+    const cardContainer = component.container.querySelector(
+      ".uds-card-arrangement-card-container"
+    );
     expect(parentContainer).toBeInTheDocument();
     expect(cardContainer).toBeInTheDocument();
   });

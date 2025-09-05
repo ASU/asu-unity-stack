@@ -1,7 +1,7 @@
 // @ts-check
 import { render, cleanup } from "@testing-library/react";
 import React from "react";
-import { expect, describe, it, afterEach, beforeEach, test } from "vitest";
+import { expect, describe, it, afterEach, beforeEach, test, vi } from "vitest";
 
 import { Card } from "./Card";
 
@@ -125,10 +125,16 @@ describe("#Card options", () => {
     });
 
     it("should render multiple cards container", () => {
-      const parentContainer = component.container.querySelector(".uds-card-arrangement");
-      const cardContainer = component.container.querySelector(".uds-card-arrangement-card-container");
-      expect(parentContainer).toBeInTheDocument();
-      expect(cardContainer).toBeInTheDocument();
+      const parentContainer = component.container.querySelector(
+        ".uds-card-arrangement"
+      );
+      const cardContainer = component.container.querySelector(
+        ".uds-card-arrangement-card-container"
+      );
+      vi.waitFor(() => {
+        expect(parentContainer).toBeInTheDocument();
+        expect(cardContainer).toBeInTheDocument();
+      });
     });
 
     it("should render correct number of cards", () => {

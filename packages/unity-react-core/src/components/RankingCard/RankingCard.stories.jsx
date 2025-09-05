@@ -28,7 +28,7 @@ Large.args = {
   image: img,
   imageAlt: "Image alt text",
   heading: "Ranking title goes here, under the photo",
-  body: "ASU has topped U.S. News & World Report's \"Most Innovative Schools\" list since the inception of the category in 2016. ASU again placed ahead of Stanford and MIT on the list, based on a survey of peers. College presidents, provosts and admissions deans around the country nominated up to 10 colleges or universities that are making the most innovative improvements.",
+  body: 'ASU has topped U.S. News & World Report\'s "Most Innovative Schools" list since the inception of the category in 2016. ASU again placed ahead of Stanford and MIT on the list, based on a survey of peers. College presidents, provosts and admissions deans around the country nominated up to 10 colleges or universities that are making the most innovative improvements.',
   readMoreLink: "https://www.asu.edu/",
 };
 
@@ -38,7 +38,7 @@ Small.args = {
   image: img,
   imageAlt: "Image alt text",
   heading: "Ranking title goes here, under the photo",
-  body: "ASU has topped U.S. News & World Report's \"Most Innovative Schools\" list since the inception of the category in 2016. ASU again placed ahead of Stanford and MIT on the list, based on a survey of peers. College presidents, provosts and admissions deans around the country nominated up to 10 colleges or universities that are making the most innovative improvements.",
+  body: 'ASU has topped U.S. News & World Report\'s "Most Innovative Schools" list since the inception of the category in 2016. ASU again placed ahead of Stanford and MIT on the list, based on a survey of peers. College presidents, provosts and admissions deans around the country nominated up to 10 colleges or universities that are making the most innovative improvements.',
   readMoreLink: "https://www.asu.edu/",
   citation:
     "Citation of the ranking should go under the headline, regular body style text",
@@ -54,7 +54,9 @@ const MultipleRankingCardsTemplate = args => (
   </div>
 );
 
-export const MultipleRankingCardsTwoColumns = MultipleRankingCardsTemplate.bind({});
+export const MultipleRankingCardsTwoColumns = MultipleRankingCardsTemplate.bind(
+  {}
+);
 MultipleRankingCardsTwoColumns.args = {
   columns: "2",
   cards: [
@@ -95,7 +97,8 @@ MultipleRankingCardsTwoColumns.args = {
   ],
 };
 
-export const MultipleRankingCardsFourColumns = MultipleRankingCardsTemplate.bind({});
+export const MultipleRankingCardsFourColumns =
+  MultipleRankingCardsTemplate.bind({});
 MultipleRankingCardsFourColumns.args = {
   columns: "4",
   cards: [
@@ -198,7 +201,8 @@ MultipleRankingCardsFourColumns.args = {
   ],
 };
 
-export const MultipleRankingCardsThreeColumns = MultipleRankingCardsTemplate.bind({});
+export const MultipleRankingCardsThreeColumns =
+  MultipleRankingCardsTemplate.bind({});
 MultipleRankingCardsThreeColumns.args = {
   columns: "3",
   cards: [

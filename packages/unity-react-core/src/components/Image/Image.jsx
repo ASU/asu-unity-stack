@@ -198,23 +198,25 @@ Image.propTypes = {
   /**
    * Array of image objects for multiple images display
    */
-  images: PropTypes.arrayOf(PropTypes.shape({
-    src: PropTypes.string.isRequired,
-    alt: PropTypes.string.isRequired,
-    cssClasses: PropTypes.arrayOf(PropTypes.string),
-    loading: PropTypes.oneOf(["lazy", "eager"]),
-    decoding: PropTypes.oneOf(["sync", "async", "auto"]),
-    fetchPriority: PropTypes.oneOf(["auto", "high", "low"]),
-    width: PropTypes.string,
-    height: PropTypes.string,
-    dataTestId: PropTypes.string,
-    cardLink: PropTypes.string,
-    title: PropTypes.string,
-    caption: PropTypes.string,
-    captionTitle: PropTypes.string,
-    border: PropTypes.bool,
-    dropShadow: PropTypes.bool,
-  })),
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      src: PropTypes.string.isRequired,
+      alt: PropTypes.string.isRequired,
+      cssClasses: PropTypes.arrayOf(PropTypes.string),
+      loading: PropTypes.oneOf(["lazy", "eager"]),
+      decoding: PropTypes.oneOf(["sync", "async", "auto"]),
+      fetchPriority: PropTypes.oneOf(["auto", "high", "low"]),
+      width: PropTypes.string,
+      height: PropTypes.string,
+      dataTestId: PropTypes.string,
+      cardLink: PropTypes.string,
+      title: PropTypes.string,
+      caption: PropTypes.string,
+      captionTitle: PropTypes.string,
+      border: PropTypes.bool,
+      dropShadow: PropTypes.bool,
+    })
+  ),
   /**
    * Number of columns for multiple images display (0 for auto, 3 for three columns, 4 for four columns)
    */

@@ -207,7 +207,13 @@ export const RankingCard = ({
 
     return (
       <div className="uds-card-arrangement">
-        <div className={classNames("uds-card-arrangement-card-container", "auto-arrangement", getColumnClass())}>
+        <div
+          className={classNames(
+            "uds-card-arrangement-card-container",
+            "auto-arrangement",
+            getColumnClass()
+          )}
+        >
           {cards.map((card, index) => (
             <BaseRankingCard
               key={index}

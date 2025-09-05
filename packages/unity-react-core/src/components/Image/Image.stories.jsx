@@ -95,7 +95,7 @@ TwoImagesAutoArrangement.args = {
     },
     {
       src: img2,
-      alt: "Second image", 
+      alt: "Second image",
       border: true,
       caption: "Caption for second image",
       captionTitle: "Second Image Title",

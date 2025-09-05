@@ -65,30 +65,40 @@ export const Card = ({
     };
 
     return (
-        <div className={classNames("uds-card-arrangement-card-container", "auto-arrangement", getColumnClass())}>
-          {cards.map((card, index) => (
-            <BaseCard
-              key={index}
-              type={card.type || type}
-              width={card.width || width}
-              horizontal={card.horizontal !== undefined ? card.horizontal : horizontal}
-              image={card.image}
-              imageAltText={card.imageAltText}
-              title={card.title}
-              icon={card.icon}
-              body={card.body}
-              eventFormat={card.eventFormat || eventFormat}
-              eventLocation={card.eventLocation}
-              eventTime={card.eventTime}
-              buttons={card.buttons}
-              linkLabel={card.linkLabel}
-              linkUrl={card.linkUrl}
-              tags={card.tags}
-              showBorders={card.showBorders !== undefined ? card.showBorders : showBorders}
-              cardLink={card.cardLink}
-            />
-          ))}
-        </div>
+      <div
+        className={classNames(
+          "uds-card-arrangement-card-container",
+          "auto-arrangement",
+          getColumnClass()
+        )}
+      >
+        {cards.map((card, index) => (
+          <BaseCard
+            key={index}
+            type={card.type || type}
+            width={card.width || width}
+            horizontal={
+              card.horizontal !== undefined ? card.horizontal : horizontal
+            }
+            image={card.image}
+            imageAltText={card.imageAltText}
+            title={card.title}
+            icon={card.icon}
+            body={card.body}
+            eventFormat={card.eventFormat || eventFormat}
+            eventLocation={card.eventLocation}
+            eventTime={card.eventTime}
+            buttons={card.buttons}
+            linkLabel={card.linkLabel}
+            linkUrl={card.linkUrl}
+            tags={card.tags}
+            showBorders={
+              card.showBorders !== undefined ? card.showBorders : showBorders
+            }
+            cardLink={card.cardLink}
+          />
+        ))}
+      </div>
     );
   }
 
