@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.28.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.28.1...@asu/unity-bootstrap-theme-v1.28.2) (2025-09-08)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** add process.env to vite build ([ee82a85](https://github.com/ASU/asu-unity-stack/commit/ee82a85acd059c56955f62e40ba5aae7e40b875c))
+
 # [@asu/unity-bootstrap-theme-v1.28.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.28.0...@asu/unity-bootstrap-theme-v1.28.1) (2025-08-04)
 
 
