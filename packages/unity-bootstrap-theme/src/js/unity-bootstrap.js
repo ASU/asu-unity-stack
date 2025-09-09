@@ -5,6 +5,7 @@ import { initCalendar } from "./calendar.js";
 import { initCardBodies } from "./card-bodies.js";
 import { initRankingCard } from "./card-ranking.js";
 import { initChart } from "./charts-and-graphs.js";
+import { initCollapse } from "./collapse.js";
 import { initDataLayer } from "./data-layer.js";
 import { initGlobalHeader } from "./global-header.js";
 import { initHeroesVideo } from "./heroes-video.js";
@@ -19,6 +20,7 @@ const unityBootstrap = {
   initAnchorMenu,
   initBlockquoteAnimation,
   initCalendar,
+  initCollapse,
   initChart,
   initDataLayer,
   initFixedTable,
