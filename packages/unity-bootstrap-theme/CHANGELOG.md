@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.28.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.28.2...@asu/unity-bootstrap-theme-v1.28.3) (2025-09-09)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix long accordion scroll issue ([d824790](https://github.com/ASU/asu-unity-stack/commit/d824790188a50c9e9c6c0cea4c701c51b14fa97a))
+
 # [@asu/unity-bootstrap-theme-v1.28.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.28.1...@asu/unity-bootstrap-theme-v1.28.2) (2025-09-08)
 
 
