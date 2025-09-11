@@ -23,7 +23,7 @@ const defaultGAEvent = {
  * @returns {JSX.Element}
  * @ignore
  */
-const videoTemplate = ({
+const VideoTemplate = ({
   url = "",
   vttUrl,
   caption,
@@ -107,7 +107,7 @@ const Video = props => {
   } = props;
   return type === "youtube"
     ? youtubeTemplate({ url, title, caption, className })
-    : videoTemplate({
+    : VideoTemplate({
         url,
         vttUrl,
         title,

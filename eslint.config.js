@@ -7,6 +7,8 @@ const js = require("@eslint/js");
 const importPlugin = require("eslint-plugin-import");
 const jsxA11y = require("eslint-plugin-jsx-a11y");
 const prettier = require("eslint-plugin-prettier");
+const eslintPluginPrettier = require("eslint-config-prettier");
+const eslintPluginReactHooks = require("eslint-plugin-react-hooks");
 
 module.exports = [
   js.configs.recommended,
@@ -31,6 +33,8 @@ module.exports = [
       import: importPlugin,
       "jsx-a11y": jsxA11y,
       prettier,
+      eslintPluginPrettier,
+      "react-hooks": eslintPluginReactHooks,
     },
     settings: {
       react: {
@@ -51,6 +55,12 @@ module.exports = [
       "react/jsx-no-useless-fragment": "off",
       "react/require-default-props": "off",
       "react/jsx-props-no-spreading": "off",
+      "react/jsx-uses-vars": "error", // Marks JSX variables as used
+      "react/jsx-uses-react": "error", // Marks React as used in JSX files
+
+      // React Hooks rules
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
 
       // Import rules
       "import/no-relative-packages": "off",
@@ -74,7 +84,8 @@ module.exports = [
       "no-console": 1,
       "no-unused-vars": ["warn", {
         argsIgnorePattern: "^_",
-        varsIgnorePattern: "^(React|_)",
+        varsIgnorePattern: "^(React|_|expect|test|describe|it|beforeEach|afterEach|beforeAll|afterAll|jest|vi|fixture|page)$",
+        ignoreRestSiblings: true,
       }],
       "no-undef": "off", // Disable for config files and test files
 
@@ -110,6 +121,7 @@ module.exports = [
       import: importPlugin,
       "jsx-a11y": jsxA11y,
       prettier,
+      "react-hooks": eslintPluginReactHooks,
     },
     settings: {
       react: {
@@ -141,11 +153,16 @@ module.exports = [
         extensions: [".js", ".jsx", ".ts", ".tsx"],
       }],
       "@typescript-eslint/ban-ts-comment": ["warn"],
-      "no-unused-vars": "off",
-      "react/require-default-props": "off",
-      "@typescript-eslint/no-unused-vars": ["error", {
+      "no-unused-vars": ["warn", {
         argsIgnorePattern: "^_",
-        varsIgnorePattern: "^(React|_)",
+        varsIgnorePattern: "^(React|_|expect|test|describe|it|beforeEach|afterEach|beforeAll|afterAll|jest|vi|fixture|page)$",
+        ignoreRestSiblings: true,
+      }],
+      "react/require-default-props": "off",
+      "@typescript-eslint/no-unused-vars": ["warn", {
+        argsIgnorePattern: "^_",
+        varsIgnorePattern: "^(React|_|expect|test|describe|it|beforeEach|afterEach|beforeAll|afterAll|jest|vi|fixture|page)$",
+        ignoreRestSiblings: true,
       }],
       "@typescript-eslint/no-empty-function": "off",
 
@@ -160,6 +177,12 @@ module.exports = [
       "no-promise-executor-return": "off",
       "default-param-last": "off",
       "react/jsx-props-no-spreading": "off",
+      "react/jsx-uses-vars": "error", // Marks JSX variables as used
+      "react/jsx-uses-react": "error", // Marks React as used in JSX files
+
+      // React Hooks rules
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
       "prettier/prettier": ["error", {}, {
         usePrettierrc: true,
       }],
