@@ -46,7 +46,7 @@ const Home = () => {
           <Card
             title="Code Kit"
             description="Npm packages provide React components and Bootstrap HTML examples for implementing UDS components."
-            href="#codekit"
+            href="./index.html#codekit"
             linkLabel="Code Kit section below"
             isRoute={true}
           />
