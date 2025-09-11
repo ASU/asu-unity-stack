@@ -16,7 +16,7 @@ const CardWrapper: FC<CardWrapperProps> = ({
   isRoute,
 }) => {
   return (
-    <div className="col-md-6 pb-8">
+    <div className="col-lg-4 col-md-6 pb-8">
       <h3>{title}</h3>
       <p>{description}</p>
       <p>
