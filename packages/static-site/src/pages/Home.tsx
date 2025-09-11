@@ -26,8 +26,8 @@ const Home = () => {
         </div>
       </div>
       <div className="container">
-        <Divider />
         <h2>Unity Design System (UDS)</h2>
+        <Divider />
         <div className="row my-6">
           <Card
             title="UDS Guidelines"
