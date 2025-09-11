@@ -1,3 +1,18 @@
+# [@asu/component-header-footer-v1.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.14...@asu/component-header-footer-v1.1.0) (2025-08-21)
+
+
+### Features
+
+* **component-header-footer:** added mobile style for search input ([2181de5](https://github.com/asu/asu-unity-stack/commit/2181de5e09571aca685e4a4dcc4ba97099feac49))
+* **component-header-footer:** applied soma feedback ([d1cbddb](https://github.com/asu/asu-unity-stack/commit/d1cbddb12fe5201c3448be362fdccfb2e57bad65))
+
+# [@asu/component-header-footer-v1.0.14](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.13...@asu/component-header-footer-v1.0.14) (2025-08-11)
+
+
+### Bug Fixes
+
+* **component-header-footer:** fix footer clashing classes with bootstrap JS ([59a3d43](https://github.com/asu/asu-unity-stack/commit/59a3d434a754287ac7369f9669353ff03e8b5aea))
+
 # [@asu/component-header-footer-v1.0.13](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.12...@asu/component-header-footer-v1.0.13) (2025-07-24)
 
 

@@ -1,3 +1,37 @@
+# [@asu/unity-bootstrap-theme-v1.28.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.28.2...@asu/unity-bootstrap-theme-v1.28.3) (2025-09-09)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix long accordion scroll issue ([d824790](https://github.com/ASU/asu-unity-stack/commit/d824790188a50c9e9c6c0cea4c701c51b14fa97a))
+
+# [@asu/unity-bootstrap-theme-v1.28.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.28.1...@asu/unity-bootstrap-theme-v1.28.2) (2025-09-08)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** add process.env to vite build ([ee82a85](https://github.com/ASU/asu-unity-stack/commit/ee82a85acd059c56955f62e40ba5aae7e40b875c))
+
+# [@asu/unity-bootstrap-theme-v1.28.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.28.0...@asu/unity-bootstrap-theme-v1.28.1) (2025-08-04)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** added scss selector for a.btn disabled ([b58ee6a](https://github.com/ASU/asu-unity-stack/commit/b58ee6ac6d8fdaa73648e72ff5478510d0efdbc2))
+
+# [@asu/unity-bootstrap-theme-v1.28.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.27.0...@asu/unity-bootstrap-theme-v1.28.0) (2025-08-04)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** add retry logic to initCardBoodies to for .card-body elemtns ([9310021](https://github.com/ASU/asu-unity-stack/commit/9310021b3c86f0e365fe37ec5b764c4778f8f546))
+* **unity-bootstrap-theme:** initialized retryCount var ([b0656ed](https://github.com/ASU/asu-unity-stack/commit/b0656ed394a25c591e39d19e919a69ba75c8628f))
+
+
+### Features
+
+* **unity-bootstrap-theme:** changed margin and padding for List ([4fc2fcd](https://github.com/ASU/asu-unity-stack/commit/4fc2fcd8f97b3662f888efcc1b07fbdf9127ec1b))
+
 # [@asu/unity-bootstrap-theme-v1.27.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.26.5...@asu/unity-bootstrap-theme-v1.27.0) (2025-07-24)
 
 

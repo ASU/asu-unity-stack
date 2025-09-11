@@ -79,14 +79,6 @@ const c = {
   server: {
     port: 9000,
   },
-  resolve: {
-    alias: [
-      {
-        find: "@asu/shared",
-        replacement: resolve(__dirname, "../shared"),
-      },
-    ],
-  },
 };
 
 export default defineConfig(c);

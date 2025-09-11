@@ -1,6 +1,6 @@
 // @ts-check
 import PropTypes, { shape, arrayOf } from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 
 import { Button } from "../../../header/components/Button";
 import { ColumnSection } from "../ColumnSection";
@@ -14,6 +14,9 @@ import { ColumnSection } from "../ColumnSection";
 const ContactComponent = ({
   contact: { title = "", contactLink = "", contributionLink = "", columns },
 }) => {
+  const [openAccordionIndex, setOpenAccordionIndex] = useState(
+    /** @type {number | null} */ (null)
+  );
   return (
     <div className="wrapper" id="wrapper-footer-columns" data-testid="contact">
       <div className="container" id="footer-columns">
@@ -46,6 +49,12 @@ const ContactComponent = ({
                   key={`footlink-${column.title}`}
                   columnIndex={columnIndex}
                   column={column}
+                  isOpen={openAccordionIndex === columnIndex}
+                  onToggle={() => {
+                    setOpenAccordionIndex(
+                      openAccordionIndex === columnIndex ? null : columnIndex
+                    );
+                  }}
                 />
               ))}
             </>

@@ -4,17 +4,14 @@
   --list-max-width: 43.75rem;
   --list-padding-top: 0;
   --list-padding-right: 0;
-  --list-padding-bottom: 3rem;
+  --list-padding-bottom: 0;
   --list-padding-left: 3rem;
   --list-list-style: none;
   --li-before-line-height: 1.5rem;
 
   li {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     position:relative;
-    &:last-of-type {
-      margin-bottom: 0rem;
-    }
   }
 
   /* Apply CSS vars */

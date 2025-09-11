@@ -9,6 +9,20 @@ import { EventHandler } from "./bootstrap-helper";
  */
 function initCardBodies() {
   const cardBodies = document.querySelectorAll(".card-body");
+
+  // If there are no cardBodies and you have not yet exceeded 3 retries
+  let retryCount = 0;
+  if (cardBodies.length === 0 && retryCount < 3) {
+    setTimeout(() => initCardBodies(retryCount + 1), 500);
+    return;
+  }
+
+  // If after 3 attempts there are still no cardBodies, we simply exit
+  if (cardBodies.length === 0) {
+    console.warn("No .card-body found after 3 retries.");
+    return;
+  }
+
   cardBodies.forEach((cardBody, index) => {
     const paragraph = cardBody.querySelector("div p");
     const originalText = paragraph.textContent;
