@@ -65,6 +65,7 @@ export const Card = ({
     };
 
     return (
+      <div className="uds-card-arrangement">
       <div
         className={classNames(
           "uds-card-arrangement-card-container",
@@ -98,6 +99,7 @@ export const Card = ({
             cardLink={card.cardLink}
           />
         ))}
+      </div>
       </div>
     );
   }
