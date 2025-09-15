@@ -1,7 +1,7 @@
 import { imageAny } from "@asu/shared";
 import classNames from "classnames";
 import React from "react";
-const img1 = imageAny(); // Placeholder for an example image
+const img1 = imageAny();
 
 // @ts-ignore
 import { Card } from "./Card";

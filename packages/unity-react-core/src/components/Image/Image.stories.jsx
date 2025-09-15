@@ -3,10 +3,7 @@
 import { imageAny } from "@asu/shared";
 import React from "react";
 
-const img1 = imageAny(); // Placeholder for an example image
-const img2 = imageAny(); // Placeholder for an example image
-const img3 = imageAny(); // Placeholder for an example image
-const img4 = imageAny(); // Placeholder for an example image
+const img1 = imageAny();
 
 import { Image } from "./Image";
 
@@ -41,7 +38,7 @@ ImageWithNoCaptionBorderless.args = {
 
 export const ImageWithCaption = Template.bind({});
 ImageWithCaption.args = {
-  src: img2,
+  src: img1,
   alt: "Placeholder image",
   caption: "This is a <a href='#'>caption</a>.",
   captionTitle: "Caption title",
@@ -50,7 +47,7 @@ ImageWithCaption.args = {
 
 export const ImageWithCaptionAndDropshadow = Template.bind({});
 ImageWithCaptionAndDropshadow.args = {
-  src: img3,
+  src: img1,
   alt: "Placeholder image",
   caption: "This is a <a href='#'>caption</a>.",
   captionTitle: "Caption title",
@@ -78,7 +75,7 @@ export const GridImages = GridTemplate.bind({});
 GridImages.args = {
   alt: "Placeholder image",
   width: "100%",
-  src: img4,
+  src: img1,
 };
 
 const MultipleImagesTemplate = args => <Image {...args} />;
@@ -94,7 +91,7 @@ TwoImagesAutoArrangement.args = {
       captionTitle: "First Image Title",
     },
     {
-      src: img2,
+      src: img1,
       alt: "Second image",
       border: true,
       caption: "Caption for second image",
@@ -115,14 +112,14 @@ ThreeImagesArrangement.args = {
       caption: "Caption for first image",
     },
     {
-      src: img2,
+      src: img1,
       alt: "Second image",
       border: true,
       caption: "Caption for second image",
       dropShadow: true,
     },
     {
-      src: img3,
+      src: img1,
       alt: "Third image",
       border: true,
       caption: "Caption for third image",
@@ -140,18 +137,18 @@ FourImagesArrangement.args = {
       border: true,
     },
     {
-      src: img2,
+      src: img1,
       alt: "Second image",
       border: true,
       dropShadow: true,
     },
     {
-      src: img3,
+      src: img1,
       alt: "Third image",
       border: true,
     },
     {
-      src: img4,
+      src: img1,
       alt: "Fourth image",
       border: true,
     },
