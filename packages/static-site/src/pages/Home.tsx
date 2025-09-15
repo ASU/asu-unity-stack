@@ -35,19 +35,19 @@ const Home = () => {
               across all ASU web projects. Seamlessly explore the Design Kit and Code Kit
               in one place."
             href="https://zeroheight.com/9f0b32a56"
-            linkLabel="UDS Guidelines"
+            linkLabel="View UDS guidelines"
           />
           <Card
             title="Design Kit"
             description="Design specifications for components provided by the ASU Brand."
             href="https://www.figma.com/design/vhudREMl5qdTxRLZTmttHJ/UDS-Design-Kit--web-only-?node-id=593-23577&p=f&t=ZiUlJTLE1HyXrZrB-0"
-            linkLabel="UDS Design Kit"
+            linkLabel="View UDS design Kit"
           />
           <Card
             title="Code Kit"
             description="Npm packages provide React components and Bootstrap HTML examples for implementing UDS components."
             href="./index.html#codekit"
-            linkLabel="Code Kit section below"
+            linkLabel="View code kit section below"
             isRoute={true}
           />
         </div>
@@ -57,19 +57,21 @@ const Home = () => {
         <Divider />
         <div className="row my-6">
           <Card
-            title="ASU Header"
+            title="ASU Header and Footer"
             description="Guidelines, requirements and best practices for using the ASU
               Branded Header in your site."
             href={PagePaths.HEADERGUIDE + "index.html"}
             isRoute={true}
-            linkLabel="ASU Header Guide"
+            linkLabel="View guide"
+            ariaLabel="View ASU header and footer guide"
           />
           <Card
             title="Google Tag Manager and data layer"
             description="Ensure your site or application has the necessary analytics integrations."
             href={PagePaths.DATALAYERGUIDE + "index.html"}
             isRoute={true}
-            linkLabel="GTM and Data Layer Guide"
+            linkLabel="View guide"
+            ariaLabel="View Google Tag Manager and data layer guide"
           />
           <Card
             title="Unity Design System Package Registry"

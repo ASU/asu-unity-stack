@@ -7,7 +7,7 @@ const HeaderGuide = () => {
     <div className="container my-6">
       <div className="row">
         <div className="col-12">
-          <h1 className="display-4">ASU Header Guide</h1>
+          <h1 className="display-4">ASU Header and Footer Guide</h1>
 
           <p>
             Testing data shows that users see asu.edu as one website. The ASU
