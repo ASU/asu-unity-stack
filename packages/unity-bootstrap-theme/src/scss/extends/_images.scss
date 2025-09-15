@@ -23,6 +23,7 @@
 
   // Images with captions
   .uds-figure {
+    margin: 0;
     width: 100%;
     img.img-original {
       width: initial;
@@ -60,8 +61,5 @@
   &.uds-img-drop-shadow {
     box-shadow: $uds-size-spacing-0 $uds-size-spacing-1 $uds-size-spacing-2
       rgba(25, 25, 25, 0.2);
-    .uds-figure {
-      margin-bottom: $uds-size-spacing-0;
-    }
   }
 }
