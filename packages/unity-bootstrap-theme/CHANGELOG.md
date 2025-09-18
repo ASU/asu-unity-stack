@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.29.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.28.3...@asu/unity-bootstrap-theme-v1.29.0) (2025-09-18)
+
+
+### Features
+
+* **unity-bootstrap-theme:** improve accessibility by increasing text contrast (WCAG AAA compliance) ([5c8f243](https://github.com/ASU/asu-unity-stack/commit/5c8f243f0f3fcba28599f85205b4daf7a07fd089)), closes [#747474](https://github.com/ASU/asu-unity-stack/issues/747474) [#484848](https://github.com/ASU/asu-unity-stack/issues/484848)
+
 # [@asu/unity-bootstrap-theme-v1.28.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.28.2...@asu/unity-bootstrap-theme-v1.28.3) (2025-09-09)
 
 
