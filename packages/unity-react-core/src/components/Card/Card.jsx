@@ -48,6 +48,7 @@ export const Card = ({
   cardLink,
   cards = [],
   columns = "0",
+  layout = "auto"
 }) => {
   // If multiple cards are provided, render them in a card container
   if (cards.length > 1) {
@@ -65,11 +66,14 @@ export const Card = ({
     };
 
     return (
-      <div className="uds-card-arrangement">
+      <div className={classNames("uds-card-arrangement", {
+        "uds-card-arrangement-vertical": layout === "vertical",
+        "auto-arrangement": layout !== "vertical"
+      })
+      }>
       <div
         className={classNames(
           "uds-card-arrangement-card-container",
-          "auto-arrangement",
           getColumnClass()
         )}
       >
@@ -257,6 +261,10 @@ Card.propTypes = {
    * Number of columns for multiple cards layout (0, 2, 3, or 4)
    */
   columns: PropTypes.oneOf(["0", "2", "3", "4"]),
+  /**
+   * Vertical or normal layout
+   */
+  layout: PropTypes.oneOf(["vertical", "auto"])
 };
 
 /*

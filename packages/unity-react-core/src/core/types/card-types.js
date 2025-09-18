@@ -26,6 +26,7 @@
  * @property {string} [cardLink]
  * @property {CardItemProps[]} [cards]
  * @property {"0"|"2"|"3"|"4"} [columns]
+ * @property {"vertical" | "auto" } [layout]
  */
 
 /**
