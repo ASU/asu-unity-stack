@@ -60,6 +60,10 @@ button.uds-tooltip {
   }
 }
 
+// TODO This needs to be deprecated but needs brand input as this appears to be
+// an icon style button that does not use the standard button styles provided
+// by the brand. However, the style guide does not give color options, the color
+// should vary based on the background it is placed on.
 button.uds-tooltip-gray-1 {
   .fa-circle {
     color: $asu-gray;

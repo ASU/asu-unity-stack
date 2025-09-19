@@ -80,7 +80,9 @@
     transform: scale(0.95);
   }
 }
-.bg-light-gray {
+// TODO: This belong in backgrounds or generated with bootstrap utilities
+.bg-light-gray, // Deprecated - use .bg-faint instead
+.bg-faint {
   background-color: $asu-gray-lightest;
 }
 
@@ -114,7 +116,7 @@
 
 
 a {
-  &.text-gold, .bg-gray-7 & {
+  &.text-gold, .bg-gray-7 &, .bg-dark & {
     &:link,
     &:hover,
     &:focus {

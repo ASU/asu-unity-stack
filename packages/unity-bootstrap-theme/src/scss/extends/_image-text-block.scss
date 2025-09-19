@@ -42,8 +42,9 @@
     */
     max-width: 50%;
     padding: 48px 96px;
-
-    &.gray-7-bg {
+    // TODO: This belongs in backgrounds or generated with bootstrap utilities
+    &.gray-7-bg, // Deprecated - use .bg-dark instead
+    &.bg-dark {
       color: $uds-color-base-white;
     }
 

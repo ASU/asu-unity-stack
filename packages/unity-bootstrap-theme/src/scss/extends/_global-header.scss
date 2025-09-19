@@ -11,8 +11,6 @@
 8. Page Content
 --------------------------------------------------------------*/
 
-$fa-search: url($image-assets-path + "/font-awesome-svg/search.svg");
-
 @mixin transition {
   transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
 }

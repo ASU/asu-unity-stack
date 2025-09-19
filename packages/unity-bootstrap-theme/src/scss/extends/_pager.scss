@@ -82,7 +82,9 @@ span.page-link {
   overflow-x: auto;
   padding: $pagination-padding-y $pagination-padding-x;
   gap: 1rem;
-  &.uds-bg-gray1 {
+  // TODO: This belongs in backgrounds or generated with bootstrap utilities
+  &.uds-bg-gray1, // Deprecated - use .bg-faint instead
+  &.bg-faint {
     background-color: $asu-gray-lightest;
 
     :not(.active) .page-link {
