@@ -280,7 +280,7 @@ export const IconOnlyButtonsColorCombinationsComponent = () => (
           <span className="visually-hidden">Close</span>
         </button>
       </div>
-      <div className="col col-12 col-lg-4 bg-light-gray p-3">
+      <div className="col col-12 col-lg-4 bg-faint p-3">
         <button
           type="button"
           className="btn btn-circle btn-circle-x-large btn-circle-alt-white"

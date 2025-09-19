@@ -15,8 +15,8 @@ export default {
       options: ["On White", "On Gray", "On Black"],
       mapping: {
         "On White": null,
-        "On Gray": "bg-gray-2",
-        "On Black": "bg-gray-7",
+        "On Gray": "bg-light",
+        "On Black": "bg-dark",
       },
       control: {
         type: "radio",
@@ -35,7 +35,7 @@ export const BasicBlockquote = ({ type }) => {
     <div className={type}>
       <div
         className={`uds-blockquote ${
-          type === "bg-gray-7" ? "accent-gold text-white" : "accent-maroon"
+          type === "bg-dark" ? "accent-gold text-white" : "accent-maroon"
         } uds-content-align`}
       >
         <svg title="Open quote" role="presentation" viewBox="0 0 302.87 245.82">
@@ -67,7 +67,7 @@ export const BlockquoteWithImage = ({ type, reversed }) => {
     <div className={type}>
       <div
         className={`uds-blockquote ${
-          type === "bg-gray-7" ? "accent-gold text-white" : "accent-maroon"
+          type === "bg-dark" ? "accent-gold text-white" : "accent-maroon"
         } with-image ${reversed ? "reversed" : ""} uds-content-align`}
       >
         <img
@@ -104,7 +104,7 @@ export const BlockquoteAnimated = ({ type }) => {
     <div className={type}>
       <div
         className={`uds-blockquoteAnimated ${
-          type === "bg-gray-7" ? "accent-gold text-white" : "accent-maroon"
+          type === "bg-dark" ? "accent-gold text-white" : "accent-maroon"
         } uds-content-align`}
       >
         <blockquote>

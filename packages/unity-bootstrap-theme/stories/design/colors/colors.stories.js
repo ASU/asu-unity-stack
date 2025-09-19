@@ -75,34 +75,46 @@ export const ColorPaletteComponent = () => (
       <div className="row">
         <div className="col-12 py-3">
           <h3>
-            <span className="highlight-black">Grayscale</span>
+            <span className="highlight-black">Asu Gray</span>
           </h3>
           <h4 className="visually-hidden">Accessibility bypass</h4>
         </div>
         <div className="col-md-3">
-          <div className="bg-gray-1 p-3">
-            <h5>Gray 1</h5>
-            <p>#FAFAFA</p>
-            <p>rgb(250, 250, 250)</p>
+          <div className="bg-dark p-3 text-light">
+            <h5 className="">Asu Gray 1</h5>
+            <p>#191919</p>
+            <p>rgb(25, 25, 25)</p>
           </div>
         </div>
         <div className="col-md-3">
-          <div className="bg-gray-2 p-3">
-            <h5>Gray 2</h5>
-            <p>#E8E8E8</p>
-            <p>rgb(232, 232, 232)</p>
+          {/* <!-- No .bg-asu-gray-2 class because it is an approved background color --> */}
+          <div
+            className="p-3 text-light"
+            style={{ backgroundColor: "var(--bs-asu-gray-2)" }}
+          >
+            <h5>Asu Gray 2</h5>
+            <p>#484848</p>
+            <p>rgb(72, 72, 72)</p>
           </div>
         </div>
         <div className="col-md-3">
-          <div className="bg-gray-3 p-3">
-            <h5>Gray 3</h5>
-            <p>#D0D0D0</p>
-            <p>rgb(209, 209, 209)</p>
+          {/* <!-- No .bg-asu-gray-3 class because it is an approved background color --> */}
+          <div
+            className="p-3 text-light"
+            style={{ backgroundColor: "var(--bs-asu-gray-3)" }}
+          >
+            <h5>Asu Gray 3</h5>
+            <p>#747474</p>
+            <p>rgb(116, 116, 116)</p>
           </div>
         </div>
         <div className="col-md-3">
-          <div className="bg-gray-4 p-3">
-            <h5>Gray 4</h5>
+          {/* <!-- No .bg-asu-gray-4 class because it is an approved background color --> */}
+          <div
+            className="p-3"
+            style={{ backgroundColor: "var(--bs-asu-gray-4)" }}
+          >
+            <h5>Asu Gray 4</h5>
             <p>#BFBFBF</p>
             <p>rgb(191, 191, 191)</p>
           </div>
@@ -110,24 +122,28 @@ export const ColorPaletteComponent = () => (
       </div>
       <div className="row py-md-3">
         <div className="col-md-3">
-          <div className="bg-gray-5 p-3 text-light">
-            <h5>Gray 5</h5>
-            <p>#747474</p>
-            <p>rgb(116, 116, 116)</p>
+          {/* <!-- No .bg-asu-gray-2 class because it is an approved background color --> */}
+          <div
+            className="p-3"
+            style={{ backgroundColor: "var(--bs-asu-gray-5)" }}
+          >
+            <h5>Asu Gray 5</h5>
+            <p>#D0D0D0</p>
+            <p>rgb(209, 209, 209)</p>
           </div>
         </div>
         <div className="col-md-3">
-          <div className="bg-gray-6 p-3 text-light">
-            <h5>Gray 6</h5>
-            <p>#484848</p>
-            <p>rgb(72, 72, 72)</p>
+          <div className="bg-light p-3">
+            <h5>Asu Gray 6</h5>
+            <p>#E8E8E8</p>
+            <p>rgb(232, 232, 232)</p>
           </div>
         </div>
         <div className="col-md-3">
-          <div className="bg-gray-7 p-3 text-light">
-            <h5 className="">Gray 7</h5>
-            <p>#191919</p>
-            <p>rgb(25, 25, 25)</p>
+          <div className="bg-faint p-3">
+            <h5>Asu Gray 7</h5>
+            <p>#FAFAFA</p>
+            <p>rgb(250, 250, 250)</p>
           </div>
         </div>
       </div>
@@ -163,7 +179,7 @@ export const CombinationsComponent = () => (
         </div>
       </div>
       <div className="col-sm-6">
-        <div className="bg-gray-1 p-3">
+        <div className="bg-faint p-3">
           <h3>This is a tertiary headline</h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit,{" "}
@@ -183,7 +199,7 @@ export const CombinationsComponent = () => (
 
     <div className="row pt-3">
       <div className="col-sm-6">
-        <div className="bg-gray-2 p-3">
+        <div className="bg-light p-3">
           <h3>This is a tertiary headline</h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit,{" "}
@@ -200,7 +216,7 @@ export const CombinationsComponent = () => (
         </div>
       </div>
       <div className="col-sm-6">
-        <div className="bg-gray-7 text-white p-3">
+        <div className="bg-dark text-white p-3">
           <h3>This is a tertiary headline</h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit,{" "}

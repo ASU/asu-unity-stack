@@ -7,12 +7,12 @@ export default {
   argTypes: {
     background: {
       name: "Background",
-      options: ["White", "Gray 1", "Gray 2", "Gray 7"],
+      options: ["White", "Faint", "Light", "Dark"],
       mapping: {
-        "White": "white-bg",
-        "Gray 1": "gray-1-bg",
-        "Gray 2": "gray-2-bg",
-        "Gray 7": "gray-7-bg",
+        White: "white-bg",
+        Faint: "bg-faint",
+        Light: "bg-light",
+        Dark: "bg-dark",
       },
       control: {
         type: "radio",
