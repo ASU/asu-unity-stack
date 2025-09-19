@@ -1,7 +1,7 @@
 .card-ranking {
   height: 543px;
   position: relative;
-  border: 1px solid $uds-color-base-gray-3;
+  border: 1px solid $asu-gray-light;
   overflow: hidden;
 
   --ranking-card-text-padding: 1.5rem;
@@ -46,14 +46,14 @@
           display: -webkit-box;
           -webkit-box-orient: vertical;
           overflow: hidden;
-          color: $uds-color-base-gray-7;
+          color: $asu-gray-darkest;
         }
 
         svg.fa-chevron-up,
         i.fa-chevron-up,
         .fa-chevron-up {
           transition: all 0.3s ease-in-out;
-          color: $uds-color-base-gray-7;
+          color: $asu-gray-darkest;
         }
       }
 

@@ -2,35 +2,39 @@
 // Reference: https://hub.asu.edu/brand-hq/brand-standards/color-palette
 
 $white: $uds-color-base-white;
-$gray-1: $uds-color-base-gray-1;
-$gray-2: $uds-color-base-gray-2;
-$gray-3: $uds-color-base-gray-3;
-$gray-4: $uds-color-base-gray-4;
-$gray-5: $uds-color-base-gray-5;
-$gray-6: $uds-color-base-gray-6;
-$gray-7: $uds-color-base-gray-7;
+// Deprecated-start - 1-7 are incorrectly numbered from lightest to darkest
+$gray-1: $asu-gray-lightest;
+$gray-2: $asu-gray-lighter;
+$gray-3: $asu-gray-light;
+$gray-4: $asu-gray;
+$gray-5: $asu-gray-dark;
+$gray-6: $asu-gray-darker;
+$gray-7: $asu-gray-darkest;
+// Deprecated-end
 
-$body-color: $uds-color-base-gray-7;
+$body-color: $asu-gray-darkest;
 
 $grays: ();
 
+// Deprecated-start - 1-7 are incorrectly numbered from lightest to darkest
 $grays: map-merge(
   (
-    '1': $gray-1,
-    '2': $gray-2,
-    '3': $gray-3,
-    '4': $gray-4,
-    '5': $gray-5,
-    '6': $gray-6,
-    '7': $gray-7,
+    '1': $asu-gray-lightest,
+    '2': $asu-gray-lighter,
+    '3': $asu-gray-light,
+    '4': $asu-gray,
+    '5': $asu-gray-dark,
+    '6': $asu-gray-darker,
+    '7': $asu-gray-darkest,
   ),
   $grays
 );
 
 $gold: $uds-color-base-gold;
 $maroon: $uds-color-base-maroon;
-$dark: $uds-color-base-gray-7;
-$light: $uds-color-base-gray-2;
+$dark: $asu-gray-darkest;
+$light: $asu-gray-lighter;
+$faint: $asu-gray-lightest;
 $blue: $uds-color-base-blue;
 $green: $uds-color-base-green;
 $orange: $uds-color-base-orange;
@@ -52,6 +56,13 @@ $colors: map-merge(
     'bluefocus': $bluefocus,
     'darkgold': $darkgold,
     'darkmaroon': $darkmaroon,
+    'asu-gray-1': $asu-gray-darkest,
+    'asu-gray-2': $asu-gray-darker,
+    'asu-gray-3': $asu-gray-dark,
+    'asu-gray-4': $asu-gray,
+    'asu-gray-5': $asu-gray-light,
+    'asu-gray-6': $asu-gray-lighter,
+    'asu-gray-7': $asu-gray-lightest,
   ),
   $colors
 );
@@ -73,8 +84,9 @@ $theme-colors: map-merge(
     'info': $info,
     'warning': $warning,
     'danger': $danger,
+    'faint': $faint,
     'light': $light,
-    'gray': $gray-4,
+    'gray': $asu-gray,
     'dark': $dark,
     'gray-1': $gray-1,
     'gray-2': $gray-2,
@@ -114,7 +126,7 @@ $card-cap-bg: rgba($white, 0.03);
 
 $nav-tabs-link-color: $dark;
 $nav-tabs-border-width: 1px;
-$nav-tabs-border-color: $gray-3;
+$nav-tabs-border-color: $asu-gray-light;
 $nav-tabs-border-radius: 0;
 $nav-tabs-link-active-color: $maroon;
 $nav-tabs-link-active-border-color: $maroon;

@@ -1,6 +1,6 @@
 .uds-anchor-menu {
   background-color: white;
-  border-bottom: 1px solid $uds-color-base-gray-3;
+  border-bottom: 1px solid $asu-gray-light;
   z-index: 100;
 
   &-wrapper {
@@ -47,14 +47,14 @@
   }
 
   .nav-link {
-    color: $uds-color-base-gray-7;
+    color: $asu-gray-darkest;
     padding: $uds-size-spacing-3 0;
     padding-left: 0.5rem;
     text-align: start;
     font-weight: 400;
 
     &:not(:last-child) {
-      border-bottom: 1px solid $uds-color-base-gray-3;
+      border-bottom: 1px solid $asu-gray-light;
     }
 
     &:hover,
@@ -64,11 +64,11 @@
     }
 
     &:visited {
-      color: $uds-color-base-gray-7;
+      color: $asu-gray-darkest;
     }
 
     &:focus {
-      box-shadow: 0px 0px 0px 2px $uds-color-base-gray-7 !important;
+      box-shadow: 0px 0px 0px 2px $asu-gray-darkest !important;
     }
 
     svg {
@@ -80,7 +80,7 @@
 }
 
 @mixin uds-anchor-menu-expanded {
-  border-bottom: 1px solid $uds-color-base-gray-3;
+  border-bottom: 1px solid $asu-gray-light;
 
   .uds-anchor-menu-wrapper {
     flex-direction: row;

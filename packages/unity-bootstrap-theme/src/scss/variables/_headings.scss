@@ -38,13 +38,13 @@ $heading-five-line-height: 1.5rem;
 $heading-five-letter-spacing: -0.015rem;
 
 $heading-highlight-gold-background-color: $uds-color-base-gold;
-$heading-highlight-gold-text-color: $uds-color-base-gray-7;
+$heading-highlight-gold-text-color: $asu-gray-darkest;
 
-$heading-highlight-black-background-color: $uds-color-base-gray-7;
-$heading-highlight-black-text-color: $uds-color-base-gray-1;
+$heading-highlight-black-background-color: $asu-gray-darkest;
+$heading-highlight-black-text-color: $asu-gray-lightest;
 
 $heading-highlight-white-background-color: $uds-color-base-white;
-$heading-highlight-white-text-color: $uds-color-base-gray-7;
+$heading-highlight-white-text-color: $asu-gray-darkest;
 
 @mixin heading-highlight-large-box-shadow($bsColor, $textColor) {
   box-shadow: -0.15em

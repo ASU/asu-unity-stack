@@ -1,5 +1,5 @@
 .uds-table {
-  border: 1px solid $uds-color-base-gray-2;
+  border: 1px solid $asu-gray-lighter;
   overflow-x: auto;
 
   & > table {
@@ -27,7 +27,7 @@
     > thead {
       > tr {
         &:first-child th {
-          background-color: $uds-color-base-gray-3;
+          background-color: $asu-gray-light;
         }
       }
     }
@@ -45,7 +45,7 @@
         &:nth-child(2n) {
           th,
           td {
-            background-color: $uds-color-base-gray-1;
+            background-color: $asu-gray-lightest;
           }
         }
 
@@ -53,7 +53,7 @@
         &:focus {
           th,
           td {
-            background-color: $uds-color-base-gray-2;
+            background-color: $asu-gray-lighter;
           }
         }
 
@@ -76,7 +76,7 @@
   }
 
   caption, figcaption {
-    background-color: var(--bs-gray-1);
+    background-color: $asu-gray-lightest;
     caption-side: top;
     font-size: 0.85rem;
     padding: 1rem;
@@ -87,7 +87,7 @@
 
 .uds-table-fixed {
   overflow-x: auto;
-  border: 1px solid $uds-color-base-gray-2;
+  border: 1px solid $asu-gray-lighter;
   scroll-behavior: smooth;
   &-wrapper {
     .scroll-control {

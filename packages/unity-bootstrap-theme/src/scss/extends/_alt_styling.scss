@@ -4,13 +4,13 @@
  */
 
 // Mapping for Design Tokens
-$ws2-gray-darkest: $uds-color-base-gray-7;
-$ws2-gray-darker: $uds-color-base-gray-6;
-$ws2-gray-dark: $uds-color-base-gray-5;
-$ws2-gray: $uds-color-base-gray-4;
-$ws2-gray-light: $uds-color-base-gray-3;
-$ws2-gray-lighter: $uds-color-base-gray-2;
-$ws2-gray-lightest: $uds-color-base-gray-1;
+$ws2-gray-darkest: $asu-gray-darkest;
+$ws2-gray-darker: $asu-gray-darker;
+$ws2-gray-dark: $asu-gray-dark;
+$ws2-gray: $asu-gray;
+$ws2-gray-light: $asu-gray-light;
+$ws2-gray-lighter: $asu-gray-lighter;
+$ws2-gray-lightest: $asu-gray-lightest;
 
 // Custom variables (semantic renaming, mapping, etc.)
 $the-base: 16px;

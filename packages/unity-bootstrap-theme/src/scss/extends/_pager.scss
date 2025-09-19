@@ -35,15 +35,15 @@ a.page-link {
     font-size: 14px;
   }
   .page-item:not(.active) &:not(:focus):visited {
-    color: $uds-color-base-gray-7;
+    color: $asu-gray-darkest;
   }
 }
 a.page-link:hover {
-  color: $uds-color-base-gray-7;
+  color: $asu-gray-darkest;
   text-decoration: none;
 }
 .page-item.active a.page-link:hover {
-  color: $uds-color-base-gray-1;
+  color: $asu-gray-lightest;
 }
 
 span.page-link {
@@ -83,12 +83,12 @@ span.page-link {
   padding: $pagination-padding-y $pagination-padding-x;
   gap: 1rem;
   &.uds-bg-gray1 {
-    background-color: $uds-color-base-gray-1;
+    background-color: $asu-gray-lightest;
 
     :not(.active) .page-link {
-      background-color: $uds-color-base-gray-1;
+      background-color: $asu-gray-lightest;
       &:hover {
-        background-color: $uds-color-base-gray-4;
+        background-color: $asu-gray;
         color: $uds-color-font-dark-base;
       }
     }
@@ -100,7 +100,7 @@ span.page-link {
     :not(.active) .page-link {
       background-color: $uds-color-background-gray;
       &:hover {
-        background-color: $uds-color-base-gray-4;
+        background-color: $asu-gray;
         color: $uds-color-font-dark-base;
       }
     }
@@ -111,16 +111,16 @@ span.page-link {
 
     .page-item {
       &:last-child .page-link-icon::after {
-        @include bg-arrow-icon($uds-color-base-gray-1, right);
+        @include bg-arrow-icon($asu-gray-lightest, right);
       }
 
       &:first-child .page-link-icon::before {
-        @include bg-arrow-icon($uds-color-base-gray-1, left);
+        @include bg-arrow-icon($asu-gray-lightest, left);
       }
     }
 
     .page-link {
-      color: $uds-color-base-gray-1;
+      color: $asu-gray-lightest;
     }
 
     .active .page-link {
@@ -132,8 +132,8 @@ span.page-link {
     :not(.active) .page-link {
       background-color: $uds-color-background-dark;
       &:hover {
-        background-color: $uds-color-base-gray-5;
-        color: $uds-color-base-gray-1;
+        background-color: $asu-gray-dark;
+        color: $asu-gray-lightest;
       }
     }
   }
