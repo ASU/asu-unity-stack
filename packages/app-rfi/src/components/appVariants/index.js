@@ -77,7 +77,7 @@ const variants = {
         CampusProgramHasChoice: validation.CampusProgramHasChoice,
       }}
     >
-      <h4>Step 1 of 2</h4>
+      <div className={'h4'}>Step 1 of 2</div>
       <h2>Request information</h2>
       <p className="rfi-step1-intro">
         To learn more about ASU or a specific program, fill out the form below
@@ -103,7 +103,7 @@ const variants = {
         GdprConsent: validation.GdprConsent,
       }}
     >
-      <h4>Step 2 of 2</h4>
+      <div className={'h4'}>Step 2 of 2</div>
       <h2>About me</h2>
       <EmailAddress autoFocus gaData={gaData2Of2} />
       <FirstName gaData={gaData2Of2} />

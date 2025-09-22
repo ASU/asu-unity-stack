@@ -3,6 +3,7 @@
  * @typedef {Object} FeedHeader
  * @property {"white" | "dark"} [color]
  * @property {string} [text]
+ * @property {"h2" | "h3" | "h4" | "div"} [tag]
  */
 /**
  * @typedef {Object} FeedCtaButton
