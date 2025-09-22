@@ -6469,14 +6469,14 @@ const Ss = i.shape({
   header: t,
   ctaButton: r
 }) => {
-  const o = { ...e.header, ...t }, c = { ...e.ctaButton, ...r };
+  const o = { ...e.header, ...t }, c = { ...e.ctaButton, ...r }, u = o.tag || "h2", g = u !== "h2", S = `text-${o.color} ${g ? "h2" : ""}`.trim();
   return /* @__PURE__ */ W.jsxs(
     "div",
     {
       className: "row justify-content-between align-items-center pb-6",
       "data-testid": "feed-header",
       children: [
-        /* @__PURE__ */ W.jsx("div", { className: "col-sm-12 col-md-9", children: /* @__PURE__ */ W.jsx("h2", { className: `text-${o.color}`, children: o.text }) }),
+        /* @__PURE__ */ W.jsx("div", { className: "col-sm-12 col-md-9", children: /* @__PURE__ */ W.jsx(u, { className: S, children: o.text }) }),
         /* @__PURE__ */ W.jsx(Pu, { className: "col-sm-12 col-md-3", children: /* @__PURE__ */ W.jsx(
           jr,
           {

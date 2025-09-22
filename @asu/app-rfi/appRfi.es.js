@@ -7018,7 +7018,7 @@ const nt = {
           CampusProgramHasChoice: nt.CampusProgramHasChoice
         },
         children: [
-          /* @__PURE__ */ m.jsx("h4", { children: "Step 1 of 2" }),
+          /* @__PURE__ */ m.jsx("div", { className: "h4", children: "Step 1 of 2" }),
           /* @__PURE__ */ m.jsx("h2", { children: "Request information" }),
           /* @__PURE__ */ m.jsx("p", { className: "rfi-step1-intro", children: "To learn more about ASU or a specific program, fill out the form below then check your email." }),
           /* @__PURE__ */ m.jsx(Ii, { gaData: Gr }),
@@ -7045,7 +7045,7 @@ const nt = {
           GdprConsent: nt.GdprConsent
         },
         children: [
-          /* @__PURE__ */ m.jsx("h4", { children: "Step 2 of 2" }),
+          /* @__PURE__ */ m.jsx("div", { className: "h4", children: "Step 2 of 2" }),
           /* @__PURE__ */ m.jsx("h2", { children: "About me" }),
           /* @__PURE__ */ m.jsx(Ni, { autoFocus: !0, gaData: qt }),
           /* @__PURE__ */ m.jsx(Mi, { gaData: qt }),
