@@ -17,7 +17,7 @@ export const BreadcrumbsAgainstWhiteBackground = () => (
         <a href="#">Second Nav Item</a>
       </li>
       <li className="breadcrumb-item active" aria-current="page">
-        <a href="#">Current Page</a>
+        Current Page
       </li>
     </ol>
   </nav>
@@ -33,7 +33,7 @@ export const BreadcrumbsAgainstGray1Background = () => (
         <a href="#">Second Nav Item</a>
       </li>
       <li className="breadcrumb-item active" aria-current="page">
-        <a href="#">Current Page</a>
+        Current Page
       </li>
     </ol>
   </nav>
@@ -49,7 +49,7 @@ export const BreadcrumbsAgainstGray2Background = () => (
         <a href="#">Second Nav Item</a>
       </li>
       <li className="breadcrumb-item active" aria-current="page">
-        <a href="#">Current Page</a>
+        Current Page
       </li>
     </ol>
   </nav>
@@ -66,7 +66,7 @@ export const FullWidthBreadcrumbsAgainstGray7Background = () => (
           <a href="#">Second Nav Item</a>
         </li>
         <li className="breadcrumb-item active" aria-current="page">
-          <a href="#">Current Page</a>
+          Current Page
         </li>
       </ol>
     </nav>

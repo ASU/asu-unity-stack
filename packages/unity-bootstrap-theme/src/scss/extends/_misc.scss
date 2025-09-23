@@ -13,7 +13,8 @@
 // Will be used in future efforts to make link more reusable.
 .secondary-nav-link {
   @extend .nav-link;
-  color: $uds-color-base-white;
+  --#{$prefix}nav-link-color: var(--#{$prefix}body-color);
+  // color: $uds-color-base-white;
   padding: 0 0 $uds-size-spacing-2;
   @include footer-links;
 }
@@ -64,7 +65,7 @@ label {
   margin-bottom: 0;
 }
 .card-title a {
-  color: $asu-gray-darkest;
+  // color: $asu-gray-darkest;
   text-decoration: none;
   display: inline-block;
   margin: 4px;

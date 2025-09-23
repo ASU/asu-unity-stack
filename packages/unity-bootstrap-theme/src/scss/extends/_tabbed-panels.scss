@@ -18,65 +18,50 @@
   }
 
   .nav-tabs {
-    display: flex;
-    flex-wrap: inherit;
-    left: 0px;
-    position: relative;
-    transition: all 0.25s ease 0s;
-    white-space: nowrap;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    -ms-overflow-style: none; // to hide scrollbar in IE and Edge
-    scrollbar-width: none; // to hide scrollbar in Firefox
+    & {
+      display: flex;
+      flex-wrap: inherit;
+      left: 0px;
+      position: relative;
+      transition: all 0.25s ease 0s;
+      white-space: nowrap;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      -ms-overflow-style: none; // to hide scrollbar in IE and Edge
+      scrollbar-width: none; // to hide scrollbar in Firefox
+    }
+
     &::-webkit-scrollbar {
       display: none; // to hide scrollbar In Chrome, Safari, Opera, and other WebKit-based browsers
     }
 
     .nav-link {
-      color: #000;
-      padding: 0.2em 0.8em;
-      border-right: 0;
-      border-left: 0;
-      border-top: 0;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 24px;
-      margin: 0.2em 0.2em 0 0.2em;
-    }
-
-    .nav-link.active {
-      background-color: transparent;
-      border-bottom: 8px solid $uds-color-base-maroon;
-    }
-
-    .nav-link:hover,
-    .nav-link:focus {
-      color: $uds-color-base-maroon;
-    }
-  }
-
-  &-dark {
-    .nav-tabs {
-      .nav-link {
-        color: $asu-gray-lightest;
+      & {
+        --#{$prefix}nav-link-color: var(--#{$prefix}body-color);
+        --#{$prefix}nav-link-active-color: var(--#{$prefix}maroon);
+        --#{$prefix}nav-link-hover-color: var(--#{$prefix}nav-link-active-color);
+        padding: 0.2em 0.8em;
+        border-right: 0;
+        border-left: 0;
+        border-top: 0;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 24px;
+        margin: 0.2em 0.2em 0 0.2em;
       }
 
-      .nav-link.active {
-        color: $uds-color-brand-gold;
+      .text-bg-dark & {
+        --#{$prefix}nav-link-active-color: var(--#{$prefix}gold);
+      }
+
+      &:hover, &:focus {
+        color: var(--#{$prefix}nav-link-active-color);
+      }
+
+      &.active {
+        color: var(--#{$prefix}nav-link-active-color);
         background-color: transparent;
-        border-bottom: 8px solid $uds-color-brand-gold;
-      }
-
-      .nav-link:hover,
-      .nav-link:focus {
-        color: $uds-color-brand-gold;
-      }
-    }
-
-    &:hover span.carousel-control-prev-icon,
-    &:hover span.carousel-control-next-icon {
-      @media screen and (min-width: $uds-breakpoint-lg) {
-        opacity: 1;
+        border-bottom: 8px solid var(--#{$prefix}nav-link-active-color);
       }
     }
   }

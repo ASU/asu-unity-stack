@@ -103,7 +103,33 @@ export const withContainer: Decorator = (
   );
 };
 
+
+export const backgroundDecorator = (Story, context) => {
+  const { backgrounds: bgOptions } = context.parameters;
+  const { backgrounds: selected } = context.globals;
+
+  let colorString = "";
+  if (selected) {
+    const selectedBg = bgOptions?.values.find(
+      ({ value }: { value: string }) => value === selected.value
+    );
+    colorString = selectedBg?.name ? `text-bg-${selectedBg.name}` : "";
+  }
+
+  useEffect(() => {
+    document.body.classList.remove(
+      "text-bg-white",
+      "text-bg-faint",
+      "text-bg-light",
+      "text-bg-dark"
+    );
+    if (colorString) {
+      document.body.classList.add(colorString);
+    }
+  }, [colorString]);
+
+  return <Story />;
+};
+
 // ordered from innermost to outermost, be careful with the order!
-export const globalDecorators = [
-  withContainer
-];
+export const globalDecorators = [withContainer, backgroundDecorator];

@@ -15,15 +15,12 @@ const parameters = {
     },
   },
   backgrounds: {
+    default: "white",
     values: [
-      {
-        name: "Gray 2",
-        value: "#e8e8e8",
-      },
-      {
-        name: "Gray 3",
-        value: "#d0d0d0",
-      },
+      { name: "white", value: "#ffffff" },
+      { name: "faint", value: "#fafafa" },
+      { name: "light", value: "#e8e8e8" },
+      { name: "dark", value: "#191919" },
     ],
   },
   docs: {

@@ -63,7 +63,7 @@ $nav-item-min-height: 3rem;
 
   .nav-text {
     @include like-an-h5;
-    color: $asu-gray-darkest;
+    --#{$prefix}link-color: var(--#{$prefix}body-color);
     padding: $uds-size-spacing-2;
     border: 1px solid $asu-gray-light;
 
@@ -75,7 +75,7 @@ $nav-item-min-height: 3rem;
   .nav-link {
     position: relative;
     padding: 0 $uds-size-spacing-1;
-    color: $asu-gray-darkest;
+    --#{$prefix}nav-link-color: var(--#{$prefix}body-color);
     @include like-an-h4;
 
     &:not(.is-active) {
@@ -89,7 +89,7 @@ $nav-item-min-height: 3rem;
     }
 
     &:visited {
-      color: $asu-gray-darkest;
+    --#{$prefix}nav-link-color: var(--#{$prefix}body-color);
     }
 
     &.is-active {
@@ -117,7 +117,7 @@ $nav-item-min-height: 3rem;
   > .nav-link-container {
     @include nav-item-container;
     overflow: hidden;
-    color: $asu-gray-darkest;
+    --#{$prefix}nav-link-color: var(--#{$prefix}body-color);
     display: flex;
     flex-direction: column;
     justify-content: center;

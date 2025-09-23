@@ -47,7 +47,7 @@
   }
 
   .nav-link {
-    --#{$prefix}link-color: var(--#{$prefix}body-color);
+    --#{$prefix}nav-link-color: var(--#{$prefix}body-color);
     padding: $uds-size-spacing-3 0;
     padding-left: 0.5rem;
     text-align: start;
@@ -59,6 +59,7 @@
 
     &:hover,
     &.active {
+      color: var(--#{$prefix}body-color);;
       margin-bottom: 0;
       border-bottom: $uds-size-spacing-1 solid $uds-color-base-gold;
     }
@@ -66,10 +67,6 @@
     &:visited {
       color: var(--#{$prefix}body-color);;
     }
-
-    // &:focus {
-    //   box-shadow: 0px 0px 0px 2px $asu-gray-darkest !important;
-    // }
 
     svg {
       width: 2rem !important;

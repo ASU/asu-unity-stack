@@ -4,25 +4,25 @@
 
 .gray-7-bg,
 .text-bg-dark {
-  // background: $asu-gray-darkest;
   --#{$prefix}body-bg: var(--#{$prefix}asu-gray-1);
+  --#{$prefix}body-color: var(--#{$prefix}asu-gray-7);
 }
 
 .gray-2-bg,
 .text-bg-light {
-  // background: $asu-gray-lighter;
   --#{$prefix}body-bg: var(--#{$prefix}asu-gray-6);
+  --#{$prefix}body-color: var(--#{$prefix}asu-gray-1);
 }
 
 .gray-1-bg,
 .text-bg-faint {
-  // background: $asu-gray-lightest;
   --#{$prefix}body-bg: var(--#{$prefix}asu-gray-7);
+  --#{$prefix}body-color: var(--#{$prefix}asu-gray-1);
 }
 
-.bg-white {
-  // background: $asu-gray-lightest;
+.text-bg-white {
   --#{$prefix}body-bg: var(--#{$prefix}white);
+  --#{$prefix}body-color: var(--#{$prefix}asu-gray-1);
 }
 
 .white-bg {

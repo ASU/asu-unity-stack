@@ -1,45 +1,11 @@
 .breadcrumb {
-  & {
-    padding-left: 0;
-  }
-  // TODO: Does not belong here, This is not breadcrumb specific all links
-  // should change colors if on dark bg
-  &.bg-gray-7, &.text-bg-dark {
-    a {
-      color: $uds-color-base-gold;
-    }
-    li.active {
-      &, a {
-        color: $asu-gray-lightest;
-      }
-    }
-  }
+  --bs-breadcrumb-item-active-color: var(--#{$prefix}body-color);
+
   .breadcrumb-item {
-    & {
-      min-height: $a11y-target-size-minimum;
-      min-width: $a11y-target-size-minimum;
-    }
-    a {
+    &, & a {
       min-height: $a11y-target-size-minimum;
       min-width: $a11y-target-size-minimum;
       display: flex;
-    }
-    &.active a {
-      color: var(--bs-breadcrumb-item-active-color);
-    }
-  }
-  .breadcrumb-item {
-    & {
-      min-height: $a11y-target-size-minimum;
-      min-width: $a11y-target-size-minimum;
-    }
-    a {
-      min-height: $a11y-target-size-minimum;
-      min-width: $a11y-target-size-minimum;
-      display: flex;
-    }
-    &.active a {
-      color: var(--bs-breadcrumb-item-active-color);
     }
   }
 }

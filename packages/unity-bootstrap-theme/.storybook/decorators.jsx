@@ -35,26 +35,27 @@ export const windowLoadEvent = storyFn => {
 
 export const backgroundDecorator = (Story, context) => {
   const { backgrounds: bgOptions } = context.parameters;
-  const { backgrounds: selectedBg } = context.globals;
+  const { backgrounds: selected } = context.globals;
 
   let colorString = "";
-  if (selectedBg) {
-    const backgroundObj = bgOptions?.values.find(
-      v => v.value === selectedBg.value
+  if (selected) {
+    const selectedBg = bgOptions?.values.find(
+      ({ value }) => value === selected.value
     );
-    colorString = backgroundObj?.name
-      ? `text-bg-${backgroundObj.name}`
-      : "none";
+    colorString = selectedBg?.name ? `text-bg-${selectedBg.name}` : "";
   }
 
-  // useEffect(() => {
-  //   // reset body opacity when background changes
-  //   document.body.classList.add(colorString);
-  //   return () => {
-  //     document.body.classList.remove(colorString);
-  //   };
-  // }, [colorString]);
-  return (<div className={colorString}>
-      <Story />
-    </div>);
+  useEffect(() => {
+    document.body.classList.remove(
+      "text-bg-white",
+      "text-bg-faint",
+      "text-bg-light",
+      "text-bg-dark"
+    );
+    if (colorString) {
+      document.body.classList.add(colorString);
+    }
+  }, [colorString]);
+
+  return <Story />;
 };

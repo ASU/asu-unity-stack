@@ -216,6 +216,7 @@ Pagination.propTypes = {
    * Background of pagination
    */
   background: PropTypes.oneOf([
+    "none",
     "white",
     "gray1",
     "gray2",

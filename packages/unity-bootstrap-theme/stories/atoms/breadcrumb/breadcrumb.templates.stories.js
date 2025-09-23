@@ -27,7 +27,7 @@ export const BreadcrumbsAgainstWhiteBackground = ({ type }) => {
           <a href="#">Second Nav Item</a>
         </li>
         <li className="breadcrumb-item active" aria-current="page">
-          <a href="#">Current Page</a>
+          Current Page
         </li>
       </ol>
     </nav>

@@ -1,3 +1,7 @@
 // Bootstrap accordion variables to override.
 $accordion-border-radius: 0;
+
+// No dark mode support for accordions yet.
+$accordion-color:                         $asu-gray-darkest;
+$accordion-bg:                             $white;
 // There are variables to override, but we just build on top of them.
