@@ -196,12 +196,12 @@ export const ButtonTagsComponent = () => (
           This is a default link
         </a>
       </div>
-      <div className="col col-12 col-lg-4 bg-light p-3">
+      <div className="col col-12 col-lg-4 text-bg-light p-3">
         <a href="#" className="">
           This is a default link
         </a>
       </div>
-      <div className="col col-12 col-lg-4 bg-dark p-3">
+      <div className="col col-12 col-lg-4 text-bg-dark p-3">
         <a href="#" className="text-gold">
           This is a link on a dark background
         </a>
@@ -280,7 +280,7 @@ export const IconOnlyButtonsColorCombinationsComponent = () => (
           <span className="visually-hidden">Close</span>
         </button>
       </div>
-      <div className="col col-12 col-lg-4 bg-faint p-3">
+      <div className="col col-12 col-lg-4 text-bg-faint p-3">
         <button
           type="button"
           className="btn btn-circle btn-circle-x-large btn-circle-alt-white"
@@ -300,7 +300,7 @@ export const IconOnlyButtonsColorCombinationsComponent = () => (
           <span className="visually-hidden">Close</span>
         </button>
       </div>
-      <div className="col col-12 col-lg-4 bg-light p-3">
+      <div className="col col-12 col-lg-4 text-bg-light p-3">
         <button
           type="button"
           className="btn btn-circle btn-circle-x-large btn-circle-alt-gray"
@@ -320,7 +320,7 @@ export const IconOnlyButtonsColorCombinationsComponent = () => (
           <span className="visually-hidden">Close</span>
         </button>
       </div>
-      <div className="col col-12 col-lg-4 bg-dark p-3">
+      <div className="col col-12 col-lg-4 text-bg-dark p-3">
         <button
           type="button"
           className="btn btn-circle btn-circle-x-large btn-circle-alt-gray"
@@ -363,7 +363,7 @@ export const PrevAndNextButtonsComponent = () => (
           <span className="visually-hidden">Next</span>
         </button>
       </div>
-      <div className="col col-12 col-lg-4 bg-light p-3">
+      <div className="col col-12 col-lg-4 text-bg-light p-3">
         <button
           type="button"
           className="btn btn-circle btn-circle-alt-gray btn-circle-large"
@@ -379,7 +379,7 @@ export const PrevAndNextButtonsComponent = () => (
           <span className="visually-hidden">Next</span>
         </button>
       </div>
-      <div className="col col-12 col-lg-4 bg-dark p-3">
+      <div className="col col-12 col-lg-4 text-bg-dark p-3">
         <button
           type="button"
           className="btn btn-circle btn-circle-alt-black btn-circle-large"

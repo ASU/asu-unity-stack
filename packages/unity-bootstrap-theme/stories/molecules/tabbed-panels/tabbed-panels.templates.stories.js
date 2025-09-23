@@ -1,15 +1,15 @@
 const extraOptions = {
   bgColor: {
     name: "Color",
-    options: [null, "bg-faint", "bg-light", "bg-dark"],
+    options: [null, "text-bg-faint", "text-bg-light", "text-bg-dark"],
     defaultValue: null,
     control: {
       type: "radio",
       labels: {
         "null": "None",
-        "bg-faint": "bg-faint",
-        "bg-light": "bg-light",
-        "bg-dark": "bg-dark",
+        "text-bg-faint": "text-bg-faint",
+        "text-bg-light": "text-bg-light",
+        "text-bg-dark": "text-bg-dark",
       },
     },
   },
@@ -21,7 +21,7 @@ export const TabbedPanels = args => {
       <h2>Tabbed panels</h2>
       <nav
         className={`uds-tabbed-panels uds-content-align ${
-          args.bgColor === "bg-dark" ? "uds-tabbed-panels-dark" : ""
+          args.bgColor === "text-bg-dark" ? "uds-tabbed-panels-dark" : ""
         }`}
       >
         <div
@@ -169,7 +169,7 @@ export const TabbedPanels = args => {
       <div className="tab-content" id="nav-tabContent">
         <div
           className={`tab-pane fade show active ${
-            args.bgColor === "bg-dark" ? "text-white" : ""
+            args.bgColor === "text-bg-dark" ? "text-white" : ""
           }`}
           id="nav-home"
           role="tabpanel"
@@ -184,7 +184,7 @@ export const TabbedPanels = args => {
         </div>
         <div
           className={`tab-pane fade ${
-            args.bgColor === "bg-dark" ? "text-white" : ""
+            args.bgColor === "text-bg-dark" ? "text-white" : ""
           }`}
           id="nav-profile"
           role="tabpanel"
@@ -199,7 +199,7 @@ export const TabbedPanels = args => {
         </div>
         <div
           className={`tab-pane fade ${
-            args.bgColor === "bg-dark" ? "text-white" : ""
+            args.bgColor === "text-bg-dark" ? "text-white" : ""
           }`}
           id="nav-contact"
           role="tabpanel"
@@ -214,7 +214,7 @@ export const TabbedPanels = args => {
         </div>
         <div
           className={`tab-pane fade ${
-            args.bgColor === "bg-dark" ? "text-white" : ""
+            args.bgColor === "text-bg-dark" ? "text-white" : ""
           }`}
           id="nav-another"
           role="tabpanel"
@@ -229,7 +229,7 @@ export const TabbedPanels = args => {
         </div>
         <div
           className={`tab-pane fade ${
-            args.bgColor === "bg-dark" ? "text-white" : ""
+            args.bgColor === "text-bg-dark" ? "text-white" : ""
           }`}
           id="nav-another-2"
           role="tabpanel"
@@ -244,7 +244,7 @@ export const TabbedPanels = args => {
         </div>
         <div
           className={`tab-pane fade ${
-            args.bgColor === "bg-dark" ? "text-white" : ""
+            args.bgColor === "text-bg-dark" ? "text-white" : ""
           }`}
           id="nav-another-3"
           role="tabpanel"

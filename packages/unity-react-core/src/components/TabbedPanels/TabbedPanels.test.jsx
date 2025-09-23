@@ -6,7 +6,7 @@ import { expect, describe, it, afterEach, beforeEach } from "vitest";
 import { TabbedPanels, Tab } from "./TabbedPanels";
 
 const tabbedPanelsDefaultArgs = {
-  bgColor: "bg-dark",
+  bgColor: "text-bg-dark",
 };
 
 const renderTabbedPanels = props => {

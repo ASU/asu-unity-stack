@@ -2,16 +2,27 @@
   height: 322px;
 }
 
-.gray-7-bg {
-  background: $asu-gray-darkest;
+.gray-7-bg,
+.text-bg-dark {
+  // background: $asu-gray-darkest;
+  --#{$prefix}body-bg: var(--#{$prefix}asu-gray-1);
 }
 
-.gray-2-bg {
-  background: $asu-gray-lighter;
+.gray-2-bg,
+.text-bg-light {
+  // background: $asu-gray-lighter;
+  --#{$prefix}body-bg: var(--#{$prefix}asu-gray-6);
 }
 
-.gray-1-bg {
-  background: $asu-gray-lightest;
+.gray-1-bg,
+.text-bg-faint {
+  // background: $asu-gray-lightest;
+  --#{$prefix}body-bg: var(--#{$prefix}asu-gray-7);
+}
+
+.bg-white {
+  // background: $asu-gray-lightest;
+  --#{$prefix}body-bg: var(--#{$prefix}white);
 }
 
 .white-bg {

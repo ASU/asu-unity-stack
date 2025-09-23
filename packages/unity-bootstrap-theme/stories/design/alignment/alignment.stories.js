@@ -9,22 +9,22 @@ export default {
 export const TemporaryStory = () => (
   <Container>
     <Column col="0">
-      <div className="bg-light" style={{ height: "300px" }}>
+      <div className="border text-bg-light" style={{ height: "300px" }}>
         &nbsp;
       </div>
     </Column>
     <Column col="0">
-      <div className="bg-dark" style={{ height: "300px" }}>
+      <div className="border text-bg-dark" style={{ height: "300px" }}>
         &nbsp;
       </div>
     </Column>
     <Column col="0">
-      <div className="bg-light" style={{ height: "300px" }}>
+      <div className="border text-bg-light" style={{ height: "300px" }}>
         &nbsp;
       </div>
     </Column>
     <Column col="0">
-      <div className="bg-dark" style={{ height: "300px" }}>
+      <div className="border text-bg-dark" style={{ height: "300px" }}>
         &nbsp;
       </div>
     </Column>

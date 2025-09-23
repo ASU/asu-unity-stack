@@ -80,7 +80,7 @@ export const ColorPaletteComponent = () => (
           <h4 className="visually-hidden">Accessibility bypass</h4>
         </div>
         <div className="col-md-3">
-          <div className="bg-dark p-3 text-light">
+          <div className="text-bg-dark p-3 text-light">
             <h5 className="">Asu Gray 1</h5>
             <p>#191919</p>
             <p>rgb(25, 25, 25)</p>
@@ -133,14 +133,14 @@ export const ColorPaletteComponent = () => (
           </div>
         </div>
         <div className="col-md-3">
-          <div className="bg-light p-3">
+          <div className="text-bg-light p-3">
             <h5>Asu Gray 6</h5>
             <p>#E8E8E8</p>
             <p>rgb(232, 232, 232)</p>
           </div>
         </div>
         <div className="col-md-3">
-          <div className="bg-faint p-3">
+          <div className="text-bg-faint p-3">
             <h5>Asu Gray 7</h5>
             <p>#FAFAFA</p>
             <p>rgb(250, 250, 250)</p>
@@ -179,7 +179,7 @@ export const CombinationsComponent = () => (
         </div>
       </div>
       <div className="col-sm-6">
-        <div className="bg-faint p-3">
+        <div className="text-bg-faint p-3">
           <h3>This is a tertiary headline</h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit,{" "}
@@ -199,7 +199,7 @@ export const CombinationsComponent = () => (
 
     <div className="row pt-3">
       <div className="col-sm-6">
-        <div className="bg-light p-3">
+        <div className="text-bg-light p-3">
           <h3>This is a tertiary headline</h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit,{" "}
@@ -216,7 +216,7 @@ export const CombinationsComponent = () => (
         </div>
       </div>
       <div className="col-sm-6">
-        <div className="bg-dark text-white p-3">
+        <div className="text-bg-dark text-white p-3">
           <h3>This is a tertiary headline</h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit,{" "}

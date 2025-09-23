@@ -10,9 +10,9 @@ export default {
       options: ["White", "Faint", "Light", "Dark"],
       mapping: {
         White: "white-bg",
-        Faint: "bg-faint",
-        Light: "bg-light",
-        Dark: "bg-dark",
+        Faint: "text-bg-faint",
+        Light: "text-bg-light",
+        Dark: "text-bg-dark",
       },
       control: {
         type: "radio",

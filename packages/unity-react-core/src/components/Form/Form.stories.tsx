@@ -28,6 +28,6 @@ export const Overview = {
   render: formTemplate.bind({}),
   name: "Form",
   args: {
-    background: "uds-form-gray1",
+    background: "text-bg-faint",
   },
 };

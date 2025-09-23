@@ -129,4 +129,7 @@ select:focus {
   outline: none !important;
   box-shadow: 0px 0px 0px 2px $uds-color-base-white, 0px 0px 0px 4px $asu-gray-darkest !important;
   z-index: 1;
+  .text-bg-dark & {
+    box-shadow: 0px 0px 0px 2px $asu-gray-darkest, 0px 0px 0px 4px $uds-color-base-white !important;
+  }
 }

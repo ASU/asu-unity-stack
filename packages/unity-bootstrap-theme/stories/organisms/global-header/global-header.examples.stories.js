@@ -40,7 +40,7 @@ export const StickyNoNavigationExample = () => (
         className="visually-hidden"
         data-elastic-exclude="data-elastic-exclude"
       ></div>
-      <div className="bg-light" style={{ height: "200vh" }}></div>
+      <div className="text-bg-light" style={{ height: "200vh" }}></div>
     </main>
   </>
 );

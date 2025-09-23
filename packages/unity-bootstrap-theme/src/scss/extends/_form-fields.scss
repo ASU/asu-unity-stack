@@ -347,12 +347,12 @@ form.uds-form {
     background-color: white;
   }
   // TODO: This belongs in backgrounds or generated with bootstrap utilities
-  &.uds-form-gray1, // Deprecated - use .bg-faint instead
-  &.bg-faint {
+  &.uds-form-gray1, // Deprecated - use .text-bg-faint instead
+  &.text-bg-faint {
     background-color: $asu-gray-lightest;
   }
-  &.uds-form-gray2, // Deprecated - use .bg-light instead
-  &.bg-light {
+  &.uds-form-gray2, // Deprecated - use .text-bg-light instead
+  &.text-bg-light {
     background-color: $asu-gray-lighter;
     /* Dark Radios and Checkboxes */
     .form-check {
@@ -372,8 +372,8 @@ form.uds-form {
       }
     }
   }
-  &.uds-form-gray7, // Deprecated - use .bg-dark instead
-  &.bg-dark {
+  &.uds-form-gray7, // Deprecated - use .text-bg-dark instead
+  &.text-bg-dark {
     background-color: $asu-gray-darkest;
     color: $asu-gray-lightest;
 

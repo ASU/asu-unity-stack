@@ -37,7 +37,7 @@ const Tab = ({ id, bgColor, selected, children }) => {
   return (
     <div
       className={`tab-pane fade show ${selected ? "show active" : ""} ${
-        bgColor === "bg-dark" ? "text-white" : ""
+        bgColor === "text-bg-dark" ? "text-white" : ""
       }`}
       id={`nav-${id}`}
       role="tabpanel"
@@ -211,7 +211,7 @@ const TabbedPanels = ({
   };
 
   let navClasses = "uds-tabbed-panels";
-  if (bgColor === "bg-dark") {
+  if (bgColor === "text-bg-dark") {
     navClasses += " uds-tabbed-panels-dark";
   }
 

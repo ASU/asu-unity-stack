@@ -68,7 +68,7 @@ export const ComponentbodyCopyWhite = () => (
 );
 
 export const ComponentbodyCopyGray1 = () => (
-  <div className="container bg-faint">
+  <div className="container text-bg-faint">
     <div className="row">
       <div className="col col-sm-12 p-3">
         <p>
@@ -101,7 +101,7 @@ export const ComponentbodyCopyGray1 = () => (
 );
 
 export const ComponentbodyCopyGray2 = () => (
-  <div className="container bg-light">
+  <div className="container text-bg-light">
     <div className="row">
       <div className="col col-sm-12 p-3">
         <p>
@@ -134,7 +134,7 @@ export const ComponentbodyCopyGray2 = () => (
 );
 
 export const ComponentbodyCopyGray7 = () => (
-  <div className="container bg-dark text-white">
+  <div className="container text-bg-dark text-white">
     <div className="row">
       <div className="col col-sm-12 p-3">
         <p>
@@ -187,7 +187,7 @@ export const ComponentASUHeadingsWhite = () => (
 );
 
 export const ComponentASUHeadingsGray1 = () => (
-  <div className="container bg-faint">
+  <div className="container text-bg-faint">
     <div className="row">
       <div className="col col-sm-12 p-3">
         <h1>Heading 1</h1>
@@ -204,7 +204,7 @@ export const ComponentASUHeadingsGray1 = () => (
 );
 
 export const ComponentASUHeadingsGray2 = () => (
-  <div className="container bg-light">
+  <div className="container text-bg-light">
     <div className="row">
       <div className="col col-sm-12 p-3">
         <h1>Heading 1</h1>
@@ -221,7 +221,7 @@ export const ComponentASUHeadingsGray2 = () => (
 );
 
 export const ComponentASUHeadingsGray7 = () => (
-  <div className="container bg-dark text-faint">
+  <div className="container text-bg-dark text-faint">
     <div className="row">
       <div className="col col-sm-12 p-3">
         <h1>Heading 1</h1>
@@ -253,7 +253,7 @@ export const ComponentHighlightsWhite = () => (
 );
 
 export const ComponentHighlightsGray1 = () => (
-  <div className="container bg-faint">
+  <div className="container text-bg-faint">
     <div className="row">
       <div className="col col-sm-12 p-3">
         <h3>
@@ -268,7 +268,7 @@ export const ComponentHighlightsGray1 = () => (
 );
 
 export const ComponentHighlightsGray2 = () => (
-  <div className="container bg-light">
+  <div className="container text-bg-light">
     <div className="row">
       <div className="col col-sm-12 p-3">
         <h3>
@@ -286,7 +286,7 @@ export const ComponentHighlightsGray2 = () => (
 );
 
 export const ComponentHighlightsGray7 = () => (
-  <div className="container bg-dark text-faint">
+  <div className="container text-bg-dark text-faint">
     <div className="row">
       <div className="col col-sm-12 p-3">
         <h3>

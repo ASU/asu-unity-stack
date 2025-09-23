@@ -82,7 +82,7 @@
 }
 // TODO: This belong in backgrounds or generated with bootstrap utilities
 .bg-light-gray, // Deprecated - use .bg-faint instead
-.bg-faint {
+.text-bg-faint {
   background-color: $asu-gray-lightest;
 }
 
@@ -116,14 +116,46 @@
 
 
 a {
-  &.text-gold, .bg-gray-7 &, .bg-dark & {
+
+  &:link,
+  &:hover,
+  &:focus {
+    color: var(--#{prefix}link-color);
+    --bs-link-color-rgb: var(--bs-maroon-rgb);
+    --bs-link-color: var(--bs-maroon);
+
+        .text-bg-dark & {
+          --bs-link-color-rgb: var(--bs-gold-rgb);
+          --bs-link-color: var(--bs-gold);
+        }
+  }
+  &:visited:not(.btn) {
+    --bs-link-color-rgb: var(--bs-maroon-rgb);
+    --bs-link-color: var(--bs-maroon);
+
+    .text-bg-dark & {
+      --bs-link-color-rgb: var(--bs-darkgold-rgb);
+      --bs-link-color: var(--bs-darkgold);
+    }
+  }
+
+
+  &.text-gold, .bg-gray-7 &, .text-bg-dark & {
     &:link,
     &:hover,
     &:focus {
-      color: $uds-color-base-gold !important;
+      --bs-link-color-rgb: var(--bs-gold-rgb);
+      --bs-link-color: var(--bs-gold);
+      &.btn {
+        --bs-link-color-rgb: var(--bs-body-color-rgb);
+        --bs-link-color: var(--bs-body-color);
+      }
+      // color: $uds-color-base-gold !important;
     }
     &:visited:not(.btn) {
-      color: $uds-color-base-darkgold !important;
+      --bs-link-color-rgb: var(--bs-darkgold-rgb);
+      --bs-link-color: var(--bs-darkgold);
+      // color: $uds-color-base-darkgold !important;
     }
   }
 

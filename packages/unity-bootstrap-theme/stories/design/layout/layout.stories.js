@@ -16,136 +16,136 @@ export const ColumnSizingComponent = () => (
 
     <div className="row row-cols-5">
       <div className="col-6">
-        <div className="bg-light">
+        <div className="text-bg-light">
           <h3>Halves</h3>
         </div>
       </div>
       <div className="col-6">
-        <div className="bg-light">
+        <div className="text-bg-light">
           <h3>Halves</h3>
         </div>
       </div>
 
       <div className="col-4">
-        <div className="bg-dark text-white">
+        <div className="text-bg-dark text-white">
           <h3>Thirds</h3>
         </div>
       </div>
       <div className="col-4">
-        <div className="bg-dark text-white">
+        <div className="text-bg-dark text-white">
           <h3>Thirds</h3>
         </div>
       </div>
       <div className="col-4">
-        <div className="bg-dark text-white">
+        <div className="text-bg-dark text-white">
           <h3>Thirds</h3>
         </div>
       </div>
 
       <div className="col-3">
-        <div className="bg-light">
+        <div className="text-bg-light">
           <h3>Quarters</h3>
         </div>
       </div>
       <div className="col-3">
-        <div className="bg-light">
+        <div className="text-bg-light">
           <h3>Quarters</h3>
         </div>
       </div>
       <div className="col-3">
-        <div className="bg-light">
+        <div className="text-bg-light">
           <h3>Quarters</h3>
         </div>
       </div>
       <div className="col-3">
-        <div className="bg-light">
+        <div className="text-bg-light">
           <h3>Quarters</h3>
         </div>
       </div>
 
       <div className="col-1">
-        <div className="bg-dark text-white">
+        <div className="text-bg-dark text-white">
           <h3>Col</h3>
         </div>
       </div>
       <div className="col-1">
-        <div className="bg-dark text-white">
+        <div className="text-bg-dark text-white">
           <h3>Col</h3>
         </div>
       </div>
       <div className="col-1">
-        <div className="bg-dark text-white">
+        <div className="text-bg-dark text-white">
           <h3>Col</h3>
         </div>
       </div>
       <div className="col-1">
-        <div className="bg-dark text-white">
+        <div className="text-bg-dark text-white">
           <h3>Col</h3>
         </div>
       </div>
       <div className="col-1">
-        <div className="bg-dark text-white">
+        <div className="text-bg-dark text-white">
           <h3>Col</h3>
         </div>
       </div>
       <div className="col-1">
-        <div className="bg-dark text-white">
+        <div className="text-bg-dark text-white">
           <h3>Col</h3>
         </div>
       </div>
       <div className="col-1">
-        <div className="bg-dark text-white">
+        <div className="text-bg-dark text-white">
           <h3>Col</h3>
         </div>
       </div>
       <div className="col-1">
-        <div className="bg-dark text-white">
+        <div className="text-bg-dark text-white">
           <h3>Col</h3>
         </div>
       </div>
       <div className="col-1">
-        <div className="bg-dark text-white">
+        <div className="text-bg-dark text-white">
           <h3>Col</h3>
         </div>
       </div>
       <div className="col-1">
-        <div className="bg-dark text-white">
+        <div className="text-bg-dark text-white">
           <h3>Col</h3>
         </div>
       </div>
       <div className="col-1">
-        <div className="bg-dark text-white">
+        <div className="text-bg-dark text-white">
           <h3>Col</h3>
         </div>
       </div>
       <div className="col-1">
-        <div className="bg-dark text-white">
+        <div className="text-bg-dark text-white">
           <h3>Col</h3>
         </div>
       </div>
 
       <div className="col">
-        <div className="bg-dark text-white">
+        <div className="text-bg-dark text-white">
           <h3>Auto</h3>
         </div>
       </div>
       <div className="col">
-        <div className="bg-dark text-white">
+        <div className="text-bg-dark text-white">
           <h3>Columns</h3>
         </div>
       </div>
       <div className="col">
-        <div className="bg-dark text-white">
+        <div className="text-bg-dark text-white">
           <h3>Can</h3>
         </div>
       </div>
       <div className="col">
-        <div className="bg-dark text-white">
+        <div className="text-bg-dark text-white">
           <h3>Divide by</h3>
         </div>
       </div>
       <div className="col">
-        <div className="bg-dark text-white">
+        <div className="text-bg-dark text-white">
           <h3>Five</h3>
         </div>
       </div>
@@ -159,23 +159,23 @@ export const ColumnSizingComponent = () => (
 
     <div className="row row-cols-2 mb-6">
       <div className="col-8">
-        <div className="bg-light" style={{ height: "20rem" }}>
+        <div className="text-bg-light" style={{ height: "20rem" }}>
           <h3>Content Left</h3>
         </div>
       </div>
       <div className="col-4">
-        <div className="bg-light" style={{ height: "20rem" }}>
+        <div className="text-bg-light" style={{ height: "20rem" }}>
           <h3>Sidebar</h3>
         </div>
       </div>
 
       <div className="col-4">
-        <div className="bg-dark text-white" style={{ height: "20rem" }}>
+        <div className="text-bg-dark text-white" style={{ height: "20rem" }}>
           <h3>Sidebar</h3>
         </div>
       </div>
       <div className="col-8">
-        <div className="bg-dark text-white" style={{ height: "20rem" }}>
+        <div className="text-bg-dark text-white" style={{ height: "20rem" }}>
           <h3>Content Right</h3>
         </div>
       </div>

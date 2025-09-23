@@ -12,7 +12,7 @@ import './back-to-top-button';
 export default { title: 'Components/Back To Top Button' };
 
 export const Default = () => `
-<div className="container bg-light" style="height: 400vh;">
+<div className="container text-bg-light" style="height: 400vh;">
   <button id="uds-back-to-top" className="uds-back-to-top-button" title="Go to top">
     <span>Back to top</span>
     <i className="fas fa-chevron-right"></i>

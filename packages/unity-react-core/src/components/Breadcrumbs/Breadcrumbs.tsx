@@ -4,9 +4,12 @@ import React, { ComponentProps } from "react";
 export const breadcrumbBgColors = [
   "",
   "bg-white",
-  "bg-gray-1",
-  "bg-gray-2",
-  "bg-gray-7",
+  "bg-gray-1", // Deprecated - use text-bg-faint
+  "bg-gray-2", // Deprecated - use text-bg-light
+  "bg-gray-7", // Deprecated - use text-bg-dark
+  "text-bg-faint",
+  "text-bg-light",
+  "text-bg-dark",
 ] as const;
 
 export interface BreadcrumbsProps extends ComponentProps<"nav"> {

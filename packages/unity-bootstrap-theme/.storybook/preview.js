@@ -7,7 +7,7 @@ globalThis.udsBootstrap = udsBootstrap;
 
 import { removeFontAwesomeChanges } from "./local-addon/helpers";
 
-import { windowLoadEvent } from "./decorators.jsx";
+import { windowLoadEvent, backgroundDecorator } from "./decorators.jsx";
 
 const parameters = {
   options: {
@@ -78,12 +78,21 @@ const parameters = {
     removeComments: /^\s*\s*$/,
     transform: code => removeFontAwesomeChanges(code),
   },
+  backgrounds: {
+    default: "white",
+    values: [
+      { name: "white", value: "#ffffff" },
+      { name: "faint", value: "#fafafa" },
+      { name: "light", value: "#e8e8e8" },
+      { name: "dark", value: "#191919" },
+    ],
+  },
 };
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
   parameters,
-  decorators: [windowLoadEvent],
+  decorators: [windowLoadEvent, backgroundDecorator],
 };
 
 export default preview;

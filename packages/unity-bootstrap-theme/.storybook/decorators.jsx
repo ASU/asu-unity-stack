@@ -1,3 +1,4 @@
+import { color } from "@storybook/theming";
 import { useEffect } from "react";
 
 export const windowLoadEvent = storyFn => {
@@ -30,4 +31,30 @@ export const windowLoadEvent = storyFn => {
   }, []);
 
   return storyFn();
+};
+
+export const backgroundDecorator = (Story, context) => {
+  const { backgrounds: bgOptions } = context.parameters;
+  const { backgrounds: selectedBg } = context.globals;
+
+  let colorString = "";
+  if (selectedBg) {
+    const backgroundObj = bgOptions?.values.find(
+      v => v.value === selectedBg.value
+    );
+    colorString = backgroundObj?.name
+      ? `text-bg-${backgroundObj.name}`
+      : "none";
+  }
+
+  // useEffect(() => {
+  //   // reset body opacity when background changes
+  //   document.body.classList.add(colorString);
+  //   return () => {
+  //     document.body.classList.remove(colorString);
+  //   };
+  // }, [colorString]);
+  return (<div className={colorString}>
+      <Story />
+    </div>);
 };

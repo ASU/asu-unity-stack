@@ -1,4 +1,4 @@
-// This function set the backgrounf color for the arrow icon
+// This function set the background color for the arrow icon
 // $fill-color: any valid css color
 // $direction:  left or right. this will set the required svg icon
 @mixin bg-arrow-icon($fill-color, $direction) {
@@ -6,13 +6,13 @@
     // "%23" escapes "#" which does not work when the SVG is an inline value
     $fill-color: '%23' + str-slice('' + $fill-color, 2);
   }
-  $svg-path: "<path fill='#{$fill-color}' d='M207.029 381.476L12.686 " +
+  $svg-path: "<path d='M207.029 381.476L12.686 " +
     "187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 " +
     "24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 " +
     "24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 " +
     "33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z'></path>";
   $bg-icon: "data:image/svg+xml; utf8, " +
-    "<svg xmlns='http://www.w3.org/2000/svg' " +
+    "<svg fill='#{$fill-color}' xmlns='http://www.w3.org/2000/svg' " +
     "viewBox='0 0 448 512' " +
     "data-fa-i2svg=''>#{$svg-path}</svg>";
 
@@ -35,41 +35,38 @@ a.page-link {
     font-size: 14px;
   }
   .page-item:not(.active) &:not(:focus):visited {
-    color: $asu-gray-darkest;
+    // color: $asu-gray-darkest;
   }
 }
 a.page-link:hover {
-  color: $asu-gray-darkest;
+  // color: $asu-gray-darkest;
   text-decoration: none;
 }
 .page-item.active a.page-link:hover {
-  color: $asu-gray-lightest;
+  // color: $asu-gray-lightest;
 }
 
 span.page-link {
-  padding-left: 0;
-  padding-right: 0;
-  &:hover {
-    background-color: inherit;
-    color: inherit;
-  }
+  --bs-pagination-padding-x: 0;
+  --bs-pagination-hover-color: inherit;
+  --bs-pagination-hover-bg: transparent;
 }
 .page-item:last-child .page-link,
 .page-item:first-child .page-link {
-  border-radius: $uds-component-border-radius;
+  // border-radius: $uds-component-border-radius;
   display: flex;
 }
-.page-item:last-child .page-link-icon:after,
-.page-item:first-child .page-link-icon:before {
+.page-item:last-child .page-link-icon::after,
+.page-item:first-child .page-link-icon::before {
   align-self: center;
   display: block;
   font-size: inherit;
   width: 1rem;
   height: 1rem;
-
-  .disabled & {
-    opacity: 0.5;
-  }
+}
+.page-item:last-child.disabled,
+.page-item:first-child.disabled {
+  opacity: 0.5;
 }
 .page-item:last-child .page-link-icon:after {
   @include bg-arrow-icon('currentColor', right);
@@ -79,38 +76,50 @@ span.page-link {
 }
 
 .pagination {
+  --bs-pagination-color: #{$asu-gray-darkest};
+  // --bs-pagination-bg: transparent;
+  // --bs-pagination-active-color: #{$asu-gray-lightest};
+  // --bs-pagination-active-bg: #{$uds-color-base-maroon};
+  // --bs-pagination-hover-color: #{$asu-gray-darkest};
+  --bs-pagination-hover-bg: #{$asu-gray-lighter};
+  --bs-pagination-focus-color: #{$asu-gray-darkest};
+  --bs-pagination-focus-bg: #{$asu-gray-lighter};
+  --bs-pagination-disabled-bg: transparent;
+  --bs-pagination-disabled-color: #{$asu-gray};
+  // --bs-pagination-icon-color: var(--bs-pagination-color);
+
   overflow-x: auto;
-  padding: $pagination-padding-y $pagination-padding-x;
+  // padding: $pagination-padding-y $pagination-padding-x;
   gap: 1rem;
   // TODO: This belongs in backgrounds or generated with bootstrap utilities
-  &.uds-bg-gray1, // Deprecated - use .bg-faint instead
-  &.bg-faint {
-    background-color: $asu-gray-lightest;
+  // &.uds-bg-gray1, // Deprecated - use .text-bg-faint instead
+  // &.text-bg-faint {
+  //   --#{$prefix}body-bg: var(--#{$prefix}asu-gray-7);
+  // }
 
-    :not(.active) .page-link {
-      background-color: $asu-gray-lightest;
-      &:hover {
-        background-color: $asu-gray;
-        color: $uds-color-font-dark-base;
-      }
-    }
+  &.uds-bg-gray,
+  &.text-bg-light {
+    // --#{$prefix}body-bg: var(--#{$prefix}asu-gray-6);
+    --bs-pagination-color: var(--#{$prefix}asu-gray-1);
+    --bs-pagination-active-color: var(--#{$prefix}asu-gray-7);
+    --bs-pagination-active-bg: #{$uds-color-base-maroon};
+    --bs-pagination-hover-bg: var(--#{$prefix}asu-gray-4);
+    --bs-pagination-focus-bg: var(--#{$prefix}asu-gray-4);
   }
 
-  &.uds-bg-gray {
-    background-color: $uds-color-background-gray;
+  &.uds-text-bg-dark,
+  .text-bg-dark &,
+  &.text-bg-dark {
+    // --#{$prefix}body-bg: var(--#{$prefix}asu-gray-1);
 
-    :not(.active) .page-link {
-      background-color: $uds-color-background-gray;
-      &:hover {
-        background-color: $asu-gray;
-        color: $uds-color-font-dark-base;
-      }
-    }
-  }
+    --bs-pagination-color: var(--#{$prefix}asu-gray-7);
+    --bs-pagination-active-color: var(--#{$prefix}asu-gray-1);
+    --bs-pagination-active-bg: #{$uds-color-base-gold};
 
-  &.uds-bg-dark {
-    background-color: $uds-color-background-dark;
-
+    --bs-pagination-hover-color: var(--#{$prefix}asu-gray-7);
+    --bs-pagination-hover-bg: var(--#{$prefix}asu-gray-3);
+    --bs-pagination-focus-color: var(--#{$prefix}asu-gray-7);
+    --bs-pagination-focus-bg: var(--#{$prefix}asu-gray-3);
     .page-item {
       &:last-child .page-link-icon::after {
         @include bg-arrow-icon($asu-gray-lightest, right);
@@ -121,23 +130,9 @@ span.page-link {
       }
     }
 
-    .page-link {
-      color: $asu-gray-lightest;
-    }
-
-    .active .page-link {
-      background-color: $uds-color-base-gold;
-      color: $uds-color-font-dark-base;
-      border-radius: 50%;
-    }
-
-    :not(.active) .page-link {
-      background-color: $uds-color-background-dark;
-      &:hover {
-        background-color: $asu-gray-dark;
-        color: $asu-gray-lightest;
-      }
-    }
+    // .active .page-link {
+    //   border-radius: 50%;
+    // }
   }
 }
 @include media-breakpoint-up(md) {

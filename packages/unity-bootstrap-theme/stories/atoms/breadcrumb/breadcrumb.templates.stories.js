@@ -7,7 +7,7 @@ export default {
   argTypes: {
     type: {
       name: "Type",
-      options: ["bg-white", "bg-faint", "bg-light", "bg-dark"],
+      options: ["bg-white", "text-bg-faint", "text-bg-light", "text-bg-dark"],
       control: {
         type: "radio",
       },

@@ -18,11 +18,11 @@ export default {
     },
     bgColor: {
       name: "BackGround Color",
-      options: ["None", "bg-faint", "bg-dark"],
+      options: ["None", "text-bg-faint", "text-bg-dark"],
       mapping: {
         "None": null,
-        "bg-faint": "bg-faint",
-        "bg-dark": "bg-dark",
+        "text-bg-faint": "text-bg-faint",
+        "text-bg-dark": "text-bg-dark",
       },
       control: {
         type: "radio",

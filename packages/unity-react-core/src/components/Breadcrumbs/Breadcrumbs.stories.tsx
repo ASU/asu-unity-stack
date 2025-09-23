@@ -49,6 +49,6 @@ export const Default = {
 export const AlternateBackground = {
   render: breadcrumbsTemplate.bind({}),
   args: {
-    backgroundColor: "bg-gray-7",
+    backgroundColor: "text-bg-dark",
   },
 };

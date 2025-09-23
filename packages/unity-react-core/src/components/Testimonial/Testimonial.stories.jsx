@@ -27,14 +27,14 @@ export default {
   argTypes: {
     wrapperBackgroundColor: {
       defaultValue: "",
-      options: ["", "bg-gray-2", "bg-gray-7", "bg-gray-1"],
+      options: ["", "text-bg-faint", "text-bg-light", "text-bg-dark"],
       control: {
         type: "radio",
         labels: {
           "": "White",
-          "bg-gray-2": "Gray 2",
-          "bg-gray-1": "Gray 1",
-          "bg-gray-7": "Black",
+          "text-bg-faint": "Light",
+          "text-bg-light": "Medium",
+          "text-bg-dark": "Dark",
         },
       },
     },

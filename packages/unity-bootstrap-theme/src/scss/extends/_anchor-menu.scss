@@ -1,5 +1,5 @@
 .uds-anchor-menu {
-  background-color: white;
+  background-color: var(--#{$prefix}body-bg);
   border-bottom: 1px solid $asu-gray-light;
   z-index: 100;
 
@@ -47,7 +47,7 @@
   }
 
   .nav-link {
-    color: $asu-gray-darkest;
+    --#{$prefix}link-color: var(--#{$prefix}body-color);
     padding: $uds-size-spacing-3 0;
     padding-left: 0.5rem;
     text-align: start;
@@ -64,12 +64,12 @@
     }
 
     &:visited {
-      color: $asu-gray-darkest;
+      color: var(--#{$prefix}body-color);;
     }
 
-    &:focus {
-      box-shadow: 0px 0px 0px 2px $asu-gray-darkest !important;
-    }
+    // &:focus {
+    //   box-shadow: 0px 0px 0px 2px $asu-gray-darkest !important;
+    // }
 
     svg {
       width: 2rem !important;

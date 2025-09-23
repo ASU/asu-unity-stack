@@ -11,7 +11,7 @@ export default {
     },
     bgColor: {
       name: "Background Color",
-      options: ["None", "bg-faint", "bg-light", "bg-dark"],
+      options: ["None", "text-bg-faint", "text-bg-light", "text-bg-dark"],
       mapping: {
         None: null,
       },
@@ -74,7 +74,7 @@ export const ImageLeftOrRight = ({ right, bgColor, extraContent }) => (
         <a
           href="#"
           className={`btn ${
-            bgColor === "bg-dark" ? "btn-gold" : "btn-dark"
+            bgColor === "text-bg-dark" ? "btn-gold" : "btn-dark"
           }`}
         >
           Button link here
@@ -82,7 +82,7 @@ export const ImageLeftOrRight = ({ right, bgColor, extraContent }) => (
         <a
           href="#"
           className={`btn ${
-            bgColor === "bg-dark" ? "btn-gold" : "btn-dark"
+            bgColor === "text-bg-dark" ? "btn-gold" : "btn-dark"
           }`}
         >
           Button link here

@@ -4,7 +4,7 @@
   }
   // TODO: Does not belong here, This is not breadcrumb specific all links
   // should change colors if on dark bg
-  &.bg-gray-7, &.bg-dark {
+  &.bg-gray-7, &.text-bg-dark {
     a {
       color: $uds-color-base-gold;
     }

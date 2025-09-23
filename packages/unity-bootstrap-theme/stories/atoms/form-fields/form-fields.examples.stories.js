@@ -238,9 +238,9 @@ export const TextInputsVariousBackgrounds = () => (
       </form>
     </div>
 
-    <div className="bg-faint">
+    <div className="text-bg-faint">
       {/* This div for Storybook display only. */}
-      <form className="uds-form bg-faint">
+      <form className="uds-form text-bg-faint">
         <div className="form-group">
           <label for="exampleDefaultInputGray1">Default text input label</label>
           <input
@@ -329,9 +329,9 @@ export const TextInputsVariousBackgrounds = () => (
       </form>
     </div>
 
-    <div className="bg-light">
+    <div className="text-bg-light">
       {/* This div for Storybook display only. */}
-      <form className="uds-form bg-light">
+      <form className="uds-form text-bg-light">
         <div className="form-group">
           <label for="exampleDefaultInputGray2">Default text input label</label>
           <input
@@ -420,9 +420,9 @@ export const TextInputsVariousBackgrounds = () => (
       </form>
     </div>
 
-    <div className="bg-dark">
+    <div className="text-bg-dark">
       {/* This div for Storybook display only. */}
-      <form className="uds-form bg-dark">
+      <form className="uds-form text-bg-dark">
         <div className="form-group">
           <label for="exampleDefaultInputGray7">Default text input label</label>
           <input
@@ -708,9 +708,9 @@ export const TextareasMultipleBackgrounds = () => (
       </form>
     </div>
 
-    <div className="bg-faint">
+    <div className="text-bg-faint">
       {/* This div for Storybook display only. */}
-      <form className="uds-form bg-faint">
+      <form className="uds-form text-bg-faint">
         <div className="form-group">
           <label for="exampleFormControlTextareaDefaultGray1">
             Default textarea
@@ -797,9 +797,9 @@ export const TextareasMultipleBackgrounds = () => (
       </form>
     </div>
 
-    <div className="bg-light">
+    <div className="text-bg-light">
       {/* This div for Storybook display only. */}
-      <form className="uds-form bg-light">
+      <form className="uds-form text-bg-light">
         <div className="form-group">
           <label for="exampleFormControlTextareaDefaultGray2">
             Default textarea
@@ -886,9 +886,9 @@ export const TextareasMultipleBackgrounds = () => (
       </form>
     </div>
 
-    <div className="bg-dark">
+    <div className="text-bg-dark">
       {/* This div for Storybook display only. */}
-      <form className="uds-form bg-dark">
+      <form className="uds-form text-bg-dark">
         <div className="form-group">
           <label for="exampleFormControlTextareaDefaultGray7">
             Default textarea
@@ -1900,9 +1900,9 @@ export const CheckboxesAndRadiosWhiteBackground = () => (
 );
 
 export const CheckboxesAndRadiosGray1Background = () => (
-  <div className="bg-faint">
+  <div className="text-bg-faint">
     {/* This div for Storybook display only. */}
-    <form className="uds-form bg-faint">
+    <form className="uds-form text-bg-faint">
       <div className="form-check">
         <input
           className="form-check-input"
@@ -2275,9 +2275,9 @@ export const CheckboxesAndRadiosGray1Background = () => (
 );
 
 export const CheckboxesAndRadiosGray2Background = () => (
-  <div className="bg-light">
+  <div className="text-bg-light">
     {/* This div for Storybook display only. */}
-    <form className="uds-form bg-light">
+    <form className="uds-form text-bg-light">
       <div className="form-check">
         <input
           className="form-check-input"
@@ -2650,9 +2650,9 @@ export const CheckboxesAndRadiosGray2Background = () => (
 );
 
 export const CheckboxesAndRadiosGray7Background = () => (
-  <div className="bg-dark">
+  <div className="text-bg-dark">
     {/* This div for Storybook display only. */}
-    <form className="uds-form bg-dark">
+    <form className="uds-form text-bg-dark">
       <div className="form-check">
         <input
           className="form-check-input"
@@ -4306,9 +4306,9 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidat
         and displayed.
       </p>
 
-      <div className="bg-dark">
+      <div className="text-bg-dark">
         {/* This div for Storybook display only. */}
-        <form className="uds-form needs-validation bg-dark">
+        <form className="uds-form needs-validation text-bg-dark">
           <div className="form-group">
             <label for="myTextInput">
               <span
@@ -4794,9 +4794,9 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedForm
         and displayed.
       </p>
 
-      <div className="bg-dark">
+      <div className="text-bg-dark">
         {/* This div for Storybook display only. */}
-        <form className="uds-form was-validated bg-dark">
+        <form className="uds-form was-validated text-bg-dark">
           <div className="form-group">
             <label for="myTextInput">
               <span
