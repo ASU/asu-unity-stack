@@ -13,7 +13,7 @@ import { NewsWrapper } from "./index.styles";
  * @param {Object} feed
  * @param {import("../../core/types/news-types").CardButton} cardButton
  */
-const gridRow = (feed, cardButton) => (
+const gridRow = (feed, cardButton, hideTags) => (
   <div
     className="col col-12 col-md-6 col-lg-4 cards-items-container"
     key={feed.id}
@@ -38,7 +38,7 @@ const gridRow = (feed, cardButton) => (
           href: feed.buttonLink,
         },
       ]}
-      tags={parseInterests(feed?.interests)}
+      tags={hideTags ? [] : parseInterests(feed?.interests)}
     />
   </div>
 );
@@ -47,13 +47,14 @@ const gridRow = (feed, cardButton) => (
  * @param {import("../../core/types/news-types").TemplateProps} props
  */
 
-const GridTemplate = ({ cardButton }) => {
+const GridTemplate = ({ cardButton, hideTags }) => {
   const { feeds } = useContext(FeedContext); // Reading the "feeds" object from the context
+  const shouldHideTags = hideTags === true || hideTags === "true";
 
   return (
     <NewsWrapper className="row row-spaced" data-testid="grid-view-container">
       {feeds?.map((feed, index) => (
-        <React.Fragment key={index}>{gridRow(feed, cardButton)}</React.Fragment>
+        <React.Fragment key={index}>{gridRow(feed, cardButton, shouldHideTags)}</React.Fragment>
       ))}
     </NewsWrapper>
   );
@@ -67,7 +68,7 @@ const GridTemplate = ({ cardButton }) => {
 /**
  * @param {FeedType} props
  */
-const CardGridNews = ({ cardButton, ...props }) => {
+const CardGridNews = ({ cardButton, hideTags = true, ...props }) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       trackReactComponent({
@@ -87,6 +88,7 @@ const CardGridNews = ({ cardButton, ...props }) => {
     <BaseFeed {...props}>
       <GridTemplate
         cardButton={{ ...defaultProps.cardButton, ...cardButton }}
+        hideTags={hideTags}
       />
     </BaseFeed>
   );

@@ -12,6 +12,7 @@
  * @ignore
  * @typedef {Object} TemplateProps
  * @property {CardButton} cardButton
+ * @property {"true" | "false" | boolean} [hideTags]
  */
 
 /**
