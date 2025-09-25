@@ -10,7 +10,7 @@
     "allowImportingTsExtensions": true,
     "esModuleInterop": true,
     "moduleResolution": "bundler",
-    "rootDir": "src",
+    "rootDirs": ["src", "scripts"],
     "module": "esnext",
     "declaration": true,
     "sourceMap": true,
@@ -33,7 +33,8 @@
     "types/**/*",
     "src/vite-env.d.ts",
     "shared/**/*",
-    "./scripts/check-changes.tsx"
+    "scripts/**/*.ts",
+    "scripts/**/*.tsx"
   ],
   "exclude": [
     "dist",
