@@ -82,7 +82,7 @@ span.page-link {
   overflow-x: auto;
   padding: $pagination-padding-y $pagination-padding-x;
   gap: 1rem;
-  &.uds-bg-gray1, %todo_update_class_name {
+  &.uds-bg-gray1, &.uds-bg-faint {
     background-color: $asu-gray-7;
 
     :not(.active) .page-link {

@@ -1,14 +1,14 @@
 const extraOptions = {
   bgColor: {
     name: "Color",
-    options: [null, "bg-gray-1", "bg-gray-2", "bg-dark"],
+    options: [null, "gray-faint-bg", "gray-light-bg", "bg-dark"],
     defaultValue: null,
     control: {
       type: "radio",
       labels: {
         "null": "None",
-        "bg-gray-1": "bg-gray-1",
-        "bg-gray-2": "bg-gray-2",
+        "gray-faint-bg": "gray-faint-bg",
+        "gray-light-bg": "gray-light-bg",
         "bg-dark": "bg-dark",
       },
     },

@@ -344,10 +344,10 @@ form.uds-form {
   &.uds-form-white {
     background-color: white;
   }
-  &.uds-form-gray1, %todo_update_class_name {
+  &.uds-form-gray1, &.uds-form-faint-bg {
     background-color: $asu-gray-7;
   }
-  &.uds-form-gray2, %todo_update_class_name {
+  &.uds-form-gray2, &.uds-form-light-bg {
     background-color: $asu-gray-6;
     /* Dark Radios and Checkboxes */
     .form-check {
@@ -367,7 +367,7 @@ form.uds-form {
       }
     }
   }
-  &.uds-form-gray7, %todo_update_class_name {
+  &.uds-form-gray7, &.uds-form-dark-bg {
     background-color: $asu-gray-1;
     color: $asu-gray-7;
 

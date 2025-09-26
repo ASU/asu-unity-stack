@@ -2,7 +2,7 @@
   & {
     padding-left: 0;
   }
-  &.bg-gray-7, %todo_update_class_name {
+  &.bg-gray-7, &.gray-dark-bg {
     a {
       color: $uds-color-base-gold;
     }

@@ -2,16 +2,31 @@
   height: 322px;
 }
 
-.gray-7-bg, %todo_update_class_name {
+.gray-7-bg, .gray-dark-bg {
   background: $asu-gray-1;
 }
 
-.gray-2-bg, %todo_update_class_name {
+.text-gray-dark-bg {
+  background-color: $asu-gray-1;
+  color: $asu-gray-7;
+}
+
+.gray-2-bg, .gray-light-bg {
   background: $asu-gray-6;
 }
 
-.gray-1-bg, %todo_update_class_name {
+.text-gray-light-bg {
+  background-color: $asu-gray-6;
+  color: $asu-gray-1;
+}
+
+.gray-1-bg, .gray-faint-bg {
   background: $asu-gray-7;
+}
+
+.text-gray-faint-bg {
+  background-color: $asu-gray-7;
+  color: $asu-gray-1;
 }
 
 .white-bg {
