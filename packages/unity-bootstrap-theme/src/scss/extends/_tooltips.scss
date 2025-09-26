@@ -35,7 +35,7 @@ button.uds-tooltip {
   outline: inherit;
 
   .fa-circle {
-    color: $uds-color-base-gray-3;
+    color: $asu-gray-5;
   }
 
   .fa-info {
@@ -60,19 +60,19 @@ button.uds-tooltip {
   }
 }
 
-button.uds-tooltip-gray-1 {
+button.uds-tooltip-gray-1, %todo_update_class_name {
   .fa-circle {
-    color: $uds-color-base-gray-4;
+    color: $asu-gray-4;
   }
 
   .fa-info {
-    color: $uds-color-base-gray-1;
+    color: $asu-gray-7;
   }
 }
 
 button.uds-tooltip-gray {
   .fa-circle {
-    color: $uds-color-base-gray-4;
+    color: $asu-gray-4;
   }
 
   .fa-info {
@@ -82,7 +82,7 @@ button.uds-tooltip-gray {
 
 button.uds-tooltip-dark {
   .fa-circle {
-    color: $uds-color-base-gray-5;
+    color: $asu-gray-3;
   }
 
   .fa-info {
@@ -91,8 +91,8 @@ button.uds-tooltip-dark {
 }
 
 div[role='tooltip'].uds-tooltip-description {
-  background: $uds-color-base-gray-7 0% 0% no-repeat padding-box;
-  color: $uds-color-base-gray-1;
+  background: $asu-gray-1 0% 0% no-repeat padding-box;
+  color: $asu-gray-7;
   font: normal normal normal $uds-size-spacing-2 Arial;
   line-height: $uds-size-spacing-3;
   margin: 0px 5px;
@@ -106,7 +106,7 @@ div[role='tooltip'].uds-tooltip-description {
   z-index: 1;
 
   & > span.uds-tooltip-heading {
-    color: $uds-color-base-gray-1;
+    color: $asu-gray-7;
     display: block;
     font: normal normal bold $uds-size-spacing-2 Arial;
     letter-spacing: 0px;
@@ -133,7 +133,7 @@ span.uds-tooltip-visually-hidden {
 }
 
 .uds-tooltip-bg-base-gray {
-  background-color: $uds-color-base-gray-1;
+  background-color: $asu-gray-7;
 }
 
 .uds-tooltip-bg-gray {

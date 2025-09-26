@@ -2,13 +2,13 @@
   & {
     padding-left: 0;
   }
-  &.bg-gray-7 {
+  &.bg-gray-7, %todo_update_class_name {
     a {
       color: $uds-color-base-gold;
     }
     li.active {
       &, a {
-        color: $uds-color-base-gray-1;
+        color: $asu-gray-7;
       }
     }
   }
