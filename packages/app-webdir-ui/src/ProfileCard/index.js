@@ -30,11 +30,12 @@ import { profileCardType } from "./models";
  */
 
 const ProfileCard = ({ ...props }) => {
-  const hasSocialsOrWebsite =
+  const hasSocialsOrWebsiteOrShortBio =
     props.facebookLink ||
     props.linkedinLink ||
     props.twitterLink ||
-    props.website;
+    props.website ||
+    props.shortBio;
   const title = props.matchedAffiliationTitle
     ? `${props.matchedAffiliationTitle}`
     : "";
@@ -136,7 +137,7 @@ const ProfileCard = ({ ...props }) => {
             )}
           </ul>
         )}
-        {["default", "large"].includes(props.size) && hasSocialsOrWebsite && (
+        {["default", "large"].includes(props.size) && hasSocialsOrWebsiteOrShortBio && (
           <div className="description-and-social">
             <p className="person-description">
               {props.shortBio?.slice(0, 250)}
