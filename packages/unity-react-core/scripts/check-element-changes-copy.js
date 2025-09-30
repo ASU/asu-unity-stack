@@ -2,34 +2,71 @@ const {diffChars, createPatch} = require('diff');
 const { execSync, spawnSync } = require("child_process");
 const { fstat } = require("fs");
 const fs = require('fs');
-// import {convertToHTML} from "./check-changes";
 
 const exec = require("child_process").exec;
 const path = require("path");
 
 //=====================================================
-// console log helpers
+// Console log helpers
 //=====================================================
 const FgBlue = "\x1b[34m";
 const FgGreen = "\x1b[32m";
+const FgRed = "\x1b[31m";
+const FgYellow = "\x1b[33m";
+const Reset = "\x1b[0m";
 
-const printLine = () => console.log(FgBlue, "-".repeat(84));
-
-const printTitle = (text = "") => {
-  console.log(FgGreen, `${text + " ".repeat(84 - text.length)}`);
-};
+const printLine = () => console.log(FgBlue, "-".repeat(84), Reset);
+const printTitle = (text = "") => console.log(FgGreen, `${text + " ".repeat(84 - text.length)}`, Reset);
+const printError = (text = "") => console.log(FgRed, text, Reset);
+const printWarning = (text = "") => console.log(FgYellow, text, Reset);
 //=====================================================
 // Process files
 //=====================================================
 
-const args = process.argv.slice(1);
-const daysAgo = args [2];
-console.log(daysAgo);
+const args = process.argv.slice(2);
+
+let daysAgo;
+
+if (args.length === 0) {
+  console.log(`
+Usage: node check-element-changes-copy.js -d <days-ago>
+
+Options:
+  -d, --days    Number of days ago to compare with
+
+Examples:
+  node check-element-changes-copy.js -d 7     # Compare with 7 days ago
+  node check-element-changes-copy.js -d 14    # Compare with 14 days ago
+  node check-element-changes-copy.js --days 30 # Compare with 30 days ago
+  `);
+  process.exit(1);
+}
+
+if (args[0] === '-d' || args[0] === '--days') {
+  if (args.length < 2 || isNaN(parseInt(args[1]))) {
+    printError('Error: Please provide a valid number of days after -d flag');
+    process.exit(1);
+  }
+  daysAgo = parseInt(args[1]);
+} else if (args[0] && !isNaN(parseInt(args[0]))) {
+  // Backward compatibility: accept just the number
+  daysAgo = parseInt(args[0]);
+} else {
+  printError('Error: Invalid arguments. Use -d <days> format.');
+  process.exit(1);
+}
+
+printTitle(`Comparing components: current vs ${daysAgo} days ago`);
 
 const runGit = function (command) {
-  let commitHash = null;
-  const eg = execSync(command);
-  return eg.toString();
+  try {
+    const result = execSync(command, { encoding: 'utf8' });
+    return result.toString();
+  } catch (error) {
+    printError(`Git command failed: ${command}`);
+    printError(error.message);
+    throw error;
+  }
 };
 
 const parseDateForHTML = (days=0) => {
@@ -38,121 +75,173 @@ const parseDateForHTML = (days=0) => {
   return d.getMonth() + 1 + "-" + d.getDate() + "-" + d.getFullYear();
 };
 
-const parseDateForGIT = () => {
+const parseDateForGIT = (daysAgo) => {
   const d = new Date();
   d.setDate(d.getDate() - daysAgo);
   const date = d.toDateString();
   const arrayDate = date.split(' ');
   const [day, month, dayOfMonth, year] = arrayDate;
-  const old_Date = month + " " + dayOfMonth + " " + year;
-  return old_Date;
+  return month + " " + dayOfMonth + " " + year;
 };
 
 const OLD_DATE_HTML = parseDateForHTML(daysAgo);
+const old_date_git = parseDateForGIT(daysAgo);
 
-const old_date_git = parseDateForGIT();
+printTitle(`Getting commit from ${daysAgo} days ago (${old_date_git})...`);
 
 const gitOldCommitCommand = `git rev-list -1 --before="${old_date_git}" dev --format=medium`;
-
 const runOldCommit = runGit(gitOldCommitCommand);
 const m = runOldCommit.match(/^commit\s+([a-f0-9]{40})/m);
 const commitHash = m ? m[1] : null;
+
+if (!commitHash) {
+  printError(`No commit found for date: ${old_date_git}`);
+  process.exit(1);
+}
+
+console.log(`✅ Found commit: ${commitHash}`);
+
+printTitle("Setting up temporary worktree...");
+
+// Clean up existing temp directory
+if (fs.existsSync("scripts/temp")) {
+  try {
+    runGit(`git worktree remove scripts/temp --force`);
+  } catch (e) {
+    // Ignore errors if worktree doesn't exist
+  }
+}
 
 const gitCheckout = `git worktree add scripts/temp ${commitHash}`;
 const runCheckout = runGit(gitCheckout);
 
 const targetDir = "scripts/temp/packages/unity-react-core/scripts";
-const dir = "scripts/temp/packages/unity-react-core"
-const srcDir = "packages/unity-react-core/scripts/check-changes.tsx"
-const htmlDir = "packages/shared/utils/html-utils.js"
-fs.copyFileSync(srcDir, targetDir+"/check-changes.tsx")
-fs.copyFileSync(htmlDir, "scripts/temp/"+htmlDir)
-/**
- *
- * 1. OJAS TODO: We dont actually need to change directory, we can pass in the directory to the spawnSync command as the argument cwd: <directory>
- */
+const dir = "scripts/temp/packages/unity-react-core";
+const srcDir = "packages/unity-react-core/scripts/check-changes.tsx";
+const htmlDir = "packages/shared/utils/html-utils.js";
 
-//execSync(`npx tsx check-changes.tsx ${OLD_DATE_HTML}`);
-console.log(process.cwd());
+if (!fs.existsSync(targetDir)) {
+  fs.mkdirSync(targetDir, { recursive: true });
+}
+
+fs.copyFileSync(srcDir, targetDir + "/check-changes.tsx");
+fs.copyFileSync(htmlDir, "scripts/temp/" + htmlDir);
+
+printTitle(`Generating component HTML from ${daysAgo} days ago...`);
+
 const output = spawnSync("npx", ["tsx", "scripts/check-changes.tsx", OLD_DATE_HTML], {
   stdio: "inherit",
   cwd: dir
 });
 
-/**
- * * 5. OJAS TODO: We know the name of old components file and the location, so we can
- * read it using fs.readFileSync after creating the OLD_FILE_LOCATION variable
- * Example:
- * const OLD_FILE_LOCATION = path.join(targetDir, `components-${OLD_DATE_HTML}.json`)
- * const oldDateComponentObjectWithHtml = JSON.parse(fs.readFileSync(OLD_FILE_LOCATION, 'utf8))
- */
+if (output.error) {
+  printError(`Error generating old components: ${output.error.message}`);
+  process.exit(1);
+}
+
 const OLD_FILE_LOCATION = path.join(targetDir, `components-${OLD_DATE_HTML}.json`);
+
+if (!fs.existsSync(OLD_FILE_LOCATION)) {
+  printError(`Old components file not found: ${OLD_FILE_LOCATION}`);
+  process.exit(1);
+}
+
 const oldDateComponentObjectWithHtml = JSON.parse(
   fs.readFileSync(OLD_FILE_LOCATION, 'utf8')
-)
+);
 
+printTitle("Generating current component HTML...");
 
-
-/**
- * 6. OJAS TODO: We can run the spawnSync("npx", ["tsx" command again but in the same directory of this file
- * and we can pass in today's date. You can create a date at the current time by just instantiating `new Date()`
- * and then you can get the month day and year same as in parseDateForHTML above
- */
 const currentOutput = spawnSync("npx", ["tsx", "packages/unity-react-core/scripts/check-changes.tsx", parseDateForHTML()], {
   stdio: "inherit"
 });
 
-
-/**
- * 7. OJAS TODO: Now that we have the current date components in a json file from step 6,
- * we can read that file and compare that to the old data, `oldDateComponentObjectWithHtml`
- */
-const currFilewithHtml = JSON.parse(
-  fs.readFileSync(`packages/unity-react-core/scripts/components-${parseDateForHTML()}.json`, 'utf8')
-);
-
-for(const[key, value] of Object.entries(currFilewithHtml)){
-  try{
-    const htmlStr = currFilewithHtml[key].html
-    const oldHtmlStr = oldDateComponentObjectWithHtml[key].html
-    const differences = diffChars(oldHtmlStr, htmlStr);
-    console.log("x")
-    console.log(differences);
-  } catch(error){
-    console.log(error, key);
-  }
+if (currentOutput.error) {
+  printError(`Error generating current components: ${currentOutput.error.message}`);
+  process.exit(1);
 }
 
+const currentFilePath = `packages/unity-react-core/scripts/components-${parseDateForHTML()}.json`;
 
+if (!fs.existsSync(currentFilePath)) {
+  printError(`Current components file not found: ${currentFilePath}`);
+  process.exit(1);
+}
 
+const currFilewithHtml = JSON.parse(
+  fs.readFileSync(currentFilePath, 'utf8')
+);
 
+// Enhanced comparison with better UI
+printLine();
+printTitle("COMPONENT COMPARISON RESULTS");
+printLine();
 
+const currentComponents = currFilewithHtml.components || currFilewithHtml;
+const oldComponents = oldDateComponentObjectWithHtml.components || oldDateComponentObjectWithHtml;
 
+let changedCount = 0;
+let unchangedCount = 0;
+let errorCount = 0;
 
-execSync(`git worktree remove --force scripts/temp`);
+Object.keys(currentComponents).forEach(componentName => {
+  const current = currentComponents[componentName];
+  const old = oldComponents[componentName];
 
-//convertToHTML(OLD_DATE_HTML);
+  try {
+    if (!current || !old) {
+      printError(`❌ ${componentName}: Missing component data`);
+      errorCount++;
+      return;
+    }
 
+    // Handle both old and new data structures
+    const currentHtml = current.html || current;
+    const oldHtml = old.html || old;
 
-// const GIT_COMMAND = `git whatchanged --since '${parseDateForGIT()}' --oneline --name-only --pretty=format: | sort | uniq`;
+    if (typeof currentHtml !== 'string' || typeof oldHtml !== 'string') {
+      printError(`❌ ${componentName}: Invalid HTML data`);
+      errorCount++;
+      return;
+    }
 
-// console.log(`Run GIT command '${GIT_COMMAND}'`);
+    const hasChanges = currentHtml !== oldHtml;
+    const currentSize = currentHtml.length;
+    const oldSize = oldHtml.length;
+    const sizeDiff = currentSize - oldSize;
 
-// runGit(GIT_COMMAND, (res = "") => {
-//   const fileTemplates = res
-//     .split(/\r\n|\r|\n/)
-//     .filter(elm => elm.match(/.*\.(templates?)/gi));
+    if (hasChanges) {
+      console.log(`🔄 ${componentName}: CHANGED`);
+      console.log(`   Size: ${oldSize} → ${currentSize} (${sizeDiff > 0 ? '+' : ''}${sizeDiff} chars)`);
 
-//   printLine();
+      // Show detailed diff for debugging (optional, can be commented out for cleaner output)
+      // const differences = diffChars(oldHtml, currentHtml);
+      // console.log(`   Detailed differences:`, differences.filter(part => part.added || part.removed));
 
-//   fileTemplates.forEach(filePath => {
-//     const fileName = path.parse(filePath).name;
-//     const packageName = filePath.split(path.sep)[1];
-//     printTitle(`${packageName}: ${fileName}`);
-//     printLine();
-//   });
-// });
-//=====================================================
+      changedCount++;
+    } else {
+      console.log(`✅ ${componentName}: No changes`);
+      unchangedCount++;
+    }
+  } catch (error) {
+    printError(`❌ ${componentName}: Error during comparison - ${error.message}`);
+    errorCount++;
+  }
+});
 
-// const v = execSync(gitOldCommitCommand);
-// console.log(v.toString());
+printLine();
+printTitle("SUMMARY");
+console.log(`Changed: ${changedCount}`);
+console.log(`Unchanged: ${unchangedCount}`);
+console.log(`Errors: ${errorCount}`);
+console.log(`Total: ${changedCount + unchangedCount + errorCount}`);
+printLine();
+
+try {
+  execSync(`git worktree remove --force scripts/temp`);
+  console.log(`✅ Cleaned up temporary worktree`);
+} catch (e) {
+  printWarning(`Warning: Could not remove temp directory: ${e.message}`);
+}
+
+process.exit(errorCount > 0 ? 1 : 0);
