@@ -327,6 +327,18 @@ footer {
   }
 }
 
+@include media-breakpoint-down(sm) {
+  #footer-innovation {
+    .footer-innovation-links {
+      .img-link {
+        img {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}
+
 /*------------------------------------------------------------------
 7. Footer Colophon (#footer-colophon)
 --------------------------------------------------------------------*/
