@@ -183,6 +183,7 @@ const oldComponents = oldDateComponentObjectWithHtml.components || oldDateCompon
 let changedCount = 0;
 let unchangedCount = 0;
 let errorCount = 0;
+const changedComponents = [];
 
 Object.keys(currentComponents).forEach(componentName => {
   const current = currentComponents[componentName];
@@ -219,6 +220,10 @@ Object.keys(currentComponents).forEach(componentName => {
       // console.log(`   Detailed differences:`, differences.filter(part => part.added || part.removed));
 
       changedCount++;
+      /**
+       * TODO:
+       * Add component name to list changedComponents
+       */
     } else {
       console.log(`✅ ${componentName}: No changes`);
       unchangedCount++;
@@ -243,5 +248,15 @@ try {
 } catch (e) {
   printWarning(`Warning: Could not remove temp directory: ${e.message}`);
 }
+
+/**
+ * Step 1
+ * Ask user input if they want to see the new html for the changed components
+ * Step 2
+ * If yes, parse the new file (e.g. components-09-25-2023.json) to show the html for only those that have changed
+ * Step 3
+ * After parsing the json file, use the changedComponnents array to only get the html for the changed components
+ *
+ */
 
 process.exit(errorCount > 0 ? 1 : 0);
