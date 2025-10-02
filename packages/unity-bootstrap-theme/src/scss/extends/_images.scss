@@ -63,3 +63,12 @@
       rgba(25, 25, 25, 0.2);
   }
 }
+
+.uds-card-arrangement {
+  .uds-img {
+    img {
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+  }
+}
