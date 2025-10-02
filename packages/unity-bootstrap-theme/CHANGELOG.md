@@ -1,3 +1,11 @@
+# [@asu/unity-bootstrap-theme-v1.30.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.29.0...@asu/unity-bootstrap-theme-v1.30.0) (2025-10-02)
+
+
+### Features
+
+* **unity-bootstrap-theme:** added mixin to expand clickable area for btn ([641eb4e](https://github.com/ASU/asu-unity-stack/commit/641eb4e3a293e73c50586c7bed9b06fce1cc6f50))
+* **unity-bootstrap-theme:** applied some feedback changes ([6b791b5](https://github.com/ASU/asu-unity-stack/commit/6b791b57d4411eaa2aa71c91824e746c36367e5c))
+
 # [@asu/unity-bootstrap-theme-v1.29.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.28.3...@asu/unity-bootstrap-theme-v1.29.0) (2025-09-18)
 
 
