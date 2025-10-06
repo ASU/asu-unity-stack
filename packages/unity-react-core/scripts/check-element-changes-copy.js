@@ -288,7 +288,7 @@ process.stdin.once("data", (data) => {
             console.log(html);
             printLine();
           } else {
-            printWarning(`⚠️ Could not find HTML for component: ${comp}`);
+            printWarning(`Could not find HTML for component: ${comp}`);
           }
         });
       }
