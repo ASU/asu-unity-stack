@@ -214,6 +214,7 @@ Object.keys(currentComponents).forEach(componentName => {
     if (hasChanges) {
       console.log(`🔄 ${componentName}: CHANGED`);
       console.log(`   Size: ${oldSize} → ${currentSize} (${sizeDiff > 0 ? '+' : ''}${sizeDiff} chars)`);
+      changedComponents.push(componentName);
 
       // Show detailed diff for debugging (optional, can be commented out for cleaner output)
       // const differences = diffChars(oldHtml, currentHtml);
@@ -259,4 +260,47 @@ try {
  *
  */
 
-process.exit(errorCount > 0 ? 1 : 0);
+console.log("Would you like to view the new HTML for the changed components? (y/n)");
+process.stdin.resume();
+process.stdin.setEncoding("utf8");
+
+process.stdin.once("data", (data) => {
+  const userInput = data.trim().toLowerCase();
+
+  if (userInput === "y" || userInput === "yes") {
+    printTitle("User chose to view changed components.");
+
+    try {
+      const currentFileData = JSON.parse(fs.readFileSync(currentFilePath, "utf8"));
+      const currentComponentsData = currentFileData.components || currentFileData;
+
+      printLine();
+      printTitle("CHANGED COMPONENT HTML PREVIEWS");
+      printLine();
+
+      if (changedComponents.length === 0) {
+        printWarning("No changed components were recorded.");
+      } else {
+        changedComponents.forEach((comp) => {
+          const html = currentComponentsData[comp]?.html || currentComponentsData[comp];
+          if (html) {
+            console.log(`\n ${comp}:\n`);
+            console.log(html);
+            printLine();
+          } else {
+            printWarning(`⚠️ Could not find HTML for component: ${comp}`);
+          }
+        });
+      }
+    } catch (err) {
+      printError(`Error reading current components file: ${err.message}`);
+    }
+
+  } else {
+    printWarning("User chose not to view changed components.");
+
+  }
+
+  process.stdin.pause();
+});
+
