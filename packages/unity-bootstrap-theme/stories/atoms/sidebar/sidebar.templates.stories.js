@@ -61,7 +61,7 @@ export const Sidebar = () => (
         <div
           id="cardBodyOne"
           className="collapse card-body"
-          aria-labelledby="cardOne"
+
           data-bs-parent=".sidebar"
         >
           <a href="#" className="nav-link">
@@ -101,7 +101,7 @@ export const Sidebar = () => (
         <div
           id="cardBodyTwo"
           className="collapse card-body"
-          aria-labelledby="cardTwo"
+
           data-bs-parent=".sidebar"
         >
           <a href="#" className="nav-link">
@@ -161,7 +161,7 @@ export const Sidebar = () => (
         <div
           id="cardBodyThree"
           className="collapse card-body"
-          aria-labelledby="cardThree"
+
           data-bs-parent=".sidebar"
         >
           <a href="#" className="nav-link">

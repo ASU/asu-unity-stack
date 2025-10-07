@@ -68,7 +68,7 @@ const DropdownLink = () => (
           </a>
           <div
             className="dropdown-menu dropdown-columns"
-            aria-labelledby="dropdown-one-col"
+
           >
             <div className="dropdown-col">
               <a

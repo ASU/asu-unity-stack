@@ -930,7 +930,7 @@ export const TwoColumns = () => (
                 <div
                   id="footlink-two"
                   className="collapse accordion-body"
-                  aria-labelledby="footlink-header-two"
+
                 >
                   <a className="nav-link" href="#" title="link">
                     Biological and Health Systems Computing
@@ -1228,7 +1228,7 @@ export const ThreeColumns = () => (
                 <div
                   id="footlink-two"
                   className="collapse accordion-body"
-                  aria-labelledby="footlink-header-two"
+
                 >
                   <a className="nav-link" href="#" title="link">
                     Biological and Health Systems Computing
@@ -1271,7 +1271,7 @@ export const ThreeColumns = () => (
                 <div
                   id="footlink-three"
                   className="collapse accordion-body"
-                  aria-labelledby="footlink-header-three"
+
                 >
                   <a className="nav-link" href="#" title="link">
                     Student Organization
@@ -1574,7 +1574,7 @@ export const FourColumns = () => (
                 <div
                   id="footlink-two"
                   className="collapse accordion-body"
-                  aria-labelledby="footlink-header-two"
+
                 >
                   <a className="nav-link" href="#" title="link">
                     Biological and Health Systems Computing
@@ -1617,7 +1617,7 @@ export const FourColumns = () => (
                 <div
                   id="footlink-three"
                   className="collapse accordion-body"
-                  aria-labelledby="footlink-header-three"
+
                 >
                   <a className="nav-link" href="#" title="link">
                     Student Organization
@@ -1665,7 +1665,7 @@ export const FourColumns = () => (
                 <div
                   id="footlink-four"
                   className="collapse accordion-body"
-                  aria-labelledby="footlink-header-four"
+
                 >
                   <a className="nav-link" href="#" title="link">
                     Student Organization
@@ -1968,7 +1968,7 @@ export const FiveColumns = () => (
                 <div
                   id="footlink-two"
                   className="collapse accordion-body"
-                  aria-labelledby="footlink-header-two"
+
                 >
                   <a className="nav-link" href="#" title="link">
                     Biological and Health Systems Computing
@@ -2011,7 +2011,7 @@ export const FiveColumns = () => (
                 <div
                   id="footlink-three"
                   className="collapse accordion-body"
-                  aria-labelledby="footlink-header-three"
+
                 >
                   <a className="nav-link" href="#" title="link">
                     Student Organization
@@ -2059,7 +2059,7 @@ export const FiveColumns = () => (
                 <div
                   id="footlink-four"
                   className="collapse accordion-body"
-                  aria-labelledby="footlink-header-four"
+
                 >
                   <a className="nav-link" href="#" title="link">
                     Student Organization
@@ -2107,7 +2107,7 @@ export const FiveColumns = () => (
                 <div
                   id="footlink-five"
                   className="collapse accordion-body"
-                  aria-labelledby="footlink-header-five"
+
                 >
                   <a className="nav-link" href="#" title="link">
                     Student Organization
@@ -2410,7 +2410,7 @@ export const SixColumns = () => (
                 <div
                   id="footlink-two"
                   className="collapse accordion-body"
-                  aria-labelledby="footlink-header-two"
+
                 >
                   <a className="nav-link" href="#" title="link">
                     Biological and Health Systems Computing
@@ -2453,7 +2453,7 @@ export const SixColumns = () => (
                 <div
                   id="footlink-three"
                   className="collapse accordion-body"
-                  aria-labelledby="footlink-header-three"
+
                 >
                   <a className="nav-link" href="#" title="link">
                     Student Organization
@@ -2501,7 +2501,7 @@ export const SixColumns = () => (
                 <div
                   id="footlink-four"
                   className="collapse accordion-body"
-                  aria-labelledby="footlink-header-four"
+
                 >
                   <a className="nav-link" href="#" title="link">
                     Student Organization
@@ -2549,7 +2549,7 @@ export const SixColumns = () => (
                 <div
                   id="footlink-five"
                   className="collapse accordion-body"
-                  aria-labelledby="footlink-header-five"
+
                 >
                   <a className="nav-link" href="#" title="link">
                     Student Organization
@@ -2597,7 +2597,7 @@ export const SixColumns = () => (
                 <div
                   id="footlink-six"
                   className="collapse accordion-body"
-                  aria-labelledby="footlink-header-six"
+
                 >
                   <a className="nav-link" href="#" title="link">
                     A Zen master
