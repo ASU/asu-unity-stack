@@ -1,3 +1,17 @@
+# [@asu/unity-react-core-v1.2.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.1.4...@asu/unity-react-core-v1.2.0) (2025-09-22)
+
+
+### Features
+
+* **unity-react-core:** added select tag functionality to headers ([8555c8c](https://github.com/ASU/asu-unity-stack/commit/8555c8c8b76149687468bc5e189394aa0c0726b5))
+
+# [@asu/unity-react-core-v1.1.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.1.3...@asu/unity-react-core-v1.1.4) (2025-09-09)
+
+
+### Bug Fixes
+
+* **unity-react-core:** fix long accordion scroll issue ([e10dc26](https://github.com/ASU/asu-unity-stack/commit/e10dc26f01bcbdb7b64cedf3258ab15494401dd1))
+
 # [@asu/unity-react-core-v1.1.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.1.2...@asu/unity-react-core-v1.1.3) (2025-06-30)
 
 

@@ -5,12 +5,24 @@
     1rem;
 }
 
+@mixin clickable-area() {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -10px;
+    margin: auto;
+  }
+}
+
 // Extra styles that don't have bootstrap variables to override
 .btn {
   text-decoration: none;
   font-weight: bold;
   white-space: nowrap;
   width: max-content !important;
+  @include clickable-area();
+
   &::first-letter {
     text-transform: uppercase;
   }

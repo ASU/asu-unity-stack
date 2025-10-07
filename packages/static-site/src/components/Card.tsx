@@ -6,6 +6,7 @@ export interface CardWrapperProps {
   description: string | JSX.Element;
   href: string;
   linkLabel: string;
+  ariaLabel?: string;
   isRoute?: boolean;
 }
 const CardWrapper: FC<CardWrapperProps> = ({
@@ -13,27 +14,23 @@ const CardWrapper: FC<CardWrapperProps> = ({
   description,
   href,
   linkLabel,
+  ariaLabel,
   isRoute,
 }) => {
   return (
-    <div className="col-md-6 pb-8">
+    <div className="col-lg-4 col-md-6 pb-8">
       <h3>{title}</h3>
       <p>{description}</p>
       <p>
-        {isRoute ? (
-          <a className="btn btn-maroon btn-medium" href={getRelativePath(href)}>
-            {linkLabel}
-          </a>
-        ) : (
-          <a
-            className="btn btn-maroon btn-medium"
-            target="_blank"
-            rel="noreferrer"
-            href={href}
-          >
-            {linkLabel}
-          </a>
-        )}
+        <a
+          className="btn btn-maroon btn-medium"
+          href={isRoute ? getRelativePath(href) : href}
+          target={isRoute ? undefined : "_blank"}
+          rel={isRoute ? undefined : "noreferrer"}
+          aria-label={ariaLabel}
+        >
+          {linkLabel}
+        </a>
       </p>
     </div>
   );

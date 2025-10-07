@@ -17,7 +17,7 @@ const Home = () => {
         <div className="row my-6">
           <div className="col-md-8">
             <p className="lead">
-              A design system enables your product teams to share learnings
+              Unity Design System enables your product teams to share learnings
               across silos, avoid duplicate work and focus more on user
               experience problems rather than UI problems, complete with
               guidelines, principles, philosophies and code.
@@ -26,37 +26,52 @@ const Home = () => {
         </div>
       </div>
       <div className="container">
-        <h2>Resources</h2>
+        <h2>Unity Design System (UDS)</h2>
         <Divider />
         <div className="row my-6">
           <Card
-            title="Unity Design System UI Kit"
+            title="UDS Guidelines"
             description="Guidelines, standards, and best-practices for Unity Design System
-              across all ASU web projects."
+              across all ASU web projects. Seamlessly explore the Design Kit and Code Kit
+              in one place."
             href="https://zeroheight.com/9f0b32a56"
-            linkLabel="Explore the UDS UI Kit"
-          />
-
-          <Card
-            title="Unity Design System Styles Library"
-            description="A community-built design system built with Adobe XD."
-            href="https://shared-assets.adobe.com/link/fb14b288-bf63-47e0-5d30-384de5560455"
-            linkLabel="View the document"
+            linkLabel="View UDS guidelines"
           />
           <Card
-            title="ASU Header"
+            title="Design Kit"
+            description="Design specifications for components provided by the ASU Brand."
+            href="https://www.figma.com/design/vhudREMl5qdTxRLZTmttHJ/UDS-Design-Kit--web-only-?node-id=593-23577&p=f&t=ZiUlJTLE1HyXrZrB-0"
+            linkLabel="View UDS design Kit"
+          />
+          <Card
+            title="Code Kit"
+            description="Npm packages provide React components and Bootstrap HTML examples for implementing UDS components."
+            href="./index.html#codekit"
+            linkLabel="View code kit section below"
+            isRoute={true}
+          />
+        </div>
+      </div>
+      <div className="container">
+        <h2>Implementing UDS</h2>
+        <Divider />
+        <div className="row my-6">
+          <Card
+            title="ASU Header and Footer"
             description="Guidelines, requirements and best practices for using the ASU
               Branded Header in your site."
             href={PagePaths.HEADERGUIDE + "index.html"}
             isRoute={true}
-            linkLabel="View the guide"
+            linkLabel="View guide"
+            ariaLabel="View ASU header and footer guide"
           />
           <Card
             title="Google Tag Manager and data layer"
             description="Ensure your site or application has the necessary analytics integrations."
             href={PagePaths.DATALAYERGUIDE + "index.html"}
             isRoute={true}
-            linkLabel="GTM and data layer guide"
+            linkLabel="View guide"
+            ariaLabel="View Google Tag Manager and data layer guide"
           />
           <Card
             title="Unity Design System Package Registry"
@@ -87,6 +102,7 @@ const Home = () => {
           />
         </div>
       </div>
+      <a id="codekit"></a>
       <div className="container">
         <h2>Npm Packages</h2>
         <Divider />

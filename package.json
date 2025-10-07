@@ -66,6 +66,7 @@
     "@storybook/theming": "^7.6.14",
     "@types/node": "^20.0.0",
     "@types/react-dom": "^18.3.0",
+    "@types/semver": "^7",
     "@typescript-eslint/eslint-plugin": "^8.13.0",
     "@typescript-eslint/parser": "^8.13.0",
     "@vitejs/plugin-react": "^4.3.1",
@@ -100,7 +101,7 @@
     "rimraf": "^3.0.2",
     "semantic-release": "^22",
     "semantic-release-monorepo": "^8.0.2",
-    "start-server-and-test": "^1.9.1",
+    "semver": "^7.5.2",
     "vite": "^5.3.5",
     "webpack": "^5.32.0",
     "webpack-bundle-analyzer": "^4.4.1",
@@ -112,7 +113,10 @@
   "resolutions": {
     "cosmiconfig": "<9",
     "lerna": "^6.6.2",
-    "react-phone-input-2": "patch:react-phone-input-2@npm%3A2.15.1#~/.yarn/patches/react-phone-input-2-npm-2.15.1-f7a7dd913b.patch"
+    "react-phone-input-2": "patch:react-phone-input-2@npm%3A2.15.1#~/.yarn/patches/react-phone-input-2-npm-2.15.1-f7a7dd913b.patch",
+    "form-data": ">=4.0.4",
+    "axios": "~1.12.0",
+    "semver": "^7.5.2"
   },
   "config": {
     "commitizen": {

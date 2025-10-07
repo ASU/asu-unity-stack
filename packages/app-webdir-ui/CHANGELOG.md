@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v5.0.5](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.4...@asu/app-webdir-ui-v5.0.5) (2025-09-18)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** fixed axios security vulnerability ([fd78c96](https://github.com/asu/asu-unity-stack/commit/fd78c968aa1a21fd54888640a2899f3b176f5172))
+
 # [@asu/app-webdir-ui-v5.0.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.3...@asu/app-webdir-ui-v5.0.4) (2025-07-24)
 
 

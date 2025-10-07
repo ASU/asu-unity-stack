@@ -1,3 +1,15 @@
+# [@asu/app-rfi-v3.5.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.4.0...@asu/app-rfi-v3.5.0) (2025-09-22)
+
+
+### Bug Fixes
+
+* **app-rfi:** fix heading accessibility issue ([0f2ff6b](https://github.com/asu/asu-unity-stack/commit/0f2ff6bd29e065ab84c17b3ccbbd80682a7095c4))
+
+
+### Features
+
+* **unity-react-core:** added select tag functionality to headers ([8555c8c](https://github.com/asu/asu-unity-stack/commit/8555c8c8b76149687468bc5e189394aa0c0726b5))
+
 # [@asu/app-rfi-v3.4.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.3.0...@asu/app-rfi-v3.4.0) (2025-04-29)
 
 
