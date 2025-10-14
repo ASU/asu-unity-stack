@@ -1,3 +1,12 @@
+# [@asu/unity-bootstrap-theme-v1.30.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.30.0...@asu/unity-bootstrap-theme-v1.30.1) (2025-10-14)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** update alt on footer ranking image stories ([b982d61](https://github.com/ASU/asu-unity-stack/commit/b982d61fb835bbe08f22405d7c3db005006ea558))
+* **unity-bootstrap-theme:** update footer ranking styles and image assets ([97812df](https://github.com/ASU/asu-unity-stack/commit/97812df7f9373d53d0da3cacc98e4860f5f46f32))
+* **unity-bootstrap-theme:** updated footer innovation logo ([0dd006f](https://github.com/ASU/asu-unity-stack/commit/0dd006f2bb5b1a9ef7510ed5f3ec93a77e649334))
+
 # [@asu/unity-bootstrap-theme-v1.30.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.29.0...@asu/unity-bootstrap-theme-v1.30.0) (2025-10-02)
 
 
