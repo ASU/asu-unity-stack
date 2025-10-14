@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v5.0.6](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.5...@asu/app-webdir-ui-v5.0.6) (2025-10-14)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** sanitize useId to generate accessible form field IDs ([4c30f84](https://github.com/asu/asu-unity-stack/commit/4c30f84a1144a1731d29cc0d5b1a0159f4676186))
+
 # [@asu/app-webdir-ui-v5.0.5](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.4...@asu/app-webdir-ui-v5.0.5) (2025-09-18)
 
 
