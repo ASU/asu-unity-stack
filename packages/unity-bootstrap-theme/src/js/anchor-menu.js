@@ -24,7 +24,7 @@ function initAnchorMenu() {
   // These values are for optionally present Drupal admin toolbars. They
   // are not present in Storybook and not required in implementations.
   const toolbarBarHeight =
-    document.getElementById("toolbar-bar")?.toolbarBarHeight || 0;
+    document.getElementById("toolbar-bar")?.offsetHeight || 0;
   const toolbarItemAdministrationTrayHeight =
     document.getElementById("toolbar-item-administration-tray")?.offsetHeight ||
     0;
