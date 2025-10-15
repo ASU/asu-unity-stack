@@ -1,3 +1,12 @@
+# [@asu/unity-bootstrap-theme-v1.30.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.30.1...@asu/unity-bootstrap-theme-v1.30.2) (2025-10-15)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix typo ([d66b84d](https://github.com/ASU/asu-unity-stack/commit/d66b84dd62b45c0cc50a4bdd4bde13f3f24fdb2b))
+* **unity-bootstrap-theme:** replace custom throttle with @asu/shared ([e2ba8fe](https://github.com/ASU/asu-unity-stack/commit/e2ba8fe119a7fd3f9e70fa81158a1c9c3b2738e5))
+* **unity-bootstrap-theme:** update anchor menu logic to be more universal ([9629c31](https://github.com/ASU/asu-unity-stack/commit/9629c31c33a240da3681d08f89899d70ca6f0356))
+
 # [@asu/unity-bootstrap-theme-v1.30.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.30.0...@asu/unity-bootstrap-theme-v1.30.1) (2025-10-14)
 
 
