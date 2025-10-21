@@ -6,6 +6,7 @@ import { useAppContext } from "../../core/context/app-context";
 import { Wrapper } from "./index.styles";
 import { Login } from "./Login";
 import { Search } from "./Search";
+import { useIsMobile } from "../../core/hooks/isMobile";
 
 const DEFAULT_GA_EVENT = {
   event: "link",
@@ -19,6 +20,7 @@ const DEFAULT_GA_EVENT = {
 
 const UniversalNavbar = () => {
   const { breakpoint } = useAppContext();
+  const isMobile = useIsMobile(breakpoint);
 
   function getURL() {
     try {
@@ -84,7 +86,7 @@ const UniversalNavbar = () => {
               ))}
               <Login />
             </div>
-            <Search />
+            {!isMobile && <Search />}
           </nav>
         </div>
       </div>

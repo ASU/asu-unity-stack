@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ASU_GRAY2 } from "../../../colors";
 
 const LoginWrapper = styled.div`
   display: flex;
@@ -7,7 +8,7 @@ const LoginWrapper = styled.div`
   > a {
     padding: 0;
     margin: 0;
-    color: #484848;
+    color: ${ASU_GRAY2};
     text-decoration: none;
   }
   > span.name {

@@ -1,11 +1,12 @@
 import styled from "styled-components";
+import { ASU_GRAY5 } from "../../../colors";
 
 const PartnerLogosWrapper = styled.div`
   margin: 0.5rem 0;
   a {
     display: inline-block;
     &:not(:last-child) {
-      border-right: 1px solid #d0d0d0;
+      border-right: 1px solid ${ASU_GRAY5};
       margin-right: 1.5rem;
       padding-right: 1.5rem;
     }

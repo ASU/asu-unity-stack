@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ASU_GRAY1, ASU_GOLD, ASU_GRAY4 } from "../../../../colors";
 
 const NavItemWrapper = styled.li`
   position: relative;
@@ -12,7 +13,7 @@ const NavItemWrapper = styled.li`
     display: inline-block;
     padding: 0.5rem 0.75rem;
     line-height: 1rem;
-    color: #191919;
+    color: ${ASU_GRAY1};
     &:after {
       transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
       content: "";
@@ -25,7 +26,7 @@ const NavItemWrapper = styled.li`
       background-image: linear-gradient(
         to right,
         transparent 0.5%,
-        #ffc627 0.5%
+        ${ASU_GOLD} 0.5%
       );
     }
     &.nav-item-selected:after {
@@ -51,10 +52,10 @@ const NavItemWrapper = styled.li`
     }
   }
   @media (max-width: ${({ breakpoint }) => breakpoint}) {
-    border-bottom: 1px solid #cccccc;
+    border-bottom: 1px solid ${ASU_GRAY4};
     margin: 0;
     &:first-child {
-      border-top: 1px solid #cccccc;
+      border-top: 1px solid ${ASU_GRAY4};
     }
     &:hover > a:after {
       width: 100%;
@@ -66,7 +67,7 @@ const NavItemWrapper = styled.li`
       padding: 1rem 2rem 0.75rem;
       width: 100%;
       &.open-link {
-        border-bottom: 1px solid #cccccc;
+        border-bottom: 1px solid ${ASU_GRAY4};
       }
       &:after {
         right: 0;

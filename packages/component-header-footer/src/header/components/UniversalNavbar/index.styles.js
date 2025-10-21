@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { GASU_GRAY6, ASU_GRAY1, ASU_GRAY5 } from "../../colors";
 
 const Wrapper = styled.div`
-  background-color: #e8e8e8;
+  background-color: ${GASU_GRAY6};
   min-height: 24px;
   transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
   .header-top {
@@ -14,7 +15,7 @@ const Wrapper = styled.div`
       .links-container {
         display: flex;
         .nav-link {
-          color: #484848;
+          color: ${ASU_GRAY1};
           font-size: 0.75rem;
           line-height: 0.75rem;
           padding: 0.25rem 0.5rem;
@@ -43,19 +44,6 @@ const Wrapper = styled.div`
     width: 100%;
     min-height: auto;
     position: relative;
-    &:before {
-      content: "";
-      width: 100%;
-      height: 50px;
-      position: absolute;
-      top: -50px;
-      border-bottom: 1px solid #d0d0d0;
-      background: linear-gradient(
-        180deg,
-        rgba(232, 232, 232, 0) 0%,
-        rgba(232, 232, 232, 1) 100%
-      );
-    }
     .header-top {
       width: 100%;
       .nav {
@@ -73,16 +61,15 @@ const Wrapper = styled.div`
           width: 100%;
           .nav-link {
             white-space: normal;
-            color: #191919;
             margin-right: 0;
             text-align: center;
             width: 100%;
             font-size: 0.875rem;
             padding: 1rem 1.5rem;
-            border-top: 1px solid #d0d0d0;
+            border-top: 1px solid ${ASU_GRAY5};
             justify-content: center;
             &:nth-child(even) {
-              border-left: 1px solid #d0d0d0;
+              border-left: 1px solid ${ASU_GRAY5};
             }
           }
         }
