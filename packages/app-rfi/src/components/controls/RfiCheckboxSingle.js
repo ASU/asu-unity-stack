@@ -11,8 +11,8 @@ const RfiCheckboxSingle = ({
   id,
   name,
   value,
-  requiredIcon,
-  required,
+  requiredIcon = undefined,
+  required = undefined,
   onBlur,
 }) => {
   const [field, meta] = useField({ name, type: "checkbox" });
@@ -39,11 +39,6 @@ const RfiCheckboxSingle = ({
       <RfiError isError={!!isError} metaError={meta.error} />
     </div>
   );
-};
-
-RfiCheckboxSingle.defaultProps = {
-  requiredIcon: undefined,
-  required: undefined,
 };
 
 RfiCheckboxSingle.propTypes = {

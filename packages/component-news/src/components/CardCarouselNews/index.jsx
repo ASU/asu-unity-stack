@@ -4,7 +4,7 @@ import React, { useContext, useEffect } from "react";
 
 import { trackReactComponent } from "@asu/shared";
 import { BaseFeed } from "../../core/components/BaseFeed";
-import { defaultProps } from "../../core/constants/default-props";
+import { defaultProps as coreDefaultProps } from "../../core/constants/default-props";
 import { NewsWrapper } from "./index.styles";
 
 /**
@@ -78,7 +78,7 @@ const CardCarouselNews = ({ cardButton, ...props }) => {
     // Calling the high order component that fetches the data
     <BaseFeed {...props}>
       <CarouselTemplate
-        cardButton={{ ...defaultProps.cardButton, ...cardButton }}
+        cardButton={{ ...coreDefaultProps.cardButton, ...cardButton }}
       />
     </BaseFeed>
   );

@@ -15,7 +15,7 @@ const GaEventPropTypes = {
   text: PropTypes.string,
 };
 
-const RfiLabel = ({ label, name, id, requiredIcon }) => (
+const RfiLabel = ({ label, name, id = undefined, requiredIcon = undefined }) => (
   <label htmlFor={id || name}>
     {requiredIcon ? (
       <span title="Required">
@@ -27,7 +27,7 @@ const RfiLabel = ({ label, name, id, requiredIcon }) => (
   </label>
 );
 
-const RfiError = ({ isError, metaError }) => (
+const RfiError = ({ isError = undefined, metaError = undefined }) => (
   <div role="alert">
     {isError ? (
       <small className="form-text invalid-feedback">
@@ -43,21 +43,11 @@ const RfiError = ({ isError, metaError }) => (
 // duplicate the setting in our props got displaying the required icon until
 // Formik has a better way to do it.
 
-RfiLabel.defaultProps = {
-  id: undefined,
-  requiredIcon: undefined,
-};
-
 RfiLabel.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   id: PropTypes.string,
   requiredIcon: PropTypes.bool,
-};
-
-RfiError.defaultProps = {
-  isError: undefined,
-  metaError: undefined,
 };
 
 RfiError.propTypes = {
