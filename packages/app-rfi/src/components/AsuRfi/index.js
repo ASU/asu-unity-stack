@@ -29,24 +29,24 @@ const currentScriptPath = getCurrentScriptPath();
 const AsuRfi = props => {
   const {
     appPathFolder,
-    variant,
-    campus,
-    actualCampus,
-    college,
-    department,
-    studentType,
-    areaOfInterest,
-    areaOfInterestOptional,
-    programOfInterest,
-    programOfInterestOptional,
-    isCertMinor,
-    country,
-    stateProvince,
-    successMsg,
-    test,
-    dataSourceDegreeSearch,
-    dataSourceAsuOnline,
-    dataSourceCountriesStates,
+    variant = undefined,
+    campus = undefined,
+    actualCampus = undefined,
+    college = undefined,
+    department = undefined,
+    studentType = undefined,
+    areaOfInterest = undefined,
+    areaOfInterestOptional = false,
+    programOfInterest = undefined,
+    programOfInterestOptional = false,
+    isCertMinor = false,
+    country = undefined,
+    stateProvince = undefined,
+    successMsg = undefined,
+    test = false,
+    dataSourceDegreeSearch = DATA_SOURCE.DEGREE_SEARCH,
+    dataSourceAsuOnline = DATA_SOURCE.ASU_ONLINE,
+    dataSourceCountriesStates = DATA_SOURCE.COUNTRIES_STATES,
     submissionUrl,
   } = props;
 
@@ -133,28 +133,6 @@ const AsuRfi = props => {
 };
 
 export { AsuRfi };
-
-// Props
-AsuRfi.defaultProps = {
-  variant: undefined, // default set in appState
-  campus: undefined,
-  actualCampus: undefined,
-  college: undefined,
-  department: undefined,
-  studentType: undefined,
-  areaOfInterest: undefined,
-  areaOfInterestOptional: false,
-  programOfInterest: undefined,
-  programOfInterestOptional: false,
-  isCertMinor: false,
-  country: undefined,
-  stateProvince: undefined,
-  successMsg: undefined,
-  test: false,
-  dataSourceDegreeSearch: DATA_SOURCE.DEGREE_SEARCH,
-  dataSourceAsuOnline: DATA_SOURCE.ASU_ONLINE,
-  dataSourceCountriesStates: DATA_SOURCE.COUNTRIES_STATES,
-};
 
 AsuRfi.propTypes = {
   appPathFolder: PropTypes.string,
