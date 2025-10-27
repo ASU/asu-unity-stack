@@ -1,6 +1,7 @@
 // @ts-check
 import { Card, feedCardButtonShape, FeedContext } from "@asu/unity-react-core";
 import React, { useContext, useEffect } from "react";
+import PropTypes from "prop-types";
 
 import { trackReactComponent } from "@asu/shared";
 import { BaseFeed } from "../../core/components/BaseFeed";
@@ -97,6 +98,8 @@ const CardGridNews = ({ cardButton, hideTags = true, ...props }) => {
 CardGridNews.propTypes = {
   ...BaseFeed.propTypes,
   cardButton: feedCardButtonShape,
+  hideTags: PropTypes.oneOf(["true", "false", true, false])
+
 };
 
 export { CardGridNews };
