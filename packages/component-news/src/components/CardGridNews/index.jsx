@@ -12,6 +12,7 @@ import { NewsWrapper } from "./index.styles";
  *
  * @param {Object} feed
  * @param {import("../../core/types/news-types").CardButton} cardButton
+ * @param {boolean} hideTags
  */
 const gridRow = (feed, cardButton, hideTags) => (
   <div
