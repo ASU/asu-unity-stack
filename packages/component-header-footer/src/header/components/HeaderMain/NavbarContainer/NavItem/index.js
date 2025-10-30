@@ -69,23 +69,21 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
       }
     };
 
-    const handleFocusOut = () => {
-      setTimeout(() => {
+    const handleFocusChange = () => {
+      requestAnimationFrame(() => {
         const node = clickRef.current;
         if (opened && node && !node.contains(document.activeElement)) {
           setItemOpened();
         }
-      }, 0);
+      });
     };
 
-    const node = clickRef.current;
-
     document.addEventListener("click", handleClickOutside, true);
-    node?.addEventListener("focusout", handleFocusOut);
+    document.addEventListener("focusin", handleFocusChange);
 
     return () => {
       document.removeEventListener("click", handleClickOutside, true);
-      node?.removeEventListener("focusout", handleFocusOut);
+      document.removeEventListener("focusin", handleFocusChange);
     };
   }, [opened]);
 
