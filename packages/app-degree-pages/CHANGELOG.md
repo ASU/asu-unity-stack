@@ -1,3 +1,10 @@
+# [@asu/app-degree-pages-v3.1.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.1.0...@asu/app-degree-pages-v3.1.1) (2025-11-07)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** fix react dom error when anchor menu mounts during drupal render ([3dd3543](https://github.com/asu/asu-unity-stack/commit/3dd35436080984ab0d87989e4666b2b38592027b))
+
 # [@asu/app-degree-pages-v3.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.0.5...@asu/app-degree-pages-v3.1.0) (2025-07-14)
 
 
