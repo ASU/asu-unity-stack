@@ -29,7 +29,7 @@ $nav-item-min-height: 3rem;
 --------------------------------------------------------------------*/
 
 .sidebar-toggler {
-  border: 1px solid $uds-color-base-gray-3;
+  border: 1px solid $asu-gray-5;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -55,7 +55,7 @@ $nav-item-min-height: 3rem;
 }
 
 .sidebar {
-  border: 1px solid $uds-color-base-gray-3;
+  border: 1px solid $asu-gray-5;
 
   a:first-child {
     border-top: 0;
@@ -63,9 +63,9 @@ $nav-item-min-height: 3rem;
 
   .nav-text {
     @include like-an-h5;
-    color: $uds-color-base-gray-7;
+    color: $asu-gray-1;
     padding: $uds-size-spacing-2;
-    border: 1px solid $uds-color-base-gray-3;
+    border: 1px solid $asu-gray-5;
 
     &:not(:last-child) {
       border-bottom: 0;
@@ -75,7 +75,7 @@ $nav-item-min-height: 3rem;
   .nav-link {
     position: relative;
     padding: 0 $uds-size-spacing-1;
-    color: $uds-color-base-gray-7;
+    color: $asu-gray-1;
     @include like-an-h4;
 
     &:not(.is-active) {
@@ -89,7 +89,7 @@ $nav-item-min-height: 3rem;
     }
 
     &:visited {
-      color: $uds-color-base-gray-7;
+      color: $asu-gray-1;
     }
 
     &.is-active {
@@ -117,18 +117,18 @@ $nav-item-min-height: 3rem;
   > .nav-link-container {
     @include nav-item-container;
     overflow: hidden;
-    color: $uds-color-base-gray-7;
+    color: $asu-gray-1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     &:not(:first-child) {
-      border-top: 1px solid $uds-color-base-gray-3;
+      border-top: 1px solid $asu-gray-5;
     }
   }
 
   .card-foldable {
     border: 0;
-    border-top: 1px solid $uds-color-base-gray-3;
+    border-top: 1px solid $asu-gray-5;
 
     .card-header,
     .card-body {

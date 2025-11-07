@@ -35,15 +35,15 @@ a.page-link {
     font-size: 14px;
   }
   .page-item:not(.active) &:not(:focus):visited {
-    color: $uds-color-base-gray-7;
+    color: $asu-gray-1;
   }
 }
 a.page-link:hover {
-  color: $uds-color-base-gray-7;
+  color: $asu-gray-1;
   text-decoration: none;
 }
 .page-item.active a.page-link:hover {
-  color: $uds-color-base-gray-1;
+  color: $asu-gray-7;
 }
 
 span.page-link {
@@ -82,13 +82,13 @@ span.page-link {
   overflow-x: auto;
   padding: $pagination-padding-y $pagination-padding-x;
   gap: 1rem;
-  &.uds-bg-gray1 {
-    background-color: $uds-color-base-gray-1;
+  &.uds-bg-gray1, &.uds-bg-faint {
+    background-color: $asu-gray-7;
 
     :not(.active) .page-link {
-      background-color: $uds-color-base-gray-1;
+      background-color: $asu-gray-7;
       &:hover {
-        background-color: $uds-color-base-gray-4;
+        background-color: $asu-gray-4;
         color: $uds-color-font-dark-base;
       }
     }
@@ -100,7 +100,7 @@ span.page-link {
     :not(.active) .page-link {
       background-color: $uds-color-background-gray;
       &:hover {
-        background-color: $uds-color-base-gray-4;
+        background-color: $asu-gray-4;
         color: $uds-color-font-dark-base;
       }
     }
@@ -111,16 +111,16 @@ span.page-link {
 
     .page-item {
       &:last-child .page-link-icon::after {
-        @include bg-arrow-icon($uds-color-base-gray-1, right);
+        @include bg-arrow-icon($asu-gray-7, right);
       }
 
       &:first-child .page-link-icon::before {
-        @include bg-arrow-icon($uds-color-base-gray-1, left);
+        @include bg-arrow-icon($asu-gray-7, left);
       }
     }
 
     .page-link {
-      color: $uds-color-base-gray-1;
+      color: $asu-gray-7;
     }
 
     .active .page-link {
@@ -132,8 +132,8 @@ span.page-link {
     :not(.active) .page-link {
       background-color: $uds-color-background-dark;
       &:hover {
-        background-color: $uds-color-base-gray-5;
-        color: $uds-color-base-gray-1;
+        background-color: $asu-gray-3;
+        color: $asu-gray-7;
       }
     }
   }

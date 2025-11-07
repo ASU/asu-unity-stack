@@ -10,9 +10,9 @@ export default {
       options: ["White", "Gray 1", "Gray 2", "Gray 7"],
       mapping: {
         "White": "white-bg",
-        "Gray 1": "gray-1-bg",
-        "Gray 2": "gray-2-bg",
-        "Gray 7": "gray-7-bg",
+        "Gray 1": "gray-faint-bg",
+        "Gray 2": "gray-light-bg",
+        "Gray 7": "gray-dark-bg",
       },
       control: {
         type: "radio",
