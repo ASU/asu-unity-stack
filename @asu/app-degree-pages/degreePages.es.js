@@ -12510,7 +12510,7 @@ const bi = ({
       );
     }
   }, [F]);
-  const pe = Wm(r, S);
+  const pe = r ? Wm(r, S) : null;
   return /* @__PURE__ */ d.jsxs(d.Fragment, { children: [
     /* @__PURE__ */ d.jsx(Cc, {}),
     Y && /* @__PURE__ */ d.jsx(ic, { message: vc }),
@@ -12526,8 +12526,8 @@ const bi = ({
         contents: n == null ? void 0 : n.contents
       }
     ) }),
-    !q && Hm(pe) && /* @__PURE__ */ d.jsx(Sc, { anchorMenu: pe }),
     /* @__PURE__ */ d.jsxs(Ac, { as: "div", "data-is-loading": q, className: "main-section", children: [
+      !q && pe && Hm(pe) && /* @__PURE__ */ d.jsx(Sc, { anchorMenu: pe }),
       q && /* @__PURE__ */ d.jsx(sc, {}),
       !q && (F != null && F.error ? /* @__PURE__ */ d.jsx("section", { className: "container mt-4 mb-0", children: /* @__PURE__ */ d.jsx(
         Bo,
