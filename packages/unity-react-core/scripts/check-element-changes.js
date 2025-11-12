@@ -29,15 +29,15 @@ let daysAgo;
 
 if (args.length === 0) {
   console.log(`
-Usage: node check-element-changes-copy.js -d <days-ago>
+Usage: node check-element-changes.js -d <days-ago>
 
 Options:
   -d, --days    Number of days ago to compare with
 
 Examples:
-  node check-element-changes-copy.js -d 7     # Compare with 7 days ago
-  node check-element-changes-copy.js -d 14    # Compare with 14 days ago
-  node check-element-changes-copy.js --days 30 # Compare with 30 days ago
+  node check-element-changes.js -d 7     # Compare with 7 days ago
+  node check-element-changes.js -d 14    # Compare with 14 days ago
+  node check-element-changes.js --days 30 # Compare with 30 days ago
   `);
   process.exit(1);
 }
@@ -49,7 +49,6 @@ if (args[0] === '-d' || args[0] === '--days') {
   }
   daysAgo = parseInt(args[1]);
 } else if (args[0] && !isNaN(parseInt(args[0]))) {
-  // Backward compatibility: accept just the number
   daysAgo = parseInt(args[0]);
 } else {
   printError('Error: Invalid arguments. Use -d <days> format.');
@@ -172,7 +171,6 @@ const currFilewithHtml = JSON.parse(
   fs.readFileSync(currentFilePath, 'utf8')
 );
 
-// Enhanced comparison with better UI
 printLine();
 printTitle("COMPONENT COMPARISON RESULTS");
 printLine();

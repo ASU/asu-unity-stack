@@ -5,6 +5,32 @@ import { Accordion } from "../src/components/Accordion/Accordion.jsx";
 import { Card } from "../src/components/Card/Card.jsx";
 import { Pagination } from "../src/components/Pagination/Pagination.jsx";
 import { Breadcrumbs } from "../src/components/Breadcrumbs/Breadcrumbs";
+import { Button } from "../src/components/Button/Button.jsx";
+import { ButtonIconOnly } from "../src/components/ButtonIconOnly/ButtonIconOnly.jsx";
+import { ButtonTag } from "../src/components/ButtonTag/ButtonTag.jsx";
+import { Checkboxes } from "../src/components/Checkbox/Checkbox";
+import { Divider } from "../src/components/Divider/Divider";
+import { Form } from "../src/components/Form/Form";
+import { GridLinks } from "../src/components/GridLinks/GridLinks";
+import { Hero } from "../src/components/Hero/Hero.jsx";
+import { Image } from "../src/components/Image/Image.jsx";
+import { ImageBasedCard } from "../src/components/ImageBasedCard/ImageBasedCard";
+import { List } from "../src/components/List/List";
+import { Modal } from "../src/components/Modal/Modal";
+import { NotificationBanner } from "../src/components/NotificationBanner/NotificationBanner";
+import { TextInput } from "../src/components/TextInput/TextInput";
+import { Textarea } from "../src/components/Textarea/Textarea";
+import { TabbedPanels, Tab } from "../src/components/TabbedPanels/TabbedPanels";
+import { Select } from "../src/components/Select/Select";
+import { Testimonial } from "../src/components/Testimonial/Testimonial";
+import { RankingCard } from "../src/components/RankingCard/RankingCard";
+import { Radios } from "../src/components/Radio/Radio";
+import { Tooltip } from "../src/components/Tooltip/Tooltip";
+import { Video } from "../src/components/Video/Video";
+import { SidebarMenu } from "../src/components/SidebarMenu/SidebarMenu";
+import { SystemAlert } from "../src/components/SystemAlert/SystemAlert";
+import { Table } from "../src/components/Tables/Tables";
+import { Loader } from "../src/components/Loader/Loader";
 import { getBootstrapHTML } from "../src/components/GaEventWrapper/useBaseSpecificFramework.js";
 
 const fs = require("fs");
@@ -161,6 +187,282 @@ function convertToHTML(OLD_DATE: string): void {
         background: "white",
         totalPages: 4,
       },
+    },
+    Button: {
+      reactComponent: Button,
+      props: {
+        label: "Default Button",
+        onClick: () => {},
+      },
+    },
+    ButtonIconOnly: {
+      reactComponent: ButtonIconOnly,
+      props: {
+        color: "white",
+        icon: ["fas", "times"],
+        onClick: () => {},
+      },
+    },
+    ButtonTag: {
+      reactComponent: ButtonTag,
+      props: {
+        label: "Tag Button",
+        color: "gray",
+        onClick: () => {},
+      },
+    },
+    Checkboxes: {
+      reactComponent: Checkboxes,
+      props: {},
+    },
+    Divider: {
+      reactComponent: Divider,
+      props: {},
+    },
+    Form: {
+      reactComponent: Form,
+      props: {
+        children: "Form content",
+        background: "uds-form-gray1",
+      },
+    },
+    GridLinks: {
+      reactComponent: GridLinks,
+      props: {
+        numColumns: 2,
+        textColor: "none",
+        gridLinkItems: [
+          {
+            label: "First-year student",
+            icon: "fa-university",
+            href: "https://example.com",
+          },
+          {
+            label: "Online student",
+            icon: "fa-desktop",
+            href: "https://example.com",
+          },
+          {
+            label: "Transfer student",
+            icon: "fa-lightbulb",
+            href: "https://example.com",
+          },
+          {
+            label: "Veteran student",
+            icon: "fa-user-graduate",
+            href: "https://example.com",
+          },
+        ],
+      },
+    },
+    Hero: {
+      reactComponent: Hero,
+      props: {
+        image: {
+          url: "https://picsum.photos/800/400",
+          altText: "Hero image",
+          size: "medium",
+        },
+        title: {
+          text: "Hero Heading",
+          highlightColor: "gold",
+        },
+        contentsColor: "white",
+        contents: [
+          {
+            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+          },
+        ],
+      },
+    },
+    Image: {
+      reactComponent: Image,
+      props: {
+        src: "https://picsum.photos/300/200",
+        alt: "Placeholder image",
+        border: true,
+      },
+    },
+    ImageBasedCard: {
+      reactComponent: ImageBasedCard,
+      props: {
+        image: "https://picsum.photos/300/200",
+        title: "Example Card Title",
+        buttonText: "Learn More",
+        buttonHref: "https://example.com",
+        orientation: "portrait",
+        size: "md",
+      },
+    },
+    List: {
+      reactComponent: List,
+      props: {
+        listType: "unordered",
+        items: [
+          {
+            content: "First list item",
+          },
+          {
+            content: "Second list item",
+          },
+          {
+            content: "Third list item",
+          },
+        ],
+      },
+    },
+    Modal: {
+      reactComponent: Modal,
+      props: {
+        open: false,
+      },
+    },
+    NotificationBanner: {
+      reactComponent: NotificationBanner,
+      props: {
+        title: "Stay up-to-date on what's new at ASU",
+        color: "orange",
+        children: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        buttons: [
+          {
+            href: "https://provost.asu.edu/sync/students",
+            label: "Info. on teaching and learning remotely",
+          },
+        ],
+      },
+    },
+    TextInput: {
+      reactComponent: TextInput,
+      props: {
+        id: "input-id",
+        label: "Input Label",
+        placeholder: "Input Placeholder",
+        required: false,
+      },
+    },
+    Textarea: {
+      reactComponent: Textarea,
+      props: {
+        id: "textarea-id",
+        label: "Textarea Label",
+        placeholder: "Textarea Placeholder",
+        required: false,
+      },
+    },
+    TabbedPanels: {
+      reactComponent: TabbedPanels,
+      props: {
+        children: [
+          React.createElement(Tab, { id: "home", title: "Home", key: "home" } as any, "Home content"),
+          React.createElement(Tab, { id: "profile", title: "Profile", key: "profile" } as any, "Profile content"),
+          React.createElement(Tab, { id: "contact", title: "Contact", key: "contact" } as any, "Contact content"),
+        ],
+      },
+    },
+    Select: {
+      reactComponent: Select,
+      props: {
+        id: "select-id",
+        label: "Select Label",
+        options: [
+          { value: "1", label: "Option 1" },
+          { value: "2", label: "Option 2" },
+          { value: "3", label: "Option 3" },
+        ],
+        required: false,
+      },
+    },
+    Testimonial: {
+      reactComponent: Testimonial,
+      props: {
+        quote: {
+          content: "We hold these truths to be self-evident, that all men are created equal, that they are endowed by their Creator with certain unalienable Rights, that among these are Life, Liberty and the pursuit of Happiness.",
+          cite: {
+            name: "Thomas Jefferson",
+            description: "The Declaration of Independence",
+          },
+        },
+      },
+    },
+    RankingCard: {
+      reactComponent: RankingCard,
+      props: {
+        imageSize: "large",
+        image: "https://picsum.photos/300/200",
+        imageAlt: "Image alt text",
+        heading: "Ranking title goes here, under the photo",
+        body: "ASU has topped U.S. News & World Report's Most Innovative Schools list since the inception of the category in 2016. ASU again placed ahead of Stanford and MIT on the list, based on a survey of peers.",
+        readMoreLink: "https://www.asu.edu/",
+      },
+    },
+    Radios: {
+      reactComponent: Radios,
+      props: {},
+    },
+    Tooltip: {
+      reactComponent: Tooltip,
+      props: {
+        title: "Header",
+        content: "Content",
+        triggerElement: React.createElement("span", {}, "Tooltip trigger"),
+      },
+    },
+    Video: {
+      reactComponent: Video,
+      props: {
+        type: "youtube",
+        url: "https://www.youtube.com/embed/YW2p0ctzK9c",
+        caption: "Sample video",
+      },
+    },
+    SidebarMenu: {
+      reactComponent: SidebarMenu,
+      props: {
+        title: "Header",
+        links: [
+          {
+            href: "https://example.com",
+            text: "Active Link",
+            isActive: true,
+          },
+          {
+            text: "Link 2 dropdown",
+            items: [
+              {
+                href: "https://example.com",
+                text: "Link 2.1",
+              },
+              {
+                href: "https://example.com",
+                text: "Link 2.2",
+              },
+            ],
+          },
+          {
+            href: "https://example.com",
+            text: "Link 4",
+          },
+        ],
+      },
+    },
+    SystemAlert: {
+      reactComponent: SystemAlert,
+      props: {
+        type: "warning",
+        children: "Warning: This is a warning alert to alert, confirm or notify.",
+        dismissable: true,
+      },
+    },
+    Table: {
+      reactComponent: Table,
+      props: {
+        columns: 5,
+        fixed: false,
+      },
+    },
+    Loader: {
+      reactComponent: Loader,
+      props: {},
     },
   };
 

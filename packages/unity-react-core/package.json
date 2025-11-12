@@ -46,8 +46,7 @@
     "predocs": "mkdir -p ./docs",
     "docs": "jsdoc2md --no-cache -c jsdoc.config.js --files ./src/components > ./docs/README.props.md",
     "postdocs": "node ../../scripts/process-readme-props.js",
-    "test:browser": "vitest --workspace=vitest.workspace.ts",
-    "run-check-changes": "tsx ./scripts/check-changes.tsx"
+    "test:browser": "vitest --workspace=vitest.workspace.ts"
   },
   "devDependencies": {
     "@asu/shared": "*",
