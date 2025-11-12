@@ -1,3 +1,57 @@
+# [@asu/unity-bootstrap-theme-v1.30.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.30.2...@asu/unity-bootstrap-theme-v1.30.3) (2025-10-24)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** removed max-width from btn-row into heroes ([a3e2958](https://github.com/ASU/asu-unity-stack/commit/a3e2958755bc09d35352e755f666cbcf48944c3d))
+
+# [@asu/unity-bootstrap-theme-v1.30.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.30.1...@asu/unity-bootstrap-theme-v1.30.2) (2025-10-15)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix typo ([d66b84d](https://github.com/ASU/asu-unity-stack/commit/d66b84dd62b45c0cc50a4bdd4bde13f3f24fdb2b))
+* **unity-bootstrap-theme:** replace custom throttle with @asu/shared ([e2ba8fe](https://github.com/ASU/asu-unity-stack/commit/e2ba8fe119a7fd3f9e70fa81158a1c9c3b2738e5))
+* **unity-bootstrap-theme:** update anchor menu logic to be more universal ([9629c31](https://github.com/ASU/asu-unity-stack/commit/9629c31c33a240da3681d08f89899d70ca6f0356))
+
+# [@asu/unity-bootstrap-theme-v1.30.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.30.0...@asu/unity-bootstrap-theme-v1.30.1) (2025-10-14)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** update alt on footer ranking image stories ([b982d61](https://github.com/ASU/asu-unity-stack/commit/b982d61fb835bbe08f22405d7c3db005006ea558))
+* **unity-bootstrap-theme:** update footer ranking styles and image assets ([97812df](https://github.com/ASU/asu-unity-stack/commit/97812df7f9373d53d0da3cacc98e4860f5f46f32))
+* **unity-bootstrap-theme:** updated footer innovation logo ([0dd006f](https://github.com/ASU/asu-unity-stack/commit/0dd006f2bb5b1a9ef7510ed5f3ec93a77e649334))
+
+# [@asu/unity-bootstrap-theme-v1.30.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.29.0...@asu/unity-bootstrap-theme-v1.30.0) (2025-10-02)
+
+
+### Features
+
+* **unity-bootstrap-theme:** added mixin to expand clickable area for btn ([641eb4e](https://github.com/ASU/asu-unity-stack/commit/641eb4e3a293e73c50586c7bed9b06fce1cc6f50))
+* **unity-bootstrap-theme:** applied some feedback changes ([6b791b5](https://github.com/ASU/asu-unity-stack/commit/6b791b57d4411eaa2aa71c91824e746c36367e5c))
+
+# [@asu/unity-bootstrap-theme-v1.29.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.28.3...@asu/unity-bootstrap-theme-v1.29.0) (2025-09-18)
+
+
+### Features
+
+* **unity-bootstrap-theme:** improve accessibility by increasing text contrast (WCAG AAA compliance) ([5c8f243](https://github.com/ASU/asu-unity-stack/commit/5c8f243f0f3fcba28599f85205b4daf7a07fd089)), closes [#747474](https://github.com/ASU/asu-unity-stack/issues/747474) [#484848](https://github.com/ASU/asu-unity-stack/issues/484848)
+
+# [@asu/unity-bootstrap-theme-v1.28.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.28.2...@asu/unity-bootstrap-theme-v1.28.3) (2025-09-09)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix long accordion scroll issue ([d824790](https://github.com/ASU/asu-unity-stack/commit/d824790188a50c9e9c6c0cea4c701c51b14fa97a))
+
+# [@asu/unity-bootstrap-theme-v1.28.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.28.1...@asu/unity-bootstrap-theme-v1.28.2) (2025-09-08)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** add process.env to vite build ([ee82a85](https://github.com/ASU/asu-unity-stack/commit/ee82a85acd059c56955f62e40ba5aae7e40b875c))
+
 # [@asu/unity-bootstrap-theme-v1.28.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.28.0...@asu/unity-bootstrap-theme-v1.28.1) (2025-08-04)
 
 

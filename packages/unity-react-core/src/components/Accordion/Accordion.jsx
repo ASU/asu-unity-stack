@@ -1,7 +1,8 @@
 // @ts-nocheck
 import PropTypes from "prop-types";
-import React, { useState } from "react";
+import React, { useId, useRef, useState } from "react";
 
+import { adjustShrinkingElementIfAboveViewport } from "@asu/shared";
 import { accordionCardPropTypes } from "../../core/models/shared-prop-types";
 import { AccordionCard } from "./AccordionCard/AccordionCard";
 
@@ -17,16 +18,24 @@ const defaultGAEvent = {
  */
 
 /**
+ * @typedef {import('../../../core/types/shared-types').AccordionCardItemProps} AccordionCardItemProps
+ */
+
+/**
  * @param {AccordionProps} props
  * @returns {JSX.Element}
  */
 const Accordion = ({ cards, openedCard }) => {
   const [currentOpenCard, setCurrentOpenCard] = useState(openedCard);
+  const parentId = `accordion-${useId()}`;
+  const cardsRef = useRef(/** @type { HTMLDivElement[]} */ []);
 
   const toggleCard = (event, card) => {
     event.preventDefault();
-
     if (currentOpenCard !== card) {
+      const closingCard = cardsRef.current[currentOpenCard - 1];
+      const closingCardBody = closingCard?.lastElementChild;
+      adjustShrinkingElementIfAboveViewport(closingCardBody);
       setCurrentOpenCard(card);
     } else {
       setCurrentOpenCard(null);
@@ -34,14 +43,18 @@ const Accordion = ({ cards, openedCard }) => {
   };
 
   return (
-    <div className="accordion">
+    <div className="accordion" id={parentId}>
       {cards?.map(
         (card, key) =>
           card.content.body &&
           card.content.header && (
             <AccordionCard
+              ref={element => {
+                cardsRef.current[key] = element;
+              }}
               key={key + 1}
               id={key + 1}
+              parentId={parentId}
               item={card}
               openCard={currentOpenCard}
               onClick={toggleCard}

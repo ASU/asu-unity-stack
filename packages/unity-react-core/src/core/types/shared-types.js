@@ -86,7 +86,7 @@
 
 /**
  * @callback ReactMouseEvent
- * @param {React.MouseEvent<HTMLAnchorElement, MouseEvent>} event
+ * @param {React.MouseEvent<HTMLButtonElement, MouseEvent>} event
  * @param {number} id
  * @param {string} [cardTitle] // @deprecated
  * @returns {void}
@@ -95,6 +95,7 @@
 /**
  * @typedef {Object} AccordionCardItemProps
  * @property {number} id
+ * @property {string} parentId
  * @property {AccordionCard} item
  * @property {number} openCard
  * @property {ReactMouseEvent} onClick

@@ -2,21 +2,36 @@
   height: 322px;
 }
 
-.gray-7-bg {
-  background: $uds-color-base-gray-7;
+.gray-7-bg, .gray-dark-bg {
+  background: $asu-gray-1;
 }
 
-.gray-2-bg {
-  background: $uds-color-base-gray-2;
+.text-gray-dark-bg {
+  background-color: $asu-gray-1;
+  color: $asu-gray-7;
 }
 
-.gray-1-bg {
-  background: $uds-color-base-gray-1;
+.gray-2-bg, .gray-light-bg {
+  background: $asu-gray-6;
+}
+
+.text-gray-light-bg {
+  background-color: $asu-gray-6;
+  color: $asu-gray-1;
+}
+
+.gray-1-bg, .gray-faint-bg {
+  background: $asu-gray-7;
+}
+
+.text-gray-faint-bg {
+  background-color: $asu-gray-7;
+  color: $asu-gray-1;
 }
 
 .white-bg {
   background: $uds-color-base-white;
-  border: 1px solid $uds-color-base-gray-3;
+  border: 1px solid $asu-gray-5;
 }
 
 .image-bg {
@@ -45,9 +60,9 @@
 }
 
 .content-description-container {
-  background-color: $uds-color-base-gray-1;
+  background-color: $asu-gray-7;
   width: 100%;
-  border: 1px solid $uds-color-base-gray-3;
+  border: 1px solid $asu-gray-5;
   margin-top: 16px;
 }
 
@@ -56,11 +71,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px dashed $uds-color-base-gray-5;
+  border: 1px dashed $asu-gray-3;
   height: 251px;
   margin: 20px 0 100px 0;
   font-size: 50px;
-  color: $uds-color-base-gray-3;
+  color: $asu-gray-5;
 }
 
 .bg {

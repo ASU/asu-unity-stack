@@ -17,25 +17,41 @@ const GaEventPropTypes = {
 
 const RfiLabel = ({ label, name, id, requiredIcon }) => (
   <label htmlFor={id || name}>
-    {requiredIcon ? (
-      <span title="Required">
-        <i className="fas fa-circle uds-field-required" aria-hidden="true" />
-      </span>
-    ) : null}
-    &nbsp;
+    {requiredIcon && (
+      <>
+        <span title="Required">
+          <i className="fas fa-circle uds-field-required" aria-hidden="true" />
+        </span>
+        &nbsp;
+      </>
+    )}
     {label}
   </label>
 );
 
+const RfiLegend = ({ label, requiredIcon }) => (
+  <legend className="fw-bold">
+    {requiredIcon && (
+      <>
+        <span title="Required">
+          <i className="fas fa-circle uds-field-required" aria-hidden="true" />
+        </span>
+        &nbsp;
+      </>
+    )}
+    {label}
+  </legend>
+);
+
 const RfiError = ({ isError, metaError }) => (
   <div role="alert">
-    {isError ? (
+    {isError && (
       <small className="form-text invalid-feedback">
         <i className="fas fa-exclamation-triangle" aria-hidden="true" />
         &nbsp;
         {metaError}
       </small>
-    ) : null}
+    )}
   </div>
 );
 
@@ -55,6 +71,16 @@ RfiLabel.propTypes = {
   requiredIcon: PropTypes.bool,
 };
 
+RfiLegend.defaultProps = {
+  label: undefined,
+  requiredIcon: undefined,
+};
+
+RfiLegend.propTypes = {
+  label: PropTypes.string.isRequired,
+  requiredIcon: PropTypes.bool,
+};
+
 RfiError.defaultProps = {
   isError: undefined,
   metaError: undefined,
@@ -64,4 +90,4 @@ RfiError.propTypes = {
   isError: PropTypes.bool,
   metaError: PropTypes.string,
 };
-export { RfiLabel, RfiError, GaEventPropTypes };
+export { RfiLabel, RfiLegend, RfiError, GaEventPropTypes };

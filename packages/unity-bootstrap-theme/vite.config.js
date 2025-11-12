@@ -72,20 +72,18 @@ const c = {
   css: {
     preprocessorOptions: {
       scss: {
-        api: "modern-compiler",
+        silenceDeprecations: [
+          'import',
+          'mixed-decls',
+          'color-functions',
+          'global-builtin',
+          'legacy-js-api',
+        ],
       },
     },
   },
   server: {
     port: 9000,
-  },
-  resolve: {
-    alias: [
-      {
-        find: "@asu/shared",
-        replacement: resolve(__dirname, "../shared"),
-      },
-    ],
   },
 };
 

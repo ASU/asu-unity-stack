@@ -52,7 +52,7 @@ blockquote:before {
 
   svg {
     grid-column: 1;
-    fill: $uds-color-base-gray-7;
+    fill: $asu-gray-1;
     width: $uds-size-spacing-5;
     height: auto;
   }
@@ -251,7 +251,7 @@ blockquote:before {
     &:before {
       content: '';
       display: block;
-      background-color: $uds-color-base-gray-7;
+      background-color: $asu-gray-1;
       height: $uds-size-spacing-half;
       width: $uds-size-spacing-9;
       margin: $uds-size-spacing-2 0;

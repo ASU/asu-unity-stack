@@ -1,6 +1,6 @@
 .uds-video {
   &-with-caption {
-    border: 1px solid $uds-color-base-gray-3;
+    border: 1px solid $asu-gray-5;
 
     figure {
       margin: 0;
@@ -8,7 +8,7 @@
       align-items: center;
 
       figcaption {
-        color: $uds-color-base-gray-5;
+        color: $asu-gray-2;
         font-size: $uds-size-font-tiny;
         margin: $uds-size-spacing-1 $uds-size-spacing-2 $uds-size-spacing-2
           $uds-size-spacing-2;

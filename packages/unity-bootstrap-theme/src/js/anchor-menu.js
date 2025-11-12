@@ -1,15 +1,17 @@
 import { EventHandler } from "./bootstrap-helper";
+import { throttle } from "@asu/shared";
 
+/**
+ * Initializes the anchor menu functionality.
+ *
+ * @param {string} idPrefix - The prefix for the IDs of the anchor menu elements
+ * @returns {void}
+ */
 function initAnchorMenu() {
   const HEADER_IDS = ["asu-header", "asuHeader"];
+  const SCROLL_DELAY = 100;
 
   const globalHeaderId = HEADER_IDS.find(id => document.getElementById(id));
-
-  if (globalHeaderId === undefined) {
-    // Asu header not found in the DOM.
-    return;
-  }
-
   const globalHeader = document.getElementById(globalHeaderId);
   const navbar = document.getElementById("uds-anchor-menu");
   const navbarOriginalParent = navbar.parentNode;
@@ -17,22 +19,17 @@ function initAnchorMenu() {
   const anchors = navbar.getElementsByClassName("nav-link");
   const anchorTargets = new Map();
   let previousScrollPosition = window.scrollY;
-  let isNavbarAttached = false; // Flag to track if navbar is attached to header
-  const body = document.body;
+  let isNavbarAttached = false;
 
   // These values are for optionally present Drupal admin toolbars. They
   // are not present in Storybook and not required in implementations.
-  let toolbarBar = document.getElementById("toolbar-bar");
-  let toolbarItemAdministrationTray = document.getElementById(
-    "toolbar-item-administration-tray"
-  );
+  const toolbarBarHeight =
+    document.getElementById("toolbar-bar")?.offsetHeight || 0;
+  const toolbarItemAdministrationTrayHeight =
+    document.getElementById("toolbar-item-administration-tray")?.offsetHeight ||
+    0;
 
-  let toolbarBarHeight = toolbarBar ? toolbarBar.offsetHeight : 0;
-  let toolbarItemAdministrationTrayHeight = toolbarItemAdministrationTray
-    ? toolbarItemAdministrationTray.offsetHeight
-    : 0;
-
-  let combinedToolbarHeightOffset =
+  const combinedToolbarHeightOffset =
     toolbarBarHeight + toolbarItemAdministrationTrayHeight;
   const navbarInitialTop =
     navbar.getBoundingClientRect().top +
@@ -46,16 +43,6 @@ function initAnchorMenu() {
     anchorTargets.set(anchor, target);
   }
 
-  /*
-    Bootstrap needs to be loaded as a variable in order for this to work.
-    An alternative is to remove this and add the data-bs-spy="scroll" data-bs-target="#uds-anchor-menu nav" attributes to the body tag
-    See https://getbootstrap.com/docs/5.3/components/scrollspy/ for more info
-  */
-  const scrollSpy = new bootstrap.ScrollSpy(body, {
-    target: "#uds-anchor-menu nav",
-    rootMargin: "20%",
-  });
-
   const shouldAttachNavbarOnLoad = window.scrollY > navbarInitialTop;
   if (shouldAttachNavbarOnLoad) {
     globalHeader.appendChild(navbar);
@@ -63,43 +50,106 @@ function initAnchorMenu() {
     navbar.classList.add("uds-anchor-menu-attached");
   }
 
-  window.addEventListener(
-    "scroll",
-    function () {
-      const navbarY = navbar.getBoundingClientRect().top;
-      const headerHeight = globalHeader.classList.contains("scrolled")
-        ? globalHeader.offsetHeight - 32
-        : globalHeader.offsetHeight; // 32 is the set height of the gray toolbar above the global header.
+  /**
+   * Calculates the percentage of an element that is visible in the viewport.
+   *
+   * @param {Element} el The element to calculate the visible percentage for.
+   * @return {number} The percentage of the element that is visible in the viewport.
+   */
+  function calculateVisiblePercentage(el) {
+    if (el.offsetHeight === 0 || el.offsetWidth === 0) {
+      return calculateVisiblePercentage(el.parentElement);
+    }
+    const rect = el.getBoundingClientRect();
+    const windowHeight =
+      window.innerHeight || document.documentElement.clientHeight;
+    const windowWidth =
+      window.innerWidth || document.documentElement.clientWidth;
 
-      // If scrolling DOWN and navbar touches the globalHeader
-      if (
-        window.scrollY > previousScrollPosition &&
-        navbarY > 0 &&
-        navbarY < headerHeight
-      ) {
-        if (!isNavbarAttached) {
-          // Attach navbar to globalHeader
-          globalHeader.appendChild(navbar);
-          isNavbarAttached = true;
-          navbar.classList.add("uds-anchor-menu-attached");
-        }
-        previousScrollPosition = window.scrollY;
+    const elHeight = rect.bottom - rect.top;
+    const elWidth = rect.right - rect.left;
+
+    const elArea = elHeight * elWidth;
+
+    // Calculate the visible area of the element in the viewport
+    const visibleHeight =
+      Math.min(windowHeight, rect.bottom) - Math.max(0, rect.top);
+    const visibleWidth =
+      Math.min(windowWidth, rect.right) - Math.max(0, rect.left);
+    const visibleArea = visibleHeight * visibleWidth;
+
+    // Calculate the percentage of the element that is visible in the viewport
+    const visiblePercentage = (visibleArea / elArea) * 100;
+    return visiblePercentage;
+  }
+
+  const scrollHandlerLogic = function () {
+    // Custom code added for Drupal - Handle active anchor highlighting
+    let maxVisibility = 0;
+    let mostVisibleElementId = null;
+
+    // Find the element with highest visibility
+    Array.from(anchors).forEach(anchor => {
+      let elementId = anchor.getAttribute("href").replace("#", "");
+      let el = document.getElementById(elementId);
+      const visiblePercentage = calculateVisiblePercentage(el);
+      if (visiblePercentage > 0 && visiblePercentage > maxVisibility) {
+        maxVisibility = visiblePercentage;
+        mostVisibleElementId = el.id;
       }
+    });
 
-      // If scrolling UP and past the initial navbar position
+    // Update active class if we found a visible element
+    if (mostVisibleElementId) {
+      document
+        .querySelector('[href="#' + mostVisibleElementId + '"]')
+        .classList.add("active");
+      navbar
+        .querySelectorAll(
+          `nav > a.nav-link:not([href="#` + mostVisibleElementId + '"])'
+        )
+        .forEach(function (e) {
+          e.classList.remove("active");
+        });
+    }
+
+    // Handle navbar attachment/detachment
+    const navbarY = navbar.getBoundingClientRect().top;
+    const headerBottom = globalHeader.getBoundingClientRect().bottom;
+    const isScrollingDown = window.scrollY > previousScrollPosition;
+
+    // If scrolling DOWN and the bottom of globalHeader touches or overlaps the top of navbar
+    if (isScrollingDown && headerBottom >= navbarY) {
+      if (!isNavbarAttached) {
+        // Attach navbar to globalHeader
+        globalHeader.appendChild(navbar);
+        isNavbarAttached = true;
+        navbar.classList.add("uds-anchor-menu-attached");
+      }
+    }
+
+    // If scrolling UP and the header bottom no longer overlaps with the navbar
+    if (!isScrollingDown && isNavbarAttached) {
+      const currentHeaderBottom = globalHeader.getBoundingClientRect().bottom;
+      const navbarCurrentTop = navbar.getBoundingClientRect().top;
+
+      // Only detach if we're back to the initial navbar position or if header no longer overlaps navbar
       if (
-        window.scrollY < previousScrollPosition &&
-        window.scrollY <= navbarInitialTop &&
-        isNavbarAttached
+        window.scrollY <= navbarInitialTop ||
+        currentHeaderBottom < navbarCurrentTop
       ) {
-        // Detach navbar and return to original position
         navbarOriginalParent.insertBefore(navbar, navbarOriginalNextSibling);
         isNavbarAttached = false;
         navbar.classList.remove("uds-anchor-menu-attached");
       }
+    }
 
-      previousScrollPosition = window.scrollY;
-    },
+    previousScrollPosition = window.scrollY;
+  };
+
+  window.addEventListener(
+    "scroll",
+    () => throttle(scrollHandlerLogic, SCROLL_DELAY),
     { passive: true }
   );
 
@@ -108,29 +158,27 @@ function initAnchorMenu() {
     anchor.addEventListener("click", function (e) {
       e.preventDefault();
 
-      // Compensate for height of navbar so content appears below it
-      let scrollBy =
-        anchorTarget.getBoundingClientRect().top - navbar.offsetHeight;
+      // Get current viewport height and calculate the 1/4 position so that the
+      // top of section is visible when you click on the anchor.
+      const viewportHeight = window.innerHeight;
+      const targetQuarterPosition = Math.round(viewportHeight * 0.25);
 
-      // If window hasn't been scrolled, compensate for header shrinking.
-      const approximateHeaderSize = 65;
-      if (window.scrollY === 0) scrollBy += approximateHeaderSize;
+      const targetAbsoluteTop =
+        anchorTarget.getBoundingClientRect().top + window.scrollY;
 
-      // If navbar hasn't been stickied yet, that means global header is still in view, so compensate for header height
-      if (!navbar.classList.contains("uds-anchor-menu-sticky")) {
-        if (window.scrollY > 0) scrollBy += 24;
-        scrollBy -= globalHeader.offsetHeight;
-      }
+      let scrollToPosition = targetAbsoluteTop - targetQuarterPosition;
 
-      window.scrollBy({
-        top: scrollBy,
+      window.scrollTo({
+        top: scrollToPosition,
         behavior: "smooth",
       });
 
       // Remove active class from other anchor in navbar, and add it to the clicked anchor
       const active = navbar.querySelector(".nav-link.active");
 
-      if (active) active.classList.remove("active");
+      if (active) {
+        active.classList.remove("active");
+      }
 
       e.target.classList.add("active");
     });

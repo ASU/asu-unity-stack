@@ -1,5 +1,5 @@
 .uds-tabbed-panels {
-  box-shadow: inset 0px -2px 0px 0px $uds-color-base-gray-4;
+  box-shadow: inset 0px -2px 0px 0px $asu-gray-4;
   flex-wrap: inherit;
   overflow: hidden;
   position: relative;
@@ -58,7 +58,7 @@
   &-dark {
     .nav-tabs {
       .nav-link {
-        color: $uds-color-base-gray-1;
+        color: $asu-gray-7;
       }
 
       .nav-link.active {
@@ -126,8 +126,8 @@
     top: 50%;
     left: 0;
     transform: translate(0, -50%);
-    background-color: $uds-color-base-gray-1;
-    border: solid 1px $uds-color-base-gray-3;
+    background-color: $asu-gray-7;
+    border: solid 1px $asu-gray-5;
     border-radius: 100%;
     color: #000;
   }

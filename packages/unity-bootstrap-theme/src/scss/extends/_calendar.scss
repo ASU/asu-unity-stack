@@ -17,14 +17,14 @@
     .body {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      border-top: 1px solid $uds-color-base-gray-5;
-      border-left: 1px solid $uds-color-base-gray-5;
+      border-top: 1px solid $asu-gray-3;
+      border-left: 1px solid $asu-gray-3;
       .calendar-item {
         font-size: $uds-size-font-medium;
         padding: $uds-size-spacing-8 $uds-size-spacing-1 $uds-size-spacing-1;
         cursor: pointer;
-        border-bottom: 1px solid $uds-color-base-gray-5;
-        border-right: 1px solid $uds-color-base-gray-5;
+        border-bottom: 1px solid $asu-gray-3;
+        border-right: 1px solid $asu-gray-3;
         margin: 0;
       }
       .today {
@@ -35,16 +35,16 @@
       }
       .prev,
       .next {
-        color: $uds-color-base-gray-5;
+        color: $asu-gray-3;
       }
     }
   }
   .calendar-nav {
     text-align: center;
     button {
-      border: 1px solid $uds-color-base-gray-3;
+      border: 1px solid $asu-gray-5;
       border-radius: $uds-component-border-radius;
-      background-color: $uds-color-base-gray-2;
+      background-color: $asu-gray-6;
       padding: calc(#{$uds-size-spacing-3} / 2) calc(#{$uds-size-spacing-7} / 3);
       svg {
         font-size: $uds-size-spacing-3;
@@ -65,7 +65,7 @@ Mobile
       padding-right: 0;
       text-align: center;
       .heading {
-        border-bottom: 1px solid $uds-color-base-gray-5;
+        border-bottom: 1px solid $asu-gray-3;
         padding-bottom: $uds-size-spacing-1;
         &.desktop {
           display: none;
