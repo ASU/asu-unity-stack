@@ -27,7 +27,7 @@ const Home = () => {
       </div>
       <div className="container">
         <h2>Unity Design System (UDS)</h2>
-        <Divider />
+        <Divider type="default" />
         <div className="row my-6">
           <Card
             title="UDS Guidelines"
@@ -54,7 +54,7 @@ const Home = () => {
       </div>
       <div className="container">
         <h2>Implementing UDS</h2>
-        <Divider />
+        <Divider type="default" />
         <div className="row my-6">
           <Card
             title="ASU Header and Footer"
@@ -105,14 +105,14 @@ const Home = () => {
       <a id="codekit"></a>
       <div className="container">
         <h2>Npm Packages</h2>
-        <Divider />
+        <Divider type="default" />
         <div className="row my-6">
           <PackageCards />
         </div>
       </div>
       <div className="container">
         <h2>Deprecated Packages</h2>
-        <Divider />
+        <Divider type="default" />
         <div className="row my-6">
           <DeprecatedPackageCards />
         </div>
