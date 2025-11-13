@@ -117,6 +117,8 @@ const runCheckout = runGit(gitCheckout);
 const targetDir = "scripts/temp/packages/unity-react-core/scripts";
 const dir = "scripts/temp/packages/unity-react-core";
 const srcDir = "packages/unity-react-core/scripts/check-changes.tsx";
+const serverUtilsDir = "packages/unity-react-core/scripts/server-utils.js";
+const imageLoaderDir = "packages/unity-react-core/scripts/image-loader.js";
 const htmlDir = "packages/shared/utils/html-utils.js";
 
 if (!fs.existsSync(targetDir)) {
@@ -124,11 +126,19 @@ if (!fs.existsSync(targetDir)) {
 }
 
 fs.copyFileSync(srcDir, targetDir + "/check-changes.tsx");
+fs.copyFileSync(serverUtilsDir, targetDir + "/server-utils.js");
+fs.copyFileSync(imageLoaderDir, targetDir + "/image-loader.js");
 fs.copyFileSync(htmlDir, "scripts/temp/" + htmlDir);
 
 printTitle(`Generating component HTML from ${daysAgo} days ago...`);
 
-const output = spawnSync("npx", ["tsx", "scripts/check-changes.tsx", OLD_DATE_HTML], {
+const output = spawnSync("npx", [
+  "tsx",
+  "--require",
+  "./scripts/image-loader.js",
+  "scripts/check-changes.tsx",
+  OLD_DATE_HTML
+], {
   stdio: "inherit",
   cwd: dir
 });
@@ -151,7 +161,13 @@ const oldDateComponentObjectWithHtml = JSON.parse(
 
 printTitle("Generating current component HTML...");
 
-const currentOutput = spawnSync("npx", ["tsx", "packages/unity-react-core/scripts/check-changes.tsx", parseDateForHTML()], {
+const currentOutput = spawnSync("npx", [
+  "tsx",
+  "--require",
+  "./packages/unity-react-core/scripts/image-loader.js",
+  "packages/unity-react-core/scripts/check-changes.tsx",
+  parseDateForHTML()
+], {
   stdio: "inherit"
 });
 

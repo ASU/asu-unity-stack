@@ -32,9 +32,9 @@ import { SystemAlert } from "../src/components/SystemAlert/SystemAlert";
 import { Table } from "../src/components/Tables/Tables";
 import { Loader } from "../src/components/Loader/Loader";
 import { getBootstrapHTML } from "../src/components/GaEventWrapper/useBaseSpecificFramework.js";
-
-const fs = require("fs");
-const path = require("path");
+import { initializeServerEnvironment, cleanupServerEnvironment } from "./server-utils.js";
+import fs from "fs";
+import path from "path";
 
 interface ComponentConfig {
   reactComponent: React.ComponentType<any>;
@@ -45,7 +45,16 @@ interface ComponentMap {
   [key: string]: ComponentConfig;
 }
 
-function convertToHTML(OLD_DATE: string): void {
+async function convertToHTML(OLD_DATE: string): Promise<void> {
+  // Initialize JSDOM for server-side rendering
+  console.log('Initializing server environment for component rendering...');
+  try {
+    await initializeServerEnvironment();
+  } catch (error) {
+    console.error('Failed to initialize server environment:', error);
+    process.exit(1);
+  }
+
   const componentMap: ComponentMap = {
     Accordion: {
       reactComponent: Accordion,
@@ -494,8 +503,15 @@ function convertToHTML(OLD_DATE: string): void {
   const result = generateAllComponents();
 
   fs.writeFileSync(filePath, JSON.stringify(result, null, 2), "utf8");
+
+  // Clean up server environment
+  cleanupServerEnvironment();
+  console.log(`✅ Component HTML generated and saved to: ${fileName}`);
 }
 const args = process.argv.slice(0);
 if (args[2]) {
-  convertToHTML(args[2]);
+  convertToHTML(args[2]).catch(error => {
+    console.error('Error converting to HTML:', error);
+    process.exit(1);
+  });
 }
