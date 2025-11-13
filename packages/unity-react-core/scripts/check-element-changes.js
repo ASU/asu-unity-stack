@@ -235,10 +235,6 @@ Object.keys(currentComponents).forEach(componentName => {
       // console.log(`   Detailed differences:`, differences.filter(part => part.added || part.removed));
 
       changedCount++;
-      /**
-       * TODO:
-       * Add component name to list changedComponents
-       */
     } else {
       console.log(`✅ ${componentName}: No changes`);
       unchangedCount++;
