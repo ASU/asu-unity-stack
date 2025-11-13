@@ -1,6 +1,5 @@
 const {diffChars, createPatch} = require('diff');
 const { execSync, spawnSync } = require("child_process");
-const { fstat } = require("fs");
 const fs = require('fs');
 
 const path = require("path");
