@@ -508,9 +508,9 @@ async function convertToHTML(OLD_DATE: string): Promise<void> {
   cleanupServerEnvironment();
   console.log(`✅ Component HTML generated and saved to: ${fileName}`);
 }
-const args = process.argv.slice(0);
-if (args[2]) {
-  convertToHTML(args[2]).catch(error => {
+const args = process.argv.slice(2);
+if (args[0]) {
+  convertToHTML(args[0]).catch(error => {
     console.error('Error converting to HTML:', error);
     process.exit(1);
   });
