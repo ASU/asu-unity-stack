@@ -3,7 +3,6 @@ const { execSync, spawnSync } = require("child_process");
 const { fstat } = require("fs");
 const fs = require('fs');
 
-const exec = require("child_process").exec;
 const path = require("path");
 
 //=====================================================
