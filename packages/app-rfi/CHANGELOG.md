@@ -1,3 +1,10 @@
+# [@asu/app-rfi-v3.6.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.6.0...@asu/app-rfi-v3.6.1) (2025-11-19)
+
+
+### Bug Fixes
+
+* **app-rfi:** fix typo in fetch url ([5ae2567](https://github.com/asu/asu-unity-stack/commit/5ae2567a66b47be719cf581b04751ef78c32e52f))
+
 # [@asu/app-rfi-v3.6.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.5.0...@asu/app-rfi-v3.6.0) (2025-10-14)
 
 
