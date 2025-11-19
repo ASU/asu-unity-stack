@@ -7280,7 +7280,7 @@ function iy({
     "degreeType"
     // "applicationDeadlines", // This can double the response size
   ].map((g) => `include=${g}`).join("&");
-  return i === oe.ONLINE ? (l += a === oe.READMISSION ? `?category=${oe.GRADUATE}` : `?category=${oe.UNDERGRADUATE}`, c = `${t}${l}`, c) : s ? (c = `${e}/acad-plan/${s}?include=applicationDeadlines${d}`, c) : (a === oe.READMISSION || a === oe.FRESHMAN || a === oe.TRANSFER ? l += a === oe.READMISSION ? `&degreeType=${oe.GR}` : `&degreeType=${oe.UG}` : l += `&degreeType=${oe.GR}&degreeType=${oe.UG}`, l = xu.prepareServiceUrl(
+  return i === oe.ONLINE ? (l += a === oe.READMISSION ? `?category=${oe.GRADUATE}` : `?category=${oe.UNDERGRADUATE}`, c = `${t}${l}`, c) : s ? (c = `${e}/acad-plan/${s}?include=applicationDeadlines&${d}`, c) : (a === oe.READMISSION || a === oe.FRESHMAN || a === oe.TRANSFER ? l += a === oe.READMISSION ? `&degreeType=${oe.GR}` : `&degreeType=${oe.UG}` : l += `&degreeType=${oe.GR}&degreeType=${oe.UG}`, l = xu.prepareServiceUrl(
     l,
     r,
     n
