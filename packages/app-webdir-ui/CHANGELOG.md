@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v5.0.7](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.6...@asu/app-webdir-ui-v5.0.7) (2025-11-19)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** fix short bio not appearing in web directory ([78bd800](https://github.com/asu/asu-unity-stack/commit/78bd800d1932dc73e78d1f59cfb420485a78d299))
+
 # [@asu/app-webdir-ui-v5.0.6](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.5...@asu/app-webdir-ui-v5.0.6) (2025-10-14)
 
 
