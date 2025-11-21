@@ -86,6 +86,7 @@ GITHUB_AUTH_TOKEN=YOUR_AUTH_TOKEN_HERE
 
 ## If you want to clone the entire repository and work on the packages:
 
+
 The ASU Unity Design System packages are published to GitHub's package registry. This is not the same as the NPM registry. To use the packages, you need to belong to ASU's GitHub organization and to configure your local NPM to use this registry.
 
 1. Clone the monorepo using ```git clone``` or download the zip file from GitHub.
