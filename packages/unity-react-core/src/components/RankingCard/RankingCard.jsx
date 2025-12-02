@@ -119,6 +119,39 @@ InfoLayerWrapper.propTypes = {
   readMoreLink: PropTypes.string,
 };
 
+/**
+ * @typedef {Object} RankingCardProps
+ * @property {string} [imageSize="large"] - Size of the image ("large" or "small")
+ * @property {string} image - Source URL for the image
+ * @property {string} imageAlt - Alt text for the image
+ * @property {string} heading - Heading text for the card
+ * @property {string} body - Body text content for the card
+ * @property {string} [readMoreLink=""] - Optional link for "read more" functionality
+ * @property {string} citation - Citation text displayed with small images
+ */
+
+/**
+ * A ranking card component that displays an image with an info layer overlay.
+ * Supports both large and small image sizes with different layout configurations.
+ *
+ * @param {RankingCardProps} props - The component props
+ * @returns {JSX.Element} The rendered ranking card component
+ *
+ * @example
+ * ```jsx
+ * import { RankingCard } from './RankingCard';
+ *
+ * <RankingCard
+ *   imageSize="small"
+ *   image="/path/to/image.jpg"
+ *   imageAlt="Description of image"
+ *   heading="Card Title"
+ *   body="Card description text"
+ *   readMoreLink="/more-info"
+ *   citation="Source Citation"
+ * />
+ * ```
+ */
 export const RankingCard = ({
   imageSize = "large",
   image,
