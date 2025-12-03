@@ -14,9 +14,15 @@ function initAnchorMenu() {
   const globalHeaderId = HEADER_IDS.find(id => document.getElementById(id));
   const globalHeader = document.getElementById(globalHeaderId);
   const navbar = document.getElementById("uds-anchor-menu");
+  if (!navbar || !globalHeader) {
+    console.warn("Anchor menu initialization failed: required elements not found");
+    return;
+  }
+
   const navbarOriginalParent = navbar.parentNode;
   const navbarOriginalNextSibling = navbar.nextSibling;
-  const anchors = navbar.getElementsByClassName("nav-link");
+
+  const anchors = Array.from(navbar.getElementsByClassName("nav-link"));
   const anchorTargets = new Map();
   let previousScrollPosition = window.scrollY;
   let isNavbarAttached = false;
@@ -36,11 +42,18 @@ function initAnchorMenu() {
     window.scrollY -
     combinedToolbarHeightOffset;
 
-  // Cache the anchor target elements
   for (let anchor of anchors) {
-    const targetId = anchor.getAttribute("href").replace("#", "");
+    const href = anchor.getAttribute("href");
+    if (!href || !href.startsWith("#")) {
+      continue;
+    }
+    const targetId = href.replace("#", "");
     const target = document.getElementById(targetId);
-    anchorTargets.set(anchor, target);
+    if (target) {
+      anchorTargets.set(anchor, target);
+    } else {
+      console.warn(`Anchor menu: target element "${targetId}" not found`);
+    }
   }
 
   const shouldAttachNavbarOnLoad = window.scrollY > navbarInitialTop;
@@ -54,11 +67,16 @@ function initAnchorMenu() {
    * Calculates the percentage of an element that is visible in the viewport.
    *
    * @param {Element} el The element to calculate the visible percentage for.
+   * @param {number} depth Recursion depth counter to prevent infinite loops.
    * @return {number} The percentage of the element that is visible in the viewport.
    */
-  function calculateVisiblePercentage(el) {
+  function calculateVisiblePercentage(el, depth = 0) {
+    if (!el || depth > 10) {
+      return 0;
+    }
+
     if (el.offsetHeight === 0 || el.offsetWidth === 0) {
-      return calculateVisiblePercentage(el.parentElement);
+      return calculateVisiblePercentage(el.parentElement, depth + 1);
     }
     const rect = el.getBoundingClientRect();
     const windowHeight =
@@ -89,24 +107,30 @@ function initAnchorMenu() {
     let mostVisibleElementId = null;
 
     // Find the element with highest visibility
-    Array.from(anchors).forEach(anchor => {
-      let elementId = anchor.getAttribute("href").replace("#", "");
-      let el = document.getElementById(elementId);
-      const visiblePercentage = calculateVisiblePercentage(el);
+    anchors.forEach(anchor => {
+      const target = anchorTargets.get(anchor);
+      if (!target) {
+        return;
+      }
+
+      const visiblePercentage = calculateVisiblePercentage(target);
       if (visiblePercentage > 0 && visiblePercentage > maxVisibility) {
         maxVisibility = visiblePercentage;
-        mostVisibleElementId = el.id;
+        mostVisibleElementId = target.id;
       }
     });
 
     // Update active class if we found a visible element
     if (mostVisibleElementId) {
-      document
-        .querySelector('[href="#' + mostVisibleElementId + '"]')
-        .classList.add("active");
+      const activeAnchor = document.querySelector('[href="#' + mostVisibleElementId + '"]');
+      if (activeAnchor) {
+        activeAnchor.classList.add("active");
+      }
+
+      // Remove active class from all other nav links in the navbar
       navbar
         .querySelectorAll(
-          `nav > a.nav-link:not([href="#` + mostVisibleElementId + '"])'
+          'a.nav-link:not([href="#' + mostVisibleElementId + '"])'
         )
         .forEach(function (e) {
           e.classList.remove("active");
@@ -147,16 +171,37 @@ function initAnchorMenu() {
     previousScrollPosition = window.scrollY;
   };
 
+  let throttledScrollHandler;
+  const createThrottledHandler = () => {
+    let isThrottled = false;
+    return () => {
+      if (isThrottled) return;
+      isThrottled = true;
+      scrollHandlerLogic();
+      setTimeout(() => {
+        isThrottled = false;
+      }, SCROLL_DELAY);
+    };
+  };
+
+  throttledScrollHandler = createThrottledHandler();
+
   window.addEventListener(
     "scroll",
-    () => throttle(scrollHandlerLogic, SCROLL_DELAY),
+    throttledScrollHandler,
     { passive: true }
   );
 
-  // Set click event of anchors
+  // Set click event handlers for all valid anchors
+  // Only anchors with valid targets were added to anchorTargets Map
   for (let [anchor, anchorTarget] of anchorTargets) {
     anchor.addEventListener("click", function (e) {
       e.preventDefault();
+
+      if (!anchorTarget || !document.body.contains(anchorTarget)) {
+        console.warn("Anchor target no longer exists in DOM");
+        return;
+      }
 
       // Get current viewport height and calculate the 1/4 position so that the
       // top of section is visible when you click on the anchor.
