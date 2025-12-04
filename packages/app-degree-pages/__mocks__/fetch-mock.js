@@ -6,9 +6,11 @@ import {
 import "./unity-react-core-mock";
 import detailNoNewStudentData from "./data/degree-search-detail-no-new-student.json";
 import detailData from "./data/degree-search-detail.json";
+import nursingData from "./data/nursing-bsn-detail-page.json";
 import listData from "./data/degree-search.json";
 
 const noNewStudentAcadPlan = "BABUSCLBA";
+const nursingAcadPlan = "NUNURDBSN";
 
 // Mock fetch globally
 const mockFetch = vi.fn();
@@ -32,6 +34,8 @@ mockFetch.mockImplementation(async (url) => {
     res = listData;
   } else if (url.includes(noNewStudentAcadPlan)) {
     res = detailNoNewStudentData;
+  } else if (url.includes(nursingAcadPlan)) {
+    res = nursingData;
   } else if (url.includes(detailPageDefaultDataSource.endpoint + "/")) {
     res = detailData;
   }
