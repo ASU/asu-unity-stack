@@ -1,3 +1,18 @@
+# [@asu/app-rfi-v3.6.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.6.0...@asu/app-rfi-v3.6.1) (2025-11-19)
+
+
+### Bug Fixes
+
+* **app-rfi:** fix typo in fetch url ([5ae2567](https://github.com/asu/asu-unity-stack/commit/5ae2567a66b47be719cf581b04751ef78c32e52f))
+
+# [@asu/app-rfi-v3.6.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.5.0...@asu/app-rfi-v3.6.0) (2025-10-14)
+
+
+### Features
+
+* **app-rfi:** add legend to fieldset for accessible form group labeling ([56f6a92](https://github.com/asu/asu-unity-stack/commit/56f6a92e90e3c61c87a862bae7b60afa1e3b13b8))
+* **app-rfi:** only include space if icon present ([59cd66c](https://github.com/asu/asu-unity-stack/commit/59cd66cb9418f820d523cd37c1111e0f22668407))
+
 # [@asu/app-rfi-v3.5.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.4.0...@asu/app-rfi-v3.5.0) (2025-09-22)
 
 

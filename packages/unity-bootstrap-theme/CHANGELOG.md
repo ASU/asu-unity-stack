@@ -1,3 +1,28 @@
+# [@asu/unity-bootstrap-theme-v1.30.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.30.2...@asu/unity-bootstrap-theme-v1.30.3) (2025-10-24)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** removed max-width from btn-row into heroes ([a3e2958](https://github.com/ASU/asu-unity-stack/commit/a3e2958755bc09d35352e755f666cbcf48944c3d))
+
+# [@asu/unity-bootstrap-theme-v1.30.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.30.1...@asu/unity-bootstrap-theme-v1.30.2) (2025-10-15)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix typo ([d66b84d](https://github.com/ASU/asu-unity-stack/commit/d66b84dd62b45c0cc50a4bdd4bde13f3f24fdb2b))
+* **unity-bootstrap-theme:** replace custom throttle with @asu/shared ([e2ba8fe](https://github.com/ASU/asu-unity-stack/commit/e2ba8fe119a7fd3f9e70fa81158a1c9c3b2738e5))
+* **unity-bootstrap-theme:** update anchor menu logic to be more universal ([9629c31](https://github.com/ASU/asu-unity-stack/commit/9629c31c33a240da3681d08f89899d70ca6f0356))
+
+# [@asu/unity-bootstrap-theme-v1.30.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.30.0...@asu/unity-bootstrap-theme-v1.30.1) (2025-10-14)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** update alt on footer ranking image stories ([b982d61](https://github.com/ASU/asu-unity-stack/commit/b982d61fb835bbe08f22405d7c3db005006ea558))
+* **unity-bootstrap-theme:** update footer ranking styles and image assets ([97812df](https://github.com/ASU/asu-unity-stack/commit/97812df7f9373d53d0da3cacc98e4860f5f46f32))
+* **unity-bootstrap-theme:** updated footer innovation logo ([0dd006f](https://github.com/ASU/asu-unity-stack/commit/0dd006f2bb5b1a9ef7510ed5f3ec93a77e649334))
+
 # [@asu/unity-bootstrap-theme-v1.30.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.29.0...@asu/unity-bootstrap-theme-v1.30.0) (2025-10-02)
 
 

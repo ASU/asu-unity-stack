@@ -1,3 +1,20 @@
+# [@asu/component-header-footer-v1.1.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.1.1...@asu/component-header-footer-v1.1.2) (2025-10-30)
+
+
+### Bug Fixes
+
+* **component-header-footer:** fix header focus change that broke safari links ([79fda2b](https://github.com/asu/asu-unity-stack/commit/79fda2b19e8cce62abde8ac7a1ea7b40c7aeda4b))
+
+# [@asu/component-header-footer-v1.1.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.1.0...@asu/component-header-footer-v1.1.1) (2025-10-14)
+
+
+### Bug Fixes
+
+* **component-header-footer:** update alt text on footer ranking ([fce3f9d](https://github.com/asu/asu-unity-stack/commit/fce3f9df582e68eb1d46d3ad813f3dcd4181e820))
+* **component-header-footer:** update footer ranking image ([4a402ee](https://github.com/asu/asu-unity-stack/commit/4a402ee2c5988b230697224dec60687fee24a7c9))
+* **component-header-footer:** updated ranking footer image ([1bb945e](https://github.com/asu/asu-unity-stack/commit/1bb945ea55d8c00cc4e653b0cf5406f0b8f8e218))
+* **unity-bootstrap-theme:** update footer ranking styles and image assets ([97812df](https://github.com/asu/asu-unity-stack/commit/97812df7f9373d53d0da3cacc98e4860f5f46f32))
+
 # [@asu/component-header-footer-v1.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.0.14...@asu/component-header-footer-v1.1.0) (2025-08-21)
 
 

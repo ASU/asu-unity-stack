@@ -4,7 +4,15 @@ import { defaultDecorator } from "@asu/shared";
 export default {
   title: "Atoms/Form Fields/Examples",
   decorators: [defaultDecorator],
-  parameters: { controls: { disable: true } },
+  parameters: {
+    controls: { disable: true },
+    docs: {
+      description: {
+        component:
+          "Please take note that gray color classes have been updated according to brand guidelines. The following classes have been deprecated and should no longer be used: .uds-form.uds-form-gray1, .uds-form.uds-form-gray2, .uds-form.uds-form-gray7. Please use the updated classes instead: .uds-form.uds-form-faint-bg, .uds-form.uds-form-light-bg, .uds-form.uds-form-dark-bg.",
+      },
+    },
+  },
 };
 
 export const TextInputs = () => (
@@ -240,7 +248,7 @@ export const TextInputsVariousBackgrounds = () => (
 
     <div style={{ backgroundColor: "#fafafa" }}>
       {/* This div for Storybook display only. */}
-      <form className="uds-form uds-form-gray1">
+      <form className="uds-form uds-form-faint-bg">
         <div className="form-group">
           <label for="exampleDefaultInputGray1">Default text input label</label>
           <input
@@ -331,7 +339,7 @@ export const TextInputsVariousBackgrounds = () => (
 
     <div style={{ backgroundColor: "#e8e8e8" }}>
       {/* This div for Storybook display only. */}
-      <form className="uds-form uds-form-gray2">
+      <form className="uds-form uds-form-light-bg">
         <div className="form-group">
           <label for="exampleDefaultInputGray2">Default text input label</label>
           <input
@@ -422,7 +430,7 @@ export const TextInputsVariousBackgrounds = () => (
 
     <div style={{ backgroundColor: "#191919" }}>
       {/* This div for Storybook display only. */}
-      <form className="uds-form uds-form-gray7">
+      <form className="uds-form uds-form-dark-bg">
         <div className="form-group">
           <label for="exampleDefaultInputGray7">Default text input label</label>
           <input
@@ -710,7 +718,7 @@ export const TextareasMultipleBackgrounds = () => (
 
     <div style={{ backgroundColor: "#fafafa" }}>
       {/* This div for Storybook display only. */}
-      <form className="uds-form uds-form-gray1">
+      <form className="uds-form uds-form-faint-bg">
         <div className="form-group">
           <label for="exampleFormControlTextareaDefaultGray1">
             Default textarea
@@ -799,7 +807,7 @@ export const TextareasMultipleBackgrounds = () => (
 
     <div style={{ backgroundColor: "#e8e8e8" }}>
       {/* This div for Storybook display only. */}
-      <form className="uds-form uds-form-gray2">
+      <form className="uds-form uds-form-light-bg">
         <div className="form-group">
           <label for="exampleFormControlTextareaDefaultGray2">
             Default textarea
@@ -888,7 +896,7 @@ export const TextareasMultipleBackgrounds = () => (
 
     <div style={{ backgroundColor: "#191919" }}>
       {/* This div for Storybook display only. */}
-      <form className="uds-form uds-form-gray7">
+      <form className="uds-form uds-form-dark-bg">
         <div className="form-group">
           <label for="exampleFormControlTextareaDefaultGray7">
             Default textarea
@@ -1902,7 +1910,7 @@ export const CheckboxesAndRadiosWhiteBackground = () => (
 export const CheckboxesAndRadiosGray1Background = () => (
   <div style={{ backgroundColor: "#fafafa" }}>
     {/* This div for Storybook display only. */}
-    <form className="uds-form uds-form-gray1">
+    <form className="uds-form uds-form-faint-bg">
       <div className="form-check">
         <input
           className="form-check-input"
@@ -2277,7 +2285,7 @@ export const CheckboxesAndRadiosGray1Background = () => (
 export const CheckboxesAndRadiosGray2Background = () => (
   <div style={{ backgroundColor: "#e8e8e8" }}>
     {/* This div for Storybook display only. */}
-    <form className="uds-form uds-form-gray2">
+    <form className="uds-form uds-form-light-bg">
       <div className="form-check">
         <input
           className="form-check-input"
@@ -2652,7 +2660,7 @@ export const CheckboxesAndRadiosGray2Background = () => (
 export const CheckboxesAndRadiosGray7Background = () => (
   <div style={{ backgroundColor: "#191919" }}>
     {/* This div for Storybook display only. */}
-    <form className="uds-form uds-form-gray7">
+    <form className="uds-form uds-form-dark-bg">
       <div className="form-check">
         <input
           className="form-check-input"
@@ -4308,7 +4316,7 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidat
 
       <div style={{ backgroundColor: "#191919" }}>
         {/* This div for Storybook display only. */}
-        <form className="uds-form needs-validation uds-form-gray7">
+        <form className="uds-form needs-validation uds-form-dark-bg">
           <div className="form-group">
             <label for="myTextInput">
               <span
@@ -4796,7 +4804,7 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedForm
 
       <div style={{ backgroundColor: "#191919" }}>
         {/* This div for Storybook display only. */}
-        <form className="uds-form was-validated uds-form-gray7">
+        <form className="uds-form was-validated uds-form-dark-bg">
           <div className="form-group">
             <label for="myTextInput">
               <span

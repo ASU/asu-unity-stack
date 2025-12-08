@@ -5,7 +5,7 @@ import { Field } from "formik";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { RfiError, RfiLabel } from "./controls-helpers";
+import { RfiError, RfiLegend } from "./controls-helpers";
 
 const RfiRadioGroup = ({ name, id, options, label, onBlur }) => {
   return (
@@ -19,7 +19,7 @@ const RfiRadioGroup = ({ name, id, options, label, onBlur }) => {
         const isError = meta.error;
         return (
           <fieldset>
-            <RfiLabel label={label} name={name} id={id} />
+            <RfiLegend label={label} />
             <RfiError isError={isError} metaError={meta.error} />
             {options.map(option => (
               <div

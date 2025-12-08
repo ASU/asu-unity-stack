@@ -25,7 +25,7 @@ export const BreadcrumbsAgainstWhiteBackground = () => (
 
 export const BreadcrumbsAgainstGray1Background = () => (
   <nav aria-label="breadcrumbs">
-    <ol className="breadcrumb bg-gray-1">
+    <ol className="breadcrumb gray-faint-bg">
       <li className="breadcrumb-item">
         <a href="#">Home</a>
       </li>
@@ -41,7 +41,7 @@ export const BreadcrumbsAgainstGray1Background = () => (
 
 export const BreadcrumbsAgainstGray2Background = () => (
   <nav aria-label="breadcrumbs">
-    <ol className="breadcrumb bg-gray-2">
+    <ol className="breadcrumb gray-light-bg">
       <li className="breadcrumb-item">
         <a href="#">Home</a>
       </li>
@@ -56,7 +56,7 @@ export const BreadcrumbsAgainstGray2Background = () => (
 );
 
 export const FullWidthBreadcrumbsAgainstGray7Background = () => (
-  <section className="bg-gray-7">
+  <section className="gray-dark-bg">
     <nav className="uds-content-align" aria-label="breadcrumbs">
       <ol className="breadcrumb">
         <li className="breadcrumb-item">
