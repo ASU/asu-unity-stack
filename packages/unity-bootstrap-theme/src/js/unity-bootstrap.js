@@ -13,6 +13,7 @@ import { initImageParallax } from "./image-parallax.js";
 import { initModals } from "./modals.js";
 import { initTabbedPanels } from "./tabbed-panels.js";
 import { initFixedTable } from "./tables.js";
+import { initKeyEvents } from "./key-events.js";
 import { initVideo } from "./video.js";
 
 const unityBootstrap = {
@@ -30,6 +31,7 @@ const unityBootstrap = {
   initModals,
   initRankingCard,
   initTabbedPanels,
+  initKeyEvents,
   initVideo,
   initCardBodies,
 };

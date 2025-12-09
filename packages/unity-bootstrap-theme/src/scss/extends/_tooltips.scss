@@ -8,20 +8,33 @@
 }
 
 .uds-tooltip-container {
+  --tooltip-max-width: 288px;
+
+  --tooltip-offset: .5rem;
   display: inline-block;
   position: relative;
 
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: calc(-1 * var(--tooltip-offset));
+    bottom: calc(-1 * var(--tooltip-offset));
+  }
+  [aria-describedby] {
+    position: relative;
+  }
   [aria-describedby] {
     + [role="tooltip"] {
       visibility: hidden;
     }
   }
-
-  [aria-describedby]:focus,
-  [aria-describedby]:hover {
-    + [role="tooltip"] {
+  & [role="tooltip"],
+  &:hover [role="tooltip"],
+  [aria-describedby]:focus + [role="tooltip"],
+  [aria-describedby]:hover + [role="tooltip"] {
       visibility: visible;
-    }
   }
 }
 
@@ -90,18 +103,38 @@ button.uds-tooltip-dark {
   }
 }
 
+div[role='tooltip'].uds-tooltip-description:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(-1 * var(--tooltip-offset));
+  right: 100%;
+}
+ddiv[role='tooltip'].uds-tooltip-description:after {
+  content: '';
+  position: absolute;
+  top: calc(-1 * var(--tooltip-offset));
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background-color: #f001;
+}
+
 div[role='tooltip'].uds-tooltip-description {
   background: $asu-gray-1 0% 0% no-repeat padding-box;
   color: $asu-gray-7;
   font: normal normal normal $uds-size-spacing-2 Arial;
   line-height: $uds-size-spacing-3;
-  margin: 0px 5px;
-  max-width: 353px;
-  min-width: 300px;
+  max-width: var(--tooltip-max-width);
+  min-width: min(100vw, var(--min-width));
+  width: -webkit-max-content;
   padding: $uds-size-spacing-4;
   position: absolute;
-  left: 40px;
+  left: calc(100% + var(--tooltip-offset));
   top: 0;
+  justify-self: start;
+  align-self: end;
   visibility: hidden;
   z-index: 1;
 
