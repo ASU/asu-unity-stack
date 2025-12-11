@@ -52,6 +52,7 @@ $e || ($e = function(e, n) {
 const ie = G(Array.prototype.forEach), io = G(Array.prototype.lastIndexOf), oa = G(Array.prototype.pop), Ht = G(Array.prototype.push), so = G(Array.prototype.splice), fe = G(String.prototype.toLowerCase), je = G(String.prototype.toString), ia = G(String.prototype.match), jt = G(String.prototype.replace), lo = G(String.prototype.indexOf), co = G(String.prototype.trim), K = G(Object.prototype.hasOwnProperty), W = G(RegExp.prototype.test), zt = fo(TypeError);
 function G(t) {
   return function(e) {
+    e instanceof RegExp && (e.lastIndex = 0);
     for (var n = arguments.length, a = new Array(n > 1 ? n - 1 : 0), r = 1; r < n; r++)
       a[r - 1] = arguments[r];
     return _e(t, e, a);
@@ -169,7 +170,7 @@ const Wt = {
 function Za() {
   let t = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : Oo();
   const e = (b) => Za(b);
-  if (e.version = "3.2.4", e.removed = [], !t || !t.document || t.document.nodeType !== Wt.document || !t.Element)
+  if (e.version = "3.2.5", e.removed = [], !t || !t.document || t.document.nodeType !== Wt.document || !t.Element)
     return e.isSupported = !1, e;
   let {
     document: n
@@ -356,7 +357,7 @@ function Za() {
     if (at(z.uponSanitizeElement, i, {
       tagName: A,
       allowedTags: I
-    }), i.hasChildNodes() && !Vn(i.firstElementChild) && W(/<[/\w]/g, i.innerHTML) && W(/<[/\w]/g, i.textContent) || i.nodeType === Wt.progressingInstruction || Le && i.nodeType === Wt.comment && W(/<[/\w]/g, i.data))
+    }), i.hasChildNodes() && !Vn(i.firstElementChild) && W(/<[/\w!]/g, i.innerHTML) && W(/<[/\w!]/g, i.textContent) || i.nodeType === Wt.progressingInstruction || Le && i.nodeType === Wt.comment && W(/<[/\w]/g, i.data))
       return Z(i), !0;
     if (!I[A] || Bt[A]) {
       if (!Bt[A] && _n(A) && (P.tagNameCheck instanceof RegExp && W(P.tagNameCheck, A) || P.tagNameCheck instanceof Function && P.tagNameCheck(A)))

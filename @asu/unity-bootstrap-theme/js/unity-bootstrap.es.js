@@ -366,7 +366,7 @@ function Hn() {
   }, v.version = "18.3.1", v;
 }
 Hn();
-/*! @license DOMPurify 3.2.4 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.2.4/LICENSE */
+/*! @license DOMPurify 3.2.5 | (c) Cure53 and other contributors | Released under the Apache license 2.0 and Mozilla Public License 2.0 | github.com/cure53/DOMPurify/blob/3.2.5/LICENSE */
 const {
   entries: tn,
   setPrototypeOf: He,
@@ -397,6 +397,7 @@ ue || (ue = function(e, r) {
 const Ft = K(Array.prototype.forEach), Wn = K(Array.prototype.lastIndexOf), Fe = K(Array.prototype.pop), vt = K(Array.prototype.push), zn = K(Array.prototype.splice), Ut = K(String.prototype.toLowerCase), te = K(String.prototype.toString), Be = K(String.prototype.match), Lt = K(String.prototype.replace), qn = K(String.prototype.indexOf), Gn = K(String.prototype.trim), it = K(Object.prototype.hasOwnProperty), j = K(RegExp.prototype.test), Ct = Vn(TypeError);
 function K(n) {
   return function(e) {
+    e instanceof RegExp && (e.lastIndex = 0);
     for (var r = arguments.length, a = new Array(r > 1 ? r - 1 : 0), l = 1; l < r; l++)
       a[l - 1] = arguments[l];
     return ce(n, e, a);
@@ -514,7 +515,7 @@ const Rt = {
 function rn() {
   let n = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : oo();
   const e = (h) => rn(h);
-  if (e.version = "3.2.4", e.removed = [], !n || !n.document || n.document.nodeType !== Rt.document || !n.Element)
+  if (e.version = "3.2.5", e.removed = [], !n || !n.document || n.document.nodeType !== Rt.document || !n.Element)
     return e.isSupported = !1, e;
   let {
     document: r
@@ -701,7 +702,7 @@ function rn() {
     if (ft(O.uponSanitizeElement, t, {
       tagName: g,
       allowedTags: o
-    }), t.hasChildNodes() && !Ce(t.firstElementChild) && j(/<[/\w]/g, t.innerHTML) && j(/<[/\w]/g, t.textContent) || t.nodeType === Rt.progressingInstruction || qt && t.nodeType === Rt.comment && j(/<[/\w]/g, t.data))
+    }), t.hasChildNodes() && !Ce(t.firstElementChild) && j(/<[/\w!]/g, t.innerHTML) && j(/<[/\w!]/g, t.textContent) || t.nodeType === Rt.progressingInstruction || qt && t.nodeType === Rt.comment && j(/<[/\w]/g, t.data))
       return lt(t), !0;
     if (!o[g] || x[g]) {
       if (!x[g] && De(g) && (b.tagNameCheck instanceof RegExp && j(b.tagNameCheck, g) || b.tagNameCheck instanceof Function && b.tagNameCheck(g)))

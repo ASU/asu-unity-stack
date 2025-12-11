@@ -1,0 +1,1 @@
+import{p as r}from"./Layout-XUDhei8Q.js";let t=null;function u(){return t||(typeof window<"u"?t=r(window):t=r),t}function s(e){const n=e?document.querySelector(e):document;return n?n.querySelector('button, [href], input, select, textarea, [tabIndex]:not([tabIndex="-1"])'):null}const a=e=>({__html:u().sanitize(e)});export{s as q,a as s};
