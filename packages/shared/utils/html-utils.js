@@ -1,19 +1,37 @@
 // @ts-check
 import DOMPurify from "dompurify";
 
+// Lazy initialization of DOMPurify to support server-side rendering
+let DOMPurifyInstanceServerCompatible = null;
+
+function getDOMPurifyInstance() {
+  if (!DOMPurifyInstanceServerCompatible) {
+    // Initialize DOMPurify with the current window (browser or JSDOM)
+    if (typeof window !== "undefined") {
+      DOMPurifyInstanceServerCompatible = DOMPurify(window);
+    } else {
+      // Fallback for environments without window
+      DOMPurifyInstanceServerCompatible = DOMPurify;
+    }
+  }
+  return DOMPurifyInstanceServerCompatible;
+}
+
 /**
  * @typedef {{
  *  focus: () => void
  * } & Element } FocusableElement
  * @param {string} targetSelector
- * @returns {FocusableElement}
+ * @returns {FocusableElement | null}
  */
 function queryFirstFocusable(targetSelector) {
   const target = targetSelector
     ? document.querySelector(targetSelector)
     : document;
 
-  /** @type {FocusableElement} */
+  if (!target) return null;
+
+  /** @type {FocusableElement | null} */
   const focusable = target.querySelector(
     'button, [href], input, select, textarea, [tabIndex]:not([tabIndex="-1"])'
   );
@@ -25,7 +43,8 @@ function queryFirstFocusable(targetSelector) {
  * @returns {Object}
  */
 export const sanitizeDangerousMarkup = content => {
-  return { __html: DOMPurify.sanitize(content) };
+  const purify = getDOMPurifyInstance();
+  return { __html: purify.sanitize(content) };
 };
 
 export { queryFirstFocusable };

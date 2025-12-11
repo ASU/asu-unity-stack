@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node"
+  },
+  "tsx": {
+    "esbuild": {
+      "loader": {
+        ".jpg": "text",
+        ".jpeg": "text",
+        ".png": "text",
+        ".gif": "text",
+        ".svg": "text",
+        ".webp": "text"
+      }
+    }
+  }
+}
