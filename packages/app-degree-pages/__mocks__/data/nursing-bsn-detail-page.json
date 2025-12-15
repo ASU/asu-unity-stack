@@ -1,0 +1,1016 @@
+{
+    "acadPlanCode": "NUNURDBSN",
+    "acadPlanDescription": "Nursing",
+    "acadPlanMarketingDescription": "Nursing",
+    "fullDescription": "<p></p>",
+    "acadPlanType": "MAJ",
+    "acadPlanTypeDescription": "Major",
+    "acadProgramCode": "UGNU",
+    "emailAddr": "asu.bsn@asu.edu",
+    "emailAddrOnline": null,
+    "phoneNumber": "602/496-0937",
+    "mathIntensityCode": "G",
+    "mathIntensityDescription": "General",
+    "mathRequired": true,
+    "firstMathCourseRequired": {
+        "courseId": "107265",
+        "subject": "MAT",
+        "catalogNumber": "114",
+        "description": "College Mathematics"
+    },
+    "firstMathCourseRequiredSupplementalText": null,
+    "academicOfficeLocation": "MERCC 250",
+    "academicOfficeUrl": "https://nursingandhealth.asu.edu/programs/bsn/nursing",
+    "customText": "<p>The accelerated BSN/MS option is currently only available to ASU Online students.</p>",
+    "asuOnlineAcadPlanUrl": "https://asuonline.asu.edu/online-degree-programs/undergraduate/bachelor-science-nursing-rn-bsn/",
+    "careerOpportunities": "<p>The Edson College of Nursing and Health Innovation prepares graduates for excellence upon entering the workplace. Graduates deliver nursing care to individuals, families and communities. Completion of this degree program also prepares individuals for entrance into graduate study in nursing at the master's or doctoral degree levels, which is essential for teaching, administration, clinical specialization and research.</p>",
+    "professionalLicensureStandardText": "<p>ASU programs that may lead to professional licensure or certification are intended to prepare students for potential licensure or certification in Arizona. Completion of an ASU program may not meet educational requirements for licensure or certification in another state. For more information, students should visit the <a href=\"https://admission.asu.edu/academics/licensure\">ASU professional licensure</a> webpage.</p>",
+    "professionalLicensureAdditionalText": null,
+    "marketingText": "<p>Through a curriculum focused on evidence-based practice, clinical reasoning, innovation, interprofessional communication and information technology, this program prepares you to deliver top-notch professional nursing care.</p>",
+    "globalExperienceText": "<p>Through study abroad, students majoring in nursing are able to expand their knowledge of how nursing is practiced across the globe.</p><p>With <a href=\"https://goglobal.asu.edu/\">more than 300 programs available</a>, students can tailor their experience to their interests and skill sets. The heightened cultural competency, leadership and critical-thinking skills they achieve enhance their resumes and are applicable in any career choice.</p>",
+    "degreeRequirements": null,
+    "admissionsRequirementsText": "<p></p>",
+    "changeMajorRequirementsText": "<p></p>",
+    "transferAdmissionRequirementsText": null,
+    "activeInDegreeSearch": true,
+    "degreeDescriptionShort": "BSN",
+    "degreeDescriptionLong": "Bachelor of Science in Nursing",
+    "degreeDescriptionText": "An undergraduate degree in nursing.",
+    "degreeEducationLevel": "13",
+    "stemOptText": null,
+    "minorCourseRequirements": null,
+    "owners": [
+        {
+            "percentOwned": 100,
+            "departmentAcadOrg": "CNU",
+            "departmentDescription": "Edson College of Nursing and Health Innovation",
+            "collegeAcadOrg": "CNU",
+            "collegeDescription": "Edson College of Nursing and Health Innovation",
+            "collegeAlphaSortDescription": "Nursing and Health Innovation, Edson College of",
+            "collegeUrl": "https://nursingandhealth.asu.edu"
+        }
+    ],
+    "majorMapGeneral": [
+        {
+            "acadSubPlanCode": null,
+            "campus": "ALL",
+            "timePeriod": "0708",
+            "timePeriodDescription": "2007 - 2008",
+            "url": "http://catalog.asu.edu/files/majormap07/NUNURDBSN.pdf",
+            "categoryType": "MM",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": null,
+            "campus": "ALL",
+            "timePeriod": "0809",
+            "timePeriodDescription": "2008 - 2009",
+            "url": "http://catalog.asu.edu/files/majormap08/NUNURDBSN.pdf",
+            "categoryType": "MM",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": null,
+            "campus": "ALL",
+            "timePeriod": "0910",
+            "timePeriodDescription": "2009 - 2010",
+            "url": "http://catalog.asu.edu/files/majormap09/NUNURDBSN.pdf",
+            "categoryType": "MM",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": null,
+            "campus": "ALL",
+            "timePeriod": "1011",
+            "timePeriodDescription": "2010 - 2011",
+            "url": "http://catalog.asu.edu/files/majormap10/NUNURDBSN.pdf",
+            "categoryType": "MM",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": null,
+            "campus": "ALL",
+            "timePeriod": "1112",
+            "timePeriodDescription": "2011 - 2012",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/null/ALL/2011",
+            "categoryType": "MM",
+            "defaultFlag": false
+        }
+    ],
+    "majorMapSubplans": [
+        {
+            "acadSubPlanCode": "NURPBBSN",
+            "campus": "ALL",
+            "timePeriod": "1314",
+            "timePeriodDescription": "2013 - 2014",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/NURTPBSN/ALL/2013",
+            "categoryType": "SP",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": "NURTPBSN",
+            "campus": "ALL",
+            "timePeriod": "1314",
+            "timePeriodDescription": "2013 - 2014",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/NURTPBSN/ALL/2013",
+            "categoryType": "SP",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": "NURPBBSN",
+            "campus": "ALL",
+            "timePeriod": "1415",
+            "timePeriodDescription": "2014 - 2015",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/NURPBBSN/ALL/2014",
+            "categoryType": "SP",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": "NURTPBSN",
+            "campus": "ALL",
+            "timePeriod": "1415",
+            "timePeriodDescription": "2014 - 2015",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/NURTPBSN/ALL/2014",
+            "categoryType": "SP",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": "NURPBBSN",
+            "campus": "ALL",
+            "timePeriod": "1516",
+            "timePeriodDescription": "2015 - 2016",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/NURPBBSN/ALL/2015",
+            "categoryType": "SP",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": "NURTPBSN",
+            "campus": "ALL",
+            "timePeriod": "1516",
+            "timePeriodDescription": "2015 - 2016",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/NURTPBSN/ALL/2015",
+            "categoryType": "SP",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": "NURPBBSN",
+            "campus": "ALL",
+            "timePeriod": "1617",
+            "timePeriodDescription": "2016 - 2017",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/NURPBBSN/ALL/2016",
+            "categoryType": "SP",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": "NURTPBSN",
+            "campus": "ALL",
+            "timePeriod": "1617",
+            "timePeriodDescription": "2016 - 2017",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/NURTPBSN/ALL/2016",
+            "categoryType": "SP",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": "NURPBBSN",
+            "campus": "ALL",
+            "timePeriod": "1718",
+            "timePeriodDescription": "2017 - 2018",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/NURPBBSN/ALL/2017",
+            "categoryType": "SP",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": "NURTPBSN",
+            "campus": "ALL",
+            "timePeriod": "1718",
+            "timePeriodDescription": "2017 - 2018",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/NURTPBSN/ALL/2017",
+            "categoryType": "SP",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": "NURPBBSN",
+            "campus": "ALL",
+            "timePeriod": "1819",
+            "timePeriodDescription": "2018 - 2019",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/NURPBBSN/ALL/2018",
+            "categoryType": "SP",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": "NURTPBSN",
+            "campus": "ALL",
+            "timePeriod": "1819",
+            "timePeriodDescription": "2018 - 2019",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/NURTPBSN/ALL/2018",
+            "categoryType": "SP",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": "NURPBBSN",
+            "campus": "ALL",
+            "timePeriod": "1920",
+            "timePeriodDescription": "2019 - 2020",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/NURPBBSN/ALL/2019",
+            "categoryType": "SP",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": "NURTPBSN",
+            "campus": "ALL",
+            "timePeriod": "1920",
+            "timePeriodDescription": "2019 - 2020",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/NURTPBSN/ALL/2019",
+            "categoryType": "SP",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": "NURPBBSN",
+            "campus": "ALL",
+            "timePeriod": "2021",
+            "timePeriodDescription": "2020 - 2021",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/NURPBBSN/ALL/2020",
+            "categoryType": "SP",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": "NURTPBSN",
+            "campus": "ALL",
+            "timePeriod": "2021",
+            "timePeriodDescription": "2020 - 2021",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/NURTPBSN/ALL/2020",
+            "categoryType": "SP",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": "NURPBBSN",
+            "campus": "ALL",
+            "timePeriod": "2122",
+            "timePeriodDescription": "2021 - 2022",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/NURPBBSN/ALL/2021",
+            "categoryType": "SP",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": "NURTPBSN",
+            "campus": "ALL",
+            "timePeriod": "2122",
+            "timePeriodDescription": "2021 - 2022",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/NURTPBSN/ALL/2021",
+            "categoryType": "SP",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": "NURPBBSN",
+            "campus": "ALL",
+            "timePeriod": "2223",
+            "timePeriodDescription": "2022 - 2023",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/NURPBBSN/ALL/2022",
+            "categoryType": "SP",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": "NURTPBSN",
+            "campus": "ALL",
+            "timePeriod": "2223",
+            "timePeriodDescription": "2022 - 2023",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/NURTPBSN/ALL/2022",
+            "categoryType": "SP",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": "NURPBBSN",
+            "campus": "ALL",
+            "timePeriod": "2324",
+            "timePeriodDescription": "2023 - 2024",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/NURPBBSN/ALL/2023",
+            "categoryType": "SP",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": "NURTPBSN",
+            "campus": "ALL",
+            "timePeriod": "2324",
+            "timePeriodDescription": "2023 - 2024",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/NURTPBSN/ALL/2023",
+            "categoryType": "SP",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": "NURPBBSN",
+            "campus": "ALL",
+            "timePeriod": "2425",
+            "timePeriodDescription": "2024 - 2025",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/NURPBBSN/ALL/2024",
+            "categoryType": "SP",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": "NURTPBSN",
+            "campus": "ALL",
+            "timePeriod": "2425",
+            "timePeriodDescription": "2024 - 2025",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/NURTPBSN/ALL/2024",
+            "categoryType": "SP",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": "NURNPWC",
+            "campus": "ALL",
+            "timePeriod": "2526",
+            "timePeriodDescription": "2025 - 2026",
+            "url": "https://degrees.apps.asu.edu/checksheet/2025/CNU/NUNURDBSN/NURNPWC",
+            "categoryType": "SP",
+            "defaultFlag": true
+        },
+        {
+            "acadSubPlanCode": "NURPBBSN",
+            "campus": "ALL",
+            "timePeriod": "2526",
+            "timePeriodDescription": "2025 - 2026",
+            "url": "https://degrees.apps.asu.edu/checksheet/2025/CNU/NUNURDBSN/NURPBBSN",
+            "categoryType": "SP",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": "NURRNBSN",
+            "campus": "ALL",
+            "timePeriod": "2526",
+            "timePeriodDescription": "2025 - 2026",
+            "url": "https://degrees.apps.asu.edu/checksheet/2025/CNU/NUNURDBSN/NURRNBSN",
+            "categoryType": "SP",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": "NURTPBSN",
+            "campus": "ALL",
+            "timePeriod": "2526",
+            "timePeriodDescription": "2025 - 2026",
+            "url": "https://degrees.apps.asu.edu/checksheet/2025/CNU/NUNURDBSN/NURTPBSN",
+            "categoryType": "SP",
+            "defaultFlag": false
+        }
+    ],
+    "majorMapOnline": [
+        {
+            "acadSubPlanCode": null,
+            "campus": "ONLNE",
+            "timePeriod": "1213",
+            "timePeriodDescription": "2012 - 2013",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/null/ONLINE/2012",
+            "categoryType": "AR",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": null,
+            "campus": "ONLNE",
+            "timePeriod": "1213",
+            "timePeriodDescription": "2012 - 2013",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/null/ONLINE/2012",
+            "categoryType": "CC",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": null,
+            "campus": "ONLNE",
+            "timePeriod": "1213",
+            "timePeriodDescription": "2012 - 2013",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/null/ONLINE/2012",
+            "categoryType": "CN",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": null,
+            "campus": "ONLNE",
+            "timePeriod": "1213",
+            "timePeriodDescription": "2012 - 2013",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/null/ONLINE/2012",
+            "categoryType": "CR",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": null,
+            "campus": "ONLNE",
+            "timePeriod": "1213",
+            "timePeriodDescription": "2012 - 2013",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/null/ONLINE/2012",
+            "categoryType": "ES",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": null,
+            "campus": "ONLNE",
+            "timePeriod": "1213",
+            "timePeriodDescription": "2012 - 2013",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/null/ONLINE/2012",
+            "categoryType": "MM",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": null,
+            "campus": "ONLNE",
+            "timePeriod": "1213",
+            "timePeriodDescription": "2012 - 2013",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/null/ONLINE/2012",
+            "categoryType": "MN",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": null,
+            "campus": "ONLNE",
+            "timePeriod": "1213",
+            "timePeriodDescription": "2012 - 2013",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/null/ONLINE/2012",
+            "categoryType": "MR",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": null,
+            "campus": "ONLNE",
+            "timePeriod": "1213",
+            "timePeriodDescription": "2012 - 2013",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/null/ONLINE/2012",
+            "categoryType": "NP",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": null,
+            "campus": "ONLNE",
+            "timePeriod": "1213",
+            "timePeriodDescription": "2012 - 2013",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/null/ONLINE/2012",
+            "categoryType": "PR",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": null,
+            "campus": "ONLNE",
+            "timePeriod": "1213",
+            "timePeriodDescription": "2012 - 2013",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/null/ONLINE/2012",
+            "categoryType": "YR",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": null,
+            "campus": "ONLNE",
+            "timePeriod": "1314",
+            "timePeriodDescription": "2013 - 2014",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/NURTPBSN/ALL/2013",
+            "categoryType": "ON",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": null,
+            "campus": "ONLNE",
+            "timePeriod": "1415",
+            "timePeriodDescription": "2014 - 2015",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/null/ONLINE/2014",
+            "categoryType": "ON",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": null,
+            "campus": "ONLNE",
+            "timePeriod": "1516",
+            "timePeriodDescription": "2015 - 2016",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/null/ONLINE/2015",
+            "categoryType": "ON",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": null,
+            "campus": "ONLNE",
+            "timePeriod": "1617",
+            "timePeriodDescription": "2016 - 2017",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/null/ONLINE/2016",
+            "categoryType": "ON",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": null,
+            "campus": "ONLNE",
+            "timePeriod": "1718",
+            "timePeriodDescription": "2017 - 2018",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/null/ONLINE/2017",
+            "categoryType": "ON",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": null,
+            "campus": "ONLNE",
+            "timePeriod": "1819",
+            "timePeriodDescription": "2018 - 2019",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/null/ONLINE/2018",
+            "categoryType": "ON",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": null,
+            "campus": "ONLNE",
+            "timePeriod": "1920",
+            "timePeriodDescription": "2019 - 2020",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/null/ONLINE/2019",
+            "categoryType": "ON",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": null,
+            "campus": "ONLNE",
+            "timePeriod": "2021",
+            "timePeriodDescription": "2020 - 2021",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/null/ONLINE/2020",
+            "categoryType": "ON",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": null,
+            "campus": "ONLNE",
+            "timePeriod": "2122",
+            "timePeriodDescription": "2021 - 2022",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/null/ONLINE/2021",
+            "categoryType": "ON",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": null,
+            "campus": "ONLNE",
+            "timePeriod": "2223",
+            "timePeriodDescription": "2022 - 2023",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/null/ONLINE/2022",
+            "categoryType": "ON",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": null,
+            "campus": "ONLNE",
+            "timePeriod": "2324",
+            "timePeriodDescription": "2023 - 2024",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/null/ONLINE/2023",
+            "categoryType": "ON",
+            "defaultFlag": false
+        },
+        {
+            "acadSubPlanCode": null,
+            "campus": "ONLNE",
+            "timePeriod": "2425",
+            "timePeriodDescription": "2024 - 2025",
+            "url": "https://degrees.apps.asu.edu/major-map/ASU00/NUNURDBSN/null/ONLINE/2024",
+            "categoryType": "ON",
+            "defaultFlag": false
+        }
+    ],
+    "careerData": [
+        {
+            "onetCode": "31-1131.00",
+            "onetTitle": "Nursing Assistants",
+            "alternateTitle": "Certified Nurse Assistant (CNA)",
+            "growth": 2.3,
+            "green": false,
+            "brightOutlook": true,
+            "salary": 39530
+        },
+        {
+            "onetCode": "29-1141.04",
+            "onetTitle": "Clinical Nurse Specialists",
+            "alternateTitle": "Clinical Nurse Specialist",
+            "growth": 4.9,
+            "green": false,
+            "brightOutlook": true,
+            "salary": 93600
+        }
+    ],
+    "applicationDeadlines": [
+        {
+            "campus": "POLY",
+            "session": "REG",
+            "strm": "2261",
+            "strmDescription": "2026 Spring",
+            "applicationAcceptStartDate": null,
+            "applicationAcceptEndDate": null,
+            "sessionEndDate": "2026-01-12",
+            "termBeginDate": null,
+            "priorityApplicationDeadlineDate": null
+        },
+        {
+            "campus": "EAC",
+            "session": "REG",
+            "strm": "2261",
+            "strmDescription": "2026 Spring",
+            "applicationAcceptStartDate": null,
+            "applicationAcceptEndDate": null,
+            "sessionEndDate": "2026-01-12",
+            "termBeginDate": null,
+            "priorityApplicationDeadlineDate": null
+        },
+        {
+            "campus": "SYNC",
+            "session": "REG",
+            "strm": "2261",
+            "strmDescription": "2026 Spring",
+            "applicationAcceptStartDate": null,
+            "applicationAcceptEndDate": null,
+            "sessionEndDate": "2026-01-12",
+            "termBeginDate": null,
+            "priorityApplicationDeadlineDate": null
+        },
+        {
+            "campus": "ONLNE",
+            "session": "SESA",
+            "strm": "2261",
+            "strmDescription": "2026 Spring",
+            "applicationAcceptStartDate": null,
+            "applicationAcceptEndDate": null,
+            "sessionEndDate": "2026-01-12",
+            "termBeginDate": null,
+            "priorityApplicationDeadlineDate": null
+        },
+        {
+            "campus": "ONLNE",
+            "session": "SESB",
+            "strm": "2261",
+            "strmDescription": "2026 Spring",
+            "applicationAcceptStartDate": null,
+            "applicationAcceptEndDate": null,
+            "sessionEndDate": "2026-03-16",
+            "termBeginDate": null,
+            "priorityApplicationDeadlineDate": null
+        },
+        {
+            "campus": "WEST",
+            "session": "REG",
+            "strm": "2261",
+            "strmDescription": "2026 Spring",
+            "applicationAcceptStartDate": null,
+            "applicationAcceptEndDate": null,
+            "sessionEndDate": "2026-01-12",
+            "termBeginDate": null,
+            "priorityApplicationDeadlineDate": null
+        },
+        {
+            "campus": "DTPHX",
+            "session": "REG",
+            "strm": "2261",
+            "strmDescription": "2026 Spring",
+            "applicationAcceptStartDate": null,
+            "applicationAcceptEndDate": null,
+            "sessionEndDate": "2026-01-12",
+            "termBeginDate": null,
+            "priorityApplicationDeadlineDate": null
+        },
+        {
+            "campus": "ONLNE",
+            "session": "SESA",
+            "strm": "2264",
+            "strmDescription": "2026 Summer",
+            "applicationAcceptStartDate": null,
+            "applicationAcceptEndDate": null,
+            "sessionEndDate": "2026-05-18",
+            "termBeginDate": null,
+            "priorityApplicationDeadlineDate": null
+        },
+        {
+            "campus": "ONLNE",
+            "session": "SESB",
+            "strm": "2264",
+            "strmDescription": "2026 Summer",
+            "applicationAcceptStartDate": null,
+            "applicationAcceptEndDate": null,
+            "sessionEndDate": "2026-07-01",
+            "termBeginDate": null,
+            "priorityApplicationDeadlineDate": null
+        },
+        {
+            "campus": "SYNC",
+            "session": "REG",
+            "strm": "2264",
+            "strmDescription": "2026 Summer",
+            "applicationAcceptStartDate": null,
+            "applicationAcceptEndDate": null,
+            "sessionEndDate": "2026-07-01",
+            "termBeginDate": null,
+            "priorityApplicationDeadlineDate": null
+        },
+        {
+            "campus": "DTPHX",
+            "session": "REG",
+            "strm": "2264",
+            "strmDescription": "2026 Summer",
+            "applicationAcceptStartDate": null,
+            "applicationAcceptEndDate": null,
+            "sessionEndDate": "2026-07-01",
+            "termBeginDate": null,
+            "priorityApplicationDeadlineDate": null
+        },
+        {
+            "campus": "POLY",
+            "session": "REG",
+            "strm": "2264",
+            "strmDescription": "2026 Summer",
+            "applicationAcceptStartDate": null,
+            "applicationAcceptEndDate": null,
+            "sessionEndDate": "2026-07-01",
+            "termBeginDate": null,
+            "priorityApplicationDeadlineDate": null
+        },
+        {
+            "campus": "EAC",
+            "session": "REG",
+            "strm": "2264",
+            "strmDescription": "2026 Summer",
+            "applicationAcceptStartDate": null,
+            "applicationAcceptEndDate": null,
+            "sessionEndDate": "2026-07-01",
+            "termBeginDate": null,
+            "priorityApplicationDeadlineDate": null
+        },
+        {
+            "campus": "WEST",
+            "session": "REG",
+            "strm": "2264",
+            "strmDescription": "2026 Summer",
+            "applicationAcceptStartDate": null,
+            "applicationAcceptEndDate": null,
+            "sessionEndDate": "2026-07-01",
+            "termBeginDate": null,
+            "priorityApplicationDeadlineDate": null
+        },
+        {
+            "campus": "DTPHX",
+            "session": "REG",
+            "strm": "2267",
+            "strmDescription": "2026 Fall",
+            "applicationAcceptStartDate": null,
+            "applicationAcceptEndDate": null,
+            "sessionEndDate": "2026-08-20",
+            "termBeginDate": null,
+            "priorityApplicationDeadlineDate": null
+        },
+        {
+            "campus": "SYNC",
+            "session": "REG",
+            "strm": "2267",
+            "strmDescription": "2026 Fall",
+            "applicationAcceptStartDate": null,
+            "applicationAcceptEndDate": null,
+            "sessionEndDate": "2026-08-20",
+            "termBeginDate": null,
+            "priorityApplicationDeadlineDate": null
+        },
+        {
+            "campus": "EAC",
+            "session": "REG",
+            "strm": "2267",
+            "strmDescription": "2026 Fall",
+            "applicationAcceptStartDate": null,
+            "applicationAcceptEndDate": null,
+            "sessionEndDate": "2026-08-20",
+            "termBeginDate": null,
+            "priorityApplicationDeadlineDate": null
+        },
+        {
+            "campus": "POLY",
+            "session": "REG",
+            "strm": "2267",
+            "strmDescription": "2026 Fall",
+            "applicationAcceptStartDate": null,
+            "applicationAcceptEndDate": null,
+            "sessionEndDate": "2026-08-20",
+            "termBeginDate": null,
+            "priorityApplicationDeadlineDate": null
+        },
+        {
+            "campus": "ONLNE",
+            "session": "SESA",
+            "strm": "2267",
+            "strmDescription": "2026 Fall",
+            "applicationAcceptStartDate": null,
+            "applicationAcceptEndDate": null,
+            "sessionEndDate": "2026-08-20",
+            "termBeginDate": null,
+            "priorityApplicationDeadlineDate": null
+        },
+        {
+            "campus": "ONLNE",
+            "session": "SESB",
+            "strm": "2267",
+            "strmDescription": "2026 Fall",
+            "applicationAcceptStartDate": null,
+            "applicationAcceptEndDate": null,
+            "sessionEndDate": "2026-10-14",
+            "termBeginDate": null,
+            "priorityApplicationDeadlineDate": null
+        },
+        {
+            "campus": "WEST",
+            "session": "REG",
+            "strm": "2267",
+            "strmDescription": "2026 Fall",
+            "applicationAcceptStartDate": null,
+            "applicationAcceptEndDate": null,
+            "sessionEndDate": "2026-08-20",
+            "termBeginDate": null,
+            "priorityApplicationDeadlineDate": null
+        }
+    ],
+    "campusesOffered": [
+        {
+            "campusCode": "DTPHX",
+            "wue": false
+        },
+        {
+            "campusCode": "EAC",
+            "wue": false
+        },
+        {
+            "campusCode": "WEST",
+            "wue": false
+        },
+        {
+            "campusCode": "POLY",
+            "wue": false
+        },
+        {
+            "campusCode": "ONLNE",
+            "wue": false
+        },
+        {
+            "campusCode": "SYNC",
+            "wue": false
+        }
+    ],
+    "subplans": [
+        {
+            "acadSubPlanCode": "NURRNBSN",
+            "description": "RN/BSN",
+            "acadSubplanTypeCode": "OPT",
+            "acadSubplanTypeDescription": "Option",
+            "campusesOffered": [
+                {
+                    "description": "RN/BSN",
+                    "campusCode": "EAC",
+                    "strm": "2261",
+                    "session": "REG"
+                },
+                {
+                    "description": "RN/BSN",
+                    "campusCode": "ONLNE",
+                    "strm": "2264",
+                    "session": "SESB"
+                },
+                {
+                    "description": "RN/BSN",
+                    "campusCode": "ONLNE",
+                    "strm": "2264",
+                    "session": "SESA"
+                },
+                {
+                    "description": "RN/BSN",
+                    "campusCode": "EAC",
+                    "strm": "2264",
+                    "session": "REG"
+                },
+                {
+                    "description": "RN/BSN",
+                    "campusCode": "ONLNE",
+                    "strm": "2267",
+                    "session": "SESB"
+                },
+                {
+                    "description": "RN/BSN",
+                    "campusCode": "ONLNE",
+                    "strm": "2267",
+                    "session": "SESA"
+                },
+                {
+                    "description": "RN/BSN",
+                    "campusCode": "EAC",
+                    "strm": "2267",
+                    "session": "REG"
+                },
+                {
+                    "description": "RN/BSN",
+                    "campusCode": "ONLNE",
+                    "strm": "2261",
+                    "session": "SESB"
+                },
+                {
+                    "description": "RN/BSN",
+                    "campusCode": "ONLNE",
+                    "strm": "2261",
+                    "session": "SESA"
+                }
+            ]
+        },
+        {
+            "acadSubPlanCode": "NURPBBSN",
+            "description": "Accelerated BSN",
+            "acadSubplanTypeCode": "OPT",
+            "acadSubplanTypeDescription": "Option",
+            "campusesOffered": null
+        },
+        {
+            "acadSubPlanCode": "NURNPWNC",
+            "description": "RN to BSN Path not conf by OTP",
+            "acadSubplanTypeCode": "OPT",
+            "acadSubplanTypeDescription": "Option",
+            "campusesOffered": null
+        },
+        {
+            "acadSubPlanCode": "NURNPWC",
+            "description": "RN to BSN Path conf by OTP",
+            "acadSubplanTypeCode": "OPT",
+            "acadSubplanTypeDescription": "Option",
+            "campusesOffered": null
+        },
+        {
+            "acadSubPlanCode": "NURCNC",
+            "description": "Conc ASU/CC no Clin CC yet",
+            "acadSubplanTypeCode": "OPT",
+            "acadSubplanTypeDescription": "Option",
+            "campusesOffered": null
+        },
+        {
+            "acadSubPlanCode": "NURCD",
+            "description": "Conc ASU/CC Clin CC/ASU DPC",
+            "acadSubplanTypeCode": "OPT",
+            "acadSubplanTypeDescription": "Option",
+            "campusesOffered": null
+        },
+        {
+            "acadSubPlanCode": "NURASPC",
+            "description": "RN to BSN in Alliance",
+            "acadSubplanTypeCode": "OPT",
+            "acadSubplanTypeDescription": "Option",
+            "campusesOffered": null
+        },
+        {
+            "acadSubPlanCode": "NURTPBSN",
+            "description": "Traditional BSN",
+            "acadSubplanTypeCode": "OPT",
+            "acadSubplanTypeDescription": "Option",
+            "campusesOffered": [
+                {
+                    "description": "Traditional BSN",
+                    "campusCode": "POLY",
+                    "strm": "2267",
+                    "session": "REG"
+                },
+                {
+                    "description": "Traditional BSN",
+                    "campusCode": "DTPHX",
+                    "strm": "2267",
+                    "session": "REG"
+                },
+                {
+                    "description": "Traditional BSN",
+                    "campusCode": "WEST",
+                    "strm": "2264",
+                    "session": "REG"
+                },
+                {
+                    "description": "Traditional BSN",
+                    "campusCode": "WEST",
+                    "strm": "2267",
+                    "session": "REG"
+                },
+                {
+                    "description": "Traditional BSN",
+                    "campusCode": "DTPHX",
+                    "strm": "2261",
+                    "session": "REG"
+                },
+                {
+                    "description": "Traditional BSN",
+                    "campusCode": "WEST",
+                    "strm": "2261",
+                    "session": "REG"
+                },
+                {
+                    "description": "Traditional BSN",
+                    "campusCode": "DTPHX",
+                    "strm": "2264",
+                    "session": "REG"
+                },
+                {
+                    "description": "Traditional BSN",
+                    "campusCode": "POLY",
+                    "strm": "2264",
+                    "session": "REG"
+                },
+                {
+                    "description": "Traditional BSN",
+                    "campusCode": "POLY",
+                    "strm": "2261",
+                    "session": "REG"
+                }
+            ]
+        }
+    ],
+    "concurrentAcadPlanCodes": null,
+    "acceleratedAcadPlanCodes": [
+        "NUNURDTMS"
+    ],
+    "graduateDegreeAdditionalRequirements": null,
+    "degreeType": "UG"
+}

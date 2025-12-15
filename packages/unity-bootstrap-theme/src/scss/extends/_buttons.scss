@@ -43,17 +43,17 @@
     padding: $uds-component-button-padding-y-small
       $uds-component-button-padding-x-small;
     margin-top: 8px;
-    background: $gray-2;
+    background: $asu-gray-6;
     &.btn-tag-alt-white {
-      background: $gray-2;
+      background: $asu-gray-6;
       color: $body-color;
     }
     &.btn-tag-alt-gray {
-      background: $gray-3;
+      background: $asu-gray-5;
       color: $body-color;
     }
     &.btn-tag-alt-black {
-      background: $gray-4;
+      background: $asu-gray-4;
       color: $body-color;
     }
   }
@@ -61,9 +61,9 @@
     padding: $uds-size-spacing-half $uds-size-spacing-half;
     width: $uds-size-spacing-4 !important;
     height: $uds-size-spacing-4;
-    border: solid 1px $gray-3;
+    border: solid 1px $asu-gray-5;
     &.btn-circle-alt-white {
-      background: $gray-2;
+      background: $asu-gray-6;
       color: $body-color;
     }
     &.btn-circle-alt-gray {
@@ -72,7 +72,7 @@
     }
     &.btn-circle-alt-black {
       background: $white;
-      color: $gray-7;
+      color: $asu-gray-1;
     }
     &.btn-circle-large {
       width: $uds-size-spacing-8 !important;
@@ -93,7 +93,7 @@
   }
 }
 .bg-light-gray {
-  background-color: $gray-1;
+  background-color: $asu-gray-7;
 }
 
 

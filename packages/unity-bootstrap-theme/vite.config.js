@@ -72,7 +72,13 @@ const c = {
   css: {
     preprocessorOptions: {
       scss: {
-        api: "modern-compiler",
+        silenceDeprecations: [
+          'import',
+          'mixed-decls',
+          'color-functions',
+          'global-builtin',
+          'legacy-js-api',
+        ],
       },
     },
   },

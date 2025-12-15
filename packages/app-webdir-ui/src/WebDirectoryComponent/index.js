@@ -1,5 +1,4 @@
 // @ts-check
-/* eslint no-use-before-define: 0 */
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 
@@ -24,7 +23,7 @@ import { WebDirLayout, FacultyRankLayout } from "./index.styles";
  * @param {string} props.searchApiVersion - The version of the search API to use.
  * @param {string} props.profileURLBase - The base URL for profile links.
  * @param {string} props.appPathFolder - The base path for the application folder.
- * @param {object} props.display - Display options for the search results.
+ * @param {Record<string, any>} props.display - Display options for the search results.
  * @param {Object} props.filters - Filters for the search.
  * @param {string} props.alphaFilter - Indicates whether to enable alpha filtering.
  * @returns {JSX.Element} The WebDirectory component.
@@ -45,7 +44,7 @@ function WebDirectory({
   const [sort, setSort] = useState(defaultSortSetter);
   const [requestFilters, setRequestFilters] = useState(doSearch);
   const [gridView, setGridView] = useState(
-    display.grid === "true" || display.grid === true
+    display?.grid === "true" || display?.grid === true
   );
   const RES_PER_PAGE = 6;
 
@@ -65,6 +64,7 @@ function WebDirectory({
 
   // Initializer functions for requestFilters and sort. Only runs on first render.
   function doSearch() {
+    /** @type {Record<string, any>} */
     const tempFilters = filters ? { ...filters } : {};
     if (searchType === "departments" || searchType === "faculty_rank") {
       tempFilters["deptIds"] = deptIds.split(",");
@@ -96,7 +96,11 @@ function WebDirectory({
     return "last_name_asc"; // defaults to last_name_asc if no default sort is set in CMS
   }
 
-  // Function returns an array of custom sort options based on the webDirSearchType and departmentIds parameters.
+  /**
+   * Function returns an array of custom sort options based on the webDirSearchType and departmentIds parameters.
+   * @param {string} webDirSearchType
+   * @param {string} departmentIds
+   */
   function sortOptionsFunc(webDirSearchType, departmentIds) {
     if (
       webDirSearchType === "departments" &&
@@ -139,7 +143,7 @@ function WebDirectory({
       ...engineParams,
     },
     [engineNames.WEB_DIRECTORY_FACULTY_RANK]: {
-      ...engines[engineNames.WEB_DIRECTORY_FACULTY__RANK],
+      ...engines[engineNames.WEB_DIRECTORY_FACULTY_RANK],
       ...engineParams,
       deptIds,
       display,

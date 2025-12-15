@@ -1,5 +1,5 @@
 @mixin footer-links {
-  color: $uds-color-base-gray-2;
+  color: $asu-gray-6;
   line-height: $uds-size-spacing-3;
   text-decoration: none;
 
@@ -64,7 +64,7 @@ label {
   margin-bottom: 0;
 }
 .card-title a {
-  color: $uds-color-base-gray-7;
+  color: $asu-gray-1;
   text-decoration: none;
   display: inline-block;
   margin: 4px;
@@ -84,7 +84,7 @@ label {
   background-color: $white;
 }
 .card-degree .card-footer a {
-  color: $uds-color-base-gray-7;
+  color: $asu-gray-1;
   text-decoration: none;
   font-weight: bold;
 }
@@ -127,6 +127,6 @@ input:focus,
 textarea:focus,
 select:focus {
   outline: none !important;
-  box-shadow: 0px 0px 0px 2px $uds-color-base-white, 0px 0px 0px 4px $uds-color-base-gray-7 !important;
+  box-shadow: 0px 0px 0px 2px $uds-color-base-white, 0px 0px 0px 4px $asu-gray-1 !important;
   z-index: 1;
 }

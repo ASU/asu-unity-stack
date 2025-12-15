@@ -27,7 +27,7 @@
     "stop": "node server/server.stop.js",
     "prepare": "husky install",
     "commit": "cz",
-    "check-element-changes": "node ./scripts/check-element-changes.js -d"
+    "check-element-changes": "node ./packages/unity-react-core/scripts/check-element-changes.js"
   },
   "jest": {
     "preset": "jest-puppeteer",
@@ -74,6 +74,7 @@
     "copy-webpack-plugin": "^8.1.1",
     "css-minimizer-webpack-plugin": "^2.0.0",
     "cz-conventional-changelog": "^3.3.0",
+    "diff": "^8.0.2",
     "dompurify": "^3.2.4",
     "eslint": "^9",
     "eslint-config-prettier": "^8.2.0",
@@ -102,6 +103,7 @@
     "semantic-release": "^22",
     "semantic-release-monorepo": "^8.0.2",
     "semver": "^7.5.2",
+    "tsx": "^4.19.3",
     "vite": "^5.3.5",
     "webpack": "^5.32.0",
     "webpack-bundle-analyzer": "^4.4.1",

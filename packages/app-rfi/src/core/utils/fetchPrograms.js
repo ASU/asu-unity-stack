@@ -55,7 +55,7 @@ function getServiceUrl({
   if (Interest2) {
     serviceUrl =
       `${dataSourceDegreeSearch}/acad-plan/${Interest2}?` +
-      `include=applicationDeadlines${includeFields}`;
+      `include=applicationDeadlines&${includeFields}`;
     return serviceUrl;
   }
 

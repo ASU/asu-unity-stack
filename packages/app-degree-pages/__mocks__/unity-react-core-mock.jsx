@@ -1,19 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 // @ts-check
-import * as asuCore from "@asu/unity-react-core";
 import React from "react";
 import { vi } from "vitest"
-
-const {
-  Accordion: _C1,
-  AnchorMenu: _C2,
-  Button: _C3,
-  Card: _C4,
-  Hero: _C5,
-  Pagination: _C6,
-  Video: _C7,
-  ...rest
-} = asuCore;
 
 const mockComponent = vi.fn(props => <>{props?.children}</>);
 
@@ -28,7 +16,11 @@ const Card = mockComponent;
 const Hero = mockComponent;
 const Pagination = mockComponent;
 const Video = mockComponent;
+const Divider = mockComponent;
+const Image = mockComponent;
+const List = mockComponent;
 
+// Mock all the components we might need
 vi.doMock("@asu/unity-react-core", () => ({
   Accordion,
   AnchorMenu,
@@ -37,5 +29,7 @@ vi.doMock("@asu/unity-react-core", () => ({
   Hero,
   Pagination,
   Video,
-  ...rest,
+  Divider,
+  Image,
+  List,
 }));
