@@ -2,6 +2,9 @@ import React from "react";
 
 import { QuickLinksTemplate } from "./index.styles";
 
+/**
+ * QuickLinks component displays a list of commonly accessed ASU resources
+ */
 const QuickLinks = () => {
   const collagesAndSchoolsMessage = "ASU's colleges and schools";
   return (
