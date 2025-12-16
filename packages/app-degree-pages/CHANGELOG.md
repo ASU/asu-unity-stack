@@ -1,3 +1,10 @@
+# [@asu/app-degree-pages-v3.1.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.1.1...@asu/app-degree-pages-v3.1.2) (2025-12-05)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** update majot map filtering to include all current year maps ([68cd0c7](https://github.com/asu/asu-unity-stack/commit/68cd0c72988b881e0af597f7973308802bc991b7))
+
 # [@asu/app-degree-pages-v3.1.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.1.0...@asu/app-degree-pages-v3.1.1) (2025-11-07)
 
 

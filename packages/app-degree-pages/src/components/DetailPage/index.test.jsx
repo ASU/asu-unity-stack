@@ -300,4 +300,65 @@ describe("#DetailPage", () => {
       ).toBeEmptyDOMElement();
     });
   });
+
+  describe("#Nursing BSN major maps", () => {
+    const realDate = Date;
+
+    beforeAll(() => {
+      const MockDate = class extends realDate {
+        constructor(...args) {
+          if (args.length === 0) {
+            super(2024, 0, 1);
+          } else {
+            // @ts-ignore - TypeScript doesn't like spreading args for Date constructor
+            super(...args);
+          }
+        }
+
+        static now() {
+          return new realDate(2024, 0, 1).getTime();
+        }
+      };
+
+      MockDate.parse = realDate.parse;
+      MockDate.UTC = realDate.UTC;
+
+      // @ts-ignore - TypeScript doesn't support callable classes
+      global.Date = MockDate;
+    });
+
+    afterAll(() => {
+      global.Date = realDate;
+      cleanup();
+    });
+
+    beforeEach(async () => {
+      /** @type {AppProps} */
+      const customProps = {
+        dataSource: {
+          acadPlan: "NUNURDBSN",
+        },
+      };
+
+      await renderDetailPage(customProps);
+    });
+
+    it("should render 4 on-campus major map links for nursing BSN", async () => {
+      const requiredCourseSection =
+        await component.findByTestId("required-course");
+
+      /**
+       * @type {NodeListOf<HTMLAnchorElement>}
+       */
+      const links = requiredCourseSection.querySelectorAll(
+        'a[href*="degrees.apps.asu.edu"]'
+      );
+
+      const onCampusLinks = Array.from(links).filter(
+        link => !link.href.includes("/ONLINE/")
+      );
+
+      expect(onCampusLinks.length).toBe(4);
+    });
+  });
 });

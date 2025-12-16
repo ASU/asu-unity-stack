@@ -27,6 +27,58 @@ const getMajorityOwner = row => {
  *
  */
 // @ts-ignore
+/**
+ * Creates a service object that provides methods to extract and format degree-related data from a row object.
+ * This service acts as a data accessor layer for degree program information, providing a clean API
+ * to retrieve various properties and computed values from raw degree data.
+ *
+ * @param {Object} [row={}] - The raw degree data object containing all degree program information
+ * @param {string} [row.acadPlanMarketingDescription] - Marketing description of the academic plan
+ * @param {string} [row.acadPlanCode] - Academic plan code
+ * @param {string} [row.degreeDescriptionShort] - Short description of the degree
+ * @param {string} [row.acadPlanTypeDescription] - Type description of the academic plan
+ * @param {Array<Object>} [row.majorMapGeneral] - Array of general major maps
+ * @param {string} [row.degreeType] - Type of degree (e.g., "GR" for graduate, "UGCM" for undergraduate)
+ * @param {string} [row.degreeDescriptionLong] - Long description of the degree
+ * @param {string} [row.degreeDescriptionText] - Text description of the degree
+ * @param {string} [row.fullDescription] - Full description of the degree program
+ * @param {string} [row.asuOnlineAcadPlanUrl] - URL for ASU online academic plan
+ * @param {string} [row.admissionsRequirementsText] - Admissions requirements text
+ * @param {string} [row.minorCourseRequirements] - Minor course requirements
+ * @param {string} [row.transferAdmissionRequirementsText] - Transfer admission requirements
+ * @param {Array<Array>} [row.graduateDegreeAdditionalRequirements] - Graduate degree additional requirements
+ * @param {string} [row.degreeMajorMap] - Degree major map
+ * @param {string} [row.degreeRequirements] - Degree requirements
+ * @param {Array<Object>} [row.majorMapOnline] - Array of online major maps
+ * @param {Array<Object>} [row.careerData] - Career data array
+ * @param {Array<Object>} [row.campusesOffered] - Array of campuses offering the program
+ * @param {Array<string>} [row.acceleratedAcadPlanCodes] - Array of accelerated academic plan codes
+ * @param {Array<string>} [row.concurrentAcadPlanCodes] - Array of concurrent academic plan codes
+ * @param {string} [row.emailAddr] - Email address
+ * @param {string} [row.phoneNumber] - Phone number
+ * @param {string} [row.professionalLicensureStandardText] - Standard professional licensure text
+ * @param {string} [row.professionalLicensureAdditionalText] - Additional professional licensure text
+ * @param {string} [row.academicOfficeUrl] - Academic office URL
+ * @param {boolean} [row.additionalFee] - Whether there's an additional fee
+ * @param {boolean} [row.languageRequired] - Whether language is required
+ * @param {boolean} [row.mathRequired] - Whether math is required
+ * @param {string} [row.firstMathCourseRequiredSupplementalText] - Supplemental text for first math course required
+ * @param {string} [row.mathIntensityDescription] - Math intensity description
+ * @param {Object} [row.firstMathCourseRequired] - First math course required object
+ * @param {string} [row.marketingText] - Marketing text
+ * @param {string} [row.academicOfficeLocation] - Academic office location
+ * @param {string} [row.changeMajorRequirementsText] - Change major requirements text
+ * @param {string} [row.careerOpportunities] - Career opportunities text
+ * @param {string} [row.globalExperienceText] - Global experience text
+ * @param {Array<Object>} [row.owners] - Array of owner objects
+ * @param {Object} [row.applicationDeadlines] - Application deadlines object
+ * @param {boolean} [row.activeInDegreeSearch] - Whether active in degree search
+ * @param {string} [row.customText] - Custom text
+ * @param {string} [row.stemOptText] - STEM OPT text
+ * @param {Array<Object>} [row.subplans] - Array of subplan objects
+ * @param {Array<Object>} [row.majorMapSubplans] - Array of major map subplan objects
+ * @returns {Object} Service object with methods to access degree data properties
+ */
 function degreeDataPropResolverService(row = {}) {
   return {
     getMajorDesc: () => row["acadPlanMarketingDescription"],
@@ -226,55 +278,79 @@ function degreeDataPropResolverService(row = {}) {
     },
     getSubPlnMajorMaps: () => {
       if (!row["subplans"] || !row["majorMapSubplans"]) return [];
-      let subplans = [...row["subplans"]]?.filter(
-        subpln => subpln.campusesOffered
+
+      let subplans = [...row["subplans"]].filter(
+        subplan => subplan.campusesOffered
       );
       const majorMapSubplans = [...row["majorMapSubplans"]];
 
-      // Helper function to filter subplans
-      const filterSubplans = (subplansArr, acadSubPlanCode) => {
-        return subplansArr.filter(
-          subplan => subplan.acadSubPlanCode !== acadSubPlanCode
-        );
+      /**
+       * Checks if a time period is current or future academic year
+       * @param {string} timePeriod - Format: "2526" represents 2025-2026
+       */
+      const isValidTimePeriod = (timePeriod) => {
+        if (!timePeriod || timePeriod.length !== 4) return false;
+        const currentYear = new Date().getFullYear();
+        const periodStartYear = parseInt(`20${timePeriod.substring(0, 2)}`, 10);
+        return periodStartYear >= currentYear;
       };
 
-      // Helper function to check if a subplan exists with a different acadSubPlanCode
-      const isDifferentSubplanExists = (subplansArr, acadSubPlanCode) => {
-        return subplansArr.some(
-          subplan => subplan.acadSubPlanCode !== acadSubPlanCode
-        );
-      };
+      const removeSubplanByCode = (subplansArr, acadSubPlanCode) =>
+        subplansArr.filter(sp => sp.acadSubPlanCode !== acadSubPlanCode);
 
-      const filteredMajorMapSubplans = [];
+      const hasSubplanWithCode = (subplansArr, acadSubPlanCode) =>
+        subplansArr.some(sp => sp.acadSubPlanCode === acadSubPlanCode);
 
-      for (let i = majorMapSubplans.length - 1; i >= 0; i -= 1) {
-        // Break the loop if there are no more subplans
-        if (subplans.length === 0) break;
+      const isAlreadyAdded = (majorMap, addedMaps) =>
+        addedMaps.some(added => added.acadSubPlanCode === majorMap.acadSubPlanCode);
 
-        const currentMajorMapSubplan = majorMapSubplans[i];
+      const validSubplans = subplans.filter(
+        sp => sp.timePeriod && isValidTimePeriod(sp.timePeriod)
+      );
 
-        // If defaultFlag is true, filter out the subplan with the same acadSubPlanCode
-        if (currentMajorMapSubplan.defaultFlag) {
-          subplans = filterSubplans(
-            subplans,
-            currentMajorMapSubplan.acadSubPlanCode
-          );
-          filteredMajorMapSubplans.push(currentMajorMapSubplan);
-        } else if (
-          isDifferentSubplanExists(
-            subplans,
-            currentMajorMapSubplan.acadSubPlanCode
-          )
-        ) {
-          subplans = filterSubplans(
-            subplans,
-            currentMajorMapSubplan.acadSubPlanCode
-          );
-          filteredMajorMapSubplans.push(currentMajorMapSubplan);
+      const hasDefaultOrMatching = majorMapSubplans.some(
+        map => map.defaultFlag || hasSubplanWithCode(subplans, map.acadSubPlanCode)
+      );
+
+      const result = [];
+
+      for (const majorMap of majorMapSubplans) {
+        if (majorMap.timePeriod && isValidTimePeriod(majorMap.timePeriod) && !isAlreadyAdded(majorMap, result)) {
+          result.push(majorMap);
+          subplans = removeSubplanByCode(subplans, majorMap.acadSubPlanCode);
         }
       }
 
-      return filteredMajorMapSubplans;
+      if (!hasDefaultOrMatching) {
+        for (const majorMap of majorMapSubplans) {
+          const shouldAdd =
+            !isAlreadyAdded(majorMap, result) &&
+            hasSubplanWithCode(validSubplans, majorMap.acadSubPlanCode);
+
+          if (shouldAdd) {
+            result.push(majorMap);
+          }
+        }
+        return result;
+      }
+
+      for (let i = majorMapSubplans.length - 1; i >= 0; i -= 1) {
+        if (subplans.length === 0) break;
+
+        const majorMap = majorMapSubplans[i];
+
+        if (isAlreadyAdded(majorMap, result)) continue;
+
+        const shouldAddDefault = majorMap.defaultFlag;
+        const shouldAddMatching = hasSubplanWithCode(subplans, majorMap.acadSubPlanCode);
+
+        if (shouldAddDefault || shouldAddMatching) {
+          subplans = removeSubplanByCode(subplans, majorMap.acadSubPlanCode);
+          result.push(majorMap);
+        }
+      }
+
+      return result;
     },
     getSubPln: () => row["subplans"],
   };
