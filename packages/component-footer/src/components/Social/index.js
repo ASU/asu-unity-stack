@@ -19,6 +19,14 @@ const DEFAULT_GA_EVENT = {
   section: "primary footer",
 };
 
+const DEF_MEDIA_LINKS = {
+  facebook: "",
+  twitter: "",
+  linkedIn: "",
+  instagram: "",
+  youtube: "",
+};
+
 /**
  * @typedef {import("../../core/models/types").Social} SocialProps
  */
@@ -28,7 +36,11 @@ const DEFAULT_GA_EVENT = {
  * @returns {JSX.Element}
  */
 
-const Social = ({ social: { logoUrl, unitLogo = endorsedLogo, mediaLinks = {facebook: "", twitter: "", linkedIn: "", instagram: "", youtube: ""} } }) => {
+const Social = ({ social: {
+  logoUrl,
+  unitLogo = endorsedLogo,
+  mediaLinks = DEF_MEDIA_LINKS,
+}, }) => {
   return (
     <div className="wrapper" id="wrapper-endorsed-footer" data-testid="social">
       <div className="container" id="endorsed-footer">
@@ -155,7 +167,7 @@ const Social = ({ social: { logoUrl, unitLogo = endorsedLogo, mediaLinks = {face
 
 Social.propTypes = {
   social: shape({
-    unitLogo: PropTypes.string.isRequired,
+    unitLogo: PropTypes.string,
     mediaLinks: shape({
       facebook: PropTypes.string,
       twitter: PropTypes.string,

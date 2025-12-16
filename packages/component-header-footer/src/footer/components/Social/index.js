@@ -166,7 +166,7 @@ const Social = ({ social: { logoUrl, unitLogo = endorsedLogo, mediaLinks = {
 
 Social.propTypes = {
   social: shape({
-    unitLogo: PropTypes.string.isRequired,
+    unitLogo: PropTypes.string,
     mediaLinks: shape({
       facebook: PropTypes.string,
       twitter: PropTypes.string,

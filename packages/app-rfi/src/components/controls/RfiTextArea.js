@@ -14,7 +14,7 @@ const RfiTextArea = ({
   requiredIcon = undefined,
   required = undefined,
   autoFocus = undefined,
-  disabled = undefined,
+  disabled = false,
   helperText = undefined,
   onBlur,
 }) => (
