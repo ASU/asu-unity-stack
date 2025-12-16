@@ -56,7 +56,9 @@ const GridTemplate = ({ cardButton, hideTags }) => {
   return (
     <NewsWrapper className="row row-spaced" data-testid="grid-view-container">
       {feeds?.map((feed, index) => (
-        <React.Fragment key={index}>{gridRow(feed, cardButton, shouldHideTags)}</React.Fragment>
+        <React.Fragment key={index}>
+          {gridRow(feed, cardButton, shouldHideTags)}
+        </React.Fragment>
       ))}
     </NewsWrapper>
   );
@@ -99,8 +101,7 @@ const CardGridNews = ({ cardButton, hideTags = true, ...props }) => {
 CardGridNews.propTypes = {
   ...BaseFeed.propTypes,
   cardButton: feedCardButtonShape,
-  hideTags: PropTypes.oneOf(["true", "false", true, false])
-
+  hideTags: PropTypes.oneOf(["true", "false", true, false]),
 };
 
 export { CardGridNews };

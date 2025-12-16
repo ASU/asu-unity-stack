@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 const ButtonWrapper = styled.a`
-  font-family: Arial, Helvetica, "Nimbus Sans L", "Liberation Sans", FreeSans,
-    sans-serif;
+  font-family:
+    Arial, Helvetica, "Nimbus Sans L", "Liberation Sans", FreeSans, sans-serif;
   color: #191919;
   padding: 0.5rem 1rem;
   border-radius: 400rem;

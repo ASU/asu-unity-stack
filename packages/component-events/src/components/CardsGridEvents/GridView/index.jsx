@@ -17,9 +17,9 @@ const GridView = () => {
             eventFormat="inline"
             eventTime={`<span>
                 ${formatDate(event.startDate, "COMPLETE")} <br /> ${formatTime(
-              event.startDate,
-              event.endDate
-            )}
+                  event.startDate,
+                  event.endDate
+                )}
               </span>`}
             eventLocation={event.location}
             clickable={!!event.alias}

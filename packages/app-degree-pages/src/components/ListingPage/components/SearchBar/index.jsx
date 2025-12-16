@@ -13,7 +13,9 @@ const Section = styled.div`
 
   &[data-searching="true"] button {
     transform: scale(1.05);
-    box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px #191919 !important;
+    box-shadow:
+      0px 0px 0px 2px #ffffff,
+      0px 0px 0px 4px #191919 !important;
   }
 `;
 

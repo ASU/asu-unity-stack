@@ -66,10 +66,7 @@ const DropdownLink = () => (
           >
             Link option 1<span className="fa fa-chevron-down" alt=""></span>
           </a>
-          <div
-            className="dropdown-menu dropdown-columns"
-
-          >
+          <div className="dropdown-menu dropdown-columns">
             <div className="dropdown-col">
               <a
                 className="dropdown-item"
