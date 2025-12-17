@@ -37,17 +37,47 @@ describe("CardArrangement", () => {
 
   it("should render the correct number of cards", () => {
     const { getAllByTestId } = render(<CardArrangement cards={mockCards} />);
-    const cardItems = getAllByTestId("card-arrangement-item");
+    const cardItems = getAllByTestId("card-container");
     expect(cardItems).toHaveLength(3);
   });
 
-  it("should render with flexbox layout", () => {
-    const { getByTestId } = render(<CardArrangement cards={mockCards} />);
-    const container = getByTestId("card-arrangement");
+    it("should apply correct column classes based on columns prop", () => {
+    const { getAllByTestId: get2Cols, unmount: unmount2 } = render(
+      <CardArrangement cards={mockCards} columns={2} />
+    );
+    expect(get2Cols("uds-card-arrangement-content-container")[0].className).toContain("col-6");
+    unmount2();
 
-    expect(container.className).toContain("card-arrangement");
-    expect(container.style.display).toBe("flex");
-    expect(container.style.flexWrap).toBe("wrap");
+    const { getAllByTestId: get3Cols, unmount: unmount3 } = render(
+      <CardArrangement cards={mockCards} columns={3} />
+    );
+    expect(get3Cols("uds-card-arrangement-content-container")[0].className).toContain("col-4");
+    unmount3();
+
+    const { getAllByTestId: get4Cols, unmount: unmount4 } = render(
+      <CardArrangement cards={mockCards} columns={4} />
+    );
+    expect(get4Cols("uds-card-arrangement-content-container")[0].className).toContain("col-3");
+    unmount4();
+
+    const horizontalCards = [
+      {
+        type: "default",
+        title: "Horizontal",
+        body: "Body",
+        horizontal: true,
+      },
+      {
+        type: "default",
+        title: "Horizontal",
+        body: "Body",
+        horizontal: true,
+      },
+    ];
+    const { getAllByTestId: getHorizontal } = render(
+      <CardArrangement cards={horizontalCards} columns={3} />
+    );
+    expect(getHorizontal("uds-card-arrangement-content-container")[0].className).not.toContain("col");
   });
 
   it("should render cards with correct titles", () => {
@@ -70,19 +100,12 @@ describe("CardArrangement", () => {
     expect(container.firstChild).toBeNull();
   });
 
-  it("should apply gap spacing between cards", () => {
-    const { getByTestId } = render(<CardArrangement cards={mockCards} />);
-    const container = getByTestId("card-arrangement");
-
-    expect(container.style.gap).toBe("1.5rem");
-  });
-
-  it("should render container with correct test id", () => {
+  it("should render container with correct wrapper class", () => {
     const { getByTestId } = render(<CardArrangement cards={mockCards} />);
     const container = getByTestId("card-arrangement");
 
     expect(container).toBeDefined();
-    expect(container.className).toContain("card-arrangement");
+    expect(container.className).toContain("row");
   });
 
   it("should handle cards with different types", () => {
@@ -162,7 +185,7 @@ describe("CardArrangement", () => {
 
   it("should generate unique keys for each card", () => {
     const { getAllByTestId } = render(<CardArrangement cards={mockCards} />);
-    const cardItems = getAllByTestId("card-arrangement-item");
+    const cardItems = getAllByTestId("card-container");
 
     // Check that all items are rendered (unique keys would prevent duplicates)
     expect(cardItems).toHaveLength(mockCards.length);
@@ -192,9 +215,13 @@ describe("CardArrangement", () => {
     const { getAllByTestId } = render(
       <CardArrangement cards={rankingCards} cardType="ranking" />
     );
-    const cardItems = getAllByTestId("card-arrangement-item");
-
+    const cardItems = getAllByTestId("uds-card-arrangement-content-container");
     expect(cardItems).toHaveLength(2);
+    cardItems.forEach(cardItem => {
+      const directChild = cardItem.firstElementChild;
+      expect(directChild).toBeDefined();
+      expect(directChild.className).toContain('card-ranking');
+    });
   });
 
   it("should default to card type when cardType prop is not provided", () => {

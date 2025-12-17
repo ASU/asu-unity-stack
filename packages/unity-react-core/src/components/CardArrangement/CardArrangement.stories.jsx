@@ -255,6 +255,40 @@ Example with four degree cards that will wrap based on available space.
   },
 };
 
+export const HorizontalCards = Template.bind({});
+HorizontalCards.args = {
+  cards: [
+      {
+        type: "default",
+        title: "Horizontal",
+        body: "Body",
+        horizontal: true,
+      },
+      {
+        type: "default",
+        title: "Horizontal",
+        body: "Body",
+        horizontal: true,
+      },
+    ],
+};
+HorizontalCards.storyName = "Horizontal cards example";
+HorizontalCards.parameters = {
+  docs: {
+    description: {
+      story: `
+Example with horizontal cards. Each card is set to horizontal layout.
+
+\`\`\`jsx
+<CardArrangement
+  cards={horizontalCards}
+/>
+\`\`\`
+      `,
+    },
+  },
+};
+
 export const SingleColumn = Template.bind({});
 SingleColumn.args = {
   cards: storyCards,
