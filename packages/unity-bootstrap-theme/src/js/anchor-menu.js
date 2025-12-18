@@ -15,7 +15,9 @@ function initAnchorMenu() {
   const globalHeader = document.getElementById(globalHeaderId);
   const navbar = document.getElementById("uds-anchor-menu");
   if (!navbar || !globalHeader) {
-    console.warn("Anchor menu initialization failed: required elements not found");
+    console.warn(
+      "Anchor menu initialization failed: required elements not found"
+    );
     return;
   }
 
@@ -122,7 +124,9 @@ function initAnchorMenu() {
 
     // Update active class if we found a visible element
     if (mostVisibleElementId) {
-      const activeAnchor = document.querySelector('[href="#' + mostVisibleElementId + '"]');
+      const activeAnchor = document.querySelector(
+        '[href="#' + mostVisibleElementId + '"]'
+      );
       if (activeAnchor) {
         activeAnchor.classList.add("active");
       }
@@ -186,11 +190,7 @@ function initAnchorMenu() {
 
   throttledScrollHandler = createThrottledHandler();
 
-  window.addEventListener(
-    "scroll",
-    throttledScrollHandler,
-    { passive: true }
-  );
+  window.addEventListener("scroll", throttledScrollHandler, { passive: true });
 
   // Set click event handlers for all valid anchors
   // Only anchors with valid targets were added to anchorTargets Map
