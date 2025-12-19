@@ -53,7 +53,7 @@ describe("SidebarMenu tests", () => {
   it("should have nested level active link", () => {
     component = renderComponent(defaultProps2);
     expect(component.getByText("Link 2.1")).toBeVisible();
-    expect(component.getByText("Link 2 dropdown")).toHaveClass("is-active");
+    expect(component.getByText("Link 2.1")).toHaveClass("is-active");
     expect(component.queryByText("Link 2 dropdown")).toHaveAttribute(
       "aria-expanded",
       "true"

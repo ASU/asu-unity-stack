@@ -25,6 +25,15 @@ export interface SidebarProps {
   title: string;
   links: Link[];
 }
+const SidebarItem: React.FC<SidebarItemProps | Link> = ({
+  href,
+  text,
+  isActive,
+}) => (
+  <a href={href} className={`nav-link${isActive ? " is-active" : ""}`}>
+    {text}
+  </a>
+);
 
 export const SidebarMenu: React.FC<SidebarProps> = ({ title, links }) => {
   return (
@@ -58,9 +67,7 @@ export const SidebarMenu: React.FC<SidebarProps> = ({ title, links }) => {
                   >
                     <a
                       id={`card${index}`}
-                      className={`collapsed nav-link${
-                        isExpanded ? " is-active" : ""
-                      }`}
+                      className="collapsed nav-link"
                       href={`#cardBody${index}`}
                       data-bs-toggle="collapse"
                       data-bs-target={`#cardBody${index}`}
@@ -79,13 +86,7 @@ export const SidebarMenu: React.FC<SidebarProps> = ({ title, links }) => {
                   data-bs-parent=".sidebar"
                 >
                   {link.items.map(item => (
-                    <a
-                      key={`${item.text}${item.href}`}
-                      href={item.href}
-                      className={`nav-link`}
-                    >
-                      {item.text}
-                    </a>
+                    <SidebarItem key={`${item.text}${item.href}`} {...item} />
                   ))}
                 </div>
               </div>
