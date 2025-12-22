@@ -75,6 +75,45 @@ const TabbedPanels = ({
   const [scrollLeft, setScrollLeft] = useState(0);
   const [scrollableWidth, setScrollableWidth] = useState();
 
+  // -----------------------------
+  // TODO 1.1
+  // -----------------------------
+  const [overflowTabs, setOverflowTabs] = useState([]);
+  const [visibleTabs, setVisibleTabs] = useState(childrenArray.map((c) => c.props.id));
+
+  useEffect(() => {
+    const More_Width = 83;
+    const Tab_Gap = 8;
+
+    const container = headerTabs.current;
+    const tabIDs = childrenArray.map((c) => c.props.id);
+    const widths = tabIDs.map((id) => {
+      const DOMelement = headerTabItems.current?.[id];
+      return DOMelement ? DOMelement.getBoundingClientRect().width : 80;
+    });
+
+    const remainingWidth = container.clientWidth;
+    let spaceUsed = 0;
+    for (let i = 0; i < tabIDs.length; i++) {
+      const curWidth = widths[i];
+
+      if (curWidth + spaceUsed + More_Width > remainingWidth) {
+        for (let j = i; j < tabIDs.length; j++) {
+          overflowTabs.push(tabIDs[j]);
+        }
+        break;
+      }
+
+      visibleTabs.push(tabIDs[i]);
+      spaceUsed += curWidth + Tab_Gap;
+    }
+
+    setVisibleTabs(visibleTabs);
+    setOverflowTabs(overflowTabs);
+    setScrollableWidth(container.scrollWidth - container.clientWidth);
+
+  });
+
   const handleResize = useCallback(() => {
     setScrollableWidth(
       headerTabs.current?.scrollWidth - headerTabs.current?.offsetWidth
