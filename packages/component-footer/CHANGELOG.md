@@ -1,3 +1,11 @@
+# [@asu/component-footer-v2.4.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.4.0...@asu/component-footer-v2.4.1) (2025-12-30)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** refactor defaultProps to use JS default params ([d6ac389](https://github.com/asu/asu-unity-stack/commit/d6ac389ab932f0def44c84b33c5bd5fcf7fb2b4d))
+* **component-footer:** changes suggested by copilot ([3a6c1af](https://github.com/asu/asu-unity-stack/commit/3a6c1af48ee5654c110420f28a082feaeb66a9ca))
+
 # [@asu/component-footer-v2.4.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-footer-v2.3.0...@asu/component-footer-v2.4.0) (2025-02-18)
 
 
