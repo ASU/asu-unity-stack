@@ -6369,6 +6369,9 @@ Ss.propTypes = {
   eventLocation: i.string,
   eventTime: i.string
 };
+i.oneOf(["small", "large"]), i.string.isRequired, i.string.isRequired, i.string;
+i.oneOf(["small", "large"]).isRequired, i.string.isRequired, i.string.isRequired, i.string.isRequired, i.string.isRequired, i.string, i.string;
+i.arrayOf(i.object).isRequired, i.oneOf(["card", "ranking"]);
 const Lu = Gt.div`
   display: inline-block;
   position: relative;
@@ -6517,8 +6520,6 @@ Gt.img`
 i.oneOf(["heading-hero", "story-hero"]), i.arrayOf(Ea), i.string;
 i.bool, i.bool, i.bool, i.bool, i.string, i.func, i.node, i.bool, i.string, i.bool;
 i.oneOf(["default", "bordered"]).isRequired, i.oneOf(["white", "gray1", "gray2", "gray7"]).isRequired, i.number, i.number, i.func.isRequired;
-i.oneOf(["small", "large"]), i.string.isRequired, i.string.isRequired, i.string;
-i.oneOf(["small", "large"]).isRequired, i.string.isRequired, i.string.isRequired, i.string.isRequired, i.string.isRequired, i.string, i.string;
 Gt.div`
   button {
     padding: 16px 0;

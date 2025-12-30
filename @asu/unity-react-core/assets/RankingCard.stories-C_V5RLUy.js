@@ -1,0 +1,13 @@
+import{j as s}from"./jsx-runtime-VU7BY01E.js";import"./index-BebQxa19.js";import"./Layout-XUDhei8Q.js";import{i as h}from"./index-BMjp-peT.js";import{c as o}from"./index-X6w4Ppxe.js";import{R as c}from"./RankingCard-CvtPND4b.js";import"./_commonjsHelpers-NT8qMgGI.js";import"./html-utils-Cf06jDgj.js";import"./GaEventWrapper-rhUm1Goq.js";import"./Image-DPWP6VF1.js";const m=h(),b={title:"Components/Ranking Card",component:c},p=g=>s.jsx("div",{className:"container",children:s.jsx("div",{className:o("row","row-spaced","pt-2","pb-2"),children:s.jsx("div",{className:o("col","col-12","col-md-6","col-lg-4"),children:s.jsx(c,{...g})})})}),e=p.bind({});e.args={imageSize:"large",image:m,imageAlt:"Image alt text",heading:"Ranking title goes here, under the photo",body:"ASU has topped U.S. News & World Report’s “Most Innovative Schools list since the inception of the category in 2016. ASU again placed ahead of Stanford and MIT on the list, based on a survey of peers. College presidents, provosts and admissions deans around the country nominated up to 10 colleges or universities that are making the most innovative improvements.",readMoreLink:"https://www.asu.edu/"};const a=p.bind({});a.args={imageSize:"small",image:m,imageAlt:"Image alt text",heading:"Ranking title goes here, under the photo",body:"ASU has topped U.S. News & World Report’s “Most Innovative Schools list since the inception of the category in 2016. ASU again placed ahead of Stanford and MIT on the list, based on a survey of peers. College presidents, provosts and admissions deans around the country nominated up to 10 colleges or universities that are making the most innovative improvements.",readMoreLink:"https://www.asu.edu/",citation:"Citation of the ranking should go under the headline, regular body style text"};var t,n,r;e.parameters={...e.parameters,docs:{...(t=e.parameters)==null?void 0:t.docs,source:{originalSource:`args => <div className="container">
+    <div className={classNames("row", "row-spaced", "pt-2", "pb-2")}>
+      <div className={classNames("col", "col-12", "col-md-6", "col-lg-4")}>
+        <RankingCard {...args} />
+      </div>
+    </div>
+  </div>`,...(r=(n=e.parameters)==null?void 0:n.docs)==null?void 0:r.source}}};var i,d,l;a.parameters={...a.parameters,docs:{...(i=a.parameters)==null?void 0:i.docs,source:{originalSource:`args => <div className="container">
+    <div className={classNames("row", "row-spaced", "pt-2", "pb-2")}>
+      <div className={classNames("col", "col-12", "col-md-6", "col-lg-4")}>
+        <RankingCard {...args} />
+      </div>
+    </div>
+  </div>`,...(l=(d=a.parameters)==null?void 0:d.docs)==null?void 0:l.source}}};const C=["Large","Small"];export{e as Large,a as Small,C as __namedExportsOrder,b as default};

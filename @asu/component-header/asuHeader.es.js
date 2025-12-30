@@ -7493,10 +7493,10 @@ const HeaderDiv = qe.div`
   }
 `;
 const ASUHeader = ({
-  isPartner,
+  isPartner = false,
   navTree: rawNavTree,
   title,
-  baseUrl,
+  baseUrl = "/",
   parentOrg,
   parentOrgUrl,
   partnerLogo,
@@ -7508,9 +7508,9 @@ const ASUHeader = ({
   logoutLink,
   onLogoutClick,
   buttons,
-  breakpoint,
+  breakpoint = "Xl",
   animateTitle,
-  expandOnHover,
+  expandOnHover = false,
   mobileNavTree: rawMobileNavTree,
   searchUrl,
   site,
@@ -7585,12 +7585,6 @@ const ASUHeader = ({
   );
 };
 ASUHeader.propTypes = { ...HeaderPropTypes };
-ASUHeader.defaultProps = {
-  isPartner: false,
-  baseUrl: "/",
-  breakpoint: "Xl",
-  expandOnHover: false
-};
 var createRoot;
 var m = require$$0;
 {

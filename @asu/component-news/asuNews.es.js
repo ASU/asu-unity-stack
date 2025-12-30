@@ -5718,6 +5718,9 @@ $s.propTypes = {
   eventLocation: l.string,
   eventTime: l.string
 };
+l.oneOf(["small", "large"]), l.string.isRequired, l.string.isRequired, l.string;
+l.oneOf(["small", "large"]).isRequired, l.string.isRequired, l.string.isRequired, l.string.isRequired, l.string.isRequired, l.string, l.string;
+l.arrayOf(l.object).isRequired, l.oneOf(["card", "ranking"]);
 const Vu = Xt.div`
   display: inline-block;
   position: relative;
@@ -5864,8 +5867,6 @@ Xt.img`
 l.oneOf(["heading-hero", "story-hero"]), l.arrayOf(Fa), l.string;
 l.bool, l.bool, l.bool, l.bool, l.string, l.func, l.node, l.bool, l.string, l.bool;
 l.oneOf(["default", "bordered"]).isRequired, l.oneOf(["white", "gray1", "gray2", "gray7"]).isRequired, l.number, l.number, l.func.isRequired;
-l.oneOf(["small", "large"]), l.string.isRequired, l.string.isRequired, l.string;
-l.oneOf(["small", "large"]).isRequired, l.string.isRequired, l.string.isRequired, l.string.isRequired, l.string.isRequired, l.string, l.string;
 Xt.div`
   button {
     padding: 16px 0;
