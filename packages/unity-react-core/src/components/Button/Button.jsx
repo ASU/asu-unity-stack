@@ -22,6 +22,7 @@ const gaDefaultObject = {
 /**
  * @param {ButtonProps} props
  * @returns {JSX.Element}
+ * @deprecated Use UDSButton instead
  */
 export const Button = ({
   label = "",

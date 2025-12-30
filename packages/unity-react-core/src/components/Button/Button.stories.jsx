@@ -23,6 +23,20 @@ View component examples and source code below.
       },
     },
   },
+  decorators: [
+    (Story, {parameters}) => {
+      if (parameters?.disableDeprecatedNotice) {
+        return <Story />;
+      }
+      return <div>
+        <div style={{ padding: '1rem', background: '#f5f5f5', marginBottom: '2rem' }}>
+          <h2>Deprecated</h2>
+          <p>Please see new button styles in UDSButton component.</p>
+        </div>
+        <Story />
+      </div>
+    },
+  ]
 };
 
 const handleClick = () => {
