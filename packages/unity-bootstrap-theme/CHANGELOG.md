@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.30.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.30.2...@asu/unity-bootstrap-theme-v1.30.3) (2025-10-24)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** removed max-width from btn-row into heroes ([a3e2958](https://github.com/ASU/asu-unity-stack/commit/a3e2958755bc09d35352e755f666cbcf48944c3d))
+
 # [@asu/unity-bootstrap-theme-v1.30.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.30.1...@asu/unity-bootstrap-theme-v1.30.2) (2025-10-15)
 
 

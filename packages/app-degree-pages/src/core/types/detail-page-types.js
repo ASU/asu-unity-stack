@@ -13,7 +13,10 @@
  */
 
 /**
- * @typedef {import("@asu/unity-react-core").AnchorMenuProps} AnchorMenuItem
+ * @typedef {Object} AnchorMenuItem
+ * @property {string} text
+ * @property {string} targetIdName
+ * @property {string[]} [icon]
  */
 
 /**

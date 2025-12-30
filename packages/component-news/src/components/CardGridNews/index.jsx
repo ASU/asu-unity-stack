@@ -1,6 +1,7 @@
 // @ts-check
 import { Card, feedCardButtonShape, FeedContext } from "@asu/unity-react-core";
 import React, { useContext, useEffect } from "react";
+import PropTypes from "prop-types";
 
 import { trackReactComponent } from "@asu/shared";
 import { BaseFeed } from "../../core/components/BaseFeed";
@@ -12,8 +13,9 @@ import { NewsWrapper } from "./index.styles";
  *
  * @param {Object} feed
  * @param {import("../../core/types/news-types").CardButton} cardButton
+ * @param {boolean} hideTags
  */
-const gridRow = (feed, cardButton) => (
+const gridRow = (feed, cardButton, hideTags) => (
   <div
     className="col col-12 col-md-6 col-lg-4 cards-items-container"
     key={feed.id}
@@ -38,7 +40,7 @@ const gridRow = (feed, cardButton) => (
           href: feed.buttonLink,
         },
       ]}
-      tags={parseInterests(feed?.interests)}
+      tags={hideTags ? [] : parseInterests(feed?.interests)}
     />
   </div>
 );
@@ -47,13 +49,14 @@ const gridRow = (feed, cardButton) => (
  * @param {import("../../core/types/news-types").TemplateProps} props
  */
 
-const GridTemplate = ({ cardButton }) => {
+const GridTemplate = ({ cardButton, hideTags }) => {
   const { feeds } = useContext(FeedContext); // Reading the "feeds" object from the context
+  const shouldHideTags = hideTags === true || hideTags === "true";
 
   return (
     <NewsWrapper className="row row-spaced" data-testid="grid-view-container">
       {feeds?.map((feed, index) => (
-        <React.Fragment key={index}>{gridRow(feed, cardButton)}</React.Fragment>
+        <React.Fragment key={index}>{gridRow(feed, cardButton, shouldHideTags)}</React.Fragment>
       ))}
     </NewsWrapper>
   );
@@ -67,7 +70,7 @@ const GridTemplate = ({ cardButton }) => {
 /**
  * @param {FeedType} props
  */
-const CardGridNews = ({ cardButton, ...props }) => {
+const CardGridNews = ({ cardButton, hideTags = true, ...props }) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       trackReactComponent({
@@ -87,6 +90,7 @@ const CardGridNews = ({ cardButton, ...props }) => {
     <BaseFeed {...props}>
       <GridTemplate
         cardButton={{ ...coreDefaultProps.cardButton, ...cardButton }}
+        hideTags={hideTags}
       />
     </BaseFeed>
   );
@@ -95,6 +99,8 @@ const CardGridNews = ({ cardButton, ...props }) => {
 CardGridNews.propTypes = {
   ...BaseFeed.propTypes,
   cardButton: feedCardButtonShape,
+  hideTags: PropTypes.oneOf(["true", "false", true, false])
+
 };
 
 export { CardGridNews };

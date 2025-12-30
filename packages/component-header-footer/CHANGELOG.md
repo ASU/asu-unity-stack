@@ -1,3 +1,10 @@
+# [@asu/component-header-footer-v1.1.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.1.1...@asu/component-header-footer-v1.1.2) (2025-10-30)
+
+
+### Bug Fixes
+
+* **component-header-footer:** fix header focus change that broke safari links ([79fda2b](https://github.com/asu/asu-unity-stack/commit/79fda2b19e8cce62abde8ac7a1ea7b40c7aeda4b))
+
 # [@asu/component-header-footer-v1.1.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.1.0...@asu/component-header-footer-v1.1.1) (2025-10-14)
 
 

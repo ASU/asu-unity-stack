@@ -336,8 +336,7 @@ div.uds-hero-lg {
     [role="doc-subtitle"], // UDS is deprecatated doc-subtitle as a Selector
     .hero-subtitle,
     a.btn,
-    .content,
-    .btn-row {
+    .content{
       grid-column: 2;
       max-width: 700px;
       z-index: 30;
@@ -379,7 +378,7 @@ div.uds-hero-lg {
     grid-template-rows: 1fr auto auto $uds-size-spacing-7;
     &.has-btn-row {
       .btn-row {
-        top: 92%;
+        top: 90%;
       }
     }
 
@@ -475,8 +474,7 @@ div.uds-hero-lg {
     [role="doc-subtitle"], // UDS is deprecatated doc-subtitle as a Selector
     .hero-subtitle,
     a.btn,
-    .content,
-    .btn-row {
+    .content {
       max-width: calc(940px - 30%);
     }
   }
@@ -491,8 +489,7 @@ div.uds-hero-lg {
     [role="doc-subtitle"], // UDS is deprecatated doc-subtitle as a Selector
     .hero-subtitle,
     a.btn,
-    .content,
-    .btn-row {
+    .content {
       max-width: calc(1200px - 34%);
     }
   }

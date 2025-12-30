@@ -38,7 +38,6 @@ const CarouselTemplate = ({ cardButton }) => {
   const cardItems = feeds?.map((feed, index) =>
     cardRow(feed, index, cardButton)
   );
-
   return (
     <NewsWrapper>
       <CardCarousel
