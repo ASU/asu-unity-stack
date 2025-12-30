@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 import { trackReactComponent } from "@asu/shared";
 import { BaseFeed } from "../../core/components/BaseFeed";
-import { defaultProps } from "../../core/constants/default-props";
+import { defaultProps as coreDefaultProps } from "../../core/constants/default-props";
 import { parseInterests } from "../../core/utils";
 import { NewsWrapper } from "./index.styles";
 
@@ -89,7 +89,7 @@ const CardGridNews = ({ cardButton, hideTags = true, ...props }) => {
     // Calling the high order component that fetch the data
     <BaseFeed {...props}>
       <GridTemplate
-        cardButton={{ ...defaultProps.cardButton, ...cardButton }}
+        cardButton={{ ...coreDefaultProps.cardButton, ...cardButton }}
         hideTags={hideTags}
       />
     </BaseFeed>

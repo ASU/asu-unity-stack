@@ -14,10 +14,10 @@ import { RfiLabel, RfiError } from "./controls-helpers";
 const RfiPhone = ({
   label,
   name,
-  id,
-  requiredIcon,
-  required,
-  helperText,
+  id = undefined,
+  requiredIcon = undefined,
+  required = undefined,
+  helperText = undefined,
   onBlur,
 }) => {
   // Surface values from Formik context
@@ -84,13 +84,6 @@ const RfiPhone = ({
 // Note on requiredIcon. Yup required status is not readily available so we
 // duplicate the setting in our props got displaying the required icon until
 // Formik has a better way to do it.
-
-RfiPhone.defaultProps = {
-  id: undefined,
-  requiredIcon: undefined,
-  required: undefined,
-  helperText: undefined,
-};
 
 RfiPhone.propTypes = {
   label: PropTypes.string.isRequired,
