@@ -4,17 +4,31 @@ export default {
   title: "Atoms/Buttons/Examples",
   parameters: { controls: { disable: true } },
   decorators: [
-    (Story, {parameters}) => {
+    (Story, { parameters }) => {
       if (parameters?.disableDeprecatedNotice) {
         return <Story />;
       }
-      return <div>
-        <div style={{ padding: '1rem', background: '#f5f5f5', marginBottom: '2rem' }}>
-          <h2>Deprecated</h2>
-          <p>Please see new button styles in unity-react-core <a href="https://asu.github.io/asu-unity-stack/@asu/unity-react-core/index.html?path=/docs/components-udsbutton--docs">UDSButton</a> storybook instead.</p>
+      return (
+        <div>
+          <div
+            style={{
+              padding: "1rem",
+              background: "#f5f5f5",
+              marginBottom: "2rem",
+            }}
+          >
+            <h2>Deprecated</h2>
+            <p>
+              Please see new button styles in unity-react-core{" "}
+              <a href="https://asu.github.io/asu-unity-stack/@asu/unity-react-core/index.html?path=/docs/components-udsbutton--docs">
+                UDSButton
+              </a>{" "}
+              storybook instead.
+            </p>
+          </div>
+          <Story />
         </div>
-        <Story />
-      </div>
+      );
     },
   ],
 };

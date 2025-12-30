@@ -3,7 +3,35 @@ import { defaultDecorator } from "@asu/shared";
 
 export default {
   title: "Atoms/Buttons/Templates",
-  decorators: [defaultDecorator],
+  decorators: [
+    defaultDecorator,
+    (Story, { parameters }) => {
+      if (parameters?.disableDeprecatedNotice) {
+        return <Story />;
+      }
+      return (
+        <div>
+          <div
+            style={{
+              padding: "1rem",
+              background: "#f5f5f5",
+              marginBottom: "2rem",
+            }}
+          >
+            <h2>Deprecated</h2>
+            <p>
+              Please see new button styles in unity-react-core{" "}
+              <a href="https://asu.github.io/asu-unity-stack/@asu/unity-react-core/index.html?path=/docs/components-udsbutton--docs">
+                UDSButton
+              </a>{" "}
+              storybook instead.
+            </p>
+          </div>
+          <Story />
+        </div>
+      );
+    },
+  ],
   args: {
     color: "btn-gold",
     size: "Large",
@@ -34,20 +62,6 @@ export default {
       control: { type: "boolean" },
     },
   },
-  decorators: [
-    (Story, {parameters}) => {
-      if (parameters?.disableDeprecatedNotice) {
-        return <Story />;
-      }
-      return <div>
-        <div style={{ padding: '1rem', background: '#f5f5f5', marginBottom: '2rem' }}>
-          <h2>Deprecated</h2>
-          <p>Please see new button styles in unity-react-core <a href="https://asu.github.io/asu-unity-stack/@asu/unity-react-core/index.html?path=/docs/components-udsbutton--docs">UDSButton</a> storybook instead.</p>
-        </div>
-        <Story />
-      </div>
-    },
-  ]
 };
 
 export const BasicButton = args => {
@@ -127,4 +141,7 @@ ButtonTag.argTypes = {
   size: { table: { disable: true } },
   disabled: { table: { disable: true } },
 };
-ButtonTag.parameters = { controls: { disable: true }, disableDeprecatedNotice: true };
+ButtonTag.parameters = {
+  controls: { disable: true },
+  disableDeprecatedNotice: true,
+};
