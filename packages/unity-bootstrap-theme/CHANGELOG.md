@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.31.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.30.3...@asu/unity-bootstrap-theme-v1.31.0) (2025-12-30)
+
+
+### Features
+
+* **unity-bootstrap-theme:** update card arrangement styles for new card arrangement component ([d9088d5](https://github.com/ASU/asu-unity-stack/commit/d9088d5da5d167ded7482d167a419c0c32fb1605))
+
 # [@asu/unity-bootstrap-theme-v1.30.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.30.2...@asu/unity-bootstrap-theme-v1.30.3) (2025-10-24)
 
 
