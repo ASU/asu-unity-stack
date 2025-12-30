@@ -1,3 +1,10 @@
+# [@asu/unity-react-core-v1.4.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.3.0...@asu/unity-react-core-v1.4.0) (2025-12-30)
+
+
+### Features
+
+* **unity-react-core:** add new card arrangement component ([6d4fd13](https://github.com/ASU/asu-unity-stack/commit/6d4fd133fca98f6a6e06160fb504a5d31dca481e))
+
 # [@asu/unity-react-core-v1.3.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.2.0...@asu/unity-react-core-v1.3.0) (2025-12-11)
 
 
