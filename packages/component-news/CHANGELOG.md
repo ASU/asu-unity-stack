@@ -1,3 +1,10 @@
+# [@asu/component-news-v4.1.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-news-v4.1.0...@asu/component-news-v4.1.1) (2025-12-30)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** refactor defaultProps to use JS default params ([d6ac389](https://github.com/asu/asu-unity-stack/commit/d6ac389ab932f0def44c84b33c5bd5fcf7fb2b4d))
+
 # [@asu/component-news-v4.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-news-v4.0.0...@asu/component-news-v4.1.0) (2025-11-07)
 
 
