@@ -280,7 +280,7 @@ import { Audit, Logging, Rules } from "@siteimprove/alfa-test-utils";
 import { Playwright } from "@siteimprove/alfa-playwright";
 import path from "path";
 import fs from "fs";
-import searchPageJsonData from "./__mocks__/data/feeds.json" assert { type: "json" };
+import searchPageJsonData from "../__mocks__/api/feeds.json" assert { type: "json" };
 
 const STORYBOOK_URL = "http://localhost:9030";
 

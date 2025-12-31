@@ -25,6 +25,7 @@
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' ",
     "test": "jest --config=./jest.config.js --passWithNoTests --silent --coverage",
+    "test:accessibility": "playwright test",
     "test-update-snapshot": "yarn test -- -u",
     "prebuild": "rm -rf ./dist",
     "build": "vite build && cp -r src/assets dist/",
