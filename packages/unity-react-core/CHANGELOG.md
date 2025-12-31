@@ -1,3 +1,10 @@
+# [@asu/unity-react-core-v1.4.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.4.0...@asu/unity-react-core-v1.4.1) (2025-12-31)
+
+
+### Bug Fixes
+
+* **unity-react-core:** fix horizonal card rendering ([5984c5f](https://github.com/ASU/asu-unity-stack/commit/5984c5f2b68737754db6c117264e17dc4f795634))
+
 # [@asu/unity-react-core-v1.4.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.3.0...@asu/unity-react-core-v1.4.0) (2025-12-30)
 
 
