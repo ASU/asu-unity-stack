@@ -77,7 +77,7 @@ describe("CardArrangement", () => {
     const { getAllByTestId: getHorizontal } = render(
       <CardArrangement cards={horizontalCards} columns={3} />
     );
-    expect(getHorizontal("uds-card-arrangement-content-container")[0].className).not.toContain("col");
+    expect(getHorizontal("uds-card-arrangement-content-container")[0].className).toContain("col-6");
   });
 
   it("should render cards with correct titles", () => {
