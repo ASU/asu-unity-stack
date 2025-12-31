@@ -28,6 +28,9 @@ for (const config of testUrls) {
     test('should push correct events when opening and closing accordion', async ({ page }) => {
       await page.goto(config.url);
 
+      // Wait for at least one accordion opener to be visible
+      await page.getByTestId('accordion-opener').first().waitFor({ state: 'visible' });
+
       const openers = await page.getByTestId('accordion-opener').all();
       expect(openers.length).toBeGreaterThan(0);
 
