@@ -61,7 +61,8 @@ export const CardArrangement = ({ cards, cardType = "card", columns }) => {
       {cards.map((cardProps, index) => {
 
         return (
-          <div key={index} data-testid="uds-card-arrangement-content-container" className={`${ cardProps.horizontal === true ? "" : getColumnClass(columns)} mb-4`}>
+          /* If horizontal is true, webspark only allows 2 columns to display the horizontal card properly */
+          <div key={index} data-testid="uds-card-arrangement-content-container" className={`${ cardProps.horizontal === true ? "col-6" : getColumnClass(columns)} mb-4`}>
             <CardComponent {...cardProps} />
           </div>
         );
