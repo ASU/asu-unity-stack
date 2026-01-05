@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v5.0.8](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.7...@asu/app-webdir-ui-v5.0.8) (2026-01-05)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** adding siteImprove to webdir-ui ([d55307b](https://github.com/asu/asu-unity-stack/commit/d55307bb88138a7a8911682cf02aeebadd19b719))
+
 # [@asu/app-webdir-ui-v5.0.7](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.6...@asu/app-webdir-ui-v5.0.7) (2025-11-19)
 
 
