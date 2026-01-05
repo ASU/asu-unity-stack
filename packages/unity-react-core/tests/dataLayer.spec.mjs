@@ -29,6 +29,9 @@ for (const config of testUrls) {
       await page.goto(config.url);
       await page.waitForSelector('[data-testid="accordion-opener"]');
 
+      // Wait for at least one accordion opener to be visible
+      await page.getByTestId('accordion-opener').first().waitFor({ state: 'visible' });
+
       const openers = await page.getByTestId('accordion-opener').all();
       expect(openers.length).toBeGreaterThan(0);
 
