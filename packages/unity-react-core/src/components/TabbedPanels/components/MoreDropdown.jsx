@@ -12,6 +12,8 @@ import { title } from "process";
   const MoreDropdown = ({ overflowTabs, activeTabID, selectTab, gaData }) => {
     const [isOpen, setIsOpen] = useState(false);
     const rootRef = useRef(null);
+    // REVIEW: Look at TabbedPanels.jsx - what data structure is actually being passed in overflowTabs?
+    // REVIEW: Do you have access to tab titles and icons? Think about what data you actually need.
     const items = overflowTabs.map((str) => {
       if (typeof str === "string") {
         return {
@@ -74,6 +76,8 @@ import { title } from "process";
           return null;
         }
 
+        // REVIEW: The TODO says to "Wrap in GaEventWrapper for analytics tracking". Where is it?
+        // REVIEW: You imported GaEventWrapper but never used it. The gaData prop is also unused.
         return (
           <div
             ref={rootRef}
@@ -89,6 +93,7 @@ import { title } from "process";
               onClick={toggle}
               aria-haspopup="menu"
               aria-expanded={isOpen}
+              // REVIEW: Should you use inline styles or CSS classes? Check the project conventions and try to create styles, even if its new ones, in unity-bootstrap-theme
               style={{
                 paddingTop: "0.5rem",
                 paddingLeft: "0.25rem",
@@ -179,6 +184,7 @@ import { title } from "process";
         );
 };
 
+// REVIEW: Should any of these props be marked as .isRequired?
 MoreDropdown.propTypes = {
   overflowTabs: PropTypes.array,
   activeTabID: PropTypes.string,
