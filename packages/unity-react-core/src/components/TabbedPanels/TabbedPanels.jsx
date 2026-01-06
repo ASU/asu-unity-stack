@@ -81,10 +81,13 @@ const TabbedPanels = ({
   const [overflowTabs, setOverflowTabs] = useState([]);
   const [visibleTabs, setVisibleTabs] = useState(childrenArray.map((c) => c.props.id));
 
+  // REVIEW: This useEffect is missing its dependency array. What happens when you call setState without dependencies?
+  // REVIEW: This will cause an infinite loop. Think about when this effect should run and add the appropriate dependency array. remember that what you add int the depenmdency array should not be derived from the state being set inside the effect.
   useEffect(() => {
     const More_Width = 83;
     const Tab_Gap = 8;
 
+    // REVIEW: What happens if headerTabs.current is null? Should you add a safety check?
     const container = headerTabs.current;
     const tabIDs = childrenArray.map((c) => c.props.id);
     const widths = tabIDs.map((id) => {
@@ -94,6 +97,8 @@ const TabbedPanels = ({
 
     const remainingWidth = container.clientWidth;
     let spaceUsed = 0;
+    // REVIEW: You're about to push directly into state arrays (visibleTabs/overflowTabs).
+    // REVIEW: In React, should you mutate state directly? What's the correct approach?
     for (let i = 0; i < tabIDs.length; i++) {
       const curWidth = widths[i];
 
@@ -111,6 +116,7 @@ const TabbedPanels = ({
     setVisibleTabs(visibleTabs);
     setOverflowTabs(overflowTabs);
     setScrollableWidth(container.scrollWidth - container.clientWidth);
+    // REVIEW: The TODO says this should run "on mount and window resize". Where's the resize listener?
 
   });
 
