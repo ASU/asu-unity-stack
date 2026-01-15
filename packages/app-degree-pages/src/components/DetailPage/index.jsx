@@ -132,7 +132,9 @@ const DetailPage = ({
   }, [data]);
 
   // Only filter if anchorMenu is provided
-  const filteredAnchorMenu = anchorMenu ? filterAnchorMenu(anchorMenu, resolver) : null;
+  const filteredAnchorMenu = anchorMenu
+    ? filterAnchorMenu(anchorMenu, resolver)
+    : null;
 
   return (
     <>
@@ -156,9 +158,11 @@ const DetailPage = ({
       )}
 
       <Main as="div" data-is-loading={loading} className="main-section">
-        {!loading && filteredAnchorMenu && hasValidAnchorMenu(filteredAnchorMenu) && (
-          <OnThisPageAnchorMenu anchorMenu={filteredAnchorMenu} />
-        )}
+        {!loading &&
+          filteredAnchorMenu &&
+          hasValidAnchorMenu(filteredAnchorMenu) && (
+            <OnThisPageAnchorMenu anchorMenu={filteredAnchorMenu} />
+          )}
 
         {loading && <Loader />}
 

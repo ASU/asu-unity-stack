@@ -70,7 +70,9 @@ const Table = styled.table`
     th {
       outline: none;
       :focus {
-        box-shadow: 0px 0px 0px 2px #fff, 0px 0px 0px 4px #191919 !important;
+        box-shadow:
+          0px 0px 0px 2px #fff,
+          0px 0px 0px 4px #191919 !important;
       }
     }
   }

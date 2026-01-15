@@ -56,7 +56,9 @@ const Wrapper = styled.div`
   }
 
   .highlight-gold {
-    box-shadow: -0.15em 0 0 #ffc627, 0.15em 0 0 #ffc627;
+    box-shadow:
+      -0.15em 0 0 #ffc627,
+      0.15em 0 0 #ffc627;
     background: #ffc627;
   }
 

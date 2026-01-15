@@ -18,7 +18,9 @@ export const FilterContainer = styled.fieldset`
     padding: 8px 0;
     &:focus {
       outline: none !important;
-      box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px #191919 !important;
+      box-shadow:
+        0px 0px 0px 2px #ffffff,
+        0px 0px 0px 4px #191919 !important;
     }
 
     &::-webkit-scrollbar {

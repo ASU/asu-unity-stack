@@ -53,7 +53,9 @@ const ListTemplate = ({ cardButton, hideTags }) => {
   return (
     <NewsWrapper className="row-spaced" data-testid="list-view-container">
       {feeds?.map((feed, index) => (
-        <React.Fragment key={index}>{listRow(feed, cardButton, shouldHideTags)}</React.Fragment>
+        <React.Fragment key={index}>
+          {listRow(feed, cardButton, shouldHideTags)}
+        </React.Fragment>
       ))}
     </NewsWrapper>
   );
@@ -93,6 +95,10 @@ const CardListlNews = ({ cardButton, hideTags = true, ...props }) => {
   );
 };
 
-CardListlNews.propTypes = { ...BaseFeed.propTypes, feedCardButtonShape, hideTags: PropTypes.oneOf(["true", "false", true, false]) };
+CardListlNews.propTypes = {
+  ...BaseFeed.propTypes,
+  feedCardButtonShape,
+  hideTags: PropTypes.oneOf(["true", "false", true, false]),
+};
 
 export { CardListlNews };
