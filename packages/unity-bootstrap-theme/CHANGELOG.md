@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.32.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.31.0...@asu/unity-bootstrap-theme-v1.32.0) (2026-01-15)
+
+
+### Features
+
+* **unity-bootstrap-theme:** added siteimprove feedback ([6cb527f](https://github.com/ASU/asu-unity-stack/commit/6cb527f74138a13a4aaa7594520af82ccbf929d9))
+
 # [@asu/unity-bootstrap-theme-v1.31.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.30.3...@asu/unity-bootstrap-theme-v1.31.0) (2025-12-30)
 
 
