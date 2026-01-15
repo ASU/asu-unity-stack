@@ -18,7 +18,7 @@ const RfiRadioGroup = ({ name, id, options, label, onBlur }) => {
       }) => {
         const isError = meta.error;
         return (
-          <fieldset>
+          <fieldset role="group">
             <RfiLegend label={label} />
             <RfiError isError={isError} metaError={meta.error} />
             {options.map(option => (
