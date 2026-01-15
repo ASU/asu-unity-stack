@@ -1,3 +1,10 @@
+# [@asu/app-rfi-v3.6.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.6.2...@asu/app-rfi-v3.6.3) (2026-01-15)
+
+
+### Bug Fixes
+
+* **app-rfi:** add role attribute to radio group ([13b4300](https://github.com/asu/asu-unity-stack/commit/13b430095850fb8c170fe806824d40e766390c36))
+
 # [@asu/app-rfi-v3.6.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.6.1...@asu/app-rfi-v3.6.2) (2025-12-30)
 
 
