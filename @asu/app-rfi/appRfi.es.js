@@ -6370,7 +6370,7 @@ const Cu = ({ name: e, id: t, options: r, label: n, onBlur: i }) => /* @__PURE__
   meta: l
 }) => {
   const d = l.error;
-  return /* @__PURE__ */ h.jsxs("fieldset", { children: [
+  return /* @__PURE__ */ h.jsxs("fieldset", { role: "group", children: [
     /* @__PURE__ */ h.jsx(_u, { label: n }),
     /* @__PURE__ */ h.jsx(sr, { isError: d, metaError: l.error }),
     r.map((g) => /* @__PURE__ */ h.jsxs(
