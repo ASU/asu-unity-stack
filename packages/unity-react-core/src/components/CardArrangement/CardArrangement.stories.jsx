@@ -195,6 +195,7 @@ const Template = args => (
 export const ThreeColumns = Template.bind({});
 ThreeColumns.args = {
   cards: sampleCards,
+  columns: 3,
 };
 ThreeColumns.storyName = "Three cards example";
 ThreeColumns.parameters = {
@@ -216,6 +217,7 @@ Example with three cards that will wrap naturally based on container width.
 export const TwoColumns = Template.bind({});
 TwoColumns.args = {
   cards: eventCards,
+  columns: 2,
 };
 TwoColumns.storyName = "Two cards example";
 TwoColumns.parameters = {
@@ -237,6 +239,7 @@ Example with two event cards that will wrap naturally.
 export const FourColumns = Template.bind({});
 FourColumns.args = {
   cards: degreeCards,
+  columns: 4,
 };
 FourColumns.storyName = "Four cards example";
 FourColumns.parameters = {
@@ -292,6 +295,7 @@ Example with horizontal cards. Each card is set to horizontal layout.
 export const SingleColumn = Template.bind({});
 SingleColumn.args = {
   cards: storyCards,
+  columns: 1,
 };
 SingleColumn.storyName = "Multiple story cards";
 SingleColumn.parameters = {
@@ -310,8 +314,8 @@ Example with multiple story cards.
   },
 };
 
-export const MixedCardTypes = Template.bind({});
-MixedCardTypes.args = {
+export const MixedCardTypesNoColProvided = Template.bind({});
+MixedCardTypesNoColProvided.args = {
   cards: [
     {
       type: "default",
@@ -357,8 +361,8 @@ MixedCardTypes.args = {
     },
   ],
 };
-MixedCardTypes.storyName = "Mixed card types";
-MixedCardTypes.parameters = {
+MixedCardTypesNoColProvided.storyName = "Mixed card types (no columns specified)";
+MixedCardTypesNoColProvided.parameters = {
   docs: {
     description: {
       story: `
@@ -367,7 +371,7 @@ The CardArrangement component works with any card type (default, event, story, d
 
 \`\`\`jsx
 <CardArrangement
-  cards={mixedCards}
+  cards={mixedCardsNoColProvided}
 />
 \`\`\`
       `,
@@ -421,6 +425,7 @@ WithoutImages.args = {
       ],
     },
   ],
+  columns: 2,
 };
 WithoutImages.storyName = "Cards with icons";
 WithoutImages.parameters = {
@@ -528,6 +533,7 @@ export const RankingCardsLarge = Template.bind({});
 RankingCardsLarge.args = {
   cards: rankingCardsLarge,
   cardType: "ranking",
+  columns: 4
 };
 RankingCardsLarge.storyName = "Ranking cards (large)";
 RankingCardsLarge.parameters = {
@@ -551,6 +557,7 @@ export const RankingCardsSmall = Template.bind({});
 RankingCardsSmall.args = {
   cards: rankingCardsSmall,
   cardType: "ranking",
+  columns: 2
 };
 RankingCardsSmall.storyName = "Ranking cards (small)";
 RankingCardsSmall.parameters = {

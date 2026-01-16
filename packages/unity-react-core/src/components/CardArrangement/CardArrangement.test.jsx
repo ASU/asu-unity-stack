@@ -45,19 +45,19 @@ describe("CardArrangement", () => {
     const { getAllByTestId: get2Cols, unmount: unmount2 } = render(
       <CardArrangement cards={mockCards} columns={2} />
     );
-    expect(get2Cols("uds-card-arrangement-content-container")[0].className).toContain("col-6");
+    expect(get2Cols("uds-card-arrangement-content-container")[0].className).toContain("col-12 col-md-6");
     unmount2();
 
     const { getAllByTestId: get3Cols, unmount: unmount3 } = render(
       <CardArrangement cards={mockCards} columns={3} />
     );
-    expect(get3Cols("uds-card-arrangement-content-container")[0].className).toContain("col-4");
+    expect(get3Cols("uds-card-arrangement-content-container")[0].className).toContain("col-12 col-md-6 col-lg-4");
     unmount3();
 
     const { getAllByTestId: get4Cols, unmount: unmount4 } = render(
       <CardArrangement cards={mockCards} columns={4} />
     );
-    expect(get4Cols("uds-card-arrangement-content-container")[0].className).toContain("col-3");
+    expect(get4Cols("uds-card-arrangement-content-container")[0].className).toContain("col-12 col-md-6 col-lg-4 col-xl-3");
     unmount4();
 
     const horizontalCards = [
@@ -77,7 +77,7 @@ describe("CardArrangement", () => {
     const { getAllByTestId: getHorizontal } = render(
       <CardArrangement cards={horizontalCards} columns={3} />
     );
-    expect(getHorizontal("uds-card-arrangement-content-container")[0].className).toContain("col-6");
+    expect(getHorizontal("uds-card-arrangement-content-container")[0].className).toContain("col-12 col-md-6");
   });
 
   it("should render cards with correct titles", () => {
