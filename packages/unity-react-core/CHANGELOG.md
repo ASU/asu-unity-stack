@@ -1,3 +1,11 @@
+# [@asu/unity-react-core-v1.4.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.4.1...@asu/unity-react-core-v1.4.2) (2026-01-16)
+
+
+### Bug Fixes
+
+* **unity-react-core:** fix card arrangement ([fecbd10](https://github.com/ASU/asu-unity-stack/commit/fecbd10dab2020cdcd93e6109a55ea3c6435947e))
+* **unity-react-core:** refactor card arrangement logic ([1012fec](https://github.com/ASU/asu-unity-stack/commit/1012fecfa73216492fb586343442ff01a60c7ab7))
+
 # [@asu/unity-react-core-v1.4.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.4.0...@asu/unity-react-core-v1.4.1) (2025-12-31)
 
 
