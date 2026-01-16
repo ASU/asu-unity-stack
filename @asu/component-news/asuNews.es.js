@@ -5720,7 +5720,7 @@ $s.propTypes = {
 };
 l.oneOf(["small", "large"]), l.string.isRequired, l.string.isRequired, l.string;
 l.oneOf(["small", "large"]).isRequired, l.string.isRequired, l.string.isRequired, l.string.isRequired, l.string.isRequired, l.string, l.string;
-l.arrayOf(l.object).isRequired, l.oneOf(["card", "ranking"]);
+l.arrayOf(l.object).isRequired, l.oneOf(["card", "ranking"]), l.oneOf([1, 2, 3, 4, "1", "2", "3", "4"]);
 const Vu = Xt.div`
   display: inline-block;
   position: relative;
