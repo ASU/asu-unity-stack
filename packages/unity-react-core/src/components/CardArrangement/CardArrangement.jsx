@@ -40,16 +40,18 @@ export const CardArrangement = ({ cards, cardType = "card", columns }) => {
   const getColumnClass = (columns) => {
     const col = String(columns);
       switch (col) {
-        case "2":
-          return "col-6";
-        case "3":
-          return "col-4";
-        case "4":
-          return "col-3";
-        default:
-          return "col";
-      }
-    };
+      case "1":
+        return "col-12";
+      case "2":
+        return "col-12 col-md-6";
+      case "3":
+        return "col-12 col-md-6 col-lg-4";
+      case "4":
+        return "col-12 col-md-6 col-lg-4 col-xl-3";
+      default:
+        return "col";
+    }
+  };
 
   const CardComponent = cardType === "ranking" ? RankingCard : Card;
 
@@ -62,7 +64,7 @@ export const CardArrangement = ({ cards, cardType = "card", columns }) => {
 
         return (
           /* If horizontal is true, webspark only allows 2 columns to display the horizontal card properly */
-          <div key={index} data-testid="uds-card-arrangement-content-container" className={`${ cardProps.horizontal === true ? "col-6" : getColumnClass(columns)} mb-4`}>
+          <div key={index} data-testid="uds-card-arrangement-content-container" className={`${ cardProps.horizontal === true ? "col-12 col-md-6" : getColumnClass(columns)} mb-4`}>
             <CardComponent {...cardProps} />
           </div>
         );
