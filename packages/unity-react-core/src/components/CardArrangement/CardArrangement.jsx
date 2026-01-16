@@ -19,6 +19,13 @@ import { RankingCard } from "../RankingCard/RankingCard";
  * @property {1 | 2 | 3 | 4 | "1" | "2" | "3" | "4"} [columns] - Number of columns to display (optional)
  */
 
+const COLUMN_CLASSES = {
+  1: "col-12",
+  2: "col-12 col-md-6",
+  3: "col-12 col-md-6 col-lg-4",
+  4: "col-12 col-md-6 col-lg-4 col-xl-3",
+};
+
 /**
  * CardArrangement component renders multiple cards that wrap naturally based on
  * their intrinsic min/max widths. The parent container determines the overall width,
@@ -32,43 +39,24 @@ export const CardArrangement = ({ cards, cardType = "card", columns }) => {
     return null;
   }
 
-  /**
-   *
-   * @param {CardArrangementProps["columns"]} columns
-   * @returns
-   */
-  const getColumnClass = (columns) => {
-    const col = String(columns);
-      switch (col) {
-      case "1":
-        return "col-12";
-      case "2":
-        return "col-12 col-md-6";
-      case "3":
-        return "col-12 col-md-6 col-lg-4";
-      case "4":
-        return "col-12 col-md-6 col-lg-4 col-xl-3";
-      default:
-        return "col";
-    }
-  };
-
   const CardComponent = cardType === "ranking" ? RankingCard : Card;
+  const defaultColClass = COLUMN_CLASSES[columns] || "col-12 col-md-auto";
 
   return (
-    <div
-      className={`row`}
-      data-testid="card-arrangement"
-    >
-      {cards.map((cardProps, index) => {
-
-        return (
-          /* If horizontal is true, webspark only allows 2 columns to display the horizontal card properly */
-          <div key={index} data-testid="uds-card-arrangement-content-container" className={`${ cardProps.horizontal === true ? "col-12 col-md-6" : getColumnClass(columns)} mb-4`}>
-            <CardComponent {...cardProps} />
-          </div>
-        );
-      })}
+    <div className="row" data-testid="card-arrangement">
+      {cards.map((cardProps, index) => (
+        <div
+          key={index}
+          data-testid="uds-card-arrangement-content-container"
+          className={`${
+            cardProps.horizontal
+              ? "col-12 col-md-6" // Webspark constraint: horizontal cards max out at 2 columns
+              : defaultColClass
+          } mb-4`}
+        >
+          <CardComponent {...cardProps} />
+        </div>
+      ))}
     </div>
   );
 };
@@ -83,4 +71,8 @@ CardArrangement.propTypes = {
    * Type of card to render - either "card" (default) or "ranking"
    */
   cardType: PropTypes.oneOf(["card", "ranking"]),
+  /**
+   * Number of columns to display.
+   */
+  columns: PropTypes.oneOf([1, 2, 3, 4, "1", "2", "3", "4"]),
 };
