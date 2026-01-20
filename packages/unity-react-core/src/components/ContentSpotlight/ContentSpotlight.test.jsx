@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import React from "react";
 import { expect, describe, test, afterEach } from "vitest";
 
-import { ContentSpotlight } from "./ContentSpotlight.jsx";
+import { ContentSpotlight } from "./ContentSpotlight";
 
 const defaultArgs = {
   backgroundImage: "https://example.com/image.jpg",
@@ -33,7 +33,7 @@ describe("ContentSpotlight", () => {
   });
 
   test("renders icon", () => {
-     const { container } = render(<ContentSpotlight {...defaultArgs} />);
-     expect(container.querySelector(".fa-graduation-cap")).toBeInTheDocument();
+    const { container } = render(<ContentSpotlight {...defaultArgs} />);
+    expect(container.querySelector(".fa-graduation-cap")).toBeInTheDocument();
   });
 });
