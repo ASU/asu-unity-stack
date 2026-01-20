@@ -1,6 +1,7 @@
 // @ts-check
 import React from "react";
 import { ContentSpotlight } from "./ContentSpotlight";
+import {imageName} from "@asu/shared";
 
 export default {
   title: "Components/ContentSpotlight",
@@ -27,8 +28,7 @@ const Template = args => <ContentSpotlight {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  backgroundImage:
-    "https://www.figma.com/api/mcp/asset/68c8d922-400e-4b74-9036-4e07f92603ac", // Using the Figma asset
+  backgroundImage: imageName.moreGradsMoreInnovation,
   icon: "graduation-cap",
   title: "More grads,",
   highlightText: "more innovation",

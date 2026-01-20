@@ -21,4 +21,5 @@ export namespace imageName {
     let poly1: string;
     let requestFormInformation: string;
     let ws2DefaultImagev01Final: string;
+    let moreGradsMoreInnovation: string;
 }
