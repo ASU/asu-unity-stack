@@ -17,6 +17,7 @@ import {
   initImageCarousel,
   initImageGalleryCarousel,
 } from "../../components/ComponentCarousel/ComponentCarousel";
+import { ContentSpotlight } from "../../components/ContentSpotlight/ContentSpotlight";
 import { Divider } from "../../components/Divider/Divider";
 import { GridLinks } from "../../components/GridLinks/GridLinks";
 import { Hero } from "../../components/Hero/Hero";
@@ -93,6 +94,12 @@ export const initCard = ({ targetSelector, props }) =>
  */
 export const initCardArrangement = ({ targetSelector, props }) =>
   RenderReact(CardArrangement, props, document.querySelector(targetSelector));
+
+/**
+ * @param {ComponentProps} props
+ */
+export const initContentSpotlight = ({ targetSelector, props }) =>
+  RenderReact(ContentSpotlight, props, document.querySelector(targetSelector));
 
 /**
  * @param {ComponentProps} props

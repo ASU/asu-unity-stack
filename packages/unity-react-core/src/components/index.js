@@ -7,6 +7,7 @@ export * from "./ButtonIconOnly/ButtonIconOnly";
 export * from "./ButtonTag/ButtonTag";
 export * from "./Card/Card";
 export * from "./CardArrangement/CardArrangement";
+export * from "./ContentSpotlight/ContentSpotlight";
 export * from "./Divider/Divider";
 export * from "./FeedAnatomy";
 export * from "./Hero/Hero";
