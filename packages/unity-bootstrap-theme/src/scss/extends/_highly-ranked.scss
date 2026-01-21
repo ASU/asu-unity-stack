@@ -1,0 +1,94 @@
+@import "../_unity-bootstrap-theme-variables.scss";
+
+.highly-ranked-section {
+  padding-top: $uds-size-spacing-12;
+  padding-bottom: $uds-size-spacing-12;
+  background-color: $faint;
+
+  @media (max-width: map-get($grid-breakpoints, "lg")) {
+    padding-top: $uds-size-spacing-6;
+    padding-bottom: $uds-size-spacing-6;
+  }
+
+  .highly-ranked-title {
+    margin-bottom: $uds-size-spacing-4;
+
+    .highlight-gold {
+      display: inline-block;
+      padding: $uds-size-spacing-half;
+      background-color: $gold;
+      color: $dark;
+      line-height: 1.1;
+    }
+  }
+
+  .highly-ranked-description {
+    font-size: 1.25rem; // 20px
+    line-height: $uds-size-spacing-3 + 0.25rem; // 28px approx
+    color: $dark;
+    margin-bottom: $uds-size-spacing-4;
+
+    @media (max-width: map-get($grid-breakpoints, "md")) {
+      font-size: 1rem;
+    }
+  }
+
+  .highly-ranked-cta {
+    margin-bottom: $uds-size-spacing-4;
+  }
+
+  .highly-ranked-grid {
+    margin-top: $uds-size-spacing-4;
+  }
+
+  .highly-ranked-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: $uds-size-spacing-1;
+
+    .ranking-value-container {
+      border-left: 8px solid $gold;
+      padding-left: $uds-size-spacing-2;
+      margin-bottom: 0;
+
+      @media (max-width: map-get($grid-breakpoints, "md")) {
+        padding-left: $uds-size-spacing-3;
+      }
+    }
+
+    .ranking-content {
+      padding-left: calc(8px + #{$uds-size-spacing-2});
+
+      @media (max-width: map-get($grid-breakpoints, "md")) {
+        padding-left: calc(8px + #{$uds-size-spacing-3});
+      }
+    }
+
+    .ranking-value {
+      font-size: $uds-size-font-xxxl; // 64px
+      font-weight: $font-weight-bold;
+      margin: 0;
+      line-height: 1.1;
+      color: $dark;
+
+      @media (max-width: map-get($grid-breakpoints, "md")) {
+        font-size: 3rem; // 48px
+      }
+    }
+
+    .ranking-title {
+      font-size: 1.5rem;
+      font-weight: $font-weight-bold;
+      margin: 0 0 $uds-size-spacing-1 0;
+      color: $dark;
+    }
+
+    .ranking-description {
+      font-size: 1rem; // 16px
+      color: $dark;
+      margin-bottom: 0;
+    }
+  }
+}
