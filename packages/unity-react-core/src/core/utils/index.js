@@ -20,6 +20,7 @@ import {
 import { Divider } from "../../components/Divider/Divider";
 import { GridLinks } from "../../components/GridLinks/GridLinks";
 import { Hero } from "../../components/Hero/Hero";
+import { HighlyRanked } from "../../components/HighlyRanked/HighlyRanked";
 import { Image } from "../../components/Image/Image";
 import { List } from "../../components/List/List";
 import { Pagination } from "../../components/Pagination/Pagination";
@@ -169,3 +170,9 @@ export const initTooltip = ({ targetSelector, props }) =>
  */
 export const initList = ({ targetSelector, props }) =>
   RenderReact(List, props, document.querySelector(targetSelector));
+
+/**
+ * @param {ComponentProps} props
+ */
+export const initHighlyRanked = ({ targetSelector, props }) =>
+  RenderReact(HighlyRanked, props, document.querySelector(targetSelector));

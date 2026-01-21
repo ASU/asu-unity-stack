@@ -23,8 +23,8 @@
   }
 
   .highly-ranked-description {
-    font-size: 1.25rem; // 20px
-    line-height: $uds-size-spacing-3 + 0.25rem; // 28px approx
+    font-size: 1.25rem;
+    line-height: $uds-size-spacing-3 + 0.25rem;
     color: $dark;
     margin-bottom: $uds-size-spacing-4;
 
@@ -67,7 +67,7 @@
     }
 
     .ranking-value {
-      font-size: $uds-size-font-xxxl; // 64px
+      font-size: $uds-size-font-xxxl;
       font-weight: $font-weight-bold;
       margin: 0;
       line-height: 1.1;
@@ -86,7 +86,7 @@
     }
 
     .ranking-description {
-      font-size: 1rem; // 16px
+      font-size: 1rem;
       color: $dark;
       margin-bottom: 0;
     }
