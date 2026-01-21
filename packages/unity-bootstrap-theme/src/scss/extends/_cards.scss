@@ -788,7 +788,7 @@ Cards - Table of Contents
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 20rem $uds-size-spacing-3 $uds-size-spacing-6 $uds-size-spacing-3;
+  padding: 20rem $uds-size-spacing-4 $uds-size-spacing-6 $uds-size-spacing-4;
   min-height: 600px;
 
   @include media-breakpoint-up(lg) {
@@ -844,9 +844,17 @@ Cards - Table of Contents
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: $uds-size-spacing-3;
+  gap: 1rem;
   width: 100%;
   margin-top: auto;
+
+  @include media-breakpoint-up(lg) {
+    gap: .75rem;
+  }
+
+  & > *:last-child {
+    margin-top: 0.75rem;
+  }
 
   @include media-breakpoint-up(lg) {
     max-width: 50%;
@@ -857,7 +865,6 @@ Cards - Table of Contents
 .content-spotlight-icon {
   color: $uds-color-base-gold;
   font-size: 25px;
-  margin-bottom: 0.75rem;
 }
 
 .content-spotlight-title {
