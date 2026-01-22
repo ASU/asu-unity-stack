@@ -9259,7 +9259,7 @@ function Ec(e, t) {
     r.cert === "true" && m === "all" ? r.degreeType = "GR,UGCM" : m === "all" ? r.degreeType = "GR,UG" : r.cert === "true" && m === "undergrad" ? r.degreeType = "UGCM" : m === "graduate" ? r.degreeType = "GR" : r.degreeType = "UG", delete r.program;
   }
   r.acadPlan && (r.endpoint += `/${r.acadPlan}`, delete r.acadPlan);
-  const { endpoint: n, ...o } = r, s = (m, g) => Array.isArray(g) ? `${m}=${g}` : g.split(",").map((f) => `${m}=${f.trim()}`).join("&"), p = Object.keys(o).reduce(
+  const { endpoint: n, ...o } = r, s = (m, g) => !g || m === void 0 ? "" : Array.isArray(g) ? `${m}=${g}` : g.split(",").map((f) => `${m}=${f.trim()}`).join("&"), p = Object.keys(o).reduce(
     (m, g) => `${m}&${s(
       g,
       r[g]
