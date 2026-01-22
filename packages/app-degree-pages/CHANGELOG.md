@@ -1,3 +1,10 @@
+# [@asu/app-degree-pages-v3.1.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.1.2...@asu/app-degree-pages-v3.1.3) (2026-01-22)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** fix urlResolver error when no csv string provided ([866dbaa](https://github.com/asu/asu-unity-stack/commit/866dbaab3e3bee7674d9bfe0fd24f3a15db6d0c1))
+
 # [@asu/app-degree-pages-v3.1.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.1.1...@asu/app-degree-pages-v3.1.2) (2025-12-05)
 
 
