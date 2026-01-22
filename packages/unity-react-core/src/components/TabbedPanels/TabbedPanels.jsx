@@ -79,7 +79,9 @@ const TabbedPanels = ({
   // TODO 1.1
   // -----------------------------
   const [overflowTabs, setOverflowTabs] = useState([]);
-  const [visibleTabs, setVisibleTabs] = useState(childrenArray.map((c) => c.props.id));
+  const [visibleTabs, setVisibleTabs] = useState(
+    childrenArray.map((c) => c.props.id)
+  );
 
   // REVIEW: This useEffect is missing its dependency array. What happens when you call setState without dependencies?
   // REVIEW: This will cause an infinite loop. Think about when this effect should run and add the appropriate dependency array. remember that what you add int the depenmdency array should not be derived from the state being set inside the effect.
@@ -87,38 +89,61 @@ const TabbedPanels = ({
     const More_Width = 83;
     const Tab_Gap = 8;
 
-    // REVIEW: What happens if headerTabs.current is null? Should you add a safety check?
-    const container = headerTabs.current;
-    const tabIDs = childrenArray.map((c) => c.props.id);
-    const widths = tabIDs.map((id) => {
-      const DOMelement = headerTabItems.current?.[id];
-      return DOMelement ? DOMelement.getBoundingClientRect().width : 80;
-    });
-
-    const remainingWidth = container.clientWidth;
-    let spaceUsed = 0;
-    // REVIEW: You're about to push directly into state arrays (visibleTabs/overflowTabs).
-    // REVIEW: In React, should you mutate state directly? What's the correct approach?
-    for (let i = 0; i < tabIDs.length; i++) {
-      const curWidth = widths[i];
-
-      if (curWidth + spaceUsed + More_Width > remainingWidth) {
-        for (let j = i; j < tabIDs.length; j++) {
-          overflowTabs.push(tabIDs[j]);
-        }
-        break;
+    const computeOverflow = () => {
+      // REVIEW: What happens if headerTabs.current is null? Should you add a safety check?
+      const container = headerTabs.current;
+      if (!container) {
+        setVisibleTabs(childrenArray.map((c) => c.props.id));
+        setOverflowTabs([]);
+        return;
       }
 
-      visibleTabs.push(tabIDs[i]);
-      spaceUsed += curWidth + Tab_Gap;
-    }
+      const tabIDs = childrenArray.map((c) => c.props.id);
 
-    setVisibleTabs(visibleTabs);
-    setOverflowTabs(overflowTabs);
-    setScrollableWidth(container.scrollWidth - container.clientWidth);
+      const widths = tabIDs.map((id) => {
+        const DOMelement = headerTabItems.current?.[id];
+        return DOMelement ? DOMelement.getBoundingClientRect().width : 80;
+      });
+
+      const availableWidth = container.clientWidth;
+
+      // REVIEW: You're about to push directly into state arrays (visibleTabs/overflowTabs).
+      // REVIEW: In React, should you mutate state directly? What's the correct approach?
+      const newVisibleTabs = [];
+      const newOverflowTabs = [];
+
+      let spaceUsed = 0;
+
+      for (let i = 0; i < tabIDs.length; i++) {
+        const curWidth = widths[i];
+
+        if (spaceUsed + curWidth + More_Width > availableWidth) {
+          for (let j = i; j < tabIDs.length; j++) {
+            newOverflowTabs.push(tabIDs[j]);
+          }
+          break;
+        }
+
+        newVisibleTabs.push(tabIDs[i]);
+        spaceUsed += curWidth + Tab_Gap;
+      }
+
+      setVisibleTabs(newVisibleTabs);
+      setOverflowTabs(newOverflowTabs);
+      setScrollableWidth(container.scrollWidth - container.clientWidth);
+    };
+
     // REVIEW: The TODO says this should run "on mount and window resize". Where's the resize listener?
 
-  });
+    computeOverflow();
+
+    window.addEventListener("resize", computeOverflow);
+
+    return () => {
+      window.removeEventListener("resize", computeOverflow);
+    };
+  }, [childrenArray, headerTabItems]);
+
 
   const handleResize = useCallback(() => {
     setScrollableWidth(
