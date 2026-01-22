@@ -1,3 +1,10 @@
+# [@asu/app-rfi-v3.6.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.6.3...@asu/app-rfi-v3.6.4) (2026-01-22)
+
+
+### Bug Fixes
+
+* **app-rfi:** set default props correctly ([e271a62](https://github.com/asu/asu-unity-stack/commit/e271a62f22d818eed1f69b3ed99dcb62469f7f22))
+
 # [@asu/app-rfi-v3.6.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.6.2...@asu/app-rfi-v3.6.3) (2026-01-15)
 
 
