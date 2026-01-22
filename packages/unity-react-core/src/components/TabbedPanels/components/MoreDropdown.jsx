@@ -2,8 +2,7 @@ import PropTypes from "prop-types";
 import React,{useEffect, useRef, useState} from "react";
 
 import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
-import { root } from "postcss";
-import { title } from "process";
+
 
   // -----------------------------
   // TODO 1.2
@@ -14,21 +13,23 @@ import { title } from "process";
     const rootRef = useRef(null);
     // REVIEW: Look at TabbedPanels.jsx - what data structure is actually being passed in overflowTabs?
     // REVIEW: Do you have access to tab titles and icons? Think about what data you actually need.
-    const items = overflowTabs.map((str) => {
-      if (typeof str === "string") {
+    // overflowTabs passes an array of the tab IDs
+    const Overflow = Array.isArray(overflowTabs) ? overflowTabs : [];
+    const items = Overflow.map((t) => {
+      if (typeof t === "string") {
+        return { id: t, title: t };
+      }
+    // First checks that t is actually an object and if the object has a title, use it otherwise it falls back to using the id as the title
+      if (t && typeof t === "object") {
+        const id = t.id;
+        const title = t.title ? t.title : t.id;
+
         return {
-          id: str,
-          title: str,
+          id: id,
+          title: title,
         };
       }
-      else {
-        return {
-          id: str.id,
-          title: str.title || str.id
-        };
-      }
-    }
-    );
+    });
 
     const toggle = (event) => {
       if (event) {
@@ -78,98 +79,54 @@ import { title } from "process";
 
         // REVIEW: The TODO says to "Wrap in GaEventWrapper for analytics tracking". Where is it?
         // REVIEW: You imported GaEventWrapper but never used it. The gaData prop is also unused.
+
         return (
-          <div
-            ref={rootRef}
-            className="uds-more-dropdown"
-            style={{
-              position: "relative",
-              display: "inline-block",
-            }}
-          >
-
-            <button
-              type="button"
-              onClick={toggle}
-              aria-haspopup="menu"
-              aria-expanded={isOpen}
-              // REVIEW: Should you use inline styles or CSS classes? Check the project conventions and try to create styles, even if its new ones, in unity-bootstrap-theme
-              style={{
-                paddingTop: "0.5rem",
-                paddingLeft: "0.25rem",
-                paddingRight: "0.25rem",
-                background: "transparent",
-                border: "none",
-                cursor: "pointer",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-              }}
-            >
-              <span>More</span>
-
-              <i
-                className="fas fa-chevron-down"
-                aria-hidden="true"
-                style={{
-                  transition: "transform 160ms ease",
-                  transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-                }}
-              />
-            </button>
+          <div ref={rootRef} className="uds-more-dropdown">
+            <GaEventWrapper gaData={gaData || {}}>
+              <button
+                type="button"
+                onClick={toggle}
+                aria-haspopup="menu"
+                aria-expanded={isOpen}
+                className="uds-tab more-button"
+                // REVIEW: Should you use inline styles or CSS classes? Check the project conventions and try to create styles, even if its new ones, in unity-bootstrap-theme
+              >
+                <span className="more-button-label">More</span>
+                <i
+                  className="fas fa-chevron-down more-button-icon"
+                  aria-hidden="true"
+                  style={{
+                    transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+                    transition: "transform 160ms ease",
+                  }}
+                />
+              </button>
+            </GaEventWrapper>
 
             {isOpen && (
               <div
                 role="menu"
                 aria-label="More tabs"
-                style={{
-                  position: "absolute",
-                  top: "41px",
-                  right: 0,
-                  width: "180px",
-                  padding: "2rem",
-                  background: "#ffffff",
-                  border: "1px solid #d0d0d0",
-                  zIndex: 1000,
-                }}
+                className="uds-more-dropdown-menu"
               >
-                <ul
-                  style={{
-                    listStyle: "none",
-                    margin: 0,
-                    padding: 0,
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.5rem",
-                  }}
-                >
+                <ul className="uds-more-dropdown-list">
                   {items.map((item) => {
                     const isActive = item.id === activeTabID;
-
                     return (
-                      <li key={item.id}>
+                      <li key={item.id} className="uds-more-dropdown-item">
                         <a
                           href={`#${item.id}`}
                           role="menuitem"
                           tabIndex={0}
-                          onClick={(e) =>
-                            onItemClick(e, item.id, item.title)
-                          }
+                          onClick={(e) => onItemClick(e, item.id, item.title)}
                           onKeyDown={(e) => {
                             if (e.key === "Enter" || e.key === " ") {
                               onItemClick(e, item.id, item.title);
                             }
                           }}
-                          style={{
-                            display: "block",
-                            padding: "0.25rem 0.5rem",
-                            textDecoration: "none",
-                            cursor: "pointer",
-                            color: isActive ? "#8c1d40" : "inherit",
-                            borderBottom: isActive
-                              ? "8px solid #8c1d40"
-                              : "none",
-                          }}
+                          className={
+                            "uds-more-dropdown-link" + (isActive ? " is-active" : "")
+                          }
                           aria-current={isActive ? "true" : undefined}
                         >
                           {item.title}
@@ -182,11 +139,11 @@ import { title } from "process";
             )}
           </div>
         );
-};
+      };
 
 // REVIEW: Should any of these props be marked as .isRequired?
 MoreDropdown.propTypes = {
-  overflowTabs: PropTypes.array,
+  overflowTabs: PropTypes.array.isRequired,
   activeTabID: PropTypes.string,
   selectTab: PropTypes.func,
   gaData: PropTypes.object,
