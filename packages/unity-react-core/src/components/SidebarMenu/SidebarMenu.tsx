@@ -1,16 +1,18 @@
 import React from "react";
 import { GaEventWrapper } from "../GaEventWrapper/GaEventWrapper";
 
+interface SidebarItemProps {
+  href: string;
+  text: string;
+  isActive?: boolean;
+}
+
 export interface Link {
   href?: string;
   text: string;
   isActive?: boolean;
-  items?: Array<{
-    href: string;
-    text: string;
-    isActive?: boolean;
-  }>;
-};
+  items?: SidebarItemProps[];
+}
 
 const defaultGaProps = {
   name: "onclick",
@@ -23,6 +25,15 @@ export interface SidebarProps {
   title: string;
   links: Link[];
 }
+const SidebarItem: React.FC<SidebarItemProps | Link> = ({
+  href,
+  text,
+  isActive,
+}) => (
+  <a href={href} className={`nav-link${isActive ? " is-active" : ""}`}>
+    {text}
+  </a>
+);
 
 export const SidebarMenu: React.FC<SidebarProps> = ({ title, links }) => {
   return (
@@ -47,8 +58,9 @@ export const SidebarMenu: React.FC<SidebarProps> = ({ title, links }) => {
         {links.map((link, index) => {
           if (link.items) {
             // Render dropdown card
+            const isExpanded = link.items.some(({ isActive }) => isActive);
             return (
-              <div key={index} className="card card-foldable">
+              <div key={link.text} className="card card-foldable">
                 <div className="card-header">
                   <GaEventWrapper
                     gaData={{ ...defaultGaProps, section: title }}
@@ -59,7 +71,7 @@ export const SidebarMenu: React.FC<SidebarProps> = ({ title, links }) => {
                       href={`#cardBody${index}`}
                       data-bs-toggle="collapse"
                       data-bs-target={`#cardBody${index}`}
-                      aria-expanded="false"
+                      aria-expanded={isExpanded}
                       aria-controls={`cardBody${index}`}
                     >
                       {link.text}
@@ -69,18 +81,12 @@ export const SidebarMenu: React.FC<SidebarProps> = ({ title, links }) => {
                 </div>
                 <div
                   id={`cardBody${index}`}
-                  className="collapse card-body"
+                  className={`collapse card-body ${isExpanded ? " show" : ""}`}
                   aria-labelledby={`card${index}`}
                   data-bs-parent=".sidebar"
                 >
                   {link.items.map(item => (
-                    <a
-                      key={link.href}
-                      href={item.href}
-                      className={`nav-link${item.isActive ? " is-active" : ""}`}
-                    >
-                      {item.text}
-                    </a>
+                    <SidebarItem key={`${item.text}${item.href}`} {...item} />
                   ))}
                 </div>
               </div>
@@ -88,7 +94,10 @@ export const SidebarMenu: React.FC<SidebarProps> = ({ title, links }) => {
           } else {
             // Render regular link
             return (
-              <div key={index} className="nav-link-container">
+              <div
+                key={`${link.text}${link.href}`}
+                className="nav-link-container"
+              >
                 <a
                   className={`nav-link${link.isActive ? " is-active" : ""}`}
                   href={link.href}

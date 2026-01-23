@@ -20,6 +20,7 @@ const defaultProps = {
         {
           href: "https://example.com",
           text: "Link 2.1",
+          isActive: false,
         },
         {
           href: "https://example.com",
@@ -56,18 +57,33 @@ const defaultProps = {
           text: "Link 5.2",
         },
       ],
-    }
-  ]
-}
+    },
+  ],
+};
 
-const sidebarMenuTemplate = args => <div className="row">
-<SidebarMenu {...args} />
-</div>;
+const sidebarMenuTemplate = args => (
+  <div className="row">
+    <SidebarMenu {...args} />
+  </div>
+);
 
 export const Overview = {
   render: sidebarMenuTemplate.bind({}),
   name: "Sidebar",
   args: {
     ...defaultProps,
-  }
+  },
+};
+
+const defaultProps2 = JSON.parse(JSON.stringify(defaultProps));
+defaultProps2.links[0].text = "Link 1";
+defaultProps2.links[0].isActive = false;
+defaultProps2.links[1].items[0].isActive = true;
+defaultProps2.links[1].items[0].text = "Active Link";
+
+export const WithNestedActivePage = {
+  render: sidebarMenuTemplate.bind({}),
+  args: {
+    ...defaultProps2,
+  },
 };
