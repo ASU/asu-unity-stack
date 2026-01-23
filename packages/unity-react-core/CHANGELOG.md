@@ -1,3 +1,11 @@
+# [@asu/unity-react-core-v1.4.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.4.2...@asu/unity-react-core-v1.4.3) (2026-01-23)
+
+
+### Bug Fixes
+
+* **unity-react-core:** sidebar menu should auto-expand if it contains an active page item ([b020a55](https://github.com/ASU/asu-unity-stack/commit/b020a5519a03e6a1c33141f8edfe00c6b11f652b))
+* **unity-react-core:** sidebar menu should auto-expand if it contains an active page item ([7473425](https://github.com/ASU/asu-unity-stack/commit/74734251d2a08cc6cce14457278667c1a18f515b))
+
 # [@asu/unity-react-core-v1.4.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.4.1...@asu/unity-react-core-v1.4.2) (2026-01-16)
 
 
