@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.33.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.32.1...@asu/unity-bootstrap-theme-v1.33.0) (2026-01-27)
+
+
+### Features
+
+* **unity-bootstrap-theme:** apply dark maroon to visited links ([bdcf8c9](https://github.com/ASU/asu-unity-stack/commit/bdcf8c9c35eca3140dfb0a1109b4683d7b66dec0)), closes [#440e22](https://github.com/ASU/asu-unity-stack/issues/440e22)
+
 # [@asu/unity-bootstrap-theme-v1.32.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.32.0...@asu/unity-bootstrap-theme-v1.32.1) (2026-01-27)
 
 
