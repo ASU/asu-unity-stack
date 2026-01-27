@@ -1,3 +1,12 @@
+# [@asu/app-webdir-ui-v5.0.9](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.8...@asu/app-webdir-ui-v5.0.9) (2026-01-27)
+
+
+### Bug Fixes
+
+* app-webdir-ui ([1abc96c](https://github.com/asu/asu-unity-stack/commit/1abc96cb29ae5ba9a7c33c1a9021f91cd093ebaf))
+* **app-webdir-ui:** replace catalog URL ([bfaa58f](https://github.com/asu/asu-unity-stack/commit/bfaa58fb88cc8410ad83a0dfe74d946c71eebf75))
+* **app-webdir-ui:** update catalog URL to new domain ([2591fa6](https://github.com/asu/asu-unity-stack/commit/2591fa68407f88f3f7e4c37a3610e79c54a12f28))
+
 # [@asu/app-webdir-ui-v5.0.8](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.7...@asu/app-webdir-ui-v5.0.8) (2026-01-05)
 
 
