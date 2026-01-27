@@ -9,6 +9,11 @@
   }
 }
 
+// Global link visited state
+a:visited:not(.btn):not(.nav-link):not(.page-link):not(.card-link) {
+  color: $uds-color-base-darkmaroon;
+}
+
 // Separate Secondary Nav link that matches nav link used in global footer
 // Will be used in future efforts to make link more reusable.
 .secondary-nav-link {
