@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.32.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.32.0...@asu/unity-bootstrap-theme-v1.32.1) (2026-01-27)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** update anchor menu logic and add docs ([af07de9](https://github.com/ASU/asu-unity-stack/commit/af07de9628343e4ec1528b8728b8cbfafa4192bc))
+
 # [@asu/unity-bootstrap-theme-v1.32.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.31.0...@asu/unity-bootstrap-theme-v1.32.0) (2026-01-15)
 
 
