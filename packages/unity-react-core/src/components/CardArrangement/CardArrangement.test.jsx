@@ -41,23 +41,29 @@ describe("CardArrangement", () => {
     expect(cardItems).toHaveLength(3);
   });
 
-    it("should apply correct column classes based on columns prop", () => {
+  it("should apply correct column classes based on columns prop", () => {
     const { getAllByTestId: get2Cols, unmount: unmount2 } = render(
       <CardArrangement cards={mockCards} columns={2} />
     );
-    expect(get2Cols("uds-card-arrangement-content-container")[0].className).toContain("col-12 col-md-6");
+    expect(
+      get2Cols("uds-card-arrangement-content-container")[0].className
+    ).toContain("col-12 col-md-6");
     unmount2();
 
     const { getAllByTestId: get3Cols, unmount: unmount3 } = render(
       <CardArrangement cards={mockCards} columns={3} />
     );
-    expect(get3Cols("uds-card-arrangement-content-container")[0].className).toContain("col-12 col-md-6 col-lg-4");
+    expect(
+      get3Cols("uds-card-arrangement-content-container")[0].className
+    ).toContain("col-12 col-md-6 col-lg-4");
     unmount3();
 
     const { getAllByTestId: get4Cols, unmount: unmount4 } = render(
       <CardArrangement cards={mockCards} columns={4} />
     );
-    expect(get4Cols("uds-card-arrangement-content-container")[0].className).toContain("col-12 col-md-6 col-lg-4 col-xl-3");
+    expect(
+      get4Cols("uds-card-arrangement-content-container")[0].className
+    ).toContain("col-12 col-md-6 col-lg-4 col-xl-3");
     unmount4();
 
     const horizontalCards = [
@@ -77,7 +83,9 @@ describe("CardArrangement", () => {
     const { getAllByTestId: getHorizontal } = render(
       <CardArrangement cards={horizontalCards} columns={3} />
     );
-    expect(getHorizontal("uds-card-arrangement-content-container")[0].className).toContain("col-12 col-md-6");
+    expect(
+      getHorizontal("uds-card-arrangement-content-container")[0].className
+    ).toContain("col-12 col-md-6");
   });
 
   it("should render cards with correct titles", () => {
@@ -140,21 +148,22 @@ describe("CardArrangement", () => {
   });
 
   it("should pass through card props correctly", () => {
-    const cardsWithButtons = /** @type {import('./CardArrangement').CardArrangementProps['cards']} */ ([
-      {
-        type: "default",
-        title: "Card with Button",
-        body: "Body content",
-        buttons: [
-          {
-            color: /** @type {"maroon"} */ ("maroon"),
-            size: /** @type {"default"} */ ("default"),
-            label: "Click me",
-            href: "#",
-          },
-        ],
-      },
-    ]);
+    const cardsWithButtons =
+      /** @type {import('./CardArrangement').CardArrangementProps['cards']} */ ([
+        {
+          type: "default",
+          title: "Card with Button",
+          body: "Body content",
+          buttons: [
+            {
+              color: /** @type {"maroon"} */ ("maroon"),
+              size: /** @type {"default"} */ ("default"),
+              label: "Click me",
+              href: "#",
+            },
+          ],
+        },
+      ]);
 
     const { getByTestId } = render(
       <CardArrangement cards={cardsWithButtons} />
@@ -220,7 +229,7 @@ describe("CardArrangement", () => {
     cardItems.forEach(cardItem => {
       const directChild = cardItem.firstElementChild;
       expect(directChild).toBeDefined();
-      expect(directChild.className).toContain('card-ranking');
+      expect(directChild.className).toContain("card-ranking");
     });
   });
 
