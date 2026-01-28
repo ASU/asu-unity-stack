@@ -5,9 +5,16 @@ import { CardArrangement } from "./CardArrangement";
 
 const img1 = imageAny();
 
+
 export default {
   title: "Components/Card Arrangement",
   component: CardArrangement,
+  argTypes: {
+    cards: {
+      description:
+        'Array of card objects to render. Each object should contain props for the Card, Image or RankingCard component. Cards will wrap naturally based on their intrinsic min/max widths. When using the Card component, cards can supply a type of "default", "degree", "event" or "story"',
+    },
+  },
   parameters: {
     docs: {
       description: {
@@ -15,8 +22,7 @@ export default {
 
 ## Usage
 
-The component accepts an array of card objects and automatically arranges them with flexbox wrapping.
-Cards will flow and wrap based on their min/max width constraints and the available space in the parent container.
+CardArrangement component receives Array of card objects to render. Each object should contain props for the Card, Image or RankingCard component. Cards will wrap naturally based on their intrinsic min/max widths. When using the Card component, cards can supply a type of "default", "degree", "event" or "story"
 
 The parent container determines the overall width - this component simply handles laying out the cards
 with appropriate spacing and letting them wrap naturally.
@@ -183,6 +189,36 @@ const degreeCards = [
     imageAltText: "Degree program 4",
     title: "Psychology, BA",
     body: "Understand human behavior and mental processes through scientific inquiry.",
+  },
+];
+
+const imageCards = [
+  {
+    type: "image",
+    src: img1,
+    alt: "Image card 1",
+    captionTitle: "Image Card One",
+    caption: "This is the body content for the first image card with dropshadow and with cardLink prop provided. Card acts as anchor/link",
+    border: true,
+    dropShadow: true,
+    cardLink: "https://example.com",
+    title: "example"
+  },
+  {
+    type: "image",
+    src: img1,
+    alt: "Image card 2",
+    captionTitle: "Image Card Two",
+    caption: "This is the body content for the second image card with no border",
+  },
+  {
+    type: "image",
+    src: img1,
+    alt: "Image card 3",
+    captionTitle: "Image Card Three",
+    caption: "This is the body content for the third image card with no drop shadow.",
+    border: true,
+    dropShadow: false,
   },
 ];
 
@@ -572,6 +608,30 @@ Example with small ranking cards that include citations and compact layout.
 <CardArrangement
   cards={rankingCardsSmall}
   cardType="ranking"
+/>
+\`\`\`
+      `,
+    },
+  },
+};
+
+export const ImageCards = Template.bind({});
+ImageCards.args = {
+  cards: imageCards,
+  cardType: "image",
+  columns: 3,
+};
+ImageCards.storyName = "Image cards";
+ImageCards.parameters = {
+  docs: {
+    description: {
+      story: `
+Example with image cards that display a visual representation along with heading and body text.
+
+\`\`\`jsx
+<CardArrangement
+  cards={imageCards}
+  cardType="image"
 />
 \`\`\`
       `,

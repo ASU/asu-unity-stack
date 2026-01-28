@@ -74,8 +74,9 @@ export const CardArrangement = ({ cards, cardType = "card", columns }) => {
 
 CardArrangement.propTypes = {
   /**
-   * Array of card objects to render. Each object should contain props for the Card or RankingCard component.
-   * Cards will wrap naturally based on their intrinsic min/max widths.
+   * Array of card objects to render. Each object should contain props for the
+   * Card or RankingCard component. Cards will wrap naturally based on their
+   * intrinsic min/max widths.
    */
   cards: PropTypes.arrayOf(PropTypes.object).isRequired,
   /**
