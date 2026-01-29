@@ -37,18 +37,18 @@ describe("#Search Component", () => {
     expect(component).toBeDefined();
   });
 
-  // it("should open and close the universal search field", async () => {
-  //   const searchButton = await component.findByTestId("search-button");
-  //   fireEvent.click(searchButton);
+  it("should open and close the universal search field", async () => {
+    const searchButton = await component.findByTestId("search-button");
+    fireEvent.click(searchButton);
 
-  //   const searchField = await component.findByPlaceholderText("Search asu.edu");
-  //   expect(searchField).toBeVisible();
+    const searchField = await component.findByPlaceholderText("Search asu.edu");
+    expect(searchField).toBeVisible();
 
-  //   const closeButton = await component.findByTestId("close-search");
-  //   fireEvent.click(closeButton);
+    // Simulate blur to close the search field when empty
+    fireEvent.blur(searchField);
 
-  //   const searchFieldAfterClose =
-  //     component.queryByPlaceholderText("Search asu.edu");
-  //   expect(searchFieldAfterClose).not.toBeInTheDocument();
-  // });
+    const searchFieldAfterClose =
+      component.queryByPlaceholderText("Search asu.edu");
+    expect(searchFieldAfterClose).not.toBeInTheDocument();
+  });
 });

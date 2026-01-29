@@ -1,5 +1,4 @@
 // @ts-check
-import { trackGAEvent } from "@asu/shared";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
@@ -11,7 +10,6 @@ import PropTypes from "prop-types";
  * @param {React.MutableRefObject<HTMLInputElement | null>} props.inputRef
  * @param {boolean} props.hasInputValue
  * @param {function} props.setHasInputValue
- * @param {Object} props.SEARCH_GA_EVENT
  * @param {boolean} props.isMobile
  * @param {React.CSSProperties} [props.style] - Additional inline styles
  * @param {string} [props.className] - Additional CSS classes
@@ -21,7 +19,6 @@ const SearchInput = ({
   inputRef,
   hasInputValue,
   setHasInputValue,
-  SEARCH_GA_EVENT,
   isMobile,
   style = {},
   className = "",
@@ -33,10 +30,6 @@ const SearchInput = ({
   const handleInputChange = (e) => {
     const value = e.target.value;
     setHasInputValue(value.length > 0);
-    trackGAEvent({
-      ...SEARCH_GA_EVENT,
-      text: value,
-    });
   };
 
   const baseInputProps = {
@@ -82,7 +75,6 @@ SearchInput.propTypes = {
   }).isRequired,
   hasInputValue: PropTypes.bool.isRequired,
   setHasInputValue: PropTypes.func.isRequired,
-  SEARCH_GA_EVENT: PropTypes.object.isRequired,
   isMobile: PropTypes.bool.isRequired,
   style: PropTypes.object,
   className: PropTypes.string,

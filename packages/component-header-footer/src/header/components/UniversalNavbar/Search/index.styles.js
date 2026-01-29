@@ -16,6 +16,9 @@ const SearchWrapper = styled.form`
   }
   .search-button {
     transition: cubic-bezier(0.19, 1, 0.19, 1);
+    span {
+      margin-right: 0.25rem;
+    }
   }
   input[name="q"] {
     width: 200px;

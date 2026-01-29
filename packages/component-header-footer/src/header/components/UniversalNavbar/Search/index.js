@@ -51,7 +51,6 @@ const Search = () => {
      *
      * TODO: UDS-1612
      */
-    /** @type {HTMLInputElement | null} */
     const searchInput = /** @type {HTMLInputElement} */ (form.elements.namedItem('q'));
     trackGAEvent({
       ...SEARCH_GA_EVENT,
@@ -100,9 +99,6 @@ const Search = () => {
             data-testid="search-button"
           >
             <span
-            style={{
-              marginRight: "0.25rem",
-            }}
             >Search</span>
             <FontAwesomeIcon icon={faSearch} />
           </button>
@@ -113,8 +109,7 @@ const Search = () => {
                 inputRef={inputRef}
                 hasInputValue={hasInputValue}
                 setHasInputValue={setHasInputValue}
-                SEARCH_GA_EVENT={SEARCH_GA_EVENT}
-                isMobile={false}
+                isMobile={isMobile}
                 onBlur={() => {
                   if (!hasInputValue) setOpen(false);
                 }}
@@ -134,8 +129,7 @@ const Search = () => {
             inputRef={inputRef}
             hasInputValue={hasInputValue}
             setHasInputValue={setHasInputValue}
-            SEARCH_GA_EVENT={SEARCH_GA_EVENT}
-            isMobile={true}
+            isMobile={isMobile}
           />
         </label>
       )}

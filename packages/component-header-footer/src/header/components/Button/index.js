@@ -9,11 +9,6 @@ import { ButtonWrapper } from "./index.styles";
  */
 
 /**
- * @param {ButtonProps} props
- * @returns {JSX.Element}
- */
-
-/**
  * A reusable button component that renders a ButtonWrapper with customizable properties.
  *
  * @param {Object} props - The component props

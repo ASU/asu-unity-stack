@@ -17,7 +17,7 @@ export const ASU_GRAY2 = "#484848";
 export const ASU_GRAY3 = "#747474";
 export const ASU_GRAY4 = "#BFBFBF";
 export const ASU_GRAY5 = "#d0d0d0";
-export const GASU_GRAY6 = "#e8e8e8";
+export const ASU_GRAY6 = "#e8e8e8";
 export const GRAY_BUTTON_DISABLED = "#bfbfbf";
 
 // Bootstrap/Framework Colors
@@ -28,7 +28,7 @@ export const TEXT_PRIMARY = ASU_GRAY1;
 export const TEXT_SECONDARY = ASU_GRAY2;
 export const TEXT_MUTED = BOOTSTRAP_TEXT_MUTED;
 export const BACKGROUND_PRIMARY = ASU_WHITE;
-export const BACKGROUND_SECONDARY = GASU_GRAY6;
+export const BACKGROUND_SECONDARY = ASU_GRAY6;
 export const BORDER_PRIMARY = ASU_GRAY5;
 export const BORDER_SECONDARY = ASU_GRAY4;
 export const BORDER_DARK = ASU_GRAY3;

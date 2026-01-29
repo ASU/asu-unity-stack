@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { GASU_GRAY6, ASU_GRAY1, ASU_GRAY5 } from "../../colors";
+import { ASU_GRAY6, ASU_GRAY1, ASU_GRAY5 } from "../../colors";
 
 const Wrapper = styled.div`
-  background-color: ${GASU_GRAY6};
+  background-color: ${ASU_GRAY6};
   min-height: 24px;
   transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
   .header-top {
