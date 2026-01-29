@@ -2,6 +2,8 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { sanitizeDangerousMarkup } from "@asu/shared";
+import { GaEventWrapper } from "../GaEventWrapper/GaEventWrapper";
+
 
 /**
  * @typedef {Object} ContentSpotlightProps
@@ -15,6 +17,14 @@ import { sanitizeDangerousMarkup } from "@asu/shared";
  * @property {string} button.href - Button URL
  * @property {string} button.color - Button color
  */
+
+const gaDefaultObject = {
+  name: "onclick",
+  event: "link",
+  action: "click",
+  type: "internal link",
+  region: "main content",
+};
 
 /**
  * @param {ContentSpotlightProps} props
@@ -76,12 +86,18 @@ export const ContentSpotlight = ({
         )}
 
         {button && (
+          <GaEventWrapper
+          gaData={{...gaDefaultObject, text: button.label, component: "ContentSpotlight"}}
+          >
+
           <a
             href={button.href}
             className={`btn ${button.color ? `btn-${button.color}` : "btn-gold"}`}
+
           >
             {button.label}
           </a>
+          </GaEventWrapper>
         )}
       </div>
     </div>
