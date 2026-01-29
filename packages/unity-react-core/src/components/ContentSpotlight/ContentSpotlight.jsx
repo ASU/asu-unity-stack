@@ -4,7 +4,6 @@ import React from "react";
 import { sanitizeDangerousMarkup } from "@asu/shared";
 import { GaEventWrapper } from "../GaEventWrapper/GaEventWrapper";
 
-
 /**
  * @typedef {Object} ContentSpotlightProps
  * @property {string} backgroundImage - URL of the background image
@@ -87,16 +86,20 @@ export const ContentSpotlight = ({
 
         {button && (
           <GaEventWrapper
-          gaData={{...gaDefaultObject, text: button.label, component: "ContentSpotlight"}}
+            gaData={{
+              ...gaDefaultObject,
+              text: button.label,
+              component: "ContentSpotlight",
+            }}
           >
-
-          <a
-            href={button.href}
-            className={`btn ${button.color ? `btn-${button.color}` : "btn-gold"}`}
-
-          >
-            {button.label}
-          </a>
+            <a
+              href={button.href}
+              className={`btn ${
+                button.color ? `btn-${button.color}` : "btn-gold"
+              }`}
+            >
+              {button.label}
+            </a>
           </GaEventWrapper>
         )}
       </div>
