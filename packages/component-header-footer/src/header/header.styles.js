@@ -4,8 +4,8 @@ import { ASU_WHITE, ASU_GRAY1 } from "./colors";
 const breakpoints = { Lg: "992px", Xl: "1260px" };
 
 const Header = styled.header`
-  font-family: Arial, Helvetica, "Nimbus Sans L", "Liberation Sans", FreeSans,
-    sans-serif;
+  font-family:
+    Arial, Helvetica, "Nimbus Sans L", "Liberation Sans", FreeSans, sans-serif;
   position: fixed;
   top: 0;
   right: 0;
@@ -32,7 +32,9 @@ const Header = styled.header`
     text-decoration: none;
     &:focus {
       outline: none !important;
-      box-shadow: 0px 0px 0px 2px ${ASU_WHITE}, 0px 0px 0px 4px ${ASU_GRAY1} !important;
+      box-shadow:
+        0px 0px 0px 2px ${ASU_WHITE},
+        0px 0px 0px 4px ${ASU_GRAY1} !important;
     }
   }
   @media (min-width: ${({ breakpoint }) => breakpoints[breakpoint]}) {
@@ -74,8 +76,8 @@ const Header = styled.header`
 `;
 
 const HeaderDiv = styled.div`
-  font-family: Arial, Helvetica, "Nimbus Sans L", "Liberation Sans", FreeSans,
-    sans-serif;
+  font-family:
+    Arial, Helvetica, "Nimbus Sans L", "Liberation Sans", FreeSans, sans-serif;
   position: fixed;
   top: 0;
   right: 0;
@@ -102,7 +104,9 @@ const HeaderDiv = styled.div`
     text-decoration: none;
     &:focus {
       outline: none !important;
-      box-shadow: 0px 0px 0px 2px ${ASU_WHITE}, 0px 0px 0px 4px ${ASU_GRAY1} !important;
+      box-shadow:
+        0px 0px 0px 2px ${ASU_WHITE},
+        0px 0px 0px 4px ${ASU_GRAY1} !important;
     }
   }
   @media (min-width: ${({ breakpoint }) => breakpoints[breakpoint]}) {

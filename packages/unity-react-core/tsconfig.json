@@ -10,7 +10,7 @@
     "allowImportingTsExtensions": true,
     "esModuleInterop": true,
     "moduleResolution": "bundler",
-    "rootDir": "src",
+    "rootDirs": ["src", "scripts"],
     "module": "esnext",
     "declaration": true,
     "sourceMap": true,
@@ -31,7 +31,10 @@
     "src/**/*.js",
     "src/**/*.jsx",
     "types/**/*",
-    "src/vite-env.d.ts"
+    "src/vite-env.d.ts",
+    "shared/**/*",
+    "scripts/**/*.ts",
+    "scripts/**/*.tsx"
   ],
   "exclude": [
     "dist",

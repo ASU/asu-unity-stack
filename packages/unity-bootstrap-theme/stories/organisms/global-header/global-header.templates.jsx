@@ -214,7 +214,7 @@ export const Basic = () => (
                             </a>
                             <div
                               className="dropdown-menu dropdown-columns"
-                              aria-labelledby="dropdown-one-col"
+
                             >
                               <div className="dropdown-col">
                                 <a
@@ -560,7 +560,7 @@ export const DropDownMenus = () => (
                             </a>
                             <div
                               className="dropdown-menu dropdown-columns"
-                              aria-labelledby="dropdown-one-col"
+
                             >
                               <div className="dropdown-col">
                                 <a
@@ -627,7 +627,7 @@ export const DropDownMenus = () => (
                             </a>
                             <div
                               className="dropdown-menu dropdown-columns"
-                              aria-labelledby="dropdown-two-col"
+
                             >
                               <div className="dropdown-col">
                                 <h3>Column One</h3>
@@ -748,7 +748,7 @@ export const DropDownMenus = () => (
                             </a>
                             <div
                               className="dropdown-menu"
-                              aria-labelledby="megamenu-three-col"
+
                             >
                               <div className="container">
                                 <div className="row">
@@ -892,7 +892,7 @@ export const DropDownMenus = () => (
                             </a>
                             <div
                               className="dropdown-menu"
-                              aria-labelledby="megamenu-four-col"
+
                             >
                               <div className="container">
                                 <div className="row">
@@ -1131,7 +1131,7 @@ export const DropDownMenus = () => (
                             </a>
                             <div
                               className="dropdown-menu"
-                              aria-labelledby="megamenu-five-col"
+
                             >
                               <div className="container">
                                 <div className="row">
@@ -2223,7 +2223,7 @@ export const ScrolledState = () => (
                             </a>
                             <div
                               className="dropdown-menu dropdown-columns"
-                              aria-labelledby="dropdown-one-col"
+
                             >
                               <div className="dropdown-col">
                                 <a
@@ -2274,7 +2274,7 @@ export const ScrolledState = () => (
                             </a>
                             <div
                               className="dropdown-menu dropdown-columns"
-                              aria-labelledby="dropdown-one-col"
+
                             >
                               <div className="dropdown-col">
                                 <a
@@ -2325,7 +2325,7 @@ export const ScrolledState = () => (
                             </a>
                             <div
                               className="dropdown-menu dropdown-columns"
-                              aria-labelledby="dropdown-one-col"
+
                             >
                               <div className="dropdown-col">
                                 <a
@@ -2452,9 +2452,9 @@ export const ScrolledState = () => (
           height: "500px",
         }}
       ></div>
-      <div className="bg-gray-6" style={{ height: "70vh" }}></div>
-      <div className="bg-gray-5" style={{ height: "70vh" }}></div>
-      <div className="bg-gray-4" style={{ height: "70vh" }}></div>
+      <div className="gray-light-bg" style={{ height: "70vh" }}></div>
+      <div className="gray-faint-bg" style={{ height: "70vh" }}></div>
+      <div className="gray-light-bg" style={{ height: "70vh" }}></div>
     </main>
   </>
 );
@@ -2691,7 +2691,7 @@ export const Partner = () => (
                           </a>
                           <div
                             className="dropdown-menu dropdown-columns"
-                            aria-labelledby="dropdown-one-col"
+
                           >
                             <div className="dropdown-col">
                               <a

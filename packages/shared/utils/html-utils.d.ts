@@ -9,4 +9,4 @@ export type FocusableElement = {
  * @param {string} targetSelector
  * @returns {FocusableElement}
  */
-export function queryFirstFocusable(targetSelector: string): FocusableElement;
+export function queryFirstFocusable(targetSelector: string): FocusableElement | null;

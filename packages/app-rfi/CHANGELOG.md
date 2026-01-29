@@ -1,3 +1,40 @@
+# [@asu/app-rfi-v3.6.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.6.3...@asu/app-rfi-v3.6.4) (2026-01-22)
+
+
+### Bug Fixes
+
+* **app-rfi:** set default props correctly ([e271a62](https://github.com/asu/asu-unity-stack/commit/e271a62f22d818eed1f69b3ed99dcb62469f7f22))
+
+# [@asu/app-rfi-v3.6.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.6.2...@asu/app-rfi-v3.6.3) (2026-01-15)
+
+
+### Bug Fixes
+
+* **app-rfi:** add role attribute to radio group ([13b4300](https://github.com/asu/asu-unity-stack/commit/13b430095850fb8c170fe806824d40e766390c36))
+
+# [@asu/app-rfi-v3.6.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.6.1...@asu/app-rfi-v3.6.2) (2025-12-30)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** refactor defaultProps to use JS default params ([d6ac389](https://github.com/asu/asu-unity-stack/commit/d6ac389ab932f0def44c84b33c5bd5fcf7fb2b4d))
+* **component-footer:** changes suggested by copilot ([3a6c1af](https://github.com/asu/asu-unity-stack/commit/3a6c1af48ee5654c110420f28a082feaeb66a9ca))
+
+# [@asu/app-rfi-v3.6.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.6.0...@asu/app-rfi-v3.6.1) (2025-11-19)
+
+
+### Bug Fixes
+
+* **app-rfi:** fix typo in fetch url ([5ae2567](https://github.com/asu/asu-unity-stack/commit/5ae2567a66b47be719cf581b04751ef78c32e52f))
+
+# [@asu/app-rfi-v3.6.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.5.0...@asu/app-rfi-v3.6.0) (2025-10-14)
+
+
+### Features
+
+* **app-rfi:** add legend to fieldset for accessible form group labeling ([56f6a92](https://github.com/asu/asu-unity-stack/commit/56f6a92e90e3c61c87a862bae7b60afa1e3b13b8))
+* **app-rfi:** only include space if icon present ([59cd66c](https://github.com/asu/asu-unity-stack/commit/59cd66cb9418f820d523cd37c1111e0f22668407))
+
 # [@asu/app-rfi-v3.5.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.4.0...@asu/app-rfi-v3.5.0) (2025-09-22)
 
 

@@ -2,6 +2,9 @@ import React from "react";
 
 import { QuickLinksTemplate } from "./index.styles";
 
+/**
+ * QuickLinks component displays a list of commonly accessed ASU resources
+ */
 const QuickLinks = () => {
   const collagesAndSchoolsMessage = "ASU's colleges and schools";
   return (
@@ -17,7 +20,7 @@ const QuickLinks = () => {
         {collagesAndSchoolsMessage}
       </a>
       <a href="https://degrees.asu.edu/">Search majors and degree programs</a>
-      <a href="https://webapp4.asu.edu/catalog/classlist">ASU class search</a>
+      <a href="https://catalog.apps.asu.edu">ASU class search</a>
       <a href="https://search.lib.asu.edu/discovery/search?vid=01ASU_INST:01ASU">
         ASU Library One search
       </a>
@@ -29,3 +32,4 @@ const QuickLinks = () => {
 };
 
 export { QuickLinks };
+

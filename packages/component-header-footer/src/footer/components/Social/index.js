@@ -28,7 +28,13 @@ const DEFAULT_GA_EVENT = {
  * @returns {JSX.Element}
  */
 
-const Social = ({ social: { logoUrl, unitLogo, mediaLinks } }) => {
+const Social = ({ social: { logoUrl, unitLogo = endorsedLogo, mediaLinks = {
+  facebook: "",
+  twitter: "",
+  linkedIn: "",
+  instagram: "",
+  youtube: "",
+} } }) => {
   return (
     <div className="wrapper" id="wrapper-endorsed-footer" data-testid="social">
       <div className="container" id="endorsed-footer">
@@ -160,7 +166,7 @@ const Social = ({ social: { logoUrl, unitLogo, mediaLinks } }) => {
 
 Social.propTypes = {
   social: shape({
-    unitLogo: PropTypes.string.isRequired,
+    unitLogo: PropTypes.string,
     mediaLinks: shape({
       facebook: PropTypes.string,
       twitter: PropTypes.string,
@@ -169,19 +175,6 @@ Social.propTypes = {
       youtube: PropTypes.string,
     }),
   }),
-};
-
-Social.defaultProps = {
-  social: {
-    unitLogo: endorsedLogo,
-    mediaLinks: {
-      facebook: "",
-      twitter: "",
-      linkedIn: "",
-      instagram: "",
-      youtube: "",
-    },
-  },
 };
 
 export { Social };

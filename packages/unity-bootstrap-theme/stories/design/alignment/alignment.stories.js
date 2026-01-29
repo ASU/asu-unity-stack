@@ -14,7 +14,7 @@ export const TemporaryStory = () => (
       </div>
     </Column>
     <Column col="0">
-      <div className="bg-gray-2" style={{ height: "300px" }}>
+      <div className="gray-light-bg" style={{ height: "300px" }}>
         &nbsp;
       </div>
     </Column>
@@ -24,7 +24,7 @@ export const TemporaryStory = () => (
       </div>
     </Column>
     <Column col="0">
-      <div className="bg-gray-2" style={{ height: "300px" }}>
+      <div className="gray-light-bg" style={{ height: "300px" }}>
         &nbsp;
       </div>
     </Column>

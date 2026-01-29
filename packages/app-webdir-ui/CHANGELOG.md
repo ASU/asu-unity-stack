@@ -1,3 +1,33 @@
+# [@asu/app-webdir-ui-v5.0.9](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.8...@asu/app-webdir-ui-v5.0.9) (2026-01-27)
+
+
+### Bug Fixes
+
+* app-webdir-ui ([1abc96c](https://github.com/asu/asu-unity-stack/commit/1abc96cb29ae5ba9a7c33c1a9021f91cd093ebaf))
+* **app-webdir-ui:** replace catalog URL ([bfaa58f](https://github.com/asu/asu-unity-stack/commit/bfaa58fb88cc8410ad83a0dfe74d946c71eebf75))
+* **app-webdir-ui:** update catalog URL to new domain ([2591fa6](https://github.com/asu/asu-unity-stack/commit/2591fa68407f88f3f7e4c37a3610e79c54a12f28))
+
+# [@asu/app-webdir-ui-v5.0.8](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.7...@asu/app-webdir-ui-v5.0.8) (2026-01-05)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** adding siteImprove to webdir-ui ([d55307b](https://github.com/asu/asu-unity-stack/commit/d55307bb88138a7a8911682cf02aeebadd19b719))
+
+# [@asu/app-webdir-ui-v5.0.7](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.6...@asu/app-webdir-ui-v5.0.7) (2025-11-19)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** fix short bio not appearing in web directory ([78bd800](https://github.com/asu/asu-unity-stack/commit/78bd800d1932dc73e78d1f59cfb420485a78d299))
+
+# [@asu/app-webdir-ui-v5.0.6](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.5...@asu/app-webdir-ui-v5.0.6) (2025-10-14)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** sanitize useId to generate accessible form field IDs ([4c30f84](https://github.com/asu/asu-unity-stack/commit/4c30f84a1144a1731d29cc0d5b1a0159f4676186))
+
 # [@asu/app-webdir-ui-v5.0.5](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.4...@asu/app-webdir-ui-v5.0.5) (2025-09-18)
 
 

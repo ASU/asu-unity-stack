@@ -26,8 +26,30 @@ const currentScriptPath = getCurrentScriptPath();
  * @param {import("../../core/types/rfi-types").RFIProps} props
  * @return {JSX.Element}
  */
-const AsuRfi = props => {
-  const {
+const AsuRfi = ({
+  appPathFolder = "",
+  variant,
+  campus,
+  actualCampus,
+  college,
+  department,
+  studentType,
+  areaOfInterest,
+  areaOfInterestOptional = false,
+  programOfInterest,
+  programOfInterestOptional = false,
+  isCertMinor = false,
+  country,
+  stateProvince,
+  successMsg,
+  test = false,
+  dataSourceDegreeSearch = DATA_SOURCE.DEGREE_SEARCH,
+  dataSourceAsuOnline = DATA_SOURCE.ASU_ONLINE,
+  dataSourceCountriesStates = DATA_SOURCE.COUNTRIES_STATES,
+  submissionUrl,
+  ...restProps
+}) => {
+  const props = {
     appPathFolder,
     variant,
     campus,
@@ -48,7 +70,8 @@ const AsuRfi = props => {
     dataSourceAsuOnline,
     dataSourceCountriesStates,
     submissionUrl,
-  } = props;
+    ...restProps,
+  };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -133,28 +156,6 @@ const AsuRfi = props => {
 };
 
 export { AsuRfi };
-
-// Props
-AsuRfi.defaultProps = {
-  variant: undefined, // default set in appState
-  campus: undefined,
-  actualCampus: undefined,
-  college: undefined,
-  department: undefined,
-  studentType: undefined,
-  areaOfInterest: undefined,
-  areaOfInterestOptional: false,
-  programOfInterest: undefined,
-  programOfInterestOptional: false,
-  isCertMinor: false,
-  country: undefined,
-  stateProvince: undefined,
-  successMsg: undefined,
-  test: false,
-  dataSourceDegreeSearch: DATA_SOURCE.DEGREE_SEARCH,
-  dataSourceAsuOnline: DATA_SOURCE.ASU_ONLINE,
-  dataSourceCountriesStates: DATA_SOURCE.COUNTRIES_STATES,
-};
 
 AsuRfi.propTypes = {
   appPathFolder: PropTypes.string,

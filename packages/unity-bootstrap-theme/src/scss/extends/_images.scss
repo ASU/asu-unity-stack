@@ -5,7 +5,7 @@
   margin-bottom: $uds-size-spacing-0;
   max-width: 900px;
   img, &:is(img) {
-    border: 1px solid $uds-color-base-gray-3;
+    border: 1px solid $asu-gray-5;
     width: 100%;
   }
 
@@ -38,21 +38,21 @@
     }
 
     .uds-figure-caption {
-      border: 1px solid $uds-color-base-gray-3;
+      border: 1px solid $asu-gray-5;
       border-top: none;
       opacity: 1;
       background: $uds-color-background-white 0% 0% no-repeat padding-box;
       padding: 2rem;
       font-size: $uds-size-font-medium;
       h3, .h3 {
-        color: $uds-color-base-gray-7;
+        color: $asu-gray-1;
         margin: 0 0 1rem 0;
       }
     }
     .uds-caption-text {
       display: block;
       max-width: 700px;
-      color: $uds-color-base-gray-7;
+      color: $asu-gray-1;
     }
   }
 

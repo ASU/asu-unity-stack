@@ -383,6 +383,13 @@ const StyledFooter = styled.footer`
           padding-right: 16px;
         }
       }
+      @media (max-width: 576px) {
+        .img-link {
+          img {
+            max-width: 100%;
+          }
+        }
+      }
     }
   }
 

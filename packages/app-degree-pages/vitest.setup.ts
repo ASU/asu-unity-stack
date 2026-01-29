@@ -4,6 +4,8 @@ import { afterEach } from 'vitest'
 
 import "./__mocks__/fetch-mock";
 import "./__mocks__/window-mock";
+import "./__mocks__/unity-react-core-mock";
+
 afterEach(() => {
   cleanup()
 });

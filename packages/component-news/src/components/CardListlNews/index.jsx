@@ -4,15 +4,17 @@ import React, { useContext, useEffect } from "react";
 
 import { trackReactComponent } from "@asu/shared";
 import { BaseFeed } from "../../core/components/BaseFeed";
-import { defaultProps } from "../../core/constants/default-props";
+import { defaultProps as coreDefaultProps } from "../../core/constants/default-props";
 import { parseInterests } from "../../core/utils";
 import { NewsWrapper } from "./index.styles";
+import PropTypes from "prop-types";
 
 /**
  * @param {object} feed
  * @param {import("../../core/types/news-types").CardButton} cardButton
+ * @param {boolean} hideTags
  */
-const listRow = (feed, cardButton) => (
+const listRow = (feed, cardButton, hideTags) => (
   <div className="card card-hover cards-items-container" key={feed.id}>
     <Card
       type="story"
@@ -35,7 +37,7 @@ const listRow = (feed, cardButton) => (
           href: feed.buttonLink,
         },
       ]}
-      tags={parseInterests(feed?.interests)}
+      tags={hideTags ? [] : parseInterests(feed?.interests)}
     />
   </div>
 );
@@ -44,13 +46,16 @@ const listRow = (feed, cardButton) => (
  * @param {import("../../core/types/news-types").TemplateProps} props
  */
 
-const ListTemplate = ({ cardButton }) => {
+const ListTemplate = ({ cardButton, hideTags }) => {
   const { feeds } = useContext(FeedContext); // Reading the "feeds" object from the context
+  const shouldHideTags = hideTags === true || hideTags === "true";
 
   return (
     <NewsWrapper className="row-spaced" data-testid="list-view-container">
       {feeds?.map((feed, index) => (
-        <React.Fragment key={index}>{listRow(feed, cardButton)}</React.Fragment>
+        <React.Fragment key={index}>
+          {listRow(feed, cardButton, shouldHideTags)}
+        </React.Fragment>
       ))}
     </NewsWrapper>
   );
@@ -64,7 +69,7 @@ const ListTemplate = ({ cardButton }) => {
 /**
  * @param {FeedType} props
  */
-const CardListlNews = ({ cardButton, ...props }) => {
+const CardListlNews = ({ cardButton, hideTags = true, ...props }) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       trackReactComponent({
@@ -83,12 +88,17 @@ const CardListlNews = ({ cardButton, ...props }) => {
     // Calling the high order component that fetch the data
     <BaseFeed {...props}>
       <ListTemplate
-        cardButton={{ ...defaultProps.cardButton, ...cardButton }}
+        cardButton={{ ...coreDefaultProps.cardButton, ...cardButton }}
+        hideTags={hideTags}
       />
     </BaseFeed>
   );
 };
 
-CardListlNews.propTypes = { ...BaseFeed.propTypes, feedCardButtonShape };
+CardListlNews.propTypes = {
+  ...BaseFeed.propTypes,
+  feedCardButtonShape,
+  hideTags: PropTypes.oneOf(["true", "false", true, false]),
+};
 
 export { CardListlNews };

@@ -1,36 +1,32 @@
 // ASU Brand Standard Colors
 // Reference: https://hub.asu.edu/brand-hq/brand-standards/color-palette
-
 $white: $uds-color-base-white;
-$gray-1: $uds-color-base-gray-1;
-$gray-2: $uds-color-base-gray-2;
-$gray-3: $uds-color-base-gray-3;
-$gray-4: $uds-color-base-gray-4;
-$gray-5: $uds-color-base-gray-5;
-$gray-6: $uds-color-base-gray-6;
-$gray-7: $uds-color-base-gray-7;
 
-$body-color: $uds-color-base-gray-7;
+$body-color: $asu-gray-1;
 
 $grays: ();
 
 $grays: map-merge(
   (
-    '1': $gray-1,
-    '2': $gray-2,
-    '3': $gray-3,
-    '4': $gray-4,
-    '5': $gray-5,
-    '6': $gray-6,
-    '7': $gray-7,
+    // Deprecated-start - 1-7 are incorrectly numbered from lightest to darkest
+    // This $grays map creates css variables, so we need to keep these for backwards compatibility
+    '1': $asu-gray-7,
+    '2': $asu-gray-6,
+    '3': $asu-gray-5,
+    '4': $asu-gray-4,
+    '5': $asu-gray-3,
+    '6': $asu-gray-2,
+    '7': $asu-gray-1,
+    // Deprecated-end
   ),
   $grays
 );
 
 $gold: $uds-color-base-gold;
 $maroon: $uds-color-base-maroon;
-$dark: $uds-color-base-gray-7;
-$light: $uds-color-base-gray-2;
+$dark: $asu-gray-1;
+$light: $asu-gray-6;
+$faint: $asu-gray-7;
 $blue: $uds-color-base-blue;
 $green: $uds-color-base-green;
 $orange: $uds-color-base-orange;
@@ -74,15 +70,15 @@ $theme-colors: map-merge(
     'warning': $warning,
     'danger': $danger,
     'light': $light,
-    'gray': $gray-4,
+    'gray': $asu-gray-4,
     'dark': $dark,
-    'gray-1': $gray-1,
-    'gray-2': $gray-2,
-    'gray-3': $gray-3,
-    'gray-4': $gray-4,
-    'gray-5': $gray-5,
-    'gray-6': $gray-6,
-    'gray-7': $gray-7,
+    'gray-1': $asu-gray-7,
+    'gray-2': $asu-gray-6,
+    'gray-3': $asu-gray-5,
+    'gray-4': $asu-gray-4,
+    'gray-5': $asu-gray-3,
+    'gray-6': $asu-gray-2,
+    'gray-7': $asu-gray-1,
   ),
   $theme-colors
 );
@@ -98,6 +94,7 @@ $link-color: $maroon;
 $link-decoration: underline;
 $link-hover-color: $maroon;
 $link-hover-decoration: none;
+$link-visited-color: $uds-color-base-darkmaroon;
 
 :focus {
   outline: 0;
@@ -114,7 +111,7 @@ $card-cap-bg: rgba($white, 0.03);
 
 $nav-tabs-link-color: $dark;
 $nav-tabs-border-width: 1px;
-$nav-tabs-border-color: $gray-3;
+$nav-tabs-border-color: $asu-gray-5;
 $nav-tabs-border-radius: 0;
 $nav-tabs-link-active-color: $maroon;
 $nav-tabs-link-active-border-color: $maroon;

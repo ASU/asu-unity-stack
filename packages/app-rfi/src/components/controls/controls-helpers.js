@@ -15,38 +15,49 @@ const GaEventPropTypes = {
   text: PropTypes.string,
 };
 
-const RfiLabel = ({ label, name, id, requiredIcon }) => (
+const RfiLabel = ({ label, name, id = undefined, requiredIcon = undefined }) => (
   <label htmlFor={id || name}>
-    {requiredIcon ? (
-      <span title="Required">
-        <i className="fas fa-circle uds-field-required" aria-hidden="true" />
-      </span>
-    ) : null}
-    &nbsp;
+    {requiredIcon && (
+      <>
+        <span title="Required">
+          <i className="fas fa-circle uds-field-required" aria-hidden="true" />
+        </span>
+        &nbsp;
+      </>
+    )}
     {label}
   </label>
 );
 
-const RfiError = ({ isError, metaError }) => (
+const RfiLegend = ({ label = undefined, requiredIcon = undefined }) => (
+  <legend className="fw-bold">
+    {requiredIcon && (
+      <>
+        <span title="Required">
+          <i className="fas fa-circle uds-field-required" aria-hidden="true" />
+        </span>
+        &nbsp;
+      </>
+    )}
+    {label}
+  </legend>
+);
+
+const RfiError = ({ isError = undefined, metaError = undefined }) => (
   <div role="alert">
-    {isError ? (
+    {isError && (
       <small className="form-text invalid-feedback">
         <i className="fas fa-exclamation-triangle" aria-hidden="true" />
         &nbsp;
         {metaError}
       </small>
-    ) : null}
+    )}
   </div>
 );
 
 // Note on requiredIcon. Yup required status is not readily available so we
 // duplicate the setting in our props got displaying the required icon until
 // Formik has a better way to do it.
-
-RfiLabel.defaultProps = {
-  id: undefined,
-  requiredIcon: undefined,
-};
 
 RfiLabel.propTypes = {
   label: PropTypes.string.isRequired,
@@ -55,13 +66,13 @@ RfiLabel.propTypes = {
   requiredIcon: PropTypes.bool,
 };
 
-RfiError.defaultProps = {
-  isError: undefined,
-  metaError: undefined,
+RfiLegend.propTypes = {
+  label: PropTypes.string.isRequired,
+  requiredIcon: PropTypes.bool,
 };
 
 RfiError.propTypes = {
   isError: PropTypes.bool,
   metaError: PropTypes.string,
 };
-export { RfiLabel, RfiError, GaEventPropTypes };
+export { RfiLabel, RfiLegend, RfiError, GaEventPropTypes };

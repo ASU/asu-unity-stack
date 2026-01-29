@@ -30,11 +30,12 @@ import { profileCardType } from "./models";
  */
 
 const ProfileCard = ({ ...props }) => {
-  const hasSocialsOrWebsite =
+  const hasSocialsOrWebsiteOrShortBio =
     props.facebookLink ||
     props.linkedinLink ||
     props.twitterLink ||
-    props.website;
+    props.website ||
+    props.shortBio;
   const title = props.matchedAffiliationTitle
     ? `${props.matchedAffiliationTitle}`
     : "";
@@ -136,65 +137,66 @@ const ProfileCard = ({ ...props }) => {
             )}
           </ul>
         )}
-        {["default", "large"].includes(props.size) && hasSocialsOrWebsite && (
-          <div className="description-and-social">
-            <p className="person-description">
-              {props.shortBio?.slice(0, 250)}
-            </p>
-            <ul className="person-social-medias">
-              {props.facebookLink && (
-                <li>
-                  <a
-                    onClick={() => sendEvent("facebook icon")}
-                    href={props.facebookLink}
-                    aria-label="Go to user Facebook profile"
-                  >
-                    <span
-                      className="fab fa-facebook-square"
-                      title="Facebook Link"
-                    />
-                  </a>
-                </li>
-              )}
-              {props.linkedinLink && (
-                <li>
-                  <a
-                    onClick={() => sendEvent("linkedin icon")}
-                    href={props.linkedinLink}
-                    aria-label="Go to user Linkedin profile"
-                  >
-                    <span className="fab fa-linkedin" title="LinkedIn Link" />
-                  </a>
-                </li>
-              )}
-              {props.twitterLink && (
-                <li>
-                  <a
-                    onClick={() => sendEvent("twitter icon")}
-                    href={props.twitterLink}
-                    aria-label="Go to user Twitter profile"
-                  >
-                    <span
-                      className="fab fa-square-x-twitter"
-                      title="Twitter Link"
-                    />
-                  </a>
-                </li>
-              )}
-              {props.website && (
-                <li>
-                  <a
-                    onClick={() => sendEvent("website icon")}
-                    href={props.website}
-                    aria-label="Go to user Website"
-                  >
-                    <span className="fa fa-globe" title="User Website Link" />
-                  </a>
-                </li>
-              )}
-            </ul>
-          </div>
-        )}
+        {["default", "large"].includes(props.size) &&
+          hasSocialsOrWebsiteOrShortBio && (
+            <div className="description-and-social">
+              <p className="person-description">
+                {props.shortBio?.slice(0, 250)}
+              </p>
+              <ul className="person-social-medias">
+                {props.facebookLink && (
+                  <li>
+                    <a
+                      onClick={() => sendEvent("facebook icon")}
+                      href={props.facebookLink}
+                      aria-label="Go to user Facebook profile"
+                    >
+                      <span
+                        className="fab fa-facebook-square"
+                        title="Facebook Link"
+                      />
+                    </a>
+                  </li>
+                )}
+                {props.linkedinLink && (
+                  <li>
+                    <a
+                      onClick={() => sendEvent("linkedin icon")}
+                      href={props.linkedinLink}
+                      aria-label="Go to user Linkedin profile"
+                    >
+                      <span className="fab fa-linkedin" title="LinkedIn Link" />
+                    </a>
+                  </li>
+                )}
+                {props.twitterLink && (
+                  <li>
+                    <a
+                      onClick={() => sendEvent("twitter icon")}
+                      href={props.twitterLink}
+                      aria-label="Go to user Twitter profile"
+                    >
+                      <span
+                        className="fab fa-square-x-twitter"
+                        title="Twitter Link"
+                      />
+                    </a>
+                  </li>
+                )}
+                {props.website && (
+                  <li>
+                    <a
+                      onClick={() => sendEvent("website icon")}
+                      href={props.website}
+                      aria-label="Go to user Website"
+                    >
+                      <span className="fa fa-globe" title="User Website Link" />
+                    </a>
+                  </li>
+                )}
+              </ul>
+            </div>
+          )}
         {props.size === "small" && (
           <a
             className="btn btn-maroon btn-md"

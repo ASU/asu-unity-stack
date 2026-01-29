@@ -95,7 +95,7 @@ const Innovation = () => {
               >
                 <img
                   src={innovationLogo}
-                  alt="Repeatedly ranked #1, 20+ lists in the last 3 years"
+                  alt="Repeatedly ranked #1 on 30+ lists in the last 3 years"
                   width="459"
                   height="100"
                   loading="lazy"

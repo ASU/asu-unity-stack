@@ -1,3 +1,54 @@
+# [@asu/unity-react-core-v1.4.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.4.2...@asu/unity-react-core-v1.4.3) (2026-01-23)
+
+
+### Bug Fixes
+
+* **unity-react-core:** sidebar menu should auto-expand if it contains an active page item ([b020a55](https://github.com/ASU/asu-unity-stack/commit/b020a5519a03e6a1c33141f8edfe00c6b11f652b))
+* **unity-react-core:** sidebar menu should auto-expand if it contains an active page item ([7473425](https://github.com/ASU/asu-unity-stack/commit/74734251d2a08cc6cce14457278667c1a18f515b))
+
+# [@asu/unity-react-core-v1.4.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.4.1...@asu/unity-react-core-v1.4.2) (2026-01-16)
+
+
+### Bug Fixes
+
+* **unity-react-core:** fix card arrangement ([fecbd10](https://github.com/ASU/asu-unity-stack/commit/fecbd10dab2020cdcd93e6109a55ea3c6435947e))
+* **unity-react-core:** refactor card arrangement logic ([1012fec](https://github.com/ASU/asu-unity-stack/commit/1012fecfa73216492fb586343442ff01a60c7ab7))
+
+# [@asu/unity-react-core-v1.4.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.4.0...@asu/unity-react-core-v1.4.1) (2025-12-31)
+
+
+### Bug Fixes
+
+* **unity-react-core:** fix horizonal card rendering ([5984c5f](https://github.com/ASU/asu-unity-stack/commit/5984c5f2b68737754db6c117264e17dc4f795634))
+
+# [@asu/unity-react-core-v1.4.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.3.0...@asu/unity-react-core-v1.4.0) (2025-12-30)
+
+
+### Features
+
+* **unity-react-core:** add new card arrangement component ([6d4fd13](https://github.com/ASU/asu-unity-stack/commit/6d4fd133fca98f6a6e06160fb504a5d31dca481e))
+
+# [@asu/unity-react-core-v1.3.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.2.0...@asu/unity-react-core-v1.3.0) (2025-12-11)
+
+
+### Features
+
+* **unity-react-core:** changes ([40a97a5](https://github.com/ASU/asu-unity-stack/commit/40a97a5d77941bd2f007030f5188dd425e941107))
+* **unity-react-core:** check changes ([a1d6085](https://github.com/ASU/asu-unity-stack/commit/a1d608540928dd46c3c9bc6f7ef6a8378557b1b1))
+* **unity-react-core:** check changes final ([8ca742a](https://github.com/ASU/asu-unity-stack/commit/8ca742a5a44370e2b0639d4cd063629329b4cd4e))
+* **unity-react-core:** check changes final ([314530e](https://github.com/ASU/asu-unity-stack/commit/314530e8dfc5f3246daf87319083af85a4eb1c5d))
+* **unity-react-core:** check element changes ([15b7ad5](https://github.com/ASU/asu-unity-stack/commit/15b7ad50d7d592f464877e9f80621688fe75f89c))
+* **unity-react-core:** check-element-changes ([0be323b](https://github.com/ASU/asu-unity-stack/commit/0be323b727ce9a38c1e0463b1b0414f794248033))
+* **unity-react-core:** check-element-changes merge with dev ([825f91d](https://github.com/ASU/asu-unity-stack/commit/825f91da38c28f819265d7b91a61057c36baa0ff))
+* **unity-react-core:** e ([26a4e24](https://github.com/ASU/asu-unity-stack/commit/26a4e24f6d344bc38d3e25d395e875b343d24f1d))
+* **unity-react-core:** error ([17fd905](https://github.com/ASU/asu-unity-stack/commit/17fd90565da5f2478eb5287620a2503092467303))
+* **unity-react-core:** x ([efb7bb6](https://github.com/ASU/asu-unity-stack/commit/efb7bb6b66e94255afd198796544caaaf3412b5e))
+
+
+### Performance Improvements
+
+* update typescript types for check element changes script ([5943a81](https://github.com/ASU/asu-unity-stack/commit/5943a81cdc5230e98440e3f02c5feb14fb831698))
+
 # [@asu/unity-react-core-v1.2.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.1.4...@asu/unity-react-core-v1.2.0) (2025-09-22)
 
 

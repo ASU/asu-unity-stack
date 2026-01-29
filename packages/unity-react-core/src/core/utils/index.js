@@ -10,6 +10,7 @@ import { ButtonIconOnly } from "../../components/ButtonIconOnly/ButtonIconOnly";
 import { ButtonTag } from "../../components/ButtonTag/ButtonTag";
 
 import { Card } from "../../components/Card/Card";
+import { CardArrangement } from "../../components/CardArrangement/CardArrangement";
 import {
   initCardCarousel,
   initTestimonialCarousel,
@@ -86,6 +87,12 @@ export const initButtonTag = ({ targetSelector, props }) =>
  */
 export const initCard = ({ targetSelector, props }) =>
   RenderReact(Card, props, document.querySelector(targetSelector));
+
+/**
+ * @param {ComponentProps} props
+ */
+export const initCardArrangement = ({ targetSelector, props }) =>
+  RenderReact(CardArrangement, props, document.querySelector(targetSelector));
 
 /**
  * @param {ComponentProps} props

@@ -16,7 +16,10 @@ import { SortLayout } from "./index.styles";
 
 const SortPicker = ({ sort, onChange, customSortOptions }) => {
   const [defaultSortValue, setDefaultSortValue] = useState(sort);
-  const sortLabelId = useId();
+
+  const rawSortLabelId = useId();
+  const sortLabelId = `sortBy-${rawSortLabelId.replace(/[^a-zA-Z0-9-_]/g, "")}`;
+
   const sortOptions = customSortOptions || [
     { value: "_score_desc", label: "Relevancy" },
     { value: "last_name_asc", label: "Last Name (ascending)" },

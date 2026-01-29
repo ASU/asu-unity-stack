@@ -27,6 +27,10 @@ for (const config of testUrls) {
   test.describe(`GTM dataLayer events for Accordion - ${config.name}`, () => {
     test('should push correct events when opening and closing accordion', async ({ page }) => {
       await page.goto(config.url);
+      await page.waitForSelector('[data-testid="accordion-opener"]');
+
+      // Wait for at least one accordion opener to be visible
+      await page.getByTestId('accordion-opener').first().waitFor({ state: 'visible' });
 
       const openers = await page.getByTestId('accordion-opener').all();
       expect(openers.length).toBeGreaterThan(0);

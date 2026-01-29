@@ -194,15 +194,15 @@ export const cardTags = () => (
       </div>
       <div className="card-tags">
         <h3 className="visually-hidden">Tags:</h3>
-        <span className="badge text-bg-gray-2">
+        <span className="badge text-gray-light-bg">
           No button class
           <span className="visually-hidden"> tag</span>
         </span>
-        <span className="badge text-bg-gray-2">
+        <span className="badge text-gray-light-bg">
           No hover effects
           <span className="visually-hidden"> tag</span>
         </span>
-        <span className="badge text-bg-gray-7">
+        <span className="badge text-gray-dark-bg">
           Dark mode
           <span className="visually-hidden"> tag</span>
         </span>
