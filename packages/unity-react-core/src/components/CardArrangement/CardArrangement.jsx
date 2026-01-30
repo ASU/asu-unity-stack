@@ -2,6 +2,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import { Card } from "../Card/Card";
+import { Image } from "../Image/Image";
 import { RankingCard } from "../RankingCard/RankingCard";
 
 /**
@@ -14,8 +15,8 @@ import { RankingCard } from "../RankingCard/RankingCard";
 
 /**
  * @typedef {Object} CardArrangementProps
- * @property {(IndividualCardProps[] | IndividualRankingCardProps[])} cards - Array of card props objects to render
- * @property {"card" | "ranking"} [cardType="card"] - Type of card to render
+ * @property {(IndividualCardProps[] | IndividualRankingCardProps[] | import('../Image/Image').ImageProps[] )} cards - Array of card props objects to render
+ * @property {"card" | "ranking" | "image"} [cardType="card"] - Type of card to render
  * @property {1 | 2 | 3 | 4 | "1" | "2" | "3" | "4"} [columns] - Number of columns to display (optional)
  */
 
@@ -38,8 +39,18 @@ export const CardArrangement = ({ cards, cardType = "card", columns }) => {
   if (!cards || cards.length === 0) {
     return null;
   }
-
-  const CardComponent = cardType === "ranking" ? RankingCard : Card;
+  let CardComponent;
+  switch (cardType) {
+    case "ranking":
+      CardComponent = RankingCard;
+      break;
+    case "image":
+      CardComponent = Image;
+      break;
+    default:
+      CardComponent = Card;
+      break;
+  }
   const defaultColClass = COLUMN_CLASSES[columns] || "col-12 col-md-auto";
 
   return (
@@ -63,14 +74,15 @@ export const CardArrangement = ({ cards, cardType = "card", columns }) => {
 
 CardArrangement.propTypes = {
   /**
-   * Array of card objects to render. Each object should contain props for the Card or RankingCard component.
-   * Cards will wrap naturally based on their intrinsic min/max widths.
+   * Array of card objects to render. Each object should contain props for the
+   * Card or RankingCard component. Cards will wrap naturally based on their
+   * intrinsic min/max widths.
    */
   cards: PropTypes.arrayOf(PropTypes.object).isRequired,
   /**
-   * Type of card to render - either "card" (default) or "ranking"
+   * Type of card to render - either "card" (default), "ranking", or "image"
    */
-  cardType: PropTypes.oneOf(["card", "ranking"]),
+  cardType: PropTypes.oneOf(["card", "ranking", "image"]),
   /**
    * Number of columns to display.
    */
