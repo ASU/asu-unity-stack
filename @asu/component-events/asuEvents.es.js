@@ -6371,7 +6371,7 @@ Ss.propTypes = {
 };
 i.oneOf(["small", "large"]), i.string.isRequired, i.string.isRequired, i.string;
 i.oneOf(["small", "large"]).isRequired, i.string.isRequired, i.string.isRequired, i.string.isRequired, i.string.isRequired, i.string, i.string;
-i.arrayOf(i.object).isRequired, i.oneOf(["card", "ranking"]), i.oneOf([1, 2, 3, 4, "1", "2", "3", "4"]);
+i.arrayOf(i.object).isRequired, i.oneOf(["card", "ranking", "image"]), i.oneOf([1, 2, 3, 4, "1", "2", "3", "4"]);
 const Lu = Gt.div`
   display: inline-block;
   position: relative;
