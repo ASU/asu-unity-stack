@@ -1,3 +1,10 @@
+# [@asu/unity-react-core-v1.4.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.4.3...@asu/unity-react-core-v1.4.4) (2026-01-30)
+
+
+### Bug Fixes
+
+* **unity-react-core:** fix image card rendering in card arrangement ([577e3c5](https://github.com/ASU/asu-unity-stack/commit/577e3c58dc9e03c4381bd3629d46ab42453b4665))
+
 # [@asu/unity-react-core-v1.4.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.4.2...@asu/unity-react-core-v1.4.3) (2026-01-23)
 
 
