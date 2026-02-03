@@ -1,12 +1,11 @@
-// @ts-check
-import { render, screen, fireEvent, cleanup } from "@testing-library/react";
+import { render, screen, fireEvent, cleanup, RenderResult } from "@testing-library/react";
 import React from "react";
 import { expect, describe, it, afterEach, beforeEach } from "vitest";
 
-import { AnchorMenu } from "./AnchorMenu";
+import { AnchorMenu, AnchorMenuProps } from "./AnchorMenu";
 import { Containers } from "./AnchorMenu.stories";
 
-const defaultArgs = {
+const defaultArgs: AnchorMenuProps = {
   items: [
     { text: "First container", targetIdName: "first-container" },
     { text: "Second container", targetIdName: "second-container" },
@@ -16,7 +15,7 @@ const defaultArgs = {
   firstElementId: "first-container",
 };
 
-const renderAnchorMenu = props => {
+const renderAnchorMenu = (props: AnchorMenuProps) => {
   return render(
     <>
       <AnchorMenu items={props.items} firstElementId={props.firstElementId} />
@@ -26,8 +25,7 @@ const renderAnchorMenu = props => {
 };
 
 describe("#Anchor Menu", () => {
-  /** @type {import("@testing-library/react").RenderResult} */
-  let component;
+  let component: RenderResult;
 
   beforeEach(() => {
     component = renderAnchorMenu(defaultArgs);

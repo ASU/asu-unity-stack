@@ -1,15 +1,16 @@
-/* eslint react/jsx-props-no-spreading: "off" */
 import { getLoremSentences, titleCaseDefinition } from "@asu/shared";
+import { Meta, StoryFn } from "@storybook/react";
 import classNames from "classnames";
 import React from "react";
 
 import { Basic as Header } from "../../../../unity-bootstrap-theme/stories/organisms/global-header/global-header.templates";
 import { Divider } from "../Divider/Divider";
 import { useBaseSpecificFramework } from "../GaEventWrapper/useBaseSpecificFramework";
-import { AnchorMenu } from "./AnchorMenu";
+import { AnchorMenu, AnchorMenuProps } from "./AnchorMenu";
 
 const titleCaseTitle =
   "Anchor Menus Should Always be Formatted with Title Case";
+
 export default {
   title: "Components/AnchorMenu",
   component: AnchorMenu,
@@ -34,7 +35,8 @@ This story includes another components for demostration purposes.
       },
     },
   },
-};
+} as Meta;
+
 const items = [
   {
     text: "Title Case is Required",
@@ -50,7 +52,7 @@ const items = [
   },
 ];
 
-export const Containers = () => {
+export const Containers: React.FC = () => {
   return (
     <>
       {items &&
@@ -78,9 +80,9 @@ export const Containers = () => {
               <p>
                 {
                   getLoremSentences(
-                    40,
+                    200,
                     index * 3
-                  ) /* 40 sentences, index * 3 offset just creates some variety */
+                  ) /* 200 sentences, index * 3 offset just creates some variety */
                 }
               </p>
             </div>
@@ -90,7 +92,7 @@ export const Containers = () => {
   );
 };
 
-const Template = args => {
+const Template: StoryFn<AnchorMenuProps> = args => {
   const { isBootstrap } = useBaseSpecificFramework();
 
   return (
