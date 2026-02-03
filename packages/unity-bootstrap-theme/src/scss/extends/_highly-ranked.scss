@@ -49,12 +49,41 @@
     gap: $uds-size-spacing-1;
 
     .ranking-value-container {
-      border-left: 8px solid $gold;
-      padding-left: $uds-size-spacing-2;
       margin-bottom: 0;
 
-      @media (max-width: map-get($grid-breakpoints, "md")) {
-        padding-left: $uds-size-spacing-3;
+      .ranking-value {
+        font-size: $uds-size-font-xxxl;
+        font-weight: $font-weight-bold;
+        margin: 0;
+        line-height: 1.1;
+        color: $dark;
+
+        @media (max-width: map-get($grid-breakpoints, "md")) {
+          font-size: 3rem; // 48px
+        }
+
+        .ranking-value-number {
+          display: block;
+          border-left: 8px solid $gold;
+          padding-left: $uds-size-spacing-2;
+
+          @media (max-width: map-get($grid-breakpoints, "md")) {
+            padding-left: $uds-size-spacing-3;
+          }
+        }
+
+        .ranking-title {
+          display: block;
+          margin: $uds-size-spacing-1 0 0 0;
+          padding-left: calc(8px + #{$uds-size-spacing-2});
+          font-size: 1.5rem;
+          font-weight: $font-weight-bold;
+          color: $dark;
+
+          @media (max-width: map-get($grid-breakpoints, "md")) {
+            padding-left: calc(8px + #{$uds-size-spacing-3});
+          }
+        }
       }
     }
 
@@ -64,31 +93,12 @@
       @media (max-width: map-get($grid-breakpoints, "md")) {
         padding-left: calc(8px + #{$uds-size-spacing-3});
       }
-    }
 
-    .ranking-value {
-      font-size: $uds-size-font-xxxl;
-      font-weight: $font-weight-bold;
-      margin: 0;
-      line-height: 1.1;
-      color: $dark;
-
-      @media (max-width: map-get($grid-breakpoints, "md")) {
-        font-size: 3rem; // 48px
+      .ranking-description {
+        font-size: 1rem;
+        color: $dark;
+        margin-bottom: 0;
       }
-    }
-
-    .ranking-title {
-      font-size: 1.5rem;
-      font-weight: $font-weight-bold;
-      margin: 0 0 $uds-size-spacing-1 0;
-      color: $dark;
-    }
-
-    .ranking-description {
-      font-size: 1rem;
-      color: $dark;
-      margin-bottom: 0;
     }
   }
 }
