@@ -70,11 +70,11 @@ export const HighlyRanked = ({
               <div className="highly-ranked-card">
                 <div className="ranking-value-container">
                   <h3 className="ranking-value">
-                    <span className="ranking-value-number">
+                    <span className="ranking-value-main">
                       {ranking.value}
                     </span>
                     {ranking.title && (
-                      <span className="ranking-title">{ranking.title}</span>
+                      <span className="ranking-value-subsection">{ranking.title}</span>
                     )}
                   </h3>
                 </div>
