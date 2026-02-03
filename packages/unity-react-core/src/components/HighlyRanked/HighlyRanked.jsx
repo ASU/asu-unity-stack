@@ -1,6 +1,5 @@
 // @ts-check
 import { sanitizeDangerousMarkup } from "@asu/shared";
-import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -70,21 +69,26 @@ export const HighlyRanked = ({
             <div key={index} className="col-12 col-lg-6 mb-4">
               <div className="highly-ranked-card">
                 <div className="ranking-value-container">
-                  <h3 className="ranking-value">{ranking.value}</h3>
+                  <h3 className="ranking-value">
+                    <span className="ranking-value-number">
+                      {ranking.value}
+                    </span>
+                    {ranking.title && (
+                      <span className="ranking-title">{ranking.title}</span>
+                    )}
+                  </h3>
                 </div>
-                <div className="ranking-content">
-                  {ranking.title && (
-                    <h4 className="ranking-title">{ranking.title}</h4>
-                  )}
-                  {ranking.description && (
+
+                {ranking.description && (
+                  <div className="ranking-content">
                     <p
                       className="ranking-description"
                       dangerouslySetInnerHTML={sanitizeDangerousMarkup(
                         ranking.description
                       )}
                     />
-                  )}
-                </div>
+                  </div>
+                )}
               </div>
             </div>
           ))}

@@ -29,7 +29,8 @@ Default.args = {
     {
       value: "83",
       title: "top-ranked programs",
-      description: "Ranked in the top 25 in the U.S., including 38 in the top 10",
+      description:
+        "Ranked in the top 25 in the U.S., including 38 in the top 10",
     },
     {
       value: "$6.1",
