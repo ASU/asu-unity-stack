@@ -1,6 +1,7 @@
 import ListingPage from "../src/components/ListingPage/index.stories";
 import DetailPage from "../src/components/DetailPage/index.stories";
 import "@asu/unity-bootstrap-theme/src/scss/unity-bootstrap-theme.bundle.scss";
+import "@asu/unity-bootstrap-theme/src/js/unity-bootstrap.js";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 
 const parameters = {
