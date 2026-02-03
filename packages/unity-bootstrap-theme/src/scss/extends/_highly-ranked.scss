@@ -62,7 +62,7 @@
           font-size: 3rem; // 48px
         }
 
-        .ranking-value-number {
+        .ranking-value-main {
           display: block;
           border-left: 8px solid $gold;
           padding-left: $uds-size-spacing-2;
@@ -72,7 +72,7 @@
           }
         }
 
-        .ranking-title {
+        .ranking-value-subsection {
           display: block;
           margin: $uds-size-spacing-1 0 0 0;
           padding-left: calc(8px + #{$uds-size-spacing-2});
