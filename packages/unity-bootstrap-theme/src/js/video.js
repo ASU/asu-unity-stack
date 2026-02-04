@@ -2,9 +2,10 @@ import { EventHandler } from "./bootstrap-helper";
 
 function initVideo() {
   // constants
-  const DOM_ELEMENT_VIDEO = "video";
-  const DOM_ELEMENT_VIDEO_BTN = ".uds-video-btn-play";
-  const DOM_ELEMENT_VIDEO_OVERLAY = ".uds-video-overlay";
+  const DOM_PARENT = ".uds-video-player";
+  const DOM_ELEMENT_VIDEO = DOM_PARENT + " video";
+  const DOM_ELEMENT_VIDEO_BTN = DOM_PARENT + " .uds-video-btn-play";
+  const DOM_ELEMENT_VIDEO_OVERLAY = DOM_PARENT + " .uds-video-overlay";
   const EVENT_CLICK = "click";
   const EVENT_ENDED = "ended";
   const STYLE_DISPLAY_FLEX = "flex";
