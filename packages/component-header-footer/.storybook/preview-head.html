@@ -35,3 +35,23 @@
     gap: 0rem!important;
   }
 </style>
+
+<!-- Trap clicked links and open them in a hidden iframe to prevent Storybook from navigating away -->
+<script>
+  setTimeout(function () {
+    var t = "capturelinks";
+    var b = document.getElementsByTagName("base")[0];
+    b.target = t;
+    var f = document.createElement("iframe");
+    f.name = t;
+    f.height = 0;
+    f.width = 0;
+    f.style.display = "none";
+    f.style.visibility = "hidden";
+    document.body.appendChild(f);
+  },1);
+</script>
+
+
+<!-- <base target="capturelinks">
+<iframe name="capturelinks" height="0" width="0" style="display: none; visibility: hidden"></iframe> -->

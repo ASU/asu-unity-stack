@@ -28,13 +28,19 @@ const DEFAULT_GA_EVENT = {
  * @returns {JSX.Element}
  */
 
-const Social = ({ social: { logoUrl, unitLogo = endorsedLogo, mediaLinks = {
-  facebook: "",
-  twitter: "",
-  linkedIn: "",
-  instagram: "",
-  youtube: "",
-} } }) => {
+const Social = ({
+  social: {
+    logoUrl,
+    unitLogo = endorsedLogo,
+    mediaLinks = {
+      facebook: "",
+      twitter: "",
+      linkedIn: "",
+      instagram: "",
+      youtube: "",
+    },
+  },
+}) => {
   return (
     <div className="wrapper" id="wrapper-endorsed-footer" data-testid="social">
       <div className="container" id="endorsed-footer">

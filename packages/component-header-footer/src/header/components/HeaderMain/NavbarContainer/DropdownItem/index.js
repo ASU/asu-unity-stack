@@ -25,14 +25,14 @@ HeadingItem.propTypes = {
 };
 
 const ButtonItem = ({ link, dropdownName, handleLinkEvent }) => (
-  <li className="nav-button">
+  <div className="nav-button">
     <Button
       text={link.text}
-      color={link.color || "dark"}
+      color={link.color || "maroon"}
       href={link.href}
       onClick={e => handleLinkEvent(e, link)}
     />
-  </li>
+  </div>
 );
 
 ButtonItem.propTypes = {
@@ -94,7 +94,13 @@ const DropdownItem = ({
   parentLink,
 }) => {
   const { breakpoint } = useAppContext();
-  const isMega = items?.length > 2;
+
+  let cols = 0;
+  items.map(lists => {
+    cols += lists[0].span || 1;
+  });
+
+  const isMega = cols > 2;
   /**
    * @type {React.MutableRefObject<HTMLDivElement|null>}
    */
@@ -103,6 +109,7 @@ const DropdownItem = ({
   const MULTIPLE_SUBMENUS = items?.length > 1;
 
   useEffect(() => {
+    console.log(dropdownRef.current);
     if (window && dropdownRef.current) {
       const elPosition = dropdownRef?.current?.getBoundingClientRect().left;
       const breakpointPosition = window.innerWidth * 0.55;
@@ -144,7 +151,7 @@ const DropdownItem = ({
   };
 
   const renderItem = (link, index) => {
-    const key = `${link.text}-${link.href || index}`;
+    const key = `${link.text}-${link.href}-${index}`;
     if (link.type === "heading")
       return <HeadingItem key={key} text={link.text} />;
     if (link.type === "button")
@@ -166,6 +173,7 @@ const DropdownItem = ({
     );
   };
 
+  console.log("TOTAL COLS: ", cols);
   return (
     <DropdownWrapper
       ref={dropdownRef}
@@ -174,8 +182,13 @@ const DropdownItem = ({
       }`}
       breakpoint={breakpoint}
     >
-      <div id={MULTIPLE_SUBMENUS ? listId : ""} className="dropdown-container">
-        {items?.map((item, index0) => {
+      <div
+        style={{ "--cols": cols < 3 ? 4 : cols }}
+        id={MULTIPLE_SUBMENUS ? listId : ""}
+        className="dropdown-container"
+      >
+        {/*
+                {items?.map((item, index0) => {
           const genKey = idGenerator(`dropdown-item-${index0}-`);
           const key = genKey.next().value;
           return (
@@ -184,6 +197,69 @@ const DropdownItem = ({
             </ul>
           );
         })}
+
+ */}
+
+        <>
+          {
+            // console.log(items)
+          }
+          {items?.map((item, index0) => {
+            console.log(item);
+            const genKey = idGenerator(`dropdown-item-${index0}-`);
+            const key = genKey.next().value;
+            return (
+              <div
+                className="dropdown-container-column"
+                style={{ "--span": item[0].span || 1 }}
+                key={`${listId}-${key}`}
+                id={MULTIPLE_SUBMENUS ? `${listId}-${key}` : listId}
+              >
+                {(() => {
+                  let currentUl = [];
+                  const uls = [];
+                  item.forEach((link, index) => {
+                    if (link.type === "heading") {
+                      if (currentUl.length > 0) {
+                        uls.push(currentUl);
+                        currentUl = [];
+                      }
+                      uls.push([link]);
+                    } else if (link.type === "button") {
+                      if (currentUl.length > 0) {
+                        uls.push(currentUl);
+                        currentUl = [];
+                      }
+                      uls.push([link]);
+                    } else {
+                      currentUl.push(link);
+                    }
+                  });
+
+                  if (currentUl.length > 0) {
+                    uls.push(currentUl);
+                  }
+                  console.log(uls);
+
+                  return uls.map((group, groupIndex) => {
+                    const groupKey = `${key}-group-${groupIndex}`;
+                    if (group.length === 1 && group[0].type === "heading") {
+                      return renderItem(group[0], groupIndex);
+                    }
+                    if (group.length === 1 && group[0].type === "button") {
+                      return renderItem(group[0], groupIndex);
+                    }
+                    return (
+                      <ul key={groupKey}>
+                        {group.map((link, index) => renderItem(link, index))}
+                      </ul>
+                    );
+                  });
+                })()}
+              </div>
+            );
+          })}
+        </>
       </div>
       {buttons && (
         <div className="dropdown-button-container">

@@ -14,6 +14,28 @@ const config = {
   framework: {
     name: "@storybook/react-vite",
   },
+  async viteFinal(config) {
+    // Configure optimizeDeps to handle JSX in .js files
+    config.optimizeDeps = {
+      ...config.optimizeDeps,
+      esbuildOptions: {
+        ...config.optimizeDeps?.esbuildOptions,
+        loader: {
+          '.js': 'jsx',
+          '.jsx': 'jsx',
+        },
+      },
+    };
+
+    // Configure esbuild for build
+    config.esbuild = {
+      ...config.esbuild,
+      loader: 'jsx',
+      include: /\.(jsx?|tsx?)$/,
+    };
+
+    return config;
+  },
 };
 
 export default config;

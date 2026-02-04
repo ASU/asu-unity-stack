@@ -261,19 +261,19 @@ Example with four degree cards that will wrap based on available space.
 export const HorizontalCards = Template.bind({});
 HorizontalCards.args = {
   cards: [
-      {
-        type: "default",
-        title: "Horizontal",
-        body: "Body",
-        horizontal: true,
-      },
-      {
-        type: "default",
-        title: "Horizontal",
-        body: "Body",
-        horizontal: true,
-      },
-    ],
+    {
+      type: "default",
+      title: "Horizontal",
+      body: "Body",
+      horizontal: true,
+    },
+    {
+      type: "default",
+      title: "Horizontal",
+      body: "Body",
+      horizontal: true,
+    },
+  ],
 };
 HorizontalCards.storyName = "Horizontal cards example";
 HorizontalCards.parameters = {
@@ -361,7 +361,8 @@ MixedCardTypesNoColProvided.args = {
     },
   ],
 };
-MixedCardTypesNoColProvided.storyName = "Mixed card types (no columns specified)";
+MixedCardTypesNoColProvided.storyName =
+  "Mixed card types (no columns specified)";
 MixedCardTypesNoColProvided.parameters = {
   docs: {
     description: {
@@ -468,7 +469,8 @@ const rankingCardsLarge = [
     heading: "Sustainability Excellence",
     body: "Leading the way in sustainable practices and environmental initiatives.",
     readMoreLink: "#",
-  },{
+  },
+  {
     imageSize: "large",
     image: img1,
     imageAlt: "Ranking image 1",
@@ -533,7 +535,7 @@ export const RankingCardsLarge = Template.bind({});
 RankingCardsLarge.args = {
   cards: rankingCardsLarge,
   cardType: "ranking",
-  columns: 4
+  columns: 4,
 };
 RankingCardsLarge.storyName = "Ranking cards (large)";
 RankingCardsLarge.parameters = {
@@ -557,7 +559,7 @@ export const RankingCardsSmall = Template.bind({});
 RankingCardsSmall.args = {
   cards: rankingCardsSmall,
   cardType: "ranking",
-  columns: 2
+  columns: 2,
 };
 RankingCardsSmall.storyName = "Ranking cards (small)";
 RankingCardsSmall.parameters = {

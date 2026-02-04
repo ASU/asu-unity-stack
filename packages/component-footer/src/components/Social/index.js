@@ -36,11 +36,9 @@ const DEF_MEDIA_LINKS = {
  * @returns {JSX.Element}
  */
 
-const Social = ({ social: {
-  logoUrl,
-  unitLogo = endorsedLogo,
-  mediaLinks = DEF_MEDIA_LINKS,
-}, }) => {
+const Social = ({
+  social: { logoUrl, unitLogo = endorsedLogo, mediaLinks = DEF_MEDIA_LINKS },
+}) => {
   return (
     <div className="wrapper" id="wrapper-endorsed-footer" data-testid="social">
       <div className="container" id="endorsed-footer">
