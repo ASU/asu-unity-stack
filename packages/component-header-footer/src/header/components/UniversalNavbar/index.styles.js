@@ -3,7 +3,7 @@ import { ASU_GRAY6, ASU_GRAY1, ASU_GRAY5 } from "../../colors";
 
 const Wrapper = styled.div`
   background-color: ${ASU_GRAY6};
-  min-height: 24px;
+  padding: 0.5rem 0rem;
   transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
   .header-top {
     height: 100%;
@@ -14,12 +14,13 @@ const Wrapper = styled.div`
       align-items: center;
       .links-container {
         display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
         .nav-link {
           color: ${ASU_GRAY1};
           font-size: 0.75rem;
           line-height: 0.75rem;
-          padding: 0.25rem 0.5rem;
-          margin-right: 0.5rem;
           white-space: nowrap;
           text-decoration: none;
 
@@ -44,6 +45,7 @@ const Wrapper = styled.div`
     width: 100%;
     min-height: auto;
     position: relative;
+    padding: 0;
     .header-top {
       width: 100%;
       .nav {
@@ -59,6 +61,9 @@ const Wrapper = styled.div`
           grid-auto-flow: row;
           justify-items: start;
           width: 100%;
+          gap: 0;
+          border-top: 1px solid ${ASU_GRAY5};
+          border-left: 1px solid ${ASU_GRAY5};
           .nav-link {
             white-space: normal;
             margin-right: 0;
@@ -66,10 +71,14 @@ const Wrapper = styled.div`
             width: 100%;
             font-size: 0.875rem;
             padding: 1rem 1.5rem;
-            border-top: 1px solid ${ASU_GRAY5};
+            border-bottom: 1px solid ${ASU_GRAY5};
+            border-right: 1px solid ${ASU_GRAY5};
+            display: flex;
+            align-items: center;
             justify-content: center;
-            &:nth-child(even) {
-              border-left: 1px solid ${ASU_GRAY5};
+
+            &.visually-hidden-focusable:not(:focus):not(:active) {
+              border: none;
             }
           }
         }
