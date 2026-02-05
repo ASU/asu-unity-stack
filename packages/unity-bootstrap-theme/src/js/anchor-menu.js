@@ -42,6 +42,10 @@ function initAnchorMenu(options = { ignoreReactCheck: false }) {
   let previousScrollPosition = window.scrollY;
   let isNavbarAttached = false;
 
+  navbar.parentElement.style.setProperty("position", "sticky");
+
+  navbar.style.setProperty("position", "sticky");
+
   // These values are for optionally present Drupal admin toolbars. They
   // are not present in Storybook and not required in implementations.
   const toolbarBarHeight =
@@ -73,7 +77,7 @@ function initAnchorMenu(options = { ignoreReactCheck: false }) {
 
   const shouldAttachNavbarOnLoad = window.scrollY > navbarInitialTop;
   if (shouldAttachNavbarOnLoad) {
-    globalHeader.appendChild(navbar);
+    // globalHeader.appendChild(navbar);
     isNavbarAttached = true;
     navbar.classList.add("uds-anchor-menu-attached");
   }
@@ -118,7 +122,41 @@ function initAnchorMenu(options = { ignoreReactCheck: false }) {
     return visiblePercentage;
   }
 
+  const allFixedSticky = [...document.querySelectorAll("*")].filter(el =>
+    ["fixed", "sticky"].includes(getComputedStyle(el).position)
+  );
+
+  // Filter to only include elements that don't have a fixed/sticky ancestor
+  const topLevelElements = allFixedSticky.filter(el => {
+    // Check if any parent/ancestor is also in our list
+    return !allFixedSticky.some(parent => parent !== el && parent.contains(el));
+  });
+
+  const getFixedStickyHeight = () => {
+    return topLevelElements.reduce((t, el, i) => {
+      if (el === navbar.parentElement) {
+        const navbarParentHeight =
+          navbar.parentElement.getBoundingClientRect().height;
+        const navbarHeight = navbar.getBoundingClientRect().height;
+
+        const topOffset = navbarHeight - navbarParentHeight;
+
+        el.style.setProperty("top", topOffset + t + "px");
+        return t + navbar.getBoundingClientRect().height;
+      } else {
+        el.style.setProperty("top", t + "px");
+        return t + el.getBoundingClientRect().height;
+      }
+    }, 0);
+  };
+
   const scrollHandlerLogic = function () {
+    setTimeout(() => {
+      document
+        .querySelector("html")
+        .style.setProperty("scroll-padding-top", getFixedStickyHeight() + "px");
+    }, 10); // Ensure this runs after any potential layout shifts from the scroll event
+
     // Custom code added for Drupal - Handle active anchor highlighting
     let maxVisibility = 0;
     let mostVisibleElementId = null;
@@ -170,14 +208,14 @@ function initAnchorMenu(options = { ignoreReactCheck: false }) {
       if (globalHeader) {
         if (headerBottom >= navbarY && !isNavbarAttached) {
           // Attach navbar to globalHeader
-          globalHeader.appendChild(navbar);
+          // globalHeader.appendChild(navbar);
           isNavbarAttached = true;
           navbar.classList.add("uds-anchor-menu-attached");
         }
       } else {
         if (window.scrollY >= navbarInitialTop && !isNavbarAttached) {
           // Attach fixed to body
-          document.body.appendChild(navbar);
+          // document.body.appendChild(navbar);
           navbar.style.position = "fixed";
           navbar.style.top = combinedToolbarHeightOffset + "px";
           navbar.style.width = "100%";
@@ -209,7 +247,7 @@ function initAnchorMenu(options = { ignoreReactCheck: false }) {
       }
 
       if (shouldDetach) {
-        navbarOriginalParent.insertBefore(navbar, navbarOriginalNextSibling);
+        // navbarOriginalParent.insertBefore(navbar, navbarOriginalNextSibling);
         if (!globalHeader) {
           // Reset styles
           navbar.style.position = "";
@@ -285,7 +323,7 @@ function initAnchorMenu(options = { ignoreReactCheck: false }) {
   return () => {
     window.removeEventListener("scroll", throttledScrollHandler);
     if (isNavbarAttached && navbarOriginalParent) {
-      navbarOriginalParent.insertBefore(navbar, navbarOriginalNextSibling);
+      // navbarOriginalParent.insertBefore(navbar, navbarOriginalNextSibling);
     }
   };
 }
