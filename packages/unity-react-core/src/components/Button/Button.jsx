@@ -22,7 +22,6 @@ const gaDefaultObject = {
 /**
  * @param {ButtonProps} props
  * @returns {JSX.Element}
- * @deprecated Use UDSButton instead
  */
 export const Button = ({
   label = "",
@@ -38,10 +37,60 @@ export const Button = ({
   innerRef,
   onClick,
   size = "default",
+  variant,
   classes,
   target = "_self",
   ...props
 }) => {
+  // New UDS button styles (when variant prop is provided)
+  if (variant) {
+    const variantClasses = {
+      borderless: "borderless",
+      outline: "outline",
+      filled: "filled",
+    };
+
+    const btnClasses = classNames("btn", variantClasses[variant], {
+      [`btn-${variantClasses[variant]}-${color}`]: true,
+      [`btn-medium`]: size === "medium",
+      [`btn-small`]: size === "small",
+      [`btn-large`]: size === "large" || size === "default",
+      [`disabled`]: disabled,
+    });
+
+    let Tag = element;
+    if (href && element === "button") {
+      Tag = "a";
+    }
+
+    return (
+      <GaEventWrapper
+        gaData={{
+          ...gaDefaultObject,
+          section: cardTitle,
+          ...gaData,
+          text: label,
+        }}
+      >
+        <Tag
+          type={Tag === "button" && onClick ? "button" : undefined}
+          {...props}
+          className={classNames(classes) || btnClasses}
+          href={href}
+          ref={innerRef}
+          onClick={onClick}
+          aria-label={ariaLabel}
+          target={Tag === "a" ? target : null}
+          disabled={disabled}
+        >
+          {icon && <i className={`${icon?.[0]} fa-${icon?.[1]} me-1`} />}
+          {label}
+        </Tag>
+      </GaEventWrapper>
+    );
+  }
+
+  // Legacy button styles (when variant prop is not provided)
   const btnClasses = classNames("btn", {
     [`btn-${color}`]: true,
     [`btn-md`]: size === "small",
@@ -153,9 +202,13 @@ Button.propTypes = {
   */
   onClick: PropTypes.func,
   /**
-    Button size
+    Button size. Legacy sizes (default, small, xsmall) or new sizes (large, medium, small) when used with variant prop.
   */
-  size: PropTypes.oneOf(["default", "small", "xsmall"]),
+  size: PropTypes.oneOf(["default", "small", "xsmall", "large", "medium"]),
+  /**
+    Button style variant (borderless, outline, filled). When provided, uses new UDS button styles.
+  */
+  variant: PropTypes.oneOf(["borderless", "outline", "filled"]),
   /**
     Classes to add to button
   */

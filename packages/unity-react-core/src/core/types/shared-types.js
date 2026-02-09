@@ -14,8 +14,9 @@
  * @property {any}      [innerRef]
  * @property {string|string[]} [classes]
  * @property {function():void} [onClick]
- * @property {"default"|"small"|"xsmall"}   [size]
+ * @property {"default"|"small"|"xsmall"|"large"|"medium"}   [size]
  * @property {"gold"|"maroon"|"gray"|"dark"} [color]
+ * @property {"borderless"|"outline"|"filled"} [variant]
  * @property {"_blank"|"_self"|"_top"|"_parent"} [target]
  */
 

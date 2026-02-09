@@ -46,7 +46,10 @@ export const GaEventWrapper = ({ gaData, prefix = "", children: child }) => {
     return React.cloneElement(child, {
       ...props,
       onClick: e => {
-        trackGAEvent(gaData);
+        // Only track if gaData is provided and has meaningful content
+        if (gaData && gaData.event && gaData.action) {
+          trackGAEvent(gaData);
+        }
         if (initialOnClick) {
           return initialOnClick(e);
         }
