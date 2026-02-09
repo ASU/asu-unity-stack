@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.33.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.33.0...@asu/unity-bootstrap-theme-v1.33.1) (2026-02-09)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** prevent video script conflict ([cc37757](https://github.com/ASU/asu-unity-stack/commit/cc37757e93b96c042e4e7d0dfab17372544e28ef))
+
 # [@asu/unity-bootstrap-theme-v1.33.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.32.1...@asu/unity-bootstrap-theme-v1.33.0) (2026-01-27)
 
 
