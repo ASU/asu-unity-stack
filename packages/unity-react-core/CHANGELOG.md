@@ -1,3 +1,15 @@
+# [@asu/unity-react-core-v1.5.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.4.4...@asu/unity-react-core-v1.5.0) (2026-02-10)
+
+
+### Bug Fixes
+
+* **unity-react-core:** update buttons ([baecc89](https://github.com/ASU/asu-unity-stack/commit/baecc89c5aed18e0f0d9c4b7d7b91e263589e55e))
+
+
+### Features
+
+* **unity-react-core:** add new button styles ([309ae92](https://github.com/ASU/asu-unity-stack/commit/309ae92a85851fd5c5740d08ba52335835fcc9a6))
+
 # [@asu/unity-react-core-v1.4.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.4.3...@asu/unity-react-core-v1.4.4) (2026-01-30)
 
 
