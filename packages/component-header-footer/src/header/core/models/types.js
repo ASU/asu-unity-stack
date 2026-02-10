@@ -13,12 +13,13 @@
 
 /**
  * @typedef {object} Button
- * @property {string} href
+ * @property {string} [href]
  * @property {("gold"|"maroon"|"light"|"dark")} [color]
  * @property {string} text
  * @property {string} [classes]
  * @property {function} [onClick]
  * @property {function} [onFocus]
+ * @property {("a"|"button"|"div")} [as]
  */
 
 /**

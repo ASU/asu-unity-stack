@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import { ASU_WHITE, ASU_GRAY5, ASU_GRAY1, ASU_MAROON } from "../../../../colors";
 
 const DropdownWrapper = styled.div`
   position: fixed;
-  background-color: #ffffff;
-  border: 1px solid #d0d0d0;
+  background-color: ${ASU_WHITE};
+  border: 1px solid ${ASU_GRAY5};
   margin: 0;
   z-index: 1031;
   visibility: hidden;
@@ -34,7 +35,7 @@ const DropdownWrapper = styled.div`
       &:not(:last-child) {
         padding-right: 2rem;
         margin-right: 2rem;
-        border-right: 1px solid #d0d0d0;
+        border-right: 1px solid ${ASU_GRAY5};
       }
       .ul-heading {
         margin-top: 0;
@@ -54,9 +55,9 @@ const DropdownWrapper = styled.div`
           margin: 0.75rem 0;
           position: relative;
           line-height: 1rem;
-          color: #191919;
+          color: ${ASU_GRAY1};
           &:hover {
-            color: #8c1d40;
+            color: ${ASU_MAROON};
             text-decoration: underline;
           }
         }
@@ -71,8 +72,8 @@ const DropdownWrapper = styled.div`
     }
   }
   .dropdown-button-container {
-    border-top: 1px solid #d0d0d0;
-    border-bottom: 1px solid #d0d0d0;
+    border-top: 1px solid ${ASU_GRAY5};
+    border-bottom: 1px solid ${ASU_GRAY5};
     margin-top: 1rem;
     > div {
       max-width: 1200px;
@@ -113,7 +114,7 @@ const DropdownWrapper = styled.div`
         .nav-link {
           padding: 0 1rem;
           &:not(:last-child) {
-            border-bottom: 1px solid #d0d0d0;
+            border-bottom: 1px solid ${ASU_GRAY5};
           }
           a {
             padding: 1rem 0;

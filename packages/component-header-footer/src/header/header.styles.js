@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ASU_WHITE, ASU_GRAY1 } from "./colors";
 
 const breakpoints = { Lg: "992px", Xl: "1260px" };
 
@@ -32,8 +33,8 @@ const Header = styled.header`
     &:focus {
       outline: none !important;
       box-shadow:
-        0px 0px 0px 2px #ffffff,
-        0px 0px 0px 4px #191919 !important;
+        0px 0px 0px 2px ${ASU_WHITE},
+        0px 0px 0px 4px ${ASU_GRAY1} !important;
     }
   }
   @media (min-width: ${({ breakpoint }) => breakpoints[breakpoint]}) {
@@ -104,8 +105,8 @@ const HeaderDiv = styled.div`
     &:focus {
       outline: none !important;
       box-shadow:
-        0px 0px 0px 2px #ffffff,
-        0px 0px 0px 4px #191919 !important;
+        0px 0px 0px 2px ${ASU_WHITE},
+        0px 0px 0px 4px ${ASU_GRAY1} !important;
     }
   }
   @media (min-width: ${({ breakpoint }) => breakpoints[breakpoint]}) {

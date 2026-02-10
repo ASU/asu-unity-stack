@@ -71,7 +71,6 @@ const NavbarContainer = () => {
             <form className="buttons-container" data-testid="buttons-container">
               {buttons.map(button => {
                 validateButton(button);
-                console.log(button);
                 return (
                   <Button
                     {...button}

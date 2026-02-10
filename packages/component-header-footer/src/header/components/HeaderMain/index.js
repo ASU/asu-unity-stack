@@ -1,8 +1,9 @@
 // @ts-check
 import { trackGAEvent } from "@asu/shared";
-import { faTimes, faBars } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import mobileMenuSearchIcon from "../../../../public/assets/icons/menu-search-icon.png?inline";
 
 import { useAppContext } from "../../core/context/app-context";
 import { useIsMobile } from "../../core/hooks/isMobile";
@@ -11,6 +12,7 @@ import { HeaderMainWrapper } from "./index.styles";
 import { Logo } from "./Logo";
 import { NavbarContainer } from "./NavbarContainer";
 import { Partner } from "./Partner";
+import { Search } from "../UniversalNavbar/Search";
 import { Title } from "./Title";
 
 const HeaderMain = () => {
@@ -51,12 +53,20 @@ const HeaderMain = () => {
                 }`}
                 type="button"
                 onClick={handleClickMobileMenu}
-                aria-label="Toggle navigation"
+                aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={mobileMenuOpen}
               >
+                <img
+                  src={mobileMenuSearchIcon}
+                  alt="Menu and Search Icon"
+                  className="menu-search-icon"
+                />
+
                 <FontAwesomeIcon
-                  icon={mobileMenuOpen ? faTimes : faBars}
+                  icon={faTimes}
                   // @ts-ignore
                   alt=""
+                  className="menu-close-icon"
                 />
               </button>
               <div
@@ -67,6 +77,7 @@ const HeaderMain = () => {
                 {isPartner ? <Partner /> : <Title />}
                 {!isMobile && <NavbarContainer />}
               </div>
+              {mobileMenuOpen && isMobile && <Search />}
               {mobileMenuOpen && isMobile && <NavbarContainer />}
             </div>
           </div>

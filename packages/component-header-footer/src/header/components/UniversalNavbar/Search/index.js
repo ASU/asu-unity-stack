@@ -1,12 +1,14 @@
 // @ts-check
 import { trackGAEvent } from "@asu/shared";
-import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useRef, useEffect } from "react";
+import { Button } from "../../Button";
 
 import { useAppContext } from "../../../core/context/app-context";
 import { useIsMobile } from "../../../core/hooks/isMobile";
 import { SearchWrapper } from "./index.styles";
+import { SearchInput } from "./SearchInput";
 
 const SEARCH_GA_EVENT = {
   event: "search",
@@ -20,15 +22,22 @@ const SEARCH_GA_EVENT = {
 const Search = () => {
   const { breakpoint, searchUrl, site } = useAppContext();
   const isMobile = useIsMobile(breakpoint);
+  /** @type {React.MutableRefObject<HTMLInputElement | null>} */
   const inputRef = useRef(null);
   const [open, setOpen] = useState(false);
+  const [hasInputValue, setHasInputValue] = useState(false);
 
   useEffect(() => {
-    if (open) inputRef.current.focus();
+    if (open && inputRef.current) inputRef.current.focus();
   }, [open]);
 
+  /**
+   *
+   * @param {React.FormEvent<HTMLFormElement>} e
+   */
   const handleSearch = e => {
-    const form = e.target;
+    /** @type {HTMLFormElement} */
+    const form = e.currentTarget;
     e.preventDefault();
     /**
      * Issue: Callback not currently available
@@ -42,9 +51,10 @@ const Search = () => {
      *
      * TODO: UDS-1612
      */
+    const searchInput = /** @type {HTMLInputElement} */ (form.elements.namedItem('q'));
     trackGAEvent({
       ...SEARCH_GA_EVENT,
-      text: e.target.elements.q.value,
+      text: searchInput ? searchInput.value : '',
     });
     setTimeout(() => {
       form.submit();
@@ -75,9 +85,12 @@ const Search = () => {
       name="gs"
       className={open ? "open-search" : ""}
       data-testid="universal-nav-search-form"
+      role="search"
     >
       {!isMobile ? (
         <>
+        {
+          !open && (
           <button
             type="button"
             aria-label="Search asu.edu"
@@ -85,48 +98,38 @@ const Search = () => {
             className="search-button"
             data-testid="search-button"
           >
+            <span
+            >Search</span>
             <FontAwesomeIcon icon={faSearch} />
           </button>
+)}
           {open && (
             <>
-              <input
-                ref={inputRef}
-                className="form-control"
-                type="search"
-                name="q"
-                aria-labelledby="header-top-search"
-                placeholder="Search asu.edu"
-                required
+              <SearchInput
+                inputRef={inputRef}
+                hasInputValue={hasInputValue}
+                setHasInputValue={setHasInputValue}
+                isMobile={isMobile}
+                onBlur={() => {
+                  if (!hasInputValue) setOpen(false);
+                }}
               />
-              <button
-                type="button"
-                aria-label="Search asu.edu"
-                onClick={handleChangeVisibility}
-                className="close-search"
-                data-testid="close-search"
-              >
-                <FontAwesomeIcon icon={faTimes} />
-              </button>
+              <Button
+                color="dark"
+                text="Search"
+                as="button"
+                classes="submit-button"
+              />
             </>
           )}
         </>
       ) : (
         <label>
-          <FontAwesomeIcon icon={faSearch} />
-          <input
-            ref={inputRef}
-            className="form-control"
-            type="search"
-            name="q"
-            aria-labelledby="header-top-search"
-            placeholder="Search asu.edu"
-            required
-            onChange={e =>
-              trackGAEvent({
-                ...SEARCH_GA_EVENT,
-                text: e.target.value,
-              })
-            }
+          <SearchInput
+            inputRef={inputRef}
+            hasInputValue={hasInputValue}
+            setHasInputValue={setHasInputValue}
+            isMobile={isMobile}
           />
         </label>
       )}

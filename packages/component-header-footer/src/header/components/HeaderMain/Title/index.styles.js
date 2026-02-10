@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ASU_GRAY1, ASU_GOLD } from "../../../colors";
 
 const breakpointMap = {
   "992px": "993px",
@@ -25,7 +26,7 @@ const TitleWrapper = styled.div`
   .unit-name,
   .subunit-name,
   .title-subunit-name {
-    color: #191919;
+    color: ${ASU_GRAY1};
   }
 
   .subunit-name,
@@ -33,7 +34,7 @@ const TitleWrapper = styled.div`
     background-image: linear-gradient(
       to right,
       transparent 51%,
-      #ffc626 51%,
+      ${ASU_GOLD} 51%,
       95%,
       transparent
     );
