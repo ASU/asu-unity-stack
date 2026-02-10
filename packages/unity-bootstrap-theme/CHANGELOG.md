@@ -1,3 +1,15 @@
+# [@asu/unity-bootstrap-theme-v1.35.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.34.0...@asu/unity-bootstrap-theme-v1.35.0) (2026-02-10)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix content spotlight styles ([3662019](https://github.com/ASU/asu-unity-stack/commit/36620193e4e9afa166a6711d34f9d06ed01b022f))
+
+
+### Features
+
+* **unity-bootstrap-theme:** add new styles for content spotlight ([e4864ac](https://github.com/ASU/asu-unity-stack/commit/e4864ac015d91fcb461fce5b47a1a381b458b489))
+
 # [@asu/unity-bootstrap-theme-v1.34.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.33.1...@asu/unity-bootstrap-theme-v1.34.0) (2026-02-10)
 
 
