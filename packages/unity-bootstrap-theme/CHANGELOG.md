@@ -1,3 +1,15 @@
+# [@asu/unity-bootstrap-theme-v1.34.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.33.1...@asu/unity-bootstrap-theme-v1.34.0) (2026-02-10)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** update legacy button styles ([15c4e14](https://github.com/ASU/asu-unity-stack/commit/15c4e14ffcf1ac403f022d880f2ecdaf1bc1c75a))
+
+
+### Features
+
+* **unity-bootstrap-theme:** add new button styles ([a0918e4](https://github.com/ASU/asu-unity-stack/commit/a0918e4fd74fb26d75ed071591b6eeae984a0c10))
+
 # [@asu/unity-bootstrap-theme-v1.33.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.33.0...@asu/unity-bootstrap-theme-v1.33.1) (2026-02-09)
 
 
