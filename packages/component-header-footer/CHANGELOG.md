@@ -1,3 +1,16 @@
+# [@asu/component-header-footer-v1.2.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.1.3...@asu/component-header-footer-v1.2.0) (2026-02-10)
+
+
+### Bug Fixes
+
+* **component-header-footer:** implement PR suggestions ([e1c4b83](https://github.com/asu/asu-unity-stack/commit/e1c4b837cf340a843a0e05f43423419e23ff4b48))
+* **component-header-footer:** update new header styles ([7eb9e7b](https://github.com/asu/asu-unity-stack/commit/7eb9e7b05a3177eb63214f58a7ce9e3d48654f2f))
+
+
+### Features
+
+* **component-header-footer:** update header to new style ([0b4df9c](https://github.com/asu/asu-unity-stack/commit/0b4df9ce8d41b89ea933a131e2b57a694c0bac3e))
+
 # [@asu/component-header-footer-v1.1.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.1.2...@asu/component-header-footer-v1.1.3) (2025-12-30)
 
 
