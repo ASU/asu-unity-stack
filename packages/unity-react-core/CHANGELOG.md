@@ -1,3 +1,15 @@
+# [@asu/unity-react-core-v1.6.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.5.0...@asu/unity-react-core-v1.6.0) (2026-02-10)
+
+
+### Bug Fixes
+
+* **unity-react-core:** add GA event attributes ([023cd31](https://github.com/ASU/asu-unity-stack/commit/023cd31b8d795604a163fba6e3f80f4c12cd1f52))
+
+
+### Features
+
+* **unity-react-core:** add new content spotlight card ([1c5508b](https://github.com/ASU/asu-unity-stack/commit/1c5508bdd71f5d580df42fab985cf21590b8079c))
+
 # [@asu/unity-react-core-v1.5.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.4.4...@asu/unity-react-core-v1.5.0) (2026-02-10)
 
 
