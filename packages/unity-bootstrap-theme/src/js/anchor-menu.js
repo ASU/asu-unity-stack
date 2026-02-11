@@ -1,6 +1,5 @@
 // @ts-check
 import { EventHandler } from "./bootstrap-helper";
-import { throttle } from "@asu/shared";
 
 /**
  * Initializes the anchor menu functionality.
@@ -27,13 +26,6 @@ function initAnchorMenu(options = { ignoreReactCheck: false }) {
     return () => {};
   }
 
-  if (!navbar) {
-    console.warn(
-      "Anchor menu initialization failed: required elements not found"
-    );
-    return () => {};
-  }
-
   const navbarOriginalParent = navbar.parentNode;
   const navbarOriginalNextSibling = navbar.nextSibling;
 
@@ -42,20 +34,87 @@ function initAnchorMenu(options = { ignoreReactCheck: false }) {
   let previousScrollPosition = window.scrollY;
   let isNavbarAttached = false;
 
-  // These values are for optionally present Drupal admin toolbars. They
-  // are not present in Storybook and not required in implementations.
-  const toolbarBarHeight =
-    document.getElementById("toolbar-bar")?.offsetHeight || 0;
-  const toolbarItemAdministrationTrayHeight =
-    document.getElementById("toolbar-item-administration-tray")?.offsetHeight ||
-    0;
+  const navbarInitialTop = navbar.getBoundingClientRect().top + window.scrollY;
 
-  const combinedToolbarHeightOffset =
-    toolbarBarHeight + toolbarItemAdministrationTrayHeight;
-  const navbarInitialTop =
-    navbar.getBoundingClientRect().top +
-    window.scrollY -
-    combinedToolbarHeightOffset;
+  // Cache toolbar elements
+  const toolbarBar = document.getElementById("toolbar-bar");
+  const toolbarTray = document.getElementById("toolbar-item-administration-tray");
+
+  /**
+   * Determines scroll-margin-top based on header and toolbar presence.
+   * @returns {string} Scroll margin value in rem
+   */
+  function getScrollMargin() {
+    const hasToolbar = toolbarBar || toolbarTray;
+    const hasHeader = !!globalHeader;
+
+    if (hasHeader && hasToolbar) {
+      return "10rem";
+    } else if (hasHeader && !hasToolbar) {
+      return "4rem";
+    } else {
+      return "2rem";
+    }
+  }
+
+  /**
+   * Updates scroll-margin-top on all anchor targets.
+   */
+  function updateScrollMargins() {
+    const margin = getScrollMargin();
+    anchorTargets.forEach(target => {
+      target.style.scrollMarginTop = margin;
+    });
+  }
+
+  /**
+   * Gets the toolbar offset for fixed positioning.
+   * @returns {number} Offset in pixels
+   */
+  function getToolbarOffset() {
+    return (toolbarBar?.offsetHeight || 0) + (toolbarTray?.offsetHeight || 0);
+  }
+
+  /**
+   * Attaches the navbar to the global header or body.
+   */
+  function attachNavbar() {
+    if (isNavbarAttached) return;
+
+    if (globalHeader) {
+      globalHeader.appendChild(navbar);
+    } else {
+      document.body.appendChild(navbar);
+      navbar.style.position = "fixed";
+      navbar.style.top = `${getToolbarOffset()}px`;
+      navbar.style.width = "100%";
+      navbar.style.zIndex = "1000";
+    }
+
+    isNavbarAttached = true;
+    navbar.classList.add("uds-anchor-menu-attached");
+    updateScrollMargins();
+  }
+
+  /**
+   * Detaches the navbar and returns it to its original position.
+   */
+  function detachNavbar() {
+    if (!isNavbarAttached) return;
+
+    navbarOriginalParent.insertBefore(navbar, navbarOriginalNextSibling);
+
+    if (!globalHeader) {
+      navbar.style.position = "";
+      navbar.style.top = "";
+      navbar.style.width = "";
+      navbar.style.zIndex = "";
+    }
+
+    isNavbarAttached = false;
+    navbar.classList.remove("uds-anchor-menu-attached");
+    updateScrollMargins();
+  }
 
   for (let anchor of anchors) {
     const href = anchor.getAttribute("href");
@@ -71,11 +130,12 @@ function initAnchorMenu(options = { ignoreReactCheck: false }) {
     }
   }
 
-  const shouldAttachNavbarOnLoad = window.scrollY > navbarInitialTop;
-  if (shouldAttachNavbarOnLoad) {
-    globalHeader.appendChild(navbar);
-    isNavbarAttached = true;
-    navbar.classList.add("uds-anchor-menu-attached");
+  // Set initial scroll margins
+  updateScrollMargins();
+
+  // Attach navbar on load if already scrolled past initial position
+  if (window.scrollY > navbarInitialTop) {
+    attachNavbar();
   }
 
   /**
@@ -119,16 +179,14 @@ function initAnchorMenu(options = { ignoreReactCheck: false }) {
   }
 
   const scrollHandlerLogic = function () {
-    // Custom code added for Drupal - Handle active anchor highlighting
+    // Handle active anchor highlighting
     let maxVisibility = 0;
     let mostVisibleElementId = null;
 
     // Find the element with highest visibility
     anchors.forEach(anchor => {
       const target = anchorTargets.get(anchor);
-      if (!target) {
-        return;
-      }
+      if (!target) return;
 
       const visiblePercentage = calculateVisiblePercentage(target);
       if (visiblePercentage > 0 && visiblePercentage > maxVisibility) {
@@ -139,86 +197,40 @@ function initAnchorMenu(options = { ignoreReactCheck: false }) {
 
     // Update active class if we found a visible element
     if (mostVisibleElementId) {
-      const activeAnchor = document.querySelector(
-        '[href="#' + mostVisibleElementId + '"]'
-      );
+      const activeAnchor = navbar.querySelector(`[href="#${mostVisibleElementId}"]`);
       if (activeAnchor) {
         activeAnchor.classList.add("active");
         activeAnchor.setAttribute("aria-current", "location");
       }
 
-      // Remove active class from all other nav links in the navbar
+      // Remove active class from all other nav links
       navbar
-        .querySelectorAll(
-          'a.nav-link:not([href="#' + mostVisibleElementId + '"])'
-        )
-        .forEach(function (e) {
-          e.classList.remove("active");
-          e.removeAttribute("aria-current");
+        .querySelectorAll(`a.nav-link:not([href="#${mostVisibleElementId}"])`)
+        .forEach(link => {
+          link.classList.remove("active");
+          link.removeAttribute("aria-current");
         });
     }
 
     // Handle navbar attachment/detachment
-    const navbarY = navbar.getBoundingClientRect().top;
-    const headerBottom = globalHeader
-      ? globalHeader.getBoundingClientRect().bottom
-      : 0;
     const isScrollingDown = window.scrollY > previousScrollPosition;
 
-    // If scrolling DOWN and the bottom of globalHeader touches or overlaps the top of navbar
-    if (isScrollingDown) {
-      if (globalHeader) {
-        if (headerBottom >= navbarY && !isNavbarAttached) {
-          // Attach navbar to globalHeader
-          globalHeader.appendChild(navbar);
-          isNavbarAttached = true;
-          navbar.classList.add("uds-anchor-menu-attached");
-        }
-      } else {
-        if (window.scrollY >= navbarInitialTop && !isNavbarAttached) {
-          // Attach fixed to body
-          document.body.appendChild(navbar);
-          navbar.style.position = "fixed";
-          navbar.style.top = combinedToolbarHeightOffset + "px";
-          navbar.style.width = "100%";
-          navbar.style.zIndex = "1000";
-          isNavbarAttached = true;
-          navbar.classList.add("uds-anchor-menu-attached");
-        }
-      }
-    }
+    if (isScrollingDown && !isNavbarAttached) {
+      const shouldAttach = globalHeader
+        ? globalHeader.getBoundingClientRect().bottom >= navbar.getBoundingClientRect().top
+        : window.scrollY >= navbarInitialTop;
 
-    // If scrolling UP and the header bottom no longer overlaps with the navbar
-    if (!isScrollingDown && isNavbarAttached) {
-      // Only detach if we're back to the initial navbar position or if header no longer overlaps navbar
-      let shouldDetach = false;
-
-      if (globalHeader) {
-        const currentHeaderBottom = globalHeader.getBoundingClientRect().bottom;
-        const navbarCurrentTop = navbar.getBoundingClientRect().top;
-        if (
-          window.scrollY <= navbarInitialTop ||
-          currentHeaderBottom < navbarCurrentTop
-        ) {
-          shouldDetach = true;
-        }
-      } else {
-        if (window.scrollY <= navbarInitialTop) {
-          shouldDetach = true;
-        }
+      if (shouldAttach) {
+        attachNavbar();
       }
+    } else if (!isScrollingDown && isNavbarAttached) {
+      const shouldDetach = globalHeader
+        ? window.scrollY <= navbarInitialTop ||
+          globalHeader.getBoundingClientRect().bottom < navbar.getBoundingClientRect().top
+        : window.scrollY <= navbarInitialTop;
 
       if (shouldDetach) {
-        navbarOriginalParent.insertBefore(navbar, navbarOriginalNextSibling);
-        if (!globalHeader) {
-          // Reset styles
-          navbar.style.position = "";
-          navbar.style.top = "";
-          navbar.style.width = "";
-          navbar.style.zIndex = "";
-        }
-        isNavbarAttached = false;
-        navbar.classList.remove("uds-anchor-menu-attached");
+        detachNavbar();
       }
     }
 
@@ -242,12 +254,23 @@ function initAnchorMenu(options = { ignoreReactCheck: false }) {
 
   window.addEventListener("scroll", throttledScrollHandler, { passive: true });
 
+  // Update scroll margins on resize (handles zoom and font-size changes)
+  let resizeTimeout;
+  const handleResize = () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      updateScrollMargins();
+    }, 150);
+  };
+  window.addEventListener("resize", handleResize, { passive: true });
+
   // Set click event handlers for all valid anchors
-  // Only anchors with valid targets were added to anchorTargets Map
   for (let [anchor, anchorTarget] of anchorTargets) {
     anchor.addEventListener("click", function (e) {
       e.preventDefault();
       const hash = anchor.getAttribute("href");
+
+      // Update URL hash
       history?.pushState
         ? history.pushState(null, "", hash)
         : (window.location.hash = hash);
@@ -257,26 +280,23 @@ function initAnchorMenu(options = { ignoreReactCheck: false }) {
         return;
       }
 
+      // scrollIntoView now respects scroll-margin-top
       anchorTarget.scrollIntoView({
         behavior: "smooth",
         block: "start",
       });
 
-      // Focus the target element to ensure correct tab order after navigation
+      // Focus for accessibility and correct tab order
       anchorTarget.setAttribute("tabindex", "-1");
       anchorTarget.focus({ preventScroll: true });
 
-      // Remove active class from other anchor in navbar, and add it to the clicked anchor
-      const active = navbar.querySelector(".nav-link.active");
+      // Update active states
+      navbar.querySelectorAll(".nav-link.active").forEach(link => {
+        link.classList.remove("active");
+        link.removeAttribute("aria-current");
+      });
 
-      if (active) {
-        active.classList.remove("active");
-        active.removeAttribute("aria-current");
-      }
-
-      // @ts-ignore
       e.target.classList.add("active");
-      // @ts-ignore
       e.target.setAttribute("aria-current", "location");
     });
   }
@@ -284,9 +304,15 @@ function initAnchorMenu(options = { ignoreReactCheck: false }) {
   // Cleanup function
   return () => {
     window.removeEventListener("scroll", throttledScrollHandler);
+    window.removeEventListener("resize", handleResize);
+    clearTimeout(resizeTimeout);
     if (isNavbarAttached && navbarOriginalParent) {
-      navbarOriginalParent.insertBefore(navbar, navbarOriginalNextSibling);
+      detachNavbar();
     }
+    // Reset scroll margins
+    anchorTargets.forEach(target => {
+      target.style.scrollMarginTop = "";
+    });
   };
 }
 
