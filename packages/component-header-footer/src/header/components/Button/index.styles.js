@@ -16,6 +16,11 @@ const ButtonWrapper = styled.a`
   border-radius: 400rem;
   font-weight: 700;
   font-size: 0.875rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
   transition: 0.03s ease-in-out;
   cursor: pointer;
   & + a {

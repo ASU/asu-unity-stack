@@ -10,9 +10,12 @@ const LoginWrapper = styled.div`
     margin: 0;
     color: ${ASU_GRAY1};
     text-decoration: none;
+    line-height: 1;
+    vertical-align: middle;
   }
   > span.name {
     font-weight: 700;
+    line-height: 1;
   }
   > a.signout:before {
     content: "(";
