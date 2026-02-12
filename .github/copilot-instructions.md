@@ -83,7 +83,7 @@ yarn storybook  # Primary development environment
 6. **Accessibility**: Playwright a11y tests → Slack alerts on failures
 
 ### Infrastructure
-- **Kubernetes agents**: Node 20.15, Playwright, AWS CLI containers
+- **Kubernetes agents**: Node 24.13.1, Playwright, AWS CLI containers
 - **S3 staging**: PR previews at `unity-uds-staging.s3.us-west-2.amazonaws.com/pr-{number}/`
 - **Auto-cleanup**: Merged PR environments cleaned from S3 after 14 days or immediately after merging to dev branch (dev is main branch for this repo)
 - **Slack integration**: `#prd-uds` and `#prdfam-uds-ci` channels for alerts
