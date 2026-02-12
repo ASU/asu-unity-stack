@@ -20,9 +20,11 @@ const Wrapper = styled.div`
         .nav-link {
           color: ${ASU_GRAY1};
           font-size: 0.75rem;
-          line-height: 0.75rem;
+          line-height: 1;
           white-space: nowrap;
           text-decoration: none;
+          display: flex;
+          align-items: center;
 
           &:hover {
             text-decoration: underline;

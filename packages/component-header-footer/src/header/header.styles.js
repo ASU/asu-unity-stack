@@ -39,11 +39,6 @@ const Header = styled.header`
   }
   @media (min-width: ${({ breakpoint }) => breakpoints[breakpoint]}) {
     &.scrolled {
-      .universal-nav {
-        min-height: 0;
-        height: 0;
-        overflow: hidden;
-      }
       .title {
         margin: 0.5rem 0 0 0;
       }

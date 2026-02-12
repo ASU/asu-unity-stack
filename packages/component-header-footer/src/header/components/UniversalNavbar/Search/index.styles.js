@@ -3,12 +3,13 @@ import {
   ASU_GRAY1,
   ASU_WHITE,
   BOOTSTRAP_TEXT_MUTED,
-  ASU_GRAY3,
   ASU_GRAY5,
   ASU_MAROON,
 } from "../../../colors";
 
 const SearchWrapper = styled.form`
+  display: flex;
+  align-items: center;
   button {
     border: none;
     background: transparent;
@@ -17,7 +18,11 @@ const SearchWrapper = styled.form`
   .search-button {
     transition: cubic-bezier(0.19, 1, 0.19, 1);
     font-size: 0.75rem;
+    line-height: 1;
     color: ${ASU_GRAY1};
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
     span {
       margin-right: 0.25rem;
     }
@@ -30,19 +35,20 @@ const SearchWrapper = styled.form`
     padding: 0.5rem 0.5rem;
     font-weight: 400;
     font-size: 0.75rem;
-    line-height: 1.5;
+    line-height: 1;
     color: ${BOOTSTRAP_TEXT_MUTED};
-    border: 1px solid ${ASU_GRAY3};
+    border: 1px solid ${ASU_GRAY5};
     outline: ${ASU_GRAY1};
     margin-left: 1.5rem;
     display: unset;
+    vertical-align: middle;
 
     &::placeholder {
       font-size: 0.75rem;
+      line-height: 1;
     }
     &:focus,
     &:focus-visible {
-      box-shadow: 0 0 0 1px ${ASU_GRAY1};
       border: 1px solid ${ASU_GRAY1};
     }
   }
@@ -65,7 +71,7 @@ const SearchWrapper = styled.form`
   }
   @media (max-width: ${({ breakpoint }) => breakpoint}) {
     width: 100%;
-    padding: 1rem 2rem;
+    padding: 1rem 1rem;
     label {
       position: relative;
       font-size: 0.875rem;
@@ -80,12 +86,13 @@ const SearchWrapper = styled.form`
       input[name="q"] {
         width: 100%;
         margin: 0;
-        padding-left: 2.25rem;
-        padding-right: 3rem;
+        padding: 0.5rem 3rem 0.5rem 2.25rem;
         font-size: 1rem;
+        line-height: 1.5;
 
         &::placeholder {
           font-size: 1rem;
+          line-height: 1.5;
         }
 
         &::-webkit-search-cancel-button,

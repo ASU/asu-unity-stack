@@ -1,6 +1,7 @@
 // @ts-check
 import { trackReactComponent } from "@asu/shared";
-import React, { useEffect } from "react";
+import { throttle } from "@asu/shared/utils/timers";
+import React, { useEffect, useRef } from "react";
 
 import { HeaderMain } from "./components/HeaderMain";
 import { AppContextProvider } from "./core/context/app-context";
@@ -45,6 +46,22 @@ const ASUHeader = ({
   const navTree = tryAddActivePage(rawNavTree);
   const mobileNavTree = tryAddActivePage(rawMobileNavTree);
 
+  /**
+   * Header reference
+   * @type {React.MutableRefObject<HTMLDivElement?>}
+   */
+  const headerRef = useRef(null);
+
+  const handleWindowScroll = () => {
+    const curPos = window.scrollY;
+    if (!headerRef?.current) return;
+    if (curPos > headerRef.current.getBoundingClientRect().top) {
+      headerRef.current.classList.add("scrolled");
+    } else {
+      headerRef.current.classList.remove("scrolled");
+    }
+  };
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       trackReactComponent({
@@ -64,12 +81,21 @@ const ASUHeader = ({
     }
   }, []);
 
+  useEffect(() => {
+    const throttledScroll = () => throttle(handleWindowScroll, 100);
+    window.addEventListener("scroll", throttledScroll);
+
+    return () => {
+      window.removeEventListener("scroll", throttledScroll);
+    };
+  }, []);
+
   const renderHeader = () => {
     // Determine the wrapper based on renderDiv value
     const Wrapper = renderDiv === "true" ? HeaderDiv : Header;
 
     return (
-      <Wrapper id="asuHeader" breakpoint={breakpoint}>
+      <Wrapper id="asuHeader" breakpoint={breakpoint} ref={headerRef}>
         <HeaderMain />
       </Wrapper>
     );

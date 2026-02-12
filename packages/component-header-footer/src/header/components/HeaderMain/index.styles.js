@@ -76,7 +76,7 @@ const HeaderMainWrapper = styled.div`
       border-radius: 0;
       font-size: 1.25rem;
       margin-right: 2rem;
-      /* padding: 0.25rem 0.45rem; */
+      cursor: pointer;
       min-width: 44px;
       min-height: 44px;
 
