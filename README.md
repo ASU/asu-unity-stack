@@ -46,7 +46,7 @@
 
 ## Pre-requisites:
 
-- Node.js (v20.15.1 or higher)
+- Node.js (v24.13.1 or higher)
 - Yarn (v4.4.0)
 
 This workflow uses Volta version 1.1.1. Install that version using
@@ -204,12 +204,12 @@ When you install a tool to your toolchain, you always choose a default version o
 For example, you can select your default version of node by installing a particular version:
 
 ```
-volta install node@20.15.1
+volta install node@24.13.1
 ```
 
-You don’t need to specify a precise version, in which case Volta will choose a suitable version to match your request:
+You don't need to specify a precise version, in which case Volta will choose a suitable version to match your request:
 ```
-volta install node@20
+volta install node@24
 ```
 
 You can also specify latest—or even leave off the version entirely, and Volta will choose the latest LTS release:
