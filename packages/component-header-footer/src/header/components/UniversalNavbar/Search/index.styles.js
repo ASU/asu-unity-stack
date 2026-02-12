@@ -3,7 +3,6 @@ import {
   ASU_GRAY1,
   ASU_WHITE,
   BOOTSTRAP_TEXT_MUTED,
-  ASU_GRAY3,
   ASU_GRAY5,
   ASU_MAROON,
 } from "../../../colors";
@@ -38,7 +37,7 @@ const SearchWrapper = styled.form`
     font-size: 0.75rem;
     line-height: 1;
     color: ${BOOTSTRAP_TEXT_MUTED};
-    border: 1px solid ${ASU_GRAY3};
+    border: 1px solid ${ASU_GRAY5};
     outline: ${ASU_GRAY1};
     margin-left: 1.5rem;
     display: unset;
@@ -50,7 +49,6 @@ const SearchWrapper = styled.form`
     }
     &:focus,
     &:focus-visible {
-      box-shadow: 0 0 0 1px ${ASU_GRAY1};
       border: 1px solid ${ASU_GRAY1};
     }
   }
@@ -73,7 +71,7 @@ const SearchWrapper = styled.form`
   }
   @media (max-width: ${({ breakpoint }) => breakpoint}) {
     width: 100%;
-    padding: 1rem 2rem;
+    padding: 1rem 1rem;
     label {
       position: relative;
       font-size: 0.875rem;
