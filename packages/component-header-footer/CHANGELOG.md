@@ -1,3 +1,11 @@
+# [@asu/component-header-footer-v1.2.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.2.0...@asu/component-header-footer-v1.2.1) (2026-02-12)
+
+
+### Bug Fixes
+
+* **component-header-footer:** fix header styling issues ([d4bc678](https://github.com/asu/asu-unity-stack/commit/d4bc6781f62aec417fd32de2f06233aa45a1f3bb))
+* **component-header-footer:** update header issue and readd scroll behavior ([321b810](https://github.com/asu/asu-unity-stack/commit/321b8101629c24ae1a6aeeeff29678eb48e7a14d))
+
 # [@asu/component-header-footer-v1.2.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.1.3...@asu/component-header-footer-v1.2.0) (2026-02-10)
 
 
