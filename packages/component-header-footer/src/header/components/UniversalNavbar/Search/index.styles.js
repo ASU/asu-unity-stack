@@ -6,6 +6,7 @@ import {
   ASU_GRAY5,
   ASU_MAROON,
 } from "../../../colors";
+import { CLASS_NAMES } from "../../../core/constants/classNames";
 
 const SearchWrapper = styled.form`
   display: flex;
@@ -15,7 +16,7 @@ const SearchWrapper = styled.form`
     background: transparent;
     cursor: pointer;
   }
-  .search-button {
+  .${CLASS_NAMES.SEARCH_BUTTON} {
     transition: cubic-bezier(0.19, 1, 0.19, 1);
     font-size: 0.75rem;
     line-height: 1;
@@ -52,19 +53,19 @@ const SearchWrapper = styled.form`
       border: 1px solid ${ASU_GRAY1};
     }
   }
-  .submit-button {
+  .${CLASS_NAMES.SUBMIT_BUTTON} {
     margin-left: 0.5rem;
   }
-  .close-search {
+  .${CLASS_NAMES.CLOSE_SEARCH} {
     background-color: ${ASU_WHITE};
     border: 1px solid ${ASU_GRAY5};
     border-radius: 100%;
     padding: 0.45rem 0.75rem;
     margin-left: 0.5rem;
   }
-  &.open-search {
+  &.${CLASS_NAMES.OPEN_SEARCH} {
     margin-left: -1rem;
-    .search-button {
+    .${CLASS_NAMES.SEARCH_BUTTON} {
       transform: translate(1.9rem);
       pointer-events: none;
     }
@@ -77,7 +78,7 @@ const SearchWrapper = styled.form`
       font-size: 0.875rem;
       margin-bottom: 0;
       width: 100%;
-      svg.search-icon {
+      svg.${CLASS_NAMES.SEARCH_ICON} {
         position: absolute;
         top: 50%;
         left: 1rem;
@@ -102,7 +103,7 @@ const SearchWrapper = styled.form`
           display: none;
         }
       }
-      .submit-search {
+      .${CLASS_NAMES.SUBMIT_SEARCH} {
         position: absolute;
         top: 50%;
         right: 0.5rem;

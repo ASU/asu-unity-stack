@@ -1,5 +1,11 @@
 import styled from "styled-components";
-import { ASU_WHITE, ASU_GRAY5, ASU_GRAY1, ASU_MAROON } from "../../../../colors";
+import {
+  ASU_WHITE,
+  ASU_GRAY5,
+  ASU_GRAY1,
+  ASU_MAROON,
+} from "../../../../colors";
+import { CLASS_NAMES } from "../../../../core/constants/classNames";
 
 const DropdownWrapper = styled.div`
   position: fixed;
@@ -9,7 +15,7 @@ const DropdownWrapper = styled.div`
   z-index: 1031;
   visibility: hidden;
   white-space: normal;
-  &.opened {
+  &.${CLASS_NAMES.OPENED} {
     visibility: visible;
   }
   &.mega {
@@ -21,7 +27,7 @@ const DropdownWrapper = styled.div`
     position: absolute;
     right: 0;
   }
-  > .dropdown-container {
+  > .${CLASS_NAMES.DROPDOWN_CONTAINER} {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
@@ -37,7 +43,7 @@ const DropdownWrapper = styled.div`
         margin-right: 2rem;
         border-right: 1px solid ${ASU_GRAY5};
       }
-      .ul-heading {
+      .${CLASS_NAMES.UL_HEADING} {
         margin-top: 0;
         font-size: 1.5rem;
         letter-spacing: -0.035em;
@@ -47,7 +53,7 @@ const DropdownWrapper = styled.div`
         margin: 1rem 0;
         line-height: calc(100% + 0.12em);
       }
-      .nav-link {
+      .${CLASS_NAMES.NAV_LINK} {
         padding: 0;
         a {
           width: 100%;
@@ -61,17 +67,17 @@ const DropdownWrapper = styled.div`
             text-decoration: underline;
           }
         }
-        & + .nav-button {
+        & + .${CLASS_NAMES.NAV_BUTTON} {
           margin-top: auto;
           padding-top: 2rem;
-          & + .nav-button {
+          & + .${CLASS_NAMES.NAV_BUTTON} {
             margin-top: 1rem;
           }
         }
       }
     }
   }
-  .dropdown-button-container {
+  .${CLASS_NAMES.DROPDOWN_BUTTON_CONTAINER} {
     border-top: 1px solid ${ASU_GRAY5};
     border-bottom: 1px solid ${ASU_GRAY5};
     margin-top: 1rem;
@@ -88,10 +94,10 @@ const DropdownWrapper = styled.div`
     max-height: unset;
     visibility: visible;
     display: none;
-    &.opened {
+    &.${CLASS_NAMES.OPENED} {
       display: block;
     }
-    > .dropdown-container {
+    > .${CLASS_NAMES.DROPDOWN_CONTAINER} {
       max-width: 100%;
       padding: 1rem 2rem;
       flex-direction: column;
@@ -105,13 +111,13 @@ const DropdownWrapper = styled.div`
           margin: 0 0 1rem 0;
           border: none;
         }
-        .ul-heading {
+        .${CLASS_NAMES.UL_HEADING} {
           font-size: 1.25rem;
         }
-        .nav-button {
+        .${CLASS_NAMES.NAV_BUTTON} {
           padding-top: 1.5rem;
         }
-        .nav-link {
+        .${CLASS_NAMES.NAV_LINK} {
           padding: 0 1rem;
           &:not(:last-child) {
             border-bottom: 1px solid ${ASU_GRAY5};
@@ -123,7 +129,7 @@ const DropdownWrapper = styled.div`
         }
       }
     }
-    .dropdown-button-container {
+    .${CLASS_NAMES.DROPDOWN_BUTTON_CONTAINER} {
       margin-top: 0;
       > div {
         max-width: 100%;

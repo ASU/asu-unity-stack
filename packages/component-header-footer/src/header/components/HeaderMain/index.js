@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import mobileMenuSearchIcon from "../../../../public/assets/icons/menu-search-icon.png?inline";
 
 import { useAppContext } from "../../core/context/app-context";
+import { CLASS_NAMES, buildClassName } from "../../core/constants/classNames";
 import { useIsMobile } from "../../core/hooks/isMobile";
 import { UniversalNavbar } from "../UniversalNavbar";
 import { HeaderMainWrapper } from "./index.styles";
@@ -40,17 +41,20 @@ const HeaderMain = () => {
       {/* @ts-ignore */}
       <HeaderMainWrapper breakpoint={breakpoint}>
         <div className="container-xl">
-          <div className="header-main">
+          <div className={CLASS_NAMES.HEADER_MAIN}>
             <div
-              className={`navbar navbar-expand-xl ${
-                isPartner ? "partner" : ""
-              }`}
+              className={buildClassName(
+                CLASS_NAMES.NAVBAR,
+                CLASS_NAMES.NAVBAR_EXPAND_XL,
+                isPartner && CLASS_NAMES.PARTNER
+              )}
             >
               {!isPartner && <Logo />}
               <button
-                className={`navbar-toggler${
-                  mobileMenuOpen ? "" : " collapsed"
-                }`}
+                className={buildClassName(
+                  CLASS_NAMES.NAVBAR_TOGGLER,
+                  !mobileMenuOpen && CLASS_NAMES.COLLAPSED
+                )}
                 type="button"
                 onClick={handleClickMobileMenu}
                 aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
@@ -59,20 +63,21 @@ const HeaderMain = () => {
                 <img
                   src={mobileMenuSearchIcon}
                   alt="Menu and Search Icon"
-                  className="menu-search-icon"
+                  className={CLASS_NAMES.MENU_SEARCH_ICON}
                 />
 
                 <FontAwesomeIcon
                   icon={faTimes}
                   // @ts-ignore
                   alt=""
-                  className="menu-close-icon"
+                  className={CLASS_NAMES.MENU_CLOSE_ICON}
                 />
               </button>
               <div
-                className={`${!isPartner ? "expand-title" : ""}${
-                  !hasNavigation ? " no-navigation" : ""
-                }`}
+                className={buildClassName(
+                  !isPartner && CLASS_NAMES.EXPAND_TITLE,
+                  !hasNavigation && CLASS_NAMES.NO_NAVIGATION
+                )}
               >
                 {isPartner ? <Partner /> : <Title />}
                 {!isMobile && <NavbarContainer />}

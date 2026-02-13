@@ -3,6 +3,7 @@ import { trackGAEvent } from "@asu/shared";
 import React from "react";
 
 import { useAppContext } from "../../../core/context/app-context";
+import { CLASS_NAMES, buildClassName } from "../../../core/constants/classNames";
 import { LoginWrapper } from "./index.styles";
 
 const DEFAUL_GA_EVENT = {
@@ -22,18 +23,21 @@ const Login = () => {
 
   return (
     // @ts-ignore
-    <LoginWrapper className="nav-link login-status" breakpoint={breakpoint}>
+    <LoginWrapper
+      className={buildClassName(CLASS_NAMES.NAV_LINK, CLASS_NAMES.LOGIN_STATUS)}
+      breakpoint={breakpoint}
+    >
       {loggedIn ? (
         <>
           {userName ? (
-            <span className="name" data-testid="user-name">
+            <span className={CLASS_NAMES.USER_NAME} data-testid="user-name">
               {userName}
             </span>
           ) : (
             ""
           )}
           <a
-            className="signout"
+            className={CLASS_NAMES.SIGNOUT}
             href={logoutLink}
             onFocus={() =>
               trackGAEvent({

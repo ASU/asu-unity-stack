@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ASU_WHITE, ASU_GRAY5, ASU_GRAY1, ASU_GRAY4 } from "../../colors";
+import { CLASS_NAMES } from "../../core/constants/classNames";
 
 const HeaderMainWrapper = styled.div`
   background-color: ${ASU_WHITE};
@@ -12,28 +13,28 @@ const HeaderMainWrapper = styled.div`
     flex-wrap: nowrap;
   }
   .navbar-brand {
-    .vert {
+    .${CLASS_NAMES.LOGO_VERT} {
       display: block;
       height: 72px;
       width: auto;
       margin: 20px 1rem 20px 0;
     }
-    .horiz {
+    .${CLASS_NAMES.LOGO_HORIZ} {
       display: none;
     }
   }
   .navbar-toggler {
     display: none;
   }
-  .expand-title {
+  .${CLASS_NAMES.EXPAND_TITLE} {
     width: 100%;
   }
   @media (min-width: ${({ breakpoint }) => breakpoint}) {
-    .no-navigation {
+    .${CLASS_NAMES.NO_NAVIGATION} {
       margin-top: 16px;
       display: flex;
       align-items: center;
-      .title {
+      .${CLASS_NAMES.TITLE} {
         width: 100%;
       }
     }
@@ -44,23 +45,23 @@ const HeaderMainWrapper = styled.div`
       padding: 1.5rem 0 0 0;
       flex-wrap: wrap;
       justify-content: space-between;
-      &.partner {
+      &.${CLASS_NAMES.PARTNER} {
         flex-direction: row-reverse;
         flex-wrap: nowrap;
       }
     }
-    .partner .content-container {
+    .${CLASS_NAMES.PARTNER} .${CLASS_NAMES.CONTENT_CONTAINER} {
       min-height: calc(100vh - 240px);
     }
     .navbar-brand {
       padding: 0;
       margin: 0;
 
-      .vert {
+      .${CLASS_NAMES.LOGO_VERT} {
         display: none;
       }
 
-      .horiz {
+      .${CLASS_NAMES.LOGO_HORIZ} {
         display: block;
         height: 32px;
         width: auto;
@@ -80,21 +81,21 @@ const HeaderMainWrapper = styled.div`
       min-width: 44px;
       min-height: 44px;
 
-      .menu-search-icon {
+      .${CLASS_NAMES.MENU_SEARCH_ICON} {
         display: none;
       }
 
       &.collapsed {
-        .menu-search-icon {
+        .${CLASS_NAMES.MENU_SEARCH_ICON} {
           width: 24px;
           height: auto;
           display: unset;
         }
-        .menu-close-icon {
+        .${CLASS_NAMES.MENU_CLOSE_ICON} {
           display: none;
         }
       }
-      .no-navigation + nav .buttons-container {
+      .${CLASS_NAMES.NO_NAVIGATION} + nav .${CLASS_NAMES.BUTTONS_CONTAINER} {
         border-top: 1px solid ${ASU_GRAY4};
       }
     }

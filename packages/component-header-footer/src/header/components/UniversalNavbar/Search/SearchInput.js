@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import PropTypes from "prop-types";
 
+import { CLASS_NAMES } from "../../../core/constants/classNames";
+
 /**
  * Reusable search input component
  * @param {Object} props
@@ -22,12 +24,12 @@ const SearchInput = ({
   isMobile,
   style = {},
   className = "",
-  onBlur
+  onBlur,
 }) => {
   /**
    * @param {React.ChangeEvent<HTMLInputElement>} e
    */
-  const handleInputChange = (e) => {
+  const handleInputChange = e => {
     const value = e.target.value;
     setHasInputValue(value.length > 0);
   };
@@ -43,20 +45,22 @@ const SearchInput = ({
     onBlur: onBlur,
     style: {
       paddingLeft: hasInputValue && isMobile ? "1rem" : undefined,
-      ...style
-    }
+      ...style,
+    },
   };
 
   if (isMobile) {
     return (
       <>
-        {!hasInputValue && <FontAwesomeIcon className="search-icon" icon={faSearch} />}
+        {!hasInputValue && (
+          <FontAwesomeIcon className={CLASS_NAMES.SEARCH_ICON} icon={faSearch} />
+        )}
         <input {...baseInputProps} />
         {hasInputValue && (
           <button
             type="submit"
             aria-label="Submit search"
-            className="submit-search"
+            className={CLASS_NAMES.SUBMIT_SEARCH}
           >
             <FontAwesomeIcon icon={faSearch} size="lg" />
           </button>

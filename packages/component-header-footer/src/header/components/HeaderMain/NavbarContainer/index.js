@@ -3,6 +3,7 @@ import { idGenerator, trackGAEvent } from "@asu/shared";
 import React, { useState } from "react";
 
 import { useAppContext } from "../../../core/context/app-context";
+import { CLASS_NAMES } from "../../../core/constants/classNames";
 import { useIsMobile } from "../../../core/hooks/isMobile";
 import { Button } from "../../Button";
 import { UniversalNavbar } from "../../UniversalNavbar";
@@ -59,16 +60,16 @@ const NavbarContainer = () => {
     // @ts-ignore
     <Wrapper breakpoint={breakpoint} data-testid="navigation" aria-label="Site">
       {(navTree?.length || mobileNavTree?.length || buttons?.length) && (
-        <div className="content-container">
+        <div className={CLASS_NAMES.CONTENT_CONTAINER}>
           {(navTree?.length || mobileNavTree?.length) && (
-            <ul className="nav-list">
+            <ul className={CLASS_NAMES.NAV_LIST}>
               {!!mobileNavTree?.length && isMobile
                 ? mobileNavTree?.map((link, i) => renderItem(link, i))
                 : navTree?.map((link, i) => renderItem(link, i))}
             </ul>
           )}
           {!!buttons?.length && (
-            <form className="buttons-container" data-testid="buttons-container">
+            <form className={CLASS_NAMES.BUTTONS_CONTAINER} data-testid="buttons-container">
               {buttons.map(button => {
                 validateButton(button);
                 return (

@@ -5,12 +5,12 @@ import {
   ASU_WHITE,
   GRAY_BUTTON_DISABLED,
   ASU_GOLD,
-  ASU_MAROON
+  ASU_MAROON,
 } from "../../colors";
 
 const ButtonWrapper = styled.a`
-  font-family: Arial, Helvetica, "Nimbus Sans L", "Liberation Sans", FreeSans,
-    sans-serif;
+  font-family:
+    Arial, Helvetica, "Nimbus Sans L", "Liberation Sans", FreeSans, sans-serif;
   color: ${ASU_GRAY1};
   padding: 0.5rem 1rem;
   border-radius: 400rem;

@@ -64,9 +64,19 @@ const stateWithButtons = {
     },
   ],
   buttons: [
-    { text: "Login", href: "/login", "data-testid": "header-button" },
-    { text: "Sign Up", onClick: jest.fn(), as: "button", "data-testid": "header-button" },
-    { text: "Contact", onClick: jest.fn(), href: "#", "data-testid": "header-button" },
+    { "text": "Login", "href": "/login", "data-testid": "header-button" },
+    {
+      "text": "Sign Up",
+      "onClick": jest.fn(),
+      "as": "button",
+      "data-testid": "header-button",
+    },
+    {
+      "text": "Contact",
+      "onClick": jest.fn(),
+      "href": "#",
+      "data-testid": "header-button",
+    },
   ],
   breakpoint: "lg",
 };

@@ -21,13 +21,22 @@ import { ButtonWrapper } from "./index.styles";
  * @param {string|React.Component} [props.as] - The element type or component to render as
  * @returns {JSX.Element} The rendered button component
  */
-const Button = ({ href, color, text, classes, onClick, onFocus, as, ...props }) => {
+const Button = ({
+  href,
+  color,
+  text,
+  classes,
+  onClick,
+  onFocus,
+  as,
+  ...props
+}) => {
   return (
     <ButtonWrapper
       href={href}
       className={`button-${color} ${classes ?? ""}`}
-      onClick={onClick ? (event) => onClick(event) : undefined}
-      onFocus={onFocus ? (event) => onFocus(event) : undefined}
+      onClick={onClick ? event => onClick(event) : undefined}
+      onFocus={onFocus ? event => onFocus(event) : undefined}
       as={as}
       {...props}
     >

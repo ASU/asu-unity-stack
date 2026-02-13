@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ASU_GRAY1, ASU_GOLD } from "../../../colors";
+import { CLASS_NAMES } from "../../../core/constants/classNames";
 
 const breakpointMap = {
   "992px": "993px",
@@ -20,17 +21,17 @@ const TitleWrapper = styled.div`
     background-position: -200%;
   }
 
-  > .unit-name {
+  > .${CLASS_NAMES.UNIT_NAME} {
     display: none;
   }
-  .unit-name,
-  .subunit-name,
-  .title-subunit-name {
+  .${CLASS_NAMES.UNIT_NAME},
+  .${CLASS_NAMES.SUBUNIT_NAME},
+  .${CLASS_NAMES.TITLE_SUBUNIT_NAME} {
     color: ${ASU_GRAY1};
   }
 
-  .subunit-name,
-  .title-subunit-name {
+  .${CLASS_NAMES.SUBUNIT_NAME},
+  .${CLASS_NAMES.TITLE_SUBUNIT_NAME} {
     background-image: linear-gradient(
       to right,
       transparent 51%,
@@ -53,7 +54,7 @@ const TitleWrapper = styled.div`
     font-weight: 700;
     padding: 0;
     margin: 1rem 0 0.5rem 0;
-    > .unit-name {
+    > .${CLASS_NAMES.UNIT_NAME} {
       font-size: 1rem;
       margin-bottom: 0.5rem;
       display: block;
@@ -62,7 +63,7 @@ const TitleWrapper = styled.div`
         text-decoration: underline;
       }
     }
-    .subunit-name {
+    .${CLASS_NAMES.SUBUNIT_NAME} {
       font-size: 1.5rem;
       margin-bottom: 0;
       display: inline-block;
@@ -71,7 +72,7 @@ const TitleWrapper = styled.div`
         text-decoration: underline;
       }
     }
-    .title-subunit-name {
+    .${CLASS_NAMES.TITLE_SUBUNIT_NAME} {
       font-size: 2rem;
       font-weight: 700;
       display: inline-block;

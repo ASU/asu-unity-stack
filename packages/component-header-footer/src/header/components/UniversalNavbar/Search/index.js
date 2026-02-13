@@ -6,6 +6,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Button } from "../../Button";
 
 import { useAppContext } from "../../../core/context/app-context";
+import { CLASS_NAMES } from "../../../core/constants/classNames";
 import { useIsMobile } from "../../../core/hooks/isMobile";
 import { SearchWrapper } from "./index.styles";
 import { SearchInput } from "./SearchInput";
@@ -51,10 +52,12 @@ const Search = () => {
      *
      * TODO: UDS-1612
      */
-    const searchInput = /** @type {HTMLInputElement} */ (form.elements.namedItem('q'));
+    const searchInput = /** @type {HTMLInputElement} */ (
+      form.elements.namedItem("q")
+    );
     trackGAEvent({
       ...SEARCH_GA_EVENT,
-      text: searchInput ? searchInput.value : '',
+      text: searchInput ? searchInput.value : "",
     });
     setTimeout(() => {
       form.submit();
@@ -83,26 +86,24 @@ const Search = () => {
       onSubmit={handleSearch}
       method="get"
       name="gs"
-      className={open ? "open-search" : ""}
+      className={open ? CLASS_NAMES.OPEN_SEARCH : ""}
       data-testid="universal-nav-search-form"
       role="search"
     >
       {!isMobile ? (
         <>
-        {
-          !open && (
-          <button
-            type="button"
-            aria-label="Search asu.edu"
-            onClick={handleChangeVisibility}
-            className="search-button"
-            data-testid="search-button"
-          >
-            <span
-            >Search</span>
-            <FontAwesomeIcon icon={faSearch} />
-          </button>
-)}
+          {!open && (
+            <button
+              type="button"
+              aria-label="Search asu.edu"
+              onClick={handleChangeVisibility}
+              className={CLASS_NAMES.SEARCH_BUTTON}
+              data-testid="search-button"
+            >
+              <span>Search</span>
+              <FontAwesomeIcon icon={faSearch} />
+            </button>
+          )}
           {open && (
             <>
               <SearchInput
@@ -118,7 +119,7 @@ const Search = () => {
                 color="dark"
                 text="Search"
                 as="button"
-                classes="submit-button"
+                classes={CLASS_NAMES.SUBMIT_BUTTON}
               />
             </>
           )}

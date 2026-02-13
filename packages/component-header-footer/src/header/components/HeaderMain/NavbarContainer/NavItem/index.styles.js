@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { ASU_GRAY1, ASU_GOLD, ASU_GRAY4 } from "../../../../colors";
+import { CLASS_NAMES } from "../../../../core/constants/classNames";
 
 const NavItemWrapper = styled.li`
   position: relative;
   padding: 0;
   margin: 0 0.5rem 0 0;
-  &:has(.open-link) > a:after,
+  &:has(.${CLASS_NAMES.OPEN_LINK}) > a:after,
   &:hover > a:after {
     width: calc(100% + 24px);
   }
@@ -29,7 +30,7 @@ const NavItemWrapper = styled.li`
         ${ASU_GOLD} 0.5%
       );
     }
-    &.nav-item-selected:after {
+    &.${CLASS_NAMES.NAV_ITEM_SELECTED}:after {
       width: calc(100% + 24px);
     }
     &.nav-item {
@@ -37,17 +38,17 @@ const NavItemWrapper = styled.li`
     }
     > span {
       position: relative;
-      .chevron-icon {
+      .${CLASS_NAMES.CHEVRON_ICON} {
         transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
         margin-left: 0.5rem;
         font-size: 0.75rem;
 
-        &.open {
+        &.${CLASS_NAMES.OPEN} {
           transform: rotate(180deg);
         }
       }
     }
-    .mobile-only {
+    .${CLASS_NAMES.MOBILE_ONLY} {
       display: none;
     }
   }
@@ -60,30 +61,30 @@ const NavItemWrapper = styled.li`
     &:hover > a:after {
       width: 100%;
     }
-    .icon-nav-item {
+    .${CLASS_NAMES.ICON_NAV_ITEM} {
       display: none;
     }
     > a {
       padding: 1rem 2rem 0.75rem;
       width: 100%;
-      &.open-link {
+      &.${CLASS_NAMES.OPEN_LINK} {
         border-bottom: 1px solid ${ASU_GRAY4};
       }
       &:after {
         right: 0;
         top: 0.8rem;
       }
-      &.nav-item-selected:after {
+      &.${CLASS_NAMES.NAV_ITEM_SELECTED}:after {
         width: 100%;
       }
       > span {
         display: flex;
         justify-content: space-between;
-        .chevron-icon {
+        .${CLASS_NAMES.CHEVRON_ICON} {
           font-size: 1.25rem;
         }
       }
-      .mobile-only {
+      .${CLASS_NAMES.MOBILE_ONLY} {
         display: initial;
       }
     }

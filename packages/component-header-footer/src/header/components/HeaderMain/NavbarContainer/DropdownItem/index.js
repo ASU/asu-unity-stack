@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 
 import { useAppContext } from "../../../../core/context/app-context";
+import { CLASS_NAMES } from "../../../../core/constants/classNames";
 import { ButtonPropTypes } from "../../../../core/models/app-prop-types";
 import { Button } from "../../../Button";
 import { DropdownWrapper } from "./index.styles";
@@ -18,14 +19,14 @@ const LINK_DEFAULT_PROPS = {
   text: "",
 };
 
-const HeadingItem = ({ text }) => <h3 className="ul-heading">{text}</h3>;
+const HeadingItem = ({ text }) => <h3 className={CLASS_NAMES.UL_HEADING}>{text}</h3>;
 
 HeadingItem.propTypes = {
   text: PropTypes.string,
 };
 
 const ButtonItem = ({ link, dropdownName, handleLinkEvent }) => (
-  <li className="nav-button">
+  <li className={CLASS_NAMES.NAV_BUTTON}>
     <Button
       text={link.text}
       color={link.color || "dark"}
@@ -46,7 +47,7 @@ ButtonItem.propTypes = {
 };
 
 const LinkItem = ({ link, dropdownName, handleLinkEvent }) => (
-  <li className="nav-link">
+  <li className={CLASS_NAMES.NAV_LINK}>
     <a
       {...(!link.href ? { tabIndex: 0 } : {})}
       href={link.href}
@@ -174,7 +175,7 @@ const DropdownItem = ({
       }`}
       breakpoint={breakpoint}
     >
-      <div id={MULTIPLE_SUBMENUS ? listId : ""} className="dropdown-container">
+      <div id={MULTIPLE_SUBMENUS ? listId : ""} className={CLASS_NAMES.DROPDOWN_CONTAINER}>
         {items?.map((item, index0) => {
           const genKey = idGenerator(`dropdown-item-${index0}-`);
           const key = genKey.next().value;
@@ -186,7 +187,7 @@ const DropdownItem = ({
         })}
       </div>
       {buttons && (
-        <div className="dropdown-button-container">
+        <div className={CLASS_NAMES.DROPDOWN_BUTTON_CONTAINER}>
           <div>
             {buttons.map((button, index) => (
               <Button
