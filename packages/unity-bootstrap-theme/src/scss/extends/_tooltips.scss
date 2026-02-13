@@ -1,13 +1,5 @@
-@mixin focusState {
-  + div[role='tooltip'].uds-tooltip-description {
-    visibility: visible;
-  }
-  .fa-circle {
-    color: $uds-color-font-light-info;
-  }
-}
-
 .uds-tooltip-container {
+  /* if this value changes, update tooltips.js file */
   --tooltip-max-width: 288px;
 
   --tooltip-offset: .5rem;
@@ -22,24 +14,28 @@
     right: calc(-1 * var(--tooltip-offset));
     bottom: calc(-1 * var(--tooltip-offset));
   }
+
   [aria-describedby] {
-    position: relative;
-  }
-  [aria-describedby] {
+    & {
+      position: relative;
+    }
+
     + [role="tooltip"] {
-      visibility: hidden;
+      // visibility: hidden;
+      display: none;
     }
   }
-  & [role="tooltip"],
-  &:hover [role="tooltip"],
-  [aria-describedby]:focus + [role="tooltip"],
-  [aria-describedby]:hover + [role="tooltip"] {
+
+  [aria-describedby][aria-expanded='true'] {
+    + [role="tooltip"] {
       visibility: visible;
+      display: block;
+    }
   }
 }
 
 button.uds-tooltip {
-  background: none;
+  background: #f007;
   color: inherit;
   border: none;
   padding: 0;
@@ -63,12 +59,9 @@ button.uds-tooltip {
     vertical-align: middle;
   }
 
-  &:focus {
-    @include focusState();
-  }
-  @include media-breakpoint-up(sm) {
-    &:hover {
-      @include focusState();
+  &[aria-expanded='true'] {
+    .fa-circle {
+      color: $uds-color-font-light-info;
     }
   }
 }
@@ -103,23 +96,23 @@ button.uds-tooltip-dark {
   }
 }
 
-div[role='tooltip'].uds-tooltip-description:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: calc(-1 * var(--tooltip-offset));
-  right: 100%;
-}
-ddiv[role='tooltip'].uds-tooltip-description:after {
-  content: '';
-  position: absolute;
-  top: calc(-1 * var(--tooltip-offset));
-  bottom: 100%;
-  left: 0;
-  right: 0;
-  background-color: #f001;
-}
+// div[role='tooltip'].uds-tooltip-description:before {
+//   content: '';
+//   position: absolute;
+//   top: 0;
+//   bottom: 0;
+//   left: calc(-1 * var(--tooltip-offset));
+//   right: 100%;
+// }
+// div[role='tooltip'].uds-tooltip-description:after {
+//   content: '';
+//   position: absolute;
+//   top: calc(-1 * var(--tooltip-offset));
+//   bottom: 100%;
+//   left: 0;
+//   right: 0;
+//   background-color: #f001;
+// }
 
 div[role='tooltip'].uds-tooltip-description {
   background: $asu-gray-1 0% 0% no-repeat padding-box;
@@ -135,8 +128,14 @@ div[role='tooltip'].uds-tooltip-description {
   top: 0;
   justify-self: start;
   align-self: end;
-  visibility: hidden;
+  // visibility: hidden;
   z-index: 1;
+
+  &.bottom-placement {
+    left: unset;
+    top: calc(100% + var(--tooltip-offset));
+    right: 0;
+  }
 
   & > span.uds-tooltip-heading {
     color: $asu-gray-7;

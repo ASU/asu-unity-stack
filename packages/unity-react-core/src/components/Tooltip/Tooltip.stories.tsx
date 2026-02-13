@@ -23,11 +23,16 @@ export default {
     story => (
       <>
         <div style={{ margin: "100px 10px" }}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. {story()} Sed
-          Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+          Lorem ipsum dolor <button tabIndex={0}>Focus</button>sit amet,
+          consectetur adipiscing elit.
+          {story()} Sed Sed do eiusmod tempor incididunt
+          <button tabIndex={0}>Focus</button>
+          ut labore et dolore magna aliqua. Ut
           enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-          ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+          ut aliquip ex ea commodo <button tabIndex={0}>Focus</button>consequat. Duis aute irure dolor in
+          {story()} Sed Sed do eiusmod tempor incididunt
           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          ut aliquip ex ea commodo <button tabIndex={0}>Focus</button>consequat. Duis aute irure dolor in
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
         </div>
