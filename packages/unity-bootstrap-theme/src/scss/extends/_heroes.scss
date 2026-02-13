@@ -375,7 +375,7 @@ div.uds-hero-lg {
   }
 
   div.uds-hero-sm {
-    grid-template-rows: 0px 1fr 0px auto;
+    grid-template-rows: 0px 1fr auto auto;
 
     > a.btn {
       position: relative;
