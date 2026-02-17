@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import React, { useRef, useEffect, useMemo } from "react";
 
 import { useAppContext } from "../../../../core/context/app-context";
+import { CLASS_NAMES, buildClassName, getDropdownClass } from "../../../../core/constants/classNames";
 import { useIsMobile } from "../../../../core/hooks/isMobile";
 import { NavTreePropTypes } from "../../../../core/models/app-prop-types";
 import { DropdownItem } from "../DropdownItem";
@@ -35,8 +36,8 @@ const NavLinkIcon = ({ children }) => {
   return (
     <>
       {/* @ts-ignore */}
-      <FontAwesomeIcon icon={faHome} className="icon-nav-item" alt="" />
-      <span className="mobile-only">{children}</span>
+      <FontAwesomeIcon icon={faHome} className={CLASS_NAMES.ICON_NAV_ITEM} alt="" />
+      <span className={CLASS_NAMES.MOBILE_ONLY}>{children}</span>
     </>
   );
 };
@@ -98,7 +99,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
           <FontAwesomeIcon
             // @ts-ignore
             icon={faChevronDown}
-            className={`chevron-icon ${opened ? "open" : ""}`}
+            className={buildClassName(CLASS_NAMES.CHEVRON_ICON, opened && CLASS_NAMES.OPEN)}
             // @ts-ignore
             alt=""
           />
@@ -164,7 +165,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
       if (key === "ArrowDown" || key === "ArrowRight") {
         if (opened) {
           const dropdownItems = document.querySelectorAll(
-            `.header-dropdown-${link.id} li.nav-link a`
+            `.${getDropdownClass(link.id)} li.${CLASS_NAMES.NAV_LINK} a`
           );
           if (dropdownItems.length) {
             dropdownItems[0].focus();
@@ -204,9 +205,11 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
         {...(link.items ? { "aria-expanded": opened } : {})}
         {...(!link.href ? { tabIndex: 0 } : {})}
         aria-owns={link.items ? `dropdown-${link.id}` : null}
-        className={`${link.class ? link.class : ""}${
-          link.selected ? " nav-item-selected" : ""
-        }${opened ? " open-link" : ""}`}
+        className={buildClassName(
+          link.class,
+          link.selected && CLASS_NAMES.NAV_ITEM_SELECTED,
+          opened && CLASS_NAMES.OPEN_LINK
+        )}
         data-testid="nav-item"
         title={
           link.type === "icon-home" && title ? `${title} home page` : link.text
@@ -222,7 +225,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
           buttons={link.buttons}
           // @ts-ignore
           dropdownName={link.text}
-          classes={`header-dropdown-${link.id} ${opened ? "opened" : ""}`}
+          classes={buildClassName(getDropdownClass(link.id), opened && CLASS_NAMES.OPENED)}
           listId={`dropdown-${link.id}`}
           setItemOpened={setItemOpened}
           parentLink={parentLink?.current}

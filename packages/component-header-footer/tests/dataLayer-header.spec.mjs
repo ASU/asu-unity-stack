@@ -3,6 +3,14 @@ import { test, expect } from '@playwright/test';
 const STORYBOOK_URL = 'http://localhost:9080';
 const STORY_ID = 'uds-asu-header--default';
 
+// Class names from src/header/core/constants/classNames.js
+// Duplicated here because Node.js treats .js as commonjs
+const CLASS_PREFIX = 'uds-hdr-';
+const CLASS_NAMES = {
+  NAV_LIST: `${CLASS_PREFIX}nav-list`,
+  HEADER_DROPDOWN: id => `${CLASS_PREFIX}header-dropdown-${id}`,
+};
+
 async function getLatestLinkEvent(page) {
   return await page.evaluate(() => {
     if (!window.dataLayer) return null;
@@ -17,14 +25,14 @@ test.describe('GTM dataLayer events for ASUHeader', () => {
 
     await page.waitForSelector('[data-testid="navigation"]');
 
-    const navLinks = await page.$$('.nav-list a');
-    expect(navLinks.length).toBeGreaterThan(0);
+    const navLinks = page.locator(`.${CLASS_NAMES.NAV_LIST} a`);
+    expect(await navLinks.count()).toBeGreaterThan(0);
 
     const dataLayerInit = await page.evaluate(() => Array.isArray(window.dataLayer));
     expect(dataLayerInit).toBe(true);
-    const navText = await navLinks[1].textContent();
+    const navText = await navLinks.nth(1).textContent();
 
-    await navLinks[1].click();
+    await navLinks.nth(1).click();
     let event = await getLatestLinkEvent(page);
     expect(event).not.toBeNull();
     expect(event.event).toBe('collapse');
@@ -44,16 +52,16 @@ test.describe('GTM dataLayer events for ASUHeader', () => {
       });
     });
 
-    const navLinks = await page.$$('.nav-list a');
-    expect(navLinks.length).toBeGreaterThan(1);
-    await navLinks[1].click();
+    const navLinks = page.locator(`.${CLASS_NAMES.NAV_LIST} a`);
+    expect(await navLinks.count()).toBeGreaterThan(1);
+    await navLinks.nth(1).click();
 
-    const dropdownLinks = await page.$$('.header-dropdown-1 a');
+    const dropdownLinks = page.locator(`.${CLASS_NAMES.HEADER_DROPDOWN(1)} a`);
 
-    expect(dropdownLinks.length).toBeGreaterThan(0);
-    const dropdownText = await dropdownLinks[0].textContent();
+    expect(await dropdownLinks.count()).toBeGreaterThan(0);
+    const dropdownText = await dropdownLinks.first().textContent();
 
-    await dropdownLinks[0].click();
+    await dropdownLinks.first().click();
     let event = await getLatestLinkEvent(page);
     expect(event).not.toBeNull();
     expect(event.event).toBe('link');

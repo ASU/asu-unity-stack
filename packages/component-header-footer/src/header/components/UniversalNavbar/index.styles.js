@@ -1,23 +1,24 @@
 import styled from "styled-components";
 import { ASU_GRAY6, ASU_GRAY1, ASU_GRAY5 } from "../../colors";
+import { CLASS_NAMES } from "../../core/constants/classNames";
 
 const Wrapper = styled.div`
   background-color: ${ASU_GRAY6};
   padding: 0.5rem 0rem;
   transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
-  .header-top {
+  .${CLASS_NAMES.HEADER_TOP} {
     height: 100%;
     .nav {
       height: 100%;
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      .links-container {
+      .${CLASS_NAMES.LINKS_CONTAINER} {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 1.5rem;
-        .nav-link {
+        .${CLASS_NAMES.NAV_LINK} {
           color: ${ASU_GRAY1};
           font-size: 0.75rem;
           line-height: 1;
@@ -48,7 +49,7 @@ const Wrapper = styled.div`
     min-height: auto;
     position: relative;
     padding: 0;
-    .header-top {
+    .${CLASS_NAMES.HEADER_TOP} {
       width: 100%;
       .nav {
         width: 100%;
@@ -57,7 +58,7 @@ const Wrapper = styled.div`
         justify-content: flex-start;
         align-items: center;
         flex-direction: column-reverse;
-        .links-container {
+        .${CLASS_NAMES.LINKS_CONTAINER} {
           display: grid;
           grid-template-columns: 1fr 1fr;
           grid-auto-flow: row;
@@ -66,7 +67,7 @@ const Wrapper = styled.div`
           gap: 0;
           border-top: 1px solid ${ASU_GRAY5};
           border-left: 1px solid ${ASU_GRAY5};
-          .nav-link {
+          .${CLASS_NAMES.NAV_LINK} {
             white-space: normal;
             margin-right: 0;
             text-align: center;
