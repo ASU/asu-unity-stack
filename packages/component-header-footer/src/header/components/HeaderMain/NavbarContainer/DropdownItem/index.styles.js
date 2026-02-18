@@ -8,6 +8,7 @@ import {
 import { CLASS_NAMES } from "../../../../core/constants/classNames";
 
 const DropdownWrapper = styled.div`
+  --gap: 2rem;
   position: fixed;
   background-color: ${ASU_WHITE};
   border: 1px solid ${ASU_GRAY5};
@@ -19,9 +20,8 @@ const DropdownWrapper = styled.div`
     visibility: visible;
   }
   &.mega {
-    width: 100%;
-    left: 0;
-    margin-left: 0 !important;
+    width: min(1200px, 100%);
+    left: calc((100% - 1200px) / 2);
   }
   &.aligned-right:not(.mega) {
     position: absolute;
@@ -30,17 +30,23 @@ const DropdownWrapper = styled.div`
   > .${CLASS_NAMES.DROPDOWN_CONTAINER} {
     max-width: 1200px;
     margin: 0 auto;
+    max-height: 50vh;
+    overflow-y: auto;
+    overflow-x: hidden;
     display: flex;
-    justify-content: center;
-    padding: 2rem;
-    ul {
-      width: 16rem;
-      max-width: 282px;
+    justify-content: stretch;
+
+    .${CLASS_NAMES.DROPDOWN_CONTAINER_COLUMN} {
+      --span: 1; /* component overrides using inline style */
+      --col: 1; /* component overrides using inline style */
+      width: calc(1200px / var(--cols) * var(--span));
+      padding: var(--gap);
       display: flex;
       flex-direction: column;
+      justify-content: flex-start;
+      row-gap: var(--gap);
+
       &:not(:last-child) {
-        padding-right: 2rem;
-        margin-right: 2rem;
         border-right: 1px solid ${ASU_GRAY5};
       }
       .${CLASS_NAMES.UL_HEADING} {
@@ -50,11 +56,15 @@ const DropdownWrapper = styled.div`
         font-weight: 700;
         text-align: left;
         opacity: 1;
-        margin: 1rem 0;
+        margin: 0;
+        margin-bottom: -1.5rem;
         line-height: calc(100% + 0.12em);
       }
       .${CLASS_NAMES.NAV_LINK} {
         padding: 0;
+        flex-basis: calc(
+          (100% / var(--span)) - var(--ul-gap) * (var(--span) - 1) / var(--span)
+        );
         a {
           width: 100%;
           display: inline-block;
@@ -68,8 +78,9 @@ const DropdownWrapper = styled.div`
           }
         }
         & + .${CLASS_NAMES.NAV_BUTTON} {
+          width: 100%;
           margin-top: auto;
-          padding-top: 2rem;
+          padding-top: var(--gap);
           & + .${CLASS_NAMES.NAV_BUTTON} {
             margin-top: 1rem;
           }
@@ -77,15 +88,23 @@ const DropdownWrapper = styled.div`
       }
     }
   }
+
+  .${CLASS_NAMES.NAV_BUTTON} {
+    flex: 1 1;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    width: fit-content;
+  }
   .${CLASS_NAMES.DROPDOWN_BUTTON_CONTAINER} {
-    border-top: 1px solid ${ASU_GRAY5};
-    border-bottom: 1px solid ${ASU_GRAY5};
-    margin-top: 1rem;
+    border-top: 1px solid #d0d0d0;
+    border-bottom: 1px solid #d0d0d0;
     > div {
       max-width: 1200px;
       margin: 0 auto;
       display: flex;
-      padding: 1rem 0;
+      padding: 1rem 2rem;
     }
   }
   @media (max-width: ${({ breakpoint }) => breakpoint}) {
@@ -99,12 +118,19 @@ const DropdownWrapper = styled.div`
     }
     > .${CLASS_NAMES.DROPDOWN_CONTAINER} {
       max-width: 100%;
+      max-height: unset;
+      overflow-y: unset;
+      overflow-x: unset;
       padding: 1rem 2rem;
       flex-direction: column;
+
+      .${CLASS_NAMES.DROPDOWN_CONTAINER_COLUMN} {
+        width: 100%;
+      }
       ul {
         width: 100%;
         max-width: 100%;
-        padding: 0 1rem;
+        padding: 0;
         margin-bottom: 1rem;
         &:not(:last-child) {
           padding-right: 1rem;
@@ -118,6 +144,7 @@ const DropdownWrapper = styled.div`
           padding-top: 1.5rem;
         }
         .${CLASS_NAMES.NAV_LINK} {
+          flex-basis: 100%;
           padding: 0 1rem;
           &:not(:last-child) {
             border-bottom: 1px solid ${ASU_GRAY5};

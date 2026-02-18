@@ -1,6 +1,6 @@
 // @ts-check
 import { trackGAEvent } from "@asu/shared";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import mobileMenuSearchIcon from "../../../../public/assets/icons/menu-search-icon.png?inline";
@@ -24,6 +24,15 @@ const HeaderMain = () => {
   const handleChangeMenuVisibility = () => {
     setMobileMenuOpen(prevState => !prevState);
   };
+
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? "hidden" : "unset";
+
+    // Clean up function to re-enable scrolling
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [mobileMenuOpen]);
 
   const handleClickMobileMenu = () => {
     handleChangeMenuVisibility();
