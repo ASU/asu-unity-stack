@@ -21,7 +21,7 @@ const defaultArgs = {
       />
       Indicates required field
     </label>
-    <br/>
+    <br />
     <TextInput label="First name" required={true} />
     <TextInput label="Last name" required={true} />
     <Select id="text" label="Options" required={true} options={options} />
