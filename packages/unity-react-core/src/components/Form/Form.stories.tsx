@@ -14,13 +14,13 @@ const options: OptionProps[] = [
 
 const defaultArgs = {
   children: <>
-    <label style={{ fontWeight: 'normal' }}>
+    <p>
       <span
         title="Required"
         className="fa fa-icon fa-circle uds-field-required"
       />
       Indicates required field
-    </label>
+    </p>
     <br />
     <TextInput label="First name" required={true} />
     <TextInput label="Last name" required={true} />
