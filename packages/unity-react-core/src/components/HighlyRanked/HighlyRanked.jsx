@@ -8,8 +8,9 @@ import { Button } from "../Button/Button";
 /**
  * @typedef {Object} RankingItem
  * @property {string} value - The main ranking value (e.g., "400+", "#2")
- * @property {string} title - The title of the ranking (e.g., "‘prestigious faculty’")
+ * @property {string} title - The title of the ranking (e.g., "'prestigious faculty'")
  * @property {string} description - The description of the ranking
+ * @property {"h1" | "h2" | "h3" | "h4" | "h5"} [headingLevel] - Heading size class applied to the value (visual only, does not change the HTML element)
  */
 
 /**
@@ -70,11 +71,15 @@ export const HighlyRanked = ({
               <div className="highly-ranked-card">
                 <div className="ranking-value-container">
                   <h3 className="ranking-value">
-                    <span className="ranking-value-main">
+                    <span
+                      className={`ranking-value-main${ranking.headingLevel ? ` ${ranking.headingLevel}` : ""}`}
+                    >
                       {ranking.value}
                     </span>
                     {ranking.title && (
-                      <span className="ranking-value-subsection">{ranking.title}</span>
+                      <span className="ranking-value-subsection">
+                        {ranking.title}
+                      </span>
                     )}
                   </h3>
                 </div>
@@ -108,6 +113,7 @@ HighlyRanked.propTypes = {
       value: PropTypes.string.isRequired,
       title: PropTypes.string,
       description: PropTypes.string,
+      headingLevel: PropTypes.oneOf(["h1", "h2", "h3", "h4", "h5"]),
     })
   ),
   ctaButtonColor: PropTypes.oneOf(["dark", "gold", "maroon", "gray"]),

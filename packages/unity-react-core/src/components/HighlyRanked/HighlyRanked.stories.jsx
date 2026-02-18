@@ -18,7 +18,7 @@ Default.args = {
   rankings: [
     {
       value: "400+",
-      title: "‘prestigious faculty’",
+      title: "'prestigious faculty'",
       description: "National Academies-honored faculty",
     },
     {
@@ -35,7 +35,7 @@ Default.args = {
     {
       value: "$6.1",
       title: "billion",
-      description: "FY24 economic impact on the state’s gross product",
+      description: "FY24 economic impact on the state's gross product",
     },
     {
       value: "Top 10",
@@ -56,11 +56,45 @@ Default.args = {
       value: "Association of American Universities (AAU) member",
       title: "",
       description: "Along with Harvard, Stanford and MIT",
+      headingLevel: "h2",
     },
     {
       value: "Top producer of elite scholars",
       title: "",
       description: "For 10 consecutive years",
+      headingLevel: "h2",
+    },
+  ],
+};
+
+export const MixedValueSizes = Template.bind({});
+MixedValueSizes.args = {
+  ...Default.args,
+  rankings: [
+    {
+      value: "400+",
+      title: "'prestigious faculty'",
+      description: "National Academies-honored faculty",
+      headingLevel: "h1",
+    },
+    {
+      value: "#2",
+      title: "in the U.S. for employability",
+      description: "among public universities",
+      headingLevel: "h3",
+    },
+    {
+      value: "83",
+      title: "top-ranked programs",
+      description:
+        "Ranked in the top 25 in the U.S., including 38 in the top 10",
+      headingLevel: "h4",
+    },
+    {
+      value: "$6.1",
+      title: "billion",
+      description: "FY24 economic impact on the state's gross product",
+      headingLevel: "h5",
     },
   ],
 };
