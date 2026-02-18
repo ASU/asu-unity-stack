@@ -1,7 +1,7 @@
 // @ts-check
 import React from "react";
 import { ContentSpotlight } from "./ContentSpotlight";
-import {imageName} from "@asu/shared";
+import { imageName } from "@asu/shared";
 
 export default {
   title: "Components/ContentSpotlight",

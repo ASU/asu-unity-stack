@@ -5,7 +5,6 @@ import { CardArrangement } from "./CardArrangement";
 
 const img1 = imageAny();
 
-
 export default {
   title: "Components/Card Arrangement",
   component: CardArrangement,
@@ -198,25 +197,28 @@ const imageCards = [
     src: img1,
     alt: "Image card 1",
     captionTitle: "Image Card One",
-    caption: "This is the body content for the first image card with dropshadow and with cardLink prop provided. Card acts as anchor/link",
+    caption:
+      "This is the body content for the first image card with dropshadow and with cardLink prop provided. Card acts as anchor/link",
     border: true,
     dropShadow: true,
     cardLink: "https://example.com",
-    title: "example"
+    title: "example",
   },
   {
     type: "image",
     src: img1,
     alt: "Image card 2",
     captionTitle: "Image Card Two",
-    caption: "This is the body content for the second image card with no border",
+    caption:
+      "This is the body content for the second image card with no border",
   },
   {
     type: "image",
     src: img1,
     alt: "Image card 3",
     captionTitle: "Image Card Three",
-    caption: "This is the body content for the third image card with no drop shadow.",
+    caption:
+      "This is the body content for the third image card with no drop shadow.",
     border: true,
     dropShadow: false,
   },
