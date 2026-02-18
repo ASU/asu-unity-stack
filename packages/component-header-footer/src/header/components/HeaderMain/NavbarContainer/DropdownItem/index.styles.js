@@ -49,6 +49,8 @@ const DropdownWrapper = styled.div`
       &:not(:last-child) {
         border-right: 1px solid ${ASU_GRAY5};
       }
+    }
+
       .${CLASS_NAMES.UL_HEADING} {
         margin-top: 0;
         font-size: 1.5rem;
@@ -60,6 +62,18 @@ const DropdownWrapper = styled.div`
         margin-bottom: -1.5rem;
         line-height: calc(100% + 0.12em);
       }
+    ul {
+      --ul-gap: 1rem;
+      &:is(:last-child) {
+        flex-grow: 0;
+      }
+      margin: 0;
+      width: calc(1200px / var(--cols, 1) * var(--span, 1) - var(--gap) * 2);
+      // max-width: 282px;
+      display: flex;
+      flex-direction: row;
+      column-gap: var(--ul-gap);
+      flex-wrap: wrap;
       .${CLASS_NAMES.NAV_LINK} {
         padding: 0;
         flex-basis: calc(
