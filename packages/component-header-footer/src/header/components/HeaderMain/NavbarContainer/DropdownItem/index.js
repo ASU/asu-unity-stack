@@ -26,7 +26,7 @@ HeadingItem.propTypes = {
 };
 
 const ButtonItem = ({ link, dropdownName, handleLinkEvent }) => (
-  <li className={CLASS_NAMES.NAV_BUTTON}>
+  <div className={CLASS_NAMES.NAV_BUTTON}>
     <Button
       text={link.text}
       color={link.color || "maroon"}
