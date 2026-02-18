@@ -54,4 +54,3 @@ export const Overview = {
   render: formTemplate.bind({}),
   name: "Form",
 };
-
