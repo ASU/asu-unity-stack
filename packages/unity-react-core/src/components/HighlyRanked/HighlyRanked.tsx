@@ -1,33 +1,25 @@
-// @ts-check
 import { sanitizeDangerousMarkup } from "@asu/shared";
-import PropTypes from "prop-types";
 import React from "react";
 
 import { Button } from "../Button/Button";
 
-/**
- * @typedef {Object} RankingItem
- * @property {string} value - The main ranking value (e.g., "400+", "#2")
- * @property {string} title - The title of the ranking (e.g., "'prestigious faculty'")
- * @property {string} description - The description of the ranking
- * @property {"h1" | "h2" | "h3" | "h4" | "h5"} [headingLevel] - Heading size class applied to the value (visual only, does not change the HTML element)
- */
+export interface RankingItem {
+  value: string;
+  title?: string;
+  description?: string;
+  headingLevel?: "h1" | "h2" | "h3" | "h4" | "h5";
+}
 
-/**
- * @typedef {Object} HighlyRankedProps
- * @property {string} [title] - The section title
- * @property {string} [description] - The section description
- * @property {string} [ctaText] - The text for the CTA button
- * @property {string} [ctaUrl] - The URL for the CTA button
- * @property {"dark" | "gold" | "maroon" | "gray"} [ctaButtonColor] - The color of the CTA button
- * @property {RankingItem[]} [rankings] - The list of rankings to display
- */
+export interface HighlyRankedProps {
+  title?: string;
+  description?: string;
+  ctaText?: string;
+  ctaUrl?: string;
+  ctaButtonColor?: "dark" | "gold" | "maroon" | "gray";
+  rankings?: RankingItem[];
+}
 
-/**
- * @param {HighlyRankedProps} props
- * @returns {JSX.Element}
- */
-export const HighlyRanked = ({
+export const HighlyRanked: React.FC<HighlyRankedProps> = ({
   title = "Highly ranked",
   description = "",
   ctaText = "",
@@ -72,7 +64,7 @@ export const HighlyRanked = ({
                 <div className="ranking-value-container">
                   <h3 className="ranking-value">
                     <span
-                      className={`ranking-value-main${ranking.headingLevel ? ` ${ranking.headingLevel}` : ""}`}
+                      className={`ranking-value-main${ranking.headingLevel ? ` ${ranking.headingLevel}` : " h1"}`}
                     >
                       {ranking.value}
                     </span>
@@ -101,20 +93,4 @@ export const HighlyRanked = ({
       </div>
     </section>
   );
-};
-
-HighlyRanked.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  ctaText: PropTypes.string,
-  ctaUrl: PropTypes.string,
-  rankings: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.string.isRequired,
-      title: PropTypes.string,
-      description: PropTypes.string,
-      headingLevel: PropTypes.oneOf(["h1", "h2", "h3", "h4", "h5"]),
-    })
-  ),
-  ctaButtonColor: PropTypes.oneOf(["dark", "gold", "maroon", "gray"]),
 };
