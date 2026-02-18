@@ -11,7 +11,12 @@ import { ColumnSection } from "../ColumnSection";
  */
 
 const Contact = ({
-  contact: { title = "", contactLink = "", contributionLink = "", columns = []},
+  contact: {
+    title = "",
+    contactLink = "",
+    contributionLink = "",
+    columns = [],
+  },
 }) => {
   return (
     <div className="wrapper" id="wrapper-footer-columns" data-testid="contact">

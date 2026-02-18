@@ -29,7 +29,9 @@ const Search = () => {
   const [hasInputValue, setHasInputValue] = useState(false);
 
   useEffect(() => {
-    if (open && inputRef.current) inputRef.current.focus();
+    if (open && typeof inputRef?.current?.focus === "function") {
+      inputRef.current.focus();
+    }
   }, [open]);
 
   /**
@@ -92,18 +94,20 @@ const Search = () => {
     >
       {!isMobile ? (
         <>
-          {!open && (
-            <button
-              type="button"
-              aria-label="Search asu.edu"
-              onClick={handleChangeVisibility}
-              className={CLASS_NAMES.SEARCH_BUTTON}
-              data-testid="search-button"
-            >
-              <span>Search</span>
-              <FontAwesomeIcon icon={faSearch} />
-            </button>
-          )}
+        {
+          !open && (
+          <button
+            type="button"
+            aria-label="Search asu.edu"
+            onClick={handleChangeVisibility}
+            className={CLASS_NAMES.SEARCH_BUTTON}
+            data-testid="search-button"
+          >
+            <span
+            >Search</span>
+            <FontAwesomeIcon icon={faSearch} />
+          </button>
+)}
           {open && (
             <>
               <SearchInput

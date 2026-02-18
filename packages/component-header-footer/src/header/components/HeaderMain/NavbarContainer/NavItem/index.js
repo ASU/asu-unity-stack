@@ -147,28 +147,30 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
     if (navigableKeys.includes(key)) {
       e.preventDefault();
       if (key === "Escape" && opened) {
+        if (typeof clickRef?.current?.focus === "function") {
+          clickRef.current.focus();
+        }
         setItemOpened();
         return;
       }
       // Handle Enter or Space key
       if (key === "Enter" || key === " ") {
         if (link.items) {
-          if (!expandOnHover && !isMobile) {
-            setItemOpened();
-          } else if (isMobile) {
-            setItemOpened();
-          }
+          // Regardless of state or props mobile/desktop/hover/click
+          // if the item has a dropdown, we want to toggle it on Enter/Space
+          setItemOpened();
         }
         dispatchGAEvent();
         link.onClick?.(e);
       }
       if (key === "ArrowDown" || key === "ArrowRight") {
         if (opened) {
-          const dropdownItems = document.querySelectorAll(
+          // Only need first matching item
+          const dropdownItem = document.querySelector(
             `.${getDropdownClass(link.id)} li.${CLASS_NAMES.NAV_LINK} a`
           );
-          if (dropdownItems.length) {
-            dropdownItems[0].focus();
+          if (typeof dropdownItem?.focus === "function") {
+            dropdownItem.focus();
           }
         }
       }
@@ -228,7 +230,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
           classes={buildClassName(getDropdownClass(link.id), opened && CLASS_NAMES.OPENED)}
           listId={`dropdown-${link.id}`}
           setItemOpened={setItemOpened}
-          parentLink={parentLink?.current}
+          parentLink={parentLink}
         />
       )}
     </NavItemWrapper>

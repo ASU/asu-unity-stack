@@ -15,7 +15,12 @@ const GaEventPropTypes = {
   text: PropTypes.string,
 };
 
-const RfiLabel = ({ label, name, id = undefined, requiredIcon = undefined }) => (
+const RfiLabel = ({
+  label,
+  name,
+  id = undefined,
+  requiredIcon = undefined,
+}) => (
   <label htmlFor={id || name}>
     {requiredIcon && (
       <>

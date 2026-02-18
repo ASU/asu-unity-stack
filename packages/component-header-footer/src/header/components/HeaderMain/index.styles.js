@@ -47,7 +47,6 @@ const HeaderMainWrapper = styled.div`
       justify-content: space-between;
       &.${CLASS_NAMES.PARTNER} {
         flex-direction: row-reverse;
-        flex-wrap: nowrap;
       }
     }
     .${CLASS_NAMES.PARTNER} .${CLASS_NAMES.CONTENT_CONTAINER} {
@@ -80,6 +79,7 @@ const HeaderMainWrapper = styled.div`
       cursor: pointer;
       min-width: 44px;
       min-height: 44px;
+      padding: 0.25rem 0.45rem;
 
       .${CLASS_NAMES.MENU_SEARCH_ICON} {
         display: none;
