@@ -66,10 +66,17 @@
           display: block;
           border-left: 8px solid $gold;
           padding-left: $uds-size-spacing-2;
+          margin: 0;
 
           @media (max-width: map-get($grid-breakpoints, "md")) {
             padding-left: $uds-size-spacing-3;
           }
+
+          &.h1 { font-size: $h1-font-size; }
+          &.h2 { font-size: $h2-font-size; }
+          &.h3 { font-size: $h3-font-size; }
+          &.h4 { font-size: $h4-font-size; }
+          &.h5 { font-size: $h5-font-size; }
         }
 
         .ranking-value-subsection {
