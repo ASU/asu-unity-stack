@@ -28,14 +28,15 @@ HeadingItem.propTypes = {
 };
 
 const ButtonItem = ({ link, dropdownName, handleLinkEvent }) => (
-  <li className={CLASS_NAMES.NAV_BUTTON}>
+  <div className={CLASS_NAMES.NAV_BUTTON}>
     <Button
       text={link.text}
-      color={link.color || "dark"}
+      color={link.color || "maroon"}
       href={link.href}
       onClick={e => handleLinkEvent(e, link)}
+      onKeyDown={e => handleLinkEvent(e, link)}
     />
-  </li>
+  </div>
 );
 
 ButtonItem.propTypes = {
@@ -74,7 +75,7 @@ LinkItem.propTypes = {
  * @typedef { import("../../../../core/models/types").Button } Button
  * @typedef {{
  *  dropdownName: string
- *  items: [object][]
+ *  items: Array<Array<object>>
  *  buttons: Button[]
  *  classes?: string,
  *  listId: string
@@ -97,7 +98,12 @@ const DropdownItem = ({
   parentLink,
 }) => {
   const { breakpoint } = useAppContext();
-  const isMega = items?.length > 2;
+  let cols = 0;
+  items.map(lists => {
+    cols += lists[0].span || 1;
+  });
+
+  const isMega = cols > 2;
   /**
    * @type {React.MutableRefObject<HTMLDivElement|null>}
    */
@@ -121,14 +127,13 @@ const DropdownItem = ({
 
     const focusNextLink = () => {
       const nextLink = parentElement.nextElementSibling?.firstChild;
-      if (nextLink) nextLink.focus();
+      if (typeof nextLink?.focus === "function") nextLink.focus();
     };
 
     const focusPrevLink = () => {
       const prevLink = parentElement.previousElementSibling?.firstChild;
-      if (prevLink) prevLink.focus();
+      if (typeof prevLink?.focus === "function") prevLink.focus();
     };
-
     stopPropagation(e);
 
     if (key === "ArrowDown") {
@@ -139,7 +144,9 @@ const DropdownItem = ({
       focusPrevLink();
     } else if (key === "Escape") {
       setItemOpened();
-      if (parentLink?.current) parentLink.current.focus();
+      if (typeof parentLink?.current?.focus === "function") {
+        parentLink.current.focus();
+      }
     } else if (key === "Enter" || key === " " || type === "click") {
       link?.onClick?.(e);
       trackGAEvent({ ...LINK_DEFAULT_PROPS, text: link.text });
@@ -147,7 +154,7 @@ const DropdownItem = ({
   };
 
   const renderItem = (link, index) => {
-    const key = `${link.text}-${link.href || index}`;
+    const key = `${link.text}-${link.href}-${index}`;
     if (link.type === "heading")
       return <HeadingItem key={key} text={link.text} />;
     if (link.type === "button")
@@ -178,6 +185,7 @@ const DropdownItem = ({
       breakpoint={breakpoint}
     >
       <div
+<<<<<<< HEAD
         id={MULTIPLE_SUBMENUS ? listId : ""}
         className={CLASS_NAMES.DROPDOWN_CONTAINER}
       >
@@ -190,6 +198,67 @@ const DropdownItem = ({
             </ul>
           );
         })}
+=======
+        style={{ "--cols": cols < 3 ? 4 : cols }}
+        id={MULTIPLE_SUBMENUS ? listId : ""}
+        className={CLASS_NAMES.DROPDOWN_CONTAINER}
+      >
+        <>
+          {items?.map((item, index0) => {
+            const genKey = idGenerator(`dropdown-item-${index0}-`);
+            const key = genKey.next().value;
+            return (
+              <div
+                className={CLASS_NAMES.DROPDOWN_CONTAINER_COLUMN}
+                style={{ "--span": item[0].span || 1 }}
+                key={`${listId}-${key}`}
+                id={MULTIPLE_SUBMENUS ? `${listId}-${key}` : listId}
+              >
+                {(() => {
+                  let currentUl = [];
+                  const uls = [];
+                  item.forEach((link, index) => {
+                    if (link.type === "heading") {
+                      if (currentUl.length > 0) {
+                        uls.push(currentUl);
+                        currentUl = [];
+                      }
+                      uls.push([link]);
+                    } else if (link.type === "button") {
+                      if (currentUl.length > 0) {
+                        uls.push(currentUl);
+                        currentUl = [];
+                      }
+                      uls.push([link]);
+                    } else {
+                      currentUl.push(link);
+                    }
+                  });
+
+                  if (currentUl.length > 0) {
+                    uls.push(currentUl);
+                  }
+
+                  return uls.map((group, groupIndex) => {
+                    const groupKey = `${key}-group-${groupIndex}`;
+                    if (group.length === 1 && group[0].type === "heading") {
+                      return renderItem(group[0], groupIndex);
+                    }
+                    if (group.length === 1 && group[0].type === "button") {
+                      return renderItem(group[0], groupIndex);
+                    }
+                    return (
+                      <ul key={groupKey}>
+                        {group.map((link, index) => renderItem(link, index))}
+                      </ul>
+                    );
+                  });
+                })()}
+              </div>
+            );
+          })}
+        </>
+>>>>>>> 2d6efe516 (feat(component-header-footer): add multi column dropdown, limit mega menu width)
       </div>
       {buttons && (
         <div className={CLASS_NAMES.DROPDOWN_BUTTON_CONTAINER}>
@@ -213,19 +282,20 @@ const DropdownItem = ({
 DropdownItem.propTypes = {
   dropdownName: PropTypes.string,
   items: PropTypes.arrayOf(
-    PropTypes.shape({
-      text: PropTypes.string,
-      selected: PropTypes.bool,
-      onClick: PropTypes.func,
-      href: PropTypes.string,
-    })
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        text: PropTypes.string,
+        selected: PropTypes.bool,
+        onClick: PropTypes.func,
+        href: PropTypes.string,
+      })
+    )
   ),
   buttons: PropTypes.arrayOf(PropTypes.shape(ButtonPropTypes)),
   classes: PropTypes.string,
   listId: PropTypes.string,
   setItemOpened: PropTypes.func,
   parentLink: PropTypes.shape({
-    focus: PropTypes.func,
     current: PropTypes.instanceOf(HTMLElement),
   }),
 };

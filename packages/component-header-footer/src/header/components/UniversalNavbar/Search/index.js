@@ -29,7 +29,9 @@ const Search = () => {
   const [hasInputValue, setHasInputValue] = useState(false);
 
   useEffect(() => {
-    if (open && inputRef.current) inputRef.current.focus();
+    if (open && typeof inputRef?.current?.focus === "function") {
+      inputRef.current.focus();
+    }
   }, [open]);
 
   /**

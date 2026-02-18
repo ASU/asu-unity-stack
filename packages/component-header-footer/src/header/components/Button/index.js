@@ -17,6 +17,7 @@ import { ButtonWrapper } from "./index.styles";
  * @param {string} props.text - The text content to display inside the button
  * @param {string} [props.classes] - Additional CSS classes to apply to the button
  * @param {function} [props.onClick] - Event handler function called when the button is clicked
+ * @param {function} [props.onKeyDown] - Event handler function called when a key is pressed while the button is focused
  * @param {function} [props.onFocus] - Event handler function called when the button receives focus
  * @param {string|React.Component} [props.as] - The element type or component to render as
  * @returns {JSX.Element} The rendered button component
@@ -27,6 +28,7 @@ const Button = ({
   text,
   classes,
   onClick,
+  onKeyDown,
   onFocus,
   as,
   ...props
@@ -35,8 +37,9 @@ const Button = ({
     <ButtonWrapper
       href={href}
       className={`button-${color} ${classes ?? ""}`}
-      onClick={onClick ? event => onClick(event) : undefined}
-      onFocus={onFocus ? event => onFocus(event) : undefined}
+      onClick={onClick}
+      onKeyDown={onKeyDown}
+      onFocus={onFocus}
       as={as}
       {...props}
     >
