@@ -281,45 +281,65 @@ export const AllVariants = () => (
   <div className="container-fluid">
     <div className="col col-sm-12 p-3">
       <h3>UDS Button Variants</h3>
-        <Button
-          label="Borderless"
-          variant="borderless"
-          color="gold"
-          onClick={handleClick}
-        />
-        <Button
-          label="Outline"
-          variant="outline"
-          color="gold"
-          onClick={handleClick}
-        />
-        <Button
-          label="Filled sm"
-          variant="filled"
-          color="gold"
-          onClick={handleClick}
-          size="small"
-        />
-        <Button
-          label="Filled md"
-          variant="filled"
-          color="gold"
-          onClick={handleClick}
-          size="medium"
-        />
-        <Button
-          label="Filled lg/default"
-          variant="filled"
-          color="gold"
-          onClick={handleClick}
-          size="large"
-        />
+      <Button
+        label="Borderless"
+        variant="borderless"
+        color="gold"
+        onClick={handleClick}
+      />
+      <Button
+        label="Outline"
+        variant="outline"
+        color="gold"
+        onClick={handleClick}
+      />
+      <Button
+        label="Filled sm"
+        variant="filled"
+        color="gold"
+        onClick={handleClick}
+        size="small"
+      />
+      <Button
+        label="Filled md"
+        variant="filled"
+        color="gold"
+        onClick={handleClick}
+        size="medium"
+      />
+      <Button
+        label="Filled lg/default"
+        variant="filled"
+        color="gold"
+        onClick={handleClick}
+        size="large"
+      />
       <h3>All Colors</h3>
       <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-        <Button label="Gold" variant="filled" color="gold" onClick={handleClick} />
-        <Button label="Maroon" variant="filled" color="maroon" onClick={handleClick} />
-        <Button label="Gray" variant="filled" color="gray" onClick={handleClick} />
-        <Button label="Dark" variant="filled" color="dark" onClick={handleClick} />
+        <Button
+          label="Gold"
+          variant="filled"
+          color="gold"
+          onClick={handleClick}
+        />
+        <Button
+          label="Maroon"
+          variant="filled"
+          color="maroon"
+          onClick={handleClick}
+        />
+        <Button
+          label="Gray"
+          variant="filled"
+          color="gray"
+          onClick={handleClick}
+        />
+        <Button
+          label="Dark"
+          variant="filled"
+          color="dark"
+          onClick={handleClick}
+        />
       </div>
     </div>
   </div>
@@ -332,4 +352,3 @@ AllVariants.parameters = {
   },
   controls: { disable: true },
 };
-
