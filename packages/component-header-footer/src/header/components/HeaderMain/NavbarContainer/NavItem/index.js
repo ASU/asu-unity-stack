@@ -71,25 +71,29 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
   const { breakpoint, expandOnHover, title } = useAppContext();
   const isMobile = useIsMobile(breakpoint);
 
-  useEffect(() => {
-    const handleClickOutside = event => {
-      if (opened && !clickRef?.current?.contains(event.target)) {
+  const handleClickOutside = event => {
+    if (opened && !clickRef?.current?.contains(event.target)) {
+      setItemOpened();
+    }
+  };
+
+  const handleFocusChange = () => {
+    requestAnimationFrame(() => {
+      const node = clickRef.current;
+
+      if (opened && node && !node.contains(document.activeElement)) {
         setItemOpened();
       }
-    };
-
-    const handleFocusChange = () => {
-      requestAnimationFrame(() => {
-        const node = clickRef.current;
-        if (opened && node && !node.contains(document.activeElement)) {
-          setItemOpened();
-        }
-      });
-    };
-
-    document.addEventListener("click", handleClickOutside, true);
-    document.addEventListener("focusin", handleFocusChange);
-
+    });
+  };
+  useEffect(() => {
+    if (opened) {
+      document.addEventListener("click", handleClickOutside, true);
+      document.addEventListener("focusin", handleFocusChange);
+    } else {
+      document.removeEventListener("click", handleClickOutside, true);
+      document.removeEventListener("focusin", handleFocusChange);
+    }
     return () => {
       document.removeEventListener("click", handleClickOutside, true);
       document.removeEventListener("focusin", handleFocusChange);
@@ -243,6 +247,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
             opened && CLASS_NAMES.OPENED
           )}
           listId={`dropdown-${link.id}`}
+          opened={opened}
           setItemOpened={setItemOpened}
           parentLink={parentLink}
         />
