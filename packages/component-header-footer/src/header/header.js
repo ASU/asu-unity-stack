@@ -1,7 +1,7 @@
 // @ts-check
 import { trackReactComponent } from "@asu/shared";
 import { throttle } from "@asu/shared/utils/timers";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { HeaderMain } from "./components/HeaderMain";
 import { AppContextProvider } from "./core/context/app-context";
@@ -51,6 +51,7 @@ const ASUHeader = ({
    * @type {React.MutableRefObject<HTMLDivElement?>}
    */
   const headerRef = useRef(null);
+  const [headerHeight, setHeaderHeight] = useState(150);
 
   const handleWindowScroll = () => {
     const curPos = window.scrollY;
@@ -60,6 +61,7 @@ const ASUHeader = ({
     } else {
       headerRef.current.classList.remove("scrolled");
     }
+    setHeaderHeight(headerRef.current.getBoundingClientRect().bottom);
   };
 
   useEffect(() => {
@@ -80,6 +82,12 @@ const ASUHeader = ({
       });
     }
   }, []);
+
+  useEffect(() => {
+    if (headerRef?.current) {
+      setHeaderHeight(headerRef.current.getBoundingClientRect().bottom);
+    }
+  }, [headerRef]);
 
   useEffect(() => {
     const throttledScroll = () => throttle(handleWindowScroll, 100);
@@ -125,6 +133,7 @@ const ASUHeader = ({
         mobileNavTree,
         hasNavigation: !!navTree?.length || !!mobileNavTree?.length,
         searchUrl,
+        headerHeight,
         site,
       }}
     >

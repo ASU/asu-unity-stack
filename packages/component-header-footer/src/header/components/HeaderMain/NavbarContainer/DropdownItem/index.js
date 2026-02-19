@@ -97,7 +97,7 @@ const DropdownItem = ({
   setItemOpened,
   parentLink,
 }) => {
-  const { breakpoint } = useAppContext();
+  const { breakpoint, headerHeight } = useAppContext();
   let cols = 0;
   items.map(lists => {
     cols += lists[0].span || 1;
@@ -183,6 +183,7 @@ const DropdownItem = ({
         isMega ? " mega" : ""
       }`}
       breakpoint={breakpoint}
+      headerHeight={headerHeight}
     >
       <div
 <<<<<<< HEAD
