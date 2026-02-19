@@ -1,3 +1,19 @@
+# [@asu/unity-react-core-v1.7.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.6.0...@asu/unity-react-core-v1.7.0) (2026-02-19)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** update to allow uds-field-required style for p tags for the correct display of fa-circle icons ([97c8330](https://github.com/ASU/asu-unity-stack/commit/97c8330d6e3562708512574944cc8b2e8d9fe8be))
+* **unity-react-core:** add subsection to h3 ([272dcac](https://github.com/ASU/asu-unity-stack/commit/272dcac50a7faa13c6fbe2573873c6053dc644b1))
+* **unity-react-core:** update default for headings ([d80b1f5](https://github.com/ASU/asu-unity-stack/commit/d80b1f5ae03f04745c2f9b7484109414f8dd5926))
+* **unity-react-core:** update highly ranked classes ([d6ec30c](https://github.com/ASU/asu-unity-stack/commit/d6ec30c6e14cb62941c4c2fdb73fdb90f3c9459d))
+* **unity-react-core:** updated props for highly ranked component ([117869e](https://github.com/ASU/asu-unity-stack/commit/117869e1a97f45efcd8fc2d44a264dd9c7c2efaa))
+
+
+### Features
+
+* **unity-react-core:** add new ranking card component ([0908bfe](https://github.com/ASU/asu-unity-stack/commit/0908bfeeda1c9d7343dc3375b1dfae111cc22145))
+
 # [@asu/unity-react-core-v1.6.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.5.0...@asu/unity-react-core-v1.6.0) (2026-02-10)
 
 
