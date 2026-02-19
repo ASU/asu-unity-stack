@@ -48,7 +48,7 @@ const DropdownWrapper = styled.div`
       row-gap: var(--gap);
 
       &:not(:last-child) {
-        border-right: 1px solid ${ASU_GRAY5};
+
       }
     }
 
@@ -141,6 +141,7 @@ const DropdownWrapper = styled.div`
 
       .${CLASS_NAMES.DROPDOWN_CONTAINER_COLUMN} {
         width: 100%;
+        border-right: unset;
       }
       ul {
         width: 100%;

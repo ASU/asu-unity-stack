@@ -79,6 +79,7 @@ LinkItem.propTypes = {
  *  buttons: Button[]
  *  classes?: string,
  *  listId: string
+ *  opened: boolean
  *  setItemOpened: Function
  *  parentLink: React.RefObject<HTMLElement> | null
  * }} DropdownItemProps
@@ -94,6 +95,7 @@ const DropdownItem = ({
   buttons,
   classes,
   listId,
+  opened,
   setItemOpened,
   parentLink,
 }) => {
@@ -118,6 +120,16 @@ const DropdownItem = ({
       setAlignedRight(elPosition > breakpointPosition);
     }
   }, []);
+  useEffect(() => {
+    if (opened && dropdownRef?.current?.parentElement) {
+      dropdownRef.current.parentElement.scrollIntoView(
+        /** @type {ScrollIntoViewOptions} */ {
+          behavior: "smooth",
+          block: "start",
+        }
+      );
+    }
+  }, [dropdownRef, opened]);
 
   const stopPropagation = e => e.stopPropagation();
 
@@ -295,6 +307,7 @@ DropdownItem.propTypes = {
   buttons: PropTypes.arrayOf(PropTypes.shape(ButtonPropTypes)),
   classes: PropTypes.string,
   listId: PropTypes.string,
+  opened: PropTypes.bool,
   setItemOpened: PropTypes.func,
   parentLink: PropTypes.shape({
     current: PropTypes.instanceOf(HTMLElement),
