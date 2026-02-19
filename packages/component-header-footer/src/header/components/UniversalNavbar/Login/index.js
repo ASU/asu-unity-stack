@@ -3,7 +3,10 @@ import { trackGAEvent } from "@asu/shared";
 import React from "react";
 
 import { useAppContext } from "../../../core/context/app-context";
-import { CLASS_NAMES, buildClassName } from "../../../core/constants/classNames";
+import {
+  CLASS_NAMES,
+  buildClassName,
+} from "../../../core/constants/classNames";
 import { LoginWrapper } from "./index.styles";
 
 const DEFAUL_GA_EVENT = {

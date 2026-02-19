@@ -19,7 +19,9 @@ const LINK_DEFAULT_PROPS = {
   text: "",
 };
 
-const HeadingItem = ({ text }) => <h3 className={CLASS_NAMES.UL_HEADING}>{text}</h3>;
+const HeadingItem = ({ text }) => (
+  <h3 className={CLASS_NAMES.UL_HEADING}>{text}</h3>
+);
 
 HeadingItem.propTypes = {
   text: PropTypes.string,
@@ -95,7 +97,7 @@ const DropdownItem = ({
   setItemOpened,
   parentLink,
 }) => {
-  const { breakpoint } = useAppContext();
+  const { breakpoint, headerHeight } = useAppContext();
   let cols = 0;
   items.map(lists => {
     cols += lists[0].span || 1;
@@ -181,6 +183,7 @@ const DropdownItem = ({
         isMega ? " mega" : ""
       }`}
       breakpoint={breakpoint}
+      headerHeight={headerHeight}
     >
       <div
         style={{ "--cols": cols < 3 ? 4 : cols }}

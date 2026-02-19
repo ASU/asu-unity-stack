@@ -50,8 +50,7 @@ const Header = styled.header`
       a.${CLASS_NAMES.SUBUNIT_NAME} {
         margin: 0.52rem 0;
       }
-      a.${CLASS_NAMES.SUBUNIT_NAME},
-      a.${CLASS_NAMES.TITLE_SUBUNIT_NAME} {
+      a.${CLASS_NAMES.SUBUNIT_NAME}, a.${CLASS_NAMES.TITLE_SUBUNIT_NAME} {
         font-size: 1.5em;
         transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
       }
@@ -117,8 +116,7 @@ const HeaderDiv = styled.div`
       a.${CLASS_NAMES.SUBUNIT_NAME} {
         margin: 0.52rem 0;
       }
-      a.${CLASS_NAMES.SUBUNIT_NAME},
-      a.${CLASS_NAMES.TITLE_SUBUNIT_NAME} {
+      a.${CLASS_NAMES.SUBUNIT_NAME}, a.${CLASS_NAMES.TITLE_SUBUNIT_NAME} {
         font-size: 1.5em;
         transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
       }

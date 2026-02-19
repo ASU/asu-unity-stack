@@ -94,20 +94,18 @@ const Search = () => {
     >
       {!isMobile ? (
         <>
-        {
-          !open && (
-          <button
-            type="button"
-            aria-label="Search asu.edu"
-            onClick={handleChangeVisibility}
-            className={CLASS_NAMES.SEARCH_BUTTON}
-            data-testid="search-button"
-          >
-            <span
-            >Search</span>
-            <FontAwesomeIcon icon={faSearch} />
-          </button>
-)}
+          {!open && (
+            <button
+              type="button"
+              aria-label="Search asu.edu"
+              onClick={handleChangeVisibility}
+              className={CLASS_NAMES.SEARCH_BUTTON}
+              data-testid="search-button"
+            >
+              <span>Search</span>
+              <FontAwesomeIcon icon={faSearch} />
+            </button>
+          )}
           {open && (
             <>
               <SearchInput

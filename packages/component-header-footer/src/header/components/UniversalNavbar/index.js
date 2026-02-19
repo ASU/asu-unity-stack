@@ -35,12 +35,18 @@ const UniversalNavbar = () => {
 
   const universalNavLinks = [
     {
-      className: buildClassName(CLASS_NAMES.NAV_LINK, CLASS_NAMES.VISUALLY_HIDDEN_FOCUSABLE),
+      className: buildClassName(
+        CLASS_NAMES.NAV_LINK,
+        CLASS_NAMES.VISUALLY_HIDDEN_FOCUSABLE
+      ),
       href: "#skip-to-content",
       text: "Skip to main content",
     },
     {
-      className: buildClassName(CLASS_NAMES.NAV_LINK, CLASS_NAMES.VISUALLY_HIDDEN_FOCUSABLE),
+      className: buildClassName(
+        CLASS_NAMES.NAV_LINK,
+        CLASS_NAMES.VISUALLY_HIDDEN_FOCUSABLE
+      ),
       href: `https://accessibility.asu.edu/report#a11yref=${getURL()}`,
       text: "Report an accessibility problem",
     },

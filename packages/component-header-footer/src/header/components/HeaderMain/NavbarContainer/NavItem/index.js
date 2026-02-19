@@ -6,7 +6,11 @@ import PropTypes from "prop-types";
 import React, { useRef, useEffect, useMemo } from "react";
 
 import { useAppContext } from "../../../../core/context/app-context";
-import { CLASS_NAMES, buildClassName, getDropdownClass } from "../../../../core/constants/classNames";
+import {
+  CLASS_NAMES,
+  buildClassName,
+  getDropdownClass,
+} from "../../../../core/constants/classNames";
 import { useIsMobile } from "../../../../core/hooks/isMobile";
 import { NavTreePropTypes } from "../../../../core/models/app-prop-types";
 import { DropdownItem } from "../DropdownItem";
@@ -36,7 +40,11 @@ const NavLinkIcon = ({ children }) => {
   return (
     <>
       {/* @ts-ignore */}
-      <FontAwesomeIcon icon={faHome} className={CLASS_NAMES.ICON_NAV_ITEM} alt="" />
+      <FontAwesomeIcon
+        icon={faHome}
+        className={CLASS_NAMES.ICON_NAV_ITEM}
+        alt=""
+      />
       <span className={CLASS_NAMES.MOBILE_ONLY}>{children}</span>
     </>
   );
@@ -86,7 +94,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
       document.removeEventListener("click", handleClickOutside, true);
       document.removeEventListener("focusin", handleFocusChange);
     };
-  }, [opened]);
+  }, [opened, setItemOpened]);
 
   const renderNavLinks = useMemo(() => {
     if (link.type === "icon-home") {
@@ -99,7 +107,10 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
           <FontAwesomeIcon
             // @ts-ignore
             icon={faChevronDown}
-            className={buildClassName(CLASS_NAMES.CHEVRON_ICON, opened && CLASS_NAMES.OPEN)}
+            className={buildClassName(
+              CLASS_NAMES.CHEVRON_ICON,
+              opened && CLASS_NAMES.OPEN
+            )}
             // @ts-ignore
             alt=""
           />
@@ -227,7 +238,10 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
           buttons={link.buttons}
           // @ts-ignore
           dropdownName={link.text}
-          classes={buildClassName(getDropdownClass(link.id), opened && CLASS_NAMES.OPENED)}
+          classes={buildClassName(
+            getDropdownClass(link.id),
+            opened && CLASS_NAMES.OPENED
+          )}
           listId={`dropdown-${link.id}`}
           setItemOpened={setItemOpened}
           parentLink={parentLink}
