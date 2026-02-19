@@ -48,7 +48,7 @@ const DropdownWrapper = styled.div`
       row-gap: var(--gap);
 
       &:not(:last-child) {
-
+        border-right: 1px solid ${ASU_GRAY5};
       }
     }
 
