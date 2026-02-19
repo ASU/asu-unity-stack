@@ -1,3 +1,20 @@
+# [@asu/unity-bootstrap-theme-v1.36.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.35.0...@asu/unity-bootstrap-theme-v1.36.0) (2026-02-19)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** update highly ranked card styles ([e18137f](https://github.com/ASU/asu-unity-stack/commit/e18137f666441e2b5419d4142ebd3686119a139f))
+* **unity-bootstrap-theme:** update highly ranked class names ([3da8fd0](https://github.com/ASU/asu-unity-stack/commit/3da8fd0eb80de9dcdb7256b29b4b2ea79d464891))
+* **unity-bootstrap-theme:** update highly ranked styles ([460d7b3](https://github.com/ASU/asu-unity-stack/commit/460d7b364598cb101cf0bc9e507b78c41115c813))
+* **unity-bootstrap-theme:** update to allow uds-field-required style for p tags for the correct display of fa-circle icons ([97c8330](https://github.com/ASU/asu-unity-stack/commit/97c8330d6e3562708512574944cc8b2e8d9fe8be))
+* **unity-bootstrap-theme:** updated highly ranked grid heading styles ([ae1964b](https://github.com/ASU/asu-unity-stack/commit/ae1964b5d8ccd203ca58bae39dee1890f4b98e3c))
+
+
+### Features
+
+* **unity-bootstrap-theme:** add new ranking card styles ([703a717](https://github.com/ASU/asu-unity-stack/commit/703a71750c0360662ef57fd5355671f0f0eb540c))
+* **unity-react-core:** add new ranking card component ([0908bfe](https://github.com/ASU/asu-unity-stack/commit/0908bfeeda1c9d7343dc3375b1dfae111cc22145))
+
 # [@asu/unity-bootstrap-theme-v1.35.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.34.0...@asu/unity-bootstrap-theme-v1.35.0) (2026-02-10)
 
 
