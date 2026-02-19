@@ -1,3 +1,10 @@
+# [@asu/component-header-footer-v1.3.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.2.1...@asu/component-header-footer-v1.3.0) (2026-02-19)
+
+
+### Features
+
+* **component-header-footer:** add unique header prefix to classes ([d94b22a](https://github.com/asu/asu-unity-stack/commit/d94b22ae3ccceeaafc07283484bba073ff23a37f))
+
 # [@asu/component-header-footer-v1.2.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.2.0...@asu/component-header-footer-v1.2.1) (2026-02-12)
 
 
