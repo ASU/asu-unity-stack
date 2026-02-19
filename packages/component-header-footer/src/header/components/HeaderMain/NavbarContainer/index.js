@@ -19,7 +19,12 @@ const NavbarContainer = () => {
   const [itemOpened, setItemOpened] = useState(undefined);
 
   const handleSetItemOpened = itemId => {
-    setItemOpened(prev => (itemOpened === itemId ? undefined : itemId));
+    if (itemOpened === itemId) {
+      setItemOpened(() => undefined);
+    } else {
+      // Adding a slight delay so opening the dropdown is triggered after any close events have finished processing
+      setTimeout(() => setItemOpened(() => itemId), 1);
+    }
   };
 
   const validateButton = button => {

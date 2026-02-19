@@ -94,7 +94,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
       document.removeEventListener("click", handleClickOutside, true);
       document.removeEventListener("focusin", handleFocusChange);
     };
-  }, [opened]);
+  }, [opened, setItemOpened]);
 
   const renderNavLinks = useMemo(() => {
     if (link.type === "icon-home") {

@@ -61,4 +61,9 @@
  * @property {string} renderDiv - Can be either "true" or "false".
  */
 
+/**
+ * @typedef {HeaderProps} HeaderContext
+ * @property {number} headerHeight
+ */
+
 export const JSDOC = "jsdoc";

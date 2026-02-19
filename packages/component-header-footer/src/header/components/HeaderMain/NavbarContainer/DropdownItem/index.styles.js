@@ -30,7 +30,7 @@ const DropdownWrapper = styled.div`
   > .${CLASS_NAMES.DROPDOWN_CONTAINER} {
     max-width: 1200px;
     margin: 0 auto;
-    max-height: 50vh;
+    max-height: calc(80vh - ${({ headerHeight }) => headerHeight}px - 2rem);
     overflow-y: auto;
     overflow-x: hidden;
     display: flex;
@@ -40,6 +40,7 @@ const DropdownWrapper = styled.div`
       --span: 1; /* component overrides using inline style */
       --col: 1; /* component overrides using inline style */
       width: calc(1200px / var(--cols) * var(--span));
+      height: fit-content;
       padding: var(--gap);
       display: flex;
       flex-direction: column;
@@ -51,17 +52,17 @@ const DropdownWrapper = styled.div`
       }
     }
 
-      .${CLASS_NAMES.UL_HEADING} {
-        margin-top: 0;
-        font-size: 1.5rem;
-        letter-spacing: -0.035em;
-        font-weight: 700;
-        text-align: left;
-        opacity: 1;
-        margin: 0;
-        margin-bottom: -1.5rem;
-        line-height: calc(100% + 0.12em);
-      }
+    .${CLASS_NAMES.UL_HEADING} {
+      margin-top: 0;
+      font-size: 1.5rem;
+      letter-spacing: -0.035em;
+      font-weight: 700;
+      text-align: left;
+      opacity: 1;
+      margin: 0;
+      margin-bottom: -1.5rem;
+      line-height: calc(100% + 0.12em);
+    }
     ul {
       --ul-gap: 1rem;
       &:is(:last-child) {

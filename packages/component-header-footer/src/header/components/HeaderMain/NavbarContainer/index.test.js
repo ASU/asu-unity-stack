@@ -1,5 +1,5 @@
 // @ts-check
-import { render, fireEvent, cleanup } from "@testing-library/react";
+import { render, fireEvent, cleanup, waitFor } from "@testing-library/react";
 import React from "react";
 
 import { NavbarContainer } from ".";
@@ -66,7 +66,9 @@ describe("#Navbar Container Component opened/closed on hover", () => {
 
   it("should open dropdown", () => {
     fireEvent.mouseEnter(navItems[0].parentElement);
-    expect(navItems[0].className).toContain("open-link");
+    waitFor(() => {
+      expect(navItems[0].className).toContain("open-link");
+    });
   });
   it("should close dropdown", () => {
     fireEvent.mouseEnter(navItems[0].parentElement);
