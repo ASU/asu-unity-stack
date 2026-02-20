@@ -18,7 +18,7 @@ const AnchorMenuWrapper = styled.div`
     background-color: transparent;
     border: none;
     cursor: default;
-    h4 {
+    h4, h2 {
       align-items: center;
     }
     i {
