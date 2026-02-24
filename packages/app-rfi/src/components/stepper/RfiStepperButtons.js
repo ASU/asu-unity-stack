@@ -24,10 +24,6 @@ export const RfiStepperButtons = ({
 }) => {
   return (
     <>
-      <div className="rfi-required-footnote" title="Required">
-        <i className="fas fa-circle uds-field-required" aria-hidden="true" />{" "}
-        Required
-      </div>
       <nav aria-label="Request information form" className="container">
         <div className="row justify-content-end">
           <div className="col-6">
