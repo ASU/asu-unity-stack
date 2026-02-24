@@ -1,3 +1,11 @@
+# [@asu/unity-bootstrap-theme-v1.36.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.36.0...@asu/unity-bootstrap-theme-v1.36.1) (2026-02-24)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** adjust hero small grid template rows ([b8892df](https://github.com/ASU/asu-unity-stack/commit/b8892dfd84d89cf440f7caea495afdcebd5edb32))
+* **unity-bootstrap-theme:** improve hero small button positioning ([f694423](https://github.com/ASU/asu-unity-stack/commit/f6944232dd46c6306877a9806c5a83dbc30e4048))
+
 # [@asu/unity-bootstrap-theme-v1.36.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.35.0...@asu/unity-bootstrap-theme-v1.36.0) (2026-02-19)
 
 
