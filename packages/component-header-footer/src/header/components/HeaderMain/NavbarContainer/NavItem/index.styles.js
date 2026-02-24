@@ -5,6 +5,7 @@ import { CLASS_NAMES } from "../../../../core/constants/classNames";
 const NavItemWrapper = styled.li`
   position: relative;
   padding: 0;
+  max-width: 100%;
   margin: 0 0.5rem 0 0;
   &:has(.${CLASS_NAMES.OPEN_LINK}) > a:after,
   &:hover > a:after {
