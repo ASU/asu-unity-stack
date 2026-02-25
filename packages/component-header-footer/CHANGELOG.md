@@ -1,3 +1,10 @@
+# [@asu/component-header-footer-v1.3.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.3.0...@asu/component-header-footer-v1.3.1) (2026-02-25)
+
+
+### Bug Fixes
+
+* **component-header-footer:** fix universal nav position on mobile ([#1636](https://github.com/asu/asu-unity-stack/issues/1636)) ([100baeb](https://github.com/asu/asu-unity-stack/commit/100baeb582e690903de771a05aa47ac4e1b3e16e))
+
 # [@asu/component-header-footer-v1.3.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.2.1...@asu/component-header-footer-v1.3.0) (2026-02-19)
 
 
