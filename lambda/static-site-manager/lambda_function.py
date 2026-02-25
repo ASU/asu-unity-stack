@@ -18,6 +18,7 @@ s3_client = boto3.client('s3')
 # Environment variables
 S3_BUCKET_NAME = os.environ['S3_BUCKET_NAME']
 AWS_REGION = os.environ.get('AWS_REGION', 'us-west-2')
+CLOUDFRONT_DOMAIN = os.environ.get('CLOUDFRONT_DOMAIN', '')
 
 @tracer.capture_lambda_handler
 @logger.inject_lambda_context
@@ -72,7 +73,10 @@ def handle_deploy(body: Dict[str, Any]) -> Dict[str, Any]:
         # Process and upload the build artifacts
         upload_count = process_and_upload_artifacts(build_artifacts, s3_prefix)
 
-        storybook_url = f"https://{S3_BUCKET_NAME}.s3.{AWS_REGION}.amazonaws.com/{s3_prefix}index.html"
+        if CLOUDFRONT_DOMAIN:
+            storybook_url = f"https://{CLOUDFRONT_DOMAIN}/{s3_prefix}index.html"
+        else:
+            storybook_url = f"https://{S3_BUCKET_NAME}.s3.{AWS_REGION}.amazonaws.com/{s3_prefix}index.html"
 
         logger.info(f"Successfully deployed PR {pr_number} with {upload_count} files")
 

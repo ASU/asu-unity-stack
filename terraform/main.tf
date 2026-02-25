@@ -17,6 +17,11 @@ data "aws_s3_bucket" "static_site_bucket" {
   bucket = var.s3_bucket_name
 }
 
+# Read CloudFront domain from SSM (written by terraform/static-site/)
+data "aws_ssm_parameter" "cloudfront_domain" {
+  name = "/unity/${var.environment}/cloudfront-domain"
+}
+
 resource "aws_iam_role" "lambda_execution_role" {
   name = "unity-static-site-manager-${var.stage}"
 
@@ -84,6 +89,7 @@ module "static_site_manager_lambda" {
 
   environment_variables = {
     S3_BUCKET_NAME          = var.s3_bucket_name
+    CLOUDFRONT_DOMAIN       = data.aws_ssm_parameter.cloudfront_domain.value
     LOG_LEVEL               = "INFO"
     POWERTOOLS_SERVICE_NAME = "static-site-manager"
   }

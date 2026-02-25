@@ -104,6 +104,13 @@ spec:
                     script {
                         echo "## Deploying Storybook to S3 for PR-${env.CHANGE_ID}..."
                         sh "aws s3 sync ./build/ s3://${S3_BUCKET}/pr-${env.CHANGE_ID}/ --delete"
+                        // Get CloudFront domain from SSM Parameter Store
+                        def cfDomain = sh(
+                            script: "aws ssm get-parameter --name /unity/staging/cloudfront-domain --query Parameter.Value --output text",
+                            returnStdout: true
+                        ).trim()
+                        def storybookUrl = "https://${cfDomain}/pr-${env.CHANGE_ID}/index.html"
+                        echo "## Storybook preview available at: ${storybookUrl}"
                         // Post a comment on the GitHub PR with the staging URL (only if not already posted)
                         def prNumber = env.CHANGE_ID
                         def prComments = httpRequest(
@@ -135,7 +142,7 @@ spec:
                                 ],
                                 requestBody: """
                                     {
-                                        "body": "Storybook deployed at https://${S3_BUCKET}.s3.us-west-2.amazonaws.com/pr-${prNumber}/index.html"
+                                        "body": "Storybook deployed at ${storybookUrl}"
                                     }
                                 """
                             )

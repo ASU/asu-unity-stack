@@ -1,40 +1,6 @@
-resource "aws_iam_role" "static_site" {
-  name = var.role_name
-
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Effect = "Allow"
-        Principal = {
-          Service = "ec2.amazonaws.com"
-        }
-        Action = "sts:AssumeRole"
-      }
-    ]
-  })
-}
-
-
-resource "aws_iam_role_policy" "static_site_s3_limited" {
-  name = "static-site-s3-limited"
-  role = aws_iam_role.static_site.id
-
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Effect = "Allow"
-        Action = [
-          "s3:CreateBucket",
-          "s3:DeleteBucket"
-        ]
-        Resource = "*"
-      }
-    ]
-  })
-}
-
-output "static_site_role_arn" {
-  value = aws_iam_role.static_site.arn
-}
+# NOTE: The Terraform provider uses assume_role (in terraform.tf) for all
+# AWS operations, including S3 bucket creation. No additional IAM role
+# is needed within this configuration.
+#
+# The Lambda execution role for S3 operations is defined in the root
+# terraform/main.tf configuration, not here.
