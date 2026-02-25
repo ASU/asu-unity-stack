@@ -1,22 +1,29 @@
-variable "role_name" {
-  description = "The name of the IAM role to create and manage."
+variable "aws_region" {
   type        = string
-  default     = "unity-static-site-role"
-}
-variable "bucket_name" {
-  description = "The name of the S3 bucket for static site hosting."
-  type        = string
-}
-
-variable "region" {
-  description = "AWS region to deploy resources."
-  type        = string
+  description = "AWS region for deployment."
   default     = "us-west-2"
 }
 
-variable "role_arn" {
-  description = "The ARN of the IAM role to assume for AWS provider."
+variable "stage" {
   type        = string
+  description = "Deployment stage."
+}
+
+variable "s3_bucket_name" {
+  type        = string
+  description = "The name of the S3 bucket to host the static sites."
+}
+
+variable "github_repo" {
+  type        = string
+  description = "GitHub repository (e.g., 'ASU/asu-unity-stack')."
+  default     = "ASU/asu-unity-stack"
+}
+
+variable "api_key_name" {
+  type        = string
+  description = "The name of the API Gateway API key."
+  default     = "unity-static-site-api-key"
 }
 
 variable "product_key" {

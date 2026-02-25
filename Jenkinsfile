@@ -21,8 +21,20 @@ spec:
     command:
     - cat
     tty: true
+  - name: python
+    image: 'python:3.12-slim'
+    imagePullPolicy: Always
+    command:
+    - cat
+    tty: true
   - name: aws-cli
     image: 'amazon/aws-cli:2.23.2'
+    imagePullPolicy: Always
+    command:
+    - cat
+    tty: true
+  - name: terragrunt
+    image: asuuto/dco-terragrunt:latest
     imagePullPolicy: Always
     command:
     - cat
@@ -37,8 +49,6 @@ spec:
         RAW_GH_TOKEN = credentials('github-org-asu-pac')
         NPM_TOKEN = credentials('NPM_TOKEN')
         NODE_AUTH_TOKEN = credentials('github-org-asu-pac')
-        AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
-        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
         S3_BUCKET = 'unity-uds-staging'
         DAYS_TO_SCAN = 14
     }
@@ -79,116 +89,89 @@ spec:
                 }
             }
         }
-        stage('Deploy to s3') {
-          when {
-              changeRequest target: 'dev'
-          }
-          steps {
-            container('node20') {
-              script {
-                echo '## Build storybook'
-                sh 'yarn build-storybook'
-              }
+        stage('Deploy PR to S3') {
+            when {
+                expression { env.CHANGE_TARGET == 'dev' }
             }
-            container('aws-cli') {
-              withEnv(["AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}", "AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}"]) {
-                script {
-                  echo '## Deploying to S3..'
-                  sh "aws s3 sync ./build/ s3://${S3_BUCKET}/pr-${env.CHANGE_ID}/ --delete"
-                  // comment on the github pr the link to the deployed storybook but only if there is not alreafy a comment
-                  def prNumber = env.CHANGE_ID
-                  def prComments = httpRequest(
-                    url: "https://api.github.com/repos/ASU/asu-unity-stack/issues/${prNumber}/comments",
-                    httpMode: 'GET',
-                    contentType: 'APPLICATION_JSON',
-                    customHeaders: [
-                        [name: 'Authorization', value: "Bearer " + env.RAW_GH_TOKEN_PSW],
-                        [name: 'Accept', value: 'application/vnd.github.v3+json']
-                    ]
-                ).content
-                  def prCommentsJson = readJSON text: prComments
-                  def commentExists = false
-
-                  for (comment in prCommentsJson) {
-                    if (comment.body.contains("Storybook deployed")) {
-                      commentExists = true
-                      break
+            steps {
+                container('node20') {
+                    script {
+                        echo '## Building Storybook for PR preview...'
+                        sh 'yarn build-storybook'
                     }
-                  }
-                  if (!commentExists) {
-                    httpRequest(
-                        url: "https://api.github.com/repos/ASU/asu-unity-stack/issues/${prNumber}/comments",
-                        httpMode: 'POST',
-                        contentType: 'APPLICATION_JSON',
-                        customHeaders: [
-                            [name: 'Authorization', value: "Bearer " + env.RAW_GH_TOKEN_PSW],
-                            [name: 'Accept', value: 'application/vnd.github.v3+json']
-                        ],
-                        requestBody: """
-                            {
-                                "body": "Storybook deployed at https://${S3_BUCKET}.s3.us-west-2.amazonaws.com/pr-${prNumber}/index.html"
-                            }
-                        """
-                    )
-                  }
                 }
-              }
+                container('aws-cli') {
+                    script {
+                        echo "## Deploying Storybook to S3 for PR-${env.CHANGE_ID}..."
+                        sh "aws s3 sync ./build/ s3://${S3_BUCKET}/pr-${env.CHANGE_ID}/ --delete"
+                        // Post a comment on the GitHub PR with the staging URL (only if not already posted)
+                        def prNumber = env.CHANGE_ID
+                        def prComments = httpRequest(
+                            url: "https://api.github.com/repos/ASU/asu-unity-stack/issues/${prNumber}/comments",
+                            httpMode: 'GET',
+                            contentType: 'APPLICATION_JSON',
+                            customHeaders: [
+                                [name: 'Authorization', value: "Bearer " + env.RAW_GH_TOKEN_PSW],
+                                [name: 'Accept', value: 'application/vnd.github.v3+json']
+                            ]
+                        ).content
+                        def prCommentsJson = readJSON text: prComments
+                        def commentExists = false
+
+                        for (comment in prCommentsJson) {
+                            if (comment.body.contains("Storybook deployed")) {
+                                commentExists = true
+                                break
+                            }
+                        }
+                        if (!commentExists) {
+                            httpRequest(
+                                url: "https://api.github.com/repos/ASU/asu-unity-stack/issues/${prNumber}/comments",
+                                httpMode: 'POST',
+                                contentType: 'APPLICATION_JSON',
+                                customHeaders: [
+                                    [name: 'Authorization', value: "Bearer " + env.RAW_GH_TOKEN_PSW],
+                                    [name: 'Accept', value: 'application/vnd.github.v3+json']
+                                ],
+                                requestBody: """
+                                    {
+                                        "body": "Storybook deployed at https://${S3_BUCKET}.s3.us-west-2.amazonaws.com/pr-${prNumber}/index.html"
+                                    }
+                                """
+                            )
+                        }
+                    }
+                }
             }
-          }
         }
-        stage('Cleanup S3 PR Environments') {
+        stage('Lambda Archive') {
             when {
                 branch 'dev'
             }
             steps {
-                script {
-                    // Get recently merged PR numbers from merge commits
-                    def mergedPRs = sh(
-                        script: """
-                            git fetch --all
-                            git log --merges --since="\${DAYS_TO_SCAN} days ago" --grep="Merge pull request #" \
-                            | grep -o '#[0-9]\\+' \
-                            | sed 's/#//' \
-                            | sort -u
-                        """,
-                        returnStdout: true
-                    ).trim()
-
-                    if (!mergedPRs) {
-                        echo "No merged PRs found in the last ${DAYS_TO_SCAN} days. Nothing to clean up."
-                        return
+                container('python') {
+                    dir('lambda/static-site-manager') {
+                        echo "## Installing python dependencies for Lambda..."
+                        sh "pip install -r requirements.in -t ."
+                        echo "## Creating Lambda archive..."
+                        sh "zip -r9 ../../lambda-build.zip ."
                     }
-
-                    def prList = mergedPRs.split('\n').collect { it.trim() }
-                    echo "Recently merged PRs: ${prList}"
-
-                    container('aws-cli') {
-                      withEnv(["AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}", "AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}"]) {
-                        // For each PR, check if files exist and clean up
-                        prList.each { prNumber ->
-                            def prefix = "pr-${prNumber}"
-
-                            // Check if directory exists
-                            def hasFiles = sh(
-                                script: "aws s3 ls s3://${S3_BUCKET}/${prefix}/",
-                                returnStatus: true
-                            ) == 0
-
-                            if (!hasFiles) {
-                                echo "No files found for PR ${prNumber}, skipping..."
-                                return
-                            }
-
-                            // List files that would be deleted
-                            def filesToDelete = sh(
-                                script: "aws s3 ls s3://${S3_BUCKET}/${prefix}/ --recursive",
-                                returnStdout: true
-                            ).trim()
-
-                            echo "Cleaning up S3 files for merged PR: ${prNumber}"
-                            sh "aws s3 rm s3://${S3_BUCKET}/${prefix}/ --recursive"
-                        }
-                      }
+                }
+            }
+        }
+        stage('Terraform Deploy Staging') {
+            when {
+                branch 'dev'
+            }
+            steps {
+                container('terragrunt') {
+                    dir('terraform') {
+                        echo "## Initializing Terraform..."
+                        sh "terraform init"
+                        echo "## Planning Terraform deployment..."
+                        sh "terraform plan -var-file=staging.tfvars -out=tfplan"
+                        echo "## Applying Terraform deployment..."
+                        sh "terraform apply -auto-approve tfplan"
                     }
                 }
             }
@@ -262,6 +245,50 @@ spec:
                           sh "node ./scripts/deploy-gh-pages.js dev PUSH"
 
                         }
+                    }
+                }
+            }
+        }
+        stage('Cleanup S3 PR Environments') {
+            when {
+                branch 'dev'
+            }
+            steps {
+                script {
+                    // Get recently merged PR numbers from merge commits
+                    def mergedPRs = sh(
+                        script: """
+                            git fetch --all
+                            git log --merges --since="\${DAYS_TO_SCAN} days ago" --grep="Merge pull request #" \
+                            | grep -o '#[0-9]\\+' \
+                            | sed 's/#//' \
+                            | sort -u
+                        """,
+                        returnStdout: true
+                    ).trim()
+
+                    if (!mergedPRs) {
+                        echo "No merged PRs found in the last ${DAYS_TO_SCAN} days. Nothing to clean up."
+                        return
+                    }
+
+                    def prList = mergedPRs.split('\n').collect { it.trim() }
+                    echo "Recently merged PRs: ${prList}"
+
+                    // Build the JSON array of PR numbers for the Lambda payload
+                    def prNumbersJson = prList.collect { "\"${it}\"" }.join(',')
+
+                    container('aws-cli') {
+                        echo "## Invoking Lambda to clean up ${prList.size()} merged PR environments..."
+                        sh """
+                            aws lambda invoke \
+                                --function-name unity-static-site-manager-staging \
+                                --cli-binary-format raw-in-base64-out \
+                                --payload '{"httpMethod":"POST","path":"/cleanup","body":"{\\"pr_numbers\\":[${prNumbersJson}]}"}' \
+                                /tmp/lambda-cleanup-response.json
+                        """
+                        def response = readFile('/tmp/lambda-cleanup-response.json')
+                        echo "Lambda cleanup response: ${response}"
                     }
                 }
             }
