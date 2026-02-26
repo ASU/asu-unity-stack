@@ -155,7 +155,8 @@ export const useRfiState = props => {
           dataSourceDegreeSearch,
           dataSourceAsuOnline,
           CareerAndStudentType: formik.values.CareerAndStudentType,
-          Campus: formik.values.CampusProgramHasChoice || formik.values.Campus,
+          Campus: formik.values.Campus,
+          CampusProgramHasChoice: formik.values.CampusProgramHasChoice,
           Interest2,
         }).then(([response, data]) => {
           if (response === "Error") {
@@ -192,7 +193,8 @@ export const useRfiState = props => {
         filterByDepartmentCode,
         filterByCollegeCode,
         filterByCampusCode,
-        Campus: formik.values.CampusProgramHasChoice || formik.values.Campus,
+        Campus: formik.values.Campus,
+        CampusProgramHasChoice: formik.values.CampusProgramHasChoice,
         CareerAndStudentType: formik.values.CareerAndStudentType,
       }).then(([response, data]) => {
         if (response === "Error") {

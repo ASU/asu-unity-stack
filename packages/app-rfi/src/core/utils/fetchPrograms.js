@@ -10,6 +10,7 @@ import { filterDataByProps } from "./filterPrograms";
  * @prop {string} [filterByCollegeCode]
  * @prop {string} [filterByCampusCode] Campus Code
  * @prop {string} [Campus] Campus type
+ * @prop {string} [CampusProgramHasChoice] Campus program has choice
  * @prop {string} [CareerAndStudentType]
  * @prop {string} [Interest2]
  */
@@ -24,6 +25,7 @@ function getServiceUrl({
   filterByDepartmentCode,
   filterByCollegeCode,
   Campus,
+  CampusProgramHasChoice,
   CareerAndStudentType,
   Interest2,
 }) {
@@ -49,6 +51,12 @@ function getServiceUrl({
         ? `?category=${KEY.GRADUATE}`
         : `?category=${KEY.UNDERGRADUATE}`; // full word "undergraduate"
     serviceUrl = `${dataSourceAsuOnline}${parameter}`;
+    return serviceUrl;
+  }
+
+  // ASUOnline API - CampusProgramHasChoice is true, but Campus is not ONLINE Search all ONLINE programs
+  if (CampusProgramHasChoice === KEY.ONLINE) {
+    serviceUrl = `${dataSourceAsuOnline}`;
     return serviceUrl;
   }
 
