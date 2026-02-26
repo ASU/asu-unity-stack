@@ -1,4 +1,4 @@
-import { KEY } from "./constants";
+import { DATA_SOURCE, KEY } from "./constants";
 import { normalizeDegreeData } from "./datasource-helper";
 import { filterDataByProps } from "./filterPrograms";
 
@@ -105,10 +105,14 @@ function getServiceUrl({
 export async function fetchDegreesData(params) {
   const serviceUrl = getServiceUrl(params);
   let options = {};
-  if (
-    params.Campus === KEY.ONLINE ||
-    params.CampusProgramHasChoice === KEY.ONLINE
-  ) {
+
+  // DATA_SOURCE.ASU_ONLINE requires an Accept header to return JSON
+  // This api endpoint also is sent via params.dataSourceAsuOnline, however,
+  // this endpoint can be changed by props and is not guaranteed to be the same
+  // as DATA_SOURCE.ASU_ONLINE, so we check the URL instead of the prop value.
+  // Comparing the URL ensures we add the header and do not have to match
+  // conditions in 2 places
+  if (serviceUrl.indexOf(DATA_SOURCE.ASU_ONLINE) > -1) {
     // ASUOnline API
     options = {
       headers: {
