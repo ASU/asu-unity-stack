@@ -105,7 +105,10 @@ function getServiceUrl({
 export async function fetchDegreesData(params) {
   const serviceUrl = getServiceUrl(params);
   let options = {};
-  if (params.Campus === KEY.ONLINE) {
+  if (
+    params.Campus === KEY.ONLINE ||
+    params.CampusProgramHasChoice === KEY.ONLINE
+  ) {
     // ASUOnline API
     options = {
       headers: {
