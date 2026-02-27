@@ -1,3 +1,11 @@
+# [@asu/app-rfi-v3.7.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.6.4...@asu/app-rfi-v3.7.0) (2026-02-27)
+
+
+### Features
+
+* **app-rfi:** indicates required field update for rfiVariant2 ([a0d00e2](https://github.com/asu/asu-unity-stack/commit/a0d00e25b344c1e8473927020b9c210eeeb09f88))
+* **app-rfi:** update the required label "Indicates required field" to display on top of the form ([99b583e](https://github.com/asu/asu-unity-stack/commit/99b583eaebb0906ea66dec56949ec4cf7513371e))
+
 # [@asu/app-rfi-v3.6.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.6.3...@asu/app-rfi-v3.6.4) (2026-01-22)
 
 
