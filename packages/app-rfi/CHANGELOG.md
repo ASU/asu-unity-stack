@@ -1,3 +1,12 @@
+# [@asu/app-rfi-v3.7.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.7.0...@asu/app-rfi-v3.7.1) (2026-02-27)
+
+
+### Bug Fixes
+
+* **app-rfi:** online selection sometimes results in blank program code ([7b3b77a](https://github.com/asu/asu-unity-stack/commit/7b3b77af63deb3d620b826c749f077a8ff50186e))
+* **app-rfi:** remove duplicate condition that may get out of sync ([3b75a1c](https://github.com/asu/asu-unity-stack/commit/3b75a1c56f1fba8ec4681738f01dbb59b1738e7a))
+* **app-rfi:** set header options for online api ([20e335a](https://github.com/asu/asu-unity-stack/commit/20e335a3d4a70df426ad0b3c6d8e08da1f5be4b2))
+
 # [@asu/app-rfi-v3.7.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.6.4...@asu/app-rfi-v3.7.0) (2026-02-27)
 
 
