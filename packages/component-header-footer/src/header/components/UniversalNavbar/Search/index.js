@@ -79,6 +79,7 @@ const Search = () => {
     });
   };
   return (
+    <search>
     <SearchWrapper
       // @ts-ignore
       breakpoint={breakpoint}
@@ -143,6 +144,7 @@ const Search = () => {
       <input name="client" value="asu_frontend" type="hidden" />
       <input name="proxystylesheet" value="asu_frontend" type="hidden" />
     </SearchWrapper>
+    </search>
   );
 };
 
