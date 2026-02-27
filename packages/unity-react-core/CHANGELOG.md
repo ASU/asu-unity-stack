@@ -1,3 +1,11 @@
+# [@asu/unity-react-core-v1.7.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.7.0...@asu/unity-react-core-v1.7.1) (2026-02-27)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** update to allow uds-field-required style for p tags for the correct display of fa-circle icons ([b9d86c3](https://github.com/ASU/asu-unity-stack/commit/b9d86c31dd707c49bf55893563e8253e5ba1d863))
+* **unity-react-core:** linting update ([4f15324](https://github.com/ASU/asu-unity-stack/commit/4f153246467db28aef77f75c1e7c2fc014e158d8))
+
 # [@asu/unity-react-core-v1.7.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.6.0...@asu/unity-react-core-v1.7.0) (2026-02-19)
 
 
