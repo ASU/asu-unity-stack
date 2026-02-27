@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.36.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.36.1...@asu/unity-bootstrap-theme-v1.36.2) (2026-02-27)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** update to allow uds-field-required style for p tags for the correct display of fa-circle icons ([b9d86c3](https://github.com/ASU/asu-unity-stack/commit/b9d86c31dd707c49bf55893563e8253e5ba1d863))
+
 # [@asu/unity-bootstrap-theme-v1.36.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.36.0...@asu/unity-bootstrap-theme-v1.36.1) (2026-02-24)
 
 
