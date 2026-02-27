@@ -3781,7 +3781,7 @@ function pg(e, t, r) {
 }
 function hg(e, t, r) {
   var n = e.length;
-  return r = r === void 0 ? n : r, pg(e, t, r);
+  return r = r === void 0 ? n : r, !t && r >= n ? e : pg(e, t, r);
 }
 function mg(e) {
   return function(t) {
