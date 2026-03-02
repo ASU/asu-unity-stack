@@ -51,7 +51,36 @@ const ASUHeader = ({
    * @type {React.MutableRefObject<HTMLDivElement?>}
    */
   const headerRef = useRef(null);
+  const mobileMenuToggleRef = useRef(null);
+
+  const [itemOpened, setStateItemOpened] = useState(undefined);
+  const [mobileMenuOpen, setStateMobileMenuOpen] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(150);
+
+  const setItemOpened = (openState = undefined) => {
+    setStateItemOpened(openState);
+  };
+
+  const setMobileMenuOpen = (openState = false) => {
+    if (
+      mobileMenuToggleRef?.current &&
+      typeof mobileMenuToggleRef.current.focus === "function"
+    ) {
+      mobileMenuToggleRef.current.focus();
+    }
+
+    setStateMobileMenuOpen(openState);
+  };
+
+  const singlePageAppReset = () => {
+    if (headerRef?.current) {
+      headerRef.current.focus();
+      window.scrollTo(0, 0);
+    }
+    setMobileMenuOpen();
+    setItemOpened();
+    document.body.style.overflow = "unset";
+  };
 
   const handleWindowScroll = () => {
     const curPos = window.scrollY;
@@ -134,6 +163,12 @@ const ASUHeader = ({
         hasNavigation: !!navTree?.length || !!mobileNavTree?.length,
         searchUrl,
         headerHeight,
+        itemOpened,
+        setItemOpened,
+        mobileMenuOpen,
+        setMobileMenuOpen,
+        singlePageAppReset,
+        mobileMenuToggleRef,
         site,
       }}
     >

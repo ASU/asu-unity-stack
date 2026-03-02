@@ -71,6 +71,7 @@ export const CLASS_NAMES = {
   FORM_CONTROL: "form-control",
   VISUALLY_HIDDEN: "visually-hidden",
   VISUALLY_HIDDEN_FOCUSABLE: "visually-hidden-focusable",
+  MOBILE_MENU_OPEN: `${CLASS_PREFIX}mobile-menu-open`,
 };
 
 // Helper function to generate dropdown class name
