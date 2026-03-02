@@ -26,6 +26,7 @@ const HeaderMain = () => {
     mobileMenuOpen,
     setMobileMenuOpen,
     mobileMenuToggleRef,
+    headerTop,
   } = useAppContext();
   const isMobile = useIsMobile(breakpoint);
 
@@ -62,7 +63,7 @@ const HeaderMain = () => {
     <>
       {!isMobile && <UniversalNavbar />}
       {/* @ts-ignore */}
-      <HeaderMainWrapper breakpoint={breakpoint}>
+      <HeaderMainWrapper breakpoint={breakpoint} headerTop={headerTop}>
         <div className="container-xl">
           <div className={CLASS_NAMES.HEADER_MAIN}>
             <div
@@ -107,9 +108,7 @@ const HeaderMain = () => {
                 {isPartner ? <Partner /> : <Title />}
                 {!isMobile && <NavbarContainer />}
               </div>
-              {mobileMenuOpen && isMobile && itemOpened === undefined && (
-                <Search />
-              )}
+              {mobileMenuOpen && isMobile && <Search />}
               {mobileMenuOpen && isMobile && <NavbarContainer />}
             </div>
           </div>

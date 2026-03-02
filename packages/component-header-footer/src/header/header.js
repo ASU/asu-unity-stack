@@ -56,6 +56,7 @@ const ASUHeader = ({
   const [itemOpened, setStateItemOpened] = useState(undefined);
   const [mobileMenuOpen, setStateMobileMenuOpen] = useState(false);
   const [headerHeight, setHeaderHeight] = useState(150);
+  const [headerTop, setHeaderTop] = useState(0);
 
   const setItemOpened = (openState = undefined) => {
     setStateItemOpened(openState);
@@ -90,6 +91,8 @@ const ASUHeader = ({
     } else {
       headerRef.current.classList.remove("scrolled");
     }
+
+    setHeaderTop(headerRef.current.getBoundingClientRect().top);
     setHeaderHeight(headerRef.current.getBoundingClientRect().bottom);
   };
 
@@ -115,8 +118,9 @@ const ASUHeader = ({
   useEffect(() => {
     if (headerRef?.current) {
       setHeaderHeight(headerRef.current.getBoundingClientRect().bottom);
+      setHeaderTop(headerRef.current.getBoundingClientRect().top);
     }
-  }, [headerRef]);
+  }, [headerRef, mobileMenuOpen]);
 
   useEffect(() => {
     const throttledScroll = () => throttle(handleWindowScroll, 100);
@@ -162,6 +166,7 @@ const ASUHeader = ({
         mobileNavTree,
         hasNavigation: !!navTree?.length || !!mobileNavTree?.length,
         searchUrl,
+        headerTop,
         headerHeight,
         itemOpened,
         setItemOpened,
