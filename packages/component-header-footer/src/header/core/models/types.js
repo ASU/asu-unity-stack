@@ -63,6 +63,7 @@
 
 /**
  * @typedef {HeaderProps} HeaderContext
+ * @property {number} headerTop
  * @property {number} headerHeight
  * @property {number|undefined} itemOpened
  * @property {function} setItemOpened
