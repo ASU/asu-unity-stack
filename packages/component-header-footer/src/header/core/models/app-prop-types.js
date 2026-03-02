@@ -70,6 +70,7 @@ const HeaderPropTypes = {
 };
 const HeaderContextPropTypes = {
   ...HeaderPropTypes,
+  headerTop: PropTypes.number,
   headerHeight: PropTypes.number,
   itemOpened: PropTypes.number,
   setItemOpened: PropTypes.func,

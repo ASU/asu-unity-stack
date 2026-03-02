@@ -22,7 +22,7 @@ const HeaderMainWrapper = styled.div`
       "search search search"
       "nav nav nav";
 
-    height: 100dvh;
+    height: calc(100dvh - ${({ headerTop }) => headerTop}px);
     overflow: hidden;
     .navbar-brand {
       grid-area: logo;
@@ -140,18 +140,17 @@ const HeaderMainWrapper = styled.div`
       }
     }
   }
+  // alternate layout for mobile landscape orientation move search to top row
+  @media screen and (orientation: landscape) and (max-width: ${({
+      breakpoint,
+    }) => breakpoint}) {
+    .navbar.${CLASS_NAMES.MOBILE_MENU_OPEN} {
+      grid-template-areas:
+        "logo search toggler"
+        "title title title"
+        "nav nav nav";
+    }
+  }
 `;
-// alternate layout for mobile landscape orientation move search to top row
-// This would need brand approval and is not currently in the design
-// @media screen and (orientation: landscape) and (max-width: ${({
-//     breakpoint,
-//   }) => breakpoint}) {
-//   .navbar.${CLASS_NAMES.MOBILE_MENU_OPEN} {
-//     grid-template-areas:
-//       "logo search toggler"
-//       "title title title"
-//       "nav nav nav";
-//   }
-// }
 
 export { HeaderMainWrapper };
