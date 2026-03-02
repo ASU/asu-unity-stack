@@ -70,7 +70,12 @@ const HeaderPropTypes = {
 };
 const HeaderContextPropTypes = {
   ...HeaderPropTypes,
-  headerHeight: [PropTypes.number],
+  headerHeight: PropTypes.number,
+  itemOpened: PropTypes.number,
+  setItemOpened: PropTypes.func,
+  mobileMenuOpen: PropTypes.bool,
+  setMobileMenuOpen: PropTypes.func,
+  singlePageAppReset: PropTypes.func,
 };
 
 export {

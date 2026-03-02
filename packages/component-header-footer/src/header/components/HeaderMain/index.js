@@ -17,8 +17,16 @@ import { Search } from "../UniversalNavbar/Search";
 import { Title } from "./Title";
 
 const HeaderMain = () => {
-  const { breakpoint, isPartner, hasNavigation } = useAppContext();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const {
+    breakpoint,
+    isPartner,
+    hasNavigation,
+    itemOpened,
+    setItemOpened,
+    mobileMenuOpen,
+    setMobileMenuOpen,
+    mobileMenuToggleRef,
+  } = useAppContext();
   const isMobile = useIsMobile(breakpoint);
 
   const handleChangeMenuVisibility = () => {
@@ -26,13 +34,19 @@ const HeaderMain = () => {
   };
 
   useEffect(() => {
-    document.body.style.overflow = mobileMenuOpen ? "hidden" : "unset";
+    document.body.style.overflow =
+      mobileMenuOpen || itemOpened !== undefined ? "hidden" : "unset";
 
     // Clean up function to re-enable scrolling
     return () => {
       document.body.style.overflow = "unset";
     };
-  }, [mobileMenuOpen]);
+  }, [mobileMenuOpen, itemOpened, isMobile]);
+
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    setItemOpened();
+  }, [isMobile]);
 
   const handleClickMobileMenu = () => {
     handleChangeMenuVisibility();
@@ -55,11 +69,13 @@ const HeaderMain = () => {
               className={buildClassName(
                 CLASS_NAMES.NAVBAR,
                 CLASS_NAMES.NAVBAR_EXPAND_XL,
-                isPartner && CLASS_NAMES.PARTNER
+                isPartner && CLASS_NAMES.PARTNER,
+                mobileMenuOpen && CLASS_NAMES.MOBILE_MENU_OPEN
               )}
             >
               {!isPartner && <Logo />}
               <button
+                ref={mobileMenuToggleRef}
                 className={buildClassName(
                   CLASS_NAMES.NAVBAR_TOGGLER,
                   !mobileMenuOpen && CLASS_NAMES.COLLAPSED
@@ -91,7 +107,9 @@ const HeaderMain = () => {
                 {isPartner ? <Partner /> : <Title />}
                 {!isMobile && <NavbarContainer />}
               </div>
-              {mobileMenuOpen && isMobile && <Search />}
+              {mobileMenuOpen && isMobile && itemOpened === undefined && (
+                <Search />
+              )}
               {mobileMenuOpen && isMobile && <NavbarContainer />}
             </div>
           </div>

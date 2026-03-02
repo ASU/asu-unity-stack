@@ -68,7 +68,13 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
   const clickRef = useRef(null);
   const parentLink = useRef(null);
   const opened = link.id === itemOpened;
-  const { breakpoint, expandOnHover, title } = useAppContext();
+  const {
+    breakpoint,
+    expandOnHover,
+    title,
+    mobileMenuOpen,
+    setMobileMenuOpen,
+  } = useAppContext();
   const isMobile = useIsMobile(breakpoint);
 
   const handleClickOutside = event => {
@@ -144,8 +150,16 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
   };
 
   const handleKeyDown = e => {
-    if (!link.items && link.href) {
+    if (
+      !link.items &&
+      (link.href || link.onClick) &&
+      (e.key === "Enter" || e.key === " " || e.type === "click")
+    ) {
       trackGAEvent({ ...LINK_DEFAULT_PROPS, text: link.text });
+      // Single page apps do not leave the page on link click,
+      // so we need to manually close the menu and trigger the onClick event
+      setMobileMenuOpen(false);
+      setItemOpened();
       return;
     }
     const { key } = e;
@@ -166,6 +180,11 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
           clickRef.current.focus();
         }
         setItemOpened();
+        return;
+      }
+
+      if (key === "Escape" && !opened && mobileMenuOpen) {
+        setMobileMenuOpen(false);
         return;
       }
       // Handle Enter or Space key

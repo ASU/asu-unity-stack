@@ -12,6 +12,46 @@ const HeaderMainWrapper = styled.div`
     align-items: flex-start;
     flex-wrap: nowrap;
   }
+  .navbar.${CLASS_NAMES.MOBILE_MENU_OPEN} {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "logo . toggler"
+      "title title title"
+      "search search search"
+      "nav nav nav";
+
+    height: 100dvh;
+    overflow: hidden;
+    .navbar-brand {
+      grid-area: logo;
+      grid-column: 1;
+      grid-row: 1;
+    }
+    .navbar-toggler {
+      grid-area: toggler;
+      grid-column: 3;
+      grid-row: 1;
+    }
+    .${CLASS_NAMES.EXPAND_TITLE} {
+      grid-area: title;
+    }
+    & > * {
+      grid-column: 1 / -1;
+    }
+    & > form {
+      grid-area: search;
+    }
+    & > nav {
+      grid-area: nav;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+  }
   .navbar-brand {
     .${CLASS_NAMES.LOGO_VERT} {
       display: block;
@@ -101,5 +141,17 @@ const HeaderMainWrapper = styled.div`
     }
   }
 `;
+// alternate layout for mobile landscape orientation move search to top row
+// This would need brand approval and is not currently in the design
+// @media screen and (orientation: landscape) and (max-width: ${({
+//     breakpoint,
+//   }) => breakpoint}) {
+//   .navbar.${CLASS_NAMES.MOBILE_MENU_OPEN} {
+//     grid-template-areas:
+//       "logo search toggler"
+//       "title title title"
+//       "nav nav nav";
+//   }
+// }
 
 export { HeaderMainWrapper };
