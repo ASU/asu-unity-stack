@@ -30,7 +30,16 @@ const DropdownWrapper = styled.div`
   > .${CLASS_NAMES.DROPDOWN_CONTAINER} {
     max-width: 1200px;
     margin: 0 auto;
-    max-height: calc(80vh - ${({ headerHeight }) => headerHeight}px - 2rem);
+    /*
+      max-height is calculated from
+      100% view Height
+      minus header
+      minus 2rem padding
+      minus 4rem cta buttons - future we could add a ref to measure if needed
+    */
+    max-height: calc(
+      100vh - ${({ headerHeight }) => headerHeight}px - 2rem - 4rem
+    );
     overflow-y: auto;
     overflow-x: hidden;
     display: flex;
@@ -41,6 +50,7 @@ const DropdownWrapper = styled.div`
       --col: 1; /* component overrides using inline style */
       width: calc(1200px / var(--cols) * var(--span));
       height: fit-content;
+      height: -webkit-fill-available;
       padding: var(--gap);
       display: flex;
       flex-direction: column;
@@ -136,28 +146,27 @@ const DropdownWrapper = styled.div`
       max-height: unset;
       overflow-y: unset;
       overflow-x: unset;
-      padding: 1rem 2rem;
       flex-direction: column;
 
       .${CLASS_NAMES.DROPDOWN_CONTAINER_COLUMN} {
         width: 100%;
         border-right: unset;
+        &:not(:first-child) {
+          padding-top: 0;
+        }
       }
       ul {
         width: 100%;
         max-width: 100%;
         padding: 0;
-        margin-bottom: 1rem;
         &:not(:last-child) {
-          padding-right: 1rem;
-          margin: 0 0 1rem 0;
           border: none;
         }
         .${CLASS_NAMES.UL_HEADING} {
           font-size: 1.25rem;
         }
         .${CLASS_NAMES.NAV_BUTTON} {
-          padding-top: 1.5rem;
+          // padding-top: 1.5rem;
         }
         .${CLASS_NAMES.NAV_LINK} {
           flex-basis: 100%;

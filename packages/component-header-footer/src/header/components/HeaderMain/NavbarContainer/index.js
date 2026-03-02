@@ -14,9 +14,15 @@ export const BUTTON_ERROR_MESSAGE =
   "Header buttons cannot have both an onClick and an href property as this breaks accessibility. Please remove one";
 
 const NavbarContainer = () => {
-  const { navTree, mobileNavTree, buttons, breakpoint } = useAppContext();
+  const {
+    navTree,
+    mobileNavTree,
+    buttons,
+    breakpoint,
+    itemOpened,
+    setItemOpened,
+  } = useAppContext();
   const isMobile = useIsMobile(breakpoint);
-  const [itemOpened, setItemOpened] = useState(undefined);
 
   const handleSetItemOpened = itemId => {
     if (itemOpened === itemId) {

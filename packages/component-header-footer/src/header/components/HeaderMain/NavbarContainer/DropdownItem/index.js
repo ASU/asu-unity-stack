@@ -80,7 +80,6 @@ LinkItem.propTypes = {
  *  classes?: string,
  *  listId: string
  *  opened: boolean
- *  setItemOpened: Function
  *  parentLink: React.RefObject<HTMLElement> | null
  * }} DropdownItemProps
  */
@@ -96,10 +95,15 @@ const DropdownItem = ({
   classes,
   listId,
   opened,
-  setItemOpened,
   parentLink,
 }) => {
-  const { breakpoint, headerHeight } = useAppContext();
+  const {
+    breakpoint,
+    headerHeight,
+    setItemOpened,
+    setMobileMenuOpen,
+    mobileMenuOpen,
+  } = useAppContext();
   let cols = 0;
   items.map(lists => {
     cols += lists[0].span || 1;
@@ -154,12 +158,18 @@ const DropdownItem = ({
     } else if (key === "ArrowUp") {
       e.preventDefault();
       focusPrevLink();
-    } else if (key === "Escape") {
+    } else if (key === "Escape" && opened) {
       setItemOpened();
       if (typeof parentLink?.current?.focus === "function") {
         parentLink.current.focus();
       }
+    } else if (key === "Escape" && !opened && mobileMenuOpen) {
+      setMobileMenuOpen(false);
     } else if (key === "Enter" || key === " " || type === "click") {
+      // Single page apps do not leave the page on link click,
+      // so we need to manually close the menu and trigger the onClick event
+      setMobileMenuOpen(false);
+      setItemOpened();
       link?.onClick?.(e);
       trackGAEvent({ ...LINK_DEFAULT_PROPS, text: link.text });
     }

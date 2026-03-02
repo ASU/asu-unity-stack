@@ -72,7 +72,7 @@ const SearchWrapper = styled.form`
   }
   @media (max-width: ${({ breakpoint }) => breakpoint}) {
     width: 100%;
-    padding: 1rem 1rem;
+    padding: 0 1rem 1rem;
     label {
       position: relative;
       font-size: 0.875rem;
