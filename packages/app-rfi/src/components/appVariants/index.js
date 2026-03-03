@@ -52,9 +52,10 @@ const variants = {
         then check your email.
       </p>
       <p>
-        <span
+        <i
           title="Required"
           className="fa fa-icon fa-circle uds-field-required"
+          aria-hidden="true"
         />
         Indicates required field
       </p>
@@ -92,9 +93,10 @@ const variants = {
         then check your email.
       </p>
       <p>
-        <span
+        <i
           title="Required"
           className="fa fa-icon fa-circle uds-field-required"
+          aria-hidden="true"
         />
         Indicates required field
       </p>
