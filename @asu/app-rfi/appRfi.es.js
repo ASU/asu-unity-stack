@@ -6976,10 +6976,11 @@ const nt = {
       /* @__PURE__ */ h.jsx("p", { className: "rfi-step1-intro", children: "To learn more about ASU or a specific program, fill out the form below then check your email." }),
       /* @__PURE__ */ h.jsxs("p", { children: [
         /* @__PURE__ */ h.jsx(
-          "span",
+          "i",
           {
             title: "Required",
-            className: "fa fa-icon fa-circle uds-field-required"
+            className: "fa fa-icon fa-circle uds-field-required",
+            "aria-hidden": "true"
           }
         ),
         "Indicates required field"
@@ -7018,10 +7019,11 @@ const nt = {
           /* @__PURE__ */ h.jsx("p", { className: "rfi-step1-intro", children: "To learn more about ASU or a specific program, fill out the form below then check your email." }),
           /* @__PURE__ */ h.jsxs("p", { children: [
             /* @__PURE__ */ h.jsx(
-              "span",
+              "i",
               {
                 title: "Required",
-                className: "fa fa-icon fa-circle uds-field-required"
+                className: "fa fa-icon fa-circle uds-field-required",
+                "aria-hidden": "true"
               }
             ),
             "Indicates required field"
@@ -7205,7 +7207,11 @@ const iy = () => {
       // always undefined
       collegeCodes: void 0,
       // curr.category always "Undergraduate" || "Graduate"
-      degreeType: i.category === "Graduate" ? "GR" : "UG",
+      // technically online API has 3 types: "Undergraduate", "Graduate", and "Certificate"
+      // not ideal but we are assuming all certificates are graduate level programs
+      // it is possible that in the future this may not be true which is why
+      // THIS IS NOT IDEAL
+      degreeType: i.category === "Undergraduate" ? "UG" : "GR",
       // always undefined
       departmentCodes: void 0,
       // always undefined
