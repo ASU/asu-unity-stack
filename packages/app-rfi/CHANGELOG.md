@@ -1,3 +1,10 @@
+# [@asu/app-rfi-v3.7.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.7.1...@asu/app-rfi-v3.7.2) (2026-03-03)
+
+
+### Bug Fixes
+
+* **app-rfi:** fix require indicator, fix online cert flow ([c61821c](https://github.com/asu/asu-unity-stack/commit/c61821c55f59537bae3c6300db209bc3dba8cf40))
+
 # [@asu/app-rfi-v3.7.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.7.0...@asu/app-rfi-v3.7.1) (2026-02-27)
 
 
