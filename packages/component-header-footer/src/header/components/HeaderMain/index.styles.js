@@ -47,7 +47,6 @@ const HeaderMainWrapper = styled.div`
       justify-content: space-between;
       &.${CLASS_NAMES.PARTNER} {
         flex-direction: row-reverse;
-        flex-wrap: nowrap;
       }
     }
     .${CLASS_NAMES.PARTNER} .${CLASS_NAMES.CONTENT_CONTAINER} {
