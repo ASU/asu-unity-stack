@@ -16,6 +16,7 @@ import {
   ZipCode,
   validation,
 } from "../steps/questions";
+import { RfiRequiredIndicator } from "../controls/controls-helpers";
 
 const Step = ({ children }) => children;
 
@@ -52,11 +53,7 @@ const variants = {
         then check your email.
       </p>
       <p>
-        <i
-          title="Required"
-          className="fa fa-icon fa-circle uds-field-required"
-          aria-hidden="true"
-        />
+        <RfiRequiredIndicator required={true} />
         Indicates required field
       </p>
       <br />
@@ -93,11 +90,7 @@ const variants = {
         then check your email.
       </p>
       <p>
-        <i
-          title="Required"
-          className="fa fa-icon fa-circle uds-field-required"
-          aria-hidden="true"
-        />
+        <RfiRequiredIndicator required={true} />
         Indicates required field
       </p>
       <br />
