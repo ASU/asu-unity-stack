@@ -15589,7 +15589,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:4, debug@npm:^4.0.0, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.1, debug@npm:^4.3.2, debug@npm:^4.3.3, debug@npm:^4.3.4, debug@npm:^4.3.5, debug@npm:^4.3.7, debug@npm:^4.4.0":
+"debug@npm:4, debug@npm:^4.0.0, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.1, debug@npm:^4.3.2, debug@npm:^4.3.3, debug@npm:^4.3.4, debug@npm:^4.3.7, debug@npm:^4.4.0":
   version: 4.4.0
   resolution: "debug@npm:4.4.0"
   dependencies:
@@ -30764,13 +30764,13 @@ __metadata:
   linkType: hard
 
 "simple-git@npm:^3.25.0":
-  version: 3.27.0
-  resolution: "simple-git@npm:3.27.0"
+  version: 3.33.0
+  resolution: "simple-git@npm:3.33.0"
   dependencies:
     "@kwsites/file-exists": "npm:^1.1.1"
     "@kwsites/promise-deferred": "npm:^1.1.1"
-    debug: "npm:^4.3.5"
-  checksum: 10c0/ef56cabea585377d3e0ca30e4e93447f465d91f23eaf751693cc31f366b5f7636facf52ad5bcd598bfdf295fa60732e7a394303d378995b52e2d221d92e5f9f4
+    debug: "npm:^4.4.0"
+  checksum: 10c0/463e91f3ee04b7fc445284c64502a4ee3d607f626f18c8bcc036815a30fe178d2216976e683c6368edd7b3093801d6e534deeb8e700a4863a76ef23f881a0712
   languageName: node
   linkType: hard
 
