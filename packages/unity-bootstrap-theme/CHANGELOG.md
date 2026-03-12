@@ -1,3 +1,11 @@
+# [@asu/unity-bootstrap-theme-v1.36.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.36.2...@asu/unity-bootstrap-theme-v1.36.3) (2026-03-12)
+
+
+### Bug Fixes
+
+* **a11y:** correct heading hierarchy in React components ([8c6afbb](https://github.com/ASU/asu-unity-stack/commit/8c6afbb03dbff230ce68aafdfb946fb97a84db74))
+* **unity-bootstrap-theme:** remove explicit line-height and letter-spacing from anchor menu headings ([c856181](https://github.com/ASU/asu-unity-stack/commit/c8561812c31c5ea584d7afcefc2f0ec87ee3f14d))
+
 # [@asu/unity-bootstrap-theme-v1.36.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.36.1...@asu/unity-bootstrap-theme-v1.36.2) (2026-02-27)
 
 
