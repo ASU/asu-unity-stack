@@ -223,13 +223,13 @@ export const AnchorMenu = ({
                 data-bs-target="#collapseAnchorMenu"
                 aria-controls="collapseAnchorMenu"
               >
-                <h4>
+                <h2>
                   {menuTitle}:<i className="fas fa-chevron-down" />
-                </h4>
+                </h2>
               </button>
             </GaEventWrapper>
           ) : (
-            <h4>{menuTitle}:</h4>
+            <h2>{menuTitle}:</h2>
           )}
 
           <div

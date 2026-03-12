@@ -52,7 +52,7 @@ const htmlTemplate = ({ id, imageSource, imageAltText, title, content }) => ({
                 <div dangerouslySetInnerHTML={{ __html: content }} />
               ) : (
                 <>
-                  <h3>{title}</h3>
+                  <h2>{title}</h2>
                   {}
                   <div dangerouslySetInnerHTML={{ __html: content }} />
                 </>

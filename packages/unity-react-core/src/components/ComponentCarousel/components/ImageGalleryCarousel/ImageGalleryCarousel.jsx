@@ -186,7 +186,7 @@ const CustomNavComponent = ({ instanceName, imageItems, hasContent }) => {
           data-testid="image-gallery-content-container"
         >
           <div className="uds-caption-text">
-            {title ? <h3>{title}</h3> : null}
+            {title ? <h2>{title}</h2> : null}
             {}
             <div dangerouslySetInnerHTML={{ __html: content }} />
           </div>
