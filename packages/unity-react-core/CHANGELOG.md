@@ -1,3 +1,11 @@
+# [@asu/unity-react-core-v1.7.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.7.1...@asu/unity-react-core-v1.7.2) (2026-03-12)
+
+
+### Bug Fixes
+
+* **a11y:** correct heading hierarchy in React components ([8c6afbb](https://github.com/ASU/asu-unity-stack/commit/8c6afbb03dbff230ce68aafdfb946fb97a84db74))
+* **unity-react-core:** remove duplicate Article entry in README file ([02bdde1](https://github.com/ASU/asu-unity-stack/commit/02bdde10490d47e215b41cca681f6aa6e5faafd3))
+
 # [@asu/unity-react-core-v1.7.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.7.0...@asu/unity-react-core-v1.7.1) (2026-02-27)
 
 
