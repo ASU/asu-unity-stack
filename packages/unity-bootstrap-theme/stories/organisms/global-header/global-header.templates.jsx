@@ -2,7 +2,7 @@ import React from "react";
 import vertlogo from "./arizona-state-university-logo-vertical.png";
 import horizlogo from "./arizona-state-university-logo.png";
 import starbucksLogo from "./asu-starbucks.png";
-import menuSearchIcon from "../../../public/img/custom-mobile-header-icon/menu-search-icon.png";
+const menuSearchIcon = "/img/custom-mobile-header-icon/menu-search-icon.png";
 
 export const Basic = () => (
   <>
