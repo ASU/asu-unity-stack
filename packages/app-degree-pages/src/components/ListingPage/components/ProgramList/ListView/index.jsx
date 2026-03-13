@@ -79,7 +79,7 @@ const renderExtraInfo = ({ resolver }) => (
     {resolver.hasMathReqFlag() && (
       <div>
         <div>
-          <strong>First Required Math Course:</strong>
+          <strong>First Required Math Course: </strong>
           <span>{resolver.getMinMathReq()}</span>
           {resolver.getOtherMathReqCourse() && (
             <span
@@ -94,7 +94,7 @@ const renderExtraInfo = ({ resolver }) => (
 
     {resolver.getMathIntensity() && (
       <div>
-        <strong>Math Intensity:</strong>
+        <strong>Math Intensity: </strong>
         {resolver.getMathIntensity()}
       </div>
     )}
