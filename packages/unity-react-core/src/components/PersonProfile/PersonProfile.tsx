@@ -105,7 +105,7 @@ const PersonProfile: React.FC<PersonProfileProps> = ({
           </li>
           <li>
             <GaEventWrapper gaData={{ ...gaData, section: name.toLowerCase() }}>
-              <a href={`tel:${contactInfo.phone}`} aria-label={`Phone ${contactInfo.phone}`}>
+              <a href={`tel:${contactInfo.phone}`} aria-label={`Phone ${contactInfo.phone.replace(/\-/g, " ").replace(/\(/g, "").replace(/\)/g, "")}`}>
                 {contactInfo.phone}
               </a>
             </GaEventWrapper>

@@ -80,7 +80,7 @@ const PersonProfile = ({ size, fill }) => (
           <li>
             <a
               href="tel:555-555-5555"
-              aria-label="Phone 555-555-5555"
+              aria-label="Phone 555 555 5555"
               data-ga-event="link"
               data-ga-action="click"
               data-ga-name="onclick"
