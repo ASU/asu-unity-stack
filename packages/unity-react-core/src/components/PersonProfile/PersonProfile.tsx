@@ -98,14 +98,14 @@ const PersonProfile: React.FC<PersonProfileProps> = ({
             <GaEventWrapper
               gaData={{ ...gaData, section: name.toLowerCase() }}
             >
-              <a href={`mailto:${contactInfo.email}`} aria-label="Email user">
+              <a href={`mailto:${contactInfo.email}`} aria-label={`Email ${contactInfo.email}`}>
                 {contactInfo.email}
               </a>
             </GaEventWrapper>
           </li>
           <li>
             <GaEventWrapper gaData={{ ...gaData, section: name.toLowerCase() }}>
-              <a href={`tel:${contactInfo.phone}`} aria-label="Call user">
+              <a href={`tel:${contactInfo.phone}`} aria-label={`Phone ${contactInfo.phone}`}>
                 {contactInfo.phone}
               </a>
             </GaEventWrapper>

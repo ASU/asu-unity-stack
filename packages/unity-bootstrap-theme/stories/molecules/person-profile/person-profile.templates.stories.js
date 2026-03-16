@@ -65,7 +65,7 @@ const PersonProfile = ({ size, fill }) => (
           <li>
             <a
               href="mailto:email@asu.edu"
-              aria-label="Email user"
+              aria-label="Email email@asu.edu"
               data-ga-event="link"
               data-ga-action="click"
               data-ga-name="onclick"
@@ -80,7 +80,7 @@ const PersonProfile = ({ size, fill }) => (
           <li>
             <a
               href="tel:555-555-5555"
-              aria-label="Call user"
+              aria-label="Phone 555-555-5555"
               data-ga-event="link"
               data-ga-action="click"
               data-ga-name="onclick"
