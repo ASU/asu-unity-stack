@@ -158,21 +158,16 @@ const TabbedPanels = ({
   // REVIEW: This will cause an infinite loop. Think about when this effect should run and add the appropriate dependency array. remember that what you add int the depenmdency array should not be derived from the state being set inside the effect.
     // run overflow calculation on mount and on resize
     useEffect(() => {
-
       calculateOverflow();
-
-      window.addEventListener("resize", calculateOverflow);
-
-      return () => {
-      window.removeEventListener("resize", calculateOverflow);
-      };
     }, [childrenArray, headerTabItems]);
 
-  const handleResize = useCallback(() => {
-    setScrollableWidth(
-      headerTabs.current?.scrollWidth - headerTabs.current?.offsetWidth
-    );
-  }, []);
+    const handleResize = useCallback(() => {
+      setScrollableWidth(
+        headerTabs.current?.scrollWidth - headerTabs.current?.offsetWidth
+      );
+
+      calculateOverflow();
+    }, [calculateOverflow]);
 
   const handleScroll = useCallback(() => {
     setScrollLeft(headerTabs.current?.scrollLeft);
