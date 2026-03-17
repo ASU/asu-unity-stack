@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.36.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.36.3...@asu/unity-bootstrap-theme-v1.36.4) (2026-03-17)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix visited links issue in header ([9d6fd37](https://github.com/ASU/asu-unity-stack/commit/9d6fd37945b3e8e7844adebfb2541e350ab91f6c))
+
 # [@asu/unity-bootstrap-theme-v1.36.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.36.2...@asu/unity-bootstrap-theme-v1.36.3) (2026-03-12)
 
 
