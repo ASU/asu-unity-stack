@@ -12,7 +12,7 @@ import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
 import { useBaseSpecificFramework } from "../GaEventWrapper/useBaseSpecificFramework";
-import { NavControls, TabHeader } from "./components";
+import { NavControls, TabHeader, MoreDropdown } from "./components";
 
 function useRefs() {
   const refs = useRef({});
@@ -62,6 +62,12 @@ const TabbedPanels = ({
   onTabChange = _ => {},
 }) => {
   const childrenArray = React.Children.toArray(children);
+  const idToChild = {};
+  childrenArray.forEach((child) => {
+    if (child && child.props && child.props.id) {
+      idToChild[child.props.id] = child;
+    }
+  });
 
   // Move all hooks before any early returns
   const isMounted = useRef(false);
@@ -72,8 +78,19 @@ const TabbedPanels = ({
   );
   const headerTabs = useRef(null);
   const [headerTabItems, setHeaderTabItems] = useRefs();
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const [scrollableWidth, setScrollableWidth] = useState();
+  // helper to register a DOM node for a tab id in both headerTabItems (for keyboard focus)
+  // and tabRefs (for width measurements)
+  const registerTabNode = (id) => (node) => {
+    setHeaderTabItems(id)(node);
+    if (node) {
+      tabRefs.current[id] = node;
+    } else {
+      delete tabRefs.current[id];
+    }
+  };
+    const tabRefs = useRef({});
+    const [scrollLeft, setScrollLeft] = useState(0);
+    const [scrollableWidth, setScrollableWidth] = useState();
 
   // -----------------------------
   // TODO 1.1
@@ -83,67 +100,73 @@ const TabbedPanels = ({
     childrenArray.map((c) => c.props.id)
   );
 
+  // -----------------------------
+  // TODO 2.1
+  // -----------------------------
+  const calculateOverflow = () => {
+    const MORE_BTN_WIDTH = 83;
+    const TAB_GAP = 8;
+
+    const container = headerTabs.current;
+    if (!container) {
+      // show all tabs by default and clear overflow if no container
+      setVisibleTabs(childrenArray.map((c) => c.props.id));
+      setOverflowTabs([]);
+      return;
+    }
+
+    const tabIDs = childrenArray.map((c) => c.props.id);
+
+    // measure widths using tabRefs first then headerTabItems
+    const widths = tabIDs.map((id) => {
+      const domNode = tabRefs.current[id] || headerTabItems.current?.[id];
+      if (domNode && typeof domNode.getBoundingClientRect === "function") {
+        return Math.round(domNode.getBoundingClientRect().width);
+      }
+      // if no measurement then use this
+      return 80;
+    });
+
+    const availableWidth = container.clientWidth || 0;
+
+    const newVisibleTabs = [];
+    const newOverflowTabs = [];
+
+    let used = 0;
+    for (let i = 0; i < tabIDs.length; i++) {
+      const w = widths[i] || 0;
+
+      // mark the remaining tabs as overflow if more button exceeds limit
+      if (used + w + MORE_BTN_WIDTH > availableWidth) {
+        for (let j = i; j < tabIDs.length; j++) {
+          newOverflowTabs.push(tabIDs[j]);
+        }
+        break;
+      }
+
+      newVisibleTabs.push(tabIDs[i]);
+      used += w + TAB_GAP;
+    }
+
+    setVisibleTabs(newVisibleTabs);
+    setOverflowTabs(newOverflowTabs);
+
+    setScrollableWidth(container.scrollWidth - container.clientWidth);
+  };
+
   // REVIEW: This useEffect is missing its dependency array. What happens when you call setState without dependencies?
   // REVIEW: This will cause an infinite loop. Think about when this effect should run and add the appropriate dependency array. remember that what you add int the depenmdency array should not be derived from the state being set inside the effect.
-  useEffect(() => {
-    const More_Width = 83;
-    const Tab_Gap = 8;
+    // run overflow calculation on mount and on resize
+    useEffect(() => {
 
-    const computeOverflow = () => {
-      // REVIEW: What happens if headerTabs.current is null? Should you add a safety check?
-      const container = headerTabs.current;
-      if (!container) {
-        setVisibleTabs(childrenArray.map((c) => c.props.id));
-        setOverflowTabs([]);
-        return;
-      }
+      calculateOverflow();
 
-      const tabIDs = childrenArray.map((c) => c.props.id);
+      window.addEventListener("resize", calculateOverflow);
 
-      const widths = tabIDs.map((id) => {
-        const DOMelement = headerTabItems.current?.[id];
-        return DOMelement ? DOMelement.getBoundingClientRect().width : 80;
-      });
-
-      const availableWidth = container.clientWidth;
-
-      // REVIEW: You're about to push directly into state arrays (visibleTabs/overflowTabs).
-      // REVIEW: In React, should you mutate state directly? What's the correct approach?
-      const newVisibleTabs = [];
-      const newOverflowTabs = [];
-
-      let spaceUsed = 0;
-
-      for (let i = 0; i < tabIDs.length; i++) {
-        const curWidth = widths[i];
-
-        if (spaceUsed + curWidth + More_Width > availableWidth) {
-          for (let j = i; j < tabIDs.length; j++) {
-            newOverflowTabs.push(tabIDs[j]);
-          }
-          break;
-        }
-
-        newVisibleTabs.push(tabIDs[i]);
-        spaceUsed += curWidth + Tab_Gap;
-      }
-
-      setVisibleTabs(newVisibleTabs);
-      setOverflowTabs(newOverflowTabs);
-      setScrollableWidth(container.scrollWidth - container.clientWidth);
-    };
-
-    // REVIEW: The TODO says this should run "on mount and window resize". Where's the resize listener?
-
-    computeOverflow();
-
-    window.addEventListener("resize", computeOverflow);
-
-    return () => {
-      window.removeEventListener("resize", computeOverflow);
-    };
-  }, [childrenArray, headerTabItems]);
-
+      return () => {
+      window.removeEventListener("resize", calculateOverflow);
+      };
+    }, [childrenArray, headerTabItems]);
 
   const handleResize = useCallback(() => {
     setScrollableWidth(
@@ -288,25 +311,38 @@ const TabbedPanels = ({
   return (
     <div className={bgColor}>
       <nav className={navClasses}>
-        <div className="nav nav-tabs" role="tablist" ref={headerTabs}>
-          {childrenArray.map((child, index) => {
-            return (
-              <TabHeader
-                ref={setHeaderTabItems(child.props.id)}
-                id={child.props.id}
-                title={child.props.title}
-                selected={activeTabID === child.props.id}
-                gaData={trackLinkEvent}
-                selectTab={switchToTab}
-                key={child.props.id}
-                leftKeyPressed={() => incrementIndex(false)}
-                rightKeyPressed={() => incrementIndex()}
-                icon={child.props.icon}
-                index={index}
-              />
-            );
-          })}
-        </div>
+      <div className="nav nav-tabs" role="tablist" ref={headerTabs}>
+        {visibleTabs.map((tabId, index) => {
+          const child = idToChild[tabId];
+          if (!child) return null;
+
+          return (
+            <TabHeader
+              // register both headerTabItems and tabRefs for this tab id
+              ref={registerTabNode(tabId)}
+              id={child.props.id}
+              title={child.props.title}
+              selected={activeTabID === child.props.id}
+              gaData={trackLinkEvent}
+              selectTab={switchToTab}
+              key={child.props.id}
+              leftKeyPressed={() => incrementIndex(false)}
+              rightKeyPressed={() => incrementIndex()}
+              icon={child.props.icon}
+              index={index}
+            />
+          );
+        })}
+
+        {overflowTabs && overflowTabs.length > 0 && (
+          <MoreDropdown
+            overflowTabs={overflowTabs}
+            activeTabID={activeTabID}
+            selectTab={switchToTab}
+            gaData={trackLinkEvent}
+          />
+        )}
+      </div>
 
         <NavControls
           hidePrev={scrollLeft <= 0}
