@@ -10,7 +10,15 @@
 }
 
 // Global link visited state
-a:visited:not(.btn):not(.nav-link):not(.page-link):not(.card-link) {
+a:visited:not(
+    .btn,
+    .nav-link,
+    .page-link,
+    .card-link,
+    header *,
+    footer *,
+    .uds-grid-links *
+  ) {
   color: $uds-color-base-darkmaroon;
 }
 
@@ -78,7 +86,7 @@ label {
   text-decoration: underline;
 }
 .card-degree .card-header .card-title:after {
-  content: '';
+  content: "";
   width: 32px;
   height: 4px;
   display: block;
