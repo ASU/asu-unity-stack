@@ -4,7 +4,7 @@
  * TODO: Fix type errors
  * */
 import PropTypes from "prop-types";
-import React, { useRef, useImperativeHandle } from "react";
+import React, { forwardRef, useRef} from "react";
 
 import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
 import { useBaseSpecificFramework } from "../../GaEventWrapper/useBaseSpecificFramework";
@@ -32,24 +32,6 @@ const TabHeader = function TabHeader(props) {
 
   const inputRef = useRef(null);
 
-  useImperativeHandle(ref, () => {
-    return {
-      focus() {
-        inputRef.current.focus();
-      },
-      scrollIntoView() {
-        const middle =
-          inputRef.current?.offsetWidth / 2 + inputRef.current.offsetLeft;
-        const targetMiddle =
-          inputRef.current?.offsetParent?.scrollLeft +
-          inputRef.current?.offsetParent?.offsetWidth / 2;
-
-        inputRef.current?.offsetParent?.scrollBy({
-          left: middle - targetMiddle,
-        });
-      },
-    };
-  }, []);
 
   const func = e => {
     if (e.keyCode === 37) {
@@ -63,17 +45,21 @@ const TabHeader = function TabHeader(props) {
   return (
     <GaEventWrapper gaData={{ ...gaData, text: title }}>
       <a
-        ref={inputRef}
+        ref={(node) => {
+          inputRef.current = node;
+          if (typeof ref === "function") ref(node);
+          else if (ref) ref.current = node;
+        }}
         className={`nav-item nav-link ${selected ? "active" : ""}`}
         id={id}
         href={`#nav-${id}`}
         role="tab"
         aria-controls={`nav-${id}`}
         aria-selected={selected}
-        data-bs-toggle={isBootstrap && "tab"}
-        onClick={isReact && (e => selectTab(e, id, title))}
-        onKeyDown={isReact && func}
-        tabIndex={selected ? "" : "-1"}
+        data-bs-toggle={isBootstrap ? "tab" : undefined}
+        onClick={isReact ? (e => selectTab(e, id, title)) : undefined}
+        onKeyDown={isReact ? func : undefined}
+        tabIndex={selected ? 0 : -1}
       >
         {title} {icon && <i className={`${icon?.[0]} fa-${icon?.[1]} me-1`} />}
       </a>
