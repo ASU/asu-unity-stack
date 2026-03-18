@@ -59,7 +59,7 @@ const TabHeader = function TabHeader(props) {
         data-bs-toggle={isBootstrap ? "tab" : undefined}
         onClick={isReact ? (e => selectTab(e, id, title)) : undefined}
         onKeyDown={isReact ? func : undefined}
-        tabIndex={0}
+        tabIndex={selected ? 0 : -1}
       >
         {title} {icon && <i className={`${icon?.[0]} fa-${icon?.[1]} me-1`} />}
       </a>
