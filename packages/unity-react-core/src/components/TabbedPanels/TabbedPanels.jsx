@@ -103,7 +103,7 @@ const TabbedPanels = ({
   // -----------------------------
   // TODO 2.1
   // -----------------------------
-  const calculateOverflow = () => {
+  const calculateOverflow = useCallback(() => {
     const MORE_BTN_WIDTH = 83;
     const TAB_GAP = 8;
 
@@ -123,7 +123,6 @@ const TabbedPanels = ({
       if (domNode && typeof domNode.getBoundingClientRect === "function") {
         return Math.round(domNode.getBoundingClientRect().width);
       }
-      // if no measurement then use this
       return 80;
     });
 
@@ -152,14 +151,14 @@ const TabbedPanels = ({
     setOverflowTabs(newOverflowTabs);
 
     setScrollableWidth(container.scrollWidth - container.clientWidth);
-  };
+  }, [childrenArray, headerTabItems]);
 
   // REVIEW: This useEffect is missing its dependency array. What happens when you call setState without dependencies?
   // REVIEW: This will cause an infinite loop. Think about when this effect should run and add the appropriate dependency array. remember that what you add int the depenmdency array should not be derived from the state being set inside the effect.
     // run overflow calculation on mount and on resize
     useEffect(() => {
       calculateOverflow();
-    }, [childrenArray, headerTabItems]);
+    }, [childrenArray, calculateOverflow]);
 
     const handleResize = useCallback(() => {
       setScrollableWidth(
