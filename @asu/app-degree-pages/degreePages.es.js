@@ -11216,7 +11216,7 @@ const hm = [
     e.hasAsuLangReqFlag() ? "Yes" : "No"
   ] }),
   e.hasMathReqFlag() && /* @__PURE__ */ d.jsx("div", { children: /* @__PURE__ */ d.jsxs("div", { children: [
-    /* @__PURE__ */ d.jsx("strong", { children: "First Required Math Course:" }),
+    /* @__PURE__ */ d.jsx("strong", { children: "First Required Math Course: " }),
     /* @__PURE__ */ d.jsx("span", { children: e.getMinMathReq() }),
     e.getOtherMathReqCourse() && /* @__PURE__ */ d.jsx(
       "span",
@@ -11228,11 +11228,11 @@ const hm = [
     )
   ] }) }),
   e.getMathIntensity() && /* @__PURE__ */ d.jsxs("div", { children: [
-    /* @__PURE__ */ d.jsx("strong", { children: "Math Intensity:" }),
+    /* @__PURE__ */ d.jsx("strong", { children: "Math Intensity: " }),
     e.getMathIntensity()
   ] }),
   e.hasStemOptText() && /* @__PURE__ */ d.jsxs("div", { children: [
-    /* @__PURE__ */ d.jsx("strong", { children: "STEM OPT:" }),
+    /* @__PURE__ */ d.jsx("strong", { children: "STEM OPT: " }),
     e.hasStemOptText()
   ] })
 ] }), xm = Qr("row-"), $c = ({ programs: e, totalRows: t, loading: r, actionUrls: n }) => {
