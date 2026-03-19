@@ -1,3 +1,11 @@
+# [@asu/app-degree-pages-v3.1.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.1.3...@asu/app-degree-pages-v3.1.4) (2026-03-19)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** added space for "First Required Math Course:" and "Math Intensity:" ([3bf0914](https://github.com/asu/asu-unity-stack/commit/3bf0914193dfcc3f162e09bdc9730f8375dd0d20))
+* **app-degree-pages:** added space to STEM-OPT: ([5db603f](https://github.com/asu/asu-unity-stack/commit/5db603f5084c3f4389d4b1a1f5f896e8b92c11df))
+
 # [@asu/app-degree-pages-v3.1.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.1.2...@asu/app-degree-pages-v3.1.3) (2026-01-22)
 
 
