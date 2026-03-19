@@ -132,44 +132,59 @@ Event.args = {
   horizontal: false,
   image: img1,
   imageAltText: "An example image",
-  title:
-    "Event title Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore exercitationem ad voluptatem dolore dolores nulla ipsam quo distinctio expedita doloribus nisi similique obcaecati velit illo autem numquam iusto, rem nesciunt repellendus laborum. Rerum quisquam, soluta aspernatur a harum dolor ducimus nulla. Itaque aliquam cum fugiat error esse ipsam rerum consectetur!",
+  title: "Sun Devil Women's Tennis: NCAA Singles and Doubles Championships",
   cardLink: "#example-link",
-  body: "<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
   eventFormat: "stack",
-  eventTime: "Wed, November 21st, 2021<br />11:30 a.m - 12:30 p.m.",
+  eventTime: "Wed, November 21st, 2021<br />11:30 a.m.\u201312:30 p.m. (MST)",
   eventLocation: "Downtown Phoenix campus",
-  buttons: [
-    {
-      color: "maroon",
-      size: "default",
-      label: "CTA button",
-    },
-  ],
 };
 Event.parameters = {
   docs: {
     description: {
       story: `
-The event props, \`eventLocation\` and \`eventTime\` are allowed to contain basic HTML formatting, primarily \`<br>\` for line breaks.
+Event cards use a single arrow link at the bottom instead of CTA buttons.
+The \`cardLink\` prop provides the destination URL.
 
+The event props \`eventLocation\` and \`eventTime\` support basic HTML like \`<br>\`.
 
     <Card
-        body="<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo."
-        buttons={[
-          {
-            color: 'maroon',
-            label: 'CTA button',
-            size: 'default'
-          }
-        ]}
+        cardLink="#example-link"
         eventFormat="stack"
         eventLocation="Downtown Phoenix campus"
-        eventTime="Wed, November 21st, 2021<br>11:30 a.m - 12:30 p.m."
-        image=img1
+        eventTime="Wed, November 21st, 2021<br>11:30 a.m.–12:30 p.m. (MST)"
+        image={img1}
         imageAltText="An example image"
-        title="Event title"
+        title="Sun Devil Women's Tennis: NCAA Singles and Doubles Championships"
         type="event"
+      />`,
+    },
+  },
+};
+
+export const News = Template.bind({});
+News.args = {
+  type: "news",
+  horizontal: false,
+  image: img1,
+  imageAltText: "An example image",
+  title: "ASU researchers discover DNA-based electronic storage system",
+  body: "<span style='font-weight: bold;'>(Bold!) Body copy goes here.</span> Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.",
+  cardLink: "#example-link",
+};
+News.parameters = {
+  docs: {
+    description: {
+      story: `
+News cards use a single arrow link at the bottom instead of CTA buttons.
+The \`cardLink\` prop provides the destination URL.
+
+    <Card
+        body="At Arizona State University's Biodesign Institute..."
+        cardLink="#example-link"
+        image={img1}
+        imageAltText="An example image"
+        title="ASU researchers discover DNA-based electronic storage system"
+        type="news"
       />`,
     },
   },

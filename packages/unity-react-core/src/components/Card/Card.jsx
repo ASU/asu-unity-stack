@@ -188,14 +188,24 @@ const BaseCard = ({
   return (
     <>
       <CardWrapper className={cardClass} data-testid="card-container">
-        {!!image && (
+        {type === "event" || type === "news" ? (
+          !!image && (
+            <Image
+              src={image}
+              alt={imageAltText}
+              dataTestId="card-image"
+              cssClasses={["card-img-top"]}
+              title={title}
+            />
+          )
+        ) : (
           <Image
-            src={image}
             alt={imageAltText}
             dataTestId="card-image"
             cssClasses={["card-img-top"]}
-            cardLink={cardLink}
             title={title}
+            cardLink={cardLink}
+            src={image}
           />
         )}
         {!image && icon && (
@@ -313,42 +323,62 @@ const CardContent = ({
         eventLocation={eventLocation}
       />
     )}
-    {buttons && (
-      <div className="card-buttons">
-        {buttons.map(button => (
-          <div
-            className="card-button"
-            data-testid="card-button"
-            key={`${button.label}-${button.href}`}
-          >
-            {/* @ts-ignore */}
-            <Button
-              ariaLabel={button.ariaLabel}
-              color={button.color}
-              icon={button.icon}
-              href={button.href}
-              label={button.label}
-              onClick={button.onClick}
-              size={button.size}
-              target={button.target}
-              cardTitle={title}
-            />
-          </div>
-        ))}
-      </div>
-    )}
-    {linkUrl && linkLabel && (
+    {(type === "event" || type === "news") && cardLink ? (
       <div className="card-link" data-testid="card-link">
         <GaEventWrapper
           gaData={{
             ...gaDefaultObject,
-            section: title,
-            text: linkLabel,
+            text: title,
           }}
         >
-          <a href={emailAddressParser(linkUrl)}>{linkLabel}</a>
+          <a
+            href={cardLink}
+            className="card-arrow-link"
+            aria-label={title}
+          >
+            <i className="fas fa-arrow-right" aria-hidden="true" />
+          </a>
         </GaEventWrapper>
       </div>
+    ) : (
+      <>
+        {buttons && (
+          <div className="card-buttons">
+            {buttons.map(button => (
+              <div
+                className="card-button"
+                data-testid="card-button"
+                key={`${button.label}-${button.href}`}
+              >
+                <Button
+                  ariaLabel={button.ariaLabel}
+                  color={button.color}
+                  icon={button.icon}
+                  href={button.href}
+                  label={button.label}
+                  onClick={button.onClick}
+                  size={button.size}
+                  target={button.target}
+                  cardTitle={title}
+                />
+              </div>
+            ))}
+          </div>
+        )}
+        {linkUrl && linkLabel && (
+          <div className="card-link" data-testid="card-link">
+            <GaEventWrapper
+              gaData={{
+                ...gaDefaultObject,
+                section: title,
+                text: linkLabel,
+              }}
+            >
+              <a href={emailAddressParser(linkUrl)}>{linkLabel}</a>
+            </GaEventWrapper>
+          </div>
+        )}
+      </>
     )}
     {tags && (
       <div className="card-tags" data-testid="card-tags">
