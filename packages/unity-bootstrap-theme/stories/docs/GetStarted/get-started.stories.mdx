@@ -24,32 +24,87 @@ We bundle the necessary CSS and Javascript in the `dist/` folder. There are more
 * `dist/css/unity-bootstrap-header-footer.css` (optional) - header and footer CSS only - don't use if using the Unity `component-header-footer` React component
 
 ### Javascript
-All you need to do is include the script on your page, the scripts will execute with the window load event.
-We provide 3 formats ("UMD", "CJS", "ES").
 
-* Unity File Formats
-  * `dist/js/unity-bootstrap.umd.js` (universal)
-    * creates a global variable `unityBootstrap` if you need to manaully call the init function ex: `unityBootstrap.initAnchorMenu()`
-  * `dist/js/unity-bootstrap.cjs.js` (common js)
-  * `dist/js/unity-bootstrap.es.js` (module)
-* Vendor Files
-  * `dist/js/bootstrap.bundle.min.js` (unaltered bootstrap version)
-  * `dist/js/chart.min.js` (only needed if you are using the donut chart)
+Unity Bootstrap Theme includes JavaScript for interactive components and Google Analytics data layer integration. **All scripts automatically initialize on window load** - you just need to include them in your project.
 
-* Exports:
-  * `initAnchorMenu`
-  * `initBlockquoteAnimation`
-  * `initCalendar`
-  * `initChart`
-  * `initDataLayer`
-  * `initFixedTable`
-  * `initGlobalHeader`
-  * `initHeroesVideo`
-  * `initImageParallax`
-  * `initModals`
-  * `initRankingCard`
-  * `initTabbedPanels`
-  * `initVideo`
+We provide 3 formats for different use cases:
+
+#### **For Browser/HTML Projects (UMD)**
+
+Include the UMD bundle via script tag. Everything auto-initializes on page load:
+
+```html
+<!-- Include Unity Bootstrap JS -->
+<script src="path/to/@asu/unity-bootstrap-theme/dist/js/unity-bootstrap.umd.js"></script>
+
+<!-- Optional: Bootstrap JS (if not already included) -->
+<script src="path/to/@asu/unity-bootstrap-theme/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Optional: Chart.js (only if using donut chart component) -->
+<script src="path/to/@asu/unity-bootstrap-theme/dist/js/chart.min.js"></script>
+```
+
+**Manual initialization** (only needed if script loads after page load or re-initialization required):
+```html
+<script>
+  // Global variable `unityBootstrap` is available
+  unityBootstrap.initDataLayer();
+  unityBootstrap.initGlobalHeader();
+  // ... or any other init function
+</script>
+```
+
+#### **For React/Modern JavaScript Apps (ES Module)**
+
+Import at your app's entry point (e.g., `src/index.js` or `src/main.jsx`). Auto-initializes on window load:
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+
+// Import Unity Bootstrap JS - auto-initializes on window load
+import '@asu/unity-bootstrap-theme/dist/js/unity-bootstrap.es.js';
+
+// Import Unity CSS
+import '@asu/unity-bootstrap-theme/dist/css/unity-bootstrap-theme.css';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
+#### **Available Formats**
+
+* `dist/js/unity-bootstrap.umd.js` - Universal Module Definition (browser/script tags)
+* `dist/js/unity-bootstrap.es.js` - ES Module (React/modern bundlers)
+* `dist/js/unity-bootstrap.cjs.js` - CommonJS (Node.js)
+
+#### **Vendor Files** (Included for convenience)
+* `dist/js/bootstrap.bundle.min.js` - Unaltered Bootstrap JS
+* `dist/js/chart.min.js` - Only needed for donut chart component
+
+#### **Available Initialization Functions**
+
+All functions listed below auto-initialize on window load. Manual calls are only needed for edge cases:
+
+* `initAnchorMenu`
+* `initBlockquoteAnimation`
+* `initCalendar`
+* `initChart`
+* `initDataLayer` - Required for Google Analytics tracking
+* `initFixedTable`
+* `initGlobalHeader` - Required for header functionality if using the HTML markup only. Not needed if using the React header in `@asu/component-header-footer` component.
+* `initHeroesVideo`
+* `initImageParallax`
+* `initModals`
+* `initRankingCard`
+* `initTabbedPanels`
+* `initVideo`
+* `initCardBodies`
+* `initCollapse`
 
 ## ❯ How to  use the Unity Storybook reference site
 
