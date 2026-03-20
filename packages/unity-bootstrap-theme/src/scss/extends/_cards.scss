@@ -228,6 +228,8 @@ Cards - Table of Contents
   //   }
   // }
 
+
+
 @include media-breakpoint-up(lg) {
   .col-lg-6 .card {
     .card-img-top {
@@ -479,9 +481,19 @@ Cards - Table of Contents
     color: $uds-color-base-maroon;
     border-color: $uds-color-base-maroon;
 
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+
     .fa-arrow-right {
       color: inherit;
     }
+
   }
 }
 
