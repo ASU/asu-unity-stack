@@ -8,12 +8,12 @@ import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
   // TODO 1.2
   // -----------------------------
 
-  const MoreDropdown = ({ overflowTabs, activeTabID, selectTab, gaData }) => {
+  const MoreDropdown = ({ overflowTabs, activeTabID, selectTab, gaData, idToChild }) => {
     const [isOpen, setIsOpen] = useState(false);
     const rootRef = useRef(null);
-    // REVIEW: Look at TabbedPanels.jsx - what data structure is actually being passed in overflowTabs?
-    // REVIEW: Do you have access to tab titles and icons? Think about what data you actually need.
-    // overflowTabs passes an array of the tab IDs
+
+    // Note: This component expects overflowTabs to be an array of tab IDs
+    // It needs idToChild prop to look up full tab data (title, icon)
     const Overflow = Array.isArray(overflowTabs) ? overflowTabs : [];
     const items = Overflow.map((t) => {
       if (typeof t === "string") {
@@ -144,9 +144,10 @@ import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
 // REVIEW: Should any of these props be marked as .isRequired?
 MoreDropdown.propTypes = {
   overflowTabs: PropTypes.array.isRequired,
-  activeTabID: PropTypes.string,
-  selectTab: PropTypes.func,
+  activeTabID: PropTypes.string.isRequired,
+  selectTab: PropTypes.func.isRequired,
   gaData: PropTypes.object,
+  // idToChild: PropTypes.object.isRequired, // TODO: Add after Phase 2 fix
 };
 
 export { MoreDropdown };

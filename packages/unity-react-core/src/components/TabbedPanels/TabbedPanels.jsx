@@ -101,8 +101,13 @@ const TabbedPanels = ({
   );
 
   // -----------------------------
-  // TODO 2.1
+  // TODO 2.1: Integrate Overflow Detection  COMPLETE
   // -----------------------------
+  // REVIEW FEEDBACK for TODO 2.1:
+  //  Good: calculateOverflow function created
+  //  Good: Measures tab widths using getBoundingClientRect
+  //  Good: Accounts for MORE_BTN_WIDTH (83px)
+  //   Issue: See data structure problem below (line ~141)
   const calculateOverflow = useCallback(() => {
     const MORE_BTN_WIDTH = 83;
     const TAB_GAP = 8;
@@ -138,6 +143,14 @@ const TabbedPanels = ({
       // mark the remaining tabs as overflow if more button exceeds limit
       if (used + w + MORE_BTN_WIDTH > availableWidth) {
         for (let j = i; j < tabIDs.length; j++) {
+          //  PHASE 2 ISSUE: Data Structure Mismatch
+          // You're pushing just the string ID ("tab-1"), but MoreDropdown needs:
+          //   - tab title (to display "Overview" not "tab-1")
+          //   - tab icon (to show icons in dropdown)
+          //
+          // WHY: MoreDropdown can't look up this data without help.
+          // You have idToChild map available - pass it as a prop to MoreDropdown!
+          // See TODO comment in render section below (line ~352)
           newOverflowTabs.push(tabIDs[j]);
         }
         break;
@@ -153,9 +166,20 @@ const TabbedPanels = ({
     setScrollableWidth(container.scrollWidth - container.clientWidth);
   }, [childrenArray, headerTabItems]);
 
-  // REVIEW: This useEffect is missing its dependency array. What happens when you call setState without dependencies?
-  // REVIEW: This will cause an infinite loop. Think about when this effect should run and add the appropriate dependency array. remember that what you add int the depenmdency array should not be derived from the state being set inside the effect.
-    // run overflow calculation on mount and on resize
+// PHASE 2 ISSUE: Redundant Dependencies
+  // You have: [childrenArray, calculateOverflow]
+  // But calculateOverflow already depends on childrenArray (see useCallback above)
+  //
+  // PROBLEM: This creates a dependency chain:
+  //   useEffect depends on → calculateOverflow → which depends on → childrenArray
+  //   BUT useEffect ALSO depends on → childrenArray
+  // This is redundant and could cause extra re-renders.
+  //
+  // FIX: Just depend on calculateOverflow:
+  //   useEffect(() => { calculateOverflow(); }, [calculateOverflow]);
+  //
+  //  When a function already tracks dependencies via useCallback,
+  // you don't need to add those same dependencies to the useEffect
     useEffect(() => {
       calculateOverflow();
     }, [childrenArray, calculateOverflow]);
@@ -302,6 +326,15 @@ const TabbedPanels = ({
     navClasses += " uds-tabbed-panels-dark";
   }
 
+  // -----------------------------
+  // TODO 2.2: Update Tab Rendering Logic  COMPLETE
+  // -----------------------------
+  // REVIEW FEEDBACK for TODO 2.2:
+  //  Good: Filtering childrenArray to map only visibleTabs
+  //  Good: Using idToChild[tabId] to get full child data
+  //  Good: MoreDropdown conditionally rendered when overflowTabs.length > 0
+  //   Issue: Missing idToChild prop to MoreDropdown (see below)
+
   return (
     <div className={bgColor}>
       <nav className={navClasses}>
@@ -312,7 +345,7 @@ const TabbedPanels = ({
 
           return (
             <TabHeader
-              // register both headerTabItems and tabRefs for this tab id
+              // GOOD: You're passing full child data (title, icon) here
               ref={registerTabNode(tabId)}
               id={child.props.id}
               title={child.props.title}
@@ -328,12 +361,21 @@ const TabbedPanels = ({
           );
         })}
 
+        {/* GOOD: Conditional rendering when overflowTabs has items */}
         {overflowTabs && overflowTabs.length > 0 && (
           <MoreDropdown
-            overflowTabs={overflowTabs}
+            overflowTabs={overflowTabs}  // Array of string IDs ["tab-1", "tab-2"]
             activeTabID={activeTabID}
             selectTab={switchToTab}
             gaData={trackLinkEvent}
+            // ⚠️ MISSING: idToChild prop
+            // You use idToChild[tabId] for TabHeader above (line ~335),
+            // but MoreDropdown can't access it without this prop.
+            //
+            // FIX: Add this line:
+            // idToChild={idToChild}
+            //
+            // Then MoreDropdown can look up: idToChild["tab-1"].props.title
           />
         )}
       </div>
