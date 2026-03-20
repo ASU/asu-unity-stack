@@ -1,3 +1,11 @@
+# [@asu/unity-react-core-v1.7.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.7.2...@asu/unity-react-core-v1.7.3) (2026-03-20)
+
+
+### Bug Fixes
+
+* **unity-react-core:** aria-label updates for Email user and Call user to improve accessiblity ([b97f47d](https://github.com/ASU/asu-unity-stack/commit/b97f47d4d25dea7c2e7621c396471fed36e410cc))
+* **unity-react-core:** removed special characters from phone number aria label for screen readers ([9bf73c1](https://github.com/ASU/asu-unity-stack/commit/9bf73c1e1770ce8403531a6b4953ed5899bf305e))
+
 # [@asu/unity-react-core-v1.7.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.7.1...@asu/unity-react-core-v1.7.2) (2026-03-12)
 
 
