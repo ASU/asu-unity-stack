@@ -165,12 +165,13 @@ const DataLayerGuide = () => {
           </p>
 
           <p>
-            <strong>Important:</strong> Elements must have a <code>data-ga</code> attribute
-            to be tracked. This is the required base attribute that identifies
-            an element for tracking. You can optionally include supplementary{" "}
-            <code>data-ga-*</code> attributes (such as <code>data-ga-name</code>,{" "}
-            <code>data-ga-event</code>, <code>data-ga-action</code>, etc.) to provide
-            additional context for the analytics event. The Unity Bootstrap Theme
+            <strong>Important:</strong> Elements must have a{" "}
+            <code>data-ga</code> attribute to be tracked. This is the required
+            base attribute that identifies an element for tracking. You can
+            optionally include supplementary <code>data-ga-*</code> attributes
+            (such as <code>data-ga-name</code>, <code>data-ga-event</code>,{" "}
+            <code>data-ga-action</code>, etc.) to provide additional context for
+            the analytics event. The Unity Bootstrap Theme
             (`unity-bootstrap-theme`) includes these attributes in its reference
             code. The values of these attributes are used when the data layer
             event is submitted for click or change events on the tag, but to
