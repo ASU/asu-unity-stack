@@ -1,3 +1,10 @@
+# [@asu/app-rfi-v3.8.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.7.2...@asu/app-rfi-v3.8.0) (2026-03-23)
+
+
+### Features
+
+* **app-rfi:** remove duplicate require icon code ([9ffbb19](https://github.com/asu/asu-unity-stack/commit/9ffbb19fad60e12abd1d231a0408f6301c59acc8))
+
 # [@asu/app-rfi-v3.7.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.7.1...@asu/app-rfi-v3.7.2) (2026-03-03)
 
 
