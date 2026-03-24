@@ -47,7 +47,8 @@ const Wrapper = styled.div`
   @media (max-width: ${({ breakpoint }) => breakpoint}) {
     width: 100%;
     min-height: auto;
-    position: relative;
+    position: sticky;
+    bottom: 0;
     padding: 0;
     .${CLASS_NAMES.HEADER_TOP} {
       width: 100%;

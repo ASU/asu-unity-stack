@@ -11,6 +11,7 @@ export * from "./ContentSpotlight/ContentSpotlight";
 export * from "./Divider/Divider";
 export * from "./FeedAnatomy";
 export * from "./Hero/Hero";
+export * from "./HighlyRanked/HighlyRanked";
 export * from "./Image/Image";
 export * from "./Pagination/Pagination";
 export * from "./RankingCard/RankingCard";

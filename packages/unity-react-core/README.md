@@ -227,7 +227,6 @@ The folder [packages/unity-react-core/examples](/packages/unity-react-core/examp
 - [Accordion](/packages/unity-react-core/examples/accordion.html)
 - [Anchor Menu](/packages/unity-react-core/examples/anchorMenu.html)
 - [Article](/packages/unity-react-core/examples/article.html)
-- [Article](/packages/unity-react-core/examples/article.html)
 - [Button](/packages/unity-react-core/examples/button.html)
 - [Button Icon Only](/packages/unity-react-core/examples/buttonIconOnly.html)
 - [Button Tag](/packages/unity-react-core/examples/buttonTag.html)

@@ -271,4 +271,5 @@ AnimatedTitle.args = {
   breakpoint: "Xl",
   searchUrl: "https://search.asu.edu/search",
   site: "subdomain",
+  animateTitle: true,
 };

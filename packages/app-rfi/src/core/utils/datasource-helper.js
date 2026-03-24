@@ -26,6 +26,7 @@ export const normalizeDegreeData = data => {
   /** @type {AcadPlan[]} */
   const result = dataArray.reduce((acc, curr) => {
     if (curr.acadPlanCode) {
+      // dataPotLuck
       /** @type {AcadPlan} */
       const p = {
         applicationDeadlines: curr.applicationDeadlines?.map(
@@ -76,6 +77,7 @@ export const normalizeDegreeData = data => {
       acc.push(p);
     }
     if (curr.code) {
+      // Online Api
       /** @type {AcadPlan} */
       const p = {
         applicationDeadlines: undefined,
@@ -97,7 +99,11 @@ export const normalizeDegreeData = data => {
         collegeCodes: undefined,
 
         // curr.category always "Undergraduate" || "Graduate"
-        degreeType: curr.category === "Graduate" ? "GR" : "UG",
+        // technically online API has 3 types: "Undergraduate", "Graduate", and "Certificate"
+        // not ideal but we are assuming all certificates are graduate level programs
+        // it is possible that in the future this may not be true which is why
+        // THIS IS NOT IDEAL
+        degreeType: curr.category === "Undergraduate" ? "UG" : "GR",
 
         // always undefined
         departmentCodes: undefined,

@@ -1,3 +1,43 @@
+# [@asu/unity-react-core-v1.7.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.7.2...@asu/unity-react-core-v1.7.3) (2026-03-20)
+
+
+### Bug Fixes
+
+* **unity-react-core:** aria-label updates for Email user and Call user to improve accessiblity ([b97f47d](https://github.com/ASU/asu-unity-stack/commit/b97f47d4d25dea7c2e7621c396471fed36e410cc))
+* **unity-react-core:** removed special characters from phone number aria label for screen readers ([9bf73c1](https://github.com/ASU/asu-unity-stack/commit/9bf73c1e1770ce8403531a6b4953ed5899bf305e))
+
+# [@asu/unity-react-core-v1.7.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.7.1...@asu/unity-react-core-v1.7.2) (2026-03-12)
+
+
+### Bug Fixes
+
+* **a11y:** correct heading hierarchy in React components ([8c6afbb](https://github.com/ASU/asu-unity-stack/commit/8c6afbb03dbff230ce68aafdfb946fb97a84db74))
+* **unity-react-core:** remove duplicate Article entry in README file ([02bdde1](https://github.com/ASU/asu-unity-stack/commit/02bdde10490d47e215b41cca681f6aa6e5faafd3))
+
+# [@asu/unity-react-core-v1.7.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.7.0...@asu/unity-react-core-v1.7.1) (2026-02-27)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** update to allow uds-field-required style for p tags for the correct display of fa-circle icons ([b9d86c3](https://github.com/ASU/asu-unity-stack/commit/b9d86c31dd707c49bf55893563e8253e5ba1d863))
+* **unity-react-core:** linting update ([4f15324](https://github.com/ASU/asu-unity-stack/commit/4f153246467db28aef77f75c1e7c2fc014e158d8))
+
+# [@asu/unity-react-core-v1.7.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.6.0...@asu/unity-react-core-v1.7.0) (2026-02-19)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** update to allow uds-field-required style for p tags for the correct display of fa-circle icons ([97c8330](https://github.com/ASU/asu-unity-stack/commit/97c8330d6e3562708512574944cc8b2e8d9fe8be))
+* **unity-react-core:** add subsection to h3 ([272dcac](https://github.com/ASU/asu-unity-stack/commit/272dcac50a7faa13c6fbe2573873c6053dc644b1))
+* **unity-react-core:** update default for headings ([d80b1f5](https://github.com/ASU/asu-unity-stack/commit/d80b1f5ae03f04745c2f9b7484109414f8dd5926))
+* **unity-react-core:** update highly ranked classes ([d6ec30c](https://github.com/ASU/asu-unity-stack/commit/d6ec30c6e14cb62941c4c2fdb73fdb90f3c9459d))
+* **unity-react-core:** updated props for highly ranked component ([117869e](https://github.com/ASU/asu-unity-stack/commit/117869e1a97f45efcd8fc2d44a264dd9c7c2efaa))
+
+
+### Features
+
+* **unity-react-core:** add new ranking card component ([0908bfe](https://github.com/ASU/asu-unity-stack/commit/0908bfeeda1c9d7343dc3375b1dfae111cc22145))
+
 # [@asu/unity-react-core-v1.6.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.5.0...@asu/unity-react-core-v1.6.0) (2026-02-10)
 
 

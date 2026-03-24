@@ -1,3 +1,34 @@
+# [@asu/app-rfi-v3.8.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.7.2...@asu/app-rfi-v3.8.0) (2026-03-23)
+
+
+### Features
+
+* **app-rfi:** remove duplicate require icon code ([9ffbb19](https://github.com/asu/asu-unity-stack/commit/9ffbb19fad60e12abd1d231a0408f6301c59acc8))
+
+# [@asu/app-rfi-v3.7.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.7.1...@asu/app-rfi-v3.7.2) (2026-03-03)
+
+
+### Bug Fixes
+
+* **app-rfi:** fix require indicator, fix online cert flow ([c61821c](https://github.com/asu/asu-unity-stack/commit/c61821c55f59537bae3c6300db209bc3dba8cf40))
+
+# [@asu/app-rfi-v3.7.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.7.0...@asu/app-rfi-v3.7.1) (2026-02-27)
+
+
+### Bug Fixes
+
+* **app-rfi:** online selection sometimes results in blank program code ([7b3b77a](https://github.com/asu/asu-unity-stack/commit/7b3b77af63deb3d620b826c749f077a8ff50186e))
+* **app-rfi:** remove duplicate condition that may get out of sync ([3b75a1c](https://github.com/asu/asu-unity-stack/commit/3b75a1c56f1fba8ec4681738f01dbb59b1738e7a))
+* **app-rfi:** set header options for online api ([20e335a](https://github.com/asu/asu-unity-stack/commit/20e335a3d4a70df426ad0b3c6d8e08da1f5be4b2))
+
+# [@asu/app-rfi-v3.7.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.6.4...@asu/app-rfi-v3.7.0) (2026-02-27)
+
+
+### Features
+
+* **app-rfi:** indicates required field update for rfiVariant2 ([a0d00e2](https://github.com/asu/asu-unity-stack/commit/a0d00e25b344c1e8473927020b9c210eeeb09f88))
+* **app-rfi:** update the required label "Indicates required field" to display on top of the form ([99b583e](https://github.com/asu/asu-unity-stack/commit/99b583eaebb0906ea66dec56949ec4cf7513371e))
+
 # [@asu/app-rfi-v3.6.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.6.3...@asu/app-rfi-v3.6.4) (2026-01-22)
 
 

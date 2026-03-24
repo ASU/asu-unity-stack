@@ -1,3 +1,58 @@
+# [@asu/unity-bootstrap-theme-v1.36.5](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.36.4...@asu/unity-bootstrap-theme-v1.36.5) (2026-03-20)
+
+
+### Bug Fixes
+
+* **unity-react-core:** aria-label updates for Email user and Call user to improve accessiblity ([b97f47d](https://github.com/ASU/asu-unity-stack/commit/b97f47d4d25dea7c2e7621c396471fed36e410cc))
+* **unity-react-core:** removed special characters from phone number aria label for screen readers ([9bf73c1](https://github.com/ASU/asu-unity-stack/commit/9bf73c1e1770ce8403531a6b4953ed5899bf305e))
+
+# [@asu/unity-bootstrap-theme-v1.36.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.36.3...@asu/unity-bootstrap-theme-v1.36.4) (2026-03-17)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix visited links issue in header ([9d6fd37](https://github.com/ASU/asu-unity-stack/commit/9d6fd37945b3e8e7844adebfb2541e350ab91f6c))
+
+# [@asu/unity-bootstrap-theme-v1.36.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.36.2...@asu/unity-bootstrap-theme-v1.36.3) (2026-03-12)
+
+
+### Bug Fixes
+
+* **a11y:** correct heading hierarchy in React components ([8c6afbb](https://github.com/ASU/asu-unity-stack/commit/8c6afbb03dbff230ce68aafdfb946fb97a84db74))
+* **unity-bootstrap-theme:** remove explicit line-height and letter-spacing from anchor menu headings ([c856181](https://github.com/ASU/asu-unity-stack/commit/c8561812c31c5ea584d7afcefc2f0ec87ee3f14d))
+
+# [@asu/unity-bootstrap-theme-v1.36.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.36.1...@asu/unity-bootstrap-theme-v1.36.2) (2026-02-27)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** update to allow uds-field-required style for p tags for the correct display of fa-circle icons ([b9d86c3](https://github.com/ASU/asu-unity-stack/commit/b9d86c31dd707c49bf55893563e8253e5ba1d863))
+
+# [@asu/unity-bootstrap-theme-v1.36.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.36.0...@asu/unity-bootstrap-theme-v1.36.1) (2026-02-24)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** adjust hero small grid template rows ([b8892df](https://github.com/ASU/asu-unity-stack/commit/b8892dfd84d89cf440f7caea495afdcebd5edb32))
+* **unity-bootstrap-theme:** improve hero small button positioning ([f694423](https://github.com/ASU/asu-unity-stack/commit/f6944232dd46c6306877a9806c5a83dbc30e4048))
+
+# [@asu/unity-bootstrap-theme-v1.36.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.35.0...@asu/unity-bootstrap-theme-v1.36.0) (2026-02-19)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** update highly ranked card styles ([e18137f](https://github.com/ASU/asu-unity-stack/commit/e18137f666441e2b5419d4142ebd3686119a139f))
+* **unity-bootstrap-theme:** update highly ranked class names ([3da8fd0](https://github.com/ASU/asu-unity-stack/commit/3da8fd0eb80de9dcdb7256b29b4b2ea79d464891))
+* **unity-bootstrap-theme:** update highly ranked styles ([460d7b3](https://github.com/ASU/asu-unity-stack/commit/460d7b364598cb101cf0bc9e507b78c41115c813))
+* **unity-bootstrap-theme:** update to allow uds-field-required style for p tags for the correct display of fa-circle icons ([97c8330](https://github.com/ASU/asu-unity-stack/commit/97c8330d6e3562708512574944cc8b2e8d9fe8be))
+* **unity-bootstrap-theme:** updated highly ranked grid heading styles ([ae1964b](https://github.com/ASU/asu-unity-stack/commit/ae1964b5d8ccd203ca58bae39dee1890f4b98e3c))
+
+
+### Features
+
+* **unity-bootstrap-theme:** add new ranking card styles ([703a717](https://github.com/ASU/asu-unity-stack/commit/703a71750c0360662ef57fd5355671f0f0eb540c))
+* **unity-react-core:** add new ranking card component ([0908bfe](https://github.com/ASU/asu-unity-stack/commit/0908bfeeda1c9d7343dc3375b1dfae111cc22145))
+
 # [@asu/unity-bootstrap-theme-v1.35.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.34.0...@asu/unity-bootstrap-theme-v1.35.0) (2026-02-10)
 
 
