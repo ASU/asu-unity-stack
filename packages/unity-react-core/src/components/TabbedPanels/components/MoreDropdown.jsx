@@ -8,27 +8,30 @@ import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
   // TODO 1.2
   // -----------------------------
 
-  const MoreDropdown = ({ overflowTabs, activeTabID, selectTab, gaData }) => {
+  const MoreDropdown = ({ overflowTabs, idToChild, activeTabID, selectTab, gaData }) => {
     const [isOpen, setIsOpen] = useState(false);
     const rootRef = useRef(null);
     // REVIEW: Look at TabbedPanels.jsx - what data structure is actually being passed in overflowTabs?
     // REVIEW: Do you have access to tab titles and icons? Think about what data you actually need.
     // overflowTabs passes an array of the tab IDs
-    const Overflow = Array.isArray(overflowTabs) ? overflowTabs : [];
-    const items = Overflow.map((t) => {
-      if (typeof t === "string") {
-        return { id: t, title: t };
-      }
-    // First checks that t is actually an object and if the object has a title, use it otherwise it falls back to using the id as the title
-      if (t && typeof t === "object") {
-        const id = t.id;
-        const title = t.title ? t.title : t.id;
+    const safeOverflow = Array.isArray(overflowTabs) ? overflowTabs : [];
 
+    const items = safeOverflow.map((tabId) => {
+      const child = idToChild?.[tabId];
+
+      if (!child) {
         return {
-          id: id,
-          title: title,
+          id: tabId,
+          title: tabId,
+          icon: null,
         };
       }
+
+      return {
+        id: tabId,
+        title: child.props.title,
+        icon: child.props.icon,
+      };
     });
 
     const toggle = (event) => {
@@ -129,6 +132,9 @@ import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
                           }
                           aria-current={isActive ? "true" : undefined}
                         >
+                          {item.icon && (
+                            <i className={`${item.icon?.[0]} fa-${item.icon?.[1]} me-1`} />
+                          )}
                           {item.title}
                         </a>
                       </li>
@@ -144,6 +150,7 @@ import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
 // REVIEW: Should any of these props be marked as .isRequired?
 MoreDropdown.propTypes = {
   overflowTabs: PropTypes.array.isRequired,
+  idToChild: PropTypes.object.isRequired,
   activeTabID: PropTypes.string,
   selectTab: PropTypes.func,
   gaData: PropTypes.object,
