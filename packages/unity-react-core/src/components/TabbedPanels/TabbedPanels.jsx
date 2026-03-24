@@ -158,7 +158,7 @@ const TabbedPanels = ({
     // run overflow calculation on mount and on resize
     useEffect(() => {
       calculateOverflow();
-    }, [childrenArray, calculateOverflow]);
+    }, [calculateOverflow]);
 
     const handleResize = useCallback(() => {
       setScrollableWidth(
@@ -331,6 +331,7 @@ const TabbedPanels = ({
         {overflowTabs && overflowTabs.length > 0 && (
           <MoreDropdown
             overflowTabs={overflowTabs}
+            idToChild={idToChild}
             activeTabID={activeTabID}
             selectTab={switchToTab}
             gaData={trackLinkEvent}
