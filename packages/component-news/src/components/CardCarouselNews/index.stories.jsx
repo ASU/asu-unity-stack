@@ -3,7 +3,7 @@ import React from "react";
 
 import { CardCarouselNews } from "./index";
 
-import { createMockParam } from "../../core/utils";
+import { createMockHandlers } from "../../core/utils";
 
 /** @typedef {import("@asu/unity-react-core/src/core/types/feed-types").FeedType } FeedType */
 export default {
@@ -15,7 +15,7 @@ export default {
         component: "",
       },
     },
-    mockData: createMockParam(),
+    msw: { handlers: createMockHandlers() },
   },
 };
 

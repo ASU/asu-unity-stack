@@ -1,7 +1,7 @@
 import React from "react";
-import { AddonPanel } from "@storybook/components";
-import { addons, types } from "@storybook/addons";
-import { Toggle } from "../../../../.storybook-config/Toggle";
+import { AddonPanel } from "storybook/internal/components";
+import { addons, types } from "storybook/manager-api";
+import { Toggle } from "../../.storybook-config/Toggle";
 
 addons.register("local-addon", api => {
   addons.add("local-addon/panel", {

@@ -1,4 +1,7 @@
 import "@asu/unity-bootstrap-theme/src/scss/unity-bootstrap-theme.bundle.scss";
+import { initialize, mswLoader } from "msw-storybook-addon";
+
+initialize();
 
 const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -6,7 +9,8 @@ const parameters = {
 
 /** @type { import('@storybook/react').Preview } */
 const preview = {
-  parameters
+  parameters,
+  loaders: [mswLoader],
 };
 
 export default preview;
