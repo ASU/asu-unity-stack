@@ -53,7 +53,10 @@ const SearchInput = ({
     return (
       <>
         {!hasInputValue && (
-          <FontAwesomeIcon className={CLASS_NAMES.SEARCH_ICON} icon={faSearch} />
+          <FontAwesomeIcon
+            className={CLASS_NAMES.SEARCH_ICON}
+            icon={faSearch}
+          />
         )}
         <input {...baseInputProps} />
         {hasInputValue && (

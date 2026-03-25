@@ -69,7 +69,10 @@ const NavbarContainer = () => {
             </ul>
           )}
           {!!buttons?.length && (
-            <form className={CLASS_NAMES.BUTTONS_CONTAINER} data-testid="buttons-container">
+            <form
+              className={CLASS_NAMES.BUTTONS_CONTAINER}
+              data-testid="buttons-container"
+            >
               {buttons.map(button => {
                 validateButton(button);
                 return (

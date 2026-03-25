@@ -83,8 +83,8 @@
     "storybook": "^10.0.0",
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^5.1.1",
-    "vite": "^5.3.5",
-    "vitest": "^3.0.5",
+    "vite": "^6.0.0",
+    "vitest": "^4.0.0",
     "webpack-filter-warnings-plugin": "^1.2.1",
     "webpack-merge": "^5.8.0"
   },

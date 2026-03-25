@@ -20,7 +20,7 @@ import * as intro01 from "./intro01.jpg";
 import * as poly1 from "./poly01.jpg";
 import * as requestFormInformation from "./request-form-information.jpeg";
 import * as ws2DefaultImagev01Final from "./WS2-DefaultImagev01-Final.png";
-import * as moreGradsMoreInnovation from "./more-grads-more-innovation.png"
+import * as moreGradsMoreInnovation from "./more-grads-more-innovation.png";
 
 export const imageName = {
   anon: anon.default,

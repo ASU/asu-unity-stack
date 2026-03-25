@@ -25,7 +25,12 @@ const RfiRequiredIndicator = ({ required = false }) =>
     </>
   );
 
-const RfiLabel = ({ label, name, id = undefined, requiredIcon = undefined }) => (
+const RfiLabel = ({
+  label,
+  name,
+  id = undefined,
+  requiredIcon = undefined,
+}) => (
   <label htmlFor={id || name}>
     <RfiRequiredIndicator required={requiredIcon} />
     {label}
@@ -75,4 +80,10 @@ RfiError.propTypes = {
   isError: PropTypes.bool,
   metaError: PropTypes.string,
 };
-export { RfiRequiredIndicator, RfiLabel, RfiLegend, RfiError, GaEventPropTypes };
+export {
+  RfiRequiredIndicator,
+  RfiLabel,
+  RfiLegend,
+  RfiError,
+  GaEventPropTypes,
+};

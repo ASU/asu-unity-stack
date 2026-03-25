@@ -74,7 +74,7 @@
     "semantic-release-monorepo": "^8.0.2",
     "storybook": "^10",
     "style-loader": "^2.0.0",
-    "vite": "^5.3.5",
+    "vite": "^6.0.0",
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {

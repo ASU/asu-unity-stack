@@ -64,7 +64,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.0",
     "@vitejs/plugin-react": "^4.3.1",
-    "@vitest/browser": "^2.1.2",
+    "@vitest/browser": "^4.0.0",
     "babel-jest": "^27.0.6",
     "babel-loader": "^8.2.2",
     "babel-plugin-dynamic-import-node": "^2.3.3",
@@ -86,8 +86,8 @@
     "string.prototype.replaceall": "^1.0.5",
     "style-loader": "^2.0.0",
     "terser-webpack-plugin": "^5.1.1",
-    "vite": "^5.3.5",
-    "vitest": "^2.1.1",
+    "vite": "^6.0.0",
+    "vitest": "^4.0.0",
     "webpack-merge": "^5.8.0"
   },
   "resolutions": {
