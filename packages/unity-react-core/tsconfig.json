@@ -19,7 +19,7 @@
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "plugins": [{ "name": "typescript-plugin-css-modules" }],
-    "types": ["@vitest/browser/providers/playwright"],
+    "types": ["@vitest/browser-playwright"],
     "paths": {
       "@asu/unity-bootstrap-theme": [ "./../unity-bootstrap-theme" ],
       "@asu/unity-bootstrap-theme/*": [ "./../unity-bootstrap-theme/*" ]
