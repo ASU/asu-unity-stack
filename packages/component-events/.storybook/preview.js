@@ -1,7 +1,11 @@
 import "@asu/unity-bootstrap-theme/src/scss/unity-bootstrap-theme.bundle.scss";
 import { initialize, mswLoader } from "msw-storybook-addon";
 
-initialize();
+initialize({
+  serviceWorker: {
+    url: "./mockServiceWorker.js",
+  },
+});
 
 const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
