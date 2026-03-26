@@ -267,7 +267,6 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
           )}
           listId={`dropdown-${link.id}`}
           opened={opened}
-          setItemOpened={setItemOpened}
           parentLink={parentLink}
         />
       )}

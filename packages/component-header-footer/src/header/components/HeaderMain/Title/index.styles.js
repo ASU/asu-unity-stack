@@ -11,7 +11,7 @@ const TitleWrapper = styled.div`
   line-height: 1;
   font-size: 1rem;
   font-weight: 700;
-  padding: 0 2rem 1.5rem 2rem;
+  padding: 0 2rem 1rem 2rem;
   letter-spacing: -1px;
   display: inline-block;
   margin: 0;

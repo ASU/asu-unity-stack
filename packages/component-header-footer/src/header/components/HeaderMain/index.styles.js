@@ -38,7 +38,7 @@ const HeaderMainWrapper = styled.div`
       grid-area: title;
     }
     & > * {
-      grid-column: 1 / -1;
+      grid-column: 1;
     }
     & > form {
       grid-area: search;
@@ -138,17 +138,6 @@ const HeaderMainWrapper = styled.div`
       .${CLASS_NAMES.NO_NAVIGATION} + nav .${CLASS_NAMES.BUTTONS_CONTAINER} {
         border-top: 1px solid ${ASU_GRAY4};
       }
-    }
-  }
-  // alternate layout for mobile landscape orientation move search to top row
-  @media screen and (orientation: landscape) and (max-width: ${({
-      breakpoint,
-    }) => breakpoint}) {
-    .navbar.${CLASS_NAMES.MOBILE_MENU_OPEN} {
-      grid-template-areas:
-        "logo search toggler"
-        "title title title"
-        "nav nav nav";
     }
   }
 `;

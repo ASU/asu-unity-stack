@@ -80,7 +80,6 @@ const DropdownWrapper = styled.div`
       }
       margin: 0;
       width: calc(1200px / var(--cols, 1) * var(--span, 1) - var(--gap) * 2);
-      // max-width: 282px;
       display: flex;
       flex-direction: row;
       column-gap: var(--ul-gap);
@@ -123,8 +122,8 @@ const DropdownWrapper = styled.div`
     width: fit-content;
   }
   .${CLASS_NAMES.DROPDOWN_BUTTON_CONTAINER} {
-    border-top: 1px solid #d0d0d0;
-    border-bottom: 1px solid #d0d0d0;
+    border-top: 1px solid ${ASU_GRAY5};
+    border-bottom: 1px solid ${ASU_GRAY5};
     > div {
       max-width: 1200px;
       margin: 0 auto;
