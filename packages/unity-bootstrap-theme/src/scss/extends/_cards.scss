@@ -455,6 +455,15 @@ Cards - Table of Contents
   align-items: center;
   justify-content: center;
 
+  &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+
   &:hover, &:focus, &:focus-visible, &:active {
     box-shadow: $uds-color-base-maroon;
     .fa-arrow-right {
@@ -480,15 +489,6 @@ Cards - Table of Contents
   @include media-breakpoint-down(md) {
     color: $uds-color-base-maroon;
     border-color: $uds-color-base-maroon;
-
-    &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-      }
 
     .fa-arrow-right {
       color: inherit;
