@@ -79,70 +79,72 @@ const Search = () => {
     });
   };
   return (
-    <SearchWrapper
-      // @ts-ignore
-      breakpoint={breakpoint}
-      action={searchUrl}
-      onSubmit={handleSearch}
-      method="get"
-      name="gs"
-      className={open ? CLASS_NAMES.OPEN_SEARCH : ""}
-      data-testid="universal-nav-search-form"
-      role="search"
-    >
-      {!isMobile ? (
-        <>
-          {!open && (
-            <button
-              type="button"
-              aria-label="Search asu.edu"
-              onClick={handleChangeVisibility}
-              className={CLASS_NAMES.SEARCH_BUTTON}
-              data-testid="search-button"
-            >
-              <span>Search</span>
-              <FontAwesomeIcon icon={faSearch} />
-            </button>
-          )}
-          {open && (
-            <>
-              <SearchInput
-                inputRef={inputRef}
-                hasInputValue={hasInputValue}
-                setHasInputValue={setHasInputValue}
-                isMobile={isMobile}
-                onBlur={() => {
-                  if (!hasInputValue) setOpen(false);
-                }}
-              />
-              <Button
-                color="dark"
-                text="Search"
-                as="button"
-                classes={CLASS_NAMES.SUBMIT_BUTTON}
-              />
-            </>
-          )}
-        </>
-      ) : (
-        <label>
-          <SearchInput
-            inputRef={inputRef}
-            hasInputValue={hasInputValue}
-            setHasInputValue={setHasInputValue}
-            isMobile={isMobile}
-          />
-        </label>
-      )}
-      <input name="url_host" value={site} type="hidden" />
-      <input name="site" value="default_collection" type="hidden" />
-      <input name="sort" value="date:D:L:d1" type="hidden" />
-      <input name="output" value="xml_no_dtd" type="hidden" />
-      <input name="ie" value="UTF-8" type="hidden" />
-      <input name="oe" value="UTF-8" type="hidden" />
-      <input name="client" value="asu_frontend" type="hidden" />
-      <input name="proxystylesheet" value="asu_frontend" type="hidden" />
-    </SearchWrapper>
+    <search>
+      <SearchWrapper
+        // @ts-ignore
+        breakpoint={breakpoint}
+        action={searchUrl}
+        onSubmit={handleSearch}
+        method="get"
+        name="gs"
+        className={open ? CLASS_NAMES.OPEN_SEARCH : ""}
+        data-testid="universal-nav-search-form"
+        role="search"
+      >
+        {!isMobile ? (
+          <>
+            {!open && (
+              <button
+                type="button"
+                aria-label="Search asu.edu"
+                onClick={handleChangeVisibility}
+                className={CLASS_NAMES.SEARCH_BUTTON}
+                data-testid="search-button"
+              >
+                <span>Search</span>
+                <FontAwesomeIcon icon={faSearch} />
+              </button>
+            )}
+            {open && (
+              <>
+                <SearchInput
+                  inputRef={inputRef}
+                  hasInputValue={hasInputValue}
+                  setHasInputValue={setHasInputValue}
+                  isMobile={isMobile}
+                  onBlur={() => {
+                    if (!hasInputValue) setOpen(false);
+                  }}
+                />
+                <Button
+                  color="dark"
+                  text="Search"
+                  as="button"
+                  classes={CLASS_NAMES.SUBMIT_BUTTON}
+                />
+              </>
+            )}
+          </>
+        ) : (
+          <label>
+            <SearchInput
+              inputRef={inputRef}
+              hasInputValue={hasInputValue}
+              setHasInputValue={setHasInputValue}
+              isMobile={isMobile}
+            />
+          </label>
+        )}
+        <input name="url_host" value={site} type="hidden" />
+        <input name="site" value="default_collection" type="hidden" />
+        <input name="sort" value="date:D:L:d1" type="hidden" />
+        <input name="output" value="xml_no_dtd" type="hidden" />
+        <input name="ie" value="UTF-8" type="hidden" />
+        <input name="oe" value="UTF-8" type="hidden" />
+        <input name="client" value="asu_frontend" type="hidden" />
+        <input name="proxystylesheet" value="asu_frontend" type="hidden" />
+      </SearchWrapper>
+    </search>
   );
 };
 
