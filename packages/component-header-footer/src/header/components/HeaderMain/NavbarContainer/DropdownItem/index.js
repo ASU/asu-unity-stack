@@ -19,7 +19,9 @@ const LINK_DEFAULT_PROPS = {
   text: "",
 };
 
-const HeadingItem = ({ text }) => <h3 className={CLASS_NAMES.UL_HEADING}>{text}</h3>;
+const HeadingItem = ({ text }) => (
+  <h3 className={CLASS_NAMES.UL_HEADING}>{text}</h3>
+);
 
 HeadingItem.propTypes = {
   text: PropTypes.string,
@@ -175,7 +177,10 @@ const DropdownItem = ({
       }`}
       breakpoint={breakpoint}
     >
-      <div id={MULTIPLE_SUBMENUS ? listId : ""} className={CLASS_NAMES.DROPDOWN_CONTAINER}>
+      <div
+        id={MULTIPLE_SUBMENUS ? listId : ""}
+        className={CLASS_NAMES.DROPDOWN_CONTAINER}
+      >
         {items?.map((item, index0) => {
           const genKey = idGenerator(`dropdown-item-${index0}-`);
           const key = genKey.next().value;

@@ -1,4 +1,4 @@
-export const CLASS_PREFIX = 'uds-hdr-';
+export const CLASS_PREFIX = "uds-hdr-";
 
 // Custom class names used in the header component
 export const CLASS_NAMES = {
@@ -17,7 +17,7 @@ export const CLASS_NAMES = {
   OPEN: `${CLASS_PREFIX}open`,
 
   // Dropdown
-  HEADER_DROPDOWN: (id) => `${CLASS_PREFIX}header-dropdown-${id}`,
+  HEADER_DROPDOWN: id => `${CLASS_PREFIX}header-dropdown-${id}`,
   OPENED: `${CLASS_PREFIX}opened`,
   DROPDOWN_CONTAINER: `${CLASS_PREFIX}dropdown-container`,
   DROPDOWN_BUTTON_CONTAINER: `${CLASS_PREFIX}dropdown-button-container`,
@@ -58,24 +58,24 @@ export const CLASS_NAMES = {
   MENU_SEARCH_ICON: `${CLASS_PREFIX}menu-search-icon`,
   MENU_CLOSE_ICON: `${CLASS_PREFIX}menu-close-icon`,
 
-  NAVBAR: 'navbar',
-  NAVBAR_EXPAND_XL: 'navbar-expand-xl',
-  NAVBAR_BRAND: 'navbar-brand',
-  NAVBAR_TOGGLER: 'navbar-toggler',
-  NAVBAR_NAV: 'navbar-nav',
-  NAV_ITEM: 'nav-item',
-  COLLAPSED: 'collapsed',
-  CONTAINER: 'container',
-  CONTAINER_XL: 'container-xl',
-  FORM_CONTROL: 'form-control',
-  VISUALLY_HIDDEN: 'visually-hidden',
-  VISUALLY_HIDDEN_FOCUSABLE: 'visually-hidden-focusable',
+  NAVBAR: "navbar",
+  NAVBAR_EXPAND_XL: "navbar-expand-xl",
+  NAVBAR_BRAND: "navbar-brand",
+  NAVBAR_TOGGLER: "navbar-toggler",
+  NAVBAR_NAV: "navbar-nav",
+  NAV_ITEM: "nav-item",
+  COLLAPSED: "collapsed",
+  CONTAINER: "container",
+  CONTAINER_XL: "container-xl",
+  FORM_CONTROL: "form-control",
+  VISUALLY_HIDDEN: "visually-hidden",
+  VISUALLY_HIDDEN_FOCUSABLE: "visually-hidden-focusable",
 };
 
 // Helper function to generate dropdown class name
-export const getDropdownClass = (id) => CLASS_NAMES.HEADER_DROPDOWN(id);
+export const getDropdownClass = id => CLASS_NAMES.HEADER_DROPDOWN(id);
 
 // Helper function to build class string
 export const buildClassName = (...classes) => {
-  return classes.filter(Boolean).join(' ');
+  return classes.filter(Boolean).join(" ");
 };

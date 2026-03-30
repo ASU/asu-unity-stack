@@ -14,17 +14,18 @@ const favicon = `
 </svg>
 `;
 
-module.exports = {
-  // webpack: webpack,
-  // managerWebpack: webpack,
-  config: function config(entry = []) {
-    return [...entry, require.resolve('./preset/preview.js')];
-  },
-  managerEntries: function managerEntries(entry = []) {
-    return [...entry, require.resolve('./preset/manager.js')];
-  },
-  // hide extra viewport toolbar options
-  managerHead: (head) => `
+import { fileURLToPath } from "url";
+
+export function previewAnnotations(entry = []) {
+  return [...entry, fileURLToPath(import.meta.resolve('./preset/preview.js'))];
+}
+
+export function managerEntries(entry = []) {
+  return [...entry, fileURLToPath(import.meta.resolve('./preset/manager.js'))];
+}
+
+export function managerHead(head) {
+  return `
     ${head}
 
     <!-- inject a storybook favicon with asu colors -->
@@ -44,14 +45,16 @@ module.exports = {
         height: calc(100% - 20px);
       }
     </style>
-  `,
-  // hide extra viewport toolbar options
-  previewHead: (head) => `
+  `;
+}
+
+export function previewHead(head) {
+  return `
     ${head}
     <!-- inject a storybook favicon with asu colors -->
     <link rel='shortcut icon' href='data:image/svg+xml; utf8, ${favicon.replace(/\n/g, "")}'>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"
     integrity="sha512-uKQ39gEGiyUJl4AI6L+ekBdGKpGw4xJ55+xyJG7YFlJokPNYegn9KwQ3P8A7aFQAUtUsAQHep+d/lrGqrbPIDQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  `,
-};
+  `;
+}

@@ -7,9 +7,9 @@ import {
   Subtitle,
   Source,
   Title,
-} from '@storybook/blocks';
+} from '@storybook/addon-docs/blocks';
 
-import { Badge } from '@storybook/components';
+import { Badge } from 'storybook/internal/components';
 import renderToHTML from './renderToHTML.jsx'
 import React from 'react';
 

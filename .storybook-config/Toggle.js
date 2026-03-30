@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { useGlobals, useParameter, useArgs } from '@storybook/api';
-import { IconButton } from '@storybook/components';
+import { useGlobals, useParameter } from 'storybook/manager-api';
+import { IconButton } from 'storybook/internal/components';
 
 export const Toggle = ({global: globalKey, children}) => {
   const [globals, updateGlobals] = useGlobals();

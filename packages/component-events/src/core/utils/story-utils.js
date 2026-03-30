@@ -1,18 +1,15 @@
 // @ts-check
 
+import { http, HttpResponse } from "msw";
 import * as feeds from "../../../__mocks__/api/feeds.json";
 
-function createMockParam() {
-  const mockData = [
-    {
-      url: "/api/mocks/feeds-json",
-      method: "GET",
-      status: 200,
+function createMockHandlers() {
+  return [
+    http.get("/api/mocks/feeds-json", () => {
       // @ts-ignore
-      response: { ...(feeds.default || feeds) },
-    },
+      return HttpResponse.json(feeds.default || feeds);
+    }),
   ];
-  return mockData;
 }
 
-export { createMockParam };
+export { createMockHandlers };

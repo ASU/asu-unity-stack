@@ -25,13 +25,12 @@ const TitleWrapper = styled.div`
     display: none;
   }
   .${CLASS_NAMES.UNIT_NAME},
-  .${CLASS_NAMES.SUBUNIT_NAME},
-  .${CLASS_NAMES.TITLE_SUBUNIT_NAME} {
+    .${CLASS_NAMES.SUBUNIT_NAME},
+    .${CLASS_NAMES.TITLE_SUBUNIT_NAME} {
     color: ${ASU_GRAY1};
   }
 
-  .${CLASS_NAMES.SUBUNIT_NAME},
-  .${CLASS_NAMES.TITLE_SUBUNIT_NAME} {
+  .${CLASS_NAMES.SUBUNIT_NAME}, .${CLASS_NAMES.TITLE_SUBUNIT_NAME} {
     background-image: linear-gradient(
       to right,
       transparent 51%,
