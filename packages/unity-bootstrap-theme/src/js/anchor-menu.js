@@ -38,7 +38,9 @@ function initAnchorMenu(options = { ignoreReactCheck: false }) {
 
   // Cache toolbar elements
   const toolbarBar = document.getElementById("toolbar-bar");
-  const toolbarTray = document.getElementById("toolbar-item-administration-tray");
+  const toolbarTray = document.getElementById(
+    "toolbar-item-administration-tray"
+  );
 
   /**
    * Determines scroll-margin-top based on header and toolbar presence.
@@ -197,7 +199,9 @@ function initAnchorMenu(options = { ignoreReactCheck: false }) {
 
     // Update active class if we found a visible element
     if (mostVisibleElementId) {
-      const activeAnchor = navbar.querySelector(`[href="#${mostVisibleElementId}"]`);
+      const activeAnchor = navbar.querySelector(
+        `[href="#${mostVisibleElementId}"]`
+      );
       if (activeAnchor) {
         activeAnchor.classList.add("active");
         activeAnchor.setAttribute("aria-current", "location");
@@ -217,7 +221,8 @@ function initAnchorMenu(options = { ignoreReactCheck: false }) {
 
     if (isScrollingDown && !isNavbarAttached) {
       const shouldAttach = globalHeader
-        ? globalHeader.getBoundingClientRect().bottom >= navbar.getBoundingClientRect().top
+        ? globalHeader.getBoundingClientRect().bottom >=
+          navbar.getBoundingClientRect().top
         : window.scrollY >= navbarInitialTop;
 
       if (shouldAttach) {
@@ -226,7 +231,8 @@ function initAnchorMenu(options = { ignoreReactCheck: false }) {
     } else if (!isScrollingDown && isNavbarAttached) {
       const shouldDetach = globalHeader
         ? window.scrollY <= navbarInitialTop ||
-          globalHeader.getBoundingClientRect().bottom < navbar.getBoundingClientRect().top
+          globalHeader.getBoundingClientRect().bottom <
+            navbar.getBoundingClientRect().top
         : window.scrollY <= navbarInitialTop;
 
       if (shouldDetach) {
