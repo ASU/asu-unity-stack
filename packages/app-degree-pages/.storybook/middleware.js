@@ -1,8 +1,9 @@
 // @ts-check
-const { createProxyMiddleware } = require("http-proxy-middleware");
-const express = require("express");
-const fs = require("fs");
+import express from "express";
+import fs from "fs";
+import { createRequire } from "module";
 
+const require = createRequire(import.meta.url);
 const dataSearch = require("../__mocks__/data/degree-search.json");
 
 const getFullUrl = req =>
@@ -104,4 +105,4 @@ function mockDegreeSeearch(router) {
 
 }
 
-module.exports = mockDegreeSeearch;
+export default mockDegreeSeearch;

@@ -3,7 +3,10 @@ import { trackGAEvent } from "@asu/shared";
 import React, { useEffect, useState } from "react";
 
 import { useAppContext } from "../../../core/context/app-context";
-import { CLASS_NAMES, buildClassName } from "../../../core/constants/classNames";
+import {
+  CLASS_NAMES,
+  buildClassName,
+} from "../../../core/constants/classNames";
 import { TitlePropTypes } from "../../../core/models/app-prop-types";
 import { checkFirstLoad } from "../../../core/utils/helpers/title";
 import { TitleWrapper } from "./index.styles";
@@ -54,7 +57,10 @@ const Title = () => {
           {parentOrg}
         </a>
         <a
-          className={buildClassName(CLASS_NAMES.SUBUNIT_NAME, active && "active")}
+          className={buildClassName(
+            CLASS_NAMES.SUBUNIT_NAME,
+            active && "active"
+          )}
           href={baseUrl}
           onClick={() =>
             trackGAEvent({
@@ -82,7 +88,10 @@ const Title = () => {
       data-testid="title"
     >
       <a
-        className={buildClassName(CLASS_NAMES.TITLE_SUBUNIT_NAME, active && "active")}
+        className={buildClassName(
+          CLASS_NAMES.TITLE_SUBUNIT_NAME,
+          active && "active"
+        )}
         href={baseUrl}
         onClick={() =>
           trackGAEvent({

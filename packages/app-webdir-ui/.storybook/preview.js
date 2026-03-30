@@ -1,7 +1,7 @@
 import React, { useEffect} from "react";
 import { MemoryRouter, useLocation } from "react-router";
 import { useSearchParams } from "react-router-dom";
-import { useArgs } from '@storybook/client-api';
+import { useArgs } from 'storybook/preview-api';
 
 import "@asu/unity-bootstrap-theme/src/scss/unity-bootstrap-theme.bundle.scss";
 

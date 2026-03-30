@@ -15,30 +15,31 @@ const GaEventPropTypes = {
   text: PropTypes.string,
 };
 
-const RfiLabel = ({ label, name, id = undefined, requiredIcon = undefined }) => (
+const RfiRequiredIndicator = ({ required = false }) =>
+  required && (
+    <>
+      <span title="Required">
+        <i className="fas fa-circle uds-field-required" aria-hidden="true" />
+      </span>
+      &nbsp;
+    </>
+  );
+
+const RfiLabel = ({
+  label,
+  name,
+  id = undefined,
+  requiredIcon = undefined,
+}) => (
   <label htmlFor={id || name}>
-    {requiredIcon && (
-      <>
-        <span title="Required">
-          <i className="fas fa-circle uds-field-required" aria-hidden="true" />
-        </span>
-        &nbsp;
-      </>
-    )}
+    <RfiRequiredIndicator required={requiredIcon} />
     {label}
   </label>
 );
 
 const RfiLegend = ({ label = undefined, requiredIcon = undefined }) => (
   <legend className="fw-bold">
-    {requiredIcon && (
-      <>
-        <span title="Required">
-          <i className="fas fa-circle uds-field-required" aria-hidden="true" />
-        </span>
-        &nbsp;
-      </>
-    )}
+    <RfiRequiredIndicator required={requiredIcon} />
     {label}
   </legend>
 );
@@ -59,6 +60,10 @@ const RfiError = ({ isError = undefined, metaError = undefined }) => (
 // duplicate the setting in our props got displaying the required icon until
 // Formik has a better way to do it.
 
+RfiRequiredIndicator.propTypes = {
+  required: PropTypes.bool,
+};
+
 RfiLabel.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
@@ -75,4 +80,10 @@ RfiError.propTypes = {
   isError: PropTypes.bool,
   metaError: PropTypes.string,
 };
-export { RfiLabel, RfiLegend, RfiError, GaEventPropTypes };
+export {
+  RfiRequiredIndicator,
+  RfiLabel,
+  RfiLegend,
+  RfiError,
+  GaEventPropTypes,
+};

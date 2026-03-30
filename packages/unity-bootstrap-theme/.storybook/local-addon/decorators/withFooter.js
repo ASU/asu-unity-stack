@@ -1,5 +1,5 @@
 import React from "react";
-import { makeDecorator } from "@storybook/addons";
+import { makeDecorator } from "storybook/preview-api";
 import { GlobalElementsOnly as Footer } from "../../../stories/organisms/global-footer/global-footer.templates";
 
 export const withFooter = makeDecorator({

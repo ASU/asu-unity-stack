@@ -1,4 +1,4 @@
-import { addons, types } from '@storybook/addons';
+import { addons, types } from 'storybook/manager-api';
 import { Toggle } from '../Toggle';
 import React from 'react';
 import udsTheme from '../theme.js';

@@ -14,6 +14,12 @@ export default defineConfig({
   resolve: {
     alias: {
       "@asu/shared": resolve(__dirname, "../shared"),
+      // @glidejs/glide has "type":"module" but "main" points to a UMD file;
+      // force resolution to the proper ESM build
+      "@glidejs/glide": resolve(
+        __dirname,
+        "../../node_modules/@glidejs/glide/dist/glide.esm.js"
+      ),
     },
   },
 });

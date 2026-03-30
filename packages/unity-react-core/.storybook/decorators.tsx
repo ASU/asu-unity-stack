@@ -5,7 +5,7 @@ import { Decorator } from "@storybook/react";
 import React, { forwardRef, ReactNode, StrictMode, useEffect } from "react";
 
 import { getBootstrapHTML } from "../src/components/GaEventWrapper/useBaseSpecificFramework";
-import { useChannel } from "@storybook/preview-api";
+import { useChannel } from "storybook/preview-api";
 
 type ContainerComponent<T, P = HTMLElement> = React.ForwardRefExoticComponent<T & React.RefAttributes<P>>;
 
