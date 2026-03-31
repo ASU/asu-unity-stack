@@ -15,9 +15,9 @@ function initAnchorMenu() {
   const globalHeader = document.getElementById(globalHeaderId);
   const navbar = document.getElementById("uds-anchor-menu");
   if (!navbar || !globalHeader) {
-    console.warn(
-      "Anchor menu initialization failed: required elements not found"
-    );
+    return;
+  }
+  if (Array.from(navbar.classList).some(cls => cls.startsWith("sc-"))) {
     return;
   }
 
@@ -203,10 +203,26 @@ function initAnchorMenu() {
         return;
       }
 
-      // Get current viewport height and calculate the 1/4 position so that the
-      // top of section is visible when you click on the anchor.
+      // For the first anchor item, skip scrolling if the section top is
+      // already clearly visible in the viewport (above the midpoint).
+      const isFirstAnchor = anchor === anchors[0];
+      if (isFirstAnchor) {
+        const headerBottom = globalHeader.getBoundingClientRect().bottom;
+        const navbarHeight = navbar.offsetHeight;
+        const topOffset = headerBottom + navbarHeight;
+        const targetTop = anchorTarget.getBoundingClientRect().top;
+        const viewportMid = window.innerHeight / 2;
+        console.log("viewportmid", viewportMid, "targetTop", targetTop);
+
+        if (targetTop >= topOffset && targetTop <= viewportMid) {
+          history.replaceState(null, "", anchor.getAttribute("href"));
+          moveFocusToTarget(anchorTarget);
+          return;
+        }
+      }
+
       const viewportHeight = window.innerHeight;
-      const targetQuarterPosition = Math.round(viewportHeight * 0.25);
+      const targetQuarterPosition = Math.round(viewportHeight * 0.35); // 35% was determined to be a good position for the section top after testing different offsets, including centering the section in the viewport. Can work in wordpress or any other platform where there are admin toolbars
 
       const targetAbsoluteTop =
         anchorTarget.getBoundingClientRect().top + window.scrollY;
@@ -226,7 +242,33 @@ function initAnchorMenu() {
       }
 
       e.target.classList.add("active");
+
+      const targetHash = anchor.getAttribute("href");
+      if (targetHash) {
+        history.replaceState(null, "", targetHash);
+      }
+
+      // Move focus to the target section so keyboard users can Tab
+      // into its content (WCAG 2.4.3 Focus Order).
+      moveFocusToTarget(anchorTarget);
     });
+  }
+
+  /**
+   * Moves keyboard focus to the anchor target section.
+   * Adds tabindex="-1" if needed so the element is programmatically
+   * focusable without entering the natural tab order.
+   *
+   * fixes
+   * WCAG 2.4.3 Focus Order (Level A) — focus sequence doesn't match visual/logical order
+   * WCAG 2.1.1 Keyboard (Level A) — functionality isn't fully keyboard operable
+   */
+  function moveFocusToTarget(target) {
+    if (!target.hasAttribute("tabindex")) {
+      target.setAttribute("tabindex", "-1");
+      target.style.outline = "none";
+    }
+    target.focus({ preventScroll: true });
   }
 }
 
