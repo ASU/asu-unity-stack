@@ -91,17 +91,12 @@ import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
                 onClick={toggle}
                 aria-haspopup="menu"
                 aria-expanded={isOpen}
-                className="uds-tab more-button"
+                className={`uds-tab more-dropdown-button${isOpen ? " active" : ""}`}
                 // REVIEW: Should you use inline styles or CSS classes? Check the project conventions and try to create styles, even if its new ones, in unity-bootstrap-theme
               >
-                <span className="more-button-label">More</span>
+                <span>More</span>
                 <i
-                  className="fas fa-chevron-down more-button-icon"
-                  aria-hidden="true"
-                  style={{
-                    transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-                    transition: "transform 160ms ease",
-                  }}
+                  className={`fas fa-chevron-down more-dropdown-icon${isOpen ? " open" : ""}`}
                 />
               </button>
             </GaEventWrapper>
@@ -110,13 +105,13 @@ import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
               <div
                 role="menu"
                 aria-label="More tabs"
-                className="uds-more-dropdown-menu"
+                className="more-dropdown-menu"
               >
                 <ul className="uds-more-dropdown-list">
                   {items.map((item) => {
                     const isActive = item.id === activeTabID;
                     return (
-                      <li key={item.id} className="uds-more-dropdown-item">
+                      <li key={item.id}>
                         <a
                           href={`#${item.id}`}
                           role="menuitem"
@@ -127,9 +122,7 @@ import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
                               onItemClick(e, item.id, item.title);
                             }
                           }}
-                          className={
-                            "uds-more-dropdown-link" + (isActive ? " is-active" : "")
-                          }
+                          className="more-dropdown-item"
                           aria-current={isActive ? "true" : undefined}
                         >
                           {item.icon && (

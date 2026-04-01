@@ -79,72 +79,58 @@
   margin-bottom: $uds-size-spacing-4;
 }
 
-// ------- More dropdown styles for TabbedPanels redesign -------
-.more-button {
-  padding-top: 0.5rem;
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
-  background: transparent;
-  border: none;
+
+// More dropdown styles for TabbedPanels redesign
+.more-dropdown-button {
+  padding: 0.5rem 0.25rem 0 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 8px solid transparent;
+  background: #fafafa;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  cursor: pointer;
 }
 
-.more-button-label {
-  font-weight: bold;
-  font-size: 24px;
+.more-dropdown-button.active {
+  border-bottom: 8px solid $uds-color-base-maroon;
 }
 
-.more-button-icon {
-  transition: transform 160ms ease;
+.more-dropdown-icon {
+  transition: transform 0.3s ease;
 }
 
-.uds-more-dropdown {
-  position: relative;
-  display: inline-block;
+.more-dropdown-icon.open {
+  transform: rotate(180deg);
 }
 
-.uds-more-dropdown-menu {
+.more-dropdown-menu {
   position: absolute;
   top: 41px;
   right: 0;
   width: 180px;
-  padding: 2rem;
   background: #ffffff;
   border: 1px solid #d0d0d0;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-  z-index: 1000;
-}
-
-.uds-more-dropdown-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 16px;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.uds-more-dropdown-link {
-  display: block;
-  padding: 0.25rem 0.5rem;
+.more-dropdown-item {
+  font-size: 16px;
+  line-height: 24px;
+  color: #191919;
   text-decoration: none;
-  color: inherit;
   cursor: pointer;
-  border-bottom: none;
-  border-radius: 2px;
+  padding: 0;
 }
 
-.uds-more-dropdown-link.is-active {
+.more-dropdown-item:hover {
   color: $uds-color-base-maroon;
-  border-bottom: 8px solid $uds-color-base-maroon;
+  text-decoration: underline;
 }
-
-.more-button:focus,
-.uds-more-dropdown-link:focus {
-  outline: 2px solid rgba($uds-color-base-maroon, 0.12);
-  outline-offset: 2px;
-}
-
-.nav-tabs > .more-button {
-  margin-left: 0.5rem;
-}
-
