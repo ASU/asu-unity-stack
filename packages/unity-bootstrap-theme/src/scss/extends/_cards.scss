@@ -441,12 +441,28 @@ Cards - Table of Contents
   Arrow link CTA for event and news cards.
   Replaces button CTAs with a single right-arrow link.
 */
+
+// Make the content wrapper a flex container for event/news cards with arrow links
+.card-event > div:has(.card-arrow-link),
+.card-news > div:has(.card-arrow-link) {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-link:has(.card-arrow-link) {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-top: auto;
+  padding-bottom: 0px;
+}
+
 .card-arrow-link {
   align-items: center;
   justify-content: center;
   width: 2.1rem;
   height: 2.1rem;
-  float: right;
   color: $asu-gray-2;
   text-decoration: none;
   border-radius: 50%;
