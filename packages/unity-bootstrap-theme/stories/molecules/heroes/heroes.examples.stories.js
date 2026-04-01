@@ -34,7 +34,7 @@ export const HeroSmallWithButtons = () => (
         data-ga-action="click"
         data-ga-type="internal link"
         data-ga-region="main content"
-        data-ga-secion="the new american university"
+        data-ga-section="the new american university"
       >
         Find out more
       </a>
@@ -47,7 +47,7 @@ export const HeroSmallWithButtons = () => (
         data-ga-action="click"
         data-ga-type="internal link"
         data-ga-region="main content"
-        data-ga-secion="the new american university"
+        data-ga-section="the new american university"
       >
         Find out more
       </a>
@@ -216,7 +216,7 @@ export const HeroVideo = () => (
         data-ga-action="click"
         data-ga-type="internal link"
         data-ga-region="main content"
-        data-ga-secion="the new american university"
+        data-ga-section="the new american university"
       >
         Call to Action
       </a>
@@ -229,7 +229,7 @@ export const HeroVideo = () => (
         data-ga-action="click"
         data-ga-type="internal link"
         data-ga-region="main content"
-        data-ga-secion="the new american university"
+        data-ga-section="the new american university"
       >
         Second Call to Action
       </a>
