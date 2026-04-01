@@ -12,7 +12,7 @@ import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
 import { useBaseSpecificFramework } from "../GaEventWrapper/useBaseSpecificFramework";
-import { NavControls, TabHeader, MoreDropdown } from "./components";
+import { TabHeader, MoreDropdown } from "./components";
 
 function useRefs() {
   const refs = useRef({});
@@ -89,8 +89,7 @@ const TabbedPanels = ({
     }
   };
     const tabRefs = useRef({});
-    const [scrollLeft, setScrollLeft] = useState(0);
-    const [scrollableWidth, setScrollableWidth] = useState();
+
 
   // -----------------------------
   // TODO 1.1
@@ -160,56 +159,7 @@ const TabbedPanels = ({
       calculateOverflow();
     }, [calculateOverflow]);
 
-    const handleResize = useCallback(() => {
-      setScrollableWidth(
-        headerTabs.current?.scrollWidth - headerTabs.current?.offsetWidth
-      );
-
-      calculateOverflow();
-    }, [calculateOverflow]);
-
-  const handleScroll = useCallback(() => {
-    setScrollLeft(headerTabs.current?.scrollLeft);
-  }, []);
-
-  const throttleScroll = useCallback(() => {
-    const timeout = 150;
-    // prevent function from being called excessively
-    throttle(handleScroll, timeout);
-    // ensure function executes after scrolling stops
-    debounce(handleScroll, timeout);
-  }, [handleScroll]);
-
-  const throttleResize = useCallback(() => {
-    const timeout = 150;
-    // prevent function from being called excessively
-    throttle(handleResize, timeout);
-    // ensure function executes after scrolling stops
-    debounce(handleResize, timeout);
-  }, [handleResize]);
-
   // Move all useEffect hooks before early return
-  useEffect(() => {
-    const currentHeaderTabs = headerTabs.current;
-    if (currentHeaderTabs) {
-      currentHeaderTabs.addEventListener("scroll", throttleScroll);
-      handleScroll();
-    }
-    return () => {
-      if (currentHeaderTabs) {
-        currentHeaderTabs.removeEventListener("scroll", throttleScroll);
-      }
-    };
-  }, [scrollableWidth, throttleScroll, handleScroll]);
-
-  useEffect(() => {
-    window.addEventListener("resize", throttleResize);
-    handleResize();
-    return () => {
-      window.removeEventListener("resize", throttleResize);
-    };
-  }, [throttleResize, handleResize]);
-
   useEffect(() => {
     if (headerTabItems.current[activeTabID]) {
       headerTabItems.current[activeTabID].scrollIntoView();
@@ -267,22 +217,6 @@ const TabbedPanels = ({
     });
   });
 
-  const slideNav = direction => {
-    const container = headerTabs.current;
-    const maxScrollLeft = container.scrollWidth - container.clientWidth;
-    const currentScrollLeft = container.scrollLeft;
-
-    let newScrollLeft = currentScrollLeft + 200 * direction;
-
-    // Ensure the scroll position stays within bounds
-    newScrollLeft = Math.max(0, Math.min(maxScrollLeft, newScrollLeft));
-
-    container.scrollTo({
-      left: newScrollLeft,
-      behavior: "smooth",
-    });
-  };
-
   const switchToTab = (e, tabID, title) => {
     // trackLinkEvent(title);
     e.preventDefault();
@@ -338,13 +272,6 @@ const TabbedPanels = ({
           />
         )}
       </div>
-
-        <NavControls
-          hidePrev={scrollLeft <= 0}
-          hideNext={scrollLeft >= scrollableWidth}
-          gaData={trackArrowsEvent}
-          slideNav={slideNav}
-        />
       </nav>
       <div
         className="tab-content"
