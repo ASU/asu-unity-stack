@@ -1,0 +1,1 @@
+import{K as i,L as a,N as m}from"./iframe-ga4iPdfS.js";import"./preload-helper-Dp1pzeXC.js";var t=i(m(),1),p=(0,t.default)(2)(async(e,r)=>e===!1?r:a(r));export{p as formatter};

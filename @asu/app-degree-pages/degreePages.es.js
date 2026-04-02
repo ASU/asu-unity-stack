@@ -11364,7 +11364,7 @@ const oh = Je.div`
       className: "container mt-5",
       "data-searching": n,
       "data-testid": "search-bar",
-      children: /* @__PURE__ */ d.jsx(
+      children: /* @__PURE__ */ d.jsx("search", { children: /* @__PURE__ */ d.jsx(
         "form",
         {
           "data-testid": "search-bar-form",
@@ -11403,7 +11403,7 @@ const oh = Je.div`
             ] })
           ] })
         }
-      )
+      ) })
     }
   );
 };
