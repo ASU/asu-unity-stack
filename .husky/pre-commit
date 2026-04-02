@@ -1,1 +1,31 @@
 #!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+
+# Check for merge conflict markers
+# This hook prevents commits that contain unresolved merge conflicts.
+# It checks the staged changes for common conflict markers
+# (e.g., <<<<<<<, =======, >>>>>>>) and blocks the commit if any are found.
+
+# This file will always fail since it contains the conflict markers pattern,
+# We will still check this file for conflict markers to prevent committing
+# unresolved conflicts.
+
+# In order to intentionallyupdate this file, create a commit with only this
+# file and skip the pre-commit hook
+# Usage:
+# - Run with env var:  SKIP_CONFLICT_CHECK=1 git commit
+if [ "$SKIP_CONFLICT_CHECK" != "1" ]; then
+    conflicts=$(git diff --cached --name-only | xargs grep -H -n -E "<{7} HEAD|={7}|>{7} " 2>/dev/null)
+    if [ ! -z "$conflicts" ]; then
+        echo "Error: Merge conflict markers found in staged files."
+        echo "\nConflicts found:"
+        echo "$conflicts" | while IFS= read -r line; do
+            echo "  → $(echo "$line" | sed 's/\([0-9]\):\([<>=]\)/\1 \2/')"
+        done
+        echo "\nPlease resolve all merge conflicts before committing."
+        exit 1
+    fi
+fi
+
+exit 0
