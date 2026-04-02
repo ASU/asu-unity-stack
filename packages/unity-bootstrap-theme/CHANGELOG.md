@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.36.6](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.36.5...@asu/unity-bootstrap-theme-v1.36.6) (2026-04-02)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** removed lazy loading for hero images ([436e8d8](https://github.com/ASU/asu-unity-stack/commit/436e8d8ed5adad3d138e11dbe881637827fb4389))
+
 # [@asu/unity-bootstrap-theme-v1.36.5](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.36.4...@asu/unity-bootstrap-theme-v1.36.5) (2026-03-20)
 
 
