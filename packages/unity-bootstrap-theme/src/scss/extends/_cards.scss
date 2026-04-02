@@ -458,6 +458,10 @@ Cards - Table of Contents
   padding-bottom: 0px;
 }
 
+.card-content-wrapper:has(.card-arrow-link) {
+  padding-bottom: 2rem !important;
+}
+
 .card-arrow-link {
   align-items: center;
   justify-content: center;
