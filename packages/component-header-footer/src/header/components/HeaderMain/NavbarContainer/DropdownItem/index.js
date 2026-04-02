@@ -208,20 +208,6 @@ const DropdownItem = ({
       headerHeight={headerHeight}
     >
       <div
-<<<<<<< HEAD
-        id={MULTIPLE_SUBMENUS ? listId : ""}
-        className={CLASS_NAMES.DROPDOWN_CONTAINER}
-      >
-        {items?.map((item, index0) => {
-          const genKey = idGenerator(`dropdown-item-${index0}-`);
-          const key = genKey.next().value;
-          return (
-            <ul id={MULTIPLE_SUBMENUS ? `${listId}-${key}` : listId} key={key}>
-              {item.map((link, index) => renderItem(link, index))}
-            </ul>
-          );
-        })}
-=======
         style={{ "--cols": cols < 3 ? 4 : cols }}
         id={MULTIPLE_SUBMENUS ? listId : ""}
         className={CLASS_NAMES.DROPDOWN_CONTAINER}
@@ -281,7 +267,6 @@ const DropdownItem = ({
             );
           })}
         </>
->>>>>>> 2d6efe516 (feat(component-header-footer): add multi column dropdown, limit mega menu width)
       </div>
       {buttons && (
         <div className={CLASS_NAMES.DROPDOWN_BUTTON_CONTAINER}>
