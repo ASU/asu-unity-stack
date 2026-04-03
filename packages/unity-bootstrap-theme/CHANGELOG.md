@@ -1,3 +1,11 @@
+# [@asu/unity-bootstrap-theme-v1.37.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.37.0...@asu/unity-bootstrap-theme-v1.37.1) (2026-04-03)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** darkgold replaced with asu gold for visited links ([082753f](https://github.com/ASU/asu-unity-stack/commit/082753f6ac1418c17daa8a22cf46866b3fa935f3))
+* **unity-bootstrap-theme:** updated the visited link to use the brand selected gold color ([a0e7885](https://github.com/ASU/asu-unity-stack/commit/a0e788585e00a6776b94000b31dc8cbaf98fea33))
+
 # [@asu/unity-bootstrap-theme-v1.37.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.36.6...@asu/unity-bootstrap-theme-v1.37.0) (2026-04-03)
 
 
