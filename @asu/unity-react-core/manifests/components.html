@@ -576,13 +576,13 @@
 <header>
   <div class="wrap">
     <h1>Manifest Debugger</h1>
-    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">2/39 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">36/39 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">21/119 story errors</a></div>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">2/39 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">36/39 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">21/120 story errors</a></div>
   </div>
 </header>
 <main>
   <div class="wrap">
     <div class="note ok" style="margin-bottom: 16px;">
-              Using <code>react-docgen-typescript</code>. Generation took <strong>1.2s</strong>.
+              Using <code>react-docgen-typescript</code>. Generation took <strong>1.3s</strong>.
             </div>
     <h2 class="section-title">Components</h2>
     <div class="grid" role="list">
@@ -1848,7 +1848,7 @@ import { BrowserRouter as Router } from "react-router-dom";</code></pre>
       <div class="badges">
         <label for="c-7-components-card-props" class="badge ok as-toggle">17 prop types</label>
         <label for="c-7-components-card-info" class="badge info as-toggle">1 info</label>
-        <label for="c-7-components-card-stories" class="badge ok as-toggle">8 stories</label>
+        <label for="c-7-components-card-stories" class="badge ok as-toggle">9 stories</label>
         
       </div>
     </div>
@@ -2051,19 +2051,33 @@ width?: &quot;25%&quot; | &quot;50%&quot; | &quot;75%&quot; | &quot;100%&quot; =
                 horizontal={false}
                 image={img1}
                 imageAltText=&quot;An example image&quot;
-                title=&quot;Event title Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore exercitationem ad voluptatem dolore dolores nulla ipsam quo distinctio expedita doloribus nisi similique obcaecati velit illo autem numquam iusto, rem nesciunt repellendus laborum. Rerum quisquam, soluta aspernatur a harum dolor ducimus nulla. Itaque aliquam cum fugiat error esse ipsam rerum consectetur!&quot;
+                title=&quot;Sun Devil Women&#39;s Tennis: NCAA Singles and Doubles Championships&quot;
                 cardLink=&quot;#example-link&quot;
-                body=&quot;&lt;span style=&#39;font-weight: bold;&#39;&gt;(Bold!) Body copy goes here.&lt;/span&gt; Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.&quot;
                 eventFormat=&quot;stack&quot;
-                eventTime=&quot;Wed, November 21st, 2021&lt;br /&gt;11:30 a.m - 12:30 p.m.&quot;
-                eventLocation=&quot;Downtown Phoenix campus&quot;
-                buttons={[
-                  {
-                    color: &quot;maroon&quot;,
-                    size: &quot;default&quot;,
-                    label: &quot;CTA button&quot;,
-                  },
-                ]} /&gt;
+                eventTime=&quot;Wed, November 21st, 2021&lt;br /&gt;11:30 a.m.–12:30 p.m. (MST)&quot;
+                eventLocation=&quot;Downtown Phoenix campus&quot; /&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">News</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const News = () =&gt; &lt;div className=&quot;container&quot;&gt;
+    &lt;div className={classNames(&quot;row&quot;, &quot;row-spaced&quot;, &quot;pt-2&quot;, &quot;pb-2&quot;)}&gt;
+        &lt;div className={classNames(&quot;col&quot;, &quot;col-12&quot;)}&gt;
+            &lt;Card
+                type=&quot;news&quot;
+                horizontal={false}
+                image={img1}
+                imageAltText=&quot;An example image&quot;
+                title=&quot;ASU researchers discover DNA-based electronic storage system&quot;
+                body=&quot;&lt;span style=&#39;font-weight: bold;&#39;&gt;(Bold!) Body copy goes here.&lt;/span&gt; Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.&quot;
+                cardLink=&quot;#example-link&quot; /&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;;</code></pre>
