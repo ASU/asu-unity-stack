@@ -1165,11 +1165,11 @@ the content of the header
 #asu-header.uds-header-v2 {
   // --- Top bar: search button/input/submit ---
   #wrapper-header-top {
-    padding: 0.5rem 0rem;
+    padding: $uds-size-spacing-1 0;
   }
   #header-top {
     .nav > *:not(:last-child) {
-      margin-right: 1.5rem;
+      margin-right: $uds-size-spacing-3;
     }
     .nav > *:nth-last-child(2) {
       margin-right: 0.75rem;
@@ -1186,7 +1186,7 @@ the content of the header
         border: none;
         background: transparent;
         cursor: pointer;
-        font-size: 0.75rem;
+        font-size: $uds-size-font-tiny;
         line-height: 1;
         color: $asu-gray-1;
         display: inline-flex;
@@ -1195,7 +1195,7 @@ the content of the header
         white-space: nowrap;
 
         span {
-          margin-right: 0.25rem;
+          margin-right: $uds-size-spacing-half;
         }
       }
 
@@ -1204,21 +1204,21 @@ the content of the header
         background-color: $uds-color-base-white;
         border: 1px solid $asu-gray-5;
         border-radius: 0;
-        padding: 0.5rem;
+        padding: $uds-size-spacing-1;
         font-weight: 400;
-        font-size: 0.75rem;
+        font-size: $uds-size-font-tiny;
         line-height: 1;
         color: $asu-gray-3;
         outline: $asu-gray-1;
         margin: 0;
-        margin-left: 1.5rem;
+        margin-left: $uds-size-spacing-3;
         display: none;
         vertical-align: middle;
         height: auto;
         background-image: none;
 
         &::placeholder {
-          font-size: 0.75rem;
+          font-size: $uds-size-font-tiny;
           line-height: 1;
         }
 
@@ -1230,17 +1230,17 @@ the content of the header
       }
 
       .search-submit {
-        margin-left: 0.5rem;
+        margin-left: $uds-size-spacing-1;
         font-weight: 700;
-        font-size: 0.875rem;
+        font-size: $uds-size-font-small;
         line-height: 1;
-        padding: 0.5rem 1rem;
+        padding: $uds-size-spacing-1 $uds-size-spacing-2;
         border: none;
         display: none;
       }
 
       &.open {
-        margin-left: -1rem;
+        margin-left: -$uds-size-spacing-2;
 
         .search-button {
           display: none;
@@ -1319,7 +1319,7 @@ the content of the header
     }
 
     &.has-value input {
-      padding-left: 1rem;
+      padding-left: $uds-size-spacing-2;
     }
 
     input {
@@ -1327,8 +1327,9 @@ the content of the header
       background-color: $uds-color-base-white;
       border: 1px solid $asu-gray-5;
       border-radius: 0;
-      padding-left: 32px;
-      padding: 0.5rem 3rem 0.5rem 2.25rem;
+      padding-left: $uds-size-spacing-4;
+      padding: $uds-size-spacing-1 $uds-size-spacing-6 $uds-size-spacing-1
+        2.25rem;
 
       &::-webkit-search-cancel-button,
       &::-webkit-search-decoration,
@@ -1346,13 +1347,13 @@ the content of the header
       right: calc(#{$uds-size-spacing-4} + 0.5rem);
       transform: translate(0, -50%);
       border-radius: 50%;
-      width: 2rem;
-      height: 2rem;
+      width: $uds-size-spacing-4;
+      height: $uds-size-spacing-4;
       background-color: $uds-color-base-maroon;
       color: $uds-color-base-white;
       border: none;
       cursor: pointer;
-      font-size: 0.75rem;
+      font-size: $uds-size-font-tiny;
       padding: 0;
       align-items: center;
       justify-content: center;
@@ -1373,7 +1374,7 @@ the content of the header
     #header-main .navbar-nav > .nav-link-home {
       .fa-home {
         display: inline-block;
-        font-size: 16px;
+        font-size: $uds-size-font-medium;
       }
     }
   }
