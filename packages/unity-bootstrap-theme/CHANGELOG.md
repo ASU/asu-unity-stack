@@ -1,3 +1,19 @@
+# [@asu/unity-bootstrap-theme-v1.37.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.36.6...@asu/unity-bootstrap-theme-v1.37.0) (2026-04-03)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** event & news cards links take over entire card on mobile ([04a60fa](https://github.com/ASU/asu-unity-stack/commit/04a60faac9dbfaf858b9a430e3618736d1cac165))
+* **unity-bootstrap-theme:** fix anchor menu JS ([30c1651](https://github.com/ASU/asu-unity-stack/commit/30c16517d436e304ad479e19088a268a9467a8cb))
+* **unity-bootstrap-theme:** update card styles ([8de867c](https://github.com/ASU/asu-unity-stack/commit/8de867cb9b15ac1a9b846640f3375290407c2913))
+* **unity-bootstrap-theme:** update card styles ([952e7e5](https://github.com/ASU/asu-unity-stack/commit/952e7e56dfca822473db866116253050fed6ddc9))
+* **unity-bootstrap-theme:** update event/news card arrow styles ([ac2ed77](https://github.com/ASU/asu-unity-stack/commit/ac2ed77bbc0ad94bbc5a39898c4efb95998b3cb1))
+
+
+### Features
+
+* **unity-bootstrap-theme:** add new event and news card styles for links ([b3fa88a](https://github.com/ASU/asu-unity-stack/commit/b3fa88a5efe1c201d1037bd40ad52ff031576a78))
+
 # [@asu/unity-bootstrap-theme-v1.36.6](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.36.5...@asu/unity-bootstrap-theme-v1.36.6) (2026-04-02)
 
 
