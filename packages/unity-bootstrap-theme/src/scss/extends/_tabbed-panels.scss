@@ -68,6 +68,28 @@
         color: $uds-color-brand-gold;
       }
     }
+    .more-dropdown-button {
+      background: $asu-gray-7;
+      color: #fff;
+    }
+
+    .more-dropdown-button.active {
+      border-bottom: 8px solid $uds-color-brand-gold;
+    }
+
+    .more-dropdown-menu {
+      background: $asu-gray-7;
+      border: 1px solid $asu-gray-5;
+    }
+
+    .more-dropdown-item {
+      color: #fff;
+    }
+
+    .more-dropdown-item:hover {
+      color: $uds-color-brand-gold;
+    }
+  }
   }
 }
 
