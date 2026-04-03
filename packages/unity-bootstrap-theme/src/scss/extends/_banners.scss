@@ -103,9 +103,7 @@
     color: $uds-color-font-light-link;
   }
   a:visited:not(.btn) {
-    color: $uds-color-base-gold;
-    // Needs the following for proper contrast.
-    //color: $uds-color-base-gold;
+    color: $uds-color-font-light-visited;
   }
 }
 
