@@ -45,6 +45,7 @@ blockquote:before {
   font-weight: 700;
 
   padding: $uds-size-spacing-4;
+  padding-left: 0;
 
   @include media-breakpoint-down(sm) {
     padding: $uds-size-spacing-4;
