@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v5.0.10](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.9...@asu/app-webdir-ui-v5.0.10) (2026-04-02)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** add search landmark accessibility to search page ([7847c8c](https://github.com/asu/asu-unity-stack/commit/7847c8ca0d709567541bc73844bb3606d7d01e3b))
+
 # [@asu/app-webdir-ui-v5.0.9](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.8...@asu/app-webdir-ui-v5.0.9) (2026-01-27)
 
 

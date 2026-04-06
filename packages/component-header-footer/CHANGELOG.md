@@ -1,3 +1,10 @@
+# [@asu/component-header-footer-v1.3.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.3.2...@asu/component-header-footer-v1.3.3) (2026-04-02)
+
+
+### Bug Fixes
+
+* **component-header-footer:** add search landmark to header for accessibility ([b08eb08](https://github.com/asu/asu-unity-stack/commit/b08eb08cd77deded61eab19304e121a34d045a59))
+
 # [@asu/component-header-footer-v1.3.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.3.1...@asu/component-header-footer-v1.3.2) (2026-03-04)
 
 

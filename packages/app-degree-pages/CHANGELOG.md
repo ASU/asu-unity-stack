@@ -1,3 +1,10 @@
+# [@asu/app-degree-pages-v3.1.5](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.1.4...@asu/app-degree-pages-v3.1.5) (2026-04-02)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** add search landmark accessibility to listing page ([08d8f48](https://github.com/asu/asu-unity-stack/commit/08d8f48c0d6aecbf916f89ab627ea9cb3a51a3f5))
+
 # [@asu/app-degree-pages-v3.1.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.1.3...@asu/app-degree-pages-v3.1.4) (2026-03-19)
 
 

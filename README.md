@@ -32,7 +32,7 @@
   - [\> Google Analytics integration](#-google-analytics-integration)
       - [**`src/component.js`**](#srccomponentjs)
       - [**`services/googleAnalytics.js`**](#servicesgoogleanalyticsjs)
-      - [**`src/component.html`**](#srccomponenthtml)
+      - [**`example-markup.html`**](#example-markuphtml)
       - [**`src/component.js`**](#srccomponentjs-1)
   - [Git commit guidelines:](#git-commit-guidelines)
     - [Examples](#examples)
@@ -335,11 +335,21 @@ const trackGAEvent = (event) => {
 }
 ```
 
-For the `unity-bootstrap-theme` package the events are dispatched by an `eventListener`, for the `focus`, `click` or `change` event handler, for each html element that needs to be included. For example:
+For the `unity-bootstrap-theme` package the events are dispatched by an `eventListener`, for the `click` or `change` event handler, for each HTML element that needs to be tracked.
 
-#### **`src/component.html`**
-```JS
-<a href="#" data-ga="">Anchor Text</a>
+**Important:** Elements must have the base `data-ga` attribute to be tracked. Any supplementary `data-ga-*` attributes (such as `data-ga-name`, `data-ga-event`, `data-ga-action`, etc.) are automatically collected and included in the analytics event.
+
+For example:
+
+#### **`example-markup.html`**
+```HTML
+<a href="#"
+   data-ga="Click me"
+   data-ga-name="onclick"
+   data-ga-event="link"
+   data-ga-section="hero">
+  Anchor Text
+</a>
 ```
 #### **`src/component.js`**
 ```JS
@@ -347,11 +357,21 @@ const pushGAEvent = (event) => {
   const { dataLayer } = window;
   if (dataLayer) dataLayer.push(event);
 };
-// eventListener
+// eventListener - dynamically collects all data-ga-* attributes
 const elements = document.querySelectorAll('[data-ga]');
 elements.forEach((element) =>
-  element.addEventListener('focus', () => {
-    pushGAEvent(event);
+  element.addEventListener('click', () => {
+    const gaEvent = {};
+    // Automatically collect all data-ga-* attributes
+    Array.from(element.attributes).forEach(attr => {
+      if (attr.name.startsWith('data-ga-')) {
+        const key = attr.name.replace('data-ga-', '');
+        if (attr.value) gaEvent[key] = attr.value.toLowerCase();
+      } else if (attr.name === 'data-ga') {
+        if (attr.value) gaEvent.text = attr.value.toLowerCase();
+      }
+    });
+    pushGAEvent(gaEvent);
   })
 );
 ```

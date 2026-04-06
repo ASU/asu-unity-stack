@@ -18,7 +18,6 @@ export const HeroSmallWithButtons = () => (
       alt="Sample placeholder image."
       width="2560"
       height="512"
-      loading="lazy"
       decoding="async"
       fetchpriority="high"
     />
@@ -35,7 +34,7 @@ export const HeroSmallWithButtons = () => (
         data-ga-action="click"
         data-ga-type="internal link"
         data-ga-region="main content"
-        data-ga-secion="the new american university"
+        data-ga-section="the new american university"
       >
         Find out more
       </a>
@@ -48,7 +47,7 @@ export const HeroSmallWithButtons = () => (
         data-ga-action="click"
         data-ga-type="internal link"
         data-ga-region="main content"
-        data-ga-secion="the new american university"
+        data-ga-section="the new american university"
       >
         Find out more
       </a>
@@ -65,7 +64,6 @@ export const HeroMediumTwoButtons = () => (
       alt="Sample placeholder image."
       width="2560"
       height="512"
-      loading="lazy"
       decoding="async"
       fetchpriority="high"
     />
@@ -120,7 +118,6 @@ export const HeroLargeWithButtons = () => (
       alt="Sample placeholder image."
       width="2560"
       height="512"
-      loading="lazy"
       decoding="async"
       fetchpriority="high"
     />
@@ -173,7 +170,6 @@ export const HeroVideo = () => (
       alt="Sample placeholder image."
       width="2560"
       height="512"
-      loading="lazy"
       decoding="async"
       fetchpriority="high"
     />
@@ -220,7 +216,7 @@ export const HeroVideo = () => (
         data-ga-action="click"
         data-ga-type="internal link"
         data-ga-region="main content"
-        data-ga-secion="the new american university"
+        data-ga-section="the new american university"
       >
         Call to Action
       </a>
@@ -233,7 +229,7 @@ export const HeroVideo = () => (
         data-ga-action="click"
         data-ga-type="internal link"
         data-ga-region="main content"
-        data-ga-secion="the new american university"
+        data-ga-section="the new american university"
       >
         Second Call to Action
       </a>

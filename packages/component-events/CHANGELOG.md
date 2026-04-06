@@ -1,3 +1,10 @@
+# [@asu/component-events-v3.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v3.0.1...@asu/component-events-v3.1.0) (2026-04-03)
+
+
+### Features
+
+* **component-events:** update to new style cards with single links ([d95a041](https://github.com/asu/asu-unity-stack/commit/d95a0410e2b44b7c158d59ffbe5fdc767ec10d80))
+
 # [@asu/component-events-v3.0.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v3.0.0...@asu/component-events-v3.0.1) (2025-06-19)
 
 

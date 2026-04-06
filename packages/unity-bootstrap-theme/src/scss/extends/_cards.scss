@@ -228,6 +228,8 @@ Cards - Table of Contents
   //   }
   // }
 
+
+
 @include media-breakpoint-up(lg) {
   .col-lg-6 .card {
     .card-img-top {
@@ -433,6 +435,86 @@ Cards - Table of Contents
 .card-event-icons > div:first-child {
   width: 16px;
   margin-right: 8px;
+}
+
+/*
+  Arrow link CTA for event and news cards.
+  Replaces button CTAs with a single right-arrow link.
+*/
+
+// Make the content wrapper a flex container for event/news cards with arrow links
+.card-event > div:has(.card-arrow-link),
+.card-news > div:has(.card-arrow-link) {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-link:has(.card-arrow-link) {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-top: auto;
+  padding-bottom: 0px;
+}
+
+.card-content-wrapper:has(.card-arrow-link) {
+  padding-bottom: 2rem !important;
+}
+
+.card-arrow-link {
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  color: $asu-gray-2;
+  text-decoration: none;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+
+  &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+
+  &:hover, &:focus, &:focus-visible, &:active {
+    box-shadow: $uds-color-base-maroon;
+    .fa-arrow-right {
+      color: $uds-color-base-maroon;
+    }
+  }
+
+  .fa-arrow-right {
+    width: .875rem;
+    height: .875rem;
+    color: $asu-gray-4;
+  }
+
+  &:hover {
+    color: $uds-color-base-maroon;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $uds-color-base-bluefocus;
+    outline-offset: 2px;
+  }
+
+  @include media-breakpoint-down(md) {
+    color: $uds-color-base-maroon;
+    border-color: $uds-color-base-maroon;
+
+    .fa-arrow-right {
+      color: inherit;
+    }
+
+  }
 }
 
 .card-horizontal {

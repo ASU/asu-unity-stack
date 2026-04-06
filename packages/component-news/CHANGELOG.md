@@ -1,3 +1,10 @@
+# [@asu/component-news-v4.2.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-news-v4.1.1...@asu/component-news-v4.2.0) (2026-04-03)
+
+
+### Features
+
+* **component-news:** update to new style cards with single links ([0730d35](https://github.com/asu/asu-unity-stack/commit/0730d35f4c12cea8febb5c8e7b70794ee3749128))
+
 # [@asu/component-news-v4.1.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-news-v4.1.0...@asu/component-news-v4.1.1) (2025-12-30)
 
 
