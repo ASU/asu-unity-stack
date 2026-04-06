@@ -53,8 +53,6 @@ function initAnchorMenu() {
     const target = document.getElementById(targetId);
     if (target) {
       anchorTargets.set(anchor, target);
-    } else {
-      console.warn(`Anchor menu: target element "${targetId}" not found`);
     }
   }
 
@@ -199,7 +197,7 @@ function initAnchorMenu() {
       e.preventDefault();
 
       if (!anchorTarget || !document.body.contains(anchorTarget)) {
-        console.warn("Anchor target no longer exists in DOM");
+        console.warn("Anchor target no longer exists in DOM"); // This should be rare but if the target element has been removed from the DOM, this will make debuggin easier in webspark sites
         return;
       }
 
@@ -212,7 +210,6 @@ function initAnchorMenu() {
         const topOffset = headerBottom + navbarHeight;
         const targetTop = anchorTarget.getBoundingClientRect().top;
         const viewportMid = window.innerHeight / 2;
-        console.log("viewportmid", viewportMid, "targetTop", targetTop);
 
         if (targetTop >= topOffset && targetTop <= viewportMid) {
           history.replaceState(null, "", anchor.getAttribute("href"));
