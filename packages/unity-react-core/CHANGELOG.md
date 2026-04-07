@@ -1,3 +1,10 @@
+# [@asu/unity-react-core-v1.8.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.8.0...@asu/unity-react-core-v1.8.1) (2026-04-07)
+
+
+### Bug Fixes
+
+* **unity-react-core:** fix anchor menu logic ([68fca1e](https://github.com/ASU/asu-unity-stack/commit/68fca1eb22954271d28d94600a980fdef9911b45))
+
 # [@asu/unity-react-core-v1.8.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.7.3...@asu/unity-react-core-v1.8.0) (2026-04-03)
 
 
