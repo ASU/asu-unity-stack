@@ -11,6 +11,7 @@ blockquote {
   border-left: none;
   font-weight: inherit;
   padding-left: 0;
+  padding-right: 0;
   max-width: 772px;
   p {
     max-width: 700px;
@@ -46,6 +47,7 @@ blockquote:before {
 
   padding: $uds-size-spacing-4;
   padding-left: 0;
+  padding-right: 0;
 
   @include media-breakpoint-down(sm) {
     padding: $uds-size-spacing-4;
@@ -271,6 +273,7 @@ blockquote:before {
     cite.description {
       font-weight: 400;
       padding-left: 0;
+      padding-right: 0;
       display: flex;
       justify-content: flex-start;
     }
