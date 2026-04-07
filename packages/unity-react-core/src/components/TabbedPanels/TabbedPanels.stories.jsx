@@ -77,3 +77,76 @@ const Template = () => {
 };
 
 export const Default = Template.bind({});
+
+export const WithOverflowTabs = () => {
+  return (
+    <MemoryRouter>
+      <div className="row no-gutters">
+        <div className="col uds-full-width">
+          <TabbedPanels>
+            {/* Existing tabs */}
+            <Tab id="home" title="Home long tab"><div>1</div></Tab>
+            <Tab id="profile" title="Profile long tab"><div>2</div></Tab>
+            <Tab id="contact" title="Contact us is a long tab"><div>3</div></Tab>
+            <Tab id="another" title="Another tab, long tab"><div>4</div></Tab>
+            <Tab id="another-2" title="Another tab, long tab"><div>5</div></Tab>
+            <Tab id="another-3" title="Another tab, long tab"><div>6</div></Tab>
+            {/* adding extra tabs for overflow */}
+            <Tab id="tab-7" title="Tab 7"><div>7</div></Tab>
+            <Tab id="tab-8" title="Tab 8"><div>8</div></Tab>
+            <Tab id="tab-9" title="Tab 9"><div>9</div></Tab>
+            <Tab id="tab-10" title="Tab 10"><div>10</div></Tab>
+            <Tab id="tab-11" title="Tab 11"><div>11</div></Tab>
+            <Tab id="tab-12" title="Tab 12"><div>12</div></Tab>
+          </TabbedPanels>
+        </div>
+      </div>
+    </MemoryRouter>
+  );
+};
+
+export const ResponsiveBehavior = () => {
+  return (
+    <MemoryRouter>
+      <div className="row no-gutters">
+        <div className="col uds-full-width">
+          <div style={{ width: "320px" }}>
+            <TabbedPanels>
+              <Tab id="home" title="Home long tab"><div>1</div></Tab>
+              <Tab id="profile" title="Profile long tab"><div>2</div></Tab>
+              <Tab id="contact" title="Contact us is a long tab"><div>3</div></Tab>
+              <Tab id="another" title="Another tab, long tab"><div>4</div></Tab>
+              <Tab id="another-2" title="Another tab, long tab"><div>5</div></Tab>
+              <Tab id="another-3" title="Another tab, long tab"><div>6</div></Tab>
+              <Tab id="tab-7" title="Extra Tab 7"><div>7</div></Tab>
+              <Tab id="tab-8" title="Extra Tab 8"><div>8</div></Tab>
+            </TabbedPanels>
+          </div>
+        </div>
+      </div>
+    </MemoryRouter>
+  );
+};
+
+export const DarkBackgroundOverflow = () => {
+  return (
+    <MemoryRouter>
+      <div className="row no-gutters">
+        <div className="col uds-full-width bg-dark p-3">
+          <TabbedPanels bgColor="bg-dark">
+            <Tab id="home" title="Home long tab"><div>1</div></Tab>
+            <Tab id="profile" title="Profile long tab"><div>2</div></Tab>
+            <Tab id="contact" title="Contact us is a long tab"><div>3</div></Tab>
+            <Tab id="another" title="Another tab, long tab"><div>4</div></Tab>
+            <Tab id="another-2" title="Another tab, long tab"><div>5</div></Tab>
+            <Tab id="another-3" title="Another tab, long tab"><div>6</div></Tab>
+            <Tab id="tab-7" title="Tab 7"><div>7</div></Tab>
+            <Tab id="tab-8" title="Tab 8"><div>8</div></Tab>
+            <Tab id="tab-9" title="Tab 9"><div>9</div></Tab>
+            <Tab id="tab-10" title="Tab 10"><div>10</div></Tab>
+          </TabbedPanels>
+        </div>
+      </div>
+    </MemoryRouter>
+  );
+};
