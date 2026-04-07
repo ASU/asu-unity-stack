@@ -1,4 +1,5 @@
 // import Banner from "./banner.js";
+import { initAnchorMenu } from "./anchor-menu.js";
 import { initBlockquoteAnimation } from "./blockquote-animated.js";
 import { initCalendar } from "./calendar.js";
 import { initCardBodies } from "./card-bodies.js";

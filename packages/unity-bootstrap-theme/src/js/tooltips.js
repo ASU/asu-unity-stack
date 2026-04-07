@@ -1,7 +1,9 @@
 import { EventHandler } from "./bootstrap-helper";
 
 function initTooltips() {
-  /* if this value changes, update tooltips.js file */
+  /* this value must stay in sync, found in files: */
+  /* packages/unity-bootstrap-theme/src/scss/extends/_tooltips.scss */
+  /* packages/unity-bootstrap-theme/src/js/tooltips.js */
   const TOOLTIP_MAX_WIDTH = 288;
 
   // This query selector is not just creating a List,
@@ -22,9 +24,6 @@ function initTooltips() {
         return;
       }
     }
-    // content.getBoundingClientRect().width +
-    //   trigger.getBoundingClientRect().right >
-    // window.innerWidth
 
     if (
       trigger.getBoundingClientRect().right + TOOLTIP_MAX_WIDTH >
@@ -49,38 +48,23 @@ function initTooltips() {
     trigger.setAttribute("aria-expanded", "false");
   }
 
-  function kbHide(e) {
+  function keyboardHide(e) {
     if (e.key === "Escape") {
       hide(e);
     }
   }
 
-  window.t2 = [...tooltipContentList].map(contentEl => {
+  [...tooltipContentList].map(contentEl => {
     const controller = new AbortController();
     const { signal } = controller;
     const triggerEl = contentEl.previousElementSibling;
     const containerEl = triggerEl.parentElement;
 
-    // const showEvents = [
-    //   ["mouseenter"],
-    //   ["focus"],
-    //   ["keypress", e => e.charCode === 32 || e.key === "Enter"],
-    // ];
-    // const hideEvents = [
-    //   ["mouseleave", e => e.target !== document.activeElement],
-    //   ["blur"],
-    //   ["keydown", e => e.key === "Escape"],
-    // ];
-
-    // containerEl.attachShadow({ mode: "open" });
-    // containerEl.appendChild(document.createElement("slot"));
-    // shadowRoot.appendChild(contentEl.cloneNode(true));
-
     triggerEl.addEventListener("mouseenter", show, { signal });
     triggerEl.addEventListener("focus", show, { signal });
     triggerEl.addEventListener("keypress", show, { signal });
     triggerEl.addEventListener("blur", hide, { signal });
-    triggerEl.addEventListener("keydown", kbHide, { signal });
+    triggerEl.addEventListener("keydown", keyboardHide, { signal });
     containerEl.addEventListener("mouseleave", hide, { signal });
 
     return controller;

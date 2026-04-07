@@ -1,5 +1,7 @@
 .uds-tooltip-container {
-  /* if this value changes, update tooltips.js file */
+  /* this value must stay in sync, found in files: */
+  /* packages/unity-bootstrap-theme/src/scss/extends/_tooltips.scss */
+  /* packages/unity-bootstrap-theme/src/js/tooltips.js */
   --tooltip-max-width: 288px;
 
   --tooltip-offset: .5rem;
@@ -21,7 +23,6 @@
     }
 
     + [role="tooltip"] {
-      // visibility: hidden;
       display: none;
     }
   }
@@ -35,7 +36,7 @@
 }
 
 button.uds-tooltip {
-  background: #f007;
+  background-color: transparent;
   color: inherit;
   border: none;
   padding: 0;
@@ -96,24 +97,6 @@ button.uds-tooltip-dark {
   }
 }
 
-// div[role='tooltip'].uds-tooltip-description:before {
-//   content: '';
-//   position: absolute;
-//   top: 0;
-//   bottom: 0;
-//   left: calc(-1 * var(--tooltip-offset));
-//   right: 100%;
-// }
-// div[role='tooltip'].uds-tooltip-description:after {
-//   content: '';
-//   position: absolute;
-//   top: calc(-1 * var(--tooltip-offset));
-//   bottom: 100%;
-//   left: 0;
-//   right: 0;
-//   background-color: #f001;
-// }
-
 div[role='tooltip'].uds-tooltip-description {
   background: $asu-gray-1 0% 0% no-repeat padding-box;
   color: $asu-gray-7;
@@ -128,7 +111,6 @@ div[role='tooltip'].uds-tooltip-description {
   top: 0;
   justify-self: start;
   align-self: end;
-  // visibility: hidden;
   z-index: 1;
 
   &.bottom-placement {
