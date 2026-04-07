@@ -1,3 +1,11 @@
+# [@asu/unity-bootstrap-theme-v1.37.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.37.1...@asu/unity-bootstrap-theme-v1.37.2) (2026-04-07)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix anchor menu js ([3feae2e](https://github.com/ASU/asu-unity-stack/commit/3feae2e01dc73078ec4a9e87c633ea4ba622052a))
+* **unity-bootstrap-theme:** remove console logs ([a7a7a49](https://github.com/ASU/asu-unity-stack/commit/a7a7a495de739fbc04abf9c0238f73cc0e7b6dd3))
+
 # [@asu/unity-bootstrap-theme-v1.37.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.37.0...@asu/unity-bootstrap-theme-v1.37.1) (2026-04-03)
 
 
