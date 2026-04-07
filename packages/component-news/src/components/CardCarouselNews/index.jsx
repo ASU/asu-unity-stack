@@ -27,6 +27,7 @@ const cardRow = (feed, index, cardButton) => ({
       href: feed.buttonLink,
     },
   ],
+  cardLink: feed.eventButtonUrl || feed?.buttonLink,
 });
 
 /**
@@ -42,7 +43,7 @@ const CarouselTemplate = ({ cardButton }) => {
     <NewsWrapper>
       <CardCarousel
         width="auto"
-        cardType="story"
+        cardType="news"
         perView="3"
         cardItems={cardItems || []}
       />

@@ -21,7 +21,7 @@ const gridRow = (feed, cardButton, hideTags) => (
     key={feed.id}
   >
     <Card
-      type="default"
+      type="news"
       eventFormat="inline"
       eventLocation={feed.location}
       clickable={!!feed.buttonLink}
@@ -41,6 +41,7 @@ const gridRow = (feed, cardButton, hideTags) => (
         },
       ]}
       tags={hideTags ? [] : parseInterests(feed?.interests)}
+      cardLink={feed.eventButtonUrl || feed?.buttonLink}
     />
   </div>
 );

@@ -17,7 +17,7 @@ import PropTypes from "prop-types";
 const listRow = (feed, cardButton, hideTags) => (
   <div className="card card-hover cards-items-container" key={feed.id}>
     <Card
-      type="story"
+      type="news"
       horizontal
       eventFormat="inline"
       eventLocation={feed.location}
@@ -38,6 +38,7 @@ const listRow = (feed, cardButton, hideTags) => (
         },
       ]}
       tags={hideTags ? [] : parseInterests(feed?.interests)}
+      cardLink={feed.eventButtonUrl || feed?.buttonLink}
     />
   </div>
 );
