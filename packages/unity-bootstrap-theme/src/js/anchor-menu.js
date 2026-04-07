@@ -15,9 +15,9 @@ function initAnchorMenu() {
   const globalHeader = document.getElementById(globalHeaderId);
   const navbar = document.getElementById("uds-anchor-menu");
   if (!navbar || !globalHeader) {
-    console.warn(
-      "Anchor menu initialization failed: required elements not found"
-    );
+    return;
+  }
+  if (Array.from(navbar.classList).some(cls => cls.startsWith("sc-"))) {
     return;
   }
 
@@ -53,8 +53,6 @@ function initAnchorMenu() {
     const target = document.getElementById(targetId);
     if (target) {
       anchorTargets.set(anchor, target);
-    } else {
-      console.warn(`Anchor menu: target element "${targetId}" not found`);
     }
   }
 
@@ -199,7 +197,7 @@ function initAnchorMenu() {
       e.preventDefault();
 
       if (!anchorTarget || !document.body.contains(anchorTarget)) {
-        console.warn("Anchor target no longer exists in DOM");
+        console.warn("Anchor target no longer exists in DOM"); // This should be rare but if the target element has been removed from the DOM, this will make debuggin easier in webspark sites
         return;
       }
 
@@ -212,7 +210,6 @@ function initAnchorMenu() {
         const topOffset = headerBottom + navbarHeight;
         const targetTop = anchorTarget.getBoundingClientRect().top;
         const viewportMid = window.innerHeight / 2;
-        console.log("viewportmid", viewportMid, "targetTop", targetTop);
 
         if (targetTop >= topOffset && targetTop <= viewportMid) {
           history.replaceState(null, "", anchor.getAttribute("href"));
@@ -221,8 +218,6 @@ function initAnchorMenu() {
         }
       }
 
-      // Get current viewport height and calculate the scroll offset so that the
-      // top of section is visible when you click on the anchor.
       const viewportHeight = window.innerHeight;
       const targetQuarterPosition = Math.round(viewportHeight * 0.35); // 35% was determined to be a good position for the section top after testing different offsets, including centering the section in the viewport. Can work in wordpress or any other platform where there are admin toolbars
 
@@ -245,7 +240,6 @@ function initAnchorMenu() {
 
       e.target.classList.add("active");
 
-      // Update the URL hash without triggering a scroll
       const targetHash = anchor.getAttribute("href");
       if (targetHash) {
         history.replaceState(null, "", targetHash);

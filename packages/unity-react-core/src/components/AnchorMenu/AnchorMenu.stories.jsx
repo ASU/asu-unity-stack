@@ -95,8 +95,7 @@ const Template = args => {
 
   return (
     <>
-      {/* Bootstrap version of anchor menu depends on the header component */}
-      {isBootstrap && <Header />}
+      <Header />
 
       <div className={classNames("container")}>
         <div className={classNames("row", "row-spaced", "pt-2", "pb-2")}>
