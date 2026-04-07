@@ -182,6 +182,7 @@ const BaseCard = ({
     [`card-degree`]: type === "degree",
     [`card-event`]: type === "event",
     [`card-story`]: type === "story",
+    [`card-news`]: type === "news",
     [`w-${width.replace("%", "")}`]: width !== "100%",
     [`card-horizontal`]: horizontal,
     [`borderless`]: !showBorders,
