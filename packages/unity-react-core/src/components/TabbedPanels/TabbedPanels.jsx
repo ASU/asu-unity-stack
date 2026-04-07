@@ -80,6 +80,7 @@ const TabbedPanels = ({
   const [headerTabItems, setHeaderTabItems] = useRefs();
   // helper to register a DOM node for a tab id in both headerTabItems (for keyboard focus)
   // and tabRefs (for width measurements)
+  const tabRefs = useRef({});
   const registerTabNode = (id) => (node) => {
     setHeaderTabItems(id)(node);
     if (node) {
@@ -88,8 +89,6 @@ const TabbedPanels = ({
       delete tabRefs.current[id];
     }
   };
-    const tabRefs = useRef({});
-
 
   // -----------------------------
   // TODO 1.1
@@ -149,15 +148,22 @@ const TabbedPanels = ({
     setVisibleTabs(newVisibleTabs);
     setOverflowTabs(newOverflowTabs);
 
-    setScrollableWidth(container.scrollWidth - container.clientWidth);
   }, [childrenArray, headerTabItems]);
+
+  useEffect(() => {
+    calculateOverflow();
+
+    const handleResize = () => {
+      calculateOverflow();
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [calculateOverflow]);
 
   // REVIEW: This useEffect is missing its dependency array. What happens when you call setState without dependencies?
   // REVIEW: This will cause an infinite loop. Think about when this effect should run and add the appropriate dependency array. remember that what you add int the depenmdency array should not be derived from the state being set inside the effect.
     // run overflow calculation on mount and on resize
-    useEffect(() => {
-      calculateOverflow();
-    }, [calculateOverflow]);
 
   // Move all useEffect hooks before early return
   useEffect(() => {
@@ -292,4 +298,4 @@ TabbedPanels.propTypes = {
   onTabChange: PropTypes.func,
 };
 
-export { TabbedPanels, Tab, NavControls, TabHeader };
+export { TabbedPanels, Tab, TabHeader };
