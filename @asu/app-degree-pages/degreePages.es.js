@@ -5832,6 +5832,7 @@ const Ll = ({
     "card-degree": e === "degree",
     "card-event": e === "event",
     "card-story": e === "story",
+    "card-news": e === "news",
     [`w-${t.replace("%", "")}`]: t !== "100%",
     "card-horizontal": r,
     borderless: !w
