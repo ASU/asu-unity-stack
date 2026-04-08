@@ -1,3 +1,10 @@
+# [@asu/component-news-v4.2.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-news-v4.2.0...@asu/component-news-v4.2.1) (2026-04-08)
+
+
+### Bug Fixes
+
+* **component-news:** update props to match new news cards ([05fd826](https://github.com/asu/asu-unity-stack/commit/05fd826b013935ada61256467f86da3ecaeaea77))
+
 # [@asu/component-news-v4.2.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-news-v4.1.1...@asu/component-news-v4.2.0) (2026-04-03)
 
 
