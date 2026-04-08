@@ -1,3 +1,10 @@
+# [@asu/unity-react-core-v1.9.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.8.1...@asu/unity-react-core-v1.9.0) (2026-04-08)
+
+
+### Features
+
+* **unity-react-core:** updated news cards ([c6bf0af](https://github.com/ASU/asu-unity-stack/commit/c6bf0afe344f954ff9e7ef532633f3875bdc49b4))
+
 # [@asu/unity-react-core-v1.8.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.8.0...@asu/unity-react-core-v1.8.1) (2026-04-07)
 
 
