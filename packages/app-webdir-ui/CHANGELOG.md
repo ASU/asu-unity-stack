@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v5.0.11](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.10...@asu/app-webdir-ui-v5.0.11) (2026-04-09)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** update axios vulnerability ([89294c3](https://github.com/asu/asu-unity-stack/commit/89294c30d41d8b6129a62101e8df1d77238cc5bf))
+
 # [@asu/app-webdir-ui-v5.0.10](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.9...@asu/app-webdir-ui-v5.0.10) (2026-04-02)
 
 
