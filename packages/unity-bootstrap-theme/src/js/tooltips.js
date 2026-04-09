@@ -5,18 +5,35 @@ function initTooltips() {
   /* packages/unity-bootstrap-theme/src/scss/extends/_tooltips.scss */
   /* packages/unity-bootstrap-theme/src/js/tooltips.js */
   const TOOLTIP_MAX_WIDTH = 288;
+  const CONTAINER_CLASS = "uds-tooltip-container";
+  const CONTAINER_SELECTOR = `.${CONTAINER_CLASS}`;
+  const TRIGGER_ATTR = "aria-describedby";
+  const TRIGGER_SELECTOR = `[${TRIGGER_ATTR}]`;
+  const CONTENT_ATTR = "role=tooltip";
+  const CONTENT_SELECTOR = `[${CONTENT_ATTR}]`;
 
   // This query selector is not just creating a List,
   // it's also checking to ensure all 3 elements are present
   // (container, trigger, content) and in the correct order
   // (trigger immediately followed by content)
   const tooltipContentList = document.querySelectorAll(
-    '.uds-tooltip-container > .uds-tooltip + [role="tooltip"]'
+    `${CONTAINER_SELECTOR} > ${TRIGGER_SELECTOR} + ${CONTENT_SELECTOR}`
   );
+
+  function closeActiveTooltips() {
+    const activeTooltips = document.querySelectorAll(
+      `${TRIGGER_SELECTOR}[aria-expanded="true"]`
+    );
+    activeTooltips.forEach(activeTooltip => {
+      activeTooltip.setAttribute("aria-expanded", "false");
+    });
+  }
 
   function show(e) {
     // container or trigger
-    let trigger = e.target.querySelector(".uds-tooltip") || e.target;
+    let trigger =
+      e.target.querySelector(`${CONTAINER_SELECTOR} ${TRIGGER_SELECTOR}`) ||
+      e.target;
     let content = trigger.nextSibling;
 
     if (e.type === "keypress") {
@@ -24,6 +41,8 @@ function initTooltips() {
         return;
       }
     }
+
+    closeActiveTooltips();
 
     if (
       trigger.getBoundingClientRect().right + TOOLTIP_MAX_WIDTH >
@@ -38,7 +57,9 @@ function initTooltips() {
 
   function hide(e) {
     // container or trigger
-    let trigger = e.target.querySelector(".uds-tooltip") || e.target;
+    let trigger =
+      e.target.querySelector(`${CONTAINER_SELECTOR} ${TRIGGER_SELECTOR}`) ||
+      e.target;
 
     if (e.type === "mouseleave") {
       if (trigger === document.activeElement) {

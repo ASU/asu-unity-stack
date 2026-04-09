@@ -1,6 +1,4 @@
-import React, { ComponentProps, ReactElement, useId, useRef } from "react";
-
-import { ButtonIconOnly } from "../ButtonIconOnly/ButtonIconOnly";
+import React, { ComponentProps, ReactElement, useId } from "react";
 
 type TooltipTrigger =
   | ReactElement<
@@ -51,7 +49,6 @@ export const Tooltip: React.FC<TooltipProps> = ({
   children,
 }) => {
   const toolTipId = "tooltip-" + useId();
-  const ref = useRef(null);
 
   let domTrigger: TooltipTrigger = children || triggerElement || (
     <TooltipIcon />
@@ -68,7 +65,6 @@ export const Tooltip: React.FC<TooltipProps> = ({
   return (
     <span className="uds-tooltip-container">
       {React.cloneElement(domTrigger as ReactElement, {
-        ref,
         "aria-describedby": toolTipId,
         "tabIndex": 0,
       })}

@@ -1,5 +1,5 @@
 // import Banner from "./banner.js";
-import { initAnchorMenu } from "./anchor-menu.js";
+// import { initAnchorMenu } from "./anchor-menu.js"; // DO NOT COMMIT
 import { initBlockquoteAnimation } from "./blockquote-animated.js";
 import { initCalendar } from "./calendar.js";
 import { initCardBodies } from "./card-bodies.js";
@@ -18,7 +18,7 @@ import { initVideo } from "./video.js";
 
 const unityBootstrap = {
   // Banner, // code updated to use bootstrap alert so we don't need this
-  initAnchorMenu,
+  // initAnchorMenu, // DO NOT COMMIT
   initBlockquoteAnimation,
   initCalendar,
   initCollapse,
