@@ -25,6 +25,20 @@ function initTabbedPanels() {
       e.target.focus();
     }
   };
+  const scrollIntoViewHorizontally = (container, child) => {
+    const childOffsetRight = child.offsetLeft + child.offsetWidth;
+    const containerScrollRight = container.scrollLeft + container.offsetWidth;
+
+    // is child behind (left)
+    if (container.scrollLeft > child.offsetLeft) {
+      container.scrollLeft = child.offsetLeft;
+    }
+
+    // is child ahead (right)
+    if (containerScrollRight < childOffsetRight) {
+      container.scrollLeft += childOffsetRight - containerScrollRight;
+    }
+  };
 
   document
     .querySelectorAll(DOM_ELEMENT_UDS_TABBED_PANELS)
@@ -99,12 +113,11 @@ function initTabbedPanels() {
           ? CSS_DISPLAY_NONE
           : CSS_DISPLAY_BLOCK;
       });
-      // });
 
       // handle focus event for tabs titles
       navItems.forEach(tabTitle => {
         tabTitle.addEventListener(EVENT_FOCUS, function (e) {
-          tabTitle.scrollIntoView();
+          scrollIntoViewHorizontally(tabTitle.parentElement, tabTitle);
         });
       });
 
@@ -123,7 +136,6 @@ function initTabbedPanels() {
       });
 
       // hide prev button on load
-
       prevButton.style.display = CSS_DISPLAY_NONE;
 
       // width of all tabs
@@ -139,7 +151,5 @@ function initTabbedPanels() {
 }
 
 EventHandler.on(window, "load.uds.tabs", initTabbedPanels);
-
-// window.addEventListener("load.uds.tabs", initTabs, true);
 
 export { initTabbedPanels };
