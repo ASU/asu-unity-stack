@@ -456,6 +456,7 @@ Cards - Table of Contents
   align-items: flex-end;
   margin-top: auto;
   padding-bottom: 0px;
+  padding-right: $uds-size-spacing-4;
 }
 
 .card-content-wrapper:has(.card-arrow-link) {
@@ -474,6 +475,8 @@ Cards - Table of Contents
   display: flex !important;
   align-items: center;
   justify-content: center;
+  font-size: $uds-size-font-large;
+  font-weight: $uds-font-weight-bolder;
 
   &::before {
         content: "";
@@ -492,8 +495,7 @@ Cards - Table of Contents
   }
 
   .fa-arrow-right {
-    width: .875rem;
-    height: .875rem;
+    font-size: $uds-size-font-large;
     color: $asu-gray-4;
   }
 
@@ -512,6 +514,7 @@ Cards - Table of Contents
 
     .fa-arrow-right {
       color: inherit;
+      font-size: $uds-size-font-medium;
     }
 
   }
