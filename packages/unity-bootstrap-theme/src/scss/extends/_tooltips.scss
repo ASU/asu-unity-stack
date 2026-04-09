@@ -1,32 +1,43 @@
-@mixin focusState {
-  + div[role='tooltip'].uds-tooltip-description {
-    visibility: visible;
-  }
-  .fa-circle {
-    color: $uds-color-font-light-info;
-  }
-}
-
 .uds-tooltip-container {
+  /* this value must stay in sync, found in files: */
+  /* packages/unity-bootstrap-theme/src/scss/extends/_tooltips.scss */
+  /* packages/unity-bootstrap-theme/src/js/tooltips.js */
+  --tooltip-max-width: 288px;
+
+  --tooltip-offset: .5rem;
   display: inline-block;
   position: relative;
 
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: calc(-1 * var(--tooltip-offset));
+    bottom: calc(-1 * var(--tooltip-offset));
+  }
+
   [aria-describedby] {
+    & {
+      position: relative;
+    }
+
     + [role="tooltip"] {
-      visibility: hidden;
+      display: none;
+      z-index: 2;
     }
   }
 
-  [aria-describedby]:focus,
-  [aria-describedby]:hover {
+  [aria-describedby][aria-expanded='true'] {
     + [role="tooltip"] {
       visibility: visible;
+      display: block;
     }
   }
 }
 
 button.uds-tooltip {
-  background: none;
+  background-color: transparent;
   color: inherit;
   border: none;
   padding: 0;
@@ -50,12 +61,9 @@ button.uds-tooltip {
     vertical-align: middle;
   }
 
-  &:focus {
-    @include focusState();
-  }
-  @include media-breakpoint-up(sm) {
-    &:hover {
-      @include focusState();
+  &[aria-expanded='true'] {
+    .fa-circle {
+      color: $uds-color-font-light-info;
     }
   }
 }
@@ -95,15 +103,22 @@ div[role='tooltip'].uds-tooltip-description {
   color: $asu-gray-7;
   font: normal normal normal $uds-size-spacing-2 Arial;
   line-height: $uds-size-spacing-3;
-  margin: 0px 5px;
-  max-width: 353px;
-  min-width: 300px;
+  max-width: var(--tooltip-max-width);
+  min-width: min(100vw, var(--min-width));
+  width: -webkit-max-content;
   padding: $uds-size-spacing-4;
   position: absolute;
-  left: 40px;
+  left: calc(100% + var(--tooltip-offset));
   top: 0;
-  visibility: hidden;
+  justify-self: start;
+  align-self: end;
   z-index: 1;
+
+  &.bottom-placement {
+    left: unset;
+    top: calc(100% + var(--tooltip-offset));
+    right: 0;
+  }
 
   & > span.uds-tooltip-heading {
     color: $asu-gray-7;
