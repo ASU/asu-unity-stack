@@ -55,6 +55,9 @@ export const withContainer: Decorator = (
         // custom events created by eventSpy.js to allow storybook to dispatch load events after the page is loaded
         document.dispatchEvent(new Event("sb_DOMContentLoaded"));
         window.dispatchEvent(new Event('sb_load'));
+      } else {
+        window.dispatchEvent(new Event("DOMContentLoaded"));
+        window.dispatchEvent(new Event("load"));
       }
 
       emit("HTML/CodeUpdated", { code: root.current.innerHTML });
