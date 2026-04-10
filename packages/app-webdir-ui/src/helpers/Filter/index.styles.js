@@ -27,6 +27,8 @@ export const FilterContainer = styled.fieldset`
       display: none;
     }
     .choice {
+      min-width: 24px;
+      min-height: 24px;
       &:hover {
         text-decoration: none;
       }
