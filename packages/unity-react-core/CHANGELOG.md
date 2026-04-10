@@ -1,3 +1,10 @@
+# [@asu/unity-react-core-v1.9.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.9.0...@asu/unity-react-core-v1.9.1) (2026-04-10)
+
+
+### Bug Fixes
+
+* **unity-react-core:** fix icon card showing empty image ([cd3c5f6](https://github.com/ASU/asu-unity-stack/commit/cd3c5f60bfcd01ce7a654353c1f21a4e200c1d5a))
+
 # [@asu/unity-react-core-v1.9.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.8.1...@asu/unity-react-core-v1.9.0) (2026-04-08)
 
 
