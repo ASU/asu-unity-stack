@@ -25,18 +25,19 @@ function initTabbedPanels() {
       e.target.focus();
     }
   };
-  const scrollIntoViewHorizontally = (container, child) => {
-    const childOffsetRight = child.offsetLeft + child.offsetWidth;
+  const scrollIntoViewHorizontally = tab => {
+    const container = tab.parentElement;
+    const tabOffsetRight = tab.offsetLeft + tab.offsetWidth;
     const containerScrollRight = container.scrollLeft + container.offsetWidth;
 
-    // is child behind (left)
-    if (container.scrollLeft > child.offsetLeft) {
-      container.scrollLeft = child.offsetLeft;
+    // is tab behind (left)
+    if (container.scrollLeft > tab.offsetLeft) {
+      container.scrollLeft = tab.offsetLeft;
     }
 
-    // is child ahead (right)
-    if (containerScrollRight < childOffsetRight) {
-      container.scrollLeft += childOffsetRight - containerScrollRight;
+    // is tab ahead (right)
+    if (containerScrollRight < tabOffsetRight) {
+      container.scrollLeft += tabOffsetRight - containerScrollRight;
     }
   };
 
@@ -117,22 +118,18 @@ function initTabbedPanels() {
       // handle focus event for tabs titles
       navItems.forEach(tabTitle => {
         tabTitle.addEventListener(EVENT_FOCUS, function (e) {
-          scrollIntoViewHorizontally(tabTitle.parentElement, tabTitle);
+          scrollIntoViewHorizontally(tabTitle);
         });
       });
 
       // click of the next button
       nextButton.addEventListener(EVENT_CLICK, function (e) {
-        if (window.innerWidth > LG_BREAKPOINT) {
-          slideNav(this, e, -1);
-        }
+        slideNav(this, e, -1);
       });
 
       // click of the prev button
       prevButton.addEventListener(EVENT_CLICK, function (e) {
-        if (window.innerWidth > LG_BREAKPOINT) {
-          slideNav(this, e, 1);
-        }
+        slideNav(this, e, 1);
       });
 
       // hide prev button on load
@@ -153,3 +150,4 @@ function initTabbedPanels() {
 EventHandler.on(window, "load.uds.tabs", initTabbedPanels);
 
 export { initTabbedPanels };
+
