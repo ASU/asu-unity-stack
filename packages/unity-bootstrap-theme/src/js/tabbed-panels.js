@@ -150,4 +150,3 @@ function initTabbedPanels() {
 EventHandler.on(window, "load.uds.tabs", initTabbedPanels);
 
 export { initTabbedPanels };
-
