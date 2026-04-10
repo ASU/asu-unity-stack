@@ -11,6 +11,7 @@ import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
   const MoreDropdown = ({ overflowTabs, idToChild, activeTabID, selectTab, gaData }) => {
     const [isOpen, setIsOpen] = useState(false);
     const rootRef = useRef(null);
+    const firstItemRef = useRef(null);
     // REVIEW: Look at TabbedPanels.jsx - what data structure is actually being passed in overflowTabs?
     // REVIEW: Do you have access to tab titles and icons? Think about what data you actually need.
     // overflowTabs passes an array of the tab IDs
@@ -34,11 +35,31 @@ import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
       };
     });
 
+    useEffect(() => {
+      if (isOpen) {
+        firstItemRef.current?.focus();
+      }
+    }, [isOpen]);
+
     const toggle = (event) => {
       if (event) {
         event.preventDefault();
       }
       setIsOpen((isCurOpen) => !isCurOpen);
+    };
+
+    const onButtonKeyDown = (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        event.stopPropagation();
+        setIsOpen(true);
+      }
+    };
+
+    const onMenuKeyDown = (event) => {
+      if (event.key === "Tab") {
+        setIsOpen(false);
+      }
     };
 
     useEffect(() => {
@@ -92,6 +113,7 @@ import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
                 aria-haspopup="menu"
                 aria-expanded={isOpen}
                 className={`uds-tab more-dropdown-button${isOpen ? " active" : ""}`}
+                onKeyDown={onButtonKeyDown}
                 // REVIEW: Should you use inline styles or CSS classes? Check the project conventions and try to create styles, even if its new ones, in unity-bootstrap-theme
               >
                 <span>More</span>
@@ -106,13 +128,15 @@ import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
                 role="menu"
                 aria-label="More tabs"
                 className="more-dropdown-menu"
+                onKeyDown={onMenuKeyDown}
               >
                 <ul className="uds-more-dropdown-list">
-                  {items.map((item) => {
+                  {items.map((item, index) => {
                     const isActive = item.id === activeTabID;
                     return (
                       <li key={item.id}>
                         <a
+                          ref={index === 0 ? firstItemRef : undefined}
                           href={`#${item.id}`}
                           role="menuitem"
                           tabIndex={0}
