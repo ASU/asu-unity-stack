@@ -20,7 +20,7 @@ const gaDefaultObject = {
   region: "main content",
 };
 
-const isEventOrNewsCard = (type) => type === "event" || type === "news";
+const isEventOrNewsCard = type => type === "event" || type === "news";
 
 /**
  * @typedef {import('../../core/types/card-types').CardProps} CardProps
@@ -188,7 +188,7 @@ const BaseCard = ({
     [`borderless`]: !showBorders,
   });
 
-  const shouldShowImage = isEventOrNewsCard(type) ? !!image : true;
+  const shouldShowImage = typeof image === "string" && image.length > 0;
   const shouldIncludeCardLink = !isEventOrNewsCard(type);
 
   return (
@@ -312,11 +312,7 @@ const CardContent = ({
               text: title,
             }}
           >
-            <a
-              href={cardLink}
-              className="card-arrow-link"
-              aria-label={title}
-            >
+            <a href={cardLink} className="card-arrow-link" aria-label={title}>
               <i className="fas fa-arrow-right" aria-hidden="true" />
             </a>
           </GaEventWrapper>
