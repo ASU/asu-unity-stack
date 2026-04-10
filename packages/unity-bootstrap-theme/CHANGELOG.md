@@ -1,3 +1,11 @@
+# [@asu/unity-bootstrap-theme-v1.37.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.37.2...@asu/unity-bootstrap-theme-v1.37.3) (2026-04-10)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix card buttons not going to bottom of card ([cd4ed6c](https://github.com/ASU/asu-unity-stack/commit/cd4ed6c87d01c2c52bed027f3d4e44b2c523511e))
+* **unity-bootstrap-theme:** update news/event card styles ([6012d32](https://github.com/ASU/asu-unity-stack/commit/6012d324385fd3126aa2428975a71c866bd51bd4))
+
 # [@asu/unity-bootstrap-theme-v1.37.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.37.1...@asu/unity-bootstrap-theme-v1.37.2) (2026-04-07)
 
 
