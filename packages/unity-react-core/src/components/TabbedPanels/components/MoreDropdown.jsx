@@ -16,6 +16,7 @@ import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
     // REVIEW: Do you have access to tab titles and icons? Think about what data you actually need.
     // overflowTabs passes an array of the tab IDs
     const safeOverflow = Array.isArray(overflowTabs) ? overflowTabs : [];
+    const menuId = "more-dropdown-menu";
 
     const items = safeOverflow.map((tabId) => {
       const child = idToChild?.[tabId];
@@ -64,7 +65,7 @@ import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
 
     useEffect(() => {
       function onDocClick(event) {
-        const clickedInside = rootRef.current.contains(event.target);
+        const clickedInside = rootRef.current?.contains(event.target);
 
         if (clickedInside) {
           return;
@@ -110,8 +111,10 @@ import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
               <button
                 type="button"
                 onClick={toggle}
-                aria-haspopup="menu"
+                aria-haspopup="true"
                 aria-expanded={isOpen}
+                aria-label="More tabs"
+                aria-controls={menuId}
                 className={`uds-tab more-dropdown-button${isOpen ? " active" : ""}`}
                 onKeyDown={onButtonKeyDown}
                 // REVIEW: Should you use inline styles or CSS classes? Check the project conventions and try to create styles, even if its new ones, in unity-bootstrap-theme
@@ -125,6 +128,7 @@ import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
 
             {isOpen && (
               <div
+                id={menuId}
                 role="menu"
                 aria-label="More tabs"
                 className="more-dropdown-menu"
