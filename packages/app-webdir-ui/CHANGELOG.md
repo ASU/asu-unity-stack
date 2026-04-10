@@ -1,3 +1,11 @@
+# [@asu/app-webdir-ui-v5.0.12](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.11...@asu/app-webdir-ui-v5.0.12) (2026-04-10)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** correct DOM order of WebDirectory controls for keyboard focus ([dca2fee](https://github.com/asu/asu-unity-stack/commit/dca2fee1f06b781f791a3220be52b23feebaeb5e))
+* **app-webdir-ui:** ensure filter buttons meet WCAG 2.2 minimum target size ([0a69a5d](https://github.com/asu/asu-unity-stack/commit/0a69a5d56fe9fa90a138841f3384414b888d623b))
+
 # [@asu/app-webdir-ui-v5.0.11](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.10...@asu/app-webdir-ui-v5.0.11) (2026-04-09)
 
 
