@@ -1,7 +1,10 @@
 .uds-tabbed-panels {
   box-shadow: inset 0px -2px 0px 0px $asu-gray-4;
   flex-wrap: inherit;
-  overflow: hidden;
+
+  // allow dropdown to extend outside container
+  overflow: visible;
+
   position: relative;
   -webkit-overflow-scrolling: touch;
   white-space: nowrap;
@@ -13,16 +16,23 @@
   .nav-tabs {
     display: flex;
     flex-wrap: inherit;
-    left: 0px;
     position: relative;
     transition: all 0.25s ease 0s;
     white-space: nowrap;
-    overflow-x: auto;
+
+    overflow: visible;
+
     scroll-behavior: smooth;
     -ms-overflow-style: none; // to hide scrollbar in IE and Edge
     scrollbar-width: none; // to hide scrollbar in Firefox
+
     &::-webkit-scrollbar {
       display: none; // to hide scrollbar In Chrome, Safari, Opera, and other WebKit-based browsers
+    }
+
+    // Keep horizontal scroll only on smaller screens
+    @media (max-width: $uds-breakpoint-md) {
+      overflow-x: auto;
     }
 
     .nav-link {
@@ -30,9 +40,10 @@
       height: 41px;
       padding: 0.5rem 0.5rem 0 0.5rem;
       margin: 0 0.5rem 0 0;
-      border-right: 0;
-      border-left: 0;
-      border-top: 0;
+
+      // Simplified borders
+      border: none;
+
       text-decoration: none;
       font-weight: 400;
       font-size: 16px;
@@ -41,7 +52,10 @@
 
     .nav-link.active {
       background-color: transparent;
+
+      // Active tab indicator
       border-bottom: 8px solid $uds-color-base-maroon;
+
       padding-bottom: 0;
     }
 
@@ -59,7 +73,6 @@
 
       .nav-link.active {
         color: $uds-color-brand-gold;
-        background-color: transparent;
         border-bottom: 8px solid $uds-color-brand-gold;
       }
 
@@ -68,6 +81,8 @@
         color: $uds-color-brand-gold;
       }
     }
+
+    // Dark mode adjustments for dropdown
     .more-dropdown-button {
       background: $asu-gray-7;
       color: #fff;
@@ -100,8 +115,8 @@
   margin-bottom: $uds-size-spacing-4;
 }
 
+// ------- More dropdown styles for TabbedPanels redesign -------
 
-// More dropdown styles for TabbedPanels redesign
 .more-dropdown-button {
   padding: 0.5rem 0.25rem 0 0.25rem;
   display: flex;
@@ -109,9 +124,7 @@
   gap: 8px;
   border-bottom: 8px solid transparent;
   background: #fafafa;
-  border-top: none;
-  border-left: none;
-  border-right: none;
+  border: none;
   cursor: pointer;
 }
 
@@ -134,24 +147,55 @@
   width: 180px;
   background: #ffffff;
   border: 1px solid #d0d0d0;
-  padding: 2rem;
+  padding: 0.5rem 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 0;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
+.uds-more-dropdown-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.uds-more-dropdown-list li {
+  margin: 0;
+  padding: 0;
+}
+
 .more-dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  text-align: left;
   font-size: 16px;
   line-height: 24px;
   color: #191919;
   text-decoration: none;
   cursor: pointer;
-  padding: 0;
+  white-space: normal;
 }
 
-.more-dropdown-item:hover {
+/* Hover + focus style */
+.more-dropdown-item:hover,
+.more-dropdown-item:focus {
   color: $uds-color-base-maroon;
   text-decoration: underline;
+  outline: none;
+}
+
+.more-dropdown-item[aria-current="true"] {
+  color: $uds-color-base-maroon;
+}
+
+.more-dropdown-item[aria-current="true"]::after {
+  content: "";
+  display: block;
+  height: 8px;
+  background: $uds-color-base-maroon;
+  margin-top: 4px;
 }
