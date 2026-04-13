@@ -153,6 +153,9 @@
   gap: 0;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  max-height: 260px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .uds-more-dropdown-list {
@@ -180,12 +183,16 @@
   white-space: normal;
 }
 
-/* Hover + focus style */
+/* hover + focus style */
 .more-dropdown-item:hover,
-.more-dropdown-item:focus {
+.more-dropdown-item:focus-visible {
   color: $uds-color-base-maroon;
   text-decoration: underline;
   outline: none;
+}
+.more-dropdown-item:focus:not(:focus-visible) {
+  outline: none;
+  text-decoration: none;
 }
 
 .more-dropdown-item[aria-current="true"] {
