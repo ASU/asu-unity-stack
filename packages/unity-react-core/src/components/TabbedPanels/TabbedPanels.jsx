@@ -61,13 +61,16 @@ const TabbedPanels = ({
   bgColor = "",
   onTabChange = _ => {},
 }) => {
-  const childrenArray = React.Children.toArray(children);
-  const idToChild = {};
-  childrenArray.forEach((child) => {
-    if (child && child.props && child.props.id) {
-      idToChild[child.props.id] = child;
-    }
-  });
+  const childrenArray = React.useMemo(() => React.Children.toArray(children), [children]);
+  const idToChild = React.useMemo(() => {
+    const map = {};
+    childrenArray.forEach((child) => {
+      if (child && child.props && child.props.id) {
+        map[child.props.id] = child;
+      }
+    });
+    return map;
+  }, [childrenArray]);
 
   // Move all hooks before any early returns
   const isMounted = useRef(false);
@@ -151,14 +154,20 @@ const TabbedPanels = ({
   }, [childrenArray, headerTabItems]);
 
   useEffect(() => {
-    calculateOverflow();
+    const timeout = setTimeout(() => {
+      calculateOverflow();
+    }, 0);
 
     const handleResize = () => {
       calculateOverflow();
     };
 
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+
+    return () => {
+      clearTimeout(timeout);
+      window.removeEventListener("resize", handleResize);
+    };
   }, [calculateOverflow]);
 
   // REVIEW: This useEffect is missing its dependency array. What happens when you call setState without dependencies?

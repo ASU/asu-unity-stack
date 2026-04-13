@@ -85,19 +85,18 @@ export const WithOverflowTabs = () => {
         <div className="col uds-full-width">
           <TabbedPanels>
             {/* Existing tabs */}
-            <Tab id="home" title="Home long tab"><div>1</div></Tab>
-            <Tab id="profile" title="Profile long tab"><div>2</div></Tab>
-            <Tab id="contact" title="Contact us is a long tab"><div>3</div></Tab>
-            <Tab id="another" title="Another tab, long tab"><div>4</div></Tab>
-            <Tab id="another-2" title="Another tab, long tab"><div>5</div></Tab>
-            <Tab id="another-3" title="Another tab, long tab"><div>6</div></Tab>
-            {/* adding extra tabs for overflow */}
-            <Tab id="tab-7" title="Tab 7"><div>7</div></Tab>
-            <Tab id="tab-8" title="Tab 8"><div>8</div></Tab>
-            <Tab id="tab-9" title="Tab 9"><div>9</div></Tab>
-            <Tab id="tab-10" title="Tab 10"><div>10</div></Tab>
-            <Tab id="tab-11" title="Tab 11"><div>11</div></Tab>
-            <Tab id="tab-12" title="Tab 12"><div>12</div></Tab>
+            <Tab id="home" title="This is a really long tab"><div>1</div></Tab>
+            <Tab id="profile" title="This is a longer one"><div>2</div></Tab>
+            <Tab id="contact" title="Here’s a tab that’s long too"><div>3</div></Tab>
+            <Tab id="another" title="Here’s an example of a really long tab so we can see what it would look like"><div>4</div></Tab>
+            <Tab id="tab-5" title="More"><div>5</div></Tab>
+            <Tab id="tab-6" title="Tab six"><div>6</div></Tab>
+            <Tab id="tab-7" title="Tab seven"><div>7</div></Tab>
+            <Tab id="tab-8" title="Tab eight"><div>8</div></Tab>
+            <Tab id="tab-9" title="Tab nine"><div>9</div></Tab>
+            <Tab id="tab-10" title="Tab ten"><div>10</div></Tab>
+            <Tab id="tab-11" title="Tab eleven"><div>11</div></Tab>
+            <Tab id="tab-12" title="Tab twelve"><div>12</div></Tab>
           </TabbedPanels>
         </div>
       </div>
