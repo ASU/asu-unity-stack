@@ -149,3 +149,33 @@ export const DarkBackgroundOverflow = () => {
     </MemoryRouter>
   );
 };
+
+export const ManyOverflowTabs = () => {
+  return (
+    <MemoryRouter>
+      <div className="row no-gutters">
+        <div className="col uds-full-width">
+          <div style={{ width: "320px" }}>
+            <TabbedPanels>
+              <Tab id="tab-1" title="Tab one"><div>1</div></Tab>
+              <Tab id="tab-2" title="Tab two"><div>2</div></Tab>
+              <Tab id="tab-3" title="Tab three"><div>3</div></Tab>
+              <Tab id="tab-4" title="Tab four"><div>4</div></Tab>
+              <Tab id="tab-5" title="Tab five"><div>5</div></Tab>
+              <Tab id="tab-6" title="Tab six"><div>6</div></Tab>
+              <Tab id="tab-7" title="Tab seven"><div>7</div></Tab>
+              <Tab id="tab-8" title="Tab eight"><div>8</div></Tab>
+              <Tab id="tab-9" title="Tab nine"><div>9</div></Tab>
+              <Tab id="tab-10" title="Tab ten"><div>10</div></Tab>
+              <Tab id="tab-11" title="Tab eleven"><div>11</div></Tab>
+              <Tab id="tab-12" title="Tab twelve"><div>12</div></Tab>
+              <Tab id="tab-13" title="Tab thirteen"><div>13</div></Tab>
+              <Tab id="tab-14" title="Tab fourteen"><div>14</div></Tab>
+              <Tab id="tab-15" title="Tab fifteen"><div>15</div></Tab>
+            </TabbedPanels>
+          </div>
+        </div>
+      </div>
+    </MemoryRouter>
+  );
+};
