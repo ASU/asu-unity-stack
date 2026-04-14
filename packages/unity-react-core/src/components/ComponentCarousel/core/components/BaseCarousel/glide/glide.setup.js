@@ -239,14 +239,12 @@ function setupCaroarousel({
   // Attatch event listener and instruct slide to go left and right
   /** @type {HTMLElement} */
   let gliderElement = document.querySelector(`#${instanceName}`);
-  gliderElement.addEventListener("keyup", event => {
-    /** @type {KeyboardEventInit} */
-    const e = event;
-    if (e.keyCode === 39) {
+  gliderElement.addEventListener("keydown", event => {
+    if (event.key === "ArrowRight") {
       slider.go(">");
-    } else if (e.keyCode === 37) {
+    } else if (event.key === "ArrowLeft") {
       slider.go("<");
-    } else if (e.keyCode === 13) {
+    } else if (event.key === "Enter") {
       // @ts-ignore
       slider.go(document.activeElement.dataset.glideDir);
     }
@@ -269,7 +267,7 @@ function setupCaroarousel({
 
     // @ts-ignore
     const currentIndex = slider.index;
-    updateNonVisibleSlides(gliderElement, currentIndex, perView);
+    updateNonVisibleSlides(gliderElement, currentIndex, slider.settings.perView);
     /** @type {HTMLElement} */
     const imageGalleryNav = gliderElement.querySelector(".navigation-slider");
     const imageNav = gliderElement.querySelector(".image-navigator-images");

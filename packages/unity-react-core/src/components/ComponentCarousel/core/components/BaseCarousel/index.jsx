@@ -1,16 +1,12 @@
 // @ts-check
 import PropTypes from "prop-types";
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useId, useRef } from "react";
 
 // Include required and custom styles for @glidejs/glide
 import "./styles.scss";
 import { SliderItems, BulletItems, NavButtons } from "./components";
 import { setupCaroarousel } from "./glide/glide.setup";
 import { calcualteViewItems } from "./helper/width-calculator";
-
-// Requirement: We import bs4-theme css from QA site in preview-head.html.
-// Initially based on this approach:
-// https://stackoverflow.com/questions/61596516/glide-js-with-react
 
 /**
  * @typedef {import('../../types/base-carousel-types').Props} CarouselItem
@@ -52,11 +48,15 @@ const BaseCarousel = ({
   // Get glide instance class name.
   // Defaults to glide. If implementing multiple instnaces, you MUST provide
   // an unique instance name for all but one instance.
-  const instanceName = `glide-${Math.ceil(Math.random() * 10000)}`;
+  const instanceName = useId().replace(/:/g, "-");
   const buttonCount = calcualteViewItems(carouselItems.length, perView);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentPerView, setCurrentPerView] = useState(perView);
+  const sliderRef = useRef(null);
 
   useEffect(() => {
-    setupCaroarousel({
+    // Set up carousel and store the slider instance
+    const slider = setupCaroarousel({
       instanceName,
       perView,
       buttonCount,
@@ -65,15 +65,34 @@ const BaseCarousel = ({
       hasPeek,
       isDraggable,
     });
-  }, [
-    instanceName,
-    perView,
-    buttonCount,
-    isFullWidth,
-    onItemClick,
-    hasPeek,
-    isDraggable,
-  ]);
+    sliderRef.current = slider;
+
+    // Track current slide index and perView for aria-live announcements
+    // Use Glide's event system instead of MutationObserver to avoid timing issues
+    const handleSlideChange = () => {
+      setCurrentIndex(slider.index);
+      // Get actual perView from slider settings (changes with breakpoints)
+      setCurrentPerView(slider.settings.perView);
+    };
+
+    // Listen to move.after event which fires after slide transition completes
+    slider.on("move.after", handleSlideChange);
+
+    // Also listen to resize event to update perView when screen size changes
+    slider.on("resize", handleSlideChange);
+
+    // Set initial values
+    setCurrentIndex(0);
+    setCurrentPerView(slider.settings.perView);
+
+    return () => {
+      // Clean up event listener and destroy slider
+      if (sliderRef.current) {
+        sliderRef.current.destroy();
+      }
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div
@@ -86,6 +105,14 @@ const BaseCarousel = ({
       data-image-auto-size={imageAutoSize}
       data-has-shadow={hasShadow}
     >
+      <div className="sr-only" aria-live="polite" aria-atomic="true">
+        {currentPerView === 1
+          ? `Showing slide ${currentIndex + 1} of ${buttonCount}`
+          : `Showing slides ${currentIndex + 1} through ${Math.min(
+              currentIndex + currentPerView,
+              carouselItems.length
+            )} of ${carouselItems.length}`}
+      </div>
       <div className="glide__track" data-glide-el="track">
         <SliderItems carouselItems={carouselItems} />
       </div>
@@ -95,7 +122,9 @@ const BaseCarousel = ({
         <CustomNavComponent instanceName={instanceName} />
       ) : (
         <>
-          {hasPositionIndicators && <BulletItems buttonCount={buttonCount} />}
+          {hasPositionIndicators && (
+            <BulletItems buttonCount={buttonCount} currentIndex={currentIndex} />
+          )}
           {hasNavButtons && <NavButtons />}
         </>
       )}

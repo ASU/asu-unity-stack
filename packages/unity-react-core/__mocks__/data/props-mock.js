@@ -4,7 +4,7 @@ import { testimonialWithImage } from "../../src/components/ComponentCarousel/com
 const getImageFormat = index => imageArray[index];
 
 const cardCarouselItems = [];
-for (let index = 0; index < 8; index += 1) {
+for (let index = 0; index < 30; index += 1) {
   const content =
     index === 3
       ? "Only two lines of text here, to show our fixed height."
