@@ -15,8 +15,9 @@ a:visited:not(
     .nav-link,
     .page-link,
     .card-link,
-    header *,
-    footer *,
+    header a,
+    footer a,
+    .navbar a,
     .uds-grid-links *
   ) {
   color: $uds-color-base-darkmaroon;
