@@ -34,10 +34,10 @@ function initTooltips() {
     let trigger =
       e.target.querySelector(`${CONTAINER_SELECTOR} ${TRIGGER_SELECTOR}`) ||
       e.target;
-    let content = trigger.nextSibling;
+    let content = trigger.nextElementSibling;
 
-    if (e.type === "keypress") {
-      if (e.charCode !== 32) {
+    if (e.type === "keydown") {
+      if (e.key !== " ") {
         return;
       }
     }
@@ -83,7 +83,7 @@ function initTooltips() {
 
     triggerEl.addEventListener("mouseenter", show, { signal });
     triggerEl.addEventListener("focus", show, { signal });
-    triggerEl.addEventListener("keypress", show, { signal });
+    triggerEl.addEventListener("keydown", show, { signal });
     triggerEl.addEventListener("blur", hide, { signal });
     triggerEl.addEventListener("keydown", keyboardHide, { signal });
     containerEl.addEventListener("mouseleave", hide, { signal });
