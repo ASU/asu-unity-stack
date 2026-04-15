@@ -105,10 +105,15 @@ const DropdownItem = ({
     setMobileMenuOpen,
     mobileMenuOpen,
   } = useAppContext();
-  let cols = 0;
-  items.map(lists => {
-    cols += lists[0].span || 1;
-  });
+  // Calculate total columns for mega menu layout by summing the span of each
+  // column, defaulting to 1 if not specified, or 0 if no first item exists
+  const cols = items.reduce((acc, lists) => {
+    if (lists?.[0]) {
+      return acc + (lists[0].span || 1);
+    }
+    // no first item exists
+    return acc;
+  }, 0);
 
   const isMega = cols > 2;
   /**

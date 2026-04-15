@@ -8,6 +8,7 @@ import {
 import { CLASS_NAMES } from "../../../../core/constants/classNames";
 
 const DropdownWrapper = styled.div`
+  --container-width: 1200px;
   --gap: 2rem;
   position: fixed;
   background-color: ${ASU_WHITE};
@@ -20,15 +21,15 @@ const DropdownWrapper = styled.div`
     visibility: visible;
   }
   &.mega {
-    width: min(1200px, 100%);
-    left: calc((100% - 1200px) / 2);
+    width: min(var(--container-width), 100%);
+    left: calc((100% - var(--container-width)) / 2);
   }
   &.aligned-right:not(.mega) {
     position: absolute;
     right: 0;
   }
   > .${CLASS_NAMES.DROPDOWN_CONTAINER} {
-    max-width: 1200px;
+    max-width: var(--container-width);
     margin: 0 auto;
     /*
       max-height is calculated from
@@ -48,7 +49,7 @@ const DropdownWrapper = styled.div`
     .${CLASS_NAMES.DROPDOWN_CONTAINER_COLUMN} {
       --span: 1; /* component overrides using inline style */
       --col: 1; /* component overrides using inline style */
-      width: calc(1200px / var(--cols) * var(--span));
+      width: calc(var(--container-width) / var(--cols) * var(--span));
       height: fit-content;
       height: -webkit-fill-available;
       padding: var(--gap);
@@ -79,7 +80,7 @@ const DropdownWrapper = styled.div`
         flex-grow: 0;
       }
       margin: 0;
-      width: calc(1200px / var(--cols, 1) * var(--span, 1) - var(--gap) * 2);
+      width: calc(var(--container-width) / var(--cols, 1) * var(--span, 1) - var(--gap) * 2);
       display: flex;
       flex-direction: row;
       column-gap: var(--ul-gap);
@@ -125,7 +126,7 @@ const DropdownWrapper = styled.div`
     border-top: 1px solid ${ASU_GRAY5};
     border-bottom: 1px solid ${ASU_GRAY5};
     > div {
-      max-width: 1200px;
+      max-width: var(--container-width);
       margin: 0 auto;
       display: flex;
       padding: 1rem 2rem;
