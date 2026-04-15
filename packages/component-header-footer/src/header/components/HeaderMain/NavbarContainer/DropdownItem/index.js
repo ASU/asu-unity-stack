@@ -16,6 +16,7 @@ const LINK_DEFAULT_PROPS = {
   type: "internal link",
   region: "navbar",
   section: "main navbar",
+  component: "dropdown menu",
   text: "",
 };
 
