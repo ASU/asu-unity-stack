@@ -102,6 +102,7 @@ const HeaderMain = () => {
               <div
                 className={buildClassName(
                   !isPartner && CLASS_NAMES.EXPAND_TITLE,
+                  isPartner && CLASS_NAMES.PARTNER_TITLE,
                   !hasNavigation && CLASS_NAMES.NO_NAVIGATION
                 )}
               >

@@ -24,7 +24,7 @@ const HeaderMainWrapper = styled.div`
 
     height: calc(100dvh - ${({ headerTop }) => headerTop}px);
     overflow: hidden;
-    .navbar-brand {
+    .${CLASS_NAMES.PARTNER_TITLE}, .navbar-brand {
       grid-area: logo;
       grid-column: 1;
       grid-row: 1;

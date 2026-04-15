@@ -43,6 +43,7 @@ export const CLASS_NAMES = {
 
   // Title
   TITLE: `${CLASS_PREFIX}title`,
+  PARTNER_TITLE: `${CLASS_PREFIX}partner-title`,
   UNIT_NAME: `${CLASS_PREFIX}unit-name`,
   SUBUNIT_NAME: `${CLASS_PREFIX}subunit-name`,
   TITLE_SUBUNIT_NAME: `${CLASS_PREFIX}title-subunit-name`,
