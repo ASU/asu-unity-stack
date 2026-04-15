@@ -7,7 +7,7 @@ import { HeaderMain } from "./components/HeaderMain";
 import { AppContextProvider } from "./core/context/app-context";
 import { HeaderPropTypes } from "./core/models/app-prop-types";
 import { tryAddActivePage } from "./core/utils/helpers/active-page";
-import { Header, HeaderDiv } from "./header.styles";
+import { Header, HeaderDiv, GlobalStyle } from "./header.styles";
 
 /**
  * @typedef {import("./core/models/types").HeaderProps} HeaderProps
@@ -177,6 +177,7 @@ const ASUHeader = ({
         site,
       }}
     >
+      <GlobalStyle />
       {renderHeader()}
     </AppContextProvider>
   );
