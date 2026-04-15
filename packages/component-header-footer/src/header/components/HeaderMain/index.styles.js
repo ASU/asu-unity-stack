@@ -15,7 +15,7 @@ const HeaderMainWrapper = styled.div`
   .navbar.${CLASS_NAMES.MOBILE_MENU_OPEN} {
     display: grid;
     grid-template-columns: auto 1fr auto;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto auto auto 1fr;
     grid-template-areas:
       "logo . toggler"
       "title title title"
@@ -38,7 +38,7 @@ const HeaderMainWrapper = styled.div`
       grid-area: title;
     }
     & > * {
-      grid-column: 1;
+      grid-column: 1 / -1;
     }
     & > form {
       grid-area: search;

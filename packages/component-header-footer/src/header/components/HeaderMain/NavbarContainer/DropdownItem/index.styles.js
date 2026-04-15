@@ -80,7 +80,10 @@ const DropdownWrapper = styled.div`
         flex-grow: 0;
       }
       margin: 0;
-      width: calc(var(--container-width) / var(--cols, 1) * var(--span, 1) - var(--gap) * 2);
+      width: calc(
+        var(--container-width) / var(--cols, 1) * var(--span, 1) - var(--gap) *
+          2
+      );
       display: flex;
       flex-direction: row;
       column-gap: var(--ul-gap);
