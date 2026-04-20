@@ -1,3 +1,11 @@
+# [@asu/unity-bootstrap-theme-v1.37.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.37.3...@asu/unity-bootstrap-theme-v1.37.4) (2026-04-20)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** prevent tab vertical scroll ([5c9799b](https://github.com/ASU/asu-unity-stack/commit/5c9799b6177bfe806140874dd435196a045f4671))
+* **unity-bootstrap-theme:** tab allow scroll all viewports ([dc792d3](https://github.com/ASU/asu-unity-stack/commit/dc792d39b84c9efda87805dc9862101e150d382e))
+
 # [@asu/unity-bootstrap-theme-v1.37.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.37.2...@asu/unity-bootstrap-theme-v1.37.3) (2026-04-10)
 
 
