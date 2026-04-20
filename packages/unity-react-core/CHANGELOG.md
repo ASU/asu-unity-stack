@@ -1,3 +1,10 @@
+# [@asu/unity-react-core-v1.9.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.9.1...@asu/unity-react-core-v1.9.2) (2026-04-20)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** prevent tab vertical scroll ([5c9799b](https://github.com/ASU/asu-unity-stack/commit/5c9799b6177bfe806140874dd435196a045f4671))
+
 # [@asu/unity-react-core-v1.9.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.9.0...@asu/unity-react-core-v1.9.1) (2026-04-10)
 
 
