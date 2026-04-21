@@ -1,3 +1,15 @@
+# [@asu/unity-react-core-v1.10.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.9.2...@asu/unity-react-core-v1.10.0) (2026-04-21)
+
+
+### Bug Fixes
+
+* **unity-react-core:** a11y tooltip updates ([49f1377](https://github.com/ASU/asu-unity-stack/commit/49f13775816041343e2ecc7b28c7b1751e094347))
+
+
+### Features
+
+* **unity-react-core:** extend tooltip to own component ([7b1dacf](https://github.com/ASU/asu-unity-stack/commit/7b1dacfa192e0ac82db2c31d47b8c2099158af4e))
+
 # [@asu/unity-react-core-v1.9.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.9.1...@asu/unity-react-core-v1.9.2) (2026-04-20)
 
 
