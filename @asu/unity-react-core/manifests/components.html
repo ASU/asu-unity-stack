@@ -576,13 +576,13 @@
 <header>
   <div class="wrap">
     <h1>Manifest Debugger</h1>
-    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">2/39 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">36/39 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">21/120 story errors</a></div>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">2/39 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">37/39 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">19/122 story errors</a></div>
   </div>
 </header>
 <main>
   <div class="wrap">
     <div class="note ok" style="margin-bottom: 16px;">
-              Using <code>react-docgen-typescript</code>. Generation took <strong>1.4s</strong>.
+              Using <code>react-docgen-typescript</code>. Generation took <strong>1.2s</strong>.
             </div>
     <h2 class="section-title">Components</h2>
     <div class="grid" role="list">
@@ -6121,30 +6121,30 @@ validMessage?: string</code></pre>
 <article
   class="card 
   no-error 
-  no-info 
-  has-story-error
+  has-info 
+  no-story-error
   no-doc-error"
   role="listitem"
   aria-label="Tooltip">
   <div class="head">
     <div class="title">
-      <h2><span class="status-dot dot-err"></span> Tooltip</h2>
+      <h2><span class="status-dot dot-ok"></span> Tooltip</h2>
       <div class="badges">
-        <label for="c-37-components-tooltip-props" class="badge ok as-toggle">3 prop types</label>
-        
-        <label for="c-37-components-tooltip-stories" class="badge err as-toggle">2/3 story errors</label>
+        <label for="c-37-components-tooltip-props" class="badge ok as-toggle">5 prop types</label>
+        <label for="c-37-components-tooltip-info" class="badge info as-toggle">1 info</label>
+        <label for="c-37-components-tooltip-stories" class="badge ok as-toggle">5 stories</label>
         
       </div>
     </div>
     <div class="meta" title="./src/components/Tooltip/Tooltip.stories.tsx">components-tooltip · ./src/components/Tooltip/Tooltip.stories.tsx</div>
     
-    <div class="hint">TODO https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tooltip_role Keyboard interactions [Escape] should close the tooltip alignment of tooltip assumes the trigger is icon button probably limit the triggers to something with a visual inidicator (like button or link)</div>
+    
     
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
   
-  
+  <input id="c-37-components-tooltip-info" class="tg tg-info" type="checkbox" hidden />
   <input id="c-37-components-tooltip-stories" class="tg tg-stories" type="checkbox" hidden />
   
   <input id="c-37-components-tooltip-props" class="tg tg-props" type="checkbox" hidden />
@@ -6152,19 +6152,37 @@ validMessage?: string</code></pre>
   <div class="panels">
     
     
+        <div class="panel panel-info">
+          
+    <div class="note info">
+      <div class="note-title">Info</div>
+      <div class="note-body">No description found. Write a jsdoc comment such as /** Component description */.</div>
+    </div>
+        </div>
     
         <div class="panel panel-props">
           <div class="note ok">
             <div class="row">
               <span class="ex-name">Prop types <small>(react-docgen-typescript)</small></span>
-              <span class="badge ok">3 prop types</span>
+              <span class="badge ok">5 prop types</span>
             </div>
             <pre><code>Component: src/components/Tooltip/Tooltip.tsx::Tooltip</code></pre>
             <pre><code>Props:</code></pre>
             <pre><code>/**
- * Content
+ * Element that triggers the tooltip. If provided, this will override `triggerElement`.
+ * If a string is provided, it will be wrapped in a button element.
+ */
+children?: TooltipTrigger
+
+/**
+ * Tooltip content.
  */
 content?: string
+
+/**
+ * Accessible label for the default tooltip icon. If not provided, will use tooltip content or fallback to &quot;Show more information&quot;.
+ */
+iconLabel?: string
 
 /**
  * Title or heading.
@@ -6172,58 +6190,33 @@ content?: string
 title?: string
 
 /**
- * The element where we will position the dialog beside.
+ * Element that triggers the tooltip. Ignored if `children` is provided.
  */
-triggerElement: ReactElement&lt;any, string | JSXElementConstructor&lt;any&gt;&gt;</code></pre>
+triggerElement?: TooltipTrigger</code></pre>
           </div>
         </div>
     
         <div class="panel panel-stories">
           
-            <div class="note err">
-              <div class="row">
-                <span class="ex-name">Icon</span>
-                <span class="badge err">story error</span>
-              </div>
-              
-              
-              
-              <pre><code>Expected render to be an arrow function or function expression
-  24 |
-  25 | export const Icon = {
-&gt; 26 |   render: tooltipTemplate.bind({}),
-     |           ^^^^^^^^^^^^^^^^^^^^^^^^
-  27 |   args: {
-  28 |     ...defaultProps,
-  29 |     triggerElement: &lt;ButtonIconOnly icon={[&quot;fas&quot;,&quot;info&quot;]} /&gt;,</code></pre>
-            </div>
-            <div class="note err">
-              <div class="row">
-                <span class="ex-name">Text</span>
-                <span class="badge err">story error</span>
-              </div>
-              
-              
-              
-              <pre><code>Expected render to be an arrow function or function expression
-  40 |
-  41 | export const text = {
-&gt; 42 |   render: tooltipTemplate.bind({}),
-     |           ^^^^^^^^^^^^^^^^^^^^^^^^
-  43 |   args: {
-  44 |     ...defaultProps,
-  45 |     triggerElement: &lt;span&gt;Tooltiptrigger&lt;/span&gt;,</code></pre>
-            </div>
           
           
           <div class="note ok">
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { ButtonIconOnly, Tooltip } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { Image, Tooltip } from "@asu/unity-react-core";</code></pre>
               </div>
           
           
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">No Children Default Icon</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const NoChildrenDefaultIcon = () =&gt; &lt;Tooltip /&gt;;</code></pre>
+            </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Link</span>
@@ -6231,7 +6224,42 @@ triggerElement: ReactElement&lt;any, string | JSXElementConstructor&lt;any&gt;&g
               </div>
               
               
-              <pre><code>const link = () =&gt; &lt;div&gt;This is a &lt;Tooltip triggerElement={&lt;a href=&quot;javascript:void(0);&quot;&gt;Tooltiptrigger&lt;/a&gt;} /&gt;sentence.&lt;/div&gt;;</code></pre>
+              <pre><code>const Link = () =&gt; &lt;Tooltip&gt;
+    &lt;a href=&quot;https://example.com&quot;&gt;Tooltiptrigger&lt;/a&gt;
+&lt;/Tooltip&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Text</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const Text = () =&gt; &lt;Tooltip&gt;just a plain string&lt;/Tooltip&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Jsx Span Containing Text</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const JsxSpanContainingText = () =&gt; &lt;Tooltip&gt;
+    &lt;span&gt;html string Tooltiptrigger&lt;/span&gt;
+&lt;/Tooltip&gt;;</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Image Only</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const ImageOnly = () =&gt; &lt;Tooltip&gt;
+    &lt;a style={{ display: &quot;inline-block&quot;, maxWidth: &quot;550px&quot; }}&gt;
+        &lt;Image src={img01} alt={&quot;&quot;} /&gt;
+    &lt;/a&gt;
+&lt;/Tooltip&gt;;</code></pre>
             </div>
         </div>
     

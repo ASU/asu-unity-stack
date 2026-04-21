@@ -1035,15 +1035,43 @@ userName?: string</code></pre>
         site=&quot;subdomain&quot;
         renderDiv=&quot;false&quot; /&gt;
     &lt;div
+        id=&quot;skip-to-content&quot;
         style={{
           width: &quot;100%&quot;,
           height: &quot;200vh&quot;,
           background: &quot;#f0f0f0&quot;,
           paddingTop: 40,
           marginTop: 140,
+          fontFamily: &quot;Arial&quot;,
         }}&gt;
-        &lt;h1 style={{ textAlign: &quot;center&quot;, fontFamily: &quot;Arial&quot; }}&gt;Scroll section
-                  &lt;/h1&gt;
+        &lt;h1 style={{ textAlign: &quot;center&quot; }}&gt;Scroll section to test header scroll behavior{&quot; &quot;}
+            {/* This button adds a page unload warning so clicking links will not navigate away. It also serves as a focus test for accessibility. */}
+        &lt;/h1&gt;
+        &lt;div
+            style={{
+              maxWidth: &quot;1200px&quot;,
+              width: &quot;calc(100% - 4rem)&quot;,
+              padding: &quot;2rem&quot;,
+              textAlign: &quot;center&quot;,
+              margin: &quot;2rem auto&quot;,
+            }}&gt;
+            &lt;h2&gt;Add Page Unload Warning&lt;/h2&gt;
+            &lt;p&gt;This button toggles a page unload warning that prompts the user to
+                          confirm before leaving the page. This is useful for testing the
+                          header&#39;s behavior when there is a potential for unintentionally
+                          navigating away from the page.
+                        &lt;/p&gt;
+            &lt;p&gt;This button also serves as a focusable element for testing
+                          accessibility.
+                        &lt;/p&gt;
+            &lt;p&gt;
+                &lt;Button
+                    color=&quot;dark&quot;
+                    tabIndex={0}
+                    onClick={togglePageUnloadWarning}
+                    text={disabledText} /&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
 &lt;/&gt;;</code></pre>
             </div>
@@ -1057,15 +1085,43 @@ userName?: string</code></pre>
               <pre><code>const Empty = () =&gt; &lt;&gt;
     &lt;ASUHeader /&gt;
     &lt;div
+        id=&quot;skip-to-content&quot;
         style={{
           width: &quot;100%&quot;,
           height: &quot;200vh&quot;,
           background: &quot;#f0f0f0&quot;,
           paddingTop: 40,
           marginTop: 140,
+          fontFamily: &quot;Arial&quot;,
         }}&gt;
-        &lt;h1 style={{ textAlign: &quot;center&quot;, fontFamily: &quot;Arial&quot; }}&gt;Scroll section
-                  &lt;/h1&gt;
+        &lt;h1 style={{ textAlign: &quot;center&quot; }}&gt;Scroll section to test header scroll behavior{&quot; &quot;}
+            {/* This button adds a page unload warning so clicking links will not navigate away. It also serves as a focus test for accessibility. */}
+        &lt;/h1&gt;
+        &lt;div
+            style={{
+              maxWidth: &quot;1200px&quot;,
+              width: &quot;calc(100% - 4rem)&quot;,
+              padding: &quot;2rem&quot;,
+              textAlign: &quot;center&quot;,
+              margin: &quot;2rem auto&quot;,
+            }}&gt;
+            &lt;h2&gt;Add Page Unload Warning&lt;/h2&gt;
+            &lt;p&gt;This button toggles a page unload warning that prompts the user to
+                          confirm before leaving the page. This is useful for testing the
+                          header&#39;s behavior when there is a potential for unintentionally
+                          navigating away from the page.
+                        &lt;/p&gt;
+            &lt;p&gt;This button also serves as a focusable element for testing
+                          accessibility.
+                        &lt;/p&gt;
+            &lt;p&gt;
+                &lt;Button
+                    color=&quot;dark&quot;
+                    tabIndex={0}
+                    onClick={togglePageUnloadWarning}
+                    text={disabledText} /&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
 &lt;/&gt;;</code></pre>
             </div>
@@ -1086,15 +1142,43 @@ userName?: string</code></pre>
         searchUrl=&quot;https://search.asu.edu/search&quot;
         site=&quot;subdomain&quot; /&gt;
     &lt;div
+        id=&quot;skip-to-content&quot;
         style={{
           width: &quot;100%&quot;,
           height: &quot;200vh&quot;,
           background: &quot;#f0f0f0&quot;,
           paddingTop: 40,
           marginTop: 140,
+          fontFamily: &quot;Arial&quot;,
         }}&gt;
-        &lt;h1 style={{ textAlign: &quot;center&quot;, fontFamily: &quot;Arial&quot; }}&gt;Scroll section
-                  &lt;/h1&gt;
+        &lt;h1 style={{ textAlign: &quot;center&quot; }}&gt;Scroll section to test header scroll behavior{&quot; &quot;}
+            {/* This button adds a page unload warning so clicking links will not navigate away. It also serves as a focus test for accessibility. */}
+        &lt;/h1&gt;
+        &lt;div
+            style={{
+              maxWidth: &quot;1200px&quot;,
+              width: &quot;calc(100% - 4rem)&quot;,
+              padding: &quot;2rem&quot;,
+              textAlign: &quot;center&quot;,
+              margin: &quot;2rem auto&quot;,
+            }}&gt;
+            &lt;h2&gt;Add Page Unload Warning&lt;/h2&gt;
+            &lt;p&gt;This button toggles a page unload warning that prompts the user to
+                          confirm before leaving the page. This is useful for testing the
+                          header&#39;s behavior when there is a potential for unintentionally
+                          navigating away from the page.
+                        &lt;/p&gt;
+            &lt;p&gt;This button also serves as a focusable element for testing
+                          accessibility.
+                        &lt;/p&gt;
+            &lt;p&gt;
+                &lt;Button
+                    color=&quot;dark&quot;
+                    tabIndex={0}
+                    onClick={togglePageUnloadWarning}
+                    text={disabledText} /&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
 &lt;/&gt;;</code></pre>
             </div>
@@ -1127,15 +1211,43 @@ userName?: string</code></pre>
         searchUrl=&quot;https://search.asu.edu/search&quot;
         site=&quot;subdomain&quot; /&gt;
     &lt;div
+        id=&quot;skip-to-content&quot;
         style={{
           width: &quot;100%&quot;,
           height: &quot;200vh&quot;,
           background: &quot;#f0f0f0&quot;,
           paddingTop: 40,
           marginTop: 140,
+          fontFamily: &quot;Arial&quot;,
         }}&gt;
-        &lt;h1 style={{ textAlign: &quot;center&quot;, fontFamily: &quot;Arial&quot; }}&gt;Scroll section
-                  &lt;/h1&gt;
+        &lt;h1 style={{ textAlign: &quot;center&quot; }}&gt;Scroll section to test header scroll behavior{&quot; &quot;}
+            {/* This button adds a page unload warning so clicking links will not navigate away. It also serves as a focus test for accessibility. */}
+        &lt;/h1&gt;
+        &lt;div
+            style={{
+              maxWidth: &quot;1200px&quot;,
+              width: &quot;calc(100% - 4rem)&quot;,
+              padding: &quot;2rem&quot;,
+              textAlign: &quot;center&quot;,
+              margin: &quot;2rem auto&quot;,
+            }}&gt;
+            &lt;h2&gt;Add Page Unload Warning&lt;/h2&gt;
+            &lt;p&gt;This button toggles a page unload warning that prompts the user to
+                          confirm before leaving the page. This is useful for testing the
+                          header&#39;s behavior when there is a potential for unintentionally
+                          navigating away from the page.
+                        &lt;/p&gt;
+            &lt;p&gt;This button also serves as a focusable element for testing
+                          accessibility.
+                        &lt;/p&gt;
+            &lt;p&gt;
+                &lt;Button
+                    color=&quot;dark&quot;
+                    tabIndex={0}
+                    onClick={togglePageUnloadWarning}
+                    text={disabledText} /&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
 &lt;/&gt;;</code></pre>
             </div>
@@ -1160,15 +1272,43 @@ userName?: string</code></pre>
         searchUrl=&quot;https://search.asu.edu/search&quot;
         site=&quot;subdomain&quot; /&gt;
     &lt;div
+        id=&quot;skip-to-content&quot;
         style={{
           width: &quot;100%&quot;,
           height: &quot;200vh&quot;,
           background: &quot;#f0f0f0&quot;,
           paddingTop: 40,
           marginTop: 140,
+          fontFamily: &quot;Arial&quot;,
         }}&gt;
-        &lt;h1 style={{ textAlign: &quot;center&quot;, fontFamily: &quot;Arial&quot; }}&gt;Scroll section
-                  &lt;/h1&gt;
+        &lt;h1 style={{ textAlign: &quot;center&quot; }}&gt;Scroll section to test header scroll behavior{&quot; &quot;}
+            {/* This button adds a page unload warning so clicking links will not navigate away. It also serves as a focus test for accessibility. */}
+        &lt;/h1&gt;
+        &lt;div
+            style={{
+              maxWidth: &quot;1200px&quot;,
+              width: &quot;calc(100% - 4rem)&quot;,
+              padding: &quot;2rem&quot;,
+              textAlign: &quot;center&quot;,
+              margin: &quot;2rem auto&quot;,
+            }}&gt;
+            &lt;h2&gt;Add Page Unload Warning&lt;/h2&gt;
+            &lt;p&gt;This button toggles a page unload warning that prompts the user to
+                          confirm before leaving the page. This is useful for testing the
+                          header&#39;s behavior when there is a potential for unintentionally
+                          navigating away from the page.
+                        &lt;/p&gt;
+            &lt;p&gt;This button also serves as a focusable element for testing
+                          accessibility.
+                        &lt;/p&gt;
+            &lt;p&gt;
+                &lt;Button
+                    color=&quot;dark&quot;
+                    tabIndex={0}
+                    onClick={togglePageUnloadWarning}
+                    text={disabledText} /&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
 &lt;/&gt;;</code></pre>
             </div>
@@ -1194,15 +1334,43 @@ userName?: string</code></pre>
         searchUrl=&quot;https://search.asu.edu/search&quot;
         site=&quot;subdomain&quot; /&gt;
     &lt;div
+        id=&quot;skip-to-content&quot;
         style={{
           width: &quot;100%&quot;,
           height: &quot;200vh&quot;,
           background: &quot;#f0f0f0&quot;,
           paddingTop: 40,
           marginTop: 140,
+          fontFamily: &quot;Arial&quot;,
         }}&gt;
-        &lt;h1 style={{ textAlign: &quot;center&quot;, fontFamily: &quot;Arial&quot; }}&gt;Scroll section
-                  &lt;/h1&gt;
+        &lt;h1 style={{ textAlign: &quot;center&quot; }}&gt;Scroll section to test header scroll behavior{&quot; &quot;}
+            {/* This button adds a page unload warning so clicking links will not navigate away. It also serves as a focus test for accessibility. */}
+        &lt;/h1&gt;
+        &lt;div
+            style={{
+              maxWidth: &quot;1200px&quot;,
+              width: &quot;calc(100% - 4rem)&quot;,
+              padding: &quot;2rem&quot;,
+              textAlign: &quot;center&quot;,
+              margin: &quot;2rem auto&quot;,
+            }}&gt;
+            &lt;h2&gt;Add Page Unload Warning&lt;/h2&gt;
+            &lt;p&gt;This button toggles a page unload warning that prompts the user to
+                          confirm before leaving the page. This is useful for testing the
+                          header&#39;s behavior when there is a potential for unintentionally
+                          navigating away from the page.
+                        &lt;/p&gt;
+            &lt;p&gt;This button also serves as a focusable element for testing
+                          accessibility.
+                        &lt;/p&gt;
+            &lt;p&gt;
+                &lt;Button
+                    color=&quot;dark&quot;
+                    tabIndex={0}
+                    onClick={togglePageUnloadWarning}
+                    text={disabledText} /&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
 &lt;/&gt;;</code></pre>
             </div>
@@ -1237,15 +1405,43 @@ userName?: string</code></pre>
         searchUrl=&quot;https://search.asu.edu/search&quot;
         site=&quot;subdomain&quot; /&gt;
     &lt;div
+        id=&quot;skip-to-content&quot;
         style={{
           width: &quot;100%&quot;,
           height: &quot;200vh&quot;,
           background: &quot;#f0f0f0&quot;,
           paddingTop: 40,
           marginTop: 140,
+          fontFamily: &quot;Arial&quot;,
         }}&gt;
-        &lt;h1 style={{ textAlign: &quot;center&quot;, fontFamily: &quot;Arial&quot; }}&gt;Scroll section
-                  &lt;/h1&gt;
+        &lt;h1 style={{ textAlign: &quot;center&quot; }}&gt;Scroll section to test header scroll behavior{&quot; &quot;}
+            {/* This button adds a page unload warning so clicking links will not navigate away. It also serves as a focus test for accessibility. */}
+        &lt;/h1&gt;
+        &lt;div
+            style={{
+              maxWidth: &quot;1200px&quot;,
+              width: &quot;calc(100% - 4rem)&quot;,
+              padding: &quot;2rem&quot;,
+              textAlign: &quot;center&quot;,
+              margin: &quot;2rem auto&quot;,
+            }}&gt;
+            &lt;h2&gt;Add Page Unload Warning&lt;/h2&gt;
+            &lt;p&gt;This button toggles a page unload warning that prompts the user to
+                          confirm before leaving the page. This is useful for testing the
+                          header&#39;s behavior when there is a potential for unintentionally
+                          navigating away from the page.
+                        &lt;/p&gt;
+            &lt;p&gt;This button also serves as a focusable element for testing
+                          accessibility.
+                        &lt;/p&gt;
+            &lt;p&gt;
+                &lt;Button
+                    color=&quot;dark&quot;
+                    tabIndex={0}
+                    onClick={togglePageUnloadWarning}
+                    text={disabledText} /&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
 &lt;/&gt;;</code></pre>
             </div>
@@ -1269,15 +1465,43 @@ userName?: string</code></pre>
         searchUrl=&quot;https://search.asu.edu/search&quot;
         site=&quot;subdomain&quot; /&gt;
     &lt;div
+        id=&quot;skip-to-content&quot;
         style={{
           width: &quot;100%&quot;,
           height: &quot;200vh&quot;,
           background: &quot;#f0f0f0&quot;,
           paddingTop: 40,
           marginTop: 140,
+          fontFamily: &quot;Arial&quot;,
         }}&gt;
-        &lt;h1 style={{ textAlign: &quot;center&quot;, fontFamily: &quot;Arial&quot; }}&gt;Scroll section
-                  &lt;/h1&gt;
+        &lt;h1 style={{ textAlign: &quot;center&quot; }}&gt;Scroll section to test header scroll behavior{&quot; &quot;}
+            {/* This button adds a page unload warning so clicking links will not navigate away. It also serves as a focus test for accessibility. */}
+        &lt;/h1&gt;
+        &lt;div
+            style={{
+              maxWidth: &quot;1200px&quot;,
+              width: &quot;calc(100% - 4rem)&quot;,
+              padding: &quot;2rem&quot;,
+              textAlign: &quot;center&quot;,
+              margin: &quot;2rem auto&quot;,
+            }}&gt;
+            &lt;h2&gt;Add Page Unload Warning&lt;/h2&gt;
+            &lt;p&gt;This button toggles a page unload warning that prompts the user to
+                          confirm before leaving the page. This is useful for testing the
+                          header&#39;s behavior when there is a potential for unintentionally
+                          navigating away from the page.
+                        &lt;/p&gt;
+            &lt;p&gt;This button also serves as a focusable element for testing
+                          accessibility.
+                        &lt;/p&gt;
+            &lt;p&gt;
+                &lt;Button
+                    color=&quot;dark&quot;
+                    tabIndex={0}
+                    onClick={togglePageUnloadWarning}
+                    text={disabledText} /&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
 &lt;/&gt;;</code></pre>
             </div>
@@ -1302,15 +1526,43 @@ userName?: string</code></pre>
         searchUrl=&quot;https://search.asu.edu/search&quot;
         site=&quot;subdomain&quot; /&gt;
     &lt;div
+        id=&quot;skip-to-content&quot;
         style={{
           width: &quot;100%&quot;,
           height: &quot;200vh&quot;,
           background: &quot;#f0f0f0&quot;,
           paddingTop: 40,
           marginTop: 140,
+          fontFamily: &quot;Arial&quot;,
         }}&gt;
-        &lt;h1 style={{ textAlign: &quot;center&quot;, fontFamily: &quot;Arial&quot; }}&gt;Scroll section
-                  &lt;/h1&gt;
+        &lt;h1 style={{ textAlign: &quot;center&quot; }}&gt;Scroll section to test header scroll behavior{&quot; &quot;}
+            {/* This button adds a page unload warning so clicking links will not navigate away. It also serves as a focus test for accessibility. */}
+        &lt;/h1&gt;
+        &lt;div
+            style={{
+              maxWidth: &quot;1200px&quot;,
+              width: &quot;calc(100% - 4rem)&quot;,
+              padding: &quot;2rem&quot;,
+              textAlign: &quot;center&quot;,
+              margin: &quot;2rem auto&quot;,
+            }}&gt;
+            &lt;h2&gt;Add Page Unload Warning&lt;/h2&gt;
+            &lt;p&gt;This button toggles a page unload warning that prompts the user to
+                          confirm before leaving the page. This is useful for testing the
+                          header&#39;s behavior when there is a potential for unintentionally
+                          navigating away from the page.
+                        &lt;/p&gt;
+            &lt;p&gt;This button also serves as a focusable element for testing
+                          accessibility.
+                        &lt;/p&gt;
+            &lt;p&gt;
+                &lt;Button
+                    color=&quot;dark&quot;
+                    tabIndex={0}
+                    onClick={togglePageUnloadWarning}
+                    text={disabledText} /&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
 &lt;/&gt;;</code></pre>
             </div>
@@ -1331,15 +1583,43 @@ userName?: string</code></pre>
         searchUrl=&quot;https://search.asu.edu/search&quot;
         site=&quot;subdomain&quot; /&gt;
     &lt;div
+        id=&quot;skip-to-content&quot;
         style={{
           width: &quot;100%&quot;,
           height: &quot;200vh&quot;,
           background: &quot;#f0f0f0&quot;,
           paddingTop: 40,
           marginTop: 140,
+          fontFamily: &quot;Arial&quot;,
         }}&gt;
-        &lt;h1 style={{ textAlign: &quot;center&quot;, fontFamily: &quot;Arial&quot; }}&gt;Scroll section
-                  &lt;/h1&gt;
+        &lt;h1 style={{ textAlign: &quot;center&quot; }}&gt;Scroll section to test header scroll behavior{&quot; &quot;}
+            {/* This button adds a page unload warning so clicking links will not navigate away. It also serves as a focus test for accessibility. */}
+        &lt;/h1&gt;
+        &lt;div
+            style={{
+              maxWidth: &quot;1200px&quot;,
+              width: &quot;calc(100% - 4rem)&quot;,
+              padding: &quot;2rem&quot;,
+              textAlign: &quot;center&quot;,
+              margin: &quot;2rem auto&quot;,
+            }}&gt;
+            &lt;h2&gt;Add Page Unload Warning&lt;/h2&gt;
+            &lt;p&gt;This button toggles a page unload warning that prompts the user to
+                          confirm before leaving the page. This is useful for testing the
+                          header&#39;s behavior when there is a potential for unintentionally
+                          navigating away from the page.
+                        &lt;/p&gt;
+            &lt;p&gt;This button also serves as a focusable element for testing
+                          accessibility.
+                        &lt;/p&gt;
+            &lt;p&gt;
+                &lt;Button
+                    color=&quot;dark&quot;
+                    tabIndex={0}
+                    onClick={togglePageUnloadWarning}
+                    text={disabledText} /&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
     &lt;/div&gt;
 &lt;/&gt;;</code></pre>
             </div>
