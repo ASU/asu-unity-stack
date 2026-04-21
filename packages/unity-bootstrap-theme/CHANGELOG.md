@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.38.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.37.4...@asu/unity-bootstrap-theme-v1.38.0) (2026-04-21)
+
+
+### Features
+
+* **unity-bootstrap-theme:** extend tooltip to own component ([6d85739](https://github.com/ASU/asu-unity-stack/commit/6d85739e05aea65424504118a2c23633d468d787))
+
 # [@asu/unity-bootstrap-theme-v1.37.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.37.3...@asu/unity-bootstrap-theme-v1.37.4) (2026-04-20)
 
 
