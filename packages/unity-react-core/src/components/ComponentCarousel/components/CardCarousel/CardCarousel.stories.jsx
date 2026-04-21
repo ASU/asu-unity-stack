@@ -39,14 +39,16 @@ export default {
  */
 const Wrapper = ({ children }) => <div>{children}</div>;
 
-export const ThreeItemCarousel = () => (
+export const ThreeItemCarousel = ({ bgColor }) => (
   <Wrapper>
-    <CardCarousel perView="3" cardItems={cardCarouselItems} />
+    <CardCarousel perView="3" cardItems={cardCarouselItems}
+    bgColor={cardCarouselBgColorClassName[bgColor]}/>
   </Wrapper>
 );
 
-export const TwoItemCarousel = () => (
+export const TwoItemCarousel = ({ bgColor }) => (
   <Wrapper>
-    <CardCarousel perView="2" cardItems={cardCarouselItems} />
+    <CardCarousel perView="2" cardItems={cardCarouselItems}
+    bgColor={cardCarouselBgColorClassName[bgColor]}/>
   </Wrapper>
 );

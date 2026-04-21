@@ -214,22 +214,28 @@ $heading-three-letter-spacing: -0.0525rem;
 
     &:focus {
       outline: none;
-      //
-      background-color: $uds-color-brand-gold;
+      &.glide__dark {
+        background-color: $uds-color-brand-gold;
+      }
     }
 
     &:hover {
-    // &:focus {
-      // border: 1px solid #d0d0d0;
-      // background-color: #191919; // rgba(255, 255, 255, 0.5);
-      border: 1px solid $uds-color-brand-gold;
-      background-color: #333;
+      // &:focus {
+      border: 1px solid #d0d0d0;
+      background-color: #191919; // rgba(255, 255, 255, 0.5);
+      &.glide__dark {
+        border: 1px solid $uds-color-brand-gold;
+        background-color: #333;
+      }
     }
 
     &#{$sm}active {
-      // background-color: #191919; //white;
-      background-color: $uds-color-brand-gold; //gold;
+      background-color: #191919; //white;
+      &.glide__dark {
+        background-color: $uds-color-brand-gold; //gold;
+      }
     }
+
   }
 
   &.aligned-carousel {
@@ -434,9 +440,10 @@ $heading-three-letter-spacing: -0.0525rem;
   textarea:focus,
   select:focus {
     outline: none !important;
-    // box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px #191919 !important;
-
-    box-shadow: 0px 0px 0px 3px #333, 0px 0px 0px 5px $uds-color-brand-gold !important;
+    box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px #191919 !important;
+    &.glide__dark {
+      box-shadow: 0px 0px 0px 3px #333, 0px 0px 0px 5px $uds-color-brand-gold !important;
+    }
   }
 
   &.image-gallery,
