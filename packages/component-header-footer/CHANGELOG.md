@@ -1,3 +1,24 @@
+# [@asu/component-header-footer-v1.4.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.3.3...@asu/component-header-footer-v1.4.0) (2026-04-21)
+
+
+### Bug Fixes
+
+* **component-header-footer:** adjustments ([182fccd](https://github.com/asu/asu-unity-stack/commit/182fccdb353d5bfca18a9699d8afddb637fa2fd8))
+* **component-header-footer:** fix empty data layer ([facd903](https://github.com/asu/asu-unity-stack/commit/facd90300ad51f070014f2606794dbe3c5fbd1e1))
+* **component-header-footer:** fix page shift ([8444aa6](https://github.com/asu/asu-unity-stack/commit/8444aa6073cab3f739d8298dacd8f0038d3643af))
+* **component-header-footer:** fix partner mobile ([c53bafb](https://github.com/asu/asu-unity-stack/commit/c53bafb3900a273634e8a20ab250827e4a4eaca2))
+* **component-header-footer:** fix style regression ([a5c7381](https://github.com/asu/asu-unity-stack/commit/a5c738164cc80de0902e57b8fae3a896d3813313))
+* remove merge syntax remnant ([bdac62c](https://github.com/asu/asu-unity-stack/commit/bdac62cc63f10489dc2040fd821867cc70ba177f))
+
+
+### Features
+
+* **component-header-footer:** add style that was removed ([c5e43a9](https://github.com/asu/asu-unity-stack/commit/c5e43a921be22cbc36e62732d934cafa5bd0f90b))
+* **component-header-footer:** adjust dropdown open/close and height ([d98eb0d](https://github.com/asu/asu-unity-stack/commit/d98eb0d3b6ed0dfcb940684b42771b9fd3205a6b))
+* **component-header-footer:** adjustments ([3b629b1](https://github.com/asu/asu-unity-stack/commit/3b629b16256bf02fe840b1dcdb18488023134047))
+* **component-header-footer:** adjustments ([d85bde9](https://github.com/asu/asu-unity-stack/commit/d85bde9171ebcf69ae29c7c4ba7823339f210473))
+* **component-header-footer:** mobile styles ([1b096e5](https://github.com/asu/asu-unity-stack/commit/1b096e5aab37da7a4d8d672077e3612a9611aa95))
+
 # [@asu/component-header-footer-v1.3.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.3.2...@asu/component-header-footer-v1.3.3) (2026-04-02)
 
 
