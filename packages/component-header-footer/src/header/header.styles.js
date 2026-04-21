@@ -1,8 +1,14 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import { ASU_WHITE, ASU_GRAY1 } from "./colors";
 import { CLASS_NAMES } from "./core/constants/classNames";
 
 const breakpoints = { Lg: "992px", Xl: "1260px" };
+
+const GlobalStyle = createGlobalStyle`
+  html {
+    scrollbar-gutter: stable;
+  }
+`;
 
 const Header = styled.header`
   font-family:
@@ -136,4 +142,4 @@ const HeaderDiv = styled.div`
   }
 `;
 
-export { Header, HeaderDiv };
+export { Header, HeaderDiv, GlobalStyle };

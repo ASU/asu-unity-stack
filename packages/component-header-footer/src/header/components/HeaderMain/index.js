@@ -1,6 +1,6 @@
 // @ts-check
 import { trackGAEvent } from "@asu/shared";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import mobileMenuSearchIcon from "../../../../public/assets/icons/menu-search-icon.png?inline";
@@ -17,13 +17,37 @@ import { Search } from "../UniversalNavbar/Search";
 import { Title } from "./Title";
 
 const HeaderMain = () => {
-  const { breakpoint, isPartner, hasNavigation } = useAppContext();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const {
+    breakpoint,
+    isPartner,
+    hasNavigation,
+    itemOpened,
+    setItemOpened,
+    mobileMenuOpen,
+    setMobileMenuOpen,
+    mobileMenuToggleRef,
+    headerTop,
+  } = useAppContext();
   const isMobile = useIsMobile(breakpoint);
 
   const handleChangeMenuVisibility = () => {
     setMobileMenuOpen(prevState => !prevState);
   };
+
+  useEffect(() => {
+    document.body.style.overflow =
+      mobileMenuOpen || itemOpened !== undefined ? "hidden" : "unset";
+
+    // Clean up function to re-enable scrolling
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [mobileMenuOpen, itemOpened, isMobile]);
+
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    setItemOpened();
+  }, [isMobile]);
 
   const handleClickMobileMenu = () => {
     handleChangeMenuVisibility();
@@ -39,18 +63,20 @@ const HeaderMain = () => {
     <>
       {!isMobile && <UniversalNavbar />}
       {/* @ts-ignore */}
-      <HeaderMainWrapper breakpoint={breakpoint}>
+      <HeaderMainWrapper breakpoint={breakpoint} headerTop={headerTop}>
         <div className="container-xl">
           <div className={CLASS_NAMES.HEADER_MAIN}>
             <div
               className={buildClassName(
                 CLASS_NAMES.NAVBAR,
                 CLASS_NAMES.NAVBAR_EXPAND_XL,
-                isPartner && CLASS_NAMES.PARTNER
+                isPartner && CLASS_NAMES.PARTNER,
+                mobileMenuOpen && CLASS_NAMES.MOBILE_MENU_OPEN
               )}
             >
               {!isPartner && <Logo />}
               <button
+                ref={mobileMenuToggleRef}
                 className={buildClassName(
                   CLASS_NAMES.NAVBAR_TOGGLER,
                   !mobileMenuOpen && CLASS_NAMES.COLLAPSED
@@ -76,6 +102,7 @@ const HeaderMain = () => {
               <div
                 className={buildClassName(
                   !isPartner && CLASS_NAMES.EXPAND_TITLE,
+                  isPartner && CLASS_NAMES.PARTNER_TITLE,
                   !hasNavigation && CLASS_NAMES.NO_NAVIGATION
                 )}
               >

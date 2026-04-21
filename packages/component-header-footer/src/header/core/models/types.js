@@ -61,4 +61,15 @@
  * @property {string} renderDiv - Can be either "true" or "false".
  */
 
+/**
+ * @typedef {HeaderProps} HeaderContext
+ * @property {number} headerTop
+ * @property {number} headerHeight
+ * @property {number|undefined} itemOpened
+ * @property {function} setItemOpened
+ * @property {boolean} mobileMenuOpen
+ * @property {function} setMobileMenuOpen
+ * @property {function} singlePageAppReset
+ */
+
 export const JSDOC = "jsdoc";

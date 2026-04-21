@@ -12,6 +12,46 @@ const HeaderMainWrapper = styled.div`
     align-items: flex-start;
     flex-wrap: nowrap;
   }
+  .navbar.${CLASS_NAMES.MOBILE_MENU_OPEN} {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto auto 1fr;
+    grid-template-areas:
+      "logo . toggler"
+      "title title title"
+      "search search search"
+      "nav nav nav";
+
+    height: calc(100dvh - ${({ headerTop }) => headerTop}px);
+    overflow: hidden;
+    .${CLASS_NAMES.PARTNER_TITLE}, .navbar-brand {
+      grid-area: logo;
+      grid-column: 1;
+      grid-row: 1;
+    }
+    .navbar-toggler {
+      grid-area: toggler;
+      grid-column: 3;
+      grid-row: 1;
+    }
+    .${CLASS_NAMES.EXPAND_TITLE} {
+      grid-area: title;
+    }
+    & > * {
+      grid-column: 1 / -1;
+    }
+    & > form {
+      grid-area: search;
+    }
+    & > nav {
+      grid-area: nav;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+  }
   .navbar-brand {
     .${CLASS_NAMES.LOGO_VERT} {
       display: block;
@@ -79,6 +119,7 @@ const HeaderMainWrapper = styled.div`
       cursor: pointer;
       min-width: 44px;
       min-height: 44px;
+      padding: 0.25rem 0.45rem;
 
       .${CLASS_NAMES.MENU_SEARCH_ICON} {
         display: none;

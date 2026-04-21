@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ASU_GRAY1, ASU_GOLD, ASU_GRAY4 } from "../../../../colors";
+import { ASU_GRAY1, ASU_GOLD, ASU_GRAY4, ASU_WHITE } from "../../../../colors";
 import { CLASS_NAMES } from "../../../../core/constants/classNames";
 
 const NavItemWrapper = styled.li`
@@ -16,6 +16,13 @@ const NavItemWrapper = styled.li`
     padding: 0.5rem 0.75rem;
     line-height: 1rem;
     color: ${ASU_GRAY1};
+
+    &[aria-expanded="true"] {
+      background-color: ${ASU_WHITE};
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
     &:after {
       transition: 0.5s cubic-bezier(0.19, 1, 0.19, 1);
       content: "";

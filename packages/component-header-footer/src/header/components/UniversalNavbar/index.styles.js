@@ -80,6 +80,7 @@ const Wrapper = styled.div`
             display: flex;
             align-items: center;
             justify-content: center;
+            height: stretch;
 
             &.visually-hidden-focusable:not(:focus):not(:active) {
               border: none;
@@ -87,6 +88,14 @@ const Wrapper = styled.div`
           }
         }
       }
+    }
+  }
+
+  @media screen and (orientation: landscape) and (max-width: ${({
+      breakpoint,
+    }) => breakpoint}) {
+    .${CLASS_NAMES.HEADER_TOP} .nav .${CLASS_NAMES.LINKS_CONTAINER} {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
     }
   }
 `;

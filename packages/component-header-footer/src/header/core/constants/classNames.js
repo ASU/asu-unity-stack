@@ -20,6 +20,7 @@ export const CLASS_NAMES = {
   HEADER_DROPDOWN: id => `${CLASS_PREFIX}header-dropdown-${id}`,
   OPENED: `${CLASS_PREFIX}opened`,
   DROPDOWN_CONTAINER: `${CLASS_PREFIX}dropdown-container`,
+  DROPDOWN_CONTAINER_COLUMN: `${CLASS_PREFIX}dropdown-container-column`,
   DROPDOWN_BUTTON_CONTAINER: `${CLASS_PREFIX}dropdown-button-container`,
 
   // Search
@@ -42,6 +43,7 @@ export const CLASS_NAMES = {
 
   // Title
   TITLE: `${CLASS_PREFIX}title`,
+  PARTNER_TITLE: `${CLASS_PREFIX}partner-title`,
   UNIT_NAME: `${CLASS_PREFIX}unit-name`,
   SUBUNIT_NAME: `${CLASS_PREFIX}subunit-name`,
   TITLE_SUBUNIT_NAME: `${CLASS_PREFIX}title-subunit-name`,
@@ -70,6 +72,7 @@ export const CLASS_NAMES = {
   FORM_CONTROL: "form-control",
   VISUALLY_HIDDEN: "visually-hidden",
   VISUALLY_HIDDEN_FOCUSABLE: "visually-hidden-focusable",
+  MOBILE_MENU_OPEN: `${CLASS_PREFIX}mobile-menu-open`,
 };
 
 // Helper function to generate dropdown class name

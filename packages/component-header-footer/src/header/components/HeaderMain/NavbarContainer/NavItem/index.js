@@ -28,6 +28,7 @@ export const LINK_DEFAULT_PROPS = {
   type: "internal link",
   region: "navbar",
   section: "main navbar",
+  component: "navigation link",
   text: "",
 };
 
@@ -68,33 +69,43 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
   const clickRef = useRef(null);
   const parentLink = useRef(null);
   const opened = link.id === itemOpened;
-  const { breakpoint, expandOnHover, title } = useAppContext();
+  const {
+    breakpoint,
+    expandOnHover,
+    title,
+    mobileMenuOpen,
+    setMobileMenuOpen,
+  } = useAppContext();
   const isMobile = useIsMobile(breakpoint);
 
-  useEffect(() => {
-    const handleClickOutside = event => {
-      if (opened && !clickRef?.current?.contains(event.target)) {
+  const handleClickOutside = event => {
+    if (opened && !clickRef?.current?.contains(event.target)) {
+      setItemOpened();
+    }
+  };
+
+  const handleFocusChange = () => {
+    requestAnimationFrame(() => {
+      const node = clickRef.current;
+
+      if (opened && node && !node.contains(document.activeElement)) {
         setItemOpened();
       }
-    };
-
-    const handleFocusChange = () => {
-      requestAnimationFrame(() => {
-        const node = clickRef.current;
-        if (opened && node && !node.contains(document.activeElement)) {
-          setItemOpened();
-        }
-      });
-    };
-
-    document.addEventListener("click", handleClickOutside, true);
-    document.addEventListener("focusin", handleFocusChange);
-
+    });
+  };
+  useEffect(() => {
+    if (opened) {
+      document.addEventListener("click", handleClickOutside, true);
+      document.addEventListener("focusin", handleFocusChange);
+    } else {
+      document.removeEventListener("click", handleClickOutside, true);
+      document.removeEventListener("focusin", handleFocusChange);
+    }
     return () => {
       document.removeEventListener("click", handleClickOutside, true);
       document.removeEventListener("focusin", handleFocusChange);
     };
-  }, [opened]);
+  }, [opened, setItemOpened]);
 
   const renderNavLinks = useMemo(() => {
     if (link.type === "icon-home") {
@@ -140,8 +151,16 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
   };
 
   const handleKeyDown = e => {
-    if (!link.items && link.href) {
+    if (
+      !link.items &&
+      (link.href || link.onClick) &&
+      (e.key === "Enter" || e.key === " " || e.type === "click")
+    ) {
       trackGAEvent({ ...LINK_DEFAULT_PROPS, text: link.text });
+      // Single page apps do not leave the page on link click,
+      // so we need to manually close the menu and trigger the onClick event
+      setMobileMenuOpen(false);
+      setItemOpened();
       return;
     }
     const { key } = e;
@@ -158,28 +177,35 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
     if (navigableKeys.includes(key)) {
       e.preventDefault();
       if (key === "Escape" && opened) {
+        if (typeof clickRef?.current?.focus === "function") {
+          clickRef.current.focus();
+        }
         setItemOpened();
+        return;
+      }
+
+      if (key === "Escape" && !opened && mobileMenuOpen) {
+        setMobileMenuOpen(false);
         return;
       }
       // Handle Enter or Space key
       if (key === "Enter" || key === " ") {
         if (link.items) {
-          if (!expandOnHover && !isMobile) {
-            setItemOpened();
-          } else if (isMobile) {
-            setItemOpened();
-          }
+          // Regardless of state or props mobile/desktop/hover/click
+          // if the item has a dropdown, we want to toggle it on Enter/Space
+          setItemOpened();
         }
         dispatchGAEvent();
         link.onClick?.(e);
       }
       if (key === "ArrowDown" || key === "ArrowRight") {
         if (opened) {
-          const dropdownItems = document.querySelectorAll(
+          // Only need first matching item
+          const dropdownItem = document.querySelector(
             `.${getDropdownClass(link.id)} li.${CLASS_NAMES.NAV_LINK} a`
           );
-          if (dropdownItems.length) {
-            dropdownItems[0].focus();
+          if (typeof dropdownItem?.focus === "function") {
+            dropdownItem.focus();
           }
         }
       }
@@ -241,8 +267,8 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
             opened && CLASS_NAMES.OPENED
           )}
           listId={`dropdown-${link.id}`}
-          setItemOpened={setItemOpened}
-          parentLink={parentLink?.current}
+          opened={opened}
+          parentLink={parentLink}
         />
       )}
     </NavItemWrapper>
