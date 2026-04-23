@@ -38,7 +38,7 @@
     .nav-link {
       color: #000;
       height: 41px;
-      padding: 0.5rem 0.5rem 0 0.5rem;
+      padding: $tabbed-panels-tab-padding-top $tabbed-panels-tab-padding-x 0 $tabbed-panels-tab-padding-x;
       margin: 0 0.5rem 0 0;
 
       // Simplified borders
@@ -46,7 +46,7 @@
 
       text-decoration: none;
       font-weight: 400;
-      font-size: 16px;
+      font-size: $tabbed-panels-font-size;
       line-height: 24px;
     }
 
@@ -54,7 +54,7 @@
       background-color: transparent;
 
       // Active tab indicator
-      border-bottom: 8px solid $uds-color-base-maroon;
+      border-bottom: $tabbed-panels-active-border-width solid $uds-color-base-maroon;
 
       padding-bottom: 0;
     }
@@ -73,7 +73,7 @@
 
       .nav-link.active {
         color: $uds-color-brand-gold;
-        border-bottom: 8px solid $uds-color-brand-gold;
+        border-bottom: $tabbed-panels-active-border-width solid $uds-color-brand-gold;
       }
 
       .nav-link:hover,
@@ -82,27 +82,39 @@
       }
     }
 
-    // Dark mode adjustments for dropdown
     .more-dropdown-button {
-      background: $asu-gray-7;
-      color: #fff;
+      background: $asu-gray-1;
+      color: $uds-color-brand-gold;
     }
 
     .more-dropdown-button.active {
-      border-bottom: 8px solid $uds-color-brand-gold;
+      border-bottom: $tabbed-panels-active-border-width solid $uds-color-brand-gold;
+    }
+
+    .more-dropdown-icon {
+      color: $uds-color-brand-gold;
     }
 
     .more-dropdown-menu {
-      background: $asu-gray-7;
+      background: $asu-gray-1;
       border: 1px solid $asu-gray-5;
     }
 
     .more-dropdown-item {
-      color: #fff;
+      color: $asu-gray-7;
     }
 
-    .more-dropdown-item:hover {
+    .more-dropdown-item:hover,
+    .more-dropdown-item:focus-visible {
       color: $uds-color-brand-gold;
+    }
+
+    .more-dropdown-item[aria-current="true"] {
+      color: $uds-color-brand-gold;
+    }
+
+    .more-dropdown-item[aria-current="true"]::after {
+      background: $uds-color-brand-gold;
     }
   }
 }
@@ -121,15 +133,17 @@
   padding: 0.5rem 0.25rem 0 0.25rem;
   display: flex;
   align-items: center;
-  gap: 8px;
-  border-bottom: 8px solid transparent;
-  background: #fafafa;
-  border: none;
+  gap: $tabbed-panels-tab-gap;
+  background: $asu-gray-2;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: $tabbed-panels-active-border-width solid transparent;
   cursor: pointer;
 }
 
 .more-dropdown-button.active {
-  border-bottom: 8px solid $uds-color-base-maroon;
+  border-bottom: $tabbed-panels-active-border-width solid $uds-color-base-maroon;
 }
 
 .more-dropdown-icon {
@@ -142,12 +156,12 @@
 
 .more-dropdown-menu {
   position: absolute;
-  top: 41px;
+  top: $tabbed-panels-tab-height;
   right: 0;
-  width: 180px;
-  background: #ffffff;
-  border: 1px solid #d0d0d0;
-  padding: 0.5rem 0;
+  width: $tabbed-panels-dropdown-width;
+  background: $white;
+  border: 1px solid $asu-gray-4;
+  padding: $tabbed-panels-dropdown-padding;
   display: flex;
   flex-direction: column;
   gap: 0;
@@ -175,7 +189,7 @@
   width: 100%;
   padding: 0.5rem 1rem;
   text-align: left;
-  font-size: 16px;
+  font-size: $tabbed-panels-font-size;
   line-height: 24px;
   color: #191919;
   text-decoration: none;

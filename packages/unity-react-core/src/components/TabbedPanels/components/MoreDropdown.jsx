@@ -57,12 +57,6 @@ import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
       }
     };
 
-    const onMenuKeyDown = (event) => {
-      if (event.key === "Tab") {
-        setIsOpen(false);
-      }
-    };
-
     useEffect(() => {
       function onDocClick(event) {
         const clickedInside = rootRef.current?.contains(event.target);
@@ -132,7 +126,6 @@ import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
                 role="menu"
                 aria-label="More tabs"
                 className="more-dropdown-menu"
-                onKeyDown={onMenuKeyDown}
               >
                 <ul className="uds-more-dropdown-list">
                   {items.map((item, index) => {
