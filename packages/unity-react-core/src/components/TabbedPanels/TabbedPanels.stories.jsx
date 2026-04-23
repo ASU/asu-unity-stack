@@ -132,18 +132,20 @@ export const DarkBackgroundOverflow = () => {
     <MemoryRouter>
       <div className="row no-gutters">
         <div className="col uds-full-width bg-dark p-3">
-          <TabbedPanels bgColor="bg-dark">
-            <Tab id="home" title="Home long tab"><div>1</div></Tab>
-            <Tab id="profile" title="Profile long tab"><div>2</div></Tab>
-            <Tab id="contact" title="Contact us is a long tab"><div>3</div></Tab>
-            <Tab id="another" title="Another tab, long tab"><div>4</div></Tab>
-            <Tab id="another-2" title="Another tab, long tab"><div>5</div></Tab>
-            <Tab id="another-3" title="Another tab, long tab"><div>6</div></Tab>
-            <Tab id="tab-7" title="Tab 7"><div>7</div></Tab>
-            <Tab id="tab-8" title="Tab 8"><div>8</div></Tab>
-            <Tab id="tab-9" title="Tab 9"><div>9</div></Tab>
-            <Tab id="tab-10" title="Tab 10"><div>10</div></Tab>
-          </TabbedPanels>
+          <div style={{ width: "320px" }}>
+            <TabbedPanels bgColor="bg-dark">
+              <Tab id="home" title="Home long tab"><div>1</div></Tab>
+              <Tab id="profile" title="Profile long tab"><div>2</div></Tab>
+              <Tab id="contact" title="Contact us is a long tab"><div>3</div></Tab>
+              <Tab id="another" title="Another tab, long tab"><div>4</div></Tab>
+              <Tab id="another-2" title="Another tab, long tab"><div>5</div></Tab>
+              <Tab id="another-3" title="Another tab, long tab"><div>6</div></Tab>
+              <Tab id="tab-7" title="Tab 7"><div>7</div></Tab>
+              <Tab id="tab-8" title="Tab 8"><div>8</div></Tab>
+              <Tab id="tab-9" title="Tab 9"><div>9</div></Tab>
+              <Tab id="tab-10" title="Tab 10"><div>10</div></Tab>
+            </TabbedPanels>
+          </div>
         </div>
       </div>
     </MemoryRouter>

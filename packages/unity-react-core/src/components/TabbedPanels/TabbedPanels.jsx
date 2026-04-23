@@ -7,9 +7,8 @@
  *
  *
  */
-import { throttle, debounce } from "@asu/shared";
 import PropTypes from "prop-types";
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useLayoutEffect, useRef, useCallback } from "react";
 
 import { useBaseSpecificFramework } from "../GaEventWrapper/useBaseSpecificFramework";
 import { TabHeader, MoreDropdown } from "./components";
@@ -84,14 +83,19 @@ const TabbedPanels = ({
   // helper to register a DOM node for a tab id in both headerTabItems (for keyboard focus)
   // and tabRefs (for width measurements)
   const tabRefs = useRef({});
-  const registerTabNode = (id) => (node) => {
-    setHeaderTabItems(id)(node);
-    if (node) {
-      tabRefs.current[id] = node;
-    } else {
-      delete tabRefs.current[id];
-    }
-  };
+  const tabWidthsRef = useRef({});
+  const registerTabNode = useCallback(
+    (id) => (node) => {
+      setHeaderTabItems(id)(node);
+      if (node) {
+        tabRefs.current[id] = node;
+        tabWidthsRef.current[id] = Math.round(node.getBoundingClientRect().width);
+      } else {
+        delete tabRefs.current[id];
+      }
+    },
+    [setHeaderTabItems]
+  );
 
   // -----------------------------
   // TODO 1.1
@@ -120,10 +124,20 @@ const TabbedPanels = ({
 
     // measure widths using tabRefs first then headerTabItems
     const widths = tabIDs.map((id) => {
-      const domNode = tabRefs.current[id] || headerTabItems.current?.[id];
-      if (domNode && typeof domNode.getBoundingClientRect === "function") {
-        return Math.round(domNode.getBoundingClientRect().width);
+      if (typeof tabWidthsRef.current[id] === "number") {
+        return tabWidthsRef.current[id];
       }
+
+      const domNode = tabRefs.current[id] || headerTabItems.current?.[id];
+
+      if (domNode && typeof domNode.getBoundingClientRect === "function") {
+        const width = Math.round(domNode.getBoundingClientRect().width);
+
+        tabWidthsRef.current[id] = width;
+
+        return width;
+      }
+
       return 80;
     });
 
@@ -153,10 +167,8 @@ const TabbedPanels = ({
 
   }, [childrenArray, headerTabItems]);
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      calculateOverflow();
-    }, 0);
+  useLayoutEffect(() => {
+    calculateOverflow();
 
     const handleResize = () => {
       calculateOverflow();
@@ -165,13 +177,9 @@ const TabbedPanels = ({
     window.addEventListener("resize", handleResize);
 
     return () => {
-      clearTimeout(timeout);
       window.removeEventListener("resize", handleResize);
     };
   }, [calculateOverflow]);
-
-  // REVIEW: This useEffect is missing its dependency array. What happens when you call setState without dependencies?
-  // REVIEW: This will cause an infinite loop. Think about when this effect should run and add the appropriate dependency array. remember that what you add int the depenmdency array should not be derived from the state being set inside the effect.
     // run overflow calculation on mount and on resize
 
   // Move all useEffect hooks before early return
