@@ -22,8 +22,12 @@ const basicNavTree = [
           text: "Sublink 2",
         },
         {
-          href: "https://www.asu.edu",
-          text: "Sublink 3",
+          onClick: () => {
+            console.log(
+              "onClick Callback - Single page app, onClick should close mobile menu and trigger GA event"
+            );
+          },
+          text: "Single Page App Click 3",
         },
         {
           href: "https://www.asu.edu",
@@ -87,8 +91,12 @@ const basicNavTree = [
     href: "#",
   },
   {
-    text: "Link option 4",
-    href: "#",
+    text: "Single Page App Click 4",
+    onClick: () => {
+      console.log(
+        "onClick Callback - Single page app, onClick should close (mobile/dropdown) menu and trigger GA event"
+      );
+    },
   },
   {
     text: "Link option 5",
