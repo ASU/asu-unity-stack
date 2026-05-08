@@ -287,11 +287,13 @@ const CardContent = ({
 
   return (
     <>
-      <div className="card-header" data-testid="card-title">
-        <h3 className="card-title">
-          {showTitleLink ? <a href={cardLink}>{title}</a> : title}
-        </h3>
-      </div>
+      {title && (
+        <div className="card-header" data-testid="card-title">
+          <h3 className="card-title">
+            {showTitleLink ? <a href={cardLink}>{title}</a> : title}
+          </h3>
+        </div>
+      )}
       {body && (
         <div className="card-body" data-testid="card-body">
           <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)} />
