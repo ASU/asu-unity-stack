@@ -5680,7 +5680,7 @@ const Ks = ({
 }) => {
   const x = Xs(e), L = _ && !x, z = x && _, T = e === "event" && (a || n);
   return /* @__PURE__ */ M.jsxs(M.Fragment, { children: [
-    /* @__PURE__ */ M.jsx("div", { className: "card-header", "data-testid": "card-title", children: /* @__PURE__ */ M.jsx("h3", { className: "card-title", children: L ? /* @__PURE__ */ M.jsx("a", { href: _, children: s }) : s }) }),
+    s && /* @__PURE__ */ M.jsx("div", { className: "card-header", "data-testid": "card-title", children: /* @__PURE__ */ M.jsx("h3", { className: "card-title", children: L ? /* @__PURE__ */ M.jsx("a", { href: _, children: s }) : s }) }),
     t && /* @__PURE__ */ M.jsx("div", { className: "card-body", "data-testid": "card-body", children: /* @__PURE__ */ M.jsx("div", { dangerouslySetInnerHTML: Mr(t) }) }),
     T && /* @__PURE__ */ M.jsx(
       Js,

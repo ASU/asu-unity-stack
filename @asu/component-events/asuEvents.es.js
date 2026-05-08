@@ -6378,7 +6378,7 @@ const Os = ({
 }) => {
   const O = As(e), j = I && !O, q = O && I, _ = e === "event" && (c || i);
   return /* @__PURE__ */ B.jsxs(B.Fragment, { children: [
-    /* @__PURE__ */ B.jsx("div", { className: "card-header", "data-testid": "card-title", children: /* @__PURE__ */ B.jsx("h3", { className: "card-title", children: j ? /* @__PURE__ */ B.jsx("a", { href: I, children: u }) : u }) }),
+    u && /* @__PURE__ */ B.jsx("div", { className: "card-header", "data-testid": "card-title", children: /* @__PURE__ */ B.jsx("h3", { className: "card-title", children: j ? /* @__PURE__ */ B.jsx("a", { href: I, children: u }) : u }) }),
     t && /* @__PURE__ */ B.jsx("div", { className: "card-body", "data-testid": "card-body", children: /* @__PURE__ */ B.jsx("div", { dangerouslySetInnerHTML: Ir(t) }) }),
     _ && /* @__PURE__ */ B.jsx(
       Is,

@@ -5935,7 +5935,7 @@ const Ml = ({
 }) => {
   const A = Dl(e), j = k && !A, F = A && k, E = e === "event" && (a || n);
   return /* @__PURE__ */ U.jsxs(U.Fragment, { children: [
-    /* @__PURE__ */ U.jsx("div", { className: "card-header", "data-testid": "card-title", children: /* @__PURE__ */ U.jsx("h3", { className: "card-title", children: j ? /* @__PURE__ */ U.jsx("a", { href: k, children: s }) : s }) }),
+    s && /* @__PURE__ */ U.jsx("div", { className: "card-header", "data-testid": "card-title", children: /* @__PURE__ */ U.jsx("h3", { className: "card-title", children: j ? /* @__PURE__ */ U.jsx("a", { href: k, children: s }) : s }) }),
     t && /* @__PURE__ */ U.jsx("div", { className: "card-body", "data-testid": "card-body", children: /* @__PURE__ */ U.jsx("div", { dangerouslySetInnerHTML: qr(t) }) }),
     E && /* @__PURE__ */ U.jsx(
       Fl,
