@@ -85,7 +85,7 @@ export const TextInput: React.FC<TextInputProps> = ({
       </GaEventWrapper>
       {valid && (
         <small id={successId} className="valid-feedback">
-          <span title="Alert" className="fa fa-icon fa-exclamation-triangle" />
+          <span title="Alert" className="fa fa-icon fa-check-circle" />
           {validMessage}
         </small>
       )}
