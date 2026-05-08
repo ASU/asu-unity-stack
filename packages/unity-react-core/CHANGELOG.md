@@ -1,3 +1,10 @@
+# [@asu/unity-react-core-v1.10.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.10.0...@asu/unity-react-core-v1.10.1) (2026-05-08)
+
+
+### Bug Fixes
+
+* **unity-react-core:** only render heading element if heading is passed in ([af876a4](https://github.com/ASU/asu-unity-stack/commit/af876a4f865794aeec855ae286c7c827e3d77af6))
+
 # [@asu/unity-react-core-v1.10.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.9.2...@asu/unity-react-core-v1.10.0) (2026-04-21)
 
 
