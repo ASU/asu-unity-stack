@@ -94,6 +94,11 @@
     "react-dom": "^19.0.0",
     "react-router-dom": ">= 5.2.0 < 7"
   },
+  "dependencies": {
+    "@glidejs/glide": "^3.6.0",
+    "react-share": "^4.4.0",
+    "reactstrap": "^9"
+  },
   "peerDependencies": {
     "@asu/unity-bootstrap-theme": "^1.21.3",
     "@fortawesome/fontawesome-free": "^5.15.3",
