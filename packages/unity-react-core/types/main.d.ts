@@ -419,6 +419,7 @@ export interface TabbedPanelsProps {
     content?: React.ReactElement;
   }[];
   bgColor?: string;
+  children?: React.ReactNode;
 }
 export const TabbedPanels: React.FunctionComponent<TabbedPanelsProps>;
 
