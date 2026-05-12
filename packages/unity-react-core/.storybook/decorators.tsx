@@ -2,33 +2,32 @@
  * This file houses all non-addon related decorators
  */
 import { Decorator } from "@storybook/react";
-import React, { forwardRef, ReactNode, StrictMode, useEffect } from "react";
+import React, { ReactNode, StrictMode, useEffect } from "react";
 
 import { getBootstrapHTML } from "../src/components/GaEventWrapper/useBaseSpecificFramework";
 import { useChannel } from "storybook/preview-api";
 
-type ContainerComponent<T, P = HTMLElement> = React.ForwardRefExoticComponent<T & React.RefAttributes<P>>;
-
 declare interface ContainerProps {
+  ref?: React.Ref<HTMLElement>;
   children?: ReactNode;
   dangerouslySetInnerHTML?: {
     __html: string;
   };
 }
 
-const Full:ContainerComponent<ContainerProps, any> = forwardRef((props, ref) => {
+const Full = (props: ContainerProps) => {
   return (
-  <div ref={ref} className="col uds-full-width" {...props}/>
-)});
+  <div ref={props.ref} className="col uds-full-width" {...props}/>
+)};
 
-const UdsContainer:ContainerComponent<ContainerProps, any> = forwardRef((props, ref) => {
+const UdsContainer = (props: ContainerProps) => {
   return (
   <div className="container">
     <div className="row">
-      <div ref={ref} className="uds-container" {...props}/>
+      <div ref={props.ref} className="uds-container" {...props}/>
     </div>
   </div>
-)});
+)};
 
 export const withContainer: Decorator = (
   StoryFn,

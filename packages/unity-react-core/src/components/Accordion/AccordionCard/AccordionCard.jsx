@@ -2,7 +2,7 @@
 import { sanitizeDangerousMarkup } from "@asu/shared";
 import classNames from "classnames";
 import PropTypes from "prop-types";
-import React, { forwardRef } from "react";
+import React from "react";
 
 import { accordionCardPropTypes } from "../../../core/models/shared-prop-types";
 import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
@@ -20,8 +20,7 @@ import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
  * @returns {JSX.Element}
  * @ignore
  */
-export const AccordionCard = forwardRef(
-  (
+export const AccordionCard = (
     /** @type {AccordionCardItemProps} */ {
       id,
       parentId,
@@ -29,8 +28,8 @@ export const AccordionCard = forwardRef(
       openCard,
       onClick,
       gaData,
-    },
-    ref
+      ref,
+    }
   ) => {
     const isOpen = id === openCard;
     /**
@@ -100,8 +99,7 @@ export const AccordionCard = forwardRef(
         )}
       </div>
     );
-  }
-);
+  };
 
 AccordionCard.propTypes = {
   id: PropTypes.number,
