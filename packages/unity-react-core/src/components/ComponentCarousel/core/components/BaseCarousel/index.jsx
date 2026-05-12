@@ -14,9 +14,10 @@ import { calcualteViewItems } from "./helper/width-calculator";
 
 /**
  * @typedef {import('../../types/base-carousel-types').CarouselItem} CarouselItem
+ * @typedef {import('../../types/base-carousel-types').Props} BaseCarouselProps
  */
 
-/** @param {import('../../types/base-carousel-types').Props} props */
+/** @param {BaseCarouselProps} props */
 const BaseCarousel = ({
   perView = 1,
   width,
