@@ -49,7 +49,7 @@
     "prop-types": "^15.7.2",
     "react-popper": "^2.2.5",
     "react-tooltip": "^4.2.21",
-    "styled-components": "^5.3.0"
+    "styled-components": "^6.0.0"
   },
   "devDependencies": {
     "@asu/shared": "*",
