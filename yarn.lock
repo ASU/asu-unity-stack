@@ -503,6 +503,7 @@ __metadata:
     "@babel/plugin-transform-runtime": "npm:^7.19.6"
     "@babel/preset-env": "npm:^7.20.2"
     "@fortawesome/fontawesome-free": "npm:^5.15.3"
+    "@glidejs/glide": "npm:^3.6.0"
     "@storybook/addon-a11y": "npm:^10"
     "@storybook/addon-docs": "npm:^10"
     "@storybook/react": "npm:^10"
@@ -540,6 +541,8 @@ __metadata:
     react: "npm:^19.0.0"
     react-dom: "npm:^19.0.0"
     react-router-dom: "npm:>= 5.2.0 < 7"
+    react-share: "npm:^4.4.0"
+    reactstrap: "npm:^9"
   peerDependencies:
     "@asu/unity-bootstrap-theme": ^1.21.3
     "@fortawesome/fontawesome-free": ^5.15.3
@@ -3484,6 +3487,13 @@ __metadata:
   version: 1.1.3
   resolution: "@gar/promisify@npm:1.1.3"
   checksum: 10c0/0b3c9958d3cd17f4add3574975e3115ae05dc7f1298a60810414b16f6f558c137b5fb3cd3905df380bacfd955ec13f67c1e6710cbb5c246a7e8d65a8289b2bff
+  languageName: node
+  linkType: hard
+
+"@glidejs/glide@npm:^3.6.0":
+  version: 3.7.1
+  resolution: "@glidejs/glide@npm:3.7.1"
+  checksum: 10c0/fd627fc80170abcb932bac7b72fe892330c0f2f6898acb4ee190ce3412ee1637083a4618b035a8e954935fb837c5588f8d2c22aa5392c1bf759bfff43ec27cda
   languageName: node
   linkType: hard
 
@@ -11814,7 +11824,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:^2.2.3, classnames@npm:^2.2.6, classnames@npm:^2.3.1":
+"classnames@npm:^2.2.3, classnames@npm:^2.2.6, classnames@npm:^2.3.1, classnames@npm:^2.3.2":
   version: 2.5.1
   resolution: "classnames@npm:2.5.1"
   checksum: 10c0/afff4f77e62cea2d79c39962980bf316bacb0d7c49e13a21adaadb9221e1c6b9d3cdb829d8bb1b23c406f4e740507f37e1dcf506f7e3b7113d17c5bab787aa69
@@ -13328,7 +13338,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:2.6.9, debug@npm:^2.2.0, debug@npm:^2.3.3, debug@npm:^2.6.9":
+"debug@npm:2.6.9, debug@npm:^2.1.3, debug@npm:^2.2.0, debug@npm:^2.3.3, debug@npm:^2.6.9":
   version: 2.6.9
   resolution: "debug@npm:2.6.9"
   dependencies:
@@ -20721,6 +20731,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jsonp@npm:^0.2.1":
+  version: 0.2.1
+  resolution: "jsonp@npm:0.2.1"
+  dependencies:
+    debug: "npm:^2.1.3"
+  checksum: 10c0/744b828f50062cd691d70936c0ee796dc8cb1c78c96327c25c173ae8e2183b82295ec26a99fe3b092cc9b22e08c14a491bf8af639d576615798edbb50ab99f9b
+  languageName: node
+  linkType: hard
+
 "jsonparse@npm:^1.2.0, jsonparse@npm:^1.3.1":
   version: 1.3.1
   resolution: "jsonparse@npm:1.3.1"
@@ -26370,6 +26389,18 @@ __metadata:
   peerDependencies:
     react: ">=16.8"
   checksum: 10c0/a0a74bf5a933cf0abd47e0eac1d3a505cd66b866e3ee8f20d8016885d3b4361ba3ba72dee026248c6125e631b191ba6ad109184c892281cea6cb747c71bf5940
+  languageName: node
+  linkType: hard
+
+"react-share@npm:^4.4.0":
+  version: 4.4.1
+  resolution: "react-share@npm:4.4.1"
+  dependencies:
+    classnames: "npm:^2.3.2"
+    jsonp: "npm:^0.2.1"
+  peerDependencies:
+    react: ^16.3.0 || ^17 || ^18
+  checksum: 10c0/9670ab18c1b7711a3501c6c8fdf62c596d6ac23137760b5792ef85ce35b6c51f478ab515f148ba47f7a2583ee570fafb317848d4ffe3f9d23b4e02d308079deb
   languageName: node
   linkType: hard
 
