@@ -90,37 +90,15 @@
     "plop": "2.7.6",
     "postcss": "^8.4.19",
     "prettier": "^2.8.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-is": "19.0.0",
-    "react-share": "^4.4.0",
-    "react-syntax-highlighter": "^15.0.0",
-    "reactstrap": "^9",
-    "semantic-release": "^22",
-    "semantic-release-monorepo": "^8.0.2",
-    "storybook": "^10",
-    "style-loader": "^3.3.1",
-    "terser": "^5.31.3",
-    "typescript": "5.6.2",
-    "vite": "^6.0.0",
-    "vite-plugin-static-copy": "^1.0.6",
-    "vite-tsconfig-paths": "^5.0.1",
-    "vitest": "^4.0.0",
-    "vitest-browser-react": "^0.0.1"
-  },
-  "dependencies": {
-    "@glidejs/glide": "~3.6.2",
-    "classnames": "^2.2.6",
-    "date-fns": "^2.19.0",
-    "phone-fns": "^3.2.3",
-    "prop-types": "^15.7.2",
-    "styled-components": "^6.0.0"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": ">= 5.2.0 < 7"
   },
   "peerDependencies": {
     "@asu/unity-bootstrap-theme": "^1.21.3",
     "@fortawesome/fontawesome-free": "^5.15.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "react-router-dom": ">= 5.2.0 < 7"
   },
   "exports": {
