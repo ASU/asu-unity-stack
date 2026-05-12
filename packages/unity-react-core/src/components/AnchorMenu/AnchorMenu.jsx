@@ -219,10 +219,10 @@ export const AnchorMenu = ({
             [`with-header`]: state.hasHeader,
           }
         )}
-        style={{
+        style={/** @type {React.CSSProperties} */ ({
           ...(state.showMenu ? { borderBottom: 0 } : {}),
           "--uds-anchor-menu-top": `${headerBottomOffset}px`,
-        }}
+        })}
       >
         <div className={`${state.containerClass} uds-anchor-menu-wrapper`}>
           {isSmallDevice ? (

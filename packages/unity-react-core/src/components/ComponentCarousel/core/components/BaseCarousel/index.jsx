@@ -13,9 +13,10 @@ import { calcualteViewItems } from "./helper/width-calculator";
 // https://stackoverflow.com/questions/61596516/glide-js-with-react
 
 /**
- * @typedef {import('../../types/base-carousel-types').Props} CarouselItem
+ * @typedef {import('../../types/base-carousel-types').CarouselItem} CarouselItem
  */
 
+/** @param {import('../../types/base-carousel-types').Props} props */
 const BaseCarousel = ({
   perView = 1,
   width,
