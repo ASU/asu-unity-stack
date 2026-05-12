@@ -47,8 +47,6 @@
     "@popperjs/core": "^2.9.2",
     "classnames": "^2.3.1",
     "prop-types": "^15.7.2",
-    "react-popper": "^2.2.5",
-    "react-tooltip": "^4.2.21",
     "styled-components": "^6.0.0"
   },
   "devDependencies": {
