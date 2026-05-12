@@ -1,9 +1,9 @@
-import { FC } from "react";
+import React, { FC } from "react";
 import { getRelativePath } from "~/utils/baseUrl";
 
 export interface CardWrapperProps {
   title: string;
-  description: string | JSX.Element;
+  description: string | React.JSX.Element;
   href: string;
   linkLabel: string;
   ariaLabel?: string;
