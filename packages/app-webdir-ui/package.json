@@ -45,7 +45,7 @@
     "axios": "~1.15.0",
     "prop-types": "^15.7.2",
     "react-router-dom": "^6.2.1",
-    "styled-components": "^5.3.0"
+    "styled-components": "^6.0.0"
   },
   "devDependencies": {
     "@asu/shared": "*",

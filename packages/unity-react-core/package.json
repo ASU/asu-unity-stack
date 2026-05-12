@@ -115,7 +115,7 @@
     "date-fns": "^2.19.0",
     "phone-fns": "^3.2.3",
     "prop-types": "^15.7.2",
-    "styled-components": "^5.3.0"
+    "styled-components": "^6.0.0"
   },
   "peerDependencies": {
     "@asu/unity-bootstrap-theme": "^1.21.3",
