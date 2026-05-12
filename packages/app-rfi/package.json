@@ -53,7 +53,7 @@
     "@storybook/addon-docs": "^10",
     "@storybook/react": "^10",
     "@storybook/react-vite": "^10",
-    "@testing-library/react": "^11.2.6",
+    "@testing-library/react": "^16.0.0",
     "@vitejs/plugin-react": "^4.3.1",
     "babel-loader": "^8.2.2",
     "copy-webpack-plugin": "^9.0.1",
