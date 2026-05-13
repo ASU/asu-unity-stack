@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useId, useRef, useState } from "react";
 
 import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
 
@@ -32,23 +32,24 @@ interface MoreDropdownProps {
   activeTabID?: string;
   selectTab?: (e: React.MouseEvent | React.KeyboardEvent, id: string, title: string) => void;
   gaData?: GaEventData;
-  ref?: React.Ref<HTMLDivElement>;
 }
 
-const MoreDropdown = ({
-  overflowTabs,
-  idToChild,
-  activeTabID,
-  selectTab,
-  gaData,
-  ref,
-}: MoreDropdownProps) => {
+const MoreDropdown = React.forwardRef<HTMLDivElement, MoreDropdownProps>((
+  {
+    overflowTabs,
+    idToChild,
+    activeTabID,
+    selectTab,
+    gaData,
+  },
+  ref
+) => {
   const [isOpen, setIsOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const itemRefs = useRef<HTMLButtonElement[]>([]);
   const safeOverflow = Array.isArray(overflowTabs) ? overflowTabs : [];
-  const menuId = "more-dropdown-menu";
+  const menuId = useId();
   const hasActiveOverflowTab = safeOverflow.includes(activeTabID ?? "");
 
   const items: DropdownItem[] = safeOverflow.map((tabId) => {
@@ -167,13 +168,17 @@ const MoreDropdown = ({
           aria-haspopup="true"
           aria-expanded={isOpen}
           aria-controls={menuId}
+          aria-label={`More, ${items.length} additional tab${items.length !== 1 ? "s" : ""}`}
           className={`uds-tab more-dropdown-button${hasActiveOverflowTab ? " active" : ""}`}
         >
-          <span>More</span>
-          <i
-            aria-hidden="true"
-            className={`fas fa-chevron-down more-dropdown-icon${isOpen ? " open" : ""}`}
-          />
+          <span className="more-dropdown-button-inner">
+            <span aria-hidden="true">More</span>
+            <i
+              aria-hidden="true"
+              className={`fas fa-chevron-down more-dropdown-icon${isOpen ? " open" : ""}`}
+            />
+          </span>
+          <span className="more-dropdown-button-indicator" aria-hidden="true" />
         </button>
       </GaEventWrapper>
 
@@ -214,7 +219,9 @@ const MoreDropdown = ({
         </ul>
     </div>
   );
-};
+});
+
+MoreDropdown.displayName = "MoreDropdown";
 
 export { MoreDropdown };
 export type { MoreDropdownProps, GaEventData };
