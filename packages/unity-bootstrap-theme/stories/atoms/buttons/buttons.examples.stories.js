@@ -3,6 +3,34 @@ import React from "react";
 export default {
   title: "Atoms/Buttons/Examples",
   parameters: { controls: { disable: true } },
+  decorators: [
+    (Story, { parameters }) => {
+      if (parameters?.disableDeprecatedNotice) {
+        return <Story />;
+      }
+      return (
+        <div>
+          <div
+            style={{
+              padding: "1rem",
+              background: "#f5f5f5",
+              marginBottom: "2rem",
+            }}
+          >
+            <h2>Deprecated</h2>
+            <p>
+              Please see new button styles in unity-react-core{" "}
+              <a href="https://asu.github.io/asu-unity-stack/@asu/unity-react-core/index.html?path=/docs/components-udsbutton--docs">
+                UDSButton
+              </a>{" "}
+              storybook instead.
+            </p>
+          </div>
+          <Story />
+        </div>
+      );
+    },
+  ],
 };
 
 export const ButtonColorsComponent = () => (
@@ -210,6 +238,10 @@ export const ButtonTagsComponent = () => (
   </div>
 );
 
+ButtonTagsComponent.parameters = {
+  disableDeprecatedNotice: true,
+};
+
 export const IconOnlyButtonsColorAndSizesComponent = () => (
   <div className="container-fluid">
     <div className="row">
@@ -257,6 +289,11 @@ export const IconOnlyButtonsColorAndSizesComponent = () => (
     </div>
   </div>
 );
+
+IconOnlyButtonsColorAndSizesComponent.parameters = {
+  disableDeprecatedNotice: true,
+};
+
 export const IconOnlyButtonsColorCombinationsComponent = () => (
   <div className="container-fluid">
     <div className="row">
@@ -343,6 +380,9 @@ export const IconOnlyButtonsColorCombinationsComponent = () => (
     </div>
   </div>
 );
+IconOnlyButtonsColorCombinationsComponent.parameters = {
+  disableDeprecatedNotice: true,
+};
 
 export const PrevAndNextButtonsComponent = () => (
   <div className="container-fluid">
@@ -398,59 +438,6 @@ export const PrevAndNextButtonsComponent = () => (
     </div>
   </div>
 );
-
-const demoButtonStyle = {
-  display: "flex",
-  justifyContent: "center",
-  paddingTop: "10px",
+PrevAndNextButtonsComponent.parameters = {
+  disableDeprecatedNotice: true,
 };
-
-const TestButtons = () => (
-  <div>
-    <div style={demoButtonStyle}>
-      <button type="button" className="btn btn-gold">
-        Gold
-      </button>
-    </div>
-    <div style={demoButtonStyle}>
-      <button type="button" className="btn btn-maroon">
-        Maroon
-      </button>
-    </div>
-    <div style={demoButtonStyle}>
-      <button type="button" className="btn btn-link">
-        Link
-      </button>
-    </div>
-    <div style={demoButtonStyle}>
-      <button type="button" className="btn btn-light">
-        Light
-      </button>
-    </div>
-    <div style={demoButtonStyle}>
-      <button type="button" className="btn btn-dark">
-        Dark
-      </button>
-    </div>
-    <div style={demoButtonStyle}>
-      <button type="button" className="btn btn-success">
-        Alert: Success
-      </button>
-    </div>
-    <div style={demoButtonStyle}>
-      <button type="button" className="btn btn-danger">
-        Alert: Danger
-      </button>
-    </div>
-    <div style={demoButtonStyle}>
-      <button type="button" className="btn btn-warning">
-        Alert: Warning
-      </button>
-    </div>
-    <div style={demoButtonStyle}>
-      <button type="button" className="btn btn-info">
-        Alert: Info
-      </button>
-    </div>
-  </div>
-);

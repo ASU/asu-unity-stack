@@ -1,18 +1,20 @@
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+
+function getAbsolutePath(value) {
+  return dirname(fileURLToPath(import.meta.resolve(value)));
+}
+
 const config = {
   // staticDirs: ['../src/**/assets'],
   addons: [
-    "../../../.storybook-config",
-    "../../../.storybook-config/dataLayerListener",
-    "@storybook/addon-controls",
-    "@storybook/addon-viewport",
-    "@storybook/addon-a11y",
+    fileURLToPath(import.meta.resolve("../../../.storybook-config/index.js")),
+    fileURLToPath(import.meta.resolve("../../../.storybook-config/dataLayerListener/index.js")),
+    getAbsolutePath("@storybook/addon-a11y"),
   ],
   stories: ["../src/**/*.stories.js"],
-  core: {
-    builder: '@storybook/builder-vite'
-  },
   framework: {
-    name: "@storybook/react-vite",
+    name: getAbsolutePath("@storybook/react-vite"),
   },
 };
 

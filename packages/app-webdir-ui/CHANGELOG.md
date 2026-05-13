@@ -1,3 +1,41 @@
+# [@asu/app-webdir-ui-v5.0.12](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.11...@asu/app-webdir-ui-v5.0.12) (2026-04-10)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** correct DOM order of WebDirectory controls for keyboard focus ([dca2fee](https://github.com/asu/asu-unity-stack/commit/dca2fee1f06b781f791a3220be52b23feebaeb5e))
+* **app-webdir-ui:** ensure filter buttons meet WCAG 2.2 minimum target size ([0a69a5d](https://github.com/asu/asu-unity-stack/commit/0a69a5d56fe9fa90a138841f3384414b888d623b))
+
+# [@asu/app-webdir-ui-v5.0.11](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.10...@asu/app-webdir-ui-v5.0.11) (2026-04-09)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** update axios vulnerability ([89294c3](https://github.com/asu/asu-unity-stack/commit/89294c30d41d8b6129a62101e8df1d77238cc5bf))
+
+# [@asu/app-webdir-ui-v5.0.10](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.9...@asu/app-webdir-ui-v5.0.10) (2026-04-02)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** add search landmark accessibility to search page ([7847c8c](https://github.com/asu/asu-unity-stack/commit/7847c8ca0d709567541bc73844bb3606d7d01e3b))
+
+# [@asu/app-webdir-ui-v5.0.9](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.8...@asu/app-webdir-ui-v5.0.9) (2026-01-27)
+
+
+### Bug Fixes
+
+* app-webdir-ui ([1abc96c](https://github.com/asu/asu-unity-stack/commit/1abc96cb29ae5ba9a7c33c1a9021f91cd093ebaf))
+* **app-webdir-ui:** replace catalog URL ([bfaa58f](https://github.com/asu/asu-unity-stack/commit/bfaa58fb88cc8410ad83a0dfe74d946c71eebf75))
+* **app-webdir-ui:** update catalog URL to new domain ([2591fa6](https://github.com/asu/asu-unity-stack/commit/2591fa68407f88f3f7e4c37a3610e79c54a12f28))
+
+# [@asu/app-webdir-ui-v5.0.8](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.7...@asu/app-webdir-ui-v5.0.8) (2026-01-05)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** adding siteImprove to webdir-ui ([d55307b](https://github.com/asu/asu-unity-stack/commit/d55307bb88138a7a8911682cf02aeebadd19b719))
+
 # [@asu/app-webdir-ui-v5.0.7](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.6...@asu/app-webdir-ui-v5.0.7) (2025-11-19)
 
 

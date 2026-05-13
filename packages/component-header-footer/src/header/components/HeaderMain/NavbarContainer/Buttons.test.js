@@ -64,9 +64,19 @@ const stateWithButtons = {
     },
   ],
   buttons: [
-    { text: "Login", href: "/login" },
-    { text: "Sign Up", onClick: jest.fn() },
-    { text: "Contact", onClick: jest.fn(), href: "#" },
+    { "text": "Login", "href": "/login", "data-testid": "header-button" },
+    {
+      "text": "Sign Up",
+      "onClick": jest.fn(),
+      "as": "button",
+      "data-testid": "header-button",
+    },
+    {
+      "text": "Contact",
+      "onClick": jest.fn(),
+      "href": "#",
+      "data-testid": "header-button",
+    },
   ],
   breakpoint: "lg",
 };
@@ -94,7 +104,7 @@ describe("#NavbarContainer Button Tests", () => {
     const buttonsContainer = component.getByTestId("buttons-container");
     expect(buttonsContainer).toBeInTheDocument();
 
-    const buttons = component.getAllByRole("button");
+    const buttons = component.getAllByTestId("header-button");
     expect(buttons.length).toBe(stateWithButtons.buttons.length);
 
     stateWithButtons.buttons.forEach((buttonData, index) => {
@@ -103,7 +113,7 @@ describe("#NavbarContainer Button Tests", () => {
   });
 
   it("should call the onClick handler when a button is clicked", () => {
-    const buttons = component.getAllByRole("button");
+    const buttons = component.getAllByTestId("header-button");
 
     fireEvent.click(buttons[1]);
 
@@ -111,7 +121,7 @@ describe("#NavbarContainer Button Tests", () => {
   });
 
   it("should track GA event when any button is clicked", () => {
-    const buttons = component.getAllByRole("button");
+    const buttons = component.getAllByTestId("header-button");
 
     buttons.forEach((button, index) => {
       fireEvent.click(button);

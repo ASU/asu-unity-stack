@@ -1,8 +1,18 @@
 // buttons mixins
 @mixin btn-md {
   font-size: 0.875rem;
-  padding: 0.5rem
-    1rem;
+  padding: 0.5rem 1rem;
+}
+
+@mixin btn-sm {
+  font-size: 0.75rem;
+  padding: $uds-component-button-padding-y-small
+    $uds-component-button-padding-x-small;
+}
+
+@mixin btn-lg {
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
 }
 
 @mixin clickable-area() {
@@ -30,13 +40,12 @@
     color: $white;
     background: $primary;
   }
+  // Legacy size classes - use same mixins as new size classes
   &.btn-md {
     @include btn-md;
   }
   &.btn-sm {
-    font-size: 0.75rem;
-    padding: $uds-component-button-padding-y-small
-      $uds-component-button-padding-x-small;
+    @include btn-sm;
   }
   &.btn-tag {
     font-size: 0.75rem;
@@ -109,17 +118,153 @@
     }
 }
 
-// Remove background changing hover effects from all buttons
+// New button size classes - use same mixins as legacy classes for consistency
+.btn-small {
+  @include btn-sm;
+}
+.btn-medium {
+  @include btn-md;
+}
+.btn-large {
+  @include btn-lg;
+}
+
+// Button color variants map
+$button-colors: (
+  'gray': ($asu-gray-4, $asu-gray-1),
+  'gold': ($gold, $dark),
+  'dark': ($dark, $white),
+  'maroon': ($maroon, $white)
+);
+
+// Mixin for button filled variant (shared by legacy and new classes)
+@mixin button-filled-variant($color, $hover-color) {
+  @include button-variant($color, $color);
+  border-width: 2px;
+
+  &:focus,
+  &:focus-visible {
+    color: $hover-color;
+
+    &:active {
+      color: $hover-color;
+    }
+  }
+}
+
+// Generate filled button variants (new style)
+@each $name, $colors in $button-colors {
+  .btn-filled-#{$name} {
+    @include button-filled-variant(nth($colors, 1), nth($colors, 2));
+  }
+}
+
+// Legacy button colors - extend the same styles as filled variants
+@each $name, $colors in $button-colors {
+  .btn-#{$name} {
+    @include button-filled-variant(nth($colors, 1), nth($colors, 2));
+  }
+}
+
+// Keep Bootstrap theme colors support for any other colors not in our custom map
 @each $color, $value in $theme-colors {
-  .btn-#{$color} {
-    @include button-variant(
-      $value,
-      $value,
-      $hover-background: $value,
-      $hover-border: $value,
-      $active-background: $value,
-      $active-border: $value
-    );
+  @if not map-has-key($button-colors, $color) {
+    .btn-#{$color} {
+      @include button-variant(
+        $value,
+        $value,
+        $hover-background: $value,
+        $hover-border: $value,
+        $active-background: $value,
+        $active-border: $value
+      );
+    }
+  }
+}
+
+// Mixin for borderless button variants
+@mixin button-borderless-variant($color, $hover-color) {
+  color: $color;
+  background: transparent;
+  border: 2px solid transparent;
+
+  &:hover,
+  &:active,
+  &.active {
+    background-color: $color;
+    color: $hover-color;
+  }
+
+  &:focus,
+  &:focus-visible {
+    color: $color;
+    background: transparent;
+
+    &:hover {
+      background-color: $color;
+      color: $hover-color;
+    }
+
+    &:active {
+      background-color: $color;
+      color: $hover-color;
+    }
+  }
+
+  &:disabled,
+  &.disabled {
+    color: $asu-gray-4;
+    background: transparent;
+    opacity: 0.5;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+      background: transparent;
+      color: $asu-gray-4;
+    }
+  }
+}
+
+// Generate borderless button variants
+@each $name, $colors in $button-colors {
+  .btn-borderless-#{$name} {
+    @include button-borderless-variant(nth($colors, 1), nth($colors, 2));
+  }
+}
+
+// Generate outlined button variants using Bootstrap's outline mixin
+@each $name, $colors in $button-colors {
+  .btn-outline-#{$name} {
+    @include button-outline-variant(nth($colors, 1), nth($colors, 2));
+    border-width: 2px;
+
+    &:active,
+    &.active {
+      background-color: nth($colors, 1);
+      border-color: nth($colors, 1);
+      color: nth($colors, 2);
+    }
+
+    &:focus,
+    &:focus-visible {
+      color: nth($colors, 1);
+      background: transparent;
+      border-color: transparent;
+
+      &:hover {
+        background-color: nth($colors, 1);
+        border-color: nth($colors, 1);
+        color: nth($colors, 2);
+      }
+
+      &:active {
+        background-color: nth($colors, 1);
+        border-color: nth($colors, 1);
+        color: nth($colors, 2);
+      }
+    }
   }
 }
 
@@ -133,7 +278,7 @@ a {
       color: $uds-color-base-gold !important;
     }
     &:visited:not(.btn) {
-      color: $uds-color-base-darkgold !important;
+      color: $uds-color-font-light-visited !important;
     }
   }
 

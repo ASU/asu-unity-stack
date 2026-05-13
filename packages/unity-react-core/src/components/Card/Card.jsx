@@ -20,6 +20,8 @@ const gaDefaultObject = {
   region: "main content",
 };
 
+const isEventOrNewsCard = type => type === "event" || type === "news";
+
 /**
  * @typedef {import('../../core/types/card-types').CardProps} CardProps
  */
@@ -180,63 +182,49 @@ const BaseCard = ({
     [`card-degree`]: type === "degree",
     [`card-event`]: type === "event",
     [`card-story`]: type === "story",
+    [`card-news`]: type === "news",
     [`w-${width.replace("%", "")}`]: width !== "100%",
     [`card-horizontal`]: horizontal,
     [`borderless`]: !showBorders,
   });
 
+  const shouldShowImage = typeof image === "string" && image.length > 0;
+  const shouldIncludeCardLink = !isEventOrNewsCard(type);
+
   return (
-    <>
-      <CardWrapper className={cardClass} data-testid="card-container">
-        {!!image && (
-          <Image
-            src={image}
-            alt={imageAltText}
-            dataTestId="card-image"
-            cssClasses={["card-img-top"]}
-            cardLink={cardLink}
-            title={title}
-          />
-        )}
-        {!image && icon && (
-          <i
-            className={`${icon?.[0]} fa-${icon?.[1]} fa-2x card-icon-top`}
-            data-testid="card-icon"
-          />
-        )}
-        {horizontal ? (
-          <div className="card-content-wrapper">
-            <CardContent
-              type={type}
-              body={body}
-              eventFormat={eventFormat}
-              eventLocation={eventLocation}
-              eventTime={eventTime}
-              title={title}
-              buttons={buttons}
-              linkLabel={linkLabel}
-              linkUrl={linkUrl}
-              tags={tags}
-              cardLink={cardLink}
-            />
-          </div>
-        ) : (
-          <CardContent
-            type={type}
-            body={body}
-            eventFormat={eventFormat}
-            eventLocation={eventLocation}
-            eventTime={eventTime}
-            title={title}
-            buttons={buttons}
-            linkLabel={linkLabel}
-            linkUrl={linkUrl}
-            tags={tags}
-            cardLink={cardLink}
-          />
-        )}
-      </CardWrapper>
-    </>
+    <CardWrapper className={cardClass} data-testid="card-container">
+      {shouldShowImage && (
+        <Image
+          src={image}
+          alt={imageAltText}
+          dataTestId="card-image"
+          cssClasses={["card-img-top"]}
+          title={title}
+          cardLink={shouldIncludeCardLink ? cardLink : undefined}
+        />
+      )}
+      {!image && icon && (
+        <i
+          className={`${icon?.[0]} fa-${icon?.[1]} fa-2x card-icon-top`}
+          data-testid="card-icon"
+        />
+      )}
+      <div className={horizontal ? "card-content-wrapper" : undefined}>
+        <CardContent
+          type={type}
+          body={body}
+          eventFormat={eventFormat}
+          eventLocation={eventLocation}
+          eventTime={eventTime}
+          title={title}
+          buttons={buttons}
+          linkLabel={linkLabel}
+          linkUrl={linkUrl}
+          tags={tags}
+          cardLink={cardLink}
+        />
+      </div>
+    </CardWrapper>
   );
 };
 
@@ -291,83 +279,105 @@ const CardContent = ({
   linkUrl = undefined,
   tags = undefined,
   cardLink,
-}) => (
-  <>
-    {!!title && (
-      <div className="card-header" data-testid="card-title">
-        <h3 className="card-title">
-          {cardLink ? <a href={cardLink}>{title}</a> : title}
-        </h3>
-      </div>
-    )}
-    {!!body && (
-      <div className="card-body" data-testid="card-body">
-        {}
-        <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)} />
-      </div>
-    )}
-    {type === "event" && (eventTime || eventLocation) && (
-      <EventInfo
-        eventFormat={eventFormat}
-        eventTime={eventTime}
-        eventLocation={eventLocation}
-      />
-    )}
-    {buttons && (
-      <div className="card-buttons">
-        {buttons.map(button => (
-          <div
-            className="card-button"
-            data-testid="card-button"
-            key={`${button.label}-${button.href}`}
+}) => {
+  const isEventOrNews = isEventOrNewsCard(type);
+  const showTitleLink = cardLink && !isEventOrNews;
+  const showArrowLink = isEventOrNews && cardLink;
+  const showEventInfo = type === "event" && (eventTime || eventLocation);
+
+  return (
+    <>
+      {title && (
+        <div className="card-header" data-testid="card-title">
+          <h3 className="card-title">
+            {showTitleLink ? <a href={cardLink}>{title}</a> : title}
+          </h3>
+        </div>
+      )}
+      {body && (
+        <div className="card-body" data-testid="card-body">
+          <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)} />
+        </div>
+      )}
+      {showEventInfo && (
+        <EventInfo
+          eventFormat={eventFormat}
+          eventTime={eventTime}
+          eventLocation={eventLocation}
+        />
+      )}
+      {showArrowLink ? (
+        <div className="card-link" data-testid="card-link">
+          <GaEventWrapper
+            gaData={{
+              ...gaDefaultObject,
+              text: title,
+            }}
           >
-            {/* @ts-ignore */}
-            <Button
-              ariaLabel={button.ariaLabel}
-              color={button.color}
-              icon={button.icon}
-              href={button.href}
-              label={button.label}
-              onClick={button.onClick}
-              size={button.size}
-              target={button.target}
+            <a href={cardLink} className="card-arrow-link" aria-label={title}>
+              <i className="fas fa-arrow-right" aria-hidden="true" />
+            </a>
+          </GaEventWrapper>
+        </div>
+      ) : (
+        <>
+          {buttons && (
+            <div className="card-buttons">
+              {buttons.map(button => (
+                <div
+                  className="card-button"
+                  data-testid="card-button"
+                  key={`${button.label}-${button.href}`}
+                >
+                  <Button
+                    ariaLabel={button.ariaLabel}
+                    color={button.color}
+                    icon={button.icon}
+                    href={button.href}
+                    label={button.label}
+                    onClick={button.onClick}
+                    size={button.size}
+                    target={button.target}
+                    cardTitle={title}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+          {linkUrl && linkLabel && (
+            <div className="card-link" data-testid="card-link">
+              <GaEventWrapper
+                gaData={{
+                  ...gaDefaultObject,
+                  section: title,
+                  text: linkLabel,
+                }}
+              >
+                <a href={emailAddressParser(linkUrl)}>{linkLabel}</a>
+              </GaEventWrapper>
+            </div>
+          )}
+        </>
+      )}
+      {tags && (
+        <div className="card-tags" data-testid="card-tags">
+          {tags.map(tag => (
+            // @ts-ignore
+            <ButtonTag
+              key={`${tag.label}-${tag.href}`}
+              ariaLabel={tag.ariaLabel}
+              color={tag.color}
+              href={tag.href}
+              label={tag.label}
+              onClick={tag.onClick}
               cardTitle={title}
             />
-          </div>
-        ))}
-      </div>
-    )}
-    {linkUrl && linkLabel && (
-      <div className="card-link" data-testid="card-link">
-        <GaEventWrapper
-          gaData={{
-            ...gaDefaultObject,
-            section: title,
-            text: linkLabel,
-          }}
-        >
-          <a href={emailAddressParser(linkUrl)}>{linkLabel}</a>
-        </GaEventWrapper>
-      </div>
-    )}
-    {tags && (
-      <div className="card-tags" data-testid="card-tags">
-        {tags.map(tag => (
-          // @ts-ignore
-          <ButtonTag
-            key={`${tag.label}-${tag.href}`}
-            ariaLabel={tag.ariaLabel}
-            color={tag.color}
-            href={tag.href}
-            label={tag.label}
-            onClick={tag.onClick}
-            cardTitle={title}
-          />
-        ))}
-      </div>
-    )}
-  </>
-);
+          ))}
+        </div>
+      )}
+    </>
+  );
+};
 
 CardContent.propTypes = {
   type: PropTypes.oneOf(["default", "degree", "event", "news", "story"]),
@@ -415,7 +425,6 @@ const EventInfo = ({
             <div>
               <i className="far fa-calendar" />
             </div>
-            {}
             <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventTime)} />
           </div>
         )}
@@ -442,7 +451,6 @@ const EventInfo = ({
             <div>
               <i className="far fa-calendar" />
             </div>
-            {}
             <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventTime)} />
           </div>
         </div>

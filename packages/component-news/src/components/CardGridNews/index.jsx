@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 import { trackReactComponent } from "@asu/shared";
 import { BaseFeed } from "../../core/components/BaseFeed";
-import { defaultProps } from "../../core/constants/default-props";
+import { defaultProps as coreDefaultProps } from "../../core/constants/default-props";
 import { parseInterests } from "../../core/utils";
 import { NewsWrapper } from "./index.styles";
 
@@ -21,7 +21,7 @@ const gridRow = (feed, cardButton, hideTags) => (
     key={feed.id}
   >
     <Card
-      type="default"
+      type="news"
       eventFormat="inline"
       eventLocation={feed.location}
       clickable={!!feed.buttonLink}
@@ -41,6 +41,7 @@ const gridRow = (feed, cardButton, hideTags) => (
         },
       ]}
       tags={hideTags ? [] : parseInterests(feed?.interests)}
+      cardLink={feed.eventButtonUrl || feed?.buttonLink}
     />
   </div>
 );
@@ -56,7 +57,9 @@ const GridTemplate = ({ cardButton, hideTags }) => {
   return (
     <NewsWrapper className="row row-spaced" data-testid="grid-view-container">
       {feeds?.map((feed, index) => (
-        <React.Fragment key={index}>{gridRow(feed, cardButton, shouldHideTags)}</React.Fragment>
+        <React.Fragment key={index}>
+          {gridRow(feed, cardButton, shouldHideTags)}
+        </React.Fragment>
       ))}
     </NewsWrapper>
   );
@@ -89,7 +92,7 @@ const CardGridNews = ({ cardButton, hideTags = true, ...props }) => {
     // Calling the high order component that fetch the data
     <BaseFeed {...props}>
       <GridTemplate
-        cardButton={{ ...defaultProps.cardButton, ...cardButton }}
+        cardButton={{ ...coreDefaultProps.cardButton, ...cardButton }}
         hideTags={hideTags}
       />
     </BaseFeed>
@@ -99,8 +102,7 @@ const CardGridNews = ({ cardButton, hideTags = true, ...props }) => {
 CardGridNews.propTypes = {
   ...BaseFeed.propTypes,
   cardButton: feedCardButtonShape,
-  hideTags: PropTypes.oneOf(["true", "false", true, false])
-
+  hideTags: PropTypes.oneOf(["true", "false", true, false]),
 };
 
 export { CardGridNews };

@@ -1,8 +1,9 @@
-module.exports = {
-  config: function config(entry = []) {
-    return [...entry, require.resolve("./entry.js")];
-  },
-  managerEntries: function managerEntries(entry = []) {
-    return [...entry, require.resolve("./addon.js")];
-  },
-};
+import { fileURLToPath } from "url";
+
+export function previewAnnotations(entry = []) {
+  return [...entry, fileURLToPath(import.meta.resolve("./entry.js"))];
+}
+
+export function managerEntries(entry = []) {
+  return [...entry, fileURLToPath(import.meta.resolve("./addon.js"))];
+}

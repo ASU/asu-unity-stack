@@ -44,9 +44,12 @@
       background: $uds-color-background-white 0% 0% no-repeat padding-box;
       padding: 2rem;
       font-size: $uds-size-font-medium;
-      h3, .h3 {
+      h2, h3, .h2, .h3 {
         color: $asu-gray-1;
         margin: 0 0 1rem 0;
+        font-size: $heading-three-font-size;
+        line-height: $heading-three-line-height;
+        letter-spacing: $heading-three-letter-spacing;
       }
     }
     .uds-caption-text {

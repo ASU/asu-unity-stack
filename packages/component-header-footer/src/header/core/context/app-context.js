@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React, { createContext, useContext } from "react";
 
-import { HeaderPropTypes } from "../models/app-prop-types";
+import { HeaderContextPropTypes } from "../models/app-prop-types";
 
 const breakpoints = { Lg: "992px", Xl: "1260px" };
 
@@ -17,7 +17,7 @@ const AppContextProvider = ({ initialValue, children }) => {
 };
 
 AppContextProvider.propTypes = {
-  initialValue: PropTypes.shape(HeaderPropTypes).isRequired,
+  initialValue: PropTypes.shape(HeaderContextPropTypes).isRequired,
   children: PropTypes.node.isRequired,
 };
 

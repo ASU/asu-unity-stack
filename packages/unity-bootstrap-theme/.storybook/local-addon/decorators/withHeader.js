@@ -1,5 +1,5 @@
 import React from "react";
-import { makeDecorator } from "@storybook/addons";
+import { makeDecorator } from "storybook/preview-api";
 
 import { Basic as Header } from "../../../stories/organisms/global-header/global-header.templates.jsx";
 

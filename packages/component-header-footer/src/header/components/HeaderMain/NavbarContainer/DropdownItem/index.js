@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
 
 import { useAppContext } from "../../../../core/context/app-context";
+import { CLASS_NAMES } from "../../../../core/constants/classNames";
 import { ButtonPropTypes } from "../../../../core/models/app-prop-types";
 import { Button } from "../../../Button";
 import { DropdownWrapper } from "./index.styles";
@@ -15,24 +16,28 @@ const LINK_DEFAULT_PROPS = {
   type: "internal link",
   region: "navbar",
   section: "main navbar",
+  component: "dropdown menu",
   text: "",
 };
 
-const HeadingItem = ({ text }) => <h3 className="ul-heading">{text}</h3>;
+const HeadingItem = ({ text }) => (
+  <h3 className={CLASS_NAMES.UL_HEADING}>{text}</h3>
+);
 
 HeadingItem.propTypes = {
   text: PropTypes.string,
 };
 
 const ButtonItem = ({ link, dropdownName, handleLinkEvent }) => (
-  <li className="nav-button">
+  <div className={CLASS_NAMES.NAV_BUTTON}>
     <Button
       text={link.text}
-      color={link.color || "dark"}
+      color={link.color || "maroon"}
       href={link.href}
       onClick={e => handleLinkEvent(e, link)}
+      onKeyDown={e => handleLinkEvent(e, link)}
     />
-  </li>
+  </div>
 );
 
 ButtonItem.propTypes = {
@@ -46,7 +51,7 @@ ButtonItem.propTypes = {
 };
 
 const LinkItem = ({ link, dropdownName, handleLinkEvent }) => (
-  <li className="nav-link">
+  <li className={CLASS_NAMES.NAV_LINK}>
     <a
       {...(!link.href ? { tabIndex: 0 } : {})}
       href={link.href}
@@ -71,11 +76,11 @@ LinkItem.propTypes = {
  * @typedef { import("../../../../core/models/types").Button } Button
  * @typedef {{
  *  dropdownName: string
- *  items: [object][]
+ *  items: Array<Array<object>>
  *  buttons: Button[]
  *  classes?: string,
  *  listId: string
- *  setItemOpened: Function
+ *  opened: boolean
  *  parentLink: React.RefObject<HTMLElement> | null
  * }} DropdownItemProps
  */
@@ -90,11 +95,27 @@ const DropdownItem = ({
   buttons,
   classes,
   listId,
-  setItemOpened,
+  opened,
   parentLink,
 }) => {
-  const { breakpoint } = useAppContext();
-  const isMega = items?.length > 2;
+  const {
+    breakpoint,
+    headerHeight,
+    setItemOpened,
+    setMobileMenuOpen,
+    mobileMenuOpen,
+  } = useAppContext();
+  // Calculate total columns for mega menu layout by summing the span of each
+  // column, defaulting to 1 if not specified, or 0 if no first item exists
+  const cols = items.reduce((acc, lists) => {
+    if (lists?.[0]) {
+      return acc + (lists[0].span || 1);
+    }
+    // no first item exists
+    return acc;
+  }, 0);
+
+  const isMega = cols > 2;
   /**
    * @type {React.MutableRefObject<HTMLDivElement|null>}
    */
@@ -109,6 +130,16 @@ const DropdownItem = ({
       setAlignedRight(elPosition > breakpointPosition);
     }
   }, []);
+  useEffect(() => {
+    if (opened && dropdownRef?.current?.parentElement) {
+      dropdownRef.current.parentElement.scrollIntoView(
+        /** @type {ScrollIntoViewOptions} */ {
+          behavior: "smooth",
+          block: "start",
+        }
+      );
+    }
+  }, [dropdownRef, opened]);
 
   const stopPropagation = e => e.stopPropagation();
 
@@ -118,14 +149,13 @@ const DropdownItem = ({
 
     const focusNextLink = () => {
       const nextLink = parentElement.nextElementSibling?.firstChild;
-      if (nextLink) nextLink.focus();
+      if (typeof nextLink?.focus === "function") nextLink.focus();
     };
 
     const focusPrevLink = () => {
       const prevLink = parentElement.previousElementSibling?.firstChild;
-      if (prevLink) prevLink.focus();
+      if (typeof prevLink?.focus === "function") prevLink.focus();
     };
-
     stopPropagation(e);
 
     if (key === "ArrowDown") {
@@ -134,17 +164,25 @@ const DropdownItem = ({
     } else if (key === "ArrowUp") {
       e.preventDefault();
       focusPrevLink();
-    } else if (key === "Escape") {
+    } else if (key === "Escape" && opened) {
       setItemOpened();
-      if (parentLink?.current) parentLink.current.focus();
+      if (typeof parentLink?.current?.focus === "function") {
+        parentLink.current.focus();
+      }
+    } else if (key === "Escape" && !opened && mobileMenuOpen) {
+      setMobileMenuOpen(false);
     } else if (key === "Enter" || key === " " || type === "click") {
+      // Single page apps do not leave the page on link click,
+      // so we need to manually close the menu and trigger the onClick event
+      setMobileMenuOpen(false);
+      setItemOpened();
       link?.onClick?.(e);
       trackGAEvent({ ...LINK_DEFAULT_PROPS, text: link.text });
     }
   };
 
   const renderItem = (link, index) => {
-    const key = `${link.text}-${link.href || index}`;
+    const key = `${link.text}-${link.href}-${index}`;
     if (link.type === "heading")
       return <HeadingItem key={key} text={link.text} />;
     if (link.type === "button")
@@ -173,20 +211,71 @@ const DropdownItem = ({
         isMega ? " mega" : ""
       }`}
       breakpoint={breakpoint}
+      headerHeight={headerHeight}
     >
-      <div id={MULTIPLE_SUBMENUS ? listId : ""} className="dropdown-container">
-        {items?.map((item, index0) => {
-          const genKey = idGenerator(`dropdown-item-${index0}-`);
-          const key = genKey.next().value;
-          return (
-            <ul id={MULTIPLE_SUBMENUS ? `${listId}-${key}` : listId} key={key}>
-              {item.map((link, index) => renderItem(link, index))}
-            </ul>
-          );
-        })}
+      <div
+        style={{ "--cols": cols < 3 ? 4 : cols }}
+        id={MULTIPLE_SUBMENUS ? listId : ""}
+        className={CLASS_NAMES.DROPDOWN_CONTAINER}
+      >
+        <>
+          {items?.map((item, index0) => {
+            const genKey = idGenerator(`dropdown-item-${index0}-`);
+            const key = genKey.next().value;
+            return (
+              <div
+                className={CLASS_NAMES.DROPDOWN_CONTAINER_COLUMN}
+                style={{ "--span": item[0].span || 1 }}
+                key={`${listId}-${key}`}
+                id={MULTIPLE_SUBMENUS ? `${listId}-${key}` : listId}
+              >
+                {(() => {
+                  let currentUl = [];
+                  const uls = [];
+                  item.forEach((link, index) => {
+                    if (link.type === "heading") {
+                      if (currentUl.length > 0) {
+                        uls.push(currentUl);
+                        currentUl = [];
+                      }
+                      uls.push([link]);
+                    } else if (link.type === "button") {
+                      if (currentUl.length > 0) {
+                        uls.push(currentUl);
+                        currentUl = [];
+                      }
+                      uls.push([link]);
+                    } else {
+                      currentUl.push(link);
+                    }
+                  });
+
+                  if (currentUl.length > 0) {
+                    uls.push(currentUl);
+                  }
+
+                  return uls.map((group, groupIndex) => {
+                    const groupKey = `${key}-group-${groupIndex}`;
+                    if (group.length === 1 && group[0].type === "heading") {
+                      return renderItem(group[0], groupIndex);
+                    }
+                    if (group.length === 1 && group[0].type === "button") {
+                      return renderItem(group[0], groupIndex);
+                    }
+                    return (
+                      <ul key={groupKey}>
+                        {group.map((link, index) => renderItem(link, index))}
+                      </ul>
+                    );
+                  });
+                })()}
+              </div>
+            );
+          })}
+        </>
       </div>
       {buttons && (
-        <div className="dropdown-button-container">
+        <div className={CLASS_NAMES.DROPDOWN_BUTTON_CONTAINER}>
           <div>
             {buttons.map((button, index) => (
               <Button
@@ -207,19 +296,21 @@ const DropdownItem = ({
 DropdownItem.propTypes = {
   dropdownName: PropTypes.string,
   items: PropTypes.arrayOf(
-    PropTypes.shape({
-      text: PropTypes.string,
-      selected: PropTypes.bool,
-      onClick: PropTypes.func,
-      href: PropTypes.string,
-    })
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        text: PropTypes.string,
+        selected: PropTypes.bool,
+        onClick: PropTypes.func,
+        href: PropTypes.string,
+      })
+    )
   ),
   buttons: PropTypes.arrayOf(PropTypes.shape(ButtonPropTypes)),
   classes: PropTypes.string,
   listId: PropTypes.string,
+  opened: PropTypes.bool,
   setItemOpened: PropTypes.func,
   parentLink: PropTypes.shape({
-    focus: PropTypes.func,
     current: PropTypes.instanceOf(HTMLElement),
   }),
 };

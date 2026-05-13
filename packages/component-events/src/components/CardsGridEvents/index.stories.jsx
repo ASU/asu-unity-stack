@@ -2,7 +2,7 @@ import React from "react";
 
 import { CardsGridEvents } from ".";
 
-import { createMockParam } from "../../core/utils";
+import { createMockHandlers } from "../../core/utils";
 
 /** @typedef {import("@asu/unity-react-core").FeedType } FeedType */
 
@@ -10,7 +10,7 @@ export default {
   title: "Events component/Cards Grid",
   component: CardsGridEvents,
   parameters: {
-    mockData: createMockParam(),
+    msw: { handlers: createMockHandlers() },
   },
 };
 

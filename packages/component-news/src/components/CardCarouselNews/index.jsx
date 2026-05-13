@@ -4,7 +4,7 @@ import React, { useContext, useEffect } from "react";
 
 import { trackReactComponent } from "@asu/shared";
 import { BaseFeed } from "../../core/components/BaseFeed";
-import { defaultProps } from "../../core/constants/default-props";
+import { defaultProps as coreDefaultProps } from "../../core/constants/default-props";
 import { NewsWrapper } from "./index.styles";
 
 /**
@@ -27,6 +27,7 @@ const cardRow = (feed, index, cardButton) => ({
       href: feed.buttonLink,
     },
   ],
+  cardLink: feed.eventButtonUrl || feed?.buttonLink,
 });
 
 /**
@@ -42,7 +43,7 @@ const CarouselTemplate = ({ cardButton }) => {
     <NewsWrapper>
       <CardCarousel
         width="auto"
-        cardType="story"
+        cardType="news"
         perView="3"
         cardItems={cardItems || []}
       />
@@ -77,7 +78,7 @@ const CardCarouselNews = ({ cardButton, ...props }) => {
     // Calling the high order component that fetches the data
     <BaseFeed {...props}>
       <CarouselTemplate
-        cardButton={{ ...defaultProps.cardButton, ...cardButton }}
+        cardButton={{ ...coreDefaultProps.cardButton, ...cardButton }}
       />
     </BaseFeed>
   );

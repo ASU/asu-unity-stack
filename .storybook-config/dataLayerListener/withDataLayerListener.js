@@ -1,48 +1,40 @@
-import { makeDecorator, useChannel, useEffect } from "@storybook/addons";
+import { useChannel } from "storybook/preview-api";
+import { useEffect } from "react";
 import { EVENTS, PARAM_KEY } from "./constants";
 
-export const withDataLayerListener = makeDecorator({
-  name: "withDataLayerListener",
-  parameterName: PARAM_KEY,
-  skipIfNoParametersOrOptions: false,
-  wrapper: (storyFn, context ) => {
-    const emit = useChannel({});
+export const withDataLayerListener = (storyFn, context) => {
+  const emit = useChannel({});
 
-    function removeDOMObjects(eventObject){
-      return Object.entries(eventObject).reduce((acc, [k, v])=>{
-        acc[k] = (typeof v === "object" && v.tagName) ? v.tagName : v;
-        return acc
-    },{})
-    }
+  function removeDOMObjects(eventObject){
+    return Object.entries(eventObject).reduce((acc, [k, v])=>{
+      acc[k] = (typeof v === "object" && v.tagName) ? v.tagName : v;
+      return acc
+  },{})
+  }
 
-    function newPush() {
-      for (var i = 0, n = this.length, l = arguments.length; i < l; i++, n++) {
-        this[n] = arguments[i];
-        emit(EVENTS.ADD_EVENT, {
-          event: removeDOMObjects(arguments[i]),
-        });
-      }
-      return n;
-    }
-
-    const listenToDataLayer = () => {
-      window.dataLayer = window.dataLayer || [];
-      Object.defineProperty(window.dataLayer, "push", {
-        value: newPush,
-        writable: true,
-        enumerable: true,
-        configurable: true,
+  function newPush() {
+    for (var i = 0, n = this.length, l = arguments.length; i < l; i++, n++) {
+      this[n] = arguments[i];
+      emit(EVENTS.ADD_EVENT, {
+        event: removeDOMObjects(arguments[i]),
       });
     }
+    return n;
+  }
 
-    useEffect(()=>{
-      setTimeout(listenToDataLayer, 1000);
-    }, [])
+  const listenToDataLayer = () => {
+    window.dataLayer = window.dataLayer || [];
+    Object.defineProperty(window.dataLayer, "push", {
+      value: newPush,
+      writable: true,
+      enumerable: true,
+      configurable: true,
+    });
+  }
 
-    return storyFn(context);
-  },
-});
+  useEffect(()=>{
+    setTimeout(listenToDataLayer, 1000);
+  }, [])
 
-if (module && module.hot && module.hot.decline) {
-  module.hot.decline();
-}
+  return storyFn(context);
+};

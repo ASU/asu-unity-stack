@@ -9,14 +9,14 @@ spec:
   securityContext:
     runAsUser: 1000 # default UID of jenkins user to node user in agent image
   containers:
-  - name: node20
-    image: 'node:20.15'
+  - name: node24
+    image: 'node:24.13.1'
     imagePullPolicy: Always
     command:
     - cat
     tty: true
   - name: playwright
-    image: 'mcr.microsoft.com/playwright:v1.50.1-jammy'
+    image: 'mcr.microsoft.com/playwright:v1.55.1-noble'
     imagePullPolicy: Always
     command:
     - cat
@@ -52,7 +52,7 @@ spec:
                 branch 'testing'
             }
             steps {
-                container('node20') {
+                container('node24') {
                   script {
                     writeFile file: '.npmrc', text: '@asu:registry=https://npm.pkg.github.com/ \n' +
                       '//npm.pkg.github.com/:_authToken=' + env.RAW_GH_TOKEN_PSW
@@ -70,7 +70,7 @@ spec:
         }
         stage('Build') {
             steps {
-                container('node20') {
+                container('node24') {
                   withEnv(["GITHUB_AUTH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
                     echo '## Install and build Unity monorepo...'
                     sh 'yarn install'
@@ -84,7 +84,7 @@ spec:
               changeRequest target: 'dev'
           }
           steps {
-            container('node20') {
+            container('node24') {
               script {
                 echo '## Build storybook'
                 sh 'yarn build-storybook'
@@ -206,7 +206,7 @@ spec:
             expression { env.CHANGE_TARGET == 'dev' }
           }
           steps {
-              container('node20') {
+              container('node24') {
                 withEnv(["GITHUB_AUTH_TOKEN=${RAW_GH_TOKEN_PSW}"]) {
                   echo '## Running security checks...'
                   sh 'yarn install --immutable'
@@ -233,7 +233,7 @@ spec:
                 branch 'dev'
             }
             steps {
-                container('node20') {
+                container('node24') {
                     script {
                       writeFile file: '.npmrc', text: '@asu:registry=https://npm.pkg.github.com/ \n' +
                       '//npm.pkg.github.com/:_authToken=' + env.RAW_GH_TOKEN_PSW
@@ -250,7 +250,7 @@ spec:
               branch 'dev'
             }
             steps {
-                container('node20') {
+                container('node24') {
                     script {
                         echo '# Final, post-publish install and build to include just published pkgs...'
                         sh 'yarn install --immutable'

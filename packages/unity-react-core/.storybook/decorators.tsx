@@ -5,7 +5,7 @@ import { Decorator } from "@storybook/react";
 import React, { forwardRef, ReactNode, StrictMode, useEffect } from "react";
 
 import { getBootstrapHTML } from "../src/components/GaEventWrapper/useBaseSpecificFramework";
-import { useChannel } from "@storybook/preview-api";
+import { useChannel } from "storybook/preview-api";
 
 type ContainerComponent<T, P = HTMLElement> = React.ForwardRefExoticComponent<T & React.RefAttributes<P>>;
 
@@ -55,6 +55,9 @@ export const withContainer: Decorator = (
         // custom events created by eventSpy.js to allow storybook to dispatch load events after the page is loaded
         document.dispatchEvent(new Event("sb_DOMContentLoaded"));
         window.dispatchEvent(new Event('sb_load'));
+      } else {
+        window.dispatchEvent(new Event("DOMContentLoaded"));
+        window.dispatchEvent(new Event("load"));
       }
 
       emit("HTML/CodeUpdated", { code: root.current.innerHTML });

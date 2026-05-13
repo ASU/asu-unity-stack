@@ -76,29 +76,29 @@ function initDataLayer() {
    */
   document.querySelectorAll("[data-ga]")?.forEach(element =>
     element.addEventListener("click", () => {
-      const name = element.getAttribute("data-ga-name") || "";
-      const event = element.getAttribute("data-ga-event") || "";
-      let action = element.getAttribute("data-ga-action") || "";
+      const gaEvent = {};
+
+      Array.from(element.attributes).forEach(attr => {
+        if (attr.name.startsWith("data-ga-")) {
+          const key = attr.name.replace("data-ga-", "");
+          const value = attr.value;
+          if (value) {
+            gaEvent[key] = value.toLowerCase();
+          }
+        } else if (attr.name === "data-ga") {
+          const value = attr.value;
+          if (value) {
+            gaEvent.text = value.toLowerCase();
+          }
+        }
+      });
+
       const expanded = element.getAttribute("aria-expanded");
       if (expanded) {
-        action = expanded === "false" ? "open" : "close";
+        gaEvent.action = expanded === "false" ? "open" : "close";
       }
-      const type = element.getAttribute("data-ga-type") || "";
-      const section = element.getAttribute("data-ga-section") || "";
-      const region = element.getAttribute("data-ga-region") || "";
-      const text = element.getAttribute("data-ga") || "";
-      const component = element.getAttribute("data-ga-component") || "";
 
-      pushGAEvent({
-        name: name.toLowerCase(),
-        event: event.toLowerCase(),
-        action: action.toLowerCase(),
-        type: type.toLowerCase(),
-        section: section.toLowerCase(),
-        region: region.toLowerCase(),
-        text: text.toLowerCase(),
-        component: component.toLowerCase(),
-      });
+      pushGAEvent(gaEvent);
     })
   );
 

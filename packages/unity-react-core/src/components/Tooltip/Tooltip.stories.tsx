@@ -1,6 +1,7 @@
 import React from "react";
 import { Tooltip } from "./Tooltip";
-import { ButtonIconOnly } from "../ButtonIconOnly/ButtonIconOnly";
+import { Image } from "../Image/Image";
+import { img01 } from "@asu/shared";
 /**
  * TODO
  * https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/tooltip_role
@@ -10,38 +11,68 @@ import { ButtonIconOnly } from "../ButtonIconOnly/ButtonIconOnly";
  *
  * probably limit the triggers to something with a visual inidicator (like button or link)
  */
-export default {
-  title: "Components/Tooltip",
-  component: Tooltip,
-};
 
 const defaultProps = {
   title: "Header",
-  content: "Content",
-}
-
-const tooltipTemplate = args => <Tooltip {...args} />;
-
-export const Icon = {
-  render: tooltipTemplate.bind({}),
+  content: "Content goes here, this is a tooltip. It can be long or short.",
+};
+export default {
+  title: "Components/Tooltip",
+  component: Tooltip,
+  decorators: [
+    story => (
+      <>
+        <div style={{ margin: "100px 10px" }}>
+          Lorem ipsum dolor <button tabIndex={0}>Focus</button>sit amet,
+          consectetur adipiscing elit.
+          {story()} Sed Sed do eiusmod tempor incididunt
+          <button tabIndex={0}>Focus</button>
+          ut labore et dolore magna aliqua. Ut
+          enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+          ut aliquip ex ea commodo <button tabIndex={0}>Focus</button>consequat. Duis aute irure dolor in
+          {story()} Sed Sed do eiusmod tempor incididunt
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          ut aliquip ex ea commodo <button tabIndex={0}>Focus</button>consequat. Duis aute irure dolor in
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+      </>
+    ),
+  ],
+  render: args => <Tooltip {...args} />,
   args: {
     ...defaultProps,
-    triggerElement: <ButtonIconOnly icon={["fas","info"]} />,
-  }
+  },
 };
 
-export const link = {
-  render: args => <div>This is a <Tooltip {...args} /> sentence.</div>,
-  args: {
-    ...defaultProps,
-    triggerElement: <a href="javascript:void(0);">Tooltiptrigger</a>,
-  }
+export const NoChildrenDefaultIcon = {};
+
+export const Link = {
+  render: args => (
+    <Tooltip {...args}>
+      <a href="https://example.com">Tooltiptrigger</a>
+    </Tooltip>
+  ),
 };
 
-export const text = {
-  render: tooltipTemplate.bind({}),
-  args: {
-    ...defaultProps,
-    triggerElement: <span>Tooltiptrigger</span>,
-  }
+export const Text = {
+  render: args => <Tooltip {...args}>just a plain string</Tooltip>,
+};
+
+export const JsxSpanContainingText = {
+  render: args => (
+    <Tooltip {...args}>
+      <span> html string Tooltiptrigger</span>
+    </Tooltip>
+  ),
+};
+
+export const ImageOnly = {
+  render: args => (
+    <Tooltip {...args}>
+      <a style={{ display: "inline-block", maxWidth: "550px" }}>
+        <Image src={img01} alt={""} />
+      </a>
+    </Tooltip>
+  ),
 };

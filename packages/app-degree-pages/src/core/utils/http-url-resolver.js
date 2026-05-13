@@ -54,6 +54,7 @@ function urlResolver(dataSource, defaultDataSource) {
   const { endpoint, ...keyValues } = httpParameters;
 
   const splitParamsContainingCommas = (paramName, csvString) => {
+    if (!csvString || paramName === undefined) return ""; // Do not include in param fetch call if no filter options provided e.g. "blacklistAcadPlan" is equal to null
     // httpParameters that are arrays format to send to API should have 1 paramName seperated by commas
     // input: paramName = "foo", csvString = ["bar", "baz"]
     // output: "foo=bar,baz"

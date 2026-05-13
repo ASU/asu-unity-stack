@@ -10,7 +10,17 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `The Button component can be used to generate UDS-compliant \`<button>\` DOM elements and Button-styled \`<a>\` links. If you are working with third-party React link components, such as react-router's Link, this Button component will accept those components and and style them in UDS.
+        component: `The Button component can be used to generate UDS-compliant \`<button>\` DOM elements and Button-styled \`<a>\` links. It supports both legacy button styles and new UDS button variants.
+
+## New UDS Button Variants
+
+The Button component now supports three modern variants via the \`variant\` prop:
+- **Borderless**: Text-only button that fills with color on hover
+- **Outline**: Button with border and transparent background that fills on hover
+- **Filled**: Solid background button (default when variant is used)
+
+When using the \`variant\` prop, the button size options are: \`large\` (default), \`medium\`, \`small\`.
+
 
 ## Usage
 
@@ -219,4 +229,126 @@ ReactRouterLinkButton.parameters = {
 </Router>`,
     },
   },
+};
+
+// New UDS Button Variant Stories
+export const FilledButton = Template.bind({});
+FilledButton.args = {
+  label: "Filled Button",
+  variant: "filled",
+  color: "gold",
+  onClick: handleClick,
+};
+FilledButton.parameters = {
+  docs: {
+    description: {
+      story: `The filled variant provides a solid background button. This is the default style when using the variant prop.`,
+    },
+  },
+};
+
+export const OutlineButton = Template.bind({});
+OutlineButton.args = {
+  label: "Outline Button",
+  variant: "outline",
+  color: "maroon",
+  onClick: handleClick,
+};
+OutlineButton.parameters = {
+  docs: {
+    description: {
+      story: `The outline variant provides a button with border and transparent background that fills on hover.`,
+    },
+  },
+};
+
+export const BorderlessButton = Template.bind({});
+BorderlessButton.args = {
+  label: "Borderless Button",
+  variant: "borderless",
+  color: "gold",
+  onClick: handleClick,
+};
+BorderlessButton.parameters = {
+  docs: {
+    description: {
+      story: `The borderless variant provides a text-only button that fills with color on hover.`,
+    },
+  },
+};
+
+export const AllVariants = () => (
+  <div className="container-fluid">
+    <div className="col col-sm-12 p-3">
+      <h3>UDS Button Variants</h3>
+      <Button
+        label="Borderless"
+        variant="borderless"
+        color="gold"
+        onClick={handleClick}
+      />
+      <Button
+        label="Outline"
+        variant="outline"
+        color="gold"
+        onClick={handleClick}
+      />
+      <Button
+        label="Filled sm"
+        variant="filled"
+        color="gold"
+        onClick={handleClick}
+        size="small"
+      />
+      <Button
+        label="Filled md"
+        variant="filled"
+        color="gold"
+        onClick={handleClick}
+        size="medium"
+      />
+      <Button
+        label="Filled lg/default"
+        variant="filled"
+        color="gold"
+        onClick={handleClick}
+        size="large"
+      />
+      <h3>All Colors</h3>
+      <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+        <Button
+          label="Gold"
+          variant="filled"
+          color="gold"
+          onClick={handleClick}
+        />
+        <Button
+          label="Maroon"
+          variant="filled"
+          color="maroon"
+          onClick={handleClick}
+        />
+        <Button
+          label="Gray"
+          variant="filled"
+          color="gray"
+          onClick={handleClick}
+        />
+        <Button
+          label="Dark"
+          variant="filled"
+          color="dark"
+          onClick={handleClick}
+        />
+      </div>
+    </div>
+  </div>
+);
+AllVariants.parameters = {
+  docs: {
+    description: {
+      story: `Showcase of all button variants and colors available.`,
+    },
+  },
+  controls: { disable: true },
 };

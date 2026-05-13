@@ -166,6 +166,14 @@ function WebDirectory({
     return (
       <>
         <WebDirLayout className={gridView ? "grid-view" : ""}>
+          <ViewSelector view={gridView} setView={setGridView} label="View" />
+          <div className="sort">
+            <SortPicker
+              customSortOptions={customSortOptions}
+              sort={sort}
+              onChange={val => setNewSort(val)}
+            />
+          </div>
           {alphaFilter === "true" && (
             <FilterComponent
               filterLabel="Filter By Last Initial"
@@ -178,14 +186,6 @@ function WebDirectory({
               }
             />
           )}
-          <ViewSelector view={gridView} setView={setGridView} label="View" />
-          <div className="sort">
-            <SortPicker
-              customSortOptions={customSortOptions}
-              sort={sort}
-              onChange={val => setNewSort(val)}
-            />
-          </div>
           <div className="results">
             <ASUSearchResultsList
               engine={enginesWithParams[searchTypeEngineMap[searchType]]}

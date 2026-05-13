@@ -36,9 +36,8 @@ const SearchMessage = ({ term, number, loggedIn, engine, GASource }) => {
       )}
       <span>
         {" "}
-        {!loggedIn && engine === "web_dir_students" && (
-          <>public</>
-        )} results.{" "}
+        {!loggedIn && engine === "web_dir_students" && <>public</>}{" "}
+        results.{" "}
       </span>
       {!loggedIn && engine === "web_dir_students" && (
         <span>

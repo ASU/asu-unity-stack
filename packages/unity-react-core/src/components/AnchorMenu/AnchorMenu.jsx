@@ -56,11 +56,21 @@ export const AnchorMenu = ({
     showMenu: false,
     sticky: false,
   });
-  const headerHeight = isSmallDevice ? 110 : 142;
+
+  const getPageHeader = () =>
+    document.getElementById("asu-header") ||
+    document.getElementById("headerContainer") ||
+    document.getElementById("asuHeader");
+
+  const getHeaderBottomOffset = () => {
+    const pageHeader = getPageHeader();
+    return Math.max(pageHeader?.getBoundingClientRect().bottom || 0, 0);
+  };
 
   const handleWindowScroll = () => {
     const newState = {};
     const curPos = window.scrollY;
+    const headerBottomOffset = getHeaderBottomOffset();
     // Select first next sibling element of the anchor menu
     const firstElement = document
       .getElementById(firstElementId)
@@ -77,7 +87,7 @@ export const AnchorMenu = ({
 
     // Change active containers on scroll
     const subsHeight = state.hasHeader
-      ? headerHeight + anchorMenuHeight
+      ? headerBottomOffset + anchorMenuHeight
       : anchorMenuHeight;
     items?.forEach(({ targetIdName }) => {
       const container = document.getElementById(targetIdName);
@@ -105,10 +115,7 @@ export const AnchorMenu = ({
 
   // Is ASU Header on the document
   const isHeader = () => {
-    const pageHeader =
-      document.getElementById("asu-header") ||
-      document.getElementById("headerContainer") ||
-      document.getElementById("asuHeader");
+    const pageHeader = getPageHeader();
     return !!pageHeader;
   };
 
@@ -162,9 +169,10 @@ export const AnchorMenu = ({
   }, [state.hasHeader]);
 
   const handleClickLink = container => {
+    const headerBottomOffset = getHeaderBottomOffset();
     // Set scroll position considering if ASU Header is setted or not
     const curScroll =
-      window.scrollY - (state.hasHeader ? headerHeight + 100 : 100);
+      window.scrollY - (state.hasHeader ? headerBottomOffset + 100 : 100);
     const anchorMenuHeight = isSmallDevice ? 410 : 90;
     // Set where to scroll to
     let scrollTo =
@@ -187,11 +195,19 @@ export const AnchorMenu = ({
     }));
   };
 
+  const headerBottomOffset = state.hasHeader ? getHeaderBottomOffset() : 0;
+  const WrapperComponent = isBootstrap ? "div" : AnchorMenuWrapper;
+  const wrapperProps = isBootstrap
+    ? {}
+    : {
+        // @ts-ignore
+        requiresAltMenuSpacing: state.hasAltMenuSpacing,
+      };
+
   return (
     items?.length > 0 && (
-      <AnchorMenuWrapper
-        // @ts-ignore
-        requiresAltMenuSpacing={state.hasAltMenuSpacing}
+      <WrapperComponent
+        {...wrapperProps}
         ref={anchorMenuRef}
         id="uds-anchor-menu"
         className={classNames(
@@ -203,7 +219,10 @@ export const AnchorMenu = ({
             [`with-header`]: state.hasHeader,
           }
         )}
-        style={state.showMenu ? { borderBottom: 0 } : {}}
+        style={{
+          ...(state.showMenu ? { borderBottom: 0 } : {}),
+          "--uds-anchor-menu-top": `${headerBottomOffset}px`,
+        }}
       >
         <div className={`${state.containerClass} uds-anchor-menu-wrapper`}>
           {isSmallDevice ? (
@@ -223,13 +242,13 @@ export const AnchorMenu = ({
                 data-bs-target="#collapseAnchorMenu"
                 aria-controls="collapseAnchorMenu"
               >
-                <h4>
+                <h2>
                   {menuTitle}:<i className="fas fa-chevron-down" />
-                </h4>
+                </h2>
               </button>
             </GaEventWrapper>
           ) : (
-            <h4>{menuTitle}:</h4>
+            <h2>{menuTitle}:</h2>
           )}
 
           <div
@@ -265,7 +284,7 @@ export const AnchorMenu = ({
             </nav>
           </div>
         </div>
-      </AnchorMenuWrapper>
+      </WrapperComponent>
     )
   );
 };

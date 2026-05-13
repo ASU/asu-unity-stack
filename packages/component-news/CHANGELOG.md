@@ -1,3 +1,24 @@
+# [@asu/component-news-v4.2.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-news-v4.2.0...@asu/component-news-v4.2.1) (2026-04-08)
+
+
+### Bug Fixes
+
+* **component-news:** update props to match new news cards ([05fd826](https://github.com/asu/asu-unity-stack/commit/05fd826b013935ada61256467f86da3ecaeaea77))
+
+# [@asu/component-news-v4.2.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-news-v4.1.1...@asu/component-news-v4.2.0) (2026-04-03)
+
+
+### Features
+
+* **component-news:** update to new style cards with single links ([0730d35](https://github.com/asu/asu-unity-stack/commit/0730d35f4c12cea8febb5c8e7b70794ee3749128))
+
+# [@asu/component-news-v4.1.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-news-v4.1.0...@asu/component-news-v4.1.1) (2025-12-30)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** refactor defaultProps to use JS default params ([d6ac389](https://github.com/asu/asu-unity-stack/commit/d6ac389ab932f0def44c84b33c5bd5fcf7fb2b4d))
+
 # [@asu/component-news-v4.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-news-v4.0.0...@asu/component-news-v4.1.0) (2025-11-07)
 
 

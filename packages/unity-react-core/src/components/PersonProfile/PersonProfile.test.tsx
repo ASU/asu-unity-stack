@@ -85,8 +85,8 @@ describe("PersonProfile tests", () => {
 
   describe("accessibility tests", () => {
     it("should have proper aria labels for contact links", () => {
-      expect(screen.getByLabelText("Email user")).toBeInTheDocument();
-      expect(screen.getByLabelText("Call user")).toBeInTheDocument();
+      expect(screen.getByLabelText(`Email ${component.container.querySelector("a[href*='mailto:']").innerHTML}`)).toBeInTheDocument();
+      expect(screen.getByLabelText(`Phone ${component.container.querySelector("a[href*='tel:']").innerHTML.replace(/\-/g, " ").replace(/\(/g, "").replace(/\)/g, "")}`)).toBeInTheDocument();
     });
 
     it("should use semantic HTML elements", () => {

@@ -13,12 +13,13 @@
 
 /**
  * @typedef {object} Button
- * @property {string} href
+ * @property {string} [href]
  * @property {("gold"|"maroon"|"light"|"dark")} [color]
  * @property {string} text
  * @property {string} [classes]
  * @property {function} [onClick]
  * @property {function} [onFocus]
+ * @property {("a"|"button"|"div")} [as]
  */
 
 /**
@@ -58,6 +59,17 @@
  * @property {string} searchUrl
  * @property {string} site
  * @property {string} renderDiv - Can be either "true" or "false".
+ */
+
+/**
+ * @typedef {HeaderProps} HeaderContext
+ * @property {number} headerTop
+ * @property {number} headerHeight
+ * @property {number|undefined} itemOpened
+ * @property {function} setItemOpened
+ * @property {boolean} mobileMenuOpen
+ * @property {function} setMobileMenuOpen
+ * @property {function} singlePageAppReset
  */
 
 export const JSDOC = "jsdoc";

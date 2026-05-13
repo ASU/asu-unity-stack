@@ -3,9 +3,11 @@ import { trackGAEvent } from "@asu/shared";
 import React from "react";
 
 import { useAppContext } from "../../core/context/app-context";
+import { CLASS_NAMES, buildClassName } from "../../core/constants/classNames";
 import { Wrapper } from "./index.styles";
 import { Login } from "./Login";
 import { Search } from "./Search";
+import { useIsMobile } from "../../core/hooks/isMobile";
 
 const DEFAULT_GA_EVENT = {
   event: "link",
@@ -19,6 +21,7 @@ const DEFAULT_GA_EVENT = {
 
 const UniversalNavbar = () => {
   const { breakpoint } = useAppContext();
+  const isMobile = useIsMobile(breakpoint);
 
   function getURL() {
     try {
@@ -32,27 +35,33 @@ const UniversalNavbar = () => {
 
   const universalNavLinks = [
     {
-      className: "nav-link visually-hidden-focusable",
+      className: buildClassName(
+        CLASS_NAMES.NAV_LINK,
+        CLASS_NAMES.VISUALLY_HIDDEN_FOCUSABLE
+      ),
       href: "#skip-to-content",
       text: "Skip to main content",
     },
     {
-      className: "nav-link visually-hidden-focusable",
+      className: buildClassName(
+        CLASS_NAMES.NAV_LINK,
+        CLASS_NAMES.VISUALLY_HIDDEN_FOCUSABLE
+      ),
       href: `https://accessibility.asu.edu/report#a11yref=${getURL()}`,
       text: "Report an accessibility problem",
     },
     {
-      className: "nav-link",
+      className: CLASS_NAMES.NAV_LINK,
       href: "https://asu.edu",
       text: "ASU Home",
     },
     {
-      className: "nav-link",
+      className: CLASS_NAMES.NAV_LINK,
       href: "https://my.asu.edu",
       text: "My ASU",
     },
     {
-      className: "nav-link",
+      className: CLASS_NAMES.NAV_LINK,
       href: "https://www.asu.edu/academics/colleges-schools",
       text: "Colleges and Schools",
     },
@@ -62,14 +71,14 @@ const UniversalNavbar = () => {
     <Wrapper
       // @ts-ignore
       breakpoint={breakpoint}
-      className="universal-nav"
+      className={CLASS_NAMES.UNIVERSAL_NAV}
       data-testid="universal-navbar"
       data-elastic-exclude="data-elastic-exclude"
     >
       <div className="container-xl">
-        <div className="header-top">
+        <div className={CLASS_NAMES.HEADER_TOP}>
           <nav className="nav" aria-label="ASU Global">
-            <div className="links-container">
+            <div className={CLASS_NAMES.LINKS_CONTAINER}>
               {universalNavLinks.map(link => (
                 <a
                   key={link.href}
@@ -84,7 +93,7 @@ const UniversalNavbar = () => {
               ))}
               <Login />
             </div>
-            <Search />
+            {!isMobile && <Search />}
           </nav>
         </div>
       </div>

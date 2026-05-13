@@ -151,6 +151,8 @@ Cards - Table of Contents
 
 .card:not(.card.card-foldable) > div:first-of-type:not(.card-image-content) {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .card:not(:has(.card-header)) .card-body {
@@ -227,6 +229,8 @@ Cards - Table of Contents
   //     line-height: 1rem;
   //   }
   // }
+
+
 
 @include media-breakpoint-up(lg) {
   .col-lg-6 .card {
@@ -433,6 +437,89 @@ Cards - Table of Contents
 .card-event-icons > div:first-child {
   width: 16px;
   margin-right: 8px;
+}
+
+/*
+  Arrow link CTA for event and news cards.
+  Replaces button CTAs with a single right-arrow link.
+*/
+
+// Make the content wrapper a flex container for event/news cards with arrow links
+.card-event > div:has(.card-arrow-link),
+.card-news > div:has(.card-arrow-link) {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-link:has(.card-arrow-link) {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-top: auto;
+  padding-bottom: 0px;
+  padding-right: $uds-size-spacing-4;
+}
+
+.card-content-wrapper:has(.card-arrow-link) {
+  padding-bottom: 2rem !important;
+}
+
+.card-arrow-link {
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  color: $asu-gray-2;
+  text-decoration: none;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  font-size: $uds-size-font-large;
+  font-weight: $uds-font-weight-bolder;
+
+  &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+
+  &:hover, &:focus, &:focus-visible, &:active {
+    box-shadow: $uds-color-base-maroon;
+    .fa-arrow-right {
+      color: $uds-color-base-maroon;
+    }
+  }
+
+  .fa-arrow-right {
+    font-size: $uds-size-font-large;
+    color: $asu-gray-4;
+  }
+
+  &:hover {
+    color: $uds-color-base-maroon;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $uds-color-base-bluefocus;
+    outline-offset: 2px;
+  }
+
+  @include media-breakpoint-down(md) {
+    color: $uds-color-base-maroon;
+    border-color: $uds-color-base-maroon;
+
+    .fa-arrow-right {
+      color: inherit;
+      font-size: $uds-size-font-medium;
+    }
+
+  }
 }
 
 .card-horizontal {
@@ -774,4 +861,116 @@ Cards - Table of Contents
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+/*------------------------------------------------------------------
+12. Content Spotlight
+--------------------------------------------------------------------*/
+
+.content-spotlight {
+  position: relative;
+  background-color: #000;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20rem $uds-size-spacing-4 $uds-size-spacing-6 $uds-size-spacing-4;
+  min-height: 600px;
+
+  @include media-breakpoint-up(lg) {
+    padding: $uds-size-spacing-12 $uds-size-spacing-6;
+    min-height: auto;
+  }
+}
+
+.content-spotlight-image-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.content-spotlight-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  left: 0;
+}
+
+.content-spotlight-image {
+  width: 85%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 15%;
+
+  @include media-breakpoint-down(lg) {
+    height: 55%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    object-position: center;
+  }
+}
+
+.content-spotlight-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(180deg, rgba(25,25,25,0) 0%, rgba(25,25,25,0) 25%, rgba(25,25,25,1) 45%);
+  z-index: 1;
+
+  @include media-breakpoint-up(lg) {
+     background-image: linear-gradient(86.74deg, #000000 25%, rgba(0, 0, 0, 0) 55.34%);
+  }
+}
+
+.content-spotlight-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+  margin-top: auto;
+
+  @include media-breakpoint-up(lg) {
+    gap: .75rem;
+  }
+
+  & > *:last-child {
+    margin-top: 0.75rem;
+  }
+
+  @include media-breakpoint-up(lg) {
+    max-width: 50%;
+    margin-top: 0;
+  }
+}
+
+.content-spotlight-icon {
+  color: $uds-color-base-gold;
+  font-size: 25px;
+}
+
+.content-spotlight-title {
+  color: $uds-color-base-white;
+  margin: 0;
+
+  .highlight {
+    color: $uds-color-base-gold;
+  }
+}
+
+.content-spotlight-description {
+  font-family: $uds-font-family-base;
+  font-size: $uds-size-font-large;
+  color: $uds-color-base-white;
+  margin: 0;
+  max-width: 100%;
+
+  @include media-breakpoint-up(lg) {
+    max-width: 420px;
+  }
 }
