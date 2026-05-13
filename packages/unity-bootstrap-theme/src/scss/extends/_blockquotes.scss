@@ -11,9 +11,10 @@ blockquote {
   border-left: none;
   font-weight: inherit;
   padding-left: 0;
-  max-width: none;
+  padding-right: 0;
+  max-width: 772px;
   p {
-    max-width: unset;
+    max-width: 700px;
     overflow-wrap: break-word;
     word-wrap: break-word;
     word-break: break-word;
@@ -45,6 +46,8 @@ blockquote:before {
   font-weight: 700;
 
   padding: $uds-size-spacing-4;
+  padding-left: 0;
+  padding-right: 0;
 
   @include media-breakpoint-down(sm) {
     padding: $uds-size-spacing-4;
@@ -270,6 +273,7 @@ blockquote:before {
     cite.description {
       font-weight: 400;
       padding-left: 0;
+      padding-right: 0;
       display: flex;
       justify-content: flex-start;
     }
