@@ -9,17 +9,18 @@ import React, {
 
 import { MoreDropdown, TabHeader } from "./components";
 import type { GaEventData } from "./components/MoreDropdown";
+import { useBaseSpecificFramework } from "../GaEventWrapper/useBaseSpecificFramework";
 
-type RefMap = Record<string, HTMLAnchorElement | null>;
+type RefMap = Record<string, HTMLButtonElement | null>;
 
 function useRefs(): [
   React.MutableRefObject<RefMap>,
-  (name: string) => (ref: HTMLAnchorElement | null) => void,
+    (name: string) => (ref: HTMLButtonElement | null) => void,
 ] {
   const refs = useRef<RefMap>({});
 
   const register = useCallback(
-    (refName: string) => (ref: HTMLAnchorElement | null) => {
+    (refName: string) => (ref: HTMLButtonElement | null) => {
       refs.current[refName] = ref;
     },
     []
@@ -100,11 +101,11 @@ const TabbedPanels = ({
   const headerTabs = useRef<HTMLDivElement>(null);
   const moreBtnRef = useRef<HTMLDivElement>(null);
   const [headerTabItems, setHeaderTabItems] = useRefs();
-  const tabRefs = useRef<Record<string, HTMLAnchorElement>>({});
+  const tabRefs = useRef<Record<string, HTMLButtonElement>>({});
   const tabWidthsRef = useRef<Record<string, number>>({});
 
   const registerTabNode = useCallback(
-    (id: string) => (node: HTMLAnchorElement | null) => {
+    (id: string) => (node: HTMLButtonElement | null) => {
       setHeaderTabItems(id)(node);
       if (node) {
         tabRefs.current[id] = node;
@@ -178,13 +179,6 @@ const TabbedPanels = ({
   }, [calculateOverflow]);
 
   useEffect(() => {
-    const node = headerTabItems.current[activeTabID];
-    if (node) {
-      node.scrollIntoView();
-    }
-  }, [activeTabID, headerTabItems]);
-
-  useEffect(() => {
     if (
       isMounted.current &&
       initialTab &&
@@ -205,7 +199,6 @@ const TabbedPanels = ({
 
   const updateActiveTabID = (tab: string) => {
     onTabChange(tab);
-    headerTabItems.current[tab]?.focus();
     setActiveTabID(tab);
   };
 
@@ -234,25 +227,41 @@ const TabbedPanels = ({
   };
 
   const incrementIndex = (up = true) => {
-    const count = childrenArray.length;
+    // Only navigate through currently visible (non-overflow) tabs
+    const navigableTabs = visibleTabs;
+    const count = navigableTabs.length;
+    if (count === 0) return;
     const num = up ? 1 : -1;
-    const currPos = childrenArray.findIndex((c) => c.props.id === activeTabID);
-    const newTabID = childrenArray[(count + currPos + num) % count].props.id;
+    const currPos = navigableTabs.indexOf(activeTabID);
+    // If active tab is in overflow, start from edge of visible list
+    const startPos = currPos === -1 ? (up ? count - 1 : 0) : currPos;
+    const newTabID = navigableTabs[(count + startPos + num) % count];
     updateActiveTabID(newTabID);
+    // Focus the new tab (keyboard-triggered navigation)
+    headerTabItems.current[newTabID]?.focus();
   };
+
+  const { isReact } = useBaseSpecificFramework();
 
   let navClasses = "uds-tabbed-panels";
   if (bgColor === "bg-dark") {
     navClasses += " uds-tabbed-panels-dark";
   }
 
+  // When the active tab is in the overflow dropdown, the first visible tab
+  // becomes the roving-tabindex entry point so keyboard users can reach the row.
+  const activeIsOverflow = overflowTabs.includes(activeTabID);
+
   return (
     <div className={bgColor}>
-      <nav className={navClasses}>
+      <nav className={navClasses} {...(isReact ? { "data-react": "true" } : {})}>
         <div className="nav nav-tabs" role="tablist" ref={headerTabs}>
           {visibleTabs.map((tabId, index) => {
             const child = idToChild[tabId];
             if (!child) return null;
+            const isFocusEntry = activeIsOverflow
+              ? index === 0
+              : activeTabID === tabId;
 
             return (
               <TabHeader
@@ -260,6 +269,7 @@ const TabbedPanels = ({
                 id={child.props.id}
                 title={child.props.title}
                 selected={activeTabID === child.props.id}
+                isFocusEntry={isFocusEntry}
                 gaData={trackLinkEvent}
                 selectTab={switchToTab}
                 key={child.props.id}
