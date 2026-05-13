@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useId, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
 
@@ -32,26 +32,23 @@ interface MoreDropdownProps {
   activeTabID?: string;
   selectTab?: (e: React.MouseEvent | React.KeyboardEvent, id: string, title: string) => void;
   gaData?: GaEventData;
-  openRight?: boolean;
+  ref?: React.Ref<HTMLDivElement>;
 }
 
-const MoreDropdown = React.forwardRef<HTMLDivElement, MoreDropdownProps>((
-  {
-    overflowTabs,
-    idToChild,
-    activeTabID,
-    selectTab,
-    gaData,
-    openRight = false,
-  },
-  ref
-) => {
+const MoreDropdown = ({
+  overflowTabs,
+  idToChild,
+  activeTabID,
+  selectTab,
+  gaData,
+  ref,
+}: MoreDropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const itemRefs = useRef<HTMLButtonElement[]>([]);
   const safeOverflow = Array.isArray(overflowTabs) ? overflowTabs : [];
-  const menuId = useId();
+  const menuId = "more-dropdown-menu";
   const hasActiveOverflowTab = safeOverflow.includes(activeTabID ?? "");
 
   const items: DropdownItem[] = safeOverflow.map((tabId) => {
@@ -72,6 +69,13 @@ const MoreDropdown = React.forwardRef<HTMLDivElement, MoreDropdownProps>((
       triggerRef.current?.focus();
     }
   }, []);
+
+  // Move focus to first item when dropdown opens
+  useEffect(() => {
+    if (isOpen) {
+      itemRefs.current[0]?.focus();
+    }
+  }, [isOpen]);
 
   const toggle = (event: React.MouseEvent) => {
     event.preventDefault();
@@ -151,51 +155,25 @@ const MoreDropdown = React.forwardRef<HTMLDivElement, MoreDropdownProps>((
   return (
     <div
       ref={setRootRef}
-      className={`uds-more-dropdown${openRight ? " dropdown-open-right" : ""}${
-        hidden ? " uds-more-dropdown-hidden" : ""
-      }`}
+      className="uds-more-dropdown"
       aria-hidden={hidden || undefined}
+      style={hidden ? { visibility: "hidden", pointerEvents: "none" } : undefined}
     >
       <GaEventWrapper gaData={gaData ?? {}}>
         <button
           ref={triggerRef}
           type="button"
           onClick={toggle}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" || e.key === " ") {
-              e.preventDefault();
-              if (!isOpen) {
-                setIsOpen(true);
-                // Per ARIA APG menu-button pattern: keyboard open must move focus to first item
-                requestAnimationFrame(() => itemRefs.current[0]?.focus());
-              } else {
-                close();
-              }
-            } else if (isOpen && e.key === "ArrowDown") {
-              e.preventDefault();
-              itemRefs.current[0]?.focus();
-            } else if (isOpen && e.key === "ArrowUp") {
-              e.preventDefault();
-              itemRefs.current[items.length - 1]?.focus();
-            } else if (isOpen && e.key === "Escape") {
-              e.preventDefault();
-              close();
-            }
-          }}
           aria-haspopup="true"
           aria-expanded={isOpen}
           aria-controls={menuId}
-          aria-label={`More, ${items.length} additional tab${items.length !== 1 ? "s" : ""}`}
           className={`uds-tab more-dropdown-button${hasActiveOverflowTab ? " active" : ""}`}
         >
-          <span className="more-dropdown-button-inner">
-            <span aria-hidden="true">More</span>
-            <i
-              aria-hidden="true"
-              className="fas fa-chevron-down more-dropdown-icon"
-            />
-          </span>
-          <span className="more-dropdown-button-indicator" aria-hidden="true" />
+          <span>More</span>
+          <i
+            aria-hidden="true"
+            className={`fas fa-chevron-down more-dropdown-icon${isOpen ? " open" : ""}`}
+          />
         </button>
       </GaEventWrapper>
 
@@ -236,9 +214,7 @@ const MoreDropdown = React.forwardRef<HTMLDivElement, MoreDropdownProps>((
         </ul>
     </div>
   );
-});
-
-MoreDropdown.displayName = "MoreDropdown";
+};
 
 export { MoreDropdown };
 export type { MoreDropdownProps, GaEventData };

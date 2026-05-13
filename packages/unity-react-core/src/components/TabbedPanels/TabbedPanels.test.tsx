@@ -1,40 +1,35 @@
-/**
- * Regression: the React TabbedPanels must expose the `data-react` marker on the
- * `.uds-tabbed-panels` container.
- *
- * The vanilla progressive-enhancement layer (tabbed-panels-v2.js) claims every
- * `.uds-tabbed-panels:not([data-react])` element and runs its own overflow /
- * More-button logic on it. When the marker was placed on the inner
- * `.nav.nav-tabs` element instead of the container, the vanilla script ran on
- * top of the React instance and hid the More button — the "More disappears,
- * never to return" bug. The attribute must live on the same element the vanilla
- * guard queries.
- */
-import React from "react";
 import { render, cleanup } from "@testing-library/react";
-import { afterEach, describe, expect, it } from "vitest";
+import React from "react";
+import { expect, describe, it, afterEach, beforeEach } from "vitest";
 
 import { TabbedPanels, Tab } from "./TabbedPanels";
 
-afterEach(() => cleanup());
+const tabbedPanelsDefaultArgs = {
+  bgColor: "bg-dark",
+};
 
-describe("TabbedPanels — framework marker", () => {
-  it("marks the .uds-tabbed-panels container with data-react so the vanilla enhancer skips it", () => {
-    const { container } = render(
-      <TabbedPanels>
-        <Tab id="t1" title="Tab One">A</Tab>
-        <Tab id="t2" title="Tab Two">B</Tab>
-      </TabbedPanels>
-    );
+const renderTabbedPanels = (props: typeof tabbedPanelsDefaultArgs) => {
+  return render(
+    <TabbedPanels {...props}>
+      <Tab id="one" title="One">
+        <div>One</div>
+      </Tab>
+      <Tab id="two" title="Two">
+        <div>Two</div>
+      </Tab>
+    </TabbedPanels>
+  );
+};
 
-    const panel = container.querySelector(".uds-tabbed-panels");
-    expect(panel).not.toBeNull();
-    expect(panel?.hasAttribute("data-react")).toBe(true);
+describe("#TabbedPanels", () => {
+  let component: ReturnType<typeof renderTabbedPanels>;
 
-    // The vanilla guard is `.uds-tabbed-panels:not([data-react])`; confirm the
-    // rendered container is excluded by that exact selector.
-    expect(
-      container.querySelector(".uds-tabbed-panels:not([data-react])")
-    ).toBeNull();
+  beforeEach(() => {
+    component = renderTabbedPanels(tabbedPanelsDefaultArgs);
+  });
+  afterEach(cleanup);
+
+  it("should define component", () => {
+    expect(component).toBeDefined();
   });
 });

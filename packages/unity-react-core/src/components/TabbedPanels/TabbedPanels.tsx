@@ -7,20 +7,19 @@ import React, {
   useState,
 } from "react";
 
-import { MoreDropdown, TabHeader, NavControls } from "./components";
+import { MoreDropdown, TabHeader } from "./components";
 import type { GaEventData } from "./components/MoreDropdown";
-import { useBaseSpecificFramework } from "../GaEventWrapper/useBaseSpecificFramework";
 
-type RefMap = Record<string, HTMLButtonElement | null>;
+type RefMap = Record<string, HTMLAnchorElement | null>;
 
 function useRefs(): [
   React.MutableRefObject<RefMap>,
-    (name: string) => (ref: HTMLButtonElement | null) => void,
+  (name: string) => (ref: HTMLAnchorElement | null) => void,
 ] {
   const refs = useRef<RefMap>({});
 
   const register = useCallback(
-    (refName: string) => (ref: HTMLButtonElement | null) => {
+    (refName: string) => (ref: HTMLAnchorElement | null) => {
       refs.current[refName] = ref;
     },
     []
@@ -70,15 +69,6 @@ function readTabGap(container: HTMLElement): number {
   return parseFloat(style.getPropertyValue("column-gap") || style.getPropertyValue("gap")) || 8;
 }
 
-function arraysEqual(a: string[], b: string[]): boolean {
-  if (a === b) return true;
-  if (a.length !== b.length) return false;
-  for (let i = 0; i < a.length; i++) {
-    if (a[i] !== b[i]) return false;
-  }
-  return true;
-}
-
 const TabbedPanels = ({
   initialTab = "",
   children,
@@ -110,11 +100,11 @@ const TabbedPanels = ({
   const headerTabs = useRef<HTMLDivElement>(null);
   const moreBtnRef = useRef<HTMLDivElement>(null);
   const [headerTabItems, setHeaderTabItems] = useRefs();
-  const tabRefs = useRef<Record<string, HTMLButtonElement>>({});
+  const tabRefs = useRef<Record<string, HTMLAnchorElement>>({});
   const tabWidthsRef = useRef<Record<string, number>>({});
 
   const registerTabNode = useCallback(
-    (id: string) => (node: HTMLButtonElement | null) => {
+    (id: string) => (node: HTMLAnchorElement | null) => {
       setHeaderTabItems(id)(node);
       if (node) {
         tabRefs.current[id] = node;
@@ -132,33 +122,26 @@ const TabbedPanels = ({
   const [visibleTabs, setVisibleTabs] = useState<string[]>(
     childrenArray.map((c) => c.props.id)
   );
-  const [dropdownOpenRight, setDropdownOpenRight] = useState(false);
-
-  // ust match $tabbed-panels-dropdown-width in SCSS.
-  const DROPDOWN_WIDTH = 282;
 
   const calculateOverflow = useCallback(() => {
     const container = headerTabs.current;
     if (!container) {
-      const allTabs = childrenArray.map((c) => c.props.id);
-      setVisibleTabs((prev) => (arraysEqual(prev, allTabs) ? prev : allTabs));
-      setOverflowTabs((prev) => (prev.length === 0 ? prev : []));
+      setVisibleTabs(childrenArray.map((c) => c.props.id));
+      setOverflowTabs([]);
       return;
     }
 
     const tabIDs = childrenArray.map((c) => c.props.id);
 
     const widths = tabIDs.map((id) => {
-      // Always prefer a live DOM measurement if the node is mounted
+      if (typeof tabWidthsRef.current[id] === "number") {
+        return tabWidthsRef.current[id];
+      }
       const domNode = tabRefs.current[id] ?? headerTabItems.current?.[id];
       if (domNode && typeof domNode.getBoundingClientRect === "function") {
         const width = Math.round(domNode.getBoundingClientRect().width);
         tabWidthsRef.current[id] = width;
         return width;
-      }
-      // Fall back to cached width, or 80 if never measured
-      if (typeof tabWidthsRef.current[id] === "number") {
-        return tabWidthsRef.current[id];
       }
       return 80;
     });
@@ -184,29 +167,9 @@ const TabbedPanels = ({
       used += w + tabGap;
     }
 
-    // Bail out when the computed sets are unchanged. Returning the previous
-    // reference lets React skip the re-render, which prevents the
-    // overflow-recalculation layout effect from looping indefinitely.
-    setVisibleTabs((prev) =>
-      arraysEqual(prev, newVisibleTabs) ? prev : newVisibleTabs
-    );
-    setOverflowTabs((prev) =>
-      arraysEqual(prev, newOverflowTabs) ? prev : newOverflowTabs
-    );
-
-    // Anchor dropdown to the right of the More button when the container is
-    // narrower than 1200px AND the dropdown still fits within the viewport.
-    if (newOverflowTabs.length > 0 && container && moreBtnRef.current) {
-      const wrapperRect = moreBtnRef.current.getBoundingClientRect();
-      const containerWidth = container.getBoundingClientRect().width;
-      const fitsInViewport = wrapperRect.left + DROPDOWN_WIDTH <= window.innerWidth;
-      const fitsIn1200 = wrapperRect.left + DROPDOWN_WIDTH <= 1200;
-      const isNarrow = containerWidth < 1200;
-      setDropdownOpenRight(isNarrow && fitsInViewport && fitsIn1200);
-    } else {
-      setDropdownOpenRight(false);
-    }
-  }, [childrenArray, headerTabItems, DROPDOWN_WIDTH]);
+    setVisibleTabs(newVisibleTabs);
+    setOverflowTabs(newOverflowTabs);
+  }, [childrenArray, headerTabItems]);
 
   useLayoutEffect(() => {
     calculateOverflow();
@@ -214,16 +177,12 @@ const TabbedPanels = ({
     return () => window.removeEventListener("resize", calculateOverflow);
   }, [calculateOverflow]);
 
-  // After visible tabs change, newly mounted tabs get real DOM widths via
-  // registerTabNode. Re-run overflow calculation so stale fallback widths
-  // don't leave the More button incorrectly hidden.
-  const prevVisibleRef = useRef(visibleTabs);
-  useLayoutEffect(() => {
-    if (prevVisibleRef.current !== visibleTabs) {
-      prevVisibleRef.current = visibleTabs;
-      calculateOverflow();
+  useEffect(() => {
+    const node = headerTabItems.current[activeTabID];
+    if (node) {
+      node.scrollIntoView();
     }
-  }, [visibleTabs, calculateOverflow]);
+  }, [activeTabID, headerTabItems]);
 
   useEffect(() => {
     if (
@@ -246,6 +205,7 @@ const TabbedPanels = ({
 
   const updateActiveTabID = (tab: string) => {
     onTabChange(tab);
+    headerTabItems.current[tab]?.focus();
     setActiveTabID(tab);
   };
 
@@ -274,41 +234,25 @@ const TabbedPanels = ({
   };
 
   const incrementIndex = (up = true) => {
-    // Only navigate through currently visible (non-overflow) tabs
-    const navigableTabs = visibleTabs;
-    const count = navigableTabs.length;
-    if (count === 0) return;
+    const count = childrenArray.length;
     const num = up ? 1 : -1;
-    const currPos = navigableTabs.indexOf(activeTabID);
-    // If active tab is in overflow, start from edge of visible list
-    const startPos = currPos === -1 ? (up ? count - 1 : 0) : currPos;
-    const newTabID = navigableTabs[(count + startPos + num) % count];
+    const currPos = childrenArray.findIndex((c) => c.props.id === activeTabID);
+    const newTabID = childrenArray[(count + currPos + num) % count].props.id;
     updateActiveTabID(newTabID);
-    // Focus the new tab (keyboard-triggered navigation)
-    headerTabItems.current[newTabID]?.focus();
   };
-
-  const { isReact } = useBaseSpecificFramework();
 
   let navClasses = "uds-tabbed-panels";
   if (bgColor === "bg-dark") {
     navClasses += " uds-tabbed-panels-dark";
   }
 
-  // When the active tab is in the overflow dropdown, the first visible tab
-  // becomes the roving-tabindex entry point so keyboard users can reach the row.
-  const activeIsOverflow = overflowTabs.includes(activeTabID);
-
   return (
     <div className={bgColor}>
-      <nav className={navClasses} {...(isReact ? { "data-react": "true" } : {})}>
+      <nav className={navClasses}>
         <div className="nav nav-tabs" role="tablist" ref={headerTabs}>
           {visibleTabs.map((tabId, index) => {
             const child = idToChild[tabId];
             if (!child) return null;
-            const isFocusEntry = activeIsOverflow
-              ? index === 0
-              : activeTabID === tabId;
 
             return (
               <TabHeader
@@ -316,7 +260,6 @@ const TabbedPanels = ({
                 id={child.props.id}
                 title={child.props.title}
                 selected={activeTabID === child.props.id}
-                isFocusEntry={isFocusEntry}
                 gaData={trackLinkEvent}
                 selectTab={switchToTab}
                 key={child.props.id}
@@ -334,7 +277,6 @@ const TabbedPanels = ({
             activeTabID={activeTabID}
             selectTab={switchToTab}
             gaData={trackLinkEvent}
-            openRight={dropdownOpenRight}
           />
         </div>
       </nav>
@@ -350,5 +292,5 @@ const TabbedPanels = ({
   );
 };
 
-export { TabbedPanels, Tab, TabHeader, NavControls };
+export { TabbedPanels, Tab, TabHeader };
 export type { TabProps, TabbedPanelsProps };
