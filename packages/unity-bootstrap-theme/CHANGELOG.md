@@ -1,3 +1,12 @@
+# [@asu/unity-bootstrap-theme-v1.38.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.38.0...@asu/unity-bootstrap-theme-v1.38.1) (2026-05-13)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** blockquote css update for maxwidth standards ([92976a5](https://github.com/ASU/asu-unity-stack/commit/92976a53589eb017712048bb5a8ae6bbfd552262))
+* **unity-bootstrap-theme:** padding-left: 0 applied to uds-blockquote ([aa558f6](https://github.com/ASU/asu-unity-stack/commit/aa558f616acbda37c8c8f7e8e3bc22527efe4740))
+* **unity-bootstrap-theme:** removed padding right from the blockquote css ([ff90b82](https://github.com/ASU/asu-unity-stack/commit/ff90b828a645884d3ddb75e18b070aa2d82e40d3))
+
 # [@asu/unity-bootstrap-theme-v1.38.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.37.4...@asu/unity-bootstrap-theme-v1.38.0) (2026-04-21)
 
 
