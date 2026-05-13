@@ -1,4 +1,6 @@
 .uds-tabbed-panels {
+  --uds-tab-gap: #{$tabbed-panels-tab-gap};
+
   box-shadow: inset 0px -2px 0px 0px $asu-gray-4;
   flex-wrap: inherit;
 
@@ -30,19 +32,20 @@
       display: none; // to hide scrollbar In Chrome, Safari, Opera, and other WebKit-based browsers
     }
 
-    // Keep horizontal scroll only on smaller screens
-    @media (max-width: $uds-breakpoint-md) {
-      overflow-x: auto;
-    }
-
     .nav-link {
       color: #000;
       height: 41px;
       padding: $tabbed-panels-tab-padding-top $tabbed-panels-tab-padding-x 0 $tabbed-panels-tab-padding-x;
       margin: 0 0.5rem 0 0;
 
+      // Reset button styles
+      appearance: none;
+      background: transparent;
+      cursor: pointer;
+
       // Simplified borders
       border: none;
+      border-bottom: $tabbed-panels-active-border-width solid transparent;
 
       text-decoration: none;
       font-weight: 400;
@@ -83,12 +86,12 @@
     }
 
     .more-dropdown-button {
-      background: $asu-gray-1;
+      background: transparent;
       color: $uds-color-brand-gold;
     }
 
-    .more-dropdown-button.active {
-      border-bottom: $tabbed-panels-active-border-width solid $uds-color-brand-gold;
+    .more-dropdown-button.active .more-dropdown-button-indicator {
+      background: $uds-color-brand-gold;
     }
 
     .more-dropdown-icon {
@@ -127,23 +130,57 @@
   margin-bottom: $uds-size-spacing-4;
 }
 
-// ------- More dropdown styles for TabbedPanels redesign -------
+// ------- Nav control (prev/next scroll) buttons for TabbedPanels -------
 
-.more-dropdown-button {
-  padding: 0.5rem 0.25rem 0 0.25rem;
-  display: flex;
-  align-items: center;
-  gap: $tabbed-panels-tab-gap;
-  background: $asu-gray-2;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: $tabbed-panels-active-border-width solid transparent;
-  cursor: pointer;
+.uds-tab-nav-controls {
+  button {
+    padding: 16px 0;
+    border: none;
+    outline: none;
+  }
 }
 
-.more-dropdown-button.active {
-  border-bottom: $tabbed-panels-active-border-width solid $uds-color-base-maroon;
+// ------- More dropdown styles for TabbedPanels redesign -------
+
+.uds-more-dropdown {
+  position: relative;
+  margin-left: auto;
+  // Isolate from the nav's inset box-shadow so it doesn't bleed into the dropdown
+  isolation: isolate;
+}
+
+.more-dropdown-button {
+  padding: $tabbed-panels-tab-padding-top 4px 0 4px;
+  height: $tabbed-panels-tab-height;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: $tabbed-panels-font-size;
+  white-space: nowrap;
+}
+
+.more-dropdown-button-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 8px;
+  height: 17px;
+  line-height: 24px;
+}
+
+.more-dropdown-button-indicator {
+  display: block;
+  width: 100%;
+  height: $tabbed-panels-active-border-width;
+  background: transparent;
+}
+
+.more-dropdown-button.active .more-dropdown-button-indicator {
+  background: $uds-color-base-maroon;
 }
 
 .more-dropdown-icon {
@@ -156,13 +193,15 @@
 
 .more-dropdown-menu {
   position: absolute;
-  top: $tabbed-panels-tab-height;
+  top: calc(#{$tabbed-panels-tab-height} + 2px);
   right: 0;
   width: $tabbed-panels-dropdown-width;
+  max-width: $tabbed-panels-dropdown-width;
+  box-sizing: border-box;
   background: $white;
   border: 1px solid $asu-gray-4;
   padding: $tabbed-panels-dropdown-padding;
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 0;
   z-index: 1000;
@@ -170,18 +209,23 @@
   max-height: 260px;
   overflow-y: auto;
   overscroll-behavior: contain;
+
+  &.open {
+    display: flex;
+  }
 }
 
 .uds-more-dropdown-list {
   list-style: none;
   margin: 0;
   padding: 0;
-  width: 100%;
 }
 
 .uds-more-dropdown-list li {
   margin: 0;
   padding: 0;
+  border: none;
+  list-style: none;
 }
 
 .more-dropdown-item {
@@ -189,16 +233,24 @@
   width: 100%;
   padding: 0.5rem 1rem;
   text-align: left;
+  background: transparent;
   font-size: $tabbed-panels-font-size;
   line-height: 24px;
   color: #191919;
   text-decoration: none;
   cursor: pointer;
   white-space: normal;
+  border: none !important;
 }
 
-/* hover + focus style */
-.more-dropdown-item:hover,
+/* hover style */
+.more-dropdown-item:hover {
+  color: $uds-color-base-maroon;
+  text-decoration: underline;
+}
+
+/* focus-visible: use color + underline (same as hover) — avoids outline overflow artifacts */
+.more-dropdown-item:focus,
 .more-dropdown-item:focus-visible {
   color: $uds-color-base-maroon;
   text-decoration: underline;
@@ -207,10 +259,11 @@
 .more-dropdown-item:focus:not(:focus-visible) {
   outline: none;
   text-decoration: none;
+  color: #191919;
 }
 
 .more-dropdown-item[aria-current="true"] {
-  color: $uds-color-base-maroon;
+  color: #191919;
 }
 
 .more-dropdown-item[aria-current="true"]::after {
@@ -218,5 +271,6 @@
   display: block;
   height: 8px;
   background: $uds-color-base-maroon;
+  border: none;
   margin-top: 4px;
 }
