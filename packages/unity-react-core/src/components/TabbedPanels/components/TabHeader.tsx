@@ -7,19 +7,18 @@ import type { GaEventData } from "./MoreDropdown";
 interface TabHeaderProps {
   id: string;
   selected: boolean;
+  isFocusEntry?: boolean;
   title: string;
   selectTab: (e: React.MouseEvent | React.KeyboardEvent, id: string, title: string) => void;
   leftKeyPressed: () => void;
   rightKeyPressed: () => void;
   icon?: [string, string];
   gaData?: GaEventData;
-  ref?: React.Ref<HTMLAnchorElement>;
 }
 
-const TabHeader = (
-  { id, selected, title, selectTab, leftKeyPressed, rightKeyPressed, icon, gaData, ref }: TabHeaderProps
-) => {
-    const { isReact, isBootstrap } = useBaseSpecificFramework();
+const TabHeader = React.forwardRef<HTMLButtonElement, TabHeaderProps>(
+  ({ id, selected, isFocusEntry, title, selectTab, leftKeyPressed, rightKeyPressed, icon, gaData }, ref) => {
+    const { isReact } = useBaseSpecificFramework();
 
     const onKeyDown = (e: React.KeyboardEvent) => {
       if (e.key === "ArrowLeft") {
@@ -33,22 +32,21 @@ const TabHeader = (
 
     return (
       <GaEventWrapper gaData={{ ...gaData, text: title }}>
-        <a
+        <button
           ref={ref}
+          type="button"
           className={`nav-item nav-link ${selected ? "active" : ""}`}
           id={id}
-          href={`#nav-${id}`}
           role="tab"
           aria-controls={`nav-${id}`}
           aria-selected={selected}
-          data-bs-toggle={isBootstrap ? "tab" : undefined}
-          onClick={isReact ? (e) => selectTab(e, id, title) : undefined}
+          onClick={(e) => selectTab(e, id, title)}
           onKeyDown={isReact ? onKeyDown : undefined}
-          tabIndex={0}
+          tabIndex={isFocusEntry ?? selected ? 0 : -1}
         >
           {title}{" "}
           {icon && <i aria-hidden="true" className={`${icon[0]} fa-${icon[1]} me-1`} />}
-        </a>
+        </button>
       </GaEventWrapper>
     );
   }
