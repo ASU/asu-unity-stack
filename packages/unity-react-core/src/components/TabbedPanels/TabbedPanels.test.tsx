@@ -1,4 +1,3 @@
-// @ts-check
 import { render, cleanup } from "@testing-library/react";
 import React from "react";
 import { expect, describe, it, afterEach, beforeEach } from "vitest";
@@ -9,21 +8,13 @@ const tabbedPanelsDefaultArgs = {
   bgColor: "bg-dark",
 };
 
-const renderTabbedPanels = props => {
+const renderTabbedPanels = (props: typeof tabbedPanelsDefaultArgs) => {
   return render(
-    <TabbedPanels {...{ ...props }}>
-      <Tab
-        id="one"
-        // @ts-ignore
-        title="One"
-      >
+    <TabbedPanels {...props}>
+      <Tab id="one" title="One">
         <div>One</div>
       </Tab>
-      <Tab
-        id="two"
-        // @ts-ignore
-        title="Two"
-      >
+      <Tab id="two" title="Two">
         <div>Two</div>
       </Tab>
     </TabbedPanels>
@@ -31,8 +22,7 @@ const renderTabbedPanels = props => {
 };
 
 describe("#TabbedPanels", () => {
-  /** @type {import("@testing-library/react").RenderResult} */
-  let component;
+  let component: ReturnType<typeof renderTabbedPanels>;
 
   beforeEach(() => {
     component = renderTabbedPanels(tabbedPanelsDefaultArgs);
