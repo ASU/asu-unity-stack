@@ -90,8 +90,8 @@
       color: $uds-color-brand-gold;
     }
 
-    .more-dropdown-button.active .more-dropdown-button-indicator {
-      background: $uds-color-brand-gold;
+    .more-dropdown-button.active {
+      border-bottom-color: $uds-color-brand-gold;
     }
 
     .more-dropdown-icon {
@@ -153,12 +153,11 @@
 .more-dropdown-button {
   padding: $tabbed-panels-tab-padding-top 4px 0 4px;
   height: $tabbed-panels-tab-height;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
   background: transparent;
   border: none;
+  border-bottom: $tabbed-panels-active-border-width solid transparent;
+  color: $asu-gray-3;
   cursor: pointer;
   font-size: $tabbed-panels-font-size;
   white-space: nowrap;
@@ -173,15 +172,8 @@
   line-height: 24px;
 }
 
-.more-dropdown-button-indicator {
-  display: block;
-  width: 100%;
-  height: $tabbed-panels-active-border-width;
-  background: transparent;
-}
-
-.more-dropdown-button.active .more-dropdown-button-indicator {
-  background: $uds-color-base-maroon;
+.more-dropdown-button.active {
+  border-bottom-color: $uds-color-base-maroon;
 }
 
 .more-dropdown-icon {
@@ -193,6 +185,7 @@
 }
 
 .more-dropdown-menu {
+  padding: $uds-size-spacing-4;
   position: absolute;
   top: calc(#{$tabbed-panels-tab-height} + 2px);
   right: 0;
@@ -201,10 +194,9 @@
   box-sizing: border-box;
   background: $white;
   border: 1px solid $asu-gray-4;
-  padding: $tabbed-panels-dropdown-padding;
   display: none;
   flex-direction: column;
-  gap: 0;
+  gap: $uds-size-spacing-2;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   max-height: 260px;
@@ -219,7 +211,6 @@
 .uds-more-dropdown-list {
   list-style: none;
   margin: 0;
-  padding: 0;
 }
 
 .uds-more-dropdown-list li {
@@ -232,7 +223,7 @@
 .more-dropdown-item {
   display: block;
   width: 100%;
-  padding: 0.5rem 1rem;
+  padding: 0;
   text-align: left;
   background: transparent;
   font-size: $tabbed-panels-font-size;

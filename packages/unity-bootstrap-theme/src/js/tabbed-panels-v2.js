@@ -104,21 +104,46 @@ function wireDropdownEvents(wrapper, btn, menu) {
     e.preventDefault();
     const opening = btn.getAttribute("aria-expanded") !== "true";
     setOpen(btn, menu, opening);
-    if (opening) {
-      // Defer focus until after the menu is visible in the DOM
-      requestAnimationFrame(() => {
-        const first = menu.querySelector('[role="menuitem"]');
-        if (first) first.focus();
-      });
+  });
+
+  // ── keyboard on trigger button ────────────────────────────────────────────
+  EventHandler.on(btn, "keydown.uds.tabbed-panels-v2", e => {
+    const isOpen = btn.getAttribute("aria-expanded") === "true";
+    const items = Array.from(menu.querySelectorAll('[role="menuitem"]'));
+    switch (e.key) {
+      case "Enter":
+      case " ":
+        e.preventDefault();
+        if (!isOpen) {
+          setOpen(btn, menu, true);
+          // Per ARIA APG menu-button pattern: keyboard open must move focus to first item
+          requestAnimationFrame(() => items[0]?.focus());
+        } else {
+          setOpen(btn, menu, false);
+        }
+        break;
+      case "ArrowDown":
+        if (isOpen) { e.preventDefault(); items[0]?.focus(); }
+        break;
+      case "ArrowUp":
+        if (isOpen) { e.preventDefault(); items[items.length - 1]?.focus(); }
+        break;
+      case "Escape":
+        if (isOpen) { e.preventDefault(); setOpen(btn, menu, false); btn.focus(); }
+        break;
+      default:
+        break;
     }
   });
 
-  // ── close on outside click ─────────────────────────────────────────────────
-  EventHandler.on(document, "mousedown.uds.tabbed-panels-v2", e => {
+  // ── close on outside click / tap (including Safari iOS) ───────────────────
+  const closeIfOutside = e => {
     if (!wrapper.contains(e.target)) {
       setOpen(btn, menu, false);
     }
-  });
+  };
+  EventHandler.on(document, "mousedown.uds.tabbed-panels-v2", closeIfOutside);
+  EventHandler.on(document, "touchstart.uds.tabbed-panels-v2", closeIfOutside);
 
   // ── keyboard navigation inside menu ───────────────────────────────────────
   EventHandler.on(menu, "keydown.uds.tabbed-panels-v2", e => {
