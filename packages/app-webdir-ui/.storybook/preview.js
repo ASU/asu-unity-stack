@@ -1,6 +1,5 @@
 import React, { useEffect} from "react";
-import { MemoryRouter, useLocation } from "react-router";
-import { useSearchParams } from "react-router-dom";
+import { MemoryRouter, useLocation, useSearchParams } from "react-router-dom";
 import { useArgs } from 'storybook/preview-api';
 
 import "@asu/unity-bootstrap-theme/src/scss/unity-bootstrap-theme.bundle.scss";
@@ -30,7 +29,7 @@ const getParamObject = (paramArray = []) => {
   return result;
 }
 
-const Wrapper = ({ args, updateArgs,...props},b,c) => {
+const Wrapper = ({ args, updateArgs,...props}) => {
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -56,7 +55,7 @@ const decorators = [
     const [args, updateArgs] = useArgs();
   return <MemoryRouter>
         <Wrapper args={args} updateArgs={updateArgs}>
-          {Story()}
+          <Story />
         </Wrapper>
     </MemoryRouter>
   },
