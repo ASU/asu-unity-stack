@@ -10,13 +10,11 @@ const AnchorMenuWrapper = styled.div`
   .mobile-menu-toggler {
     background-color: transparent;
     border: none;
-    padding: 0;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    text-align: inherit;
+    cursor: default;
+    h4,
+    h2 {
+      align-items: center;
+    }
     i {
       transition: all 0.3s;
     }
