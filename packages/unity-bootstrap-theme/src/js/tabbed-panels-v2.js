@@ -123,13 +123,23 @@ function wireDropdownEvents(wrapper, btn, menu) {
         }
         break;
       case "ArrowDown":
-        if (isOpen) { e.preventDefault(); items[0]?.focus(); }
+        if (isOpen) {
+          e.preventDefault();
+          items[0]?.focus();
+        }
         break;
       case "ArrowUp":
-        if (isOpen) { e.preventDefault(); items[items.length - 1]?.focus(); }
+        if (isOpen) {
+          e.preventDefault();
+          items[items.length - 1]?.focus();
+        }
         break;
       case "Escape":
-        if (isOpen) { e.preventDefault(); setOpen(btn, menu, false); btn.focus(); }
+        if (isOpen) {
+          e.preventDefault();
+          setOpen(btn, menu, false);
+          btn.focus();
+        }
         break;
       default:
         break;
