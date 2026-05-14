@@ -2,24 +2,84 @@
 import { deepCloner } from "@asu/shared";
 import { KEY } from "./constants";
 import { pushDataLayerEventToGa, setClientId } from "./google-analytics";
+import * as questions from "../../components/steps/questions";
+
+/**
+ * @typedef {Object} FormPayload
+ * @property {number} [datetime]
+ * @property {number} [Test]
+ * @property {string} [BirthDate]
+ * @property {string} [Campus]
+ * @property {string} [CampusProgramHasChoice]
+ * @property {string} [Career]
+ * @property {string} [CareerAndStudentType]
+ * @property {string} [CitizenshipCountry]
+ * @property {string} [Country]
+ * @property {string} [Email]
+ * @property {string} [EmailAddress]
+ * @property {string} [EntryTerm]
+ * @property {string} [FirstName]
+ * @property {string} [GdprConsent]
+ * @property {string} [Interest1]
+ * @property {string} [Interest2]
+ * @property {string} [LastName]
+ * @property {string} [MilitaryStatus]
+ * @property {string} [Phone]
+ * @property {string} [Source]
+ * @property {string} [StudentType]
+ * @property {string} [URL]
+ * @property {string} [Zip]
+ * @property {string} [ZipCode]
+ */
+
+/**
+ * @typedef {Object} SubmissionResponse
+ * @property {string} status
+ * @property {string} message
+ */
 
 /**
  * In order to make a field not required, we set the default or blank value
  * to {KEY.FALSE_EMPTY}. This way we do not need to alter validation schemas. Remove all
  * {KEY.FALSE_EMPTY} values before we submit
- * @param {*} values
- * @returns {*}
+ * @param {Object.<string, *>} values
+ * @returns {Object.<string, *>}
  */
-const removeUnansweredFields = values =>
+const removeUnansweredFields = (/** @type {FormPayload} */ values) =>
   Object.entries(values)
-    .filter(([key, value]) => value !== KEY.FALSE_EMPTY)
+    .filter(([_, value]) => value !== undefined)
+    .filter(([_, value]) => value !== KEY.FALSE_EMPTY)
     .reduce((result, [key, value]) => ({ ...result, [key]: value }), {});
 
+/* Remove keys that appear from side effects */
+/**
+ * @param {FormPayload} payload
+ * @returns {FormPayload}
+ */
+function submissionFormFieldRemoveSideEffectKeys(
+  /** @type {FormPayload} */ payload
+) {
+  let output = { ...payload };
+
+  // Fix for un/controlled switch warning, made in RfiStepper.js, leaves this
+  // artifact. Remove Email.
+  delete output.Email;
+  // side effect of phone number country code CitizenshipCountry
+  delete output.CitizenshipCountry;
+  delete output.Country;
+
+  return output;
+}
+
 /* Marshall and prepare values for submission payload. */
-function submissionFormFieldPrep(payload) {
+/**
+ * @param {FormPayload} payload
+ * @returns {FormPayload}
+ */
+function submissionFormFieldPrep(/** @type {FormPayload} */ payload) {
   // ADJUST AND PROCESS FORM FIELDS
 
-  const output = payload;
+  let output = payload;
 
   // Unpack CareerAndStudentType. Select list selection is used to derive two
   // fields for the payload.
@@ -48,9 +108,7 @@ function submissionFormFieldPrep(payload) {
   output.Zip = output.Zip ? output.Zip : output.ZipCode;
   delete output.ZipCode;
 
-  // Fix for un/controlled switch warning, made in RfiStepper.js, leaves this
-  // artifact. Remove.
-  delete output.Email;
+  output = submissionFormFieldRemoveSideEffectKeys(output);
 
   // Can't transform the BirthDate to iso value during validation as it breaks
   // type checking in Yup, so doing it here. Also... Yup.date() lets dates
@@ -70,7 +128,10 @@ function submissionFormFieldPrep(payload) {
   return output;
 }
 
-function submissionSetHiddenFields(payload, test) {
+function submissionSetHiddenFields(
+  /** @type {FormPayload} */ payload,
+  /** @type {Boolean} */ test
+) {
   // "HIDDEN" FIELDS THAT DON'T APPEAR IN THE FORM.
 
   const output = payload;
@@ -80,7 +141,9 @@ function submissionSetHiddenFields(payload, test) {
   output.Source = "mock";
 
   // Whether we're in test mode or not: 1 or nothing. A prop value passed down.
-  output.Test = test ? 1 : undefined;
+  if (test) {
+    output.Test = 1;
+  }
 
   // URL. Full URL, including path and params so campaign details can be
   // harvested by downstream apps.
@@ -95,11 +158,35 @@ function submissionSetHiddenFields(payload, test) {
   return output;
 }
 
+const preparePushGaEventData = (/** @type {FormPayload} */ payload) => {
+  const gaData = {
+    event: "rfi-submit",
+    name: "onclick",
+    action: "click",
+    type: "click",
+    region: "main content",
+    section: "request information",
+    text: "submit",
+  };
+  let formValues = { ...payload };
+  formValues = removeUnansweredFields(formValues);
+  formValues = submissionFormFieldRemoveSideEffectKeys(formValues);
+
+  Object.entries(formValues).forEach(([key, val]) => {
+    // @ts-ignore
+    const gaKey = questions[key]?.gaName || key;
+    // @ts-ignore
+    gaData[gaKey] = val;
+  });
+
+  pushDataLayerEventToGa(gaData);
+};
+
 export const rfiSubmit = async (
-  value,
-  submissionUrl,
-  test,
-  callback = a => ({})
+  /** @type {FormPayload} */ value,
+  submissionUrl = "",
+  test = false,
+  callback = (/** @type {any} */ _) => ({})
 ) => {
   // MARSHALL FIELDS FOR THE PAYLOAD
 
@@ -115,10 +202,11 @@ export const rfiSubmit = async (
 
   // Google Analytics push to simulate submit button click
   // after validation has occurred.
-  pushDataLayerEventToGa("rfi-submit");
+  // Send form answers to dataLayer using raw form values as users entered them.
+  preparePushGaEventData(value);
 
   if (test) {
-    // eslint-disable-goNext-line no-alert
+    // eslint-disable-next-line no-console
     console.log(`SUBMITTED FORM \n${JSON.stringify(payload, null, 2)}`);
   }
 

@@ -56,3 +56,4 @@ export const CampusProgramHasChoice = ({ gaData }) => {
 CampusProgramHasChoice.propTypes = {
   gaData: gaEventPropTypes,
 };
+CampusProgramHasChoice.gaName = "campus_program_has_choice";

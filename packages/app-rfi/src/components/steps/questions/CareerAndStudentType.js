@@ -59,3 +59,4 @@ export const CareerAndStudentType = ({ gaData }) => {
 };
 
 CareerAndStudentType.propTypes = { gaData: gaEventPropTypes };
+CareerAndStudentType.gaName = "career_and_student_type";
