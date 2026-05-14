@@ -34,9 +34,9 @@
     "postbuild": "cp ./types/main.d.ts ./dist/main.d.ts",
     "storybook": "storybook dev -p 9020",
     "build-storybook": "storybook build -o ../../build/$npm_package_name",
-    "jsdoc": "jsdoc -c jsdoc.config.cjs",
+    "jsdoc": "jsdoc -c jsdoc.config.json",
     "predocs": "mkdir -p ./docs",
-    "docs": "jsdoc2md --no-cache -c jsdoc.config.cjs --files ./src/components > ./docs/README.props.md",
+    "docs": "jsdoc2md --no-cache -c jsdoc.config.json --files ./src/components > ./docs/README.props.md",
     "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "bugs": {
