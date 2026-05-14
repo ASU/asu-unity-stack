@@ -1,10 +1,6 @@
-
-
 export const TabbedPanels = args => {
   return (
-    <div>
-      See updated HTML output in unity-react-core Tabbed panels story.
-    </div>
+    <div>See updated HTML output in unity-react-core Tabbed panels story.</div>
   );
 };
 

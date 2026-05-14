@@ -7,7 +7,7 @@ import React, {
   useState,
 } from "react";
 
-import { MoreDropdown, TabHeader } from "./components";
+import { MoreDropdown, TabHeader, NavControls } from "./components";
 import type { GaEventData } from "./components/MoreDropdown";
 import { useBaseSpecificFramework } from "../GaEventWrapper/useBaseSpecificFramework";
 
@@ -302,5 +302,5 @@ const TabbedPanels = ({
   );
 };
 
-export { TabbedPanels, Tab, TabHeader };
+export { TabbedPanels, Tab, TabHeader, NavControls };
 export type { TabProps, TabbedPanelsProps };
