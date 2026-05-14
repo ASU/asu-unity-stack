@@ -274,6 +274,7 @@ function calculateOverflow(container) {
     btn.setAttribute("role", "menuitem");
     btn.setAttribute("tabindex", "-1");
     btn.className = "more-dropdown-item";
+    btn.dataset.tabId = tabId;
     if (isActive) btn.setAttribute("aria-current", "true");
     btn.textContent = originalLink.textContent.trim();
 
@@ -323,27 +324,10 @@ function activateTab(container, tabId) {
  * Sync the More button active state and aria-current on menu items.
  */
 function updateActiveState(navTabs, activeId, button, menu) {
-  const overflowIds = Array.from(
-    menu.querySelectorAll('[role="menuitem"]')
-  ).map((_, i) => i);
-  // Re-check which ids are in the menu
   const menuItems = Array.from(menu.querySelectorAll('[role="menuitem"]'));
-  const overflowVisible = menuItems.some(item => {
-    // item text matches an overflow tab — check the hidden link
-    return true; // we'll match by aria-current below
-  });
 
   menuItems.forEach(item => {
-    // Re-derive: find hidden button whose text matches
-    const matchingHiddenLink = Array.from(
-      navTabs.querySelectorAll("button.nav-link")
-    ).find(
-      a =>
-        a.style.display === "none" &&
-        a.textContent.trim() === item.textContent.trim()
-    );
-    const tabId = matchingHiddenLink?.id;
-    if (tabId === activeId) {
+    if (item.dataset.tabId === activeId) {
       item.setAttribute("aria-current", "true");
     } else {
       item.removeAttribute("aria-current");

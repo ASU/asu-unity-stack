@@ -108,6 +108,7 @@
     }
 
     .more-dropdown-item:hover,
+    .more-dropdown-item:focus,
     .more-dropdown-item:focus-visible {
       color: $uds-color-brand-gold;
     }
