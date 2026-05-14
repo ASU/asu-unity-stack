@@ -19,7 +19,7 @@ function readLayoutConstants(container, navTabs) {
   const moreBtn = navTabs.querySelector(".more-dropdown-button");
   const moreBtnWidth = moreBtn
     ? Math.round(moreBtn.getBoundingClientRect().width)
-    : 83; // default width based on Brand figma specs
+    : 83;
 
   return { tabGap, moreBtnWidth };
 }
@@ -128,10 +128,9 @@ function wireDropdownEvents(wrapper, btn, menu) {
     }
   });
 
-  // ── close on outside click / tap (including Safari iOS) ───────────────────
-  const closeIfOutside = e => {
-    const inside = wrapper.contains(e.target);
-    if (!inside) {
+  // ── close on outside click ─────────────────────────────────────────────────
+  EventHandler.on(document, "mousedown.uds.tabbed-panels-v2", e => {
+    if (!wrapper.contains(e.target)) {
       setOpen(btn, menu, false);
     }
   };
@@ -352,10 +351,27 @@ function activateTab(container, tabId) {
  * Sync the More button active state and aria-current on menu items.
  */
 function updateActiveState(navTabs, activeId, button, menu) {
+  const overflowIds = Array.from(
+    menu.querySelectorAll('[role="menuitem"]')
+  ).map((_, i) => i);
+  // Re-check which ids are in the menu
   const menuItems = Array.from(menu.querySelectorAll('[role="menuitem"]'));
+  const overflowVisible = menuItems.some(item => {
+    // item text matches an overflow tab — check the hidden link
+    return true; // we'll match by aria-current below
+  });
 
   menuItems.forEach(item => {
-    if (item.dataset.tabId === activeId) {
+    // Re-derive: find hidden button whose text matches
+    const matchingHiddenLink = Array.from(
+      navTabs.querySelectorAll("button.nav-link")
+    ).find(
+      a =>
+        a.style.display === "none" &&
+        a.textContent.trim() === item.textContent.trim()
+    );
+    const tabId = matchingHiddenLink?.id;
+    if (tabId === activeId) {
       item.setAttribute("aria-current", "true");
     } else {
       item.removeAttribute("aria-current");
@@ -437,28 +453,23 @@ function listenForTabChanges(container) {
 // ─── public init ──────────────────────────────────────────────────────────────
 
 function initTabbedPanelsV2() {
-  const containers = document.querySelectorAll(
-    ".uds-tabbed-panels:not([data-react]):not([data-uds-v2-init])"
-  );
-  containers.forEach(container => {
-    container.setAttribute("data-uds-v2-init", "true");
-    calculateOverflow(container);
-    listenForTabChanges(container);
-  });
-
-  // Attach resize handler only once across all init calls
-  if (!resizeAttached) {
-    resizeAttached = true;
-    let resizeTimer;
-    EventHandler.on(window, "resize.uds.tabbed-panels-v2", () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        document
-          .querySelectorAll(".uds-tabbed-panels:not([data-react])")
-          .forEach(calculateOverflow);
-      }, 100);
+  document
+    .querySelectorAll(".uds-tabbed-panels:not([data-react])")
+    .forEach(container => {
+      calculateOverflow(container);
+      listenForTabChanges(container);
     });
-  }
+
+  // Recalculate on resize (debounced)
+  let resizeTimer;
+  EventHandler.on(window, "resize.uds.tabbed-panels-v2", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      document
+        .querySelectorAll(".uds-tabbed-panels:not([data-react])")
+        .forEach(calculateOverflow);
+    }, 100);
+  });
 }
 
 export { initTabbedPanelsV2 };
