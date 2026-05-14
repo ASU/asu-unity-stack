@@ -9,6 +9,7 @@
   "author": "Michael Samuelson <mlsamuel@asu.edu>",
   "homepage": "https://github.com/ASU/asu-unity-stack#readme",
   "license": "MIT",
+  "type": "module",
   "files": [
     "examples/*",
     "dist/*",
@@ -26,16 +27,16 @@
   },
   "scripts": {
     "lint": "eslint --fix 'src/**/*.{js,jsx}' ",
-    "test": "jest --config=./jest.config.js --passWithNoTests",
+    "test": "jest --config=./jest.config.cjs --passWithNoTests",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
     "build": "vite build && cp -r src/assets dist/",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "postbuild": "cp ./types/main.d.ts ./dist/main.d.ts",
     "storybook": "storybook dev -p 9020",
     "build-storybook": "storybook build -o ../../build/$npm_package_name",
-    "jsdoc": "jsdoc -c jsdoc.config.js",
+    "jsdoc": "jsdoc -c jsdoc.config.cjs",
     "predocs": "mkdir -p ./docs",
-    "docs": "jsdoc2md --no-cache -c jsdoc.config.js --files ./src/components > ./docs/README.props.md",
+    "docs": "jsdoc2md --no-cache -c jsdoc.config.cjs --files ./src/components > ./docs/README.props.md",
     "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "bugs": {
@@ -87,8 +88,8 @@
     "yup-phone": "^1.2.19"
   },
   "peerDependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "volta": {
     "extends": "../../package.json"
