@@ -1,6 +1,7 @@
 import React from "react";
 import { ASUHeader } from "@asu/component-header-footer";
 import { ASUFooter } from "@asu/component-header-footer";
+// @ts-ignore - no type declarations for this internal mock file
 import { basicNavTree } from "@asu/component-header-footer/src/header/core/utils/data-mock";
 
 import { TabbedPanels, Tab } from "./TabbedPanels";
