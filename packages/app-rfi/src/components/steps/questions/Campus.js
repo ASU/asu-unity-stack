@@ -50,3 +50,4 @@ export const Campus = ({ gaData, autoFocus }) => {
 };
 
 Campus.propTypes = { gaData: gaEventPropTypes };
+Campus.gaName = "campus";

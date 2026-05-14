@@ -106,3 +106,4 @@ export const Interest2 = ({ gaData }) => {
 };
 
 Interest2.propTypes = { gaData: gaEventPropTypes };
+Interest2.gaName = "program_of_interest";
