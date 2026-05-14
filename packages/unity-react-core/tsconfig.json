@@ -39,6 +39,10 @@
   "exclude": [
     "dist",
     "node_modules",
-    "__mocks__"
+    "__mocks__",
+    "src/**/*.stories.ts",
+    "src/**/*.stories.tsx",
+    "src/**/*.stories.js",
+    "src/**/*.stories.jsx"
   ]
 }
