@@ -37,7 +37,9 @@ function readLayoutConstants(container, navTabs) {
   const tabGap = parseFloat(style.columnGap || style.gap) || 8;
 
   const moreBtn = navTabs.querySelector(".more-dropdown-button");
-  const moreBtnWidth = moreBtn ? Math.round(moreBtn.getBoundingClientRect().width) : 83;
+  const moreBtnWidth = moreBtn
+    ? Math.round(moreBtn.getBoundingClientRect().width)
+    : 83;
 
   return { tabGap, moreBtnWidth };
 }
@@ -63,9 +65,9 @@ function ensureDropdown(navTabs, isDark) {
     btn.setAttribute("aria-controls", "more-dropdown-menu");
     btn.innerHTML =
       '<span class="more-dropdown-button-inner">' +
-        '<span aria-hidden="true">More</span>' +
-        '<i aria-hidden="true" class="fas fa-chevron-down more-dropdown-icon"></i>' +
-      '</span>' +
+      '<span aria-hidden="true">More</span>' +
+      '<i aria-hidden="true" class="fas fa-chevron-down more-dropdown-icon"></i>' +
+      "</span>" +
       '<span class="more-dropdown-button-indicator" aria-hidden="true"></span>';
 
     const menu = document.createElement("ul");
@@ -98,7 +100,7 @@ function ensureDropdown(navTabs, isDark) {
  */
 function wireDropdownEvents(wrapper, btn, menu) {
   // ── toggle open/close ──────────────────────────────────────────────────────
-  EventHandler.on(btn, "click.uds.tabbed-panels-v2", (e) => {
+  EventHandler.on(btn, "click.uds.tabbed-panels-v2", e => {
     e.preventDefault();
     const opening = btn.getAttribute("aria-expanded") !== "true";
     setOpen(btn, menu, opening);
@@ -112,14 +114,14 @@ function wireDropdownEvents(wrapper, btn, menu) {
   });
 
   // ── close on outside click ─────────────────────────────────────────────────
-  EventHandler.on(document, "mousedown.uds.tabbed-panels-v2", (e) => {
+  EventHandler.on(document, "mousedown.uds.tabbed-panels-v2", e => {
     if (!wrapper.contains(e.target)) {
       setOpen(btn, menu, false);
     }
   });
 
   // ── keyboard navigation inside menu ───────────────────────────────────────
-  EventHandler.on(menu, "keydown.uds.tabbed-panels-v2", (e) => {
+  EventHandler.on(menu, "keydown.uds.tabbed-panels-v2", e => {
     const items = Array.from(menu.querySelectorAll('[role="menuitem"]'));
     const idx = items.indexOf(document.activeElement);
 
@@ -173,9 +175,7 @@ function calculateOverflow(container) {
   if (!navTabs) return;
 
   // Collect original tab buttons (exclude the More wrapper itself)
-  const tabLinks = Array.from(
-    navTabs.querySelectorAll("button.nav-link")
-  );
+  const tabLinks = Array.from(navTabs.querySelectorAll("button.nav-link"));
 
   if (tabLinks.length === 0) return;
 
@@ -183,7 +183,7 @@ function calculateOverflow(container) {
   const { wrapper, button, menu } = ensureDropdown(navTabs, isDark);
 
   // Temporarily show all tabs so we can measure them
-  tabLinks.forEach((a) => {
+  tabLinks.forEach(a => {
     a.style.display = "";
     a.removeAttribute("aria-hidden");
     a.removeAttribute("tabindex");
@@ -192,7 +192,7 @@ function calculateOverflow(container) {
 
   const availableWidth = navTabs.clientWidth;
   const { moreBtnWidth, tabGap } = readLayoutConstants(container, navTabs);
-  const widths = tabLinks.map((a) => a.getBoundingClientRect().width || 80);
+  const widths = tabLinks.map(a => a.getBoundingClientRect().width || 80);
 
   const visibleIds = [];
   const overflowIds = [];
@@ -213,7 +213,7 @@ function calculateOverflow(container) {
   // Show / hide tab links
   // Overflow tabs get display:none + tabindex="-1" + aria-hidden + inert
   // so they are completely unreachable by any keyboard interaction.
-  tabLinks.forEach((a) => {
+  tabLinks.forEach(a => {
     if (overflowIds.includes(a.id)) {
       a.style.display = "none";
       a.setAttribute("tabindex", "-1");
@@ -253,7 +253,7 @@ function calculateOverflow(container) {
   // can reach the tab row. If the active tab is hidden in the dropdown, the
   // first visible tab becomes the focus entry point instead.
   const rovingFocusId = hasActiveOverflow ? visibleIds[0] : activeId;
-  tabLinks.forEach((a) => {
+  tabLinks.forEach(a => {
     if (!overflowIds.includes(a.id)) {
       a.setAttribute("tabindex", a.id === rovingFocusId ? "0" : "-1");
     }
@@ -261,7 +261,7 @@ function calculateOverflow(container) {
 
   // Rebuild menu items
   menu.innerHTML = "";
-  overflowIds.forEach((tabId) => {
+  overflowIds.forEach(tabId => {
     const originalLink = navTabs.querySelector(`#${CSS.escape(tabId)}`);
     if (!originalLink) return;
 
@@ -277,7 +277,7 @@ function calculateOverflow(container) {
     if (isActive) btn.setAttribute("aria-current", "true");
     btn.textContent = originalLink.textContent.trim();
 
-    EventHandler.on(btn, "click.uds.tabbed-panels-v2", (e) => {
+    EventHandler.on(btn, "click.uds.tabbed-panels-v2", e => {
       e.preventDefault();
       setOpen(button, menu, false);
       button.focus();
@@ -296,15 +296,16 @@ function calculateOverflow(container) {
  */
 function activateTab(container, tabId) {
   const navTabs = container.querySelector(".nav.nav-tabs");
-  const tabContent = container.closest("div")?.querySelector(".tab-content") ??
+  const tabContent =
+    container.closest("div")?.querySelector(".tab-content") ??
     container.parentElement?.querySelector(".tab-content");
 
   // Deactivate all
-  navTabs.querySelectorAll("button.nav-link").forEach((a) => {
+  navTabs.querySelectorAll("button.nav-link").forEach(a => {
     a.classList.remove("active");
     a.setAttribute("aria-selected", "false");
   });
-  tabContent?.querySelectorAll(".tab-pane").forEach((pane) => {
+  tabContent?.querySelectorAll(".tab-pane").forEach(pane => {
     pane.classList.remove("show", "active");
   });
 
@@ -322,22 +323,24 @@ function activateTab(container, tabId) {
  * Sync the More button active state and aria-current on menu items.
  */
 function updateActiveState(navTabs, activeId, button, menu) {
-  const overflowIds = Array.from(menu.querySelectorAll('[role="menuitem"]')).map(
-    (_, i) => i
-  );
+  const overflowIds = Array.from(
+    menu.querySelectorAll('[role="menuitem"]')
+  ).map((_, i) => i);
   // Re-check which ids are in the menu
   const menuItems = Array.from(menu.querySelectorAll('[role="menuitem"]'));
-  const overflowVisible = menuItems.some((item) => {
+  const overflowVisible = menuItems.some(item => {
     // item text matches an overflow tab — check the hidden link
     return true; // we'll match by aria-current below
   });
 
-  menuItems.forEach((item) => {
+  menuItems.forEach(item => {
     // Re-derive: find hidden button whose text matches
     const matchingHiddenLink = Array.from(
       navTabs.querySelectorAll("button.nav-link")
     ).find(
-      (a) => a.style.display === "none" && a.textContent.trim() === item.textContent.trim()
+      a =>
+        a.style.display === "none" &&
+        a.textContent.trim() === item.textContent.trim()
     );
     const tabId = matchingHiddenLink?.id;
     if (tabId === activeId) {
@@ -347,7 +350,7 @@ function updateActiveState(navTabs, activeId, button, menu) {
     }
   });
 
-  const anyOverflowActive = menuItems.some((item) =>
+  const anyOverflowActive = menuItems.some(item =>
     item.hasAttribute("aria-current")
   );
   button.classList.toggle("active", anyOverflowActive);
@@ -374,7 +377,7 @@ function listenForTabChanges(container) {
 
     const visibleTabs = Array.from(
       navTabs.querySelectorAll("button.nav-link")
-    ).filter((a) => a.style.display !== "none");
+    ).filter(a => a.style.display !== "none");
     const idx = visibleTabs.indexOf(e.target);
     if (idx === -1) return;
 
@@ -398,7 +401,8 @@ function listenForTabChanges(container) {
       activateTab(container, next.id);
       const moreBtn = navTabs.querySelector(".more-dropdown-button");
       const moreMenu = navTabs.querySelector(".more-dropdown-menu");
-      if (moreBtn && moreMenu) updateActiveState(navTabs, next.id, moreBtn, moreMenu);
+      if (moreBtn && moreMenu)
+        updateActiveState(navTabs, next.id, moreBtn, moreMenu);
     }
   }
 
@@ -406,31 +410,36 @@ function listenForTabChanges(container) {
 
   // Click handler for tab buttons — Bootstrap's Tab plugin is not involved
   // (buttons have no data-bs-toggle), so we activate tabs manually on click.
-  EventHandler.on(navTabs, "click.uds.tabbed-panels-v2", (e) => {
+  EventHandler.on(navTabs, "click.uds.tabbed-panels-v2", e => {
     const btn = e.target?.closest("button.nav-link");
     if (!btn || btn.style.display === "none") return;
     e.preventDefault();
     activateTab(container, btn.id);
     const moreBtn = navTabs.querySelector(".more-dropdown-button");
     const moreMenu = navTabs.querySelector(".more-dropdown-menu");
-    if (moreBtn && moreMenu) updateActiveState(navTabs, btn.id, moreBtn, moreMenu);
+    if (moreBtn && moreMenu)
+      updateActiveState(navTabs, btn.id, moreBtn, moreMenu);
   });
 }
 
 // ─── public init ──────────────────────────────────────────────────────────────
 
 function initTabbedPanelsV2() {
-  document.querySelectorAll(".uds-tabbed-panels:not([data-react])").forEach((container) => {
-    calculateOverflow(container);
-    listenForTabChanges(container);
-  });
+  document
+    .querySelectorAll(".uds-tabbed-panels:not([data-react])")
+    .forEach(container => {
+      calculateOverflow(container);
+      listenForTabChanges(container);
+    });
 
   // Recalculate on resize (debounced)
   let resizeTimer;
   EventHandler.on(window, "resize.uds.tabbed-panels-v2", () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
-      document.querySelectorAll(".uds-tabbed-panels:not([data-react])").forEach(calculateOverflow);
+      document
+        .querySelectorAll(".uds-tabbed-panels:not([data-react])")
+        .forEach(calculateOverflow);
     }, 100);
   });
 }
