@@ -71,13 +71,6 @@ const MoreDropdown = React.forwardRef<HTMLDivElement, MoreDropdownProps>((
     }
   }, []);
 
-  // Move focus to first item when dropdown opens
-  useEffect(() => {
-    if (isOpen) {
-      itemRefs.current[0]?.focus();
-    }
-  }, [isOpen]);
-
   const toggle = (event: React.MouseEvent) => {
     event.preventDefault();
     setIsOpen((prev) => !prev);
@@ -165,6 +158,27 @@ const MoreDropdown = React.forwardRef<HTMLDivElement, MoreDropdownProps>((
           ref={triggerRef}
           type="button"
           onClick={toggle}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              if (!isOpen) {
+                setIsOpen(true);
+                // Per ARIA APG menu-button pattern: keyboard open must move focus to first item
+                requestAnimationFrame(() => itemRefs.current[0]?.focus());
+              } else {
+                close();
+              }
+            } else if (isOpen && e.key === "ArrowDown") {
+              e.preventDefault();
+              itemRefs.current[0]?.focus();
+            } else if (isOpen && e.key === "ArrowUp") {
+              e.preventDefault();
+              itemRefs.current[items.length - 1]?.focus();
+            } else if (isOpen && e.key === "Escape") {
+              e.preventDefault();
+              close();
+            }
+          }}
           aria-haspopup="true"
           aria-expanded={isOpen}
           aria-controls={menuId}
