@@ -1,29 +1,6 @@
-/**
- * tabbed-panels-v2.js
- *
- * Vanilla JS progressive enhancement for the Bootstrap HTML version of
- * UDS TabbedPanels.  Mirrors the overflow/"More" dropdown logic from the
- * React component so that static HTML copies behave identically.
- *
- * Expected HTML structure (copied from Storybook / React output):
- *
- *   <div>                                           <!-- optional bgColor wrapper -->
- *     <nav class="uds-tabbed-panels [uds-tabbed-panels-dark]">
- *       <div class="nav nav-tabs" role="tablist">
- *         <a class="nav-item nav-link [active]" id="{id}" href="#nav-{id}"
- *            role="tab" aria-controls="nav-{id}" aria-selected="true|false"
- *            data-bs-toggle="tab">Tab Title</a>
- *         ...
- *       </div>
- *     </nav>
- *     <div class="tab-content" …>
- *       <div class="tab-pane fade [show active]" id="nav-{id}" role="tabpanel">…</div>
- *       ...
- *     </div>
- *   </div>
- */
-
 import { EventHandler } from "./bootstrap-helper";
+
+let resizeAttached = false;
 
 /**
  * Read layout constants from the live DOM and CSS.
@@ -39,7 +16,7 @@ function readLayoutConstants(container, navTabs) {
   const moreBtn = navTabs.querySelector(".more-dropdown-button");
   const moreBtnWidth = moreBtn
     ? Math.round(moreBtn.getBoundingClientRect().width)
-    : 83;
+    : 83; // default width based on Brand figma specs
 
   return { tabGap, moreBtnWidth };
 }
@@ -80,7 +57,13 @@ function ensureDropdown(navTabs, isDark) {
     wrapper.appendChild(btn);
     wrapper.appendChild(menu);
     navTabs.appendChild(wrapper);
+  }
 
+  // Wire events once and guard with data attribute to prevent duplicates on reusee
+  if (!wrapper.hasAttribute("data-uds-events-wired")) {
+    wrapper.setAttribute("data-uds-events-wired", "true");
+    const btn = wrapper.querySelector(".more-dropdown-button");
+    const menu = wrapper.querySelector(".more-dropdown-menu");
     wireDropdownEvents(wrapper, btn, menu);
   }
 
@@ -92,7 +75,7 @@ function ensureDropdown(navTabs, isDark) {
 }
 
 /**
- * Attach open/close and keyboard behaviour to a dropdown.
+ * Attach open/close and keyboard behaviour to a dropdown
  */
 function wireDropdownEvents(wrapper, btn, menu) {
   // ── toggle open/close ──────────────────────────────────────────────────────
@@ -144,7 +127,8 @@ function wireDropdownEvents(wrapper, btn, menu) {
 
   // ── close on outside click / tap (including Safari iOS) ───────────────────
   const closeIfOutside = e => {
-    if (!wrapper.contains(e.target)) {
+    const inside = wrapper.contains(e.target);
+    if (!inside) {
       setOpen(btn, menu, false);
     }
   };
@@ -440,25 +424,33 @@ function listenForTabChanges(container) {
 // ─── public init ──────────────────────────────────────────────────────────────
 
 function initTabbedPanelsV2() {
-  document
-    .querySelectorAll(".uds-tabbed-panels:not([data-react])")
-    .forEach(container => {
+  const containers = document.querySelectorAll(".uds-tabbed-panels:not([data-react]):not([data-uds-v2-init])");
+  containers.forEach(container => {
+      container.setAttribute("data-uds-v2-init", "true");
       calculateOverflow(container);
       listenForTabChanges(container);
     });
 
-  // Recalculate on resize (debounced)
-  let resizeTimer;
-  EventHandler.on(window, "resize.uds.tabbed-panels-v2", () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      document
-        .querySelectorAll(".uds-tabbed-panels:not([data-react])")
-        .forEach(calculateOverflow);
-    }, 100);
-  });
+  // Attach resize handler only once across all init calls
+  if (!resizeAttached) {
+    resizeAttached = true;
+    let resizeTimer;
+    EventHandler.on(window, "resize.uds.tabbed-panels-v2", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        document
+          .querySelectorAll(".uds-tabbed-panels:not([data-react])")
+          .forEach(calculateOverflow);
+      }, 100);
+    });
+  }
 }
 
 export { initTabbedPanelsV2 };
 
-EventHandler.on(window, "load.uds.tabbed-panels-v2", initTabbedPanelsV2);
+if (document.readyState === 'complete') {
+  setTimeout(initTabbedPanelsV2, 0);
+} else {
+  // Wait for full load so dynamically-generated HTML is in the DOM
+  EventHandler.on(window, "load.uds.tabbed-panels-v2", initTabbedPanelsV2);
+}
