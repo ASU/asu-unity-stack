@@ -82,10 +82,6 @@ function ensureDropdown(navTabs, isDark) {
     navTabs.appendChild(wrapper);
 
     wireDropdownEvents(wrapper, btn, menu);
-  } else {
-    const btn = wrapper.querySelector(".more-dropdown-button");
-    const menu = wrapper.querySelector(".more-dropdown-menu");
-    if (btn && menu) wireDropdownEvents(wrapper, btn, menu);
   }
 
   return {
