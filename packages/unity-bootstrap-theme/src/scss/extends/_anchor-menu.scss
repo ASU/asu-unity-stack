@@ -158,6 +158,14 @@
     display: flex;
     justify-content: space-between;
   }
+
+  // WCAG 1.4.10 Reflow: cap the sticky menu to the viewport and allow
+  // internal scrolling so every link stays reachable in mobile landscape.
+  .uds-anchor-menu.uds-anchor-menu-sticky {
+    max-height: 100vh;
+    max-height: 100dvh;
+    overflow-y: auto;
+  }
 }
 
 @include media-breakpoint-up(xl) {
