@@ -54,7 +54,7 @@ const BulletItems = ({ buttonCount }) => {
           type="button"
           className="glide__bullet"
           data-glide-dir={`=${i}`}
-          aria-label={`Slide view ${i + 1}`}
+          aria-label={`Go to slide ${i+1} of ${buttonCount}`}
         />
       </GaEventWrapper>
     );

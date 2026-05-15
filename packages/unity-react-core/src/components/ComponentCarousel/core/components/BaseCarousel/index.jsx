@@ -77,8 +77,10 @@ const BaseCarousel = ({
 
   return (
     <div
-      role={role}
+      // role={role}
       aria-labelledby={ariaLabelledBy}
+      role="group"
+      aria-label="Carousel pagination"
       className={`glide ${cssClass}`}
       id={instanceName}
       style={{ width, maxWidth }}
