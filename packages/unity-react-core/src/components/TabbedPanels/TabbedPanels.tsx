@@ -254,8 +254,8 @@ const TabbedPanels = ({
 
   return (
     <div className={bgColor}>
-      <nav className={navClasses} {...(isReact ? { "data-react": "true" } : {})}>
-        <div className="nav nav-tabs" role="tablist" ref={headerTabs}>
+      <nav className={navClasses}>
+        <div className="nav nav-tabs" {...(isReact ? { "data-react": "true" } : {})} role="tablist" ref={headerTabs}>
           {visibleTabs.map((tabId, index) => {
             const child = idToChild[tabId];
             if (!child) return null;
