@@ -142,9 +142,9 @@ function setNavButtonGradient(gliderElement, currentIndex, buttonCount) {
     imageGalleryNavigation?.classList.add("slider-start");
     // Enable/disable prev/next styles. Glide takes care of actual disable.
     arrowPrev?.classList.add(cssDisabledClass);
-    arrowPrev?.setAttribute("aria-disabled", "true");
+    arrowPrev?.setAttribute("disabled", "true");
     arrowNext?.classList.remove(cssDisabledClass);
-    arrowNext?.setAttribute("aria-disabled", "false");
+    arrowNext?.removeAttribute("disabled");
   } else if (currentIndex >= buttonCount - 1) {
     // LAST SLIDE.
     // Gradient for end.
@@ -152,9 +152,9 @@ function setNavButtonGradient(gliderElement, currentIndex, buttonCount) {
     imageGalleryNavigation?.classList.add("slider-end");
     // Enable/disable prev/next styles. Glide takes care of actual disable.
     arrowPrev?.classList.remove(cssDisabledClass);
-    arrowPrev?.setAttribute("aria-disabled", "false");
+    arrowPrev?.removeAttribute("disabled");
     arrowNext?.classList.add(cssDisabledClass);
-    arrowNext?.setAttribute("aria-disabled", "true");
+    arrowNext?.setAttribute("disabled", "true");
   } else {
     // MIDDLE SLIDES.
     // Gradient for middle.
@@ -163,8 +163,8 @@ function setNavButtonGradient(gliderElement, currentIndex, buttonCount) {
     // Enable/disable prev/next styles. Glide takes care of actual disable.
     arrowPrev?.classList.remove(cssDisabledClass);
     arrowNext?.classList.remove(cssDisabledClass);
-    arrowPrev?.setAttribute("aria-disabled", "false");
-    arrowNext?.setAttribute("aria-disabled", "false");
+    arrowPrev?.removeAttribute("disabled");
+    arrowNext?.removeAttribute("disabled");
   }
 }
 
