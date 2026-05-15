@@ -424,12 +424,14 @@ function listenForTabChanges(container) {
 // ─── public init ──────────────────────────────────────────────────────────────
 
 function initTabbedPanelsV2() {
-  const containers = document.querySelectorAll(".uds-tabbed-panels:not([data-react]):not([data-uds-v2-init])");
+  const containers = document.querySelectorAll(
+    ".uds-tabbed-panels:not([data-react]):not([data-uds-v2-init])"
+  );
   containers.forEach(container => {
-      container.setAttribute("data-uds-v2-init", "true");
-      calculateOverflow(container);
-      listenForTabChanges(container);
-    });
+    container.setAttribute("data-uds-v2-init", "true");
+    calculateOverflow(container);
+    listenForTabChanges(container);
+  });
 
   // Attach resize handler only once across all init calls
   if (!resizeAttached) {
@@ -448,7 +450,7 @@ function initTabbedPanelsV2() {
 
 export { initTabbedPanelsV2 };
 
-if (document.readyState === 'complete') {
+if (document.readyState === "complete") {
   setTimeout(initTabbedPanelsV2, 0);
 } else {
   // Wait for full load so dynamically-generated HTML is in the DOM
