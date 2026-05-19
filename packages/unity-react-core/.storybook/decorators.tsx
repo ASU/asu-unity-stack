@@ -8,23 +8,23 @@ import { getBootstrapHTML } from "../src/components/GaEventWrapper/useBaseSpecif
 import { useChannel } from "storybook/preview-api";
 
 declare interface ContainerProps {
-  ref?: React.Ref<HTMLElement>;
+  ref?: React.Ref<HTMLDivElement>;
   children?: ReactNode;
   dangerouslySetInnerHTML?: {
     __html: string;
   };
 }
 
-const Full = (props: ContainerProps) => {
+const Full = ({ ref, ...props }: ContainerProps) => {
   return (
-  <div ref={props.ref} className="col uds-full-width" {...props}/>
+  <div ref={ref} className="col uds-full-width" {...props}/>
 )};
 
-const UdsContainer = (props: ContainerProps) => {
+const UdsContainer = ({ ref, ...props }: ContainerProps) => {
   return (
   <div className="container">
     <div className="row">
-      <div ref={props.ref} className="uds-container" {...props}/>
+      <div ref={ref} className="uds-container" {...props}/>
     </div>
   </div>
 )};
@@ -44,7 +44,7 @@ export const withContainer: Decorator = (
     framework = "react";
   }
   const isBootstrap = framework === "bootstrap";
-  const root = React.useRef(null as any);
+  const root = React.useRef<HTMLDivElement>(null);
 
   const emit = useChannel({ "HTML/CodeUpdated": () => {} });
 
