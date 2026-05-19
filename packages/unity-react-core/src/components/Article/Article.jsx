@@ -124,6 +124,7 @@ export const Article = ({
                 size={28}
                 borderRadius={4}
                 bgStyle={{ fill: "maroon" }}
+                iconFillColor="white"
               />
             </FacebookShareButton>
             {/* @ts-ignore */}
@@ -132,6 +133,7 @@ export const Article = ({
                 size={28}
                 borderRadius={4}
                 bgStyle={{ fill: "maroon" }}
+                iconFillColor="white"
               />
             </TwitterShareButton>
             {/* @ts-ignore */}
@@ -140,6 +142,7 @@ export const Article = ({
                 size={28}
                 borderRadius={4}
                 bgStyle={{ fill: "maroon" }}
+                iconFillColor="white"
               />
             </EmailShareButton>
             {/* @ts-ignore */}
@@ -148,6 +151,7 @@ export const Article = ({
                 size={28}
                 borderRadius={4}
                 bgStyle={{ fill: "maroon" }}
+                iconFillColor="white"
               />
             </LinkedinShareButton>
           </div>
@@ -258,6 +262,7 @@ export const Article = ({
                     size={28}
                     borderRadius={4}
                     bgStyle={{ fill: "maroon" }}
+                    iconFillColor="white"
                   />
                 </FacebookShareButton>
                 {/* @ts-ignore */}
@@ -266,6 +271,7 @@ export const Article = ({
                     size={28}
                     borderRadius={4}
                     bgStyle={{ fill: "maroon" }}
+                    iconFillColor="white"
                   />
                 </TwitterShareButton>
                 {/* @ts-ignore */}
@@ -274,6 +280,7 @@ export const Article = ({
                     size={28}
                     borderRadius={4}
                     bgStyle={{ fill: "maroon" }}
+                    iconFillColor="white"
                   />
                 </LinkedinShareButton>
               </div>
