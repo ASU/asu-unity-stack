@@ -50,13 +50,16 @@ const DropdownWrapper = styled.div`
       --span: 1; /* component overrides using inline style */
       --col: 1; /* component overrides using inline style */
       width: calc(var(--container-width) / var(--cols) * var(--span));
-      height: fit-content;
-      height: -webkit-fill-available;
       padding: var(--gap);
+      padding-bottom: 0;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       row-gap: var(--gap);
+
+      & > *:last-child {
+        padding-bottom: var(--gap);
+      }
 
       &:not(:last-child) {
         border-right: 1px solid ${ASU_GRAY5};

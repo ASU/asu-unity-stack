@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v5.0.13](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.12...@asu/app-webdir-ui-v5.0.13) (2026-05-19)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** update search page input and results styles ([8f9f361](https://github.com/asu/asu-unity-stack/commit/8f9f3614134681992f4bcb512458c69e34d18c8a))
+
 # [@asu/app-webdir-ui-v5.0.12](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.11...@asu/app-webdir-ui-v5.0.12) (2026-04-10)
 
 

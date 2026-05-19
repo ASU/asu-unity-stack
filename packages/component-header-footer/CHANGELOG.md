@@ -1,3 +1,10 @@
+# [@asu/component-header-footer-v1.4.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.4.0...@asu/component-header-footer-v1.4.1) (2026-05-12)
+
+
+### Bug Fixes
+
+* **component-header-footer:** fix header dropdown height ([efa0bb7](https://github.com/asu/asu-unity-stack/commit/efa0bb74616f2c206d1c67a6fc836b9d85f2646d))
+
 # [@asu/component-header-footer-v1.4.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.3.3...@asu/component-header-footer-v1.4.0) (2026-04-21)
 
 
