@@ -95,10 +95,10 @@ const AllTabLayout = styled.div`
   }
   .all-content {
     display: grid;
-    grid-template-columns: 700px 1fr;
-    grid-column-gap: 126px;
+    grid-template-columns: minmax(0, 700px) 1fr;
+    column-gap: 126px;
     @media screen and (max-width: 1280px) {
-      grid-template-columns: 500px 1fr;
+      grid-template-columns: minmax(0, 500px) 1fr;
     }
     @media screen and (max-width: 1012px) {
       grid-template-columns: 1fr;
@@ -107,6 +107,7 @@ const AllTabLayout = styled.div`
     .all-content-column {
       display: flex;
       flex-direction: column;
+      min-width: 0;
 
       .all-content-item {
         margin-bottom: 72px;
@@ -117,22 +118,6 @@ const AllTabLayout = styled.div`
         }
       }
     }
-  }
-  @media (max-width: 1268px) {
-    display: flex;
-    flex-direction: column;
-    grid-template-columns: 100%;
-    grid-template-rows: repeat(6, auto);
-    grid-row-gap: 48px;
-    grid-column-gap: 0px;
-    grid-template-areas:
-      "header"
-      "top"
-      "subdomain"
-      "all"
-      "faculty"
-      "students"
-      "links";
   }
 `;
 
