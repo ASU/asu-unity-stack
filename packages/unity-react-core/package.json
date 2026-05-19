@@ -74,6 +74,7 @@
     "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
     "chromium-bidi": "^3.0.0",
+    "classnames": "^2.2.6",
     "css-loader": "^5.2.0",
     "file-loader": "^6.2.0",
     "glob": "^7.1.6",
@@ -90,9 +91,15 @@
     "plop": "2.7.6",
     "postcss": "^8.4.19",
     "prettier": "^2.8.1",
+    "prop-types": "^15.7.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-router-dom": ">= 5.2.0 < 7"
+    "react-router-dom": ">= 5.2.0 < 7",
+    "semantic-release": "^22",
+    "storybook": "^10",
+    "styled-components": "^6.0.0",
+    "typescript": "5.6.2",
+    "vite": "^6.0.0"
   },
   "dependencies": {
     "@glidejs/glide": "^3.6.0",
