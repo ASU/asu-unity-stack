@@ -16,8 +16,10 @@ const SearchPageLayout = styled.div`
     justify-content: space-between;
     margin-top: 50px;
     margin-bottom: 70px;
-    form {
+    .search-page-wrapper {
       width: 50%;
+    }
+    form {
       .form-group {
         display: flex;
         margin-bottom: 0;
@@ -59,8 +61,10 @@ const SearchPageLayout = styled.div`
   @media (max-width: 1268px) {
     .options-area {
       flex-direction: column;
+        .search-page-wrapper {
+          width: 100%;
+        }
       form {
-        width: 100%;
         margin-bottom: 24px;
         max-width: 100%;
 
