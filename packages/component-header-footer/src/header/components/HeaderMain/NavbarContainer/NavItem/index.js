@@ -161,6 +161,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
       // so we need to manually close the menu and trigger the onClick event
       setMobileMenuOpen(false);
       setItemOpened();
+      link.onClick?.(e);
       return;
     }
     const { key } = e;
@@ -194,9 +195,14 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
           // Regardless of state or props mobile/desktop/hover/click
           // if the item has a dropdown, we want to toggle it on Enter/Space
           setItemOpened();
+        } else {
+          // Single page apps do not leave the page on link click,
+          // so we need to manually close the menu and trigger the onClick event
+          setMobileMenuOpen(false);
+          setItemOpened();
+          link.onClick?.(e);
         }
         dispatchGAEvent();
-        link.onClick?.(e);
       }
       if (key === "ArrowDown" || key === "ArrowRight") {
         if (opened) {
