@@ -10741,8 +10741,8 @@ __metadata:
   linkType: hard
 
 "axios@npm:~1.15.0":
-  version: 1.15.0
-  resolution: "axios@npm:1.15.0"
+  version: 1.15.2
+  resolution: "axios@npm:1.15.2"
   dependencies:
     follow-redirects: "npm:^1.15.11"
     form-data: "npm:^4.0.5"
