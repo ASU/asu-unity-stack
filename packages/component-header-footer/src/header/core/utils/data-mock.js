@@ -1501,6 +1501,9 @@ const navTreeMega = [
         },
       ],
       [
+        // empty column should not crash the layout
+      ],
+      [
         {
           href: "https://www.asu.edu/?feature=newsevents",
           type: "heading",
