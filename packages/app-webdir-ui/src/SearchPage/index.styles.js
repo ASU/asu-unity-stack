@@ -61,9 +61,9 @@ const SearchPageLayout = styled.div`
   @media (max-width: 1268px) {
     .options-area {
       flex-direction: column;
-        .search-page-wrapper {
-          width: 100%;
-        }
+      .search-page-wrapper {
+        width: 100%;
+      }
       form {
         margin-bottom: 24px;
         max-width: 100%;
