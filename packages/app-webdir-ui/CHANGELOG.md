@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v5.0.14](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.13...@asu/app-webdir-ui-v5.0.14) (2026-05-21)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** fix post-upgrade regressions in app-webdir-ui storybook ([9561344](https://github.com/asu/asu-unity-stack/commit/95613442ef11a2d3572b6daff4e982d9bad6182a))
+
 # [@asu/app-webdir-ui-v5.0.13](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.12...@asu/app-webdir-ui-v5.0.13) (2026-05-19)
 
 
