@@ -10823,10 +10823,14 @@ __metadata:
   linkType: hard
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "axios@npm:~1.15.2":
 =======
 "axios@npm:~1.15.0":
 >>>>>>> 1a3c40357 (fix(unity-react-core): add missing packages, fix lint)
+=======
+"axios@npm:~1.15.0":
+>>>>>>> 267968e21 (fix(component-header-footer): fix animated header option)
   version: 1.15.2
   resolution: "axios@npm:1.15.2"
   dependencies:

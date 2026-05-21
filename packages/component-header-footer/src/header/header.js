@@ -36,7 +36,7 @@ const ASUHeader = ({
   onLogoutClick,
   buttons,
   breakpoint = "Xl",
-  animateTitle,
+  animateTitle = false,
   expandOnHover = false,
   mobileNavTree: rawMobileNavTree,
   searchUrl,
