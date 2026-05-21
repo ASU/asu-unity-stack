@@ -1,22 +1,22 @@
 Bundled license information:
 
-react-dom/cjs/react-dom-server-legacy.browser.production.min.js:
+react-dom/cjs/react-dom-server-legacy.browser.production.js:
   /**
    * @license React
-   * react-dom-server-legacy.browser.production.min.js
+   * react-dom-server-legacy.browser.production.js
    *
-   * Copyright (c) Facebook, Inc. and its affiliates.
+   * Copyright (c) Meta Platforms, Inc. and affiliates.
    *
    * This source code is licensed under the MIT license found in the
    * LICENSE file in the root directory of this source tree.
    */
 
-react-dom/cjs/react-dom-server.browser.production.min.js:
+react-dom/cjs/react-dom-server.browser.production.js:
   /**
    * @license React
-   * react-dom-server.browser.production.min.js
+   * react-dom-server.browser.production.js
    *
-   * Copyright (c) Facebook, Inc. and its affiliates.
+   * Copyright (c) Meta Platforms, Inc. and affiliates.
    *
    * This source code is licensed under the MIT license found in the
    * LICENSE file in the root directory of this source tree.
