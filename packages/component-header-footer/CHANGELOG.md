@@ -1,3 +1,12 @@
+# [@asu/component-header-footer-v1.4.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.4.1...@asu/component-header-footer-v1.4.2) (2026-05-21)
+
+
+### Bug Fixes
+
+* **app-rfi:** fix errors encountered on stoybook start ([c5b748b](https://github.com/asu/asu-unity-stack/commit/c5b748b32d7ea968db828aa44a5e90aa4bc6b17a))
+* **app-webdir-ui:** fix post-upgrade regressions in app-webdir-ui storybook ([9561344](https://github.com/asu/asu-unity-stack/commit/95613442ef11a2d3572b6daff4e982d9bad6182a))
+* **component-header-footer:** fix nav link doesn't close menu ([f19b0f6](https://github.com/asu/asu-unity-stack/commit/f19b0f6f8085ead94fc7de2065703152a8b9e50e))
+
 # [@asu/component-header-footer-v1.4.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.4.0...@asu/component-header-footer-v1.4.1) (2026-05-12)
 
 
