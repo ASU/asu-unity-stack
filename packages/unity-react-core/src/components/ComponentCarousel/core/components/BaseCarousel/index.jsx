@@ -77,9 +77,10 @@ const BaseCarousel = ({
 
   return (
     <div
-      // role={role}
       aria-labelledby={ariaLabelledBy}
-      role="group"
+      // role={role}
+      // role="group"
+      role="region"
       aria-label="Carousel pagination"
       className={`glide ${cssClass}`}
       id={instanceName}
@@ -87,6 +88,7 @@ const BaseCarousel = ({
       data-remove-side-background={removeSideBackground}
       data-image-auto-size={imageAutoSize}
       data-has-shadow={hasShadow}
+      aria-roledescription="carousel"
     >
       <div className="glide__track" data-glide-el="track">
         <SliderItems carouselItems={carouselItems} />

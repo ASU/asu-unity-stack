@@ -77,35 +77,35 @@ function buildConfig(perView = 1, isFullWidth, hasPeek = true, isDraggable) {
     breakpoints: isFullWidth
       ? null
       : {
-          576: {
-            // BS4 sm
-            perView: perViewSm,
-            peek: smallPeek,
-          },
-          768: {
-            // BS4 md
-            perView: perViewMd,
-            peek: smallPeek,
-          },
-          992: {
-            // BS4 lg
-            perView: perViewLg,
-            peek: smallPeek,
-          },
-          1260: {
-            // BS4 xl
-            perView: perViewLg,
-            peek: smallPeek,
-          },
-          1400: {
-            perView: perViewLg,
-            peek: largePeek,
-          },
-          1920: {
-            perView: perViewLg,
-            peek: largePeek,
-          },
+        576: {
+          // BS4 sm
+          perView: perViewSm,
+          peek: smallPeek,
         },
+        768: {
+          // BS4 md
+          perView: perViewMd,
+          peek: smallPeek,
+        },
+        992: {
+          // BS4 lg
+          perView: perViewLg,
+          peek: smallPeek,
+        },
+        1260: {
+          // BS4 xl
+          perView: perViewLg,
+          peek: smallPeek,
+        },
+        1400: {
+          perView: perViewLg,
+          peek: largePeek,
+        },
+        1920: {
+          perView: perViewLg,
+          peek: largePeek,
+        },
+      },
   };
 }
 
@@ -293,14 +293,12 @@ function setupCaroarousel({
         imageNavLeft;
 
       if (currentIndex === 0 || currentSlideLeft <= 0 + viewPadding) {
-        imageGalleryNav.style.left = `${
-          currentLeft - currentSlideLeft + viewPadding
-        }px`;
+        imageGalleryNav.style.left = `${currentLeft - currentSlideLeft + viewPadding
+          }px`;
       } else if (currentSlideRight >= fullNavWidth - viewPadding) {
         const outsideAmount = currentSlideRight - fullNavWidth;
-        imageGalleryNav.style.left = `${
-          currentLeft - outsideAmount - viewPadding
-        }px`;
+        imageGalleryNav.style.left = `${currentLeft - outsideAmount - viewPadding
+          }px`;
       }
     }
 
@@ -308,17 +306,58 @@ function setupCaroarousel({
     // gradients when at the start, middle or end of a slider.
     setNavButtonGradient(gliderElement, currentIndex, buttonCount);
 
-    // Update bullet accessibility
-    const bullets = gliderElement.querySelectorAll(".glide__bullet");
-    for (let i = 0; i < bullets.length; i++){
-      if (i === currentIndex){
-        bullets[i].disabled = true;
-        bullets[i].setAttribute("aria-current","true");
+
+    // Set the main container with aria-labelledby with the header of the active card
+    const slides = gliderElement.querySelectorAll(".slider");
+
+    // Getting the text from the main header tag
+    //source: https://stackoverflow.com/questions/67134998/javascript-recursion-to-get-innertext
+    function getText(node, accumulator) {
+      if (node.nodeType === 3) { // 3 == text node
+        accumulator.push(node.nodeValue)
       } else {
-        bullets[i].disabled = undefined;
-        bullets[i].setAttribute("aria-current","false");
+        for (let child of node.childNodes)
+          getText(child, accumulator)
       }
     }
+
+    for (let i = 0; i < slides.length; i++) {
+      if (i === currentIndex) {
+
+        // Find the main h tag in the card if one exists
+        let header;
+        for (let j = 1; j < 9; j++) {
+          if (!header) {
+            header = slides[i].querySelector(`h${j}`);
+          }
+        }
+
+        if (header) {
+          let allTexts = []
+          getText(slides[i], allTexts)
+          gliderElement.setAttribute("aria-labelledby", allTexts[0]);
+          gliderElement.removeAttribute("aria-label");
+        } else {
+          gliderElement.setAttribute("aria-label", `Card ${i + 1}`);
+          gliderElement.removeAttribute("aria-labelledby");
+        }
+
+      }
+    }
+
+
+    // Update bullet accessibility
+    const bullets = gliderElement.querySelectorAll(".glide__bullet");
+    for (let i = 0; i < bullets.length; i++) {
+      if (i === currentIndex) {
+        bullets[i].setAttribute("disabled", "");
+        bullets[i].setAttribute("aria-current", "true");
+      } else {
+        bullets[i].removeAttribute("disabled");
+        bullets[i].setAttribute("aria-current", "false");
+      }
+    }
+
 
     // set the current index
     gliderElement.setAttribute("data-current-index", currentIndex);
