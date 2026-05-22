@@ -2,9 +2,6 @@
 
 /* dataLayer event push to GA. */
 export function pushDataLayerEventToGa(value) {
-  // eslint-disable-next-line no-console
-  console.log(`Pushing event ${value.event} to GA dataLayer`);
-  console.log(value);
   // PUSH TO GA.
   if (typeof dataLayer !== "undefined") {
     dataLayer.push(value);
