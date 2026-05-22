@@ -307,6 +307,19 @@ function setupCaroarousel({
     // We use event listeners to clear and set class names to show/hide
     // gradients when at the start, middle or end of a slider.
     setNavButtonGradient(gliderElement, currentIndex, buttonCount);
+
+    // Update bullet accessibility
+    const bullets = gliderElement.querySelectorAll(".glide__bullet");
+    for (let i = 0; i < bullets.length; i++){
+      if (i === currentIndex){
+        bullets[i].disabled = true;
+        bullets[i].setAttribute("aria-current","true");
+      } else {
+        bullets[i].disabled = undefined;
+        bullets[i].setAttribute("aria-current","false");
+      }
+    }
+
     // set the current index
     gliderElement.setAttribute("data-current-index", currentIndex);
     onItemClick && onItemClick(currentIndex);
