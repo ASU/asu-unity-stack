@@ -1,3 +1,20 @@
+# [@asu/unity-react-core-v1.11.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.10.1...@asu/unity-react-core-v1.11.0) (2026-05-21)
+
+
+### Bug Fixes
+
+* **unity-react-core:** add missing packages, fix lint ([1a3c403](https://github.com/ASU/asu-unity-stack/commit/1a3c40357bc5403c844e0d3efd9dfc153c8bc5a8))
+* **unity-react-core:** build fixes ([0961678](https://github.com/ASU/asu-unity-stack/commit/0961678c3961688a2019cc69f357d77e159ade5d))
+* **unity-react-core:** fix build by moving bundled deps and resolving glide scss ([a3e5ed8](https://github.com/ASU/asu-unity-stack/commit/a3e5ed86eb3186167ca3396847574a1f84c3a5c5))
+* **unity-react-core:** fix issues impacting build ([0090fe5](https://github.com/ASU/asu-unity-stack/commit/0090fe543dcae50060ad37996f299438de1d0562))
+* **unity-react-core:** no import on carousel types ([0152e9c](https://github.com/ASU/asu-unity-stack/commit/0152e9cc68ec3404919c1ca18c8ee4bbce4b4e09))
+* **unity-react-core:** react-share iconFillColor needs to be set as default changed ([2ccf8e9](https://github.com/ASU/asu-unity-stack/commit/2ccf8e996c1c975896f58727b8e9f4313a9ef3b5))
+
+
+### Features
+
+* **unity-react-core:** upgrade dependencies ([3d80ef0](https://github.com/ASU/asu-unity-stack/commit/3d80ef0128df45641af9579183c11f571012b6c8))
+
 # [@asu/unity-react-core-v1.10.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.10.0...@asu/unity-react-core-v1.10.1) (2026-05-08)
 
 

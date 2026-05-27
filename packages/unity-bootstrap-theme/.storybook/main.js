@@ -12,9 +12,8 @@ export default {
     fileURLToPath(import.meta.resolve("./local-addon/index.js")),
     fileURLToPath(import.meta.resolve("../../../.storybook-config/index.js")),
     fileURLToPath(
-      import.meta.resolve(
-        "../../../.storybook-config/dataLayerListener/index.js"
-      )
+      import.meta
+        .resolve("../../../.storybook-config/dataLayerListener/index.js")
     ),
     getAbsolutePath("@whitespace/storybook-addon-html"),
     getAbsolutePath("@storybook/addon-docs"),

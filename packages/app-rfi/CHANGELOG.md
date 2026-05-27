@@ -1,3 +1,16 @@
+# [@asu/app-rfi-v3.9.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.8.0...@asu/app-rfi-v3.9.0) (2026-05-21)
+
+
+### Bug Fixes
+
+* **app-rfi:** fix errors encountered on stoybook start ([c5b748b](https://github.com/asu/asu-unity-stack/commit/c5b748b32d7ea968db828aa44a5e90aa4bc6b17a))
+* **app-rfi:** jsdoc didn't support cjs ([62104e3](https://github.com/asu/asu-unity-stack/commit/62104e3c43cb7138180a02af93b461872ad58529))
+
+
+### Features
+
+* **unity-react-core:** upgrade dependencies ([3d80ef0](https://github.com/asu/asu-unity-stack/commit/3d80ef0128df45641af9579183c11f571012b6c8))
+
 # [@asu/app-rfi-v3.8.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.7.2...@asu/app-rfi-v3.8.0) (2026-03-23)
 
 
