@@ -71,41 +71,41 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
   const opened = link.id === itemOpened;
   const {
     breakpoint,
-    expandOnHover,
+    expandOnHover = false,
     title,
-    mobileMenuOpen,
+    mobileMenuOpen = false,
     setMobileMenuOpen,
   } = useAppContext();
   const isMobile = useIsMobile(breakpoint);
 
-  const handleClickOutside = event => {
-    if (opened && !clickRef?.current?.contains(event.target)) {
-      setItemOpened();
-    }
-  };
-
-  const handleFocusChange = () => {
-    requestAnimationFrame(() => {
-      const node = clickRef.current;
-
-      if (opened && node && !node.contains(document.activeElement)) {
+  useEffect(() => {
+    const handleClickOutside = event => {
+      if (opened && !isMobile && !clickRef?.current?.contains(event?.target)) {
         setItemOpened();
       }
-    });
-  };
-  useEffect(() => {
-    if (opened) {
-      document.addEventListener("click", handleClickOutside, true);
-      document.addEventListener("focusin", handleFocusChange);
-    } else {
-      document.removeEventListener("click", handleClickOutside, true);
-      document.removeEventListener("focusin", handleFocusChange);
-    }
+    };
+
+    const handleFocusChange = () => {
+      requestAnimationFrame(() => {
+        const node = clickRef.current;
+
+        if (
+          opened &&
+          !isMobile &&
+          node &&
+          !node.contains(document.activeElement)
+        ) {
+          setItemOpened();
+        }
+      });
+    };
+    document.addEventListener("click", handleClickOutside, true);
+    document.addEventListener("focusin", handleFocusChange);
     return () => {
       document.removeEventListener("click", handleClickOutside, true);
       document.removeEventListener("focusin", handleFocusChange);
     };
-  }, [opened, setItemOpened]);
+  }, [opened, setItemOpened, isMobile]);
 
   const renderNavLinks = useMemo(() => {
     if (link.type === "icon-home") {
