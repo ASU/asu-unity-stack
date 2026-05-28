@@ -1,3 +1,11 @@
+# [@asu/component-header-footer-v1.4.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.4.2...@asu/component-header-footer-v1.4.3) (2026-05-28)
+
+
+### Bug Fixes
+
+* **component-header-footer:** check undefined ([401b606](https://github.com/asu/asu-unity-stack/commit/401b606413eaf8f150cc4c0be7a0dae0f0d204e1))
+* **component-header-footer:** fix animated header option ([267968e](https://github.com/asu/asu-unity-stack/commit/267968e21fed4285c455ec0ad7604f0b571bd72f))
+
 # [@asu/component-header-footer-v1.4.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.4.1...@asu/component-header-footer-v1.4.2) (2026-05-21)
 
 
