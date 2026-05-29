@@ -103,8 +103,7 @@
   },
   "dependencies": {
     "@glidejs/glide": "^3.6.0",
-    "react-share": "^4.4.0",
-    "reactstrap": "^9"
+    "react-share": "^5.3"
   },
   "peerDependencies": {
     "@asu/unity-bootstrap-theme": "^1.21.3",
