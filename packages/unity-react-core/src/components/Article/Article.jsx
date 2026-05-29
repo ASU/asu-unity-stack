@@ -119,7 +119,7 @@ export const Article = ({
           <h4>Share this event:</h4>
           <div className="article-social-media">
             <FacebookShareButton
-              url={articleUrl}
+              url={`${articleUrl}`}
               title={title}
               aria-label="Share via Facebook"
             >
@@ -131,7 +131,7 @@ export const Article = ({
               />
             </FacebookShareButton>
             <XShareButton
-              url={articleUrl}
+              url={`${articleUrl}`}
               title={title}
               aria-label="Share via X (formerly Twitter)"
             >
@@ -143,7 +143,7 @@ export const Article = ({
               />
             </XShareButton>
             <EmailShareButton
-              url={articleUrl}
+              url={`${articleUrl}`}
               title={title}
               aria-label="Share via Email"
               subject="Check out this article!"
@@ -157,7 +157,7 @@ export const Article = ({
               />
             </EmailShareButton>
             <LinkedinShareButton
-              url={articleUrl}
+              url={`${articleUrl}`}
               title={title}
               aria-label="Share via LinkedIn"
             >
@@ -181,11 +181,10 @@ export const Article = ({
           <i className="fas fa-map-marker-alt" />
           Location:
         </h4>
-        {eventLocation && (
-          <div
-            dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventLocation)}
-          />
-        )}
+        {}
+        <div
+          dangerouslySetInnerHTML={sanitizeDangerousMarkup(`${eventLocation}`)}
+        />
         {registrationUrl && zoomUrl && <a href={zoomUrl}>Attend on Zoom</a>}
       </div>
     );
@@ -210,11 +209,12 @@ export const Article = ({
       </li>
     );
   };
-  if (articleUrl === "") {
+  if (!articleUrl) {
     // eslint-disable-next-line no-console
     console.warn(
       "Warning: articleUrl prop is required for Article component for social media sharing to work properly."
     );
+    articleUrl = articleUrl || "";
   }
   return (
     <>
@@ -321,7 +321,7 @@ export const Article = ({
         <div className="row">
           <div
             className="col col-12"
-            dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)}
+            dangerouslySetInnerHTML={sanitizeDangerousMarkup(`${body}`)}
             data-testid="body"
           />
         </div>
