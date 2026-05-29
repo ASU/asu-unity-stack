@@ -9,8 +9,6 @@ import React, { useEffect, useState } from "react";
 // rendering, but otherwise, we only worry about using the correct markup and
 // tweaking a few styles
 
-import { Progress } from "reactstrap";
-
 import { betterPropNames, useRfiState } from "../../core/utils/appState";
 import { DATA_SOURCE } from "../../core/utils/constants";
 import { RfiContext } from "../../core/utils/rfiContext";
@@ -24,7 +22,7 @@ const currentScriptPath = getCurrentScriptPath();
 
 /**
  * @param {import("../../core/types/rfi-types").RFIProps} props
- * @return {JSX.Element}
+ * @return {React.ReactElement}
  */
 const AsuRfi = ({
   appPathFolder = "",
