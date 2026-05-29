@@ -185,7 +185,7 @@ __metadata:
     "@testing-library/jest-dom": "npm:^5.14.1"
     "@testing-library/react": "npm:^16.0.0"
     "@vitejs/plugin-react": "npm:^4.3.1"
-    axios: "npm:~1.15.0"
+    axios: "npm:~1.16.0"
     babel-loader: "npm:^8.2.2"
     copy-webpack-plugin: "npm:^9.0.1"
     css-loader: "npm:^5.2.4"
