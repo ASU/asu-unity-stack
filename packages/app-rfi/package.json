@@ -83,7 +83,6 @@
     "formik": "^2.1.4",
     "prop-types": "^15.7.2",
     "react-phone-input-2": "2.15.1",
-    "reactstrap": "^9",
     "yup": "^0.28.1",
     "yup-phone": "^1.2.19"
   },

@@ -1,7 +1,6 @@
 // @ts-check
 import PropTypes from "prop-types";
 import React from "react";
-import { Button } from "reactstrap";
 
 import { trackGAEvent } from "@asu/shared";
 // Note on the spans around the FA i tags below:
@@ -14,6 +13,17 @@ import { trackGAEvent } from "@asu/shared";
 // The solution I hit on was to wrap the i's with spans so when the DOM
 // rewrite happens, the FA switcheroo is happening a layer below the element
 // that in this case React is trying to remove.
+/**
+ * @param {{
+ *  stepNumber: number,
+ *  totalSteps: number,
+ *  step: { props?: { section?: string } },
+ *  handleBack: () => void,
+ *  rfiSubmitting: boolean,
+ *  formik: { isSubmitting: boolean }
+ * }} props
+ * @returns {React.ReactElement}
+ */
 export const RfiStepperButtons = ({
   stepNumber,
   totalSteps,
@@ -28,7 +38,7 @@ export const RfiStepperButtons = ({
         <div className="row justify-content-end">
           <div className="col-6">
             {stepNumber > 0 ? (
-              <Button
+              <button
                 type="button"
                 className="btn btn-primary"
                 onClick={() => {
@@ -38,7 +48,7 @@ export const RfiStepperButtons = ({
                     name: "onclick",
                     type: "click",
                     region: "main content",
-                    section: step.props.section,
+                    section: step.props?.section,
                     text: "prev",
                     component: `step ${stepNumber + 1} of ${totalSteps}`,
                   });
@@ -48,13 +58,13 @@ export const RfiStepperButtons = ({
                   <i className="fas fa-angle-left" aria-hidden="true" />
                 </span>{" "}
                 Previous
-              </Button>
+              </button>
             ) : null}
           </div>
           <div className="col-6 text-right">
             {/* Note: rfi-button and rfi-button-stepN classes are used by GA */}
             {stepNumber < totalSteps - 1 ? (
-              <Button
+              <button
                 type="submit"
                 className={`btn btn-primary rfi-button-step${stepNumber + 1}`}
                 onClick={() =>
@@ -63,7 +73,7 @@ export const RfiStepperButtons = ({
                     name: "onclick",
                     type: "click",
                     region: "main content",
-                    section: step.props.section,
+                    section: step.props?.section,
                     text: "next",
                     component: `step ${stepNumber + 1} of ${totalSteps}`,
                   })
@@ -73,9 +83,9 @@ export const RfiStepperButtons = ({
                 <span>
                   <i className="fas fa-angle-right" aria-hidden="true" />
                 </span>
-              </Button>
+              </button>
             ) : (
-              <Button
+              <button
                 type="submit"
                 className="rfi-submit btn btn-primary"
                 disabled={!!isSubmitting || rfiSubmitting}
@@ -86,14 +96,14 @@ export const RfiStepperButtons = ({
                     region: "main content",
                     event: "form",
                     type: "submit",
-                    section: step.props.section,
+                    section: step.props?.section,
                     text: "submit",
                     component: `step ${stepNumber + 1} of ${totalSteps}`,
                   })
                 }
               >
                 Submit
-              </Button>
+              </button>
             )}
           </div>
         </div>
