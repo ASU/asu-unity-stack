@@ -32,6 +32,7 @@ interface MoreDropdownProps {
   activeTabID?: string;
   selectTab?: (e: React.MouseEvent | React.KeyboardEvent, id: string, title: string) => void;
   gaData?: GaEventData;
+  openRight?: boolean;
 }
 
 const MoreDropdown = React.forwardRef<HTMLDivElement, MoreDropdownProps>((
@@ -41,6 +42,7 @@ const MoreDropdown = React.forwardRef<HTMLDivElement, MoreDropdownProps>((
     activeTabID,
     selectTab,
     gaData,
+    openRight = false,
   },
   ref
 ) => {
@@ -149,7 +151,7 @@ const MoreDropdown = React.forwardRef<HTMLDivElement, MoreDropdownProps>((
   return (
     <div
       ref={setRootRef}
-      className="uds-more-dropdown"
+      className={`uds-more-dropdown${openRight ? " dropdown-open-right" : ""}`}
       aria-hidden={hidden || undefined}
       style={hidden ? { visibility: "hidden", pointerEvents: "none" } : undefined}
     >

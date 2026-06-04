@@ -123,6 +123,10 @@ const TabbedPanels = ({
   const [visibleTabs, setVisibleTabs] = useState<string[]>(
     childrenArray.map((c) => c.props.id)
   );
+  const [dropdownOpenRight, setDropdownOpenRight] = useState(false);
+
+  // ust match $tabbed-panels-dropdown-width in SCSS.
+  const DROPDOWN_WIDTH = 282;
 
   const calculateOverflow = useCallback(() => {
     const container = headerTabs.current;
@@ -170,7 +174,18 @@ const TabbedPanels = ({
 
     setVisibleTabs(newVisibleTabs);
     setOverflowTabs(newOverflowTabs);
-  }, [childrenArray, headerTabItems]);
+
+    // Anchor dropdown to the right of the More button when the container is
+    // narrower than 1200px AND the dropdown still fits within the 1200px content area.
+    if (newOverflowTabs.length > 0 && container && moreBtnRef.current) {
+      const containerRect = container.getBoundingClientRect();
+      const wrapperRect = moreBtnRef.current.getBoundingClientRect();
+      const moreBtnLeftOffset = wrapperRect.left - containerRect.left;
+      setDropdownOpenRight(moreBtnLeftOffset + DROPDOWN_WIDTH <= 1200);
+    } else {
+      setDropdownOpenRight(false);
+    }
+  }, [childrenArray, headerTabItems, DROPDOWN_WIDTH]);
 
   useLayoutEffect(() => {
     calculateOverflow();
@@ -287,6 +302,7 @@ const TabbedPanels = ({
             activeTabID={activeTabID}
             selectTab={switchToTab}
             gaData={trackLinkEvent}
+            openRight={dropdownOpenRight}
           />
         </div>
       </nav>
