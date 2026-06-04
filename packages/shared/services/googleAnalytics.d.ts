@@ -17,6 +17,8 @@ export type GAEventObject = {
     text?: string;
     region?: string;
     component?: string;
+    eventCallback?: () => void;
+    eventTimeout?: number;
 };
 import PropTypes from "prop-types";
 /**

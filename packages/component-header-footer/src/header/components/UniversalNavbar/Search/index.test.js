@@ -51,4 +51,38 @@ describe("#Search Component", () => {
       component.queryByPlaceholderText("Search asu.edu");
     expect(searchFieldAfterClose).not.toBeInTheDocument();
   });
+
+  it("should submit form via eventCallback after search", async () => {
+    const pushMock = jest.fn(obj => {
+      if (obj.eventCallback) obj.eventCallback();
+      return 1;
+    });
+    window.dataLayer = [];
+    window.dataLayer.push = pushMock;
+
+    const searchButton = await component.findByTestId("search-button");
+    fireEvent.click(searchButton);
+
+    const searchField = await component.findByPlaceholderText("Search asu.edu");
+    fireEvent.change(searchField, { target: { value: "engineering" } });
+
+    const form = /** @type {HTMLFormElement} */ (
+      component.getByTestId("universal-nav-search-form")
+    );
+    // jsdom does not implement real form submission/navigation, so stub it to
+    // verify the eventCallback path without triggering jsdom navigation.
+    const submitMock = jest.fn();
+    form.submit = submitMock;
+    fireEvent.submit(form);
+
+    expect(pushMock).toHaveBeenCalledWith(
+      expect.objectContaining({
+        event: "search",
+        text: "engineering",
+        eventCallback: expect.any(Function),
+        eventTimeout: 2000,
+      })
+    );
+    expect(submitMock).toHaveBeenCalledTimes(1);
+  });
 });
