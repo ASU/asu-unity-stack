@@ -189,6 +189,7 @@
   position: absolute;
   top: calc(#{$tabbed-panels-tab-height} + 2px);
   right: 0;
+  left: auto;
   width: $tabbed-panels-dropdown-width;
   max-width: $tabbed-panels-dropdown-width;
   box-sizing: border-box;
@@ -205,6 +206,16 @@
 
   &.open {
     display: flex;
+  }
+}
+
+// When the container is narrower than 1200px and the dropdown fits to the right
+// within the 1200px content area, anchor the menu to the left of the button
+// instead of the default right-anchored. This is specified on the Figma
+.uds-more-dropdown.dropdown-open-right {
+  .more-dropdown-menu {
+    left: 0;
+    right: auto;
   }
 }
 
