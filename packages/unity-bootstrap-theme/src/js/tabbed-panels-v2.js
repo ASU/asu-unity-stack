@@ -2,6 +2,9 @@ import { EventHandler } from "./bootstrap-helper";
 
 let resizeAttached = false;
 
+// must match $tabbed-panels-dropdown-width in SCSS.
+const DROPDOWN_WIDTH = 282;
+
 /**
  * Read layout constants from the live DOM and CSS.
  * - tabGap: from the actual computed column-gap of the nav-tabs flex container
@@ -249,6 +252,14 @@ function calculateOverflow(container) {
   wrapper.removeAttribute("aria-hidden");
   wrapper.style.visibility = "";
   wrapper.style.pointerEvents = "";
+
+  // Anchor dropdown to the right of the More button when the container is
+  // narrower than 1200px AND the dropdown still fits within the 1200px content area.
+  const containerRect = container.getBoundingClientRect();
+  const wrapperRect = wrapper.getBoundingClientRect();
+  const moreBtnLeftOffset = wrapperRect.left - containerRect.left;
+  const fitsToRight = moreBtnLeftOffset + DROPDOWN_WIDTH <= 1200;
+  wrapper.classList.toggle("dropdown-open-right", fitsToRight);
 
   // Determine the active tab
   const activeTab = navTabs.querySelector("button.nav-link.active");
