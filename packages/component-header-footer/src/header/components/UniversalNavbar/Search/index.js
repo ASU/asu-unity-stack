@@ -42,31 +42,31 @@ const Search = () => {
     /** @type {HTMLFormElement} */
     const form = e?.currentTarget;
     e.preventDefault();
-    /**
-     * Issue: Callback not currently available
-     * We need to ensure dataLayer events are being logged correctly
-     * Soluton might be in GA4 settings with a form event targeting the element ID
-     *
-     * This solution does not guarantee the event is logged before the page
-     * redirects.
-     * Preventing form submission with arbitrary timeout is always bad, but this
-     * may be small enough to not degrade the experience
-     *
-     * TODO: UDS-1612
-     */
+
+    let submitted = false;
+    const submit = () => {
+      if (!submitted && typeof form?.submit === "function") {
+        submitted = true;
+        form.submit();
+      }
+    };
+
     const searchInput =
       form && form.elements
         ? /** @type {HTMLInputElement|null} */ (form.elements.namedItem("q"))
         : null;
+
+    // Fallback: always submit within 2s regardless of GTM state. Useful for
+    // cases where GTM fails to load or execute for any reason, or if the user
+    // has blocked GTM.
+    setTimeout(submit, 2000);
+
     trackGAEvent({
       ...SEARCH_GA_EVENT,
       text: searchInput ? searchInput.value : "",
+      eventCallback: submit,
+      eventTimeout: 2000,
     });
-    setTimeout(() => {
-      if (typeof form?.submit === "function") {
-        form.submit();
-      }
-    }, 100);
   };
 
   const handleChangeVisibility = () => {
