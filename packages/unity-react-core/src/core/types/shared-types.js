@@ -101,6 +101,7 @@
  * @property {number} openCard
  * @property {ReactMouseEvent} onClick
  * @property {import("../../components/GaEventWrapper/GaEventWrapper").GaEventType} [gaData]
+ * @property {React.Ref<HTMLDivElement>} [ref]
  */
 
 /**

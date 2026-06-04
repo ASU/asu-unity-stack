@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 
 import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
 import { useBaseSpecificFramework } from "../../GaEventWrapper/useBaseSpecificFramework";
@@ -14,10 +14,10 @@ interface TabHeaderProps {
   rightKeyPressed: () => void;
   icon?: [string, string];
   gaData?: GaEventData;
+  ref?: React.Ref<HTMLButtonElement>;
 }
 
-const TabHeader = React.forwardRef<HTMLButtonElement, TabHeaderProps>(
-  ({ id, selected, isFocusEntry, title, selectTab, leftKeyPressed, rightKeyPressed, icon, gaData }, ref) => {
+const TabHeader = ({ id, selected, isFocusEntry, title, selectTab, leftKeyPressed, rightKeyPressed, icon, gaData, ref }: TabHeaderProps) => {
     const { isReact } = useBaseSpecificFramework();
 
     const onKeyDown = (e: React.KeyboardEvent) => {
@@ -49,10 +49,7 @@ const TabHeader = React.forwardRef<HTMLButtonElement, TabHeaderProps>(
         </button>
       </GaEventWrapper>
     );
-  }
-);
-
-TabHeader.displayName = "TabHeader";
+};
 
 export { TabHeader };
 export type { TabHeaderProps };

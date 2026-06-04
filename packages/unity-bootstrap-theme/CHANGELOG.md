@@ -1,3 +1,22 @@
+# [@asu/unity-bootstrap-theme-v1.39.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.38.2...@asu/unity-bootstrap-theme-v1.39.0) (2026-05-28)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** update header styles and stories ([88c018d](https://github.com/ASU/asu-unity-stack/commit/88c018daa5c32e6b73a83491ebe83cd43636d96d))
+
+
+### Features
+
+* **unity-bootstrap-theme:** added new header styles and stories ([c4f8d1d](https://github.com/ASU/asu-unity-stack/commit/c4f8d1db677b9c38cec26b802c7d57181f0ea97f))
+
+# [@asu/unity-bootstrap-theme-v1.38.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.38.1...@asu/unity-bootstrap-theme-v1.38.2) (2026-05-21)
+
+
+### Bug Fixes
+
+* **unity-react-core:** add missing packages, fix lint ([1a3c403](https://github.com/ASU/asu-unity-stack/commit/1a3c40357bc5403c844e0d3efd9dfc153c8bc5a8))
+
 # [@asu/unity-bootstrap-theme-v1.38.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.38.0...@asu/unity-bootstrap-theme-v1.38.1) (2026-05-13)
 
 

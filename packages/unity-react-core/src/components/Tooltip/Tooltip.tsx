@@ -77,7 +77,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
 
   return (
     <span className="uds-tooltip-container">
-      {React.cloneElement(domTrigger as ReactElement, {
+      {React.cloneElement(domTrigger as unknown as ReactElement<Record<string, unknown>>, {
         "aria-describedby": toolTipId,
         "tabIndex": 0,
       })}
