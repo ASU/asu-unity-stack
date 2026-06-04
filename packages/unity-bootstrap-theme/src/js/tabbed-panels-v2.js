@@ -261,7 +261,10 @@ function calculateOverflow(container) {
   const fitsIn1200 = wrapperRect.left + DROPDOWN_WIDTH <= 1200;
   const containerWidth = container.getBoundingClientRect().width;
   const isNarrow = containerWidth < 1200;
-  wrapper.classList.toggle("dropdown-open-right", isNarrow && fitsInViewport && fitsIn1200);
+  wrapper.classList.toggle(
+    "dropdown-open-right",
+    isNarrow && fitsInViewport && fitsIn1200
+  );
 
   // Determine the active tab
   const activeTab = navTabs.querySelector("button.nav-link.active");

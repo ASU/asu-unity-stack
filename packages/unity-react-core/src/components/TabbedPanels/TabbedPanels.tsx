@@ -139,14 +139,16 @@ const TabbedPanels = ({
     const tabIDs = childrenArray.map((c) => c.props.id);
 
     const widths = tabIDs.map((id) => {
-      if (typeof tabWidthsRef.current[id] === "number") {
-        return tabWidthsRef.current[id];
-      }
+      // Always prefer a live DOM measurement if the node is mounted
       const domNode = tabRefs.current[id] ?? headerTabItems.current?.[id];
       if (domNode && typeof domNode.getBoundingClientRect === "function") {
         const width = Math.round(domNode.getBoundingClientRect().width);
         tabWidthsRef.current[id] = width;
         return width;
+      }
+      // Fall back to cached width, or 80 if never measured
+      if (typeof tabWidthsRef.current[id] === "number") {
+        return tabWidthsRef.current[id];
       }
       return 80;
     });
@@ -176,12 +178,14 @@ const TabbedPanels = ({
     setOverflowTabs(newOverflowTabs);
 
     // Anchor dropdown to the right of the More button when the container is
-    // narrower than 1200px AND the dropdown still fits within the 1200px content area.
+    // narrower than 1200px AND the dropdown still fits within the viewport.
     if (newOverflowTabs.length > 0 && container && moreBtnRef.current) {
-      const containerRect = container.getBoundingClientRect();
       const wrapperRect = moreBtnRef.current.getBoundingClientRect();
-      const moreBtnLeftOffset = wrapperRect.left - containerRect.left;
-      setDropdownOpenRight(moreBtnLeftOffset + DROPDOWN_WIDTH <= 1200);
+      const containerWidth = container.getBoundingClientRect().width;
+      const fitsInViewport = wrapperRect.left + DROPDOWN_WIDTH <= window.innerWidth;
+      const fitsIn1200 = wrapperRect.left + DROPDOWN_WIDTH <= 1200;
+      const isNarrow = containerWidth < 1200;
+      setDropdownOpenRight(isNarrow && fitsInViewport && fitsIn1200);
     } else {
       setDropdownOpenRight(false);
     }
@@ -192,6 +196,17 @@ const TabbedPanels = ({
     window.addEventListener("resize", calculateOverflow);
     return () => window.removeEventListener("resize", calculateOverflow);
   }, [calculateOverflow]);
+
+  // After visible tabs change, newly mounted tabs get real DOM widths via
+  // registerTabNode. Re-run overflow calculation so stale fallback widths
+  // don't leave the More button incorrectly hidden.
+  const prevVisibleRef = useRef(visibleTabs);
+  useLayoutEffect(() => {
+    if (prevVisibleRef.current !== visibleTabs) {
+      prevVisibleRef.current = visibleTabs;
+      calculateOverflow();
+    }
+  }, [visibleTabs, calculateOverflow]);
 
   useEffect(() => {
     if (
