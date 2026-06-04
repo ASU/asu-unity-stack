@@ -58,7 +58,7 @@ const Search = () => {
 
     // Fallback: always submit within 2s regardless of GTM state. Useful for
     // cases where GTM fails to load or execute for any reason, or if the user
-    // has blocked GTM. This will only be called if there are any adblockers or analytics blockers.
+    // has blocked GTM.
     setTimeout(submit, 2000);
 
     trackGAEvent({
