@@ -254,12 +254,14 @@ function calculateOverflow(container) {
   wrapper.style.pointerEvents = "";
 
   // Anchor dropdown to the right of the More button when the container is
-  // narrower than 1200px AND the dropdown still fits within the 1200px content area.
-  const containerRect = container.getBoundingClientRect();
+  // narrower than 1200px AND the dropdown still fits within the viewport
+  // (so it doesn't overflow on mobile).
   const wrapperRect = wrapper.getBoundingClientRect();
-  const moreBtnLeftOffset = wrapperRect.left - containerRect.left;
-  const fitsToRight = moreBtnLeftOffset + DROPDOWN_WIDTH <= 1200;
-  wrapper.classList.toggle("dropdown-open-right", fitsToRight);
+  const fitsInViewport = wrapperRect.left + DROPDOWN_WIDTH <= window.innerWidth;
+  const fitsIn1200 = wrapperRect.left + DROPDOWN_WIDTH <= 1200;
+  const containerWidth = container.getBoundingClientRect().width;
+  const isNarrow = containerWidth < 1200;
+  wrapper.classList.toggle("dropdown-open-right", isNarrow && fitsInViewport && fitsIn1200);
 
   // Determine the active tab
   const activeTab = navTabs.querySelector("button.nav-link.active");
