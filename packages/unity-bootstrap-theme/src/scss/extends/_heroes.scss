@@ -237,7 +237,10 @@ div.uds-hero-sm {
     .btn-row {
       align-self: flex-start;
       flex-wrap: wrap;
-      top: 15rem;
+      grid-row: 4;
+      position: relative;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
 
       a.btn {
         margin-top: 0;
