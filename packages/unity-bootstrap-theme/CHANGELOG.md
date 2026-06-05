@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.39.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.39.1...@asu/unity-bootstrap-theme-v1.39.2) (2026-06-05)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** space bar expands/collapses footer accordion (UDS-2159) ([22f2133](https://github.com/ASU/asu-unity-stack/commit/22f2133e439e03d3021007523466e58bf110f80d))
+
 # [@asu/unity-bootstrap-theme-v1.39.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.39.0...@asu/unity-bootstrap-theme-v1.39.1) (2026-06-05)
 
 
