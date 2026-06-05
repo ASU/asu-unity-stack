@@ -11041,11 +11041,13 @@ ic.div`
   .mobile-menu-toggler {
     background-color: transparent;
     border: none;
-    cursor: default;
-    h4,
-    h2 {
-      align-items: center;
-    }
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    text-align: inherit;
     i {
       transition: all 0.3s;
     }

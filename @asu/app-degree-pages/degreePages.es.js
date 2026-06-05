@@ -11198,11 +11198,13 @@ const RT = dc.div`
   .mobile-menu-toggler {
     background-color: transparent;
     border: none;
-    cursor: default;
-    h4,
-    h2 {
-      align-items: center;
-    }
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    text-align: inherit;
     i {
       transition: all 0.3s;
     }
@@ -11317,14 +11319,14 @@ const RT = dc.div`
         }
       ),
       children: /* @__PURE__ */ ge.jsxs("div", { className: `${_.containerClass} uds-anchor-menu-wrapper`, children: [
-        A ? /* @__PURE__ */ ge.jsx(
+        /* @__PURE__ */ ge.jsx("h2", { children: A ? /* @__PURE__ */ ge.jsx(
           Zf,
           {
             gaData: {
               ...zT,
               action: _.showMenu ? "close" : "open"
             },
-            children: /* @__PURE__ */ ge.jsx(
+            children: /* @__PURE__ */ ge.jsxs(
               "button",
               {
                 className: dl("mobile-menu-toggler", {
@@ -11335,18 +11337,19 @@ const RT = dc.div`
                 "data-bs-toggle": "collapse",
                 "data-bs-target": "#collapseAnchorMenu",
                 "aria-controls": "collapseAnchorMenu",
-                children: /* @__PURE__ */ ge.jsxs("h2", { children: [
+                "aria-expanded": _.showMenu,
+                children: [
                   bg,
                   ":",
                   /* @__PURE__ */ ge.jsx("i", { className: "fas fa-chevron-down" })
-                ] })
+                ]
               }
             )
           }
-        ) : /* @__PURE__ */ ge.jsxs("h2", { children: [
+        ) : /* @__PURE__ */ ge.jsxs(ge.Fragment, { children: [
           bg,
           ":"
-        ] }),
+        ] }) }),
         /* @__PURE__ */ ge.jsx(
           "div",
           {

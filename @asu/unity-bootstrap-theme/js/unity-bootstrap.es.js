@@ -1568,13 +1568,17 @@ function Nn() {
 }
 k.on(window, "load.uds.chart", Nn);
 function Dn() {
-  function e({ target: o }) {
-    const r = o.getAttribute("href");
-    o.getAttribute("data-bs-toggle") !== "collapse" || !r || !r.includes("#") || Mo(
+  function e({ target: r }) {
+    const a = r.getAttribute("href");
+    r.getAttribute("data-bs-toggle") !== "collapse" || !a || !a.includes("#") || Mo(
       document.querySelector(".collapsing")
     );
   }
-  k.on(document, "click.uds.collapse", e);
+  function o(r) {
+    const { target: a, key: i } = r;
+    i !== " " && i !== "Spacebar" || a.tagName !== "A" || a.getAttribute("data-bs-toggle") !== "collapse" || (r.preventDefault(), a.click());
+  }
+  k.on(document, "click.uds.collapse", e), k.on(document, "keydown.uds.collapse", o);
 }
 k.on(window, "load.uds.collapse", Dn);
 function we() {
