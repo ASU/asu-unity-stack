@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.39.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.39.2...@asu/unity-bootstrap-theme-v1.39.3) (2026-06-05)
+
+
+### Bug Fixes
+
+* **anchor-menu:** use native button for the mobile toggle (WCAG 2.1.1, 4.1.2) ([d33bda3](https://github.com/ASU/asu-unity-stack/commit/d33bda3a7a5d207e3244a1c33af2f93b2afb6547))
+
 # [@asu/unity-bootstrap-theme-v1.39.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.39.1...@asu/unity-bootstrap-theme-v1.39.2) (2026-06-05)
 
 
