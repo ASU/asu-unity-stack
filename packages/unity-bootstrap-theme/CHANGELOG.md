@@ -1,3 +1,11 @@
+# [@asu/unity-bootstrap-theme-v1.39.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.39.0...@asu/unity-bootstrap-theme-v1.39.1) (2026-06-05)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** add bottom margin to hero-sm CTA for QA padding ([d6c217d](https://github.com/ASU/asu-unity-stack/commit/d6c217d12784f5aa58a421034b5c2cd8df5daa76))
+* **unity-bootstrap-theme:** hero small CTA overflow at <768px viewports ([bebb98c](https://github.com/ASU/asu-unity-stack/commit/bebb98c369250915c1c920671baf8a1c69711fa6))
+
 # [@asu/unity-bootstrap-theme-v1.39.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.38.2...@asu/unity-bootstrap-theme-v1.39.0) (2026-05-28)
 
 
