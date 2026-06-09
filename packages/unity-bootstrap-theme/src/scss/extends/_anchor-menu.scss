@@ -15,6 +15,18 @@
     top: 0;
   }
 
+  // Pinned state applied by anchor-menu.js while scrolled. Fixed in place
+  // (the node is NOT moved in the DOM) so keyboard tab order is preserved
+  // (WCAG 2.1.1 Keyboard, 2.4.3 Focus Order). --uds-anchor-menu-top is the
+  // global header's bottom offset, set by the JS so the menu pins directly
+  // below the fixed header.
+  &-attached {
+    position: fixed;
+    top: var(--uds-anchor-menu-top, 0px);
+    left: 0;
+    right: 0;
+  }
+
   // Native <button> nested inside the heading; gives the toggle real
   // keyboard and assistive-tech semantics (WCAG 2.1.1, 4.1.2) while
   // keeping the heading available for screen-reader navigation.
