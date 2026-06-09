@@ -1,3 +1,10 @@
+# [@asu/app-rfi-v3.10.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.9.0...@asu/app-rfi-v3.10.0) (2026-06-09)
+
+
+### Features
+
+* **app-rfi:** add all parameters to datalayer for RFI module ([bbcac08](https://github.com/asu/asu-unity-stack/commit/bbcac0884d05dca5c0c61dc5b764f17afce035b5))
+
 # [@asu/app-rfi-v3.9.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.8.0...@asu/app-rfi-v3.9.0) (2026-05-21)
 
 
