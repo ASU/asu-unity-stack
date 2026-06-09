@@ -183,12 +183,17 @@
 
   // WCAG 1.4.10 Reflow: cap the sticky menu to the viewport and allow
   // internal scrolling so every link stays reachable in mobile landscape.
-  // -attached is the class the JS actually applies when scrolling makes the
-  // navbar stick; -sticky is kept for external consumers that may apply it.
+  // -attached is the class the bootstrap JS applies when scrolling makes the
+  // navbar stick; -sticky is kept for external consumers that may apply it;
+  // .sticky is the class the unity-react-core AnchorMenu component applies.
   .uds-anchor-menu.uds-anchor-menu-attached,
-  .uds-anchor-menu.uds-anchor-menu-sticky {
+  .uds-anchor-menu.uds-anchor-menu-sticky,
+  .uds-anchor-menu.sticky {
     max-height: 100vh;
-    max-height: 100dvh;
+    // Subtract the header offset the React component exposes via
+    // --uds-anchor-menu-top; it defaults to 0px, so this reduces to 100dvh
+    // for the bootstrap/static markup cases.
+    max-height: calc(100dvh - var(--uds-anchor-menu-top, 0px));
     overflow-y: auto;
   }
 }
