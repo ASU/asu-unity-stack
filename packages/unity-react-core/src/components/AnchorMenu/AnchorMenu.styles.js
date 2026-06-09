@@ -6,12 +6,6 @@ const AnchorMenuWrapper = styled.div`
     top: var(--uds-anchor-menu-top, 0px);
     left: 0;
     width: 100%;
-
-    @media (max-width: 991.98px) {
-      max-height: 100vh;
-      max-height: calc(100dvh - var(--uds-anchor-menu-top, 0px));
-      overflow-y: auto;
-    }
   }
   .mobile-menu-toggler {
     background-color: transparent;
