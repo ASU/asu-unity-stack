@@ -21,13 +21,33 @@ function initAnchorMenu() {
     return;
   }
 
-  const navbarOriginalParent = navbar.parentNode;
-  const navbarOriginalNextSibling = navbar.nextSibling;
-
   const anchors = Array.from(navbar.getElementsByClassName("nav-link"));
   const anchorTargets = new Map();
-  let previousScrollPosition = window.scrollY;
   let isNavbarAttached = false;
+
+  // Bottom of the (fixed) global header in the viewport — where the menu
+  // should pin so it sits directly below the header instead of under it.
+  const getHeaderBottomOffset = () =>
+    Math.max(globalHeader.getBoundingClientRect().bottom, 0);
+
+  // Attach/detach WITHOUT moving the node in the DOM, so keyboard tab order
+  // is preserved (WCAG 2.1.1 Keyboard, 2.4.3 Focus Order). Mirrors the
+  // unity-react-core AnchorMenu, which fixes the menu in place via
+  // --uds-anchor-menu-top instead of relocating it into the header.
+  const attachNavbar = () => {
+    navbar.style.setProperty(
+      "--uds-anchor-menu-top",
+      getHeaderBottomOffset() + "px"
+    );
+    navbar.classList.add("uds-anchor-menu-attached");
+    isNavbarAttached = true;
+  };
+
+  const detachNavbar = () => {
+    navbar.classList.remove("uds-anchor-menu-attached");
+    navbar.style.removeProperty("--uds-anchor-menu-top");
+    isNavbarAttached = false;
+  };
 
   // These values are for optionally present Drupal admin toolbars. They
   // are not present in Storybook and not required in implementations.
@@ -56,11 +76,11 @@ function initAnchorMenu() {
     }
   }
 
-  const shouldAttachNavbarOnLoad = window.scrollY > navbarInitialTop;
+  // Attach when the menu's original top has scrolled under the header bottom.
+  const shouldAttachNavbarOnLoad =
+    window.scrollY >= navbarInitialTop - getHeaderBottomOffset();
   if (shouldAttachNavbarOnLoad) {
-    globalHeader.appendChild(navbar);
-    isNavbarAttached = true;
-    navbar.classList.add("uds-anchor-menu-attached");
+    attachNavbar();
   }
 
   /**
@@ -139,38 +159,24 @@ function initAnchorMenu() {
         });
     }
 
-    // Handle navbar attachment/detachment
-    const navbarY = navbar.getBoundingClientRect().top;
-    const headerBottom = globalHeader.getBoundingClientRect().bottom;
-    const isScrollingDown = window.scrollY > previousScrollPosition;
+    // Handle navbar attachment/detachment.
+    // Use the stored original offset (navbarInitialTop) rather than the live
+    // rect, because once attached the menu is position:fixed and its rect no
+    // longer reflects its document position.
+    const attachThreshold = navbarInitialTop - getHeaderBottomOffset();
 
-    // If scrolling DOWN and the bottom of globalHeader touches or overlaps the top of navbar
-    if (isScrollingDown && headerBottom >= navbarY) {
-      if (!isNavbarAttached) {
-        // Attach navbar to globalHeader
-        globalHeader.appendChild(navbar);
-        isNavbarAttached = true;
-        navbar.classList.add("uds-anchor-menu-attached");
-      }
+    if (!isNavbarAttached && window.scrollY >= attachThreshold) {
+      attachNavbar();
+    } else if (isNavbarAttached && window.scrollY < attachThreshold) {
+      detachNavbar();
+    } else if (isNavbarAttached) {
+      // Header height can change while scrolled (responsive/shrinking header);
+      // keep the pinned offset in sync.
+      navbar.style.setProperty(
+        "--uds-anchor-menu-top",
+        getHeaderBottomOffset() + "px"
+      );
     }
-
-    // If scrolling UP and the header bottom no longer overlaps with the navbar
-    if (!isScrollingDown && isNavbarAttached) {
-      const currentHeaderBottom = globalHeader.getBoundingClientRect().bottom;
-      const navbarCurrentTop = navbar.getBoundingClientRect().top;
-
-      // Only detach if we're back to the initial navbar position or if header no longer overlaps navbar
-      if (
-        window.scrollY <= navbarInitialTop ||
-        currentHeaderBottom < navbarCurrentTop
-      ) {
-        navbarOriginalParent.insertBefore(navbar, navbarOriginalNextSibling);
-        isNavbarAttached = false;
-        navbar.classList.remove("uds-anchor-menu-attached");
-      }
-    }
-
-    previousScrollPosition = window.scrollY;
   };
 
   let throttledScrollHandler;
