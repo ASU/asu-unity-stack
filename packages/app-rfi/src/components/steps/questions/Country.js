@@ -65,3 +65,4 @@ export const Country = ({ gaData }) => {
 };
 
 Country.propTypes = { gaData: gaEventPropTypes };
+Country.gaName = "citizenship_country";

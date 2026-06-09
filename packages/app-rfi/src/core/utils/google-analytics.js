@@ -1,10 +1,10 @@
 // @ts-nocheck
 
 /* dataLayer event push to GA. */
-export function pushDataLayerEventToGa(eventValue) {
+export function pushDataLayerEventToGa(value) {
   // PUSH TO GA.
   if (typeof dataLayer !== "undefined") {
-    dataLayer.push({ event: eventValue });
+    dataLayer.push(value);
   }
 }
 

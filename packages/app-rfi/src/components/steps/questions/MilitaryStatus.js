@@ -45,3 +45,4 @@ export const MilitaryStatus = ({ gaData }) => {
 };
 
 MilitaryStatus.propTypes = { gaData: gaEventPropTypes };
+MilitaryStatus.gaName = "military_status";
