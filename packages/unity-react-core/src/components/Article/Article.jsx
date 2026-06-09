@@ -27,7 +27,7 @@ import { Wrapper, EventInfoWrapper } from "./Article.styles";
  */
 export const Article = ({
   type = "news",
-  articleUrl,
+  articleUrl = "",
   publicationDate,
   title,
   body,
@@ -182,9 +182,7 @@ export const Article = ({
           Location:
         </h4>
         {}
-        <div
-          dangerouslySetInnerHTML={sanitizeDangerousMarkup(`${eventLocation}`)}
-        />
+        <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventLocation)} />
         {registrationUrl && zoomUrl && <a href={zoomUrl}>Attend on Zoom</a>}
       </div>
     );
@@ -209,12 +207,11 @@ export const Article = ({
       </li>
     );
   };
-  if (!articleUrl) {
+  if (articleUrl === "") {
     // eslint-disable-next-line no-console
     console.warn(
       "Warning: articleUrl prop is required for Article component for social media sharing to work properly."
     );
-    articleUrl = articleUrl || "";
   }
   return (
     <>
@@ -321,7 +318,7 @@ export const Article = ({
         <div className="row">
           <div
             className="col col-12"
-            dangerouslySetInnerHTML={sanitizeDangerousMarkup(`${body}`)}
+            dangerouslySetInnerHTML={sanitizeDangerousMarkup(body)}
             data-testid="body"
           />
         </div>
