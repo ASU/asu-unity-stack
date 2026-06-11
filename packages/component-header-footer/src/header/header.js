@@ -36,15 +36,15 @@ const ASUHeader = ({
   onLogoutClick,
   buttons,
   breakpoint = "Xl",
-  animateTitle,
+  animateTitle = false,
   expandOnHover = false,
   mobileNavTree: rawMobileNavTree,
   searchUrl,
   site,
   renderDiv = "false",
 }) => {
-  const navTree = tryAddActivePage(rawNavTree);
-  const mobileNavTree = tryAddActivePage(rawMobileNavTree);
+  const navTree = tryAddActivePage(rawNavTree) || [];
+  const mobileNavTree = tryAddActivePage(rawMobileNavTree) || [];
 
   /**
    * Header reference
@@ -76,14 +76,19 @@ const ASUHeader = ({
   const singlePageAppReset = () => {
     if (headerRef?.current) {
       headerRef.current.focus();
-      window.scrollTo(0, 0);
+      if (typeof window !== "undefined") {
+        window.scrollTo(0, 0);
+      }
     }
     setMobileMenuOpen();
     setItemOpened();
-    document.body.style.overflow = "unset";
+    if (typeof document !== "undefined") {
+      document.body.style.overflow = "unset";
+    }
   };
 
   const handleWindowScroll = () => {
+    if (typeof window === "undefined") return;
     const curPos = window.scrollY;
     if (!headerRef?.current) return;
     if (curPos > headerRef.current.getBoundingClientRect().top) {
@@ -123,6 +128,8 @@ const ASUHeader = ({
   }, [headerRef, mobileMenuOpen]);
 
   useEffect(() => {
+    if (typeof window === "undefined") return undefined;
+
     const throttledScroll = () => throttle(handleWindowScroll, 100);
     window.addEventListener("scroll", throttledScroll);
 

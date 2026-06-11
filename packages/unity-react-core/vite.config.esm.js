@@ -123,6 +123,10 @@ export default defineConfig({
   resolve: {
     alias: {
       "@asu/shared": path.resolve(__dirname, "../shared"),
+      "@glidejs/glide/src/assets/sass/glide.core.scss": path.resolve(
+        __dirname,
+        "../../node_modules/@glidejs/glide/src/assets/sass/glide.core.scss"
+      ),
     }
   },
 });

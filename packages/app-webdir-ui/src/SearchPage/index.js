@@ -131,7 +131,7 @@ function SearchPage({
         <span className="highlight-gold">Search</span>
       </h1>
       <div className="options-area">
-        <search>
+        <search className="search-page-wrapper">
           <form className="uds-form">
             <div className="form-group">
               <input

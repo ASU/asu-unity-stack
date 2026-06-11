@@ -1,3 +1,10 @@
+# [@asu/app-degree-pages-v3.2.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.1.5...@asu/app-degree-pages-v3.2.0) (2026-05-21)
+
+
+### Features
+
+* **unity-react-core:** upgrade dependencies ([3d80ef0](https://github.com/asu/asu-unity-stack/commit/3d80ef0128df45641af9579183c11f571012b6c8))
+
 # [@asu/app-degree-pages-v3.1.5](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.1.4...@asu/app-degree-pages-v3.1.5) (2026-04-02)
 
 

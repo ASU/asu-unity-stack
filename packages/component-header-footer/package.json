@@ -1,6 +1,6 @@
 {
   "name": "@asu/component-header-footer",
-  "version": "1.4.0",
+  "version": "1.4.3",
   "description": "ASU Global Header and Footer",
   "main": "./dist/asuHeaderFooter.cjs.js",
   "browser": "./dist/asuHeaderFooter.umd.js",
@@ -53,8 +53,8 @@
     "@fortawesome/react-fontawesome": "^0.2.0"
   },
   "peerDependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@asu/shared": "*",
@@ -90,7 +90,7 @@
     "semantic-release-monorepo": "^8.0.2",
     "storybook": "^10.0.0",
     "style-loader": "^2.0.0",
-    "styled-components": "^5.3.0",
+    "styled-components": "^6.0.0",
     "terser-webpack-plugin": "^5.1.1",
     "vite": "^6.0.0",
     "webpack-filter-warnings-plugin": "^1.2.1",

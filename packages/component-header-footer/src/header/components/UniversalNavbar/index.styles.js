@@ -80,7 +80,7 @@ const Wrapper = styled.div`
             display: flex;
             align-items: center;
             justify-content: center;
-            height: stretch;
+            height: 100%;
 
             &.visually-hidden-focusable:not(:focus):not(:active) {
               border: none;

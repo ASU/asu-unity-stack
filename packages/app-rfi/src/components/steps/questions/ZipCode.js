@@ -50,3 +50,4 @@ export const ZipCode = ({ gaData }) => {
 };
 
 ZipCode.propTypes = { gaData: gaEventPropTypes };
+ZipCode.gaName = "zip_code";

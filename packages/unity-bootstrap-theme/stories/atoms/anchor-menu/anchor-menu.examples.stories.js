@@ -53,17 +53,21 @@ export const AnchorMenu = () => {
         >
           <div className="container">
             <div className="uds-anchor-menu-wrapper">
-              <h2
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseExample"
-                aria-expanded="false"
-                aria-controls="collapseExample"
-                data-ga-name="onclick"
-                data-ga-event="collapse"
-                data-ga-type="click"
-                data-ga="On this page"
-              >
-                On This Page: <span className="fas fa-chevron-down"></span>
+              <h2>
+                <button
+                  type="button"
+                  className="mobile-menu-toggler"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseExample"
+                  aria-expanded="false"
+                  aria-controls="collapseExample"
+                  data-ga-name="onclick"
+                  data-ga-event="collapse"
+                  data-ga-type="click"
+                  data-ga="On this page"
+                >
+                  On This Page: <span className="fas fa-chevron-down"></span>
+                </button>
               </h2>
               <div id="collapseExample" className="card card-body collapse">
                 <nav className="nav" aria-label="Same Page">

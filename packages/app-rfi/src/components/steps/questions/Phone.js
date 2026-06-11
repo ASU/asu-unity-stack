@@ -30,3 +30,4 @@ export const Phone = ({ gaData }) => {
 };
 
 Phone.propTypes = { gaData: gaEventPropTypes };
+Phone.gaName = "phone";

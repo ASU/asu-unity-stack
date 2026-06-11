@@ -32,3 +32,4 @@ export const EmailAddress = ({ gaData, autoFocus }) => {
 };
 
 EmailAddress.propTypes = { gaData: gaEventPropTypes };
+EmailAddress.gaName = "email_address";

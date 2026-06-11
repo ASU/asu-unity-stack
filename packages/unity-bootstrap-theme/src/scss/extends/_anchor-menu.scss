@@ -15,6 +15,28 @@
     top: 0;
   }
 
+  // Native <button> nested inside the heading; gives the toggle real
+  // keyboard and assistive-tech semantics (WCAG 2.1.1, 4.1.2) while
+  // keeping the heading available for screen-reader navigation.
+  .mobile-menu-toggler {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    width: 100%;
+    text-align: inherit;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &[aria-expanded='true'] {
+      svg,
+      i {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
   h4, h2 {
     font-size: 1rem;
     padding: 0 !important;

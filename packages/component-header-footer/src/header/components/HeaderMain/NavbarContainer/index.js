@@ -15,9 +15,9 @@ export const BUTTON_ERROR_MESSAGE =
 
 const NavbarContainer = () => {
   const {
-    navTree,
-    mobileNavTree,
-    buttons,
+    navTree = [],
+    mobileNavTree = [],
+    buttons = [],
     breakpoint,
     itemOpened,
     setItemOpened,
