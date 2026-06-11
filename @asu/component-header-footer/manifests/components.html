@@ -250,6 +250,7 @@
       .tg-info:checked + label.as-toggle,
       .tg-stories:checked + label.as-toggle,
       .tg-docs:checked + label.as-toggle,
+      .tg-subcomponents:checked + label.as-toggle,
       .tg-content:checked + label.as-toggle,
       .tg-props:checked + label.as-toggle {
           box-shadow: 0 0 0 var(--active-ring) currentColor;
@@ -281,6 +282,11 @@
       }
 
       .tg-docs:checked ~ .panels .panel-docs {
+          display: grid;
+          gap: 8px;
+      }
+
+      .tg-subcomponents:checked ~ .panels .panel-subcomponents {
           display: grid;
           gap: 8px;
       }
@@ -507,6 +513,10 @@
           display: grid;
       }
 
+      .card > .tg-subcomponents:checked ~ .panels .panel-subcomponents {
+          display: grid;
+      }
+
       .card > .tg-content:checked ~ .panels .panel-content {
           display: grid;
       }
@@ -516,6 +526,7 @@
       .card > .tg-info:checked ~ .panels,
       .card > .tg-stories:checked ~ .panels,
       .card > .tg-docs:checked ~ .panels,
+      .card > .tg-subcomponents:checked ~ .panels,
       .card > .tg-content:checked ~ .panels,
       .card > .tg-props:checked ~ .panels {
           margin: 10px 0;
@@ -527,6 +538,7 @@
           .card:has(.tg-info:checked) label[for$='-info'],
           .card:has(.tg-stories:checked) label[for$='-stories'],
           .card:has(.tg-docs:checked) label[for$='-docs'],
+          .card:has(.tg-subcomponents:checked) label[for$='-subcomponents'],
           .card:has(.tg-content:checked) label[for$='-content'],
           .card:has(.tg-props:checked) label[for$='-props'] {
               box-shadow: 0 0 0 1px currentColor;
@@ -608,6 +620,7 @@
         <label for="c-0-uds-asu-footer-info" class="badge info as-toggle">1 info</label>
         <label for="c-0-uds-asu-footer-stories" class="badge ok as-toggle">9 stories</label>
         
+        
       </div>
     </div>
     <div class="meta" title="./src/footer/footer.stories.js">uds-asu-footer · ./src/footer/footer.stories.js</div>
@@ -620,6 +633,7 @@
   
   <input id="c-0-uds-asu-footer-info" class="tg tg-info" type="checkbox" hidden />
   <input id="c-0-uds-asu-footer-stories" class="tg tg-stories" type="checkbox" hidden />
+  
   
   <input id="c-0-uds-asu-footer-props" class="tg tg-props" type="checkbox" hidden />
 
@@ -905,6 +919,7 @@ social?: shape</code></pre>
             </div>
         </div>
     
+    
   </div>
 </article>
 <article
@@ -923,6 +938,7 @@ social?: shape</code></pre>
         <label for="c-1-uds-asu-header-info" class="badge info as-toggle">1 info</label>
         <label for="c-1-uds-asu-header-stories" class="badge ok as-toggle">11 stories</label>
         
+        
       </div>
     </div>
     <div class="meta" title="./src/header/index.stories.js">uds-asu-header · ./src/header/index.stories.js</div>
@@ -935,6 +951,7 @@ social?: shape</code></pre>
   
   <input id="c-1-uds-asu-header-info" class="tg tg-info" type="checkbox" hidden />
   <input id="c-1-uds-asu-header-stories" class="tg tg-stories" type="checkbox" hidden />
+  
   
   <input id="c-1-uds-asu-header-props" class="tg tg-props" type="checkbox" hidden />
 
@@ -957,7 +974,7 @@ social?: shape</code></pre>
             </div>
             <pre><code>Component: src/header/header.js::ASUHeader</code></pre>
             <pre><code>Props:</code></pre>
-            <pre><code>animateTitle?: bool
+            <pre><code>animateTitle?: bool = false
 
 baseUrl?: string = &quot;/&quot;
 
@@ -1656,6 +1673,7 @@ userName?: string</code></pre>
 };</code></pre>
             </div>
         </div>
+    
     
   </div>
 </article>

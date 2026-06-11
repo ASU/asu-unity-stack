@@ -250,6 +250,7 @@
       .tg-info:checked + label.as-toggle,
       .tg-stories:checked + label.as-toggle,
       .tg-docs:checked + label.as-toggle,
+      .tg-subcomponents:checked + label.as-toggle,
       .tg-content:checked + label.as-toggle,
       .tg-props:checked + label.as-toggle {
           box-shadow: 0 0 0 var(--active-ring) currentColor;
@@ -281,6 +282,11 @@
       }
 
       .tg-docs:checked ~ .panels .panel-docs {
+          display: grid;
+          gap: 8px;
+      }
+
+      .tg-subcomponents:checked ~ .panels .panel-subcomponents {
           display: grid;
           gap: 8px;
       }
@@ -507,6 +513,10 @@
           display: grid;
       }
 
+      .card > .tg-subcomponents:checked ~ .panels .panel-subcomponents {
+          display: grid;
+      }
+
       .card > .tg-content:checked ~ .panels .panel-content {
           display: grid;
       }
@@ -516,6 +526,7 @@
       .card > .tg-info:checked ~ .panels,
       .card > .tg-stories:checked ~ .panels,
       .card > .tg-docs:checked ~ .panels,
+      .card > .tg-subcomponents:checked ~ .panels,
       .card > .tg-content:checked ~ .panels,
       .card > .tg-props:checked ~ .panels {
           margin: 10px 0;
@@ -527,6 +538,7 @@
           .card:has(.tg-info:checked) label[for$='-info'],
           .card:has(.tg-stories:checked) label[for$='-stories'],
           .card:has(.tg-docs:checked) label[for$='-docs'],
+          .card:has(.tg-subcomponents:checked) label[for$='-subcomponents'],
           .card:has(.tg-content:checked) label[for$='-content'],
           .card:has(.tg-props:checked) label[for$='-props'] {
               box-shadow: 0 0 0 1px currentColor;
@@ -608,6 +620,7 @@
         <label for="c-0-atoms-presearchmessage-template-info" class="badge info as-toggle">2 infos</label>
         <label for="c-0-atoms-presearchmessage-template-stories" class="badge ok as-toggle">1 story</label>
         
+        
       </div>
     </div>
     <div class="meta" title="./src/PreSearchMessages/PreSearchMessage/index.stories.js">atoms-presearchmessage-template · ./src/PreSearchMessages/PreSearchMessage/index.stories.js</div>
@@ -620,6 +633,7 @@
   <input id="c-0-atoms-presearchmessage-template-err" class="tg tg-err" type="checkbox" hidden />
   <input id="c-0-atoms-presearchmessage-template-info" class="tg tg-info" type="checkbox" hidden />
   <input id="c-0-atoms-presearchmessage-template-stories" class="tg tg-stories" type="checkbox" hidden />
+  
   
   
 
@@ -686,6 +700,7 @@ export const preSearchMessage = () =&gt; searchMessageComponentMap.all;
             </div>
         </div>
     
+    
   </div>
 </article>
 <article
@@ -704,6 +719,7 @@ export const preSearchMessage = () =&gt; searchMessageComponentMap.all;
         
         <label for="c-1-atoms-quicklinks-template-stories" class="badge ok as-toggle">1 story</label>
         
+        
       </div>
     </div>
     <div class="meta" title="./src/QuickLinks/index.stories.js">atoms-quicklinks-template · ./src/QuickLinks/index.stories.js</div>
@@ -716,6 +732,7 @@ export const preSearchMessage = () =&gt; searchMessageComponentMap.all;
   
   
   <input id="c-1-atoms-quicklinks-template-stories" class="tg tg-stories" type="checkbox" hidden />
+  
   
   
 
@@ -747,6 +764,7 @@ export const preSearchMessage = () =&gt; searchMessageComponentMap.all;
             </div>
         </div>
     
+    
   </div>
 </article>
 <article
@@ -765,6 +783,7 @@ export const preSearchMessage = () =&gt; searchMessageComponentMap.all;
         
         <label for="c-2-organisms-web-directory-templates-stories" class="badge ok as-toggle">1 story</label>
         
+        
       </div>
     </div>
     <div class="meta" title="./src/FacultyRankComponent/index.stories.js">organisms-web-directory-templates · ./src/FacultyRankComponent/index.stories.js</div>
@@ -777,6 +796,7 @@ export const preSearchMessage = () =&gt; searchMessageComponentMap.all;
   
   
   <input id="c-2-organisms-web-directory-templates-stories" class="tg tg-stories" type="checkbox" hidden />
+  
   
   <input id="c-2-organisms-web-directory-templates-props" class="tg tg-props" type="checkbox" hidden />
 
@@ -853,6 +873,7 @@ import { WebDirectory } from "@asu/app-webdir-ui";</code></pre>
             </div>
         </div>
     
+    
   </div>
 </article>
 <article
@@ -871,6 +892,7 @@ import { WebDirectory } from "@asu/app-webdir-ui";</code></pre>
         <label for="c-3-atoms-profilecard-templates-info" class="badge info as-toggle">2 infos</label>
         <label for="c-3-atoms-profilecard-templates-stories" class="badge ok as-toggle">1 story</label>
         
+        
       </div>
     </div>
     <div class="meta" title="./src/ProfileCard/index.stories.js">atoms-profilecard-templates · ./src/ProfileCard/index.stories.js</div>
@@ -883,6 +905,7 @@ import { WebDirectory } from "@asu/app-webdir-ui";</code></pre>
   <input id="c-3-atoms-profilecard-templates-err" class="tg tg-err" type="checkbox" hidden />
   <input id="c-3-atoms-profilecard-templates-info" class="tg tg-info" type="checkbox" hidden />
   <input id="c-3-atoms-profilecard-templates-stories" class="tg tg-stories" type="checkbox" hidden />
+  
   
   
 
@@ -1006,6 +1029,7 @@ export const profileCardExample = args =&gt; {
             </div>
         </div>
     
+    
   </div>
 </article>
 <article
@@ -1024,6 +1048,7 @@ export const profileCardExample = args =&gt; {
         <label for="c-4-atoms-results-card-templates-info" class="badge info as-toggle">2 infos</label>
         <label for="c-4-atoms-results-card-templates-stories" class="badge ok as-toggle">1 story</label>
         
+        
       </div>
     </div>
     <div class="meta" title="./src/ResultCard/index.stories.js">atoms-results-card-templates · ./src/ResultCard/index.stories.js</div>
@@ -1036,6 +1061,7 @@ export const profileCardExample = args =&gt; {
   <input id="c-4-atoms-results-card-templates-err" class="tg tg-err" type="checkbox" hidden />
   <input id="c-4-atoms-results-card-templates-info" class="tg tg-info" type="checkbox" hidden />
   <input id="c-4-atoms-results-card-templates-stories" class="tg tg-stories" type="checkbox" hidden />
+  
   
   
 
@@ -1150,6 +1176,7 @@ export const resultsCardExample = args =&gt; {
             </div>
         </div>
     
+    
   </div>
 </article>
 <article
@@ -1168,6 +1195,7 @@ export const resultsCardExample = args =&gt; {
         
         <label for="c-5-organisms-search-page-templates-stories" class="badge ok as-toggle">1 story</label>
         
+        
       </div>
     </div>
     <div class="meta" title="./src/SearchPage/index.stories.js">organisms-search-page-templates · ./src/SearchPage/index.stories.js</div>
@@ -1180,6 +1208,7 @@ export const resultsCardExample = args =&gt; {
   
   
   <input id="c-5-organisms-search-page-templates-stories" class="tg tg-stories" type="checkbox" hidden />
+  
   
   <input id="c-5-organisms-search-page-templates-props" class="tg tg-props" type="checkbox" hidden />
 
@@ -1242,6 +1271,7 @@ import { SearchPage } from "@asu/app-webdir-ui";</code></pre>
             </div>
         </div>
     
+    
   </div>
 </article>
     </div>
@@ -1270,6 +1300,7 @@ import { SearchPage } from "@asu/app-webdir-ui";</code></pre>
         <label for="c-error-0-atoms-presearchmessage-template-info" class="badge info as-toggle">2 infos</label>
         <label for="c-error-0-atoms-presearchmessage-template-stories" class="badge ok as-toggle">1 story</label>
         
+        
       </div>
     </div>
     <div class="meta" title="./src/PreSearchMessages/PreSearchMessage/index.stories.js">atoms-presearchmessage-template · ./src/PreSearchMessages/PreSearchMessage/index.stories.js</div>
@@ -1282,6 +1313,7 @@ import { SearchPage } from "@asu/app-webdir-ui";</code></pre>
   <input id="c-error-0-atoms-presearchmessage-template-err" class="tg tg-err" type="checkbox" hidden />
   <input id="c-error-0-atoms-presearchmessage-template-info" class="tg tg-info" type="checkbox" hidden />
   <input id="c-error-0-atoms-presearchmessage-template-stories" class="tg tg-stories" type="checkbox" hidden />
+  
   
   
 
@@ -1348,6 +1380,7 @@ export const preSearchMessage = () =&gt; searchMessageComponentMap.all;
             </div>
         </div>
     
+    
   </div>
 </article>
 <article
@@ -1366,6 +1399,7 @@ export const preSearchMessage = () =&gt; searchMessageComponentMap.all;
         <label for="c-error-1-atoms-profilecard-templates-info" class="badge info as-toggle">2 infos</label>
         <label for="c-error-1-atoms-profilecard-templates-stories" class="badge ok as-toggle">1 story</label>
         
+        
       </div>
     </div>
     <div class="meta" title="./src/ProfileCard/index.stories.js">atoms-profilecard-templates · ./src/ProfileCard/index.stories.js</div>
@@ -1378,6 +1412,7 @@ export const preSearchMessage = () =&gt; searchMessageComponentMap.all;
   <input id="c-error-1-atoms-profilecard-templates-err" class="tg tg-err" type="checkbox" hidden />
   <input id="c-error-1-atoms-profilecard-templates-info" class="tg tg-info" type="checkbox" hidden />
   <input id="c-error-1-atoms-profilecard-templates-stories" class="tg tg-stories" type="checkbox" hidden />
+  
   
   
 
@@ -1501,6 +1536,7 @@ export const profileCardExample = args =&gt; {
             </div>
         </div>
     
+    
   </div>
 </article>
 <article
@@ -1519,6 +1555,7 @@ export const profileCardExample = args =&gt; {
         <label for="c-error-2-atoms-results-card-templates-info" class="badge info as-toggle">2 infos</label>
         <label for="c-error-2-atoms-results-card-templates-stories" class="badge ok as-toggle">1 story</label>
         
+        
       </div>
     </div>
     <div class="meta" title="./src/ResultCard/index.stories.js">atoms-results-card-templates · ./src/ResultCard/index.stories.js</div>
@@ -1531,6 +1568,7 @@ export const profileCardExample = args =&gt; {
   <input id="c-error-2-atoms-results-card-templates-err" class="tg tg-err" type="checkbox" hidden />
   <input id="c-error-2-atoms-results-card-templates-info" class="tg tg-info" type="checkbox" hidden />
   <input id="c-error-2-atoms-results-card-templates-stories" class="tg tg-stories" type="checkbox" hidden />
+  
   
   
 
@@ -1644,6 +1682,7 @@ export const resultsCardExample = args =&gt; {
 };</code></pre>
             </div>
         </div>
+    
     
   </div>
 </article></div>

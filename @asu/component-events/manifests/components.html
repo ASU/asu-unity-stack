@@ -250,6 +250,7 @@
       .tg-info:checked + label.as-toggle,
       .tg-stories:checked + label.as-toggle,
       .tg-docs:checked + label.as-toggle,
+      .tg-subcomponents:checked + label.as-toggle,
       .tg-content:checked + label.as-toggle,
       .tg-props:checked + label.as-toggle {
           box-shadow: 0 0 0 var(--active-ring) currentColor;
@@ -281,6 +282,11 @@
       }
 
       .tg-docs:checked ~ .panels .panel-docs {
+          display: grid;
+          gap: 8px;
+      }
+
+      .tg-subcomponents:checked ~ .panels .panel-subcomponents {
           display: grid;
           gap: 8px;
       }
@@ -507,6 +513,10 @@
           display: grid;
       }
 
+      .card > .tg-subcomponents:checked ~ .panels .panel-subcomponents {
+          display: grid;
+      }
+
       .card > .tg-content:checked ~ .panels .panel-content {
           display: grid;
       }
@@ -516,6 +526,7 @@
       .card > .tg-info:checked ~ .panels,
       .card > .tg-stories:checked ~ .panels,
       .card > .tg-docs:checked ~ .panels,
+      .card > .tg-subcomponents:checked ~ .panels,
       .card > .tg-content:checked ~ .panels,
       .card > .tg-props:checked ~ .panels {
           margin: 10px 0;
@@ -527,6 +538,7 @@
           .card:has(.tg-info:checked) label[for$='-info'],
           .card:has(.tg-stories:checked) label[for$='-stories'],
           .card:has(.tg-docs:checked) label[for$='-docs'],
+          .card:has(.tg-subcomponents:checked) label[for$='-subcomponents'],
           .card:has(.tg-content:checked) label[for$='-content'],
           .card:has(.tg-props:checked) label[for$='-props'] {
               box-shadow: 0 0 0 1px currentColor;
@@ -608,6 +620,7 @@
         <label for="c-0-events-component-cards-grid-info" class="badge info as-toggle">1 info</label>
         <label for="c-0-events-component-cards-grid-stories" class="badge ok as-toggle">4 stories</label>
         
+        
       </div>
     </div>
     <div class="meta" title="./src/components/CardsGridEvents/index.stories.jsx">events-component-cards-grid · ./src/components/CardsGridEvents/index.stories.jsx</div>
@@ -620,6 +633,7 @@
   
   <input id="c-0-events-component-cards-grid-info" class="tg tg-info" type="checkbox" hidden />
   <input id="c-0-events-component-cards-grid-stories" class="tg tg-stories" type="checkbox" hidden />
+  
   
   <input id="c-0-events-component-cards-grid-props" class="tg tg-props" type="checkbox" hidden />
 
@@ -734,6 +748,7 @@ maxItems?: number</code></pre>
             </div>
         </div>
     
+    
   </div>
 </article>
 <article
@@ -752,6 +767,7 @@ maxItems?: number</code></pre>
         <label for="c-1-events-component-cards-list-info" class="badge info as-toggle">1 info</label>
         <label for="c-1-events-component-cards-list-stories" class="badge ok as-toggle">4 stories</label>
         
+        
       </div>
     </div>
     <div class="meta" title="./src/components/CardsListEvents/index.stories.jsx">events-component-cards-list · ./src/components/CardsListEvents/index.stories.jsx</div>
@@ -764,6 +780,7 @@ maxItems?: number</code></pre>
   
   <input id="c-1-events-component-cards-list-info" class="tg tg-info" type="checkbox" hidden />
   <input id="c-1-events-component-cards-list-stories" class="tg tg-stories" type="checkbox" hidden />
+  
   
   <input id="c-1-events-component-cards-list-props" class="tg tg-props" type="checkbox" hidden />
 
@@ -877,6 +894,7 @@ maxItems?: number</code></pre>
     }} /&gt;;</code></pre>
             </div>
         </div>
+    
     
   </div>
 </article>

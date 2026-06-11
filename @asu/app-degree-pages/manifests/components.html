@@ -250,6 +250,7 @@
       .tg-info:checked + label.as-toggle,
       .tg-stories:checked + label.as-toggle,
       .tg-docs:checked + label.as-toggle,
+      .tg-subcomponents:checked + label.as-toggle,
       .tg-content:checked + label.as-toggle,
       .tg-props:checked + label.as-toggle {
           box-shadow: 0 0 0 var(--active-ring) currentColor;
@@ -281,6 +282,11 @@
       }
 
       .tg-docs:checked ~ .panels .panel-docs {
+          display: grid;
+          gap: 8px;
+      }
+
+      .tg-subcomponents:checked ~ .panels .panel-subcomponents {
           display: grid;
           gap: 8px;
       }
@@ -507,6 +513,10 @@
           display: grid;
       }
 
+      .card > .tg-subcomponents:checked ~ .panels .panel-subcomponents {
+          display: grid;
+      }
+
       .card > .tg-content:checked ~ .panels .panel-content {
           display: grid;
       }
@@ -516,6 +526,7 @@
       .card > .tg-info:checked ~ .panels,
       .card > .tg-stories:checked ~ .panels,
       .card > .tg-docs:checked ~ .panels,
+      .card > .tg-subcomponents:checked ~ .panels,
       .card > .tg-content:checked ~ .panels,
       .card > .tg-props:checked ~ .panels {
           margin: 10px 0;
@@ -527,6 +538,7 @@
           .card:has(.tg-info:checked) label[for$='-info'],
           .card:has(.tg-stories:checked) label[for$='-stories'],
           .card:has(.tg-docs:checked) label[for$='-docs'],
+          .card:has(.tg-subcomponents:checked) label[for$='-subcomponents'],
           .card:has(.tg-content:checked) label[for$='-content'],
           .card:has(.tg-props:checked) label[for$='-props'] {
               box-shadow: 0 0 0 1px currentColor;
@@ -582,7 +594,7 @@
 <main>
   <div class="wrap">
     <div class="note info" style="margin-bottom: 16px;">
-            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>0.6s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
+            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>1.0s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
             <pre><code>typescript: {
   reactDocgen: 'react-docgen-typescript',
 }</code></pre>
@@ -608,6 +620,7 @@
         <label for="c-0-program-detail-page-info" class="badge info as-toggle">1 info</label>
         <label for="c-0-program-detail-page-stories" class="badge ok as-toggle">7 stories</label>
         
+        
       </div>
     </div>
     <div class="meta" title="./src/components/DetailPage/index.stories.jsx">program-detail-page · ./src/components/DetailPage/index.stories.jsx</div>
@@ -620,6 +633,7 @@
   
   <input id="c-0-program-detail-page-info" class="tg tg-info" type="checkbox" hidden />
   <input id="c-0-program-detail-page-stories" class="tg tg-stories" type="checkbox" hidden />
+  
   
   <input id="c-0-program-detail-page-props" class="tg tg-props" type="checkbox" hidden />
 
@@ -1140,6 +1154,7 @@ whyChooseAsu?: shape</code></pre>
             </div>
         </div>
     
+    
   </div>
 </article>
 <article
@@ -1158,6 +1173,7 @@ whyChooseAsu?: shape</code></pre>
         <label for="c-1-program-listing-page-info" class="badge info as-toggle">1 info</label>
         <label for="c-1-program-listing-page-stories" class="badge ok as-toggle">14 stories</label>
         
+        
       </div>
     </div>
     <div class="meta" title="./src/components/ListingPage/index.stories.jsx">program-listing-page · ./src/components/ListingPage/index.stories.jsx</div>
@@ -1170,6 +1186,7 @@ whyChooseAsu?: shape</code></pre>
   
   <input id="c-1-program-listing-page-info" class="tg tg-info" type="checkbox" hidden />
   <input id="c-1-program-listing-page-stories" class="tg tg-stories" type="checkbox" hidden />
+  
   
   <input id="c-1-program-listing-page-props" class="tg tg-props" type="checkbox" hidden />
 
@@ -1629,6 +1646,7 @@ programList?: shape</code></pre>
 );</code></pre>
             </div>
         </div>
+    
     
   </div>
 </article>
