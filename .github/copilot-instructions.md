@@ -88,6 +88,43 @@ yarn storybook  # Primary development environment
 - **Auto-cleanup**: Merged PR environments cleaned from S3 after 14 days or immediately after merging to dev branch (dev is main branch for this repo)
 - **Slack integration**: `#prd-uds` and `#prdfam-uds-ci` channels for alerts
 
+## Storybook MCP
+
+This monorepo has Storybook MCP servers available for all component packages. When doing UI development, always use the MCP tools to find and reuse existing components before creating new ones.
+
+### Available MCP servers
+
+Each package runs its own Storybook dev server with an MCP endpoint. Start the relevant Storybook first, then use the corresponding MCP toolset:
+
+| Package | Storybook command | MCP endpoint |
+|---|---|---|
+| `unity-react-core` | `cd packages/unity-react-core && yarn storybook` | `http://localhost:9200/mcp` |
+| `unity-bootstrap-theme` | `cd packages/unity-bootstrap-theme && yarn storybook` | `http://localhost:9000/mcp` |
+| `app-degree-pages` | `cd packages/app-degree-pages && yarn storybook` | `http://localhost:9010/mcp` |
+| `app-rfi` | `cd packages/app-rfi && yarn storybook` | `http://localhost:9020/mcp` |
+| `app-webdir-ui` | `cd packages/app-webdir-ui && yarn storybook` | `http://localhost:9030/mcp` |
+| `component-events` | `cd packages/component-events && yarn storybook` | `http://localhost:9060/mcp` |
+| `component-header-footer` | `cd packages/component-header-footer && yarn storybook` | `http://localhost:9080/mcp` |
+| `component-news` | `cd packages/component-news && yarn storybook` | `http://localhost:9090/mcp` |
+
+### Workflow
+
+1. **Before building any UI**, use `list-all-documentation` on the relevant MCP server to discover available components.
+2. **Before using a component**, call `get-documentation` to understand its props, variants, and usage patterns.
+3. **After generating UI**, use `get-storybook-story-instructions` and write stories so the work can be previewed and tested.
+4. **Run tests** using `run-story-tests` to validate interaction behavior and accessibility. Fix any failures before considering the task done.
+5. **Preview work** using `preview-stories` to show live story renders inline.
+
+### Key conventions for this codebase
+
+- Components live in `packages/unity-react-core/src/components/` — this is the foundational library. Always check here first.
+- Styles come from `unity-bootstrap-theme` (Bootstrap 5 + ASU brand tokens). Use Bootstrap utility classes before writing custom CSS.
+- There are lots of components that arent yet in `packages/unity-react-core/src/components/`, also check `packages/unity-bootstrap-theme/stories/` for components that aren't in `packages/unity-react-core/src/components/`.
+- The exception is `component-header-footer`, which uses styled-components and does not depend on the theme.
+- All components use JSDoc TypeScript comments for prop documentation — these are surfaced in the MCP docs toolset.
+- Always prefer typescript when creating any new components or updating any components in unity-react-core. Refactor only javascript files you modify in unity-react-core to typescript when you have to modify them but always ask user and let them know that this should be udpated to Typescript if they are modifying a javascript file in unity-react-core.
+- Google Analytics events use `trackGAEvent` / `GaEventWrapper` — preserve these when modifying existing components.
+
 ## Key Files for Understanding Context
 - `/packages/unity-react-core/src/components/` - Core React component patterns
 - `/packages/unity-bootstrap-theme/src/` - Theme structure (CSS/SCSS + JS)

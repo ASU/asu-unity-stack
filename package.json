@@ -58,6 +58,7 @@
     "@siteimprove/alfa-playwright": "^0.78.1",
     "@siteimprove/alfa-test-utils": "^0.78.1",
     "@storybook/addon-docs": "^10.0.0",
+    "@storybook/addon-mcp": "^0.6.0",
     "@storybook/react": "^10.0.0",
     "@types/node": "^20.0.0",
     "@types/semver": "^7",
