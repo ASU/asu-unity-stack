@@ -1,3 +1,11 @@
+# [@asu/unity-bootstrap-theme-v1.39.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.39.3...@asu/unity-bootstrap-theme-v1.39.4) (2026-06-12)
+
+
+### Bug Fixes
+
+* **anchor-menu:** constrain sticky menu height in mobile landscape (WCAG 1.4.10) ([19b8bb4](https://github.com/ASU/asu-unity-stack/commit/19b8bb44a9e6a3dfee13ea77d8b76ce6ee356c3c))
+* **unity-bootstrap-theme:** target the actual sticky class on anchor menu ([77b6fa6](https://github.com/ASU/asu-unity-stack/commit/77b6fa6a918fd9ca08f900db3d78545a83f14ccc))
+
 # [@asu/unity-bootstrap-theme-v1.39.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.39.2...@asu/unity-bootstrap-theme-v1.39.3) (2026-06-05)
 
 
