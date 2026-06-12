@@ -1,3 +1,10 @@
+# [@asu/unity-react-core-v1.11.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.11.1...@asu/unity-react-core-v1.11.2) (2026-06-12)
+
+
+### Bug Fixes
+
+* **anchor-menu:** constrain sticky menu height in mobile landscape (WCAG 1.4.10) ([19b8bb4](https://github.com/ASU/asu-unity-stack/commit/19b8bb44a9e6a3dfee13ea77d8b76ce6ee356c3c))
+
 # [@asu/unity-react-core-v1.11.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.11.0...@asu/unity-react-core-v1.11.1) (2026-06-05)
 
 
