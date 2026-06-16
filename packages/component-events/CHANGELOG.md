@@ -1,3 +1,10 @@
+# [@asu/component-events-v3.2.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v3.1.0...@asu/component-events-v3.2.0) (2026-06-16)
+
+
+### Features
+
+* **component-events:** expose configurable `noFeedText` prop on `CardsGridEvents` and `CardsListEvents` (defaults to "No events to show." for backward compatibility)
+
 # [@asu/component-events-v3.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v3.0.1...@asu/component-events-v3.1.0) (2026-04-03)
 
 
