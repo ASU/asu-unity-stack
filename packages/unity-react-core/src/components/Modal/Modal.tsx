@@ -56,6 +56,8 @@ export const Modal: React.FC<ModalProps> = ({ open, gaData }) => {
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [openState, setOpen]);
 
+  const modalTitle = "Content";
+
   return (
     <div className="container-fluid">
       <button
@@ -71,6 +73,9 @@ export const Modal: React.FC<ModalProps> = ({ open, gaData }) => {
 
       {(openState || isBootstrap) && (
         <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={modalTitle}
           id="uds-modal"
           className={classNames("uds-modal", { open: openState })}
         >
@@ -85,7 +90,7 @@ export const Modal: React.FC<ModalProps> = ({ open, gaData }) => {
                 icon={["fas", "times"]}
               />
             </GaEventWrapper>
-            <h1>Content</h1>
+            <h1>{modalTitle}</h1>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod incididuntåç ut labore et dolore magna aliqua eiusmod
