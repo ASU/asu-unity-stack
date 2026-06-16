@@ -338,11 +338,7 @@ const navTreeMega = [
     class: "home",
   },
   {
-    text: "Link option 1",
-    href: "#",
-  },
-  {
-    text: "Col1",
+    text: "Sm1",
     href: "/",
     items: [
       [
@@ -378,7 +374,48 @@ const navTreeMega = [
     ],
   },
   {
-    text: "Col2",
+    text: "Sm2",
+    href: "/",
+    items: [
+      [
+        {
+          type: "heading",
+          span: 2,
+          text: "Column One (span 2)",
+        },
+        {
+          href: "https://www.asu.edu/",
+          text: "A test navigation item",
+        },
+        {
+          href: "https://www.asu.edu/",
+          text: "Mauris viverra, sem nec",
+        },
+        {
+          href: "https://www.asu.edu/?feature=athletics",
+          text: "Massa nunc dictum nam venenatis",
+        },
+        {
+          href: "https://www.asu.edu/?feature=alumni",
+          text: "Alumni",
+        },
+        {
+          href: "https://www.asu.edu/?feature=giving",
+          text: "Giving",
+        },
+        {
+          href: "https://www.asu.edu/?feature=president",
+          text: "President",
+        },
+        {
+          href: "https://www.asu.edu/about",
+          text: "About ASU",
+        },
+      ],
+    ],
+  },
+  {
+    text: "Sm3",
     href: "/",
     items: [
       [
@@ -442,7 +479,7 @@ const navTreeMega = [
     ],
   },
   {
-    text: "Col3",
+    text: "Lg1",
     href: "#",
     items: [
       [
@@ -476,6 +513,11 @@ const navTreeMega = [
           href: "https://wpcarey.asu.edu/mba/china-program/english/",
           text: "China",
         },
+        {
+          href: "https://campus.asu.edu/downtown/",
+          type: "button",
+          text: "Downtown Phoenix",
+        },
       ],
       [
         {
@@ -499,11 +541,6 @@ const navTreeMega = [
         {
           href: "https://campus.asu.edu/polytechnic/",
           text: "Cras ut malesuada nisl",
-        },
-        {
-          href: "https://campus.asu.edu/downtown/",
-          type: "button",
-          text: "Downtown Phoenix",
         },
       ],
       [
@@ -538,7 +575,100 @@ const navTreeMega = [
     ],
   },
   {
-    text: "A",
+    text: "Lg2",
+    href: "#",
+    items: [
+      [
+        {
+          href: "https://asuonline.asu.edu/",
+          type: "heading",
+          text: "Column one",
+        },
+        {
+          href: "https://havasu.asu.edu/",
+          text: "Curabitur viverra arcu nisl",
+        },
+        {
+          href: "https://www.thunderbird.edu/about-thunderbird/locations/phoenix-arizona",
+          classes: "border",
+          text: "Thunderbird",
+        },
+        {
+          href: "https://skysong.asu.edu/",
+          text: "Skysong",
+        },
+        {
+          href: "https://asuresearchpark.com/",
+          text: "Research Park",
+        },
+        {
+          href: "https://washingtoncenter.asu.edu/",
+          text: "Washington D.C.",
+        },
+        {
+          href: "https://wpcarey.asu.edu/mba/china-program/english/",
+          text: "China",
+        },
+        {
+          href: "https://campus.asu.edu/downtown/",
+          type: "button",
+          text: "Downtown Phoenix",
+        },
+      ],
+      [
+        // empty column should not crash the layout
+      ],
+      [
+        {
+          href: "https://asuonline.asu.edu/",
+          type: "heading",
+          text: "Column two (span 2)",
+          span: 2,
+        },
+        {
+          classes: "border first",
+          href: "https://www.asu.edu/map/",
+          text: "Phasellus egestas nec est ",
+        },
+        {
+          href: "https://campus.asu.edu/tempe/",
+          text: "Pellentesque et mollis",
+        },
+        {
+          href: "https://campus.asu.edu/west/",
+          text: "Cras congue",
+        },
+        {
+          href: "https://campus.asu.edu/polytechnic/",
+          text: "Cras ut malesuada nisl",
+        },
+        {
+          classes: "border first",
+          href: "https://www.asu.edu/map/",
+          text: "Map",
+        },
+        {
+          href: "https://campus.asu.edu/tempe/",
+          text: "Tempe",
+        },
+        {
+          href: "https://campus.asu.edu/west/",
+          text: "West",
+        },
+        {
+          href: "https://campus.asu.edu/polytechnic/",
+          text: "Polytechnic",
+        },
+        {
+          href: "https://campus.asu.edu/downtown/",
+          type: "button",
+          text: "Downtown Phoenix",
+        },
+      ],
+    ],
+  },
+  {
+    text: "Lg3",
     href: "#",
     items: [
       [
@@ -606,7 +736,7 @@ const navTreeMega = [
         {
           href: "https://asuonline.asu.edu/",
           type: "heading",
-          text: "Column three",
+          text: "Column three (span 3)",
           span: 3,
         },
         {
@@ -754,7 +884,7 @@ const navTreeMega = [
     ],
   },
   {
-    text: "B",
+    text: "Sm4",
     href: "#",
     items: [
       [
@@ -791,7 +921,7 @@ const navTreeMega = [
         {
           href: "https://asuonline.asu.edu/",
           type: "heading",
-          text: "Column two",
+          text: "Heading two",
         },
         {
           classes: "border first",
@@ -820,8 +950,8 @@ const navTreeMega = [
         {
           href: "https://asuonline.asu.edu/",
           type: "heading",
-          text: "Column three",
-          span: 3,
+          text: "Column two",
+          span: 1,
         },
         {
           classes: "border first",
@@ -831,27 +961,6 @@ const navTreeMega = [
         {
           href: "https://campus.asu.edu/tempe/",
           text: "Sun Devil Football",
-        },
-        {
-          href: "https://campus.asu.edu/west/",
-          text: "The School of Something",
-        },
-        {
-          href: "https://campus.asu.edu/polytechnic/",
-          text: "Polytechnic",
-        },
-        {
-          classes: "border first",
-          href: "https://www.asu.edu/map/",
-          text: "Maps and Directions",
-        },
-        {
-          href: "https://campus.asu.edu/tempe/",
-          text: "Office of the technology",
-        },
-        {
-          href: "https://campus.asu.edu/west/",
-          text: "Office of the business",
         },
         {
           href: "https://campus.asu.edu/polytechnic/",
@@ -865,61 +974,6 @@ const navTreeMega = [
         {
           href: "https://campus.asu.edu/tempe/",
           text: "Sun Devil Football",
-        },
-        {
-          href: "https://campus.asu.edu/west/",
-          text: "The School of Something",
-        },
-        {
-          href: "https://campus.asu.edu/polytechnic/",
-          text: "Polytechnic",
-        },
-        {
-          classes: "border first",
-          href: "https://www.asu.edu/map/",
-          text: "Maps and Directions",
-        },
-        {
-          href: "https://campus.asu.edu/tempe/",
-          text: "Office of the technology",
-        },
-        {
-          href: "https://campus.asu.edu/west/",
-          text: "Office of the business",
-        },
-        {
-          href: "https://campus.asu.edu/polytechnic/",
-          text: "Some longer text office of longtext",
-        },
-        {
-          classes: "border first",
-          href: "https://www.asu.edu/map/",
-          text: "University Technology Office",
-        },
-        {
-          href: "https://campus.asu.edu/tempe/",
-          text: "Sun Devil Football",
-        },
-        {
-          href: "https://campus.asu.edu/west/",
-          text: "The School of Something",
-        },
-        {
-          href: "https://campus.asu.edu/polytechnic/",
-          text: "Polytechnic",
-        },
-        {
-          classes: "border first",
-          href: "https://www.asu.edu/map/",
-          text: "Maps and Directions",
-        },
-        {
-          href: "https://campus.asu.edu/tempe/",
-          text: "Office of the technology",
-        },
-        {
-          href: "https://campus.asu.edu/west/",
-          text: "Office of the business",
         },
         {
           href: "https://campus.asu.edu/polytechnic/",
@@ -968,7 +1022,7 @@ const navTreeMega = [
     ],
   },
   {
-    text: "C",
+    text: "Lg4+",
     href: "#",
     buttons: [
       {
@@ -1201,7 +1255,7 @@ const navTreeMega = [
   },
 
   {
-    text: "D",
+    text: "Lg5+",
     href: "#",
     buttons: [
       {
@@ -1427,10 +1481,46 @@ const navTreeMega = [
   },
 
   {
-    text: "Col1",
+    text: "Sm5",
     href: "/",
     items: [
       [
+        {
+          type: "heading",
+          text: "Heading 1",
+        },
+        {
+          href: "https://www.asu.edu/",
+          text: "A test navigation item",
+        },
+        {
+          href: "https://www.asu.edu/",
+          text: "Mauris viverra, sem nec",
+        },
+        {
+          href: "https://www.asu.edu/?feature=athletics",
+          text: "Massa nunc dictum nam venenatis",
+        },
+        {
+          href: "https://www.asu.edu/?feature=alumni",
+          text: "Alumni",
+        },
+        {
+          href: "https://www.asu.edu/?feature=giving",
+          text: "Giving",
+        },
+        {
+          href: "https://www.asu.edu/?feature=president",
+          text: "President",
+        },
+        {
+          href: "https://www.asu.edu/about",
+          text: "About ASU",
+        },
+        {
+          type: "heading",
+          text: "Heading 2",
+        },
         {
           href: "https://www.asu.edu/",
           text: "A test navigation item",
@@ -1463,13 +1553,26 @@ const navTreeMega = [
     ],
   },
   {
-    text: "Col2",
+    text: "Sm6+",
     href: "/",
+    buttons: [
+      {
+        text: "CTA One",
+        href: "https://asu.edu",
+        color: "maroon",
+      },
+      {
+        text: "CTA Two",
+        href: "https://asu.edu",
+        color: "gold",
+      },
+    ],
     items: [
       [
         {
           type: "heading",
           text: "Column One",
+          span: 2,
         },
         {
           href: "https://www.asu.edu/",
@@ -1499,15 +1602,10 @@ const navTreeMega = [
           href: "https://www.asu.edu/about",
           text: "Integer vel gravida lectus",
         },
-      ],
-      [
-        // empty column should not crash the layout
-      ],
-      [
         {
           href: "https://www.asu.edu/?feature=newsevents",
           type: "heading",
-          text: "Column two",
+          text: "Heading two",
         },
         {
           href: "https://www.asu.edu/?feature=academics",
@@ -1520,6 +1618,14 @@ const navTreeMega = [
         {
           href: "https://www.asu.edu/?feature=academics",
           text: "Ut at vehicula neque",
+        },
+        {
+          href: "https://www.asu.edu/",
+          text: "Pellentesque ornare",
+        },
+        {
+          href: "https://www.asu.edu/",
+          text: "Curabitur viverra arcu nisl",
         },
         {
           href: "https://www.asu.edu/?feature=athletics",
