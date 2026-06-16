@@ -14,7 +14,14 @@ import { defaultProps } from "../../constants/default-props";
 import { filterData } from "../../services/dataManager";
 import { transformData } from "../../transformers/data.transfromer";
 
-const BaseFeed = ({ children, header, ctaButton, dataSource, maxItems }) => (
+const BaseFeed = ({
+  children,
+  header,
+  ctaButton,
+  dataSource,
+  maxItems,
+  noFeedText = "No events to show.",
+}) => (
   // Calling the unity-react-core component to fetch the data, transform it and filter it
   // We provide in the renderBody the view specified before in the parent component, recieved as "children" in this component.
   // We provide in the renderHeader the unity-react-core header, if it is desired to be shown
@@ -36,7 +43,7 @@ const BaseFeed = ({ children, header, ctaButton, dataSource, maxItems }) => (
     dataFilter={filterData}
     dataSource={dataSource}
     defaultProps={defaultProps}
-    noFeedText="No events to show."
+    noFeedText={noFeedText}
     maxItems={maxItems}
   />
 );
@@ -46,6 +53,7 @@ BaseFeed.propTypes = {
   ctaButton: feedCtaButtonShape,
   dataSource: feedDataSourceShape,
   maxItems: PropTypes.number,
+  noFeedText: PropTypes.string,
   children: PropTypes.element,
 };
 
