@@ -44,6 +44,18 @@ export const Modal: React.FC<ModalProps> = ({ open, gaData }) => {
     setOpen(false);
   };
 
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') setOpen(false); // Close on Esc key
+    };
+
+    if (openState) {
+      document.addEventListener('keydown', handleKeyDown);
+    }
+
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [openState, setOpen]);
+
   return (
     <div className="container-fluid">
       <button
