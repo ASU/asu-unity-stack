@@ -26,7 +26,7 @@ const Wrapper = styled.nav`
       overflow-y: auto;
       min-height: 0;
       > *:last-child {
-        margin-bottom: min(75px, 15vw);
+        margin-bottom: 1rem;
       }
     }
     .${CLASS_NAMES.NAV_LIST} {

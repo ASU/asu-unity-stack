@@ -70,16 +70,16 @@ const NavbarContainer = () => {
   return (
     // @ts-ignore
     <Wrapper breakpoint={breakpoint} data-testid="navigation" aria-label="Site">
-      {(navTree?.length || mobileNavTree?.length || buttons?.length) && (
+      {Boolean(navTree.length || mobileNavTree.length || buttons.length) && (
         <div className={CLASS_NAMES.CONTENT_CONTAINER}>
-          {(navTree?.length || mobileNavTree?.length) && (
+          {Boolean(navTree?.length || mobileNavTree?.length) && (
             <ul className={CLASS_NAMES.NAV_LIST}>
               {!!mobileNavTree?.length && isMobile
                 ? mobileNavTree?.map((link, i) => renderItem(link, i))
                 : navTree?.map((link, i) => renderItem(link, i))}
             </ul>
           )}
-          {!!buttons?.length && (
+          {Boolean(buttons?.length) && (
             <form
               className={CLASS_NAMES.BUTTONS_CONTAINER}
               data-testid="buttons-container"
