@@ -332,6 +332,13 @@ function setupCaroarousel({
           }
         }
 
+        let cardDiv = slides[i].querySelectorAll(`.card`)
+        if (cardDiv && cardDiv[0]) {
+          cardDiv[0].setAttribute("aria-live", "polite");
+          cardDiv[0].setAttribute("role", "alert");
+        }
+
+
         if (header) {
           let allTexts = []
           getText(slides[i], allTexts)
@@ -341,6 +348,8 @@ function setupCaroarousel({
           gliderElement.setAttribute("aria-label", `Card ${i + 1}`);
           gliderElement.removeAttribute("aria-labelledby");
         }
+
+        // slides[i].focus();
 
       }
     }
