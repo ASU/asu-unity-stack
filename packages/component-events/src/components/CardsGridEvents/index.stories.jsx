@@ -75,3 +75,20 @@ WithNoHeader.args = {
     url: "/api/mocks/feeds-json",
   },
 };
+
+/**
+ * Demonstrates a custom "no results" message. The empty data source forces the
+ * feed to render the `noFeedText` instead of cards.
+ * @type {{ args: FeedType, parameters: object}}
+ */
+export const WithCustomNoFeedText = Template.bind({});
+WithCustomNoFeedText.args = {
+  header: { color: "dark", text: "Events Cards" },
+  dataSource: {
+    url: "/api/mocks/empty-feeds-json",
+  },
+  noFeedText: "There are no upcoming events at this time.",
+};
+WithCustomNoFeedText.parameters = {
+  msw: { handlers: createMockHandlers({ empty: true }) },
+};
