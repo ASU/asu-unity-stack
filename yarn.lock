@@ -79,7 +79,7 @@ __metadata:
     "@testing-library/jest-dom": "npm:^6.6.3"
     "@testing-library/react": "npm:^16.0.0"
     "@vitejs/plugin-react": "npm:^4.3.1"
-    "@vitest/browser": "npm:^4.0.0"
+    "@vitest/browser": "npm:^4.1.9"
     babel-jest: "npm:^27.0.6"
     babel-loader: "npm:^8.2.2"
     babel-plugin-dynamic-import-node: "npm:^2.3.3"
@@ -506,9 +506,9 @@ __metadata:
     "@testing-library/user-event": "npm:^14.5.2"
     "@types/react-syntax-highlighter": "npm:^15"
     "@vitejs/plugin-react": "npm:^4.3.1"
-    "@vitest/browser": "npm:^4.0.0"
-    "@vitest/browser-playwright": "npm:^4.0.0"
-    "@vitest/ui": "npm:^4.0.0"
+    "@vitest/browser": "npm:^4.1.9"
+    "@vitest/browser-playwright": "npm:^4.1.9"
+    "@vitest/ui": "npm:^4.1.9"
     axe-playwright: "npm:^2.0.3"
     babel-jest: "npm:^26.6.3"
     babel-loader: "npm:^8.2.2"
@@ -9502,42 +9502,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/browser-playwright@npm:^4.0.0":
-  version: 4.1.6
-  resolution: "@vitest/browser-playwright@npm:4.1.6"
+"@vitest/browser-playwright@npm:^4.1.9":
+  version: 4.1.9
+  resolution: "@vitest/browser-playwright@npm:4.1.9"
   dependencies:
-    "@vitest/browser": "npm:4.1.6"
-    "@vitest/mocker": "npm:4.1.6"
+    "@vitest/browser": "npm:4.1.9"
+    "@vitest/mocker": "npm:4.1.9"
     tinyrainbow: "npm:^3.1.0"
   peerDependencies:
     playwright: "*"
-    vitest: 4.1.6
+    vitest: 4.1.9
   peerDependenciesMeta:
     playwright:
       optional: false
-  checksum: 10c0/501d78e0a56004d9b2fc7f86177d8cb3a9cf2ed1a7a7b075d5b536e29c27bb909f8df418eafbdcdf1cc6dff1faa5a02b0cddd822bc1210e61f25e587a1e2af8e
+  checksum: 10c0/4c042c980bb0aa950646d4d1f0f131f44156141d86f54eb96f5f69863ed05720cac7ef1a0901ab71e18929a62c41e5d64a428b2612ea708905bf423ff961dcf4
   languageName: node
   linkType: hard
 
-"@vitest/browser@npm:4.1.6":
-  version: 4.1.6
-  resolution: "@vitest/browser@npm:4.1.6"
-  dependencies:
-    "@blazediff/core": "npm:1.9.1"
-    "@vitest/mocker": "npm:4.1.6"
-    "@vitest/utils": "npm:4.1.6"
-    magic-string: "npm:^0.30.21"
-    pngjs: "npm:^7.0.0"
-    sirv: "npm:^3.0.2"
-    tinyrainbow: "npm:^3.1.0"
-    ws: "npm:^8.19.0"
-  peerDependencies:
-    vitest: 4.1.6
-  checksum: 10c0/f9e8dd7e48add4d11856517bfdbb6b0f9fa291d5b22bb21a5a74194f5b37e32e3597c653e59b630ac2c58f0edd70a440a17b12c1d03e867a5a26fd57ab9a3d67
-  languageName: node
-  linkType: hard
-
-"@vitest/browser@npm:^4.0.0":
+"@vitest/browser@npm:4.1.9, @vitest/browser@npm:^4.1.9":
   version: 4.1.9
   resolution: "@vitest/browser@npm:4.1.9"
   dependencies:
@@ -9692,11 +9674,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/ui@npm:^4.0.0":
-  version: 4.1.6
-  resolution: "@vitest/ui@npm:4.1.6"
+"@vitest/ui@npm:^4.1.9":
+  version: 4.1.9
+  resolution: "@vitest/ui@npm:4.1.9"
   dependencies:
-    "@vitest/utils": "npm:4.1.6"
+    "@vitest/utils": "npm:4.1.9"
     fflate: "npm:^0.8.2"
     flatted: "npm:^3.4.2"
     pathe: "npm:^2.0.3"
@@ -9704,8 +9686,8 @@ __metadata:
     tinyglobby: "npm:^0.2.15"
     tinyrainbow: "npm:^3.1.0"
   peerDependencies:
-    vitest: 4.1.6
-  checksum: 10c0/4e3a7416862feafe1ba2b0ca140bead49a2549ed189b2d42b8ea0bbd8656e103783b192151c0b9986861bc5f05e0fd33626c46e1f7572e8da068b85bd6a773ea
+    vitest: 4.1.9
+  checksum: 10c0/9c480d79a61ebe40552ab4f1fa2a15dad0147d9c5e40186cb210f2199a0bfd886cd34e9ac11b1ef4ff0bf3436be46f5652c3f36200cdb278dfd2b3634996e50a
   languageName: node
   linkType: hard
 
@@ -10708,7 +10690,7 @@ __metadata:
     css-minimizer-webpack-plugin: "npm:^2.0.0"
     cz-conventional-changelog: "npm:^3.3.0"
     diff: "npm:^8.0.2"
-    dompurify: "npm:^3.2.4"
+    dompurify: "npm:^3.4.10"
     eslint: "npm:^9"
     eslint-config-prettier: "npm:^8.2.0"
     eslint-plugin-import: "npm:^2.22.1"
@@ -14150,15 +14132,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dompurify@npm:^3.2.4":
-  version: 3.4.10
-  resolution: "dompurify@npm:3.4.10"
+"dompurify@npm:^3.4.10":
+  version: 3.4.11
+  resolution: "dompurify@npm:3.4.11"
   dependencies:
     "@types/trusted-types": "npm:^2.0.7"
   dependenciesMeta:
     "@types/trusted-types":
       optional: true
-  checksum: 10c0/6ffbc564c09ae11f9e1ab97040d556f8fafb0a5221248fca02539378d442f4fbe737ebb72dd34309c46896f1093714622895cc6815a7a57599c4511e30e234ae
+  checksum: 10c0/31439481c7e8fc3805d40c376936fd66936620fb1b1a31a2ec097f6165412c37f2d868e082c9ceba62bb37661c1ea132a5db4d5213434317e30df68d4aca9cc9
   languageName: node
   linkType: hard
 
