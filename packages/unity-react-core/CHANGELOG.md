@@ -1,3 +1,10 @@
+# [@asu/unity-react-core-v1.11.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.11.2...@asu/unity-react-core-v1.11.3) (2026-06-18)
+
+
+### Bug Fixes
+
+* **unity-react-core:** bumps @vitest/browser from 4.1.6 to 4.1.9 ([9af53fb](https://github.com/ASU/asu-unity-stack/commit/9af53fbd1c86ad8db087cc761683a810bae729b6))
+
 # [@asu/unity-react-core-v1.11.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.11.1...@asu/unity-react-core-v1.11.2) (2026-06-12)
 
 
