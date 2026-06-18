@@ -1,6 +1,6 @@
 import React from 'react';
 import { addons, types, useAddonState, useStorybookApi, useParameter, useChannel, useGlobals } from 'storybook/manager-api';
-import { formatCode } from "./renderToHTML";
+import { formatCode } from "./formatCode";
 import { AddonPanel } from 'storybook/internal/components';
 import { Heading, Source } from '@storybook/addon-docs/blocks';
 
