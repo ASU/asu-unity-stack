@@ -1,3 +1,10 @@
+# [@asu/app-rfi-v3.10.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.10.0...@asu/app-rfi-v3.10.1) (2026-06-18)
+
+
+### Bug Fixes
+
+* **app-rfi:** bumps dompurify from 3.4.5 to 3.4.10 ([f07a003](https://github.com/asu/asu-unity-stack/commit/f07a00382c737d27511240934676150701cfe6ec))
+
 # [@asu/app-rfi-v3.10.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.9.0...@asu/app-rfi-v3.10.0) (2026-06-09)
 
 
