@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e249cd093 (chore(release): 3.2.1 [skip ci])
 # [@asu/app-degree-pages-v3.2.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.2.0...@asu/app-degree-pages-v3.2.1) (2026-06-18)
 
 
@@ -6,8 +9,11 @@
 
 * **app-degree-pages:** bumps @vitest/browser from 4.1.6 to 4.1.9 ([e3ae108](https://github.com/asu/asu-unity-stack/commit/e3ae1087d3edb84ee7451e74aab8845847700c84))
 
+<<<<<<< HEAD
 =======
 >>>>>>> 2bb037118 (chore(release): 3.2.0 [skip ci])
+=======
+>>>>>>> e249cd093 (chore(release): 3.2.1 [skip ci])
 # [@asu/app-degree-pages-v3.2.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.1.5...@asu/app-degree-pages-v3.2.0) (2026-05-21)
 
 
