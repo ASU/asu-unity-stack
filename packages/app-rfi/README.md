@@ -1,7 +1,5 @@
 # ASU RFI Component
 
-
-
 The ASU RFI Component is a React-powered Request for Information form. It is
 intended to be implemented by a CMS module/plugin/extension that must provide a
 local endpoint at (TODO ADD PATH OR PROP?) to recieve the component's
