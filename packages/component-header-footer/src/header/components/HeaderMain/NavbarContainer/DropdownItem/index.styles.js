@@ -29,7 +29,11 @@ const DropdownWrapper = styled.div`
     right: 0;
   }
   > .${CLASS_NAMES.DROPDOWN_CONTAINER} {
-    max-width: var(--container-width);
+    --dropdown-width: calc(
+      var(--container-width) *
+        min(1, max(calc(var(--cols, 1) / 4), calc((var(--cols, 1) - 1) / 2)))
+    );
+    max-width: var(--dropdown-width);
     margin: 0 auto;
     /*
       max-height is calculated from
@@ -46,7 +50,7 @@ const DropdownWrapper = styled.div`
     .${CLASS_NAMES.DROPDOWN_CONTAINER_COLUMN} {
       --span: 1; /* component overrides using inline style */
       --col: 1; /* component overrides using inline style */
-      width: calc(var(--container-width) / var(--cols) * var(--span));
+      width: calc(var(--dropdown-width) / var(--cols) * var(--span));
       padding: var(--gap);
       padding-bottom: 0;
       display: flex;
