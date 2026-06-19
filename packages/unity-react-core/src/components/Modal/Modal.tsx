@@ -41,31 +41,32 @@ export const Modal: React.FC<ModalProps> = ({ open, gaData }) => {
     const focusableElements =
       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
     const modal = document.getElementsByClassName("uds-modal-container")[0];
-    const firstFocusableElement = modal.querySelectorAll(focusableElements)[0];
-    const focusableContent = modal.querySelectorAll(focusableElements);
-    const lastFocusableElement = focusableContent[focusableContent.length - 1];
+    const firstFocusableElement = modal?.querySelectorAll(focusableElements)[0];
+    const focusableContent = modal?.querySelectorAll(focusableElements);
+    const lastFocusableElement = focusableContent ? focusableContent[focusableContent?.length - 1] : undefined;
 
-    document.addEventListener('keydown', function (e) {
-      let isTabPressed = e.key === 'Tab' || e.keyCode === 9;
+    if (lastFocusableElement && firstFocusableElement) {
+      document.addEventListener('keydown', function (e) {
+        let isTabPressed = e.key === 'Tab' || e.keyCode === 9;
 
-      if (!isTabPressed) {
-        return;
-      }
-
-      if (e.shiftKey) { // if shift key pressed for shift + tab combination
-        if (document.activeElement === firstFocusableElement) {
-          (lastFocusableElement as HTMLElement)?.focus(); // add focus for the last focusable element
-          e.preventDefault();
+        if (!isTabPressed) {
+          return;
         }
-      } else { // if tab key is pressed
-        if (document.activeElement === lastFocusableElement) { // if focused has reached to last focusable element then focus first focusable element after pressing tab
-          (firstFocusableElement as HTMLElement)?.focus(); // add focus for the first focusable element
-          e.preventDefault();
-        }
-      }
-    });
 
-    (firstFocusableElement as HTMLElement)?.focus();
+        if (e.shiftKey) { // if shift key pressed for shift + tab combination
+          if (document.activeElement === firstFocusableElement) {
+            (lastFocusableElement as HTMLElement)?.focus(); // add focus for the last focusable element
+            e.preventDefault();
+          }
+        } else { // if tab key is pressed
+          if (document.activeElement === lastFocusableElement) { // if focused has reached to last focusable element then focus first focusable element after pressing tab
+            (firstFocusableElement as HTMLElement)?.focus(); // add focus for the first focusable element
+            e.preventDefault();
+          }
+        }
+      });
+      (firstFocusableElement as HTMLElement)?.focus();
+    }
   }
 
   const handleOpen = () => {
