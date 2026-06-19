@@ -85,8 +85,7 @@ const DropdownWrapper = styled.div`
       }
       margin: 0;
       width: calc(
-        var(--container-width) / var(--cols, 1) * var(--span, 1) - var(--gap) *
-          2
+        var(--dropdown-width) / var(--cols, 1) * var(--span, 1) - var(--gap) * 2
       );
       display: flex;
       flex-direction: row;
