@@ -36,8 +36,41 @@ export const Modal: React.FC<ModalProps> = ({ open, gaData }) => {
   const { isReact, isBootstrap } = useBaseSpecificFramework();
   const [openState, setOpen] = React.useState(open);
 
+  const focusOnModalInput = () => {
+    //source: https://stackoverflow.com/questions/4195616/how-to-set-the-focus-on-a-javascript-modal-window
+    const focusableElements =
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    const modal = document.getElementsByClassName("uds-modal-container")[0];
+    const firstFocusableElement = modal.querySelectorAll(focusableElements)[0];
+    const focusableContent = modal.querySelectorAll(focusableElements);
+    const lastFocusableElement = focusableContent[focusableContent.length - 1];
+
+    document.addEventListener('keydown', function (e) {
+      let isTabPressed = e.key === 'Tab' || e.keyCode === 9;
+
+      if (!isTabPressed) {
+        return;
+      }
+
+      if (e.shiftKey) { // if shift key pressed for shift + tab combination
+        if (document.activeElement === firstFocusableElement) {
+          (lastFocusableElement as HTMLElement)?.focus(); // add focus for the last focusable element
+          e.preventDefault();
+        }
+      } else { // if tab key is pressed
+        if (document.activeElement === lastFocusableElement) { // if focused has reached to last focusable element then focus first focusable element after pressing tab
+          (firstFocusableElement as HTMLElement)?.focus(); // add focus for the first focusable element
+          e.preventDefault();
+        }
+      }
+    });
+
+    (firstFocusableElement as HTMLElement)?.focus();
+  }
+
   const handleOpen = () => {
     setOpen(true);
+    focusOnModalInput();
   };
 
   const handleClose = () => {
@@ -73,9 +106,9 @@ export const Modal: React.FC<ModalProps> = ({ open, gaData }) => {
 
       {(openState || isBootstrap) && (
         <div
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby={modalTitle}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby={modalTitle}
           id="uds-modal"
           className={classNames("uds-modal", { open: openState })}
         >
