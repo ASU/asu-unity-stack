@@ -1,5 +1,4 @@
 // @ts-check
-import { ASU_GRAY5 } from "../../../../colors";
 import { idGenerator, trackGAEvent } from "@asu/shared";
 import PropTypes from "prop-types";
 import React, { useState, useEffect, useRef } from "react";
@@ -210,41 +209,6 @@ const DropdownItem = ({
   if (buttons.length > 0) {
     heightOffset += 64;
   }
-  // linear gradient background start
-  // Calculate the span for each column and the background
-  // style for the dropdown, vertical border lines on the columns
-  // do not render past the overflow. This solution uses a linear
-  // gradient background to simulate the borders.
-  /** @type {number[]} */
-  let spans = [];
-  let spanbackgroundStyle = "";
-  items.forEach(i => {
-    if (i?.[0]) {
-      spans.push(i[0].span || 1);
-    }
-  });
-
-  const totalSpan = spans.reduce((acc, span) => acc + span, 0);
-  /** @type {number[]} */
-  const dividerPositions = [];
-  let currentSpan = 0;
-
-  spans.slice(0, -1).forEach(span => {
-    currentSpan += span;
-    dividerPositions.push(currentSpan);
-  });
-
-  if (dividerPositions.length > 0) {
-    const gradientStops = dividerPositions
-      .map(position => {
-        const fraction = position / totalSpan;
-        return `#fff0 calc(${fraction * 100}%), ${ASU_GRAY5} calc(${fraction * 100}%), #fff0 calc(${fraction * 100}% + 2px)`;
-      })
-      .join(", ");
-
-    spanbackgroundStyle = `linear-gradient(to right, ${gradientStops})`;
-  }
-  // linear gradient background end
 
   return (
     <DropdownWrapper
@@ -254,15 +218,9 @@ const DropdownItem = ({
       }`}
       breakpoint={breakpoint}
       heightOffset={heightOffset}
-      data-spans={spans}
     >
       <div
-        style={{
-          "--cols": cols,
-          ...(spanbackgroundStyle
-            ? { backgroundImage: spanbackgroundStyle }
-            : {}),
-        }}
+        style={{ "--cols": cols < 3 ? 4 : cols }}
         id={MULTIPLE_SUBMENUS ? listId : ""}
         className={CLASS_NAMES.DROPDOWN_CONTAINER}
       >
