@@ -211,6 +211,11 @@ const DropdownItem = ({
     const ctaButtonRowHeight = 64;
     heightOffset += ctaButtonRowHeight;
   }
+  // linear gradient background start
+  // Calculate the span for each column and the background
+  // style for the dropdown, vertical border lines on the columns
+  // do not render past the overflow. This solution uses a linear
+  // gradient background to simulate the borders.
   /** @type {number[]} */
   let spans = [];
   let spanbackgroundStyle = "";
@@ -240,6 +245,7 @@ const DropdownItem = ({
 
     spanbackgroundStyle = `linear-gradient(to right, ${gradientStops})`;
   }
+  // linear gradient background end
 
   return (
     <DropdownWrapper
