@@ -75,6 +75,7 @@ const ImageCarousel = ({
   width = undefined,
   maxWidth = undefined,
   imageAutoSize = true,
+  bgColor = "",
 }) => {
   if (!imageItems || imageItems.length === 0) {
     return null;
@@ -95,6 +96,7 @@ const ImageCarousel = ({
       hasPositionIndicators={activateGlideActions}
       hasNavButtons={activateGlideActions}
       isDraggable={activateGlideActions}
+      bgColor={bgColor}
       hasShadow
     />
   );
