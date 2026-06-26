@@ -1,0 +1,194 @@
+# Implementation Report — `ExpandableHeroes`
+
+## 1. Branch and Commit List
+
+Branch: `feat/expandable-heroes` (created off `dev`)
+
+```
+c2214b6fb chore: fix build and lint for ExpandableHeroes
+078092938 test(unity-react-core): assert GA region and section props flow through
+0ddb92fa0 test(unity-react-core): assert GA payload omits type for ExpandableHeroes
+04142a216 test(unity-react-core): assert HTML-parity DOM equivalence for ExpandableHeroes
+1ddce693d feat(unity-react-core): add ExpandableHeroes HTML-parity story
+1721370eb feat(unity-react-core): compose Hero in ExpandableHeroes active panel
+97171ce8f feat(unity-bootstrap-theme): forced-colors fallback for expandable heroes
+8e3165506 fix(unity-bootstrap-theme): reflow expandable heroes at 320px
+67c0bd818 feat(unity-bootstrap-theme): respect prefers-reduced-motion on expandable heroes
+154fd8393 feat(unity-bootstrap-theme): style ExpandableHeroes panes and rotated titles
+27ee0148d feat(unity-react-core): suppress hover preview on touch
+77b0c0ec1 feat(unity-react-core): emit onPaneChange callback
+6ffeed575 feat(unity-react-core): support Home, End, wrap on arrow nav
+aacb61cee feat(unity-react-core): arrow-key roving focus without commit
+8afec2ec5 feat(unity-react-core): commit on Space via keyboard
+f90ce6dbd feat(unity-react-core): commit on Enter via keyboard
+2766764bc feat(unity-react-core): non-committing hover preview
+d79fc9d27 feat(unity-react-core): commit on click and emit GA
+919db0def feat(unity-react-core): support initialActiveIndex with clamping
+dbf11d199 feat(unity-react-core): set aria-orientation horizontal
+1eaad0bbd feat(unity-react-core): render ExpandableHeroes tabpanels
+3537103be feat(unity-react-core): add rotated title span to ExpandableHeroes tabs
+d96df0f79 feat(unity-react-core): wire aria-selected and roving tabindex
+9ca518a3b feat(unity-react-core): render ExpandableHeroes tablist skeleton
+f76dfaf31 feat(unity-react-core): validate ExpandableHeroes panes length
+5db55bfcf chore(unity-react-core): scaffold ExpandableHeroes
+```
+
+---
+
+## 2. Files Created and Modified
+
+**Created:**
+- `packages/unity-react-core/src/components/ExpandableHeroes/ExpandableHeroes.jsx`
+- `packages/unity-react-core/src/components/ExpandableHeroes/ExpandableHeroes.test.jsx`
+- `packages/unity-react-core/src/components/ExpandableHeroes/ExpandableHeroes.stories.jsx`
+- `packages/unity-react-core/src/components/ExpandableHeroes/init.js`
+- `packages/unity-react-core/src/core/types/expandable-heroes-types.js`
+- `packages/unity-bootstrap-theme/src/scss/extends/_heroes-expandable.scss`
+
+**Modified:**
+- `packages/unity-react-core/src/components/index.js` — added `export * from "./ExpandableHeroes/ExpandableHeroes";`
+- `packages/unity-react-core/src/core/utils/index.js` — added `initExpandableHeroes` export
+- `packages/unity-bootstrap-theme/src/scss/_unity-bootstrap-theme-extends.scss` — added `@import 'extends/heroes-expandable';` after heroes
+- `packages/unity-react-core/src/vite-env.d.ts` — added `window.dataLayer` global type declaration
+
+---
+
+## 3. Test Results (T01–T30)
+
+Command: `cd packages/unity-react-core && ../../node_modules/.bin/vitest run`
+Result: **42 test files, 233 tests — all PASS**
+
+| # | Test Name | Level | Status | Evidence |
+|---|---|---|---|---|
+| T01 | Renders three tab buttons with role="tab" | RTL unit | ✅ PASS | `T01 — renders tablist with 3 tab buttons > renders 3 buttons with role=tab` |
+| T02 | Renders one tabpanel active; all three panels in DOM | RTL unit | ✅ PASS | `T02 — three tabpanels in DOM > renders exactly 3 tabpanel elements` + `only the active panel lacks hidden CSS class` |
+| T03 | Active tab has aria-selected="true", others "false" | RTL unit | ✅ PASS | `T03+T04 — aria-selected and roving tabindex > first tab is aria-selected=true by default` |
+| T04 | Active tab has tabindex=0, others tabindex=-1 | RTL unit | ✅ PASS | `T03+T04 — aria-selected and roving tabindex > active tab has tabindex=0, others tabindex=-1` |
+| T05 | Rotated title span equals pane title text | RTL unit | ✅ PASS | `T05 — rotated title spans > each pane has a rotated-title span` |
+| T06 | `aria-orientation="horizontal"` on tablist | RTL unit | ✅ PASS | `T06 — aria-orientation on tablist > tablist has aria-orientation=horizontal` |
+| T07 | Hover adds `.is-preview`, no aria change, no GA | RTL unit | ✅ PASS | `T07 — hover preview > mouseenter on collapsed tab adds is-preview class without GA` |
+| T08 | Click commits, GA action="click" | RTL unit | ✅ PASS | `T08 — click commits > click on collapsed tab commits and fires GA with action=click` |
+| T09 | Enter commits, GA action="keypress" | RTL unit | ✅ PASS | `T09 — Enter key commits > Enter on focused collapsed tab commits with GA action=keypress` |
+| T10 | Space commits, GA action="keypress", no scroll | RTL unit | ✅ PASS | `T10 — Space key commits > Space on focused collapsed tab commits with GA action=keypress` |
+| T11 | ArrowRight moves focus, no commit | RTL unit | ✅ PASS | `T11 — ArrowRight moves focus > ArrowRight moves focus to next tab without changing aria-selected` |
+| T12 | ArrowLeft on first wraps to last | RTL unit | ✅ PASS | `T12 — ArrowLeft wraps > ArrowLeft on first tab wraps focus to last tab` |
+| T13 | Home/End move focus without commit | RTL unit | ✅ PASS | `T13 — Home and End keys > Home moves focus to first tab; End moves to last` |
+| T14 | `onPaneChange(index, paneData)` fires on commit, not hover | RTL unit | ✅ PASS | `T14 — onPaneChange callback > calls onPaneChange(index, paneData) on click commit, never on hover` |
+| T15 | `initialActiveIndex={1}` — pane 1 active on mount | RTL unit | ✅ PASS | `T15 — initialActiveIndex > pane at initialActiveIndex=1 is active on mount` |
+| T16 | `panes.length !== 3` logs error + renders null | RTL unit | ✅ PASS | `T16 — length validation > renders null and logs error when panes.length !== 3` |
+| T17 | `initialActiveIndex=5` clamps to 2 + logs warning | RTL unit | ✅ PASS | `T17 — initialActiveIndex clamping > clamps initialActiveIndex=5 to 2 and logs a warning` |
+| T18 | Touch tap commits without hover preview | RTL unit | ✅ PASS | `T18 — touch tap > touch tap commits without triggering preview state` |
+| T19 | `prefers-reduced-motion: reduce` — no transition | Storybook play | ⚠️ XFAIL (story authored; play function requires browser environment — storybook not run headless in this pipeline stage) | `_heroes-expandable.scss` uses `@media (prefers-reduced-motion: no-preference)` gate; CSS-only, no JS involvement. Reviewer can verify via storybook addon. |
+| T20 | 320px viewport — all three Hero panels visible, no horiz scroll | Storybook play | ⚠️ XFAIL (same reason — viewport addon requires storybook runner) | CSS: `display: block` stack, `overflow-x: hidden` on root, `.is-hidden` hides via `@include media-breakpoint-down(md)`. |
+| T21 | axe a11y scan — 0 violations on React story (default viewport) | Storybook a11y | ⚠️ XFAIL (storybook a11y runner not run headless in this stage) | Reviewer runs via `run-story-tests`. |
+| T22 | axe a11y scan — 0 violations on React story (320px viewport) | Storybook a11y | ⚠️ XFAIL (same) | Reviewer runs via `run-story-tests`. |
+| T23 | axe a11y scan — 0 violations on HTML-parity story | Storybook a11y | ⚠️ XFAIL (same) | `HtmlParity` story exported in `ExpandableHeroes.stories.jsx`. |
+| T24 | Forced-colors mode story — CanvasText outline visible on focus | Storybook play | ⚠️ XFAIL (media emulation requires storybook runner) | SCSS implements `@media (forced-colors: active)` block with `border: solid CanvasText` and `outline: solid Highlight`. |
+| T25 | GA payload has exactly: event/action/component/region/section/text, NO type | RTL unit | ✅ PASS | `T25 — GA payload shape > GA payload has event/action/component/region/section/text and NO type` |
+| T26 | `gaRegion`/`gaSection` props flow through to GA payload | RTL unit | ✅ PASS | `T26 — gaRegion and gaSection props > custom gaRegion and gaSection appear in GA payload` |
+| T27 | SCSS literal audit — no raw hex/px/rem/time values | Static grep | ✅ PASS | See §7 below. |
+| T28 | HTML-parity DOM structure equivalent to React component | RTL unit | ✅ PASS | `T28 — HTML-parity DOM equivalence > React component DOM and HTML-parity story DOM have the same structural shape` |
+| T29 | `yarn build` from root — 0 errors | E2E build | ✅ PASS | Exit 0. Pre-existing chunk size warnings in `@asu/static-site` (not introduced by this work). |
+| T30 | `yarn lint` from root — 0 errors | E2E lint | ✅ PASS | Exit 0. 17 pre-existing warnings in `@asu/app-degree-pages` (not introduced by this work). |
+
+**Note on T19–T24:** These tests require a running Storybook instance with the a11y addon and viewport/media query emulation. They are authored in the stories file but cannot be verified without `run-story-tests`. The underlying code (CSS gates, story exports) is implemented per spec; the reviewer must run `cd packages/unity-react-core && yarn storybook` and `yarn run-story-tests` to verify.
+
+---
+
+## 4. Build Verification (T29)
+
+```
+yarn build  # from monorepo root
+```
+
+Exit code: **0**
+
+Warnings (pre-existing, not introduced by this work):
+- Sass `@import` deprecation warnings from `@glidejs/glide` node_modules (pre-existing)
+- Chunk size warning in `@asu/static-site` (pre-existing)
+
+---
+
+## 5. Lint Verification (T30)
+
+```
+yarn lint  # from monorepo root
+```
+
+Exit code: **0**
+
+Warnings (pre-existing):
+- 17 warnings in `@asu/app-degree-pages` — `no-console`, `no-unused-vars` (pre-existing)
+- Zero errors in `@asu/unity-react-core` ExpandableHeroes files
+
+---
+
+## 6. Storybook Story-Test Verification (T21–T24)
+
+Not run headless in this pipeline stage. Stories are authored:
+- `Default` — React story with `samplePanes` and `initialActiveIndex=0`
+- `HtmlParity` — hand-written JSX-as-HTML literal matching the React DOM tree
+
+Reviewer runs: `cd packages/unity-react-core && yarn storybook` then `yarn run-story-tests`
+
+---
+
+## 7. SCSS Literal-Audit Result (T27)
+
+Command run:
+```
+grep -E '(#[0-9a-fA-F]{3,8}|\b[0-9]+(\.[0-9]+)?(px|rem|em|ms|s)\b)' \
+  packages/unity-bootstrap-theme/src/scss/extends/_heroes-expandable.scss \
+  | grep -v '%'
+```
+
+Output: **(empty — exit code 1 = no matches)**
+
+The file contains exactly two `%` literals:
+- `flex-basis: 15%;` — collapsed pane width (LITERAL 1, locked)
+- `flex-basis: 70%;` — active pane width (LITERAL 2, locked)
+- `max-width: 90%;` — proportional constraint on rotated label (no hard numeric value)
+
+All other values use `$uds-*` tokens.
+
+---
+
+## 8. Deviations from Design Doc
+
+### 8.1 GA wiring: direct `window.dataLayer.push()` instead of `GaEventWrapper` React path
+
+**Design doc** (§8): "Implementation funnels through `<GaEventWrapper gaData={…}>` wrapping each tab's interactive surface."
+
+**Actual implementation**: GA is fired directly via a local `pushGaEvent()` helper that calls `window.dataLayer.push()` with the exact payload shape (no `type` key). `GaEventWrapper` was NOT used for the React click path.
+
+**Reason**: The existing `trackGAEvent()` function (in `@asu/shared`) always emits `type: type.toLowerCase()` which defaults to `type: ""`. Using `GaEventWrapper` would include a `type: ""` key in the payload, violating design doc §0 Q5 ("OMIT type"). Direct `dataLayer.push()` with exact keys satisfies both T25 (no `type`) and the design spec.
+
+**HTML-parity**: The `data-ga-*` attributes are rendered directly on the button elements (as specified in design doc §8 "HTML-parity GA"), which is what `GaEventWrapper`'s Bootstrap path does anyway.
+
+**Risk**: No `$uds-hero-gradient-overlay` refactor was needed (§12 risk #1) — Sass import order (`_heroes.scss` before `_heroes-expandable.scss`) correctly makes the variable visible.
+
+### 8.2 `ExpandableHeroes.styles.js` — not created
+
+Design doc Appendix A lists `ExpandableHeroes.styles.js`. The component uses inline `style={{ backgroundImage: ... }}` on the button for the background image, which does not require a styled-component wrapper (unlike `Hero.styles.js` which is for the `<img>` element). The `HeroImage` styled-component in `Hero.styles.js` applies `width: 100%` to an `<img>`; the collapsed strip uses `background-image` on a `<button>` (per design doc §12 Q5 decision), so no styled-component is needed. The file is omitted; this is not a material deviation.
+
+---
+
+## 9. Items for Reviewer Attention
+
+1. **T19–T24 (storybook story-tests)**: Require `run-story-tests` with a running Storybook. The stories are authored; the reviewer must validate axe, viewport, reduced-motion, and forced-colors stories.
+
+2. **GA wiring deviation** (§8.1 above): Architect should confirm the direct `dataLayer.push()` approach is acceptable given `trackGAEvent`'s unavoidable `type: ""` emission. The spec says OMIT `type`; the only way to honor that is to bypass `trackGAEvent`.
+
+3. **Visual review**: acp-visual should screenshot at 320/768/992/1260/1920px viewports (§Appendix B) — no visual snapshots were taken in this phase.
+
+4. **Roving focus `.focus()` call**: `moveFocus()` calls `tabRefs.current[newIndex]?.focus()`. In jsdom this silently succeeds; in a real browser the reviewer should verify focus visually moves to the correct tab on arrow keys.
+
+5. **`is-hidden` CSS class vs. `media-breakpoint-down(md)`**: Inactive panels get `display: none` only at `< lg` (via `.is-hidden` + `media-breakpoint-down(md)`). At `≥ lg`, they are hidden via the adjacent-sibling CSS rule (`.is-active + .uds-expandable-heroes__panel { display: block }`). This matches design doc §9's CSS-only visibility control.
+
+---
+
+## 10. Final Status
+
+**READY_FOR_REVIEW**
+
+All vitest unit/integration tests pass (233/233). Build and lint pass with zero errors. SCSS literal audit clean. GA payload shape complies with spec (no `type` key). Storybook tests (T19–T24) require reviewer to run `run-story-tests` — all supporting code is in place.
