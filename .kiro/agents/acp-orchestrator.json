@@ -1,0 +1,30 @@
+{
+  "name": "acp-orchestrator",
+  "model": "claude-opus-4.7",
+  "description": "Adversarial coding pipeline orchestrator. Delegates to architect, coder, and reviewer subagents sequentially.",
+  "prompt": "file://prompts/orchestrator.md",
+  "tools": ["fs_read", "fs_write", "execute_bash", "grep", "glob", "use_subagent"],
+  "allowedTools": ["fs_read", "grep", "glob", "use_subagent"],
+  "toolsSettings": {
+    "subagent": {
+      "availableAgents": ["acp-architect", "acp-coder", "acp-reviewer", "acp-visual"],
+      "trustedAgents": ["acp-architect", "acp-coder", "acp-reviewer", "acp-visual"]
+    }
+  },
+  "resources": [
+    "file://.kiro/steering/**/*.md",
+    "skill://.kiro/skills/adversarial-coding-pipeline/SKILL.md",
+    "skill://.kiro/skills/jira-figma-intake/SKILL.md",
+    "skill://.kiro/skills/unity-handoff-out/SKILL.md"
+  ],
+  "hooks": {
+    "agentSpawn": [
+      { "command": "mkdir -p .pipeline", "description": "Ensure pipeline artifact directory exists" }
+    ],
+    "stop": [
+      { "command": ".kiro/hooks/log-phase.sh", "description": "Log phase transition to .pipeline/phase-log.jsonl" }
+    ]
+  },
+  "keyboardShortcut": "ctrl+shift+o",
+  "welcomeMessage": "Adversarial coding pipeline ready (Unity stage). Give me a component name plus any Jira key, Figma URL, or screenshots in .intake/ and I'll orchestrate architect → coder → reviewer → visual-diff."
+}
