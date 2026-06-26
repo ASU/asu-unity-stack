@@ -4,7 +4,7 @@
   "license": "MIT",
   "volta": {
     "node": "24.13.1",
-    "yarn": "4.4.0"
+    "yarn": "4.17.0"
   },
   "packageManager": "yarn@4.17.0",
   "workspaces": [
