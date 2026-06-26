@@ -13,17 +13,16 @@ const IMG2 = "https://example.com/img2.jpg";
 const IMG3 = "https://example.com/img3.jpg";
 
 const makePane = (n, imgUrl) => ({
-  image: { url: imgUrl || `https://example.com/img${n}.jpg`, altText: `Alt ${n}` },
+  image: {
+    url: imgUrl || `https://example.com/img${n}.jpg`,
+    altText: `Alt ${n}`,
+  },
   title: { text: `Pane ${n} Title` },
 });
 
 const THREE_PANES = [makePane(1), makePane(2), makePane(3)];
 
-const FIXED_PANES = [
-  makePane(1, IMG1),
-  makePane(2, IMG2),
-  makePane(3, IMG3),
-];
+const FIXED_PANES = [makePane(1, IMG1), makePane(2, IMG2), makePane(3, IMG3)];
 
 // ── T16: panes.length !== 3 → console.error + renders null ────────────────────
 
@@ -88,7 +87,9 @@ describe("T05 — rotated title spans", () => {
     const { getAllByRole } = render(<ExpandableHeroes panes={THREE_PANES} />);
     const tabs = getAllByRole("tab");
     THREE_PANES.forEach((pane, i) => {
-      const span = tabs[i].querySelector(".uds-expandable-heroes__rotated-title");
+      const span = tabs[i].querySelector(
+        ".uds-expandable-heroes__rotated-title"
+      );
       expect(span).not.toBeNull();
       expect(span?.textContent).toBe(pane.title.text);
     });
@@ -315,7 +316,11 @@ describe("T25 — GA payload shape", () => {
   it("GA payload has event/action/component/region/section/text and NO type", () => {
     window.dataLayer = [];
     const { getAllByRole } = render(
-      <ExpandableHeroes panes={THREE_PANES} gaRegion="main content" gaSection="hero" />
+      <ExpandableHeroes
+        panes={THREE_PANES}
+        gaRegion="main content"
+        gaSection="hero"
+      />
     );
     const tabs = getAllByRole("tab");
     tabs[1].click();
@@ -359,7 +364,7 @@ describe("T28 — HTML-parity DOM equivalence", () => {
    * - extract tagNames, roles, class names, aria-* attributes
    * - ignore event handlers, style, testid
    */
-  const extractStructure = (element) => {
+  const extractStructure = element => {
     if (!element || element.nodeType !== 1) return null;
     const attrs = {};
     for (const attr of element.attributes) {
@@ -411,7 +416,9 @@ describe("T28 — HTML-parity DOM equivalence", () => {
           data-ga-region="main content"
           data-ga-section="hero"
         >
-          <span className="uds-expandable-heroes__rotated-title">Pane 1 Title</span>
+          <span className="uds-expandable-heroes__rotated-title">
+            Pane 1 Title
+          </span>
         </button>
         <div
           className="uds-expandable-heroes__panel"
@@ -439,7 +446,9 @@ describe("T28 — HTML-parity DOM equivalence", () => {
           data-ga-region="main content"
           data-ga-section="hero"
         >
-          <span className="uds-expandable-heroes__rotated-title">Pane 2 Title</span>
+          <span className="uds-expandable-heroes__rotated-title">
+            Pane 2 Title
+          </span>
         </button>
         <div
           className="uds-expandable-heroes__panel is-hidden"
@@ -466,7 +475,9 @@ describe("T28 — HTML-parity DOM equivalence", () => {
           data-ga-region="main content"
           data-ga-section="hero"
         >
-          <span className="uds-expandable-heroes__rotated-title">Pane 3 Title</span>
+          <span className="uds-expandable-heroes__rotated-title">
+            Pane 3 Title
+          </span>
         </button>
         <div
           className="uds-expandable-heroes__panel is-hidden"
@@ -487,7 +498,9 @@ describe("T28 — HTML-parity DOM equivalence", () => {
 
     // Both must have same tag and role
     expect(reactRoot?.tagName).toBe(htmlRoot?.tagName);
-    expect(reactRoot?.getAttribute("role")).toBe(htmlRoot?.getAttribute("role"));
+    expect(reactRoot?.getAttribute("role")).toBe(
+      htmlRoot?.getAttribute("role")
+    );
     expect(reactRoot?.getAttribute("aria-orientation")).toBe(
       htmlRoot?.getAttribute("aria-orientation")
     );

@@ -21,15 +21,15 @@ const panePropType = PropTypes.shape({
   contentsColor: PropTypes.oneOf(["white", "black"]),
 });
 
-const tabId = (i) => `expandable-heroes-tab-${i}`;
-const panelId = (i) => `expandable-heroes-panel-${i}`;
+const tabId = i => `expandable-heroes-tab-${i}`;
+const panelId = i => `expandable-heroes-panel-${i}`;
 
 /**
  * Push a GA event directly to window.dataLayer.
  * Uses exact keys from design-doc §8; no `type` key.
  * @param {{event:string, action:string, component:string, region:string, section:string, text:string}} data
  */
-const pushGaEvent = (data) => {
+const pushGaEvent = data => {
   const { dataLayer } = window;
   if (dataLayer) {
     dataLayer.push({
@@ -77,12 +77,16 @@ const ExpandableHeroes = ({
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [activeIndex, setActiveIndex] = useState(clampedInitial);
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [previewIndex, setPreviewIndex] = useState(/** @type {number|null} */ (null));
+  const [previewIndex, setPreviewIndex] = useState(
+    /** @type {number|null} */ (null)
+  );
   // focusIndex tracks roving tabindex — on mount equals activeIndex
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [focusIndex, setFocusIndex] = useState(clampedInitial);
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const tabRefs = useRef(/** @type {(HTMLButtonElement|null)[]} */ ([null, null, null]));
+  const tabRefs = useRef(
+    /** @type {(HTMLButtonElement|null)[]} */ ([null, null, null])
+  );
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const commit = useCallback(
@@ -107,7 +111,7 @@ const ExpandableHeroes = ({
   );
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const moveFocus = useCallback((newIndex) => {
+  const moveFocus = useCallback(newIndex => {
     setFocusIndex(newIndex);
     setPreviewIndex(newIndex);
     tabRefs.current[newIndex]?.focus();
@@ -149,7 +153,7 @@ const ExpandableHeroes = ({
     }
   };
 
-  const handleMouseEnter = (index) => {
+  const handleMouseEnter = index => {
     setPreviewIndex(index);
   };
 
@@ -174,7 +178,9 @@ const ExpandableHeroes = ({
               type="button"
               className={[
                 "uds-expandable-heroes__pane",
-                isActive ? "is-active" : "uds-expandable-heroes__pane--collapsed",
+                isActive
+                  ? "is-active"
+                  : "uds-expandable-heroes__pane--collapsed",
                 isPreview ? "is-preview" : "",
               ]
                 .filter(Boolean)
@@ -185,7 +191,9 @@ const ExpandableHeroes = ({
               aria-controls={panelId(i)}
               tabIndex={i === focusIndex ? 0 : -1}
               style={{ backgroundImage: `url('${pane.image?.url ?? ""}')` }}
-              ref={(el) => { tabRefs.current[i] = el; }}
+              ref={el => {
+                tabRefs.current[i] = el;
+              }}
               // HTML-parity data-ga-* attributes (picked up by bootstrap GA listener)
               data-ga={pane.title?.text ?? ""}
               data-ga-event="link"
@@ -194,8 +202,8 @@ const ExpandableHeroes = ({
               data-ga-region={gaRegion}
               data-ga-section={gaSection}
               onClick={() => commit(i, "click")}
-              onKeyDown={(e) => handleKeyDown(e, i)}
-              onPointerDown={(e) => handlePointerDown(e, i)}
+              onKeyDown={e => handleKeyDown(e, i)}
+              onPointerDown={e => handlePointerDown(e, i)}
               onMouseEnter={() => handleMouseEnter(i)}
               onMouseLeave={clearPreview}
               onFocus={() => handleMouseEnter(i)}

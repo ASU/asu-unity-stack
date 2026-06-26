@@ -16,21 +16,32 @@ const samplePanes = [
     image: { url: IMG1, altText: "Hero image one", size: "large" },
     title: { text: "Pane One Title", color: "white" },
     subTitle: { text: "Subtitle One", color: "white" },
-    contents: [{ text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." }],
+    contents: [
+      { text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+    ],
     contentsColor: "white",
   },
   {
     image: { url: IMG2, altText: "Hero image two", size: "large" },
     title: { text: "Pane Two Title", color: "white" },
     subTitle: { text: "Subtitle Two", color: "white" },
-    contents: [{ text: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." }],
+    contents: [
+      {
+        text: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      },
+    ],
     contentsColor: "white",
   },
   {
     image: { url: IMG3, altText: "Hero image three", size: "large" },
-    title: { text: "A Very Long Pane Three Title That Tests Ellipsis Overflow Behavior", color: "white" },
+    title: {
+      text: "A Very Long Pane Three Title That Tests Ellipsis Overflow Behavior",
+      color: "white",
+    },
     subTitle: { text: "Subtitle Three", color: "white" },
-    contents: [{ text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco." }],
+    contents: [
+      { text: "Ut enim ad minim veniam, quis nostrud exercitation ullamco." },
+    ],
     contentsColor: "white",
   },
 ];
@@ -52,9 +63,6 @@ export default {
 
 // ── React Story ───────────────────────────────────────────────────────────────
 
-/**
- * @type {{ args: import('./ExpandableHeroes').ExpandableHeroesProps }}
- */
 export const Default = {
   args: {
     panes: samplePanes,
@@ -62,10 +70,11 @@ export const Default = {
     gaRegion: "main content",
     gaSection: "hero",
   },
-};
-
-Default.parameters = {
-  docs: { description: { story: "Default React story — pane 0 active on mount." } },
+  parameters: {
+    docs: {
+      description: { story: "Default React story — pane 0 active on mount." },
+    },
+  },
 };
 
 // ── HTML-Parity Story ─────────────────────────────────────────────────────────
@@ -100,7 +109,9 @@ export const HtmlParity = {
         data-ga-region="main content"
         data-ga-section="hero"
       >
-        <span className="uds-expandable-heroes__rotated-title">Pane One Title</span>
+        <span className="uds-expandable-heroes__rotated-title">
+          Pane One Title
+        </span>
       </button>
       <div
         className="uds-expandable-heroes__panel"
@@ -111,7 +122,12 @@ export const HtmlParity = {
       >
         <div className="uds-hero uds-hero-lg">
           <div className="hero-overlay" />
-          <img className="hero" src={IMG1} alt="Hero image one" data-testid="hero-image" />
+          <img
+            className="hero"
+            src={IMG1}
+            alt="Hero image one"
+            data-testid="hero-image"
+          />
           <div role="doc-subtitle" data-testid="hero-subtitle">
             <span className="text-white">Subtitle One</span>
           </div>
@@ -141,7 +157,9 @@ export const HtmlParity = {
         data-ga-region="main content"
         data-ga-section="hero"
       >
-        <span className="uds-expandable-heroes__rotated-title">Pane Two Title</span>
+        <span className="uds-expandable-heroes__rotated-title">
+          Pane Two Title
+        </span>
       </button>
       <div
         className="uds-expandable-heroes__panel is-hidden"
@@ -152,7 +170,12 @@ export const HtmlParity = {
       >
         <div className="uds-hero uds-hero-lg">
           <div className="hero-overlay" />
-          <img className="hero" src={IMG2} alt="Hero image two" data-testid="hero-image" />
+          <img
+            className="hero"
+            src={IMG2}
+            alt="Hero image two"
+            data-testid="hero-image"
+          />
           <div role="doc-subtitle" data-testid="hero-subtitle">
             <span className="text-white">Subtitle Two</span>
           </div>
@@ -160,7 +183,9 @@ export const HtmlParity = {
             <span className="text-white">Pane Two Title</span>
           </h1>
           <div className="content text-white" data-testid="hero-content">
-            <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
           </div>
         </div>
       </div>
@@ -195,7 +220,12 @@ export const HtmlParity = {
       >
         <div className="uds-hero uds-hero-lg">
           <div className="hero-overlay" />
-          <img className="hero" src={IMG3} alt="Hero image three" data-testid="hero-image" />
+          <img
+            className="hero"
+            src={IMG3}
+            alt="Hero image three"
+            data-testid="hero-image"
+          />
           <div role="doc-subtitle" data-testid="hero-subtitle">
             <span className="text-white">Subtitle Three</span>
           </div>
