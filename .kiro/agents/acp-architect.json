@@ -1,0 +1,25 @@
+{
+  "name": "acp-architect",
+  "model": "claude-opus-4.7",
+  "description": "Problem framing, scope review, architecture lock, and design document production.",
+  "prompt": "file://prompts/architect.md",
+  "tools": ["fs_read", "fs_write", "execute_bash", "grep", "glob", "code"],
+  "allowedTools": ["fs_read", "grep", "glob", "code"],
+  "resources": [
+    "file://.kiro/steering/**/*.md",
+    "skill://.kiro/skills/office-hours/SKILL.md",
+    "skill://.kiro/skills/architecture-lock/SKILL.md",
+    "skill://.kiro/skills/jira-figma-intake/SKILL.md",
+    "skill://.kiro/skills/unity-components/SKILL.md",
+    "skill://.kiro/skills/asu-design-a11y/SKILL.md",
+    "skill://.kiro/skills/asu-brand/SKILL.md",
+    "skill://.kiro/skills/unity-handoff-out/SKILL.md"
+  ],
+  "hooks": {
+    "agentSpawn": [
+      { "command": "mkdir -p .pipeline", "description": "Ensure pipeline artifact directory exists" }
+    ]
+  },
+  "keyboardShortcut": "ctrl+shift+a",
+  "welcomeMessage": "Architect agent ready. I frame problems and produce locked design documents."
+}
