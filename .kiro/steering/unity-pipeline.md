@@ -27,12 +27,6 @@ orchestrator → architect → coder → reviewer, model-diverse, one approval g
    `run-story-tests` (interaction+a11y), HTML-parity, and `VISUAL_PASS`; then
    write `../handoff/<anchor>/{handoff.json,markup.html}` and validate it with
    `.kiro/scripts/validate-handoff.sh`.
-6. **RETAIN** — the ephemeral `.pipeline/` reports are not committed. Preserve
-   them: run
-   `.kiro/scripts/archive-reports.sh --slug <slug> [--jira <KEY>] --stage unity`.
-   It copies the reports to `.pipeline/archive/<slug>-<UTC>/` (persists locally,
-   git-ignored, never overwritten) and — when a Jira key exists — attaches them
-   and posts a summary comment to the ticket via the Jira v3 REST API.
 
 ## Environment
 

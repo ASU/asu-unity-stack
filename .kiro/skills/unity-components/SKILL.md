@@ -80,21 +80,9 @@ present? Can interactive states be reproduced by toggling classes?"
 - Preserve `trackGAEvent` / `GaEventWrapper` (push to `window.dataLayer`) when
   editing existing components.
 
-### JSDoc types must be catharsis-parseable (docs build gotcha)
-
-`yarn build` runs a `docs` target (`jsdoc-to-markdown`) across packages. JSDoc
-`@property`/`@param`/`@typedef` **type expressions** must use JSDoc/catharsis
-syntax, NOT TypeScript arrow types. A TS callback type like
-`{(index: number, paneData: Pane) => void}` fails the docs build with
-`JSDOC_ERROR: Unable to parse a tag's type expression`. Use either:
-- closure style: `{function(number, Pane): void}`, or
-- a `@callback` typedef referenced by name.
-This applies to shared `*-types.js` files even under `// @ts-check`.
-
 ## Validators (run before reporting done)
 
-- `yarn build` — builds packages (also runs lint **and the `docs` target**).
-  `unity-react-core` builds first. Watch for `JSDOC_ERROR` from bad type syntax.
+- `yarn build` — builds packages (also runs lint). `unity-react-core` builds first.
 - `yarn eslint` / `yarn stylelint` for the package.
 - `run-story-tests` (Storybook MCP) — interaction + a11y.
 - HTML-parity: confirm the HTML-addon snapshot matches the React render.

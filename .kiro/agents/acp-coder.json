@@ -6,7 +6,7 @@
   "tools": ["fs_read", "fs_write", "execute_bash", "grep", "glob", "code"],
   "allowedTools": ["fs_read", "grep", "glob", "code", "execute_bash"],
   "resources": [
-    "file://../steering/**/*.md",
+    "file://.kiro/steering/**/*.md",
     "skill://.kiro/skills/tdd-red-green/SKILL.md",
     "skill://.kiro/skills/review-fix-loop/SKILL.md",
     "skill://.kiro/skills/unity-components/SKILL.md",

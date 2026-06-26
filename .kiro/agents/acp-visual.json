@@ -12,7 +12,7 @@
     }
   },
   "resources": [
-    "file://../steering/**/*.md",
+    "file://.kiro/steering/**/*.md",
     "skill://.kiro/skills/visual-diff/SKILL.md",
     "skill://.kiro/skills/asu-brand/SKILL.md",
     "skill://.kiro/skills/unity-components/SKILL.md",

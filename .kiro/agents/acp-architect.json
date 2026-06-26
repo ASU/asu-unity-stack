@@ -6,7 +6,7 @@
   "tools": ["fs_read", "fs_write", "execute_bash", "grep", "glob", "code"],
   "allowedTools": ["fs_read", "grep", "glob", "code"],
   "resources": [
-    "file://../steering/**/*.md",
+    "file://.kiro/steering/**/*.md",
     "skill://.kiro/skills/office-hours/SKILL.md",
     "skill://.kiro/skills/architecture-lock/SKILL.md",
     "skill://.kiro/skills/jira-figma-intake/SKILL.md",
