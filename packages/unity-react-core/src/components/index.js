@@ -9,6 +9,7 @@ export * from "./Card/Card";
 export * from "./CardArrangement/CardArrangement";
 export * from "./ContentSpotlight/ContentSpotlight";
 export * from "./Divider/Divider";
+export * from "./ExpandableHeroes/ExpandableHeroes";
 export * from "./FeedAnatomy";
 export * from "./Hero/Hero";
 export * from "./HighlyRanked/HighlyRanked";

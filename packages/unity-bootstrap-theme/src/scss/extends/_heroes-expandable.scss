@@ -1,0 +1,8 @@
+/*--------------------------------------------------------------
+# ExpandableHeroes
+# Extends the hero strip layout for the APG Tabs manual-activation pattern.
+# Depends on _heroes.scss being imported first (for $uds-hero-gradient-overlay).
+# The ONLY hardcoded numeric literals in this file are the pane width percentages:
+#   15% (collapsed pane default) and 70% (active pane).
+# Every other value MUST use a $uds-* token from _custom-asu-variables.scss.
+--------------------------------------------------------------*/
