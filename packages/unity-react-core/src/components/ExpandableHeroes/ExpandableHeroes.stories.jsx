@@ -253,3 +253,80 @@ HtmlParity.parameters = {
     },
   },
 };
+
+// ── Viewport 320px Story (T20) ───────────────────────────────────────────────
+
+/**
+ * All three panes should stack vertically and render as full heroes at 320px.
+ * No horizontal scroll. Rotated titles hidden. Used by T20 manual/automated check.
+ */
+export const Viewport320 = {
+  args: {
+    panes: samplePanes,
+    initialActiveIndex: 0,
+    gaRegion: "main content",
+    gaSection: "hero",
+  },
+  parameters: {
+    viewport: { defaultViewport: "mobile1" },
+    docs: {
+      description: {
+        story:
+          "T20: At 320px viewport all three Hero panels stack vertically, " +
+          "no horizontal scroll, rotated titles hidden. Verify via storybook viewport addon.",
+      },
+    },
+  },
+};
+
+// ── Prefers-Reduced-Motion Story (T19) ───────────────────────────────────────
+
+/**
+ * Verify CSS-only reduced-motion gate: transition should be absent (instant snap).
+ * T19: run with DevTools > Rendering > prefers-reduced-motion: reduce.
+ */
+export const ReducedMotion = {
+  args: {
+    panes: samplePanes,
+    initialActiveIndex: 0,
+    gaRegion: "main content",
+    gaSection: "hero",
+  },
+  parameters: {
+    chromatic: { prefersReducedMotion: "reduce" },
+    docs: {
+      description: {
+        story:
+          "T19: With prefers-reduced-motion: reduce the pane width transition is absent " +
+          "(instant snap). CSS-only gate via @media (prefers-reduced-motion: no-preference). " +
+          "Verify via DevTools Rendering panel or Chromatic.",
+      },
+    },
+  },
+};
+
+// ── Forced-Colors Story (T24) ─────────────────────────────────────────────────
+
+/**
+ * Verify forced-colors mode fallback: border, outline, background use system colors.
+ * T24: run with DevTools > Rendering > emulate CSS forced-colors: active.
+ */
+export const ForcedColors = {
+  args: {
+    panes: samplePanes,
+    initialActiveIndex: 0,
+    gaRegion: "main content",
+    gaSection: "hero",
+  },
+  parameters: {
+    chromatic: { forcedColors: "active" },
+    docs: {
+      description: {
+        story:
+          "T24: Under forced-colors mode the collapsed strips have a CanvasText border, " +
+          "focus rings use Highlight, and rotated titles fall back to Canvas/CanvasText. " +
+          "Verify via DevTools Rendering panel or Chromatic.",
+      },
+    },
+  },
+};
