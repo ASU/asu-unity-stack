@@ -165,7 +165,7 @@ const ExpandableHeroes = ({
     }
   };
 
-  const handlePointerDown = (e, index) => {
+  const handlePointerDown = e => {
     if (e.pointerType === "touch") {
       // Touch tap — suppress hover preview
       setPreviewIndex(null);
@@ -222,7 +222,7 @@ const ExpandableHeroes = ({
               data-ga-section={gaSection}
               onClick={() => commit(i, "click")}
               onKeyDown={e => handleKeyDown(e, i)}
-              onPointerDown={e => handlePointerDown(e, i)}
+              onPointerDown={e => handlePointerDown(e)}
               onMouseEnter={() => handleMouseEnter(i)}
               onMouseLeave={clearPreview}
               onFocus={() => handleMouseEnter(i)}

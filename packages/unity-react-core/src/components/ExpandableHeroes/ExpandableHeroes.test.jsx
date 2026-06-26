@@ -359,33 +359,6 @@ describe("T26 — gaRegion and gaSection props", () => {
 // ── T28: HTML-parity DOM structure equivalence ────────────────────────────────
 
 describe("T28 — HTML-parity DOM equivalence", () => {
-  /**
-   * Normalize a DOM tree for structural comparison:
-   * - extract tagNames, roles, class names, aria-* attributes
-   * - ignore event handlers, style, testid
-   */
-  const extractStructure = element => {
-    if (!element || element.nodeType !== 1) return null;
-    const attrs = {};
-    for (const attr of element.attributes) {
-      if (
-        attr.name.startsWith("on") ||
-        attr.name === "style" ||
-        attr.name === "data-testid"
-      ) {
-        continue;
-      }
-      attrs[attr.name] = attr.value;
-    }
-    return {
-      tag: element.tagName.toLowerCase(),
-      attrs,
-      children: Array.from(element.children)
-        .map(extractStructure)
-        .filter(Boolean),
-    };
-  };
-
   it("React component DOM and HTML-parity story DOM have the same structural shape", () => {
     // Render the React component with fixed images
     const { container: reactContainer } = render(
@@ -548,5 +521,52 @@ describe("T10b — Space key fires GA exactly once", () => {
     await user.keyboard(" ");
     expect(window.dataLayer).toHaveLength(1);
     expect(window.dataLayer[0]).toHaveProperty("action", "keypress");
+  });
+});
+
+// ── T29b: Active panel structural layout hints (Finding D regression guard) ───
+// jsdom does not compute CSS layout, so we assert the structural invariants that
+// the CSS absolute-overlay approach depends on:
+//   1. The active tab carries .is-active class.
+//   2. The active panel is the immediate next sibling of the .is-active tab.
+//   3. The active panel has class "uds-expandable-heroes__panel" and NOT "is-hidden".
+//   4. Inactive panels have "is-hidden" class.
+// These invariants mean the CSS selector
+//   `.uds-expandable-heroes__pane.is-active + .uds-expandable-heroes__panel`
+// will match, keeping the panel visible and positioned over the active pane.
+
+describe("T29b — active panel structural layout invariants (Finding D)", () => {
+  it("active panel is immediate next sibling of .is-active tab and lacks is-hidden", () => {
+    const { container, getAllByRole } = render(
+      <ExpandableHeroes panes={THREE_PANES} />
+    );
+    const activeTab = container.querySelector(
+      ".uds-expandable-heroes__pane.is-active"
+    );
+    expect(activeTab).not.toBeNull();
+    // The next sibling must be the panel
+    const nextSibling = activeTab?.nextElementSibling;
+    expect(nextSibling).toHaveClass("uds-expandable-heroes__panel");
+    expect(nextSibling).not.toHaveClass("is-hidden");
+    // Inactive panels carry is-hidden
+    const panels = getAllByRole("tabpanel", { hidden: true });
+    expect(panels[1]).toHaveClass("is-hidden");
+    expect(panels[2]).toHaveClass("is-hidden");
+  });
+
+  it("after committing pane 1, pane 1 panel becomes active adjacent sibling", () => {
+    const { container, getAllByRole } = render(
+      <ExpandableHeroes panes={THREE_PANES} />
+    );
+    const tabs = getAllByRole("tab");
+    fireEvent.click(tabs[1]);
+    const activeTab = container.querySelector(
+      ".uds-expandable-heroes__pane.is-active"
+    );
+    expect(activeTab?.id).toBe("expandable-heroes-tab-1");
+    const nextSibling = activeTab?.nextElementSibling;
+    expect(nextSibling).toHaveClass("uds-expandable-heroes__panel");
+    expect(nextSibling).not.toHaveClass("is-hidden");
+    expect(nextSibling?.id).toBe("expandable-heroes-panel-1");
   });
 });
