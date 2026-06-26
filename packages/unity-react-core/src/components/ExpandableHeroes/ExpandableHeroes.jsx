@@ -26,7 +26,21 @@ const panelId = i => `expandable-heroes-panel-${i}`;
 
 /**
  * Push a GA event directly to window.dataLayer.
- * Uses exact keys from design-doc §8; no `type` key.
+ *
+ * Direct push is used instead of <GaEventWrapper> for two reasons:
+ *  1. GaEventWrapper calls trackGAEvent() from @asu/shared, which always
+ *     appends `type: type.toLowerCase()` to the payload — emitting `type: ""`
+ *     which is explicitly forbidden by design-doc §0 Q5 ("OMIT type").
+ *  2. The `action` key must be dynamic ("click" vs "keypress") determined at
+ *     event-handler time, not at render time. GaEventWrapper accepts only a
+ *     static `gaData` prop and has no callback/function-prop API to support
+ *     this. Migration would lose the keypress distinction.
+ *  HTML-parity is preserved: data-ga-* attributes are rendered on the button
+ *  elements (see §8 HTML-parity GA) and will be picked up by the
+ *  unity-bootstrap-theme cookie-consent global listener.
+ *  This deviation is flagged for architect re-approval (see impl-report.md).
+ *
+ * Exact keys from design-doc §8; no `type` key.
  * @param {{event:string, action:string, component:string, region:string, section:string, text:string}} data
  */
 const pushGaEvent = data => {
@@ -122,7 +136,12 @@ const ExpandableHeroes = ({
     switch (e.key) {
       case "Enter":
       case " ":
-        if (e.key === " ") e.preventDefault();
+        // preventDefault for both Enter and Space:
+        // - Space: prevents page scroll (per §6 keyboard map)
+        // - Enter: suppresses the browser-synthesized click that follows a
+        //   keydown on a <button>, which would call commit() a second time
+        //   via onClick and double-fire a GA event (P2-1 fix).
+        e.preventDefault();
         commit(index, "keyboard");
         break;
       case "ArrowRight":

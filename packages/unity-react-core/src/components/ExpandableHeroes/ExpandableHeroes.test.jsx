@@ -519,3 +519,34 @@ describe("T28 — HTML-parity DOM equivalence", () => {
     });
   });
 });
+
+// ── T09b: Enter fires dataLayer.push EXACTLY once (no double-fire) ────────────
+
+describe("T09b — Enter key fires GA exactly once (no double-fire)", () => {
+  it("userEvent.keyboard Enter on focused tab calls dataLayer.push exactly once", async () => {
+    window.dataLayer = [];
+    const user = userEvent.setup();
+    const { getAllByRole } = render(<ExpandableHeroes panes={THREE_PANES} />);
+    const tabs = getAllByRole("tab");
+    tabs[1].focus();
+    await user.keyboard("{Enter}");
+    // Must be exactly 1, not 2 (no double-fire from synthetic click)
+    expect(window.dataLayer).toHaveLength(1);
+    expect(window.dataLayer[0]).toHaveProperty("action", "keypress");
+  });
+});
+
+// ── T10b: Space fires dataLayer.push EXACTLY once (no double-fire) ────────────
+
+describe("T10b — Space key fires GA exactly once", () => {
+  it("userEvent.keyboard Space on focused tab calls dataLayer.push exactly once", async () => {
+    window.dataLayer = [];
+    const user = userEvent.setup();
+    const { getAllByRole } = render(<ExpandableHeroes panes={THREE_PANES} />);
+    const tabs = getAllByRole("tab");
+    tabs[1].focus();
+    await user.keyboard(" ");
+    expect(window.dataLayer).toHaveLength(1);
+    expect(window.dataLayer[0]).toHaveProperty("action", "keypress");
+  });
+});
