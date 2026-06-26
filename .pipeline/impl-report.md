@@ -483,3 +483,128 @@ Tests: `T29b — active panel structural layout invariants (Finding D)` × 2 ass
 ---
 
 **READY_FOR_REVIEW**
+
+---
+
+## Review fix loop — cycle 3
+
+**Date:** 2026-06-26
+**Reviewer report:** `.pipeline/visual-report.md` (cycle 2 regression)
+**Branch:** `feat/expandable-heroes`
+
+### Root cause — cycle 2 regression
+
+Cycle 2 applied `position: absolute` to the active panel while the panel remained a **flex sibling** of the button (not a child). `position: absolute` removes the element from flex flow. The flex buttons had no intrinsic height from their own content (they render background images, not `<img>` elements). With all flex children either absolutely positioned or having no intrinsic height, the flex container collapsed to `height: 0` at all `≥lg` viewports. All five stories rendered blank.
+
+The sibling button+panel DOM is architecturally incompatible with any `position: absolute` panel approach.
+
+### Closure table — PRE-FIX
+
+| ID | Finding | Severity | Fix Plan | Status |
+|----|---------|----------|----------|--------|
+| K | Sibling DOM + position:absolute collapses flex container at ≥lg | P1-CRITICAL | Restructure to wrapper-per-pane: `__item` div wraps each button+panel pair | OPEN |
+| L | Focus ring width: spec says thin; code uses `$uds-size-spacing-1` (thick) | P3 | No thin-border token in `_custom-asu-variables.scss`; keep existing token; defer spec amendment | OPEN |
+| M | Design doc §9 shows old sibling DOM | doc | Amend §9 with new wrapper DOM + amendment marker | OPEN |
+| N | Design doc §7 missing `__item` selector | doc | Update selector table to include `__item` | OPEN |
+| O | T28 test asserts 6 flat children (old DOM) | test | Update to assert 3 `__item` wrappers, each with button+panel | OPEN |
+| P | T29b uses old `.is-active + .uds-expandable-heroes__panel` selector | test | Update to use `.uds-expandable-heroes__item.is-active .uds-expandable-heroes__panel` | OPEN |
+| Q | HtmlParity story uses old sibling DOM | test | Update story to wrapper-per-pane DOM | OPEN |
+
+---
+
+### Layout option chosen: Option β (in-flow panel)
+
+**Why β over γ:**
+
+Option γ (both button and panel `position: absolute` inside a `display: block` item) has the same height-collapse problem: if all children are `position: absolute`, the `__item` collapses to `height: 0`, and the flex row inherits that. Getting height requires a min-height — either an arbitrary literal or an aspect-ratio calculation, both of which add complexity without a token to anchor them.
+
+Option β is clean and self-anchoring:
+- `__item` is `display: flex; flex-direction: column`
+- Active `__item` (70%): button has `height: 0` (invisible), panel is `flex: 1 1 auto` → panel fills the item; Hero's `<img>` drives item height
+- Collapsed `__item` (15%): panel is `display: none`; button fills item with `flex: 1 1 auto` → background image + rotated title visible; item height stretches to match row via `align-items: stretch` on the parent flex row
+
+The flex row's height is naturally driven by the active item's `<Hero>` image height. No min-height literal needed. No `position: absolute` on the panel. Clean, self-contained.
+
+---
+
+### Fixes executed
+
+#### Finding K + O + P + Q — commit `acbebe759`
+
+**JSX change (`ExpandableHeroes.jsx`):**
+- Replaced `<React.Fragment key={tabId(i)}>…</React.Fragment>` (sibling pair) with `<div key={tabId(i)} className="uds-expandable-heroes__item [is-active]">…</div>` (wrapper per pane)
+- `__item` carries `is-active` class when `i === activeIndex`
+- Button and panel remain unchanged internally; only their wrapper is new
+
+**SCSS rewrite (`_heroes-expandable.scss`):**
+- New `.uds-expandable-heroes__item` rule: `display: flex; flex-direction: column` at `≥lg`; `flex-basis: 15%` (collapsed) and `flex-basis: 70%` (active); transition moved from `__pane` to `__item`
+- `.uds-expandable-heroes__pane` at `≥lg`: active button has `height: 0; overflow: hidden; pointer-events: none` (panel overlays it); collapsed button has `flex: 1 1 auto; height: 100%` (fills item)
+- `.uds-expandable-heroes__panel` at `≥lg`: `display: none` by default
+- `.uds-expandable-heroes__item.is-active .uds-expandable-heroes__panel` at `≥lg`: `display: block; flex: 1 1 auto; pointer-events: auto`
+- All token references unchanged; literal audit remains clean
+
+**Test updates:**
+- T28: updated HTML-parity reference tree from 6 flat children to 3 `__item` wrappers; assertion changed from `children.length === 6` to `children.length === 3` with per-item role checks
+- T29b: updated structural invariants from `.is-active + .uds-expandable-heroes__panel` (adjacent sibling) to `:scope > .uds-expandable-heroes__panel` inside `.uds-expandable-heroes__item.is-active`
+
+**HtmlParity story:** updated to wrapper-per-pane DOM matching the new JSX output.
+
+---
+
+#### Finding L (P3 focus ring width) — documented, deferred
+
+`$uds-size-spacing-1` (0.5rem) is retained for `outline-width` on `__pane:focus-visible`. No `2px` or thin-border token exists in `_custom-asu-variables.scss`. Introducing a hardcoded `2px` literal would break the SCSS literal audit contract. Spec §6 ("2px solid focus ring") should be amended to match the token system — filed as P3 deferred. The existing Unity design system consistently uses thick focus rings (matching `$uds-size-spacing-1`) across components.
+
+---
+
+#### Findings M, N — commit `fef6d5eb2`
+
+**Design doc `§7` (SCSS plan → Selectors table):** Added `.uds-expandable-heroes__item` row; added amendment marker `(amended after cycle 2: wrapper-per-pane required…)`.
+
+**Design doc `§9` (HTML-parity contract):** Replaced old sibling DOM tree with new wrapper-per-pane tree; added layout option β description; updated panel visibility CSS snippet to use `.uds-expandable-heroes__item.is-active .uds-expandable-heroes__panel`; added amendment marker.
+
+**Design doc `§11` (task 1.5):** Added amendment note pointing to §9 for final DOM structure.
+
+---
+
+### Closure table — POST-FIX
+
+| ID | Finding | Severity | Status | Evidence |
+|----|---------|----------|--------|---------|
+| K | Sibling DOM collapse | P1-CRITICAL | ✅ FIXED | commit `acbebe759`; wrapper-per-pane DOM; option β in-flow panel |
+| L | Focus ring width P3 | P3 | ✅ DEFERRED | No thin-border token; `$uds-size-spacing-1` retained; spec amendment requested |
+| M | Design doc §9 stale DOM | doc | ✅ FIXED | commit `fef6d5eb2`; new wrapper DOM + amendment marker |
+| N | Design doc §7 missing `__item` | doc | ✅ FIXED | commit `fef6d5eb2`; `__item` row added to selector table |
+| O | T28 old 6-child assertion | test | ✅ FIXED | commit `acbebe759`; T28 now asserts 3 `__item` wrappers |
+| P | T29b old sibling selector | test | ✅ FIXED | commit `acbebe759`; T29b uses `__item.is-active` |
+| Q | HtmlParity story old DOM | test | ✅ FIXED | commit `acbebe759`; story updated to wrapper-per-pane |
+
+---
+
+### Verification results — cycle 3
+
+| Check | Command | Result |
+|-------|---------|--------|
+| vitest run | `cd packages/unity-react-core && vitest run` | ✅ 237/237 pass |
+| yarn build | `yarn build` (root) | ✅ exit 0 (pre-existing chunk warnings only) |
+| yarn lint | `yarn lint` (root) | ✅ exit 0 (pre-existing warnings only) |
+| SCSS literal audit | `grep -E '...' _heroes-expandable.scss \| grep -v '%'` | ✅ AUDIT CLEAN |
+
+### Commit log — cycle 3
+
+| SHA | Message |
+|-----|---------|
+| `acbebe759` | `fix(unity-bootstrap-theme): restructure ExpandableHeroes to wrapper-per-pane DOM (cycle 3)` |
+| `fef6d5eb2` | `docs(pipeline): amend design-doc §7/§9/§11 for wrapper-per-pane DOM (cycle 3)` |
+
+### Test totals — cycle 3
+
+| Phase | Tests |
+|-------|-------|
+| After cycle 2 | 237 |
+| T28/T29b updated (no net change) | 0 |
+| **After cycle 3** | **237** |
+
+---
+
+**READY_FOR_REVIEW**
