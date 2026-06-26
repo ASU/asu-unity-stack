@@ -192,7 +192,15 @@ const ExpandableHeroes = ({
         const isPreview = i === previewIndex && !isActive;
 
         return (
-          <React.Fragment key={tabId(i)}>
+          <div
+            key={tabId(i)}
+            className={[
+              "uds-expandable-heroes__item",
+              isActive ? "is-active" : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+          >
             <button
               type="button"
               className={[
@@ -253,7 +261,7 @@ const ExpandableHeroes = ({
                 contentsColor={pane.contentsColor}
               />
             </div>
-          </React.Fragment>
+          </div>
         );
       })}
     </div>

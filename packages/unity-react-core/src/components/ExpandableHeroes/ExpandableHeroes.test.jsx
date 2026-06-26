@@ -366,6 +366,7 @@ describe("T28 — HTML-parity DOM equivalence", () => {
     );
 
     // Render the HTML-parity tree (hand-written) with the same fixed images
+    // NEW DOM: wrapper-per-pane (__item > __pane + __panel) inside tablist
     const htmlParityTree = (
       <div
         className="uds-expandable-heroes"
@@ -373,99 +374,107 @@ describe("T28 — HTML-parity DOM equivalence", () => {
         aria-orientation="horizontal"
         aria-label="Expandable hero panes"
       >
-        <button
-          type="button"
-          className="uds-expandable-heroes__pane is-active"
-          role="tab"
-          id="expandable-heroes-tab-0"
-          aria-selected="true"
-          aria-controls="expandable-heroes-panel-0"
-          tabIndex={0}
-          style={{ backgroundImage: `url('${IMG1}')` }}
-          data-ga="Pane 1 Title"
-          data-ga-event="link"
-          data-ga-action="click"
-          data-ga-component="expandable-heroes"
-          data-ga-region="main content"
-          data-ga-section="hero"
-        >
-          <span className="uds-expandable-heroes__rotated-title">
-            Pane 1 Title
-          </span>
-        </button>
-        <div
-          className="uds-expandable-heroes__panel"
-          role="tabpanel"
-          id="expandable-heroes-panel-0"
-          aria-labelledby="expandable-heroes-tab-0"
-          tabIndex={0}
-        >
-          {/* Hero markup omitted for shape test — tabpanel structure is what matters */}
-          <div className="uds-hero uds-hero-lg" />
+        {/* Item 0 — ACTIVE */}
+        <div className="uds-expandable-heroes__item is-active">
+          <button
+            type="button"
+            className="uds-expandable-heroes__pane is-active"
+            role="tab"
+            id="expandable-heroes-tab-0"
+            aria-selected="true"
+            aria-controls="expandable-heroes-panel-0"
+            tabIndex={0}
+            style={{ backgroundImage: `url('${IMG1}')` }}
+            data-ga="Pane 1 Title"
+            data-ga-event="link"
+            data-ga-action="click"
+            data-ga-component="expandable-heroes"
+            data-ga-region="main content"
+            data-ga-section="hero"
+          >
+            <span className="uds-expandable-heroes__rotated-title">
+              Pane 1 Title
+            </span>
+          </button>
+          <div
+            className="uds-expandable-heroes__panel"
+            role="tabpanel"
+            id="expandable-heroes-panel-0"
+            aria-labelledby="expandable-heroes-tab-0"
+            tabIndex={0}
+          >
+            <div className="uds-hero uds-hero-lg" />
+          </div>
         </div>
-        <button
-          type="button"
-          className="uds-expandable-heroes__pane uds-expandable-heroes__pane--collapsed"
-          role="tab"
-          id="expandable-heroes-tab-1"
-          aria-selected="false"
-          aria-controls="expandable-heroes-panel-1"
-          tabIndex={-1}
-          style={{ backgroundImage: `url('${IMG2}')` }}
-          data-ga="Pane 2 Title"
-          data-ga-event="link"
-          data-ga-action="click"
-          data-ga-component="expandable-heroes"
-          data-ga-region="main content"
-          data-ga-section="hero"
-        >
-          <span className="uds-expandable-heroes__rotated-title">
-            Pane 2 Title
-          </span>
-        </button>
-        <div
-          className="uds-expandable-heroes__panel is-hidden"
-          role="tabpanel"
-          id="expandable-heroes-panel-1"
-          aria-labelledby="expandable-heroes-tab-1"
-          tabIndex={-1}
-        >
-          <div className="uds-hero uds-hero-lg" />
+        {/* Item 1 — COLLAPSED */}
+        <div className="uds-expandable-heroes__item">
+          <button
+            type="button"
+            className="uds-expandable-heroes__pane uds-expandable-heroes__pane--collapsed"
+            role="tab"
+            id="expandable-heroes-tab-1"
+            aria-selected="false"
+            aria-controls="expandable-heroes-panel-1"
+            tabIndex={-1}
+            style={{ backgroundImage: `url('${IMG2}')` }}
+            data-ga="Pane 2 Title"
+            data-ga-event="link"
+            data-ga-action="click"
+            data-ga-component="expandable-heroes"
+            data-ga-region="main content"
+            data-ga-section="hero"
+          >
+            <span className="uds-expandable-heroes__rotated-title">
+              Pane 2 Title
+            </span>
+          </button>
+          <div
+            className="uds-expandable-heroes__panel is-hidden"
+            role="tabpanel"
+            id="expandable-heroes-panel-1"
+            aria-labelledby="expandable-heroes-tab-1"
+            tabIndex={-1}
+          >
+            <div className="uds-hero uds-hero-lg" />
+          </div>
         </div>
-        <button
-          type="button"
-          className="uds-expandable-heroes__pane uds-expandable-heroes__pane--collapsed"
-          role="tab"
-          id="expandable-heroes-tab-2"
-          aria-selected="false"
-          aria-controls="expandable-heroes-panel-2"
-          tabIndex={-1}
-          style={{ backgroundImage: `url('${IMG3}')` }}
-          data-ga="Pane 3 Title"
-          data-ga-event="link"
-          data-ga-action="click"
-          data-ga-component="expandable-heroes"
-          data-ga-region="main content"
-          data-ga-section="hero"
-        >
-          <span className="uds-expandable-heroes__rotated-title">
-            Pane 3 Title
-          </span>
-        </button>
-        <div
-          className="uds-expandable-heroes__panel is-hidden"
-          role="tabpanel"
-          id="expandable-heroes-panel-2"
-          aria-labelledby="expandable-heroes-tab-2"
-          tabIndex={-1}
-        >
-          <div className="uds-hero uds-hero-lg" />
+        {/* Item 2 — COLLAPSED */}
+        <div className="uds-expandable-heroes__item">
+          <button
+            type="button"
+            className="uds-expandable-heroes__pane uds-expandable-heroes__pane--collapsed"
+            role="tab"
+            id="expandable-heroes-tab-2"
+            aria-selected="false"
+            aria-controls="expandable-heroes-panel-2"
+            tabIndex={-1}
+            style={{ backgroundImage: `url('${IMG3}')` }}
+            data-ga="Pane 3 Title"
+            data-ga-event="link"
+            data-ga-action="click"
+            data-ga-component="expandable-heroes"
+            data-ga-region="main content"
+            data-ga-section="hero"
+          >
+            <span className="uds-expandable-heroes__rotated-title">
+              Pane 3 Title
+            </span>
+          </button>
+          <div
+            className="uds-expandable-heroes__panel is-hidden"
+            role="tabpanel"
+            id="expandable-heroes-panel-2"
+            aria-labelledby="expandable-heroes-tab-2"
+            tabIndex={-1}
+          >
+            <div className="uds-hero uds-hero-lg" />
+          </div>
         </div>
       </div>
     );
     const { container: htmlContainer } = render(htmlParityTree);
 
-    // Compare structural shapes of the tabs and panels (first level children)
+    // Compare structural shapes of the tablist
     const reactRoot = reactContainer.firstElementChild;
     const htmlRoot = htmlContainer.firstElementChild;
 
@@ -478,17 +487,20 @@ describe("T28 — HTML-parity DOM equivalence", () => {
       htmlRoot?.getAttribute("aria-orientation")
     );
 
-    // Both must have the same number of direct children (6: 3 tabs + 3 panels)
-    expect(reactRoot?.children.length).toBe(6);
-    expect(htmlRoot?.children.length).toBe(6);
+    // Both must have 3 direct __item children (wrapper-per-pane DOM)
+    expect(reactRoot?.children.length).toBe(3);
+    expect(htmlRoot?.children.length).toBe(3);
 
-    // Structural role check on each child
-    const reactChildren = Array.from(reactRoot?.children ?? []);
-    const htmlChildren = Array.from(htmlRoot?.children ?? []);
-    reactChildren.forEach((child, i) => {
-      expect(child.getAttribute("role")).toBe(
-        htmlChildren[i]?.getAttribute("role")
-      );
+    // Each __item contains exactly 1 button (tab) and 1 panel (tabpanel)
+    Array.from(reactRoot?.children ?? []).forEach((item, i) => {
+      expect(item).toHaveClass("uds-expandable-heroes__item");
+      const htmlItem = htmlRoot?.children[i];
+      // Both should have 2 children: button + panel
+      expect(item.children.length).toBe(2);
+      expect(htmlItem?.children.length).toBe(2);
+      // First child is tab, second is tabpanel
+      expect(item.children[0].getAttribute("role")).toBe("tab");
+      expect(item.children[1].getAttribute("role")).toBe("tabpanel");
     });
   });
 });
@@ -526,47 +538,54 @@ describe("T10b — Space key fires GA exactly once", () => {
 
 // ── T29b: Active panel structural layout hints (Finding D regression guard) ───
 // jsdom does not compute CSS layout, so we assert the structural invariants that
-// the CSS absolute-overlay approach depends on:
-//   1. The active tab carries .is-active class.
-//   2. The active panel is the immediate next sibling of the .is-active tab.
-//   3. The active panel has class "uds-expandable-heroes__panel" and NOT "is-hidden".
-//   4. Inactive panels have "is-hidden" class.
+// the wrapper-per-pane (option β) layout depends on:
+//   1. The active __item carries .is-active class.
+//   2. The active __panel is the direct child of .uds-expandable-heroes__item.is-active
+//   3. The active panel lacks is-hidden class.
+//   4. Inactive items do NOT have is-active; their panels have is-hidden.
 // These invariants mean the CSS selector
-//   `.uds-expandable-heroes__pane.is-active + .uds-expandable-heroes__panel`
-// will match, keeping the panel visible and positioned over the active pane.
+//   `.uds-expandable-heroes__item.is-active .uds-expandable-heroes__panel`
+// will match (display: block), keeping the panel visible and in flow.
+// (amended after cycle 2: updated for wrapper-per-pane DOM)
 
-describe("T29b — active panel structural layout invariants (Finding D)", () => {
-  it("active panel is immediate next sibling of .is-active tab and lacks is-hidden", () => {
+describe("T29b — active panel structural layout invariants (wrapper-per-pane)", () => {
+  it("active item has is-active; its panel is a direct child and lacks is-hidden", () => {
     const { container, getAllByRole } = render(
       <ExpandableHeroes panes={THREE_PANES} />
     );
-    const activeTab = container.querySelector(
-      ".uds-expandable-heroes__pane.is-active"
+    const activeItem = container.querySelector(
+      ".uds-expandable-heroes__item.is-active"
     );
-    expect(activeTab).not.toBeNull();
-    // The next sibling must be the panel
-    const nextSibling = activeTab?.nextElementSibling;
-    expect(nextSibling).toHaveClass("uds-expandable-heroes__panel");
-    expect(nextSibling).not.toHaveClass("is-hidden");
-    // Inactive panels carry is-hidden
+    expect(activeItem).not.toBeNull();
+    // The panel must be a direct child of the active item
+    const panel = activeItem?.querySelector(
+      ":scope > .uds-expandable-heroes__panel"
+    );
+    expect(panel).not.toBeNull();
+    expect(panel).not.toHaveClass("is-hidden");
+    // Inactive items' panels carry is-hidden
     const panels = getAllByRole("tabpanel", { hidden: true });
     expect(panels[1]).toHaveClass("is-hidden");
     expect(panels[2]).toHaveClass("is-hidden");
   });
 
-  it("after committing pane 1, pane 1 panel becomes active adjacent sibling", () => {
+  it("after committing pane 1, item 1 becomes active and its panel lacks is-hidden", () => {
     const { container, getAllByRole } = render(
       <ExpandableHeroes panes={THREE_PANES} />
     );
     const tabs = getAllByRole("tab");
     fireEvent.click(tabs[1]);
-    const activeTab = container.querySelector(
-      ".uds-expandable-heroes__pane.is-active"
+    const activeItem = container.querySelector(
+      ".uds-expandable-heroes__item.is-active"
     );
+    // The active item must contain the tab for pane 1
+    const activeTab = activeItem?.querySelector(".uds-expandable-heroes__pane");
     expect(activeTab?.id).toBe("expandable-heroes-tab-1");
-    const nextSibling = activeTab?.nextElementSibling;
-    expect(nextSibling).toHaveClass("uds-expandable-heroes__panel");
-    expect(nextSibling).not.toHaveClass("is-hidden");
-    expect(nextSibling?.id).toBe("expandable-heroes-panel-1");
+    // Its panel must be visible (no is-hidden)
+    const panel = activeItem?.querySelector(
+      ":scope > .uds-expandable-heroes__panel"
+    );
+    expect(panel).not.toHaveClass("is-hidden");
+    expect(panel?.id).toBe("expandable-heroes-panel-1");
   });
 });
