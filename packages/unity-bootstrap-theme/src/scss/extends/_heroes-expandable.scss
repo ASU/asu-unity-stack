@@ -28,9 +28,10 @@
 # LAYOUT CHOICE: Option β — in-flow panel at ≥lg.
 # The __item is display:flex; flex-direction:column. The active __panel is in
 # flow inside the 70% column; the Hero's image drives the item height, which
-# drives the row height via align-items:stretch. Collapsed items use height:100%
-# (stretch) to match the row height; their panels are display:none so the button
-# fills the full item area showing the background image + rotated title.
+# drives the row height via align-items:stretch. Collapsed items stretch to
+# match the row height automatically via the flex default (align-items:stretch);
+# their panels are display:none so the button fills the full item area showing
+# the background image + rotated title.
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
@@ -66,7 +67,6 @@
     flex-grow: 0;
     flex-shrink: 0;
     flex-basis: 15%;         // ← LITERAL 1 (locked: collapsed item width)
-    height: 100%;            // stretches to row height via align-items:stretch
 
     @media (prefers-reduced-motion: no-preference) {
       transition: flex-basis $uds-time-transition-base ease-in-out;
@@ -123,7 +123,6 @@
     &:not(.is-active) {
       // Collapsed button fills the available height left after its panel (none, display:none).
       flex: 1 1 auto;
-      height: 100%;
     }
 
     &.is-preview {
