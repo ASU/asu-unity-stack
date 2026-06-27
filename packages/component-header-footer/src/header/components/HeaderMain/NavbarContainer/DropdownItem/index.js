@@ -207,7 +207,8 @@ const DropdownItem = ({
 
   let heightOffset = headerHeight;
   if (buttons.length > 0) {
-    heightOffset += 64;
+    const ctaButtonRowHeight = 64;
+    heightOffset += ctaButtonRowHeight;
   }
 
   return (
