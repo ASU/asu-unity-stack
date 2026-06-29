@@ -18,7 +18,7 @@
  * @typedef {Object} ExpandableHeroesProps
  * @property {ExpandableHeroPane[]} panes - EXACTLY 3 panes. Length validated at runtime.
  * @property {number} [initialActiveIndex=0]
- * @property {(index: number, paneData: ExpandableHeroPane) => void} [onPaneChange]
+ * @property {function(number, ExpandableHeroPane): void} [onPaneChange]
  * @property {string} [gaRegion="main content"]
  * @property {string} [gaSection="hero"]
  */
