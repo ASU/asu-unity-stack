@@ -6,7 +6,7 @@
   "tools": ["fs_read", "execute_bash", "grep", "glob", "code"],
   "allowedTools": ["fs_read", "grep", "glob", "code", "execute_bash"],
   "resources": [
-    "file://.kiro/steering/**/*.md",
+    "file://../steering/**/*.md",
     "skill://.kiro/skills/spec-compliance/SKILL.md",
     "skill://.kiro/skills/adversarial-review/SKILL.md",
     "skill://.kiro/skills/code-quality/SKILL.md",
