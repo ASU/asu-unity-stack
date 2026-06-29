@@ -181,86 +181,119 @@ const ExpandableHeroes = ({
   };
 
   return (
-    <div
-      className="uds-expandable-heroes"
-      role="tablist"
-      aria-orientation="horizontal"
-      aria-label="Expandable hero panes"
-    >
+    <div className="uds-expandable-heroes-container">
+      <div
+        className="uds-expandable-heroes"
+        role="tablist"
+        aria-orientation="horizontal"
+        aria-label="Expandable hero panes"
+      >
+        {panes.map((pane, i) => {
+          const isActive = i === activeIndex;
+          const isPreview = i === previewIndex && !isActive;
+
+          return (
+            <div
+              key={tabId(i)}
+              className={[
+                "uds-expandable-heroes__item",
+                isActive ? "is-active" : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
+            >
+              <button
+                type="button"
+                className={[
+                  "uds-expandable-heroes__pane",
+                  isActive
+                    ? "is-active"
+                    : "uds-expandable-heroes__pane--collapsed",
+                  isPreview ? "is-preview" : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+                role="tab"
+                id={tabId(i)}
+                aria-label={pane.title?.text ?? ""}
+                aria-selected={isActive}
+                aria-controls={panelId(i)}
+                tabIndex={i === focusIndex ? 0 : -1}
+                style={{ backgroundImage: `url('${pane.image?.url ?? ""}')` }}
+                ref={el => {
+                  tabRefs.current[i] = el;
+                }}
+                // HTML-parity data-ga-* attributes (picked up by bootstrap GA listener)
+                data-ga={pane.title?.text ?? ""}
+                data-ga-event="link"
+                data-ga-action="click"
+                data-ga-component="expandable-heroes"
+                data-ga-region={gaRegion}
+                data-ga-section={gaSection}
+                onClick={() => commit(i, "click")}
+                onKeyDown={e => handleKeyDown(e, i)}
+                onPointerDown={e => handlePointerDown(e)}
+                onMouseEnter={() => handleMouseEnter(i)}
+                onMouseLeave={clearPreview}
+                onFocus={() => handleMouseEnter(i)}
+                onBlur={clearPreview}
+              >
+                <span className="uds-expandable-heroes__rotated-title">
+                  {pane.title?.text}
+                </span>
+              </button>
+              {/* Decorative in-tablist panel — aria-hidden so AT only uses the
+                  outside semantic tabpanel. The Hero here is for sighted layout.
+                  Option C: no role, no id, no aria-labelledby on this div. */}
+              <div
+                className={[
+                  "uds-expandable-heroes__panel",
+                  !isActive ? "is-hidden" : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+                aria-hidden="true"
+              >
+                <Hero
+                  type="heading-hero"
+                  image={pane.image}
+                  title={pane.title}
+                  subTitle={pane.subTitle}
+                  contents={pane.contents}
+                  contentsColor={pane.contentsColor}
+                />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Semantic tabpanels: DOM siblings of the tablist, outside the tablist.
+          axe-core 4.10.2 aria-required-children rule only sees DOM descendants
+          of the tablist — placing tabpanels here means the tablist's own children
+          are only role=tab buttons, satisfying WCAG 1.3.1.
+          Active panel: no hidden attr; class visually-hidden → off-screen but AT-perceivable.
+          Inactive panels: HTML hidden attr → fully removed from a11y tree. */}
       {panes.map((pane, i) => {
         const isActive = i === activeIndex;
-        const isPreview = i === previewIndex && !isActive;
-
         return (
           <div
-            key={tabId(i)}
-            className={[
-              "uds-expandable-heroes__item",
-              isActive ? "is-active" : "",
-            ]
-              .filter(Boolean)
-              .join(" ")}
+            key={panelId(i)}
+            role="tabpanel"
+            id={panelId(i)}
+            aria-labelledby={tabId(i)}
+            tabIndex={isActive ? 0 : -1}
+            {...(!isActive ? { hidden: true } : {})}
+            className="visually-hidden"
           >
-            <button
-              type="button"
-              className={[
-                "uds-expandable-heroes__pane",
-                isActive
-                  ? "is-active"
-                  : "uds-expandable-heroes__pane--collapsed",
-                isPreview ? "is-preview" : "",
-              ]
-                .filter(Boolean)
-                .join(" ")}
-              role="tab"
-              id={tabId(i)}
-              aria-selected={isActive}
-              aria-controls={panelId(i)}
-              tabIndex={i === focusIndex ? 0 : -1}
-              style={{ backgroundImage: `url('${pane.image?.url ?? ""}')` }}
-              ref={el => {
-                tabRefs.current[i] = el;
-              }}
-              // HTML-parity data-ga-* attributes (picked up by bootstrap GA listener)
-              data-ga={pane.title?.text ?? ""}
-              data-ga-event="link"
-              data-ga-action="click"
-              data-ga-component="expandable-heroes"
-              data-ga-region={gaRegion}
-              data-ga-section={gaSection}
-              onClick={() => commit(i, "click")}
-              onKeyDown={e => handleKeyDown(e, i)}
-              onPointerDown={e => handlePointerDown(e)}
-              onMouseEnter={() => handleMouseEnter(i)}
-              onMouseLeave={clearPreview}
-              onFocus={() => handleMouseEnter(i)}
-              onBlur={clearPreview}
-            >
-              <span className="uds-expandable-heroes__rotated-title">
-                {pane.title?.text}
-              </span>
-            </button>
-            <div
-              className={[
-                "uds-expandable-heroes__panel",
-                !isActive ? "is-hidden" : "",
-              ]
-                .filter(Boolean)
-                .join(" ")}
-              role="tabpanel"
-              id={panelId(i)}
-              aria-labelledby={tabId(i)}
-              tabIndex={isActive ? 0 : -1}
-            >
-              <Hero
-                type="heading-hero"
-                image={pane.image}
-                title={pane.title}
-                subTitle={pane.subTitle}
-                contents={pane.contents}
-                contentsColor={pane.contentsColor}
-              />
-            </div>
+            <Hero
+              type="heading-hero"
+              image={pane.image}
+              title={pane.title}
+              subTitle={pane.subTitle}
+              contents={pane.contents}
+              contentsColor={pane.contentsColor}
+            />
           </div>
         );
       })}

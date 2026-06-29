@@ -8,32 +8,60 @@
 # percentages: 15% (collapsed) and 70% (active).
 # Every other value uses a $uds-* token from _custom-asu-variables.scss.
 #
-# DOM STRUCTURE (amended after cycle 2: wrapper-per-pane required to give the
-# active panel a proper containing block; original sibling structure had
-# unrecoverable layout issues with position: absolute panels):
+# DOM STRUCTURE (amended after cycle 5: Option C dual-render tabpanels.
+#   The outer .uds-expandable-heroes-container wraps the tablist AND three
+#   semantic tabpanels placed as DOM siblings of the tablist. This satisfies
+#   axe-core 4.10.2 aria-required-children (the tablist's own DOM descendants
+#   are only role=tab buttons; in-tablist __panel divs carry aria-hidden=true).
+#   Inside __panel divs are decorative (no role, no ARIA semantics) for sighted
+#   layout. The outside tabpanels carry role=tabpanel and are visually-hidden
+#   (Bootstrap .visually-hidden utility) when active, fully hidden (HTML hidden
+#   attr) when inactive.
 #
-#   .uds-expandable-heroes  [role=tablist]
-#     .uds-expandable-heroes__item.is-active         ← flex item (70%)
-#       .uds-expandable-heroes__pane.is-active        ← button [role=tab]
-#         .uds-expandable-heroes__rotated-title (hidden when active)
-#       .uds-expandable-heroes__panel                 ← [role=tabpanel] in-flow
-#         <Hero/>
-#     .uds-expandable-heroes__item                    ← flex item (15%)
-#       .uds-expandable-heroes__pane--collapsed        ← button [role=tab]
-#         .uds-expandable-heroes__rotated-title
-#       .uds-expandable-heroes__panel.is-hidden        ← [role=tabpanel] hidden
-#     .uds-expandable-heroes__item                    ← flex item (15%)
-#       …
+#   .uds-expandable-heroes-container                  ← NEW outer wrapper (block)
+#     .uds-expandable-heroes  [role=tablist]          ← unchanged flex container
+#       .uds-expandable-heroes__item.is-active        ← flex item (70%)
+#         .uds-expandable-heroes__pane.is-active      ← button [role=tab]
+#           .uds-expandable-heroes__rotated-title (hidden when active)
+#         .uds-expandable-heroes__panel  [aria-hidden] ← decorative, in-flow
+#           <Hero/>
+#       .uds-expandable-heroes__item                  ← flex item (15%)
+#         .uds-expandable-heroes__pane--collapsed     ← button [role=tab]
+#           .uds-expandable-heroes__rotated-title
+#         .uds-expandable-heroes__panel.is-hidden  [aria-hidden] ← decorative, hidden
+#       .uds-expandable-heroes__item                  ← flex item (15%)
+#         …
+#     div[role=tabpanel]#expandable-heroes-panel-0    ← semantic tabpanel (active)
+#       class="visually-hidden" → off-screen, AT-perceivable
+#       <Hero/>
+#     div[role=tabpanel]#expandable-heroes-panel-1    ← semantic tabpanel (inactive)
+#       hidden attr → removed from a11y tree
+#     div[role=tabpanel]#expandable-heroes-panel-2    ← semantic tabpanel (inactive)
+#       hidden attr → removed from a11y tree
 #
-# LAYOUT CHOICE: Option β — in-flow panel at ≥lg.
+# LAYOUT CHOICE: Option β — in-flow panel at ≥lg (cycle-3, preserved in cycle-5).
 # The __item is display:flex; flex-direction:column. The active __panel is in
-# flow inside the 70% column; the Hero's image drives the item height, which
-# drives the row height via align-items:stretch. Collapsed items stretch to
-# match the row height automatically via the flex default (align-items:stretch);
-# their panels are display:none so the button fills the full item area showing
-# the background image + rotated title.
+# flow inside the 70% column; the Hero's image drives item height, which drives
+# the row height via align-items:stretch. Collapsed items stretch to match the
+# row height automatically. Their panels are display:none so the button fills
+# the full item area.
+#
+# MARGIN NOTE (cycle-5): margin-bottom stays on .uds-expandable-heroes (the
+# tablist), not moved to the container. This preserves visual fidelity vs the
+# cycle-4 VISUAL_PASS reference. The container is a plain block wrapper with
+# no intrinsic spacing.
 --------------------------------------------------------------*/
 
+/*--------------------------------------------------------------
+0. Outer container — wraps tablist + semantic tabpanels (Option C, cycle-5)
+   Pure block wrapper. No ARIA role. No intrinsic spacing (margin stays on
+   .uds-expandable-heroes to preserve cycle-4 visual fidelity).
+--------------------------------------------------------------*/
+
+.uds-expandable-heroes-container {
+  display: block;
+  width: 100%;
+}
 /*--------------------------------------------------------------
 1. Root tablist container
 --------------------------------------------------------------*/

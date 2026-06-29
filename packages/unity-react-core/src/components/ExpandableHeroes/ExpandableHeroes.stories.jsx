@@ -83,168 +83,265 @@ export const Default = {
  * Hand-written JSX-as-HTML literal mirroring the exact DOM tree emitted by the
  * React component with panes=samplePanes, initialActiveIndex=0.
  * CSS-class and attribute structure MUST stay in sync with ExpandableHeroes.jsx.
- * (amended after cycle 2: updated for wrapper-per-pane DOM structure)
+ * (amended after cycle 5: Option C dual-render DOM — outer container wraps the
+ *  tablist + three semantic tabpanels as DOM siblings of the tablist.
+ *  In-tablist __panel divs are decorative: aria-hidden=true, no role/id.
+ *  Outside tabpanels carry role=tabpanel; active has visually-hidden class;
+ *  inactive have HTML hidden attribute set.)
  */
 export const HtmlParity = {
   render: () => (
-    <div
-      className="uds-expandable-heroes"
-      role="tablist"
-      aria-orientation="horizontal"
-      aria-label="Expandable hero panes"
-    >
-      {/* Item 0 — ACTIVE */}
-      <div className="uds-expandable-heroes__item is-active">
-        <button
-          type="button"
-          className="uds-expandable-heroes__pane is-active"
-          role="tab"
-          id="expandable-heroes-tab-0"
-          aria-selected="true"
-          aria-controls="expandable-heroes-panel-0"
-          tabIndex={0}
-          style={{ backgroundImage: `url('${IMG1}')` }}
-          data-ga="Pane One Title"
-          data-ga-event="link"
-          data-ga-action="click"
-          data-ga-component="expandable-heroes"
-          data-ga-region="main content"
-          data-ga-section="hero"
-        >
-          <span className="uds-expandable-heroes__rotated-title">
-            Pane One Title
-          </span>
-        </button>
-        <div
-          className="uds-expandable-heroes__panel"
-          role="tabpanel"
-          id="expandable-heroes-panel-0"
-          aria-labelledby="expandable-heroes-tab-0"
-          tabIndex={0}
-        >
-          <div className="uds-hero uds-hero-lg">
-            <div className="hero-overlay" />
-            <img
-              className="hero"
-              src={IMG1}
-              alt="Hero image one"
-              data-testid="hero-image"
-            />
-            <div role="doc-subtitle" data-testid="hero-subtitle">
-              <span className="text-white">Subtitle One</span>
+    <div className="uds-expandable-heroes-container">
+      <div
+        className="uds-expandable-heroes"
+        role="tablist"
+        aria-orientation="horizontal"
+        aria-label="Expandable hero panes"
+      >
+        {/* Item 0 — ACTIVE */}
+        <div className="uds-expandable-heroes__item is-active">
+          <button
+            type="button"
+            className="uds-expandable-heroes__pane is-active"
+            role="tab"
+            id="expandable-heroes-tab-0"
+            aria-label="Pane One Title"
+            aria-selected="true"
+            aria-controls="expandable-heroes-panel-0"
+            tabIndex={0}
+            style={{ backgroundImage: `url('${IMG1}')` }}
+            data-ga="Pane One Title"
+            data-ga-event="link"
+            data-ga-action="click"
+            data-ga-component="expandable-heroes"
+            data-ga-region="main content"
+            data-ga-section="hero"
+          >
+            <span className="uds-expandable-heroes__rotated-title">
+              Pane One Title
+            </span>
+          </button>
+          {/* Decorative in-tablist panel — aria-hidden, sighted layout only */}
+          <div className="uds-expandable-heroes__panel" aria-hidden="true">
+            <div className="uds-hero uds-hero-lg">
+              <div className="hero-overlay" />
+              <img
+                className="hero"
+                src={IMG1}
+                alt="Hero image one"
+                data-testid="hero-image"
+              />
+              <div role="doc-subtitle" data-testid="hero-subtitle">
+                <span className="text-white">Subtitle One</span>
+              </div>
+              <h1 style={{ maxWidth: "" }} data-testid="hero-title">
+                <span className="text-white">Pane One Title</span>
+              </h1>
+              <div className="content text-white" data-testid="hero-content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
             </div>
-            <h1 style={{ maxWidth: "" }} data-testid="hero-title">
-              <span className="text-white">Pane One Title</span>
-            </h1>
-            <div className="content text-white" data-testid="hero-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </div>
+
+        {/* Item 1 — COLLAPSED */}
+        <div className="uds-expandable-heroes__item">
+          <button
+            type="button"
+            className="uds-expandable-heroes__pane uds-expandable-heroes__pane--collapsed"
+            role="tab"
+            id="expandable-heroes-tab-1"
+            aria-label="Pane Two Title"
+            aria-selected="false"
+            aria-controls="expandable-heroes-panel-1"
+            tabIndex={-1}
+            style={{ backgroundImage: `url('${IMG2}')` }}
+            data-ga="Pane Two Title"
+            data-ga-event="link"
+            data-ga-action="click"
+            data-ga-component="expandable-heroes"
+            data-ga-region="main content"
+            data-ga-section="hero"
+          >
+            <span className="uds-expandable-heroes__rotated-title">
+              Pane Two Title
+            </span>
+          </button>
+          {/* Decorative in-tablist panel — aria-hidden, sighted layout only */}
+          <div
+            className="uds-expandable-heroes__panel is-hidden"
+            aria-hidden="true"
+          >
+            <div className="uds-hero uds-hero-lg">
+              <div className="hero-overlay" />
+              <img
+                className="hero"
+                src={IMG2}
+                alt="Hero image two"
+                data-testid="hero-image"
+              />
+              <div role="doc-subtitle" data-testid="hero-subtitle">
+                <span className="text-white">Subtitle Two</span>
+              </div>
+              <h1 style={{ maxWidth: "" }} data-testid="hero-title">
+                <span className="text-white">Pane Two Title</span>
+              </h1>
+              <div className="content text-white" data-testid="hero-content">
+                <p>
+                  Sed do eiusmod tempor incididunt ut labore et dolore magna
+                  aliqua.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Item 2 — COLLAPSED */}
+        <div className="uds-expandable-heroes__item">
+          <button
+            type="button"
+            className="uds-expandable-heroes__pane uds-expandable-heroes__pane--collapsed"
+            role="tab"
+            id="expandable-heroes-tab-2"
+            aria-label="A Very Long Pane Three Title That Tests Ellipsis Overflow Behavior"
+            aria-selected="false"
+            aria-controls="expandable-heroes-panel-2"
+            tabIndex={-1}
+            style={{ backgroundImage: `url('${IMG3}')` }}
+            data-ga="A Very Long Pane Three Title That Tests Ellipsis Overflow Behavior"
+            data-ga-event="link"
+            data-ga-action="click"
+            data-ga-component="expandable-heroes"
+            data-ga-region="main content"
+            data-ga-section="hero"
+          >
+            <span className="uds-expandable-heroes__rotated-title">
+              A Very Long Pane Three Title That Tests Ellipsis Overflow Behavior
+            </span>
+          </button>
+          {/* Decorative in-tablist panel — aria-hidden, sighted layout only */}
+          <div
+            className="uds-expandable-heroes__panel is-hidden"
+            aria-hidden="true"
+          >
+            <div className="uds-hero uds-hero-lg">
+              <div className="hero-overlay" />
+              <img
+                className="hero"
+                src={IMG3}
+                alt="Hero image three"
+                data-testid="hero-image"
+              />
+              <div role="doc-subtitle" data-testid="hero-subtitle">
+                <span className="text-white">Subtitle Three</span>
+              </div>
+              <h1 style={{ maxWidth: "" }} data-testid="hero-title">
+                <span className="text-white">
+                  A Very Long Pane Three Title That Tests Ellipsis Overflow
+                  Behavior
+                </span>
+              </h1>
+              <div className="content text-white" data-testid="hero-content">
+                <p>
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Item 1 — COLLAPSED */}
-      <div className="uds-expandable-heroes__item">
-        <button
-          type="button"
-          className="uds-expandable-heroes__pane uds-expandable-heroes__pane--collapsed"
-          role="tab"
-          id="expandable-heroes-tab-1"
-          aria-selected="false"
-          aria-controls="expandable-heroes-panel-1"
-          tabIndex={-1}
-          style={{ backgroundImage: `url('${IMG2}')` }}
-          data-ga="Pane Two Title"
-          data-ga-event="link"
-          data-ga-action="click"
-          data-ga-component="expandable-heroes"
-          data-ga-region="main content"
-          data-ga-section="hero"
-        >
-          <span className="uds-expandable-heroes__rotated-title">
-            Pane Two Title
-          </span>
-        </button>
-        <div
-          className="uds-expandable-heroes__panel is-hidden"
-          role="tabpanel"
-          id="expandable-heroes-panel-1"
-          aria-labelledby="expandable-heroes-tab-1"
-          tabIndex={-1}
-        >
-          <div className="uds-hero uds-hero-lg">
-            <div className="hero-overlay" />
-            <img
-              className="hero"
-              src={IMG2}
-              alt="Hero image two"
-              data-testid="hero-image"
-            />
-            <div role="doc-subtitle" data-testid="hero-subtitle">
-              <span className="text-white">Subtitle Two</span>
-            </div>
-            <h1 style={{ maxWidth: "" }} data-testid="hero-title">
-              <span className="text-white">Pane Two Title</span>
-            </h1>
-            <div className="content text-white" data-testid="hero-content">
-              <p>
-                Sed do eiusmod tempor incididunt ut labore et dolore magna
-                aliqua.
-              </p>
-            </div>
+      {/* Outside semantic tabpanels — DOM siblings of the tablist.
+          AT-perceivable; role=tabpanel satisfies WAI-ARIA tabs contract.
+          Active: visually-hidden class → off-screen but in a11y tree.
+          Inactive: HTML hidden attr → fully removed from a11y tree. */}
+
+      {/* Panel 0 — ACTIVE */}
+      <div
+        role="tabpanel"
+        id="expandable-heroes-panel-0"
+        aria-labelledby="expandable-heroes-tab-0"
+        tabIndex={0}
+        className="visually-hidden"
+      >
+        <div className="uds-hero uds-hero-lg">
+          <div className="hero-overlay" />
+          <img
+            className="hero"
+            src={IMG1}
+            alt="Hero image one"
+            data-testid="hero-image"
+          />
+          <div role="doc-subtitle" data-testid="hero-subtitle">
+            <span className="text-white">Subtitle One</span>
+          </div>
+          <h1 style={{ maxWidth: "" }} data-testid="hero-title">
+            <span className="text-white">Pane One Title</span>
+          </h1>
+          <div className="content text-white" data-testid="hero-content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
           </div>
         </div>
       </div>
 
-      {/* Item 2 — COLLAPSED */}
-      <div className="uds-expandable-heroes__item">
-        <button
-          type="button"
-          className="uds-expandable-heroes__pane uds-expandable-heroes__pane--collapsed"
-          role="tab"
-          id="expandable-heroes-tab-2"
-          aria-selected="false"
-          aria-controls="expandable-heroes-panel-2"
-          tabIndex={-1}
-          style={{ backgroundImage: `url('${IMG3}')` }}
-          data-ga="A Very Long Pane Three Title That Tests Ellipsis Overflow Behavior"
-          data-ga-event="link"
-          data-ga-action="click"
-          data-ga-component="expandable-heroes"
-          data-ga-region="main content"
-          data-ga-section="hero"
-        >
-          <span className="uds-expandable-heroes__rotated-title">
-            A Very Long Pane Three Title That Tests Ellipsis Overflow Behavior
-          </span>
-        </button>
-        <div
-          className="uds-expandable-heroes__panel is-hidden"
-          role="tabpanel"
-          id="expandable-heroes-panel-2"
-          aria-labelledby="expandable-heroes-tab-2"
-          tabIndex={-1}
-        >
-          <div className="uds-hero uds-hero-lg">
-            <div className="hero-overlay" />
-            <img
-              className="hero"
-              src={IMG3}
-              alt="Hero image three"
-              data-testid="hero-image"
-            />
-            <div role="doc-subtitle" data-testid="hero-subtitle">
-              <span className="text-white">Subtitle Three</span>
-            </div>
-            <h1 style={{ maxWidth: "" }} data-testid="hero-title">
-              <span className="text-white">
-                A Very Long Pane Three Title That Tests Ellipsis Overflow
-                Behavior
-              </span>
-            </h1>
-            <div className="content text-white" data-testid="hero-content">
-              <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-            </div>
+      {/* Panel 1 — INACTIVE */}
+      <div
+        role="tabpanel"
+        id="expandable-heroes-panel-1"
+        aria-labelledby="expandable-heroes-tab-1"
+        tabIndex={-1}
+        hidden
+        className="visually-hidden"
+      >
+        <div className="uds-hero uds-hero-lg">
+          <div className="hero-overlay" />
+          <img
+            className="hero"
+            src={IMG2}
+            alt="Hero image two"
+            data-testid="hero-image"
+          />
+          <div role="doc-subtitle" data-testid="hero-subtitle">
+            <span className="text-white">Subtitle Two</span>
+          </div>
+          <h1 style={{ maxWidth: "" }} data-testid="hero-title">
+            <span className="text-white">Pane Two Title</span>
+          </h1>
+          <div className="content text-white" data-testid="hero-content">
+            <p>
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Panel 2 — INACTIVE */}
+      <div
+        role="tabpanel"
+        id="expandable-heroes-panel-2"
+        aria-labelledby="expandable-heroes-tab-2"
+        tabIndex={-1}
+        hidden
+        className="visually-hidden"
+      >
+        <div className="uds-hero uds-hero-lg">
+          <div className="hero-overlay" />
+          <img
+            className="hero"
+            src={IMG3}
+            alt="Hero image three"
+            data-testid="hero-image"
+          />
+          <div role="doc-subtitle" data-testid="hero-subtitle">
+            <span className="text-white">Subtitle Three</span>
+          </div>
+          <h1 style={{ maxWidth: "" }} data-testid="hero-title">
+            <span className="text-white">
+              A Very Long Pane Three Title That Tests Ellipsis Overflow Behavior
+            </span>
+          </h1>
+          <div className="content text-white" data-testid="hero-content">
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
           </div>
         </div>
       </div>
@@ -257,7 +354,9 @@ HtmlParity.parameters = {
     description: {
       story:
         "HTML-parity story: hand-written JSX-as-HTML literal matching the React component DOM tree " +
-        "(panes[0] active). Used to verify CMS authors can copy-paste markup with identical CSS hooks. " +
+        "(panes[0] active). Option C dual-render DOM: outer container wraps tablist + 3 semantic " +
+        "tabpanels as DOM siblings. In-tablist __panel divs are decorative (aria-hidden=true). " +
+        "Used to verify CMS authors can copy-paste markup with identical CSS hooks. " +
         "T23: axe scans this story. T28: snapshot comparison asserts structural equivalence.",
     },
   },
