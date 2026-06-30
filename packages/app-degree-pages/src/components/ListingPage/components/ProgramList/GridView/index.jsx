@@ -5,10 +5,7 @@ import React, { useContext } from "react";
 import { AppContext } from "../../../../../core/context";
 import { GRID_PROGRAMS_ID } from "../../../../../core/models";
 import { degreeDataPropResolverService } from "../../../../../core/services";
-import {
-  parseMajorInfoLink,
-  requestInfoLink,
-} from "../../../../../core/services/degree-http-service";
+import { requestInfoLink } from "../../../../../core/services/degree-http-service";
 import { degreeListPropTypes } from "../programs-prop-types";
 import { SectionCard } from "./index.style";
 /**
@@ -42,7 +39,7 @@ function GridView({ programs, loading, actionUrls }) {
               imageAltText="An example image"
               title={resolver.getMajorDesc()}
               linkLabel="View Program Details"
-              linkUrl={parseMajorInfoLink(resolver, actionUrls.majorInfoUrl)}
+              linkUrl={resolver.getDegreeSearchUrl()}
               buttons={[
                 {
                   color: "maroon",
