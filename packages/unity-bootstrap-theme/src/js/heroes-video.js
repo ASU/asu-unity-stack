@@ -2,9 +2,10 @@ import { EventHandler } from "./bootstrap-helper";
 
 function initHeroesVideo() {
   // common selectors
-  const DOM_ELEMENT_VIDEO = "video";
-  const DOM_ELEMENT_BTN_PLAY = "#playHeroVid";
-  const DOM_ELEMENT_BTN_PAUSE = "#pauseHeroVid";
+  const DOM_PARENT = ".uds-video-hero";
+  const DOM_ELEMENT_VIDEO = DOM_PARENT + " video";
+  const DOM_ELEMENT_BTN_PLAY = DOM_PARENT + " #playHeroVid";
+  const DOM_ELEMENT_BTN_PAUSE = DOM_PARENT + " #pauseHeroVid";
   const EVENT_CLICK = "click";
   const STYLE_DISPLAY_BLOCK = "block";
   const STYLE_DISPLAY_NONE = "none";

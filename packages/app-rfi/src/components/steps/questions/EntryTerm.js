@@ -139,3 +139,4 @@ export const EntryTerm = ({ gaData }) => {
 };
 
 EntryTerm.propTypes = { gaData: gaEventPropTypes };
+EntryTerm.gaName = "entry_term";

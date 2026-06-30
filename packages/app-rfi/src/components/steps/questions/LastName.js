@@ -30,3 +30,4 @@ export const LastName = ({ gaData }) => {
 };
 
 LastName.propTypes = { gaData: gaEventPropTypes };
+LastName.gaName = "last_name";

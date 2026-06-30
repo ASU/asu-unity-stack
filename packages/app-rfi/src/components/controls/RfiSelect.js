@@ -11,14 +11,14 @@ import { RfiLabel, RfiError } from "./controls-helpers";
 // experienced using solely one of the other.
 
 const RfiSelect = ({
-  id,
+  id = undefined,
   label,
   name,
-  requiredIcon,
-  required,
+  requiredIcon = undefined,
+  required = undefined,
   options,
-  disabled,
-  autoFocus,
+  disabled = undefined,
+  autoFocus = undefined,
   onBlur,
 }) => {
   const [field, meta, helpers] = useField({ name });
@@ -73,14 +73,6 @@ const RfiSelect = ({
 // Note on requiredIcon. Yup required status is not readily available so we
 // duplicate the setting in our props for displaying the required icon until
 // Formik has a better way to do it.
-
-RfiSelect.defaultProps = {
-  id: undefined,
-  requiredIcon: undefined,
-  required: undefined,
-  autoFocus: undefined,
-  disabled: false,
-};
 
 RfiSelect.propTypes = {
   id: PropTypes.string,

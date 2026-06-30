@@ -1,62 +1,121 @@
 import styled from "styled-components";
+import {
+  ASU_GRAY1,
+  ASU_WHITE,
+  BOOTSTRAP_TEXT_MUTED,
+  ASU_GRAY5,
+  ASU_MAROON,
+} from "../../../colors";
+import { CLASS_NAMES } from "../../../core/constants/classNames";
 
 const SearchWrapper = styled.form`
+  display: flex;
+  align-items: center;
   button {
     border: none;
     background: transparent;
     cursor: pointer;
   }
-  .search-button {
+  .${CLASS_NAMES.SEARCH_BUTTON} {
     transition: cubic-bezier(0.19, 1, 0.19, 1);
+    font-size: 0.75rem;
+    line-height: 1;
+    color: ${ASU_GRAY1};
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    span {
+      margin-right: 0.25rem;
+    }
   }
   input[name="q"] {
     width: 200px;
-    background-color: #ffffff;
+    background-color: ${ASU_WHITE};
     border: 0;
     border-radius: 0;
-    padding: 0.5rem 0.5rem 0.5rem 2rem;
+    padding: 0.5rem 0.5rem;
     font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-    border: 1px solid #707070;
-    margin: 0.5rem 0;
+    font-size: 0.75rem;
+    line-height: 1;
+    color: ${BOOTSTRAP_TEXT_MUTED};
+    border: 1px solid ${ASU_GRAY5};
+    outline: ${ASU_GRAY1};
+    margin-left: 1.5rem;
     display: unset;
-    &:focus {
-      border-color: transparent;
+    vertical-align: middle;
+
+    &::placeholder {
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+    &:focus,
+    &:focus-visible {
+      border: 1px solid ${ASU_GRAY1};
     }
   }
-  .close-search {
-    background-color: #ffffff;
-    border: 1px solid #d0d0d0;
+  .${CLASS_NAMES.SUBMIT_BUTTON} {
+    margin-left: 0.5rem;
+  }
+  .${CLASS_NAMES.CLOSE_SEARCH} {
+    background-color: ${ASU_WHITE};
+    border: 1px solid ${ASU_GRAY5};
     border-radius: 100%;
     padding: 0.45rem 0.75rem;
     margin-left: 0.5rem;
   }
-  &.open-search {
+  &.${CLASS_NAMES.OPEN_SEARCH} {
     margin-left: -1rem;
-    .search-button {
+    .${CLASS_NAMES.SEARCH_BUTTON} {
       transform: translate(1.9rem);
       pointer-events: none;
     }
   }
   @media (max-width: ${({ breakpoint }) => breakpoint}) {
     width: 100%;
-    padding: 1rem 2rem;
+    padding: 0 1rem 1rem;
     label {
       position: relative;
       font-size: 0.875rem;
       margin-bottom: 0;
       width: 100%;
-      svg {
+      svg.${CLASS_NAMES.SEARCH_ICON} {
         position: absolute;
         top: 50%;
-        left: 0.5rem;
+        left: 1rem;
         transform: translate(0, -50%);
       }
       input[name="q"] {
         width: 100%;
-        border: unset;
         margin: 0;
+        padding: 0.5rem 3rem 0.5rem 2.25rem;
+        font-size: 1rem;
+        line-height: 1.5;
+
+        &::placeholder {
+          font-size: 1rem;
+          line-height: 1.5;
+        }
+
+        &::-webkit-search-cancel-button,
+        &::-webkit-search-decoration,
+        &::-webkit-search-results-button,
+        &::-webkit-search-results-decoration {
+          display: none;
+        }
+      }
+      .${CLASS_NAMES.SUBMIT_SEARCH} {
+        position: absolute;
+        top: 50%;
+        right: 0.5rem;
+        transform: translate(0, -50%);
+        border-radius: 50%;
+        width: 2rem;
+        height: 2rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        background-color: ${ASU_MAROON};
+        color: ${ASU_WHITE};
+        font-size: 0.75rem;
       }
     }
   }

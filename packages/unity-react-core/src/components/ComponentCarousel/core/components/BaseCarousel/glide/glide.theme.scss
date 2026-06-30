@@ -7,6 +7,9 @@ $uds-breakpoint-sm: 576px;
 $uds-breakpoint-lg: 1260px;
 $asu-gray-1: #191919;
 $uds-color-brand-gold: #ffc627; // ASU Gold brand color
+$heading-three-font-size: 1.5rem;
+$heading-three-line-height: 1.75rem;
+$heading-three-letter-spacing: -0.0525rem;
 
 @mixin shadow {
   // At start, no "to right" in ::after rule
@@ -284,6 +287,12 @@ $uds-color-brand-gold: #ffc627; // ASU Gold brand color
     figcaption {
       padding: 0 0.75rem;
       font-size: 0.75rem;
+
+      h2 {
+        font-size: $heading-three-font-size;
+        line-height: $heading-three-line-height;
+        letter-spacing: $heading-three-letter-spacing;
+      }
     }
 
     .image-navigator {

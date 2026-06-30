@@ -1,6 +1,6 @@
 
-import { addons, types } from "@storybook/addons";
-import { useAddonState } from "@storybook/api";
+import { addons, types } from "storybook/manager-api";
+import { useAddonState } from "storybook/manager-api";
 import { ADDON_ID, PANEL_ID } from "../constants";
 import { Panel } from "../Panel";
 

@@ -237,7 +237,10 @@ div.uds-hero-sm {
     .btn-row {
       align-self: flex-start;
       flex-wrap: wrap;
-      top: 15rem;
+      grid-row: 4;
+      position: relative;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
 
       a.btn {
         margin-top: 0;
@@ -375,17 +378,21 @@ div.uds-hero-lg {
   }
 
   div.uds-hero-sm {
-    grid-template-rows: 1fr auto auto $uds-size-spacing-7;
-    &.has-btn-row {
-      .btn-row {
-        top: 90%;
-      }
-    }
+    grid-template-rows: 0px 1fr auto auto;
 
     > a.btn {
-      grid-row: unset;
-      position: absolute;
-      top: 14.5rem;
+      position: relative;
+      top: auto;
+      grid-row: 4;
+    }
+
+    &.has-btn-row {
+      .btn-row {
+        position: relative;
+        margin-top: 1rem;
+        top: auto;
+        grid-row: 4;
+      }
     }
   }
 

@@ -3,24 +3,20 @@ import styled from "styled-components";
 const AnchorMenuWrapper = styled.div`
   &.sticky {
     position: fixed;
-    top: 0;
+    top: var(--uds-anchor-menu-top, 0px);
     left: 0;
     width: 100%;
-    &.with-header {
-      top: ${({ requiresAltMenuSpacing }) =>
-        requiresAltMenuSpacing ? "112px" : "142px"};
-      @media (max-width: 992px) {
-        top: 110px;
-      }
-    }
   }
   .mobile-menu-toggler {
     background-color: transparent;
     border: none;
-    cursor: default;
-    h4 {
-      align-items: center;
-    }
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    text-align: inherit;
     i {
       transition: all 0.3s;
     }

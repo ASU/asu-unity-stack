@@ -1,0 +1,176 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Get Started/Get Started" />
+
+# ASU Unity Bootstrap Theme
+## Quickstart Guide
+
+The Unity Bootstrap Theme is a Bootstrap 5-based web UI kit implementing ASU's Web Standards. Developers use the Unity Bootstrap Theme to build accessible and ASU Web Standards 2.0 compliant web sites and applications.
+
+This is the Storybook reference site for the Unity Bootstrap theme. Browse the design components here to identify one you want to use. Implement the HTML markup associated with that design component in your site or application, include the Unity Bootstrap Theme's CSS and JS files, and you're in business.
+
+### Features
+
+- **Bootstrap 5:** Unity is built on top of Bootstrap 5, so you get all the Bootstrap goodness, plus some extra ASU-specific components and styles. **Bootstrap files,including CSS and Javascript, are bundled with Unity** so you don't need to include them separately.
+- **Clean, easy to use styles and scripts:** thanks to the helper utilities and variables provided by the Bootstrap 5 team.
+- **Font Awesome is no longer included with Unity!** If using in a project outside of webspark, you will need to include Font Awesome yourself. See [here](https://fontawesome.com/start) for instructions on how to do that.
+
+## ❯ Including Unity in your project
+
+We bundle the necessary CSS and Javascript in the `dist/` folder. There are more options so you don't have to include CSS you don't use.
+### CSS
+* `dist/css/unity-bootstrap-theme.bundle.css` - base theme with header and footer CSS
+* `dist/css/unity-bootstrap-theme.css` - base theme without header and footer CSS
+* `dist/css/unity-bootstrap-header-footer.css` (optional) - header and footer CSS only - don't use if using the Unity `component-header-footer` React component
+
+### Javascript
+
+Unity Bootstrap Theme includes JavaScript for interactive components and Google Analytics data layer integration. **All scripts automatically initialize on window load** - you just need to include them in your project.
+
+We provide 3 formats for different use cases:
+
+#### **For Browser/HTML Projects (UMD)**
+
+Include the UMD bundle via script tag. Everything auto-initializes on page load:
+
+```html
+<!-- Include Unity Bootstrap JS -->
+<script src="path/to/@asu/unity-bootstrap-theme/dist/js/unity-bootstrap.umd.js"></script>
+
+<!-- Optional: Bootstrap JS (if not already included) -->
+<script src="path/to/@asu/unity-bootstrap-theme/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Optional: Chart.js (only if using donut chart component) -->
+<script src="path/to/@asu/unity-bootstrap-theme/dist/js/chart.min.js"></script>
+```
+
+**Manual initialization** (only needed if script loads after page load or re-initialization required):
+```html
+<script>
+  // Global variable `unityBootstrap` is available
+  unityBootstrap.initDataLayer();
+  unityBootstrap.initGlobalHeader();
+  // ... or any other init function
+</script>
+```
+
+#### **For React/Modern JavaScript Apps (ES Module)**
+
+Import at your app's entry point (e.g., `src/index.js` or `src/main.jsx`). Auto-initializes on window load:
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+
+// Import Unity Bootstrap JS - auto-initializes on window load
+import '@asu/unity-bootstrap-theme/dist/js/unity-bootstrap.es.js';
+
+// Import Unity CSS
+import '@asu/unity-bootstrap-theme/dist/css/unity-bootstrap-theme.css';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
+#### **Available Formats**
+
+* `dist/js/unity-bootstrap.umd.js` - Universal Module Definition (browser/script tags)
+* `dist/js/unity-bootstrap.es.js` - ES Module (React/modern bundlers)
+* `dist/js/unity-bootstrap.cjs.js` - CommonJS (Node.js)
+
+#### **Vendor Files** (Included for convenience)
+* `dist/js/bootstrap.bundle.min.js` - Unaltered Bootstrap JS
+* `dist/js/chart.min.js` - Only needed for donut chart component
+
+#### **Available Initialization Functions**
+
+All functions listed below auto-initialize on window load. Manual calls are only needed for edge cases:
+
+* `initAnchorMenu`
+* `initBlockquoteAnimation`
+* `initCalendar`
+* `initChart`
+* `initDataLayer` - Required for Google Analytics tracking
+* `initFixedTable`
+* `initGlobalHeader` - Required for header functionality if using the HTML markup only. Not needed if using the React header in `@asu/component-header-footer` component.
+* `initHeroesVideo`
+* `initImageParallax`
+* `initModals`
+* `initRankingCard`
+* `initTabbedPanels`
+* `initVideo`
+* `initCardBodies`
+* `initCollapse`
+
+## ❯ How to  use the Unity Storybook reference site
+
+The Storybook reference site for the Unity Bootstrap Theme exists to provide a reference library of components and the markup to use to implement them in your site once you've included the library's CSS and Javascript in your site or application.
+Some components also have controls so you can make changes and see how those changes will appear in your site.
+
+## ❯ How to use the private package registry
+
+See the [Unity README](https://github.com/ASU/asu-unity-stack?tab=readme-ov-file#how-to-use-the-private-package-registry) for instructions on how to use the private package registry.
+
+### TROUBLESHOOTING ERRORS
+
+If you get errors having to do with yarn not being able to find a package on the registry, try running ```yarn config list``` at the project root and look for the ```registry:``` key under yarn config. If it is not set to ```https://registry.yarnpkg.com``` then run ```yarn config delete registry``` and recheck config.
+
+For custom compilation and sub-themes using the `unity-bootstrap-theme` package, make sure your bundling/compilation tool is compatible with the scss. For example, if you are usiing Gulp for scss compilation, you will need to handle the new module imports used in our webpack configuration.
+
+In the old bs4 theme we would import some bootstrap scss with `@import "../../node_modules/bootstrap/scss/root";`
+In the new theme it is imported directly with  `@import "bootstrap/scss/functions";`
+
+[This slack thread](https://asu-tech.slack.com/archives/C01ABUVU8LQ/p1695234506292239) has some more information about this issue and using Gulp. *Must be a member of the ASU Community Slack workspace to view.*
+
+
+## Advanced Details for Unity Developers and Contributors
+
+See [this section](https://github.com/ASU/asu-unity-stack#advanced-details-for-unity-developers-and-contributors) of our README for more information about the Unity monorepo and how to contribute to the project.
+
+## > Google Analytics integration
+
+Google Analytics integration for Unity is handled via Google Tag Manager. During user interaction with Unity components, usage data is captured by Google Tag Manager and delivered to Google Analytics.
+
+This is enabled using the window `dataLayer` object. For components in each package of this repository we take the `dataLayer` object, with GTM and the dataLayer having already been initialized (by the host application or CMS - see [https://unity.web.asu.edu](https://unity.web.asu.edu) for details on GTM setup), and push events using the `push()` method of the `dataLayer`. For each object included in the array, Google Tag manager catches that event.
+
+Depending on the package, this integration, of dispatching events, is handled in different ways. For `component-header`, `components-library` header and `component-footer`, we use a service that pushes each event if the `dataLayer` object exists and that service method is called on each jsx element event handler. For example:
+
+#### **`src/component.js`**
+```JS
+<a href="#" onFocus={() => trackGAEvent(customEvent)}>Anchor Text</a>
+```
+#### **`services/googleAnalytics.js`**
+```JS
+const trackGAEvent = (event) => {
+  const { dataLayer } = window;
+  if (dataLayer) dataLayer.push(event);
+}
+```
+
+For the `unity-bootstrap-theme` package the events are dispatched by an `eventListener`, for the `focus`, `click` or `change` event handler, for each html element that needs to be included. For example:
+
+#### **`src/component.html`**
+```JS
+<a href="#" data-ga="">Anchor Text</a>
+```
+#### **`src/component.js`**
+```JS
+const pushGAEvent = (event) => {
+  const { dataLayer } = window;
+  if (dataLayer) dataLayer.push(event);
+};
+// eventListener
+const elements = document.querySelectorAll('[data-ga]');
+elements.forEach((element) =>
+  element.addEventListener('focus', () => {
+    pushGAEvent(event);
+  })
+);
+```
+Check [https://unity.web.asu.edu/](https://unity.web.asu.edu/) as well as the README.md's in individual Unity packages for more Google Analytics, Google Tag Manager and data layer implementation details.
+
+To read more about Google Tag Manager and dataLayer usage, see [here](https://developers.google.com/tag-platform/tag-manager/datalayer).

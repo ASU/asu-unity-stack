@@ -1,8 +1,9 @@
-module.exports = {
-  config: function config(entry = []) {
-    return [...entry, require.resolve('./preset/preview.js')];
-  },
-  managerEntries: function managerEntries(entry = []) {
-    return [...entry, require.resolve('./preset/manager.js')];
-  }
-};
+import { fileURLToPath } from "url";
+
+export function previewAnnotations(entry = []) {
+  return [...entry, fileURLToPath(import.meta.resolve('./preset/preview.js'))];
+}
+
+export function managerEntries(entry = []) {
+  return [...entry, fileURLToPath(import.meta.resolve('./preset/manager.js'))];
+}

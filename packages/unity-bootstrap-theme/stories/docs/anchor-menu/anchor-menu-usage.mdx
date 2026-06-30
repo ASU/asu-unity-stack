@@ -1,0 +1,323 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Atoms/Anchor Menu/Usage Guide" />
+
+# Anchor Menu Usage Guide
+
+The UDS Anchor Menu is a navigation component that helps users jump to different sections of a long page. It automatically tracks scroll position, highlights the currently visible section, and can attach to the page header when scrolling.
+
+## Prerequisites
+
+Before using the anchor menu, ensure you have:
+
+1. **ASU Unity Bootstrap Theme** CSS loaded in your project
+2. **ASU Unity Bootstrap Theme** JavaScript loaded (includes the anchor menu initialization)
+3. An **ASU global header** with ID `asu-header` or `asuHeader`
+4. **Font Awesome** for icons (optional, but recommended)
+
+## Basic HTML Structure
+
+The anchor menu requires specific HTML structure to function properly:
+
+### 1. The Anchor Menu Container
+
+Create an element with ID `uds-anchor-menu`:
+
+```html
+<div id="uds-anchor-menu" class="uds-anchor-menu uds-anchor-menu-expanded-lg">
+  <div class="container">
+    <div class="uds-anchor-menu-wrapper">
+      <h2>
+        <button
+          type="button"
+          class="mobile-menu-toggler"
+          data-bs-toggle="collapse"
+          data-bs-target="#anchorMenuNav"
+          aria-expanded="false"
+          aria-controls="anchorMenuNav"
+        >
+          On This Page: <span class="fas fa-chevron-down"></span>
+        </button>
+      </h2>
+      <div id="anchorMenuNav" class="card card-body collapse">
+        <nav class="nav" aria-label="Page navigation">
+          <!-- Anchor links go here -->
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+### 2. Adding Anchor Links
+
+Inside the `<nav>` element, add links that point to section IDs on your page:
+
+```html
+<a
+  class="nav-link"
+  href="#section-id"
+  data-ga-name="onclick"
+  data-ga-event="link"
+  data-ga-action="click"
+  data-ga-type="internal link"
+  data-ga-region="main content"
+  data-ga-section="page section name"
+  data-ga-text="link text"
+>
+  <span class="fas fa-link"></span>Section Title
+</a>
+```
+
+### 3. Target Sections
+
+Create sections on your page with matching IDs:
+
+```html
+<div class="container">
+  <div id="section-id">
+    <h2>Section Title</h2>
+    <p>Your content here...</p>
+  </div>
+</div>
+```
+
+## Complete Example
+
+Here's a complete working example:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anchor Menu Example</title>
+
+  <!-- Unity Bootstrap Theme CSS -->
+  <link rel="stylesheet" href="path/to/unity-bootstrap-theme.css">
+
+  <!-- Font Awesome (optional) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <!-- ASU Global Header (required) -->
+  <div id="asu-header">
+    <!-- Your header content -->
+  </div>
+
+  <!-- Hero or page header -->
+  <div class="container-fluid">
+    <div class="uds-hero-lg">
+      <h1>Page Title</h1>
+    </div>
+  </div>
+
+  <!-- Anchor Menu -->
+  <div id="uds-anchor-menu" class="uds-anchor-menu uds-anchor-menu-expanded-lg">
+    <div class="container">
+      <div class="uds-anchor-menu-wrapper">
+        <h2>
+          <button
+            type="button"
+            class="mobile-menu-toggler"
+            data-bs-toggle="collapse"
+            data-bs-target="#anchorMenuNav"
+            aria-expanded="false"
+            aria-controls="anchorMenuNav"
+          >
+            On This Page: <span class="fas fa-chevron-down"></span>
+          </button>
+        </h2>
+        <div id="anchorMenuNav" class="card card-body collapse">
+          <nav class="nav" aria-label="Page navigation">
+            <a class="nav-link" href="#introduction">
+              <span class="fas fa-link"></span>Introduction
+            </a>
+            <a class="nav-link" href="#overview">
+              <span class="fas fa-link"></span>Overview
+            </a>
+            <a class="nav-link" href="#details">
+              <span class="fas fa-link"></span>Details
+            </a>
+            <a class="nav-link" href="#conclusion">
+              <span class="fas fa-link"></span>Conclusion
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Content with Target Sections -->
+  <div class="container">
+    <div id="introduction">
+      <h2>Introduction</h2>
+      <p>Your introduction content...</p>
+    </div>
+
+    <div id="overview">
+      <h2>Overview</h2>
+      <p>Your overview content...</p>
+    </div>
+
+    <div id="details">
+      <h2>Details</h2>
+      <p>Your detailed content...</p>
+    </div>
+
+    <div id="conclusion">
+      <h2>Conclusion</h2>
+      <p>Your conclusion content...</p>
+    </div>
+  </div>
+
+  <!-- Unity Bootstrap Theme JS (includes anchor menu initialization) -->
+  <script src="path/to/unity-bootstrap-theme.js"></script>
+</body>
+</html>
+```
+
+## Dynamic Link Generation (JavaScript/CMS Integration)
+
+If you're building the anchor menu dynamically (like in a CMS), you can programmatically add links to the menu. Here's a framework-agnostic approach:
+
+```javascript
+// Wait for DOM to be ready
+document.addEventListener('DOMContentLoaded', function() {
+  const anchorMenuNav = document.querySelector('#uds-anchor-menu nav');
+  const heading = document.querySelector('.uds-anchor-menu-wrapper h2').textContent.toLowerCase().trim();
+
+  // Find all elements you want to link to (e.g., elements with a specific class)
+  const linkableElements = document.querySelectorAll('.anchor-target');
+
+  linkableElements.forEach(function(element) {
+    // Get or create an ID for the element
+    const elementId = element.id || `section-${element.dataset.title.toLowerCase().replace(/\s+/g, '-')}`;
+    if (!element.id) {
+      element.id = elementId;
+    }
+
+    // Create the anchor link
+    const linkTitle = element.dataset.title || element.querySelector('h2').textContent;
+    const icon = element.dataset.icon || '<span class="fas fa-link"></span>';
+
+    const link = document.createElement('a');
+    link.className = 'nav-link';
+    link.href = `#${elementId}`;
+    link.setAttribute('data-ga-event', 'link');
+    link.setAttribute('data-ga-action', 'click');
+    link.setAttribute('data-ga-name', 'onclick');
+    link.setAttribute('data-ga-type', 'internal link');
+    link.setAttribute('data-ga-region', 'main content');
+    link.setAttribute('data-ga-section', heading);
+    link.setAttribute('data-ga-text', linkTitle.toLowerCase());
+    link.innerHTML = `${icon}${linkTitle}`;
+
+    // Append to the navigation menu
+    anchorMenuNav.appendChild(link);
+  });
+});
+```
+
+### HTML for Dynamic Example
+
+```html
+<!-- Mark sections that should appear in the anchor menu -->
+<div class="anchor-target" data-title="Getting Started">
+  <h2>Getting Started</h2>
+  <p>Content here...</p>
+</div>
+
+<div class="anchor-target" data-title="Advanced Topics" data-icon='<span class="fas fa-star"></span>'>
+  <h2>Advanced Topics</h2>
+  <p>More content...</p>
+</div>
+```
+
+## Styling Options
+
+The anchor menu component supports several CSS classes for different behaviors:
+
+### Expansion Breakpoints
+
+Control when the menu expands to full width:
+
+- `.uds-anchor-menu-expanded-sm` - Expands at small breakpoint (≥576px)
+- `.uds-anchor-menu-expanded-md` - Expands at medium breakpoint (≥768px)
+- `.uds-anchor-menu-expanded-lg` - Expands at large breakpoint (≥992px)
+- `.uds-anchor-menu-expanded-xl` - Expands at extra-large breakpoint (≥1200px)
+
+```html
+<!-- Example: Expands at large screens -->
+<div id="uds-anchor-menu" class="uds-anchor-menu uds-anchor-menu-expanded-lg">
+  <!-- ... -->
+</div>
+```
+
+## Important Requirements
+
+### 1. Element IDs
+
+- The anchor menu container **must** have ID `uds-anchor-menu`
+- Your page **must** have a global header with ID `asu-header` or `asuHeader`
+- All target sections **must** have unique IDs matching the `href` values in your anchor links
+
+### 2. Link Structure
+
+Each anchor link should:
+- Have class `nav-link`
+- Point to a valid section ID with `href="#section-id"`
+- Include Google Analytics data attributes (optional but recommended for tracking)
+
+### 3. Automatic Initialization
+
+The anchor menu automatically initializes on page load when:
+- The Unity Bootstrap Theme JavaScript is loaded
+- An element with ID `uds-anchor-menu` exists
+- A global header element exists
+- The anchor links point to valid sections
+
+## Behavior
+
+The anchor menu provides these automatic behaviors:
+
+1. **Scroll Tracking** - Highlights the link for the section currently most visible in the viewport
+2. **Header Attachment** - When scrolling down, the menu attaches to the bottom of the global header
+3. **Smooth Scrolling** - Clicking an anchor link smoothly scrolls to position the section at 25% from the top of viewport
+4. **Mobile Collapse** - On smaller screens, the menu collapses and can be toggled with the heading
+5. **Active States** - Automatically adds/removes `active` class to links based on scroll position
+
+## Troubleshooting
+
+### Menu Not Appearing
+
+- Verify the element has ID `uds-anchor-menu`
+- Check that the Unity Bootstrap Theme JavaScript is loaded
+- Ensure a global header with ID `asu-header` or `asuHeader` exists
+
+### Links Not Working
+
+- Confirm target section IDs exactly match the `href` values (without the `#`)
+- Check browser console for warnings about missing elements
+- Verify sections exist in the DOM when the page loads
+
+### Incorrect Highlighting
+
+- Ensure target sections have sufficient content/height to be detected
+- Check that section IDs are unique
+- Verify sections aren't hidden with `display: none` or `visibility: hidden`
+
+## Accessibility
+
+The anchor menu includes accessibility features:
+
+- Uses semantic `<nav>` element with `aria-label`
+- Includes proper ARIA attributes for collapsible sections
+- Supports keyboard navigation
+- Links have descriptive text and proper contrast
+
+Make sure to:
+- Keep link text descriptive and meaningful
+- Use `aria-label` on the `<nav>` element to describe its purpose
+- Include proper ARIA attributes on collapsible elements

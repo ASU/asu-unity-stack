@@ -83,8 +83,10 @@ form.uds-form.uds-rfi .rfi-input-select input:focus {
 }
 
 /* For instances where FontAwesome SVG conversion doesn't happen, we need to
-   provide rules for i tags */
-form.uds-form.uds-rfi label i.uds-field-required {
+  provide rules for i tags, keeping "label" and "i" incase the weight of the
+  style is the same strength */
+form.uds-form.uds-rfi label i.uds-field-required,
+form.uds-form.uds-rfi .uds-field-required {
   font-size: 0.5rem;
   margin-right: 0.25rem;
   margin-bottom: 0.125rem;

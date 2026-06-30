@@ -10,11 +10,11 @@ import { RfiLabel, RfiError } from "./controls-helpers";
 const RfiTextInput = ({
   label,
   name,
-  id,
-  requiredIcon,
-  required,
-  helperText,
-  autoFocus,
+  id = undefined,
+  requiredIcon = undefined,
+  required = undefined,
+  helperText = undefined,
+  autoFocus = undefined,
   onBlur,
 }) => {
   // Surface values from Formik context
@@ -68,14 +68,6 @@ const RfiTextInput = ({
 // Note on requiredIcon. Yup required status is not readily available so we
 // duplicate the setting in our props got displaying the required icon until
 // Formik has a better way to do it.
-
-RfiTextInput.defaultProps = {
-  id: undefined,
-  requiredIcon: undefined,
-  required: undefined,
-  autoFocus: undefined,
-  helperText: undefined,
-};
 
 RfiTextInput.propTypes = {
   label: PropTypes.string.isRequired,

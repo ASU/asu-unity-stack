@@ -6,6 +6,7 @@ import asuVertLogo from "../../../../../public/assets/img/arizona-state-universi
 import asuHorizLogo from "../../../../../public/assets/img/arizona-state-university-logo.png";
 import starbucksLogo from "../../../../../public/assets/img/asu-starbucks.png";
 import { useAppContext } from "../../../core/context/app-context";
+import { CLASS_NAMES } from "../../../core/constants/classNames";
 import { PartnerLogosWrapper } from "./index.styles";
 
 const Partner = () => {
@@ -44,7 +45,7 @@ const Partner = () => {
         onClick={() => trackGAEvent({ text: "asu logo" })}
       >
         <img
-          className="vert"
+          className={CLASS_NAMES.LOGO_VERT}
           src={asuLogo?.src ?? asuVertLogo}
           alt={asuLogo?.alt ?? "Arizona State University logo"}
           width="303"
@@ -55,7 +56,7 @@ const Partner = () => {
           fetchpriority="high"
         />
         <img
-          className="horiz"
+          className={CLASS_NAMES.LOGO_HORIZ}
           src={asuLogo?.mobileSrc ?? asuHorizLogo}
           alt={asuLogo?.alt ?? "Arizona State University logo"}
           width="400"

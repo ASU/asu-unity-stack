@@ -131,26 +131,28 @@ function SearchPage({
         <span className="highlight-gold">Search</span>
       </h1>
       <div className="options-area">
-        <form className="uds-form">
-          <div className="form-group">
-            <input
-              type="text"
-              className="form-control"
-              id="search-input"
-              placeholder="Search asu.edu"
-              value={searchValue}
-              onChange={e => setSearchValue(e.target.value)}
-              onKeyDown={inputKeyPress}
-              ref={inputRef}
-            />
-            <Button
-              color="maroon"
-              icon={["fas", "search"]}
-              label="Search"
-              onClick={() => doSearch()}
-            />
-          </div>
-        </form>
+        <search className="search-page-wrapper">
+          <form className="uds-form">
+            <div className="form-group">
+              <input
+                type="text"
+                className="form-control"
+                id="search-input"
+                placeholder="Search asu.edu"
+                value={searchValue}
+                onChange={e => setSearchValue(e.target.value)}
+                onKeyDown={inputKeyPress}
+                ref={inputRef}
+              />
+              <Button
+                color="maroon"
+                icon={["fas", "search"]}
+                label="Search"
+                onClick={() => doSearch()}
+              />
+            </div>
+          </form>
+        </search>
         <div className="profile-options">
           <div className="desktop-button">
             <Button

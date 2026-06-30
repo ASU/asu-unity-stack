@@ -4,6 +4,7 @@ import React from "react";
 import vertLogo from "../../../../../public/assets/img/arizona-state-university-logo-vertical.png";
 import horizLogo from "../../../../../public/assets/img/arizona-state-university-logo.png";
 import { useAppContext } from "../../../core/context/app-context";
+import { CLASS_NAMES } from "../../../core/constants/classNames";
 import { LogoWrapper } from "./index.styles";
 
 const Logo = () => {
@@ -12,12 +13,12 @@ const Logo = () => {
   return (
     <LogoWrapper
       href={logo?.brandLink ?? "https://asu.edu"}
-      className="navbar-brand"
+      className={CLASS_NAMES.NAVBAR_BRAND}
       data-testid="logo"
       onFocus={() => trackGAEvent({ text: "asu logo" })}
     >
       <img
-        className="vert"
+        className={CLASS_NAMES.LOGO_VERT}
         src={logo?.src ?? vertLogo}
         alt={logo?.alt ?? "Arizona State University logo"}
         title={logo?.title ?? "ASU homepage"}
@@ -27,7 +28,7 @@ const Logo = () => {
         fetchpriority="high"
       />
       <img
-        className="horiz"
+        className={CLASS_NAMES.LOGO_HORIZ}
         src={logo?.mobileSrc ?? horizLogo}
         alt={logo?.alt ?? "Arizona State University logo"}
         title={logo?.title ?? "ASU homepage"}

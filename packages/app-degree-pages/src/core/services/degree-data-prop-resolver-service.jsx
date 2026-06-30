@@ -288,7 +288,7 @@ function degreeDataPropResolverService(row = {}) {
        * Checks if a time period is current or future academic year
        * @param {string} timePeriod - Format: "2526" represents 2025-2026
        */
-      const isValidTimePeriod = (timePeriod) => {
+      const isValidTimePeriod = timePeriod => {
         if (!timePeriod || timePeriod.length !== 4) return false;
         const currentYear = new Date().getFullYear();
         const periodStartYear = parseInt(`20${timePeriod.substring(0, 2)}`, 10);
@@ -302,20 +302,27 @@ function degreeDataPropResolverService(row = {}) {
         subplansArr.some(sp => sp.acadSubPlanCode === acadSubPlanCode);
 
       const isAlreadyAdded = (majorMap, addedMaps) =>
-        addedMaps.some(added => added.acadSubPlanCode === majorMap.acadSubPlanCode);
+        addedMaps.some(
+          added => added.acadSubPlanCode === majorMap.acadSubPlanCode
+        );
 
       const validSubplans = subplans.filter(
         sp => sp.timePeriod && isValidTimePeriod(sp.timePeriod)
       );
 
       const hasDefaultOrMatching = majorMapSubplans.some(
-        map => map.defaultFlag || hasSubplanWithCode(subplans, map.acadSubPlanCode)
+        map =>
+          map.defaultFlag || hasSubplanWithCode(subplans, map.acadSubPlanCode)
       );
 
       const result = [];
 
       for (const majorMap of majorMapSubplans) {
-        if (majorMap.timePeriod && isValidTimePeriod(majorMap.timePeriod) && !isAlreadyAdded(majorMap, result)) {
+        if (
+          majorMap.timePeriod &&
+          isValidTimePeriod(majorMap.timePeriod) &&
+          !isAlreadyAdded(majorMap, result)
+        ) {
           result.push(majorMap);
           subplans = removeSubplanByCode(subplans, majorMap.acadSubPlanCode);
         }
@@ -342,7 +349,10 @@ function degreeDataPropResolverService(row = {}) {
         if (isAlreadyAdded(majorMap, result)) continue;
 
         const shouldAddDefault = majorMap.defaultFlag;
-        const shouldAddMatching = hasSubplanWithCode(subplans, majorMap.acadSubPlanCode);
+        const shouldAddMatching = hasSubplanWithCode(
+          subplans,
+          majorMap.acadSubPlanCode
+        );
 
         if (shouldAddDefault || shouldAddMatching) {
           subplans = removeSubplanByCode(subplans, majorMap.acadSubPlanCode);

@@ -1,8 +1,8 @@
 import React from 'react';
-import { addons, types, useAddonState, useStorybookApi, useParameter, useChannel, useGlobals } from '@storybook/manager-api';
-import { formatCode } from "./renderToHTML";
-import { AddonPanel } from '@storybook/components';
-import { Heading, Source } from '@storybook/blocks';
+import { addons, types, useAddonState, useStorybookApi, useParameter, useChannel, useGlobals } from 'storybook/manager-api';
+import { formatCode } from "./formatCode";
+import { AddonPanel } from 'storybook/internal/components';
+import { Heading, Source } from '@storybook/addon-docs/blocks';
 
 const ADDON_ID = 'HTML';
 const PANEL_ID = `${ADDON_ID}/panel`;

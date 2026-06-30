@@ -1,3 +1,105 @@
+# [@asu/component-header-footer-v1.4.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.4.2...@asu/component-header-footer-v1.4.3) (2026-05-28)
+
+
+### Bug Fixes
+
+* **component-header-footer:** check undefined ([401b606](https://github.com/asu/asu-unity-stack/commit/401b606413eaf8f150cc4c0be7a0dae0f0d204e1))
+* **component-header-footer:** fix animated header option ([267968e](https://github.com/asu/asu-unity-stack/commit/267968e21fed4285c455ec0ad7604f0b571bd72f))
+
+# [@asu/component-header-footer-v1.4.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.4.1...@asu/component-header-footer-v1.4.2) (2026-05-21)
+
+
+### Bug Fixes
+
+* **app-rfi:** fix errors encountered on stoybook start ([c5b748b](https://github.com/asu/asu-unity-stack/commit/c5b748b32d7ea968db828aa44a5e90aa4bc6b17a))
+* **app-webdir-ui:** fix post-upgrade regressions in app-webdir-ui storybook ([9561344](https://github.com/asu/asu-unity-stack/commit/95613442ef11a2d3572b6daff4e982d9bad6182a))
+* **component-header-footer:** fix nav link doesn't close menu ([f19b0f6](https://github.com/asu/asu-unity-stack/commit/f19b0f6f8085ead94fc7de2065703152a8b9e50e))
+
+# [@asu/component-header-footer-v1.4.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.4.0...@asu/component-header-footer-v1.4.1) (2026-05-12)
+
+
+### Bug Fixes
+
+* **component-header-footer:** fix header dropdown height ([efa0bb7](https://github.com/asu/asu-unity-stack/commit/efa0bb74616f2c206d1c67a6fc836b9d85f2646d))
+
+# [@asu/component-header-footer-v1.4.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.3.3...@asu/component-header-footer-v1.4.0) (2026-04-21)
+
+
+### Bug Fixes
+
+* **component-header-footer:** adjustments ([182fccd](https://github.com/asu/asu-unity-stack/commit/182fccdb353d5bfca18a9699d8afddb637fa2fd8))
+* **component-header-footer:** fix empty data layer ([facd903](https://github.com/asu/asu-unity-stack/commit/facd90300ad51f070014f2606794dbe3c5fbd1e1))
+* **component-header-footer:** fix page shift ([8444aa6](https://github.com/asu/asu-unity-stack/commit/8444aa6073cab3f739d8298dacd8f0038d3643af))
+* **component-header-footer:** fix partner mobile ([c53bafb](https://github.com/asu/asu-unity-stack/commit/c53bafb3900a273634e8a20ab250827e4a4eaca2))
+* **component-header-footer:** fix style regression ([a5c7381](https://github.com/asu/asu-unity-stack/commit/a5c738164cc80de0902e57b8fae3a896d3813313))
+* remove merge syntax remnant ([bdac62c](https://github.com/asu/asu-unity-stack/commit/bdac62cc63f10489dc2040fd821867cc70ba177f))
+
+
+### Features
+
+* **component-header-footer:** add style that was removed ([c5e43a9](https://github.com/asu/asu-unity-stack/commit/c5e43a921be22cbc36e62732d934cafa5bd0f90b))
+* **component-header-footer:** adjust dropdown open/close and height ([d98eb0d](https://github.com/asu/asu-unity-stack/commit/d98eb0d3b6ed0dfcb940684b42771b9fd3205a6b))
+* **component-header-footer:** adjustments ([3b629b1](https://github.com/asu/asu-unity-stack/commit/3b629b16256bf02fe840b1dcdb18488023134047))
+* **component-header-footer:** adjustments ([d85bde9](https://github.com/asu/asu-unity-stack/commit/d85bde9171ebcf69ae29c7c4ba7823339f210473))
+* **component-header-footer:** mobile styles ([1b096e5](https://github.com/asu/asu-unity-stack/commit/1b096e5aab37da7a4d8d672077e3612a9611aa95))
+
+# [@asu/component-header-footer-v1.3.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.3.2...@asu/component-header-footer-v1.3.3) (2026-04-02)
+
+
+### Bug Fixes
+
+* **component-header-footer:** add search landmark to header for accessibility ([b08eb08](https://github.com/asu/asu-unity-stack/commit/b08eb08cd77deded61eab19304e121a34d045a59))
+
+# [@asu/component-header-footer-v1.3.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.3.1...@asu/component-header-footer-v1.3.2) (2026-03-04)
+
+
+### Bug Fixes
+
+* **component-header-footer:** fix for partner header version ([baec98e](https://github.com/asu/asu-unity-stack/commit/baec98e00b6ce53252e8b611f832a9fcd3c38f2d))
+
+# [@asu/component-header-footer-v1.3.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.3.0...@asu/component-header-footer-v1.3.1) (2026-02-25)
+
+
+### Bug Fixes
+
+* **component-header-footer:** fix universal nav position on mobile ([#1636](https://github.com/asu/asu-unity-stack/issues/1636)) ([100baeb](https://github.com/asu/asu-unity-stack/commit/100baeb582e690903de771a05aa47ac4e1b3e16e))
+
+# [@asu/component-header-footer-v1.3.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.2.1...@asu/component-header-footer-v1.3.0) (2026-02-19)
+
+
+### Features
+
+* **component-header-footer:** add unique header prefix to classes ([d94b22a](https://github.com/asu/asu-unity-stack/commit/d94b22ae3ccceeaafc07283484bba073ff23a37f))
+
+# [@asu/component-header-footer-v1.2.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.2.0...@asu/component-header-footer-v1.2.1) (2026-02-12)
+
+
+### Bug Fixes
+
+* **component-header-footer:** fix header styling issues ([d4bc678](https://github.com/asu/asu-unity-stack/commit/d4bc6781f62aec417fd32de2f06233aa45a1f3bb))
+* **component-header-footer:** update header issue and readd scroll behavior ([321b810](https://github.com/asu/asu-unity-stack/commit/321b8101629c24ae1a6aeeeff29678eb48e7a14d))
+
+# [@asu/component-header-footer-v1.2.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.1.3...@asu/component-header-footer-v1.2.0) (2026-02-10)
+
+
+### Bug Fixes
+
+* **component-header-footer:** implement PR suggestions ([e1c4b83](https://github.com/asu/asu-unity-stack/commit/e1c4b837cf340a843a0e05f43423419e23ff4b48))
+* **component-header-footer:** update new header styles ([7eb9e7b](https://github.com/asu/asu-unity-stack/commit/7eb9e7b05a3177eb63214f58a7ce9e3d48654f2f))
+
+
+### Features
+
+* **component-header-footer:** update header to new style ([0b4df9c](https://github.com/asu/asu-unity-stack/commit/0b4df9ce8d41b89ea933a131e2b57a694c0bac3e))
+
+# [@asu/component-header-footer-v1.1.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.1.2...@asu/component-header-footer-v1.1.3) (2025-12-30)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** refactor defaultProps to use JS default params ([d6ac389](https://github.com/asu/asu-unity-stack/commit/d6ac389ab932f0def44c84b33c5bd5fcf7fb2b4d))
+* **component-footer:** changes suggested by copilot ([3a6c1af](https://github.com/asu/asu-unity-stack/commit/3a6c1af48ee5654c110420f28a082feaeb66a9ca))
+
 # [@asu/component-header-footer-v1.1.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.1.1...@asu/component-header-footer-v1.1.2) (2025-10-30)
 
 

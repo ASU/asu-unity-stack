@@ -80,3 +80,4 @@ export const Interest1 = ({ gaData }) => {
 };
 
 Interest1.propTypes = { gaData: gaEventPropTypes };
+Interest1.gaName = "area_of_interest";

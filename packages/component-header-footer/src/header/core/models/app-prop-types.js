@@ -68,9 +68,20 @@ const HeaderPropTypes = {
   site: PropTypes.string,
   renderDiv: PropTypes.oneOf(["true", "false"]),
 };
+const HeaderContextPropTypes = {
+  ...HeaderPropTypes,
+  headerTop: PropTypes.number,
+  headerHeight: PropTypes.number,
+  itemOpened: PropTypes.number,
+  setItemOpened: PropTypes.func,
+  mobileMenuOpen: PropTypes.bool,
+  setMobileMenuOpen: PropTypes.func,
+  singlePageAppReset: PropTypes.func,
+};
 
 export {
   HeaderPropTypes,
+  HeaderContextPropTypes,
   LoginPropTypes,
   LogoPropTypes,
   TitlePropTypes,

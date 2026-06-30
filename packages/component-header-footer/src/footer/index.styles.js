@@ -388,7 +388,7 @@ const StyledFooter = styled.footer`
           img {
             max-width: 100%;
           }
-    }
+        }
       }
     }
   }
@@ -492,8 +492,6 @@ const StyledFooter = styled.footer`
       padding-left: 2rem;
       padding-right: 2rem;
     }
-
-
   }
 
   @media (min-width: 576px) {

@@ -1,12 +1,13 @@
 // @ts-check
 import { trackReactComponent } from "@asu/shared";
-import React, { useEffect, useRef } from "react";
+import { throttle } from "@asu/shared/utils/timers";
+import React, { useEffect, useRef, useState } from "react";
 
 import { HeaderMain } from "./components/HeaderMain";
 import { AppContextProvider } from "./core/context/app-context";
 import { HeaderPropTypes } from "./core/models/app-prop-types";
 import { tryAddActivePage } from "./core/utils/helpers/active-page";
-import { Header, HeaderDiv } from "./header.styles";
+import { Header, HeaderDiv, GlobalStyle } from "./header.styles";
 
 /**
  * @typedef {import("./core/models/types").HeaderProps} HeaderProps
@@ -35,23 +36,59 @@ const ASUHeader = ({
   onLogoutClick,
   buttons,
   breakpoint = "Xl",
-  animateTitle,
+  animateTitle = false,
   expandOnHover = false,
   mobileNavTree: rawMobileNavTree,
   searchUrl,
   site,
   renderDiv = "false",
 }) => {
-  const navTree = tryAddActivePage(rawNavTree);
-  const mobileNavTree = tryAddActivePage(rawMobileNavTree);
+  const navTree = tryAddActivePage(rawNavTree) || [];
+  const mobileNavTree = tryAddActivePage(rawMobileNavTree) || [];
 
   /**
    * Header reference
    * @type {React.MutableRefObject<HTMLDivElement?>}
    */
   const headerRef = useRef(null);
+  const mobileMenuToggleRef = useRef(null);
+
+  const [itemOpened, setStateItemOpened] = useState(undefined);
+  const [mobileMenuOpen, setStateMobileMenuOpen] = useState(false);
+  const [headerHeight, setHeaderHeight] = useState(150);
+  const [headerTop, setHeaderTop] = useState(0);
+
+  const setItemOpened = (openState = undefined) => {
+    setStateItemOpened(openState);
+  };
+
+  const setMobileMenuOpen = (openState = false) => {
+    if (
+      mobileMenuToggleRef?.current &&
+      typeof mobileMenuToggleRef.current.focus === "function"
+    ) {
+      mobileMenuToggleRef.current.focus();
+    }
+
+    setStateMobileMenuOpen(openState);
+  };
+
+  const singlePageAppReset = () => {
+    if (headerRef?.current) {
+      headerRef.current.focus();
+      if (typeof window !== "undefined") {
+        window.scrollTo(0, 0);
+      }
+    }
+    setMobileMenuOpen();
+    setItemOpened();
+    if (typeof document !== "undefined") {
+      document.body.style.overflow = "unset";
+    }
+  };
 
   const handleWindowScroll = () => {
+    if (typeof window === "undefined") return;
     const curPos = window.scrollY;
     if (!headerRef?.current) return;
     if (curPos > headerRef.current.getBoundingClientRect().top) {
@@ -59,6 +96,9 @@ const ASUHeader = ({
     } else {
       headerRef.current.classList.remove("scrolled");
     }
+
+    setHeaderTop(headerRef.current.getBoundingClientRect().top);
+    setHeaderHeight(headerRef.current.getBoundingClientRect().bottom);
   };
 
   useEffect(() => {
@@ -81,8 +121,21 @@ const ASUHeader = ({
   }, []);
 
   useEffect(() => {
-    window?.addEventListener("scroll", handleWindowScroll);
-    return () => window.removeEventListener("scroll", handleWindowScroll);
+    if (headerRef?.current) {
+      setHeaderHeight(headerRef.current.getBoundingClientRect().bottom);
+      setHeaderTop(headerRef.current.getBoundingClientRect().top);
+    }
+  }, [headerRef, mobileMenuOpen]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return undefined;
+
+    const throttledScroll = () => throttle(handleWindowScroll, 100);
+    window.addEventListener("scroll", throttledScroll);
+
+    return () => {
+      window.removeEventListener("scroll", throttledScroll);
+    };
   }, []);
 
   const renderHeader = () => {
@@ -90,7 +143,7 @@ const ASUHeader = ({
     const Wrapper = renderDiv === "true" ? HeaderDiv : Header;
 
     return (
-      <Wrapper id="asuHeader" ref={headerRef} breakpoint={breakpoint}>
+      <Wrapper id="asuHeader" breakpoint={breakpoint} ref={headerRef}>
         <HeaderMain />
       </Wrapper>
     );
@@ -120,9 +173,18 @@ const ASUHeader = ({
         mobileNavTree,
         hasNavigation: !!navTree?.length || !!mobileNavTree?.length,
         searchUrl,
+        headerTop,
+        headerHeight,
+        itemOpened,
+        setItemOpened,
+        mobileMenuOpen,
+        setMobileMenuOpen,
+        singlePageAppReset,
+        mobileMenuToggleRef,
         site,
       }}
     >
+      <GlobalStyle />
       {renderHeader()}
     </AppContextProvider>
   );

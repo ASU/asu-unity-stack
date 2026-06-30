@@ -22,21 +22,71 @@ export default {
   },
 };
 
+const disabledText = "Disabled";
+const enabledText = "Enabled";
+
+function handlePageUnload(event) {
+  event.preventDefault();
+  event.returnValue = "";
+}
+
+function togglePageUnloadWarning(e) {
+  if (e.target.textContent === disabledText) {
+    window.addEventListener("beforeunload", handlePageUnload);
+    e.target.textContent = enabledText;
+  } else {
+    window.removeEventListener("beforeunload", handlePageUnload);
+    e.target.textContent = disabledText;
+  }
+}
+
 const Template = args => (
   <>
     <ASUHeader {...args} />
     <div
+      id="skip-to-content"
       style={{
         width: "100%",
         height: "200vh",
         background: "#f0f0f0",
         paddingTop: 40,
         marginTop: 140,
+        fontFamily: "Arial",
       }}
     >
-      <h1 style={{ textAlign: "center", fontFamily: "Arial" }}>
-        Scroll section
+      <h1 style={{ textAlign: "center" }}>
+        Scroll section to test header scroll behavior{" "}
+        {/* This button adds a page unload warning so clicking links will not navigate away. It also serves as a focus test for accessibility. */}
       </h1>
+      <div
+        style={{
+          maxWidth: "1200px",
+          width: "calc(100% - 4rem)",
+          padding: "2rem",
+          textAlign: "center",
+          margin: "2rem auto",
+        }}
+      >
+        <h2>Add Page Unload Warning</h2>
+        <p>
+          This button toggles a page unload warning that prompts the user to
+          confirm before leaving the page. This is useful for testing the
+          header's behavior when there is a potential for unintentionally
+          navigating away from the page.
+        </p>
+        <p>
+          This button also serves as a focusable element for testing
+          accessibility.
+        </p>
+        <p>
+          <Button
+            color="dark"
+            tabIndex={0}
+            onClick={togglePageUnloadWarning}
+            text={disabledText}
+          />
+        </p>
+      </div>
     </div>
   </>
 );
@@ -221,4 +271,5 @@ AnimatedTitle.args = {
   breakpoint: "Xl",
   searchUrl: "https://search.asu.edu/search",
   site: "subdomain",
+  animateTitle: true,
 };

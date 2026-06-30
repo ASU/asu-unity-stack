@@ -14,9 +14,17 @@ function initAnchorMenu() {
   const globalHeaderId = HEADER_IDS.find(id => document.getElementById(id));
   const globalHeader = document.getElementById(globalHeaderId);
   const navbar = document.getElementById("uds-anchor-menu");
+  if (!navbar || !globalHeader) {
+    return;
+  }
+  if (Array.from(navbar.classList).some(cls => cls.startsWith("sc-"))) {
+    return;
+  }
+
   const navbarOriginalParent = navbar.parentNode;
   const navbarOriginalNextSibling = navbar.nextSibling;
-  const anchors = navbar.getElementsByClassName("nav-link");
+
+  const anchors = Array.from(navbar.getElementsByClassName("nav-link"));
   const anchorTargets = new Map();
   let previousScrollPosition = window.scrollY;
   let isNavbarAttached = false;
@@ -36,11 +44,16 @@ function initAnchorMenu() {
     window.scrollY -
     combinedToolbarHeightOffset;
 
-  // Cache the anchor target elements
   for (let anchor of anchors) {
-    const targetId = anchor.getAttribute("href").replace("#", "");
+    const href = anchor.getAttribute("href");
+    if (!href || !href.startsWith("#")) {
+      continue;
+    }
+    const targetId = href.replace("#", "");
     const target = document.getElementById(targetId);
-    anchorTargets.set(anchor, target);
+    if (target) {
+      anchorTargets.set(anchor, target);
+    }
   }
 
   const shouldAttachNavbarOnLoad = window.scrollY > navbarInitialTop;
@@ -54,11 +67,16 @@ function initAnchorMenu() {
    * Calculates the percentage of an element that is visible in the viewport.
    *
    * @param {Element} el The element to calculate the visible percentage for.
+   * @param {number} depth Recursion depth counter to prevent infinite loops.
    * @return {number} The percentage of the element that is visible in the viewport.
    */
-  function calculateVisiblePercentage(el) {
+  function calculateVisiblePercentage(el, depth = 0) {
+    if (!el || depth > 10) {
+      return 0;
+    }
+
     if (el.offsetHeight === 0 || el.offsetWidth === 0) {
-      return calculateVisiblePercentage(el.parentElement);
+      return calculateVisiblePercentage(el.parentElement, depth + 1);
     }
     const rect = el.getBoundingClientRect();
     const windowHeight =
@@ -89,24 +107,32 @@ function initAnchorMenu() {
     let mostVisibleElementId = null;
 
     // Find the element with highest visibility
-    Array.from(anchors).forEach(anchor => {
-      let elementId = anchor.getAttribute("href").replace("#", "");
-      let el = document.getElementById(elementId);
-      const visiblePercentage = calculateVisiblePercentage(el);
+    anchors.forEach(anchor => {
+      const target = anchorTargets.get(anchor);
+      if (!target) {
+        return;
+      }
+
+      const visiblePercentage = calculateVisiblePercentage(target);
       if (visiblePercentage > 0 && visiblePercentage > maxVisibility) {
         maxVisibility = visiblePercentage;
-        mostVisibleElementId = el.id;
+        mostVisibleElementId = target.id;
       }
     });
 
     // Update active class if we found a visible element
     if (mostVisibleElementId) {
-      document
-        .querySelector('[href="#' + mostVisibleElementId + '"]')
-        .classList.add("active");
+      const activeAnchor = document.querySelector(
+        '[href="#' + mostVisibleElementId + '"]'
+      );
+      if (activeAnchor) {
+        activeAnchor.classList.add("active");
+      }
+
+      // Remove active class from all other nav links in the navbar
       navbar
         .querySelectorAll(
-          `nav > a.nav-link:not([href="#` + mostVisibleElementId + '"])'
+          'a.nav-link:not([href="#' + mostVisibleElementId + '"])'
         )
         .forEach(function (e) {
           e.classList.remove("active");
@@ -147,21 +173,53 @@ function initAnchorMenu() {
     previousScrollPosition = window.scrollY;
   };
 
-  window.addEventListener(
-    "scroll",
-    () => throttle(scrollHandlerLogic, SCROLL_DELAY),
-    { passive: true }
-  );
+  let throttledScrollHandler;
+  const createThrottledHandler = () => {
+    let isThrottled = false;
+    return () => {
+      if (isThrottled) return;
+      isThrottled = true;
+      scrollHandlerLogic();
+      setTimeout(() => {
+        isThrottled = false;
+      }, SCROLL_DELAY);
+    };
+  };
 
-  // Set click event of anchors
+  throttledScrollHandler = createThrottledHandler();
+
+  window.addEventListener("scroll", throttledScrollHandler, { passive: true });
+
+  // Set click event handlers for all valid anchors
+  // Only anchors with valid targets were added to anchorTargets Map
   for (let [anchor, anchorTarget] of anchorTargets) {
     anchor.addEventListener("click", function (e) {
       e.preventDefault();
 
-      // Get current viewport height and calculate the 1/4 position so that the
-      // top of section is visible when you click on the anchor.
+      if (!anchorTarget || !document.body.contains(anchorTarget)) {
+        console.warn("Anchor target no longer exists in DOM"); // This should be rare but if the target element has been removed from the DOM, this will make debuggin easier in webspark sites
+        return;
+      }
+
+      // For the first anchor item, skip scrolling if the section top is
+      // already clearly visible in the viewport (above the midpoint).
+      const isFirstAnchor = anchor === anchors[0];
+      if (isFirstAnchor) {
+        const headerBottom = globalHeader.getBoundingClientRect().bottom;
+        const navbarHeight = navbar.offsetHeight;
+        const topOffset = headerBottom + navbarHeight;
+        const targetTop = anchorTarget.getBoundingClientRect().top;
+        const viewportMid = window.innerHeight / 2;
+
+        if (targetTop >= topOffset && targetTop <= viewportMid) {
+          history.replaceState(null, "", anchor.getAttribute("href"));
+          moveFocusToTarget(anchorTarget);
+          return;
+        }
+      }
+
       const viewportHeight = window.innerHeight;
-      const targetQuarterPosition = Math.round(viewportHeight * 0.25);
+      const targetQuarterPosition = Math.round(viewportHeight * 0.35); // 35% was determined to be a good position for the section top after testing different offsets, including centering the section in the viewport. Can work in wordpress or any other platform where there are admin toolbars
 
       const targetAbsoluteTop =
         anchorTarget.getBoundingClientRect().top + window.scrollY;
@@ -181,7 +239,33 @@ function initAnchorMenu() {
       }
 
       e.target.classList.add("active");
+
+      const targetHash = anchor.getAttribute("href");
+      if (targetHash) {
+        history.replaceState(null, "", targetHash);
+      }
+
+      // Move focus to the target section so keyboard users can Tab
+      // into its content (WCAG 2.4.3 Focus Order).
+      moveFocusToTarget(anchorTarget);
     });
+  }
+
+  /**
+   * Moves keyboard focus to the anchor target section.
+   * Adds tabindex="-1" if needed so the element is programmatically
+   * focusable without entering the natural tab order.
+   *
+   * fixes
+   * WCAG 2.4.3 Focus Order (Level A) — focus sequence doesn't match visual/logical order
+   * WCAG 2.1.1 Keyboard (Level A) — functionality isn't fully keyboard operable
+   */
+  function moveFocusToTarget(target) {
+    if (!target.hasAttribute("tabindex")) {
+      target.setAttribute("tabindex", "-1");
+      target.style.outline = "none";
+    }
+    target.focus({ preventScroll: true });
   }
 }
 

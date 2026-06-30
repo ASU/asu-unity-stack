@@ -1,12 +1,15 @@
 // @ts-check
 import { trackGAEvent } from "@asu/shared";
-import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useRef, useEffect } from "react";
+import { Button } from "../../Button";
 
 import { useAppContext } from "../../../core/context/app-context";
+import { CLASS_NAMES } from "../../../core/constants/classNames";
 import { useIsMobile } from "../../../core/hooks/isMobile";
 import { SearchWrapper } from "./index.styles";
+import { SearchInput } from "./SearchInput";
 
 const SEARCH_GA_EVENT = {
   event: "search",
@@ -18,17 +21,26 @@ const SEARCH_GA_EVENT = {
 };
 
 const Search = () => {
-  const { breakpoint, searchUrl, site } = useAppContext();
+  const { breakpoint, searchUrl = "", site = "" } = useAppContext();
   const isMobile = useIsMobile(breakpoint);
+  /** @type {React.MutableRefObject<HTMLInputElement | null>} */
   const inputRef = useRef(null);
   const [open, setOpen] = useState(false);
+  const [hasInputValue, setHasInputValue] = useState(false);
 
   useEffect(() => {
-    if (open) inputRef.current.focus();
+    if (open && typeof inputRef?.current?.focus === "function") {
+      inputRef.current.focus();
+    }
   }, [open]);
 
+  /**
+   *
+   * @param {React.FormEvent<HTMLFormElement>} e
+   */
   const handleSearch = e => {
-    const form = e.target;
+    /** @type {HTMLFormElement} */
+    const form = e?.currentTarget;
     e.preventDefault();
     /**
      * Issue: Callback not currently available
@@ -42,12 +54,18 @@ const Search = () => {
      *
      * TODO: UDS-1612
      */
+    const searchInput =
+      form && form.elements
+        ? /** @type {HTMLInputElement|null} */ (form.elements.namedItem("q"))
+        : null;
     trackGAEvent({
       ...SEARCH_GA_EVENT,
-      text: e.target.elements.q.value,
+      text: searchInput ? searchInput.value : "",
     });
     setTimeout(() => {
-      form.submit();
+      if (typeof form?.submit === "function") {
+        form.submit();
+      }
     }, 100);
   };
 
@@ -66,79 +84,72 @@ const Search = () => {
     });
   };
   return (
-    <SearchWrapper
-      // @ts-ignore
-      breakpoint={breakpoint}
-      action={searchUrl}
-      onSubmit={handleSearch}
-      method="get"
-      name="gs"
-      className={open ? "open-search" : ""}
-      data-testid="universal-nav-search-form"
-    >
-      {!isMobile ? (
-        <>
-          <button
-            type="button"
-            aria-label="Search asu.edu"
-            onClick={handleChangeVisibility}
-            className="search-button"
-            data-testid="search-button"
-          >
-            <FontAwesomeIcon icon={faSearch} />
-          </button>
-          {open && (
-            <>
-              <input
-                ref={inputRef}
-                className="form-control"
-                type="search"
-                name="q"
-                aria-labelledby="header-top-search"
-                placeholder="Search asu.edu"
-                required
-              />
+    <search>
+      <SearchWrapper
+        // @ts-ignore
+        breakpoint={breakpoint}
+        action={searchUrl}
+        onSubmit={handleSearch}
+        method="get"
+        name="gs"
+        className={open ? CLASS_NAMES.OPEN_SEARCH : ""}
+        data-testid="universal-nav-search-form"
+        role="search"
+      >
+        {!isMobile ? (
+          <>
+            {!open && (
               <button
                 type="button"
                 aria-label="Search asu.edu"
                 onClick={handleChangeVisibility}
-                className="close-search"
-                data-testid="close-search"
+                className={CLASS_NAMES.SEARCH_BUTTON}
+                data-testid="search-button"
               >
-                <FontAwesomeIcon icon={faTimes} />
+                <span>Search</span>
+                <FontAwesomeIcon icon={faSearch} />
               </button>
-            </>
-          )}
-        </>
-      ) : (
-        <label>
-          <FontAwesomeIcon icon={faSearch} />
-          <input
-            ref={inputRef}
-            className="form-control"
-            type="search"
-            name="q"
-            aria-labelledby="header-top-search"
-            placeholder="Search asu.edu"
-            required
-            onChange={e =>
-              trackGAEvent({
-                ...SEARCH_GA_EVENT,
-                text: e.target.value,
-              })
-            }
-          />
-        </label>
-      )}
-      <input name="url_host" value={site} type="hidden" />
-      <input name="site" value="default_collection" type="hidden" />
-      <input name="sort" value="date:D:L:d1" type="hidden" />
-      <input name="output" value="xml_no_dtd" type="hidden" />
-      <input name="ie" value="UTF-8" type="hidden" />
-      <input name="oe" value="UTF-8" type="hidden" />
-      <input name="client" value="asu_frontend" type="hidden" />
-      <input name="proxystylesheet" value="asu_frontend" type="hidden" />
-    </SearchWrapper>
+            )}
+            {open && (
+              <>
+                <SearchInput
+                  inputRef={inputRef}
+                  hasInputValue={hasInputValue}
+                  setHasInputValue={setHasInputValue}
+                  isMobile={isMobile}
+                  onBlur={() => {
+                    if (!hasInputValue) setOpen(false);
+                  }}
+                />
+                <Button
+                  color="dark"
+                  text="Search"
+                  as="button"
+                  classes={CLASS_NAMES.SUBMIT_BUTTON}
+                />
+              </>
+            )}
+          </>
+        ) : (
+          <label>
+            <SearchInput
+              inputRef={inputRef}
+              hasInputValue={hasInputValue}
+              setHasInputValue={setHasInputValue}
+              isMobile={isMobile}
+            />
+          </label>
+        )}
+        <input name="url_host" value={site} type="hidden" />
+        <input name="site" value="default_collection" type="hidden" />
+        <input name="sort" value="date:D:L:d1" type="hidden" />
+        <input name="output" value="xml_no_dtd" type="hidden" />
+        <input name="ie" value="UTF-8" type="hidden" />
+        <input name="oe" value="UTF-8" type="hidden" />
+        <input name="client" value="asu_frontend" type="hidden" />
+        <input name="proxystylesheet" value="asu_frontend" type="hidden" />
+      </SearchWrapper>
+    </search>
   );
 };
 

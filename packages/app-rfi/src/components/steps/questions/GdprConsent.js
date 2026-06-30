@@ -81,3 +81,4 @@ export const GdprConsent = ({ gaData }) => {
 };
 
 GdprConsent.propTypes = { gaData: gaEventPropTypes };
+GdprConsent.gaName = "gdpr_consent";

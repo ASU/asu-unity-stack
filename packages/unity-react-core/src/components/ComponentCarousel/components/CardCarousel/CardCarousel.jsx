@@ -68,6 +68,7 @@ const htmlTemplate = (
       linkLabel={linkLabel}
       linkUrl={linkUrl || buttons?.[0]?.href}
       tags={tags}
+      cardLink={linkUrl || buttons?.[0]?.href}
     />
   ),
 });

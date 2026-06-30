@@ -2,12 +2,13 @@ import React from "react";
 import vertlogo from "./arizona-state-university-logo-vertical.png";
 import horizlogo from "./arizona-state-university-logo.png";
 import starbucksLogo from "./asu-starbucks.png";
+import menuSearchIcon from "../../../public/img/custom-mobile-header-icon/menu-search-icon.png";
 
 export const Basic = () => (
   <>
     <header
       id="asu-header"
-      className="fixed-top"
+      className="fixed-top uds-header-v2"
       data-elastic-exclude="data-elastic-exclude"
     >
       <div id="wrapper-header-top">
@@ -52,33 +53,42 @@ export const Basic = () => (
                   Colleges and Schools
                 </a>
                 <div className="nav-link login-status">
-                  <a className="name" href="#">
-                    Sparky
-                  </a>
                   <a
-                    className="signout"
+                    className="signin"
                     href="#"
                     data-ga-header-section="topbar"
-                    data-ga-header="sign out"
+                    data-ga-header="sign in"
                   >
-                    Sign Out
+                    Sign In
                   </a>
                 </div>
                 <form
-                  className="form-inline"
+                  className="form-inline header-top-search"
                   action="https://search.asu.edu/search"
                   method="get"
                   name="gs"
+                  role="search"
                 >
+                  <button
+                    type="button"
+                    className="search-button"
+                    aria-label="Search asu.edu"
+                    data-toggle="header-search"
+                  >
+                    <span>Search</span>
+                    <span className="fas fa-search"></span>
+                  </button>
                   <input
-                    className="form-control"
+                    className="form-control search-input"
                     type="search"
                     name="q"
-                    aria-labelledby="header-top-search"
-                    required
+                    placeholder="Search asu.edu"
+                    aria-label="Search asu.edu"
                     data-ga-input-header-event="search"
                   />
-                  <label id="header-top-search">Search asu.edu</label>
+                  <button type="submit" className="btn btn-dark search-submit">
+                    Search
+                  </button>
                   <input name="site" value="default_collection" type="hidden" />
                   <input name="sort" value="date:D:L:d1" type="hidden" />
                   <input name="output" value="xml_no_dtd" type="hidden" />
@@ -104,7 +114,7 @@ export const Basic = () => (
                 <div className="container-fluid">
                   <a
                     className="navbar-brand"
-                    href="#"
+                    href="https://www.asu.edu"
                     data-ga-header="asu logo"
                   >
                     <img
@@ -138,27 +148,77 @@ export const Basic = () => (
                     data-ga-header-type="click"
                     data-ga-header="menu button label"
                   >
-                    <span
-                      title="Open mobile menu"
-                      className="fa fa-bars"
-                      alt=""
-                    ></span>
+                    <img
+                      src={menuSearchIcon}
+                      alt="Menu and Search Icon"
+                      className="menu-search-icon"
+                    />
                     <span title="Close mobile menu" className="fa-stack">
-                      <i className="fa fa-circle fa-stack-2x" alt=""></i>
                       <i className="fa fa-times fa-stack-1x" alt=""></i>
                     </span>
                   </button>
                   <div className="navbar-container">
-                    <div
-                      className="title subdomain-name"
-                      data-ga-header="Subdomain name"
-                    >
-                      Subdomain name
+                    <div className="title">
+                      <a
+                        href="#"
+                        className="unit-name"
+                        data-ga-header="Parent unit name"
+                      >
+                        Parent unit name
+                      </a>
+                      <a
+                        href="#"
+                        className="subdomain-name"
+                        data-ga-header="Subdomain name"
+                      >
+                        Subdomain name
+                      </a>
                     </div>
                     <div
-                      className="collapse navbar-collapse w-100 justify-content-between"
+                      className="collapse navbar-collapse w-100"
                       id="menubar"
                     >
+                      <form
+                        className="form-inline navbar-mobile-search"
+                        action="https://search.asu.edu/search"
+                        method="get"
+                        name="gs"
+                      >
+                        <span className="fas fa-search mobile-search-icon"></span>
+                        <input
+                          className="form-control"
+                          type="search"
+                          name="q"
+                          aria-label="Search asu.edu"
+                          placeholder="Search asu.edu"
+                        />
+                        <button
+                          type="submit"
+                          className="mobile-search-submit"
+                          aria-label="Submit search"
+                        >
+                          <span className="fas fa-search"></span>
+                        </button>
+                        <input
+                          name="site"
+                          value="default_collection"
+                          type="hidden"
+                        />
+                        <input name="sort" value="date:D:L:d1" type="hidden" />
+                        <input name="output" value="xml_no_dtd" type="hidden" />
+                        <input name="ie" value="UTF-8" type="hidden" />
+                        <input name="oe" value="UTF-8" type="hidden" />
+                        <input
+                          name="client"
+                          value="asu_frontend"
+                          type="hidden"
+                        />
+                        <input
+                          name="proxystylesheet"
+                          value="asu_frontend"
+                          type="hidden"
+                        />
+                      </form>
                       <div className="header-content-container">
                         <nav className="navbar-nav" aria-label="Site">
                           <a
@@ -179,20 +239,6 @@ export const Basic = () => (
                               alt=""
                             ></span>
                           </a>
-                          <a
-                            className="nav-link"
-                            href="#"
-                            data-ga-header="Link option 1"
-                          >
-                            Link option 1
-                          </a>
-                          <a
-                            className="nav-link"
-                            href="#"
-                            data-ga-header="Link option 2"
-                          >
-                            Link option 2
-                          </a>
                           <div className="nav-item dropdown header-dropdown-1">
                             <a
                               className="nav-link"
@@ -202,102 +248,421 @@ export const Basic = () => (
                               data-bs-toggle="dropdown"
                               aria-haspopup="true"
                               aria-expanded="false"
-                              data-ga-header="Link option 3"
+                              data-ga-header="Link option 1"
                               data-ga-header-event="collapse"
                               data-ga-header-type="click"
                             >
-                              Link option 3
+                              Link option 1
                               <span
                                 className="fa fa-chevron-down"
                                 alt=""
                               ></span>
                             </a>
-                            <div
-                              className="dropdown-menu dropdown-columns"
-                              aria-labelledby="dropdown-one-col"
-                            >
+                            <div className="dropdown-menu dropdown-columns">
                               <div className="dropdown-col">
                                 <a
                                   className="dropdown-item"
-                                  href="#"
-                                  data-ga-header="Sublink 1"
-                                  data-ga-header-component="link option 3"
+                                  href="https://www.asu.edu"
+                                  data-ga-header="sublink 1"
+                                  data-ga-header-component="link option 1"
                                 >
                                   Sublink 1
                                 </a>
                                 <a
                                   className="dropdown-item"
-                                  href="#"
-                                  data-ga-header="Sublink 2"
-                                  data-ga-header-component="link option 3"
+                                  href="https://www.asu.edu"
+                                  data-ga-header="sublink 2"
+                                  data-ga-header-component="link option 1"
                                 >
                                   Sublink 2
                                 </a>
                                 <a
                                   className="dropdown-item"
-                                  href="#"
-                                  data-ga-header="Sublink 3"
-                                  data-ga-header-component="link option 3"
+                                  href="https://www.asu.edu"
+                                  data-ga-header="sublink 3"
+                                  data-ga-header-component="link option 1"
                                 >
                                   Sublink 3
+                                </a>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://www.asu.edu"
+                                  data-ga-header="sublink 4"
+                                  data-ga-header-component="link option 1"
+                                >
+                                  Sublink 4
+                                </a>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://www.asu.edu"
+                                  data-ga-header="sublink 5"
+                                  data-ga-header-component="link option 1"
+                                >
+                                  Sublink 5
+                                </a>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://www.asu.edu"
+                                  data-ga-header="sublink 6"
+                                  data-ga-header-component="link option 1"
+                                >
+                                  Sublink 6
+                                </a>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://www.asu.edu"
+                                  data-ga-header="sublink 7"
+                                  data-ga-header-component="link option 1"
+                                >
+                                  Sublink 7
+                                </a>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://www.asu.edu"
+                                  data-ga-header="sublink 8"
+                                  data-ga-header-component="link option 1"
+                                >
+                                  Sublink 8
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="nav-item dropdown header-dropdown-2">
+                            <a
+                              className="nav-link"
+                              href="#"
+                              id="dropdown-two-col"
+                              role="button"
+                              data-bs-toggle="dropdown"
+                              aria-haspopup="true"
+                              aria-expanded="false"
+                              data-ga-header="Link option 2"
+                              data-ga-header-event="collapse"
+                              data-ga-header-type="click"
+                            >
+                              Link option 2
+                              <span
+                                className="fa fa-chevron-down"
+                                alt=""
+                              ></span>
+                            </a>
+                            <div className="dropdown-menu dropdown-columns">
+                              <div className="dropdown-col">
+                                <a
+                                  className="dropdown-item"
+                                  href="https://www.asu.edu"
+                                  data-ga-header="sublink 1"
+                                  data-ga-header-component="link option 2"
+                                >
+                                  Sublink 1
+                                </a>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://campus.asu.edu"
+                                  data-ga-header="sublink 2"
+                                  data-ga-header-component="link option 2"
+                                >
+                                  Sublink 2
+                                </a>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://campus.asu.edu"
+                                  data-ga-header="sublink 3"
+                                  data-ga-header-component="link option 2"
+                                >
+                                  Sublink 3
+                                </a>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://campus.asu.edu"
+                                  data-ga-header="sublink 4"
+                                  data-ga-header-component="link option 2"
+                                >
+                                  Sublink 4
+                                </a>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://asuonline.asu.edu/"
+                                  data-ga-header="sublink 5"
+                                  data-ga-header-component="link option 2"
+                                >
+                                  Sublink 5
+                                </a>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://havasu.asu.edu/"
+                                  data-ga-header="sublink 6"
+                                  data-ga-header-component="link option 2"
+                                >
+                                  Sublink 6
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                          <a
+                            className="nav-link"
+                            href="#"
+                            data-ga-header="Link option 3"
+                          >
+                            Link option 3
+                          </a>
+                          <a
+                            className="nav-link"
+                            href="#"
+                            data-ga-header="Link option 4"
+                          >
+                            Link option 4
+                          </a>
+                          <a
+                            className="nav-link"
+                            href="#"
+                            data-ga-header="Link option 5"
+                          >
+                            Link option 5
+                          </a>
+                          <a
+                            className="nav-link"
+                            href="#"
+                            data-ga-header="Link option 6"
+                          >
+                            Link option 6
+                          </a>
+                          <div className="nav-item dropdown header-dropdown-7">
+                            <a
+                              className="nav-link"
+                              href="/"
+                              id="dropdown-seven"
+                              role="button"
+                              data-bs-toggle="dropdown"
+                              aria-haspopup="true"
+                              aria-expanded="false"
+                              data-ga-header="Link option 7"
+                              data-ga-header-event="collapse"
+                              data-ga-header-type="click"
+                            >
+                              Link option 7
+                              <span
+                                className="fa fa-chevron-down"
+                                alt=""
+                              ></span>
+                            </a>
+                            <div className="dropdown-menu dropdown-columns">
+                              <div className="dropdown-col">
+                                <h3>Column One</h3>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://www.asu.edu/"
+                                  data-ga-header="pellentesque ornare"
+                                  data-ga-header-component="link option 7"
+                                >
+                                  Pellentesque ornare
+                                </a>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://www.asu.edu/"
+                                  data-ga-header="curabitur viverra arcu nisl"
+                                  data-ga-header-component="link option 7"
+                                >
+                                  Curabitur viverra arcu nisl
+                                </a>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://www.asu.edu/?feature=athletics"
+                                  data-ga-header="aenean pharetra"
+                                  data-ga-header-component="link option 7"
+                                >
+                                  Aenean pharetra
+                                </a>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://www.asu.edu/?feature=alumni"
+                                  data-ga-header="pellentesque"
+                                  data-ga-header-component="link option 7"
+                                >
+                                  Pellentesque
+                                </a>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://www.asu.edu/?feature=giving"
+                                  data-ga-header="donec sagittis nulla"
+                                  data-ga-header-component="link option 7"
+                                >
+                                  Donec sagittis nulla
+                                </a>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://www.asu.edu/?feature=president"
+                                  data-ga-header="quisque fringilla"
+                                  data-ga-header-component="link option 7"
+                                >
+                                  Quisque fringilla
+                                </a>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://www.asu.edu/about"
+                                  data-ga-header="integer vel gravida lectus"
+                                  data-ga-header-component="link option 7"
+                                >
+                                  Integer vel gravida lectus
+                                </a>
+                              </div>
+                              <div className="dropdown-col">
+                                <h3>Column two</h3>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://www.asu.edu/?feature=academics"
+                                  data-ga-header="nunc in libero odio"
+                                  data-ga-header-component="link option 7"
+                                >
+                                  Nunc in libero odio
+                                </a>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://www.asu.edu/?feature=research"
+                                  data-ga-header="maecenas quam elit"
+                                  data-ga-header-component="link option 7"
+                                >
+                                  Maecenas quam elit
+                                </a>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://www.asu.edu/?feature=academics"
+                                  data-ga-header="ut at vehicula neque"
+                                  data-ga-header-component="link option 7"
+                                >
+                                  Ut at vehicula neque
+                                </a>
+                                <a
+                                  href="https://www.asu.edu/?feature=athletics"
+                                  className="btn btn-sm btn-dark col-btn"
+                                  data-ga-header="sed molestie"
+                                  data-ga-header-component="link option 7"
+                                >
+                                  Sed molestie
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="nav-item dropdown aligned-right header-dropdown-8">
+                            <a
+                              className="nav-link"
+                              href="/"
+                              id="dropdown-eight"
+                              role="button"
+                              data-bs-toggle="dropdown"
+                              aria-haspopup="true"
+                              aria-expanded="false"
+                              data-ga-header="Link option 8"
+                              data-ga-header-event="collapse"
+                              data-ga-header-type="click"
+                            >
+                              Link option 8
+                              <span
+                                className="fa fa-chevron-down"
+                                alt=""
+                              ></span>
+                            </a>
+                            <div className="dropdown-menu dropdown-columns">
+                              <div className="dropdown-col">
+                                <h3>Column One</h3>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://www.asu.edu/"
+                                  data-ga-header="pellentesque ornare"
+                                  data-ga-header-component="link option 8"
+                                >
+                                  Pellentesque ornare
+                                </a>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://www.asu.edu/"
+                                  data-ga-header="curabitur viverra arcu nisl"
+                                  data-ga-header-component="link option 8"
+                                >
+                                  Curabitur viverra arcu nisl
+                                </a>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://www.asu.edu/?feature=athletics"
+                                  data-ga-header="aenean pharetra"
+                                  data-ga-header-component="link option 8"
+                                >
+                                  Aenean pharetra
+                                </a>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://www.asu.edu/?feature=alumni"
+                                  data-ga-header="pellentesque"
+                                  data-ga-header-component="link option 8"
+                                >
+                                  Pellentesque
+                                </a>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://www.asu.edu/?feature=giving"
+                                  data-ga-header="donec sagittis nulla"
+                                  data-ga-header-component="link option 8"
+                                >
+                                  Donec sagittis nulla
+                                </a>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://www.asu.edu/?feature=president"
+                                  data-ga-header="quisque fringilla"
+                                  data-ga-header-component="link option 8"
+                                >
+                                  Quisque fringilla
+                                </a>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://www.asu.edu/about"
+                                  data-ga-header="integer vel gravida lectus"
+                                  data-ga-header-component="link option 8"
+                                >
+                                  Integer vel gravida lectus
+                                </a>
+                              </div>
+                              <div className="dropdown-col">
+                                <h3>Column two</h3>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://www.asu.edu/?feature=academics"
+                                  data-ga-header="nunc in libero odio"
+                                  data-ga-header-component="link option 8"
+                                >
+                                  Nunc in libero odio
+                                </a>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://www.asu.edu/?feature=research"
+                                  data-ga-header="maecenas quam elit"
+                                  data-ga-header-component="link option 8"
+                                >
+                                  Maecenas quam elit
+                                </a>
+                                <a
+                                  className="dropdown-item"
+                                  href="https://www.asu.edu/?feature=academics"
+                                  data-ga-header="ut at vehicula neque"
+                                  data-ga-header-component="link option 8"
+                                >
+                                  Ut at vehicula neque
+                                </a>
+                                <a
+                                  href="https://www.asu.edu/?feature=athletics"
+                                  className="btn btn-sm btn-dark col-btn"
+                                  data-ga-header="sed molestie"
+                                  data-ga-header-component="link option 8"
+                                >
+                                  Sed molestie
                                 </a>
                               </div>
                             </div>
                           </div>
                         </nav>
                         {/* end .navbar-nav */}
-                        <form className="navbar-site-buttons form-inline">
-                          <a
-                            href="#"
-                            className="btn btn-md btn-maroon"
-                            data-ga-header="call to action"
-                          >
-                            Call to action
-                          </a>
-                        </form>
                       </div>
-                      <div className="navbar-mobile-footer pinned">
-                        <form
-                          className="form-inline navbar-mobile-search"
-                          action="https://search.asu.edu/search"
-                          method="get"
-                          name="gs"
-                        >
-                          <input
-                            className="form-control"
-                            type="search"
-                            name="q"
-                            aria-label="Search"
-                            placeholder="Search asu.edu"
-                          />
-                          <input
-                            name="site"
-                            value="default_collection"
-                            type="hidden"
-                          />
-                          <input
-                            name="sort"
-                            value="date:D:L:d1"
-                            type="hidden"
-                          />
-                          <input
-                            name="output"
-                            value="xml_no_dtd"
-                            type="hidden"
-                          />
-                          <input name="ie" value="UTF-8" type="hidden" />
-                          <input name="oe" value="UTF-8" type="hidden" />
-                          <input
-                            name="client"
-                            value="asu_frontend"
-                            type="hidden"
-                          />
-                          <input
-                            name="proxystylesheet"
-                            value="asu_frontend"
-                            type="hidden"
-                          />
-                        </form>
+                      <div className="navbar-mobile-footer">
                         <div className="nav-grid">
                           <a
                             className="nav-link"
@@ -323,17 +688,14 @@ export const Basic = () => (
                           >
                             Colleges and Schools
                           </a>
-                          <div className="nav-link login-status">
-                            Sparky
-                            <a
-                              className="signout"
-                              href="https://webapp4.asu.edu/myasu/Signout"
-                              data-ga-header-section="topbar"
-                              data-ga-header="sign out"
-                            >
-                              Sign Out
-                            </a>
-                          </div>
+                          <a
+                            className="nav-link"
+                            href="https://weblogin.asu.edu/cgi-bin/login"
+                            data-ga-header-section="topbar"
+                            data-ga-header="sign in"
+                          >
+                            Sign In
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -360,7 +722,7 @@ export const DropDownMenus = () => (
   <>
     <header
       id="asu-header"
-      className="fixed-top"
+      className="fixed-top uds-header-v2"
       data-elastic-exclude="data-elastic-exclude"
     >
       <div id="wrapper-header-top">
@@ -415,20 +777,32 @@ export const DropDownMenus = () => (
                   </a>
                 </div>
                 <form
-                  className="form-inline"
+                  className="form-inline header-top-search"
                   action="https://search.asu.edu/search"
                   method="get"
                   name="gs"
+                  role="search"
                 >
+                  <button
+                    type="button"
+                    className="search-button"
+                    aria-label="Search asu.edu"
+                    data-toggle="header-search"
+                  >
+                    <span>Search</span>
+                    <span className="fas fa-search"></span>
+                  </button>
                   <input
-                    className="form-control"
+                    className="form-control search-input"
                     type="search"
                     name="q"
-                    aria-labelledby="header-top-search"
-                    required
+                    placeholder="Search asu.edu"
+                    aria-label="Search asu.edu"
                     data-ga-input-header-event="search"
                   />
-                  <label id="header-top-search">Search asu.edu</label>
+                  <button type="submit" className="btn btn-dark search-submit">
+                    Search
+                  </button>
                   <input name="site" value="default_collection" type="hidden" />
                   <input name="sort" value="date:D:L:d1" type="hidden" />
                   <input name="output" value="xml_no_dtd" type="hidden" />
@@ -488,13 +862,12 @@ export const DropDownMenus = () => (
                     data-ga-header-type="click"
                     data-ga-header="menu button label"
                   >
-                    <span
-                      title="Open mobile menu"
-                      className="fa fa-bars"
-                      alt=""
-                    ></span>
+                    <img
+                      src={menuSearchIcon}
+                      alt="Menu and Search Icon"
+                      className="menu-search-icon"
+                    />
                     <span title="Close mobile menu" className="fa-stack">
-                      <i className="fa fa-circle fa-stack-2x" alt=""></i>
                       <i className="fa fa-times fa-stack-1x" alt=""></i>
                     </span>
                   </button>
@@ -504,21 +877,62 @@ export const DropDownMenus = () => (
                         href="#"
                         className="unit-name"
                         data-ga-header="Parent unit name"
-                        title="Parent unit name home page"
                       >
                         Parent unit name
                       </a>
-                      <span
+                      <a
+                        href="#"
                         className="subdomain-name"
                         data-ga-header="Subdomain name"
                       >
                         Subdomain name
-                      </span>
+                      </a>
                     </div>
                     <div
                       className="collapse navbar-collapse w-100"
                       id="menubar"
                     >
+                      <form
+                        className="form-inline navbar-mobile-search"
+                        action="https://search.asu.edu/search"
+                        method="get"
+                        name="gs"
+                      >
+                        <span className="fas fa-search mobile-search-icon"></span>
+                        <input
+                          className="form-control"
+                          type="search"
+                          name="q"
+                          aria-label="Search asu.edu"
+                          placeholder="Search asu.edu"
+                        />
+                        <button
+                          type="submit"
+                          className="mobile-search-submit"
+                          aria-label="Submit search"
+                        >
+                          <span className="fas fa-search"></span>
+                        </button>
+                        <input
+                          name="site"
+                          value="default_collection"
+                          type="hidden"
+                        />
+                        <input name="sort" value="date:D:L:d1" type="hidden" />
+                        <input name="output" value="xml_no_dtd" type="hidden" />
+                        <input name="ie" value="UTF-8" type="hidden" />
+                        <input name="oe" value="UTF-8" type="hidden" />
+                        <input
+                          name="client"
+                          value="asu_frontend"
+                          type="hidden"
+                        />
+                        <input
+                          name="proxystylesheet"
+                          value="asu_frontend"
+                          type="hidden"
+                        />
+                      </form>
                       <div className="header-content-container">
                         <nav className="navbar-nav" aria-label="Site">
                           <a
@@ -558,10 +972,7 @@ export const DropDownMenus = () => (
                                 alt=""
                               ></span>
                             </a>
-                            <div
-                              className="dropdown-menu dropdown-columns"
-                              aria-labelledby="dropdown-one-col"
-                            >
+                            <div className="dropdown-menu dropdown-columns">
                               <div className="dropdown-col">
                                 <a
                                   className="dropdown-item"
@@ -625,10 +1036,7 @@ export const DropDownMenus = () => (
                                 alt=""
                               ></span>
                             </a>
-                            <div
-                              className="dropdown-menu dropdown-columns"
-                              aria-labelledby="dropdown-two-col"
-                            >
+                            <div className="dropdown-menu dropdown-columns">
                               <div className="dropdown-col">
                                 <h3>Column One</h3>
                                 <a
@@ -746,10 +1154,7 @@ export const DropDownMenus = () => (
                                 alt=""
                               ></span>
                             </a>
-                            <div
-                              className="dropdown-menu"
-                              aria-labelledby="megamenu-three-col"
-                            >
+                            <div className="dropdown-menu">
                               <div className="container">
                                 <div className="row">
                                   <div className="col-lg">
@@ -890,10 +1295,7 @@ export const DropDownMenus = () => (
                                 alt=""
                               ></span>
                             </a>
-                            <div
-                              className="dropdown-menu"
-                              aria-labelledby="megamenu-four-col"
-                            >
+                            <div className="dropdown-menu">
                               <div className="container">
                                 <div className="row">
                                   <div className="col-lg">
@@ -1129,10 +1531,7 @@ export const DropDownMenus = () => (
                                 alt=""
                               ></span>
                             </a>
-                            <div
-                              className="dropdown-menu"
-                              aria-labelledby="megamenu-five-col"
-                            >
+                            <div className="dropdown-menu">
                               <div className="container">
                                 <div className="row">
                                   <div className="col-lg">
@@ -1383,48 +1782,7 @@ export const DropDownMenus = () => (
                         </nav>
                         {/* end .navbar-nav */}
                       </div>
-                      <div className="navbar-mobile-footer pinned">
-                        <form
-                          className="form-inline navbar-mobile-search"
-                          action="https://search.asu.edu/search"
-                          method="get"
-                          name="gs"
-                        >
-                          <input
-                            className="form-control"
-                            type="search"
-                            name="q"
-                            aria-label="Search asu.edu"
-                            placeholder="Search asu.edu"
-                          />
-                          <input
-                            name="site"
-                            value="default_collection"
-                            type="hidden"
-                          />
-                          <input
-                            name="sort"
-                            value="date:D:L:d1"
-                            type="hidden"
-                          />
-                          <input
-                            name="output"
-                            value="xml_no_dtd"
-                            type="hidden"
-                          />
-                          <input name="ie" value="UTF-8" type="hidden" />
-                          <input name="oe" value="UTF-8" type="hidden" />
-                          <input
-                            name="client"
-                            value="asu_frontend"
-                            type="hidden"
-                          />
-                          <input
-                            name="proxystylesheet"
-                            value="asu_frontend"
-                            type="hidden"
-                          />
-                        </form>
+                      <div className="navbar-mobile-footer">
                         <div className="nav-grid">
                           <a
                             className="nav-link"
@@ -1480,7 +1838,7 @@ export const NoNavigation = () => (
   <>
     <header
       id="asu-header"
-      className="fixed-top"
+      className="fixed-top uds-header-v2"
       data-elastic-exclude="data-elastic-exclude"
     >
       <div id="wrapper-header-top">
@@ -1538,20 +1896,32 @@ export const NoNavigation = () => (
                   </a>
                 </div>
                 <form
-                  className="form-inline"
+                  className="form-inline header-top-search"
                   action="https://search.asu.edu/search"
                   method="get"
                   name="gs"
+                  role="search"
                 >
+                  <button
+                    type="button"
+                    className="search-button"
+                    aria-label="Search asu.edu"
+                    data-toggle="header-search"
+                  >
+                    <span>Search</span>
+                    <span className="fas fa-search"></span>
+                  </button>
                   <input
-                    className="form-control"
+                    className="form-control search-input"
                     type="search"
                     name="q"
-                    aria-labelledby="header-top-search"
-                    required
+                    placeholder="Search asu.edu"
+                    aria-label="Search asu.edu"
                     data-ga-input-header-event="search"
                   />
-                  <label id="header-top-search">Search asu.edu</label>
+                  <button type="submit" className="btn btn-dark search-submit">
+                    Search
+                  </button>
                   <input name="site" value="default_collection" type="hidden" />
                   <input name="sort" value="date:D:L:d1" type="hidden" />
                   <input name="output" value="xml_no_dtd" type="hidden" />
@@ -1611,22 +1981,28 @@ export const NoNavigation = () => (
                     data-ga-header-type="click"
                     data-ga-header="menu button label"
                   >
-                    <span
-                      title="Open mobile menu"
-                      className="fa fa-bars"
-                      alt=""
-                    ></span>
+                    <img
+                      src={menuSearchIcon}
+                      alt="Menu and Search Icon"
+                      className="menu-search-icon"
+                    />
                     <span title="Close mobile menu" className="fa-stack">
-                      <i className="fa fa-circle fa-stack-2x" alt=""></i>
                       <i className="fa fa-times fa-stack-1x" alt=""></i>
                     </span>
                   </button>
                   <div className="navbar-container no-links">
-                    <div className="title subdomain-name">
+                    <div className="title">
                       <a
                         href="#"
+                        className="unit-name"
+                        data-ga-header="Parent unit name"
+                      >
+                        Parent unit name
+                      </a>
+                      <a
+                        href="#"
+                        className="subdomain-name"
                         data-ga-header="Subdomain name"
-                        title="Subdomain name home page"
                       >
                         Subdomain name
                       </a>
@@ -1635,48 +2011,48 @@ export const NoNavigation = () => (
                       className="collapse navbar-collapse w-100 justify-content-between"
                       id="menubar"
                     >
-                      <div className="navbar-mobile-footer pinned">
-                        <form
-                          className="form-inline navbar-mobile-search"
-                          action="https://search.asu.edu/search"
-                          method="get"
-                          name="gs"
+                      <form
+                        className="form-inline navbar-mobile-search"
+                        action="https://search.asu.edu/search"
+                        method="get"
+                        name="gs"
+                      >
+                        <span className="fas fa-search mobile-search-icon"></span>
+                        <input
+                          className="form-control"
+                          type="search"
+                          name="q"
+                          aria-label="Search asu.edu"
+                          placeholder="Search asu.edu"
+                        />
+                        <button
+                          type="submit"
+                          className="mobile-search-submit"
+                          aria-label="Submit search"
                         >
-                          <input
-                            className="form-control"
-                            type="search"
-                            name="q"
-                            aria-label="Search"
-                            placeholder="Search asu.edu"
-                          />
-                          <input
-                            name="site"
-                            value="default_collection"
-                            type="hidden"
-                          />
-                          <input
-                            name="sort"
-                            value="date:D:L:d1"
-                            type="hidden"
-                          />
-                          <input
-                            name="output"
-                            value="xml_no_dtd"
-                            type="hidden"
-                          />
-                          <input name="ie" value="UTF-8" type="hidden" />
-                          <input name="oe" value="UTF-8" type="hidden" />
-                          <input
-                            name="client"
-                            value="asu_frontend"
-                            type="hidden"
-                          />
-                          <input
-                            name="proxystylesheet"
-                            value="asu_frontend"
-                            type="hidden"
-                          />
-                        </form>
+                          <span className="fas fa-search"></span>
+                        </button>
+                        <input
+                          name="site"
+                          value="default_collection"
+                          type="hidden"
+                        />
+                        <input name="sort" value="date:D:L:d1" type="hidden" />
+                        <input name="output" value="xml_no_dtd" type="hidden" />
+                        <input name="ie" value="UTF-8" type="hidden" />
+                        <input name="oe" value="UTF-8" type="hidden" />
+                        <input
+                          name="client"
+                          value="asu_frontend"
+                          type="hidden"
+                        />
+                        <input
+                          name="proxystylesheet"
+                          value="asu_frontend"
+                          type="hidden"
+                        />
+                      </form>
+                      <div className="navbar-mobile-footer">
                         <div className="nav-grid">
                           <a
                             className="nav-link"
@@ -1732,7 +2108,7 @@ export const NoNavigationAndWithButtons = () => (
   <>
     <header
       id="asu-header"
-      className="fixed-top"
+      className="fixed-top uds-header-v2"
       data-elastic-exclude="data-elastic-exclude"
     >
       <div id="wrapper-header-top">
@@ -1787,20 +2163,32 @@ export const NoNavigationAndWithButtons = () => (
                   </a>
                 </div>
                 <form
-                  className="form-inline"
+                  className="form-inline header-top-search"
                   action="https://search.asu.edu/search"
                   method="get"
                   name="gs"
+                  role="search"
                 >
+                  <button
+                    type="button"
+                    className="search-button"
+                    aria-label="Search asu.edu"
+                    data-toggle="header-search"
+                  >
+                    <span>Search</span>
+                    <span className="fas fa-search"></span>
+                  </button>
                   <input
-                    className="form-control"
+                    className="form-control search-input"
                     type="search"
                     name="q"
-                    aria-labelledby="header-top-search"
-                    required
+                    placeholder="Search asu.edu"
+                    aria-label="Search asu.edu"
                     data-ga-input-header-event="search"
                   />
-                  <label id="header-top-search">Search asu.edu</label>
+                  <button type="submit" className="btn btn-dark search-submit">
+                    Search
+                  </button>
                   <input name="site" value="default_collection" type="hidden" />
                   <input name="sort" value="date:D:L:d1" type="hidden" />
                   <input name="output" value="xml_no_dtd" type="hidden" />
@@ -1860,22 +2248,28 @@ export const NoNavigationAndWithButtons = () => (
                     data-ga-header-type="click"
                     data-ga-header="menu button label"
                   >
-                    <span
-                      title="Open mobile menu"
-                      className="fa fa-bars"
-                      alt=""
-                    ></span>
+                    <img
+                      src={menuSearchIcon}
+                      alt="Menu and Search Icon"
+                      className="menu-search-icon"
+                    />
                     <span title="Close mobile menu" className="fa-stack">
-                      <i className="fa fa-circle fa-stack-2x" alt=""></i>
                       <i className="fa fa-times fa-stack-1x" alt=""></i>
                     </span>
                   </button>
                   <div className="navbar-container no-links">
-                    <div className="title subdomain-name">
+                    <div className="title">
                       <a
                         href="#"
+                        className="unit-name"
+                        data-ga-header="Parent unit name"
+                      >
+                        Parent unit name
+                      </a>
+                      <a
+                        href="#"
+                        className="subdomain-name"
                         data-ga-header="Subdomain name"
-                        title="Subdomain name home page"
                       >
                         Subdomain name
                       </a>
@@ -1884,6 +2278,47 @@ export const NoNavigationAndWithButtons = () => (
                       className="collapse navbar-collapse w-100 justify-content-between"
                       id="menubar"
                     >
+                      <form
+                        className="form-inline navbar-mobile-search"
+                        action="https://search.asu.edu/search"
+                        method="get"
+                        name="gs"
+                      >
+                        <span className="fas fa-search mobile-search-icon"></span>
+                        <input
+                          className="form-control"
+                          type="search"
+                          name="q"
+                          aria-label="Search asu.edu"
+                          placeholder="Search asu.edu"
+                        />
+                        <button
+                          type="submit"
+                          className="mobile-search-submit"
+                          aria-label="Submit search"
+                        >
+                          <span className="fas fa-search"></span>
+                        </button>
+                        <input
+                          name="site"
+                          value="default_collection"
+                          type="hidden"
+                        />
+                        <input name="sort" value="date:D:L:d1" type="hidden" />
+                        <input name="output" value="xml_no_dtd" type="hidden" />
+                        <input name="ie" value="UTF-8" type="hidden" />
+                        <input name="oe" value="UTF-8" type="hidden" />
+                        <input
+                          name="client"
+                          value="asu_frontend"
+                          type="hidden"
+                        />
+                        <input
+                          name="proxystylesheet"
+                          value="asu_frontend"
+                          type="hidden"
+                        />
+                      </form>
                       <div className="header-content-container">
                         <form className="navbar-site-buttons form-inline">
                           <a
@@ -1902,48 +2337,7 @@ export const NoNavigationAndWithButtons = () => (
                           </a>
                         </form>
                       </div>
-                      <div className="navbar-mobile-footer pinned">
-                        <form
-                          className="form-inline navbar-mobile-search"
-                          action="https://search.asu.edu/search"
-                          method="get"
-                          name="gs"
-                        >
-                          <input
-                            className="form-control"
-                            type="search"
-                            name="q"
-                            aria-label="Search"
-                            placeholder="Search asu.edu"
-                          />
-                          <input
-                            name="site"
-                            value="default_collection"
-                            type="hidden"
-                          />
-                          <input
-                            name="sort"
-                            value="date:D:L:d1"
-                            type="hidden"
-                          />
-                          <input
-                            name="output"
-                            value="xml_no_dtd"
-                            type="hidden"
-                          />
-                          <input name="ie" value="UTF-8" type="hidden" />
-                          <input name="oe" value="UTF-8" type="hidden" />
-                          <input
-                            name="client"
-                            value="asu_frontend"
-                            type="hidden"
-                          />
-                          <input
-                            name="proxystylesheet"
-                            value="asu_frontend"
-                            type="hidden"
-                          />
-                        </form>
+                      <div className="navbar-mobile-footer">
                         <div className="nav-grid">
                           <a
                             className="nav-link"
@@ -1999,7 +2393,7 @@ export const ScrolledState = () => (
   <>
     <header
       id="asu-header"
-      className="fixed-top"
+      className="fixed-top uds-header-v2"
       data-elastic-exclude="data-elastic-exclude"
     >
       <div id="wrapper-header-top">
@@ -2057,20 +2451,32 @@ export const ScrolledState = () => (
                   </a>
                 </div>
                 <form
-                  className="form-inline"
+                  className="form-inline header-top-search"
                   action="https://search.asu.edu/search"
                   method="get"
                   name="gs"
+                  role="search"
                 >
+                  <button
+                    type="button"
+                    className="search-button"
+                    aria-label="Search asu.edu"
+                    data-toggle="header-search"
+                  >
+                    <span>Search</span>
+                    <span className="fas fa-search"></span>
+                  </button>
                   <input
-                    className="form-control"
+                    className="form-control search-input"
                     type="search"
                     name="q"
-                    aria-labelledby="header-top-search"
-                    required
+                    placeholder="Search asu.edu"
+                    aria-label="Search asu.edu"
                     data-ga-input-header-event="search"
                   />
-                  <label id="header-top-search">Search asu.edu</label>
+                  <button type="submit" className="btn btn-dark search-submit">
+                    Search
+                  </button>
                   <input name="site" value="default_collection" type="hidden" />
                   <input name="sort" value="date:D:L:d1" type="hidden" />
                   <input name="output" value="xml_no_dtd" type="hidden" />
@@ -2126,27 +2532,77 @@ export const ScrolledState = () => (
                     data-ga-header-type="click"
                     data-ga-header="menu button label"
                   >
-                    <span
-                      title="Open mobile menu"
-                      className="fa fa-bars"
-                      alt=""
-                    ></span>
+                    <img
+                      src={menuSearchIcon}
+                      alt="Menu and Search Icon"
+                      className="menu-search-icon"
+                    />
                     <span title="Close mobile menu" className="fa-stack">
-                      <i className="fa fa-circle fa-stack-2x" alt=""></i>
                       <i className="fa fa-times fa-stack-1x" alt=""></i>
                     </span>
                   </button>
                   <div className="navbar-container">
-                    <div
-                      className="title subdomain-name"
-                      data-ga-header="Subdomain name"
-                    >
-                      Subdomain name
+                    <div className="title">
+                      <a
+                        href="#"
+                        className="unit-name"
+                        data-ga-header="Parent unit name"
+                        title="Parent unit name home page"
+                      >
+                        Parent unit name
+                      </a>
+                      <span
+                        className="subdomain-name"
+                        data-ga-header="Subdomain name"
+                      >
+                        Subdomain name
+                      </span>
                     </div>
                     <div
                       className="collapse navbar-collapse w-100 justify-content-between"
                       id="menubar"
                     >
+                      <form
+                        className="form-inline navbar-mobile-search"
+                        action="https://search.asu.edu/search"
+                        method="get"
+                        name="gs"
+                      >
+                        <span className="fas fa-search mobile-search-icon"></span>
+                        <input
+                          className="form-control"
+                          type="search"
+                          name="q"
+                          aria-label="Search asu.edu"
+                          placeholder="Search asu.edu"
+                        />
+                        <button
+                          type="submit"
+                          className="mobile-search-submit"
+                          aria-label="Submit search"
+                        >
+                          <span className="fas fa-search"></span>
+                        </button>
+                        <input
+                          name="site"
+                          value="default_collection"
+                          type="hidden"
+                        />
+                        <input name="sort" value="date:D:L:d1" type="hidden" />
+                        <input name="output" value="xml_no_dtd" type="hidden" />
+                        <input name="ie" value="UTF-8" type="hidden" />
+                        <input name="oe" value="UTF-8" type="hidden" />
+                        <input
+                          name="client"
+                          value="asu_frontend"
+                          type="hidden"
+                        />
+                        <input
+                          name="proxystylesheet"
+                          value="asu_frontend"
+                          type="hidden"
+                        />
+                      </form>
                       <div className="header-content-container">
                         <nav className="navbar-nav" aria-label="Site">
                           <a
@@ -2221,10 +2677,7 @@ export const ScrolledState = () => (
                                 alt=""
                               ></span>
                             </a>
-                            <div
-                              className="dropdown-menu dropdown-columns"
-                              aria-labelledby="dropdown-one-col"
-                            >
+                            <div className="dropdown-menu dropdown-columns">
                               <div className="dropdown-col">
                                 <a
                                   className="dropdown-item"
@@ -2272,10 +2725,7 @@ export const ScrolledState = () => (
                                 alt=""
                               ></span>
                             </a>
-                            <div
-                              className="dropdown-menu dropdown-columns"
-                              aria-labelledby="dropdown-one-col"
-                            >
+                            <div className="dropdown-menu dropdown-columns">
                               <div className="dropdown-col">
                                 <a
                                   className="dropdown-item"
@@ -2323,10 +2773,7 @@ export const ScrolledState = () => (
                                 alt=""
                               ></span>
                             </a>
-                            <div
-                              className="dropdown-menu dropdown-columns"
-                              aria-labelledby="dropdown-one-col"
-                            >
+                            <div className="dropdown-menu dropdown-columns">
                               <div className="dropdown-col">
                                 <a
                                   className="dropdown-item"
@@ -2358,48 +2805,7 @@ export const ScrolledState = () => (
                         </nav>
                         {/* end .navbar-nav */}
                       </div>
-                      <div className="navbar-mobile-footer pinned">
-                        <form
-                          className="form-inline navbar-mobile-search"
-                          action="https://search.asu.edu/search"
-                          method="get"
-                          name="gs"
-                        >
-                          <input
-                            className="form-control"
-                            type="search"
-                            name="q"
-                            aria-label="Search"
-                            placeholder="Search asu.edu"
-                          />
-                          <input
-                            name="site"
-                            value="default_collection"
-                            type="hidden"
-                          />
-                          <input
-                            name="sort"
-                            value="date:D:L:d1"
-                            type="hidden"
-                          />
-                          <input
-                            name="output"
-                            value="xml_no_dtd"
-                            type="hidden"
-                          />
-                          <input name="ie" value="UTF-8" type="hidden" />
-                          <input name="oe" value="UTF-8" type="hidden" />
-                          <input
-                            name="client"
-                            value="asu_frontend"
-                            type="hidden"
-                          />
-                          <input
-                            name="proxystylesheet"
-                            value="asu_frontend"
-                            type="hidden"
-                          />
-                        </form>
+                      <div className="navbar-mobile-footer">
                         <div className="nav-grid">
                           <a
                             className="nav-link"
@@ -2452,9 +2858,9 @@ export const ScrolledState = () => (
           height: "500px",
         }}
       ></div>
-      <div className="gray-light-bg" style={{ height: "70vh" }}></div>
-      <div className="gray-faint-bg" style={{ height: "70vh" }}></div>
-      <div className="gray-light-bg" style={{ height: "70vh" }}></div>
+      <div className="bg-gray-6" style={{ height: "70vh" }}></div>
+      <div className="bg-gray-5" style={{ height: "70vh" }}></div>
+      <div className="bg-gray-4" style={{ height: "70vh" }}></div>
     </main>
   </>
 );
@@ -2463,7 +2869,7 @@ export const Partner = () => (
   <>
     <header
       id="asu-header"
-      className="fixed-top"
+      className="fixed-top uds-header-v2"
       data-elastic-exclude="data-elastic-exclude"
     >
       <div id="wrapper-header-top">
@@ -2521,20 +2927,32 @@ export const Partner = () => (
                   </a>
                 </div>
                 <form
-                  className="form-inline"
+                  className="form-inline header-top-search"
                   action="https://search.asu.edu/search"
                   method="get"
                   name="gs"
+                  role="search"
                 >
+                  <button
+                    type="button"
+                    className="search-button"
+                    aria-label="Search asu.edu"
+                    data-toggle="header-search"
+                  >
+                    <span>Search</span>
+                    <span className="fas fa-search"></span>
+                  </button>
                   <input
-                    className="form-control"
+                    className="form-control search-input"
                     type="search"
                     name="q"
-                    aria-labelledby="header-top-search"
-                    required
+                    placeholder="Search asu.edu"
+                    aria-label="Search asu.edu"
                     data-ga-input-header-event="search"
                   />
-                  <label id="header-top-search">Search asu.edu</label>
+                  <button type="submit" className="btn btn-dark search-submit">
+                    Search
+                  </button>
                   <input name="site" value="default_collection" type="hidden" />
                   <input name="sort" value="date:D:L:d1" type="hidden" />
                   <input name="output" value="xml_no_dtd" type="hidden" />
@@ -2602,13 +3020,12 @@ export const Partner = () => (
                     data-ga-header-type="click"
                     data-ga-header="menu button label"
                   >
-                    <span
-                      title="Open mobile menu"
-                      className="fa fa-bars"
-                      alt=""
-                    ></span>
+                    <img
+                      src={menuSearchIcon}
+                      alt="Menu and Search Icon"
+                      className="menu-search-icon"
+                    />
                     <span title="Close mobile menu" className="fa-stack">
-                      <i className="fa fa-circle fa-stack-2x" alt=""></i>
                       <i className="fa fa-times fa-stack-1x" alt=""></i>
                     </span>
                   </button>
@@ -2618,6 +3035,43 @@ export const Partner = () => (
                     className="collapse navbar-collapse w-100 justify-content-between"
                     id="menubar"
                   >
+                    <form
+                      className="form-inline navbar-mobile-search"
+                      action="https://search.asu.edu/search"
+                      method="get"
+                      name="gs"
+                    >
+                      <span className="fas fa-search mobile-search-icon"></span>
+                      <input
+                        className="form-control"
+                        type="search"
+                        name="q"
+                        aria-label="Search asu.edu"
+                        placeholder="Search asu.edu"
+                      />
+                      <button
+                        type="submit"
+                        className="mobile-search-submit"
+                        aria-label="Submit search"
+                      >
+                        <span className="fas fa-search"></span>
+                      </button>
+                      <input
+                        name="site"
+                        value="default_collection"
+                        type="hidden"
+                      />
+                      <input name="sort" value="date:D:L:d1" type="hidden" />
+                      <input name="output" value="xml_no_dtd" type="hidden" />
+                      <input name="ie" value="UTF-8" type="hidden" />
+                      <input name="oe" value="UTF-8" type="hidden" />
+                      <input name="client" value="asu_frontend" type="hidden" />
+                      <input
+                        name="proxystylesheet"
+                        value="asu_frontend"
+                        type="hidden"
+                      />
+                    </form>
                     <div className="header-content-container">
                       <nav className="navbar-nav" aria-label="Site">
                         <a
@@ -2689,10 +3143,7 @@ export const Partner = () => (
                             Link option 6
                             <span className="fa fa-chevron-down" alt=""></span>
                           </a>
-                          <div
-                            className="dropdown-menu dropdown-columns"
-                            aria-labelledby="dropdown-one-col"
-                          >
+                          <div className="dropdown-menu dropdown-columns">
                             <div className="dropdown-col">
                               <a
                                 className="dropdown-item"
@@ -2740,40 +3191,7 @@ export const Partner = () => (
                         </a>
                       </form>
                     </div>
-                    <div className="navbar-mobile-footer pinned">
-                      <form
-                        className="form-inline navbar-mobile-search"
-                        action="https://search.asu.edu/search"
-                        method="get"
-                        name="gs"
-                      >
-                        <input
-                          className="form-control"
-                          type="search"
-                          name="q"
-                          aria-label="Search"
-                          placeholder="Search asu.edu"
-                        />
-                        <input
-                          name="site"
-                          value="default_collection"
-                          type="hidden"
-                        />
-                        <input name="sort" value="date:D:L:d1" type="hidden" />
-                        <input name="output" value="xml_no_dtd" type="hidden" />
-                        <input name="ie" value="UTF-8" type="hidden" />
-                        <input name="oe" value="UTF-8" type="hidden" />
-                        <input
-                          name="client"
-                          value="asu_frontend"
-                          type="hidden"
-                        />
-                        <input
-                          name="proxystylesheet"
-                          value="asu_frontend"
-                          type="hidden"
-                        />
-                      </form>
+                    <div className="navbar-mobile-footer">
                       <div className="nav-grid">
                         <a
                           className="nav-link"

@@ -4,7 +4,7 @@
  * TODO: Fix type errors
  * */
 import PropTypes from "prop-types";
-import React, { forwardRef, useRef, useImperativeHandle } from "react";
+import React, { useRef, useImperativeHandle } from "react";
 
 import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
 import { useBaseSpecificFramework } from "../../GaEventWrapper/useBaseSpecificFramework";
@@ -16,7 +16,7 @@ import { useBaseSpecificFramework } from "../../GaEventWrapper/useBaseSpecificFr
  * @property {boolean} hideNext
  * @property {() => void} slideNav
  */
-const TabHeader = forwardRef(function TabHeader(props, ref) {
+const TabHeader = function TabHeader(props) {
   const {
     id,
     selected,
@@ -26,6 +26,7 @@ const TabHeader = forwardRef(function TabHeader(props, ref) {
     rightKeyPressed,
     icon,
     gaData,
+    ref,
   } = props;
   const { isReact, isBootstrap } = useBaseSpecificFramework();
 
@@ -78,7 +79,7 @@ const TabHeader = forwardRef(function TabHeader(props, ref) {
       </a>
     </GaEventWrapper>
   );
-});
+};
 
 TabHeader.propTypes = {
   gaData: PropTypes.object,

@@ -1,0 +1,36 @@
+{
+  "servers": {
+    "asu-unity-react-core": {
+      "type": "http",
+      "url": "http://localhost:9200/mcp"
+    },
+    "asu-unity-bootstrap-theme": {
+      "type": "http",
+      "url": "http://localhost:9000/mcp"
+    },
+    "asu-app-degree-pages": {
+      "type": "http",
+      "url": "http://localhost:9010/mcp"
+    },
+    "asu-app-rfi": {
+      "type": "http",
+      "url": "http://localhost:9020/mcp"
+    },
+    "asu-app-webdir-ui": {
+      "type": "http",
+      "url": "http://localhost:9030/mcp"
+    },
+    "asu-component-events": {
+      "type": "http",
+      "url": "http://localhost:9060/mcp"
+    },
+    "asu-component-header-footer": {
+      "type": "http",
+      "url": "http://localhost:9080/mcp"
+    },
+    "asu-component-news": {
+      "type": "http",
+      "url": "http://localhost:9090/mcp"
+    }
+  }
+}

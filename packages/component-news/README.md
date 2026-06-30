@@ -3,6 +3,7 @@ ASU Web Standards-based implementation of news component.
 
 This component is the React implementation of the old News component(https://github.com/ASU-CLAS/asu-react-news-list) but reusing a lot of the components already developed in `components-core` and `component-carousel`, taking in cosideration good practises, scalability and performance.
 
+
 The job of this component is listing all the news fetched to the api url provided by the user. It also display a customizable, optional header with a title and a button.
 
 ## Architecture details

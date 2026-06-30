@@ -25,6 +25,21 @@ function initTabbedPanels() {
       e.target.focus();
     }
   };
+  const scrollIntoViewHorizontally = tab => {
+    const container = tab.parentElement;
+    const tabOffsetRight = tab.offsetLeft + tab.offsetWidth;
+    const containerScrollRight = container.scrollLeft + container.offsetWidth;
+
+    // is tab behind (left)
+    if (container.scrollLeft > tab.offsetLeft) {
+      container.scrollLeft = tab.offsetLeft;
+    }
+
+    // is tab ahead (right)
+    if (containerScrollRight < tabOffsetRight) {
+      container.scrollLeft += tabOffsetRight - containerScrollRight;
+    }
+  };
 
   document
     .querySelectorAll(DOM_ELEMENT_UDS_TABBED_PANELS)
@@ -99,31 +114,25 @@ function initTabbedPanels() {
           ? CSS_DISPLAY_NONE
           : CSS_DISPLAY_BLOCK;
       });
-      // });
 
       // handle focus event for tabs titles
       navItems.forEach(tabTitle => {
         tabTitle.addEventListener(EVENT_FOCUS, function (e) {
-          tabTitle.scrollIntoView();
+          scrollIntoViewHorizontally(tabTitle);
         });
       });
 
       // click of the next button
       nextButton.addEventListener(EVENT_CLICK, function (e) {
-        if (window.innerWidth > LG_BREAKPOINT) {
-          slideNav(this, e, -1);
-        }
+        slideNav(this, e, -1);
       });
 
       // click of the prev button
       prevButton.addEventListener(EVENT_CLICK, function (e) {
-        if (window.innerWidth > LG_BREAKPOINT) {
-          slideNav(this, e, 1);
-        }
+        slideNav(this, e, 1);
       });
 
       // hide prev button on load
-
       prevButton.style.display = CSS_DISPLAY_NONE;
 
       // width of all tabs
@@ -139,7 +148,5 @@ function initTabbedPanels() {
 }
 
 EventHandler.on(window, "load.uds.tabs", initTabbedPanels);
-
-// window.addEventListener("load.uds.tabs", initTabs, true);
 
 export { initTabbedPanels };

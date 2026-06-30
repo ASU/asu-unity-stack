@@ -18,24 +18,28 @@
     "@fortawesome/free-brands-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "react-router-dom": "^6.14.0"
   },
   "devDependencies": {
-    "@types/react": "^18.0.37",
-    "@types/react-dom": "^18.0.11",
+    "@types/react-dom": "^19.2.3",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react": "^4.3.1",
     "eslint-plugin-react-hooks": "^5",
     "eslint-plugin-react-refresh": "^0.4.3",
     "typescript": "^5.0.2",
-    "vite": "^5.3.5",
+    "vite": "^6.0.0",
     "vite-plugin-mkcert": "^1.16.0",
     "vite-plugin-virtual-mpa": "^1.12.1"
   },
   "volta": {
     "extends": "../../package.json"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }

@@ -1,0 +1,100 @@
+@import "../unity-bootstrap-theme-variables";
+
+.highly-ranked-section {
+  padding-top: $uds-size-spacing-12;
+  padding-bottom: $uds-size-spacing-12;
+  background-color: $faint;
+
+  @media (max-width: map-get($grid-breakpoints, "lg")) {
+    padding-top: $uds-size-spacing-6;
+    padding-bottom: $uds-size-spacing-6;
+  }
+
+  .highly-ranked-title {
+    margin-bottom: $uds-size-spacing-4;
+
+    .highlight-gold {
+      display: inline-block;
+      padding: $uds-size-spacing-half;
+      background-color: $gold;
+      color: $dark;
+      line-height: 1.1;
+    }
+  }
+
+  .highly-ranked-description {
+    font-size: 1.25rem;
+    line-height: $uds-size-spacing-3 + 0.25rem;
+    color: $dark;
+    margin-bottom: $uds-size-spacing-4;
+
+    @media (max-width: map-get($grid-breakpoints, "md")) {
+      font-size: 1rem;
+    }
+  }
+
+  .highly-ranked-cta {
+    margin-bottom: $uds-size-spacing-4;
+  }
+
+  .highly-ranked-grid {
+    margin-top: $uds-size-spacing-4;
+  }
+
+  .highly-ranked-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: $uds-size-spacing-1;
+
+    .ranking-value-container {
+      margin-bottom: 0;
+
+      .ranking-value {
+        font-weight: $font-weight-bold;
+        margin: 0;
+        line-height: 1.1;
+        color: $dark;
+
+        .ranking-value-main {
+          display: block;
+          border-left: 8px solid $gold;
+          padding-left: $uds-size-spacing-2;
+          margin: 0;
+
+          @media (max-width: map-get($grid-breakpoints, "md")) {
+            padding-left: $uds-size-spacing-3;
+          }
+        }
+
+        .ranking-value-subsection {
+          display: block;
+          margin: $uds-size-spacing-1 0 0 0;
+          padding-left: calc(8px + #{$uds-size-spacing-2});
+          font-size: 1.5rem;
+          font-weight: $font-weight-bold;
+          color: $dark;
+
+          @media (max-width: map-get($grid-breakpoints, "md")) {
+            padding-left: calc(8px + #{$uds-size-spacing-3});
+          }
+        }
+      }
+    }
+
+    .ranking-content {
+      padding-left: calc(8px + #{$uds-size-spacing-2});
+
+      @media (max-width: map-get($grid-breakpoints, "md")) {
+        padding-left: calc(8px + #{$uds-size-spacing-3});
+      }
+
+      .ranking-description {
+        font-size: 1rem;
+        color: $dark;
+        margin-bottom: 0;
+      }
+    }
+  }
+}

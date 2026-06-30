@@ -1,3 +1,83 @@
+# [@asu/app-rfi-v3.10.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.10.0...@asu/app-rfi-v3.10.1) (2026-06-18)
+
+
+### Bug Fixes
+
+* **app-rfi:** bumps dompurify from 3.4.5 to 3.4.10 ([f07a003](https://github.com/asu/asu-unity-stack/commit/f07a00382c737d27511240934676150701cfe6ec))
+
+# [@asu/app-rfi-v3.10.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.9.0...@asu/app-rfi-v3.10.0) (2026-06-09)
+
+
+### Features
+
+* **app-rfi:** add all parameters to datalayer for RFI module ([bbcac08](https://github.com/asu/asu-unity-stack/commit/bbcac0884d05dca5c0c61dc5b764f17afce035b5))
+
+# [@asu/app-rfi-v3.9.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.8.0...@asu/app-rfi-v3.9.0) (2026-05-21)
+
+
+### Bug Fixes
+
+* **app-rfi:** fix errors encountered on stoybook start ([c5b748b](https://github.com/asu/asu-unity-stack/commit/c5b748b32d7ea968db828aa44a5e90aa4bc6b17a))
+* **app-rfi:** jsdoc didn't support cjs ([62104e3](https://github.com/asu/asu-unity-stack/commit/62104e3c43cb7138180a02af93b461872ad58529))
+
+
+### Features
+
+* **unity-react-core:** upgrade dependencies ([3d80ef0](https://github.com/asu/asu-unity-stack/commit/3d80ef0128df45641af9579183c11f571012b6c8))
+
+# [@asu/app-rfi-v3.8.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.7.2...@asu/app-rfi-v3.8.0) (2026-03-23)
+
+
+### Features
+
+* **app-rfi:** remove duplicate require icon code ([9ffbb19](https://github.com/asu/asu-unity-stack/commit/9ffbb19fad60e12abd1d231a0408f6301c59acc8))
+
+# [@asu/app-rfi-v3.7.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.7.1...@asu/app-rfi-v3.7.2) (2026-03-03)
+
+
+### Bug Fixes
+
+* **app-rfi:** fix require indicator, fix online cert flow ([c61821c](https://github.com/asu/asu-unity-stack/commit/c61821c55f59537bae3c6300db209bc3dba8cf40))
+
+# [@asu/app-rfi-v3.7.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.7.0...@asu/app-rfi-v3.7.1) (2026-02-27)
+
+
+### Bug Fixes
+
+* **app-rfi:** online selection sometimes results in blank program code ([7b3b77a](https://github.com/asu/asu-unity-stack/commit/7b3b77af63deb3d620b826c749f077a8ff50186e))
+* **app-rfi:** remove duplicate condition that may get out of sync ([3b75a1c](https://github.com/asu/asu-unity-stack/commit/3b75a1c56f1fba8ec4681738f01dbb59b1738e7a))
+* **app-rfi:** set header options for online api ([20e335a](https://github.com/asu/asu-unity-stack/commit/20e335a3d4a70df426ad0b3c6d8e08da1f5be4b2))
+
+# [@asu/app-rfi-v3.7.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.6.4...@asu/app-rfi-v3.7.0) (2026-02-27)
+
+
+### Features
+
+* **app-rfi:** indicates required field update for rfiVariant2 ([a0d00e2](https://github.com/asu/asu-unity-stack/commit/a0d00e25b344c1e8473927020b9c210eeeb09f88))
+* **app-rfi:** update the required label "Indicates required field" to display on top of the form ([99b583e](https://github.com/asu/asu-unity-stack/commit/99b583eaebb0906ea66dec56949ec4cf7513371e))
+
+# [@asu/app-rfi-v3.6.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.6.3...@asu/app-rfi-v3.6.4) (2026-01-22)
+
+
+### Bug Fixes
+
+* **app-rfi:** set default props correctly ([e271a62](https://github.com/asu/asu-unity-stack/commit/e271a62f22d818eed1f69b3ed99dcb62469f7f22))
+
+# [@asu/app-rfi-v3.6.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.6.2...@asu/app-rfi-v3.6.3) (2026-01-15)
+
+
+### Bug Fixes
+
+* **app-rfi:** add role attribute to radio group ([13b4300](https://github.com/asu/asu-unity-stack/commit/13b430095850fb8c170fe806824d40e766390c36))
+
+# [@asu/app-rfi-v3.6.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.6.1...@asu/app-rfi-v3.6.2) (2025-12-30)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** refactor defaultProps to use JS default params ([d6ac389](https://github.com/asu/asu-unity-stack/commit/d6ac389ab932f0def44c84b33c5bd5fcf7fb2b4d))
+* **component-footer:** changes suggested by copilot ([3a6c1af](https://github.com/asu/asu-unity-stack/commit/3a6c1af48ee5654c110420f28a082feaeb66a9ca))
+
 # [@asu/app-rfi-v3.6.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.6.0...@asu/app-rfi-v3.6.1) (2025-11-19)
 
 

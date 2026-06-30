@@ -72,6 +72,7 @@ const c = {
   css: {
     preprocessorOptions: {
       scss: {
+        api: 'legacy',
         silenceDeprecations: [
           'import',
           'mixed-decls',

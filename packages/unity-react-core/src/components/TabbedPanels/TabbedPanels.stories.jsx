@@ -12,7 +12,7 @@ export default {
 const Template = () => {
   return (
     <MemoryRouter>
-      <div className="row no-gutters">
+      <div className="row no-gutters" style={{ padding: "10rem 0rem" }}>
         <div className="col uds-full-width">
           <TabbedPanels>
             <Tab id="home" title="Home long tab">

@@ -16,6 +16,7 @@ import {
   ZipCode,
   validation,
 } from "../steps/questions";
+import { RfiRequiredIndicator } from "../controls/controls-helpers";
 
 const Step = ({ children }) => children;
 
@@ -51,6 +52,11 @@ const variants = {
         To learn more about ASU or a specific program, fill out the form below
         then check your email.
       </p>
+      <p>
+        <RfiRequiredIndicator required={true} />
+        Indicates required field
+      </p>
+      <br />
       <Campus gaData={gaData1Of1} />
       <CareerAndStudentType gaData={gaData1Of1} />
       <Interest1 gaData={gaData1Of1} />
@@ -77,12 +83,17 @@ const variants = {
         CampusProgramHasChoice: validation.CampusProgramHasChoice,
       }}
     >
-      <div className={'h4'}>Step 1 of 2</div>
+      <div className={"h4"}>Step 1 of 2</div>
       <h2>Request information</h2>
       <p className="rfi-step1-intro">
         To learn more about ASU or a specific program, fill out the form below
         then check your email.
       </p>
+      <p>
+        <RfiRequiredIndicator required={true} />
+        Indicates required field
+      </p>
+      <br />
       <Campus gaData={gaData1Of2} />
       <CareerAndStudentType gaData={gaData1Of2} />
       <Interest1 gaData={gaData1Of2} />
@@ -103,7 +114,7 @@ const variants = {
         GdprConsent: validation.GdprConsent,
       }}
     >
-      <div className={'h4'}>Step 2 of 2</div>
+      <div className={"h4"}>Step 2 of 2</div>
       <h2>About me</h2>
       <EmailAddress autoFocus gaData={gaData2Of2} />
       <FirstName gaData={gaData2Of2} />

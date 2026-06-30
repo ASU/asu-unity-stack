@@ -2,7 +2,7 @@ import React from "react";
 
 import { CardsListEvents } from ".";
 
-import { createMockParam } from "../../core/utils";
+import { createMockHandlers } from "../../core/utils";
 
 /** @typedef {import("@asu/unity-react-core/src/core/types/feed-types").FeedType } FeedType */
 
@@ -10,7 +10,7 @@ export default {
   title: "Events component/Cards List",
   component: CardsListEvents,
   parameters: {
-    mockData: createMockParam(),
+    msw: { handlers: createMockHandlers() },
   },
 };
 
@@ -49,7 +49,7 @@ WithFilters.args = {
   },
 };
 WithFilters.parameters = {
-  mockData: createMockParam(),
+  msw: { handlers: createMockHandlers() },
 };
 
 /**
