@@ -1,31 +1,3 @@
-# [@asu/unity-react-core-v1.11.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.11.3...@asu/unity-react-core-v1.11.4) (2026-07-01)
-
-
-### Bug Fixes
-
-* **unity-react-core:** update or remove pkg to support react 19 ([7db1f8b](https://github.com/ASU/asu-unity-stack/commit/7db1f8b38b201f7f58b6c5bb8a312343c045accb))
-
-# [@asu/unity-react-core-v1.11.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.11.2...@asu/unity-react-core-v1.11.3) (2026-06-18)
-
-
-### Bug Fixes
-
-* **unity-react-core:** bumps @vitest/browser from 4.1.6 to 4.1.9 ([9af53fb](https://github.com/ASU/asu-unity-stack/commit/9af53fbd1c86ad8db087cc761683a810bae729b6))
-
-# [@asu/unity-react-core-v1.11.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.11.1...@asu/unity-react-core-v1.11.2) (2026-06-12)
-
-
-### Bug Fixes
-
-* **anchor-menu:** constrain sticky menu height in mobile landscape (WCAG 1.4.10) ([19b8bb4](https://github.com/ASU/asu-unity-stack/commit/19b8bb44a9e6a3dfee13ea77d8b76ce6ee356c3c))
-
-# [@asu/unity-react-core-v1.11.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.11.0...@asu/unity-react-core-v1.11.1) (2026-06-05)
-
-
-### Bug Fixes
-
-* **anchor-menu:** use native button for the mobile toggle (WCAG 2.1.1, 4.1.2) ([d33bda3](https://github.com/ASU/asu-unity-stack/commit/d33bda3a7a5d207e3244a1c33af2f93b2afb6547))
-
 # [@asu/unity-react-core-v1.11.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.10.1...@asu/unity-react-core-v1.11.0) (2026-05-21)
 
 
