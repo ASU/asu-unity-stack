@@ -13,11 +13,9 @@ import { calcualteViewItems } from "./helper/width-calculator";
 // https://stackoverflow.com/questions/61596516/glide-js-with-react
 
 /**
- * @typedef {import('../../types/base-carousel-types').CarouselItem} CarouselItem
- * @typedef {import('../../types/base-carousel-types').Props} BaseCarouselProps
+ * @typedef {import('../../types/base-carousel-types').Props} CarouselItem
  */
 
-/** @param {BaseCarouselProps} props */
 const BaseCarousel = ({
   perView = 1,
   width,
@@ -36,6 +34,7 @@ const BaseCarousel = ({
   hasPeek = true,
   isDraggable = true,
   hasShadow = true,
+  bgColor = ""
 }) => {
   // Only prop for the slider configs we expose is perView. Everything else is
   // considered locked down for Web Standards 2.
@@ -81,7 +80,7 @@ const BaseCarousel = ({
     <div
       role={role}
       aria-labelledby={ariaLabelledBy}
-      className={`glide ${cssClass}`}
+      className={`glide ${cssClass} ${bgColor}`}
       id={instanceName}
       style={{ width, maxWidth }}
       data-remove-side-background={removeSideBackground}
@@ -97,8 +96,8 @@ const BaseCarousel = ({
         <CustomNavComponent instanceName={instanceName} />
       ) : (
         <>
-          {hasPositionIndicators && <BulletItems buttonCount={buttonCount} />}
-          {hasNavButtons && <NavButtons />}
+          {hasPositionIndicators && <BulletItems buttonCount={buttonCount}  buttonTheme={bgColor==="gray-dark-bg"?"glide__dark":""}/>}
+          {hasNavButtons && <NavButtons buttonTheme={bgColor==="gray-dark-bg"?"glide__dark":""}/>}
         </>
       )}
     </div>
@@ -124,6 +123,7 @@ BaseCarousel.propTypes = {
   hasPeek: PropTypes.bool,
   isDraggable: PropTypes.bool,
   hasShadow: PropTypes.bool,
+  bgColor: PropTypes.string,
 };
 
 export { BaseCarousel, calcualteViewItems };
