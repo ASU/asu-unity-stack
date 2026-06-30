@@ -10,12 +10,12 @@ const InputGroup = styled.div`
   gap: 1rem;
 `;
 
-const InputState = styled.input.attrs({
+const InputState = styled.input.attrs(() => ({
   type: "radio",
   className: "btn-check",
   name: "program-view",
   autoComplete: "off",
-})`
+}))`
   display: none;
 
   & + label {

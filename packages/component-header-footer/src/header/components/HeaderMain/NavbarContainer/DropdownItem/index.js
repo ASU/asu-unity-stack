@@ -91,9 +91,9 @@ LinkItem.propTypes = {
  */
 const DropdownItem = ({
   dropdownName,
-  items,
-  buttons,
-  classes,
+  items = [],
+  buttons = [],
+  classes = "",
   listId,
   opened,
   parentLink,
@@ -121,10 +121,10 @@ const DropdownItem = ({
    */
   const dropdownRef = useRef(null);
   const [alignedRight, setAlignedRight] = useState(false);
-  const MULTIPLE_SUBMENUS = items?.length > 1;
+  const MULTIPLE_SUBMENUS = items.length > 1;
 
   useEffect(() => {
-    if (window && dropdownRef.current) {
+    if (typeof window !== "undefined" && dropdownRef.current) {
       const elPosition = dropdownRef?.current?.getBoundingClientRect().left;
       const breakpointPosition = window.innerWidth * 0.55;
       setAlignedRight(elPosition > breakpointPosition);
@@ -141,19 +141,19 @@ const DropdownItem = ({
     }
   }, [dropdownRef, opened]);
 
-  const stopPropagation = e => e.stopPropagation();
+  const stopPropagation = e => e?.stopPropagation();
 
   const handleLinkEvent = (e, link) => {
     const { key, type, target } = e;
-    const { parentElement } = target;
+    const parentElement = target?.parentElement;
 
     const focusNextLink = () => {
-      const nextLink = parentElement.nextElementSibling?.firstChild;
+      const nextLink = parentElement?.nextElementSibling?.firstChild;
       if (typeof nextLink?.focus === "function") nextLink.focus();
     };
 
     const focusPrevLink = () => {
-      const prevLink = parentElement.previousElementSibling?.firstChild;
+      const prevLink = parentElement?.previousElementSibling?.firstChild;
       if (typeof prevLink?.focus === "function") prevLink.focus();
     };
     stopPropagation(e);
@@ -182,6 +182,7 @@ const DropdownItem = ({
   };
 
   const renderItem = (link, index) => {
+    if (!link) return null;
     const key = `${link.text}-${link.href}-${index}`;
     if (link.type === "heading")
       return <HeadingItem key={key} text={link.text} />;
@@ -222,6 +223,7 @@ const DropdownItem = ({
           {items?.map((item, index0) => {
             const genKey = idGenerator(`dropdown-item-${index0}-`);
             const key = genKey.next().value;
+            if (!item?.length) return null;
             return (
               <div
                 className={CLASS_NAMES.DROPDOWN_CONTAINER_COLUMN}
@@ -274,7 +276,7 @@ const DropdownItem = ({
           })}
         </>
       </div>
-      {buttons && (
+      {buttons.length > 0 && (
         <div className={CLASS_NAMES.DROPDOWN_BUTTON_CONTAINER}>
           <div>
             {buttons.map((button, index) => (

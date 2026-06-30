@@ -1,3 +1,17 @@
+# [@asu/app-degree-pages-v3.2.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.2.0...@asu/app-degree-pages-v3.2.1) (2026-06-18)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** bumps @vitest/browser from 4.1.6 to 4.1.9 ([e3ae108](https://github.com/asu/asu-unity-stack/commit/e3ae1087d3edb84ee7451e74aab8845847700c84))
+
+# [@asu/app-degree-pages-v3.2.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.1.5...@asu/app-degree-pages-v3.2.0) (2026-05-21)
+
+
+### Features
+
+* **unity-react-core:** upgrade dependencies ([3d80ef0](https://github.com/asu/asu-unity-stack/commit/3d80ef0128df45641af9579183c11f571012b6c8))
+
 # [@asu/app-degree-pages-v3.1.5](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.1.4...@asu/app-degree-pages-v3.1.5) (2026-04-02)
 
 

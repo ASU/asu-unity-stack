@@ -27,13 +27,17 @@ Create an element with ID `uds-anchor-menu`:
 <div id="uds-anchor-menu" class="uds-anchor-menu uds-anchor-menu-expanded-lg">
   <div class="container">
     <div class="uds-anchor-menu-wrapper">
-      <h2
-        data-bs-toggle="collapse"
-        data-bs-target="#anchorMenuNav"
-        aria-expanded="false"
-        aria-controls="anchorMenuNav"
-      >
-        On This Page: <span class="fas fa-chevron-down"></span>
+      <h2>
+        <button
+          type="button"
+          class="mobile-menu-toggler"
+          data-bs-toggle="collapse"
+          data-bs-target="#anchorMenuNav"
+          aria-expanded="false"
+          aria-controls="anchorMenuNav"
+        >
+          On This Page: <span class="fas fa-chevron-down"></span>
+        </button>
       </h2>
       <div id="anchorMenuNav" class="card card-body collapse">
         <nav class="nav" aria-label="Page navigation">
@@ -113,13 +117,17 @@ Here's a complete working example:
   <div id="uds-anchor-menu" class="uds-anchor-menu uds-anchor-menu-expanded-lg">
     <div class="container">
       <div class="uds-anchor-menu-wrapper">
-        <h2
-          data-bs-toggle="collapse"
-          data-bs-target="#anchorMenuNav"
-          aria-expanded="false"
-          aria-controls="anchorMenuNav"
-        >
-          On This Page: <span class="fas fa-chevron-down"></span>
+        <h2>
+          <button
+            type="button"
+            class="mobile-menu-toggler"
+            data-bs-toggle="collapse"
+            data-bs-target="#anchorMenuNav"
+            aria-expanded="false"
+            aria-controls="anchorMenuNav"
+          >
+            On This Page: <span class="fas fa-chevron-down"></span>
+          </button>
         </h2>
         <div id="anchorMenuNav" class="card card-body collapse">
           <nav class="nav" aria-label="Page navigation">

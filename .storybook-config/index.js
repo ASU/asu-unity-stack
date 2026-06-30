@@ -16,6 +16,10 @@ const favicon = `
 
 import { fileURLToPath } from "url";
 
+export function addons() {
+  return ["@storybook/addon-mcp"];
+}
+
 export function previewAnnotations(entry = []) {
   return [...entry, fileURLToPath(import.meta.resolve('./preset/preview.js'))];
 }

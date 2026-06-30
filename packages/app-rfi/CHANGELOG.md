@@ -1,3 +1,30 @@
+# [@asu/app-rfi-v3.10.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.10.0...@asu/app-rfi-v3.10.1) (2026-06-18)
+
+
+### Bug Fixes
+
+* **app-rfi:** bumps dompurify from 3.4.5 to 3.4.10 ([f07a003](https://github.com/asu/asu-unity-stack/commit/f07a00382c737d27511240934676150701cfe6ec))
+
+# [@asu/app-rfi-v3.10.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.9.0...@asu/app-rfi-v3.10.0) (2026-06-09)
+
+
+### Features
+
+* **app-rfi:** add all parameters to datalayer for RFI module ([bbcac08](https://github.com/asu/asu-unity-stack/commit/bbcac0884d05dca5c0c61dc5b764f17afce035b5))
+
+# [@asu/app-rfi-v3.9.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.8.0...@asu/app-rfi-v3.9.0) (2026-05-21)
+
+
+### Bug Fixes
+
+* **app-rfi:** fix errors encountered on stoybook start ([c5b748b](https://github.com/asu/asu-unity-stack/commit/c5b748b32d7ea968db828aa44a5e90aa4bc6b17a))
+* **app-rfi:** jsdoc didn't support cjs ([62104e3](https://github.com/asu/asu-unity-stack/commit/62104e3c43cb7138180a02af93b461872ad58529))
+
+
+### Features
+
+* **unity-react-core:** upgrade dependencies ([3d80ef0](https://github.com/asu/asu-unity-stack/commit/3d80ef0128df45641af9579183c11f571012b6c8))
+
 # [@asu/app-rfi-v3.8.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.7.2...@asu/app-rfi-v3.8.0) (2026-03-23)
 
 

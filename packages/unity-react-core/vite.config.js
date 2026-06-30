@@ -82,6 +82,10 @@ export default defineConfig({
         __dirname,
         "./../unity-bootstrap-theme"
       ),
+      "@glidejs/glide/src/assets/sass/glide.core.scss": path.resolve(
+        __dirname,
+        "../../node_modules/@glidejs/glide/src/assets/sass/glide.core.scss"
+      ),
     },
   },
 });

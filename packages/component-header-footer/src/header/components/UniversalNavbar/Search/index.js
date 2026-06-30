@@ -21,7 +21,7 @@ const SEARCH_GA_EVENT = {
 };
 
 const Search = () => {
-  const { breakpoint, searchUrl, site } = useAppContext();
+  const { breakpoint, searchUrl = "", site = "" } = useAppContext();
   const isMobile = useIsMobile(breakpoint);
   /** @type {React.MutableRefObject<HTMLInputElement | null>} */
   const inputRef = useRef(null);
@@ -40,7 +40,7 @@ const Search = () => {
    */
   const handleSearch = e => {
     /** @type {HTMLFormElement} */
-    const form = e.currentTarget;
+    const form = e?.currentTarget;
     e.preventDefault();
     /**
      * Issue: Callback not currently available
@@ -54,15 +54,18 @@ const Search = () => {
      *
      * TODO: UDS-1612
      */
-    const searchInput = /** @type {HTMLInputElement} */ (
-      form.elements.namedItem("q")
-    );
+    const searchInput =
+      form && form.elements
+        ? /** @type {HTMLInputElement|null} */ (form.elements.namedItem("q"))
+        : null;
     trackGAEvent({
       ...SEARCH_GA_EVENT,
       text: searchInput ? searchInput.value : "",
     });
     setTimeout(() => {
-      form.submit();
+      if (typeof form?.submit === "function") {
+        form.submit();
+      }
     }, 100);
   };
 

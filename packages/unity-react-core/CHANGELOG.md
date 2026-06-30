@@ -1,3 +1,41 @@
+# [@asu/unity-react-core-v1.11.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.11.2...@asu/unity-react-core-v1.11.3) (2026-06-18)
+
+
+### Bug Fixes
+
+* **unity-react-core:** bumps @vitest/browser from 4.1.6 to 4.1.9 ([9af53fb](https://github.com/ASU/asu-unity-stack/commit/9af53fbd1c86ad8db087cc761683a810bae729b6))
+
+# [@asu/unity-react-core-v1.11.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.11.1...@asu/unity-react-core-v1.11.2) (2026-06-12)
+
+
+### Bug Fixes
+
+* **anchor-menu:** constrain sticky menu height in mobile landscape (WCAG 1.4.10) ([19b8bb4](https://github.com/ASU/asu-unity-stack/commit/19b8bb44a9e6a3dfee13ea77d8b76ce6ee356c3c))
+
+# [@asu/unity-react-core-v1.11.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.11.0...@asu/unity-react-core-v1.11.1) (2026-06-05)
+
+
+### Bug Fixes
+
+* **anchor-menu:** use native button for the mobile toggle (WCAG 2.1.1, 4.1.2) ([d33bda3](https://github.com/ASU/asu-unity-stack/commit/d33bda3a7a5d207e3244a1c33af2f93b2afb6547))
+
+# [@asu/unity-react-core-v1.11.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.10.1...@asu/unity-react-core-v1.11.0) (2026-05-21)
+
+
+### Bug Fixes
+
+* **unity-react-core:** add missing packages, fix lint ([1a3c403](https://github.com/ASU/asu-unity-stack/commit/1a3c40357bc5403c844e0d3efd9dfc153c8bc5a8))
+* **unity-react-core:** build fixes ([0961678](https://github.com/ASU/asu-unity-stack/commit/0961678c3961688a2019cc69f357d77e159ade5d))
+* **unity-react-core:** fix build by moving bundled deps and resolving glide scss ([a3e5ed8](https://github.com/ASU/asu-unity-stack/commit/a3e5ed86eb3186167ca3396847574a1f84c3a5c5))
+* **unity-react-core:** fix issues impacting build ([0090fe5](https://github.com/ASU/asu-unity-stack/commit/0090fe543dcae50060ad37996f299438de1d0562))
+* **unity-react-core:** no import on carousel types ([0152e9c](https://github.com/ASU/asu-unity-stack/commit/0152e9cc68ec3404919c1ca18c8ee4bbce4b4e09))
+* **unity-react-core:** react-share iconFillColor needs to be set as default changed ([2ccf8e9](https://github.com/ASU/asu-unity-stack/commit/2ccf8e996c1c975896f58727b8e9f4313a9ef3b5))
+
+
+### Features
+
+* **unity-react-core:** upgrade dependencies ([3d80ef0](https://github.com/ASU/asu-unity-stack/commit/3d80ef0128df45641af9579183c11f571012b6c8))
+
 # [@asu/unity-react-core-v1.10.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.10.0...@asu/unity-react-core-v1.10.1) (2026-05-08)
 
 

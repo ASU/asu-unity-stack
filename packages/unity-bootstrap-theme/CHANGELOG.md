@@ -1,3 +1,52 @@
+# [@asu/unity-bootstrap-theme-v1.39.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.39.3...@asu/unity-bootstrap-theme-v1.39.4) (2026-06-12)
+
+
+### Bug Fixes
+
+* **anchor-menu:** constrain sticky menu height in mobile landscape (WCAG 1.4.10) ([19b8bb4](https://github.com/ASU/asu-unity-stack/commit/19b8bb44a9e6a3dfee13ea77d8b76ce6ee356c3c))
+* **unity-bootstrap-theme:** target the actual sticky class on anchor menu ([77b6fa6](https://github.com/ASU/asu-unity-stack/commit/77b6fa6a918fd9ca08f900db3d78545a83f14ccc))
+
+# [@asu/unity-bootstrap-theme-v1.39.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.39.2...@asu/unity-bootstrap-theme-v1.39.3) (2026-06-05)
+
+
+### Bug Fixes
+
+* **anchor-menu:** use native button for the mobile toggle (WCAG 2.1.1, 4.1.2) ([d33bda3](https://github.com/ASU/asu-unity-stack/commit/d33bda3a7a5d207e3244a1c33af2f93b2afb6547))
+
+# [@asu/unity-bootstrap-theme-v1.39.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.39.1...@asu/unity-bootstrap-theme-v1.39.2) (2026-06-05)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** space bar expands/collapses footer accordion (UDS-2159) ([22f2133](https://github.com/ASU/asu-unity-stack/commit/22f2133e439e03d3021007523466e58bf110f80d))
+
+# [@asu/unity-bootstrap-theme-v1.39.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.39.0...@asu/unity-bootstrap-theme-v1.39.1) (2026-06-05)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** add bottom margin to hero-sm CTA for QA padding ([d6c217d](https://github.com/ASU/asu-unity-stack/commit/d6c217d12784f5aa58a421034b5c2cd8df5daa76))
+* **unity-bootstrap-theme:** hero small CTA overflow at <768px viewports ([bebb98c](https://github.com/ASU/asu-unity-stack/commit/bebb98c369250915c1c920671baf8a1c69711fa6))
+
+# [@asu/unity-bootstrap-theme-v1.39.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.38.2...@asu/unity-bootstrap-theme-v1.39.0) (2026-05-28)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** update header styles and stories ([88c018d](https://github.com/ASU/asu-unity-stack/commit/88c018daa5c32e6b73a83491ebe83cd43636d96d))
+
+
+### Features
+
+* **unity-bootstrap-theme:** added new header styles and stories ([c4f8d1d](https://github.com/ASU/asu-unity-stack/commit/c4f8d1db677b9c38cec26b802c7d57181f0ea97f))
+
+# [@asu/unity-bootstrap-theme-v1.38.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.38.1...@asu/unity-bootstrap-theme-v1.38.2) (2026-05-21)
+
+
+### Bug Fixes
+
+* **unity-react-core:** add missing packages, fix lint ([1a3c403](https://github.com/ASU/asu-unity-stack/commit/1a3c40357bc5403c844e0d3efd9dfc153c8bc5a8))
+
 # [@asu/unity-bootstrap-theme-v1.38.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.38.0...@asu/unity-bootstrap-theme-v1.38.1) (2026-05-13)
 
 

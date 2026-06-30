@@ -1,14 +1,8 @@
 
-import { decode } from 'html-entities'
-import prettier from 'prettier'
-import HTMLParser from 'prettier/parser-html'
-
 import { getBootstrapHTML } from '../src/components/GaEventWrapper/useBaseSpecificFramework.js';
+import { formatCode } from './formatCode.js';
 
-export const formatCode = (code) => prettier.format(decode(code,{level:"all"}), {
-  parser: 'html',
-  plugins: [HTMLParser],
-});
+export { formatCode };
 
 export default (_, storyContext = {}) => {
 

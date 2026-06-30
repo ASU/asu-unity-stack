@@ -219,37 +219,40 @@ export const AnchorMenu = ({
             [`with-header`]: state.hasHeader,
           }
         )}
-        style={{
-          ...(state.showMenu ? { borderBottom: 0 } : {}),
-          "--uds-anchor-menu-top": `${headerBottomOffset}px`,
-        }}
+        style={
+          /** @type {React.CSSProperties} */ ({
+            ...(state.showMenu ? { borderBottom: 0 } : {}),
+            "--uds-anchor-menu-top": `${headerBottomOffset}px`,
+          })
+        }
       >
         <div className={`${state.containerClass} uds-anchor-menu-wrapper`}>
-          {isSmallDevice ? (
-            <GaEventWrapper
-              gaData={{
-                ...defaultMobileGAEvent,
-                action: state.showMenu ? "close" : "open",
-              }}
-            >
-              <button
-                className={classNames("mobile-menu-toggler", {
-                  [`show-menu`]: state.showMenu,
-                })}
-                type="button"
-                onClick={handleMenuVisibility}
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseAnchorMenu"
-                aria-controls="collapseAnchorMenu"
+          <h2>
+            {isSmallDevice ? (
+              <GaEventWrapper
+                gaData={{
+                  ...defaultMobileGAEvent,
+                  action: state.showMenu ? "close" : "open",
+                }}
               >
-                <h2>
+                <button
+                  className={classNames("mobile-menu-toggler", {
+                    [`show-menu`]: state.showMenu,
+                  })}
+                  type="button"
+                  onClick={handleMenuVisibility}
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseAnchorMenu"
+                  aria-controls="collapseAnchorMenu"
+                  aria-expanded={state.showMenu}
+                >
                   {menuTitle}:<i className="fas fa-chevron-down" />
-                </h2>
-              </button>
-            </GaEventWrapper>
-          ) : (
-            <h2>{menuTitle}:</h2>
-          )}
+                </button>
+              </GaEventWrapper>
+            ) : (
+              <>{menuTitle}:</>
+            )}
+          </h2>
 
           <div
             data-testid="anchor-menu-container"

@@ -1,6 +1,6 @@
 {
   "name": "@asu/app-degree-pages",
-  "version": "3.1.5",
+  "version": "3.2.1",
   "description": "ASU implementation of degree pages",
   "main": "./dist/degreePages.cjs.js",
   "browser": "./dist/degreePages.umd.js",
@@ -47,9 +47,7 @@
     "@popperjs/core": "^2.9.2",
     "classnames": "^2.3.1",
     "prop-types": "^15.7.2",
-    "react-popper": "^2.2.5",
-    "react-tooltip": "^4.2.21",
-    "styled-components": "^5.3.0"
+    "styled-components": "^6.0.0"
   },
   "devDependencies": {
     "@asu/shared": "*",
@@ -64,7 +62,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.0",
     "@vitejs/plugin-react": "^4.3.1",
-    "@vitest/browser": "^4.0.0",
+    "@vitest/browser": "^4.1.9",
     "babel-jest": "^27.0.6",
     "babel-loader": "^8.2.2",
     "babel-plugin-dynamic-import-node": "^2.3.3",
@@ -90,12 +88,9 @@
     "vitest": "^4.0.0",
     "webpack-merge": "^5.8.0"
   },
-  "resolutions": {
-    "@types/react": "^18.3.1"
-  },
   "peerDependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "volta": {
     "extends": "../../package.json"
