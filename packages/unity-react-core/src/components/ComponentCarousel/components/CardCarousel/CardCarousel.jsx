@@ -143,7 +143,10 @@ const CardCarousel = ({
       isDraggable={activateGlideActions}
       hasShadow
       bgColor={bgColor}
-    />
+      CustomNavComponent={undefined}
+      role={undefined}
+      ariaLabelledBy={undefined}
+      isFullWidth={undefined} />
   );
 };
 
