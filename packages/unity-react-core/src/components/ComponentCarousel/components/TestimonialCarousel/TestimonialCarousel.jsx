@@ -43,8 +43,8 @@ const htmlTemplate = (
   id,
   item: (
     <Testimonial
-      imageSource={imageSource}
-      imageAltText={imageAltText}
+      imageSource={imageSource??""}
+      imageAltText={imageAltText??""}
       quote={quote}
       itemStyle={itemStyle}
     />
