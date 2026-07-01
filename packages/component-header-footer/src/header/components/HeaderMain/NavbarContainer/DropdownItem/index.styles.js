@@ -34,13 +34,10 @@ const DropdownWrapper = styled.div`
     /*
       max-height is calculated from
       100% view Height
-      minus header
+      minus offset
       minus 2rem padding
-      minus 4rem cta buttons - future we could add a ref to measure if needed
     */
-    max-height: calc(
-      100vh - ${({ headerHeight }) => headerHeight}px - 2rem - 4rem
-    );
+    max-height: calc(100vh - ${({ heightOffset }) => heightOffset}px - 2rem);
     overflow-y: auto;
     overflow-x: hidden;
     display: flex;
