@@ -200,9 +200,6 @@
   gap: $uds-size-spacing-2;
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  max-height: 260px;
-  overflow-y: auto;
-  overscroll-behavior: contain;
 
   &.open {
     display: flex;
