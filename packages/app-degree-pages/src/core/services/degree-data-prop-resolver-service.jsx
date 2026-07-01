@@ -85,6 +85,24 @@ function degreeDataPropResolverService(row = {}) {
     getInstitution: () => "ASU00",
     getAcadPlan: () => row["acadPlanCode"],
     /** @returns {string} */
+    getDegreeSearchUrl: () => {
+      const degreeType = row["degreeType"];
+      const planCode = row["acadPlanCode"];
+
+      if (!planCode || !degreeType) return "";
+
+      const programTypeMap = {
+        UG:   "bachelors",
+        GR:   "masters-phd",
+        UGCM: "minors",
+      };
+
+      const programTypePath = programTypeMap[degreeType];
+
+      if (!programTypePath) return "";
+
+      return `https://degrees.apps.asu.edu/${programTypePath}/major/ASU00/${planCode}`;
+    },
     getDegree: () => {
       // Minors
       let degree =
