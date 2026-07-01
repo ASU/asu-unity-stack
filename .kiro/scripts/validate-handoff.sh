@@ -41,6 +41,13 @@ if [ -n "$markup" ]; then
   if [ -f "$DIR/$markup" ]; then echo "  ok: markup file present ($markup)"; else echo "  FAIL: markup file missing ($markup)"; ERR=1; fi
 fi
 
+# interactivity block (schema >= 1.1): warn if absent so behavior isn't reinvented downstream
+if [ -n "$(jq -r '.interactivity // empty' "$HANDOFF" 2>/dev/null)" ]; then
+  echo "  ok: interactivity block present"
+else
+  echo "  WARN: no .interactivity block — Webspark may reinvent behavior (add it for interactive components; schema 1.1)"
+fi
+
 echo
 if [ "$ERR" -eq 0 ]; then echo "==> handoff VALID"; else echo "==> handoff INVALID"; fi
 exit "$ERR"
