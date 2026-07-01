@@ -25,7 +25,7 @@ function initCardBodies() {
 
   cardBodies.forEach((cardBody, index) => {
     const paragraph = cardBody.querySelector("div p");
-    const originalText = paragraph?.textContent??'';
+    const originalText = paragraph?.textContent ?? '';
     const style = window.getComputedStyle(cardBody);
 
     // Get the number of lines allowed (line clamp), usually set via CSS like -webkit-line-clamp
@@ -44,7 +44,11 @@ function initCardBodies() {
     const maxHeight = lineClamp * actualLineHeight;
 
     // Check if the paragraph exceeds the maximum allowed height
-    if (paragraph && paragraph.offsetHeight && paragraph.offsetHeight >= maxHeight) {
+    if (
+      paragraph &&
+      paragraph.offsetHeight &&
+      paragraph.offsetHeight >= maxHeight
+    ) {
       let visibleText = "";
       const words = originalText.split(" ");
       let visibleWordCount = 0;
