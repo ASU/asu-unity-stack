@@ -70,6 +70,15 @@ function readTabGap(container: HTMLElement): number {
   return parseFloat(style.getPropertyValue("column-gap") || style.getPropertyValue("gap")) || 8;
 }
 
+function arraysEqual(a: string[], b: string[]): boolean {
+  if (a === b) return true;
+  if (a.length !== b.length) return false;
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] !== b[i]) return false;
+  }
+  return true;
+}
+
 const TabbedPanels = ({
   initialTab = "",
   children,
@@ -131,8 +140,9 @@ const TabbedPanels = ({
   const calculateOverflow = useCallback(() => {
     const container = headerTabs.current;
     if (!container) {
-      setVisibleTabs(childrenArray.map((c) => c.props.id));
-      setOverflowTabs([]);
+      const allTabs = childrenArray.map((c) => c.props.id);
+      setVisibleTabs((prev) => (arraysEqual(prev, allTabs) ? prev : allTabs));
+      setOverflowTabs((prev) => (prev.length === 0 ? prev : []));
       return;
     }
 
@@ -174,8 +184,15 @@ const TabbedPanels = ({
       used += w + tabGap;
     }
 
-    setVisibleTabs(newVisibleTabs);
-    setOverflowTabs(newOverflowTabs);
+    // Bail out when the computed sets are unchanged. Returning the previous
+    // reference lets React skip the re-render, which prevents the
+    // overflow-recalculation layout effect from looping indefinitely.
+    setVisibleTabs((prev) =>
+      arraysEqual(prev, newVisibleTabs) ? prev : newVisibleTabs
+    );
+    setOverflowTabs((prev) =>
+      arraysEqual(prev, newOverflowTabs) ? prev : newOverflowTabs
+    );
 
     // Anchor dropdown to the right of the More button when the container is
     // narrower than 1200px AND the dropdown still fits within the viewport.
