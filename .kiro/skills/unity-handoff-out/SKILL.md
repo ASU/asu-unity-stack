@@ -37,7 +37,7 @@ Files:
 
 ```json
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "anchor": "WS2-1234",
   "created_at": "2026-06-25T20:00:00Z",
   "created_by": "acp unity stage",
@@ -65,6 +65,29 @@ Files:
   },
   "html_parity_markup_file": "markup.html",
   "tokens_used": ["$uds-color-brand-maroon", "$uds-size-spacing-4"],
+  "interactivity": {
+    "summary": "APG Tabs pattern; manual activation. Static markup is fully present on load; states are class-toggled.",
+    "state_machine": [
+      { "state": "IDLE", "desc": "no preview; committed pane shown" },
+      { "state": "PREVIEWING(i)", "desc": "desktop hover previews pane i without committing" },
+      { "state": "COMMITTED(j)", "desc": "pane j active; fires analytics" }
+    ],
+    "activation": { "desktop": "hover = preview, click/Enter/Space = commit", "touch": "tap commits (no preview)", "initial": "first pane committed" },
+    "keyboard": {
+      "pattern": "WAI-ARIA APG Tabs",
+      "keys": { "Enter/Space": "commit focused tab", "ArrowLeft/Right": "move focus only (roving tabindex, no commit)", "Home/End": "focus first/last" },
+      "focus": "roving tabindex: focused tab tabindex=0, others -1"
+    },
+    "aria": { "roles": "tablist / tab / tabpanel", "orientation": "horizontal", "dynamic": "aria-selected tracks committed tab; inactive tabpanels get aria-hidden + are not tabbable" },
+    "class_toggles": [
+      { "trigger": "committed pane", "element": ".uds-expandable-heroes__pane", "class": "is-active", "effect": "CSS expands the pane; siblings collapse" }
+    ],
+    "motion": "transitions gated behind @media (prefers-reduced-motion: no-preference)",
+    "forced_colors": "uses system colors; borders substitute for box-shadow under forced-colors",
+    "breakpoints": { "lg": "strip/collapse layout active >= lg; below lg all panes stack vertically, no collapse" },
+    "analytics": { "when": "on commit only", "mechanism": "dataLayer push", "payload_keys": ["event","region","section","..."], "guards": "no double-fire on Enter" },
+    "design_doc_refs": ["§0 locked decisions", "§5 state machine", "a11y/keyboard section"]
+  },
   "pr_ready_evidence": {
     "build": "yarn build — OK",
     "lint": "eslint + stylelint — clean",
@@ -80,6 +103,21 @@ Notes:
 - `dist_paths` point at the locally built UMD/dist artifact(s) — Webspark
   local-build+links these (see the Webspark `unity-consume` skill).
 - Keep `markup.html` authoritative for Twig parity; Webspark verifies against it.
+
+## Interactivity contract (mandatory for interactive components)
+
+`markup.html` captures *structure*, not *behavior*. When the Webspark stage
+reproduces the component as a Twig template + `Drupal.behaviors`, it must not
+reinvent the interaction model — so the handoff MUST carry an `interactivity`
+block for any component with state, keyboard handling, or dynamic ARIA.
+
+Populate it from the locked design document (state machine, activation model,
+keyboard/APG pattern, focus management, dynamic ARIA, class-toggle contract,
+motion/forced-colors behavior, breakpoint behavior, and analytics timing) —
+these are decisions the Unity stage already made and must not be re-derived
+downstream. Reference the exact design-doc sections in `design_doc_refs`. If the
+component is purely static (no JS behavior), set `"interactivity": {"summary":
+"static; no interactive behavior"}`.
 
 ## Validate before finishing
 
