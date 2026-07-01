@@ -4,10 +4,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 
 import { AppContext } from "../../../../../core/context";
-import {
-  degreeDataPropResolverService,
-  parseMajorInfoLink,
-} from "../../../../../core/services";
+import { degreeDataPropResolverService } from "../../../../../core/services";
 import { accellerateDegreeLink } from "../../../../../core/services/degree-http-service";
 import { toTitleCase } from "../../../../../core/utils";
 import { degreeListPropTypes } from "../programs-prop-types";
@@ -96,7 +93,7 @@ const AccordionView = ({ programs, actionUrls }) => {
         <li>
           <strong>Major:</strong>
           <br />
-            <a href=${parseMajorInfoLink(resolver, actionUrls.majorInfoUrl)}>
+            <a href=${resolver.getDegreeSearchUrl()}>
               ${resolver.getMajorDesc()}
             </a>
         </li>

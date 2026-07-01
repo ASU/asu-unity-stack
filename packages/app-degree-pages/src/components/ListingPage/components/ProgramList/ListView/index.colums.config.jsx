@@ -10,7 +10,6 @@ import {
 } from "../../../../../core/components/icons";
 import { getFullCampusLocalText } from "../../../../../core/models";
 import {
-  parseMajorInfoLink,
   accellerateDegreeTooltipLink, // TODO: this link needs a double check
   mapTooltipLink,
   accellerateDegreeLink,
@@ -29,7 +28,7 @@ const columns = [
     sortable: true,
     contentTemplate: ({ resolver, rowIndex, actionUrls, onClick }) => (
       <div className="cell-container">
-        <a href={parseMajorInfoLink(resolver, actionUrls?.majorInfoUrl)}>
+        <a href={resolver.getDegreeSearchUrl()}>
           {resolver.getMajorDesc()}
         </a>
         <ChevronIconButton
