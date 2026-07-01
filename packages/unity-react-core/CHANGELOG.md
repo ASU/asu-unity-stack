@@ -1,3 +1,10 @@
+# [@asu/unity-react-core-v1.11.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.11.3...@asu/unity-react-core-v1.11.4) (2026-07-01)
+
+
+### Bug Fixes
+
+* **unity-react-core:** update or remove pkg to support react 19 ([7db1f8b](https://github.com/ASU/asu-unity-stack/commit/7db1f8b38b201f7f58b6c5bb8a312343c045accb))
+
 # [@asu/unity-react-core-v1.11.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.11.2...@asu/unity-react-core-v1.11.3) (2026-06-18)
 
 
