@@ -20,9 +20,10 @@ const BaseCarousel = ({
   perView = 1,
   width = "",
   maxWidth = "",
-  carouselItems = [{}],
+  // @ts-ignore
+  carouselItems,
   cssClass = "",
-  CustomNavComponent = () => {},
+  CustomNavComponent = undefined,
   role = "",
   ariaLabelledBy = "",
   isFullWidth = false,
@@ -34,7 +35,7 @@ const BaseCarousel = ({
   hasPeek = true,
   isDraggable = true,
   hasShadow = true,
-  bgColor = ""
+  bgColor = "gray-dark-bg"
 }) => {
   // Only prop for the slider configs we expose is perView. Everything else is
   // considered locked down for Web Standards 2.
