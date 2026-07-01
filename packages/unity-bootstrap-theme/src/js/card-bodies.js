@@ -25,7 +25,7 @@ function initCardBodies() {
 
   cardBodies.forEach((cardBody, index) => {
     const paragraph = cardBody.querySelector("div p");
-    const originalText = paragraph?.textContent ?? '';
+    const originalText = paragraph?.textContent ?? "";
     const style = window.getComputedStyle(cardBody);
 
     // Get the number of lines allowed (line clamp), usually set via CSS like -webkit-line-clamp
