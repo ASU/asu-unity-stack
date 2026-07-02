@@ -48,6 +48,10 @@ const AccordionView = ({ programs, actionUrls }) => {
    * */
   const cards = programs.map(row => {
     const resolver = degreeDataPropResolverService(row);
+    const degreeUrl = resolver.getDegreeSearchUrl();
+    const majorNameHtml = degreeUrl
+    ? `<a href=${degreeUrl}>${resolver.getMajorDesc()}</a>`
+    : `<span>${resolver.getMajorDesc()}</span>`;
 
     const getRequiredCourses = () => {
       const isOnline = resolver.isOnline();
@@ -90,13 +94,11 @@ const AccordionView = ({ programs, actionUrls }) => {
       content: {
         header: resolver.getMajorDesc(),
         body: `<ul>
-        <li>
-          <strong>Major:</strong>
-          <br />
-            <a href=${resolver.getDegreeSearchUrl()}>
-              ${resolver.getMajorDesc()}
-            </a>
-        </li>
+          <li>
+            <strong>Major:</strong>
+            <br />
+              ${majorNameHtml}
+          </li>
         <li>
           <strong>Degree:</strong>
           <br />${resolver.getDegree()}
