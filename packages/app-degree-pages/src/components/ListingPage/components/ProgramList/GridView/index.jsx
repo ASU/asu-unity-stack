@@ -39,8 +39,8 @@ function GridView({ programs, loading, actionUrls }) {
               image={imageUrl}
               imageAltText="An example image"
               title={resolver.getMajorDesc()}
-              linkLabel="View Program Details"
-              linkUrl={resolver.getDegreeSearchUrl()}
+              linkLabel={url ? "View Program Details" : undefined}
+              linkUrl={url || undefined}
               buttons={[
                 {
                   color: "maroon",

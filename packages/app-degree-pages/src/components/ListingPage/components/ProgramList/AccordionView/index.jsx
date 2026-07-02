@@ -94,13 +94,11 @@ const AccordionView = ({ programs, actionUrls }) => {
       content: {
         header: resolver.getMajorDesc(),
         body: `<ul>
-        <li>
-          <strong>Major:</strong>
-          <br />
-            <a href=${resolver.getDegreeSearchUrl()}>
-              ${resolver.getMajorDesc()}
-            </a>
-        </li>
+          <li>
+            <strong>Major:</strong>
+            <br />
+              ${majorNameHtml}
+          </li>
         <li>
           <strong>Degree:</strong>
           <br />${resolver.getDegree()}
