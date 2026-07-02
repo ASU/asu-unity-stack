@@ -28,6 +28,7 @@ function GridView({ programs, loading, actionUrls }) {
     >
       {programs.map(row => {
         const resolver = degreeDataPropResolverService(row);
+        const url = resolver.getDegreeSearchUrl();
 
         return (
           <div className="col col-sm-12 col-md-4 col-lg-3 mb-2">
@@ -38,8 +39,8 @@ function GridView({ programs, loading, actionUrls }) {
               image={imageUrl}
               imageAltText="An example image"
               title={resolver.getMajorDesc()}
-              linkLabel="View Program Details"
-              linkUrl={resolver.getDegreeSearchUrl()}
+              linkLabel={url ? "View Program Details" : undefined}
+              linkUrl={url || undefined}
               buttons={[
                 {
                   color: "maroon",
