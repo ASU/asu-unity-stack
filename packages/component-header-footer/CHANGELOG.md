@@ -1,3 +1,10 @@
+# [@asu/component-header-footer-v1.4.5](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.4.4...@asu/component-header-footer-v1.4.5) (2026-07-06)
+
+
+### Bug Fixes
+
+* **component-header-footer:** fix arbitrary timeout in header submit function ([05367b9](https://github.com/asu/asu-unity-stack/commit/05367b98afaab13c8e88f460816f47c88071f962))
+
 # [@asu/component-header-footer-v1.4.4](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.4.3...@asu/component-header-footer-v1.4.4) (2026-07-01)
 
 
