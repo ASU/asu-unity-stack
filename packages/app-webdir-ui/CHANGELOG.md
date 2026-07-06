@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v5.0.15](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.14...@asu/app-webdir-ui-v5.0.15) (2026-07-06)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** fix wrong search input size on search page ([9d9a2d8](https://github.com/asu/asu-unity-stack/commit/9d9a2d8840cf84e50a56e0056df7e25bbc97913f))
+
 # [@asu/app-webdir-ui-v5.0.14](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.13...@asu/app-webdir-ui-v5.0.14) (2026-05-21)
 
 
