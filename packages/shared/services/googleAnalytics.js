@@ -22,6 +22,8 @@ export const gaEventPropTypes = PropTypes.shape({
  *  text?: string
  *  region?:string
  *  component?: string
+ *  eventCallback?: () => void
+ *  eventTimeout?: number
  * }} GAEventObject
  */
 
@@ -37,6 +39,8 @@ const trackGAEvent = ({
   text = "",
   region = "",
   component = "",
+  eventCallback,
+  eventTimeout,
 }) => {
   // @ts-ignore
   const { dataLayer } = window;
@@ -50,7 +54,13 @@ const trackGAEvent = ({
     text: text.toLowerCase(),
     component: component.toLowerCase(),
   };
-  if (dataLayer) dataLayer.push(e);
+  if (eventCallback) e.eventCallback = eventCallback;
+  if (eventTimeout) e.eventTimeout = eventTimeout;
+  if (dataLayer) {
+    dataLayer.push(e);
+  } else if (eventCallback) {
+    eventCallback();
+  }
 };
 
 export { trackGAEvent };

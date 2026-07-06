@@ -11,7 +11,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes, { shape } from "prop-types";
 import React from "react";
 
-// @ts-expect-error
 import endorsedLogo from "../../../../public/assets/images/endorsedLogo.png";
 
 const DEFAULT_GA_EVENT = {
