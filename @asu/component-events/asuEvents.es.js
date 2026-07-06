@@ -1944,9 +1944,11 @@ const lw = ({
   section: g = "",
   text: C = "",
   region: L = "",
-  component: Y = ""
+  component: Y = "",
+  eventCallback: F,
+  eventTimeout: V
 }) => {
-  const { dataLayer: F } = window, V = {
+  const { dataLayer: te } = window, ee = {
     event: i.toLowerCase(),
     action: f.toLowerCase(),
     name: p.toLowerCase(),
@@ -1956,7 +1958,7 @@ const lw = ({
     text: C.toLowerCase(),
     component: Y.toLowerCase()
   };
-  F && F.push(V);
+  F && (ee.eventCallback = F), V && (ee.eventTimeout = V), te ? te.push(ee) : F && F();
 }, Um = ({ children: i }) => /* @__PURE__ */ ye.jsx(ye.Fragment, { children: i });
 Um.propTypes = {
   children: E.oneOfType([
