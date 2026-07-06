@@ -10,10 +10,9 @@ import {
   FacebookShareButton,
   LinkedinIcon,
   LinkedinShareButton,
-  TwitterIcon,
-  TwitterShareButton,
+  XIcon,
+  XShareButton,
 } from "react-share";
-import { Breadcrumb, BreadcrumbItem } from "reactstrap";
 
 import { Button } from "../Button/Button";
 import { Wrapper, EventInfoWrapper } from "./Article.styles";
@@ -28,7 +27,7 @@ import { Wrapper, EventInfoWrapper } from "./Article.styles";
  */
 export const Article = ({
   type = "news",
-  articleUrl,
+  articleUrl = "",
   publicationDate,
   title,
   body,
@@ -119,7 +118,11 @@ export const Article = ({
         <div className="col col-lg-4 col-md-6 col-12">
           <h4>Share this event:</h4>
           <div className="article-social-media">
-            <FacebookShareButton url={articleUrl} quote={title}>
+            <FacebookShareButton
+              url={articleUrl}
+              title={title}
+              aria-label="Share via Facebook"
+            >
               <FacebookIcon
                 size={28}
                 borderRadius={4}
@@ -127,17 +130,25 @@ export const Article = ({
                 iconFillColor="white"
               />
             </FacebookShareButton>
-            {/* @ts-ignore */}
-            <TwitterShareButton url={articleUrl} quote={title}>
-              <TwitterIcon
+            <XShareButton
+              url={articleUrl}
+              title={title}
+              aria-label="Share via X (formerly Twitter)"
+            >
+              <XIcon
                 size={28}
                 borderRadius={4}
                 bgStyle={{ fill: "maroon" }}
                 iconFillColor="white"
               />
-            </TwitterShareButton>
-            {/* @ts-ignore */}
-            <EmailShareButton url={authorEmail} quote={title}>
+            </XShareButton>
+            <EmailShareButton
+              url={articleUrl}
+              title={title}
+              aria-label="Share via Email"
+              subject="Check out this article!"
+              body="I found this and thought you might find it interesting:"
+            >
               <EmailIcon
                 size={28}
                 borderRadius={4}
@@ -145,8 +156,11 @@ export const Article = ({
                 iconFillColor="white"
               />
             </EmailShareButton>
-            {/* @ts-ignore */}
-            <LinkedinShareButton url={articleUrl} quote={title}>
+            <LinkedinShareButton
+              url={articleUrl}
+              title={title}
+              aria-label="Share via LinkedIn"
+            >
               <LinkedinIcon
                 size={28}
                 borderRadius={4}
@@ -167,28 +181,41 @@ export const Article = ({
           <i className="fas fa-map-marker-alt" />
           Location:
         </h4>
-        {}
-        <div dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventLocation)} />
+        {eventLocation && (
+          <div
+            dangerouslySetInnerHTML={sanitizeDangerousMarkup(eventLocation)}
+          />
+        )}
         {registrationUrl && zoomUrl && <a href={zoomUrl}>Attend on Zoom</a>}
       </div>
     );
   };
 
+  /**
+   * @param {{title?: string, url?: string, active?: boolean}} item
+   * @returns {JSX.Element}
+   */
   const activeBreadcrumb = item => {
     return (
-      <BreadcrumbItem
+      <li
         key={item.title}
-        active={item.active}
-        tag="li"
         className="breadcrumb-item"
+        aria-current={item.active ? "page" : undefined}
       >
-        <BreadcrumbItem tag="a" href={item.url}>
-          {item.title}
-        </BreadcrumbItem>
-      </BreadcrumbItem>
+        {item.active ? (
+          <span>{item.title}</span>
+        ) : (
+          <a href={item.url}>{item.title}</a>
+        )}
+      </li>
     );
   };
-
+  if (articleUrl === "") {
+    // eslint-disable-next-line no-console
+    console.warn(
+      "Warning: articleUrl prop is required for Article component for social media sharing to work properly."
+    );
+  }
   return (
     <>
       {headerImageUrl && type !== "event" && (
@@ -209,9 +236,11 @@ export const Article = ({
         {breadcrumbs && (
           <div className="row pt-4" data-testid="breadcrumbs">
             <div className="col col-12">
-              <Breadcrumb listClassName="breadcrumb">
-                {breadcrumbs.map(item => activeBreadcrumb(item))}
-              </Breadcrumb>
+              <nav aria-label="breadcrumb">
+                <ol className="breadcrumb">
+                  {breadcrumbs.map(item => activeBreadcrumb(item))}
+                </ol>
+              </nav>
             </div>
           </div>
         )}
@@ -257,7 +286,7 @@ export const Article = ({
           <div className="row row-spaced pt-2">
             <div className="col col-12">
               <div className="article-social-media">
-                <FacebookShareButton url={articleUrl} quote={title}>
+                <FacebookShareButton url={articleUrl} title={title}>
                   <FacebookIcon
                     size={28}
                     borderRadius={4}
@@ -265,17 +294,15 @@ export const Article = ({
                     iconFillColor="white"
                   />
                 </FacebookShareButton>
-                {/* @ts-ignore */}
-                <TwitterShareButton url={articleUrl} quote={title}>
-                  <TwitterIcon
+                <XShareButton url={articleUrl} title={title}>
+                  <XIcon
                     size={28}
                     borderRadius={4}
                     bgStyle={{ fill: "maroon" }}
                     iconFillColor="white"
                   />
-                </TwitterShareButton>
-                {/* @ts-ignore */}
-                <LinkedinShareButton url={articleUrl} quote={title}>
+                </XShareButton>
+                <LinkedinShareButton url={articleUrl} title={title}>
                   <LinkedinIcon
                     size={28}
                     borderRadius={4}

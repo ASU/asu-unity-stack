@@ -22,7 +22,7 @@ const HeaderMainWrapper = styled.div`
       "search search search"
       "nav nav nav";
 
-    height: calc(100dvh - ${({ headerTop }) => headerTop}px);
+    max-height: calc(100dvh - ${({ headerTop }) => headerTop}px);
     overflow: hidden;
     .${CLASS_NAMES.PARTNER_TITLE}, .navbar-brand {
       grid-area: logo;

@@ -1,3 +1,14 @@
+# [@asu/component-header-footer-v1.4.4](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.4.3...@asu/component-header-footer-v1.4.4) (2026-07-01)
+
+
+### Bug Fixes
+
+* **component-header-footer:** adjust layout add dropdown examples ([07b980c](https://github.com/asu/asu-unity-stack/commit/07b980cdeef62e97669567b604960e06dffd6467))
+* **component-header-footer:** col divider bg fix ([cbc8216](https://github.com/asu/asu-unity-stack/commit/cbc82164b8be4b7561f1c0eb5861040e23b4b6ea))
+* **component-header-footer:** col divider bg fix ([85b69be](https://github.com/asu/asu-unity-stack/commit/85b69be51fec920106251dfc15d26a8ce20f53ba))
+* **component-header-footer:** col divider bg fix ([4dbe1ac](https://github.com/asu/asu-unity-stack/commit/4dbe1ac1a3814be49187b87238e40e5b35b029b6))
+* **component-header-footer:** col divider bg fix ([ffd1bef](https://github.com/asu/asu-unity-stack/commit/ffd1bef442043a6979b99e6d0ee32894c578a5c4))
+
 # [@asu/component-header-footer-v1.4.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.4.2...@asu/component-header-footer-v1.4.3) (2026-05-28)
 
 
