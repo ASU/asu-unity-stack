@@ -1,10 +1,6 @@
 {
   "name": "@asu/app-degree-pages",
-<<<<<<< HEAD
   "version": "3.2.2",
-=======
-  "version": "3.2.1",
->>>>>>> 2be274b60 (chore(release): 3.2.1 [skip ci])
   "description": "ASU implementation of degree pages",
   "main": "./dist/degreePages.cjs.js",
   "browser": "./dist/degreePages.umd.js",
