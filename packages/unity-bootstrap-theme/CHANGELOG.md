@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.39.5](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.39.4...@asu/unity-bootstrap-theme-v1.39.5) (2026-07-07)
+
+
+### Bug Fixes
+
+* **anchor-menu:** keep sticky menu keyboard-reachable at 200% zoom ([2112719](https://github.com/ASU/asu-unity-stack/commit/21127192e638453e6f7961f8b1b8351123c32217))
+
 # [@asu/unity-bootstrap-theme-v1.39.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.39.3...@asu/unity-bootstrap-theme-v1.39.4) (2026-06-12)
 
 
