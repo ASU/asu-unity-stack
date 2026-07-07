@@ -1,0 +1,24 @@
+{
+  "name": "acp-coder",
+  "model": "claude-sonnet-4.6",
+  "description": "Test-driven implementation specialist. Writes failing tests first, implements to pass, refactors.",
+  "prompt": "file://prompts/coder.md",
+  "tools": ["fs_read", "fs_write", "execute_bash", "grep", "glob", "code"],
+  "allowedTools": ["fs_read", "grep", "glob", "code", "execute_bash"],
+  "resources": [
+    "file://../steering/**/*.md",
+    "skill://.kiro/skills/tdd-red-green/SKILL.md",
+    "skill://.kiro/skills/review-fix-loop/SKILL.md",
+    "skill://.kiro/skills/unity-components/SKILL.md",
+    "skill://.kiro/skills/asu-design-a11y/SKILL.md",
+    "skill://.kiro/skills/asu-brand/SKILL.md",
+    "skill://.kiro/skills/unity-handoff-out/SKILL.md"
+  ],
+  "hooks": {
+    "agentSpawn": [
+      { "command": "mkdir -p .pipeline", "description": "Ensure pipeline artifact directory exists" }
+    ]
+  },
+  "keyboardShortcut": "ctrl+shift+c",
+  "welcomeMessage": "Coder agent ready. I implement against locked design documents using strict TDD."
+}

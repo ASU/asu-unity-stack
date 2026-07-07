@@ -1,0 +1,28 @@
+{
+  "mcpServers": {
+    "mcp-atlassian": {
+      "command": "uvx",
+      "args": ["mcp-atlassian", "--read-only"],
+      "env": {
+        "JIRA_URL": "https://asudev.jira.com",
+        "JIRA_USERNAME": "$JIRA_USERNAME",
+        "JIRA_API_TOKEN": "$JIRA_API_TOKEN",
+        "CONFLUENCE_URL": "https://asudev.jira.com/wiki",
+        "CONFLUENCE_USERNAME": "$CONFLUENCE_USERNAME",
+        "CONFLUENCE_API_TOKEN": "$CONFLUENCE_API_TOKEN",
+        "READ_ONLY_MODE": "true"
+      }
+    },
+    "figma": {
+      "url": "http://127.0.0.1:3845/mcp"
+    },
+    "asu-unity-react-core": { "url": "http://localhost:9200/mcp", "disabled": false },
+    "asu-unity-bootstrap-theme": { "url": "http://localhost:9000/mcp", "disabled": false },
+    "asu-app-degree-pages": { "url": "http://localhost:9010/mcp", "disabled": false },
+    "asu-app-rfi": { "url": "http://localhost:9020/mcp", "disabled": false },
+    "asu-app-webdir-ui": { "url": "http://localhost:9030/mcp", "disabled": false },
+    "asu-component-events": { "url": "http://localhost:9060/mcp", "disabled": false },
+    "asu-component-header-footer": { "url": "http://localhost:9080/mcp", "disabled": false },
+    "asu-component-news": { "url": "http://localhost:9090/mcp", "disabled": false }
+  }
+}
