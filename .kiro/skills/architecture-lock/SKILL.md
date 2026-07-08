@@ -52,6 +52,24 @@ Auth/authz requirements, input validation boundaries, data exposure risks, trust
 ### 7. Performance Considerations
 Expected load, bottleneck analysis, caching strategy, resource limits.
 
+### 8. Behavioral Matrix (Interactive Components)
+
+For components with user interaction (carousels, tabs, accordions, card stacks, etc.), define:
+
+| User Action | Current State | Next State | Visual Change | Animation |
+|-------------|---------------|------------|---------------|-----------||
+| Click card N | Card M active | Card N active | Card N moves to front | translateX transitions |
+| ArrowLeft | Card N active | Card N-1 active (clamped) | Previous card moves to front | 0.3s ease-out |
+| ArrowRight | Card N active | Card N+1 active (clamped) | Next card moves to front | 0.3s ease-out |
+
+**Positioning Formula** (for fanned/stacked layouts):
+- `offset = index - activeIndex`
+- `translateX = offset * spacing` (e.g., 60px)
+- `rotation = offset * angle` (e.g., 8deg)
+- `zIndex = totalCards - Math.abs(offset)`
+
+This prevents ambiguity in implementation — the coder should not have to guess behavioral intent.
+
 ## Lock Protocol
 
 1. Present design document to human for approval
