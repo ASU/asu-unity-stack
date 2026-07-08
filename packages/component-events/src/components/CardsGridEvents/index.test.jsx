@@ -98,6 +98,13 @@ describe("#Cards Grid Events", () => {
         component.queryByText("No events to show.")
       ).not.toBeInTheDocument();
     });
+
+    it("should fall back to the default no-feed text when noFeedText is empty", async () => {
+      await renderCardsGridEvents({ ...emptyFeedArgs, noFeedText: "" });
+      expect(
+        await component.findByText("No events to show.")
+      ).toBeInTheDocument();
+    });
   });
 
   describe("#With No Header", () => {
