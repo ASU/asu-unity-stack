@@ -1,3 +1,17 @@
+# [@asu/app-rfi-v3.10.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.10.1...@asu/app-rfi-v3.10.2) (2026-07-01)
+
+
+### Bug Fixes
+
+* **app-rfi:** remove pkg to support react 19 ([3eec4b8](https://github.com/asu/asu-unity-stack/commit/3eec4b87a7b5495085143c937a0f9e22ac700023))
+
+# [@asu/app-rfi-v3.10.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.10.0...@asu/app-rfi-v3.10.1) (2026-06-18)
+
+
+### Bug Fixes
+
+* **app-rfi:** bumps dompurify from 3.4.5 to 3.4.10 ([f07a003](https://github.com/asu/asu-unity-stack/commit/f07a00382c737d27511240934676150701cfe6ec))
+
 # [@asu/app-rfi-v3.10.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.9.0...@asu/app-rfi-v3.10.0) (2026-06-09)
 
 

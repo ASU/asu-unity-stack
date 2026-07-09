@@ -15,6 +15,19 @@ spec/QA (that is the structural reviewer's job).
   (Figma Dev Mode MCP, if available).
 - Intended tokens — `.pipeline/design-doc.md` + the `asu-brand` skill.
 
+## Pre-Implementation Visual Analysis (Optional)
+
+Before code is written, the visual agent can analyze `.intake/` references to extract positioning constraints for the architect:
+
+1. **Identify layout pattern**: grid, flex, absolute positioning, stacking
+2. **Measure spacing**: card gaps, offsets, rotations from reference
+3. **Document states**: which visual states are shown (active, hover, stacked)
+4. **Extract formulas**: "cards appear to fan with ~60px horizontal offset and ~8° rotation per index"
+
+Output to `.pipeline/visual-analysis.md` for architect to incorporate into the Behavioral Matrix.
+
+This reduces "it doesn't look like the design" rework after implementation.
+
 ## Capture the build (agent-browser)
 
 `agent-browser` drives Chrome via CDP. Install: `npm i -g agent-browser` then

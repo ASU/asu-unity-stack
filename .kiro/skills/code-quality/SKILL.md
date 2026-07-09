@@ -43,6 +43,26 @@ Evaluate structural quality, maintainability, and engineering standards.
 - Could a function parameter, adapter, fake, or temp resource be simpler than a new interface?
 - Do tests verify observable behavior rather than implementation choreography?
 
+### 8. CSS Invariants
+
+For components with critical layout properties, verify:
+
+- **Position dependencies documented**: If `position: absolute` is required for stacking, a comment explains why and warns against removal.
+- **No conflicting properties**: Adding `display: flex` to an absolutely positioned element can break layout.
+- **Invariant comments**: Critical CSS should have:
+  ```css
+  /* INVARIANT: position: absolute required for z-index stacking.
+     Do not change to relative or remove without updating JS transforms. */
+  .card {
+    position: absolute;
+  }
+  ```
+
+### CSS Invariant Checklist
+- [ ] Critical positioning properties have invariant comments
+- [ ] No conflicting display/position combinations introduced
+- [ ] Changes to layout CSS verified visually before commit
+
 ## Output Format
 
 ```
