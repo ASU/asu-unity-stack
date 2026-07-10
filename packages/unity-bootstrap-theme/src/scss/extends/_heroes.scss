@@ -213,7 +213,7 @@ div[class^="uds-hero"] {
 
 div.uds-hero-sm {
   min-height: $uds-size-spacing-32;
-  grid-template-rows: 1fr auto auto 3rem;
+  grid-template-rows: 1fr auto auto auto 3rem;
 
   h1,
   a.btn,
@@ -251,16 +251,12 @@ div.uds-hero-sm {
       min-height: $uds-size-spacing-32;
     }
   }
-
-  > a.btn {
-    top: 15rem;
-  }
 }
 
 div.uds-hero-md {
   min-height: 21rem;
   // by design, the hero-md has no content on mobile, change grid template rows and hide .content
-  grid-template-rows: 1fr auto auto 3rem;
+  grid-template-rows: 1fr auto auto auto 3rem;
 
   .content {
     display: none;
@@ -270,17 +266,11 @@ div.uds-hero-md {
     .btn-row {
       flex-wrap: wrap;
       align-self: flex-start;
-      top: 20rem;
     }
 
     .hero-overlay {
       min-height: 21rem;
     }
-  }
-
-  // TODO: Remove, fallback for buttons without btn-row
-  > a.btn {
-    top: 20rem;
   }
 }
 
@@ -307,7 +297,6 @@ div.uds-hero-lg {
 
     .btn-row {
       align-self: flex-start;
-      top: 31rem;
     }
 
     .hero-overlay {
@@ -319,10 +308,30 @@ div.uds-hero-lg {
   &.uds-video-hero .video-hero-controls {
     display: none;
   }
+}
 
-  // TODO: Remove, fallback for buttons without btn-row
-  > a.btn {
-    top: 31rem;
+// WS2-2950: below the md breakpoint, hero CTAs flow in their own auto grid row
+// instead of hanging at a fixed absolute offset that overflows the hero box.
+// Scoped to media-breakpoint-down(md) so tablet/desktop styles are untouched.
+@include media-breakpoint-down(md) {
+  div.uds-hero-md.has-btn-row .btn-row,
+  div.uds-hero-lg.has-btn-row .btn-row {
+    grid-row: 4;
+    position: relative;
+    top: auto;
+    margin-top: 1rem;
+  }
+
+  div.uds-hero-sm,
+  div.uds-hero-md,
+  div.uds-hero-lg {
+    // TODO: Remove, fallback for buttons without btn-row
+    > a.btn {
+      position: relative;
+      top: auto;
+      grid-row: 4;
+      margin-top: 1rem;
+    }
   }
 }
 
@@ -384,6 +393,8 @@ div.uds-hero-lg {
       position: relative;
       top: auto;
       grid-row: 4;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
     }
 
     &.has-btn-row {
