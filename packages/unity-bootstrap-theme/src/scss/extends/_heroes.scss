@@ -380,6 +380,17 @@ div.uds-hero-lg {
   div.uds-hero-sm {
     grid-template-rows: 0px 1fr auto auto;
 
+    // Row 4 collapses to 0 when the hero has no CTA, leaving the h1 flush
+    // against the bottom edge — carry the bottom spacing on the h1 instead.
+    h1 {
+      margin-bottom: $uds-size-spacing-4;
+    }
+
+    &.has-btn-row h1,
+    &:has(> a.btn) h1 {
+      margin-bottom: 0;
+    }
+
     > a.btn {
       position: relative;
       top: auto;
