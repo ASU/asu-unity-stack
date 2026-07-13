@@ -85,7 +85,7 @@ export const Textarea: React.FC<TextareaProps> = ({
       </GaEventWrapper>
       {valid && (
         <small id={successId} className="valid-feedback">
-          <span title="Alert" className="fa fa-icon fa-check-circle" />
+          <span title="Success" className="fa fa-icon fa-check-circle" />
           {validMessage}
         </small>
       )}

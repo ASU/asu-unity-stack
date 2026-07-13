@@ -9,7 +9,7 @@ export const inputValidationFeedback = ["", "valid", "invalid"] as const;
 
 export interface TextInputProps extends ComponentProps<"input"> {
   id?: string;
-  label: string;
+  label?: string;
   /**
    * The size of the input field Defaults to "md"
    */
@@ -85,7 +85,7 @@ export const TextInput: React.FC<TextInputProps> = ({
       </GaEventWrapper>
       {valid && (
         <small id={successId} className="valid-feedback">
-          <span title="Alert" className="fa fa-icon fa-check-circle" />
+          <span title="Success" className="fa fa-icon fa-check-circle" />
           {validMessage}
         </small>
       )}
