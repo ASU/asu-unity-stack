@@ -1,0 +1,29 @@
+{
+  "name": "acp-reviewer",
+  "model": "glm-5",
+  "description": "Three-phase adversarial code reviewer: spec compliance, attack surface analysis, and QA verification.",
+  "prompt": "file://prompts/reviewer.md",
+  "tools": ["fs_read", "execute_bash", "grep", "glob", "code"],
+  "allowedTools": ["fs_read", "grep", "glob", "code", "execute_bash"],
+  "resources": [
+    "file://../steering/**/*.md",
+    "skill://.kiro/skills/spec-compliance/SKILL.md",
+    "skill://.kiro/skills/adversarial-review/SKILL.md",
+    "skill://.kiro/skills/code-quality/SKILL.md",
+    "skill://.kiro/skills/qa-verification/SKILL.md",
+    "skill://.kiro/skills/unity-components/SKILL.md",
+    "skill://.kiro/skills/asu-design-a11y/SKILL.md",
+    "skill://.kiro/skills/asu-brand/SKILL.md",
+    "skill://.kiro/skills/unity-handoff-out/SKILL.md"
+  ],
+  "hooks": {
+    "agentSpawn": [
+      { "command": "mkdir -p .pipeline", "description": "Ensure pipeline artifact directory exists" }
+    ],
+    "preToolUse": [
+      { "matcher": "fs_write", "command": ".kiro/hooks/block-reviewer-writes.sh", "description": "Reviewers do not modify code" }
+    ]
+  },
+  "keyboardShortcut": "ctrl+shift+r",
+  "welcomeMessage": "Reviewer agent ready. I perform 3-phase adversarial code review."
+}

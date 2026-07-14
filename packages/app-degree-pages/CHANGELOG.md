@@ -1,3 +1,12 @@
+# [@asu/app-degree-pages-v3.2.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.2.1...@asu/app-degree-pages-v3.2.2) (2026-07-07)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** degree links point to degree search degree pages ([dd2e9b6](https://github.com/asu/asu-unity-stack/commit/dd2e9b6348db4537584b30e744252186065d09bf))
+* **app-degree-pages:** render plain text instead of empty link for edge case degrees ([944cd7b](https://github.com/asu/asu-unity-stack/commit/944cd7b6efad91da32ee11522083da8a1305c4af))
+* **app-degree-pages:** use DOMAIN_URL constant here ([c158f99](https://github.com/asu/asu-unity-stack/commit/c158f999c48f515172aca150465e7abe3bbb4cf4))
+
 # [@asu/app-degree-pages-v3.2.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.2.0...@asu/app-degree-pages-v3.2.1) (2026-06-18)
 
 

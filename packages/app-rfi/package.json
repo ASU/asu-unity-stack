@@ -1,6 +1,6 @@
 {
   "name": "@asu/app-rfi",
-  "version": "3.10.1",
+  "version": "3.10.2",
   "description": "ASU Request For Information (RFI) form",
   "main": "./dist/appRfi.cjs.js",
   "browser": "./dist/appRfi.umd.js",
@@ -83,7 +83,6 @@
     "formik": "^2.1.4",
     "prop-types": "^15.7.2",
     "react-phone-input-2": "2.15.1",
-    "reactstrap": "^9",
     "yup": "^0.28.1",
     "yup-phone": "^1.2.19"
   },

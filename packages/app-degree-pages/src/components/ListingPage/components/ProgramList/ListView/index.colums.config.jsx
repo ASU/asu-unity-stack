@@ -10,7 +10,6 @@ import {
 } from "../../../../../core/components/icons";
 import { getFullCampusLocalText } from "../../../../../core/models";
 import {
-  parseMajorInfoLink,
   accellerateDegreeTooltipLink, // TODO: this link needs a double check
   mapTooltipLink,
   accellerateDegreeLink,
@@ -27,19 +26,24 @@ const columns = [
     label: "Major",
     className: "major",
     sortable: true,
-    contentTemplate: ({ resolver, rowIndex, actionUrls, onClick }) => (
-      <div className="cell-container">
-        <a href={parseMajorInfoLink(resolver, actionUrls?.majorInfoUrl)}>
-          {resolver.getMajorDesc()}
-        </a>
-        <ChevronIconButton
-          dataId="show-row-detail"
-          ariaLabel={`${resolver.getMajorDesc()} arrow`}
-          ariaControls={`row-info-${rowIndex}`}
-          onClick={selected => onClick(rowIndex, selected)}
-        />
-      </div>
-    ),
+    contentTemplate: ({ resolver, rowIndex, actionUrls, onClick }) => {
+      const url = resolver.getDegreeSearchUrl();
+      return (
+        <div className="cell-container">
+          {url ? (
+            <a href={url}>{resolver.getMajorDesc()}</a>
+          ) : (
+            <span>{resolver.getMajorDesc()}</span>
+          )}
+          <ChevronIconButton
+            dataId="show-row-detail"
+            ariaLabel={`${resolver.getMajorDesc()} arrow`}
+            ariaControls={`row-info-${rowIndex}`}
+            onClick={selected => onClick(rowIndex, selected)}
+          />
+        </div>
+      );
+    },
   },
   {
     dataKey: "Degree",

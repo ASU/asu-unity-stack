@@ -205,6 +205,12 @@ const DropdownItem = ({
     );
   };
 
+  let heightOffset = headerHeight;
+  if (buttons.length > 0) {
+    const ctaButtonRowHeight = 64;
+    heightOffset += ctaButtonRowHeight;
+  }
+
   return (
     <DropdownWrapper
       ref={dropdownRef}
@@ -212,7 +218,7 @@ const DropdownItem = ({
         isMega ? " mega" : ""
       }`}
       breakpoint={breakpoint}
-      headerHeight={headerHeight}
+      heightOffset={heightOffset}
     >
       <div
         style={{ "--cols": cols < 3 ? 4 : cols }}

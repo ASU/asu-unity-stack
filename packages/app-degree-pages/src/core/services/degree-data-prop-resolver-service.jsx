@@ -2,6 +2,7 @@
 
 import { findCampusDefinition } from "../models";
 import { fetchAcademicPlans } from "../utils";
+import { DOMAIN_URL } from "../constants/web-api-constants";
 
 // Possible values are UG, GR, UGCM, and OTHR.
 const isUndergradProgram = row => row["degreeType"] === "UG";
@@ -85,6 +86,24 @@ function degreeDataPropResolverService(row = {}) {
     getInstitution: () => "ASU00",
     getAcadPlan: () => row["acadPlanCode"],
     /** @returns {string} */
+    getDegreeSearchUrl: () => {
+      const degreeType = row["degreeType"];
+      const planCode = row["acadPlanCode"];
+
+      if (!planCode || !degreeType) return "";
+
+      const programTypeMap = {
+        UG:   "bachelors",
+        GR:   "masters-phd",
+        UGCM: "minors",
+      };
+
+      const programTypePath = programTypeMap[degreeType];
+
+      if (!programTypePath) return "";
+
+      return `${DOMAIN_URL}/${programTypePath}/major/ASU00/${planCode}`;
+    },
     getDegree: () => {
       // Minors
       let degree =
