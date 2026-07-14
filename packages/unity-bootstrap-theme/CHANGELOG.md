@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.39.7](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.39.6...@asu/unity-bootstrap-theme-v1.39.7) (2026-07-14)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** add bottom spacing to hero-sm title when no CTA is present ([51ebf35](https://github.com/ASU/asu-unity-stack/commit/51ebf358d8e487b02b247e95c7542829b0fd7ff0))
+
 # [@asu/unity-bootstrap-theme-v1.39.6](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.39.5...@asu/unity-bootstrap-theme-v1.39.6) (2026-07-14)
 
 
