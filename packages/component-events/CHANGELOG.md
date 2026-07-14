@@ -1,3 +1,15 @@
+# [@asu/component-events-v3.2.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v3.1.0...@asu/component-events-v3.2.0) (2026-07-14)
+
+
+### Bug Fixes
+
+* **component-events:** fall back to default noFeedText when blank ([e85d4da](https://github.com/asu/asu-unity-stack/commit/e85d4dacd9d7ee6138805fd505ceabca737f3aeb))
+
+
+### Features
+
+* **component-events:** expose configurable noFeedText prop ([9cac3e9](https://github.com/asu/asu-unity-stack/commit/9cac3e912e1b0bc4c573f8e72378b1d147b0bce8))
+
 # [@asu/component-events-v3.1.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v3.0.1...@asu/component-events-v3.1.0) (2026-04-03)
 
 
