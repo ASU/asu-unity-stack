@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v1.39.6](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.39.5...@asu/unity-bootstrap-theme-v1.39.6) (2026-07-14)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** keep hero CTA inside the hero box below md breakpoint ([0057cd4](https://github.com/ASU/asu-unity-stack/commit/0057cd44f9919319ce6d07033d0b4f05950609bb))
+
 # [@asu/unity-bootstrap-theme-v1.39.5](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.39.4...@asu/unity-bootstrap-theme-v1.39.5) (2026-07-07)
 
 
