@@ -1,0 +1,10 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "type": "command",
+        "command": "mkdir -p .pipeline"
+      }
+    ]
+  }
+}
