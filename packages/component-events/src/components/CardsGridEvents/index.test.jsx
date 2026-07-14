@@ -1,6 +1,7 @@
 // @ts-check
 import { render, cleanup, act } from "@testing-library/react";
 import React from "react";
+import { vi } from "vitest";
 
 import { CardsGridEvents } from "./index";
 
@@ -60,6 +61,49 @@ describe("#Cards Grid Events", () => {
     it("should render custom number of cards", async () => {
       const renderedCards = await component.findByTestId("grid-view-container");
       expect(renderedCards.children.length).toBe(CUSTOM_MAX_ITEMS);
+    });
+  });
+
+  describe("#No feed text", () => {
+    // Force an empty feed so the "no results" message is rendered
+    const emptyFeedArgs = { ...defaultArgs, dataSource: { url: "/empty" } };
+
+    beforeEach(() => {
+      vi.mocked(fetch).mockImplementation(
+        async () =>
+          new Response(JSON.stringify({ nodes: [] }), {
+            status: 200,
+            headers: { "Content-Type": "application/json" },
+          })
+      );
+    });
+
+    afterEach(() => {
+      vi.mocked(fetch).mockReset();
+      cleanup();
+    });
+
+    it("should render the default no-feed text when noFeedText is not provided", async () => {
+      await renderCardsGridEvents(emptyFeedArgs);
+      expect(
+        await component.findByText("No events to show.")
+      ).toBeInTheDocument();
+    });
+
+    it("should render a custom no-feed text when noFeedText is provided", async () => {
+      const customText = "Nothing happening right now.";
+      await renderCardsGridEvents({ ...emptyFeedArgs, noFeedText: customText });
+      expect(await component.findByText(customText)).toBeInTheDocument();
+      expect(
+        component.queryByText("No events to show.")
+      ).not.toBeInTheDocument();
+    });
+
+    it("should fall back to the default no-feed text when noFeedText is empty", async () => {
+      await renderCardsGridEvents({ ...emptyFeedArgs, noFeedText: "" });
+      expect(
+        await component.findByText("No events to show.")
+      ).toBeInTheDocument();
     });
   });
 

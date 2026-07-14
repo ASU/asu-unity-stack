@@ -22,6 +22,7 @@ const eventsPropTypes = {
   ctaButton: layoutCTAPropTypes,
   dataSource: dataSourcePropTypes,
   maxItems: PropTypes.number,
+  noFeedText: PropTypes.string,
 };
 
 export {

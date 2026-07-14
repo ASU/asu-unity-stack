@@ -15,7 +15,13 @@ import { ListView } from "./ListView";
  * @param {FeedType} props
  * @returns {JSX.Element}
  */
-const CardsListEvents = ({ header, ctaButton, dataSource, maxItems }) => {
+const CardsListEvents = ({
+  header,
+  ctaButton,
+  dataSource,
+  maxItems,
+  noFeedText = "No events to show.",
+}) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       trackReactComponent({
@@ -34,7 +40,7 @@ const CardsListEvents = ({ header, ctaButton, dataSource, maxItems }) => {
 
   return (
     // Calling the high order component that fetch the data
-    <BaseFeed {...{ header, ctaButton, dataSource, maxItems }}>
+    <BaseFeed {...{ header, ctaButton, dataSource, maxItems, noFeedText }}>
       <ListView />
     </BaseFeed>
   );
