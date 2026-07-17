@@ -676,8 +676,7 @@ describe("calculateOverflow — width-based tab hiding", () => {
     initTabbedPanelsV2();
 
     const wrapper = navTabs.querySelector<HTMLElement>(".uds-more-dropdown")!;
-    expect(wrapper.style.display).not.toBe("none");
-    expect(wrapper.style.visibility).not.toBe("hidden");
+    expect(wrapper.classList.contains("uds-more-dropdown-hidden")).toBe(false);
   });
 
   it("hides the More button when all tabs fit", () => {
@@ -692,8 +691,7 @@ describe("calculateOverflow — width-based tab hiding", () => {
     initTabbedPanelsV2();
 
     const wrapper = navTabs.querySelector<HTMLElement>(".uds-more-dropdown")!;
-    expect(wrapper.style.display).toBe("none");
-    expect(wrapper.style.visibility).toBe("hidden");
+    expect(wrapper.classList.contains("uds-more-dropdown-hidden")).toBe(true);
   });
 
   it("sets aria-label on More button with the overflow tab count", () => {

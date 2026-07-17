@@ -210,22 +210,8 @@ const TabbedPanels = ({
 
   useLayoutEffect(() => {
     calculateOverflow();
-
-    // Recalculate when the container's size settles. Window "resize" alone can
-    // read a stale mid-transition width and never re-run once it settles.
-    const container = headerTabs.current;
-    let observer: ResizeObserver | undefined;
-    if (typeof ResizeObserver !== "undefined" && container) {
-      observer = new ResizeObserver(() => calculateOverflow());
-      observer.observe(container);
-    }
-
-    // Fallback for environments without ResizeObserver.
     window.addEventListener("resize", calculateOverflow);
-    return () => {
-      observer?.disconnect();
-      window.removeEventListener("resize", calculateOverflow);
-    };
+    return () => window.removeEventListener("resize", calculateOverflow);
   }, [calculateOverflow]);
 
   // After visible tabs change, newly mounted tabs get real DOM widths via
@@ -315,8 +301,8 @@ const TabbedPanels = ({
 
   return (
     <div className={bgColor}>
-      <nav className={navClasses}>
-        <div className="nav nav-tabs" {...(isReact ? { "data-react": "true" } : {})} role="tablist" ref={headerTabs}>
+      <nav className={navClasses} {...(isReact ? { "data-react": "true" } : {})}>
+        <div className="nav nav-tabs" role="tablist" ref={headerTabs}>
           {visibleTabs.map((tabId, index) => {
             const child = idToChild[tabId];
             if (!child) return null;

@@ -151,9 +151,10 @@ const MoreDropdown = React.forwardRef<HTMLDivElement, MoreDropdownProps>((
   return (
     <div
       ref={setRootRef}
-      className={`uds-more-dropdown${openRight ? " dropdown-open-right" : ""}`}
+      className={`uds-more-dropdown${openRight ? " dropdown-open-right" : ""}${
+        hidden ? " uds-more-dropdown-hidden" : ""
+      }`}
       aria-hidden={hidden || undefined}
-      style={hidden ? { visibility: "hidden", pointerEvents: "none" } : undefined}
     >
       <GaEventWrapper gaData={gaData ?? {}}>
         <button
@@ -191,7 +192,7 @@ const MoreDropdown = React.forwardRef<HTMLDivElement, MoreDropdownProps>((
             <span aria-hidden="true">More</span>
             <i
               aria-hidden="true"
-              className={`fas fa-chevron-down more-dropdown-icon${isOpen ? " open" : ""}`}
+              className="fas fa-chevron-down more-dropdown-icon"
             />
           </span>
           <span className="more-dropdown-button-indicator" aria-hidden="true" />
