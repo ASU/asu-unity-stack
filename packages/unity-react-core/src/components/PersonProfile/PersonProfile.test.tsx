@@ -83,10 +83,33 @@ describe("PersonProfile tests", () => {
     expect(socialLink).toHaveAttribute("href", "https://example.com");
   });
 
+  it("should not render the social media list when socialMedia is empty", () => {
+    cleanup();
+    const { container } = renderComponent({ ...defaultProps, socialMedia: [] });
+    expect(container.querySelector("ul.person-social-medias")).toBeNull();
+  });
+
+  it("should not render the social media list when socialMedia is undefined", () => {
+    cleanup();
+    const { container } = renderComponent({
+      ...defaultProps,
+      socialMedia: undefined,
+    });
+    expect(container.querySelector("ul.person-social-medias")).toBeNull();
+  });
+
   describe("accessibility tests", () => {
     it("should have proper aria labels for contact links", () => {
-      expect(screen.getByLabelText(`Email ${component.container.querySelector("a[href*='mailto:']").innerHTML}`)).toBeInTheDocument();
-      expect(screen.getByLabelText(`Phone ${component.container.querySelector("a[href*='tel:']").innerHTML.replace(/\-/g, " ").replace(/\(/g, "").replace(/\)/g, "")}`)).toBeInTheDocument();
+      expect(
+        screen.getByLabelText(
+          `Email ${component.container.querySelector("a[href*='mailto:']").innerHTML}`
+        )
+      ).toBeInTheDocument();
+      expect(
+        screen.getByLabelText(
+          `Phone ${component.container.querySelector("a[href*='tel:']").innerHTML.replace(/\-/g, " ").replace(/\(/g, "").replace(/\)/g, "")}`
+        )
+      ).toBeInTheDocument();
     });
 
     it("should use semantic HTML elements", () => {
@@ -95,5 +118,4 @@ describe("PersonProfile tests", () => {
       expect(component.container.querySelector("h4")).toBeInTheDocument();
     });
   });
-
 });
