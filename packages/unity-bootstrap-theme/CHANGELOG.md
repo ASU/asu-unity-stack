@@ -1,3 +1,37 @@
+# [@asu/unity-bootstrap-theme-v2.0.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.39.7...@asu/unity-bootstrap-theme-v2.0.0) (2026-07-17)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix safari dropdown issue in tab panels ([33d209b](https://github.com/ASU/asu-unity-stack/commit/33d209b038a7ee70e75b964aa77c379f1dc8904e))
+* **unity-bootstrap-theme:** todo 3.2 ([970c8e8](https://github.com/ASU/asu-unity-stack/commit/970c8e813f89d862e6f80127d8639cc94ba19f71))
+* **unity-bootstrap-theme:** todo 3.3, changed MoreDropdown.js to fit _tabbed-panels.scss ([f55a827](https://github.com/ASU/asu-unity-stack/commit/f55a8272e6c605a2a8817f522e369f68a94a7fe4))
+* **unity-bootstrap-theme:** update bootstrap tabbed panels JS and styles ([bcdd640](https://github.com/ASU/asu-unity-stack/commit/bcdd640d67a05b1ca523ab4e3712aa4901fe7011))
+* **unity-bootstrap-theme:** update tabbed panel JS ([9123d4b](https://github.com/ASU/asu-unity-stack/commit/9123d4b7ea6f54e6765e9d5a82aa872572bc665c))
+* **unity-bootstrap-theme:** update tabbed panel JS ([c171ba8](https://github.com/ASU/asu-unity-stack/commit/c171ba8600225ce5df75f8c7d1d138486ec78d74))
+* **unity-bootstrap-theme:** update tabbed panel JS ([f994c24](https://github.com/ASU/asu-unity-stack/commit/f994c24fda479a5f1e6dcf019a1618e54126c91e))
+* **unity-bootstrap-theme:** update tabbed panel JS and styles ([71e53af](https://github.com/ASU/asu-unity-stack/commit/71e53afed5fd3e33bede1ba9c41f5cdb08dcb540))
+* **unity-bootstrap-theme:** update tabbed panel JS to mimic react version ([72b763b](https://github.com/ASU/asu-unity-stack/commit/72b763bc4a1ef5840ad85d743f32c3b7568b04f2))
+* **unity-react-core:** add NavControls for app-webdir-ui use ([a4fecfe](https://github.com/ASU/asu-unity-stack/commit/a4fecfeb0a4d58f7927d3171e67695aea832d9d3))
+* **unity-react-core:** address tabbed panel pr comments ([5c7085b](https://github.com/ASU/asu-unity-stack/commit/5c7085b9a5f516a2a602fe5d8d8464c04032164a))
+* **unity-react-core:** changes made after review ([c35491c](https://github.com/ASU/asu-unity-stack/commit/c35491c851ba00e9fdbe66ceb4abac2601bb8ec9))
+* **unity-react-core:** final design before completeing tests ([5a44c52](https://github.com/ASU/asu-unity-stack/commit/5a44c526ba43553f9f565a0cd162dd91795ef444))
+* **unity-react-core:** scrolling feature final ([13ba723](https://github.com/ASU/asu-unity-stack/commit/13ba723ae95a8bc103fe652e8f0a42fc842c52ee))
+* **unity-react-core:** toDo 5.1 ([50abf19](https://github.com/ASU/asu-unity-stack/commit/50abf198e6b3c776933f329b7fb1ddec3695f4da))
+* **unity-react-core:** update tabbed panel logic ([084885b](https://github.com/ASU/asu-unity-stack/commit/084885b2cd94c79625ecf6f6ab11996f87c8f2e3))
+
+
+### Features
+
+* **unity-bootstrap-theme:** tabbed panel rewrite ([299f76e](https://github.com/ASU/asu-unity-stack/commit/299f76ef2016bafe1eac50a6f62bde93684e794f))
+* **unity-bootstrap-theme:** tODO 3.1 ([934f119](https://github.com/ASU/asu-unity-stack/commit/934f119924c227bb55791fcb7560282d6c2bf309))
+* **unity-bootstrap-theme:** todo 3.2 ([f90438c](https://github.com/ASU/asu-unity-stack/commit/f90438c7b160dacb274d54a2d13b9f4823da1cbf))
+
+
+### BREAKING CHANGES
+
+* **unity-bootstrap-theme:** New html styles are relying on unity-react-core html
+
 # [@asu/unity-bootstrap-theme-v1.39.7](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.39.6...@asu/unity-bootstrap-theme-v1.39.7) (2026-07-14)
 
 
