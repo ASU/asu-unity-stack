@@ -49,6 +49,7 @@
     "test:browser": "vitest --workspace=vitest.workspace.ts"
   },
   "devDependencies": {
+    "@asu/component-header-footer": "*",
     "@asu/shared": "*",
     "@asu/unity-bootstrap-theme": "^1.21.3",
     "@babel/cli": "^7.19.3",

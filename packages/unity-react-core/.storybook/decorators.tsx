@@ -75,7 +75,7 @@ export const withContainer: Decorator = (
       window.unloading = true; // variable to prevent calling mount function before the page is reloaded
 
       // adding this timeout allows controls time to update
-      setTimeout(()=>{window.location.reload()}, 100);
+      setTimeout(()=>{window.location.reload()}, 500);
     }
   }
 
