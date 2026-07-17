@@ -90,7 +90,9 @@ const ProfileCard = ({ ...props }) => {
         )}
         {!props.profileURL && <h3 className="person-name">{props.name}</h3>}
         <div className="person-profession">
-          <h4>{title}</h4>
+          <p className="person-profession-title">
+            <strong>{title}</strong>
+          </p>
           {department && <span className="dept">{department}</span>}
         </div>
         {props.size !== "micro" && (
