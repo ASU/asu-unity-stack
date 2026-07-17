@@ -178,9 +178,8 @@ function setOpen(btn, menu, open) {
   btn.setAttribute("aria-expanded", String(open));
   menu.setAttribute("aria-hidden", String(!open));
   menu.classList.toggle("open", open);
-
-  const icon = btn.querySelector(".more-dropdown-icon");
-  if (icon) icon.classList.toggle("open", open);
+  // The chevron rotation is driven by the button's [aria-expanded] state in CSS,
+  // so both the React and vanilla layers share a single mechanism.
 }
 
 // ─── overflow calculation ─────────────────────────────────────────────────────
@@ -189,6 +188,9 @@ function setOpen(btn, menu, open) {
  * Measure all tabs, decide which fit, hide the rest and populate the More menu.
  */
 function calculateOverflow(container) {
+  // React manages its own instances; never enhance one from the bootstrap version
+  if (container.hasAttribute("data-react")) return;
+
   const navTabs = container.querySelector(".nav.nav-tabs");
   if (!navTabs) return;
 
@@ -240,18 +242,13 @@ function calculateOverflow(container) {
     }
   });
 
-  // Show / hide More button
   if (overflowIds.length === 0) {
-    wrapper.style.display = "none";
+    wrapper.classList.add("uds-more-dropdown-hidden");
     wrapper.setAttribute("aria-hidden", "true");
-    wrapper.style.visibility = "hidden";
-    wrapper.style.pointerEvents = "none";
     return;
   }
-  wrapper.style.display = "";
+  wrapper.classList.remove("uds-more-dropdown-hidden");
   wrapper.removeAttribute("aria-hidden");
-  wrapper.style.visibility = "";
-  wrapper.style.pointerEvents = "";
 
   // Anchor dropdown to the right of the More button when the container is
   // narrower than 1200px AND the dropdown still fits within the viewport
