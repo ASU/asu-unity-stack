@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from "react";
+// import React from "react";
 
 export const Checkboxes = () => (
   <form className="uds-form">
