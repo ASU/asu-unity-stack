@@ -150,6 +150,13 @@
   isolation: isolate;
 }
 
+// Applied when there are no overflow tabs: keep the button in the layout (so its
+// width is still measurable) but hide it from view and pointer interaction.
+.uds-more-dropdown-hidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .more-dropdown-button {
   padding: $tabbed-panels-tab-padding-top 4px 0 4px;
   height: $tabbed-panels-tab-height;
@@ -180,7 +187,11 @@
   transition: transform 0.3s ease;
 }
 
-.more-dropdown-icon.open {
+// Rotate the chevron from the button's [aria-expanded] state rather than a class
+// on the icon itself. FontAwesome's SVG-with-JS swaps the <i> for an <svg>,
+// which detaches the node React toggles a class on — so a class-based approach
+// silently fails in React. Both the React and vanilla layers set aria-expanded.
+.more-dropdown-button[aria-expanded="true"] .more-dropdown-icon {
   transform: rotate(180deg);
 }
 
@@ -192,6 +203,8 @@
   left: auto;
   width: $tabbed-panels-dropdown-width;
   max-width: $tabbed-panels-dropdown-width;
+  max-height: $tabbed-panels-dropdown-max-height;
+  overflow-y: auto;
   box-sizing: border-box;
   background: $white;
   border: 1px solid $asu-gray-4;
