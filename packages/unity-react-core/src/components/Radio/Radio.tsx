@@ -170,7 +170,7 @@ export const Radios = () => (
     <fieldset>
       <legend>A Group of Valid Radios</legend>
       <small id="myValidRadiosMsg" className="valid-feedback is-valid">
-        <span title="Alert" className="fa fa-icon fa-check-circle"></span>Success
+        <span title="Success" className="fa fa-icon fa-check-circle"></span>Success
         message
       </small>
       <div className="form-check">

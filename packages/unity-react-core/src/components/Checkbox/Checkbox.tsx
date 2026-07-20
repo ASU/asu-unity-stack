@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from "react";
+// import React from "react";
 
 export const Checkboxes = () => (
   <form className="uds-form">
@@ -70,7 +70,7 @@ export const Checkboxes = () => (
         I accept
       </label>
       <small id="myValidCheckMsg" className="valid-feedback is-valid">
-        <span title="Alert" className="fa fa-icon fa-check-circle"></span>Success
+        <span title="Success" className="fa fa-icon fa-check-circle"></span>Success
         message
       </small>
     </div>
@@ -158,7 +158,7 @@ export const Checkboxes = () => (
     <fieldset>
       <legend>A Group of Valid Checkboxes</legend>
       <small id="myValidCheckboxMsg" className="valid-feedback is-valid">
-        <span title="Alert" className="fa fa-icon fa-check-circle"></span>Success
+        <span title="Success" className="fa fa-icon fa-check-circle"></span>Success
         message
       </small>
       <div className="form-check">
