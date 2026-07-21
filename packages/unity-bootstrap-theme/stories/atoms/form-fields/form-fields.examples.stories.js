@@ -118,8 +118,7 @@ export const TextInputs = () => (
         data-ga-input-section="text label"
       />
       <small id="successHelp" className="form-text valid-feedback">
-        <span title="Success" className="fa fa-icon fa-check-circle">
-        </span>
+        <span title="Success" className="fa fa-icon fa-check-circle"></span>
         Success message
       </small>
     </div>
@@ -225,10 +224,7 @@ export const TextInputsVariousBackgrounds = () => (
             value="Input text"
           />
           <small id="successHelp" className="form-text valid-feedback">
-            <span
-              title="Success"
-              className="fa fa-icon fa-check-circle">
-            </span>
+            <span title="Success" className="fa fa-icon fa-check-circle"></span>
             Success message
           </small>
         </div>
@@ -319,10 +315,7 @@ export const TextInputsVariousBackgrounds = () => (
             value="Input text"
           />
           <small id="successHelpGray1" className="form-text valid-feedback">
-            <span
-              title="Success"
-              className="fa fa-icon fa-check-circle">
-            </span>
+            <span title="Success" className="fa fa-icon fa-check-circle"></span>
             Success message
           </small>
         </div>
@@ -413,10 +406,7 @@ export const TextInputsVariousBackgrounds = () => (
             value="Input text"
           />
           <small id="successHelpGray2" className="form-text valid-feedback">
-            <span
-              title="Success"
-              className="fa fa-icon fa-check-circle">
-            </span>
+            <span title="Success" className="fa fa-icon fa-check-circle"></span>
             Success message
           </small>
         </div>
@@ -507,10 +497,7 @@ export const TextInputsVariousBackgrounds = () => (
             value="Input text"
           />
           <small id="successHelpGray7" className="form-text valid-feedback">
-            <span
-              title="Success"
-              className="fa fa-icon fa-check-circle">
-            </span>
+            <span title="Success" className="fa fa-icon fa-check-circle"></span>
             Success message
           </small>
         </div>
@@ -631,8 +618,7 @@ export const Textareas = () => (
         Agreeable content was entered.
       </textarea>
       <small id="successTextareaHelp" className="form-textarea valid-feedback">
-        <span title="Success" className="fa fa-icon fa-check-circle">
-        </span>
+        <span title="Success" className="fa fa-icon fa-check-circle"></span>
         Success message
       </small>
     </div>
@@ -723,10 +709,7 @@ export const TextareasMultipleBackgrounds = () => (
             id="successTextareaHelpWhite"
             className="form-textarea valid-feedback"
           >
-            <span
-              title="Success"
-              className="fa fa-icon fa-check-circle">
-            </span>
+            <span title="Success" className="fa fa-icon fa-check-circle"></span>
             Success message
           </small>
         </div>
@@ -815,10 +798,7 @@ export const TextareasMultipleBackgrounds = () => (
             id="successTextareaHelpGray1"
             className="form-textarea valid-feedback"
           >
-            <span
-              title="Success"
-              className="fa fa-icon fa-check-circle">
-            </span>
+            <span title="Success" className="fa fa-icon fa-check-circle"></span>
             Success message
           </small>
         </div>
@@ -907,10 +887,7 @@ export const TextareasMultipleBackgrounds = () => (
             id="successTextareaHelpGray2"
             className="form-textarea valid-feedback"
           >
-            <span
-              title="Success"
-              className="fa fa-icon fa-check-circle">
-            </span>
+            <span title="Success" className="fa fa-icon fa-check-circle"></span>
             Success message
           </small>
         </div>
@@ -999,10 +976,7 @@ export const TextareasMultipleBackgrounds = () => (
             id="successTextareaHelpGray7"
             className="form-textarea valid-feedback"
           >
-            <span
-              title="Success"
-              className="fa fa-icon fa-check-circle">
-            </span>
+            <span title="Success" className="fa fa-icon fa-check-circle"></span>
             Success message
           </small>
         </div>
@@ -1080,8 +1054,7 @@ export const Checkboxes = () => (
         I accept
       </label>
       <small id="myValidCheckMsg" className="valid-feedback is-valid">
-        <span title="Success" className="fa fa-icon fa-check-circle">
-        </span>
+        <span title="Success" className="fa fa-icon fa-check-circle"></span>
         Success message
       </small>
     </div>
@@ -1172,8 +1145,7 @@ export const Checkboxes = () => (
     <fieldset>
       <legend>A Group of Valid Checkboxes</legend>
       <small id="myValidCheckboxMsg" className="valid-feedback is-valid">
-        <span title="Success" className="fa fa-icon fa-check-circle">
-        </span>
+        <span title="Success" className="fa fa-icon fa-check-circle"></span>
         Success message
       </small>
       <div className="form-check">
@@ -1475,8 +1447,7 @@ export const Radios = () => (
     <fieldset>
       <legend>A Group of Valid Radios</legend>
       <small id="myValidRadiosMsg" className="valid-feedback is-valid">
-        <span title="Success" className="fa fa-icon fa-check-circle">
-        </span>
+        <span title="Success" className="fa fa-icon fa-check-circle"></span>
         Success message
       </small>
       <div className="form-check">
@@ -1590,10 +1561,7 @@ export const CheckboxesAndRadiosWhiteBackground = () => (
           I accept
         </label>
         <small id="myValidCheckMsg" className="valid-feedback is-valid">
-          <span
-            title="Success"
-            className="fa fa-icon fa-check-circle">
-          </span>
+          <span title="Success" className="fa fa-icon fa-check-circle"></span>
           Success message
         </small>
       </div>
@@ -1660,10 +1628,7 @@ export const CheckboxesAndRadiosWhiteBackground = () => (
       <fieldset>
         <legend>A Group of Valid Checkboxes</legend>
         <small id="myValidCheckboxMsg" className="valid-feedback is-valid">
-          <span
-            title="Success"
-            className="fa fa-icon fa-check-circle">
-          </span>
+          <span title="Success" className="fa fa-icon fa-check-circle"></span>
           Success message
         </small>
         <div className="form-check">
@@ -1880,10 +1845,7 @@ export const CheckboxesAndRadiosWhiteBackground = () => (
       <fieldset>
         <legend>A Group of Valid Radios</legend>
         <small id="myValidRadiosMsg" className="valid-feedback is-valid">
-          <span
-            title="Success"
-            className="fa fa-icon fa-check-circle">
-          </span>
+          <span title="Success" className="fa fa-icon fa-check-circle"></span>
           Success message
         </small>
         <div className="form-check">
@@ -1974,10 +1936,7 @@ export const CheckboxesAndRadiosGray1Background = () => (
           I accept
         </label>
         <small id="myValidCheckMsg" className="valid-feedback is-valid">
-          <span
-            title="Success"
-            className="fa fa-icon fa-check-circle">
-          </span>
+          <span title="Success" className="fa fa-icon fa-check-circle"></span>
           Success message
         </small>
       </div>
@@ -2044,10 +2003,7 @@ export const CheckboxesAndRadiosGray1Background = () => (
       <fieldset>
         <legend>A Group of Valid Checkboxes</legend>
         <small id="myValidCheckboxMsg" className="valid-feedback is-valid">
-          <span
-            title="Success"
-            className="fa fa-icon fa-check-circle">
-          </span>
+          <span title="Success" className="fa fa-icon fa-check-circle"></span>
           Success message
         </small>
         <div className="form-check">
@@ -2264,10 +2220,7 @@ export const CheckboxesAndRadiosGray1Background = () => (
       <fieldset>
         <legend>A Group of Valid Radios</legend>
         <small id="myValidRadiosMsg" className="valid-feedback is-valid">
-          <span
-            title="Success"
-            className="fa fa-icon fa-check-circle">
-          </span>
+          <span title="Success" className="fa fa-icon fa-check-circle"></span>
           Success message
         </small>
         <div className="form-check">
@@ -2358,10 +2311,7 @@ export const CheckboxesAndRadiosGray2Background = () => (
           I accept
         </label>
         <small id="myValidCheckMsg" className="valid-feedback is-valid">
-          <span
-            title="Success"
-            className="fa fa-icon fa-check-circle">
-          </span>
+          <span title="Success" className="fa fa-icon fa-check-circle"></span>
           Success message
         </small>
       </div>
@@ -2428,10 +2378,7 @@ export const CheckboxesAndRadiosGray2Background = () => (
       <fieldset>
         <legend>A Group of Valid Checkboxes</legend>
         <small id="myValidCheckboxMsg" className="valid-feedback is-valid">
-          <span
-            title="Success"
-            className="fa fa-icon fa-check-circle">
-          </span>
+          <span title="Success" className="fa fa-icon fa-check-circle"></span>
           Success message
         </small>
         <div className="form-check">
@@ -2648,10 +2595,7 @@ export const CheckboxesAndRadiosGray2Background = () => (
       <fieldset>
         <legend>A Group of Valid Radios</legend>
         <small id="myValidRadiosMsg" className="valid-feedback is-valid">
-          <span
-            title="Success"
-            className="fa fa-icon fa-check-circle">
-          </span>
+          <span title="Success" className="fa fa-icon fa-check-circle"></span>
           Success message
         </small>
         <div className="form-check">
@@ -2742,10 +2686,7 @@ export const CheckboxesAndRadiosGray7Background = () => (
           I accept
         </label>
         <small id="myValidCheckMsg" className="valid-feedback is-valid">
-          <span
-            title="Success"
-            className="fa fa-icon fa-check-circle">
-          </span>
+          <span title="Success" className="fa fa-icon fa-check-circle"></span>
           Success message
         </small>
       </div>
@@ -2812,10 +2753,7 @@ export const CheckboxesAndRadiosGray7Background = () => (
       <fieldset>
         <legend>A Group of Valid Checkboxes</legend>
         <small id="myValidCheckboxMsg" className="valid-feedback is-valid">
-          <span
-            title="Success"
-            className="fa fa-icon fa-check-circle">
-          </span>
+          <span title="Success" className="fa fa-icon fa-check-circle"></span>
           Success message
         </small>
         <div className="form-check">
@@ -3032,10 +2970,7 @@ export const CheckboxesAndRadiosGray7Background = () => (
       <fieldset>
         <legend>A Group of Valid Radios</legend>
         <small id="myValidRadiosMsg" className="valid-feedback is-valid">
-          <span
-            title="Success"
-            className="fa fa-icon fa-check-circle">
-          </span>
+          <span title="Success" className="fa fa-icon fa-check-circle"></span>
           Success message
         </small>
         <div className="form-check">
@@ -3139,8 +3074,7 @@ export const Selects = () => (
         <option>5</option>
       </select>
       <small id="myValidSelectMsg" className="valid-feedback is-valid">
-        <span title="Success" className="fa fa-icon fa-check-circle">
-        </span>
+        <span title="Success" className="fa fa-icon fa-check-circle"></span>
         Success message
       </small>
     </div>
@@ -3454,10 +3388,7 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidat
             value="Input text"
           />
           <small id="successHelp1" className="form-text valid-feedback">
-            <span
-              title="Success"
-              className="fa fa-icon fa-check-circle">
-            </span>
+            <span title="Success" className="fa fa-icon fa-check-circle"></span>
             Success message
           </small>
         </div>
@@ -3518,10 +3449,7 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidat
             id="successTextareaHelp"
             className="form-textarea valid-feedback"
           >
-            <span
-              title="Success"
-              className="fa fa-icon fa-check-circle">
-            </span>
+            <span title="Success" className="fa fa-icon fa-check-circle"></span>
             Success message
           </small>
         </div>
@@ -3561,10 +3489,7 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidat
             I accept (required field)
           </label>
           <small id="myValidCheckMsg" className="valid-feedback is-valid">
-            <span
-              title="Success"
-              className="fa fa-icon fa-check-circle">
-            </span>
+            <span title="Success" className="fa fa-icon fa-check-circle"></span>
             Success message
           </small>
         </div>
@@ -3598,10 +3523,7 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidat
         <fieldset>
           <legend>A Group of Valid Checkboxes</legend>
           <small id="myValidCheckboxMsg" className="valid-feedback is-valid">
-            <span
-              title="Success"
-              className="fa fa-icon fa-check-circle">
-            </span>
+            <span title="Success" className="fa fa-icon fa-check-circle"></span>
             Success message
           </small>
           <div className="form-check">
@@ -3787,10 +3709,7 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidat
         <fieldset>
           <legend>A Group of Valid Radios</legend>
           <small id="myValidRadiosMsg" className="valid-feedback is-valid">
-            <span
-              title="Success"
-              className="fa fa-icon fa-check-circle">
-            </span>
+            <span title="Success" className="fa fa-icon fa-check-circle"></span>
             Success message
           </small>
           <div className="form-check">
@@ -3949,10 +3868,7 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedForm
             value="Input text"
           />
           <small id="successHelp1" className="form-text valid-feedback">
-            <span
-              title="Success"
-              className="fa fa-icon fa-check-circle">
-            </span>
+            <span title="Success" className="fa fa-icon fa-check-circle"></span>
             Success message
           </small>
         </div>
@@ -4009,10 +3925,7 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedForm
             id="successTextareaHelp"
             className="form-textarea valid-feedback"
           >
-            <span
-              title="Success"
-              className="fa fa-icon fa-check-circle">
-            </span>
+            <span title="Success" className="fa fa-icon fa-check-circle"></span>
             Success message
           </small>
         </div>
@@ -4052,10 +3965,7 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedForm
             I accept (required)
           </label>
           <small id="myValidCheckMsg" className="valid-feedback is-valid">
-            <span
-              title="Success"
-              className="fa fa-icon fa-check-circle">
-            </span>
+            <span title="Success" className="fa fa-icon fa-check-circle"></span>
             Success message
           </small>
         </div>
@@ -4089,10 +3999,7 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedForm
         <fieldset>
           <legend>A Group of Valid Checkboxes</legend>
           <small id="myValidCheckboxMsg" className="valid-feedback is-valid">
-            <span
-              title="Success"
-              className="fa fa-icon fa-check-circle">
-            </span>
+            <span title="Success" className="fa fa-icon fa-check-circle"></span>
             Success message
           </small>
           <div className="form-check">
@@ -4278,10 +4185,7 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedForm
         <fieldset>
           <legend>A Group of Valid Radios</legend>
           <small id="myValidRadiosMsg" className="valid-feedback is-valid">
-            <span
-              title="Success"
-              className="fa fa-icon fa-check-circle">
-            </span>
+            <span title="Success" className="fa fa-icon fa-check-circle"></span>
             Success message
           </small>
           <div className="form-check">
@@ -4354,10 +4258,7 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedForm
             <option>5</option>
           </select>
           <small id="myValidSelectMsg" className="valid-feedback is-valid">
-            <span
-              title="Success"
-              className="fa fa-icon fa-check-circle">
-            </span>
+            <span title="Success" className="fa fa-icon fa-check-circle"></span>
             Success message
           </small>
         </div>
@@ -4474,8 +4375,8 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidat
             <small id="successHelp1" className="form-text valid-feedback">
               <span
                 title="Success"
-                className="fa fa-icon fa-check-circle">
-              </span>
+                className="fa fa-icon fa-check-circle"
+              ></span>
               Success message
             </small>
           </div>
@@ -4538,8 +4439,8 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidat
             >
               <span
                 title="Success"
-                className="fa fa-icon fa-check-circle">
-              </span>
+                className="fa fa-icon fa-check-circle"
+              ></span>
               Success message
             </small>
           </div>
@@ -4581,8 +4482,8 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidat
             <small id="myValidCheckMsg" className="valid-feedback is-valid">
               <span
                 title="Success"
-                className="fa fa-icon fa-check-circle">
-              </span>
+                className="fa fa-icon fa-check-circle"
+              ></span>
               Success message
             </small>
           </div>
@@ -4621,8 +4522,8 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidat
             <small id="myValidCheckboxMsg" className="valid-feedback is-valid">
               <span
                 title="Success"
-                className="fa fa-icon fa-check-circle">
-              </span>
+                className="fa fa-icon fa-check-circle"
+              ></span>
               Success message
             </small>
             <div className="form-check">
@@ -4810,8 +4711,8 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidNotYetValidat
             <small id="myValidRadiosMsg" className="valid-feedback is-valid">
               <span
                 title="Success"
-                className="fa fa-icon fa-check-circle">
-              </span>
+                className="fa fa-icon fa-check-circle"
+              ></span>
               Success message
             </small>
             <div className="form-check">
@@ -4977,8 +4878,8 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedForm
             <small id="successHelp1" className="form-text valid-feedback">
               <span
                 title="Success"
-                className="fa fa-icon fa-check-circle">
-              </span>
+                className="fa fa-icon fa-check-circle"
+              ></span>
               Success message
             </small>
           </div>
@@ -5037,8 +4938,8 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedForm
             >
               <span
                 title="Success"
-                className="fa fa-icon fa-check-circle">
-              </span>
+                className="fa fa-icon fa-check-circle"
+              ></span>
               Success message
             </small>
           </div>
@@ -5080,8 +4981,8 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedForm
             <small id="myValidCheckMsg" className="valid-feedback is-valid">
               <span
                 title="Success"
-                className="fa fa-icon fa-check-circle">
-              </span>
+                className="fa fa-icon fa-check-circle"
+              ></span>
               Success message
             </small>
           </div>
@@ -5120,8 +5021,8 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedForm
             <small id="myValidCheckboxMsg" className="valid-feedback is-valid">
               <span
                 title="Success"
-                className="fa fa-icon fa-check-circle">
-              </span>
+                className="fa fa-icon fa-check-circle"
+              ></span>
               Success message
             </small>
             <div className="form-check">
@@ -5309,8 +5210,8 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedForm
             <small id="myValidRadiosMsg" className="valid-feedback is-valid">
               <span
                 title="Success"
-                className="fa fa-icon fa-check-circle">
-              </span>
+                className="fa fa-icon fa-check-circle"
+              ></span>
               Success message
             </small>
             <div className="form-check">
@@ -5385,8 +5286,8 @@ export const KitchenSinkFormClientSideValidationWithInvalidAndValidValidatedForm
             <small id="myValidSelectMsg" className="valid-feedback is-valid">
               <span
                 title="Success"
-                className="fa fa-icon fa-check-circle">
-              </span>
+                className="fa fa-icon fa-check-circle"
+              ></span>
               Success message
             </small>
           </div>
