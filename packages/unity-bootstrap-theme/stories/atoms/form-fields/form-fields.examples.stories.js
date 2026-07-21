@@ -118,9 +118,7 @@ export const TextInputs = () => (
         data-ga-input-section="text label"
       />
       <small id="successHelp" className="form-text valid-feedback">
-        <span
-          title="Success"
-          className="fa fa-icon fa-check-circle">
+        <span title="Success" className="fa fa-icon fa-check-circle">
         </span>
         Success message
       </small>
@@ -633,9 +631,7 @@ export const Textareas = () => (
         Agreeable content was entered.
       </textarea>
       <small id="successTextareaHelp" className="form-textarea valid-feedback">
-        <span
-          title="Success"
-          className="fa fa-icon fa-check-circle">
+        <span title="Success" className="fa fa-icon fa-check-circle">
         </span>
         Success message
       </small>
@@ -1084,9 +1080,7 @@ export const Checkboxes = () => (
         I accept
       </label>
       <small id="myValidCheckMsg" className="valid-feedback is-valid">
-        <span
-          title="Success"
-          className="fa fa-icon fa-check-circle">
+        <span title="Success" className="fa fa-icon fa-check-circle">
         </span>
         Success message
       </small>
@@ -1178,9 +1172,7 @@ export const Checkboxes = () => (
     <fieldset>
       <legend>A Group of Valid Checkboxes</legend>
       <small id="myValidCheckboxMsg" className="valid-feedback is-valid">
-        <span
-          title="Success"
-          className="fa fa-icon fa-check-circle">
+        <span title="Success" className="fa fa-icon fa-check-circle">
         </span>
         Success message
       </small>
@@ -1483,9 +1475,7 @@ export const Radios = () => (
     <fieldset>
       <legend>A Group of Valid Radios</legend>
       <small id="myValidRadiosMsg" className="valid-feedback is-valid">
-        <span
-          title="Success"
-          className="fa fa-icon fa-check-circle">
+        <span title="Success" className="fa fa-icon fa-check-circle">
         </span>
         Success message
       </small>
@@ -3149,9 +3139,7 @@ export const Selects = () => (
         <option>5</option>
       </select>
       <small id="myValidSelectMsg" className="valid-feedback is-valid">
-        <span
-          title="Success"
-          className="fa fa-icon fa-check-circle">
+        <span title="Success" className="fa fa-icon fa-check-circle">
         </span>
         Success message
       </small>
