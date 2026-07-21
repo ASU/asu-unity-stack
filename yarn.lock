@@ -407,7 +407,7 @@ __metadata:
   dependencies:
     "@asu/component-header-footer": "npm:^1.0.0"
     "@asu/unity-bootstrap-theme": "npm:^1.20"
-    "@asu/unity-react-core": "npm:^1.0.0"
+    "@asu/unity-react-core": "npm:^2.0.0"
     "@fortawesome/fontawesome-svg-core": "npm:^6.4.2"
     "@fortawesome/free-brands-svg-icons": "npm:^6.4.2"
     "@fortawesome/free-solid-svg-icons": "npm:^6.4.2"
@@ -507,7 +507,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@asu/unity-react-core@workspace:packages/unity-react-core":
+"@asu/unity-react-core@npm:^2.0.0, @asu/unity-react-core@workspace:packages/unity-react-core":
   version: 0.0.0-use.local
   resolution: "@asu/unity-react-core@workspace:packages/unity-react-core"
   dependencies:
