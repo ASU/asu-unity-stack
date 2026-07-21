@@ -407,7 +407,7 @@ __metadata:
   dependencies:
     "@asu/component-header-footer": "npm:^1.0.0"
     "@asu/unity-bootstrap-theme": "npm:^1.20"
-    "@asu/unity-react-core": "npm:^1.0.0"
+    "@asu/unity-react-core": "npm:^2.0.0"
     "@fortawesome/fontawesome-svg-core": "npm:^6.4.2"
     "@fortawesome/free-brands-svg-icons": "npm:^6.4.2"
     "@fortawesome/free-solid-svg-icons": "npm:^6.4.2"
@@ -428,7 +428,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@asu/unity-bootstrap-theme@npm:^1.0.0, @asu/unity-bootstrap-theme@npm:^1.20, @asu/unity-bootstrap-theme@npm:^1.21.3, @asu/unity-bootstrap-theme@workspace:packages/unity-bootstrap-theme":
+"@asu/unity-bootstrap-theme@npm:^1.0.0, @asu/unity-bootstrap-theme@npm:^1.20, @asu/unity-bootstrap-theme@npm:^1.21.3":
+  version: 1.39.7
+  resolution: "@asu/unity-bootstrap-theme@npm:1.39.7::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40asu%2Funity-bootstrap-theme%2F1.39.7%2F3cd9a99aa2e5a872bf867247a19e19cb6ee73fab"
+  peerDependencies:
+    "@fortawesome/fontawesome-free": ^5.15.3
+  checksum: 10c0/9eb5e02a944026c0206412778ecfaffb18ab9b566be957bb179f908a4268129823b4695104ab74a89da163d061694d07140910dd2075852da96052f69edc77f2
+  languageName: node
+  linkType: hard
+
+"@asu/unity-bootstrap-theme@workspace:packages/unity-bootstrap-theme":
   version: 0.0.0-use.local
   resolution: "@asu/unity-bootstrap-theme@workspace:packages/unity-bootstrap-theme"
   dependencies:
@@ -482,7 +491,23 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@asu/unity-react-core@npm:^1.0.0, @asu/unity-react-core@workspace:packages/unity-react-core":
+"@asu/unity-react-core@npm:^1.0.0":
+  version: 1.11.4
+  resolution: "@asu/unity-react-core@npm:1.11.4::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40asu%2Funity-react-core%2F1.11.4%2Fb75273d3986c565d7ac8fb20de6659accd130f3d"
+  dependencies:
+    "@glidejs/glide": "npm:^3.6.0"
+    react-share: "npm:^5.3"
+  peerDependencies:
+    "@asu/unity-bootstrap-theme": ^1.21.3
+    "@fortawesome/fontawesome-free": ^5.15.3
+    react: ^19.0.0
+    react-dom: ^19.0.0
+    react-router-dom: ">= 5.2.0 < 7"
+  checksum: 10c0/0116ad0df26c1ff7f003e8e0134dba074390428d1a23469f946316b635955c1c8f35a34adcb74b27f8721960c14de5176939f1a8587aa262f41b55825f2d9ca4
+  languageName: node
+  linkType: hard
+
+"@asu/unity-react-core@npm:^2.0.0, @asu/unity-react-core@workspace:packages/unity-react-core":
   version: 0.0.0-use.local
   resolution: "@asu/unity-react-core@workspace:packages/unity-react-core"
   dependencies:
