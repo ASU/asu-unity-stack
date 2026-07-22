@@ -1,3 +1,17 @@
+# [@asu/unity-bootstrap-theme-v2.1.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.0.0...@asu/unity-bootstrap-theme-v2.1.0) (2026-07-22)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix for linting error ([3c7c879](https://github.com/ASU/asu-unity-stack/commit/3c7c879c6cd7e925b0d7106c1e4ed5840505d2c1))
+* **unity-bootstrap-theme:** gold maroon gray and dark hover button brand standard color fix ([d44e3f5](https://github.com/ASU/asu-unity-stack/commit/d44e3f57d0adbf07974c259afb15f28a535ee4ce))
+* **unity-bootstrap-theme:** linter error fix ([6d8c839](https://github.com/ASU/asu-unity-stack/commit/6d8c839d8d1902dbbce215b64ead4cdaef79d7cb))
+
+
+### Features
+
+* **unity-react-core:** replaced fa-exlamation-triangle with fa-check-circle and success titles ([fc7317d](https://github.com/ASU/asu-unity-stack/commit/fc7317d19f48dd140da7c1261e2adb132d53e289))
+
 # [@asu/unity-bootstrap-theme-v2.0.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.39.7...@asu/unity-bootstrap-theme-v2.0.0) (2026-07-17)
 
 
