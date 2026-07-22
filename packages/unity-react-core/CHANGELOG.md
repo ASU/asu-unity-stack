@@ -1,3 +1,10 @@
+# [@asu/unity-react-core-v2.1.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.0.0...@asu/unity-react-core-v2.1.0) (2026-07-22)
+
+
+### Features
+
+* **unity-react-core:** replaced fa-exlamation-triangle with fa-check-circle and success titles ([fc7317d](https://github.com/ASU/asu-unity-stack/commit/fc7317d19f48dd140da7c1261e2adb132d53e289))
+
 # [@asu/unity-react-core-v2.0.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.11.4...@asu/unity-react-core-v2.0.0) (2026-07-17)
 
 
