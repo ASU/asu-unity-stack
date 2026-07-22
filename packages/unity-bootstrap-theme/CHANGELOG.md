@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v2.1.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.1.0...@asu/unity-bootstrap-theme-v2.1.1) (2026-07-22)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix a11y issue min btn area if container has position rel ([5c8da93](https://github.com/ASU/asu-unity-stack/commit/5c8da9332c674d15d67d18eb8176aaa634a35d2a))
+
 # [@asu/unity-bootstrap-theme-v2.1.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.0.0...@asu/unity-bootstrap-theme-v2.1.0) (2026-07-22)
 
 
