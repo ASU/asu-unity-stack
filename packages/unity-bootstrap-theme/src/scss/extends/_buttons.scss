@@ -182,6 +182,50 @@ $button-colors: (
   }
 }
 
+.btn-gold:hover {
+  color: #000 !important;
+  background-color: #FFC627 !important;
+  border-color: #FFC627 !important;;
+}
+.btn-filled-gold:hover {
+  color: #000 !important;
+  background-color: #FFC627 !important;
+  border-color: #FFC627 !important;;
+}
+
+.btn-maroon:hover {
+  color: #fff !important;
+  background-color: #8C1D40 !important;
+  border-color: #8C1D40 !important;
+}
+.btn-filled-maroon:hover {
+  color: #fff !important;
+  background-color: #8C1D40 !important;
+  border-color: #8C1D40 !important;
+}
+
+.btn-gray:hover {
+  color: #000 !important;
+  background-color: #bfbfbf !important;
+  border-color: #bfbfbf !important;
+}
+.btn-filled-gray:hover {
+  color: #000 !important;
+  background-color: #bfbfbf !important;
+  border-color: #bfbfbf !important;
+}
+
+.btn-dark:hover {
+  color: #fff !important;
+  background-color: #000 !important;
+  border-color: #000 !important;
+}
+.btn-filled-dark:hover {
+  color: #fff !important;
+  background-color: #000 !important;
+  border-color: #000 !important;
+}
+
 // Mixin for borderless button variants
 @mixin button-borderless-variant($color, $hover-color) {
   color: $color;
