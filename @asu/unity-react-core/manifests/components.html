@@ -588,7 +588,7 @@
 <header>
   <div class="wrap">
     <h1>Manifest Debugger</h1>
-    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">2/39 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">37/39 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">19/122 story errors</a></div>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">2/39 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">37/39 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">19/127 story errors</a></div>
   </div>
 </header>
 <main>
@@ -5265,12 +5265,12 @@ type: SystemAlertType</code></pre>
       <div class="badges">
         <label for="c-31-components-tabbedpanels-props" class="badge ok as-toggle">3 prop types</label>
         <label for="c-31-components-tabbedpanels-info" class="badge info as-toggle">1 info</label>
-        <label for="c-31-components-tabbedpanels-stories" class="badge ok as-toggle">1 story</label>
+        <label for="c-31-components-tabbedpanels-stories" class="badge ok as-toggle">6 stories</label>
         
         
       </div>
     </div>
-    <div class="meta" title="./src/components/TabbedPanels/TabbedPanels.stories.jsx">components-tabbedpanels · ./src/components/TabbedPanels/TabbedPanels.stories.jsx</div>
+    <div class="meta" title="./src/components/TabbedPanels/TabbedPanels.stories.tsx">components-tabbedpanels · ./src/components/TabbedPanels/TabbedPanels.stories.tsx</div>
     
     
     
@@ -5301,13 +5301,13 @@ type: SystemAlertType</code></pre>
               <span class="ex-name">Prop types <small>(react-docgen-typescript)</small></span>
               <span class="badge ok">3 prop types</span>
             </div>
-            <pre><code>Component: src/components/TabbedPanels/TabbedPanels.jsx::TabbedPanels</code></pre>
+            <pre><code>Component: src/components/TabbedPanels/TabbedPanels.tsx::TabbedPanels</code></pre>
             <pre><code>Props:</code></pre>
             <pre><code>bgColor?: string
 
 initialTab?: string
 
-onTabChange?: (_: any) =&gt; void = _ =&gt; {}</code></pre>
+onTabChange?: (tabId: string) =&gt; void = () =&gt; {}</code></pre>
           </div>
         </div>
     
@@ -5319,7 +5319,7 @@ onTabChange?: (_: any) =&gt; void = _ =&gt; {}</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { MemoryRouter } from "react-router-dom";
+                <pre><code>import { ASUFooter, ASUHeader } from "@asu/component-header-footer";
 import { Tab, TabbedPanels } from "@asu/unity-react-core";</code></pre>
               </div>
           
@@ -5331,72 +5331,147 @@ import { Tab, TabbedPanels } from "@asu/unity-react-core";</code></pre>
               </div>
               
               
-              <pre><code>const Default = () =&gt; {
-  return (
-    &lt;MemoryRouter&gt;
-      &lt;div className=&quot;row no-gutters&quot; style={{ padding: &quot;10rem 0rem&quot; }}&gt;
-        &lt;div className=&quot;col uds-full-width&quot;&gt;
-          &lt;TabbedPanels&gt;
-            &lt;Tab id=&quot;home&quot; title=&quot;Home long tab&quot;&gt;
-              &lt;div&gt;
-                1 - Home long tab - This is an ordinary paragraph that is long
-                enough to to to wrap to multiple lines so that you can see how
-                spacing eos et accusam et justo duo dolores et ea rebu.
-                &lt;br /&gt;
-                Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
-              &lt;/div&gt;
-            &lt;/Tab&gt;
-            &lt;Tab id=&quot;profile&quot; title=&quot;Profile long tab&quot;&gt;
-              &lt;div&gt;
-                2 - Home long tab - This is an ordinary paragraph that is long
-                enough to to to wrap to multiple lines so that you can see how
-                spacing eos et accusam et justo duo dolores et ea rebu.
-                &lt;br /&gt;
-                Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
-              &lt;/div&gt;
-            &lt;/Tab&gt;
-            &lt;Tab id=&quot;contact&quot; title=&quot;Contact us is a long tab&quot;&gt;
-              &lt;div&gt;
-                3 - Home long tab - This is an ordinary paragraph that is long
-                enough to to to wrap to multiple lines so that you can see how
-                spacing eos et accusam et justo duo dolores et ea rebu.
-                &lt;br /&gt;
-                Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
-              &lt;/div&gt;
-            &lt;/Tab&gt;
-            &lt;Tab id=&quot;another&quot; title=&quot;Another tab, long tab&quot;&gt;
-              &lt;div&gt;
-                4 - Home long tab - This is an ordinary paragraph that is long
-                enough to to to wrap to multiple lines so that you can see how
-                spacing eos et accusam et justo duo dolores et ea rebu.
-                &lt;br /&gt;
-                Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
-              &lt;/div&gt;
-            &lt;/Tab&gt;
-            &lt;Tab id=&quot;another-2&quot; title=&quot;Another tab, long tab&quot;&gt;
-              &lt;div&gt;
-                5 - Home long tab - This is an ordinary paragraph that is long
-                enough to to to wrap to multiple lines so that you can see how
-                spacing eos et accusam et justo duo dolores et ea rebu.
-                &lt;br /&gt;
-                Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
-              &lt;/div&gt;
-            &lt;/Tab&gt;
-            &lt;Tab id=&quot;another-3&quot; title=&quot;Another tab, long tab&quot;&gt;
-              &lt;div&gt;
-                6 - Home long tab - This is an ordinary paragraph that is long
-                enough to to to wrap to multiple lines so that you can see how
-                spacing eos et accusam et justo duo dolores et ea rebu.
-                &lt;br /&gt;
-                Stet clita kasd gubergren, no sea takimata sanctus est Lorem.
-              &lt;/div&gt;
-            &lt;/Tab&gt;
-          &lt;/TabbedPanels&gt;
+              <pre><code>const Default = ({ numberOfTabs = 6 }: { numberOfTabs?: number }) =&gt; (
+  &lt;div className=&quot;row no-gutters&quot;&gt;
+    &lt;div className=&quot;col uds-full-width&quot;&gt;
+      &lt;TabbedPanels&gt;
+        {renderTabs(numberOfTabs)}
+      &lt;/TabbedPanels&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">With Overflow Tabs</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const WithOverflowTabs = ({ numberOfTabs = 12 }: { numberOfTabs?: number }) =&gt; (
+  &lt;div className=&quot;row no-gutters&quot;&gt;
+    &lt;div className=&quot;col uds-full-width&quot;&gt;
+      &lt;TabbedPanels&gt;
+        {renderTabs(numberOfTabs)}
+      &lt;/TabbedPanels&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Responsive Behavior</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const ResponsiveBehavior = ({ numberOfTabs = 8 }: { numberOfTabs?: number }) =&gt; (
+  &lt;div className=&quot;row no-gutters&quot;&gt;
+    &lt;div className=&quot;col uds-full-width&quot;&gt;
+      &lt;div style={{ width: &quot;320px&quot; }}&gt;
+        &lt;TabbedPanels&gt;
+          {renderTabs(numberOfTabs)}
+        &lt;/TabbedPanels&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Dark Background Overflow</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const DarkBackgroundOverflow = ({ numberOfTabs = 10 }: { numberOfTabs?: number }) =&gt; (
+  &lt;div className=&quot;row no-gutters&quot;&gt;
+    &lt;div className=&quot;col uds-full-width bg-dark p-3&quot;&gt;
+      &lt;div style={{ width: &quot;320px&quot; }}&gt;
+        &lt;TabbedPanels bgColor=&quot;bg-dark&quot;&gt;
+          {renderTabs(numberOfTabs)}
+        &lt;/TabbedPanels&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Many Overflow Tabs</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const ManyOverflowTabs = ({ numberOfTabs = 15 }: { numberOfTabs?: number }) =&gt; (
+  &lt;div className=&quot;row no-gutters&quot;&gt;
+    &lt;div className=&quot;col uds-full-width&quot;&gt;
+      &lt;div style={{ width: &quot;320px&quot; }}&gt;
+        &lt;TabbedPanels&gt;
+          {renderTabs(numberOfTabs)}
+        &lt;/TabbedPanels&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Full Page</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const FullPage = ({ maxWidth = &quot;100%&quot;, numberOfTabs = 12 }: { maxWidth?: string; numberOfTabs?: number }) =&gt; (
+  &lt;&gt;
+    &lt;ASUHeader
+      {...({
+        loggedIn: false,
+        userName: &quot;&quot;,
+        navTree: basicNavTree,
+        title: &quot;Subdomain name&quot;,
+        breakpoint: &quot;Lg&quot;,
+        searchUrl: &quot;https://search.asu.edu/search&quot;,
+        site: &quot;subdomain&quot;,
+      } as any)}
+    /&gt;
+    &lt;div style={{ marginTop: &quot;140px&quot; }}&gt;
+      &lt;div className=&quot;container&quot;&gt;
+        &lt;div className=&quot;row&quot;&gt;
+          &lt;div&gt;
+            &lt;h1 className=&quot;uds-headline&quot;&gt;TabbedPanels in page context&lt;/h1&gt;
+            &lt;p className=&quot;uds-body-copy&quot; style={{ marginBottom: &quot;2rem&quot; }}&gt;
+              This story shows TabbedPanels embedded in a full page layout with
+              the ASU header and footer.
+            &lt;/p&gt;
+            &lt;div style={{ width: maxWidth }}&gt;
+              &lt;TabbedPanels&gt;
+                {renderTabs(numberOfTabs)}
+              &lt;/TabbedPanels&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
         &lt;/div&gt;
       &lt;/div&gt;
-    &lt;/MemoryRouter&gt;
-  );
-};</code></pre>
+    &lt;/div&gt;
+    &lt;ASUFooter
+      contact={{
+        title: &quot;Subdomain name&quot;,
+        contactLink: &quot;https://www.asu.edu/about/contact&quot;,
+        contributionLink: &quot;https://www.asu.edu/give&quot;,
+      }}
+      social={{
+        logoUrl: &quot;https://www.asu.edu&quot;,
+        mediaLinks: {
+          facebook: &quot;https://www.facebook.com/asuonline&quot;,
+          twitter: &quot;https://twitter.com/ASUOnline&quot;,
+          instagram: &quot;https://www.instagram.com/asu&quot;,
+          linkedIn: &quot;https://www.linkedin.com/school/arizona-state-university&quot;,
+          youtube: &quot;https://www.youtube.com/user/asuofficial&quot;,
+        },
+      } as any}
+    /&gt;
+  &lt;/&gt;
+);</code></pre>
             </div>
         </div>
     
