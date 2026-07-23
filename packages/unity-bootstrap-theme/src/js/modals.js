@@ -5,6 +5,7 @@ function initModals() {
     .getElementById("openModalButton")
     ?.addEventListener("click", function () {
       document.getElementById("uds-modal").classList.add("open");
+      document.getElementById("closeModalButton").focus();
     });
 
   document
@@ -12,6 +13,11 @@ function initModals() {
     ?.addEventListener("click", function () {
       document.getElementById("uds-modal").classList.remove("open");
     });
+
+  document?.addEventListener("keydown", function (event) {
+    event.key === "Escape" &&
+      document.getElementById("uds-modal").classList.remove("open");
+  });
 }
 
 EventHandler.on(window, "load.uds.modals", initModals);
