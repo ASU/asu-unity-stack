@@ -103,12 +103,7 @@ const FilterComponent = ({
         <NavControls
           hidePrev={scrollLeft <= 0}
           hideNext={scrollLeft >= scrollableWidth - 5} // account for offset in scrollableWidth
-          clickPrev={() => {
-            slideNav(-1);
-          }}
-          clickNext={() => {
-            slideNav(1);
-          }}
+          slideNav={slideNav}
         />
         <div
           role="radiogroup"
