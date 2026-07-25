@@ -1,0 +1,270 @@
+/*--------------------------------------------------------------
+# ExpandableHeroes
+# Extends the hero strip layout for the APG Tabs manual-activation pattern.
+# Depends on _heroes.scss being imported first (for $uds-hero-gradient-overlay).
+#
+# LITERAL AUDIT CONTRACT:
+# The ONLY hardcoded numeric literals in this file are the two pane width
+# percentages: 15% (collapsed) and 70% (active).
+# Every other value uses a $uds-* token from _custom-asu-variables.scss.
+#
+# DOM STRUCTURE (amended after cycle 5: Option C dual-render tabpanels.
+#   The outer .uds-expandable-heroes-container wraps the tablist AND three
+#   semantic tabpanels placed as DOM siblings of the tablist. This satisfies
+#   axe-core 4.10.2 aria-required-children (the tablist's own DOM descendants
+#   are only role=tab buttons; in-tablist __panel divs carry aria-hidden=true).
+#   Inside __panel divs are decorative (no role, no ARIA semantics) for sighted
+#   layout. The outside tabpanels carry role=tabpanel and are visually-hidden
+#   (Bootstrap .visually-hidden utility) when active, fully hidden (HTML hidden
+#   attr) when inactive.
+#
+#   .uds-expandable-heroes-container                  ← NEW outer wrapper (block)
+#     .uds-expandable-heroes  [role=tablist]          ← unchanged flex container
+#       .uds-expandable-heroes__item.is-active        ← flex item (70%)
+#         .uds-expandable-heroes__pane.is-active      ← button [role=tab]
+#           .uds-expandable-heroes__rotated-title (hidden when active)
+#         .uds-expandable-heroes__panel  [aria-hidden] ← decorative, in-flow
+#           <Hero/>
+#       .uds-expandable-heroes__item                  ← flex item (15%)
+#         .uds-expandable-heroes__pane--collapsed     ← button [role=tab]
+#           .uds-expandable-heroes__rotated-title
+#         .uds-expandable-heroes__panel.is-hidden  [aria-hidden] ← decorative, hidden
+#       .uds-expandable-heroes__item                  ← flex item (15%)
+#         …
+#     div[role=tabpanel]#expandable-heroes-panel-0    ← semantic tabpanel (active)
+#       class="visually-hidden" → off-screen, AT-perceivable
+#       <Hero/>
+#     div[role=tabpanel]#expandable-heroes-panel-1    ← semantic tabpanel (inactive)
+#       hidden attr → removed from a11y tree
+#     div[role=tabpanel]#expandable-heroes-panel-2    ← semantic tabpanel (inactive)
+#       hidden attr → removed from a11y tree
+#
+# LAYOUT CHOICE: Option β — in-flow panel at ≥lg (cycle-3, preserved in cycle-5).
+# The __item is display:flex; flex-direction:column. The active __panel is in
+# flow inside the 70% column; the Hero's image drives item height, which drives
+# the row height via align-items:stretch. Collapsed items stretch to match the
+# row height automatically. Their panels are display:none so the button fills
+# the full item area.
+#
+# MARGIN NOTE (cycle-5): margin-bottom stays on .uds-expandable-heroes (the
+# tablist), not moved to the container. This preserves visual fidelity vs the
+# cycle-4 VISUAL_PASS reference. The container is a plain block wrapper with
+# no intrinsic spacing.
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+0. Outer container — wraps tablist + semantic tabpanels (Option C, cycle-5)
+   Pure block wrapper. No ARIA role. No intrinsic spacing (margin stays on
+   .uds-expandable-heroes to preserve cycle-4 visual fidelity).
+--------------------------------------------------------------*/
+
+.uds-expandable-heroes-container {
+  display: block;
+  width: 100%;
+}
+/*--------------------------------------------------------------
+1. Root tablist container
+--------------------------------------------------------------*/
+
+.uds-expandable-heroes {
+  display: block; // mobile-first: stacked column
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+  margin-bottom: $uds-size-spacing-8;
+
+  @include media-breakpoint-up(lg) {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0;
+  }
+}
+
+/*--------------------------------------------------------------
+2. Wrapper item — the flex item carrying width logic
+   (amended after cycle 2: width/flex logic moved from __pane to __item)
+--------------------------------------------------------------*/
+
+.uds-expandable-heroes__item {
+  display: block; // mobile-first: each item is a stacked block
+
+  @include media-breakpoint-up(lg) {
+    display: flex;
+    flex-direction: column; // button on top (0 height, hidden bg), panel below (flex:1)
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 15%;         // ← LITERAL 1 (locked: collapsed item width)
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: flex-basis $uds-time-transition-base ease-in-out;
+    }
+
+    &.is-active {
+      flex-basis: 70%;       // ← LITERAL 2 (locked: active item width)
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+3. Individual pane button (tab)
+--------------------------------------------------------------*/
+
+.uds-expandable-heroes__pane {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background-color: $asu-gray-1;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  color: $uds-color-base-white;
+  font-family: $uds-font-family-base;
+  text-align: left;
+  overflow: hidden;
+
+  // Focus ring (visible, not focus-within)
+  &:focus-visible {
+    outline: solid $uds-color-base-bluefocus;
+    outline-width: $uds-size-spacing-1; // P3 deferred: spec §6 says thin focus ring; no thin-border token exists
+    outline-offset: $uds-size-spacing-half;
+  }
+
+  @include media-breakpoint-up(lg) {
+    // In collapsed items, the button fills the full item height (panel is hidden).
+    // In the active item, the button has 0 intrinsic height (panel is in flow below it).
+    flex: 0 0 auto;
+    width: 100%;
+
+    &.is-active {
+      // Active button contributes 0 height; the panel (flex:1) drives item height.
+      // The rotated title is hidden when active (Hero shows the full heading).
+      flex-basis: 0;
+      height: 0;
+      overflow: hidden;
+      pointer-events: none; // panel overlays; Hero content is interactive
+    }
+
+    &:not(.is-active) {
+      // Collapsed button fills the available height left after its panel (none, display:none).
+      flex: 1 1 auto;
+    }
+
+    &.is-preview {
+      filter: brightness(1.1);
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+4. Gradient overlay on collapsed strips
+--------------------------------------------------------------*/
+
+.uds-expandable-heroes__pane--collapsed::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: $uds-hero-gradient-overlay;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/*--------------------------------------------------------------
+5. Rotated vertical title (collapsed strip label)
+--------------------------------------------------------------*/
+
+.uds-expandable-heroes__rotated-title {
+  display: none; // hidden in mobile-stack mode
+
+  @include media-breakpoint-up(lg) {
+    display: inline-block;
+    position: absolute;
+    bottom: $uds-size-spacing-2;
+    left: 50%;
+    writing-mode: vertical-rl;
+    transform: translateX(-50%) rotate(180deg); // reads bottom-to-top per design-doc §7
+    transform-origin: center center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 90%; // proportional, not a numeric px/rem literal
+    font-family: $uds-font-family-base;
+    font-size: $uds-size-font-large;
+    font-weight: $uds-font-weight-bold;
+    color: $uds-color-base-white;
+    padding: $uds-size-spacing-1 $uds-size-spacing-2;
+    z-index: 2;
+    pointer-events: none;
+
+    @include media-breakpoint-up(xl) {
+      font-size: $uds-size-font-xl;
+    }
+  }
+}
+
+// Hide rotated title when pane is active (the Hero shows the full heading)
+.uds-expandable-heroes__pane.is-active .uds-expandable-heroes__rotated-title {
+  display: none;
+}
+
+/*--------------------------------------------------------------
+6. Tab panel (Hero container)
+--------------------------------------------------------------*/
+
+.uds-expandable-heroes__panel {
+  display: block; // mobile-first: all panels visible in stack mode
+
+  @include media-breakpoint-up(lg) {
+    display: none; // collapsed items: panel hidden; button fills item
+  }
+
+  &:focus-visible {
+    outline: $uds-size-spacing-1 solid $uds-color-base-bluefocus;
+    outline-offset: $uds-size-spacing-half;
+  }
+}
+
+// Active item's panel is in-flow (option β).
+// The Hero's image drives this panel's height, which drives the item's height,
+// which (via align-items:stretch) drives the entire flex row's height.
+.uds-expandable-heroes__item.is-active .uds-expandable-heroes__panel {
+  @include media-breakpoint-up(lg) {
+    display: block;
+    flex: 1 1 auto; // takes remaining height inside the column flex item
+    pointer-events: auto;
+  }
+}
+
+// CSS visibility control: .is-hidden class used for inactive panels in stack mode
+.uds-expandable-heroes__panel.is-hidden {
+  @include media-breakpoint-down(md) {
+    display: none;
+  }
+}
+
+/*--------------------------------------------------------------
+7. Forced-colors mode fallback
+--------------------------------------------------------------*/
+
+@media (forced-colors: active) {
+  .uds-expandable-heroes__pane {
+    border: solid CanvasText;
+
+    &:focus-visible {
+      outline: solid Highlight;
+    }
+  }
+
+  .uds-expandable-heroes__rotated-title {
+    background: Canvas;
+    color: CanvasText;
+  }
+
+  .uds-expandable-heroes__pane--collapsed::before {
+    // Let the overlay fade in forced-colors; background image remains visible
+    background: none;
+  }
+}

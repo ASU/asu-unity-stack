@@ -17,3 +17,10 @@ interface ExpectPollOptions {
       timeout?: number;
       message?: string;
 }
+
+// Google Analytics dataLayer global
+declare global {
+  interface Window {
+    dataLayer: Record<string, unknown>[];
+  }
+}

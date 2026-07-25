@@ -20,6 +20,7 @@ import {
 import { ContentSpotlight } from "../../components/ContentSpotlight/ContentSpotlight";
 import { Divider } from "../../components/Divider/Divider";
 import { GridLinks } from "../../components/GridLinks/GridLinks";
+import { ExpandableHeroes } from "../../components/ExpandableHeroes/ExpandableHeroes";
 import { Hero } from "../../components/Hero/Hero";
 import { HighlyRanked } from "../../components/HighlyRanked/HighlyRanked";
 import { Image } from "../../components/Image/Image";
@@ -107,6 +108,12 @@ export const initContentSpotlight = ({ targetSelector, props }) =>
  */
 export const initGridLinks = ({ targetSelector, props }) =>
   RenderReact(GridLinks, props, document.querySelector(targetSelector));
+
+/**
+ * @param {ComponentProps} props
+ */
+export const initExpandableHeroes = ({ targetSelector, props }) =>
+  RenderReact(ExpandableHeroes, props, document.querySelector(targetSelector));
 
 /**
  * @param {ComponentProps} props
