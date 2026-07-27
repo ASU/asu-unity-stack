@@ -1,8 +1,17 @@
 import React, { useEffect} from "react";
 import { MemoryRouter, useLocation, useSearchParams } from "react-router-dom";
+import { initialize, mswLoader } from "msw-storybook-addon";
 import { useArgs } from 'storybook/preview-api';
 
 import "@asu/unity-bootstrap-theme/src/scss/unity-bootstrap-theme.bundle.scss";
+
+// The live Web Directory API blocks requests from localhost, so msw mocks
+// those endpoints in Storybook. See src/helpers/webDirectoryMockHandlers.js.
+initialize({
+  serviceWorker: {
+    url: "./mockServiceWorker.js",
+  },
+});
 
 const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -67,6 +76,7 @@ const preview = {
   argTypes,
   args,
   decorators,
+  loaders: [mswLoader],
 };
 
 export default preview;
