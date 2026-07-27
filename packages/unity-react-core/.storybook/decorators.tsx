@@ -4,7 +4,7 @@
 import { Decorator } from "@storybook/react";
 import React, { ReactNode, StrictMode, useEffect } from "react";
 
-import { getBootstrapHTML } from "../src/components/GaEventWrapper/useBaseSpecificFramework";
+import { getBootstrapHTML } from "../src/components/GaEventWrapper/getBootstrapHTML";
 import { useChannel } from "storybook/preview-api";
 
 declare interface ContainerProps {
