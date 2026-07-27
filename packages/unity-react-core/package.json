@@ -51,7 +51,7 @@
   "devDependencies": {
     "@asu/component-header-footer": "*",
     "@asu/shared": "*",
-    "@asu/unity-bootstrap-theme": "^1.21.3",
+    "@asu/unity-bootstrap-theme": "*",
     "@babel/cli": "^7.19.3",
     "@babel/core": "^7.21.3",
     "@babel/plugin-transform-runtime": "^7.19.6",
@@ -107,7 +107,7 @@
     "react-share": "^5.3"
   },
   "peerDependencies": {
-    "@asu/unity-bootstrap-theme": "^1.21.3",
+    "@asu/unity-bootstrap-theme": "^2.0.0",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
