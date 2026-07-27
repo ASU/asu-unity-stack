@@ -6,6 +6,7 @@ function getAbsolutePath(value) {
 }
 
 const config = {
+  staticDirs: ["../public"],
   addons: [
     fileURLToPath(import.meta.resolve("../../../.storybook-config/index.js")),
     fileURLToPath(import.meta.resolve("../../../.storybook-config/dataLayerListener/index.js")),

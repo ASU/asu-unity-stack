@@ -80,6 +80,8 @@
     "jsdoc-to-markdown": "^9.0.0",
     "jsdoc-ts-utils": "^2.0.1",
     "jsdom-screenshot": "^4.0.0",
+    "msw": "^2.7.0",
+    "msw-storybook-addon": "^2.0.0",
     "postcss-loader": "^6.1.1",
     "raw-loader": "^4.0.2",
     "sass": "^1.39.2",
@@ -98,5 +100,10 @@
   },
   "volta": {
     "extends": "../../package.json"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }

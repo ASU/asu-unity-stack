@@ -3,6 +3,7 @@ import React from "react";
 import { WebDirectory } from "./index";
 
 import { FullLayout } from "@asu/shared";
+import { webDirectoryHandlers } from "../helpers/webDirectoryMockHandlers";
 
 export default {
   title: "Organisms/Web Directory/Templates",
@@ -18,6 +19,7 @@ export default {
     },
   },
   args: { alphaFilter: "false" },
+  parameters: { msw: { handlers: webDirectoryHandlers } },
   decorators: [story => <FullLayout>{story()}</FullLayout>],
 };
 

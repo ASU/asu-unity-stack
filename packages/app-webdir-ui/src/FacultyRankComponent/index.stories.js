@@ -2,9 +2,11 @@ import React from "react";
 
 import { FullLayout } from "@asu/shared";
 import { WebDirectory } from "../WebDirectoryComponent/index";
+import { webDirectoryHandlers } from "../helpers/webDirectoryMockHandlers";
 
 export default {
   title: "Organisms/Web Directory/Templates",
+  parameters: { msw: { handlers: webDirectoryHandlers } },
   decorators: [story => <FullLayout>{story()}</FullLayout>],
 };
 
