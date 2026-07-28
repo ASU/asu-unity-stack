@@ -72,7 +72,7 @@ export const webDirectoryExamplePeople = args => {
         <div className={args.columnView === "50%" ? "col-md-6" : ""}>
           <WebDirectory
             searchType="people"
-            ids="mcrow:454517,mdenke:1350,jagarc50:1350,lhillzev:1353"
+            ids="jwhitfi:454517,mdenke:1350,jagarc50:1350,lhillzev:1353"
             API_URL="https://asuapp2dev.prod.acquia-sites.com/"
             searchApiVersion="/api/v1/"
             display={display}
@@ -92,7 +92,7 @@ export const webDirectoryExampleDepartmentsAndPeople = args => {
         <div className={args.columnView === "50%" ? "col-md-6" : ""}>
           <WebDirectory
             searchType="people_departments"
-            ids=",tgrandli:1344,mcrow:1343,jcunnin8:1358,ccherrer:1358,csmudde:1358"
+            ids=",tgrandli:1344,jwhitfi:1343,jcunnin8:1358,ccherrer:1358,csmudde:1358"
             API_URL="https://asuapp2dev.prod.acquia-sites.com/"
             searchApiVersion="/api/v1/"
             display={display}
