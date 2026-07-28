@@ -36,47 +36,8 @@ export const Modal: React.FC<ModalProps> = ({ open, gaData }) => {
   const { isReact, isBootstrap } = useBaseSpecificFramework();
   const [openState, setOpen] = React.useState(open);
 
-  const focusOnModalInput = () => {
-    //source: https://stackoverflow.com/questions/4195616/how-to-set-the-focus-on-a-javascript-modal-window
-    const focusableElements =
-      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-    const modal = document.getElementsByClassName("uds-modal-container")[0];
-    const firstFocusableElement = modal?.querySelectorAll(focusableElements)[0];
-    const focusableContent = modal?.querySelectorAll(focusableElements);
-    const lastFocusableElement = focusableContent
-      ? focusableContent[focusableContent?.length - 1]
-      : undefined;
-
-    if (lastFocusableElement && firstFocusableElement) {
-      document.addEventListener("keydown", function (e) {
-        let isTabPressed = e.key === "Tab" || e.keyCode === 9;
-
-        if (!isTabPressed) {
-          return;
-        }
-
-        if (e.shiftKey) {
-          // if shift key pressed for shift + tab combination
-          if (document.activeElement === firstFocusableElement) {
-            (lastFocusableElement as HTMLElement)?.focus(); // add focus for the last focusable element
-            e.preventDefault();
-          }
-        } else {
-          // if tab key is pressed
-          if (document.activeElement === lastFocusableElement) {
-            // if focused has reached to last focusable element then focus first focusable element after pressing tab
-            (firstFocusableElement as HTMLElement)?.focus(); // add focus for the first focusable element
-            e.preventDefault();
-          }
-        }
-      });
-      (firstFocusableElement as HTMLElement)?.focus();
-    }
-  };
-
   const handleOpen = () => {
     setOpen(true);
-    focusOnModalInput();
   };
 
   const handleClose = () => {
@@ -94,6 +55,49 @@ export const Modal: React.FC<ModalProps> = ({ open, gaData }) => {
 
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [openState, setOpen]);
+
+  useEffect(() => {
+    if (!openState) return;
+
+    //source: https://stackoverflow.com/questions/4195616/how-to-set-the-focus-on-a-javascript-modal-window
+    const focusableElements =
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    const modal = document.getElementsByClassName("uds-modal-container")[0];
+    const firstFocusableElement = modal?.querySelectorAll(focusableElements)[0];
+    const focusableContent = modal?.querySelectorAll(focusableElements);
+    const lastFocusableElement = focusableContent
+      ? focusableContent[focusableContent?.length - 1]
+      : undefined;
+
+    const handleTabKey = (e: KeyboardEvent) => {
+      let isTabPressed = e.key === "Tab"; // || e.keyCode === 9;
+
+      if (!isTabPressed) {
+        return;
+      }
+
+      if (e.shiftKey) {
+        // if shift key pressed for shift + tab combination
+        if (document.activeElement === firstFocusableElement) {
+          (lastFocusableElement as HTMLElement)?.focus(); // add focus for the last focusable element
+          e.preventDefault();
+        }
+      } else {
+        // if tab key is pressed
+        if (document.activeElement === lastFocusableElement) {
+          // if focused has reached to last focusable element then focus first focusable element after pressing tab
+          (firstFocusableElement as HTMLElement)?.focus(); // add focus for the first focusable element
+          e.preventDefault();
+        }
+      }
+    };
+
+    if (lastFocusableElement && firstFocusableElement) {
+      document.addEventListener("keydown", handleTabKey);
+      (firstFocusableElement as HTMLElement)?.focus();
+      return () => document.removeEventListener("keydown", handleTabKey);
+    }
+  }, [openState]);
 
   const modalTitle = "Content";
 

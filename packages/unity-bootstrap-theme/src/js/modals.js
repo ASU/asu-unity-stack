@@ -4,8 +4,8 @@ function initModals() {
   document
     .getElementById("openModalButton")
     ?.addEventListener("click", function () {
-      document.getElementById("uds-modal").classList.add("open");
-      document.getElementById("closeModalButton").focus();
+      document.getElementById("uds-modal")?.classList.add("open");
+      document.getElementById("closeModalButton")?.focus();
     });
 
   document
@@ -16,7 +16,7 @@ function initModals() {
 
   document?.addEventListener("keydown", function (event) {
     event.key === "Escape" &&
-      document.getElementById("uds-modal").classList.remove("open");
+      document.getElementById("uds-modal")?.classList.remove("open");
   });
 }
 
