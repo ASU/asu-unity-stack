@@ -76,21 +76,21 @@ ol>li>ol>li>ol>li>ol>li>ol>li>ol>li>ol>li>ol>li>ol>li>ol,
 ol>li>ol>li>ol>li>ol>li>ol>li>ol>li>ol,
 ol>li>ol>li>ol>li>ol,
 ol {
-  --li-before-content: counter(listcounter) '. ';
+  --li-before-content: counter(list-item) '. ';
 }
 
 ol>li>ol>li>ol>li>ol>li>ol>li>ol>li>ol>li>ol>li>ol>li>ol>li>ol,
 ol>li>ol>li>ol>li>ol>li>ol>li>ol>li>ol>li>ol,
 ol>li>ol>li>ol>li>ol>li>ol,
 ol>li>ol {
-  --li-before-content: counter(listcounter, lower-alpha) '. ';
+  --li-before-content: counter(list-item, lower-alpha) '. ';
 }
 
 ol>li>ol>li>ol>li>ol>li>ol>li>ol>li>ol>li>ol>li>ol>li>ol>li>ol>li>ol,
 ol>li>ol>li>ol>li>ol>li>ol>li>ol>li>ol>li>ol>li>ol,
 ol>li>ol>li>ol>li>ol>li>ol>li>ol,
 ol>li>ol>li>ol {
-  --li-before-content: counter(listcounter, lower-roman) '. ';
+  --li-before-content: counter(list-item, lower-roman) '. ';
 }
 
 /* General UL rules. */
@@ -188,12 +188,9 @@ ol.uds-list,
   // Tweak the mix-in's left padding due to OL's needing more space for double
   // and triple digits. Not supported: > 3 digits.
   --list-padding-left: 3rem;
-  // We manually manage the counter since we need to remove the trailing periods.
-  counter-reset: listcounter;
 
   & > li:before {
     --li-before-font-size: 1rem;
-    counter-increment: listcounter;
     left: -3rem;
     text-align: right;
     position: absolute;
@@ -222,7 +219,7 @@ ol.uds-list,
 
       &:before {
         --li-before-background-color: #{$asu-gray-1};
-        --li-before-content: counter(listcounter); // Remove space because it messes with centering.
+        --li-before-content: counter(list-item); // Remove space because it messes with centering.
         --li-before-color: #{$asu-gray-7};
         --li-before-font-size: 1.25rem;
         border-radius: 50rem;
