@@ -31,7 +31,9 @@
     "build": "vite build && cp -r src/assets dist/",
     "build:stats": "webpack -c webpack/webpack.prod.js --profile --json=compilation-stats.json",
     "start:dev": "webpack-dashboard -- webpack serve -c webpack/webpack.dev.js",
-    "storybook": "storybook dev -p 9030",
+    "server": "node server.js",
+    "storybook:ui": "storybook dev -p 9030",
+    "storybook": "concurrently \"npm run server\" \"npm run storybook:ui\" --names \"server,storybook\" --prefix \"[{name}]\" --kill-others-on-exit",
     "build-storybook": "storybook build -o ../../build/$npm_package_name",
     "jsdoc": "jsdoc -c jsdoc.config.js",
     "predocs": "mkdir -p ./docs",
@@ -63,6 +65,7 @@
     "@testing-library/react": "^16.0.0",
     "@vitejs/plugin-react": "^4.3.1",
     "babel-loader": "^8.2.2",
+    "concurrently": "^10.0.3",
     "copy-webpack-plugin": "^9.0.1",
     "css-loader": "^5.2.4",
     "dotenv-webpack": "^7.0.3",
@@ -80,6 +83,7 @@
     "jsdoc-to-markdown": "^9.0.0",
     "jsdoc-ts-utils": "^2.0.1",
     "jsdom-screenshot": "^4.0.0",
+    "msw": "^2.7.0",
     "postcss-loader": "^6.1.1",
     "raw-loader": "^4.0.2",
     "sass": "^1.39.2",
@@ -98,5 +102,10 @@
   },
   "volta": {
     "extends": "../../package.json"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }

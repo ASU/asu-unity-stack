@@ -39,7 +39,7 @@
     "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "dependencies": {
-    "@asu/unity-react-core": "^1.0.0",
+    "@asu/unity-react-core": "^2.0.0",
     "prop-types": "^15.7.2",
     "styled-components": "^6.0.0"
   },
