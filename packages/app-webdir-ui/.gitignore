@@ -5,3 +5,7 @@ package-lock.json
 yarn-lock.json
 docs/**
 !docs/README.props.md
+
+# Environment overrides (personal/local config)
+.env.local
+.env*.local
