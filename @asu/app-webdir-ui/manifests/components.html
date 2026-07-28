@@ -860,8 +860,8 @@ import { WebDirectory } from "@asu/app-webdir-ui";</code></pre>
       &lt;WebDirectory
         searchType=&quot;faculty_rank&quot;
         deptIds=&quot;249891,1709,N1712169848,1706,1705&quot;
-        API_URL=&quot;https://asuapp2dev.prod.acquia-sites.com/&quot;
-        searchApiVersion=&quot;api/v1/&quot;
+        API_URL={API_URL}
+        searchApiVersion={searchApiVersion}
         filters={filters}
         display={display}
         // alphaFilter={args.alphaFilter}
@@ -1261,8 +1261,8 @@ import { SearchPage } from "@asu/app-webdir-ui";</code></pre>
               <pre><code>const searchPageExample = () =&gt; (
   &lt;div className=&quot;uds-content-align&quot;&gt;
     &lt;SearchPage
-      API_URL=&quot;https://asuapp2dev.prod.acquia-sites.com&quot;
-      searchApiVersion=&quot;/api/v1/&quot;
+      API_URL={API_URL}
+      searchApiVersion={searchApiVersion}
       loggedIn={false}
       // appPathFolder=&quot;/my/custom/path/to/component/root/example&quot;
     /&gt;

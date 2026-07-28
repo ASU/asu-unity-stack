@@ -594,7 +594,7 @@
 <main>
   <div class="wrap">
     <div class="note info" style="margin-bottom: 16px;">
-            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>1.6s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
+            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>1.3s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
             <pre><code>typescript: {
   reactDocgen: 'react-docgen-typescript',
 }</code></pre>
@@ -658,19 +658,19 @@
             <pre><code>Props:</code></pre>
             <pre><code>children?: element
 
-ctaButton?: w.shape({
-  color: w.oneOf([&quot;gold&quot;, &quot;maroon&quot;, &quot;gray&quot;, &quot;dark&quot;]),
-  text: w.string
+ctaButton?: p.shape({
+  color: p.oneOf([&quot;gold&quot;, &quot;maroon&quot;, &quot;gray&quot;, &quot;dark&quot;]),
+  text: p.string
 })
 
-dataSource?: w.shape({
-  url: w.string,
-  filters: w.string
+dataSource?: p.shape({
+  url: p.string,
+  filters: p.string
 })
 
-header?: w.shape({
-  color: w.oneOf([&quot;white&quot;, &quot;dark&quot;]),
-  text: w.string
+header?: p.shape({
+  color: p.oneOf([&quot;white&quot;, &quot;dark&quot;]),
+  text: p.string
 })
 
 maxItems?: number</code></pre>
@@ -850,27 +850,27 @@ maxItems?: number</code></pre>
             </div>
             <pre><code>Component: src/components/CardGridNews/index.jsx::CardGridNews</code></pre>
             <pre><code>Props:</code></pre>
-            <pre><code>cardButton?: w.shape({
-  color: w.oneOf([&quot;gold&quot;, &quot;maroon&quot;, &quot;gray&quot;, &quot;dark&quot;]),
-  text: w.string,
-  size: w.string
+            <pre><code>cardButton?: p.shape({
+  color: p.oneOf([&quot;gold&quot;, &quot;maroon&quot;, &quot;gray&quot;, &quot;dark&quot;]),
+  text: p.string,
+  size: p.string
 })
 
 children?: element
 
-ctaButton?: w.shape({
-  color: w.oneOf([&quot;gold&quot;, &quot;maroon&quot;, &quot;gray&quot;, &quot;dark&quot;]),
-  text: w.string
+ctaButton?: p.shape({
+  color: p.oneOf([&quot;gold&quot;, &quot;maroon&quot;, &quot;gray&quot;, &quot;dark&quot;]),
+  text: p.string
 })
 
-dataSource?: w.shape({
-  url: w.string,
-  filters: w.string
+dataSource?: p.shape({
+  url: p.string,
+  filters: p.string
 })
 
-header?: w.shape({
-  color: w.oneOf([&quot;white&quot;, &quot;dark&quot;]),
-  text: w.string
+header?: p.shape({
+  color: p.oneOf([&quot;white&quot;, &quot;dark&quot;]),
+  text: p.string
 })
 
 hideTags?: enum = true
@@ -1054,25 +1054,25 @@ maxItems?: number</code></pre>
             <pre><code>Props:</code></pre>
             <pre><code>children?: element
 
-ctaButton?: w.shape({
-  color: w.oneOf([&quot;gold&quot;, &quot;maroon&quot;, &quot;gray&quot;, &quot;dark&quot;]),
-  text: w.string
+ctaButton?: p.shape({
+  color: p.oneOf([&quot;gold&quot;, &quot;maroon&quot;, &quot;gray&quot;, &quot;dark&quot;]),
+  text: p.string
 })
 
-dataSource?: w.shape({
-  url: w.string,
-  filters: w.string
+dataSource?: p.shape({
+  url: p.string,
+  filters: p.string
 })
 
-feedCardButtonShape?: w.shape({
-  color: w.oneOf([&quot;gold&quot;, &quot;maroon&quot;, &quot;gray&quot;, &quot;dark&quot;]),
-  text: w.string,
-  size: w.string
+feedCardButtonShape?: p.shape({
+  color: p.oneOf([&quot;gold&quot;, &quot;maroon&quot;, &quot;gray&quot;, &quot;dark&quot;]),
+  text: p.string,
+  size: p.string
 })
 
-header?: w.shape({
-  color: w.oneOf([&quot;white&quot;, &quot;dark&quot;]),
-  text: w.string
+header?: p.shape({
+  color: p.oneOf([&quot;white&quot;, &quot;dark&quot;]),
+  text: p.string
 })
 
 hideTags?: enum = true
