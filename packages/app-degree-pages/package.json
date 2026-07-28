@@ -1,6 +1,6 @@
 {
   "name": "@asu/app-degree-pages",
-  "version": "3.2.1",
+  "version": "3.2.3",
   "description": "ASU implementation of degree pages",
   "main": "./dist/degreePages.cjs.js",
   "browser": "./dist/degreePages.umd.js",
@@ -43,7 +43,7 @@
     "postdocs": "node ../../scripts/process-readme-props.js"
   },
   "dependencies": {
-    "@asu/unity-react-core": "^1.0.0",
+    "@asu/unity-react-core": "^2.0.0",
     "@popperjs/core": "^2.9.2",
     "classnames": "^2.3.1",
     "prop-types": "^15.7.2",
@@ -62,7 +62,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.0.0",
     "@vitejs/plugin-react": "^4.3.1",
-    "@vitest/browser": "^4.1.9",
+    "@vitest/browser": "4.1.10",
     "babel-jest": "^27.0.6",
     "babel-loader": "^8.2.2",
     "babel-plugin-dynamic-import-node": "^2.3.3",

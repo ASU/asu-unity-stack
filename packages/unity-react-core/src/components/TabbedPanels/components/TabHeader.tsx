@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 
 import { GaEventWrapper } from "../../GaEventWrapper/GaEventWrapper";
 import { useBaseSpecificFramework } from "../../GaEventWrapper/useBaseSpecificFramework";

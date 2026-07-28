@@ -12,6 +12,7 @@ import { profileCardType } from "./models";
  * @param {string} [props.matchedAffiliationTitle] - The matched affiliation title of the user.
  * @param {string} [props.matchedAffiliationDept] - The matched affiliation department of the user.
  * @param {string} [props.imgURL] - The URL of the user's profile image.
+ * @param {string} [props.anonImgURL] - Fallback placeholder image URL used when `imgURL` is empty or fails to load.
  * @param {string} [props.profileURL] - The URL of the user's profile page.
  * @param {string} [props.email] - The email address of the user.
  * @param {string} [props.telephone] - The telephone number of the user.
@@ -45,7 +46,14 @@ const ProfileCard = ({ ...props }) => {
       : "";
 
   const hideNonExistantImages = e => {
-    e.target.style.display = "none";
+    // Fall back to the anon placeholder image instead of hiding the image
+    // entirely. Guard against the anon image itself failing to load so we
+    // don't loop indefinitely
+    if (props.anonImgURL && e.target.src !== props.anonImgURL) {
+      e.target.src = props.anonImgURL;
+    } else {
+      e.target.style.display = "none";
+    }
   };
   let formattedTelephone = props.telephone;
   if (formattedTelephone) {
@@ -76,7 +84,7 @@ const ProfileCard = ({ ...props }) => {
         <div className="profile-img-placeholder">
           <img
             className="profile-img"
-            src={props.imgURL} // TODO: This prop can potentially be empty, which can occur due to limitations of the image service. Consequently, the <img> tag would be rendered without its "src" attribute, which is not a good practice and should be avoided.
+            src={props.imgURL || props.anonImgURL}
             alt={props.name}
             onError={hideNonExistantImages}
           />

@@ -1,3 +1,17 @@
+# [@asu/app-rfi-v3.10.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.10.2...@asu/app-rfi-v3.10.3) (2026-07-28)
+
+
+### Bug Fixes
+
+* **app-rfi:** correct stale @asu/unity-bootstrap-theme and @asu/unity-react-core dependency ranges ([7214d47](https://github.com/asu/asu-unity-stack/commit/7214d478609d54a14d9ff30e10363d9015f04a84))
+
+# [@asu/app-rfi-v3.10.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.10.1...@asu/app-rfi-v3.10.2) (2026-07-01)
+
+
+### Bug Fixes
+
+* **app-rfi:** remove pkg to support react 19 ([3eec4b8](https://github.com/asu/asu-unity-stack/commit/3eec4b87a7b5495085143c937a0f9e22ac700023))
+
 # [@asu/app-rfi-v3.10.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.10.0...@asu/app-rfi-v3.10.1) (2026-06-18)
 
 

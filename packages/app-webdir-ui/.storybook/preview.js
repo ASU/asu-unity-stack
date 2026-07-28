@@ -1,6 +1,6 @@
-import React, { useEffect} from "react";
+import React, { useEffect, useRef } from "react";
 import { MemoryRouter, useLocation, useSearchParams } from "react-router-dom";
-import { useArgs } from 'storybook/preview-api';
+import { useArgs } from "storybook/preview-api";
 
 import "@asu/unity-bootstrap-theme/src/scss/unity-bootstrap-theme.bundle.scss";
 
@@ -14,50 +14,67 @@ const argTypes = {
     control: {
       type: "object",
     },
-  }
+  },
 };
 
 const args = {
-  searchParams: {}
+  searchParams: {},
 };
 
 const getParamObject = (paramArray = []) => {
   const result = {};
-  for (const entry of (paramArray.entries())) {
+  for (const entry of paramArray.entries()) {
     result[entry[0]] = entry[1];
   }
   return result;
-}
+};
 
-const Wrapper = ({ args, updateArgs,...props}) => {
+const areObjectsEqual = (left = {}, right = {}) =>
+  JSON.stringify(left) === JSON.stringify(right);
+
+const Wrapper = ({ args, updateArgs, ...props }) => {
   const location = useLocation();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [, setSearchParams] = useSearchParams();
+  const seededFromArgsRef = useRef(false);
 
-  useEffect(()=>{
-    updateArgs({
-      ...args,
-      searchParams: getParamObject(new URLSearchParams(location.search)),
-    })
-  },[location.search])
+  useEffect(() => {
+    const nextSearchParams = getParamObject(new URLSearchParams(location.search));
+    if (!areObjectsEqual(args.searchParams, nextSearchParams)) {
+      updateArgs({
+        searchParams: nextSearchParams,
+      });
+    }
+  }, [args.searchParams, location.search, updateArgs]);
 
-  useEffect(()=>{
-    setSearchParams({
-      ...getParamObject(searchParams),
-      ...args.searchParams,
-    });
-  },[args.searchParams])
+  useEffect(() => {
+    if (seededFromArgsRef.current) {
+      return;
+    }
+
+    const currentSearchParams = getParamObject(new URLSearchParams(location.search));
+    if (
+      Object.keys(currentSearchParams).length === 0 &&
+      Object.keys(args.searchParams || {}).length > 0
+    ) {
+      setSearchParams(args.searchParams, { replace: true });
+    }
+
+    seededFromArgsRef.current = true;
+  }, [args.searchParams, location.search, setSearchParams]);
 
   return props.children;
-}
+};
 
 const decorators = [
-  (Story) => {
+  Story => {
     const [args, updateArgs] = useArgs();
-  return <MemoryRouter>
+    return (
+      <MemoryRouter>
         <Wrapper args={args} updateArgs={updateArgs}>
           <Story />
         </Wrapper>
-    </MemoryRouter>
+      </MemoryRouter>
+    );
   },
 ];
 

@@ -1,6 +1,6 @@
 {
   "name": "@asu/unity-react-core",
-  "version": "1.11.3",
+  "version": "2.1.1",
   "main": "./dist/unityReactCore.umd.js",
   "module": "./dist/unityReactCore.es.js",
   "browser": "./dist/unityReactCore.umd.js",
@@ -51,7 +51,7 @@
   "devDependencies": {
     "@asu/component-header-footer": "*",
     "@asu/shared": "*",
-    "@asu/unity-bootstrap-theme": "^1.21.3",
+    "@asu/unity-bootstrap-theme": "*",
     "@babel/cli": "^7.19.3",
     "@babel/core": "^7.21.3",
     "@babel/plugin-transform-runtime": "^7.19.6",
@@ -68,9 +68,9 @@
     "@testing-library/user-event": "^14.5.2",
     "@types/react-syntax-highlighter": "^15",
     "@vitejs/plugin-react": "^4.3.1",
-    "@vitest/browser": "^4.1.9",
-    "@vitest/browser-playwright": "^4.1.9",
-    "@vitest/ui": "^4.1.9",
+    "@vitest/browser": "4.1.10",
+    "@vitest/browser-playwright": "4.1.10",
+    "@vitest/ui": "4.1.10",
     "axe-playwright": "^2.0.3",
     "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
@@ -107,7 +107,7 @@
     "react-share": "^5.3"
   },
   "peerDependencies": {
-    "@asu/unity-bootstrap-theme": "^1.21.3",
+    "@asu/unity-bootstrap-theme": "^2.0.0",
     "@fortawesome/fontawesome-free": "^5.15.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
