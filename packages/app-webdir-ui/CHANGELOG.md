@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v5.0.17](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.16...@asu/app-webdir-ui-v5.0.17) (2026-07-28)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** fix nav controls and anon image for webdir ([0e68046](https://github.com/asu/asu-unity-stack/commit/0e680469219ebb656f5e4da74130d0e9e1bc1b04))
+
 # [@asu/app-webdir-ui-v5.0.16](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.15...@asu/app-webdir-ui-v5.0.16) (2026-07-25)
 
 
