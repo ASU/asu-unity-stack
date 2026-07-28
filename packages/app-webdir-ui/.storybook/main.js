@@ -38,7 +38,7 @@ function loadEnvFile(filePath) {
 
 function loadStorybookEnv(configType) {
   const envFileName =
-    configType === "PRODUCTION" ? ".env.production" : ".env.development";
+    configType === "PRODUCTION" ? ".env.storybook-build" : ".env.development";
   loadEnvFile(resolve(packageRoot, envFileName));
 }
 
