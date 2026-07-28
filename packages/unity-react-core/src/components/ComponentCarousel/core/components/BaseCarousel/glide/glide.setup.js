@@ -142,9 +142,9 @@ function setNavButtonGradient(gliderElement, currentIndex, buttonCount) {
     imageGalleryNavigation?.classList.add("slider-start");
     // Enable/disable prev/next styles. Glide takes care of actual disable.
     arrowPrev?.classList.add(cssDisabledClass);
-    arrowPrev?.setAttribute("aria-disabled", "true");
+    arrowPrev?.setAttribute("disabled", "true");
     arrowNext?.classList.remove(cssDisabledClass);
-    arrowNext?.setAttribute("aria-disabled", "false");
+    arrowNext?.removeAttribute("disabled");
   } else if (currentIndex >= buttonCount - 1) {
     // LAST SLIDE.
     // Gradient for end.
@@ -152,9 +152,9 @@ function setNavButtonGradient(gliderElement, currentIndex, buttonCount) {
     imageGalleryNavigation?.classList.add("slider-end");
     // Enable/disable prev/next styles. Glide takes care of actual disable.
     arrowPrev?.classList.remove(cssDisabledClass);
-    arrowPrev?.setAttribute("aria-disabled", "false");
+    arrowPrev?.removeAttribute("disabled");
     arrowNext?.classList.add(cssDisabledClass);
-    arrowNext?.setAttribute("aria-disabled", "true");
+    arrowNext?.setAttribute("disabled", "true");
   } else {
     // MIDDLE SLIDES.
     // Gradient for middle.
@@ -163,8 +163,8 @@ function setNavButtonGradient(gliderElement, currentIndex, buttonCount) {
     // Enable/disable prev/next styles. Glide takes care of actual disable.
     arrowPrev?.classList.remove(cssDisabledClass);
     arrowNext?.classList.remove(cssDisabledClass);
-    arrowPrev?.setAttribute("aria-disabled", "false");
-    arrowNext?.setAttribute("aria-disabled", "false");
+    arrowPrev?.removeAttribute("disabled");
+    arrowNext?.removeAttribute("disabled");
   }
 }
 
@@ -307,6 +307,64 @@ function setupCaroarousel({
     // We use event listeners to clear and set class names to show/hide
     // gradients when at the start, middle or end of a slider.
     setNavButtonGradient(gliderElement, currentIndex, buttonCount);
+
+    // Set the main container with aria-labelledby with the header of the active card
+    const slides = gliderElement.querySelectorAll(".slider");
+
+    // Getting the text from the main header tag
+    //source: https://stackoverflow.com/questions/67134998/javascript-recursion-to-get-innertext
+    function getText(node, accumulator) {
+      if (node.nodeType === 3) {
+        // 3 == text node
+        accumulator.push(node.nodeValue);
+      } else {
+        for (let child of node.childNodes) getText(child, accumulator);
+      }
+    }
+
+    for (let i = 0; i < slides.length; i++) {
+      if (i === currentIndex) {
+        // Find the main h tag in the card if one exists
+        let header;
+        for (let j = 1; j < 9; j++) {
+          if (!header) {
+            header = slides[i].querySelector(`h${j}`);
+          }
+        }
+
+        let cardDiv = slides[i].querySelectorAll(`.card`);
+        if (cardDiv && cardDiv[0]) {
+          cardDiv[0].setAttribute("aria-live", "polite");
+          cardDiv[0].setAttribute("role", "alert");
+          cardDiv[0].setAttribute("tabIndex", "0");
+        }
+
+        if (header) {
+          let allTexts = [];
+          getText(slides[i], allTexts);
+          gliderElement.setAttribute("aria-labelledby", allTexts[0]);
+          gliderElement.removeAttribute("aria-label");
+        } else {
+          gliderElement.setAttribute("aria-label", `Card ${i + 1}`);
+          gliderElement.removeAttribute("aria-labelledby");
+        }
+
+        // slides[i].focus();
+      }
+    }
+
+    // Update bullet accessibility
+    const bullets = gliderElement.querySelectorAll(".glide__bullet");
+    for (let i = 0; i < bullets.length; i++) {
+      if (i === currentIndex) {
+        bullets[i].setAttribute("disabled", "");
+        bullets[i].setAttribute("aria-current", "true");
+      } else {
+        bullets[i].removeAttribute("disabled");
+        bullets[i].setAttribute("aria-current", "false");
+      }
+    }
+
     // set the current index
     gliderElement.setAttribute("data-current-index", currentIndex);
     onItemClick && onItemClick(currentIndex);
