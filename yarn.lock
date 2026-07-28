@@ -10769,7 +10769,6 @@ __metadata:
     semantic-release-monorepo: "npm:^8.0.2"
     semver: "npm:^7.5.2"
     tsx: "npm:^4.19.3"
-    vite: "npm:^6.0.0"
     webpack: "npm:^5.32.0"
     webpack-bundle-analyzer: "npm:^4.4.1"
     webpack-cli: "npm:^4.6.0"
