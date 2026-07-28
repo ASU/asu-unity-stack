@@ -1,3 +1,10 @@
+# [@asu/unity-react-core-v2.1.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.1.0...@asu/unity-react-core-v2.1.1) (2026-07-28)
+
+
+### Bug Fixes
+
+* **unity-react-core:** restore nav-control styles and stop bundling react-dom/server ([cb41952](https://github.com/ASU/asu-unity-stack/commit/cb41952b835e1da077d6e39333e410105a7ac352))
+
 # [@asu/unity-react-core-v2.1.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.0.0...@asu/unity-react-core-v2.1.0) (2026-07-22)
 
 
