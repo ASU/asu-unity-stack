@@ -2,11 +2,12 @@ import React from "react";
 
 import { FullLayout } from "@asu/shared";
 import { WebDirectory } from "../WebDirectoryComponent/index";
-import { webDirectoryHandlers } from "../helpers/webDirectoryMockHandlers";
+
+const API_URL = import.meta.env.VITE_API_URL;
+const searchApiVersion = import.meta.env.VITE_SEARCH_API_VERSION;
 
 export default {
   title: "Organisms/Web Directory/Templates",
-  parameters: { msw: { handlers: webDirectoryHandlers } },
   decorators: [story => <FullLayout>{story()}</FullLayout>],
 };
 
@@ -37,8 +38,8 @@ export const FacultyRankWebDirectory = args => {
       <WebDirectory
         searchType="faculty_rank"
         deptIds="249891,1709,N1712169848,1706,1705"
-        API_URL="https://asuapp2dev.prod.acquia-sites.com/"
-        searchApiVersion="api/v1/"
+        API_URL={API_URL}
+        searchApiVersion={searchApiVersion}
         filters={filters}
         display={display}
         // alphaFilter={args.alphaFilter}
