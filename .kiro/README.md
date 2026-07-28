@@ -37,8 +37,7 @@ stage. Seeded once from `ddt-agent-skills-library-foundry` and owned here.
    ```bash
    export JIRA_API_TOKEN=...        # Jira/Confluence API token
    export CONFLUENCE_API_TOKEN=...  # (same token is fine)
-   export JIRA_USERNAME="you@asu.edu"        # Atlassian account; also used by the Jira v3 REST fallback
-   export CONFLUENCE_USERNAME="you@asu.edu"  # usually the same as JIRA_USERNAME
+   export JIRA_USER="you@asu.edu"   # used by the Jira v3 REST fallback
    # Unity package install auth (one of):
    export GITHUB_AUTH_TOKEN=...     # GitHub Package Registry token for @asu packages
    #   …or create .env.yarn with GITHUB_AUTH_TOKEN=... (see .env.yarn.example)

@@ -35,9 +35,9 @@ Fetch the **specific issue by key** — do not rely on search.
    unreliable and can silently return empty — an empty result is NOT proof of
    "no match". If a by-key fetch comes back empty or errors, fall back to the
    Jira v3 REST API by key:
-   `curl -s -u "$JIRA_USERNAME:$JIRA_API_TOKEN" -H "Accept: application/json" \
+   `curl -s -u "$JIRA_USER:$JIRA_API_TOKEN" -H "Accept: application/json" \
      "https://asudev.jira.com/rest/api/3/issue/<KEY>?fields=summary,description,issuetype,status,labels"`
-   (`JIRA_USERNAME` / `JIRA_API_TOKEN` come from the environment — never hardcode
+   (`JIRA_USER` / `JIRA_API_TOKEN` come from the environment — never hardcode
    credentials in this repo.)
 
 ## Figma intake (Dev Mode MCP)

@@ -12,7 +12,7 @@
     }
   },
   "resources": [
-    "file://../steering/**/*.md",
+    "file://.kiro/steering/**/*.md",
     "skill://.kiro/skills/adversarial-coding-pipeline/SKILL.md",
     "skill://.kiro/skills/jira-figma-intake/SKILL.md",
     "skill://.kiro/skills/unity-handoff-out/SKILL.md"

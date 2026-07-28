@@ -1,5 +1,4 @@
-# [@asu/app-degree-pages-v3.2.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.2.1...@asu/app-degree-pages-v3.2.2) (2026-07-07)
-
+# [@asu/app-degree-pages-v3.2.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.2.0...@asu/app-degree-pages-v3.2.1) (2026-06-18)
 
 ### Bug Fixes
 
@@ -7,12 +6,6 @@
 * **app-degree-pages:** render plain text instead of empty link for edge case degrees ([944cd7b](https://github.com/asu/asu-unity-stack/commit/944cd7b6efad91da32ee11522083da8a1305c4af))
 * **app-degree-pages:** use DOMAIN_URL constant here ([c158f99](https://github.com/asu/asu-unity-stack/commit/c158f999c48f515172aca150465e7abe3bbb4cf4))
 
-# [@asu/app-degree-pages-v3.2.1](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.2.0...@asu/app-degree-pages-v3.2.1) (2026-06-18)
-
-
-### Bug Fixes
-
-* **app-degree-pages:** bumps @vitest/browser from 4.1.6 to 4.1.9 ([e3ae108](https://github.com/asu/asu-unity-stack/commit/e3ae1087d3edb84ee7451e74aab8845847700c84))
 
 # [@asu/app-degree-pages-v3.2.0](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.1.5...@asu/app-degree-pages-v3.2.0) (2026-05-21)
 

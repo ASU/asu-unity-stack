@@ -78,33 +78,6 @@ Prefer native HTML over ARIA; add ARIA only when necessary.
 People-first, respectful language in all user-facing text; follow ASU Inclusion
 guidelines. No stereotypes about ability/cognition/experience.
 
-## Accessibility Requirements Template (for Design Doc)
-
-The architect MUST include this section in `.pipeline/design-doc.md` for any interactive component:
-
-```markdown
-## Accessibility Requirements
-
-### Keyboard Navigation
-- Tab order: [describe which elements receive focus in what order]
-- Arrow keys: [what ArrowLeft/Right/Up/Down do when focused]
-- Enter/Space: [activation behavior]
-- Escape: [dismiss behavior if applicable]
-
-### Focus Management
-- Pattern: [roving tabindex / aria-activedescendant / standard]
-- Focus moves to: [where focus goes after interaction]
-
-### Screen Reader
-- Live region: [what is announced on state change]
-- Labels: [aria-label pattern for each interactive element]
-
-### Motion
-- Reduced motion: [how component adapts to prefers-reduced-motion]
-```
-
-Failure to specify these leads to implementation guesswork and review rework.
-
 ## Pre-delivery checklist (verify explicitly)
 
 Landmarks + one `h1`; keyboard operable + visible focus + no traps + skip link;
