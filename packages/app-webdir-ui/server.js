@@ -4,8 +4,8 @@
  *
  * Endpoints:
  * - GET /session/token
- * - GET /webdir-profiles/faculty-staff/filtered
- * - POST /webdir-profiles/department
+ * - GET /webdir-profiles/*
+ * - POST /webdir-profiles/*
  */
 
 const express = require("express");
@@ -123,25 +123,6 @@ app.get(withApiPrefix("/session/token"), async (req, res) => {
   }
 });
 
-app.get(
-  withApiPrefix("/webdir-profiles/faculty-staff/filtered"),
-  async (req, res) => {
-    console.log("[API] GET /webdir-profiles/faculty-staff/filtered", req.query);
-    try {
-      const upstreamResponse = await proxyRequest({
-        path: "webdir-profiles/faculty-staff/filtered",
-        method: "GET",
-        query: req.query,
-      });
-      const response = await upstreamResponse.json();
-      res.status(upstreamResponse.status).json(response);
-    } catch (error) {
-      console.error("[API] Error:", error.message);
-      res.status(500).json({ error: error.message });
-    }
-  }
-);
-
 app.get(withApiPrefix("/webdir-profiles/*"), async (req, res) => {
   console.log("[API] GET", req.path, req.query);
   try {
@@ -151,26 +132,6 @@ app.get(withApiPrefix("/webdir-profiles/*"), async (req, res) => {
       query: req.query,
     });
     await relayUpstreamResponse(upstreamResponse, res);
-  } catch (error) {
-    console.error("[API] Error:", error.message);
-    res.status(500).json({ error: error.message });
-  }
-});
-
-app.post(withApiPrefix("/webdir-profiles/department"), async (req, res) => {
-  console.log("[API] POST /webdir-profiles/department", req.body);
-  try {
-    const upstreamResponse = await proxyRequest({
-      path: "webdir-profiles/department",
-      method: "POST",
-      query: req.query,
-      body: req.body,
-      headers: {
-        "X-CSRF-Token": req.headers["x-csrf-token"] || "",
-      },
-    });
-    const response = await upstreamResponse.json();
-    res.status(upstreamResponse.status).json(response);
   } catch (error) {
     console.error("[API] Error:", error.message);
     res.status(500).json({ error: error.message });
