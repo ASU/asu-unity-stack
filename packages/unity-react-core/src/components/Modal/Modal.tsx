@@ -119,7 +119,7 @@ export const Modal: React.FC<ModalProps> = ({ open, gaData }) => {
           id="uds-modal"
           role="dialog"
           aria-modal="true"
-          aria-labelledby={modalTitle}
+          aria-label={modalTitle}
           className={classNames("uds-modal", { open: openState })}
         >
           <div className="uds-modal-container">
