@@ -1,3 +1,20 @@
+# [@asu/unity-bootstrap-theme-v2.2.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.1.1...@asu/unity-bootstrap-theme-v2.2.0) (2026-07-29)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix modal close button focus style issue ([c288469](https://github.com/ASU/asu-unity-stack/commit/c288469935d3daca33d5d5381c6ea41857304e43))
+
+
+### Features
+
+* modal accessibility and escape key features for unity react and bootstrap ([04bdeea](https://github.com/ASU/asu-unity-stack/commit/04bdeea87d74c3ab1fd47a7f272504a843129aad))
+
+
+### Performance Improvements
+
+* **unity-react-core:** useEffect update for React js async key listener handling ([b25ab85](https://github.com/ASU/asu-unity-stack/commit/b25ab851381632a9d825d83c607f8036f9eeb93a))
+
 # [@asu/unity-bootstrap-theme-v2.1.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.1.0...@asu/unity-bootstrap-theme-v2.1.1) (2026-07-22)
 
 
