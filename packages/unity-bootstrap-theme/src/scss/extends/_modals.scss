@@ -53,6 +53,11 @@
       background-color: $uds-color-background-white;
       opacity: .7;
     }
+
+    &:focus,
+    &:focus-visible {
+      background-color: $uds-color-background-white;
+    }
   }
 }
 
