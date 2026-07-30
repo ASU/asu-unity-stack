@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v2.2.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.2.0...@asu/unity-bootstrap-theme-v2.2.1) (2026-07-30)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** allow ordered lists to be reversed ([d33c05e](https://github.com/ASU/asu-unity-stack/commit/d33c05e0b6eed1c4d5de461f1e545d29e19e10cb))
+
 # [@asu/unity-bootstrap-theme-v2.2.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.1.1...@asu/unity-bootstrap-theme-v2.2.0) (2026-07-29)
 
 
