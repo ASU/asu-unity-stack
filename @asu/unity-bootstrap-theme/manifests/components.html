@@ -588,13 +588,13 @@
 <header>
   <div class="wrap">
     <h1>Manifest Debugger</h1>
-    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">57/59 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">59/59 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">15/185 story errors</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">13 docs ok</a></div>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">57/59 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">59/59 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">15/186 story errors</a><a class="filter-pill ok" data-k="docs" href="#filter-docs">13 docs ok</a></div>
   </div>
 </header>
 <main>
   <div class="wrap">
     <div class="note info" style="margin-bottom: 16px;">
-            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>0.7s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
+            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>0.8s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
             <pre><code>typescript: {
   reactDocgen: 'react-docgen-typescript',
 }</code></pre>
@@ -16334,7 +16334,7 @@ export const SmallImagesComponent = () =&gt; (
       <div class="badges">
         <label for="c-13-atoms-list-examples-err" class="badge err as-toggle">prop type error</label>
         <label for="c-13-atoms-list-examples-info" class="badge info as-toggle">2 infos</label>
-        <label for="c-13-atoms-list-examples-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-13-atoms-list-examples-stories" class="badge ok as-toggle">5 stories</label>
         
         
       </div>
@@ -16401,17 +16401,32 @@ export default {
         type: &quot;radio&quot;,
       },
     },
+    reversed: {
+      name: &quot;Reversed&quot;,
+      control: {
+        type: &quot;boolean&quot;,
+      },
+    },
   },
   args: {
     bulletColor: &quot;Default&quot;,
     backgroundColor: &quot;Default&quot;,
+    reversed: false,
   },
 };
 
-export const UnorderedListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
-  return (
-    &lt;ul className={`uds-list ${bulletColor} ${backgroundColor}`}&gt;
+export const UnorderedListMultiLevel = ({
+  bulletColor,
+  backgroundColor,
+  reversed = false,
+}) =&gt; {
+  const html = (
+    &lt;ul
+      className={`uds-list ${bulletColor} ${backgroundColor}`}
+      {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+    &gt;
       &lt;li&gt;
+        {Boolean(reversed) &amp;&amp; &lt;span&gt;(Reversed has no effect on UL)&lt;/span&gt;}
         Lorem ipsum dolor sit amet
         &lt;ul className=&quot;uds-list&quot;&gt;
           &lt;li&gt;
@@ -16468,39 +16483,86 @@ export const UnorderedListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; 
       &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
     &lt;/ul&gt;
   );
+  // force rerender to apply reversed attribute correctly
+  return reversed ? html : &lt;div&gt;{html}&lt;/div&gt;;
 };
 
-export const OrderedListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
-  return (
-    &lt;ol className={`uds-list ${bulletColor} ${backgroundColor}`}&gt;
+export const OrderedListMultiLevel = ({
+  bulletColor,
+  backgroundColor,
+  reversed = false,
+}) =&gt; {
+  const html = (
+    &lt;ol
+      className={`uds-list ${bulletColor} ${backgroundColor}`}
+      {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+    &gt;
       &lt;li&gt;
-        Lorem ipsum dolor sit amet
-        &lt;ol className=&quot;uds-list&quot;&gt;
+        Lorem ipsum dolor sit amet{&quot; &quot;}
+        {Boolean(reversed) &amp;&amp; (
+          &lt;span&gt;(Reversed changes Number order, not the html order)&lt;/span&gt;
+        )}
+        &lt;ol
+          className=&quot;uds-list&quot;
+          {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+        &gt;
           &lt;li&gt;
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            &lt;ol className=&quot;uds-list&quot;&gt;
+            &lt;ol
+              className=&quot;uds-list&quot;
+              {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+            &gt;
               &lt;li&gt;
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                &lt;ol className=&quot;uds-list&quot;&gt;
+                &lt;ol
+                  className=&quot;uds-list&quot;
+                  {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                &gt;
                   &lt;li&gt;
                     Lorem ipsum dolor sit amet
-                    &lt;ol className=&quot;uds-list&quot;&gt;
+                    &lt;ol
+                      className=&quot;uds-list&quot;
+                      {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                    &gt;
                       &lt;li&gt;
                         Lorem ipsum dolor sit amet
-                        &lt;ol className=&quot;uds-list&quot;&gt;
+                        &lt;ol
+                          className=&quot;uds-list&quot;
+                          {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                        &gt;
                           &lt;li&gt;
                             Lorem ipsum dolor sit amet
-                            &lt;ol className=&quot;uds-list&quot;&gt;
+                            &lt;ol
+                              className=&quot;uds-list&quot;
+                              {...(reversed === true &amp;&amp; {
+                                reversed: &quot;reversed&quot;,
+                              })}
+                            &gt;
                               &lt;li&gt;
                                 Lorem ipsum dolor sit amet
-                                &lt;ol className=&quot;uds-list&quot;&gt;
+                                &lt;ol
+                                  className=&quot;uds-list&quot;
+                                  {...(reversed === true &amp;&amp; {
+                                    reversed: &quot;reversed&quot;,
+                                  })}
+                                &gt;
                                   &lt;li&gt;
                                     Lorem ipsum dolor sit amet
-                                    &lt;ol className=&quot;uds-list&quot;&gt;
+                                    &lt;ol
+                                      className=&quot;uds-list&quot;
+                                      {...(reversed === true &amp;&amp; {
+                                        reversed: &quot;reversed&quot;,
+                                      })}
+                                    &gt;
                                       &lt;li&gt;
                                         Lorem ipsum dolor sit amet
-                                        &lt;ol className=&quot;uds-list&quot;&gt;
+                                        &lt;ol
+                                          className=&quot;uds-list&quot;
+                                          {...(reversed === true &amp;&amp; {
+                                            reversed: &quot;reversed&quot;,
+                                          })}
+                                        &gt;
                                           &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
                                           &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
                                         &lt;/ol&gt;
@@ -16530,39 +16592,214 @@ export const OrderedListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
       &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
     &lt;/ol&gt;
   );
+  // force rerender to apply reversed attribute correctly
+  return reversed ? html : &lt;div&gt;{html}&lt;/div&gt;;
 };
 
-export const MixedListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
-  return (
-    &lt;ol className={`uds-list ${bulletColor} ${backgroundColor}`}&gt;
+export const ReversedOrderedListMultiLevel = ({
+  bulletColor,
+  backgroundColor,
+  reversed = false,
+}) =&gt; {
+  const html = (
+    &lt;&gt;
+      &lt;h2&gt;Basic example:&lt;/h2&gt;
+      {Boolean(reversed) &amp;&amp; (
+        &lt;p&gt;(Reversed changes Number order, not the html order)&lt;/p&gt;
+      )}
+      &lt;ol
+        className={`uds-list ${bulletColor} ${backgroundColor}`}
+        {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+      &gt;
+        &lt;li&gt;Lorem ipsum dolor sit amet (1st html element)&lt;/li&gt;
+        &lt;li&gt;Lorem ipsum dolor sit amet (2nd html element)&lt;/li&gt;
+        &lt;li&gt;Lorem ipsum dolor sit amet (3rd html element)&lt;/li&gt;
+        &lt;li&gt;Lorem ipsum dolor sit amet (4th html element)&lt;/li&gt;
+        &lt;li&gt;Lorem ipsum dolor sit amet (5th html element)&lt;/li&gt;
+      &lt;/ol&gt;
+      &lt;hr /&gt;
+      &lt;h2&gt;A more Complex example:&lt;/h2&gt;
+      &lt;ol
+        className={`uds-list ${bulletColor} ${backgroundColor}`}
+        {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+      &gt;
+        &lt;li&gt;
+          Lorem ipsum dolor sit amet{&quot; &quot;}
+          {Boolean(reversed) &amp;&amp; (
+            &lt;span&gt;(Reversed changes Number order, not the html order)&lt;/span&gt;
+          )}
+          &lt;ol
+            className=&quot;uds-list&quot;
+            {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+          &gt;
+            &lt;li&gt;
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              &lt;ol
+                className=&quot;uds-list&quot;
+                {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+              &gt;
+                &lt;li&gt;
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  &lt;ol
+                    className=&quot;uds-list&quot;
+                    {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                  &gt;
+                    &lt;li&gt;
+                      Lorem ipsum dolor sit amet
+                      &lt;ol
+                        className=&quot;uds-list&quot;
+                        {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                      &gt;
+                        &lt;li&gt;
+                          Lorem ipsum dolor sit amet
+                          &lt;ol
+                            className=&quot;uds-list&quot;
+                            {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                          &gt;
+                            &lt;li&gt;
+                              Lorem ipsum dolor sit amet
+                              &lt;ol
+                                className=&quot;uds-list&quot;
+                                {...(reversed === true &amp;&amp; {
+                                  reversed: &quot;reversed&quot;,
+                                })}
+                              &gt;
+                                &lt;li&gt;
+                                  Lorem ipsum dolor sit amet
+                                  &lt;ol
+                                    className=&quot;uds-list&quot;
+                                    {...(reversed === true &amp;&amp; {
+                                      reversed: &quot;reversed&quot;,
+                                    })}
+                                  &gt;
+                                    &lt;li&gt;
+                                      Lorem ipsum dolor sit amet
+                                      &lt;ol
+                                        className=&quot;uds-list&quot;
+                                        {...(reversed === true &amp;&amp; {
+                                          reversed: &quot;reversed&quot;,
+                                        })}
+                                      &gt;
+                                        &lt;li&gt;
+                                          Lorem ipsum dolor sit amet
+                                          &lt;ol
+                                            className=&quot;uds-list&quot;
+                                            {...(reversed === true &amp;&amp; {
+                                              reversed: &quot;reversed&quot;,
+                                            })}
+                                          &gt;
+                                            &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                                            &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                                          &lt;/ol&gt;
+                                        &lt;/li&gt;
+                                        &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                                      &lt;/ol&gt;
+                                    &lt;/li&gt;
+                                    &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                                  &lt;/ol&gt;
+                                &lt;/li&gt;
+                                &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                              &lt;/ol&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                          &lt;/ol&gt;
+                        &lt;/li&gt;
+                        &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                      &lt;/ol&gt;
+                    &lt;/li&gt;
+                  &lt;/ol&gt;
+                &lt;/li&gt;
+                &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+              &lt;/ol&gt;
+            &lt;/li&gt;
+          &lt;/ol&gt;
+        &lt;/li&gt;
+        &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+      &lt;/ol&gt;
+    &lt;/&gt;
+  );
+  // force rerender to apply reversed attribute correctly
+  return reversed ? html : &lt;div&gt;{html}&lt;/div&gt;;
+};
+ReversedOrderedListMultiLevel.args = {
+  reversed: true,
+};
+
+export const MixedListMultiLevel = ({
+  bulletColor,
+  backgroundColor,
+  reversed = false,
+}) =&gt; {
+  const html = (
+    &lt;ol
+      className={`uds-list ${bulletColor} ${backgroundColor}`}
+      {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+    &gt;
       &lt;li&gt;
-        Lorem ipsum dolor sit amet
-        &lt;ol&gt;
+        Lorem ipsum dolor sit amet{&quot; &quot;}
+        {Boolean(reversed) &amp;&amp; &lt;span&gt;(Reversed only works on OL)&lt;/span&gt;}
+        &lt;ol
+          className=&quot;uds-list&quot;
+          {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+        &gt;
           &lt;li&gt;
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            &lt;ol className=&quot;uds-list&quot;&gt;
+            &lt;ol
+              className=&quot;uds-list&quot;
+              {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+            &gt;
               &lt;li&gt;
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                &lt;ol className=&quot;uds-list&quot;&gt;
+                &lt;ol
+                  className=&quot;uds-list&quot;
+                  {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                &gt;
                   &lt;li&gt;
                     Lorem ipsum dolor sit amet
-                    &lt;ol&gt;
+                    &lt;ol
+                      className=&quot;uds-list&quot;
+                      {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                    &gt;
                       &lt;li&gt;
                         Lorem ipsum dolor sit amet
-                        &lt;ul className=&quot;uds-list&quot;&gt;
+                        &lt;ul
+                          className=&quot;uds-list&quot;
+                          {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                        &gt;
                           &lt;li&gt;
                             Lorem ipsum dolor sit amet
-                            &lt;ul className=&quot;uds-list&quot;&gt;
+                            &lt;ul
+                              className=&quot;uds-list&quot;
+                              {...(reversed === true &amp;&amp; {
+                                reversed: &quot;reversed&quot;,
+                              })}
+                            &gt;
                               &lt;li&gt;
                                 Lorem ipsum dolor sit amet
-                                &lt;ul className=&quot;uds-list&quot;&gt;
+                                &lt;ul
+                                  className=&quot;uds-list&quot;
+                                  {...(reversed === true &amp;&amp; {
+                                    reversed: &quot;reversed&quot;,
+                                  })}
+                                &gt;
                                   &lt;li&gt;
                                     Lorem ipsum dolor sit amet
-                                    &lt;ol className=&quot;uds-list&quot;&gt;
+                                    &lt;ol
+                                      className=&quot;uds-list&quot;
+                                      {...(reversed === true &amp;&amp; {
+                                        reversed: &quot;reversed&quot;,
+                                      })}
+                                    &gt;
                                       &lt;li&gt;
                                         Lorem ipsum dolor sit amet
-                                        &lt;ol className=&quot;uds-list&quot;&gt;
+                                        &lt;ol
+                                          className=&quot;uds-list&quot;
+                                          {...(reversed === true &amp;&amp; {
+                                            reversed: &quot;reversed&quot;,
+                                          })}
+                                        &gt;
                                           &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
                                           &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
                                         &lt;/ol&gt;
@@ -16592,39 +16829,82 @@ export const MixedListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
       &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
     &lt;/ol&gt;
   );
+
+  // force rerender to apply reversed attribute correctly
+  return reversed ? html : &lt;div&gt;{html}&lt;/div&gt;;
 };
 
-export const Mixed2ListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
-  return (
-    &lt;ul className={`uds-list ${bulletColor} ${backgroundColor}`}&gt;
+export const Mixed2ListMultiLevel = ({
+  bulletColor,
+  backgroundColor,
+  reversed = false,
+}) =&gt; {
+  const html = (
+    &lt;ul
+      className={`uds-list ${bulletColor} ${backgroundColor}`}
+      {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+    &gt;
       &lt;li&gt;
-        Lorem ipsum dolor sit amet
-        &lt;ul&gt;
+        Lorem ipsum dolor sit amet{&quot; &quot;}
+        {Boolean(reversed) &amp;&amp; &lt;span&gt;(Reversed has no effect on UL)&lt;/span&gt;}
+        &lt;ul {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}&gt;
           &lt;li&gt;
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            &lt;ul className=&quot;uds-list&quot;&gt;
+            &lt;ul
+              className=&quot;uds-list&quot;
+              {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+            &gt;
               &lt;li&gt;
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                &lt;ul className=&quot;uds-list&quot;&gt;
+                &lt;ul
+                  className=&quot;uds-list&quot;
+                  {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                &gt;
                   &lt;li&gt;
                     Lorem ipsum dolor sit amet
-                    &lt;ul&gt;
+                    &lt;ul {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}&gt;
                       &lt;li&gt;
                         Lorem ipsum dolor sit amet
-                        &lt;ol className=&quot;uds-list&quot;&gt;
+                        &lt;ol
+                          className=&quot;uds-list&quot;
+                          {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                        &gt;
                           &lt;li&gt;
-                            Lorem ipsum dolor sit amet
-                            &lt;ol className=&quot;uds-list&quot;&gt;
+                            Lorem ipsum dolor sit amet{&quot; &quot;}
+                            {reversed === true &amp;&amp; (
+                              &lt;span&gt;(Reversed only works on OL)&lt;/span&gt;
+                            )}
+                            &lt;ol
+                              className=&quot;uds-list&quot;
+                              {...(reversed === true &amp;&amp; {
+                                reversed: &quot;reversed&quot;,
+                              })}
+                            &gt;
                               &lt;li&gt;
                                 Lorem ipsum dolor sit amet
-                                &lt;ol className=&quot;uds-list&quot;&gt;
+                                &lt;ol
+                                  className=&quot;uds-list&quot;
+                                  {...(reversed === true &amp;&amp; {
+                                    reversed: &quot;reversed&quot;,
+                                  })}
+                                &gt;
                                   &lt;li&gt;
                                     Lorem ipsum dolor sit amet
-                                    &lt;ul className=&quot;uds-list&quot;&gt;
+                                    &lt;ul
+                                      className=&quot;uds-list&quot;
+                                      {...(reversed === true &amp;&amp; {
+                                        reversed: &quot;reversed&quot;,
+                                      })}
+                                    &gt;
                                       &lt;li&gt;
                                         Lorem ipsum dolor sit amet
-                                        &lt;ul className=&quot;uds-list&quot;&gt;
+                                        &lt;ul
+                                          className=&quot;uds-list&quot;
+                                          {...(reversed === true &amp;&amp; {
+                                            reversed: &quot;reversed&quot;,
+                                          })}
+                                        &gt;
                                           &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
                                           &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
                                         &lt;/ul&gt;
@@ -16654,6 +16934,9 @@ export const Mixed2ListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
       &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
     &lt;/ul&gt;
   );
+
+  // force rerender to apply reversed attribute correctly
+  return reversed ? html : &lt;div&gt;{html}&lt;/div&gt;;
 };
 </code></pre></div>
     </div>
@@ -16686,10 +16969,18 @@ export const Mixed2ListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
               </div>
               
               
-              <pre><code>const UnorderedListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
-  return (
-    &lt;ul className={`uds-list ${bulletColor} ${backgroundColor}`}&gt;
+              <pre><code>const UnorderedListMultiLevel = ({
+  bulletColor,
+  backgroundColor,
+  reversed = false,
+}) =&gt; {
+  const html = (
+    &lt;ul
+      className={`uds-list ${bulletColor} ${backgroundColor}`}
+      {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+    &gt;
       &lt;li&gt;
+        {Boolean(reversed) &amp;&amp; &lt;span&gt;(Reversed has no effect on UL)&lt;/span&gt;}
         Lorem ipsum dolor sit amet
         &lt;ul className=&quot;uds-list&quot;&gt;
           &lt;li&gt;
@@ -16746,6 +17037,8 @@ export const Mixed2ListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
       &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
     &lt;/ul&gt;
   );
+  // force rerender to apply reversed attribute correctly
+  return reversed ? html : &lt;div&gt;{html}&lt;/div&gt;;
 };</code></pre>
             </div>
             <div class="note ok">
@@ -16755,37 +17048,82 @@ export const Mixed2ListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
               </div>
               
               
-              <pre><code>const OrderedListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
-  return (
-    &lt;ol className={`uds-list ${bulletColor} ${backgroundColor}`}&gt;
+              <pre><code>const OrderedListMultiLevel = ({
+  bulletColor,
+  backgroundColor,
+  reversed = false,
+}) =&gt; {
+  const html = (
+    &lt;ol
+      className={`uds-list ${bulletColor} ${backgroundColor}`}
+      {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+    &gt;
       &lt;li&gt;
-        Lorem ipsum dolor sit amet
-        &lt;ol className=&quot;uds-list&quot;&gt;
+        Lorem ipsum dolor sit amet{&quot; &quot;}
+        {Boolean(reversed) &amp;&amp; (
+          &lt;span&gt;(Reversed changes Number order, not the html order)&lt;/span&gt;
+        )}
+        &lt;ol
+          className=&quot;uds-list&quot;
+          {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+        &gt;
           &lt;li&gt;
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            &lt;ol className=&quot;uds-list&quot;&gt;
+            &lt;ol
+              className=&quot;uds-list&quot;
+              {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+            &gt;
               &lt;li&gt;
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                &lt;ol className=&quot;uds-list&quot;&gt;
+                &lt;ol
+                  className=&quot;uds-list&quot;
+                  {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                &gt;
                   &lt;li&gt;
                     Lorem ipsum dolor sit amet
-                    &lt;ol className=&quot;uds-list&quot;&gt;
+                    &lt;ol
+                      className=&quot;uds-list&quot;
+                      {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                    &gt;
                       &lt;li&gt;
                         Lorem ipsum dolor sit amet
-                        &lt;ol className=&quot;uds-list&quot;&gt;
+                        &lt;ol
+                          className=&quot;uds-list&quot;
+                          {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                        &gt;
                           &lt;li&gt;
                             Lorem ipsum dolor sit amet
-                            &lt;ol className=&quot;uds-list&quot;&gt;
+                            &lt;ol
+                              className=&quot;uds-list&quot;
+                              {...(reversed === true &amp;&amp; {
+                                reversed: &quot;reversed&quot;,
+                              })}
+                            &gt;
                               &lt;li&gt;
                                 Lorem ipsum dolor sit amet
-                                &lt;ol className=&quot;uds-list&quot;&gt;
+                                &lt;ol
+                                  className=&quot;uds-list&quot;
+                                  {...(reversed === true &amp;&amp; {
+                                    reversed: &quot;reversed&quot;,
+                                  })}
+                                &gt;
                                   &lt;li&gt;
                                     Lorem ipsum dolor sit amet
-                                    &lt;ol className=&quot;uds-list&quot;&gt;
+                                    &lt;ol
+                                      className=&quot;uds-list&quot;
+                                      {...(reversed === true &amp;&amp; {
+                                        reversed: &quot;reversed&quot;,
+                                      })}
+                                    &gt;
                                       &lt;li&gt;
                                         Lorem ipsum dolor sit amet
-                                        &lt;ol className=&quot;uds-list&quot;&gt;
+                                        &lt;ol
+                                          className=&quot;uds-list&quot;
+                                          {...(reversed === true &amp;&amp; {
+                                            reversed: &quot;reversed&quot;,
+                                          })}
+                                        &gt;
                                           &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
                                           &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
                                         &lt;/ol&gt;
@@ -16815,6 +17153,142 @@ export const Mixed2ListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
       &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
     &lt;/ol&gt;
   );
+  // force rerender to apply reversed attribute correctly
+  return reversed ? html : &lt;div&gt;{html}&lt;/div&gt;;
+};</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Reversed Ordered List Multi Level</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const ReversedOrderedListMultiLevel = ({
+  bulletColor,
+  backgroundColor,
+  reversed = false,
+}) =&gt; {
+  const html = (
+    &lt;&gt;
+      &lt;h2&gt;Basic example:&lt;/h2&gt;
+      {Boolean(reversed) &amp;&amp; (
+        &lt;p&gt;(Reversed changes Number order, not the html order)&lt;/p&gt;
+      )}
+      &lt;ol
+        className={`uds-list ${bulletColor} ${backgroundColor}`}
+        {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+      &gt;
+        &lt;li&gt;Lorem ipsum dolor sit amet (1st html element)&lt;/li&gt;
+        &lt;li&gt;Lorem ipsum dolor sit amet (2nd html element)&lt;/li&gt;
+        &lt;li&gt;Lorem ipsum dolor sit amet (3rd html element)&lt;/li&gt;
+        &lt;li&gt;Lorem ipsum dolor sit amet (4th html element)&lt;/li&gt;
+        &lt;li&gt;Lorem ipsum dolor sit amet (5th html element)&lt;/li&gt;
+      &lt;/ol&gt;
+      &lt;hr /&gt;
+      &lt;h2&gt;A more Complex example:&lt;/h2&gt;
+      &lt;ol
+        className={`uds-list ${bulletColor} ${backgroundColor}`}
+        {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+      &gt;
+        &lt;li&gt;
+          Lorem ipsum dolor sit amet{&quot; &quot;}
+          {Boolean(reversed) &amp;&amp; (
+            &lt;span&gt;(Reversed changes Number order, not the html order)&lt;/span&gt;
+          )}
+          &lt;ol
+            className=&quot;uds-list&quot;
+            {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+          &gt;
+            &lt;li&gt;
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              &lt;ol
+                className=&quot;uds-list&quot;
+                {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+              &gt;
+                &lt;li&gt;
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  &lt;ol
+                    className=&quot;uds-list&quot;
+                    {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                  &gt;
+                    &lt;li&gt;
+                      Lorem ipsum dolor sit amet
+                      &lt;ol
+                        className=&quot;uds-list&quot;
+                        {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                      &gt;
+                        &lt;li&gt;
+                          Lorem ipsum dolor sit amet
+                          &lt;ol
+                            className=&quot;uds-list&quot;
+                            {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                          &gt;
+                            &lt;li&gt;
+                              Lorem ipsum dolor sit amet
+                              &lt;ol
+                                className=&quot;uds-list&quot;
+                                {...(reversed === true &amp;&amp; {
+                                  reversed: &quot;reversed&quot;,
+                                })}
+                              &gt;
+                                &lt;li&gt;
+                                  Lorem ipsum dolor sit amet
+                                  &lt;ol
+                                    className=&quot;uds-list&quot;
+                                    {...(reversed === true &amp;&amp; {
+                                      reversed: &quot;reversed&quot;,
+                                    })}
+                                  &gt;
+                                    &lt;li&gt;
+                                      Lorem ipsum dolor sit amet
+                                      &lt;ol
+                                        className=&quot;uds-list&quot;
+                                        {...(reversed === true &amp;&amp; {
+                                          reversed: &quot;reversed&quot;,
+                                        })}
+                                      &gt;
+                                        &lt;li&gt;
+                                          Lorem ipsum dolor sit amet
+                                          &lt;ol
+                                            className=&quot;uds-list&quot;
+                                            {...(reversed === true &amp;&amp; {
+                                              reversed: &quot;reversed&quot;,
+                                            })}
+                                          &gt;
+                                            &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                                            &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                                          &lt;/ol&gt;
+                                        &lt;/li&gt;
+                                        &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                                      &lt;/ol&gt;
+                                    &lt;/li&gt;
+                                    &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                                  &lt;/ol&gt;
+                                &lt;/li&gt;
+                                &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                              &lt;/ol&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                          &lt;/ol&gt;
+                        &lt;/li&gt;
+                        &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                      &lt;/ol&gt;
+                    &lt;/li&gt;
+                  &lt;/ol&gt;
+                &lt;/li&gt;
+                &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+              &lt;/ol&gt;
+            &lt;/li&gt;
+          &lt;/ol&gt;
+        &lt;/li&gt;
+        &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+      &lt;/ol&gt;
+    &lt;/&gt;
+  );
+  // force rerender to apply reversed attribute correctly
+  return reversed ? html : &lt;div&gt;{html}&lt;/div&gt;;
 };</code></pre>
             </div>
             <div class="note ok">
@@ -16824,37 +17298,80 @@ export const Mixed2ListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
               </div>
               
               
-              <pre><code>const MixedListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
-  return (
-    &lt;ol className={`uds-list ${bulletColor} ${backgroundColor}`}&gt;
+              <pre><code>const MixedListMultiLevel = ({
+  bulletColor,
+  backgroundColor,
+  reversed = false,
+}) =&gt; {
+  const html = (
+    &lt;ol
+      className={`uds-list ${bulletColor} ${backgroundColor}`}
+      {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+    &gt;
       &lt;li&gt;
-        Lorem ipsum dolor sit amet
-        &lt;ol&gt;
+        Lorem ipsum dolor sit amet{&quot; &quot;}
+        {Boolean(reversed) &amp;&amp; &lt;span&gt;(Reversed only works on OL)&lt;/span&gt;}
+        &lt;ol
+          className=&quot;uds-list&quot;
+          {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+        &gt;
           &lt;li&gt;
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            &lt;ol className=&quot;uds-list&quot;&gt;
+            &lt;ol
+              className=&quot;uds-list&quot;
+              {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+            &gt;
               &lt;li&gt;
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                &lt;ol className=&quot;uds-list&quot;&gt;
+                &lt;ol
+                  className=&quot;uds-list&quot;
+                  {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                &gt;
                   &lt;li&gt;
                     Lorem ipsum dolor sit amet
-                    &lt;ol&gt;
+                    &lt;ol
+                      className=&quot;uds-list&quot;
+                      {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                    &gt;
                       &lt;li&gt;
                         Lorem ipsum dolor sit amet
-                        &lt;ul className=&quot;uds-list&quot;&gt;
+                        &lt;ul
+                          className=&quot;uds-list&quot;
+                          {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                        &gt;
                           &lt;li&gt;
                             Lorem ipsum dolor sit amet
-                            &lt;ul className=&quot;uds-list&quot;&gt;
+                            &lt;ul
+                              className=&quot;uds-list&quot;
+                              {...(reversed === true &amp;&amp; {
+                                reversed: &quot;reversed&quot;,
+                              })}
+                            &gt;
                               &lt;li&gt;
                                 Lorem ipsum dolor sit amet
-                                &lt;ul className=&quot;uds-list&quot;&gt;
+                                &lt;ul
+                                  className=&quot;uds-list&quot;
+                                  {...(reversed === true &amp;&amp; {
+                                    reversed: &quot;reversed&quot;,
+                                  })}
+                                &gt;
                                   &lt;li&gt;
                                     Lorem ipsum dolor sit amet
-                                    &lt;ol className=&quot;uds-list&quot;&gt;
+                                    &lt;ol
+                                      className=&quot;uds-list&quot;
+                                      {...(reversed === true &amp;&amp; {
+                                        reversed: &quot;reversed&quot;,
+                                      })}
+                                    &gt;
                                       &lt;li&gt;
                                         Lorem ipsum dolor sit amet
-                                        &lt;ol className=&quot;uds-list&quot;&gt;
+                                        &lt;ol
+                                          className=&quot;uds-list&quot;
+                                          {...(reversed === true &amp;&amp; {
+                                            reversed: &quot;reversed&quot;,
+                                          })}
+                                        &gt;
                                           &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
                                           &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
                                         &lt;/ol&gt;
@@ -16884,6 +17401,9 @@ export const Mixed2ListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
       &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
     &lt;/ol&gt;
   );
+
+  // force rerender to apply reversed attribute correctly
+  return reversed ? html : &lt;div&gt;{html}&lt;/div&gt;;
 };</code></pre>
             </div>
             <div class="note ok">
@@ -16893,37 +17413,77 @@ export const Mixed2ListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
               </div>
               
               
-              <pre><code>const Mixed2ListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
-  return (
-    &lt;ul className={`uds-list ${bulletColor} ${backgroundColor}`}&gt;
+              <pre><code>const Mixed2ListMultiLevel = ({
+  bulletColor,
+  backgroundColor,
+  reversed = false,
+}) =&gt; {
+  const html = (
+    &lt;ul
+      className={`uds-list ${bulletColor} ${backgroundColor}`}
+      {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+    &gt;
       &lt;li&gt;
-        Lorem ipsum dolor sit amet
-        &lt;ul&gt;
+        Lorem ipsum dolor sit amet{&quot; &quot;}
+        {Boolean(reversed) &amp;&amp; &lt;span&gt;(Reversed has no effect on UL)&lt;/span&gt;}
+        &lt;ul {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}&gt;
           &lt;li&gt;
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            &lt;ul className=&quot;uds-list&quot;&gt;
+            &lt;ul
+              className=&quot;uds-list&quot;
+              {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+            &gt;
               &lt;li&gt;
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                &lt;ul className=&quot;uds-list&quot;&gt;
+                &lt;ul
+                  className=&quot;uds-list&quot;
+                  {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                &gt;
                   &lt;li&gt;
                     Lorem ipsum dolor sit amet
-                    &lt;ul&gt;
+                    &lt;ul {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}&gt;
                       &lt;li&gt;
                         Lorem ipsum dolor sit amet
-                        &lt;ol className=&quot;uds-list&quot;&gt;
+                        &lt;ol
+                          className=&quot;uds-list&quot;
+                          {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                        &gt;
                           &lt;li&gt;
-                            Lorem ipsum dolor sit amet
-                            &lt;ol className=&quot;uds-list&quot;&gt;
+                            Lorem ipsum dolor sit amet{&quot; &quot;}
+                            {reversed === true &amp;&amp; (
+                              &lt;span&gt;(Reversed only works on OL)&lt;/span&gt;
+                            )}
+                            &lt;ol
+                              className=&quot;uds-list&quot;
+                              {...(reversed === true &amp;&amp; {
+                                reversed: &quot;reversed&quot;,
+                              })}
+                            &gt;
                               &lt;li&gt;
                                 Lorem ipsum dolor sit amet
-                                &lt;ol className=&quot;uds-list&quot;&gt;
+                                &lt;ol
+                                  className=&quot;uds-list&quot;
+                                  {...(reversed === true &amp;&amp; {
+                                    reversed: &quot;reversed&quot;,
+                                  })}
+                                &gt;
                                   &lt;li&gt;
                                     Lorem ipsum dolor sit amet
-                                    &lt;ul className=&quot;uds-list&quot;&gt;
+                                    &lt;ul
+                                      className=&quot;uds-list&quot;
+                                      {...(reversed === true &amp;&amp; {
+                                        reversed: &quot;reversed&quot;,
+                                      })}
+                                    &gt;
                                       &lt;li&gt;
                                         Lorem ipsum dolor sit amet
-                                        &lt;ul className=&quot;uds-list&quot;&gt;
+                                        &lt;ul
+                                          className=&quot;uds-list&quot;
+                                          {...(reversed === true &amp;&amp; {
+                                            reversed: &quot;reversed&quot;,
+                                          })}
+                                        &gt;
                                           &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
                                           &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
                                         &lt;/ul&gt;
@@ -16953,6 +17513,9 @@ export const Mixed2ListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
       &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
     &lt;/ul&gt;
   );
+
+  // force rerender to apply reversed attribute correctly
+  return reversed ? html : &lt;div&gt;{html}&lt;/div&gt;;
 };</code></pre>
             </div>
         </div>
@@ -49235,7 +49798,7 @@ export const SmallImagesComponent = () =&gt; (
       <div class="badges">
         <label for="c-error-13-atoms-list-examples-err" class="badge err as-toggle">prop type error</label>
         <label for="c-error-13-atoms-list-examples-info" class="badge info as-toggle">2 infos</label>
-        <label for="c-error-13-atoms-list-examples-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-error-13-atoms-list-examples-stories" class="badge ok as-toggle">5 stories</label>
         
         
       </div>
@@ -49302,17 +49865,32 @@ export default {
         type: &quot;radio&quot;,
       },
     },
+    reversed: {
+      name: &quot;Reversed&quot;,
+      control: {
+        type: &quot;boolean&quot;,
+      },
+    },
   },
   args: {
     bulletColor: &quot;Default&quot;,
     backgroundColor: &quot;Default&quot;,
+    reversed: false,
   },
 };
 
-export const UnorderedListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
-  return (
-    &lt;ul className={`uds-list ${bulletColor} ${backgroundColor}`}&gt;
+export const UnorderedListMultiLevel = ({
+  bulletColor,
+  backgroundColor,
+  reversed = false,
+}) =&gt; {
+  const html = (
+    &lt;ul
+      className={`uds-list ${bulletColor} ${backgroundColor}`}
+      {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+    &gt;
       &lt;li&gt;
+        {Boolean(reversed) &amp;&amp; &lt;span&gt;(Reversed has no effect on UL)&lt;/span&gt;}
         Lorem ipsum dolor sit amet
         &lt;ul className=&quot;uds-list&quot;&gt;
           &lt;li&gt;
@@ -49369,39 +49947,86 @@ export const UnorderedListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; 
       &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
     &lt;/ul&gt;
   );
+  // force rerender to apply reversed attribute correctly
+  return reversed ? html : &lt;div&gt;{html}&lt;/div&gt;;
 };
 
-export const OrderedListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
-  return (
-    &lt;ol className={`uds-list ${bulletColor} ${backgroundColor}`}&gt;
+export const OrderedListMultiLevel = ({
+  bulletColor,
+  backgroundColor,
+  reversed = false,
+}) =&gt; {
+  const html = (
+    &lt;ol
+      className={`uds-list ${bulletColor} ${backgroundColor}`}
+      {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+    &gt;
       &lt;li&gt;
-        Lorem ipsum dolor sit amet
-        &lt;ol className=&quot;uds-list&quot;&gt;
+        Lorem ipsum dolor sit amet{&quot; &quot;}
+        {Boolean(reversed) &amp;&amp; (
+          &lt;span&gt;(Reversed changes Number order, not the html order)&lt;/span&gt;
+        )}
+        &lt;ol
+          className=&quot;uds-list&quot;
+          {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+        &gt;
           &lt;li&gt;
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            &lt;ol className=&quot;uds-list&quot;&gt;
+            &lt;ol
+              className=&quot;uds-list&quot;
+              {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+            &gt;
               &lt;li&gt;
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                &lt;ol className=&quot;uds-list&quot;&gt;
+                &lt;ol
+                  className=&quot;uds-list&quot;
+                  {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                &gt;
                   &lt;li&gt;
                     Lorem ipsum dolor sit amet
-                    &lt;ol className=&quot;uds-list&quot;&gt;
+                    &lt;ol
+                      className=&quot;uds-list&quot;
+                      {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                    &gt;
                       &lt;li&gt;
                         Lorem ipsum dolor sit amet
-                        &lt;ol className=&quot;uds-list&quot;&gt;
+                        &lt;ol
+                          className=&quot;uds-list&quot;
+                          {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                        &gt;
                           &lt;li&gt;
                             Lorem ipsum dolor sit amet
-                            &lt;ol className=&quot;uds-list&quot;&gt;
+                            &lt;ol
+                              className=&quot;uds-list&quot;
+                              {...(reversed === true &amp;&amp; {
+                                reversed: &quot;reversed&quot;,
+                              })}
+                            &gt;
                               &lt;li&gt;
                                 Lorem ipsum dolor sit amet
-                                &lt;ol className=&quot;uds-list&quot;&gt;
+                                &lt;ol
+                                  className=&quot;uds-list&quot;
+                                  {...(reversed === true &amp;&amp; {
+                                    reversed: &quot;reversed&quot;,
+                                  })}
+                                &gt;
                                   &lt;li&gt;
                                     Lorem ipsum dolor sit amet
-                                    &lt;ol className=&quot;uds-list&quot;&gt;
+                                    &lt;ol
+                                      className=&quot;uds-list&quot;
+                                      {...(reversed === true &amp;&amp; {
+                                        reversed: &quot;reversed&quot;,
+                                      })}
+                                    &gt;
                                       &lt;li&gt;
                                         Lorem ipsum dolor sit amet
-                                        &lt;ol className=&quot;uds-list&quot;&gt;
+                                        &lt;ol
+                                          className=&quot;uds-list&quot;
+                                          {...(reversed === true &amp;&amp; {
+                                            reversed: &quot;reversed&quot;,
+                                          })}
+                                        &gt;
                                           &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
                                           &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
                                         &lt;/ol&gt;
@@ -49431,39 +50056,214 @@ export const OrderedListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
       &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
     &lt;/ol&gt;
   );
+  // force rerender to apply reversed attribute correctly
+  return reversed ? html : &lt;div&gt;{html}&lt;/div&gt;;
 };
 
-export const MixedListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
-  return (
-    &lt;ol className={`uds-list ${bulletColor} ${backgroundColor}`}&gt;
+export const ReversedOrderedListMultiLevel = ({
+  bulletColor,
+  backgroundColor,
+  reversed = false,
+}) =&gt; {
+  const html = (
+    &lt;&gt;
+      &lt;h2&gt;Basic example:&lt;/h2&gt;
+      {Boolean(reversed) &amp;&amp; (
+        &lt;p&gt;(Reversed changes Number order, not the html order)&lt;/p&gt;
+      )}
+      &lt;ol
+        className={`uds-list ${bulletColor} ${backgroundColor}`}
+        {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+      &gt;
+        &lt;li&gt;Lorem ipsum dolor sit amet (1st html element)&lt;/li&gt;
+        &lt;li&gt;Lorem ipsum dolor sit amet (2nd html element)&lt;/li&gt;
+        &lt;li&gt;Lorem ipsum dolor sit amet (3rd html element)&lt;/li&gt;
+        &lt;li&gt;Lorem ipsum dolor sit amet (4th html element)&lt;/li&gt;
+        &lt;li&gt;Lorem ipsum dolor sit amet (5th html element)&lt;/li&gt;
+      &lt;/ol&gt;
+      &lt;hr /&gt;
+      &lt;h2&gt;A more Complex example:&lt;/h2&gt;
+      &lt;ol
+        className={`uds-list ${bulletColor} ${backgroundColor}`}
+        {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+      &gt;
+        &lt;li&gt;
+          Lorem ipsum dolor sit amet{&quot; &quot;}
+          {Boolean(reversed) &amp;&amp; (
+            &lt;span&gt;(Reversed changes Number order, not the html order)&lt;/span&gt;
+          )}
+          &lt;ol
+            className=&quot;uds-list&quot;
+            {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+          &gt;
+            &lt;li&gt;
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              &lt;ol
+                className=&quot;uds-list&quot;
+                {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+              &gt;
+                &lt;li&gt;
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  &lt;ol
+                    className=&quot;uds-list&quot;
+                    {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                  &gt;
+                    &lt;li&gt;
+                      Lorem ipsum dolor sit amet
+                      &lt;ol
+                        className=&quot;uds-list&quot;
+                        {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                      &gt;
+                        &lt;li&gt;
+                          Lorem ipsum dolor sit amet
+                          &lt;ol
+                            className=&quot;uds-list&quot;
+                            {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                          &gt;
+                            &lt;li&gt;
+                              Lorem ipsum dolor sit amet
+                              &lt;ol
+                                className=&quot;uds-list&quot;
+                                {...(reversed === true &amp;&amp; {
+                                  reversed: &quot;reversed&quot;,
+                                })}
+                              &gt;
+                                &lt;li&gt;
+                                  Lorem ipsum dolor sit amet
+                                  &lt;ol
+                                    className=&quot;uds-list&quot;
+                                    {...(reversed === true &amp;&amp; {
+                                      reversed: &quot;reversed&quot;,
+                                    })}
+                                  &gt;
+                                    &lt;li&gt;
+                                      Lorem ipsum dolor sit amet
+                                      &lt;ol
+                                        className=&quot;uds-list&quot;
+                                        {...(reversed === true &amp;&amp; {
+                                          reversed: &quot;reversed&quot;,
+                                        })}
+                                      &gt;
+                                        &lt;li&gt;
+                                          Lorem ipsum dolor sit amet
+                                          &lt;ol
+                                            className=&quot;uds-list&quot;
+                                            {...(reversed === true &amp;&amp; {
+                                              reversed: &quot;reversed&quot;,
+                                            })}
+                                          &gt;
+                                            &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                                            &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                                          &lt;/ol&gt;
+                                        &lt;/li&gt;
+                                        &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                                      &lt;/ol&gt;
+                                    &lt;/li&gt;
+                                    &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                                  &lt;/ol&gt;
+                                &lt;/li&gt;
+                                &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                              &lt;/ol&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                          &lt;/ol&gt;
+                        &lt;/li&gt;
+                        &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                      &lt;/ol&gt;
+                    &lt;/li&gt;
+                  &lt;/ol&gt;
+                &lt;/li&gt;
+                &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+              &lt;/ol&gt;
+            &lt;/li&gt;
+          &lt;/ol&gt;
+        &lt;/li&gt;
+        &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+      &lt;/ol&gt;
+    &lt;/&gt;
+  );
+  // force rerender to apply reversed attribute correctly
+  return reversed ? html : &lt;div&gt;{html}&lt;/div&gt;;
+};
+ReversedOrderedListMultiLevel.args = {
+  reversed: true,
+};
+
+export const MixedListMultiLevel = ({
+  bulletColor,
+  backgroundColor,
+  reversed = false,
+}) =&gt; {
+  const html = (
+    &lt;ol
+      className={`uds-list ${bulletColor} ${backgroundColor}`}
+      {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+    &gt;
       &lt;li&gt;
-        Lorem ipsum dolor sit amet
-        &lt;ol&gt;
+        Lorem ipsum dolor sit amet{&quot; &quot;}
+        {Boolean(reversed) &amp;&amp; &lt;span&gt;(Reversed only works on OL)&lt;/span&gt;}
+        &lt;ol
+          className=&quot;uds-list&quot;
+          {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+        &gt;
           &lt;li&gt;
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            &lt;ol className=&quot;uds-list&quot;&gt;
+            &lt;ol
+              className=&quot;uds-list&quot;
+              {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+            &gt;
               &lt;li&gt;
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                &lt;ol className=&quot;uds-list&quot;&gt;
+                &lt;ol
+                  className=&quot;uds-list&quot;
+                  {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                &gt;
                   &lt;li&gt;
                     Lorem ipsum dolor sit amet
-                    &lt;ol&gt;
+                    &lt;ol
+                      className=&quot;uds-list&quot;
+                      {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                    &gt;
                       &lt;li&gt;
                         Lorem ipsum dolor sit amet
-                        &lt;ul className=&quot;uds-list&quot;&gt;
+                        &lt;ul
+                          className=&quot;uds-list&quot;
+                          {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                        &gt;
                           &lt;li&gt;
                             Lorem ipsum dolor sit amet
-                            &lt;ul className=&quot;uds-list&quot;&gt;
+                            &lt;ul
+                              className=&quot;uds-list&quot;
+                              {...(reversed === true &amp;&amp; {
+                                reversed: &quot;reversed&quot;,
+                              })}
+                            &gt;
                               &lt;li&gt;
                                 Lorem ipsum dolor sit amet
-                                &lt;ul className=&quot;uds-list&quot;&gt;
+                                &lt;ul
+                                  className=&quot;uds-list&quot;
+                                  {...(reversed === true &amp;&amp; {
+                                    reversed: &quot;reversed&quot;,
+                                  })}
+                                &gt;
                                   &lt;li&gt;
                                     Lorem ipsum dolor sit amet
-                                    &lt;ol className=&quot;uds-list&quot;&gt;
+                                    &lt;ol
+                                      className=&quot;uds-list&quot;
+                                      {...(reversed === true &amp;&amp; {
+                                        reversed: &quot;reversed&quot;,
+                                      })}
+                                    &gt;
                                       &lt;li&gt;
                                         Lorem ipsum dolor sit amet
-                                        &lt;ol className=&quot;uds-list&quot;&gt;
+                                        &lt;ol
+                                          className=&quot;uds-list&quot;
+                                          {...(reversed === true &amp;&amp; {
+                                            reversed: &quot;reversed&quot;,
+                                          })}
+                                        &gt;
                                           &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
                                           &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
                                         &lt;/ol&gt;
@@ -49493,39 +50293,82 @@ export const MixedListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
       &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
     &lt;/ol&gt;
   );
+
+  // force rerender to apply reversed attribute correctly
+  return reversed ? html : &lt;div&gt;{html}&lt;/div&gt;;
 };
 
-export const Mixed2ListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
-  return (
-    &lt;ul className={`uds-list ${bulletColor} ${backgroundColor}`}&gt;
+export const Mixed2ListMultiLevel = ({
+  bulletColor,
+  backgroundColor,
+  reversed = false,
+}) =&gt; {
+  const html = (
+    &lt;ul
+      className={`uds-list ${bulletColor} ${backgroundColor}`}
+      {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+    &gt;
       &lt;li&gt;
-        Lorem ipsum dolor sit amet
-        &lt;ul&gt;
+        Lorem ipsum dolor sit amet{&quot; &quot;}
+        {Boolean(reversed) &amp;&amp; &lt;span&gt;(Reversed has no effect on UL)&lt;/span&gt;}
+        &lt;ul {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}&gt;
           &lt;li&gt;
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            &lt;ul className=&quot;uds-list&quot;&gt;
+            &lt;ul
+              className=&quot;uds-list&quot;
+              {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+            &gt;
               &lt;li&gt;
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                &lt;ul className=&quot;uds-list&quot;&gt;
+                &lt;ul
+                  className=&quot;uds-list&quot;
+                  {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                &gt;
                   &lt;li&gt;
                     Lorem ipsum dolor sit amet
-                    &lt;ul&gt;
+                    &lt;ul {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}&gt;
                       &lt;li&gt;
                         Lorem ipsum dolor sit amet
-                        &lt;ol className=&quot;uds-list&quot;&gt;
+                        &lt;ol
+                          className=&quot;uds-list&quot;
+                          {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                        &gt;
                           &lt;li&gt;
-                            Lorem ipsum dolor sit amet
-                            &lt;ol className=&quot;uds-list&quot;&gt;
+                            Lorem ipsum dolor sit amet{&quot; &quot;}
+                            {reversed === true &amp;&amp; (
+                              &lt;span&gt;(Reversed only works on OL)&lt;/span&gt;
+                            )}
+                            &lt;ol
+                              className=&quot;uds-list&quot;
+                              {...(reversed === true &amp;&amp; {
+                                reversed: &quot;reversed&quot;,
+                              })}
+                            &gt;
                               &lt;li&gt;
                                 Lorem ipsum dolor sit amet
-                                &lt;ol className=&quot;uds-list&quot;&gt;
+                                &lt;ol
+                                  className=&quot;uds-list&quot;
+                                  {...(reversed === true &amp;&amp; {
+                                    reversed: &quot;reversed&quot;,
+                                  })}
+                                &gt;
                                   &lt;li&gt;
                                     Lorem ipsum dolor sit amet
-                                    &lt;ul className=&quot;uds-list&quot;&gt;
+                                    &lt;ul
+                                      className=&quot;uds-list&quot;
+                                      {...(reversed === true &amp;&amp; {
+                                        reversed: &quot;reversed&quot;,
+                                      })}
+                                    &gt;
                                       &lt;li&gt;
                                         Lorem ipsum dolor sit amet
-                                        &lt;ul className=&quot;uds-list&quot;&gt;
+                                        &lt;ul
+                                          className=&quot;uds-list&quot;
+                                          {...(reversed === true &amp;&amp; {
+                                            reversed: &quot;reversed&quot;,
+                                          })}
+                                        &gt;
                                           &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
                                           &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
                                         &lt;/ul&gt;
@@ -49555,6 +50398,9 @@ export const Mixed2ListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
       &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
     &lt;/ul&gt;
   );
+
+  // force rerender to apply reversed attribute correctly
+  return reversed ? html : &lt;div&gt;{html}&lt;/div&gt;;
 };
 </code></pre></div>
     </div>
@@ -49587,10 +50433,18 @@ export const Mixed2ListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
               </div>
               
               
-              <pre><code>const UnorderedListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
-  return (
-    &lt;ul className={`uds-list ${bulletColor} ${backgroundColor}`}&gt;
+              <pre><code>const UnorderedListMultiLevel = ({
+  bulletColor,
+  backgroundColor,
+  reversed = false,
+}) =&gt; {
+  const html = (
+    &lt;ul
+      className={`uds-list ${bulletColor} ${backgroundColor}`}
+      {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+    &gt;
       &lt;li&gt;
+        {Boolean(reversed) &amp;&amp; &lt;span&gt;(Reversed has no effect on UL)&lt;/span&gt;}
         Lorem ipsum dolor sit amet
         &lt;ul className=&quot;uds-list&quot;&gt;
           &lt;li&gt;
@@ -49647,6 +50501,8 @@ export const Mixed2ListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
       &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
     &lt;/ul&gt;
   );
+  // force rerender to apply reversed attribute correctly
+  return reversed ? html : &lt;div&gt;{html}&lt;/div&gt;;
 };</code></pre>
             </div>
             <div class="note ok">
@@ -49656,37 +50512,82 @@ export const Mixed2ListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
               </div>
               
               
-              <pre><code>const OrderedListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
-  return (
-    &lt;ol className={`uds-list ${bulletColor} ${backgroundColor}`}&gt;
+              <pre><code>const OrderedListMultiLevel = ({
+  bulletColor,
+  backgroundColor,
+  reversed = false,
+}) =&gt; {
+  const html = (
+    &lt;ol
+      className={`uds-list ${bulletColor} ${backgroundColor}`}
+      {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+    &gt;
       &lt;li&gt;
-        Lorem ipsum dolor sit amet
-        &lt;ol className=&quot;uds-list&quot;&gt;
+        Lorem ipsum dolor sit amet{&quot; &quot;}
+        {Boolean(reversed) &amp;&amp; (
+          &lt;span&gt;(Reversed changes Number order, not the html order)&lt;/span&gt;
+        )}
+        &lt;ol
+          className=&quot;uds-list&quot;
+          {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+        &gt;
           &lt;li&gt;
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            &lt;ol className=&quot;uds-list&quot;&gt;
+            &lt;ol
+              className=&quot;uds-list&quot;
+              {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+            &gt;
               &lt;li&gt;
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                &lt;ol className=&quot;uds-list&quot;&gt;
+                &lt;ol
+                  className=&quot;uds-list&quot;
+                  {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                &gt;
                   &lt;li&gt;
                     Lorem ipsum dolor sit amet
-                    &lt;ol className=&quot;uds-list&quot;&gt;
+                    &lt;ol
+                      className=&quot;uds-list&quot;
+                      {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                    &gt;
                       &lt;li&gt;
                         Lorem ipsum dolor sit amet
-                        &lt;ol className=&quot;uds-list&quot;&gt;
+                        &lt;ol
+                          className=&quot;uds-list&quot;
+                          {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                        &gt;
                           &lt;li&gt;
                             Lorem ipsum dolor sit amet
-                            &lt;ol className=&quot;uds-list&quot;&gt;
+                            &lt;ol
+                              className=&quot;uds-list&quot;
+                              {...(reversed === true &amp;&amp; {
+                                reversed: &quot;reversed&quot;,
+                              })}
+                            &gt;
                               &lt;li&gt;
                                 Lorem ipsum dolor sit amet
-                                &lt;ol className=&quot;uds-list&quot;&gt;
+                                &lt;ol
+                                  className=&quot;uds-list&quot;
+                                  {...(reversed === true &amp;&amp; {
+                                    reversed: &quot;reversed&quot;,
+                                  })}
+                                &gt;
                                   &lt;li&gt;
                                     Lorem ipsum dolor sit amet
-                                    &lt;ol className=&quot;uds-list&quot;&gt;
+                                    &lt;ol
+                                      className=&quot;uds-list&quot;
+                                      {...(reversed === true &amp;&amp; {
+                                        reversed: &quot;reversed&quot;,
+                                      })}
+                                    &gt;
                                       &lt;li&gt;
                                         Lorem ipsum dolor sit amet
-                                        &lt;ol className=&quot;uds-list&quot;&gt;
+                                        &lt;ol
+                                          className=&quot;uds-list&quot;
+                                          {...(reversed === true &amp;&amp; {
+                                            reversed: &quot;reversed&quot;,
+                                          })}
+                                        &gt;
                                           &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
                                           &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
                                         &lt;/ol&gt;
@@ -49716,6 +50617,142 @@ export const Mixed2ListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
       &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
     &lt;/ol&gt;
   );
+  // force rerender to apply reversed attribute correctly
+  return reversed ? html : &lt;div&gt;{html}&lt;/div&gt;;
+};</code></pre>
+            </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Reversed Ordered List Multi Level</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const ReversedOrderedListMultiLevel = ({
+  bulletColor,
+  backgroundColor,
+  reversed = false,
+}) =&gt; {
+  const html = (
+    &lt;&gt;
+      &lt;h2&gt;Basic example:&lt;/h2&gt;
+      {Boolean(reversed) &amp;&amp; (
+        &lt;p&gt;(Reversed changes Number order, not the html order)&lt;/p&gt;
+      )}
+      &lt;ol
+        className={`uds-list ${bulletColor} ${backgroundColor}`}
+        {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+      &gt;
+        &lt;li&gt;Lorem ipsum dolor sit amet (1st html element)&lt;/li&gt;
+        &lt;li&gt;Lorem ipsum dolor sit amet (2nd html element)&lt;/li&gt;
+        &lt;li&gt;Lorem ipsum dolor sit amet (3rd html element)&lt;/li&gt;
+        &lt;li&gt;Lorem ipsum dolor sit amet (4th html element)&lt;/li&gt;
+        &lt;li&gt;Lorem ipsum dolor sit amet (5th html element)&lt;/li&gt;
+      &lt;/ol&gt;
+      &lt;hr /&gt;
+      &lt;h2&gt;A more Complex example:&lt;/h2&gt;
+      &lt;ol
+        className={`uds-list ${bulletColor} ${backgroundColor}`}
+        {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+      &gt;
+        &lt;li&gt;
+          Lorem ipsum dolor sit amet{&quot; &quot;}
+          {Boolean(reversed) &amp;&amp; (
+            &lt;span&gt;(Reversed changes Number order, not the html order)&lt;/span&gt;
+          )}
+          &lt;ol
+            className=&quot;uds-list&quot;
+            {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+          &gt;
+            &lt;li&gt;
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              &lt;ol
+                className=&quot;uds-list&quot;
+                {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+              &gt;
+                &lt;li&gt;
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  &lt;ol
+                    className=&quot;uds-list&quot;
+                    {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                  &gt;
+                    &lt;li&gt;
+                      Lorem ipsum dolor sit amet
+                      &lt;ol
+                        className=&quot;uds-list&quot;
+                        {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                      &gt;
+                        &lt;li&gt;
+                          Lorem ipsum dolor sit amet
+                          &lt;ol
+                            className=&quot;uds-list&quot;
+                            {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                          &gt;
+                            &lt;li&gt;
+                              Lorem ipsum dolor sit amet
+                              &lt;ol
+                                className=&quot;uds-list&quot;
+                                {...(reversed === true &amp;&amp; {
+                                  reversed: &quot;reversed&quot;,
+                                })}
+                              &gt;
+                                &lt;li&gt;
+                                  Lorem ipsum dolor sit amet
+                                  &lt;ol
+                                    className=&quot;uds-list&quot;
+                                    {...(reversed === true &amp;&amp; {
+                                      reversed: &quot;reversed&quot;,
+                                    })}
+                                  &gt;
+                                    &lt;li&gt;
+                                      Lorem ipsum dolor sit amet
+                                      &lt;ol
+                                        className=&quot;uds-list&quot;
+                                        {...(reversed === true &amp;&amp; {
+                                          reversed: &quot;reversed&quot;,
+                                        })}
+                                      &gt;
+                                        &lt;li&gt;
+                                          Lorem ipsum dolor sit amet
+                                          &lt;ol
+                                            className=&quot;uds-list&quot;
+                                            {...(reversed === true &amp;&amp; {
+                                              reversed: &quot;reversed&quot;,
+                                            })}
+                                          &gt;
+                                            &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                                            &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                                          &lt;/ol&gt;
+                                        &lt;/li&gt;
+                                        &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                                      &lt;/ol&gt;
+                                    &lt;/li&gt;
+                                    &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                                  &lt;/ol&gt;
+                                &lt;/li&gt;
+                                &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                              &lt;/ol&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                          &lt;/ol&gt;
+                        &lt;/li&gt;
+                        &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+                      &lt;/ol&gt;
+                    &lt;/li&gt;
+                  &lt;/ol&gt;
+                &lt;/li&gt;
+                &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+              &lt;/ol&gt;
+            &lt;/li&gt;
+          &lt;/ol&gt;
+        &lt;/li&gt;
+        &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
+      &lt;/ol&gt;
+    &lt;/&gt;
+  );
+  // force rerender to apply reversed attribute correctly
+  return reversed ? html : &lt;div&gt;{html}&lt;/div&gt;;
 };</code></pre>
             </div>
             <div class="note ok">
@@ -49725,37 +50762,80 @@ export const Mixed2ListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
               </div>
               
               
-              <pre><code>const MixedListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
-  return (
-    &lt;ol className={`uds-list ${bulletColor} ${backgroundColor}`}&gt;
+              <pre><code>const MixedListMultiLevel = ({
+  bulletColor,
+  backgroundColor,
+  reversed = false,
+}) =&gt; {
+  const html = (
+    &lt;ol
+      className={`uds-list ${bulletColor} ${backgroundColor}`}
+      {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+    &gt;
       &lt;li&gt;
-        Lorem ipsum dolor sit amet
-        &lt;ol&gt;
+        Lorem ipsum dolor sit amet{&quot; &quot;}
+        {Boolean(reversed) &amp;&amp; &lt;span&gt;(Reversed only works on OL)&lt;/span&gt;}
+        &lt;ol
+          className=&quot;uds-list&quot;
+          {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+        &gt;
           &lt;li&gt;
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            &lt;ol className=&quot;uds-list&quot;&gt;
+            &lt;ol
+              className=&quot;uds-list&quot;
+              {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+            &gt;
               &lt;li&gt;
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                &lt;ol className=&quot;uds-list&quot;&gt;
+                &lt;ol
+                  className=&quot;uds-list&quot;
+                  {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                &gt;
                   &lt;li&gt;
                     Lorem ipsum dolor sit amet
-                    &lt;ol&gt;
+                    &lt;ol
+                      className=&quot;uds-list&quot;
+                      {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                    &gt;
                       &lt;li&gt;
                         Lorem ipsum dolor sit amet
-                        &lt;ul className=&quot;uds-list&quot;&gt;
+                        &lt;ul
+                          className=&quot;uds-list&quot;
+                          {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                        &gt;
                           &lt;li&gt;
                             Lorem ipsum dolor sit amet
-                            &lt;ul className=&quot;uds-list&quot;&gt;
+                            &lt;ul
+                              className=&quot;uds-list&quot;
+                              {...(reversed === true &amp;&amp; {
+                                reversed: &quot;reversed&quot;,
+                              })}
+                            &gt;
                               &lt;li&gt;
                                 Lorem ipsum dolor sit amet
-                                &lt;ul className=&quot;uds-list&quot;&gt;
+                                &lt;ul
+                                  className=&quot;uds-list&quot;
+                                  {...(reversed === true &amp;&amp; {
+                                    reversed: &quot;reversed&quot;,
+                                  })}
+                                &gt;
                                   &lt;li&gt;
                                     Lorem ipsum dolor sit amet
-                                    &lt;ol className=&quot;uds-list&quot;&gt;
+                                    &lt;ol
+                                      className=&quot;uds-list&quot;
+                                      {...(reversed === true &amp;&amp; {
+                                        reversed: &quot;reversed&quot;,
+                                      })}
+                                    &gt;
                                       &lt;li&gt;
                                         Lorem ipsum dolor sit amet
-                                        &lt;ol className=&quot;uds-list&quot;&gt;
+                                        &lt;ol
+                                          className=&quot;uds-list&quot;
+                                          {...(reversed === true &amp;&amp; {
+                                            reversed: &quot;reversed&quot;,
+                                          })}
+                                        &gt;
                                           &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
                                           &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
                                         &lt;/ol&gt;
@@ -49785,6 +50865,9 @@ export const Mixed2ListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
       &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
     &lt;/ol&gt;
   );
+
+  // force rerender to apply reversed attribute correctly
+  return reversed ? html : &lt;div&gt;{html}&lt;/div&gt;;
 };</code></pre>
             </div>
             <div class="note ok">
@@ -49794,37 +50877,77 @@ export const Mixed2ListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
               </div>
               
               
-              <pre><code>const Mixed2ListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
-  return (
-    &lt;ul className={`uds-list ${bulletColor} ${backgroundColor}`}&gt;
+              <pre><code>const Mixed2ListMultiLevel = ({
+  bulletColor,
+  backgroundColor,
+  reversed = false,
+}) =&gt; {
+  const html = (
+    &lt;ul
+      className={`uds-list ${bulletColor} ${backgroundColor}`}
+      {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+    &gt;
       &lt;li&gt;
-        Lorem ipsum dolor sit amet
-        &lt;ul&gt;
+        Lorem ipsum dolor sit amet{&quot; &quot;}
+        {Boolean(reversed) &amp;&amp; &lt;span&gt;(Reversed has no effect on UL)&lt;/span&gt;}
+        &lt;ul {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}&gt;
           &lt;li&gt;
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            &lt;ul className=&quot;uds-list&quot;&gt;
+            &lt;ul
+              className=&quot;uds-list&quot;
+              {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+            &gt;
               &lt;li&gt;
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                &lt;ul className=&quot;uds-list&quot;&gt;
+                &lt;ul
+                  className=&quot;uds-list&quot;
+                  {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                &gt;
                   &lt;li&gt;
                     Lorem ipsum dolor sit amet
-                    &lt;ul&gt;
+                    &lt;ul {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}&gt;
                       &lt;li&gt;
                         Lorem ipsum dolor sit amet
-                        &lt;ol className=&quot;uds-list&quot;&gt;
+                        &lt;ol
+                          className=&quot;uds-list&quot;
+                          {...(reversed === true &amp;&amp; { reversed: &quot;reversed&quot; })}
+                        &gt;
                           &lt;li&gt;
-                            Lorem ipsum dolor sit amet
-                            &lt;ol className=&quot;uds-list&quot;&gt;
+                            Lorem ipsum dolor sit amet{&quot; &quot;}
+                            {reversed === true &amp;&amp; (
+                              &lt;span&gt;(Reversed only works on OL)&lt;/span&gt;
+                            )}
+                            &lt;ol
+                              className=&quot;uds-list&quot;
+                              {...(reversed === true &amp;&amp; {
+                                reversed: &quot;reversed&quot;,
+                              })}
+                            &gt;
                               &lt;li&gt;
                                 Lorem ipsum dolor sit amet
-                                &lt;ol className=&quot;uds-list&quot;&gt;
+                                &lt;ol
+                                  className=&quot;uds-list&quot;
+                                  {...(reversed === true &amp;&amp; {
+                                    reversed: &quot;reversed&quot;,
+                                  })}
+                                &gt;
                                   &lt;li&gt;
                                     Lorem ipsum dolor sit amet
-                                    &lt;ul className=&quot;uds-list&quot;&gt;
+                                    &lt;ul
+                                      className=&quot;uds-list&quot;
+                                      {...(reversed === true &amp;&amp; {
+                                        reversed: &quot;reversed&quot;,
+                                      })}
+                                    &gt;
                                       &lt;li&gt;
                                         Lorem ipsum dolor sit amet
-                                        &lt;ul className=&quot;uds-list&quot;&gt;
+                                        &lt;ul
+                                          className=&quot;uds-list&quot;
+                                          {...(reversed === true &amp;&amp; {
+                                            reversed: &quot;reversed&quot;,
+                                          })}
+                                        &gt;
                                           &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
                                           &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
                                         &lt;/ul&gt;
@@ -49854,6 +50977,9 @@ export const Mixed2ListMultiLevel = ({ bulletColor, backgroundColor }) =&gt; {
       &lt;li&gt;Lorem ipsum dolor sit amet&lt;/li&gt;
     &lt;/ul&gt;
   );
+
+  // force rerender to apply reversed attribute correctly
+  return reversed ? html : &lt;div&gt;{html}&lt;/div&gt;;
 };</code></pre>
             </div>
         </div>
