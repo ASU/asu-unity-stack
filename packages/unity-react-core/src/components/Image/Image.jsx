@@ -40,7 +40,7 @@ export const Image = ({
     alt,
     loading,
     decoding,
-    fetchpriority: fetchPriority, // React attribute bug workaround
+    fetchPriority: fetchPriority, // React attribute bug workaround
     ...(cssClasses?.length > 0 && { className: spreadClasses(cssClasses) }),
     ...(dataTestId && { "data-testid": dataTestId }),
     ...(width && { width }),

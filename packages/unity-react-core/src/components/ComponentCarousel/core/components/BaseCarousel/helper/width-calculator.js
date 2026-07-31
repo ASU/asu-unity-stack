@@ -26,12 +26,13 @@ function calcualteViewItems(itemCount, perView) {
   buttonCount = itemCount;
   if (vw >= 992) {
     // Value for lg breakpoint
-    if (perView >= 2) {
-      buttonCount = itemCount - 1;
-    }
-    if (perView >= 3) {
-      buttonCount = itemCount - 2;
-    }
+    // Removed for accessibility (arrow keys should not skip cards)
+    // if (perView >= 2) {
+    //   buttonCount = itemCount - 1;
+    // }
+    // if (perView >= 3) {
+    //   buttonCount = itemCount - 2;
+    // }
   }
 
   return buttonCount;

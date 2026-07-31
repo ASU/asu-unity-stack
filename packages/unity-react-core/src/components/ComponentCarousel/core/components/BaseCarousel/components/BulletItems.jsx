@@ -99,7 +99,7 @@ const ImageBulletItems = ({ imageItems, onItemClick = () => null }) => {
         decoding="async"
         // @ts-ignore
 
-        fetchpriority="low"
+        fetchPriority="low"
       />
     </button>
   ));

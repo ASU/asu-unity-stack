@@ -59,7 +59,7 @@ function buildConfig(perView = 1, isFullWidth, hasPeek = true, isDraggable) {
   return {
     type: "slider", // No wrap-around.
     focusAt: 0,
-    bound: true, // Only if type slider with focusAt 0
+    bound: false, // Only if type slider with focusAt 0 // Set to false for accessibility (all cards should be accessible)
     rewind: false, // Only if type slider
     gap, // Space between slides... may be impacted by viewport size.
     // `keyboard` Left/Right arrow key support for slides - true is default.
@@ -322,7 +322,42 @@ function setupCaroarousel({
       }
     }
 
+    let firstActiveCard = 1;
+    let finalActiveCard = 1;
+    let totalActiveCards = 0;
+    let totalCards = slides.length;
+    let getActiveState = 0; // get first active card
+
     for (let i = 0; i < slides.length; i++) {
+      const ariaHidden = slides[i].getAttribute("aria-hidden");
+      if (getActiveState === 1) {
+        if (i === slides.length - 1) {
+          if (ariaHidden === "false") {
+            finalActiveCard = i + 1;
+            totalActiveCards = finalActiveCard - firstActiveCard + 1;
+            getActiveState = 2; // done
+            break;
+          }
+        }
+        if (ariaHidden === "true") {
+          finalActiveCard = i;
+          totalActiveCards = finalActiveCard - firstActiveCard + 1;
+          getActiveState = 2; // done
+          break;
+        }
+      }
+      if (getActiveState === 0) {
+        if (ariaHidden === "false") {
+          firstActiveCard = i + 1;
+          getActiveState = 1; // get active card count
+          if (i === slides.length - 1) {
+            finalActiveCard = firstActiveCard;
+            totalActiveCards = 1;
+            getActiveState = 2; // done
+          }
+        }
+      }
+
       if (i === currentIndex) {
         // Find the main h tag in the card if one exists
         let header;
@@ -330,13 +365,6 @@ function setupCaroarousel({
           if (!header) {
             header = slides[i].querySelector(`h${j}`);
           }
-        }
-
-        let cardDiv = slides[i].querySelectorAll(`.card`);
-        if (cardDiv && cardDiv[0]) {
-          cardDiv[0].setAttribute("aria-live", "polite");
-          cardDiv[0].setAttribute("role", "alert");
-          cardDiv[0].setAttribute("tabIndex", "0");
         }
 
         if (header) {
@@ -349,9 +377,25 @@ function setupCaroarousel({
           gliderElement.removeAttribute("aria-labelledby");
         }
 
-        // slides[i].focus();
       }
     }
+
+    let gliderTrack = gliderElement.querySelector(`.glide__track`);
+    gliderTrack?.setAttribute("tabIndex", "0");
+
+    if (firstActiveCard === finalActiveCard) {
+      gliderTrack?.setAttribute(
+        "aria-label",
+        `Carousel, showing item ${firstActiveCard} of ${totalCards}`
+      );
+    } else {
+      gliderTrack?.setAttribute(
+        "aria-label",
+        `Carousel, showing items ${firstActiveCard} to ${finalActiveCard} of ${totalCards}`
+        // `${totalActiveCards} item carousel, showing items ${firstActiveCard} to ${finalActiveCard} of ${totalCards}`
+      );
+    }
+    gliderTrack?.setAttribute("aria-live", "assertive");
 
     // Update bullet accessibility
     const bullets = gliderElement.querySelectorAll(".glide__bullet");
