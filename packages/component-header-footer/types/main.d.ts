@@ -31,12 +31,14 @@ export interface NavTreeProps {
 
 export interface HeaderProps {
   isPartner: boolean;
+  isUnbranded?: boolean;
   navTree: NavTreeProps[];
   title?: string;
   baseUrl?: string;
   parentOrg?:  string;
   parentOrgUrl?: string;
   partnerLogo: Logo;
+  unbrandedLogo?: Logo;
   logo: Logo;
   loggedIn: boolean;
   userName: string;

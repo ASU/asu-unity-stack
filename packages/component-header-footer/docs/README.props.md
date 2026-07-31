@@ -156,12 +156,14 @@
 | Name | Type | Description |
 | --- | --- | --- |
 | isPartner | <code>boolean</code> |  |
+| [isUnbranded] | <code>boolean</code> | Renders the unbranded (KE) header: the ASU logo is replaced by unbrandedLogo, and the universal navbar keeps only the skip-nav and report-accessibility links, revealed on keyboard focus. |
 | navTree | [<code>Array.&lt;NavTreeProps&gt;</code>](#NavTreeProps) |  |
 | [title] | <code>string</code> |  |
 | [baseUrl] | <code>string</code> |  |
 | [parentOrg] | <code>string</code> |  |
 | [parentOrgUrl] | <code>string</code> |  |
 | partnerLogo | [<code>Logo</code>](#Logo) |  |
+| [unbrandedLogo] | [<code>Logo</code>](#Logo) | Logo shown instead of the ASU logo when isUnbranded is true (src, alt, brandLink). |
 | logo | [<code>Logo</code>](#Logo) |  |
 | loggedIn | <code>boolean</code> |  |
 | userName | <code>string</code> |  |

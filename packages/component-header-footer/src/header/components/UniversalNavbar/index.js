@@ -20,7 +20,7 @@ const DEFAULT_GA_EVENT = {
 };
 
 const UniversalNavbar = () => {
-  const { breakpoint } = useAppContext();
+  const { breakpoint, isUnbranded } = useAppContext();
   const isMobile = useIsMobile(breakpoint);
 
   function getURL() {
@@ -41,6 +41,7 @@ const UniversalNavbar = () => {
       ),
       href: "#skip-to-content",
       text: "Skip to main content",
+      isAccessibilityLink: true,
     },
     {
       className: buildClassName(
@@ -49,6 +50,7 @@ const UniversalNavbar = () => {
       ),
       href: `https://accessibility.asu.edu/report#a11yref=${getURL()}`,
       text: "Report an accessibility problem",
+      isAccessibilityLink: true,
     },
     {
       className: CLASS_NAMES.NAV_LINK,
@@ -67,11 +69,20 @@ const UniversalNavbar = () => {
     },
   ];
 
+  // Unbranded (KE) sites keep only the accessibility links; the gray bar is
+  // revealed exclusively while one of them has keyboard focus.
+  const visibleNavLinks = isUnbranded
+    ? universalNavLinks.filter(link => link.isAccessibilityLink)
+    : universalNavLinks;
+
   return (
     <Wrapper
       // @ts-ignore
       breakpoint={breakpoint}
-      className={CLASS_NAMES.UNIVERSAL_NAV}
+      className={buildClassName(
+        CLASS_NAMES.UNIVERSAL_NAV,
+        isUnbranded && CLASS_NAMES.UNIVERSAL_NAV_UNBRANDED
+      )}
       data-testid="universal-navbar"
       data-elastic-exclude="data-elastic-exclude"
     >
@@ -79,7 +90,7 @@ const UniversalNavbar = () => {
         <div className={CLASS_NAMES.HEADER_TOP}>
           <nav className="nav" aria-label="ASU Global">
             <div className={CLASS_NAMES.LINKS_CONTAINER}>
-              {universalNavLinks.map(link => (
+              {visibleNavLinks.map(link => (
                 <a
                   key={link.href}
                   className={link.className}
@@ -91,9 +102,9 @@ const UniversalNavbar = () => {
                   {link.text}
                 </a>
               ))}
-              <Login />
+              {!isUnbranded && <Login />}
             </div>
-            {!isMobile && <Search />}
+            {!isMobile && !isUnbranded && <Search />}
           </nav>
         </div>
       </div>

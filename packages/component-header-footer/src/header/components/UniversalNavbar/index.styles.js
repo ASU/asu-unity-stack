@@ -98,6 +98,22 @@ const Wrapper = styled.div`
       grid-template-columns: 1fr 1fr 1fr 1fr;
     }
   }
+
+  /* Unbranded (KE) sites: the gray bar stays visually hidden but keyboard
+  reachable, and is revealed only while a skip/accessibility link has focus. */
+  &.${CLASS_NAMES.UNIVERSAL_NAV_UNBRANDED}:not(:focus-within) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    min-height: 0;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(100%);
+    white-space: nowrap;
+    border: 0;
+  }
 `;
 
 export { Wrapper };
