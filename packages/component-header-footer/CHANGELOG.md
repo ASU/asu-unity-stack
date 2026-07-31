@@ -1,3 +1,10 @@
+# [@asu/component-header-footer-v1.4.6](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.4.5...@asu/component-header-footer-v1.4.6) (2026-07-31)
+
+
+### Bug Fixes
+
+* **component-header-footer:** fixed large headers not wrapping on smaller screens ([ed046e1](https://github.com/asu/asu-unity-stack/commit/ed046e160fa4dee1456f5bf4862eb524f577a94c))
+
 # [@asu/component-header-footer-v1.4.5](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.4.4...@asu/component-header-footer-v1.4.5) (2026-07-06)
 
 
