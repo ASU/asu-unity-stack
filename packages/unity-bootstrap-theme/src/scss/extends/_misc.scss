@@ -134,12 +134,19 @@ label {
   width: 1px;
 }
 
+// Standard theme focus treatment: a white/gray double ring that stays
+// visible over photo or color backgrounds, used in place of the default
+// browser outline or the global `:focus` blue glow.
+@mixin focus-ring {
+  outline: none !important;
+  box-shadow: 0px 0px 0px 2px $uds-color-base-white, 0px 0px 0px 4px $asu-gray-1 !important;
+  z-index: 1;
+}
+
 button:focus,
 a:focus,
 input:focus,
 textarea:focus,
 select:focus {
-  outline: none !important;
-  box-shadow: 0px 0px 0px 2px $uds-color-base-white, 0px 0px 0px 4px $asu-gray-1 !important;
-  z-index: 1;
+  @include focus-ring;
 }
