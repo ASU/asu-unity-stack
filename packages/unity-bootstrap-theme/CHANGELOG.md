@@ -1,3 +1,11 @@
+# [@asu/unity-bootstrap-theme-v2.2.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.2.1...@asu/unity-bootstrap-theme-v2.2.2) (2026-08-03)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** add unity defgault focus ring to hover card ([441a16a](https://github.com/ASU/asu-unity-stack/commit/441a16adaa8fde2b6c3c8d14eab674562f3a0c44))
+* **unity-bootstrap-theme:** tabindex update for hover cards ([1bd6834](https://github.com/ASU/asu-unity-stack/commit/1bd683441a6e929d3a08760d57281330490f66a6))
+
 # [@asu/unity-bootstrap-theme-v2.2.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.2.0...@asu/unity-bootstrap-theme-v2.2.1) (2026-07-30)
 
 
