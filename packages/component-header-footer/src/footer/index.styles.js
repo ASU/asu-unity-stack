@@ -17,7 +17,7 @@ const StyledFooter = styled.footer`
   --color-divider-darker: #1e1e1e;
   --color-base-white: #ffffff;
   --color-base-grey-2: #e8e8e8;
-  --color-base-gold: #ffc627;
+  --color-base-gold: var(--bs-gold, #ffc627);
   --color-divider-lighter: #393939;
   --color-base-grey-7: #191919;
   --color-base-grey-4: #bfbfbf;
