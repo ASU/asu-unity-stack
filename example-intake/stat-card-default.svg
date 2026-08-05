@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="180" viewBox="0 0 320 180">
+  <!-- Background card -->
+  <rect x="0" y="0" width="320" height="180" rx="8" fill="#ffffff" stroke="#e8e8e8" stroke-width="1"/>
+
+  <!-- Gold accent bar at top -->
+  <rect x="0" y="0" width="320" height="4" rx="8" fill="#ffc627"/>
+  <rect x="0" y="2" width="320" height="4" fill="#ffc627"/>
+
+  <!-- Icon circle -->
+  <circle cx="40" cy="50" r="20" fill="#ffc627" opacity="0.15"/>
+  <text x="40" y="56" font-family="Arial, sans-serif" font-size="18" fill="#8c1d40" text-anchor="middle">📈</text>
+
+  <!-- Stat number -->
+  <text x="24" y="110" font-family="Arial, sans-serif" font-size="42" font-weight="900" fill="#191919">1,247</text>
+
+  <!-- Label -->
+  <text x="24" y="140" font-family="Arial, sans-serif" font-size="14" fill="#747474">Active Students</text>
+
+  <!-- Optional trend indicator -->
+  <text x="24" y="162" font-family="Arial, sans-serif" font-size="12" fill="#78be20">▲ 12% from last month</text>
+</svg>
