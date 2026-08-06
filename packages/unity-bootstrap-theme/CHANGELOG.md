@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v2.2.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.2.2...@asu/unity-bootstrap-theme-v2.2.3) (2026-08-06)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** render profile card title as bold text instead of h4 ([f7fb027](https://github.com/ASU/asu-unity-stack/commit/f7fb02750db7b2a457beb6b107e5ce970f31ae61))
+
 # [@asu/unity-bootstrap-theme-v2.2.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.2.1...@asu/unity-bootstrap-theme-v2.2.2) (2026-08-03)
 
 
