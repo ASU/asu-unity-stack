@@ -3,8 +3,8 @@ import { idGenerator } from "@asu/shared";
 import PropTypes from "prop-types";
 import React from "react";
 
-import { linkPropShape } from "../../../../core/models";
-import { trackGAEvent } from "../../../../core/services/google-analytics";
+import { linkPropShape } from "../../../core/models";
+import { trackGAEvent } from "../../../core/services/google-analytics";
 
 /**
  *
