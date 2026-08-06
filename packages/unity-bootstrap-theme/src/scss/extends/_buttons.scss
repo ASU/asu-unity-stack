@@ -1,10 +1,12 @@
 // buttons mixins
 @mixin btn-md {
+  --uds-clickable-area-inset: -8px
   font-size: 0.875rem;
   padding: 0.5rem 1rem;
 }
 
 @mixin btn-sm {
+  --uds-clickable-area-inset: -12px
   font-size: 0.75rem;
   padding: $uds-component-button-padding-y-small
     $uds-component-button-padding-x-small;
@@ -17,10 +19,11 @@
 
 @mixin clickable-area() {
   position: relative;
+  contain: layout;
   &::before {
     content: "";
     position: absolute;
-    inset: -10px;
+    inset: var(--uds-clickable-area-inset, 0);
     margin: auto;
   }
 }
@@ -180,6 +183,50 @@ $button-colors: (
       );
     }
   }
+}
+
+.btn-gold:hover {
+  color: #000 !important;
+  background-color: #FFC627 !important;
+  border-color: #FFC627 !important;;
+}
+.btn-filled-gold:hover {
+  color: #000 !important;
+  background-color: #FFC627 !important;
+  border-color: #FFC627 !important;;
+}
+
+.btn-maroon:hover {
+  color: #fff !important;
+  background-color: #8C1D40 !important;
+  border-color: #8C1D40 !important;
+}
+.btn-filled-maroon:hover {
+  color: #fff !important;
+  background-color: #8C1D40 !important;
+  border-color: #8C1D40 !important;
+}
+
+.btn-gray:hover {
+  color: #000 !important;
+  background-color: #bfbfbf !important;
+  border-color: #bfbfbf !important;
+}
+.btn-filled-gray:hover {
+  color: #000 !important;
+  background-color: #bfbfbf !important;
+  border-color: #bfbfbf !important;
+}
+
+.btn-dark:hover {
+  color: #fff !important;
+  background-color: #000 !important;
+  border-color: #000 !important;
+}
+.btn-filled-dark:hover {
+  color: #fff !important;
+  background-color: #000 !important;
+  border-color: #000 !important;
 }
 
 // Mixin for borderless button variants

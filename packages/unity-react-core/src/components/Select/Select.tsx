@@ -45,7 +45,7 @@ const defaultGaEvent = {
 
 export const propDefaults: SelectProps = {
   id: undefined,
-  label: undefined,
+  label: "",
   displaySize: "md",
   required: false,
   disabled: false,
@@ -105,14 +105,17 @@ export const Select: React.FC<SelectProps> = ({
                 key={optionValue}
                 value={optionValue}
                 label={optionLabel}
-                // selected={optionValue === selected}
+              // selected={optionValue === selected}
               />
             ))}
         </select>
       </GaEventWrapper>
       {valid && (
         <small id={successId} className="valid-feedback">
-          <span title="Alert" className="fa fa-icon fa-exclamation-triangle" />
+          <span
+            title="Success"
+            className="fa fa-icon fa-check-circle">
+          </span>
           {validMessage}
         </small>
       )}

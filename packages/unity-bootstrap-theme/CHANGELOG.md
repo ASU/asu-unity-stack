@@ -1,3 +1,90 @@
+# [@asu/unity-bootstrap-theme-v2.2.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.2.1...@asu/unity-bootstrap-theme-v2.2.2) (2026-08-03)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** add unity defgault focus ring to hover card ([441a16a](https://github.com/ASU/asu-unity-stack/commit/441a16adaa8fde2b6c3c8d14eab674562f3a0c44))
+* **unity-bootstrap-theme:** tabindex update for hover cards ([1bd6834](https://github.com/ASU/asu-unity-stack/commit/1bd683441a6e929d3a08760d57281330490f66a6))
+
+# [@asu/unity-bootstrap-theme-v2.2.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.2.0...@asu/unity-bootstrap-theme-v2.2.1) (2026-07-30)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** allow ordered lists to be reversed ([d33c05e](https://github.com/ASU/asu-unity-stack/commit/d33c05e0b6eed1c4d5de461f1e545d29e19e10cb))
+
+# [@asu/unity-bootstrap-theme-v2.2.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.1.1...@asu/unity-bootstrap-theme-v2.2.0) (2026-07-29)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix modal close button focus style issue ([c288469](https://github.com/ASU/asu-unity-stack/commit/c288469935d3daca33d5d5381c6ea41857304e43))
+
+
+### Features
+
+* modal accessibility and escape key features for unity react and bootstrap ([04bdeea](https://github.com/ASU/asu-unity-stack/commit/04bdeea87d74c3ab1fd47a7f272504a843129aad))
+
+
+### Performance Improvements
+
+* **unity-react-core:** useEffect update for React js async key listener handling ([b25ab85](https://github.com/ASU/asu-unity-stack/commit/b25ab851381632a9d825d83c607f8036f9eeb93a))
+
+# [@asu/unity-bootstrap-theme-v2.1.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.1.0...@asu/unity-bootstrap-theme-v2.1.1) (2026-07-22)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix a11y issue min btn area if container has position rel ([5c8da93](https://github.com/ASU/asu-unity-stack/commit/5c8da9332c674d15d67d18eb8176aaa634a35d2a))
+
+# [@asu/unity-bootstrap-theme-v2.1.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.0.0...@asu/unity-bootstrap-theme-v2.1.0) (2026-07-22)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix for linting error ([3c7c879](https://github.com/ASU/asu-unity-stack/commit/3c7c879c6cd7e925b0d7106c1e4ed5840505d2c1))
+* **unity-bootstrap-theme:** gold maroon gray and dark hover button brand standard color fix ([d44e3f5](https://github.com/ASU/asu-unity-stack/commit/d44e3f57d0adbf07974c259afb15f28a535ee4ce))
+* **unity-bootstrap-theme:** linter error fix ([6d8c839](https://github.com/ASU/asu-unity-stack/commit/6d8c839d8d1902dbbce215b64ead4cdaef79d7cb))
+
+
+### Features
+
+* **unity-react-core:** replaced fa-exlamation-triangle with fa-check-circle and success titles ([fc7317d](https://github.com/ASU/asu-unity-stack/commit/fc7317d19f48dd140da7c1261e2adb132d53e289))
+
+# [@asu/unity-bootstrap-theme-v2.0.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.39.7...@asu/unity-bootstrap-theme-v2.0.0) (2026-07-17)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix safari dropdown issue in tab panels ([33d209b](https://github.com/ASU/asu-unity-stack/commit/33d209b038a7ee70e75b964aa77c379f1dc8904e))
+* **unity-bootstrap-theme:** todo 3.2 ([970c8e8](https://github.com/ASU/asu-unity-stack/commit/970c8e813f89d862e6f80127d8639cc94ba19f71))
+* **unity-bootstrap-theme:** todo 3.3, changed MoreDropdown.js to fit _tabbed-panels.scss ([f55a827](https://github.com/ASU/asu-unity-stack/commit/f55a8272e6c605a2a8817f522e369f68a94a7fe4))
+* **unity-bootstrap-theme:** update bootstrap tabbed panels JS and styles ([bcdd640](https://github.com/ASU/asu-unity-stack/commit/bcdd640d67a05b1ca523ab4e3712aa4901fe7011))
+* **unity-bootstrap-theme:** update tabbed panel JS ([9123d4b](https://github.com/ASU/asu-unity-stack/commit/9123d4b7ea6f54e6765e9d5a82aa872572bc665c))
+* **unity-bootstrap-theme:** update tabbed panel JS ([c171ba8](https://github.com/ASU/asu-unity-stack/commit/c171ba8600225ce5df75f8c7d1d138486ec78d74))
+* **unity-bootstrap-theme:** update tabbed panel JS ([f994c24](https://github.com/ASU/asu-unity-stack/commit/f994c24fda479a5f1e6dcf019a1618e54126c91e))
+* **unity-bootstrap-theme:** update tabbed panel JS and styles ([71e53af](https://github.com/ASU/asu-unity-stack/commit/71e53afed5fd3e33bede1ba9c41f5cdb08dcb540))
+* **unity-bootstrap-theme:** update tabbed panel JS to mimic react version ([72b763b](https://github.com/ASU/asu-unity-stack/commit/72b763bc4a1ef5840ad85d743f32c3b7568b04f2))
+* **unity-react-core:** add NavControls for app-webdir-ui use ([a4fecfe](https://github.com/ASU/asu-unity-stack/commit/a4fecfeb0a4d58f7927d3171e67695aea832d9d3))
+* **unity-react-core:** address tabbed panel pr comments ([5c7085b](https://github.com/ASU/asu-unity-stack/commit/5c7085b9a5f516a2a602fe5d8d8464c04032164a))
+* **unity-react-core:** changes made after review ([c35491c](https://github.com/ASU/asu-unity-stack/commit/c35491c851ba00e9fdbe66ceb4abac2601bb8ec9))
+* **unity-react-core:** final design before completeing tests ([5a44c52](https://github.com/ASU/asu-unity-stack/commit/5a44c526ba43553f9f565a0cd162dd91795ef444))
+* **unity-react-core:** scrolling feature final ([13ba723](https://github.com/ASU/asu-unity-stack/commit/13ba723ae95a8bc103fe652e8f0a42fc842c52ee))
+* **unity-react-core:** toDo 5.1 ([50abf19](https://github.com/ASU/asu-unity-stack/commit/50abf198e6b3c776933f329b7fb1ddec3695f4da))
+* **unity-react-core:** update tabbed panel logic ([084885b](https://github.com/ASU/asu-unity-stack/commit/084885b2cd94c79625ecf6f6ab11996f87c8f2e3))
+
+
+### Features
+
+* **unity-bootstrap-theme:** tabbed panel rewrite ([299f76e](https://github.com/ASU/asu-unity-stack/commit/299f76ef2016bafe1eac50a6f62bde93684e794f))
+* **unity-bootstrap-theme:** tODO 3.1 ([934f119](https://github.com/ASU/asu-unity-stack/commit/934f119924c227bb55791fcb7560282d6c2bf309))
+* **unity-bootstrap-theme:** todo 3.2 ([f90438c](https://github.com/ASU/asu-unity-stack/commit/f90438c7b160dacb274d54a2d13b9f4823da1cbf))
+
+
+### BREAKING CHANGES
+
+* **unity-bootstrap-theme:** New html styles are relying on unity-react-core html
+
 # [@asu/unity-bootstrap-theme-v1.39.7](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v1.39.6...@asu/unity-bootstrap-theme-v1.39.7) (2026-07-14)
 
 

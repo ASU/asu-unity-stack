@@ -4,7 +4,7 @@
 import { Decorator } from "@storybook/react";
 import React, { ReactNode, StrictMode, useEffect } from "react";
 
-import { getBootstrapHTML } from "../src/components/GaEventWrapper/useBaseSpecificFramework";
+import { getBootstrapHTML } from "../src/components/GaEventWrapper/getBootstrapHTML";
 import { useChannel } from "storybook/preview-api";
 
 declare interface ContainerProps {
@@ -75,7 +75,7 @@ export const withContainer: Decorator = (
       window.unloading = true; // variable to prevent calling mount function before the page is reloaded
 
       // adding this timeout allows controls time to update
-      setTimeout(()=>{window.location.reload()}, 100);
+      setTimeout(()=>{window.location.reload()}, 500);
     }
   }
 

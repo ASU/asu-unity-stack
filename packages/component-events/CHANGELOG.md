@@ -1,3 +1,10 @@
+# [@asu/component-events-v3.2.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v3.2.0...@asu/component-events-v3.2.1) (2026-07-28)
+
+
+### Bug Fixes
+
+* **component-events:** correct stale @asu/unity-react-core dependency range ([8b66069](https://github.com/asu/asu-unity-stack/commit/8b660693d5304e76ed98121dd390001352e5e390))
+
 # [@asu/component-events-v3.2.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v3.1.0...@asu/component-events-v3.2.0) (2026-07-14)
 
 

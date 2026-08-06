@@ -1,3 +1,10 @@
+# [@asu/app-degree-pages-v3.2.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.2.2...@asu/app-degree-pages-v3.2.3) (2026-07-28)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** correct stale @asu/unity-react-core dependency range ([81ce102](https://github.com/asu/asu-unity-stack/commit/81ce102c79ab8f5e299d1bb4d50e38af2cd71a58))
+
 # [@asu/app-degree-pages-v3.2.2](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.2.1...@asu/app-degree-pages-v3.2.2) (2026-07-07)
 
 

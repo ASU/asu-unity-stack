@@ -1,3 +1,74 @@
+# [@asu/unity-react-core-v2.2.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.1.1...@asu/unity-react-core-v2.2.0) (2026-07-29)
+
+
+### Features
+
+* modal accessibility and escape key features for unity react and bootstrap ([04bdeea](https://github.com/ASU/asu-unity-stack/commit/04bdeea87d74c3ab1fd47a7f272504a843129aad))
+* **unity-react-core:** aria-label update ([eeaebef](https://github.com/ASU/asu-unity-stack/commit/eeaebeff45a85e308ac510f398995b6af708697f))
+
+
+### Performance Improvements
+
+* **unity-react-core:** useEffect update for React js async key listener handling ([b25ab85](https://github.com/ASU/asu-unity-stack/commit/b25ab851381632a9d825d83c607f8036f9eeb93a))
+
+# [@asu/unity-react-core-v2.1.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.1.0...@asu/unity-react-core-v2.1.1) (2026-07-28)
+
+
+### Bug Fixes
+
+* **unity-react-core:** restore nav-control styles and stop bundling react-dom/server ([cb41952](https://github.com/ASU/asu-unity-stack/commit/cb41952b835e1da077d6e39333e410105a7ac352))
+
+# [@asu/unity-react-core-v2.1.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.0.0...@asu/unity-react-core-v2.1.0) (2026-07-22)
+
+
+### Features
+
+* **unity-react-core:** replaced fa-exlamation-triangle with fa-check-circle and success titles ([fc7317d](https://github.com/ASU/asu-unity-stack/commit/fc7317d19f48dd140da7c1261e2adb132d53e289))
+
+# [@asu/unity-react-core-v2.0.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.11.4...@asu/unity-react-core-v2.0.0) (2026-07-17)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** todo 3.3, changed MoreDropdown.js to fit _tabbed-panels.scss ([f55a827](https://github.com/ASU/asu-unity-stack/commit/f55a8272e6c605a2a8817f522e369f68a94a7fe4))
+* **unity-bootstrap-theme:** update tabbed panel JS ([c171ba8](https://github.com/ASU/asu-unity-stack/commit/c171ba8600225ce5df75f8c7d1d138486ec78d74))
+* **unity-react-core:** 2.1 ([97fd7c0](https://github.com/ASU/asu-unity-stack/commit/97fd7c018659b1ee96f33bbda83ff022437eef7e))
+* **unity-react-core:** 2.1 changes ([8021a59](https://github.com/ASU/asu-unity-stack/commit/8021a590e529995c1dbd85e17d4b7af4a68f90db))
+* **unity-react-core:** 2.2 with changes in tabheader.jsx file ([ccc955c](https://github.com/ASU/asu-unity-stack/commit/ccc955cafecc449a8700214d382e8c01be841bec))
+* **unity-react-core:** add NavControls for app-webdir-ui use ([a4fecfe](https://github.com/ASU/asu-unity-stack/commit/a4fecfeb0a4d58f7927d3171e67695aea832d9d3))
+* **unity-react-core:** added scrolling feature ([9770d53](https://github.com/ASU/asu-unity-stack/commit/9770d53df10997491acce94c9ee8a6746f590034))
+* **unity-react-core:** address tabbed panel pr comments ([5c7085b](https://github.com/ASU/asu-unity-stack/commit/5c7085b9a5f516a2a602fe5d8d8464c04032164a))
+* **unity-react-core:** changes ([cfbc917](https://github.com/ASU/asu-unity-stack/commit/cfbc917f87cc84ebe4e2278e43debe89eaab4004))
+* **unity-react-core:** changes made after review ([c35491c](https://github.com/ASU/asu-unity-stack/commit/c35491c851ba00e9fdbe66ceb4abac2601bb8ec9))
+* **unity-react-core:** final design before completing all tests ([4e70b71](https://github.com/ASU/asu-unity-stack/commit/4e70b712f527402dc32a8e93764f3ba78fce395d))
+* **unity-react-core:** fix react more dropdown disappearing ([f76633f](https://github.com/ASU/asu-unity-stack/commit/f76633f0923092cfd90cab9d8cc5beae01c8917d))
+* **unity-react-core:** fix resize issue with react tabbed panel ([e0d4eb8](https://github.com/ASU/asu-unity-stack/commit/e0d4eb819bf930fb94c5cda1d17a55a68523d9b1))
+* **unity-react-core:** fix two issues in pr ([1b9fce5](https://github.com/ASU/asu-unity-stack/commit/1b9fce55a15c710a72f6d9431828d15f7dd47615))
+* **unity-react-core:** readd stories to Typescript config ([22e8d73](https://github.com/ASU/asu-unity-stack/commit/22e8d734da55242a9f173df5b36b1b5f6177b2cb))
+* **unity-react-core:** remove focus on more tabbed panel click ([080ea5c](https://github.com/ASU/asu-unity-stack/commit/080ea5ce4b454303b468d8b356eb15e4abb39fa1))
+* **unity-react-core:** to do 1.2 ([20cc261](https://github.com/ASU/asu-unity-stack/commit/20cc261d2710a2e5d1a6cda2b1d4f2c7ca12f31f))
+* **unity-react-core:** toDo 1.1 ([ba5caef](https://github.com/ASU/asu-unity-stack/commit/ba5caef9bdc854b991dc1884d34d6077935a8036))
+* **unity-react-core:** toDo 5.1 ([50abf19](https://github.com/ASU/asu-unity-stack/commit/50abf198e6b3c776933f329b7fb1ddec3695f4da))
+* **unity-react-core:** toDo 5.2 ([11c58a1](https://github.com/ASU/asu-unity-stack/commit/11c58a11a0d9553018d6a4ae579f80a748fedde8))
+* **unity-react-core:** update dropdown for tabbed panel placement ([5e2eba8](https://github.com/ASU/asu-unity-stack/commit/5e2eba89310f4613675c1208aabdf6e95231a274))
+* **unity-react-core:** update tabbed panel logic ([084885b](https://github.com/ASU/asu-unity-stack/commit/084885b2cd94c79625ecf6f6ab11996f87c8f2e3))
+* **unity-react-core:** update tabbed panels markup ([aec1303](https://github.com/ASU/asu-unity-stack/commit/aec130359925ffb4ad81f2e569c46873d196c76a))
+
+
+### Features
+
+* **unity-react-core:** phase 4 ([2a688c5](https://github.com/ASU/asu-unity-stack/commit/2a688c5a288fe80f10fc7a9fb2b38e32c2ac0fe3))
+* **unity-react-core:** rewrite tabbed panels ([e20622d](https://github.com/ASU/asu-unity-stack/commit/e20622dfcaaf317708433cbb380f53c9be778119))
+* **unity-react-core:** tabbed Panel Rewrite ([5021fc4](https://github.com/ASU/asu-unity-stack/commit/5021fc4b8aff3cd725c12b9b191ff14a0185c2e6))
+* **unity-react-core:** toDo 1.3 ([85b1bd9](https://github.com/ASU/asu-unity-stack/commit/85b1bd93ff37aca11f906e2a910b1ea7a33c472b))
+* **unity-react-core:** tODO 2.3 ([e2452b3](https://github.com/ASU/asu-unity-stack/commit/e2452b3128c969e99d72f7c9e3e42c1a7465482d))
+
+
+### BREAKING CHANGES
+
+* **unity-react-core:** Tabbed panels have been rewritten to include a dropdown and overflow logic with a
+More button. This changes the fundamental behavior
+
 # [@asu/unity-react-core-v1.11.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v1.11.3...@asu/unity-react-core-v1.11.4) (2026-07-01)
 
 
