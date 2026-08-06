@@ -21,7 +21,8 @@ Desktop styles
     --name-top-margin: 0;
 
     .person-profession {
-      h4:not(:first-child) {
+      h4:not(:first-child),
+      .person-profession-title:not(:first-child) {
         display: none;
       }
     }
@@ -63,7 +64,10 @@ Desktop styles
       margin: 0;
       line-height: 1;
       margin-bottom: var(--person-profession-bottom-margin);
-      h4 {
+      // h4 kept for backward compatibility with consumers
+      // still rendering the profession title as a heading
+      h4,
+      .person-profession-title {
         margin: 0;
         font-size: $uds-size-font-medium;
         overflow: hidden;
@@ -72,6 +76,11 @@ Desktop styles
         -webkit-line-clamp: 2;
         line-clamp: 2;
         -webkit-box-orient: vertical;
+      }
+      .person-profession-title {
+        font-weight: $heading-font-weight;
+        line-height: $heading-four-line-height;
+        letter-spacing: $heading-four-letter-spacing;
       }
     }
     .more-link {

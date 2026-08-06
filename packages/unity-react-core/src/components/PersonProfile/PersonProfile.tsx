@@ -85,27 +85,31 @@ const PersonProfile: React.FC<PersonProfileProps> = ({
       <div className="person">
         <h3 className="person-name">{name}</h3>
         <div className="person-profession">
-          <h4>
-            <span>{profession.title}</span>
-          </h4>
-          <h4>
-            <span>{profession.department}</span>
-          </h4>
+          <p className="person-profession-title">
+            <strong>{profession.title}</strong>
+          </p>
+          <p className="person-profession-title">
+            <strong>{profession.department}</strong>
+          </p>
         </div>
 
         <ul className="person-contact-info">
           <li>
-            <GaEventWrapper
-              gaData={{ ...gaData, section: name.toLowerCase() }}
-            >
-              <a href={`mailto:${contactInfo.email}`} aria-label={`Email ${contactInfo.email}`}>
+            <GaEventWrapper gaData={{ ...gaData, section: name.toLowerCase() }}>
+              <a
+                href={`mailto:${contactInfo.email}`}
+                aria-label={`Email ${contactInfo.email}`}
+              >
                 {contactInfo.email}
               </a>
             </GaEventWrapper>
           </li>
           <li>
             <GaEventWrapper gaData={{ ...gaData, section: name.toLowerCase() }}>
-              <a href={`tel:${contactInfo.phone}`} aria-label={`Phone ${contactInfo.phone.replace(/\-/g, " ").replace(/\(/g, "").replace(/\)/g, "")}`}>
+              <a
+                href={`tel:${contactInfo.phone}`}
+                aria-label={`Phone ${contactInfo.phone.replace(/\-/g, " ").replace(/\(/g, "").replace(/\)/g, "")}`}
+              >
                 {contactInfo.phone}
               </a>
             </GaEventWrapper>
