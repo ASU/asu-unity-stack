@@ -594,7 +594,7 @@
 <main>
   <div class="wrap">
     <div class="note info" style="margin-bottom: 16px;">
-            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>0.8s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
+            <strong>Tip:</strong> You are using <code>react-docgen</code> (the default). Generation took <strong>0.7s</strong>. For higher quality prop types, consider switching to <code>react-docgen-typescript</code> in your <code>main.ts</code>:
             <pre><code>typescript: {
   reactDocgen: 'react-docgen-typescript',
 }</code></pre>
@@ -31353,12 +31353,12 @@ const PersonProfile = ({ size, fill }) =&gt; (
     &lt;div className=&quot;person&quot;&gt;
       &lt;h3 className=&quot;person-name&quot;&gt;John Smith&lt;/h3&gt;
       &lt;div className=&quot;person-profession&quot;&gt;
-        &lt;h4&gt;
-          &lt;span&gt;Regents Professor&lt;/span&gt;
-        &lt;/h4&gt;
-        &lt;h4&gt;
-          &lt;span&gt;Edplus at ASU&lt;/span&gt;
-        &lt;/h4&gt;
+        &lt;p className=&quot;person-profession-title&quot;&gt;
+          &lt;strong&gt;Regents Professor&lt;/strong&gt;
+        &lt;/p&gt;
+        &lt;p className=&quot;person-profession-title&quot;&gt;
+          &lt;strong&gt;Edplus at ASU&lt;/strong&gt;
+        &lt;/p&gt;
       &lt;/div&gt;
       {size !== &quot;micro&quot; &amp;&amp; (
         &lt;ul className=&quot;person-contact-info&quot;&gt;
@@ -31521,12 +31521,12 @@ export const PersonProfileTemplate = PersonProfile.bind({});
     &lt;div className=&quot;person&quot;&gt;
       &lt;h3 className=&quot;person-name&quot;&gt;John Smith&lt;/h3&gt;
       &lt;div className=&quot;person-profession&quot;&gt;
-        &lt;h4&gt;
-          &lt;span&gt;Regents Professor&lt;/span&gt;
-        &lt;/h4&gt;
-        &lt;h4&gt;
-          &lt;span&gt;Edplus at ASU&lt;/span&gt;
-        &lt;/h4&gt;
+        &lt;p className=&quot;person-profession-title&quot;&gt;
+          &lt;strong&gt;Regents Professor&lt;/strong&gt;
+        &lt;/p&gt;
+        &lt;p className=&quot;person-profession-title&quot;&gt;
+          &lt;strong&gt;Edplus at ASU&lt;/strong&gt;
+        &lt;/p&gt;
       &lt;/div&gt;
       {size !== &quot;micro&quot; &amp;&amp; (
         &lt;ul className=&quot;person-contact-info&quot;&gt;
@@ -64564,12 +64564,12 @@ const PersonProfile = ({ size, fill }) =&gt; (
     &lt;div className=&quot;person&quot;&gt;
       &lt;h3 className=&quot;person-name&quot;&gt;John Smith&lt;/h3&gt;
       &lt;div className=&quot;person-profession&quot;&gt;
-        &lt;h4&gt;
-          &lt;span&gt;Regents Professor&lt;/span&gt;
-        &lt;/h4&gt;
-        &lt;h4&gt;
-          &lt;span&gt;Edplus at ASU&lt;/span&gt;
-        &lt;/h4&gt;
+        &lt;p className=&quot;person-profession-title&quot;&gt;
+          &lt;strong&gt;Regents Professor&lt;/strong&gt;
+        &lt;/p&gt;
+        &lt;p className=&quot;person-profession-title&quot;&gt;
+          &lt;strong&gt;Edplus at ASU&lt;/strong&gt;
+        &lt;/p&gt;
       &lt;/div&gt;
       {size !== &quot;micro&quot; &amp;&amp; (
         &lt;ul className=&quot;person-contact-info&quot;&gt;
@@ -64732,12 +64732,12 @@ export const PersonProfileTemplate = PersonProfile.bind({});
     &lt;div className=&quot;person&quot;&gt;
       &lt;h3 className=&quot;person-name&quot;&gt;John Smith&lt;/h3&gt;
       &lt;div className=&quot;person-profession&quot;&gt;
-        &lt;h4&gt;
-          &lt;span&gt;Regents Professor&lt;/span&gt;
-        &lt;/h4&gt;
-        &lt;h4&gt;
-          &lt;span&gt;Edplus at ASU&lt;/span&gt;
-        &lt;/h4&gt;
+        &lt;p className=&quot;person-profession-title&quot;&gt;
+          &lt;strong&gt;Regents Professor&lt;/strong&gt;
+        &lt;/p&gt;
+        &lt;p className=&quot;person-profession-title&quot;&gt;
+          &lt;strong&gt;Edplus at ASU&lt;/strong&gt;
+        &lt;/p&gt;
       &lt;/div&gt;
       {size !== &quot;micro&quot; &amp;&amp; (
         &lt;ul className=&quot;person-contact-info&quot;&gt;
