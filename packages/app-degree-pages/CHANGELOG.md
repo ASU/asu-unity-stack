@@ -1,3 +1,11 @@
+# [@asu/app-degree-pages-v3.2.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.2.3...@asu/app-degree-pages-v3.2.4) (2026-08-07)
+
+
+### Bug Fixes
+
+* **app-degree-pages:** delete degree detail page component ([83e8992](https://github.com/asu/asu-unity-stack/commit/83e8992e36c56dd89994714f11b37f0fb211477f))
+* **app-degree-pages:** fix relative path in Breadcrumbs import ([83338bf](https://github.com/asu/asu-unity-stack/commit/83338bf96a814708024bf9c5c3f194367e99eede))
+
 # [@asu/app-degree-pages-v3.2.3](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.2.2...@asu/app-degree-pages-v3.2.3) (2026-07-28)
 
 
