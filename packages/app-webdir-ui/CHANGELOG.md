@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v5.0.18](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.17...@asu/app-webdir-ui-v5.0.18) (2026-08-07)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** render profile card title as bold text instead of h4 ([f7fb027](https://github.com/asu/asu-unity-stack/commit/f7fb02750db7b2a457beb6b107e5ce970f31ae61))
+
 # [@asu/app-webdir-ui-v5.0.17](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.16...@asu/app-webdir-ui-v5.0.17) (2026-07-28)
 
 
