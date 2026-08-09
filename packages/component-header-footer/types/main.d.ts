@@ -89,6 +89,7 @@ export interface Contact {
 }
 
 export interface FooterProps {
+  isUnbranded?: boolean;
   social: Social;
   contact: Contact;
 }

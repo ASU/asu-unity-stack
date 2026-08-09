@@ -35,6 +35,11 @@ const completeState = {
   ...social,
   ...contact,
 };
+const unbrandedStateFooter = {
+  ...social,
+  ...contact,
+  isUnbranded: true,
+};
 
 
 const defaultState = {
@@ -134,5 +139,5 @@ export {
   partnersState,
   unbrandedState,
   onHoverState,
-  social, contactWithColumn, completeState,
+  social, contactWithColumn, completeState, unbrandedStateFooter,
 };

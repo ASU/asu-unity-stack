@@ -239,8 +239,9 @@
 **Kind**: global typedef  
 **Properties**
 
-| Name | Type |
-| --- | --- |
+| Name | Type | Description |
+| --- | --- | --- |
+| [isUnbranded] | <code>boolean</code> | Renders the unbranded (KE) footer: the endorsed social row and the ASU innovation row are not rendered. Contact and legal rows behave exactly as today. |
 | social | [<code>Social</code>](#Social) | 
 | contact | [<code>Contact</code>](#Contact) | 
 

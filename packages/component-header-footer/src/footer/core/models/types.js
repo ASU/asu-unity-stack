@@ -35,6 +35,7 @@
 
 /**
  * @typedef {object} ASUFooter
+ * @property {boolean} [isUnbranded] - Renders the unbranded (KE) footer: the endorsed social row and the ASU innovation row are not rendered. Contact and legal rows behave exactly as today.
  * @property {Social} social
  * @property {Contact} contact
  */
