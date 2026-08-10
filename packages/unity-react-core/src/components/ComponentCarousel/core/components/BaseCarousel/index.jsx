@@ -37,7 +37,7 @@ const BaseCarousel = ({
   hasPeek = true,
   isDraggable = true,
   hasShadow = true,
-  bgColor = "gray-dark-bg"
+  bgColor = "",
 }) => {
   // Only prop for the slider configs we expose is perView. Everything else is
   // considered locked down for Web Standards 2.
@@ -96,11 +96,13 @@ const BaseCarousel = ({
 
       {CustomNavComponent ? (
         // @ts-ignore
-        <CustomNavComponent instanceName={instanceName} />
+        <CustomNavComponent
+          instanceName={instanceName}
+        />
       ) : (
         <>
-          {hasPositionIndicators && <BulletItems buttonCount={buttonCount}  buttonTheme={bgColor==="gray-dark-bg"?"glide__dark":""}/>}
-          {hasNavButtons && <NavButtons buttonTheme={bgColor==="gray-dark-bg"?"glide__dark":""}/>}
+          {hasPositionIndicators && <BulletItems buttonCount={buttonCount} />}
+          {hasNavButtons && <NavButtons />}
         </>
       )}
     </div>

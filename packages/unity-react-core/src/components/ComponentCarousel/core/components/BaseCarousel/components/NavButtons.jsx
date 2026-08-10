@@ -32,23 +32,18 @@ BaseNavButtonContainer.propTypes = {
  * @param {{
  *  onClick?: () => void
  *  children?: JSX.Element
- *  buttonTheme?: string
  * }} props
  * @returns
  */
-const NavButtons = ({
-  onClick = () => null,
-  children = undefined,
-  buttonTheme = "",
-}) => (
+const NavButtons = ({ onClick = () => null, children = undefined }) => (
   // @ts-ignore
   <BaseNavButtonContainer>
     <GaEventWrapper gaData={{ ...defaultGAEvent, text: "left chevron" }}>
-      <PrevButton onClick={onClick} buttonTheme={buttonTheme} />
+      <PrevButton onClick={onClick} />
     </GaEventWrapper>
     {children}
     <GaEventWrapper gaData={{ ...defaultGAEvent, text: "right chevron" }}>
-      <NextButton onClick={onClick} buttonTheme={buttonTheme} />
+      <NextButton onClick={onClick} />
     </GaEventWrapper>
   </BaseNavButtonContainer>
 );

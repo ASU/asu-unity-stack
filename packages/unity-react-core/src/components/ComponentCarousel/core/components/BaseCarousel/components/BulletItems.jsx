@@ -41,10 +41,10 @@ BaseBulletItemContainer.propTypes = {
 
 /**
  *
- * @param {{ buttonCount: number, buttonTheme?: string }} props
+ * @param {{ buttonCount: number }} props
  * @returns { JSX.Element }
  */
-const BulletItems = ({ buttonCount, buttonTheme = "" }) => {
+const BulletItems = ({ buttonCount }) => {
   // Build out bullets markup based on buttonCount.
   const bulletItems = [];
   for (let i = 0; i < buttonCount; i += 1) {
@@ -52,7 +52,7 @@ const BulletItems = ({ buttonCount, buttonTheme = "" }) => {
       <GaEventWrapper gaData={defaultGAEvent} key={`bullet-${i}`}>
         <button
           type="button"
-          className={`glide__bullet ${buttonTheme}`}
+          className={`glide__bullet`}
           data-glide-dir={`=${i}`}
           aria-label={`Slide view ${i + 1}`}
         />
@@ -64,7 +64,6 @@ const BulletItems = ({ buttonCount, buttonTheme = "" }) => {
 
 BulletItems.propTypes = {
   buttonCount: PropTypes.number.isRequired,
-  buttonTheme: PropTypes.string,
 };
 
 /**

@@ -6,14 +6,13 @@ import React from "react";
  *
  * @param {{
  *  onClick?: () => void
- *  buttonTheme?: string
  * }} props
  * @returns
  */
-const NextButton = ({ onClick = () => null, buttonTheme = "" }) => (
+const NextButton = ({ onClick = () => null }) => (
   <button
     type="button"
-    className={`glide__arrow glide__arrow--next ${buttonTheme}`}
+    className={`glide__arrow glide__arrow--next`}
     data-glide-dir=">"
     aria-label="Next slide"
     onClick={onClick}
@@ -24,7 +23,6 @@ const NextButton = ({ onClick = () => null, buttonTheme = "" }) => (
 
 NextButton.propTypes = {
   onClick: PropTypes.func,
-  buttonTheme: PropTypes.string,
 };
 
 export { NextButton };
