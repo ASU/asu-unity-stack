@@ -84,3 +84,13 @@
     }
   }
 }
+
+.uds-modal-main {
+  background-color: #0000;
+  pointer-events: none;
+}
+
+.uds-modal-container {
+  pointer-events: all;
+}
+
