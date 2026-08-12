@@ -26,9 +26,10 @@ export interface ModalProps {
     section: string;
     ga: string;
   };
+  children?: JSX.Element;
 }
 
-export const Modal: React.FC<ModalProps> = ({ open, gaData }) => {
+export const Modal: React.FC<ModalProps> = ({ children, open, gaData }) => {
   const { isReact, isBootstrap } = useBaseSpecificFramework();
   const [openState, setOpen] = React.useState(open);
 
@@ -110,7 +111,21 @@ export const Modal: React.FC<ModalProps> = ({ open, gaData }) => {
     }
   }, [openState]);
 
-  const modalTitle = "Content";
+  let modalHeaderText = "Modal"; // default aria-label value
+
+  if (children && children.props && children.props.children) {
+    for (let i = 0; i < children.props.children.length; i++) {
+      if (children.props.children[i].type === "h1") {
+        if (
+          children.props.children[i].props &&
+          children.props.children[i].props.children &&
+          typeof children.props.children[i].props.children === "string"
+        ) {
+          modalHeaderText = children.props.children[i].props.children;
+        }
+      }
+    }
+  }
 
   if (isBootstrap) {
     return (
@@ -121,8 +136,6 @@ export const Modal: React.FC<ModalProps> = ({ open, gaData }) => {
             autoFocus
             inert={isBootstrap ? undefined : openState ?? false}
             type="button"
-            // data-bs-toggle={isBootstrap && "modal"}
-            // data-bs-target={isBootstrap && "#uds-modal"}
             onClick={isReact ? handleOpen : undefined}
             id="openModalButton"
             className="btn btn-dark"
@@ -131,11 +144,18 @@ export const Modal: React.FC<ModalProps> = ({ open, gaData }) => {
           </button>
         </div>
         <div
+          id="uds-modal-backdrop"
+          onClick={handleClose}
+          className={classNames("uds-modal", { open: openState })}
+        ></div>
+        <div
           id="uds-modal"
           role="dialog"
           aria-modal="true"
-          aria-label={modalTitle}
-          className={classNames("uds-modal", { open: openState })}
+          aria-label={modalHeaderText}
+          className={classNames("uds-modal", "uds-modal-main", {
+            open: openState,
+          })}
         >
           <div className="uds-modal-container">
             <GaEventWrapper gaData={{ ...defaultGaData, ...gaData }}>
@@ -143,21 +163,11 @@ export const Modal: React.FC<ModalProps> = ({ open, gaData }) => {
                 autoFocus
                 // @ts-ignore
                 id="closeModalButton"
-                // onClick={isReact ? handleClose : undefined}
-                // data-bs-dismiss={isBootstrap && "modal"}
                 className="uds-modal-close-btn"
                 icon={["fas", "times"]}
               />
             </GaEventWrapper>
-            <h1>{modalTitle}</h1>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod incididuntåç ut labore et dolore magna aliqua eiusmod
-              tempo.
-            </p>
-            <button type="button" className="btn btn-primary">
-              button
-            </button>
+            {children}
           </div>
         </div>
       </div>
@@ -171,8 +181,6 @@ export const Modal: React.FC<ModalProps> = ({ open, gaData }) => {
             autoFocus
             inert={openState ?? undefined}
             type="button"
-            // data-bs-toggle={isBootstrap && "modal"}
-            // data-bs-target={isBootstrap && "#uds-modal"}
             onClick={isReact ? handleOpen : undefined}
             id="openModalButtonR"
             className="btn btn-dark"
@@ -182,36 +190,36 @@ export const Modal: React.FC<ModalProps> = ({ open, gaData }) => {
         </div>
 
         {openState && (
-          <div
-            id="uds-modal"
-            role="dialog"
-            aria-modal="true"
-            aria-label={modalTitle}
-            className={classNames("uds-modal", { open: openState })}
-          >
-            <div className="uds-modal-container">
-              <GaEventWrapper gaData={{ ...defaultGaData, ...gaData }}>
-                <ButtonIconOnly
-                  autoFocus
-                  // @ts-ignore
-                  id="closeModalButtonR"
-                  onClick={handleClose}
-                  // data-bs-dismiss={isBootstrap && "modal"}
-                  className="uds-modal-close-btn"
-                  icon={["fas", "times"]}
-                />
-              </GaEventWrapper>
-              <h1>{modalTitle}</h1>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod incididuntåç ut labore et dolore magna aliqua eiusmod
-                tempo.
-              </p>
-              <button type="button" className="btn btn-primary">
-                button
-              </button>
+          <>
+            <div
+              id="uds-modal-backdrop"
+              onClick={handleClose}
+              className={classNames("uds-modal", { open: openState })}
+            ></div>
+            <div
+              id="uds-modal"
+              role="dialog"
+              aria-modal="true"
+              aria-label={modalHeaderText}
+              className={classNames("uds-modal", "uds-modal-main", {
+                open: openState,
+              })}
+            >
+              <div className="uds-modal-container">
+                <GaEventWrapper gaData={{ ...defaultGaData, ...gaData }}>
+                  <ButtonIconOnly
+                    autoFocus
+                    // @ts-ignore
+                    id="closeModalButtonR"
+                    onClick={handleClose}
+                    className="uds-modal-close-btn"
+                    icon={["fas", "times"]}
+                  />
+                </GaEventWrapper>
+                {children}
+              </div>
             </div>
-          </div>
+          </>
         )}
       </div>
     );

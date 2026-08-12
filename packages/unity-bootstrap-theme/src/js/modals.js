@@ -2,6 +2,7 @@ import { EventHandler } from "./bootstrap-helper";
 
 function openModal() {
   document.getElementById("uds-modal")?.classList.add("open");
+  document.getElementById("uds-modal-backdrop")?.classList.add("open");
   let closeModalButton = document.getElementById("closeModalButton");
   setTimeout(() => {
     if (closeModalButton) {
@@ -9,14 +10,6 @@ function openModal() {
       closeModalButton?.focus();
     }
   }, 200);
-
-  // const mainContent = document.getElementById("main-content");
-  // mainContent.setAttribute("inert", "");
-  // const mainContentChildren = mainContent.children;
-  // let mainContentChildrenArray = Array.from(mainContentChildren);
-  // for (let i = 0; i < mainContentChildrenArray.length; i++) {
-  //   mainContentChildrenArray[i].setAttribute("inert", "");
-  // }
 
   // Disable navigation to everything accept for the modal content
   // Source: https://stackoverflow.com/questions/4195616/how-to-set-the-focus-on-a-javascript-modal-window
@@ -61,6 +54,7 @@ function openModal() {
 
 function closeModal() {
   document.getElementById("uds-modal").classList.remove("open");
+  document.getElementById("uds-modal-backdrop").classList.remove("open");
 
   let openModalButton = document.getElementById("openModalButton");
   setTimeout(() => {
@@ -69,14 +63,6 @@ function closeModal() {
       openModalButton?.focus();
     }
   }, 200);
-
-  // const mainContent = document.getElementById("main-content");
-  // mainContent?.removeAttribute("inert");
-  // const mainContentChildren = mainContent.children;
-  // let mainContentChildrenArray = Array.from(mainContentChildren);
-  // for (let i = 0; i < mainContentChildrenArray.length; i++) {
-  //   mainContentChildrenArray[i].removeAttribute("inert");
-  // }
 }
 
 function initModals() {
@@ -88,6 +74,12 @@ function initModals() {
 
   document
     .getElementById("closeModalButton")
+    ?.addEventListener("click", function () {
+      closeModal();
+    });
+
+  document
+    .getElementById("uds-modal-backdrop")
     ?.addEventListener("click", function () {
       closeModal();
     });
