@@ -6,18 +6,10 @@ export default {
   component: Modal,
   args: {
     open: false,
-    children: (
-      <>
-        <h1>Content test</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod incididuntåç ut labore et dolore magna aliqua eiusmod tempo.
-        </p>
-        <button type="button" className="btn btn-primary">
-          button
-        </button>
-      </>
-    ),
+    trigger: "Open Modal",
+    modalHeaderText: "Content test",
+    modalBodyText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod incididuntåç ut labore et dolore magna aliqua eiusmod tempo.",
+    modalButtons: [{label: "Button 1", href: "#"}, {label: "Button 2", href: "#"}],
   },
 };
 

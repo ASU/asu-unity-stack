@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { DOMAttributes, useEffect } from "react";
+import { createPortal } from "react-dom";
 
 import { ButtonIconOnly } from "../ButtonIconOnly/ButtonIconOnly";
 import { GaEventWrapper } from "../GaEventWrapper/GaEventWrapper";
 import { useBaseSpecificFramework } from "../GaEventWrapper/useBaseSpecificFramework";
 import classNames from "classnames";
+import { ButtonProps } from "../../../types/main";
 
 const defaultGaData = {
   name: "onclick",
@@ -26,10 +28,20 @@ export interface ModalProps {
     section: string;
     ga: string;
   };
-  children?: JSX.Element;
+  trigger: (React.ReactNode & DOMAttributes<HTMLButtonElement>) | string;
+  modalHeaderText?: string;
+  modalBodyText?: string;
+  modalButtons?: { href: string; label: string }[];
 }
 
-export const Modal: React.FC<ModalProps> = ({ children, open, gaData }) => {
+export const Modal: React.FC<ModalProps> = ({
+  trigger,
+  modalHeaderText,
+  modalBodyText,
+  modalButtons,
+  open,
+  gaData,
+}) => {
   const { isReact, isBootstrap } = useBaseSpecificFramework();
   const [openState, setOpen] = React.useState(open);
 
@@ -111,38 +123,32 @@ export const Modal: React.FC<ModalProps> = ({ children, open, gaData }) => {
     }
   }, [openState]);
 
-  let modalHeaderText = "Modal"; // default aria-label value
-
-  if (children && children.props && children.props.children) {
-    for (let i = 0; i < children.props.children.length; i++) {
-      if (children.props.children[i].type === "h1") {
-        if (
-          children.props.children[i].props &&
-          children.props.children[i].props.children &&
-          typeof children.props.children[i].props.children === "string"
-        ) {
-          modalHeaderText = children.props.children[i].props.children;
-        }
-      }
-    }
+  let triggerButton;
+  if (typeof trigger === "string") {
+    triggerButton = (
+      <button
+        autoFocus
+        inert={isBootstrap ? undefined : (openState ?? false)}
+        type="button"
+        onClick={isReact ? handleOpen : undefined}
+        id="openModalButton"
+        className="btn btn-dark"
+      >
+        Show modal
+      </button>
+    );
+  } else if (React.isValidElement(trigger)) {
+    triggerButton = React.cloneElement(trigger as React.ReactElement, {
+      onClick: isReact ? handleOpen : undefined,
+      inert: isBootstrap ? undefined : (openState ?? false),
+    });
   }
 
   if (isBootstrap) {
     return (
       <div className="container-fluid">
         {/* Disable main content on modal open */}
-        <div id="main-content">
-          <button
-            autoFocus
-            inert={isBootstrap ? undefined : openState ?? false}
-            type="button"
-            onClick={isReact ? handleOpen : undefined}
-            id="openModalButton"
-            className="btn btn-dark"
-          >
-            Show modal
-          </button>
-        </div>
+        <div id="main-content">{triggerButton}</div>
         <div
           id="uds-modal-backdrop"
           onClick={handleClose}
@@ -177,51 +183,84 @@ export const Modal: React.FC<ModalProps> = ({ children, open, gaData }) => {
       <div className="container-fluid">
         {/* Disable main content on modal open */}
         <div id="main-content-r" inert={openState ?? undefined}>
-          <button
-            autoFocus
-            inert={openState ?? undefined}
-            type="button"
-            onClick={isReact ? handleOpen : undefined}
-            id="openModalButtonR"
-            className="btn btn-dark"
-          >
-            Show modal
-          </button>
+          {triggerButton}
         </div>
 
-        {openState && (
-          <>
-            <div
-              id="uds-modal-backdrop"
-              onClick={handleClose}
-              className={classNames("uds-modal", { open: openState })}
-            ></div>
-            <div
-              id="uds-modal"
-              role="dialog"
-              aria-modal="true"
-              aria-label={modalHeaderText}
-              className={classNames("uds-modal", "uds-modal-main", {
-                open: openState,
-              })}
-            >
-              <div className="uds-modal-container">
-                <GaEventWrapper gaData={{ ...defaultGaData, ...gaData }}>
-                  <ButtonIconOnly
-                    autoFocus
-                    // @ts-ignore
-                    id="closeModalButtonR"
-                    onClick={handleClose}
-                    className="uds-modal-close-btn"
-                    icon={["fas", "times"]}
-                  />
-                </GaEventWrapper>
-                {children}
-              </div>
-            </div>
-          </>
-        )}
+        {openState &&
+          createPortal(
+            <ModalContent
+              modalHeaderText={modalHeaderText}
+              modalBodyText={modalBodyText}
+              modalButtons={modalButtons}
+              openState={openState}
+              handleClose={() => setOpen(false)}
+            />,
+            document.body
+          )}
       </div>
     );
   }
+};
+
+export interface ModalContentProps {
+  openState?: boolean;
+  handleClose?: () => void;
+  modalHeaderText?: string;
+  modalBodyText?: string;
+  gaData?: {
+    name: string;
+    event: string;
+    action: string;
+    type: string;
+    region: string;
+    section: string;
+    ga: string;
+  };
+  modalButtons?: ButtonProps[];
+}
+
+const ModalContent: React.FC<ModalContentProps> = ({
+  openState,
+  modalHeaderText,
+  modalBodyText,
+  modalButtons,
+  handleClose = () => {},
+  gaData,
+}) => {
+  return (
+    <>
+      <div
+        id="uds-modal-backdrop"
+        onClick={() => handleClose}
+        className={classNames("uds-modal", { open: openState })}
+      ></div>
+      <div
+        id="uds-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-label={modalHeaderText}
+        className={classNames("uds-modal", "uds-modal-main", {
+          open: openState,
+        })}
+      >
+        <div className="uds-modal-container">
+          <GaEventWrapper gaData={{ ...defaultGaData, ...gaData }}>
+            <ButtonIconOnly
+              autoFocus
+              // @ts-ignore
+              id="closeModalButtonR"
+              onClick={handleClose}
+              className="uds-modal-close-btn"
+              icon={["fas", "times"]}
+            />
+          </GaEventWrapper>
+          {modalBodyText && <p>{modalBodyText}</p>}
+          {modalButtons &&
+            modalButtons.map((buttonProps, index) => (
+              <button key={index} {...buttonProps} />
+            ))}
+        </div>
+      </div>
+    </>
+  );
 };
