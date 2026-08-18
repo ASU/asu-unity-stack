@@ -61,21 +61,21 @@ export const Modal: React.FC<ModalProps> = ({
   gaData,
 }) => {
   const { isReact, isBootstrap } = useBaseSpecificFramework();
-  const [defaultOpenState, defaultSetOpen] = React.useState(open);
+  const [defaultOpenState, defaultSetOpen] = React.useState(open ?? false);
 
   const handleSetOpen = (e: boolean) => {
     if (setOpen) {
-      setOpen(e);
+      setOpen(e); // custom set open prop
     } else {
-      defaultSetOpen(e);
+      defaultSetOpen(e); // default set open function
     }
   };
 
   const getOpenState = () => {
     if (setOpen) {
-      return open;
+      return open; // custom open state value
     } else {
-      return defaultOpenState;
+      return defaultOpenState; // default open state value
     }
   };
 
@@ -177,7 +177,7 @@ export const Modal: React.FC<ModalProps> = ({
     return (
       <div className="container-fluid">
         {/* Disable main content on modal open */}
-        <div id="main-content">
+        <div>
           {openModalInput ? (
             openModalInput
           ) : (
