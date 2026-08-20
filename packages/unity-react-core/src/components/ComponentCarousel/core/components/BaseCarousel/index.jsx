@@ -6,7 +6,6 @@ import React, { useEffect } from "react";
 import "./styles.scss";
 import { SliderItems, BulletItems, NavButtons } from "./components";
 import { setupCaroarousel } from "./glide/glide.setup";
-import { calcualteViewItems } from "./helper/width-calculator";
 
 // Requirement: We import bs4-theme css from QA site in preview-head.html.
 // Initially based on this approach:
@@ -55,7 +54,7 @@ const BaseCarousel = ({
   // Defaults to glide. If implementing multiple instnaces, you MUST provide
   // an unique instance name for all but one instance.
   const instanceName = `glide-${Math.ceil(Math.random() * 10000)}`;
-  const buttonCount = calcualteViewItems(carouselItems.length, perView);
+  const buttonCount = carouselItems.length;
 
   useEffect(() => {
     setupCaroarousel({
@@ -127,4 +126,4 @@ BaseCarousel.propTypes = {
   hasShadow: PropTypes.bool,
 };
 
-export { BaseCarousel, calcualteViewItems };
+export { BaseCarousel };
