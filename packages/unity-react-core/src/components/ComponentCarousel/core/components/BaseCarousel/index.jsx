@@ -79,14 +79,15 @@ const BaseCarousel = ({
 
   return (
     <div
-      role={role}
       aria-labelledby={ariaLabelledBy}
+      role="region"
       className={`glide ${cssClass}`}
       id={instanceName}
       style={{ width, maxWidth }}
       data-remove-side-background={removeSideBackground}
       data-image-auto-size={imageAutoSize}
       data-has-shadow={hasShadow}
+      aria-roledescription="carousel"
     >
       <div className="glide__track" data-glide-el="track">
         <SliderItems carouselItems={carouselItems} />
