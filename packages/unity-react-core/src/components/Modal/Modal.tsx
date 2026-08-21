@@ -196,8 +196,8 @@ export const Modal: React.FC<ModalProps> = ({
           id="uds-modal-backdrop"
           onClick={handleClose}
           className={classNames("uds-modal", { open: getOpenState() })}
-        ></div>
-        <div
+        >
+          <div
           id="uds-modal"
           role="dialog"
           aria-modal="true"
@@ -218,6 +218,7 @@ export const Modal: React.FC<ModalProps> = ({
             </GaEventWrapper>
             {children}
           </div>
+        </div>
         </div>
       </div>
     );
