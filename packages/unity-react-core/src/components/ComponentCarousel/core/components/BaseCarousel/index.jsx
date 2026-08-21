@@ -1,6 +1,6 @@
 // @ts-check
 import PropTypes from "prop-types";
-import React, { useEffect } from "react";
+import React, { useId, useEffect } from "react";
 
 // Include required and custom styles for @glidejs/glide
 import "./styles.scss";
@@ -53,7 +53,7 @@ const BaseCarousel = ({
   // Get glide instance class name.
   // Defaults to glide. If implementing multiple instnaces, you MUST provide
   // an unique instance name for all but one instance.
-  const instanceName = `glide-${Math.ceil(Math.random() * 10000)}`;
+  const instanceName = `glide-${useId()}`;
   const buttonCount = carouselItems.length;
 
   useEffect(() => {
