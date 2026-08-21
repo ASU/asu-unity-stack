@@ -1,94 +1,57 @@
 import { EventHandler } from "./bootstrap-helper";
 
-function openModal() {
-  document.getElementById("uds-modal")?.classList.add("open");
-  document.getElementById("uds-modal-backdrop")?.classList.add("open");
-  let closeModalButton = document.getElementById("closeModalButton");
-  setTimeout(() => {
-    if (closeModalButton) {
-      // Wait for dom to update before setting focus
-      closeModalButton?.focus();
-    }
-  }, 200);
-
-  // Disable navigation to everything accept for the modal content
-  // Source: https://stackoverflow.com/questions/4195616/how-to-set-the-focus-on-a-javascript-modal-window
-  const focusableElements =
-    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-  const modal = document.getElementsByClassName("uds-modal-container")[0];
-  const firstFocusableElement = modal?.querySelectorAll(focusableElements)[0];
-  const focusableContent = modal?.querySelectorAll(focusableElements);
-  const lastFocusableElement = focusableContent
-    ? focusableContent[focusableContent?.length - 1]
-    : undefined;
-
-  const handleTabKey = e => {
-    let isTabPressed = e.key === "Tab"; // || e.keyCode === 9;
-
-    if (!isTabPressed) {
-      return;
-    }
-
-    if (e.shiftKey) {
-      // if shift key pressed for shift + tab combination
-      if (document.activeElement === firstFocusableElement) {
-        lastFocusableElement?.focus(); // add focus for the last focusable element
-        e.preventDefault();
-      }
-    } else {
-      // if tab key is pressed
-      if (document.activeElement === lastFocusableElement) {
-        // if focused has reached to last focusable element then focus first focusable element after pressing tab
-        firstFocusableElement?.focus(); // add focus for the first focusable element
-        e.preventDefault();
-      }
-    }
-  };
-
-  if (lastFocusableElement && firstFocusableElement) {
-    document.addEventListener("keydown", handleTabKey);
-    // firstFocusableElement?.focus();
-    return () => document.removeEventListener("keydown", handleTabKey);
-  }
-}
-
-function closeModal() {
-  document.getElementById("uds-modal").classList.remove("open");
-  document.getElementById("uds-modal-backdrop").classList.remove("open");
-
-  let openModalButton = document.getElementById("openModalButton");
-  setTimeout(() => {
-    if (openModalButton) {
-      // Wait for dom to update before setting focus
-      openModalButton?.focus();
-    }
-  }, 200);
-}
-
 function initModals() {
-  document
-    .getElementById("openModalButton")
-    ?.addEventListener("click", function () {
-      openModal();
-    });
+  const modal = document.getElementById("uds-modal");
+  const modalBackdrop = document.getElementById("uds-modal-backdrop");
+  const openModalButton = document.getElementById("openModalButton");
+  const closeModalButton = document.getElementById("closeModalButton");
+  const firstFocusable = modal.querySelector(
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+  );
 
-  document
-    .getElementById("closeModalButton")
-    ?.addEventListener("click", function () {
-      closeModal();
-    });
-
-  document
-    .getElementById("uds-modal-backdrop")
-    ?.addEventListener("click", function () {
-      closeModal();
-    });
-
-  document?.addEventListener("keydown", function (event) {
-    if (event.key === "Escape") {
-      closeModal();
+  let previousFocus = null;
+  function focusTrap(e) {
+    // If relatedTarget is outside, move focus back inside
+    if (!modal.contains(e.relatedTarget)) {
+      firstFocusable?.focus();
     }
-  });
+  }
+
+  function openModal() {
+    // When opening: save current focus and move into modal
+    previousFocus = document.activeElement;
+    modal.classList.add("open");
+    modalBackdrop.classList.add("open");
+    // attach event listeners to trap focus and close modal
+    modalBackdrop.addEventListener("focusout", focusTrap);
+    modalBackdrop.addEventListener("click", closeModal, true);
+    document.addEventListener("keydown", closeModal);
+
+    // Focus the first interactive element inside (or body if none)
+    setTimeout(() => {
+      firstFocusable?.focus();
+    }, 200);
+  }
+
+  function closeModal({ type, target, key } = {}) {
+    if (
+      // escape key pressed
+      (type === "keydown" && key === "Escape") ||
+      // click on close button
+      (type === "click" && target === closeModalButton) ||
+      // click on backdrop
+      (type === "click" && target === modalBackdrop)
+    ) {
+      modal.classList.remove("open");
+      modalBackdrop.classList.remove("open");
+      modalBackdrop.removeEventListener("focusout", focusTrap);
+      modalBackdrop.removeEventListener("click", closeModal, true);
+      document.removeEventListener("keydown", closeModal);
+      // When closing: restore original focus
+      previousFocus?.focus();
+    }
+  }
+  openModalButton.addEventListener("click", openModal);
 }
 
 EventHandler.on(window, "load.uds.modals", initModals);
