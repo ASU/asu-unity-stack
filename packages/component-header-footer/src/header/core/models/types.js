@@ -38,7 +38,7 @@
 /**
  * @typedef {object} HeaderProps
  * @property {boolean} isPartner
- * @property {boolean} [isUnbranded] - Renders the unbranded (KE) header: the ASU logo is replaced by unbrandedLogo, and the universal navbar keeps only the skip-nav and report-accessibility links, revealed on keyboard focus.
+ * @property {boolean} [isUnbranded] - Renders the unbranded header: the ASU logo is replaced by unbrandedLogo, and the universal navbar keeps only the skip-nav and report-accessibility links, revealed on keyboard focus.
  * @property {NavTreeProps[]} navTree
  * @property {string} [title]
  * @property {string} [baseUrl]

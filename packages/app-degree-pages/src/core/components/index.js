@@ -7,3 +7,4 @@ export * from "./OverlapContentImage";
 export * from "./ParagrapList";
 export * from "./Styles";
 export * from "./icons";
+export * from "./Breadcrumbs";

@@ -1,3 +1,10 @@
+# [@asu/unity-react-core-v2.2.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.2.0...@asu/unity-react-core-v2.2.1) (2026-08-06)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** render profile card title as bold text instead of h4 ([f7fb027](https://github.com/ASU/asu-unity-stack/commit/f7fb02750db7b2a457beb6b107e5ce970f31ae61))
+
 # [@asu/unity-react-core-v2.2.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.1.1...@asu/unity-react-core-v2.2.0) (2026-07-29)
 
 

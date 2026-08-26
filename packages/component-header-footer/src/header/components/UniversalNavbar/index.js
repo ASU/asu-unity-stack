@@ -69,7 +69,7 @@ const UniversalNavbar = () => {
     },
   ];
 
-  // Unbranded (KE) sites keep only the accessibility links; the gray bar is
+  // Unbranded sites keep only the accessibility links; the gray bar is
   // revealed exclusively while one of them has keyboard focus.
   const visibleNavLinks = isUnbranded
     ? universalNavLinks.filter(link => link.isAccessibilityLink)

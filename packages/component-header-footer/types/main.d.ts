@@ -77,6 +77,7 @@ export interface Social {
     twitter?: string;
     instagram?: string;
     linkedIn?: string;
+    tiktok?: string;
     youtube?: string;
   };
 }
