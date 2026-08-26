@@ -116,7 +116,8 @@
     "semantic-release": "^25.0.3",
     "semver": "^7.5.2",
     "qs": "^6.14.1",
-    "tar": "^7.5.7"
+    "tar": "^7.5.7",
+    "shell-quote": "1.9.0"
   },
   "config": {
     "commitizen": {
