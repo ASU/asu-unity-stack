@@ -225,6 +225,39 @@ const imageCards = [
   },
 ];
 
+const imageButtonCards = [
+  {
+    type: "default",
+    image: img1,
+    alt: "Image button card 1",
+    title: "Example",
+    body: "This is the body content for the first card.",
+    buttons: [
+      {
+        color: "gold",
+        size: "default",
+        label: "Explore",
+        ariaLabel: "Explore",
+        href: "#",
+      },
+    ],
+  },
+  {
+    type: "default",
+    image: img1,
+    alt: "Image button card 2",
+    buttons: [
+      {
+        color: "gold",
+        size: "default",
+        label: "Explore",
+        ariaLabel: "Explore",
+        href: "#",
+      }
+    ]
+  },
+];
+
 const Template = args => (
   <div className="container">
     <CardArrangement {...args} />
@@ -634,6 +667,30 @@ Example with image cards that display a visual representation along with heading
 \`\`\`jsx
 <CardArrangement
   cards={imageCards}
+  cardType="image"
+/>
+\`\`\`
+      `,
+    },
+  },
+};
+
+export const ImageButtonCards = Template.bind({});
+ImageButtonCards.args = {
+  cards: imageButtonCards,
+  cardType: "default",
+  columns: 2,
+};
+ImageButtonCards.storyName = "Cards with image and buttons";
+ImageButtonCards.parameters = {
+  docs: {
+    description: {
+      story: `
+Example with cards that display a visual representation along with a button.
+
+\`\`\`jsx
+<CardArrangement
+  cards={imageButtonCards}
   cardType="image"
 />
 \`\`\`
