@@ -78,13 +78,11 @@ describe("#ASU Unbranded Footer", () => {
   });
   afterAll(cleanup);
 
-  const positiveCases = [
-    [`Contact`, `contact`],
-    [`Legal`, `legal`],
-  ];
+  const positiveCases = [[`Contact`, `contact`]];
   const negativeCases = [
     [`Social`, `social`],
     [`Innovation`, `innovation`],
+    [`Legal`, `legal`],
   ];
 
   test.each(positiveCases)("should %p section be defined", (_, testId) =>
@@ -93,4 +91,10 @@ describe("#ASU Unbranded Footer", () => {
   test.each(negativeCases)("should %p section not be defined", (_, testId) =>
     expect(component.queryByTestId(testId)).not.toBeInTheDocument()
   );
+
+  it("should not render the 'Support ASU' contribution button", () => {
+    expect(
+      component.queryByTestId("contact-contribution-link")
+    ).not.toBeInTheDocument();
+  });
 });

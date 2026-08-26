@@ -99,7 +99,7 @@ const Wrapper = styled.div`
     }
   }
 
-  /* Unbranded (KE) sites: the gray bar stays visually hidden but keyboard
+  /* Unbranded sites: the gray bar stays visually hidden but keyboard
   reachable, and is revealed only while a skip/accessibility link has focus. */
   &.${CLASS_NAMES.UNIVERSAL_NAV_UNBRANDED}:not(:focus-within) {
     position: absolute;

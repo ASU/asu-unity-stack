@@ -93,11 +93,14 @@ describe("#ASU Unbranded Header", () => {
 
   it("should replace the ASU logo with the unbranded logo", () => {
     const logo = screen.getByTestId("logo");
-    expect(logo).toHaveAttribute("href", "https://ke.example.edu");
-    const images = component.getAllByAltText("Knowledge Enterprise logo");
+    expect(logo).toHaveAttribute("href", "https://unbranded.example.edu");
+    const images = component.getAllByAltText("Unbranded logo");
     expect(images.length).toBeGreaterThan(0);
     images.forEach(img => {
-      expect(img).toHaveAttribute("src", "https://example.com/ke-logo.png");
+      expect(img).toHaveAttribute(
+        "src",
+        "https://example.com/unbranded-logo.png"
+      );
     });
     expect(
       component.queryByAltText("Arizona State University logo")
@@ -127,9 +130,7 @@ describe("#ASU Unbranded Header", () => {
   });
 
   it("should keep title and navigation menu rendering", () => {
-    expect(screen.getByTestId("title")).toHaveTextContent(
-      "Knowledge Enterprise"
-    );
+    expect(screen.getByTestId("title")).toHaveTextContent("Unbranded Site");
     expect(screen.getByTestId("navigation")).toBeInTheDocument();
   });
 });

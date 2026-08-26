@@ -104,12 +104,12 @@ const partnersState = {
 const unbrandedState = {
   isUnbranded: true,
   unbrandedLogo: {
-    src: "https://example.com/ke-logo.png",
-    alt: "Knowledge Enterprise logo",
-    brandLink: "https://ke.example.edu",
+    src: "https://example.com/unbranded-logo.png",
+    alt: "Unbranded logo",
+    brandLink: "https://unbranded.example.edu",
   },
   navTree: basicNavTree,
-  title: "Knowledge Enterprise",
+  title: "Unbranded Site",
   loggedIn: false,
   userName: "",
   loginLink: "/cas",

@@ -10,7 +10,7 @@ const Base = ({ isUnbranded }) => {
   return (
     <>
       {!isUnbranded && <Innovation />}
-      <Legal />
+      {!isUnbranded && <Legal />}
     </>
   );
 };
@@ -41,7 +41,9 @@ const ASUFooter = ({ social, contact, isUnbranded = false }) => {
   return (
     <StyledFooter role="contentinfo">
       {!isUnbranded && social && <Social social={social} />}
-      {contact && <ContactComponent contact={contact} />}
+      {contact && (
+        <ContactComponent contact={contact} isUnbranded={isUnbranded} />
+      )}
       <Base isUnbranded={isUnbranded} />
     </StyledFooter>
   );

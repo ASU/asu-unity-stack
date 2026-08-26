@@ -265,12 +265,12 @@ export const Unbranded = Template.bind({});
 Unbranded.args = {
   isUnbranded: true,
   unbrandedLogo: {
-    src: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='60'><rect width='240' height='60' rx='4' fill='%238C1D40'/><text x='120' y='38' font-family='Arial' font-size='22' fill='%23FFC627' text-anchor='middle'>KE Logo</text></svg>",
-    alt: "ASU Knowledge Enterprise logo",
+    src: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='60'><rect width='240' height='60' rx='4' fill='%238C1D40'/><text x='120' y='38' font-family='Arial' font-size='22' fill='%23FFC627' text-anchor='middle'>Unbranded Logo</text></svg>",
+    alt: "Unbranded logo",
     brandLink: "https://research.asu.edu",
   },
   navTree: basicNavTree,
-  title: "Knowledge Enterprise",
+  title: "Unbranded Site",
   breakpoint: "Xl",
 };
 

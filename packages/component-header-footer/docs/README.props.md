@@ -156,7 +156,7 @@
 | Name | Type | Description |
 | --- | --- | --- |
 | isPartner | <code>boolean</code> |  |
-| [isUnbranded] | <code>boolean</code> | Renders the unbranded (KE) header: the ASU logo is replaced by unbrandedLogo, and the universal navbar keeps only the skip-nav and report-accessibility links, revealed on keyboard focus. |
+| [isUnbranded] | <code>boolean</code> | Renders the unbranded header: the ASU logo is replaced by unbrandedLogo, and the universal navbar keeps only the skip-nav and report-accessibility links, revealed on keyboard focus. |
 | navTree | [<code>Array.&lt;NavTreeProps&gt;</code>](#NavTreeProps) |  |
 | [title] | <code>string</code> |  |
 | [baseUrl] | <code>string</code> |  |
@@ -241,7 +241,7 @@
 
 | Name | Type | Description |
 | --- | --- | --- |
-| [isUnbranded] | <code>boolean</code> | Renders the unbranded (KE) footer: the endorsed social row and the ASU innovation row are not rendered. Contact and legal rows behave exactly as today. |
+| [isUnbranded] | <code>boolean</code> | Renders the unbranded footer: the endorsed social row, the ASU innovation row and the legal colophon are not rendered, and the Contact "Support ASU" contribution button is suppressed. Remaining contact rows behave exactly as today. |
 | social | [<code>Social</code>](#Social) | 
 | contact | [<code>Contact</code>](#Contact) | 
 
