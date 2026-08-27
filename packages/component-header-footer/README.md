@@ -41,7 +41,7 @@ usages such as the selected nav-item underline and the animated title underline.
 
 - **Branded sites** render pixel-identically: with no `--bs-*` overrides present,
   the hex fallback applies.
-- **Unbranded (KE) sites**: Webspark's unbranded palette rewrites `--bs-*` in the
+- **Unbranded sites**: Webspark's unbranded palette rewrites `--bs-*` in the
   compiled `unity-bootstrap-theme` stylesheet, so the header and footer follow the
   site palette natively — no props or API changes required.
 

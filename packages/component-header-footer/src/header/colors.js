@@ -6,7 +6,7 @@
  */
 
 // Primary ASU Brand Colors
-// Read from Bootstrap-emitted CSS custom properties so Webspark's unbranded (KE)
+// Read from Bootstrap-emitted CSS custom properties so Webspark's unbranded
 // palette (which rewrites --bs-* in the compiled unity-bootstrap-theme CSS) flows
 // into the header. The hex fallback keeps branded sites pixel-identical. UDS-2250.
 export const ASU_MAROON = "var(--bs-maroon, #8c1d40)";
