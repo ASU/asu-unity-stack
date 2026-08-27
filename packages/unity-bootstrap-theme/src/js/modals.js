@@ -2,9 +2,13 @@ import { EventHandler } from "./bootstrap-helper";
 
 function initModals() {
   const modal = document.getElementById("uds-modal");
+  if (!modal) return null;
   const modalBackdrop = document.getElementById("uds-modal-backdrop");
+  if (!modalBackdrop) return null;
   const openModalButton = document.getElementById("openModalButton");
+  if (!openModalButton) return null;
   const closeModalButton = document.getElementById("closeModalButton");
+  if (!closeModalButton) return null;
   const firstFocusable = modal.querySelector(
     'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
   );
