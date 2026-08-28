@@ -10742,7 +10742,6 @@ __metadata:
     cz-conventional-changelog: "npm:^3.3.0"
     diff: "npm:^8.0.2"
     dompurify: "npm:^3.4.10"
-    embla-carousel-react: "npm:^8.6.0"
     eslint: "npm:^9"
     eslint-config-prettier: "npm:^8.2.0"
     eslint-plugin-import: "npm:^2.22.1"
