@@ -122,5 +122,8 @@
     "commitizen": {
       "path": "./scripts/conventional-commits.js"
     }
+  },
+  "dependencies": {
+    "embla-carousel-react": "^8.6.0"
   }
 }
