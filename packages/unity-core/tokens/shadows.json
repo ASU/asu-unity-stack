@@ -1,0 +1,28 @@
+{
+  "shadow": {
+    "sm": {
+      "value": "0 1px 2px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.1)",
+      "type": "boxShadow",
+      "description": "Subtle elevation (buttons, inputs)"
+    },
+    "md": {
+      "value": "0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06)",
+      "type": "boxShadow",
+      "description": "Medium elevation (cards, dropdowns)"
+    },
+    "lg": {
+      "value": "0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05)",
+      "type": "boxShadow",
+      "description": "High elevation (modals, popovers)"
+    },
+    "xl": {
+      "value": "0 20px 25px rgba(0, 0, 0, 0.1), 0 8px 10px rgba(0, 0, 0, 0.04)",
+      "type": "boxShadow",
+      "description": "Highest elevation (floating panels)"
+    },
+    "none": {
+      "value": "none",
+      "type": "boxShadow"
+    }
+  }
+}

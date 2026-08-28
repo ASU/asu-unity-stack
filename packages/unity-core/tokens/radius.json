@@ -1,0 +1,10 @@
+{
+  "radius": {
+    "none": { "value": "0px", "type": "borderRadius" },
+    "sm": { "value": "2px", "type": "borderRadius", "description": "Subtle rounding (buttons)" },
+    "md": { "value": "4px", "type": "borderRadius", "description": "Default rounding (cards, inputs)" },
+    "lg": { "value": "8px", "type": "borderRadius", "description": "Pronounced rounding" },
+    "xl": { "value": "16px", "type": "borderRadius", "description": "Large rounding (modals, panels)" },
+    "full": { "value": "9999px", "type": "borderRadius", "description": "Pill/circle shape" }
+  }
+}

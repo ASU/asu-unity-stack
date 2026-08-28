@@ -1,0 +1,95 @@
+---
+title: Button
+description: A versatile button component supporting link and button semantics, multiple color variants, and dark surface adaptation.
+tag: uds-button
+category: atoms
+status: stable
+tokens_used:
+  - --uds-color-primary
+  - --uds-color-secondary
+  - --uds-color-gold
+  - --uds-spacing-xs
+  - --uds-spacing-sm
+  - --uds-spacing-md
+  - --uds-radius-sm
+  - --uds-font-weight-bold
+properties:
+  - name: label
+    type: string
+    default: "''"
+    description: Button label text
+  - name: href
+    type: string
+    default: undefined
+    description: When provided, renders as an anchor element
+  - name: color
+    type: "'primary' | 'secondary' | 'gold'"
+    default: "'primary'"
+    description: Color variant
+  - name: size
+    type: "'default' | 'small'"
+    default: "'default'"
+    description: Size variant
+  - name: disabled
+    type: boolean
+    default: "false"
+    description: Disabled state
+events:
+  - name: uds-click
+    detail: "{ label: string }"
+    description: Dispatched on click (bubbles, composed)
+slots:
+  - name: default
+    description: Button content (overrides label prop if provided)
+accessibility:
+  - Uses native <button> or <a> semantics
+  - aria-disabled reflects disabled state
+  - Focus styles via :focus-visible (keyboard only)
+  - Minimum 44×44px touch target at default size
+  - Color contrast meets WCAG 2.1 AA (4.5:1 text, 3:1 non-text)
+surfaces:
+  - default (light)
+  - .uds-surface-dark
+---
+
+# Button
+
+The `<uds-button>` component provides a consistent, accessible button across all ASU digital properties. It automatically renders as a `<button>` or `<a>` depending on whether `href` is provided.
+
+## Usage
+
+```html
+{/* Standard button */}
+<uds-button label="Submit" color="primary"></uds-button>
+
+{/* Link-style button */}
+<uds-button label="Learn more" href="/info" color="secondary"></uds-button>
+
+{/* On dark surface */}
+<div class="uds-surface-dark">
+  <uds-button label="Apply" color="gold"></uds-button>
+</div>
+```
+
+## Live Example
+
+{/* Storybook embed placeholder */}
+<uds-button label="Interactive example" color="primary"></uds-button>
+
+## Do / Don't
+
+### ✅ Do
+
+- Use `primary` for the single most important action on a page
+- Use `secondary` for supporting actions alongside a primary
+- Use `gold` for high-visibility CTAs (Apply, Donate)
+- Provide meaningful labels that describe the action
+- Use `href` for navigation; omit it for in-page actions
+
+### ❌ Don't
+
+- Don't use more than one `primary` button in a section
+- Don't use vague labels like "Click here" or "Submit"
+- Don't disable buttons without explaining why (use helper text)
+- Don't override token values with inline styles
+- Don't use `<uds-button>` for toggles or menu triggers (use appropriate components)

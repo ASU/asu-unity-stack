@@ -1,0 +1,7 @@
+{
+  "opacity": {
+    "disabled": { "value": "0.5", "type": "opacity", "description": "Disabled state (from RDS reference)" },
+    "hover": { "value": "0.9", "type": "opacity", "description": "Hover feedback" },
+    "overlay": { "value": "0.7", "type": "opacity", "description": "Modal/overlay backdrop" }
+  }
+}

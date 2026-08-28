@@ -1,0 +1,228 @@
+/**
+ * UDS Design Tokens — CSS Custom Properties
+ * Auto-generated from tokens/*.json (will be replaced by Style Dictionary)
+ * 
+ * Load this file ONCE globally. All UDS components consume these variables.
+ */
+
+/* ==========================================================================
+   Brand Colors (from colors.json → color.brand)
+   ========================================================================== */
+
+:root {
+  /* Primary brand colors */
+  --uds-color-brand-maroon: #8C1D40;
+  --uds-color-brand-gold: #FFC627;
+  --uds-color-brand-black: #000000;
+  --uds-color-brand-white: #FFFFFF;
+
+  /* Secondary brand colors (accent only — max 20% of palette) */
+  --uds-color-secondary-green: #78BE20;
+  --uds-color-secondary-blue: #00A3E0;
+  --uds-color-secondary-orange: #FF7F32;
+  --uds-color-secondary-gray: #747474;
+  --uds-color-secondary-copper: #AF674B;
+  --uds-color-secondary-turquoise: #4AB7C4;
+  --uds-color-secondary-pink: #E74973;
+
+  /* Grayscale (7-step, per asu.edu UI conventions) */
+  --uds-color-gray-1: #191919;
+  --uds-color-gray-2: #484848;
+  --uds-color-gray-3: #747474;
+  --uds-color-gray-4: #BFBFBF;
+  --uds-color-gray-5: #D0D0D0;
+  --uds-color-gray-6: #E8E8E8;
+  --uds-color-gray-7: #FAFAFA;
+}
+
+/* ==========================================================================
+   Semantic Colors — Light Surface (default)
+   Resolved from colors.json → color.semantic
+   ========================================================================== */
+
+:root,
+.uds-surface-light {
+  --uds-color-primary: var(--uds-color-brand-maroon);
+  --uds-color-secondary: var(--uds-color-brand-gold);
+  --uds-color-surface: var(--uds-color-gray-7);
+  --uds-color-on-surface: var(--uds-color-gray-1);
+  --uds-color-on-primary: var(--uds-color-brand-white);
+}
+
+/* ==========================================================================
+   Semantic Colors — Dark Surface
+   ========================================================================== */
+
+.uds-surface-dark {
+  --uds-color-primary: var(--uds-color-brand-gold);
+  --uds-color-secondary: var(--uds-color-brand-white);
+  --uds-color-surface: var(--uds-color-gray-1);
+  --uds-color-on-surface: var(--uds-color-gray-7);
+  --uds-color-on-primary: var(--uds-color-gray-1);
+}
+
+/* ==========================================================================
+   Spacing (from spacing.json)
+   ========================================================================== */
+
+:root {
+  --uds-spacing-0: 0px;
+  --uds-spacing-2xs: 4px;
+  --uds-spacing-xs: 8px;
+  --uds-spacing-sm: 12px;
+  --uds-spacing-md: 16px;
+  --uds-spacing-lg: 24px;
+  --uds-spacing-xl: 32px;
+  --uds-spacing-2xl: 48px;
+  --uds-spacing-3xl: 64px;
+  --uds-spacing-4xl: 96px;
+
+  /* Semantic spacing */
+  --uds-spacing-component-gap: var(--uds-spacing-md);
+  --uds-spacing-section-gap: var(--uds-spacing-2xl);
+  --uds-spacing-container-padding: var(--uds-spacing-3xl);
+
+  /* Legacy numeric aliases (for backward compat) */
+  --uds-spacing-1: var(--uds-spacing-2xs);
+  --uds-spacing-2: var(--uds-spacing-xs);
+  --uds-spacing-3: var(--uds-spacing-md);
+  --uds-spacing-4: var(--uds-spacing-lg);
+  --uds-spacing-5: var(--uds-spacing-xl);
+  --uds-spacing-6: var(--uds-spacing-2xl);
+}
+
+/* ==========================================================================
+   Typography (from typography.json)
+   ========================================================================== */
+
+:root {
+  /* Font family */
+  --uds-font-family-base: Arial, sans-serif;
+
+  /* Font weight */
+  --uds-font-weight-regular: 400;
+  --uds-font-weight-bold: 700;
+
+  /* Body font sizes (1.5 line-height ratio) */
+  --uds-font-size-xs: 12px;
+  --uds-font-size-sm: 14px;
+  --uds-font-size-md: 16px;
+  --uds-font-size-lg: 18px;
+  --uds-font-size-xl: 24px;
+
+  --uds-line-height-xs: 18px;
+  --uds-line-height-sm: 21px;
+  --uds-line-height-md: 24px;
+  --uds-line-height-lg: 27px;
+  --uds-line-height-xl: 36px;
+
+  /* Default body */
+  --uds-font-size-body: var(--uds-font-size-md);
+  --uds-line-height-body: var(--uds-line-height-md);
+
+  /* Heading sizes — desktop (>=992px) */
+  --uds-font-size-h1-xl: 56px;
+  --uds-font-size-h1-lg: 36px;
+  --uds-font-size-h1-md: 30px;
+  --uds-font-size-h1-sm: 24px;
+
+  --uds-font-size-h2-xl: 48px;
+  --uds-font-size-h2-lg: 30px;
+  --uds-font-size-h2-md: 24px;
+  --uds-font-size-h2-sm: 18px;
+
+  --uds-font-size-h3-xl: 30px;
+  --uds-font-size-h3-lg: 24px;
+  --uds-font-size-h3-md: 18px;
+  --uds-font-size-h3-sm: 16px;
+
+  /* Heading line-height (1.2 ratio) */
+  --uds-line-height-heading: 1.2;
+}
+
+/* Mobile heading overrides (<768px) */
+@media (max-width: 767px) {
+  :root {
+    --uds-spacing-container-padding: var(--uds-spacing-md);
+
+    --uds-font-size-h3-lg: 18px;
+  }
+}
+
+/* ==========================================================================
+   Border Radius (from radius.json)
+   ========================================================================== */
+
+:root {
+  --uds-radius-none: 0px;
+  --uds-radius-sm: 2px;
+  --uds-radius-md: 4px;
+  --uds-radius-lg: 8px;
+  --uds-radius-xl: 16px;
+  --uds-radius-full: 9999px;
+}
+
+/* ==========================================================================
+   Shadows (from shadows.json)
+   ========================================================================== */
+
+:root {
+  --uds-shadow-none: none;
+  --uds-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.1);
+  --uds-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --uds-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  --uds-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1), 0 8px 10px rgba(0, 0, 0, 0.04);
+}
+
+/* ==========================================================================
+   Borders (from borders.json)
+   ========================================================================== */
+
+:root {
+  --uds-border-width-none: 0px;
+  --uds-border-width-thin: 1px;
+  --uds-border-width-medium: 2px;
+  --uds-border-width-thick: 4px;
+
+  --uds-border-color-default: var(--uds-color-gray-5);
+  --uds-border-color-strong: var(--uds-color-gray-2);
+  --uds-border-color-brand: var(--uds-color-brand-gold);
+}
+
+/* ==========================================================================
+   Opacity (from opacity.json)
+   ========================================================================== */
+
+:root {
+  --uds-opacity-disabled: 0.5;
+  --uds-opacity-hover: 0.9;
+  --uds-opacity-overlay: 0.7;
+}
+
+/* ==========================================================================
+   Transitions (from transitions.json)
+   ========================================================================== */
+
+:root {
+  --uds-transition-fast: 150ms;
+  --uds-transition-normal: 250ms;
+  --uds-transition-slow: 400ms;
+
+  --uds-easing-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --uds-easing-in: cubic-bezier(0.4, 0, 1, 1);
+  --uds-easing-out: cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   Breakpoints (from breakpoints.json) — for reference only
+   CSS custom properties can't be used in @media queries.
+   These are documented here; use them via Tailwind/SCSS.
+   ========================================================================== */
+
+/*
+  --uds-breakpoint-sm: 576px;
+  --uds-breakpoint-md: 768px;
+  --uds-breakpoint-lg: 992px;
+  --uds-breakpoint-xl: 1200px;
+  --uds-breakpoint-xxl: 1400px;
+*/

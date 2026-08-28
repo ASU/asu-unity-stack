@@ -1,0 +1,27 @@
+{
+  "border": {
+    "width": {
+      "none": { "value": "0px", "type": "borderWidth" },
+      "thin": { "value": "1px", "type": "borderWidth", "description": "Default border" },
+      "medium": { "value": "2px", "type": "borderWidth", "description": "Emphasis border" },
+      "thick": { "value": "4px", "type": "borderWidth", "description": "Heavy accent border" }
+    },
+    "color": {
+      "default": {
+        "value": "{color.grayscale.gray-5}",
+        "type": "color",
+        "description": "Default border color (#D0D0D0)"
+      },
+      "strong": {
+        "value": "{color.grayscale.gray-2}",
+        "type": "color",
+        "description": "Strong border color (#484848)"
+      },
+      "brand": {
+        "value": "{color.brand.gold}",
+        "type": "color",
+        "description": "Brand accent border (Gold)"
+      }
+    }
+  }
+}

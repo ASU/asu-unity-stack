@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+/*
+ * UDS-constrained Tailwind CSS v4 theme
+ *
+ * All default Tailwind colors are disabled. Only UDS token values
+ * are available via CSS custom property references. This ensures
+ * developers cannot accidentally use off-brand colors.
+ */
+@theme inline {
+  /* ── Disable all default colors ── */
+  --color-*: initial;
+
+  /* ── UDS Colors ── */
+  --color-primary: var(--uds-color-primary);
+  --color-secondary: var(--uds-color-secondary);
+  --color-surface: var(--uds-color-surface);
+  --color-on-surface: var(--uds-color-on-surface);
+  --color-on-primary: var(--uds-color-on-primary);
+  --color-brand-maroon: var(--uds-color-brand-maroon);
+  --color-brand-gold: var(--uds-color-brand-gold);
+
+  /* ── Disable default spacing, define UDS spacing ── */
+  --spacing: initial;
+  --spacing-1: var(--uds-spacing-1);
+  --spacing-2: var(--uds-spacing-2);
+  --spacing-3: var(--uds-spacing-3);
+  --spacing-4: var(--uds-spacing-4);
+  --spacing-5: var(--uds-spacing-5);
+  --spacing-6: var(--uds-spacing-6);
+
+  /* ── UDS Font Families ── */
+  --font-base: var(--uds-font-family-base);
+  --font-heading: var(--uds-font-family-heading);
+
+  /* ── Disable default radii, define UDS radii ── */
+  --radius-*: initial;
+  --radius-sm: var(--uds-radius-sm);
+  --radius-md: var(--uds-radius-md);
+  --radius-lg: var(--uds-radius-lg);
+}
+
+/* Scan the examples and src directories for class usage */
+@source "../../examples/**/*.html";
+@source "../**/*.{ts,js,html}";

@@ -1,0 +1,97 @@
+import { Meta, Controls, Primary, Stories, Description } from '@storybook/blocks';
+import * as ButtonStories from './uds-button.stories';
+
+<Meta of={ButtonStories} />
+
+# Button
+
+<Description of={ButtonStories} />
+
+## Interactive Example
+
+<Primary />
+
+<Controls />
+
+## All Stories
+
+<Stories includePrimary={false} />
+
+---
+
+## Framework Usage
+
+Complete examples showing all available properties.
+
+### HTML
+
+```html
+<uds-button
+  label="Apply Now"
+  color="primary"
+  href="/apply"
+  size="default"
+></uds-button>
+
+<uds-button
+  label="Small Action"
+  color="secondary"
+  size="small"
+></uds-button>
+
+<uds-button
+  label="Disabled"
+  color="primary"
+  disabled
+></uds-button>
+```
+
+### Drupal / Twig
+
+```twig
+<uds-button
+  label="{{ label }}"
+  color="{{ color|default('primary') }}"
+  {% if href %}href="{{ href }}"{% endif %}
+  {% if size != 'default' %}size="{{ size }}"{% endif %}
+  {% if disabled %}disabled{% endif %}
+></uds-button>
+
+{# Example in a node template #}
+<uds-button
+  label="{{ node.field_cta_text.value }}"
+  color="{{ node.field_button_style.value }}"
+  href="{{ node.field_cta_link.0.url }}"
+></uds-button>
+```
+
+### React / JSX
+
+```tsx
+import '@asu/unity-core/button';
+
+function MyComponent() {
+  return (
+    <>
+      <uds-button
+        label="Apply Now"
+        color="primary"
+        href="/apply"
+        size="default"
+      ></uds-button>
+
+      <uds-button
+        label="Small Action"
+        color="secondary"
+        size="small"
+      ></uds-button>
+
+      <uds-button
+        label="Disabled"
+        color="primary"
+        disabled
+      ></uds-button>
+    </>
+  );
+}
+```

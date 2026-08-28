@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UDS Code Kit — Static Consumption Example</title>
+  <!--
+    This demonstrates Drupal/static site consumption — no framework, no build step, just script tags
+  -->
+  <link rel="stylesheet" href="../dist/tokens.css" />
+  <link rel="stylesheet" href="../dist/bootstrap-minimal.css" />
+  <link rel="stylesheet" href="../dist/base.css" />
+  <link rel="stylesheet" href="../dist/tailwind.css" />
+  <script type="module" src="../dist/unity-core.js"></script>
+  <style>
+    body {
+      font-family: var(--uds-font-family-base, 'Arial', sans-serif);
+      margin: 0;
+      padding: 0;
+      background: var(--uds-color-surface);
+      color: var(--uds-color-on-surface);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--uds-spacing-4) var(--uds-spacing-3);
+    }
+
+    h1 {
+      font-family: var(--uds-font-family-heading);
+      font-size: var(--uds-font-size-heading-1);
+      margin-bottom: var(--uds-spacing-4);
+    }
+
+    h2 {
+      font-family: var(--uds-font-family-heading);
+      font-size: var(--uds-font-size-heading-2);
+      margin-bottom: var(--uds-spacing-3);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: var(--uds-spacing-4);
+      margin-bottom: var(--uds-spacing-6);
+    }
+
+    .section {
+      margin-bottom: var(--uds-spacing-6);
+    }
+
+    .dark-section {
+      padding: var(--uds-spacing-6) var(--uds-spacing-3);
+      margin: 0 calc(-1 * var(--uds-spacing-3));
+    }
+
+    .button-row {
+      display: flex;
+      gap: var(--uds-spacing-2);
+      flex-wrap: wrap;
+      margin-bottom: var(--uds-spacing-4);
+    }
+  </style>
+</head>
+<body>
+  <div class="container p-4">
+    <h1 class="font-heading text-primary">UDS Code Kit — Component Demo</h1>
+    <p class="text-on-surface">This page consumes Unity Design System web components without a framework or build step.</p>
+
+    <!-- Buttons Section -->
+    <section class="section mb-6">
+      <h2 class="font-heading">Buttons</h2>
+      <div class="button-row flex gap-2 flex-wrap">
+        <uds-button label="Primary Action" color="primary"></uds-button>
+        <uds-button label="Secondary Action" color="secondary"></uds-button>
+        <uds-button label="Gold CTA" color="gold"></uds-button>
+        <uds-button label="Small Button" color="primary" size="small"></uds-button>
+        <uds-button label="Visit ASU" color="primary" href="https://www.asu.edu"></uds-button>
+      </div>
+    </section>
+
+    <!-- Cards Section -->
+    <section class="section mb-6">
+      <h2 class="font-heading">Cards</h2>
+      <div class="row g-4 mb-5 gap-3">
+        <div class="col-md-4">
+          <uds-card heading="Undergraduate Programs" image="https://picsum.photos/seed/undergrad/800/450">
+            <p>Explore 350+ undergraduate degree programs across all ASU campuses.</p>
+            <uds-button slot="actions" label="Browse Programs" color="gold"></uds-button>
+          </uds-card>
+        </div>
+
+        <div class="col-md-4">
+          <uds-card heading="Graduate Studies" image="https://picsum.photos/seed/graduate/800/450">
+            <p>Advance your career with a graduate degree from a top-ranked research university.</p>
+            <uds-button slot="actions" label="Apply Now" color="primary"></uds-button>
+            <uds-button slot="actions" label="Learn More" color="secondary"></uds-button>
+          </uds-card>
+        </div>
+
+        <div class="col-md-4">
+          <uds-card heading="Campus Tour" image="https://picsum.photos/seed/tour/800/450" href="https://visit.asu.edu">
+            <p>Schedule a visit and experience Sun Devil life firsthand.</p>
+          </uds-card>
+        </div>
+      </div>
+
+      <!-- Horizontal card -->
+      <uds-card heading="Research & Innovation" image="https://picsum.photos/seed/innovation/800/600" horizontal>
+        <p>ASU is ranked #1 in innovation. Our researchers are tackling the world's greatest challenges in sustainability, health, technology, and exploration.</p>
+        <uds-button slot="actions" label="Explore Research" color="primary"></uds-button>
+      </uds-card>
+    </section>
+
+    <!-- Dark Surface Section -->
+    <section class="dark-section uds-surface-dark" style="background-color: #191919;">
+      <div style="max-width: 1200px; margin: 0 auto; padding: 0 var(--uds-spacing-3);">
+        <h2 style="color: #ffffff;">On Dark Surface</h2>
+        <div class="row g-4">
+          <div class="col-md-6">
+            <uds-card heading="Night Events" image="https://picsum.photos/seed/night/800/450">
+              <p>Experience world-class performances and cultural events on campus.</p>
+              <uds-button slot="actions" label="See Events" color="gold"></uds-button>
+            </uds-card>
+          </div>
+
+          <div class="col-md-6">
+            <uds-card heading="Online Degrees" image="https://picsum.photos/seed/online/800/450">
+              <p>Earn your degree online with the same faculty and curriculum as on-campus programs.</p>
+              <uds-button slot="actions" label="Start Today" color="gold"></uds-button>
+            </uds-card>
+          </div>
+        </div>
+        <div class="button-row">
+          <uds-button label="Primary on Dark" color="primary"></uds-button>
+          <uds-button label="Secondary on Dark" color="secondary"></uds-button>
+          <uds-button label="Gold on Dark" color="gold"></uds-button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Accordion Section -->
+    <section class="section p-4 rounded-md bg-surface">
+      <h2 class="font-heading">Frequently Asked Questions</h2>
+      <uds-accordion>
+        <uds-accordion-item title="What is the UDS Code Kit?">
+          <p>The UDS Code Kit is a collection of web components that implement the ASU Unity Design System. They work in any HTML environment — Drupal, static sites, React, or plain HTML.</p>
+        </uds-accordion-item>
+        <uds-accordion-item title="Do I need a build step?">
+          <p>No! Just include the script tags and CSS, and the components work immediately. This page is a living example of framework-free usage.</p>
+        </uds-accordion-item>
+        <uds-accordion-item title="How do I theme for dark backgrounds?">
+          <p>Add the <code>.uds-surface-dark</code> class to any container. All UDS components inside will automatically adapt their colors using CSS custom properties.</p>
+        </uds-accordion-item>
+      </uds-accordion>
+    </section>
+  </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "breakpoint": {
+    "sm": { "value": "576px", "type": "dimension", "description": "Small devices (landscape phones)" },
+    "md": { "value": "768px", "type": "dimension", "description": "Medium devices (tablets)" },
+    "lg": { "value": "992px", "type": "dimension", "description": "Large devices (desktops) — heading size mode switches here" },
+    "xl": { "value": "1200px", "type": "dimension", "description": "Extra large devices" },
+    "xxl": { "value": "1400px", "type": "dimension", "description": "Max container width" }
+  }
+}

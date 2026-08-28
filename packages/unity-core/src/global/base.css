@@ -1,0 +1,40 @@
+/**
+ * ASU Unity Design System — Base Styles
+ *
+ * Minimal resets and typographic defaults using design tokens.
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--uds-font-family-base);
+  font-size: var(--uds-font-size-body);
+  font-weight: var(--uds-font-weight-regular);
+  line-height: 1.5;
+  color: var(--uds-color-on-surface);
+  background-color: var(--uds-color-surface);
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--uds-font-family-heading);
+  font-weight: var(--uds-font-weight-bold);
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: var(--uds-spacing-2);
+}
+
+h1 { font-size: var(--uds-font-size-heading-1); }
+h2 { font-size: var(--uds-font-size-heading-2); }
+h3 { font-size: var(--uds-font-size-heading-3); }
+h4 { font-size: var(--uds-font-size-heading-4); }

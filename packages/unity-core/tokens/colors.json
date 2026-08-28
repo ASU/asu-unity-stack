@@ -1,0 +1,162 @@
+{
+  "color": {
+    "brand": {
+      "maroon": {
+        "value": "#8C1D40",
+        "type": "color",
+        "description": "ASU Maroon — primary brand color"
+      },
+      "gold": {
+        "value": "#FFC627",
+        "type": "color",
+        "description": "ASU Gold — primary brand color"
+      },
+      "black": {
+        "value": "#000000",
+        "type": "color",
+        "description": "ASU Rich Black — foundational contrast"
+      },
+      "white": {
+        "value": "#FFFFFF",
+        "type": "color",
+        "description": "ASU White — foundational contrast"
+      }
+    },
+    "secondary": {
+      "green": {
+        "value": "#78BE20",
+        "type": "color",
+        "description": "ASU Green — accent only, max 20% of palette (Pantone 368 C)"
+      },
+      "blue": {
+        "value": "#00A3E0",
+        "type": "color",
+        "description": "ASU Blue — accent only (Pantone 299 C)"
+      },
+      "orange": {
+        "value": "#FF7F32",
+        "type": "color",
+        "description": "ASU Orange — accent only (Pantone 1575 C)"
+      },
+      "gray": {
+        "value": "#747474",
+        "type": "color",
+        "description": "ASU Gray — primary gray, accent only (Pantone 424 C)"
+      },
+      "copper": {
+        "value": "#AF674B",
+        "type": "color",
+        "description": "ASU Copper — accent only (Pantone 7522 C)"
+      },
+      "turquoise": {
+        "value": "#4AB7C4",
+        "type": "color",
+        "description": "ASU Turquoise — accent only (Pantone 2227 C)"
+      },
+      "pink": {
+        "value": "#E74973",
+        "type": "color",
+        "description": "ASU Pink — accent only (Pantone 205 C)"
+      }
+    },
+    "grayscale": {
+      "gray-1": {
+        "value": "#191919",
+        "type": "color",
+        "description": "Gray 1 — used as black on asu.edu for reduced contrast"
+      },
+      "gray-2": {
+        "value": "#484848",
+        "type": "color",
+        "description": "Gray 2"
+      },
+      "gray-3": {
+        "value": "#747474",
+        "type": "color",
+        "description": "Gray 3 — same as ASU Gray"
+      },
+      "gray-4": {
+        "value": "#BFBFBF",
+        "type": "color",
+        "description": "Gray 4"
+      },
+      "gray-5": {
+        "value": "#D0D0D0",
+        "type": "color",
+        "description": "Gray 5"
+      },
+      "gray-6": {
+        "value": "#E8E8E8",
+        "type": "color",
+        "description": "Gray 6"
+      },
+      "gray-7": {
+        "value": "#FAFAFA",
+        "type": "color",
+        "description": "Gray 7 — used as white on asu.edu for reduced contrast"
+      }
+    },
+    "semantic": {
+      "primary": {
+        "on-light": {
+          "value": "{color.brand.maroon}",
+          "type": "color",
+          "description": "Primary action color on light surfaces"
+        },
+        "on-dark": {
+          "value": "{color.brand.gold}",
+          "type": "color",
+          "description": "Primary action color on dark surfaces"
+        }
+      },
+      "secondary": {
+        "on-light": {
+          "value": "{color.brand.gold}",
+          "type": "color",
+          "description": "Secondary action color on light surfaces"
+        },
+        "on-dark": {
+          "value": "{color.brand.white}",
+          "type": "color",
+          "description": "Secondary action color on dark surfaces"
+        }
+      },
+      "surface": {
+        "light": {
+          "value": "{color.grayscale.gray-7}",
+          "type": "color",
+          "description": "Light surface background (Gray 7 per asu.edu convention)"
+        },
+        "dark": {
+          "value": "{color.grayscale.gray-1}",
+          "type": "color",
+          "description": "Dark surface background (Gray 1 per asu.edu convention)"
+        }
+      },
+      "on-surface": {
+        "light": {
+          "value": "{color.grayscale.gray-1}",
+          "type": "color",
+          "description": "Text on light surface (Gray 1)"
+        },
+        "dark": {
+          "value": "{color.grayscale.gray-7}",
+          "type": "color",
+          "description": "Text on dark surface (Gray 7)"
+        }
+      },
+      "on-primary": {
+        "light": {
+          "value": "{color.brand.white}",
+          "type": "color",
+          "description": "Text on primary-colored background (light surface)"
+        },
+        "dark": {
+          "value": "{color.grayscale.gray-1}",
+          "type": "color",
+          "description": "Text on primary-colored background (dark surface)"
+        }
+      }
+    }
+  }
+}

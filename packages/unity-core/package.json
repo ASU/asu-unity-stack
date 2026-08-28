@@ -1,0 +1,65 @@
+{
+  "name": "@asu/unity-core",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "ASU Unity Design System web components library and global styles. Part of the UDS Code Kit.",
+  "main": "dist/unity-core.js",
+  "module": "dist/unity-core.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/unity-core.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./button": {
+      "import": "./dist/components/uds-button.js"
+    },
+    "./accordion": {
+      "import": "./dist/components/uds-accordion.js"
+    },
+    "./card": {
+      "import": "./dist/components/uds-card.js"
+    },
+    "./tokens.css": "./dist/tokens.css",
+    "./base.css": "./dist/base.css"
+  },
+  "scripts": {
+    "dev": "storybook dev -p 6008",
+    "build": "vite build",
+    "build:css": "sass src/global/bootstrap-minimal.scss dist/bootstrap-minimal.css --style=compressed --no-source-map --load-path=../../node_modules",
+    "build:tailwind": "tailwindcss -i ./src/global/tailwind.css -o ./dist/tailwind.css --minify",
+    "build:tokens": "style-dictionary build",
+    "test": "vitest",
+    "test:e2e": "playwright test",
+    "storybook": "storybook dev -p 6008",
+    "lint": "eslint src/"
+  },
+  "devDependencies": {
+    "@lit/reactive-element": "^2.0.0",
+    "@open-wc/testing": "^4.0.0",
+    "@playwright/test": "^1.49.0",
+    "@storybook/addon-a11y": "^10",
+    "@storybook/addon-docs": "^10",
+    "@storybook/web-components": "^10",
+    "@storybook/web-components-vite": "^10",
+    "@tailwindcss/cli": "^4.3.3",
+    "bootstrap": "^5.3.0",
+    "eslint": "^9.0.0",
+    "lit": "^3.2.0",
+    "sass": "^1.77.0",
+    "storybook": "^10",
+    "style-dictionary": "^4.0.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.6.0",
+    "vite": "^6.0.0",
+    "vitest": "^3.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "files": [
+    "dist/",
+    "tokens/",
+    "README.md"
+  ]
+}

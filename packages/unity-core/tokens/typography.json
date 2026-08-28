@@ -1,0 +1,85 @@
+{
+  "font": {
+    "family": {
+      "base": {
+        "value": "Arial, sans-serif",
+        "type": "fontFamily",
+        "description": "Body and heading font (per ASU brand guide)"
+      }
+    },
+    "weight": {
+      "regular": { "value": "400", "type": "fontWeight" },
+      "bold": { "value": "700", "type": "fontWeight" }
+    },
+    "body": {
+      "xs": {
+        "font-size": { "value": "12", "type": "number", "description": "Extra small body text" },
+        "line-height": { "value": "18", "type": "number", "description": "1.5 ratio" }
+      },
+      "sm": {
+        "font-size": { "value": "14", "type": "number", "description": "Small body text" },
+        "line-height": { "value": "21", "type": "number", "description": "1.5 ratio" }
+      },
+      "md": {
+        "font-size": { "value": "16", "type": "number", "description": "Default body text" },
+        "line-height": { "value": "24", "type": "number", "description": "1.5 ratio" }
+      },
+      "lg": {
+        "font-size": { "value": "18", "type": "number", "description": "Large body text" },
+        "line-height": { "value": "27", "type": "number", "description": "1.5 ratio" }
+      },
+      "xl": {
+        "font-size": { "value": "24", "type": "number", "description": "Extra large body text" },
+        "line-height": { "value": "36", "type": "number", "description": "1.5 ratio" }
+      }
+    },
+    "heading": {
+      "h1": {
+        "desktop": {
+          "xl": { "font-size": { "value": "56", "type": "number" }, "line-height": { "value": "67", "type": "number" } },
+          "large": { "font-size": { "value": "36", "type": "number" }, "line-height": { "value": "43", "type": "number" } },
+          "medium": { "font-size": { "value": "30", "type": "number" }, "line-height": { "value": "36", "type": "number" } },
+          "small": { "font-size": { "value": "24", "type": "number" }, "line-height": { "value": "29", "type": "number" } }
+        },
+        "mobile": {
+          "xl": { "font-size": { "value": "56", "type": "number" }, "line-height": { "value": "67", "type": "number" } },
+          "large": { "font-size": { "value": "36", "type": "number" }, "line-height": { "value": "43", "type": "number" } },
+          "medium": { "font-size": { "value": "30", "type": "number" }, "line-height": { "value": "36", "type": "number" } },
+          "small": { "font-size": { "value": "24", "type": "number" }, "line-height": { "value": "24", "type": "number" } }
+        }
+      },
+      "h2": {
+        "desktop": {
+          "xl": { "font-size": { "value": "48", "type": "number" }, "line-height": { "value": "58", "type": "number" } },
+          "large": { "font-size": { "value": "30", "type": "number" }, "line-height": { "value": "36", "type": "number" } },
+          "medium": { "font-size": { "value": "24", "type": "number" }, "line-height": { "value": "29", "type": "number" } },
+          "small": { "font-size": { "value": "18", "type": "number" }, "line-height": { "value": "22", "type": "number" } }
+        },
+        "mobile": {
+          "xl": { "font-size": { "value": "48", "type": "number" }, "line-height": { "value": "58", "type": "number" } },
+          "large": { "font-size": { "value": "30", "type": "number" }, "line-height": { "value": "36", "type": "number" } },
+          "medium": { "font-size": { "value": "24", "type": "number" }, "line-height": { "value": "29", "type": "number" } },
+          "small": { "font-size": { "value": "18", "type": "number" }, "line-height": { "value": "22", "type": "number" } }
+        }
+      },
+      "h3": {
+        "desktop": {
+          "xl": { "font-size": { "value": "30", "type": "number" }, "line-height": { "value": "36", "type": "number" } },
+          "large": { "font-size": { "value": "24", "type": "number" }, "line-height": { "value": "29", "type": "number" } },
+          "medium": { "font-size": { "value": "18", "type": "number" }, "line-height": { "value": "22", "type": "number" } },
+          "small": { "font-size": { "value": "16", "type": "number" }, "line-height": { "value": "19", "type": "number" } }
+        },
+        "mobile": {
+          "xl": { "font-size": { "value": "30", "type": "number" }, "line-height": { "value": "36", "type": "number" } },
+          "large": { "font-size": { "value": "18", "type": "number" }, "line-height": { "value": "22", "type": "number" } },
+          "medium": { "font-size": { "value": "18", "type": "number" }, "line-height": { "value": "22", "type": "number" } },
+          "small": { "font-size": { "value": "16", "type": "number" }, "line-height": { "value": "19", "type": "number" } }
+        }
+      },
+      "_meta": {
+        "description": "Headings use 1.2 line-height ratio. Each heading level has xl/large/medium/small variants. Desktop breakpoint is >=992px, mobile is <768px.",
+        "unit": "px"
+      }
+    }
+  }
+}
