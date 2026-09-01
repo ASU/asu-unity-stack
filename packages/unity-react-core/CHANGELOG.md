@@ -1,3 +1,11 @@
+# [@asu/unity-react-core-v2.3.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.2.1...@asu/unity-react-core-v2.3.0) (2026-09-01)
+
+
+### Features
+
+* **unity-react-core:** backdrop parent update for isBootstrap condition ([74d68a6](https://github.com/ASU/asu-unity-stack/commit/74d68a6fc3b2bf460c0d0977471b05457ec8f74c))
+* **unity-react-core:** modal backdrop close update and custom button, state, and children props ([3bfbf18](https://github.com/ASU/asu-unity-stack/commit/3bfbf181275fbcc1bbd5a7f2ff5d24f2afc07604))
+
 # [@asu/unity-react-core-v2.2.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.2.0...@asu/unity-react-core-v2.2.1) (2026-08-06)
 
 
