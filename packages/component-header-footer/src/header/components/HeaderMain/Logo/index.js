@@ -25,7 +25,7 @@ const Logo = () => {
         width="303"
         height="234"
         decoding="async"
-        fetchpriority="high"
+        fetchPriority="high"
       />
       <img
         className={CLASS_NAMES.LOGO_HORIZ}
@@ -35,7 +35,7 @@ const Logo = () => {
         width="400"
         height="72"
         decoding="async"
-        fetchpriority="high"
+        fetchPriority="high"
       />
     </LogoWrapper>
   );

@@ -37,7 +37,7 @@ const Partner = () => {
           decoding="async"
           // @ts-ignore
 
-          fetchpriority="high"
+          fetchPriority="high"
         />
       </a>
       <a
@@ -53,7 +53,7 @@ const Partner = () => {
           decoding="async"
           // @ts-ignore
 
-          fetchpriority="high"
+          fetchPriority="high"
         />
         <img
           className={CLASS_NAMES.LOGO_HORIZ}
@@ -64,7 +64,7 @@ const Partner = () => {
           decoding="async"
           // @ts-ignore
 
-          fetchpriority="high"
+          fetchPriority="high"
         />
       </a>
     </PartnerLogosWrapper>
