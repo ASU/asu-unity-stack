@@ -23,6 +23,7 @@ const gaDefaultObject = {
  */
 export const ButtonIconOnly = ({
   color = "gray",
+  autoFocus = undefined,
   icon = undefined,
   innerRef = undefined,
   onClick = undefined,
@@ -46,6 +47,7 @@ export const ButtonIconOnly = ({
       }}
     >
       <button
+      autoFocus={autoFocus}
         type="button"
         className={`btn btn-circle btn-circle-alt-${color} ${
           size === "large" && "btn-circle-large"
