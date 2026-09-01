@@ -21,6 +21,7 @@ const defaultGAEvent = {
 const BaseBulletItemContainer = ({ children }) => (
   <div
     role="group"
+    aria-label="Carousel pagination"
     className="glide__bullets"
     data-glide-el="controls[nav]"
     data-testid="bullets-container"
@@ -54,7 +55,7 @@ const BulletItems = ({ buttonCount }) => {
           type="button"
           className="glide__bullet"
           data-glide-dir={`=${i}`}
-          aria-label={`Slide view ${i + 1}`}
+          aria-label={`Go to slide ${i + 1} of ${buttonCount}`}
         />
       </GaEventWrapper>
     );
@@ -97,9 +98,7 @@ const ImageBulletItems = ({ imageItems, onItemClick = () => null }) => {
         className="glide__bullet bullet-image"
         loading="lazy"
         decoding="async"
-        // @ts-ignore
-
-        fetchpriority="low"
+        fetchPriority="low"
       />
     </button>
   ));

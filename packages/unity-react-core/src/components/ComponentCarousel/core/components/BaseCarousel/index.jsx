@@ -1,12 +1,11 @@
 // @ts-check
 import PropTypes from "prop-types";
-import React, { useEffect } from "react";
+import React, { useId, useEffect } from "react";
 
 // Include required and custom styles for @glidejs/glide
 import "./styles.scss";
 import { SliderItems, BulletItems, NavButtons } from "./components";
 import { setupCaroarousel } from "./glide/glide.setup";
-import { calcualteViewItems } from "./helper/width-calculator";
 
 // Requirement: We import bs4-theme css from QA site in preview-head.html.
 // Initially based on this approach:
@@ -54,8 +53,8 @@ const BaseCarousel = ({
   // Get glide instance class name.
   // Defaults to glide. If implementing multiple instnaces, you MUST provide
   // an unique instance name for all but one instance.
-  const instanceName = `glide-${Math.ceil(Math.random() * 10000)}`;
-  const buttonCount = calcualteViewItems(carouselItems.length, perView);
+  const instanceName = `glide-${useId()}`;
+  const buttonCount = carouselItems.length;
 
   useEffect(() => {
     setupCaroarousel({
@@ -79,14 +78,15 @@ const BaseCarousel = ({
 
   return (
     <div
-      role={role}
       aria-labelledby={ariaLabelledBy}
+      role="region"
       className={`glide ${cssClass}`}
       id={instanceName}
       style={{ width, maxWidth }}
       data-remove-side-background={removeSideBackground}
       data-image-auto-size={imageAutoSize}
       data-has-shadow={hasShadow}
+      aria-roledescription="carousel"
     >
       <div className="glide__track" data-glide-el="track">
         <SliderItems carouselItems={carouselItems} />
@@ -126,4 +126,4 @@ BaseCarousel.propTypes = {
   hasShadow: PropTypes.bool,
 };
 
-export { BaseCarousel, calcualteViewItems };
+export { BaseCarousel };
