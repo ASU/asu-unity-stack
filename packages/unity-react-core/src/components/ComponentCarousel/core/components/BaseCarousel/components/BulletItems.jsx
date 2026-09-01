@@ -52,7 +52,7 @@ const BulletItems = ({ buttonCount }) => {
       <GaEventWrapper gaData={defaultGAEvent} key={`bullet-${i}`}>
         <button
           type="button"
-          className="glide__bullet"
+          className={`glide__bullet`}
           data-glide-dir={`=${i}`}
           aria-label={`Slide view ${i + 1}`}
         />
