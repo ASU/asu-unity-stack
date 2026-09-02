@@ -59,7 +59,7 @@ function buildConfig(perView = 1, isFullWidth, hasPeek = true, isDraggable) {
   return {
     type: "slider", // No wrap-around.
     focusAt: 0,
-    bound: true, // Only if type slider with focusAt 0
+    bound: false, // Only if type slider with focusAt 0 // Set to false for accessibility (all cards should be accessible)
     rewind: false, // Only if type slider
     gap, // Space between slides... may be impacted by viewport size.
     // `keyboard` Left/Right arrow key support for slides - true is default.
@@ -142,9 +142,9 @@ function setNavButtonGradient(gliderElement, currentIndex, buttonCount) {
     imageGalleryNavigation?.classList.add("slider-start");
     // Enable/disable prev/next styles. Glide takes care of actual disable.
     arrowPrev?.classList.add(cssDisabledClass);
-    arrowPrev?.setAttribute("aria-disabled", "true");
+    arrowPrev?.setAttribute("disabled", "true");
     arrowNext?.classList.remove(cssDisabledClass);
-    arrowNext?.setAttribute("aria-disabled", "false");
+    arrowNext?.removeAttribute("disabled");
   } else if (currentIndex >= buttonCount - 1) {
     // LAST SLIDE.
     // Gradient for end.
@@ -152,9 +152,9 @@ function setNavButtonGradient(gliderElement, currentIndex, buttonCount) {
     imageGalleryNavigation?.classList.add("slider-end");
     // Enable/disable prev/next styles. Glide takes care of actual disable.
     arrowPrev?.classList.remove(cssDisabledClass);
-    arrowPrev?.setAttribute("aria-disabled", "false");
+    arrowPrev?.removeAttribute("disabled");
     arrowNext?.classList.add(cssDisabledClass);
-    arrowNext?.setAttribute("aria-disabled", "true");
+    arrowNext?.setAttribute("disabled", "true");
   } else {
     // MIDDLE SLIDES.
     // Gradient for middle.
@@ -163,8 +163,8 @@ function setNavButtonGradient(gliderElement, currentIndex, buttonCount) {
     // Enable/disable prev/next styles. Glide takes care of actual disable.
     arrowPrev?.classList.remove(cssDisabledClass);
     arrowNext?.classList.remove(cssDisabledClass);
-    arrowPrev?.setAttribute("aria-disabled", "false");
-    arrowNext?.setAttribute("aria-disabled", "false");
+    arrowPrev?.removeAttribute("disabled");
+    arrowNext?.removeAttribute("disabled");
   }
 }
 
@@ -307,6 +307,108 @@ function setupCaroarousel({
     // We use event listeners to clear and set class names to show/hide
     // gradients when at the start, middle or end of a slider.
     setNavButtonGradient(gliderElement, currentIndex, buttonCount);
+
+    // Set the main container with aria-labelledby with the header of the active card
+    const slides = gliderElement.querySelectorAll(".slider");
+
+    // Getting the text from the main header tag
+    //source: https://stackoverflow.com/questions/67134998/javascript-recursion-to-get-innertext
+    function getText(node, accumulator) {
+      if (node.nodeType === 3) {
+        // 3 == text node
+        accumulator.push(node.nodeValue);
+      } else {
+        for (let child of node.childNodes) getText(child, accumulator);
+      }
+    }
+
+    let firstActiveCard = 1;
+    let finalActiveCard = 1;
+    let totalActiveCards = 0;
+    let totalCards = slides.length;
+    let getActiveState = 0; // get first active card
+
+    for (let i = 0; i < slides.length; i++) {
+      const ariaHidden = slides[i].getAttribute("aria-hidden");
+      if (getActiveState === 1) {
+        if (i === slides.length - 1) {
+          if (ariaHidden === "false") {
+            finalActiveCard = i + 1;
+            totalActiveCards = finalActiveCard - firstActiveCard + 1;
+            getActiveState = 2; // done
+            break;
+          }
+        }
+        if (ariaHidden === "true") {
+          finalActiveCard = i;
+          totalActiveCards = finalActiveCard - firstActiveCard + 1;
+          getActiveState = 2; // done
+          break;
+        }
+      }
+      if (getActiveState === 0) {
+        if (ariaHidden === "false") {
+          firstActiveCard = i + 1;
+          getActiveState = 1; // get active card count
+          if (i === slides.length - 1) {
+            finalActiveCard = firstActiveCard;
+            totalActiveCards = 1;
+            getActiveState = 2; // done
+          }
+        }
+      }
+
+      if (i === currentIndex) {
+        // Find the main h tag in the card if one exists
+        let header;
+        for (let j = 1; j < 9; j++) {
+          if (!header) {
+            header = slides[i].querySelector(`h${j}`);
+          }
+        }
+
+        if (header) {
+          let allTexts = [];
+          getText(slides[i], allTexts);
+          gliderElement.setAttribute("aria-labelledby", allTexts[0]);
+          gliderElement.removeAttribute("aria-label");
+        } else {
+          gliderElement.setAttribute("aria-label", `Card ${i + 1}`);
+          gliderElement.removeAttribute("aria-labelledby");
+        }
+
+      }
+    }
+
+    let gliderTrack = gliderElement.querySelector(`.glide__track`);
+    gliderTrack?.setAttribute("tabIndex", "0");
+
+    if (firstActiveCard === finalActiveCard) {
+      gliderTrack?.setAttribute(
+        "aria-label",
+        `Carousel, showing item ${firstActiveCard} of ${totalCards}`
+      );
+    } else {
+      gliderTrack?.setAttribute(
+        "aria-label",
+        `Carousel, showing items ${firstActiveCard} to ${finalActiveCard} of ${totalCards}`
+        // `${totalActiveCards} item carousel, showing items ${firstActiveCard} to ${finalActiveCard} of ${totalCards}`
+      );
+    }
+    gliderTrack?.setAttribute("aria-live", "assertive");
+
+    // Update bullet accessibility
+    const bullets = gliderElement.querySelectorAll(".glide__bullet");
+    for (let i = 0; i < bullets.length; i++) {
+      if (i === currentIndex) {
+        bullets[i].setAttribute("disabled", "");
+        bullets[i].setAttribute("aria-current", "true");
+      } else {
+        bullets[i].removeAttribute("disabled");
+        bullets[i].setAttribute("aria-current", "false");
+      }
+    }
+
     // set the current index
     gliderElement.setAttribute("data-current-index", currentIndex);
     onItemClick && onItemClick(currentIndex);
