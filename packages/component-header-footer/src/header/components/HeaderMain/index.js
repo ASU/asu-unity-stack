@@ -63,7 +63,7 @@ const HeaderMain = () => {
     <>
       {!isMobile && <UniversalNavbar />}
       {/* @ts-ignore */}
-      <HeaderMainWrapper breakpoint={breakpoint} headertop={headerTop}>
+      <HeaderMainWrapper $breakpoint={breakpoint} $headertop={headerTop}>
         <div className="container-xl">
           <div className={CLASS_NAMES.HEADER_MAIN}>
             <div

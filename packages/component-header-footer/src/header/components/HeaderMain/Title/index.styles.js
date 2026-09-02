@@ -48,7 +48,7 @@ const TitleWrapper = styled.div`
     }
   }
 
-  @media (min-width: ${({ breakpoint }) => breakpointMap[breakpoint]}) {
+  @media (min-width: ${({ $breakpoint }) => breakpointMap[$breakpoint]}) {
     line-height: 1;
     font-weight: 700;
     padding: 0;

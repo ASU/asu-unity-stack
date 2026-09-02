@@ -143,7 +143,7 @@ const ASUHeader = ({
     const Wrapper = renderDiv === "true" ? HeaderDiv : Header;
 
     return (
-      <Wrapper id="asuHeader" breakpoint={breakpoint} ref={headerRef}>
+      <Wrapper id="asuHeader" $breakpoint={breakpoint} ref={headerRef}>
         <HeaderMain />
       </Wrapper>
     );

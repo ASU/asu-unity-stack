@@ -70,7 +70,7 @@ const UniversalNavbar = () => {
   return (
     <Wrapper
       // @ts-ignore
-      breakpoint={breakpoint}
+      $breakpoint={breakpoint}
       className={CLASS_NAMES.UNIVERSAL_NAV}
       data-testid="universal-navbar"
       data-elastic-exclude="data-elastic-exclude"
