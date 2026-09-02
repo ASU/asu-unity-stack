@@ -1,6 +1,6 @@
 {
   "name": "@asu/unity-core",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type": "module",
   "description": "ASU Unity Design System web components library and global styles. Part of the UDS Code Kit.",
   "main": "dist/unity-core.js",
@@ -19,6 +19,9 @@
     },
     "./card": {
       "import": "./dist/components/uds-card.js"
+    },
+    "./ga-event-wrapper": {
+      "import": "./dist/components/uds-ga-event-wrapper.js"
     },
     "./tokens.css": "./dist/tokens.css",
     "./base.css": "./dist/base.css"
@@ -54,12 +57,12 @@
     "vite": "^6.0.0",
     "vitest": "^3.0.0"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "files": [
     "dist/",
     "tokens/",
     "README.md"
-  ]
+  ],
+  "volta": {
+    "extends": "../../package.json"
+  }
 }

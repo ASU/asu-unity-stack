@@ -1,0 +1,103 @@
+import { Meta, Controls, Primary, Stories, Description } from '@storybook/blocks';
+import * as GaWrapperStories from './uds-ga-event-wrapper.stories';
+
+<Meta of={GaWrapperStories} />
+
+# GaEventWrapper
+
+<Description of={GaWrapperStories} />
+
+## Interactive Example
+
+<Primary />
+
+<Controls />
+
+## All Stories
+
+<Stories includePrimary={false} />
+
+---
+
+## Framework Usage
+
+Complete examples showing all available properties. `gaData` is an object and
+must be set as a **property** (not an attribute).
+
+### HTML
+
+```html
+<uds-ga-event-wrapper id="apply-cta">
+  <a href="/apply">Apply now</a>
+</uds-ga-event-wrapper>
+
+<script type="module">
+  document.getElementById('apply-cta').gaData = {
+    text: 'Apply now',
+    name: 'onclick',
+    event: 'link',
+    action: 'apply cta',
+    type: 'click',
+    region: 'main content',
+    section: 'hero',
+    component: 'cta',
+  };
+</script>
+
+<!-- With a prefix (emits data-ga-header-*) -->
+<uds-ga-event-wrapper id="nav" prefix="header">
+  <button type="button">Menu</button>
+</uds-ga-event-wrapper>
+```
+
+### Drupal / Twig
+
+```twig
+<uds-ga-event-wrapper
+  id="cta-{{ id }}"
+  {% if prefix %}prefix="{{ prefix }}"{% endif %}
+>
+  <a href="{{ url }}">{{ label }}</a>
+</uds-ga-event-wrapper>
+
+<script type="module">
+  document.getElementById('cta-{{ id }}').gaData = {
+    text: {{ label|json_encode|raw }},
+    event: 'link',
+    action: {{ ga_action|default('cta')|json_encode|raw }},
+    component: {{ component|default('cta')|json_encode|raw }},
+  };
+</script>
+```
+
+### React / JSX
+
+```tsx
+import '@asu/unity-core/ga-event-wrapper';
+import { useRef, useEffect } from 'react';
+
+function ApplyCta() {
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (ref.current) {
+      (ref.current as any).gaData = {
+        text: 'Apply now',
+        name: 'onclick',
+        event: 'link',
+        action: 'apply cta',
+        type: 'click',
+        region: 'main content',
+        section: 'hero',
+        component: 'cta',
+      };
+    }
+  }, []);
+
+  return (
+    <uds-ga-event-wrapper ref={ref}>
+      <a href="/apply">Apply now</a>
+    </uds-ga-event-wrapper>
+  );
+}
+```
