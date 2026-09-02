@@ -1,6 +1,10 @@
 // @ts-check
 
 /**
+ * @typedef {import('./shared-types').ButtonProps} ButtonProps
+ */
+
+/**
  * @typedef {Object} ImageComponentProps
  * @property {string} src
  * @property {string} alt
@@ -15,6 +19,7 @@
  * @property {string} [title]
  * @property {string} [caption]
  * @property {string} [captionTitle]
+ * @property {ButtonProps[]} [buttons]
  * @property {boolean} [border]
  * @property {boolean} [dropShadow]
  */
