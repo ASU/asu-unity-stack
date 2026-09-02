@@ -594,7 +594,7 @@
 <main>
   <div class="wrap">
     <div class="note ok" style="margin-bottom: 16px;">
-              Using <code>react-docgen-typescript</code>. Generation took <strong>1.4s</strong>.
+              Using <code>react-docgen-typescript</code>. Generation took <strong>1.6s</strong>.
             </div>
     <h2 class="section-title">Components</h2>
     <div class="grid" role="list">
@@ -1584,7 +1584,7 @@ import { BrowserRouter as Router } from "react-router-dom";</code></pre>
     <div class="title">
       <h2><span class="status-dot dot-ok"></span> ButtonIconOnly</h2>
       <div class="badges">
-        <label for="c-5-components-buttonicononly-props" class="badge ok as-toggle">8 prop types</label>
+        <label for="c-5-components-buttonicononly-props" class="badge ok as-toggle">9 prop types</label>
         <label for="c-5-components-buttonicononly-info" class="badge info as-toggle">1 info</label>
         <label for="c-5-components-buttonicononly-stories" class="badge ok as-toggle">4 stories</label>
         
@@ -1620,11 +1620,13 @@ import { BrowserRouter as Router } from "react-router-dom";</code></pre>
           <div class="note ok">
             <div class="row">
               <span class="ex-name">Prop types <small>(react-docgen-typescript)</small></span>
-              <span class="badge ok">8 prop types</span>
+              <span class="badge ok">9 prop types</span>
             </div>
             <pre><code>Component: src/components/ButtonIconOnly/ButtonIconOnly.jsx::ButtonIconOnly</code></pre>
             <pre><code>Props:</code></pre>
-            <pre><code>cardTitle?: string
+            <pre><code>autoFocus?: boolean = undefined
+
+cardTitle?: string
 
 className?: string
 
@@ -4196,7 +4198,7 @@ listType?: ListComponentType = ListComponentType.UNORDERED</code></pre>
     <div class="title">
       <h2><span class="status-dot dot-err"></span> Modal</h2>
       <div class="badges">
-        <label for="c-22-components-modal-props" class="badge ok as-toggle">2 prop types</label>
+        <label for="c-22-components-modal-props" class="badge ok as-toggle">7 prop types</label>
         <label for="c-22-components-modal-info" class="badge info as-toggle">1 info</label>
         <label for="c-22-components-modal-stories" class="badge err as-toggle">1/1 story errors</label>
         
@@ -4232,13 +4234,41 @@ listType?: ListComponentType = ListComponentType.UNORDERED</code></pre>
           <div class="note ok">
             <div class="row">
               <span class="ex-name">Prop types <small>(react-docgen-typescript)</small></span>
-              <span class="badge ok">2 prop types</span>
+              <span class="badge ok">7 prop types</span>
             </div>
             <pre><code>Component: src/components/Modal/Modal.tsx::Modal</code></pre>
             <pre><code>Props:</code></pre>
-            <pre><code>gaData?: { name: string; event: string; action: string; type: string; region: string; section: string; ga: string; }
+            <pre><code>/**
+ * JSX for the content displayed within the modal
+ */
+children?: Element
 
-open?: boolean</code></pre>
+gaData?: { name: string; event: string; action: string; type: string; region: string; section: string; ga: string; }
+
+/**
+ * Modal open/closed state
+ */
+open?: boolean
+
+/**
+ * Style class for the default open modal button
+ */
+openModalButtonClassName?: string
+
+/**
+ * Display text for the default open modal button
+ */
+openModalButtonText?: string
+
+/**
+ * Custom JSX to replace the default open modal button
+ */
+openModalInput?: Element
+
+/**
+ * React useState custom setter
+ */
+setOpen?: Dispatch&lt;SetStateAction&lt;boolean&gt;&gt;</code></pre>
           </div>
         </div>
     
@@ -4253,13 +4283,13 @@ open?: boolean</code></pre>
               
               
               <pre><code>Expected render to be an arrow function or function expression
-  13 |
-  14 | export const Overview = {
-&gt; 15 |   render: modalTemplate.bind({}),
+  41 |
+  42 | export const Overview = {
+&gt; 43 |   render: modalTemplate.bind({}),
      |           ^^^^^^^^^^^^^^^^^^^^^^
-  16 |   name: &quot;Modal&quot;,
-  17 | };
-  18 |</code></pre>
+  44 |   name: &quot;Modal&quot;,
+  45 | };
+  46 |</code></pre>
             </div>
           
           
