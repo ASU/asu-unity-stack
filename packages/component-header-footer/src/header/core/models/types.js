@@ -38,12 +38,14 @@
 /**
  * @typedef {object} HeaderProps
  * @property {boolean} isPartner
+ * @property {boolean} [isUnbranded] - Renders the unbranded header: the ASU logo is replaced by unbrandedLogo, and the universal navbar keeps only the skip-nav and report-accessibility links, revealed on keyboard focus.
  * @property {NavTreeProps[]} navTree
  * @property {string} [title]
  * @property {string} [baseUrl]
  * @property {string} [parentOrg]
  * @property {string} [parentOrgUrl]
  * @property {Logo} partnerLogo
+ * @property {Logo} [unbrandedLogo] - Logo shown instead of the ASU logo when isUnbranded is true (src, alt, brandLink).
  * @property {Logo} logo
  * @property {boolean} loggedIn
  * @property {string} userName

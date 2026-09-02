@@ -8,7 +8,33 @@ import { CLASS_NAMES } from "../../../core/constants/classNames";
 import { LogoWrapper } from "./index.styles";
 
 const Logo = () => {
-  const { logo } = useAppContext();
+  const { logo, isUnbranded, unbrandedLogo } = useAppContext();
+
+  if (isUnbranded) {
+    return (
+      <LogoWrapper
+        href={unbrandedLogo?.brandLink ?? "/"}
+        className={CLASS_NAMES.NAVBAR_BRAND}
+        data-testid="logo"
+        onFocus={() => trackGAEvent({ text: "unbranded logo" })}
+      >
+        <img
+          className={CLASS_NAMES.LOGO_VERT}
+          src={unbrandedLogo?.src}
+          alt={unbrandedLogo?.alt ?? ""}
+          decoding="async"
+          fetchpriority="high"
+        />
+        <img
+          className={CLASS_NAMES.LOGO_HORIZ}
+          src={unbrandedLogo?.src}
+          alt={unbrandedLogo?.alt ?? ""}
+          decoding="async"
+          fetchpriority="high"
+        />
+      </LogoWrapper>
+    );
+  }
 
   return (
     <LogoWrapper
