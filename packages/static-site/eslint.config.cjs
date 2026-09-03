@@ -58,6 +58,9 @@ module.exports = [
 
   // Ignores
   {
-    ignores: ["**/dist", "**/.eslintrc.cjs", "**/vite.config.ts"],
+    // public/drop is unlisted static content dropped in via scripts/create-static-drop.js
+    // (arbitrary files provided by whoever is sharing them) - it's a passthrough
+    // static asset folder, not authored source code, so it shouldn't be linted.
+    ignores: ["**/dist", "**/.eslintrc.cjs", "**/vite.config.ts", "public/drop/**"],
   },
 ];

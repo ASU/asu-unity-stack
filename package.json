@@ -27,7 +27,8 @@
     "stop": "node server/server.stop.js",
     "prepare": "husky install",
     "commit": "cz",
-    "check-element-changes": "node ./packages/unity-react-core/scripts/check-element-changes.js"
+    "check-element-changes": "node ./packages/unity-react-core/scripts/check-element-changes.js",
+    "create-static-drop": "node scripts/create-static-drop.js"
   },
   "jest": {
     "preset": "jest-puppeteer",
