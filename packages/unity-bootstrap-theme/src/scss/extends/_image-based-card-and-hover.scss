@@ -86,6 +86,12 @@
     .content-holder {
       width: calc(100% - #{$uds-size-spacing-8});
       left: $uds-size-spacing-4;
+
+// Match the theme's standard focus treatment (see _misc.scss)
+        &:focus {
+          @include focus-ring;
+      }
+
       .content-bg {
         @include regular-transition;
         h3 {

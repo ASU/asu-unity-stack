@@ -5,6 +5,7 @@ import {
   faInstagramSquare,
   faLinkedin,
   faSquareXTwitter,
+  faTiktok,
   faYoutubeSquare,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -35,6 +36,7 @@ const Social = ({
       facebook: "",
       twitter: "",
       linkedIn: "",
+      tiktok: "",
       instagram: "",
       youtube: "",
     },
@@ -160,6 +162,25 @@ const Social = ({
                     />
                   </a>
                 )}
+                {mediaLinks.tiktok && (
+                  <a
+                    className="nav-link"
+                    href={mediaLinks.tiktok}
+                    data-testid="tiktok"
+                    onFocus={() =>
+                      trackGAEvent({
+                        ...DEFAULT_GA_EVENT,
+                        text: "tiktok icon",
+                      })
+                    }
+                  >
+                    <FontAwesomeIcon
+                      title="TikTok Social Media Icon"
+                      icon={faTiktok}
+                      className="social-icon"
+                    />
+                  </a>
+                )}
               </nav>
             </div>
           )}
@@ -176,6 +197,7 @@ Social.propTypes = {
       facebook: PropTypes.string,
       twitter: PropTypes.string,
       linkedIn: PropTypes.string,
+      tiktok: PropTypes.string,
       instagram: PropTypes.string,
       youtube: PropTypes.string,
     }),

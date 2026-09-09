@@ -23,6 +23,7 @@ UnitLogo.args = {
       twitter: "https://twitter.com/?lang=en",
       instagram: "https://instagram.com",
       linkedIn: "https://www.linkedin.com/",
+      tiktok: "https://www.tiktok.com/",
       youtube: "https://www.youtube.com/",
     },
   },

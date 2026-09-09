@@ -22,6 +22,7 @@
  * @property {string} [mediaLinks.twitter]
  * @property {string} [mediaLinks.instagram]
  * @property {string} [mediaLinks.linkedIn]
+ * @property {string} [mediaLinks.tiktok]
  * @property {string} [mediaLinks.youtube]
  */
 

@@ -78,8 +78,9 @@ Validate manually with `.kiro/scripts/validate-handoff.sh <path>`.
 
 ## Notes
 
-- Models are foundry defaults (Opus architect/orchestrator, Sonnet coder, GLM
-  reviewer, Sonnet vision). If a model id isn't available in your Kiro, it falls
+- Models are foundry defaults (Opus architect/orchestrator, Sonnet coder, GPT
+  reviewer, Sonnet vision). The reviewer uses a non-Anthropic family on purpose
+  for adversarial model diversity. If a model id isn't available in your Kiro, it falls
   back to the default — adjust `model` in `agents/acp-*.json` as needed.
 - `asu-brand` / `asu-design-a11y` are shared with Webspark (this copy is
   canonical). `asu-brand` is a candidate to upstream to the foundry later.

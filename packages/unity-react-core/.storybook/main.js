@@ -1,10 +1,11 @@
-import { dirname } from "path";
+import { dirname, resolve } from "path";
 import { fileURLToPath } from "url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 function getAbsolutePath(value) {
   return dirname(fileURLToPath(import.meta.resolve(value)));
 }
-
 export default {
   // staticDirs: ['../dist'],
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
@@ -26,5 +27,15 @@ export default {
 
   typescript: {
     reactDocgen: "react-docgen-typescript",
-  }
+  },
+
+  async viteFinal(config) {
+    config.server = config.server ?? {};
+    config.server.fs = config.server.fs ?? {};
+    config.server.fs.allow = [
+      ...(config.server.fs.allow ?? []),
+      resolve(__dirname, "../../"),
+    ];
+    return config;
+  },
 };

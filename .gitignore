@@ -122,6 +122,9 @@ tests/__image_snapshots__/__diff_output__
 !.yarn/versions
 *.env.*
 !.env.yarn.example
+!.env.example
+!.env.development
+!.env.production
 
 # --- Adversarial coding pipeline (project-local .kiro) ---
 # Committed: .kiro/agents, .kiro/skills, .kiro/hooks, .kiro/scripts,

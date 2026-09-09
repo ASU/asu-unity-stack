@@ -1,6 +1,6 @@
 {
   "name": "acp-reviewer",
-  "model": "glm-5",
+  "model": "gpt-5.6-terra",
   "description": "Three-phase adversarial code reviewer: spec compliance, attack surface analysis, and QA verification.",
   "prompt": "file://prompts/reviewer.md",
   "tools": ["fs_read", "execute_bash", "grep", "glob", "code"],

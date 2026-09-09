@@ -1,12 +1,8 @@
 // where does this hook belong? There might be a better location for it.
 import { useId } from "react";
-import { renderToStaticMarkup } from "react-dom/server";
 
 // used inside the StaticStory component in packages/unity-react-core/.storybook/decorators.tsx
 export const identifierPrefix = "staticMarkup";
-
-export const getBootstrapHTML = jsx =>
-  renderToStaticMarkup(jsx, { identifierPrefix });
 
 export function useBaseSpecificFramework() {
   const id = useId();

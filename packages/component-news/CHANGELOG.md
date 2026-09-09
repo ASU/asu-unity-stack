@@ -1,3 +1,10 @@
+# [@asu/component-news-v4.2.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-news-v4.2.1...@asu/component-news-v4.2.2) (2026-07-28)
+
+
+### Bug Fixes
+
+* **component-news:** correct stale @asu/unity-react-core dependency range ([d5f3869](https://github.com/asu/asu-unity-stack/commit/d5f3869740f833f8c35139e5af12fbea4449fb90))
+
 # [@asu/component-news-v4.2.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-news-v4.2.0...@asu/component-news-v4.2.1) (2026-04-08)
 
 

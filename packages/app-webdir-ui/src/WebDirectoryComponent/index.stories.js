@@ -4,6 +4,9 @@ import { WebDirectory } from "./index";
 
 import { FullLayout } from "@asu/shared";
 
+const API_URL = import.meta.env.VITE_API_URL;
+const searchApiVersion = import.meta.env.VITE_SEARCH_API_VERSION;
+
 export default {
   title: "Organisms/Web Directory/Templates",
   argTypes: {
@@ -50,8 +53,8 @@ export const webDirectoryExampleDepartments = args => {
           <WebDirectory
             searchType="departments"
             deptIds="1349,1353,32397,1518,1520,3534,1350,334996,1504,2000,2003,159390"
-            API_URL="https://asuapp2dev.prod.acquia-sites.com"
-            searchApiVersion="/api/v1/"
+            API_URL={API_URL}
+            searchApiVersion={searchApiVersion}
             filters={filters}
             display={{ ...display, grid: "false" }}
             alphaFilter={args.alphaFilter}
@@ -62,6 +65,9 @@ export const webDirectoryExampleDepartments = args => {
     </div>
   );
 };
+webDirectoryExampleDepartments.args = {
+  alphaFilter: "true",
+};
 
 export const webDirectoryExamplePeople = args => {
   return (
@@ -71,8 +77,8 @@ export const webDirectoryExamplePeople = args => {
           <WebDirectory
             searchType="people"
             ids="mcrow:454517,mdenke:1350,jagarc50:1350,lhillzev:1353"
-            API_URL="https://asuapp2dev.prod.acquia-sites.com/"
-            searchApiVersion="/api/v1/"
+            API_URL={API_URL}
+            searchApiVersion={searchApiVersion}
             display={display}
             alphaFilter={args.alphaFilter}
             // appPathFolder="/my/custom/path/to/component/root/example"
@@ -91,8 +97,8 @@ export const webDirectoryExampleDepartmentsAndPeople = args => {
           <WebDirectory
             searchType="people_departments"
             ids=",tgrandli:1344,mcrow:1343,jcunnin8:1358,ccherrer:1358,csmudde:1358"
-            API_URL="https://asuapp2dev.prod.acquia-sites.com/"
-            searchApiVersion="/api/v1/"
+            API_URL={API_URL}
+            searchApiVersion={searchApiVersion}
             display={display}
             alphaFilter={args.alphaFilter}
             // appPathFolder="/my/custom/path/to/component/root/example"
@@ -101,4 +107,7 @@ export const webDirectoryExampleDepartmentsAndPeople = args => {
       </div>
     </div>
   );
+};
+webDirectoryExampleDepartmentsAndPeople.args = {
+  alphaFilter: "true",
 };

@@ -1,7 +1,12 @@
 .uds-tabbed-panels {
+  --uds-tab-gap: #{$tabbed-panels-tab-gap};
+
   box-shadow: inset 0px -2px 0px 0px $asu-gray-4;
   flex-wrap: inherit;
-  overflow: hidden;
+
+  // allow dropdown to extend outside container
+  overflow: visible;
+
   position: relative;
   -webkit-overflow-scrolling: touch;
   white-space: nowrap;
@@ -10,43 +15,51 @@
     display: none;
   }
 
-  &:hover span.carousel-control-prev-icon,
-  &:hover span.carousel-control-next-icon {
-    @media screen and (min-width: $uds-breakpoint-lg) {
-      opacity: 1;
-    }
-  }
-
   .nav-tabs {
     display: flex;
     flex-wrap: inherit;
-    left: 0px;
     position: relative;
     transition: all 0.25s ease 0s;
     white-space: nowrap;
-    overflow-x: auto;
+
+    overflow: visible;
+
     scroll-behavior: smooth;
     -ms-overflow-style: none; // to hide scrollbar in IE and Edge
     scrollbar-width: none; // to hide scrollbar in Firefox
+
     &::-webkit-scrollbar {
       display: none; // to hide scrollbar In Chrome, Safari, Opera, and other WebKit-based browsers
     }
 
     .nav-link {
       color: #000;
-      padding: 0.2em 0.8em;
-      border-right: 0;
-      border-left: 0;
-      border-top: 0;
+      height: 41px;
+      padding: $tabbed-panels-tab-padding-top $tabbed-panels-tab-padding-x 0 $tabbed-panels-tab-padding-x;
+      margin: 0 0.5rem 0 0;
+
+      // Reset button styles
+      appearance: none;
+      background: transparent;
+      cursor: pointer;
+
+      // Simplified borders
+      border: none;
+      border-bottom: $tabbed-panels-active-border-width solid transparent;
+
       text-decoration: none;
-      font-weight: bold;
-      font-size: 24px;
-      margin: 0.2em 0.2em 0 0.2em;
+      font-weight: 400;
+      font-size: $tabbed-panels-font-size;
+      line-height: 24px;
     }
 
     .nav-link.active {
       background-color: transparent;
-      border-bottom: 8px solid $uds-color-base-maroon;
+
+      // Active tab indicator
+      border-bottom: $tabbed-panels-active-border-width solid $uds-color-base-maroon;
+
+      padding-bottom: 0;
     }
 
     .nav-link:hover,
@@ -63,8 +76,7 @@
 
       .nav-link.active {
         color: $uds-color-brand-gold;
-        background-color: transparent;
-        border-bottom: 8px solid $uds-color-brand-gold;
+        border-bottom: $tabbed-panels-active-border-width solid $uds-color-brand-gold;
       }
 
       .nav-link:hover,
@@ -73,80 +85,41 @@
       }
     }
 
-    &:hover span.carousel-control-prev-icon,
-    &:hover span.carousel-control-next-icon {
-      @media screen and (min-width: $uds-breakpoint-lg) {
-        opacity: 1;
-      }
+    .more-dropdown-button {
+      background: transparent;
+      color: $uds-color-brand-gold;
     }
-  }
-}
 
-.scroll-control {
-  &-prev {
-    outline: none;
-    border: none;
-    width: 80px;
-    position: absolute;
-    height: 100%;
-    top: 0;
-    background: linear-gradient(
-      90deg,
-      rgba(25, 25, 25, 0.25) 0%,
-      rgba(25, 25, 25, 0) 100%
-    );
-    left: 0;
-
-  }
-
-  &-next {
-    width: 80px;
-    position: absolute;
-    height: 100%;
-    top: 0;
-    right: 0;
-    background: linear-gradient(
-      90deg,
-      rgba(25, 25, 25, 0) 0%,
-      rgba(25, 25, 25, 0.25) 100%
-    );
-
-    span.carousel-control-next-icon {
-      margin: 0 12px 0 42px;
+    .more-dropdown-button.active {
+      border-bottom-color: $uds-color-brand-gold;
     }
-  }
 
-  &-prev span.carousel-control-prev-icon,
-  &-next span.carousel-control-next-icon {
-    background-size: 60% 60%;
-    display: block;
-    opacity: 1;
-    padding: 12px;
-    position: relative;
-    top: 50%;
-    left: 0;
-    transform: translate(0, -50%);
-    background-color: $asu-gray-7;
-    border: solid 1px $asu-gray-5;
-    border-radius: 100%;
-    color: #000;
-  }
-  @media screen and (max-width: $uds-breakpoint-md) {
-    &-prev,
-    &-next {
-      width: 48px;
+    .more-dropdown-icon {
+      color: $uds-color-brand-gold;
     }
-    &-next,
-    &-prev {
-    span.carousel-control-next-icon,
-    span.carousel-control-prev-icon
-    {
-      margin: 0px 12px 0px 8px;
+
+    .more-dropdown-menu {
+      background: $asu-gray-1;
+      border: 1px solid $asu-gray-5;
     }
-    span.carousel-control-prev-icon {
-      margin-left: 0px;
+
+    .more-dropdown-item {
+      color: $asu-gray-7;
     }
-  }
+
+    .more-dropdown-item:hover,
+    .more-dropdown-item:focus,
+    .more-dropdown-item:focus-visible {
+      color: $uds-color-brand-gold;
+    }
+
+    .more-dropdown-item[aria-current="true"] {
+      color: $uds-color-brand-gold;
+    }
+
+    .more-dropdown-item[aria-current="true"]::after {
+      background: $uds-color-brand-gold;
+    }
   }
 }
 
@@ -158,12 +131,159 @@
   margin-bottom: $uds-size-spacing-4;
 }
 
-.carousel-control-next-icon {
-  background-image: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' data-fa-i2svg=''><path fill='currentColor' d='M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z'></path></svg>");
-  background-position: 80% 50%;
+// ------- Nav control (prev/next scroll) buttons for TabbedPanels -------
+
+.uds-tab-nav-controls {
+  button {
+    padding: 16px 0;
+    border: none;
+    outline: none;
+  }
 }
 
-.carousel-control-prev-icon {
-  background-image: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512' data-fa-i2svg=''><path fill='currentColor' d='M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z'></path></svg>");
-  background-position: 60% 50%;
+// ------- More dropdown styles for TabbedPanels redesign -------
+
+.uds-more-dropdown {
+  position: relative;
+  margin-left: auto;
+  // Isolate from the nav's inset box-shadow so it doesn't bleed into the dropdown
+  isolation: isolate;
+}
+
+// Applied when there are no overflow tabs: keep the button in the layout (so its
+// width is still measurable) but hide it from view and pointer interaction.
+.uds-more-dropdown-hidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.more-dropdown-button {
+  padding: $tabbed-panels-tab-padding-top 4px 0 4px;
+  height: $tabbed-panels-tab-height;
+  align-items: center;
+  background: transparent;
+  border: none;
+  border-bottom: $tabbed-panels-active-border-width solid transparent;
+  color: $asu-gray-3;
+  cursor: pointer;
+  font-size: $tabbed-panels-font-size;
+  white-space: nowrap;
+}
+
+.more-dropdown-button-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 8px;
+  height: 17px;
+  line-height: 24px;
+}
+
+.more-dropdown-button.active {
+  border-bottom-color: $uds-color-base-maroon;
+}
+
+.more-dropdown-icon {
+  transition: transform 0.3s ease;
+}
+
+// Rotate the chevron from the button's [aria-expanded] state rather than a class
+// on the icon itself. FontAwesome's SVG-with-JS swaps the <i> for an <svg>,
+// which detaches the node React toggles a class on — so a class-based approach
+// silently fails in React. Both the React and vanilla layers set aria-expanded.
+.more-dropdown-button[aria-expanded="true"] .more-dropdown-icon {
+  transform: rotate(180deg);
+}
+
+.more-dropdown-menu {
+  padding: $uds-size-spacing-4;
+  position: absolute;
+  top: calc(#{$tabbed-panels-tab-height} + 2px);
+  right: 0;
+  left: auto;
+  width: $tabbed-panels-dropdown-width;
+  max-width: $tabbed-panels-dropdown-width;
+  max-height: $tabbed-panels-dropdown-max-height;
+  overflow-y: auto;
+  box-sizing: border-box;
+  background: $white;
+  border: 1px solid $asu-gray-4;
+  display: none;
+  flex-direction: column;
+  gap: $uds-size-spacing-2;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  &.open {
+    display: flex;
+  }
+}
+
+// When the container is narrower than 1200px and the dropdown fits to the right
+// within the 1200px content area, anchor the menu to the left of the button
+// instead of the default right-anchored. This is specified on the Figma
+.uds-more-dropdown.dropdown-open-right {
+  .more-dropdown-menu {
+    left: 0;
+    right: auto;
+  }
+}
+
+.uds-more-dropdown-list {
+  list-style: none;
+  margin: 0;
+}
+
+.uds-more-dropdown-list li {
+  margin: 0;
+  padding: 0;
+  border: none;
+  list-style: none;
+}
+
+.more-dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 0;
+  text-align: left;
+  background: transparent;
+  font-size: $tabbed-panels-font-size;
+  line-height: 24px;
+  color: #191919;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: normal;
+  border: none !important;
+}
+
+/* hover style */
+.more-dropdown-item:hover {
+  color: $uds-color-base-maroon;
+  text-decoration: underline;
+}
+
+/* focus-visible: use color + underline (same as hover) — avoids outline overflow artifacts */
+.more-dropdown-item:focus,
+.more-dropdown-item:focus-visible {
+  color: $uds-color-base-maroon;
+  text-decoration: underline;
+  outline: none;
+}
+.more-dropdown-item:focus:not(:focus-visible) {
+  outline: none;
+  text-decoration: none;
+  color: #191919;
+}
+
+.more-dropdown-item[aria-current="true"] {
+  color: #191919;
+}
+
+.more-dropdown-item[aria-current="true"]::after {
+  content: "";
+  display: block;
+  height: 8px;
+  background: $uds-color-base-maroon;
+  border: none;
+  margin-top: 4px;
 }

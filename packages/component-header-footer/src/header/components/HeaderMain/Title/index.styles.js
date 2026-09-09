@@ -15,7 +15,7 @@ const TitleWrapper = styled.div`
   letter-spacing: -1px;
   display: inline-block;
   margin: 0;
-  width: max-content;
+  width: fit-content;
 
   &.active {
     background-position: -200%;

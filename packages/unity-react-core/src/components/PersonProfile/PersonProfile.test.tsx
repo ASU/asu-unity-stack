@@ -115,7 +115,18 @@ describe("PersonProfile tests", () => {
     it("should use semantic HTML elements", () => {
       expect(component.container.querySelector("address")).toBeInTheDocument();
       expect(component.container.querySelector("h3")).toBeInTheDocument();
-      expect(component.container.querySelector("h4")).toBeInTheDocument();
+    });
+
+    it("should not render profession as headings", () => {
+      expect(
+        component.container.querySelector(".person-profession h4")
+      ).toBeNull();
+      const titles = component.container.querySelectorAll(
+        ".person-profession p.person-profession-title strong"
+      );
+      expect(titles).toHaveLength(2);
+      expect(titles[0]).toHaveTextContent("Regents Professor");
+      expect(titles[1]).toHaveTextContent("Edplus at ASU");
     });
   });
 });

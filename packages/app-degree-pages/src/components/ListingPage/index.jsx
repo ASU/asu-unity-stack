@@ -28,7 +28,7 @@ import {
 } from "../../core/models/app-prop-types";
 import { filterData, sortPrograms } from "../../core/services";
 import { urlResolver } from "../../core/utils";
-import { Breadcrumbs } from "../DetailPage/components/Breadcrumbs";
+import { Breadcrumbs } from "../../core/components/Breadcrumbs";
 import { BrowseTitle } from "./components/BrowseTitle";
 import { Filters, INITIAL_FILTER_STATE } from "./components/Filters";
 import { FiltersSummary } from "./components/FiltersSummary";

@@ -27,7 +27,6 @@ export const FilterContainer = styled.fieldset`
       display: none;
     }
     .choice {
-      min-width: 24px;
       min-height: 24px;
       &:hover {
         text-decoration: none;
@@ -37,13 +36,11 @@ export const FilterContainer = styled.fieldset`
       border: none;
       background-color: transparent;
       color: #8c1d40;
-      &:is(:first-child) {
-        padding-left: 0px;
-      }
       white-space: nowrap;
-      margin: 0 8px;
+      margin: 0 3px;
       padding: 6px 12px;
-      &.selected {
+      &.selected,
+      &[aria-checked="true"] {
         color: white;
         z-index: 3;
         background-color: #8c1d40;

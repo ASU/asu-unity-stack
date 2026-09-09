@@ -31,7 +31,7 @@ import { SidebarMenu } from "../src/components/SidebarMenu/SidebarMenu";
 import { SystemAlert } from "../src/components/SystemAlert/SystemAlert";
 import { Table } from "../src/components/Tables/Tables";
 import { Loader } from "../src/components/Loader/Loader";
-import { getBootstrapHTML } from "../src/components/GaEventWrapper/useBaseSpecificFramework.js";
+import { getBootstrapHTML } from "../src/components/GaEventWrapper/getBootstrapHTML.js";
 import { initializeServerEnvironment, cleanupServerEnvironment } from "./server-utils.js";
 import fs from "fs";
 import path from "path";

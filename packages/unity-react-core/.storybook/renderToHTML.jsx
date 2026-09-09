@@ -1,5 +1,5 @@
 
-import { getBootstrapHTML } from '../src/components/GaEventWrapper/useBaseSpecificFramework.js';
+import { getBootstrapHTML } from '../src/components/GaEventWrapper/getBootstrapHTML.js';
 import { formatCode } from './formatCode.js';
 
 export { formatCode };

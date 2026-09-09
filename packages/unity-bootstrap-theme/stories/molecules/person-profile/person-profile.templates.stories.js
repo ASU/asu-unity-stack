@@ -53,12 +53,12 @@ const PersonProfile = ({ size, fill }) => (
     <div className="person">
       <h3 className="person-name">John Smith</h3>
       <div className="person-profession">
-        <h4>
-          <span>Regents Professor</span>
-        </h4>
-        <h4>
-          <span>Edplus at ASU</span>
-        </h4>
+        <p className="person-profession-title">
+          <strong>Regents Professor</strong>
+        </p>
+        <p className="person-profession-title">
+          <strong>Edplus at ASU</strong>
+        </p>
       </div>
       {size !== "micro" && (
         <ul className="person-contact-info">

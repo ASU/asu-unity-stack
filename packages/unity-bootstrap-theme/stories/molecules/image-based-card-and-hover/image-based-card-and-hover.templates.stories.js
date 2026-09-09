@@ -14,7 +14,7 @@ export const ImageBasedCardsWithCTA = () => (
     <div className="image-holder">
       <img src={cardsImage} alt="alt text" loading="lazy" decoding="async" />
     </div>
-    <div className="content-holder">
+    <div tabindex="0" className="content-holder">
       <div className="content-bg">
         <h3>Serving all learners at every stage of life</h3>
         <div className="hidden-details">

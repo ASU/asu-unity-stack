@@ -11,7 +11,7 @@ import { initGlobalHeader } from "./global-header.js";
 import { initHeroesVideo } from "./heroes-video.js";
 import { initImageParallax } from "./image-parallax.js";
 import { initModals } from "./modals.js";
-import { initTabbedPanels } from "./tabbed-panels.js";
+import { initTabbedPanelsV2 } from "./tabbed-panels-v2.js";
 import { initFixedTable } from "./tables.js";
 import { initTooltips } from "./tooltips.js";
 import { initVideo } from "./video.js";
@@ -30,7 +30,7 @@ const unityBootstrap = {
   initImageParallax,
   initModals,
   initRankingCard,
-  initTabbedPanels,
+  initTabbedPanelsV2,
   initTooltips,
   initVideo,
   initCardBodies,

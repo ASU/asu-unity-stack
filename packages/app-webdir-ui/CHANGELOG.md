@@ -1,3 +1,24 @@
+# [@asu/app-webdir-ui-v5.0.18](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.17...@asu/app-webdir-ui-v5.0.18) (2026-08-07)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** render profile card title as bold text instead of h4 ([f7fb027](https://github.com/asu/asu-unity-stack/commit/f7fb02750db7b2a457beb6b107e5ce970f31ae61))
+
+# [@asu/app-webdir-ui-v5.0.17](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.16...@asu/app-webdir-ui-v5.0.17) (2026-07-28)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** fix nav controls and anon image for webdir ([0e68046](https://github.com/asu/asu-unity-stack/commit/0e680469219ebb656f5e4da74130d0e9e1bc1b04))
+
+# [@asu/app-webdir-ui-v5.0.16](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.15...@asu/app-webdir-ui-v5.0.16) (2026-07-25)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** fix alpha scrolling ([c7c8944](https://github.com/asu/asu-unity-stack/commit/c7c8944405e676396bee80935ba21d9d96234f21))
+
 # [@asu/app-webdir-ui-v5.0.15](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.14...@asu/app-webdir-ui-v5.0.15) (2026-07-06)
 
 

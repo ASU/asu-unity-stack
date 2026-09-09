@@ -85,12 +85,12 @@ const PersonProfile: React.FC<PersonProfileProps> = ({
       <div className="person">
         <h3 className="person-name">{name}</h3>
         <div className="person-profession">
-          <h4>
-            <span>{profession.title}</span>
-          </h4>
-          <h4>
-            <span>{profession.department}</span>
-          </h4>
+          <p className="person-profession-title">
+            <strong>{profession.title}</strong>
+          </p>
+          <p className="person-profession-title">
+            <strong>{profession.department}</strong>
+          </p>
         </div>
 
         <ul className="person-contact-info">
