@@ -44,7 +44,7 @@ const SearchInput = ({
     onChange: handleInputChange,
     onBlur: onBlur,
     style: {
-      paddingLeft: hasInputValue && isMobile ? "1rem" : undefined,
+      paddingLeft: hasInputValue ? ".5rem" : undefined,
       ...style,
     },
   };
