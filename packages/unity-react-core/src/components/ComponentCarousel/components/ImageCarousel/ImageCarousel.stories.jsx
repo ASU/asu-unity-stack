@@ -4,6 +4,13 @@ import React from "react";
 import { imageCarouselItems } from "../../../../../__mocks__/data/props-mock";
 import { ImageCarousel } from "./ImageCarousel";
 
+const cardCarouselBgColorClassName = {
+  "None": "",
+  "Gray 1": "gray-faint-bg",
+  "Gray 2": "gray-light-bg",
+  "Gray 7": "gray-dark-bg",
+};
+
 const mockItemWithContent = () =>
   imageCarouselItems.map(item => ({
     ...item,
@@ -43,6 +50,18 @@ export default {
     perView: {
       control: { type: "range", min: 1, max: 3, step: 1 },
     },
+    bgColor: {
+      name: "Background color of the section",
+      description:
+        "Background color is not applied to the component, but to the section wrapper.",
+      options: Object.keys(cardCarouselBgColorClassName),
+      control: {
+        type: "radio",
+      },
+    },
+  },
+  parameters: {
+    /*controls: { disable: true }*/
   },
 };
 
@@ -50,11 +69,13 @@ const maxWidth = "800px";
 // const maxHeight = "600px";
 
 /**
- * @param {{ imageItems: Array, perView: number}} props
+ * @param {{ imageItems: Array, perView: number, bgColor: string}} props
  * @returns { JSX.Element}
  */
-const Wrapper = ({ imageItems, perView }) => (
+const Wrapper = ({ imageItems, perView, bgColor }) => (
   <div
+    // @ts-ignore
+    className={cardCarouselBgColorClassName[bgColor]}
     style={
       {
         // setting display flex the 'maxHeight' gets applied but the carousel squashes
@@ -67,6 +88,8 @@ const Wrapper = ({ imageItems, perView }) => (
       perView={perView}
       maxWidth={maxWidth}
       imageItems={imageItems}
+      // @ts-ignore
+      bgColor={cardCarouselBgColorClassName[bgColor]}
     />
   </div>
 );

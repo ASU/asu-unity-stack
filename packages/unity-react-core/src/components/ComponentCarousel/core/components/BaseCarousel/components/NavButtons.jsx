@@ -35,7 +35,8 @@ BaseNavButtonContainer.propTypes = {
  * }} props
  * @returns
  */
-const NavButtons = ({ onClick = () => null, children = null }) => (
+const NavButtons = ({ onClick = () => null, children = undefined }) => (
+  // @ts-ignore
   <BaseNavButtonContainer>
     <GaEventWrapper gaData={{ ...defaultGAEvent, text: "left chevron" }}>
       <PrevButton onClick={onClick} />
