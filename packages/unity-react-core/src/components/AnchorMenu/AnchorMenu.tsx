@@ -1,11 +1,6 @@
-// @ts-check
 /**
- *
- *
  * TODO: Does not work with Bootstrap Framework
  * Requires functionality UDS-1664
- *
- *
  */
 import {
   debounce,
@@ -31,24 +26,47 @@ const defaultMobileGAEvent = {
   text: menuTitle,
 };
 
-/**
- * @typedef { import('../../core/types/shared-types').AnchorMenuProps } AnchorMenuProps
- */
+export interface AnchorMenuItem {
+  text: string;
+  targetIdName: string;
+  icon?: string[];
+}
 
-/**
- * @param {AnchorMenuProps} props
- * @returns {JSX.Element}
- */
-export const AnchorMenu = ({
+export interface AnchorMenuProps {
+  /**
+   * Anchor menu items
+   */
+  items: AnchorMenuItem[];
+  /**
+   * First next sibling element of the anchor menu
+   */
+  firstElementId: string;
+  /**
+   * If true it focus the first focusable element into the section
+   * If false it focus the next menu item into the nav bar
+   */
+  focusFirstFocusableElement?: boolean;
+}
+
+interface AnchorMenuState {
+  hasHeader: boolean;
+  hasAltMenuSpacing: boolean;
+  containerClass: string;
+  activeContainer: string;
+  showMenu: boolean;
+  sticky: boolean;
+}
+
+export const AnchorMenu: React.FC<AnchorMenuProps> = ({
   items,
   firstElementId,
   focusFirstFocusableElement = false,
 }) => {
   const { isReact, isBootstrap } = useBaseSpecificFramework();
 
-  const anchorMenuRef = useRef(null);
+  const anchorMenuRef = useRef<HTMLDivElement | null>(null);
   const isSmallDevice = useMediaQuery("(max-width: 991px)");
-  const [state, setState] = useState({
+  const [state, setState] = useState<AnchorMenuState>({
     hasHeader: false,
     hasAltMenuSpacing: false,
     containerClass: "container-xl",
@@ -57,18 +75,18 @@ export const AnchorMenu = ({
     sticky: false,
   });
 
-  const getPageHeader = () =>
+  const getPageHeader = (): HTMLElement | null =>
     document.getElementById("asu-header") ||
     document.getElementById("headerContainer") ||
     document.getElementById("asuHeader");
 
-  const getHeaderBottomOffset = () => {
+  const getHeaderBottomOffset = (): number => {
     const pageHeader = getPageHeader();
     return Math.max(pageHeader?.getBoundingClientRect().bottom || 0, 0);
   };
 
   const handleWindowScroll = () => {
-    const newState = {};
+    const newState: Partial<AnchorMenuState> = {};
     const curPos = window.scrollY;
     const headerBottomOffset = getHeaderBottomOffset();
     // Select first next sibling element of the anchor menu
@@ -78,11 +96,14 @@ export const AnchorMenu = ({
     const anchorMenuHeight = 103;
 
     // Scroll position
-    if (firstElement >= 0) {
+    if (firstElement !== undefined && firstElement >= 0) {
       newState.sticky = false;
       newState.activeContainer = "";
     }
-    if (curPos > anchorMenuRef.current.getBoundingClientRect().top)
+    if (
+      anchorMenuRef.current &&
+      curPos > anchorMenuRef.current.getBoundingClientRect().top
+    )
       newState.sticky = true;
 
     // Change active containers on scroll
@@ -91,9 +112,10 @@ export const AnchorMenu = ({
       : anchorMenuHeight;
     items?.forEach(({ targetIdName }) => {
       const container = document.getElementById(targetIdName);
-      const containerTop = container?.getBoundingClientRect().top - subsHeight;
+      if (!container) return;
+      const containerTop = container.getBoundingClientRect().top - subsHeight;
       const containerBottom =
-        container?.getBoundingClientRect().bottom - subsHeight;
+        container.getBoundingClientRect().bottom - subsHeight;
       if (containerTop < 0 && containerBottom > 0) {
         newState.activeContainer = targetIdName;
       }
@@ -114,14 +136,14 @@ export const AnchorMenu = ({
   };
 
   // Is ASU Header on the document
-  const isHeader = () => {
+  const isHeader = (): boolean => {
     const pageHeader = getPageHeader();
     return !!pageHeader;
   };
 
   // Is element present which requires different spacing for the ASU Header
   // Sets prop for styled-component to change anchor menu style
-  const isAltMenuSpacing = () => {
+  const isAltMenuSpacing = (): boolean => {
     const degreeDetailPageContainer = document.getElementById(
       "degreeDetailPageContainer"
     );
@@ -129,7 +151,7 @@ export const AnchorMenu = ({
   };
 
   // Returns the first container class found from ancestors or default
-  function getContainerClass(el = null) {
+  function getContainerClass(el: HTMLElement | null = null): string {
     if (el === null) return state.containerClass;
 
     const result = Object.values(el.classList).filter(c =>
@@ -168,24 +190,85 @@ export const AnchorMenu = ({
     return () => window.removeEventListener("scroll", throttleWindowScroll);
   }, [state.hasHeader]);
 
-  const handleClickLink = container => {
+  const moveFocusToTarget = (target: HTMLElement) => {
+    if (focusFirstFocusableElement) {
+      const firstFocusable = queryFirstFocusable(`#${target.id}`);
+      if (firstFocusable) {
+        (firstFocusable as HTMLElement).focus({ preventScroll: true });
+        return;
+      }
+    }
+    if (!target.hasAttribute("tabindex")) {
+      target.setAttribute("tabindex", "-1");
+      target.style.outline = "none";
+    }
+    target.focus({ preventScroll: true });
+  };
+
+  const closeMobileMenu = () => {
+    setState(prevState => ({
+      ...prevState,
+      showMenu: false,
+    }));
+
+    if (typeof window !== "undefined") {
+      const collapseEl = document.getElementById("collapseAnchorMenu");
+      if (collapseEl?.classList.contains("show")) {
+        try {
+          const bsCollapse =
+            // @ts-ignore
+            window.bootstrap?.Collapse?.getOrCreateInstance?.(collapseEl) ||
+            // @ts-ignore
+            window.bootstrap?.Collapse?.getInstance?.(collapseEl);
+          bsCollapse?.hide();
+        } catch {
+          // Fallback if Bootstrap plugin throws
+        }
+      }
+    }
+  };
+
+  const handleClickLink = (container: string) => {
+    const target = document.getElementById(container);
+    if (!target) {
+      console.warn(`Anchor target "#${container}" no longer exists in DOM`);
+      closeMobileMenu();
+      return;
+    }
+
     const headerBottomOffset = getHeaderBottomOffset();
-    // Set scroll position considering if ASU Header is setted or not
+    const navbarHeight = isSmallDevice ? 50 : 90;
+    const topOffset = headerBottomOffset + navbarHeight;
+    const targetTop = target.getBoundingClientRect().top;
+    const viewportMid = window.innerHeight / 2;
+
+    // For the first anchor item, skip scrolling if the section top is already clearly visible
+    const isFirstAnchor =
+      items?.length > 0 && items[0].targetIdName === container;
+    if (isFirstAnchor && targetTop >= topOffset && targetTop <= viewportMid) {
+      moveFocusToTarget(target);
+      closeMobileMenu();
+      return;
+    }
+
+    // Set scroll position considering if ASU Header is set or not
     const curScroll =
       window.scrollY - (state.hasHeader ? headerBottomOffset + 100 : 100);
-    const anchorMenuHeight = isSmallDevice ? 410 : 90;
+    // Since the mobile menu closes immediately, use the collapsed menu height (~50px on mobile, ~90px on desktop)
+    const anchorMenuHeight = isSmallDevice ? 50 : 90;
     // Set where to scroll to
-    let scrollTo =
-      document.getElementById(container)?.getBoundingClientRect().top +
-      curScroll;
+    let scrollTo = target.getBoundingClientRect().top + curScroll;
 
-    if (!anchorMenuRef.current.classList.contains("sticky"))
+    if (!anchorMenuRef.current?.classList.contains("sticky"))
       scrollTo -= anchorMenuHeight;
 
-    if (focusFirstFocusableElement)
-      queryFirstFocusable(`#${container}`)?.focus();
-
     window.scrollTo({ top: scrollTo, behavior: "smooth" });
+
+    // Move focus to target section so keyboard/screen-reader users maintain focus order (WCAG 2.4.3)
+    moveFocusToTarget(target);
+
+    // Close the mobile menu on link selection (UDS-2176)
+    closeMobileMenu();
   };
 
   const handleMenuVisibility = () => {
@@ -196,16 +279,16 @@ export const AnchorMenu = ({
   };
 
   const headerBottomOffset = state.hasHeader ? getHeaderBottomOffset() : 0;
+  // @ts-ignore
   const WrapperComponent = isBootstrap ? "div" : AnchorMenuWrapper;
   const wrapperProps = isBootstrap
     ? {}
     : {
-        // @ts-ignore
         requiresAltMenuSpacing: state.hasAltMenuSpacing,
       };
 
   return (
-    items?.length > 0 && (
+    (items?.length > 0 && (
       <WrapperComponent
         {...wrapperProps}
         ref={anchorMenuRef}
@@ -279,16 +362,17 @@ export const AnchorMenu = ({
                   label={item.text}
                   icon={item.icon}
                   onClick={
-                    isReact && (() => handleClickLink(item.targetIdName))
+                    isReact ? () => handleClickLink(item.targetIdName) : undefined
                   }
-                  href={isBootstrap && `#${item.targetIdName}`}
+                  href={isBootstrap ? `#${item.targetIdName}` : undefined}
                 />
               ))}
             </nav>
           </div>
         </div>
       </WrapperComponent>
-    )
+    )) ||
+    null
   );
 };
 
