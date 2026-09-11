@@ -4,6 +4,23 @@ import React from "react";
 import { Form, formBackground } from "../Form/Form";
 import { Radios } from "./Radio";
 
+const options = {
+    groupLabel: "A Group of Radios",
+    name: "exampleRadios",
+    // validMessage: "Success message",
+    // invalidMessage: "Form error message",
+    options: [
+      { "label": "Default radio", "data-ga-input-section": "Default radio" },
+      { "label": "Second default radio", "data-ga-input-section": "" },
+      { "label": "Third default radio", "data-ga-input-section": "" },
+      {
+        "label": "Disabled radio",
+        "disabled": true,
+        "data-ga-input-section": "",
+      },
+    ],
+  }
+
 const meta: Meta<{ background?: typeof formBackground }> = {
   title: "Components/Form/Radios",
   component: Radios,
@@ -23,7 +40,7 @@ const meta: Meta<{ background?: typeof formBackground }> = {
       options: formBackground,
     },
   },
-  args: {},
+  args: {options},
   decorators: [
     (Story, { args: { background, ...rest } }) => (
       // @ts-expect-error
