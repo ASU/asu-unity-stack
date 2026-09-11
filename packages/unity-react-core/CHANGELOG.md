@@ -1,3 +1,16 @@
+# [@asu/unity-react-core-v2.4.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.3.0...@asu/unity-react-core-v2.4.0) (2026-09-11)
+
+
+### Bug Fixes
+
+* **unity-react-core:** button on cards fixed missing breakline ([7bb58c6](https://github.com/ASU/asu-unity-stack/commit/7bb58c679a9b114b53396d89d07886bd974f1299))
+
+
+### Features
+
+* **unity-react-core:** card Carousel active bullet indicator invisible on dark gray background ([45dcd78](https://github.com/ASU/asu-unity-stack/commit/45dcd7896912cefe0268d3c656ef71c3129e11a6))
+* **unity-react-core:** css update for handling light and dark bullet and arrow button styles ([089b705](https://github.com/ASU/asu-unity-stack/commit/089b70501f732bb19f10623882f22ec6365ebfb8))
+
 # [@asu/unity-react-core-v2.3.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.2.1...@asu/unity-react-core-v2.3.0) (2026-09-01)
 
 
