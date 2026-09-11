@@ -44,8 +44,8 @@ $uds-hero-gradient-overlay: linear-gradient(
 }
 
 @mixin like-h3-highlight-gold {
-  box-shadow: -0.15em 0 0 #ffc627, 0.15em 0 0 #ffc627;
-  background: #ffc627;
+  box-shadow: -0.15em 0 0 $uds-color-base-gold, 0.15em 0 0 $uds-color-base-gold;
+  background: $uds-color-base-gold;
   color: #191919;
 }
 
