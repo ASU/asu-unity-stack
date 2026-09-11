@@ -88,4 +88,23 @@ describe("ProfileCard", () => {
     expect(img).toHaveAttribute("src", ANON_IMG_URL);
     expect(img).not.toBeVisible();
   });
+
+  it("should not render the social media list when there are no social links", () => {
+    const { container } = render(
+      <ProfileCard {...defaultProps} shortBio="A short bio with no socials" />
+    );
+    expect(container.querySelector("ul.person-social-medias")).toBeNull();
+    expect(container.querySelector(".person-description")).toHaveTextContent(
+      "A short bio with no socials"
+    );
+  });
+
+  it("should render the social media list when at least one social link exists", () => {
+    const { container } = render(
+      <ProfileCard {...defaultProps} linkedinLink="https://linkedin.com/in/x" />
+    );
+    const list = container.querySelector("ul.person-social-medias");
+    expect(list).toBeInTheDocument();
+    expect(list.querySelectorAll("li")).toHaveLength(1);
+  });
 });
