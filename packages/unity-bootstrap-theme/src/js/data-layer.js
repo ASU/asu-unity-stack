@@ -124,7 +124,8 @@ function initDataLayer() {
           break;
         case "radio button":
           // elements with attribute [data-ga-input="radio button"]
-          text = e.target.labels[0].textContent || "";
+          text = e.target?.nextElementSibling?.textContent??"";
+          // text = e.target.labels[0].textContent || "";
           break;
         case "blur":
           // elements with attribute [data-ga-input="blur"]
@@ -144,7 +145,7 @@ function initDataLayer() {
         event: event.toLowerCase(),
         action: action.toLowerCase(),
         type: type.toLowerCase(),
-        section: section.toLowerCase(),
+        section: section?.toLowerCase(),
         region: region.toLowerCase(),
         text: text.toLowerCase(),
       });

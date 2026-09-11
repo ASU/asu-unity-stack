@@ -5,7 +5,10 @@ form.uds-form {
     margin: 0 0 $uds-size-spacing-4 0;
   }
 
-  --invalid-feedback-light-background: #{map-get(map-get($form-validation-states, 'invalid'), 'color')};
+  --invalid-feedback-light-background: #{map-get(
+      map-get($form-validation-states, "invalid"),
+      "color"
+    )};
 
   /* Labels */
   label,
@@ -15,7 +18,9 @@ form.uds-form {
     font-size: $uds-size-spacing-2;
     margin-bottom: 0.5rem;
     // Labels for required fields.
-    svg, i, span {
+    svg,
+    i,
+    span {
       &.uds-field-required {
         font-size: $uds-size-spacing-1;
         margin-right: 0.25rem;
@@ -28,11 +33,11 @@ form.uds-form {
       color: $asu-gray-2;
     }
 
-    &.form-check-label::before{
+    &.form-check-label::before {
       margin-left: 0.4rem;
     }
 
-    &.form-check-label::after{
+    &.form-check-label::after {
       margin-left: 0.4rem;
     }
   }
@@ -74,14 +79,16 @@ form.uds-form {
   input:focus,
   textarea:focus,
   select:focus {
-    outline: none!important;
+    outline: none !important;
     box-shadow: 0 0 0 1px $asu-gray-1 !important;
     border: 1px solid $asu-gray-1 !important;
     border-radius: none;
   }
 
   input[type="submit"]:focus {
-    box-shadow: $uds-color-base-white 0 0 0 2px, $asu-gray-1 0px 0px 0px 4px !important;
+    box-shadow:
+      $uds-color-base-white 0 0 0 2px,
+      $asu-gray-1 0px 0px 0px 4px !important;
     border: 0 !important;
   }
 
@@ -111,17 +118,117 @@ form.uds-form {
     }
   }
 
+  .form-radio {
+    margin-top: -0.5rem;
+    margin-left: 2.5rem;
+
+    label {
+      font-weight: normal !important;
+      margin: 0;
+      padding: 0;
+    }
+
+    label:has(input:disabled) {
+      opacity: 0.5;
+      color: $asu-gray-3;
+    }
+
+    input[type="radio"] {
+      all: unset;
+      appearance: none;
+      -webkit-appearance: none; /* For Safari support */
+      margin: 0;
+      width: calc(100% + $uds-size-spacing-3 + $uds-size-spacing-3);
+      height: $uds-size-spacing-3;
+      position: relative;
+      left: -1.85rem;
+      top: $uds-size-spacing-3;
+      display: grid;
+      place-content: center;
+      align-items: center;
+      justify-content: center;
+      pointer-events: all;
+      cursor: pointer;
+      // Outer border.
+        &::before {
+          content: "";
+          position: absolute;
+          display: inline-block;
+          border: 1px solid $asu-gray-3;
+          width: $uds-size-spacing-3;
+          height: $uds-size-spacing-3;
+          border-radius: 50%;
+        }
+        // Inner positioning for checked.
+        &::after {
+          content: "";
+          position: absolute;
+          display: inline-block;
+          left: 0.375rem;
+          width: 0.75rem;
+          height: 0.75rem;
+          background: none;
+          border-radius: 50%;
+        }
+
+      &:active {
+        border: none !important;
+        box-shadow: none !important;
+        &::before {
+          border: 2px solid #000;
+        }
+      }
+
+      &:disabled {
+        &::before {
+          background-color: $asu-gray-6;
+          border: 1px solid $asu-gray-3;
+        }
+      }
+
+      &:focus {
+        border: none !important;
+        box-shadow: none !important;
+      }
+
+      &:focus-visible {
+        border: none !important;
+        box-shadow: none !important;
+      }
+
+      &:checked {
+        border: none !important;
+        box-shadow: none !important;
+        &::before {
+          border: 2px solid #000;
+        }
+        &::after {
+          opacity: 1 !important;
+          background: black;
+        }
+      }
+    }
+    :disabled {
+      opacity: 0.5;
+      background: $asu-gray-6;
+      + label {
+        opacity: 0.5;
+        color: $asu-gray-3;
+      }
+    }
+  }
+
   .form-check {
     margin: 0 0 $uds-size-spacing-4 0;
 
-    input[type='radio'],
-    input[type='checkbox'] {
+    input[type="radio"],
+    input[type="checkbox"] {
       opacity: 0;
     }
 
     // Shared styling for Radios and Checkboxes.
-    input[type='radio'],
-    input[type='checkbox'] {
+    input[type="radio"],
+    input[type="checkbox"] {
       + label {
         font-weight: normal;
         position: relative;
@@ -132,7 +239,7 @@ form.uds-form {
 
         // Outer border.
         &::before {
-          content: '';
+          content: "";
           position: absolute;
           display: inline-block;
           left: -2.25rem;
@@ -143,7 +250,7 @@ form.uds-form {
         }
         // Inner positioning for checked.
         &::after {
-          content: '';
+          content: "";
           position: absolute;
           display: inline-block;
           left: -1.875rem;
@@ -175,7 +282,7 @@ form.uds-form {
     }
 
     // Radios only: make 'em round.
-    input[type='radio'] {
+    input[type="radio"] {
       + label {
         // Radio outer circle.
         &::before {
@@ -189,7 +296,7 @@ form.uds-form {
     }
 
     // Checkboxes only: check 'em.
-    input[type='checkbox'] {
+    input[type="checkbox"] {
       + label {
         // Adjust label ::before and ::after to get background-image svg
         // check centered right.
@@ -284,7 +391,9 @@ form.uds-form {
   .invalid-feedback {
     display: inline-block;
     font-weight: bold;
-    svg, i, span {
+    svg,
+    i,
+    span {
       // We don't implement svg icons as bkg images due to need for color
       // manipulation.
       color: var(--invalid-feedback-light-background);
@@ -323,7 +432,9 @@ form.uds-form {
   .valid-feedback {
     display: inline-block;
     font-weight: bold;
-    svg, i, span {
+    svg,
+    i,
+    span {
       // We don't implement svg icons as bkg images due to need for color
       // manipulation.
       color: $uds-color-font-dark-success;
@@ -333,7 +444,9 @@ form.uds-form {
 
   /* TRAILING ICON INPUT */
   .input-group-trailing-icon {
-    svg, i, span {
+    svg,
+    i,
+    span {
       position: absolute;
       right: 0.75rem;
       top: 0.75rem;
@@ -346,15 +459,17 @@ form.uds-form {
   &.uds-form-white {
     background-color: white;
   }
-  &.uds-form-gray1, &.uds-form-faint-bg {
+  &.uds-form-gray1,
+  &.uds-form-faint-bg {
     background-color: $asu-gray-7;
   }
-  &.uds-form-gray2, &.uds-form-light-bg {
+  &.uds-form-gray2,
+  &.uds-form-light-bg {
     background-color: $asu-gray-6;
     /* Dark Radios and Checkboxes */
     .form-check {
-      input[type='radio'],
-      input[type='checkbox'] {
+      input[type="radio"],
+      input[type="checkbox"] {
         &:disabled {
           + label::before {
             background: $asu-gray-4;
@@ -369,12 +484,16 @@ form.uds-form {
       }
     }
   }
-  &.uds-form-gray7, &.uds-form-dark-bg {
+  &.uds-form-gray7,
+  &.uds-form-dark-bg {
     background-color: $asu-gray-1;
     color: $asu-gray-7;
 
-    label, legend {
-      svg, i, span {
+    label,
+    legend {
+      svg,
+      i,
+      span {
         &.uds-field-required {
           color: $uds-color-base-gold;
         }
@@ -450,7 +569,7 @@ form.uds-form {
     select:focus {
       background-color: $asu-gray-1;
       color: $asu-gray-7;
-      outline: none!important;
+      outline: none !important;
       box-shadow: 0 0 0 1px $asu-gray-7 !important;
       border: 1px solid $asu-gray-7 !important;
       border-radius: none;
@@ -458,8 +577,8 @@ form.uds-form {
 
     /* Dark Radios and Checkboxes */
     .form-check {
-      input[type='radio'],
-      input[type='checkbox'] {
+      input[type="radio"],
+      input[type="checkbox"] {
         + label {
           // Outer border.
           &::before {
@@ -494,7 +613,7 @@ form.uds-form {
       }
 
       // Dark checkboxes only: check 'em.
-      input[type='checkbox'] {
+      input[type="checkbox"] {
         // Checkbox check for dark bkg.
         &:checked {
           + label::after {
@@ -525,7 +644,9 @@ form.uds-form {
     .invalid-feedback {
       font-weight: bold;
       color: $uds-color-font-dark-error;
-      svg, i, span {
+      svg,
+      i,
+      span {
         // We don't implement svg icons as bkg images due to need for color
         // manipulation.
         color: $uds-color-font-dark-error;
@@ -549,7 +670,9 @@ form.uds-form {
     .valid-feedback {
       font-weight: bold;
       color: $uds-color-base-green;
-      svg, i, span {
+      svg,
+      i,
+      span {
         // We don't implement svg icons as bkg images due to need for color
         // manipulation.
         color: $uds-color-base-green;
@@ -558,7 +681,9 @@ form.uds-form {
     }
 
     .input-group-trailing-icon {
-      svg, i, span {
+      svg,
+      i,
+      span {
         color: $asu-gray-7;
       }
     }
