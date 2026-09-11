@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v2.4.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.3.0...@asu/unity-bootstrap-theme-v2.4.0) (2026-09-11)
+
+
+### Features
+
+* **unity-react-core:** card Carousel active bullet indicator invisible on dark gray background ([45dcd78](https://github.com/ASU/asu-unity-stack/commit/45dcd7896912cefe0268d3c656ef71c3129e11a6))
+
 # [@asu/unity-bootstrap-theme-v2.3.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.2.3...@asu/unity-bootstrap-theme-v2.3.0) (2026-09-01)
 
 
