@@ -2,6 +2,7 @@ import { spreadClasses, sanitizeDangerousMarkup } from "@asu/shared";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import React from "react";
+import { Button } from "../Button/Button";
 
 // @ts-ignore
 
@@ -32,6 +33,7 @@ export const Image = ({
   title,
   caption,
   captionTitle,
+  buttons,
   border,
   dropShadow,
 }) => {
@@ -67,26 +69,57 @@ export const Image = ({
     );
   };
 
-  const renderFigure = () => (
-    <div className={borderAndDropShadowClasses}>
-      <figure className="figure uds-figure">
-        {renderImage()}
-        {caption && (
-          <figcaption className="figure-caption uds-figure-caption">
-            {captionTitle && <h3>{captionTitle}</h3>}
-            <span
-              className="uds-caption-text"
-              dangerouslySetInnerHTML={sanitizeDangerousMarkup(caption)}
-            />
-          </figcaption>
+  const renderButtons = () => {
+    return (
+      <>
+        {buttons && (
+          <div className="card-buttons" style={{marginTop: caption?20:0}}>
+            {buttons.map(button => (
+              <div
+                className="card-button"
+                data-testid="card-button"
+                key={`${button.label}-${button.href}`}
+              >
+                <Button
+                  ariaLabel={button.ariaLabel}
+                  color={button.color}
+                  icon={button.icon}
+                  href={button.href}
+                  label={button.label}
+                  onClick={button.onClick}
+                  size={button.size}
+                  target={button.target}
+                  cardTitle={title}
+                />
+              </div>
+            ))}
+          </div>
         )}
-      </figure>
-    </div>
-  );
+      </>
+    );
+  };
 
-  return (
-    <>{caption ? renderFigure() : renderImage(borderAndDropShadowClasses)}</>
-  );
+  const renderFigure = () => {
+    return (
+      <div className={borderAndDropShadowClasses}>
+        <figure className="figure uds-figure">
+          {renderImage()}
+            <figcaption className="figure-caption uds-figure-caption">
+              {captionTitle && <h3>{captionTitle}</h3>}
+              {caption &&
+              <span
+                className="uds-caption-text"
+                dangerouslySetInnerHTML={sanitizeDangerousMarkup(caption)}
+              />}
+               {renderButtons()}
+            </figcaption>
+        </figure>
+      </div>
+    );
+  };
+
+  return buttons || caption ? renderFigure() : renderImage(borderAndDropShadowClasses);
+
 };
 
 Image.propTypes = {
