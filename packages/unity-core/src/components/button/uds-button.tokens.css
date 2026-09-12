@@ -1,0 +1,23 @@
+/* ==========================================================================
+   Component tokens — Button (<uds-button>)
+   Co-located with uds-button.ts. Maps the brand-approved semantic color roles
+   (default / cta / neutral / contrast) to brand tokens. The component reads
+   these (custom properties inherit through the shadow boundary); override them
+   to re-theme buttons without touching the component.
+
+   Load once in the consuming app (Storybook preview, examples, Drupal library)
+   alongside tokens.css. The component also carries brand-token fallbacks, so it
+   still renders correctly if this file is not loaded.
+   ========================================================================== */
+:root {
+  --uds-button-color-default: var(--uds-color-brand-maroon);
+  --uds-button-color-cta: var(--uds-color-brand-gold);
+  --uds-button-color-neutral: var(--uds-color-gray-4);
+  --uds-button-color-contrast: var(--uds-color-gray-1);
+
+  /* Readable foreground when the role color is used as a solid fill. */
+  --uds-button-on-default: #ffffff;
+  --uds-button-on-cta: var(--uds-color-gray-1);
+  --uds-button-on-neutral: var(--uds-color-gray-1);
+  --uds-button-on-contrast: #ffffff;
+}

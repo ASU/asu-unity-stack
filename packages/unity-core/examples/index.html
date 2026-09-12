@@ -8,7 +8,6 @@
     This demonstrates Drupal/static site consumption — no framework, no build step, just script tags
   -->
   <link rel="stylesheet" href="../dist/tokens.css" />
-  <link rel="stylesheet" href="../dist/bootstrap-minimal.css" />
   <link rel="stylesheet" href="../dist/base.css" />
   <link rel="stylesheet" href="../dist/tailwind.css" />
   <script type="module" src="../dist/unity-core.js"></script>
@@ -83,27 +82,21 @@
     <!-- Cards Section -->
     <section class="section mb-6">
       <h2 class="font-heading">Cards</h2>
-      <div class="row g-4 mb-5 gap-3">
-        <div class="col-md-4">
-          <uds-card heading="Undergraduate Programs" image="https://picsum.photos/seed/undergrad/800/450">
-            <p>Explore 350+ undergraduate degree programs across all ASU campuses.</p>
-            <uds-button slot="actions" label="Browse Programs" color="gold"></uds-button>
-          </uds-card>
-        </div>
+      <div class="card-grid">
+        <uds-card heading="Undergraduate Programs" image="https://picsum.photos/seed/undergrad/800/450">
+          <p>Explore 350+ undergraduate degree programs across all ASU campuses.</p>
+          <uds-button slot="actions" label="Browse Programs" color="gold"></uds-button>
+        </uds-card>
 
-        <div class="col-md-4">
-          <uds-card heading="Graduate Studies" image="https://picsum.photos/seed/graduate/800/450">
-            <p>Advance your career with a graduate degree from a top-ranked research university.</p>
-            <uds-button slot="actions" label="Apply Now" color="primary"></uds-button>
-            <uds-button slot="actions" label="Learn More" color="secondary"></uds-button>
-          </uds-card>
-        </div>
+        <uds-card heading="Graduate Studies" image="https://picsum.photos/seed/graduate/800/450">
+          <p>Advance your career with a graduate degree from a top-ranked research university.</p>
+          <uds-button slot="actions" label="Apply Now" color="primary"></uds-button>
+          <uds-button slot="actions" label="Learn More" color="secondary"></uds-button>
+        </uds-card>
 
-        <div class="col-md-4">
-          <uds-card heading="Campus Tour" image="https://picsum.photos/seed/tour/800/450" href="https://visit.asu.edu">
-            <p>Schedule a visit and experience Sun Devil life firsthand.</p>
-          </uds-card>
-        </div>
+        <uds-card heading="Campus Tour" image="https://picsum.photos/seed/tour/800/450" href="https://visit.asu.edu">
+          <p>Schedule a visit and experience Sun Devil life firsthand.</p>
+        </uds-card>
       </div>
 
       <!-- Horizontal card -->
@@ -117,20 +110,16 @@
     <section class="dark-section uds-surface-dark" style="background-color: #191919;">
       <div style="max-width: 1200px; margin: 0 auto; padding: 0 var(--uds-spacing-3);">
         <h2 style="color: #ffffff;">On Dark Surface</h2>
-        <div class="row g-4">
-          <div class="col-md-6">
-            <uds-card heading="Night Events" image="https://picsum.photos/seed/night/800/450">
-              <p>Experience world-class performances and cultural events on campus.</p>
-              <uds-button slot="actions" label="See Events" color="gold"></uds-button>
-            </uds-card>
-          </div>
+        <div class="card-grid">
+          <uds-card heading="Night Events" image="https://picsum.photos/seed/night/800/450">
+            <p>Experience world-class performances and cultural events on campus.</p>
+            <uds-button slot="actions" label="See Events" color="gold"></uds-button>
+          </uds-card>
 
-          <div class="col-md-6">
-            <uds-card heading="Online Degrees" image="https://picsum.photos/seed/online/800/450">
-              <p>Earn your degree online with the same faculty and curriculum as on-campus programs.</p>
-              <uds-button slot="actions" label="Start Today" color="gold"></uds-button>
-            </uds-card>
-          </div>
+          <uds-card heading="Online Degrees" image="https://picsum.photos/seed/online/800/450">
+            <p>Earn your degree online with the same faculty and curriculum as on-campus programs.</p>
+            <uds-button slot="actions" label="Start Today" color="gold"></uds-button>
+          </uds-card>
         </div>
         <div class="button-row">
           <uds-button label="Primary on Dark" color="primary"></uds-button>

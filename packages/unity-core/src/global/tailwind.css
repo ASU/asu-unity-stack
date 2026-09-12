@@ -19,6 +19,7 @@
   --color-on-primary: var(--uds-color-on-primary);
   --color-brand-maroon: var(--uds-color-brand-maroon);
   --color-brand-gold: var(--uds-color-brand-gold);
+  --color-brand-gold2: var(--uds-color-brand-gold);
 
   /* ── Disable default spacing, define UDS spacing ── */
   --spacing: initial;
@@ -41,5 +42,4 @@
 }
 
 /* Scan the examples and src directories for class usage */
-@source "../../examples/**/*.html";
 @source "../**/*.{ts,js,html}";

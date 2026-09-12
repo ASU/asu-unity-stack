@@ -3,9 +3,12 @@ import { customElement, property } from 'lit/decorators.js';
 import { UdsBaseElement } from '../../core/base-element.js';
 
 /**
- * `<uds-accordion>` — A container for `<uds-accordion-item>` elements.
+ * @tag uds-accordion
+ * @summary A container for `<uds-accordion-item>` elements. Controls single/multiple open behavior.
  *
  * @slot - Default slot for `<uds-accordion-item>` children.
+ *
+ * @cssprop [--uds-spacing-component-gap] - Gap between accordion items
  *
  * @example
  * ```html

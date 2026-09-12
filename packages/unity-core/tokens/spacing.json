@@ -1,15 +1,54 @@
 {
   "spacing": {
-    "0": { "value": "0px", "type": "spacing" },
-    "2xs": { "value": "4px", "type": "spacing", "description": "Micro spacing" },
-    "xs": { "value": "8px", "type": "spacing", "description": "Extra small" },
-    "sm": { "value": "12px", "type": "spacing", "description": "Small" },
-    "md": { "value": "16px", "type": "spacing", "description": "Medium (base)" },
-    "lg": { "value": "24px", "type": "spacing", "description": "Large" },
-    "xl": { "value": "32px", "type": "spacing", "description": "Extra large" },
-    "2xl": { "value": "48px", "type": "spacing", "description": "2x large" },
-    "3xl": { "value": "64px", "type": "spacing", "description": "3x large" },
-    "4xl": { "value": "96px", "type": "spacing", "description": "4x large" },
+    "0": {
+      "value": "0px",
+      "type": "spacing"
+    },
+    "2xs": {
+      "value": "4px",
+      "type": "spacing",
+      "description": "Micro spacing"
+    },
+    "xs": {
+      "value": "8px",
+      "type": "spacing",
+      "description": "Extra small"
+    },
+    "sm": {
+      "value": "12px",
+      "type": "spacing",
+      "description": "Small"
+    },
+    "md": {
+      "value": "16px",
+      "type": "spacing",
+      "description": "Medium (base)"
+    },
+    "lg": {
+      "value": "24px",
+      "type": "spacing",
+      "description": "Large"
+    },
+    "xl": {
+      "value": "32px",
+      "type": "spacing",
+      "description": "Extra large"
+    },
+    "2xl": {
+      "value": "48px",
+      "type": "spacing",
+      "description": "2x large"
+    },
+    "3xl": {
+      "value": "64px",
+      "type": "spacing",
+      "description": "3x large"
+    },
+    "4xl": {
+      "value": "96px",
+      "type": "spacing",
+      "description": "4x large"
+    },
     "component-gap": {
       "value": "{spacing.md}",
       "type": "spacing",
@@ -21,8 +60,16 @@
       "description": "Gap between major page sections"
     },
     "container-padding": {
-      "desktop": { "value": "{spacing.3xl}", "type": "spacing", "description": "Container padding on desktop (>=992px)" },
-      "mobile": { "value": "{spacing.md}", "type": "spacing", "description": "Container padding on mobile (<768px)" }
+      "desktop": {
+        "value": "{spacing.3xl}",
+        "type": "spacing",
+        "description": "Container padding on desktop (>=992px)"
+      },
+      "mobile": {
+        "value": "{spacing.md}",
+        "type": "spacing",
+        "description": "Container padding on mobile (<768px)"
+      }
     }
   }
 }

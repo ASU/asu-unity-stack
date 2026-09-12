@@ -5,10 +5,23 @@ import { UdsBaseElement } from '../../core/base-element.js';
 let instanceCounter = 0;
 
 /**
- * `<uds-accordion-item>` — A single collapsible item within a `<uds-accordion>`.
+ * @tag uds-accordion-item
+ * @summary A single collapsible item within a `<uds-accordion>`.
  *
  * @slot - Default slot for the panel content.
+ *
  * @fires uds-accordion-toggle - Fired when the item is opened or closed.
+ *
+ * @csspart header - The header button element
+ * @csspart panel - The collapsible panel container
+ *
+ * @cssprop [--uds-color-border] - Border color for the item
+ * @cssprop [--uds-spacing-accordion-header] - Header button padding
+ * @cssprop [--uds-spacing-accordion-panel] - Panel content padding
+ * @cssprop [--uds-color-background-accordion-header] - Header background color
+ * @cssprop [--uds-color-background-accordion-header-hover] - Header hover background
+ * @cssprop [--uds-color-background-accordion-panel] - Panel background color
+ * @cssprop [--uds-font-size-accordion-header] - Header font size
  *
  * @example
  * ```html
