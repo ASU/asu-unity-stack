@@ -36,6 +36,7 @@
 
 /**
  * @typedef {object} ASUFooter
+ * @property {boolean} [isUnbranded] - Renders the unbranded footer: the endorsed social row, the ASU innovation row and the legal colophon are not rendered, and the Contact "Support ASU" contribution button is suppressed. Remaining contact rows behave exactly as today.
  * @property {Social} social
  * @property {Contact} contact
  */

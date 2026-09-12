@@ -1,5 +1,5 @@
 // @ts-check
-import PropTypes, { shape, arrayOf } from "prop-types";
+import PropTypes, { shape, arrayOf, bool } from "prop-types";
 import React, { useState } from "react";
 
 import { Button } from "../../../header/components/Button";
@@ -8,11 +8,12 @@ import { ColumnSection } from "../ColumnSection";
 /**
  * @typedef {import("../../core/models/types").Contact} Contact
  *
- * @param {{contact: Contact}} props
+ * @param {{contact: Contact, isUnbranded?: boolean}} props
  */
 
 const ContactComponent = ({
   contact: { title = "", contactLink = "", contributionLink = "", columns },
+  isUnbranded = false,
 }) => {
   const [openAccordionIndex, setOpenAccordionIndex] = useState(
     /** @type {number | null} */ (null)
@@ -28,7 +29,7 @@ const ContactComponent = ({
                 <a href={contactLink}>Contact Us</a>
               </p>
             )}
-            {contributionLink && (
+            {!isUnbranded && contributionLink && (
               <p
                 className="contribute-button"
                 data-testid="contact-contribution-link"
@@ -83,6 +84,7 @@ ContactComponent.propTypes = {
       })
     ),
   }),
+  isUnbranded: bool,
 };
 
 export { ContactComponent };
