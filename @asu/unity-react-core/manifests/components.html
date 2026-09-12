@@ -588,13 +588,13 @@
 <header>
   <div class="wrap">
     <h1>Manifest Debugger</h1>
-    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">2/39 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">37/39 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">19/127 story errors</a></div>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><a class="filter-pill err" data-k="errors" href="#filter-errors">2/39 prop type errors</a><a class="filter-pill info" data-k="infos" href="#filter-infos">37/39 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">19/128 story errors</a></div>
   </div>
 </header>
 <main>
   <div class="wrap">
     <div class="note ok" style="margin-bottom: 16px;">
-              Using <code>react-docgen-typescript</code>. Generation took <strong>1.6s</strong>.
+              Using <code>react-docgen-typescript</code>. Generation took <strong>1.4s</strong>.
             </div>
     <h2 class="section-title">Components</h2>
     <div class="grid" role="list">
@@ -2228,7 +2228,7 @@ width?: &quot;25%&quot; | &quot;50%&quot; | &quot;75%&quot; | &quot;100%&quot; =
       <div class="badges">
         <label for="c-8-components-card-arrangement-props" class="badge ok as-toggle">3 prop types</label>
         
-        <label for="c-8-components-card-arrangement-stories" class="badge ok as-toggle">10 stories</label>
+        <label for="c-8-components-card-arrangement-stories" class="badge ok as-toggle">11 stories</label>
         
         
       </div>
@@ -2501,6 +2501,17 @@ columns?: &quot;1&quot; | &quot;2&quot; | &quot;3&quot; | &quot;4&quot; | 1 | 2 
     &lt;CardArrangement cards={imageCards} cardType=&quot;image&quot; columns={3} /&gt;
 &lt;/div&gt;;</code></pre>
             </div>
+            <div class="note ok">
+              <div class="row">
+                <span class="ex-name">Cards with image and buttons</span>
+                <span class="badge ok">story ok</span>
+              </div>
+              
+              
+              <pre><code>const ImageButtonCards = () =&gt; &lt;div className=&quot;container&quot;&gt;
+    &lt;CardArrangement cards={imageButtonCards} cardType=&quot;default&quot; columns={2} /&gt;
+&lt;/div&gt;;</code></pre>
+            </div>
         </div>
     
     
@@ -2518,7 +2529,7 @@ columns?: &quot;1&quot; | &quot;2&quot; | &quot;3&quot; | &quot;4&quot; | 1 | 2 
     <div class="title">
       <h2><span class="status-dot dot-ok"></span> CardCarousel</h2>
       <div class="badges">
-        <label for="c-9-components-card-carousel-props" class="badge ok as-toggle">8 prop types</label>
+        <label for="c-9-components-card-carousel-props" class="badge ok as-toggle">9 prop types</label>
         <label for="c-9-components-card-carousel-info" class="badge info as-toggle">1 info</label>
         <label for="c-9-components-card-carousel-stories" class="badge ok as-toggle">2 stories</label>
         
@@ -2554,11 +2565,13 @@ columns?: &quot;1&quot; | &quot;2&quot; | &quot;3&quot; | &quot;4&quot; | 1 | 2 
           <div class="note ok">
             <div class="row">
               <span class="ex-name">Prop types <small>(react-docgen-typescript)</small></span>
-              <span class="badge ok">8 prop types</span>
+              <span class="badge ok">9 prop types</span>
             </div>
             <pre><code>Component: src/components/ComponentCarousel/components/CardCarousel/CardCarousel.jsx::CardCarousel</code></pre>
             <pre><code>Props:</code></pre>
-            <pre><code>cardEventFormat?: &quot;inline&quot; | &quot;stack&quot; = stack
+            <pre><code>bgColor?: string
+
+cardEventFormat?: &quot;inline&quot; | &quot;stack&quot; = stack
 
 cardHorizontal?: boolean = false
 
@@ -2595,9 +2608,13 @@ width?: string = undefined</code></pre>
               </div>
               
               
-              <pre><code>const ThreeItemCarousel = () =&gt; (
+              <pre><code>const ThreeItemCarousel = ({ bgColor }) =&gt; (
   &lt;Wrapper&gt;
-    &lt;CardCarousel perView=&quot;3&quot; cardItems={cardCarouselItems} /&gt;
+    &lt;CardCarousel
+      perView=&quot;3&quot;
+      cardItems={cardCarouselItems}
+      bgColor={cardCarouselBgColorClassName[bgColor]}
+    /&gt;
   &lt;/Wrapper&gt;
 );</code></pre>
             </div>
@@ -2608,9 +2625,13 @@ width?: string = undefined</code></pre>
               </div>
               
               
-              <pre><code>const TwoItemCarousel = () =&gt; (
+              <pre><code>const TwoItemCarousel = ({ bgColor }) =&gt; (
   &lt;Wrapper&gt;
-    &lt;CardCarousel perView=&quot;2&quot; cardItems={cardCarouselItems} /&gt;
+    &lt;CardCarousel
+      perView=&quot;2&quot;
+      cardItems={cardCarouselItems}
+      bgColor={cardCarouselBgColorClassName[bgColor]}
+    /&gt;
   &lt;/Wrapper&gt;
 );</code></pre>
             </div>
@@ -3482,7 +3503,7 @@ title?: string = Highly ranked</code></pre>
     <div class="title">
       <h2><span class="status-dot dot-ok"></span> Image</h2>
       <div class="badges">
-        <label for="c-17-components-image-props" class="badge ok as-toggle">15 prop types</label>
+        <label for="c-17-components-image-props" class="badge ok as-toggle">16 prop types</label>
         <label for="c-17-components-image-info" class="badge info as-toggle">1 info</label>
         <label for="c-17-components-image-stories" class="badge ok as-toggle">5 stories</label>
         
@@ -3518,13 +3539,15 @@ title?: string = Highly ranked</code></pre>
           <div class="note ok">
             <div class="row">
               <span class="ex-name">Prop types <small>(react-docgen-typescript)</small></span>
-              <span class="badge ok">15 prop types</span>
+              <span class="badge ok">16 prop types</span>
             </div>
             <pre><code>Component: src/components/Image/Image.jsx::Image</code></pre>
             <pre><code>Props:</code></pre>
             <pre><code>alt: string
 
 border?: boolean
+
+buttons?: ButtonProps[]
 
 caption?: string
 
@@ -3747,7 +3770,7 @@ title: string</code></pre>
     <div class="title">
       <h2><span class="status-dot dot-ok"></span> ImageCarousel</h2>
       <div class="badges">
-        <label for="c-19-components-image-carousel-props" class="badge ok as-toggle">5 prop types</label>
+        <label for="c-19-components-image-carousel-props" class="badge ok as-toggle">6 prop types</label>
         <label for="c-19-components-image-carousel-info" class="badge info as-toggle">1 info</label>
         <label for="c-19-components-image-carousel-stories" class="badge ok as-toggle">3 stories</label>
         
@@ -3783,11 +3806,13 @@ title: string</code></pre>
           <div class="note ok">
             <div class="row">
               <span class="ex-name">Prop types <small>(react-docgen-typescript)</small></span>
-              <span class="badge ok">5 prop types</span>
+              <span class="badge ok">6 prop types</span>
             </div>
             <pre><code>Component: src/components/ComponentCarousel/components/ImageCarousel/ImageCarousel.jsx::ImageCarousel</code></pre>
             <pre><code>Props:</code></pre>
-            <pre><code>imageAutoSize?: boolean = true
+            <pre><code>bgColor?: string
+
+imageAutoSize?: boolean = true
 
 imageItems?: ImageItem[] = []
 
@@ -3818,8 +3843,10 @@ width?: string = undefined</code></pre>
               </div>
               
               
-              <pre><code>const ImageCarouselDefault = ({ imageItems, perView }) =&gt; (
+              <pre><code>const ImageCarouselDefault = ({ imageItems, perView, bgColor }) =&gt; (
   &lt;div
+    // @ts-ignore
+    className={cardCarouselBgColorClassName[bgColor]}
     style={
       {
         // setting display flex the &#39;maxHeight&#39; gets applied but the carousel squashes
@@ -3832,6 +3859,8 @@ width?: string = undefined</code></pre>
       perView={perView}
       maxWidth={maxWidth}
       imageItems={imageItems}
+      // @ts-ignore
+      bgColor={cardCarouselBgColorClassName[bgColor]}
     /&gt;
   &lt;/div&gt;
 );</code></pre>
@@ -3843,8 +3872,10 @@ width?: string = undefined</code></pre>
               </div>
               
               
-              <pre><code>const ImageCarouselWithCaption = ({ imageItems, perView }) =&gt; (
+              <pre><code>const ImageCarouselWithCaption = ({ imageItems, perView, bgColor }) =&gt; (
   &lt;div
+    // @ts-ignore
+    className={cardCarouselBgColorClassName[bgColor]}
     style={
       {
         // setting display flex the &#39;maxHeight&#39; gets applied but the carousel squashes
@@ -3857,6 +3888,8 @@ width?: string = undefined</code></pre>
       perView={perView}
       maxWidth={maxWidth}
       imageItems={imageItems}
+      // @ts-ignore
+      bgColor={cardCarouselBgColorClassName[bgColor]}
     /&gt;
   &lt;/div&gt;
 );</code></pre>
@@ -3868,8 +3901,10 @@ width?: string = undefined</code></pre>
               </div>
               
               
-              <pre><code>const ImageCarouselWithMoreCaptionContent = ({ imageItems, perView }) =&gt; (
+              <pre><code>const ImageCarouselWithMoreCaptionContent = ({ imageItems, perView, bgColor }) =&gt; (
   &lt;div
+    // @ts-ignore
+    className={cardCarouselBgColorClassName[bgColor]}
     style={
       {
         // setting display flex the &#39;maxHeight&#39; gets applied but the carousel squashes
@@ -3882,6 +3917,8 @@ width?: string = undefined</code></pre>
       perView={perView}
       maxWidth={maxWidth}
       imageItems={imageItems}
+      // @ts-ignore
+      bgColor={cardCarouselBgColorClassName[bgColor]}
     /&gt;
   &lt;/div&gt;
 );</code></pre>

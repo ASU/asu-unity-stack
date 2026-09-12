@@ -1740,8 +1740,8 @@ function Ue() {
     return;
   }
   n.forEach((o, i) => {
-    const r = o.querySelector("div p"), a = r.textContent, c = window.getComputedStyle(o), d = parseInt(c.webkitLineClamp || c.lineClamp), u = parseFloat(c.lineHeight), f = parseFloat(c.fontSize), E = isNaN(u) ? parseFloat(c.lineHeight) * f : u, T = d * E;
-    if (r.offsetHeight >= T) {
+    const r = o.querySelector("div p"), a = (r == null ? void 0 : r.textContent) ?? "", c = window.getComputedStyle(o), d = parseInt(c.webkitLineClamp || c.lineClamp), u = parseFloat(c.lineHeight), f = parseFloat(c.fontSize), E = isNaN(u) ? parseFloat(c.lineHeight) * f : u, T = d * E;
+    if (r && r.offsetHeight && r.offsetHeight >= T) {
       let g = "";
       const A = a.split(" ");
       let w = 0, S = "";
