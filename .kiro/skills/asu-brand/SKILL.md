@@ -20,7 +20,6 @@ copy of this skill and the Unity-provided CSS variables.)
 | ASU Green | `#78be20` | `$uds-color-base-green` |
 | ASU Orange | `#ff7f32` | `$uds-color-base-orange` |
 | ASU Blue | `#00a3e0` | `$uds-color-base-blue` |
-| Focus Blue (a11y) | `#00baff` | `$uds-color-base-bluefocus` |
 
 Maroon and gold are the primary brand colors. Darkgold `#7f6227` and darkmaroon
 `#440e22` are visited states.

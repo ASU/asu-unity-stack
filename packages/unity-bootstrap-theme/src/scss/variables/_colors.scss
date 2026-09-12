@@ -31,7 +31,6 @@ $blue: $uds-color-base-blue;
 $green: $uds-color-base-green;
 $orange: $uds-color-base-orange;
 
-$bluefocus: $uds-color-base-bluefocus;
 $darkgold: $uds-color-base-darkgold;
 $darkmaroon: $uds-color-base-darkmaroon;
 
@@ -45,7 +44,6 @@ $colors: map-merge(
     'green': $green,
     'orange': $orange,
     'white': $white,
-    'bluefocus': $bluefocus,
     'darkgold': $darkgold,
     'darkmaroon': $darkmaroon,
   ),
@@ -95,11 +93,6 @@ $link-decoration: underline;
 $link-hover-color: $maroon;
 $link-hover-decoration: none;
 $link-visited-color: $uds-color-base-darkmaroon;
-
-:focus {
-  outline: 0;
-  box-shadow: 0 0 8px $uds-color-base-bluefocus !important;
-}
 
 // Darken percentage for links with `.text-*` class (e.g. `.text-success`)
 // $emphasized-link-hover-darken-percentage: 15%;
