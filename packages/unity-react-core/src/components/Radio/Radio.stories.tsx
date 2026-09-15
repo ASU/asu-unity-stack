@@ -2,26 +2,71 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
 import { Form, formBackground } from "../Form/Form";
-import { Radios } from "./Radio";
+import { Radios, RadioProps } from "./Radio";
 
-const options = {
-    groupLabel: "A Group of Radios",
-    name: "exampleRadios",
-    // validMessage: "Success message",
-    // invalidMessage: "Form error message",
-    options: [
-      { "label": "Default radio", "data-ga-input-section": "Default radio" },
-      { "label": "Second default radio", "data-ga-input-section": "" },
-      { "label": "Third default radio", "data-ga-input-section": "" },
-      {
-        "label": "Disabled radio",
-        "disabled": true,
-        "data-ga-input-section": "",
-      },
-    ],
-  }
+const defaultGaEvent = {
+  text: "radio button",
+  name: "onclick",
+  event: "select",
+  action: "click",
+  region: "main content",
+  section: "Default radio",
+};
 
-const meta: Meta<{ background?: typeof formBackground }> = {
+const radiosDefault: RadioProps = {
+  selected: "exampleRadios_option_1",
+  // setSelected: ()=>{},
+  label: "A Group of Radios",
+  id: "exampleRadios",
+  options: [
+    { label: "Default radio", gaEvent: defaultGaEvent },
+    { label: "Second default radio", gaEvent: defaultGaEvent },
+    { label: "Third default radio", gaEvent: defaultGaEvent },
+    {
+      label: "Fourth default radio",
+      gaEvent: defaultGaEvent,
+      // disabled: true,
+    },
+  ],
+};
+
+const radiosInvalid: RadioProps = {
+  // selected: "invalidRadios_option_1",
+  selected: "",
+  // setSelected: ()=>{},
+  label: "A Group of Invalid Radios",
+  id: "invalidRadios",
+  invalidMessage: "Form error message",
+  options: [
+    { label: "Default radio", gaEvent: defaultGaEvent },
+    { label: "Second default radio", gaEvent: defaultGaEvent },
+    { label: "Third default radio", gaEvent: defaultGaEvent },
+    {
+      label: "Disabled radio",
+      gaEvent: defaultGaEvent,
+      disabled: true,
+    },
+  ],
+};
+
+const radiosValid: RadioProps = {
+  selected: "validRadios_option_1",
+  label: "A Group of Valid Radios",
+  id: "validRadios",
+  validMessage: "Success message",
+  options: [
+    { label: "Default radio", gaEvent: defaultGaEvent },
+    { label: "Second default radio", gaEvent: defaultGaEvent },
+    { label: "Third default radio", gaEvent: defaultGaEvent },
+    {
+      label: "Disabled radio",
+      gaEvent: defaultGaEvent,
+      disabled: true,
+    },
+  ],
+};
+
+const meta: Meta<typeof Radios> = {
   title: "Components/Form/Radios",
   component: Radios,
   parameters: {
@@ -32,6 +77,7 @@ const meta: Meta<{ background?: typeof formBackground }> = {
     },
   },
   argTypes: {
+    // @ts-expect-error
     background: {
       name: "Form Background",
       control: {
@@ -40,10 +86,10 @@ const meta: Meta<{ background?: typeof formBackground }> = {
       options: formBackground,
     },
   },
-  args: {options},
+  args: radiosDefault,
   decorators: [
+    // @ts-expect-error
     (Story, { args: { background, ...rest } }) => (
-      // @ts-expect-error
       <Form background={background}>
         <Story {...rest} />
       </Form>
@@ -55,6 +101,21 @@ export default meta;
 type Story = StoryObj<typeof Radios>;
 
 export const Default: Story = {
-  name: "Examples",
+  name: "Default",
   args: {},
+};
+
+export const Disabled: Story = {
+  name: "Disabled",
+  args: { label: "A Group of Disabled Radios", disabled: true },
+};
+
+export const Invalid: Story = {
+  name: "Invalid",
+  args: radiosInvalid,
+};
+
+export const Valid: Story = {
+  name: "Valid",
+  args: radiosValid,
 };
