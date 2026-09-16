@@ -1,3 +1,10 @@
+# [@asu/component-header-footer-v1.5.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.5.0...@asu/component-header-footer-v1.5.1) (2026-09-16)
+
+
+### Bug Fixes
+
+* **component-header-footer:** uds-2264 - search input padding ([bf9e15a](https://github.com/asu/asu-unity-stack/commit/bf9e15a72ab264254bc13b4347cf86647152a94e))
+
 # [@asu/component-header-footer-v1.5.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.4.6...@asu/component-header-footer-v1.5.0) (2026-08-20)
 
 
