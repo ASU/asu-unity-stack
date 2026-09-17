@@ -124,7 +124,7 @@ function initDataLayer() {
           break;
         case "radio button":
           // elements with attribute [data-ga-input="radio button"]
-          text = e.target?.nextElementSibling?.textContent??"";
+          text = e.target?.nextElementSibling?.textContent ?? "";
           // text = e.target.labels[0].textContent || "";
           break;
         case "blur":
