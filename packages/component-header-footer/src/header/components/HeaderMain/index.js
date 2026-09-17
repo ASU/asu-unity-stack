@@ -20,6 +20,7 @@ const HeaderMain = () => {
   const {
     breakpoint,
     isPartner,
+    isUnbranded,
     hasNavigation,
     itemOpened,
     setItemOpened,
@@ -109,7 +110,7 @@ const HeaderMain = () => {
                 {isPartner ? <Partner /> : <Title />}
                 {!isMobile && <NavbarContainer />}
               </div>
-              {mobileMenuOpen && isMobile && <Search />}
+              {mobileMenuOpen && isMobile && !isUnbranded && <Search />}
               {mobileMenuOpen && isMobile && <NavbarContainer />}
             </div>
           </div>

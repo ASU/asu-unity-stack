@@ -254,3 +254,9 @@ SixColumns.args = {
     ],
   },
 };
+
+export const Unbranded = Template.bind({});
+Unbranded.args = {
+  ...OneColumn.args,
+  isUnbranded: true,
+};

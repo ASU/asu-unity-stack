@@ -156,12 +156,14 @@
 | Name | Type | Description |
 | --- | --- | --- |
 | isPartner | <code>boolean</code> |  |
+| [isUnbranded] | <code>boolean</code> | Renders the unbranded header: the ASU logo is replaced by unbrandedLogo, and the universal navbar keeps only the skip-nav and report-accessibility links, revealed on keyboard focus. |
 | navTree | [<code>Array.&lt;NavTreeProps&gt;</code>](#NavTreeProps) |  |
 | [title] | <code>string</code> |  |
 | [baseUrl] | <code>string</code> |  |
 | [parentOrg] | <code>string</code> |  |
 | [parentOrgUrl] | <code>string</code> |  |
 | partnerLogo | [<code>Logo</code>](#Logo) |  |
+| [unbrandedLogo] | [<code>Logo</code>](#Logo) | Logo shown instead of the ASU logo when isUnbranded is true (src, alt, brandLink). |
 | logo | [<code>Logo</code>](#Logo) |  |
 | loggedIn | <code>boolean</code> |  |
 | userName | <code>string</code> |  |
@@ -238,8 +240,9 @@
 **Kind**: global typedef
 **Properties**
 
-| Name | Type |
-| --- | --- |
-| social | [<code>Social</code>](#Social) |
-| contact | [<code>Contact</code>](#Contact) |
+| Name | Type | Description |
+| --- | --- | --- |
+| [isUnbranded] | <code>boolean</code> | Renders the unbranded footer: the endorsed social row, the ASU innovation row and the legal colophon are not rendered, and the Contact "Support ASU" contribution button is suppressed. Remaining contact rows behave exactly as today. |
+| social | [<code>Social</code>](#Social) | 
+| contact | [<code>Contact</code>](#Contact) | 
 
