@@ -119,7 +119,8 @@ function initDataLayer() {
       switch (type) {
         case "checkbox":
           // elements with attribute [data-ga-input="checkbox"]
-          text = e.target.labels[0].textContent || "";
+          text = e.target?.nextElementSibling?.textContent ?? "";
+          // text = e.target.labels[0].textContent || "";
           event = e.target.checked ? event : "deselect";
           break;
         case "radio button":
