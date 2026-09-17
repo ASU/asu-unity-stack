@@ -15,7 +15,6 @@ const defaultGaEvent = {
 
 const radiosDefault: RadioProps = {
   selected: "exampleRadios_option_1",
-  // setSelected: ()=>{},
   label: "A Group of Radios",
   id: "exampleRadios",
   options: [
@@ -25,7 +24,6 @@ const radiosDefault: RadioProps = {
     {
       label: "Fourth default radio",
       gaEvent: defaultGaEvent,
-      // disabled: true,
     },
   ],
 };
@@ -33,7 +31,6 @@ const radiosDefault: RadioProps = {
 const radiosInvalid: RadioProps = {
   // selected: "invalidRadios_option_1",
   selected: "",
-  // setSelected: ()=>{},
   label: "A Group of Invalid Radios",
   id: "invalidRadios",
   invalidMessage: "Form error message",

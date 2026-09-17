@@ -2,11 +2,15 @@
 import React, { useState } from "react";
 import { GaEventWrapper } from "../GaEventWrapper/GaEventWrapper";
 
-type RadioOption = {
+interface RadioOption extends React.AriaAttributes {
   /**
    * Radio button label
    */
   label: string;
+  /**
+   * Input value. Will use the label if not specified.
+   */
+  value?: string;
   gaEvent?: {
     // type: string;
     // ga: string;
@@ -21,7 +25,7 @@ type RadioOption = {
    * Disables a specific radio button
    */
   disabled?: boolean;
-};
+}
 
 export interface RadioProps {
   /**
@@ -81,7 +85,7 @@ export const Radios: React.FC<RadioProps> = ({
   setSelected,
   disabled,
 } = propDefaults) => {
-  const [defaultSelectedState, defaultSetSelected] = React.useState(selected);
+  const [defaultSelectedState, defaultSetSelected] = useState(selected);
 
   const handleSetSelected = (e: string) => {
     if (setSelected) {
@@ -112,6 +116,9 @@ export const Radios: React.FC<RadioProps> = ({
     section: "Default radio",
   };
 
+  const invalidMessageID = `${id}InvalidRadiosMsg`;
+  const validMessageID = `${id}ValidRadiosMsg`;
+
   const radioButtonGroup = (
     <fieldset
       style={invalidMessage || validMessage ? {} : { marginBottom: "3rem" }}
@@ -122,10 +129,7 @@ export const Radios: React.FC<RadioProps> = ({
         {label}
       </legend>
       {invalidMessage && (
-        <small
-          id={`${id}InvalidRadiosMsg`}
-          className="invalid-feedback is-invalid"
-        >
+        <small id={invalidMessageID} className="invalid-feedback is-invalid">
           <span
             title="Alert"
             className="fa fa-icon fa-exclamation-triangle"
@@ -134,29 +138,54 @@ export const Radios: React.FC<RadioProps> = ({
         </small>
       )}
       {validMessage && !invalidMessage && (
-        <small id={`${id}ValidRadiosMsg`} className="valid-feedback is-valid">
+        <small id={validMessageID} className="valid-feedback is-valid">
           <span title="Success" className="fa fa-icon fa-check-circle"></span>
           {validMessage}
         </small>
       )}
 
       {options.map((val, index) => {
+        const { value, ...ariaProps } = val;
+
+        const idValue = `${id}_option_${index + 1}`;
+
+        // Removes unwanted values from the ariaProps object
+        // ts-ignore was used because some of the type values are not set as optional in the CheckboxOption type definition but
+        // those values should not appear in the ariaProps object and setting required values to optional is not recommended.
+        // Using ...rest instead failed to include the needed aria props and included extra values that aren't needed
+        //@ts-ignore
+        delete ariaProps["label"];
+        delete ariaProps["disabled"];
+        delete ariaProps["gaEvent"];
+        //@ts-ignore
+        delete ariaProps["value"];
+
+        if (!ariaProps["aria-describedby"]) {
+          if (invalidMessage) {
+            ariaProps["aria-describedby"] = invalidMessageID;
+          }
+          if (validMessage && !invalidMessage) {
+            ariaProps["aria-describedby"] = validMessageID;
+          }
+        }
+
         // Note: label and val.label are different values
         // same with disabled and val.disabled
         // one is for the entire group and the
         // other is for individual radio button options
         return (
-          <div className="form-radio" key={`${label}${index}`}>
-            <label htmlFor={`${id}_label_${index + 1}`}>
+          <div className="form-radio" key={idValue}>
+            <label htmlFor={idValue}>
               <GaEventWrapper gaData={defaultGaEvent} prefix="input">
                 <input
                   type="radio"
                   name={id}
-                  id={`${id}_option_${index + 1}`}
-                  value={`option_${index + 1}`}
-                  onChange={e => handleOnChange(e, `${id}_option_${index + 1}`)}
-                  checked={getSelectedState() === `${id}_option_${index + 1}`}
+                  id={idValue}
+                  value={value ?? val.label}
+                  onChange={e => handleOnChange(e, idValue)}
+                  checked={getSelectedState() === idValue}
                   disabled={disabled ?? val.disabled ?? false}
+                  {...ariaProps}
                 />
               </GaEventWrapper>
               <span>{val.label}</span>
