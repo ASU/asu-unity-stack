@@ -1,3 +1,10 @@
+# [@asu/unity-react-core-v2.4.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.4.0...@asu/unity-react-core-v2.4.1) (2026-09-18)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** hide social media list when profile has no social links ([7e99f0b](https://github.com/ASU/asu-unity-stack/commit/7e99f0bfde67c90a2e7d921ce8274eecbee81650))
+
 # [@asu/unity-react-core-v2.4.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.3.0...@asu/unity-react-core-v2.4.0) (2026-09-11)
 
 
