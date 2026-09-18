@@ -207,6 +207,7 @@ export const Checkboxes: React.FC<CheckboxProps> = ({
             <label htmlFor={idValue}>
               <GaEventWrapper gaData={gaEvent ?? defaultGaEvent} prefix="input">
                 <input
+                  tabIndex={0}
                   type="checkbox"
                   name={id}
                   id={idValue}

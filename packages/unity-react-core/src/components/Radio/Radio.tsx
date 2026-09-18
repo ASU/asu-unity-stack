@@ -178,6 +178,7 @@ export const Radios: React.FC<RadioProps> = ({
             <label htmlFor={idValue}>
               <GaEventWrapper gaData={defaultGaEvent} prefix="input">
                 <input
+                  tabIndex={0}
                   type="radio"
                   name={id}
                   id={idValue}
