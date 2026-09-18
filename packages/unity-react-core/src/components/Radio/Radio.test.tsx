@@ -1,5 +1,4 @@
 import { render, cleanup, RenderResult } from "@testing-library/react";
-import React from "react";
 import { expect, describe, it, afterEach, beforeEach } from "vitest";
 
 import { Radios } from "./Radio";
@@ -8,7 +7,7 @@ describe("Radios Component", () => {
   let component: RenderResult;
 
   beforeEach(() => {
-    component = render(<Radios />);
+    component = render(<Radios id={""} label={""} options={[]}/>);
   });
 
   afterEach(() => {
