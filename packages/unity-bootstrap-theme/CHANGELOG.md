@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v2.4.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.4.0...@asu/unity-bootstrap-theme-v2.4.1) (2026-09-18)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** support downstream palette overrides ([7311190](https://github.com/ASU/asu-unity-stack/commit/73111909c5246daf8f892004d5f3d20fcb82a20a)), closes [#ffc627](https://github.com/ASU/asu-unity-stack/issues/ffc627)
+
 # [@asu/unity-bootstrap-theme-v2.4.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.3.0...@asu/unity-bootstrap-theme-v2.4.0) (2026-09-11)
 
 
