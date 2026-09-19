@@ -121,3 +121,15 @@ export const ImageCarouselWithMoreContent = () => (
     />
   </Wrapper>
 );
+
+import { EmblaImageGalleryPrototype } from "./EmblaImageGalleryPrototype";
+
+export const EmblaPrototype = () => (
+  <Wrapper>
+    <EmblaImageGalleryPrototype
+      maxWidth={maxWidth}
+      imageItems={mockItemWithContent()}
+      hasContent
+    />
+  </Wrapper>
+);
