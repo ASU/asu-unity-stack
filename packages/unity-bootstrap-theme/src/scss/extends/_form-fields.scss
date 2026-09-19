@@ -228,9 +228,16 @@ form.uds-form {
         border-bottom: 8px solid var(--invalid-feedback-light-background) !important;
       }
     }
+    .form-control:invalid ~ .invalid-feedback,
+    .form-select:invalid ~ .invalid-feedback {
+      display: inline-block;
+    }
     // Radios and checks individual labels shouldn't be colored.
     .form-check-input:invalid ~ .form-check-label {
       color: $asu-gray-1;
+    }
+    .form-check-input:invalid ~ .invalid-feedback {
+      display: inline-block;
     }
 
     //&.was-validated .form-control:valid {
@@ -244,9 +251,16 @@ form.uds-form {
         border-bottom: 8px solid $uds-color-font-dark-success !important;
       }
     }
+    .form-control:valid ~ .valid-feedback,
+    .form-select:valid ~ .valid-feedback {
+      display: inline-block;
+    }
     // Radios and checks individual labels shouldn't be colored.
     .form-check-input:valid ~ .form-check-label {
       color: $asu-gray-1;
+    }
+    .form-check-input:valid ~ .valid-feedback {
+      display: inline-block;
     }
   }
 
@@ -266,6 +280,13 @@ form.uds-form {
       border-bottom: 8px solid var(--invalid-feedback-light-background) !important;
     }
   }
+  // Show feedback via sibling selector (server-side .is-invalid on input)
+  .is-invalid ~ .invalid-feedback {
+    display: inline-block;
+  }
+  .is-valid ~ .valid-feedback {
+    display: inline-block;
+  }
   /* checks and radios */
   small.is-invalid,
   div.is-invalid {
@@ -282,13 +303,18 @@ form.uds-form {
     color: var(--invalid-feedback-light-background);
   }
   .invalid-feedback {
-    display: inline-block;
     font-weight: bold;
     svg, i, span {
       // We don't implement svg icons as bkg images due to need for color
       // manipulation.
       color: var(--invalid-feedback-light-background);
       margin-right: $uds-size-spacing-1;
+    }
+    // Legacy UDS pattern: .is-invalid applied directly on the feedback element
+    // (server-side validation). Bootstrap's sibling selector won't catch this,
+    // so we force display here.
+    &.is-invalid {
+      display: inline-block;
     }
   }
 
@@ -321,13 +347,18 @@ form.uds-form {
     color: $uds-color-font-dark-success;
   }
   .valid-feedback {
-    display: inline-block;
     font-weight: bold;
     svg, i, span {
       // We don't implement svg icons as bkg images due to need for color
       // manipulation.
       color: $uds-color-font-dark-success;
       margin-right: $uds-size-spacing-1;
+    }
+    // Legacy UDS pattern: .is-valid applied directly on the feedback element
+    // (server-side validation). Bootstrap's sibling selector won't catch this,
+    // so we force display here.
+    &.is-valid {
+      display: inline-block;
     }
   }
 
