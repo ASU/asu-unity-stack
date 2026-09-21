@@ -1,3 +1,31 @@
+# [@asu/unity-react-core-v2.4.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.4.0...@asu/unity-react-core-v2.4.1) (2026-09-18)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** hide social media list when profile has no social links ([7e99f0b](https://github.com/ASU/asu-unity-stack/commit/7e99f0bfde67c90a2e7d921ce8274eecbee81650))
+
+# [@asu/unity-react-core-v2.4.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.3.0...@asu/unity-react-core-v2.4.0) (2026-09-11)
+
+
+### Bug Fixes
+
+* **unity-react-core:** button on cards fixed missing breakline ([7bb58c6](https://github.com/ASU/asu-unity-stack/commit/7bb58c679a9b114b53396d89d07886bd974f1299))
+
+
+### Features
+
+* **unity-react-core:** card Carousel active bullet indicator invisible on dark gray background ([45dcd78](https://github.com/ASU/asu-unity-stack/commit/45dcd7896912cefe0268d3c656ef71c3129e11a6))
+* **unity-react-core:** css update for handling light and dark bullet and arrow button styles ([089b705](https://github.com/ASU/asu-unity-stack/commit/089b70501f732bb19f10623882f22ec6365ebfb8))
+
+# [@asu/unity-react-core-v2.3.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.2.1...@asu/unity-react-core-v2.3.0) (2026-09-01)
+
+
+### Features
+
+* **unity-react-core:** backdrop parent update for isBootstrap condition ([74d68a6](https://github.com/ASU/asu-unity-stack/commit/74d68a6fc3b2bf460c0d0977471b05457ec8f74c))
+* **unity-react-core:** modal backdrop close update and custom button, state, and children props ([3bfbf18](https://github.com/ASU/asu-unity-stack/commit/3bfbf181275fbcc1bbd5a7f2ff5d24f2afc07604))
+
 # [@asu/unity-react-core-v2.2.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.2.0...@asu/unity-react-core-v2.2.1) (2026-08-06)
 
 

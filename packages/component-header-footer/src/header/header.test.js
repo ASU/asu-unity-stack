@@ -8,6 +8,7 @@ import {
   defaultState,
   emptyStateHeader,
   partnersState,
+  unbrandedState,
   withButtonsState,
 } from "../../__mocks__/data/props-mock";
 
@@ -78,6 +79,59 @@ describe("#ASU Header with button", () => {
       expect(component.queryByTestId("buttons-container")).toBeInTheDocument();
     });
     cleanup();
+  });
+});
+
+describe("#ASU Unbranded Header", () => {
+  /** @type {import("@testing-library/react").RenderResult} */
+  let component;
+
+  beforeEach(() => {
+    component = renderHeader(unbrandedState);
+  });
+  afterEach(cleanup);
+
+  it("should replace the ASU logo with the unbranded logo", () => {
+    const logo = screen.getByTestId("logo");
+    expect(logo).toHaveAttribute("href", "https://unbranded.example.edu");
+    const images = component.getAllByAltText("Unbranded logo");
+    expect(images.length).toBeGreaterThan(0);
+    images.forEach(img => {
+      expect(img).toHaveAttribute(
+        "src",
+        "https://example.com/unbranded-logo.png"
+      );
+    });
+    expect(
+      component.queryByAltText("Arizona State University logo")
+    ).toBeNull();
+  });
+
+  it("should keep only the skip-nav and accessibility links in the universal navbar", () => {
+    expect(screen.getByText("Skip to main content")).toBeInTheDocument();
+    expect(
+      screen.getByText("Report an accessibility problem")
+    ).toBeInTheDocument();
+    expect(component.queryByText("ASU Home")).toBeNull();
+    expect(component.queryByText("My ASU")).toBeNull();
+    expect(component.queryByText("Colleges and Schools")).toBeNull();
+  });
+
+  it("should not render sign in, sign out or the ASU search input", () => {
+    expect(component.queryByText("Sign In")).toBeNull();
+    expect(component.queryByText("Sign Out")).toBeNull();
+    expect(component.queryByTestId("universal-nav-search-form")).toBeNull();
+  });
+
+  it("should mark the universal navbar as focus-revealed", () => {
+    expect(screen.getByTestId("universal-navbar")).toHaveClass(
+      "uds-hdr-universal-nav-unbranded"
+    );
+  });
+
+  it("should keep title and navigation menu rendering", () => {
+    expect(screen.getByTestId("title")).toHaveTextContent("Unbranded Site");
+    expect(screen.getByTestId("navigation")).toBeInTheDocument();
   });
 });
 
