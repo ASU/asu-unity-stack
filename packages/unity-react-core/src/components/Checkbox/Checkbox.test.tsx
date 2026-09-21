@@ -8,7 +8,7 @@ describe("Checkboxes component", () => {
   let component: RenderResult;
 
   beforeEach(() => {
-    component = render(<Checkboxes />);
+     component = render(<Checkboxes id={""} options={[]}/>);
   });
 
   afterEach(() => {
