@@ -1,13 +1,14 @@
 import { render, cleanup, RenderResult } from "@testing-library/react";
 import { expect, describe, it, afterEach, beforeEach } from "vitest";
 
-import { Radios } from "./Radio";
+import { MultiRadioTest } from "./Radio";
+import { radioAllExamples } from "./Radio.stories";
 
 describe("Radios Component", () => {
   let component: RenderResult;
 
   beforeEach(() => {
-    component = render(<Radios id={""} label={""} options={[]}/>);
+    component = render(<MultiRadioTest radiosList={radioAllExamples}/>);
   });
 
   afterEach(() => {

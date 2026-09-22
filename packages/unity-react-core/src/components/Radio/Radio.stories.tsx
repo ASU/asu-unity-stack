@@ -29,8 +29,7 @@ const radiosDefault: RadioProps = {
 };
 
 const radiosInvalid: RadioProps = {
-  // selected: "invalidRadios_option_1",
-  selected: "",
+  selected: "invalidRadios_option_1",
   label: "A Group of Invalid Radios",
   id: "invalidRadios",
   invalidMessage: "Form error message",
@@ -62,6 +61,15 @@ const radiosValid: RadioProps = {
     },
   ],
 };
+
+// for testing and/or displaying all examples on a single page using
+// MultiRadioTest from "./Radio" instead of Radios for the type and component
+// with args set to {radiosList: radioAllExamples}
+export const radioAllExamples: Array<RadioProps> = [
+  radiosDefault,
+  radiosInvalid,
+  radiosValid
+];
 
 const meta: Meta<typeof Radios> = {
   title: "Components/Form/Radios",

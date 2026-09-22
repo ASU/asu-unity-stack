@@ -199,3 +199,19 @@ export const Radios: React.FC<RadioProps> = ({
 
   return radioButtonGroup;
 };
+
+
+// RadioArray and MultiRadioTest can be used to test displaying multiple radio examples on one page
+type RadioArray = {
+  radiosList: Array<RadioProps>;
+};
+
+export const MultiRadioTest: React.FC<RadioArray> = props => {
+  const radioButtonGroup = props.radiosList.map(
+    (val: RadioProps, index: number) => {
+      return <Radios {...val} key={`radioButtonGroup${index}`} />;
+    }
+  );
+
+  return radioButtonGroup;
+};

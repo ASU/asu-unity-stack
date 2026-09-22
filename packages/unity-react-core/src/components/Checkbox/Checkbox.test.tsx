@@ -2,19 +2,22 @@ import { render, cleanup, RenderResult } from "@testing-library/react";
 import React from "react";
 import { expect, describe, it, afterEach, beforeEach } from "vitest";
 
-import { Checkboxes } from "./Checkbox";
+import { MultiCheckboxTest } from "./Checkbox";
+import { checkboxAllExamples } from "./Checkbox.stories";
 
 describe("Checkboxes component", () => {
   let component: RenderResult;
 
   beforeEach(() => {
-     component = render(<Checkboxes id={""} options={[]}/>);
+    component = render(<form className="uds-form"><MultiCheckboxTest checkboxesList={checkboxAllExamples}/></form>);
   });
 
   afterEach(() => {
     cleanup();
   });
 
+  // This test seems unnecessary. The component is for use inside forms, but the component is not a form itself.
+  // It is assumed that the component would be rendered within a <form class="uds-form">
   it("should render the form", () => {
     const form = component.container.querySelector("form.uds-form");
     expect(form).toBeInTheDocument();
@@ -45,18 +48,29 @@ describe("Checkboxes component", () => {
   });
 
   it("should render the correct aria-describedby attributes", () => {
+    // The id values have changed with the component parameter updates
+    // which now automatically add the correct id and aria-describedby values
+    // where needed using the primary id of each group to id the sub elements.
+    // Lone checkboxes use the same group format but with only one element
+    // in the options array.
+
+    // Previous values used
+    // "#validLoneCheckbox" and "#invalidLoneCheckbox"
+    //
+    // with aria-describedby for
+    // "myValidCheckMsg" and "myInvalidCheckMsg"
     const validCheckbox =
-      component.container.querySelector("#validLoneCheckbox");
+      component.container.querySelector("#successCheckedCheckbox_option_1");
     const invalidCheckbox = component.container.querySelector(
-      "#invalidLoneCheckbox"
+      "#invalidCheckbox_option_1"
     );
     expect(validCheckbox).toHaveAttribute(
       "aria-describedby",
-      "myValidCheckMsg"
+      "successCheckedCheckboxValidCheckMsg"
     );
     expect(invalidCheckbox).toHaveAttribute(
       "aria-describedby",
-      "myInvalidCheckMsg"
+      "invalidCheckboxInvalidCheckMsg"
     );
   });
 

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
 import { Form, formBackground } from "../Form/Form";
-import { MultiCheckboxTest, Checkboxes, CheckboxProps } from "./Checkbox";
+import { Checkboxes, CheckboxProps } from "./Checkbox";
 
 const defaultGaEvent = {
   text: "checkbox",
@@ -141,10 +141,10 @@ const checkboxInvalidGroup: CheckboxProps = {
   ],
 };
 
-// for displaying all examples on a single page using
-// MultiCheckboxTest instead of Checkboxes for the type and component
+// for testing and/or displaying all examples on a single page using
+// MultiCheckboxTest from "./Checkbox" instead of Checkboxes for the type and component
 // with args set to {checkboxesList: checkboxAllExamples}
-const checkboxAllExamples: Array<CheckboxProps> = [
+export const checkboxAllExamples: Array<CheckboxProps> = [
   checkboxDefault,
   checkboxMultiLine,
   checkboxValid,
