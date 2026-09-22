@@ -3,24 +3,21 @@ import React from "react";
 import { expect, describe, it, afterEach, beforeEach } from "vitest";
 
 import { MultiCheckboxTest } from "./Checkbox";
-import { checkboxAllExamples } from "./Checkbox.stories";
+import { checkboxAllExamples } from "./Checkbox.parameters";
 
 describe("Checkboxes component", () => {
   let component: RenderResult;
 
   beforeEach(() => {
-    component = render(<form className="uds-form"><MultiCheckboxTest checkboxesList={checkboxAllExamples}/></form>);
+    component = render(
+      <form className="uds-form">
+        <MultiCheckboxTest checkboxesList={checkboxAllExamples} />
+      </form>
+    );
   });
 
   afterEach(() => {
     cleanup();
-  });
-
-  // This test seems unnecessary. The component is for use inside forms, but the component is not a form itself.
-  // It is assumed that the component would be rendered within a <form class="uds-form">
-  it("should render the form", () => {
-    const form = component.container.querySelector("form.uds-form");
-    expect(form).toBeInTheDocument();
   });
 
   it("should render all checkboxes", () => {
@@ -59,8 +56,9 @@ describe("Checkboxes component", () => {
     //
     // with aria-describedby for
     // "myValidCheckMsg" and "myInvalidCheckMsg"
-    const validCheckbox =
-      component.container.querySelector("#successCheckedCheckbox_option_1");
+    const validCheckbox = component.container.querySelector(
+      "#successCheckedCheckbox_option_1"
+    );
     const invalidCheckbox = component.container.querySelector(
       "#invalidCheckbox_option_1"
     );

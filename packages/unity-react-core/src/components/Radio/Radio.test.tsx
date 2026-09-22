@@ -2,13 +2,17 @@ import { render, cleanup, RenderResult } from "@testing-library/react";
 import { expect, describe, it, afterEach, beforeEach } from "vitest";
 
 import { MultiRadioTest } from "./Radio";
-import { radioAllExamples } from "./Radio.stories";
+import { radioAllExamples } from "./Radio.parameters";
 
 describe("Radios Component", () => {
   let component: RenderResult;
 
   beforeEach(() => {
-    component = render(<MultiRadioTest radiosList={radioAllExamples}/>);
+    component = render(
+      <form className="uds-form">
+        <MultiRadioTest radiosList={radioAllExamples} />
+      </form>
+    );
   });
 
   afterEach(() => {
