@@ -91,6 +91,7 @@ export interface Contact {
 
 export interface FooterProps {
   isUnbranded?: boolean;
+  renderDiv?: string;
   social: Social;
   contact: Contact;
 }

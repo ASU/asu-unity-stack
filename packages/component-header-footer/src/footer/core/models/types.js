@@ -37,6 +37,7 @@
 /**
  * @typedef {object} ASUFooter
  * @property {boolean} [isUnbranded] - Renders the unbranded footer: the endorsed social row, the ASU innovation row and the legal colophon are not rendered, and the Contact "Support ASU" contribution button is suppressed. Remaining contact rows behave exactly as today.
+ * @property {string} [renderDiv] - Renders a div instead of a footer landmark when the component is embedded in a host page footer.
  * @property {Social} social
  * @property {Contact} contact
  */

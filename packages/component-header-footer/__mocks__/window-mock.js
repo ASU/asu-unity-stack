@@ -5,6 +5,8 @@ Object.defineProperty(window, "matchMedia", {
     addEventListener: jest.fn(),
     removeEventListener: jest.fn(),
   }),
+  configurable: true,
+  writable: true,
 });
 
 // Default width of JSdom is 1024px so it is not mobile according to the Lg breakpoint
