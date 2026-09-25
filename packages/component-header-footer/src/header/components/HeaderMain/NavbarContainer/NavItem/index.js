@@ -235,7 +235,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
   return (
     <NavItemWrapper
       // @ts-ignore
-      breakpoint={breakpoint}
+      $breakpoint={breakpoint}
       ref={clickRef}
       onMouseEnter={handleOnMouseEnterLeave}
       onMouseLeave={handleOnMouseEnterLeave}

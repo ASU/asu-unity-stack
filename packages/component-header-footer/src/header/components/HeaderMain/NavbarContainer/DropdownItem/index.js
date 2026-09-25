@@ -217,8 +217,8 @@ const DropdownItem = ({
       className={`${classes}${alignedRight ? " aligned-right" : ""}${
         isMega ? " mega" : ""
       }`}
-      breakpoint={breakpoint}
-      heightOffset={heightOffset}
+      $breakpoint={breakpoint}
+      $heightoffset={heightOffset}
     >
       <div
         style={{ "--cols": cols < 3 ? 4 : cols }}

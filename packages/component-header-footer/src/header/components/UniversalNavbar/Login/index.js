@@ -28,7 +28,7 @@ const Login = () => {
     // @ts-ignore
     <LoginWrapper
       className={buildClassName(CLASS_NAMES.NAV_LINK, CLASS_NAMES.LOGIN_STATUS)}
-      breakpoint={breakpoint}
+      $breakpoint={breakpoint}
     >
       {loggedIn ? (
         <>
