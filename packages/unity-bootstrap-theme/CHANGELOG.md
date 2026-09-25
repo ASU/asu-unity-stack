@@ -1,3 +1,15 @@
+# [@asu/unity-bootstrap-theme-v2.4.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.4.1...@asu/unity-bootstrap-theme-v2.4.2) (2026-09-25)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** _form-fields form-checkbox class and focus update for radio buttons ([567f6fe](https://github.com/ASU/asu-unity-stack/commit/567f6fea81fb4f94277e4b57aed5fa60e8f59ca7))
+* **unity-bootstrap-theme:** checkbox data-layer text content query event listener update ([23ac973](https://github.com/ASU/asu-unity-stack/commit/23ac973ca3d5850bc09994c5189158a6c9e20e1d))
+* **unity-bootstrap-theme:** data-layer formating bug fix ([67855ae](https://github.com/ASU/asu-unity-stack/commit/67855ae358c6f24de0d189ad707066fd939108bc))
+* **unity-bootstrap-theme:** fixed labels not showing pointer cursor on hover for checkbox and radio ([c52a92a](https://github.com/ASU/asu-unity-stack/commit/c52a92a8b0d2cf400768b1b203e6c8a32e77918d))
+* **unity-bootstrap-theme:** form field validation ([5f2bd45](https://github.com/ASU/asu-unity-stack/commit/5f2bd4574f1b2e96bf893674fff5473bf7fa72b5))
+* **unity-bootstrap-theme:** form-radio css to fix unresponsive radio buttons ([8fd0bb9](https://github.com/ASU/asu-unity-stack/commit/8fd0bb9e4e06a4df3f8f822324d2285c0ea7affc))
+
 # [@asu/unity-bootstrap-theme-v2.4.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.4.0...@asu/unity-bootstrap-theme-v2.4.1) (2026-09-18)
 
 
