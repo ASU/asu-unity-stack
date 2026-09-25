@@ -41,127 +41,129 @@
 <a name="Button"></a>
 
 ## Button(props) ⇒ <code>JSX.Element</code>
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type |
 | --- | --- |
-| props | <code>ButtonProps</code> | 
+| props | <code>ButtonProps</code> |
 
 <a name="DropdownItem"></a>
 
 ## DropdownItem(props) ⇒ <code>JSX.Element</code>
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type |
 | --- | --- |
-| props | <code>DropdownItemProps</code> | 
+| props | <code>DropdownItemProps</code> |
 
 <a name="DropdownItem..dropdownRef"></a>
 
 ### DropdownItem~dropdownRef : <code>React.MutableRefObject.&lt;(HTMLDivElement\|null)&gt;</code>
-**Kind**: inner constant of [<code>DropdownItem</code>](#DropdownItem)  
+**Kind**: inner constant of [<code>DropdownItem</code>](#DropdownItem)
 <a name="NavLinkIcon"></a>
 
 ## NavLinkIcon(props) ⇒ <code>JSX.Element</code>
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type |
 | --- | --- |
-| props | <code>Object</code> | 
+| props | <code>Object</code> |
 
 <a name="NavItem"></a>
 
 ## NavItem(props) ⇒ <code>JSX.Element</code>
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type |
 | --- | --- |
-| props | <code>Object</code> | 
+| props | <code>Object</code> |
 
 <a name="ColumnSection"></a>
 
 ## ColumnSection(props) ⇒ <code>JSX.Element</code>
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type |
 | --- | --- |
-| props | <code>Object</code> | 
+| props | <code>Object</code> |
 
 <a name="ColumnSection..accordionBodyRef"></a>
 
 ### ColumnSection~accordionBodyRef : <code>React.RefObject.&lt;HTMLDivElement&gt;</code> \| <code>null</code>
-**Kind**: inner constant of [<code>ColumnSection</code>](#ColumnSection)  
+**Kind**: inner constant of [<code>ColumnSection</code>](#ColumnSection)
 <a name="Social"></a>
 
 ## Social(props) ⇒ <code>JSX.Element</code>
-**Kind**: global function  
+**Kind**: global function
 
 | Param | Type |
 | --- | --- |
-| props | <code>Object</code> | 
+| props | <code>Object</code> |
 
 <a name="Logo"></a>
 
 ## Logo : <code>object</code>
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name | Type |
 | --- | --- |
-| alt | <code>string</code> | 
-| title | <code>string</code> | 
-| src | <code>string</code> | 
-| mobileSrc | <code>string</code> | 
-| [brandLink] | <code>string</code> | 
+| alt | <code>string</code> |
+| title | <code>string</code> |
+| src | <code>string</code> |
+| mobileSrc | <code>string</code> |
+| [brandLink] | <code>string</code> |
 
 <a name="Button"></a>
 
 ## Button : <code>object</code>
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name | Type |
 | --- | --- |
-| href | <code>string</code> | 
-| [color] | <code>&quot;gold&quot;</code> \| <code>&quot;maroon&quot;</code> \| <code>&quot;light&quot;</code> \| <code>&quot;dark&quot;</code> | 
-| text | <code>string</code> | 
-| [classes] | <code>string</code> | 
-| [onClick] | <code>function</code> | 
-| [onFocus] | <code>function</code> | 
+| href | <code>string</code> |
+| [color] | <code>&quot;gold&quot;</code> \| <code>&quot;maroon&quot;</code> \| <code>&quot;light&quot;</code> \| <code>&quot;dark&quot;</code> |
+| text | <code>string</code> |
+| [classes] | <code>string</code> |
+| [onClick] | <code>function</code> |
+| [onFocus] | <code>function</code> |
 
 <a name="NavTreeProps"></a>
 
 ## NavTreeProps : <code>object</code>
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name | Type |
 | --- | --- |
-| id | <code>number</code> | 
-| [href] | <code>string</code> | 
-| [text] | <code>string</code> | 
-| [type] | <code>string</code> | 
-| [selected] | <code>boolean</code> | 
-| [items] | <code>Array.&lt;object&gt;</code> | 
-| [buttons] | [<code>Array.&lt;Button&gt;</code>](#Button) | 
-| [class] | <code>string</code> | 
-| [onClick] | <code>function</code> | 
+| id | <code>number</code> |
+| [href] | <code>string</code> |
+| [text] | <code>string</code> |
+| [type] | <code>string</code> |
+| [selected] | <code>boolean</code> |
+| [items] | <code>Array.&lt;object&gt;</code> |
+| [buttons] | [<code>Array.&lt;Button&gt;</code>](#Button) |
+| [class] | <code>string</code> |
+| [onClick] | <code>function</code> |
 
 <a name="HeaderProps"></a>
 
 ## HeaderProps : <code>object</code>
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
 | isPartner | <code>boolean</code> |  |
+| [isUnbranded] | <code>boolean</code> | Renders the unbranded header: the ASU logo is replaced by unbrandedLogo, and the universal navbar keeps only the skip-nav and report-accessibility links, revealed on keyboard focus. |
 | navTree | [<code>Array.&lt;NavTreeProps&gt;</code>](#NavTreeProps) |  |
 | [title] | <code>string</code> |  |
 | [baseUrl] | <code>string</code> |  |
 | [parentOrg] | <code>string</code> |  |
 | [parentOrgUrl] | <code>string</code> |  |
 | partnerLogo | [<code>Logo</code>](#Logo) |  |
+| [unbrandedLogo] | [<code>Logo</code>](#Logo) | Logo shown instead of the ASU logo when isUnbranded is true (src, alt, brandLink). |
 | logo | [<code>Logo</code>](#Logo) |  |
 | loggedIn | <code>boolean</code> |  |
 | userName | <code>string</code> |  |
@@ -181,64 +183,66 @@
 <a name="Link"></a>
 
 ## Link : <code>object</code>
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name | Type |
 | --- | --- |
-| url | <code>string</code> | 
-| title | <code>string</code> | 
-| text | <code>string</code> | 
+| url | <code>string</code> |
+| title | <code>string</code> |
+| text | <code>string</code> |
 
 <a name="Column"></a>
 
 ## Column : <code>object</code>
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name | Type |
 | --- | --- |
-| title | <code>string</code> | 
-| links | [<code>Array.&lt;Link&gt;</code>](#Link) | 
+| title | <code>string</code> |
+| links | [<code>Array.&lt;Link&gt;</code>](#Link) |
 
 <a name="Social"></a>
 
 ## Social : <code>object</code>
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name | Type |
 | --- | --- |
-| logoUrl | <code>string</code> | 
-| unitLogo | <code>string</code> | 
-| [mediaLinks] | <code>object</code> | 
-| [mediaLinks.facebook] | <code>string</code> | 
-| [mediaLinks.twitter] | <code>string</code> | 
-| [mediaLinks.instagram] | <code>string</code> | 
-| [mediaLinks.linkedIn] | <code>string</code> | 
-| [mediaLinks.youtube] | <code>string</code> | 
+| logoUrl | <code>string</code> |
+| unitLogo | <code>string</code> |
+| [mediaLinks] | <code>object</code> |
+| [mediaLinks.facebook] | <code>string</code> |
+| [mediaLinks.twitter] | <code>string</code> |
+| [mediaLinks.instagram] | <code>string</code> |
+| [mediaLinks.linkedIn] | <code>string</code> |
+| [mediaLinks.tiktok] | <code>string</code> |
+| [mediaLinks.youtube] | <code>string</code> |
 
 <a name="Contact"></a>
 
 ## Contact : <code>object</code>
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
 | Name | Type |
 | --- | --- |
-| title | <code>string</code> | 
-| contactLink | <code>string</code> | 
-| [contributionLink] | <code>string</code> | 
-| [columns] | [<code>Array.&lt;Column&gt;</code>](#Column) | 
+| title | <code>string</code> |
+| contactLink | <code>string</code> |
+| [contributionLink] | <code>string</code> |
+| [columns] | [<code>Array.&lt;Column&gt;</code>](#Column) |
 
 <a name="ASUFooter"></a>
 
 ## ASUFooter : <code>object</code>
-**Kind**: global typedef  
+**Kind**: global typedef
 **Properties**
 
-| Name | Type |
-| --- | --- |
+| Name | Type | Description |
+| --- | --- | --- |
+| [isUnbranded] | <code>boolean</code> | Renders the unbranded footer: the endorsed social row, the ASU innovation row and the legal colophon are not rendered, and the Contact "Support ASU" contribution button is suppressed. Remaining contact rows behave exactly as today. |
 | social | [<code>Social</code>](#Social) | 
 | contact | [<code>Contact</code>](#Contact) | 
 

@@ -1,3 +1,28 @@
+# [@asu/component-header-footer-v1.6.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.5.1...@asu/component-header-footer-v1.6.0) (2026-09-18)
+
+
+### Features
+
+* **component-header-footer:** add isUnbranded and unbrandedLogo props for unbranded (KE) sites ([953f8e9](https://github.com/asu/asu-unity-stack/commit/953f8e9d72a25f74bedf6849e256748f1e9b4cc0))
+* **component-header-footer:** address unbranded review feedback ([c6284d6](https://github.com/asu/asu-unity-stack/commit/c6284d60904ea624621ccb156e78aa8719daa7f3))
+* **component-header-footer:** hide social and innovation footer rows for unbranded (KE) sites ([14a4840](https://github.com/asu/asu-unity-stack/commit/14a48404c4ab0d38c86a12044544a85bb67238a5))
+* **component-header-footer:** read footer brand gold from --bs-gold custom property ([c7458de](https://github.com/asu/asu-unity-stack/commit/c7458de3ec048ea1f2fac94b80a665168c9856c0)), closes [#ffc627](https://github.com/asu/asu-unity-stack/issues/ffc627)
+* **component-header-footer:** read header brand colors from --bs-maroon/--bs-gold custom properties ([daef7b6](https://github.com/asu/asu-unity-stack/commit/daef7b6a0a9232626eaa5401b1bd1df934d265b0)), closes [#8c1d40](https://github.com/asu/asu-unity-stack/issues/8c1d40) [#ffc627](https://github.com/asu/asu-unity-stack/issues/ffc627)
+
+# [@asu/component-header-footer-v1.5.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.5.0...@asu/component-header-footer-v1.5.1) (2026-09-16)
+
+
+### Bug Fixes
+
+* **component-header-footer:** uds-2264 - search input padding ([bf9e15a](https://github.com/asu/asu-unity-stack/commit/bf9e15a72ab264254bc13b4347cf86647152a94e))
+
+# [@asu/component-header-footer-v1.5.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.4.6...@asu/component-header-footer-v1.5.0) (2026-08-20)
+
+
+### Features
+
+* **component-header-footer:** add TikToc icon to footer ([4832581](https://github.com/asu/asu-unity-stack/commit/4832581c5ea1ca10ffaee048b1b3c60e507643a4))
+
 # [@asu/component-header-footer-v1.4.6](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.4.5...@asu/component-header-footer-v1.4.6) (2026-07-31)
 
 

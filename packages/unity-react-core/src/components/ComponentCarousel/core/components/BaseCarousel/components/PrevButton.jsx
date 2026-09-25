@@ -12,7 +12,7 @@ import React from "react";
 const PrevButton = ({ onClick = () => null }) => (
   <button
     type="button"
-    className="glide__arrow glide__arrow--prev"
+    className={`glide__arrow glide__arrow--prev`}
     data-glide-dir="<"
     aria-label="Previous slide"
     onClick={onClick}

@@ -216,14 +216,27 @@ $heading-three-letter-spacing: -0.0525rem;
       outline: none;
     }
 
-    &:hover,
-    &:focus {
+    &:hover {
+      // &:focus {
       border: 1px solid #d0d0d0;
       background-color: #191919; // rgba(255, 255, 255, 0.5);
     }
 
     &#{$sm}active {
       background-color: #191919; //white;
+    }
+  }
+
+  &.gray-dark-bg &#{$se}bullet {
+    &:focus {
+      background-color: $uds-color-brand-gold;
+    }
+    &:hover {
+      border: 1px solid $uds-color-brand-gold;
+      background-color: #333;
+    }
+    &#{$sm}active {
+      background-color: $uds-color-brand-gold; //gold;
     }
   }
 
@@ -430,6 +443,16 @@ $heading-three-letter-spacing: -0.0525rem;
   select:focus {
     outline: none !important;
     box-shadow: 0px 0px 0px 2px #ffffff, 0px 0px 0px 4px #191919 !important;
+  }
+
+  &.gray-dark-bg {
+    button:focus,
+    a:focus,
+    input:focus,
+    textarea:focus,
+    select:focus {
+      box-shadow: 0px 0px 0px 3px #333, 0px 0px 0px 5px $uds-color-brand-gold !important;
+    }
   }
 
   &.image-gallery,

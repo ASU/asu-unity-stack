@@ -1,3 +1,45 @@
+# [@asu/unity-bootstrap-theme-v2.4.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.4.1...@asu/unity-bootstrap-theme-v2.4.2) (2026-09-25)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** _form-fields form-checkbox class and focus update for radio buttons ([567f6fe](https://github.com/ASU/asu-unity-stack/commit/567f6fea81fb4f94277e4b57aed5fa60e8f59ca7))
+* **unity-bootstrap-theme:** checkbox data-layer text content query event listener update ([23ac973](https://github.com/ASU/asu-unity-stack/commit/23ac973ca3d5850bc09994c5189158a6c9e20e1d))
+* **unity-bootstrap-theme:** data-layer formating bug fix ([67855ae](https://github.com/ASU/asu-unity-stack/commit/67855ae358c6f24de0d189ad707066fd939108bc))
+* **unity-bootstrap-theme:** fixed labels not showing pointer cursor on hover for checkbox and radio ([c52a92a](https://github.com/ASU/asu-unity-stack/commit/c52a92a8b0d2cf400768b1b203e6c8a32e77918d))
+* **unity-bootstrap-theme:** form field validation ([5f2bd45](https://github.com/ASU/asu-unity-stack/commit/5f2bd4574f1b2e96bf893674fff5473bf7fa72b5))
+* **unity-bootstrap-theme:** form-radio css to fix unresponsive radio buttons ([8fd0bb9](https://github.com/ASU/asu-unity-stack/commit/8fd0bb9e4e06a4df3f8f822324d2285c0ea7affc))
+
+# [@asu/unity-bootstrap-theme-v2.4.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.4.0...@asu/unity-bootstrap-theme-v2.4.1) (2026-09-18)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** support downstream palette overrides ([7311190](https://github.com/ASU/asu-unity-stack/commit/73111909c5246daf8f892004d5f3d20fcb82a20a)), closes [#ffc627](https://github.com/ASU/asu-unity-stack/issues/ffc627)
+
+# [@asu/unity-bootstrap-theme-v2.4.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.3.0...@asu/unity-bootstrap-theme-v2.4.0) (2026-09-11)
+
+
+### Features
+
+* **unity-react-core:** card Carousel active bullet indicator invisible on dark gray background ([45dcd78](https://github.com/ASU/asu-unity-stack/commit/45dcd7896912cefe0268d3c656ef71c3129e11a6))
+
+# [@asu/unity-bootstrap-theme-v2.3.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.2.3...@asu/unity-bootstrap-theme-v2.3.0) (2026-09-01)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fixed heading line height too small ([d2e16f3](https://github.com/ASU/asu-unity-stack/commit/d2e16f328adb411fcd20a51112166e908ee744de))
+* **unity-bootstrap-theme:** fixed initModals() error when modal components aren't on the page ([f2ece71](https://github.com/ASU/asu-unity-stack/commit/f2ece71d9e0e6bf88ae655eb715dc43158879f69))
+* **unity-bootstrap-theme:** fixed positioning update for UDS-2259 ([b9a313e](https://github.com/ASU/asu-unity-stack/commit/b9a313ec807d3abd1028f9435370463e4e592ea6))
+
+
+### Features
+
+* **unity-bootstrap-theme:** focus trap update for unity bootstrap theme ([6c2e475](https://github.com/ASU/asu-unity-stack/commit/6c2e47581ed2902097bbcbaf26b18e0be53345b9))
+* **unity-bootstrap-theme:** update to the default font weight for radio and checkboxes ([e332d44](https://github.com/ASU/asu-unity-stack/commit/e332d447c0363906c968303ad6dd922bd0b725bd))
+* **unity-react-core:** modal backdrop close update and custom button, state, and children props ([3bfbf18](https://github.com/ASU/asu-unity-stack/commit/3bfbf181275fbcc1bbd5a7f2ff5d24f2afc07604))
+
 # [@asu/unity-bootstrap-theme-v2.2.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.2.2...@asu/unity-bootstrap-theme-v2.2.3) (2026-08-06)
 
 

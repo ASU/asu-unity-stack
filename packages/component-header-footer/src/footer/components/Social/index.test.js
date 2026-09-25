@@ -29,6 +29,7 @@ describe("#Social", () => {
     [`Instagram`, `instagram`],
     [`Youtube`, `youtube`],
     [`LinkedIn`, `linkedin`],
+    [`TikTok`, `tiktok`],
   ];
 
   test.each(cases)(

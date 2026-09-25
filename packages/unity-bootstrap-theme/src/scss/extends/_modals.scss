@@ -7,7 +7,7 @@
   left: 0;
   opacity: 0;
   padding: 4rem 2rem;
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 0;
   z-index: 1030;
@@ -83,4 +83,13 @@
       min-height: 256px;
     }
   }
+}
+
+.uds-modal-main {
+  background-color: #0000;
+  pointer-events: none;
+}
+
+.uds-modal-container {
+  pointer-events: all;
 }

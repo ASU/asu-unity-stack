@@ -1,3 +1,49 @@
+# [@asu/unity-react-core-v2.5.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.4.1...@asu/unity-react-core-v2.5.0) (2026-09-25)
+
+
+### Bug Fixes
+
+* **unity-react-core:** fixed displaying test export value by separating the example params ([19c22ff](https://github.com/ASU/asu-unity-stack/commit/19c22ff6e841823fc724f4b5611d5d7e26a7be9a))
+* **unity-react-core:** fixed tab index missing for safari browser keyboard support ([3a9782f](https://github.com/ASU/asu-unity-stack/commit/3a9782f201410aef5c5dd6a0ae95fac0bbff0977))
+* **unity-react-core:** fixed test component missing required parameters ([0a8f7b2](https://github.com/ASU/asu-unity-stack/commit/0a8f7b27d2657062d57f08956f021ef58181f836))
+* **unity-react-core:** radio button functionality updates ([6eb5397](https://github.com/ASU/asu-unity-stack/commit/6eb53974123deab5f5d1bf3fc2fdfbd35f04ade2))
+* **unity-react-core:** updated tests, test parameters, and test examples for checkbox and radio ([945dbab](https://github.com/ASU/asu-unity-stack/commit/945dbab6c9f3e6578dadc0bd153982a157ab5e09))
+
+
+### Features
+
+* **unity-react-core:** checkbox and checkbox stories new component update in progress ([c7d3705](https://github.com/ASU/asu-unity-stack/commit/c7d3705c5f998078dcdbf51091794a83707e885c))
+* **unity-react-core:** checkbox component and stories update aria updates and radio aria updates ([8c1da70](https://github.com/ASU/asu-unity-stack/commit/8c1da701f4b433dd216510ef4efe521f776bac5d))
+* **unity-react-core:** radio button component with updated state handling params and stories ([f8260cf](https://github.com/ASU/asu-unity-stack/commit/f8260cf34fd336d3e2ec1671091872800720ea4f))
+
+# [@asu/unity-react-core-v2.4.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.4.0...@asu/unity-react-core-v2.4.1) (2026-09-18)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** hide social media list when profile has no social links ([7e99f0b](https://github.com/ASU/asu-unity-stack/commit/7e99f0bfde67c90a2e7d921ce8274eecbee81650))
+
+# [@asu/unity-react-core-v2.4.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.3.0...@asu/unity-react-core-v2.4.0) (2026-09-11)
+
+
+### Bug Fixes
+
+* **unity-react-core:** button on cards fixed missing breakline ([7bb58c6](https://github.com/ASU/asu-unity-stack/commit/7bb58c679a9b114b53396d89d07886bd974f1299))
+
+
+### Features
+
+* **unity-react-core:** card Carousel active bullet indicator invisible on dark gray background ([45dcd78](https://github.com/ASU/asu-unity-stack/commit/45dcd7896912cefe0268d3c656ef71c3129e11a6))
+* **unity-react-core:** css update for handling light and dark bullet and arrow button styles ([089b705](https://github.com/ASU/asu-unity-stack/commit/089b70501f732bb19f10623882f22ec6365ebfb8))
+
+# [@asu/unity-react-core-v2.3.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.2.1...@asu/unity-react-core-v2.3.0) (2026-09-01)
+
+
+### Features
+
+* **unity-react-core:** backdrop parent update for isBootstrap condition ([74d68a6](https://github.com/ASU/asu-unity-stack/commit/74d68a6fc3b2bf460c0d0977471b05457ec8f74c))
+* **unity-react-core:** modal backdrop close update and custom button, state, and children props ([3bfbf18](https://github.com/ASU/asu-unity-stack/commit/3bfbf181275fbcc1bbd5a7f2ff5d24f2afc07604))
+
 # [@asu/unity-react-core-v2.2.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.2.0...@asu/unity-react-core-v2.2.1) (2026-08-06)
 
 
