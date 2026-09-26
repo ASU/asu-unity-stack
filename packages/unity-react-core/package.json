@@ -104,6 +104,7 @@
   },
   "dependencies": {
     "@glidejs/glide": "^3.6.0",
+    "embla-carousel-react": "^8.6.0",
     "react-share": "^5.3"
   },
   "peerDependencies": {
