@@ -1,4 +1,4 @@
-import { EventHandler } from "./bootstrap-helper";
+import { Collapse, EventHandler } from "./bootstrap-helper";
 import { throttle } from "@asu/shared";
 
 /**
@@ -196,23 +196,59 @@ function initAnchorMenu() {
 
   window.addEventListener("scroll", throttledScrollHandler, { passive: true });
 
+  const closeMobileMenu = () => {
+    const collapseEl = navbar.querySelector(".collapse");
+    if (!collapseEl || !collapseEl.classList.contains("show")) {
+      return;
+    }
+
+    try {
+      const CollapsePlugin = window.bootstrap?.Collapse || Collapse;
+      if (CollapsePlugin) {
+        const instance =
+          (typeof CollapsePlugin.getOrCreateInstance === "function" &&
+            CollapsePlugin.getOrCreateInstance(collapseEl)) ||
+          (typeof CollapsePlugin.getInstance === "function" &&
+            CollapsePlugin.getInstance(collapseEl)) ||
+          new CollapsePlugin(collapseEl, { toggle: false });
+        instance?.hide();
+        return;
+      }
+    } catch {
+      // Fallback if Collapse plugin throws
+    }
+
+    // Manual fallback if Collapse plugin throws or is unavailable
+    collapseEl.classList.remove("show");
+    const toggler = navbar.querySelector(
+      '.mobile-menu-toggler[aria-expanded="true"]'
+    );
+    if (toggler) {
+      toggler.setAttribute("aria-expanded", "false");
+      toggler.classList.add("collapsed");
+    }
+  };
+
   // Set click event handlers for all valid anchors
   // Only anchors with valid targets were added to anchorTargets Map
+  const validAnchors = Array.from(anchorTargets.keys());
   for (let [anchor, anchorTarget] of anchorTargets) {
     anchor.addEventListener("click", function (e) {
       e.preventDefault();
 
       if (!anchorTarget || !document.body.contains(anchorTarget)) {
         console.warn("Anchor target no longer exists in DOM"); // This should be rare but if the target element has been removed from the DOM, this will make debuggin easier in webspark sites
+        closeMobileMenu();
         return;
       }
 
       // For the first anchor item, skip scrolling if the section top is
       // already clearly visible in the viewport (above the midpoint).
-      const isFirstAnchor = anchor === anchors[0];
+      const isFirstAnchor = anchor === validAnchors[0];
       if (isFirstAnchor) {
         const headerBottom = globalHeader.getBoundingClientRect().bottom;
-        const navbarHeight = navbar.offsetHeight;
+        const isSmallDevice = window.innerWidth < 992;
+        const navbarHeight = isSmallDevice ? 50 : 90;
         const topOffset = headerBottom + navbarHeight;
         const targetTop = anchorTarget.getBoundingClientRect().top;
         const viewportMid = window.innerHeight / 2;
@@ -220,6 +256,7 @@ function initAnchorMenu() {
         if (targetTop >= topOffset && targetTop <= viewportMid) {
           history.replaceState(null, "", anchor.getAttribute("href"));
           moveFocusToTarget(anchorTarget);
+          closeMobileMenu();
           return;
         }
       }
@@ -254,7 +291,19 @@ function initAnchorMenu() {
       // Move focus to the target section so keyboard users can Tab
       // into its content (WCAG 2.4.3 Focus Order).
       moveFocusToTarget(anchorTarget);
+
+      // Close mobile menu collapse on selection (UDS-2176)
+      closeMobileMenu();
     });
+  }
+
+  // Ensure any other nav-links in the menu also close the mobile collapse on click
+  for (let anchor of anchors) {
+    if (!anchorTargets.has(anchor)) {
+      anchor.addEventListener("click", function () {
+        closeMobileMenu();
+      });
+    }
   }
 
   /**
