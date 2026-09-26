@@ -1,6 +1,6 @@
 // @ts-check
 import { trackReactComponent } from "@asu/shared";
-import { bool, shape } from "prop-types";
+import { bool, oneOf, shape } from "prop-types";
 import React, { useEffect } from "react";
 
 import { Social, Legal, Innovation, ContactComponent } from "./components";
@@ -23,7 +23,12 @@ Base.propTypes = {
  * @param {import("./core/models/types").ASUFooter} props
  * @returns {JSX.Element}
  */
-const ASUFooter = ({ social, contact, isUnbranded = false }) => {
+const ASUFooter = ({
+  social,
+  contact,
+  isUnbranded = false,
+  renderDiv = "false",
+}) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       trackReactComponent({
@@ -39,7 +44,7 @@ const ASUFooter = ({ social, contact, isUnbranded = false }) => {
   }, []);
 
   return (
-    <StyledFooter role="contentinfo">
+    <StyledFooter as={renderDiv === "true" ? "div" : "footer"}>
       {!isUnbranded && social && <Social social={social} />}
       {contact && (
         <ContactComponent contact={contact} isUnbranded={isUnbranded} />
@@ -53,6 +58,7 @@ ASUFooter.propTypes = {
   social: shape(Social.propTypes),
   contact: shape(ContactComponent.propTypes),
   isUnbranded: bool,
+  renderDiv: oneOf(["true", "false"]),
 };
 
 export { ASUFooter };

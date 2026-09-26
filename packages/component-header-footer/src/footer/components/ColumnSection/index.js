@@ -23,6 +23,7 @@ const ColumnSection = ({
   isOpen = false,
   onToggle,
 }) => {
+  const titleId = `footlink-header-${columnIndex}`;
   const [show, setShow] = useState(isOpen);
   const isWindowDefined = typeof window !== "undefined";
   const initialMatches = isWindowDefined ? window.innerWidth >= 1260 : false;
@@ -99,10 +100,12 @@ const ColumnSection = ({
         <div className="footer-accordion-header">
           <div className="h5">
             {isLgDesktop ? (
-              <p className="accordion-button">{title}</p>
+              <p id={titleId} className="accordion-button">
+                {title}
+              </p>
             ) : (
               <button
-                id={`footlink-header-${columnIndex}`}
+                id={titleId}
                 className="footer-accordion-button"
                 aria-expanded={show || isLgDesktop}
                 aria-controls={`footlink-${columnIndex}`}
@@ -123,6 +126,7 @@ const ColumnSection = ({
           id={`footlink-${columnIndex}`}
           className="footer-accordion-body"
           role="region"
+          aria-labelledby={titleId}
           ref={accordionBodyRef}
         >
           {links.map(link => (
