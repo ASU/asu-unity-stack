@@ -37,6 +37,21 @@ describe("#ASU Footer", () => {
   test.each(cases)("should %p section be defined", (_, testId) =>
     expect(component.queryByTestId(testId)).toBeInTheDocument()
   );
+
+  it("renders a contentinfo landmark by default", () => {
+    expect(component.getByRole("contentinfo")).toHaveProperty(
+      "tagName",
+      "FOOTER"
+    );
+  });
+});
+
+describe("#ASU Footer embedded in a host footer", () => {
+  it("does not render a nested contentinfo landmark", () => {
+    const component = renderFooter({ ...completeState, renderDiv: "true" });
+
+    expect(component.queryByRole("contentinfo")).not.toBeInTheDocument();
+  });
 });
 
 describe("#ASU Footer without social and contact", () => {
