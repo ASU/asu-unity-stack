@@ -1,0 +1,150 @@
+// @ts-check
+import { imageAny } from "@asu/shared";
+import React from "react";
+
+const img = imageAny();
+
+import { BlockQuote } from "./BlockQuote";
+
+export default {
+  title: "Components/BlockQuote",
+  component: BlockQuote,
+  decorators: [
+    // @ts-ignore
+    (Story, context) => {
+      // Extract wrapper background color from args, it doesn't need passed down to component
+      const { wrapperBackgroundColor, ...args } = context.args;
+      return (
+        <div
+          className={`p-6 ${wrapperBackgroundColor}`}
+          style={{ width: "fit-content" }}
+        >
+          {Story({ args })}
+        </div>
+      );
+    },
+  ],
+  argTypes: {
+    wrapperBackgroundColor: {
+      defaultValue: "",
+      options: ["", "bg-gray-2", "bg-gray-7", "bg-gray-1"],
+      control: {
+        type: "radio",
+        labels: {
+          "": "White",
+          "bg-gray-2": "Gray 2",
+          "bg-gray-1": "Gray 1",
+          "bg-gray-7": "Black",
+        },
+      },
+    },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: " ",
+      },
+    },
+  },
+};
+
+const itemColorCombinations = {
+  Gold: ["accent-gold"],
+  Maroon: ["accent-maroon"],
+  Gold_White_Text: ["text-white", "accent-gold"],
+
+  None: null,
+};
+
+const itemTitleColorCombinations = {
+  "Highlight gold": ["highlight-gold"],
+  "Highlight black": ["highlight-black"],
+
+  "None": null,
+};
+
+const itemQuoteColorCombinations = {
+  White: ["text-white"],
+  Maroon: ["text-maroon"],
+  None: null,
+};
+// @ts-ignore
+const Template = args => <BlockQuote {...args} />;
+
+export const Default = Template.bind({});
+// @ts-ignore
+Default.args = {
+  quote: {
+    content: `We hold these truths to be self-evident, that all men are created equal, that they are endowed by their Creator with certain unalienable Rights, that among these are Life, Liberty and the pursuit of Happiness.`,
+    cite: {
+      name: `Thomas Jefferson`,
+      description: `The Declaration of Independence`,
+    },
+  },
+};
+
+export const WithImage = Template.bind({});
+// @ts-ignore
+WithImage.args = {
+  quote: {
+    content: `I used to wonder about that myself. Thought it was a bunch of mumbo-jumbo. A magical power holding together good and evil, the dark side and the light? Crazy thing is, it’s true. The Force, the Jedi — all of it. It’s all true.`,
+    cite: {
+      name: `Han Solo`,
+    },
+  },
+  imageSource: img,
+  imageAltText: "Pretend this is Han Solo",
+  itemStyle: {
+    containerCssClass: itemColorCombinations.Gold,
+    // @ts-ignore
+    contentCssClass: itemQuoteColorCombinations.none,
+  },
+};
+
+export const NoImage = Template.bind({});
+// @ts-ignore
+NoImage.args = {
+  quote: {
+    content: `Computers make excellent and efficient servants, but I have no wish to serve under them.`,
+    cite: {
+      name: `Spock`,
+      description: `First officer, USS Enterprise`,
+    },
+  },
+  itemStyle: {
+    containerCssClass: itemColorCombinations.Gold,
+  },
+};
+
+export const WithCitation = Template.bind({});
+// @ts-ignore
+WithCitation.args = {
+  quote: {
+    content: `ASU is a comprehensive public research university, measured not by whom we exclude, but rather by whom we include and how they succeed; advancing research and discovery of public value; and assuming fundamental responsibility for the economic, social, cultural and overall health of the communities it serves.`,
+    cite: {
+      name: `Michael M. Crow`,
+      description: `ASU Charter`,
+    },
+  },
+  imageSource: img,
+  imageAltText: "Pretend this is Michael M. Crow, President of ASU",
+  itemStyle: {
+    containerCssClass: itemColorCombinations.Gold,
+  },
+};
+
+export const HightlightGold = Template.bind({});
+// @ts-ignore
+HightlightGold.args = {
+  quote: {
+    title: "Walt Disney",
+    content:
+      "Laughter is timeless, imagination has no age, dreams are forever.",
+  },
+  imageSource: img,
+  imageAltText: "Image of Walt DisneyImage of Walt Disney",
+  itemStyle: {
+    containerCssClass: itemColorCombinations.Gold,
+    titleCssClass: itemTitleColorCombinations["Highlight gold"],
+  },
+};
