@@ -1,3 +1,10 @@
+# [@asu/component-header-footer-v1.6.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.6.0...@asu/component-header-footer-v1.6.1) (2026-09-29)
+
+
+### Bug Fixes
+
+* **component-header-footer:** name footer regions and support embedded rendering ([0f403db](https://github.com/asu/asu-unity-stack/commit/0f403db0b3404e7d1e80182891e3f594fa79fd0b))
+
 # [@asu/component-header-footer-v1.6.0](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.5.1...@asu/component-header-footer-v1.6.0) (2026-09-18)
 
 
