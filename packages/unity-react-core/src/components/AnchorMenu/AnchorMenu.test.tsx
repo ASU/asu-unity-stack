@@ -65,6 +65,8 @@ describe("#Anchor Menu", () => {
     const toggler = screen.getByRole("button", { name: /On This Page:/i });
     const collapseContainer = screen.getByTestId("anchor-menu-container");
 
+    expect(toggler.querySelector("svg")).toBeInTheDocument();
+
     // Initially closed
     expect(collapseContainer).not.toHaveClass("show");
     expect(toggler).toHaveAttribute("aria-expanded", "false");

@@ -329,7 +329,23 @@ export const AnchorMenu: React.FC<AnchorMenuProps> = ({
                   aria-controls="collapseAnchorMenu"
                   aria-expanded={state.showMenu}
                 >
-                  {menuTitle}:<i className="fas fa-chevron-down" />
+                  {menuTitle}:
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="m3 6 5 5 5-5"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                    />
+                  </svg>
                 </button>
               </GaEventWrapper>
             ) : (
