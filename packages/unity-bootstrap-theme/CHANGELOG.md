@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v2.4.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.4.2...@asu/unity-bootstrap-theme-v2.4.3) (2026-09-30)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** remove bluefocus artifact that was confusing agents ([749674b](https://github.com/ASU/asu-unity-stack/commit/749674b8e89eb052781ce7215db3eb54895d4fdd))
+
 # [@asu/unity-bootstrap-theme-v2.4.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.4.1...@asu/unity-bootstrap-theme-v2.4.2) (2026-09-25)
 
 
