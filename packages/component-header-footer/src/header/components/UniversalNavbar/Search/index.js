@@ -87,7 +87,7 @@ const Search = () => {
     <search>
       <SearchWrapper
         // @ts-ignore
-        breakpoint={breakpoint}
+        $breakpoint={breakpoint}
         action={searchUrl}
         onSubmit={handleSearch}
         method="get"
