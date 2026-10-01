@@ -52,15 +52,7 @@ const itemColorCombinations = {
   Gold: ["accent-gold"],
   Maroon: ["accent-maroon"],
   Gold_White_Text: ["text-white", "accent-gold"],
-
   None: null,
-};
-
-const itemTitleColorCombinations = {
-  "Highlight gold": ["highlight-gold"],
-  "Highlight black": ["highlight-black"],
-
-  "None": null,
 };
 
 const itemQuoteColorCombinations = {
@@ -130,21 +122,5 @@ WithCitation.args = {
   imageAltText: "Pretend this is Michael M. Crow, President of ASU",
   itemStyle: {
     containerCssClass: itemColorCombinations.Gold,
-  },
-};
-
-export const HightlightGold = Template.bind({});
-// @ts-ignore
-HightlightGold.args = {
-  quote: {
-    title: "Walt Disney",
-    content:
-      "Laughter is timeless, imagination has no age, dreams are forever.",
-  },
-  imageSource: img,
-  imageAltText: "Image of Walt DisneyImage of Walt Disney",
-  itemStyle: {
-    containerCssClass: itemColorCombinations.Gold,
-    titleCssClass: itemTitleColorCombinations["Highlight gold"],
   },
 };
