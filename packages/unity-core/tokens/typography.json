@@ -1,0 +1,262 @@
+{
+  "font": {
+    "$description": "Typography tokens. Body sizes use a 1.5 line-height ratio, headings 1.2. Values mirror the current prototype; note the Figma UDS Design Kit defines H1 at 64px desktop / 36px mobile and H2 at 40px / 32px — alignment pending Brand confirmation (UDS-2275).",
+    "$extensions": {
+      "com.asu.uds": { "status": "experimental" }
+    },
+    "family": {
+      "base": {
+        "$value": "Arial, sans-serif",
+        "$type": "fontFamily",
+        "$description": "Body and heading font (per ASU brand guide)",
+        "$extensions": {
+          "com.asu.uds": { "deprecatedAliases": ["$uds-font-family-base"] }
+        }
+      }
+    },
+    "weight": {
+      "regular": {
+        "$value": "400",
+        "$type": "fontWeight",
+        "$description": "Regular weight",
+        "$extensions": {
+          "com.asu.uds": { "deprecatedAliases": ["$uds-font-weight-normal"] }
+        }
+      },
+      "bold": {
+        "$value": "700",
+        "$type": "fontWeight",
+        "$description": "Bold weight",
+        "$extensions": {
+          "com.asu.uds": { "deprecatedAliases": ["$uds-font-weight-bold"] }
+        }
+      }
+    },
+    "size": {
+      "xs": {
+        "$value": "12px",
+        "$type": "dimension",
+        "$description": "Extra small body text"
+      },
+      "sm": {
+        "$value": "14px",
+        "$type": "dimension",
+        "$description": "Small body text"
+      },
+      "md": {
+        "$value": "16px",
+        "$type": "dimension",
+        "$description": "Default body text"
+      },
+      "lg": {
+        "$value": "18px",
+        "$type": "dimension",
+        "$description": "Large body text"
+      },
+      "xl": {
+        "$value": "24px",
+        "$type": "dimension",
+        "$description": "Extra large body text"
+      },
+      "body": {
+        "$value": "{font.size.md}",
+        "$type": "dimension",
+        "$description": "Default body font size"
+      },
+      "h1": {
+        "xl": {
+          "$value": "56px",
+          "$type": "dimension",
+          "$description": "H1 xl variant"
+        },
+        "lg": {
+          "$value": "36px",
+          "$type": "dimension",
+          "$description": "H1 large variant"
+        },
+        "md": {
+          "$value": "30px",
+          "$type": "dimension",
+          "$description": "H1 medium variant"
+        },
+        "sm": {
+          "$value": "24px",
+          "$type": "dimension",
+          "$description": "H1 small variant"
+        }
+      },
+      "h2": {
+        "xl": {
+          "$value": "48px",
+          "$type": "dimension",
+          "$description": "H2 xl variant"
+        },
+        "lg": {
+          "$value": "30px",
+          "$type": "dimension",
+          "$description": "H2 large variant"
+        },
+        "md": {
+          "$value": "24px",
+          "$type": "dimension",
+          "$description": "H2 medium variant"
+        },
+        "sm": {
+          "$value": "18px",
+          "$type": "dimension",
+          "$description": "H2 small variant"
+        }
+      },
+      "h3": {
+        "xl": {
+          "$value": "30px",
+          "$type": "dimension",
+          "$description": "H3 xl variant"
+        },
+        "lg": {
+          "desktop": {
+            "$value": "24px",
+            "$type": "dimension",
+            "$description": "H3 large variant on desktop (>=992px)"
+          },
+          "mobile": {
+            "$value": "18px",
+            "$type": "dimension",
+            "$description": "H3 large variant on mobile (<768px)"
+          }
+        },
+        "md": {
+          "$value": "18px",
+          "$type": "dimension",
+          "$description": "H3 medium variant"
+        },
+        "sm": {
+          "$value": "16px",
+          "$type": "dimension",
+          "$description": "H3 small variant"
+        }
+      }
+    }
+  },
+  "line-height": {
+    "$description": "Line-height scale paired with the font sizes (1.5 ratio for body, 1.2 for headings).",
+    "$extensions": {
+      "com.asu.uds": { "status": "experimental" }
+    },
+    "xs": {
+      "$value": "18px",
+      "$type": "dimension",
+      "$description": "Pairs with font.size.xs (1.5 ratio)"
+    },
+    "sm": {
+      "$value": "21px",
+      "$type": "dimension",
+      "$description": "Pairs with font.size.sm (1.5 ratio)"
+    },
+    "md": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Pairs with font.size.md (1.5 ratio)"
+    },
+    "lg": {
+      "$value": "27px",
+      "$type": "dimension",
+      "$description": "Pairs with font.size.lg (1.5 ratio)"
+    },
+    "xl": {
+      "$value": "36px",
+      "$type": "dimension",
+      "$description": "Pairs with font.size.xl (1.5 ratio)"
+    },
+    "body": {
+      "$value": "{line-height.md}",
+      "$type": "dimension",
+      "$description": "Default body line-height"
+    },
+    "heading": {
+      "$value": "1.2",
+      "$type": "number",
+      "$description": "Unitless heading line-height ratio"
+    },
+    "h1": {
+      "xl": {
+        "$value": "67px",
+        "$type": "dimension",
+        "$description": "Pairs with font.size.h1.xl (1.2 ratio)"
+      },
+      "lg": {
+        "$value": "43px",
+        "$type": "dimension",
+        "$description": "Pairs with font.size.h1.lg (1.2 ratio)"
+      },
+      "md": {
+        "$value": "36px",
+        "$type": "dimension",
+        "$description": "Pairs with font.size.h1.md (1.2 ratio)"
+      },
+      "sm": {
+        "desktop": {
+          "$value": "29px",
+          "$type": "dimension",
+          "$description": "Pairs with font.size.h1.sm on desktop (>=992px)"
+        },
+        "mobile": {
+          "$value": "24px",
+          "$type": "dimension",
+          "$description": "Pairs with font.size.h1.sm on mobile (<768px)"
+        }
+      }
+    },
+    "h2": {
+      "xl": {
+        "$value": "58px",
+        "$type": "dimension",
+        "$description": "Pairs with font.size.h2.xl (1.2 ratio)"
+      },
+      "lg": {
+        "$value": "36px",
+        "$type": "dimension",
+        "$description": "Pairs with font.size.h2.lg (1.2 ratio)"
+      },
+      "md": {
+        "$value": "29px",
+        "$type": "dimension",
+        "$description": "Pairs with font.size.h2.md (1.2 ratio)"
+      },
+      "sm": {
+        "$value": "22px",
+        "$type": "dimension",
+        "$description": "Pairs with font.size.h2.sm (1.2 ratio)"
+      }
+    },
+    "h3": {
+      "xl": {
+        "$value": "36px",
+        "$type": "dimension",
+        "$description": "Pairs with font.size.h3.xl (1.2 ratio)"
+      },
+      "lg": {
+        "desktop": {
+          "$value": "29px",
+          "$type": "dimension",
+          "$description": "Pairs with font.size.h3.lg on desktop (>=992px)"
+        },
+        "mobile": {
+          "$value": "22px",
+          "$type": "dimension",
+          "$description": "Pairs with font.size.h3.lg on mobile (<768px)"
+        }
+      },
+      "md": {
+        "$value": "22px",
+        "$type": "dimension",
+        "$description": "Pairs with font.size.h3.md (1.2 ratio)"
+      },
+      "sm": {
+        "$value": "19px",
+        "$type": "dimension",
+        "$description": "Pairs with font.size.h3.sm (1.2 ratio)"
+      }
+    }
+  }
+}

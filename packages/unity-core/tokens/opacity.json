@@ -1,0 +1,23 @@
+{
+  "opacity": {
+    "$description": "Opacity levels for interaction states and overlays.",
+    "$extensions": {
+      "com.asu.uds": { "status": "experimental" }
+    },
+    "disabled": {
+      "$value": "0.5",
+      "$type": "number",
+      "$description": "Disabled state (from RDS reference)"
+    },
+    "hover": {
+      "$value": "0.9",
+      "$type": "number",
+      "$description": "Hover feedback"
+    },
+    "overlay": {
+      "$value": "0.7",
+      "$type": "number",
+      "$description": "Modal/overlay backdrop"
+    }
+  }
+}

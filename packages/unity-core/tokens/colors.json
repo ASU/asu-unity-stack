@@ -1,0 +1,248 @@
+{
+  "color": {
+    "$description": "ASU color tokens. Primitive values mirror the current prototype palette; final values are pending Brand team confirmation (UDS-2268).",
+    "$extensions": {
+      "com.asu.uds": { "status": "experimental" }
+    },
+    "brand": {
+      "maroon": {
+        "$value": "#8C1D40",
+        "$type": "color",
+        "$description": "ASU Maroon — primary brand color",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Themes/Primary Colors/ASU Maroon",
+            "deprecatedAliases": ["$uds-color-base-maroon"]
+          }
+        }
+      },
+      "gold": {
+        "$value": "#FFC627",
+        "$type": "color",
+        "$description": "ASU Gold — primary brand color",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Themes/Primary Colors/ASU Gold",
+            "deprecatedAliases": ["$uds-color-base-gold"]
+          }
+        }
+      },
+      "black": {
+        "$value": "#000000",
+        "$type": "color",
+        "$description": "ASU Rich Black — foundational contrast. Pending Brand decision: the Figma UDS Design Kit defines ASU Black as Gray 1 (#191919). See UDS-2275 audit, mismatch #3."
+      },
+      "white": {
+        "$value": "#FFFFFF",
+        "$type": "color",
+        "$description": "ASU White — foundational contrast",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Themes/Primary Colors/ASU White",
+            "deprecatedAliases": ["$uds-color-base-white"]
+          }
+        }
+      }
+    },
+    "secondary": {
+      "green": {
+        "$value": "#78BE20",
+        "$type": "color",
+        "$description": "ASU Green — accent only, max 20% of palette (Pantone 368 C)",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Themes/System Colors/ASU Green",
+            "deprecatedAliases": ["$uds-color-base-green"]
+          }
+        }
+      },
+      "blue": {
+        "$value": "#00A3E0",
+        "$type": "color",
+        "$description": "ASU Blue — accent only (Pantone 299 C)",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Themes/System Colors/ASU Blue",
+            "deprecatedAliases": ["$uds-color-base-blue"]
+          }
+        }
+      },
+      "orange": {
+        "$value": "#FF7F32",
+        "$type": "color",
+        "$description": "ASU Orange — accent only (Pantone 1575 C)",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Themes/System Colors/ASU Orange",
+            "deprecatedAliases": ["$uds-color-base-orange"]
+          }
+        }
+      },
+      "gray": {
+        "$value": "#747474",
+        "$type": "color",
+        "$description": "ASU Gray — primary gray, accent only (Pantone 424 C). Same value as Gray 3.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Themes/Grayscale/Gray 3"
+          }
+        }
+      },
+      "copper": {
+        "$value": "#AF674B",
+        "$type": "color",
+        "$description": "ASU Copper — accent only (Pantone 7522 C). Not present in the Figma UDS Design Kit variables."
+      },
+      "turquoise": {
+        "$value": "#4AB7C4",
+        "$type": "color",
+        "$description": "ASU Turquoise — accent only (Pantone 2227 C). Not present in the Figma UDS Design Kit variables."
+      },
+      "pink": {
+        "$value": "#E74973",
+        "$type": "color",
+        "$description": "ASU Pink — accent only (Pantone 205 C). Not present in the Figma UDS Design Kit variables."
+      }
+    },
+    "gray-1": {
+      "$value": "#191919",
+      "$type": "color",
+      "$description": "Gray 1 — used as black on asu.edu for reduced contrast",
+      "$extensions": {
+        "com.asu.uds": {
+          "figmaVar": "Themes/Grayscale/Gray 1",
+          "deprecatedAliases": ["$asu-gray-1", "$uds-color-base-gray-7"]
+        }
+      }
+    },
+    "gray-2": {
+      "$value": "#484848",
+      "$type": "color",
+      "$description": "Gray 2",
+      "$extensions": {
+        "com.asu.uds": {
+          "figmaVar": "Themes/Grayscale/Gray 2",
+          "deprecatedAliases": ["$asu-gray-2", "$uds-color-base-gray-6"]
+        }
+      }
+    },
+    "gray-3": {
+      "$value": "#747474",
+      "$type": "color",
+      "$description": "Gray 3 — same as ASU Gray",
+      "$extensions": {
+        "com.asu.uds": {
+          "figmaVar": "Themes/Grayscale/Gray 3",
+          "deprecatedAliases": ["$asu-gray-3", "$uds-color-base-gray-5"]
+        }
+      }
+    },
+    "gray-4": {
+      "$value": "#BFBFBF",
+      "$type": "color",
+      "$description": "Gray 4",
+      "$extensions": {
+        "com.asu.uds": {
+          "figmaVar": "Themes/Grayscale/Gray 4",
+          "deprecatedAliases": ["$asu-gray-4", "$uds-color-base-gray-4"]
+        }
+      }
+    },
+    "gray-5": {
+      "$value": "#D0D0D0",
+      "$type": "color",
+      "$description": "Gray 5",
+      "$extensions": {
+        "com.asu.uds": {
+          "figmaVar": "Themes/Grayscale/Gray 5",
+          "deprecatedAliases": ["$asu-gray-5", "$uds-color-base-gray-3"]
+        }
+      }
+    },
+    "gray-6": {
+      "$value": "#E8E8E8",
+      "$type": "color",
+      "$description": "Gray 6",
+      "$extensions": {
+        "com.asu.uds": {
+          "figmaVar": "Themes/Grayscale/Gray 6",
+          "deprecatedAliases": ["$asu-gray-6", "$uds-color-base-gray-2"]
+        }
+      }
+    },
+    "gray-7": {
+      "$value": "#FAFAFA",
+      "$type": "color",
+      "$description": "Gray 7 — used as white on asu.edu for reduced contrast",
+      "$extensions": {
+        "com.asu.uds": {
+          "figmaVar": "Themes/Grayscale/Gray 7",
+          "deprecatedAliases": ["$asu-gray-7", "$uds-color-base-gray-1"]
+        }
+      }
+    },
+    "semantic": {
+      "$description": "Surface-aware semantic roles. The light value is emitted on :root/.uds-surface-light, the dark value on .uds-surface-dark. Semantic-to-Figma mapping is intentionally deferred until the Brand team confirms the Light or Dark Mode collection (UDS-2275).",
+      "primary": {
+        "light": {
+          "$value": "{color.brand.maroon}",
+          "$type": "color",
+          "$description": "Primary action color on light surfaces"
+        },
+        "dark": {
+          "$value": "{color.brand.gold}",
+          "$type": "color",
+          "$description": "Primary action color on dark surfaces"
+        }
+      },
+      "secondary": {
+        "light": {
+          "$value": "{color.brand.gold}",
+          "$type": "color",
+          "$description": "Secondary action color on light surfaces"
+        },
+        "dark": {
+          "$value": "{color.brand.white}",
+          "$type": "color",
+          "$description": "Secondary action color on dark surfaces"
+        }
+      },
+      "surface": {
+        "light": {
+          "$value": "{color.gray-7}",
+          "$type": "color",
+          "$description": "Light surface background (Gray 7 per asu.edu convention)"
+        },
+        "dark": {
+          "$value": "{color.gray-1}",
+          "$type": "color",
+          "$description": "Dark surface background (Gray 1 per asu.edu convention)"
+        }
+      },
+      "on-surface": {
+        "light": {
+          "$value": "{color.gray-1}",
+          "$type": "color",
+          "$description": "Text on light surface (Gray 1)"
+        },
+        "dark": {
+          "$value": "{color.gray-7}",
+          "$type": "color",
+          "$description": "Text on dark surface (Gray 7)"
+        }
+      },
+      "on-primary": {
+        "light": {
+          "$value": "{color.brand.white}",
+          "$type": "color",
+          "$description": "Text on primary-colored background (light surface)"
+        },
+        "dark": {
+          "$value": "{color.gray-1}",
+          "$type": "color",
+          "$description": "Text on primary-colored background (dark surface)"
+        }
+      }
+    }
+  }
+}
