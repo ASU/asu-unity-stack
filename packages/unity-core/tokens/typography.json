@@ -1,346 +1,261 @@
 {
   "font": {
+    "$description": "Typography tokens. Body sizes use a 1.5 line-height ratio, headings 1.2. Values mirror the current prototype; note the Figma UDS Design Kit defines H1 at 64px desktop / 36px mobile and H2 at 40px / 32px — alignment pending Brand confirmation (UDS-2275).",
+    "$extensions": {
+      "com.asu.uds": { "status": "experimental" }
+    },
     "family": {
       "base": {
-        "value": "Arial, sans-serif",
-        "type": "fontFamily",
-        "description": "Body and heading font (per ASU brand guide)"
+        "$value": "Arial, sans-serif",
+        "$type": "fontFamily",
+        "$description": "Body and heading font (per ASU brand guide)",
+        "$extensions": {
+          "com.asu.uds": { "deprecatedAliases": ["$uds-font-family-base"] }
+        }
       }
     },
     "weight": {
       "regular": {
-        "value": "400",
-        "type": "fontWeight"
+        "$value": "400",
+        "$type": "fontWeight",
+        "$description": "Regular weight",
+        "$extensions": {
+          "com.asu.uds": { "deprecatedAliases": ["$uds-font-weight-normal"] }
+        }
       },
       "bold": {
-        "value": "700",
-        "type": "fontWeight"
+        "$value": "700",
+        "$type": "fontWeight",
+        "$description": "Bold weight",
+        "$extensions": {
+          "com.asu.uds": { "deprecatedAliases": ["$uds-font-weight-bold"] }
+        }
       }
     },
-    "body": {
+    "size": {
       "xs": {
-        "font-size": {
-          "value": "12",
-          "type": "number",
-          "description": "Extra small body text"
-        },
-        "line-height": {
-          "value": "18",
-          "type": "number",
-          "description": "1.5 ratio"
-        }
+        "$value": "12px",
+        "$type": "dimension",
+        "$description": "Extra small body text"
       },
       "sm": {
-        "font-size": {
-          "value": "14",
-          "type": "number",
-          "description": "Small body text"
-        },
-        "line-height": {
-          "value": "21",
-          "type": "number",
-          "description": "1.5 ratio"
-        }
+        "$value": "14px",
+        "$type": "dimension",
+        "$description": "Small body text"
       },
       "md": {
-        "font-size": {
-          "value": "16",
-          "type": "number",
-          "description": "Default body text"
-        },
-        "line-height": {
-          "value": "24",
-          "type": "number",
-          "description": "1.5 ratio"
-        }
+        "$value": "16px",
+        "$type": "dimension",
+        "$description": "Default body text"
       },
       "lg": {
-        "font-size": {
-          "value": "18",
-          "type": "number",
-          "description": "Large body text"
-        },
-        "line-height": {
-          "value": "27",
-          "type": "number",
-          "description": "1.5 ratio"
-        }
+        "$value": "18px",
+        "$type": "dimension",
+        "$description": "Large body text"
       },
       "xl": {
-        "font-size": {
-          "value": "24",
-          "type": "number",
-          "description": "Extra large body text"
-        },
-        "line-height": {
-          "value": "36",
-          "type": "number",
-          "description": "1.5 ratio"
-        }
-      }
-    },
-    "heading": {
+        "$value": "24px",
+        "$type": "dimension",
+        "$description": "Extra large body text"
+      },
+      "body": {
+        "$value": "{font.size.md}",
+        "$type": "dimension",
+        "$description": "Default body font size"
+      },
       "h1": {
-        "desktop": {
-          "xl": {
-            "font-size": {
-              "value": "56",
-              "type": "number"
-            },
-            "line-height": {
-              "value": "67",
-              "type": "number"
-            }
-          },
-          "large": {
-            "font-size": {
-              "value": "36",
-              "type": "number"
-            },
-            "line-height": {
-              "value": "43",
-              "type": "number"
-            }
-          },
-          "medium": {
-            "font-size": {
-              "value": "30",
-              "type": "number"
-            },
-            "line-height": {
-              "value": "36",
-              "type": "number"
-            }
-          },
-          "small": {
-            "font-size": {
-              "value": "24",
-              "type": "number"
-            },
-            "line-height": {
-              "value": "29",
-              "type": "number"
-            }
-          }
+        "xl": {
+          "$value": "56px",
+          "$type": "dimension",
+          "$description": "H1 xl variant"
         },
-        "mobile": {
-          "xl": {
-            "font-size": {
-              "value": "56",
-              "type": "number"
-            },
-            "line-height": {
-              "value": "67",
-              "type": "number"
-            }
-          },
-          "large": {
-            "font-size": {
-              "value": "36",
-              "type": "number"
-            },
-            "line-height": {
-              "value": "43",
-              "type": "number"
-            }
-          },
-          "medium": {
-            "font-size": {
-              "value": "30",
-              "type": "number"
-            },
-            "line-height": {
-              "value": "36",
-              "type": "number"
-            }
-          },
-          "small": {
-            "font-size": {
-              "value": "24",
-              "type": "number"
-            },
-            "line-height": {
-              "value": "24",
-              "type": "number"
-            }
-          }
+        "lg": {
+          "$value": "36px",
+          "$type": "dimension",
+          "$description": "H1 large variant"
+        },
+        "md": {
+          "$value": "30px",
+          "$type": "dimension",
+          "$description": "H1 medium variant"
+        },
+        "sm": {
+          "$value": "24px",
+          "$type": "dimension",
+          "$description": "H1 small variant"
         }
       },
       "h2": {
-        "desktop": {
-          "xl": {
-            "font-size": {
-              "value": "48",
-              "type": "number"
-            },
-            "line-height": {
-              "value": "58",
-              "type": "number"
-            }
-          },
-          "large": {
-            "font-size": {
-              "value": "30",
-              "type": "number"
-            },
-            "line-height": {
-              "value": "36",
-              "type": "number"
-            }
-          },
-          "medium": {
-            "font-size": {
-              "value": "24",
-              "type": "number"
-            },
-            "line-height": {
-              "value": "29",
-              "type": "number"
-            }
-          },
-          "small": {
-            "font-size": {
-              "value": "18",
-              "type": "number"
-            },
-            "line-height": {
-              "value": "22",
-              "type": "number"
-            }
-          }
+        "xl": {
+          "$value": "48px",
+          "$type": "dimension",
+          "$description": "H2 xl variant"
         },
-        "mobile": {
-          "xl": {
-            "font-size": {
-              "value": "48",
-              "type": "number"
-            },
-            "line-height": {
-              "value": "58",
-              "type": "number"
-            }
-          },
-          "large": {
-            "font-size": {
-              "value": "30",
-              "type": "number"
-            },
-            "line-height": {
-              "value": "36",
-              "type": "number"
-            }
-          },
-          "medium": {
-            "font-size": {
-              "value": "24",
-              "type": "number"
-            },
-            "line-height": {
-              "value": "29",
-              "type": "number"
-            }
-          },
-          "small": {
-            "font-size": {
-              "value": "18",
-              "type": "number"
-            },
-            "line-height": {
-              "value": "22",
-              "type": "number"
-            }
-          }
+        "lg": {
+          "$value": "30px",
+          "$type": "dimension",
+          "$description": "H2 large variant"
+        },
+        "md": {
+          "$value": "24px",
+          "$type": "dimension",
+          "$description": "H2 medium variant"
+        },
+        "sm": {
+          "$value": "18px",
+          "$type": "dimension",
+          "$description": "H2 small variant"
         }
       },
       "h3": {
-        "desktop": {
-          "xl": {
-            "font-size": {
-              "value": "30",
-              "type": "number"
-            },
-            "line-height": {
-              "value": "36",
-              "type": "number"
-            }
+        "xl": {
+          "$value": "30px",
+          "$type": "dimension",
+          "$description": "H3 xl variant"
+        },
+        "lg": {
+          "desktop": {
+            "$value": "24px",
+            "$type": "dimension",
+            "$description": "H3 large variant on desktop (>=992px)"
           },
-          "large": {
-            "font-size": {
-              "value": "24",
-              "type": "number"
-            },
-            "line-height": {
-              "value": "29",
-              "type": "number"
-            }
-          },
-          "medium": {
-            "font-size": {
-              "value": "18",
-              "type": "number"
-            },
-            "line-height": {
-              "value": "22",
-              "type": "number"
-            }
-          },
-          "small": {
-            "font-size": {
-              "value": "16",
-              "type": "number"
-            },
-            "line-height": {
-              "value": "19",
-              "type": "number"
-            }
+          "mobile": {
+            "$value": "18px",
+            "$type": "dimension",
+            "$description": "H3 large variant on mobile (<768px)"
           }
         },
+        "md": {
+          "$value": "18px",
+          "$type": "dimension",
+          "$description": "H3 medium variant"
+        },
+        "sm": {
+          "$value": "16px",
+          "$type": "dimension",
+          "$description": "H3 small variant"
+        }
+      }
+    }
+  },
+  "line-height": {
+    "$description": "Line-height scale paired with the font sizes (1.5 ratio for body, 1.2 for headings).",
+    "$extensions": {
+      "com.asu.uds": { "status": "experimental" }
+    },
+    "xs": {
+      "$value": "18px",
+      "$type": "dimension",
+      "$description": "Pairs with font.size.xs (1.5 ratio)"
+    },
+    "sm": {
+      "$value": "21px",
+      "$type": "dimension",
+      "$description": "Pairs with font.size.sm (1.5 ratio)"
+    },
+    "md": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Pairs with font.size.md (1.5 ratio)"
+    },
+    "lg": {
+      "$value": "27px",
+      "$type": "dimension",
+      "$description": "Pairs with font.size.lg (1.5 ratio)"
+    },
+    "xl": {
+      "$value": "36px",
+      "$type": "dimension",
+      "$description": "Pairs with font.size.xl (1.5 ratio)"
+    },
+    "body": {
+      "$value": "{line-height.md}",
+      "$type": "dimension",
+      "$description": "Default body line-height"
+    },
+    "heading": {
+      "$value": "1.2",
+      "$type": "number",
+      "$description": "Unitless heading line-height ratio"
+    },
+    "h1": {
+      "xl": {
+        "$value": "67px",
+        "$type": "dimension",
+        "$description": "Pairs with font.size.h1.xl (1.2 ratio)"
+      },
+      "lg": {
+        "$value": "43px",
+        "$type": "dimension",
+        "$description": "Pairs with font.size.h1.lg (1.2 ratio)"
+      },
+      "md": {
+        "$value": "36px",
+        "$type": "dimension",
+        "$description": "Pairs with font.size.h1.md (1.2 ratio)"
+      },
+      "sm": {
+        "desktop": {
+          "$value": "29px",
+          "$type": "dimension",
+          "$description": "Pairs with font.size.h1.sm on desktop (>=992px)"
+        },
         "mobile": {
-          "xl": {
-            "font-size": {
-              "value": "30",
-              "type": "number"
-            },
-            "line-height": {
-              "value": "36",
-              "type": "number"
-            }
-          },
-          "large": {
-            "font-size": {
-              "value": "18",
-              "type": "number"
-            },
-            "line-height": {
-              "value": "22",
-              "type": "number"
-            }
-          },
-          "medium": {
-            "font-size": {
-              "value": "18",
-              "type": "number"
-            },
-            "line-height": {
-              "value": "22",
-              "type": "number"
-            }
-          },
-          "small": {
-            "font-size": {
-              "value": "16",
-              "type": "number"
-            },
-            "line-height": {
-              "value": "19",
-              "type": "number"
-            }
-          }
+          "$value": "24px",
+          "$type": "dimension",
+          "$description": "Pairs with font.size.h1.sm on mobile (<768px)"
+        }
+      }
+    },
+    "h2": {
+      "xl": {
+        "$value": "58px",
+        "$type": "dimension",
+        "$description": "Pairs with font.size.h2.xl (1.2 ratio)"
+      },
+      "lg": {
+        "$value": "36px",
+        "$type": "dimension",
+        "$description": "Pairs with font.size.h2.lg (1.2 ratio)"
+      },
+      "md": {
+        "$value": "29px",
+        "$type": "dimension",
+        "$description": "Pairs with font.size.h2.md (1.2 ratio)"
+      },
+      "sm": {
+        "$value": "22px",
+        "$type": "dimension",
+        "$description": "Pairs with font.size.h2.sm (1.2 ratio)"
+      }
+    },
+    "h3": {
+      "xl": {
+        "$value": "36px",
+        "$type": "dimension",
+        "$description": "Pairs with font.size.h3.xl (1.2 ratio)"
+      },
+      "lg": {
+        "desktop": {
+          "$value": "29px",
+          "$type": "dimension",
+          "$description": "Pairs with font.size.h3.lg on desktop (>=992px)"
+        },
+        "mobile": {
+          "$value": "22px",
+          "$type": "dimension",
+          "$description": "Pairs with font.size.h3.lg on mobile (<768px)"
         }
       },
-      "_meta": {
-        "description": "Headings use 1.2 line-height ratio. Each heading level has xl/large/medium/small variants. Desktop breakpoint is >=992px, mobile is <768px.",
-        "unit": "px"
+      "md": {
+        "$value": "22px",
+        "$type": "dimension",
+        "$description": "Pairs with font.size.h3.md (1.2 ratio)"
+      },
+      "sm": {
+        "$value": "19px",
+        "$type": "dimension",
+        "$description": "Pairs with font.size.h3.sm (1.2 ratio)"
       }
     }
   }

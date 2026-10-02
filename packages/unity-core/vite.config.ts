@@ -31,6 +31,12 @@ function getComponentEntries() {
 const componentEntries = getComponentEntries();
 
 export default defineConfig({
+  test: {
+    // tests/ holds Playwright e2e specs (run via `yarn test:e2e`);
+    // vitest must not pick them up.
+    exclude: ['tests/**', 'node_modules/**', 'dist/**'],
+    passWithNoTests: true,
+  },
   build: {
     lib: {
       entry: {

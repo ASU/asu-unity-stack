@@ -1,33 +1,41 @@
 {
   "radius": {
+    "$description": "Border radius scale.",
+    "$extensions": {
+      "com.asu.uds": { "status": "experimental" }
+    },
     "none": {
-      "value": "0px",
-      "type": "borderRadius"
+      "$value": "0px",
+      "$type": "dimension",
+      "$description": "No rounding"
     },
     "sm": {
-      "value": "2px",
-      "type": "borderRadius",
-      "description": "Subtle rounding (buttons)"
+      "$value": "2px",
+      "$type": "dimension",
+      "$description": "Subtle rounding (buttons)"
     },
     "md": {
-      "value": "4px",
-      "type": "borderRadius",
-      "description": "Default rounding (cards, inputs)"
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Default rounding (cards, inputs)"
     },
     "lg": {
-      "value": "8px",
-      "type": "borderRadius",
-      "description": "Pronounced rounding"
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Pronounced rounding"
     },
     "xl": {
-      "value": "16px",
-      "type": "borderRadius",
-      "description": "Large rounding (modals, panels)"
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Large rounding (modals, panels)"
     },
     "full": {
-      "value": "9999px",
-      "type": "borderRadius",
-      "description": "Pill/circle shape"
+      "$value": "9999px",
+      "$type": "dimension",
+      "$description": "Pill/circle shape. The legacy SCSS theme uses 400rem for the same purpose.",
+      "$extensions": {
+        "com.asu.uds": { "deprecatedAliases": ["$uds-component-border-radius"] }
+      }
     }
   }
 }

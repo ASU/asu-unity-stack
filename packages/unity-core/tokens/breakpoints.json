@@ -1,29 +1,33 @@
 {
   "breakpoint": {
+    "$description": "Media-query breakpoints. The Figma UDS Design Kit has no breakpoint variables (it models Desktop/Mobile column widths instead); the legacy SCSS theme uses xl=1260px and xxxl=1920px — alignment pending Brand confirmation (UDS-2275). CSS custom properties cannot be used inside @media queries; consume these via the SCSS output or build tooling.",
+    "$extensions": {
+      "com.asu.uds": { "status": "experimental" }
+    },
     "sm": {
-      "value": "576px",
-      "type": "dimension",
-      "description": "Small devices (landscape phones)"
+      "$value": "576px",
+      "$type": "dimension",
+      "$description": "Small devices (landscape phones)"
     },
     "md": {
-      "value": "768px",
-      "type": "dimension",
-      "description": "Medium devices (tablets)"
+      "$value": "768px",
+      "$type": "dimension",
+      "$description": "Medium devices (tablets)"
     },
     "lg": {
-      "value": "992px",
-      "type": "dimension",
-      "description": "Large devices (desktops) — heading size mode switches here"
+      "$value": "992px",
+      "$type": "dimension",
+      "$description": "Large devices (desktops) — heading size mode switches here"
     },
     "xl": {
-      "value": "1200px",
-      "type": "dimension",
-      "description": "Extra large devices"
+      "$value": "1200px",
+      "$type": "dimension",
+      "$description": "Extra large devices. Legacy SCSS uses 1260px — pending Brand decision."
     },
     "xxl": {
-      "value": "1400px",
-      "type": "dimension",
-      "description": "Max container width"
+      "$value": "1400px",
+      "$type": "dimension",
+      "$description": "Max container width. Not present in the legacy SCSS theme."
     }
   }
 }
