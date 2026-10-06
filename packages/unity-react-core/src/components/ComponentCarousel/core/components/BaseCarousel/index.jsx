@@ -36,6 +36,7 @@ const BaseCarousel = ({
   hasPeek = true,
   isDraggable = true,
   hasShadow = true,
+  bgColor = "",
 }) => {
   // Only prop for the slider configs we expose is perView. Everything else is
   // considered locked down for Web Standards 2.
@@ -81,7 +82,7 @@ const BaseCarousel = ({
     <div
       aria-labelledby={ariaLabelledBy}
       role="region"
-      className={`glide ${cssClass}`}
+      className={`glide ${cssClass} ${bgColor}`}
       id={instanceName}
       style={{ width, maxWidth }}
       data-remove-side-background={removeSideBackground}
@@ -124,6 +125,7 @@ BaseCarousel.propTypes = {
   hasNavButtons: PropTypes.bool,
   hasPositionIndicators: PropTypes.bool,
   imageAutoSize: PropTypes.bool,
+  bgColor: PropTypes.string,
   hasPeek: PropTypes.bool,
   isDraggable: PropTypes.bool,
   hasShadow: PropTypes.bool,
