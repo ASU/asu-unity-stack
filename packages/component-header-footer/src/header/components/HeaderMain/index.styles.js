@@ -22,7 +22,7 @@ const HeaderMainWrapper = styled.div`
       "search search search"
       "nav nav nav";
 
-    max-height: calc(100dvh - ${({ headerTop }) => headerTop}px);
+    max-height: calc(100dvh - ${({ $headertop }) => $headertop}px);
     overflow: hidden;
     .${CLASS_NAMES.PARTNER_TITLE}, .navbar-brand {
       grid-area: logo;
@@ -69,7 +69,7 @@ const HeaderMainWrapper = styled.div`
   .${CLASS_NAMES.EXPAND_TITLE} {
     width: 100%;
   }
-  @media (min-width: ${({ breakpoint }) => breakpoint}) {
+  @media (min-width: ${({ $breakpoint }) => $breakpoint}) {
     .${CLASS_NAMES.NO_NAVIGATION} {
       margin-top: 16px;
       display: flex;
@@ -79,7 +79,7 @@ const HeaderMainWrapper = styled.div`
       }
     }
   }
-  @media (max-width: ${({ breakpoint }) => breakpoint}) {
+  @media (max-width: ${({ $breakpoint }) => $breakpoint}) {
     padding: 0;
     .navbar {
       padding: 1.5rem 0 0 0;

@@ -70,7 +70,7 @@ const SearchWrapper = styled.form`
       pointer-events: none;
     }
   }
-  @media (max-width: ${({ breakpoint }) => breakpoint}) {
+  @media (max-width: ${({ $breakpoint }) => $breakpoint}) {
     width: 100%;
     padding: 0 1rem 1rem;
     label {
