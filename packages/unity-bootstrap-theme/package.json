@@ -61,7 +61,7 @@
     "semantic-release": "^22",
     "semantic-release-monorepo": "^8.0.2",
     "setup-env": "^1.2.3",
-    "sharp": "^0.32.0",
+    "sharp": "^0.35.5",
     "storybook": "^10",
     "style-loader": "^3.3.1",
     "stylelint": "^15.10.1",
