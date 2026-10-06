@@ -21,12 +21,14 @@ import { Header, HeaderDiv, GlobalStyle } from "./header.styles";
 
 const ASUHeader = ({
   isPartner = false,
+  isUnbranded = false,
   navTree: rawNavTree,
   title,
   baseUrl = "/",
   parentOrg,
   parentOrgUrl,
   partnerLogo,
+  unbrandedLogo,
   logo,
   loggedIn,
   userName,
@@ -110,6 +112,7 @@ const ASUHeader = ({
         configuration: {
           site,
           isPartner,
+          isUnbranded,
           searchUrl,
           navTree,
           parentOrg,
@@ -153,12 +156,14 @@ const ASUHeader = ({
     <AppContextProvider
       initialValue={{
         isPartner,
+        isUnbranded,
         navTree,
         title,
         baseUrl,
         parentOrg,
         parentOrgUrl,
         partnerLogo,
+        unbrandedLogo,
         logo,
         loggedIn,
         userName,

@@ -24,6 +24,7 @@
  * @property {boolean} [imageAutoSize]
  * @property {boolean} [hasPeek]
  * @property {boolean} [isDraggable]
+ * @property {string} [bgColor]
  * @property {boolean} hasShadow
  */
 

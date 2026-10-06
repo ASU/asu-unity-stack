@@ -67,7 +67,7 @@ const htmlTemplate = ({ id, imageSource, imageAltText, title, content }) => ({
 
 /**
  * @param {ImageCarouselType} props
- * @returns { JSX.Element }
+ * @returns { JSX.Element | null }
  */
 const ImageCarousel = ({
   perView: perViewProp = 0,
@@ -75,6 +75,7 @@ const ImageCarousel = ({
   width = undefined,
   maxWidth = undefined,
   imageAutoSize = true,
+  bgColor = "",
 }) => {
   if (!imageItems || imageItems.length === 0) {
     return null;
@@ -95,7 +96,12 @@ const ImageCarousel = ({
       hasPositionIndicators={activateGlideActions}
       hasNavButtons={activateGlideActions}
       isDraggable={activateGlideActions}
+      bgColor={bgColor}
       hasShadow
+      CustomNavComponent={undefined}
+      role={undefined}
+      ariaLabelledBy={undefined}
+      isFullWidth={undefined}
     />
   );
 };
@@ -107,6 +113,7 @@ ImageCarousel.propTypes = {
   width: PropTypes.string,
   maxWidth: PropTypes.string,
   imageAutoSize: PropTypes.bool,
+  bgColor: PropTypes.string,
 };
 
 export { ImageCarousel, htmlTemplate };

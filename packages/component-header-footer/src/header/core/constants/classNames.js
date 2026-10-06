@@ -32,6 +32,7 @@ export const CLASS_NAMES = {
 
   // Header sections
   UNIVERSAL_NAV: `${CLASS_PREFIX}universal-nav`,
+  UNIVERSAL_NAV_UNBRANDED: `${CLASS_PREFIX}universal-nav-unbranded`,
   HEADER_TOP: `${CLASS_PREFIX}header-top`,
   LINKS_CONTAINER: `${CLASS_PREFIX}links-container`,
   HEADER_MAIN: `${CLASS_PREFIX}header-main`,

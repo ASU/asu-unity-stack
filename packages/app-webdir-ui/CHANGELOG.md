@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v5.0.19](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.18...@asu/app-webdir-ui-v5.0.19) (2026-09-18)
+
+
+### Bug Fixes
+
+* **app-webdir-ui:** hide social media list when profile has no social links ([7e99f0b](https://github.com/asu/asu-unity-stack/commit/7e99f0bfde67c90a2e7d921ce8274eecbee81650))
+
 # [@asu/app-webdir-ui-v5.0.18](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.17...@asu/app-webdir-ui-v5.0.18) (2026-08-07)
 
 

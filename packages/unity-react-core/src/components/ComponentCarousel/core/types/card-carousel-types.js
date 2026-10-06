@@ -41,6 +41,7 @@
  * @property {number | string} [perView]
  * @property {string} [width]
  * @property {string} [maxWidth]
+ * @property {string} [bgColor]
  * @property {boolean} [imageAutoSize]
  * @property {boolean} [cardHorizontal]
  * @property {"stack" | "inline"} [cardEventFormat]

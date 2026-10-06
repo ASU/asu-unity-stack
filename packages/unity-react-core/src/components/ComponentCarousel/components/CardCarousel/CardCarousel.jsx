@@ -86,6 +86,7 @@ const CardCarousel = ({
   width = undefined,
   maxWidth = undefined,
   imageAutoSize = true,
+  bgColor = "",
 }) => {
   const perView = parseInt(`${perViewProp}`, 10);
   const [currentPerView, setCurrentPerView] = useState(perView);
@@ -141,6 +142,11 @@ const CardCarousel = ({
       hasNavButtons={activateGlideActions}
       isDraggable={activateGlideActions}
       hasShadow
+      bgColor={bgColor}
+      CustomNavComponent={undefined}
+      role={undefined}
+      ariaLabelledBy={undefined}
+      isFullWidth={undefined}
     />
   );
 };
@@ -167,6 +173,7 @@ CardCarousel.propTypes = {
   width: PropTypes.string,
   maxWidth: PropTypes.string,
   imageAutoSize: PropTypes.bool,
+  bgColor: PropTypes.string,
 };
 
 export { CardCarousel };

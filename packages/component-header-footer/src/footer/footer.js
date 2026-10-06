@@ -1,25 +1,34 @@
 // @ts-check
 import { trackReactComponent } from "@asu/shared";
-import { shape } from "prop-types";
+import { bool, oneOf, shape } from "prop-types";
 import React, { useEffect } from "react";
 
 import { Social, Legal, Innovation, ContactComponent } from "./components";
 import { StyledFooter } from "./index.styles";
 
-const Base = () => {
+const Base = ({ isUnbranded }) => {
   return (
     <>
-      <Innovation />
-      <Legal />
+      {!isUnbranded && <Innovation />}
+      {!isUnbranded && <Legal />}
     </>
   );
+};
+
+Base.propTypes = {
+  isUnbranded: bool,
 };
 
 /**
  * @param {import("./core/models/types").ASUFooter} props
  * @returns {JSX.Element}
  */
-const ASUFooter = ({ social, contact }) => {
+const ASUFooter = ({
+  social,
+  contact,
+  isUnbranded = false,
+  renderDiv = "false",
+}) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       trackReactComponent({
@@ -35,10 +44,12 @@ const ASUFooter = ({ social, contact }) => {
   }, []);
 
   return (
-    <StyledFooter role="contentinfo">
-      {social && <Social social={social} />}
-      {contact && <ContactComponent contact={contact} />}
-      <Base />
+    <StyledFooter as={renderDiv === "true" ? "div" : "footer"}>
+      {!isUnbranded && social && <Social social={social} />}
+      {contact && (
+        <ContactComponent contact={contact} isUnbranded={isUnbranded} />
+      )}
+      <Base isUnbranded={isUnbranded} />
     </StyledFooter>
   );
 };
@@ -46,6 +57,8 @@ const ASUFooter = ({ social, contact }) => {
 ASUFooter.propTypes = {
   social: shape(Social.propTypes),
   contact: shape(ContactComponent.propTypes),
+  isUnbranded: bool,
+  renderDiv: oneOf(["true", "false"]),
 };
 
 export { ASUFooter };

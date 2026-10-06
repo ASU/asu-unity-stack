@@ -36,6 +36,11 @@ const completeState = {
   ...social,
   ...contact,
 };
+const unbrandedStateFooter = {
+  ...social,
+  ...contact,
+  isUnbranded: true,
+};
 
 
 const defaultState = {
@@ -97,6 +102,21 @@ const partnersState = {
   userName: "",
   breakpoint: "Lg",
 };
+const unbrandedState = {
+  isUnbranded: true,
+  unbrandedLogo: {
+    src: "https://example.com/unbranded-logo.png",
+    alt: "Unbranded logo",
+    brandLink: "https://unbranded.example.edu",
+  },
+  navTree: basicNavTree,
+  title: "Unbranded Site",
+  loggedIn: false,
+  userName: "",
+  loginLink: "/cas",
+  searchUrl: "https://search.asu.edu/search",
+  breakpoint: "Lg",
+};
 const onHoverState = {
   navTree: basicNavTree,
   title: "Ira A. Fulton Schools of Engineering",
@@ -118,6 +138,7 @@ export {
   emptyStateFooter,
   withButtonsState,
   partnersState,
+  unbrandedState,
   onHoverState,
-  social, contactWithColumn, completeState,
+  social, contactWithColumn, completeState, unbrandedStateFooter,
 };

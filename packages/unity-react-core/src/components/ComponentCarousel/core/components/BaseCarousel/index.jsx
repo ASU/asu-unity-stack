@@ -19,14 +19,15 @@ import { setupCaroarousel } from "./glide/glide.setup";
 /** @param {BaseCarouselProps} props */
 const BaseCarousel = ({
   perView = 1,
-  width,
-  maxWidth,
+  width = "",
+  maxWidth = "",
+  // @ts-ignore
   carouselItems,
   cssClass = "",
-  CustomNavComponent,
-  role,
-  ariaLabelledBy,
-  isFullWidth,
+  CustomNavComponent = undefined,
+  role = "",
+  ariaLabelledBy = "",
+  isFullWidth = false,
   removeSideBackground = false,
   hasNavButtons = true,
   hasPositionIndicators = true,
@@ -94,7 +95,9 @@ const BaseCarousel = ({
 
       {CustomNavComponent ? (
         // @ts-ignore
-        <CustomNavComponent instanceName={instanceName} />
+        <CustomNavComponent
+          instanceName={instanceName}
+        />
       ) : (
         <>
           {hasPositionIndicators && <BulletItems buttonCount={buttonCount} />}

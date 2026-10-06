@@ -2,9 +2,10 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
 import { Form, formBackground } from "../Form/Form";
-import { Radios } from "./Radio";
+import { Radios, RadioProps } from "./Radio";
+import { radiosDefault, radiosInvalid, radiosValid} from "./Radio.parameters"
 
-const meta: Meta<{ background?: typeof formBackground }> = {
+const meta: Meta<typeof Radios> = {
   title: "Components/Form/Radios",
   component: Radios,
   parameters: {
@@ -15,6 +16,7 @@ const meta: Meta<{ background?: typeof formBackground }> = {
     },
   },
   argTypes: {
+    // @ts-expect-error
     background: {
       name: "Form Background",
       control: {
@@ -23,10 +25,10 @@ const meta: Meta<{ background?: typeof formBackground }> = {
       options: formBackground,
     },
   },
-  args: {},
+  args: radiosDefault,
   decorators: [
+    // @ts-expect-error
     (Story, { args: { background, ...rest } }) => (
-      // @ts-expect-error
       <Form background={background}>
         <Story {...rest} />
       </Form>
@@ -38,6 +40,21 @@ export default meta;
 type Story = StoryObj<typeof Radios>;
 
 export const Default: Story = {
-  name: "Examples",
+  name: "Default",
   args: {},
+};
+
+export const Disabled: Story = {
+  name: "Disabled",
+  args: { label: "A Group of Disabled Radios", disabled: true },
+};
+
+export const Invalid: Story = {
+  name: "Invalid",
+  args: radiosInvalid,
+};
+
+export const Valid: Story = {
+  name: "Valid",
+  args: radiosValid,
 };

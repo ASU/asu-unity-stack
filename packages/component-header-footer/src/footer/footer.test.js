@@ -7,6 +7,7 @@ import { ASUFooter } from ".";
 import {
   completeState,
   emptyStateFooter,
+  unbrandedStateFooter,
 } from "../../__mocks__/data/props-mock";
 
 const renderFooter = props => {
@@ -36,6 +37,21 @@ describe("#ASU Footer", () => {
   test.each(cases)("should %p section be defined", (_, testId) =>
     expect(component.queryByTestId(testId)).toBeInTheDocument()
   );
+
+  it("renders a contentinfo landmark by default", () => {
+    expect(component.getByRole("contentinfo")).toHaveProperty(
+      "tagName",
+      "FOOTER"
+    );
+  });
+});
+
+describe("#ASU Footer embedded in a host footer", () => {
+  it("does not render a nested contentinfo landmark", () => {
+    const component = renderFooter({ ...completeState, renderDiv: "true" });
+
+    expect(component.queryByRole("contentinfo")).not.toBeInTheDocument();
+  });
 });
 
 describe("#ASU Footer without social and contact", () => {
@@ -66,4 +82,34 @@ describe("#ASU Footer without social and contact", () => {
   test.each(negativeCases)("should %p section not be defined", (_, testId) =>
     expect(component.queryByTestId(testId)).not.toBeInTheDocument()
   );
+});
+
+describe("#ASU Unbranded Footer", () => {
+  /** @type {import("@testing-library/react").RenderResult} */
+  let component;
+
+  beforeEach(() => {
+    component = renderFooter(unbrandedStateFooter);
+  });
+  afterAll(cleanup);
+
+  const positiveCases = [[`Contact`, `contact`]];
+  const negativeCases = [
+    [`Social`, `social`],
+    [`Innovation`, `innovation`],
+    [`Legal`, `legal`],
+  ];
+
+  test.each(positiveCases)("should %p section be defined", (_, testId) =>
+    expect(component.queryByTestId(testId)).toBeInTheDocument()
+  );
+  test.each(negativeCases)("should %p section not be defined", (_, testId) =>
+    expect(component.queryByTestId(testId)).not.toBeInTheDocument()
+  );
+
+  it("should not render the 'Support ASU' contribution button", () => {
+    expect(
+      component.queryByTestId("contact-contribution-link")
+    ).not.toBeInTheDocument();
+  });
 });

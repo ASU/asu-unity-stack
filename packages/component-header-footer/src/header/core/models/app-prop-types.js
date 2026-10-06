@@ -45,8 +45,10 @@ const NavTreePropTypes = PropTypes.shape({
 
 const HeaderPropTypes = {
   isPartner: PropTypes.bool,
+  isUnbranded: PropTypes.bool,
   navTree: PropTypes.arrayOf(NavTreePropTypes),
   partnerLogo: PropTypes.shape(LogoPropTypes),
+  unbrandedLogo: PropTypes.shape(LogoPropTypes),
   logo: PropTypes.shape(LogoPropTypes),
   title: PropTypes.string,
   parentOrg: TitlePropTypes.parentOrg,

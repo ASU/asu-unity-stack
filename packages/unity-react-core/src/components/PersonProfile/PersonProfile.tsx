@@ -128,24 +128,26 @@ const PersonProfile: React.FC<PersonProfileProps> = ({
 
         <div>
           <p className="person-description">{description}</p>
-          <ul className="person-social-medias">
-            {socialMedia.map((social, index) => (
-              <li key={index}>
-                <GaEventWrapper
-                  gaData={{ ...gaData, section: name.toLowerCase() }}
-                >
-                  <a
-                    href={social.url}
-                    aria-label={`Go to user ${social.platform} profile`}
+          {socialMedia && socialMedia.length > 0 && (
+            <ul className="person-social-medias">
+              {socialMedia.map((social, index) => (
+                <li key={index}>
+                  <GaEventWrapper
+                    gaData={{ ...gaData, section: name.toLowerCase() }}
                   >
-                    <span
-                      className={getSocialMediaIcon(social.platform)}
-                    ></span>
-                  </a>
-                </GaEventWrapper>
-              </li>
-            ))}
-          </ul>
+                    <a
+                      href={social.url}
+                      aria-label={`Go to user ${social.platform} profile`}
+                    >
+                      <span
+                        className={getSocialMediaIcon(social.platform)}
+                      ></span>
+                    </a>
+                  </GaEventWrapper>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </div>

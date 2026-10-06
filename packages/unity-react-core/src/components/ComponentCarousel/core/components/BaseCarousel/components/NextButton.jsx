@@ -12,7 +12,7 @@ import React from "react";
 const NextButton = ({ onClick = () => null }) => (
   <button
     type="button"
-    className="glide__arrow glide__arrow--next"
+    className={`glide__arrow glide__arrow--next`}
     data-glide-dir=">"
     aria-label="Next slide"
     onClick={onClick}

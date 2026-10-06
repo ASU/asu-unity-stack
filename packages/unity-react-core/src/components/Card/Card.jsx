@@ -321,6 +321,7 @@ const CardContent = ({
         </div>
       ) : (
         <>
+          {(!title && !body && !showEventInfo) && <br/>}
           {buttons && (
             <div className="card-buttons">
               {buttons.map(button => (
