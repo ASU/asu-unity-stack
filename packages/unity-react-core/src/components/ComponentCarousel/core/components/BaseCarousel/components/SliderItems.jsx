@@ -12,8 +12,16 @@ import React from "react";
  */
 const SliderItems = ({ carouselItems }) => {
   // Setup carousel items from the carouselItems prop.
-  const listItems = carouselItems.map(sliderItem => (
-    <li key={sliderItem.id.toString()} className="glide__slide slider">
+  const listItems = carouselItems.map((sliderItem, index) => (
+    <li
+      key={sliderItem.id.toString()}
+      className="glide__slide slider"
+      tabIndex={0}
+    >
+      <div aria-live="polite" className="sr-only">
+        <span>{`Slide ${index + 1}`}</span>
+        {/* <span>{`Slide ${index + 1} of ${carouselItems.length}`}</span> length already announced */}
+      </div>
       {sliderItem.item}
     </li>
   ));
