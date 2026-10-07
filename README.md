@@ -114,17 +114,15 @@ In the new theme it is imported directly with  `@import "bootstrap/scss/function
 This repository contains multiple packages which are managed and published using [LernaJS](https://lerna.js.org/). For more information about each individual package, see the README located at the package root.
 
 1. [unity-bootstrap-theme](./packages/unity-bootstrap-theme/README.md) - ASU-customized Bootstrap 5 CSS library. This library serves as a structural base for most of the styling across our packages.
-2. [app-degree-pages](./packages/app-degree-pages/README.md)
-3. [app-rfi](./packages/app-rfi/README.md)
-4. [app-webdir-ui](./packages/app-webdir-ui/README.md)
-5. [component-carousel](./packages/component-carousel/README.md)(deprecated)
-6. [component-cookie-consent](./packages/component-cookie-consent/README.md)
-7. [component-events](./packages/component-events/README.md)
-8. [component-footer](./packages/component-footer/README.md)
-9. [component-header](./packages/component-header/README.md) - standalone header component that doesn't require the ```unity-bootstrap-theme``` styles
-10. [component-news](./packages/component-news/README.md)
-11. [components-core](./packages/components-core/README.md)
-12. [unity-react-core](./packages/unity-react-core/README.md) *Now includes the component carousel package*
+2. [unity-react-core](./packages/unity-react-core/README.md) - Core React component library with carousel functionality included
+3. [app-degree-pages](./packages/app-degree-pages/README.md)
+4. [app-rfi](./packages/app-rfi/README.md)
+5. [app-webdir-ui](./packages/app-webdir-ui/README.md)
+6. [component-events](./packages/component-events/README.md)
+7. [component-header-footer](./packages/component-header-footer/README.md) - Standalone header and footer components using React and styled-components
+8. [component-news](./packages/component-news/README.md)
+9. [shared](./packages/shared/README.md) - Shared utilities, hooks, and services used across components
+10. [static-site](./packages/static-site/README.md) - Static site generation utilities
 
 ## Cookie Consent
 
@@ -133,6 +131,19 @@ The CSS for the cookie consent banner can be found in [unity-bootstrap-theme](./
 ## Deprecated packages
 
 Previously deprecated packages were located inside the `packages-disabled` folder. We are no longer keeping these deprecated packages active in the repository. Deprecated packages can still be found in git history.
+
+The following packages have been deprecated and removed from active development:
+
+1. **bootstrap4-theme** - Replaced by `unity-bootstrap-theme` (Bootstrap 5)
+2. **design-tokens** - Functionality moved into `unity-bootstrap-theme`
+3. **components-library** - Functionality consolidated into `unity-react-core`
+4. **cookie-consent** - Standalone package, functionality moved to `unity-bootstrap-theme`
+5. **component-carousel** - Functionality merged into `unity-react-core`
+6. **component-header** - Replaced by `component-header-footer`
+7. **component-footer** - Replaced by `component-header-footer`
+8. **components-core** - Replaced by `unity-react-core`
+
+Historical versions of these packages can be found in the git history.
 
 1. [bootstrap4-theme](https://github.com/ASU/asu-unity-stack/tree/86368e5c656108169fe27cbc405e43c2cebae968/packages-disabled/bootstrap4-theme)
 2. [design-tokens](https://github.com/ASU/asu-unity-stack/tree/86368e5c656108169fe27cbc405e43c2cebae968/packages-disabled/design-tokens)
@@ -311,7 +322,7 @@ Find updates within the past 2 days by running the command  `node ./scripts/chec
 
 Whenever code is merged to the 'dev' branch, a build is kicked off by Jenkins which builds, tests, and then publishes packages to the 'dev' channel of our private npm registry.
 
-After publishing, a QA environment is deployed to AWS ECS with the latest built code, including storybook builds, and a 'kitchen sink' page with a selection of components. It can be accessed at:
+After publishing, the documentation site is deployed to GitHub Pages with the latest built code, including storybook builds, and a comprehensive component showcase. It can be accessed at:
 
 ```https://unity.web.asu.edu/```
 
