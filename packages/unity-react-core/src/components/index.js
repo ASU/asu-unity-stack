@@ -2,6 +2,7 @@
 export * from "./Accordion/Accordion";
 export * from "./AnchorMenu/AnchorMenu";
 export * from "./Article/Article";
+export * from "./BlockQuote/BlockQuote";
 export * from "./Button/Button";
 export * from "./ButtonIconOnly/ButtonIconOnly";
 export * from "./ButtonTag/ButtonTag";
