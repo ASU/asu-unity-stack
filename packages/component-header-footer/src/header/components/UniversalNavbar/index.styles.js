@@ -44,7 +44,7 @@ const Wrapper = styled.div`
       }
     }
   }
-  @media (max-width: ${({ breakpoint }) => breakpoint}) {
+  @media (max-width: ${({ $breakpoint }) => $breakpoint}) {
     width: 100%;
     min-height: auto;
     position: sticky;

@@ -18,7 +18,7 @@ const Wrapper = styled.nav`
     display: flex;
     margin: 0;
   }
-  @media (max-width: ${({ breakpoint }) => breakpoint}) {
+  @media (max-width: ${({ $breakpoint }) => $breakpoint}) {
     width: 100%;
     > .${CLASS_NAMES.CONTENT_CONTAINER} {
       flex-direction: column;
