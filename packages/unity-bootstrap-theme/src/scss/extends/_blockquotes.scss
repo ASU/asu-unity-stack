@@ -71,6 +71,11 @@ blockquote:before {
 
   }
 
+  cite.description {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+  }
 
   .citation {
     display: flex;
