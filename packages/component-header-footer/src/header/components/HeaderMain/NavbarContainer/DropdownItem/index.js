@@ -218,7 +218,7 @@ const DropdownItem = ({
         isMega ? " mega" : ""
       }`}
       $breakpoint={breakpoint}
-      $heightoffset={heightOffset}
+      $heightOffset={heightOffset}
     >
       <div
         style={{ "--cols": cols < 3 ? 4 : cols }}
