@@ -173,7 +173,7 @@ export const HeroVideo = () => (
       decoding="async"
       fetchpriority="high"
     />
-    <video id="media-video" autoPlay muted loop>
+    <video id="media-video" autoPlay muted loop playsinline>
       <source src={stockVideo} />
       Your browser does not support the video tag.
     </video>
