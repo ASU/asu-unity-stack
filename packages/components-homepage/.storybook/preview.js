@@ -24,6 +24,12 @@ const homepageViewports = {
     styles: { width: "1920px", height: "1080px" },
     type: "desktop",
   },
+  // Above 1920px the topo band appears (Backgrounds).
+  hp2560: {
+    name: "Ultra-wide 2560",
+    styles: { width: "2560px", height: "1440px" },
+    type: "desktop",
+  },
 };
 
 /** @type { import('@storybook/react').Preview } */

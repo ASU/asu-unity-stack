@@ -1,8 +1,6 @@
 // UDS tokens come from unity-bootstrap-theme; never copy token values here.
 @import "@asu/unity-bootstrap-theme/src/scss/custom-asu-variables";
 
-// Placeholder rule so the build emits CSS; removed once Phase A1 adds real components.
-.hp-placeholder {
-  color: $asu-gray-1;
-  background-color: $asu-gray-7;
-}
+@import "variables";
+@import "underline";
+@import "backgrounds";

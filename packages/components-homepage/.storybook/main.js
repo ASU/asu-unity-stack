@@ -18,6 +18,8 @@ export default {
     getAbsolutePath("@storybook/addon-a11y"),
     getAbsolutePath("@storybook/addon-vitest"),
   ],
+  // Serve the art at /img so stories use the production-relative `img/<file>` paths.
+  staticDirs: [{ from: "../src/img", to: "/img" }],
   framework: {
     name: getAbsolutePath("@storybook/react-vite"),
   },

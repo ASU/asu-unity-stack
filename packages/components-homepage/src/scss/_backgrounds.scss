@@ -1,0 +1,142 @@
+// Decorative backgrounds. Every element is aria-hidden, takes no pointer events and sits below the
+// content of its .hp-bg-host (positioned, isolated stacking context).
+// Art is referenced as ../img/<file>: dist/css and dist/img are siblings.
+
+.hp-bg-host {
+  position: relative;
+  isolation: isolate;
+}
+
+// Network art (prototype 305-311, 333, 2258-2261).
+// Size and position are driven by custom properties, so the art scales as one picture: line weight and dot
+// size scale with it (Open decision #14). The art is not edited.
+.hp-network {
+  --hp-network-gutter: 48px;
+  // The media's distance to the window edge, plus the 48px bleed.
+  --hp-network-edge: max(
+    var(--hp-network-gutter),
+    calc((100vw - 1376px) / 2 + var(--hp-network-gutter))
+  );
+
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  display: block;
+  width: var(--hp-network-width);
+  aspect-ratio: var(--hp-network-ratio);
+  background: var(--hp-network-art) center / 100% 100% no-repeat;
+
+  @media (max-width: $hp-phone-max) {
+    display: none;
+  }
+}
+
+.hp-network-1 {
+  --hp-network-width: 366px;
+  --hp-network-ratio: 366 / 398;
+  --hp-network-art: url("../img/network-1.svg");
+
+  left: calc(-1 * var(--hp-network-edge) - var(--hp-network-gutter));
+  bottom: -36%;
+}
+
+.hp-network-2 {
+  --hp-network-width: 400px;
+  --hp-network-ratio: 433 / 619;
+  --hp-network-art: url("../img/network-2.svg");
+
+  right: calc(-1 * var(--hp-network-edge) - var(--hp-network-gutter));
+  top: -34%;
+}
+
+.hp-network-3 {
+  --hp-network-width: 360px;
+  --hp-network-ratio: 360 / 519;
+  --hp-network-art: url("../img/network-3.svg");
+
+  left: calc(-1 * var(--hp-network-edge) - var(--hp-network-gutter));
+  top: -30%;
+}
+
+// Above 1440px the art grows and docks to the window edge. --hp-network-u is one pixel of the 1516px
+// layout (the Your success section's --u); a section can set it, otherwise this is its formula.
+@media (min-width: $hp-wide-min) {
+  .hp-network {
+    --hp-network-scale: var(
+      --hp-network-u,
+      clamp(1px, min(calc(100vw / 1516), calc((100vh - 123px) / 847)), 1.27px)
+    );
+    --hp-network-edge: max(
+      calc(48 * var(--hp-network-scale)),
+      calc(
+        (100vw - 1440 * var(--hp-network-scale)) / 2 + 48 *
+          var(--hp-network-scale)
+      )
+    );
+    --hp-network-dock: calc(
+      -1 * var(--hp-network-edge) - 48 * var(--hp-network-scale)
+    );
+  }
+
+  .hp-network-1 {
+    --hp-network-width: calc(
+      var(--hp-network-edge) + 48 * var(--hp-network-scale) + 35%
+    );
+
+    left: var(--hp-network-dock);
+  }
+
+  .hp-network-2 {
+    --hp-network-width: calc(
+      var(--hp-network-edge) + 48 * var(--hp-network-scale) + 35%
+    );
+
+    right: var(--hp-network-dock);
+  }
+
+  .hp-network-3 {
+    --hp-network-width: calc(
+      var(--hp-network-edge) + 48 * var(--hp-network-scale) + 29%
+    );
+
+    left: var(--hp-network-dock);
+  }
+}
+
+// Topo art. Only two contexts exist in v2.71; the Stories layer that used topo.png is off (line 1668).
+.hp-topo {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+}
+
+// Behind the fit-quiz card (prototype line 924).
+.hp-topo--card {
+  inset: 0;
+  background: url("../img/topo-white.png") 12% 70% / 560% auto no-repeat;
+  opacity: calc(var(--hp-topo-strength, 0.25) * 2.4);
+}
+
+// Band behind Stories above 1920px (prototype lines 2279-2284): solid $asu-gray-1 with the art tiled at 50%.
+.hp-topo--band {
+  --hp-topo-band-height: calc(2 * min(calc((100vh - 147px) / 2), 370px));
+
+  display: none;
+
+  @media (min-width: $hp-band-min) {
+    display: block;
+    inset: 0 0 auto;
+    height: var(--hp-topo-band-height);
+    background-color: $asu-gray-1;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("../img/topo-white.png") center -500px / 1280px auto
+        repeat-x;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+}

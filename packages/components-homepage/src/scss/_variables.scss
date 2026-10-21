@@ -1,0 +1,7 @@
+// Prototype v2.71 switches to its phone layout at 900px (lines 333, 543, 558, 630). No UDS
+// breakpoint matches ($uds-breakpoint-md is 768px), so the homepage keeps the prototype value.
+$hp-phone-max: 900px;
+// The network art docks further out above the 1440px content frame (prototype line 2240).
+$hp-wide-min: 1441px;
+// The topo band exists only above the 1920px stage (prototype line 2279); $uds-breakpoint-xxxl is 1920px.
+$hp-band-min: $uds-breakpoint-xxxl + 1px;

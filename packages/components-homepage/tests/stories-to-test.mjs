@@ -1,2 +1,22 @@
 // Story ids (from the Storybook index) audited by tests/accessibility.spec.mjs.
-export const storiesToTest = ["scaffold-placeholder--default"];
+export const storiesToTest = [
+  "foundations-underline-mark--future",
+  "foundations-underline-mark--myours",
+  "foundations-underline-mark--success",
+  "foundations-underline-mark--learn",
+  "foundations-underline-mark--reimg",
+  "foundations-underline-mark--charter-phone",
+  "foundations-underline-mark--viewport-393",
+  "foundations-underline-mark--viewport-768",
+  "foundations-underline-mark--viewport-1280",
+  "foundations-underline-mark--viewport-1920",
+  "foundations-backgrounds--network-1",
+  "foundations-backgrounds--network-2",
+  "foundations-backgrounds--network-3",
+  "foundations-backgrounds--topo-card",
+  "foundations-backgrounds--topo-band",
+  "foundations-backgrounds--scaling-393",
+  "foundations-backgrounds--scaling-768",
+  "foundations-backgrounds--scaling-1280",
+  "foundations-backgrounds--scaling-1920",
+];
