@@ -1,0 +1,50 @@
+{
+  "name": "@asu/components-homepage",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Vanilla HTML/SCSS/JS foundations for the ASU homepage. Private package, never published.",
+  "homepage": "https://github.com/ASU/asu-unity-stack#readme",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ASU/asu-unity-stack.git",
+    "directory": "packages/components-homepage"
+  },
+  "scripts": {
+    "build": "vite build && cp -R src/img dist/img",
+    "storybook": "storybook dev -p 9050",
+    "build-storybook": "storybook build -o ../../build/$npm_package_name",
+    "lint": "yarn js-lint && yarn css-lint",
+    "lint:fix": "yarn js-lint:fix && yarn css-lint:fix",
+    "js-lint": "eslint \"**/*.{js,jsx}\"",
+    "js-lint:fix": "eslint \"**/*.{js,jsx}\" --fix",
+    "css-lint": "stylelint \"**/*.{css,scss}\" --cache --cache-location .cache/.stylelintcache --rd",
+    "css-lint:fix": "stylelint \"**/*.{css,scss}\" --fix --cache --cache-location .cache/.stylelintcache --rd",
+    "test:storybook": "vitest run --project storybook",
+    "test:accessibility": "playwright test"
+  },
+  "devDependencies": {
+    "@asu/unity-bootstrap-theme": "*",
+    "@storybook/addon-a11y": "^10",
+    "@storybook/addon-docs": "^10",
+    "@storybook/addon-vitest": "10.4.0",
+    "@storybook/react": "^10",
+    "@storybook/react-vite": "^10",
+    "@vitest/browser-playwright": "4.1.6",
+    "@whitespace/storybook-addon-html": "^9",
+    "bootstrap": "^5.2.3",
+    "eslint": "^9",
+    "playwright": "1.55.1",
+    "postcss": "^8.4.19",
+    "postcss-scss": "^4.0.6",
+    "prettier": "^3.7.1",
+    "storybook": "^10",
+    "stylelint": "^15.10.1",
+    "stylelint-scss": "^4.6.0",
+    "vite": "^6.0.0",
+    "vitest": "4.1.6"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  }
+}

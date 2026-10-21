@@ -1,0 +1,45 @@
+import "@asu/unity-bootstrap-theme/src/scss/unity-bootstrap-theme.bundle.scss";
+import "../src/scss/components-homepage.scss";
+import "../src/js/index.js";
+
+// The shared .storybook-config/viewports.js holds UDS breakpoints, not these.
+const homepageViewports = {
+  hp393: {
+    name: "Phone 393",
+    styles: { width: "393px", height: "852px" },
+    type: "mobile",
+  },
+  hp768: {
+    name: "Tablet 768",
+    styles: { width: "768px", height: "1024px" },
+    type: "tablet",
+  },
+  hp1280: {
+    name: "Desktop 1280",
+    styles: { width: "1280px", height: "800px" },
+    type: "desktop",
+  },
+  hp1920: {
+    name: "Wide 1920",
+    styles: { width: "1920px", height: "1080px" },
+    type: "desktop",
+  },
+};
+
+/** @type { import('@storybook/react').Preview } */
+const preview = {
+  parameters: {
+    layout: "fullscreen",
+    viewport: { options: homepageViewports },
+    a11y: { test: "error" },
+    html: {
+      prettier: {
+        tabWidth: 4,
+        htmlWhitespaceSensitivity: "ignore",
+      },
+      removeComments: /^\s*\s*$/,
+    },
+  },
+};
+
+export default preview;
