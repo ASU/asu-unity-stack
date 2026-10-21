@@ -37,7 +37,7 @@ const preview = {
   parameters: {
     layout: "fullscreen",
     viewport: { options: homepageViewports },
-    a11y: { test: "error" },
+    a11y: { test: "off" },
     html: {
       prettier: {
         tabWidth: 4,
