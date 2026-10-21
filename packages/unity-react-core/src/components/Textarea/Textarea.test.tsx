@@ -2,13 +2,13 @@ import { render, cleanup, RenderResult } from "@testing-library/react";
 import React from "react";
 import { expect, describe, it, afterEach } from "vitest";
 
-import { Textarea, TextareaProps, propDefaults } from "./Textarea";
+import { Textarea, TextareaProps, textAreaPropDefaults } from "./Textarea";
 
 describe("Textarea component", () => {
   let renderResult: RenderResult;
 
   const defaultProps: TextareaProps = {
-    ...propDefaults,
+    ...textAreaPropDefaults,
     id: "textarea-id",
     label: "Test Label",
     placeholder: "Textarea Placeholder",

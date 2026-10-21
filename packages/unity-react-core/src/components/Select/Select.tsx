@@ -5,7 +5,7 @@ import React, { ComponentProps, useId } from "react";
 import { GaEventWrapper } from "../GaEventWrapper/GaEventWrapper";
 
 export const displaySizes = ["sm", "md", "lg"] as const;
-export const inputValidationFeedback = ["", "valid", "invalid"] as const;
+export const selectInputValidationFeedback = ["", "valid", "invalid"] as const;
 
 export interface OptionProps extends ComponentProps<"option"> {
   value: string;
@@ -27,7 +27,7 @@ export interface SelectProps extends ComponentProps<"select"> {
    * The size of the input field Defaults to "md"
    */
   displaySize?: (typeof displaySizes)[number];
-  feedback?: (typeof inputValidationFeedback)[number];
+  feedback?: (typeof selectInputValidationFeedback)[number];
   validMessage?: string;
   invalidMessage?: string;
   options: OptionProps[];
@@ -43,7 +43,7 @@ const defaultGaEvent = {
   section: "text label",
 };
 
-export const propDefaults: SelectProps = {
+export const selectPropDefaults: SelectProps = {
   id: undefined,
   label: "",
   displaySize: "md",
@@ -65,7 +65,7 @@ export const Select: React.FC<SelectProps> = ({
   options = [],
   selected,
   ...rest
-} = propDefaults) => {
+} = selectPropDefaults) => {
   const idValue = id || useId();
   const successId = `${idValue}SuccessHelp`;
   const errorId = `${idValue}ErrorHelp`;

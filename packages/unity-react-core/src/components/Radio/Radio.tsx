@@ -63,7 +63,7 @@ export interface RadioProps {
   options: Array<RadioOption>;
 }
 
-export const propDefaults: RadioProps = {
+export const radioPropDefaults: RadioProps = {
   id: "Radios",
   label: "",
   selected: "",
@@ -84,7 +84,7 @@ export const Radios: React.FC<RadioProps> = ({
   selected,
   setSelected,
   disabled,
-} = propDefaults) => {
+} = radioPropDefaults) => {
   const [defaultSelectedState, defaultSetSelected] = useState(selected);
 
   const handleSetSelected = (e: string) => {
