@@ -1,7 +1,7 @@
 // Shared video control.
 // Markup: <button type="button" class="mbtn [mbtn--hero]" data-for="<video id>" data-state="paused"
 //   data-label-play data-label-pause aria-label> + two aria-hidden SVG icons (.mbtn__icon--play, --pause).
-// Prototype v2.71 lines 324-332, 764-765, 1968-1985; scripts: src/js/video-controls.js.
+// Prototype v2.71 lines 324-332, 764-765, 1968-1985; script: video-control.js (this folder).
 
 .mbtn {
   --mbtn-size: 32px;

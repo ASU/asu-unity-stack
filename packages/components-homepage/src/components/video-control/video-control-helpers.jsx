@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 
-import { initVideoControls } from "../../src/js/video-controls.js";
+import { initVideoControls } from "./video-control.js";
 
 // Tiny inline poster (no hotlink, no committed media).
 export const POSTER = `data:image/svg+xml,${encodeURIComponent(

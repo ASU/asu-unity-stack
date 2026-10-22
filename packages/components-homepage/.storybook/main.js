@@ -6,7 +6,10 @@ function getAbsolutePath(value) {
 }
 
 export default {
-  stories: ["../stories/**/*.mdx", "../stories/**/*.stories.@(js|jsx|ts|tsx)"],
+  stories: [
+    "../src/components/**/*.mdx",
+    "../src/components/**/*.stories.@(js|jsx|ts|tsx)",
+  ],
   addons: [
     fileURLToPath(import.meta.resolve("../../../.storybook-config/index.js")),
     fileURLToPath(

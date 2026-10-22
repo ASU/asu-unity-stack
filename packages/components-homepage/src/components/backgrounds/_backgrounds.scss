@@ -1,6 +1,7 @@
 // Decorative backgrounds. Every element is aria-hidden, takes no pointer events and sits below the
 // content of its .hp-bg-host (positioned, isolated stacking context).
-// Art is referenced as ../img/<file>: dist/css and dist/img are siblings.
+// Art is referenced as ../img/<file>, relative to the SCSS entry (src/scss/components-homepage.scss), not to this
+// partial: Vite does not rebase url() in @imported partials. dist/css and dist/img are siblings.
 
 .hp-bg-host {
   position: relative;

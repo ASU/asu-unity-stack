@@ -3,6 +3,7 @@ import { resolve } from "path";
 import { defineConfig } from "vite";
 
 // The CSS refers to the art as ../img/<file> and `build` copies src/img to dist/img.
+// Vite resolves url() in @imported partials (src/components/*) relative to the entry, src/scss/components-homepage.scss.
 // Vite would otherwise emit a copy of each image next to the CSS and rewrite the URL to it.
 // Relies on: the SCSS url() art paths, `assetFileNames: "css/[name].[ext]"` (assets land in css/),
 // and src/img holding every referenced file. Throws if any of that stops holding.

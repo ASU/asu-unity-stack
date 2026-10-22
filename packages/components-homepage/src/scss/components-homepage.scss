@@ -2,6 +2,6 @@
 @import "@asu/unity-bootstrap-theme/src/scss/custom-asu-variables";
 
 @import "variables";
-@import "underline";
-@import "backgrounds";
-@import "video-control";
+@import "../components/underline-mark/underline-mark";
+@import "../components/backgrounds/backgrounds";
+@import "../components/video-control/video-control";

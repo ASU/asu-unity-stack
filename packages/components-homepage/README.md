@@ -10,11 +10,24 @@ Vanilla HTML/SCSS/JS foundations for the ASU homepage (Jira WWWCMS-227 / WWWCMS-
 
 | Path | Purpose |
 |---|---|
-| `src/scss/components-homepage.scss` | SCSS entry; imports the UDS variables |
-| `src/js/index.js` | JS entry |
+| `src/components/<piece>/` | One folder per foundation piece, with its SCSS partial, JS and stories side by side (see below) |
+| `src/scss/components-homepage.scss` | SCSS entry; imports the UDS variables, `_variables.scss` and each piece's partial |
+| `src/scss/_variables.scss` | Shared homepage variables and custom properties |
+| `src/js/index.js` | JS entry; re-exports the public API (`initVideoControls`) |
 | `src/img/` | Art copied unchanged to `dist/img/` |
-| `stories/` | Storybook stories (`*.stories.jsx`) |
 | `tests/` | Playwright accessibility spec |
+
+Pieces under `src/components/`:
+
+| Folder | Contents |
+|---|---|
+| `underline-mark/` | `_underline-mark.scss`, `underline-mark.stories.jsx` (`Foundations/Underline mark`) |
+| `backgrounds/` | `_backgrounds.scss`, `backgrounds.stories.jsx` (`Foundations/Backgrounds`) |
+| `video-control/` | `_video-control.scss`, `video-control.js`, `video-control.stories.jsx`, `video-control-helpers.jsx` (`Foundations/Video control`) |
+
+Adding a piece: create `src/components/<piece>/`, add `_<piece>.scss` and `@import "../components/<piece>/<piece>";` in `components-homepage.scss`, and put `<piece>.stories.jsx` in the same folder (Storybook picks up `src/components/**/*.stories.jsx`).
+
+In the SCSS partials, `url()` art paths are written relative to the SCSS entry (`../img/<file>`, i.e. `src/scss/`), not to the partial: Vite does not rebase `url()` in `@import`ed partials.
 
 ## Scripts
 

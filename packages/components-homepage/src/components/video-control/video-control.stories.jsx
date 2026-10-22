@@ -1,8 +1,8 @@
 import React from "react";
 import { expect, userEvent, waitFor } from "storybook/test";
 
-import { initVideoControls } from "../../src/js/video-controls.js";
-import * as entry from "../../src/js/index.js";
+import { initVideoControls } from "./video-control.js";
+import * as entry from "../../js/index.js";
 import {
   addControl,
   environment,
