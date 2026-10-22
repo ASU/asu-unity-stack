@@ -19,15 +19,22 @@ export * from "./FeedAnatomy";
 export * from "./Hero/Hero";
 export * from "./HighlyRanked/HighlyRanked";
 export * from "./Image/Image";
+export * from "./ImageBasedCard/ImageBasedCard";
+export * from "./List/List";
+// export * from "./Modal/Modal.tsx";
+export * from "./NotificationBanner/NotificationBanner"
 export * from "./Pagination/Pagination";
+export * from "./PersonProfile/PersonProfile";
 export * from "./RankingCard/RankingCard";
+// export * from "./SidebarMenu/SidebarMenu.tsx";
 export * from "./SystemAlert/SystemAlert";
 export * from "./TabbedPanels/TabbedPanels";
+export * from "./Tables/Tables";
 export * from "./Testimonial/Testimonial";
 export * from "./Tooltip/Tooltip";
 export * from "./Video/Video";
 export * from "./ComponentCarousel/components";
-export * from "./List/List";
 export * from "./GridLinks/GridLinks";
-// export * from "./SidebarMenu/SidebarMenu.tsx";
-// export * from "./Modal/Modal.tsx";
+
+export * from "./Loader/Loader";
+export * from "./GaEventWrapper/GaEventWrapper";
