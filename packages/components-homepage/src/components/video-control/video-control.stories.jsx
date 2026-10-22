@@ -24,7 +24,7 @@ export default {
     docs: {
       description: {
         component:
-          'Shared play/pause control for homepage videos. Markup: `<button type="button" class="mbtn [mbtn--hero]" data-for="<video id>" data-state="paused" data-label-play="..." data-label-pause="..." aria-label="...">` plus two `aria-hidden` inline SVG icons (`.mbtn__icon--play`, `.mbtn__icon--pause`). Server markup is always `paused` with the Play label. The video is `muted playsinline` (no `loop`, no `autoplay`, `preload="none"`), has a `poster` and an `aria-describedby` description; `data-auto` lets the controller autoplay it, `data-plays` sets the play budget (default 3). Call `initVideoControls(root)` once the markup is in the page. These stories swap `play()`/`pause()` on each video instance for a silent fake and fake `IntersectionObserver`, `matchMedia` and `document.hidden`, so no media is needed.',
+          'Shared play/pause control for homepage videos. Markup: `<button type="button" class="mbtn [mbtn--hero]" data-for="<video id>" data-state="paused" data-label-play="..." data-label-pause="..." aria-label="...">` plus two `aria-hidden` inline SVG icons (`.mbtn__icon--play`, `.mbtn__icon--pause`; Font Awesome Free 6.4.2 solid play and pause, CC BY 4.0). Server markup is always `paused` with the Play label. The video is `muted playsinline` (no `loop`, no `autoplay`, `preload="none"`), has a `poster` and an `aria-describedby` description; `data-auto` lets the controller autoplay it, `data-plays` sets the play budget (default 3). Call `initVideoControls(root)` once the markup is in the page. These stories swap `play()`/`pause()` on each video instance for a silent fake and fake `IntersectionObserver`, `matchMedia` and `document.hidden`, so no media is needed.',
       },
     },
   },
@@ -75,8 +75,13 @@ const expectAppearance = async (button, { hero = false } = {}) => {
   await expect(parseFloat(style.borderTopWidth)).toBeLessThanOrEqual(1.34);
   const icon = getComputedStyle(button.querySelector(".mbtn__icon--play"));
   await expect(icon.color).toBe("rgb(25, 25, 25)");
-  await expect(icon.width).toBe(`${hero ? 16 : 12}px`);
+  // Font Awesome glyph: height = the prototype font-size, width follows the 384x512 viewBox
+  const glyph = button
+    .querySelector(".mbtn__icon--play")
+    .getBoundingClientRect();
   await expect(icon.height).toBe(`${hero ? 16 : 12}px`);
+  await expect(glyph.height).toBeCloseTo(hero ? 16 : 12, 2);
+  await expect(glyph.width).toBeCloseTo(hero ? 12 : 9, 2);
   await expect(style.cursor).toBe("pointer");
   await expect(style.opacity).toBe("0.5");
 };
@@ -125,7 +130,15 @@ const expectContract = async (canvasElement, id, { hero = false } = {}) => {
   await expect(icons.length).toBe(2);
   for (const icon of icons) {
     await expect(icon.getAttribute("aria-hidden")).toBe("true");
+    await expect(icon.getAttribute("focusable")).toBe("false");
   }
+  // Font Awesome Free 6.4.2 solid play / pause viewBoxes
+  await expect(
+    button.querySelector(".mbtn__icon--play").getAttribute("viewBox")
+  ).toBe("0 0 384 512");
+  await expect(
+    button.querySelector(".mbtn__icon--pause").getAttribute("viewBox")
+  ).toBe("0 0 320 512");
 
   await expect(video.muted).toBe(true);
   await expect(video.hasAttribute("muted")).toBe(true);

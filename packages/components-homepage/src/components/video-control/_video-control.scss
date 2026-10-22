@@ -1,6 +1,7 @@
 // Shared video control.
 // Markup: <button type="button" class="mbtn [mbtn--hero]" data-for="<video id>" data-state="paused"
-//   data-label-play data-label-pause aria-label> + two aria-hidden SVG icons (.mbtn__icon--play, --pause).
+//   data-label-play data-label-pause aria-label> + two aria-hidden SVG icons (.mbtn__icon--play, --pause),
+//   Font Awesome Free 6.4.2 solid play/pause (paths in video-control-helpers.jsx).
 // Prototype v2.71 lines 324-332, 764-765, 1968-1985; script: video-control.js (this folder).
 
 .mbtn {
@@ -79,8 +80,8 @@
 
 .mbtn__icon {
   display: block;
-  width: var(--mbtn-icon-size);
-  height: var(--mbtn-icon-size);
+  width: auto;
+  height: var(--mbtn-icon-size); // glyph height = the prototype font-size; width follows the viewBox
   pointer-events: none;
 }
 
