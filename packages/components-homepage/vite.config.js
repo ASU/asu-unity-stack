@@ -60,6 +60,8 @@ const c = {
     outDir: "dist",
     rollupOptions: {
       treeshake: true,
+      // Keep the entry's exports (initVideoControls); an app build would drop them.
+      preserveEntrySignatures: "strict",
       input: {
         "components-homepage": resolve(__dirname, "src/js/index.js"),
         "components-homepage.style": resolve(

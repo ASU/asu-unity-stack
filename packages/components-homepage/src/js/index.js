@@ -1,2 +1,2 @@
-// Entry point for the homepage vanilla JS. Phase A1 adds the video controller here.
-export {};
+// Entry point for the homepage vanilla JS.
+export { initVideoControls } from "./video-controls.js";
