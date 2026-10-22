@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
 import { Form, formBackground } from "../Form/Form";
-import { Checkboxes, CheckboxProps } from "./Checkbox";
+import { Checkboxes } from "./Checkbox";
 import {
   checkboxDefault,
   checkboxMultiLine,
