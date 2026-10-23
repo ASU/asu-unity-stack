@@ -21,6 +21,15 @@ export default defineConfig({
             headless: true,
             provider: playwright({}),
             instances: [{ browser: "chromium" }],
+            // Hold and release the pointer where it already is (userEvent only offers click).
+            commands: {
+              pointerDown: async ({ page }) => {
+                await page.mouse.down();
+              },
+              pointerUp: async ({ page }) => {
+                await page.mouse.up();
+              },
+            },
           },
           setupFiles: [".storybook/vitest.setup.js"],
         },

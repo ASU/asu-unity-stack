@@ -12,6 +12,28 @@ export const realKeyboard = {
   },
 };
 
+// A real pointer press held down (`:active`) needs commands registered in vitest.config.js; the
+// vitest browser `userEvent` can only click. The pointer must already be over the element (hover).
+export const pressedPointer = {
+  async down() {
+    if (!realPointer.available) return;
+    const { commands } = await import("vitest/browser");
+    await commands.pointerDown();
+  },
+  async up() {
+    if (!realPointer.available) return;
+    const { commands } = await import("vitest/browser");
+    await commands.pointerUp();
+  },
+};
+
+// Resizes the test viewport (vitest browser only).
+export const resizeViewport = async (width, height = 900) => {
+  if (!realPointer.available) return;
+  const { page } = await import("vitest/browser");
+  await page.viewport(width, height);
+};
+
 // TODO: destinations TBD (WWWCMS-242). A bare "#" scrolls the page to the top on click, so each
 // placeholder is a unique fragment that matches no element (the browser then does not scroll).
 export const CTA_PLACEHOLDER_HREF = "#reimagine-learn-more";

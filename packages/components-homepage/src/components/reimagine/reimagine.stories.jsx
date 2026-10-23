@@ -5,9 +5,11 @@ import {
   AUDIENCES,
   contrastRatio,
   forceHover,
+  pressedPointer,
   realKeyboard,
   realPointer,
   reimagineHtml,
+  resizeViewport,
   walkRules,
 } from "./reimagine-helpers.jsx";
 
@@ -17,7 +19,7 @@ export default {
     docs: {
       description: {
         component:
-          'Homepage section "A top U.S. university reimagining education for everyone": eyebrow, `h2` with the hand-drawn underline under "everyone" only (`.scrib-host` + `img.scrib.scrib--reimg`), paragraph, the UDS outline button (`btn outline btn-outline-maroon btn-medium`) and a divider-separated list of six audience links. Static HTML + CSS only: the markup of these stories is the contract. Rows and button are CSS-only (hover and keyboard focus show the same chip and gold bar; the focus ring is the theme\'s own). `href` values are placeholders until the real URLs exist (WWWCMS-242): each is a unique fragment that matches no element (`#audience-<slug>` per row, `#reimagine-learn-more` for Learn more), because a bare `#` scrolls the page to the top on click. Replace them with the real URLs. Each rendered copy needs a unique heading id (it feeds `id` and `aria-labelledby`).',
+          'Homepage section "A top U.S. university reimagining education for everyone": eyebrow, `h2` with the hand-drawn underline under "everyone" only (`.scrib-host` + `img.scrib.scrib--reimg`), paragraph, the UDS outline button (`btn outline btn-outline-maroon btn-medium`) and a divider-separated list of six audience links. Static HTML + CSS only: the markup of these stories is the contract. Rows and button are CSS-only. Desktop: hover and keyboard focus show the same chip and gold bar. Phones (<= 900px): every row shows its gold arrow chip at rest and the gold bar while pressed or keyboard-focused (no hover dependency), on the page background with no band. The focus ring is the theme\'s own. `href` values are placeholders until the real URLs exist (WWWCMS-242): each is a unique fragment that matches no element (`#audience-<slug>` per row, `#reimagine-learn-more` for Learn more), because a bare `#` scrolls the page to the top on click. Replace them with the real URLs. Each rendered copy needs a unique heading id (it feeds `id` and `aria-labelledby`).',
       },
     },
   },
@@ -102,6 +104,34 @@ const expectRest = async link => {
     expect(getComputedStyle(chipOf(link)).transform).toBe(REST_TRANSFORM)
   );
   await waitFor(() => expect(bar(link).opacity).toBe("0"));
+};
+
+// Phone layout (<= 900px): the chip is a gold circle with a Gray 1 arrow, always visible, no motion.
+const expectPhoneChip = async link => {
+  const chip = chipOf(link);
+  const style = getComputedStyle(chip);
+  await expect(style.opacity).toBe("1");
+  await expect(style.transform).toBe("none");
+  await expect(style.backgroundColor).toBe("rgb(255, 198, 39)");
+  await expect(parseFloat(style.borderTopLeftRadius)).toBeGreaterThanOrEqual(
+    14
+  );
+  await near(chip.getBoundingClientRect().width, 28, 0.5);
+  await near(chip.getBoundingClientRect().height, 28, 0.5);
+  await expect(getComputedStyle(chip.querySelector("svg")).color).toBe(
+    "rgb(25, 25, 25)"
+  );
+  await expect(style.transitionDuration).toBe("0s");
+};
+
+const expectBar = async (link, shown) => {
+  const gold = bar(link);
+  await expect(gold.opacity).toBe(shown ? "1" : "0");
+  if (shown) {
+    await expect(gold.backgroundColor).toBe("rgb(255, 198, 39)");
+    await expect(gold.height).toBe("4px");
+    await expect(gold.bottom).toBe("-1px");
+  }
 };
 
 const expectActive = async link => {
@@ -415,35 +445,30 @@ export const Phone393 = {
     ).toHaveLength(1);
     await near(p.content.getBoundingClientRect().left, 16);
 
-    // the full-bleed Gray 7 band
+    // no grey band: the list is transparent and sits inside the gutters (rows keep their dividers)
     const list = getComputedStyle(p.list);
-    await expect(list.backgroundColor).toBe("rgb(250, 250, 250)");
-    await expect(list.paddingBottom).toBe("16px");
-    const band = p.list.getBoundingClientRect();
-    await near(band.left, 0, 0.5);
-    await near(band.width, 393, 0.5);
+    await expect(list.backgroundColor).toBe("rgba(0, 0, 0, 0)");
+    await expect(list.paddingBottom).toBe("0px");
+    const listBox = p.list.getBoundingClientRect();
+    await near(listBox.left, 16, 0.5);
+    await near(listBox.width, 361, 0.5);
 
     for (const link of p.links) {
-      await near(link.getBoundingClientRect().height, 57, 0.5);
+      // the 28px chip is taller than the 24px label: rows are 61px, as on desktop
+      await near(link.getBoundingClientRect().height, 61, 0.5);
       await near(link.getBoundingClientRect().left, 16, 0.5);
-      const chip = chipOf(link);
-      await expect(getComputedStyle(chip).opacity).toBe("1");
-      await expect(getComputedStyle(chip).backgroundColor).toBe(
-        "rgba(0, 0, 0, 0)"
-      );
-      await expect(getComputedStyle(chip).transform).toBe("none");
-      await expect(getComputedStyle(chip.querySelector("svg")).color).toBe(
-        "rgb(116, 116, 116)"
-      );
+      await expect(getComputedStyle(link).borderBottomWidth).toBe("1px");
+      await expectPhoneChip(link);
+      await expect(bar(link).opacity).toBe("0");
     }
 
-    // mirrored hover shows no gold bar on phones (the rule keeps its desktop-only media query)
+    // mirrored hover changes nothing on phones: no hover dependency, no bar, no scale
     forceHover(p.links[1]);
-    await expect(["none", "normal"]).toContain(bar(p.links[1]).content);
+    await expect(bar(p.links[1]).opacity).toBe("0");
     await expect(getComputedStyle(chipOf(p.links[1])).transform).toBe("none");
     forceHover(p.links[1], false);
 
-    // keyboard focus keeps the theme ring, the only focus indicator on phones
+    // keyboard focus keeps the theme ring and shows the gold bar (touch has no hover)
     await realKeyboard.press("{Escape}");
     await userEvent.tab();
     await userEvent.tab();
@@ -452,8 +477,39 @@ export const Phone393 = {
     const ring = getComputedStyle(p.links[0]).boxShadow;
     await expect(ring).toBe(THEME_RING);
     await expect(
-      contrastRatio(ring.match(/rgb\([^)]*\)/g)[1], "rgb(250, 250, 250)")
+      contrastRatio(ring.match(/rgb\([^)]*\)/g)[1], "rgb(255, 255, 255)")
     ).toBeGreaterThanOrEqual(3);
+    await expectBar(p.links[0], true);
+    await userEvent.tab();
+    await expectBar(p.links[0], false);
+    await expectBar(p.links[1], true);
+    p.links[1].blur();
+
+    // QA: "No on click gold underline" - a real press (pointer held down) shows the bar, release hides it
+    if (realPointer.available) {
+      const row = p.links[3];
+      const swallow = event => event.preventDefault();
+      document.addEventListener("click", swallow, true);
+      try {
+        await realPointer.hover(row);
+        await expectBar(row, false);
+        await pressedPointer.down();
+        await waitFor(() => expect(row.matches(":active")).toBe(true));
+        await expectBar(row, true);
+        await expect(getComputedStyle(row).color).toBe("rgb(25, 25, 25)");
+        // neighbours stay quiet
+        await expectBar(p.links[2], false);
+        await pressedPointer.up();
+        await waitFor(() => expect(row.matches(":active")).toBe(false));
+        await expectBar(row, false);
+      } finally {
+        document.removeEventListener("click", swallow, true);
+        await pressedPointer.up();
+        await realPointer.unhover(row);
+        row.blur();
+        await realKeyboard.press("{Escape}");
+      }
+    }
 
     // heading, mark and no sideways scroll
     await expect(getComputedStyle(p.heading).fontSize).toBe("32px");
@@ -477,13 +533,18 @@ export const Tablet768 = {
       getComputedStyle(p.inner).gridTemplateColumns.split(" ")
     ).toHaveLength(1);
     await near(p.content.getBoundingClientRect().left, 48);
-    const band = p.list.getBoundingClientRect();
-    await near(band.left, 0, 0.5);
-    await near(band.width, 768, 0.5);
+    // no grey band at 768 either: transparent, inside the 48px gutters
+    await expect(getComputedStyle(p.list).backgroundColor).toBe(
+      "rgba(0, 0, 0, 0)"
+    );
+    const listBox = p.list.getBoundingClientRect();
+    await near(listBox.left, 48, 0.5);
+    await near(listBox.width, 672, 0.5);
     for (const link of p.links) {
       const box = link.getBoundingClientRect();
       await near(box.left, 48, 0.5);
       await near(box.right, 720, 0.5);
+      await expectPhoneChip(link);
     }
     const heading = getComputedStyle(p.heading);
     await expect(heading.fontSize).toBe("32px");
@@ -564,6 +625,55 @@ export const PlaceholderLinks = {
       frame.remove();
       URL.revokeObjectURL(url);
     }
+  },
+};
+
+const BREAKPOINT_ID = "hp-reimagine-heading-breakpoint";
+
+// QA: "a flash of buttons at an odd breakpoint on tablet". Entering the phone layout the chips must
+// appear instantly: no transition may be running right after the viewport changes. (Entering the
+// desktop layout the chip's own hover transition fades it out over 0.2s: the destination style's
+// `transition` applies, and a CSS-only chip cannot tell a breakpoint from a hover end.)
+export const BreakpointCrossing = {
+  name: "Breakpoint crossing",
+  globals: viewport(1024),
+  render: () => <Page headingId={BREAKPOINT_ID} />,
+  play: async ({ canvasElement }) => {
+    const p = await expectComplete(canvasElement, BREAKPOINT_ID);
+    if (!realPointer.available) return;
+    const chips = p.links.map(chipOf);
+    // every width is read straight after the resize, before any frame can advance a transition
+    const crossTo = async width => {
+      await resizeViewport(width);
+      await expect(window.innerWidth).toBe(width);
+      if (width <= 900) {
+        for (const chip of chips) {
+          await expect(getComputedStyle(chip).opacity).toBe("1");
+        }
+        await expect(p.section.getAnimations({ subtree: true })).toHaveLength(
+          0
+        );
+        return;
+      }
+      // desktop: nothing but the chips' own fade may run, and it ends hidden
+      const others = p.section
+        .getAnimations({ subtree: true })
+        .filter(animation => !chips.includes(animation.effect.target));
+      await expect(others).toHaveLength(0);
+      await Promise.all(
+        p.section.getAnimations({ subtree: true }).map(a => a.finished)
+      );
+      for (const chip of chips) {
+        await expect(getComputedStyle(chip).opacity).toBe("0");
+      }
+    };
+    // both directions across 900/901, plus the 1023/1024 and 600/601 breakpoints
+    for (const width of [880, 920, 880, 900, 901, 900, 1023, 1024, 1023, 601]) {
+      await crossTo(width);
+    }
+    await crossTo(600);
+    await crossTo(601);
+    await crossTo(900);
   },
 };
 
@@ -652,7 +762,9 @@ export const ReducedMotion = {
     for (const { rule } of ungated) {
       await expect(rule.style.transform).toBe("");
       if (rule.style.transitionProperty) {
-        await expect(rule.style.transitionProperty).toBe("opacity");
+        await expect(["opacity", "none"]).toContain(
+          rule.style.transitionProperty
+        );
       }
     }
 

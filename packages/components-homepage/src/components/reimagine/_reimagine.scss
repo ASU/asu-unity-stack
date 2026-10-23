@@ -84,15 +84,6 @@ $hp-reimagine-rule: 1px; // TODO: confirm with design - hairline between rows (P
   vertical-align: -0.125em;
 }
 
-// Phones: the audience list is a full-bleed Gray 7 band.
-.hp-reimagine .hp-reimagine__list {
-  @media (max-width: $hp-phone-max) {
-    padding: 0 var(--hp-reimagine-gutter) $uds-size-spacing-2;
-    margin-inline: calc(-1 * var(--hp-reimagine-gutter));
-    background: $asu-gray-7;
-  }
-}
-
 // The focus ring is the theme's own (global `a:focus`); nothing here sets a ring.
 .hp-reimagine__link {
   position: relative;
@@ -123,6 +114,8 @@ $hp-reimagine-rule: 1px; // TODO: confirm with design - hairline between rows (P
   outline: 2px solid transparent !important;
 }
 
+// Phones (<= 900px): a gold circle with a Gray 1 arrow, always visible, no motion. Desktop hides it
+// until hover or keyboard focus (below).
 .hp-reimagine__chip {
   flex: none;
   display: grid;
@@ -132,16 +125,6 @@ $hp-reimagine-rule: 1px; // TODO: confirm with design - hairline between rows (P
   border-radius: $uds-component-border-radius;
   background: $uds-color-brand-gold;
   color: $asu-gray-1;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-
-  @media (max-width: $hp-phone-max) {
-    width: auto;
-    height: auto;
-    background: none;
-    color: $asu-gray-3;
-    opacity: 1;
-  }
 }
 
 .hp-reimagine__arrow {
@@ -150,21 +133,35 @@ $hp-reimagine-rule: 1px; // TODO: confirm with design - hairline between rows (P
   width: auto;
 }
 
-// Desktop: gold bar and chip on hover and keyboard focus (same state).
+// The gold bar: on press and keyboard focus at every width (touch has no hover), and on hover on
+// desktop. Transitions live only in the desktop rules, so a phone never animates.
+.hp-reimagine__link::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 (-$hp-reimagine-rule);
+  height: $uds-size-spacing-half;
+  background: $uds-color-brand-gold;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hp-reimagine__link:active::after,
+.hp-reimagine__link:focus-visible::after {
+  opacity: 1;
+}
+
+// Desktop: the chip and the bar on hover and keyboard focus (same state).
 @media (min-width: $hp-phone-max + 1) {
-  .hp-reimagine__link::after {
-    content: "";
-    position: absolute;
-    inset: auto 0 (-$hp-reimagine-rule);
-    height: $uds-size-spacing-half;
-    background: $uds-color-brand-gold;
+  .hp-reimagine__chip {
     opacity: 0;
-    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .hp-reimagine__link::after {
     transition: opacity 0.25s ease;
   }
 
-  .hp-reimagine__link:hover::after,
-  .hp-reimagine__link:focus-visible::after {
+  .hp-reimagine__link:hover::after {
     opacity: 1;
   }
 
