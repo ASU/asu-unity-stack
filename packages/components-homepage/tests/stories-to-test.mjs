@@ -38,4 +38,13 @@ export const storiesToTest = [
   "foundations-video-control--ended-after-pause",
   "foundations-video-control--reinit-second-control",
   "foundations-video-control--playback-boundaries",
+  "homepage-reimagine--default",
+  "homepage-reimagine--hover",
+  "homepage-reimagine--focus-visible",
+  "homepage-reimagine--phone-393",
+  "homepage-reimagine--tablet-768",
+  "homepage-reimagine--desktop-1024",
+  "homepage-reimagine--desktop-1280",
+  "homepage-reimagine--large-1920",
+  "homepage-reimagine--reduced-motion",
 ];
