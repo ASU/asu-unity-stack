@@ -12,8 +12,14 @@ export const realKeyboard = {
   },
 };
 
-// TODO: destinations TBD (WWWCMS-242)
-export const PLACEHOLDER_HREF = "#";
+// TODO: destinations TBD (WWWCMS-242). A bare "#" scrolls the page to the top on click, so each
+// placeholder is a unique fragment that matches no element (the browser then does not scroll).
+export const CTA_PLACEHOLDER_HREF = "#reimagine-learn-more";
+export const audiencePlaceholderHref = label =>
+  `#audience-${label
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "")}`;
 
 export const AUDIENCES = [
   "K-12 learners",
@@ -29,7 +35,7 @@ const ARROW_PATH =
   "M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z";
 
 const row = label =>
-  `<li><a class="hp-reimagine__link" href="${PLACEHOLDER_HREF}"><span class="hp-reimagine__label">${label}</span><span class="hp-reimagine__chip" aria-hidden="true"><svg class="hp-reimagine__arrow" viewBox="0 0 448 512" focusable="false"><path fill="currentColor" d="${ARROW_PATH}"/></svg></span></a></li>`;
+  `<li><a class="hp-reimagine__link" href="${audiencePlaceholderHref(label)}"><span class="hp-reimagine__label">${label}</span><span class="hp-reimagine__chip" aria-hidden="true"><svg class="hp-reimagine__arrow" viewBox="0 0 448 512" focusable="false"><path fill="currentColor" d="${ARROW_PATH}"/></svg></span></a></li>`;
 
 // Markup contract (design doc section 6): the Stage B parity source. `headingId` must be unique per
 // rendered copy (it feeds both `id` and `aria-labelledby`); `entrance` adds the opt-in attribute.
@@ -37,7 +43,7 @@ export const reimagineHtml = ({
   headingId = "hp-reimagine-heading",
   entrance = false,
 } = {}) =>
-  `<section class="hp-reimagine bg-white"${entrance ? " data-entrance" : ""} aria-labelledby="${headingId}"><div class="hp-reimagine__inner"><div class="hp-reimagine__content"><p class="hp-reimagine__eyebrow mb-0">Programs for all ages</p><h2 id="${headingId}" class="hp-reimagine__heading mt-3 mb-0">A top U.S. university reimagining education <span class="text-nowrap">for <span class="scrib-host">everyone<img class="scrib scrib--reimg" src="img/scribble-reimg.svg" alt="" aria-hidden="true"></span></span></h2><p class="hp-reimagine__text mt-3 mb-0">Breaking down education barriers and building up high quality, affordable and accessible learning opportunities for everyone, from K-12 to midcareer to postretirement and every individual in between.</p><div class="hp-reimagine__actions mt-3"><a class="btn outline btn-outline-maroon btn-medium hp-reimagine__cta" href="${PLACEHOLDER_HREF}" aria-label="Learn more about reimagining education for everyone">Learn more<svg class="hp-reimagine__cta-icon ms-1" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="${ARROW_PATH}"/></svg></a></div></div><ul class="hp-reimagine__list list-unstyled mb-0" role="list" aria-label="Programs by audience">${AUDIENCES.map(row).join("")}</ul></div></section>`;
+  `<section class="hp-reimagine bg-white"${entrance ? " data-entrance" : ""} aria-labelledby="${headingId}"><div class="hp-reimagine__inner"><div class="hp-reimagine__content"><p class="hp-reimagine__eyebrow mb-0">Programs for all ages</p><h2 id="${headingId}" class="hp-reimagine__heading mt-3 mb-0">A top U.S. university reimagining education <span class="text-nowrap">for <span class="scrib-host">everyone<img class="scrib scrib--reimg" src="img/scribble-reimg.svg" alt="" aria-hidden="true"></span></span></h2><p class="hp-reimagine__text mt-3 mb-0">Breaking down education barriers and building up high quality, affordable and accessible learning opportunities for everyone, from K-12 to midcareer to postretirement and every individual in between.</p><div class="hp-reimagine__actions mt-3"><a class="btn outline btn-outline-maroon btn-medium hp-reimagine__cta" href="${CTA_PLACEHOLDER_HREF}" aria-label="Learn more about reimagining education for everyone">Learn more<svg class="hp-reimagine__cta-icon ms-1" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="${ARROW_PATH}"/></svg></a></div></div><ul class="hp-reimagine__list list-unstyled mb-0" role="list" aria-label="Programs by audience">${AUDIENCES.map(row).join("")}</ul></div></section>`;
 
 // ---- Test support ----
 

@@ -3,7 +3,6 @@ import { expect, userEvent, waitFor } from "storybook/test";
 
 import {
   AUDIENCES,
-  PLACEHOLDER_HREF,
   contrastRatio,
   forceHover,
   realKeyboard,
@@ -18,7 +17,7 @@ export default {
     docs: {
       description: {
         component:
-          'Homepage section "A top U.S. university reimagining education for everyone": eyebrow, `h2` with the hand-drawn underline under "everyone" only (`.scrib-host` + `img.scrib.scrib--reimg`), paragraph, the UDS outline button (`btn outline btn-outline-maroon btn-medium`) and a divider-separated list of six audience links. Static HTML + CSS only: the markup of these stories is the contract. Rows and button are CSS-only (hover and keyboard focus show the same chip and gold bar; the focus ring is the theme\'s own). `href="#"` values are placeholders. Each rendered copy needs a unique heading id (it feeds `id` and `aria-labelledby`).',
+          'Homepage section "A top U.S. university reimagining education for everyone": eyebrow, `h2` with the hand-drawn underline under "everyone" only (`.scrib-host` + `img.scrib.scrib--reimg`), paragraph, the UDS outline button (`btn outline btn-outline-maroon btn-medium`) and a divider-separated list of six audience links. Static HTML + CSS only: the markup of these stories is the contract. Rows and button are CSS-only (hover and keyboard focus show the same chip and gold bar; the focus ring is the theme\'s own). `href` values are placeholders until the real URLs exist (WWWCMS-242): each is a unique fragment that matches no element (`#audience-<slug>` per row, `#reimagine-learn-more` for Learn more), because a bare `#` scrolls the page to the top on click. Replace them with the real URLs. Each rendered copy needs a unique heading id (it feeds `id` and `aria-labelledby`).',
       },
     },
   },
@@ -28,6 +27,17 @@ const THEME_RING =
   "rgb(255, 255, 255) 0px 0px 0px 2px, rgb(25, 25, 25) 0px 0px 0px 4px";
 const HOVER_TRANSFORM = "matrix(1, 0, 0, 1, 0, 0)";
 const REST_TRANSFORM = "matrix(0.6, 0, 0, 0.6, 0, 0)";
+
+// Placeholder destinations (TBD): unique fragments that match no element, so a click never scrolls.
+const CTA_HREF = "#reimagine-learn-more";
+const AUDIENCE_HREFS = [
+  "#audience-k-12-learners",
+  "#audience-college-students",
+  "#audience-professionals",
+  "#audience-educators",
+  "#audience-parents",
+  "#audience-50-learners",
+];
 
 const viewport = width => ({
   viewport: { value: `hp${width}`, isRotated: false },
@@ -142,8 +152,8 @@ export const Default = {
     const items = list.querySelectorAll("li");
     await expect(items).toHaveLength(6);
     await expect(Array.from(items, li => li.textContent)).toEqual(AUDIENCES);
-    for (const link of p.links) {
-      await expect(link.getAttribute("href")).toBe(PLACEHOLDER_HREF);
+    for (const [index, link] of p.links.entries()) {
+      await expect(link.getAttribute("href")).toBe(AUDIENCE_HREFS[index]);
       await expect(link.textContent).toBe(
         link.querySelector(".hp-reimagine__label").textContent
       );
@@ -205,6 +215,7 @@ export const Default = {
     await expect(icon.getAttribute("aria-hidden")).toBe("true");
     await expect(p.cta.textContent).toBe("Learn more");
     await expect(p.cta.getAttribute("aria-label")).toContain("Learn more");
+    await expect(p.cta.getAttribute("href")).toBe(CTA_HREF);
 
     // --- rows at rest ---
     for (const link of p.links) {
@@ -355,7 +366,7 @@ export const FocusVisible = {
       // Enter on a focused link is the native activation (navigation is cancelled by the test)
       await userEvent.keyboard("{Enter}");
       await expect(activations).toEqual([p.links[5]]);
-      await expect(p.links[5].getAttribute("href")).toBe(PLACEHOLDER_HREF);
+      await expect(p.links[5].getAttribute("href")).toBe(AUDIENCE_HREFS[5]);
 
       // the next Tab leaves the section
       await userEvent.tab();
@@ -480,6 +491,79 @@ export const Tablet768 = {
     const text = getComputedStyle(p.text);
     await expect(text.fontSize).toBe("14px");
     await expect(text.lineHeight).toBe("24px");
+  },
+};
+
+const LINKS_ID = "hp-reimagine-heading-placeholder-links";
+
+// A bare `#` (or `#top`) makes the browser scroll to the top of the page; QA saw this as "it bumps me
+// back to the top of the component". The placeholders must be fragments that match no element.
+export const PlaceholderLinks = {
+  name: "Placeholder links 393",
+  globals: viewport(393),
+  render: () => <Page headingId={LINKS_ID} />,
+  play: async ({ canvasElement }) => {
+    const p = await expectComplete(canvasElement, LINKS_ID);
+    await expect(window.innerWidth).toBe(393);
+    const targets = [p.cta, ...p.links];
+
+    // every placeholder is a distinct, non-empty fragment that no element answers to
+    for (const link of targets) {
+      const href = link.getAttribute("href");
+      await expect(href).toMatch(/^#[a-z0-9-]+$/);
+      await expect(document.getElementById(href.slice(1))).toBeNull();
+      await expect(document.getElementsByName(href.slice(1))).toHaveLength(0);
+    }
+    await expect(new Set(targets.map(l => l.getAttribute("href"))).size).toBe(
+      targets.length
+    );
+    await expect(targets.map(l => l.getAttribute("href"))).toEqual([
+      CTA_HREF,
+      ...AUDIENCE_HREFS,
+    ]);
+
+    // reproduce the report in a phone-sized frame of its own (a fragment navigation must not touch
+    // the test page): activate each link in the middle of a long page and watch the scroll position
+    const markup = reimagineHtml({ headingId: LINKS_ID });
+    const frame = document.createElement("iframe");
+    const url = URL.createObjectURL(
+      new Blob(
+        [
+          `<!doctype html><body style="margin:0"><div style="height:2000px"></div>${markup}<div style="height:2000px"></div></body>`,
+        ],
+        { type: "text/html" }
+      )
+    );
+    frame.style.cssText = "width:393px;height:700px;border:0";
+    canvasElement.append(frame);
+    try {
+      await new Promise(resolve => {
+        frame.addEventListener("load", resolve, { once: true });
+        frame.src = url;
+      });
+      const view = frame.contentWindow;
+      const inner = [
+        ...frame.contentDocument.querySelectorAll(
+          ".hp-reimagine__cta, .hp-reimagine__link"
+        ),
+      ];
+      await expect(inner).toHaveLength(7);
+      for (const link of inner) {
+        const top = link.getBoundingClientRect().top + view.scrollY;
+        view.scrollTo(0, top - 200);
+        await expect(view.scrollY).toBeGreaterThan(1000);
+        const before = view.scrollY;
+        link.click();
+        // sample a few frames so a late scroll cannot be missed
+        for (let tick = 0; tick < 10; tick += 1) {
+          await new Promise(resolve => requestAnimationFrame(resolve));
+          await expect(view.scrollY).toBe(before);
+        }
+      }
+    } finally {
+      frame.remove();
+      URL.revokeObjectURL(url);
+    }
   },
 };
 
