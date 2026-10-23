@@ -34,7 +34,7 @@ const Title = () => {
     return (
       <TitleWrapper
         // @ts-ignore
-        breakpoint={breakpoint}
+        $breakpoint={breakpoint}
         className={CLASS_NAMES.TITLE}
         data-testid="title"
       >
@@ -83,7 +83,7 @@ const Title = () => {
   return (
     <TitleWrapper
       // @ts-ignore
-      breakpoint={breakpoint}
+      $breakpoint={breakpoint}
       className={CLASS_NAMES.TITLE}
       data-testid="title"
     >
