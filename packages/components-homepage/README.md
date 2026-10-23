@@ -40,7 +40,7 @@ Run from `packages/components-homepage` or with `yarn workspace @asu/components-
 | `yarn storybook` | Storybook on <http://localhost:9050> (MCP at `/mcp`) |
 | `yarn build-storybook` | Builds Storybook to `../../build/@asu/components-homepage` |
 | `yarn lint` | ESLint + Stylelint |
-| `yarn test:storybook` | Story `play` tests and axe checks via `@storybook/addon-vitest` (headless Chromium) |
+| `yarn test:storybook` | Story `play` tests via `@storybook/addon-vitest` (headless Chromium); axe checks are off (`a11y.test: "off"` in `.storybook/preview.js`) |
 | `yarn test:accessibility` | Playwright + Siteimprove Alfa audit (WCAG 2.1 AA) of the stories listed in `tests/stories-to-test.mjs` |
 
 There is intentionally no `test` script: the root `yarn test` (Jenkins on every PR, `.husky/pre-push`) runs every package's `test` script.
