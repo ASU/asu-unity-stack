@@ -41,6 +41,13 @@ export const emulateTouchInput = async touch => {
   await commands.emulateTouchInput(touch);
 };
 
+// Emulates `prefers-reduced-motion: reduce` until called with false.
+export const emulateReducedMotion = async reduce => {
+  if (!realPointer.available) return;
+  const { commands } = await import("vitest/browser");
+  await commands.emulateReducedMotion(reduce);
+};
+
 // TODO: destinations TBD (WWWCMS-242). A bare "#" scrolls the page to the top on click, so each
 // placeholder is a unique fragment that matches no element (the browser then does not scroll).
 export const CTA_PLACEHOLDER_HREF = "#reimagine-learn-more";

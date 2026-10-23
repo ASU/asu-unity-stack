@@ -32,6 +32,12 @@ export default defineConfig({
               pointerUp: async ({ page }) => {
                 await page.mouse.up();
               },
+              // Emulates prefers-reduced-motion: reduce; false removes the override.
+              emulateReducedMotion: async ({ page }, reduce) => {
+                await page.emulateMedia({
+                  reducedMotion: reduce ? "reduce" : null,
+                });
+              },
               // Emulates a touch-only device (hover: none, pointer: coarse); false restores the mouse.
               emulateTouchInput: async ({ page }, touch) => {
                 inputSession ??= await page.context().newCDPSession(page);

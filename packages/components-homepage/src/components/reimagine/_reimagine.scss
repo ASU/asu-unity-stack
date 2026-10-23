@@ -104,8 +104,12 @@ $hp-reimagine-rule: 1px; // TODO: confirm with design - hairline between rows (P
   }
 }
 
+// The theme scales `.btn` on :hover (>= 992px) and :active (all widths) with no reduced-motion gate;
+// `:active` also holds when the pointer leaves while pressed, so every state is cancelled here.
 @media (prefers-reduced-motion: reduce) {
-  .hp-reimagine .hp-reimagine__cta:hover {
+  .hp-reimagine .hp-reimagine__cta:hover,
+  .hp-reimagine .hp-reimagine__cta:focus-visible,
+  .hp-reimagine .hp-reimagine__cta:active {
     transform: none;
   }
 }

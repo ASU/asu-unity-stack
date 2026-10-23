@@ -4,6 +4,7 @@ import { expect, userEvent, waitFor } from "storybook/test";
 import {
   AUDIENCES,
   contrastRatio,
+  emulateReducedMotion,
   emulateTouchInput,
   forceHover,
   pressedPointer,
@@ -704,6 +705,92 @@ export const LearnMoreGrows = {
     await waitFor(() => expect(getComputedStyle(p.cta).transform).toBe(GROWN));
     await userEvent.tab();
     await waitFor(() => expect(getComputedStyle(p.cta).transform).toBe("none"));
+  },
+};
+
+const CTA_REDUCED_ID = "hp-reimagine-heading-learn-more-reduced";
+
+// Review: under `prefers-reduced-motion: reduce` the button must not transform at all. The theme's
+// `.btn:active` scales it (.95 below 992px, 1 from 992px) and `.btn:hover` scales it from 992px.
+export const LearnMoreReducedMotion = {
+  name: "Learn more reduced motion",
+  globals: viewport(393),
+  render: () => <Page headingId={CTA_REDUCED_ID} />,
+  play: async ({ canvasElement }) => {
+    const p = await expectComplete(canvasElement, CTA_REDUCED_ID);
+
+    // stylesheet guard (also runs without a real browser): the reduce block cancels every state
+    const cancelled = [];
+    walkRules((rule, conditions) => {
+      if (
+        rule.selectorText.includes(".hp-reimagine__cta") &&
+        rule.style.transform === "none" &&
+        conditions.some(c => c.includes("prefers-reduced-motion: reduce"))
+      ) {
+        cancelled.push(rule.selectorText);
+      }
+    });
+    for (const state of [":hover", ":focus-visible", ":active"]) {
+      await expect(cancelled.some(s => s.includes(state))).toBe(true);
+    }
+    if (!realPointer.available) return;
+
+    // The theme's `transition: all .03s` would hide a transform for the first frames, so no transform
+    // transition may start and, once every transition has finished, the transform is still `none`.
+    const expectStill = async () => {
+      await expect(
+        p.cta.getAnimations().filter(a => a.transitionProperty === "transform")
+      ).toHaveLength(0);
+      await Promise.all(p.cta.getAnimations().map(a => a.finished));
+      await expect(getComputedStyle(p.cta).transform).toBe("none");
+    };
+
+    const swallow = event => event.preventDefault();
+    document.addEventListener("click", swallow, true);
+    try {
+      await emulateReducedMotion(true);
+      await expect(
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ).toBe(true);
+      for (const width of [393, 768, 991, 992, 1280, 1440]) {
+        await resizeViewport(width);
+        await expect(window.innerWidth).toBe(width);
+        await expectStill();
+        await realPointer.hover(p.cta);
+        await waitFor(() => expect(p.cta.matches(":hover")).toBe(true));
+        await expectStill();
+        await pressedPointer.down();
+        await waitFor(() => expect(p.cta.matches(":active")).toBe(true));
+        await expectStill();
+        // still pressed with the pointer moved off (`:active` without `:hover`: the theme's `.btn:active`
+        // scale is not cancelled by a hover rule)
+        await realPointer.unhover(p.cta);
+        await waitFor(() => expect(p.cta.matches(":hover")).toBe(false));
+        await expect(p.cta.matches(":active")).toBe(true);
+        await expectStill();
+        await pressedPointer.up();
+        await waitFor(() => expect(p.cta.matches(":active")).toBe(false));
+        await expectStill();
+      }
+
+      // keyboard focus keeps it still at every width as well (a trusted key press first, so that the
+      // script focus below counts as keyboard focus)
+      p.cta.blur();
+      await realKeyboard.press("{Escape}");
+      await resizeViewport(393);
+      p.cta.focus();
+      await expect(document.activeElement).toBe(p.cta);
+      await expect(p.cta.matches(":focus-visible")).toBe(true);
+      for (const width of [393, 991, 992, 1440]) {
+        await resizeViewport(width);
+        await expectStill();
+      }
+      p.cta.blur();
+    } finally {
+      await pressedPointer.up();
+      document.removeEventListener("click", swallow, true);
+      await emulateReducedMotion(false);
+    }
   },
 };
 
