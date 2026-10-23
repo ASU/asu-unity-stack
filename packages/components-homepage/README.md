@@ -13,7 +13,7 @@ Vanilla HTML/SCSS/JS foundations for the ASU homepage (Jira WWWCMS-227 / WWWCMS-
 | `src/components/<piece>/` | One folder per foundation piece, with its SCSS partial, JS and stories side by side (see below) |
 | `src/scss/components-homepage.scss` | SCSS entry; imports the UDS variables, `_variables.scss` and each piece's partial |
 | `src/scss/_variables.scss` | Shared homepage variables and custom properties |
-| `src/js/index.js` | JS entry; re-exports the public API (`initVideoControls`) |
+| `src/js/index.js` | JS entry; re-exports the public API (`initVideoControls`, `initReimagine`) |
 | `src/img/` | Art copied unchanged to `dist/img/` |
 | `tests/` | Playwright accessibility spec |
 
@@ -24,7 +24,7 @@ Pieces under `src/components/`:
 | `underline-mark/` | `_underline-mark.scss`, `underline-mark.stories.jsx` (`Foundations/Underline mark`) |
 | `backgrounds/` | `_backgrounds.scss`, `backgrounds.stories.jsx` (`Foundations/Backgrounds`) |
 | `video-control/` | `_video-control.scss`, `video-control.js`, `video-control.stories.jsx`, `video-control-helpers.jsx` (`Foundations/Video control`) |
-| `reimagine/` | `_reimagine.scss`, `reimagine.stories.jsx`, `reimagine-helpers.jsx` (`Homepage/Reimagine`): the "reimagining education for everyone" section, static HTML + CSS |
+| `reimagine/` | `_reimagine.scss`, `reimagine.stories.jsx`, `reimagine-helpers.jsx` (`Homepage/Reimagine`): the "reimagining education for everyone" section, static HTML + CSS. Opt-in scroll entrance (removable): `reimagine.js` (`initReimagine`), the ENTRANCE block in `_reimagine.scss`, `reimagine-entrance.stories.jsx` (`Homepage/Reimagine entrance`) |
 
 Adding a piece: create `src/components/<piece>/`, add `_<piece>.scss` and `@import "../components/<piece>/<piece>";` in `components-homepage.scss`, and put `<piece>.stories.jsx` in the same folder (Storybook picks up `src/components/**/*.stories.jsx`).
 

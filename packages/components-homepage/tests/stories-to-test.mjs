@@ -47,4 +47,11 @@ export const storiesToTest = [
   "homepage-reimagine--desktop-1280",
   "homepage-reimagine--large-1920",
   "homepage-reimagine--reduced-motion",
+  "homepage-reimagine-entrance--entrance-animation",
+  "homepage-reimagine-entrance--entrance-in-view",
+  "homepage-reimagine-entrance--entrance-no-script",
+  "homepage-reimagine-entrance--entrance-reduced-motion",
+  "homepage-reimagine-entrance--entrance-below-901",
+  "homepage-reimagine-entrance--entrance-idempotent-init",
+  "homepage-reimagine-entrance--entrance-css-gate",
 ];

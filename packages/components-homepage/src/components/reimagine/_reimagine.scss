@@ -199,3 +199,21 @@ $hp-reimagine-rule: 1px; // TODO: confirm with design - hairline between rows (P
     border: 1px solid ButtonText;
   }
 }
+
+// ===== ENTRANCE (removable) start =====
+// Opt-in scroll entrance (prototype P:1226-1230), driven by reimagine.js. Delete this block together
+// with reimagine.js to drop the feature. Only transform and transition: no hidden state, no layout change.
+$hp-reimagine-enter-ease: cubic-bezier(0.22, 1, 0.36, 1); // TODO: confirm with design - prototype P:1228.
+$hp-reimagine-enter-duration: 0.6s; // TODO: confirm with design - prototype P:1228.
+
+@media (min-width: $hp-phone-max + 1) and (prefers-reduced-motion: no-preference) {
+  .hp-reimagine--enter .hp-reimagine__inner {
+    transform: translateY($uds-size-spacing-3);
+  }
+
+  .hp-reimagine--enter.hp-reimagine--settled .hp-reimagine__inner {
+    transform: none;
+    transition: transform $hp-reimagine-enter-duration $hp-reimagine-enter-ease;
+  }
+}
+// ===== ENTRANCE (removable) end =====
