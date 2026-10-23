@@ -166,6 +166,11 @@ export const Default = {
     await expect(mark.getAttribute("alt")).toBe("");
     await expect(mark.getAttribute("aria-hidden")).toBe("true");
     await expect(mark.getAttribute("src")).toBe("img/scribble-reimg.svg");
+    // brand QA: the hand-drawn mark sits 0.1em below the baseline box (32px heading: -3.2px)
+    await expect(
+      getComputedStyle(mark).getPropertyValue("--scrib-bottom").trim()
+    ).toBe("-0.1em");
+    await near(parseFloat(getComputedStyle(mark).bottom), -3.2, 0.1);
     const hostStyle = getComputedStyle(host);
     await expect(hostStyle.position).toBe("relative");
     await expect(hostStyle.display).toBe("inline-block");

@@ -14,6 +14,7 @@ export default {
 };
 
 // Winning prototype v2.71 values (todo 4.1); `em` offsets scale with the heading font size.
+// Exception: reimg is -.1em per brand's QA of the Reimagine section (the prototype had -.5em).
 const VARIANTS = {
   "future": {
     art: "scribble-future.svg",
@@ -47,7 +48,7 @@ const VARIANTS = {
     art: "scribble-reimg.svg",
     left: "-3%",
     width: "106%",
-    bottom: "-.5em",
+    bottom: "-.1em",
     opacity: "1",
   },
   "charter-phone": {

@@ -24,7 +24,8 @@
   opacity: var(--scrib-opacity, 1);
 }
 
-// Winning prototype v2.71 values (lines 1424, 1566, 1568, 1569, 1957, 646).
+// Winning prototype v2.71 values (lines 1424, 1566, 1568, 1569, 1957, 646), except reimg: brand's QA
+// of the Reimagine section lowered it to -0.1em (the prototype had -0.5em).
 .scrib--future {
   --scrib-left: -0.04em;
   --scrib-width: 104%;
@@ -52,7 +53,7 @@
 .scrib--reimg {
   --scrib-left: -3%;
   --scrib-width: 106%;
-  --scrib-bottom: -0.5em;
+  --scrib-bottom: -0.1em;
   --scrib-opacity: 1;
 }
 
