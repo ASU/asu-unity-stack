@@ -14,9 +14,19 @@ const homepageViewports = {
     styles: { width: "768px", height: "1024px" },
     type: "tablet",
   },
+  hp1024: {
+    name: "Desktop 1024",
+    styles: { width: "1024px", height: "768px" },
+    type: "desktop",
+  },
   hp1280: {
     name: "Desktop 1280",
     styles: { width: "1280px", height: "800px" },
+    type: "desktop",
+  },
+  hp1440: {
+    name: "Desktop 1440",
+    styles: { width: "1440px", height: "900px" },
     type: "desktop",
   },
   hp1920: {

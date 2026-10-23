@@ -1,0 +1,219 @@
+// Homepage "reimagining education for everyone" section.
+// Markup: reimagine-helpers.jsx (`reimagineHtml`). Prototype v2.71 lines 477-492, 575, 700-707,
+// 1292, 1518-1525, 1962-1964. Every $variable used in a custom property is interpolated (#{...}):
+// Sass copies custom-property values verbatim, so a bare $variable would be emitted literally.
+
+$hp-reimagine-compact-max: 600px; // TODO: confirm with design - prototype gutter step (P:581, 712); UDS sm is 576px.
+$hp-reimagine-rule: 1px; // TODO: confirm with design - hairline between rows (P:487).
+
+.hp-reimagine {
+  --hp-reimagine-gutter: #{$uds-size-spacing-6};
+
+  // TODO: confirm with design - viewport-relative section padding (P:1518); no UDS token is.
+  padding-block: 10vh 12vh;
+
+  @media (max-width: $hp-reimagine-compact-max) {
+    --hp-reimagine-gutter: #{$uds-size-spacing-2};
+  }
+}
+
+.hp-reimagine__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: $uds-size-spacing-3;
+  max-width: 1440px; // TODO: confirm with design - the 1440 frame (P:30, 47).
+  margin-inline: auto;
+  padding-inline: var(--hp-reimagine-gutter);
+
+  @media (min-width: $hp-phone-max + 1) {
+    // TODO: confirm with design - Figma column widths 544/480 and the gap clamp (P:1962-1964).
+    grid-template-columns: minmax(0, 544px) minmax(0, 480px);
+    justify-content: center;
+    column-gap: clamp(64px, 8vw, 160px);
+    align-items: start;
+  }
+}
+
+.hp-reimagine__content {
+  min-width: 0;
+}
+
+.hp-reimagine__eyebrow {
+  display: block;
+  width: max-content;
+  padding: $uds-size-spacing-1;
+  background: $uds-color-brand-gold;
+  color: $asu-gray-1;
+  font-size: $uds-size-font-tiny;
+  font-weight: $uds-font-weight-bold;
+  line-height: 1;
+  letter-spacing: 0.2em; // TODO: confirm with design - 2.4px at 12px (P:1292).
+  text-transform: uppercase;
+}
+
+.hp-reimagine__heading {
+  display: block;
+  max-width: 12em;
+  font-size: $uds-size-font-xxl;
+  line-height: 1;
+  letter-spacing: -0.06rem; // TODO: confirm with design - UDS h2 mobile is 32/40/-0.07rem (P:1520).
+}
+
+.hp-reimagine__text {
+  max-width: 34em;
+  color: $asu-gray-3;
+  font-size: $uds-size-font-medium;
+  line-height: $uds-size-spacing-3;
+
+  @media (max-width: $hp-phone-max) {
+    font-size: $uds-size-font-small;
+  }
+}
+
+// Learn more is the UDS outline button (btn outline btn-outline-maroon btn-medium). The theme's
+// btn-md mixin lacks a semicolon (_buttons.scss:3), which swallows the 14px font size and the
+// 8px hit-area inset; restore both here. Remove when the theme is fixed.
+.hp-reimagine .hp-reimagine__cta {
+  --bs-btn-font-size: #{$uds-size-font-small};
+  --uds-clickable-area-inset: -#{$uds-size-spacing-1};
+}
+
+.hp-reimagine__cta-icon {
+  height: 1em;
+  width: auto;
+  vertical-align: -0.125em;
+}
+
+// Phones: the audience list is a full-bleed Gray 7 band.
+.hp-reimagine .hp-reimagine__list {
+  @media (max-width: $hp-phone-max) {
+    padding: 0 var(--hp-reimagine-gutter) $uds-size-spacing-2;
+    margin-inline: calc(-1 * var(--hp-reimagine-gutter));
+    background: $asu-gray-7;
+  }
+}
+
+// The focus ring is the theme's own (global `a:focus`); nothing here sets a ring.
+.hp-reimagine__link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $uds-size-spacing-3;
+  padding: $uds-size-spacing-2 $uds-size-spacing-1;
+  border-bottom: $hp-reimagine-rule solid $asu-gray-5;
+  font-size: $uds-size-font-xl;
+  line-height: 1;
+  letter-spacing: -0.03em; // TODO: confirm with design - -0.72px at 24px (P:1525).
+
+  @media (max-width: $hp-phone-max) {
+    padding: $uds-size-spacing-2 0;
+  }
+}
+
+// The theme turns visited links dark maroon and hover links maroon; rows never change colour.
+.hp-reimagine .hp-reimagine__link:link,
+.hp-reimagine .hp-reimagine__link:visited {
+  color: $asu-gray-1;
+  text-decoration: none;
+}
+
+// Forced colors drop box-shadow; this transparent outline stays visible there.
+.hp-reimagine .hp-reimagine__link:focus-visible {
+  outline: 2px solid transparent !important;
+}
+
+.hp-reimagine__chip {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 1.75rem; // TODO: confirm with design - 28px chip (P:489).
+  height: 1.75rem;
+  border-radius: $uds-component-border-radius;
+  background: $uds-color-brand-gold;
+  color: $asu-gray-1;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+
+  @media (max-width: $hp-phone-max) {
+    width: auto;
+    height: auto;
+    background: none;
+    color: $asu-gray-3;
+    opacity: 1;
+  }
+}
+
+.hp-reimagine__arrow {
+  display: block;
+  height: $uds-size-font-medium;
+  width: auto;
+}
+
+// Desktop: gold bar and chip on hover and keyboard focus (same state).
+@media (min-width: $hp-phone-max + 1) {
+  .hp-reimagine__link::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 (-$hp-reimagine-rule);
+    height: $uds-size-spacing-half;
+    background: $uds-color-brand-gold;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .hp-reimagine__link:hover::after,
+  .hp-reimagine__link:focus-visible::after {
+    opacity: 1;
+  }
+
+  .hp-reimagine__link:hover .hp-reimagine__chip,
+  .hp-reimagine__link:focus-visible .hp-reimagine__chip {
+    opacity: 1;
+  }
+}
+
+// The chip's scale only for visitors without a reduced-motion preference.
+@media (min-width: $hp-phone-max + 1) and (prefers-reduced-motion: no-preference) {
+  .hp-reimagine__chip {
+    transform: scale(0.6);
+    transition:
+      opacity 0.2s ease,
+      transform 0.25s cubic-bezier(0.34, 1.4, 0.44, 1);
+  }
+
+  .hp-reimagine__link:hover .hp-reimagine__chip,
+  .hp-reimagine__link:focus-visible .hp-reimagine__chip {
+    transform: scale(1);
+  }
+}
+
+// Forced colors drop backgrounds; keep the bar and the chip visible.
+@media (forced-colors: active) {
+  .hp-reimagine__link::after {
+    background: Highlight;
+  }
+
+  .hp-reimagine__chip {
+    border: 1px solid ButtonText;
+  }
+}
+
+// ===== ENTRANCE (removable) start =====
+// Opt-in scroll entrance (prototype P:1226-1230), driven by reimagine.js. Delete this block together
+// with reimagine.js to drop the feature. Only transform and transition: no hidden state, no layout change.
+$hp-reimagine-enter-ease: cubic-bezier(0.22, 1, 0.36, 1); // TODO: confirm with design - prototype P:1228.
+$hp-reimagine-enter-duration: 0.6s; // TODO: confirm with design - prototype P:1228.
+
+@media (min-width: $hp-phone-max + 1) and (prefers-reduced-motion: no-preference) {
+  .hp-reimagine--enter .hp-reimagine__inner {
+    transform: translateY($uds-size-spacing-3);
+  }
+
+  .hp-reimagine--enter.hp-reimagine--settled .hp-reimagine__inner {
+    transform: none;
+    transition: transform $hp-reimagine-enter-duration $hp-reimagine-enter-ease;
+  }
+}
+// ===== ENTRANCE (removable) end =====
