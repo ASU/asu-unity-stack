@@ -47,7 +47,7 @@ export const twoImagesWithContentInPageOfSections = () => (
         height="900"
         loading="lazy"
         decoding="async"
-        fetchpriority="high"
+        fetchPriority="high"
       />
       <div className="parallax-container-content">
         <h2>Carve your path</h2>
