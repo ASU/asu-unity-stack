@@ -1,0 +1,855 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/components/accordion/uds-accordion-item.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "UdsAccordionItem",
+          "cssProperties": [
+            {
+              "description": "Border color for the item",
+              "name": "--uds-color-border"
+            },
+            {
+              "description": "Header button padding",
+              "name": "--uds-spacing-accordion-header"
+            },
+            {
+              "description": "Panel content padding",
+              "name": "--uds-spacing-accordion-panel"
+            },
+            {
+              "description": "Header background color",
+              "name": "--uds-color-background-accordion-header"
+            },
+            {
+              "description": "Header hover background",
+              "name": "--uds-color-background-accordion-header-hover"
+            },
+            {
+              "description": "Panel background color",
+              "name": "--uds-color-background-accordion-panel"
+            },
+            {
+              "description": "Header font size",
+              "name": "--uds-font-size-accordion-header"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The header button element",
+              "name": "header"
+            },
+            {
+              "description": "The collapsible panel container",
+              "name": "panel"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Default slot for the panel content.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "The text displayed in the header button.",
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the panel is currently expanded.",
+              "attribute": "open",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_headerId",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "default": "`uds-accordion-header-${id}`"
+            },
+            {
+              "kind": "field",
+              "name": "_panelId",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "default": "`uds-accordion-panel-${id}`"
+            },
+            {
+              "kind": "method",
+              "name": "_toggle",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_handleKeydown",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "uds-accordion-toggle",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the item is opened or closed."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "The text displayed in the header button.",
+              "fieldName": "title"
+            },
+            {
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the panel is currently expanded.",
+              "fieldName": "open"
+            }
+          ],
+          "superclass": {
+            "name": "UdsBaseElement",
+            "module": "/src/core/base-element.js"
+          },
+          "tagName": "uds-accordion-item",
+          "customElement": true,
+          "summary": "A single collapsible item within a `<uds-accordion>`."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UdsAccordionItem",
+          "declaration": {
+            "name": "UdsAccordionItem",
+            "module": "src/components/accordion/uds-accordion-item.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "uds-accordion-item",
+          "declaration": {
+            "name": "UdsAccordionItem",
+            "module": "src/components/accordion/uds-accordion-item.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/accordion/uds-accordion.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "UdsAccordion",
+          "cssProperties": [
+            {
+              "description": "Gap between accordion items",
+              "name": "--uds-spacing-component-gap"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Default slot for `<uds-accordion-item>` children.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "multiple",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "When false (default), only one item can be open at a time.\nWhen true, multiple items may be open simultaneously.",
+              "attribute": "multiple"
+            },
+            {
+              "kind": "method",
+              "name": "_handleItemToggle",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "CustomEvent<{ open: boolean }>"
+                  }
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "multiple",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "When false (default), only one item can be open at a time.\nWhen true, multiple items may be open simultaneously.",
+              "fieldName": "multiple"
+            }
+          ],
+          "superclass": {
+            "name": "UdsBaseElement",
+            "module": "/src/core/base-element.js"
+          },
+          "tagName": "uds-accordion",
+          "customElement": true,
+          "summary": "A container for `<uds-accordion-item>` elements. Controls single/multiple open behavior."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UdsAccordion",
+          "declaration": {
+            "name": "UdsAccordion",
+            "module": "src/components/accordion/uds-accordion.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "uds-accordion",
+          "declaration": {
+            "name": "UdsAccordion",
+            "module": "src/components/accordion/uds-accordion.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/button/uds-button.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "UdsButton",
+          "cssProperties": [
+            {
+              "description": "Default (primary) role color → maroon",
+              "name": "--uds-button-color-default"
+            },
+            {
+              "description": "CTA role color → gold",
+              "name": "--uds-button-color-cta"
+            },
+            {
+              "description": "Neutral role color → gray-4",
+              "name": "--uds-button-color-neutral"
+            },
+            {
+              "description": "Contrast role color → gray-1",
+              "name": "--uds-button-color-contrast"
+            },
+            {
+              "description": "Foreground on a solid default fill",
+              "name": "--uds-button-on-default"
+            },
+            {
+              "description": "Foreground on a solid CTA fill",
+              "name": "--uds-button-on-cta"
+            },
+            {
+              "description": "Foreground on a solid neutral fill",
+              "name": "--uds-button-on-neutral"
+            },
+            {
+              "description": "Foreground on a solid contrast fill",
+              "name": "--uds-button-on-contrast"
+            },
+            {
+              "description": "Extra-small spacing",
+              "name": "--uds-spacing-xs"
+            },
+            {
+              "description": "Small spacing",
+              "name": "--uds-spacing-sm"
+            },
+            {
+              "description": "Medium spacing",
+              "name": "--uds-spacing-md"
+            },
+            {
+              "description": "Small border radius",
+              "name": "--uds-radius-sm"
+            },
+            {
+              "description": "Bold font weight",
+              "name": "--uds-font-weight-bold"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The inner button or anchor element",
+              "name": "button"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Override label text with custom content",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Button label text",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "href",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "When set, renders as an anchor element",
+              "attribute": "href"
+            },
+            {
+              "kind": "field",
+              "name": "color",
+              "type": {
+                "text": "ButtonColor"
+              },
+              "description": "Brand-approved semantic color role. Reflected. Non-approved values are\ncoerced to `default`.",
+              "attribute": "color",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_color",
+              "type": {
+                "text": "ButtonColor"
+              },
+              "privacy": "private",
+              "default": "'default'"
+            },
+            {
+              "kind": "field",
+              "name": "variant",
+              "type": {
+                "text": "ButtonVariant"
+              },
+              "description": "Brand-approved style treatment. Reflected. Non-approved values are coerced\nto `solid`.",
+              "attribute": "variant",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_variant",
+              "type": {
+                "text": "ButtonVariant"
+              },
+              "privacy": "private",
+              "default": "'solid'"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "type": {
+                "text": "ButtonSize"
+              },
+              "description": "Layout size. Reflected. Non-approved values are coerced to `default`.",
+              "attribute": "size",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_size",
+              "type": {
+                "text": "ButtonSize"
+              },
+              "privacy": "private",
+              "default": "'default'"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Disabled state",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "_handleClick",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "uds-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Dispatched on click with detail { label }"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Button label text",
+              "fieldName": "label"
+            },
+            {
+              "name": "href",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "When set, renders as an anchor element",
+              "fieldName": "href"
+            },
+            {
+              "name": "color",
+              "type": {
+                "text": "ButtonColor"
+              },
+              "description": "Brand-approved semantic color role. Reflected. Non-approved values are\ncoerced to `default`.",
+              "fieldName": "color"
+            },
+            {
+              "name": "variant",
+              "type": {
+                "text": "ButtonVariant"
+              },
+              "description": "Brand-approved style treatment. Reflected. Non-approved values are coerced\nto `solid`.",
+              "fieldName": "variant"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "ButtonSize"
+              },
+              "description": "Layout size. Reflected. Non-approved values are coerced to `default`.",
+              "fieldName": "size"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Disabled state",
+              "fieldName": "disabled"
+            }
+          ],
+          "superclass": {
+            "name": "UdsBaseElement",
+            "module": "/src/core/base-element.js"
+          },
+          "tagName": "uds-button",
+          "customElement": true,
+          "summary": "Brand-approved UDS button. Renders as `<a>` when `href` is set, otherwise `<button>`.\n`color` selects a semantic role (default/cta/neutral/contrast) that resolves to a brand\ntoken via the `--uds-button-color-*` component tokens; `variant` selects the style\ntreatment. Non-approved values are coerced to the default at runtime."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UdsButton",
+          "declaration": {
+            "name": "UdsButton",
+            "module": "src/components/button/uds-button.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "uds-button",
+          "declaration": {
+            "name": "UdsButton",
+            "module": "src/components/button/uds-button.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/card/uds-card.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "UdsCard",
+          "cssProperties": [
+            {
+              "description": "Card background color",
+              "name": "--uds-color-surface"
+            },
+            {
+              "description": "Card text color",
+              "name": "--uds-color-on-surface"
+            },
+            {
+              "description": "Internal padding",
+              "name": "--uds-spacing-3"
+            },
+            {
+              "description": "Gap between card sections",
+              "name": "--uds-spacing-4"
+            },
+            {
+              "description": "Card border radius",
+              "name": "--uds-radius-md"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The outer card container",
+              "name": "card"
+            },
+            {
+              "description": "The image container",
+              "name": "image"
+            },
+            {
+              "description": "The heading element",
+              "name": "heading"
+            },
+            {
+              "description": "The body content area",
+              "name": "body"
+            },
+            {
+              "description": "The actions footer area",
+              "name": "actions"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Default slot for body content",
+              "name": ""
+            },
+            {
+              "description": "Slot for action buttons (e.g. uds-button) at the card footer",
+              "name": "actions"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "heading",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Card heading text",
+              "attribute": "heading"
+            },
+            {
+              "kind": "field",
+              "name": "image",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Image URL for the card's media area",
+              "attribute": "image"
+            },
+            {
+              "kind": "field",
+              "name": "href",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "When set, the entire card becomes a clickable link",
+              "attribute": "href"
+            },
+            {
+              "kind": "field",
+              "name": "horizontal",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "When true, renders in a horizontal (side-by-side) layout",
+              "attribute": "horizontal",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "_handleClick",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "heading",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Card heading text",
+              "fieldName": "heading"
+            },
+            {
+              "name": "image",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "Image URL for the card's media area",
+              "fieldName": "image"
+            },
+            {
+              "name": "href",
+              "type": {
+                "text": "string | undefined"
+              },
+              "description": "When set, the entire card becomes a clickable link",
+              "fieldName": "href"
+            },
+            {
+              "name": "horizontal",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "When true, renders in a horizontal (side-by-side) layout",
+              "fieldName": "horizontal"
+            }
+          ],
+          "superclass": {
+            "name": "UdsBaseElement",
+            "module": "/src/core/base-element.js"
+          },
+          "tagName": "uds-card",
+          "customElement": true,
+          "summary": "A flexible card component with optional image, heading, body content, and action buttons."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UdsCard",
+          "declaration": {
+            "name": "UdsCard",
+            "module": "src/components/card/uds-card.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "uds-card",
+          "declaration": {
+            "name": "UdsCard",
+            "module": "src/components/card/uds-card.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ga-event-wrapper/uds-ga-event-wrapper.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "UdsGaEventWrapper",
+          "slots": [
+            {
+              "description": "A single element to track (e.g. an `<a>`, `<button>`, or `<uds-button>`).",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "gaData",
+              "type": {
+                "text": "GaEventType"
+              },
+              "default": "{}",
+              "description": "Google Analytics data applied to the slotted child.",
+              "attribute": "gaData"
+            },
+            {
+              "kind": "field",
+              "name": "prefix",
+              "type": {
+                "text": "GaPrefix"
+              },
+              "default": "''",
+              "description": "Prefix for the emitted `data-ga` attributes (`data-ga-{prefix}-action`).",
+              "attribute": "prefix"
+            },
+            {
+              "kind": "field",
+              "name": "_tracked",
+              "type": {
+                "text": "HTMLElement | null"
+              },
+              "privacy": "private",
+              "default": "null",
+              "description": "Cached reference to the currently-tracked slotted element."
+            },
+            {
+              "kind": "field",
+              "name": "_prefixSegment",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_getSlottedElement",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "HTMLElement | null"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_handleSlotChange",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_applyGaAttributes",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_handleClick",
+              "privacy": "private"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "gaData",
+              "type": {
+                "text": "GaEventType"
+              },
+              "default": "{}",
+              "description": "Google Analytics data applied to the slotted child.",
+              "fieldName": "gaData"
+            },
+            {
+              "name": "prefix",
+              "type": {
+                "text": "GaPrefix"
+              },
+              "default": "''",
+              "description": "Prefix for the emitted `data-ga` attributes (`data-ga-{prefix}-action`).",
+              "fieldName": "prefix"
+            }
+          ],
+          "superclass": {
+            "name": "UdsBaseElement",
+            "module": "/src/core/base-element.js"
+          },
+          "tagName": "uds-ga-event-wrapper",
+          "customElement": true,
+          "summary": "Wraps a single slotted element and wires it for Google Analytics\ntracking — the web-component equivalent of the React `GaEventWrapper`.\n\nIt supports the same two mechanisms the design system uses elsewhere:\n\n1. **Declarative (`data-ga*` attributes)** — the wrapper reflects the values\nfrom `gaData` onto the slotted child as `data-ga{prefix}-*` attributes, so\nthe CMS/global `[data-ga]` click listener picks them up. This is the\nprimary mechanism for HTML/Drupal consumption.\n2. **Programmatic (`dataLayer` push)** — on click it also pushes the event\nstraight to `window.dataLayer`, guarded (like the React version) so it only\nfires when `gaData.event` and `gaData.action` are both present."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UdsGaEventWrapper",
+          "declaration": {
+            "name": "UdsGaEventWrapper",
+            "module": "src/components/ga-event-wrapper/uds-ga-event-wrapper.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "uds-ga-event-wrapper",
+          "declaration": {
+            "name": "UdsGaEventWrapper",
+            "module": "src/components/ga-event-wrapper/uds-ga-event-wrapper.ts"
+          }
+        }
+      ]
+    }
+  ]
+}

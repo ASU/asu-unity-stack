@@ -1,0 +1,155 @@
+{
+  "spacing": {
+    "$description": "Spacing scale. Values mirror the current prototype; the scale name/step decision (t-shirt vs. Figma px names vs. legacy multiples of 8) is pending Brand confirmation (UDS-2268).",
+    "$extensions": {
+      "com.asu.uds": { "status": "experimental" }
+    },
+    "0": {
+      "$value": "0px",
+      "$type": "dimension",
+      "$description": "Zero spacing"
+    },
+    "2xs": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "Micro spacing",
+      "$extensions": {
+        "com.asu.uds": { "figmaVar": "Themes/UDS grid/4px" }
+      }
+    },
+    "xs": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "Extra small",
+      "$extensions": {
+        "com.asu.uds": { "figmaVar": "Themes/UDS grid/8px" }
+      }
+    },
+    "sm": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "Small",
+      "$extensions": {
+        "com.asu.uds": { "figmaVar": "Themes/UDS grid/12px" }
+      }
+    },
+    "md": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "Medium (base)",
+      "$extensions": {
+        "com.asu.uds": { "figmaVar": "Themes/UDS grid/16px" }
+      }
+    },
+    "lg": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Large",
+      "$extensions": {
+        "com.asu.uds": { "figmaVar": "Themes/UDS grid/24px" }
+      }
+    },
+    "xl": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "Extra large",
+      "$extensions": {
+        "com.asu.uds": { "figmaVar": "Themes/UDS grid/32px" }
+      }
+    },
+    "2xl": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "2x large",
+      "$extensions": {
+        "com.asu.uds": { "figmaVar": "Themes/UDS grid/48px" }
+      }
+    },
+    "3xl": {
+      "$value": "64px",
+      "$type": "dimension",
+      "$description": "3x large",
+      "$extensions": {
+        "com.asu.uds": { "figmaVar": "Themes/UDS grid/64px" }
+      }
+    },
+    "4xl": {
+      "$value": "96px",
+      "$type": "dimension",
+      "$description": "4x large",
+      "$extensions": {
+        "com.asu.uds": { "figmaVar": "Themes/UDS grid/96px" }
+      }
+    },
+    "component-gap": {
+      "$value": "{spacing.md}",
+      "$type": "dimension",
+      "$description": "Default gap between sibling elements within a component"
+    },
+    "section-gap": {
+      "$value": "{spacing.2xl}",
+      "$type": "dimension",
+      "$description": "Gap between major page sections. Note: the Figma kit defines Section spacing as 96px desktop / 48px mobile — alignment pending Brand confirmation."
+    },
+    "container-padding": {
+      "desktop": {
+        "$value": "{spacing.3xl}",
+        "$type": "dimension",
+        "$description": "Container padding on desktop (>=992px)"
+      },
+      "mobile": {
+        "$value": "{spacing.md}",
+        "$type": "dimension",
+        "$description": "Container padding on mobile (<768px)"
+      }
+    },
+    "1": {
+      "$value": "{spacing.2xs}",
+      "$type": "dimension",
+      "$description": "Deprecated numeric alias of spacing.2xs — kept for backward compatibility, do not use in new code",
+      "$extensions": {
+        "com.asu.uds": { "status": "deprecated" }
+      }
+    },
+    "2": {
+      "$value": "{spacing.xs}",
+      "$type": "dimension",
+      "$description": "Deprecated numeric alias of spacing.xs — kept for backward compatibility, do not use in new code",
+      "$extensions": {
+        "com.asu.uds": { "status": "deprecated" }
+      }
+    },
+    "3": {
+      "$value": "{spacing.md}",
+      "$type": "dimension",
+      "$description": "Deprecated numeric alias of spacing.md — kept for backward compatibility, do not use in new code",
+      "$extensions": {
+        "com.asu.uds": { "status": "deprecated" }
+      }
+    },
+    "4": {
+      "$value": "{spacing.lg}",
+      "$type": "dimension",
+      "$description": "Deprecated numeric alias of spacing.lg — kept for backward compatibility, do not use in new code",
+      "$extensions": {
+        "com.asu.uds": { "status": "deprecated" }
+      }
+    },
+    "5": {
+      "$value": "{spacing.xl}",
+      "$type": "dimension",
+      "$description": "Deprecated numeric alias of spacing.xl — kept for backward compatibility, do not use in new code",
+      "$extensions": {
+        "com.asu.uds": { "status": "deprecated" }
+      }
+    },
+    "6": {
+      "$value": "{spacing.2xl}",
+      "$type": "dimension",
+      "$description": "Deprecated numeric alias of spacing.2xl — kept for backward compatibility, do not use in new code",
+      "$extensions": {
+        "com.asu.uds": { "status": "deprecated" }
+      }
+    }
+  }
+}

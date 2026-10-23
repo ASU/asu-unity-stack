@@ -1,0 +1,47 @@
+{
+  "transition": {
+    "$description": "Motion durations.",
+    "$extensions": {
+      "com.asu.uds": { "status": "experimental" }
+    },
+    "fast": {
+      "$value": "150ms",
+      "$type": "duration",
+      "$description": "Micro interactions (hover, focus)"
+    },
+    "normal": {
+      "$value": "250ms",
+      "$type": "duration",
+      "$description": "Standard transitions (expand, collapse)"
+    },
+    "slow": {
+      "$value": "400ms",
+      "$type": "duration",
+      "$description": "Complex animations (modals, page transitions). Same value as the legacy $uds-time-transition-base.",
+      "$extensions": {
+        "com.asu.uds": { "deprecatedAliases": ["$uds-time-transition-base"] }
+      }
+    }
+  },
+  "easing": {
+    "$description": "Easing curves.",
+    "$extensions": {
+      "com.asu.uds": { "status": "experimental" }
+    },
+    "default": {
+      "$value": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "$type": "cubicBezier",
+      "$description": "Material standard easing"
+    },
+    "in": {
+      "$value": "cubic-bezier(0.4, 0, 1, 1)",
+      "$type": "cubicBezier",
+      "$description": "Accelerate"
+    },
+    "out": {
+      "$value": "cubic-bezier(0, 0, 0.2, 1)",
+      "$type": "cubicBezier",
+      "$description": "Decelerate"
+    }
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://unity.web.asu.edu/schemas/uds-tokens.schema.json",
+  "title": "UDS Design Token file",
+  "description": "W3C DTCG-based token contract for the ASU Unity Design System. Adds a required agent-consumable metadata layer under $extensions[\"com.asu.uds\"]: every token must have an effective status and a $description, own or inherited from an ancestor group (enforced by scripts/validate-tokens.mjs).",
+  "$ref": "#/$defs/group",
+  "$defs": {
+    "udsExtensions": {
+      "type": "object",
+      "properties": {
+        "com.asu.uds": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "enum": ["stable", "experimental", "deprecated"],
+              "description": "Lifecycle status. Inheritable from ancestor groups."
+            },
+            "figmaVar": {
+              "type": "string",
+              "pattern": "^[^/]+/.+$",
+              "description": "Round-trip link to the Figma variable as \"Collection/Group/Name\", matching tokens/figma/figma-variables.json."
+            },
+            "deprecatedAliases": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Legacy SCSS/JS names this token replaces, for migration tooling."
+            },
+            "usage": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Positive guidance: where this token should be used."
+            },
+            "avoid": {
+              "type": "string",
+              "description": "Negative guidance: where this token must not be used."
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "token": {
+      "type": "object",
+      "required": ["$value", "$type"],
+      "properties": {
+        "$value": { "type": "string" },
+        "$type": {
+          "enum": [
+            "color",
+            "dimension",
+            "number",
+            "fontFamily",
+            "fontWeight",
+            "duration",
+            "cubicBezier",
+            "shadow"
+          ]
+        },
+        "$description": { "type": "string", "minLength": 1 },
+        "$extensions": { "$ref": "#/$defs/udsExtensions" }
+      },
+      "additionalProperties": false
+    },
+    "group": {
+      "type": "object",
+      "properties": {
+        "$description": { "type": "string" },
+        "$extensions": { "$ref": "#/$defs/udsExtensions" }
+      },
+      "patternProperties": {
+        "^[^$].*$": {
+          "anyOf": [{ "$ref": "#/$defs/token" }, { "$ref": "#/$defs/group" }]
+        }
+      }
+    }
+  }
+}
