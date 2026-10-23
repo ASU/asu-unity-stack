@@ -20,7 +20,7 @@ const DEFAULT_GA_EVENT = {
 };
 
 const UniversalNavbar = () => {
-  const { breakpoint, isUnbranded } = useAppContext();
+  const { breakpoint, isUnbranded, setMobileMenuOpen } = useAppContext();
   const isMobile = useIsMobile(breakpoint);
 
   function getURL() {
@@ -95,9 +95,10 @@ const UniversalNavbar = () => {
                   key={link.href}
                   className={link.className}
                   href={link.href}
-                  onClick={() =>
-                    trackGAEvent({ ...DEFAULT_GA_EVENT, text: link.text })
-                  }
+                  onClick={() => {
+                    trackGAEvent({ ...DEFAULT_GA_EVENT, text: link.text });
+                    setMobileMenuOpen(false);
+                  }}
                 >
                   {link.text}
                 </a>
