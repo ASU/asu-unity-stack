@@ -4,6 +4,7 @@ import { expect, userEvent, waitFor } from "storybook/test";
 import {
   AUDIENCES,
   contrastRatio,
+  emulateTouchInput,
   forceHover,
   pressedPointer,
   realKeyboard,
@@ -633,12 +634,86 @@ export const PlaceholderLinks = {
   },
 };
 
+const CTA_ID = "hp-reimagine-heading-learn-more";
+const GROWN = "matrix(1.05, 0, 0, 1.05, 0, 0)";
+
+// QA: "Learn more should grow on hover; it currently changes color". The theme scales `.btn` only
+// from 992px and in 0.03s (a pop that reads as a colour change); the button grows at every width.
+export const LearnMoreGrows = {
+  name: "Learn more grows",
+  globals: viewport(393),
+  render: () => <Page headingId={CTA_ID} />,
+  play: async ({ canvasElement }) => {
+    const p = await expectComplete(canvasElement, CTA_ID);
+    const motion = [];
+    walkRules((rule, conditions) => {
+      if (rule.selectorText.includes(".hp-reimagine__cta")) {
+        motion.push({ rule, conditions });
+      }
+    });
+    const grows = motion.filter(
+      ({ rule }) => rule.style.transform === "scale(1.05)"
+    );
+    await expect(grows.length).toBeGreaterThan(0);
+    // the growth is gated by no-preference; a reduce rule cancels the theme's own ungated scale
+    for (const { conditions } of grows) {
+      await expect(
+        conditions.some(c =>
+          c.includes("prefers-reduced-motion: no-preference")
+        )
+      ).toBe(true);
+    }
+    const reduced = motion.filter(({ conditions }) =>
+      conditions.some(c => c.includes("prefers-reduced-motion: reduce"))
+    );
+    await expect(
+      reduced.some(({ rule }) => rule.style.transform === "none")
+    ).toBe(true);
+    if (!realPointer.available) return;
+
+    for (const width of [393, 768, 991, 992, 1280, 1440]) {
+      await resizeViewport(width);
+      await expect(window.innerWidth).toBe(width);
+      await waitFor(() =>
+        expect(getComputedStyle(p.cta).transform).toBe("none")
+      );
+      const rest = getComputedStyle(p.cta);
+      const restColor = rest.color;
+      await realPointer.hover(p.cta);
+      await waitFor(() =>
+        expect(getComputedStyle(p.cta).transform).toBe(GROWN)
+      );
+      const hovered = getComputedStyle(p.cta);
+      // still the colour change too, and a smooth (not 0.03s) growth
+      await expect(hovered.backgroundColor).toBe("rgb(140, 29, 64)");
+      await expect(hovered.color).not.toBe(restColor);
+      await expect(hovered.transitionProperty).toContain("transform");
+      await expect(hovered.transitionDuration).toContain("0.25s");
+      await realPointer.unhover(p.cta);
+      await waitFor(() =>
+        expect(getComputedStyle(p.cta).transform).toBe("none")
+      );
+    }
+
+    // keyboard focus grows it as well
+    await resizeViewport(393);
+    await realKeyboard.press("{Escape}");
+    await userEvent.tab();
+    await expect(document.activeElement).toBe(p.cta);
+    await expect(p.cta.matches(":focus-visible")).toBe(true);
+    await waitFor(() => expect(getComputedStyle(p.cta).transform).toBe(GROWN));
+    await userEvent.tab();
+    await waitFor(() => expect(getComputedStyle(p.cta).transform).toBe("none"));
+  },
+};
+
 const BREAKPOINT_ID = "hp-reimagine-heading-breakpoint";
 
-// QA: "a flash of buttons at an odd breakpoint on tablet". Entering the phone layout the chips must
-// appear instantly: no transition may be running right after the viewport changes. (Entering the
-// desktop layout the chip's own hover transition fades it out over 0.2s: the destination style's
-// `transition` applies, and a CSS-only chip cannot tell a breakpoint from a hover end.)
+// QA: "a flash of buttons at an odd breakpoint on tablet". The chip must switch state at the 900/901px
+// breakpoint instantly: no transition may be running right after the viewport changes. Entering the
+// phone layout that holds for every pointer. Entering the desktop layout it holds for touch devices
+// (`hover: none`, where the chip has no hover transition); with a mouse the chip's own 0.2s hover fade
+// runs, because a CSS-only chip cannot tell a breakpoint from the end of a hover.
 export const BreakpointCrossing = {
   name: "Breakpoint crossing",
   globals: viewport(1024),
@@ -647,20 +722,23 @@ export const BreakpointCrossing = {
     const p = await expectComplete(canvasElement, BREAKPOINT_ID);
     if (!realPointer.available) return;
     const chips = p.links.map(chipOf);
+    // a pointer resting on a row would fade that row's bar by design: take hover out of the picture
+    canvasElement.style.pointerEvents = "none";
     // every width is read straight after the resize, before any frame can advance a transition
-    const crossTo = async width => {
+    const crossTo = async (width, { touch }) => {
       await resizeViewport(width);
       await expect(window.innerWidth).toBe(width);
-      if (width <= 900) {
+      const phone = width <= 900;
+      if (phone || touch) {
         for (const chip of chips) {
-          await expect(getComputedStyle(chip).opacity).toBe("1");
+          await expect(getComputedStyle(chip).opacity).toBe(phone ? "1" : "0");
         }
         await expect(p.section.getAnimations({ subtree: true })).toHaveLength(
           0
         );
         return;
       }
-      // desktop: nothing but the chips' own fade may run, and it ends hidden
+      // mouse on desktop: nothing but the chips' own fade may run, and it ends hidden
       const others = p.section
         .getAnimations({ subtree: true })
         .filter(animation => !chips.includes(animation.effect.target));
@@ -673,12 +751,22 @@ export const BreakpointCrossing = {
       }
     };
     // both directions across 900/901, plus the 1023/1024 and 600/601 breakpoints
-    for (const width of [880, 920, 880, 900, 901, 900, 1023, 1024, 1023, 601]) {
-      await crossTo(width);
+    const widths = [
+      880, 920, 880, 900, 901, 900, 1023, 1024, 1023, 601, 600, 601,
+    ];
+    try {
+      for (const touch of [false, true]) {
+        await emulateTouchInput(touch);
+        await expect(window.matchMedia("(hover: none)").matches).toBe(touch);
+        await resizeViewport(1024);
+        for (const width of widths) {
+          await crossTo(width, { touch });
+        }
+      }
+    } finally {
+      await emulateTouchInput(false);
+      canvasElement.style.pointerEvents = "";
     }
-    await crossTo(600);
-    await crossTo(601);
-    await crossTo(900);
   },
 };
 

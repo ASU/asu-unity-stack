@@ -6,6 +6,9 @@ import { defineConfig } from "vitest/config";
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
+// CDP session that keeps the hover/pointer media override alive (detaching resets it).
+let inputSession = null;
+
 export default defineConfig({
   test: {
     projects: [
@@ -28,6 +31,14 @@ export default defineConfig({
               },
               pointerUp: async ({ page }) => {
                 await page.mouse.up();
+              },
+              // Emulates a touch-only device (hover: none, pointer: coarse); false restores the mouse.
+              emulateTouchInput: async ({ page }, touch) => {
+                inputSession ??= await page.context().newCDPSession(page);
+                await inputSession.send("Emulation.setTouchEmulationEnabled", {
+                  enabled: touch,
+                  maxTouchPoints: 1,
+                });
               },
             },
           },

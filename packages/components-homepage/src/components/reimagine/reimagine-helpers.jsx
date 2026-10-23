@@ -34,6 +34,13 @@ export const resizeViewport = async (width, height = 900) => {
   await page.viewport(width, height);
 };
 
+// Emulates a touch-only device (`hover: none`, `pointer: coarse`) until called with false.
+export const emulateTouchInput = async touch => {
+  if (!realPointer.available) return;
+  const { commands } = await import("vitest/browser");
+  await commands.emulateTouchInput(touch);
+};
+
 // TODO: destinations TBD (WWWCMS-242). A bare "#" scrolls the page to the top on click, so each
 // placeholder is a unique fragment that matches no element (the browser then does not scroll).
 export const CTA_PLACEHOLDER_HREF = "#reimagine-learn-more";

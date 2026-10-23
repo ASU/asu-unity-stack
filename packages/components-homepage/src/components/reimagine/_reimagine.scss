@@ -84,6 +84,32 @@ $hp-reimagine-rule: 1px; // TODO: confirm with design - hairline between rows (P
   vertical-align: -0.125em;
 }
 
+// Learn more grows on hover and keyboard focus at every width. The theme scales `.btn` 1.05 only from
+// 992px, in 0.03s (a pop that reads as a colour change) and without a reduced-motion gate.
+// TODO: confirm with design - 1.05 is the theme's own scale; 0.25s is not from the prototype.
+@media (prefers-reduced-motion: no-preference) {
+  .hp-reimagine .hp-reimagine__cta {
+    transition:
+      all 0.03s ease-in-out,
+      transform 0.25s ease-out;
+  }
+
+  .hp-reimagine .hp-reimagine__cta:hover,
+  .hp-reimagine .hp-reimagine__cta:focus-visible {
+    transform: scale(1.05);
+  }
+
+  .hp-reimagine .hp-reimagine__cta:active {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hp-reimagine .hp-reimagine__cta:hover {
+    transform: none;
+  }
+}
+
 // The focus ring is the theme's own (global `a:focus`); nothing here sets a ring.
 .hp-reimagine__link {
   position: relative;
@@ -134,7 +160,7 @@ $hp-reimagine-rule: 1px; // TODO: confirm with design - hairline between rows (P
 }
 
 // The gold bar: on press and keyboard focus at every width (touch has no hover), and on hover on
-// desktop. Transitions live only in the desktop rules, so a phone never animates.
+// desktop.
 .hp-reimagine__link::after {
   content: "";
   position: absolute;
@@ -154,11 +180,6 @@ $hp-reimagine-rule: 1px; // TODO: confirm with design - hairline between rows (P
 @media (min-width: $hp-phone-max + 1) {
   .hp-reimagine__chip {
     opacity: 0;
-    transition: opacity 0.2s ease;
-  }
-
-  .hp-reimagine__link::after {
-    transition: opacity 0.25s ease;
   }
 
   .hp-reimagine__link:hover::after {
@@ -175,14 +196,32 @@ $hp-reimagine-rule: 1px; // TODO: confirm with design - hairline between rows (P
 @media (min-width: $hp-phone-max + 1) and (prefers-reduced-motion: no-preference) {
   .hp-reimagine__chip {
     transform: scale(0.6);
-    transition:
-      opacity 0.2s ease,
-      transform 0.25s cubic-bezier(0.34, 1.4, 0.44, 1);
   }
 
   .hp-reimagine__link:hover .hp-reimagine__chip,
   .hp-reimagine__link:focus-visible .hp-reimagine__chip {
     transform: scale(1);
+  }
+}
+
+// Transitions: only on desktop and only for a hover-capable pointer. The destination style's
+// `transition` also animates a breakpoint change, so phones never have one (entering the phone layout
+// is instant) and touch tablets crossing 900/901px (portrait to landscape) do not flash the chips.
+@media (min-width: $hp-phone-max + 1) and (hover: hover) {
+  .hp-reimagine__chip {
+    transition: opacity 0.2s ease;
+  }
+
+  .hp-reimagine__link::after {
+    transition: opacity 0.25s ease;
+  }
+}
+
+@media (min-width: $hp-phone-max + 1) and (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .hp-reimagine__chip {
+    transition:
+      opacity 0.2s ease,
+      transform 0.25s cubic-bezier(0.34, 1.4, 0.44, 1);
   }
 }
 
