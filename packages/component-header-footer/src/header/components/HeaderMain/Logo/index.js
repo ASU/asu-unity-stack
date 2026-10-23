@@ -23,14 +23,14 @@ const Logo = () => {
           src={unbrandedLogo?.src}
           alt={unbrandedLogo?.alt ?? ""}
           decoding="async"
-          fetchpriority="high"
+          fetchPriority="high"
         />
         <img
           className={CLASS_NAMES.LOGO_HORIZ}
           src={unbrandedLogo?.src}
           alt={unbrandedLogo?.alt ?? ""}
           decoding="async"
-          fetchpriority="high"
+          fetchPriority="high"
         />
       </LogoWrapper>
     );
