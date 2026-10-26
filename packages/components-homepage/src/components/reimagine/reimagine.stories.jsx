@@ -442,26 +442,38 @@ export const FocusVisible = {
       await userEvent.tab();
       await expect(p.section.contains(document.activeElement)).toBe(false);
 
-      // focus by mouse (:focus, not :focus-visible): the theme still shows its ring
+      // brand QA: focus by mouse (:focus, not :focus-visible) shows no ring, on rows and Learn more
       if (realPointer.available) {
-        await realPointer.click(p.links[0]);
-        await expect(document.activeElement).toBe(p.links[0]);
-        await expect(p.links[0].matches(":focus-visible")).toBe(false);
-        await expect(getComputedStyle(p.links[0]).boxShadow).toBe(THEME_RING);
-        await realPointer.unhover(p.links[0]);
-        p.links[0].blur();
-        await realKeyboard.press("{Escape}");
+        for (const target of [p.links[0], p.cta]) {
+          await realPointer.click(target);
+          await expect(document.activeElement).toBe(target);
+          await expect(target.matches(":focus-visible")).toBe(false);
+          await expect(getComputedStyle(target).boxShadow).toBe("none");
+          await realPointer.unhover(target);
+          target.blur();
+          await realKeyboard.press("{Escape}");
+        }
+        // keyboard focus after a click still shows the ring
+        await userEvent.tab();
+        await expect(document.activeElement).toBe(p.cta);
+        await waitFor(() =>
+          expect(getComputedStyle(p.cta).boxShadow).toBe(THEME_RING)
+        );
       }
     } finally {
       document.removeEventListener("click", onClick, true);
     }
 
-    // the ring is the theme's: no box-shadow declaration on any row selector in our own sheets
+    // the ring is the theme's: our sheets only cancel it for non-keyboard focus, never set one
     const rowShadows = [];
     let visitedRule = null;
     walkRules(rule => {
       if (!rule.selectorText.includes(".hp-reimagine__link")) return;
-      if (rule.style.boxShadow) rowShadows.push(rule.selectorText);
+      if (
+        rule.style.boxShadow &&
+        !rule.selectorText.includes(":not(:focus-visible)")
+      )
+        rowShadows.push(rule.selectorText);
       if (rule.selectorText.includes(":visited")) visitedRule = rule;
     });
     await expect(rowShadows).toEqual([]);

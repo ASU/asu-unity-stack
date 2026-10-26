@@ -114,7 +114,13 @@ $hp-reimagine-rule: 1px; // TODO: confirm with design - hairline between rows (P
   }
 }
 
-// The focus ring is the theme's own (global `a:focus`); nothing here sets a ring.
+// The keyboard focus ring is the theme's own (global `a:focus`); nothing here sets a ring. Brand QA: no
+// ring after a mouse click or tap, so it is cancelled for focus that is not :focus-visible.
+.hp-reimagine .hp-reimagine__link:focus:not(:focus-visible),
+.hp-reimagine .hp-reimagine__cta:focus:not(:focus-visible) {
+  box-shadow: none !important;
+}
+
 .hp-reimagine__link {
   position: relative;
   display: flex;
