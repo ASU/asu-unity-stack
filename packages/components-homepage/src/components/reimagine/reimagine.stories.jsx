@@ -100,6 +100,38 @@ const expectComplete = async (canvasElement, headingId) => {
 const chipOf = link => link.querySelector(".hp-reimagine__chip");
 const bar = link => getComputedStyle(link, "::after");
 
+const centerY = element => {
+  const box = element.getBoundingClientRect();
+  return box.top + box.height / 2;
+};
+
+// QA "Column alignment": in the two-column layout the shorter column is centered against the taller
+// one. The height check keeps the test from passing on two columns that are already the same height.
+const expectMiddleAligned = async p => {
+  await expect(
+    getComputedStyle(p.inner).gridTemplateColumns.split(" ")
+  ).toHaveLength(2);
+  await near(centerY(p.content), centerY(p.list), 1);
+  await expect(
+    Math.abs(
+      p.content.getBoundingClientRect().height -
+        p.list.getBoundingClientRect().height
+    )
+  ).toBeGreaterThan(8);
+};
+
+// Stacked layout (<= 900px): the text block sits above the list, one row gap apart, same left edge.
+const expectStacked = async p => {
+  await expect(
+    getComputedStyle(p.inner).gridTemplateColumns.split(" ")
+  ).toHaveLength(1);
+  const content = p.content.getBoundingClientRect();
+  const list = p.list.getBoundingClientRect();
+  await near(list.top - content.bottom, 24, 0.5);
+  await near(list.left, content.left, 0.5);
+  await near(list.width, content.width, 0.5);
+};
+
 const expectRest = async link => {
   await waitFor(() => expect(getComputedStyle(chipOf(link)).opacity).toBe("0"));
   await waitFor(() =>
@@ -284,6 +316,7 @@ export const Default = {
       0.12 * window.innerHeight,
       0.5
     );
+    await expectMiddleAligned(p);
   },
 };
 
@@ -450,20 +483,22 @@ export const Phone393 = {
     await expect(
       getComputedStyle(p.inner).gridTemplateColumns.split(" ")
     ).toHaveLength(1);
-    await near(p.content.getBoundingClientRect().left, 16);
+    await expectStacked(p);
+    // brand QA "Mobile padding": the phone gutter is 24px (it was 16px)
+    await near(p.content.getBoundingClientRect().left, 24);
 
     // no grey band: the list is transparent and sits inside the gutters (rows keep their dividers)
     const list = getComputedStyle(p.list);
     await expect(list.backgroundColor).toBe("rgba(0, 0, 0, 0)");
     await expect(list.paddingBottom).toBe("0px");
     const listBox = p.list.getBoundingClientRect();
-    await near(listBox.left, 16, 0.5);
-    await near(listBox.width, 361, 0.5);
+    await near(listBox.left, 24, 0.5);
+    await near(listBox.width, 345, 0.5);
 
     for (const link of p.links) {
       // the 28px chip is taller than the 24px label: rows are 61px, as on desktop
       await near(link.getBoundingClientRect().height, 61, 0.5);
-      await near(link.getBoundingClientRect().left, 16, 0.5);
+      await near(link.getBoundingClientRect().left, 24, 0.5);
       await expect(getComputedStyle(link).borderBottomWidth).toBe("1px");
       await expectPhoneChip(link);
       await expect(bar(link).opacity).toBe("0");
@@ -539,6 +574,7 @@ export const Tablet768 = {
     await expect(
       getComputedStyle(p.inner).gridTemplateColumns.split(" ")
     ).toHaveLength(1);
+    await expectStacked(p);
     await near(p.content.getBoundingClientRect().left, 48);
     // no grey band at 768 either: transparent, inside the 48px gutters
     await expect(getComputedStyle(p.list).backgroundColor).toBe(
@@ -857,6 +893,141 @@ export const BreakpointCrossing = {
   },
 };
 
+const ALIGN_ID = "hp-reimagine-heading-column-alignment";
+
+// Brand QA "Column alignment": "The 2 columns should be middle aligned." Two columns from 901px (equal
+// tracks up to about 1146px, 544/480 from about 1217px): their vertical centers coincide. At <= 900px
+// the layout is stacked and unchanged.
+export const ColumnAlignment = {
+  name: "Column alignment",
+  globals: viewport(1440),
+  render: () => <Page headingId={ALIGN_ID} />,
+  play: async ({ canvasElement }) => {
+    const p = await expectComplete(canvasElement, ALIGN_ID);
+    await expectMiddleAligned(p);
+    if (!realPointer.available) return;
+    for (const width of [1920, 1440, 1280, 1200, 1100, 1024, 1023, 901]) {
+      await resizeViewport(width);
+      await expect(window.innerWidth).toBe(width);
+      await expectMiddleAligned(p);
+      // widths and row heights are untouched: only the vertical position changes
+      const content = p.content.getBoundingClientRect();
+      const list = p.list.getBoundingClientRect();
+      if (width >= 1280) {
+        await near(content.width, 544);
+        await near(list.width, 480);
+      } else if (width === 1200) {
+        // the list is capped at 480px, the text column is still growing towards 544px
+        await near(list.width, 480);
+        await expect(content.width).toBeGreaterThan(480);
+        await expect(content.width).toBeLessThan(544);
+      } else {
+        await near(content.width, list.width, 1);
+      }
+      for (const link of p.links) {
+        await near(link.getBoundingClientRect().height, 61, 0.5);
+      }
+    }
+    for (const width of [900, 768, 601, 393]) {
+      await resizeViewport(width);
+      await expect(window.innerWidth).toBe(width);
+      await expectStacked(p);
+    }
+    await resizeViewport(1440);
+  },
+};
+
+const GUTTER_ID = "hp-reimagine-heading-gutter";
+// [viewport width, expected horizontal gutter]: 24px up to 600px, the unchanged 48px from 601px.
+const GUTTERS = [
+  [360, 24],
+  [393, 24],
+  [480, 24],
+  [600, 24],
+  [601, 48],
+  [768, 48],
+  [900, 48],
+];
+
+// Brand QA "Mobile padding": "Mobile padding should be at 24px, currently at 16px." The phone gutter
+// (<= 600px) is 24px; 601-900px was already 48px and stays. Nothing overflows at 360px.
+export const PhoneGutter = {
+  name: "Phone gutter",
+  globals: viewport(393),
+  render: () => <Page headingId={GUTTER_ID} />,
+  play: async ({ canvasElement }) => {
+    const p = await expectComplete(canvasElement, GUTTER_ID);
+    const widths = realPointer.available ? GUTTERS : [[393, 24]];
+    try {
+      for (const [width, gutter] of widths) {
+        await resizeViewport(width);
+        await expect(window.innerWidth).toBe(width);
+        const root = document.documentElement;
+        const edge = root.clientWidth;
+        await expect(getComputedStyle(p.inner).paddingLeft).toBe(`${gutter}px`);
+        await expect(getComputedStyle(p.inner).paddingRight).toBe(
+          `${gutter}px`
+        );
+        const content = p.content.getBoundingClientRect();
+        const list = p.list.getBoundingClientRect();
+        await near(content.left, gutter, 0.5);
+        await near(content.right, edge - gutter, 0.5);
+        await near(list.left, gutter, 0.5);
+        await near(list.right, edge - gutter, 0.5);
+
+        // nothing sticks out sideways
+        await expect(root.scrollWidth).toBeLessThanOrEqual(width);
+        for (const element of [p.heading, p.text, p.cta, ...p.links]) {
+          const box = element.getBoundingClientRect();
+          await expect(box.left).toBeGreaterThanOrEqual(gutter - 0.5);
+          await expect(box.right).toBeLessThanOrEqual(edge - gutter + 0.5);
+        }
+        // (not the button: its ::before hit area extends 8px past its box by design)
+        for (const element of [p.heading, p.text, ...p.links]) {
+          await expect(element.scrollWidth).toBeLessThanOrEqual(
+            element.clientWidth + 1
+          );
+        }
+        const nowrap = p.heading.querySelector(".text-nowrap");
+        await expect(nowrap.getBoundingClientRect().right).toBeLessThanOrEqual(
+          content.right + 0.5
+        );
+
+        // heading wraps on 32px lines, mark and Learn more stay as they are
+        const lines = p.heading.getBoundingClientRect().height / 32;
+        await near(lines, Math.round(lines), 0.02);
+        await expect(Math.round(lines)).toBeGreaterThanOrEqual(3);
+        await expect(Math.round(lines)).toBeLessThanOrEqual(7);
+        const host = p.heading.querySelector(".scrib-host");
+        const mark = host.querySelector("img.scrib--reimg");
+        const hostBox = host.getBoundingClientRect();
+        const markBox = mark.getBoundingClientRect();
+        await near(markBox.width, hostBox.width, 1);
+        await near(markBox.left, hostBox.left - 0.03 * hostBox.width, 1);
+        await near(markBox.bottom - hostBox.bottom, 3.2, 1);
+        const cta = p.cta.getBoundingClientRect();
+        await near(cta.height, 36, 2);
+        await expect(cta.width).toBeLessThan(content.width);
+
+        for (const link of p.links) {
+          const row = link.getBoundingClientRect();
+          const chip = chipOf(link).getBoundingClientRect();
+          const label = link
+            .querySelector(".hp-reimagine__label")
+            .getBoundingClientRect();
+          await near(row.height, 61, 0.5);
+          await near(chip.width, 28, 0.5);
+          await near(chip.height, 28, 0.5);
+          await expect(label.right).toBeLessThanOrEqual(chip.left);
+          await expect(chip.right).toBeLessThanOrEqual(row.right + 0.5);
+        }
+      }
+    } finally {
+      await resizeViewport(393);
+    }
+  },
+};
+
 const columnsStory = (label, width, expectedLayout) => {
   const headingId = `hp-reimagine-heading-${label.toLowerCase().replace(" ", "-")}`;
   return {
@@ -869,6 +1040,7 @@ const columnsStory = (label, width, expectedLayout) => {
       const content = p.content.getBoundingClientRect();
       const list = p.list.getBoundingClientRect();
       await expectedLayout({ p, content, list });
+      await expectMiddleAligned(p);
       for (const link of p.links) {
         await expect(getComputedStyle(chipOf(link)).opacity).toBe("0");
       }

@@ -3,7 +3,7 @@
 // 1292, 1518-1525, 1962-1964. Every $variable used in a custom property is interpolated (#{...}):
 // Sass copies custom-property values verbatim, so a bare $variable would be emitted literally.
 
-$hp-reimagine-compact-max: 600px; // TODO: confirm with design - prototype gutter step (P:581, 712); UDS sm is 576px.
+$hp-reimagine-compact-max: 600px; // TODO: confirm with design - prototype gutter step (P:581, 712); UDS sm is 576px. Brand QA raised the phone gutter from the prototype's 16px to 24px.
 $hp-reimagine-rule: 1px; // TODO: confirm with design - hairline between rows (P:487).
 
 .hp-reimagine {
@@ -13,7 +13,7 @@ $hp-reimagine-rule: 1px; // TODO: confirm with design - hairline between rows (P
   padding-block: 10vh 12vh;
 
   @media (max-width: $hp-reimagine-compact-max) {
-    --hp-reimagine-gutter: #{$uds-size-spacing-2};
+    --hp-reimagine-gutter: #{$uds-size-spacing-3};
   }
 }
 
@@ -30,7 +30,7 @@ $hp-reimagine-rule: 1px; // TODO: confirm with design - hairline between rows (P
     grid-template-columns: minmax(0, 544px) minmax(0, 480px);
     justify-content: center;
     column-gap: clamp(64px, 8vw, 160px);
-    align-items: start;
+    align-items: center;
   }
 }
 
