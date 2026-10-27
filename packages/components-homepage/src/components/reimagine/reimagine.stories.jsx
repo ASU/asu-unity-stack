@@ -369,18 +369,19 @@ export const Hover = {
       await realPointer.unhover(row);
       await expectRest(row);
 
-      // Learn more: the theme's own hover (maroon fill, white text, scale 1.05 at >= 992px)
+      // Learn more: stays an outline on hover (no fill) and grows to 1.05
       await realPointer.hover(p.cta);
-      await waitFor(() =>
-        expect(getComputedStyle(p.cta).backgroundColor).toBe("rgb(140, 29, 64)")
-      );
-      await waitFor(() =>
-        expect(getComputedStyle(p.cta).color).toBe("rgb(255, 255, 255)")
-      );
       await waitFor(() =>
         expect(getComputedStyle(p.cta).transform).toBe(
           "matrix(1.05, 0, 0, 1.05, 0, 0)"
         )
+      );
+      await expect(getComputedStyle(p.cta).backgroundColor).toBe(
+        "rgba(0, 0, 0, 0)"
+      );
+      await expect(getComputedStyle(p.cta).color).toBe("rgb(140, 29, 64)");
+      await expect(getComputedStyle(p.cta).borderTopColor).toBe(
+        "rgb(140, 29, 64)"
       );
       await realPointer.unhover(p.cta);
     }
@@ -686,8 +687,8 @@ export const PlaceholderLinks = {
 const CTA_ID = "hp-reimagine-heading-learn-more";
 const GROWN = "matrix(1.05, 0, 0, 1.05, 0, 0)";
 
-// QA: "Learn more should grow on hover; it currently changes color". The theme scales `.btn` only
-// from 992px and in 0.03s (a pop that reads as a colour change); the button grows at every width.
+// QA: "Learn more should grow on hover; it currently changes color" and "remove the fill on hover".
+// The theme scales `.btn` only from 992px and in 0.03s; the button grows at every width, unfilled.
 export const LearnMoreGrows = {
   name: "Learn more grows",
   globals: viewport(393),
@@ -733,9 +734,10 @@ export const LearnMoreGrows = {
         expect(getComputedStyle(p.cta).transform).toBe(GROWN)
       );
       const hovered = getComputedStyle(p.cta);
-      // still the colour change too, and a smooth (not 0.03s) growth
-      await expect(hovered.backgroundColor).toBe("rgb(140, 29, 64)");
-      await expect(hovered.color).not.toBe(restColor);
+      // brand QA: no fill and no colour change on hover, and a smooth (not 0.03s) growth
+      await expect(hovered.backgroundColor).toBe("rgba(0, 0, 0, 0)");
+      await expect(hovered.color).toBe(restColor);
+      await expect(hovered.borderTopColor).toBe("rgb(140, 29, 64)");
       await expect(hovered.transitionProperty).toContain("transform");
       await expect(hovered.transitionDuration).toContain("0.25s");
       await realPointer.unhover(p.cta);

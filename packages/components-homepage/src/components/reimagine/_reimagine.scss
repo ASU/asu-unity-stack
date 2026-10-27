@@ -84,6 +84,20 @@ $hp-reimagine-rule: 1px; // TODO: confirm with design - hairline between rows (P
   vertical-align: -0.125em;
 }
 
+// Brand QA: Learn more stays an outline on hover and press (no maroon fill, no white text); only the
+// growth below shows the state. The theme fills `.btn-outline-maroon` on :hover, :active and
+// :focus-visible:hover/:active, and turns the border transparent on :focus-visible.
+.hp-reimagine .hp-reimagine__cta.btn {
+  &:hover,
+  &:active,
+  &:focus-visible:hover,
+  &:focus-visible:active {
+    background-color: transparent;
+    border-color: $uds-color-brand-maroon;
+    color: $uds-color-brand-maroon;
+  }
+}
+
 // Learn more grows on hover and keyboard focus at every width. The theme scales `.btn` 1.05 only from
 // 992px, in 0.03s (a pop that reads as a colour change) and without a reduced-motion gate.
 // TODO: confirm with design - 1.05 is the theme's own scale; 0.25s is not from the prototype.
