@@ -48,11 +48,11 @@ else
   echo "  WARN: no .interactivity block — Webspark may reinvent behavior (add it for interactive components; schema 1.1)"
 fi
 
-# webspark_target (schema >= 1.2): every component lands as an SDC in a submodule of asu_edu_homepage
+# webspark_target (schema >= 1.2): every homepage component lands as an SDC in asu_edu_homepage/components/<slug>
 if [ -n "$(jq -r '.webspark_target // empty' "$HANDOFF" 2>/dev/null)" ]; then
   echo "  ok: webspark_target present ($(jq -r '.webspark_target.sdc_id // "no sdc_id"' "$HANDOFF"))"
 else
-  echo "  WARN: no .webspark_target block — Stage B derives the SDC submodule from component.slug (add it; schema 1.2)"
+  echo "  WARN: no .webspark_target block — Stage B derives the SDC id (asu_edu_homepage:<slug>) from component.slug (add it; schema 1.2)"
 fi
 
 echo

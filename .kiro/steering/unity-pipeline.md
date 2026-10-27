@@ -27,7 +27,8 @@ orchestrator → architect → coder → reviewer, model-diverse, one approval g
    `run-story-tests` (interaction+a11y), HTML-parity, and `VISUAL_PASS`; then
    write `../handoff/<anchor>/{handoff.json,markup.html}` (with the
    `webspark_target` block: Stage B builds every component as a Drupal Single
-   Directory Component in a submodule `asu_edu_<slug>` of the one homepage module `asu_edu_homepage`, never in the `asu_edu`
+   Directory Component in the one homepage module `asu_edu_homepage`
+   (`components/<slug>/`, no submodules), never in the `asu_edu`
    theme or the shared `asu_edu_components` module) and validate it with
    `.kiro/scripts/validate-handoff.sh`.
 6. **RETAIN** — the ephemeral `.pipeline/` reports are not committed. Preserve
