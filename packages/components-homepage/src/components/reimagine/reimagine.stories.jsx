@@ -1016,7 +1016,7 @@ export const PhoneGutter = {
         const mark = host.querySelector("img.scrib--reimg");
         const hostBox = host.getBoundingClientRect();
         const markBox = mark.getBoundingClientRect();
-        await near(markBox.width, hostBox.width, 1);
+        await near(markBox.width, 1.06 * hostBox.width, 1);
         await near(markBox.left, hostBox.left - 0.03 * hostBox.width, 1);
         await near(markBox.bottom - hostBox.bottom, 3.2, 1);
         const cta = p.cta.getBoundingClientRect();
