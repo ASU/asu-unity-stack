@@ -3,8 +3,9 @@
 Jira: WWWCMS-233 · Figma node: `13467:58610`
 
 > **PLACEHOLDER NOTICE** — All PNGs in this folder are solid-color placeholders
-> generated for Storybook and visual-regression testing. Real brand artwork MUST
-> replace them before merging to `dev`. See `TODO.md` for the full mapping.
+> with a visible `PLACEHOLDER WWWCMS-233` watermark overlaid on them. Real brand
+> artwork MUST replace them before merging to `dev`. See `TODO.md` for the full
+> mapping.
 
 ---
 

@@ -37,10 +37,11 @@ Both files in a pair **must share identical intrinsic dimensions**.
 - [ ] Confirm all 7 hover PNGs are colour variants of the same artwork
       (not a different composition).
 - [ ] Confirm PNGs use alpha channel for dark-hero bleed-through.
-- [ ] Confirm the `PLACEHOLDER — WWWCMS-233` watermark text is absent from
-      the final artwork (these placeholders are solid-color; note the comment
-      in the impl report that watermark text was not embeddable without
-      `canvas` / `sharp`).
+- [ ] Confirm the `PLACEHOLDER WWWCMS-233` watermark text is absent from
+      the final artwork. The current cycle-1 placeholders carry a visible
+      bitmap-rendered watermark in the center of each PNG (rendered via
+      a pure-Node pngjs + 5×7 bitmap font script, since `node-canvas` and
+      `sharp` are not available in this repo).
 - [ ] Update `imageAlt` text in `DEFAULT_CARDS` (in `rankings-cards-helpers.jsx`)
       to match the real ranking statement for each card.
 - [ ] Confirm `attributionHref` and `attributionLabel` values for each card
@@ -58,9 +59,9 @@ distinguish default from hover state in Storybook:
 | Default | `rgb(0, 43, 92)` | `#002b5c` (ASU dark navy) |
 | Hover | `rgb(248, 240, 242)` | `#f8f0f2` (near-white, maroon tint) |
 
-Note: the `PLACEHOLDER — WWWCMS-233` watermark specified in §9.2 of the design
-doc could not be embedded because `node-canvas` and `sharp` are not installed
-in this repo and no alternative bitmap-text approach was feasible without adding
-a new dependency. The solid-color pairs are visually distinct and the
-`TODO.md` + commit message identify them as placeholders. See impl-report.md
-for the full rationale.
+Note: the `PLACEHOLDER WWWCMS-233` watermark specified in §9.2 of the design
+doc is now rendered as a visible bitmap-font overlay on every PNG, using a
+pure-Node pngjs + 5×7 bitmap font script run during fix-loop cycle 1. The
+script is not committed; only its PNG output is. The solid-color pairs stay
+visually distinct (dark navy default vs near-white hover) under the watermark.
+See `impl-report.md` for the rationale.
