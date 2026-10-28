@@ -316,6 +316,7 @@ export const rankingsCardsHtml = ({
         // TODO: confirm with design — all images lazy-loaded (design-doc §11.2); revisit if homepage places rankings above the fold.
         ` loading="lazy" decoding="async">` +
         // Hover image: decorative colour variant — alt="" + aria-hidden so SR does NOT double-announce.
+        // TODO: confirm with design — hover filename suffix convention (locked placeholder: double-dash BEM `--hover`, see src/img/rankings/README.md §11.2 row 13).
         `<img class="hp-rankings__img hp-rankings__img--hover"` +
         ` src="${escapeHtml(resolvedHover)}"` +
         ` alt="" aria-hidden="true"` +
