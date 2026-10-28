@@ -322,7 +322,7 @@ $hp-hero-header-break: 1080px; // The prototype switches to its compact header a
 
 @media (max-width: $hp-hero-compact-max) {
   .hp-hero {
-    --hp-hero-gutter: #{$uds-size-spacing-3};
+    --hp-hero-gutter: #{$uds-size-spacing-2}; // 16px, as in Figma (375) and the prototype
   }
 
   .hp-hero__heading {

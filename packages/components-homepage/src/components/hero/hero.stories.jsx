@@ -454,7 +454,7 @@ export const Phone393 = {
     await expectContract(p);
     await expectNoVideo(p, {
       width: 393,
-      gutter: 24,
+      gutter: 16,
       h1: "36px",
       lineHeight: "40px",
     });
@@ -467,10 +467,10 @@ export const Phone393 = {
     await resizeViewport(320, 568);
     await expect(window.innerWidth).toBe(320);
     await expect(document.documentElement.scrollWidth).toBeLessThanOrEqual(320);
-    await expect(box(p.heading).right).toBeLessThanOrEqual(320 - 24 + 1);
+    await expect(box(p.heading).right).toBeLessThanOrEqual(320 - 16 + 1);
     await expect(
       box(p.heading.querySelector(".text-nowrap")).right
-    ).toBeLessThanOrEqual(320 - 24 + 1);
+    ).toBeLessThanOrEqual(320 - 16 + 1);
   },
 };
 
