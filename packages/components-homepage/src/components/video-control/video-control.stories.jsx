@@ -659,6 +659,83 @@ export const CustomPlayBudget = {
   },
 };
 
+// The first autoplay attempt fails (here: the browser rejects play(), as it does for a video that has no
+// source yet, e.g. the hero's before its source is attached); `loadeddata` retries it under the same
+// conditions. The hero's own "Late attach autoplays" story covers the real attach.
+export const SourceAttachedLater = {
+  render: () => (
+    <Harness
+      html={
+        frameHtml({ id: "v-late", auto: true }) +
+        frameHtml({ id: "v-late-paused", auto: true }) +
+        frameHtml({ id: "v-late-away", auto: true }) +
+        frameHtml({ id: "v-late-reduced", auto: true }) +
+        frameHtml({ id: "v-late-spent", auto: true, plays: 1 })
+      }
+    />
+  ),
+  play: async ({ canvasElement }) => {
+    const late = await find(canvasElement, "v-late");
+    late.stub.rejectNextPlay();
+    environment.emit(late.video, 0.8);
+    await expectPaused(late.button);
+    await expect(late.stub.calls.play).toBe(1);
+    late.video.dispatchEvent(new Event("loadeddata"));
+    await expectPlaying(late.button);
+    await expect(late.stub.calls.play).toBe(2);
+
+    // a loadeddata on a video that is already playing starts nothing more
+    late.video.dispatchEvent(new Event("loadeddata"));
+    await expect(late.stub.calls.play).toBe(2);
+
+    // the visitor paused it: loadeddata does not override that
+    const kept = await find(canvasElement, "v-late-paused");
+    environment.emit(kept.video, 0.8);
+    await expectPlaying(kept.button);
+    await userEvent.click(kept.button);
+    await expectPaused(kept.button);
+    kept.video.dispatchEvent(new Event("loadeddata"));
+    await expectPaused(kept.button);
+    await expect(kept.stub.calls.play).toBe(1);
+
+    // out of view: nothing starts
+    const away = await find(canvasElement, "v-late-away");
+    environment.emit(away.video, 0);
+    away.video.dispatchEvent(new Event("loadeddata"));
+    await expectPaused(away.button);
+    await expect(away.stub.calls.play).toBe(0);
+
+    // under 45% in view: not enough
+    environment.emit(away.video, 0.3);
+    away.video.dispatchEvent(new Event("loadeddata"));
+    await expectPaused(away.button);
+    await expect(away.stub.calls.play).toBe(0);
+
+    // reduced motion: nothing autoplays
+    const reduced = await find(canvasElement, "v-late-reduced");
+    environment.emit(reduced.video, 1);
+    await expectPlaying(reduced.button);
+    await userEvent.click(reduced.button);
+    await expectPaused(reduced.button);
+    environment.setReducedMotion(true);
+    const callsBefore = reduced.stub.calls.play;
+    reduced.video.dispatchEvent(new Event("loadeddata"));
+    await expectPaused(reduced.button);
+    await expect(reduced.stub.calls.play).toBe(callsBefore);
+    environment.setReducedMotion(false);
+
+    // a spent video stays on its first frame
+    const spent = await find(canvasElement, "v-late-spent");
+    environment.emit(spent.video, 1);
+    await expectPlaying(spent.button);
+    spent.stub.finish();
+    await expectPaused(spent.button);
+    spent.video.dispatchEvent(new Event("loadeddata"));
+    await expectPaused(spent.button);
+    await expect(spent.stub.calls.play).toBe(1);
+  },
+};
+
 let warnings = [];
 
 export const NoPoster = {

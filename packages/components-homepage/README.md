@@ -13,7 +13,7 @@ Vanilla HTML/SCSS/JS foundations for the ASU homepage (Jira WWWCMS-227 / WWWCMS-
 | `src/components/<piece>/` | One folder per foundation piece, with its SCSS partial, JS and stories side by side (see below) |
 | `src/scss/components-homepage.scss` | SCSS entry; imports the UDS variables, `_variables.scss` and each piece's partial |
 | `src/scss/_variables.scss` | Shared homepage variables and custom properties |
-| `src/js/index.js` | JS entry; re-exports the public API (`initVideoControls`, `initReimagine`) |
+| `src/js/index.js` | JS entry; re-exports the public API (`initVideoControls`, `initHero`, `initReimagine`) |
 | `src/img/` | Art copied unchanged to `dist/img/` |
 | `tests/` | Playwright accessibility spec |
 
@@ -24,6 +24,7 @@ Pieces under `src/components/`:
 | `underline-mark/` | `_underline-mark.scss`, `underline-mark.stories.jsx` (`Foundations/Underline mark`) |
 | `backgrounds/` | `_backgrounds.scss`, `backgrounds.stories.jsx` (`Foundations/Backgrounds`) |
 | `video-control/` | `_video-control.scss`, `video-control.js`, `video-control.stories.jsx`, `video-control-helpers.jsx` (`Foundations/Video control`) |
+| `hero/` | `_hero.scss`, `hero.js` (`initHero`), `hero.stories.jsx`, `hero-helpers.jsx` (`Homepage/Hero`): the video banner with the page's only `h1`, a circled-arrow link, one paragraph and the foundations' pause control. The markup has no video `src`: `initHero` attaches `data-src` above 900px only (phones and tablets load no video and show the poster over Gray 1, with a gold "Find out more" button) and keeps the control `hidden` until a source is attached. `href`, poster and `data-src` are placeholders (`#hero-find-out-more`, an inline SVG poster, an example URL); the stories fake `src`, `play()` and `IntersectionObserver`, so no media is committed or requested. The page sets `--hp-hero-header-height` (Storybook defaults: 147px from 1080px up, 69px below). Contrast over the real clip is measured by brand before acceptance (design doc section 8) |
 | `reimagine/` | `_reimagine.scss`, `reimagine.stories.jsx`, `reimagine-helpers.jsx` (`Homepage/Reimagine`): the "reimagining education for everyone" section, static HTML + CSS. Opt-in scroll entrance (removable): `reimagine.js` (`initReimagine`), the ENTRANCE block in `_reimagine.scss`, `reimagine-entrance.stories.jsx` (`Homepage/Reimagine entrance`). Link `href`s are placeholders until the real URLs exist (`#audience-<slug>` per row, `#reimagine-learn-more` for Learn more): each is a fragment that matches no element, because a bare `#` scrolls the page to the top on click |
 
 **Reimagine: known limitations** (accepted; CSS-only, no JS in `reimagine.js`, which is the removable entrance module):
