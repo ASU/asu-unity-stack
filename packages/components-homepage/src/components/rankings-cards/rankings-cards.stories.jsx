@@ -1034,6 +1034,90 @@ export const NoGaInjection = {
   },
 };
 
+// `querySelector` list that catches every known data-ga* attribute variant.
+// Centralised so the three "no GA" lock stories query the exact same shape.
+const GA_SELECTOR =
+  "[data-ga], [data-ga-name], [data-ga-event], [data-ga-action], " +
+  "[data-ga-section], [data-ga-text], [data-ga-source], [data-ga-type]";
+
+export const NoGaAfterJsInit = {
+  name: "No data-ga* attributes (after initRankingsCards runs)",
+  globals: viewport(1280),
+  // Locks the Q5 decision across the JS lifecycle: even after
+  // `initRankingsCards` wires listeners/observers and applies the no-overflow
+  // class on short tracks, no element in the section carries any data-ga*
+  // attribute. Catches a future regression where the init code might start
+  // emitting GA attributes dynamically.
+  render: () => <LivePage html={OVERFLOW_HTML} />,
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    // Wait for init to settle (prev disabled triplet reasserted).
+    await waitFor(() =>
+      expect(p.prevBtn.classList.contains("is-disabled")).toBe(true)
+    );
+    await expect(p.section.querySelector(GA_SELECTOR)).toBeNull();
+  },
+};
+
+export const NoGaAfterNavInteraction = {
+  name: "No data-ga* attributes (after Next click)",
+  globals: viewport(1280),
+  // Locks the Q5 decision across a real user interaction: clicking Next
+  // (which triggers scrollBy, scroll + scrollend events, and sync of the
+  // disabled triplet on both buttons) must not introduce any data-ga*
+  // attribute on any element in the section.
+  render: () => <LivePage html={OVERFLOW_HTML} />,
+  play: async ({ canvasElement }) => {
+    await expect(realPointer.available).toBe(true);
+    const p = parts(canvasElement);
+    await waitFor(() =>
+      expect(p.prevBtn.classList.contains("is-disabled")).toBe(true)
+    );
+    await realPointer.click(p.nextBtn);
+    // Let scrollend settle; prev becomes enabled.
+    await waitFor(() =>
+      expect(p.prevBtn.classList.contains("is-disabled")).toBe(false)
+    );
+    await expect(p.section.querySelector(GA_SELECTOR)).toBeNull();
+    // Also assert the toggle targets (prev + next + see-all) have no GA.
+    await expect(p.prevBtn.matches(GA_SELECTOR)).toBe(false);
+    await expect(p.nextBtn.matches(GA_SELECTOR)).toBe(false);
+    await expect(p.seeAll.matches(GA_SELECTOR)).toBe(false);
+  },
+};
+
+const MultiSectionPage = () => (
+  <div style={{ background: "#002b5c", padding: "2rem" }}>
+    <div
+      dangerouslySetInnerHTML={{
+        __html: rankingsCardsHtml({ headingId: "hp-rankings-copy-a" }),
+      }}
+    />
+    <div
+      dangerouslySetInnerHTML={{
+        __html: rankingsCardsHtml({ headingId: "hp-rankings-copy-b" }),
+      }}
+    />
+  </div>
+);
+
+export const NoGaInEveryRenderedCopy = {
+  name: "No data-ga* attributes (multiple section copies)",
+  globals: viewport(1280),
+  // Locks the Q5 decision across multiple renders of the component on a
+  // single page: every rendered copy must satisfy the no-GA contract. This
+  // guards against a future per-instance template branch that forgets the
+  // decision.
+  render: () => <MultiSectionPage />,
+  play: async ({ canvasElement }) => {
+    const sections = canvasElement.querySelectorAll("section.hp-rankings");
+    await expect(sections).toHaveLength(2);
+    for (const section of sections) {
+      await expect(section.querySelector(GA_SELECTOR)).toBeNull();
+    }
+  },
+};
+
 // ─── Injection regression stories (review-report item 1) ───────────────────
 
 export const InjectionImageAlt = {

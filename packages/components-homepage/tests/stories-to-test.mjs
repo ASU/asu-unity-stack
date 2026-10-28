@@ -84,6 +84,9 @@ export const storiesToTest = [
   "homepage-rankings-cards--no-ga-attributes",
   // fix-loop cycle 1 — injection + robustness regression stories
   "homepage-rankings-cards--no-ga-injection",
+  "homepage-rankings-cards--no-ga-after-js-init",
+  "homepage-rankings-cards--no-ga-after-nav-interaction",
+  "homepage-rankings-cards--no-ga-in-every-rendered-copy",
   "homepage-rankings-cards--injection-image-alt",
   "homepage-rankings-cards--injection-attribution-href",
   "homepage-rankings-cards--injection-attribution-label",
