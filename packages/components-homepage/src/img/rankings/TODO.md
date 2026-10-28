@@ -33,7 +33,7 @@ Both files in a pair **must share identical intrinsic dimensions**.
 - [ ] Confirm intrinsic dimensions with Figma Dev Mode (currently locked at
       `400 × 500`, aspect ratio `4 / 5`). <!-- TODO: confirm with design -->
 - [ ] Confirm `--hover` double-dash suffix matches asset-naming expectations.
-      <!-- TODO: confirm --hover suffix with design -->
+      <!-- TODO: confirm with design — hover filename suffix convention. -->
 - [ ] Confirm all 7 hover PNGs are colour variants of the same artwork
       (not a different composition).
 - [ ] Confirm PNGs use alpha channel for dark-hero bleed-through.

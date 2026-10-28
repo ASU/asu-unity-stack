@@ -25,6 +25,8 @@
 // ── Inner wrapper ─────────────────────────────────────────────────────────────
 
 .hp-rankings__inner {
+  display: grid; // design-doc §4.3 — column with two rows.
+  grid-template-rows: auto auto; // row 1: track · row 2: controls.
   max-width: 1440px; // TODO: confirm with design — matches reimagine inner (prototype line 47).
   margin-inline: auto;
   padding-inline: var(--hp-rankings-gutter);
@@ -40,7 +42,6 @@
   scroll-padding-inline: 0;
   // Hide the native scrollbar (visual noise); keyboard model does not rely on it.
   scrollbar-width: none;
-  margin-block-end: $uds-size-spacing-3; // space between track and controls row.
 
   &::-webkit-scrollbar {
     display: none;
@@ -62,7 +63,9 @@
   flex-direction: column;
   background: transparent; // Q4: transparent by default, dark hero bleeds through.
   color: $uds-color-base-white;
-  border: 1px solid $uds-color-base-white; // Q4: white outline. TODO: confirm border weight/radius.
+  // Q4: white outline. TODO: confirm with design — card border color (may be a near-white Figma variable).
+  // TODO: confirm with design — card border weight (locked placeholder 1px).
+  border: 1px solid $uds-color-base-white;
   border-radius: 0; // TODO: confirm with design — screenshots look square-cornered.
 }
 
@@ -94,7 +97,7 @@
   opacity: 0;
 
   @media (prefers-reduced-motion: no-preference) {
-    transition: opacity 150ms ease; // TODO: confirm duration with design.
+    transition: opacity 150ms ease; // TODO: confirm with design — hover opacity transition duration (locked placeholder 150ms).
   }
 }
 
@@ -171,6 +174,7 @@
   align-items: center;
   justify-content: space-between;
   gap: $uds-size-spacing-3;
+  margin-top: $uds-size-spacing-3; // design-doc §4.3 — row-2 spacing.
 }
 
 .hp-rankings__nav {
@@ -187,7 +191,9 @@
 // ── Nav buttons ───────────────────────────────────────────────────────────────
 
 .hp-rankings__nav-btn {
-  width: 3rem; // $uds-size-icon-xl placeholder. TODO: confirm nav button diameter with design.
+  // $uds-size-icon-xl placeholder.
+  // TODO: confirm with design — nav button diameter (locked placeholder 3rem).
+  width: 3rem;
   height: 3rem;
   border-radius: 50%;
   background: $uds-color-base-white;

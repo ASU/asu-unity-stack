@@ -19,7 +19,11 @@ Jira: WWWCMS-233 · Figma node: `13467:58610`
   ranking topic (e.g. `sustainable-practices`, `innovation`, `global-impact`).
 - The `--hover` suffix uses double-dash to match the BEM modifier pattern used
   elsewhere in this design system and to avoid collisions with slug separators.
-  <!-- TODO: confirm --hover suffix with design -->
+  <!-- TODO: confirm with design — hover filename suffix convention (locked placeholder: double-dash BEM `--hover`). -->
+- All default-and-hover PNGs ship with `loading="lazy"` + `decoding="async"`
+  because the hero sits above the rankings band on the homepage, so the
+  component is never above the fold.
+  <!-- TODO: confirm with design — all-lazy loading decision (design-doc §11.2); revisit if the homepage places rankings above the fold on any viewport. -->
 
 ---
 
