@@ -10,6 +10,19 @@ export {
   resizeViewport,
 } from "../reimagine/reimagine-helpers.jsx";
 
+// Emulates `forced-colors: active` for the current test page. `on === true`
+// activates it; `false` clears the override. Registered as a vitest command in
+// `vitest.config.js`. Returns early when the browser runner is unavailable.
+export const emulateForcedColors = async on => {
+  // Use the same `.available` gate as the sibling helpers so Storybook preview
+  // runs don't try to call vitest-only APIs.
+  const { realPointer: pointer } =
+    await import("../video-control/video-control-helpers.jsx");
+  if (!pointer.available) return;
+  const { commands } = await import("vitest/browser");
+  await commands.emulateForcedColors(on ? "active" : "none");
+};
+
 // ─── SVG icon paths (Font Awesome Free 6.4.2, CC BY 4.0) ─────────────────────
 // arrow-right path (used in attribution link and see-all link)
 const ARROW_RIGHT_PATH =

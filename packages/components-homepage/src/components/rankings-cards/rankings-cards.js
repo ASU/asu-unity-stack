@@ -252,6 +252,21 @@ export function initRankingsCards(root = document) {
     };
 
     // ── Nav-state sync (scroll-position-driven) ───────────────────────────
+    //
+    // Uses a dynamic tolerance of half a card-step for atStart/atEnd. The
+    // first-render markup can carry a small scrollLeft wobble (observed up to
+    // ~32px) caused by scroll-snap-type combined with the initial layout
+    // pass; using an absolute 1px threshold would incorrectly report the
+    // leading edge as "not at start" at mount time. Half a card step is the
+    // smallest tolerance that stays correct when the user has advanced by one
+    // card (scrollLeft ≈ cardStep).
+    const edgeTolerance = () => {
+      const card = track.querySelector(CARD_SEL);
+      if (!card) return 1;
+      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      return Math.max(1, (card.offsetWidth + gap) / 2);
+    };
+
     const syncNavState = () => {
       const maxScroll = track.scrollWidth - track.clientWidth;
       const overflows = maxScroll > 1;
@@ -262,9 +277,9 @@ export function initRankingsCards(root = document) {
         return;
       }
       applyClass(section, NO_OVERFLOW_CLASS, false, classLog);
-      // scrollLeft tolerance: within 1px of the extremes.
-      const atStart = track.scrollLeft <= 1;
-      const atEnd = track.scrollLeft >= maxScroll - 1;
+      const tol = edgeTolerance();
+      const atStart = track.scrollLeft < tol;
+      const atEnd = track.scrollLeft > maxScroll - tol;
       applyDisabled(prev, atStart, mutationLog);
       applyDisabled(next, atEnd, mutationLog);
     };
