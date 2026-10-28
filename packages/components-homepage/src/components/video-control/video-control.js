@@ -93,6 +93,10 @@ const createEntry = (video, doc, win) => {
 
   listen(video, "play", () => render(entry, true));
   listen(video, "pause", () => render(entry, false));
+  // A source attached after the observer reported (the hero attaches it by script) autoplays once loaded.
+  listen(video, "loadeddata", () => {
+    if (entry.inView && entry.ratio >= IN_VIEW_RATIO) tryAutoplay();
+  });
   listen(video, "ended", () => {
     render(entry, false);
     entry.plays += 1;
