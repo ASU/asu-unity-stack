@@ -54,7 +54,7 @@ export const storiesToTest = [
   "homepage-reimagine-entrance--entrance-below-901",
   "homepage-reimagine-entrance--entrance-idempotent-init",
   "homepage-reimagine-entrance--entrance-css-gate",
-  // rankings-cards stories (WWWCMS-233) — Task 5
+  // rankings-cards stories (WWWCMS-233) — Task 5 + fix-loop cycle 1 additions
   "homepage-rankings-cards--default",
   "homepage-rankings-cards--phone-393",
   "homepage-rankings-cards--tablet-768",
@@ -82,4 +82,15 @@ export const storiesToTest = [
   "homepage-rankings-cards--idempotent-init",
   "homepage-rankings-cards--teardown-cleans-up",
   "homepage-rankings-cards--no-ga-attributes",
+  // fix-loop cycle 1 — injection + robustness regression stories
+  "homepage-rankings-cards--no-ga-injection",
+  "homepage-rankings-cards--injection-image-alt",
+  "homepage-rankings-cards--injection-attribution-href",
+  "homepage-rankings-cards--injection-attribution-label",
+  "homepage-rankings-cards--injection-heading-id",
+  "homepage-rankings-cards--injection-image-src-hover-missing",
+  "homepage-rankings-cards--injection-attr-quotes",
+  "homepage-rankings-cards--resize-to-overflow",
+  "homepage-rankings-cards--rapid-click-coalescing",
+  "homepage-rankings-cards--sanitizer-contract",
 ];
