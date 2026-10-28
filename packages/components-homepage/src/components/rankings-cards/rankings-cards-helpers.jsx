@@ -23,10 +23,87 @@ const CHEVRON_LEFT_PATH =
 const CHEVRON_RIGHT_PATH =
   "M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z";
 
+// ─── Input sanitization ──────────────────────────────────────────────────────
+// The template interpolates untrusted strings into HTML attributes and text
+// content. We treat **all** inputs as untrusted at this boundary (CMS inputs
+// have been shown to leak unescaped author content). Three contextual escapes
+// cover every interpolation point:
+//
+//   • escapeHtml(str)   → text content and attribute values (same escape set
+//                         is safe for both when values are quoted with ").
+//   • sanitizeHref(url) → URL attribute values. Whitelist of schemes:
+//                         empty, fragment (#...), relative (./  ../  /path),
+//                         absolute http: / https:, mailto:, tel:. Everything
+//                         else (javascript:, data:, vbscript:, file:, …) is
+//                         replaced with a safe `#` fallback.
+//   • sanitizeId(id)    → HTML id attribute. Must match `^[A-Za-z][\w-]*$`.
+//                         Falsy/invalid falls back to the default.
+
+const HTML_ESCAPES = {
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': "&quot;",
+  "'": "&#39;",
+};
+
+/**
+ * HTML-escapes a value for safe interpolation into text content or a
+ * double-quoted attribute value. Coerces non-strings to strings first.
+ * @param {unknown} value
+ * @returns {string}
+ */
+export const escapeHtml = value =>
+  String(value == null ? "" : value).replace(/[&<>"']/g, c => HTML_ESCAPES[c]);
+
+/**
+ * Whitelists safe URL schemes for `href` attributes. Preserves fragments,
+ * relative paths, and `http(s)/mailto/tel` absolute URLs. Returns `#` for
+ * all other schemes (e.g. `javascript:`, `data:`, `vbscript:`, `file:`).
+ * @param {unknown} href
+ * @returns {string}
+ */
+export const sanitizeHref = href => {
+  if (typeof href !== "string") return "#";
+  const trimmed = href.trim();
+  if (trimmed === "") return "#";
+  // Fragments and relative paths are safe by definition (no scheme).
+  if (trimmed.startsWith("#")) return trimmed;
+  if (
+    trimmed.startsWith("/") ||
+    trimmed.startsWith("./") ||
+    trimmed.startsWith("../")
+  ) {
+    return trimmed;
+  }
+  // Scheme detection: a scheme is `scheme:` at the start. If the first path
+  // segment contains ':', assume it is a scheme indicator.
+  const colonAt = trimmed.indexOf(":");
+  const slashAt = trimmed.indexOf("/");
+  const schemeIsFirst = colonAt !== -1 && (slashAt === -1 || colonAt < slashAt);
+  if (!schemeIsFirst) return trimmed; // bare relative path like `foo/bar`
+  // Allowed schemes (case-insensitive).
+  if (/^(https?|mailto|tel):/i.test(trimmed)) return trimmed;
+  // Everything else is rejected.
+  return "#";
+};
+
+/**
+ * Validates an HTML id token. Must start with a letter and contain only
+ * `[A-Za-z0-9_-]`. Falsy/invalid falls back to the default.
+ * @param {unknown} id
+ * @param {string} fallback
+ * @returns {string}
+ */
+export const sanitizeId = (id, fallback = "hp-rankings-heading") => {
+  if (typeof id !== "string" || id === "") return fallback;
+  return /^[A-Za-z][\w-]*$/.test(id) ? id : fallback;
+};
+
 // ─── Default 7-card dataset ───────────────────────────────────────────────────
 // Mirrors the Figma sample (design-doc §3.1 and §3.2). Real alt text, slugs, and
 // hrefs will be confirmed from the Jira AC before merge.
-// TODO: confirm alt text, hrefs, and labels with design / Jira WWWCMS-233.
+// TODO: confirm with design — alt text, hrefs, and labels for the WWWCMS-233 default dataset.
 
 /**
  * @typedef {Object} RankingCard
@@ -100,6 +177,14 @@ export const DEFAULT_CARDS = [
 
 // ─── Markup template ──────────────────────────────────────────────────────────
 
+const warnDev = message => {
+  // import.meta.env.DEV is tree-shaken to false in production builds.
+  if (import.meta.env.DEV) {
+    // eslint-disable-next-line no-console
+    console.warn(`[rankings-cards] ${message} (WWWCMS-233)`);
+  }
+};
+
 /**
  * Returns the first-render HTML string for a `.hp-rankings` section.
  *
@@ -107,16 +192,27 @@ export const DEFAULT_CARDS = [
  * when the parent surface is dark enough. Wrap in a dark surface (e.g. the
  * homepage hero band) before using in production.
  *
- * **CMS security note**: `attributionHref` values are rendered unescaped.
- * CMS-side consumers are responsible for HTML-escaping inputs before pasting
- * into this template. No `target="_blank"` is specified; if added later,
- * include `rel="noopener"`.
+ * **Security**: all template-interpolated values (`headingId`, `cards[*].*`,
+ * `seeAllHref`, `seeAllLabel`) are contextually escaped at render time.
+ * Attribute values are HTML-escaped and `href` values are scheme-validated
+ * (fragment/relative/http/https/mailto/tel allowed; everything else rewritten
+ * to `#`). `headingId` must match `^[A-Za-z][\w-]*$` or it falls back to the
+ * default. The template never emits unescaped user content.
+ *
+ * **Content-model soft contract (DEV only)**: `cards` must be a non-empty
+ * array. Each card requires `imageSrc`, `imageAlt`, and `attributionHref`.
+ * `imageAlt === ""` or `undefined` renders `alt=""` and emits a DEV warning
+ * (never fabricates text — design-doc §7.9). Missing `imageSrcHover` falls
+ * back to `imageSrc` with a DEV warning. Zero cards renders inert markup
+ * (empty track, both nav buttons disabled) so Next cannot activate.
+ *
+ * All warnings are stripped from production bundles via `import.meta.env.DEV`.
  *
  * @param {Object} [options]
- * @param {string} [options.headingId="hp-rankings-heading"] - Unique per rendered copy; feeds both `<h2 id>` and `aria-labelledby`.
- * @param {RankingCard[]} [options.cards] - Defaults to the 7-item `DEFAULT_CARDS` sample.
- * @param {string} [options.seeAllHref="#rankings-see-all"] - Placeholder until real URL exists. A bare `#` scrolls to top; use a unique fragment.
- * @param {string} [options.seeAllLabel="See all ASU rankings"] - Visible text for the see-all link.
+ * @param {string} [options.headingId="hp-rankings-heading"] - Unique per rendered copy; feeds both `<h2 id>` and `aria-labelledby`. Must be `/^[A-Za-z][\w-]*$/`.
+ * @param {RankingCard[]} [options.cards] - Defaults to the 7-item `DEFAULT_CARDS` sample. Non-array / zero-length renders inert markup.
+ * @param {string} [options.seeAllHref="#rankings-see-all"] - Placeholder until real URL exists. Rendered scheme-sanitized. A bare `#` scrolls to top; use a unique fragment.
+ * @param {string} [options.seeAllLabel="See all ASU rankings"] - Visible text for the see-all link (HTML-escaped).
  * @returns {string} HTML string (Stage B parity source, §3.3).
  */
 export const rankingsCardsHtml = ({
@@ -125,48 +221,99 @@ export const rankingsCardsHtml = ({
   seeAllHref = "#rankings-see-all",
   seeAllLabel = "See all ASU rankings",
 } = {}) => {
-  // Soft content check: DEV-only warning for empty alt text (design-doc §7.9).
-  // import.meta.env.DEV is tree-shaken to false in production builds.
-  if (import.meta.env.DEV) {
-    cards.forEach((card, i) => {
-      if (card.imageAlt === "") {
-        // eslint-disable-next-line no-console
-        console.warn(
-          `[rankings-cards] Card ${i} has an empty imageAlt. ` +
-            'The default <img> will render with alt="" which removes ranking content from screen readers. ' +
-            "Provide a full ranking statement in imageAlt. (WWWCMS-233)"
-        );
-      }
-    });
+  // ── Content-model validation (DEV warnings, never fabricate content) ──────
+  let safeCards;
+  if (!Array.isArray(cards)) {
+    warnDev(
+      `rankingsCardsHtml: 'cards' must be an array of RankingCard objects; received ${typeof cards}. Rendering empty track.`
+    );
+    safeCards = [];
+  } else {
+    safeCards = cards;
+  }
+  if (safeCards.length === 0) {
+    warnDev(
+      "rankingsCardsHtml: 'cards' is empty. Rendering inert markup with both nav buttons disabled."
+    );
   }
 
-  const cardItems = cards
-    .map(
-      ({
+  const headingIdSafe = sanitizeId(headingId);
+  if (headingIdSafe !== headingId) {
+    warnDev(
+      `rankingsCardsHtml: 'headingId' must match ^[A-Za-z][\\w-]*$; received ${JSON.stringify(headingId)}. Falling back to default.`
+    );
+  }
+
+  const cardItems = safeCards
+    .map((card, i) => {
+      if (card == null || typeof card !== "object") {
+        warnDev(
+          `rankingsCardsHtml: card ${i} is not an object (received ${typeof card}). Skipping.`
+        );
+        return "";
+      }
+      const {
         imageSrc,
         imageSrcHover,
         imageAlt,
         attributionHref,
         attributionLabel = "Attribution link",
-      }) =>
+      } = card;
+
+      // imageSrc is required.
+      if (!imageSrc || typeof imageSrc !== "string") {
+        warnDev(
+          `rankingsCardsHtml: card ${i} is missing a valid 'imageSrc'. Skipping card.`
+        );
+        return "";
+      }
+
+      // imageSrcHover falls back to imageSrc with a DEV warning.
+      let resolvedHover = imageSrcHover;
+      if (!resolvedHover || typeof resolvedHover !== "string") {
+        warnDev(
+          `rankingsCardsHtml: card ${i} is missing 'imageSrcHover'. Falling back to imageSrc so no src="undefined" is emitted.`
+        );
+        resolvedHover = imageSrc;
+      }
+
+      // imageAlt: undefined or "" renders alt="" with a DEV warning.
+      // This preserves the §7.9 "never fabricate alt" contract.
+      let resolvedAlt = imageAlt;
+      if (resolvedAlt == null) {
+        warnDev(
+          `rankingsCardsHtml: card ${i} has undefined 'imageAlt'. Rendering alt="" — provide a full ranking statement.`
+        );
+        resolvedAlt = "";
+      } else if (resolvedAlt === "") {
+        warnDev(
+          `rankingsCardsHtml: card ${i} has empty 'imageAlt'. Rendering alt="" — provide a full ranking statement for screen-reader users.`
+        );
+      }
+
+      return (
         `<li class="hp-rankings__card">` +
         `<div class="hp-rankings__media">` +
         // Default image: carries full ranking statement in alt (design-doc §7.9).
         `<img class="hp-rankings__img hp-rankings__img--default"` +
-        ` src="${imageSrc}"` +
-        ` alt="${imageAlt}"` +
-        ` width="400" height="500"` + // TODO: confirm with design — intrinsic dimensions from Figma node 13467:58610
+        ` src="${escapeHtml(imageSrc)}"` +
+        ` alt="${escapeHtml(resolvedAlt)}"` +
+        // TODO: confirm with design — intrinsic dimensions from Figma node 13467:58610 (locked placeholder 400 × 500, §11.2).
+        ` width="400" height="500"` +
+        // TODO: confirm with design — all images lazy-loaded (design-doc §11.2); revisit if homepage places rankings above the fold.
         ` loading="lazy" decoding="async">` +
         // Hover image: decorative colour variant — alt="" + aria-hidden so SR does NOT double-announce.
         `<img class="hp-rankings__img hp-rankings__img--hover"` +
-        ` src="${imageSrcHover}"` +
+        ` src="${escapeHtml(resolvedHover)}"` +
         ` alt="" aria-hidden="true"` +
-        ` width="400" height="500"` + // TODO: confirm with design — intrinsic dimensions from Figma node 13467:58610
+        // TODO: confirm with design — intrinsic dimensions (hover img) locked at 400 × 500 (§11.2).
+        ` width="400" height="500"` +
+        // TODO: confirm with design — all images lazy-loaded (design-doc §11.2).
         ` loading="lazy" decoding="async">` +
         `</div>` +
         `<div class="hp-rankings__card-footer">` +
-        `<a class="hp-rankings__attribution" href="${attributionHref}">` +
-        `${attributionLabel}` +
+        `<a class="hp-rankings__attribution" href="${escapeHtml(sanitizeHref(attributionHref))}">` +
+        `${escapeHtml(attributionLabel)}` +
         `<svg class="hp-rankings__attribution-icon" viewBox="0 0 448 512"` +
         ` aria-hidden="true" focusable="false">` +
         `<path fill="currentColor" d="${ARROW_RIGHT_PATH}"/>` +
@@ -174,12 +321,27 @@ export const rankingsCardsHtml = ({
         `</a>` +
         `</div>` +
         `</li>`
-    )
+      );
+    })
     .join("");
 
+  // Zero-cards inert state: both prev and next ship with the disabled triplet
+  // and the section carries .hp-rankings--no-overflow so the nav is hidden by
+  // CSS. JS further hides the nav via ResizeObserver when the track doesn't
+  // overflow, but the server markup is already safe without JS.
+  const noCards = safeCards.length === 0;
+  const sectionClass = noCards
+    ? "hp-rankings hp-rankings--no-overflow"
+    : "hp-rankings";
+  // Prev button is always disabled on first render (track starts at scrollLeft=0).
+  // Next button is disabled only when there are no cards.
+  const nextDisabledMarkup = noCards
+    ? ` class="hp-rankings__nav-btn hp-rankings__nav-btn--next is-disabled" aria-disabled="true" tabindex="-1"`
+    : ` class="hp-rankings__nav-btn hp-rankings__nav-btn--next"`;
+
   return (
-    `<section class="hp-rankings" aria-labelledby="${headingId}">` +
-    `<h2 id="${headingId}" class="visually-hidden">ASU rankings</h2>` +
+    `<section class="${sectionClass}" aria-labelledby="${escapeHtml(headingIdSafe)}">` +
+    `<h2 id="${escapeHtml(headingIdSafe)}" class="visually-hidden">ASU rankings</h2>` +
     `<div class="hp-rankings__inner">` +
     `<ul class="hp-rankings__track" role="list">` +
     cardItems +
@@ -194,16 +356,16 @@ export const rankingsCardsHtml = ({
     `<path fill="currentColor" d="${CHEVRON_LEFT_PATH}"/>` +
     `</svg>` +
     `</button>` +
-    // Next button: enabled at first render.
-    `<button type="button" class="hp-rankings__nav-btn hp-rankings__nav-btn--next"` +
+    // Next button: enabled at first render unless zero cards.
+    `<button type="button"${nextDisabledMarkup}` +
     ` aria-label="Next ranking">` +
     `<svg class="hp-rankings__nav-icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false">` +
     `<path fill="currentColor" d="${CHEVRON_RIGHT_PATH}"/>` +
     `</svg>` +
     `</button>` +
     `</div>` +
-    `<a class="hp-rankings__see-all" href="${seeAllHref}">` +
-    `${seeAllLabel}` +
+    `<a class="hp-rankings__see-all" href="${escapeHtml(sanitizeHref(seeAllHref))}">` +
+    `${escapeHtml(seeAllLabel)}` +
     `<svg class="hp-rankings__see-all-icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false">` +
     `<path fill="currentColor" d="${ARROW_RIGHT_PATH}"/>` +
     `</svg>` +
@@ -218,7 +380,8 @@ export const rankingsCardsHtml = ({
 // Mirrors `.hp-rankings__card:hover` and `.hp-rankings__card[data-rankings-hover]`
 // rules at runtime so Storybook stories can force the hover state without a real
 // pointer event (Storybook cannot programmatically set :hover).
-// Pattern mirrors reimagine-helpers.jsx `forceHover`.
+// Pattern mirrors reimagine-helpers.jsx `forceHover` — including the strict
+// `throw` when no :hover rules are found (prevents silent test-rot).
 
 const HOVER_MIRROR_ID = "hp-rankings-hover-mirror";
 const HOVER_ATTRIBUTE = "data-rankings-hover";
@@ -242,21 +405,6 @@ const ensureHoverMirror = () => {
             )
           );
         }
-        // Also match nested rules like `.hp-rankings__card:hover .hp-rankings__*`
-        if (
-          /\.hp-rankings__card:hover\s+\.hp-rankings__/.test(rule.selectorText)
-        ) {
-          const text = rule.cssText.replace(
-            /\.hp-rankings__card:hover(\s+\.hp-rankings__)/g,
-            `.hp-rankings__card[${HOVER_ATTRIBUTE}]$1`
-          );
-          rules.push(
-            conditions.reduceRight(
-              (inner, condition) => `@media ${condition} { ${inner} }`,
-              text
-            )
-          );
-        }
       } else if (rule instanceof CSSMediaRule) {
         collect(rule.cssRules, [...conditions, rule.conditionText]);
       } else if (rule.cssRules) {
@@ -264,6 +412,7 @@ const ensureHoverMirror = () => {
       }
     });
   Array.from(document.styleSheets).forEach(sheet => {
+    if (sheet.ownerNode && sheet.ownerNode.id === HOVER_MIRROR_ID) return;
     try {
       collect(sheet.cssRules, []);
     } catch {
@@ -271,10 +420,9 @@ const ensureHoverMirror = () => {
     }
   });
   if (!rules.length) {
-    // No :hover rules found yet — insert an empty marker so we don't re-attempt
-    // on every call during the same render cycle. Stories call this after styles load.
-    // eslint-disable-next-line no-console
-    console.warn(
+    // Strict: match reimagine-helpers.jsx — a missing hover rule would silently
+    // turn hover-state tests into no-ops. Fail loudly instead.
+    throw new Error(
       "[rankings-cards] No .hp-rankings__card:hover rule found to mirror."
     );
   }
@@ -288,6 +436,10 @@ const ensureHoverMirror = () => {
  * Forces (or clears) the hover styles on a `.hp-rankings__card` element without
  * a real pointer event. Mirrors the `:hover` CSS rules using a `[data-rankings-hover]`
  * attribute so Storybook interaction tests can assert hover-state styles.
+ *
+ * Throws if no `.hp-rankings__card:hover` rules are found in any stylesheet —
+ * this prevents a missing CSS import from silently turning hover tests into
+ * false negatives.
  *
  * @param {Element} element - The `.hp-rankings__card` element.
  * @param {boolean} [on=true] - Pass `false` to clear the forced hover.
