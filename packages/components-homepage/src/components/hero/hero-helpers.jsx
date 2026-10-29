@@ -140,6 +140,28 @@ export const Harness = ({ html, manual = false, controlsFirst = false }) => {
   return <div ref={ref} dangerouslySetInnerHTML={{ __html: html }} />;
 };
 
+// QA preview only: the prototype's own hotlink to the current asu.edu clip. Production serves a hosted
+// media file (ticket); no video is committed to this repo.
+export const LIVE_VIDEO_SRC =
+  "https://www.asu.edu/sites/default/files/2026-10/homepage-impact-ranking2026_720p.mp4";
+
+// The real thing, no fakes: real playback, a real source and the real IntersectionObserver. Blank space
+// below the hero lets a reviewer scroll it out of view and back.
+export const LiveHarness = ({ html }) => {
+  const ref = useRef(null);
+  useEffect(() => {
+    const root = ref.current;
+    const destroy = [initHero(root), initVideoControls(root)];
+    return () => destroy.forEach(cleanup => cleanup());
+  }, [html]);
+  return (
+    <>
+      <div ref={ref} dangerouslySetInnerHTML={{ __html: html }} />
+      <div style={{ height: "150vh" }} aria-hidden="true" />
+    </>
+  );
+};
+
 const MIRROR_ID = "hp-hero-hover-mirror";
 const HOVER_ATTRIBUTE = "data-hero-hover";
 

@@ -9,6 +9,8 @@ import {
 } from "../video-control/video-control-helpers.jsx";
 import {
   HERO_HREF,
+  LIVE_VIDEO_SRC,
+  LiveHarness,
   HERO_LINK_LABEL,
   Harness,
   VIDEO_SRC,
@@ -170,6 +172,30 @@ const expectLayout = async (p, { height, gutter = 48, inset = 0 }) => {
   ).toBe(true);
 };
 
+// --- live preview (brand QA) ---
+
+// Not a test: it plays the current asu.edu clip, so it is excluded from the test run. Scroll the hero out of
+// view and back to see it pause and resume; it stops on its first frame after three plays.
+export const LiveVideoPreview = {
+  name: "Live video (preview)",
+  tags: ["!test"],
+  globals: viewport(1440),
+  render: () => (
+    <LiveHarness
+      html={heroHtml({ id: "hero-live", dataSrc: LIVE_VIDEO_SRC })}
+    />
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "QA preview with the real clip (hotlinked from asu.edu, as the prototype does; production serves a hosted file). Real playback, no fakes: it autoplays when in view above 900px, pauses out of view and in a hidden tab, stops on its first frame after three plays, and shows no video on phones and tablets. The poster is a placeholder.",
+      },
+    },
+  },
+};
+
+// Stories tagged "!dev" are tests: they run in test:storybook but stay out of the sidebar (reach them by URL).
 // --- server markup ---
 
 export const NoScript = {
@@ -519,6 +545,7 @@ export const Large1920 = {
 };
 
 export const UltraWide2560 = {
+  tags: ["!dev"],
   name: "Ultra-wide 2560",
   globals: viewport(2560),
   render: () => <Harness html={heroHtml({ id: "hero-2560" })} />,
@@ -534,6 +561,7 @@ export const UltraWide2560 = {
 };
 
 export const HeightRule = {
+  tags: ["!dev"],
   name: "Height rule",
   globals: viewport(1440),
   render: () => <Harness html={heroHtml({ id: "hero-height" })} />,
@@ -599,6 +627,7 @@ const runPlayBudget = async (canvasElement, id) => {
 };
 
 export const PlayBudget = {
+  tags: ["!dev"],
   name: "Play budget",
   globals: viewport(1440),
   render: () => <Harness html={heroHtml({ id: STOPPED_ID_A })} />,
@@ -610,6 +639,7 @@ export const PlayBudget = {
 
 // The two inits can run in either order (Drupal behaviours have no guaranteed order).
 export const PlayBudgetControlsFirst = {
+  tags: ["!dev"],
   name: "Play budget (controls first)",
   globals: viewport(1440),
   render: () => <Harness controlsFirst html={heroHtml({ id: STOPPED_ID_B })} />,
@@ -619,6 +649,7 @@ export const PlayBudgetControlsFirst = {
 };
 
 export const OutOfViewAndVisitor = {
+  tags: ["!dev"],
   name: "Out of view, hidden tab, visitor pause",
   globals: viewport(1440),
   render: () => <Harness html={heroHtml({ id: "hero-view" })} />,
@@ -660,6 +691,7 @@ export const OutOfViewAndVisitor = {
 // A source attached after the observer reported (a later breakpoint crossing, either init order):
 // `loadeddata` starts the autoplay that the missing source prevented.
 export const SourceAttachedLater = {
+  tags: ["!dev"],
   name: "Source attached later",
   globals: viewport(1440),
   render: () => <Harness html={heroHtml({ id: "hero-late" })} />,
@@ -676,6 +708,7 @@ export const SourceAttachedLater = {
 // --- reduced motion ---
 
 export const ReducedMotion = {
+  tags: ["!dev"],
   name: "Reduced motion",
   globals: viewport(1440),
   beforeEach: () => {
@@ -722,6 +755,7 @@ export const ReducedMotion = {
 };
 
 export const PreferenceChange = {
+  tags: ["!dev"],
   name: "Reduced motion preference changes",
   globals: viewport(1440),
   render: () => <Harness html={heroHtml({ id: "hero-pref" })} />,
@@ -748,6 +782,7 @@ export const PreferenceChange = {
 let warnings = [];
 
 export const NoPoster = {
+  tags: ["!dev"],
   name: "No poster",
   globals: viewport(1440),
   beforeEach: () => {
@@ -785,6 +820,7 @@ export const NoPoster = {
 // --- breakpoint behaviour ---
 
 export const BreakpointCrossing = {
+  tags: ["!dev"],
   name: "Breakpoint crossing",
   globals: viewport(1024),
   render: () => <Harness html={heroHtml({ id: "hero-cross" })} />,
@@ -857,6 +893,7 @@ export const BreakpointCrossing = {
 // A video that was in view while it had no source (phone width) autoplays once the source is attached
 // and loaded; the stub rejects play() without a source, like a browser.
 export const LateAttachAutoplay = {
+  tags: ["!dev"],
   name: "Late attach autoplays",
   globals: viewport(768),
   render: () => <Harness html={heroHtml({ id: "hero-late-attach" })} />,
@@ -878,6 +915,7 @@ export const LateAttachAutoplay = {
 
 // The page swaps the clip: a new data-src is attached, an empty or unsafe one detaches.
 export const SourceChange = {
+  tags: ["!dev"],
   name: "Source change",
   globals: viewport(1440),
   render: () => <Harness html={heroHtml({ id: "hero-change" })} />,
@@ -909,6 +947,7 @@ export const SourceChange = {
 // --- script contract ---
 
 export const InitContract = {
+  tags: ["!dev"],
   name: "Init contract",
   globals: viewport(1440),
   render: () => (
@@ -972,6 +1011,7 @@ export const InitContract = {
 // --- stylesheet and a11y contracts ---
 
 export const StylesheetContract = {
+  tags: ["!dev"],
   name: "Stylesheet contract",
   globals: viewport(1440),
   render: () => <Harness html={heroHtml({ id: "hero-css" })} />,
@@ -1020,6 +1060,7 @@ export const StylesheetContract = {
 // This is arithmetic over the real stops and the measured line positions; real frames of the hosted
 // clip are measured by brand (B6) before WWWCMS-232 is accepted.
 export const ContrastBudget = {
+  tags: ["!dev"],
   name: "Contrast budget",
   globals: viewport(1280),
   render: () => <Harness html={heroHtml({ id: "hero-contrast" })} />,
@@ -1049,6 +1090,7 @@ export const ContrastBudget = {
 };
 
 export const AssistantAllowance = {
+  tags: ["!dev"],
   name: "AI assistant allowance",
   globals: viewport(1024),
   render: () => <Harness html={heroHtml({ id: "hero-assistant" })} />,

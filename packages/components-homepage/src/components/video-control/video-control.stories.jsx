@@ -200,7 +200,9 @@ export const Hover = {
     if (!realPointer.available) return;
     forceHover(button, false);
     await waitFor(() => expect(getComputedStyle(button).opacity).toBe("0.5"));
-    await expect(getComputedStyle(button).transform).toBe("none");
+    await waitFor(() =>
+      expect(getComputedStyle(button).transform).toBe("none")
+    );
     await realPointer.hover(button);
     await waitFor(() => expect(getComputedStyle(button).opacity).toBe("1"));
     await waitFor(() =>
