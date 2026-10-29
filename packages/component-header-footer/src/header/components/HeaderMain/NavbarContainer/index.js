@@ -69,7 +69,7 @@ const NavbarContainer = () => {
 
   return (
     // @ts-ignore
-    <Wrapper breakpoint={breakpoint} data-testid="navigation" aria-label="Site">
+    <Wrapper $breakpoint={breakpoint} data-testid="navigation" aria-label="Site">
       {Boolean(navTree.length || mobileNavTree.length || buttons.length) && (
         <div className={CLASS_NAMES.CONTENT_CONTAINER}>
           {Boolean(navTree?.length || mobileNavTree?.length) && (

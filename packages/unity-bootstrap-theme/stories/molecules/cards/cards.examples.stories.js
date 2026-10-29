@@ -19,7 +19,7 @@ export const cardImages = () => (
         height="337"
         loading="lazy"
         decoding="async"
-        fetchpriority="high"
+        fetchPriority="high"
       />
       <div className="card-header"></div>
     </div>
@@ -33,7 +33,7 @@ export const cardImages = () => (
         height="337"
         loading="lazy"
         decoding="async"
-        fetchpriority="high"
+        fetchPriority="high"
       />
       <div className="card-header"></div>
     </div>
@@ -47,7 +47,7 @@ export const cardImages = () => (
         height="337"
         loading="lazy"
         decoding="async"
-        fetchpriority="high"
+        fetchPriority="high"
       />
       <div className="card-header"></div>
     </div>
@@ -222,7 +222,7 @@ export const cardDegree = () => (
       height="337"
       loading="lazy"
       decoding="async"
-      fetchpriority="high"
+      fetchPriority="high"
     />
     <div className="card-header">
       <h3 className="card-title">
@@ -294,7 +294,7 @@ export const cardStory = () => (
       height="337"
       loading="lazy"
       decoding="async"
-      fetchpriority="high"
+      fetchPriority="high"
     />
     <div className="card-header">
       <h3 className="card-title">
@@ -367,7 +367,7 @@ export const cardEvent = () => (
         height="337"
         loading="lazy"
         decoding="async"
-        fetchpriority="high"
+        fetchPriority="high"
       />
     </a>
     <div className="card-header">
@@ -458,7 +458,7 @@ export const cardVariations = () => (
               height="337"
               loading="lazy"
               decoding="async"
-              fetchpriority="high"
+              fetchPriority="high"
             />
             <div className="card-header">
               <h3 className="card-title">
@@ -598,7 +598,7 @@ export const cardVariations = () => (
               height="337"
               loading="lazy"
               decoding="async"
-              fetchpriority="high"
+              fetchPriority="high"
             />
             <div className="card-header">
               <h3 className="card-title">
@@ -666,7 +666,7 @@ export const cardVariations = () => (
               height="337"
               loading="lazy"
               decoding="async"
-              fetchpriority="high"
+              fetchPriority="high"
             />
             <div className="card-header">
               <h3 className="card-title">
@@ -820,7 +820,7 @@ export const cardVariations = () => (
               height="337"
               loading="lazy"
               decoding="async"
-              fetchpriority="high"
+              fetchPriority="high"
             />
             <div className="card-header">
               <h3 className="card-title">
@@ -935,7 +935,7 @@ export const cardVariations = () => (
               height="337"
               loading="lazy"
               decoding="async"
-              fetchpriority="high"
+              fetchPriority="high"
             />
             <div className="card-body">
               <p className="card-text">
@@ -1067,7 +1067,7 @@ export const checkboxStackedCard = () => (
           height="337"
           loading="lazy"
           decoding="async"
-          fetchpriority="high"
+          fetchPriority="high"
         />
       </div>
       <form className="uds-form card-image-overlay-content ms-4">
@@ -1170,7 +1170,7 @@ export const checkboxInlineCard = () => (
           height="337"
           loading="lazy"
           decoding="async"
-          fetchpriority="high"
+          fetchPriority="high"
         />
       </div>
       <form className="uds-form card-image-overlay-content ms-4">
@@ -1276,7 +1276,7 @@ export const mediaTypeOverlayCard = () => (
                 height="337"
                 loading="lazy"
                 decoding="async"
-                fetchpriority="high"
+                fetchPriority="high"
               />
             </div>
             <div className="card-image-overlay-content media-type-overlay ms-4 mb-4">
@@ -1356,7 +1356,7 @@ export const mediaTypeOverlayCard = () => (
                 height="337"
                 loading="lazy"
                 decoding="async"
-                fetchpriority="high"
+                fetchPriority="high"
               />
             </div>
             <div className="card-image-overlay-content media-type-overlay ms-4 mb-2">
@@ -1476,7 +1476,7 @@ export const RankingCardLarge = () => (
       alt="Card ranking large version"
       loading="lazy"
       decoding="async"
-      fetchpriority="high"
+      fetchPriority="high"
     />
     <div className="info-layer">
       <div className="content">
@@ -1542,7 +1542,7 @@ export const RankingCardSmall = () => (
         alt="Card ranking small version"
         loading="lazy"
         decoding="async"
-        fetchpriority="high"
+        fetchPriority="high"
       />
     </div>
     <div className="citation">

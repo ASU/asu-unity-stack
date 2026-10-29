@@ -60,7 +60,7 @@ const NavItemWrapper = styled.li`
       display: none;
     }
   }
-  @media (max-width: ${({ breakpoint }) => breakpoint}) {
+  @media (max-width: ${({ $breakpoint }) => $breakpoint}) {
     border-bottom: 1px solid ${ASU_GRAY4};
     margin: 0;
     &:first-child {

@@ -77,7 +77,7 @@ export const BlockquoteWithImage = ({ type, reversed }) => {
           height="400"
           loading="lazy"
           decoding="async"
-          fetchpriority="high"
+          fetchPriority="high"
         />
         <blockquote>
           <p>
