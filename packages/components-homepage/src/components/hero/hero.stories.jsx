@@ -9,6 +9,8 @@ import {
 } from "../video-control/video-control-helpers.jsx";
 import {
   HERO_HREF,
+  LIVE_VIDEO_SRC,
+  LiveHarness,
   HERO_LINK_LABEL,
   Harness,
   VIDEO_SRC,
@@ -168,6 +170,29 @@ const expectLayout = async (p, { height, gutter = 48, inset = 0 }) => {
       document.elementFromPoint(c.left + c.width / 2, c.top + c.height / 2)
     )
   ).toBe(true);
+};
+
+// --- live preview (brand QA) ---
+
+// Not a test: it plays the current asu.edu clip, so it is excluded from the test run. Scroll the hero out of
+// view and back to see it pause and resume; it stops on its first frame after three plays.
+export const LiveVideoPreview = {
+  name: "Live video (preview)",
+  tags: ["!test"],
+  globals: viewport(1440),
+  render: () => (
+    <LiveHarness
+      html={heroHtml({ id: "hero-live", dataSrc: LIVE_VIDEO_SRC })}
+    />
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "QA preview with the real clip (hotlinked from asu.edu, as the prototype does; production serves a hosted file). Real playback, no fakes: it autoplays when in view above 900px, pauses out of view and in a hidden tab, stops on its first frame after three plays, and shows no video on phones and tablets. The poster is a placeholder.",
+      },
+    },
+  },
 };
 
 // --- server markup ---
