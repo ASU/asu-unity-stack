@@ -3,7 +3,7 @@
 // and reimagine.stories.jsx patterns exactly.
 import React, { useEffect, useRef } from "react";
 import { expect, userEvent, waitFor } from "storybook/test";
-import backdropUrl from "./future-1440-p2.png";
+import backdropUrl from "../../img/bluesky-bg.jpg";
 
 import {
   emulateReducedMotion,
@@ -70,7 +70,7 @@ const parts = canvasElement => {
 const Page = ({ html }) => <div dangerouslySetInnerHTML={{ __html: html }} />;
 
 // Backdrop decorator: wraps the row in the Palo Verde photo or a plain dark surface.
-// Photo backdrop uses the .intake/future-1440-p2.png fixture (Vite asset import).
+// Photo backdrop uses packages/components-homepage/src/img/bluesky-bg.jpg (Vite asset import).
 // Plain backdrop uses the .hp-quick-links-backdrop--plain CSS class (token: $uds-color-gray-1,
 // documented in quick-links-tokens.js as BACKDROP_PLAIN) — appropriate for Alfa contrast
 // arithmetic on white text (matches the accessibility-plain story pattern).
