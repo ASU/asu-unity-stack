@@ -5,6 +5,10 @@
 // Tokens: packages/unity-bootstrap-theme/src/scss/_custom-asu-variables.scss
 // Local custom properties: packages/components-homepage/src/scss/_variables.scss
 
+// Max column-gap ceiling token (= $uds-size-spacing-12 = 6rem).
+// Declared here so the clamp() below can reference a named constant.
+$hp-quick-links-column-gap-max: $uds-size-spacing-12;
+
 // --- wrapper ---
 
 .hp-quick-links {
@@ -43,7 +47,9 @@
   color: $uds-color-base-white;
 
   .hp-quick-link__icon {
-    font-size: $uds-size-icon-base;
+    // Default: fluid/mobile size (≤ 1023px). Promoted to icon-base at ≥ 1024px below.
+    // WWWCMS-235: icon-small (24px) must apply from 0 through 1023px; icon-base (32px) only at ≥ 1024px.
+    font-size: $uds-size-icon-small;
     color: $uds-color-base-white;
   }
 
@@ -58,7 +64,7 @@
   .hp-quick-link,
   .hp-quick-link-es {
     // 150ms ease-out: ticket-driven; $uds-time-transition-base (400ms) is too slow.
-    // TODO: reconcile with design if a token matching 150ms is added to the UDS.
+    // TODO (WWWCMS-235): reconcile with design if a token matching 150ms is added to the UDS.
     transition: background-color 150ms ease-out, color 150ms ease-out;
   }
 }
@@ -73,7 +79,10 @@
 
 .hp-quick-link:focus-visible {
   outline: none;
-  box-shadow: var(--hp-focus-inner), var(--hp-focus-outer);
+  // !important is required to beat unity-bootstrap-theme/src/scss/extends/_misc.scss:143-154
+  // which applies `a:focus { box-shadow: ...!important }` globally. This !important is intentionally
+  // scoped to this component only (.hp-quick-link:focus-visible).
+  box-shadow: var(--hp-focus-inner), var(--hp-focus-outer) !important;
   background-color: var(--hp-quick-link-glass);
 
   .hp-quick-link__icon {
@@ -83,7 +92,8 @@
 
 // Belt-and-braces: apply glass on :focus (not just :focus-visible) so the
 // background works in environments where :focus-visible isn't distinct.
-// The box-shadow override is handled by the theme's a:focus rule.
+// Box-shadow for plain :focus is intentionally NOT overridden here — the theme's
+// a:focus !important rule handles it. Only :focus-visible needs the override above.
 .hp-quick-link:focus {
   background-color: var(--hp-quick-link-glass);
 
@@ -135,7 +145,8 @@
 
 .hp-quick-link-es:focus-visible {
   outline: none;
-  box-shadow: var(--hp-focus-inner), var(--hp-focus-outer);
+  // !important required for same reason as .hp-quick-link:focus-visible above.
+  box-shadow: var(--hp-focus-inner), var(--hp-focus-outer) !important;
   background-color: var(--hp-quick-link-glass);
 
   .hp-quick-link-es__icon {
@@ -162,7 +173,9 @@
     column-gap: $uds-size-spacing-7;
   }
 
-  .hp-quick-link__icon {
+  // Promote to icon-base (32px) only at desktop and up (≥ 1024px).
+  // Nested inside .hp-quick-link to match the specificity of the default rule above.
+  .hp-quick-link .hp-quick-link__icon {
     font-size: $uds-size-icon-base;
   }
 }
@@ -171,8 +184,9 @@
 
 @media (min-width: 1280px) {
   .hp-quick-links__list {
-    // clamp(3.5rem, 6vw, 6rem): fluid between the $uds-size-spacing-7 floor and 6rem ceiling.
-    column-gap: clamp(#{$uds-size-spacing-7}, 6vw, 6rem);
+    // clamp($uds-size-spacing-7, 6vw, $hp-quick-links-column-gap-max):
+    // fluid between the 3.5rem floor and 6rem ($uds-size-spacing-12) ceiling.
+    column-gap: clamp(#{$uds-size-spacing-7}, 6vw, #{$hp-quick-links-column-gap-max});
   }
 }
 
@@ -190,11 +204,25 @@
     row-gap: $uds-size-spacing-3;
   }
 
+  // Icon-small is already the default above; this rule is kept for explicitness
+  // and to override any UA stylesheet that might increase the font size.
   .hp-quick-link__icon {
     font-size: $uds-size-icon-small;
   }
 
   .hp-quick-link__label {
     font-size: $uds-size-font-small;
+  }
+}
+
+// --- forced-colors (Windows High Contrast, Forced Colors Mode) ---
+// When forced-colors: active, the browser replaces custom colors/shadows with system colors.
+// Without this block, our `outline: none` on :focus-visible would hide the focus indicator entirely.
+// This block restores a system-color-compatible outline.
+@media (forced-colors: active) {
+  .hp-quick-link:focus-visible,
+  .hp-quick-link-es:focus-visible {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
   }
 }
