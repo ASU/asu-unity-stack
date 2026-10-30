@@ -24,7 +24,7 @@ export default {
     docs: {
       description: {
         component:
-          "Quick-links row (WWWCMS-235): four icon anchors (Explore ASU Online → Apply now → Visit an ASU campus → Request info) plus a Spanish sibling link (`Aprender más en español →`). Hover and keyboard focus paint a 16% white glass rectangle behind the active item and swap the icon to ASU gold. ≤ 900 px: 2×2 grid; ≥ 901 px: 1×4 row. Pure HTML + SCSS; zero JS shipped.",
+          "Quick-links row (WWWCMS-235): four icon anchors (Explore ASU Online → Visit an ASU campus → Request info → Apply now) plus a Spanish sibling link (`Aprender más en español →`). Hover and keyboard focus paint a 16% white glass rectangle behind the active item and swap the icon to ASU gold. ≤ 900 px: 2×2 grid; ≥ 901 px: 1×4 row. Pure HTML + SCSS; zero JS shipped.",
       },
     },
   },
@@ -120,9 +120,9 @@ export const Default = {
     // Labels appear in normative order (§8 row 1 requirement)
     const expectedLabels = [
       "Explore ASU Online",
-      "Apply now",
       "Visit an ASU campus",
       "Request info",
+      "Apply now",
     ];
     for (const [index, label] of expectedLabels.entries()) {
       await expect(p.labels[index].textContent).toBe(label);
@@ -497,9 +497,9 @@ export const KeyboardTabOrder = {
 
     const normativeOrder = [
       "Explore ASU Online",
-      "Apply now",
       "Visit an ASU campus",
       "Request info",
+      "Apply now",
       SPANISH_LABEL,
     ];
 
@@ -873,9 +873,9 @@ export const HtmlParity = {
     // Normative label order
     const expectedLabels = [
       "Explore ASU Online",
-      "Apply now",
       "Visit an ASU campus",
       "Request info",
+      "Apply now",
     ];
     for (const [index, label] of expectedLabels.entries()) {
       await expect(p.labels[index].textContent).toBe(label);

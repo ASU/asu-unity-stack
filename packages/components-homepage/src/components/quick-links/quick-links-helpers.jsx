@@ -74,11 +74,6 @@ const DEFAULT_ITEMS = [
     label: "Explore ASU Online",
   },
   {
-    href: "#quick-link-apply",
-    icon: "fa-file-signature",
-    label: "Apply now",
-  },
-  {
     href: "#quick-link-visit",
     icon: "fa-map-marked-alt",
     label: "Visit an ASU campus",
@@ -87,6 +82,11 @@ const DEFAULT_ITEMS = [
     href: "#quick-link-request-info",
     icon: "fa-id-card",
     label: "Request info",
+  },
+  {
+    href: "#quick-link-apply",
+    icon: "fa-file-signature",
+    label: "Apply now",
   },
 ];
 
