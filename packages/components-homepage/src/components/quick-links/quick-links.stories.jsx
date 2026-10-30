@@ -24,7 +24,7 @@ export default {
     docs: {
       description: {
         component:
-          "Quick-links row (WWWCMS-235): four icon anchors (Explore ASU Online → Apply now → Visit an ASU campus → Request info) plus a Spanish sibling link (`Aprender más en Español →`). Hover and keyboard focus paint a 16% white glass rectangle behind the active item and swap the icon to ASU gold. ≤ 900 px: 2×2 grid; ≥ 901 px: 1×4 row. Pure HTML + SCSS; zero JS shipped.",
+          "Quick-links row (WWWCMS-235): four icon anchors (Explore ASU Online → Apply now → Visit an ASU campus → Request info) plus a Spanish sibling link (`Aprender más en español →`). Hover and keyboard focus paint a 16% white glass rectangle behind the active item and swap the icon to ASU gold. ≤ 900 px: 2×2 grid; ≥ 901 px: 1×4 row. Pure HTML + SCSS; zero JS shipped.",
       },
     },
   },
@@ -175,6 +175,12 @@ export const Default393 = {
     const listBox = p.list.getBoundingClientRect();
     const esBox = p.spanish.getBoundingClientRect();
     await expect(esBox.top).toBeGreaterThan(listBox.bottom - 1);
+
+    // P2-1 (WWWCMS-235 visual-fix): at ≤900px, label font-size must be $uds-size-font-small
+    // = 0.875rem = 14px. This assertion would have caught the specificity bug.
+    for (const label of p.labels) {
+      await expect(getComputedStyle(label).fontSize).toBe("14px");
+    }
   },
 };
 
@@ -199,6 +205,12 @@ export const Default768 = {
     const item1Box = p.items[0].getBoundingClientRect();
     const item3Box = p.items[2].getBoundingClientRect();
     await expect(item3Box.top).toBeGreaterThan(item1Box.bottom - 1);
+
+    // P2-1 (WWWCMS-235 visual-fix): at ≤900px, label font-size must be $uds-size-font-small
+    // = 0.875rem = 14px. Regression guard: the specificity bump in _quick-links.scss must hold.
+    for (const label of p.labels) {
+      await expect(getComputedStyle(label).fontSize).toBe("14px");
+    }
   },
 };
 
@@ -232,6 +244,13 @@ export const Default1024 = {
       const iconFontSize = parseFloat(getComputedStyle(icon).fontSize);
       await expect(iconFontSize).toBeGreaterThanOrEqual(31); // 32px = 2rem = icon-base
       await expect(iconFontSize).toBeLessThanOrEqual(33);
+    }
+
+    // P2-1 (WWWCMS-235 visual-fix): at ≥1024px, label font-size must remain
+    // $uds-size-font-medium = 1rem = 16px. Regression guard: the specificity fix in
+    // _quick-links.scss must not affect the desktop (non-media-query) branch.
+    for (const label of p.labels) {
+      await expect(getComputedStyle(label).fontSize).toBe("16px");
     }
   },
 };
