@@ -94,6 +94,7 @@ export const storiesToTest = [
   "homepage-rankings-cards--injection-image-src-hover-missing",
   "homepage-rankings-cards--injection-attr-quotes",
   "homepage-rankings-cards--resize-to-overflow",
+  "homepage-rankings-cards--stale-sync-before-nav",
   "homepage-rankings-cards--rapid-click-coalescing",
   "homepage-rankings-cards--sanitizer-contract",
 ];

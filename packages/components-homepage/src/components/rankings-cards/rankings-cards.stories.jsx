@@ -534,12 +534,31 @@ export const ReducedMotion = {
       const hoverImgStyle = getComputedStyle(hoverImg);
       await expect(hoverImgStyle.transitionDuration).toBe("0s");
 
-      // Also exercise the JS click path: next click should scroll
-      // instantaneously (behavior:'auto' from motionBehavior()).
+      // §8 row-21 locked proof: assert the JS scrollBy call used
+      // { behavior: 'auto' } not 'smooth'.
+      //
+      // Proof strategy: measure the elapsed time between the click and the
+      // resulting `scrollend` event. With behavior:'auto', the browser
+      // jumps the scroll position in a single frame — the gap between click
+      // and scrollend is typically <10ms in Chromium headless. With
+      // behavior:'smooth', the animation runs for 200–500ms+. We use
+      // <20ms as the threshold so this assertion would catch a regression
+      // back to 'smooth' even on a slow CI host.
       await waitFor(() =>
         expect(p.prevBtn.classList.contains("is-disabled")).toBe(true)
       );
+      const scrollEndPromise = new Promise(resolve => {
+        p.track.addEventListener("scrollend", resolve, { once: true });
+        // Safety fallback so the test doesn't hang if scrollend never fires.
+        setTimeout(resolve, 500);
+      });
+      const t0 = performance.now();
       await realPointer.click(p.nextBtn);
+      await scrollEndPromise;
+      const elapsed = performance.now() - t0;
+      // Under behavior:'auto' the scroll is synchronous/single-frame.
+      // Under behavior:'smooth' it takes hundreds of ms. 20ms is a safe floor.
+      await expect(elapsed).toBeLessThan(20);
       await waitFor(() => expect(p.track.scrollLeft).toBeGreaterThan(0));
     } finally {
       await emulateReducedMotion(false);
@@ -660,8 +679,26 @@ export const NextScrollsOneCard = {
       expect(p.prevBtn.classList.contains("is-disabled")).toBe(true)
     );
     const initial = p.track.scrollLeft;
+
+    // §8 row-14 locked proof: the scroll step must equal cardWidth + gap.
+    // Compute the expected delta from the live DOM measurements.
+    const cardRect = p.cards[0].getBoundingClientRect();
+    const cardWidth = cardRect.width;
+    const gap =
+      parseFloat(getComputedStyle(p.track).columnGap) ||
+      parseFloat(getComputedStyle(p.track).gap) ||
+      0;
+    const expectedStep = cardWidth + gap;
+
     await realPointer.click(p.nextBtn);
+    // Wait for the scroll to settle.
     await waitFor(() => expect(p.track.scrollLeft).toBeGreaterThan(initial));
+    await new Promise(r => setTimeout(r, 350)); // let scrollend / idle timer clear
+
+    const actual = p.track.scrollLeft - initial;
+    // Assert within 1px of the exact one-card step (not just "positive delta").
+    await expect(Math.abs(actual - expectedStep)).toBeLessThanOrEqual(1);
+
     // Prev enabled after a step.
     await waitFor(() =>
       expect(p.prevBtn.classList.contains("is-disabled")).toBe(false)
@@ -793,17 +830,73 @@ export const ManyCardsOverflow = {
     await expect(realPointer.available).toBe(true);
     const p = parts(canvasElement);
 
+    // Initial-state assertion: overflows, nav visible, prev disabled.
     await waitFor(() =>
       expect(p.section.classList.contains("hp-rankings--no-overflow")).toBe(
         false
       )
     );
     await expect(p.cards).toHaveLength(12);
-
     await expect(getComputedStyle(p.navGroup).display).not.toBe("none");
-
     await waitFor(() =>
       expect(p.prevBtn.classList.contains("is-disabled")).toBe(true)
+    );
+
+    // §8 row-19 locked proof: prev/next endpoint cycle using the component's
+    // own buttons (NOT scrollIntoView). Click Next until Next is disabled
+    // (reached trailing end), then click Prev until Prev is disabled again
+    // (returned to leading start).
+
+    // — scroll to end via Next —
+    let iterations = 0;
+    const MAX_ITER = 50; // safety guard against infinite loop
+    while (
+      !p.nextBtn.classList.contains("is-disabled") &&
+      iterations < MAX_ITER
+    ) {
+      await realPointer.click(p.nextBtn);
+      // Wait for each scroll to settle before next click.
+      await waitFor(
+        () => expect(p.nextBtn.getAttribute("aria-disabled")).not.toBeNull(),
+        { timeout: 1000 }
+      ).catch(() => {}); // may not be disabled yet; continue loop
+      await new Promise(r => setTimeout(r, 350));
+      iterations += 1;
+    }
+    // End-state triplet on Next.
+    await waitFor(() => {
+      expect(p.nextBtn.classList.contains("is-disabled")).toBe(true);
+      expect(p.nextBtn.getAttribute("aria-disabled")).toBe("true");
+      expect(p.nextBtn.getAttribute("tabindex")).toBe("-1");
+    });
+    // Prev is enabled at the trailing end.
+    await waitFor(() =>
+      expect(p.prevBtn.classList.contains("is-disabled")).toBe(false)
+    );
+
+    // — scroll back to start via Prev —
+    iterations = 0;
+    while (
+      !p.prevBtn.classList.contains("is-disabled") &&
+      iterations < MAX_ITER
+    ) {
+      await realPointer.click(p.prevBtn);
+      await waitFor(
+        () => expect(p.prevBtn.getAttribute("aria-disabled")).not.toBeNull(),
+        { timeout: 1000 }
+      ).catch(() => {});
+      await new Promise(r => setTimeout(r, 350));
+      iterations += 1;
+    }
+    // Start-state triplet on Prev.
+    await waitFor(() => {
+      expect(p.prevBtn.classList.contains("is-disabled")).toBe(true);
+      expect(p.prevBtn.getAttribute("aria-disabled")).toBe("true");
+      expect(p.prevBtn.getAttribute("tabindex")).toBe("-1");
+    });
+    // Next is enabled at the leading start.
+    await waitFor(() =>
+      expect(p.nextBtn.classList.contains("is-disabled")).toBe(false)
     );
   },
 };
@@ -897,13 +990,27 @@ export const IdempotentInit = {
 };
 
 // ─── Row 26 — Teardown preserves server-owned triplets ──────────────────────
+//
+// Cycle-3 extension (§8 row-26 locked proof):
+//   Case A: one-card fixture — syncNavState() adds hp-rankings--no-overflow
+//           AND disables both buttons; teardown removes all JS mutations and
+//           restores the exact server-rendered values.
+//   Case B: overflow fixture with server-provided custom-disabled next
+//           triplet — re-init after teardown leaves server state intact.
+
+// Case A fixture: one card → JS will add no-overflow + disable both btns.
+const ONE_CARD_HTML = rankingsCardsHtml({
+  cards: DEFAULT_CARDS.slice(0, 1),
+});
 
 const TeardownPage = () => {
   const ref = useRef(null);
   useEffect(() => {
+    const section = ref.current.querySelector(".hp-rankings");
     const prev = ref.current.querySelector(".hp-rankings__nav-btn--prev");
     const next = ref.current.querySelector(".hp-rankings__nav-btn--next");
-    const section = ref.current.querySelector(".hp-rankings");
+
+    // Record server-rendered state BEFORE init.
     const before = {
       prev: {
         cls: prev.classList.contains("is-disabled"),
@@ -918,9 +1025,13 @@ const TeardownPage = () => {
       sectionNoOverflow: section.classList.contains("hp-rankings--no-overflow"),
     };
 
+    // initRankingsCards will call syncNavState() synchronously on the one-card
+    // fixture, adding hp-rankings--no-overflow and the disabled triplet on BOTH
+    // buttons (they were only on prev server-side).
     const teardown = initRankingsCards(ref.current);
     teardown();
 
+    // Record state AFTER teardown.
     const after = {
       prev: {
         cls: prev.classList.contains("is-disabled"),
@@ -943,6 +1054,50 @@ const TeardownPage = () => {
     <div
       ref={ref}
       style={{ background: "#002b5c", padding: "2rem" }}
+      dangerouslySetInnerHTML={{ __html: ONE_CARD_HTML }}
+    />
+  );
+};
+
+// Case B fixture: overflow dataset with server-provided custom-disabled next.
+// Build HTML then surgically add the disabled triplet to next before React mounts.
+const TeardownPageCustomNext = () => {
+  const ref = useRef(null);
+  useEffect(() => {
+    const section = ref.current.querySelector(".hp-rankings");
+    const prev = ref.current.querySelector(".hp-rankings__nav-btn--prev");
+    const next = ref.current.querySelector(".hp-rankings__nav-btn--next");
+
+    // Simulate a server that pre-disabled both buttons (e.g. a CMS variant).
+    next.classList.add("is-disabled");
+    next.setAttribute("aria-disabled", "true");
+    next.setAttribute("tabindex", "-1");
+
+    const serverBefore = {
+      prev: { cls: prev.classList.contains("is-disabled"), aria: prev.getAttribute("aria-disabled"), tab: prev.getAttribute("tabindex") },
+      next: { cls: next.classList.contains("is-disabled"), aria: next.getAttribute("aria-disabled"), tab: next.getAttribute("tabindex") },
+    };
+
+    const teardown = initRankingsCards(ref.current);
+    teardown();
+
+    const after = {
+      prev: { cls: prev.classList.contains("is-disabled"), aria: prev.getAttribute("aria-disabled"), tab: prev.getAttribute("tabindex") },
+      next: { cls: next.classList.contains("is-disabled"), aria: next.getAttribute("aria-disabled"), tab: next.getAttribute("tabindex") },
+    };
+
+    section.dataset.serverBefore = JSON.stringify(serverBefore);
+    section.dataset.afterTeardown = JSON.stringify(after);
+
+    // Re-init should succeed after teardown (section was un-registered from WeakSet).
+    const teardown2 = initRankingsCards(ref.current);
+    section.dataset.reinitOk = teardown2 !== undefined ? "true" : "false";
+    teardown2();
+  }, []);
+  return (
+    <div
+      ref={ref}
+      style={{ background: "#002b5c", padding: "2rem" }}
       dangerouslySetInnerHTML={{ __html: OVERFLOW_HTML }}
     />
   );
@@ -951,36 +1106,68 @@ const TeardownPage = () => {
 export const TeardownCleansUp = {
   name: "Teardown cleans up",
   globals: viewport(1280),
-  render: () => <TeardownPage />,
+  render: () => (
+    <div>
+      <TeardownPage />
+      <TeardownPageCustomNext />
+    </div>
+  ),
   play: async ({ canvasElement }) => {
-    const p = parts(canvasElement);
-
-    // The server markup had prev disabled (triplet). Teardown must preserve it.
+    // ── Case A: one-card fixture ──────────────────────────────────────────
+    // syncNavState() adds hp-rankings--no-overflow AND disabled triplet on
+    // both buttons (next was server-enabled). Teardown must remove JS-added
+    // no-overflow class AND restore next to its server-enabled state.
+    const sectionA = canvasElement.querySelectorAll("section.hp-rankings")[0];
     await waitFor(() => {
-      expect(p.section.dataset.afterTeardown).toBeTruthy();
+      expect(sectionA.dataset.afterTeardown).toBeTruthy();
     });
-    const before = JSON.parse(p.section.dataset.beforeTeardown);
-    const after = JSON.parse(p.section.dataset.afterTeardown);
+    const beforeA = JSON.parse(sectionA.dataset.beforeTeardown);
+    const afterA = JSON.parse(sectionA.dataset.afterTeardown);
 
-    // Prev triplet survives teardown unchanged (per-attribute check).
-    await expect(after.prev.cls).toBe(before.prev.cls);
-    await expect(after.prev.aria).toBe(before.prev.aria);
-    await expect(after.prev.tab).toBe(before.prev.tab);
-    // Specifically: the server shipped prev disabled → after teardown still disabled.
-    await expect(after.prev.cls).toBe(true);
-    await expect(after.prev.aria).toBe("true");
-    await expect(after.prev.tab).toBe("-1");
+    // Server shipped prev disabled, no-overflow class absent.
+    await expect(beforeA.prev.cls).toBe(true);
+    await expect(beforeA.prev.aria).toBe("true");
+    await expect(beforeA.prev.tab).toBe("-1");
+    await expect(beforeA.sectionNoOverflow).toBe(false);
+    // Server shipped next ENABLED.
+    await expect(beforeA.next.cls).toBe(false);
+    await expect(beforeA.next.aria).toBeNull();
+    await expect(beforeA.next.tab).toBeNull();
 
-    // Next: server shipped enabled → after teardown still enabled.
-    await expect(after.next.cls).toBe(before.next.cls);
-    await expect(after.next.aria).toBe(before.next.aria);
-    await expect(after.next.tab).toBe(before.next.tab);
-    await expect(after.next.cls).toBe(false);
-    await expect(after.next.aria).toBeNull();
-    await expect(after.next.tab).toBeNull();
+    // After teardown — server values restored exactly.
+    // JS-added disabled triplet on next is removed.
+    await expect(afterA.next.cls).toBe(false);
+    await expect(afterA.next.aria).toBeNull();
+    await expect(afterA.next.tab).toBeNull();
+    // JS-added no-overflow class is gone.
+    await expect(afterA.sectionNoOverflow).toBe(false);
+    // Server-owned prev triplet unchanged.
+    await expect(afterA.prev.cls).toBe(true);
+    await expect(afterA.prev.aria).toBe("true");
+    await expect(afterA.prev.tab).toBe("-1");
 
-    // JS-only no-overflow class is gone after teardown.
-    await expect(after.sectionNoOverflow).toBe(false);
+    // ── Case B: overflow + server-pre-disabled next ──────────────────────
+    // After init+teardown, the server-pre-disabled next triplet must survive,
+    // and re-init must succeed (WeakSet cleared by teardown).
+    const sectionB = canvasElement.querySelectorAll("section.hp-rankings")[1];
+    await waitFor(() => {
+      expect(sectionB.dataset.afterTeardown).toBeTruthy();
+    });
+    const serverBefore = JSON.parse(sectionB.dataset.serverBefore);
+    const afterB = JSON.parse(sectionB.dataset.afterTeardown);
+
+    // Server had both disabled before init.
+    await expect(serverBefore.next.cls).toBe(true);
+    await expect(serverBefore.next.aria).toBe("true");
+    await expect(serverBefore.next.tab).toBe("-1");
+
+    // After teardown — server pre-disabled next triplet is preserved.
+    await expect(afterB.next.cls).toBe(true);
+    await expect(afterB.next.aria).toBe("true");
+    await expect(afterB.next.tab).toBe("-1");
+
+    // Re-init succeeded (WeakSet was cleared by teardown).
+    await expect(sectionB.dataset.reinitOk).toBe("true");
   },
 };
 
@@ -1354,6 +1541,55 @@ export const ResizeToOverflow = {
   },
 };
 
+// ─── Cycle-3 Fix-1 regression: stale state reconciled before nav activation ──
+//
+// Proves §5.2 click preflight: if track scrollLeft is mutated directly (e.g. by
+// a CMS resize or programmatic scroll) without dispatching a `scroll`/`scrollend`
+// event, the click handler re-syncs state before allowing the scroll.
+
+export const StaleSyncBeforeNav = {
+  name: "Stale state reconciled before nav click (§5.2 preflight)",
+  globals: viewport(1280),
+  render: () => <LivePage html={OVERFLOW_HTML} />,
+  play: async ({ canvasElement }) => {
+    await expect(realPointer.available).toBe(true);
+    const p = parts(canvasElement);
+
+    // Wait for initial sync: prev disabled at scrollLeft=0.
+    await waitFor(() =>
+      expect(p.prevBtn.classList.contains("is-disabled")).toBe(true)
+    );
+
+    // Mutate scrollLeft directly WITHOUT dispatching a scroll/scrollend event.
+    // This simulates a layout change (injected card, resize, CMS mutation) that
+    // moves the track away from scrollLeft=0 without triggering the passive
+    // scroll listener. Prev should logically become enabled, but the DOM still
+    // has the stale disabled triplet.
+    const cardWidth = p.cards[0].offsetWidth;
+    const gap = parseFloat(getComputedStyle(p.track).columnGap) || 0;
+    const oneStep = cardWidth + gap;
+    Object.defineProperty(p.track, "scrollLeft", { value: oneStep, writable: true, configurable: true });
+
+    // Verify the stale state: prev is still showing as disabled in the DOM
+    // (because no scroll event ran syncNavState).
+    await expect(p.prevBtn.classList.contains("is-disabled")).toBe(true);
+
+    // Now click Next. The §5.2 preflight calls syncNavState() first.
+    // syncNavState() reads the new scrollLeft and determines prev should be enabled.
+    // After syncNavState, aria-disabled on next (end-of-track check) must also
+    // reflect current position — and prev must be enabled before any scroll fires.
+    await realPointer.click(p.nextBtn);
+
+    // The sync must have run: prev is now enabled (reflects the mutated scrollLeft).
+    await waitFor(() =>
+      expect(p.prevBtn.classList.contains("is-disabled")).toBe(false)
+    );
+    await waitFor(() =>
+      expect(p.prevBtn.getAttribute("aria-disabled")).toBeNull()
+    );
+  },
+};
+
 // ─── Review item 8: rapid-click coalescing ──────────────────────────────────
 
 export const RapidClickCoalescing = {
@@ -1370,12 +1606,12 @@ export const RapidClickCoalescing = {
     const gap = parseFloat(getComputedStyle(p.track).columnGap) || 16;
     const oneStep = cardWidth + gap;
 
-    // Burst five clicks in rapid succession (back-to-back userEvent clicks).
+    // ── Part A: burst five rapid clicks ─────────────────────────────────
     const initial = p.track.scrollLeft;
     for (let i = 0; i < 5; i += 1) {
       await realPointer.click(p.nextBtn);
     }
-    // Let the scroll settle (scrollend or fallback 300ms).
+    // Let the scroll settle (scrollend or idle debounce).
     await new Promise(r => setTimeout(r, 500));
     const delta = p.track.scrollLeft - initial;
     // Coalescing dropped the extra clicks → delta is ≤ one step + tolerance,
@@ -1386,6 +1622,44 @@ export const RapidClickCoalescing = {
     await realPointer.click(p.nextBtn);
     await new Promise(r => setTimeout(r, 500));
     await expect(p.track.scrollLeft).toBeGreaterThan(afterCoalesce);
+
+    // ── Part B: long-scroll proof (cycle-3 P2 fix) ───────────────────────
+    // Simulate a long scroll that takes >300 ms (the old fixed timeout) by
+    // dispatching synthetic `scroll` events over a >300 ms window via RAF
+    // increments. The pendingScroll lock must survive for the full duration
+    // because each `scroll` event resets the idle debounce timer (150 ms).
+    // A second Next click during this window must be ignored.
+    await waitFor(() =>
+      expect(p.prevBtn.classList.contains("is-disabled")).toBe(false)
+    );
+    await new Promise(r => setTimeout(r, 200)); // let any prior settle finish
+
+    const beforeLong = p.track.scrollLeft;
+    // Trigger pendingScroll by clicking Next.
+    await realPointer.click(p.nextBtn);
+
+    // Dispatch synthetic scroll events every ~50ms for 400ms to simulate a
+    // long in-flight scroll (longer than the old 300ms fixed timeout).
+    // Each dispatch resets the 150ms idle timer, so the lock stays alive.
+    const LONG_SCROLL_MS = 400;
+    const INTERVAL_MS = 50;
+    const startTime = performance.now();
+    while (performance.now() - startTime < LONG_SCROLL_MS) {
+      p.track.dispatchEvent(new Event("scroll"));
+      // eslint-disable-next-line no-await-in-loop
+      await new Promise(r => setTimeout(r, INTERVAL_MS));
+    }
+
+    // Attempt a second Next click while the scroll is still "in flight" (lock held).
+    await realPointer.click(p.nextBtn);
+
+    // Now let everything settle (idle timer + any real scrollend).
+    await new Promise(r => setTimeout(r, 400));
+
+    const finalDelta = p.track.scrollLeft - beforeLong;
+    // If the lock was properly maintained, the second click was dropped →
+    // final delta is ≤ one step (not two).
+    await expect(finalDelta).toBeLessThanOrEqual(oneStep + 10);
   },
 };
 
