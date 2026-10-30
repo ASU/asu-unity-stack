@@ -35,7 +35,7 @@
 //     attribute survives even when card inputs contain `data-ga` substrings).
 
 import React, { useEffect, useRef } from "react";
-import { expect, userEvent, waitFor } from "storybook/test";
+import { expect, spyOn, userEvent, waitFor } from "storybook/test";
 
 import {
   DEFAULT_CARDS,
@@ -1118,10 +1118,42 @@ const TeardownPageCustomNext = () => {
     section.dataset.serverBefore = JSON.stringify(serverBefore);
     section.dataset.afterTeardown = JSON.stringify(after);
 
-    // Re-init should succeed after teardown (section was un-registered from WeakSet).
+    // ── Cycle-4 P2 fix: prove second init causes a visible DOM mutation ──
+    // After teardown, the section is removed from the WeakSet. A real second
+    // `initRankingsCards` call must run `syncNavState()`, which mutates the DOM.
+    // The `ignore` no-op path (returned when the section is still in the WeakSet,
+    // i.e. teardown did NOT clear the entry) would NOT mutate anything.
+    //
+    // To guarantee `syncNavState()` mutates: remove all but one card from the
+    // track so scrollWidth <= clientWidth. syncNavState() will add
+    // hp-rankings--no-overflow and disable both buttons. This change is only
+    // observable if a real init ran — not the ignore no-op.
+    const track = section.querySelector(".hp-rankings__track");
+    const allCards = Array.from(track.querySelectorAll(".hp-rankings__card"));
+    // Keep one card; remove the rest to force no-overflow geometry.
+    const removedCards = allCards.slice(1);
+    removedCards.forEach(c => track.removeChild(c));
+
     const teardown2 = initRankingsCards(ref.current);
-    section.dataset.reinitOk = teardown2 !== undefined ? "true" : "false";
+
+    // Snapshot state after second init (syncNavState must have run).
+    const afterReinit = {
+      noOverflow: section.classList.contains("hp-rankings--no-overflow"),
+      nextDisabledCls: next.classList.contains("is-disabled"),
+      nextAriaDisabled: next.getAttribute("aria-disabled"),
+    };
+    section.dataset.afterReinit = JSON.stringify(afterReinit);
+
+    // Restore the removed cards before teardown2 so geometry goes back to overflow.
+    removedCards.forEach(c => track.appendChild(c));
     teardown2();
+
+    const afterTeardown2 = {
+      noOverflow: section.classList.contains("hp-rankings--no-overflow"),
+      nextDisabledCls: next.classList.contains("is-disabled"),
+      nextAriaDisabled: next.getAttribute("aria-disabled"),
+    };
+    section.dataset.afterTeardown2 = JSON.stringify(afterTeardown2);
   }, []);
   return (
     <div
@@ -1195,8 +1227,29 @@ export const TeardownCleansUp = {
     await expect(afterB.next.aria).toBe("true");
     await expect(afterB.next.tab).toBe("-1");
 
-    // Re-init succeeded (WeakSet was cleared by teardown).
-    await expect(sectionB.dataset.reinitOk).toBe("true");
+    // ── Cycle-4 P2 fix: prove visible DOM mutation from second init ───────
+    // Wait for the second-init dataset to be populated.
+    await waitFor(() => {
+      expect(sectionB.dataset.afterReinit).toBeTruthy();
+    });
+    const afterReinit = JSON.parse(sectionB.dataset.afterReinit);
+    const afterTeardown2 = JSON.parse(sectionB.dataset.afterTeardown2);
+
+    // Second init must have called syncNavState() on the one-card track:
+    // hp-rankings--no-overflow added + next disabled.
+    // If initRankingsCards returned the `ignore` no-op (WeakSet not cleared by
+    // first teardown), neither mutation would have occurred.
+    await expect(afterReinit.noOverflow).toBe(true);
+    await expect(afterReinit.nextDisabledCls).toBe(true);
+    await expect(afterReinit.nextAriaDisabled).toBe("true");
+
+    // After teardown2, the JS-added mutations from the second init are removed.
+    // The section reverts to no hp-rankings--no-overflow (cards restored to overflow).
+    await expect(afterTeardown2.noOverflow).toBe(false);
+    // The server-pre-disabled next triplet must survive teardown2 (teardown2 only
+    // restores what the second init changed — it did not own the server-set triplet).
+    await expect(afterTeardown2.nextDisabledCls).toBe(true);
+    await expect(afterTeardown2.nextAriaDisabled).toBe("true");
   },
 };
 
@@ -1603,23 +1656,45 @@ export const StaleSyncBeforeNav = {
       configurable: true,
     });
 
-    // Verify the stale state: prev is still showing as disabled in the DOM
-    // (because no scroll event ran syncNavState).
+    // Confirm stale state: DOM still reports prev as disabled (no scroll fired).
     await expect(p.prevBtn.classList.contains("is-disabled")).toBe(true);
 
-    // Now click Next. The §5.2 preflight calls syncNavState() first.
-    // syncNavState() reads the new scrollLeft and determines prev should be enabled.
-    // After syncNavState, aria-disabled on next (end-of-track check) must also
-    // reflect current position — and prev must be enabled before any scroll fires.
-    await realPointer.click(p.nextBtn);
+    // ── Cycle-4 P2 fix: spy on scrollBy with call-through ────────────────
+    // Install a call-through spy on track.scrollBy BEFORE the click.
+    // Inside mockImplementation, snapshot button state AT THE MOMENT scrollBy
+    // is called. This proves syncNavState() reconciled the DOM before scrollBy
+    // fired — not after a post-scroll event reconciled it subsequently.
+    let navStateAtScrollByCall = null;
+    const scrollBySpy = spyOn(p.track, "scrollBy").mockImplementation(function (
+      ...args
+    ) {
+      // Capture nav button state at the instant scrollBy is invoked.
+      navStateAtScrollByCall = {
+        prevDisabledCls: p.prevBtn.classList.contains("is-disabled"),
+        prevAriaDisabled: p.prevBtn.getAttribute("aria-disabled"),
+        nextDisabledCls: p.nextBtn.classList.contains("is-disabled"),
+        nextAriaDisabled: p.nextBtn.getAttribute("aria-disabled"),
+      };
+      // Call through so the actual scroll still happens.
+      Element.prototype.scrollBy.call(this, ...args);
+    });
 
-    // The sync must have run: prev is now enabled (reflects the mutated scrollLeft).
-    await waitFor(() =>
-      expect(p.prevBtn.classList.contains("is-disabled")).toBe(false)
-    );
-    await waitFor(() =>
-      expect(p.prevBtn.getAttribute("aria-disabled")).toBeNull()
-    );
+    try {
+      await realPointer.click(p.nextBtn);
+
+      // scrollBy must have been called exactly once.
+      await expect(scrollBySpy.mock.calls.length).toBe(1);
+
+      // At the moment scrollBy fired, syncNavState() must have already run:
+      // prev was enabled (scrollLeft was at oneStep, not at start).
+      await expect(navStateAtScrollByCall).not.toBeNull();
+      await expect(navStateAtScrollByCall.prevDisabledCls).toBe(false);
+      await expect(navStateAtScrollByCall.prevAriaDisabled).toBeNull();
+      // Next was not at end of track, so it must also be enabled.
+      await expect(navStateAtScrollByCall.nextDisabledCls).toBe(false);
+    } finally {
+      scrollBySpy.mockRestore();
+    }
   },
 };
 
@@ -1656,38 +1731,73 @@ export const RapidClickCoalescing = {
     await new Promise(r => setTimeout(r, 500));
     await expect(p.track.scrollLeft).toBeGreaterThan(afterCoalesce);
 
-    // ── Part B: long-scroll quiescence proof (cycle-3 P2 fix) ────────────
-    // Prove the idle debounce keeps the lock alive past the old fixed 300ms.
+    // ── Part B: long-scroll quiescence proof (cycle-4 P2 fix) ────────────
+    // Prove the idle debounce keeps the lock alive past the old fixed 300ms
+    // window. The old implementation (setTimeout 300) would release the lock
+    // at ~300ms even if scroll events are still arriving; the new idle-debounce
+    // implementation resets its 150ms timer on every scroll event and therefore
+    // keeps the lock alive for as long as synthetic scroll activity continues.
     //
-    // Strategy: click Next, then immediately dispatch synthetic `scroll` events
-    // to keep resetting the idle timer before it elapses, then attempt a second
-    // click and assert it was ignored. The key insight: in a real browser,
-    // smooth scrolls in headless are ~50ms, so `scrollend` fires quickly. We
-    // therefore test the mechanism by:
-    //   1. Directly setting pendingScroll via a click.
-    //   2. Before awaiting anything, dispatching a `scroll` event (which calls
-    //      resetIdleTimer, keeping the lock alive past 150ms).
-    //   3. Firing a second click *immediately* (no await) while pendingScroll is true.
-    //   4. Then awaiting settle, asserting only one step.
+    // Strategy:
+    //   1. Suppress the native scrollend event (capture-phase interceptor) so
+    //      the primary lock-release path cannot fire during the test window.
+    //   2. Click Next to arm pendingScroll (lock engaged).
+    //   3. Start a setInterval that dispatches a synthetic `scroll` event every
+    //      50ms. This keeps resetting the 150ms idle timer.
+    //   4. After 350ms (past the old 300ms fixed window), attempt a second click.
+    //   5. Assert the second click was coalesced: final delta ≤ one step.
+    //   6. Remove the scrollend interceptor, stop the interval, allow settle.
     await waitFor(() =>
       expect(p.prevBtn.classList.contains("is-disabled")).toBe(false)
     );
     await new Promise(r => setTimeout(r, 250)); // let any prior settle finish
 
     const beforeLong = p.track.scrollLeft;
-    // Click Next (sets pendingScroll = true).
-    p.nextBtn.click();
-    // Immediately dispatch a scroll event to reset the idle timer (simulates
-    // the browser firing scroll events during the animation).
-    p.track.dispatchEvent(new Event("scroll"));
-    // Attempt a second click synchronously while pendingScroll is guaranteed true.
+
+    // (1) Suppress scrollend delivery to the production listener.
+    // The production listener is registered as bubble-phase; a capturing
+    // stopImmediatePropagation prevents it from receiving the event.
+    const suppressScrollend = e => e.stopImmediatePropagation();
+    p.track.addEventListener("scrollend", suppressScrollend, { capture: true });
+
+    // (2) Click Next — arms pendingScroll (lock engaged).
     p.nextBtn.click();
 
-    // Let everything settle.
-    await new Promise(r => setTimeout(r, 600));
+    // (3) Sustain synthetic scroll activity: reset the idle timer every 50ms.
+    let scrollInterval = null;
+    try {
+      scrollInterval = setInterval(() => {
+        p.track.dispatchEvent(new Event("scroll"));
+      }, 50);
+
+      // (4) Wait 350ms — past the old 300ms fixed-timeout release window — then
+      // attempt a second click. The idle debounce must still be armed because
+      // synthetic scroll events have kept resetting the 150ms idle timer, AND
+      // scrollend was suppressed so the primary path could not release the lock.
+      await new Promise(r => setTimeout(r, 350));
+      p.nextBtn.click();
+
+      // (5) Stop the interval and release the scrollend suppressor.
+      clearInterval(scrollInterval);
+      scrollInterval = null;
+      p.track.removeEventListener("scrollend", suppressScrollend, {
+        capture: true,
+      });
+
+      // Allow the idle debounce (150ms) to fire and settle.
+      await new Promise(r => setTimeout(r, 400));
+    } finally {
+      if (scrollInterval !== null) {
+        clearInterval(scrollInterval);
+      }
+      // Ensure scrollend suppressor is always removed.
+      p.track.removeEventListener("scrollend", suppressScrollend, {
+        capture: true,
+      });
+    }
 
     const finalDelta = p.track.scrollLeft - beforeLong;
-    // The second click was coalesced → final delta is ≤ one step (not two).
+    // The second click at 350ms was coalesced → final delta is ≤ one step.
     await expect(finalDelta).toBeLessThanOrEqual(oneStep + 10);
   },
 };
