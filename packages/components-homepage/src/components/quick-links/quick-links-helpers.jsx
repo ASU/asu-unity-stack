@@ -13,14 +13,53 @@ export {
 // ---- Markup contract ----
 
 // XSS-safe escape for attribute values and text nodes in template-literal HTML.
+// Apostrophe is included so the helper remains XSS-safe in future single-quoted contexts.
 const escape = value =>
   String(value)
     .replace(/&/g, "&amp;")
     .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
 
-// Normative order per design-doc §4a and ticket Behavior spec.
+// URL allow-list for href attributes.
+// Allowed schemes: https:, mailto:, tel:, fragment-only (#...), relative paths.
+// Blocked: javascript:, data:, vbscript: (XSS vectors).
+// The literal design-doc placeholder <spanish-url-placeholder> is allowed as-is
+// (it cannot be crafted into an XSS payload and must round-trip through escape()).
+// Emits a console.warn (deduplicated) for each rejected value.
+const _warnedHrefs = new Set();
+export const safeHref = href => {
+  const s = String(href);
+  // Allow the design-doc placeholder verbatim.
+  if (s === "<spanish-url-placeholder>") return s;
+  // Block javascript:, data:, vbscript: — case-insensitive.
+  if (/^(javascript|data|vbscript):/i.test(s)) {
+    if (!_warnedHrefs.has(s)) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        `[quick-links] safeHref: blocked unsafe URL scheme in "${s.slice(0, 50)}"`
+      );
+      _warnedHrefs.add(s);
+    }
+    return "#";
+  }
+  return s;
+};
+
+// Font Awesome resolution (WWWCMS-235 review fix cycle 1):
+// The unity-bootstrap-theme peer dependency is @fortawesome/fontawesome-free 5.15.3 (FA 5).
+// The components-homepage/.storybook/main.js previewHead strips the shared CDN script that
+// would inject Font Awesome 6.4.2, so FA CSS is not loaded in Storybook for this package.
+// DEFAULT_ITEMS therefore uses FA 5 Free Solid class names:
+//   fa-laptop       — available in FA 5 Free Solid (unchanged)
+//   fa-file-signature — FA 5 equivalent of FA 6 fa-file-pen (for "Apply now")
+//   fa-map-marked-alt — FA 5 equivalent of FA 6 fa-map-location-dot (for "Visit an ASU campus")
+//   fa-id-card      — available in FA 5 Free Solid (unchanged)
+// Stage B: the host page is expected to load Font Awesome (standard Unity host assumption,
+// documented in unity-bootstrap-theme/README.md). Use FA 5 Free Solid class names in Twig.
+// If the host upgrades to FA 6, update fa-file-signature → fa-file-pen and
+//   fa-map-marked-alt → fa-map-location-dot accordingly.
 const DEFAULT_ITEMS = [
   {
     href: "#quick-link-explore",
@@ -29,12 +68,12 @@ const DEFAULT_ITEMS = [
   },
   {
     href: "#quick-link-apply",
-    icon: "fa-file-pen",
+    icon: "fa-file-signature",
     label: "Apply now",
   },
   {
     href: "#quick-link-visit",
-    icon: "fa-map-location-dot",
+    icon: "fa-map-marked-alt",
     label: "Visit an ASU campus",
   },
   {
@@ -48,7 +87,7 @@ export const SPANISH_HREF_PLACEHOLDER = "<spanish-url-placeholder>";
 export const SPANISH_LABEL = "Aprender más en Español";
 
 // Stage B parity source (design-doc §4a). The Storybook html-parity story serializes
-// `canvasElement.firstChild.outerHTML` and compares it against this string.
+// `canvasElement.innerHTML` (normalized) and compares it against this string.
 export const quickLinksHtml = ({
   items = DEFAULT_ITEMS,
   spanishHref = SPANISH_HREF_PLACEHOLDER,
@@ -60,7 +99,7 @@ export const quickLinksHtml = ({
     .map(
       ({ href, icon, label }) =>
         `<li class="hp-quick-links__item">` +
-        `<a class="hp-quick-link" href="${escape(href)}">` +
+        `<a class="hp-quick-link" href="${escape(safeHref(href))}">` +
         `<i class="hp-quick-link__icon fa-solid ${escape(icon)}" aria-hidden="true"></i>` +
         `<span class="hp-quick-link__label">${escape(label)}</span>` +
         `</a>` +
@@ -68,7 +107,7 @@ export const quickLinksHtml = ({
     )
     .join("") +
   `</ul>` +
-  `<a class="hp-quick-link-es" href="${escape(spanishHref)}" lang="es" hreflang="es">` +
+  `<a class="hp-quick-link-es" href="${escape(safeHref(spanishHref))}" lang="es" hreflang="es">` +
   `${escape(SPANISH_LABEL)} ` +
   `<i class="hp-quick-link-es__icon fa-solid ${escape(spanishIcon)}" aria-hidden="true"></i>` +
   `</a>` +
