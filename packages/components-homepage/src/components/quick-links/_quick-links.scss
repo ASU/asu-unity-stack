@@ -226,3 +226,11 @@ $hp-quick-links-column-gap-max: $uds-size-spacing-12;
     outline-offset: 2px;
   }
 }
+
+// --- story backdrop helper (Storybook-only surface; never appears in production markup) ---
+// Used by the withBackdrop decorator in quick-links.stories.jsx.
+// $asu-gray-1 provides a dark surface for white-text contrast in Alfa audits.
+// Hex reference documented in quick-links-tokens.js (BACKDROP_PLAIN).
+.hp-quick-links-backdrop--plain {
+  background-color: $asu-gray-1;
+}

@@ -10,8 +10,11 @@ import {
   forceHover,
   quickLinksHtml,
   realKeyboard,
+  safeHref,
   SPANISH_LABEL,
 } from "./quick-links-helpers.jsx";
+
+import { BACKDROP_PLAIN, FOCUS_RING_OUTER } from "./quick-links-tokens.js";
 
 // ---- meta ----
 
@@ -31,10 +34,9 @@ export default {
 
 // Focus ring: design-doc §8 rows 9–13 require the LOCKED two-tone ring.
 // .hp-quick-link:focus-visible uses `box-shadow: var(--hp-focus-inner), var(--hp-focus-outer) !important`
-// to beat unity-bootstrap-theme/src/scss/extends/_misc.scss:143-154's `a:focus { box-shadow: ...!important }`.
-// --hp-focus-inner = 2px white; --hp-focus-outer = #00baff (rgb(0, 186, 255)) per _variables.scss.
-const RING =
-  "rgb(255, 255, 255) 0px 0px 0px 2px, rgb(0, 186, 255) 0px 0px 0px 4px";
+// to beat unity-bootstrap-theme's `a:focus { box-shadow: ...!important }`.
+// Token values are documented in quick-links-tokens.js.
+const RING = `rgb(255, 255, 255) 0px 0px 0px 2px, ${FOCUS_RING_OUTER} 0px 0px 0px 4px`;
 const GOLD = "rgb(255, 198, 39)";
 const WHITE = "rgb(255, 255, 255)";
 const GLASS = "rgba(255, 255, 255, 0.16)";
@@ -69,8 +71,9 @@ const Page = ({ html }) => <div dangerouslySetInnerHTML={{ __html: html }} />;
 
 // Backdrop decorator: wraps the row in the Palo Verde photo or a plain dark surface.
 // Photo backdrop uses the .intake/future-1440-p2.png fixture (Vite asset import).
-// Plain backdrop uses #191919 ($uds-color-gray-1) — appropriate for Alfa contrast arithmetic
-// on white text (matches the accessibility-plain story pattern).
+// Plain backdrop uses the .hp-quick-links-backdrop--plain CSS class (token: $uds-color-gray-1,
+// documented in quick-links-tokens.js as BACKDROP_PLAIN) — appropriate for Alfa contrast
+// arithmetic on white text (matches the accessibility-plain story pattern).
 const withBackdrop = (Story, context) => {
   const backdrop = context.args?.backdrop ?? "plain";
   const style =
@@ -86,15 +89,16 @@ const withBackdrop = (Story, context) => {
           padding: "2rem 0",
         }
       : {
-          backgroundColor: "#191919", // $uds-color-gray-1 — white text contrast target
           minHeight: "200px",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           padding: "2rem 0",
         };
+  const extraClass =
+    backdrop === "plain" ? "hp-quick-links-backdrop--plain" : "";
   return (
-    <div style={style}>
+    <div className={extraClass} style={style}>
       <Story />
     </div>
   );
@@ -383,9 +387,10 @@ const focusStory = (itemIndex, name) => ({
     const item = p.items[itemIndex];
     await expect(document.activeElement).toBe(item);
 
-    // LOCKED two-tone focus ring: white 2px + #00baff (#hp-focus-outer) 4px.
+    // LOCKED two-tone focus ring: white 2px inner + FOCUS_RING_OUTER 4px outer.
     // This asserts the design-doc §8 row 9-12 locked value, proving our !important
     // in _quick-links.scss beats the theme's a:focus !important override.
+    // Token values documented in quick-links-tokens.js.
     await waitFor(() => expect(getComputedStyle(item).boxShadow).toBe(RING));
     // Glass background (waitFor for paint timing)
     await waitFor(() =>
@@ -548,7 +553,8 @@ export const AccessibilityPlain = {
   decorators: [withBackdrop],
   render: () => (
     // Render on a dark surface so white text has real contrast for Alfa.
-    <div style={{ background: "#191919", padding: "2rem" }}>
+    // BACKDROP_PLAIN = $uds-color-gray-1 (documented in quick-links-tokens.js)
+    <div style={{ background: BACKDROP_PLAIN, padding: "2rem" }}>
       <Page html={quickLinksHtml()} />
     </div>
   ),
@@ -588,29 +594,96 @@ export const Default901 = {
 };
 
 // Unsafe href rejected story (review finding P2-6)
+// Covers the full allow-list: blocked schemes, whitespace-prefixed, scheme-relative,
+// http: (not on allow-list), and all permitted forms.
+// safeHref is asserted directly AND through full quickLinksHtml() rendering.
+
+// safeHref unit assertions (run as part of the story play function)
+const HREF_CASES = [
+  // Blocked: javascript variants (including whitespace-prefixed, tab, mixed-case)
+  { href: "javascript:alert(1)", expected: "#", desc: "javascript:" },
+  {
+    href: "  javascript:alert(1)",
+    expected: "#",
+    desc: "space-prefixed javascript:",
+  },
+  {
+    href: "\tJavaScript:alert(1)",
+    expected: "#",
+    desc: "tab+mixed-case JavaScript:",
+  },
+  // Blocked: data:, vbscript:, file:, blob:, custom-scheme:
+  {
+    href: "data:text/html,<script>alert(1)</script>",
+    expected: "#",
+    desc: "data:",
+  },
+  { href: "vbscript:msgbox", expected: "#", desc: "vbscript:" },
+  { href: "file:///etc/passwd", expected: "#", desc: "file:" },
+  { href: "blob:https://evil.example/uid", expected: "#", desc: "blob:" },
+  { href: "custom-scheme:foo", expected: "#", desc: "custom-scheme:" },
+  // Blocked: scheme-relative
+  { href: "//evil.example/foo", expected: "#", desc: "scheme-relative //" },
+  // Blocked: http: (not on allow-list; must use https:)
+  { href: "http://example.com/", expected: "#", desc: "http: (not allowed)" },
+  // Allowed: https:
+  {
+    href: "https://example.com/",
+    expected: "https://example.com/",
+    desc: "https: allowed",
+  },
+  // Allowed: relative paths, root path, query
+  {
+    href: "/relative/path",
+    expected: "/relative/path",
+    desc: "/relative/path",
+  },
+  { href: "relative-path", expected: "relative-path", desc: "relative-path" },
+  // Allowed: fragment-only
+  { href: "#fragment", expected: "#fragment", desc: "#fragment" },
+  // Allowed: mailto: and tel:
+  {
+    href: "mailto:info@asu.edu",
+    expected: "mailto:info@asu.edu",
+    desc: "mailto:",
+  },
+  { href: "tel:+16029655555", expected: "tel:+16029655555", desc: "tel:" },
+  // Allowed: design-doc placeholder (round-trips)
+  {
+    href: "<spanish-url-placeholder>",
+    expected: "<spanish-url-placeholder>",
+    desc: "Spanish placeholder",
+  },
+  // Null/undefined → "#"
+  { href: null, expected: "#", desc: "null" },
+  { href: undefined, expected: "#", desc: "undefined" },
+];
+
 export const UnsafeHrefRejected = {
   name: "unsafe-href-rejected",
   globals: viewport(1024),
   args: { backdrop: "plain" },
   decorators: [withBackdrop],
   render: () => (
+    // Integration: render two cases through quickLinksHtml to prove end-to-end.
+    // javascript: → href="#"; https: → href passes through (escaped).
     <Page
       html={quickLinksHtml({
         items: [
           {
             href: "javascript:alert(1)",
             icon: "fa-laptop",
-            label: "Unsafe link",
-          },
-          {
-            href: "data:text/html,<script>alert(1)</script>",
-            icon: "fa-file-signature",
-            label: "Data URI link",
+            label: "Unsafe javascript",
           },
           {
             href: "https://asu.edu/visit",
+            icon: "fa-file-signature",
+            label: "Safe https",
+          },
+          {
+            href: "  javascript:alert(1)",
             icon: "fa-map-marked-alt",
-            label: "Safe link",
+            label: "Whitespace-prefixed javascript",
           },
           {
             href: "#safe-fragment",
@@ -622,20 +695,25 @@ export const UnsafeHrefRejected = {
     />
   ),
   play: async ({ canvasElement }) => {
-    const p = parts(canvasElement);
+    // --- Direct safeHref unit assertions ---
+    for (const { href, expected, desc } of HREF_CASES) {
+      await expect(safeHref(href), desc).toBe(expected);
+    }
 
-    // javascript: href must be blocked → '#'
+    // --- Integration assertions through quickLinksHtml rendering ---
+    const p = parts(canvasElement);
+    // javascript: → blocked → href="#"
     await expect(p.items[0].getAttribute("href")).toBe("#");
-    // data: href must be blocked → '#'
-    await expect(p.items[1].getAttribute("href")).toBe("#");
-    // https: href passes through (escaped)
-    await expect(p.items[2].getAttribute("href")).toBe("https://asu.edu/visit");
-    // fragment href passes through
+    // https: → allowed → href="https://asu.edu/visit"
+    await expect(p.items[1].getAttribute("href")).toBe("https://asu.edu/visit");
+    // whitespace-prefixed javascript: → blocked → href="#"
+    await expect(p.items[2].getAttribute("href")).toBe("#");
+    // fragment → allowed → href="#safe-fragment"
     await expect(p.items[3].getAttribute("href")).toBe("#safe-fragment");
   },
 };
 
-// Forced-colors story (review finding P2-7a)
+// Forced-colors story (review finding P2-7a; N2-2 strengthened CSSOM assertions)
 // Tests that the focus indicator is visible under forced-colors: active.
 // In forced-colors mode, the SCSS `@media (forced-colors: active)` block applies
 // `outline: 2px solid Highlight` on :focus-visible, overriding the `outline: none`.
@@ -666,11 +744,13 @@ export const ForcedColors = {
     const item = p.items[0];
     await expect(document.activeElement).toBe(item);
 
-    // In forced-colors mode, our SCSS injects `outline: 2px solid Highlight`.
-    // Since Storybook tests run in a standard browser context (not forced-colors media),
-    // we verify the structural CSS rule exists in the document's stylesheets.
-    // This is the best we can do without a headless forced-colors emulation capability.
+    // N2-2 (P3): Verify both the media rule's existence AND that its nested cssRules
+    // contain the required declarations (outline: 2px solid Highlight; outline-offset: 2px).
+    // This is purely CSSOM — no Playwright forced-colors emulation required.
     let hasForcedColorsRule = false;
+    let hasHighlightOutline = false;
+    let hasOutlineOffset = false;
+
     Array.from(document.styleSheets).forEach(sheet => {
       try {
         Array.from(sheet.cssRules).forEach(rule => {
@@ -679,13 +759,40 @@ export const ForcedColors = {
             rule.conditionText === "(forced-colors: active)"
           ) {
             hasForcedColorsRule = true;
+            // Inspect nested rules for the required declarations.
+            Array.from(rule.cssRules).forEach(nested => {
+              if (nested instanceof CSSStyleRule) {
+                const decl = nested.style;
+                // outline must be 2px solid Highlight (or CSSOM may split into outline-color)
+                const outlineVal = decl.getPropertyValue("outline");
+                const outlineColor = decl.getPropertyValue("outline-color");
+                if (
+                  outlineVal.includes("2px") &&
+                  outlineVal.toLowerCase().includes("solid") &&
+                  outlineVal.toLowerCase().includes("highlight")
+                ) {
+                  hasHighlightOutline = true;
+                }
+                // CSSOM may normalize outline into component properties
+                if (outlineColor.toLowerCase() === "highlight") {
+                  hasHighlightOutline = true;
+                }
+                const offsetVal = decl.getPropertyValue("outline-offset");
+                if (offsetVal === "2px") {
+                  hasOutlineOffset = true;
+                }
+              }
+            });
           }
         });
       } catch {
         // cross-origin sheet
       }
     });
+
     await expect(hasForcedColorsRule).toBe(true);
+    await expect(hasHighlightOutline).toBe(true);
+    await expect(hasOutlineOffset).toBe(true);
 
     // Also verify glass + ring appears in normal mode (regression guard)
     await waitFor(() =>
@@ -708,11 +815,14 @@ export const Default320 = {
 };
 
 // §8 row 17 — HTML parity (matrix row 17; placed last per P3 ordering note)
+// This story runs WITHOUT the withBackdrop decorator to exclude Storybook chrome.
+// It compares canvasElement.innerHTML (whitespace-normalized) against quickLinksHtml()
+// to prove the Stage B markup contract. Design doc §8 row 17 specifies innerHTML.
 export const HtmlParity = {
   name: "html-parity",
   globals: viewport(1440),
-  args: { backdrop: "plain" },
-  decorators: [withBackdrop],
+  // Override: no decorator wrappers — canvasElement.innerHTML must equal quickLinksHtml() exactly.
+  decorators: [],
   render: () => <Page html={quickLinksHtml()} />,
   play: async ({ canvasElement }) => {
     const p = parts(canvasElement);
@@ -757,13 +867,17 @@ export const HtmlParity = {
     // Wrapper has max-width: 1440px
     await expect(getComputedStyle(p.wrapper).maxWidth).toBe("1440px");
 
-    // HTML parity: compare canvasElement.innerHTML (§8 row 17 requirement).
-    // Both sides normalized identically before comparison.
+    // HTML parity: compare canvasElement.innerHTML (design doc §8 row 17).
+    // The Page component renders: <div>{quickLinksHtml()}</div>.
+    // canvasElement.innerHTML = the Page <div> wrapper.
+    // canvasElement.innerHTML normalized must equal quickLinksHtml() normalized.
+    // No decorator chrome is present (decorators: []).
+    const normalize = html => html.replace(/>\s+</g, "><").trim();
     const expected = quickLinksHtml();
-    // canvasElement.innerHTML includes the Page wrapper div; strip it to get just the component.
-    const actual =
-      canvasElement.querySelector(".hp-quick-links")?.outerHTML ?? "";
-    const normalize = s => s.replace(/\s+/g, " ").trim();
+    // canvasElement contains exactly: <div data-... >{quickLinksHtml()}</div> from Page.
+    // We compare the Page div's innerHTML (the component HTML) against the helper output.
+    const pageDiv = canvasElement.firstElementChild;
+    const actual = pageDiv ? pageDiv.innerHTML : canvasElement.innerHTML;
     await expect(normalize(actual)).toBe(normalize(expected));
   },
 };
