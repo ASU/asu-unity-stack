@@ -91,7 +91,8 @@ const DEFAULT_ITEMS = [
 ];
 
 export const SPANISH_HREF_PLACEHOLDER = "<spanish-url-placeholder>";
-export const SPANISH_LABEL = "Aprender más en Español";
+// Lowercase "español" per Figma + Spanish grammar (WWWCMS-235 visual-fix). Overrules ticket Behavior spec wording.
+export const SPANISH_LABEL = "Aprender más en español";
 
 // Stage B parity source (design-doc §4a). The Storybook html-parity story serializes
 // `canvasElement.innerHTML` (normalized) and compares it against this string.
