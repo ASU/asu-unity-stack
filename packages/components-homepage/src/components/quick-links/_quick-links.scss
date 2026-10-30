@@ -204,13 +204,18 @@ $hp-quick-links-column-gap-max: $uds-size-spacing-12;
     row-gap: $uds-size-spacing-3;
   }
 
-  // Icon-small is already the default above; this rule is kept for explicitness
-  // and to override any UA stylesheet that might increase the font size.
-  .hp-quick-link__icon {
+  // P2-1 (WWWCMS-235 visual-fix): the default rule uses `.hp-quick-link .hp-quick-link__icon`
+  // (specificity 0,2,0). A bare `.hp-quick-link__icon` (0,1,0) would always lose to it regardless
+  // of media-query order. Nesting inside `.hp-quick-link` here matches that specificity so the
+  // mobile override actually wins.
+  .hp-quick-link .hp-quick-link__icon {
     font-size: $uds-size-icon-small;
   }
 
-  .hp-quick-link__label {
+  // P2-1 (WWWCMS-235 visual-fix): same specificity problem for label. The default rule is
+  // `.hp-quick-link .hp-quick-link__label { font-size: $uds-size-font-medium }` (0,2,0).
+  // The old bare `.hp-quick-link__label` (0,1,0) always lost. Match the parent scope.
+  .hp-quick-link .hp-quick-link__label {
     font-size: $uds-size-font-small;
   }
 }
