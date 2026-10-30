@@ -54,4 +54,6 @@ export const storiesToTest = [
   "homepage-reimagine-entrance--entrance-below-901",
   "homepage-reimagine-entrance--entrance-idempotent-init",
   "homepage-reimagine-entrance--entrance-css-gate",
+  // WWWCMS-235: quick-links a11y story (on-white backdrop, WCAG 2.1 AA via Siteimprove Alfa)
+  "homepage-quick-links--accessibility-plain",
 ];
