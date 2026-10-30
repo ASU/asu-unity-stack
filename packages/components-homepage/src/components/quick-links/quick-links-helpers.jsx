@@ -96,6 +96,7 @@ export const SPANISH_LABEL = "Aprender más en español";
 
 // Stage B parity source (design-doc §4a). The Storybook html-parity story serializes
 // `canvasElement.innerHTML` (normalized) and compares it against this string.
+// Font Awesome 5 short-form prefix (fas) — universal syntax that renders in both FA 5 and FA 6.
 export const quickLinksHtml = ({
   items = DEFAULT_ITEMS,
   spanishHref = SPANISH_HREF_PLACEHOLDER,
@@ -108,7 +109,7 @@ export const quickLinksHtml = ({
       ({ href, icon, label }) =>
         `<li class="hp-quick-links__item">` +
         `<a class="hp-quick-link" href="${escape(safeHref(href))}">` +
-        `<i class="hp-quick-link__icon fa-solid ${escape(icon)}" aria-hidden="true"></i>` +
+        `<i class="hp-quick-link__icon fas ${escape(icon)}" aria-hidden="true"></i>` +
         `<span class="hp-quick-link__label">${escape(label)}</span>` +
         `</a>` +
         `</li>`
@@ -117,7 +118,7 @@ export const quickLinksHtml = ({
   `</ul>` +
   `<a class="hp-quick-link-es" href="${escape(safeHref(spanishHref))}" lang="es" hreflang="es">` +
   `${escape(SPANISH_LABEL)} ` +
-  `<i class="hp-quick-link-es__icon fa-solid ${escape(spanishIcon)}" aria-hidden="true"></i>` +
+  `<i class="hp-quick-link-es__icon fas ${escape(spanishIcon)}" aria-hidden="true"></i>` +
   `</a>` +
   `</div>`;
 
