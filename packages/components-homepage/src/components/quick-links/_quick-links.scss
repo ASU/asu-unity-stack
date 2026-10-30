@@ -57,6 +57,7 @@ $hp-quick-links-column-gap-max: $uds-size-spacing-12;
     font-size: $uds-size-font-medium;
     font-weight: $uds-font-weight-bold;
     color: $uds-color-base-white;
+    text-align: center;
   }
 }
 
@@ -128,6 +129,7 @@ $hp-quick-links-column-gap-max: $uds-size-spacing-12;
   color: $uds-color-base-white;
   text-decoration: underline;
   text-underline-offset: 0.2em;
+  text-align: center;
 
   .hp-quick-link-es__icon {
     color: $uds-color-base-white;

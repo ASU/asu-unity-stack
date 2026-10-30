@@ -181,6 +181,10 @@ export const Default393 = {
     for (const label of p.labels) {
       await expect(getComputedStyle(label).fontSize).toBe("14px");
     }
+
+    // WWWCMS-235 text-align fix: wrapped label lines must center on narrow viewports.
+    const label = canvasElement.querySelector(".hp-quick-link__label");
+    expect(getComputedStyle(label).textAlign).toBe("center");
   },
 };
 
