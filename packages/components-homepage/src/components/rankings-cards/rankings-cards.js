@@ -30,7 +30,6 @@ const CARD_SEL = ".hp-rankings__card";
 const NO_OVERFLOW_CLASS = "hp-rankings--no-overflow";
 const DISABLED_CLASS = "is-disabled";
 const REDUCED = "(prefers-reduced-motion: reduce)";
-const SCROLLEND_FALLBACK_MS = 300; // fallback timeout for browsers w/o scrollend
 
 /** Module-level guard: sections already bound by some live initRankingsCards call. */
 const bound = new WeakSet();
@@ -285,28 +284,55 @@ export function initRankingsCards(root = document) {
     };
 
     // ── Rapid-click coalescing ───────────────────────────────────────────
+    //
+    // `pendingScroll` is set when a `scrollBy` is issued and cleared when:
+    //   (a) `scrollend` fires (primary path — supported in all evergreen UAs), OR
+    //   (b) a scroll-activity-driven idle debounce fires — the fallback
+    //       resets its 150 ms timer on every `scroll` event so the lock
+    //       survives long smooth scrolls on slow devices; it only elapses
+    //       when the track has been quiescent for 150 ms without a `scrollend`.
+    //
+    // This replaces the previous fixed 300 ms timeout which could expire while
+    // the track was still scrolling (reviewer P2 finding, cycle-3 fix).
     let pendingScroll = false;
-    let pendingTimer = null;
+    let pendingIdleTimer = null;
+    const SCROLL_IDLE_MS = 150; // idle window after last `scroll` event
+
+    const resetIdleTimer = () => {
+      if (pendingIdleTimer) win.clearTimeout(pendingIdleTimer);
+      pendingIdleTimer = win.setTimeout(() => {
+        pendingIdleTimer = null;
+        if (pendingScroll) {
+          pendingScroll = false;
+          syncNavState();
+        }
+      }, SCROLL_IDLE_MS);
+    };
+
     const beginPending = () => {
       pendingScroll = true;
-      if (pendingTimer) win.clearTimeout(pendingTimer);
-      // Fallback for browsers without 'scrollend' — clear after a timeout.
-      pendingTimer = win.setTimeout(() => {
-        pendingScroll = false;
-        pendingTimer = null;
-        syncNavState();
-      }, SCROLLEND_FALLBACK_MS);
+      // Arm the idle timer as a fallback for browsers without `scrollend`.
+      // The `scroll` event listener resets this timer on every tick,
+      // keeping the lock alive for as long as the track is still scrolling.
+      resetIdleTimer();
     };
     const endPending = () => {
       pendingScroll = false;
-      if (pendingTimer) {
-        win.clearTimeout(pendingTimer);
-        pendingTimer = null;
+      if (pendingIdleTimer) {
+        win.clearTimeout(pendingIdleTimer);
+        pendingIdleTimer = null;
       }
     };
 
     // ── Click handlers ───────────────────────────────────────────────────
+    //
+    // §5.2 click preflight: `syncNavState()` is called FIRST so the
+    // `aria-disabled` check and `pendingScroll` guard always reflect the
+    // current geometry, not potentially stale state from a layout change
+    // that arrived after the last scroll/RO event (e.g. a direct
+    // `scrollLeft` write or an injected card without a scroll event).
     const onPrevClick = event => {
+      syncNavState(); // reconcile before any guard check (§5.2 preflight)
       if (prev.getAttribute("aria-disabled") === "true") {
         event.preventDefault();
         return; // defence-in-depth
@@ -323,6 +349,7 @@ export function initRankingsCards(root = document) {
       });
     };
     const onNextClick = event => {
+      syncNavState(); // reconcile before any guard check (§5.2 preflight)
       if (next.getAttribute("aria-disabled") === "true") {
         event.preventDefault();
         return;
@@ -339,11 +366,14 @@ export function initRankingsCards(root = document) {
     state.cleanups.push(() => {
       prev.removeEventListener("click", onPrevClick);
       next.removeEventListener("click", onNextClick);
-      if (pendingTimer) win.clearTimeout(pendingTimer);
+      if (pendingIdleTimer) win.clearTimeout(pendingIdleTimer);
     });
 
     // ── Scroll listeners (passive — read-only) ───────────────────────────
     const onScroll = () => {
+      // Reset the idle debounce timer on every scroll tick so the
+      // pendingScroll lock survives long smooth scrolls (cycle-3 fix).
+      if (pendingScroll) resetIdleTimer();
       syncNavState();
     };
     const onScrollEnd = () => {
