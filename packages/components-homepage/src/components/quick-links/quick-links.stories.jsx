@@ -657,6 +657,18 @@ const HREF_CASES = [
   // Null/undefined → "#"
   { href: null, expected: "#", desc: "null" },
   { href: undefined, expected: "#", desc: "undefined" },
+  // Query-string pass-through: no scheme → no-scheme branch trims and returns as-is
+  {
+    href: "/degrees?level=undergrad&area=engineering",
+    expected: "/degrees?level=undergrad&area=engineering",
+    desc: "relative path with query string",
+  },
+  // https + query string combined: both scheme and query pass through unchanged
+  {
+    href: "https://example.com/search?q=asu",
+    expected: "https://example.com/search?q=asu",
+    desc: "https with query string",
+  },
 ];
 
 export const UnsafeHrefRejected = {
@@ -695,6 +707,9 @@ export const UnsafeHrefRejected = {
     />
   ),
   play: async ({ canvasElement }) => {
+    // Guard: any future accidental removal of a case fails loudly here.
+    await expect(HREF_CASES.length).toBe(21);
+
     // --- Direct safeHref unit assertions ---
     for (const { href, expected, desc } of HREF_CASES) {
       await expect(safeHref(href), desc).toBe(expected);
