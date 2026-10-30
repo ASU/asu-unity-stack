@@ -1,0 +1,200 @@
+// Quick links row — WWWCMS-235
+// Four icon anchors (Explore ASU Online → Apply now → Visit an ASU campus → Request info)
+// plus a Spanish sibling link, over the Palo Verde photo background.
+// No JS; states are pure CSS pseudo-classes.
+// Tokens: packages/unity-bootstrap-theme/src/scss/_custom-asu-variables.scss
+// Local custom properties: packages/components-homepage/src/scss/_variables.scss
+
+// --- wrapper ---
+
+.hp-quick-links {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: $uds-size-spacing-6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: $uds-size-spacing-4;
+}
+
+// --- list ---
+
+.hp-quick-links__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  column-gap: $uds-size-spacing-6;
+}
+
+// --- individual item anchor ---
+
+.hp-quick-link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $uds-size-spacing-1;
+  padding: $uds-size-spacing-2 $uds-size-spacing-3;
+  border-radius: $uds-size-spacing-1;
+  min-width: 44px;
+  min-height: 44px;
+  text-decoration: none;
+  color: $uds-color-base-white;
+
+  .hp-quick-link__icon {
+    font-size: $uds-size-icon-base;
+    color: $uds-color-base-white;
+  }
+
+  .hp-quick-link__label {
+    font-size: $uds-size-font-medium;
+    font-weight: $uds-font-weight-bold;
+    color: $uds-color-base-white;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hp-quick-link,
+  .hp-quick-link-es {
+    // 150ms ease-out: ticket-driven; $uds-time-transition-base (400ms) is too slow.
+    // TODO: reconcile with design if a token matching 150ms is added to the UDS.
+    transition: background-color 150ms ease-out, color 150ms ease-out;
+  }
+}
+
+.hp-quick-link:hover {
+  background-color: var(--hp-quick-link-glass);
+
+  .hp-quick-link__icon {
+    color: $uds-color-brand-gold;
+  }
+}
+
+.hp-quick-link:focus-visible {
+  outline: none;
+  box-shadow: var(--hp-focus-inner), var(--hp-focus-outer);
+  background-color: var(--hp-quick-link-glass);
+
+  .hp-quick-link__icon {
+    color: $uds-color-brand-gold;
+  }
+}
+
+// Belt-and-braces: apply glass on :focus (not just :focus-visible) so the
+// background works in environments where :focus-visible isn't distinct.
+// The box-shadow override is handled by the theme's a:focus rule.
+.hp-quick-link:focus {
+  background-color: var(--hp-quick-link-glass);
+
+  .hp-quick-link__icon {
+    color: $uds-color-brand-gold;
+  }
+}
+
+.hp-quick-link:active {
+  background-color: var(--hp-quick-link-glass);
+
+  .hp-quick-link__icon {
+    color: $uds-color-brand-gold;
+  }
+}
+
+.hp-quick-link:visited {
+  // Prevent browser default visited-link colour on the dark photo.
+  color: $uds-color-base-white;
+}
+
+// --- Spanish sibling link ---
+
+.hp-quick-link-es {
+  display: inline-flex;
+  align-items: center;
+  gap: $uds-size-spacing-1;
+  padding: $uds-size-spacing-1 $uds-size-spacing-2;
+  min-height: 44px;
+  border-radius: $uds-size-spacing-1;
+  font-size: $uds-size-font-small;
+  color: $uds-color-base-white;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+
+  .hp-quick-link-es__icon {
+    color: $uds-color-base-white;
+    font-size: $uds-size-font-small;
+  }
+}
+
+.hp-quick-link-es:hover {
+  background-color: var(--hp-quick-link-glass);
+
+  .hp-quick-link-es__icon {
+    color: $uds-color-brand-gold;
+  }
+}
+
+.hp-quick-link-es:focus-visible {
+  outline: none;
+  box-shadow: var(--hp-focus-inner), var(--hp-focus-outer);
+  background-color: var(--hp-quick-link-glass);
+
+  .hp-quick-link-es__icon {
+    color: $uds-color-brand-gold;
+  }
+}
+
+.hp-quick-link-es:focus {
+  background-color: var(--hp-quick-link-glass);
+
+  .hp-quick-link-es__icon {
+    color: $uds-color-brand-gold;
+  }
+}
+
+.hp-quick-link-es:visited {
+  color: $uds-color-base-white;
+}
+
+// --- larger column gap at desktop ≥ 1024 px ---
+
+@media (min-width: 1024px) {
+  .hp-quick-links__list {
+    column-gap: $uds-size-spacing-7;
+  }
+
+  .hp-quick-link__icon {
+    font-size: $uds-size-icon-base;
+  }
+}
+
+// --- wider column gap at ≥ 1280 px (clamp fluid) ---
+
+@media (min-width: 1280px) {
+  .hp-quick-links__list {
+    // clamp(3.5rem, 6vw, 6rem): fluid between the $uds-size-spacing-7 floor and 6rem ceiling.
+    column-gap: clamp(#{$uds-size-spacing-7}, 6vw, 6rem);
+  }
+}
+
+// --- phone 2×2 layout ≤ $hp-phone-max (900 px) ---
+
+@media (max-width: $hp-phone-max) {
+  .hp-quick-links {
+    padding-inline: $uds-size-spacing-3;
+  }
+
+  .hp-quick-links__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: $uds-size-spacing-3;
+    row-gap: $uds-size-spacing-3;
+  }
+
+  .hp-quick-link__icon {
+    font-size: $uds-size-icon-small;
+  }
+
+  .hp-quick-link__label {
+    font-size: $uds-size-font-small;
+  }
+}
