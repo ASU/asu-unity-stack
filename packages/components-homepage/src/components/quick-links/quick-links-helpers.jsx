@@ -23,28 +23,35 @@ const escape = value =>
     .replace(/>/g, "&gt;");
 
 // URL allow-list for href attributes.
-// Allowed schemes: https:, mailto:, tel:, fragment-only (#...), relative paths.
-// Blocked: javascript:, data:, vbscript: (XSS vectors).
-// The literal design-doc placeholder <spanish-url-placeholder> is allowed as-is
-// (it cannot be crafted into an XSS payload and must round-trip through escape()).
-// Emits a console.warn (deduplicated) for each rejected value.
-const _warnedHrefs = new Set();
+// Only the listed schemes are allowed. Anything else — including http:, file:,
+// blob:, data:, vbscript:, custom schemes, and scheme-relative //evil — is
+// blocked and replaced with "#". ASCII-whitespace leading characters are trimmed
+// before scheme matching so that "  javascript:..." cannot bypass the check.
+//
+// Allowed: https:, mailto:, tel:, fragment-only (#...), relative paths (no scheme),
+// and the literal design-doc Spanish URL placeholder.
+const SAFE_SCHEMES = ["https:", "mailto:", "tel:"];
+// The literal design-doc placeholder that must round-trip through markup unchanged.
+const SPANISH_URL_PLACEHOLDER = "<spanish-url-placeholder>";
+
 export const safeHref = href => {
-  const s = String(href);
-  // Allow the design-doc placeholder verbatim.
-  if (s === "<spanish-url-placeholder>") return s;
-  // Block javascript:, data:, vbscript: — case-insensitive.
-  if (/^(javascript|data|vbscript):/i.test(s)) {
-    if (!_warnedHrefs.has(s)) {
-      // eslint-disable-next-line no-console
-      console.warn(
-        `[quick-links] safeHref: blocked unsafe URL scheme in "${s.slice(0, 50)}"`
-      );
-      _warnedHrefs.add(s);
-    }
-    return "#";
-  }
-  return s;
+  if (href == null) return "#";
+  const raw = String(href);
+  // Round-trip the literal design placeholder as-is; escape() handles the delimiters.
+  if (raw === SPANISH_URL_PLACEHOLDER) return raw;
+  // Normalize ASCII whitespace that browsers would strip before scheme matching.
+  const trimmed = raw.replace(/^[\t\n\f\r ]+/, "");
+  if (trimmed === "") return "#";
+  // Fragment-only is always safe.
+  if (trimmed.startsWith("#")) return trimmed;
+  // Scheme-relative URLs (//evil.example) are rejected; author must use https:.
+  if (trimmed.startsWith("//")) return "#";
+  // No scheme (relative path, query, root path) is safe.
+  const schemeMatch = /^([a-zA-Z][a-zA-Z0-9+.-]*):/.exec(trimmed);
+  if (!schemeMatch) return trimmed;
+  // Scheme present: must be on the allow-list.
+  const scheme = schemeMatch[1].toLowerCase() + ":";
+  return SAFE_SCHEMES.includes(scheme) ? trimmed : "#";
 };
 
 // Font Awesome resolution (WWWCMS-235 review fix cycle 1):
