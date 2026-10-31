@@ -2,3 +2,4 @@
 export { initVideoControls } from "../components/video-control/video-control.js";
 export { initHero } from "../components/hero/hero.js";
 export { initReimagine } from "../components/reimagine/reimagine.js";
+export { initStories } from "../components/stories-grid/stories-grid.js";
