@@ -1,0 +1,16 @@
+// Prototype v2.71 switches to its phone layout at 900px (lines 333, 543, 558, 630). No UDS
+// breakpoint matches ($uds-breakpoint-md is 768px), so the homepage keeps the prototype value.
+$hp-phone-max: 900px;
+// The network art docks further out above the 1440px content frame (prototype line 2240).
+$hp-wide-min: 1441px;
+// The topo band exists only above the 1920px stage (prototype line 2279); $uds-breakpoint-xxxl is 1920px.
+$hp-band-min: $uds-breakpoint-xxxl + 1px;
+
+// Two-tone focus ring (prototype v2.71 line 38: white 2px + #00BAFF 2px). Brand has not chosen
+// between this and the UDS pattern (white + $asu-gray-1; open question 3), so both tones stay
+// custom properties. White comes from the UDS token.
+:root {
+  --hp-focus-inner: 0 0 0 2px #{$uds-color-base-white};
+  // TODO: confirm with design - #00BAFF is not a UDS token.
+  --hp-focus-outer: 0 0 0 4px #00baff;
+}

@@ -37,7 +37,7 @@ Files:
 
 ```json
 {
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "anchor": "WS2-1234",
   "created_at": "2026-06-25T20:00:00Z",
   "created_by": "acp unity stage",
@@ -64,6 +64,17 @@ Files:
     "storybook_story_id": "components-herobanner--default"
   },
   "html_parity_markup_file": "markup.html",
+  "webspark_target": {
+    "placement": "sdc-module",
+    "module": "asu_edu_homepage",
+    "module_path": "docroot/modules/custom/asu_edu_homepage",
+    "component_dir": "components/hero-banner",
+    "sdc_id": "asu_edu_homepage:hero-banner",
+    "files": ["hero-banner.component.yml", "hero-banner.twig", "hero-banner.css", "hero-banner.js"],
+    "depends_on_components": ["asu_edu_homepage:scrib-heading"],
+    "css_source": "dist css rules for .uds-hero-banner*, copied as plain CSS",
+    "editor_configurable": false
+  },
   "tokens_used": ["$uds-color-brand-maroon", "$uds-size-spacing-4"],
   "interactivity": {
     "summary": "APG Tabs pattern; manual activation. Static markup is fully present on load; states are class-toggled.",
@@ -103,6 +114,17 @@ Notes:
 - `dist_paths` point at the locally built UMD/dist artifact(s) — Webspark
   local-build+links these (see the Webspark `unity-consume` skill).
 - Keep `markup.html` authoritative for Twig parity; Webspark verifies against it.
+- `webspark_target` (schema 1.2) is the Stage B placement, a fixed project rule:
+  every homepage component becomes a Drupal **Single Directory Component in the
+  one homepage module `asu_edu_homepage`** (no submodules): `module` is always
+  `asu_edu_homepage`, `component_dir` is `components/<slug>/` (holding
+  `<slug>.component.yml`, `<slug>.twig`, `<slug>.css`, `<slug>.js`), and the SDC
+  id is `asu_edu_homepage:<slug>` (`<slug>` is `component.slug`). It is NOT placed
+  in the `asu_edu` theme or the shared `asu_edu_components` module. List the other
+  SDCs it `include()`s (e.g. `asu_edu_homepage:scrib-heading`) in
+  `depends_on_components`. Because SDC CSS/JS are plain files served as written,
+  say which `dist` CSS rules to copy (no SCSS, no Laravel Mix at Stage B) and that
+  the JS is a plain ES2017 `Drupal.behaviors` script.
 
 ## Interactivity contract (mandatory for interactive components)
 

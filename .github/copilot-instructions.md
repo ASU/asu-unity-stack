@@ -103,6 +103,7 @@ Each package runs its own Storybook dev server with an MCP endpoint. Start the r
 | `app-degree-pages` | `cd packages/app-degree-pages && yarn storybook` | `http://localhost:9010/mcp` |
 | `app-rfi` | `cd packages/app-rfi && yarn storybook` | `http://localhost:9020/mcp` |
 | `app-webdir-ui` | `cd packages/app-webdir-ui && yarn storybook` | `http://localhost:9030/mcp` |
+| `components-homepage` | `cd packages/components-homepage && yarn storybook` | `http://localhost:9050/mcp` |
 | `component-events` | `cd packages/component-events && yarn storybook` | `http://localhost:9060/mcp` |
 | `component-header-footer` | `cd packages/component-header-footer && yarn storybook` | `http://localhost:9080/mcp` |
 | `component-news` | `cd packages/component-news && yarn storybook` | `http://localhost:9090/mcp` |

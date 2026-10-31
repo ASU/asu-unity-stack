@@ -65,6 +65,13 @@ yarn test:e2e       # Jest + Puppeteer e2e
   pushing to `window.dataLayer`) when modifying components.
 - Add dependencies from within the target package: `cd packages/<pkg>` then
   `yarn add <package>`.
+- **Stage B (asucms) placement:** every component lands as a Drupal Single
+  Directory Component in the one homepage module `asu_edu_homepage`
+  (`modules/custom/asu_edu_homepage/components/<slug>/`, no submodules)
+  ( with `<slug>.component.yml`, `.twig`, `.css`, `.js`),
+  not in the `asu_edu` theme or the shared `asu_edu_components` module. Handoffs
+  carry this in `webspark_target`; do not write Stage A notes or tickets that
+  say otherwise.
 - Conventional commits; versioning/publishing is automated via semantic-release.
   Use `yarn commit` (commitizen) to author compliant messages.
 

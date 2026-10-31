@@ -73,7 +73,11 @@ Tip: `/context show` in the session lists the loaded steering + skills.
 ## Handoff
 
 `../handoff/<anchor>/handoff.json` (+ `markup.html`). `<anchor>` is the Jira key
-if present, else the component slug. The Webspark repo's Stage B consumes it.
+if present, else the component slug. The Webspark repo's Stage B consumes it and
+builds the component as a Drupal Single Directory Component in the one homepage
+module `asu_edu_homepage` (`components/<slug>/` holding the yaml, twig, css and js;
+no submodules);
+the handoff's `webspark_target` block names that module and SDC id.
 Validate manually with `.kiro/scripts/validate-handoff.sh <path>`.
 
 ## Notes

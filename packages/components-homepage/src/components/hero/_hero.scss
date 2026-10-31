@@ -1,0 +1,354 @@
+// Homepage hero: full-width video banner, headline with a circled-arrow link, one paragraph, pause/play
+// control (the foundations' `.mbtn`) and a phone/tablet no-video fallback.
+// Prototype v2.71 lines 737-765, 830-855, 1599, 1937-1990; design doc: WWWCMS-232.
+// Desktop-first: the base rules are the layout above 900px and `@media (max-width: $hp-phone-max)`
+// holds every phone/tablet override, so no viewport width falls between two queries.
+
+$hp-hero-compact-max: 600px; // TODO: confirm with design - the gutter step (UDS sm is 576px).
+$hp-hero-narrow-max: 1180px; // The AI assistant ring (280px, top right) must not cover the copy (P:2052).
+$hp-hero-header-break: 1080px; // The prototype switches to its compact header at 1079px.
+
+.hp-hero {
+  // Stage B sets --hp-hero-header-height from the real header; Storybook has none, so these defaults
+  // are the prototype's measured full-width (147px) and compact (69px) header heights.
+  --hp-hero-header-default: 147px;
+  --hp-hero-gutter: #{$uds-size-spacing-6};
+  --hp-hero-ring-inner: var(--hp-focus-inner);
+  --hp-hero-ring-outer: var(--hp-focus-outer);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  // Window minus header minus a 96px peek, between 560 and 1080 (Sarah 10/15). min-height, not height,
+  // so enlarged text or zoom grows the section instead of clipping the copy.
+  // TODO: confirm with design - 560, 1080 and the 96px peek are raw (no UDS token).
+  min-height: clamp(
+    560px,
+    calc(
+      100vh - var(--hp-hero-header-height, var(--hp-hero-header-default)) -
+        96px
+    ),
+    1080px
+  );
+  background: $asu-gray-1;
+  color: $uds-color-base-white;
+}
+
+// A source-less video paints its poster over Gray 1; the source is attached by hero.js above 900px only.
+.hp-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: $asu-gray-1;
+}
+
+.hp-hero__video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+// The Figma frame draws no scrim; the copy needs one on the moving clip (WCAG 1.4.3). Stops are the
+// prototype's; the contrast budget (design doc section 8) is checked in the ContrastBudget story.
+// TODO: confirm with design - raw stops, brand to measure real frames of the hosted clip (B6).
+.hp-hero__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.05) 40%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  pointer-events: none;
+}
+
+.hp-hero__inner {
+  display: contents;
+}
+
+// The last paragraph line sits 48px above the hero's bottom (82529). Above the 1920px stage the copy
+// anchors to a centered 1920px frame; the media stays full-bleed.
+.hp-hero__copy {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  padding: 0 var(--hp-hero-gutter) $uds-size-spacing-6;
+}
+
+.hp-hero__heading {
+  max-width: 11em;
+  margin: 0;
+  // TODO: confirm with design - 72/67, -3% (82529) have no UDS token.
+  font-size: clamp(40px, 5.625vw, 72px);
+  font-weight: $uds-font-weight-bold;
+  line-height: 0.93;
+  letter-spacing: -0.03em;
+  text-wrap: balance; // Sarah 9/3 (P:40-46): headings balance their lines, body copy avoids orphans.
+  color: $uds-color-base-white;
+}
+
+.hp-hero__text {
+  max-width: 509px;
+  text-wrap: pretty;
+  margin: $uds-size-spacing-2 0 0;
+  font-size: $uds-size-font-medium;
+  line-height: $uds-size-spacing-3;
+  color: $uds-color-base-white;
+}
+
+// Circled arrow: only it links. The link keeps a fixed 32px layout box; the pill inside it is out of
+// flow, so widening its label on hover/focus never reflows (or re-wraps) the headline.
+.hp-hero__arrow {
+  position: relative;
+  display: inline-block;
+  width: 32px; // TODO: confirm with design - 32px (82529; was 36).
+  height: 32px;
+  margin-left: $uds-size-spacing-2;
+  font-size: $uds-size-font-medium;
+  font-weight: $uds-font-weight-bold;
+  line-height: 20px;
+  letter-spacing: 0;
+  text-decoration: none;
+  white-space: nowrap;
+  vertical-align: middle;
+
+  // 48px hit area around the 32px circle.
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -#{$uds-size-spacing-1};
+  }
+}
+
+.hp-hero__arrow-pill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  min-width: 32px;
+  padding: 0 6px;
+  border: 2px solid $uds-color-brand-gold;
+  border-radius: $uds-component-border-radius;
+}
+
+// The theme turns visited links dark maroon; the arrow never changes colour except on hover/focus.
+.hp-hero .hp-hero__arrow:link,
+.hp-hero .hp-hero__arrow:visited {
+  color: $uds-color-brand-gold;
+  text-decoration: none;
+}
+
+.hp-hero__arrow-icon {
+  display: block;
+  width: auto;
+  height: 1em;
+}
+
+.hp-hero__arrow-label {
+  max-width: 0;
+  margin-right: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
+// Hover applies only to a hover-capable pointer (a tap on iPad Safari would otherwise need two taps);
+// keyboard focus applies everywhere.
+@mixin hp-hero-arrow-active {
+  .hp-hero__arrow-pill {
+    padding: 0 14px;
+    background: $uds-color-brand-gold;
+  }
+
+  .hp-hero__arrow-label {
+    max-width: 150px; // TODO: confirm with design - prototype value (P:760).
+    margin-right: $uds-size-spacing-1;
+    opacity: 1;
+  }
+}
+
+.hp-hero .hp-hero__arrow:link:focus-visible,
+.hp-hero .hp-hero__arrow:visited:focus-visible {
+  color: $asu-gray-1;
+  text-decoration: none;
+}
+
+.hp-hero .hp-hero__arrow:focus-visible {
+  @include hp-hero-arrow-active;
+}
+
+@media (hover: hover) {
+  .hp-hero .hp-hero__arrow:link:hover,
+  .hp-hero .hp-hero__arrow:visited:hover {
+    color: $asu-gray-1;
+    text-decoration: none;
+  }
+
+  .hp-hero .hp-hero__arrow:hover {
+    @include hp-hero-arrow-active;
+  }
+}
+
+// The label widening is movement: it animates only for visitors without a reduced-motion preference.
+@media (prefers-reduced-motion: no-preference) {
+  .hp-hero__arrow-pill {
+    transition: padding 0.3s ease;
+  }
+
+  .hp-hero__arrow-label {
+    transition:
+      max-width 0.35s ease,
+      opacity 0.25s ease,
+      margin-right 0.35s ease;
+  }
+}
+
+// Phones and tablets: the standard gold button replaces the arrow.
+.hp-hero__cta {
+  display: none;
+}
+
+// The theme's global `a:focus` ring is `!important`; the hero ring wins by specificity, sits on the pill
+// (which grows) instead of the 32px link box, and cancels for pointer focus (brand QA precedent).
+.hp-hero .hp-hero__arrow:focus {
+  box-shadow: none !important;
+}
+
+.hp-hero .hp-hero__arrow:focus-visible .hp-hero__arrow-pill,
+.hp-hero .hp-hero__cta:focus-visible,
+.hp-hero .hp-hero__control:focus-visible {
+  outline: 2px solid transparent !important; // forced colors drop box-shadow; this outline stays
+  box-shadow: var(--hp-hero-ring-inner), var(--hp-hero-ring-outer) !important;
+}
+
+.hp-hero .hp-hero__cta:focus:not(:focus-visible) {
+  box-shadow: none !important;
+}
+
+.hp-hero .hp-hero__control {
+  --mbtn-z-index: 6; // above the copy, which spans the full width
+
+  right: var(--hp-hero-gutter);
+  bottom: $uds-size-spacing-6;
+}
+
+// AI assistant mount: empty, zero size, out of the copy's way. The ring itself is a separate effort; what
+// is mounted here must set `pointer-events: auto` on its own controls.
+.hp-hero__assistant {
+  position: absolute;
+  top: $uds-size-spacing-6;
+  right: var(--hp-hero-gutter);
+  z-index: 5;
+  pointer-events: none;
+}
+
+@media (max-width: $hp-hero-narrow-max) {
+  .hp-hero__heading {
+    max-width: 9.2em;
+  }
+
+  .hp-hero__text {
+    max-width: 460px;
+  }
+}
+
+@media (max-width: $hp-hero-header-break - 1px) {
+  .hp-hero {
+    --hp-hero-header-default: 69px;
+  }
+}
+
+// Above the 1920px stage the copy and the control anchor to a centered 1920px frame.
+@media (min-width: $uds-breakpoint-xxxl + 1px) {
+  .hp-hero__copy {
+    max-width: $uds-breakpoint-xxxl;
+    margin-inline: auto;
+  }
+
+  .hp-hero .hp-hero__control {
+    right: calc((100% - #{$uds-breakpoint-xxxl}) / 2 + var(--hp-hero-gutter));
+  }
+}
+
+// Phones and tablets (900px and under): no video, the poster or Gray 1 fills the screen under the header.
+@media (max-width: $hp-phone-max) {
+  .hp-hero {
+    min-height: calc(
+      100vh - var(--hp-hero-header-height, var(--hp-hero-header-default))
+    );
+  }
+
+  @supports (height: 100svh) {
+    .hp-hero {
+      min-height: calc(
+        100svh - var(--hp-hero-header-height, var(--hp-hero-header-default))
+      );
+    }
+  }
+
+  .hp-hero__copy {
+    padding: 64px var(--hp-hero-gutter) $uds-size-spacing-4; // TODO: confirm with design - 64px (P:842).
+  }
+
+  .hp-hero__heading {
+    max-width: 11em;
+    font-size: clamp(36px, 6.5vw, 56px);
+    line-height: 1.05;
+  }
+
+  .hp-hero__text {
+    max-width: 509px;
+  }
+
+  .hp-hero__arrow {
+    display: none;
+  }
+
+  .hp-hero .hp-hero__cta {
+    display: inline-block;
+    margin-top: $uds-size-spacing-3;
+  }
+}
+
+@media (max-width: $hp-hero-compact-max) {
+  .hp-hero {
+    --hp-hero-gutter: #{$uds-size-spacing-2}; // 16px, as in Figma (375) and the prototype
+  }
+
+  .hp-hero__heading {
+    font-size: 36px;
+    line-height: 40px;
+  }
+
+  .hp-hero__text {
+    margin-top: $uds-size-spacing-1; // 8px, brand QA (the prototype's 12px was wrong)
+  }
+}
+
+// Forced colors drop the scrim and the white text: the copy gets a system-colored panel.
+@media (forced-colors: active) {
+  .hp-hero__scrim {
+    display: none;
+  }
+
+  // The 50% rest opacity of the foundations' control would blend it into the system background.
+  .hp-hero .hp-hero__control {
+    opacity: 1;
+  }
+
+  .hp-hero__copy {
+    padding-top: $uds-size-spacing-2;
+    background: Canvas;
+    color: CanvasText;
+  }
+}

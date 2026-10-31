@@ -1,0 +1,100 @@
+// Shared video control.
+// Markup: <button type="button" class="mbtn [mbtn--hero]" data-for="<video id>" data-state="paused"
+//   data-label-play data-label-pause aria-label> + two aria-hidden SVG icons (.mbtn__icon--play, --pause),
+//   Font Awesome Free 6.4.2 solid play/pause (paths in video-control-helpers.jsx).
+// Prototype v2.71 lines 324-332, 764-765, 1968-1985; script: video-control.js (this folder).
+
+.mbtn {
+  --mbtn-size: 32px;
+  --mbtn-icon-size: 12px;
+
+  // Placed over the media frame (a positioned ancestor); override right/bottom/z-index per section.
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: var(--mbtn-z-index, 4);
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: var(--mbtn-size);
+  height: var(--mbtn-size);
+  padding: 0;
+  border: 1.333px solid $asu-gray-5;
+  border-radius: 50%;
+  background: $asu-gray-6;
+  color: $asu-gray-1;
+  cursor: pointer;
+  opacity: var(--mbtn-rest-opacity, 50%);
+  transition: opacity 0.2s ease;
+
+  // The transform transition only for users who have not asked for reduced motion.
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      opacity 0.2s ease,
+      transform 0.22s cubic-bezier(0.34, 1.4, 0.44, 1);
+  }
+
+  // Invisible 48x48 hit area centered on the control.
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: max(48px, 100%);
+    height: max(48px, 100%);
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover {
+    opacity: 1;
+    transform: scale(1.07);
+  }
+
+  // The theme's global `button:focus` rule sets `outline: none !important`, a gray ring and
+  // `z-index: 1` on every focused button, so the ring needs !important to win. The ring shows for
+  // keyboard focus only; box-shadow is not rendered in forced-colors mode, the transparent outline is.
+  &:focus {
+    z-index: var(--mbtn-z-index, 4);
+  }
+
+  &:focus:not(:focus-visible) {
+    box-shadow: none !important;
+  }
+
+  &:focus-visible {
+    opacity: 1;
+    outline: 2px solid transparent !important;
+    box-shadow: var(--hp-focus-inner), var(--hp-focus-outer) !important;
+  }
+
+  // A control that does not apply uses [hidden]; the display above must not override it.
+  &[hidden] {
+    display: none;
+  }
+}
+
+.mbtn--hero {
+  --mbtn-size: 48px;
+  --mbtn-icon-size: 16px;
+}
+
+.mbtn__icon {
+  display: block;
+  width: auto;
+  height: var(--mbtn-icon-size); // glyph height = the prototype font-size; width follows the viewBox
+  pointer-events: none;
+}
+
+.mbtn__icon--pause {
+  display: none;
+}
+
+.mbtn[data-state="playing"] {
+  .mbtn__icon--play {
+    display: none;
+  }
+
+  .mbtn__icon--pause {
+    display: block;
+  }
+}
