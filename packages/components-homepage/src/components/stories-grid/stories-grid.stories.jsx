@@ -5,13 +5,13 @@ import { initStories } from "./stories-grid.js";
 import {
   Harness,
   MORE_HREF,
-  PHOTOS,
   PROMO_ALT,
   SCRIM_REST_START,
   STORIES,
   emulateReducedMotion,
   forceHover,
   maxPhotoGray,
+  photoSrc,
   openingProgress,
   realKeyboard,
   realPointer,
@@ -227,6 +227,14 @@ export const Default = {
     const p = parts(canvasElement);
     await expectContract(p);
     await waitFor(() => expect(progressOf(p.grid)).toBe(1));
+    // every card shows its prototype photo (568x660), not a broken image
+    await waitFor(() =>
+      p.cards.forEach((_, index) => {
+        const { img } = card(p, index);
+        expect(img.complete && img.naturalWidth).toBe(568);
+        expect(img.naturalHeight).toBe(660);
+      })
+    );
     const m = await expectDesktopGrid(p);
     // heading tile (design doc D9)
     await expect(style(p.lead).backgroundColor).toBe(GRAY_1);
@@ -907,7 +915,7 @@ export const PromoCard = {
     const p = parts(canvasElement);
     const promo = card(p, 4);
     await expect(promo.img.getAttribute("alt")).toBe(PROMO_ALT);
-    await expect(promo.img.getAttribute("src")).toBe(PHOTOS.gold);
+    await expect(promo.img.getAttribute("src")).toBe(photoSrc(6));
     await expect(promo.arrow).toBeTruthy();
     await expect(promo.scrim).toBeTruthy();
     // the same hover pattern as the news cards

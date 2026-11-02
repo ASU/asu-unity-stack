@@ -21,8 +21,13 @@ export default {
     getAbsolutePath("@storybook/addon-a11y"),
     getAbsolutePath("@storybook/addon-vitest"),
   ],
-  // Serve the art at /img so stories use the production-relative `img/<file>` paths.
-  staticDirs: [{ from: "../src/img", to: "/img" }],
+  // Serve the art at /img so stories use the production-relative `img/<file>` paths. The stories grid's
+  // sample photos (not part of dist/) are served at /story-photos (a path under /img is not
+  // reachable in the dev server).
+  staticDirs: [
+    { from: "../src/img", to: "/img" },
+    { from: "../src/components/stories-grid/photos", to: "/story-photos" },
+  ],
   framework: {
     name: getAbsolutePath("@storybook/react-vite"),
   },

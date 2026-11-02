@@ -23,17 +23,9 @@ const CHEVRON_LEFT_PATH =
 const CHEVRON_RIGHT_PATH =
   "M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z";
 
-// Inline SVG photos (no network): a bright and a dark variant so the scrim and the contrast budget can be tested.
-const photo = (top, bottom) =>
-  `data:image/svg+xml,${encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 370" preserveAspectRatio="none"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${top}"/><stop offset="1" stop-color="${bottom}"/></linearGradient></defs><rect width="320" height="370" fill="url(#g)"/></svg>`
-  )}`;
-
-export const PHOTOS = {
-  bright: photo("#ffffff", "#e8e8e8"),
-  dark: photo("#5a6e82", "#1f2b38"),
-  gold: photo("#ffc627", "#e0a800"),
-};
+// The prototype's story photos (568x660, copied unchanged from prototype v2.71 img/story-N.png). Storybook serves
+// them at story-photos/ (see staticDirs in .storybook/main.js); they are sample content, not part of dist/.
+export const photoSrc = number => `story-photos/story-${number}.png`;
 
 export const PROMO_ALT =
   "Barrett is the gold standard among the nation’s honors colleges. — The New York Times";
@@ -42,31 +34,38 @@ export const PROMO_ALT =
 export const STORIES = [
   {
     title: "A new generation of physician-engineers begins at ASU",
+    photo: photoSrc(1),
     sub: "Medical school opens with an engineering-first curriculum.",
   },
   {
     title: "The New game degree launches in Los Angeles",
+    photo: photoSrc(2),
     sub: "Game design and development, taught in the heart of the industry.",
   },
   {
     title: "Students part of Venice Film Festival documentary",
+    photo: photoSrc(3),
     sub: "Film students’ work premieres on the festival’s world stage.",
   },
   {
     title: "ASU No. 2 public university for GI Bill students",
+    photo: photoSrc(5),
     sub: "Recognized for support of veterans and military-connected students.",
   },
   {
     title: "Barrett, The Honors College is creating bright futures",
+    photo: photoSrc(6),
     sub: "Honors education with the reach of a Tier 1 research university.",
     promo: true,
   },
   {
     title: "New facility expands student research opportunities",
+    photo: photoSrc(4),
     sub: "New labs put undergraduates on funded research teams.",
   },
   {
     title: "Preparing the future workforce for the West Valley’s needs",
+    photo: photoSrc(7),
     sub: "Programs built around the region’s fastest-growing employers.",
   },
 ];
@@ -78,20 +77,19 @@ const escape = value =>
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
 
-const card = (story, index, photos) => {
-  const src = story.promo ? PHOTOS.gold : photos[index % photos.length];
+const card = (story, index) => {
+  const src = story.photo;
   const alt = story.promo ? escape(PROMO_ALT) : "";
   return `<li role="listitem"><a class="hp-stories__card${story.promo ? " hp-stories__card--promo" : ""}" href="${storyHref(index)}"><img src="${src}" alt="${alt}"><span class="hp-stories__scrim" aria-hidden="true"></span><span class="hp-stories__arrow" aria-hidden="true"><svg viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="${ARROW_PATH}"/></svg></span><div class="hp-stories__text"><h3 class="hp-stories__title">${escape(story.title)}</h3><div class="hp-stories__sub-wrap"><p class="hp-stories__sub">${escape(story.sub)}</p></div></div></a></li>`;
 };
 
 // Markup contract (design doc section 6): the Stage B parity source. `id` is the heading id and must be
-// unique per rendered copy. `photos` picks the photo variants (bright/dark) the six news cards cycle through.
+// unique per rendered copy.
 export const storiesHtml = ({
   id = "hp-stories-heading",
   href = MORE_HREF,
-  photos = [PHOTOS.dark, PHOTOS.bright],
 } = {}) =>
-  `<section class="hp-stories hp-bg-host" aria-labelledby="${id}"><span class="hp-topo hp-topo--band" aria-hidden="true"></span><div class="hp-stories__grid"><div class="hp-stories__lead"><p class="hp-stories__eyebrow">ASU news</p><h2 id="${id}" class="hp-stories__heading">Stories of excellence</h2><p class="hp-stories__dek">This is ASU innovation.</p><a class="btn btn-outline-gold btn-sm hp-stories__more" href="${escape(href)}">More stories <svg class="hp-stories__more-icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="${ARROW_PATH}"/></svg></a></div><ul class="hp-stories__cards" role="list">${STORIES.map((story, index) => card(story, index, photos)).join("")}</ul><div class="hp-stories__controls" hidden><button type="button" class="hp-stories__prev" aria-label="Previous stories"><svg viewBox="0 0 320 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="${CHEVRON_LEFT_PATH}"/></svg></button><button type="button" class="hp-stories__next" aria-label="Next stories"><svg viewBox="0 0 320 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="${CHEVRON_RIGHT_PATH}"/></svg></button></div></div></section>`;
+  `<section class="hp-stories hp-bg-host" aria-labelledby="${id}"><span class="hp-topo hp-topo--band" aria-hidden="true"></span><div class="hp-stories__grid"><div class="hp-stories__lead"><p class="hp-stories__eyebrow">ASU news</p><h2 id="${id}" class="hp-stories__heading">Stories of excellence</h2><p class="hp-stories__dek">This is ASU innovation.</p><a class="btn btn-outline-gold btn-sm hp-stories__more" href="${escape(href)}">More stories <svg class="hp-stories__more-icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="${ARROW_PATH}"/></svg></a></div><ul class="hp-stories__cards" role="list">${STORIES.map((story, index) => card(story, index)).join("")}</ul><div class="hp-stories__controls" hidden><button type="button" class="hp-stories__prev" aria-label="Previous stories"><svg viewBox="0 0 320 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="${CHEVRON_LEFT_PATH}"/></svg></button><button type="button" class="hp-stories__next" aria-label="Next stories"><svg viewBox="0 0 320 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="${CHEVRON_RIGHT_PATH}"/></svg></button></div></div></section>`;
 
 // Renders the markup and runs `initStories` (unless `manual`, the server-markup state). `before`/`after`
 // are blank spacers (CSS height) so a story can put the section away from the top of the page.
