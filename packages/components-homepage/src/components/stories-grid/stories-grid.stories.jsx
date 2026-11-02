@@ -1004,6 +1004,36 @@ export const ZoomAndSpacing = {
   },
 };
 
+export const OddWindowSizes = {
+  name: "Narrow and short windows",
+  tags: ["!dev"],
+  globals: viewport(1024),
+  render: () => <Harness html={storiesHtml()} />,
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    // every cell of a row is as tall as the tallest: no dark strip under a card beside a taller tile
+    const expectEvenRows = async () => {
+      const cells = [p.lead, ...p.items].map(box);
+      const rows = new Map();
+      cells.forEach(b => {
+        const key = Math.round(b.top);
+        rows.set(key, [...(rows.get(key) || []), b.height]);
+      });
+      rows.forEach(heights =>
+        expect(Math.max(...heights) - Math.min(...heights)).toBeLessThan(1.5)
+      );
+    };
+    // 320px phone: the tile is taller than the 32:37 cards beside it
+    await resizeViewport(320, 640);
+    await waitFor(expectEvenRows);
+    // a short desktop window (devtools docked): the tile needs more than the row, so both rows grow together
+    await resizeViewport(1280, 400);
+    await waitFor(expectEvenRows);
+    await resizeViewport(901, 320);
+    await waitFor(expectEvenRows);
+  },
+};
+
 export const ContrastBudget = {
   name: "Contrast budget",
   tags: ["!dev"],
