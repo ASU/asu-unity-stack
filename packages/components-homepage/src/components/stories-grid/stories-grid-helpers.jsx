@@ -15,13 +15,9 @@ export {
 export const MORE_HREF = "#stories-more";
 export const storyHref = index => `#story-${index + 1}`;
 
-// Icons: Font Awesome Free 6.4.2 solid (CC BY 4.0, https://fontawesome.com/license/free).
+// Icon: Font Awesome Free 6.4.2 solid arrow-right (CC BY 4.0, https://fontawesome.com/license/free).
 const ARROW_PATH =
   "M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z";
-const CHEVRON_LEFT_PATH =
-  "M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z";
-const CHEVRON_RIGHT_PATH =
-  "M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z";
 
 // The prototype's story photos (568x660, copied unchanged from prototype v2.71 img/story-N.png). Storybook serves
 // them at story-photos/ (see staticDirs in .storybook/main.js); they are sample content, not part of dist/.
@@ -89,7 +85,7 @@ export const storiesHtml = ({
   id = "hp-stories-heading",
   href = MORE_HREF,
 } = {}) =>
-  `<section class="hp-stories hp-bg-host" aria-labelledby="${id}"><span class="hp-topo hp-topo--band" aria-hidden="true"></span><div class="hp-stories__grid"><div class="hp-stories__lead"><p class="hp-stories__eyebrow">ASU news</p><h2 id="${id}" class="hp-stories__heading">Stories of excellence</h2><p class="hp-stories__dek">This is ASU innovation.</p><a class="btn btn-outline-gold btn-sm hp-stories__more" href="${escape(href)}">More stories <svg class="hp-stories__more-icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="${ARROW_PATH}"/></svg></a></div><ul class="hp-stories__cards" role="list">${STORIES.map((story, index) => card(story, index)).join("")}</ul><div class="hp-stories__controls" hidden><button type="button" class="hp-stories__prev" aria-label="Previous stories"><svg viewBox="0 0 320 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="${CHEVRON_LEFT_PATH}"/></svg></button><button type="button" class="hp-stories__next" aria-label="Next stories"><svg viewBox="0 0 320 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="${CHEVRON_RIGHT_PATH}"/></svg></button></div></div></section>`;
+  `<section class="hp-stories hp-bg-host" aria-labelledby="${id}"><span class="hp-topo hp-topo--band" aria-hidden="true"></span><div class="hp-stories__grid"><div class="hp-stories__lead"><p class="hp-stories__eyebrow">ASU news</p><h2 id="${id}" class="hp-stories__heading">Stories of excellence</h2><p class="hp-stories__dek">This is ASU innovation.</p><a class="btn btn-outline-gold btn-sm hp-stories__more" href="${escape(href)}">More stories <svg class="hp-stories__more-icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="${ARROW_PATH}"/></svg></a></div><ul class="hp-stories__cards" role="list">${STORIES.map((story, index) => card(story, index)).join("")}</ul></div></section>`;
 
 // Renders the markup and runs `initStories` (unless `manual`, the server-markup state). `before`/`after`
 // are blank spacers (CSS height) so a story can put the section away from the top of the page.

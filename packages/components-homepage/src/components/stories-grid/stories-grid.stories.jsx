@@ -35,7 +35,7 @@ export default {
     docs: {
       description: {
         component:
-          'Homepage stories of excellence: an even 4x2 grid, edge to edge, of a Gray 1 heading tile ("Stories of excellence", "This is ASU innovation.", "More stories") and seven photo cards (six stories and one gold promo in row 2, cell 2). On desktop the grid starts inset by the 48px gutter with 4px corners and opens to full width with square corners as it scrolls into view (`initStories` writes `--hp-stories-progress` from the scroll position; the section\'s height never changes, so nothing below it moves). Hover and keyboard focus reveal the subhead (0.4s), darken the whole photo (the scrim starts at the top instead of at 54%) and invert the arrow chip. Tablet (900px and under) is two columns with the heading tile as the first cell and the subhead always shown; phones (600px and under) get the tile and a swipe row of 260px-wide cards with Previous/Next buttons. Reduced motion and no script show the grid at full width. Above 1920px the grid is capped and centered on a Gray 1 topo band. Photos are inline SVG placeholders; `href`s are placeholders (`#story-N`, `#stories-more`).',
+          'Homepage stories of excellence: an even 4x2 grid, edge to edge, of a Gray 1 heading tile ("Stories of excellence", "This is ASU innovation.", "More stories") and seven photo cards (six stories and one gold promo in row 2, cell 2). On desktop the grid starts inset by the 48px gutter with 4px corners and opens to full width with square corners as it scrolls into view (`initStories` writes `--hp-stories-progress` from the scroll position; the section\'s height never changes, so nothing below it moves). Hover and keyboard focus reveal the subhead (0.4s), darken the whole photo (the scrim starts at the top instead of at 50%) and lift the card with a shadow and invert the arrow chip. Tablet (900px and under) is two columns with the heading tile as the first cell and the subhead always shown; phones (600px and under, Figma 375) keep the same two columns with smaller type, no dek and no subheads. Reduced motion and no script show the grid at full width. Above 1920px the grid is capped and centered on a Gray 1 topo band. Photos are the prototype sample photos; `href`s are placeholders (`#story-N`, `#stories-more`).',
       },
     },
   },
@@ -76,9 +76,6 @@ const parts = canvasElement => {
     list: find(".hp-stories__cards"),
     items: Array.from(section.querySelectorAll(".hp-stories__cards > li")),
     cards: Array.from(section.querySelectorAll(".hp-stories__card")),
-    controls: find(".hp-stories__controls"),
-    prev: find(".hp-stories__prev"),
-    next: find(".hp-stories__next"),
   };
 };
 
@@ -149,13 +146,6 @@ const expectContract = async p => {
     expect(c.scrim.getAttribute("aria-hidden")).toBe("true");
     expect(c.img.getAttribute("alt")).toBe(story.promo ? PROMO_ALT : "");
   });
-  // the controls follow the list in DOM order
-  await expect(
-    p.list.compareDocumentPosition(p.controls) &
-      Node.DOCUMENT_POSITION_FOLLOWING
-  ).toBeTruthy();
-  await expect(p.prev.getAttribute("aria-label")).toBe("Previous stories");
-  await expect(p.next.getAttribute("aria-label")).toBe("Next stories");
 };
 
 // The geometry of the 4x2 desktop grid at the current viewport.
@@ -199,9 +189,7 @@ export const NoScript = {
     await expect(p.section.outerHTML).toBe(
       template.content.firstElementChild.outerHTML
     );
-    // no script: the controls stay hidden, the grid is full width and square
-    await expect(p.controls.hidden).toBe(true);
-    await expect(style(p.controls).display).toBe("none");
+    // no script: the grid is full width and square
     await expect(p.grid.style.getPropertyValue("--hp-stories-progress")).toBe(
       ""
     );
@@ -618,7 +606,6 @@ export const Tablet768 = {
     await near(g.width, width, 1);
     await expect(style(p.section).backgroundColor).toBe(WHITE);
     await near(px(style(p.section).paddingBottom), 32, 0.5);
-    await expect(p.controls.hidden).toBe(true);
     // the subhead is always shown (no hover on touch); the promo's is visually hidden but in the tree
     p.cards.forEach((_, index) => {
       const c = card(p, index);
@@ -641,104 +628,65 @@ export const Phone393 = {
   play: async ({ canvasElement }) => {
     await resizeViewport(393, 852);
     const p = parts(canvasElement);
-    await waitFor(() => expect(style(p.list).display).toBe("flex"));
+    await waitFor(() =>
+      expect(style(p.grid).gridTemplateColumns.split(" ")).toHaveLength(2)
+    );
     const width = box(p.section).width;
-    // the tile is full width, 32px/16px padding
+    const cellWidth = width / 2;
+    const cellHeight = (cellWidth * 37) / 32;
+    const g = box(p.grid);
+    // Figma 375 (brand-confirmed): the heading tile is the first cell and the seven cards fill 4 rows of 2
+    // (no swipe row); flush, square, no shadow at rest
     const lead = box(p.lead);
-    await near(lead.width, width, 1);
-    await near(px(style(p.lead).paddingLeft), 16, 0.5);
-    await near(px(style(p.lead).paddingTop), 32, 0.5);
-    await expect(style(p.grid).backgroundColor).toBe("rgba(0, 0, 0, 0)");
-    await expect(style(p.lead).backgroundColor).toBe(GRAY_1);
-    // 16px gap, then the swipe row
-    const row = box(p.list);
-    await near(row.top - lead.bottom, 16, 1);
-    await expect(style(p.list).overflowX).toBe("auto");
-    await expect(style(p.list).scrollSnapType).toContain("x mandatory");
-    await near(px(style(p.list).paddingLeft), 16, 0.5);
-    // 260 x >= 302 cards, flush (no gap), square, no shadow
+    await near(lead.width, cellWidth, 1);
+    await near(lead.height, cellHeight, 1);
+    await near(lead.left, g.left, 1);
     p.cards.forEach((element, index) => {
       const b = box(element);
-      near(b.width, 260, 1);
-      expect(b.height).toBeGreaterThanOrEqual(301.5);
-      near(b.left, row.left + 16 + index * 260, 1);
+      near(b.width, cellWidth, 1);
+      near(b.height, cellHeight, 1);
+      near(b.left - g.left, ((index + 1) % 2) * cellWidth, 1);
+      near(b.top - g.top, Math.floor((index + 1) / 2) * cellHeight, 1);
       expect(style(element).borderRadius).toBe("0px");
       expect(style(element).boxShadow).toBe("none");
     });
-    await near(box(p.cards[0]).height, 302, 1);
-    // subheads always shown, the promo's visually hidden
-    await expect(style(card(p, 0).sub).opacity).toBe("1");
-    await expect(box(card(p, 4).sub).height).toBeLessThanOrEqual(1);
-    // the controls row is visible (the row overflows), 24px under the cards, buttons 48px
-    await waitFor(() => expect(p.controls.hidden).toBe(false));
-    await near(box(p.controls).top - box(p.cards[0]).bottom, 24, 1.5);
-    await near(box(p.prev).width, 48, 0.5);
-    await near(box(p.next).height, 48, 0.5);
+    await near(g.height, 4 * cellHeight, 1);
+    await expect(
+      canvasElement.querySelector(".hp-stories__controls")
+    ).toBeNull();
+    // the tile: 32px/16px padding, 16px gap, 24/24 heading, no dek
+    await near(px(style(p.lead).paddingLeft), 16, 0.5);
+    await near(px(style(p.lead).paddingTop), 32, 0.5);
+    await near(px(style(p.lead).rowGap), 16, 0.5);
+    await expect(style(p.lead).backgroundColor).toBe(GRAY_1);
+    await expect(px(style(p.heading).fontSize)).toBe(24);
+    await expect(px(style(p.heading).lineHeight)).toBe(24);
+    await expect(style(p.dek).display).toBe("none");
+    // the cards: 16px padding, 16/20 title, chip 16px from the corner, full-height scrim, no visible subhead
+    p.cards.forEach((element, index) => {
+      const c = card(p, index);
+      expect(px(style(c.text).paddingLeft)).toBe(16);
+      expect(px(style(c.text).paddingBottom)).toBe(16);
+      expect(px(style(c.title).fontSize)).toBe(16);
+      expect(px(style(c.title).lineHeight)).toBe(20);
+      near(box(element).right - box(c.arrow).right, 16, 1);
+      near(box(c.arrow).top - box(element).top, 16, 1);
+      expect(scrimStart(c.scrim)).toBe("0%");
+      // the subhead is clipped (not display: none), so the link's name does not depend on the width
+      expect(style(c.sub).display).not.toBe("none");
+      expect(box(c.sub).height).toBeLessThanOrEqual(1);
+      expect(element.textContent).toContain(STORIES[index].sub);
+    });
+    // the promo's artwork sits whole on its gold
+    const promo = card(p, 4);
+    await expect(style(promo.element).backgroundColor).toBe(GOLD);
+    await expect(style(promo.img).objectFit).toBe("contain");
+    // white page behind, 32px under the grid, no opening
+    await expect(style(p.section).backgroundColor).toBe(WHITE);
     await near(px(style(p.section).paddingBottom), 32, 0.5);
     await expect(p.grid.style.getPropertyValue("--hp-stories-progress")).toBe(
       ""
     );
-  },
-};
-
-export const SwipeControls = {
-  name: "Swipe controls",
-  tags: ["!dev"],
-  globals: viewport(393),
-  render: () => <Harness html={storiesHtml()} />,
-  play: async ({ canvasElement }) => {
-    await resizeViewport(393, 852);
-    const p = parts(canvasElement);
-    await waitFor(() => expect(p.controls.hidden).toBe(false));
-    const row = p.list;
-    // at the start: Previous is aria-disabled (still focusable), Next is not
-    await waitFor(() =>
-      expect(p.prev.getAttribute("aria-disabled")).toBe("true")
-    );
-    await expect(p.next.getAttribute("aria-disabled")).toBe("false");
-    await expect(p.prev.disabled).toBe(false);
-    // Next scrolls one card
-    p.next.click();
-    await waitFor(() => near(row.scrollLeft, 260, 2), { timeout: 3000 });
-    await waitFor(() =>
-      expect(p.prev.getAttribute("aria-disabled")).toBe("false")
-    );
-    p.prev.click();
-    await waitFor(() => near(row.scrollLeft, 0, 2), { timeout: 3000 });
-    // at the end: Next is aria-disabled, a click does nothing, and focus stays on the button
-    row.scrollLeft = row.scrollWidth;
-    await waitFor(() =>
-      expect(p.next.getAttribute("aria-disabled")).toBe("true")
-    );
-    p.next.focus();
-    const end = row.scrollLeft;
-    p.next.click();
-    await frame();
-    await frame();
-    await expect(row.scrollLeft).toBe(end);
-    await expect(document.activeElement).toBe(p.next);
-    // focusing an off-screen card scrolls it into view (the row is not a trap)
-    row.scrollLeft = 0;
-    await frame();
-    p.cards[6].focus();
-    await waitFor(() => expect(row.scrollLeft).toBeGreaterThan(300));
-    // reduced motion: no smooth scrolling
-    row.scrollLeft = 0;
-    await emulateReducedMotion(true);
-    await frame();
-    p.next.click();
-    await waitFor(() => near(row.scrollLeft, 260, 2), { timeout: 500 });
-    await emulateReducedMotion(false);
-    // the buttons' focus ring is white + Gray 1 (visible on the white page)
-    p.prev.focus();
-    await expect(style(p.prev).boxShadow).toBe(
-      "rgb(255, 255, 255) 0px 0px 0px 2px, rgb(25, 25, 25) 0px 0px 0px 4px"
-    );
-    // above 600px the controls go away; a focused button hands focus to the first card
-    p.next.focus();
-    await resizeViewport(601, 900);
-    await waitFor(() => expect(p.controls.hidden).toBe(true));
-    await expect(document.activeElement).toBe(p.cards[0]);
   },
 };
 
@@ -757,12 +705,16 @@ export const BreakpointCrossing = {
     await resizeViewport(900, 900);
     await waitFor(() => expect(progress()).toBe(""));
     await expect(style(p.grid).gridTemplateColumns.split(" ")).toHaveLength(2);
-    await expect(p.controls.hidden).toBe(true);
-    // 900 -> 600 -> 601: the controls follow the 600px boundary on their own
+    await expect(style(p.dek).display).not.toBe("none");
+    await expect(px(style(card(p, 0).title).fontSize)).toBe(24);
+    // 900 -> 600 -> 601: the phone step (Figma 375) has smaller type and no dek, in the same two columns
     await resizeViewport(600, 900);
-    await waitFor(() => expect(p.controls.hidden).toBe(false));
+    await waitFor(() => expect(style(p.dek).display).toBe("none"));
+    await expect(px(style(card(p, 0).title).fontSize)).toBe(16);
+    await expect(style(p.grid).gridTemplateColumns.split(" ")).toHaveLength(2);
     await resizeViewport(601, 900);
-    await waitFor(() => expect(p.controls.hidden).toBe(true));
+    await waitFor(() => expect(style(p.dek).display).not.toBe("none"));
+    await expect(px(style(card(p, 0).title).fontSize)).toBe(24);
     await expect(style(p.grid).gridTemplateColumns.split(" ")).toHaveLength(2);
     // back up: the opening returns
     await resizeViewport(901, 900);
@@ -805,13 +757,10 @@ export const InitContract = {
     await expect(parseFloat(value(first))).toBe(1);
     await expect(parseFloat(value(second))).toBe(0);
     again();
-    // cleanup removes the property and hides the controls
+    // cleanup removes the properties
     cleanup();
     await expect(value(first)).toBe("");
     await expect(value(second)).toBe("");
-    sections.forEach(section =>
-      expect(section.querySelector(".hp-stories__controls").hidden).toBe(true)
-    );
     // calling cleanup twice is harmless
     cleanup();
     // and the public entry exports it
@@ -900,11 +849,10 @@ export const Fallbacks = {
       await near(box(p.grid).width, box(p.section).width, 1);
       cleanup();
       window.IntersectionObserver = observer;
-      // no matchMedia: counts as a phone (no opening, no controls)
+      // no matchMedia: counts as a phone (no opening)
       window.matchMedia = undefined;
       cleanup = initStories(canvasElement);
       await expect(progress()).toBe("");
-      await expect(p.controls.hidden).toBe(true);
       cleanup();
     } finally {
       window.IntersectionObserver = observer;
@@ -1038,6 +986,13 @@ export const ContrastBudget = {
     await expect(
       maxPhotoGray(scrimMultiplier(subFirst, 0), 4.5)
     ).toBeGreaterThan(250);
+    // phones (Figma 375, 217.87px cards, 16px padding, 20px lines): the 16px title is not large text (4.5:1) and
+    // sits over the full-height scrim; a three-line title tolerates a photo gray up to about 235
+    const phoneFirst = lines => 1 - (16 + 20 * lines) / 217.87;
+    await near(maxPhotoGray(scrimMultiplier(phoneFirst(3), 0), 4.5), 235, 3);
+    await expect(
+      maxPhotoGray(scrimMultiplier(phoneFirst(2), 0), 4.5)
+    ).toBeGreaterThanOrEqual(254);
     // the threshold follows the rendered size: 24px bold and the 21px floor are large text, 14px is not
     await expect(requiredRatio(24)).toBe(3);
     await expect(requiredRatio(21)).toBe(3);

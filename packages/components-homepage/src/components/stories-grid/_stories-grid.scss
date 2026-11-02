@@ -1,11 +1,11 @@
 // Homepage stories of excellence: an even 4x2 grid (heading tile + seven photo cards) that opens from inset
-// to full width on scroll (desktop), two columns on tablets and a swipe row on phones.
+// to full width on scroll (desktop), and the same two columns on phones (Figma 375, confirmed by brand 2026-11-02).
 // Prototype v2.71 lines 1384-1411, 1681-1684, 2206-2290 (final cascade, measured); hover from the Figma
 // "News card-V3" spec (12202:14932); design doc: WWWCMS-236.
 // Desktop-first: the base rules are the layout above 900px and `max-width` queries hold every override, so
 // no viewport width falls between two queries (initStories reads the inverse of the same queries).
 
-$hp-stories-compact-max: 600px; // TODO: confirm with design - the phone swipe-row step (UDS sm is 576px).
+$hp-stories-compact-max: 600px; // TODO: confirm with design - the phone step (Figma 375; UDS sm is 576px).
 $hp-stories-header-break: 1080px; // The prototype switches to its compact header at 1079px.
 
 // Hover/focus lift (Figma News card-V3 hover: drop-shadow 0 2px 10px rgba(0,0,0,.32)).
@@ -92,12 +92,6 @@ $hp-stories-lift: 0 2px 10px rgba(0, 0, 0, 0.32);
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-auto-rows: auto;
   }
-
-  @media (max-width: $hp-stories-compact-max) {
-    display: block;
-    // the swipe row and its controls sit on the page, not on Gray 1 (only the heading tile is Gray 1)
-    background: transparent;
-  }
 }
 
 // ---- Heading tile ----
@@ -119,8 +113,8 @@ $hp-stories-lift: 0 2px 10px rgba(0, 0, 0, 0.32);
   }
 
   @media (max-width: $hp-stories-compact-max) {
+    gap: $uds-size-spacing-2;
     padding: $uds-size-spacing-4 $uds-size-spacing-2;
-    aspect-ratio: auto;
   }
 }
 
@@ -146,6 +140,12 @@ $hp-stories-lift: 0 2px 10px rgba(0, 0, 0, 0.32);
   line-height: calc(32 * var(--hp-stories-u));
   letter-spacing: calc(-0.96 * var(--hp-stories-u));
   text-wrap: balance;
+
+  @media (max-width: $hp-stories-compact-max) {
+    font-size: 24px; // TODO: confirm with design - Figma 375: 24/24, -0.72.
+    line-height: 24px;
+    letter-spacing: -0.72px;
+  }
 }
 
 .hp-stories__dek {
@@ -154,6 +154,11 @@ $hp-stories-lift: 0 2px 10px rgba(0, 0, 0, 0.32);
   font-size: calc(16 * var(--hp-stories-u));
   line-height: calc(24 * var(--hp-stories-u));
   text-wrap: pretty;
+
+  // The Figma 375 tile has no dek.
+  @media (max-width: $hp-stories-compact-max) {
+    display: none;
+  }
 }
 
 .hp-stories__more-icon {
@@ -179,27 +184,6 @@ $hp-stories-lift: 0 2px 10px rgba(0, 0, 0, 0.32);
 
     @media (max-width: $hp-phone-max) {
       aspect-ratio: 32 / 37;
-    }
-  }
-
-  @media (max-width: $hp-stories-compact-max) {
-    display: flex;
-    margin-top: $uds-size-spacing-2;
-    padding-inline: $uds-size-spacing-2;
-    overflow-x: auto;
-    scroll-padding-inline: $uds-size-spacing-2;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-
-    > li {
-      flex: 0 0 260px; // TODO: confirm with design - 260x302 phone cards (ticket).
-      min-height: 302px;
-      aspect-ratio: auto;
-      scroll-snap-align: start;
     }
   }
 }
@@ -265,6 +249,11 @@ $hp-stories-lift: 0 2px 10px rgba(0, 0, 0, 0.32);
   border-radius: 50%;
   color: $uds-color-base-white;
 
+  @media (max-width: $hp-stories-compact-max) {
+    top: $uds-size-spacing-2;
+    right: $uds-size-spacing-2;
+  }
+
   svg {
     display: block;
     width: auto;
@@ -278,6 +267,10 @@ $hp-stories-lift: 0 2px 10px rgba(0, 0, 0, 0.32);
   z-index: 2;
   width: 100%;
   padding: calc(24 * var(--hp-stories-u));
+
+  @media (max-width: $hp-stories-compact-max) {
+    padding: $uds-size-spacing-2;
+  }
 }
 
 .hp-stories__title {
@@ -288,6 +281,12 @@ $hp-stories-lift: 0 2px 10px rgba(0, 0, 0, 0.32);
   line-height: calc(26 * var(--hp-stories-u));
   letter-spacing: calc(-0.72 * var(--hp-stories-u));
   text-wrap: balance;
+
+  @media (max-width: $hp-stories-compact-max) {
+    font-size: $uds-size-font-medium; // TODO: confirm with design - Figma 375: 16/20, -0.48.
+    line-height: 20px;
+    letter-spacing: -0.48px;
+  }
 }
 
 // The subhead is clipped, never display: none, so it stays in the accessibility tree.
@@ -362,22 +361,42 @@ $hp-stories-lift: 0 2px 10px rgba(0, 0, 0, 0.32);
   }
 }
 
-// The promo's baked-in quote crowds its headline on a short card: its subhead stays out of sight (still in
-// the accessibility tree, so its name does not change with the width).
+// A subhead that is not shown stays in the accessibility tree (clipped, never display: none), so a link's
+// name does not change with the width.
+@mixin hp-stories-sub-hidden {
+  .hp-stories__title {
+    margin-bottom: 0;
+  }
+
+  .hp-stories__sub {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+}
+
+// The promo's baked-in quote crowds its headline on a short card: its subhead stays out of sight at <= 900.
 @media (max-width: $hp-phone-max) {
   .hp-stories .hp-stories__card.hp-stories__card--promo {
-    .hp-stories__title {
-      margin-bottom: 0;
-    }
+    @include hp-stories-sub-hidden;
+  }
+}
 
-    .hp-stories__sub {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
+// Phones (Figma 375): no card shows a subhead; the promo's artwork sits whole on its gold.
+@media (max-width: $hp-stories-compact-max) {
+  .hp-stories .hp-stories__card {
+    @include hp-stories-sub-hidden;
+  }
+
+  .hp-stories .hp-stories__card--promo {
+    background: $uds-color-brand-gold;
+
+    img {
+      object-fit: contain;
     }
   }
 }
@@ -408,68 +427,6 @@ $hp-stories-lift: 0 2px 10px rgba(0, 0, 0, 0.32);
   box-shadow:
     inset 0 0 0 2px var(--hp-stories-ring-edge),
     inset 0 0 0 4px var(--hp-stories-ring-inner);
-}
-
-// ---- Phone swipe controls ----
-
-.hp-stories__controls {
-  display: none;
-
-  &[hidden] {
-    display: none !important;
-  }
-
-  @media (max-width: $hp-stories-compact-max) {
-    display: flex;
-    gap: $uds-size-spacing-2;
-    margin-top: $uds-size-spacing-3;
-    padding-inline: $uds-size-spacing-2;
-  }
-}
-
-.hp-stories__prev,
-.hp-stories__next {
-  display: grid;
-  place-items: center;
-  width: 48px; // TODO: confirm with design - 48px (the rankings control pair, P:1192).
-  height: 48px;
-  padding: 0;
-  border: 1px solid $asu-gray-5;
-  border-radius: 50%;
-  background: $uds-color-base-white;
-  color: $asu-gray-1;
-  cursor: pointer;
-
-  svg {
-    display: block;
-    width: auto;
-    height: $uds-size-font-medium;
-  }
-
-  &:hover {
-    background: $asu-gray-6;
-  }
-
-  // aria-disabled (not `disabled`) keeps the button focusable, so focus is never lost at an end.
-  &[aria-disabled="true"] {
-    background: $uds-color-base-white;
-    color: $asu-gray-5;
-    cursor: default;
-  }
-}
-
-.hp-stories .hp-stories__prev:focus,
-.hp-stories .hp-stories__next:focus {
-  box-shadow: none !important;
-}
-
-.hp-stories .hp-stories__prev:focus-visible,
-.hp-stories .hp-stories__next:focus-visible {
-  outline: 2px solid transparent !important;
-  // white + Gray 1 (the buttons sit on the white page, where white + #00BAFF would vanish)
-  box-shadow:
-    0 0 0 2px var(--hp-stories-ring-edge),
-    0 0 0 4px var(--hp-stories-ring-inner) !important;
 }
 
 // ---- Motion ----
@@ -513,12 +470,5 @@ $hp-stories-lift: 0 2px 10px rgba(0, 0, 0, 0.32);
   .hp-stories__title,
   .hp-stories__sub {
     color: CanvasText;
-  }
-
-  // aria-disabled is not native `disabled`, so the dimmed state needs the system disabled colour.
-  .hp-stories__prev[aria-disabled="true"],
-  .hp-stories__next[aria-disabled="true"] {
-    border-color: GrayText;
-    color: GrayText;
   }
 }
