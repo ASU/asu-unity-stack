@@ -73,10 +73,17 @@ const escape = value =>
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;");
 
+// Data layer (design doc section 16): the UDS general click convention, handled by the theme's `initDataLayer`.
+// `data-ga` is the link text; every value is lower-cased when pushed. TODO: confirm the event definition with the
+// data team (WWWCMS-227 open item): the link type (internal/external) and the section name.
+export const GA_SECTION = "stories of excellence";
+export const gaAttributes = text =>
+  `data-ga-name="onclick" data-ga-event="link" data-ga-action="click" data-ga-type="internal link" data-ga-region="main content" data-ga-section="${GA_SECTION}" data-ga="${escape(text)}"`;
+
 const card = (story, index) => {
   const src = story.photo;
   const alt = story.promo ? escape(PROMO_ALT) : "";
-  return `<li role="listitem"><a class="hp-stories__card${story.promo ? " hp-stories__card--promo" : ""}" href="${storyHref(index)}"><img src="${src}" alt="${alt}"><span class="hp-stories__scrim" aria-hidden="true"></span><span class="hp-stories__arrow" aria-hidden="true"><svg viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="${ARROW_PATH}"/></svg></span><div class="hp-stories__text"><h3 class="hp-stories__title">${escape(story.title)}</h3><div class="hp-stories__sub-wrap"><p class="hp-stories__sub">${escape(story.sub)}</p></div></div></a></li>`;
+  return `<li role="listitem"><a class="hp-stories__card${story.promo ? " hp-stories__card--promo" : ""}" href="${storyHref(index)}" ${gaAttributes(story.title)}><img src="${src}" alt="${alt}"><span class="hp-stories__scrim" aria-hidden="true"></span><span class="hp-stories__arrow" aria-hidden="true"><svg viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="${ARROW_PATH}"/></svg></span><div class="hp-stories__text"><h3 class="hp-stories__title">${escape(story.title)}</h3><div class="hp-stories__sub-wrap"><p class="hp-stories__sub">${escape(story.sub)}</p></div></div></a></li>`;
 };
 
 // Markup contract (design doc section 6): the Stage B parity source. `id` is the heading id and must be
@@ -85,7 +92,7 @@ export const storiesHtml = ({
   id = "hp-stories-heading",
   href = MORE_HREF,
 } = {}) =>
-  `<section class="hp-stories hp-bg-host" aria-labelledby="${id}"><span class="hp-topo hp-topo--band" aria-hidden="true"></span><div class="hp-stories__grid"><div class="hp-stories__lead"><p class="hp-stories__eyebrow">ASU news</p><h2 id="${id}" class="hp-stories__heading">Stories of excellence</h2><p class="hp-stories__dek">This is ASU innovation.</p><a class="btn btn-outline-gold btn-sm hp-stories__more" href="${escape(href)}">More stories <svg class="hp-stories__more-icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="${ARROW_PATH}"/></svg></a></div><ul class="hp-stories__cards" role="list">${STORIES.map((story, index) => card(story, index)).join("")}</ul></div></section>`;
+  `<section class="hp-stories hp-bg-host" aria-labelledby="${id}"><span class="hp-topo hp-topo--band" aria-hidden="true"></span><div class="hp-stories__grid"><div class="hp-stories__lead"><p class="hp-stories__eyebrow">ASU news</p><h2 id="${id}" class="hp-stories__heading">Stories of excellence</h2><p class="hp-stories__dek">This is ASU innovation.</p><a class="btn btn-outline-gold btn-sm hp-stories__more" href="${escape(href)}" ${gaAttributes("More stories")}>More stories <svg class="hp-stories__more-icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="${ARROW_PATH}"/></svg></a></div><ul class="hp-stories__cards" role="list">${STORIES.map((story, index) => card(story, index)).join("")}</ul></div></section>`;
 
 // Renders the markup and runs `initStories` (unless `manual`, the server-markup state). `before`/`after`
 // are blank spacers (CSS height) so a story can put the section away from the top of the page.

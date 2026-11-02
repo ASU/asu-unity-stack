@@ -3,6 +3,7 @@ import { expect, waitFor } from "storybook/test";
 
 import { initStories } from "./stories-grid.js";
 import {
+  GA_SECTION,
   Harness,
   MORE_HREF,
   PROMO_ALT,
@@ -22,6 +23,7 @@ import {
   storyHref,
   walkRules,
 } from "./stories-grid-helpers.jsx";
+import { initDataLayer } from "@asu/unity-bootstrap-theme/src/js/data-layer.js";
 import * as entry from "../../js/index.js";
 
 export default {
@@ -130,6 +132,18 @@ const expectContract = async p => {
   await expect(p.items).toHaveLength(7);
   await expect(p.cards).toHaveLength(7);
   p.items.forEach(item => expect(item.getAttribute("role")).toBe("listitem"));
+  // data layer attributes (UDS general click convention)
+  const ga = (element, text) => {
+    expect(element.getAttribute("data-ga")).toBe(text);
+    expect(element.getAttribute("data-ga-name")).toBe("onclick");
+    expect(element.getAttribute("data-ga-event")).toBe("link");
+    expect(element.getAttribute("data-ga-action")).toBe("click");
+    expect(element.getAttribute("data-ga-type")).toBe("internal link");
+    expect(element.getAttribute("data-ga-region")).toBe("main content");
+    expect(element.getAttribute("data-ga-section")).toBe(GA_SECTION);
+  };
+  ga(p.more, "More stories");
+  STORIES.forEach((story, index) => ga(p.cards[index], story.title));
   // DOM order = visual order; the promo is the 5th card (row 2, cell 2)
   const promos = p.cards.filter(c =>
     c.classList.contains("hp-stories__card--promo")
@@ -720,6 +734,55 @@ export const BreakpointCrossing = {
     await resizeViewport(901, 900);
     await waitFor(() => expect(progress()).not.toBe(""));
     await expect(style(p.grid).gridTemplateColumns.split(" ")).toHaveLength(4);
+  },
+};
+
+// --- data layer ---
+
+export const DataLayer = {
+  name: "Data layer",
+  tags: ["!dev"],
+  globals: viewport(1440),
+  render: () => <Harness html={storiesHtml()} />,
+  play: async ({ canvasElement }) => {
+    await resizeViewport(1440, 900);
+    const p = parts(canvasElement);
+    // a click on a fragment link must not change the location of the test page
+    const stop = e => e.preventDefault();
+    canvasElement.addEventListener("click", stop);
+    window.dataLayer = [];
+    initDataLayer(); // the theme's handler: one click listener per [data-ga] element
+    const event = text => ({
+      name: "onclick",
+      event: "link",
+      action: "click",
+      type: "internal link",
+      region: "main content",
+      section: GA_SECTION,
+      text,
+    });
+    // nothing is pushed by hover, focus or the reveal
+    forceHover(p.cards[0]);
+    p.cards[1].focus();
+    await frame();
+    await expect(window.dataLayer).toEqual([]);
+    forceHover(p.cards[0], false);
+    // one event per click, lower-cased title as the text; the promo like every other card
+    p.cards[0].click();
+    await expect(window.dataLayer).toEqual([
+      event(STORIES[0].title.toLowerCase()),
+    ]);
+    p.cards[4].click();
+    await expect(window.dataLayer).toHaveLength(2);
+    await expect(window.dataLayer[1]).toEqual(
+      event(STORIES[4].title.toLowerCase())
+    );
+    p.more.click();
+    await expect(window.dataLayer).toHaveLength(3);
+    await expect(window.dataLayer[2]).toEqual(event("more stories"));
+    canvasElement.removeEventListener("click", stop);
+    window.dataLayer = [];
+    window.scrollTo({ top: 0, behavior: "instant" });
   },
 };
 
