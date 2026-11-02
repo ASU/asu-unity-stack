@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.2",
+  "anchor": "WWWCMS-235",
+  "component": {
+    "name": "Quick Links Row",
+    "slug": "homepage-quick-links",
+    "intent": "new"
+  },
+  "unity": {
+    "branch": "WWWCMS-235-homepage-quick-links-row",
+    "package": "@asu/components-homepage",
+    "piece_folder": "packages/components-homepage/src/components/quick-links",
+    "scss_entry": "packages/components-homepage/src/scss/components-homepage.scss",
+    "dist_paths": [
+      "packages/components-homepage/dist/css/components-homepage.css",
+      "packages/components-homepage/dist/js/components-homepage.es.js"
+    ]
+  },
+  "unity_source": {
+    "package": "@asu/components-homepage",
+    "piece_folder": "packages/components-homepage/src/components/quick-links",
+    "markup_fixture": "handoff/WWWCMS-235/markup.html",
+    "scss_entry": "packages/components-homepage/src/scss/components-homepage.scss"
+  },
+  "pr_ready_evidence": {
+    "build": "yarn workspace @asu/components-homepage build — exit 0",
+    "lint": "yarn workspace @asu/components-homepage lint — exit 0",
+    "test_storybook": "yarn workspace @asu/components-homepage test:storybook — 103 passed (quick-links)",
+    "test_accessibility": "yarn workspace @asu/components-homepage test:accessibility — 55 passed (homepage-quick-links--accessibility-plain: 0 WCAG 2.1 AA violations)"
+  },
+  "html_parity_markup_file": "markup.html",
+  "webspark_target": {
+    "module": "asu_edu_homepage",
+    "sdc_path": "docroot/modules/custom/asu_edu_homepage/components/homepage-quick-links/",
+    "files": [
+      "homepage-quick-links.component.yml",
+      "homepage-quick-links.twig",
+      "homepage-quick-links.css",
+      "homepage-quick-links.js"
+    ],
+    "theme_or_shared_module": "NEVER_PLACE_IN_asu_edu_THEME_OR_asu_edu_components",
+    "css_flavor": "vanilla CSS (compiled from the Unity SCSS partial)",
+    "js_flavor": "Drupal.behaviors (empty at Stage A; populate only if GA wiring is added later)"
+  },
+  "interactivity": {
+    "state_machine": "none",
+    "keyboard_pattern": "native anchor Tab/Enter order; no custom handlers; no tabindex",
+    "dynamic_aria": "none",
+    "class_toggle_contract": "none",
+    "motion": {
+      "transition": "background-color 150ms ease-out, color 150ms ease-out on .hp-quick-link and .hp-quick-link-es",
+      "reduced_motion": "transition is only declared inside @media (prefers-reduced-motion: no-preference); under reduce the state swap is instant"
+    },
+    "breakpoint_behavior": {
+      "2x2_grid": "width <= 900px",
+      "1x4_row": "width >= 901px",
+      "notes": "Uses $hp-phone-max=900px from packages/components-homepage/src/scss/_variables.scss; this diverges from UDS $uds-breakpoint-md=768px on purpose to match hero/reimagine/backgrounds and prototype v2.71."
+    },
+    "analytics_timing": "deferred — zero data-ga* attributes at Stage A; see open_questions"
+  },
+  "tokens_used": {
+    "colors": ["$uds-color-base-white", "$uds-color-brand-gold"],
+    "spacing": ["$uds-size-spacing-1", "$uds-size-spacing-2", "$uds-size-spacing-3", "$uds-size-spacing-4", "$uds-size-spacing-6", "$uds-size-spacing-7", "$uds-size-spacing-12"],
+    "typography": ["$uds-size-font-small", "$uds-size-font-medium", "$uds-font-weight-bold"],
+    "icon_sizes": ["$uds-size-icon-small", "$uds-size-icon-base"],
+    "focus_ring": ["--hp-focus-inner", "--hp-focus-outer"],
+    "new_custom_property": "--hp-quick-link-glass: rgba($uds-color-base-white, 0.16)"
+  },
+  "open_questions": [
+    { "id": "A6", "subject": "destination URL of the Spanish link", "stage_a_fallback": "<spanish-url-placeholder>; Storybook arg accepts a real URL" },
+    { "id": "open-decision-6", "subject": "single source for shared CTA URLs (Apply, Visit, Request info)", "stage_a_fallback": "# fragment placeholders in Storybook args; real URLs land in Stage B config" },
+    { "id": "wwwcms-230-focus-outer", "subject": "--hp-focus-outer: #00baff is a TODO inherited from WWWCMS-230", "stage_a_fallback": "reused as-is; not a quick-links problem" },
+    { "id": "figma-mcp-offline", "subject": "Figma Dev Mode MCP at 127.0.0.1:3845 was unreachable during PLAN", "stage_a_fallback": "rgba(255, 255, 255, 0.16) used for the glass per ticket; reconcile at next connection" },
+    { "id": "ga-dataLayer", "subject": "analytics attributes deferred to the data team / Jonathan Carroll", "stage_a_fallback": "zero data-ga* attributes shipped; future export is initQuickLinks in src/js/index.js" }
+  ]
+}

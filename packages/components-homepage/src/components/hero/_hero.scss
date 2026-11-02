@@ -331,7 +331,7 @@ $hp-hero-header-break: 1080px; // The prototype switches to its compact header a
   }
 
   .hp-hero__text {
-    margin-top: 12px; // TODO: confirm with design - 12px (P:854) has no UDS token.
+    margin-top: $uds-size-spacing-1; // 8px, brand QA (the prototype's 12px was wrong)
   }
 }
 

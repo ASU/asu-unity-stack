@@ -29,7 +29,9 @@ import * as entry from "../../js/index.js";
 
 export default {
   title: "Homepage/Hero",
-  beforeEach: () => {
+  beforeEach: ({ parameters }) => {
+    // The live preview needs the real IntersectionObserver, or the video never autoplays.
+    if (parameters.realEnvironment) return undefined;
     environment.install();
     return () => environment.restore();
   },
@@ -37,7 +39,7 @@ export default {
     docs: {
       description: {
         component:
-          "Homepage hero: a full-width muted video banner with the page's only `h1`, a circled-arrow link inside it (only the arrow links; its \"Find out more\" label widens on hover and keyboard focus), one paragraph and the foundations' pause/play control. Phones and tablets (900px and under) get no video: Gray 1 or the poster, and a gold \"Find out more\" button under the copy. The video has no `src`, `autoplay` or `loop` in the markup: `initHero` attaches `data-src` above 900px only (and detaches it when the viewport shrinks), `initVideoControls` plays it (three plays, paused out of view and in a hidden tab, a visitor's pause sticks, no autoplay under reduced motion or without a poster). The control is `hidden` until a source is attached. Height: window minus header minus a 96px peek, between 560 and 1080px (`--hp-hero-header-height` is set by the page; Storybook has no header, so the defaults are the prototype's 147px / 69px). An empty `.hp-hero__assistant` mount and a narrower copy column at 1180px and under leave room for the separate AI assistant ring. `href`, poster and `data-src` are placeholders: `#hero-find-out-more`, an inline SVG poster and an example URL (no media is committed or requested; these stories fake `src`, `play()` and `IntersectionObserver`). Each rendered copy needs a unique video id.",
+          "Homepage hero: a full-width muted video banner with the page's only `h1`, a circled-arrow link inside it (only the arrow links; its \"Find out more\" label widens on hover and keyboard focus), one paragraph and the foundations' pause/play control. Phones and tablets (900px and under) get no video: Gray 1 or the poster, and a gold \"Find out more\" button under the copy. The video has no `src`, `autoplay` or `loop` in the markup: `initHero` attaches `data-src` above 900px only (and detaches it when the viewport shrinks), `initVideoControls` plays it (three plays, paused out of view and in a hidden tab, a visitor's pause sticks, no autoplay under reduced motion or without a poster). The control is `hidden` until a source is attached. Height: window minus header minus a 96px peek, between 560 and 1080px (`--hp-hero-header-height` is set by the page; Storybook has no header, so the defaults are the prototype's 147px / 69px). An empty `.hp-hero__assistant` mount and a narrower copy column at 1180px and under leave room for the separate AI assistant ring. `href`, poster and `data-src` are placeholders: `#hero-find-out-more`, a still from the live clip as the poster and an example URL (no media is committed or requested; these stories fake `src`, `play()` and `IntersectionObserver`). Each rendered copy needs a unique video id.",
       },
     },
   },
@@ -118,7 +120,7 @@ const expectContract = async p => {
   await expect(p.cta.getAttribute("href")).toBe(HERO_HREF);
   await expect(p.cta.getAttribute("aria-label")).toBe(HERO_LINK_LABEL);
   await expect(p.cta.textContent).toBe("Find out more");
-  for (const name of ["btn", "btn-gold", "btn-large"]) {
+  for (const name of ["btn", "btn-gold", "btn-medium"]) {
     await expect(p.cta.classList.contains(name)).toBe(true);
   }
   // video: muted, no autoplay/loop/src, poster, description
@@ -186,6 +188,7 @@ export const LiveVideoPreview = {
     />
   ),
   parameters: {
+    realEnvironment: true,
     docs: {
       description: {
         story:
@@ -455,7 +458,7 @@ const expectNoVideo = async (p, { width, gutter, h1, lineHeight }) => {
   await expect(display(p.control)).toBe("none");
   await expect(display(p.arrow)).toBe("none");
   await expect(display(p.cta)).toBe("inline-block");
-  await near(box(p.cta).height, 44, 1);
+  await near(box(p.cta).height, 36, 1);
   await near(box(p.cta).left - box(p.section).left, gutter, 1);
   await expect(getComputedStyle(p.cta).backgroundColor).toBe(GOLD);
   await expect(box(p.cta).top).toBeGreaterThan(box(p.text).bottom);
@@ -484,7 +487,7 @@ export const Phone393 = {
       h1: "36px",
       lineHeight: "40px",
     });
-    await expect(getComputedStyle(p.text).marginTop).toBe("12px");
+    await expect(getComputedStyle(p.text).marginTop).toBe("8px");
     await expect(getComputedStyle(p.text).fontSize).toBe("16px");
     // nothing sticks out sideways
     await expect(document.documentElement.scrollWidth).toBeLessThanOrEqual(393);

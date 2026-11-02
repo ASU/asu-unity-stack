@@ -3,7 +3,6 @@ import React, { useEffect, useRef } from "react";
 import { initVideoControls } from "../video-control/video-control.js";
 import { initHero } from "./hero.js";
 import {
-  POSTER,
   controlHtml,
   stubPlayback,
 } from "../video-control/video-control-helpers.jsx";
@@ -22,6 +21,8 @@ export const HERO_HREF = "#hero-find-out-more";
 export const HERO_LINK_LABEL =
   "Find out more about ASU’s No. 1 ranking for global impact";
 export const VIDEO_SRC = "https://media.example.com/homepage-hero.mp4";
+// Placeholder still: the first frame of the live clip. Phones and tablets show it instead of the video; brand supplies the final mobile poster.
+export const HERO_POSTER = "img/hero-poster.jpg";
 
 // Icon: Font Awesome Free 6.4.2 solid arrow-right (CC BY 4.0, https://fontawesome.com/license/free).
 const ARROW_PATH =
@@ -54,7 +55,7 @@ export const heroHtml = ({
     'class="mbtn mbtn--hero"',
     'class="mbtn mbtn--hero hp-hero__control"'
   );
-  return `<section class="hp-hero" aria-label="Featured story"><div class="hp-hero__media"><video id="${id}" class="hp-hero__video" muted playsinline preload="none"${poster ? ` poster="${POSTER}"` : ""} data-auto data-src="${escape(dataSrc)}" aria-describedby="${id}-desc"></video><p id="${id}-desc" class="visually-hidden">${escape(description)}</p></div><div class="hp-hero__scrim"></div><div class="hp-hero__inner">${control}<div class="hp-hero__copy"><h1 class="hp-hero__heading">ASU again ranks No. 1 in the US for <span class="text-nowrap">global impact</span><a class="hp-hero__arrow" href="${escape(href)}" aria-label="${escape(linkLabel)}"><span class="hp-hero__arrow-pill"><span class="hp-hero__arrow-label">Find out more</span><svg class="hp-hero__arrow-icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="${ARROW_PATH}"/></svg></span></a></h1><p class="hp-hero__text">For the seventh year in a row, ASU has been named the top institution in the U.S. for its impact on global challenges, reflecting the university’s work to improve lives around the world.</p><a class="btn btn-gold btn-large hp-hero__cta" href="${escape(href)}" aria-label="${escape(linkLabel)}">Find out more</a></div><div class="hp-hero__assistant" data-hp-slot="assistant"></div></div></section>`;
+  return `<section class="hp-hero" aria-label="Featured story"><div class="hp-hero__media"><video id="${id}" class="hp-hero__video" muted playsinline preload="none"${poster ? ` poster="${HERO_POSTER}"` : ""} data-auto data-src="${escape(dataSrc)}" aria-describedby="${id}-desc"></video><p id="${id}-desc" class="visually-hidden">${escape(description)}</p></div><div class="hp-hero__scrim"></div><div class="hp-hero__inner">${control}<div class="hp-hero__copy"><h1 class="hp-hero__heading">ASU again ranks No. 1 in the US for <span class="text-nowrap">global impact</span><a class="hp-hero__arrow" href="${escape(href)}" aria-label="${escape(linkLabel)}"><span class="hp-hero__arrow-pill"><span class="hp-hero__arrow-label">Find out more</span><svg class="hp-hero__arrow-icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="${ARROW_PATH}"/></svg></span></a></h1><p class="hp-hero__text">For the seventh year in a row, ASU has been named the top institution in the U.S. for its impact on global challenges, reflecting the university’s work to improve lives around the world.</p><a class="btn btn-gold btn-medium hp-hero__cta" href="${escape(href)}" aria-label="${escape(linkLabel)}">Find out more</a></div><div class="hp-hero__assistant" data-hp-slot="assistant"></div></div></section>`;
 };
 
 // ---- Test support ----

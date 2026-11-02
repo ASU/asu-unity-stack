@@ -5,6 +5,13 @@ function getAbsolutePath(value) {
   return dirname(fileURLToPath(import.meta.resolve(value)));
 }
 
+// Resolve FA package root: dirname of package.json = the FA install directory.
+// Used to serve FA 5.15.4 locally at /fontawesome so preview-head.html can link
+// /fontawesome/css/all.min.css without fetching from a third-party CDN.
+const fontAwesomeDir = getAbsolutePath(
+  "@fortawesome/fontawesome-free/package.json"
+);
+
 export default {
   stories: [
     "../src/components/**/*.mdx",
@@ -24,9 +31,12 @@ export default {
   // Serve the art at /img so stories use the production-relative `img/<file>` paths. The stories grid's
   // sample photos (not part of dist/) are served at /story-photos (a path under /img is not
   // reachable in the dev server).
+  // Serve the installed FA 5.15.4 package tree at /fontawesome so preview-head.html
+  // can load /fontawesome/css/all.min.css as a same-origin request (no CDN).
   staticDirs: [
     { from: "../src/img", to: "/img" },
     { from: "../src/components/stories-grid/photos", to: "/story-photos" },
+    { from: fontAwesomeDir, to: "/fontawesome" },
   ],
   framework: {
     name: getAbsolutePath("@storybook/react-vite"),

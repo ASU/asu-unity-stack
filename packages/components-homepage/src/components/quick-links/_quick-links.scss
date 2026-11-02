@@ -1,0 +1,243 @@
+// Quick links row — WWWCMS-235
+// Four icon anchors (Explore ASU Online → Apply now → Visit an ASU campus → Request info)
+// plus a Spanish sibling link, over the Palo Verde photo background.
+// No JS; states are pure CSS pseudo-classes.
+// Tokens: packages/unity-bootstrap-theme/src/scss/_custom-asu-variables.scss
+// Local custom properties: packages/components-homepage/src/scss/_variables.scss
+
+// Max column-gap ceiling token (= $uds-size-spacing-12 = 6rem).
+// Declared here so the clamp() below can reference a named constant.
+$hp-quick-links-column-gap-max: $uds-size-spacing-12;
+
+// --- wrapper ---
+
+.hp-quick-links {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: $uds-size-spacing-6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: $uds-size-spacing-4;
+}
+
+// --- list ---
+
+.hp-quick-links__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  column-gap: $uds-size-spacing-6;
+}
+
+// --- individual item anchor ---
+
+.hp-quick-link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $uds-size-spacing-1;
+  padding: $uds-size-spacing-2 $uds-size-spacing-3;
+  border-radius: $uds-size-spacing-1;
+  min-width: 44px;
+  min-height: 44px;
+  text-decoration: none;
+  color: $uds-color-base-white;
+
+  .hp-quick-link__icon {
+    // Default: fluid/mobile size (≤ 1023px). Promoted to icon-base at ≥ 1024px below.
+    // WWWCMS-235: icon-small (24px) must apply from 0 through 1023px; icon-base (32px) only at ≥ 1024px.
+    font-size: $uds-size-icon-small;
+    color: $uds-color-base-white;
+  }
+
+  .hp-quick-link__label {
+    font-size: $uds-size-font-medium;
+    font-weight: $uds-font-weight-bold;
+    color: $uds-color-base-white;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hp-quick-link,
+  .hp-quick-link-es {
+    // 150ms ease-out: ticket-driven; $uds-time-transition-base (400ms) is too slow.
+    // TODO (WWWCMS-235): reconcile with design if a token matching 150ms is added to the UDS.
+    transition: background-color 150ms ease-out, color 150ms ease-out;
+  }
+}
+
+.hp-quick-link:hover {
+  background-color: var(--hp-quick-link-glass);
+
+  .hp-quick-link__icon {
+    color: $uds-color-brand-gold;
+  }
+}
+
+.hp-quick-link:focus-visible {
+  outline: none;
+  // !important is required to beat unity-bootstrap-theme/src/scss/extends/_misc.scss:143-154
+  // which applies `a:focus { box-shadow: ...!important }` globally. This !important is intentionally
+  // scoped to this component only (.hp-quick-link:focus-visible).
+  box-shadow: var(--hp-focus-inner), var(--hp-focus-outer) !important;
+  background-color: var(--hp-quick-link-glass);
+
+  .hp-quick-link__icon {
+    color: $uds-color-brand-gold;
+  }
+}
+
+// Belt-and-braces: apply glass on :focus (not just :focus-visible) so the
+// background works in environments where :focus-visible isn't distinct.
+// Box-shadow for plain :focus is intentionally NOT overridden here — the theme's
+// a:focus !important rule handles it. Only :focus-visible needs the override above.
+.hp-quick-link:focus {
+  background-color: var(--hp-quick-link-glass);
+
+  .hp-quick-link__icon {
+    color: $uds-color-brand-gold;
+  }
+}
+
+.hp-quick-link:active {
+  background-color: var(--hp-quick-link-glass);
+
+  .hp-quick-link__icon {
+    color: $uds-color-brand-gold;
+  }
+}
+
+.hp-quick-link:visited {
+  // Prevent browser default visited-link colour on the dark photo.
+  color: $uds-color-base-white;
+}
+
+// --- Spanish sibling link ---
+
+.hp-quick-link-es {
+  display: inline-flex;
+  align-items: center;
+  gap: $uds-size-spacing-1;
+  padding: $uds-size-spacing-1 $uds-size-spacing-2;
+  min-height: 44px;
+  border-radius: $uds-size-spacing-1;
+  font-size: $uds-size-font-small;
+  color: $uds-color-base-white;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-align: center;
+
+  .hp-quick-link-es__icon {
+    color: $uds-color-base-white;
+    font-size: $uds-size-font-small;
+  }
+}
+
+.hp-quick-link-es:hover {
+  background-color: var(--hp-quick-link-glass);
+
+  .hp-quick-link-es__icon {
+    color: $uds-color-brand-gold;
+  }
+}
+
+.hp-quick-link-es:focus-visible {
+  outline: none;
+  // !important required for same reason as .hp-quick-link:focus-visible above.
+  box-shadow: var(--hp-focus-inner), var(--hp-focus-outer) !important;
+  background-color: var(--hp-quick-link-glass);
+
+  .hp-quick-link-es__icon {
+    color: $uds-color-brand-gold;
+  }
+}
+
+.hp-quick-link-es:focus {
+  background-color: var(--hp-quick-link-glass);
+
+  .hp-quick-link-es__icon {
+    color: $uds-color-brand-gold;
+  }
+}
+
+.hp-quick-link-es:visited {
+  color: $uds-color-base-white;
+}
+
+// --- larger column gap at desktop ≥ 1024 px ---
+
+@media (min-width: 1024px) {
+  .hp-quick-links__list {
+    column-gap: $uds-size-spacing-7;
+  }
+
+  // Promote to icon-base (32px) only at desktop and up (≥ 1024px).
+  // Nested inside .hp-quick-link to match the specificity of the default rule above.
+  .hp-quick-link .hp-quick-link__icon {
+    font-size: $uds-size-icon-base;
+  }
+}
+
+// --- wider column gap at ≥ 1280 px (clamp fluid) ---
+
+@media (min-width: 1280px) {
+  .hp-quick-links__list {
+    // clamp($uds-size-spacing-7, 6vw, $hp-quick-links-column-gap-max):
+    // fluid between the 3.5rem floor and 6rem ($uds-size-spacing-12) ceiling.
+    column-gap: clamp(#{$uds-size-spacing-7}, 6vw, #{$hp-quick-links-column-gap-max});
+  }
+}
+
+// --- phone 2×2 layout ≤ $hp-phone-max (900 px) ---
+
+@media (max-width: $hp-phone-max) {
+  .hp-quick-links {
+    padding-inline: $uds-size-spacing-3;
+  }
+
+  .hp-quick-links__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: $uds-size-spacing-3;
+    row-gap: $uds-size-spacing-3;
+  }
+
+  // P2-1 (WWWCMS-235 visual-fix): the default rule uses `.hp-quick-link .hp-quick-link__icon`
+  // (specificity 0,2,0). A bare `.hp-quick-link__icon` (0,1,0) would always lose to it regardless
+  // of media-query order. Nesting inside `.hp-quick-link` here matches that specificity so the
+  // mobile override actually wins.
+  .hp-quick-link .hp-quick-link__icon {
+    font-size: $uds-size-icon-small;
+  }
+
+  // P2-1 (WWWCMS-235 visual-fix): same specificity problem for label. The default rule is
+  // `.hp-quick-link .hp-quick-link__label { font-size: $uds-size-font-medium }` (0,2,0).
+  // The old bare `.hp-quick-link__label` (0,1,0) always lost. Match the parent scope.
+  .hp-quick-link .hp-quick-link__label {
+    font-size: $uds-size-font-small;
+  }
+}
+
+// --- forced-colors (Windows High Contrast, Forced Colors Mode) ---
+// When forced-colors: active, the browser replaces custom colors/shadows with system colors.
+// Without this block, our `outline: none` on :focus-visible would hide the focus indicator entirely.
+// This block restores a system-color-compatible outline.
+@media (forced-colors: active) {
+  .hp-quick-link:focus-visible,
+  .hp-quick-link-es:focus-visible {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
+
+// --- story backdrop helper (Storybook-only surface; never appears in production markup) ---
+// Used by the withBackdrop decorator in quick-links.stories.jsx.
+// $asu-gray-1 provides a dark surface for white-text contrast in Alfa audits.
+// Hex reference documented in quick-links-tokens.js (BACKDROP_PLAIN).
+.hp-quick-links-backdrop--plain {
+  background-color: $asu-gray-1;
+}
