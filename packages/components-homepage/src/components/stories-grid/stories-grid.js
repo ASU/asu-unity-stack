@@ -11,6 +11,7 @@ const PHONE = "(max-width: 900px)"; // keep equal to $hp-phone-max in src/scss/_
 const COMPACT = "(max-width: 600px)"; // keep equal to $hp-stories-compact-max in _stories-grid.scss
 const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
 const PROGRESS = "--hp-stories-progress";
+const CLIP = "--hp-stories-clip"; // hidden while the corners are rounded, else visible (the hover shadow)
 const HEADER = "--hp-stories-header-used"; // the page's --hp-stories-header-height, or the Storybook default
 const GUTTER = 48; // the inset the grid starts from, in px
 const END_TOLERANCE = 2; // fractional scroll positions under zoom
@@ -58,6 +59,7 @@ const bind = (section, win) => {
   let observedHeight = 0;
   let listening = false;
   let opening = false;
+  let clip = null;
 
   const readHeader = () => {
     const value = parseFloat(
@@ -75,10 +77,25 @@ const bind = (section, win) => {
     return clamp((start - section.getBoundingClientRect().top) / (start - end));
   };
 
+  const apply = value => {
+    grid.style.setProperty(PROGRESS, value.toFixed(4));
+    const next = value < 1 ? "hidden" : "visible";
+    if (next !== clip) {
+      clip = next;
+      grid.style.setProperty(CLIP, next);
+    }
+  };
+
+  const clear = () => {
+    clip = null;
+    grid.style.removeProperty(PROGRESS);
+    grid.style.removeProperty(CLIP);
+  };
+
   const write = () => {
     frameId = null;
     if (!opening) return;
-    grid.style.setProperty(PROGRESS, progress().toFixed(4));
+    apply(progress());
   };
 
   const schedule = () => {
@@ -117,12 +134,12 @@ const bind = (section, win) => {
   const startOpening = () => {
     if (opening) return;
     if (!canObserve) {
-      grid.style.removeProperty(PROGRESS); // no way to know when it is near: stay static
+      clear(); // no way to know when it is near: stay static
       return;
     }
     opening = true;
     readHeader();
-    grid.style.setProperty(PROGRESS, progress().toFixed(4)); // no flash of the wrong state
+    apply(progress()); // no flash of the wrong state
     observe();
   };
 
@@ -137,7 +154,7 @@ const bind = (section, win) => {
       observer.disconnect();
       observer = null;
     }
-    grid.style.removeProperty(PROGRESS);
+    clear();
   };
 
   // ---- swipe controls ----

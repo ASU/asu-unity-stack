@@ -166,7 +166,7 @@ export const openingProgress = (top, vh, header) => {
 
 // ---- Contrast budget (design doc section 8): pure arithmetic over the scrim ----
 
-export const SCRIM_REST_START = 0.53636;
+export const SCRIM_REST_START = 0.5;
 export const SCRIM_MAX_ALPHA = 0.7686;
 
 // Multiplier applied to the photo at `fraction` of the card height (0 top, 1 bottom) for a scrim starting at `start`.

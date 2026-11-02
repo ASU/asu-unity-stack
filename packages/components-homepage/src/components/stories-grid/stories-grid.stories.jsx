@@ -49,6 +49,7 @@ const GRAY_1 = "rgb(25, 25, 25)";
 const WHITE = "rgb(255, 255, 255)";
 const GRAY_3 = "rgb(116, 116, 116)";
 const GOLD = "rgb(255, 198, 39)";
+const LIFT_SHADOW = "rgba(0, 0, 0, 0.32) 0px 2px 10px 0px";
 const RING_SHADOW =
   "rgb(255, 255, 255) 0px 0px 0px 2px inset, rgb(25, 25, 25) 0px 0px 0px 4px inset";
 
@@ -206,6 +207,7 @@ export const NoScript = {
     );
     await near(box(p.grid).width, box(p.section).width, 1);
     await expect(style(p.grid).borderRadius).toBe("0px");
+    await expect(style(p.grid).overflow).toBe("visible");
     // the subheads are clipped but still in the accessibility tree
     p.cards.forEach((_, index) => {
       const c = card(p, index);
@@ -256,7 +258,7 @@ export const Default = {
       expect(style(c.title).fontWeight).toBe("700");
       near(px(style(c.title).fontSize), 24 * m.unit, 0.5);
       expect(style(c.sub).opacity).toBe("0");
-      expect(scrimStart(c.scrim)).toBe("53.636%");
+      expect(scrimStart(c.scrim)).toBe("50%");
       expect(style(c.arrow).borderTopColor).toBe(WHITE);
       expect(style(c.arrow).backgroundColor).not.toBe(WHITE);
       near(box(c.arrow).width, 24 * m.unit, 0.5);
@@ -289,7 +291,9 @@ export const Hover = {
     await near(after.top, before.top, 0.5);
     await near(after.height, before.height, 0.5);
     await near(after.width, before.width, 0.5);
-    await expect(style(c.element).boxShadow).toBe("none");
+    // the hovered card rises above its flush neighbours with the Figma hover shadow; still square
+    await expect(style(c.element).boxShadow).toBe(LIFT_SHADOW);
+    await expect(style(c.element).zIndex).toBe("4");
     await expect(style(c.element).borderRadius).toBe("0px");
     // the title rose by the subhead's height
     await near(
@@ -299,7 +303,10 @@ export const Hover = {
     );
     forceHover(c.element, false);
     await waitFor(() => expect(style(c.sub).opacity).toBe("0"));
-    await waitFor(() => expect(scrimStart(c.scrim)).toBe("53.636%"));
+    await waitFor(() => expect(scrimStart(c.scrim)).toBe("50%"));
+    await expect(style(c.element).boxShadow).toBe("none");
+    // the shadow of an edge card is not clipped at full width
+    await expect(style(p.grid).overflow).toBe("visible");
     // a real pointer reveals the same state (only where the test runner provides one)
     if (realPointer.available) {
       await realPointer.hover(c.element);
@@ -349,7 +356,7 @@ export const FocusVisible = {
     // the ring is drawn above the photo (a pseudo-element), the theme's global ring is cancelled
     await expect(style(c.element, "::after").boxShadow).toBe(RING_SHADOW);
     await expect(style(c.element, "::after").zIndex).toBe("3");
-    await expect(style(c.element).boxShadow).toBe("none");
+    await expect(style(c.element).boxShadow).toBe(LIFT_SHADOW);
     await expect(style(c.element).outlineStyle).toBe("none");
     await expect(style(c.element, "::after").outlineColor).toBe(
       "rgba(0, 0, 0, 0)"
@@ -480,6 +487,7 @@ export const OpeningProgress = {
         height: box(p.section).height,
         next: after(),
         section: box(p.section).width,
+        clip: style(p.grid).overflow,
       };
     };
     const start = vh * 0.9;
@@ -492,6 +500,8 @@ export const OpeningProgress = {
     await near(c.p, 1, 0.02);
     await near(a.width, a.section - 96, 1);
     await near(c.width, c.section, 1);
+    await expect(a.clip).toBe("hidden");
+    await expect(c.clip).toBe("visible");
     await near(a.radius, 4, 0.1);
     await near(c.radius, 0, 0.1);
     await expect(b.width).toBeGreaterThan(a.width);
@@ -993,7 +1003,7 @@ export const ContrastBudget = {
     await resizeViewport(1440, 900);
     const p = parts(canvasElement);
     const c = card(p, 0);
-    await expect(scrimStart(c.scrim)).toBe("53.636%");
+    await expect(scrimStart(c.scrim)).toBe("50%");
     await expect(style(c.scrim).backgroundImage).toContain(
       "rgba(0, 0, 0, 0.77)"
     );
@@ -1009,11 +1019,11 @@ export const ContrastBudget = {
     await near(px(style(c.title).lineHeight), 26, 0.5);
     // Geometry of a 370px card: the title block ends 24px above the bottom, 26px per line.
     const firstLine = lines => 1 - (24 + 26 * lines) / 370;
-    // Rest: the first line of a three-line title sits where the scrim has reached about 69% of the photo.
+    // Rest: the first line of a three-line title sits where the scrim has reached about 45% of its ramp.
     const rest = scrimMultiplier(firstLine(3), SCRIM_REST_START);
-    await near(rest, 0.6885, 0.005);
-    // the large-text bar (3:1) tolerates a photo gray up to about 216 there (white lab coats exceed it)
-    await near(maxPhotoGray(rest, 3), 216, 2);
+    await near(rest, 0.6551, 0.005);
+    // the large-text bar (3:1) tolerates a photo gray up to about 227 there (white lab coats exceed it)
+    await near(maxPhotoGray(rest, 3), 227, 2);
     // a one-line title sits lower, where the scrim is stronger: pure white passes
     await expect(
       maxPhotoGray(scrimMultiplier(firstLine(1), SCRIM_REST_START), 3)
