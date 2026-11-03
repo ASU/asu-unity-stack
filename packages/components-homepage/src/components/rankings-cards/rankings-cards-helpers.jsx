@@ -136,10 +136,25 @@ export const validateIntrinsicDimension = (value, def, name) => {
   ) {
     return value;
   }
-  warnDev(
-    `rankingsCardsHtml: '${name}' must be a finite positive safe integer; received ${JSON.stringify(value)}. ` +
-      `Falling back to ${def}.`
-  );
+  // Safe formatter: never calls JSON.stringify or any method on `value`.
+  // JSON.stringify(1n) throws; hostile proxies can throw from toJSON/valueOf.
+  // We derive a safe type description without touching the value's methods.
+  if (import.meta.env.DEV) {
+    const safeType =
+      typeof value === "bigint"
+        ? "bigint"
+        : (() => {
+            try {
+              return typeof value;
+            } catch {
+              return "unknown";
+            }
+          })();
+    warnDev(
+      `rankingsCardsHtml: '${name}' must be a finite positive safe integer; ` +
+        `received <${safeType}>. Falling back to ${def}.`
+    );
+  }
   return def;
 };
 

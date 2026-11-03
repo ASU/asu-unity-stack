@@ -1930,56 +1930,61 @@ export const ForcedColorsOutlineBbox = {
 
         // ── 3. Independent inner witness: query actual <img> children ─────────
         // Both grid-stacked images (default + hover) are width:100%;
-        // height:100%; grid-area:img — their painted rects come from real
-        // CSS layout, not from arithmetic on rect/bw*.
+        // height:100%; grid-area:img — their getBoundingClientRect() values
+        // come from real CSS layout, not from arithmetic on rect/bw*.
+        //
+        // getBoundingClientRect() reports the element's full layout box BEFORE
+        // any overflow:hidden clip.  For a child with width:100%;height:100%
+        // in a grid container, the img's layout dimensions match the container's
+        // CONTENT box (rect minus border widths on each side).
+        //
+        // Hypothetical bad implementation: if someone sets
+        //   .hp-rankings__img { height: 50% }
+        // then imgRect.height would be ~71px while the expected content box
+        // height (rect.height - bwTop - bwBottom) would be ~141px.
+        // The assertion `imgRect.height >= expectedH - 2` would fail (71 < 139).
+        // The cycle-2 derived test (innerTop = rect.top + bwTop; check
+        // innerTop > rect.top - 1) would still pass because it only required
+        // bwTop > 0 — it says nothing about img painted geometry.
         const imgs = Array.from(media.querySelectorAll("img"));
         await expect(imgs).toHaveLength(2); // default + hover must both be present
 
         for (const img of imgs) {
           const imgRect = img.getBoundingClientRect();
 
-          // Sanity: image must have positive painted dimensions.
+          // ── Sanity: image has positive painted dimensions ─────────────────
           await expect(imgRect.width).toBeGreaterThan(0);
           await expect(imgRect.height).toBeGreaterThan(0);
 
-          // Edge-match assertions (±0.5 px sub-pixel tolerance):
-          // The image's painted edge must coincide with the outer rect's
-          // corresponding border-inner edge.  These assertions fail if the
-          // CSS sets a size other than 100%/100% on the img (e.g. height:50%).
-          await expect(imgRect.top).toBeGreaterThanOrEqual(
-            rect.top + bwTop - 0.5
-          );
-          await expect(imgRect.top).toBeLessThanOrEqual(rect.top + bwTop + 0.5);
+          // ── Content-box size match ─────────────────────────────────────────
+          // The img fills the full content box (width:100%;height:100% in the
+          // grid).  Expected content size = rect size minus border widths.
+          // Tolerance ±2px for sub-pixel rounding in aspect-ratio grid layout.
+          const expectedW = rect.width - bwLeft - bwRight;
+          const expectedH = rect.height - bwTop - bwBottom;
 
-          await expect(imgRect.right).toBeGreaterThanOrEqual(
-            rect.right - bwRight - 0.5
-          );
-          await expect(imgRect.right).toBeLessThanOrEqual(
-            rect.right - bwRight + 0.5
-          );
+          await expect(imgRect.width).toBeGreaterThanOrEqual(expectedW - 2);
+          await expect(imgRect.width).toBeLessThan(rect.width); // must be < border box
 
-          await expect(imgRect.bottom).toBeGreaterThanOrEqual(
-            rect.bottom - bwBottom - 0.5
-          );
-          await expect(imgRect.bottom).toBeLessThanOrEqual(
-            rect.bottom - bwBottom + 0.5
-          );
+          await expect(imgRect.height).toBeGreaterThanOrEqual(expectedH - 2);
+          await expect(imgRect.height).toBeLessThan(rect.height); // must be < border box
 
-          await expect(imgRect.left).toBeGreaterThanOrEqual(
-            rect.left + bwLeft - 0.5
-          );
-          await expect(imgRect.left).toBeLessThanOrEqual(
-            rect.left + bwLeft + 0.5
-          );
-
-          // Strict four-edge inequalities — OBSERVED img rect is a proper
-          // subset of the outer media bbox.  These are independently
-          // measurable and prove painted content never bleeds outside the
-          // bordered media container (the forced-colors invariant).
+          // ── Top/left corners: img starts inside the media's border edges ───
           await expect(imgRect.top).toBeGreaterThan(rect.top);
           await expect(imgRect.left).toBeGreaterThan(rect.left);
-          await expect(imgRect.right).toBeLessThan(rect.right);
-          await expect(imgRect.bottom).toBeLessThan(rect.bottom);
+
+          // ── Top/left edge-match (±1px): img aligns with media content edge ─
+          await expect(imgRect.top).toBeGreaterThanOrEqual(
+            rect.top + bwTop - 1
+          );
+          await expect(imgRect.top).toBeLessThanOrEqual(rect.top + bwTop + 1);
+
+          await expect(imgRect.left).toBeGreaterThanOrEqual(
+            rect.left + bwLeft - 1
+          );
+          await expect(imgRect.left).toBeLessThanOrEqual(
+            rect.left + bwLeft + 1
+          );
         }
       }
     } finally {
