@@ -10740,7 +10740,7 @@ __metadata:
     css-minimizer-webpack-plugin: "npm:^2.0.0"
     cz-conventional-changelog: "npm:^3.3.0"
     diff: "npm:^8.0.2"
-    dompurify: "npm:^3.4.10"
+    dompurify: "npm:^3.4.17"
     eslint: "npm:^9"
     eslint-config-prettier: "npm:^8.2.0"
     eslint-plugin-import: "npm:^2.22.1"
@@ -14190,15 +14190,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dompurify@npm:^3.4.10":
-  version: 3.4.11
-  resolution: "dompurify@npm:3.4.11"
+"dompurify@npm:^3.4.17":
+  version: 3.4.17
+  resolution: "dompurify@npm:3.4.17"
   dependencies:
     "@types/trusted-types": "npm:^2.0.7"
   dependenciesMeta:
     "@types/trusted-types":
       optional: true
-  checksum: 10c0/31439481c7e8fc3805d40c376936fd66936620fb1b1a31a2ec097f6165412c37f2d868e082c9ceba62bb37661c1ea132a5db4d5213434317e30df68d4aca9cc9
+  checksum: 10c0/6a12251ef5e700fc91b6d96d33e9f8b5fd590c55276f632cf42d182c5808e9f48d5bef435ab26eac235dfcc05ed8fe95e1c8308dcc502bf1050e561f14d0361a
   languageName: node
   linkType: hard
 
