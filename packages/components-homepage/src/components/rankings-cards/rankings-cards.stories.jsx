@@ -2349,7 +2349,10 @@ export const InvalidHeadingIdBigInt = {
     // Helper: call rankingsCardsHtml with the given headingId, parse the result,
     // and return the id attribute of the heading element.
     const getHeadingId = headingId => {
-      const html = rankingsCardsHtml({ headingId, cards: DEFAULT_CARDS.slice(0, 1) });
+      const html = rankingsCardsHtml({
+        headingId,
+        cards: DEFAULT_CARDS.slice(0, 1),
+      });
       const parser = new DOMParser();
       const doc = parser.parseFromString(html, "text/html");
       const heading = doc.querySelector("[id]");
