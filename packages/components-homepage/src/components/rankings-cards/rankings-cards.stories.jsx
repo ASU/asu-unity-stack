@@ -1952,7 +1952,7 @@ export const ForcedColorsOutlineBbox = {
         for (const img of imgs) {
           const imgRect = img.getBoundingClientRect();
 
-          // ── Sanity: image has positive painted dimensions ─────────────────
+          // ── Sanity: image has positive layout dimensions ──────────────────
           await expect(imgRect.width).toBeGreaterThan(0);
           await expect(imgRect.height).toBeGreaterThan(0);
 

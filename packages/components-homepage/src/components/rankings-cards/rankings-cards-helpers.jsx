@@ -126,6 +126,24 @@ export const sanitizeId = (id, fallback = "hp-rankings-heading") => {
  * @param {string}  name    - Param name used in the DEV warning.
  * @returns {number}        - A validated, finite positive safe integer.
  */
+// Safe type formatter for rejected public-API inputs.
+// Never calls JSON.stringify or any method on `value` —
+//   JSON.stringify(1n) throws TypeError;
+//   hostile proxies can throw from toJSON/valueOf.
+// Used by validateIntrinsicDimension and the headingId warn path so all
+// rejected-input warnings use one consistent, non-throwing formatter.
+const formatRejectedValue = value => {
+  // BigInt's typeof is "bigint" but no method is called, so this is safe.
+  if (typeof value === "bigint") return "bigint";
+  try {
+    // typeof never throws on well-formed values; the try/catch is a guard
+    // against theoretical engine edge cases and Proxy get-traps on typeof.
+    return typeof value;
+  } catch {
+    return "unknown";
+  }
+};
+
 export const validateIntrinsicDimension = (value, def, name) => {
   if (
     typeof value === "number" &&
@@ -136,23 +154,10 @@ export const validateIntrinsicDimension = (value, def, name) => {
   ) {
     return value;
   }
-  // Safe formatter: never calls JSON.stringify or any method on `value`.
-  // JSON.stringify(1n) throws; hostile proxies can throw from toJSON/valueOf.
-  // We derive a safe type description without touching the value's methods.
   if (import.meta.env.DEV) {
-    const safeType =
-      typeof value === "bigint"
-        ? "bigint"
-        : (() => {
-            try {
-              return typeof value;
-            } catch {
-              return "unknown";
-            }
-          })();
     warnDev(
       `rankingsCardsHtml: '${name}' must be a finite positive safe integer; ` +
-        `received <${safeType}>. Falling back to ${def}.`
+        `received <${formatRejectedValue(value)}>. Falling back to ${def}.`
     );
   }
   return def;
@@ -318,7 +323,7 @@ export const rankingsCardsHtml = ({
   const headingIdSafe = sanitizeId(headingId);
   if (headingIdSafe !== headingId) {
     warnDev(
-      `rankingsCardsHtml: 'headingId' must match ^[A-Za-z][\\w-]*$; received ${JSON.stringify(headingId)}. Falling back to default.`
+      `rankingsCardsHtml: 'headingId' must match ^[A-Za-z][\\w-]*$; received <${formatRejectedValue(headingId)}>. Falling back to default.`
     );
   }
 
