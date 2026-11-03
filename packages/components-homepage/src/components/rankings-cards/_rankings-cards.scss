@@ -1,13 +1,15 @@
 // Rankings-cards component styles.
 // Package: @asu/components-homepage  ·  Jira: WWWCMS-233
-// Design doc: .pipeline/design-doc.md §4
+// Design doc: .pipeline/design-doc.md §4 (v3 amendment 2026-11-03T19:25Z)
 //
 // Token source: @asu/unity-bootstrap-theme (_custom-asu-variables.scss).
 // Zero raw hex values: all colors use $uds-* / $asu-* tokens.
-// The three locked raw-value placeholders carry inline `// TODO: confirm with design` comments:
-//   - aspect-ratio: 4 / 5
-//   - image intrinsics: 400 × 500 (in HTML attributes, not CSS)
-//   - hover transition duration: 150ms
+//
+// Locked v3 raw-value contracts (no longer placeholders — design-doc v3 §3.1):
+//   - aspect-ratio: 2 / 1   on .hp-rankings__media (Q1 = A, every breakpoint)
+//   - object-position: center 30%  on .hp-rankings__img (Q4 = C; see §11.2 Figma TODO)
+//   - image intrinsics: 500 × 251  (in HTML attributes via rankingsCardsHtml({ imageWidth, imageHeight }); Q2 = C)
+//   - hover transition duration: 150ms (§4.5; TODO: confirm with design)
 
 // ── Section ───────────────────────────────────────────────────────────────────
 
@@ -76,7 +78,7 @@
   // Stack both <img> elements in the same cell (no position: absolute needed).
   grid-template-areas: "img";
   width: 100%;
-  aspect-ratio: 4 / 5; // TODO: confirm with design — locked placeholder from design-doc §3.1.
+  aspect-ratio: 2/1; // Locked v3 per Q1 = A — every breakpoint. Mobile media box: 288 × 144. See design-doc v3 §3.1.
   background: transparent;
   overflow: hidden; // belt-and-braces for off-brand PNG bleeds.
 }
@@ -86,6 +88,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 30%; // Q4 = C — defends hover-PNG framing (numeral sits in upper third). TODO: confirm with design — see §11.2.
   display: block;
 }
 
