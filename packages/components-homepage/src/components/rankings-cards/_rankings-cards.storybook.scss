@@ -10,8 +10,14 @@
 // the rgb() value below and reference the token.
 // Ref: design-doc v3 §4 (Q4 = transparent section).
 
+// Import Unity spacing tokens so $uds-size-spacing-4 is available.
+// This @import is safe because this partial is NOT on the production CSS entry
+// path (it is only consumed by Storybook via stories.jsx) and therefore does
+// NOT leak into dist/css/components-homepage.css.
+@import "@asu/unity-bootstrap-theme/src/scss/custom-asu-variables";
+
 .rankings-storybook-backdrop {
   // storybook-only: ASU dark navy, not in UDS tokens (see note above)
   background: rgb(0, 43, 92);
-  padding: 2rem;
+  padding: $uds-size-spacing-4; // 2rem — token from _custom-asu-variables.scss:23
 }
