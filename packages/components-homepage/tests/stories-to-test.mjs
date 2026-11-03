@@ -100,4 +100,7 @@ export const storiesToTest = [
   // v3 amendment — new stories
   "homepage-rankings-cards--forced-colors-outline-bbox",
   "homepage-rankings-cards--intrinsics-flip",
+  // v3 cycle-2 amendment — p1-1 injection/validation stories
+  "homepage-rankings-cards--injection-image-width-malicious",
+  "homepage-rankings-cards--image-dimension-validation",
 ];
