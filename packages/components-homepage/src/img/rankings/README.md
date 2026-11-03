@@ -2,10 +2,15 @@
 
 Jira: WWWCMS-233 · Figma node: `13467:58610`
 
-> **PLACEHOLDER NOTICE** — All PNGs in this folder are solid-color placeholders
-> with a visible `PLACEHOLDER WWWCMS-233` watermark overlaid on them. Real brand
+> **PLACEHOLDER NOTICE** — All PNGs in this folder are placeholder artwork
+> copied from `.intake/rank-01.png` (default/dark) and `.intake/rank-06-w.png`
+> (hover/white). The same two 500 × 251 source files are reused across all
+> 7 cards until the designer provides per-card brand artwork. Real brand
 > artwork MUST replace them before merging to `dev`. See `TODO.md` for the full
 > mapping.
+>
+> **Provenance**: `.intake/rank-01.png` and `.intake/rank-06-w.png` — version-
+> controlled in the `.intake/` folder at repository root (design-doc v3 §9.2).
 
 ---
 
@@ -28,16 +33,26 @@ Jira: WWWCMS-233 · Figma node: `13467:58610`
 
 ---
 
-## Dimensions contract (locked for v2)
+## Dimensions contract (locked v3 per Q1 = A + Q2 = C — design-doc v3 §3.1)
 
-- **Intrinsic size**: `400 × 500` px (4:5 aspect ratio)
+- **Intrinsic size**: **`500 × 251`** px (approximately 2:1 aspect ratio)
+  — locked in design-doc v3 amendment (2026-11-03T19:25Z). The 1 px overshoot
+  vs integer-perfect 2:1 (`500 × 250`) matches the Figma export; the CSS
+  `aspect-ratio: 2 / 1` rule on `.hp-rankings__media` drives layout, and
+  `object-fit: cover` resolves the 1 px overshoot.
   <!-- TODO: confirm with design — pull exact intrinsic dimensions from Figma
-       Dev Mode on node 13467:58610 before replacing placeholder PNGs. -->
+       Dev Mode on node 13467:58610 before replacing placeholder PNGs (§11.2). -->
+- **CSS aspect-ratio**: `2 / 1` at every breakpoint (Q1 = A). Mobile media
+  box renders at 288 × 144 by design (288 px card width × 2:1 ratio).
 - Both PNGs in a pair (`<slug>.png` + `<slug>--hover.png`) MUST share
   **identical intrinsic `width` × `height`**.
 - All cards MUST share the same aspect-ratio. Different ratios across cards
-  would break the single `aspect-ratio: 4 / 5` CSS rule on
+  would break the single `aspect-ratio: 2 / 1` CSS rule on
   `.hp-rankings__media`.
+- The dataset-wide intrinsic dimensions are configurable via the top-level
+  `rankingsCardsHtml({ imageWidth, imageHeight })` parameters (defaults:
+  `500` / `251`). This is a dataset-wide override — NOT a per-card field
+  (design-doc v3 §3.1, Q2 = C).
 
 ---
 
