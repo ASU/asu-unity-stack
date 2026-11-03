@@ -44,6 +44,18 @@ Both files in a pair **must share identical intrinsic dimensions**.
       to match the real ranking statement for each card.
 - [ ] Confirm `attributionHref` and `attributionLabel` values for each card
       in `DEFAULT_CARDS`.
+- [ ] **[Figma §11.2] Confirm 288 × 144 mobile rendering** — open the Figma
+      mobile frame and verify that the ranked card's media box renders correctly
+      at 288 × 144 px with no unintended cropping of the ranking numeral or key
+      artwork. If the mobile size differs from the locked contract, update
+      `_rankings-cards.scss` and the design-doc v3 §4.5 / §7.4. See
+      design-doc v3 §11.2. <!-- TODO: confirm with design -->
+- [ ] **[Figma §11.2] Confirm `object-position: center 30%` framing** — open
+      the Figma mobile and desktop frames and verify that the upper-third crop
+      (`object-position: center 30%`) matches the designer's intended framing of
+      the ranking numeral and artwork. If the correct value differs, update
+      `_rankings-cards.scss` line `object-position` and the design-doc §4.5 /
+      §11.2 Figma TODO. See design-doc v3 §11.2. <!-- TODO: confirm with design -->
 
 ---
 
