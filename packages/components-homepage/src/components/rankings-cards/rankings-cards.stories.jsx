@@ -1868,13 +1868,28 @@ export const SanitizerContract = {
 };
 
 // ─── Row 23b — Forced-colors border bbox (v3, Q4 = C — belt + suspenders) ───
-// Under forced-colors emulation, assert that .hp-rankings__media's computed
-// border bbox meets all observable-geometry requirements on every card.
+// Under forced-colors emulation, assert that the two <img> DOM children of
+// each .hp-rankings__media are painted as a strict subset of the media box.
+//
+// Independent inner witness: both .hp-rankings__img--default and
+// .hp-rankings__img--hover are queried via media.querySelectorAll('img').
+// Their getBoundingClientRect() values come from real CSS layout, not from
+// arithmetic on rect/bw* — they are genuinely independent measurements.
+//
+// Hypothetical bad implementation: if someone accidentally sets
+//   .hp-rankings__img { height: 50% }
+// then imgRect.height would be ~72px while rect.height - bwTop - bwBottom
+// would be ~142px. The img's top/bottom edges would no longer align with
+// the media box's border-inner edges, breaking the edge-match assertions
+// (imgRect.top > rect.top + bwTop - 0.5 etc.).
+// The cycle-2 derived test (innerTop = rect.top + bwTop; check innerTop > rect.top - 1)
+// would still pass for that bad implementation because the inequality is
+// guaranteed once bwTop > 0 — it says nothing about img painted geometry.
 //
 // NOTE: getBoundingClientRect() reports the border box (border edge, not the
 // outline edge).  The implementation uses a CSS border — not a CSS outline —
 // in forced-colors mode, which is correct because getBoundingClientRect()
-// includes border but excludes outline.  The test verifies border properties.
+// includes border but excludes outline.
 // True outline-pixel verification (painted pixel boundaries) requires a
 // visual-regression screenshot, which visual-diff handles at a later stage.
 //
@@ -1896,20 +1911,13 @@ export const ForcedColorsOutlineBbox = {
         const mediaStyle = getComputedStyle(media);
 
         // ── 1. Media bbox must be nonzero (layout is not collapsed) ──────────
-        // At viewport 1280 the track is fully laid out; media boxes are 2:1.
-        // getBoundingClientRect returns the border box, so width and height
-        // both include the border. Assert they are within a reasonable range
-        // for the desktop layout (the track spans 1280px with 7 cards).
-        // We allow a range rather than exact pixels because the grid algorithm
-        // can vary ±1px due to subpixel rounding.
         const rect = media.getBoundingClientRect();
         await expect(rect.width).toBeGreaterThan(0);
         await expect(rect.height).toBeGreaterThan(0);
 
         // ── 2. Four border widths must each be > 0 (border was rendered) ─────
         // In forced-colors mode the UA sets borders to CanvasText.  If a
-        // browser elides the border entirely the assertion fails, which is the
-        // correct signal: the forced-colors override didn't work.
+        // browser elides the border entirely the assertion fails.
         const bwTop = parseFloat(mediaStyle.borderTopWidth);
         const bwRight = parseFloat(mediaStyle.borderRightWidth);
         const bwBottom = parseFloat(mediaStyle.borderBottomWidth);
@@ -1920,36 +1928,59 @@ export const ForcedColorsOutlineBbox = {
         await expect(bwBottom).toBeGreaterThan(0);
         await expect(bwLeft).toBeGreaterThan(0);
 
-        // ── 3. Inner content box is a proper subset of the outer border box ──
-        // The "inner" box is the padding-box: border box minus the four border
-        // widths.  Each inequality is independent and measures a real geometric
-        // relationship; none is derivable from the others alone.
-        //
-        //   inner.top    = rect.top    + bwTop
-        //   inner.left   = rect.left   + bwLeft
-        //   inner.right  = rect.right  - bwRight
-        //   inner.bottom = rect.bottom - bwBottom
-        //
-        // A shifted or zero-size media box would cause the bbox to have
-        // rect.width === 0 (caught above), or the border widths to be 0
-        // (caught above).  These inequalities additionally prove the border
-        // insets are independently non-trivial on all four edges.
-        const innerTop = rect.top + bwTop;
-        const innerLeft = rect.left + bwLeft;
-        const innerRight = rect.right - bwRight;
-        const innerBottom = rect.bottom - bwBottom;
+        // ── 3. Independent inner witness: query actual <img> children ─────────
+        // Both grid-stacked images (default + hover) are width:100%;
+        // height:100%; grid-area:img — their painted rects come from real
+        // CSS layout, not from arithmetic on rect/bw*.
+        const imgs = Array.from(media.querySelectorAll("img"));
+        await expect(imgs).toHaveLength(2); // default + hover must both be present
 
-        // Tolerance ±1 px on numeric comparisons for subpixel rounding.
-        await expect(innerTop - rect.top).toBeGreaterThan(-1); // top inset > 0
-        await expect(innerLeft - rect.left).toBeGreaterThan(-1); // left inset > 0
-        await expect(rect.right - innerRight).toBeGreaterThan(-1); // right inset > 0
-        await expect(rect.bottom - innerBottom).toBeGreaterThan(-1); // bottom inset > 0
+        for (const img of imgs) {
+          const imgRect = img.getBoundingClientRect();
 
-        // The strict inequalities (proper subset, not just equal):
-        await expect(innerTop).toBeGreaterThan(rect.top - 1);
-        await expect(innerLeft).toBeGreaterThan(rect.left - 1);
-        await expect(innerRight).toBeLessThan(rect.right + 1);
-        await expect(innerBottom).toBeLessThan(rect.bottom + 1);
+          // Sanity: image must have positive painted dimensions.
+          await expect(imgRect.width).toBeGreaterThan(0);
+          await expect(imgRect.height).toBeGreaterThan(0);
+
+          // Edge-match assertions (±0.5 px sub-pixel tolerance):
+          // The image's painted edge must coincide with the outer rect's
+          // corresponding border-inner edge.  These assertions fail if the
+          // CSS sets a size other than 100%/100% on the img (e.g. height:50%).
+          await expect(imgRect.top).toBeGreaterThanOrEqual(
+            rect.top + bwTop - 0.5
+          );
+          await expect(imgRect.top).toBeLessThanOrEqual(rect.top + bwTop + 0.5);
+
+          await expect(imgRect.right).toBeGreaterThanOrEqual(
+            rect.right - bwRight - 0.5
+          );
+          await expect(imgRect.right).toBeLessThanOrEqual(
+            rect.right - bwRight + 0.5
+          );
+
+          await expect(imgRect.bottom).toBeGreaterThanOrEqual(
+            rect.bottom - bwBottom - 0.5
+          );
+          await expect(imgRect.bottom).toBeLessThanOrEqual(
+            rect.bottom - bwBottom + 0.5
+          );
+
+          await expect(imgRect.left).toBeGreaterThanOrEqual(
+            rect.left + bwLeft - 0.5
+          );
+          await expect(imgRect.left).toBeLessThanOrEqual(
+            rect.left + bwLeft + 0.5
+          );
+
+          // Strict four-edge inequalities — OBSERVED img rect is a proper
+          // subset of the outer media bbox.  These are independently
+          // measurable and prove painted content never bleeds outside the
+          // bordered media container (the forced-colors invariant).
+          await expect(imgRect.top).toBeGreaterThan(rect.top);
+          await expect(imgRect.left).toBeGreaterThan(rect.left);
+          await expect(imgRect.right).toBeLessThan(rect.right);
+          await expect(imgRect.bottom).toBeLessThan(rect.bottom);
+        }
       }
     } finally {
       await emulateForcedColors(false);
@@ -2057,7 +2088,8 @@ export const ImageDimensionValidation = {
   ),
   play: async () => {
     // Helper: call rankingsCardsHtml, parse the returned HTML string, and
-    // return the [width, height] attribute pair from the first default <img>.
+    // return {def: [w, h], hover: [w, h]} attribute pairs from the card's two
+    // <img> elements.  Both siblings must agree on the validated dimensions.
     const getDimensions = (imageWidth, imageHeight) => {
       const html = rankingsCardsHtml({
         imageWidth,
@@ -2066,68 +2098,229 @@ export const ImageDimensionValidation = {
       });
       const parser = new DOMParser();
       const doc = parser.parseFromString(html, "text/html");
-      const img = doc.querySelector(".hp-rankings__img--default");
-      return [img.getAttribute("width"), img.getAttribute("height")];
+      const def = doc.querySelector(".hp-rankings__img--default");
+      const hover = doc.querySelector(".hp-rankings__img--hover");
+      return {
+        def: [def.getAttribute("width"), def.getAttribute("height")],
+        hover: [hover.getAttribute("width"), hover.getAttribute("height")],
+      };
     };
 
-    // ── Invalid inputs — each must fall back to "500" / "251" ──────────────
+    // ── Invalid inputs — both default AND hover must fall back to "500"/"251"─
 
     // Zero
-    await expect(getDimensions(0, 251)).toEqual(["500", "251"]);
-    await expect(getDimensions(500, 0)).toEqual(["500", "251"]);
+    {
+      const r = getDimensions(0, 251);
+      await expect(r.def).toEqual(["500", "251"]);
+      await expect(r.hover).toEqual(["500", "251"]);
+    }
+    {
+      const r = getDimensions(500, 0);
+      await expect(r.def).toEqual(["500", "251"]);
+      await expect(r.hover).toEqual(["500", "251"]);
+    }
 
     // Negative
-    await expect(getDimensions(-1, 251)).toEqual(["500", "251"]);
-    await expect(getDimensions(500, -1)).toEqual(["500", "251"]);
+    {
+      const r = getDimensions(-1, 251);
+      await expect(r.def).toEqual(["500", "251"]);
+      await expect(r.hover).toEqual(["500", "251"]);
+    }
+    {
+      const r = getDimensions(500, -1);
+      await expect(r.def).toEqual(["500", "251"]);
+      await expect(r.hover).toEqual(["500", "251"]);
+    }
 
     // Fractional
-    await expect(getDimensions(500.5, 251)).toEqual(["500", "251"]);
-    await expect(getDimensions(500, 251.9)).toEqual(["500", "251"]);
+    {
+      const r = getDimensions(500.5, 251);
+      await expect(r.def).toEqual(["500", "251"]);
+      await expect(r.hover).toEqual(["500", "251"]);
+    }
+    {
+      const r = getDimensions(500, 251.9);
+      await expect(r.def).toEqual(["500", "251"]);
+      await expect(r.hover).toEqual(["500", "251"]);
+    }
 
     // NaN
-    await expect(getDimensions(NaN, 251)).toEqual(["500", "251"]);
-    await expect(getDimensions(500, NaN)).toEqual(["500", "251"]);
+    {
+      const r = getDimensions(NaN, 251);
+      await expect(r.def).toEqual(["500", "251"]);
+      await expect(r.hover).toEqual(["500", "251"]);
+    }
+    {
+      const r = getDimensions(500, NaN);
+      await expect(r.def).toEqual(["500", "251"]);
+      await expect(r.hover).toEqual(["500", "251"]);
+    }
 
     // Non-number string
-    await expect(getDimensions("wide", 251)).toEqual(["500", "251"]);
-    await expect(getDimensions(500, "tall")).toEqual(["500", "251"]);
+    {
+      const r = getDimensions("wide", 251);
+      await expect(r.def).toEqual(["500", "251"]);
+      await expect(r.hover).toEqual(["500", "251"]);
+    }
+    {
+      const r = getDimensions(500, "tall");
+      await expect(r.def).toEqual(["500", "251"]);
+      await expect(r.hover).toEqual(["500", "251"]);
+    }
 
     // Undefined (both)
-    await expect(getDimensions(undefined, undefined)).toEqual(["500", "251"]);
-
-    // Swapped (width < height → 251 × 500 is an unusual intrinsic; also invalid
-    // when individually 251 is positive, but the pair would be 251 × 500;
-    // however per the spec each value is validated individually so 251 and 500
-    // are both positive safe integers — they pass individually even though the
-    // pair inverts the ratio.  The spec says to validate each as a positive
-    // safe integer; swapped but individually valid integers MUST be applied.)
-    const [sw, sh] = getDimensions(251, 500);
-    await expect(sw).toBe("251");
-    await expect(sh).toBe("500");
+    {
+      const r = getDimensions(undefined, undefined);
+      await expect(r.def).toEqual(["500", "251"]);
+      await expect(r.hover).toEqual(["500", "251"]);
+    }
 
     // Malicious injection string → must fall back to defaults.
-    await expect(
-      getDimensions('500" onerror="globalThis.__pwned=1', 251)
-    ).toEqual(["500", "251"]);
-    await expect(
-      getDimensions(500, '251" onerror="globalThis.__pwned=1')
-    ).toEqual(["500", "251"]);
+    {
+      const r = getDimensions('500" onerror="globalThis.__pwned=1', 251);
+      await expect(r.def).toEqual(["500", "251"]);
+      await expect(r.hover).toEqual(["500", "251"]);
+    }
+    {
+      const r = getDimensions(500, '251" onerror="globalThis.__pwned=1');
+      await expect(r.def).toEqual(["500", "251"]);
+      await expect(r.hover).toEqual(["500", "251"]);
+    }
 
     // Non-finite
-    await expect(getDimensions(Infinity, 251)).toEqual(["500", "251"]);
-    await expect(getDimensions(500, -Infinity)).toEqual(["500", "251"]);
+    {
+      const r = getDimensions(Infinity, 251);
+      await expect(r.def).toEqual(["500", "251"]);
+      await expect(r.hover).toEqual(["500", "251"]);
+    }
+    {
+      const r = getDimensions(500, -Infinity);
+      await expect(r.def).toEqual(["500", "251"]);
+      await expect(r.hover).toEqual(["500", "251"]);
+    }
 
     // Beyond Number.MAX_SAFE_INTEGER
-    await expect(getDimensions(Number.MAX_SAFE_INTEGER + 1, 251)).toEqual([
-      "500",
-      "251",
-    ]);
+    {
+      const r = getDimensions(Number.MAX_SAFE_INTEGER + 1, 251);
+      await expect(r.def).toEqual(["500", "251"]);
+      await expect(r.hover).toEqual(["500", "251"]);
+    }
 
-    // ── Valid safe-integer pairs — must be applied ──────────────────────────
+    // ── BigInt inputs (P2a — must NOT throw; must fall back to defaults) ─────
+    // JSON.stringify(1n) throws TypeError; the safe formatter must never call
+    // it. Both siblings must receive the fallback "500"/"251".
+    {
+      // 1n — literal bigint
+      let threw = false;
+      let r;
+      try {
+        r = getDimensions(1n, 251);
+      } catch {
+        threw = true;
+      }
+      await expect(threw).toBe(false);
+      await expect(r.def).toEqual(["500", "251"]);
+      await expect(r.hover).toEqual(["500", "251"]);
+    }
+    {
+      // BigInt(500) — bigint constructed from a valid integer value
+      let threw = false;
+      let r;
+      try {
+        r = getDimensions(BigInt(500), 251);
+      } catch {
+        threw = true;
+      }
+      await expect(threw).toBe(false);
+      await expect(r.def).toEqual(["500", "251"]);
+      await expect(r.hover).toEqual(["500", "251"]);
+    }
 
-    await expect(getDimensions(800, 400)).toEqual(["800", "400"]);
-    await expect(getDimensions(1000, 500)).toEqual(["1000", "500"]);
-    await expect(getDimensions(288, 144)).toEqual(["288", "144"]);
-    await expect(getDimensions(1, 1)).toEqual(["1", "1"]);
+    // ── Throwing-serialization objects (P2a — must NOT throw) ────────────────
+    // A proxy whose toJSON/toString throws must not propagate through
+    // validateIntrinsicDimension to the caller.
+    {
+      const throwingProxy = new Proxy(
+        {},
+        {
+          get(_, prop) {
+            if (
+              prop === "toJSON" ||
+              prop === "toString" ||
+              prop === "valueOf"
+            ) {
+              return () => {
+                throw new Error("hostile proxy");
+              };
+            }
+            return undefined;
+          },
+        }
+      );
+      let threw = false;
+      let r;
+      try {
+        r = getDimensions(throwingProxy, 251);
+      } catch {
+        threw = true;
+      }
+      await expect(threw).toBe(false);
+      await expect(r.def).toEqual(["500", "251"]);
+      await expect(r.hover).toEqual(["500", "251"]);
+    }
+    {
+      // Plain object with throwing toString
+      const badObj = {
+        toString() {
+          throw new Error("toString throws");
+        },
+        toJSON() {
+          throw new Error("toJSON throws");
+        },
+      };
+      let threw = false;
+      let r;
+      try {
+        r = getDimensions(badObj, 251);
+      } catch {
+        threw = true;
+      }
+      await expect(threw).toBe(false);
+      await expect(r.def).toEqual(["500", "251"]);
+      await expect(r.hover).toEqual(["500", "251"]);
+    }
+
+    // ── Swapped valid integers (individually valid, ratio inverted) ───────────
+    // Per the spec each value is validated individually so 251 and 500 are
+    // both positive safe integers — they pass even though the pair inverts
+    // the ratio. Both siblings must reflect the caller-supplied values.
+    {
+      const r = getDimensions(251, 500);
+      await expect(r.def).toEqual(["251", "500"]);
+      await expect(r.hover).toEqual(["251", "500"]);
+    }
+
+    // ── Valid safe-integer pairs — must be applied to both siblings ───────────
+
+    {
+      const r = getDimensions(800, 400);
+      await expect(r.def).toEqual(["800", "400"]);
+      await expect(r.hover).toEqual(["800", "400"]);
+    }
+    {
+      const r = getDimensions(1000, 500);
+      await expect(r.def).toEqual(["1000", "500"]);
+      await expect(r.hover).toEqual(["1000", "500"]);
+    }
+    {
+      const r = getDimensions(288, 144);
+      await expect(r.def).toEqual(["288", "144"]);
+      await expect(r.hover).toEqual(["288", "144"]);
+    }
+    {
+      const r = getDimensions(1, 1);
+      await expect(r.def).toEqual(["1", "1"]);
+      await expect(r.hover).toEqual(["1", "1"]);
+    }
   },
 };
