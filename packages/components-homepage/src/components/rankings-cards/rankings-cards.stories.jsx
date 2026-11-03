@@ -2329,3 +2329,76 @@ export const ImageDimensionValidation = {
     }
   },
 };
+
+// ── P2 cycle-4: headingId bigint/throwing-proxy robustness ───────────────────
+// JSON.stringify(1n) throws TypeError; a centralized formatRejectedValue()
+// helper must be used instead so the warn path never serialises the rejected
+// value. Both cases (literal bigint, throwing-proxy) must NOT throw and must
+// fall back to the default heading id "hp-rankings-heading".
+export const InvalidHeadingIdBigInt = {
+  name: "HeadingId validation: bigint and throwing-proxy inputs do not throw",
+  globals: viewport(1280),
+  render: () => (
+    <StaticPage
+      html={rankingsCardsHtml({ cards: DEFAULT_CARDS.slice(0, 1) })}
+    />
+  ),
+  play: async () => {
+    const DEFAULT_HEADING_ID = "hp-rankings-heading";
+
+    // Helper: call rankingsCardsHtml with the given headingId, parse the result,
+    // and return the id attribute of the heading element.
+    const getHeadingId = headingId => {
+      const html = rankingsCardsHtml({ headingId, cards: DEFAULT_CARDS.slice(0, 1) });
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, "text/html");
+      const heading = doc.querySelector("[id]");
+      return heading ? heading.getAttribute("id") : null;
+    };
+
+    // ── Row 1: literal BigInt ─────────────────────────────────────────────────
+    // JSON.stringify(1n) throws; safe formatter must not serialise the value.
+    {
+      let threw = false;
+      let resultId;
+      try {
+        resultId = getHeadingId(1n);
+      } catch {
+        threw = true;
+      }
+      await expect(threw).toBe(false);
+      await expect(resultId).toBe(DEFAULT_HEADING_ID);
+    }
+
+    // ── Row 2: throwing-proxy headingId ──────────────────────────────────────
+    // A proxy whose toJSON/toString throws must not propagate.
+    {
+      const throwingProxy = new Proxy(
+        {},
+        {
+          get(_, prop) {
+            if (
+              prop === "toJSON" ||
+              prop === "toString" ||
+              prop === "valueOf"
+            ) {
+              return () => {
+                throw new Error("hostile headingId proxy");
+              };
+            }
+            return undefined;
+          },
+        }
+      );
+      let threw = false;
+      let resultId;
+      try {
+        resultId = getHeadingId(throwingProxy);
+      } catch {
+        threw = true;
+      }
+      await expect(threw).toBe(false);
+      await expect(resultId).toBe(DEFAULT_HEADING_ID);
+    }
+  },
+};

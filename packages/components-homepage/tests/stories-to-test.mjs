@@ -103,4 +103,6 @@ export const storiesToTest = [
   // v3 cycle-2 amendment — p1-1 injection/validation stories
   "homepage-rankings-cards--injection-image-width-malicious",
   "homepage-rankings-cards--image-dimension-validation",
+  // v3.1 cycle-4 amendment — P2 headingId bigint/throwing-proxy robustness
+  "homepage-rankings-cards--invalid-heading-id-big-int",
 ];
