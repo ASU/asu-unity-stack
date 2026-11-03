@@ -412,9 +412,7 @@ export const ImageSizing = {
       // (and 'auto 2 / 1' for elements without an explicit height). Accept
       // both normalised forms: '2 / 1' and 'auto 2 / 1'.
       const arStr = mediaStyle.aspectRatio;
-      await expect(
-        arStr === "2 / 1" || arStr === "auto 2 / 1"
-      ).toBe(true);
+      await expect(arStr === "2 / 1" || arStr === "auto 2 / 1").toBe(true);
 
       // (b) Layout ratio within ±0.01 of 2.0.
       const rect = media.getBoundingClientRect();
@@ -1903,16 +1901,11 @@ export const ForcedColorsOutlineBbox = {
         const bw = parseFloat(mediaStyle.borderTopWidth);
         // The border-box rect width and height include the border width.
         // Assert: border renders inside the layout rect (no overflow beyond ±1px).
-        expect(parseFloat(mediaStyle.borderTopWidth)).toBeLessThanOrEqual(1 + 1);
-        expect(parseFloat(mediaStyle.borderRightWidth)).toBeLessThanOrEqual(
-          1 + 1
-        );
-        expect(parseFloat(mediaStyle.borderBottomWidth)).toBeLessThanOrEqual(
-          1 + 1
-        );
-        expect(parseFloat(mediaStyle.borderLeftWidth)).toBeLessThanOrEqual(
-          1 + 1
-        );
+        // 1px border + 1px tolerance = 2px max.
+        expect(parseFloat(mediaStyle.borderTopWidth)).toBeLessThanOrEqual(2);
+        expect(parseFloat(mediaStyle.borderRightWidth)).toBeLessThanOrEqual(2);
+        expect(parseFloat(mediaStyle.borderBottomWidth)).toBeLessThanOrEqual(2);
+        expect(parseFloat(mediaStyle.borderLeftWidth)).toBeLessThanOrEqual(2);
 
         // The content area rect (rect minus border) must be within ±1 px of the
         // full rect — confirming the border did not cause layout to shift the

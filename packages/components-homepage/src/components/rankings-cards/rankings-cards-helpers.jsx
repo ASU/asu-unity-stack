@@ -226,6 +226,8 @@ const warnDev = message => {
  * @param {RankingCard[]} [options.cards] - Defaults to the 7-item `DEFAULT_CARDS` sample. Non-array / zero-length renders inert markup.
  * @param {string} [options.seeAllHref="#rankings-see-all"] - Placeholder until real URL exists. Rendered scheme-sanitized. A bare `#` scrolls to top; use a unique fragment.
  * @param {string} [options.seeAllLabel="See all ASU rankings"] - Visible text for the see-all link (HTML-escaped).
+ * @param {number} [options.imageWidth=500]  - Dataset-wide intrinsic width (px) emitted on every <img> as the `width` attribute; see §3 image intrinsics contract and design-doc v3 §3.1 Q2 = C.
+ * @param {number} [options.imageHeight=251] - Dataset-wide intrinsic height (px) emitted on every <img> as the `height` attribute; see §3 image intrinsics contract and design-doc v3 §3.1 Q2 = C.
  * @returns {string} HTML string (Stage B parity source, §3.3).
  */
 export const rankingsCardsHtml = ({
@@ -233,6 +235,8 @@ export const rankingsCardsHtml = ({
   cards = DEFAULT_CARDS,
   seeAllHref = "#rankings-see-all",
   seeAllLabel = "See all ASU rankings",
+  imageWidth = 500,
+  imageHeight = 251,
 } = {}) => {
   // ── Content-model validation (DEV warnings, never fabricate content) ──────
   let safeCards;
@@ -311,8 +315,9 @@ export const rankingsCardsHtml = ({
         `<img class="hp-rankings__img hp-rankings__img--default"` +
         ` src="${escapeHtml(imageSrc)}"` +
         ` alt="${escapeHtml(resolvedAlt)}"` +
-        // TODO: confirm with design — intrinsic dimensions from Figma node 13467:58610 (locked placeholder 400 × 500, §11.2).
-        ` width="400" height="500"` +
+        // Dataset-wide intrinsic dimensions (design-doc v3 §3.1 Q2 = C; default 500 × 251).
+        // TODO: confirm with design — intrinsic dimensions from Figma node 13467:58610 (design-doc §11.2).
+        ` width="${imageWidth}" height="${imageHeight}"` +
         // TODO: confirm with design — all images lazy-loaded (design-doc §11.2); revisit if homepage places rankings above the fold.
         ` loading="lazy" decoding="async">` +
         // Hover image: decorative colour variant — alt="" + aria-hidden so SR does NOT double-announce.
@@ -320,8 +325,9 @@ export const rankingsCardsHtml = ({
         `<img class="hp-rankings__img hp-rankings__img--hover"` +
         ` src="${escapeHtml(resolvedHover)}"` +
         ` alt="" aria-hidden="true"` +
-        // TODO: confirm with design — intrinsic dimensions (hover img) locked at 400 × 500 (§11.2).
-        ` width="400" height="500"` +
+        // Dataset-wide intrinsic dimensions (hover img) — same pair as default (design-doc v3 §3.1 Q2 = C).
+        // TODO: confirm with design — intrinsic dimensions (hover img) locked at 500 × 251 (§11.2).
+        ` width="${imageWidth}" height="${imageHeight}"` +
         // TODO: confirm with design — all images lazy-loaded (design-doc §11.2).
         ` loading="lazy" decoding="async">` +
         `</div>` +
