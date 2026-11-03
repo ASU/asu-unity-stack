@@ -1955,3 +1955,143 @@ export const IntrinsicsFlip = {
     }
   },
 };
+
+// ─── P1-1 RED — imageWidth/imageHeight attribute injection guard ──────────────
+// Reviewer finding: imageWidth/imageHeight are interpolated directly into HTML
+// attributes at rankings-cards-helpers.jsx:320,330.  A consumer passing a
+// malicious string can inject additional attributes.
+//
+// These stories run BEFORE the fix lands to confirm they are RED, then GREEN
+// once validateIntrinsicDimension() is added.
+//
+// Story 1 — Malicious string cannot inject onerror attribute.
+// Story 2 — Table-driven: invalid inputs fall back to 500/251.
+// Story 3 — Table-driven: valid safe-integer pairs are applied as-is.
+//
+// Design-doc §3.1 / v3 amendment §3.3.
+
+export const InjectionImageWidthMalicious = {
+  name: "Injection: malicious imageWidth string cannot inject attribute",
+  globals: viewport(1280),
+  render: () => {
+    const html = rankingsCardsHtml({
+      // Reviewer reproduction: '500" onerror="globalThis.__pwned=1'
+      imageWidth: '500" onerror="globalThis.__pwned=1',
+      imageHeight: 251,
+      cards: DEFAULT_CARDS.slice(0, 1),
+    });
+    return <StaticPage html={html} />;
+  },
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    await expect(p.cards.length).toBe(1);
+
+    const imgs = Array.from(
+      p.cards[0].querySelectorAll(".hp-rankings__media img")
+    );
+    await expect(imgs).toHaveLength(2);
+
+    for (const img of imgs) {
+      // Must fall back to default 500 (not the malicious string).
+      await expect(img.getAttribute("width")).toBe("500");
+      await expect(img.getAttribute("height")).toBe("251");
+
+      // The injected attribute must NOT appear.
+      await expect(img.getAttribute("onerror")).toBeNull();
+
+      // The serialised outer HTML must not contain the onerror substring.
+      await expect(img.outerHTML).not.toContain("onerror");
+    }
+
+    // Prove the pwned marker was never installed.
+    // eslint-disable-next-line no-undef
+    await expect(typeof globalThis.__pwned).toBe("undefined");
+  },
+};
+
+// Table-driven story: every invalid dimension falls back to 500 / 251.
+// Valid safe-integer pairs override the defaults.
+export const ImageDimensionValidation = {
+  name: "Image dimension validation: invalid inputs fall back to 500/251",
+  globals: viewport(1280),
+  render: () => (
+    <StaticPage
+      html={rankingsCardsHtml({ cards: DEFAULT_CARDS.slice(0, 1) })}
+    />
+  ),
+  play: async () => {
+    // Helper: call rankingsCardsHtml, parse the returned HTML string, and
+    // return the [width, height] attribute pair from the first default <img>.
+    const getDimensions = (imageWidth, imageHeight) => {
+      const html = rankingsCardsHtml({
+        imageWidth,
+        imageHeight,
+        cards: DEFAULT_CARDS.slice(0, 1),
+      });
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, "text/html");
+      const img = doc.querySelector(".hp-rankings__img--default");
+      return [img.getAttribute("width"), img.getAttribute("height")];
+    };
+
+    // ── Invalid inputs — each must fall back to "500" / "251" ──────────────
+
+    // Zero
+    await expect(getDimensions(0, 251)).toEqual(["500", "251"]);
+    await expect(getDimensions(500, 0)).toEqual(["500", "251"]);
+
+    // Negative
+    await expect(getDimensions(-1, 251)).toEqual(["500", "251"]);
+    await expect(getDimensions(500, -1)).toEqual(["500", "251"]);
+
+    // Fractional
+    await expect(getDimensions(500.5, 251)).toEqual(["500", "251"]);
+    await expect(getDimensions(500, 251.9)).toEqual(["500", "251"]);
+
+    // NaN
+    await expect(getDimensions(NaN, 251)).toEqual(["500", "251"]);
+    await expect(getDimensions(500, NaN)).toEqual(["500", "251"]);
+
+    // Non-number string
+    await expect(getDimensions("wide", 251)).toEqual(["500", "251"]);
+    await expect(getDimensions(500, "tall")).toEqual(["500", "251"]);
+
+    // Undefined (both)
+    await expect(getDimensions(undefined, undefined)).toEqual(["500", "251"]);
+
+    // Swapped (width < height → 251 × 500 is an unusual intrinsic; also invalid
+    // when individually 251 is positive, but the pair would be 251 × 500;
+    // however per the spec each value is validated individually so 251 and 500
+    // are both positive safe integers — they pass individually even though the
+    // pair inverts the ratio.  The spec says to validate each as a positive
+    // safe integer; swapped but individually valid integers MUST be applied.)
+    const [sw, sh] = getDimensions(251, 500);
+    await expect(sw).toBe("251");
+    await expect(sh).toBe("500");
+
+    // Malicious injection string → must fall back to defaults.
+    await expect(
+      getDimensions('500" onerror="globalThis.__pwned=1', 251)
+    ).toEqual(["500", "251"]);
+    await expect(
+      getDimensions(500, '251" onerror="globalThis.__pwned=1')
+    ).toEqual(["500", "251"]);
+
+    // Non-finite
+    await expect(getDimensions(Infinity, 251)).toEqual(["500", "251"]);
+    await expect(getDimensions(500, -Infinity)).toEqual(["500", "251"]);
+
+    // Beyond Number.MAX_SAFE_INTEGER
+    await expect(getDimensions(Number.MAX_SAFE_INTEGER + 1, 251)).toEqual([
+      "500",
+      "251",
+    ]);
+
+    // ── Valid safe-integer pairs — must be applied ──────────────────────────
+
+    await expect(getDimensions(800, 400)).toEqual(["800", "400"]);
+    await expect(getDimensions(1000, 500)).toEqual(["1000", "500"]);
+    await expect(getDimensions(288, 144)).toEqual(["288", "144"]);
+    await expect(getDimensions(1, 1)).toEqual(["1", "1"]);
+  },
+};
