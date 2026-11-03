@@ -2,8 +2,8 @@
 
 **Designer action required before merge to `dev`.**
 
-All PNGs in this folder are placeholder images copied from `.intake/rank-01.png`
-(default/dark, 500 × 251) and `.intake/rank-06-w.png` (hover/white, 500 × 251).
+All PNGs in this folder are placeholder images copied from `.intake/rank-01-w.png`
+(default/white, 500 × 251) and `.intake/rank-01.png` (hover/dark navy, 500 × 251).
 The same two files are reused across all 7 cards. Replace each placeholder pair
 with the final brand artwork from the Figma frame before this branch merges.
 
@@ -38,8 +38,8 @@ Both files in a pair **must share identical intrinsic dimensions**.
       (not a different composition).
 - [ ] Confirm PNGs use alpha channel for dark-hero bleed-through.
 - [ ] Confirm the `PLACEHOLDER` watermark is absent from the final artwork.
-      The current v3 placeholders are copies of `.intake/rank-01.png` and
-      `.intake/rank-06-w.png` — no text watermark overlaid on these files.
+      The current v3.1 placeholders are copies of `.intake/rank-01-w.png` and
+      `.intake/rank-01.png` — no text watermark overlaid on these files.
 - [ ] Update `imageAlt` text in `DEFAULT_CARDS` (in `rankings-cards-helpers.jsx`)
       to match the real ranking statement for each card.
 - [ ] Confirm `attributionHref` and `attributionLabel` values for each card
@@ -65,8 +65,8 @@ The v3 placeholder PNGs are direct copies of the `.intake/` source files:
 
 | State | Source file | Description |
 |---|---|---|
-| Default | `.intake/rank-01.png` | Dark background (500 × 251) |
-| Hover | `.intake/rank-06-w.png` | White/light background (500 × 251) |
+| Default | `.intake/rank-01-w.png` | White background (500 × 251) |
+| Hover | `.intake/rank-01.png` | Dark navy background (500 × 251) |
 
 Both files are byte-for-byte identical across all 7 cards (dataset-wide
 uniform intrinsics per design-doc v3 §3.1 Q2 = C). The previous cycle-1
@@ -79,6 +79,7 @@ solid-color + watermark PNGs are fully replaced by these copies.
 Design-doc v3 (2026-11-03T19:25Z) locked the following for this directory:
 - Aspect ratio: **2 / 1** (supersedes v2)
 - Intrinsic dimensions: **500 × 251** (supersedes v2)
-- Placeholder source: `.intake/rank-01.png` + `.intake/rank-06-w.png`
-  (supersedes v2 which used pure-Node `pngjs`-generated solid-color files)
+- Placeholder source: `.intake/rank-01-w.png` + `.intake/rank-01.png`
+  (v3.1 user-directed swap 2026-11-03T21:10Z; supersedes v3 which used
+  `.intake/rank-01.png` default + `.intake/rank-06-w.png` hover)
 - No `-s22` variants permitted at any point.

@@ -3,14 +3,15 @@
 Jira: WWWCMS-233 · Figma node: `13467:58610`
 
 > **PLACEHOLDER NOTICE** — All PNGs in this folder are placeholder artwork
-> copied from `.intake/rank-01.png` (default/dark) and `.intake/rank-06-w.png`
-> (hover/white). The same two 500 × 251 source files are reused across all
+> copied from `.intake/rank-01-w.png` (default/white) and `.intake/rank-01.png`
+> (hover/dark navy). The same two 500 × 251 source files are reused across all
 > 7 cards until the designer provides per-card brand artwork. Real brand
 > artwork MUST replace them before merging to `dev`. See `TODO.md` for the full
 > mapping.
 >
-> **Provenance**: `.intake/rank-01.png` and `.intake/rank-06-w.png` — version-
-> controlled in the `.intake/` folder at repository root (design-doc v3 §9.2).
+> **Provenance**: `.intake/rank-01-w.png` and `.intake/rank-01.png` — version-
+> controlled in the `.intake/` folder at repository root (design-doc v3 §9.2,
+> amended v3.1 2026-11-03T21:10Z).
 
 ---
 

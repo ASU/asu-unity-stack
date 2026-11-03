@@ -9,6 +9,15 @@
 
 ## Change log
 
+- **v3.1 — 2026-11-03T21:10Z — User-directed placeholder-pair source swap
+  (mid-cycle-3, scope-locked to `img/rankings/` + this Change log)**.\
+  Default placeholder changed from `.intake/rank-01.png` (dark navy) to
+  `.intake/rank-01-w.png` (white, 500×251). Hover placeholder changed from
+  `.intake/rank-06-w.png` (white) to `.intake/rank-01.png` (dark navy,
+  500×251). Both sources remain 500×251; no code, SCSS, test, or markup
+  changes. 14 PNG binary files replaced; README.md, TODO.md, and this
+  Change log updated. All validators green.
+
 - **v3 — 2026-11-03T19:25Z — Supersedes v2.1 (Phase 1 scope amendment)**.
   Scope: lock the media aspect-ratio to **2 / 1** at every breakpoint, lock
   the image intrinsics to **500 × 251** (overridable dataset-wide), replace
@@ -32,7 +41,8 @@
   - **New §8 row 23b** asserts the forced-colors outline bbox tracks the
     media bbox within ±1 px.
   - Placeholder pair is **`.intake/rank-01.png`** (default/dark, 500×251)
-    + **`.intake/rank-06-w.png`** (hover/white, 500×251). No `-s22`
+    + **`.intake/rank-06-w.png`** (hover/white, 500×251) — **superseded by
+    v3.1 user-directed swap (see above)**. No `-s22`
     variants. The same two PNGs are reused across all 7 cards until the
     designer provides real artwork.
   - 400 × 500 pure-Node `pngjs` placeholder generation is **struck**.
@@ -1311,8 +1321,8 @@ row-1 attribute-shape assertion and the row-8 hover-swap assertion.
 | `packages/components-homepage/src/img/rankings/` | **create (new folder)** | Per-card PNG assets. Co-located with the existing `src/img/` tree already used by the `reimagine` scribble SVGs (user answer C1). |
 | `packages/components-homepage/src/img/rankings/.gitkeep` | **create** | Ensures the folder exists in version control even if the HITL process rejects placeholder PNGs. |
 | `packages/components-homepage/src/img/rankings/README.md` | **create** | Documents the file-naming convention and the dimensions contract (see below). |
-| `packages/components-homepage/src/img/rankings/<slug>.png` × 7 | **create (placeholder; v3 — copy from `.intake/rank-01.png`)** | Default-state PNGs for the default 7-card dataset so Storybook stories render. **v3**: all 7 files are identical copies of `.intake/rank-01.png` (500 × 251, dark/default variant). No pure-Node pngjs script, no 400 × 500 PNGs. See §9.2. |
-| `packages/components-homepage/src/img/rankings/<slug>--hover.png` × 7 | **create (placeholder; v3 — copy from `.intake/rank-06-w.png`)** | Hover-state PNGs for the same 7 cards. **v3**: all 7 files are identical copies of `.intake/rank-06-w.png` (500 × 251, white/hover variant). Same intrinsic dimensions as the default pair. No `-s22` variants. See §9.2. |
+| `packages/components-homepage/src/img/rankings/<slug>.png` × 7 | **create (placeholder; v3.1 — copy from `.intake/rank-01-w.png`)** | Default-state PNGs for the default 7-card dataset so Storybook stories render. **v3.1**: all 7 files are identical copies of `.intake/rank-01-w.png` (500 × 251, white/default variant). No pure-Node pngjs script, no 400 × 500 PNGs. See §9.2. |
+| `packages/components-homepage/src/img/rankings/<slug>--hover.png` × 7 | **create (placeholder; v3.1 — copy from `.intake/rank-01.png`)** | Hover-state PNGs for the same 7 cards. **v3.1**: all 7 files are identical copies of `.intake/rank-01.png` (500 × 251, dark navy/hover variant). Same intrinsic dimensions as the default pair. No `-s22` variants. See §9.2. |
 | `packages/components-homepage/src/img/rankings/TODO.md` | **create** | Points design to the Figma frame as the source of truth; lists each placeholder slug and the real artwork it must be replaced with before merge. |
 
 ### 9.1 `img/rankings/README.md` content (locked in v2)
@@ -1341,7 +1351,7 @@ The README MUST document, at minimum:
   their own background colour and bypass the component's transparent-section
   contract (§4.2, §4.5).
 
-### 9.2 Placeholder asset generation (locked in v3 — copy-from-`.intake/`)
+### 9.2 Placeholder asset generation (locked in v3.1 — copy-from-`.intake/`)
 
 The coder MUST NOT commit real brand assets without the designer's explicit
 approval. Placeholder PNGs are the two 500 × 251 artifacts already present in
@@ -1355,25 +1365,25 @@ label.~~ Removed in v3. No 400 × 500 PNG may exist under
 `packages/components-homepage/src/img/rankings/`. If a reviewer finds one,
 reject the commit.
 
-**Locked v3 procedure (copy, do not generate):**
+**Locked v3.1 procedure (copy, do not generate — user-directed swap 2026-11-03T21:10Z):**
 
 1. Confirm the two canonical placeholders exist at
-   `.intake/rank-01.png` (default/dark, 500 × 251) and
-   `.intake/rank-06-w.png` (hover/white, 500 × 251). Explicitly **no**
+   `.intake/rank-01-w.png` (default/white, 500 × 251) and
+   `.intake/rank-01.png` (hover/dark navy, 500 × 251). Explicitly **no**
    `-s22` variants.
 2. For each of the 7 cards in the default `DEFAULT_CARDS` dataset in
    `rankings-cards-helpers.jsx`, copy the two placeholders into
    `packages/components-homepage/src/img/rankings/` using the final
    filenames the dataset expects. Concretely:
-   - `.intake/rank-01.png` → `packages/components-homepage/src/img/rankings/<slug>.png`
+   - `.intake/rank-01-w.png` → `packages/components-homepage/src/img/rankings/<slug>.png`
      (one copy per card slug)
-   - `.intake/rank-06-w.png` → `packages/components-homepage/src/img/rankings/<slug>--hover.png`
+   - `.intake/rank-01.png` → `packages/components-homepage/src/img/rankings/<slug>--hover.png`
      (one copy per card slug)
    where `<slug>` is each card's slug as declared in `DEFAULT_CARDS`.
 3. The **same pair** of PNGs is reused for every card. All 7 default
-   `<slug>.png` files are byte-identical copies of `rank-01.png`; all 7
+   `<slug>.png` files are byte-identical copies of `rank-01-w.png`; all 7
    default `<slug>--hover.png` files are byte-identical copies of
-   `rank-06-w.png`. This is intentional and acceptable — the dataset-wide
+   `rank-01.png`. This is intentional and acceptable — the dataset-wide
    intrinsics contract (§3, Q2 = C) guarantees stack-equality, and no
    per-card artwork variance is required until designer artwork replaces
    them.
@@ -1401,9 +1411,9 @@ task has a RED (failing test first) and GREEN (make it pass). Coder uses the
 ### Task 1 — markup template + placeholder PNGs (asset copy/replace)
 **Commit**: `feat(components-homepage): add rankingsCardsHtml markup template`
 
-> **Dependency note (v3 — copy-from-`.intake/`)**: the two canonical
-> placeholders at `.intake/rank-01.png` (default/dark, 500 × 251) and
-> `.intake/rank-06-w.png` (hover/white, 500 × 251) are the asset source for
+> **Dependency note (v3.1 — copy-from-`.intake/`)**: the two canonical
+> placeholders at `.intake/rank-01-w.png` (default/white, 500 × 251) and
+> `.intake/rank-01.png` (hover/dark navy, 500 × 251) are the asset source for
 > this task. No pure-Node pngjs script runs. No 400 × 500 PNG is permitted
 > under `packages/components-homepage/src/img/rankings/` at any point. The
 > same pair is reused across all 7 cards until designer artwork replaces
@@ -1417,15 +1427,15 @@ task has a RED (failing test first) and GREEN (make it pass). Coder uses the
   - `src/img/rankings/TODO.md` (create — maps placeholder slugs to Figma
     frames)
   - `src/img/rankings/<slug>.png` × 7 (create — **byte-identical copies of
-    `.intake/rank-01.png`**, one per `DEFAULT_CARDS` slug)
+    `.intake/rank-01-w.png`**, one per `DEFAULT_CARDS` slug)
   - `src/img/rankings/<slug>--hover.png` × 7 (create — **byte-identical
-    copies of `.intake/rank-06-w.png`**, one per `DEFAULT_CARDS` slug)
-- **Asset-copy sub-steps (v3)**:
-  1. Verify `.intake/rank-01.png` exists and is 500 × 251.
-  2. Verify `.intake/rank-06-w.png` exists and is 500 × 251.
+    copies of `.intake/rank-01.png`**, one per `DEFAULT_CARDS` slug)
+- **Asset-copy sub-steps (v3.1)**:
+  1. Verify `.intake/rank-01-w.png` exists and is 500 × 251.
+  2. Verify `.intake/rank-01.png` exists and is 500 × 251.
   3. For each slug in `DEFAULT_CARDS`:
-     - `cp .intake/rank-01.png packages/components-homepage/src/img/rankings/<slug>.png`
-     - `cp .intake/rank-06-w.png packages/components-homepage/src/img/rankings/<slug>--hover.png`
+     - `cp .intake/rank-01-w.png packages/components-homepage/src/img/rankings/<slug>.png`
+     - `cp .intake/rank-01.png packages/components-homepage/src/img/rankings/<slug>--hover.png`
   4. Confirm `ls packages/components-homepage/src/img/rankings/` lists 14
      PNGs (7 default + 7 hover) plus `.gitkeep`, `README.md`, `TODO.md`.
      Zero `-s22` variants permitted.
@@ -1681,18 +1691,20 @@ protocol.
    generation plan (pure-Node `pngjs` 400 × 500 solid-color PNGs) is
    **struck** (§9.2). If a reviewer finds any 400 × 500 PNG in that
    directory, the PR is rejected.
-2. **The placeholder pair is `.intake/rank-01.png` (default/dark, 500 × 251)
-   and `.intake/rank-06-w.png` (hover/white, 500 × 251).** These are the
+2. **The placeholder pair is `.intake/rank-01-w.png` (default/white, 500 × 251)
+   and `.intake/rank-01.png` (hover/dark navy, 500 × 251).** These are the
    only two placeholder sources; both exist already in `.intake/` and are
-   version-controlled upstream from this amendment.
+   version-controlled upstream from this amendment. (Swapped in v3.1
+   per user direction 2026-11-03T21:10Z — previously rank-01 default +
+   rank-06-w hover.)
 3. **No `-s22` variants** are permitted at any point in the dataset,
    `.intake/`, or `packages/components-homepage/src/img/rankings/`. If a
    future task introduces size-tagged variants, that is a separate
    architecture change that requires a new HITL gate.
 4. **The same two PNGs are reused across all 7 cards** until designer
    artwork replaces them. All 7 `<slug>.png` files are byte-identical
-   copies of `.intake/rank-01.png`; all 7 `<slug>--hover.png` files are
-   byte-identical copies of `.intake/rank-06-w.png`. This is intentional
+   copies of `.intake/rank-01-w.png`; all 7 `<slug>--hover.png` files are
+   byte-identical copies of `.intake/rank-01.png`. This is intentional
    and acceptable per Q2 = C (dataset-wide uniform intrinsics) — the
    stack-equality invariant in §8 row 23 is satisfied by construction.
 5. **Intrinsic dimensions are locked at 500 × 251** for every placeholder
