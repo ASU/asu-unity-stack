@@ -97,4 +97,7 @@ export const storiesToTest = [
   "homepage-rankings-cards--stale-sync-before-nav",
   "homepage-rankings-cards--rapid-click-coalescing",
   "homepage-rankings-cards--sanitizer-contract",
+  // v3 amendment — new stories
+  "homepage-rankings-cards--forced-colors-outline-bbox",
+  "homepage-rankings-cards--intrinsics-flip",
 ];

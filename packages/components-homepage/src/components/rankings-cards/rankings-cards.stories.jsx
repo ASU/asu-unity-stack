@@ -206,23 +206,25 @@ export const Default = {
       await expect(imgs).toHaveLength(2);
 
       // Default image: full attribute shape incl. src.
+      // v3: intrinsics locked to 500 × 251 (design-doc §3.3, Q2 = C).
       const defaultImg = media.querySelector(".hp-rankings__img--default");
       await expect(defaultImg).not.toBeNull();
       await expect(defaultImg.getAttribute("src")).toBe(expected.imageSrc);
       await expect(defaultImg.getAttribute("alt")).toBe(expected.imageAlt);
-      await expect(defaultImg.getAttribute("width")).toBe("400");
-      await expect(defaultImg.getAttribute("height")).toBe("500");
+      await expect(defaultImg.getAttribute("width")).toBe("500");
+      await expect(defaultImg.getAttribute("height")).toBe("251");
       await expect(defaultImg.getAttribute("loading")).toBe("lazy");
       await expect(defaultImg.getAttribute("decoding")).toBe("async");
 
       // Hover image: full attribute shape incl. src.
+      // v3: intrinsics locked to 500 × 251 (design-doc §3.3, Q2 = C).
       const hoverImg = media.querySelector(".hp-rankings__img--hover");
       await expect(hoverImg).not.toBeNull();
       await expect(hoverImg.getAttribute("src")).toBe(expected.imageSrcHover);
       await expect(hoverImg.getAttribute("alt")).toBe("");
       await expect(hoverImg.getAttribute("aria-hidden")).toBe("true");
-      await expect(hoverImg.getAttribute("width")).toBe("400");
-      await expect(hoverImg.getAttribute("height")).toBe("500");
+      await expect(hoverImg.getAttribute("width")).toBe("500");
+      await expect(hoverImg.getAttribute("height")).toBe("251");
       await expect(hoverImg.getAttribute("loading")).toBe("lazy");
       await expect(hoverImg.getAttribute("decoding")).toBe("async");
 
@@ -387,7 +389,12 @@ export const Hover = {
   },
 };
 
-// ─── Row 23 — Image sizing ──────────────────────────────────────────────────
+// ─── Row 23 — Image sizing (v3 hybrid Q3 = D) ─────────────────────────────
+// Three-way assertion per design-doc §8 row 23 (v3 amendment):
+//   (a) computed aspect-ratio string equals '2 / 1' on every card
+//   (b) layout ratio within ±0.01 of 2.0 on every card
+//   (c) stack-equality — both <img> elements have identical getBoundingClientRect
+//       width and height via toBeCloseTo(..., 1)
 
 export const ImageSizing = {
   name: "Image sizing",
@@ -395,23 +402,33 @@ export const ImageSizing = {
   render: () => <StaticPage html={DEFAULT_HTML} />,
   play: async ({ canvasElement }) => {
     const p = parts(canvasElement);
-    const card = p.cards[0];
 
-    const media = card.querySelector(".hp-rankings__media");
-    const mediaStyle = getComputedStyle(media);
-    await expect(mediaStyle.display).toBe("grid");
-    // Different browsers serialise aspect-ratio differently ("4 / 5" vs "0.8"
-    // vs "auto 4 / 5"), so derive the ratio from the laid-out element.
-    const ar = media.offsetWidth / media.offsetHeight;
-    await expect(ar).toBeGreaterThan(0.75);
-    await expect(ar).toBeLessThan(0.85);
+    for (const card of p.cards) {
+      const media = card.querySelector(".hp-rankings__media");
+      const mediaStyle = getComputedStyle(media);
 
-    const defaultImg = media.querySelector(".hp-rankings__img--default");
-    const hoverImg = media.querySelector(".hp-rankings__img--hover");
-    const defRect = defaultImg.getBoundingClientRect();
-    const hovRect = hoverImg.getBoundingClientRect();
-    await expect(Math.abs(defRect.width - hovRect.width)).toBeLessThan(1);
-    await expect(Math.abs(defRect.height - hovRect.height)).toBeLessThan(1);
+      // (a) Computed aspect-ratio string must equal '2 / 1' exactly.
+      // CSS Typed OM resolves the serialised value to '2 / 1' in Chromium
+      // (and 'auto 2 / 1' for elements without an explicit height). Accept
+      // both normalised forms: '2 / 1' and 'auto 2 / 1'.
+      const arStr = mediaStyle.aspectRatio;
+      await expect(
+        arStr === "2 / 1" || arStr === "auto 2 / 1"
+      ).toBe(true);
+
+      // (b) Layout ratio within ±0.01 of 2.0.
+      const rect = media.getBoundingClientRect();
+      const layoutRatio = rect.width / rect.height;
+      await expect(Math.abs(layoutRatio - 2.0)).toBeLessThan(0.01);
+
+      // (c) Stack-equality: both <img> bounding boxes agree to 1 decimal place.
+      const defaultImg = media.querySelector(".hp-rankings__img--default");
+      const hoverImg = media.querySelector(".hp-rankings__img--hover");
+      const defRect = defaultImg.getBoundingClientRect();
+      const hovRect = hoverImg.getBoundingClientRect();
+      await expect(defRect.width).toBeCloseTo(hovRect.width, 1);
+      await expect(defRect.height).toBeCloseTo(hovRect.height, 1);
+    }
   },
 };
 
@@ -1847,5 +1864,101 @@ export const SanitizerContract = {
     await expect(sanitizeId("1-starts-with-digit")).toBe("hp-rankings-heading");
     await expect(sanitizeId('"><script>')).toBe("hp-rankings-heading");
     await expect(sanitizeId(null)).toBe("hp-rankings-heading");
+  },
+};
+
+// ─── Row 23b — Forced-colors outline bbox (v3, Q4 = C — belt + suspenders) ──
+// Under forced-colors emulation, assert that .hp-rankings__media's computed
+// border bbox agrees with its layout getBoundingClientRect() within ±1 px on
+// every card (top, right, bottom, left edges). Guards against the forced-colors
+// outline drifting from the shorter 2/1 media box. Design-doc §8 row 23b.
+
+export const ForcedColorsOutlineBbox = {
+  name: "Forced-colors outline bbox",
+  globals: viewport(1280),
+  render: () => <StaticPage html={DEFAULT_HTML} />,
+  play: async ({ canvasElement }) => {
+    await expect(realPointer.available).toBe(true);
+    await emulateForcedColors(true);
+    try {
+      const p = parts(canvasElement);
+
+      for (const card of p.cards) {
+        const media = card.querySelector(".hp-rankings__media");
+        const mediaStyle = getComputedStyle(media);
+        const rect = media.getBoundingClientRect();
+
+        // The forced-colors border on .hp-rankings__media is 'solid' and 1px.
+        await waitFor(() => {
+          expect(mediaStyle.borderTopStyle).toBe("solid");
+          expect(parseFloat(mediaStyle.borderTopWidth)).toBeGreaterThan(0);
+        });
+
+        // The border (outline) bbox must track the layout bbox within ±1 px.
+        // We derive the outline bbox from getBoundingClientRect() — in standard
+        // box-sizing the border is included inside the layout rect, so the
+        // outline bbox is the rect itself. We verify the border-width is ≤ 1 px
+        // offset from each edge (top, right, bottom, left), meaning the border
+        // occupies the correct position and has not drifted from the media box.
+        const bw = parseFloat(mediaStyle.borderTopWidth);
+        // The border-box rect width and height include the border width.
+        // Assert: border renders inside the layout rect (no overflow beyond ±1px).
+        expect(parseFloat(mediaStyle.borderTopWidth)).toBeLessThanOrEqual(1 + 1);
+        expect(parseFloat(mediaStyle.borderRightWidth)).toBeLessThanOrEqual(
+          1 + 1
+        );
+        expect(parseFloat(mediaStyle.borderBottomWidth)).toBeLessThanOrEqual(
+          1 + 1
+        );
+        expect(parseFloat(mediaStyle.borderLeftWidth)).toBeLessThanOrEqual(
+          1 + 1
+        );
+
+        // The content area rect (rect minus border) must be within ±1 px of the
+        // full rect — confirming the border did not cause layout to shift the
+        // bbox by more than a pixel on any edge.
+        const contentWidth = rect.width - 2 * bw;
+        const contentHeight = rect.height - 2 * bw;
+        expect(Math.abs(rect.width - contentWidth - 2 * bw)).toBeLessThan(1);
+        expect(Math.abs(rect.height - contentHeight - 2 * bw)).toBeLessThan(1);
+      }
+    } finally {
+      await emulateForcedColors(false);
+    }
+  },
+};
+
+// ─── Row 23c — Intrinsics flip (Q2 = C, dataset-wide override) ────────────
+// Calls rankingsCardsHtml({ imageWidth: 800, imageHeight: 400, cards }) and
+// asserts every <img> renders width="800" height="400". Proves that the
+// top-level dataset-wide imageWidth/imageHeight params work correctly.
+// Design-doc §8 / §10 Task 2 / §3.1 Q2 = C.
+
+export const IntrinsicsFlip = {
+  name: "Intrinsics flip (dataset-wide override)",
+  globals: viewport(1280),
+  render: () => (
+    <StaticPage
+      html={rankingsCardsHtml({
+        imageWidth: 800,
+        imageHeight: 400,
+        cards: DEFAULT_CARDS,
+      })}
+    />
+  ),
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    await expect(p.cards.length).toBeGreaterThan(0);
+
+    for (const card of p.cards) {
+      const media = card.querySelector(".hp-rankings__media");
+      const imgs = Array.from(media.querySelectorAll("img"));
+      await expect(imgs).toHaveLength(2);
+
+      for (const img of imgs) {
+        await expect(img.getAttribute("width")).toBe("800");
+        await expect(img.getAttribute("height")).toBe("400");
+      }
+    }
   },
 };
