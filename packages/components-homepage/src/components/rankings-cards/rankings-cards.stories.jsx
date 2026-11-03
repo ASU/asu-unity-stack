@@ -53,6 +53,10 @@ import {
 
 import { initRankingsCards } from "./rankings-cards.js";
 
+// Storybook-only styles: .rankings-storybook-backdrop simulates the dark hero
+// band that surrounds the rankings section in production.
+import "./_rankings-cards.storybook.scss";
+
 export default {
   title: "Homepage/Rankings cards",
   parameters: {
@@ -81,7 +85,7 @@ const viewport = width => ({
 /** Renders HTML string; no JS wiring — static-only stories. */
 const StaticPage = ({ html }) => (
   <div
-    style={{ background: "#002b5c", padding: "2rem" }}
+    className="rankings-storybook-backdrop"
     dangerouslySetInnerHTML={{ __html: html }}
   />
 );
@@ -96,7 +100,7 @@ const LivePage = ({ html }) => {
   return (
     <div
       ref={ref}
-      style={{ background: "#002b5c", padding: "2rem" }}
+      className="rankings-storybook-backdrop"
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );
@@ -354,7 +358,7 @@ const HoverPage = () => {
   return (
     <div
       ref={ref}
-      style={{ background: "#002b5c", padding: "2rem" }}
+      className="rankings-storybook-backdrop"
       dangerouslySetInnerHTML={{ __html: DEFAULT_HTML }}
     />
   );
@@ -628,10 +632,7 @@ export const NoAltDevWarning = {
   // The warning fires at `rankingsCardsHtml()` call time, not component mount
   // time, so we install the spy inside play() and call the helper directly.
   render: () => (
-    <div
-      data-no-alt-warning-host
-      style={{ background: "#002b5c", padding: "2rem" }}
-    >
+    <div data-no-alt-warning-host className="rankings-storybook-backdrop">
       <p style={{ color: "white" }}>
         Spy host — the test calls rankingsCardsHtml with imageAlt=&quot;&quot;
         and asserts console.warn was called.
@@ -977,7 +978,7 @@ const IdempotentPage = () => {
   return (
     <div
       ref={ref}
-      style={{ background: "#002b5c", padding: "2rem" }}
+      className="rankings-storybook-backdrop"
       dangerouslySetInnerHTML={{ __html: OVERFLOW_HTML }}
     />
   );
@@ -1078,7 +1079,7 @@ const TeardownPage = () => {
   return (
     <div
       ref={ref}
-      style={{ background: "#002b5c", padding: "2rem" }}
+      className="rankings-storybook-backdrop"
       dangerouslySetInnerHTML={{ __html: ONE_CARD_HTML }}
     />
   );
@@ -1174,7 +1175,7 @@ const TeardownPageCustomNext = () => {
   return (
     <div
       ref={ref}
-      style={{ background: "#002b5c", padding: "2rem" }}
+      className="rankings-storybook-backdrop"
       dangerouslySetInnerHTML={{ __html: OVERFLOW_HTML_B }}
     />
   );
@@ -1372,7 +1373,7 @@ export const NoGaAfterNavInteraction = {
 };
 
 const MultiSectionPage = () => (
-  <div style={{ background: "#002b5c", padding: "2rem" }}>
+  <div className="rankings-storybook-backdrop">
     <div
       dangerouslySetInnerHTML={{
         __html: rankingsCardsHtml({ headingId: "hp-rankings-copy-a" }),
@@ -1593,7 +1594,7 @@ const ResizeToOverflowPage = () => {
   return (
     <div
       ref={ref}
-      style={{ background: "#002b5c", padding: "2rem" }}
+      className="rankings-storybook-backdrop"
       dangerouslySetInnerHTML={{
         __html: rankingsCardsHtml({ cards: DEFAULT_CARDS.slice(0, 2) }),
       }}
@@ -1824,7 +1825,7 @@ export const SanitizerContract = {
   name: "Sanitizer helpers reject known-bad inputs",
   globals: viewport(1280),
   render: () => (
-    <div style={{ color: "white", background: "#002b5c", padding: "2rem" }}>
+    <div className="rankings-storybook-backdrop" style={{ color: "white" }}>
       Sanitizer contract — see play().
     </div>
   ),
@@ -2039,7 +2040,7 @@ export const InjectionImageWidthMalicious = {
     }
 
     // Prove the pwned marker was never installed.
-    // eslint-disable-next-line no-undef
+
     await expect(typeof globalThis.__pwned).toBe("undefined");
   },
 };

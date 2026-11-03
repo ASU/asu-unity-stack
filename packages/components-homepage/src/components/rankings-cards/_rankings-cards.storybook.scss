@@ -1,0 +1,17 @@
+// Storybook-only styles for the rankings-cards stories.
+// This file is imported ONLY from rankings-cards.stories.jsx and must NOT be
+// included in the production bundle.
+//
+// Token note: ASU dark navy (rgb(0, 43, 92)) is not defined in the Unity token
+// system (_custom-asu-variables.scss has no navy/dark-hero token as of
+// 2026-11-03).  It is used here as a Storybook fixture to simulate the dark
+// hero band that wraps the rankings section in production (the component itself
+// uses `background: transparent`).  Once a UDS navy token is added, replace
+// the rgb() value below and reference the token.
+// Ref: design-doc v3 §4 (Q4 = transparent section).
+
+.rankings-storybook-backdrop {
+  // storybook-only: ASU dark navy, not in UDS tokens (see note above)
+  background: rgb(0, 43, 92);
+  padding: 2rem;
+}

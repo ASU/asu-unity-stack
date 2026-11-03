@@ -273,8 +273,16 @@ export const rankingsCardsHtml = ({
   // A non-integer or string value could escape the attribute and inject HTML.
   // validateIntrinsicDimension() accepts only finite positive safe integers;
   // anything else falls back to the default with a DEV warning.
-  const safeImageWidth = validateIntrinsicDimension(imageWidth, 500, "imageWidth");
-  const safeImageHeight = validateIntrinsicDimension(imageHeight, 251, "imageHeight");
+  const safeImageWidth = validateIntrinsicDimension(
+    imageWidth,
+    500,
+    "imageWidth"
+  );
+  const safeImageHeight = validateIntrinsicDimension(
+    imageHeight,
+    251,
+    "imageHeight"
+  );
 
   // ── Content-model validation (DEV warnings, never fabricate content) ──────
   let safeCards;
