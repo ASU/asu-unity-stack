@@ -113,6 +113,36 @@ export const sanitizeId = (id, fallback = "hp-rankings-heading") => {
   return /^[A-Za-z][\w-]*$/.test(id) ? id : fallback;
 };
 
+/**
+ * Validates an intrinsic image dimension (width or height) at the template
+ * boundary.  Only finite, positive, integer, safe integers are accepted.
+ * Any other value falls back to the supplied default and emits a DEV warning.
+ *
+ * Accepted:   positive, whole-number, safe integers  (e.g. 500, 800, 1)
+ * Rejected:   0, negatives, fractions, NaN, non-finite, non-safe, non-numbers
+ *
+ * @param {unknown} value   - Caller-supplied candidate value.
+ * @param {number}  def     - Fallback default (must itself be a valid dimension).
+ * @param {string}  name    - Param name used in the DEV warning.
+ * @returns {number}        - A validated, finite positive safe integer.
+ */
+export const validateIntrinsicDimension = (value, def, name) => {
+  if (
+    typeof value === "number" &&
+    Number.isFinite(value) &&
+    Number.isInteger(value) &&
+    Number.isSafeInteger(value) &&
+    value > 0
+  ) {
+    return value;
+  }
+  warnDev(
+    `rankingsCardsHtml: '${name}' must be a finite positive safe integer; received ${JSON.stringify(value)}. ` +
+      `Falling back to ${def}.`
+  );
+  return def;
+};
+
 // ─── Default 7-card dataset ───────────────────────────────────────────────────
 // Mirrors the Figma sample (design-doc §3.1 and §3.2). Real alt text, slugs, and
 // hrefs will be confirmed from the Jira AC before merge.
@@ -238,6 +268,14 @@ export const rankingsCardsHtml = ({
   imageWidth = 500,
   imageHeight = 251,
 } = {}) => {
+  // ── Intrinsic dimension validation (design-doc v3 §3.1; P1-1 security fix) ──
+  // Both params are interpolated directly into HTML width/height attributes.
+  // A non-integer or string value could escape the attribute and inject HTML.
+  // validateIntrinsicDimension() accepts only finite positive safe integers;
+  // anything else falls back to the default with a DEV warning.
+  const safeImageWidth = validateIntrinsicDimension(imageWidth, 500, "imageWidth");
+  const safeImageHeight = validateIntrinsicDimension(imageHeight, 251, "imageHeight");
+
   // ── Content-model validation (DEV warnings, never fabricate content) ──────
   let safeCards;
   if (!Array.isArray(cards)) {
@@ -317,7 +355,7 @@ export const rankingsCardsHtml = ({
         ` alt="${escapeHtml(resolvedAlt)}"` +
         // Dataset-wide intrinsic dimensions (design-doc v3 §3.1 Q2 = C; default 500 × 251).
         // TODO: confirm with design — intrinsic dimensions from Figma node 13467:58610 (design-doc §11.2).
-        ` width="${imageWidth}" height="${imageHeight}"` +
+        ` width="${safeImageWidth}" height="${safeImageHeight}"` +
         // TODO: confirm with design — all images lazy-loaded (design-doc §11.2); revisit if homepage places rankings above the fold.
         ` loading="lazy" decoding="async">` +
         // Hover image: decorative colour variant — alt="" + aria-hidden so SR does NOT double-announce.
@@ -327,7 +365,7 @@ export const rankingsCardsHtml = ({
         ` alt="" aria-hidden="true"` +
         // Dataset-wide intrinsic dimensions (hover img) — same pair as default (design-doc v3 §3.1 Q2 = C).
         // TODO: confirm with design — intrinsic dimensions (hover img) locked at 500 × 251 (§11.2).
-        ` width="${imageWidth}" height="${imageHeight}"` +
+        ` width="${safeImageWidth}" height="${safeImageHeight}"` +
         // TODO: confirm with design — all images lazy-loaded (design-doc §11.2).
         ` loading="lazy" decoding="async">` +
         `</div>` +
