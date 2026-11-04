@@ -56,4 +56,11 @@ export const storiesToTest = [
   "homepage-reimagine-entrance--entrance-css-gate",
   // WWWCMS-235: quick-links a11y story (on-white backdrop, WCAG 2.1 AA via Siteimprove Alfa)
   "homepage-quick-links--accessibility-plain",
+  // WWWCMS-236: stories grid (rest, hover, no script, and the tablet, phone and large layouts)
+  "homepage-stories-grid--default",
+  "homepage-stories-grid--hover",
+  "homepage-stories-grid--no-script",
+  "homepage-stories-grid--tablet-768",
+  "homepage-stories-grid--phone-393",
+  "homepage-stories-grid--large-1920",
 ];
