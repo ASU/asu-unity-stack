@@ -28,11 +28,14 @@ export default {
     getAbsolutePath("@storybook/addon-a11y"),
     getAbsolutePath("@storybook/addon-vitest"),
   ],
-  // Serve the art at /img so stories use the production-relative `img/<file>` paths.
+  // Serve the art at /img so stories use the production-relative `img/<file>` paths. The stories grid's
+  // sample photos (not part of dist/) are served at /story-photos (a path under /img is not
+  // reachable in the dev server).
   // Serve the installed FA 5.15.4 package tree at /fontawesome so preview-head.html
   // can load /fontawesome/css/all.min.css as a same-origin request (no CDN).
   staticDirs: [
     { from: "../src/img", to: "/img" },
+    { from: "../src/components/stories-grid/photos", to: "/story-photos" },
     { from: fontAwesomeDir, to: "/fontawesome" },
   ],
   framework: {
