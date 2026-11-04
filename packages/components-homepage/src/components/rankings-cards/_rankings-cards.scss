@@ -42,6 +42,8 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-padding-inline: 0;
+  padding: 0; // Resets Bootstrap reboot ul { padding-left: 2rem }; ensures scrollLeft settles at 0 at start (no 32px offset).
+  margin: 0; // Also reset margin from reboot ul { margin-bottom: 1rem }.
   // Hide the native scrollbar (visual noise); keyboard model does not rely on it.
   scrollbar-width: none;
 
@@ -59,16 +61,17 @@
 
 .hp-rankings__card {
   flex: 0 0 auto;
-  width: 18rem; // 288px placeholder. TODO: confirm with design — card width from Figma node 13467:58610.
+  width: 16.25rem; // 260px. Aligned with prototype visual.
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  background: transparent; // Q4: transparent by default, dark hero bleeds through.
+  background: rgba(255, 255, 255, var(--rkGlass, 0.08)); // Glass morphism effect.
+  backdrop-filter: blur(8px); // Blur effect behind card.
+  box-shadow: inset 0 0 0 1px #fff, 0 2px 12px rgba(0, 0, 0, 0.32); // Inner bright edge + outer shadow.
   color: $uds-color-base-white;
-  // Q4: white outline. TODO: confirm with design — card border color (may be a near-white Figma variable).
-  // TODO: confirm with design — card border weight (locked placeholder 1px).
-  border: 1px solid $uds-color-base-white;
-  border-radius: 0; // TODO: confirm with design — screenshots look square-cornered.
+  border: none; // Glass morphism uses box-shadow for the inset edge instead.
+  border-radius: 4px; // Aligned with prototype visual.
+  overflow: hidden; // Clip footer background to card's rounded corners.
 }
 
 // ── Media box (image stack, CSS grid overlay) ─────────────────────────────────
@@ -81,6 +84,7 @@
   aspect-ratio: 2/1; // Locked v3 per Q1 = A — every breakpoint. Mobile media box: 288 × 144. See design-doc v3 §3.1.
   background: transparent;
   overflow: hidden; // belt-and-braces for off-brand PNG bleeds.
+  padding: 16px; // Design spec: 16px padding on all sides inside the card.
 }
 
 .hp-rankings__img {
@@ -94,20 +98,45 @@
 
 .hp-rankings__img--default {
   opacity: 1;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: opacity 150ms ease; // Hover opacity transition duration (locked 150ms).
+  }
 }
 
 .hp-rankings__img--hover {
   opacity: 0;
 
   @media (prefers-reduced-motion: no-preference) {
-    transition: opacity 150ms ease; // TODO: confirm with design — hover opacity transition duration (locked placeholder 150ms).
+    transition: opacity 150ms ease; // Hover opacity transition duration (locked 150ms).
   }
 }
 
 // ── Card footer ───────────────────────────────────────────────────────────────
 
 .hp-rankings__card-footer {
-  padding: $uds-size-spacing-2; // TODO: confirm with design — attribution footer padding.
+  flex: 0 0 auto; // Natural height, no stretching.
+  background: rgba(255, 255, 255, 0.70);
+  display: flex;
+  align-items: center;
+  padding: $uds-size-spacing-1 $uds-size-spacing-2; // 4px vertical, 8px horizontal.
+}
+
+// ── Attribution link ──────────────────────────────────────────────────────────
+
+.hp-rankings__attribution {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px; // Tightened spacing between text and icon.
+  color: $asu-gray-1; // Default: black text on semi-white background.
+  text-decoration: underline;
+  padding: 0; // Removed padding to align with footer padding.
+}
+
+.hp-rankings__attribution-icon {
+  height: 1em;
+  width: auto;
+  vertical-align: -0.125em;
 }
 
 // ── Hover state (class flip — colour + image swap) ────────────────────────────
@@ -120,10 +149,7 @@
     background: $uds-color-base-white;
     color: $asu-gray-1;
     border-color: $uds-color-base-white;
-  }
-
-  .hp-rankings__card:hover .hp-rankings__attribution {
-    color: $uds-color-brand-maroon;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.32); // Keep outer shadow, remove inset edge on hover.
   }
 
   .hp-rankings__card:hover .hp-rankings__img--default {
@@ -133,6 +159,32 @@
   .hp-rankings__card:hover .hp-rankings__img--hover {
     opacity: 1;
   }
+
+  // Attribution link color only changes on link hover, not card hover.
+  .hp-rankings__attribution:hover {
+    color: $uds-color-brand-maroon;
+  }
+}
+
+// Keyboard focus should also trigger the hover state (design spec: swap on hover OR focus).
+.hp-rankings__card:focus-within {
+  background: $uds-color-base-white;
+  color: $asu-gray-1;
+  border-color: $uds-color-base-white;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.32); // Keep outer shadow, remove inset edge on focus.
+}
+
+.hp-rankings__card:focus-within .hp-rankings__img--default {
+  opacity: 0;
+}
+
+.hp-rankings__card:focus-within .hp-rankings__img--hover {
+  opacity: 1;
+}
+
+// Attribution link color changes on focus too.
+.hp-rankings__attribution:focus-visible {
+  color: $uds-color-brand-maroon;
 }
 
 // Data-attribute mirror for Storybook (bypasses (hover:hover) media gate).
@@ -140,10 +192,7 @@
   background: $uds-color-base-white;
   color: $asu-gray-1;
   border-color: $uds-color-base-white;
-}
-
-.hp-rankings__card[data-rankings-hover] .hp-rankings__attribution {
-  color: $uds-color-brand-maroon;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.32); // Keep outer shadow, remove inset edge in Storybook mirror.
 }
 
 .hp-rankings__card[data-rankings-hover] .hp-rankings__img--default {
@@ -154,20 +203,9 @@
   opacity: 1;
 }
 
-// ── Attribution link ──────────────────────────────────────────────────────────
-
-.hp-rankings__attribution {
-  display: inline-flex;
-  align-items: center;
-  gap: $uds-size-spacing-half;
-  color: $uds-color-base-white; // default: white on transparent.
-  text-decoration: underline;
-}
-
-.hp-rankings__attribution-icon {
-  height: 1em;
-  width: auto;
-  vertical-align: -0.125em;
+// Attribution link color in Storybook hover mirror.
+.hp-rankings__card[data-rankings-hover] .hp-rankings__attribution {
+  color: $uds-color-brand-maroon;
 }
 
 // ── Controls row (nav + see-all) ──────────────────────────────────────────────
@@ -209,8 +247,7 @@
 
 .hp-rankings__nav-btn.is-disabled,
 .hp-rankings__nav-btn[aria-disabled="true"] {
-  background: $asu-gray-3; // muted (matches screenshot "prev at start").
-  color: $uds-color-base-white;
+  opacity: 0.5; // Disabled state uses opacity, not color change.
   cursor: not-allowed;
 }
 
@@ -236,15 +273,23 @@
 }
 
 // ── Focus ring (reused from the package) ─────────────────────────────────────
+// Pattern (from video-control): suppress false :focus ring after pointer tap,
+// and use :focus-visible with !important for forced-colors support.
+
+.hp-rankings__attribution:focus:not(:focus-visible),
+.hp-rankings__nav-btn:focus:not(:focus-visible),
+.hp-rankings__see-all:focus:not(:focus-visible) {
+  box-shadow: none !important; // Suppress the tap ring from theme's button:focus rule.
+}
 
 .hp-rankings__attribution:focus-visible,
 .hp-rankings__nav-btn:focus-visible,
 .hp-rankings__see-all:focus-visible {
   // transparent outline catches forced-colors mode (box-shadow is stripped by UA).
-  outline: 2px solid transparent;
+  outline: 2px solid transparent !important;
   box-shadow:
     var(--hp-focus-inner),
-    var(--hp-focus-outer);
+    var(--hp-focus-outer) !important;
 }
 
 // ── Reduced motion ────────────────────────────────────────────────────────────
@@ -259,9 +304,11 @@
 
 @media (forced-colors: active) {
   .hp-rankings__card {
-    border: 1px solid CanvasText;
     background: Canvas; // ensures text readability in high-contrast mode.
     color: CanvasText;
+    border: 1px solid CanvasText; // Inset edge visible in high-contrast.
+    box-shadow: inset 0 0 0 1px CanvasText, 0 2px 8px;
+    backdrop-filter: none; // Disable blur in forced-colors mode.
   }
 
   .hp-rankings__media {
@@ -276,5 +323,6 @@
 
   .hp-rankings__nav-btn.is-disabled {
     color: GrayText;
+    opacity: 1; // Forced-colors doesn't support opacity; use explicit GrayText color instead.
   }
 }

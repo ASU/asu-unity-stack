@@ -252,19 +252,10 @@ export function initRankingsCards(root = document) {
 
     // ── Nav-state sync (scroll-position-driven) ───────────────────────────
     //
-    // Uses a dynamic tolerance of half a card-step for atStart/atEnd. The
-    // first-render markup can carry a small scrollLeft wobble (observed up to
-    // ~32px) caused by scroll-snap-type combined with the initial layout
-    // pass; using an absolute 1px threshold would incorrectly report the
-    // leading edge as "not at start" at mount time. Half a card step is the
-    // smallest tolerance that stays correct when the user has advanced by one
-    // card (scrollLeft ≈ cardStep).
-    const edgeTolerance = () => {
-      const card = track.querySelector(CARD_SEL);
-      if (!card) return 1;
-      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
-      return Math.max(1, (card.offsetWidth + gap) / 2);
-    };
+    // Uses a small tolerance for atStart/atEnd. With padding/margin reset on
+    // the track, scrollLeft should settle at 0 at the start. A 1px tolerance
+    // is sufficient to guard against any residual wobble from scroll-snap-type.
+    const edgeTolerance = () => 1;
 
     const syncNavState = () => {
       const maxScroll = track.scrollWidth - track.clientWidth;
@@ -283,18 +274,17 @@ export function initRankingsCards(root = document) {
       applyDisabled(next, atEnd, mutationLog);
     };
 
-    // ── Rapid-click coalescing ───────────────────────────────────────────
+    // ── Rapid-click accumulation ──────────────────────────────────────────
     //
-    // `pendingScroll` is set when a `scrollBy` is issued and cleared when:
-    //   (a) `scrollend` fires (primary path — supported in all evergreen UAs), OR
-    //   (b) a scroll-activity-driven idle debounce fires — the fallback
-    //       resets its 150 ms timer on every `scroll` event so the lock
-    //       survives long smooth scrolls on slow devices; it only elapses
-    //       when the track has been quiescent for 150 ms without a `scrollend`.
+    // Each nav click accumulates a pending scroll target. While a scroll is
+    // in flight, new clicks add steps to the target rather than being dropped.
+    // When the scroll settles, we scroll to the final accumulated target.
     //
-    // This replaces the previous fixed 300 ms timeout which could expire while
-    // the track was still scrolling (reviewer P2 finding, cycle-3 fix).
+    // `pendingScroll` is true when a smooth-scroll animation is active.
+    // `pendingTarget` is the accumulated left position to scroll to (null if idle).
+    // The idle-debounce timer guards against long smooth scrolls on slow devices.
     let pendingScroll = false;
+    let pendingTarget = null;
     let pendingIdleTimer = null;
     const SCROLL_IDLE_MS = 150; // idle window after last `scroll` event
 
@@ -304,16 +294,36 @@ export function initRankingsCards(root = document) {
         pendingIdleTimer = null;
         if (pendingScroll) {
           pendingScroll = false;
+          // Fire the accumulated target if any.
+          if (pendingTarget !== null) {
+            const target = pendingTarget;
+            pendingTarget = null;
+            track.scrollLeft = target;
+          }
           syncNavState();
         }
       }, SCROLL_IDLE_MS);
     };
 
-    const beginPending = () => {
-      pendingScroll = true;
+    const beginPending = delta => {
+      // Calculate the new target by accumulating the delta.
+      const newTarget = Math.max(
+        0,
+        Math.min(
+          track.scrollWidth - track.clientWidth,
+          track.scrollLeft + delta
+        )
+      );
+      pendingTarget = newTarget;
+      if (!pendingScroll) {
+        // First click in a burst: issue the scroll and lock.
+        pendingScroll = true;
+        track.scrollBy({
+          left: delta,
+          behavior: motionBehavior(reducedMQ),
+        });
+      }
       // Arm the idle timer as a fallback for browsers without `scrollend`.
-      // The `scroll` event listener resets this timer on every tick,
-      // keeping the lock alive for as long as the track is still scrolling.
       resetIdleTimer();
     };
     const endPending = () => {
@@ -321,6 +331,12 @@ export function initRankingsCards(root = document) {
       if (pendingIdleTimer) {
         win.clearTimeout(pendingIdleTimer);
         pendingIdleTimer = null;
+      }
+      // Fire any pending target before clearing.
+      if (pendingTarget !== null) {
+        const target = pendingTarget;
+        pendingTarget = null;
+        track.scrollLeft = target;
       }
     };
 
@@ -337,16 +353,7 @@ export function initRankingsCards(root = document) {
         event.preventDefault();
         return; // defence-in-depth
       }
-      if (pendingScroll) {
-        // Coalesce rapid clicks during an active scroll (design choice,
-        // documented in JSDoc). Drops subsequent clicks until scroll settles.
-        return;
-      }
-      beginPending();
-      track.scrollBy({
-        left: -getCardStep(),
-        behavior: motionBehavior(reducedMQ),
-      });
+      beginPending(-getCardStep());
     };
     const onNextClick = event => {
       syncNavState(); // reconcile before any guard check (§5.2 preflight)
@@ -354,12 +361,7 @@ export function initRankingsCards(root = document) {
         event.preventDefault();
         return;
       }
-      if (pendingScroll) return;
-      beginPending();
-      track.scrollBy({
-        left: getCardStep(),
-        behavior: motionBehavior(reducedMQ),
-      });
+      beginPending(getCardStep());
     };
     prev.addEventListener("click", onPrevClick);
     next.addEventListener("click", onNextClick);

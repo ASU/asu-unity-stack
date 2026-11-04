@@ -28,13 +28,13 @@ export const emulateForcedColors = async on => {
 const ARROW_RIGHT_PATH =
   "M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z";
 
-// chevron-left path
+// chevron-left path (FA6 Free 6.4.2 — viewBox 0 0 320 512, CC BY 4.0)
 const CHEVRON_LEFT_PATH =
-  "M257.5 445.1l-22.2 22.2c-9.4 9.4-24.6 9.4-33.9 0L7 273c-9.4-9.4-9.4-24.6 0-33.9L201.4 44.7c9.4-9.4 24.6-9.4 33.9 0l22.2 22.2c9.5 9.5 9.3 25-.4 34.3L136.6 216H424c13.3 0 24 10.7 24 24v32c0 13.3-10.7 24-24 24H136.6l120.5 114.8c9.8 9.3 10 24.8.4 34.3z";
+  "M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z";
 
-// chevron-right path
+// chevron-right path (FA6 Free 6.4.2 — viewBox 0 0 320 512, CC BY 4.0)
 const CHEVRON_RIGHT_PATH =
-  "M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z";
+  "M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z";
 
 // ─── Input sanitization ──────────────────────────────────────────────────────
 // The template interpolates untrusted strings into HTML attributes and text
@@ -438,14 +438,14 @@ export const rankingsCardsHtml = ({
     // Disabled state is the triplet: .is-disabled + aria-disabled="true" + tabindex="-1" (never native `disabled`).
     `<button type="button" class="hp-rankings__nav-btn hp-rankings__nav-btn--prev is-disabled"` +
     ` aria-disabled="true" tabindex="-1" aria-label="Previous ranking">` +
-    `<svg class="hp-rankings__nav-icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false">` +
+    `<svg class="hp-rankings__nav-icon" viewBox="0 0 320 512" aria-hidden="true" focusable="false">` +
     `<path fill="currentColor" d="${CHEVRON_LEFT_PATH}"/>` +
     `</svg>` +
     `</button>` +
     // Next button: enabled at first render unless zero cards.
     `<button type="button"${nextDisabledMarkup}` +
     ` aria-label="Next ranking">` +
-    `<svg class="hp-rankings__nav-icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false">` +
+    `<svg class="hp-rankings__nav-icon" viewBox="0 0 320 512" aria-hidden="true" focusable="false">` +
     `<path fill="currentColor" d="${CHEVRON_RIGHT_PATH}"/>` +
     `</svg>` +
     `</button>` +

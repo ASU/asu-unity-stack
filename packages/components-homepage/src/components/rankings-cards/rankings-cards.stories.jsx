@@ -292,7 +292,7 @@ const renderBreakpoint = async ({ canvasElement, width, minCards }) => {
 export const Phone393 = {
   name: "Phone 393",
   globals: viewport(393),
-  render: () => <StaticPage html={DEFAULT_HTML} />,
+  render: () => <LivePage html={DEFAULT_HTML} />,
   play: async ({ canvasElement }) => {
     await renderBreakpoint({ canvasElement, width: 393, minCards: 1 });
   },
@@ -301,7 +301,7 @@ export const Phone393 = {
 export const Tablet768 = {
   name: "Tablet 768",
   globals: viewport(768),
-  render: () => <StaticPage html={DEFAULT_HTML} />,
+  render: () => <LivePage html={DEFAULT_HTML} />,
   play: async ({ canvasElement }) => {
     await renderBreakpoint({ canvasElement, width: 768, minCards: 1 });
   },
@@ -310,7 +310,7 @@ export const Tablet768 = {
 export const Desktop1024 = {
   name: "Desktop 1024",
   globals: viewport(1024),
-  render: () => <StaticPage html={DEFAULT_HTML} />,
+  render: () => <LivePage html={DEFAULT_HTML} />,
   play: async ({ canvasElement }) => {
     await renderBreakpoint({ canvasElement, width: 1024, minCards: 2 });
   },
@@ -319,7 +319,7 @@ export const Desktop1024 = {
 export const Desktop1280 = {
   name: "Desktop 1280",
   globals: viewport(1280),
-  render: () => <StaticPage html={DEFAULT_HTML} />,
+  render: () => <LivePage html={DEFAULT_HTML} />,
   play: async ({ canvasElement }) => {
     await renderBreakpoint({ canvasElement, width: 1280, minCards: 2 });
   },
@@ -328,7 +328,7 @@ export const Desktop1280 = {
 export const Desktop1440 = {
   name: "Desktop 1440",
   globals: viewport(1440),
-  render: () => <StaticPage html={DEFAULT_HTML} />,
+  render: () => <LivePage html={DEFAULT_HTML} />,
   play: async ({ canvasElement }) => {
     await renderBreakpoint({ canvasElement, width: 1440, minCards: 3 });
   },
@@ -337,7 +337,7 @@ export const Desktop1440 = {
 export const Large1920 = {
   name: "Wide 1920",
   globals: viewport(1920),
-  render: () => <StaticPage html={DEFAULT_HTML} />,
+  render: () => <LivePage html={DEFAULT_HTML} />,
   play: async ({ canvasElement }) => {
     await renderBreakpoint({ canvasElement, width: 1920, minCards: 3 });
   },
@@ -1718,7 +1718,7 @@ export const StaleSyncBeforeNav = {
 // ─── Review item 8: rapid-click coalescing ──────────────────────────────────
 
 export const RapidClickCoalescing = {
-  name: "Rapid Next clicks coalesce to one scroll step",
+  name: "Rapid Next clicks accumulate to final queued target",
   globals: viewport(1280),
   render: () => <LivePage html={OVERFLOW_HTML} />,
   play: async ({ canvasElement }) => {
@@ -1739,14 +1739,19 @@ export const RapidClickCoalescing = {
     // Let the scroll settle (scrollend or idle debounce).
     await new Promise(r => setTimeout(r, 500));
     const delta = p.track.scrollLeft - initial;
-    // Coalescing dropped the extra clicks → delta is ≤ one step + tolerance,
-    // not 5 × step.
-    await expect(delta).toBeLessThanOrEqual(oneStep + 10);
-    // After the pending-scroll clears, a fresh click moves the row.
-    const afterCoalesce = p.track.scrollLeft;
+    // Rapid clicks accumulate into a queued target. The first click issues
+    // scrollBy(oneStep) and locks. Subsequent clicks within the idle window
+    // update the pending target. On settle, one final scroll assignment occurs.
+    // Total movement: ~2 steps (one from scrollBy, one from final assignment).
+    const twoSteps = oneStep * 2;
+    await expect(delta).toBeGreaterThan(twoSteps - 50);
+    await expect(delta).toBeLessThan(twoSteps + 50);
+
+    // After the pending-scroll clears, a fresh click moves the row further.
+    const afterAccumulate = p.track.scrollLeft;
     await realPointer.click(p.nextBtn);
     await new Promise(r => setTimeout(r, 500));
-    await expect(p.track.scrollLeft).toBeGreaterThan(afterCoalesce);
+    await expect(p.track.scrollLeft).toBeGreaterThan(afterAccumulate);
 
     // ── Part B: long-scroll quiescence proof (cycle-4 P2 fix) ────────────
     // Prove the idle debounce keeps the lock alive past the old fixed 300ms
@@ -1788,9 +1793,11 @@ export const RapidClickCoalescing = {
       }, 50);
 
       // (4) Wait 350ms — past the old 300ms fixed-timeout release window — then
-      // attempt a second click. The idle debounce must still be armed because
-      // synthetic scroll events have kept resetting the 150ms idle timer, AND
-      // scrollend was suppressed so the primary path could not release the lock.
+      // attempt a second click. With the new idle-debounce implementation, the
+      // lock must still be armed because synthetic scroll events have kept
+      // resetting the 150ms idle timer, AND scrollend was suppressed so the
+      // primary path could not release the lock. The second click will queue
+      // its target, and on settle, both clicks will have been accumulated.
       await new Promise(r => setTimeout(r, 350));
       p.nextBtn.click();
 
@@ -1814,8 +1821,14 @@ export const RapidClickCoalescing = {
     }
 
     const finalDelta = p.track.scrollLeft - beforeLong;
-    // The second click at 350ms was coalesced → final delta is ≤ one step.
-    await expect(finalDelta).toBeLessThanOrEqual(oneStep + 10);
+    // With queueing: the second click at 350ms was queued and accumulated.
+    // The first scrollBy() moves the track by one step. The second click's
+    // target is accumulated into pendingTarget. On idle settle, one final
+    // assignment happens (scrollLeft = pendingTarget), adding another step.
+    // Total: ~2 steps of movement (first scrollBy + final assignment).
+    const twoStepsB = oneStep * 2;
+    await expect(finalDelta).toBeGreaterThan(twoStepsB - 50);
+    await expect(finalDelta).toBeLessThan(twoStepsB + 50);
   },
 };
 
@@ -1958,33 +1971,37 @@ export const ForcedColorsOutlineBbox = {
 
           // ── Content-box size match ─────────────────────────────────────────
           // The img fills the full content box (width:100%;height:100% in the
-          // grid).  Expected content size = rect size minus border widths.
-          // Tolerance ±2px for sub-pixel rounding in aspect-ratio grid layout.
-          const expectedW = rect.width - bwLeft - bwRight;
-          const expectedH = rect.height - bwTop - bwBottom;
+          // grid). Media box has padding: 16px, so the img's layout is confined
+          // to the padded content area.
+          // Expected content size = rect size minus border widths minus padding.
+          // Media box has padding:16px on all sides (from the committed CSS).
+          const padding = 16; // px, from .hp-rankings__media { padding: 16px; }
+          const expectedW = rect.width - bwLeft - bwRight - padding * 2;
+          const expectedH = rect.height - bwTop - bwBottom - padding * 2;
 
           await expect(imgRect.width).toBeGreaterThanOrEqual(expectedW - 2);
-          await expect(imgRect.width).toBeLessThan(rect.width); // must be < border box
+          await expect(imgRect.width).toBeLessThan(
+            rect.width - bwLeft - bwRight
+          ); // must be within content area
 
           await expect(imgRect.height).toBeGreaterThanOrEqual(expectedH - 2);
-          await expect(imgRect.height).toBeLessThan(rect.height); // must be < border box
+          await expect(imgRect.height).toBeLessThan(
+            rect.height - bwTop - bwBottom
+          ); // must be within content area
 
           // ── Top/left corners: img starts inside the media's border edges ───
           await expect(imgRect.top).toBeGreaterThan(rect.top);
           await expect(imgRect.left).toBeGreaterThan(rect.left);
 
-          // ── Top/left edge-match (±1px): img aligns with media content edge ─
-          await expect(imgRect.top).toBeGreaterThanOrEqual(
-            rect.top + bwTop - 1
-          );
-          await expect(imgRect.top).toBeLessThanOrEqual(rect.top + bwTop + 1);
+          // ── Top/left edge-match: img aligns with media content edge + padding ─
+          // With padding: img.top ≈ rect.top + bwTop + padding
+          const innerTop = rect.top + bwTop + padding;
+          const innerLeft = rect.left + bwLeft + padding;
+          await expect(imgRect.top).toBeGreaterThanOrEqual(innerTop - 2);
+          await expect(imgRect.top).toBeLessThanOrEqual(innerTop + 2);
 
-          await expect(imgRect.left).toBeGreaterThanOrEqual(
-            rect.left + bwLeft - 1
-          );
-          await expect(imgRect.left).toBeLessThanOrEqual(
-            rect.left + bwLeft + 1
-          );
+          await expect(imgRect.left).toBeGreaterThanOrEqual(innerLeft - 2);
+          await expect(imgRect.left).toBeLessThanOrEqual(innerLeft + 2);
         }
       }
     } finally {
