@@ -112,8 +112,11 @@ const metrics = section => {
 const progressOf = grid =>
   parseFloat(grid.style.getPropertyValue("--hp-stories-progress"));
 
-const scrimStart = scrim =>
-  style(scrim).getPropertyValue("--hp-stories-scrim-start").trim();
+// The scrim is a full-height gradient scaled from the bottom: scaleY(k) starts it at (1 - k) of the card height.
+const scrimStart = scrim => {
+  const { d } = new DOMMatrixReadOnly(style(scrim).transform);
+  return `${Math.round((1 - d) * 1000) / 10}%`;
+};
 
 // Everything the markup contract fixes, with or without script.
 const expectContract = async p => {
@@ -358,7 +361,7 @@ export const FocusVisible = {
     // the ring is drawn above the photo (a pseudo-element), the theme's global ring is cancelled
     await expect(style(c.element, "::after").boxShadow).toBe(RING_SHADOW);
     await expect(style(c.element, "::after").zIndex).toBe("3");
-    await expect(style(c.element).boxShadow).toBe(LIFT_SHADOW);
+    await waitFor(() => expect(style(c.element).boxShadow).toBe(LIFT_SHADOW));
     await expect(style(c.element).outlineStyle).toBe("none");
     await expect(style(c.element, "::after").outlineColor).toBe(
       "rgba(0, 0, 0, 0)"
@@ -842,7 +845,7 @@ export const StylesheetContract = {
     const c = card(p, 0);
     // durations from the Figma hover spec and the ticket (0.4s height, 0.3s opacity, 0.25s chip); the easing is ours:
     // one decelerating curve for the whole reveal so it starts at once (the Material curve read as a lag)
-    const EASE = "cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+    const EASE = "cubic-bezier(0.33, 1, 0.68, 1)";
     await expect(style(c.wrap).transitionProperty).toBe("grid-template-rows");
     await expect(style(c.wrap).transitionDuration).toBe("0.4s");
     await expect(style(c.wrap).transitionTimingFunction).toBe(EASE);
@@ -853,9 +856,7 @@ export const StylesheetContract = {
       "background-color, color"
     );
     await expect(style(c.arrow).transitionDuration).toBe("0.25s, 0.25s");
-    await expect(style(c.scrim).transitionProperty).toBe(
-      "--hp-stories-scrim-start"
-    );
+    await expect(style(c.scrim).transitionProperty).toBe("transform");
     await expect(style(c.scrim).transitionDuration).toBe("0.4s");
     await expect(style(c.scrim).transitionTimingFunction).toBe(EASE);
     // containment keeps the width change inside the grid; the section is the size container
