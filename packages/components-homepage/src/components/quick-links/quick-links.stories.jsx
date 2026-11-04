@@ -48,6 +48,44 @@ const viewport = width => ({
 
 // ---- shared helpers ----
 
+// Mobile 2×2 contract: all four anchors share one width and one height, and each
+// icon + label is horizontally centered inside its anchor (±1px sub-pixel slack).
+const expectEvenMobileGrid = async p => {
+  const boxes = p.items.map(item => item.getBoundingClientRect());
+  const listBox = p.list.getBoundingClientRect();
+  const spread = values => Math.max(...values) - Math.min(...values);
+
+  // Equal widths and heights across all four items
+  await expect(spread(boxes.map(b => b.width))).toBeLessThanOrEqual(1);
+  await expect(spread(boxes.map(b => b.height))).toBeLessThanOrEqual(1);
+
+  // Items fill their grid columns: two columns + one gap span the list width
+  const gap = parseFloat(getComputedStyle(p.list).columnGap);
+  await expect(
+    Math.abs(boxes[0].width * 2 + gap - listBox.width)
+  ).toBeLessThanOrEqual(1);
+
+  // Icon and label centered horizontally within each anchor
+  const center = b => b.left + b.width / 2;
+  for (const [index, box] of boxes.entries()) {
+    const iconBox = p.icons[index].getBoundingClientRect();
+    const labelBox = p.labels[index].getBoundingClientRect();
+    await expect(Math.abs(center(iconBox) - center(box))).toBeLessThanOrEqual(
+      1
+    );
+    await expect(Math.abs(center(labelBox) - center(box))).toBeLessThanOrEqual(
+      1
+    );
+  }
+
+  // Equal padding on all four items
+  const paddings = p.items.map(item => {
+    const s = getComputedStyle(item);
+    return `${s.paddingTop} ${s.paddingRight} ${s.paddingBottom} ${s.paddingLeft}`;
+  });
+  await expect(new Set(paddings).size).toBe(1);
+};
+
 // Extracts the key DOM nodes from a rendered story.
 const parts = canvasElement => {
   const wrapper = canvasElement.querySelector(".hp-quick-links");
@@ -186,6 +224,9 @@ export const Default393 = {
     // WWWCMS-235 text-align fix: wrapped label lines must center on narrow viewports.
     const label = canvasElement.querySelector(".hp-quick-link__label");
     expect(getComputedStyle(label).textAlign).toBe("center");
+
+    // Even 2×2: equal width/height/padding, icon + label centered per item.
+    await expectEvenMobileGrid(p);
   },
 };
 
@@ -216,6 +257,9 @@ export const Default768 = {
     for (const label of p.labels) {
       await expect(getComputedStyle(label).fontSize).toBe("14px");
     }
+
+    // Even 2×2: equal width/height/padding, icon + label centered per item.
+    await expectEvenMobileGrid(p);
   },
 };
 

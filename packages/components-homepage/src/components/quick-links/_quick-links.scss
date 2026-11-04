@@ -199,11 +199,29 @@ $hp-quick-links-column-gap-max: $uds-size-spacing-12;
     padding-inline: $uds-size-spacing-3;
   }
 
+  // Even 2×2: the list spans the wrapper; minmax(0, 1fr) keeps both columns
+  // identical regardless of label length, and grid-auto-rows: 1fr makes both
+  // rows match the tallest item (e.g. a wrapped two-line label).
   .hp-quick-links__list {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 1fr;
+    width: 100%;
     column-gap: $uds-size-spacing-3;
     row-gap: $uds-size-spacing-3;
+  }
+
+  // Grid items stretch to the cell; flex lets the anchor fill it in both axes.
+  .hp-quick-links__item {
+    display: flex;
+  }
+
+  // Each anchor fills its cell so all four share one width, height, and padding
+  // (padding comes from the base .hp-quick-link rule). justify-content centers
+  // the icon/label stack vertically; align-items (base rule) centers it horizontally.
+  .hp-quick-link {
+    width: 100%;
+    justify-content: center;
   }
 
   // P2-1 (WWWCMS-235 visual-fix): the default rule uses `.hp-quick-link .hp-quick-link__icon`
