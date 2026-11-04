@@ -12,6 +12,11 @@ $hp-stories-header-break: 1080px; // The prototype switches to its compact heade
 // TODO: confirm with design - raw shadow, no UDS token.
 $hp-stories-lift: 0 2px 10px rgba(0, 0, 0, 0.32);
 
+// Easing for the hover reveal. It decelerates from the first frame, so the overlay starts rising at once; the
+// previous Material curve (0.4, 0, 0.2, 1) had moved only 9% of the way after 66ms, which read as a lag.
+// TODO: confirm with design - Figma gives the durations (0.4s, 0.3s), not an easing.
+$hp-stories-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
 // Scrim start: the share of the card height that stays untouched at rest (Figma: 50% in the 1280 grid instances); on hover and
 // focus it moves to 0 so the whole photo darkens behind the subhead. Registered so it can transition.
 @property --hp-stories-scrim-start {
@@ -437,19 +442,19 @@ $hp-stories-lift: 0 2px 10px rgba(0, 0, 0, 0.32);
 // Movement runs only for visitors without a reduced-motion preference; the end states are the same.
 @media (prefers-reduced-motion: no-preference) {
   .hp-stories__sub-wrap {
-    transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: grid-template-rows 0.4s $hp-stories-ease;
   }
 
   .hp-stories__sub {
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s $hp-stories-ease;
   }
 
   .hp-stories__title {
-    transition: margin-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: margin-bottom 0.4s $hp-stories-ease;
   }
 
   .hp-stories__scrim {
-    transition: --hp-stories-scrim-start 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: --hp-stories-scrim-start 0.4s $hp-stories-ease;
   }
 
   .hp-stories__arrow {

@@ -840,14 +840,15 @@ export const StylesheetContract = {
     await resizeViewport(1440, 900);
     const p = parts(canvasElement);
     const c = card(p, 0);
-    // timings from the Figma hover spec and the ticket (0.4s height, 0.3s opacity, 0.25s chip)
+    // durations from the Figma hover spec and the ticket (0.4s height, 0.3s opacity, 0.25s chip); the easing is ours:
+    // one decelerating curve for the whole reveal so it starts at once (the Material curve read as a lag)
+    const EASE = "cubic-bezier(0.25, 0.46, 0.45, 0.94)";
     await expect(style(c.wrap).transitionProperty).toBe("grid-template-rows");
     await expect(style(c.wrap).transitionDuration).toBe("0.4s");
-    await expect(style(c.wrap).transitionTimingFunction).toBe(
-      "cubic-bezier(0.4, 0, 0.2, 1)"
-    );
+    await expect(style(c.wrap).transitionTimingFunction).toBe(EASE);
     await expect(style(c.sub).transitionProperty).toBe("opacity");
     await expect(style(c.sub).transitionDuration).toBe("0.3s");
+    await expect(style(c.sub).transitionTimingFunction).toBe(EASE);
     await expect(style(c.arrow).transitionProperty).toBe(
       "background-color, color"
     );
@@ -856,6 +857,7 @@ export const StylesheetContract = {
       "--hp-stories-scrim-start"
     );
     await expect(style(c.scrim).transitionDuration).toBe("0.4s");
+    await expect(style(c.scrim).transitionTimingFunction).toBe(EASE);
     // containment keeps the width change inside the grid; the section is the size container
     await expect(style(p.grid).contain).toContain("layout");
     await expect(style(p.section).containerType).toBe("inline-size");
