@@ -11,6 +11,7 @@ import {
   quickLinksHtml,
   realKeyboard,
   safeHref,
+  SPANISH_HREF,
   SPANISH_LABEL,
 } from "./quick-links-helpers.jsx";
 
@@ -671,11 +672,11 @@ const HREF_CASES = [
     desc: "mailto:",
   },
   { href: "tel:+16029655555", expected: "tel:+16029655555", desc: "tel:" },
-  // Allowed: design-doc placeholder (round-trips)
+  // Allowed: Spanish link destination passes through unchanged
   {
-    href: "<spanish-url-placeholder>",
-    expected: "<spanish-url-placeholder>",
-    desc: "Spanish placeholder",
+    href: SPANISH_HREF,
+    expected: SPANISH_HREF,
+    desc: "Spanish link destination",
   },
   // Null/undefined → "#"
   { href: null, expected: "#", desc: "null" },
@@ -881,7 +882,21 @@ export const HtmlParity = {
       await expect(p.labels[index].textContent).toBe(label);
     }
 
+    // Icon link destinations, in normative order
+    const expectedHrefs = [
+      "https://asuonline.asu.edu",
+      "https://visit.asu.edu",
+      "https://admission.asu.edu/future-student-request",
+      "https://admission.asu.edu/apply",
+    ];
+    for (const [index, href] of expectedHrefs.entries()) {
+      await expect(p.items[index].getAttribute("href")).toBe(href);
+    }
+
     // Spanish link attributes
+    await expect(p.spanish.getAttribute("href")).toBe(
+      "https://www.asu.edu/about/spanish"
+    );
     await expect(p.spanish.getAttribute("lang")).toBe("es");
     await expect(p.spanish.getAttribute("hreflang")).toBe("es");
     await expect(p.spanish.textContent.trim()).toMatch(

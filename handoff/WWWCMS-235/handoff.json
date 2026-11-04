@@ -67,8 +67,7 @@
     "new_custom_property": "--hp-quick-link-glass: rgba($uds-color-base-white, 0.16)"
   },
   "open_questions": [
-    { "id": "A6", "subject": "destination URL of the Spanish link", "stage_a_fallback": "<spanish-url-placeholder>; Storybook arg accepts a real URL" },
-    { "id": "open-decision-6", "subject": "single source for shared CTA URLs (Apply, Visit, Request info)", "stage_a_fallback": "# fragment placeholders in Storybook args; real URLs land in Stage B config" },
+    { "id": "open-decision-6", "subject": "single source for shared CTA URLs (Apply, Visit, Request info)", "stage_a_fallback": "real URLs hard-coded in quickLinksHtml() defaults and markup.html; Stage B may still centralize them in config" },
     { "id": "wwwcms-230-focus-outer", "subject": "--hp-focus-outer: #00baff is a TODO inherited from WWWCMS-230", "stage_a_fallback": "reused as-is; not a quick-links problem" },
     { "id": "figma-mcp-offline", "subject": "Figma Dev Mode MCP at 127.0.0.1:3845 was unreachable during PLAN", "stage_a_fallback": "rgba(255, 255, 255, 0.16) used for the glass per ticket; reconcile at next connection" },
     { "id": "ga-dataLayer", "subject": "analytics attributes deferred to the data team / Jonathan Carroll", "stage_a_fallback": "zero data-ga* attributes shipped; future export is initQuickLinks in src/js/index.js" }

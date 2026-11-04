@@ -28,17 +28,12 @@ const escape = value =>
 // blocked and replaced with "#". ASCII-whitespace leading characters are trimmed
 // before scheme matching so that "  javascript:..." cannot bypass the check.
 //
-// Allowed: https:, mailto:, tel:, fragment-only (#...), relative paths (no scheme),
-// and the literal design-doc Spanish URL placeholder.
+// Allowed: https:, mailto:, tel:, fragment-only (#...), and relative paths (no scheme).
 const SAFE_SCHEMES = ["https:", "mailto:", "tel:"];
-// The literal design-doc placeholder that must round-trip through markup unchanged.
-const SPANISH_URL_PLACEHOLDER = "<spanish-url-placeholder>";
 
 export const safeHref = href => {
   if (href == null) return "#";
   const raw = String(href);
-  // Round-trip the literal design placeholder as-is; escape() handles the delimiters.
-  if (raw === SPANISH_URL_PLACEHOLDER) return raw;
   // Normalize ASCII whitespace that browsers would strip before scheme matching.
   const trimmed = raw.replace(/^[\t\n\f\r ]+/, "");
   if (trimmed === "") return "#";
@@ -69,28 +64,29 @@ export const safeHref = href => {
 //   fa-map-marked-alt → fa-map-location-dot accordingly.
 const DEFAULT_ITEMS = [
   {
-    href: "#quick-link-explore",
+    href: "https://asuonline.asu.edu",
     icon: "fa-laptop",
     label: "Explore ASU Online",
   },
   {
-    href: "#quick-link-visit",
+    href: "https://visit.asu.edu",
     icon: "fa-map-marked-alt",
     label: "Visit an ASU campus",
   },
   {
-    href: "#quick-link-request-info",
+    href: "https://admission.asu.edu/future-student-request",
     icon: "fa-id-card",
     label: "Request info",
   },
   {
-    href: "#quick-link-apply",
+    href: "https://admission.asu.edu/apply",
     icon: "fa-file-signature",
     label: "Apply now",
   },
 ];
 
-export const SPANISH_HREF_PLACEHOLDER = "<spanish-url-placeholder>";
+// Spanish sibling link destination (resolves open question A6, WWWCMS-235).
+export const SPANISH_HREF = "https://www.asu.edu/about/spanish";
 // Lowercase "español" per Figma + Spanish grammar (WWWCMS-235 visual-fix). Overrules ticket Behavior spec wording.
 export const SPANISH_LABEL = "Aprender más en español";
 
@@ -99,7 +95,7 @@ export const SPANISH_LABEL = "Aprender más en español";
 // Font Awesome 5 short-form prefix (fas) — universal syntax that renders in both FA 5 and FA 6.
 export const quickLinksHtml = ({
   items = DEFAULT_ITEMS,
-  spanishHref = SPANISH_HREF_PLACEHOLDER,
+  spanishHref = SPANISH_HREF,
   spanishIcon = "fa-arrow-right",
 } = {}) =>
   `<div class="hp-quick-links">` +
