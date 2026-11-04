@@ -164,7 +164,11 @@ $hp-quick-links-column-gap-max: $uds-size-spacing-12;
   }
 }
 
-.hp-quick-link-es:visited {
+// The theme's global `a:visited:not(...)` (unity-bootstrap-theme/src/scss/extends/_misc.scss)
+// has specificity (0,2,1) and turns visited links dark maroon. The parent class here lifts this
+// rule to (0,3,0) so the Spanish link stays white after it has been visited.
+.hp-quick-links .hp-quick-link-es:link,
+.hp-quick-links .hp-quick-link-es:visited {
   color: $uds-color-base-white;
 }
 

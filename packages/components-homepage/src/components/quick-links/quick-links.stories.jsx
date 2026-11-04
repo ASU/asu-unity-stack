@@ -13,6 +13,7 @@ import {
   safeHref,
   SPANISH_HREF,
   SPANISH_LABEL,
+  walkRules,
 } from "./quick-links-helpers.jsx";
 
 import { BACKDROP_PLAIN, FOCUS_RING_OUTER } from "./quick-links-tokens.js";
@@ -976,5 +977,34 @@ export const HtmlParity = {
     const pageDiv = canvasElement.firstElementChild;
     const actual = pageDiv ? pageDiv.innerHTML : canvasElement.innerHTML;
     await expect(normalize(actual)).toBe(normalize(expected));
+  },
+};
+
+// Visited state of the Spanish link stays white.
+// Browsers hide :visited colors from getComputedStyle (privacy), so this asserts the CSS rule.
+// The theme's `a:visited:not(...)` (extends/_misc.scss) has specificity (0,2,1) and paints
+// visited links dark maroon, so our rule must out-rank it: two classes + :visited = (0,3,0).
+export const SpanishVisitedWhite = {
+  name: "spanish-visited-white",
+  globals: viewport(1024),
+  args: { backdrop: "plain" },
+  decorators: [withBackdrop],
+  render: () => <Page html={quickLinksHtml()} />,
+  play: async () => {
+    let visitedRule = null;
+    walkRules(rule => {
+      if (
+        rule.selectorText.includes(".hp-quick-link-es") &&
+        rule.selectorText.includes(":visited") &&
+        !rule.selectorText.includes("__icon")
+      )
+        visitedRule = rule;
+    });
+    await expect(visitedRule).not.toBeNull();
+    await expect(visitedRule.style.color).toBe("rgb(255, 255, 255)");
+    // Must carry a parent class so it out-ranks the theme's (0,2,1) visited rule.
+    await expect(visitedRule.selectorText).toMatch(
+      /\.hp-quick-links\s+\.hp-quick-link-es[^,]*:visited/
+    );
   },
 };
