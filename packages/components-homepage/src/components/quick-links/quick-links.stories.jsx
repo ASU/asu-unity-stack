@@ -11,7 +11,9 @@ import {
   quickLinksHtml,
   realKeyboard,
   safeHref,
+  SPANISH_HREF,
   SPANISH_LABEL,
+  walkRules,
 } from "./quick-links-helpers.jsx";
 
 import { BACKDROP_PLAIN, FOCUS_RING_OUTER } from "./quick-links-tokens.js";
@@ -46,6 +48,44 @@ const viewport = width => ({
 });
 
 // ---- shared helpers ----
+
+// Mobile 2×2 contract: all four anchors share one width and one height, and each
+// icon + label is horizontally centered inside its anchor (±1px sub-pixel slack).
+const expectEvenMobileGrid = async p => {
+  const boxes = p.items.map(item => item.getBoundingClientRect());
+  const listBox = p.list.getBoundingClientRect();
+  const spread = values => Math.max(...values) - Math.min(...values);
+
+  // Equal widths and heights across all four items
+  await expect(spread(boxes.map(b => b.width))).toBeLessThanOrEqual(1);
+  await expect(spread(boxes.map(b => b.height))).toBeLessThanOrEqual(1);
+
+  // Items fill their grid columns: two columns + one gap span the list width
+  const gap = parseFloat(getComputedStyle(p.list).columnGap);
+  await expect(
+    Math.abs(boxes[0].width * 2 + gap - listBox.width)
+  ).toBeLessThanOrEqual(1);
+
+  // Icon and label centered horizontally within each anchor
+  const center = b => b.left + b.width / 2;
+  for (const [index, box] of boxes.entries()) {
+    const iconBox = p.icons[index].getBoundingClientRect();
+    const labelBox = p.labels[index].getBoundingClientRect();
+    await expect(Math.abs(center(iconBox) - center(box))).toBeLessThanOrEqual(
+      1
+    );
+    await expect(Math.abs(center(labelBox) - center(box))).toBeLessThanOrEqual(
+      1
+    );
+  }
+
+  // Equal padding on all four items
+  const paddings = p.items.map(item => {
+    const s = getComputedStyle(item);
+    return `${s.paddingTop} ${s.paddingRight} ${s.paddingBottom} ${s.paddingLeft}`;
+  });
+  await expect(new Set(paddings).size).toBe(1);
+};
 
 // Extracts the key DOM nodes from a rendered story.
 const parts = canvasElement => {
@@ -185,6 +225,9 @@ export const Default393 = {
     // WWWCMS-235 text-align fix: wrapped label lines must center on narrow viewports.
     const label = canvasElement.querySelector(".hp-quick-link__label");
     expect(getComputedStyle(label).textAlign).toBe("center");
+
+    // Even 2×2: equal width/height/padding, icon + label centered per item.
+    await expectEvenMobileGrid(p);
   },
 };
 
@@ -215,6 +258,9 @@ export const Default768 = {
     for (const label of p.labels) {
       await expect(getComputedStyle(label).fontSize).toBe("14px");
     }
+
+    // Even 2×2: equal width/height/padding, icon + label centered per item.
+    await expectEvenMobileGrid(p);
   },
 };
 
@@ -671,11 +717,11 @@ const HREF_CASES = [
     desc: "mailto:",
   },
   { href: "tel:+16029655555", expected: "tel:+16029655555", desc: "tel:" },
-  // Allowed: design-doc placeholder (round-trips)
+  // Allowed: Spanish link destination passes through unchanged
   {
-    href: "<spanish-url-placeholder>",
-    expected: "<spanish-url-placeholder>",
-    desc: "Spanish placeholder",
+    href: SPANISH_HREF,
+    expected: SPANISH_HREF,
+    desc: "Spanish link destination",
   },
   // Null/undefined → "#"
   { href: null, expected: "#", desc: "null" },
@@ -881,7 +927,21 @@ export const HtmlParity = {
       await expect(p.labels[index].textContent).toBe(label);
     }
 
+    // Icon link destinations, in normative order
+    const expectedHrefs = [
+      "https://asuonline.asu.edu",
+      "https://visit.asu.edu",
+      "https://admission.asu.edu/future-student-request",
+      "https://admission.asu.edu/apply",
+    ];
+    for (const [index, href] of expectedHrefs.entries()) {
+      await expect(p.items[index].getAttribute("href")).toBe(href);
+    }
+
     // Spanish link attributes
+    await expect(p.spanish.getAttribute("href")).toBe(
+      "https://www.asu.edu/about/spanish"
+    );
     await expect(p.spanish.getAttribute("lang")).toBe("es");
     await expect(p.spanish.getAttribute("hreflang")).toBe("es");
     await expect(p.spanish.textContent.trim()).toMatch(
@@ -917,5 +977,67 @@ export const HtmlParity = {
     const pageDiv = canvasElement.firstElementChild;
     const actual = pageDiv ? pageDiv.innerHTML : canvasElement.innerHTML;
     await expect(normalize(actual)).toBe(normalize(expected));
+  },
+};
+
+// Visited state of the Spanish link stays white.
+// Browsers hide :visited colors from getComputedStyle (privacy), so this asserts the CSS rule.
+// The theme's `a:visited:not(...)` (extends/_misc.scss) has specificity (0,2,1) and paints
+// visited links dark maroon, so our rule must out-rank it: two classes + :visited = (0,3,0).
+export const SpanishVisitedWhite = {
+  name: "spanish-visited-white",
+  globals: viewport(1024),
+  args: { backdrop: "plain" },
+  decorators: [withBackdrop],
+  render: () => <Page html={quickLinksHtml()} />,
+  play: async () => {
+    let visitedRule = null;
+    walkRules(rule => {
+      if (
+        rule.selectorText.includes(".hp-quick-link-es") &&
+        rule.selectorText.includes(":visited") &&
+        !rule.selectorText.includes("__icon")
+      )
+        visitedRule = rule;
+    });
+    await expect(visitedRule).not.toBeNull();
+    await expect(visitedRule.style.color).toBe("rgb(255, 255, 255)");
+    // Must carry a parent class so it out-ranks the theme's (0,2,1) visited rule.
+    await expect(visitedRule.selectorText).toMatch(
+      /\.hp-quick-links\s+\.hp-quick-link-es[^,]*:visited/
+    );
+  },
+};
+
+// Data layer attributes. The theme's data-layer.js (unity-bootstrap-theme) binds a click
+// listener to every [data-ga] element and pushes its data-ga-* attributes to window.dataLayer,
+// so the markup only has to carry the attributes. No links are clicked here (they navigate).
+export const DataLayerAttributes = {
+  name: "data-layer-attributes",
+  globals: viewport(1024),
+  args: { backdrop: "plain" },
+  decorators: [withBackdrop],
+  render: () => <Page html={quickLinksHtml()} />,
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    const links = [...p.items, p.spanish];
+    const expectedText = [
+      "Explore ASU Online",
+      "Visit an ASU campus",
+      "Request info",
+      "Apply now",
+      SPANISH_LABEL,
+    ];
+    await expect(links).toHaveLength(5);
+    for (const [index, link] of links.entries()) {
+      // data-ga carries the link text (the handler lowercases it into `text`)
+      await expect(link.getAttribute("data-ga")).toBe(expectedText[index]);
+      await expect(link.getAttribute("data-ga-name")).toBe("onclick");
+      await expect(link.getAttribute("data-ga-event")).toBe("link");
+      await expect(link.getAttribute("data-ga-action")).toBe("click");
+      await expect(link.getAttribute("data-ga-type")).toBe("internal link");
+      await expect(link.getAttribute("data-ga-region")).toBe("main content");
+      await expect(link.getAttribute("data-ga-section")).toBe("quick links");
+    }
   },
 };
