@@ -90,6 +90,24 @@ export const SPANISH_HREF = "https://www.asu.edu/about/spanish";
 // Lowercase "español" per Figma + Spanish grammar (WWWCMS-235 visual-fix). Overrules ticket Behavior spec wording.
 export const SPANISH_LABEL = "Aprender más en español";
 
+// Data layer attributes (Google Analytics). The theme's data-layer.js
+// (unity-bootstrap-theme/src/js/data-layer.js) adds a click listener to every [data-ga]
+// element and pushes its data-ga-* attributes (lowercased) to window.dataLayer; the bare
+// data-ga value becomes `text`. Values below are provisional until the data team confirms
+// the taxonomy (name / event / type / region / section).
+const GA_ATTRIBUTES = [
+  ["data-ga-name", "onclick"],
+  ["data-ga-event", "link"],
+  ["data-ga-action", "click"],
+  ["data-ga-type", "internal link"],
+  ["data-ga-region", "main content"],
+  ["data-ga-section", "quick links"],
+];
+
+const gaAttributes = text =>
+  ` data-ga="${escape(text)}"` +
+  GA_ATTRIBUTES.map(([name, value]) => ` ${name}="${escape(value)}"`).join("");
+
 // Stage B parity source (design-doc §4a). The Storybook html-parity story serializes
 // `canvasElement.innerHTML` (normalized) and compares it against this string.
 // Font Awesome 5 short-form prefix (fas) — universal syntax that renders in both FA 5 and FA 6.
@@ -104,7 +122,7 @@ export const quickLinksHtml = ({
     .map(
       ({ href, icon, label }) =>
         `<li class="hp-quick-links__item">` +
-        `<a class="hp-quick-link" href="${escape(safeHref(href))}">` +
+        `<a class="hp-quick-link" href="${escape(safeHref(href))}"${gaAttributes(label)}>` +
         `<i class="hp-quick-link__icon fas ${escape(icon)}" aria-hidden="true"></i>` +
         `<span class="hp-quick-link__label">${escape(label)}</span>` +
         `</a>` +
@@ -112,7 +130,7 @@ export const quickLinksHtml = ({
     )
     .join("") +
   `</ul>` +
-  `<a class="hp-quick-link-es" href="${escape(safeHref(spanishHref))}" lang="es" hreflang="es">` +
+  `<a class="hp-quick-link-es" href="${escape(safeHref(spanishHref))}" lang="es" hreflang="es"${gaAttributes(SPANISH_LABEL)}>` +
   `${escape(SPANISH_LABEL)} ` +
   `<i class="hp-quick-link-es__icon fas ${escape(spanishIcon)}" aria-hidden="true"></i>` +
   `</a>` +

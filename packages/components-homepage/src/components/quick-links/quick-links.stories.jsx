@@ -1008,3 +1008,36 @@ export const SpanishVisitedWhite = {
     );
   },
 };
+
+// Data layer attributes. The theme's data-layer.js (unity-bootstrap-theme) binds a click
+// listener to every [data-ga] element and pushes its data-ga-* attributes to window.dataLayer,
+// so the markup only has to carry the attributes. No links are clicked here (they navigate).
+export const DataLayerAttributes = {
+  name: "data-layer-attributes",
+  globals: viewport(1024),
+  args: { backdrop: "plain" },
+  decorators: [withBackdrop],
+  render: () => <Page html={quickLinksHtml()} />,
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    const links = [...p.items, p.spanish];
+    const expectedText = [
+      "Explore ASU Online",
+      "Visit an ASU campus",
+      "Request info",
+      "Apply now",
+      SPANISH_LABEL,
+    ];
+    await expect(links).toHaveLength(5);
+    for (const [index, link] of links.entries()) {
+      // data-ga carries the link text (the handler lowercases it into `text`)
+      await expect(link.getAttribute("data-ga")).toBe(expectedText[index]);
+      await expect(link.getAttribute("data-ga-name")).toBe("onclick");
+      await expect(link.getAttribute("data-ga-event")).toBe("link");
+      await expect(link.getAttribute("data-ga-action")).toBe("click");
+      await expect(link.getAttribute("data-ga-type")).toBe("internal link");
+      await expect(link.getAttribute("data-ga-region")).toBe("main content");
+      await expect(link.getAttribute("data-ga-section")).toBe("quick links");
+    }
+  },
+};
