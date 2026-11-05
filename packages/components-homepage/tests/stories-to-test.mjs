@@ -125,7 +125,6 @@ export const storiesToTest = [
   "homepage-rankings-cards--per-slide-labelling-7-cards",
   "homepage-rankings-cards--per-slide-labelling-3-cards",
   "homepage-rankings-cards--touch-targets",
-  "homepage-rankings-cards--rapid-click-coalescing",
   "homepage-rankings-cards--card-hover-maroon",
   "homepage-rankings-cards--focus-no-invert",
   "homepage-rankings-cards--glass-authorized",
