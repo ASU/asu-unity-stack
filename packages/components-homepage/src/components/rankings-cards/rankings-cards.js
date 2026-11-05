@@ -1,26 +1,38 @@
 // rankings-cards.js — progressive-enhancement nav for .hp-rankings sections.
 // Package: @asu/components-homepage  ·  Jira: WWWCMS-233
-// Design doc: .pipeline/design-doc.md §5
+// Design doc: .pipeline/design-doc.md §5 + v4 amendment
 //
-// Deterministic edge-state model (fixes review-report P1-2 and P1-3):
+// v4 changes (design-doc §v4.7.3, §v4.7.4, §v4.3.1b):
+//
+//   • beginPending() reverted to dropped-click guard (v4 §v4.7.3):
+//     rapid clicks during an in-flight smooth scroll are IGNORED. The old
+//     accumulation / pendingTarget logic is removed entirely.
+//
+//   • edgeTolerance() reverted to half a card step (v4 §v4.7.4):
+//     half a card step is the smallest tolerance that stays correct when
+//     the user has advanced by exactly one card (scrollLeft ≈ cardStep
+//     reads as "not at start, not at end" for any dataset of ≥3 cards).
+//
+//   • IntersectionObserver + rAF loop for scroll-driven glass-strip opacity
+//     (v4 §v4.3.1b):
+//     A 21-threshold IO observes every .hp-rankings__card and writes
+//     --hp-strip-opacity to each card's inline style. A rAF loop smooths
+//     between IO ticks while the user is actively scrolling (window scroll
+//     event, disabled under reduced-motion). Teardown clears all.
+//
+// Existing behavior (unchanged from v3.1):
 //
 //   • Nav state is derived from `track.scrollLeft` and the maximum scroll
-//     offset — never from a per-entry IntersectionObserver toggle. This
-//     avoids the race where the IO batch at init contains both the first
-//     and later cards, and a per-entry call enables Prev at scrollLeft=0.
+//     offset — never from IntersectionObserver (that IO is the opacity IO,
+//     a distinct concern).
 //   • A `scroll` + `scrollend` listener on the track synchronizes nav state
-//     after every scroll (user swipe, button click, native snap settle).
+//     after every scroll.
 //   • A ResizeObserver on the track synchronizes overflow + nav state
-//     immediately after a size change — no waiting for a future IO
-//     threshold crossing, so a resize-from-no-overflow-to-overflow correctly
-//     reflects the new state.
-//   • Teardown snapshots each individual class/attribute **before** mutation
+//     immediately after a size change.
+//   • Teardown snapshots each individual class/attribute BEFORE mutation
 //     and restores only values this invocation changed. Server-supplied
 //     disabled triplets on prev survive teardown unchanged.
-//   • A `pendingScroll` guard coalesces rapid nav clicks. While a scroll
-//     animation is in flight (set on click, cleared on `scrollend` or a
-//     timeout fallback for browsers without `scrollend`), additional nav
-//     clicks are ignored. Documented in the JSDoc.
+//   • Safe to call repeatedly (idempotent via module-level WeakSet).
 
 const SELECTOR = ".hp-rankings";
 const TRACK_SEL = ".hp-rankings__track";
@@ -30,6 +42,14 @@ const CARD_SEL = ".hp-rankings__card";
 const NO_OVERFLOW_CLASS = "hp-rankings--no-overflow";
 const DISABLED_CLASS = "is-disabled";
 const REDUCED = "(prefers-reduced-motion: reduce)";
+
+// Opacity easing constants (v4 §v4.3.1b locked values).
+const BASE_OPACITY = 0.55;
+const PEAK_OPACITY = 0.85;
+// IO threshold list: 21 values 0, 0.05, 0.10 … 1.00.
+const IO_THRESHOLDS = Array.from({ length: 21 }, (_, i) => i * 0.05);
+// Scroll idle window (ms) — rAF loop pauses after this many ms with no scroll.
+const SCROLL_IDLE_MS = 150;
 
 /** Module-level guard: sections already bound by some live initRankingsCards call. */
 const bound = new WeakSet();
@@ -43,19 +63,35 @@ const ignore = () => {};
  */
 const motionBehavior = mq => (mq && mq.matches ? "auto" : "smooth");
 
+// ─── Scroll-opacity pure computation (v4 §v4.3.1b) ───────────────────────────
+
+/**
+ * Computes the glass-strip opacity for a card given its viewport geometry.
+ *
+ * Let d = |card_center_x - viewport_center_x|
+ * Let D = (viewport_width + card_width) / 2  (distance where card edge sits at viewport edge)
+ * t = clamp(d / D, 0, 1)
+ * alpha = baseOpacity + (peakOpacity - baseOpacity) * (1 - t)²
+ *
+ * @param {DOMRect} rect   - card.getBoundingClientRect()
+ * @param {number}  vw     - viewport width (win.innerWidth)
+ * @returns {number}       - opacity value [0.55, 0.85]
+ */
+export const computeAlpha = (rect, vw) => {
+  const cardCenterX = rect.left + rect.width / 2;
+  const viewportCenterX = vw / 2;
+  const d = Math.abs(cardCenterX - viewportCenterX);
+  const D = (vw + rect.width) / 2;
+  const t = D > 0 ? Math.min(Math.max(d / D, 0), 1) : 0;
+  return BASE_OPACITY + (PEAK_OPACITY - BASE_OPACITY) * (1 - t) * (1 - t);
+};
+
 // ─── Per-attribute mutation tracking ─────────────────────────────────────────
-// Each init records every class/attribute it changes on a button, keyed by
-// the mutation (`class:is-disabled`, `attr:aria-disabled`, `attr:tabindex`).
-// The recorded value is the **prior** value (the thing to restore on teardown).
-// Only values this init actually changed get restored — server-owned initial
-// state is preserved verbatim.
 
 const ATTR_KEYS = ["aria-disabled", "tabindex"];
 const CLASS_KEYS = [DISABLED_CLASS];
 
 /**
- * Returns the current triplet state of a nav button:
- *   { class: boolean, "aria-disabled": string|null, tabindex: string|null }
  * @param {Element} btn
  */
 const snapshotBtn = btn => {
@@ -67,16 +103,9 @@ const snapshotBtn = btn => {
 };
 
 /**
- * Applies the disabled triplet to a button, recording the prior value of each
- * individual mutation into `mutationLog` so teardown can restore it.
- *
- * `mutationLog` is a Map keyed by `btn → Map<key, priorValue>`. A key is only
- * written the **first** time this init touches that attribute/class on that
- * button, so the earliest prior value is preserved.
- *
- * @param {Element} btn
- * @param {boolean} disabled
- * @param {Map<Element, Map<string, unknown>>} mutationLog
+ * Applies the disabled triplet to a button, recording the prior value in
+ * `mutationLog` so teardown can restore it. Only the first mutation records
+ * the prior state per key.
  */
 const applyDisabled = (btn, disabled, mutationLog) => {
   let log = mutationLog.get(btn);
@@ -86,7 +115,6 @@ const applyDisabled = (btn, disabled, mutationLog) => {
   }
 
   const current = snapshotBtn(btn);
-  // Record prior values for each key we're about to touch — but only once.
   CLASS_KEYS.forEach(cls => {
     const key = `class:${cls}`;
     const want = disabled;
@@ -104,7 +132,6 @@ const applyDisabled = (btn, disabled, mutationLog) => {
     }
   });
 
-  // Apply the state.
   if (disabled) {
     btn.classList.add(DISABLED_CLASS);
     btn.setAttribute("aria-disabled", "true");
@@ -117,12 +144,7 @@ const applyDisabled = (btn, disabled, mutationLog) => {
 };
 
 /**
- * Restores a button to the state recorded in `log`. Only values this init
- * changed (as witnessed by presence in `log`) are restored. Server-owned
- * triplets are preserved.
- *
- * @param {Element} btn
- * @param {Map<string, unknown>} log
+ * Restores a button to the state recorded in `log`.
  */
 const restoreBtn = (btn, log) => {
   log.forEach((prior, key) => {
@@ -140,8 +162,7 @@ const restoreBtn = (btn, log) => {
 
 /**
  * Toggles a class on an element, recording the prior state in `classLog`
- * (a Map keyed by element → Map<className, boolean>) so teardown can
- * restore. Only the first mutation records the prior state.
+ * so teardown can restore. Only the first mutation records the prior state.
  */
 const applyClass = (el, className, on, classLog) => {
   let log = classLog.get(el);
@@ -169,10 +190,12 @@ const restoreClass = (el, log) => {
 /**
  * Wires each `.hp-rankings` under `root` for progressive-enhancement nav.
  *
- * Behavior:
+ * **Nav behavior:**
  *   • One nav click = one card step (`cardWidth + columnGap`).
- *   • Rapid clicks during an active smooth scroll are **ignored** (coalesced)
- *     until the scroll settles (via `scrollend` or a 300ms timeout fallback).
+ *   • Rapid clicks during an in-flight smooth scroll are **ignored** (dropped).
+ *     A `pendingScroll` flag is set on `scrollBy` and cleared on `scrollend`
+ *     (or after `SCROLL_IDLE_MS` for browsers without `scrollend`). While
+ *     pending, additional nav clicks are dropped — no accumulation, no queue.
  *   • The `.hp-rankings--no-overflow` class is set on the section when
  *     `track.scrollWidth <= track.clientWidth + 1`. Both nav buttons are
  *     disabled in that state so AT users don't trigger a no-op.
@@ -180,12 +203,26 @@ const restoreClass = (el, log) => {
  *     + `tabindex="-1"`) are driven by `track.scrollLeft` relative to its
  *     maximum, synchronized on every `scroll`, `scrollend`, and resize event.
  *
- * Safe to call repeatedly (idempotent via a module-level WeakSet of sections).
- * Returns a teardown that:
- *   • disconnects every observer and listener this call created, and
+ * **Scroll-opacity behavior (v4 §v4.3.1b):**
+ *   • One IntersectionObserver per section (21 thresholds) observes every
+ *     `.hp-rankings__card` and writes `--hp-strip-opacity` to each card's
+ *     inline style on every threshold crossing.
+ *   • One rAF loop per section (runs only while actively scrolling and only
+ *     when `prefers-reduced-motion: no-preference`) smooths between IO ticks.
+ *   • Under `prefers-reduced-motion: reduce`, the rAF loop never starts; the
+ *     IO still writes the custom property on threshold crossings (a property
+ *     write is not an animation — it is a state value).
+ *   • Teardown clears `--hp-strip-opacity` from every card's inline style,
+ *     disconnects the IO, cancels the rAF, and removes the window scroll
+ *     listener.
+ *
+ * **Idempotent** — safe to call repeatedly; already-bound sections are
+ * skipped via a module-level WeakSet. Returns a teardown that:
+ *   • disconnects every observer and listener this call created,
  *   • restores each button class/attribute to the exact prior value this
  *     init changed — server-owned initial state (e.g. the first-render
- *     prev-disabled triplet) is preserved verbatim.
+ *     prev-disabled triplet) is preserved verbatim,
+ *   • clears the section from the WeakSet so re-init can re-bind.
  *
  * @param {Document|Element} [root=document]
  * @returns {function(): void} teardown
@@ -194,14 +231,11 @@ export function initRankingsCards(root = document) {
   const doc = root.ownerDocument || root;
   const win = doc.defaultView || window;
 
-  // Collect all .hp-rankings sections under root (including root itself if it matches).
   const found = Array.from(root.querySelectorAll(SELECTOR));
   if (typeof root.matches === "function" && root.matches(SELECTOR)) {
     found.unshift(root);
   }
 
-  // Preflight: filter to sections with the full DOM shape. Only bind sections
-  // that pass every preflight check — no partial bindings (§5.4 no-op branch).
   const canObserve =
     typeof win.ResizeObserver === "function" &&
     typeof win.matchMedia === "function";
@@ -218,8 +252,6 @@ export function initRankingsCards(root = document) {
     const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
     const cardStep = firstCard.offsetWidth + gap;
     if (cardStep <= 0) return;
-    // Observer-unavailable browsers: §5.4 — leave section alone. Server markup
-    // keeps prev disabled and native snap handles scrolling.
     if (!canObserve) return;
 
     bound.add(section);
@@ -228,9 +260,9 @@ export function initRankingsCards(root = document) {
       prev,
       next,
       firstCard,
-      mutationLog: new Map(), // Map<btn, Map<key, priorValue>>
-      classLog: new Map(), // Map<section-or-el, Map<className, priorValue>>
-      cleanups: [], // listener removal callbacks
+      mutationLog: new Map(),
+      classLog: new Map(),
+      cleanups: [],
     });
   });
 
@@ -242,7 +274,6 @@ export function initRankingsCards(root = document) {
   entries.forEach((state, section) => {
     const { track, prev, next, mutationLog, classLog } = state;
 
-    // Live card-step calculation — re-reads layout each click.
     const getCardStep = () => {
       const card = track.querySelector(CARD_SEL);
       if (!card) return 0;
@@ -252,10 +283,14 @@ export function initRankingsCards(root = document) {
 
     // ── Nav-state sync (scroll-position-driven) ───────────────────────────
     //
-    // Uses a small tolerance for atStart/atEnd. With padding/margin reset on
-    // the track, scrollLeft should settle at 0 at the start. A 1px tolerance
-    // is sufficient to guard against any residual wobble from scroll-snap-type.
-    const edgeTolerance = () => 1;
+    // edgeTolerance(): half a card step (v4 §v4.7.4 REVERT).
+    // Half a card step is the smallest tolerance that stays correct when the
+    // user has advanced by exactly one card (scrollLeft ≈ cardStep reads as
+    // "not at start, not at end" for any dataset of ≥3 cards).
+    const edgeTolerance = () => {
+      const step = getCardStep();
+      return step > 0 ? step / 2 : 1; // fall back to 1px if step unknown.
+    };
 
     const syncNavState = () => {
       const maxScroll = track.scrollWidth - track.clientWidth;
@@ -274,84 +309,40 @@ export function initRankingsCards(root = document) {
       applyDisabled(next, atEnd, mutationLog);
     };
 
-    // ── Rapid-click accumulation ──────────────────────────────────────────
+    // ── Dropped-click guard (v4 §v4.7.3 REVERT) ─────────────────────────
     //
-    // Each nav click accumulates a pending scroll target. While a scroll is
-    // in flight, new clicks add steps to the target rather than being dropped.
-    // When the scroll settles, we scroll to the final accumulated target.
-    //
-    // `pendingScroll` is true when a smooth-scroll animation is active.
-    // `pendingTarget` is the accumulated left position to scroll to (null if idle).
-    // The idle-debounce timer guards against long smooth scrolls on slow devices.
+    // Rapid clicks during an in-flight smooth scroll are DROPPED — no
+    // accumulation, no pendingTarget. The first click issues scrollBy and
+    // locks pendingScroll. The guard clears on scrollend or idle timeout.
     let pendingScroll = false;
-    let pendingTarget = null;
     let pendingIdleTimer = null;
-    const SCROLL_IDLE_MS = 150; // idle window after last `scroll` event
 
-    const resetIdleTimer = () => {
+    const beginPending = delta => {
+      if (pendingScroll) return; // DROP the click — do not queue.
+      pendingScroll = true;
+      track.scrollBy({ left: delta, behavior: motionBehavior(reducedMQ) });
       if (pendingIdleTimer) win.clearTimeout(pendingIdleTimer);
       pendingIdleTimer = win.setTimeout(() => {
         pendingIdleTimer = null;
-        if (pendingScroll) {
-          pendingScroll = false;
-          // Fire the accumulated target if any.
-          if (pendingTarget !== null) {
-            const target = pendingTarget;
-            pendingTarget = null;
-            track.scrollLeft = target;
-          }
-          syncNavState();
-        }
+        pendingScroll = false;
+        syncNavState();
       }, SCROLL_IDLE_MS);
     };
 
-    const beginPending = delta => {
-      // Calculate the new target by accumulating the delta.
-      const newTarget = Math.max(
-        0,
-        Math.min(
-          track.scrollWidth - track.clientWidth,
-          track.scrollLeft + delta
-        )
-      );
-      pendingTarget = newTarget;
-      if (!pendingScroll) {
-        // First click in a burst: issue the scroll and lock.
-        pendingScroll = true;
-        track.scrollBy({
-          left: delta,
-          behavior: motionBehavior(reducedMQ),
-        });
-      }
-      // Arm the idle timer as a fallback for browsers without `scrollend`.
-      resetIdleTimer();
-    };
     const endPending = () => {
       pendingScroll = false;
       if (pendingIdleTimer) {
         win.clearTimeout(pendingIdleTimer);
         pendingIdleTimer = null;
       }
-      // Fire any pending target before clearing.
-      if (pendingTarget !== null) {
-        const target = pendingTarget;
-        pendingTarget = null;
-        track.scrollLeft = target;
-      }
     };
 
     // ── Click handlers ───────────────────────────────────────────────────
-    //
-    // §5.2 click preflight: `syncNavState()` is called FIRST so the
-    // `aria-disabled` check and `pendingScroll` guard always reflect the
-    // current geometry, not potentially stale state from a layout change
-    // that arrived after the last scroll/RO event (e.g. a direct
-    // `scrollLeft` write or an injected card without a scroll event).
     const onPrevClick = event => {
       syncNavState(); // reconcile before any guard check (§5.2 preflight)
       if (prev.getAttribute("aria-disabled") === "true") {
         event.preventDefault();
-        return; // defence-in-depth
+        return;
       }
       beginPending(-getCardStep());
     };
@@ -373,9 +364,6 @@ export function initRankingsCards(root = document) {
 
     // ── Scroll listeners (passive — read-only) ───────────────────────────
     const onScroll = () => {
-      // Reset the idle debounce timer on every scroll tick so the
-      // pendingScroll lock survives long smooth scrolls (cycle-3 fix).
-      if (pendingScroll) resetIdleTimer();
       syncNavState();
     };
     const onScrollEnd = () => {
@@ -383,8 +371,6 @@ export function initRankingsCards(root = document) {
       syncNavState();
     };
     track.addEventListener("scroll", onScroll, { passive: true });
-    // `scrollend` is widely supported in evergreen browsers; falls back to
-    // the setTimeout above where unsupported.
     track.addEventListener("scrollend", onScrollEnd);
     state.cleanups.push(() => {
       track.removeEventListener("scroll", onScroll);
@@ -393,9 +379,6 @@ export function initRankingsCards(root = document) {
 
     // ── ResizeObserver on track ──────────────────────────────────────────
     const ro = new win.ResizeObserver(() => {
-      // Overflow may have changed; recompute edge state immediately — do not
-      // wait for a future scroll/IO event (fixes the review's resize-from-
-      // no-overflow bug).
       syncNavState();
     });
     ro.observe(track);
@@ -403,15 +386,93 @@ export function initRankingsCards(root = document) {
 
     // ── Reduced-motion live-update ───────────────────────────────────────
     if (reducedMQ && typeof reducedMQ.addEventListener === "function") {
-      // motionBehavior() reads the live MQ at click time; nothing else to
-      // do on change. We still register the listener for symmetric teardown
-      // (mirrors reimagine pattern).
       const onMotionChange = () => {};
       reducedMQ.addEventListener("change", onMotionChange);
       state.cleanups.push(() =>
         reducedMQ.removeEventListener("change", onMotionChange)
       );
     }
+
+    // ── Scroll-opacity: IntersectionObserver + rAF loop (v4 §v4.3.1b) ───
+    //
+    // One IO per section observes every card with 21 thresholds.
+    // One rAF loop per section smooths between IO ticks while scrolling.
+    // Under reduced-motion the rAF loop never starts; IO still writes the
+    // custom property on each threshold crossing.
+
+    // Track which cards have had --hp-strip-opacity written by this init.
+    const opacityCards = new Set();
+
+    const writeOpacity = (card, alpha) => {
+      card.style.setProperty("--hp-strip-opacity", alpha.toFixed(2));
+      opacityCards.add(card);
+    };
+
+    const opacityIO = new win.IntersectionObserver(
+      ioEntries => {
+        ioEntries.forEach(entry => {
+          const card = entry.target;
+          const alpha = computeAlpha(
+            card.getBoundingClientRect(),
+            win.innerWidth
+          );
+          writeOpacity(card, alpha);
+        });
+      },
+      { threshold: IO_THRESHOLDS }
+    );
+
+    track.querySelectorAll(CARD_SEL).forEach(card => opacityIO.observe(card));
+    state.cleanups.push(() => opacityIO.disconnect());
+
+    // rAF loop — smooths between IO ticks while actively scrolling.
+    let isScrolling = false;
+    let scrollIdleTimer = null;
+    let rafHandle = null;
+
+    const tick = () => {
+      if (!isScrolling || (reducedMQ && reducedMQ.matches)) {
+        rafHandle = null;
+        return;
+      }
+      track.querySelectorAll(CARD_SEL).forEach(card => {
+        const rect = card.getBoundingClientRect();
+        // Skip cards entirely off-screen (no visible change needed).
+        if (rect.right < 0 || rect.left > win.innerWidth) return;
+        const alpha = computeAlpha(rect, win.innerWidth);
+        writeOpacity(card, alpha);
+      });
+      rafHandle = win.requestAnimationFrame(tick);
+    };
+
+    const onWindowScroll = () => {
+      if (reducedMQ && reducedMQ.matches) return; // reduced motion: no rAF loop
+      isScrolling = true;
+      if (!rafHandle) rafHandle = win.requestAnimationFrame(tick);
+      if (scrollIdleTimer) win.clearTimeout(scrollIdleTimer);
+      scrollIdleTimer = win.setTimeout(() => {
+        isScrolling = false;
+        scrollIdleTimer = null;
+      }, SCROLL_IDLE_MS);
+    };
+
+    win.addEventListener("scroll", onWindowScroll, { passive: true });
+    state.cleanups.push(() => {
+      win.removeEventListener("scroll", onWindowScroll);
+      if (rafHandle) {
+        win.cancelAnimationFrame(rafHandle);
+        rafHandle = null;
+      }
+      if (scrollIdleTimer) {
+        win.clearTimeout(scrollIdleTimer);
+        scrollIdleTimer = null;
+      }
+      // Remove --hp-strip-opacity from every card this init wrote.
+      opacityCards.forEach(card => {
+        card.style.removeProperty("--hp-strip-opacity");
+      });
+      opacityCards.clear();
+    });
 
     // Initial state after wiring is in place.
     syncNavState();
@@ -427,14 +488,11 @@ export function initRankingsCards(root = document) {
       state.cleanups.forEach(fn => fn());
       state.cleanups.length = 0;
 
-      // Restore any class mutations on tracked elements (section + any others).
       state.classLog.forEach((log, el) => {
         restoreClass(el, log);
       });
       state.classLog.clear();
 
-      // Restore button mutations: only the specific class/attr values this
-      // init changed. Server-owned initial state is left alone.
       state.mutationLog.forEach((log, btn) => {
         restoreBtn(btn, log);
       });
