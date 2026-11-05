@@ -407,16 +407,22 @@ export function initRankingsCards(root = document) {
     // carousel dragging as well as page scroll.
 
     if (typeof win.IntersectionObserver !== "undefined") {
-      // Map from card → prior inline value of --hp-strip-opacity (null = not set).
+      // Map from card → { value, priority } of --hp-strip-opacity before first
+      // write (null = property was not set).
+      //
+      // R7 (review-fix cycle 2): snapshot both getPropertyValue() AND
+      // getPropertyPriority() so teardown can restore a consumer's
+      // !important annotation exactly.
       const priorOpacity = new Map();
 
       const writeOpacity = (card, alpha) => {
-        // Snapshot prior value on first write only.
+        // Snapshot prior value AND priority on first write only.
         if (!priorOpacity.has(card)) {
-          priorOpacity.set(
-            card,
-            card.style.getPropertyValue("--hp-strip-opacity") || null
-          );
+          const value =
+            card.style.getPropertyValue("--hp-strip-opacity") || null;
+          const priority =
+            card.style.getPropertyPriority("--hp-strip-opacity") || "";
+          priorOpacity.set(card, value !== null ? { value, priority } : null);
         }
         card.style.setProperty("--hp-strip-opacity", alpha.toFixed(2));
       };
@@ -439,11 +445,17 @@ export function initRankingsCards(root = document) {
       state.cleanups.push(() => {
         opacityIO.disconnect();
         // R3: restore each card's prior inline --hp-strip-opacity value.
+        // R7: also restore the prior !important priority if it was set.
         priorOpacity.forEach((prior, card) => {
-          if (prior === null || prior === "") {
+          if (prior === null) {
             card.style.removeProperty("--hp-strip-opacity");
           } else {
-            card.style.setProperty("--hp-strip-opacity", prior);
+            // setProperty(name, value, priority) — priority may be "" or "important".
+            card.style.setProperty(
+              "--hp-strip-opacity",
+              prior.value,
+              prior.priority
+            );
           }
         });
         priorOpacity.clear();
