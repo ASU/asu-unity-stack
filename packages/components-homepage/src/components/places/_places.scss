@@ -527,6 +527,26 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
       }
     }
 
+    // Contrast checkers (Alfa, axe) read element backgrounds, not pseudo-elements: the panel carries the fill and its
+    // layer only blurs, so the gold labels are measured on the dark glass and not on the white section behind.
+    .hp-places__panel {
+      background: $hp-places-glass;
+
+      @supports not (
+        (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+      ) {
+        background: rgba($asu-gray-1, 0.95);
+      }
+
+      @media (forced-colors: active) {
+        background: Canvas;
+      }
+    }
+
+    .hp-places__panel::before {
+      background: transparent;
+    }
+
     .hp-places__group {
       margin-bottom: 44px;
 
