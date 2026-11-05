@@ -26,7 +26,7 @@ export default {
     docs: {
       description: {
         component:
-          'Homepage campus locator ("One university, many places"). From 1024px a looping video (shared play/pause control) starts inset by the 48px gutter and opens to full width as it scrolls into view; a frosted panel holds the heading, two buttons and the seven locations in two groups. Choosing a location (click or keyboard, never hover) crossfades its photo over the video (0.6s), draws a gold leader line (0.4s) to a description box (fades in 0.3s after 0.2s) with a link; Esc, the close button, a second click or an outside click returns to the video, and scrolling never changes the selection. Below 1024px the same content is a carousel: group tabs, a video card plus one card per location, and a name index. The section draws the Learn network wallpaper behind it. Without script the intro and the eight cards stack with all text visible. `initPlaces` and `initVideoControls` wire it. Sample photos, poster and clip are the prototype media; `href`s are placeholders.',
+          'Homepage campus locator ("One university, many places"). From 1024px a looping video (shared play/pause control) starts inset by the 48px gutter and opens to full width as it scrolls into view; a frosted panel holds the heading, two buttons and the seven locations in two groups. Choosing a location (click or keyboard, never hover) crossfades its photo over the video (0.6s), draws a gold leader line (0.4s) to a description box (fades in 0.3s after 0.2s) with a link; Esc, the close button, a second click or an outside click returns to the video, and scrolling never changes the selection. Below 1024px (Figma 375, brand: Figma is the source of truth, no carousel) the same list is an accordion on Gray 1: each name has a chevron and a rule, one location is open at a time with its text, link and photo (the first is open); there is no video. The section draws the Learn network wallpaper behind it (desktop). Without script every location is open and stacked. `initPlaces` and `initVideoControls` wire it. Sample photos, poster and clip are the prototype media; `href`s are placeholders.',
       },
     },
   },
@@ -38,6 +38,7 @@ const viewport = width => ({
 
 const WHITE = "rgb(255, 255, 255)";
 const GOLD = "rgb(255, 198, 39)";
+const GRAY_1 = "rgb(25, 25, 25)";
 
 const near = (actual, expected, tolerance = 1) =>
   expect(Math.abs(actual - expected)).toBeLessThanOrEqual(tolerance);
@@ -63,11 +64,8 @@ const parts = canvasElement => {
     details: list(".hp-places__detail"),
     boxes: list(".hp-places__box"),
     closes: list(".hp-places__close"),
-    tabs: list(".hp-places__tab"),
-    track: find(".hp-places__track"),
-    cards: list(".hp-places__card"),
-    index: list(".hp-places__iname"),
-    mob: find(".hp-places__mob"),
+    photos: list(".hp-places__photo"),
+    chevrons: list(".hp-places__chevron"),
     wall: find(".hp-places__wall"),
   };
 };
@@ -81,10 +79,10 @@ const expectContract = async p => {
   await expect(p.section.querySelectorAll("h2")).toHaveLength(1);
   await expect(p.heading.textContent).toBe(SECTION_HEADING);
   await expect(p.names).toHaveLength(LOCATIONS.length);
-  await expect(p.cards).toHaveLength(LOCATIONS.length + 1);
+  await expect(p.photos).toHaveLength(LOCATIONS.length);
   // data layer: every link and button carries the full attribute set (asucms datalayer.md)
   const clickable = Array.from(p.section.querySelectorAll("a[href], button"));
-  await expect(clickable.length).toBeGreaterThan(30);
+  await expect(clickable.length).toBeGreaterThan(20);
   clickable.forEach(element => {
     const video = element.classList.contains("mbtn");
     expect(element.getAttribute("data-ga-name")).toBe("onclick");
@@ -108,47 +106,33 @@ const expectContract = async p => {
   });
 };
 
-// The carousel semantics exist only while script runs (the stacked baseline is not a carousel).
-const expectCarouselRoles = async p => {
-  await expect(p.track.getAttribute("role")).toBe("region");
-  await expect(p.track.getAttribute("aria-roledescription")).toBe("carousel");
-  await expect(p.track.getAttribute("aria-label")).toBe(
-    "Campuses and locations"
-  );
-  p.cards.forEach((card, index) => {
-    expect(card.getAttribute("role")).toBe("group");
-    expect(card.getAttribute("aria-roledescription")).toBe("slide");
-    expect(card.getAttribute("aria-label")).toMatch(
-      new RegExp(`^${index + 1} of ${LOCATIONS.length + 1}: `)
-    );
-  });
-};
-
 // --- server markup ---
 
 export const NoScript = {
   name: "No script (server markup)",
-  globals: viewport(1440),
+  globals: viewport(393),
   render: () => <Harness manual html={placesHtml()} />,
   play: async ({ canvasElement }) => {
-    await resizeViewport(1440, 900);
+    await resizeViewport(393, 852);
     const p = parts(canvasElement);
     await expectContract(p);
     await expect(p.section.classList.contains("is-enhanced")).toBe(false);
-    await expect(p.track.hasAttribute("role")).toBe(false);
-    await expect(p.cards.some(card => card.hasAttribute("role"))).toBe(false);
-    // the stacked baseline: intro, then the seven location cards; nothing that needs script
+    // the stacked baseline on Gray 1: the intro, then every location open; nothing that needs script
+    await expect(style(p.section).backgroundColor).toBe(GRAY_1);
     await expect(style(p.media).display).toBe("none");
     await expect(style(p.mbtn).display).toBe("none");
-    await expect(
-      style(p.panel.querySelector(".hp-places__group")).display
-    ).toBe("none");
-    await expect(style(p.cards[0]).display).toBe("none");
-    await expect(style(p.cards[1]).display).toBe("flex");
-    await expect(box(p.cards[2]).top).toBeGreaterThan(box(p.cards[1]).top);
-    await expect(style(p.mob.querySelector(".hp-places__tabs")).display).toBe(
-      "none"
+    await expect(p.details.every(detail => !detail.hidden)).toBe(true);
+    await expect(p.names.some(n => n.hasAttribute("aria-expanded"))).toBe(
+      false
     );
+    await expect(
+      p.photos.every(photo => style(photo).display === "block")
+    ).toBe(true);
+    await expect(box(p.items[1]).top).toBeGreaterThan(box(p.items[0]).top);
+    // the same at the desktop width: script-only layout is not applied
+    await resizeViewport(1440, 900);
+    await expect(style(p.media).display).toBe("none");
+    await expect(style(p.section).backgroundColor).toBe(GRAY_1);
   },
 };
 
@@ -162,19 +146,25 @@ export const Default = {
     const p = parts(canvasElement);
     await expectContract(p);
     await expect(p.section.classList.contains("is-enhanced")).toBe(true);
-    await expectCarouselRoles(p);
-    await expect(style(p.mob).display).toBe("none");
     // the frosted panel: 347 wide, overhanging the media by 24px, starting 24px below its top
     const m = box(p.media);
     const panel = box(p.panel);
     await near(panel.width, 347, 1);
     await near(panel.left, m.left + 24, 1);
     await near(panel.top, m.top + 24, 1);
-    // names are toggle buttons, nothing selected
+    // names are toggle buttons, nothing selected; the accordion parts are not shown
     p.names.forEach(name => {
       expect(name.getAttribute("aria-pressed")).toBe("false");
+      expect(name.hasAttribute("aria-expanded")).toBe(false);
       expect(box(name).height).toBeGreaterThanOrEqual(44);
     });
+    await expect(p.details.every(detail => detail.hidden)).toBe(true);
+    await expect(
+      p.chevrons.every(chevron => style(chevron).display === "none")
+    ).toBe(true);
+    await expect(p.photos.every(photo => style(photo).display === "none")).toBe(
+      true
+    );
     await expect(p.stills.every(still => style(still).opacity === "0")).toBe(
       true
     );
@@ -247,7 +237,7 @@ export const Desktop1024 = {
   play: async ({ canvasElement }) => {
     await resizeViewport(1024, 768);
     const p = parts(canvasElement);
-    await expect(style(p.mob).display).toBe("none");
+    await expect(style(p.media).display).toBe("block");
     await expect(box(p.panel).width).toBe(347);
     await expect(box(p.frame).width).toBe(1024);
   },
@@ -279,37 +269,47 @@ export const Above1920 = {
   },
 };
 
-// --- phone / tablet carousel ---
+// --- below 1024: the Figma 375 accordion ---
 
-const carouselPlay =
+const accordionPlay =
   width =>
   async ({ canvasElement }) => {
     await resizeViewport(width, 852);
     const p = parts(canvasElement);
     await expectContract(p);
-    await expectCarouselRoles(p);
+    await expect(p.section.classList.contains("is-enhanced")).toBe(true);
+    await expect(style(p.section).backgroundColor).toBe(GRAY_1);
     await expect(style(p.media).display).toBe("none");
     await expect(style(p.mbtn).display).toBe("none");
-    await expect(p.tabs).toHaveLength(2);
-    await expect(p.tabs[0].getAttribute("aria-pressed")).toBe("true");
-    // eight slides in a snap scroller; a card is the padded track minus 32px, so the next one peeks in
-    await expect(style(p.track).scrollSnapType).toContain("x");
-    const side = width >= 768 ? 48 : 16;
-    const cardWidth = box(p.cards[1]).width;
-    await near(
-      cardWidth,
-      width >= 600
-        ? Math.min(480, width - 2 * side - 32)
-        : width - 2 * side - 32,
-      1
+    await expect(p.video.hasAttribute("src")).toBe(false); // no video below 1024
+    await expect(style(p.wall).display).toBe("none");
+    // names are disclosure buttons; the first location is open (as in the Figma frame)
+    p.names.forEach((name, i) => {
+      expect(name.getAttribute("aria-expanded")).toBe(
+        i === 0 ? "true" : "false"
+      );
+      expect(name.hasAttribute("aria-pressed")).toBe(false);
+      expect(box(name).height).toBeGreaterThanOrEqual(44);
+    });
+    await expect(p.details.map(detail => detail.hidden)).toEqual(
+      LOCATIONS.map((_, i) => i !== 0)
     );
-    // only the active group's names show in the index
-    const visible = p.index.filter(button => !button.hidden);
-    await expect(visible.map(button => button.textContent)).toEqual(
-      LOCATIONS.filter(place => place.group === 0).map(place => place.name)
-    );
-    visible.forEach(button =>
-      expect(box(button).height).toBeGreaterThanOrEqual(44)
+    // open row: gold rule across the panel, chevron up; closed rows: white rule as long as the row
+    const side = width >= 768 ? 48 : 16 + 8;
+    const panelContent = width - 2 * side;
+    await near(box(p.names[0]).width, panelContent, 1);
+    await expect(style(p.names[0]).borderBottomColor).toBe(GOLD);
+    await expect(style(p.names[1]).borderBottomColor).toBe(WHITE);
+    await expect(box(p.names[1]).width).toBeLessThan(panelContent);
+    await expect(style(p.chevrons[0]).transform).not.toBe("none");
+    await expect(style(p.chevrons[1]).transform).toBe("none");
+    // the open photo keeps the Figma 327:219 ratio, at most 480 wide
+    const photo = box(p.photos[0]);
+    await near(photo.width, Math.min(480, panelContent), 1);
+    await near(photo.height, (photo.width * 219) / 327, 1);
+    // no horizontal overflow
+    await expect(document.documentElement.scrollWidth).toBeLessThanOrEqual(
+      width
     );
   };
 
@@ -317,21 +317,99 @@ export const Phone393 = {
   name: "Phone 393",
   globals: viewport(393),
   render: () => <Harness html={placesHtml()} />,
-  play: carouselPlay(393),
+  play: accordionPlay(393),
+};
+
+export const Phone375 = {
+  name: "Phone 375 (Figma frame)",
+  tags: ["!dev"],
+  globals: viewport(393),
+  render: () => <Harness html={placesHtml()} />,
+  play: async ({ canvasElement }) => {
+    await resizeViewport(375, 812);
+    const p = parts(canvasElement);
+    // Figma 13824:1800: content 327 wide, photo 327x219, name rows 60px apart
+    await near(box(p.names[0]).width, 327, 1);
+    await near(box(p.photos[0]).width, 327, 1);
+    await near(box(p.photos[0]).height, 219, 1);
+    await near(box(p.names[2]).top - box(p.names[1]).top, 60, 2);
+    await near(style(p.heading).fontSize.replace("px", ""), 32, 0);
+  },
 };
 
 export const Tablet768 = {
   name: "Tablet 768",
   globals: viewport(768),
   render: () => <Harness html={placesHtml()} />,
-  play: carouselPlay(768),
+  play: accordionPlay(768),
 };
 
 export const Tablet1023 = {
   name: "Tablet 1023",
   globals: viewport(1023),
   render: () => <Harness html={placesHtml()} />,
-  play: carouselPlay(1023),
+  play: accordionPlay(1023),
+};
+
+export const AccordionBehaviour = {
+  name: "Accordion: one open at a time",
+  tags: ["!dev"],
+  globals: viewport(393),
+  render: () => <Harness html={placesHtml()} />,
+  play: async ({ canvasElement }) => {
+    await resizeViewport(393, 852);
+    const p = parts(canvasElement);
+    const expanded = () => p.names.map(n => n.getAttribute("aria-expanded"));
+    p.names[1].click();
+    await expect(expanded()).toEqual(
+      LOCATIONS.map((_, i) => (i === 1 ? "true" : "false"))
+    );
+    await expect(p.details[0].hidden).toBe(true);
+    await expect(p.details[1].hidden).toBe(false);
+    // a second press collapses it
+    p.names[1].click();
+    await expect(expanded().every(state => state === "false")).toBe(true);
+    await expect(p.details.every(detail => detail.hidden)).toBe(true);
+    // the last location in the second group opens too
+    const last = LOCATIONS.length - 1;
+    p.names[last].click();
+    await expect(p.names[last].getAttribute("aria-expanded")).toBe("true");
+    await expect(style(p.names[last]).borderBottomColor).toBe(GOLD);
+  },
+};
+
+export const BreakpointCrossing = {
+  name: "Breakpoint crossing 1023/1024",
+  tags: ["!dev"],
+  globals: viewport(1440),
+  render: () => <Harness html={placesHtml()} />,
+  play: async ({ canvasElement }) => {
+    await resizeViewport(1440, 900);
+    const p = parts(canvasElement);
+    p.names[2].click();
+    await waitFor(() => expect(p.video.hasAttribute("data-hold")).toBe(true));
+    await resizeViewport(1023, 800);
+    // the accordion: no selection or hold carried over, no video source, first location open
+    await waitFor(() => expect(p.video.hasAttribute("src")).toBe(false));
+    await expect(p.video.hasAttribute("data-hold")).toBe(false);
+    await expect(p.names[0].getAttribute("aria-expanded")).toBe("true");
+    await expect(p.names[2].hasAttribute("aria-pressed")).toBe(false);
+    await expect(p.section.classList.contains("has-still")).toBe(false);
+    p.names[3].click();
+    await expect(p.names[3].getAttribute("aria-expanded")).toBe("true");
+    await resizeViewport(1024, 800);
+    // back on desktop: nothing selected, details hidden, aria-pressed again
+    await waitFor(() =>
+      expect(p.video.getAttribute("src")).toContain("locations.mp4")
+    );
+    await expect(
+      p.names.every(n => n.getAttribute("aria-pressed") === "false")
+    ).toBe(true);
+    await expect(p.names.some(n => n.hasAttribute("aria-expanded"))).toBe(
+      false
+    );
+    await expect(p.details.every(detail => detail.hidden)).toBe(true);
+  },
 };
 
 // --- behaviour (tests only) ---
@@ -386,41 +464,6 @@ export const SelectionAndReturn = {
   },
 };
 
-export const CarouselBehaviour = {
-  name: "Carousel: tabs, index, slides",
-  tags: ["!dev"],
-  globals: viewport(393),
-  render: () => <Harness html={placesHtml()} />,
-  play: async ({ canvasElement }) => {
-    await resizeViewport(393, 852);
-    const p = parts(canvasElement);
-    const pressed = list => list.map(b => b.getAttribute("aria-pressed"));
-    // the video card is slide 1 and holds nothing; any other slide holds the video
-    await expect(
-      p.cards[0].querySelector("video").hasAttribute("data-hold")
-    ).toBe(false);
-    p.tabs[1].click();
-    await expect(pressed(p.tabs)).toEqual(["false", "true"]);
-    await waitFor(() =>
-      expect(p.index.filter(b => !b.hidden).map(b => b.textContent)).toEqual(
-        LOCATIONS.filter(place => place.group === 1).map(place => place.name)
-      )
-    );
-    await expect(
-      p.cards[0].querySelector("video").hasAttribute("data-hold")
-    ).toBe(true);
-    const london = p.index.find(b => b.textContent === "London");
-    london.click();
-    await expect(london.getAttribute("aria-pressed")).toBe("true");
-    // a second press returns to the video card
-    london.click();
-    await expect(london.getAttribute("aria-pressed")).toBe("false");
-    await expect(
-      p.cards[0].querySelector("video").hasAttribute("data-hold")
-    ).toBe(false);
-  },
-};
-
 export const HoldGate = {
   name: "Video hold (shared control)",
   tags: ["!dev"],
@@ -439,6 +482,27 @@ export const HoldGate = {
   },
 };
 
+export const LowerNameBox = {
+  name: "Box of the lowest name stays in the stage",
+  tags: ["!dev"],
+  globals: viewport(1440),
+  render: () => <Harness before="20vh" after="40vh" html={placesHtml()} />,
+  play: async ({ canvasElement }) => {
+    await resizeViewport(1440, 900);
+    const p = parts(canvasElement);
+    const last = LOCATIONS.length - 1;
+    p.names[last].click();
+    await waitFor(() =>
+      expect(p.items[last].classList.contains("is-shown")).toBe(true)
+    );
+    await expect(box(p.boxes[last]).bottom).toBeLessThanOrEqual(
+      box(p.media).bottom + 1
+    );
+    // the leader stays on the name's rule
+    await near(box(p.details[last]).bottom, box(p.names[last]).bottom, 1);
+  },
+};
+
 export const ContrastBudget = {
   name: "Contrast budget (glass)",
   tags: ["!dev"],
@@ -452,7 +516,6 @@ export const ContrastBudget = {
     // the Figma .5 would fail for white
     await expect(glassContrast([255, 255, 255], 0.5, 255)).toBeLessThan(4.5);
     await expect(openingProgress(450, 900, 147)).toBeLessThan(1);
-    await expect(WHITE).toBe("rgb(255, 255, 255)");
   },
 };
 
@@ -484,15 +547,23 @@ export const InitContract = {
       expect(p.items[1].classList.contains("is-shown")).toBe(true)
     );
     stop();
+    // back to the server markup: every location open, no state, nothing attached
     await expect(p.section.classList.contains("is-enhanced")).toBe(false);
     await expect(p.section.classList.contains("has-still")).toBe(false);
     await expect(
-      p.items.some(item => item.classList.contains("is-selected"))
+      p.items.some(item =>
+        ["is-selected", "is-shown", "is-open"].some(name =>
+          item.classList.contains(name)
+        )
+      )
     ).toBe(false);
-    await expect(p.details.every(detail => detail.hidden)).toBe(true);
+    await expect(p.details.every(detail => !detail.hidden)).toBe(true);
     await expect(p.closes.every(button => button.hidden)).toBe(true);
-    await expect(p.names.some(n => n.hasAttribute("aria-pressed"))).toBe(false);
-    await expect(p.track.hasAttribute("role")).toBe(false);
+    await expect(
+      p.names.some(
+        n => n.hasAttribute("aria-pressed") || n.hasAttribute("aria-expanded")
+      )
+    ).toBe(false);
     await expect(p.video.hasAttribute("data-hold")).toBe(false);
     await expect(p.video.hasAttribute("src")).toBe(false);
     await expect(p.media.style.getPropertyValue("--hp-places-progress")).toBe(
@@ -506,50 +577,5 @@ export const InitContract = {
     p.names[2].click();
     await expect(p.names[2].getAttribute("aria-pressed")).toBe("true");
     again();
-  },
-};
-
-export const CarouselEnd = {
-  name: "Carousel: the last card is reachable at 1023",
-  tags: ["!dev"],
-  globals: viewport(1023),
-  render: () => <Harness html={placesHtml()} />,
-  play: async ({ canvasElement }) => {
-    await resizeViewport(1023, 768);
-    const p = parts(canvasElement);
-    p.track.scrollLeft = p.track.scrollWidth;
-    await waitFor(() =>
-      expect(p.cards[p.cards.length - 1].getAttribute("aria-label")).toContain(
-        "8 of 8"
-      )
-    );
-    await waitFor(() =>
-      expect(p.tabs[1].getAttribute("aria-pressed")).toBe("true")
-    );
-    const london = p.index.find(button => button.textContent === "London");
-    await waitFor(() =>
-      expect(london.getAttribute("aria-pressed")).toBe("true")
-    );
-  },
-};
-
-export const LowerNameBox = {
-  name: "Box of the lowest name stays in the stage",
-  tags: ["!dev"],
-  globals: viewport(1440),
-  render: () => <Harness before="20vh" after="40vh" html={placesHtml()} />,
-  play: async ({ canvasElement }) => {
-    await resizeViewport(1440, 900);
-    const p = parts(canvasElement);
-    const last = LOCATIONS.length - 1;
-    p.names[last].click();
-    await waitFor(() =>
-      expect(p.items[last].classList.contains("is-shown")).toBe(true)
-    );
-    await expect(box(p.boxes[last]).bottom).toBeLessThanOrEqual(
-      box(p.media).bottom + 1
-    );
-    // the leader stays on the name's rule
-    await near(box(p.details[last]).bottom, box(p.names[last]).bottom, 1);
   },
 };

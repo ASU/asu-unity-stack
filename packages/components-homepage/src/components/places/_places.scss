@@ -1,18 +1,18 @@
 // Homepage places (campus locator): a looping video with a frosted location list on desktop (>= 1024) that opens
-// from inset to full width on scroll, and a tabs + card carousel below 1024. Design doc: WWWCMS-241.
-// Prototype v2.71 lines 1046-1215, 1488-1515, 1586-1592 (final cascade); Figma 82545 desktop (1280, 1920, 2500).
-// Baseline (no script): the intro and the eight cards stacked, all text visible. `initPlaces` adds `.is-enhanced`,
-// which turns on the desktop overlay (>= 1024) and the carousel (< 1024); every rule below that needs script is
-// under `.is-enhanced`. The wallpaper (learn-bg.webp, a ../img/ asset relative to the SCSS entry) is drawn by this
-// component, behind the section.
+// from inset to full width on scroll, and below 1024 the Figma 375 accordion on Gray 1 (brand: Figma is the source of
+// truth for mobile, no carousel). Design doc: WWWCMS-241.
+// Figma 82545 desktop (1280, 1920, 2500) and mobile 375 (13824:1800); prototype v2.71 for the copy.
+// Baseline (no script): the intro and every location open (name, text, link, photo) stacked on Gray 1.
+// `initPlaces` adds `.is-enhanced`, which turns on the desktop overlay (>= 1024) and the accordion (< 1024);
+// every rule that needs script is under `.is-enhanced`. The wallpaper (learn-bg.webp, a ../img/ asset relative to
+// the SCSS entry) is drawn by this component, behind the section.
 
 $hp-places-bp: 1024px; // keep equal to DESKTOP in places.js
 $hp-places-header-break: 1080px; // the prototype switches to its compact header at 1079px (as the stories grid)
-$hp-places-wall-min: 901px; // the prototype draws the wallpaper from 901px
 $hp-places-ease: cubic-bezier(0.33, 1, 0.68, 1);
 
 // TODO: confirm with design - raw values (no UDS token): 347 panel, 885 media, 32 padding, 24 overhang, .75 glass,
-// blur 12 / saturate 160%, the 0.6/0.4/0.3/0.2/0.25s timings, the 300/360 card photo heights.
+// blur 12 / saturate 160%, the 0.6/0.4/0.3/0.2/0.25s timings, the 327:219 accordion photo.
 $hp-places-panel-w: 347px;
 $hp-places-media-h: 885px;
 $hp-places-glass: rgba($asu-gray-1, 0.75);
@@ -68,17 +68,15 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
     --hp-places-header-height,
     var(--hp-places-header-default)
   );
-  --hp-places-side: 16px; // the page gutter: 16 on phones, 48 from 768
-  --hp-places-card-w: calc(100% - 32px);
-  --hp-places-photo-h: 300px;
-  --hp-places-cell-h: 164px;
-  --hp-places-ring-inner: 0 0 0 2px #{$uds-color-base-white};
-  --hp-places-ring-outer: 0 0 0 4px #{$asu-gray-1};
+  --hp-places-side: 24px; // Figma 375 padding; 48px on tablets (the page gutter)
+  // Every surface is dark (Gray 1 page below 1024, glass above): the package's white + #00BAFF ring.
+  --hp-places-ring-inner: var(--hp-focus-inner);
+  --hp-places-ring-outer: var(--hp-focus-outer);
 
   position: relative;
   isolation: isolate;
-  background: $uds-color-base-white;
-  color: $asu-gray-1;
+  background: $asu-gray-1;
+  color: $asu-gray-7;
 
   @media (max-width: #{$hp-places-header-break - 1px}) {
     --hp-places-header-default: 69px;
@@ -88,33 +86,16 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
     --hp-places-side: 48px;
   }
 
-  @media (min-width: 600px) and (max-width: #{$hp-places-bp - 1px}) {
-    --hp-places-card-w: min(480px, calc(100% - 32px));
-    --hp-places-photo-h: 360px;
-    --hp-places-cell-h: 140px;
-  }
-
   // Component rules set `display`; [hidden] must still hide.
   [hidden] {
     display: none !important;
   }
 }
 
-// Wallpaper: the Learn network art, tiled 100% wide and stopping at the media's bottom edge. `--hp-places-wall-y`
-// and `--hp-places-wall-bottom` come from places.js; without them the tile starts at the top and stops 48px up.
+// Wallpaper: the Learn network art, tiled 100% wide and stopping at the media's bottom edge; desktop only (the
+// accordion is on Gray 1). `--hp-places-wall-y` and `--hp-places-wall-bottom` come from places.js.
 .hp-places__wall {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: var(--hp-places-wall-bottom, 48px);
-  left: 0;
-  z-index: -1;
-  pointer-events: none;
-
-  @media (min-width: $hp-places-wall-min) {
-    background: url("../img/learn-bg.webp") center
-      calc(-1 * var(--hp-places-wall-y, 0px)) / 100% auto repeat-y;
-  }
+  display: none;
 }
 
 .hp-places__frame {
@@ -123,14 +104,18 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
   margin: 0 auto;
 }
 
-// ---- Intro (the one heading block; inside the glass panel on desktop) ----
+.hp-places__panel {
+  padding: 24px var(--hp-places-side);
+}
+
+// ---- Intro (the one heading block) ----
 
 .hp-places__intro {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px;
-  padding: 48px var(--hp-places-side) 24px;
+  gap: 24px;
+  margin-bottom: 32px;
 }
 
 .hp-places__eyebrow {
@@ -148,38 +133,25 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
 
 .hp-places__heading {
   margin: 0;
-  color: $asu-gray-1;
-  font-size: 36px;
-  line-height: 40px;
+  color: $uds-color-base-white;
+  font-size: 32px;
+  line-height: 32px;
   font-weight: 700;
-  letter-spacing: -0.02em;
-
-  @media (min-width: 600px) {
-    font-size: 48px;
-    line-height: 52px;
-  }
-}
-
-.hp-places__dek {
-  margin: 0;
-  color: $asu-gray-2;
-  font-size: 16px;
-  line-height: 24px;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
 }
 
 .hp-places__ctas {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 8px;
 }
 
-// One set of buttons for every width: maroon on the white page, gold on the dark glass (asucms: gold on dark
-// surfaces, maroon on light). A 32px button with a 44px vertical hit area.
+// Gold on the dark surfaces (asucms: gold on dark, maroon on light). A 32px button with a 44px vertical hit area.
 .hp-places__cta {
-  --hp-places-cta-bg: #{$uds-color-brand-maroon};
-  --hp-places-cta-ink: #{$uds-color-base-white};
-  --hp-places-cta-edge: #{$uds-color-brand-maroon};
+  --hp-places-cta-bg: #{$uds-color-brand-gold};
+  --hp-places-cta-ink: #{$asu-gray-1};
+  --hp-places-cta-edge: #{$uds-color-brand-gold};
 
   position: relative;
   display: inline-flex;
@@ -216,12 +188,7 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
 
 .hp-places__cta--secondary {
   --hp-places-cta-bg: transparent;
-  --hp-places-cta-ink: #{$uds-color-brand-maroon};
-}
-
-.hp-places__cta--dark {
   --hp-places-cta-ink: #{$uds-color-base-white};
-  --hp-places-cta-edge: #{$uds-color-brand-gold};
 }
 
 .hp-places__cta-icon,
@@ -233,230 +200,150 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
   pointer-events: none;
 }
 
-// Desktop-only parts: hidden in the baseline and below 1024.
-.hp-places__group,
-.hp-places__see-all,
-.hp-places__media,
-.hp-places__mbtn {
-  display: none;
-}
+// ---- Locations: the accordion (Figma 375). Desktop overrides these in the block at the end. ----
 
-// ---- Cards (the baseline stack, and the carousel below 1024) ----
+.hp-places__group {
+  margin-bottom: 48px;
 
-.hp-places__track {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 0 var(--hp-places-side);
-}
-
-.hp-places__card {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-.hp-places__photo {
-  position: relative;
-  height: var(--hp-places-photo-h);
-  overflow: hidden;
-  background: $asu-gray-1;
-
-  img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  &:last-of-type {
+    margin-bottom: 0;
   }
 }
 
-.hp-places__cell {
-  display: flex;
-  flex: 1 0 auto;
-  flex-direction: column;
-  gap: 6px;
-  min-height: var(--hp-places-cell-h);
-  padding: 16px;
-  background: $asu-gray-1;
-  color: $asu-gray-7;
-  --hp-places-ring-inner: var(--hp-focus-inner);
-  --hp-places-ring-outer: var(--hp-focus-outer);
-}
-
-.hp-places__cname {
-  margin: 0;
+.hp-places__group-label {
+  margin: 0 0 8px;
   color: $uds-color-brand-gold;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 24px;
   font-weight: 700;
 }
 
-.hp-places__ctext {
+.hp-places__names {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   margin: 0;
-  font-size: 15px;
-  line-height: 22px;
+  padding: 0;
+  list-style: none;
+}
+
+// The theme caps list items at 700px.
+.hp-places__item {
+  max-width: none;
+}
+
+// The name row: the name and a chevron; its 4px rule is as long as the row, and the open row's rule is gold
+// and spans the width.
+.hp-places__name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-sizing: border-box;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+  padding: 8px 0;
+  border: 0;
+  border-bottom: 4px solid $uds-color-base-white;
+  background: none;
+  color: $uds-color-base-white;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  text-align: left;
+  cursor: pointer;
+
+  @media (forced-colors: active) {
+    border-bottom-color: CanvasText;
+  }
+
+  @include hp-places-focus;
+}
+
+.hp-places__item.is-open .hp-places__name {
+  justify-content: space-between;
+  width: 100%;
+  border-bottom-color: $uds-color-brand-gold;
+
+  @media (forced-colors: active) {
+    border-bottom-color: Highlight;
+  }
+}
+
+.hp-places__chevron {
+  display: block;
+  width: 18px;
+  height: 18px;
+  flex: none;
+  pointer-events: none;
+
+  .hp-places__item.is-open & {
+    transform: rotate(180deg);
+  }
+}
+
+// The open location: text, link and photo under the name.
+.hp-places__box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 12px 0 4px;
+}
+
+.hp-places__caption {
+  margin: 0;
+  color: $asu-gray-5;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .hp-places__link,
-.hp-places__see-all-m {
+.hp-places__see-all {
   @include hp-places-arrow-link;
 
   color: $uds-color-brand-gold;
 }
 
-.hp-places__see-all-m {
-  color: $asu-gray-7;
-}
-
-// The video card needs a script (a video does nothing without one): the baseline stack skips it.
-.hp-places:not(.is-enhanced) .hp-places__card--video {
-  display: none;
-}
-
-.hp-places__vbox {
-  position: relative;
-  flex: 1 0 auto;
-  min-height: calc(var(--hp-places-photo-h) + var(--hp-places-cell-h));
-  overflow: hidden;
-  background: $asu-gray-1;
-}
-
-.hp-places__video-m {
-  position: absolute;
-  inset: 0;
+.hp-places__photo {
   display: block;
   width: 100%;
-  height: 100%;
+  max-width: 480px;
+  margin-top: 8px;
+  aspect-ratio: 327 / 219;
   object-fit: cover;
 }
 
-.hp-places__mbtn-m {
-  --mbtn-rest-opacity: 75%;
-
-  top: 12px;
-  right: 12px;
-  bottom: auto;
+.hp-places__see-all {
+  margin-top: 32px;
+  color: $uds-color-base-white;
 }
 
-.hp-places__tabs {
-  display: flex;
-  gap: 24px;
-  margin: 0 var(--hp-places-side) 16px;
-  border-bottom: 1px solid $asu-gray-5;
-}
-
-.hp-places__tab {
-  margin: 0 0 -1px;
-  padding: 12px 0 9px;
-  border: 0;
-  border-bottom: 3px solid transparent;
-  background: none;
-  color: $asu-gray-3;
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: 700;
-  cursor: pointer;
-
-  &[aria-pressed="true"] {
-    color: $asu-gray-1;
-    border-bottom-color: $uds-color-brand-gold;
-
-    @media (forced-colors: active) {
-      border-bottom-color: Highlight;
-    }
-  }
-
-  @include hp-places-focus;
-}
-
-.hp-places__mobpanel {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 16px;
-  padding: 20px var(--hp-places-side) 40px;
-  background: $asu-gray-1;
-  color: $asu-gray-7;
-  --hp-places-ring-inner: var(--hp-focus-inner);
-  --hp-places-ring-outer: var(--hp-focus-outer);
-}
-
-.hp-places__index {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  align-content: flex-start;
-  column-gap: 20px;
-  row-gap: 6px;
-  min-height: 84px;
-}
-
-.hp-places__iname {
-  padding: 7px 0; // 44px target with the 4px rule
-  border: 0;
-  border-bottom: 4px solid $asu-gray-7;
-  background: none;
-  color: $asu-gray-7;
-  font-size: 22px;
-  line-height: 26px;
-  letter-spacing: -0.03em;
-  font-weight: 700;
-  cursor: pointer;
-
-  &[aria-pressed="true"] {
-    border-bottom-color: $uds-color-brand-gold;
-
-    @media (forced-colors: active) {
-      border-bottom-color: Highlight;
-    }
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    transition: border-color 0.25s ease;
-  }
-
-  @include hp-places-focus;
-}
-
-.hp-places__actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 16px 24px;
-  margin-top: 12px;
-}
-
-// ---- Below 1024: the carousel ----
-
-@media (max-width: #{$hp-places-bp - 1px}) {
-  .hp-places.is-enhanced {
-    .hp-places__track {
-      flex-direction: row;
-      gap: 8px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-padding: 0 var(--hp-places-side);
-      overscroll-behavior-x: contain;
-      scrollbar-width: none;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
-    }
-
-    .hp-places__card {
-      flex: 0 0 var(--hp-places-card-w);
-      scroll-snap-align: start;
-    }
-  }
+// Desktop-only parts: hidden in the baseline and below 1024.
+.hp-places__media,
+.hp-places__mbtn {
+  display: none;
 }
 
 // ---- Desktop (>= 1024): the media with the frosted list over it ----
 
 @media (min-width: $hp-places-bp) {
   .hp-places.is-enhanced {
-    .hp-places__mob {
-      display: none;
+    background: $uds-color-base-white;
+
+    // The Learn network wallpaper behind the section, to the media's bottom edge.
+    .hp-places__wall {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: var(--hp-places-wall-bottom, 48px);
+      left: 0;
+      z-index: -1;
+      display: block;
+      pointer-events: none;
+      background: url("../img/learn-bg.webp") center
+        calc(-1 * var(--hp-places-wall-y, 0px)) / 100% auto repeat-y;
     }
 
     // Media and panel share one grid cell; the cell grows with the panel (long copy, zoom, text spacing).
@@ -563,29 +450,7 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
       }
     }
 
-    .hp-places__intro {
-      padding: 0;
-      margin-bottom: 32px;
-      gap: 24px;
-    }
-
-    .hp-places__heading {
-      color: $uds-color-base-white;
-      font-size: 32px;
-      line-height: 32px;
-      letter-spacing: -0.03em;
-    }
-
-    .hp-places__dek {
-      display: none;
-    }
-
-    .hp-places__ctas {
-      margin-top: 0;
-    }
-
     .hp-places__group {
-      display: block;
       margin-bottom: 44px;
 
       &:last-of-type {
@@ -594,41 +459,10 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
     }
 
     .hp-places__group-label {
-      margin: 0 0 16px;
-      color: $uds-color-brand-gold;
-      font-size: 16px;
-      line-height: 24px;
-      font-weight: 700;
+      margin-bottom: 16px;
     }
 
     // Figma 1280: 60px between name rows (a 48px row and a 12px gap).
-    .hp-places__names {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .hp-places__see-all {
-      @include hp-places-arrow-link;
-
-      margin-top: 32px;
-      color: $uds-color-base-white;
-    }
-
-    .hp-places__panel .hp-places__cta--primary {
-      --hp-places-cta-bg: #{$uds-color-brand-gold};
-      --hp-places-cta-ink: #{$asu-gray-1};
-      --hp-places-cta-edge: #{$uds-color-brand-gold};
-    }
-
-    .hp-places__panel .hp-places__cta--secondary {
-      --hp-places-cta-ink: #{$uds-color-base-white};
-      --hp-places-cta-edge: #{$uds-color-brand-gold};
-    }
-
     // Each row: the name, then the free space of the row, which carries the 4px leader line to the box.
     .hp-places__item {
       position: relative;
@@ -638,43 +472,30 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
 
     .hp-places__name {
       flex: 0 1 auto;
+      width: auto;
       min-width: 0;
-      margin: 0;
-      padding: 8px 0;
-      border: 0;
-      border-bottom: 4px solid $uds-color-base-white;
-      background: none;
-      color: $uds-color-base-white;
-      font-size: 24px;
-      line-height: 28px;
-      letter-spacing: -0.03em;
-      font-weight: 700;
-      text-align: left;
-      cursor: pointer;
 
       &[aria-pressed="true"] {
         border-bottom-color: $uds-color-brand-gold;
       }
 
       @media (forced-colors: active) {
-        border-bottom-color: CanvasText;
-
         &[aria-pressed="true"] {
           border-bottom-color: Highlight;
         }
       }
+    }
 
-      @media (prefers-reduced-motion: no-preference) {
-        transition: border-color 0.25s ease;
-      }
-
-      @include hp-places-focus;
+    .hp-places__chevron,
+    .hp-places__photo {
+      display: none;
     }
 
     .hp-places__detail {
       flex: 1 1 0;
       min-width: 0;
       height: 4px;
+      padding: 0;
 
       // Ends at the box's left edge: the free space plus the panel's 32px padding and 1px border.
       &::before {

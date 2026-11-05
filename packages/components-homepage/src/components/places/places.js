@@ -1,9 +1,9 @@
 // Behaviour for the homepage places section (campus locator). Dependency-free. Design doc: WWWCMS-241.
 // Markup: `.hp-places` (see places-helpers.jsx `placesHtml`). `initVideoControls` (video-control.js) owns playback;
-// this script attaches the video sources, sets `data-hold` while a still or another slide covers a video,
-// and runs: the desktop list (>= 1024: select a location, photo over the video, leader and box), the phone/tablet
-// carousel (< 1024: group tabs, cards, name index), the scroll opening of the media (>= 1024) and the wallpaper
-// alignment. Without this script the CSS shows the stacked, all-text baseline.
+// this script attaches the video source (>= 1024 only), sets `data-hold` while a still covers the video, and runs:
+// the desktop list (>= 1024: select a location, photo over the video, leader and box), the accordion (< 1024,
+// Figma 375: one location open at a time), the scroll opening of the media (>= 1024) and the wallpaper alignment.
+// Without this script the CSS shows every location open (name, text, link, photo) on Gray 1.
 
 const DESKTOP = "(min-width: 1024px)"; // keep equal to $hp-places-bp in _places.scss
 const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
@@ -67,71 +67,43 @@ const bind = (section, doc, win) => {
   const names = items.map(item => item.querySelector(".hp-places__name"));
   const details = items.map(item => item.querySelector(".hp-places__detail"));
   const closes = items.map(item => item.querySelector(".hp-places__close"));
-  const tabs = section.querySelector(".hp-places__tabs");
-  const tabButtons = all(".hp-places__tab");
-  const track = section.querySelector(".hp-places__track");
-  const cards = all(".hp-places__card");
-  const index = section.querySelector(".hp-places__index");
-  const indexButtons = all(".hp-places__iname");
-  const mobVideo = section.querySelector(".hp-places__video-m");
-  const mobButton = section.querySelector(".hp-places__mbtn-m");
-  const groupOf = indexButtons.map(button => Number(button.dataset.group) || 0);
   let disposed = false;
 
   section.classList.add("is-enhanced");
   cleanups.push(() => section.classList.remove("is-enhanced"));
 
-  // The carousel roles are added here: the stacked baseline is not a carousel (the video card is hidden).
-  if (track) {
-    track.setAttribute("role", "region");
-    track.setAttribute("aria-roledescription", "carousel");
-    track.setAttribute("aria-label", track.dataset.label || "");
-  }
-  cards.forEach((card, i) => {
-    card.setAttribute("role", "group");
-    card.setAttribute("aria-roledescription", "slide");
-    card.setAttribute(
-      "aria-label",
-      `${i + 1} of ${cards.length}: ${card.dataset.label || ""}`
-    );
-  });
+  // ---------- video source: attached only where the media shows (>= 1024) ----------
 
-  // ---------- video sources: only the visible pattern's video is attached ----------
-
-  const attach = (el, button, on) => {
-    if (!el) return;
-    const source = on ? safeSource(el.dataset.src, doc) : null;
+  const attach = on => {
+    if (!video) return;
+    const source = on ? safeSource(video.dataset.src, doc) : null;
     if (!source) {
-      if (el.hasAttribute("src")) {
-        el.pause();
-        el.removeAttribute("src");
-        el.load();
+      if (video.hasAttribute("src")) {
+        video.pause();
+        video.removeAttribute("src");
+        video.load();
       }
-      if (button) button.hidden = true;
+      if (deskButton) deskButton.hidden = true;
       return;
     }
     // preload before src: `loadeddata` (which resumes autoplay) never fires under preload="none"
-    el.setAttribute("preload", reduced.matches ? "none" : "auto");
-    if (el.getAttribute("src") !== source) el.setAttribute("src", source);
-    if (button) button.hidden = false;
+    video.setAttribute("preload", reduced.matches ? "none" : "auto");
+    if (video.getAttribute("src") !== source) video.setAttribute("src", source);
+    if (deskButton) deskButton.hidden = false;
   };
 
-  const hold = (el, on) => {
-    if (el) el.toggleAttribute("data-hold", on);
+  const hold = on => {
+    if (video) video.toggleAttribute("data-hold", on);
   };
 
   // A source that fails to load leaves the control hidden (the poster stays) until the next attach.
-  [
-    [video, deskButton],
-    [mobVideo, mobButton],
-  ].forEach(([el, button]) => {
-    if (!el || !button) return;
-    listen(el, "error", () => {
-      if (el.hasAttribute("src")) button.hidden = true;
+  if (video && deskButton) {
+    listen(video, "error", () => {
+      if (video.hasAttribute("src")) deskButton.hidden = true;
     });
-  });
+  }
 
-  // ---------- desktop list ----------
+  // ---------- desktop list (>= 1024) ----------
 
   let sel = -1;
   let hideTimer = 0;
@@ -163,7 +135,9 @@ const bind = (section, doc, win) => {
   const renderDesk = () => {
     items.forEach((item, i) => {
       const on = i === sel;
+      names[i].removeAttribute("aria-expanded");
       names[i].setAttribute("aria-pressed", on ? "true" : "false");
+      item.classList.remove("is-open");
       item.classList.toggle("is-selected", on);
     });
     stills.forEach((still, i) => still.classList.toggle("is-on", i === sel));
@@ -196,7 +170,7 @@ const bind = (section, doc, win) => {
     win.clearTimeout(hideTimer);
     hideTimer = win.setTimeout(
       () => {
-        if (sel !== i) details[i].hidden = true;
+        if (desk.matches && sel !== i) details[i].hidden = true;
       },
       reduced.matches ? 0 : HIDE_DELAY
     );
@@ -206,7 +180,7 @@ const bind = (section, doc, win) => {
     if (sel >= 0 && sel !== i) hide(sel);
     sel = i;
     promote(stills[i]);
-    hold(video, true);
+    hold(true);
     renderDesk();
     show(i);
   };
@@ -217,15 +191,38 @@ const bind = (section, doc, win) => {
     const previous = sel;
     if (focusName) names[previous].focus();
     sel = -1;
-    if (!keepHold) hold(video, false);
+    if (!keepHold) hold(false);
     renderDesk();
     hide(previous);
   };
 
+  // ---------- accordion (< 1024, Figma 375): one location open at a time ----------
+
+  let open = 0; // the Figma frame shows the first location open
+
+  const renderAccordion = () => {
+    items.forEach((item, i) => {
+      const on = i === open;
+      names[i].removeAttribute("aria-pressed");
+      names[i].setAttribute("aria-expanded", on ? "true" : "false");
+      item.classList.remove("is-selected", "is-shown");
+      item.classList.toggle("is-open", on);
+      item.style.removeProperty("--hp-places-box-shift");
+      details[i].hidden = !on;
+      closes[i].hidden = true;
+    });
+  };
+
   names.forEach((button, i) => {
     listen(button, "click", () => {
-      if (sel === i) deselect();
-      else select(i);
+      if (!desk.matches) {
+        open = open === i ? -1 : i;
+        renderAccordion();
+      } else if (sel === i) {
+        deselect();
+      } else {
+        select(i);
+      }
     });
     listen(button, "pointerenter", () => promote(stills[i]));
     listen(button, "focus", () => promote(stills[i]));
@@ -251,118 +248,37 @@ const bind = (section, doc, win) => {
     if (!inside) deselect();
   });
   if (deskButton) {
-    // Bubble phase, after video-control.js: a press from a still goes back to the video.
+    // The order of this listener and video-control.js does not matter: the hold is left for the control to clear.
     listen(deskButton, "click", () => deselect({ keepHold: true }));
   }
 
-  // ---------- carousel (< 1024) ----------
-
-  const M = { slide: 0, target: null, timer: 0 };
-
-  const step = () =>
-    cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft || 1 : 1;
-
-  // The slide in view. The last cards can be reached only at the end of the scroll (a card is at most 480px
-  // wide), so the end of the track counts as the last slide.
-  const slideAt = () => {
-    const max = track.scrollWidth - track.clientWidth;
-    if (max > 1 && track.scrollLeft >= max - 1) return cards.length - 1;
-    return Math.max(
-      0,
-      Math.min(cards.length - 1, Math.round(track.scrollLeft / step()))
-    );
-  };
-
-  const renderMob = ({ keepHold = false } = {}) => {
-    const tab = M.slide > 0 ? groupOf[M.slide - 1] : M.tab || 0;
-    M.tab = tab;
-    tabButtons.forEach((button, g) =>
-      button.setAttribute("aria-pressed", g === tab ? "true" : "false")
-    );
-    indexButtons.forEach((button, i) => {
-      button.hidden = groupOf[i] !== tab;
-      button.setAttribute("aria-pressed", M.slide === i + 1 ? "true" : "false");
-    });
-    // The video card's own button clears the hold when it is pressed (video-control.js).
-    if (!keepHold) hold(mobVideo, M.slide !== 0);
-  };
-
-  const goTo = (i, { keepHold = false } = {}) => {
-    M.target = i;
-    win.clearTimeout(M.timer);
-    M.timer = win.setTimeout(() => {
-      M.target = null;
-    }, 900); // fallback if scrollend never fires
-    track.scrollTo({
-      left: i * step(),
-      behavior: reduced.matches ? "auto" : "smooth",
-    });
-    M.slide = i;
-    renderMob({ keepHold });
-  };
-
-  if (track) {
-    listen(
-      track,
-      "scroll",
-      () => {
-        if (desk.matches) return;
-        const i = slideAt();
-        if (M.target !== null) {
-          if (i === M.target) M.target = null;
-          return;
-        }
-        if (i !== M.slide) {
-          M.slide = i;
-          renderMob();
-        }
-      },
-      { passive: true }
-    );
-    listen(track, "scrollend", () => {
-      M.target = null;
-    });
-    // Tabbing to a link on an off-screen card brings the card in and keeps the tab and index in step.
-    listen(track, "focusin", event => {
-      const i = cards.findIndex(card => card.contains(event.target));
-      if (i >= 0 && i !== M.slide && M.target === null) {
-        M.slide = i;
-        renderMob();
-      }
-    });
-  }
-  tabButtons.forEach(button =>
-    listen(button, "click", () => goTo(Number(button.dataset.slide) || 1))
-  );
-  indexButtons.forEach((button, i) =>
-    listen(button, "click", () => goTo(M.slide === i + 1 ? 0 : i + 1))
-  );
-  if (mobButton) {
-    // The order of this listener and video-control.js does not matter: the hold is left for the control to clear.
-    listen(mobButton, "click", () => {
-      if (M.slide !== 0) goTo(0, { keepHold: true });
-    });
-  }
-
-  // ---------- breakpoint: one pattern's video and controls at a time ----------
+  // ---------- breakpoint: the desktop list or the accordion ----------
 
   const syncPattern = () => {
     const isDesk = desk.matches;
-    attach(video, deskButton, isDesk);
-    attach(mobVideo, mobButton, !isDesk);
-    if (tabs) tabs.hidden = isDesk;
-    if (index) index.hidden = isDesk;
-    closes.forEach((button, i) => {
-      button.hidden = !(isDesk && i === sel);
-    });
+    attach(isDesk);
+    win.clearTimeout(hideTimer);
+    win.cancelAnimationFrame(showFrame);
     if (isDesk) {
-      if (mobVideo && !mobVideo.paused) mobVideo.pause();
+      sel = -1;
+      hold(false);
+      items.forEach(item => item.classList.remove("is-shown"));
+      details.forEach(detail => {
+        detail.hidden = true;
+      });
+      closes.forEach(button => {
+        button.hidden = true;
+      });
+      renderDesk();
     } else {
-      if (sel >= 0) deselect();
-      // The track was display:none on desktop (its scroll position reset): bring it back to the current slide.
-      if (track) track.scrollTo({ left: M.slide * step(), behavior: "auto" });
+      if (sel >= 0) {
+        sel = -1;
+        hold(false);
+      }
+      stills.forEach(still => still.classList.remove("is-on"));
+      section.classList.remove("has-still");
+      renderAccordion();
     }
-    renderMob();
     // A control that disappeared while focused hands focus to the first button of the section.
     const active = doc.activeElement;
     if (
@@ -410,6 +326,7 @@ const bind = (section, doc, win) => {
 
   const clearOpening = () => {
     clipped = null;
+    if (!media) return;
     media.classList.remove("is-opening");
     media.style.removeProperty(PROGRESS);
   };
@@ -536,8 +453,6 @@ const bind = (section, doc, win) => {
     });
   }
 
-  names.forEach(button => button.setAttribute("aria-pressed", "false"));
-  renderDesk();
   syncPattern();
   syncOpening();
   measureWall();
@@ -545,43 +460,28 @@ const bind = (section, doc, win) => {
   return () => {
     disposed = true;
     win.clearTimeout(hideTimer);
-    win.clearTimeout(M.timer);
     win.cancelAnimationFrame(showFrame);
     if (frameId !== null) win.cancelAnimationFrame(frameId);
     setScrollListener(false);
     if (observer) observer.disconnect();
     cleanups.forEach(cleanup => cleanup());
     cleanups.length = 0;
-    // Back to the server markup: nothing selected, nothing attached, nothing script-only visible.
-    hold(video, false);
-    hold(mobVideo, false);
+    // Back to the server markup: every location open, nothing attached, nothing script-only visible.
+    hold(false);
     clearOpening();
-    attach(video, deskButton, false);
-    attach(mobVideo, mobButton, false);
-    if (tabs) tabs.hidden = true;
-    if (index) index.hidden = true;
+    attach(false);
     items.forEach((item, i) => {
-      item.classList.remove("is-selected", "is-shown");
+      item.classList.remove("is-selected", "is-shown", "is-open");
       item.style.removeProperty("--hp-places-box-shift");
-      details[i].hidden = true;
+      details[i].hidden = false;
       closes[i].hidden = true;
       names[i].removeAttribute("aria-pressed");
+      names[i].removeAttribute("aria-expanded");
     });
     stills.forEach(still => still.classList.remove("is-on"));
     section.classList.remove("has-still");
     section.style.removeProperty("--hp-places-wall-bottom");
     section.style.removeProperty("--hp-places-wall-y");
-    tabButtons.forEach(button => button.removeAttribute("aria-pressed"));
-    indexButtons.forEach(button => {
-      button.hidden = false;
-      button.removeAttribute("aria-pressed");
-    });
-    [track, ...cards].forEach(element => {
-      if (!element) return;
-      element.removeAttribute("role");
-      element.removeAttribute("aria-roledescription");
-      element.removeAttribute("aria-label");
-    });
     bound.delete(section);
   };
 };
