@@ -2,6 +2,9 @@
 // Rules: three plays then stop on the first frame; pause out of view or in a hidden tab;
 // only `data-auto` videos resume on scroll-back (prototype v2.71 rule, open question 6);
 // a visitor's pause sticks; nothing autoplays under reduced motion or without a poster.
+// Optional per-video attributes: `data-in-view` (0-1, share of the video that must show to autoplay;
+// default 0.45) and `data-hold` (set by the page while something covers the video: nothing resumes it
+// until the attribute is removed).
 
 const DEFAULT_PLAYS = 3;
 const IN_VIEW_RATIO = 0.45;
@@ -29,6 +32,13 @@ const setState = (button, playing) => {
     playing ? "data-label-pause" : "data-label-play"
   );
   if (label) button.setAttribute("aria-label", label);
+  // The data layer text names what a click does (asucms homepage-video-control).
+  if (button.hasAttribute("data-ga-text")) {
+    button.setAttribute(
+      "data-ga-text",
+      playing ? "pause button" : "play button"
+    );
+  }
 };
 
 const render = (entry, playing) => {
@@ -38,11 +48,13 @@ const render = (entry, playing) => {
 // Per-video state, listeners and observer. Lives while at least one call has a control bound to it.
 const createEntry = (video, doc, win) => {
   const plays = parseInt(video.getAttribute("data-plays"), 10);
+  const inView = parseFloat(video.getAttribute("data-in-view"));
   const entry = {
     video,
     buttons: [],
     refs: 0,
     max: plays > 0 ? plays : DEFAULT_PLAYS,
+    minRatio: inView > 0 && inView <= 1 ? inView : IN_VIEW_RATIO,
     plays: 0,
     auto: video.hasAttribute("data-auto"),
     hasPoster: Boolean(video.getAttribute("poster")),
@@ -70,6 +82,7 @@ const createEntry = (video, doc, win) => {
       !entry.auto ||
       !entry.hasPoster ||
       entry.userPaused ||
+      video.hasAttribute("data-hold") ||
       entry.plays >= entry.max ||
       !video.paused ||
       reduced()
@@ -95,7 +108,7 @@ const createEntry = (video, doc, win) => {
   listen(video, "pause", () => render(entry, false));
   // A source attached after the observer reported (the hero attaches it by script) autoplays once loaded.
   listen(video, "loadeddata", () => {
-    if (entry.inView && entry.ratio >= IN_VIEW_RATIO) tryAutoplay();
+    if (entry.inView && entry.ratio >= entry.minRatio) tryAutoplay();
   });
   listen(video, "ended", () => {
     render(entry, false);
@@ -108,6 +121,7 @@ const createEntry = (video, doc, win) => {
     if (entry.plays >= entry.max) return; // spent: stays on its first frame
     // A queued `ended` must not override a pause that came first; scrolling back resumes `data-auto` media.
     if (entry.userPaused || entry.inView === false) return;
+    if (video.hasAttribute("data-hold")) return;
     if (doc.hidden) {
       entry.tabPaused = true;
       return;
@@ -126,13 +140,30 @@ const createEntry = (video, doc, win) => {
             if (!video.paused) video.pause();
             return;
           }
-          if (record.intersectionRatio >= IN_VIEW_RATIO) tryAutoplay();
+          if (record.intersectionRatio >= entry.minRatio) tryAutoplay();
         });
       },
-      { threshold: [0, IN_VIEW_RATIO] }
+      { threshold: [0, entry.minRatio] }
     );
     observer.observe(video);
     cleanups.push(() => observer.disconnect());
+  }
+
+  // A hold set by the page pauses the video (not a visitor pause); clearing it resumes autoplay.
+  if (typeof win.MutationObserver === "function") {
+    const holdObserver = new win.MutationObserver(() => {
+      if (video.hasAttribute("data-hold")) {
+        if (!video.paused) video.pause();
+        return;
+      }
+      if (entry.holdClearedByClick) {
+        entry.holdClearedByClick = false;
+        return;
+      }
+      if (entry.inView && entry.ratio >= entry.minRatio) tryAutoplay();
+    });
+    holdObserver.observe(video, { attributeFilter: ["data-hold"] });
+    cleanups.push(() => holdObserver.disconnect());
   }
 
   listen(doc, "visibilitychange", () => {
@@ -148,6 +179,7 @@ const createEntry = (video, doc, win) => {
       video.isConnected &&
       video.paused &&
       !entry.userPaused &&
+      !video.hasAttribute("data-hold") &&
       entry.plays < entry.max &&
       !(reduced() && entry.autoStarted) &&
       onScreen(video, win)
@@ -161,7 +193,7 @@ const createEntry = (video, doc, win) => {
       if (reduced()) {
         // Stops what the page started; a visitor's own play is theirs to stop.
         if (entry.autoStarted && !video.paused) video.pause();
-      } else if (entry.inView && entry.ratio >= IN_VIEW_RATIO) {
+      } else if (entry.inView && entry.ratio >= entry.minRatio) {
         tryAutoplay();
       }
     });
@@ -192,6 +224,11 @@ export function initVideoControls(root = document) {
     setState(button, !video.paused);
     const onClick = () => {
       entry.autoStarted = false;
+      // The visitor's press wins over a page hold; the hold observer must not restart playback first.
+      if (video.hasAttribute("data-hold")) {
+        entry.holdClearedByClick = true;
+        video.removeAttribute("data-hold");
+      }
       if (video.paused) {
         entry.userPaused = false;
         entry.tabPaused = false;

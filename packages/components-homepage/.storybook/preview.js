@@ -29,6 +29,11 @@ const homepageViewports = {
     styles: { width: "1024px", height: "768px" },
     type: "desktop",
   },
+  hp1023: {
+    name: "Tablet 1023",
+    styles: { width: "1023px", height: "768px" },
+    type: "tablet",
+  },
   hp1280: {
     name: "Desktop 1280",
     styles: { width: "1280px", height: "800px" },

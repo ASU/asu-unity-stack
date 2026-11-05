@@ -1007,3 +1007,52 @@ export const PlaybackBoundaries = {
     await expect(spent.stub.calls.play).toBe(1);
   },
 };
+
+const withAttributes = (html, id, attributes) =>
+  html.replace(`<video id="${id}"`, `<video id="${id}" ${attributes}`);
+
+export const InViewAndHold = {
+  name: "Per-video threshold and page hold",
+  tags: ["!dev"],
+  render: () => (
+    <Harness
+      html={withAttributes(
+        frameHtml({ id: "v-hold", auto: true }),
+        "v-hold",
+        'data-in-view="0.2"'
+      )}
+    />
+  ),
+  play: async ({ canvasElement }) => {
+    const { video, button, stub } = await find(canvasElement, "v-hold");
+    await expect(environment.observerOptions()).toContainEqual({
+      threshold: [0, 0.2],
+    });
+
+    // data-in-view: 20% is enough to autoplay
+    environment.emit(video, 0.25);
+    await expectPlaying(button);
+
+    // a page hold pauses it (not a visitor pause) and keeps every resume path closed
+    video.setAttribute("data-hold", "");
+    await waitFor(() => expect(video.paused).toBe(true));
+    environment.emit(video, 0);
+    environment.emit(video, 0.8);
+    environment.hide();
+    environment.show();
+    await expectPaused(button);
+    await expect(stub.calls.play).toBe(1);
+
+    // clearing the hold resumes autoplay while the video is in view
+    video.removeAttribute("data-hold");
+    await waitFor(() => expect(video.paused).toBe(false));
+    await expectPlaying(button);
+
+    // the visitor's press wins over a hold: it plays, and the hold is gone
+    video.setAttribute("data-hold", "");
+    await waitFor(() => expect(video.paused).toBe(true));
+    await userEvent.click(button);
+    await expectPlaying(button);
+    await expect(video.hasAttribute("data-hold")).toBe(false);
+  },
+};

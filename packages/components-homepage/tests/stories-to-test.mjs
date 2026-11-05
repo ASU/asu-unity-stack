@@ -63,4 +63,12 @@ export const storiesToTest = [
   "homepage-stories-grid--tablet-768",
   "homepage-stories-grid--phone-393",
   "homepage-stories-grid--large-1920",
+  // WWWCMS-241: places (rest, a location selected, no script, and the tablet, phone and large layouts)
+  "homepage-places--default",
+  "homepage-places--selected",
+  "homepage-places--no-script",
+  "homepage-places--tablet-768",
+  "homepage-places--tablet-1023",
+  "homepage-places--phone-393",
+  "homepage-places--large-1920",
 ];

@@ -309,7 +309,7 @@ export const Hover = {
     forceHover(c.element, false);
     await waitFor(() => expect(style(c.sub).opacity).toBe("0"));
     await waitFor(() => expect(scrimStart(c.scrim)).toBe("50%"));
-    await expect(style(c.element).boxShadow).toBe("none");
+    await waitFor(() => expect(style(c.element).boxShadow).toBe("none"));
     // the shadow of an edge card is not clipped at full width
     await expect(style(p.grid).overflow).toBe("visible");
     // a real pointer reveals the same state (only where the test runner provides one)
