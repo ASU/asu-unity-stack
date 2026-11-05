@@ -133,4 +133,6 @@ export const storiesToTest = [
   "homepage-rankings-cards--opacity-teardown-restores",
   "homepage-rankings-cards--opacity-teardown-restores-priority",
   "homepage-rankings-cards--io-absent",
+  "homepage-rankings-cards--attrib-hover-suppress-learn-more",
+  "homepage-rankings-cards--card-body-hover-reveals-learn-more",
 ];

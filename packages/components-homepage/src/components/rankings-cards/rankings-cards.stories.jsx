@@ -3413,6 +3413,134 @@ export const DefaultImgNoTransition = {
   },
 };
 
+// ═══════════════════════════════════════════════════════════════════════════════
+// Post-approval change: attribution hover — learn-more must NOT reveal
+// when pointer is over the attribution link (or see-all-top on card 1).
+// Design-doc §v4.3.1a + post-approval human reviewer request.
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// ─── AttribHoverSuppressLearnMore ────────────────────────────────────────────
+// When the card is hovered (so normally learn-more would reveal) but the
+// pointer is specifically over the attribution link, learn-more must stay
+// hidden. The fix uses `:has(.hp-rankings__attribution:hover)` in CSS.
+//
+// Test approach: apply BOTH [data-rankings-hover] on the card (simulates the
+// whole-card hover that normally reveals learn-more) AND [data-rankings-attrib-hover]
+// on the attribution link (simulates attribution-link-specific hover that
+// should suppress the reveal). The CSS suppression rule will target:
+//   .hp-rankings__card[data-rankings-hover]:has([data-rankings-attrib-hover])
+//     .hp-rankings__learn-more { opacity: 0; pointer-events: none; }
+// OR equivalently, after the `:has()` approach:
+//   .hp-rankings__card:has(.hp-rankings__attribution[data-rankings-attrib-hover])
+//     .hp-rankings__learn-more { opacity: 0; pointer-events: none; }
+//
+// This is a RED test: before the CSS fix is applied, forceHover on the card
+// will reveal learn-more (opacity: 1), failing the assertion `opacity: 0`.
+
+const AttribHoverPage = () => {
+  const ref = useRef(null);
+  useEffect(() => {
+    const card2 =
+      ref.current && ref.current.querySelectorAll(".hp-rankings__card")[1];
+    if (card2) {
+      // Step 1: apply whole-card hover (normally reveals learn-more).
+      forceHover(card2);
+      // Step 2: mark the attribution link as also-hovered (suppresses reveal).
+      const attrLink = card2.querySelector(".hp-rankings__attribution");
+      if (attrLink) attrLink.setAttribute("data-rankings-attrib-hover", "");
+    }
+    return () => {
+      const card2 =
+        ref.current && ref.current.querySelectorAll(".hp-rankings__card")[1];
+      if (card2) {
+        forceHover(card2, false);
+        const attrLink = card2.querySelector(".hp-rankings__attribution");
+        if (attrLink) attrLink.removeAttribute("data-rankings-attrib-hover");
+      }
+    };
+  }, []);
+  return (
+    <div
+      ref={ref}
+      className="rankings-storybook-backdrop"
+      dangerouslySetInnerHTML={{ __html: DEFAULT_HTML }}
+    />
+  );
+};
+
+export const AttribHoverSuppressLearnMore = {
+  name: "Attribution hover: learn-more NOT revealed when attribution is hovered (post-approval fix)",
+  globals: viewport(1280),
+  render: () => <AttribHoverPage />,
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    const card2 = p.cards[1];
+    await expect(card2).not.toBeNull();
+
+    // Wait for [data-rankings-hover] to be applied (whole-card hover).
+    await waitFor(() =>
+      expect(card2.hasAttribute("data-rankings-hover")).toBe(true)
+    );
+    // Wait for data-rankings-attrib-hover to be applied (attribution-specific hover).
+    await waitFor(() =>
+      expect(
+        card2
+          .querySelector(".hp-rankings__attribution")
+          ?.hasAttribute("data-rankings-attrib-hover")
+      ).toBe(true)
+    );
+
+    const lm = card2.querySelector(".hp-rankings__learn-more");
+    await expect(lm).not.toBeNull();
+
+    // CRITICAL ASSERTION: even though the card is in the hover state
+    // ([data-rankings-hover]), hovering specifically over the attribution link
+    // must suppress the learn-more reveal.
+    // opacity must be 0 (NOT 1) and pointer-events must be none (NOT auto).
+    await waitFor(() => expect(getComputedStyle(lm).opacity).toBe("0"));
+    await waitFor(() =>
+      expect(getComputedStyle(lm).pointerEvents).toBe("none")
+    );
+  },
+};
+
+// ─── CardBodyHoverRevealsLearnMore ───────────────────────────────────────────
+// Positive case: when the pointer is on the card body (NOT over the attribution
+// link), learn-more IS revealed. The [data-rankings-hover] on the card fires
+// the reveal rule and NO suppression applies.
+
+export const CardBodyHoverRevealsLearnMore = {
+  name: "Card body hover: learn-more IS revealed when attribution is NOT hovered (positive case, post-approval)",
+  globals: viewport(1280),
+  render: () => <LearnMoreHoverPage />,
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    const card2 = p.cards[1];
+    await expect(card2).not.toBeNull();
+
+    // card2 has [data-rankings-hover] from LearnMoreHoverPage.
+    await waitFor(() =>
+      expect(card2.hasAttribute("data-rankings-hover")).toBe(true)
+    );
+
+    // data-rankings-attrib-hover must NOT be on the attribution link —
+    // confirming the suppression rule does NOT fire.
+    const attrLink = card2.querySelector(".hp-rankings__attribution");
+    await expect(attrLink?.hasAttribute("data-rankings-attrib-hover")).toBe(
+      false
+    );
+
+    const lm = card2.querySelector(".hp-rankings__learn-more");
+    await expect(lm).not.toBeNull();
+
+    // Positive case: learn-more IS revealed (opacity 1, pointer-events auto).
+    await waitFor(() => expect(getComputedStyle(lm).opacity).toBe("1"));
+    await waitFor(() =>
+      expect(getComputedStyle(lm).pointerEvents).toBe("auto")
+    );
+  },
+};
+
 // ─── computeAlpha pure-function unit test ────────────────────────────────────
 
 export const ComputeAlphaUnit = {
