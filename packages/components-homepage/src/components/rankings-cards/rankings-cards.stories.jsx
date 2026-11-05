@@ -2831,6 +2831,73 @@ export const OpacityTeardownRestores = {
   },
 };
 
+// ─── R7: OpacityTeardownRestoresPriority — teardown preserves !important ──────
+
+// R7 (review-fix cycle 2): if a consumer pre-sets --hp-strip-opacity with
+// !important priority, teardown must restore both value AND priority.
+// Without the fix, teardown calls setProperty(name, value) (no third arg),
+// silently dropping the !important — this test catches that regression.
+const OpacityTeardownRestoresPriorityPage = () => {
+  const ref = useRef(null);
+  useEffect(() => {
+    const card0 =
+      ref.current && ref.current.querySelector(".hp-rankings__card");
+    const PRESET_VALUE = "0.42";
+    const PRESET_PRIORITY = "important";
+    // Explicitly set with !important priority so teardown must preserve it.
+    if (card0)
+      card0.style.setProperty(
+        "--hp-strip-opacity",
+        PRESET_VALUE,
+        PRESET_PRIORITY
+      );
+    const teardown = initRankingsCards(ref.current);
+    // Give IO a moment to snapshot and overwrite the value.
+    const t = setTimeout(() => {
+      teardown();
+      const section =
+        ref.current && ref.current.querySelector("section.hp-rankings");
+      if (section) section.dataset.tornDown = "true";
+    }, 200);
+    return () => clearTimeout(t);
+  }, []);
+  return (
+    <div
+      ref={ref}
+      className="rankings-storybook-backdrop"
+      dangerouslySetInnerHTML={{ __html: DEFAULT_HTML }}
+    />
+  );
+};
+
+export const OpacityTeardownRestoresPriority = {
+  name: "Opacity teardown: preserves !important priority on pre-existing --hp-strip-opacity",
+  globals: viewport(1280),
+  render: () => <OpacityTeardownRestoresPriorityPage />,
+  play: async ({ canvasElement }) => {
+    const section = canvasElement.querySelector("section.hp-rankings");
+    await waitFor(() => expect(section.dataset.tornDown).toBe("true"));
+
+    const card0 = canvasElement.querySelector(".hp-rankings__card");
+
+    // Value must be restored to the preset.
+    const restoredValue = card0.style.getPropertyValue("--hp-strip-opacity");
+    await expect(restoredValue).toBe("0.42");
+
+    // Priority must also be restored — this is the R7 regression check.
+    const restoredPriority =
+      card0.style.getPropertyPriority("--hp-strip-opacity");
+    await expect(restoredPriority).toBe("important");
+
+    // Cards 1+ had no prior value — teardown must still remove (empty string).
+    const card1 = canvasElement.querySelectorAll(".hp-rankings__card")[1];
+    await expect(card1.style.getPropertyValue("--hp-strip-opacity")).toBe("");
+    await expect(card1.style.getPropertyPriority("--hp-strip-opacity")).toBe(
+      ""
+    );
+  },
+};
+
 // ─── R4: IoAbsent — graceful handling when IntersectionObserver is undefined ─
 
 // Stubs IntersectionObserver as undefined, calls initRankingsCards, asserts no
