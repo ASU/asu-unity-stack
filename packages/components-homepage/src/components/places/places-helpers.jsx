@@ -94,8 +94,9 @@ export const LOCATIONS = [
   },
 ];
 
+// Figma "Locations video" alt text annotation (1920 frame 13906:15950), verbatim.
 export const VIDEO_DESCRIPTION =
-  "Silent video: scenes from ASU’s campuses and locations."; // placeholder: the content team writes it against the final cut
+  "Aerial views of Arizona State University's Tempe campus and Sun Devil Stadium, along with students exploring a rocky outdoor area and an ASU building exterior.";
 
 const slug = name =>
   name
