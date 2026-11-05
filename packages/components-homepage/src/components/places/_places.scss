@@ -331,6 +331,19 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
   color: $uds-color-base-white;
 }
 
+// The theme's a:visited (0,2,1) turns these maroon, ~1.1:1 on the dark surfaces (1.4.3); visited keeps the colour.
+.hp-places .hp-places__link:visited {
+  color: $uds-color-brand-gold;
+}
+
+.hp-places .hp-places__see-all:visited {
+  color: $uds-color-base-white;
+}
+
+.hp-places .hp-places__cta:visited {
+  color: var(--hp-places-cta-ink);
+}
+
 // The media needs script (a video does nothing without it): hidden in the baseline.
 .hp-places__media,
 .hp-places__mbtn {
