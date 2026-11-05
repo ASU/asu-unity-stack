@@ -7,9 +7,13 @@
 //   - RankingCard typedef extended: isSummary, seeAllTopHref, seeAllTopLabel.
 //   - rankingsCardsHtml emits sticky wrapper + spacer around .hp-rankings (v4 §v4.3.1c).
 //   - rankingsCardsHtml emits per-slide ARIA labelling on every <li> (v4 §v4.4.2c).
-//   - rankingsCardsHtml emits .hp-rankings__learn-more on every card (v4 §v4.3.1a).
 //   - Card 1 (isSummary) emits .hp-rankings__see-all-top instead of
 //     .hp-rankings__attribution; uses .hp-rankings__card--summary modifier (v4 §v4.4.2b).
+//
+// Post-approval change (supersedes v4 §v4.3.1a):
+//   - .hp-rankings__learn-more removed from all cards per human approver decision.
+//     Card footer keeps only the primary link (attribution on cards 2–11;
+//     see-all-top on card 1). See .pipeline/impl-report.md §Post-approval.
 
 // Re-export test helpers from sibling components so stories only need one import.
 export { realPointer } from "../video-control/video-control-helpers.jsx";
@@ -370,11 +374,12 @@ export const rankingsCardsHtml = ({
         : "hp-rankings__card";
 
       // Build the footer content.
-      // Summary card (card 1): .hp-rankings__see-all-top + .hp-rankings__learn-more
-      // Regular cards: .hp-rankings__attribution + .hp-rankings__learn-more
+      // Summary card (card 1): .hp-rankings__see-all-top only (v4 §v4.4.2b).
+      // Regular cards: .hp-rankings__attribution only.
+      // Note: .hp-rankings__learn-more removed per post-approval human decision.
       let footerContent;
       if (isSummary) {
-        // Card 1 footer: see-all-top link + learn-more (v4 §v4.4.2b).
+        // Card 1 footer: see-all-top link only (v4 §v4.4.2b).
         footerContent =
           `<a class="hp-rankings__see-all-top" href="${escapeHtml(sanitizeHref(seeAllTopHref))}">` +
           `${escapeHtml(seeAllTopLabel)}` +
@@ -382,33 +387,13 @@ export const rankingsCardsHtml = ({
           ` aria-hidden="true" focusable="false">` +
           `<path fill="currentColor" d="${ARROW_RIGHT_PATH}"/>` +
           `</svg>` +
-          `</a>` +
-          // Learn-more: always in DOM; visually hidden by CSS (v4 §v4.3.1a).
-          `<a class="hp-rankings__learn-more"` +
-          ` href="${escapeHtml(sanitizeHref(seeAllTopHref))}"` +
-          ` data-rankings-learn-more>` +
-          `Learn more` +
-          `<svg class="hp-rankings__learn-more-icon" viewBox="0 0 448 512"` +
-          ` aria-hidden="true" focusable="false">` +
-          `<path fill="currentColor" d="${ARROW_RIGHT_PATH}"/>` +
-          `</svg>` +
           `</a>`;
       } else {
-        // Regular card footer: attribution + learn-more (v4 §v4.3.1a).
+        // Regular card footer: attribution only.
         footerContent =
           `<a class="hp-rankings__attribution" href="${escapeHtml(sanitizeHref(attributionHref))}">` +
           `${escapeHtml(attributionLabel)}` +
           `<svg class="hp-rankings__attribution-icon" viewBox="0 0 448 512"` +
-          ` aria-hidden="true" focusable="false">` +
-          `<path fill="currentColor" d="${ARROW_RIGHT_PATH}"/>` +
-          `</svg>` +
-          `</a>` +
-          // Learn-more: always in DOM; visually hidden by CSS (v4 §v4.3.1a).
-          `<a class="hp-rankings__learn-more"` +
-          ` href="${escapeHtml(sanitizeHref(attributionHref))}"` +
-          ` data-rankings-learn-more>` +
-          `Learn more` +
-          `<svg class="hp-rankings__learn-more-icon" viewBox="0 0 448 512"` +
           ` aria-hidden="true" focusable="false">` +
           `<path fill="currentColor" d="${ARROW_RIGHT_PATH}"/>` +
           `</svg>` +

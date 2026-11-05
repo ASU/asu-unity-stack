@@ -11,7 +11,6 @@
 //   - aspect-ratio: 2 / 1              on .hp-rankings__media (Q1=A; v3 §3.1).
 //   - object-position: center 30%      on .hp-rankings__img (Q4=C; §11.2 Figma TODO).
 //   - Hover transition: 150ms          on .hp-rankings__img--hover (§4.5 TODO).
-//   - Learn-more reveal: 180ms         (v4 §v4.3.1a TODO: confirm with design).
 //   - Glass bg:  rgba(255,255,255,0.08) Brand-skill exception — glass morphism
 //                                       (v4 §v4.7.1).
 //   - Glass shadow: 0 2px 12px rgba(0,0,0,0.32)   TODO: request $hp-rankings-shadow token.
@@ -222,35 +221,6 @@
   vertical-align: -0.125em;
 }
 
-// ── Learn-more reveal (v4 §v4.3.1a) ─────────────────────────────────────────
-// Always in the a11y tree; visually hidden by opacity + translate.
-// Revealed on hover (pointer) and focus-within (keyboard).
-
-.hp-rankings__learn-more {
-  // Always in a11y tree; visually hidden by opacity + translate.
-  opacity: 0;
-  transform: translateY(4px);
-  pointer-events: none; // not clickable until revealed
-  display: inline-flex;
-  align-items: center;
-  gap: $uds-size-spacing-half;
-  min-width: 2.75rem; // 44px floor — WCAG 2.5.5 (v4 §v4.6).
-  min-height: 2.75rem; // 44px floor — WCAG 2.5.5 (v4 §v4.6).
-  color: inherit; // inherits card color (dark on glass, dark on solid-white hover)
-  text-decoration: underline;
-  margin-inline-start: auto; // right-aligned inside the footer
-
-  @media (prefers-reduced-motion: no-preference) {
-    transition: opacity 180ms ease, transform 180ms ease; // TODO: confirm with design.
-  }
-}
-
-.hp-rankings__learn-more-icon {
-  height: 1em;
-  width: auto;
-  vertical-align: -0.125em;
-}
-
 // ── Hover state (class flip — colour + image swap) ────────────────────────────
 // Gated by (hover: hover) to prevent touch-tablet "sticky hover".
 // The [data-rankings-hover] mirror attribute bypasses this gate so Storybook
@@ -272,12 +242,10 @@
     opacity: 1;
   }
 
-  // Card-hover maroon: flip all three interactive link classes (v4 §v4.7.2 FIX).
-  // Previously only .hp-rankings__attribution:hover was changed — incorrect.
-  // The locked contract requires any pointer inside the card to flip ALL links.
+  // Card-hover maroon: flip attribution and see-all-top link classes (v4 §v4.7.2 FIX).
+  // Post-approval: .hp-rankings__learn-more removed; only attribution and see-all-top remain.
   .hp-rankings__card:hover .hp-rankings__attribution,
-  .hp-rankings__card:hover .hp-rankings__see-all-top,
-  .hp-rankings__card:hover .hp-rankings__learn-more {
+  .hp-rankings__card:hover .hp-rankings__see-all-top {
     color: $uds-color-brand-maroon;
   }
 
@@ -286,43 +254,16 @@
     --hp-strip-opacity: 0.99;
   }
 
-  // Learn-more: revealed on card hover (v4 §v4.3.1a).
-  .hp-rankings__card:hover .hp-rankings__learn-more {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
+  // Post-approval: learn-more reveal rules removed (human decision, WWWCMS-233).
 
-  // Post-approval: suppress learn-more when the pointer is SPECIFICALLY over
-  // the attribution link or see-all-top (human reviewer request 2026-11-05).
-  // The pointer is inside the card (so the reveal rule above fires) but when
-  // it is directly over the footer link, learn-more must stay hidden.
-  //
-  // :has() support: Chrome 105+, Safari 15.4+, Firefox 121+.
-  // Specificity matches the reveal rule above (same depth); cascade position
-  // (placed after) ensures this wins cleanly without !important.
-  //
-  // Keyboard focus behaviour is NOT changed — the :focus-within reveal rule
-  // below is unaffected. Tab to attribution → learn-more still reveals.
-  .hp-rankings__card:hover:has(.hp-rankings__attribution:hover) .hp-rankings__learn-more,
-  .hp-rankings__card:hover:has(.hp-rankings__see-all-top:hover) .hp-rankings__learn-more {
-    opacity: 0;
-    transform: translateY(4px);
-    pointer-events: none;
-  }
+  // Post-approval: :has(.hp-rankings__attribution:hover) suppression rules removed
+  // (learn-more element no longer exists in the DOM).
 }
 
 // ── Focus-within (keyboard) ───────────────────────────────────────────────────
 // v4 §v4.7.5 FIX: Remove the full card inversion on :focus-within.
-// ONLY the focus ring + maroon color-flip + learn-more reveal are retained.
+// ONLY the focus ring + maroon color-flip are retained (learn-more removed).
 // The card background does NOT flip to white; the default image does NOT fade.
-
-// Learn-more reveal on focus-within (v4 §v4.3.1a — approved progressive disclosure).
-.hp-rankings__card:focus-within .hp-rankings__learn-more {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
 
 // Scroll-opacity focus override (v4 §v4.3.1b).
 .hp-rankings__card:focus-within .hp-rankings__card-footer {
@@ -332,8 +273,7 @@
 // Direct focus-visible color override — when a single link gets keyboard focus
 // that link flips to maroon (v4 §v4.7.2).
 .hp-rankings__attribution:focus-visible,
-.hp-rankings__see-all-top:focus-visible,
-.hp-rankings__learn-more:focus-visible {
+.hp-rankings__see-all-top:focus-visible {
   color: $uds-color-brand-maroon;
 }
 
@@ -356,10 +296,10 @@
   opacity: 1;
 }
 
-// Card-hover maroon in Storybook mirror (v4 §v4.7.2 — all three link classes).
+// Card-hover maroon in Storybook mirror (v4 §v4.7.2 — attribution and see-all-top only).
+// Post-approval: .hp-rankings__learn-more removed from selector.
 .hp-rankings__card[data-rankings-hover] .hp-rankings__attribution,
-.hp-rankings__card[data-rankings-hover] .hp-rankings__see-all-top,
-.hp-rankings__card[data-rankings-hover] .hp-rankings__learn-more {
+.hp-rankings__card[data-rankings-hover] .hp-rankings__see-all-top {
   color: $uds-color-brand-maroon;
 }
 
@@ -368,22 +308,8 @@
   --hp-strip-opacity: 0.99;
 }
 
-// Learn-more revealed in Storybook mirror (v4 §v4.3.1a).
-.hp-rankings__card[data-rankings-hover] .hp-rankings__learn-more {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-// Post-approval: Storybook mirror for attribution-hover suppression.
-// When [data-rankings-hover] is on the card AND [data-rankings-attrib-hover]
-// is on the attribution link (or see-all-top), learn-more must stay hidden.
-// Mirrors the :has(.hp-rankings__attribution:hover) rule above.
-.hp-rankings__card[data-rankings-hover]:has([data-rankings-attrib-hover]) .hp-rankings__learn-more {
-  opacity: 0;
-  transform: translateY(4px);
-  pointer-events: none;
-}
+// Post-approval: learn-more Storybook mirror rules removed (learn-more element removed).
+// Post-approval: attrib-hover suppression mirror rule removed (learn-more removed).
 
 // ── Controls row (nav + see-all) ──────────────────────────────────────────────
 
@@ -459,7 +385,6 @@
 
 .hp-rankings__attribution:focus:not(:focus-visible),
 .hp-rankings__see-all-top:focus:not(:focus-visible),
-.hp-rankings__learn-more:focus:not(:focus-visible),
 .hp-rankings__nav-btn:focus:not(:focus-visible),
 .hp-rankings__see-all:focus:not(:focus-visible) {
   box-shadow: none !important; // Suppress the tap ring from theme's button:focus rule.
@@ -467,7 +392,6 @@
 
 .hp-rankings__attribution:focus-visible,
 .hp-rankings__see-all-top:focus-visible,
-.hp-rankings__learn-more:focus-visible,
 .hp-rankings__nav-btn:focus-visible,
 .hp-rankings__see-all:focus-visible {
   // transparent outline catches forced-colors mode (box-shadow is stripped by UA).
@@ -483,11 +407,7 @@
   .hp-rankings__track {
     scroll-behavior: auto;
   }
-
-  .hp-rankings__learn-more {
-    transition: none;
-    transform: none; // snap-reveal, no translate motion (v4 §v4.3.1a).
-  }
+  // Post-approval: .hp-rankings__learn-more reduced-motion rules removed (element removed).
 }
 
 // ── Forced colors ─────────────────────────────────────────────────────────────
@@ -516,23 +436,5 @@
     opacity: 1; // Forced-colors doesn't support opacity; use explicit GrayText color instead.
   }
 
-  // Opacity-only Learn-more reveal fails in forced-colors; use visibility so
-  // the reveal is still perceivable in high-contrast mode (v4 §v4.3.1a).
-  .hp-rankings__learn-more {
-    visibility: hidden;
-  }
-
-  .hp-rankings__card:hover .hp-rankings__learn-more,
-  .hp-rankings__card:focus-within .hp-rankings__learn-more,
-  .hp-rankings__card[data-rankings-hover] .hp-rankings__learn-more {
-    visibility: visible;
-  }
-
-  // Post-approval: suppress learn-more in forced-colors when attribution is hovered.
-  // Mirrors the opacity suppression rule above for forced-colors mode.
-  .hp-rankings__card:hover:has(.hp-rankings__attribution:hover) .hp-rankings__learn-more,
-  .hp-rankings__card:hover:has(.hp-rankings__see-all-top:hover) .hp-rankings__learn-more,
-  .hp-rankings__card[data-rankings-hover]:has([data-rankings-attrib-hover]) .hp-rankings__learn-more {
-    visibility: hidden;
-  }
+  // Post-approval: learn-more forced-colors rules removed (element removed).
 }

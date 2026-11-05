@@ -161,11 +161,7 @@ const expectComplete = async (canvasElement, { cardCount = 11 } = {}) => {
   // default 11-card dataset (1 summary + 10 regular cards).
   // For non-default datasets that might have no summary card, this is still correct
   // because we check per-card in the detailed assertion loops.
-  // Only check that there is at least one interactive link per card via learn-more.
-  const learnMoreLinks = Array.from(
-    p.section ? p.section.querySelectorAll(".hp-rankings__learn-more") : []
-  );
-  await expect(learnMoreLinks).toHaveLength(cardCount);
+  // Post-approval: .hp-rankings__learn-more is removed; no assertion here.
   // Nav group
   await expect(p.navGroup).not.toBeNull();
   await expect(p.navGroup.getAttribute("role")).toBe("group");
@@ -243,10 +239,8 @@ export const Default = {
         card.querySelector(".hp-rankings__card-footer")
       ).not.toBeNull();
 
-      // Learn-more link must be present on every card (v4 §v4.3.1a).
-      await expect(
-        card.querySelector(".hp-rankings__learn-more")
-      ).not.toBeNull();
+      // Post-approval: no .hp-rankings__learn-more on any card.
+      await expect(card.querySelector(".hp-rankings__learn-more")).toBeNull();
 
       // Per-slide labelling (v4 §v4.4.2c).
       await expect(card.getAttribute("aria-roledescription")).toBe("slide");
@@ -2402,7 +2396,7 @@ export const InvalidHeadingIdBigInt = {
 // v4 amendment stories — rows 31–64 (design-doc §v4.9)
 // ═══════════════════════════════════════════════════════════════════════════════
 
-// ─── Row 31 — Learn-more present on every card (default 11-card render) ──────
+// ─── Row 31 — Default 11-card render (post-approval: learn-more removed) ─────
 
 export const Default11Cards = {
   name: "Default 11 cards (v4)",
@@ -2415,10 +2409,8 @@ export const Default11Cards = {
 
     for (let i = 0; i < p.cards.length; i += 1) {
       const card = p.cards[i];
-      const lm = card.querySelector(".hp-rankings__learn-more");
-      await expect(lm).not.toBeNull();
-      await expect(lm.getAttribute("href")).toBeTruthy();
-      await expect(lm.textContent.trim()).toContain("Learn more");
+      // Post-approval: no learn-more on any card.
+      await expect(card.querySelector(".hp-rankings__learn-more")).toBeNull();
 
       // Per-slide labelling (row 50 / §v4.4.2c).
       await expect(card.getAttribute("aria-roledescription")).toBe("slide");
@@ -2447,152 +2439,6 @@ export const Default11Cards = {
           card.querySelector(".hp-rankings__see-all-top")
         ).toBeNull();
       }
-    }
-  },
-};
-
-// ─── Row 32 — Learn-more hover reveal ────────────────────────────────────────
-
-const LearnMoreHoverPage = () => {
-  const ref = useRef(null);
-  useEffect(() => {
-    const card =
-      ref.current && ref.current.querySelectorAll(".hp-rankings__card")[1];
-    if (card) forceHover(card);
-    return () => {
-      if (card) forceHover(card, false);
-    };
-  }, []);
-  return (
-    <div
-      ref={ref}
-      className="rankings-storybook-backdrop"
-      dangerouslySetInnerHTML={{ __html: DEFAULT_HTML }}
-    />
-  );
-};
-
-export const LearnMoreHover = {
-  name: "Learn-more hover reveal",
-  globals: viewport(1280),
-  render: () => <LearnMoreHoverPage />,
-  play: async ({ canvasElement }) => {
-    const p = parts(canvasElement);
-    const card2 = p.cards[1];
-    await expect(card2).not.toBeNull();
-    const lm = card2.querySelector(".hp-rankings__learn-more");
-    await expect(lm).not.toBeNull();
-    await waitFor(() => expect(getComputedStyle(lm).opacity).toBe("1"));
-    // pointer-events should be auto
-    await waitFor(() =>
-      expect(getComputedStyle(lm).pointerEvents).toBe("auto")
-    );
-  },
-};
-
-// ─── Row 33 — Learn-more focus-within reveal ────────────────────────────────
-
-export const LearnMoreFocus = {
-  name: "Learn-more focus-within reveal",
-  globals: viewport(1280),
-  render: () => <LivePage html={DEFAULT_HTML} />,
-  play: async ({ canvasElement }) => {
-    await expect(realPointer.available).toBe(true);
-    const p = parts(canvasElement);
-    // Focus the attribution link on card 2 to trigger :focus-within on the card.
-    const card2 = p.cards[1];
-    const attrLink = card2.querySelector(".hp-rankings__attribution");
-    await expect(attrLink).not.toBeNull();
-    attrLink.focus();
-    await waitFor(() =>
-      expect(
-        document.activeElement === attrLink ||
-          card2.contains(document.activeElement)
-      ).toBe(true)
-    );
-    const lm = card2.querySelector(".hp-rankings__learn-more");
-    await waitFor(() => expect(getComputedStyle(lm).opacity).toBe("1"));
-  },
-};
-
-// ─── Row 34 — Learn-more reduced-motion ─────────────────────────────────────
-
-const LearnMoreReducedMotionPage = () => {
-  const ref = useRef(null);
-  useEffect(() => {
-    const card =
-      ref.current && ref.current.querySelectorAll(".hp-rankings__card")[1];
-    if (card) forceHover(card);
-    return () => {
-      if (card) forceHover(card, false);
-    };
-  }, []);
-  return (
-    <div
-      ref={ref}
-      className="rankings-storybook-backdrop"
-      dangerouslySetInnerHTML={{ __html: DEFAULT_HTML }}
-    />
-  );
-};
-
-export const LearnMoreReducedMotion = {
-  name: "Learn-more reduced-motion",
-  globals: viewport(1280),
-  render: () => <LearnMoreReducedMotionPage />,
-  play: async ({ canvasElement }) => {
-    await emulateReducedMotion(true);
-    try {
-      const p = parts(canvasElement);
-      const lm = p.cards[1].querySelector(".hp-rankings__learn-more");
-      await waitFor(() => expect(getComputedStyle(lm).opacity).toBe("1"));
-      // Under reduced-motion, the transition duration must be 0s.
-      await expect(getComputedStyle(lm).transitionDuration).toBe("0s");
-      // transform must be none or the identity matrix (browsers normalize differently).
-      const t = getComputedStyle(lm).transform;
-      await expect(t === "none" || t === "matrix(1, 0, 0, 1, 0, 0)").toBe(true);
-    } finally {
-      await emulateReducedMotion(false);
-    }
-  },
-};
-
-// ─── Row 35 — Learn-more forced-colors ──────────────────────────────────────
-
-const LearnMoreForcedColorsPage = () => {
-  const ref = useRef(null);
-  useEffect(() => {
-    const card =
-      ref.current && ref.current.querySelectorAll(".hp-rankings__card")[1];
-    if (card) forceHover(card);
-    return () => {
-      if (card) forceHover(card, false);
-    };
-  }, []);
-  return (
-    <div
-      ref={ref}
-      className="rankings-storybook-backdrop"
-      dangerouslySetInnerHTML={{ __html: DEFAULT_HTML }}
-    />
-  );
-};
-
-export const LearnMoreForcedColors = {
-  name: "Learn-more forced-colors visibility",
-  globals: viewport(1280),
-  render: () => <LearnMoreForcedColorsPage />,
-  play: async ({ canvasElement }) => {
-    await emulateForcedColors(true);
-    try {
-      const p = parts(canvasElement);
-      const lm = p.cards[1].querySelector(".hp-rankings__learn-more");
-      // Under forced-colors + hover, visibility must be visible.
-      await waitFor(() =>
-        expect(getComputedStyle(lm).visibility).toBe("visible")
-      );
-    } finally {
-      await emulateForcedColors(false);
     }
   },
 };
@@ -3097,10 +2943,8 @@ export const Card1SeeAllTop = {
     await expect(
       card1.querySelector(".hp-rankings__see-all-top").textContent.trim()
     ).toContain("See all");
-    // Learn-more also present on card 1.
-    await expect(
-      card1.querySelector(".hp-rankings__learn-more")
-    ).not.toBeNull();
+    // Post-approval: no learn-more on card 1.
+    await expect(card1.querySelector(".hp-rankings__learn-more")).toBeNull();
     // No attribution on card 1.
     await expect(card1.querySelector(".hp-rankings__attribution")).toBeNull();
     // Cards 2–11 have attribution and no see-all-top.
@@ -3127,22 +2971,18 @@ export const FocusOrder11Cards = {
     await waitFor(() =>
       expect(p.prevBtn.classList.contains("is-disabled")).toBe(true)
     );
-    // Card 1: see-all-top → learn-more
+    // Card 1: see-all-top only (no learn-more after post-approval removal).
     const card1 = p.cards[0];
     const sat = card1.querySelector(".hp-rankings__see-all-top");
-    const lm1 = card1.querySelector(".hp-rankings__learn-more");
     await expect(sat).not.toBeNull();
-    await expect(lm1).not.toBeNull();
-    // Card 2: attribution → learn-more
+    // Card 2: attribution only (no learn-more after post-approval removal).
     const card2 = p.cards[1];
     const attr2 = card2.querySelector(".hp-rankings__attribution");
-    const lm2 = card2.querySelector(".hp-rankings__learn-more");
     await expect(attr2).not.toBeNull();
-    await expect(lm2).not.toBeNull();
-    // Verify see-all-top appears before learn-more in DOM order on card 1.
-    const satIdx = Array.from(card1.querySelectorAll("a")).indexOf(sat);
-    const lm1Idx = Array.from(card1.querySelectorAll("a")).indexOf(lm1);
-    await expect(satIdx).toBeLessThan(lm1Idx);
+    // Verify no learn-more on any card (post-approval).
+    for (const card of p.cards) {
+      await expect(card.querySelector(".hp-rankings__learn-more")).toBeNull();
+    }
   },
 };
 
@@ -3264,12 +3104,11 @@ export const TouchTargets = {
     await expect(satr.width).toBeGreaterThanOrEqual(44);
     await expect(satr.height).toBeGreaterThanOrEqual(44);
 
-    // Learn-more (row 58): visible after forceHover on card 2.
-    const lm = p.cards[1].querySelector(".hp-rankings__learn-more");
-    await waitFor(() => expect(getComputedStyle(lm).opacity).toBe("1"));
-    const lmr = lm.getBoundingClientRect();
-    await expect(lmr.width).toBeGreaterThanOrEqual(44);
-    await expect(lmr.height).toBeGreaterThanOrEqual(44);
+    // Post-approval: no learn-more element to check (row 58 removed).
+    // Confirm no learn-more anywhere.
+    await expect(
+      canvasElement.querySelector(".hp-rankings__learn-more")
+    ).toBeNull();
 
     // Nav buttons (row 59): width ≥ 44 AND height ≥ 44.
     await expect(
@@ -3312,7 +3151,7 @@ const CardHoverMaroonPage = () => {
 };
 
 export const CardHoverMaroon = {
-  name: "Card-hover maroon: all three link classes flip (v4 §v4.7.2)",
+  name: "Card-hover maroon: attribution and see-all-top links flip (v4 §v4.7.2)",
   globals: viewport(1280),
   render: () => <CardHoverMaroonPage />,
   play: async ({ canvasElement }) => {
@@ -3331,11 +3170,8 @@ export const CardHoverMaroon = {
       expect(getComputedStyle(attr).color).toBe("rgb(140, 29, 64)")
     );
 
-    // Learn-more must also be maroon.
-    const lm = card2.querySelector(".hp-rankings__learn-more");
-    await waitFor(() =>
-      expect(getComputedStyle(lm).color).toBe("rgb(140, 29, 64)")
-    );
+    // Post-approval: no learn-more element exists.
+    await expect(card2.querySelector(".hp-rankings__learn-more")).toBeNull();
   },
 };
 
@@ -3410,134 +3246,6 @@ export const DefaultImgNoTransition = {
       // Hover image should have non-zero transition under no-preference.
       // (Under reduced-motion this would be 0s — we just verify default img = 0s.)
     }
-  },
-};
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// Post-approval change: attribution hover — learn-more must NOT reveal
-// when pointer is over the attribution link (or see-all-top on card 1).
-// Design-doc §v4.3.1a + post-approval human reviewer request.
-// ═══════════════════════════════════════════════════════════════════════════════
-
-// ─── AttribHoverSuppressLearnMore ────────────────────────────────────────────
-// When the card is hovered (so normally learn-more would reveal) but the
-// pointer is specifically over the attribution link, learn-more must stay
-// hidden. The fix uses `:has(.hp-rankings__attribution:hover)` in CSS.
-//
-// Test approach: apply BOTH [data-rankings-hover] on the card (simulates the
-// whole-card hover that normally reveals learn-more) AND [data-rankings-attrib-hover]
-// on the attribution link (simulates attribution-link-specific hover that
-// should suppress the reveal). The CSS suppression rule will target:
-//   .hp-rankings__card[data-rankings-hover]:has([data-rankings-attrib-hover])
-//     .hp-rankings__learn-more { opacity: 0; pointer-events: none; }
-// OR equivalently, after the `:has()` approach:
-//   .hp-rankings__card:has(.hp-rankings__attribution[data-rankings-attrib-hover])
-//     .hp-rankings__learn-more { opacity: 0; pointer-events: none; }
-//
-// This is a RED test: before the CSS fix is applied, forceHover on the card
-// will reveal learn-more (opacity: 1), failing the assertion `opacity: 0`.
-
-const AttribHoverPage = () => {
-  const ref = useRef(null);
-  useEffect(() => {
-    const card2 =
-      ref.current && ref.current.querySelectorAll(".hp-rankings__card")[1];
-    if (card2) {
-      // Step 1: apply whole-card hover (normally reveals learn-more).
-      forceHover(card2);
-      // Step 2: mark the attribution link as also-hovered (suppresses reveal).
-      const attrLink = card2.querySelector(".hp-rankings__attribution");
-      if (attrLink) attrLink.setAttribute("data-rankings-attrib-hover", "");
-    }
-    return () => {
-      const card2 =
-        ref.current && ref.current.querySelectorAll(".hp-rankings__card")[1];
-      if (card2) {
-        forceHover(card2, false);
-        const attrLink = card2.querySelector(".hp-rankings__attribution");
-        if (attrLink) attrLink.removeAttribute("data-rankings-attrib-hover");
-      }
-    };
-  }, []);
-  return (
-    <div
-      ref={ref}
-      className="rankings-storybook-backdrop"
-      dangerouslySetInnerHTML={{ __html: DEFAULT_HTML }}
-    />
-  );
-};
-
-export const AttribHoverSuppressLearnMore = {
-  name: "Attribution hover: learn-more NOT revealed when attribution is hovered (post-approval fix)",
-  globals: viewport(1280),
-  render: () => <AttribHoverPage />,
-  play: async ({ canvasElement }) => {
-    const p = parts(canvasElement);
-    const card2 = p.cards[1];
-    await expect(card2).not.toBeNull();
-
-    // Wait for [data-rankings-hover] to be applied (whole-card hover).
-    await waitFor(() =>
-      expect(card2.hasAttribute("data-rankings-hover")).toBe(true)
-    );
-    // Wait for data-rankings-attrib-hover to be applied (attribution-specific hover).
-    await waitFor(() =>
-      expect(
-        card2
-          .querySelector(".hp-rankings__attribution")
-          ?.hasAttribute("data-rankings-attrib-hover")
-      ).toBe(true)
-    );
-
-    const lm = card2.querySelector(".hp-rankings__learn-more");
-    await expect(lm).not.toBeNull();
-
-    // CRITICAL ASSERTION: even though the card is in the hover state
-    // ([data-rankings-hover]), hovering specifically over the attribution link
-    // must suppress the learn-more reveal.
-    // opacity must be 0 (NOT 1) and pointer-events must be none (NOT auto).
-    await waitFor(() => expect(getComputedStyle(lm).opacity).toBe("0"));
-    await waitFor(() =>
-      expect(getComputedStyle(lm).pointerEvents).toBe("none")
-    );
-  },
-};
-
-// ─── CardBodyHoverRevealsLearnMore ───────────────────────────────────────────
-// Positive case: when the pointer is on the card body (NOT over the attribution
-// link), learn-more IS revealed. The [data-rankings-hover] on the card fires
-// the reveal rule and NO suppression applies.
-
-export const CardBodyHoverRevealsLearnMore = {
-  name: "Card body hover: learn-more IS revealed when attribution is NOT hovered (positive case, post-approval)",
-  globals: viewport(1280),
-  render: () => <LearnMoreHoverPage />,
-  play: async ({ canvasElement }) => {
-    const p = parts(canvasElement);
-    const card2 = p.cards[1];
-    await expect(card2).not.toBeNull();
-
-    // card2 has [data-rankings-hover] from LearnMoreHoverPage.
-    await waitFor(() =>
-      expect(card2.hasAttribute("data-rankings-hover")).toBe(true)
-    );
-
-    // data-rankings-attrib-hover must NOT be on the attribution link —
-    // confirming the suppression rule does NOT fire.
-    const attrLink = card2.querySelector(".hp-rankings__attribution");
-    await expect(attrLink?.hasAttribute("data-rankings-attrib-hover")).toBe(
-      false
-    );
-
-    const lm = card2.querySelector(".hp-rankings__learn-more");
-    await expect(lm).not.toBeNull();
-
-    // Positive case: learn-more IS revealed (opacity 1, pointer-events auto).
-    await waitFor(() => expect(getComputedStyle(lm).opacity).toBe("1"));
-    await waitFor(() =>
-      expect(getComputedStyle(lm).pointerEvents).toBe("auto")
-    );
   },
 };
 
@@ -3623,13 +3331,21 @@ export const NoLearnMoreInFooter = {
         // Card 1 (summary): 1 link — .hp-rankings__see-all-top only.
         // (No .hp-rankings__attribution on isSummary; no learn-more after fix.)
         await expect(links).toHaveLength(1);
-        await expect(footer.querySelector(".hp-rankings__see-all-top")).not.toBeNull();
-        await expect(footer.querySelector(".hp-rankings__attribution")).toBeNull();
+        await expect(
+          footer.querySelector(".hp-rankings__see-all-top")
+        ).not.toBeNull();
+        await expect(
+          footer.querySelector(".hp-rankings__attribution")
+        ).toBeNull();
       } else {
         // Cards 2–11: exactly 1 link — .hp-rankings__attribution only.
         await expect(links).toHaveLength(1);
-        await expect(footer.querySelector(".hp-rankings__attribution")).not.toBeNull();
-        await expect(footer.querySelector(".hp-rankings__see-all-top")).toBeNull();
+        await expect(
+          footer.querySelector(".hp-rankings__attribution")
+        ).not.toBeNull();
+        await expect(
+          footer.querySelector(".hp-rankings__see-all-top")
+        ).toBeNull();
       }
     }
   },

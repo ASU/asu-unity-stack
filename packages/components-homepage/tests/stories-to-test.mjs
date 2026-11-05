@@ -107,10 +107,13 @@ export const storiesToTest = [
   "homepage-rankings-cards--invalid-heading-id-big-int",
   // v4 amendment stories (rows 31–64, design-doc §v4.9)
   "homepage-rankings-cards--default-11-cards",
-  "homepage-rankings-cards--learn-more-hover",
-  "homepage-rankings-cards--learn-more-focus",
-  "homepage-rankings-cards--learn-more-reduced-motion",
-  "homepage-rankings-cards--learn-more-forced-colors",
+  // learn-more stories removed per post-approval human decision (WWWCMS-233):
+  //   homepage-rankings-cards--learn-more-hover
+  //   homepage-rankings-cards--learn-more-focus
+  //   homepage-rankings-cards--learn-more-reduced-motion
+  //   homepage-rankings-cards--learn-more-forced-colors
+  //   homepage-rankings-cards--attrib-hover-suppress-learn-more
+  //   homepage-rankings-cards--card-body-hover-reveals-learn-more
   "homepage-rankings-cards--glass-strip-default",
   "homepage-rankings-cards--glass-strip-scroll",
   "homepage-rankings-cards--glass-strip-hover",
@@ -133,8 +136,8 @@ export const storiesToTest = [
   "homepage-rankings-cards--opacity-teardown-restores",
   "homepage-rankings-cards--opacity-teardown-restores-priority",
   "homepage-rankings-cards--io-absent",
-  "homepage-rankings-cards--attrib-hover-suppress-learn-more",
-  "homepage-rankings-cards--card-body-hover-reveals-learn-more",
+  // attrib-hover-suppress-learn-more and card-body-hover-reveals-learn-more
+  // removed per post-approval human decision (WWWCMS-233 learn-more removal).
   // Post-approval fix: media padding restore (WWWCMS-233)
   "homepage-rankings-cards--media-padding",
   // Post-approval change: remove learn-more (WWWCMS-233 human decision)
