@@ -134,6 +134,12 @@
   // Stack both <img> elements in the same cell (no position: absolute needed).
   grid-template-areas: "img";
   width: 100%;
+  // Design spec: 16px padding on all sides inside the card.
+  // Token: $uds-size-spacing-2 = 1rem = 16px (see unity-bootstrap-theme
+  // _custom-asu-variables.scss). Bootstrap reboot sets box-sizing: border-box,
+  // so aspect-ratio is locked on the border box (padding included). The <img>
+  // fills the padded content box via width: 100%; height: 100%; on .hp-rankings__img.
+  padding: $uds-size-spacing-2; // Restored: was present in 4606489f0, removed by 35a36e3a5 (v4 SCSS).
   aspect-ratio: 2 / 1; // Locked v3 per Q1=A — every breakpoint. Mobile: 288×144. Design-doc v3 §3.1.
   background: transparent;
   overflow: hidden; // belt-and-braces for off-brand PNG bleeds.
