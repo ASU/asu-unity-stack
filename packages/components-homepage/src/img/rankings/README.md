@@ -1,78 +1,103 @@
-# `src/img/rankings/` — Rankings-cards artwork
-
-Jira: WWWCMS-233 · Figma node: `13467:58610`
+# img/rankings — design-system image assets (WWWCMS-233 v4)
 
 > **PLACEHOLDER NOTICE** — All PNGs in this folder are placeholder artwork
 > copied from `.intake/rank-01-w.png` (default/white) and `.intake/rank-01.png`
 > (hover/dark navy). The same two 500 × 251 source files are reused across all
-> 7 cards until the designer provides per-card brand artwork. Real brand
-> artwork MUST replace them before merging to `dev`. See `TODO.md` for the full
-> mapping.
+> 11 cards until the designer provides per-card brand artwork. Real brand
+> artwork MUST replace them before merging to `dev`. See `TODO.md` for the
+> per-slot mapping.
 >
-> **Provenance**: `.intake/rank-01-w.png` and `.intake/rank-01.png` — version-
-> controlled in the `.intake/` folder at repository root (design-doc v3 §9.2,
-> amended v3.1 2026-11-03T21:10Z).
+> **Provenance**: `.intake/rank-01-w.png` and `.intake/rank-01.png` —
+> version-controlled in the `.intake/` folder at repository root
+> (design-doc v4 §v4.4.2a, v4 §v4.10).
 
 ---
 
-## File-naming convention (locked)
+## File-naming convention (locked v4)
+
+The `rank-NN` schema replaces the previous v3 slug-based convention.
 
 | State | Pattern | Example |
-|---|---|---|
-| Default | `<slug>.png` | `sustainable-practices.png` |
-| Hover | `<slug>--hover.png` | `sustainable-practices--hover.png` |
+|-------|---------|---------|
+| Default (white, visible against dark hero) | `rank-NN-w.png` | `rank-01-w.png` |
+| Hover (dark, visible against solid-white hover card) | `rank-NN.png`   | `rank-01.png` |
 
-- `<slug>` is **lowercase, hyphen-separated kebab-case** derived from the
-  ranking topic (e.g. `sustainable-practices`, `innovation`, `global-impact`).
-- The `--hover` suffix uses double-dash to match the BEM modifier pattern used
-  elsewhere in this design system and to avoid collisions with slug separators.
-  <!-- TODO: confirm with design — hover filename suffix convention (locked placeholder: double-dash BEM `--hover`). -->
-- All default-and-hover PNGs ship with `loading="lazy"` + `decoding="async"`
-  because the hero sits above the rankings band on the homepage, so the
-  component is never above the fold.
-  <!-- TODO: confirm with design — all-lazy loading decision (design-doc §11.2); revisit if the homepage places rankings above the fold on any viewport. -->
+- `NN` is a **zero-padded two-digit slot number**: `01`, `02`, … `11`.
+- The `-w` suffix on default images denotes the white/light variant for the
+  translucent-glass default state.
+- No `--hover` double-dash suffix in this schema (that was the v3 slug convention).
+- No `-s22` or other size-tagged variants are used by default. The `-s22`
+  convention is **reserved** — do not add without architect sign-off.
 
----
-
-## Dimensions contract (locked v3 per Q1 = A + Q2 = C — design-doc v3 §3.1)
-
-- **Intrinsic size**: **`500 × 251`** px (approximately 2:1 aspect ratio)
-  — locked in design-doc v3 amendment (2026-11-03T19:25Z). The 1 px overshoot
-  vs integer-perfect 2:1 (`500 × 250`) matches the Figma export; the CSS
-  `aspect-ratio: 2 / 1` rule on `.hp-rankings__media` drives layout, and
-  `object-fit: cover` resolves the 1 px overshoot.
-  <!-- TODO: confirm with design — pull exact intrinsic dimensions from Figma
-       Dev Mode on node 13467:58610 before replacing placeholder PNGs (§11.2). -->
-- **CSS aspect-ratio**: `2 / 1` at every breakpoint (Q1 = A). Mobile media
-  box renders at 288 × 144 by design (288 px card width × 2:1 ratio).
-- Both PNGs in a pair (`<slug>.png` + `<slug>--hover.png`) MUST share
-  **identical intrinsic `width` × `height`**.
-- All cards MUST share the same aspect-ratio. Different ratios across cards
-  would break the single `aspect-ratio: 2 / 1` CSS rule on
-  `.hp-rankings__media`.
-- The dataset-wide intrinsic dimensions are configurable via the top-level
-  `rankingsCardsHtml({ imageWidth, imageHeight })` parameters (defaults:
-  `500` / `251`). This is a dataset-wide override — NOT a per-card field
-  (design-doc v3 §3.1, Q2 = C).
+> **v3 slug assets deleted.** The previous seven slug-based files
+> (`sustainable-practices.png`, `innovation.png`, `global-impact.png`, etc.)
+> and their `--hover` counterparts have been removed. They no longer exist in
+> this directory and MUST NOT be re-added.
 
 ---
 
-## Transparency
+## 11-card inventory
 
-PNGs SHOULD use an alpha channel so the dark hero background bleeds through
-on the default state. Opaque PNGs are allowed but will show their own
-background colour and bypass the component's transparent-section contract.
+| Slot | Default PNG | Hover PNG | Notes |
+|------|-------------|-----------|-------|
+| 01 | `rank-01-w.png` | `rank-01.png` | Summary card (isSummary: true) |
+| 02 | `rank-02-w.png` | `rank-02.png` | Innovation |
+| 03 | `rank-03-w.png` | `rank-03.png` | Employability |
+| 04 | `rank-04-w.png` | `rank-04.png` | Fulbright students |
+| 05 | `rank-05-w.png` | `rank-05.png` | TBD — pull from Jira WWWCMS-233 |
+| 06 | `rank-06-w.png` | `rank-06.png` | TBD — pull from Jira WWWCMS-233 |
+| 07 | `rank-07-w.png` | `rank-07.png` | TBD — pull from Jira WWWCMS-233 |
+| 08 | `rank-08-w.png` | `rank-08.png` | TBD — pull from Jira WWWCMS-233 |
+| 09 | `rank-09-w.png` | `rank-09.png` | TBD — pull from Jira WWWCMS-233 |
+| 10 | `rank-10-w.png` | `rank-10.png` | TBD — pull from Jira WWWCMS-233 |
+| 11 | `rank-11-w.png` | `rank-11.png` | TBD — pull from Jira WWWCMS-233 |
+
+All 22 PNGs must be present before merging to `dev`. Cards 5–11 currently hold
+placeholder artwork (byte-identical copies of `.intake/rank-01-w.png` and
+`.intake/rank-01.png`).
+
+---
+
+## Dimensions contract (locked v4 per design-doc §v4.4.2a)
+
+- **Intrinsic size**: `500 × 251` px for every PNG in both states.
+- **Aspect ratio**: the CSS forces `2 / 1` at every breakpoint; `object-fit: cover`
+  resolves the 1 px overshoot vs integer-perfect 2:1.
+- Both PNGs in each pair (`rank-NN-w.png` + `rank-NN.png`) MUST share identical
+  intrinsic `width × height`.
+- All 11 pairs MUST share the same intrinsic dimensions (dataset-wide).
+- The `rankingsCardsHtml({ imageWidth, imageHeight })` top-level parameters
+  default to `500` / `251`. Pass different values if the designer provides
+  artwork at a different intrinsic size (SCSS does not change).
+
+---
+
+## Color / transparency guidance
+
+| State | Artwork variant | Background requirement |
+|-------|----------------|------------------------|
+| Default | `-w` (white content, glass-over-dark) | Transparent or alpha-channel PNG — dark hero bleeds through the glass card |
+| Hover | (dark content, over solid-white card) | Opaque or alpha-channel OK — hover card background is solid white |
+
+---
+
+## Placeholder color mapping (v4)
+
+Current placeholders are direct copies of the `.intake/` source files:
+
+| State | Source file | Description |
+|-------|-------------|-------------|
+| Default | `.intake/rank-01-w.png` | White background (500 × 251) |
+| Hover | `.intake/rank-01.png` | Dark navy background (500 × 251) |
 
 ---
 
 ## Consumer contract (WCAG contrast)
 
-The `rankings-cards` component ships with `background: transparent` and white
-text/borders. WCAG contrast is only met when the parent surface is dark enough.
-Every Storybook story renders the section on a dark backdrop (`#002b5c`) to
-satisfy this contract during interaction and a11y tests. **Any consumer that
-places `rankings-cards` on a light surface must wrap it in a dark surface or
-request a light-surface variant in a follow-up ticket.**
+`rankings-cards` ships with `background: transparent` and white text/borders.
+WCAG contrast is only met when the parent surface is dark enough. Every
+Storybook story renders the section on a dark backdrop (`#002b5c`) to satisfy
+this contract during interaction and a11y tests.
 
 ---
 
@@ -83,5 +108,6 @@ request a light-surface variant in a follow-up ticket.**
 on user input at runtime. CMS-side consumers are responsible for HTML-escaping
 inputs before pasting into the template.
 
-No `target="_blank"` is specified. If added later, `rel="noopener"` is
-required.
+---
+
+Jira: WWWCMS-233 · Design-doc: `.pipeline/design-doc.md` v4
