@@ -47,7 +47,7 @@ export const LOCATIONS = [
     name: "Tempe",
     group: 0,
     photo: `${MEDIA}/place-tempe.webp`,
-    text: "The original and largest campus, delivering a classic college experience inside a research powerhouse.",
+    text: "The flagship campus — a walkable, tree-lined home to more than 55,000 Sun Devils.",
     link: "See Tempe campus",
   },
   {

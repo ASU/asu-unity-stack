@@ -303,6 +303,16 @@ const accordionPlay =
     await near(strip.width, width, 1);
     await near(strip.height, (strip.width * 219) / 375, 1);
     await expect(strip.bottom).toBeLessThanOrEqual(box(p.panel).top + 1);
+    // the pause control sits over the strip's bottom right (Figma: 18px / 12px) with a 48px hit area; it is
+    // hidden until the clip loads, which the runner may not manage
+    p.mbtn.hidden = false;
+    const control = box(p.mbtn);
+    await near(strip.right - control.right, 18, 1);
+    await near(strip.bottom - control.bottom, 12, 1);
+    await expect(
+      parseFloat(style(p.mbtn, "::after").width)
+    ).toBeGreaterThanOrEqual(48);
+    p.mbtn.hidden = true;
     await expect(p.stills.every(still => style(still).display === "none")).toBe(
       true
     );

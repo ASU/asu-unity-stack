@@ -12,7 +12,7 @@ $hp-places-header-break: 1080px; // the prototype switches to its compact header
 $hp-places-ease: cubic-bezier(0.33, 1, 0.68, 1);
 
 // TODO: confirm with design - raw values (no UDS token): 347 panel, 885 media, 32 padding, 24 overhang, .75 glass,
-// blur 12 / saturate 160%, the 0.6/0.4/0.3/0.2/0.25s timings, the 327:219 accordion photo.
+// blur 12 / saturate 160%, the 0.6/0.4/0.3/0.2s timings, the 327:219 accordion photo.
 $hp-places-panel-w: 347px;
 $hp-places-media-h: 885px;
 $hp-places-glass: rgba($asu-gray-1, 0.75);
@@ -344,7 +344,8 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
 // ---- Below 1024: the video strip above the list (Figma mobile: a 375x219 video, pause button at its
 // bottom right, directly above the locations) ----
 
-@media (max-width: #{$hp-places-bp - 1px}) {
+// Written as the inverse of the desktop query so no fractional width falls between the two.
+@media not all and (min-width: $hp-places-bp) {
   .hp-places.is-enhanced {
     .hp-places__frame {
       display: grid;

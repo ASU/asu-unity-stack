@@ -76,14 +76,18 @@ const bind = (section, doc, win) => {
 
   let near = typeof win.IntersectionObserver !== "function"; // without the API the clip loads at once
   let wanted = false;
+  let failed = false; // the source did not load: the control stays hidden until a new source is attached
 
   const load = () => {
     const source = safeSource(video.dataset.src, doc);
     if (!source) return;
     // preload before src: `loadeddata` (which resumes autoplay) never fires under preload="none"
     video.setAttribute("preload", reduced.matches ? "none" : "auto");
-    if (video.getAttribute("src") !== source) video.setAttribute("src", source);
-    if (deskButton) deskButton.hidden = false;
+    if (video.getAttribute("src") !== source) {
+      failed = false;
+      video.setAttribute("src", source);
+    }
+    if (deskButton) deskButton.hidden = failed;
   };
 
   const attach = on => {
@@ -94,6 +98,7 @@ const bind = (section, doc, win) => {
       return;
     }
     if (!on) {
+      failed = false;
       if (video.hasAttribute("src")) {
         video.pause();
         video.removeAttribute("src");
@@ -103,29 +108,44 @@ const bind = (section, doc, win) => {
     }
   };
 
-  if (video && media && !near) {
-    const loader = new win.IntersectionObserver(
+  // One-shot: the first time the media is within one window height of the viewport the clip is requested.
+  let loader = null;
+  let loaderHeight = 0;
+  const watchMedia = () => {
+    if (loader) loader.disconnect();
+    loaderHeight = win.innerHeight;
+    loader = new win.IntersectionObserver(
       records => {
         const last = records[records.length - 1];
         if (!last || !last.isIntersecting) return;
         near = true;
         loader.disconnect();
+        loader = null;
         if (wanted) load();
       },
-      { rootMargin: `${win.innerHeight}px 0px` }
+      { rootMargin: `${loaderHeight}px 0px` }
     );
     loader.observe(media);
-    cleanups.push(() => loader.disconnect());
-  }
+  };
+  if (video && media && !near) watchMedia();
+  cleanups.push(() => {
+    if (loader) loader.disconnect();
+  });
 
   const hold = on => {
     if (video) video.toggleAttribute("data-hold", on);
   };
 
-  // A source that fails to load leaves the control hidden (the poster stays) until the next attach.
+  // A source that fails to load leaves the control hidden (the poster stays); a focused control hands focus on.
   if (video && deskButton) {
     listen(video, "error", () => {
-      if (video.hasAttribute("src")) deskButton.hidden = true;
+      if (!video.hasAttribute("src")) return;
+      failed = true;
+      if (doc.activeElement === deskButton) {
+        const target = section.querySelector(".hp-places__cta");
+        if (target) target.focus();
+      }
+      deskButton.hidden = true;
     });
   }
 
@@ -468,6 +488,7 @@ const bind = (section, doc, win) => {
   const onResize = () => {
     readHeader();
     if (observer && win.innerHeight !== observedHeight) observe();
+    if (loader && win.innerHeight !== loaderHeight) watchMedia();
     scheduleOpening();
     measureWall();
     if (sel >= 0) fitBox(sel);
@@ -507,9 +528,10 @@ const bind = (section, doc, win) => {
     cleanups.forEach(cleanup => cleanup());
     cleanups.length = 0;
     // Back to the server markup: every location open, nothing attached, nothing script-only visible.
+    // The source goes before the hold clears: the control's hold observer must not play a source-less video.
+    attach(false);
     hold(false);
     clearOpening();
-    attach(false);
     items.forEach((item, i) => {
       item.classList.remove("is-selected", "is-shown", "is-open");
       item.style.removeProperty("--hp-places-box-shift");
