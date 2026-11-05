@@ -80,6 +80,11 @@ const expectContract = async p => {
   await expect(p.heading.textContent).toBe(SECTION_HEADING);
   await expect(p.names).toHaveLength(LOCATIONS.length);
   await expect(p.photos).toHaveLength(LOCATIONS.length);
+  // every photo has its own alt text (WCAG 1.1.1)
+  p.photos.forEach((photo, i) => {
+    expect(LOCATIONS[i].alt.length).toBeGreaterThan(20);
+    expect(photo.getAttribute("alt")).toBe(LOCATIONS[i].alt);
+  });
   // data layer: every link and button carries the full attribute set (asucms datalayer.md)
   const clickable = Array.from(p.section.querySelectorAll("a[href], button"));
   await expect(clickable.length).toBeGreaterThan(20);
@@ -181,6 +186,10 @@ export const Default = {
     await expect(p.stills.every(still => style(still).opacity === "0")).toBe(
       true
     );
+    // an unselected still is decorative: no alt text in the accessibility tree
+    await expect(
+      p.stills.every(still => still.getAttribute("alt") === "")
+    ).toBe(true);
     // the control is revealed once a source is attached (a clip that fails to load, as in this runner, hides it)
     await waitFor(() =>
       expect(p.video.getAttribute("src")).toContain("locations.mp4")
@@ -205,6 +214,11 @@ export const Selected = {
     );
     await expect(p.names[0].getAttribute("aria-pressed")).toBe("true");
     await expect(p.stills[0].getAttribute("src")).toContain("place-tempe");
+    // the selected still carries the photo's alt text, the others stay empty
+    await expect(p.stills[0].getAttribute("alt")).toBe(LOCATIONS[0].alt);
+    await expect(
+      p.stills.slice(1).every(still => still.getAttribute("alt") === "")
+    ).toBe(true);
     await waitFor(() => expect(style(p.stills[0]).opacity).toBe("1"));
     await waitFor(() => expect(style(p.video).opacity).toBe("0"));
     await expect(p.video.hasAttribute("data-hold")).toBe(true);

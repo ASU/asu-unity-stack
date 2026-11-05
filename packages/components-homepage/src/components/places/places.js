@@ -194,7 +194,11 @@ const bind = (section, doc, win) => {
       item.classList.remove("is-open");
       item.classList.toggle("is-selected", on);
     });
-    stills.forEach((still, i) => still.classList.toggle("is-on", i === sel));
+    // Only the selected still is exposed to assistive technology; the rest stay alt="".
+    stills.forEach((still, i) => {
+      still.classList.toggle("is-on", i === sel);
+      still.setAttribute("alt", i === sel ? still.dataset.alt || "" : "");
+    });
     section.classList.toggle("has-still", sel >= 0);
   };
 
@@ -331,7 +335,10 @@ const bind = (section, doc, win) => {
         sel = -1;
         hold(false);
       }
-      stills.forEach(still => still.classList.remove("is-on"));
+      stills.forEach(still => {
+        still.classList.remove("is-on");
+        still.setAttribute("alt", "");
+      });
       section.classList.remove("has-still");
       renderAccordion();
     }
@@ -543,6 +550,7 @@ const bind = (section, doc, win) => {
     });
     stills.forEach(still => {
       still.classList.remove("is-on");
+      still.setAttribute("alt", "");
       if (still.dataset.src) still.removeAttribute("src");
     });
     if (video) video.setAttribute("preload", "none");
