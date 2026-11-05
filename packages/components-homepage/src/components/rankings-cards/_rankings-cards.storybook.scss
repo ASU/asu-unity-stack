@@ -16,8 +16,20 @@
 // NOT leak into dist/css/components-homepage.css.
 @import "@asu/unity-bootstrap-theme/src/scss/custom-asu-variables";
 
+#storybook-root {
+  min-height: 100vh;
+  background: linear-gradient(to top right, #5794CC, #024070);
+  background-attachment: fixed;
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+}
+
+.rankings-storybook-placeholder {
+  height: var(--vh, 50dvh);
+  background: rgba(0, 0, 0, 0.5);
+}
+
 .rankings-storybook-backdrop {
   // storybook-only: ASU dark navy, not in UDS tokens (see note above)
-  background: rgb(0, 43, 92);
   padding: $uds-size-spacing-4; // 2rem — token from _custom-asu-variables.scss:23
 }

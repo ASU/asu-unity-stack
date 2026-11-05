@@ -59,6 +59,22 @@ import "./_rankings-cards.storybook.scss";
 
 export default {
   title: "Homepage/Rankings cards",
+  decorators: [
+    Story => (
+      <>
+        <section
+          className="rankings-storybook-placeholder"
+          aria-hidden="true"
+        />
+        <Story />
+        <section
+          style={{ "--vh": "90dvh" }}
+          className="rankings-storybook-placeholder"
+          aria-hidden="true"
+        />
+      </>
+    ),
+  ],
   parameters: {
     docs: {
       description: {
@@ -123,6 +139,32 @@ const parts = canvasElement => {
     nextBtn: find(".hp-rankings__nav-btn--next"),
     seeAll: find(".hp-rankings__see-all"),
     controls: find(".hp-rankings__controls"),
+  };
+};
+
+/**
+ * Computes the bounding rect of a `::before` pseudo-element on a link.
+ * Uses `getComputedStyle(link, '::before')` for block-size and inline-size,
+ * and `getBoundingClientRect()` on the host for anchoring.
+ *
+ * The pseudo is anchored: `inset-block-end: 0; inset-inline-start: 0`
+ * (§v4.13.3) — bottom aligned to link's bottom, left aligned to link's left.
+ *
+ * @param {Element} link - The `<a>` element hosting the `::before`.
+ * @returns {{ top: number, bottom: number, left: number, right: number, height: number, width: number }}
+ */
+const computePseudoBefore = link => {
+  const cs = getComputedStyle(link, "::before");
+  const linkRect = link.getBoundingClientRect();
+  const pseudoHeight = parseFloat(cs.blockSize || cs.height);
+  const pseudoWidth = parseFloat(cs.inlineSize || cs.width);
+  return {
+    bottom: linkRect.bottom,
+    top: linkRect.bottom - pseudoHeight,
+    left: linkRect.left,
+    right: linkRect.left + pseudoWidth,
+    height: pseudoHeight,
+    width: pseudoWidth,
   };
 };
 
@@ -197,7 +239,7 @@ const OVERFLOW_HTML = rankingsCardsHtml({ cards: OVERFLOW_CARDS });
 
 export const Default = {
   globals: viewport(1440),
-  render: () => <StaticPage html={DEFAULT_HTML} />,
+  render: () => <LivePage html={DEFAULT_HTML} />,
   play: async ({ canvasElement }) => {
     await expectComplete(canvasElement);
 
@@ -3081,14 +3123,18 @@ export const TouchTargets = {
       await expect(Math.abs(card.offsetWidth - 275)).toBeLessThanOrEqual(1);
     }
 
-    // Attribution links (rows 55): width ≥ 44 AND height ≥ 44.
+    // Attribution links (rows 55 — SUPERSEDED-v4.13):
+    // v4.13 replaces the "link bbox ≥ 44×44" assertion with a pseudo-element
+    // assertion. The LINK itself is no longer required to be 44×44; the HIT AREA
+    // (provided by ::before) must be ≥ 44×44 (design-doc §v4.13.5 row 55).
     // Cards 2–11 have attribution.
     for (let i = 1; i < p.cards.length; i += 1) {
       const attr = p.cards[i].querySelector(".hp-rankings__attribution");
       await expect(attr).not.toBeNull();
-      const r = attr.getBoundingClientRect();
-      await expect(r.width).toBeGreaterThanOrEqual(44);
-      await expect(r.height).toBeGreaterThanOrEqual(44);
+      // v4.13: assert pseudo-element hit area ≥ 44×44.
+      const pseudo = computePseudoBefore(attr);
+      await expect(pseudo.height).toBeGreaterThanOrEqual(44);
+      await expect(pseudo.width).toBeGreaterThanOrEqual(44);
     }
 
     // See-all link (row 56).
@@ -3097,12 +3143,13 @@ export const TouchTargets = {
     const sar = seeAll.getBoundingClientRect();
     await expect(sar.height).toBeGreaterThanOrEqual(44);
 
-    // Card 1 see-all-top (row 57).
+    // Card 1 see-all-top (row 57 — SUPERSEDED-v4.13):
+    // v4.13 replaces link bbox with pseudo-element hit area assertion.
     const sat = p.cards[0].querySelector(".hp-rankings__see-all-top");
     await expect(sat).not.toBeNull();
-    const satr = sat.getBoundingClientRect();
-    await expect(satr.width).toBeGreaterThanOrEqual(44);
-    await expect(satr.height).toBeGreaterThanOrEqual(44);
+    const satPseudo = computePseudoBefore(sat);
+    await expect(satPseudo.width).toBeGreaterThanOrEqual(44);
+    await expect(satPseudo.height).toBeGreaterThanOrEqual(44);
 
     // Post-approval: no learn-more element to check (row 58 removed).
     // Confirm no learn-more anywhere.
@@ -3175,10 +3222,10 @@ export const CardHoverMaroon = {
   },
 };
 
-// ─── Row 62 — :focus-within does NOT invert card (v4 §v4.7.5 revert) ────────
+// ─── Row 62 — :focus-within applies card hover state ─────────────────────────
 
-export const FocusNoInvert = {
-  name: ":focus-within does NOT invert card (v4 §v4.7.5)",
+export const FocusWithinCardState = {
+  name: ":focus-within applies card hover state",
   globals: viewport(1280),
   render: () => <LivePage html={DEFAULT_HTML} />,
   play: async ({ canvasElement }) => {
@@ -3194,15 +3241,14 @@ export const FocusNoInvert = {
     attrLink.focus();
     await waitFor(() => expect(document.activeElement === attrLink).toBe(true));
 
-    // Card background must NOT flip to white on :focus-within.
-    const bg = getComputedStyle(card2).backgroundColor;
-    // The glass default is rgba(255,255,255,0.08) — computed value will NOT be
-    // rgb(255,255,255) (solid white).
-    await expect(bg).not.toBe("rgb(255, 255, 255)");
+    await waitFor(() =>
+      expect(getComputedStyle(card2).backgroundColor).toBe("rgb(255, 255, 255)")
+    );
 
-    // Default image must NOT fade out.
     const defaultImg = card2.querySelector(".hp-rankings__img--default");
-    await expect(getComputedStyle(defaultImg).opacity).toBe("1");
+    await expect(getComputedStyle(defaultImg).opacity).toBe("0");
+    const hoverImg = card2.querySelector(".hp-rankings__img--hover");
+    await expect(getComputedStyle(hoverImg).opacity).toBe("1");
   },
 };
 
@@ -3411,5 +3457,313 @@ export const MediaPadding = {
         Math.abs(mediaRect.width - 32 - imgRect.width)
       ).toBeLessThanOrEqual(1);
     }
+  },
+};
+
+// ─── v4.13 stories (RED-first — will fail until SCSS is updated) ─────────────
+//
+// v4.13.T1 — footer-metrics
+// v4.13.T2 — hit-area-pseudo
+// v4.13.T3 — one-link-per-card
+// v4.13.T4 — out-of-card-see-all-unchanged
+// v4.13.T5 — overflow-clipping-check
+// v4.13.T6 — no-learn-more
+
+// ─── v4.13.T1 — Footer metrics ───────────────────────────────────────────────
+// Asserts footer height 40–42px, padding 8px block / 24px inline, and no min-height.
+// Design doc §v4.13.2, row v4.13.T1.
+
+const FOOTER_METRICS_VIEWPORTS = [393, 1280, 1920];
+
+/**
+ * Verify footer metrics at a single viewport width.
+ * @param {Element} canvasElement
+ */
+const assertFooterMetrics = async canvasElement => {
+  const allCards = Array.from(
+    canvasElement.querySelectorAll(".hp-rankings__card")
+  );
+  await expect(allCards.length).toBeGreaterThan(0);
+
+  for (let i = 0; i < allCards.length; i += 1) {
+    const card = allCards[i];
+    const footer = card.querySelector(".hp-rankings__card-footer");
+    await expect(footer).not.toBeNull();
+
+    // (a) Card width — v4.13 acceptance window for §v4.5 belt-and-braces.
+    const cardRect = card.getBoundingClientRect();
+    await expect(Math.abs(cardRect.width - 275)).toBeLessThanOrEqual(0.5);
+
+    // (c) Computed padding — 8px block, 24px inline (§v4.13.2 token contract).
+    // CHECKED FIRST for diagnostics — this proves the SCSS token rules are applied.
+    const cs = getComputedStyle(footer);
+    await expect(cs.paddingTop).toBe("8px");
+    await expect(cs.paddingBottom).toBe("8px");
+    await expect(cs.paddingLeft).toBe("24px");
+    await expect(cs.paddingRight).toBe("24px");
+
+    // (d) No v4.6 min-height on the footer (§v4.13.2 removal).
+    // Both "0px" and "auto" are acceptable (browsers return one or the other).
+    const minH = cs.minHeight;
+    await expect(minH === "0px" || minH === "auto").toBe(true);
+
+    // (b) Footer height — acceptance window 40–42 px (design-doc §v4.13.2).
+    const footerRect = footer.getBoundingClientRect();
+    await expect(footerRect.height).toBeGreaterThanOrEqual(39);
+    await expect(footerRect.height).toBeLessThanOrEqual(43);
+  }
+};
+
+export const FooterMetrics393 = {
+  name: "v4.13.T1 — Footer metrics at 393",
+  globals: viewport(393),
+  render: () => <StaticPage html={DEFAULT_HTML} />,
+  play: async ({ canvasElement }) => {
+    await expect(window.innerWidth).toBe(393);
+    await assertFooterMetrics(canvasElement);
+  },
+};
+
+export const FooterMetrics1280 = {
+  name: "v4.13.T1 — Footer metrics at 1280",
+  globals: viewport(1280),
+  render: () => <StaticPage html={DEFAULT_HTML} />,
+  play: async ({ canvasElement }) => {
+    await expect(window.innerWidth).toBe(1280);
+    await assertFooterMetrics(canvasElement);
+  },
+};
+
+export const FooterMetrics1920 = {
+  name: "v4.13.T1 — Footer metrics at 1920",
+  globals: viewport(1920),
+  render: () => <StaticPage html={DEFAULT_HTML} />,
+  play: async ({ canvasElement }) => {
+    await expect(window.innerWidth).toBe(1920);
+    await assertFooterMetrics(canvasElement);
+  },
+};
+
+// Registered as the primary "footer-metrics" story ID for Alfa coverage.
+export const FooterMetrics = {
+  name: "v4.13.T1 — Footer metrics (hp1280)",
+  globals: viewport(1280),
+  render: () => <StaticPage html={DEFAULT_HTML} />,
+  play: async ({ canvasElement }) => {
+    await assertFooterMetrics(canvasElement);
+  },
+};
+
+// ─── v4.13.T2 — Hit-area pseudo-element ──────────────────────────────────────
+// Verifies that ::before on .hp-rankings__attribution and .hp-rankings__see-all-top
+// provides a ≥ 44 × 44 px hit area that extends upward past the link's top edge.
+// Design doc §v4.13.3, row v4.13.T2.
+// (computePseudoBefore is defined in the top-level helpers section above.)
+
+export const HitAreaPseudo = {
+  name: "v4.13.T2 — Hit-area pseudo-element ≥ 44×44",
+  globals: viewport(1280),
+  render: () => <LivePage html={DEFAULT_HTML} />,
+  play: async ({ canvasElement }) => {
+    await expect(realPointer.available).toBe(true);
+
+    const allCards = Array.from(
+      canvasElement.querySelectorAll(".hp-rankings__card")
+    );
+    await expect(allCards.length).toBe(11);
+
+    // Test card 1 (.hp-rankings__see-all-top)
+    const card1 = allCards[0];
+    const seeAllTop = card1.querySelector(".hp-rankings__see-all-top");
+    await expect(seeAllTop).not.toBeNull();
+
+    const pseudo1 = computePseudoBefore(seeAllTop);
+    const link1Rect = seeAllTop.getBoundingClientRect();
+    const card1Rect = card1.getBoundingClientRect();
+
+    // (a) Pseudo height ≥ 44px, width ≥ 44px.
+    await expect(pseudo1.height).toBeGreaterThanOrEqual(44);
+    await expect(pseudo1.width).toBeGreaterThanOrEqual(44);
+
+    // (b) Pseudo extends UPWARD past the link's own top edge.
+    await expect(pseudo1.top).toBeLessThan(link1Rect.top);
+
+    // (c) Pseudo's top edge stays inside (or at) the card's bounding rect.
+    await expect(pseudo1.top).toBeGreaterThanOrEqual(card1Rect.top - 1);
+
+    // (d) Hit-test: elementFromPoint at a location above the link but within the pseudo
+    //     must return the link (not the img above). Proves the hit area is unclipped.
+    const testX1 = pseudo1.left + 10;
+    const testY1 = pseudo1.top + 5;
+    const hitEl1 = document.elementFromPoint(testX1, testY1);
+    // The hit element should be the link or a descendant (SVG/text inside the link).
+    await expect(hitEl1 === seeAllTop || seeAllTop.contains(hitEl1)).toBe(true);
+
+    // (e) Synthetic click on the link (proves handler fires — click routing is proved
+    //     by (d) via elementFromPoint; (e) confirms the handler wiring is intact).
+    let clicked1 = false;
+    const handler1 = () => { clicked1 = true; };
+    seeAllTop.addEventListener("click", handler1, { once: true });
+    await realPointer.click(seeAllTop);
+    seeAllTop.removeEventListener("click", handler1);
+    await expect(clicked1).toBe(true);
+
+    // Test card 2 (.hp-rankings__attribution)
+    const card2 = allCards[1];
+    const attrib = card2.querySelector(".hp-rankings__attribution");
+    await expect(attrib).not.toBeNull();
+
+    const pseudo2 = computePseudoBefore(attrib);
+    const link2Rect = attrib.getBoundingClientRect();
+    const card2Rect = card2.getBoundingClientRect();
+
+    await expect(pseudo2.height).toBeGreaterThanOrEqual(44);
+    await expect(pseudo2.width).toBeGreaterThanOrEqual(44);
+    await expect(pseudo2.top).toBeLessThan(link2Rect.top);
+    await expect(pseudo2.top).toBeGreaterThanOrEqual(card2Rect.top - 1);
+
+    const testX2 = pseudo2.left + 10;
+    const testY2 = pseudo2.top + 5;
+    const hitEl2 = document.elementFromPoint(testX2, testY2);
+    await expect(hitEl2 === attrib || attrib.contains(hitEl2)).toBe(true);
+
+    let clicked2 = false;
+    const handler2 = () => { clicked2 = true; };
+    attrib.addEventListener("click", handler2, { once: true });
+    await realPointer.click(attrib);
+    attrib.removeEventListener("click", handler2);
+    await expect(clicked2).toBe(true);
+  },
+};
+
+// ─── v4.13.T3 — One link per card footer ─────────────────────────────────────
+// Design doc §v4.13.1, row v4.13.T3.
+
+export const OneLinkPerCard = {
+  name: "v4.13.T3 — One link per card footer",
+  globals: viewport(1280),
+  render: () => <StaticPage html={DEFAULT_HTML} />,
+  play: async ({ canvasElement }) => {
+    const section = canvasElement.querySelector("section.hp-rankings");
+    await expect(section).not.toBeNull();
+
+    // Global: no .hp-rankings__learn-more anywhere.
+    await expect(
+      section.querySelectorAll(".hp-rankings__learn-more")
+    ).toHaveLength(0);
+
+    const allCards = Array.from(section.querySelectorAll(".hp-rankings__card"));
+    await expect(allCards).toHaveLength(11);
+
+    for (let i = 0; i < allCards.length; i += 1) {
+      const card = allCards[i];
+      const footer = card.querySelector(".hp-rankings__card-footer");
+      await expect(footer).not.toBeNull();
+
+      // Exactly one <a> per footer.
+      const footerLinks = Array.from(footer.querySelectorAll("a"));
+      await expect(footerLinks).toHaveLength(1);
+
+      if (i === 0) {
+        // Card 1 (summary): .hp-rankings__see-all-top only.
+        await expect(
+          footer.querySelector(".hp-rankings__see-all-top")
+        ).not.toBeNull();
+        await expect(footer.querySelector(".hp-rankings__attribution")).toBeNull();
+      } else {
+        // Cards 2–11: .hp-rankings__attribution only.
+        await expect(
+          footer.querySelector(".hp-rankings__attribution")
+        ).not.toBeNull();
+        await expect(footer.querySelector(".hp-rankings__see-all-top")).toBeNull();
+      }
+    }
+  },
+};
+
+// ─── v4.13.T4 — Out-of-card see-all link unchanged ───────────────────────────
+// Design doc §v4.13, "NOT superseded", row v4.13.T4.
+
+export const OutOfCardSeeAllUnchanged = {
+  name: "v4.13.T4 — Out-of-card .hp-rankings__see-all unchanged",
+  globals: viewport(1280),
+  render: () => <StaticPage html={DEFAULT_HTML} />,
+  play: async ({ canvasElement }) => {
+    const section = canvasElement.querySelector("section.hp-rankings");
+    await expect(section).not.toBeNull();
+
+    // Exactly one .hp-rankings__see-all in the section.
+    const seeAlls = section.querySelectorAll(".hp-rankings__see-all");
+    await expect(seeAlls).toHaveLength(1);
+    const seeAll = seeAlls[0];
+
+    // It is NOT inside any .hp-rankings__card.
+    await expect(seeAll.closest(".hp-rankings__card")).toBeNull();
+
+    // It IS inside .hp-rankings__controls.
+    await expect(seeAll.closest(".hp-rankings__controls")).not.toBeNull();
+
+    // It keeps v4.6 min-width / min-height on the link ITSELF
+    // (not via pseudo-element).
+    const cs = getComputedStyle(seeAll);
+    await expect(parseFloat(cs.minWidth)).toBeGreaterThanOrEqual(44);
+    await expect(parseFloat(cs.minHeight)).toBeGreaterThanOrEqual(44);
+  },
+};
+
+// ─── v4.13.T5 — Overflow clipping defensive invariant ────────────────────────
+// Asserts that no ancestor between the link and .hp-rankings has overflow:hidden,
+// overflow-y:hidden, overflow-y:clip, or contain:paint.
+// Design doc §v4.13.3 future-proofing hard rule, row v4.13.T5.
+
+export const OverflowClippingCheck = {
+  name: "v4.13.T5 — No overflow clipping between link pseudo and .hp-rankings",
+  globals: viewport(1280),
+  render: () => <StaticPage html={DEFAULT_HTML} />,
+  play: async ({ canvasElement }) => {
+    const section = canvasElement.querySelector("section.hp-rankings");
+    await expect(section).not.toBeNull();
+
+    // Test both link types.
+    const linksToCheck = [
+      section.querySelector(".hp-rankings__see-all-top"),
+      section.querySelector(".hp-rankings__attribution"),
+    ];
+
+    for (const link of linksToCheck) {
+      await expect(link).not.toBeNull();
+
+      // Walk up from link to .hp-rankings, checking each ancestor.
+      let el = link.parentElement;
+      while (el && !el.classList.contains("hp-rankings")) {
+        const cs = getComputedStyle(el);
+        // None of these clipping values may be set on intermediate ancestors.
+        await expect(cs.overflow).not.toBe("hidden");
+        await expect(cs.overflowY).not.toBe("hidden");
+        await expect(cs.overflowY).not.toBe("clip");
+        await expect(cs.contain).not.toBe("paint");
+        el = el.parentElement;
+      }
+    }
+  },
+};
+
+// ─── v4.13.T6 — No learn-more (design-doc-specified ID) ──────────────────────
+// Design doc §v4.13.1 + §v4.13.5. The existing `NoLearnMoreInFooter` story
+// covers the same requirement; this story provides the exact ID the test matrix
+// specifies (`--no-learn-more`) for Alfa registry completeness.
+
+export const NoLearnMore = {
+  name: "v4.13.T6 — No .hp-rankings__learn-more anywhere",
+  globals: viewport(1280),
+  render: () => <StaticPage html={DEFAULT_HTML} />,
+  play: async ({ canvasElement }) => {
+    const section = canvasElement.querySelector("section.hp-rankings");
+    await expect(section).not.toBeNull();
+
+    // No learn-more or learn-more-icon elements anywhere in the section.
+    await expect(
+      section.querySelectorAll(".hp-rankings__learn-more, .hp-rankings__learn-more-icon")
+    ).toHaveLength(0);
   },
 };

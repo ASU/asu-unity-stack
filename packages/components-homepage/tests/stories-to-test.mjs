@@ -142,4 +142,11 @@ export const storiesToTest = [
   "homepage-rankings-cards--media-padding",
   // Post-approval change: remove learn-more (WWWCMS-233 human decision)
   "homepage-rankings-cards--no-learn-more-in-footer",
+  // v4.13 amendment stories (design-doc §v4.13.5)
+  "homepage-rankings-cards--footer-metrics",
+  "homepage-rankings-cards--hit-area-pseudo",
+  "homepage-rankings-cards--one-link-per-card",
+  "homepage-rankings-cards--out-of-card-see-all-unchanged",
+  "homepage-rankings-cards--overflow-clipping-check",
+  "homepage-rankings-cards--no-learn-more",
 ];

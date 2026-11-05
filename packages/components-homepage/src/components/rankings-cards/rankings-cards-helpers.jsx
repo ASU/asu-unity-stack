@@ -155,16 +155,14 @@ export const validateIntrinsicDimension = (value, def, name) => {
 
 /** @type {RankingCard[]} */
 export const DEFAULT_CARDS = [
-  // Card 1: summary variant — "Repeatedly ranked #1" (isSummary: true)
+  // Card 1: "Repeatedly ranked #1" with see-all link
   {
     imageSrc: "img/rankings/rank-01-w.png",
     imageSrcHover: "img/rankings/rank-01.png",
     imageAlt: "Repeatedly ranked #1. 30+ lists in the last 3 years.",
-    attributionHref: "#rankings-see-all", // not used (isSummary=true, no attribution)
-    attributionLabel: "Attribution link",
+    attributionHref: "#rankings-see-all",
+    attributionLabel: "See all of ASU's #1 rankings",
     isSummary: true,
-    seeAllTopHref: "#rankings-see-all", // TODO: confirm with design — real URL from Jira WWWCMS-233.
-    seeAllTopLabel: "See all of ASU's #1 rankings",
   },
   // Card 2: innovation (confirmed from .intake/SCR-20261104-jrkv.png)
   {
@@ -331,8 +329,6 @@ export const rankingsCardsHtml = ({
         attributionHref,
         attributionLabel = "Attribution link",
         isSummary = false,
-        seeAllTopHref = "#rankings-see-all",
-        seeAllTopLabel = "See all of ASU's #1 rankings",
       } = card;
 
       if (!imageSrc || typeof imageSrc !== "string") {
@@ -374,31 +370,16 @@ export const rankingsCardsHtml = ({
         : "hp-rankings__card";
 
       // Build the footer content.
-      // Summary card (card 1): .hp-rankings__see-all-top only (v4 §v4.4.2b).
-      // Regular cards: .hp-rankings__attribution only.
+      // All cards now use .hp-rankings__attribution (removed see-all-top distinction).
       // Note: .hp-rankings__learn-more removed per post-approval human decision.
-      let footerContent;
-      if (isSummary) {
-        // Card 1 footer: see-all-top link only (v4 §v4.4.2b).
-        footerContent =
-          `<a class="hp-rankings__see-all-top" href="${escapeHtml(sanitizeHref(seeAllTopHref))}">` +
-          `${escapeHtml(seeAllTopLabel)}` +
-          `<svg class="hp-rankings__see-all-top-icon" viewBox="0 0 448 512"` +
-          ` aria-hidden="true" focusable="false">` +
-          `<path fill="currentColor" d="${ARROW_RIGHT_PATH}"/>` +
-          `</svg>` +
-          `</a>`;
-      } else {
-        // Regular card footer: attribution only.
-        footerContent =
-          `<a class="hp-rankings__attribution" href="${escapeHtml(sanitizeHref(attributionHref))}">` +
-          `${escapeHtml(attributionLabel)}` +
-          `<svg class="hp-rankings__attribution-icon" viewBox="0 0 448 512"` +
-          ` aria-hidden="true" focusable="false">` +
-          `<path fill="currentColor" d="${ARROW_RIGHT_PATH}"/>` +
-          `</svg>` +
-          `</a>`;
-      }
+      const footerContent =
+        `<a class="hp-rankings__attribution" href="${escapeHtml(sanitizeHref(attributionHref))}">` +
+        `${escapeHtml(attributionLabel)}` +
+        `<svg class="hp-rankings__attribution-icon" viewBox="0 0 448 512"` +
+        ` aria-hidden="true" focusable="false">` +
+        `<path fill="currentColor" d="${ARROW_RIGHT_PATH}"/>` +
+        `</svg>` +
+        `</a>`;
 
       return (
         // Per-slide labelling: aria-roledescription + aria-labelledby (v4 §v4.4.2c).
