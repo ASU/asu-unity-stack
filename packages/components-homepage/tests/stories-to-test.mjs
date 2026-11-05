@@ -135,4 +135,6 @@ export const storiesToTest = [
   "homepage-rankings-cards--io-absent",
   "homepage-rankings-cards--attrib-hover-suppress-learn-more",
   "homepage-rankings-cards--card-body-hover-reveals-learn-more",
+  // Post-approval fix: media padding restore (WWWCMS-233)
+  "homepage-rankings-cards--media-padding",
 ];

@@ -3576,3 +3576,66 @@ export const ComputeAlphaUnit = {
     await expect(offAlpha).toBeLessThanOrEqual(0.56);
   },
 };
+
+// ─── Post-approval fix: media padding ────────────────────────────────────────
+// Asserts the restored 16px padding on .hp-rankings__media (WWWCMS-233 fix).
+//
+// Two assertions per card:
+//   (a) computed padding on .hp-rankings__media is 16px on all four sides
+//       (verifies $uds-size-spacing-2 token is applied correctly).
+//   (b) the <img> bounding rect is inset by 16px from the media top and left
+//       edges, AND the img is 32px narrower than the media (width inset, both
+//       horizontal padding sides visible).
+//
+// NOTE on height inset: CSS Grid with `aspect-ratio + box-sizing: border-box`
+// in Chromium resolves the implicit grid track height against the border-box
+// height, not the content-box height. This means `getBoundingClientRect().height`
+// on the <img> exceeds `mediaRect.height - 32`; the visual overflow is clipped
+// by `overflow: hidden` on `.hp-rankings__media`. Bottom/right padding correctness
+// is proven by assertion (a) (paddingBottom, paddingRight from computed style).
+//
+// This story runs RED on the unpatched HEAD (padding: 0) and GREEN after
+// `padding: $uds-size-spacing-2` is restored.
+
+export const MediaPadding = {
+  name: "Media padding: 16px all sides (post-approval restore)",
+  globals: viewport(1280),
+  render: () => <StaticPage html={DEFAULT_HTML} />,
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    await expect(p.cards.length).toBeGreaterThan(0);
+
+    for (const card of p.cards) {
+      const media = card.querySelector(".hp-rankings__media");
+      await expect(media).not.toBeNull();
+
+      // (a) Computed padding: 16px on all four sides (CSS token assertion).
+      const mediaStyle = getComputedStyle(media);
+      await expect(parseFloat(mediaStyle.paddingTop)).toBeCloseTo(16, 0);
+      await expect(parseFloat(mediaStyle.paddingRight)).toBeCloseTo(16, 0);
+      await expect(parseFloat(mediaStyle.paddingBottom)).toBeCloseTo(16, 0);
+      await expect(parseFloat(mediaStyle.paddingLeft)).toBeCloseTo(16, 0);
+
+      // (b) Spatial proof: img is inset by 16px from the media top-left corner
+      //     AND is 32px narrower than the media (both horizontal padding sides).
+      //     Tolerance ±1px for sub-pixel rounding.
+      const defaultImg = media.querySelector(".hp-rankings__img--default");
+      await expect(defaultImg).not.toBeNull();
+      const mediaRect = media.getBoundingClientRect();
+      const imgRect = defaultImg.getBoundingClientRect();
+
+      // Top edge: img.top must be mediaRect.top + 16px.
+      await expect(
+        Math.abs(imgRect.top - (mediaRect.top + 16))
+      ).toBeLessThanOrEqual(1);
+      // Left edge: img.left must be mediaRect.left + 16px.
+      await expect(
+        Math.abs(imgRect.left - (mediaRect.left + 16))
+      ).toBeLessThanOrEqual(1);
+      // Horizontal: img must be 32px narrower than media (2 × 16px left+right).
+      await expect(
+        Math.abs(mediaRect.width - 32 - imgRect.width)
+      ).toBeLessThanOrEqual(1);
+    }
+  },
+};
