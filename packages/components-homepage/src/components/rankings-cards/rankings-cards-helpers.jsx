@@ -166,8 +166,7 @@ export const DEFAULT_CARDS = [
   {
     imageSrc: "img/rankings/rank-02-w.png",
     imageSrcHover: "img/rankings/rank-02.png",
-    imageAlt:
-      "#1 in the U.S. for innovation. ASU ahead of MIT and Stanford.",
+    imageAlt: "#1 in the U.S. for innovation. ASU ahead of MIT and Stanford.",
     attributionHref: "TBD-Jira-WWWCMS-233", // TODO: confirm attribution URL from Jira WWWCMS-233.
     attributionLabel: "U.S. News & World Report",
   },
@@ -363,8 +362,7 @@ export const rankingsCardsHtml = ({
       // Per-slide ARIA labelling (v4 §v4.4.2c).
       // SR-only span text: "Ranking N of TOTAL, <imageAlt>"
       const slideLabelId = `${headingIdSafe}-slide-${slideN}-label`;
-      const slideLabelText =
-        `Ranking ${slideN} of ${total}, ${resolvedAlt}`;
+      const slideLabelText = `Ranking ${slideN} of ${total}, ${resolvedAlt}`;
 
       // Card class: add --summary modifier for card 1 (v4 §v4.4.2b).
       const cardClass = isSummary
