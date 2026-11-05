@@ -182,7 +182,9 @@ export const Default = {
       true
     );
     // the control is revealed once a source is attached (a clip that fails to load, as in this runner, hides it)
-    await expect(p.video.getAttribute("src")).toContain("locations.mp4");
+    await waitFor(() =>
+      expect(p.video.getAttribute("src")).toContain("locations.mp4")
+    );
     // the wallpaper layer is decorative and behind the section
     await expect(p.wall.getAttribute("aria-hidden")).toBe("true");
     await expect(style(p.wall).pointerEvents).toBe("none");
@@ -294,7 +296,9 @@ const accordionPlay =
     await expect(style(p.section).backgroundColor).toBe(GRAY_1);
     // Figma mobile (Background 13472:63645): a full-width 375:219 video strip directly above the list
     await expect(style(p.media).display).toBe("block");
-    await expect(p.video.getAttribute("src")).toContain("locations.mp4");
+    await waitFor(() =>
+      expect(p.video.getAttribute("src")).toContain("locations.mp4")
+    );
     const strip = box(p.media);
     await near(strip.width, width, 1);
     await near(strip.height, (strip.width * 219) / 375, 1);
@@ -431,7 +435,9 @@ export const BreakpointCrossing = {
     await waitFor(() =>
       expect(box(p.media).bottom).toBeLessThanOrEqual(box(p.panel).top + 1)
     );
-    await expect(p.video.getAttribute("src")).toContain("locations.mp4");
+    await waitFor(() =>
+      expect(p.video.getAttribute("src")).toContain("locations.mp4")
+    );
     await waitFor(() => expect(p.video.hasAttribute("data-hold")).toBe(false));
     await expect(
       p.names.every(n => n.getAttribute("aria-expanded") === "false")
@@ -627,5 +633,32 @@ export const InitContract = {
     p.names[2].click();
     await expect(p.names[2].getAttribute("aria-pressed")).toBe("true");
     again();
+  },
+};
+
+export const LazyClip = {
+  name: "Clip loads when the media is near",
+  tags: ["!dev"],
+  globals: viewport(1440),
+  render: () => <Harness before="300vh" after="40vh" html={placesHtml()} />,
+  play: async ({ canvasElement }) => {
+    await resizeViewport(1440, 900);
+    const p = parts(canvasElement);
+    // far below the window: no clip is requested yet, the control waits
+    await new Promise(resolve => setTimeout(resolve, 300));
+    await expect(p.video.hasAttribute("src")).toBe(false);
+    await expect(p.mbtn.hidden).toBe(true);
+    // within one window height: the clip is attached
+    window.scrollTo({
+      top: p.media.getBoundingClientRect().top - 300 + window.scrollY,
+      behavior: "instant",
+    });
+    await waitFor(() =>
+      expect(p.video.getAttribute("src")).toContain("locations.mp4")
+    );
+    // and it stays attached when the media leaves again
+    window.scrollTo({ top: 0, behavior: "instant" });
+    await new Promise(resolve => setTimeout(resolve, 200));
+    await expect(p.video.hasAttribute("src")).toBe(true);
   },
 };

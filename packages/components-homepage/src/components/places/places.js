@@ -72,25 +72,51 @@ const bind = (section, doc, win) => {
   section.classList.add("is-enhanced");
   cleanups.push(() => section.classList.remove("is-enhanced"));
 
-  // ---------- video source ----------
+  // ---------- video source: loaded when the media comes within one window height of the viewport ----------
+
+  let near = typeof win.IntersectionObserver !== "function"; // without the API the clip loads at once
+  let wanted = false;
+
+  const load = () => {
+    const source = safeSource(video.dataset.src, doc);
+    if (!source) return;
+    // preload before src: `loadeddata` (which resumes autoplay) never fires under preload="none"
+    video.setAttribute("preload", reduced.matches ? "none" : "auto");
+    if (video.getAttribute("src") !== source) video.setAttribute("src", source);
+    if (deskButton) deskButton.hidden = false;
+  };
 
   const attach = on => {
     if (!video) return;
-    const source = on ? safeSource(video.dataset.src, doc) : null;
-    if (!source) {
+    wanted = on;
+    if (on && near) {
+      load();
+      return;
+    }
+    if (!on) {
       if (video.hasAttribute("src")) {
         video.pause();
         video.removeAttribute("src");
         video.load();
       }
       if (deskButton) deskButton.hidden = true;
-      return;
     }
-    // preload before src: `loadeddata` (which resumes autoplay) never fires under preload="none"
-    video.setAttribute("preload", reduced.matches ? "none" : "auto");
-    if (video.getAttribute("src") !== source) video.setAttribute("src", source);
-    if (deskButton) deskButton.hidden = false;
   };
+
+  if (video && media && !near) {
+    const loader = new win.IntersectionObserver(
+      records => {
+        const last = records[records.length - 1];
+        if (!last || !last.isIntersecting) return;
+        near = true;
+        loader.disconnect();
+        if (wanted) load();
+      },
+      { rootMargin: `${win.innerHeight}px 0px` }
+    );
+    loader.observe(media);
+    cleanups.push(() => loader.disconnect());
+  }
 
   const hold = on => {
     if (video) video.toggleAttribute("data-hold", on);
