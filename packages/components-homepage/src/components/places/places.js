@@ -132,11 +132,19 @@ const bind = (section, doc, win) => {
     }
   };
 
+  // The data layer event follows the widget: a toggle on desktop, an open/close disclosure below 1024
+  // (asucms datalayer.md); the attributes are read at click time.
+  const track = (button, event, action) => {
+    button.setAttribute("data-ga-event", event);
+    button.setAttribute("data-ga-action", action);
+  };
+
   const renderDesk = () => {
     items.forEach((item, i) => {
       const on = i === sel;
       names[i].removeAttribute("aria-expanded");
       names[i].setAttribute("aria-pressed", on ? "true" : "false");
+      track(names[i], "select", "click");
       item.classList.remove("is-open");
       item.classList.toggle("is-selected", on);
     });
@@ -198,13 +206,14 @@ const bind = (section, doc, win) => {
 
   // ---------- accordion (< 1024, Figma 375): one location open at a time ----------
 
-  let open = 0; // the Figma frame shows the first location open
+  let open = -1; // brand: every location starts collapsed
 
   const renderAccordion = () => {
     items.forEach((item, i) => {
       const on = i === open;
       names[i].removeAttribute("aria-pressed");
       names[i].setAttribute("aria-expanded", on ? "true" : "false");
+      track(names[i], "collapse", on ? "close" : "open");
       item.classList.remove("is-selected", "is-shown");
       item.classList.toggle("is-open", on);
       item.style.removeProperty("--hp-places-box-shift");
@@ -261,6 +270,7 @@ const bind = (section, doc, win) => {
     win.cancelAnimationFrame(showFrame);
     if (isDesk) {
       sel = -1;
+      open = -1; // the accordion starts collapsed again after a visit to desktop
       hold(false);
       items.forEach(item => item.classList.remove("is-shown"));
       details.forEach(detail => {
@@ -279,7 +289,7 @@ const bind = (section, doc, win) => {
       section.classList.remove("has-still");
       renderAccordion();
     }
-    // A control that disappeared while focused hands focus to the first button of the section.
+    // A control that disappeared while focused hands focus to its location's name, else the first button.
     const active = doc.activeElement;
     if (
       active &&
@@ -287,7 +297,10 @@ const bind = (section, doc, win) => {
       section.contains(active) &&
       active.getClientRects().length === 0
     ) {
-      const target = section.querySelector(".hp-places__cta");
+      const owner = active.closest(".hp-places__item");
+      const target =
+        (owner && owner.querySelector(".hp-places__name")) ||
+        section.querySelector(".hp-places__cta");
       if (target) target.focus();
     }
   };
@@ -441,7 +454,8 @@ const bind = (section, doc, win) => {
       measureWall();
     }),
     subscribe(reduced, () => {
-      syncPattern();
+      // Only what depends on motion: the user's selection and open location stay.
+      attach(desk.matches);
       syncOpening();
     })
   );
@@ -477,8 +491,13 @@ const bind = (section, doc, win) => {
       closes[i].hidden = true;
       names[i].removeAttribute("aria-pressed");
       names[i].removeAttribute("aria-expanded");
+      track(names[i], "select", "click");
     });
-    stills.forEach(still => still.classList.remove("is-on"));
+    stills.forEach(still => {
+      still.classList.remove("is-on");
+      if (still.dataset.src) still.removeAttribute("src");
+    });
+    if (video) video.setAttribute("preload", "none");
     section.classList.remove("has-still");
     section.style.removeProperty("--hp-places-wall-bottom");
     section.style.removeProperty("--hp-places-wall-y");

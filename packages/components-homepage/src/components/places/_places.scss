@@ -283,6 +283,17 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
   }
 }
 
+// Without script the names do nothing and every location is open: no chevron, no pointer.
+.hp-places:not(.is-enhanced) {
+  .hp-places__chevron {
+    display: none;
+  }
+
+  .hp-places__name {
+    cursor: default;
+  }
+}
+
 // The open location: text, link and photo under the name.
 .hp-places__box {
   display: flex;

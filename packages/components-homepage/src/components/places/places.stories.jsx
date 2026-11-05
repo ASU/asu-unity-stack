@@ -26,7 +26,7 @@ export default {
     docs: {
       description: {
         component:
-          'Homepage campus locator ("One university, many places"). From 1024px a looping video (shared play/pause control) starts inset by the 48px gutter and opens to full width as it scrolls into view; a frosted panel holds the heading, two buttons and the seven locations in two groups. Choosing a location (click or keyboard, never hover) crossfades its photo over the video (0.6s), draws a gold leader line (0.4s) to a description box (fades in 0.3s after 0.2s) with a link; Esc, the close button, a second click or an outside click returns to the video, and scrolling never changes the selection. Below 1024px (Figma 375, brand: Figma is the source of truth, no carousel) the same list is an accordion on Gray 1: each name has a chevron and a rule, one location is open at a time with its text, link and photo (the first is open); there is no video. The section draws the Learn network wallpaper behind it (desktop). Without script every location is open and stacked. `initPlaces` and `initVideoControls` wire it. Sample photos, poster and clip are the prototype media; `href`s are placeholders.',
+          'Homepage campus locator ("One university, many places"). From 1024px a looping video (shared play/pause control) starts inset by the 48px gutter and opens to full width as it scrolls into view; a frosted panel holds the heading, two buttons and the seven locations in two groups. Choosing a location (click or keyboard, never hover) crossfades its photo over the video (0.6s), draws a gold leader line (0.4s) to a description box (fades in 0.3s after 0.2s) with a link; Esc, the close button, a second click or an outside click returns to the video, and scrolling never changes the selection. Below 1024px (Figma 375, brand: Figma is the source of truth, no carousel) the same list is an accordion on Gray 1: each name has a chevron and a rule, one location is open at a time with its text, link and photo (all start collapsed); there is no video. The section draws the Learn network wallpaper behind it (desktop). Without script every location is open and stacked. `initPlaces` and `initVideoControls` wire it. Sample photos, poster and clip are the prototype media; `href`s are placeholders.',
       },
     },
   },
@@ -86,8 +86,12 @@ const expectContract = async p => {
   clickable.forEach(element => {
     const video = element.classList.contains("mbtn");
     expect(element.getAttribute("data-ga-name")).toBe("onclick");
-    expect(["link", "select"]).toContain(element.getAttribute("data-ga-event"));
-    expect(element.getAttribute("data-ga-action")).toBe("click");
+    expect(["link", "select", "collapse"]).toContain(
+      element.getAttribute("data-ga-event")
+    );
+    expect(["click", "open", "close"]).toContain(
+      element.getAttribute("data-ga-action")
+    );
     expect(element.getAttribute("data-ga-type")).toBe("internal link");
     expect(element.getAttribute("data-ga-region")).toBe("main content");
     expect(element.getAttribute("data-ga-section")).toBe(
@@ -129,6 +133,15 @@ export const NoScript = {
       p.photos.every(photo => style(photo).display === "block")
     ).toBe(true);
     await expect(box(p.items[1]).top).toBeGreaterThan(box(p.items[0]).top);
+    // the names do nothing without script: no chevron, and each one points at its detail
+    await expect(
+      p.chevrons.every(chevron => style(chevron).display === "none")
+    ).toBe(true);
+    p.names.forEach((name, i) => {
+      expect(document.getElementById(name.getAttribute("aria-controls"))).toBe(
+        p.details[i]
+      );
+    });
     // the same at the desktop width: script-only layout is not applied
     await resizeViewport(1440, 900);
     await expect(style(p.media).display).toBe("none");
@@ -283,26 +296,31 @@ const accordionPlay =
     await expect(style(p.mbtn).display).toBe("none");
     await expect(p.video.hasAttribute("src")).toBe(false); // no video below 1024
     await expect(style(p.wall).display).toBe("none");
-    // names are disclosure buttons; the first location is open (as in the Figma frame)
-    p.names.forEach((name, i) => {
-      expect(name.getAttribute("aria-expanded")).toBe(
-        i === 0 ? "true" : "false"
-      );
+    // names are disclosure buttons; every location starts collapsed (brand decision 2026-11-05)
+    p.names.forEach(name => {
+      expect(name.getAttribute("aria-expanded")).toBe("false");
       expect(name.hasAttribute("aria-pressed")).toBe(false);
       expect(box(name).height).toBeGreaterThanOrEqual(44);
     });
-    await expect(p.details.map(detail => detail.hidden)).toEqual(
-      LOCATIONS.map((_, i) => i !== 0)
+    await expect(p.details.every(detail => detail.hidden)).toBe(true);
+    await expect(
+      p.names.every(
+        name => style(name).borderBottomColor === WHITE && box(name).width < 600
+      )
+    ).toBe(true);
+    await expect(p.chevrons.every(c => style(c).transform === "none")).toBe(
+      true
     );
-    // open row: gold rule across the panel, chevron up; closed rows: white rule as long as the row
+    // open one: gold rule across the panel, chevron up
+    p.names[0].click();
+    await expect(p.names[0].getAttribute("aria-expanded")).toBe("true");
+    await expect(p.details[0].hidden).toBe(false);
     const side = width >= 768 ? 48 : 16 + 8;
     const panelContent = width - 2 * side;
     await near(box(p.names[0]).width, panelContent, 1);
     await expect(style(p.names[0]).borderBottomColor).toBe(GOLD);
-    await expect(style(p.names[1]).borderBottomColor).toBe(WHITE);
     await expect(box(p.names[1]).width).toBeLessThan(panelContent);
     await expect(style(p.chevrons[0]).transform).not.toBe("none");
-    await expect(style(p.chevrons[1]).transform).toBe("none");
     // the open photo keeps the Figma 327:219 ratio, at most 480 wide
     const photo = box(p.photos[0]);
     await near(photo.width, Math.min(480, panelContent), 1);
@@ -328,11 +346,12 @@ export const Phone375 = {
   play: async ({ canvasElement }) => {
     await resizeViewport(375, 812);
     const p = parts(canvasElement);
-    // Figma 13824:1800: content 327 wide, photo 327x219, name rows 60px apart
+    // Figma 13824:1800: collapsed rows 60px apart; an open row spans the 327px content, its photo 327x219
+    await near(box(p.names[2]).top - box(p.names[1]).top, 60, 2);
+    p.names[0].click();
     await near(box(p.names[0]).width, 327, 1);
     await near(box(p.photos[0]).width, 327, 1);
     await near(box(p.photos[0]).height, 219, 1);
-    await near(box(p.names[2]).top - box(p.names[1]).top, 60, 2);
     await near(style(p.heading).fontSize.replace("px", ""), 32, 0);
   },
 };
@@ -360,12 +379,24 @@ export const AccordionBehaviour = {
     await resizeViewport(393, 852);
     const p = parts(canvasElement);
     const expanded = () => p.names.map(n => n.getAttribute("aria-expanded"));
+    // one open at a time: opening a second closes the first
+    p.names[0].click();
     p.names[1].click();
     await expect(expanded()).toEqual(
       LOCATIONS.map((_, i) => (i === 1 ? "true" : "false"))
     );
     await expect(p.details[0].hidden).toBe(true);
     await expect(p.details[1].hidden).toBe(false);
+    // the data layer follows the widget: open / close below 1024
+    await expect(p.names[1].getAttribute("data-ga-event")).toBe("collapse");
+    await expect(p.names[1].getAttribute("data-ga-action")).toBe("close");
+    await expect(p.names[0].getAttribute("data-ga-action")).toBe("open");
+    // keyboard: a focused name toggles with Enter or Space (native button) and keeps focus
+    p.names[2].focus();
+    p.names[2].click();
+    await expect(document.activeElement).toBe(p.names[2]);
+    await expect(p.names[2].getAttribute("aria-expanded")).toBe("true");
+    p.names[1].click();
     // a second press collapses it
     p.names[1].click();
     await expect(expanded().every(state => state === "false")).toBe(true);
@@ -389,10 +420,12 @@ export const BreakpointCrossing = {
     p.names[2].click();
     await waitFor(() => expect(p.video.hasAttribute("data-hold")).toBe(true));
     await resizeViewport(1023, 800);
-    // the accordion: no selection or hold carried over, no video source, first location open
+    // the accordion: no selection or hold carried over, no video source, everything collapsed
     await waitFor(() => expect(p.video.hasAttribute("src")).toBe(false));
     await expect(p.video.hasAttribute("data-hold")).toBe(false);
-    await expect(p.names[0].getAttribute("aria-expanded")).toBe("true");
+    await expect(
+      p.names.every(n => n.getAttribute("aria-expanded") === "false")
+    ).toBe(true);
     await expect(p.names[2].hasAttribute("aria-pressed")).toBe(false);
     await expect(p.section.classList.contains("has-still")).toBe(false);
     p.names[3].click();
@@ -409,6 +442,13 @@ export const BreakpointCrossing = {
       false
     );
     await expect(p.details.every(detail => detail.hidden)).toBe(true);
+    // and back to the accordion: it starts collapsed again (the earlier open location is not remembered)
+    await resizeViewport(1023, 800);
+    await waitFor(() =>
+      expect(
+        p.names.every(n => n.getAttribute("aria-expanded") === "false")
+      ).toBe(true)
+    );
   },
 };
 
