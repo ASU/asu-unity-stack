@@ -2619,7 +2619,7 @@ export const GlassStripDefault = {
 // ─── Row 37 — Glass strip scroll easing ─────────────────────────────────────
 
 export const GlassStripScroll = {
-  name: "Glass strip: scroll easing writes --hp-strip-opacity",
+  name: "Glass strip: scroll easing writes --hp-strip-opacity via track scroll",
   globals: viewport(1280),
   render: () => <LivePage html={DEFAULT_HTML} />,
   play: async ({ canvasElement }) => {
@@ -2629,30 +2629,46 @@ export const GlassStripScroll = {
     );
     // Give the IO time to fire initial threshold.
     await new Promise(r => setTimeout(r, 200));
-    // The center-most card should have --hp-strip-opacity written.
-    // Find the card whose center is closest to viewport center.
-    const vw = window.innerWidth;
-    const cards = p.cards;
-    let closestCard = cards[0];
-    let minDist = Infinity;
-    for (const card of cards) {
-      const rect = card.getBoundingClientRect();
-      const cx = rect.left + rect.width / 2;
-      const dist = Math.abs(cx - vw / 2);
-      if (dist < minDist) {
-        minDist = dist;
-        closestCard = card;
-      }
-    }
-    // The opacity must have been set (any value in [0.55, 0.85] range).
-    const op = closestCard.style.getPropertyValue("--hp-strip-opacity");
-    if (op !== "") {
+
+    const card = p.cards[0];
+
+    // Scroll the track horizontally by two card widths to move cards in and out
+    // of the viewport center, triggering the track-scroll → rAF → writeOpacity path.
+    const cardWidth = p.cards[0]?.offsetWidth || 291;
+    const scrollDistance = cardWidth * 2;
+    p.track.scrollLeft = scrollDistance;
+    p.track.dispatchEvent(new Event("scroll", { bubbles: true }));
+
+    // Wait for rAF to run at least one tick.
+    await new Promise(r =>
+      requestAnimationFrame(() => requestAnimationFrame(r))
+    );
+    await new Promise(r => setTimeout(r, 80));
+
+    // Every visible card must have --hp-strip-opacity set and within [0.55, 0.85].
+    for (const c of p.cards) {
+      const rect = c.getBoundingClientRect();
+      const isVisible = rect.right > 0 && rect.left < window.innerWidth;
+      if (!isVisible) continue;
+      const op = c.style.getPropertyValue("--hp-strip-opacity");
+      // op must be present (IO or rAF wrote it).
+      await expect(op).not.toBe("");
       const alpha = parseFloat(op);
       await expect(alpha).toBeGreaterThanOrEqual(0.54);
       await expect(alpha).toBeLessThanOrEqual(0.86);
     }
-    // If IO hasn't fired yet (unlikely after 200ms), the fallback is 0.70.
-    // Either case is acceptable for a progressive enhancement.
+
+    // Hover/focus override must still yield 0.99 — set [data-rankings-hover].
+    forceHover(card);
+    await new Promise(r => setTimeout(r, 30));
+    const cssFp = getComputedStyle(
+      card.querySelector(".hp-rankings__card-footer")
+    ).backgroundColor;
+    // The CSS rule ".hp-rankings__card[data-rankings-hover] .hp-rankings__card-footer"
+    // sets --hp-strip-opacity: 0.99 via the cascade.
+    await expect(cssFp).toMatch(/rgba\(255,\s*255,\s*255,\s*0\.9/);
+    forceHover(card, false);
+    await new Promise(r => setTimeout(r, 30));
   },
 };
 
@@ -2767,6 +2783,116 @@ export const GlassStripTeardown = {
   },
 };
 
+// ─── R3 regression: teardown restores pre-existing inline --hp-strip-opacity ─
+
+// If a consumer pre-sets --hp-strip-opacity on a card before init, teardown
+// must restore it rather than unconditionally removing it.
+const OpacityTeardownRestoresPage = () => {
+  const ref = useRef(null);
+  useEffect(() => {
+    // Pre-set a custom value on card[0] before init.
+    const card0 =
+      ref.current && ref.current.querySelector(".hp-rankings__card");
+    const PRESET = "0.42";
+    if (card0) card0.style.setProperty("--hp-strip-opacity", PRESET);
+    const teardown = initRankingsCards(ref.current);
+    // Give IO a moment to overwrite the value.
+    const t = setTimeout(() => {
+      teardown();
+      const section =
+        ref.current && ref.current.querySelector("section.hp-rankings");
+      if (section) section.dataset.tornDown = "true";
+    }, 200);
+    return () => clearTimeout(t);
+  }, []);
+  return (
+    <div
+      ref={ref}
+      className="rankings-storybook-backdrop"
+      dangerouslySetInnerHTML={{ __html: DEFAULT_HTML }}
+    />
+  );
+};
+
+export const OpacityTeardownRestores = {
+  name: "Opacity teardown: restores pre-existing inline --hp-strip-opacity",
+  globals: viewport(1280),
+  render: () => <OpacityTeardownRestoresPage />,
+  play: async ({ canvasElement }) => {
+    const section = canvasElement.querySelector("section.hp-rankings");
+    await waitFor(() => expect(section.dataset.tornDown).toBe("true"));
+    // Card 0 had --hp-strip-opacity: 0.42 set before init — teardown must restore it.
+    const card0 = canvasElement.querySelector(".hp-rankings__card");
+    const restored = card0.style.getPropertyValue("--hp-strip-opacity");
+    await expect(restored).toBe("0.42");
+    // Cards 1+ had no prior value — teardown must remove (empty string).
+    const card1 = canvasElement.querySelectorAll(".hp-rankings__card")[1];
+    await expect(card1.style.getPropertyValue("--hp-strip-opacity")).toBe("");
+  },
+};
+
+// ─── R4: IoAbsent — graceful handling when IntersectionObserver is undefined ─
+
+// Stubs IntersectionObserver as undefined, calls initRankingsCards, asserts no
+// throw, asserts no --hp-strip-opacity leak, asserts nav still works.
+const IoAbsentPage = () => {
+  const ref = useRef(null);
+  useEffect(() => {
+    // Temporarily stub IntersectionObserver as undefined.
+    const origIO = window.IntersectionObserver;
+    window.IntersectionObserver = undefined;
+    let teardown = () => {};
+    let threw = false;
+    try {
+      teardown = initRankingsCards(ref.current);
+    } catch {
+      threw = true;
+    }
+    // Restore immediately so other tests are unaffected.
+    window.IntersectionObserver = origIO;
+    const section =
+      ref.current && ref.current.querySelector("section.hp-rankings");
+    if (section) {
+      section.dataset.threw = String(threw);
+      section.dataset.ioAbsent = "true";
+    }
+    return () => teardown();
+  }, []);
+  return (
+    <div
+      ref={ref}
+      className="rankings-storybook-backdrop"
+      dangerouslySetInnerHTML={{ __html: DEFAULT_HTML }}
+    />
+  );
+};
+
+export const IoAbsent = {
+  name: "IO absent: no throw, no --hp-strip-opacity leak, nav still wires",
+  globals: viewport(1280),
+  render: () => <IoAbsentPage />,
+  play: async ({ canvasElement }) => {
+    const section = canvasElement.querySelector("section.hp-rankings");
+    await waitFor(() => expect(section.dataset.ioAbsent).toBe("true"));
+    // Must not have thrown.
+    await expect(section.dataset.threw).toBe("false");
+    // No --hp-strip-opacity leaked onto any card.
+    const cards = Array.from(
+      canvasElement.querySelectorAll(".hp-rankings__card")
+    );
+    for (const card of cards) {
+      await expect(card.style.getPropertyValue("--hp-strip-opacity")).toBe("");
+    }
+    // Nav must still be wired (prev is disabled at start).
+    const prevBtn = section.querySelector(".hp-rankings__nav-btn--prev");
+    await expect(prevBtn.classList.contains("is-disabled")).toBe(true);
+    // CSS fallback remains 0.70 — check footer background.
+    const footer = section.querySelector(".hp-rankings__card-footer");
+    const bg = getComputedStyle(footer).backgroundColor;
+    await expect(bg).toMatch(/rgba\(255,\s*255,\s*255,\s*0\.7/);
+  },
+};
+
 // ─── Row 41 — Dock first-render HTML ────────────────────────────────────────
 
 export const DockStructure = {
@@ -2794,14 +2920,76 @@ export const DockStructure = {
 
 // ─── Row 42 — Dock sticky positioning at desktop ─────────────────────────────
 
+// Custom render for DockSticky: wraps the rankings section in a tall scrollable
+// container so we can actually scroll it and observe sticky pin + release.
+const DockStickyPage = () => (
+  // Outer wrapper: tall enough to scroll; the sticky section lives inside.
+  // The sticky-wrapper itself provides the 100vh hold spacer below the section.
+  <div
+    id="dock-sticky-scroller"
+    style={{
+      height: "100vh",
+      overflowY: "auto",
+      position: "relative",
+    }}
+  >
+    {/* Space above so we can scroll down to the section */}
+    <div style={{ height: "200px" }} />
+    <div
+      className="rankings-storybook-backdrop"
+      dangerouslySetInnerHTML={{ __html: DEFAULT_HTML }}
+    />
+    {/* Space below to allow scrolling past the hold distance */}
+    <div style={{ height: "300vh" }} />
+  </div>
+);
+
 export const DockSticky = {
-  name: "Dock sticky: section is sticky at hp1280",
+  name: "Dock sticky: pinned at top:100px desktop, released after 100vh hold",
   globals: viewport(1280),
-  render: () => <StaticPage html={DEFAULT_HTML} />,
+  render: () => <DockStickyPage />,
   play: async ({ canvasElement }) => {
     const section = canvasElement.querySelector("section.hp-rankings");
     await expect(section).not.toBeNull();
+
+    // 1. At >=901px viewport, section must have position: sticky.
     await expect(getComputedStyle(section).position).toBe("sticky");
+    // 2. Sticky top must be 100px (computed as 100px string).
+    await expect(getComputedStyle(section).top).toBe("100px");
+
+    // 3. Pin test: scroll down past the 200px pre-space so section sticks.
+    const scroller = canvasElement.querySelector("#dock-sticky-scroller");
+    await expect(scroller).not.toBeNull();
+    // Scroll to 250px — section should now be pinned at top: 100px.
+    scroller.scrollTop = 250;
+    await new Promise(r => setTimeout(r, 80));
+    const pinnedRect = section.getBoundingClientRect();
+    // When pinned, the section's top edge equals the scroller's top + 100px.
+    const scrollerRect = scroller.getBoundingClientRect();
+    const expectedTop = scrollerRect.top + 100;
+    // Allow ±2px for subpixel rounding.
+    await expect(Math.abs(pinnedRect.top - expectedTop)).toBeLessThanOrEqual(2);
+
+    // 4. Release test: scroll far enough to exhaust the 100vh sticky spacer.
+    // The spacer is 100vh, so after scrolling 100vh + section height we are past hold.
+    const sectionHeight = section.offsetHeight;
+    const vh = scroller.clientHeight; // ≈ 100vh within the scroller
+    scroller.scrollTop = 200 + vh + sectionHeight + 50; // well past the hold distance
+    await new Promise(r => setTimeout(r, 80));
+    const releasedRect = section.getBoundingClientRect();
+    // After release, section is no longer pinned at top:100px relative to scroller top.
+    // Its top should be above (less than) the pinned position or below viewport.
+    // We assert that top < scrollerRect.top (section has scrolled off the top of viewport)
+    // OR top > scrollerRect.top + vh (not visible). Either means released.
+    const isReleased =
+      releasedRect.top < scrollerRect.top + 100 - 2 ||
+      releasedRect.top > scrollerRect.top + vh;
+    await expect(isReleased).toBe(true);
+
+    // 5. Scroll back to top; spacer at <=900px must be display:none (tested in
+    //    DockMobileFallback separately — just assert the spacer is present here).
+    const spacer = canvasElement.querySelector(".hp-rankings__sticky-spacer");
+    await expect(spacer).not.toBeNull();
   },
 };
 

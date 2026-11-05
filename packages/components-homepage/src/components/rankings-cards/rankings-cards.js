@@ -395,84 +395,111 @@ export function initRankingsCards(root = document) {
 
     // ── Scroll-opacity: IntersectionObserver + rAF loop (v4 §v4.3.1b) ───
     //
-    // One IO per section observes every card with 21 thresholds.
-    // One rAF loop per section smooths between IO ticks while scrolling.
-    // Under reduced-motion the rAF loop never starts; IO still writes the
-    // custom property on each threshold crossing.
+    // R4 (review-fix cycle 1): guard the entire opacity enhancement with an
+    // IntersectionObserver feature check. If IO is absent, skip IO+rAF
+    // entirely and leave the CSS fallback (0.70) in place. No partial binding.
+    //
+    // R3 (review-fix cycle 1): snapshot each card's prior --hp-strip-opacity
+    // value BEFORE first write and restore it (or remove it) on teardown.
+    //
+    // R2a (review-fix cycle 1): route the track's horizontal scroll through
+    // the same rAF/idle lifecycle as window scroll, so opacity updates during
+    // carousel dragging as well as page scroll.
 
-    // Track which cards have had --hp-strip-opacity written by this init.
-    const opacityCards = new Set();
+    if (typeof win.IntersectionObserver !== "undefined") {
+      // Map from card → prior inline value of --hp-strip-opacity (null = not set).
+      const priorOpacity = new Map();
 
-    const writeOpacity = (card, alpha) => {
-      card.style.setProperty("--hp-strip-opacity", alpha.toFixed(2));
-      opacityCards.add(card);
-    };
-
-    const opacityIO = new win.IntersectionObserver(
-      ioEntries => {
-        ioEntries.forEach(entry => {
-          const card = entry.target;
-          const alpha = computeAlpha(
-            card.getBoundingClientRect(),
-            win.innerWidth
+      const writeOpacity = (card, alpha) => {
+        // Snapshot prior value on first write only.
+        if (!priorOpacity.has(card)) {
+          priorOpacity.set(
+            card,
+            card.style.getPropertyValue("--hp-strip-opacity") || null
           );
+        }
+        card.style.setProperty("--hp-strip-opacity", alpha.toFixed(2));
+      };
+
+      const opacityIO = new win.IntersectionObserver(
+        ioEntries => {
+          ioEntries.forEach(entry => {
+            const card = entry.target;
+            const alpha = computeAlpha(
+              card.getBoundingClientRect(),
+              win.innerWidth
+            );
+            writeOpacity(card, alpha);
+          });
+        },
+        { threshold: IO_THRESHOLDS }
+      );
+
+      track.querySelectorAll(CARD_SEL).forEach(card => opacityIO.observe(card));
+      state.cleanups.push(() => {
+        opacityIO.disconnect();
+        // R3: restore each card's prior inline --hp-strip-opacity value.
+        priorOpacity.forEach((prior, card) => {
+          if (prior === null || prior === "") {
+            card.style.removeProperty("--hp-strip-opacity");
+          } else {
+            card.style.setProperty("--hp-strip-opacity", prior);
+          }
+        });
+        priorOpacity.clear();
+      });
+
+      // rAF loop — smooths between IO ticks while actively scrolling.
+      let isScrolling = false;
+      let scrollIdleTimer = null;
+      let rafHandle = null;
+
+      const tick = () => {
+        if (!isScrolling || (reducedMQ && reducedMQ.matches)) {
+          rafHandle = null;
+          return;
+        }
+        track.querySelectorAll(CARD_SEL).forEach(card => {
+          const rect = card.getBoundingClientRect();
+          // Skip cards entirely off-screen (no visible change needed).
+          if (rect.right < 0 || rect.left > win.innerWidth) return;
+          const alpha = computeAlpha(rect, win.innerWidth);
           writeOpacity(card, alpha);
         });
-      },
-      { threshold: IO_THRESHOLDS }
-    );
+        rafHandle = win.requestAnimationFrame(tick);
+      };
 
-    track.querySelectorAll(CARD_SEL).forEach(card => opacityIO.observe(card));
-    state.cleanups.push(() => opacityIO.disconnect());
+      // Shared scroll handler: triggers the rAF loop regardless of whether
+      // the scroll came from window (page scroll) or track (horizontal drag).
+      const onScroll = () => {
+        if (reducedMQ && reducedMQ.matches) return; // reduced motion: no rAF loop
+        isScrolling = true;
+        if (!rafHandle) rafHandle = win.requestAnimationFrame(tick);
+        if (scrollIdleTimer) win.clearTimeout(scrollIdleTimer);
+        scrollIdleTimer = win.setTimeout(() => {
+          isScrolling = false;
+          scrollIdleTimer = null;
+        }, SCROLL_IDLE_MS);
+      };
 
-    // rAF loop — smooths between IO ticks while actively scrolling.
-    let isScrolling = false;
-    let scrollIdleTimer = null;
-    let rafHandle = null;
+      // R2a: listen to BOTH window scroll (page scroll) and track scroll
+      // (horizontal carousel drag), both passive.
+      win.addEventListener("scroll", onScroll, { passive: true });
+      track.addEventListener("scroll", onScroll, { passive: true });
 
-    const tick = () => {
-      if (!isScrolling || (reducedMQ && reducedMQ.matches)) {
-        rafHandle = null;
-        return;
-      }
-      track.querySelectorAll(CARD_SEL).forEach(card => {
-        const rect = card.getBoundingClientRect();
-        // Skip cards entirely off-screen (no visible change needed).
-        if (rect.right < 0 || rect.left > win.innerWidth) return;
-        const alpha = computeAlpha(rect, win.innerWidth);
-        writeOpacity(card, alpha);
+      state.cleanups.push(() => {
+        win.removeEventListener("scroll", onScroll);
+        track.removeEventListener("scroll", onScroll);
+        if (rafHandle) {
+          win.cancelAnimationFrame(rafHandle);
+          rafHandle = null;
+        }
+        if (scrollIdleTimer) {
+          win.clearTimeout(scrollIdleTimer);
+          scrollIdleTimer = null;
+        }
       });
-      rafHandle = win.requestAnimationFrame(tick);
-    };
-
-    const onWindowScroll = () => {
-      if (reducedMQ && reducedMQ.matches) return; // reduced motion: no rAF loop
-      isScrolling = true;
-      if (!rafHandle) rafHandle = win.requestAnimationFrame(tick);
-      if (scrollIdleTimer) win.clearTimeout(scrollIdleTimer);
-      scrollIdleTimer = win.setTimeout(() => {
-        isScrolling = false;
-        scrollIdleTimer = null;
-      }, SCROLL_IDLE_MS);
-    };
-
-    win.addEventListener("scroll", onWindowScroll, { passive: true });
-    state.cleanups.push(() => {
-      win.removeEventListener("scroll", onWindowScroll);
-      if (rafHandle) {
-        win.cancelAnimationFrame(rafHandle);
-        rafHandle = null;
-      }
-      if (scrollIdleTimer) {
-        win.clearTimeout(scrollIdleTimer);
-        scrollIdleTimer = null;
-      }
-      // Remove --hp-strip-opacity from every card this init wrote.
-      opacityCards.forEach(card => {
-        card.style.removeProperty("--hp-strip-opacity");
-      });
-      opacityCards.clear();
-    });
+    } // end IntersectionObserver feature guard
 
     // Initial state after wiring is in place.
     syncNavState();

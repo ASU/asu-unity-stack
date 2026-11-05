@@ -131,4 +131,6 @@ export const storiesToTest = [
   "homepage-rankings-cards--glass-authorized",
   "homepage-rankings-cards--default-img-no-transition",
   "homepage-rankings-cards--compute-alpha-unit",
+  "homepage-rankings-cards--opacity-teardown-restores",
+  "homepage-rankings-cards--io-absent",
 ];
