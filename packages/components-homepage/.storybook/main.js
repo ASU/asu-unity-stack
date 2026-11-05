@@ -36,6 +36,7 @@ export default {
   staticDirs: [
     { from: "../src/img", to: "/img" },
     { from: "../src/components/stories-grid/photos", to: "/story-photos" },
+    { from: "../src/components/places/media", to: "/places-media" },
     { from: fontAwesomeDir, to: "/fontawesome" },
   ],
   framework: {

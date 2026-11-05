@@ -7,7 +7,7 @@ import { defineConfig } from "vite";
 // Vite would otherwise emit a copy of each image next to the CSS and rewrite the URL to it.
 // Relies on: the SCSS url() art paths, `assetFileNames: "css/[name].[ext]"` (assets land in css/),
 // and src/img holding every referenced file. Throws if any of that stops holding.
-const ART_ASSET = /^css\/(.+\.(?:png|svg))$/;
+const ART_ASSET = /^css\/(.+\.(?:png|svg|webp))$/;
 const artFromDistImg = () => ({
   name: "art-from-dist-img",
   enforce: "post",
@@ -20,7 +20,7 @@ const artFromDistImg = () => ({
     const art = Object.keys(bundle).filter(name => ART_ASSET.test(name));
     if (!art.length) {
       throw new Error(
-        "art-from-dist-img: no css/*.png|svg asset was generated; the CSS art url() or assetFileNames changed."
+        "art-from-dist-img: no css/*.png|svg|webp asset was generated; the CSS art url() or assetFileNames changed."
       );
     }
     const css = bundle["css/components-homepage.css"];
@@ -49,7 +49,7 @@ const c = {
   plugins: [artFromDistImg()],
   experimental: {
     renderBuiltUrl: filename =>
-      /^css\/.+\.(png|svg)$/.test(filename)
+      /^css\/.+\.(png|svg|webp)$/.test(filename)
         ? `../img/${filename.slice("css/".length)}`
         : undefined,
   },
