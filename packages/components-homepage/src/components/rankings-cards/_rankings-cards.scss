@@ -1,15 +1,35 @@
 // Rankings-cards component styles.
 // Package: @asu/components-homepage  ·  Jira: WWWCMS-233
-// Design doc: .pipeline/design-doc.md §4 (v3 amendment 2026-11-03T19:25Z)
+// Design doc: .pipeline/design-doc.md §4 + v4 amendment
 //
 // Token source: @asu/unity-bootstrap-theme (_custom-asu-variables.scss).
-// Zero raw hex values: all colors use $uds-* / $asu-* tokens.
+// Raw-value contracts (design-doc + v4 amendment overrides — ALL must have a
+// TODO or brand-skill exception comment):
 //
-// Locked v3 raw-value contracts (no longer placeholders — design-doc v3 §3.1):
-//   - aspect-ratio: 2 / 1   on .hp-rankings__media (Q1 = A, every breakpoint)
-//   - object-position: center 30%  on .hp-rankings__img (Q4 = C; see §11.2 Figma TODO)
-//   - image intrinsics: 500 × 251  (in HTML attributes via rankingsCardsHtml({ imageWidth, imageHeight }); Q2 = C)
-//   - hover transition duration: 150ms (§4.5; TODO: confirm with design)
+//   - Card width: 17.1875rem (275px).   TODO: request $hp-rankings-card-width token
+//                                       (v4 §v4.5 brand-skill exception).
+//   - aspect-ratio: 2 / 1              on .hp-rankings__media (Q1=A; v3 §3.1).
+//   - object-position: center 30%      on .hp-rankings__img (Q4=C; §11.2 Figma TODO).
+//   - Hover transition: 150ms          on .hp-rankings__img--hover (§4.5 TODO).
+//   - Learn-more reveal: 180ms         (v4 §v4.3.1a TODO: confirm with design).
+//   - Glass bg:  rgba(255,255,255,0.08) Brand-skill exception — glass morphism
+//                                       (v4 §v4.7.1).
+//   - Glass shadow: 0 2px 12px rgba(0,0,0,0.32)   TODO: request $hp-rankings-shadow token.
+//   - Glass blur: blur(8px)            TODO: request $hp-rankings-blur-radius token.
+//   - Border-radius: 4px               TODO: request $hp-rankings-radius token.
+//   - Footer gap: 2px                  TODO: request $uds-size-spacing-quarter token.
+//   - Touch targets: min-height/width 2.75rem (44px) per v4 §v4.6.
+//   - Sticky top: 100px desktop, 48px mobile.
+//                                       TODO: request $hp-header-height-desktop /
+//                                       $hp-header-height-mobile tokens (v4 §v4.1 Q1).
+//   - Spacer height: 100vh dock hold    (v4 §v4.1 Q2).
+
+// ── Sticky wrapper (v4.3.1c) ─────────────────────────────────────────────────
+
+.hp-rankings__sticky-wrapper {
+  position: relative;
+  // At ≥901px the wrapper creates the containing block for the sticky section.
+}
 
 // ── Section ───────────────────────────────────────────────────────────────────
 
@@ -22,6 +42,26 @@
   @media (max-width: $hp-phone-max) {
     --hp-rankings-gutter: #{$uds-size-spacing-2}; // TODO: confirm with design — phone gutter.
   }
+
+  // Desktop sticky dock (v4 §v4.3.1c).
+  @media (min-width: 901px) {
+    position: sticky;
+    top: 100px; // TODO: request $hp-header-height-desktop token (v4 §v4.1 Q1).
+    z-index: 1; // above page body, under global header.
+  }
+}
+
+// Sticky spacer — hold distance 100vh (v4 §v4.3.1c assumed per §v4.1 Q2).
+.hp-rankings__sticky-spacer {
+  @media (min-width: 901px) {
+    height: 100vh; // 1 viewport height hold distance (assumed §v4.1 Q2).
+    pointer-events: none;
+    display: block;
+  }
+
+  @media (max-width: 900px) {
+    display: none;
+  }
 }
 
 // ── Inner wrapper ─────────────────────────────────────────────────────────────
@@ -29,7 +69,7 @@
 .hp-rankings__inner {
   display: grid; // design-doc §4.3 — column with two rows.
   grid-template-rows: auto auto; // row 1: track · row 2: controls.
-  max-width: 1440px; // TODO: confirm with design — matches reimagine inner (prototype line 47).
+  max-width: 1440px; // TODO: confirm with design — matches reimagine inner.
   margin-inline: auto;
   padding-inline: var(--hp-rankings-gutter);
 }
@@ -42,7 +82,8 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-padding-inline: 0;
-  padding: 0; // Resets Bootstrap reboot ul { padding-left: 2rem }; ensures scrollLeft settles at 0 at start (no 32px offset).
+  padding: 0; // Resets Bootstrap reboot ul { padding-left: 2rem }; ensures scrollLeft
+              // settles at 0 at start (no 32px offset). Design-doc §5.2.
   margin: 0; // Also reset margin from reboot ul { margin-bottom: 1rem }.
   // Hide the native scrollbar (visual noise); keyboard model does not rely on it.
   scrollbar-width: none;
@@ -61,17 +102,29 @@
 
 .hp-rankings__card {
   flex: 0 0 auto;
-  width: 16.25rem; // 260px. Aligned with prototype visual.
+  width: 17.1875rem; // 275px. TODO: request new UDS token
+                     // $hp-rankings-card-width — brand-skill exception
+                     // documented in design-doc v4 §v4.5.
   scroll-snap-align: start;
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, var(--rkGlass, 0.08)); // Glass morphism effect.
-  backdrop-filter: blur(8px); // Blur effect behind card.
-  box-shadow: inset 0 0 0 1px #fff, 0 2px 12px rgba(0, 0, 0, 0.32); // Inner bright edge + outer shadow.
+  // Glass morphism (v4 §v4.7.1 — authorized, supersedes v3 transparent card).
+  // Brand-skill exception — glass morphism, see design-doc v4 §v4.7.1.
+  background: rgba(255, 255, 255, 0.08); // Brand-skill exception — glass morphism, see design-doc v4 §v4.7.1.
+  backdrop-filter: blur(8px); // TODO: request $hp-rankings-blur-radius token.
+  box-shadow:
+    inset 0 0 0 1px #{$uds-color-base-white},
+    0 2px 12px rgba(0, 0, 0, 0.32); // TODO: request $hp-rankings-shadow token; rgba shadow is brand-skill exception (v4 §v4.7.1).
   color: $uds-color-base-white;
-  border: none; // Glass morphism uses box-shadow for the inset edge instead.
-  border-radius: 4px; // Aligned with prototype visual.
-  overflow: hidden; // Clip footer background to card's rounded corners.
+  border: none; // Glass morphism uses box-shadow for the inset edge.
+  border-radius: 4px; // TODO: request $hp-rankings-radius token (v4 §v4.7.1).
+  overflow: hidden; // Clip footer background and content to card's rounded corners.
+}
+
+// Summary variant modifier (card 1 only — reserved for future card-1-specific CSS).
+.hp-rankings__card--summary {
+  // No additional rules currently. Modifier exists so CSS selectors can target
+  // card 1 specifically without relying on :first-child. — v4 §v4.4.2b.
 }
 
 // ── Media box (image stack, CSS grid overlay) ─────────────────────────────────
@@ -81,10 +134,9 @@
   // Stack both <img> elements in the same cell (no position: absolute needed).
   grid-template-areas: "img";
   width: 100%;
-  aspect-ratio: 2/1; // Locked v3 per Q1 = A — every breakpoint. Mobile media box: 288 × 144. See design-doc v3 §3.1.
+  aspect-ratio: 2 / 1; // Locked v3 per Q1=A — every breakpoint. Mobile: 288×144. Design-doc v3 §3.1.
   background: transparent;
   overflow: hidden; // belt-and-braces for off-brand PNG bleeds.
-  padding: 16px; // Design spec: 16px padding on all sides inside the card.
 }
 
 .hp-rankings__img {
@@ -92,23 +144,23 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 30%; // Q4 = C — defends hover-PNG framing (numeral sits in upper third). TODO: confirm with design — see §11.2.
+  object-position: center 30%; // Q4=C — defends hover-PNG framing (numeral sits in upper third).
+                                // TODO: confirm with design — see §11.2.
   display: block;
 }
 
 .hp-rankings__img--default {
   opacity: 1;
-
-  @media (prefers-reduced-motion: no-preference) {
-    transition: opacity 150ms ease; // Hover opacity transition duration (locked 150ms).
-  }
+  // NOTE: No transition on the default image (v4 §v4.7.2 FIX).
+  // Only the hover image animates; the default stays at opacity:1 while
+  // the hover image fades in on top via the grid overlay.
 }
 
 .hp-rankings__img--hover {
   opacity: 0;
 
   @media (prefers-reduced-motion: no-preference) {
-    transition: opacity 150ms ease; // Hover opacity transition duration (locked 150ms).
+    transition: opacity 150ms ease; // TODO: confirm duration with design (§4.5).
   }
 }
 
@@ -116,10 +168,14 @@
 
 .hp-rankings__card-footer {
   flex: 0 0 auto; // Natural height, no stretching.
-  background: rgba(255, 255, 255, 0.70);
+  min-height: 2.75rem; // 44px — WCAG 2.5.5 touch target (v4 §v4.6). Raw value; no token for 44px floor.
   display: flex;
-  align-items: center;
-  padding: $uds-size-spacing-1 $uds-size-spacing-2; // 4px vertical, 8px horizontal.
+  align-items: center; // Vertically-center the ink inside the 44px band.
+  gap: 2px; // TODO: request $uds-size-spacing-quarter token (v4 §v4.7.1).
+  padding: $uds-size-spacing-1 $uds-size-spacing-2;
+  // Scroll-driven glass-strip opacity (v4 §v4.3.1b).
+  // First-render fallback: 0.70 (matches v3 fixed value; no-JS consumers keep this value).
+  background: rgba(255, 255, 255, var(--hp-strip-opacity, 0.70)); // Brand-skill exception — glass morphism (v4 §v4.7.1).
 }
 
 // ── Attribution link ──────────────────────────────────────────────────────────
@@ -127,13 +183,63 @@
 .hp-rankings__attribution {
   display: inline-flex;
   align-items: center;
-  gap: 2px; // Tightened spacing between text and icon.
-  color: $asu-gray-1; // Default: black text on semi-white background.
+  gap: $uds-size-spacing-half;
+  // Touch target floor (v4 §v4.6).
+  min-width: 2.75rem; // 44px floor — WCAG 2.5.5.
+  min-height: 2.75rem; // 44px floor — WCAG 2.5.5.
+  color: $asu-gray-1; // Dark on semi-white glass strip (v4 §v4.7.1 AUTHORIZED).
   text-decoration: underline;
-  padding: 0; // Removed padding to align with footer padding.
+  padding: 0;
 }
 
 .hp-rankings__attribution-icon {
+  height: 1em;
+  width: auto;
+  vertical-align: -0.125em;
+}
+
+// ── Card 1 secondary link — see-all-top (v4 §v4.4.2b) ────────────────────────
+
+.hp-rankings__see-all-top {
+  display: inline-flex;
+  align-items: center;
+  gap: $uds-size-spacing-half;
+  min-width: 2.75rem; // 44px floor — WCAG 2.5.5 (v4 §v4.6).
+  min-height: 2.75rem; // 44px floor — WCAG 2.5.5 (v4 §v4.6).
+  color: $asu-gray-1; // Dark on semi-white glass strip (same pattern as attribution).
+  text-decoration: underline;
+}
+
+.hp-rankings__see-all-top-icon {
+  height: 1em;
+  width: auto;
+  vertical-align: -0.125em;
+}
+
+// ── Learn-more reveal (v4 §v4.3.1a) ─────────────────────────────────────────
+// Always in the a11y tree; visually hidden by opacity + translate.
+// Revealed on hover (pointer) and focus-within (keyboard).
+
+.hp-rankings__learn-more {
+  // Always in a11y tree; visually hidden by opacity + translate.
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none; // not clickable until revealed
+  display: inline-flex;
+  align-items: center;
+  gap: $uds-size-spacing-half;
+  min-width: 2.75rem; // 44px floor — WCAG 2.5.5 (v4 §v4.6).
+  min-height: 2.75rem; // 44px floor — WCAG 2.5.5 (v4 §v4.6).
+  color: inherit; // inherits card color (dark on glass, dark on solid-white hover)
+  text-decoration: underline;
+  margin-inline-start: auto; // right-aligned inside the footer
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: opacity 180ms ease, transform 180ms ease; // TODO: confirm with design.
+  }
+}
+
+.hp-rankings__learn-more-icon {
   height: 1em;
   width: auto;
   vertical-align: -0.125em;
@@ -148,8 +254,8 @@
   .hp-rankings__card:hover {
     background: $uds-color-base-white;
     color: $asu-gray-1;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.32); // Keep outer shadow, remove inset edge on hover. Brand-skill exception (v4 §v4.7.1).
     border-color: $uds-color-base-white;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.32); // Keep outer shadow, remove inset edge on hover.
   }
 
   .hp-rankings__card:hover .hp-rankings__img--default {
@@ -160,39 +266,62 @@
     opacity: 1;
   }
 
-  // Attribution link color only changes on link hover, not card hover.
-  .hp-rankings__attribution:hover {
+  // Card-hover maroon: flip all three interactive link classes (v4 §v4.7.2 FIX).
+  // Previously only .hp-rankings__attribution:hover was changed — incorrect.
+  // The locked contract requires any pointer inside the card to flip ALL links.
+  .hp-rankings__card:hover .hp-rankings__attribution,
+  .hp-rankings__card:hover .hp-rankings__see-all-top,
+  .hp-rankings__card:hover .hp-rankings__learn-more {
     color: $uds-color-brand-maroon;
+  }
+
+  // Scroll-opacity hover override (v4 §v4.3.1b).
+  .hp-rankings__card:hover .hp-rankings__card-footer {
+    --hp-strip-opacity: 0.99;
+  }
+
+  // Learn-more: revealed on card hover (v4 §v4.3.1a).
+  .hp-rankings__card:hover .hp-rankings__learn-more {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
   }
 }
 
-// Keyboard focus should also trigger the hover state (design spec: swap on hover OR focus).
-.hp-rankings__card:focus-within {
-  background: $uds-color-base-white;
-  color: $asu-gray-1;
-  border-color: $uds-color-base-white;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.32); // Keep outer shadow, remove inset edge on focus.
-}
+// ── Focus-within (keyboard) ───────────────────────────────────────────────────
+// v4 §v4.7.5 FIX: Remove the full card inversion on :focus-within.
+// ONLY the focus ring + maroon color-flip + learn-more reveal are retained.
+// The card background does NOT flip to white; the default image does NOT fade.
 
-.hp-rankings__card:focus-within .hp-rankings__img--default {
-  opacity: 0;
-}
-
-.hp-rankings__card:focus-within .hp-rankings__img--hover {
+// Learn-more reveal on focus-within (v4 §v4.3.1a — approved progressive disclosure).
+.hp-rankings__card:focus-within .hp-rankings__learn-more {
   opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
-// Attribution link color changes on focus too.
-.hp-rankings__attribution:focus-visible {
+// Scroll-opacity focus override (v4 §v4.3.1b).
+.hp-rankings__card:focus-within .hp-rankings__card-footer {
+  --hp-strip-opacity: 0.99;
+}
+
+// Direct focus-visible color override — when a single link gets keyboard focus
+// that link flips to maroon (v4 §v4.7.2).
+.hp-rankings__attribution:focus-visible,
+.hp-rankings__see-all-top:focus-visible,
+.hp-rankings__learn-more:focus-visible {
   color: $uds-color-brand-maroon;
 }
 
-// Data-attribute mirror for Storybook (bypasses (hover:hover) media gate).
+// ── Storybook mirror: [data-rankings-hover] ──────────────────────────────────
+// Bypasses the (hover:hover) media gate so Storybook interaction tests can
+// force the hover state on any device.
+
 .hp-rankings__card[data-rankings-hover] {
   background: $uds-color-base-white;
   color: $asu-gray-1;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.32); // Brand-skill exception (v4 §v4.7.1).
   border-color: $uds-color-base-white;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.32); // Keep outer shadow, remove inset edge in Storybook mirror.
 }
 
 .hp-rankings__card[data-rankings-hover] .hp-rankings__img--default {
@@ -203,9 +332,23 @@
   opacity: 1;
 }
 
-// Attribution link color in Storybook hover mirror.
-.hp-rankings__card[data-rankings-hover] .hp-rankings__attribution {
+// Card-hover maroon in Storybook mirror (v4 §v4.7.2 — all three link classes).
+.hp-rankings__card[data-rankings-hover] .hp-rankings__attribution,
+.hp-rankings__card[data-rankings-hover] .hp-rankings__see-all-top,
+.hp-rankings__card[data-rankings-hover] .hp-rankings__learn-more {
   color: $uds-color-brand-maroon;
+}
+
+// Scroll-opacity Storybook mirror override (v4 §v4.3.1b).
+.hp-rankings__card[data-rankings-hover] .hp-rankings__card-footer {
+  --hp-strip-opacity: 0.99;
+}
+
+// Learn-more revealed in Storybook mirror (v4 §v4.3.1a).
+.hp-rankings__card[data-rankings-hover] .hp-rankings__learn-more {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 // ── Controls row (nav + see-all) ──────────────────────────────────────────────
@@ -232,9 +375,10 @@
 // ── Nav buttons ───────────────────────────────────────────────────────────────
 
 .hp-rankings__nav-btn {
-  // $uds-size-icon-xl placeholder.
-  // TODO: confirm with design — nav button diameter (locked placeholder 3rem).
-  width: 3rem;
+  // Touch target floor (v4 §v4.6): min ensures the button never shrinks below 44px.
+  min-width: 2.75rem; // 44px floor — WCAG 2.5.5.
+  min-height: 2.75rem; // 44px floor — WCAG 2.5.5.
+  width: 3rem; // $uds-size-icon-xl placeholder. TODO: confirm with design — nav button diameter.
   height: 3rem;
   border-radius: 50%;
   background: $uds-color-base-white;
@@ -247,7 +391,8 @@
 
 .hp-rankings__nav-btn.is-disabled,
 .hp-rankings__nav-btn[aria-disabled="true"] {
-  opacity: 0.5; // Disabled state uses opacity, not color change.
+  background: $asu-gray-3; // Muted (matches screenshot "prev at start").
+  color: $uds-color-base-white;
   cursor: not-allowed;
 }
 
@@ -264,6 +409,8 @@
   display: inline-flex;
   align-items: center;
   gap: $uds-size-spacing-half;
+  min-width: 2.75rem; // 44px floor — WCAG 2.5.5 (v4 §v4.6).
+  min-height: 2.75rem; // 44px floor — WCAG 2.5.5 (v4 §v4.6).
 }
 
 .hp-rankings__see-all-icon {
@@ -277,12 +424,16 @@
 // and use :focus-visible with !important for forced-colors support.
 
 .hp-rankings__attribution:focus:not(:focus-visible),
+.hp-rankings__see-all-top:focus:not(:focus-visible),
+.hp-rankings__learn-more:focus:not(:focus-visible),
 .hp-rankings__nav-btn:focus:not(:focus-visible),
 .hp-rankings__see-all:focus:not(:focus-visible) {
   box-shadow: none !important; // Suppress the tap ring from theme's button:focus rule.
 }
 
 .hp-rankings__attribution:focus-visible,
+.hp-rankings__see-all-top:focus-visible,
+.hp-rankings__learn-more:focus-visible,
 .hp-rankings__nav-btn:focus-visible,
 .hp-rankings__see-all:focus-visible {
   // transparent outline catches forced-colors mode (box-shadow is stripped by UA).
@@ -298,6 +449,11 @@
   .hp-rankings__track {
     scroll-behavior: auto;
   }
+
+  .hp-rankings__learn-more {
+    transition: none;
+    transform: none; // snap-reveal, no translate motion (v4 §v4.3.1a).
+  }
 }
 
 // ── Forced colors ─────────────────────────────────────────────────────────────
@@ -307,8 +463,8 @@
     background: Canvas; // ensures text readability in high-contrast mode.
     color: CanvasText;
     border: 1px solid CanvasText; // Inset edge visible in high-contrast.
-    box-shadow: inset 0 0 0 1px CanvasText, 0 2px 8px;
-    backdrop-filter: none; // Disable blur in forced-colors mode.
+    box-shadow: none; // Glass shadows stripped; system color border handles visual separation.
+    backdrop-filter: none; // Disable blur in forced-colors mode (v4 §v4.7.1 escape hatch).
   }
 
   .hp-rankings__media {
@@ -324,5 +480,17 @@
   .hp-rankings__nav-btn.is-disabled {
     color: GrayText;
     opacity: 1; // Forced-colors doesn't support opacity; use explicit GrayText color instead.
+  }
+
+  // Opacity-only Learn-more reveal fails in forced-colors; use visibility so
+  // the reveal is still perceivable in high-contrast mode (v4 §v4.3.1a).
+  .hp-rankings__learn-more {
+    visibility: hidden;
+  }
+
+  .hp-rankings__card:hover .hp-rankings__learn-more,
+  .hp-rankings__card:focus-within .hp-rankings__learn-more,
+  .hp-rankings__card[data-rankings-hover] .hp-rankings__learn-more {
+    visibility: visible;
   }
 }
