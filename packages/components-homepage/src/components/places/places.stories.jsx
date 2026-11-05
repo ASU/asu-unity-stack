@@ -26,7 +26,7 @@ export default {
     docs: {
       description: {
         component:
-          'Homepage campus locator ("One university, many places"). From 1024px a looping video (shared play/pause control) starts inset by the 48px gutter and opens to full width as it scrolls into view; a frosted panel holds the heading, two buttons and the seven locations in two groups. Choosing a location (click or keyboard, never hover) crossfades its photo over the video (0.6s), draws a gold leader line (0.4s) to a description box (fades in 0.3s after 0.2s) with a link; Esc, the close button, a second click or an outside click returns to the video, and scrolling never changes the selection. Below 1024px (Figma 375, brand: Figma is the source of truth, no carousel) the same list is an accordion on Gray 1: each name has a chevron and a rule, one location is open at a time with its text, link and photo (all start collapsed); there is no video. The section draws the Learn network wallpaper behind it (desktop). Without script every location is open and stacked. `initPlaces` and `initVideoControls` wire it. Sample photos, poster and clip are the prototype media; `href`s are placeholders.',
+          'Homepage campus locator ("One university, many places"). From 1024px a looping video (shared play/pause control) starts inset by the 48px gutter and opens to full width as it scrolls into view; a frosted panel holds the heading, two buttons and the seven locations in two groups. Choosing a location (click or keyboard, never hover) crossfades its photo over the video (0.6s), draws a gold leader line (0.4s) to a description box (fades in 0.3s after 0.2s) with a link; Esc, the close button, a second click or an outside click returns to the video, and scrolling never changes the selection. Below 1024px (Figma 375, brand: Figma is the source of truth, no carousel) the same list is an accordion on Gray 1: each name has a chevron and a rule, one location is open at a time with its text, link and photo (all start collapsed); a 375:219 video strip with the pause button at its bottom right sits above the list. The section draws the Learn network wallpaper behind it (desktop). Without script every location is open and stacked. `initPlaces` and `initVideoControls` wire it. Sample photos, poster and clip are the prototype media; `href`s are placeholders.',
       },
     },
   },
@@ -292,9 +292,16 @@ const accordionPlay =
     await expectContract(p);
     await expect(p.section.classList.contains("is-enhanced")).toBe(true);
     await expect(style(p.section).backgroundColor).toBe(GRAY_1);
-    await expect(style(p.media).display).toBe("none");
-    await expect(style(p.mbtn).display).toBe("none");
-    await expect(p.video.hasAttribute("src")).toBe(false); // no video below 1024
+    // Figma mobile (Background 13472:63645): a full-width 375:219 video strip directly above the list
+    await expect(style(p.media).display).toBe("block");
+    await expect(p.video.getAttribute("src")).toContain("locations.mp4");
+    const strip = box(p.media);
+    await near(strip.width, width, 1);
+    await near(strip.height, (strip.width * 219) / 375, 1);
+    await expect(strip.bottom).toBeLessThanOrEqual(box(p.panel).top + 1);
+    await expect(p.stills.every(still => style(still).display === "none")).toBe(
+      true
+    );
     await expect(style(p.wall).display).toBe("none");
     // names are disclosure buttons; every location starts collapsed (brand decision 2026-11-05)
     p.names.forEach(name => {
@@ -420,9 +427,12 @@ export const BreakpointCrossing = {
     p.names[2].click();
     await waitFor(() => expect(p.video.hasAttribute("data-hold")).toBe(true));
     await resizeViewport(1023, 800);
-    // the accordion: no selection or hold carried over, no video source, everything collapsed
-    await waitFor(() => expect(p.video.hasAttribute("src")).toBe(false));
-    await expect(p.video.hasAttribute("data-hold")).toBe(false);
+    // the accordion: no selection or hold carried over, the video still attached, everything collapsed
+    await waitFor(() =>
+      expect(box(p.media).bottom).toBeLessThanOrEqual(box(p.panel).top + 1)
+    );
+    await expect(p.video.getAttribute("src")).toContain("locations.mp4");
+    await waitFor(() => expect(p.video.hasAttribute("data-hold")).toBe(false));
     await expect(
       p.names.every(n => n.getAttribute("aria-expanded") === "false")
     ).toBe(true);
@@ -433,7 +443,7 @@ export const BreakpointCrossing = {
     await resizeViewport(1024, 800);
     // back on desktop: nothing selected, details hidden, aria-pressed again
     await waitFor(() =>
-      expect(p.video.getAttribute("src")).toContain("locations.mp4")
+      expect(p.names[0].getAttribute("aria-pressed")).toBe("false")
     );
     await expect(
       p.names.every(n => n.getAttribute("aria-pressed") === "false")

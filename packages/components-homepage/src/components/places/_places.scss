@@ -331,10 +331,62 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
   color: $uds-color-base-white;
 }
 
-// Desktop-only parts: hidden in the baseline and below 1024.
+// The media needs script (a video does nothing without it): hidden in the baseline.
 .hp-places__media,
 .hp-places__mbtn {
   display: none;
+}
+
+.hp-places__still {
+  display: none;
+}
+
+// ---- Below 1024: the video strip above the list (Figma mobile: a 375x219 video, pause button at its
+// bottom right, directly above the locations) ----
+
+@media (max-width: #{$hp-places-bp - 1px}) {
+  .hp-places.is-enhanced {
+    .hp-places__frame {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .hp-places__media {
+      display: block;
+      grid-area: 1 / 1;
+      position: relative;
+      aspect-ratio: 375 / 219;
+      overflow: hidden;
+      background: $asu-gray-1;
+    }
+
+    .hp-places__video {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    // Over the strip, bottom right (Figma: 18px from the right, 12px from the bottom).
+    .hp-places__mbtn {
+      --mbtn-z-index: 3;
+      --mbtn-rest-opacity: 75%;
+
+      position: relative;
+      inset: auto;
+      grid-area: 1 / 1;
+      display: grid;
+      align-self: end;
+      justify-self: end;
+      margin: 0 18px 12px 0;
+    }
+
+    .hp-places__panel {
+      grid-area: 2 / 1;
+    }
+  }
 }
 
 // ---- Desktop (>= 1024): the media with the frosted list over it ----

@@ -1,6 +1,6 @@
 // Behaviour for the homepage places section (campus locator). Dependency-free. Design doc: WWWCMS-241.
 // Markup: `.hp-places` (see places-helpers.jsx `placesHtml`). `initVideoControls` (video-control.js) owns playback;
-// this script attaches the video source (>= 1024 only), sets `data-hold` while a still covers the video, and runs:
+// this script attaches the video source, sets `data-hold` while a still covers the video (desktop), and runs:
 // the desktop list (>= 1024: select a location, photo over the video, leader and box), the accordion (< 1024,
 // Figma 375: one location open at a time), the scroll opening of the media (>= 1024) and the wallpaper alignment.
 // Without this script the CSS shows every location open (name, text, link, photo) on Gray 1.
@@ -72,7 +72,7 @@ const bind = (section, doc, win) => {
   section.classList.add("is-enhanced");
   cleanups.push(() => section.classList.remove("is-enhanced"));
 
-  // ---------- video source: attached only where the media shows (>= 1024) ----------
+  // ---------- video source ----------
 
   const attach = on => {
     if (!video) return;
@@ -265,7 +265,7 @@ const bind = (section, doc, win) => {
 
   const syncPattern = () => {
     const isDesk = desk.matches;
-    attach(isDesk);
+    attach(true); // the video shows at every width (Figma: a strip above the accordion below 1024)
     win.clearTimeout(hideTimer);
     win.cancelAnimationFrame(showFrame);
     if (isDesk) {
@@ -455,7 +455,7 @@ const bind = (section, doc, win) => {
     }),
     subscribe(reduced, () => {
       // Only what depends on motion: the user's selection and open location stay.
-      attach(desk.matches);
+      attach(true);
       syncOpening();
     })
   );
