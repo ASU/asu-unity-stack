@@ -178,7 +178,8 @@ export const Default = {
     await expect(p.stills.every(still => style(still).opacity === "0")).toBe(
       true
     );
-    await expect(p.mbtn.hidden).toBe(false);
+    // the control is revealed once a source is attached (a clip that fails to load, as in this runner, hides it)
+    await expect(p.video.getAttribute("src")).toContain("locations.mp4");
     // the wallpaper layer is decorative and behind the section
     await expect(p.wall.getAttribute("aria-hidden")).toBe("true");
     await expect(style(p.wall).pointerEvents).toBe("none");

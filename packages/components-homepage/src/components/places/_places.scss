@@ -136,7 +136,7 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
 .hp-places__eyebrow {
   // The gold chip (shared look with the stories grid eyebrow).
   margin: 0;
-  padding: 8px;
+  padding: 6px 8px;
   background: $uds-color-brand-gold;
   color: $asu-gray-1;
   font-size: 12px;
@@ -331,6 +331,8 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
 }
 
 .hp-places__mbtn-m {
+  --mbtn-rest-opacity: 75%;
+
   top: 12px;
   right: 12px;
   bottom: auto;
@@ -584,7 +586,11 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
 
     .hp-places__group {
       display: block;
-      margin-bottom: 48px;
+      margin-bottom: 44px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
     }
 
     .hp-places__group-label {
@@ -595,10 +601,11 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
       font-weight: 700;
     }
 
+    // Figma 1280: 60px between name rows (a 48px row and a 12px gap).
     .hp-places__names {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
       margin: 0;
       padding: 0;
       list-style: none;
@@ -607,6 +614,7 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
     .hp-places__see-all {
       @include hp-places-arrow-link;
 
+      margin-top: 32px;
       color: $uds-color-base-white;
     }
 
@@ -707,7 +715,7 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
       flex-direction: column;
       gap: 8px;
       width: $hp-places-panel-w;
-      padding: 32px 56px 28px 32px;
+      padding: 24px 56px 24px 24px;
       isolation: isolate;
       color: $asu-gray-7;
       --hp-places-ring-inner: var(--hp-focus-inner);
@@ -737,8 +745,8 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
 
     .hp-places__caption {
       margin: 0;
-      font-size: 18px;
-      line-height: 28px;
+      font-size: 16px;
+      line-height: 24px;
 
       @media (prefers-reduced-motion: no-preference) {
         animation: hp-places-caption 0.4s ease both;
