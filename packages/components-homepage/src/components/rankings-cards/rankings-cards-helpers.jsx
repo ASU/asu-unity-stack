@@ -1,7 +1,16 @@
 // Rankings-cards markup template + Storybook test-support helpers.
 // Package: @asu/components-homepage  ·  Jira: WWWCMS-233
-// Design doc: .pipeline/design-doc.md §3
+// Design doc: .pipeline/design-doc.md §3 + v4 amendment
 //
+// v4 changes:
+//   - DEFAULT_CARDS expanded from 7 → 11 entries (v4 §v4.4.2a schema).
+//   - RankingCard typedef extended: isSummary, seeAllTopHref, seeAllTopLabel.
+//   - rankingsCardsHtml emits sticky wrapper + spacer around .hp-rankings (v4 §v4.3.1c).
+//   - rankingsCardsHtml emits per-slide ARIA labelling on every <li> (v4 §v4.4.2c).
+//   - rankingsCardsHtml emits .hp-rankings__learn-more on every card (v4 §v4.3.1a).
+//   - Card 1 (isSummary) emits .hp-rankings__see-all-top instead of
+//     .hp-rankings__attribution; uses .hp-rankings__card--summary modifier (v4 §v4.4.2b).
+
 // Re-export test helpers from sibling components so stories only need one import.
 export { realPointer } from "../video-control/video-control-helpers.jsx";
 export {
@@ -10,12 +19,8 @@ export {
   resizeViewport,
 } from "../reimagine/reimagine-helpers.jsx";
 
-// Emulates `forced-colors: active` for the current test page. `on === true`
-// activates it; `false` clears the override. Registered as a vitest command in
-// `vitest.config.js`. Returns early when the browser runner is unavailable.
+// Emulates `forced-colors: active` for the current test page.
 export const emulateForcedColors = async on => {
-  // Use the same `.available` gate as the sibling helpers so Storybook preview
-  // runs don't try to call vitest-only APIs.
   const { realPointer: pointer } =
     await import("../video-control/video-control-helpers.jsx");
   if (!pointer.available) return;
@@ -24,33 +29,16 @@ export const emulateForcedColors = async on => {
 };
 
 // ─── SVG icon paths (Font Awesome Free 6.4.2, CC BY 4.0) ─────────────────────
-// arrow-right path (used in attribution link and see-all link)
 const ARROW_RIGHT_PATH =
   "M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z";
 
-// chevron-left path (FA6 Free 6.4.2 — viewBox 0 0 320 512, CC BY 4.0)
 const CHEVRON_LEFT_PATH =
   "M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z";
 
-// chevron-right path (FA6 Free 6.4.2 — viewBox 0 0 320 512, CC BY 4.0)
 const CHEVRON_RIGHT_PATH =
   "M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z";
 
 // ─── Input sanitization ──────────────────────────────────────────────────────
-// The template interpolates untrusted strings into HTML attributes and text
-// content. We treat **all** inputs as untrusted at this boundary (CMS inputs
-// have been shown to leak unescaped author content). Three contextual escapes
-// cover every interpolation point:
-//
-//   • escapeHtml(str)   → text content and attribute values (same escape set
-//                         is safe for both when values are quoted with ").
-//   • sanitizeHref(url) → URL attribute values. Whitelist of schemes:
-//                         empty, fragment (#...), relative (./  ../  /path),
-//                         absolute http: / https:, mailto:, tel:. Everything
-//                         else (javascript:, data:, vbscript:, file:, …) is
-//                         replaced with a safe `#` fallback.
-//   • sanitizeId(id)    → HTML id attribute. Must match `^[A-Za-z][\w-]*$`.
-//                         Falsy/invalid falls back to the default.
 
 const HTML_ESCAPES = {
   "&": "&amp;",
@@ -62,7 +50,7 @@ const HTML_ESCAPES = {
 
 /**
  * HTML-escapes a value for safe interpolation into text content or a
- * double-quoted attribute value. Coerces non-strings to strings first.
+ * double-quoted attribute value.
  * @param {unknown} value
  * @returns {string}
  */
@@ -70,9 +58,7 @@ export const escapeHtml = value =>
   String(value == null ? "" : value).replace(/[&<>"']/g, c => HTML_ESCAPES[c]);
 
 /**
- * Whitelists safe URL schemes for `href` attributes. Preserves fragments,
- * relative paths, and `http(s)/mailto/tel` absolute URLs. Returns `#` for
- * all other schemes (e.g. `javascript:`, `data:`, `vbscript:`, `file:`).
+ * Whitelists safe URL schemes for `href` attributes.
  * @param {unknown} href
  * @returns {string}
  */
@@ -80,7 +66,6 @@ export const sanitizeHref = href => {
   if (typeof href !== "string") return "#";
   const trimmed = href.trim();
   if (trimmed === "") return "#";
-  // Fragments and relative paths are safe by definition (no scheme).
   if (trimmed.startsWith("#")) return trimmed;
   if (
     trimmed.startsWith("/") ||
@@ -89,21 +74,16 @@ export const sanitizeHref = href => {
   ) {
     return trimmed;
   }
-  // Scheme detection: a scheme is `scheme:` at the start. If the first path
-  // segment contains ':', assume it is a scheme indicator.
   const colonAt = trimmed.indexOf(":");
   const slashAt = trimmed.indexOf("/");
   const schemeIsFirst = colonAt !== -1 && (slashAt === -1 || colonAt < slashAt);
-  if (!schemeIsFirst) return trimmed; // bare relative path like `foo/bar`
-  // Allowed schemes (case-insensitive).
+  if (!schemeIsFirst) return trimmed;
   if (/^(https?|mailto|tel):/i.test(trimmed)) return trimmed;
-  // Everything else is rejected.
   return "#";
 };
 
 /**
- * Validates an HTML id token. Must start with a letter and contain only
- * `[A-Za-z0-9_-]`. Falsy/invalid falls back to the default.
+ * Validates an HTML id token.
  * @param {unknown} id
  * @param {string} fallback
  * @returns {string}
@@ -113,37 +93,23 @@ export const sanitizeId = (id, fallback = "hp-rankings-heading") => {
   return /^[A-Za-z][\w-]*$/.test(id) ? id : fallback;
 };
 
-/**
- * Validates an intrinsic image dimension (width or height) at the template
- * boundary.  Only finite, positive, integer, safe integers are accepted.
- * Any other value falls back to the supplied default and emits a DEV warning.
- *
- * Accepted:   positive, whole-number, safe integers  (e.g. 500, 800, 1)
- * Rejected:   0, negatives, fractions, NaN, non-finite, non-safe, non-numbers
- *
- * @param {unknown} value   - Caller-supplied candidate value.
- * @param {number}  def     - Fallback default (must itself be a valid dimension).
- * @param {string}  name    - Param name used in the DEV warning.
- * @returns {number}        - A validated, finite positive safe integer.
- */
 // Safe type formatter for rejected public-API inputs.
-// Never calls JSON.stringify or any method on `value` —
-//   JSON.stringify(1n) throws TypeError;
-//   hostile proxies can throw from toJSON/valueOf.
-// Used by validateIntrinsicDimension and the headingId warn path so all
-// rejected-input warnings use one consistent, non-throwing formatter.
 const formatRejectedValue = value => {
-  // BigInt's typeof is "bigint" but no method is called, so this is safe.
   if (typeof value === "bigint") return "bigint";
   try {
-    // typeof never throws on well-formed values; the try/catch is a guard
-    // against theoretical engine edge cases and Proxy get-traps on typeof.
     return typeof value;
   } catch {
     return "unknown";
   }
 };
 
+/**
+ * Validates an intrinsic image dimension.
+ * @param {unknown} value
+ * @param {number}  def
+ * @param {string}  name
+ * @returns {number}
+ */
 export const validateIntrinsicDimension = (value, def, name) => {
   if (
     typeof value === "number" &&
@@ -163,85 +129,122 @@ export const validateIntrinsicDimension = (value, def, name) => {
   return def;
 };
 
-// ─── Default 7-card dataset ───────────────────────────────────────────────────
-// Mirrors the Figma sample (design-doc §3.1 and §3.2). Real alt text, slugs, and
-// hrefs will be confirmed from the Jira AC before merge.
-// TODO: confirm with design — alt text, hrefs, and labels for the WWWCMS-233 default dataset.
+// ─── Default 11-card dataset (v4 §v4.4.2a) ───────────────────────────────────
+// Expanded from 7 → 11 entries. Cards 1–4 have confirmed content from
+// .intake/SCR-20261104-jrkv.png top frame. Cards 5–11 carry TBD-Jira-WWWCMS-233
+// placeholders and are tracked in rankings-cards/README.md.
+// TODO: confirm all 11 rows against Jira WWWCMS-233 before merging to dev.
 
 /**
  * @typedef {Object} RankingCard
- * @property {string} imageSrc        - Path to the default-state PNG, e.g. "img/rankings/sustainable-practices.png"
- * @property {string} imageSrcHover   - Path to the hover-state PNG, e.g. "img/rankings/sustainable-practices--hover.png"
- * @property {string} imageAlt        - Complete ranking statement for the default image (full SR content).
- *                                      Example: "#1 in the U.S. and #2 in the world for sustainable practices. ASU ahead of Stanford and UC Berkeley."
- * @property {string} attributionHref - URL for the attribution link.
- * @property {string} [attributionLabel="Attribution link"] - Visible link text.
+ * @property {string}  imageSrc         - Default-state PNG path (rank-NN-w.png convention).
+ * @property {string}  imageSrcHover    - Hover-state PNG path (rank-NN.png convention).
+ * @property {string}  imageAlt         - Full ranking statement for the default img (SR content).
+ * @property {string}  attributionHref  - URL for the primary attribution link.
+ * @property {string}  [attributionLabel="Attribution link"] - Visible link text (publication name).
+ * @property {boolean} [isSummary=false] - When true, renders as summary variant (card 1):
+ *                                         adds .hp-rankings__card--summary, renders
+ *                                         .hp-rankings__see-all-top, skips primary attribution.
+ * @property {string}  [seeAllTopHref]   - Only used when isSummary=true. URL to the all-#1-rankings page.
+ * @property {string}  [seeAllTopLabel="See all of ASU's #1 rankings"] - Visible link text.
  */
 
 /** @type {RankingCard[]} */
 export const DEFAULT_CARDS = [
+  // Card 1: summary variant — "Repeatedly ranked #1" (isSummary: true)
   {
-    imageSrc: "img/rankings/sustainable-practices.png",
-    imageSrcHover: "img/rankings/sustainable-practices--hover.png",
-    imageAlt:
-      "#1 in the U.S. and #2 in the world for sustainable practices. ASU ahead of Stanford and UC Berkeley.",
-    attributionHref: "#rankings-see-all",
+    imageSrc: "img/rankings/rank-01-w.png",
+    imageSrcHover: "img/rankings/rank-01.png",
+    imageAlt: "Repeatedly ranked #1. 30+ lists in the last 3 years.",
+    attributionHref: "#rankings-see-all", // not used (isSummary=true, no attribution)
     attributionLabel: "Attribution link",
+    isSummary: true,
+    seeAllTopHref: "#rankings-see-all", // TODO: confirm with design — real URL from Jira WWWCMS-233.
+    seeAllTopLabel: "See all of ASU's #1 rankings",
+  },
+  // Card 2: innovation (confirmed from .intake/SCR-20261104-jrkv.png)
+  {
+    imageSrc: "img/rankings/rank-02-w.png",
+    imageSrcHover: "img/rankings/rank-02.png",
+    imageAlt:
+      "#1 in the U.S. for innovation. ASU ahead of MIT and Stanford.",
+    attributionHref: "TBD-Jira-WWWCMS-233", // TODO: confirm attribution URL from Jira WWWCMS-233.
+    attributionLabel: "U.S. News & World Report",
+  },
+  // Card 3: employability (confirmed from .intake/SCR-20261104-jrkv.png)
+  {
+    imageSrc: "img/rankings/rank-03-w.png",
+    imageSrcHover: "img/rankings/rank-03.png",
+    imageAlt:
+      "#2 in the U.S. for employability (among public universities). ASU ahead of UCLA, University of Michigan and Purdue.",
+    attributionHref: "TBD-Jira-WWWCMS-233", // TODO: confirm attribution URL from Jira WWWCMS-233.
+    attributionLabel: "Global Employability Ranking",
+  },
+  // Card 4: Fulbright students (confirmed from .intake/SCR-20261104-jrkv.png)
+  {
+    imageSrc: "img/rankings/rank-04-w.png",
+    imageSrcHover: "img/rankings/rank-04.png",
+    imageAlt:
+      "A top producer in the U.S. of Fulbright students, among doctoral-granting institutions. ASU ahead of Stanford, USC and Johns Hopkins.",
+    attributionHref: "TBD-Jira-WWWCMS-233", // TODO: confirm attribution URL from Jira WWWCMS-233.
+    attributionLabel: "Chronicle of Higher Education",
+  },
+  // Cards 5–11: placeholder content — TBD-Jira-WWWCMS-233 (v4 §v4.4.2a)
+  // TODO: pull topic, ranking statement, source label, source URL from Jira WWWCMS-233.
+  {
+    imageSrc: "img/rankings/rank-05-w.png",
+    imageSrcHover: "img/rankings/rank-05.png",
+    imageAlt: "TBD-Jira-WWWCMS-233",
+    attributionHref: "TBD-Jira-WWWCMS-233",
+    attributionLabel: "TBD-Jira-WWWCMS-233",
   },
   {
-    imageSrc: "img/rankings/innovation.png",
-    imageSrcHover: "img/rankings/innovation--hover.png",
-    imageAlt:
-      "#1 in the U.S. for innovation. ASU ranked most innovative university for the ninth consecutive year.",
-    attributionHref: "#rankings-see-all",
-    attributionLabel: "Attribution link",
+    imageSrc: "img/rankings/rank-06-w.png",
+    imageSrcHover: "img/rankings/rank-06.png",
+    imageAlt: "TBD-Jira-WWWCMS-233",
+    attributionHref: "TBD-Jira-WWWCMS-233",
+    attributionLabel: "TBD-Jira-WWWCMS-233",
   },
   {
-    imageSrc: "img/rankings/global-impact.png",
-    imageSrcHover: "img/rankings/global-impact--hover.png",
-    imageAlt:
-      "#1 in the U.S. for global impact. ASU leads in global engagement and research impact.",
-    attributionHref: "#rankings-see-all",
-    attributionLabel: "Attribution link",
+    imageSrc: "img/rankings/rank-07-w.png",
+    imageSrcHover: "img/rankings/rank-07.png",
+    imageAlt: "TBD-Jira-WWWCMS-233",
+    attributionHref: "TBD-Jira-WWWCMS-233",
+    attributionLabel: "TBD-Jira-WWWCMS-233",
   },
   {
-    imageSrc: "img/rankings/entrepreneurship.png",
-    imageSrcHover: "img/rankings/entrepreneurship--hover.png",
-    imageAlt:
-      "#1 in the U.S. for entrepreneurship. ASU recognized for startup culture and venture creation.",
-    attributionHref: "#rankings-see-all",
-    attributionLabel: "Attribution link",
+    imageSrc: "img/rankings/rank-08-w.png",
+    imageSrcHover: "img/rankings/rank-08.png",
+    imageAlt: "TBD-Jira-WWWCMS-233",
+    attributionHref: "TBD-Jira-WWWCMS-233",
+    attributionLabel: "TBD-Jira-WWWCMS-233",
   },
   {
-    imageSrc: "img/rankings/research-output.png",
-    imageSrcHover: "img/rankings/research-output--hover.png",
-    imageAlt:
-      "Top 10 in the U.S. for research output. ASU recognized among the nation's most productive research universities.",
-    attributionHref: "#rankings-see-all",
-    attributionLabel: "Attribution link",
+    imageSrc: "img/rankings/rank-09-w.png",
+    imageSrcHover: "img/rankings/rank-09.png",
+    imageAlt: "TBD-Jira-WWWCMS-233",
+    attributionHref: "TBD-Jira-WWWCMS-233",
+    attributionLabel: "TBD-Jira-WWWCMS-233",
   },
   {
-    imageSrc: "img/rankings/online-education.png",
-    imageSrcHover: "img/rankings/online-education--hover.png",
-    imageAlt:
-      "#1 in the U.S. for online education. ASU Online offers more than 300 degree programs.",
-    attributionHref: "#rankings-see-all",
-    attributionLabel: "Attribution link",
+    imageSrc: "img/rankings/rank-10-w.png",
+    imageSrcHover: "img/rankings/rank-10.png",
+    imageAlt: "TBD-Jira-WWWCMS-233",
+    attributionHref: "TBD-Jira-WWWCMS-233",
+    attributionLabel: "TBD-Jira-WWWCMS-233",
   },
   {
-    imageSrc: "img/rankings/community-engagement.png",
-    imageSrcHover: "img/rankings/community-engagement--hover.png",
-    imageAlt:
-      "#1 in the U.S. for community engagement. ASU serves the public good through research and service.",
-    attributionHref: "#rankings-see-all",
-    attributionLabel: "Attribution link",
+    imageSrc: "img/rankings/rank-11-w.png",
+    imageSrcHover: "img/rankings/rank-11.png",
+    imageAlt: "TBD-Jira-WWWCMS-233",
+    attributionHref: "TBD-Jira-WWWCMS-233",
+    attributionLabel: "TBD-Jira-WWWCMS-233",
   },
 ];
 
 // ─── Markup template ──────────────────────────────────────────────────────────
 
 const warnDev = message => {
-  // import.meta.env.DEV is tree-shaken to false in production builds.
   if (import.meta.env.DEV) {
     // eslint-disable-next-line no-console
     console.warn(`[rankings-cards] ${message} (WWWCMS-233)`);
@@ -249,36 +252,23 @@ const warnDev = message => {
 };
 
 /**
- * Returns the first-render HTML string for a `.hp-rankings` section.
+ * Returns the first-render HTML string for a `.hp-rankings` section, wrapped
+ * in the sticky-dock structure (`.hp-rankings__sticky-wrapper` + `.hp-rankings`
+ * + `.hp-rankings__sticky-spacer`).
  *
  * **Consumer contract**: `background: transparent` — WCAG contrast is only met
- * when the parent surface is dark enough. Wrap in a dark surface (e.g. the
- * homepage hero band) before using in production.
+ * when the parent surface is dark enough.
  *
- * **Security**: all template-interpolated values (`headingId`, `cards[*].*`,
- * `seeAllHref`, `seeAllLabel`) are contextually escaped at render time.
- * Attribute values are HTML-escaped and `href` values are scheme-validated
- * (fragment/relative/http/https/mailto/tel allowed; everything else rewritten
- * to `#`). `headingId` must match `^[A-Za-z][\w-]*$` or it falls back to the
- * default. The template never emits unescaped user content.
- *
- * **Content-model soft contract (DEV only)**: `cards` must be a non-empty
- * array. Each card requires `imageSrc`, `imageAlt`, and `attributionHref`.
- * `imageAlt === ""` or `undefined` renders `alt=""` and emits a DEV warning
- * (never fabricates text — design-doc §7.9). Missing `imageSrcHover` falls
- * back to `imageSrc` with a DEV warning. Zero cards renders inert markup
- * (empty track, both nav buttons disabled) so Next cannot activate.
- *
- * All warnings are stripped from production bundles via `import.meta.env.DEV`.
+ * **Security**: all template-interpolated values are contextually escaped.
  *
  * @param {Object} [options]
- * @param {string} [options.headingId="hp-rankings-heading"] - Unique per rendered copy; feeds both `<h2 id>` and `aria-labelledby`. Must be `/^[A-Za-z][\w-]*$/`.
- * @param {RankingCard[]} [options.cards] - Defaults to the 7-item `DEFAULT_CARDS` sample. Non-array / zero-length renders inert markup.
- * @param {string} [options.seeAllHref="#rankings-see-all"] - Placeholder until real URL exists. Rendered scheme-sanitized. A bare `#` scrolls to top; use a unique fragment.
- * @param {string} [options.seeAllLabel="See all ASU rankings"] - Visible text for the see-all link (HTML-escaped).
- * @param {number} [options.imageWidth=500]  - Dataset-wide intrinsic width (px) emitted on every <img> as the `width` attribute; see §3 image intrinsics contract and design-doc v3 §3.1 Q2 = C.
- * @param {number} [options.imageHeight=251] - Dataset-wide intrinsic height (px) emitted on every <img> as the `height` attribute; see §3 image intrinsics contract and design-doc v3 §3.1 Q2 = C.
- * @returns {string} HTML string (Stage B parity source, §3.3).
+ * @param {string} [options.headingId="hp-rankings-heading"]
+ * @param {RankingCard[]} [options.cards] - Defaults to the 11-item DEFAULT_CARDS.
+ * @param {string} [options.seeAllHref="#rankings-see-all"]
+ * @param {string} [options.seeAllLabel="See all ASU rankings"]
+ * @param {number} [options.imageWidth=500]
+ * @param {number} [options.imageHeight=251]
+ * @returns {string} HTML string (Stage B parity source, §3.3 + v4 §v4.3.1c).
  */
 export const rankingsCardsHtml = ({
   headingId = "hp-rankings-heading",
@@ -288,11 +278,6 @@ export const rankingsCardsHtml = ({
   imageWidth = 500,
   imageHeight = 251,
 } = {}) => {
-  // ── Intrinsic dimension validation (design-doc v3 §3.1; P1-1 security fix) ──
-  // Both params are interpolated directly into HTML width/height attributes.
-  // A non-integer or string value could escape the attribute and inject HTML.
-  // validateIntrinsicDimension() accepts only finite positive safe integers;
-  // anything else falls back to the default with a DEV warning.
   const safeImageWidth = validateIntrinsicDimension(
     imageWidth,
     500,
@@ -304,7 +289,6 @@ export const rankingsCardsHtml = ({
     "imageHeight"
   );
 
-  // ── Content-model validation (DEV warnings, never fabricate content) ──────
   let safeCards;
   if (!Array.isArray(cards)) {
     warnDev(
@@ -327,6 +311,8 @@ export const rankingsCardsHtml = ({
     );
   }
 
+  const total = safeCards.length;
+
   const cardItems = safeCards
     .map((card, i) => {
       if (card == null || typeof card !== "object") {
@@ -341,9 +327,11 @@ export const rankingsCardsHtml = ({
         imageAlt,
         attributionHref,
         attributionLabel = "Attribution link",
+        isSummary = false,
+        seeAllTopHref = "#rankings-see-all",
+        seeAllTopLabel = "See all of ASU's #1 rankings",
       } = card;
 
-      // imageSrc is required.
       if (!imageSrc || typeof imageSrc !== "string") {
         warnDev(
           `rankingsCardsHtml: card ${i} is missing a valid 'imageSrc'. Skipping card.`
@@ -351,7 +339,6 @@ export const rankingsCardsHtml = ({
         return "";
       }
 
-      // imageSrcHover falls back to imageSrc with a DEV warning.
       let resolvedHover = imageSrcHover;
       if (!resolvedHover || typeof resolvedHover !== "string") {
         warnDev(
@@ -360,8 +347,6 @@ export const rankingsCardsHtml = ({
         resolvedHover = imageSrc;
       }
 
-      // imageAlt: undefined or "" renders alt="" with a DEV warning.
-      // This preserves the §7.9 "never fabricate alt" contract.
       let resolvedAlt = imageAlt;
       if (resolvedAlt == null) {
         warnDev(
@@ -374,58 +359,108 @@ export const rankingsCardsHtml = ({
         );
       }
 
+      const slideN = i + 1;
+      // Per-slide ARIA labelling (v4 §v4.4.2c).
+      // SR-only span text: "Ranking N of TOTAL, <imageAlt>"
+      const slideLabelId = `${headingIdSafe}-slide-${slideN}-label`;
+      const slideLabelText =
+        `Ranking ${slideN} of ${total}, ${resolvedAlt}`;
+
+      // Card class: add --summary modifier for card 1 (v4 §v4.4.2b).
+      const cardClass = isSummary
+        ? "hp-rankings__card hp-rankings__card--summary"
+        : "hp-rankings__card";
+
+      // Build the footer content.
+      // Summary card (card 1): .hp-rankings__see-all-top + .hp-rankings__learn-more
+      // Regular cards: .hp-rankings__attribution + .hp-rankings__learn-more
+      let footerContent;
+      if (isSummary) {
+        // Card 1 footer: see-all-top link + learn-more (v4 §v4.4.2b).
+        footerContent =
+          `<a class="hp-rankings__see-all-top" href="${escapeHtml(sanitizeHref(seeAllTopHref))}">` +
+          `${escapeHtml(seeAllTopLabel)}` +
+          `<svg class="hp-rankings__see-all-top-icon" viewBox="0 0 448 512"` +
+          ` aria-hidden="true" focusable="false">` +
+          `<path fill="currentColor" d="${ARROW_RIGHT_PATH}"/>` +
+          `</svg>` +
+          `</a>` +
+          // Learn-more: always in DOM; visually hidden by CSS (v4 §v4.3.1a).
+          `<a class="hp-rankings__learn-more"` +
+          ` href="${escapeHtml(sanitizeHref(seeAllTopHref))}"` +
+          ` data-rankings-learn-more>` +
+          `Learn more` +
+          `<svg class="hp-rankings__learn-more-icon" viewBox="0 0 448 512"` +
+          ` aria-hidden="true" focusable="false">` +
+          `<path fill="currentColor" d="${ARROW_RIGHT_PATH}"/>` +
+          `</svg>` +
+          `</a>`;
+      } else {
+        // Regular card footer: attribution + learn-more (v4 §v4.3.1a).
+        footerContent =
+          `<a class="hp-rankings__attribution" href="${escapeHtml(sanitizeHref(attributionHref))}">` +
+          `${escapeHtml(attributionLabel)}` +
+          `<svg class="hp-rankings__attribution-icon" viewBox="0 0 448 512"` +
+          ` aria-hidden="true" focusable="false">` +
+          `<path fill="currentColor" d="${ARROW_RIGHT_PATH}"/>` +
+          `</svg>` +
+          `</a>` +
+          // Learn-more: always in DOM; visually hidden by CSS (v4 §v4.3.1a).
+          `<a class="hp-rankings__learn-more"` +
+          ` href="${escapeHtml(sanitizeHref(attributionHref))}"` +
+          ` data-rankings-learn-more>` +
+          `Learn more` +
+          `<svg class="hp-rankings__learn-more-icon" viewBox="0 0 448 512"` +
+          ` aria-hidden="true" focusable="false">` +
+          `<path fill="currentColor" d="${ARROW_RIGHT_PATH}"/>` +
+          `</svg>` +
+          `</a>`;
+      }
+
       return (
-        `<li class="hp-rankings__card">` +
+        // Per-slide labelling: aria-roledescription + aria-labelledby (v4 §v4.4.2c).
+        `<li class="${cardClass}"` +
+        ` aria-roledescription="slide"` +
+        ` aria-labelledby="${escapeHtml(slideLabelId)}">` +
+        // SR-only span: "Ranking N of TOTAL, <imageAlt>" (v4 §v4.4.2c).
+        `<span id="${escapeHtml(slideLabelId)}" class="visually-hidden">` +
+        `${escapeHtml(slideLabelText)}` +
+        `</span>` +
         `<div class="hp-rankings__media">` +
-        // Default image: carries full ranking statement in alt (design-doc §7.9).
         `<img class="hp-rankings__img hp-rankings__img--default"` +
         ` src="${escapeHtml(imageSrc)}"` +
         ` alt="${escapeHtml(resolvedAlt)}"` +
-        // Dataset-wide intrinsic dimensions (design-doc v3 §3.1 Q2 = C; default 500 × 251).
-        // TODO: confirm with design — intrinsic dimensions from Figma node 13467:58610 (design-doc §11.2).
         ` width="${safeImageWidth}" height="${safeImageHeight}"` +
-        // TODO: confirm with design — all images lazy-loaded (design-doc §11.2); revisit if homepage places rankings above the fold.
         ` loading="lazy" decoding="async">` +
-        // Hover image: decorative colour variant — alt="" + aria-hidden so SR does NOT double-announce.
-        // TODO: confirm with design — hover filename suffix convention (locked placeholder: double-dash BEM `--hover`, see src/img/rankings/README.md §11.2 row 13).
         `<img class="hp-rankings__img hp-rankings__img--hover"` +
         ` src="${escapeHtml(resolvedHover)}"` +
         ` alt="" aria-hidden="true"` +
-        // Dataset-wide intrinsic dimensions (hover img) — same pair as default (design-doc v3 §3.1 Q2 = C).
-        // TODO: confirm with design — intrinsic dimensions (hover img) locked at 500 × 251 (§11.2).
         ` width="${safeImageWidth}" height="${safeImageHeight}"` +
-        // TODO: confirm with design — all images lazy-loaded (design-doc §11.2).
         ` loading="lazy" decoding="async">` +
         `</div>` +
         `<div class="hp-rankings__card-footer">` +
-        `<a class="hp-rankings__attribution" href="${escapeHtml(sanitizeHref(attributionHref))}">` +
-        `${escapeHtml(attributionLabel)}` +
-        `<svg class="hp-rankings__attribution-icon" viewBox="0 0 448 512"` +
-        ` aria-hidden="true" focusable="false">` +
-        `<path fill="currentColor" d="${ARROW_RIGHT_PATH}"/>` +
-        `</svg>` +
-        `</a>` +
+        footerContent +
         `</div>` +
         `</li>`
       );
     })
     .join("");
 
-  // Zero-cards inert state: both prev and next ship with the disabled triplet
-  // and the section carries .hp-rankings--no-overflow so the nav is hidden by
-  // CSS. JS further hides the nav via ResizeObserver when the track doesn't
-  // overflow, but the server markup is already safe without JS.
   const noCards = safeCards.length === 0;
   const sectionClass = noCards
     ? "hp-rankings hp-rankings--no-overflow"
     : "hp-rankings";
-  // Prev button is always disabled on first render (track starts at scrollLeft=0).
-  // Next button is disabled only when there are no cards.
   const nextDisabledMarkup = noCards
     ? ` class="hp-rankings__nav-btn hp-rankings__nav-btn--next is-disabled" aria-disabled="true" tabindex="-1"`
     : ` class="hp-rankings__nav-btn hp-rankings__nav-btn--next"`;
 
+  // Sticky wrapper (v4 §v4.3.1c): wraps .hp-rankings + spacer.
+  // Both elements are always present on first render (HTML-parity).
+  // No JS needed; pure CSS sticky. No inline style on any card (scroll-opacity
+  // is JS-only progressive enhancement — --hp-strip-opacity absent on first render
+  // → CSS fallback 0.70 applies).
   return (
+    `<div class="hp-rankings__sticky-wrapper">` +
     `<section class="${sectionClass}" aria-labelledby="${escapeHtml(headingIdSafe)}">` +
     `<h2 id="${escapeHtml(headingIdSafe)}" class="visually-hidden">ASU rankings</h2>` +
     `<div class="hp-rankings__inner">` +
@@ -434,15 +469,12 @@ export const rankingsCardsHtml = ({
     `</ul>` +
     `<div class="hp-rankings__controls">` +
     `<div class="hp-rankings__nav" role="group" aria-label="Rankings carousel navigation">` +
-    // Prev button: ships disabled (scrollLeft = 0 on first render). Design-doc §3.4 invariant 5.
-    // Disabled state is the triplet: .is-disabled + aria-disabled="true" + tabindex="-1" (never native `disabled`).
     `<button type="button" class="hp-rankings__nav-btn hp-rankings__nav-btn--prev is-disabled"` +
     ` aria-disabled="true" tabindex="-1" aria-label="Previous ranking">` +
     `<svg class="hp-rankings__nav-icon" viewBox="0 0 320 512" aria-hidden="true" focusable="false">` +
     `<path fill="currentColor" d="${CHEVRON_LEFT_PATH}"/>` +
     `</svg>` +
     `</button>` +
-    // Next button: enabled at first render unless zero cards.
     `<button type="button"${nextDisabledMarkup}` +
     ` aria-label="Next ranking">` +
     `<svg class="hp-rankings__nav-icon" viewBox="0 0 320 512" aria-hidden="true" focusable="false">` +
@@ -458,16 +490,14 @@ export const rankingsCardsHtml = ({
     `</a>` +
     `</div>` +
     `</div>` +
-    `</section>`
+    `</section>` +
+    // Sticky spacer: display:none at mobile, height:100vh at ≥901px (v4 §v4.3.1c).
+    `<div class="hp-rankings__sticky-spacer" aria-hidden="true"></div>` +
+    `</div>`
   );
 };
 
 // ─── Storybook test-support: hover mirror ─────────────────────────────────────
-// Mirrors `.hp-rankings__card:hover` and `.hp-rankings__card[data-rankings-hover]`
-// rules at runtime so Storybook stories can force the hover state without a real
-// pointer event (Storybook cannot programmatically set :hover).
-// Pattern mirrors reimagine-helpers.jsx `forceHover` — including the strict
-// `throw` when no :hover rules are found (prevents silent test-rot).
 
 const HOVER_MIRROR_ID = "hp-rankings-hover-mirror";
 const HOVER_ATTRIBUTE = "data-rankings-hover";
@@ -478,7 +508,6 @@ const ensureHoverMirror = () => {
   const collect = (list, conditions) =>
     Array.from(list).forEach(rule => {
       if (rule instanceof CSSStyleRule) {
-        // Match rules targeting .hp-rankings__card:hover
         if (/\.hp-rankings__card:hover/.test(rule.selectorText)) {
           const text = rule.cssText.replace(
             /\.hp-rankings__card:hover/g,
@@ -506,8 +535,6 @@ const ensureHoverMirror = () => {
     }
   });
   if (!rules.length) {
-    // Strict: match reimagine-helpers.jsx — a missing hover rule would silently
-    // turn hover-state tests into no-ops. Fail loudly instead.
     throw new Error(
       "[rankings-cards] No .hp-rankings__card:hover rule found to mirror."
     );
@@ -519,16 +546,9 @@ const ensureHoverMirror = () => {
 };
 
 /**
- * Forces (or clears) the hover styles on a `.hp-rankings__card` element without
- * a real pointer event. Mirrors the `:hover` CSS rules using a `[data-rankings-hover]`
- * attribute so Storybook interaction tests can assert hover-state styles.
- *
- * Throws if no `.hp-rankings__card:hover` rules are found in any stylesheet —
- * this prevents a missing CSS import from silently turning hover tests into
- * false negatives.
- *
+ * Forces (or clears) the hover styles on a `.hp-rankings__card` element.
  * @param {Element} element - The `.hp-rankings__card` element.
- * @param {boolean} [on=true] - Pass `false` to clear the forced hover.
+ * @param {boolean} [on=true]
  */
 export const forceHover = (element, on = true) => {
   ensureHoverMirror();
