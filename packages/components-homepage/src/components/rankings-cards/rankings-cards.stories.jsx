@@ -3577,6 +3577,64 @@ export const ComputeAlphaUnit = {
   },
 };
 
+// ═══════════════════════════════════════════════════════════════════════════════
+// Post-approval change: remove learn-more — RED tests (WWWCMS-233 human decision)
+// Design-doc v4.3.1a superseded by human approver instruction.
+// Card footer must have exactly ONE <a> on cards 2–11 (attribution only).
+// Card 1 must have exactly TWO <a> (see-all-top + attribution placeholder removed
+// per isSummary, so card 1 = see-all-top only — but the user decision keeps it
+// matching v4.4.2b, so we test: card1=1 link, cards 2-11=1 link, 0 learn-more).
+// Wait — re-reading: card 1 keeps its .hp-rankings__see-all-top (v4.4.2b).
+// Cards 2–11 keep attribution only.  Card 1 has NO attribution (isSummary).
+// So: card 1 = 1 link (see-all-top), cards 2–11 = 1 link (attribution).
+// No .hp-rankings__learn-more anywhere.
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// ─── NoLearnMoreInFooter (RED) ───────────────────────────────────────────────
+// On HEAD this FAILS because every card has a learn-more link in its footer
+// (making 2 links per footer on cards 2–11, and 2 links on card 1).
+// After the fix it PASSES: each footer has exactly 1 link and there is no
+// .hp-rankings__learn-more element anywhere in the section.
+
+export const NoLearnMoreInFooter = {
+  name: "No learn-more in footer: each card footer has exactly 1 <a>",
+  globals: viewport(1280),
+  render: () => <StaticPage html={DEFAULT_HTML} />,
+  play: async ({ canvasElement }) => {
+    const section = canvasElement.querySelector("section.hp-rankings");
+    await expect(section).not.toBeNull();
+
+    // PRIMARY ASSERTION: no .hp-rankings__learn-more element anywhere.
+    const learnMoreElements = section.querySelectorAll(
+      ".hp-rankings__learn-more"
+    );
+    await expect(learnMoreElements).toHaveLength(0);
+
+    const allCards = Array.from(section.querySelectorAll(".hp-rankings__card"));
+    await expect(allCards).toHaveLength(11);
+
+    for (let i = 0; i < allCards.length; i += 1) {
+      const card = allCards[i];
+      const footer = card.querySelector(".hp-rankings__card-footer");
+      await expect(footer).not.toBeNull();
+      const links = Array.from(footer.querySelectorAll("a"));
+
+      if (i === 0) {
+        // Card 1 (summary): 1 link — .hp-rankings__see-all-top only.
+        // (No .hp-rankings__attribution on isSummary; no learn-more after fix.)
+        await expect(links).toHaveLength(1);
+        await expect(footer.querySelector(".hp-rankings__see-all-top")).not.toBeNull();
+        await expect(footer.querySelector(".hp-rankings__attribution")).toBeNull();
+      } else {
+        // Cards 2–11: exactly 1 link — .hp-rankings__attribution only.
+        await expect(links).toHaveLength(1);
+        await expect(footer.querySelector(".hp-rankings__attribution")).not.toBeNull();
+        await expect(footer.querySelector(".hp-rankings__see-all-top")).toBeNull();
+      }
+    }
+  },
+};
+
 // ─── Post-approval fix: media padding ────────────────────────────────────────
 // Asserts the restored 16px padding on .hp-rankings__media (WWWCMS-233 fix).
 //

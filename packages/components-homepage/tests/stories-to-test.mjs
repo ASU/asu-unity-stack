@@ -137,4 +137,6 @@ export const storiesToTest = [
   "homepage-rankings-cards--card-body-hover-reveals-learn-more",
   // Post-approval fix: media padding restore (WWWCMS-233)
   "homepage-rankings-cards--media-padding",
+  // Post-approval change: remove learn-more (WWWCMS-233 human decision)
+  "homepage-rankings-cards--no-learn-more-in-footer",
 ];
