@@ -286,6 +286,24 @@
     transform: translateY(0);
     pointer-events: auto;
   }
+
+  // Post-approval: suppress learn-more when the pointer is SPECIFICALLY over
+  // the attribution link or see-all-top (human reviewer request 2026-11-05).
+  // The pointer is inside the card (so the reveal rule above fires) but when
+  // it is directly over the footer link, learn-more must stay hidden.
+  //
+  // :has() support: Chrome 105+, Safari 15.4+, Firefox 121+.
+  // Specificity matches the reveal rule above (same depth); cascade position
+  // (placed after) ensures this wins cleanly without !important.
+  //
+  // Keyboard focus behaviour is NOT changed — the :focus-within reveal rule
+  // below is unaffected. Tab to attribution → learn-more still reveals.
+  .hp-rankings__card:hover:has(.hp-rankings__attribution:hover) .hp-rankings__learn-more,
+  .hp-rankings__card:hover:has(.hp-rankings__see-all-top:hover) .hp-rankings__learn-more {
+    opacity: 0;
+    transform: translateY(4px);
+    pointer-events: none;
+  }
 }
 
 // ── Focus-within (keyboard) ───────────────────────────────────────────────────
@@ -349,6 +367,16 @@
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
+}
+
+// Post-approval: Storybook mirror for attribution-hover suppression.
+// When [data-rankings-hover] is on the card AND [data-rankings-attrib-hover]
+// is on the attribution link (or see-all-top), learn-more must stay hidden.
+// Mirrors the :has(.hp-rankings__attribution:hover) rule above.
+.hp-rankings__card[data-rankings-hover]:has([data-rankings-attrib-hover]) .hp-rankings__learn-more {
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
 }
 
 // ── Controls row (nav + see-all) ──────────────────────────────────────────────
@@ -492,5 +520,13 @@
   .hp-rankings__card:focus-within .hp-rankings__learn-more,
   .hp-rankings__card[data-rankings-hover] .hp-rankings__learn-more {
     visibility: visible;
+  }
+
+  // Post-approval: suppress learn-more in forced-colors when attribution is hovered.
+  // Mirrors the opacity suppression rule above for forced-colors mode.
+  .hp-rankings__card:hover:has(.hp-rankings__attribution:hover) .hp-rankings__learn-more,
+  .hp-rankings__card:hover:has(.hp-rankings__see-all-top:hover) .hp-rankings__learn-more,
+  .hp-rankings__card[data-rankings-hover]:has([data-rankings-attrib-hover]) .hp-rankings__learn-more {
+    visibility: hidden;
   }
 }
