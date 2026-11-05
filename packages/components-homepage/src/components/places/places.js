@@ -119,6 +119,22 @@ const bind = (section, doc, win) => {
     }
   };
 
+  // The box of a lower name (London, long copy) would hang past the media: it moves up by the overflow and
+  // the leader stays on the name's rule.
+  const fitBox = i => {
+    const box = items[i].querySelector(".hp-places__box");
+    items[i].style.setProperty("--hp-places-box-shift", "0px");
+    if (!media || !desk.matches) return;
+    const overflow =
+      box.getBoundingClientRect().bottom - media.getBoundingClientRect().bottom;
+    if (overflow > 0) {
+      items[i].style.setProperty(
+        "--hp-places-box-shift",
+        `${Math.ceil(overflow)}px`
+      );
+    }
+  };
+
   const renderDesk = () => {
     items.forEach((item, i) => {
       const on = i === sel;
@@ -140,6 +156,7 @@ const bind = (section, doc, win) => {
     });
     details[i].hidden = false;
     closes[i].hidden = false;
+    fitBox(i);
     // Two frames so the fades run from their resting state (display:none cannot transition).
     showFrame = win.requestAnimationFrame(() => {
       showFrame = win.requestAnimationFrame(() => {
@@ -413,6 +430,7 @@ const bind = (section, doc, win) => {
     readHeader();
     scheduleOpening();
     measureWall();
+    if (sel >= 0) fitBox(sel);
   };
 
   cleanups.push(

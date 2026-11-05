@@ -445,3 +445,24 @@ export const EntryPoint = {
     await expect(GROUPS).toHaveLength(2);
   },
 };
+
+export const LowerNameBox = {
+  name: "Box of the lowest name stays in the stage",
+  tags: ["!dev"],
+  globals: viewport(1440),
+  render: () => <Harness before="20vh" after="40vh" html={placesHtml()} />,
+  play: async ({ canvasElement }) => {
+    await resizeViewport(1440, 900);
+    const p = parts(canvasElement);
+    const last = LOCATIONS.length - 1;
+    p.names[last].click();
+    await waitFor(() =>
+      expect(p.items[last].classList.contains("is-shown")).toBe(true)
+    );
+    await expect(box(p.boxes[last]).bottom).toBeLessThanOrEqual(
+      box(p.media).bottom + 1
+    );
+    // the leader stays on the name's rule
+    await near(box(p.details[last]).bottom, box(p.names[last]).bottom, 1);
+  },
+};

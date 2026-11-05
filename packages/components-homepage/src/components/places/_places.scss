@@ -683,7 +683,7 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
     // The description box hangs beside the panel at the selected row (its top meets the leader).
     .hp-places__box {
       position: absolute;
-      top: calc(100% - 4px);
+      top: calc(100% - 4px - var(--hp-places-box-shift, 0px));
       left: calc(100% + 33px);
       z-index: 3;
       box-sizing: border-box;
