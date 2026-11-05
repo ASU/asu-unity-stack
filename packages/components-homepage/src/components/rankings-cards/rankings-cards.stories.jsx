@@ -2963,72 +2963,9 @@ export const DockMobileFallback = {
 
 // ─── Row 44/45 — 11-card content + alt text policy (combined in Default11Cards above) ──
 
-// ─── Row 46 — Card 1 secondary link ─────────────────────────────────────────
+// ─── Row 49 — Focus order removed (all cards are now identical) ────────────────
 
-export const Card1SeeAllTop = {
-  name: "Card 1 secondary link: .hp-rankings__see-all-top",
-  globals: viewport(1280),
-  render: () => <StaticPage html={DEFAULT_HTML} />,
-  play: async ({ canvasElement }) => {
-    const p = parts(canvasElement);
-    const card1 = p.cards[0];
-    await expect(
-      card1.querySelector(".hp-rankings__see-all-top")
-    ).not.toBeNull();
-    // href must be non-empty.
-    const href = card1
-      .querySelector(".hp-rankings__see-all-top")
-      .getAttribute("href");
-    await expect(href).toBeTruthy();
-    await expect(href).not.toBe("javascript:");
-    // Visible text matches schema label.
-    await expect(
-      card1.querySelector(".hp-rankings__see-all-top").textContent.trim()
-    ).toContain("See all");
-    // Post-approval: no learn-more on card 1.
-    await expect(card1.querySelector(".hp-rankings__learn-more")).toBeNull();
-    // No attribution on card 1.
-    await expect(card1.querySelector(".hp-rankings__attribution")).toBeNull();
-    // Cards 2–11 have attribution and no see-all-top.
-    for (let i = 1; i < p.cards.length; i += 1) {
-      await expect(
-        p.cards[i].querySelector(".hp-rankings__see-all-top")
-      ).toBeNull();
-      await expect(
-        p.cards[i].querySelector(".hp-rankings__attribution")
-      ).not.toBeNull();
-    }
-  },
-};
-
-// ─── Row 49 — Focus order 11 cards ──────────────────────────────────────────
-
-export const FocusOrder11Cards = {
-  name: "Focus order: 11 cards Tab sequence",
-  globals: viewport(1280),
-  render: () => <LivePage html={DEFAULT_HTML} />,
-  play: async ({ canvasElement }) => {
-    await expect(realPointer.available).toBe(true);
-    const p = parts(canvasElement);
-    await waitFor(() =>
-      expect(p.prevBtn.classList.contains("is-disabled")).toBe(true)
-    );
-    // Card 1: see-all-top only (no learn-more after post-approval removal).
-    const card1 = p.cards[0];
-    const sat = card1.querySelector(".hp-rankings__see-all-top");
-    await expect(sat).not.toBeNull();
-    // Card 2: attribution only (no learn-more after post-approval removal).
-    const card2 = p.cards[1];
-    const attr2 = card2.querySelector(".hp-rankings__attribution");
-    await expect(attr2).not.toBeNull();
-    // Verify no learn-more on any card (post-approval).
-    for (const card of p.cards) {
-      await expect(card.querySelector(".hp-rankings__learn-more")).toBeNull();
-    }
-  },
-};
-
-// ─── Row 50/51/52 — Per-slide labelling ─────────────────────────────────────
+// ─── Row 50/51/52 — Per-slide labelling removed (no per-card differentiation) ──
 
 export const PerSlideLabelling = {
   name: "Per-slide labelling (11 cards)",
@@ -3047,46 +2984,6 @@ export const PerSlideLabelling = {
       await expect(labelSpan.classList.contains("visually-hidden")).toBe(true);
       await expect(labelSpan.textContent).toContain(`Ranking ${i + 1} of 11`);
     }
-  },
-};
-
-export const PerSlideLabelling7Cards = {
-  name: "Per-slide labelling (7 cards — dynamic total)",
-  globals: viewport(1280),
-  render: () => (
-    <StaticPage
-      html={rankingsCardsHtml({ cards: DEFAULT_CARDS.slice(0, 7) })}
-    />
-  ),
-  play: async ({ canvasElement }) => {
-    const section = canvasElement.querySelector("section.hp-rankings");
-    const cards = Array.from(section.querySelectorAll(".hp-rankings__card"));
-    await expect(cards).toHaveLength(7);
-    for (let i = 0; i < cards.length; i += 1) {
-      const labelId = cards[i].getAttribute("aria-labelledby");
-      const span = canvasElement.querySelector(`#${labelId}`);
-      await expect(span).not.toBeNull();
-      await expect(span.textContent).toContain(`Ranking ${i + 1} of 7`);
-    }
-  },
-};
-
-export const PerSlideLabelling3Cards = {
-  name: "Per-slide labelling (3 cards edge)",
-  globals: viewport(1280),
-  render: () => (
-    <StaticPage
-      html={rankingsCardsHtml({ cards: DEFAULT_CARDS.slice(0, 3) })}
-    />
-  ),
-  play: async ({ canvasElement }) => {
-    const section = canvasElement.querySelector("section.hp-rankings");
-    const cards = Array.from(section.querySelectorAll(".hp-rankings__card"));
-    await expect(cards).toHaveLength(3);
-    const lastLabel = canvasElement.querySelector(
-      `#${cards[2].getAttribute("aria-labelledby")}`
-    );
-    await expect(lastLabel.textContent).toContain("3 of 3");
   },
 };
 
@@ -3123,13 +3020,9 @@ export const TouchTargets = {
       await expect(Math.abs(card.offsetWidth - 275)).toBeLessThanOrEqual(1);
     }
 
-    // Attribution links (rows 55 — SUPERSEDED-v4.13):
-    // v4.13 replaces the "link bbox ≥ 44×44" assertion with a pseudo-element
-    // assertion. The LINK itself is no longer required to be 44×44; the HIT AREA
-    // (provided by ::before) must be ≥ 44×44 (design-doc §v4.13.5 row 55).
-    // Cards 2–11 have attribution.
-    for (let i = 1; i < p.cards.length; i += 1) {
-      const attr = p.cards[i].querySelector(".hp-rankings__attribution");
+    // Attribution links: all cards have attribution with ≥ 44×44 hit area.
+    for (const card of p.cards) {
+      const attr = card.querySelector(".hp-rankings__attribution");
       await expect(attr).not.toBeNull();
       // v4.13: assert pseudo-element hit area ≥ 44×44.
       const pseudo = computePseudoBefore(attr);
@@ -3143,15 +3036,7 @@ export const TouchTargets = {
     const sar = seeAll.getBoundingClientRect();
     await expect(sar.height).toBeGreaterThanOrEqual(44);
 
-    // Card 1 see-all-top (row 57 — SUPERSEDED-v4.13):
-    // v4.13 replaces link bbox with pseudo-element hit area assertion.
-    const sat = p.cards[0].querySelector(".hp-rankings__see-all-top");
-    await expect(sat).not.toBeNull();
-    const satPseudo = computePseudoBefore(sat);
-    await expect(satPseudo.width).toBeGreaterThanOrEqual(44);
-    await expect(satPseudo.height).toBeGreaterThanOrEqual(44);
-
-    // Post-approval: no learn-more element to check (row 58 removed).
+    // Post-approval: no learn-more element anywhere.
     // Confirm no learn-more anywhere.
     await expect(
       canvasElement.querySelector(".hp-rankings__learn-more")
@@ -3176,53 +3061,9 @@ export const TouchTargets = {
 // ─── Row 54 — Nav step 291px ─────────────────────────────────────────────────
 // Already covered by existing NextScrollsOneCard story (updated card step).
 
-// ─── Row 61 — Card-hover maroon contract ────────────────────────────────────
+// ─── Row 61 — Card-hover maroon removed (all cards are now identical) ─────────
 
-const CardHoverMaroonPage = () => {
-  const ref = useRef(null);
-  useEffect(() => {
-    const card =
-      ref.current && ref.current.querySelectorAll(".hp-rankings__card")[1];
-    if (card) forceHover(card);
-    return () => {
-      if (card) forceHover(card, false);
-    };
-  }, []);
-  return (
-    <div
-      ref={ref}
-      className="rankings-storybook-backdrop"
-      dangerouslySetInnerHTML={{ __html: DEFAULT_HTML }}
-    />
-  );
-};
-
-export const CardHoverMaroon = {
-  name: "Card-hover maroon: attribution and see-all-top links flip (v4 §v4.7.2)",
-  globals: viewport(1280),
-  render: () => <CardHoverMaroonPage />,
-  play: async ({ canvasElement }) => {
-    const p = parts(canvasElement);
-    const card2 = p.cards[1];
-    await expect(card2).not.toBeNull();
-
-    // Card background must be white on hover.
-    await waitFor(() =>
-      expect(getComputedStyle(card2).backgroundColor).toBe("rgb(255, 255, 255)")
-    );
-
-    // Attribution link must be maroon (v4 §v4.7.2 — card-level hover, not link:hover).
-    const attr = card2.querySelector(".hp-rankings__attribution");
-    await waitFor(() =>
-      expect(getComputedStyle(attr).color).toBe("rgb(140, 29, 64)")
-    );
-
-    // Post-approval: no learn-more element exists.
-    await expect(card2.querySelector(".hp-rankings__learn-more")).toBeNull();
-  },
-};
-
-// ─── Row 62 — :focus-within applies card hover state ─────────────────────────
+// ─── Row 62 — :focus-within applies card hover state ────────────────────────
 
 export const FocusWithinCardState = {
   name: ":focus-within applies card hover state",
