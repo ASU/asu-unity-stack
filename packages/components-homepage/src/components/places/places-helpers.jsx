@@ -92,7 +92,7 @@ export const LOCATIONS = [
 export const DEK =
   "Four distinctive campuses throughout metropolitan Phoenix, as well as locations around the state, country and world.";
 export const VIDEO_DESCRIPTION =
-  "Silent video: scenes from ASU’s campuses and locations. TODO: write against the final cut (WWWCMS-241).";
+  "Silent video: scenes from ASU’s campuses and locations."; // placeholder: the content team writes it against the final cut
 
 const slug = name =>
   name
@@ -110,12 +110,39 @@ const escape = value =>
     .replace(/>/g, "&gt;");
 
 // Data layer (asucms docs/datalayer.md): the `data-ga-text` family only, never `data-ga`. `event` is `link` for
-// anchors and `select` for widget buttons; type is `external link` when the URL leaves the site.
+// anchors and `select` for widget buttons; type is `external link` when the URL is on another host.
 // TODO: confirm the event names with the data team (WWWCMS-227 open item).
-export const gaAttributes = (text, { event = "link", href = "" } = {}) => {
-  const external = /^https?:\/\//i.test(href);
-  return `data-ga-name="onclick" data-ga-event="${event}" data-ga-action="click" data-ga-type="${external ? "external link" : "internal link"}" data-ga-region="main content" data-ga-section="${escape(SECTION_HEADING.toLowerCase())}" data-ga-component="${GA_COMPONENT}" data-ga-text="${escape(text.toLowerCase())}"`;
+const isExternal = href => {
+  if (!/^https?:\/\//i.test(href)) return false;
+  try {
+    const host =
+      typeof location === "undefined" ? "www.asu.edu" : location.host;
+    return new URL(href).host !== host;
+  } catch {
+    return true;
+  }
 };
+
+export const gaAttributes = (
+  text,
+  { event = "link", href = "", component = GA_COMPONENT } = {}
+) =>
+  `data-ga-name="onclick" data-ga-event="${event}" data-ga-action="click" data-ga-type="${isExternal(href) ? "external link" : "internal link"}" data-ga-region="main content" data-ga-section="${escape(SECTION_HEADING.toLowerCase())}" data-ga-component="${component}" data-ga-text="${escape(text.toLowerCase())}"`;
+
+// The shared pause/play control, with the data layer set the asucms video control carries (its text names what
+// a click does; video-control.js keeps it current).
+const videoControl = (id, extraClass) =>
+  controlHtml({
+    id,
+    hidden: true,
+    labelPlay: "Play the locations video",
+    labelPause: "Pause the locations video",
+  })
+    .replace('class="mbtn"', `class="mbtn ${extraClass}"`)
+    .replace(
+      "<button ",
+      `<button ${gaAttributes("play button", { component: "homepage video control" })} `
+    );
 
 const cta = (kind, label, href) =>
   `<a class="hp-places__cta hp-places__cta--${kind}" href="${escape(href)}" ${gaAttributes(label, { href })}>${label}${arrow("hp-places__cta-icon")}</a>`;
@@ -153,23 +180,23 @@ export const placesHtml = ({
   ).join("");
 
   const cards = [
-    `<div class="hp-places__card hp-places__card--video" role="group" aria-roledescription="slide" aria-label="1 of ${LOCATIONS.length + 1}: all locations"><div class="hp-places__vbox"><video id="${mobVideoId}" class="hp-places__video-m" muted playsinline preload="none" data-auto data-in-view="0.2" data-src="${VIDEO_SRC}" poster="${POSTER_SRC}" aria-describedby="${mobVideoId}-desc"></video><p id="${mobVideoId}-desc" class="visually-hidden">${escape(VIDEO_DESCRIPTION)}</p>${controlHtml({ id: mobVideoId, hidden: true, labelPlay: "Play the locations video", labelPause: "Pause the locations video" }).replace('class="mbtn"', 'class="mbtn hp-places__mbtn-m"')}</div></div>`,
+    `<div class="hp-places__card hp-places__card--video" data-label="all locations"><div class="hp-places__vbox"><video id="${mobVideoId}" class="hp-places__video-m" muted playsinline preload="none" data-auto data-in-view="0.2" data-src="${VIDEO_SRC}" poster="${POSTER_SRC}" aria-describedby="${mobVideoId}-desc"></video><p id="${mobVideoId}-desc" class="visually-hidden">${escape(VIDEO_DESCRIPTION)}</p>${videoControl(mobVideoId, "hp-places__mbtn-m")}</div></div>`,
     ...LOCATIONS.map(
       (place, index) =>
-        `<div class="hp-places__card" role="group" aria-roledescription="slide" aria-label="${index + 2} of ${LOCATIONS.length + 1}: ${escape(place.name)}"><div class="hp-places__photo"><img src="${place.photo}" alt="" loading="lazy" decoding="async"></div><div class="hp-places__cell"><p class="hp-places__cname">${place.name}</p><p class="hp-places__ctext">${escape(place.text)}</p><a class="hp-places__link" href="${locationHref(index)}" ${gaAttributes(place.link)}>${place.link}${arrow("hp-places__arrow")}</a></div></div>`
+        `<div class="hp-places__card" data-label="${escape(place.name)}"><div class="hp-places__photo"><img src="${place.photo}" alt="" loading="lazy" decoding="async"></div><div class="hp-places__cell"><p class="hp-places__cname">${place.name}</p><p class="hp-places__ctext">${escape(place.text)}</p><a class="hp-places__link" href="${locationHref(index)}" ${gaAttributes(place.link)}>${place.link}${arrow("hp-places__arrow")}</a></div></div>`
     ),
   ].join("");
 
-  const tabs = GROUPS.map(
-    group =>
-      `<button type="button" class="hp-places__tab" ${gaAttributes(group.tab, { event: "select" })}>${group.tab}</button>`
-  ).join("");
+  const tabs = GROUPS.map((group, g) => {
+    const first = LOCATIONS.findIndex(place => place.group === g) + 1;
+    return `<button type="button" class="hp-places__tab" data-slide="${first}" ${gaAttributes(group.tab, { event: "select" })}>${group.tab}</button>`;
+  }).join("");
   const index = LOCATIONS.map(
     place =>
-      `<button type="button" class="hp-places__iname" ${gaAttributes(place.name, { event: "select" })}>${place.name}</button>`
+      `<button type="button" class="hp-places__iname" data-group="${place.group}" ${gaAttributes(place.name, { event: "select" })}>${place.name}</button>`
   ).join("");
 
-  return `<section class="hp-places" aria-labelledby="${heading}"${follow ? ` data-wallpaper-follow="${escape(follow)}"` : ""}><div class="hp-places__wall" aria-hidden="true"></div><div class="hp-places__frame"><div class="hp-places__panel"><div class="hp-places__intro"><p class="hp-places__eyebrow">Locations</p><h2 id="${heading}" class="hp-places__heading">${SECTION_HEADING}</h2>${dek ? `<p class="hp-places__dek">${DEK}</p>` : ""}<div class="hp-places__ctas">${cta("primary", "Find your fit", findHref)}${cta("secondary", "Visit ASU", visitHref)}</div></div>${groupsHtml}${seeAll("hp-places__see-all", allHref)}</div><div class="hp-places__media"><video id="${videoId}" class="hp-places__video" muted playsinline preload="none" data-auto data-in-view="0.2" data-src="${VIDEO_SRC}" poster="${POSTER_SRC}" aria-describedby="${videoId}-desc"></video><p id="${videoId}-desc" class="visually-hidden">${escape(VIDEO_DESCRIPTION)}</p>${stills}</div>${controlHtml({ id: videoId, hidden: true, labelPlay: "Play the locations video", labelPause: "Pause the locations video" }).replace('class="mbtn"', 'class="mbtn hp-places__mbtn"')}<div class="hp-places__mob"><div class="hp-places__tabs" role="group" aria-label="Location groups" hidden>${tabs}</div><div class="hp-places__track" role="region" aria-roledescription="carousel" aria-label="Campuses and locations">${cards}</div><div class="hp-places__mobpanel"><div class="hp-places__index" role="group" aria-label="Locations" hidden>${index}</div><div class="hp-places__actions">${cta("secondary", "Visit ASU", visitHref).replace("hp-places__cta--secondary", "hp-places__cta--secondary hp-places__cta--dark")}${seeAll("hp-places__see-all-m", allHref)}</div></div></div></div></section>`;
+  return `<section class="hp-places" aria-labelledby="${heading}"${follow ? ` data-wallpaper-follow="${escape(follow)}"` : ""}><div class="hp-places__wall" aria-hidden="true"></div><div class="hp-places__frame"><div class="hp-places__panel"><div class="hp-places__intro"><p class="hp-places__eyebrow">Locations</p><h2 id="${heading}" class="hp-places__heading">${SECTION_HEADING}</h2>${dek ? `<p class="hp-places__dek">${DEK}</p>` : ""}<div class="hp-places__ctas">${cta("primary", "Find your fit", findHref)}${cta("secondary", "Visit ASU", visitHref)}</div></div>${groupsHtml}${seeAll("hp-places__see-all", allHref)}</div><div class="hp-places__media"><video id="${videoId}" class="hp-places__video" muted playsinline preload="none" data-auto data-in-view="0.2" data-src="${VIDEO_SRC}" poster="${POSTER_SRC}" aria-describedby="${videoId}-desc"></video><p id="${videoId}-desc" class="visually-hidden">${escape(VIDEO_DESCRIPTION)}</p>${stills}</div>${videoControl(videoId, "hp-places__mbtn")}<div class="hp-places__mob"><div class="hp-places__tabs" role="group" aria-label="Location groups" hidden>${tabs}</div><div class="hp-places__track" data-label="Campuses and locations">${cards}</div><div class="hp-places__mobpanel"><div class="hp-places__index" role="group" aria-label="Locations" hidden>${index}</div><div class="hp-places__actions">${cta("secondary", "Visit ASU", visitHref).replace("hp-places__cta--secondary", "hp-places__cta--secondary hp-places__cta--dark")}${seeAll("hp-places__see-all-m", allHref)}</div></div></div></div></section>`;
 };
 
 // Renders the markup and runs `initPlaces` and `initVideoControls` (unless `manual`, the server-markup state).

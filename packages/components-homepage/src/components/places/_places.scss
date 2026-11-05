@@ -22,9 +22,13 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
     box-shadow: none !important;
   }
 
+  // Light surfaces: white + Gray 1 (the stories grid pair); dark surfaces override the two custom properties
+  // with the package's white + #00BAFF ring.
   &:focus-visible {
     outline: 2px solid transparent !important;
-    box-shadow: var(--hp-focus-inner), var(--hp-focus-outer) !important;
+    box-shadow:
+      var(--hp-places-ring-inner),
+      var(--hp-places-ring-outer) !important;
   }
 }
 
@@ -68,6 +72,8 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
   --hp-places-card-w: calc(100% - 32px);
   --hp-places-photo-h: 300px;
   --hp-places-cell-h: 164px;
+  --hp-places-ring-inner: 0 0 0 2px #{$uds-color-base-white};
+  --hp-places-ring-outer: 0 0 0 4px #{$asu-gray-1};
 
   position: relative;
   isolation: isolate;
@@ -273,6 +279,8 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
   padding: 16px;
   background: $asu-gray-1;
   color: $asu-gray-7;
+  --hp-places-ring-inner: var(--hp-focus-inner);
+  --hp-places-ring-outer: var(--hp-focus-outer);
 }
 
 .hp-places__cname {
@@ -367,6 +375,8 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
   padding: 20px var(--hp-places-side) 40px;
   background: $asu-gray-1;
   color: $asu-gray-7;
+  --hp-places-ring-inner: var(--hp-focus-inner);
+  --hp-places-ring-outer: var(--hp-focus-outer);
 }
 
 .hp-places__index {
@@ -524,6 +534,8 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
       border: 1px solid $asu-gray-3;
       isolation: isolate;
       color: $asu-gray-7;
+      --hp-places-ring-inner: var(--hp-focus-inner);
+      --hp-places-ring-outer: var(--hp-focus-outer);
     }
 
     // The filter lives on a layer, not on the panel: the box inside is a descendant and needs the backdrop.
@@ -666,6 +678,10 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
         transform: scaleX(0);
         transform-origin: left;
 
+        @media (prefers-reduced-motion: no-preference) {
+          transition: transform 0.2s ease;
+        }
+
         @media (forced-colors: active) {
           background: Highlight;
         }
@@ -694,8 +710,16 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
       padding: 32px 56px 28px 32px;
       isolation: isolate;
       color: $asu-gray-7;
+      --hp-places-ring-inner: var(--hp-focus-inner);
+      --hp-places-ring-outer: var(--hp-focus-outer);
       opacity: 0;
       visibility: hidden;
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition:
+          opacity 0.2s ease,
+          visibility 0.2s;
+      }
 
       @media (forced-colors: active) {
         border: 1px solid CanvasText;

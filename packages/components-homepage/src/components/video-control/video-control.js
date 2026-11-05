@@ -32,6 +32,13 @@ const setState = (button, playing) => {
     playing ? "data-label-pause" : "data-label-play"
   );
   if (label) button.setAttribute("aria-label", label);
+  // The data layer text names what a click does (asucms homepage-video-control).
+  if (button.hasAttribute("data-ga-text")) {
+    button.setAttribute(
+      "data-ga-text",
+      playing ? "pause button" : "play button"
+    );
+  }
 };
 
 const render = (entry, playing) => {

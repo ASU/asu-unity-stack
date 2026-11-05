@@ -82,19 +82,11 @@ const expectContract = async p => {
   await expect(p.heading.textContent).toBe(SECTION_HEADING);
   await expect(p.names).toHaveLength(LOCATIONS.length);
   await expect(p.cards).toHaveLength(LOCATIONS.length + 1);
-  p.cards.forEach((card, index) => {
-    expect(card.getAttribute("role")).toBe("group");
-    expect(card.getAttribute("aria-roledescription")).toBe("slide");
-    expect(card.getAttribute("aria-label")).toMatch(
-      new RegExp(`^${index + 1} of ${LOCATIONS.length + 1}: `)
-    );
-  });
   // data layer: every link and button carries the full attribute set (asucms datalayer.md)
-  const clickable = Array.from(
-    p.section.querySelectorAll("a[href], button:not(.mbtn)")
-  );
+  const clickable = Array.from(p.section.querySelectorAll("a[href], button"));
   await expect(clickable.length).toBeGreaterThan(30);
   clickable.forEach(element => {
+    const video = element.classList.contains("mbtn");
     expect(element.getAttribute("data-ga-name")).toBe("onclick");
     expect(["link", "select"]).toContain(element.getAttribute("data-ga-event"));
     expect(element.getAttribute("data-ga-action")).toBe("click");
@@ -103,9 +95,32 @@ const expectContract = async p => {
     expect(element.getAttribute("data-ga-section")).toBe(
       SECTION_HEADING.toLowerCase()
     );
-    expect(element.getAttribute("data-ga-component")).toBe(GA_COMPONENT);
+    expect(element.getAttribute("data-ga-component")).toBe(
+      video ? "homepage video control" : GA_COMPONENT
+    );
+    if (video) {
+      expect(["play button", "pause button"]).toContain(
+        element.getAttribute("data-ga-text")
+      );
+    }
     expect(element.getAttribute("data-ga-text")).toBeTruthy();
     expect(element.hasAttribute("data-ga")).toBe(false);
+  });
+};
+
+// The carousel semantics exist only while script runs (the stacked baseline is not a carousel).
+const expectCarouselRoles = async p => {
+  await expect(p.track.getAttribute("role")).toBe("region");
+  await expect(p.track.getAttribute("aria-roledescription")).toBe("carousel");
+  await expect(p.track.getAttribute("aria-label")).toBe(
+    "Campuses and locations"
+  );
+  p.cards.forEach((card, index) => {
+    expect(card.getAttribute("role")).toBe("group");
+    expect(card.getAttribute("aria-roledescription")).toBe("slide");
+    expect(card.getAttribute("aria-label")).toMatch(
+      new RegExp(`^${index + 1} of ${LOCATIONS.length + 1}: `)
+    );
   });
 };
 
@@ -120,6 +135,8 @@ export const NoScript = {
     const p = parts(canvasElement);
     await expectContract(p);
     await expect(p.section.classList.contains("is-enhanced")).toBe(false);
+    await expect(p.track.hasAttribute("role")).toBe(false);
+    await expect(p.cards.some(card => card.hasAttribute("role"))).toBe(false);
     // the stacked baseline: intro, then the seven location cards; nothing that needs script
     await expect(style(p.media).display).toBe("none");
     await expect(style(p.mbtn).display).toBe("none");
@@ -145,6 +162,7 @@ export const Default = {
     const p = parts(canvasElement);
     await expectContract(p);
     await expect(p.section.classList.contains("is-enhanced")).toBe(true);
+    await expectCarouselRoles(p);
     await expect(style(p.mob).display).toBe("none");
     // the frosted panel: 347 wide, overhanging the media by 24px, starting 24px below its top
     const m = box(p.media);
@@ -268,6 +286,7 @@ const carouselPlay =
     await resizeViewport(width, 852);
     const p = parts(canvasElement);
     await expectContract(p);
+    await expectCarouselRoles(p);
     await expect(style(p.media).display).toBe("none");
     await expect(style(p.mbtn).display).toBe("none");
     await expect(p.tabs).toHaveLength(2);
@@ -443,6 +462,73 @@ export const EntryPoint = {
   play: async () => {
     await expect(typeof entry.initPlaces).toBe("function");
     await expect(GROUPS).toHaveLength(2);
+  },
+};
+
+export const InitContract = {
+  name: "Init contract (teardown restores the server markup)",
+  tags: ["!dev"],
+  globals: viewport(1440),
+  render: () => <Harness manual html={placesHtml()} />,
+  play: async ({ canvasElement }) => {
+    await resizeViewport(1440, 900);
+    const p = parts(canvasElement);
+    const stop = entry.initPlaces(canvasElement);
+    await expect(p.section.classList.contains("is-enhanced")).toBe(true);
+    // a second call binds nothing twice
+    entry.initPlaces(canvasElement)();
+    await expect(p.section.classList.contains("is-enhanced")).toBe(true);
+    p.names[1].click();
+    await waitFor(() =>
+      expect(p.items[1].classList.contains("is-shown")).toBe(true)
+    );
+    stop();
+    await expect(p.section.classList.contains("is-enhanced")).toBe(false);
+    await expect(p.section.classList.contains("has-still")).toBe(false);
+    await expect(
+      p.items.some(item => item.classList.contains("is-selected"))
+    ).toBe(false);
+    await expect(p.details.every(detail => detail.hidden)).toBe(true);
+    await expect(p.closes.every(button => button.hidden)).toBe(true);
+    await expect(p.names.some(n => n.hasAttribute("aria-pressed"))).toBe(false);
+    await expect(p.track.hasAttribute("role")).toBe(false);
+    await expect(p.video.hasAttribute("data-hold")).toBe(false);
+    await expect(p.video.hasAttribute("src")).toBe(false);
+    await expect(p.media.style.getPropertyValue("--hp-places-progress")).toBe(
+      ""
+    );
+    // it can be started again and starts clean
+    const again = entry.initPlaces(canvasElement);
+    await expect(
+      p.items.some(item => item.classList.contains("is-selected"))
+    ).toBe(false);
+    p.names[2].click();
+    await expect(p.names[2].getAttribute("aria-pressed")).toBe("true");
+    again();
+  },
+};
+
+export const CarouselEnd = {
+  name: "Carousel: the last card is reachable at 1023",
+  tags: ["!dev"],
+  globals: viewport(1023),
+  render: () => <Harness html={placesHtml()} />,
+  play: async ({ canvasElement }) => {
+    await resizeViewport(1023, 768);
+    const p = parts(canvasElement);
+    p.track.scrollLeft = p.track.scrollWidth;
+    await waitFor(() =>
+      expect(p.cards[p.cards.length - 1].getAttribute("aria-label")).toContain(
+        "8 of 8"
+      )
+    );
+    await waitFor(() =>
+      expect(p.tabs[1].getAttribute("aria-pressed")).toBe("true")
+    );
+    const london = p.index.find(button => button.textContent === "London");
+    await waitFor(() =>
+      expect(london.getAttribute("aria-pressed")).toBe("true")
+    );
   },
 };
 
