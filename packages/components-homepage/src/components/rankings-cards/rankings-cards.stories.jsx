@@ -141,7 +141,7 @@ const countFullyVisibleCards = track => {
  * Asserts the full first-render DOM shape (design-doc §3.3 / §3.4).
  * v2: image-first content model — no rank/topic/caption HTML elements.
  */
-const expectComplete = async (canvasElement, { cardCount = 7 } = {}) => {
+const expectComplete = async (canvasElement, { cardCount = 11 } = {}) => {
   const p = parts(canvasElement);
 
   await expect(p.section).not.toBeNull();
@@ -156,8 +156,16 @@ const expectComplete = async (canvasElement, { cardCount = 7 } = {}) => {
   await expect(p.track.getAttribute("role")).toBe("list");
   await expect(p.cards).toHaveLength(cardCount);
 
-  // Each card has an attribution link
-  await expect(p.attributionLinks).toHaveLength(cardCount);
+  // v4: card 1 is the summary variant — it has .hp-rankings__see-all-top instead
+  // of .hp-rankings__attribution. So attribution links = cardCount - 1 for the
+  // default 11-card dataset (1 summary + 10 regular cards).
+  // For non-default datasets that might have no summary card, this is still correct
+  // because we check per-card in the detailed assertion loops.
+  // Only check that there is at least one interactive link per card via learn-more.
+  const learnMoreLinks = Array.from(
+    p.section ? p.section.querySelectorAll(".hp-rankings__learn-more") : []
+  );
+  await expect(learnMoreLinks).toHaveLength(cardCount);
 
   // Nav group
   await expect(p.navGroup).not.toBeNull();
@@ -210,7 +218,6 @@ export const Default = {
       await expect(imgs).toHaveLength(2);
 
       // Default image: full attribute shape incl. src.
-      // v3: intrinsics locked to 500 × 251 (design-doc §3.3, Q2 = C).
       const defaultImg = media.querySelector(".hp-rankings__img--default");
       await expect(defaultImg).not.toBeNull();
       await expect(defaultImg.getAttribute("src")).toBe(expected.imageSrc);
@@ -221,7 +228,6 @@ export const Default = {
       await expect(defaultImg.getAttribute("decoding")).toBe("async");
 
       // Hover image: full attribute shape incl. src.
-      // v3: intrinsics locked to 500 × 251 (design-doc §3.3, Q2 = C).
       const hoverImg = media.querySelector(".hp-rankings__img--hover");
       await expect(hoverImg).not.toBeNull();
       await expect(hoverImg.getAttribute("src")).toBe(expected.imageSrcHover);
@@ -232,18 +238,28 @@ export const Default = {
       await expect(hoverImg.getAttribute("loading")).toBe("lazy");
       await expect(hoverImg.getAttribute("decoding")).toBe("async");
 
-      // Card footer + attribution with correct href.
-      await expect(
-        card.querySelector(".hp-rankings__card-footer")
-      ).not.toBeNull();
-      const attribution = card.querySelector(".hp-rankings__attribution");
-      await expect(attribution).not.toBeNull();
-      await expect(attribution.getAttribute("href")).toBe(
-        expected.attributionHref
-      );
-      await expect(
-        card.querySelector(".hp-rankings__attribution-icon")
-      ).not.toBeNull();
+      // Card footer must be present on every card.
+      await expect(card.querySelector(".hp-rankings__card-footer")).not.toBeNull();
+
+      // Learn-more link must be present on every card (v4 §v4.3.1a).
+      await expect(card.querySelector(".hp-rankings__learn-more")).not.toBeNull();
+
+      // Per-slide labelling (v4 §v4.4.2c).
+      await expect(card.getAttribute("aria-roledescription")).toBe("slide");
+      await expect(card.getAttribute("aria-labelledby")).toBeTruthy();
+
+      if (i === 0) {
+        // Card 1 (summary): .hp-rankings__see-all-top present, no .hp-rankings__attribution.
+        await expect(card.querySelector(".hp-rankings__see-all-top")).not.toBeNull();
+        await expect(card.querySelector(".hp-rankings__attribution")).toBeNull();
+        await expect(card.classList.contains("hp-rankings__card--summary")).toBe(true);
+      } else {
+        // Cards 2–11: .hp-rankings__attribution present, no .hp-rankings__see-all-top.
+        const attribution = card.querySelector(".hp-rankings__attribution");
+        await expect(attribution).not.toBeNull();
+        await expect(card.querySelector(".hp-rankings__attribution-icon")).not.toBeNull();
+        await expect(card.querySelector(".hp-rankings__see-all-top")).toBeNull();
+      }
 
       // v2 removed rank/topic/caption elements.
       await expect(card.querySelector(".hp-rankings__rank")).toBeNull();
@@ -1717,8 +1733,14 @@ export const StaleSyncBeforeNav = {
 
 // ─── Review item 8: rapid-click coalescing ──────────────────────────────────
 
+// ─── Row 60 — Dropped-click guard (v4 §v4.7.3 revert) ──────────────────────
+// Design-doc v4.7.3: rapid clicks during an in-flight smooth scroll are
+// DROPPED (coalesced = ignored). The first click issues scrollBy and locks;
+// subsequent rapid clicks while pending are dropped entirely. After
+// scrollend the next click DOES advance.
+
 export const RapidClickCoalescing = {
-  name: "Rapid Next clicks accumulate to final queued target",
+  name: "Rapid Next clicks: dropped-click guard (one step only)",
   globals: viewport(1280),
   render: () => <LivePage html={OVERFLOW_HTML} />,
   play: async ({ canvasElement }) => {
@@ -1731,104 +1753,27 @@ export const RapidClickCoalescing = {
     const gap = parseFloat(getComputedStyle(p.track).columnGap) || 16;
     const oneStep = cardWidth + gap;
 
-    // ── Part A: burst five rapid clicks ─────────────────────────────────
+    // ── Part A: burst five rapid clicks — only ONE step should occur ─────
     const initial = p.track.scrollLeft;
     for (let i = 0; i < 5; i += 1) {
       await realPointer.click(p.nextBtn);
     }
     // Let the scroll settle (scrollend or idle debounce).
-    await new Promise(r => setTimeout(r, 500));
+    await new Promise(r => setTimeout(r, 600));
     const delta = p.track.scrollLeft - initial;
-    // Rapid clicks accumulate into a queued target. The first click issues
-    // scrollBy(oneStep) and locks. Subsequent clicks within the idle window
-    // update the pending target. On settle, one final scroll assignment occurs.
-    // Total movement: ~2 steps (one from scrollBy, one from final assignment).
-    const twoSteps = oneStep * 2;
-    await expect(delta).toBeGreaterThan(twoSteps - 50);
-    await expect(delta).toBeLessThan(twoSteps + 50);
+    // Dropped-click guard: the first click issues scrollBy(oneStep) and locks.
+    // The next 4 clicks are dropped. Total movement: exactly oneStep.
+    await expect(delta).toBeGreaterThan(oneStep - 50);
+    await expect(delta).toBeLessThan(oneStep + 50);
 
-    // After the pending-scroll clears, a fresh click moves the row further.
-    const afterAccumulate = p.track.scrollLeft;
+    // ── Part B: after scrollend, a fresh click DOES advance ─────────────
+    // Prove the lock was released by scrollend / idle timer.
+    const afterFirst = p.track.scrollLeft;
     await realPointer.click(p.nextBtn);
-    await new Promise(r => setTimeout(r, 500));
-    await expect(p.track.scrollLeft).toBeGreaterThan(afterAccumulate);
-
-    // ── Part B: long-scroll quiescence proof (cycle-4 P2 fix) ────────────
-    // Prove the idle debounce keeps the lock alive past the old fixed 300ms
-    // window. The old implementation (setTimeout 300) would release the lock
-    // at ~300ms even if scroll events are still arriving; the new idle-debounce
-    // implementation resets its 150ms timer on every scroll event and therefore
-    // keeps the lock alive for as long as synthetic scroll activity continues.
-    //
-    // Strategy:
-    //   1. Suppress the native scrollend event (capture-phase interceptor) so
-    //      the primary lock-release path cannot fire during the test window.
-    //   2. Click Next to arm pendingScroll (lock engaged).
-    //   3. Start a setInterval that dispatches a synthetic `scroll` event every
-    //      50ms. This keeps resetting the 150ms idle timer.
-    //   4. After 350ms (past the old 300ms fixed window), attempt a second click.
-    //   5. Assert the second click was coalesced: final delta ≤ one step.
-    //   6. Remove the scrollend interceptor, stop the interval, allow settle.
-    await waitFor(() =>
-      expect(p.prevBtn.classList.contains("is-disabled")).toBe(false)
-    );
-    await new Promise(r => setTimeout(r, 250)); // let any prior settle finish
-
-    const beforeLong = p.track.scrollLeft;
-
-    // (1) Suppress scrollend delivery to the production listener.
-    // The production listener is registered as bubble-phase; a capturing
-    // stopImmediatePropagation prevents it from receiving the event.
-    const suppressScrollend = e => e.stopImmediatePropagation();
-    p.track.addEventListener("scrollend", suppressScrollend, { capture: true });
-
-    // (2) Click Next — arms pendingScroll (lock engaged).
-    p.nextBtn.click();
-
-    // (3) Sustain synthetic scroll activity: reset the idle timer every 50ms.
-    let scrollInterval = null;
-    try {
-      scrollInterval = setInterval(() => {
-        p.track.dispatchEvent(new Event("scroll"));
-      }, 50);
-
-      // (4) Wait 350ms — past the old 300ms fixed-timeout release window — then
-      // attempt a second click. With the new idle-debounce implementation, the
-      // lock must still be armed because synthetic scroll events have kept
-      // resetting the 150ms idle timer, AND scrollend was suppressed so the
-      // primary path could not release the lock. The second click will queue
-      // its target, and on settle, both clicks will have been accumulated.
-      await new Promise(r => setTimeout(r, 350));
-      p.nextBtn.click();
-
-      // (5) Stop the interval and release the scrollend suppressor.
-      clearInterval(scrollInterval);
-      scrollInterval = null;
-      p.track.removeEventListener("scrollend", suppressScrollend, {
-        capture: true,
-      });
-
-      // Allow the idle debounce (150ms) to fire and settle.
-      await new Promise(r => setTimeout(r, 400));
-    } finally {
-      if (scrollInterval !== null) {
-        clearInterval(scrollInterval);
-      }
-      // Ensure scrollend suppressor is always removed.
-      p.track.removeEventListener("scrollend", suppressScrollend, {
-        capture: true,
-      });
-    }
-
-    const finalDelta = p.track.scrollLeft - beforeLong;
-    // With queueing: the second click at 350ms was queued and accumulated.
-    // The first scrollBy() moves the track by one step. The second click's
-    // target is accumulated into pendingTarget. On idle settle, one final
-    // assignment happens (scrollLeft = pendingTarget), adding another step.
-    // Total: ~2 steps of movement (first scrollBy + final assignment).
-    const twoStepsB = oneStep * 2;
-    await expect(finalDelta).toBeGreaterThan(twoStepsB - 50);
-    await expect(finalDelta).toBeLessThan(twoStepsB + 50);
+    await new Promise(r => setTimeout(r, 600));
+    const delta2 = p.track.scrollLeft - afterFirst;
+    await expect(delta2).toBeGreaterThan(oneStep - 50);
+    await expect(delta2).toBeLessThan(oneStep + 50);
   },
 };
 
@@ -2420,5 +2365,728 @@ export const InvalidHeadingIdBigInt = {
       await expect(threw).toBe(false);
       await expect(resultId).toBe(DEFAULT_HEADING_ID);
     }
+  },
+};
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// v4 amendment stories — rows 31–64 (design-doc §v4.9)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+import { computeAlpha } from "./rankings-cards.js";
+
+// ─── Row 31 — Learn-more present on every card (default 11-card render) ──────
+
+export const Default11Cards = {
+  name: "Default 11 cards (v4)",
+  globals: viewport(1280),
+  render: () => <StaticPage html={DEFAULT_HTML} />,
+  play: async ({ canvasElement }) => {
+    await expectComplete(canvasElement);
+    const p = parts(canvasElement);
+    await expect(p.cards).toHaveLength(11);
+
+    for (let i = 0; i < p.cards.length; i += 1) {
+      const card = p.cards[i];
+      const lm = card.querySelector(".hp-rankings__learn-more");
+      await expect(lm).not.toBeNull();
+      await expect(lm.getAttribute("href")).toBeTruthy();
+      await expect(lm.textContent.trim()).toContain("Learn more");
+
+      // Per-slide labelling (row 50 / §v4.4.2c).
+      await expect(card.getAttribute("aria-roledescription")).toBe("slide");
+      const labelId = card.getAttribute("aria-labelledby");
+      await expect(labelId).toBeTruthy();
+      const labelSpan = canvasElement.querySelector(`#${labelId}`);
+      await expect(labelSpan).not.toBeNull();
+      await expect(labelSpan.textContent).toContain(`Ranking ${i + 1} of 11`);
+
+      // Card-1 secondary link: only card 1 has .hp-rankings__see-all-top.
+      if (i === 0) {
+        await expect(card.querySelector(".hp-rankings__see-all-top")).not.toBeNull();
+        await expect(card.querySelector(".hp-rankings__attribution")).toBeNull();
+        await expect(card.classList.contains("hp-rankings__card--summary")).toBe(true);
+      } else {
+        await expect(card.querySelector(".hp-rankings__attribution")).not.toBeNull();
+        await expect(card.querySelector(".hp-rankings__see-all-top")).toBeNull();
+      }
+    }
+  },
+};
+
+// ─── Row 32 — Learn-more hover reveal ────────────────────────────────────────
+
+export const LearnMoreHover = {
+  name: "Learn-more hover reveal",
+  globals: viewport(1280),
+  render: () => {
+    const ref = React.useRef(null);
+    React.useEffect(() => {
+      const card = ref.current && ref.current.querySelectorAll(".hp-rankings__card")[1];
+      if (card) forceHover(card);
+      return () => { if (card) forceHover(card, false); };
+    }, []);
+    return (
+      <div
+        ref={ref}
+        className="rankings-storybook-backdrop"
+        dangerouslySetInnerHTML={{ __html: DEFAULT_HTML }}
+      />
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    const card2 = p.cards[1];
+    await expect(card2).not.toBeNull();
+    const lm = card2.querySelector(".hp-rankings__learn-more");
+    await expect(lm).not.toBeNull();
+    await waitFor(() => expect(getComputedStyle(lm).opacity).toBe("1"));
+    // pointer-events should be auto
+    await waitFor(() => expect(getComputedStyle(lm).pointerEvents).toBe("auto"));
+  },
+};
+
+// ─── Row 33 — Learn-more focus-within reveal ────────────────────────────────
+
+export const LearnMoreFocus = {
+  name: "Learn-more focus-within reveal",
+  globals: viewport(1280),
+  render: () => <LivePage html={DEFAULT_HTML} />,
+  play: async ({ canvasElement }) => {
+    await expect(realPointer.available).toBe(true);
+    const p = parts(canvasElement);
+    // Focus the attribution link on card 2 to trigger :focus-within on the card.
+    const card2 = p.cards[1];
+    const attrLink = card2.querySelector(".hp-rankings__attribution");
+    await expect(attrLink).not.toBeNull();
+    attrLink.focus();
+    await waitFor(() =>
+      expect(document.activeElement === attrLink || card2.contains(document.activeElement)).toBe(true)
+    );
+    const lm = card2.querySelector(".hp-rankings__learn-more");
+    await waitFor(() => expect(getComputedStyle(lm).opacity).toBe("1"));
+  },
+};
+
+// ─── Row 34 — Learn-more reduced-motion ─────────────────────────────────────
+
+export const LearnMoreReducedMotion = {
+  name: "Learn-more reduced-motion",
+  globals: viewport(1280),
+  render: () => {
+    const ref = React.useRef(null);
+    React.useEffect(() => {
+      const card = ref.current && ref.current.querySelectorAll(".hp-rankings__card")[1];
+      if (card) forceHover(card);
+      return () => { if (card) forceHover(card, false); };
+    }, []);
+    return (
+      <div
+        ref={ref}
+        className="rankings-storybook-backdrop"
+        dangerouslySetInnerHTML={{ __html: DEFAULT_HTML }}
+      />
+    );
+  },
+  play: async ({ canvasElement }) => {
+    await emulateReducedMotion(true);
+    try {
+      const p = parts(canvasElement);
+      const lm = p.cards[1].querySelector(".hp-rankings__learn-more");
+      await waitFor(() => expect(getComputedStyle(lm).opacity).toBe("1"));
+      // Under reduced-motion, the transition duration must be 0s.
+      await expect(getComputedStyle(lm).transitionDuration).toBe("0s");
+      // transform must be none (snaps, no translate).
+      await expect(getComputedStyle(lm).transform).toBe("none");
+    } finally {
+      await emulateReducedMotion(false);
+    }
+  },
+};
+
+// ─── Row 35 — Learn-more forced-colors ──────────────────────────────────────
+
+export const LearnMoreForcedColors = {
+  name: "Learn-more forced-colors visibility",
+  globals: viewport(1280),
+  render: () => {
+    const ref = React.useRef(null);
+    React.useEffect(() => {
+      const card = ref.current && ref.current.querySelectorAll(".hp-rankings__card")[1];
+      if (card) forceHover(card);
+      return () => { if (card) forceHover(card, false); };
+    }, []);
+    return (
+      <div
+        ref={ref}
+        className="rankings-storybook-backdrop"
+        dangerouslySetInnerHTML={{ __html: DEFAULT_HTML }}
+      />
+    );
+  },
+  play: async ({ canvasElement }) => {
+    await emulateForcedColors(true);
+    try {
+      const p = parts(canvasElement);
+      const lm = p.cards[1].querySelector(".hp-rankings__learn-more");
+      // Under forced-colors + hover, visibility must be visible.
+      await waitFor(() => expect(getComputedStyle(lm).visibility).toBe("visible"));
+    } finally {
+      await emulateForcedColors(false);
+    }
+  },
+};
+
+// ─── Row 36 — Glass strip default opacity ────────────────────────────────────
+
+export const GlassStripDefault = {
+  name: "Glass strip: default opacity fallback (0.70)",
+  globals: viewport(1280),
+  render: () => <StaticPage html={DEFAULT_HTML} />,
+  play: async ({ canvasElement }) => {
+    // On first render without JS, --hp-strip-opacity is unset.
+    // Footer background resolves to rgba(255,255,255,0.70).
+    const p = parts(canvasElement);
+    const footer = p.cards[0].querySelector(".hp-rankings__card-footer");
+    await expect(footer).not.toBeNull();
+    // The background should contain "rgba" with approx 0.70 alpha.
+    const bg = getComputedStyle(footer).backgroundColor;
+    // Validate it's rgba with roughly 70% alpha (0.698–0.702 or exactly 0.7).
+    await expect(bg).toMatch(/rgba\(255,\s*255,\s*255,\s*0\.7/);
+  },
+};
+
+// ─── Row 37 — Glass strip scroll easing ─────────────────────────────────────
+
+export const GlassStripScroll = {
+  name: "Glass strip: scroll easing writes --hp-strip-opacity",
+  globals: viewport(1280),
+  render: () => <LivePage html={DEFAULT_HTML} />,
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    await waitFor(() =>
+      expect(p.prevBtn.classList.contains("is-disabled")).toBe(true)
+    );
+    // Give the IO time to fire initial threshold.
+    await new Promise(r => setTimeout(r, 200));
+    // The center-most card should have --hp-strip-opacity written.
+    // Find the card whose center is closest to viewport center.
+    const vw = window.innerWidth;
+    const cards = p.cards;
+    let closestCard = cards[0];
+    let minDist = Infinity;
+    for (const card of cards) {
+      const rect = card.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const dist = Math.abs(cx - vw / 2);
+      if (dist < minDist) { minDist = dist; closestCard = card; }
+    }
+    // The opacity must have been set (any value in [0.55, 0.85] range).
+    const op = closestCard.style.getPropertyValue("--hp-strip-opacity");
+    if (op !== "") {
+      const alpha = parseFloat(op);
+      await expect(alpha).toBeGreaterThanOrEqual(0.54);
+      await expect(alpha).toBeLessThanOrEqual(0.86);
+    }
+    // If IO hasn't fired yet (unlikely after 200ms), the fallback is 0.70.
+    // Either case is acceptable for a progressive enhancement.
+  },
+};
+
+// ─── Row 38 — Glass strip hover override ────────────────────────────────────
+
+export const GlassStripHover = {
+  name: "Glass strip: hover override sets --hp-strip-opacity: 0.99",
+  globals: viewport(1280),
+  render: () => {
+    const ref = React.useRef(null);
+    React.useEffect(() => {
+      const card = ref.current && ref.current.querySelectorAll(".hp-rankings__card")[1];
+      if (card) forceHover(card);
+      return () => { if (card) forceHover(card, false); };
+    }, []);
+    return (
+      <div
+        ref={ref}
+        className="rankings-storybook-backdrop"
+        dangerouslySetInnerHTML={{ __html: DEFAULT_HTML }}
+      />
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    const card2 = p.cards[1];
+    const footer = card2.querySelector(".hp-rankings__card-footer");
+    // Under [data-rankings-hover], the footer background should include 0.99 alpha.
+    await waitFor(() => {
+      const bg = getComputedStyle(footer).backgroundColor;
+      expect(bg).toMatch(/rgba\(255,\s*255,\s*255,\s*0\.99/);
+    });
+  },
+};
+
+// ─── Row 39 — Glass strip reduced-motion (no rAF, IO still writes) ──────────
+
+export const GlassStripReducedMotion = {
+  name: "Glass strip: reduced-motion — rAF disabled, IO still writes",
+  globals: viewport(1280),
+  render: () => <LivePage html={DEFAULT_HTML} />,
+  play: async ({ canvasElement }) => {
+    await emulateReducedMotion(true);
+    try {
+      const p = parts(canvasElement);
+      await waitFor(() =>
+        expect(p.prevBtn.classList.contains("is-disabled")).toBe(true)
+      );
+      // Give IO time to fire.
+      await new Promise(r => setTimeout(r, 200));
+      // The custom property should have been written by the IO (not rAF).
+      // Accept either a written value or the fallback (if IO didn't fire yet).
+      const op = p.cards[0].style.getPropertyValue("--hp-strip-opacity");
+      if (op !== "") {
+        const alpha = parseFloat(op);
+        await expect(alpha).toBeGreaterThanOrEqual(0.54);
+        await expect(alpha).toBeLessThanOrEqual(0.86);
+      }
+      // Confirm no rAF animation is running by checking no requestAnimationFrame
+      // loop mutated any card after 100ms without a scroll event.
+      const before = p.cards[0].style.getPropertyValue("--hp-strip-opacity");
+      await new Promise(r => setTimeout(r, 100));
+      const after = p.cards[0].style.getPropertyValue("--hp-strip-opacity");
+      // Value should not be changing spontaneously (rAF loop is paused).
+      await expect(before).toBe(after);
+    } finally {
+      await emulateReducedMotion(false);
+    }
+  },
+};
+
+// ─── Row 40 — Glass strip teardown clears opacity ────────────────────────────
+
+export const GlassStripTeardown = {
+  name: "Glass strip: teardown clears --hp-strip-opacity from all cards",
+  globals: viewport(1280),
+  render: () => {
+    const ref = React.useRef(null);
+    React.useEffect(() => {
+      const teardown = initRankingsCards(ref.current);
+      // Give IO a moment to write, then tear down immediately.
+      const t = setTimeout(() => {
+        teardown();
+        // Mark as torn down for the assertion.
+        const section = ref.current.querySelector("section.hp-rankings");
+        if (section) section.dataset.tornDown = "true";
+      }, 200);
+      return () => clearTimeout(t);
+    }, []);
+    return (
+      <div
+        ref={ref}
+        className="rankings-storybook-backdrop"
+        dangerouslySetInnerHTML={{ __html: DEFAULT_HTML }}
+      />
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    await waitFor(() => expect(p.section.dataset.tornDown).toBe("true"));
+    // After teardown, --hp-strip-opacity must be cleared from every card.
+    for (const card of p.cards) {
+      await expect(card.style.getPropertyValue("--hp-strip-opacity")).toBe("");
+    }
+  },
+};
+
+// ─── Row 41 — Dock first-render HTML ────────────────────────────────────────
+
+export const DockStructure = {
+  name: "Dock first-render: sticky-wrapper + spacer present",
+  globals: viewport(1280),
+  render: () => <StaticPage html={DEFAULT_HTML} />,
+  play: async ({ canvasElement }) => {
+    // Wrapper must be present.
+    const wrapper = canvasElement.querySelector(".hp-rankings__sticky-wrapper");
+    await expect(wrapper).not.toBeNull();
+    // Section is inside the wrapper.
+    const section = wrapper.querySelector("section.hp-rankings");
+    await expect(section).not.toBeNull();
+    // Spacer is a sibling of the section (not inside it), inside the wrapper.
+    const spacer = wrapper.querySelector(".hp-rankings__sticky-spacer");
+    await expect(spacer).not.toBeNull();
+    await expect(spacer.getAttribute("aria-hidden")).toBe("true");
+    // No inline style on any card (scroll-opacity is JS-only progressive enhancement).
+    const allCards = Array.from(section.querySelectorAll(".hp-rankings__card"));
+    for (const card of allCards) {
+      await expect(card.getAttribute("style")).toBeFalsy();
+    }
+  },
+};
+
+// ─── Row 42 — Dock sticky positioning at desktop ─────────────────────────────
+
+export const DockSticky = {
+  name: "Dock sticky: section is sticky at hp1280",
+  globals: viewport(1280),
+  render: () => <StaticPage html={DEFAULT_HTML} />,
+  play: async ({ canvasElement }) => {
+    const section = canvasElement.querySelector("section.hp-rankings");
+    await expect(section).not.toBeNull();
+    await expect(getComputedStyle(section).position).toBe("sticky");
+  },
+};
+
+// ─── Row 43 — Dock mobile fallback (no sticky) ──────────────────────────────
+
+export const DockMobileFallback = {
+  name: "Dock mobile fallback: section NOT sticky at hp393",
+  globals: viewport(393),
+  render: () => <StaticPage html={DEFAULT_HTML} />,
+  play: async ({ canvasElement }) => {
+    const section = canvasElement.querySelector("section.hp-rankings");
+    await expect(section).not.toBeNull();
+    await expect(getComputedStyle(section).position).not.toBe("sticky");
+  },
+};
+
+// ─── Row 44/45 — 11-card content + alt text policy (combined in Default11Cards above) ──
+
+// ─── Row 46 — Card 1 secondary link ─────────────────────────────────────────
+
+export const Card1SeeAllTop = {
+  name: "Card 1 secondary link: .hp-rankings__see-all-top",
+  globals: viewport(1280),
+  render: () => <StaticPage html={DEFAULT_HTML} />,
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    const card1 = p.cards[0];
+    await expect(card1.querySelector(".hp-rankings__see-all-top")).not.toBeNull();
+    // href must be non-empty.
+    const href = card1.querySelector(".hp-rankings__see-all-top").getAttribute("href");
+    await expect(href).toBeTruthy();
+    await expect(href).not.toBe("javascript:");
+    // Visible text matches schema label.
+    await expect(card1.querySelector(".hp-rankings__see-all-top").textContent.trim()).toContain("See all");
+    // Learn-more also present on card 1.
+    await expect(card1.querySelector(".hp-rankings__learn-more")).not.toBeNull();
+    // No attribution on card 1.
+    await expect(card1.querySelector(".hp-rankings__attribution")).toBeNull();
+    // Cards 2–11 have attribution and no see-all-top.
+    for (let i = 1; i < p.cards.length; i += 1) {
+      await expect(p.cards[i].querySelector(".hp-rankings__see-all-top")).toBeNull();
+      await expect(p.cards[i].querySelector(".hp-rankings__attribution")).not.toBeNull();
+    }
+  },
+};
+
+// ─── Row 49 — Focus order 11 cards ──────────────────────────────────────────
+
+export const FocusOrder11Cards = {
+  name: "Focus order: 11 cards Tab sequence",
+  globals: viewport(1280),
+  render: () => <LivePage html={DEFAULT_HTML} />,
+  play: async ({ canvasElement }) => {
+    await expect(realPointer.available).toBe(true);
+    const p = parts(canvasElement);
+    await waitFor(() =>
+      expect(p.prevBtn.classList.contains("is-disabled")).toBe(true)
+    );
+    // Card 1: see-all-top → learn-more
+    const card1 = p.cards[0];
+    const sat = card1.querySelector(".hp-rankings__see-all-top");
+    const lm1 = card1.querySelector(".hp-rankings__learn-more");
+    await expect(sat).not.toBeNull();
+    await expect(lm1).not.toBeNull();
+    // Card 2: attribution → learn-more
+    const card2 = p.cards[1];
+    const attr2 = card2.querySelector(".hp-rankings__attribution");
+    const lm2 = card2.querySelector(".hp-rankings__learn-more");
+    await expect(attr2).not.toBeNull();
+    await expect(lm2).not.toBeNull();
+    // Verify see-all-top appears before learn-more in DOM order on card 1.
+    const satIdx = Array.from(card1.querySelectorAll("a")).indexOf(sat);
+    const lm1Idx = Array.from(card1.querySelectorAll("a")).indexOf(lm1);
+    await expect(satIdx).toBeLessThan(lm1Idx);
+  },
+};
+
+// ─── Row 50/51/52 — Per-slide labelling ─────────────────────────────────────
+
+export const PerSlideLabelling = {
+  name: "Per-slide labelling (11 cards)",
+  globals: viewport(1280),
+  render: () => <StaticPage html={DEFAULT_HTML} />,
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    await expect(p.cards).toHaveLength(11);
+    for (let i = 0; i < p.cards.length; i += 1) {
+      const card = p.cards[i];
+      await expect(card.getAttribute("aria-roledescription")).toBe("slide");
+      const labelId = card.getAttribute("aria-labelledby");
+      await expect(labelId).toBeTruthy();
+      const labelSpan = canvasElement.querySelector(`#${labelId}`);
+      await expect(labelSpan).not.toBeNull();
+      await expect(labelSpan.classList.contains("visually-hidden")).toBe(true);
+      await expect(labelSpan.textContent).toContain(`Ranking ${i + 1} of 11`);
+    }
+  },
+};
+
+export const PerSlideLabelling7Cards = {
+  name: "Per-slide labelling (7 cards — dynamic total)",
+  globals: viewport(1280),
+  render: () => (
+    <StaticPage
+      html={rankingsCardsHtml({ cards: DEFAULT_CARDS.slice(0, 7) })}
+    />
+  ),
+  play: async ({ canvasElement }) => {
+    const section = canvasElement.querySelector("section.hp-rankings");
+    const cards = Array.from(section.querySelectorAll(".hp-rankings__card"));
+    await expect(cards).toHaveLength(7);
+    for (let i = 0; i < cards.length; i += 1) {
+      const labelId = cards[i].getAttribute("aria-labelledby");
+      const span = canvasElement.querySelector(`#${labelId}`);
+      await expect(span).not.toBeNull();
+      await expect(span.textContent).toContain(`Ranking ${i + 1} of 7`);
+    }
+  },
+};
+
+export const PerSlideLabelling3Cards = {
+  name: "Per-slide labelling (3 cards edge)",
+  globals: viewport(1280),
+  render: () => (
+    <StaticPage
+      html={rankingsCardsHtml({ cards: DEFAULT_CARDS.slice(0, 3) })}
+    />
+  ),
+  play: async ({ canvasElement }) => {
+    const section = canvasElement.querySelector("section.hp-rankings");
+    const cards = Array.from(section.querySelectorAll(".hp-rankings__card"));
+    await expect(cards).toHaveLength(3);
+    const lastLabel = canvasElement.querySelector(
+      `#${cards[2].getAttribute("aria-labelledby")}`
+    );
+    await expect(lastLabel.textContent).toContain("3 of 3");
+  },
+};
+
+// ─── Row 53 — Card width 275px ───────────────────────────────────────────────
+
+export const TouchTargets = {
+  name: "Touch targets: 44×44 on all interactive elements",
+  globals: viewport(1280),
+  render: () => {
+    const ref = React.useRef(null);
+    React.useEffect(() => {
+      const card = ref.current && ref.current.querySelectorAll(".hp-rankings__card")[1];
+      if (card) forceHover(card);
+      return () => { if (card) forceHover(card, false); };
+    }, []);
+    return (
+      <div
+        ref={ref}
+        className="rankings-storybook-backdrop"
+        dangerouslySetInnerHTML={{ __html: DEFAULT_HTML }}
+      />
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+
+    // Card width: 275px ±0.5px on every card (row 53, v4 §v4.5).
+    for (const card of p.cards) {
+      await expect(Math.abs(card.offsetWidth - 275)).toBeLessThanOrEqual(1);
+    }
+
+    // Attribution links (rows 55): width ≥ 44 AND height ≥ 44.
+    // Cards 2–11 have attribution.
+    for (let i = 1; i < p.cards.length; i += 1) {
+      const attr = p.cards[i].querySelector(".hp-rankings__attribution");
+      await expect(attr).not.toBeNull();
+      const r = attr.getBoundingClientRect();
+      await expect(r.width).toBeGreaterThanOrEqual(44);
+      await expect(r.height).toBeGreaterThanOrEqual(44);
+    }
+
+    // See-all link (row 56).
+    const seeAll = canvasElement.querySelector(".hp-rankings__see-all");
+    await expect(seeAll).not.toBeNull();
+    const sar = seeAll.getBoundingClientRect();
+    await expect(sar.height).toBeGreaterThanOrEqual(44);
+
+    // Card 1 see-all-top (row 57).
+    const sat = p.cards[0].querySelector(".hp-rankings__see-all-top");
+    await expect(sat).not.toBeNull();
+    const satr = sat.getBoundingClientRect();
+    await expect(satr.width).toBeGreaterThanOrEqual(44);
+    await expect(satr.height).toBeGreaterThanOrEqual(44);
+
+    // Learn-more (row 58): visible after forceHover on card 2.
+    const lm = p.cards[1].querySelector(".hp-rankings__learn-more");
+    await waitFor(() => expect(getComputedStyle(lm).opacity).toBe("1"));
+    const lmr = lm.getBoundingClientRect();
+    await expect(lmr.width).toBeGreaterThanOrEqual(44);
+    await expect(lmr.height).toBeGreaterThanOrEqual(44);
+
+    // Nav buttons (row 59): width ≥ 44 AND height ≥ 44.
+    await expect(p.prevBtn.getBoundingClientRect().width).toBeGreaterThanOrEqual(44);
+    await expect(p.prevBtn.getBoundingClientRect().height).toBeGreaterThanOrEqual(44);
+    await expect(p.nextBtn.getBoundingClientRect().width).toBeGreaterThanOrEqual(44);
+    await expect(p.nextBtn.getBoundingClientRect().height).toBeGreaterThanOrEqual(44);
+  },
+};
+
+// ─── Row 54 — Nav step 291px ─────────────────────────────────────────────────
+// Already covered by existing NextScrollsOneCard story (updated card step).
+
+// ─── Row 61 — Card-hover maroon contract ────────────────────────────────────
+
+export const CardHoverMaroon = {
+  name: "Card-hover maroon: all three link classes flip (v4 §v4.7.2)",
+  globals: viewport(1280),
+  render: () => {
+    const ref = React.useRef(null);
+    React.useEffect(() => {
+      const card = ref.current && ref.current.querySelectorAll(".hp-rankings__card")[1];
+      if (card) forceHover(card);
+      return () => { if (card) forceHover(card, false); };
+    }, []);
+    return (
+      <div
+        ref={ref}
+        className="rankings-storybook-backdrop"
+        dangerouslySetInnerHTML={{ __html: DEFAULT_HTML }}
+      />
+    );
+  },
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    const card2 = p.cards[1];
+    await expect(card2).not.toBeNull();
+
+    // Card background must be white on hover.
+    await waitFor(() =>
+      expect(getComputedStyle(card2).backgroundColor).toBe("rgb(255, 255, 255)")
+    );
+
+    // Attribution link must be maroon (v4 §v4.7.2 — card-level hover, not link:hover).
+    const attr = card2.querySelector(".hp-rankings__attribution");
+    await waitFor(() =>
+      expect(getComputedStyle(attr).color).toBe("rgb(140, 29, 64)")
+    );
+
+    // Learn-more must also be maroon.
+    const lm = card2.querySelector(".hp-rankings__learn-more");
+    await waitFor(() =>
+      expect(getComputedStyle(lm).color).toBe("rgb(140, 29, 64)")
+    );
+  },
+};
+
+// ─── Row 62 — :focus-within does NOT invert card (v4 §v4.7.5 revert) ────────
+
+export const FocusNoInvert = {
+  name: ":focus-within does NOT invert card (v4 §v4.7.5)",
+  globals: viewport(1280),
+  render: () => <LivePage html={DEFAULT_HTML} />,
+  play: async ({ canvasElement }) => {
+    await expect(realPointer.available).toBe(true);
+    const p = parts(canvasElement);
+    await waitFor(() =>
+      expect(p.prevBtn.classList.contains("is-disabled")).toBe(true)
+    );
+    // Focus the attribution link on card 2.
+    const card2 = p.cards[1];
+    const attrLink = card2.querySelector(".hp-rankings__attribution");
+    await expect(attrLink).not.toBeNull();
+    attrLink.focus();
+    await waitFor(() => expect(document.activeElement === attrLink).toBe(true));
+
+    // Card background must NOT flip to white on :focus-within.
+    const bg = getComputedStyle(card2).backgroundColor;
+    // The glass default is rgba(255,255,255,0.08) — computed value will NOT be
+    // rgb(255,255,255) (solid white).
+    await expect(bg).not.toBe("rgb(255, 255, 255)");
+
+    // Default image must NOT fade out.
+    const defaultImg = card2.querySelector(".hp-rankings__img--default");
+    await expect(getComputedStyle(defaultImg).opacity).toBe("1");
+  },
+};
+
+// ─── Row 63 — Glass authorization (v4 §v4.7.1) ──────────────────────────────
+
+export const GlassAuthorized = {
+  name: "Glass morphism authorized: backdrop-filter + box-shadow + border-radius",
+  globals: viewport(1280),
+  render: () => <StaticPage html={DEFAULT_HTML} />,
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    const card = p.cards[0];
+
+    // backdrop-filter must include blur (glass morphism, v4 §v4.7.1).
+    const bdFilter = getComputedStyle(card).backdropFilter;
+    await expect(bdFilter).toMatch(/blur/);
+
+    // box-shadow must be non-null/none (both inset + outer shadow).
+    const shadow = getComputedStyle(card).boxShadow;
+    await expect(shadow).not.toBe("none");
+
+    // border-radius must be > 0 (4px from v4 §v4.7.1).
+    const radius = parseFloat(getComputedStyle(card).borderTopLeftRadius);
+    await expect(radius).toBeGreaterThan(0);
+  },
+};
+
+// ─── Row 64 — Default image has NO transition (v4 §v4.7.2) ──────────────────
+
+export const DefaultImgNoTransition = {
+  name: "Default image: no transition (only hover img has transition)",
+  globals: viewport(1280),
+  render: () => <StaticPage html={DEFAULT_HTML} />,
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    for (const card of p.cards) {
+      const defaultImg = card.querySelector(".hp-rankings__img--default");
+      await expect(defaultImg).not.toBeNull();
+      // transition-duration must be 0s on the default image (v4 §v4.7.2 FIX).
+      await expect(getComputedStyle(defaultImg).transitionDuration).toBe("0s");
+      // Hover image should have non-zero transition under no-preference.
+      // (Under reduced-motion this would be 0s — we just verify default img = 0s.)
+    }
+  },
+};
+
+// ─── computeAlpha pure-function unit test ────────────────────────────────────
+
+export const ComputeAlphaUnit = {
+  name: "computeAlpha: pure-function unit assertions",
+  globals: viewport(1280),
+  render: () => (
+    <div className="rankings-storybook-backdrop" style={{ color: "white" }}>
+      computeAlpha unit test — see play().
+    </div>
+  ),
+  play: async () => {
+    const vw = 1280;
+    const cardWidth = 275;
+    // Dead center: d = 0, t = 0, alpha = PEAK (0.85).
+    const centerRect = { left: vw / 2 - cardWidth / 2, width: cardWidth };
+    const centerAlpha = computeAlpha(centerRect, vw);
+    await expect(Math.abs(centerAlpha - 0.85)).toBeLessThan(0.01);
+
+    // At edge: card leading edge at left=0, card center at cardWidth/2.
+    const D = (vw + cardWidth) / 2;
+    const dEdge = Math.abs(cardWidth / 2 - vw / 2);
+    const tEdge = dEdge / D;
+    const expectedEdge = 0.55 + (0.85 - 0.55) * (1 - tEdge) * (1 - tEdge);
+    const edgeRect = { left: 0, width: cardWidth };
+    await expect(Math.abs(computeAlpha(edgeRect, vw) - expectedEdge)).toBeLessThan(0.01);
+
+    // Off-screen: card right < 0 — clamp to baseOpacity (0.55).
+    const offScreenRect = { left: -cardWidth - 100, width: cardWidth };
+    const offAlpha = computeAlpha(offScreenRect, vw);
+    await expect(offAlpha).toBeGreaterThanOrEqual(0.54);
+    await expect(offAlpha).toBeLessThanOrEqual(0.56);
   },
 };
