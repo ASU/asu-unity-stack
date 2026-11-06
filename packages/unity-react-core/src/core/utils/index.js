@@ -5,6 +5,7 @@ import { createRoot } from "react-dom/client";
 import { Accordion } from "../../components/Accordion/Accordion";
 import { AnchorMenu } from "../../components/AnchorMenu/AnchorMenu";
 import { Article } from "../../components/Article/Article";
+import { BlockQuote } from "../../components/BlockQuote/BlockQuote"
 import { Button } from "../../components/Button/Button";
 import { ButtonIconOnly } from "../../components/ButtonIconOnly/ButtonIconOnly";
 import { ButtonTag } from "../../components/ButtonTag/ButtonTag";
@@ -65,6 +66,12 @@ export const initAnchorMenu = ({ targetSelector, props }) =>
  */
 export const initArticle = ({ targetSelector, props }) =>
   RenderReact(Article, props, document.querySelector(targetSelector));
+
+/**
+ * @param {ComponentProps} props
+ */
+export const initBlockQuote = ({ targetSelector, props }) =>
+  RenderReact(BlockQuote, props, document.querySelector(targetSelector));
 
 /**
  * @param {ComponentProps} props
