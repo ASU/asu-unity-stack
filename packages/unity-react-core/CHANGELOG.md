@@ -1,3 +1,10 @@
+# [@asu/unity-react-core-v2.5.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.5.0...@asu/unity-react-core-v2.5.1) (2026-11-06)
+
+
+### Bug Fixes
+
+* storybook package updates ([ece04b4](https://github.com/ASU/asu-unity-stack/commit/ece04b4ca6977f67e91d29bf8e2c0c536351db53))
+
 # [@asu/unity-react-core-v2.5.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.4.1...@asu/unity-react-core-v2.5.0) (2026-09-25)
 
 
