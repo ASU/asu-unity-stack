@@ -1,3 +1,10 @@
+# [@asu/component-events-v3.2.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v3.2.1...@asu/component-events-v3.2.2) (2026-11-06)
+
+
+### Bug Fixes
+
+* storybook package updates ([ece04b4](https://github.com/asu/asu-unity-stack/commit/ece04b4ca6977f67e91d29bf8e2c0c536351db53))
+
 # [@asu/component-events-v3.2.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v3.2.0...@asu/component-events-v3.2.1) (2026-07-28)
 
 
