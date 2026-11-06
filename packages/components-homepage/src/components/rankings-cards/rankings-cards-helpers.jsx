@@ -162,7 +162,6 @@ export const DEFAULT_CARDS = [
     imageAlt: "Repeatedly ranked #1. 30+ lists in the last 3 years.",
     attributionHref: "#rankings-see-all",
     attributionLabel: "See all of ASU's #1 rankings",
-    isSummary: true,
   },
   // Card 2: innovation (confirmed from .intake/SCR-20261104-jrkv.png)
   {
@@ -328,7 +327,6 @@ export const rankingsCardsHtml = ({
         imageAlt,
         attributionHref,
         attributionLabel = "Attribution link",
-        isSummary = false,
       } = card;
 
       if (!imageSrc || typeof imageSrc !== "string") {
@@ -364,10 +362,8 @@ export const rankingsCardsHtml = ({
       const slideLabelId = `${headingIdSafe}-slide-${slideN}-label`;
       const slideLabelText = `Ranking ${slideN} of ${total}, ${resolvedAlt}`;
 
-      // Card class: add --summary modifier for card 1 (v4 §v4.4.2b).
-      const cardClass = isSummary
-        ? "hp-rankings__card hp-rankings__card--summary"
-        : "hp-rankings__card";
+      // Card class: all cards use hp-rankings__card (no modifiers).
+      const cardClass = "hp-rankings__card";
 
       // Build the footer content.
       // All cards now use .hp-rankings__attribution (removed see-all-top distinction).

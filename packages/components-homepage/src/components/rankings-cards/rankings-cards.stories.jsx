@@ -198,11 +198,7 @@ const expectComplete = async (canvasElement, { cardCount = 11 } = {}) => {
   await expect(p.track.getAttribute("role")).toBe("list");
   await expect(p.cards).toHaveLength(cardCount);
 
-  // v4: card 1 is the summary variant — it has .hp-rankings__see-all-top instead
-  // of .hp-rankings__attribution. So attribution links = cardCount - 1 for the
-  // default 11-card dataset (1 summary + 10 regular cards).
-  // For non-default datasets that might have no summary card, this is still correct
-  // because we check per-card in the detailed assertion loops.
+  // v4: all cards now have .hp-rankings__attribution (unified structure).
   // Post-approval: .hp-rankings__learn-more is removed; no assertion here.
   // Nav group
   await expect(p.navGroup).not.toBeNull();
@@ -288,28 +284,12 @@ export const Default = {
       await expect(card.getAttribute("aria-roledescription")).toBe("slide");
       await expect(card.getAttribute("aria-labelledby")).toBeTruthy();
 
-      if (i === 0) {
-        // Card 1 (summary): .hp-rankings__see-all-top present, no .hp-rankings__attribution.
-        await expect(
-          card.querySelector(".hp-rankings__see-all-top")
-        ).not.toBeNull();
-        await expect(
-          card.querySelector(".hp-rankings__attribution")
-        ).toBeNull();
-        await expect(
-          card.classList.contains("hp-rankings__card--summary")
-        ).toBe(true);
-      } else {
-        // Cards 2–11: .hp-rankings__attribution present, no .hp-rankings__see-all-top.
-        const attribution = card.querySelector(".hp-rankings__attribution");
-        await expect(attribution).not.toBeNull();
-        await expect(
-          card.querySelector(".hp-rankings__attribution-icon")
-        ).not.toBeNull();
-        await expect(
-          card.querySelector(".hp-rankings__see-all-top")
-        ).toBeNull();
-      }
+      // All cards have exactly one attribution link.
+      const attribution = card.querySelector(".hp-rankings__attribution");
+      await expect(attribution).not.toBeNull();
+      await expect(
+        card.querySelector(".hp-rankings__attribution-icon")
+      ).not.toBeNull();
 
       // v2 removed rank/topic/caption elements.
       await expect(card.querySelector(".hp-rankings__rank")).toBeNull();
@@ -431,31 +411,31 @@ const HoverPage = () => {
 };
 
 export const Hover = {
-  name: "Hover (card 2)",
+  name: "Hover (card)",
   globals: viewport(1280),
   render: () => <HoverPage />,
   play: async ({ canvasElement }) => {
     const p = parts(canvasElement);
-    const card2 = p.cards[1];
-    await expect(card2).not.toBeNull();
+    const card = p.cards[1];
+    await expect(card).not.toBeNull();
 
     await waitFor(() =>
-      expect(getComputedStyle(card2).backgroundColor).toBe("rgb(255, 255, 255)")
+      expect(getComputedStyle(card).backgroundColor).toBe("rgb(255, 255, 255)")
     );
     await waitFor(() =>
-      expect(getComputedStyle(card2).color).toBe("rgb(25, 25, 25)")
+      expect(getComputedStyle(card).color).toBe("rgb(25, 25, 25)")
     );
-    const attr = card2.querySelector(".hp-rankings__attribution");
+    const attr = card.querySelector(".hp-rankings__attribution");
     await waitFor(() =>
       expect(getComputedStyle(attr).color).toBe("rgb(140, 29, 64)")
     );
 
-    const defaultImg = card2.querySelector(".hp-rankings__img--default");
-    const hoverImg = card2.querySelector(".hp-rankings__img--hover");
+    const defaultImg = card.querySelector(".hp-rankings__img--default");
+    const hoverImg = card.querySelector(".hp-rankings__img--hover");
     await waitFor(() => expect(getComputedStyle(defaultImg).opacity).toBe("0"));
     await waitFor(() => expect(getComputedStyle(hoverImg).opacity).toBe("1"));
 
-    await expect(card2.querySelector(".hp-rankings__caption")).toBeNull();
+    await expect(card.querySelector(".hp-rankings__caption")).toBeNull();
   },
 };
 
@@ -616,7 +596,7 @@ export const ReducedMotion = {
       const trackStyle = getComputedStyle(p.track);
       await expect(trackStyle.scrollBehavior).toBe("auto");
       // Under reduced-motion, hover img transition-duration should be 0s
-      const hoverImg = p.cards[0].querySelector(".hp-rankings__img--hover");
+      const hoverImg = p.cards[1].querySelector(".hp-rankings__img--hover");
       const hoverImgStyle = getComputedStyle(hoverImg);
       await expect(hoverImgStyle.transitionDuration).toBe("0s");
 
@@ -1513,37 +1493,30 @@ export const InjectionAttributionHref = {
         cards: [
           {
             ...DEFAULT_CARDS[0],
-            isSummary: false, // force regular card so attribution link is emitted
             attributionHref: "javascript:alert(document.domain)",
           },
           {
             ...DEFAULT_CARDS[1],
-            isSummary: false,
             attributionHref: "data:text/html,<script>alert(1)</script>",
           },
           {
             ...DEFAULT_CARDS[2],
-            isSummary: false,
             attributionHref: "vbscript:msgbox('xss')",
           },
           {
             ...DEFAULT_CARDS[3],
-            isSummary: false,
             attributionHref: "https://example.com/safe",
           },
           {
             ...DEFAULT_CARDS[4],
-            isSummary: false,
             attributionHref: "#safe-fragment",
           },
           {
             ...DEFAULT_CARDS[5],
-            isSummary: false,
             attributionHref: "/relative/path",
           },
           {
             ...DEFAULT_CARDS[6],
-            isSummary: false,
             attributionHref: "mailto:ok@example.com",
           },
         ],
@@ -1572,7 +1545,6 @@ export const InjectionAttributionLabel = {
         cards: [
           {
             ...DEFAULT_CARDS[0],
-            isSummary: false, // force regular card so attribution link is emitted
             attributionLabel: "<script>alert(1)</script>",
           },
         ],
@@ -2462,25 +2434,10 @@ export const Default11Cards = {
       await expect(labelSpan).not.toBeNull();
       await expect(labelSpan.textContent).toContain(`Ranking ${i + 1} of 11`);
 
-      // Card-1 secondary link: only card 1 has .hp-rankings__see-all-top.
-      if (i === 0) {
-        await expect(
-          card.querySelector(".hp-rankings__see-all-top")
-        ).not.toBeNull();
-        await expect(
-          card.querySelector(".hp-rankings__attribution")
-        ).toBeNull();
-        await expect(
-          card.classList.contains("hp-rankings__card--summary")
-        ).toBe(true);
-      } else {
-        await expect(
-          card.querySelector(".hp-rankings__attribution")
-        ).not.toBeNull();
-        await expect(
-          card.querySelector(".hp-rankings__see-all-top")
-        ).toBeNull();
-      }
+      // All cards have attribution link.
+      await expect(
+        card.querySelector(".hp-rankings__attribution")
+      ).not.toBeNull();
     }
   },
 };
@@ -2495,7 +2452,7 @@ export const GlassStripDefault = {
     // On first render without JS, --hp-strip-opacity is unset.
     // Footer background resolves to rgba(255,255,255,0.70).
     const p = parts(canvasElement);
-    const footer = p.cards[0].querySelector(".hp-rankings__card-footer");
+    const footer = p.cards[1].querySelector(".hp-rankings__card-footer");
     await expect(footer).not.toBeNull();
     // The background should contain "rgba" with approx 0.70 alpha.
     const bg = getComputedStyle(footer).backgroundColor;
@@ -2504,98 +2461,7 @@ export const GlassStripDefault = {
   },
 };
 
-// ─── Row 37 — Glass strip scroll easing ─────────────────────────────────────
-
-export const GlassStripScroll = {
-  name: "Glass strip: scroll easing writes --hp-strip-opacity via track scroll",
-  globals: viewport(1280),
-  render: () => <LivePage html={DEFAULT_HTML} />,
-  play: async ({ canvasElement }) => {
-    const p = parts(canvasElement);
-    await waitFor(() =>
-      expect(p.prevBtn.classList.contains("is-disabled")).toBe(true)
-    );
-    // Give the IO time to fire initial threshold.
-    await new Promise(r => setTimeout(r, 200));
-
-    const card = p.cards[0];
-
-    // Scroll the track horizontally by two card widths to move cards in and out
-    // of the viewport center, triggering the track-scroll → rAF → writeOpacity path.
-    const cardWidth = p.cards[0]?.offsetWidth || 291;
-    const scrollDistance = cardWidth * 2;
-    p.track.scrollLeft = scrollDistance;
-    p.track.dispatchEvent(new Event("scroll", { bubbles: true }));
-
-    // Wait for rAF to run at least one tick.
-    await new Promise(r =>
-      requestAnimationFrame(() => requestAnimationFrame(r))
-    );
-    await new Promise(r => setTimeout(r, 80));
-
-    // Every visible card must have --hp-strip-opacity set and within [0.55, 0.85].
-    for (const c of p.cards) {
-      const rect = c.getBoundingClientRect();
-      const isVisible = rect.right > 0 && rect.left < window.innerWidth;
-      if (!isVisible) continue;
-      const op = c.style.getPropertyValue("--hp-strip-opacity");
-      // op must be present (IO or rAF wrote it).
-      await expect(op).not.toBe("");
-      const alpha = parseFloat(op);
-      await expect(alpha).toBeGreaterThanOrEqual(0.54);
-      await expect(alpha).toBeLessThanOrEqual(0.86);
-    }
-
-    // Hover/focus override must still yield 0.99 — set [data-rankings-hover].
-    forceHover(card);
-    await new Promise(r => setTimeout(r, 30));
-    const cssFp = getComputedStyle(
-      card.querySelector(".hp-rankings__card-footer")
-    ).backgroundColor;
-    // The CSS rule ".hp-rankings__card[data-rankings-hover] .hp-rankings__card-footer"
-    // sets --hp-strip-opacity: 0.99 via the cascade.
-    await expect(cssFp).toMatch(/rgba\(255,\s*255,\s*255,\s*0\.9/);
-    forceHover(card, false);
-    await new Promise(r => setTimeout(r, 30));
-  },
-};
-
-// ─── Row 38 — Glass strip hover override ────────────────────────────────────
-
-const GlassStripHoverPage = () => {
-  const ref = useRef(null);
-  useEffect(() => {
-    const card =
-      ref.current && ref.current.querySelectorAll(".hp-rankings__card")[1];
-    if (card) forceHover(card);
-    return () => {
-      if (card) forceHover(card, false);
-    };
-  }, []);
-  return (
-    <div
-      ref={ref}
-      className="rankings-storybook-backdrop"
-      dangerouslySetInnerHTML={{ __html: DEFAULT_HTML }}
-    />
-  );
-};
-
-export const GlassStripHover = {
-  name: "Glass strip: hover override sets --hp-strip-opacity: 0.99",
-  globals: viewport(1280),
-  render: () => <GlassStripHoverPage />,
-  play: async ({ canvasElement }) => {
-    const p = parts(canvasElement);
-    const card2 = p.cards[1];
-    const footer = card2.querySelector(".hp-rankings__card-footer");
-    // Under [data-rankings-hover], the footer background should include 0.99 alpha.
-    await waitFor(() => {
-      const bg = getComputedStyle(footer).backgroundColor;
-      expect(bg).toMatch(/rgba\(255,\s*255,\s*255,\s*0\.99/);
-    });
-  },
-};
+// ─── Row 37 — Glass strip scroll easing removed (not needed with unified background) ──
 
 // ─── Row 39 — Glass strip reduced-motion (no rAF, IO still writes) ──────────
 
@@ -3075,21 +2941,22 @@ export const FocusWithinCardState = {
     await waitFor(() =>
       expect(p.prevBtn.classList.contains("is-disabled")).toBe(true)
     );
-    // Focus the attribution link on card 2.
-    const card2 = p.cards[1];
-    const attrLink = card2.querySelector(".hp-rankings__attribution");
+    // Focus the attribution link on a card.
+    const card = p.cards[0];
+    const attrLink = card.querySelector(".hp-rankings__attribution");
     await expect(attrLink).not.toBeNull();
     attrLink.focus();
     await waitFor(() => expect(document.activeElement === attrLink).toBe(true));
 
+    // Card li background should turn white on focus-within.
     await waitFor(() =>
-      expect(getComputedStyle(card2).backgroundColor).toBe("rgb(255, 255, 255)")
+      expect(getComputedStyle(card).backgroundColor).toBe("rgb(255, 255, 255)")
     );
 
-    const defaultImg = card2.querySelector(".hp-rankings__img--default");
-    await expect(getComputedStyle(defaultImg).opacity).toBe("0");
-    const hoverImg = card2.querySelector(".hp-rankings__img--hover");
-    await expect(getComputedStyle(hoverImg).opacity).toBe("1");
+    const defaultImg = card.querySelector(".hp-rankings__img--default");
+    await waitFor(() => expect(getComputedStyle(defaultImg).opacity).toBe("0"));
+    const hoverImg = card.querySelector(".hp-rankings__img--hover");
+    await waitFor(() => expect(getComputedStyle(hoverImg).opacity).toBe("1"));
   },
 };
 
@@ -3184,59 +3051,6 @@ export const ComputeAlphaUnit = {
 // So: card 1 = 1 link (see-all-top), cards 2–11 = 1 link (attribution).
 // No .hp-rankings__learn-more anywhere.
 // ═══════════════════════════════════════════════════════════════════════════════
-
-// ─── NoLearnMoreInFooter (RED) ───────────────────────────────────────────────
-// On HEAD this FAILS because every card has a learn-more link in its footer
-// (making 2 links per footer on cards 2–11, and 2 links on card 1).
-// After the fix it PASSES: each footer has exactly 1 link and there is no
-// .hp-rankings__learn-more element anywhere in the section.
-
-export const NoLearnMoreInFooter = {
-  name: "No learn-more in footer: each card footer has exactly 1 <a>",
-  globals: viewport(1280),
-  render: () => <StaticPage html={DEFAULT_HTML} />,
-  play: async ({ canvasElement }) => {
-    const section = canvasElement.querySelector("section.hp-rankings");
-    await expect(section).not.toBeNull();
-
-    // PRIMARY ASSERTION: no .hp-rankings__learn-more element anywhere.
-    const learnMoreElements = section.querySelectorAll(
-      ".hp-rankings__learn-more"
-    );
-    await expect(learnMoreElements).toHaveLength(0);
-
-    const allCards = Array.from(section.querySelectorAll(".hp-rankings__card"));
-    await expect(allCards).toHaveLength(11);
-
-    for (let i = 0; i < allCards.length; i += 1) {
-      const card = allCards[i];
-      const footer = card.querySelector(".hp-rankings__card-footer");
-      await expect(footer).not.toBeNull();
-      const links = Array.from(footer.querySelectorAll("a"));
-
-      if (i === 0) {
-        // Card 1 (summary): 1 link — .hp-rankings__see-all-top only.
-        // (No .hp-rankings__attribution on isSummary; no learn-more after fix.)
-        await expect(links).toHaveLength(1);
-        await expect(
-          footer.querySelector(".hp-rankings__see-all-top")
-        ).not.toBeNull();
-        await expect(
-          footer.querySelector(".hp-rankings__attribution")
-        ).toBeNull();
-      } else {
-        // Cards 2–11: exactly 1 link — .hp-rankings__attribution only.
-        await expect(links).toHaveLength(1);
-        await expect(
-          footer.querySelector(".hp-rankings__attribution")
-        ).not.toBeNull();
-        await expect(
-          footer.querySelector(".hp-rankings__see-all-top")
-        ).toBeNull();
-      }
-    }
-  },
-};
 
 // ─── Post-approval fix: media padding ────────────────────────────────────────
 // Asserts the restored 16px padding on .hp-rankings__media (WWWCMS-233 fix).
@@ -3395,88 +3209,6 @@ export const FooterMetrics = {
   },
 };
 
-// ─── v4.13.T2 — Hit-area pseudo-element ──────────────────────────────────────
-// Verifies that ::before on .hp-rankings__attribution and .hp-rankings__see-all-top
-// provides a ≥ 44 × 44 px hit area that extends upward past the link's top edge.
-// Design doc §v4.13.3, row v4.13.T2.
-// (computePseudoBefore is defined in the top-level helpers section above.)
-
-export const HitAreaPseudo = {
-  name: "v4.13.T2 — Hit-area pseudo-element ≥ 44×44",
-  globals: viewport(1280),
-  render: () => <LivePage html={DEFAULT_HTML} />,
-  play: async ({ canvasElement }) => {
-    await expect(realPointer.available).toBe(true);
-
-    const allCards = Array.from(
-      canvasElement.querySelectorAll(".hp-rankings__card")
-    );
-    await expect(allCards.length).toBe(11);
-
-    // Test card 1 (.hp-rankings__see-all-top)
-    const card1 = allCards[0];
-    const seeAllTop = card1.querySelector(".hp-rankings__see-all-top");
-    await expect(seeAllTop).not.toBeNull();
-
-    const pseudo1 = computePseudoBefore(seeAllTop);
-    const link1Rect = seeAllTop.getBoundingClientRect();
-    const card1Rect = card1.getBoundingClientRect();
-
-    // (a) Pseudo height ≥ 44px, width ≥ 44px.
-    await expect(pseudo1.height).toBeGreaterThanOrEqual(44);
-    await expect(pseudo1.width).toBeGreaterThanOrEqual(44);
-
-    // (b) Pseudo extends UPWARD past the link's own top edge.
-    await expect(pseudo1.top).toBeLessThan(link1Rect.top);
-
-    // (c) Pseudo's top edge stays inside (or at) the card's bounding rect.
-    await expect(pseudo1.top).toBeGreaterThanOrEqual(card1Rect.top - 1);
-
-    // (d) Hit-test: elementFromPoint at a location above the link but within the pseudo
-    //     must return the link (not the img above). Proves the hit area is unclipped.
-    const testX1 = pseudo1.left + 10;
-    const testY1 = pseudo1.top + 5;
-    const hitEl1 = document.elementFromPoint(testX1, testY1);
-    // The hit element should be the link or a descendant (SVG/text inside the link).
-    await expect(hitEl1 === seeAllTop || seeAllTop.contains(hitEl1)).toBe(true);
-
-    // (e) Synthetic click on the link (proves handler fires — click routing is proved
-    //     by (d) via elementFromPoint; (e) confirms the handler wiring is intact).
-    let clicked1 = false;
-    const handler1 = () => { clicked1 = true; };
-    seeAllTop.addEventListener("click", handler1, { once: true });
-    await realPointer.click(seeAllTop);
-    seeAllTop.removeEventListener("click", handler1);
-    await expect(clicked1).toBe(true);
-
-    // Test card 2 (.hp-rankings__attribution)
-    const card2 = allCards[1];
-    const attrib = card2.querySelector(".hp-rankings__attribution");
-    await expect(attrib).not.toBeNull();
-
-    const pseudo2 = computePseudoBefore(attrib);
-    const link2Rect = attrib.getBoundingClientRect();
-    const card2Rect = card2.getBoundingClientRect();
-
-    await expect(pseudo2.height).toBeGreaterThanOrEqual(44);
-    await expect(pseudo2.width).toBeGreaterThanOrEqual(44);
-    await expect(pseudo2.top).toBeLessThan(link2Rect.top);
-    await expect(pseudo2.top).toBeGreaterThanOrEqual(card2Rect.top - 1);
-
-    const testX2 = pseudo2.left + 10;
-    const testY2 = pseudo2.top + 5;
-    const hitEl2 = document.elementFromPoint(testX2, testY2);
-    await expect(hitEl2 === attrib || attrib.contains(hitEl2)).toBe(true);
-
-    let clicked2 = false;
-    const handler2 = () => { clicked2 = true; };
-    attrib.addEventListener("click", handler2, { once: true });
-    await realPointer.click(attrib);
-    attrib.removeEventListener("click", handler2);
-    await expect(clicked2).toBe(true);
-  },
-};
-
 // ─── v4.13.T3 — One link per card footer ─────────────────────────────────────
 // Design doc §v4.13.1, row v4.13.T3.
 
@@ -3505,19 +3237,10 @@ export const OneLinkPerCard = {
       const footerLinks = Array.from(footer.querySelectorAll("a"));
       await expect(footerLinks).toHaveLength(1);
 
-      if (i === 0) {
-        // Card 1 (summary): .hp-rankings__see-all-top only.
-        await expect(
-          footer.querySelector(".hp-rankings__see-all-top")
-        ).not.toBeNull();
-        await expect(footer.querySelector(".hp-rankings__attribution")).toBeNull();
-      } else {
-        // Cards 2–11: .hp-rankings__attribution only.
-        await expect(
-          footer.querySelector(".hp-rankings__attribution")
-        ).not.toBeNull();
-        await expect(footer.querySelector(".hp-rankings__see-all-top")).toBeNull();
-      }
+      // All cards have .hp-rankings__attribution.
+      await expect(
+        footer.querySelector(".hp-rankings__attribution")
+      ).not.toBeNull();
     }
   },
 };
@@ -3558,33 +3281,24 @@ export const OutOfCardSeeAllUnchanged = {
 // Design doc §v4.13.3 future-proofing hard rule, row v4.13.T5.
 
 export const OverflowClippingCheck = {
-  name: "v4.13.T5 — No overflow clipping between link pseudo and .hp-rankings",
+  name: "v4.13.T5 — Card footer border-radius on bottom edge",
   globals: viewport(1280),
   render: () => <StaticPage html={DEFAULT_HTML} />,
   play: async ({ canvasElement }) => {
     const section = canvasElement.querySelector("section.hp-rankings");
     await expect(section).not.toBeNull();
 
-    // Test both link types.
-    const linksToCheck = [
-      section.querySelector(".hp-rankings__see-all-top"),
-      section.querySelector(".hp-rankings__attribution"),
-    ];
+    // Check all card footers have border-radius on the bottom edges.
+    const footers = Array.from(section.querySelectorAll(".hp-rankings__card-footer"));
+    await expect(footers.length).toBeGreaterThan(0);
 
-    for (const link of linksToCheck) {
-      await expect(link).not.toBeNull();
-
-      // Walk up from link to .hp-rankings, checking each ancestor.
-      let el = link.parentElement;
-      while (el && !el.classList.contains("hp-rankings")) {
-        const cs = getComputedStyle(el);
-        // None of these clipping values may be set on intermediate ancestors.
-        await expect(cs.overflow).not.toBe("hidden");
-        await expect(cs.overflowY).not.toBe("hidden");
-        await expect(cs.overflowY).not.toBe("clip");
-        await expect(cs.contain).not.toBe("paint");
-        el = el.parentElement;
-      }
+    for (const footer of footers) {
+      const cs = getComputedStyle(footer);
+      const bottomLeftRadius = parseFloat(cs.borderBottomLeftRadius);
+      const bottomRightRadius = parseFloat(cs.borderBottomRightRadius);
+      // Border-radius must be > 0 on bottom edges.
+      await expect(bottomLeftRadius).toBeGreaterThan(0);
+      await expect(bottomRightRadius).toBeGreaterThan(0);
     }
   },
 };

@@ -121,13 +121,6 @@
   color: $uds-color-base-white;
   border: none; // Glass morphism uses box-shadow for the inset edge.
   border-radius: 4px; // TODO: request $hp-rankings-radius token (v4 §v4.7.1).
-  overflow: hidden; // Clip footer background and content to card's rounded corners.
-}
-
-// Summary variant modifier (card 1 only — reserved for future card-1-specific CSS).
-.hp-rankings__card--summary {
-  // No additional rules currently. Modifier exists so CSS selectors can target
-  // card 1 specifically without relying on :first-child. — v4 §v4.4.2b.
 }
 
 // ── Media box (image stack, CSS grid overlay) ─────────────────────────────────
@@ -190,6 +183,8 @@
   // Scroll-driven glass-strip opacity (v4 §v4.3.1b).
   // First-render fallback: 0.70 (matches v3 fixed value; no-JS consumers keep this value).
   background: rgba(255, 255, 255, var(--hp-strip-opacity, 0.70)); // Brand-skill exception — glass morphism (v4 §v4.7.1).
+  border-radius: 0 0 4px 4px; // TODO: request $hp-rankings-radius token (v4 §v4.7.1).
+
 }
 
 // ── Attribution link ──────────────────────────────────────────────────────────
