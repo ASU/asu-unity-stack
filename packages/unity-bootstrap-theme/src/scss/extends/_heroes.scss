@@ -32,19 +32,25 @@ $uds-hero-gradient-overlay: linear-gradient(
 }
 
 @mixin like-h3-highlight-white {
-  box-shadow: -0.15em 0 0 #ffffff, 0.15em 0 0 #ffffff;
+  box-shadow:
+    -0.15em 0 0 #ffffff,
+    0.15em 0 0 #ffffff;
   background: #ffffff;
   color: #191919;
 }
 
 @mixin like-h3-highlight-black {
-  box-shadow: -0.15em 0 0 #191919, 0.15em 0 0 #191919;
+  box-shadow:
+    -0.15em 0 0 #191919,
+    0.15em 0 0 #191919;
   background: #191919;
   color: #fafafa;
 }
 
 @mixin like-h3-highlight-gold {
-  box-shadow: -0.15em 0 0 $uds-color-base-gold, 0.15em 0 0 $uds-color-base-gold;
+  box-shadow:
+    -0.15em 0 0 $uds-color-base-gold,
+    0.15em 0 0 $uds-color-base-gold;
   background: $uds-color-base-gold;
   color: #191919;
 }
@@ -348,7 +354,7 @@ div.uds-hero-lg {
     [role="doc-subtitle"], // UDS is deprecatated doc-subtitle as a Selector
     .hero-subtitle,
     a.btn,
-    .content{
+    .content {
       grid-column: 2;
       max-width: 700px;
       z-index: 30;
@@ -388,6 +394,13 @@ div.uds-hero-lg {
 
   div.uds-hero-sm {
     grid-template-rows: 0px 1fr auto auto;
+
+    [role="doc-subtitle"],
+    .hero-subtitle {
+      margin-top: auto;
+      // to align subtitle text with the title
+      margin-left: 0.375rem;
+    }
 
     // Row 4 collapses to 0 when the hero has no CTA, leaving the h1 flush
     // against the bottom edge — carry the bottom spacing on the h1 instead.
@@ -635,10 +648,14 @@ div.uds-hero-lg {
   // First row = height of the overall hero image - 8rem offset for the indented content.
   .uds-story-hero {
     grid-template-columns: $uds-size-spacing-3 1fr $uds-size-spacing-3;
-    grid-template-rows: calc(#{$uds-size-spacing-64} - #{$uds-size-spacing-16}) $uds-size-spacing-16 1fr;
+    grid-template-rows: calc(
+        #{$uds-size-spacing-64} - #{$uds-size-spacing-16}
+      ) $uds-size-spacing-16 1fr;
 
     &.uds-story-hero-lg {
-      grid-template-rows: calc(42.75rem - #{$uds-size-spacing-16}) $uds-size-spacing-16 1fr;
+      grid-template-rows: calc(
+          42.75rem - #{$uds-size-spacing-16}
+        ) $uds-size-spacing-16 1fr;
     }
 
     // Calc value: 8.34% is the width of one bootstrap column. 12px is the gutter on the outside.
