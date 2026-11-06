@@ -149,4 +149,21 @@ export const storiesToTest = [
   "homepage-rankings-cards--out-of-card-see-all-unchanged",
   "homepage-rankings-cards--overflow-clipping-check",
   "homepage-rankings-cards--no-learn-more",
+  // WWWCMS-235: quick-links a11y story (on-white backdrop, WCAG 2.1 AA via Siteimprove Alfa)
+  "homepage-quick-links--accessibility-plain",
+  // WWWCMS-236: stories grid (rest, hover, no script, and the tablet, phone and large layouts)
+  "homepage-stories-grid--default",
+  "homepage-stories-grid--hover",
+  "homepage-stories-grid--no-script",
+  "homepage-stories-grid--tablet-768",
+  "homepage-stories-grid--phone-393",
+  "homepage-stories-grid--large-1920",
+  // WWWCMS-241: places (rest, a location selected, no script, and the tablet, phone and large layouts)
+  "homepage-places--default",
+  "homepage-places--selected",
+  "homepage-places--no-script",
+  "homepage-places--tablet-768",
+  "homepage-places--tablet-1023",
+  "homepage-places--phone-393",
+  "homepage-places--large-1920",
 ];

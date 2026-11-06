@@ -183,12 +183,16 @@ const assertMark = async (canvasElement, variant) => {
       ? (parseFloat(value) / 100) * hostWidth
       : parseFloat(value) * base;
   // Used width is clamped to the host (prototype v2.71 `img{max-width:100%}`): min(authored, 100%).
+  // Exception: reimg keeps its authored 106% (brand QA: a little longer than the word).
   const usedWidth = parseFloat(style.width);
-  await expect(usedWidth).toBeLessThanOrEqual(hostWidth + 0.5);
-  await expect(usedWidth).toBeCloseTo(
-    Math.min(toPx(expected.width, fontSize), hostWidth),
-    0
-  );
+  const authoredWidth = toPx(expected.width, fontSize);
+  if (variant === "reimg") {
+    await expect(usedWidth).toBeGreaterThan(hostWidth + 0.5);
+    await expect(usedWidth).toBeCloseTo(authoredWidth, 0);
+  } else {
+    await expect(usedWidth).toBeLessThanOrEqual(hostWidth + 0.5);
+    await expect(usedWidth).toBeCloseTo(Math.min(authoredWidth, hostWidth), 0);
+  }
   await expect(parseFloat(style.left)).toBeCloseTo(
     toPx(expected.left, fontSize),
     0

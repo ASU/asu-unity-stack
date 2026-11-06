@@ -17,7 +17,7 @@
   left: var(--scrib-left, 0);
 
   // Prototype v2.71 clamps images with `img{max-width:100%}`, so authored widths above 100%
-  // (future 104%, learn 110%, reimg 106%) render at 100% of the host by design.
+  // (future 104%, learn 110%) render at 100% of the host by design; reimg opts out below.
   width: var(--scrib-width, 100%);
   max-width: 100%;
   bottom: var(--scrib-bottom, 0);
@@ -50,11 +50,15 @@
   --scrib-bottom: -0.16em;
 }
 
+// Brand QA: the mark must run a little longer than the word, so reimg keeps its authored 106% instead
+// of the clamp above.
 .scrib--reimg {
   --scrib-left: -3%;
   --scrib-width: 106%;
   --scrib-bottom: -0.1em;
   --scrib-opacity: 1;
+
+  max-width: none;
 }
 
 // Phones only (the charter's "how they succeed"); hidden above $hp-phone-max.

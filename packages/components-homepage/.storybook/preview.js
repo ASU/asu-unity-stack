@@ -4,6 +4,11 @@ import "../src/js/index.js";
 
 // The shared .storybook-config/viewports.js holds UDS breakpoints, not these.
 const homepageViewports = {
+  hp320: {
+    name: "Phone 320",
+    styles: { width: "320px", height: "568px" },
+    type: "mobile",
+  },
   hp393: {
     name: "Phone 393",
     styles: { width: "393px", height: "852px" },
@@ -14,10 +19,20 @@ const homepageViewports = {
     styles: { width: "768px", height: "1024px" },
     type: "tablet",
   },
+  hp901: {
+    name: "Fluid 901",
+    styles: { width: "901px", height: "768px" },
+    type: "desktop",
+  },
   hp1024: {
     name: "Desktop 1024",
     styles: { width: "1024px", height: "768px" },
     type: "desktop",
+  },
+  hp1023: {
+    name: "Tablet 1023",
+    styles: { width: "1023px", height: "768px" },
+    type: "tablet",
   },
   hp1280: {
     name: "Desktop 1280",
