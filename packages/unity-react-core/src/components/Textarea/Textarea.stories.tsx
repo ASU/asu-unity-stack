@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
 import { Form, formBackground } from "../Form/Form";
-import { Textarea, propDefaults } from "./Textarea";
+import { Textarea, textAreaPropDefaults } from "./Textarea";
 
 const meta: Meta<typeof Textarea> = {
   title: "Components/Form/Textarea",
@@ -31,7 +31,7 @@ const meta: Meta<typeof Textarea> = {
     },
   },
   args: {
-    ...propDefaults,
+    ...textAreaPropDefaults,
     id: "textarea-id",
     label: "Textarea Label",
     placeholder: "Textarea Placeholder",

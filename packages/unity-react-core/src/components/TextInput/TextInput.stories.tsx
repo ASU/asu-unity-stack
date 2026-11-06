@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
 import { Form, formBackground } from "../Form/Form";
-import { TextInput, propDefaults } from "./TextInput";
+import { TextInput, textInputPropDefaults } from "./TextInput";
 
 const meta: Meta<typeof TextInput & { background?: typeof formBackground }> = {
   title: "Components/Form/Text Input",
@@ -31,7 +31,7 @@ const meta: Meta<typeof TextInput & { background?: typeof formBackground }> = {
     },
   },
   args: {
-    ...propDefaults,
+    ...textInputPropDefaults,
     id: "input-id",
     label: "Input Label",
     placeholder: "Input Placeholder",

@@ -4,8 +4,8 @@ import React, { ComponentProps, useId } from "react";
 
 import { GaEventWrapper } from "../GaEventWrapper/GaEventWrapper";
 
-export const displaySizes = ["sm", "md", "lg"] as const;
-export const inputValidationFeedback = ["", "valid", "invalid"] as const;
+export const textAreaDisplaySizes = ["sm", "md", "lg"] as const;
+export const textAreaInputValidationFeedback = ["", "valid", "invalid"] as const;
 
 export interface TextareaProps extends ComponentProps<"textarea"> {
   id?: string;
@@ -13,8 +13,8 @@ export interface TextareaProps extends ComponentProps<"textarea"> {
   /**
    * The size of the input field Defaults to "md"
    */
-  displaySize?: (typeof displaySizes)[number];
-  feedback?: (typeof inputValidationFeedback)[number];
+  displaySize?: (typeof textAreaDisplaySizes)[number];
+  feedback?: (typeof textAreaInputValidationFeedback)[number];
   validMessage?: string;
   invalidMessage?: string;
   rows?: number;
@@ -29,7 +29,7 @@ const defaultGaEvent = {
   section: "text label",
 };
 
-export const propDefaults: TextareaProps = {
+export const textAreaPropDefaults: TextareaProps = {
   id: undefined,
   label: "",
   placeholder: undefined,
@@ -49,7 +49,7 @@ export const Textarea: React.FC<TextareaProps> = ({
   invalidMessage,
   feedback,
   ...rest
-} = propDefaults) => {
+} = textAreaPropDefaults) => {
   const idValue = id || useId();
   const successId = `${idValue}SuccessHelp`;
   const errorId = `${idValue}ErrorHelp`;

@@ -71,7 +71,7 @@ export interface CheckboxProps {
   options: Array<CheckboxOption>;
 }
 
-export const propDefaults: CheckboxProps = {
+export const checkboxPropDefaults: CheckboxProps = {
   id: "Checkboxes",
   label: "",
   // required: false, // Does this component need a required boolean option?
@@ -88,7 +88,7 @@ export const Checkboxes: React.FC<CheckboxProps> = ({
   invalidMessage,
   options = [],
   disabled,
-} = propDefaults) => {
+} = checkboxPropDefaults) => {
   const defaultGaEvent = {
     text: "checkbox button",
     name: "onclick",

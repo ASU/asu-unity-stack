@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
 import { Form, formBackground } from "../Form/Form";
-import { Select, OptionProps, propDefaults } from "./Select";
+import { Select, OptionProps, selectPropDefaults } from "./Select";
 
 const options: OptionProps[] = [
   { value: "1", label: "Option 1" },
@@ -37,7 +37,7 @@ const meta: Meta<typeof Select> = {
     },
   },
   args: {
-    ...propDefaults,
+    ...selectPropDefaults,
     id: "input-id",
     label: "Input Label",
     options,
