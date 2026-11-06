@@ -46,6 +46,13 @@ export default defineConfig({
                   maxTouchPoints: 1,
                 });
               },
+              // Emulates forced-colors mode ("active" or "none"); null removes the override.
+              // Required by rankings-cards ForcedColors story (WWWCMS-233 §8 row 22).
+              emulateForcedColors: async ({ page }, mode) => {
+                await page.emulateMedia({
+                  forcedColors: mode === "active" ? "active" : "none",
+                });
+              },
             },
           },
           setupFiles: [".storybook/vitest.setup.js"],

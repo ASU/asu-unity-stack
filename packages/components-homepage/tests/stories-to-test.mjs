@@ -54,6 +54,101 @@ export const storiesToTest = [
   "homepage-reimagine-entrance--entrance-below-901",
   "homepage-reimagine-entrance--entrance-idempotent-init",
   "homepage-reimagine-entrance--entrance-css-gate",
+  // rankings-cards stories (WWWCMS-233) — Task 5 + fix-loop cycle 1 additions
+  "homepage-rankings-cards--default",
+  "homepage-rankings-cards--phone-393",
+  "homepage-rankings-cards--tablet-768",
+  "homepage-rankings-cards--desktop-1024",
+  "homepage-rankings-cards--desktop-1280",
+  "homepage-rankings-cards--desktop-1440",
+  "homepage-rankings-cards--large-1920",
+  "homepage-rankings-cards--hover",
+  "homepage-rankings-cards--image-sizing",
+  "homepage-rankings-cards--focus-visible-card",
+  "homepage-rankings-cards--focus-visible-prev",
+  "homepage-rankings-cards--focus-visible-next",
+  "homepage-rankings-cards--focus-visible-see-all",
+  "homepage-rankings-cards--reduced-motion",
+  "homepage-rankings-cards--forced-colors",
+  "homepage-rankings-cards--no-alt-dev-warning",
+  "homepage-rankings-cards--prev-disabled-at-start",
+  "homepage-rankings-cards--next-scrolls-one-card",
+  "homepage-rankings-cards--prev-scrolls-back",
+  "homepage-rankings-cards--next-disabled-at-end",
+  "homepage-rankings-cards--one-card-no-overflow",
+  "homepage-rankings-cards--few-cards-no-overflow",
+  "homepage-rankings-cards--many-cards-overflow",
+  "homepage-rankings-cards--snap-to-start",
+  "homepage-rankings-cards--idempotent-init",
+  "homepage-rankings-cards--teardown-cleans-up",
+  "homepage-rankings-cards--no-ga-attributes",
+  // fix-loop cycle 1 — injection + robustness regression stories
+  "homepage-rankings-cards--no-ga-injection",
+  "homepage-rankings-cards--no-ga-after-js-init",
+  "homepage-rankings-cards--no-ga-after-nav-interaction",
+  "homepage-rankings-cards--no-ga-in-every-rendered-copy",
+  "homepage-rankings-cards--injection-image-alt",
+  "homepage-rankings-cards--injection-attribution-href",
+  "homepage-rankings-cards--injection-attribution-label",
+  "homepage-rankings-cards--injection-heading-id",
+  "homepage-rankings-cards--injection-image-src-hover-missing",
+  "homepage-rankings-cards--injection-attr-quotes",
+  "homepage-rankings-cards--resize-to-overflow",
+  "homepage-rankings-cards--stale-sync-before-nav",
+  "homepage-rankings-cards--rapid-click-coalescing",
+  "homepage-rankings-cards--sanitizer-contract",
+  // v3 amendment — new stories
+  "homepage-rankings-cards--forced-colors-outline-bbox",
+  "homepage-rankings-cards--intrinsics-flip",
+  // v3 cycle-2 amendment — p1-1 injection/validation stories
+  "homepage-rankings-cards--injection-image-width-malicious",
+  "homepage-rankings-cards--image-dimension-validation",
+  // v3.1 cycle-4 amendment — P2 headingId bigint/throwing-proxy robustness
+  "homepage-rankings-cards--invalid-heading-id-big-int",
+  // v4 amendment stories (rows 31–64, design-doc §v4.9)
+  "homepage-rankings-cards--default-11-cards",
+  // learn-more stories removed per post-approval human decision (WWWCMS-233):
+  //   homepage-rankings-cards--learn-more-hover
+  //   homepage-rankings-cards--learn-more-focus
+  //   homepage-rankings-cards--learn-more-reduced-motion
+  //   homepage-rankings-cards--learn-more-forced-colors
+  //   homepage-rankings-cards--attrib-hover-suppress-learn-more
+  //   homepage-rankings-cards--card-body-hover-reveals-learn-more
+  "homepage-rankings-cards--glass-strip-default",
+  "homepage-rankings-cards--glass-strip-scroll",
+  "homepage-rankings-cards--glass-strip-hover",
+  "homepage-rankings-cards--glass-strip-reduced-motion",
+  "homepage-rankings-cards--glass-strip-teardown",
+  "homepage-rankings-cards--dock-structure",
+  "homepage-rankings-cards--dock-sticky",
+  "homepage-rankings-cards--dock-mobile-fallback",
+  "homepage-rankings-cards--card-1-see-all-top",
+  "homepage-rankings-cards--focus-order-11-cards",
+  "homepage-rankings-cards--per-slide-labelling",
+  "homepage-rankings-cards--per-slide-labelling-7-cards",
+  "homepage-rankings-cards--per-slide-labelling-3-cards",
+  "homepage-rankings-cards--touch-targets",
+  "homepage-rankings-cards--card-hover-maroon",
+  "homepage-rankings-cards--focus-no-invert",
+  "homepage-rankings-cards--glass-authorized",
+  "homepage-rankings-cards--default-img-no-transition",
+  "homepage-rankings-cards--compute-alpha-unit",
+  "homepage-rankings-cards--opacity-teardown-restores",
+  "homepage-rankings-cards--opacity-teardown-restores-priority",
+  "homepage-rankings-cards--io-absent",
+  // attrib-hover-suppress-learn-more and card-body-hover-reveals-learn-more
+  // removed per post-approval human decision (WWWCMS-233 learn-more removal).
+  // Post-approval fix: media padding restore (WWWCMS-233)
+  "homepage-rankings-cards--media-padding",
+  // Post-approval change: remove learn-more (WWWCMS-233 human decision)
+  "homepage-rankings-cards--no-learn-more-in-footer",
+  // v4.13 amendment stories (design-doc §v4.13.5)
+  "homepage-rankings-cards--footer-metrics",
+  "homepage-rankings-cards--hit-area-pseudo",
+  "homepage-rankings-cards--one-link-per-card",
+  "homepage-rankings-cards--out-of-card-see-all-unchanged",
+  "homepage-rankings-cards--overflow-clipping-check",
+  "homepage-rankings-cards--no-learn-more",
   // WWWCMS-235: quick-links a11y story (on-white backdrop, WCAG 2.1 AA via Siteimprove Alfa)
   "homepage-quick-links--accessibility-plain",
   // WWWCMS-236: stories grid (rest, hover, no script, and the tablet, phone and large layouts)
