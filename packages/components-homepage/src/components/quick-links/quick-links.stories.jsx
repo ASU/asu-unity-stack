@@ -60,10 +60,11 @@ const expectEvenMobileGrid = async p => {
   await expect(spread(boxes.map(b => b.width))).toBeLessThanOrEqual(1);
   await expect(spread(boxes.map(b => b.height))).toBeLessThanOrEqual(1);
 
-  // Two columns + one gap fit inside the list (items are capped at 167px, so
-  // they may be narrower than the list on wide phones but never wider)
+  // Items fill their grid columns: two columns + one gap span the list width
   const gap = parseFloat(getComputedStyle(p.list).columnGap);
-  await expect(boxes[0].width * 2 + gap).toBeLessThanOrEqual(listBox.width + 1);
+  await expect(
+    Math.abs(boxes[0].width * 2 + gap - listBox.width)
+  ).toBeLessThanOrEqual(1);
 
   // Icon and label centered horizontally within each anchor
   const center = b => b.left + b.width / 2;
@@ -328,7 +329,7 @@ export const Default1440 = {
   },
 };
 
-// §8 row 6 — default at 1920 px (fixed 16px column-gap, 167px-wide items)
+// §8 row 6 — default at 1920 px (fixed 16px column-gap)
 export const Default1920 = {
   name: "default-1920",
   globals: viewport(1920),
@@ -608,9 +609,9 @@ export const TargetSize = {
   },
 };
 
-// Hover/focus target: no item is wider than 167px and all items share one size,
-// even though label lengths differ ("Request info" vs "Visit an ASU campus").
-const expectUniformHoverTarget = async (p, { expectedWidth } = {}) => {
+// Hover/focus target: all items share one size even though label lengths differ
+// ("Request info" vs "Visit an ASU campus"), and each has 8px padding.
+const expectUniformHoverTarget = async p => {
   const boxes = p.items.map(item => item.getBoundingClientRect());
   const spread = values => Math.max(...values) - Math.min(...values);
 
@@ -622,17 +623,11 @@ const expectUniformHoverTarget = async (p, { expectedWidth } = {}) => {
     ).toBe("8px 8px 8px 8px");
   }
 
-  for (const box of boxes) {
-    await expect(box.width).toBeLessThanOrEqual(167 + 0.5);
-    if (expectedWidth) {
-      await expect(Math.abs(box.width - expectedWidth)).toBeLessThanOrEqual(1);
-    }
-  }
   await expect(spread(boxes.map(b => b.width))).toBeLessThanOrEqual(1);
   await expect(spread(boxes.map(b => b.height))).toBeLessThanOrEqual(1);
 };
 
-// 167px-wide hover target at desktop (1×4 row)
+// Equal-size hover targets at desktop (1×4 row)
 export const HoverTargetSizeDesktop = {
   name: "hover-target-size-desktop",
   globals: viewport(1440),
@@ -640,13 +635,11 @@ export const HoverTargetSizeDesktop = {
   decorators: [withBackdrop],
   render: () => <Page html={quickLinksHtml()} />,
   play: async ({ canvasElement }) => {
-    await expectUniformHoverTarget(parts(canvasElement), {
-      expectedWidth: 167,
-    });
+    await expectUniformHoverTarget(parts(canvasElement));
   },
 };
 
-// Same size at the narrowest desktop breakpoint, where the row is tightest.
+// Same at the narrowest desktop breakpoint.
 export const HoverTargetSizeTablet = {
   name: "hover-target-size-1024",
   globals: viewport(1024),
@@ -654,13 +647,11 @@ export const HoverTargetSizeTablet = {
   decorators: [withBackdrop],
   render: () => <Page html={quickLinksHtml()} />,
   play: async ({ canvasElement }) => {
-    await expectUniformHoverTarget(parts(canvasElement), {
-      expectedWidth: 167,
-    });
+    await expectUniformHoverTarget(parts(canvasElement));
   },
 };
 
-// Phone 2×2: cells shrink together below 167px when needed, but stay equal in width and height.
+// Phone 2×2: cells stay equal in width and height.
 export const HoverTargetSizeMobile = {
   name: "hover-target-size-mobile",
   globals: viewport(393),

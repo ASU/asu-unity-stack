@@ -8,9 +8,6 @@
 // Space between quick-link items (design: 16px), at every breakpoint.
 $hp-quick-links-gap: 16px;
 
-// Maximum width of each quick link (design: 167px). Height is content-driven.
-$hp-quick-link-max-width: 167px;
-
 // --- wrapper ---
 
 .hp-quick-links {
@@ -29,13 +26,11 @@ $hp-quick-link-max-width: 167px;
   list-style: none;
   padding: 0;
   margin: 0;
-  // Single row of equal-width tracks capped at 167px. When space runs out
-  // (viewport resize) all tracks shrink together, so every hover area stays
-  // the same size regardless of label length.
+  // Single row of equal-width tracks. minmax(0, 1fr) keeps every column identical
+  // regardless of label length, and all tracks resize together with the container.
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(0, $hp-quick-link-max-width);
-  justify-content: center;
+  grid-auto-columns: minmax(0, 1fr);
   width: 100%;
   column-gap: $hp-quick-links-gap;
 }
@@ -57,14 +52,12 @@ $hp-quick-link-max-width: 167px;
   // 8px between the container edge and its content on every side.
   padding: $uds-size-spacing-1;
   border-radius: $uds-size-spacing-half; // 0.25rem
-  // Hover/focus target: 167px maximum width, height follows the content (8px padding).
-  // Fills the li (sized by the grid track, itself capped at 167px); the li stretches to the
-  // tallest item in the row, so every glass rectangle is the same size. Long labels wrap
-  // inside it rather than widening it.
+  // Hover/focus target: fills the li (sized by the grid track); height follows the content
+  // (8px padding). The li stretches to the tallest item in the row, so every glass rectangle
+  // is the same size. Long labels wrap inside it rather than widening it.
   box-sizing: border-box;
   width: 100%;
   min-width: 0;
-  max-width: $hp-quick-link-max-width;
   text-decoration: none;
   color: $uds-color-base-white;
 
@@ -200,12 +193,9 @@ $hp-quick-link-max-width: 167px;
   .hp-quick-links__list {
     display: grid;
     grid-auto-flow: row;
-    // Two equal columns, each capped at 167px; they shrink together on narrow
-    // phones and the pair is centered when the wrapper is wider than 2 × 167px.
-    grid-template-columns: repeat(2, minmax(0, $hp-quick-link-max-width));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-auto-columns: auto;
     grid-auto-rows: 1fr; // both rows match the tallest item
-    justify-content: center;
     width: 100%;
     column-gap: $hp-quick-links-gap;
     row-gap: $hp-quick-links-gap;
