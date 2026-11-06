@@ -22,7 +22,7 @@ const PartnerLogosWrapper = styled.div`
       }
     }
   }
-  @media (max-width: ${({ breakpoint }) => breakpoint}) {
+  @media (max-width: ${({ $breakpoint }) => $breakpoint}) {
     margin: 0.5rem 0 1rem 1rem;
     a {
       &:not(:last-child) {

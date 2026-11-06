@@ -57,7 +57,7 @@ export const ImageLeftOrRight = ({ right, bgColor, extraContent }) => (
         height="750"
         loading="lazy"
         decoding="async"
-        fetchpriority="high"
+        fetchPriority="high"
       ></img>
     </div>
     <div className={`uds-image-text-block-text-container ${bgColor}`}>

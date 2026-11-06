@@ -109,7 +109,7 @@ const Hero = ({ size, title, titleColors, subTitle, subTitleColors }) => (
       width="2560"
       height="512"
       decoding="async"
-      fetchpriority="high"
+      fetchPriority="high"
     />
     {subTitle ? (
       <header>
@@ -193,7 +193,7 @@ const StoryHero = ({ size }) => (
         width="2560"
         height="512"
         decoding="async"
-        fetchpriority="high"
+        fetchPriority="high"
       />
       <div className="content">
         <nav aria-label="breadcrumbs">

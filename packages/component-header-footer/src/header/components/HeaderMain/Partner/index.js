@@ -14,7 +14,7 @@ const Partner = () => {
 
   return (
     // @ts-ignore
-    <PartnerLogosWrapper breakpoint={breakpoint} data-testid="partner">
+    <PartnerLogosWrapper $breakpoint={breakpoint} data-testid="partner">
       <a
         href={partnerLogo?.brandLink ?? "https://starbucks.asu.edu/"}
         onClick={() =>
@@ -37,7 +37,7 @@ const Partner = () => {
           decoding="async"
           // @ts-ignore
 
-          fetchpriority="high"
+          fetchPriority="high"
         />
       </a>
       <a
@@ -53,7 +53,7 @@ const Partner = () => {
           decoding="async"
           // @ts-ignore
 
-          fetchpriority="high"
+          fetchPriority="high"
         />
         <img
           className={CLASS_NAMES.LOGO_HORIZ}
@@ -64,7 +64,7 @@ const Partner = () => {
           decoding="async"
           // @ts-ignore
 
-          fetchpriority="high"
+          fetchPriority="high"
         />
       </a>
     </PartnerLogosWrapper>

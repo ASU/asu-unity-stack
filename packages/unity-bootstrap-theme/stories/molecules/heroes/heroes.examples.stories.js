@@ -19,7 +19,7 @@ export const HeroSmallWithButtons = () => (
       width="2560"
       height="512"
       decoding="async"
-      fetchpriority="high"
+      fetchPriority="high"
     />
     <h1>
       <span className="text-white">ASU named prestigious university</span>
@@ -65,7 +65,7 @@ export const HeroMediumTwoButtons = () => (
       width="2560"
       height="512"
       decoding="async"
-      fetchpriority="high"
+      fetchPriority="high"
     />
     <h1>
       <span className="text-white">Turning the tide on our coral reefs</span>
@@ -119,7 +119,7 @@ export const HeroLargeWithButtons = () => (
       width="2560"
       height="512"
       decoding="async"
-      fetchpriority="high"
+      fetchPriority="high"
     />
     <h1>
       <span className="text-white">The academic experience at ASU</span>
@@ -171,7 +171,7 @@ export const HeroVideo = () => (
       width="2560"
       height="512"
       decoding="async"
-      fetchpriority="high"
+      fetchPriority="high"
     />
     <video id="media-video" autoPlay muted loop>
       <source src={stockVideo} />

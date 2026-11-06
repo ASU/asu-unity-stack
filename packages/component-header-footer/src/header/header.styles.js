@@ -44,7 +44,7 @@ const Header = styled.header`
         0px 0px 0px 4px ${ASU_GRAY1} !important;
     }
   }
-  @media (min-width: ${({ breakpoint }) => breakpoints[breakpoint]}) {
+  @media (min-width: ${({ $breakpoint }) => breakpoints[$breakpoint]}) {
     &.scrolled {
       .${CLASS_NAMES.TITLE} {
         margin: 0.5rem 0 0 0;
@@ -110,7 +110,7 @@ const HeaderDiv = styled.div`
         0px 0px 0px 4px ${ASU_GRAY1} !important;
     }
   }
-  @media (min-width: ${({ breakpoint }) => breakpoints[breakpoint]}) {
+  @media (min-width: ${({ $breakpoint }) => breakpoints[$breakpoint]}) {
     &.scrolled {
       .${CLASS_NAMES.TITLE} {
         margin: 0.5rem 0 0 0;
