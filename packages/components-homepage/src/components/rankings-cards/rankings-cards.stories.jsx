@@ -3128,8 +3128,6 @@ export const MediaPadding = {
 // Asserts footer height 40–42px, padding 8px block / 24px inline, and no min-height.
 // Design doc §v4.13.2, row v4.13.T1.
 
-const FOOTER_METRICS_VIEWPORTS = [393, 1280, 1920];
-
 /**
  * Verify footer metrics at a single viewport width.
  * @param {Element} canvasElement
@@ -3289,7 +3287,9 @@ export const OverflowClippingCheck = {
     await expect(section).not.toBeNull();
 
     // Check all card footers have border-radius on the bottom edges.
-    const footers = Array.from(section.querySelectorAll(".hp-rankings__card-footer"));
+    const footers = Array.from(
+      section.querySelectorAll(".hp-rankings__card-footer")
+    );
     await expect(footers.length).toBeGreaterThan(0);
 
     for (const footer of footers) {
@@ -3318,7 +3318,9 @@ export const NoLearnMore = {
 
     // No learn-more or learn-more-icon elements anywhere in the section.
     await expect(
-      section.querySelectorAll(".hp-rankings__learn-more, .hp-rankings__learn-more-icon")
+      section.querySelectorAll(
+        ".hp-rankings__learn-more, .hp-rankings__learn-more-icon"
+      )
     ).toHaveLength(0);
   },
 };
