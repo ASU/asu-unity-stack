@@ -81,7 +81,7 @@ LinkItem.propTypes = {
  *  classes?: string,
  *  listId: string
  *  opened: boolean
- *  parentLink: React.RefObject<HTMLElement> | null
+ *  parentId: number
  * }} DropdownItemProps
  */
 
@@ -95,8 +95,7 @@ const DropdownItem = ({
   buttons = [],
   classes = "",
   listId,
-  opened,
-  parentLink,
+  parentId,
 }) => {
   const {
     breakpoint,
@@ -104,7 +103,10 @@ const DropdownItem = ({
     setItemOpened,
     setMobileMenuOpen,
     mobileMenuOpen,
+    navItemsRef,
+    itemOpened,
   } = useAppContext();
+  const opened = itemOpened == parentId;
   // Calculate total columns for mega menu layout by summing the span of each
   // column, defaulting to 1 if not specified, or 0 if no first item exists
   const cols = items.reduce((acc, lists) => {
@@ -166,8 +168,8 @@ const DropdownItem = ({
       focusPrevLink();
     } else if (key === "Escape" && opened) {
       setItemOpened();
-      if (typeof parentLink?.current?.focus === "function") {
-        parentLink.current.focus();
+      if (typeof navItemsRef?.current?.[parentId]?.focus === "function") {
+        navItemsRef.current[parentId].focus();
       }
     } else if (key === "Escape" && !opened && mobileMenuOpen) {
       setMobileMenuOpen(false);
@@ -210,6 +212,15 @@ const DropdownItem = ({
     const ctaButtonRowHeight = 64;
     heightOffset += ctaButtonRowHeight;
   }
+
+  useEffect(() => {
+    if (
+      opened &&
+      navItemsRef.current.find(navItem => navItem == document.activeElement)
+    ) {
+      navItemsRef?.current?.[parentId]?.focus?.();
+    }
+  }, [opened, parentId, itemOpened, navItemsRef]);
 
   return (
     <DropdownWrapper
@@ -318,9 +329,7 @@ DropdownItem.propTypes = {
   listId: PropTypes.string,
   opened: PropTypes.bool,
   setItemOpened: PropTypes.func,
-  parentLink: PropTypes.shape({
-    current: PropTypes.instanceOf(HTMLElement),
-  }),
+  parentId: PropTypes.number,
 };
 
 export { DropdownItem };
