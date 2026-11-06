@@ -393,6 +393,32 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@asu/components-homepage@workspace:packages/components-homepage":
+  version: 0.0.0-use.local
+  resolution: "@asu/components-homepage@workspace:packages/components-homepage"
+  dependencies:
+    "@asu/unity-bootstrap-theme": "npm:*"
+    "@storybook/addon-a11y": "npm:^10"
+    "@storybook/addon-docs": "npm:^10"
+    "@storybook/addon-vitest": "npm:10.4.0"
+    "@storybook/react": "npm:^10"
+    "@storybook/react-vite": "npm:^10"
+    "@vitest/browser-playwright": "npm:4.1.6"
+    "@whitespace/storybook-addon-html": "npm:^9"
+    bootstrap: "npm:^5.2.3"
+    eslint: "npm:^9"
+    playwright: "npm:1.55.1"
+    postcss: "npm:^8.4.19"
+    postcss-scss: "npm:^4.0.6"
+    prettier: "npm:^3.7.1"
+    storybook: "npm:^10"
+    stylelint: "npm:^15.10.1"
+    stylelint-scss: "npm:^4.6.0"
+    vite: "npm:^6.0.0"
+    vitest: "npm:4.1.6"
+  languageName: unknown
+  linkType: soft
+
 "@asu/shared@npm:*, @asu/shared@workspace:packages/shared":
   version: 0.0.0-use.local
   resolution: "@asu/shared@workspace:packages/shared"
@@ -7956,6 +7982,31 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@storybook/addon-vitest@npm:10.4.0":
+  version: 10.4.0
+  resolution: "@storybook/addon-vitest@npm:10.4.0"
+  dependencies:
+    "@storybook/global": "npm:^5.0.0"
+    "@storybook/icons": "npm:^2.0.2"
+  peerDependencies:
+    "@vitest/browser": ^3.0.0 || ^4.0.0
+    "@vitest/browser-playwright": ^4.0.0
+    "@vitest/runner": ^3.0.0 || ^4.0.0
+    storybook: ^10.4.0
+    vitest: ^3.0.0 || ^4.0.0
+  peerDependenciesMeta:
+    "@vitest/browser":
+      optional: true
+    "@vitest/browser-playwright":
+      optional: true
+    "@vitest/runner":
+      optional: true
+    vitest:
+      optional: true
+  checksum: 10c0/01bd3fb79af3fa3cb026cf13a0df2b5f87dc2283ad95a176b243a62427a6fba7359d25daa78b922f834e4e4ebc7f839950e762a7d320b8f6eca698766f4ebdbd
+  languageName: node
+  linkType: hard
+
 "@storybook/builder-vite@npm:10.4.0":
   version: 10.4.0
   resolution: "@storybook/builder-vite@npm:10.4.0"
@@ -9569,6 +9620,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vitest/browser-playwright@npm:4.1.6":
+  version: 4.1.6
+  resolution: "@vitest/browser-playwright@npm:4.1.6"
+  dependencies:
+    "@vitest/browser": "npm:4.1.6"
+    "@vitest/mocker": "npm:4.1.6"
+    tinyrainbow: "npm:^3.1.0"
+  peerDependencies:
+    playwright: "*"
+    vitest: 4.1.6
+  peerDependenciesMeta:
+    playwright:
+      optional: false
+  checksum: 10c0/501d78e0a56004d9b2fc7f86177d8cb3a9cf2ed1a7a7b075d5b536e29c27bb909f8df418eafbdcdf1cc6dff1faa5a02b0cddd822bc1210e61f25e587a1e2af8e
+  languageName: node
+  linkType: hard
+
 "@vitest/browser@npm:4.1.10":
   version: 4.1.10
   resolution: "@vitest/browser@npm:4.1.10"
@@ -9584,6 +9652,24 @@ __metadata:
   peerDependencies:
     vitest: 4.1.10
   checksum: 10c0/61c86b8c0fcc78bd01de559914525e768dc16d565ee8a40a41d51ef6d99595c3c5e976defe32d090b3dda5f77a980caa11a2072e9c4d279cfb8d55d31c565fc7
+  languageName: node
+  linkType: hard
+
+"@vitest/browser@npm:4.1.6":
+  version: 4.1.6
+  resolution: "@vitest/browser@npm:4.1.6"
+  dependencies:
+    "@blazediff/core": "npm:1.9.1"
+    "@vitest/mocker": "npm:4.1.6"
+    "@vitest/utils": "npm:4.1.6"
+    magic-string: "npm:^0.30.21"
+    pngjs: "npm:^7.0.0"
+    sirv: "npm:^3.0.2"
+    tinyrainbow: "npm:^3.1.0"
+    ws: "npm:^8.19.0"
+  peerDependencies:
+    vitest: 4.1.6
+  checksum: 10c0/f9e8dd7e48add4d11856517bfdbb6b0f9fa291d5b22bb21a5a74194f5b37e32e3597c653e59b630ac2c58f0edd70a440a17b12c1d03e867a5a26fd57ab9a3d67
   languageName: node
   linkType: hard
 
@@ -31421,7 +31507,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitest@npm:^4.0.0":
+"vitest@npm:4.1.6, vitest@npm:^4.0.0":
   version: 4.1.6
   resolution: "vitest@npm:4.1.6"
   dependencies:

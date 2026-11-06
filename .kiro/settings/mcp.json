@@ -21,6 +21,7 @@
     "asu-app-degree-pages": { "url": "http://localhost:9010/mcp", "disabled": false },
     "asu-app-rfi": { "url": "http://localhost:9020/mcp", "disabled": false },
     "asu-app-webdir-ui": { "url": "http://localhost:9030/mcp", "disabled": false },
+    "asu-components-homepage": { "url": "http://localhost:9050/mcp", "disabled": false },
     "asu-component-events": { "url": "http://localhost:9060/mcp", "disabled": false },
     "asu-component-header-footer": { "url": "http://localhost:9080/mcp", "disabled": false },
     "asu-component-news": { "url": "http://localhost:9090/mcp", "disabled": false }
