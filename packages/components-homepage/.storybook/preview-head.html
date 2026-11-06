@@ -1,5 +1,12 @@
-<!-- Font Awesome 5.15.4 served locally from the installed theme peer dep.
-     Mirrors the Unity assumption that the production host loads Font Awesome;
-     keeps components-homepage's "no third-party scripts" posture by linking
-     a same-origin stylesheet via Storybook staticDirs (see .storybook/main.js). -->
-<link rel="stylesheet" href="fontawesome/css/all.min.css" />
+<!-- Font Awesome 6.4.2 (Free) CSS, Storybook preview only. Matches the FA 6.4.2 version
+     used by component-header-footer. The quick-links icons use FA 6 class names
+     (fa-solid fa-file-pen, fa-solid fa-map-location-dot, fa-solid fa-address-card),
+     which the FA 5.15.4 package installed as a peer dep does not provide.
+     Mirrors the assumption that the production host loads Font Awesome. -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+  integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
