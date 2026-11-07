@@ -28,7 +28,7 @@ export default {
     docs: {
       description: {
         component:
-          'Homepage campus locator ("One university, many places"). From 1024px a looping video (shared play/pause control) starts inset by the 48px gutter and opens to full width as it scrolls into view; a frosted panel holds the heading, two buttons and the seven locations in two groups. Choosing a location (click or keyboard, never hover) crossfades its photo over the video (0.6s), draws a gold leader line (0.4s) to a description box (fades in 0.3s after 0.2s) with a link; Esc, the close button, a second click or an outside click returns to the video, and scrolling never changes the selection. Below 1024px (Figma 375, brand: Figma is the source of truth, no carousel) the same list is an accordion on Gray 1: each name has a chevron and a rule, one location is open at a time with its text, link and photo (all start collapsed); a 375:219 video strip with the pause button at its bottom right sits above the list. The section draws the Learn network wallpaper behind it (desktop). Without script every location is open and stacked. `initPlaces` and `initVideoControls` wire it. Sample photos, poster and clip are the prototype media; `href`s are placeholders.',
+          'Homepage campus locator ("One university, many places"). From 1024px a looping video (shared play/pause control) starts inset by the 48px gutter and opens to full width as it scrolls into view; a frosted panel holds the heading, two buttons and the seven locations in two groups. Choosing a location (click or keyboard, never hover) crossfades its photo over the video (0.6s), draws a gold leader line (0.4s) to a description box (fades in 0.3s after 0.2s) with a link; Esc, the close button, a second click or an outside click returns to the video, and so does scrolling more than 48px from where the box opened (a scroll caused by moving focus does not). While a campus is selected a still replaces the video and the play/pause control is hidden until the box is closed. Below 1024px (Figma 375, brand: Figma is the source of truth, no carousel) the same list is an accordion on Gray 1: each name has a chevron and a rule, one location is open at a time with its text, link and photo (all start collapsed); a 375:219 video strip with the pause button at its bottom right sits above the list. The section draws the Learn network wallpaper behind it (desktop). Without script every location is open and stacked. `initPlaces` and `initVideoControls` wire it. Sample photos, poster and clip are the prototype media; `href`s are placeholders.',
       },
     },
   },
@@ -524,8 +524,8 @@ export const SelectionAndReturn = {
       "false",
       "false",
     ]);
-    // scrolling never changes the selection
-    window.scrollTo({ top: 600, behavior: "instant" });
+    // a small scroll keeps the selection (beyond 48px it closes, see ScrollClose)
+    window.scrollTo({ top: 24, behavior: "instant" });
     await new Promise(resolve => requestAnimationFrame(resolve));
     await expect(selected()[3]).toBe("true");
     // Esc, with focus on the name, returns focus to the name
@@ -885,6 +885,79 @@ export const PauseControl = {
     await waitFor(() => expect(p.details[0].hidden).toBe(false));
     await expect(p.section.classList.contains("has-still")).toBe(false);
     await expect(style(p.mbtn).display).toBe("grid");
+  },
+};
+
+export const ScrollClose = {
+  name: "Scroll closes the open box",
+  tags: ["!dev"],
+  globals: viewport(1440),
+  render: () => <Harness before="40vh" after="250vh" html={placesHtml()} />,
+  play: async ({ canvasElement }) => {
+    await resizeViewport(1440, 900);
+    const p = parts(canvasElement);
+    const selected = () =>
+      p.names.map(name => name.getAttribute("aria-pressed"));
+    const scrollTo = async top => {
+      window.scrollTo({ top, behavior: "instant" });
+      await frame();
+      await frame();
+    };
+    // a small scroll leaves the box open; more than 48px from where it opened closes it
+    await select(p, 3);
+    await scrollTo(30);
+    await expect(selected()[3]).toBe("true");
+    await scrollTo(100);
+    await waitFor(() =>
+      expect(selected().every(state => state === "false")).toBe(true)
+    );
+    await expect(p.video.hasAttribute("data-hold")).toBe(false);
+    // measured from where it opened (here 300px down), up or down
+    await scrollTo(300);
+    await select(p, 1);
+    await scrollTo(270);
+    await expect(selected()[1]).toBe("true");
+    await scrollTo(200);
+    await waitFor(() => expect(selected()[1]).toBe("false"));
+    // focus inside the box returns to the name, and the page stays where the visitor scrolled
+    await scrollTo(0);
+    await select(p, 2);
+    p.boxes[2].querySelector(".hp-places__link").focus();
+    // the theme scrolls smoothly: let a scroll to the focused link finish before the visitor scrolls
+    await new Promise(resolve => setTimeout(resolve, 700));
+    const reached = [];
+    const record = () => reached.push(window.scrollY);
+    window.addEventListener("scroll", record);
+    await scrollTo(150);
+    window.removeEventListener("scroll", record);
+    await waitFor(() => expect(selected()[2]).toBe("false"));
+    await expect(document.activeElement).toBe(p.names[2]);
+    // closing and moving focus did not scroll the page any further
+    await expect(window.scrollY).toBe(reached[0]);
+    // a scroll with nothing open does nothing, and the next selection measures from its own position
+    await scrollTo(400);
+    await select(p, 0);
+    await scrollTo(420);
+    await expect(selected()[0]).toBe("true");
+    // a scroll caused by moving focus (Tab to a link below the fold) is not the visitor leaving the box
+    await resizeViewport(1440, 600);
+    await scrollTo(0);
+    await select(p, 0);
+    p.section.querySelector(".hp-places__see-all").focus();
+    await new Promise(resolve => setTimeout(resolve, 700));
+    await expect(window.scrollY).toBeGreaterThan(60);
+    await expect(selected()[0]).toBe("true");
+    // ... and the next real scroll is measured from there
+    await scrollTo(window.scrollY + 100);
+    await waitFor(() => expect(selected()[0]).toBe("false"));
+    await resizeViewport(1440, 900);
+    // the accordion (below 1024) is not touched by scrolling
+    await resizeViewport(1023, 800);
+    await scrollTo(0);
+    p.names[0].click();
+    await waitFor(() => expect(p.details[0].hidden).toBe(false));
+    await scrollTo(300);
+    await expect(p.names[0].getAttribute("aria-expanded")).toBe("true");
   },
 };
 
