@@ -11,7 +11,9 @@ import {
   glassContrast,
   openingProgress,
   placesHtml,
+  realPointer,
   resizeViewport,
+  watchTransitions,
 } from "./places-helpers.jsx";
 import * as entry from "../../js/index.js";
 
@@ -580,6 +582,265 @@ export const LowerNameBox = {
     );
     // the leader stays on the name's rule
     await near(box(p.details[last]).bottom, box(p.names[last]).bottom, 1);
+  },
+};
+
+// --- WWWCMS-241 QA round 2026-11-05/06: the two buttons, the box bar, the links, the control and scroll close ---
+
+const frame = () => new Promise(resolve => requestAnimationFrame(resolve));
+const px = value => parseFloat(value);
+const alphaOf = color => {
+  const parts = color.match(/[\d.]+/g).map(Number);
+  return parts.length === 4 ? parts[3] : 1;
+};
+const channels = color =>
+  color
+    .match(/[\d.]+/g)
+    .slice(0, 3)
+    .map(Number);
+const textRect = element => {
+  const range = document.createRange();
+  range.selectNodeContents(element.firstChild);
+  return range.getBoundingClientRect();
+};
+const ctas = p => [
+  p.section.querySelector(".hp-places__cta--primary"),
+  p.section.querySelector(".hp-places__cta--secondary"),
+];
+const select = async (p, index) => {
+  p.names[index].click();
+  await waitFor(() =>
+    expect(p.items[index].classList.contains("is-shown")).toBe(true)
+  );
+  await waitFor(() => expect(style(p.boxes[index]).opacity).toBe("1"));
+};
+
+export const CtaButtons = {
+  name: "CTA buttons",
+  tags: ["!dev"],
+  globals: viewport(1440),
+  render: () => <Harness html={placesHtml()} />,
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    const [primary, secondary] = ctas(p);
+    for (const [width, height] of [
+      [1440, 900],
+      [393, 852],
+    ]) {
+      await resizeViewport(width, height);
+      await frame();
+      await frame();
+      for (const cta of [primary, secondary]) {
+        // Figma Button: 32 tall, text 14/18, a 14 x 14 arrow 8px after it, 16px padding and a 2px border
+        const icon = cta.querySelector("svg");
+        await expect(icon).not.toBeNull();
+        await near(box(icon).width, 14, 0.1);
+        await near(box(icon).height, 14, 0.1);
+        await near(box(icon).left - textRect(cta).right, 8, 0.5);
+        await near(box(cta).width, textRect(cta).width + 8 + 14 + 36, 1);
+        await near(box(cta).height, 32, 0.5);
+      }
+      // Find your fit: gold fill, Gray 1 text and arrow; Visit ASU: gold outline, gold text and arrow
+      await expect(style(primary).backgroundColor).toBe(GOLD);
+      await expect(style(primary).color).toBe(GRAY_1);
+      await expect(style(secondary).backgroundColor).toBe("rgba(0, 0, 0, 0)");
+      await expect(style(secondary).borderTopColor).toBe(GOLD);
+      await expect(style(secondary).color).toBe(GOLD);
+      await expect(style(secondary.querySelector("svg")).color).toBe(GOLD);
+    }
+  },
+};
+
+export const CtaHover = {
+  name: "CTA hover",
+  tags: ["!dev"],
+  globals: viewport(1440),
+  render: () => <Harness html={placesHtml()} />,
+  play: async ({ canvasElement }) => {
+    if (!realPointer.available) return;
+    await resizeViewport(1440, 900);
+    const p = parts(canvasElement);
+    const [primary, secondary] = ctas(p);
+    const hover = async (cta, check) => {
+      const watch = watchTransitions(cta);
+      try {
+        await realPointer.hover(cta);
+        await waitFor(() => expect(watch.runs.length).toBeGreaterThan(0));
+        const byProperty = Object.fromEntries(
+          watch.runs.map(a => [a.transitionProperty, a])
+        );
+        await check(byProperty);
+        watch.runs.forEach(a => a.finish());
+      } finally {
+        watch.stop();
+      }
+    };
+    const eased = async animation => {
+      await expect(animation).toBeDefined();
+      await expect(animation.effect.getComputedTiming().duration).toBe(200);
+      await expect(animation.effect.getTiming().easing).toBe("ease");
+    };
+    // Find your fit grows 5% over 0.2s, colours unchanged, no outline ring (the prototype's filled pill)
+    const primaryWidth = primary.offsetWidth;
+    const secondaryLeft = box(secondary).left;
+    await hover(primary, async byProperty => {
+      await eased(byProperty.transform);
+    });
+    await expect(style(primary).transform).toBe(
+      "matrix(1.05, 0, 0, 1.05, 0, 0)"
+    );
+    await expect(style(primary).boxShadow).toBe("none");
+    await expect(style(primary).backgroundColor).toBe(GOLD);
+    await expect(style(primary).color).toBe(GRAY_1);
+    await expect(primary.offsetWidth).toBe(primaryWidth);
+    await near(box(secondary).left, secondaryLeft, 0.1);
+    await realPointer.unhover(primary);
+    await waitFor(() => expect(style(primary).transform).toBe("none"));
+    // Visit ASU fills gold over 0.2s with Gray 1 text, no growth, no ring (the prototype's outline pill)
+    await hover(secondary, async byProperty => {
+      await eased(byProperty["background-color"]);
+      await eased(byProperty.color);
+      byProperty["background-color"].currentTime = 100;
+      byProperty.color.currentTime = 100;
+      await frame();
+      const alpha = alphaOf(style(secondary).backgroundColor);
+      await expect(alpha).toBeGreaterThan(0);
+      await expect(alpha).toBeLessThan(1);
+      const [red] = channels(style(secondary).color);
+      await expect(red).toBeGreaterThan(25);
+      await expect(red).toBeLessThan(255);
+    });
+    await expect(style(secondary).backgroundColor).toBe(GOLD);
+    await expect(style(secondary).color).toBe(GRAY_1);
+    await expect(style(secondary.querySelector("svg")).color).toBe(GRAY_1);
+    await expect(style(secondary).transform).toBe("none");
+    await expect(style(secondary).boxShadow).toBe("none");
+    await realPointer.unhover(secondary);
+    await waitFor(() =>
+      expect(style(secondary).backgroundColor).toBe("rgba(0, 0, 0, 0)")
+    );
+    // reduced motion: the same end states, no transition and no growth
+    await emulateReducedMotion(true);
+    try {
+      for (const cta of [primary, secondary]) {
+        const watch = watchTransitions(cta);
+        try {
+          await realPointer.hover(cta);
+          await frame();
+          await frame();
+          await expect(watch.runs).toHaveLength(0);
+          await expect(style(cta).transform).toBe("none");
+        } finally {
+          watch.stop();
+          await realPointer.unhover(cta);
+        }
+      }
+      await realPointer.hover(secondary);
+      await waitFor(() => expect(style(secondary).backgroundColor).toBe(GOLD));
+      await realPointer.unhover(secondary);
+    } finally {
+      await emulateReducedMotion(false);
+    }
+  },
+};
+
+export const CtaFocus = {
+  name: "CTA focus",
+  tags: ["!dev"],
+  globals: viewport(1440),
+  render: () => <Harness html={placesHtml()} />,
+  play: async ({ canvasElement }) => {
+    await resizeViewport(1440, 900);
+    const p = parts(canvasElement);
+    for (const cta of ctas(p)) {
+      cta.focus();
+      await expect(cta.matches(":focus-visible")).toBe(true);
+      await expect(style(cta).boxShadow).not.toBe("none");
+      cta.blur();
+    }
+  },
+};
+
+export const BoxBar = {
+  name: "Gold bar over the box",
+  tags: ["!dev"],
+  globals: viewport(1440),
+  render: () => <Harness before="20vh" after="40vh" html={placesHtml()} />,
+  play: async ({ canvasElement }) => {
+    await resizeViewport(1440, 900);
+    const p = parts(canvasElement);
+    // Figma: the box has a 4px gold stroke on its top edge, as wide as the box
+    for (const index of [0, LOCATIONS.length - 1]) {
+      await select(p, index);
+      const bar = style(p.boxes[index], "::after");
+      await expect(bar.content).toBe('""');
+      await expect(bar.position).toBe("absolute");
+      await expect(bar.height).toBe("4px");
+      await expect(bar.top).toBe("0px");
+      await expect(bar.backgroundColor).toBe(GOLD);
+      await near(px(bar.width), box(p.boxes[index]).width, 1);
+      p.names[index].click();
+      await waitFor(() =>
+        expect(p.items[index].classList.contains("is-shown")).toBe(false)
+      );
+    }
+    // Tempe: the bar is flush with the leader (the box top is the leader's top)
+    await select(p, 0);
+    await near(box(p.boxes[0]).top, box(p.details[0]).top, 1);
+    p.names[0].click();
+    // below 1024 the accordion has no bar
+    await resizeViewport(393, 852);
+    p.names[0].click();
+    await waitFor(() => expect(p.details[0].hidden).toBe(false));
+    await expect(style(p.boxes[0], "::after").content).toBe("none");
+  },
+};
+
+export const PlaceLinks = {
+  name: "Link underline (Figma stroke)",
+  tags: ["!dev"],
+  globals: viewport(1440),
+  render: () => <Harness before="20vh" after="40vh" html={placesHtml()} />,
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    const check = async link => {
+      // Figma: a 1px stroke on the bottom of the link frame, below the 24px line and clear of the glyphs
+      await expect(style(link).borderBottomWidth).toBe("1px");
+      await expect(style(link).borderBottomStyle).toBe("solid");
+      await expect(box(link).bottom - 1).toBeGreaterThanOrEqual(
+        textRect(link).bottom + 1
+      );
+      await expect(style(link, "::after").content).toBe("none");
+      // it runs under the text, the gap and the arrow
+      await near(
+        box(link).right - box(link.querySelector("svg")).right,
+        0,
+        0.5
+      );
+    };
+    const hoverGone = async link => {
+      if (!realPointer.available) return;
+      await realPointer.hover(link);
+      await waitFor(() =>
+        expect(style(link).borderBottomColor).toBe("rgba(0, 0, 0, 0)")
+      );
+      await realPointer.unhover(link);
+    };
+    await resizeViewport(1440, 900);
+    await select(p, 0);
+    const link = p.boxes[0].querySelector(".hp-places__link");
+    const seeAll = p.section.querySelector(".hp-places__see-all");
+    await check(link);
+    await check(seeAll);
+    await expect(style(link).borderBottomColor).toBe(GOLD);
+    await expect(style(seeAll).borderBottomColor).toBe(WHITE);
+    await hoverGone(link);
+    await hoverGone(seeAll);
+    await resizeViewport(393, 852);
+    p.names[0].click();
+    await waitFor(() => expect(p.details[0].hidden).toBe(false));
+    await check(p.boxes[0].querySelector(".hp-places__link"));
+    await check(seeAll);
   },
 };
 

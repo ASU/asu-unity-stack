@@ -157,7 +157,7 @@ const videoControl = (id, extraClass) =>
     );
 
 const cta = (kind, label, href) =>
-  `<a class="hp-places__cta hp-places__cta--${kind}" href="${escape(href)}" ${gaAttributes(label, { href })}>${label}${kind === "secondary" ? arrow("hp-places__cta-icon") : ""}</a>`;
+  `<a class="hp-places__cta hp-places__cta--${kind}" href="${escape(href)}" ${gaAttributes(label, { href })}>${label}${arrow("hp-places__cta-icon")}</a>`;
 
 const seeAll = (cls, href) =>
   `<a class="${cls}" href="${escape(href)}" ${gaAttributes("See all ASU locations", { href })}>See all ASU locations${arrow("hp-places__arrow")}</a>`;
@@ -249,4 +249,25 @@ export const glassContrast = (text, alpha, backdrop) => {
   const a = luminance(...text);
   const b = luminance(level, level, level);
   return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
+};
+
+// Collects the CSS transitions a real pointer starts on `element`, paused as they start so a test can read them at a
+// chosen time; `stop()` removes the listener.
+export const watchTransitions = element => {
+  const runs = [];
+  const onRun = event => {
+    if (event.target !== element) return;
+    const animation = element
+      .getAnimations()
+      .find(a => a.transitionProperty === event.propertyName);
+    if (animation && !runs.includes(animation)) {
+      animation.pause();
+      runs.push(animation);
+    }
+  };
+  element.addEventListener("transitionrun", onRun);
+  return {
+    runs,
+    stop: () => element.removeEventListener("transitionrun", onRun),
+  };
 };

@@ -32,31 +32,21 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
   }
 }
 
-// A drawn 1px underline under the text, the space and the arrow (prototype 1218-1224); hover removes it.
+// Figma: a 1px stroke on the bottom of the link frame, 1px below the 24px line and clear of the glyphs, under the text,
+// the gap and the arrow; hover removes it.
 @mixin hp-places-arrow-link {
-  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   width: max-content;
   max-width: 100%;
+  border-bottom: 1px solid currentcolor;
   font-size: 16px;
   line-height: 24px;
   text-decoration: none !important;
 
-  &::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    bottom: 6px;
-    left: 0;
-    height: 1px;
-    background: currentcolor;
-    pointer-events: none;
-  }
-
-  &:hover::after {
-    opacity: 0;
+  &:hover {
+    border-bottom-color: transparent;
   }
 
   @include hp-places-focus;
@@ -178,17 +168,33 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
     left: 0;
   }
 
-  &:hover {
-    color: var(--hp-places-cta-ink);
-    box-shadow: 0 0 0 2px var(--hp-places-cta-edge);
+  @include hp-places-focus;
+}
+
+// Prototype: a filled pill grows 5% (colour unchanged), an outline pill fills with its own colour and the text
+// reverses (gold fill, Gray 1 text); 0.2s ease, no ring. The hover only changes the two custom properties, so the
+// visited rule below follows. TODO: confirm with design - 1.05 and 0.2s are the prototype's, not UDS tokens.
+@media (prefers-reduced-motion: no-preference) {
+  .hp-places__cta {
+    transition:
+      transform 0.2s ease,
+      color 0.2s ease,
+      background-color 0.2s ease;
   }
 
-  @include hp-places-focus;
+  .hp-places__cta--primary:hover {
+    transform: scale(1.05);
+  }
 }
 
 .hp-places__cta--secondary {
   --hp-places-cta-bg: transparent;
-  --hp-places-cta-ink: #{$uds-color-base-white};
+  --hp-places-cta-ink: #{$uds-color-brand-gold};
+
+  &:hover {
+    --hp-places-cta-bg: #{$uds-color-brand-gold};
+    --hp-places-cta-ink: #{$asu-gray-1};
+  }
 }
 
 .hp-places__cta-icon,
@@ -198,6 +204,11 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
   height: 14px;
   flex: none;
   pointer-events: none;
+}
+
+// Figma Button: a 14 x 14 arrow box.
+.hp-places__cta-icon {
+  width: 14px;
 }
 
 // ---- Locations: the accordion (Figma 375). Desktop overrides these in the block at the end. ----
@@ -478,6 +489,7 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
       opacity: 0;
     }
 
+
     .hp-places__mbtn {
       --mbtn-z-index: 3;
       --mbtn-rest-opacity: 75%;
@@ -658,6 +670,22 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
 
       @media (prefers-reduced-motion: no-preference) {
         transition: opacity 0.3s ease 0.2s;
+      }
+    }
+
+    // Figma: the box has a 4px gold stroke on its top edge, as wide as the box; it fades in with the box.
+    .hp-places__box::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 4px;
+      background: $uds-color-brand-gold;
+      pointer-events: none;
+
+      @media (forced-colors: active) {
+        background: Highlight;
       }
     }
 
