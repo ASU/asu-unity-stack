@@ -1,5 +1,5 @@
 import React from "react";
-import { expect, waitFor } from "storybook/test";
+import { expect, waitFor, within } from "storybook/test";
 
 import { initStories } from "./stories-grid.js";
 import {
@@ -62,6 +62,18 @@ const box = element => element.getBoundingClientRect();
 const style = (element, pseudo) => getComputedStyle(element, pseudo);
 const frame = () => new Promise(resolve => requestAnimationFrame(resolve));
 const px = value => parseFloat(value);
+
+// The "alt text" annotations of the seven News card-V3 instances in the Figma 1920 frame (13906:15852 .. 15858), in
+// card order, verbatim. The promo's text is ours (it carries the quote baked into the artwork, WCAG 1.1.1).
+const CARD_ALT = [
+  "ASU physician-engineering students wearing white coats at a university event.",
+  "Students smiling and participating in an event celebrating ASU's game degree program in Los Angeles.",
+  "A person in a white coat working outdoors among debris in a documentary featuring ASU students.",
+  "An ASU student wearing an honor shirt poses beside aerospace equipment.",
+  PROMO_ALT,
+  "ASU researchers in white lab coats gathered around equipment in a university laboratory.",
+  "Aerial view of Arizona State University's West Valley campus, showing academic buildings and surrounding green spaces.",
+];
 
 const parts = canvasElement => {
   const section = canvasElement.querySelector("section.hp-stories");
@@ -161,7 +173,7 @@ const expectContract = async p => {
     expect(c.sub.textContent).toBe(story.sub);
     expect(c.arrow.getAttribute("aria-hidden")).toBe("true");
     expect(c.scrim.getAttribute("aria-hidden")).toBe("true");
-    expect(c.img.getAttribute("alt")).toBe(story.promo ? PROMO_ALT : "");
+    expect(c.img.getAttribute("alt")).toBe(CARD_ALT[index]);
   });
 };
 
@@ -1255,6 +1267,29 @@ export const ScrimGeometry = {
       expect(box(c.scrim).top).toBeLessThanOrEqual(box(c.element).top + 0.05)
     );
     forceHover(c.element, false);
+  },
+};
+
+export const CardAlt = {
+  name: "Card alt text",
+  tags: ["!dev"],
+  globals: viewport(1440),
+  render: () => <Harness html={storiesHtml()} />,
+  play: async ({ canvasElement }) => {
+    await resizeViewport(1440, 900);
+    const view = within(canvasElement);
+    // every photo has the Figma alt text; the link's name is the alt text, the title and the subhead (the subhead is
+    // clipped, never display: none, so the name does not depend on the width or on hover)
+    await expect(view.getAllByRole("img")).toHaveLength(STORIES.length);
+    STORIES.forEach((story, index) => {
+      const link = view.getByRole("link", {
+        name: name =>
+          name.includes(CARD_ALT[index]) &&
+          name.includes(story.title) &&
+          name.includes(story.sub),
+      });
+      expect(link.getAttribute("href")).toBe(storyHref(index));
+    });
   },
 };
 

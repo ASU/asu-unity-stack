@@ -27,42 +27,51 @@ export const photoSrc = number => `story-photos/story-${number}.webp`;
 export const PROMO_ALT =
   "Barrett is the gold standard among the nation’s honors colleges. — The New York Times";
 
-// Prototype v2.71 copy (P:2496-2502), in DOM order = visual order. The promo is item 5 (row 2, cell 2).
+// Prototype v2.71 copy (P:2496-2502), in DOM order = visual order. The promo is item 5 (row 2, cell 2). `alt` is the
+// Figma "alt text" annotation of the card (the 1920 frame, News card-V3 13906:15852 .. 15858); an editor may blank it
+// for a decorative photo. The promo's text is ours: its artwork carries a quote that Figma's alt leaves out.
 export const STORIES = [
   {
     title: "A new generation of physician-engineers begins at ASU",
     photo: photoSrc(1),
+    alt: "ASU physician-engineering students wearing white coats at a university event.",
     sub: "Medical school opens with an engineering-first curriculum.",
   },
   {
     title: "The New game degree launches in Los Angeles",
     photo: photoSrc(2),
+    alt: "Students smiling and participating in an event celebrating ASU's game degree program in Los Angeles.",
     sub: "Game design and development, taught in the heart of the industry.",
   },
   {
     title: "Students part of Venice Film Festival documentary",
     photo: photoSrc(3),
+    alt: "A person in a white coat working outdoors among debris in a documentary featuring ASU students.",
     sub: "Film students’ work premieres on the festival’s world stage.",
   },
   {
     title: "ASU No. 2 public university for GI Bill students",
     photo: photoSrc(5),
+    alt: "An ASU student wearing an honor shirt poses beside aerospace equipment.",
     sub: "Recognized for support of veterans and military-connected students.",
   },
   {
     title: "Barrett, The Honors College is creating bright futures",
     photo: photoSrc(6),
+    alt: PROMO_ALT,
     sub: "Honors education with the reach of a Tier 1 research university.",
     promo: true,
   },
   {
     title: "New facility expands student research opportunities",
     photo: photoSrc(4),
+    alt: "ASU researchers in white lab coats gathered around equipment in a university laboratory.",
     sub: "New labs put undergraduates on funded research teams.",
   },
   {
     title: "Preparing the future workforce for the West Valley’s needs",
     photo: photoSrc(7),
+    alt: "Aerial view of Arizona State University's West Valley campus, showing academic buildings and surrounding green spaces.",
     sub: "Programs built around the region’s fastest-growing employers.",
   },
 ];
@@ -83,7 +92,7 @@ export const gaAttributes = text =>
 
 const card = (story, index) => {
   const src = story.photo;
-  const alt = story.promo ? escape(PROMO_ALT) : "";
+  const alt = escape(story.alt ?? "");
   return `<li role="listitem"><a class="hp-stories__card${story.promo ? " hp-stories__card--promo" : ""}" href="${storyHref(index)}" ${gaAttributes(story.title)}><img src="${src}" alt="${alt}"><span class="hp-stories__scrim" aria-hidden="true"></span><span class="hp-stories__arrow" aria-hidden="true"><svg viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="${ARROW_PATH}"/></svg></span><div class="hp-stories__text"><h3 class="hp-stories__title">${escape(story.title)}</h3><div class="hp-stories__sub-wrap"><p class="hp-stories__sub">${escape(story.sub)}</p></div></div></a></li>`;
 };
 
