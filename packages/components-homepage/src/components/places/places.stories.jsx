@@ -556,7 +556,8 @@ export const HoldGate = {
     const p = parts(canvasElement);
     p.names[0].click();
     await expect(p.video.hasAttribute("data-hold")).toBe(true);
-    // the pause button clears the hold itself (video-control.js) and the places listener goes back to the video
+    // the control is not shown while a campus is selected, so this click is programmatic: the shared control
+    // still clears the hold itself (video-control.js) and the places listener goes back to the video
     p.mbtn.click();
     await waitFor(() => expect(p.video.hasAttribute("data-hold")).toBe(false));
     await expect(p.names[0].getAttribute("aria-pressed")).toBe("false");
@@ -841,6 +842,49 @@ export const PlaceLinks = {
     await waitFor(() => expect(p.details[0].hidden).toBe(false));
     await check(p.boxes[0].querySelector(".hp-places__link"));
     await check(seeAll);
+  },
+};
+
+export const PauseControl = {
+  name: "Pause control hidden while a campus is selected",
+  tags: ["!dev"],
+  globals: viewport(1440),
+  render: () => <Harness before="20vh" after="40vh" html={placesHtml()} />,
+  play: async ({ canvasElement }) => {
+    await resizeViewport(1440, 900);
+    const p = parts(canvasElement);
+    // in this runner the clip fails to load and the script hides the control: settle, then show it for the test
+    await waitFor(() =>
+      expect(p.video.error !== null || p.video.readyState >= 2).toBe(true)
+    );
+    p.mbtn.hidden = false;
+    await expect(style(p.mbtn).display).toBe("grid");
+    // a still replaces the video: nothing to pause, so the control goes (and focus on it moves to the name)
+    p.mbtn.focus({ preventScroll: true });
+    p.names[1].click();
+    await waitFor(() => expect(style(p.mbtn).display).toBe("none"));
+    await expect(p.mbtn.checkVisibility()).toBe(false);
+    await expect(document.activeElement).toBe(p.names[1]);
+    // switching keeps it away; every way back to the video brings it back
+    p.names[2].click();
+    await expect(style(p.mbtn).display).toBe("none");
+    p.names[2].click();
+    await waitFor(() => expect(style(p.mbtn).display).toBe("grid"));
+    await select(p, 3);
+    p.closes[3].click();
+    await waitFor(() => expect(style(p.mbtn).display).toBe("grid"));
+    await select(p, 4);
+    document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape" }));
+    await waitFor(() => expect(style(p.mbtn).display).toBe("grid"));
+    await select(p, 5);
+    p.media.click();
+    await waitFor(() => expect(style(p.mbtn).display).toBe("grid"));
+    // below 1024 no still ever covers the video, so the control stays with an accordion item open
+    await resizeViewport(393, 852);
+    p.names[0].click();
+    await waitFor(() => expect(p.details[0].hidden).toBe(false));
+    await expect(p.section.classList.contains("has-still")).toBe(false);
+    await expect(style(p.mbtn).display).toBe("grid");
   },
 };
 

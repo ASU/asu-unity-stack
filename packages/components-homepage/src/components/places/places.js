@@ -236,6 +236,10 @@ const bind = (section, doc, win) => {
 
   const select = i => {
     if (sel >= 0 && sel !== i) hide(sel);
+    // A still replaces the video and the control goes (CSS): a focused control hands focus to the name.
+    if (deskButton && doc.activeElement === deskButton) {
+      names[i].focus({ preventScroll: true });
+    }
     sel = i;
     promote(stills[i]);
     hold(true);

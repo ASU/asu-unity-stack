@@ -489,6 +489,10 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
       opacity: 0;
     }
 
+    // A still replaces the video: there is nothing to pause or play until the box is closed.
+    &.has-still .hp-places__mbtn {
+      display: none;
+    }
 
     .hp-places__mbtn {
       --mbtn-z-index: 3;
