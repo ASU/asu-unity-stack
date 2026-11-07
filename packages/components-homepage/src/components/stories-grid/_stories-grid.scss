@@ -165,11 +165,30 @@ $hp-stories-scrim-rest-scale: 0.5;
   }
 }
 
+// More stories is the UDS outline button at the medium size (btn-medium, as the hero and reimagine buttons; 36px tall:
+// 16px line, 2 x 8px padding, 2 x 2px border). The theme's btn-md mixin lacks a semicolon (_buttons.scss:3), which
+// swallows the 14px font size and the 8px hit-area inset; restore both here, as reimagine does. Remove when the theme
+// is fixed. The arrow is a 14px box, 8px after the text (Figma Button).
+// TODO: confirm with design - the 14px arrow box is raw (no UDS token).
+.hp-stories .hp-stories__more {
+  --bs-btn-font-size: #{$uds-size-font-small};
+  --uds-clickable-area-inset: -#{$uds-size-spacing-1};
+
+  display: inline-flex;
+  align-items: center;
+  gap: $uds-size-spacing-1;
+}
+
+// An outline button fills on hover (prototype); the theme also scales `.btn` 1.05 from 992px, which would snap on
+// because the fill transition below leaves `transform` out. The press (`:active`) keeps the theme's scale.
+.hp-stories .hp-stories__more:hover:not(:active) {
+  transform: none;
+}
+
 .hp-stories__more-icon {
-  width: 0.875em;
-  height: 0.875em;
-  margin-left: $uds-size-spacing-half;
-  vertical-align: -0.125em;
+  flex: none;
+  width: 14px;
+  height: 14px;
 }
 
 // ---- Cards ----
@@ -230,7 +249,9 @@ $hp-stories-scrim-rest-scale: 0.5;
 // TODO: confirm with design - .7686 (= 1 - #3b3b3b/255) and 50% are raw.
 .hp-stories__scrim {
   position: absolute;
-  inset: 0 0 -1px; // the extra pixel keeps a scaled edge from showing a seam at the card's bottom
+  // One extra pixel on both sides and below, clipped by the card: at a half-pixel card edge (widths like 965px) the
+  // composited layer would otherwise snap short of the clip and leave a column of un-darkened photo.
+  inset: 0 -1px -1px;
   z-index: 1;
   background: linear-gradient(
     180deg,
@@ -476,6 +497,14 @@ $hp-stories-scrim-rest-scale: 0.5;
     transition:
       background-color 0.25s ease,
       color 0.25s ease;
+  }
+
+  // The prototype's outline pill: the fill and the text colour ease over 0.2s (the theme's .btn is 0.03s, a snap).
+  .hp-stories .hp-stories__more {
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease,
+      border-color 0.2s ease;
   }
 }
 
