@@ -124,6 +124,8 @@
       #filter-errors:target ~ header .filter-pill[data-k='errors'],
       #filter-infos:target ~ header .filter-pill[data-k='infos'],
       #filter-story-errors:target ~ header .filter-pill[data-k='story-errors'],
+      #filter-story-warnings:target ~ header .filter-pill[data-k='story-warnings'],
+      #filter-no-api:target ~ header .filter-pill[data-k='no-api'],
       #filter-doc-errors:target ~ header .filter-pill[data-k='docs'],
       #filter-docs:target ~ header .filter-pill[data-k='docs'] {
           box-shadow: 0 0 0 var(--active-ring) currentColor;
@@ -135,6 +137,8 @@
       #filter-errors,
       #filter-infos,
       #filter-story-errors,
+      #filter-story-warnings,
+      #filter-no-api,
       #filter-doc-errors,
       #filter-docs {
           display: none;
@@ -160,6 +164,14 @@
           display: flex;
           flex-direction: column;
           gap: 10px;
+          /* Keep a deep-linked card clear of the sticky header when scrolled into view */
+          scroll-margin-top: 110px;
+      }
+
+      /* Highlight the card deep-linked via components.html#<manifest-id> */
+      .card:target {
+          box-shadow: 0 0 0 2px var(--info);
+          border-color: var(--info);
       }
 
       .head {
@@ -241,6 +253,16 @@
           border-color: color-mix(in srgb, var(--err) 55%, var(--border));
       }
 
+      .snippet-warning {
+          margin-top: 8px;
+          padding: 8px 10px;
+          border-radius: 8px;
+          border: 1px solid color-mix(in srgb, var(--info) 45%, var(--border));
+          background: var(--info-bg);
+          color: #b3d9ff;
+          font-size: 12px;
+      }
+
       .as-toggle {
           cursor: pointer;
       }
@@ -300,7 +322,7 @@
           display: grid;
       }
 
-      /* Colored notes for prop type error + info */
+      /* Colored notes for API error + info */
       .note {
           padding: 12px;
           border: 1px solid var(--border);
@@ -456,6 +478,14 @@
           display: none;
       }
 
+      #filter-story-warnings:target ~ main .card:not(.has-story-warning) {
+          display: none;
+      }
+
+      #filter-no-api:target ~ main .card:not(.missing-api) {
+          display: none;
+      }
+
       #filter-doc-errors:target ~ main .card:not(.has-doc-error) {
           display: none;
       }
@@ -583,27 +613,32 @@
 <span id="filter-errors"></span>
 <span id="filter-infos"></span>
 <span id="filter-story-errors"></span>
+<span id="filter-story-warnings"></span>
+<span id="filter-no-api"></span>
 <span id="filter-doc-errors"></span>
 <span id="filter-docs"></span>
 <header>
   <div class="wrap">
     <h1>Manifest Debugger</h1>
-    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><span class="filter-pill ok" aria-disabled="true">39 components ok</span><a class="filter-pill info" data-k="infos" href="#filter-infos">37/39 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">19/137 story errors</a></div>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><span class="filter-pill ok" aria-disabled="true">39 components ok</span><a class="filter-pill info" data-k="infos" href="#filter-infos">37/39 infos</a><a class="filter-pill err" data-k="story-errors" href="#filter-story-errors">19/137 story errors</a><a class="filter-pill info" data-k="story-warnings" href="#filter-story-warnings">32/137 incomplete snippets</a></div>
   </div>
 </header>
 <main>
   <div class="wrap">
     <div class="note ok" style="margin-bottom: 16px;">
-              Using <code>react-docgen-typescript</code>. Generation took <strong>1.4s</strong>.
+              Using <code>react-docgen-typescript</code>. Generation took <strong>1.6s</strong>.
             </div>
     <h2 class="section-title">Components</h2>
     <div class="grid" role="list">
       
 <article
+  id="components-accordion"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  has-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="Accordion">
@@ -613,7 +648,7 @@
       <div class="badges">
         <label for="c-0-components-accordion-props" class="badge ok as-toggle">2 prop types</label>
         <label for="c-0-components-accordion-info" class="badge info as-toggle">1 info</label>
-        <label for="c-0-components-accordion-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-0-components-accordion-stories" class="badge ok as-toggle">4 stories · 1 incomplete</label>
         
         
       </div>
@@ -665,7 +700,8 @@ openedCard?: number</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { Accordion } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { Accordion } from '@asu/unity-react-core';
+import { getLoremSentences } from '@asu/shared';</code></pre>
               </div>
           
           
@@ -700,11 +736,12 @@ openedCard?: number</code></pre>
         ]}
         openedCard={3} /&gt;
 &lt;/&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Large Content</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -769,6 +806,7 @@ openedCard?: number</code></pre>
         &lt;p&gt;{getLoremSentences(10, i++)}&lt;/p&gt;
     &lt;/div&gt;
 &lt;/&gt;;</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `i` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
@@ -809,6 +847,7 @@ openedCard?: number</code></pre>
           },
         ]} /&gt;
 &lt;/&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -836,6 +875,7 @@ openedCard?: number</code></pre>
           },
         ]} /&gt;
 &lt;/&gt;;</code></pre>
+              
             </div>
         </div>
     
@@ -843,10 +883,13 @@ openedCard?: number</code></pre>
   </div>
 </article>
 <article
+  id="components-anchormenu"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="AnchorMenu">
@@ -910,7 +953,7 @@ items: AnchorMenuItem[]</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { AnchorMenu, Divider, Basic as Header } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { AnchorMenu, Divider, Basic as Header } from '@asu/unity-react-core';</code></pre>
               </div>
           
           
@@ -931,7 +974,22 @@ items: AnchorMenuItem[]</code></pre>
                 &lt;div className={classNames(&quot;row&quot;, &quot;row-spaced&quot;, &quot;pt-2&quot;, &quot;pb-2&quot;)}&gt;
                     &lt;div className={classNames(&quot;col&quot;, &quot;col-12&quot;, &quot;col-md-12&quot;, &quot;col-lg-12&quot;)}&gt;
                         {/* Component */}
-                        &lt;AnchorMenu items={items} firstElementId=&quot;first-container&quot; /&gt;
+                        &lt;AnchorMenu
+                            items={[
+                              {
+                                text: &quot;Title Case is Required&quot;,
+                                targetIdName: &quot;first-container&quot;,
+                                icon: [&quot;fas&quot;, &quot;link&quot;],
+                              },
+                              { text: &quot;Second Container&quot;, targetIdName: &quot;second-container&quot; },
+                              { text: &quot;Third Container&quot;, targetIdName: &quot;third-container&quot; },
+                              {
+                                text: &quot;This is the Last&quot;,
+                                targetIdName: &quot;fourth-container&quot;,
+                                icon: [&quot;fas&quot;, &quot;link&quot;],
+                              },
+                            ]}
+                            firstElementId=&quot;first-container&quot; /&gt;
                         {/* Demostration purposes containers */}
                         &lt;Containers /&gt;
                     &lt;/div&gt;
@@ -940,6 +998,7 @@ items: AnchorMenuItem[]</code></pre>
         &lt;/&gt;
     );
 };</code></pre>
+              
             </div>
         </div>
     
@@ -947,10 +1006,13 @@ items: AnchorMenuItem[]</code></pre>
   </div>
 </article>
 <article
+  id="components-article"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="Article">
@@ -1040,7 +1102,8 @@ zoomUrl?: string</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { Article } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { Article } from '@asu/unity-react-core';
+import { imageAny } from '@asu/shared';</code></pre>
               </div>
           
           
@@ -1054,7 +1117,7 @@ zoomUrl?: string</code></pre>
               <pre><code>const News = () =&gt; &lt;Article
     type=&quot;news&quot;
     articleUrl=&quot;https://example.com&quot;
-    headerImageUrl={img}
+    headerImageUrl={imageAny()}
     title=&quot;Clarisse Machanguana takes her skill set to the next level at ASU Thunderbird&quot;
     publicationDate=&quot;March 18, 2021&quot;
     authorName=&quot;Jimena Garrison&quot;
@@ -1077,6 +1140,7 @@ zoomUrl?: string</code></pre>
       },
     ]}
     body=&quot;&lt;p&gt;After 34 years in the game of basketball, Clarisse Machanguana retired. Her eponymous philanthropic foundation remains her only connection to the sport, although the effect of the global game has left imprints in many aspects of her life.&lt;/p&gt;&lt;p&gt;Playing basketball took her to Portugal and then the U.S., where she attended Old Dominion University in Virginia to study criminal justice. When she realized that sports could be a microcosm of life and values, she decided to create a way to coach sports while teaching life skills in her home country of Mozambique. She started the &lt;a href=&#39;http://machanguanafoundation.rf.gd/&#39;&gt;Clarisse Machanguana Foundation&lt;/a&gt; in 2014 with the goal of empowering Mozambican youth through health, education and sports programs.&lt;/p&gt;&lt;p&gt;Now she’s taking her leadership game to the next level at ASU’s Thunderbird School of Global Management, earning her Master of Global Management degree with a nonprofit management concentration. Machanguana is honing her skills as a global professional in and out of the classroom to propel her foundation even further.&lt;/p&gt;&lt;p&gt;Here she reflects on the experiences that brought her to Thunderbird and ASU.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Question: Why basketball?&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; I started at age 6, and because it was popular in my area and I was tall — now 6-feet-5-inches tall, to be exact — people kept telling me I should play. Basketball took me everywhere. I had a scholarship to play in Portugal and the U.S., and later on in Spain, France, Brazil, South Korea and Italy. Basketball became a passport and a school for me, and a source of amazing friendships. I played from age 6 to 40. My foundation now partners with the Department of Education. We collaborate with teachers and teach them to coach life skills and basketball.&lt;/p&gt;&lt;p&gt;I advocate social causes that are challenging for youth and transform them into opportunities, giving them tools to lift themselves out of the poverty they see. They use the skills like respecting your opponent and perseverance that can be applied in life as well as sports. When you wake up and all you see is poverty, you start to believe that mindset of limitations and scarcity. We give young people something else to believe in, a vision of a better life.&lt;/p&gt;&quot; /&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -1115,6 +1179,7 @@ zoomUrl?: string</code></pre>
     zoomUrl=&quot;https://zoom.com&quot;
     calendarUrl=&quot;#&quot;
     body=&quot;&lt;p&gt;After 34 years in the game of basketball, Clarisse Machanguana retired. Her eponymous philanthropic foundation remains her only connection to the sport, although the effect of the global game has left imprints in many aspects of her life.&lt;/p&gt;&lt;p&gt;Playing basketball took her to Portugal and then the U.S., where she attended Old Dominion University in Virginia to study criminal justice. When she realized that sports could be a microcosm of life and values, she decided to create a way to coach sports while teaching life skills in her home country of Mozambique. She started the &lt;a href=&#39;http://machanguanafoundation.rf.gd/&#39;&gt;Clarisse Machanguana Foundation&lt;/a&gt; in 2014 with the goal of empowering Mozambican youth through health, education and sports programs.&lt;/p&gt;&lt;p&gt;Now she’s taking her leadership game to the next level at ASU’s Thunderbird School of Global Management, earning her Master of Global Management degree with a nonprofit management concentration. Machanguana is honing her skills as a global professional in and out of the classroom to propel her foundation even further.&lt;/p&gt;&lt;p&gt;Here she reflects on the experiences that brought her to Thunderbird and ASU.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Question: Why basketball?&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Answer:&lt;/strong&gt; I started at age 6, and because it was popular in my area and I was tall — now 6-feet-5-inches tall, to be exact — people kept telling me I should play. Basketball took me everywhere. I had a scholarship to play in Portugal and the U.S., and later on in Spain, France, Brazil, South Korea and Italy. Basketball became a passport and a school for me, and a source of amazing friendships. I played from age 6 to 40. My foundation now partners with the Department of Education. We collaborate with teachers and teach them to coach life skills and basketball.&lt;/p&gt;&lt;p&gt;I advocate social causes that are challenging for youth and transform them into opportunities, giving them tools to lift themselves out of the poverty they see. They use the skills like respecting your opponent and perseverance that can be applied in life as well as sports. When you wake up and all you see is poverty, you start to believe that mindset of limitations and scarcity. We give young people something else to believe in, a vision of a better life.&lt;/p&gt;&quot; /&gt;;</code></pre>
+              
             </div>
         </div>
     
@@ -1122,10 +1187,13 @@ zoomUrl?: string</code></pre>
   </div>
 </article>
 <article
+  id="components-breadcrumbs"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   has-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="Breadcrumbs">
@@ -1185,7 +1253,9 @@ linkItems?: { label: string; active: boolean; href: string; }[] = []</code></pre
               <div class="row">
                 <span class="ex-name">Default</span>
                 <span class="badge err">story error</span>
+                
               </div>
+              
               
               
               
@@ -1202,7 +1272,9 @@ linkItems?: { label: string; active: boolean; href: string; }[] = []</code></pre
               <div class="row">
                 <span class="ex-name">Alternate Background</span>
                 <span class="badge err">story error</span>
+                
               </div>
+              
               
               
               
@@ -1221,7 +1293,7 @@ linkItems?: { label: string; active: boolean; href: string; }[] = []</code></pre
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { Breadcrumbs } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { Breadcrumbs } from '@asu/unity-react-core';</code></pre>
               </div>
           
           
@@ -1231,10 +1303,13 @@ linkItems?: { label: string; active: boolean; href: string; }[] = []</code></pre
   </div>
 </article>
 <article
+  id="components-button"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="Button">
@@ -1324,8 +1399,8 @@ variant?: &quot;borderless&quot; | &quot;outline&quot; | &quot;filled&quot;</cod
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { Button } from "@asu/unity-react-core";
-import { BrowserRouter as Router } from "react-router-dom";</code></pre>
+                <pre><code>import { Button } from '@asu/unity-react-core';
+import { BrowserRouter as Router, Link } from 'react-router-dom';</code></pre>
               </div>
           
           
@@ -1340,11 +1415,16 @@ import { BrowserRouter as Router } from "react-router-dom";</code></pre>
     return (
         &lt;div className=&quot;container-fluid&quot;&gt;
             &lt;div className=&quot;col col-sm-12 p-3&quot;&gt;
-                &lt;Button label=&quot;Default Button&quot; onClick={handleClick} /&gt;
+                &lt;Button
+                    label=&quot;Default Button&quot;
+                    onClick={() =&gt; {
+                      alert(&quot;The button was clicked.&quot;);
+                    }} /&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     );
 };</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -1357,11 +1437,18 @@ import { BrowserRouter as Router } from "react-router-dom";</code></pre>
     return (
         &lt;div className=&quot;container-fluid&quot;&gt;
             &lt;div className=&quot;col col-sm-12 p-3&quot;&gt;
-                &lt;Button color=&quot;gold&quot; label=&quot;Small Gold Button&quot; onClick={handleClick} size=&quot;small&quot; /&gt;
+                &lt;Button
+                    color=&quot;gold&quot;
+                    label=&quot;Small Gold Button&quot;
+                    onClick={() =&gt; {
+                      alert(&quot;The button was clicked.&quot;);
+                    }}
+                    size=&quot;small&quot; /&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     );
 };</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -1378,11 +1465,14 @@ import { BrowserRouter as Router } from "react-router-dom";</code></pre>
                     color=&quot;gold&quot;
                     icon={[&quot;fas&quot;, &quot;rocket&quot;]}
                     label=&quot;Icon Button&quot;
-                    onClick={handleClick} /&gt;
+                    onClick={() =&gt; {
+                      alert(&quot;The button was clicked.&quot;);
+                    }} /&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     );
 };</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -1400,6 +1490,7 @@ import { BrowserRouter as Router } from "react-router-dom";</code></pre>
         &lt;/div&gt;
     );
 };</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -1417,6 +1508,7 @@ import { BrowserRouter as Router } from "react-router-dom";</code></pre>
         &lt;/div&gt;
     );
 };</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -1432,6 +1524,7 @@ import { BrowserRouter as Router } from "react-router-dom";</code></pre>
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/Router&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -1444,11 +1537,18 @@ import { BrowserRouter as Router } from "react-router-dom";</code></pre>
     return (
         &lt;div className=&quot;container-fluid&quot;&gt;
             &lt;div className=&quot;col col-sm-12 p-3&quot;&gt;
-                &lt;Button label=&quot;Filled Button&quot; variant=&quot;filled&quot; color=&quot;gold&quot; onClick={handleClick} /&gt;
+                &lt;Button
+                    label=&quot;Filled Button&quot;
+                    variant=&quot;filled&quot;
+                    color=&quot;gold&quot;
+                    onClick={() =&gt; {
+                      alert(&quot;The button was clicked.&quot;);
+                    }} /&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     );
 };</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -1465,11 +1565,14 @@ import { BrowserRouter as Router } from "react-router-dom";</code></pre>
                     label=&quot;Outline Button&quot;
                     variant=&quot;outline&quot;
                     color=&quot;maroon&quot;
-                    onClick={handleClick} /&gt;
+                    onClick={() =&gt; {
+                      alert(&quot;The button was clicked.&quot;);
+                    }} /&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     );
 };</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -1486,11 +1589,14 @@ import { BrowserRouter as Router } from "react-router-dom";</code></pre>
                     label=&quot;Borderless Button&quot;
                     variant=&quot;borderless&quot;
                     color=&quot;gold&quot;
-                    onClick={handleClick} /&gt;
+                    onClick={() =&gt; {
+                      alert(&quot;The button was clicked.&quot;);
+                    }} /&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     );
 };</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -1566,6 +1672,7 @@ import { BrowserRouter as Router } from "react-router-dom";</code></pre>
     &lt;/div&gt;
   &lt;/div&gt;
 );</code></pre>
+              
             </div>
         </div>
     
@@ -1573,10 +1680,13 @@ import { BrowserRouter as Router } from "react-router-dom";</code></pre>
   </div>
 </article>
 <article
+  id="components-buttonicononly"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="ButtonIconOnly">
@@ -1652,7 +1762,7 @@ size?: &quot;small&quot; | &quot;large&quot; = small</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { ButtonIconOnly } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { ButtonIconOnly } from '@asu/unity-react-core';</code></pre>
               </div>
           
           
@@ -1666,10 +1776,16 @@ size?: &quot;small&quot; | &quot;large&quot; = small</code></pre>
               <pre><code>const DefaultButton = () =&gt; &lt;div className=&quot;container-fluid&quot;&gt;
     &lt;div className=&quot;row&quot;&gt;
         &lt;div className=&quot;col col-sm-12 p-3&quot;&gt;
-            &lt;ButtonIconOnly color=&quot;white&quot; icon={[&quot;fas&quot;, &quot;times&quot;]} onClick={handleClick} /&gt;
+            &lt;ButtonIconOnly
+                color=&quot;white&quot;
+                icon={[&quot;fas&quot;, &quot;times&quot;]}
+                onClick={e =&gt; {
+                  e.preventDefault();
+                }} /&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -1681,10 +1797,16 @@ size?: &quot;small&quot; | &quot;large&quot; = small</code></pre>
               <pre><code>const CloseButton = () =&gt; &lt;div className=&quot;container-fluid&quot;&gt;
     &lt;div className=&quot;row&quot;&gt;
         &lt;div className=&quot;col col-sm-12 p-3&quot;&gt;
-            &lt;ButtonIconOnly color=&quot;white&quot; icon={[&quot;fas&quot;, &quot;times&quot;]} onClick={handleClick} /&gt;
+            &lt;ButtonIconOnly
+                color=&quot;white&quot;
+                icon={[&quot;fas&quot;, &quot;times&quot;]}
+                onClick={e =&gt; {
+                  e.preventDefault();
+                }} /&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -1699,11 +1821,14 @@ size?: &quot;small&quot; | &quot;large&quot; = small</code></pre>
             &lt;ButtonIconOnly
                 color=&quot;white&quot;
                 icon={[&quot;fas&quot;, &quot;chevron-right&quot;]}
-                onClick={handleClick}
+                onClick={e =&gt; {
+                  e.preventDefault();
+                }}
                 size=&quot;large&quot; /&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -1718,11 +1843,14 @@ size?: &quot;small&quot; | &quot;large&quot; = small</code></pre>
             &lt;ButtonIconOnly
                 color=&quot;white&quot;
                 icon={[&quot;fas&quot;, &quot;chevron-left&quot;]}
-                onClick={handleClick}
+                onClick={e =&gt; {
+                  e.preventDefault();
+                }}
                 size=&quot;large&quot; /&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;;</code></pre>
+              
             </div>
         </div>
     
@@ -1730,10 +1858,13 @@ size?: &quot;small&quot; | &quot;large&quot; = small</code></pre>
   </div>
 </article>
 <article
+  id="components-buttontag"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="ButtonTag">
@@ -1805,8 +1936,8 @@ label?: string</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { ButtonTag } from "@asu/unity-react-core";
-import { BrowserRouter as Router } from "react-router-dom";</code></pre>
+                <pre><code>import { ButtonTag } from '@asu/unity-react-core';
+import { BrowserRouter as Router, Link } from 'react-router-dom';</code></pre>
               </div>
           
           
@@ -1821,11 +1952,17 @@ import { BrowserRouter as Router } from "react-router-dom";</code></pre>
     return (
         &lt;div className=&quot;container-fluid&quot;&gt;
             &lt;div className=&quot;col col-sm-12 p-3&quot;&gt;
-                &lt;ButtonTag label=&quot;Tag Button&quot; color=&quot;gray&quot; onClick={handleClick} /&gt;
+                &lt;ButtonTag
+                    label=&quot;Tag Button&quot;
+                    color=&quot;gray&quot;
+                    onClick={e =&gt; {
+                      e.preventDefault();
+                    }} /&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     );
 };</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -1843,6 +1980,7 @@ import { BrowserRouter as Router } from "react-router-dom";</code></pre>
         &lt;/div&gt;
     );
 };</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -1862,6 +2000,7 @@ import { BrowserRouter as Router } from "react-router-dom";</code></pre>
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/Router&gt;;</code></pre>
+              
             </div>
         </div>
     
@@ -1869,10 +2008,13 @@ import { BrowserRouter as Router } from "react-router-dom";</code></pre>
   </div>
 </article>
 <article
+  id="components-card"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="Card">
@@ -1964,7 +2106,8 @@ width?: &quot;25%&quot; | &quot;50%&quot; | &quot;75%&quot; | &quot;100%&quot; =
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { Card } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { Card } from '@asu/unity-react-core';
+import { imageAny } from '@asu/shared';</code></pre>
               </div>
           
           
@@ -1981,7 +2124,7 @@ width?: &quot;25%&quot; | &quot;50%&quot; | &quot;75%&quot; | &quot;100%&quot; =
             &lt;Card
                 type=&quot;default&quot;
                 horizontal={false}
-                image={img1}
+                image={imageAny()}
                 imageAltText=&quot;An example image&quot;
                 title=&quot;Default title&quot;
                 body=&quot;&lt;span style=&#39;font-weight: bold;&#39;&gt;(Bold!) Body copy goes here.&lt;/span&gt; Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.&quot;
@@ -2008,6 +2151,7 @@ width?: &quot;25%&quot; | &quot;50%&quot; | &quot;75%&quot; | &quot;100%&quot; =
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -2019,10 +2163,37 @@ width?: &quot;25%&quot; | &quot;50%&quot; | &quot;75%&quot; | &quot;100%&quot; =
               <pre><code>const DefaultBorderless = () =&gt; &lt;div className=&quot;container&quot;&gt;
     &lt;div className={classNames(&quot;row&quot;, &quot;row-spaced&quot;, &quot;pt-2&quot;, &quot;pb-2&quot;)}&gt;
         &lt;div className={classNames(&quot;col&quot;, &quot;col-12&quot;)}&gt;
-            &lt;Card title=&quot;Default card - borderless&quot; showBorders={false} /&gt;
+            &lt;Card
+                type=&quot;default&quot;
+                horizontal={false}
+                image={imageAny()}
+                imageAltText=&quot;An example image&quot;
+                title=&quot;Default card - borderless&quot;
+                body=&quot;&lt;span style=&#39;font-weight: bold;&#39;&gt;(Bold!) Body copy goes here.&lt;/span&gt; Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.&quot;
+                buttons={[
+                  {
+                    color: &quot;maroon&quot;,
+                    size: &quot;default&quot;,
+                    label: &quot;CTA button&quot;,
+                  },
+                  {
+                    color: &quot;gold&quot;,
+                    size: &quot;small&quot;,
+                    label: &quot;Link Button&quot;,
+                    href: &quot;/&quot;,
+                    target: &quot;_top&quot;,
+                  },
+                ]}
+                tags={[
+                  { color: &quot;gray&quot;, label: &quot;tag1&quot;, href: &quot;/#example-link&quot; },
+                  { color: &quot;gray&quot;, label: &quot;tag2&quot;, href: &quot;/#example-link&quot; },
+                  { color: &quot;gray&quot;, label: &quot;tag3&quot;, href: &quot;/#example-link&quot; },
+                ]}
+                showBorders={false} /&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -2050,6 +2221,7 @@ width?: &quot;25%&quot; | &quot;50%&quot; | &quot;75%&quot; | &quot;100%&quot; =
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -2064,13 +2236,14 @@ width?: &quot;25%&quot; | &quot;50%&quot; | &quot;75%&quot; | &quot;100%&quot; =
             &lt;Card
                 type=&quot;degree&quot;
                 horizontal={false}
-                image={img1}
+                image={imageAny()}
                 imageAltText=&quot;An example image&quot;
                 title=&quot;Default title&quot;
                 body=&quot;&lt;span style=&#39;font-weight: bold;&#39;&gt;(Bold!) Body copy goes here.&lt;/span&gt; Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.&quot; /&gt;
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -2085,7 +2258,7 @@ width?: &quot;25%&quot; | &quot;50%&quot; | &quot;75%&quot; | &quot;100%&quot; =
             &lt;Card
                 type=&quot;event&quot;
                 horizontal={false}
-                image={img1}
+                image={imageAny()}
                 imageAltText=&quot;An example image&quot;
                 title=&quot;Sun Devil Women&#39;s Tennis: NCAA Singles and Doubles Championships&quot;
                 cardLink=&quot;#example-link&quot;
@@ -2095,6 +2268,7 @@ width?: &quot;25%&quot; | &quot;50%&quot; | &quot;75%&quot; | &quot;100%&quot; =
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -2109,7 +2283,7 @@ width?: &quot;25%&quot; | &quot;50%&quot; | &quot;75%&quot; | &quot;100%&quot; =
             &lt;Card
                 type=&quot;news&quot;
                 horizontal={false}
-                image={img1}
+                image={imageAny()}
                 imageAltText=&quot;An example image&quot;
                 title=&quot;ASU researchers discover DNA-based electronic storage system&quot;
                 body=&quot;&lt;span style=&#39;font-weight: bold;&#39;&gt;(Bold!) Body copy goes here.&lt;/span&gt; Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.&quot;
@@ -2117,6 +2291,7 @@ width?: &quot;25%&quot; | &quot;50%&quot; | &quot;75%&quot; | &quot;100%&quot; =
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -2131,7 +2306,7 @@ width?: &quot;25%&quot; | &quot;50%&quot; | &quot;75%&quot; | &quot;100%&quot; =
             &lt;Card
                 type=&quot;story&quot;
                 horizontal={false}
-                image={img1}
+                image={imageAny()}
                 imageAltText=&quot;An example image&quot;
                 title=&quot;Story title&quot;
                 body=&quot;&lt;span style=&#39;font-weight: bold;&#39;&gt;(Bold!) Body copy goes here.&lt;/span&gt; Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.&quot;
@@ -2154,6 +2329,7 @@ width?: &quot;25%&quot; | &quot;50%&quot; | &quot;75%&quot; | &quot;100%&quot; =
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -2168,7 +2344,7 @@ width?: &quot;25%&quot; | &quot;50%&quot; | &quot;75%&quot; | &quot;100%&quot; =
             &lt;Card
                 type=&quot;story&quot;
                 horizontal
-                image={img1}
+                image={imageAny()}
                 imageAltText=&quot;An example image&quot;
                 title=&quot;Horizontal story&quot;
                 body=&quot;&lt;span style=&#39;font-weight: bold;&#39;&gt;(Bold!) Body copy goes here.&lt;/span&gt; Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.&quot;
@@ -2180,6 +2356,7 @@ width?: &quot;25%&quot; | &quot;50%&quot; | &quot;75%&quot; | &quot;100%&quot; =
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -2194,7 +2371,7 @@ width?: &quot;25%&quot; | &quot;50%&quot; | &quot;75%&quot; | &quot;100%&quot; =
             &lt;Card
                 type=&quot;story&quot;
                 horizontal={false}
-                image={img1}
+                image={imageAny()}
                 imageAltText=&quot;An example image&quot;
                 title=&quot;ASU News Story title&quot;
                 body=&quot;&lt;span style=&#39;font-weight: bold;&#39;&gt;(Bold!) Body copy goes here.&lt;/span&gt; Limit to 5 lines max. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod tempo.&quot;
@@ -2208,6 +2385,7 @@ width?: &quot;25%&quot; | &quot;50%&quot; | &quot;75%&quot; | &quot;100%&quot; =
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;;</code></pre>
+              
             </div>
         </div>
     
@@ -2215,10 +2393,13 @@ width?: &quot;25%&quot; | &quot;50%&quot; | &quot;75%&quot; | &quot;100%&quot; =
   </div>
 </article>
 <article
+  id="components-card-arrangement"
   class="card 
-  no-error 
-  no-info 
+  no-error
+  no-info
   no-story-error
+  has-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="CardArrangement">
@@ -2228,14 +2409,16 @@ width?: &quot;25%&quot; | &quot;50%&quot; | &quot;75%&quot; | &quot;100%&quot; =
       <div class="badges">
         <label for="c-8-components-card-arrangement-props" class="badge ok as-toggle">3 prop types</label>
         
-        <label for="c-8-components-card-arrangement-stories" class="badge ok as-toggle">11 stories</label>
+        <label for="c-8-components-card-arrangement-stories" class="badge ok as-toggle">11 stories · 9 incomplete</label>
         
         
       </div>
     </div>
     <div class="meta" title="./src/components/CardArrangement/CardArrangement.stories.jsx">components-card-arrangement · ./src/components/CardArrangement/CardArrangement.stories.jsx</div>
     
-    <div class="hint">CardArrangement component renders multiple cards that wrap naturally based on their intrinsic min/max widths. The parent container determines the overall width, and cards will flow and wrap automatically to fit the available space.</div>
+    <div class="hint">CardArrangement component renders multiple cards that wrap naturally based on
+their intrinsic min/max widths. The parent container determines the overall width,
+and cards will flow and wrap automatically to fit the available space.</div>
     
   </div>
 
@@ -2284,42 +2467,160 @@ columns?: &quot;1&quot; | &quot;2&quot; | &quot;3&quot; | &quot;4&quot; | 1 | 2 
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { CardArrangement } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { CardArrangement } from '@asu/unity-react-core';</code></pre>
               </div>
           
           
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Three cards example</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
               <pre><code>const ThreeColumns = () =&gt; &lt;div className=&quot;container&quot;&gt;
-    &lt;CardArrangement cards={sampleCards} columns={3} /&gt;
+    &lt;CardArrangement
+        cards={[
+          {
+            type: &quot;default&quot;,
+            image: img1,
+            imageAltText: &quot;Sample image 1&quot;,
+            title: &quot;Card Title One&quot;,
+            body: &quot;This is the body content for the first card. Lorem ipsum dolor sit amet, consectetur adipiscing elit.&quot;,
+            buttons: [
+              {
+                color: &quot;maroon&quot;,
+                size: &quot;default&quot;,
+                label: &quot;Learn more&quot;,
+                href: &quot;#&quot;,
+              },
+            ],
+          },
+          {
+            type: &quot;default&quot;,
+            image: img1,
+            imageAltText: &quot;Sample image 2&quot;,
+            title: &quot;Card Title Two&quot;,
+            body: &quot;This is the body content for the second card. Sed do eiusmod tempor incididunt ut labore.&quot;,
+            buttons: [
+              {
+                color: &quot;gold&quot;,
+                size: &quot;default&quot;,
+                label: &quot;Explore&quot;,
+                href: &quot;#&quot;,
+              },
+            ],
+          },
+          {
+            type: &quot;default&quot;,
+            image: img1,
+            imageAltText: &quot;Sample image 3&quot;,
+            title: &quot;Card Title Three&quot;,
+            body: &quot;This is the body content for the third card. Ut enim ad minim veniam, quis nostrud exercitation.&quot;,
+            tags: [
+              { color: &quot;gray&quot;, label: &quot;tag1&quot;, href: &quot;#&quot; },
+              { color: &quot;gray&quot;, label: &quot;tag2&quot;, href: &quot;#&quot; },
+            ],
+          },
+        ]}
+        columns={3} /&gt;
 &lt;/div&gt;;</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `img1` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Two cards example</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
               <pre><code>const TwoColumns = () =&gt; &lt;div className=&quot;container&quot;&gt;
-    &lt;CardArrangement cards={eventCards} columns={2} /&gt;
+    &lt;CardArrangement
+        cards={[
+          {
+            type: &quot;event&quot;,
+            image: img1,
+            imageAltText: &quot;Event image 1&quot;,
+            title:
+              &quot;Innovation Summit 2024 with a very long title that should wrap to multiple lines and test the card height consistency across cards in the same row&quot;,
+            body: &quot;Join us for a day of innovation and collaboration with industry leaders. Also a long body text to test height consistency across cards in the same row.&quot;,
+            eventFormat: &quot;stack&quot;,
+            eventTime: &quot;Wed, March 15, 2024&lt;br /&gt;9:00 a.m - 5:00 p.m.&quot;,
+            eventLocation: &quot;Tempe campus&quot;,
+            buttons: [
+              {
+                color: &quot;maroon&quot;,
+                size: &quot;default&quot;,
+                label: &quot;Register&quot;,
+                href: &quot;#&quot;,
+              },
+            ],
+          },
+          {
+            type: &quot;event&quot;,
+            image: img1,
+            imageAltText: &quot;Event image 2&quot;,
+            title: &quot;Research Symposium&quot;,
+            body: &quot;Discover cutting-edge research from ASU scholars and students.&quot;,
+            eventFormat: &quot;stack&quot;,
+            eventTime: &quot;Fri, April 20, 2024&lt;br /&gt;10:00 a.m - 2:00 p.m.&quot;,
+            eventLocation: &quot;West campus&quot;,
+            buttons: [
+              {
+                color: &quot;maroon&quot;,
+                size: &quot;default&quot;,
+                label: &quot;Learn more&quot;,
+                href: &quot;#&quot;,
+              },
+            ],
+          },
+        ]}
+        columns={2} /&gt;
 &lt;/div&gt;;</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `img1` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Four cards example</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
               <pre><code>const FourColumns = () =&gt; &lt;div className=&quot;container&quot;&gt;
-    &lt;CardArrangement cards={degreeCards} columns={4} /&gt;
+    &lt;CardArrangement
+        cards={[
+          {
+            type: &quot;degree&quot;,
+            image: img1,
+            imageAltText: &quot;Degree program 1&quot;,
+            title: &quot;Computer Science, BS&quot;,
+            body: &quot;Learn programming, algorithms, and software development from industry experts.&quot;,
+          },
+          {
+            type: &quot;degree&quot;,
+            image: img1,
+            imageAltText: &quot;Degree program 2&quot;,
+            title: &quot;Business Administration, MBA&quot;,
+            body: &quot;Advance your career with strategic thinking and leadership skills.&quot;,
+          },
+          {
+            type: &quot;degree&quot;,
+            image: img1,
+            imageAltText: &quot;Degree program 3&quot;,
+            title: &quot;Biomedical Engineering, MS&quot;,
+            body: &quot;Innovate at the intersection of medicine and technology.&quot;,
+          },
+          {
+            type: &quot;degree&quot;,
+            image: img1,
+            imageAltText: &quot;Degree program 4&quot;,
+            title: &quot;Psychology, BA&quot;,
+            body: &quot;Understand human behavior and mental processes through scientific inquiry.&quot;,
+          },
+        ]}
+        columns={4} /&gt;
 &lt;/div&gt;;</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `img1` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
@@ -2345,22 +2646,66 @@ columns?: &quot;1&quot; | &quot;2&quot; | &quot;3&quot; | &quot;4&quot; | 1 | 2 
           },
         ]} /&gt;
 &lt;/div&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Multiple story cards</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
               <pre><code>const SingleColumn = () =&gt; &lt;div className=&quot;container&quot;&gt;
-    &lt;CardArrangement cards={storyCards} columns={1} /&gt;
+    &lt;CardArrangement
+        cards={[
+          {
+            type: &quot;story&quot;,
+            image: img1,
+            imageAltText: &quot;Story image 1&quot;,
+            title: &quot;Student Success Story&quot;,
+            body: &quot;Read about how our programs are transforming lives and careers.&quot;,
+            linkLabel: &quot;Read full story&quot;,
+            linkUrl: &quot;#&quot;,
+            tags: [
+              { color: &quot;gray&quot;, label: &quot;Students&quot;, href: &quot;#&quot; },
+              { color: &quot;gray&quot;, label: &quot;Success&quot;, href: &quot;#&quot; },
+            ],
+          },
+          {
+            type: &quot;story&quot;,
+            image: img1,
+            imageAltText: &quot;Story image 2&quot;,
+            title: &quot;Research Breakthrough&quot;,
+            body: &quot;ASU researchers make significant advances in renewable energy technology.&quot;,
+            linkLabel: &quot;Learn more&quot;,
+            linkUrl: &quot;#&quot;,
+            tags: [
+              { color: &quot;gray&quot;, label: &quot;Research&quot;, href: &quot;#&quot; },
+              { color: &quot;gray&quot;, label: &quot;Innovation&quot;, href: &quot;#&quot; },
+            ],
+          },
+          {
+            type: &quot;story&quot;,
+            image: img1,
+            imageAltText: &quot;Story image 3&quot;,
+            title: &quot;Community Impact&quot;,
+            body: &quot;How ASU is making a difference in local communities through service.&quot;,
+            linkLabel: &quot;Read more&quot;,
+            linkUrl: &quot;#&quot;,
+            tags: [
+              { color: &quot;gray&quot;, label: &quot;Community&quot;, href: &quot;#&quot; },
+              { color: &quot;gray&quot;, label: &quot;Service&quot;, href: &quot;#&quot; },
+            ],
+          },
+        ]}
+        columns={1} /&gt;
 &lt;/div&gt;;</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `img1` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Mixed card types (no columns specified)</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -2411,6 +2756,7 @@ columns?: &quot;1&quot; | &quot;2&quot; | &quot;3&quot; | &quot;4&quot; | 1 | 2 
           },
         ]} /&gt;
 &lt;/div&gt;;</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `img1` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
@@ -2467,50 +2813,211 @@ columns?: &quot;1&quot; | &quot;2&quot; | &quot;3&quot; | &quot;4&quot; | 1 | 2 
         ]}
         columns={2} /&gt;
 &lt;/div&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Ranking cards (large)</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
               <pre><code>const RankingCardsLarge = () =&gt; &lt;div className=&quot;container&quot;&gt;
-    &lt;CardArrangement cards={rankingCardsLarge} cardType=&quot;ranking&quot; columns={4} /&gt;
+    &lt;CardArrangement
+        cards={[
+          {
+            imageSize: &quot;large&quot;,
+            image: img1,
+            imageAlt: &quot;Ranking image 1&quot;,
+            heading: &quot;Top Research University&quot;,
+            body: &quot;ASU ranks among the top research universities in innovation and impact.&quot;,
+            readMoreLink: &quot;#&quot;,
+          },
+          {
+            imageSize: &quot;large&quot;,
+            image: img1,
+            imageAlt: &quot;Ranking image 2&quot;,
+            heading: &quot;Innovation Leader&quot;,
+            body: &quot;Recognized as the most innovative school in the nation for multiple consecutive years.&quot;,
+            readMoreLink: &quot;#&quot;,
+          },
+          {
+            imageSize: &quot;large&quot;,
+            image: img1,
+            imageAlt: &quot;Ranking image 3&quot;,
+            heading: &quot;Sustainability Excellence&quot;,
+            body: &quot;Leading the way in sustainable practices and environmental initiatives.&quot;,
+            readMoreLink: &quot;#&quot;,
+          },
+          {
+            imageSize: &quot;large&quot;,
+            image: img1,
+            imageAlt: &quot;Ranking image 1&quot;,
+            heading: &quot;Top Research University&quot;,
+            body: &quot;ASU ranks among the top research universities in innovation and impact.&quot;,
+            readMoreLink: &quot;#&quot;,
+          },
+          {
+            imageSize: &quot;large&quot;,
+            image: img1,
+            imageAlt: &quot;Ranking image 2&quot;,
+            heading: &quot;Innovation Leader&quot;,
+            body: &quot;Recognized as the most innovative school in the nation for multiple consecutive years.&quot;,
+            readMoreLink: &quot;#&quot;,
+          },
+          {
+            imageSize: &quot;large&quot;,
+            image: img1,
+            imageAlt: &quot;Ranking image 3&quot;,
+            heading: &quot;Sustainability Excellence&quot;,
+            body: &quot;Leading the way in sustainable practices and environmental initiatives.&quot;,
+            readMoreLink: &quot;#&quot;,
+          },
+        ]}
+        cardType=&quot;ranking&quot;
+        columns={4} /&gt;
 &lt;/div&gt;;</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `img1` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Ranking cards (small)</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
               <pre><code>const RankingCardsSmall = () =&gt; &lt;div className=&quot;container&quot;&gt;
-    &lt;CardArrangement cards={rankingCardsSmall} cardType=&quot;ranking&quot; columns={2} /&gt;
+    &lt;CardArrangement
+        cards={[
+          {
+            imageSize: &quot;small&quot;,
+            image: img1,
+            imageAlt: &quot;Ranking image 1&quot;,
+            heading: &quot;Best Value University&quot;,
+            body: &quot;Delivering exceptional education at an affordable cost.&quot;,
+            citation: &quot;U.S. News &amp; World Report 2024&quot;,
+          },
+          {
+            imageSize: &quot;small&quot;,
+            image: img1,
+            imageAlt: &quot;Ranking image 2&quot;,
+            heading: &quot;Top Online Programs&quot;,
+            body: &quot;Ranked #1 for online bachelor&#39;s programs nationwide.&quot;,
+            citation: &quot;U.S. News &amp; World Report 2024&quot;,
+          },
+          {
+            imageSize: &quot;small&quot;,
+            image: img1,
+            imageAlt: &quot;Ranking image 3&quot;,
+            heading: &quot;Research Impact&quot;,
+            body: &quot;Highest research activity classification from Carnegie.&quot;,
+            citation: &quot;Carnegie Classification 2024&quot;,
+          },
+          {
+            imageSize: &quot;small&quot;,
+            image: img1,
+            imageAlt: &quot;Ranking image 4&quot;,
+            heading: &quot;Graduate Employability&quot;,
+            body: &quot;Top 10 in the U.S. for graduate employment outcomes.&quot;,
+            citation: &quot;QS World Rankings 2024&quot;,
+          },
+        ]}
+        cardType=&quot;ranking&quot;
+        columns={2} /&gt;
 &lt;/div&gt;;</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `img1` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Image cards</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
               <pre><code>const ImageCards = () =&gt; &lt;div className=&quot;container&quot;&gt;
-    &lt;CardArrangement cards={imageCards} cardType=&quot;image&quot; columns={3} /&gt;
+    &lt;CardArrangement
+        cards={[
+          {
+            type: &quot;image&quot;,
+            src: img1,
+            alt: &quot;Image card 1&quot;,
+            captionTitle: &quot;Image Card One&quot;,
+            caption:
+              &quot;This is the body content for the first image card with dropshadow and with cardLink prop provided. Card acts as anchor/link&quot;,
+            border: true,
+            dropShadow: true,
+            cardLink: &quot;https://example.com&quot;,
+            title: &quot;example&quot;,
+          },
+          {
+            type: &quot;image&quot;,
+            src: img1,
+            alt: &quot;Image card 2&quot;,
+            captionTitle: &quot;Image Card Two&quot;,
+            caption:
+              &quot;This is the body content for the second image card with no border&quot;,
+          },
+          {
+            type: &quot;image&quot;,
+            src: img1,
+            alt: &quot;Image card 3&quot;,
+            captionTitle: &quot;Image Card Three&quot;,
+            caption:
+              &quot;This is the body content for the third image card with no drop shadow.&quot;,
+            border: true,
+            dropShadow: false,
+          },
+        ]}
+        cardType=&quot;image&quot;
+        columns={3} /&gt;
 &lt;/div&gt;;</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `img1` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Cards with image and buttons</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
               <pre><code>const ImageButtonCards = () =&gt; &lt;div className=&quot;container&quot;&gt;
-    &lt;CardArrangement cards={imageButtonCards} cardType=&quot;default&quot; columns={2} /&gt;
+    &lt;CardArrangement
+        cards={[
+          {
+            type: &quot;default&quot;,
+            image: img1,
+            alt: &quot;Image button card 1&quot;,
+            title: &quot;Example&quot;,
+            body: &quot;This is the body content for the first card.&quot;,
+            buttons: [
+              {
+                color: &quot;gold&quot;,
+                size: &quot;default&quot;,
+                label: &quot;Explore&quot;,
+                ariaLabel: &quot;Explore&quot;,
+                href: &quot;#&quot;,
+              },
+            ],
+          },
+          {
+            type: &quot;default&quot;,
+            image: img1,
+            alt: &quot;Image button card 2&quot;,
+            buttons: [
+              {
+                color: &quot;gold&quot;,
+                size: &quot;default&quot;,
+                label: &quot;Explore&quot;,
+                ariaLabel: &quot;Explore&quot;,
+                href: &quot;#&quot;,
+              },
+            ],
+          },
+        ]}
+        cardType=&quot;default&quot;
+        columns={2} /&gt;
 &lt;/div&gt;;</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `img1` could not be resolved statically.</div>
             </div>
         </div>
     
@@ -2518,10 +3025,13 @@ columns?: &quot;1&quot; | &quot;2&quot; | &quot;3&quot; | &quot;4&quot; | 1 | 2 
   </div>
 </article>
 <article
+  id="components-card-carousel"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="CardCarousel">
@@ -2597,7 +3107,7 @@ width?: string = undefined</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { CardCarousel } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { CardCarousel } from '@asu/unity-react-core';</code></pre>
               </div>
           
           
@@ -2617,6 +3127,7 @@ width?: string = undefined</code></pre>
     /&gt;
   &lt;/Wrapper&gt;
 );</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -2634,6 +3145,7 @@ width?: string = undefined</code></pre>
     /&gt;
   &lt;/Wrapper&gt;
 );</code></pre>
+              
             </div>
         </div>
     
@@ -2641,10 +3153,13 @@ width?: string = undefined</code></pre>
   </div>
 </article>
 <article
+  id="components-form-checkboxes"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  has-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="Checkboxes">
@@ -2654,7 +3169,7 @@ width?: string = undefined</code></pre>
       <div class="badges">
         <label for="c-10-components-form-checkboxes-props" class="badge ok as-toggle">6 prop types</label>
         <label for="c-10-components-form-checkboxes-info" class="badge info as-toggle">1 info</label>
-        <label for="c-10-components-form-checkboxes-stories" class="badge ok as-toggle">7 stories</label>
+        <label for="c-10-components-form-checkboxes-stories" class="badge ok as-toggle">7 stories · 7 incomplete</label>
         
         
       </div>
@@ -2733,72 +3248,79 @@ validMessage?: string</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { Checkboxes, Form } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { Checkboxes, Form } from '@asu/unity-react-core';</code></pre>
               </div>
           
           
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Default</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
               <pre><code>const Default = () =&gt; &lt;Checkboxes /&gt;;</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `args: checkboxDefault` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Multi-line</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
               <pre><code>const MultiLine = () =&gt; &lt;Checkboxes /&gt;;</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `args: checkboxMultiLine` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Valid</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
               <pre><code>const Valid = () =&gt; &lt;Checkboxes /&gt;;</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `args: checkboxValid` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Invalid</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
               <pre><code>const Invalid = () =&gt; &lt;Checkboxes /&gt;;</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `args: checkboxInvalid` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Group</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
               <pre><code>const Group = () =&gt; &lt;Checkboxes /&gt;;</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `args: checkboxGroup` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Group Valid</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
               <pre><code>const GroupValid = () =&gt; &lt;Checkboxes /&gt;;</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `args: checkboxValidGroup` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Group Invalid</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
               <pre><code>const GroupInvalid = () =&gt; &lt;Checkboxes /&gt;;</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `args: checkboxInvalidGroup` could not be resolved statically.</div>
             </div>
         </div>
     
@@ -2806,10 +3328,13 @@ validMessage?: string</code></pre>
   </div>
 </article>
 <article
+  id="components-contentspotlight"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="ContentSpotlight">
@@ -2897,7 +3422,8 @@ title: ReactNode</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { ContentSpotlight } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { ContentSpotlight } from '@asu/unity-react-core';
+import { imageName } from '@asu/shared';</code></pre>
               </div>
           
           
@@ -2919,6 +3445,7 @@ title: ReactNode</code></pre>
       href: &quot;#&quot;,
       color: &quot;gold&quot;,
     }} /&gt;;</code></pre>
+              
             </div>
         </div>
     
@@ -2926,10 +3453,13 @@ title: ReactNode</code></pre>
   </div>
 </article>
 <article
+  id="components-divider"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   has-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="Divider">
@@ -2987,7 +3517,9 @@ title: ReactNode</code></pre>
               <div class="row">
                 <span class="ex-name">Section Divider</span>
                 <span class="badge err">story error</span>
+                
               </div>
+              
               
               
               
@@ -3004,7 +3536,9 @@ title: ReactNode</code></pre>
               <div class="row">
                 <span class="ex-name">Copy Divider</span>
                 <span class="badge err">story error</span>
+                
               </div>
+              
               
               
               
@@ -3023,7 +3557,7 @@ title: ReactNode</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { Divider } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { Divider } from '@asu/unity-react-core';</code></pre>
               </div>
           
           
@@ -3033,10 +3567,13 @@ title: ReactNode</code></pre>
   </div>
 </article>
 <article
+  id="components-form"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   has-story-error
+  has-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="Form">
@@ -3046,7 +3583,7 @@ title: ReactNode</code></pre>
       <div class="badges">
         <label for="c-13-components-form-props" class="badge ok as-toggle">1 prop type</label>
         <label for="c-13-components-form-info" class="badge info as-toggle">1 info</label>
-        <label for="c-13-components-form-stories" class="badge err as-toggle">1/2 story errors</label>
+        <label for="c-13-components-form-stories" class="badge err as-toggle">1/2 story errors · 1 incomplete</label>
         
         
       </div>
@@ -3098,7 +3635,9 @@ background?: &quot;&quot; | &quot;uds-form-white&quot; | &quot;uds-form-gray1&qu
               <div class="row">
                 <span class="ex-name">Form</span>
                 <span class="badge err">story error</span>
+                
               </div>
+              
               
               
               
@@ -3117,18 +3656,36 @@ background?: &quot;&quot; | &quot;uds-form-white&quot; | &quot;uds-form-gray1&qu
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { Form, Select, Textarea, TextInput } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { Form, Select, Textarea, TextInput } from '@asu/unity-react-core';
+import { TextInput } from '../TextInput/TextInput';
+import { Select } from '../Select/Select';
+import { Textarea } from '../Textarea/Textarea';
+import { formBackground } from './Form';</code></pre>
               </div>
           
           
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Basic</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
-              <pre><code>const Basic = () =&gt; &lt;Form /&gt;;</code></pre>
+              <pre><code>const Basic = () =&gt; &lt;Form className=&quot;uds-form&quot; background={formBackground[0]}&gt;&lt;&gt;
+      &lt;p&gt;
+        &lt;span
+          title=&quot;Required&quot;
+          className=&quot;fa fa-icon fa-circle uds-field-required&quot;
+        /&gt;
+        Indicates required field
+      &lt;/p&gt;
+      &lt;br /&gt;
+      &lt;TextInput label=&quot;First name&quot; required={true} /&gt;
+      &lt;TextInput label=&quot;Last name&quot; required={true} /&gt;
+      &lt;Select id=&quot;text&quot; label=&quot;Options&quot; required={true} options={options} /&gt;
+      &lt;Textarea label=&quot;Feedback&quot; /&gt;
+    &lt;/&gt;&lt;/Form&gt;;</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `options` could not be resolved statically.</div>
             </div>
         </div>
     
@@ -3136,10 +3693,13 @@ background?: &quot;&quot; | &quot;uds-form-white&quot; | &quot;uds-form-gray1&qu
   </div>
 </article>
 <article
+  id="components-grid-links"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   has-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="GridLinks">
@@ -3215,7 +3775,9 @@ textColor?: gridLinksTextColor</code></pre>
               <div class="row">
                 <span class="ex-name">GridLinks</span>
                 <span class="badge err">story error</span>
+                
               </div>
+              
               
               
               
@@ -3234,7 +3796,7 @@ textColor?: gridLinksTextColor</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { GridLinks } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { GridLinks } from '@asu/unity-react-core';</code></pre>
               </div>
           
           
@@ -3244,10 +3806,13 @@ textColor?: gridLinksTextColor</code></pre>
   </div>
 </article>
 <article
+  id="components-heroes"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  has-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="Hero">
@@ -3257,7 +3822,7 @@ textColor?: gridLinksTextColor</code></pre>
       <div class="badges">
         <label for="c-15-components-heroes-props" class="badge ok as-toggle">7 prop types</label>
         <label for="c-15-components-heroes-info" class="badge info as-toggle">1 info</label>
-        <label for="c-15-components-heroes-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-15-components-heroes-stories" class="badge ok as-toggle">4 stories · 4 incomplete</label>
         
         
       </div>
@@ -3265,7 +3830,7 @@ textColor?: gridLinksTextColor</code></pre>
     <div class="meta" title="./src/components/Hero/Hero.stories.jsx">components-heroes · ./src/components/Hero/Hero.stories.jsx</div>
     
     
-    <div class="kv"><span class="chip">typedef: {import(&#39;./Hero&#39;).HeroProps} HeroProps </span></div>
+    <div class="kv"><span class="chip">typedef: {import(&#39;./Hero&#39;).HeroProps} HeroProps</span></div>
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
@@ -3322,14 +3887,14 @@ type?: &quot;heading-hero&quot; | &quot;story-hero&quot;</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { Hero } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { Hero } from '@asu/unity-react-core';</code></pre>
               </div>
           
           
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Hero Small</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -3341,11 +3906,12 @@ type?: &quot;heading-hero&quot; | &quot;story-hero&quot;</code></pre>
     contentsColor={contentsColor}
   /&gt;
 );</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `img1` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Hero Long Title</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -3357,11 +3923,12 @@ type?: &quot;heading-hero&quot; | &quot;story-hero&quot;</code></pre>
     contentsColor={contentsColor}
   /&gt;
 );</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `img1` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Hero Medium</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -3373,11 +3940,12 @@ type?: &quot;heading-hero&quot; | &quot;story-hero&quot;</code></pre>
     contentsColor={contentsColor}
   /&gt;
 );</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `img1` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Hero Large</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -3389,6 +3957,7 @@ type?: &quot;heading-hero&quot; | &quot;story-hero&quot;</code></pre>
     contentsColor={contentsColor}
   /&gt;
 );</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `img1` could not be resolved statically.</div>
             </div>
         </div>
     
@@ -3396,10 +3965,13 @@ type?: &quot;heading-hero&quot; | &quot;story-hero&quot;</code></pre>
   </div>
 </article>
 <article
+  id="components-highlyranked"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="HighlyRanked">
@@ -3469,7 +4041,7 @@ title?: string = Highly ranked</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { HighlyRanked } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { HighlyRanked } from '@asu/unity-react-core';</code></pre>
               </div>
           
           
@@ -3535,6 +4107,7 @@ title?: string = Highly ranked</code></pre>
         headingLevel: &quot;h2&quot;,
       },
     ]} /&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -3544,6 +4117,10 @@ title?: string = Highly ranked</code></pre>
               
               
               <pre><code>const MixedValueSizes = () =&gt; &lt;HighlyRanked
+    title=&quot;ASU is highly ranked&quot;
+    description=&quot;ASU consistently ranks among the best in the nation, recognized for our commitment to excellence and showcasing our dedication to providing quality education and impactful research.&quot;
+    ctaText=&quot;See more ASU rankings&quot;
+    ctaUrl=&quot;https://www.asu.edu/rankings&quot;
     rankings={[
       {
         value: &quot;400+&quot;,
@@ -3571,6 +4148,7 @@ title?: string = Highly ranked</code></pre>
         headingLevel: &quot;h5&quot;,
       },
     ]} /&gt;;</code></pre>
+              
             </div>
         </div>
     
@@ -3578,10 +4156,13 @@ title?: string = Highly ranked</code></pre>
   </div>
 </article>
 <article
+  id="components-image"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="Image">
@@ -3671,7 +4252,8 @@ width?: string</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { Image } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { Image } from '@asu/unity-react-core';
+import { imageAny } from '@asu/shared';</code></pre>
               </div>
           
           
@@ -3682,7 +4264,8 @@ width?: string</code></pre>
               </div>
               
               
-              <pre><code>const ImageWithNoCaption = () =&gt; &lt;Image src={img1} alt=&quot;Placeholder image&quot; border /&gt;;</code></pre>
+              <pre><code>const ImageWithNoCaption = () =&gt; &lt;Image src={imageAny()} alt=&quot;Placeholder image&quot; border /&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -3691,7 +4274,8 @@ width?: string</code></pre>
               </div>
               
               
-              <pre><code>const ImageWithNoCaptionBorderless = () =&gt; &lt;Image src={img1} alt=&quot;Placeholder image&quot; border={false} /&gt;;</code></pre>
+              <pre><code>const ImageWithNoCaptionBorderless = () =&gt; &lt;Image src={imageAny()} alt=&quot;Placeholder image&quot; border={false} /&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -3701,11 +4285,12 @@ width?: string</code></pre>
               
               
               <pre><code>const ImageWithCaption = () =&gt; &lt;Image
-    src={img2}
+    src={imageAny()}
     alt=&quot;Placeholder image&quot;
     caption=&quot;This is a &lt;a href=&#39;#&#39;&gt;caption&lt;/a&gt;.&quot;
     captionTitle=&quot;Caption title&quot;
     border /&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -3715,12 +4300,13 @@ width?: string</code></pre>
               
               
               <pre><code>const ImageWithCaptionAndDropshadow = () =&gt; &lt;Image
-    src={img3}
+    src={imageAny()}
     alt=&quot;Placeholder image&quot;
     caption=&quot;This is a &lt;a href=&#39;#&#39;&gt;caption&lt;/a&gt;.&quot;
     captionTitle=&quot;Caption title&quot;
     dropShadow
     border /&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -3744,6 +4330,7 @@ width?: string</code></pre>
     &lt;/div&gt;
   );
 };</code></pre>
+              
             </div>
         </div>
     
@@ -3751,10 +4338,13 @@ width?: string</code></pre>
   </div>
 </article>
 <article
+  id="components-imagebasedcard"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="ImageBasedCard">
@@ -3826,7 +4416,8 @@ title: string</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { ImageBasedCard } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { ImageBasedCard } from '@asu/unity-react-core';
+import { imageArray } from '@asu/shared';</code></pre>
               </div>
           
           
@@ -3837,7 +4428,15 @@ title: string</code></pre>
               </div>
               
               
-              <pre><code>const Portrait = () =&gt; &lt;ImageBasedCard orientation=&quot;portrait&quot; size=&quot;md&quot; /&gt;;</code></pre>
+              <pre><code>const Portrait = () =&gt; &lt;ImageBasedCard
+    image={imageArray[0]}
+    title=&quot;Example Card Title&quot;
+    buttonText=&quot;Learn More&quot;
+    buttonHref=&quot;https://example.com&quot;
+    gaSection=&quot;Card Section&quot;
+    orientation=&quot;portrait&quot;
+    size=&quot;md&quot; /&gt;;</code></pre>
+              
             </div>
         </div>
     
@@ -3845,10 +4444,13 @@ title: string</code></pre>
   </div>
 </article>
 <article
+  id="components-image-carousel"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  has-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="ImageCarousel">
@@ -3858,7 +4460,7 @@ title: string</code></pre>
       <div class="badges">
         <label for="c-19-components-image-carousel-props" class="badge ok as-toggle">6 prop types</label>
         <label for="c-19-components-image-carousel-info" class="badge info as-toggle">1 info</label>
-        <label for="c-19-components-image-carousel-stories" class="badge ok as-toggle">3 stories</label>
+        <label for="c-19-components-image-carousel-stories" class="badge ok as-toggle">3 stories · 2 incomplete</label>
         
         
       </div>
@@ -3918,7 +4520,8 @@ width?: string = undefined</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { ImageCarousel } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { ImageCarousel } from '@asu/unity-react-core';
+import { imageCarouselItems } from '../../../../../__mocks__/data/props-mock';</code></pre>
               </div>
           
           
@@ -3950,11 +4553,12 @@ width?: string = undefined</code></pre>
     /&gt;
   &lt;/div&gt;
 );</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Image Carousel With Caption</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -3979,11 +4583,12 @@ width?: string = undefined</code></pre>
     /&gt;
   &lt;/div&gt;
 );</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `mockItemWithContent` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Image Carousel With More Caption Content</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -4008,6 +4613,7 @@ width?: string = undefined</code></pre>
     /&gt;
   &lt;/div&gt;
 );</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `mockItemWithMoreContent` could not be resolved statically.</div>
             </div>
         </div>
     
@@ -4015,10 +4621,13 @@ width?: string = undefined</code></pre>
   </div>
 </article>
 <article
+  id="components-image-gallery-carousel"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="ImageGalleryCarousel">
@@ -4086,7 +4695,7 @@ width?: string</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { ImageGalleryCarousel } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { ImageGalleryCarousel } from '@asu/unity-react-core';</code></pre>
               </div>
           
           
@@ -4105,6 +4714,7 @@ width?: string</code></pre>
     /&gt;
   &lt;/Wrapper&gt;
 );</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -4122,6 +4732,7 @@ width?: string</code></pre>
     /&gt;
   &lt;/Wrapper&gt;
 );</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -4139,6 +4750,7 @@ width?: string</code></pre>
     /&gt;
   &lt;/Wrapper&gt;
 );</code></pre>
+              
             </div>
         </div>
     
@@ -4146,10 +4758,13 @@ width?: string</code></pre>
   </div>
 </article>
 <article
+  id="components-list"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   has-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="List">
@@ -4213,7 +4828,9 @@ listType?: ListComponentType = ListComponentType.UNORDERED</code></pre>
               <div class="row">
                 <span class="ex-name">Unordered List</span>
                 <span class="badge err">story error</span>
+                
               </div>
+              
               
               
               
@@ -4230,7 +4847,9 @@ listType?: ListComponentType = ListComponentType.UNORDERED</code></pre>
               <div class="row">
                 <span class="ex-name">Ordered List</span>
                 <span class="badge err">story error</span>
+                
               </div>
+              
               
               
               
@@ -4247,7 +4866,9 @@ listType?: ListComponentType = ListComponentType.UNORDERED</code></pre>
               <div class="row">
                 <span class="ex-name">Icon List</span>
                 <span class="badge err">story error</span>
+                
               </div>
+              
               
               
               
@@ -4264,7 +4885,9 @@ listType?: ListComponentType = ListComponentType.UNORDERED</code></pre>
               <div class="row">
                 <span class="ex-name">Step List</span>
                 <span class="badge err">story error</span>
+                
               </div>
+              
               
               
               
@@ -4281,7 +4904,9 @@ listType?: ListComponentType = ListComponentType.UNORDERED</code></pre>
               <div class="row">
                 <span class="ex-name">Display List</span>
                 <span class="badge err">story error</span>
+                
               </div>
+              
               
               
               
@@ -4300,7 +4925,7 @@ listType?: ListComponentType = ListComponentType.UNORDERED</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { List } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { List } from '@asu/unity-react-core';</code></pre>
               </div>
           
           
@@ -4310,10 +4935,13 @@ listType?: ListComponentType = ListComponentType.UNORDERED</code></pre>
   </div>
 </article>
 <article
+  id="components-modal"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   has-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="Modal">
@@ -4401,7 +5029,9 @@ setOpen?: Dispatch&lt;SetStateAction&lt;boolean&gt;&gt;</code></pre>
               <div class="row">
                 <span class="ex-name">Modal</span>
                 <span class="badge err">story error</span>
+                
               </div>
+              
               
               
               
@@ -4420,7 +5050,7 @@ setOpen?: Dispatch&lt;SetStateAction&lt;boolean&gt;&gt;</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { Modal } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { Modal } from '@asu/unity-react-core';</code></pre>
               </div>
           
           
@@ -4430,10 +5060,13 @@ setOpen?: Dispatch&lt;SetStateAction&lt;boolean&gt;&gt;</code></pre>
   </div>
 </article>
 <article
+  id="components-notification-banner"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   has-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="NotificationBanner">
@@ -4509,7 +5142,9 @@ title?: string</code></pre>
               <div class="row">
                 <span class="ex-name">Overview</span>
                 <span class="badge err">story error</span>
+                
               </div>
+              
               
               
               
@@ -4528,7 +5163,7 @@ title?: string</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { NotificationBanner } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { NotificationBanner } from '@asu/unity-react-core';</code></pre>
               </div>
           
           
@@ -4538,10 +5173,13 @@ title?: string</code></pre>
   </div>
 </article>
 <article
+  id="components-pagination"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="Pagination">
@@ -4615,7 +5253,7 @@ type: string</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { Pagination } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { Pagination } from '@asu/unity-react-core';</code></pre>
               </div>
           
           
@@ -4633,6 +5271,7 @@ type: string</code></pre>
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -4653,6 +5292,7 @@ type: string</code></pre>
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -4668,6 +5308,7 @@ type: string</code></pre>
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -4683,6 +5324,7 @@ type: string</code></pre>
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -4698,6 +5340,7 @@ type: string</code></pre>
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;;</code></pre>
+              
             </div>
         </div>
     
@@ -4705,10 +5348,13 @@ type: string</code></pre>
   </div>
 </article>
 <article
+  id="components-personprofile"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="PersonProfile">
@@ -4778,7 +5424,9 @@ socialMedia?: SocialMediaLink[]</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { PersonProfile } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { PersonProfile } from '@asu/unity-react-core';
+import { SocialMediaPlatform } from './PersonProfile';
+import { imageAny } from '@asu/shared';</code></pre>
               </div>
           
           
@@ -4804,8 +5452,22 @@ socialMedia?: SocialMediaLink[]</code></pre>
       },
     }}
     description=&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed ultrices nisl, at vestibulum tortor.&quot;
-    socialMedia={mockSocialMedia}
-    imageUrl={img} /&gt;;</code></pre>
+    socialMedia={[
+      {
+        platform: SocialMediaPlatform.Facebook,
+        url: &quot;https://example.com&quot;,
+      },
+      {
+        platform: SocialMediaPlatform.LinkedIn,
+        url: &quot;https://example.com&quot;,
+      },
+      {
+        platform: SocialMediaPlatform.Twitter,
+        url: &quot;https://example.com&quot;,
+      },
+    ]}
+    imageUrl={imageAny()} /&gt;;</code></pre>
+              
             </div>
         </div>
     
@@ -4813,10 +5475,13 @@ socialMedia?: SocialMediaLink[]</code></pre>
   </div>
 </article>
 <article
+  id="components-form-radios"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  has-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="Radios">
@@ -4826,7 +5491,7 @@ socialMedia?: SocialMediaLink[]</code></pre>
       <div class="badges">
         <label for="c-26-components-form-radios-props" class="badge ok as-toggle">8 prop types</label>
         <label for="c-26-components-form-radios-info" class="badge info as-toggle">1 info</label>
-        <label for="c-26-components-form-radios-stories" class="badge ok as-toggle">4 stories</label>
+        <label for="c-26-components-form-radios-stories" class="badge ok as-toggle">4 stories · 4 incomplete</label>
         
         
       </div>
@@ -4915,45 +5580,49 @@ validMessage?: string</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { Form, Radios } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { Form, Radios } from '@asu/unity-react-core';</code></pre>
               </div>
           
           
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Default</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
               <pre><code>const Default = () =&gt; &lt;Radios /&gt;;</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `args: radiosDefault` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Disabled</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
               <pre><code>const Disabled = () =&gt; &lt;Radios label=&quot;A Group of Disabled Radios&quot; disabled /&gt;;</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `args: radiosDefault` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Invalid</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
               <pre><code>const Invalid = () =&gt; &lt;Radios /&gt;;</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `args: radiosDefault`, `args: radiosInvalid` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Valid</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
               <pre><code>const Valid = () =&gt; &lt;Radios /&gt;;</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `args: radiosDefault`, `args: radiosValid` could not be resolved statically.</div>
             </div>
         </div>
     
@@ -4961,10 +5630,13 @@ validMessage?: string</code></pre>
   </div>
 </article>
 <article
+  id="components-ranking-card"
   class="card 
-  no-error 
-  no-info 
+  no-error
+  no-info
   no-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="RankingCard">
@@ -4981,7 +5653,8 @@ validMessage?: string</code></pre>
     </div>
     <div class="meta" title="./src/components/RankingCard/RankingCard.stories.jsx">components-ranking-card · ./src/components/RankingCard/RankingCard.stories.jsx</div>
     
-    <div class="hint">A ranking card component that displays an image with an info layer overlay. Supports both large and small image sizes with different layout configurations.</div>
+    <div class="hint">A ranking card component that displays an image with an info layer overlay.
+Supports both large and small image sizes with different layout configurations.</div>
     
   </div>
 
@@ -5050,7 +5723,8 @@ readMoreLink?: string</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { RankingCard } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { RankingCard } from '@asu/unity-react-core';
+import { imageAny } from '@asu/shared';</code></pre>
               </div>
           
           
@@ -5066,7 +5740,7 @@ readMoreLink?: string</code></pre>
         &lt;div className={classNames(&quot;col&quot;, &quot;col-12&quot;, &quot;col-md-6&quot;, &quot;col-lg-4&quot;)}&gt;
             &lt;RankingCard
                 imageSize=&quot;large&quot;
-                image={img}
+                image={imageAny()}
                 imageAlt=&quot;Image alt text&quot;
                 heading=&quot;Ranking title goes here, under the photo&quot;
                 body=&quot;ASU has topped U.S. News &amp; World Report’s “Most Innovative Schools list since the inception of the category in 2016. ASU again placed ahead of Stanford and MIT on the list, based on a survey of peers. College presidents, provosts and admissions deans around the country nominated up to 10 colleges or universities that are making the most innovative improvements.&quot;
@@ -5074,6 +5748,7 @@ readMoreLink?: string</code></pre>
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -5087,7 +5762,7 @@ readMoreLink?: string</code></pre>
         &lt;div className={classNames(&quot;col&quot;, &quot;col-12&quot;, &quot;col-md-6&quot;, &quot;col-lg-4&quot;)}&gt;
             &lt;RankingCard
                 imageSize=&quot;small&quot;
-                image={img}
+                image={imageAny()}
                 imageAlt=&quot;Image alt text&quot;
                 heading=&quot;Ranking title goes here, under the photo&quot;
                 body=&quot;ASU has topped U.S. News &amp; World Report’s “Most Innovative Schools list since the inception of the category in 2016. ASU again placed ahead of Stanford and MIT on the list, based on a survey of peers. College presidents, provosts and admissions deans around the country nominated up to 10 colleges or universities that are making the most innovative improvements.&quot;
@@ -5096,6 +5771,7 @@ readMoreLink?: string</code></pre>
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;;</code></pre>
+              
             </div>
         </div>
     
@@ -5103,10 +5779,13 @@ readMoreLink?: string</code></pre>
   </div>
 </article>
 <article
+  id="components-form-select"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="Select">
@@ -5183,7 +5862,7 @@ validMessage?: string</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { Form, Select } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { Form, Select } from '@asu/unity-react-core';</code></pre>
               </div>
           
           
@@ -5194,7 +5873,21 @@ validMessage?: string</code></pre>
               </div>
               
               
-              <pre><code>const Basic = () =&gt; &lt;Select id=&quot;input-id&quot; label=&quot;Input Label&quot; options={options} /&gt;;</code></pre>
+              <pre><code>const Basic = () =&gt; &lt;Select
+    id=&quot;input-id&quot;
+    label=&quot;Input Label&quot;
+    displaySize=&quot;md&quot;
+    required={false}
+    disabled={false}
+    feedback=&quot;&quot;
+    validMessage=&quot;Success&quot;
+    invalidMessage=&quot;Error&quot;
+    options={[
+      { value: &quot;1&quot;, label: &quot;Option 1&quot; },
+      { value: &quot;2&quot;, label: &quot;Option 2&quot; },
+      { value: &quot;3&quot;, label: &quot;Option 3&quot; },
+    ]} /&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -5203,7 +5896,21 @@ validMessage?: string</code></pre>
               </div>
               
               
-              <pre><code>const Required = () =&gt; &lt;Select id=&quot;input-id&quot; label=&quot;Input Label&quot; options={options} required /&gt;;</code></pre>
+              <pre><code>const Required = () =&gt; &lt;Select
+    id=&quot;input-id&quot;
+    label=&quot;Input Label&quot;
+    displaySize=&quot;md&quot;
+    required
+    disabled={false}
+    feedback=&quot;&quot;
+    validMessage=&quot;Success&quot;
+    invalidMessage=&quot;Error&quot;
+    options={[
+      { value: &quot;1&quot;, label: &quot;Option 1&quot; },
+      { value: &quot;2&quot;, label: &quot;Option 2&quot; },
+      { value: &quot;3&quot;, label: &quot;Option 3&quot; },
+    ]} /&gt;;</code></pre>
+              
             </div>
         </div>
     
@@ -5211,10 +5918,13 @@ validMessage?: string</code></pre>
   </div>
 </article>
 <article
+  id="components-sidebarmenu"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   has-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="SidebarMenu">
@@ -5274,7 +5984,9 @@ title: string</code></pre>
               <div class="row">
                 <span class="ex-name">Sidebar</span>
                 <span class="badge err">story error</span>
+                
               </div>
+              
               
               
               
@@ -5291,7 +6003,9 @@ title: string</code></pre>
               <div class="row">
                 <span class="ex-name">With Nested Active Page</span>
                 <span class="badge err">story error</span>
+                
               </div>
+              
               
               
               
@@ -5310,7 +6024,7 @@ title: string</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { SidebarMenu } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { SidebarMenu } from '@asu/unity-react-core';</code></pre>
               </div>
           
           
@@ -5320,10 +6034,13 @@ title: string</code></pre>
   </div>
 </article>
 <article
+  id="components-systemalert"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   has-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="SystemAlert">
@@ -5394,7 +6111,9 @@ type: SystemAlertType</code></pre>
               <div class="row">
                 <span class="ex-name">Info</span>
                 <span class="badge err">story error</span>
+                
               </div>
+              
               
               
               
@@ -5411,7 +6130,9 @@ type: SystemAlertType</code></pre>
               <div class="row">
                 <span class="ex-name">Warning</span>
                 <span class="badge err">story error</span>
+                
               </div>
+              
               
               
               
@@ -5428,7 +6149,9 @@ type: SystemAlertType</code></pre>
               <div class="row">
                 <span class="ex-name">Success</span>
                 <span class="badge err">story error</span>
+                
               </div>
+              
               
               
               
@@ -5445,7 +6168,9 @@ type: SystemAlertType</code></pre>
               <div class="row">
                 <span class="ex-name">Error</span>
                 <span class="badge err">story error</span>
+                
               </div>
+              
               
               
               
@@ -5464,7 +6189,7 @@ type: SystemAlertType</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { SystemAlert } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { SystemAlert } from '@asu/unity-react-core';</code></pre>
               </div>
           
           
@@ -5474,10 +6199,13 @@ type: SystemAlertType</code></pre>
   </div>
 </article>
 <article
+  id="components-tabbedpanels"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="TabbedPanels">
@@ -5541,8 +6269,8 @@ onTabChange?: (tabId: string) =&gt; void = () =&gt; {}</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { ASUFooter, ASUHeader } from "@asu/component-header-footer";
-import { Tab, TabbedPanels } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { ASUFooter, ASUHeader } from '@asu/component-header-footer';
+import { Tab, TabbedPanels } from '@asu/unity-react-core';</code></pre>
               </div>
           
           
@@ -5562,6 +6290,7 @@ import { Tab, TabbedPanels } from "@asu/unity-react-core";</code></pre>
     &lt;/div&gt;
   &lt;/div&gt;
 );</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -5579,6 +6308,7 @@ import { Tab, TabbedPanels } from "@asu/unity-react-core";</code></pre>
     &lt;/div&gt;
   &lt;/div&gt;
 );</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -5598,6 +6328,7 @@ import { Tab, TabbedPanels } from "@asu/unity-react-core";</code></pre>
     &lt;/div&gt;
   &lt;/div&gt;
 );</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -5617,6 +6348,7 @@ import { Tab, TabbedPanels } from "@asu/unity-react-core";</code></pre>
     &lt;/div&gt;
   &lt;/div&gt;
 );</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -5636,6 +6368,7 @@ import { Tab, TabbedPanels } from "@asu/unity-react-core";</code></pre>
     &lt;/div&gt;
   &lt;/div&gt;
 );</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -5694,6 +6427,7 @@ import { Tab, TabbedPanels } from "@asu/unity-react-core";</code></pre>
     /&gt;
   &lt;/&gt;
 );</code></pre>
+              
             </div>
         </div>
     
@@ -5701,10 +6435,13 @@ import { Tab, TabbedPanels } from "@asu/unity-react-core";</code></pre>
   </div>
 </article>
 <article
+  id="components-table"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="Table">
@@ -5766,7 +6503,7 @@ fixed?: boolean = false</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { Table } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { Table } from '@asu/unity-react-core';</code></pre>
               </div>
           
           
@@ -5778,6 +6515,7 @@ fixed?: boolean = false</code></pre>
               
               
               <pre><code>const BasicTable = () =&gt; &lt;Table columns={5} fixed={false} /&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -5787,6 +6525,7 @@ fixed?: boolean = false</code></pre>
               
               
               <pre><code>const FixedTable = () =&gt; &lt;Table columns={12} fixed /&gt;;</code></pre>
+              
             </div>
         </div>
     
@@ -5794,10 +6533,13 @@ fixed?: boolean = false</code></pre>
   </div>
 </article>
 <article
+  id="components-testimonial"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  has-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="Testimonial">
@@ -5807,7 +6549,7 @@ fixed?: boolean = false</code></pre>
       <div class="badges">
         <label for="c-33-components-testimonial-props" class="badge ok as-toggle">4 prop types</label>
         <label for="c-33-components-testimonial-info" class="badge info as-toggle">1 info</label>
-        <label for="c-33-components-testimonial-stories" class="badge ok as-toggle">5 stories</label>
+        <label for="c-33-components-testimonial-stories" class="badge ok as-toggle">5 stories · 4 incomplete</label>
         
         
       </div>
@@ -5863,7 +6605,8 @@ quote: TestimonialQuote</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { Testimonial } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { Testimonial } from '@asu/unity-react-core';
+import { imageAny } from '@asu/shared';</code></pre>
               </div>
           
           
@@ -5882,11 +6625,12 @@ quote: TestimonialQuote</code></pre>
         description: `The Declaration of Independence`,
       },
     }} /&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">With Image</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -5897,17 +6641,18 @@ quote: TestimonialQuote</code></pre>
         name: `Han Solo`,
       },
     }}
-    imageSource={img}
+    imageSource={imageAny()}
     imageAltText=&quot;Pretend this is Han Solo&quot;
     itemStyle={{
       containerCssClass: itemColorCombinations.Gold,
       contentCssClass: itemQuoteColorCombinations.none,
     }} /&gt;;</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `itemColorCombinations`, `itemQuoteColorCombinations` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">No Image</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -5922,11 +6667,12 @@ quote: TestimonialQuote</code></pre>
     itemStyle={{
       containerCssClass: itemColorCombinations.Gold,
     }} /&gt;;</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `itemColorCombinations` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">With Citation</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -5938,16 +6684,17 @@ quote: TestimonialQuote</code></pre>
         description: `ASU Charter`,
       },
     }}
-    imageSource={img}
+    imageSource={imageAny()}
     imageAltText=&quot;Pretend this is Michael M. Crow, President of ASU&quot;
     itemStyle={{
       containerCssClass: itemColorCombinations.Gold,
     }} /&gt;;</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `itemColorCombinations` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Hightlight Gold</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -5957,12 +6704,13 @@ quote: TestimonialQuote</code></pre>
       content:
         &quot;Laughter is timeless, imagination has no age, dreams are forever.&quot;,
     }}
-    imageSource={img}
+    imageSource={imageAny()}
     imageAltText=&quot;Image of Walt DisneyImage of Walt Disney&quot;
     itemStyle={{
       containerCssClass: itemColorCombinations.Gold,
       titleCssClass: itemTitleColorCombinations[&quot;Highlight gold&quot;],
     }} /&gt;;</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `itemColorCombinations`, `itemTitleColorCombinations` could not be resolved statically.</div>
             </div>
         </div>
     
@@ -5970,10 +6718,13 @@ quote: TestimonialQuote</code></pre>
   </div>
 </article>
 <article
+  id="components-testimonial-carousel"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="TestimonialCarousel">
@@ -6045,7 +6796,7 @@ width?: string</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { TestimonialCarousel } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { TestimonialCarousel } from '@asu/unity-react-core';</code></pre>
               </div>
           
           
@@ -6079,6 +6830,7 @@ width?: string</code></pre>
     /&gt;
   &lt;/div&gt;
 );</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -6110,6 +6862,7 @@ width?: string</code></pre>
     /&gt;
   &lt;/div&gt;
 );</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -6141,6 +6894,7 @@ width?: string</code></pre>
     /&gt;
   &lt;/div&gt;
 );</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -6172,6 +6926,7 @@ width?: string</code></pre>
     /&gt;
   &lt;/div&gt;
 );</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -6203,6 +6958,7 @@ width?: string</code></pre>
     /&gt;
   &lt;/div&gt;
 );</code></pre>
+              
             </div>
         </div>
     
@@ -6210,10 +6966,13 @@ width?: string</code></pre>
   </div>
 </article>
 <article
+  id="components-form-textarea"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="Textarea">
@@ -6288,7 +7047,7 @@ validMessage?: string</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { Form, Textarea } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { Form, Textarea } from '@asu/unity-react-core';</code></pre>
               </div>
           
           
@@ -6303,7 +7062,13 @@ validMessage?: string</code></pre>
     id=&quot;textarea-id&quot;
     label=&quot;Textarea Label&quot;
     placeholder=&quot;Textarea Placeholder&quot;
-    required={false} /&gt;;</code></pre>
+    displaySize=&quot;md&quot;
+    required={false}
+    disabled={false}
+    feedback=&quot;&quot;
+    validMessage=&quot;Success&quot;
+    invalidMessage=&quot;Error&quot; /&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -6316,7 +7081,13 @@ validMessage?: string</code></pre>
     id=&quot;textarea-id&quot;
     label=&quot;Textarea Label&quot;
     placeholder=&quot;Textarea Placeholder&quot;
-    required /&gt;;</code></pre>
+    displaySize=&quot;md&quot;
+    required
+    disabled={false}
+    feedback=&quot;&quot;
+    validMessage=&quot;Success&quot;
+    invalidMessage=&quot;Error&quot; /&gt;;</code></pre>
+              
             </div>
         </div>
     
@@ -6324,10 +7095,13 @@ validMessage?: string</code></pre>
   </div>
 </article>
 <article
+  id="components-form-text-input"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="TextInput">
@@ -6400,7 +7174,7 @@ validMessage?: string</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { Form, TextInput } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { Form, TextInput } from '@asu/unity-react-core';</code></pre>
               </div>
           
           
@@ -6415,7 +7189,13 @@ validMessage?: string</code></pre>
     id=&quot;input-id&quot;
     label=&quot;Input Label&quot;
     placeholder=&quot;Input Placeholder&quot;
-    required={false} /&gt;;</code></pre>
+    displaySize=&quot;md&quot;
+    required={false}
+    disabled={false}
+    feedback=&quot;&quot;
+    validMessage=&quot;Success&quot;
+    invalidMessage=&quot;Error&quot; /&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -6428,7 +7208,13 @@ validMessage?: string</code></pre>
     id=&quot;input-id&quot;
     label=&quot;Input Label&quot;
     placeholder=&quot;Input Placeholder&quot;
-    required /&gt;;</code></pre>
+    displaySize=&quot;md&quot;
+    required
+    disabled={false}
+    feedback=&quot;&quot;
+    validMessage=&quot;Success&quot;
+    invalidMessage=&quot;Error&quot; /&gt;;</code></pre>
+              
             </div>
         </div>
     
@@ -6436,10 +7222,13 @@ validMessage?: string</code></pre>
   </div>
 </article>
 <article
+  id="components-tooltip"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="Tooltip">
@@ -6523,7 +7312,7 @@ triggerElement?: TooltipTrigger</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { Image, Tooltip } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { Image, Tooltip } from '@asu/unity-react-core';</code></pre>
               </div>
           
           
@@ -6534,7 +7323,10 @@ triggerElement?: TooltipTrigger</code></pre>
               </div>
               
               
-              <pre><code>const NoChildrenDefaultIcon = () =&gt; &lt;Tooltip /&gt;;</code></pre>
+              <pre><code>const NoChildrenDefaultIcon = () =&gt; &lt;Tooltip
+    title=&quot;Header&quot;
+    content=&quot;Content goes here, this is a tooltip. It can be long or short.&quot; /&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -6543,9 +7335,12 @@ triggerElement?: TooltipTrigger</code></pre>
               </div>
               
               
-              <pre><code>const Link = () =&gt; &lt;Tooltip&gt;
+              <pre><code>const Link = () =&gt; &lt;Tooltip
+    title=&quot;Header&quot;
+    content=&quot;Content goes here, this is a tooltip. It can be long or short.&quot;&gt;
     &lt;a href=&quot;https://example.com&quot;&gt;Tooltiptrigger&lt;/a&gt;
 &lt;/Tooltip&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -6554,7 +7349,10 @@ triggerElement?: TooltipTrigger</code></pre>
               </div>
               
               
-              <pre><code>const Text = () =&gt; &lt;Tooltip&gt;just a plain string&lt;/Tooltip&gt;;</code></pre>
+              <pre><code>const Text = () =&gt; &lt;Tooltip
+    title=&quot;Header&quot;
+    content=&quot;Content goes here, this is a tooltip. It can be long or short.&quot;&gt;just a plain string&lt;/Tooltip&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -6563,9 +7361,12 @@ triggerElement?: TooltipTrigger</code></pre>
               </div>
               
               
-              <pre><code>const JsxSpanContainingText = () =&gt; &lt;Tooltip&gt;
+              <pre><code>const JsxSpanContainingText = () =&gt; &lt;Tooltip
+    title=&quot;Header&quot;
+    content=&quot;Content goes here, this is a tooltip. It can be long or short.&quot;&gt;
     &lt;span&gt;html string Tooltiptrigger&lt;/span&gt;
 &lt;/Tooltip&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -6574,11 +7375,14 @@ triggerElement?: TooltipTrigger</code></pre>
               </div>
               
               
-              <pre><code>const ImageOnly = () =&gt; &lt;Tooltip&gt;
+              <pre><code>const ImageOnly = () =&gt; &lt;Tooltip
+    title=&quot;Header&quot;
+    content=&quot;Content goes here, this is a tooltip. It can be long or short.&quot;&gt;
     &lt;a style={{ display: &quot;inline-block&quot;, maxWidth: &quot;550px&quot; }}&gt;
         &lt;Image src={img01} alt={&quot;&quot;} /&gt;
     &lt;/a&gt;
 &lt;/Tooltip&gt;;</code></pre>
+              
             </div>
         </div>
     
@@ -6586,10 +7390,13 @@ triggerElement?: TooltipTrigger</code></pre>
   </div>
 </article>
 <article
+  id="components-video"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="Video">
@@ -6607,7 +7414,7 @@ triggerElement?: TooltipTrigger</code></pre>
     <div class="meta" title="./src/components/Video/Video.stories.jsx">components-video · ./src/components/Video/Video.stories.jsx</div>
     
     
-    <div class="kv"><span class="chip">typedef: {import(&#39;./Video&#39;).VideoProps} VideoProps </span></div>
+    <div class="kv"><span class="chip">typedef: {import(&#39;./Video&#39;).VideoProps} VideoProps</span></div>
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
@@ -6661,7 +7468,8 @@ vttUrl?: string</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { Video } from "@asu/unity-react-core";</code></pre>
+                <pre><code>import { Video } from '@asu/unity-react-core';
+import stockVideo from '../../assets/video/stock-video-person-drawing.mp4';</code></pre>
               </div>
           
           
@@ -6675,6 +7483,7 @@ vttUrl?: string</code></pre>
               <pre><code>const DefaultVideo = () =&gt; &lt;div className=&quot;container&quot;&gt;
     &lt;Video type=&quot;video&quot; url={stockVideo} /&gt;
 &lt;/div&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -6686,6 +7495,7 @@ vttUrl?: string</code></pre>
               <pre><code>const DefaultVideoWithCaption = () =&gt; &lt;div className=&quot;container&quot;&gt;
     &lt;Video type=&quot;video&quot; url={stockVideo} caption=&quot;Sample video&quot; /&gt;
 &lt;/div&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -6697,6 +7507,7 @@ vttUrl?: string</code></pre>
               <pre><code>const YoutubeVideo = () =&gt; &lt;div className=&quot;container&quot;&gt;
     &lt;Video type=&quot;youtube&quot; url=&quot;https://www.youtube.com/embed/YW2p0ctzK9c&quot; /&gt;
 &lt;/div&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -6711,6 +7522,7 @@ vttUrl?: string</code></pre>
         url=&quot;https://www.youtube.com/embed/YW2p0ctzK9c&quot;
         caption=&quot;Sample youtube video&quot; /&gt;
 &lt;/div&gt;;</code></pre>
+              
             </div>
         </div>
     

@@ -124,6 +124,8 @@
       #filter-errors:target ~ header .filter-pill[data-k='errors'],
       #filter-infos:target ~ header .filter-pill[data-k='infos'],
       #filter-story-errors:target ~ header .filter-pill[data-k='story-errors'],
+      #filter-story-warnings:target ~ header .filter-pill[data-k='story-warnings'],
+      #filter-no-api:target ~ header .filter-pill[data-k='no-api'],
       #filter-doc-errors:target ~ header .filter-pill[data-k='docs'],
       #filter-docs:target ~ header .filter-pill[data-k='docs'] {
           box-shadow: 0 0 0 var(--active-ring) currentColor;
@@ -135,6 +137,8 @@
       #filter-errors,
       #filter-infos,
       #filter-story-errors,
+      #filter-story-warnings,
+      #filter-no-api,
       #filter-doc-errors,
       #filter-docs {
           display: none;
@@ -160,6 +164,14 @@
           display: flex;
           flex-direction: column;
           gap: 10px;
+          /* Keep a deep-linked card clear of the sticky header when scrolled into view */
+          scroll-margin-top: 110px;
+      }
+
+      /* Highlight the card deep-linked via components.html#<manifest-id> */
+      .card:target {
+          box-shadow: 0 0 0 2px var(--info);
+          border-color: var(--info);
       }
 
       .head {
@@ -241,6 +253,16 @@
           border-color: color-mix(in srgb, var(--err) 55%, var(--border));
       }
 
+      .snippet-warning {
+          margin-top: 8px;
+          padding: 8px 10px;
+          border-radius: 8px;
+          border: 1px solid color-mix(in srgb, var(--info) 45%, var(--border));
+          background: var(--info-bg);
+          color: #b3d9ff;
+          font-size: 12px;
+      }
+
       .as-toggle {
           cursor: pointer;
       }
@@ -300,7 +322,7 @@
           display: grid;
       }
 
-      /* Colored notes for prop type error + info */
+      /* Colored notes for API error + info */
       .note {
           padding: 12px;
           border: 1px solid var(--border);
@@ -456,6 +478,14 @@
           display: none;
       }
 
+      #filter-story-warnings:target ~ main .card:not(.has-story-warning) {
+          display: none;
+      }
+
+      #filter-no-api:target ~ main .card:not(.missing-api) {
+          display: none;
+      }
+
       #filter-doc-errors:target ~ main .card:not(.has-doc-error) {
           display: none;
       }
@@ -583,12 +613,14 @@
 <span id="filter-errors"></span>
 <span id="filter-infos"></span>
 <span id="filter-story-errors"></span>
+<span id="filter-story-warnings"></span>
+<span id="filter-no-api"></span>
 <span id="filter-doc-errors"></span>
 <span id="filter-docs"></span>
 <header>
   <div class="wrap">
     <h1>Manifest Debugger</h1>
-    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><span class="filter-pill ok" aria-disabled="true">2 components ok</span><a class="filter-pill info" data-k="infos" href="#filter-infos">2/2 infos</a><span class="filter-pill ok" aria-disabled="true">21 stories ok</span></div>
+    <div class="summary"><a class="filter-pill all" data-k="all" href="#filter-all">All</a><span class="filter-pill ok" aria-disabled="true">2 components ok</span><a class="filter-pill info" data-k="infos" href="#filter-infos">2/2 infos</a><span class="filter-pill ok" aria-disabled="true">21 stories ok</span><a class="filter-pill info" data-k="story-warnings" href="#filter-story-warnings">18/21 incomplete snippets</a></div>
   </div>
 </header>
 <main>
@@ -605,10 +637,13 @@
     <div class="grid" role="list">
       
 <article
+  id="program-detail-page"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  has-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="DetailPage">
@@ -618,7 +653,7 @@
       <div class="badges">
         <label for="c-0-program-detail-page-props" class="badge ok as-toggle">17 prop types</label>
         <label for="c-0-program-detail-page-info" class="badge info as-toggle">1 info</label>
-        <label for="c-0-program-detail-page-stories" class="badge ok as-toggle">7 stories</label>
+        <label for="c-0-program-detail-page-stories" class="badge ok as-toggle">7 stories · 4 incomplete</label>
         
         
       </div>
@@ -626,7 +661,7 @@
     <div class="meta" title="./src/components/DetailPage/index.stories.jsx">program-detail-page · ./src/components/DetailPage/index.stories.jsx</div>
     
     
-    <div class="kv"><span class="chip">typedef: {import(&#39;../../core/types/detail-page-types&#39;).DetailPageProps} AppProps </span></div>
+    <div class="kv"><span class="chip">typedef: {import(&#39;../../core/types/detail-page-types&#39;).DetailPageProps} AppProps</span></div>
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
@@ -700,14 +735,15 @@ whyChooseAsu?: shape</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { DetailPage } from "@asu/app-degree-pages";</code></pre>
+                <pre><code>import { DetailPage } from '@asu/app-degree-pages';
+import { getStoryBookBaseUrl } from '../../core/utils';</code></pre>
               </div>
           
           
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Default</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -767,6 +803,7 @@ whyChooseAsu?: shape</code></pre>
     &lt;/section&gt;
   &lt;/&gt;
 );</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `queryAcadPlan` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
@@ -831,6 +868,7 @@ whyChooseAsu?: shape</code></pre>
     &lt;/section&gt;
   &lt;/&gt;
 );</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -895,6 +933,7 @@ whyChooseAsu?: shape</code></pre>
     &lt;/section&gt;
   &lt;/&gt;
 );</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -959,11 +998,12 @@ whyChooseAsu?: shape</code></pre>
     &lt;/section&gt;
   &lt;/&gt;
 );</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">With Video And Market Text</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -1023,11 +1063,12 @@ whyChooseAsu?: shape</code></pre>
     &lt;/section&gt;
   &lt;/&gt;
 );</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `WithVideoAndMarketText.args.dataSource = { ...WithVideoAndMarketText.args.dataSource, acadPlan: &quot;LSBISBIS&quot; }`, `WithVideoAndMarketText.args.introContent = { ...WithVideoAndMarketText.args.introContent, image: undefined, video: { url: &quot;./examples/assets/video/stock-video-person-drawing.mp4&quot;, title: &quot;&quot;, vttUrl: &quot;&quot; } }`, `queryAcadPlan` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">With Youtube Video</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -1087,11 +1128,12 @@ whyChooseAsu?: shape</code></pre>
     &lt;/section&gt;
   &lt;/&gt;
 );</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `WithYoutubeVideo.args.dataSource = { ...WithYoutubeVideo.args.dataSource, acadPlan: &quot;LSBISBIS&quot; }`, `WithYoutubeVideo.args.introContent = { ...WithYoutubeVideo.args.introContent, image: undefined, video: { type: &quot;youtube&quot;, url: &quot;https://www.youtube.com/watch&quot; + &quot;?v=aA2DCIDNxmw&amp;list=PLuoS9aQM7Lzurd5ezsuCIlxyag7q_c-NQ&quot; } }`, `queryAcadPlan` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">With No Global Opportunity</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -1151,6 +1193,7 @@ whyChooseAsu?: shape</code></pre>
     &lt;/section&gt;
   &lt;/&gt;
 );</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `WithNoGlobalOpportunity.args.dataSource = { ...WithNoGlobalOpportunity.args.dataSource, acadPlan: &quot;ASAPSSCERT&quot; }`, `queryAcadPlan` could not be resolved statically.</div>
             </div>
         </div>
     
@@ -1158,10 +1201,13 @@ whyChooseAsu?: shape</code></pre>
   </div>
 </article>
 <article
+  id="program-listing-page"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  has-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="ListingPage">
@@ -1171,7 +1217,7 @@ whyChooseAsu?: shape</code></pre>
       <div class="badges">
         <label for="c-1-program-listing-page-props" class="badge ok as-toggle">8 prop types</label>
         <label for="c-1-program-listing-page-info" class="badge info as-toggle">1 info</label>
-        <label for="c-1-program-listing-page-stories" class="badge ok as-toggle">14 stories</label>
+        <label for="c-1-program-listing-page-stories" class="badge ok as-toggle">14 stories · 14 incomplete</label>
         
         
       </div>
@@ -1179,7 +1225,7 @@ whyChooseAsu?: shape</code></pre>
     <div class="meta" title="./src/components/ListingPage/index.stories.jsx">program-listing-page · ./src/components/ListingPage/index.stories.jsx</div>
     
     
-    <div class="kv"><span class="chip">typedef: {import(&#39;../../core/types/listing-page-types&#39;).ListingPageProps} AppProps </span></div>
+    <div class="kv"><span class="chip">typedef: {import(&#39;../../core/types/listing-page-types&#39;).ListingPageProps} AppProps</span></div>
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
@@ -1235,14 +1281,15 @@ programList?: shape</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { ListingPage } from "@asu/app-degree-pages";</code></pre>
+                <pre><code>import { ListingPage } from '@asu/app-degree-pages';
+import { getStoryBookBaseUrl } from '../../core/utils';</code></pre>
               </div>
           
           
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Default</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -1267,11 +1314,12 @@ programList?: shape</code></pre>
     {...rest}
   /&gt;
 );</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `dataSource` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Default Graduate</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -1296,11 +1344,12 @@ programList?: shape</code></pre>
     {...rest}
   /&gt;
 );</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `...defaultArgs.programList.dataSource`, `defaultArgs` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Default With Blacklisted Plan Codes</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -1325,11 +1374,12 @@ programList?: shape</code></pre>
     {...rest}
   /&gt;
 );</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `...defaultArgs.programList.dataSource`, `defaultArgs` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Default With Degrees Per Page Set</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -1354,11 +1404,12 @@ programList?: shape</code></pre>
     {...rest}
   /&gt;
 );</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `dataSource` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Default With Certificate</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -1383,11 +1434,12 @@ programList?: shape</code></pre>
     {...rest}
   /&gt;
 );</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `...defaultArgs.programList.dataSource`, `defaultArgs` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">Grad With Certificate</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -1412,11 +1464,12 @@ programList?: shape</code></pre>
     {...rest}
   /&gt;
 );</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `...defaultArgs.programList.dataSource`, `defaultArgs` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">All With Certificate</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -1441,11 +1494,12 @@ programList?: shape</code></pre>
     {...rest}
   /&gt;
 );</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `...defaultArgs.programList.dataSource`, `defaultArgs` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">With College Acad Org And Department Code</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -1470,11 +1524,12 @@ programList?: shape</code></pre>
     {...rest}
   /&gt;
 );</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `...Default.args.programList.dataSource`, `Default` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">With Intro Text</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -1499,11 +1554,12 @@ programList?: shape</code></pre>
     {...rest}
   /&gt;
 );</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `dataSource` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">With Intro Text Photo Grid</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -1528,11 +1584,12 @@ programList?: shape</code></pre>
     {...rest}
   /&gt;
 );</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `dataSource` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">With Intro Text Media Image</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -1557,11 +1614,12 @@ programList?: shape</code></pre>
     {...rest}
   /&gt;
 );</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `dataSource` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">With Intro Text Media Video</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -1586,11 +1644,12 @@ programList?: shape</code></pre>
     {...rest}
   /&gt;
 );</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `WithIntroTextMediaVideo.args.introContent = { ...WithIntroTextMediaImage.args.introContent, image: undefined, video: { url: &quot;/examples/assets/video/stock-video-person-drawing.mp4&quot;, title: &quot;&quot;, vttUrl: &quot;&quot; } }`, `dataSource` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">With Intro Text Media Youtube Video</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -1615,11 +1674,12 @@ programList?: shape</code></pre>
     {...rest}
   /&gt;
 );</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `WithIntroTextMediaYoutubeVideo.args.introContent = { ...WithIntroTextMediaImage.args.introContent, image: undefined, video: { type: &quot;youtube&quot;, url: &quot;https://www.youtube.com/embed/YW2p0ctzK9c&quot; } }`, `dataSource` could not be resolved statically.</div>
             </div>
             <div class="note ok">
               <div class="row">
                 <span class="ex-name">With Intro Text Image Overlay</span>
-                <span class="badge ok">story ok</span>
+                <span class="badge info">incomplete example</span>
               </div>
               
               
@@ -1644,6 +1704,7 @@ programList?: shape</code></pre>
     {...rest}
   /&gt;
 );</code></pre>
+              <div class="snippet-warning">Incomplete snippet: `dataSource` could not be resolved statically.</div>
             </div>
         </div>
     

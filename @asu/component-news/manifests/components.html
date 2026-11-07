@@ -124,6 +124,8 @@
       #filter-errors:target ~ header .filter-pill[data-k='errors'],
       #filter-infos:target ~ header .filter-pill[data-k='infos'],
       #filter-story-errors:target ~ header .filter-pill[data-k='story-errors'],
+      #filter-story-warnings:target ~ header .filter-pill[data-k='story-warnings'],
+      #filter-no-api:target ~ header .filter-pill[data-k='no-api'],
       #filter-doc-errors:target ~ header .filter-pill[data-k='docs'],
       #filter-docs:target ~ header .filter-pill[data-k='docs'] {
           box-shadow: 0 0 0 var(--active-ring) currentColor;
@@ -135,6 +137,8 @@
       #filter-errors,
       #filter-infos,
       #filter-story-errors,
+      #filter-story-warnings,
+      #filter-no-api,
       #filter-doc-errors,
       #filter-docs {
           display: none;
@@ -160,6 +164,14 @@
           display: flex;
           flex-direction: column;
           gap: 10px;
+          /* Keep a deep-linked card clear of the sticky header when scrolled into view */
+          scroll-margin-top: 110px;
+      }
+
+      /* Highlight the card deep-linked via components.html#<manifest-id> */
+      .card:target {
+          box-shadow: 0 0 0 2px var(--info);
+          border-color: var(--info);
       }
 
       .head {
@@ -241,6 +253,16 @@
           border-color: color-mix(in srgb, var(--err) 55%, var(--border));
       }
 
+      .snippet-warning {
+          margin-top: 8px;
+          padding: 8px 10px;
+          border-radius: 8px;
+          border: 1px solid color-mix(in srgb, var(--info) 45%, var(--border));
+          background: var(--info-bg);
+          color: #b3d9ff;
+          font-size: 12px;
+      }
+
       .as-toggle {
           cursor: pointer;
       }
@@ -300,7 +322,7 @@
           display: grid;
       }
 
-      /* Colored notes for prop type error + info */
+      /* Colored notes for API error + info */
       .note {
           padding: 12px;
           border: 1px solid var(--border);
@@ -456,6 +478,14 @@
           display: none;
       }
 
+      #filter-story-warnings:target ~ main .card:not(.has-story-warning) {
+          display: none;
+      }
+
+      #filter-no-api:target ~ main .card:not(.missing-api) {
+          display: none;
+      }
+
       #filter-doc-errors:target ~ main .card:not(.has-doc-error) {
           display: none;
       }
@@ -583,6 +613,8 @@
 <span id="filter-errors"></span>
 <span id="filter-infos"></span>
 <span id="filter-story-errors"></span>
+<span id="filter-story-warnings"></span>
+<span id="filter-no-api"></span>
 <span id="filter-doc-errors"></span>
 <span id="filter-docs"></span>
 <header>
@@ -605,10 +637,13 @@
     <div class="grid" role="list">
       
 <article
+  id="news-component-carousel-card-news"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="CardCarouselNews">
@@ -626,7 +661,7 @@
     <div class="meta" title="./src/components/CardCarouselNews/index.stories.jsx">news-component-carousel-card-news · ./src/components/CardCarouselNews/index.stories.jsx</div>
     
     
-    <div class="kv"><span class="chip">typedef: {import(&quot;@asu/unity-react-core/src/core/types/feed-types&quot;).FeedType} FeedType </span></div>
+    <div class="kv"><span class="chip">typedef: {import(&quot;@asu/unity-react-core/src/core/types/feed-types&quot;).FeedType} FeedType</span></div>
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
@@ -685,7 +720,7 @@ maxItems?: number</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { CardCarouselNews } from "@asu/component-news";</code></pre>
+                <pre><code>import { CardCarouselNews } from '@asu/component-news';</code></pre>
               </div>
           
           
@@ -707,6 +742,7 @@ maxItems?: number</code></pre>
     dataSource={{
       url: &quot;/api/mocks/feeds-json&quot;,
     }} /&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -733,6 +769,7 @@ maxItems?: number</code></pre>
       text: &quot;Read news&quot;,
       size: &quot;default&quot;, //   &quot;default&quot; | &quot;small&quot; | &quot;medium&quot; | &quot;large&quot;
     }} /&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -758,6 +795,7 @@ maxItems?: number</code></pre>
       // filters: &quot;Nursing and Health Care&quot;,
       // filters: &quot;Health,Journalism&quot;,
     }} /&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -780,6 +818,7 @@ maxItems?: number</code></pre>
       url: &quot;/api/mocks/feeds-json&quot;,
     }}
     maxItems={10} /&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -792,6 +831,7 @@ maxItems?: number</code></pre>
     dataSource={{
       url: &quot;/api/mocks/feeds-json&quot;,
     }} /&gt;;</code></pre>
+              
             </div>
         </div>
     
@@ -799,10 +839,13 @@ maxItems?: number</code></pre>
   </div>
 </article>
 <article
+  id="news-component-card-grid-news"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="CardGridNews">
@@ -820,7 +863,7 @@ maxItems?: number</code></pre>
     <div class="meta" title="./src/components/CardGridNews/index.stories.jsx">news-component-card-grid-news · ./src/components/CardGridNews/index.stories.jsx</div>
     
     
-    <div class="kv"><span class="chip">typedef: {import(&quot;@asu/unity-react-core/src/core/types/feed-types&quot;).FeedType} FeedType </span></div>
+    <div class="kv"><span class="chip">typedef: {import(&quot;@asu/unity-react-core/src/core/types/feed-types&quot;).FeedType} FeedType</span></div>
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
@@ -887,7 +930,7 @@ maxItems?: number</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { CardGridNews } from "@asu/component-news";</code></pre>
+                <pre><code>import { CardGridNews } from '@asu/component-news';</code></pre>
               </div>
           
           
@@ -909,6 +952,7 @@ maxItems?: number</code></pre>
     dataSource={{
       url: &quot;/api/mocks/feeds-json&quot;,
     }} /&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -935,6 +979,7 @@ maxItems?: number</code></pre>
       text: &quot;Read news&quot;,
       size: &quot;default&quot;, //   &quot;default&quot; | &quot;small&quot; | &quot;medium&quot; | &quot;large&quot;
     }} /&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -960,6 +1005,7 @@ maxItems?: number</code></pre>
       // filters: &quot;Nursing and Health Care&quot;,
       // filters: &quot;Health,Journalism&quot;,
     }} /&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -982,6 +1028,7 @@ maxItems?: number</code></pre>
       url: &quot;/api/mocks/feeds-json&quot;,
     }}
     maxItems={3} /&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -994,6 +1041,7 @@ maxItems?: number</code></pre>
     dataSource={{
       url: &quot;/api/mocks/feeds-json&quot;,
     }} /&gt;;</code></pre>
+              
             </div>
         </div>
     
@@ -1001,10 +1049,13 @@ maxItems?: number</code></pre>
   </div>
 </article>
 <article
+  id="news-component-card-list-news"
   class="card 
-  no-error 
-  has-info 
+  no-error
+  has-info
   no-story-error
+  no-story-warning
+  
   no-doc-error"
   role="listitem"
   aria-label="CardListlNews">
@@ -1022,7 +1073,7 @@ maxItems?: number</code></pre>
     <div class="meta" title="./src/components/CardListlNews/index.stories.jsx">news-component-card-list-news · ./src/components/CardListlNews/index.stories.jsx</div>
     
     
-    <div class="kv"><span class="chip">typedef: {import(&quot;@asu/unity-react-core/src/core/types/feed-types&quot;).FeedType} FeedType </span></div>
+    <div class="kv"><span class="chip">typedef: {import(&quot;@asu/unity-react-core/src/core/types/feed-types&quot;).FeedType} FeedType</span></div>
   </div>
 
   <!-- ⬇️ Hidden toggles must be siblings BEFORE .panels -->
@@ -1089,7 +1140,7 @@ maxItems?: number</code></pre>
                 <div class="row">
                   <span class="ex-name">Imports</span>
                 </div>
-                <pre><code>import { CardListlNews } from "@asu/component-news";</code></pre>
+                <pre><code>import { CardListlNews } from '@asu/component-news';</code></pre>
               </div>
           
           
@@ -1111,6 +1162,7 @@ maxItems?: number</code></pre>
     dataSource={{
       url: &quot;/api/mocks/feeds-json&quot;,
     }} /&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -1137,6 +1189,7 @@ maxItems?: number</code></pre>
       text: &quot;Read news&quot;,
       size: &quot;default&quot;, //   &quot;default&quot; | &quot;small&quot; | &quot;medium&quot; | &quot;large&quot;
     }} /&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -1162,6 +1215,7 @@ maxItems?: number</code></pre>
       // filters: &quot;Nursing and Health Care&quot;,
       // filters: &quot;Health,Journalism&quot;,
     }} /&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -1184,6 +1238,7 @@ maxItems?: number</code></pre>
       url: &quot;/api/mocks/feeds-json&quot;,
     }}
     maxItems={2} /&gt;;</code></pre>
+              
             </div>
             <div class="note ok">
               <div class="row">
@@ -1196,6 +1251,7 @@ maxItems?: number</code></pre>
     dataSource={{
       url: &quot;/api/mocks/feeds-json&quot;,
     }} /&gt;;</code></pre>
+              
             </div>
         </div>
     
