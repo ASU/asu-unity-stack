@@ -23,10 +23,10 @@
     "scss_entry": "packages/components-homepage/src/scss/components-homepage.scss"
   },
   "pr_ready_evidence": {
-    "build": "yarn workspace @asu/components-homepage build — exit 0",
-    "lint": "yarn workspace @asu/components-homepage lint — exit 0",
-    "test_storybook": "yarn workspace @asu/components-homepage test:storybook — 103 passed (quick-links)",
-    "test_accessibility": "yarn workspace @asu/components-homepage test:accessibility — 55 passed (homepage-quick-links--accessibility-plain: 0 WCAG 2.1 AA violations)"
+    "lint": "eslint + stylelint (src/components/quick-links) — exit 0",
+    "test_storybook": "yarn workspace @asu/components-homepage test:storybook — quick-links stories pass",
+    "html_parity": "verified — handoff/WWWCMS-235/markup.html === normalize(quickLinksHtml()), the same basis the html-parity story asserts against the Storybook canvas (HTML addon only reformats inter-tag whitespace)",
+    "notes": "build (yarn build) and accessibility (test:accessibility) not re-run this pass; re-run before opening the PR"
   },
   "html_parity_markup_file": "markup.html",
   "webspark_target": {
@@ -48,23 +48,46 @@
     "dynamic_aria": "none",
     "class_toggle_contract": "none",
     "motion": {
-      "transition": "background-color 150ms ease-out, color 150ms ease-out on .hp-quick-link and .hp-quick-link-es",
+      "transition": "background-color 150ms ease-out, color 150ms ease-out on .hp-quick-link only (the four icon links); the Spanish utility link has no state transition",
       "reduced_motion": "transition is only declared inside @media (prefers-reduced-motion: no-preference); under reduce the state swap is instant"
     },
+    "spanish_link": "utility link: white text (incl. :visited), underline at rest (one continuous underline through the trailing arrow), underline removed on hover, no glass background, no icon colour change, square focus ring (border-radius 0). The four icon links keep the glass background + gold icon on hover/focus.",
     "breakpoint_behavior": {
-      "2x2_grid": "width <= 900px",
-      "1x4_row": "width >= 901px",
+      "2x2_grid": "width <= 900px (two equal columns, minmax(0, 1fr))",
+      "1x4_row": "width >= 901px (four equal columns, minmax(0, 1fr))",
+      "sizing": "items are equal-width and share the full row width (no fixed/max item width); 16px gap; item height follows content with 8px padding; wrapper max-width 900px",
       "notes": "Uses $hp-phone-max=900px from packages/components-homepage/src/scss/_variables.scss; this diverges from UDS $uds-breakpoint-md=768px on purpose to match hero/reimagine/backgrounds and prototype v2.71."
     },
     "analytics_timing": "data-ga* attributes on all five anchors, handled by the theme's data-layer.js (requires unity-bootstrap-theme JS on the page); values provisional, see open_questions"
   },
+  "icons": {
+    "library": "Font Awesome 6 (fa-solid style prefix)",
+    "map": {
+      "Explore ASU Online": "fa-solid fa-laptop",
+      "Visit an ASU campus": "fa-solid fa-map-location-dot",
+      "Request info": "fa-solid fa-address-card",
+      "Apply now": "fa-solid fa-file-pen",
+      "Spanish link arrow": "fa-solid fa-arrow-right"
+    },
+    "host_requirement": "Stage B host page must load Font Awesome 6; the fa-solid prefix and these icon names do not exist in FA 5. The unity-bootstrap-theme peer dep is still FA 5.15.3 — confirm the host loads FA 6."
+  },
   "tokens_used": {
     "colors": ["$uds-color-base-white", "$uds-color-brand-gold"],
-    "spacing": ["$uds-size-spacing-1", "$uds-size-spacing-2", "$uds-size-spacing-3", "$uds-size-spacing-4", "$uds-size-spacing-6", "$uds-size-spacing-7", "$uds-size-spacing-12"],
-    "typography": ["$uds-size-font-small", "$uds-size-font-medium", "$uds-font-weight-bold"],
-    "icon_sizes": ["$uds-size-icon-small", "$uds-size-icon-base"],
+    "spacing": ["$uds-size-spacing-half", "$uds-size-spacing-1", "$uds-size-spacing-2", "$uds-size-spacing-3", "$uds-size-spacing-4"],
+    "typography": ["$uds-size-font-small", "$uds-font-weight-bold"],
+    "icon_sizes": ["$uds-size-icon-small"],
     "focus_ring": ["--hp-focus-inner", "--hp-focus-outer"],
-    "new_custom_property": "--hp-quick-link-glass: rgba($uds-color-base-white, 0.16)"
+    "new_custom_property": "--hp-quick-link-glass: rgba($uds-color-base-white, 0.16)",
+    "literal_values": {
+      "label_font_size": "16px ($uds-size-font-medium)",
+      "label_line_height": "20px",
+      "icon_size": "clamp(1.25rem, 3vw, $uds-size-icon-small) — 20px to 24px",
+      "item_gap": "16px",
+      "item_padding": "8px ($uds-size-spacing-1) all sides",
+      "item_border_radius": "0.25rem ($uds-size-spacing-half)",
+      "wrapper_max_width": "900px",
+      "spanish_focus_radius": "0 (square)"
+    }
   },
   "open_questions": [
     { "id": "open-decision-6", "subject": "single source for shared CTA URLs (Apply, Visit, Request info)", "stage_a_fallback": "real URLs hard-coded in quickLinksHtml() defaults and markup.html; Stage B may still centralize them in config" },

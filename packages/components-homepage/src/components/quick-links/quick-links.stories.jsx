@@ -26,7 +26,7 @@ export default {
     docs: {
       description: {
         component:
-          "Quick-links row (WWWCMS-235): four icon anchors (Explore ASU Online → Visit an ASU campus → Request info → Apply now) plus a Spanish sibling link (`Aprender más en español →`). Hover and keyboard focus paint a 16% white glass rectangle behind the active item and swap the icon to ASU gold. ≤ 900 px: 2×2 grid; ≥ 901 px: 1×4 row. Pure HTML + SCSS; zero JS shipped.",
+          "Quick-links row (WWWCMS-235): four icon anchors (Explore ASU Online → Visit an ASU campus → Request info → Apply now) plus a Spanish utility link (`Aprender más en español →`, white text, underlined; the underline disappears on hover). On the four icon anchors, hover and keyboard focus paint a 16% white glass rectangle behind the active item and swap the icon to ASU gold. ≤ 900 px: 2×2 grid; ≥ 901 px: 1×4 row. Pure HTML + SCSS; zero JS shipped.",
       },
     },
   },
@@ -177,7 +177,7 @@ export const Default = {
     }
 
     // Wrapper max-width
-    await expect(getComputedStyle(p.wrapper).maxWidth).toBe("1440px");
+    await expect(getComputedStyle(p.wrapper).maxWidth).toBe("900px");
 
     // No background on items at rest — no focus ring visible at rest (§8 row 1 requirement)
     for (const item of p.items) {
@@ -216,10 +216,10 @@ export const Default393 = {
     const esBox = p.spanish.getBoundingClientRect();
     await expect(esBox.top).toBeGreaterThan(listBox.bottom - 1);
 
-    // P2-1 (WWWCMS-235 visual-fix): at ≤900px, label font-size must be $uds-size-font-small
-    // = 0.875rem = 14px. This assertion would have caught the specificity bug.
+    // Label is 16px / 20px at every breakpoint, including phone.
     for (const label of p.labels) {
-      await expect(getComputedStyle(label).fontSize).toBe("14px");
+      await expect(getComputedStyle(label).fontSize).toBe("16px");
+      await expect(getComputedStyle(label).lineHeight).toBe("20px");
     }
 
     // WWWCMS-235 text-align fix: wrapped label lines must center on narrow viewports.
@@ -253,10 +253,10 @@ export const Default768 = {
     const item3Box = p.items[2].getBoundingClientRect();
     await expect(item3Box.top).toBeGreaterThan(item1Box.bottom - 1);
 
-    // P2-1 (WWWCMS-235 visual-fix): at ≤900px, label font-size must be $uds-size-font-small
-    // = 0.875rem = 14px. Regression guard: the specificity bump in _quick-links.scss must hold.
+    // Label is 16px / 20px at every breakpoint, including phone.
     for (const label of p.labels) {
-      await expect(getComputedStyle(label).fontSize).toBe("14px");
+      await expect(getComputedStyle(label).fontSize).toBe("16px");
+      await expect(getComputedStyle(label).lineHeight).toBe("20px");
     }
 
     // Even 2×2: equal width/height/padding, icon + label centered per item.
@@ -280,20 +280,14 @@ export const Default1024 = {
     );
     await expect(Math.max(...tops) - Math.min(...tops)).toBeLessThanOrEqual(1);
 
-    // Icon size is $uds-size-icon-base = 2rem = 32px at ≥ 1024px
-    for (const icon of p.icons) {
-      const size = parseFloat(getComputedStyle(icon).fontSize);
-      await expect(size).toBeGreaterThanOrEqual(31);
-      await expect(size).toBeLessThanOrEqual(33);
-    }
-
+    // Icon size is $uds-size-icon-small = 1.5rem = 24px at every breakpoint
     // §8 row 4 dimension check: verify font-size (which equals the rendered glyph size)
     // Note: getBoundingClientRect().width on <i> elements returns 0 when Font Awesome CSS is not
     // loaded (no glyph content). Using computed fontSize is the correct measurement here.
     for (const icon of p.icons) {
       const iconFontSize = parseFloat(getComputedStyle(icon).fontSize);
-      await expect(iconFontSize).toBeGreaterThanOrEqual(31); // 32px = 2rem = icon-base
-      await expect(iconFontSize).toBeLessThanOrEqual(33);
+      await expect(iconFontSize).toBeGreaterThanOrEqual(23);
+      await expect(iconFontSize).toBeLessThanOrEqual(25);
     }
 
     // P2-1 (WWWCMS-235 visual-fix): at ≥1024px, label font-size must remain
@@ -326,16 +320,16 @@ export const Default1440 = {
     const rightGap = vpWidth - box.right;
     await expect(Math.abs(leftGap - rightGap)).toBeLessThanOrEqual(1);
 
-    // Icon size 32px at 1440
+    // Icon size 24px at 1440
     for (const icon of p.icons) {
       const size = parseFloat(getComputedStyle(icon).fontSize);
-      await expect(size).toBeGreaterThanOrEqual(31);
-      await expect(size).toBeLessThanOrEqual(33);
+      await expect(size).toBeGreaterThanOrEqual(23);
+      await expect(size).toBeLessThanOrEqual(25);
     }
   },
 };
 
-// §8 row 6 — default at 1920 px (column-gap hits clamp ceiling of 6rem = 96px)
+// §8 row 6 — default at 1920 px (fixed 16px column-gap)
 export const Default1920 = {
   name: "default-1920",
   globals: viewport(1920),
@@ -351,13 +345,18 @@ export const Default1920 = {
     );
     await expect(Math.max(...tops) - Math.min(...tops)).toBeLessThanOrEqual(1);
 
-    // Wrapper width ≤ 1440 (capped)
-    await expect(p.wrapper.offsetWidth).toBeLessThanOrEqual(1440);
+    // Wrapper width ≤ 900 (capped)
+    await expect(p.wrapper.offsetWidth).toBeLessThanOrEqual(900);
 
-    // column-gap resolves to 96px (6rem = $uds-size-spacing-12, upper bound of clamp at 1920px)
+    // column-gap is a fixed 16px, and the measured space between items matches it
     const gap = parseFloat(getComputedStyle(p.list).columnGap);
-    await expect(gap).toBeGreaterThanOrEqual(95);
-    await expect(gap).toBeLessThanOrEqual(97);
+    await expect(gap).toBe(16);
+    const boxes = p.items.map(item => item.getBoundingClientRect());
+    for (let i = 1; i < boxes.length; i += 1) {
+      await expect(
+        Math.abs(boxes[i].left - boxes[i - 1].right - 16)
+      ).toBeLessThanOrEqual(1);
+    }
   },
 };
 
@@ -512,13 +511,10 @@ export const FocusVisibleSpanish = {
     await waitFor(() =>
       expect(getComputedStyle(p.spanish).boxShadow).toBe(RING)
     );
-    // Glass background
-    await waitFor(() =>
-      expect(getComputedStyle(p.spanish).backgroundColor).toBe(GLASS)
-    );
-    // Trailing arrow icon turns gold (§8 row 13 requirement)
+    // Utility link: no glass background, arrow icon keeps the link colour (no gold swap)
+    await expect(getComputedStyle(p.spanish).backgroundColor).not.toBe(GLASS);
     const esIcon = p.spanish.querySelector(".hp-quick-link-es__icon");
-    await expect(getComputedStyle(esIcon).color).toBe(GOLD);
+    await expect(getComputedStyle(esIcon).color).not.toBe(GOLD);
   },
 };
 
@@ -610,6 +606,60 @@ export const TargetSize = {
       await expect(box.width).toBeGreaterThanOrEqual(44);
       await expect(box.height).toBeGreaterThanOrEqual(44);
     }
+  },
+};
+
+// Hover/focus target: all items share one size even though label lengths differ
+// ("Request info" vs "Visit an ASU campus"), and each has 8px padding.
+const expectUniformHoverTarget = async p => {
+  const boxes = p.items.map(item => item.getBoundingClientRect());
+  const spread = values => Math.max(...values) - Math.min(...values);
+
+  // 8px between each container edge and its content
+  for (const item of p.items) {
+    const s = getComputedStyle(item);
+    await expect(
+      [s.paddingTop, s.paddingRight, s.paddingBottom, s.paddingLeft].join(" ")
+    ).toBe("8px 8px 8px 8px");
+  }
+
+  await expect(spread(boxes.map(b => b.width))).toBeLessThanOrEqual(1);
+  await expect(spread(boxes.map(b => b.height))).toBeLessThanOrEqual(1);
+};
+
+// Equal-size hover targets at desktop (1×4 row)
+export const HoverTargetSizeDesktop = {
+  name: "hover-target-size-desktop",
+  globals: viewport(1440),
+  args: { backdrop: "photo" },
+  decorators: [withBackdrop],
+  render: () => <Page html={quickLinksHtml()} />,
+  play: async ({ canvasElement }) => {
+    await expectUniformHoverTarget(parts(canvasElement));
+  },
+};
+
+// Same at the narrowest desktop breakpoint.
+export const HoverTargetSizeTablet = {
+  name: "hover-target-size-1024",
+  globals: viewport(1024),
+  args: { backdrop: "photo" },
+  decorators: [withBackdrop],
+  render: () => <Page html={quickLinksHtml()} />,
+  play: async ({ canvasElement }) => {
+    await expectUniformHoverTarget(parts(canvasElement));
+  },
+};
+
+// Phone 2×2: cells stay equal in width and height.
+export const HoverTargetSizeMobile = {
+  name: "hover-target-size-mobile",
+  globals: viewport(393),
+  args: { backdrop: "plain" },
+  decorators: [withBackdrop],
+  render: () => <Page html={quickLinksHtml()} />,
+  play: async ({ canvasElement }) => {
+    await expectUniformHoverTarget(parts(canvasElement));
   },
 };
 
@@ -962,8 +1012,8 @@ export const HtmlParity = {
     // role="list" on the ul
     await expect(p.list.getAttribute("role")).toBe("list");
 
-    // Wrapper has max-width: 1440px
-    await expect(getComputedStyle(p.wrapper).maxWidth).toBe("1440px");
+    // Wrapper has max-width: 900px
+    await expect(getComputedStyle(p.wrapper).maxWidth).toBe("900px");
 
     // HTML parity: compare canvasElement.innerHTML (design doc §8 row 17).
     // The Page component renders: <div>{quickLinksHtml()}</div>.
@@ -980,32 +1030,75 @@ export const HtmlParity = {
   },
 };
 
-// Visited state of the Spanish link stays white.
-// Browsers hide :visited colors from getComputedStyle (privacy), so this asserts the CSS rule.
-// The theme's `a:visited:not(...)` (extends/_misc.scss) has specificity (0,2,1) and paints
-// visited links dark maroon, so our rule must out-rank it: two classes + :visited = (0,3,0).
-export const SpanishVisitedWhite = {
-  name: "spanish-visited-white",
+// Visited links stay white. Browsers hide :visited colors from getComputedStyle (privacy),
+// so this asserts the CSS rules. The theme's `a:visited:not(...)` has specificity (0,2,1) and
+// paints visited links dark maroon, so ours need a parent class: (0,3,0).
+export const VisitedLinksWhite = {
+  name: "visited-links-white",
   globals: viewport(1024),
   args: { backdrop: "plain" },
   decorators: [withBackdrop],
   render: () => <Page html={quickLinksHtml()} />,
   play: async () => {
-    let visitedRule = null;
-    walkRules(rule => {
-      if (
-        rule.selectorText.includes(".hp-quick-link-es") &&
-        rule.selectorText.includes(":visited") &&
-        !rule.selectorText.includes("__icon")
-      )
-        visitedRule = rule;
-    });
-    await expect(visitedRule).not.toBeNull();
-    await expect(visitedRule.style.color).toBe("rgb(255, 255, 255)");
-    // Must carry a parent class so it out-ranks the theme's (0,2,1) visited rule.
-    await expect(visitedRule.selectorText).toMatch(
-      /\.hp-quick-links\s+\.hp-quick-link-es[^,]*:visited/
+    const find = target => {
+      let found = null;
+      walkRules(rule => {
+        if (
+          rule.selectorText &&
+          rule.selectorText.includes(target) &&
+          rule.selectorText.includes(":visited") &&
+          !rule.selectorText.includes("__")
+        )
+          found = rule;
+      });
+      return found;
+    };
+
+    for (const target of [".hp-quick-link:", ".hp-quick-link-es:"]) {
+      const rule = find(target);
+      await expect(rule).not.toBeNull();
+      await expect(rule.style.color).toBe("rgb(255, 255, 255)");
+      await expect(rule.selectorText).toMatch(
+        /\.hp-quick-links\s+\.hp-quick-link/
+      );
+    }
+  },
+};
+
+// Spanish link is a utility link: white text (component rule, also when visited),
+// underlined at rest with the
+// underline running through the arrow, and underline removed on hover with no glass.
+export const SpanishUtilityLink = {
+  name: "spanish-utility-link",
+  globals: viewport(1024),
+  args: { backdrop: "plain" },
+  decorators: [withBackdrop],
+  render: () => <Page html={quickLinksHtml()} />,
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    await expect(getComputedStyle(p.spanish).color).toBe(WHITE);
+
+    // The link is a child of a flex column (.hp-quick-links), so its inline-block display
+    // computes to "block". What matters is that it is NOT a flex/grid container: label text,
+    // space and arrow then share one inline flow and the underline runs unbroken.
+    await expect(["block", "inline-block", "inline"]).toContain(
+      getComputedStyle(p.spanish).display
     );
+    await expect(getComputedStyle(p.spanish).textDecorationLine).toBe(
+      "underline"
+    );
+    const icon = p.spanish.querySelector(".hp-quick-link-es__icon");
+    // Icon must stay inline: underlines do not propagate into inline-block children
+    await expect(getComputedStyle(icon).display).toBe("inline");
+
+    forceHover(p.spanish, true);
+    await waitFor(() =>
+      expect(getComputedStyle(p.spanish).textDecorationLine).toBe("none")
+    );
+    await expect(getComputedStyle(p.spanish).backgroundColor).toBe(
+      "rgba(0, 0, 0, 0)"
+    );
+    forceHover(p.spanish, false);
   },
 };
 

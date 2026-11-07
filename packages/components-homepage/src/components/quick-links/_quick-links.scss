@@ -5,14 +5,13 @@
 // Tokens: packages/unity-bootstrap-theme/src/scss/_custom-asu-variables.scss
 // Local custom properties: packages/components-homepage/src/scss/_variables.scss
 
-// Max column-gap ceiling token (= $uds-size-spacing-12 = 6rem).
-// Declared here so the clamp() below can reference a named constant.
-$hp-quick-links-column-gap-max: $uds-size-spacing-12;
+// Space between quick-link items (design: 16px), at every breakpoint.
+$hp-quick-links-gap: 16px;
 
 // --- wrapper ---
 
 .hp-quick-links {
-  max-width: 1440px;
+  max-width: 900px;
   margin-inline: auto;
   padding-inline: $uds-size-spacing-6;
   display: flex;
@@ -27,9 +26,19 @@ $hp-quick-links-column-gap-max: $uds-size-spacing-12;
   list-style: none;
   padding: 0;
   margin: 0;
+  // Single row of equal-width tracks. minmax(0, 1fr) keeps every column identical
+  // regardless of label length, and all tracks resize together with the container.
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  width: 100%;
+  column-gap: $hp-quick-links-gap;
+}
+
+// The li fills its track; the anchor inside fills the li.
+.hp-quick-links__item {
   display: flex;
-  justify-content: center;
-  column-gap: $uds-size-spacing-6;
+  min-width: 0;
 }
 
 // --- individual item anchor ---
@@ -38,23 +47,31 @@ $hp-quick-links-column-gap-max: $uds-size-spacing-12;
   display: inline-flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: $uds-size-spacing-1;
-  padding: $uds-size-spacing-2 $uds-size-spacing-3;
-  border-radius: $uds-size-spacing-1;
-  min-width: 44px;
-  min-height: 44px;
+  // 8px between the container edge and its content on every side.
+  padding: $uds-size-spacing-1;
+  border-radius: $uds-size-spacing-half; // 0.25rem
+  // Hover/focus target: fills the li (sized by the grid track); height follows the content
+  // (8px padding). The li stretches to the tallest item in the row, so every glass rectangle
+  // is the same size. Long labels wrap inside it rather than widening it.
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
   text-decoration: none;
   color: $uds-color-base-white;
 
   .hp-quick-link__icon {
-    // Default: fluid/mobile size (≤ 1023px). Promoted to icon-base at ≥ 1024px below.
-    // WWWCMS-235: icon-small (24px) must apply from 0 through 1023px; icon-base (32px) only at ≥ 1024px.
-    font-size: $uds-size-icon-small;
+    // Responsive icon size: scales with the viewport between 20px and 24px
+    // ($uds-size-icon-small), so it never crowds the 8px container padding.
+    font-size: clamp(1.25rem, 3vw, #{$uds-size-icon-small});
+    line-height: 1;
     color: $uds-color-base-white;
   }
 
   .hp-quick-link__label {
-    font-size: $uds-size-font-medium;
+    font-size: $uds-size-font-medium; // 16px
+    line-height: 20px;
     font-weight: $uds-font-weight-bold;
     color: $uds-color-base-white;
     text-align: center;
@@ -62,8 +79,7 @@ $hp-quick-links-column-gap-max: $uds-size-spacing-12;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .hp-quick-link,
-  .hp-quick-link-es {
+  .hp-quick-link {
     // 150ms ease-out: ticket-driven; $uds-time-transition-base (400ms) is too slow.
     // TODO (WWWCMS-235): reconcile with design if a token matching 150ms is added to the UDS.
     transition: background-color 150ms ease-out, color 150ms ease-out;
@@ -111,89 +127,57 @@ $hp-quick-links-column-gap-max: $uds-size-spacing-12;
   }
 }
 
-.hp-quick-link:visited {
-  // Prevent browser default visited-link colour on the dark photo.
+// The theme's global `a:visited:not(...)` (unity-bootstrap-theme/src/scss/extends/_misc.scss)
+// has specificity (0,2,1) and turns visited links dark maroon. The parent class lifts these
+// rules to (0,3,0) so visited links stay white on the dark photo.
+.hp-quick-links .hp-quick-link:link,
+.hp-quick-links .hp-quick-link:visited {
   color: $uds-color-base-white;
 }
 
 // --- Spanish sibling link ---
 
+// Utility link: white text (rule below, also when visited);
+// underlined at rest, underline removed on hover. No glass background, no icon colour change.
+// display:inline-block (not inline-flex) keeps ONE continuous text-decoration, so the underline
+// runs unbroken from the end of the label through the space to the trailing arrow.
+// The 44px target comes from padding + line-height instead of a flex min-height.
 .hp-quick-link-es {
-  display: inline-flex;
-  align-items: center;
-  gap: $uds-size-spacing-1;
+  display: inline-block;
   padding: $uds-size-spacing-1 $uds-size-spacing-2;
-  min-height: 44px;
-  border-radius: $uds-size-spacing-1;
+  line-height: calc(44px - 2 * #{$uds-size-spacing-1});
+  border-radius: 0; // square focus ring (utility link)
   font-size: $uds-size-font-small;
-  color: $uds-color-base-white;
   text-decoration: underline;
   text-underline-offset: 0.2em;
   text-align: center;
 
   .hp-quick-link-es__icon {
-    color: $uds-color-base-white;
+    // Inherits the link colour; same size as the label so the underline stays level.
     font-size: $uds-size-font-small;
+    // Font Awesome 6 makes `.fa-solid` inline-block, and a parent's underline does not
+    // propagate into inline-block children. Keep the icon inline so the underline
+    // continues under the arrow.
+    display: inline;
   }
 }
 
-.hp-quick-link-es:hover {
-  background-color: var(--hp-quick-link-glass);
+// Always pure white, including :visited. The parent class lifts specificity to (0,3,0),
+// above the theme's `a:visited:not(...)` (0,2,1). (The theme's `.text-white` utility is not
+// used: it resolves to #e8e8e8, not white.)
+.hp-quick-links .hp-quick-link-es:link,
+.hp-quick-links .hp-quick-link-es:visited {
+  color: $uds-color-base-white;
+}
 
-  .hp-quick-link-es__icon {
-    color: $uds-color-brand-gold;
-  }
+.hp-quick-link-es:hover {
+  text-decoration: none;
 }
 
 .hp-quick-link-es:focus-visible {
   outline: none;
   // !important required for same reason as .hp-quick-link:focus-visible above.
   box-shadow: var(--hp-focus-inner), var(--hp-focus-outer) !important;
-  background-color: var(--hp-quick-link-glass);
-
-  .hp-quick-link-es__icon {
-    color: $uds-color-brand-gold;
-  }
-}
-
-.hp-quick-link-es:focus {
-  background-color: var(--hp-quick-link-glass);
-
-  .hp-quick-link-es__icon {
-    color: $uds-color-brand-gold;
-  }
-}
-
-// The theme's global `a:visited:not(...)` (unity-bootstrap-theme/src/scss/extends/_misc.scss)
-// has specificity (0,2,1) and turns visited links dark maroon. The parent class here lifts this
-// rule to (0,3,0) so the Spanish link stays white after it has been visited.
-.hp-quick-links .hp-quick-link-es:link,
-.hp-quick-links .hp-quick-link-es:visited {
-  color: $uds-color-base-white;
-}
-
-// --- larger column gap at desktop ≥ 1024 px ---
-
-@media (min-width: 1024px) {
-  .hp-quick-links__list {
-    column-gap: $uds-size-spacing-7;
-  }
-
-  // Promote to icon-base (32px) only at desktop and up (≥ 1024px).
-  // Nested inside .hp-quick-link to match the specificity of the default rule above.
-  .hp-quick-link .hp-quick-link__icon {
-    font-size: $uds-size-icon-base;
-  }
-}
-
-// --- wider column gap at ≥ 1280 px (clamp fluid) ---
-
-@media (min-width: 1280px) {
-  .hp-quick-links__list {
-    // clamp($uds-size-spacing-7, 6vw, $hp-quick-links-column-gap-max):
-    // fluid between the 3.5rem floor and 6rem ($uds-size-spacing-12) ceiling.
-    column-gap: clamp(#{$uds-size-spacing-7}, 6vw, #{$hp-quick-links-column-gap-max});
-  }
 }
 
 // --- phone 2×2 layout ≤ $hp-phone-max (900 px) ---
@@ -208,40 +192,16 @@ $hp-quick-links-column-gap-max: $uds-size-spacing-12;
   // rows match the tallest item (e.g. a wrapped two-line label).
   .hp-quick-links__list {
     display: grid;
+    grid-auto-flow: row;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-auto-rows: 1fr;
+    grid-auto-columns: auto;
+    grid-auto-rows: 1fr; // both rows match the tallest item
     width: 100%;
-    column-gap: $uds-size-spacing-3;
-    row-gap: $uds-size-spacing-3;
+    column-gap: $hp-quick-links-gap;
+    row-gap: $hp-quick-links-gap;
   }
 
-  // Grid items stretch to the cell; flex lets the anchor fill it in both axes.
-  .hp-quick-links__item {
-    display: flex;
-  }
-
-  // Each anchor fills its cell so all four share one width, height, and padding
-  // (padding comes from the base .hp-quick-link rule). justify-content centers
-  // the icon/label stack vertically; align-items (base rule) centers it horizontally.
-  .hp-quick-link {
-    width: 100%;
-    justify-content: center;
-  }
-
-  // P2-1 (WWWCMS-235 visual-fix): the default rule uses `.hp-quick-link .hp-quick-link__icon`
-  // (specificity 0,2,0). A bare `.hp-quick-link__icon` (0,1,0) would always lose to it regardless
-  // of media-query order. Nesting inside `.hp-quick-link` here matches that specificity so the
-  // mobile override actually wins.
-  .hp-quick-link .hp-quick-link__icon {
-    font-size: $uds-size-icon-small;
-  }
-
-  // P2-1 (WWWCMS-235 visual-fix): same specificity problem for label. The default rule is
-  // `.hp-quick-link .hp-quick-link__label { font-size: $uds-size-font-medium }` (0,2,0).
-  // The old bare `.hp-quick-link__label` (0,1,0) always lost. Match the parent scope.
-  .hp-quick-link .hp-quick-link__label {
-    font-size: $uds-size-font-small;
-  }
+  // Icon (24px) and label (16px / 20px) are the same at every breakpoint: no phone overrides.
 }
 
 // --- forced-colors (Windows High Contrast, Forced Colors Mode) ---

@@ -49,19 +49,13 @@ export const safeHref = href => {
   return SAFE_SCHEMES.includes(scheme) ? trimmed : "#";
 };
 
-// Font Awesome resolution (WWWCMS-235 review fix cycle 1):
-// The unity-bootstrap-theme peer dependency is @fortawesome/fontawesome-free 5.15.3 (FA 5).
-// The components-homepage/.storybook/main.js previewHead strips the shared CDN script that
-// would inject Font Awesome 6.4.2, so FA CSS is not loaded in Storybook for this package.
-// DEFAULT_ITEMS therefore uses FA 5 Free Solid class names:
-//   fa-laptop       — available in FA 5 Free Solid (unchanged)
-//   fa-file-signature — FA 5 equivalent of FA 6 fa-file-pen (for "Apply now")
-//   fa-map-marked-alt — FA 5 equivalent of FA 6 fa-map-location-dot (for "Visit an ASU campus")
-//   fa-id-card      — available in FA 5 Free Solid (unchanged)
-// Stage B: the host page is expected to load Font Awesome (standard Unity host assumption,
-// documented in unity-bootstrap-theme/README.md). Use FA 5 Free Solid class names in Twig.
-// If the host upgrades to FA 6, update fa-file-signature → fa-file-pen and
-//   fa-map-marked-alt → fa-map-location-dot accordingly.
+// Font Awesome 6 (Free Solid). Per design, icons use the FA 6 `fa-solid` style prefix:
+//   Explore ASU Online  — fa-solid fa-laptop
+//   Visit an ASU campus — fa-solid fa-map-location-dot
+//   Request info        — fa-solid fa-address-card
+//   Apply now           — fa-solid fa-file-pen
+// Storybook loads FA 6.4.2 CSS in .storybook/preview-head.html. Stage B: the host page
+// must load Font Awesome 6 (the `fa-solid` prefix and these names do not exist in FA 5).
 const DEFAULT_ITEMS = [
   {
     href: "https://asuonline.asu.edu",
@@ -70,17 +64,17 @@ const DEFAULT_ITEMS = [
   },
   {
     href: "https://visit.asu.edu",
-    icon: "fa-map-marked-alt",
+    icon: "fa-map-location-dot",
     label: "Visit an ASU campus",
   },
   {
     href: "https://admission.asu.edu/future-student-request",
-    icon: "fa-id-card",
+    icon: "fa-address-card",
     label: "Request info",
   },
   {
     href: "https://admission.asu.edu/apply",
-    icon: "fa-file-signature",
+    icon: "fa-file-pen",
     label: "Apply now",
   },
 ];
@@ -110,7 +104,7 @@ const gaAttributes = text =>
 
 // Stage B parity source (design-doc §4a). The Storybook html-parity story serializes
 // `canvasElement.innerHTML` (normalized) and compares it against this string.
-// Font Awesome 5 short-form prefix (fas) — universal syntax that renders in both FA 5 and FA 6.
+// Font Awesome 6 style prefix (fa-solid).
 export const quickLinksHtml = ({
   items = DEFAULT_ITEMS,
   spanishHref = SPANISH_HREF,
@@ -123,7 +117,7 @@ export const quickLinksHtml = ({
       ({ href, icon, label }) =>
         `<li class="hp-quick-links__item">` +
         `<a class="hp-quick-link" href="${escape(safeHref(href))}"${gaAttributes(label)}>` +
-        `<i class="hp-quick-link__icon fas ${escape(icon)}" aria-hidden="true"></i>` +
+        `<i class="hp-quick-link__icon fa-solid ${escape(icon)}" aria-hidden="true"></i>` +
         `<span class="hp-quick-link__label">${escape(label)}</span>` +
         `</a>` +
         `</li>`
@@ -132,7 +126,7 @@ export const quickLinksHtml = ({
   `</ul>` +
   `<a class="hp-quick-link-es" href="${escape(safeHref(spanishHref))}" lang="es" hreflang="es"${gaAttributes(SPANISH_LABEL)}>` +
   `${escape(SPANISH_LABEL)} ` +
-  `<i class="hp-quick-link-es__icon fas ${escape(spanishIcon)}" aria-hidden="true"></i>` +
+  `<i class="hp-quick-link-es__icon fa-solid ${escape(spanishIcon)}" aria-hidden="true"></i>` +
   `</a>` +
   `</div>`;
 
