@@ -395,7 +395,7 @@ div.uds-hero-lg {
   div.uds-hero-sm {
     grid-template-rows: 0px 1fr auto auto;
 
-    [role="doc-subtitle"],
+    [role="doc-subtitle"], // UDS is deprecatated doc-subtitle as a Selector
     .hero-subtitle {
       margin-top: auto;
       // to align subtitle text with the title
