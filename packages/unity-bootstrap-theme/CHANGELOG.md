@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v2.4.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.4.3...@asu/unity-bootstrap-theme-v2.4.4) (2026-11-06)
+
+
+### Bug Fixes
+
+* storybook package updates ([ece04b4](https://github.com/ASU/asu-unity-stack/commit/ece04b4ca6977f67e91d29bf8e2c0c536351db53))
+
 # [@asu/unity-bootstrap-theme-v2.4.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.4.2...@asu/unity-bootstrap-theme-v2.4.3) (2026-09-30)
 
 
