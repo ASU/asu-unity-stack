@@ -11,7 +11,9 @@ import {
   glassContrast,
   openingProgress,
   placesHtml,
+  realPointer,
   resizeViewport,
+  watchTransitions,
 } from "./places-helpers.jsx";
 import * as entry from "../../js/index.js";
 
@@ -26,7 +28,7 @@ export default {
     docs: {
       description: {
         component:
-          'Homepage campus locator ("One university, many places"). From 1024px a looping video (shared play/pause control) starts inset by the 48px gutter and opens to full width as it scrolls into view; a frosted panel holds the heading, two buttons and the seven locations in two groups. Choosing a location (click or keyboard, never hover) crossfades its photo over the video (0.6s), draws a gold leader line (0.4s) to a description box (fades in 0.3s after 0.2s) with a link; Esc, the close button, a second click or an outside click returns to the video, and scrolling never changes the selection. Below 1024px (Figma 375, brand: Figma is the source of truth, no carousel) the same list is an accordion on Gray 1: each name has a chevron and a rule, one location is open at a time with its text, link and photo (all start collapsed); a 375:219 video strip with the pause button at its bottom right sits above the list. The section draws the Learn network wallpaper behind it (desktop). Without script every location is open and stacked. `initPlaces` and `initVideoControls` wire it. Sample photos, poster and clip are the prototype media; `href`s are placeholders.',
+          'Homepage campus locator ("One university, many places"). From 1024px a looping video (shared play/pause control) starts inset by the 48px gutter and opens to full width as it scrolls into view; a frosted panel holds the heading, two buttons and the seven locations in two groups. Choosing a location (click or keyboard, never hover) crossfades its photo over the video (0.6s), draws a gold leader line (0.4s) to a description box (fades in 0.3s after 0.2s) with a link; Esc, the close button, a second click or an outside click returns to the video, and so does scrolling more than 48px from where the box opened (a scroll caused by moving focus does not). While a campus is selected a still replaces the video and the play/pause control is hidden until the box is closed. Below 1024px (Figma 375, brand: Figma is the source of truth, no carousel) the same list is an accordion on Gray 1: each name has a chevron and a rule, one location is open at a time with its text, link and photo (all start collapsed); a 375:219 video strip with the pause button at its bottom right sits above the list. The section draws the Learn network wallpaper behind it (desktop). Without script every location is open and stacked. `initPlaces` and `initVideoControls` wire it. Sample photos, poster and clip are the prototype media; `href`s are placeholders.',
       },
     },
   },
@@ -522,8 +524,8 @@ export const SelectionAndReturn = {
       "false",
       "false",
     ]);
-    // scrolling never changes the selection
-    window.scrollTo({ top: 600, behavior: "instant" });
+    // a small scroll keeps the selection (beyond 48px it closes, see ScrollClose)
+    window.scrollTo({ top: 24, behavior: "instant" });
     await new Promise(resolve => requestAnimationFrame(resolve));
     await expect(selected()[3]).toBe("true");
     // Esc, with focus on the name, returns focus to the name
@@ -554,7 +556,8 @@ export const HoldGate = {
     const p = parts(canvasElement);
     p.names[0].click();
     await expect(p.video.hasAttribute("data-hold")).toBe(true);
-    // the pause button clears the hold itself (video-control.js) and the places listener goes back to the video
+    // the control is not shown while a campus is selected, so this click is programmatic: the shared control
+    // still clears the hold itself (video-control.js) and the places listener goes back to the video
     p.mbtn.click();
     await waitFor(() => expect(p.video.hasAttribute("data-hold")).toBe(false));
     await expect(p.names[0].getAttribute("aria-pressed")).toBe("false");
@@ -580,6 +583,381 @@ export const LowerNameBox = {
     );
     // the leader stays on the name's rule
     await near(box(p.details[last]).bottom, box(p.names[last]).bottom, 1);
+  },
+};
+
+// --- WWWCMS-241 QA round 2026-11-05/06: the two buttons, the box bar, the links, the control and scroll close ---
+
+const frame = () => new Promise(resolve => requestAnimationFrame(resolve));
+const px = value => parseFloat(value);
+const alphaOf = color => {
+  const parts = color.match(/[\d.]+/g).map(Number);
+  return parts.length === 4 ? parts[3] : 1;
+};
+const channels = color =>
+  color
+    .match(/[\d.]+/g)
+    .slice(0, 3)
+    .map(Number);
+const textRect = element => {
+  const range = document.createRange();
+  range.selectNodeContents(element.firstChild);
+  return range.getBoundingClientRect();
+};
+const ctas = p => [
+  p.section.querySelector(".hp-places__cta--primary"),
+  p.section.querySelector(".hp-places__cta--secondary"),
+];
+const select = async (p, index) => {
+  p.names[index].click();
+  await waitFor(() =>
+    expect(p.items[index].classList.contains("is-shown")).toBe(true)
+  );
+  await waitFor(() => expect(style(p.boxes[index]).opacity).toBe("1"));
+};
+
+export const CtaButtons = {
+  name: "CTA buttons",
+  tags: ["!dev"],
+  globals: viewport(1440),
+  render: () => <Harness html={placesHtml()} />,
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    const [primary, secondary] = ctas(p);
+    for (const [width, height] of [
+      [1440, 900],
+      [393, 852],
+    ]) {
+      await resizeViewport(width, height);
+      await frame();
+      await frame();
+      for (const cta of [primary, secondary]) {
+        // Figma Button: 32 tall, text 14/18, a 14 x 14 arrow 8px after it, 16px padding and a 2px border
+        const icon = cta.querySelector("svg");
+        await expect(icon).not.toBeNull();
+        await near(box(icon).width, 14, 0.1);
+        await near(box(icon).height, 14, 0.1);
+        await near(box(icon).left - textRect(cta).right, 8, 0.5);
+        await near(box(cta).width, textRect(cta).width + 8 + 14 + 36, 1);
+        await near(box(cta).height, 32, 0.5);
+      }
+      // Find your fit: gold fill, Gray 1 text and arrow; Visit ASU: gold outline, gold text and arrow
+      await expect(style(primary).backgroundColor).toBe(GOLD);
+      await expect(style(primary).color).toBe(GRAY_1);
+      await expect(style(secondary).backgroundColor).toBe("rgba(0, 0, 0, 0)");
+      await expect(style(secondary).borderTopColor).toBe(GOLD);
+      await expect(style(secondary).color).toBe(GOLD);
+      await expect(style(secondary.querySelector("svg")).color).toBe(GOLD);
+    }
+  },
+};
+
+export const CtaHover = {
+  name: "CTA hover",
+  tags: ["!dev"],
+  globals: viewport(1440),
+  render: () => <Harness html={placesHtml()} />,
+  play: async ({ canvasElement }) => {
+    if (!realPointer.available) return;
+    await resizeViewport(1440, 900);
+    const p = parts(canvasElement);
+    const [primary, secondary] = ctas(p);
+    const hover = async (cta, check) => {
+      const watch = watchTransitions(cta);
+      try {
+        await realPointer.hover(cta);
+        await waitFor(() => expect(watch.runs.length).toBeGreaterThan(0));
+        const byProperty = Object.fromEntries(
+          watch.runs.map(a => [a.transitionProperty, a])
+        );
+        await check(byProperty);
+        watch.runs.forEach(a => a.finish());
+      } finally {
+        watch.stop();
+      }
+    };
+    const eased = async animation => {
+      await expect(animation).toBeDefined();
+      await expect(animation.effect.getComputedTiming().duration).toBe(200);
+      await expect(animation.effect.getTiming().easing).toBe("ease");
+    };
+    // Find your fit grows 5% over 0.2s, colours unchanged, no outline ring (the prototype's filled pill)
+    const primaryWidth = primary.offsetWidth;
+    const secondaryLeft = box(secondary).left;
+    await hover(primary, async byProperty => {
+      await eased(byProperty.transform);
+    });
+    await expect(style(primary).transform).toBe(
+      "matrix(1.05, 0, 0, 1.05, 0, 0)"
+    );
+    await expect(style(primary).boxShadow).toBe("none");
+    await expect(style(primary).backgroundColor).toBe(GOLD);
+    await expect(style(primary).color).toBe(GRAY_1);
+    await expect(primary.offsetWidth).toBe(primaryWidth);
+    await near(box(secondary).left, secondaryLeft, 0.1);
+    await realPointer.unhover(primary);
+    await waitFor(() => expect(style(primary).transform).toBe("none"));
+    // Visit ASU fills gold over 0.2s with Gray 1 text, no growth, no ring (the prototype's outline pill)
+    await hover(secondary, async byProperty => {
+      await eased(byProperty["background-color"]);
+      await eased(byProperty.color);
+      byProperty["background-color"].currentTime = 100;
+      byProperty.color.currentTime = 100;
+      await frame();
+      const alpha = alphaOf(style(secondary).backgroundColor);
+      await expect(alpha).toBeGreaterThan(0);
+      await expect(alpha).toBeLessThan(1);
+      const [red] = channels(style(secondary).color);
+      await expect(red).toBeGreaterThan(25);
+      await expect(red).toBeLessThan(255);
+    });
+    await expect(style(secondary).backgroundColor).toBe(GOLD);
+    await expect(style(secondary).color).toBe(GRAY_1);
+    await expect(style(secondary.querySelector("svg")).color).toBe(GRAY_1);
+    await expect(style(secondary).transform).toBe("none");
+    await expect(style(secondary).boxShadow).toBe("none");
+    await realPointer.unhover(secondary);
+    await waitFor(() =>
+      expect(style(secondary).backgroundColor).toBe("rgba(0, 0, 0, 0)")
+    );
+    // reduced motion: the same end states, no transition and no growth
+    await emulateReducedMotion(true);
+    try {
+      for (const cta of [primary, secondary]) {
+        const watch = watchTransitions(cta);
+        try {
+          await realPointer.hover(cta);
+          await frame();
+          await frame();
+          await expect(watch.runs).toHaveLength(0);
+          await expect(style(cta).transform).toBe("none");
+        } finally {
+          watch.stop();
+          await realPointer.unhover(cta);
+        }
+      }
+      await realPointer.hover(secondary);
+      await waitFor(() => expect(style(secondary).backgroundColor).toBe(GOLD));
+      await realPointer.unhover(secondary);
+    } finally {
+      await emulateReducedMotion(false);
+    }
+  },
+};
+
+export const CtaFocus = {
+  name: "CTA focus",
+  tags: ["!dev"],
+  globals: viewport(1440),
+  render: () => <Harness html={placesHtml()} />,
+  play: async ({ canvasElement }) => {
+    await resizeViewport(1440, 900);
+    const p = parts(canvasElement);
+    for (const cta of ctas(p)) {
+      cta.focus();
+      await expect(cta.matches(":focus-visible")).toBe(true);
+      await expect(style(cta).boxShadow).not.toBe("none");
+      cta.blur();
+    }
+  },
+};
+
+export const BoxBar = {
+  name: "Gold bar over the box",
+  tags: ["!dev"],
+  globals: viewport(1440),
+  render: () => <Harness before="20vh" after="40vh" html={placesHtml()} />,
+  play: async ({ canvasElement }) => {
+    await resizeViewport(1440, 900);
+    const p = parts(canvasElement);
+    // Figma: the box has a 4px gold stroke on its top edge, as wide as the box
+    for (const index of [0, LOCATIONS.length - 1]) {
+      await select(p, index);
+      const bar = style(p.boxes[index], "::after");
+      await expect(bar.content).toBe('""');
+      await expect(bar.position).toBe("absolute");
+      await expect(bar.height).toBe("4px");
+      await expect(bar.top).toBe("0px");
+      await expect(bar.backgroundColor).toBe(GOLD);
+      await near(px(bar.width), box(p.boxes[index]).width, 1);
+      p.names[index].click();
+      await waitFor(() =>
+        expect(p.items[index].classList.contains("is-shown")).toBe(false)
+      );
+    }
+    // Tempe: the bar is flush with the leader (the box top is the leader's top)
+    await select(p, 0);
+    await near(box(p.boxes[0]).top, box(p.details[0]).top, 1);
+    p.names[0].click();
+    // below 1024 the accordion has no bar
+    await resizeViewport(393, 852);
+    p.names[0].click();
+    await waitFor(() => expect(p.details[0].hidden).toBe(false));
+    await expect(style(p.boxes[0], "::after").content).toBe("none");
+  },
+};
+
+export const PlaceLinks = {
+  name: "Link underline (Figma stroke)",
+  tags: ["!dev"],
+  globals: viewport(1440),
+  render: () => <Harness before="20vh" after="40vh" html={placesHtml()} />,
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    const check = async link => {
+      // Figma: a 1px stroke on the bottom of the link frame, below the 24px line and clear of the glyphs
+      await expect(style(link).borderBottomWidth).toBe("1px");
+      await expect(style(link).borderBottomStyle).toBe("solid");
+      await expect(box(link).bottom - 1).toBeGreaterThanOrEqual(
+        textRect(link).bottom + 1
+      );
+      await expect(style(link, "::after").content).toBe("none");
+      // it runs under the text, the gap and the arrow
+      await near(
+        box(link).right - box(link.querySelector("svg")).right,
+        0,
+        0.5
+      );
+    };
+    const hoverGone = async link => {
+      if (!realPointer.available) return;
+      await realPointer.hover(link);
+      await waitFor(() =>
+        expect(style(link).borderBottomColor).toBe("rgba(0, 0, 0, 0)")
+      );
+      await realPointer.unhover(link);
+    };
+    await resizeViewport(1440, 900);
+    await select(p, 0);
+    const link = p.boxes[0].querySelector(".hp-places__link");
+    const seeAll = p.section.querySelector(".hp-places__see-all");
+    await check(link);
+    await check(seeAll);
+    await expect(style(link).borderBottomColor).toBe(GOLD);
+    await expect(style(seeAll).borderBottomColor).toBe(WHITE);
+    await hoverGone(link);
+    await hoverGone(seeAll);
+    await resizeViewport(393, 852);
+    p.names[0].click();
+    await waitFor(() => expect(p.details[0].hidden).toBe(false));
+    await check(p.boxes[0].querySelector(".hp-places__link"));
+    await check(seeAll);
+  },
+};
+
+export const PauseControl = {
+  name: "Pause control hidden while a campus is selected",
+  tags: ["!dev"],
+  globals: viewport(1440),
+  render: () => <Harness before="20vh" after="40vh" html={placesHtml()} />,
+  play: async ({ canvasElement }) => {
+    await resizeViewport(1440, 900);
+    const p = parts(canvasElement);
+    // in this runner the clip fails to load and the script hides the control: settle, then show it for the test
+    await waitFor(() =>
+      expect(p.video.error !== null || p.video.readyState >= 2).toBe(true)
+    );
+    p.mbtn.hidden = false;
+    await expect(style(p.mbtn).display).toBe("grid");
+    // a still replaces the video: nothing to pause, so the control goes (and focus on it moves to the name)
+    p.mbtn.focus({ preventScroll: true });
+    p.names[1].click();
+    await waitFor(() => expect(style(p.mbtn).display).toBe("none"));
+    await expect(p.mbtn.checkVisibility()).toBe(false);
+    await expect(document.activeElement).toBe(p.names[1]);
+    // switching keeps it away; every way back to the video brings it back
+    p.names[2].click();
+    await expect(style(p.mbtn).display).toBe("none");
+    p.names[2].click();
+    await waitFor(() => expect(style(p.mbtn).display).toBe("grid"));
+    await select(p, 3);
+    p.closes[3].click();
+    await waitFor(() => expect(style(p.mbtn).display).toBe("grid"));
+    await select(p, 4);
+    document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape" }));
+    await waitFor(() => expect(style(p.mbtn).display).toBe("grid"));
+    await select(p, 5);
+    p.media.click();
+    await waitFor(() => expect(style(p.mbtn).display).toBe("grid"));
+    // below 1024 no still ever covers the video, so the control stays with an accordion item open
+    await resizeViewport(393, 852);
+    p.names[0].click();
+    await waitFor(() => expect(p.details[0].hidden).toBe(false));
+    await expect(p.section.classList.contains("has-still")).toBe(false);
+    await expect(style(p.mbtn).display).toBe("grid");
+  },
+};
+
+export const ScrollClose = {
+  name: "Scroll closes the open box",
+  tags: ["!dev"],
+  globals: viewport(1440),
+  render: () => <Harness before="40vh" after="250vh" html={placesHtml()} />,
+  play: async ({ canvasElement }) => {
+    await resizeViewport(1440, 900);
+    const p = parts(canvasElement);
+    const selected = () =>
+      p.names.map(name => name.getAttribute("aria-pressed"));
+    const scrollTo = async top => {
+      window.scrollTo({ top, behavior: "instant" });
+      await frame();
+      await frame();
+    };
+    // a small scroll leaves the box open; more than 48px from where it opened closes it
+    await select(p, 3);
+    await scrollTo(30);
+    await expect(selected()[3]).toBe("true");
+    await scrollTo(100);
+    await waitFor(() =>
+      expect(selected().every(state => state === "false")).toBe(true)
+    );
+    await expect(p.video.hasAttribute("data-hold")).toBe(false);
+    // measured from where it opened (here 300px down), up or down
+    await scrollTo(300);
+    await select(p, 1);
+    await scrollTo(270);
+    await expect(selected()[1]).toBe("true");
+    await scrollTo(200);
+    await waitFor(() => expect(selected()[1]).toBe("false"));
+    // focus inside the box returns to the name, and the page stays where the visitor scrolled
+    await scrollTo(0);
+    await select(p, 2);
+    p.boxes[2].querySelector(".hp-places__link").focus();
+    // the theme scrolls smoothly: let a scroll to the focused link finish before the visitor scrolls
+    await new Promise(resolve => setTimeout(resolve, 700));
+    const reached = [];
+    const record = () => reached.push(window.scrollY);
+    window.addEventListener("scroll", record);
+    await scrollTo(150);
+    window.removeEventListener("scroll", record);
+    await waitFor(() => expect(selected()[2]).toBe("false"));
+    await expect(document.activeElement).toBe(p.names[2]);
+    // closing and moving focus did not scroll the page any further
+    await expect(window.scrollY).toBe(reached[0]);
+    // a scroll with nothing open does nothing, and the next selection measures from its own position
+    await scrollTo(400);
+    await select(p, 0);
+    await scrollTo(420);
+    await expect(selected()[0]).toBe("true");
+    // a scroll caused by moving focus (Tab to a link below the fold) is not the visitor leaving the box
+    await resizeViewport(1440, 600);
+    await scrollTo(0);
+    await select(p, 0);
+    p.section.querySelector(".hp-places__see-all").focus();
+    await new Promise(resolve => setTimeout(resolve, 700));
+    await expect(window.scrollY).toBeGreaterThan(60);
+    await expect(selected()[0]).toBe("true");
+    // ... and the next real scroll is measured from there
+    await scrollTo(window.scrollY + 100);
+    await waitFor(() => expect(selected()[0]).toBe("false"));
+    await resizeViewport(1440, 900);
+    // the accordion (below 1024) is not touched by scrolling
+    await resizeViewport(1023, 800);
+    await scrollTo(0);
+    p.names[0].click();
+    await waitFor(() => expect(p.details[0].hidden).toBe(false));
+    await scrollTo(300);
+    await expect(p.names[0].getAttribute("aria-expanded")).toBe("true");
   },
 };
 

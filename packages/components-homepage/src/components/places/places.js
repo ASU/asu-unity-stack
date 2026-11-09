@@ -154,6 +154,7 @@ const bind = (section, doc, win) => {
   let sel = -1;
   let hideTimer = 0;
   let showFrame = 0;
+  let scrollOrigin = 0; // the page's scroll position when the box opened
 
   const promote = still => {
     if (!still.getAttribute("src") && still.dataset.src) {
@@ -236,7 +237,12 @@ const bind = (section, doc, win) => {
 
   const select = i => {
     if (sel >= 0 && sel !== i) hide(sel);
+    // A still replaces the video and the control goes (CSS): a focused control hands focus to the name.
+    if (deskButton && doc.activeElement === deskButton) {
+      names[i].focus({ preventScroll: true });
+    }
     sel = i;
+    scrollOrigin = win.scrollY;
     promote(stills[i]);
     hold(true);
     renderDesk();
@@ -244,15 +250,49 @@ const bind = (section, doc, win) => {
   };
 
   // `keepHold`: the pause button's own click clears the hold (video-control.js), so it plays on that click.
-  const deselect = ({ focusName = false, keepHold = false } = {}) => {
+  const deselect = ({
+    focusName = false,
+    keepHold = false,
+    preventScroll = false,
+  } = {}) => {
     if (sel < 0) return;
     const previous = sel;
-    if (focusName) names[previous].focus();
+    if (focusName) names[previous].focus({ preventScroll });
     sel = -1;
     if (!keepHold) hold(false);
     renderDesk();
     hide(previous);
   };
+
+  // Brand QA: a user scroll of more than SCROLL_CLOSE px from where the box opened returns to the video. Focus inside
+  // the box goes back to the name without moving the page. The listener is passive and ignores everything else.
+  const SCROLL_CLOSE = 48;
+  let focusScrollUntil = 0;
+  // A scroll caused by moving focus inside the section (Tab to a link below the fold) is not the visitor leaving the
+  // box: the position it ends at becomes the new origin.
+  listen(section, "focusin", () => {
+    focusScrollUntil = win.performance.now() + 150;
+  });
+  listen(
+    win,
+    "scroll",
+    () => {
+      if (sel < 0 || !desk.matches) return;
+      const now = win.performance.now();
+      if (now < focusScrollUntil) {
+        // still scrolling to the focused element (smooth scrolling sends one event per frame)
+        focusScrollUntil = now + 100;
+        scrollOrigin = win.scrollY;
+        return;
+      }
+      if (Math.abs(win.scrollY - scrollOrigin) <= SCROLL_CLOSE) return;
+      deselect({
+        focusName: details[sel].contains(doc.activeElement),
+        preventScroll: true,
+      });
+    },
+    { passive: true }
+  );
 
   // ---------- accordion (< 1024, Figma 375): one location open at a time ----------
 
