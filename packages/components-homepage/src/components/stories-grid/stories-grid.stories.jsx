@@ -1,5 +1,5 @@
 import React from "react";
-import { expect, waitFor } from "storybook/test";
+import { expect, waitFor, within } from "storybook/test";
 
 import { initStories } from "./stories-grid.js";
 import {
@@ -62,6 +62,18 @@ const box = element => element.getBoundingClientRect();
 const style = (element, pseudo) => getComputedStyle(element, pseudo);
 const frame = () => new Promise(resolve => requestAnimationFrame(resolve));
 const px = value => parseFloat(value);
+
+// The "alt text" annotations of the seven News card-V3 instances in the Figma 1920 frame (13906:15852 .. 15858), in
+// card order, verbatim. The promo's text is ours (it carries the quote baked into the artwork, WCAG 1.1.1).
+const CARD_ALT = [
+  "ASU physician-engineering students wearing white coats at a university event.",
+  "Students smiling and participating in an event celebrating ASU's game degree program in Los Angeles.",
+  "A person in a white coat working outdoors among debris in a documentary featuring ASU students.",
+  "An ASU student wearing an honor shirt poses beside aerospace equipment.",
+  PROMO_ALT,
+  "ASU researchers in white lab coats gathered around equipment in a university laboratory.",
+  "Aerial view of Arizona State University's West Valley campus, showing academic buildings and surrounding green spaces.",
+];
 
 const parts = canvasElement => {
   const section = canvasElement.querySelector("section.hp-stories");
@@ -128,7 +140,7 @@ const expectContract = async p => {
   await expect(p.dek.textContent).toBe("This is ASU innovation.");
   await expect(p.more.tagName).toBe("A");
   await expect(p.more.getAttribute("href")).toBe(MORE_HREF);
-  for (const name of ["btn", "btn-outline-gold", "btn-sm"]) {
+  for (const name of ["btn", "btn-outline-gold", "btn-medium"]) {
     await expect(p.more.classList.contains(name)).toBe(true);
   }
   await expect(p.list.getAttribute("role")).toBe("list");
@@ -161,7 +173,7 @@ const expectContract = async p => {
     expect(c.sub.textContent).toBe(story.sub);
     expect(c.arrow.getAttribute("aria-hidden")).toBe("true");
     expect(c.scrim.getAttribute("aria-hidden")).toBe("true");
-    expect(c.img.getAttribute("alt")).toBe(story.promo ? PROMO_ALT : "");
+    expect(c.img.getAttribute("alt")).toBe(CARD_ALT[index]);
   });
 };
 
@@ -1034,6 +1046,250 @@ export const OddWindowSizes = {
     await waitFor(expectEvenRows);
     await resizeViewport(901, 320);
     await waitFor(expectEvenRows);
+  },
+};
+
+// --- WWWCMS-236 QA round 2026-11-05: the More stories button, the scrim seam and the card alt text ---
+
+// Collects the CSS transitions a real pointer starts on `element` (paused as they start, so a test can read them at a
+// chosen time); returns `stop()` and the list.
+const watchTransitions = element => {
+  const runs = [];
+  const onRun = event => {
+    if (event.target !== element) return;
+    const animation = element
+      .getAnimations()
+      .find(a => a.transitionProperty === event.propertyName);
+    if (animation && !runs.includes(animation)) {
+      animation.pause();
+      runs.push(animation);
+    }
+  };
+  element.addEventListener("transitionrun", onRun);
+  return {
+    runs,
+    stop: () => element.removeEventListener("transitionrun", onRun),
+  };
+};
+
+const alphaOf = color => {
+  const m = color.match(/rgba?\(([^)]+)\)/);
+  const parts = m[1].split(",").map(Number);
+  return parts.length === 4 ? parts[3] : 1;
+};
+
+const channels = color =>
+  color
+    .match(/[\d.]+/g)
+    .slice(0, 3)
+    .map(Number);
+
+export const MoreButton = {
+  name: "More button",
+  tags: ["!dev"],
+  globals: viewport(1440),
+  render: () => <Harness html={storiesHtml()} />,
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    const icon = p.more.querySelector("svg");
+    // Figma Button / UDS medium (the same size as the hero and reimagine buttons): 14px text, 2px border, pill
+    for (const [width, height] of [
+      [1440, 900],
+      [1920, 1080],
+      [768, 1024],
+      [393, 852],
+      [320, 640],
+    ]) {
+      await resizeViewport(width, height);
+      await frame();
+      await frame();
+      const s = style(p.more);
+      await expect(px(s.fontSize)).toBe(14);
+      await expect(px(s.borderTopWidth)).toBe(2);
+      await expect(px(s.borderTopLeftRadius)).toBeGreaterThanOrEqual(100);
+      // UDS medium: 16px line + 2 x 8px padding + 2 x 2px border
+      await near(box(p.more).height, 36, 0.5);
+      // the arrow is a 14 x 14 box, 8px after the text
+      await near(box(icon).width, 14, 0.1);
+      await near(box(icon).height, 14, 0.1);
+      const range = document.createRange();
+      range.selectNodeContents(p.more.firstChild);
+      const text = range.getBoundingClientRect();
+      await near(box(icon).left - text.right, 8, 0.5);
+      // width = text + gap + arrow + 2 x (16px padding + 2px border), whatever the font
+      await near(box(p.more).width, text.width + 8 + 14 + 36, 1);
+      // it stays inside its tile, down to a 320px phone
+      await expect(box(p.more).right).toBeLessThanOrEqual(box(p.lead).right);
+      await expect(box(p.more).height).toBeLessThan(box(p.lead).height);
+    }
+  },
+};
+
+export const MoreButtonHover = {
+  name: "More button hover",
+  tags: ["!dev"],
+  globals: viewport(1440),
+  render: () => <Harness html={storiesHtml()} />,
+  play: async ({ canvasElement }) => {
+    if (!realPointer.available) return;
+    await resizeViewport(1440, 900);
+    const p = parts(canvasElement);
+    const more = p.more;
+    await expect(style(more).backgroundColor).toBe("rgba(0, 0, 0, 0)");
+    const watch = watchTransitions(more);
+    try {
+      await realPointer.hover(more);
+      await waitFor(() => expect(watch.runs.length).toBeGreaterThan(0));
+      const byProperty = Object.fromEntries(
+        watch.runs.map(a => [a.transitionProperty, a])
+      );
+      // the fill and the text colour both ease over 0.2s (the prototype's `background .2s ease, color .2s ease`)
+      for (const property of ["background-color", "color"]) {
+        const animation = byProperty[property];
+        await expect(animation).toBeDefined();
+        const timing = animation.effect.getComputedTiming();
+        await expect(timing.duration).toBe(200);
+        await expect(animation.effect.getTiming().easing).toBe("ease");
+      }
+      // halfway the fill is part transparent and the text is between gold and Gray 1: a smooth change, not a snap
+      byProperty["background-color"].currentTime = 100;
+      byProperty.color.currentTime = 100;
+      await frame();
+      const midAlpha = alphaOf(style(more).backgroundColor);
+      await expect(midAlpha).toBeGreaterThan(0);
+      await expect(midAlpha).toBeLessThan(1);
+      const [red] = channels(style(more).color);
+      await expect(red).toBeGreaterThan(25);
+      await expect(red).toBeLessThan(255);
+      watch.runs.forEach(a => a.finish());
+      // the end state: gold fill, Gray 1 text, and no growth (the theme scales .btn 1.05 from 992px; an outline
+      // button only fills)
+      await waitFor(() => expect(style(more).backgroundColor).toBe(GOLD));
+      await expect(style(more).color).toBe(GRAY_1);
+      await expect(style(more).borderTopColor).toBe(GOLD);
+      await expect(style(more).transform).toBe("none");
+    } finally {
+      watch.stop();
+      await realPointer.unhover(more);
+    }
+    // reduced motion: the same end state, reached without a transition
+    await waitFor(() =>
+      expect(style(more).backgroundColor).toBe("rgba(0, 0, 0, 0)")
+    );
+    await emulateReducedMotion(true);
+    const still = watchTransitions(more);
+    try {
+      await realPointer.hover(more);
+      await waitFor(() => expect(style(more).backgroundColor).toBe(GOLD));
+      await expect(still.runs).toHaveLength(0);
+      await expect(style(more).transform).toBe("none");
+    } finally {
+      still.stop();
+      await realPointer.unhover(more);
+      await emulateReducedMotion(false);
+    }
+  },
+};
+
+export const MoreButtonFocus = {
+  name: "More button focus",
+  tags: ["!dev"],
+  globals: viewport(1440),
+  render: () => <Harness html={storiesHtml()} />,
+  play: async ({ canvasElement }) => {
+    await resizeViewport(1440, 900);
+    const p = parts(canvasElement);
+    p.more.focus();
+    await expect(p.more.matches(":focus-visible")).toBe(true);
+    // keyboard focus shows a ring and keeps the gold text
+    const s = style(p.more);
+    await expect(s.boxShadow !== "none" || s.outlineStyle !== "none").toBe(
+      true
+    );
+    await expect(s.color).toBe(GOLD);
+    p.more.blur();
+  },
+};
+
+// Widths from the QA sheet where a card boundary falls on a half pixel (width / 4 ends in .25), and a control with whole
+// pixels. The pixel check itself is tests/stories-grid-scrim.spec.mjs (this runner scales its iframe).
+const SEAM_WIDTHS = [965, 969, 973, 1817, 968];
+
+export const ScrimGeometry = {
+  name: "Scrim geometry",
+  tags: ["!dev"],
+  globals: viewport(965),
+  render: () => <Harness html={storiesHtml()} />,
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    // park the real pointer on the heading tile: a card under it would be mid-reveal after a resize
+    await realPointer.hover(p.lead);
+    const off = [];
+    for (const width of SEAM_WIDTHS) {
+      await resizeViewport(width, 900);
+      await waitFor(() => expect(progressOf(p.grid)).toBe(1));
+      // every scrim at rest (a card the pointer just left is still easing back)
+      await waitFor(() =>
+        p.cards.forEach((_, index) =>
+          expect(scrimStart(card(p, index).scrim)).toBe("50%")
+        )
+      );
+      await frame();
+      await frame();
+      p.cards.forEach((element, index) => {
+        const c = card(p, index);
+        const cardBox = box(element);
+        const scrim = box(c.scrim);
+        const label = `${width}px card ${index}`;
+        // a pixel of overscan on both sides and below, clipped by the card: no half-pixel edge can show the photo
+        if (cardBox.left - scrim.left < 0.95)
+          off.push(`${label}: left overhang ${cardBox.left - scrim.left}`);
+        if (scrim.right - cardBox.right < 0.95)
+          off.push(`${label}: right overhang ${scrim.right - cardBox.right}`);
+        if (scrim.bottom - cardBox.bottom < 0.95)
+          off.push(
+            `${label}: bottom overhang ${scrim.bottom - cardBox.bottom}`
+          );
+        // at rest it covers the lower half (its transform scales it from the bottom)
+        const top = cardBox.bottom + 1 - 0.5 * (cardBox.height + 1);
+        if (Math.abs(scrim.top - top) > 0.05)
+          off.push(
+            `${label}: top ${scrim.top} vs ${top} (transform ${style(c.scrim).transform}, card h ${cardBox.height}, scrim h ${scrim.height})`
+          );
+      });
+    }
+    await expect(off).toEqual([]);
+    // revealed, it covers the whole card
+    const c = card(p, 1);
+    forceHover(c.element);
+    await waitFor(() => expect(scrimStart(c.scrim)).toBe("0%"));
+    await waitFor(() =>
+      expect(box(c.scrim).top).toBeLessThanOrEqual(box(c.element).top + 0.05)
+    );
+    forceHover(c.element, false);
+  },
+};
+
+export const CardAlt = {
+  name: "Card alt text",
+  tags: ["!dev"],
+  globals: viewport(1440),
+  render: () => <Harness html={storiesHtml()} />,
+  play: async ({ canvasElement }) => {
+    await resizeViewport(1440, 900);
+    const view = within(canvasElement);
+    // every photo has the Figma alt text; the link's name is the alt text, the title and the subhead (the subhead is
+    // clipped, never display: none, so the name does not depend on the width or on hover)
+    await expect(view.getAllByRole("img")).toHaveLength(STORIES.length);
+    STORIES.forEach((story, index) => {
+      const link = view.getByRole("link", {
+        name: name =>
+          name.includes(CARD_ALT[index]) &&
+          name.includes(story.title) &&
+          name.includes(story.sub),
+      });
+      expect(link.getAttribute("href")).toBe(storyHref(index));
+    });
   },
 };
 
