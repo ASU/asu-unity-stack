@@ -4,7 +4,6 @@ import {
   contrastRatio,
   emulateForcedColors,
   emulateReducedMotion,
-  emulateTouchInput,
   Harness,
   MAKE_IT_YOURS,
   makeItYoursHtml,
@@ -582,22 +581,51 @@ export const ClickSwitch = {
     }
   },
 };
+// A touch tap, as the browser delivers it: touch pointer events, then a click. `emulateTouchInput` is not used
+// here: vitest.config.js caches one CDP session for the whole run, and creating it from this file leaves the
+// reimagine `Breakpoint crossing` story with a stale session (its hover: none emulation then has no effect).
+const tap = element => {
+  const at = box(element);
+  const point = {
+    bubbles: true,
+    cancelable: true,
+    composed: true,
+    pointerType: "touch",
+    isPrimary: true,
+    clientX: at.left + at.width / 2,
+    clientY: at.top + at.height / 2,
+  };
+  element.dispatchEvent(new PointerEvent("pointerover", point));
+  element.dispatchEvent(
+    new PointerEvent("pointerenter", { ...point, bubbles: false })
+  );
+  element.dispatchEvent(new PointerEvent("pointerdown", point));
+  element.dispatchEvent(new PointerEvent("pointerup", point));
+  element.focus();
+  element.dispatchEvent(new MouseEvent("click", point));
+};
 export const TouchTap = {
   name: "Touch tap",
   globals: { viewport: viewport(393) },
   render: () => <Harness html={makeItYoursHtml()} />,
   play: async ({ canvasElement }) => {
     await atWidth(393, 852);
-    await emulateTouchInput(true);
+    const spy = clickSpy();
     try {
-      await expect(window.matchMedia("(hover: none)").matches).toBe(true);
       const third = trig(canvasElement, 2);
+      // No double-tap zoom delay on the headers.
       await expect(style(third).touchAction).toBe("manipulation");
-      await userEvent.click(third);
+      tap(third);
       await expectOpenTab(canvasElement, 2);
       await expect(document.activeElement).toBe(third);
+      await expect(spy.states).toHaveLength(1);
+      // Tapping the open header is a no-op.
+      tap(third);
+      await new Promise(resolve => setTimeout(resolve, 30));
+      await expectOpenTab(canvasElement, 2);
+      await expect(spy.states).toHaveLength(1);
     } finally {
-      await emulateTouchInput(false);
+      spy.stop();
     }
   },
 };
