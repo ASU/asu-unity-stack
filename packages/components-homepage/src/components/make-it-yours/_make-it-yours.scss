@@ -1,0 +1,337 @@
+// Homepage "Make it yours": five photo tabs. Stacked through 768px (white head, inset photo, dark band with the tab
+// list) and side by side from 769px (full-bleed photo, content column on the right, 865px tall). APG Accordion.
+// Design doc: WWWCMS-237. Baseline (no script): every panel open, only the first photo; `initMakeItYours` adds
+// `.is-enhanced`, which turns on the accordion. Photos are HTML <img>/srcset; no CSS url() art here (vite.config.js).
+
+// One pixel off $uds-breakpoint-md (768px) on purpose: the design is stacked AT 768 and side by side from 769.
+// Keep equal to DESKTOP in make-it-yours.js and to the <source media> in make-it-yours-markup.js.
+$hp-myours-bp: 769px;
+
+// TODO: confirm with design - raw values (no UDS token): section height, column width, 1920 frame, rows, bar, offsets,
+// the 0.5s/0.35s timings and the translucent chip.
+$hp-myours-h: 865px;
+$hp-myours-col-w: 548px;
+$hp-myours-frame: 1920px;
+$hp-myours-row: 44px; // touch target
+$hp-myours-bar-w: 4px;
+$hp-myours-bar-gap: 24px;
+$hp-myours-ease: cubic-bezier(0.4, 0, 0.2, 1);
+$hp-myours-chip-bg: rgba($asu-gray-1, 0.7);
+$hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
+
+@mixin hp-myours-focus {
+  &:focus:not(:focus-visible) {
+    box-shadow: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid transparent;
+    box-shadow: var(--hp-focus-inner), var(--hp-focus-outer);
+  }
+}
+
+.hp-myours {
+  --hp-myours-inset: clamp(48px, 5vw, 80px);
+
+  position: relative;
+  background: $uds-color-base-white;
+  color: $asu-gray-1;
+}
+
+.hp-myours__head {
+  padding: $uds-size-spacing-6 $uds-size-spacing-4 $uds-size-spacing-4;
+  background: $uds-color-base-white;
+  color: $asu-gray-1;
+  text-align: center;
+}
+
+.hp-myours__heading {
+  margin: 0;
+  font-size: clamp(
+    3.5rem,
+    3rem + 2vw,
+    4rem
+  ); // TODO: no token (56px at 393, 63px at 768)
+  line-height: 1;
+  font-weight: $uds-font-weight-bold;
+  letter-spacing: -0.03em;
+}
+
+.hp-myours__intro {
+  margin: $uds-size-spacing-3 auto 0;
+  font-size: $uds-size-font-medium;
+  line-height: 1.5;
+}
+
+// ---- photos ----
+
+.hp-myours__photos {
+  position: relative;
+}
+
+.hp-myours__photo {
+  display: none;
+  margin: 0;
+
+  &.is-active {
+    display: block;
+  }
+}
+
+.hp-myours__photo picture {
+  display: block;
+}
+
+.hp-myours__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hp-myours__caption-text--desktop {
+  display: none;
+}
+
+// ---- tabs ----
+
+.hp-myours__tabs {
+  padding: $uds-size-spacing-4 $uds-size-spacing-4 $uds-size-spacing-6;
+  background: $asu-gray-1;
+  color: $uds-color-base-white;
+}
+
+.hp-myours__list {
+  min-height: var(--hp-myours-tabs-min, 0);
+}
+
+.hp-myours__item {
+  position: relative;
+
+  // The bar: 28px at rest (8px inset in the 44px row), the full item height when open.
+  &::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: 0;
+    width: $hp-myours-bar-w;
+    background: $asu-gray-3;
+
+    @media (forced-colors: active) {
+      background: CanvasText;
+    }
+  }
+
+  &.is-open::before {
+    top: 0;
+    bottom: 0;
+    background: $uds-color-base-white;
+
+    @media (forced-colors: active) {
+      background: Highlight;
+    }
+  }
+}
+
+.hp-myours__tab-heading {
+  margin: 0;
+  font-size: inherit;
+}
+
+.hp-myours__trigger {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: $hp-myours-row;
+  margin: 0;
+  padding: 8px 0 8px ($hp-myours-bar-w + $hp-myours-bar-gap);
+  border: 0;
+  background: none;
+  color: $asu-gray-4;
+  font-size: $uds-size-font-xl;
+  line-height: 28px;
+  font-weight: $uds-font-weight-bold;
+  text-align: left;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  touch-action: manipulation;
+
+  &:hover {
+    color: $uds-color-base-white;
+  }
+
+  &[aria-disabled="true"] {
+    cursor: default;
+  }
+
+  @include hp-myours-focus;
+}
+
+.hp-myours__item.is-open .hp-myours__trigger {
+  color: $uds-color-base-white;
+}
+
+// ---- panel: 0fr to 1fr, closed panels hidden from focus and AT even without `inert` ----
+
+.hp-myours__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+}
+
+.hp-myours__item.is-open > .hp-myours__panel {
+  grid-template-rows: 1fr;
+  visibility: visible;
+}
+
+.hp-myours__panel-inner {
+  min-width: 0;
+  min-height: 0;
+  padding: 4px 8px 16px ($hp-myours-bar-w + $hp-myours-bar-gap);
+  overflow: hidden;
+}
+
+.hp-myours__desc {
+  margin: 0;
+  font-size: 1.125rem; // TODO: no token (18px)
+  line-height: 24px;
+  overflow-wrap: anywhere;
+}
+
+// No script: every item reads as open.
+.hp-myours:not(.is-enhanced) {
+  .hp-myours__panel {
+    grid-template-rows: 1fr;
+    visibility: visible;
+  }
+
+  .hp-myours__item::before {
+    top: 0;
+    bottom: 0;
+    background: $uds-color-base-white;
+  }
+
+  .hp-myours__trigger {
+    color: $uds-color-base-white;
+    cursor: default;
+  }
+}
+
+// ---- CTA: white text link, 1px underline, white in EVERY state including :visited (theme a:visited is maroon) ----
+
+.hp-myours__cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: $uds-size-spacing-2;
+  border-bottom: 1px solid currentcolor;
+  font-size: 1.125rem; // TODO: no token (18px stacked, 16px desktop)
+  line-height: 24px;
+  text-decoration: none !important;
+
+  // 44px hit area around the 24px line.
+  &::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: 0;
+    bottom: -10px;
+    left: 0;
+  }
+
+  &:hover {
+    border-bottom-color: transparent;
+  }
+
+  @include hp-myours-focus;
+}
+
+.hp-myours a.hp-myours__cta,
+.hp-myours a.hp-myours__cta:link,
+.hp-myours a.hp-myours__cta:visited,
+.hp-myours a.hp-myours__cta:hover,
+.hp-myours a.hp-myours__cta:focus,
+.hp-myours a.hp-myours__cta:active {
+  color: $uds-color-base-white;
+}
+
+.hp-myours__cta-icon {
+  display: block;
+  width: auto;
+  height: 0.875em;
+  flex: none;
+  pointer-events: none;
+}
+
+// ---- Stacked (<= 768): the photo overlaps the top 24px of the dark band; one caption line under it ----
+
+@media not all and (min-width: $hp-myours-bp) {
+  .hp-myours__photo picture {
+    position: relative;
+    z-index: 1;
+    margin: 0 $uds-size-spacing-4;
+    aspect-ratio: 900 / 650;
+  }
+
+  .hp-myours__caption {
+    position: relative;
+    margin-top: -$uds-size-spacing-3; // the band starts 24px above the photo's bottom edge
+    padding: $uds-size-spacing-6 $uds-size-spacing-4 0;
+    background: $asu-gray-1;
+    color: $asu-gray-4;
+    font-size: $uds-size-font-small;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+
+  .hp-myours__tabs {
+    padding-top: $uds-size-spacing-4;
+  }
+}
+
+// ---- Motion: transitions exist only when motion is allowed and not during the first render ----
+
+@media (prefers-reduced-motion: no-preference) {
+  .hp-myours:not(.is-booting) {
+    .hp-myours__panel {
+      transition:
+        grid-template-rows 0.5s $hp-myours-ease,
+        visibility 0s linear 0.5s;
+    }
+
+    .hp-myours__item.is-open > .hp-myours__panel {
+      transition:
+        grid-template-rows 0.5s $hp-myours-ease,
+        visibility 0s;
+    }
+
+    .hp-myours__trigger {
+      transition: color 0.35s ease;
+    }
+
+    .hp-myours__item::before {
+      transition:
+        top 0.5s $hp-myours-ease,
+        bottom 0.5s $hp-myours-ease,
+        background-color 0.35s ease;
+    }
+  }
+}
+
+// ---- Forced colors: system colors, opaque panels ----
+
+@media (forced-colors: active) {
+  .hp-myours__head,
+  .hp-myours__tabs,
+  .hp-myours__caption {
+    background: Canvas;
+    color: CanvasText;
+  }
+
+  .hp-myours .hp-myours__trigger,
+  .hp-myours a.hp-myours__cta,
+  .hp-myours a.hp-myours__cta:visited {
+    color: CanvasText;
+  }
+}
