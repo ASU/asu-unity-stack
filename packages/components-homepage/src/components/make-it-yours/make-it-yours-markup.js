@@ -22,10 +22,14 @@ const escape = value =>
 const SAFE_URL = /^(?:https?:\/\/|\/(?![/\\])|#)/i;
 // Browsers drop tab, LF and CR inside a URL, so "/<tab>/evil" becomes "//evil". Any C0 control or DEL inside the URL
 // is rejected (not stripped): no silent rewrite of what the editor typed.
-const CONTROL_CHARS = /[\u0000-\u001f\u007f]/;
+const hasControlChar = text =>
+  Array.from(text).some(char => {
+    const code = char.charCodeAt(0);
+    return code <= 0x1f || code === 0x7f;
+  });
 const safeHref = value => {
   const text = String(value ?? "").trim();
-  return SAFE_URL.test(text) && !CONTROL_CHARS.test(text) ? text : "";
+  return SAFE_URL.test(text) && !hasControlChar(text) ? text : "";
 };
 const FOCUS = /^\d{1,3}(?:\.\d+)?% \d{1,3}(?:\.\d+)?%$/;
 const focusOf = value =>
