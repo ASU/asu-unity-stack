@@ -400,6 +400,29 @@ $hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
     line-height: 1.25;
   }
 
+  // Soft dark panel behind the content column, one identical strength for all five photos (not in the mockups).
+  // Alpha set by tests/make-it-yours-contrast.spec.mjs; cap 0.60 (Amendment A1.1). 0.58 gives 20/20.
+  $hp-myours-scrim-alpha: 0.58;
+  .hp-myours__stage::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    right: calc(var(--hp-myours-inset-r) - 96px);
+    width: calc(#{$hp-myours-col-w} + 192px);
+    pointer-events: none;
+    background: linear-gradient(
+      to right,
+      rgba($asu-gray-1, 0),
+      rgba($asu-gray-1, $hp-myours-scrim-alpha) 96px,
+      rgba($asu-gray-1, $hp-myours-scrim-alpha) calc(100% - 96px),
+      rgba($asu-gray-1, 0)
+    );
+    @media (forced-colors: active) {
+      display: none;
+    }
+  }
   .hp-myours__head,
   .hp-myours__tabs {
     position: relative;
