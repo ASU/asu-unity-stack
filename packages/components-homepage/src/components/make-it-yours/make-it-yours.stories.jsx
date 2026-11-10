@@ -1192,3 +1192,70 @@ export const MissingImageFallback = {
     await expectOpenTab(canvasElement, 2);
   },
 };
+
+// ---- open tabs 2-5 and the focus ring (batch 4) ----
+// Opens tab `index` with a real click at 1920 and checks what the visitor sees on the photo.
+const openTabStory = (name, index) => ({
+  name,
+  globals: { viewport: viewport(1920) },
+  render: () => <Harness html={makeItYoursHtml()} />,
+  play: async ({ canvasElement }) => {
+    await atWidth(1920, 1000);
+    const tab = MAKE_IT_YOURS.tabs[index];
+    await userEvent.click(trig(canvasElement, index));
+    await expectOpenTab(canvasElement, index);
+    const photos = list(canvasElement, ".hp-myours__photo");
+    await expect(photos[index]).toHaveClass("is-active");
+    await expect(style(photos[index]).display).not.toBe("none");
+    await expect(style(photos[0]).display).toBe("none");
+    // The photo is cropped around this tab's focal point.
+    await expect(style(activeImg(canvasElement)).objectPosition).toBe(
+      tab.desktop.focus
+    );
+    await waitFor(() =>
+      expect(activeImg(canvasElement).getAttribute("alt")).toBe(tab.desktop.alt)
+    );
+    await expect(visibleCaption(canvasElement)).toBe(tab.desktop.caption);
+  },
+});
+export const Tab2Open = openTabStory("Tab 2 open", 1);
+export const Tab3Open = openTabStory("Tab 3 open", 2);
+export const Tab4Open = openTabStory("Tab 4 open", 3);
+export const Tab5Open = openTabStory("Tab 5 open", 4);
+
+// The ring token as a computed box-shadow, so the test follows the token and not a copied colour.
+const ringColor = () => {
+  const probe = document.createElement("div");
+  probe.style.boxShadow = "var(--hp-focus-outer)";
+  document.body.appendChild(probe);
+  const shadow = getComputedStyle(probe).boxShadow;
+  probe.remove();
+  return shadow.match(/rgba?\([^)]*\)/)[0];
+};
+export const FocusVisible = {
+  name: "Focus visible",
+  globals: { viewport: viewport(1280) },
+  render: () => <Harness html={makeItYoursHtml()} />,
+  play: async ({ canvasElement }) => {
+    await atWidth(1280, 900);
+    await expect(realPointer.available).toBe(true);
+    const outer = ringColor();
+    const ringed = element => style(element).boxShadow.includes(outer);
+    const first = trig(canvasElement, 0);
+    const cta = find(canvasElement, ".hp-myours__cta");
+    // Keyboard: the trigger and the CTA both show the two-tone ring.
+    first.focus();
+    await realKeyboard.press("{Tab}");
+    await expect(document.activeElement).toBe(cta);
+    await expect(ringed(cta)).toBe(true);
+    await realKeyboard.press("{Shift>}{Tab}{/Shift}");
+    await expect(document.activeElement).toBe(first);
+    await expect(ringed(first)).toBe(true);
+    // Pointer: focus lands on the trigger but no ring.
+    const second = trig(canvasElement, 1);
+    await realPointer.click(second);
+    await expectOpenTab(canvasElement, 1);
+    await expect(document.activeElement).toBe(second);
+    await expect(ringed(second)).toBe(false);
+  },
+};
