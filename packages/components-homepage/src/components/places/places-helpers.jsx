@@ -41,15 +41,15 @@ export const GROUPS = [
 ];
 
 // Prototype v2.71 copy (HTML 2635-2690). `group` indexes GROUPS. TODO: destinations from the content team
-// (WWWCMS-241 open question A11); each href is a unique fragment that matches no element. `alt` is approved by
-// the owner (2026-11-05), not in Figma except the Tempe wording.
+// (WWWCMS-241 open question A11); each href is a unique fragment that matches no element. `alt` follows the content
+// doc (2026-11-09), which supersedes the owner-approved text of 2026-11-05.
 export const LOCATIONS = [
   {
     name: "Tempe",
     group: 0,
     photo: `${MEDIA}/place-tempe.webp`,
     text: "The flagship campus — a walkable, tree-lined home to more than 55,000 Sun Devils.",
-    alt: "Aerial views of Arizona State University's Tempe campus and Sun Devil Stadium, along with students exploring a rocky outdoor area and an ASU building exterior.",
+    alt: "Aerial views of Arizona State University’s Tempe campus and Mountain America Stadium, along with students exploring a rocky outdoor area and an ASU building exterior.",
     link: "See Tempe campus",
   },
   {
@@ -81,7 +81,7 @@ export const LOCATIONS = [
     group: 1,
     photo: `${MEDIA}/place-losangeles.webp`,
     text: "Film, media and game design taught in the center of the industry.",
-    alt: "Aerial view of the ASU Los Angeles building, a white multi-story structure surrounded by trees and a lawn in downtown Los Angeles.",
+    alt: "Aerial view of the California Center Grand building, a white multistory structure surrounded by trees and a lawn in downtown Los Angeles.",
     link: "See ASU Los Angeles",
   },
   {
@@ -89,7 +89,7 @@ export const LOCATIONS = [
     group: 1,
     photo: `${MEDIA}/place-washington.webp`,
     text: "Policy, journalism and global affairs steps from Capitol Hill.",
-    alt: "The ASU Washington, D.C. building, a historic stone building with illuminated cornices and the ASU sign, on a busy street corner.",
+    alt: "The ASU Washington, D.C., building, a historic stone building with illuminated cornices and the ASU sign, on a busy street corner.",
     link: "See ASU Washington, D.C.",
   },
   {
@@ -102,9 +102,9 @@ export const LOCATIONS = [
   },
 ];
 
-// Figma "Locations video" alt text annotation (1920 frame 13906:15950), verbatim.
+// Content doc (2026-11-09) b-roll video description; Figma's 1920 annotation (13906:15950) still has the older Tempe text.
 export const VIDEO_DESCRIPTION =
-  "Aerial views of Arizona State University's Tempe campus and Sun Devil Stadium, along with students exploring a rocky outdoor area and an ASU building exterior.";
+  "A video showcasing ASU’s locations and campuses including Tempe, Downtown Phoenix, Polytechnic, West Valley, Los Angeles and more.";
 
 const slug = name =>
   name
