@@ -57,6 +57,7 @@ $hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
   line-height: 1;
   font-weight: $uds-font-weight-bold;
   letter-spacing: -0.03em;
+  text-align: inherit; // the theme's $heading-text-align is left; centred stacked, left on desktop (A2.2)
 }
 
 .hp-myours__intro {

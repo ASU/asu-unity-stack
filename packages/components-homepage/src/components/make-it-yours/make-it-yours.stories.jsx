@@ -224,6 +224,14 @@ const parts = canvasElement => ({
   triggers: list(canvasElement, ".hp-myours__trigger"),
   ctas: list(canvasElement, ".hp-myours__cta"),
 });
+// The rendered text from the start of `from` to the end of `to` (the absolutely placed swash is not text).
+const textRange = (from, to) => {
+  const range = document.createRange();
+  range.setStart(from, 0);
+  range.setEnd(to, to.childNodes.length || to.textContent.length);
+  return range.getBoundingClientRect();
+};
+const centre = rect => rect.left + rect.width / 2;
 const MOBILE_ALT_1 =
   "Laughing graduate in a maroon cap and gown with a gold stole, sitting outdoors and raising a hand in the ASU pitchfork sign.";
 
@@ -245,6 +253,11 @@ export const Phone393 = {
     // "Make it / yours": two lines, so the heading is about two font sizes tall.
     const fontSize = px(style(p.heading).fontSize);
     near(box(p.heading).height, fontSize * 2, 2);
+    // Amendment A2.2: both heading lines are centred over the centred intro.
+    const middle = box(p.heading).left + box(p.heading).width / 2;
+    near(centre(textRange(p.heading, p.lead)), middle, 2);
+    near(centre(textRange(p.host.firstChild, p.host.firstChild)), middle, 2);
+    near(middle, 393 / 2, 1);
     // Stacked swash sits under "yours" only.
     expect(box(p.scrib).left).toBeGreaterThanOrEqual(box(p.host).left - 1);
     // "yours" wraps below the lead-in "it", so the swash cannot reach it.
@@ -292,6 +305,12 @@ export const Tablet768 = {
     await expect(p.img.getAttribute("alt")).toBe(MOBILE_ALT_1);
     // One line at 768 (line-height 1).
     near(box(p.heading).height, px(style(p.heading).fontSize), 4);
+    // Amendment A2.2: the line is centred, and the swash still sits under "yours" only.
+    near(centre(textRange(p.heading, p.host.firstChild)), 768 / 2, 2);
+    expect(box(p.scrib).left).toBeGreaterThanOrEqual(box(p.host).left - 1);
+    expect(box(p.scrib).right).toBeLessThanOrEqual(
+      box(p.host).right + box(p.host).width * 0.05
+    );
     noHorizontalOverflow();
   },
 };
