@@ -68,7 +68,7 @@ The slug is the source file name (`design-your-degree.webp`, `design-your-degree
 
 ## Scrim
 
-One shared scrim darkens the right part of every desktop photo so white text keeps 4.5:1. It uses the same strength on all five photos: `$asu-gray-1` at alpha 0.58 (`$hp-myours-scrim-alpha` in the SCSS). The cap is 0.60 (approved amendment A1.1). At 0.55 only 17 of 20 cases passed, and the alpha was raised in 0.01 steps to the lowest value that gives 20 of 20. There is deliberately no per-photo strength and no data field for it.
+One shared scrim darkens the right part of every desktop photo so white text keeps 4.5:1. It uses the same strength on all five photos: `$asu-gray-1` at alpha 0.58 (`$hp-myours-scrim-alpha` in the SCSS). The cap is 0.60 (approved amendment A1.1). At 0.55 only 17 of 20 cases passed, and the alpha was raised in 0.01 steps to the lowest value that gives 20 of 20 (then 4 widths). With 769 and 1024 added (review F4) it gives 30 of 30 unchanged. There is deliberately no per-photo strength and no data field for it.
 
 To re-check after changing a photo, a focal point or the alpha:
 
@@ -76,7 +76,7 @@ To re-check after changing a photo, a focal point or the alpha:
 MYOURS_CONTRAST_LOG=1 yarn workspace @asu/components-homepage test:accessibility tests/make-it-yours-contrast.spec.mjs
 ```
 
-It measures white text over each photo at 1280, 1920, 2500 and 3934 px for every tab (20 cases) and prints each ratio. If 0.60 does not give 20 of 20, stop and ask; do not add per-photo tweaks.
+It measures white text over each photo at 769, 1024, 1280, 1920, 2500 and 3934 px for every tab (30 cases) and prints each ratio. Below 1280 the crop and the scrim position change, so 769 and 1024 are covered too. If 0.60 does not give 30 of 30, stop and ask; do not add per-photo tweaks.
 
 ## Notes for Stage B (Drupal)
 

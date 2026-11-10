@@ -404,7 +404,7 @@ $hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
   }
 
   // Soft dark panel behind the content column, one identical strength for all five photos (not in the mockups).
-  // Alpha set by tests/make-it-yours-contrast.spec.mjs; cap 0.60 (Amendment A1.1). 0.58 gives 20/20.
+  // Alpha set by tests/make-it-yours-contrast.spec.mjs; cap 0.60 (Amendment A1.1). 0.58 gives 30/30 (769-3934).
   $hp-myours-scrim-alpha: 0.58;
   .hp-myours__stage::after {
     content: "";

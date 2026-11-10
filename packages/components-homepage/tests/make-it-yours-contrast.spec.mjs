@@ -4,7 +4,7 @@ import { test, expect } from "@playwright/test";
 // test runner scales its iframe). The section's text, bars, CTA underline and the scribble are made transparent; the
 // photo, the caption chip fill and any scrim stay, and the screenshot is read back under each text line box.
 const STORY = "/iframe.html?id=homepage-make-it-yours--default&viewMode=story";
-const WIDTHS = [1280, 1920, 2500, 3934];
+const WIDTHS = [769, 1024, 1280, 1920, 2500, 3934];
 const TABS = [0, 1, 2, 3, 4];
 const PROBE = `
 .hp-myours__head *, .hp-myours__tabs *, .hp-myours__caption *, .hp-myours__caption {
