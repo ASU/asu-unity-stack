@@ -169,6 +169,27 @@ export const InjectionEscaping = {
     await expect(
       list(canvasElement, ".hp-myours__cta[href^='javascript']")
     ).toHaveLength(0);
+    // Review F7: browsers read "/\" like "//" (protocol-relative), so it is not a root-relative URL.
+    const hrefOf = url => {
+      const [first, ...rest] = MAKE_IT_YOURS.tabs;
+      const html = makeItYoursHtml({
+        data: {
+          ...MAKE_IT_YOURS,
+          tabs: [{ ...first, cta: { label: "Go", url } }, ...rest],
+        },
+      });
+      const template = document.createElement("template");
+      template.innerHTML = html;
+      return (
+        template.content
+          .querySelector(".hp-myours__item .hp-myours__cta")
+          ?.getAttribute("href") ?? null
+      );
+    };
+    await expect(hrefOf("/\\evil.example")).toBeNull();
+    await expect(hrefOf("//evil.example")).toBeNull();
+    await expect(hrefOf("/admission")).toBe("/admission");
+    await expect(hrefOf("#apply")).toBe("#apply");
   },
 };
 

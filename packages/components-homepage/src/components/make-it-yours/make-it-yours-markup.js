@@ -18,7 +18,8 @@ const escape = value =>
     .replace(/>/g, "&gt;");
 
 // http(s), root-relative and fragment URLs only; anything else (javascript:, data:, empty) is dropped.
-const SAFE_URL = /^(?:https?:\/\/|\/(?!\/)|#)/i;
+// "//" and "/\" are protocol-relative to a browser, so a root-relative URL may not start with either.
+const SAFE_URL = /^(?:https?:\/\/|\/(?![/\\])|#)/i;
 const safeHref = value => {
   const text = String(value ?? "").trim();
   return SAFE_URL.test(text) ? text : "";
