@@ -4,6 +4,7 @@
 
 const DESKTOP = "(min-width: 769px)"; // keep equal to $hp-myours-bp in _make-it-yours.scss
 const TABS_MIN = "--hp-myours-tabs-min";
+const CAPTION_MIN = "--hp-myours-caption-min";
 
 const bound = new WeakSet();
 const noop = () => {};
@@ -43,6 +44,9 @@ const bind = (section, doc, win) => {
   const figures = all(".hp-myours__photo");
   const images = figures.map(figure => figure.querySelector(".hp-myours__img"));
   const tabs = section.querySelector(".hp-myours__tabs");
+  const captions = figures.map(figure =>
+    figure.querySelector(".hp-myours__caption")
+  );
   const promoted = new Set();
   let open = 0;
   let pending = -1;
@@ -78,13 +82,30 @@ const bind = (section, doc, win) => {
     });
   };
 
-  // Stacked only: the list reserves the tallest open state so the section never changes height between tabs.
+  // Natural height of every caption, including the ones of photos that are not displayed.
+  const tallestCaption = () => {
+    section.style.removeProperty(CAPTION_MIN);
+    let tallest = 0;
+    figures.forEach((figure, i) => {
+      if (!captions[i]) return;
+      const hidden = !figure.classList.contains("is-active");
+      if (hidden) figure.style.display = "block";
+      tallest = Math.max(tallest, captions[i].offsetHeight);
+      if (hidden) figure.style.removeProperty("display");
+    });
+    return tallest;
+  };
+  // Stacked only: the list reserves the tallest open state and the caption its tallest wrap, so the section
+  // never changes height between tabs.
   const measure = () => {
-    if (!tabs) return;
     if (desk.matches) {
-      tabs.style.removeProperty(TABS_MIN);
+      if (tabs) tabs.style.removeProperty(TABS_MIN);
+      section.style.removeProperty(CAPTION_MIN);
       return;
     }
+    const caption = `${Math.ceil(tallestCaption())}px`;
+    section.style.setProperty(CAPTION_MIN, caption);
+    if (!tabs) return;
     const headings = triggers.reduce(
       (sum, trigger) => sum + trigger.parentElement.offsetHeight,
       0
@@ -95,7 +116,6 @@ const bind = (section, doc, win) => {
       tabs.style.setProperty(TABS_MIN, value);
     }
   };
-
   // A hint only: the photo of the tab the visitor is about to open starts loading.
   const promote = i => {
     const img = images[i];
@@ -226,6 +246,7 @@ const bind = (section, doc, win) => {
     promoted.forEach(img => img.setAttribute("loading", "lazy"));
     promoted.clear();
     if (tabs) tabs.style.removeProperty(TABS_MIN);
+    section.style.removeProperty(CAPTION_MIN);
     bound.delete(section);
   };
 };

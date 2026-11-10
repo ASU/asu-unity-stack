@@ -823,6 +823,16 @@ const listHeights = async canvasElement => {
   }
   return heights;
 };
+// The whole section, with each tab open in turn: the caption under the photo may wrap differently per tab.
+const sectionHeights = async canvasElement => {
+  const heights = [];
+  for (let i = 0; i < 5; i += 1) {
+    await userEvent.click(trig(canvasElement, i));
+    await expectOpenTab(canvasElement, i);
+    heights.push(box(find(canvasElement, ".hp-myours")).height);
+  }
+  return heights;
+};
 export const ReserveHeightStacked = {
   name: "Reserve height, stacked",
   globals: { viewport: viewport(393) },
@@ -854,6 +864,13 @@ export const ReserveHeightStacked = {
           1
         );
       }
+      // Amendment A1.2: the whole section is the same height for every tab, at 393 and at 768.
+      const whole393 = await sectionHeights(canvasElement);
+      whole393.forEach(height => near(height, whole393[0], 1));
+      await atWidth(768, 900);
+      const whole768 = await sectionHeights(canvasElement);
+      whole768.forEach(height => near(height, whole768[0], 1));
+      await atWidth(393, 852);
       // Narrower: more wrapping, a taller reserve, still the same for every tab.
       await atWidth(320, 700);
       await waitFor(() =>

@@ -284,6 +284,8 @@ $hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
 
   .hp-myours__caption {
     position: relative;
+    box-sizing: border-box;
+    min-height: var(--hp-myours-caption-min, 0); // set by make-it-yours.js: the tallest caption wrap
     margin-top: -$uds-size-spacing-3; // the band starts 24px above the photo's bottom edge
     padding: $uds-size-spacing-6 $uds-size-spacing-4 0;
     background: $asu-gray-1;
