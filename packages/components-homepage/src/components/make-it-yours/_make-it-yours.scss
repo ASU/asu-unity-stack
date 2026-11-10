@@ -19,14 +19,16 @@ $hp-myours-ease: cubic-bezier(0.4, 0, 0.2, 1);
 $hp-myours-chip-bg: rgba($asu-gray-1, 0.7);
 $hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
 
+// !important is required to beat unity-bootstrap-theme/src/scss/extends/_misc.scss, which sets
+// `a:focus, button:focus { box-shadow: ... !important }` globally. Scoped to this component's triggers and CTAs.
 @mixin hp-myours-focus {
   &:focus:not(:focus-visible) {
-    box-shadow: none;
+    box-shadow: none !important;
   }
 
   &:focus-visible {
     outline: 2px solid transparent;
-    box-shadow: var(--hp-focus-inner), var(--hp-focus-outer);
+    box-shadow: var(--hp-focus-inner), var(--hp-focus-outer) !important;
   }
 }
 
