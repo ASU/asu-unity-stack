@@ -1,9 +1,12 @@
 import React from "react";
-import { expect, waitFor, within } from "storybook/test";
+import { expect, userEvent, waitFor, within } from "storybook/test";
 import {
+  emulateReducedMotion,
+  emulateTouchInput,
   Harness,
   MAKE_IT_YOURS,
   makeItYoursHtml,
+  realKeyboard,
   realPointer,
   resizeViewport,
   walkRules,
@@ -31,6 +34,9 @@ const normalize = html => {
 const find = (canvasElement, selector) => canvasElement.querySelector(selector);
 const list = (canvasElement, selector) =>
   Array.from(canvasElement.querySelectorAll(selector));
+const near = (actual, expected, tolerance = 1) =>
+  expect(Math.abs(actual - expected)).toBeLessThanOrEqual(tolerance);
+const box = element => element.getBoundingClientRect();
 export const Default = {
   globals: { viewport: viewport(1280) },
   render: () => <Harness html={makeItYoursHtml()} />,
@@ -56,6 +62,29 @@ export const Default = {
         name: "Make it yours",
       })
     ).toBeTruthy();
+    // Boot state: tab 1 open, the rest closed and inert; transitions come back two frames later.
+    const section = find(canvasElement, ".hp-myours");
+    await expect(section).toHaveClass("is-enhanced");
+    await waitFor(() => expect(section).not.toHaveClass("is-booting"));
+    triggers.forEach((trigger, i) => {
+      expect(trigger.getAttribute("aria-expanded")).toBe(
+        i === 0 ? "true" : "false"
+      );
+      expect(trigger.hasAttribute("aria-disabled")).toBe(i === 0);
+      if (i === 0) expect(trigger.getAttribute("aria-disabled")).toBe("true");
+      expect(panels[i].hasAttribute("inert")).toBe(i !== 0);
+    });
+    await expect(list(canvasElement, ".hp-myours__item.is-open")).toHaveLength(
+      1
+    );
+    await expect(find(canvasElement, ".hp-myours__item")).toHaveClass(
+      "is-open"
+    );
+    await expect(find(canvasElement, ".hp-myours__photo")).toHaveClass(
+      "is-active"
+    );
+    // Desktop section is exactly 865px once enhanced.
+    near(box(find(canvasElement, ".hp-myours__stage")).height, 865, 0.5);
   },
 };
 export const HtmlParity = {
@@ -141,9 +170,6 @@ export const InjectionEscaping = {
 };
 
 // ---- shared geometry helpers ----
-const near = (actual, expected, tolerance = 1) =>
-  expect(Math.abs(actual - expected)).toBeLessThanOrEqual(tolerance);
-const box = element => element.getBoundingClientRect();
 const style = (element, pseudo) => getComputedStyle(element, pseudo);
 const px = value => parseFloat(value);
 // The vitest iframe may not honour the viewport global at every width, so each layout story sets its own.
@@ -195,6 +221,20 @@ export const Phone393 = {
     // The base swash is shifted 2% right of the host; allow 5% of its width.
     expect(box(p.scrib).right).toBeLessThanOrEqual(
       box(p.host).right + box(p.host).width * 0.05
+    );
+    // The list reserves the tallest open state.
+    const tabsMin = find(
+      canvasElement,
+      ".hp-myours__tabs"
+    ).style.getPropertyValue("--hp-myours-tabs-min");
+    expect(tabsMin).toMatch(/^\d+px$/);
+    expect(px(tabsMin)).toBeGreaterThanOrEqual(
+      p.triggers.length * 44 +
+        Math.max(
+          ...list(canvasElement, ".hp-myours__panel-inner").map(
+            inner => inner.scrollHeight
+          )
+        )
     );
     p.triggers.forEach(trigger =>
       expect(box(trigger).height).toBeGreaterThanOrEqual(44)
@@ -260,15 +300,6 @@ const desktopParts = canvasElement => ({
   photos: find(canvasElement, ".hp-myours__photos"),
 });
 const FRAME = 1920;
-// Batch 1 only: `initMakeItYours` is still a stub, so the section stays in the no-JS baseline (every panel open,
-// stage taller than 865px). This applies the same boot classes the real script sets (design doc section 9) so the
-// 865px geometry can be asserted. It is a no-op once the real script has enhanced the section (T9).
-const bootStandIn = canvasElement => {
-  const section = find(canvasElement, ".hp-myours");
-  if (section.classList.contains("is-enhanced")) return;
-  section.classList.add("is-enhanced");
-  find(canvasElement, ".hp-myours__item").classList.add("is-open");
-};
 // Geometry shared by every desktop width (design doc 12.1): 865px stage, photo fills it, chip 48px in from the
 // bottom and from the left edge of the 1920px frame, heading 88px.
 const expectDesktopStage = (canvasElement, width) => {
@@ -292,7 +323,6 @@ const desktopStory = (name, width, column) => ({
   render: () => <Harness html={makeItYoursHtml()} />,
   play: async ({ canvasElement }) => {
     await atWidth(width, 1000);
-    bootStandIn(canvasElement);
     const p = expectDesktopStage(canvasElement, width);
     if (column) {
       expect(box(p.tabs).left).toBeGreaterThanOrEqual(column[0]);
@@ -309,7 +339,6 @@ export const Boundary769 = {
   render: () => <Harness html={makeItYoursHtml()} />,
   play: async ({ canvasElement }) => {
     await atWidth(769, 900);
-    bootStandIn(canvasElement);
     await expect(window.matchMedia("(min-width: 769px)").matches).toBe(true);
     const p = desktopParts(canvasElement);
     await expect(style(p.stage).display).toBe("grid");
@@ -318,10 +347,51 @@ export const Boundary769 = {
       expect(p.img.currentSrc).toMatch(/design-your-degree(-\d+)?\.webp$/)
     );
     await expect(p.img.currentSrc).not.toMatch(/-mobile\.webp$/);
+    // From 769 the photo carries the desktop alt; one pixel narrower it is the mobile alt again.
+    await waitFor(() =>
+      expect(p.img.getAttribute("alt")).toBe(MAKE_IT_YOURS.tabs[0].desktop.alt)
+    );
     noHorizontalOverflow();
+    await atWidth(768, 1024);
+    await waitFor(() => expect(p.img.getAttribute("alt")).toBe(MOBILE_ALT_1));
+    await waitFor(() =>
+      expect(p.img.currentSrc).toMatch(/design-your-degree-mobile\.webp$/)
+    );
+    await atWidth(769, 900);
+    await waitFor(() =>
+      expect(p.img.getAttribute("alt")).toBe(MAKE_IT_YOURS.tabs[0].desktop.alt)
+    );
   },
 };
-export const Desktop1280 = desktopStory("Desktop 1280", 1280, [640, 690]);
+const desktop1280 = desktopStory("Desktop 1280", 1280, [640, 690]);
+export const Desktop1280 = {
+  ...desktop1280,
+  play: async context => {
+    await desktop1280.play(context);
+    const { canvasElement } = context;
+    // Every tab, open in turn, fits under the 865px stage (24px to spare) and nothing overflows it.
+    await emulateReducedMotion(true);
+    try {
+      const stage = find(canvasElement, ".hp-myours__stage");
+      for (let i = 0; i < 5; i += 1) {
+        if (trig(canvasElement, i).getAttribute("aria-expanded") !== "true") {
+          await userEvent.click(trig(canvasElement, i));
+        }
+        await expectOpenTab(canvasElement, i);
+        const item = list(canvasElement, ".hp-myours__item")[i];
+        const cta = item.querySelector(".hp-myours__cta");
+        await waitFor(() =>
+          expect(box(cta).bottom).toBeLessThanOrEqual(box(stage).bottom - 24)
+        );
+        expect(box(item).bottom).toBeLessThanOrEqual(box(stage).bottom - 24);
+        expect(stage.scrollHeight).toBeLessThanOrEqual(stage.clientHeight);
+        near(box(stage).height, 865, 1);
+      }
+    } finally {
+      await emulateReducedMotion(false);
+    }
+  },
+};
 export const Large1920 = desktopStory("Large 1920", 1920, [1250, 1340]);
 export const Wide2500 = desktopStory("Wide 2500", 2500);
 export const Ultra3934 = desktopStory("Ultra-wide 3934", 3934);
@@ -425,11 +495,404 @@ export const HeadingUnderline = {
     near(box(p.scrib).width, box(p.host).width, 2);
     // Desktop: it runs from 1.03em left of "yours", 3.02em wide, under "it yours".
     await atWidth(1280, 900);
-    bootStandIn(canvasElement);
     p = parts(canvasElement);
     const em = px(style(p.host).fontSize);
     near(box(p.host).left - box(p.scrib).left, 1.03 * em, 2);
     near(box(p.scrib).width, 3.02 * em, 2);
     expect(box(p.scrib).left).toBeLessThan(box(p.lead).right);
+  },
+};
+
+// ---- behaviour: click, tap, switch (T10) ----
+const trig = (canvasElement, i) =>
+  list(canvasElement, ".hp-myours__trigger")[i];
+// Matrix row 1: exactly tab `index` is open, in every attribute the contract lists.
+const expectOpenTab = async (canvasElement, index) => {
+  await waitFor(() =>
+    expect(trig(canvasElement, index)).toHaveAttribute("aria-expanded", "true")
+  );
+  list(canvasElement, ".hp-myours__item").forEach((item, i) => {
+    const on = i === index;
+    const trigger = trig(canvasElement, i);
+    expect(item.classList.contains("is-open")).toBe(on);
+    expect(trigger.getAttribute("aria-expanded")).toBe(on ? "true" : "false");
+    expect(trigger.getAttribute("aria-disabled")).toBe(on ? "true" : null);
+    expect(
+      list(canvasElement, ".hp-myours__panel")[i].hasAttribute("inert")
+    ).toBe(!on);
+    expect(
+      list(canvasElement, ".hp-myours__photo")[i].classList.contains(
+        "is-active"
+      )
+    ).toBe(on);
+  });
+  await expect(list(canvasElement, ".hp-myours__panel[inert]")).toHaveLength(4);
+};
+// Stands in for the site data layer: a document-level click reader. `states` records what it could see.
+const clickSpy = () => {
+  const states = [];
+  const handler = event => {
+    const trigger = event.target.closest?.(".hp-myours__trigger");
+    if (trigger) {
+      states.push({ trigger, expanded: trigger.getAttribute("aria-expanded") });
+    }
+  };
+  document.addEventListener("click", handler);
+  return { states, stop: () => document.removeEventListener("click", handler) };
+};
+export const ClickSwitch = {
+  name: "Click switch",
+  globals: { viewport: viewport(1280) },
+  render: () => <Harness html={makeItYoursHtml()} />,
+  play: async ({ canvasElement }) => {
+    await atWidth(1280, 900);
+    const spy = clickSpy();
+    try {
+      const second = trig(canvasElement, 1);
+      await userEvent.click(second);
+      await expectOpenTab(canvasElement, 1);
+      await expect(
+        find(canvasElement, ".hp-myours__photo.is-active").dataset.tab
+      ).toBe("learn-your-way");
+      await expect(document.activeElement).toBe(second);
+      // The data layer sees the click once, and sees the closed state it is about to leave (deferred commit).
+      await expect(spy.states).toHaveLength(1);
+      await expect(spy.states[0].trigger).toBe(second);
+      await expect(spy.states[0].expanded).toBe("false");
+      // The GA contract is static in the markup.
+      await expect(second.dataset.gaEvent).toBe("select");
+      await expect(second.dataset.gaAction).toBe("open");
+      await expect(second.dataset.gaText).toBe("learn your way");
+      // And back, by Enter on the first header (matrix row 6).
+      trig(canvasElement, 0).focus();
+      await userEvent.keyboard("{Enter}");
+      await expectOpenTab(canvasElement, 0);
+      await expect(document.activeElement).toBe(trig(canvasElement, 0));
+      await expect(spy.states).toHaveLength(2);
+      // Space on a closed header opens it too.
+      trig(canvasElement, 3).focus();
+      await userEvent.keyboard(" ");
+      await expectOpenTab(canvasElement, 3);
+      await expect(spy.states).toHaveLength(3);
+    } finally {
+      spy.stop();
+    }
+  },
+};
+export const TouchTap = {
+  name: "Touch tap",
+  globals: { viewport: viewport(393) },
+  render: () => <Harness html={makeItYoursHtml()} />,
+  play: async ({ canvasElement }) => {
+    await atWidth(393, 852);
+    await emulateTouchInput(true);
+    try {
+      await expect(window.matchMedia("(hover: none)").matches).toBe(true);
+      const third = trig(canvasElement, 2);
+      await expect(style(third).touchAction).toBe("manipulation");
+      await userEvent.click(third);
+      await expectOpenTab(canvasElement, 2);
+      await expect(document.activeElement).toBe(third);
+    } finally {
+      await emulateTouchInput(false);
+    }
+  },
+};
+export const DisabledOpenHeader = {
+  name: "Disabled open header",
+  globals: { viewport: viewport(1280) },
+  render: () => <Harness html={makeItYoursHtml()} />,
+  play: async ({ canvasElement }) => {
+    await atWidth(1280, 900);
+    const spy = clickSpy();
+    try {
+      const open = trig(canvasElement, 0);
+      await userEvent.click(open);
+      open.focus();
+      await userEvent.keyboard("{Enter}");
+      await userEvent.keyboard(" ");
+      // Let any deferred commit run.
+      await new Promise(resolve => setTimeout(resolve, 50));
+      await expectOpenTab(canvasElement, 0);
+      await expect(spy.states).toHaveLength(0);
+      await expect(document.activeElement).toBe(open);
+      // A real open does reach the reader exactly once.
+      await userEvent.click(trig(canvasElement, 4));
+      await expectOpenTab(canvasElement, 4);
+      await expect(spy.states).toHaveLength(1);
+    } finally {
+      spy.stop();
+    }
+  },
+};
+
+// ---- behaviour: keyboard (T11) ----
+const expectFocus = async (canvasElement, index) =>
+  expect(document.activeElement).toBe(trig(canvasElement, index));
+export const KeyboardArrows = {
+  name: "Keyboard arrows",
+  globals: { viewport: viewport(1280) },
+  render: () => <Harness html={makeItYoursHtml()} />,
+  play: async ({ canvasElement }) => {
+    await atWidth(1280, 900);
+    await expect(realPointer.available).toBe(true);
+    trig(canvasElement, 0).focus();
+    // ArrowDown walks 2, 3, 4, 5 and wraps to 1; nothing opens.
+    for (const next of [1, 2, 3, 4, 0]) {
+      await realKeyboard.press("{ArrowDown}");
+      await expectFocus(canvasElement, next);
+    }
+    // ArrowUp from the first header wraps to the last, then walks back.
+    await realKeyboard.press("{ArrowUp}");
+    await expectFocus(canvasElement, 4);
+    await realKeyboard.press("{ArrowUp}");
+    await expectFocus(canvasElement, 3);
+    await realKeyboard.press("{Home}");
+    await expectFocus(canvasElement, 0);
+    await realKeyboard.press("{End}");
+    await expectFocus(canvasElement, 4);
+    // Left, Right and Escape have no handler; modifiers are ignored.
+    for (const key of ["{ArrowLeft}", "{ArrowRight}", "{Escape}"]) {
+      await realKeyboard.press(key);
+      await expectFocus(canvasElement, 4);
+    }
+    await realKeyboard.press("{Control>}{ArrowUp}{/Control}");
+    await expectFocus(canvasElement, 4);
+    await realKeyboard.press("{Alt>}{Home}{/Alt}");
+    await expectFocus(canvasElement, 4);
+    // Focus moved over every header and the state never changed.
+    await expectOpenTab(canvasElement, 0);
+    // Only Enter (or Space) opens.
+    await realKeyboard.press("{Enter}");
+    await expectOpenTab(canvasElement, 4);
+    await expectFocus(canvasElement, 4);
+  },
+};
+export const TabOrder = {
+  name: "Tab order",
+  globals: { viewport: viewport(1280) },
+  render: () => <Harness html={makeItYoursHtml()} />,
+  play: async ({ canvasElement }) => {
+    await atWidth(1280, 900);
+    await expect(realPointer.available).toBe(true);
+    const ctas = list(canvasElement, ".hp-myours__cta");
+    const triggers = list(canvasElement, ".hp-myours__trigger");
+    const tabTo = async expected => {
+      await realKeyboard.press("{Tab}");
+      await expect(document.activeElement).toBe(expected);
+    };
+    // Forward: the open panel's CTA sits between its trigger and the next trigger; closed CTAs are skipped.
+    triggers[0].focus();
+    for (const next of [
+      ctas[0],
+      triggers[1],
+      triggers[2],
+      triggers[3],
+      triggers[4],
+    ]) {
+      await tabTo(next);
+    }
+    // Shift+Tab is the exact reverse.
+    for (const next of [
+      triggers[3],
+      triggers[2],
+      triggers[1],
+      ctas[0],
+      triggers[0],
+    ]) {
+      await realKeyboard.press("{Shift>}{Tab}{/Shift}");
+      await expect(document.activeElement).toBe(next);
+    }
+    // After opening tab 3 the CTA moves with it.
+    await userEvent.click(triggers[2]);
+    await expectOpenTab(canvasElement, 2);
+    await tabTo(ctas[2]);
+    await tabTo(triggers[3]);
+    await realKeyboard.press("{Shift>}{Tab}{/Shift}");
+    await expect(document.activeElement).toBe(ctas[2]);
+    await realKeyboard.press("{Shift>}{Tab}{/Shift}");
+    await expect(document.activeElement).toBe(triggers[2]);
+    await realKeyboard.press("{Shift>}{Tab}{/Shift}");
+    await expect(document.activeElement).toBe(triggers[1]);
+  },
+};
+
+// ---- behaviour: per-crop alt and caption, lazy and promote (T12) ----
+const activeImg = canvasElement =>
+  find(canvasElement, ".hp-myours__photo.is-active .hp-myours__img");
+const visibleCaption = canvasElement =>
+  find(
+    canvasElement,
+    ".hp-myours__photo.is-active figcaption"
+  ).innerText.trim();
+export const AltAndCaptionPerCrop = {
+  name: "Alt and caption per crop",
+  globals: { viewport: viewport(1280) },
+  render: () => <Harness html={makeItYoursHtml()} />,
+  play: async ({ canvasElement }) => {
+    const tabsToCheck = [0, 2, 4];
+    const check = async crop => {
+      for (const i of tabsToCheck) {
+        if (trig(canvasElement, i).getAttribute("aria-expanded") !== "true") {
+          await userEvent.click(trig(canvasElement, i));
+          await expectOpenTab(canvasElement, i);
+        }
+        const tab = MAKE_IT_YOURS.tabs[i];
+        await waitFor(() =>
+          expect(activeImg(canvasElement).getAttribute("alt")).toBe(
+            tab[crop].alt
+          )
+        );
+        await expect(visibleCaption(canvasElement)).toBe(tab[crop].caption);
+      }
+    };
+    await atWidth(1280, 900);
+    await check("desktop");
+    await atWidth(768, 1024);
+    await check("mobile");
+    await atWidth(769, 900);
+    await check("desktop");
+    // The two alts really are different texts (the content file gives each crop its own).
+    tabsToCheck.forEach(i => {
+      const { desktop, mobile } = MAKE_IT_YOURS.tabs[i];
+      expect(desktop.alt).not.toBe(mobile.alt);
+    });
+    // Captions: tabs 3 and 5 name different people per crop.
+    expect(MAKE_IT_YOURS.tabs[2].desktop.caption).not.toBe(
+      MAKE_IT_YOURS.tabs[2].mobile.caption
+    );
+    expect(MAKE_IT_YOURS.tabs[4].desktop.caption).not.toBe(
+      MAKE_IT_YOURS.tabs[4].mobile.caption
+    );
+  },
+};
+export const LazyAndPromote = {
+  name: "Lazy and promote",
+  globals: { viewport: viewport(1280) },
+  render: () => <Harness html={makeItYoursHtml()} />,
+  play: async ({ canvasElement }) => {
+    await atWidth(1280, 900);
+    await expect(realPointer.available).toBe(true);
+    const images = list(canvasElement, ".hp-myours__img");
+    images.forEach(img => expect(img.getAttribute("loading")).toBe("lazy"));
+    await realPointer.hover(trig(canvasElement, 3));
+    await waitFor(() =>
+      expect(images[3].getAttribute("loading")).toBe("eager")
+    );
+    // Only the photo of the tab under the pointer is promoted, and hovering opens nothing.
+    [0, 1, 2, 4].forEach(i =>
+      expect(images[i].getAttribute("loading")).toBe("lazy")
+    );
+    await expectOpenTab(canvasElement, 0);
+    await realPointer.unhover(trig(canvasElement, 3));
+    // Keyboard focus is a promote too.
+    trig(canvasElement, 4).focus();
+    await waitFor(() =>
+      expect(images[4].getAttribute("loading")).toBe("eager")
+    );
+    await expect(images[1].getAttribute("loading")).toBe("lazy");
+  },
+};
+
+// ---- behaviour: height reserve and resize (T13) ----
+const tabsMinOf = canvasElement =>
+  find(canvasElement, ".hp-myours__tabs").style.getPropertyValue(
+    "--hp-myours-tabs-min"
+  );
+// With every tab open in turn, the list is exactly as tall as the reserve (and never taller).
+const listHeights = async canvasElement => {
+  const heights = [];
+  for (let i = 0; i < 5; i += 1) {
+    if (trig(canvasElement, i).getAttribute("aria-expanded") !== "true") {
+      await userEvent.click(trig(canvasElement, i));
+    }
+    await expectOpenTab(canvasElement, i);
+    heights.push(box(find(canvasElement, ".hp-myours__list")).height);
+  }
+  return heights;
+};
+export const ReserveHeightStacked = {
+  name: "Reserve height, stacked",
+  globals: { viewport: viewport(393) },
+  render: () => <Harness html={makeItYoursHtml()} />,
+  play: async ({ canvasElement }) => {
+    await atWidth(393, 852);
+    await emulateReducedMotion(true);
+    try {
+      const reserve393 = px(tabsMinOf(canvasElement));
+      await expect(reserve393).toBeGreaterThan(5 * 44);
+      const heights = await listHeights(canvasElement);
+      heights.forEach(height => near(height, reserve393, 1));
+      // Photo and tab list keep their height whichever tab is open (the caption line may wrap differently).
+      const photo = box(
+        find(canvasElement, ".hp-myours__photo.is-active picture")
+      ).height;
+      for (const i of [3, 1, 4, 0]) {
+        await userEvent.click(trig(canvasElement, i));
+        await expectOpenTab(canvasElement, i);
+        near(
+          box(find(canvasElement, ".hp-myours__list")).height,
+          reserve393,
+          1
+        );
+        near(
+          box(find(canvasElement, ".hp-myours__photo.is-active picture"))
+            .height,
+          photo,
+          1
+        );
+      }
+      // Narrower: more wrapping, a taller reserve, still the same for every tab.
+      await atWidth(320, 700);
+      await waitFor(() =>
+        expect(px(tabsMinOf(canvasElement))).toBeGreaterThan(reserve393)
+      );
+      const reserve320 = px(tabsMinOf(canvasElement));
+      const narrow = await listHeights(canvasElement);
+      narrow.forEach(height => near(height, reserve320, 1));
+      noHorizontalOverflow();
+      // And back: the reserve follows the width.
+      await atWidth(393, 852);
+      await waitFor(() => near(px(tabsMinOf(canvasElement)), reserve393, 1));
+    } finally {
+      await emulateReducedMotion(false);
+    }
+  },
+};
+export const ResizeAcrossBreakpoint = {
+  name: "Resize across breakpoint",
+  globals: { viewport: viewport(1280) },
+  render: () => <Harness html={makeItYoursHtml()} />,
+  play: async ({ canvasElement }) => {
+    await atWidth(1280, 900);
+    await userEvent.click(trig(canvasElement, 2));
+    await expectOpenTab(canvasElement, 2);
+    const tab = MAKE_IT_YOURS.tabs[2];
+    // Desktop: desktop alt, no reserve.
+    await waitFor(() =>
+      expect(activeImg(canvasElement).getAttribute("alt")).toBe(tab.desktop.alt)
+    );
+    await expect(tabsMinOf(canvasElement)).toBe("");
+    // 768: stacked. Alt flips, the reserve appears, the open tab is unchanged.
+    await atWidth(768, 1024);
+    await waitFor(() =>
+      expect(activeImg(canvasElement).getAttribute("alt")).toBe(tab.mobile.alt)
+    );
+    await waitFor(() => expect(tabsMinOf(canvasElement)).toMatch(/^\d+px$/));
+    await expectOpenTab(canvasElement, 2);
+    // 769: side by side again.
+    await atWidth(769, 900);
+    await waitFor(() =>
+      expect(activeImg(canvasElement).getAttribute("alt")).toBe(tab.desktop.alt)
+    );
+    await waitFor(() => expect(tabsMinOf(canvasElement)).toBe(""));
+    await expectOpenTab(canvasElement, 2);
+    near(box(find(canvasElement, ".hp-myours__stage")).height, 865, 1);
+    // And once more down to a phone width.
+    await atWidth(393, 852);
+    await waitFor(() =>
+      expect(activeImg(canvasElement).getAttribute("alt")).toBe(tab.mobile.alt)
+    );
+    await expectOpenTab(canvasElement, 2);
   },
 };

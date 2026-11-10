@@ -184,15 +184,23 @@ $hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
   visibility: visible;
 }
 
+// Only horizontal padding here: vertical padding would survive `min-height: 0` and keep a closed panel 20px tall.
+// The 4px above and 16px below the text are a margin and a spacer, which collapse with the panel.
 .hp-myours__panel-inner {
   min-width: 0;
   min-height: 0;
-  padding: 4px 8px 16px ($hp-myours-bar-w + $hp-myours-bar-gap);
+  padding: 0 8px 0 ($hp-myours-bar-w + $hp-myours-bar-gap);
   overflow: hidden;
+
+  &::after {
+    content: "";
+    display: block;
+    height: 16px;
+  }
 }
 
 .hp-myours__desc {
-  margin: 0;
+  margin: 4px 0 0;
   font-size: 1.125rem; // TODO: no token (18px)
   line-height: 24px;
   overflow-wrap: anywhere;
