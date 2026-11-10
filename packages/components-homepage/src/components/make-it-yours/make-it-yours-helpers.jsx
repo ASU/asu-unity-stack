@@ -12,6 +12,8 @@ export {
   resizeViewport,
   walkRules,
 } from "../reimagine/reimagine-helpers.jsx";
+// Defined once, in the rankings-cards helpers; the vitest command lives in vitest.config.js.
+export { emulateForcedColors } from "../rankings-cards/rankings-cards-helpers.jsx";
 export * from "./make-it-yours-markup.js";
 
 // Renders the markup and runs `initMakeItYours` (unless `manual`, the server-markup state).

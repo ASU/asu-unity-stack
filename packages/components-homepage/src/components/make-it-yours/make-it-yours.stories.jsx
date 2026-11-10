@@ -1,6 +1,8 @@
 import React from "react";
 import { expect, userEvent, waitFor, within } from "storybook/test";
 import {
+  contrastRatio,
+  emulateForcedColors,
   emulateReducedMotion,
   emulateTouchInput,
   Harness,
@@ -11,6 +13,7 @@ import {
   resizeViewport,
   walkRules,
 } from "./make-it-yours-helpers.jsx";
+import { initMakeItYours } from "./make-it-yours.js";
 export default {
   title: "Homepage/Make it yours",
   parameters: {
@@ -893,6 +896,273 @@ export const ResizeAcrossBreakpoint = {
     await waitFor(() =>
       expect(activeImg(canvasElement).getAttribute("alt")).toBe(tab.mobile.alt)
     );
+    await expectOpenTab(canvasElement, 2);
+  },
+};
+
+// ---- motion, forced colors, teardown, idempotence, missing image (T14) ----
+const durations = value =>
+  value.split(",").map(part => px(part) * (/ms/.test(part) ? 0.001 : 1));
+const longest = value => Math.max(...durations(value));
+// The three things that move: the panel (rows), the title colour, and the bar (top/bottom/colour).
+const motionTargets = canvasElement => {
+  const item = find(canvasElement, ".hp-myours__item");
+  return [
+    [find(item, ".hp-myours__panel"), undefined],
+    [find(item, ".hp-myours__trigger"), undefined],
+    [item, "::before"],
+  ];
+};
+export const ReducedMotion = {
+  name: "Reduced motion",
+  globals: { viewport: viewport(1280) },
+  render: () => <Harness html={makeItYoursHtml()} />,
+  play: async ({ canvasElement }) => {
+    await atWidth(1280, 900);
+    await expect(realPointer.available).toBe(true);
+    // Control: with motion allowed, once booted, all three have a transition.
+    await waitFor(() =>
+      expect(find(canvasElement, ".hp-myours")).not.toHaveClass("is-booting")
+    );
+    motionTargets(canvasElement).forEach(([element, pseudo]) =>
+      expect(
+        longest(style(element, pseudo).transitionDuration)
+      ).toBeGreaterThan(0)
+    );
+    await emulateReducedMotion(true);
+    try {
+      motionTargets(canvasElement).forEach(([element, pseudo]) =>
+        expect(longest(style(element, pseudo).transitionDuration)).toBe(0)
+      );
+      list(canvasElement, ".hp-myours__panel").forEach(panel =>
+        expect(longest(style(panel).transitionDuration)).toBe(0)
+      );
+      // Opening is instant: the new panel is full height and the old one is gone on the next frame.
+      await userEvent.click(trig(canvasElement, 1));
+      await expectOpenTab(canvasElement, 1);
+      const panels = list(canvasElement, ".hp-myours__panel");
+      const inner = find(panels[1], ".hp-myours__panel-inner");
+      near(box(panels[1]).height, inner.scrollHeight, 1);
+      await expect(box(panels[0]).height).toBe(0);
+      await expect(style(panels[0]).visibility).toBe("hidden");
+      await expect(style(panels[1]).visibility).toBe("visible");
+    } finally {
+      await emulateReducedMotion(false);
+    }
+  },
+};
+export const ForcedColors = {
+  name: "Forced colors",
+  globals: { viewport: viewport(1280) },
+  render: () => <Harness html={makeItYoursHtml()} />,
+  play: async ({ canvasElement }) => {
+    await atWidth(1280, 900);
+    await expect(realPointer.available).toBe(true);
+    await emulateForcedColors(true);
+    try {
+      await waitFor(() =>
+        expect(window.matchMedia("(forced-colors: active)").matches).toBe(true)
+      );
+      const transparent = "rgba(0, 0, 0, 0)";
+      const head = find(canvasElement, ".hp-myours__head");
+      const tabs = find(canvasElement, ".hp-myours__tabs");
+      [head, tabs].forEach(panel => {
+        expect(style(panel).backgroundColor).not.toBe(transparent);
+      });
+      // Text on its opaque panel: heading and intro on the head, titles, copy and CTA on the tabs.
+      [
+        [find(head, ".hp-myours__heading"), head],
+        [find(head, ".hp-myours__intro"), head],
+        [trig(canvasElement, 0), tabs],
+        [trig(canvasElement, 3), tabs],
+        [find(canvasElement, ".hp-myours__desc"), tabs],
+        [find(canvasElement, ".hp-myours__cta"), tabs],
+      ].forEach(([text, panel]) =>
+        expect(
+          contrastRatio(style(text).color, style(panel).backgroundColor)
+        ).toBeGreaterThanOrEqual(4.5)
+      );
+      // The state bar is still readable in system colours: open and closed differ, neither is the canvas.
+      const items = list(canvasElement, ".hp-myours__item");
+      const open = style(items[0], "::before").backgroundColor;
+      const closed = style(items[1], "::before").backgroundColor;
+      await expect(open).not.toBe(closed);
+      await expect(open).not.toBe(style(tabs).backgroundColor);
+      await expect(closed).not.toBe(style(tabs).backgroundColor);
+      // The caption chip keeps text and fill apart.
+      const caption = find(
+        canvasElement,
+        ".hp-myours__photo.is-active figcaption"
+      );
+      expect(
+        contrastRatio(style(caption).color, style(caption).backgroundColor)
+      ).toBeGreaterThanOrEqual(4.5);
+    } finally {
+      await emulateForcedColors(false);
+    }
+  },
+};
+const pristine = canvasElement => ({
+  section: find(canvasElement, ".hp-myours"),
+  images: list(canvasElement, ".hp-myours__img"),
+});
+export const TeardownRestoresStatic = {
+  name: "Teardown restores static",
+  globals: { viewport: viewport(1280) },
+  render: () => <Harness manual html={makeItYoursHtml()} />,
+  play: async ({ canvasElement }) => {
+    await atWidth(1280, 900);
+    const { section, images } = pristine(canvasElement);
+    const dispose = initMakeItYours(canvasElement);
+    await expect(section).toHaveClass("is-enhanced");
+    await userEvent.click(trig(canvasElement, 2));
+    await expectOpenTab(canvasElement, 2);
+    trig(canvasElement, 4).focus(); // promotes image 5
+    await waitFor(() =>
+      expect(images[4].getAttribute("loading")).toBe("eager")
+    );
+    await expect(images[2].getAttribute("alt")).toBe(
+      MAKE_IT_YOURS.tabs[2].desktop.alt
+    );
+    await expect(images[2].hasAttribute("data-alt-mobile")).toBe(true);
+    await expect(
+      find(canvasElement, ".hp-myours__tabs").style.getPropertyValue(
+        "--hp-myours-tabs-min"
+      )
+    ).toBe("");
+
+    dispose();
+    await expect(section.className).toBe("hp-myours");
+    await expect(
+      canvasElement.querySelector(
+        "[aria-expanded], [aria-disabled], [inert], .is-open, .is-enhanced, .is-booting, [data-alt-mobile]"
+      )
+    ).toBeNull();
+    // First photo only, as in the server markup.
+    list(canvasElement, ".hp-myours__photo").forEach((figure, i) =>
+      expect(figure.classList.contains("is-active")).toBe(i === 0)
+    );
+    images.forEach((img, i) => {
+      expect(img.getAttribute("alt")).toBe(MAKE_IT_YOURS.tabs[i].mobile.alt);
+      expect(img.getAttribute("loading")).toBe("lazy");
+    });
+    // The whole markup is back to the static string.
+    await expect(
+      normalize(
+        canvasElement.firstElementChild?.innerHTML ?? canvasElement.innerHTML
+      )
+    ).toBe(normalize(makeItYoursHtml()));
+    // Listeners are gone: a click changes nothing.
+    await userEvent.click(trig(canvasElement, 1));
+    await new Promise(resolve => setTimeout(resolve, 30));
+    await expect(trig(canvasElement, 1).hasAttribute("aria-expanded")).toBe(
+      false
+    );
+    // And the section can be wired again.
+    const again = initMakeItYours(canvasElement);
+    await expectOpenTab(canvasElement, 0);
+    again();
+  },
+};
+export const IdempotentInit = {
+  name: "Idempotent init",
+  globals: { viewport: viewport(1280) },
+  render: () => <Harness manual html={makeItYoursHtml()} />,
+  play: async ({ canvasElement }) => {
+    await atWidth(1280, 900);
+    const first = initMakeItYours(canvasElement);
+    const second = initMakeItYours(canvasElement);
+    const third = initMakeItYours(canvasElement.ownerDocument);
+    try {
+      const section = find(canvasElement, ".hp-myours");
+      // Boot is silent: transitions are off while `is-booting` is set (design doc D6).
+      if (section.classList.contains("is-booting")) {
+        motionTargets(canvasElement).forEach(([element, pseudo]) =>
+          expect(longest(style(element, pseudo).transitionDuration)).toBe(0)
+        );
+      }
+      await expect(
+        list(canvasElement, ".hp-myours__item.is-open")
+      ).toHaveLength(1);
+      // One handler: one attribute write per state change.
+      const target = trig(canvasElement, 1);
+      let writes = 0;
+      const observer = new MutationObserver(records => {
+        writes += records.length;
+      });
+      observer.observe(target, {
+        attributes: true,
+        attributeFilter: ["aria-expanded"],
+      });
+      await userEvent.click(target);
+      await expectOpenTab(canvasElement, 1);
+      await new Promise(resolve => setTimeout(resolve, 30));
+      observer.disconnect();
+      await expect(writes).toBe(1);
+      // A section added later is wired by a later call; the old one is left alone.
+      const extra = document.createElement("div");
+      extra.innerHTML = makeItYoursHtml({ id: "hp-myours-two" });
+      canvasElement.appendChild(extra);
+      const late = initMakeItYours(canvasElement);
+      const extraSection = extra.querySelector(".hp-myours");
+      await expect(extraSection).toHaveClass("is-enhanced");
+      await expect(
+        extraSection.querySelector(".hp-myours__trigger")
+      ).toHaveAttribute("aria-expanded", "true");
+      await expect(target).toHaveAttribute("aria-expanded", "true");
+      await expect(list(section, ".hp-myours__item.is-open")).toHaveLength(1);
+      late();
+      await expect(extraSection).not.toHaveClass("is-enhanced");
+      await expect(target).toHaveAttribute("aria-expanded", "true");
+    } finally {
+      third();
+      second();
+      first();
+    }
+  },
+};
+export const MissingImageFallback = {
+  name: "Missing image fallback",
+  globals: { viewport: viewport(1280) },
+  render: () => {
+    const tabs = MAKE_IT_YOURS.tabs.map(tab => ({
+      ...tab,
+      desktop: {
+        ...tab.desktop,
+        sources: tab.desktop.sources.map(source => ({
+          ...source,
+          src: `img/make-it-yours/missing-${source.width}.webp`,
+        })),
+      },
+      mobile: { ...tab.mobile, src: "img/make-it-yours/missing-mobile.webp" },
+    }));
+    return (
+      <Harness html={makeItYoursHtml({ data: { ...MAKE_IT_YOURS, tabs } })} />
+    );
+  },
+  play: async ({ canvasElement }) => {
+    await atWidth(1280, 900);
+    const img = activeImg(canvasElement);
+    img.loading = "eager";
+    await waitFor(() =>
+      expect(img.complete && img.naturalWidth === 0).toBe(true)
+    );
+    // No photo: the stage fill is the dark token colour, so every text stays readable.
+    const stage = find(canvasElement, ".hp-myours__stage");
+    const fill = style(stage).backgroundColor;
+    await expect(fill).not.toBe("rgba(0, 0, 0, 0)");
+    [
+      find(canvasElement, ".hp-myours__heading"),
+      find(canvasElement, ".hp-myours__intro"),
+      trig(canvasElement, 0),
+      trig(canvasElement, 3),
+      find(canvasElement, ".hp-myours__desc"),
+      find(canvasElement, ".hp-myours__cta"),
+    ].forEach(text =>
+      expect(contrastRatio(style(text).color, fill)).toBeGreaterThanOrEqual(4.5)
+    );
+    // The section still works without its photos.
+    await userEvent.click(trig(canvasElement, 2));
     await expectOpenTab(canvasElement, 2);
   },
 };
