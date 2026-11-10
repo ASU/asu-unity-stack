@@ -319,7 +319,155 @@ $hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
   }
 }
 
-// ---- Forced colors: system colors, opaque panels ----
+@media (min-width: $hp-myours-bp) {
+  .hp-myours {
+    --hp-myours-inset-r: max(
+      var(--hp-myours-inset),
+      calc((100% - #{$hp-myours-frame}) / 2 + var(--hp-myours-inset))
+    );
+  }
+
+  .hp-myours__stage {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) min(
+        #{$hp-myours-col-w},
+        calc(100% - 48px)
+      );
+    grid-template-rows: auto 1fr;
+    box-sizing: border-box;
+    height: $hp-myours-h;
+    padding-right: var(--hp-myours-inset-r);
+    overflow: hidden;
+    background: $asu-gray-1; // behind the photo: a missing image keeps the white text readable
+    color: $uds-color-base-white;
+  }
+
+  .hp-myours__photos {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hp-myours__photo {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hp-myours__photo picture,
+  .hp-myours__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hp-myours__img {
+    object-fit: cover;
+    object-position: var(--hp-myours-focus, 50% 50%);
+  }
+
+  .hp-myours__caption-text--desktop {
+    display: inline;
+  }
+
+  .hp-myours__caption-text--mobile {
+    display: none;
+  }
+
+  // The chip: bottom-left of the photo, anchored to the 1920px frame above 1920px.
+  .hp-myours__caption {
+    position: absolute;
+    bottom: 48px;
+    left: max(48px, calc((100% - #{$hp-myours-frame}) / 2 + 48px));
+    box-sizing: border-box;
+    max-width: 420px;
+    padding: 8px 12px;
+    border: 1px solid $hp-myours-chip-edge;
+    border-radius: 4px;
+    background: $hp-myours-chip-bg;
+    color: $uds-color-base-white;
+    font-size: $uds-size-font-small;
+    line-height: 1.25;
+  }
+
+  .hp-myours__head,
+  .hp-myours__tabs {
+    position: relative;
+    z-index: 2;
+    grid-column: 2;
+    min-width: 0;
+    padding: 0;
+    background: none;
+    color: $uds-color-base-white;
+  }
+
+  .hp-myours__head {
+    grid-row: 1;
+    padding-top: 80px;
+    text-align: left;
+  }
+
+  .hp-myours__heading {
+    font-size: 5.5rem; // TODO: no token (88px)
+    white-space: nowrap;
+  }
+
+  // The swash runs under "it yours": measured from the 1920 screenshot (266px wide, 91px left of "yours" at 88px).
+  .hp-myours__heading--lead .hp-myours__scrib {
+    --scrib-left: -1.03em;
+    --scrib-width: 3.02em;
+
+    max-width: none;
+  }
+
+  .hp-myours__intro {
+    max-width: calc(100% - 64px);
+    margin: $uds-size-spacing-3 auto 0;
+    text-align: center;
+  }
+
+  .hp-myours__tabs {
+    grid-row: 2;
+    align-self: start;
+    margin-top: 150px; // title 1 sits about 450px from the top of the stage
+  }
+
+  .hp-myours__list {
+    min-height: 0;
+  }
+
+  .hp-myours__item::before {
+    left: -($hp-myours-bar-w + $hp-myours-bar-gap);
+  }
+
+  .hp-myours__trigger {
+    padding-left: 0;
+    color: $asu-gray-6;
+    font-size: 1.375rem; // TODO: no token (22px)
+  }
+
+  .hp-myours__panel-inner {
+    padding-left: 0;
+  }
+
+  .hp-myours__desc,
+  .hp-myours__cta {
+    font-size: $uds-size-font-medium;
+  }
+
+  .hp-myours__item.is-open .hp-myours__trigger,
+  .hp-myours:not(.is-enhanced) .hp-myours__trigger {
+    color: $uds-color-base-white;
+  }
+
+  // The no-JS baseline on desktop may exceed 865px (design doc Q5).
+  .hp-myours:not(.is-enhanced) .hp-myours__stage {
+    height: auto;
+    min-height: $hp-myours-h;
+  }
+}
+
+// ---- Forced colors: system colors, opaque panels (last, so it wins over the desktop `background: none`) ----
 
 @media (forced-colors: active) {
   .hp-myours__head,

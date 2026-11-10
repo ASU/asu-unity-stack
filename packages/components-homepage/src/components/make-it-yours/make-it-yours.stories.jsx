@@ -4,7 +4,9 @@ import {
   Harness,
   MAKE_IT_YOURS,
   makeItYoursHtml,
+  realPointer,
   resizeViewport,
+  walkRules,
 } from "./make-it-yours-helpers.jsx";
 export default {
   title: "Homepage/Make it yours",
@@ -247,5 +249,187 @@ export const NoScriptPhone393 = {
       expect(trigger.hasAttribute("aria-expanded")).toBe(false)
     );
     noHorizontalOverflow();
+  },
+};
+
+// ---- side by side (>= 769) ----
+const desktopParts = canvasElement => ({
+  ...parts(canvasElement),
+  head: find(canvasElement, ".hp-myours__head"),
+  tabs: find(canvasElement, ".hp-myours__tabs"),
+  photos: find(canvasElement, ".hp-myours__photos"),
+});
+const FRAME = 1920;
+// Batch 1 only: `initMakeItYours` is still a stub, so the section stays in the no-JS baseline (every panel open,
+// stage taller than 865px). This applies the same boot classes the real script sets (design doc section 9) so the
+// 865px geometry can be asserted. It is a no-op once the real script has enhanced the section (T9).
+const bootStandIn = canvasElement => {
+  const section = find(canvasElement, ".hp-myours");
+  if (section.classList.contains("is-enhanced")) return;
+  section.classList.add("is-enhanced");
+  find(canvasElement, ".hp-myours__item").classList.add("is-open");
+};
+// Geometry shared by every desktop width (design doc 12.1): 865px stage, photo fills it, chip 48px in from the
+// bottom and from the left edge of the 1920px frame, heading 88px.
+const expectDesktopStage = (canvasElement, width) => {
+  const p = desktopParts(canvasElement);
+  expect(style(p.stage).display).toBe("grid");
+  near(box(p.stage).height, 865, 1);
+  near(box(p.stage).width, width, 1);
+  near(box(p.photos).width, width, 1);
+  near(box(p.img).width, width, 1);
+  near(box(p.img).height, 865, 1);
+  expect(style(p.img).objectFit).toBe("cover");
+  near(px(style(p.heading).fontSize), 88, 0);
+  near(box(p.stage).bottom - box(p.caption).bottom, 48, 1);
+  near(box(p.caption).left, Math.max(48, (width - FRAME) / 2 + 48), 1);
+  noHorizontalOverflow();
+  return p;
+};
+const desktopStory = (name, width, column) => ({
+  name,
+  globals: { viewport: viewport(width) },
+  render: () => <Harness html={makeItYoursHtml()} />,
+  play: async ({ canvasElement }) => {
+    await atWidth(width, 1000);
+    bootStandIn(canvasElement);
+    const p = expectDesktopStage(canvasElement, width);
+    if (column) {
+      expect(box(p.tabs).left).toBeGreaterThanOrEqual(column[0]);
+      expect(box(p.tabs).left).toBeLessThanOrEqual(column[1]);
+      near(box(p.tabs).width, 548, 1);
+    }
+    // The content column sits right of centre, over the photo.
+    expect(box(p.tabs).left).toBeGreaterThan(width / 2 - 1);
+  },
+});
+export const Boundary769 = {
+  name: "Boundary 769",
+  globals: { viewport: viewport(769) },
+  render: () => <Harness html={makeItYoursHtml()} />,
+  play: async ({ canvasElement }) => {
+    await atWidth(769, 900);
+    bootStandIn(canvasElement);
+    await expect(window.matchMedia("(min-width: 769px)").matches).toBe(true);
+    const p = desktopParts(canvasElement);
+    await expect(style(p.stage).display).toBe("grid");
+    near(box(p.stage).height, 865, 1);
+    await waitFor(() =>
+      expect(p.img.currentSrc).toMatch(/design-your-degree(-\d+)?\.webp$/)
+    );
+    await expect(p.img.currentSrc).not.toMatch(/-mobile\.webp$/);
+    noHorizontalOverflow();
+  },
+};
+export const Desktop1280 = desktopStory("Desktop 1280", 1280, [640, 690]);
+export const Large1920 = desktopStory("Large 1920", 1920, [1250, 1340]);
+export const Wide2500 = desktopStory("Wide 2500", 2500);
+export const Ultra3934 = desktopStory("Ultra-wide 3934", 3934);
+export const NoScript = {
+  name: "No script",
+  globals: { viewport: viewport(1280) },
+  render: () => <Harness manual html={makeItYoursHtml()} />,
+  play: async ({ canvasElement }) => {
+    await atWidth(1280, 900);
+    const p = desktopParts(canvasElement);
+    await expect(find(canvasElement, ".hp-myours")).not.toHaveClass(
+      "is-enhanced"
+    );
+    // Every panel is open and the stage grows past 865px if it has to.
+    list(canvasElement, ".hp-myours__panel-inner").forEach(inner =>
+      expect(box(inner).height).toBeGreaterThan(0)
+    );
+    expect(box(p.stage).height).toBeGreaterThanOrEqual(865 - 1);
+    const shown = list(canvasElement, ".hp-myours__photo").filter(
+      figure => style(figure).display !== "none"
+    );
+    await expect(shown).toHaveLength(1);
+    await expect(shown[0]).toHaveClass("is-active");
+    p.triggers.forEach(trigger =>
+      expect(trigger.hasAttribute("aria-expanded")).toBe(false)
+    );
+  },
+};
+
+// ---- CTA and heading states ----
+const WHITE = "rgb(255, 255, 255)";
+// Counts the class, attribute and pseudo-class parts of one selector (enough to compare two :visited rules).
+const classWeight = selector => (selector.match(/[.[]|:(?!:)/g) || []).length;
+export const CtaLinkStates = {
+  name: "CTA link states",
+  globals: { viewport: viewport(1280) },
+  render: () => <Harness html={makeItYoursHtml()} />,
+  play: async ({ canvasElement }) => {
+    await atWidth(1280, 900);
+    const cta = find(canvasElement, ".hp-myours__cta");
+    await expect(style(cta).color).toBe(WHITE);
+    await expect(style(cta).borderBottomColor).toBe(WHITE);
+    await expect(style(cta).borderBottomWidth).toBe("1px");
+    await expect(style(find(cta, ".hp-myours__cta-icon") ?? cta).color).toBe(
+      WHITE
+    );
+    // Focus
+    cta.focus();
+    await expect(style(cta).color).toBe(WHITE);
+    cta.blur();
+    // Hover: still white, the underline goes away.
+    if (realPointer.available) {
+      await realPointer.hover(cta);
+      await waitFor(() =>
+        expect(style(cta).borderBottomColor).toBe("rgba(0, 0, 0, 0)")
+      );
+      await expect(style(cta).color).toBe(WHITE);
+      await realPointer.unhover(cta);
+    }
+    // :visited and :active cannot be forced in a test; the rules must exist, be white and outrank the theme's.
+    const states = { visited: [], active: [], other: [] };
+    walkRules((rule, conditions) => {
+      // Forced colors deliberately switches to system colors.
+      if (conditions.some(c => /forced-colors/.test(c))) return;
+      rule.selectorText.split(",").forEach(raw => {
+        const selector = raw.trim();
+        const white =
+          rule.style.color === "rgb(255, 255, 255)" ||
+          rule.style.color === "var(--bs-white)" ||
+          /^#fff(fff)?$/i.test(rule.style.color) ||
+          rule.style.color === "white";
+        if (/hp-myours__cta/.test(selector) && /:visited$/.test(selector)) {
+          states.visited.push({ selector, white });
+        } else if (
+          /hp-myours__cta/.test(selector) &&
+          /:active$/.test(selector)
+        ) {
+          states.active.push({ selector, white });
+        } else if (/(^|[\s>+~])a:visited$/.test(selector) && rule.style.color) {
+          states.other.push({ selector, weight: classWeight(selector) });
+        }
+      });
+    });
+    await expect(states.visited.length).toBeGreaterThan(0);
+    states.visited.forEach(rule => expect(rule.white).toBe(true));
+    await expect(states.active.length).toBeGreaterThan(0);
+    states.active.forEach(rule => expect(rule.white).toBe(true));
+    const ours = Math.max(...states.visited.map(r => classWeight(r.selector)));
+    states.other.forEach(rule => expect(ours).toBeGreaterThan(rule.weight));
+  },
+};
+export const HeadingUnderline = {
+  name: "Heading underline",
+  globals: { viewport: viewport(393) },
+  render: () => <Harness html={makeItYoursHtml()} />,
+  play: async ({ canvasElement }) => {
+    // Stacked: the swash sits under "yours" only (base underline-mark values).
+    await atWidth(393, 852);
+    let p = parts(canvasElement);
+    near(box(p.scrib).left - box(p.host).left, box(p.host).width * 0.02, 2);
+    near(box(p.scrib).width, box(p.host).width, 2);
+    // Desktop: it runs from 1.03em left of "yours", 3.02em wide, under "it yours".
+    await atWidth(1280, 900);
+    bootStandIn(canvasElement);
+    p = parts(canvasElement);
+    const em = px(style(p.host).fontSize);
+    near(box(p.host).left - box(p.scrib).left, 1.03 * em, 2);
+    near(box(p.scrib).width, 3.02 * em, 2);
+    expect(box(p.scrib).left).toBeLessThan(box(p.lead).right);
   },
 };
