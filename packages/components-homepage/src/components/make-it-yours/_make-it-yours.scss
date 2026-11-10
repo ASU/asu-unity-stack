@@ -14,7 +14,10 @@ $hp-myours-col-w: 548px;
 $hp-myours-frame: 1920px;
 $hp-myours-row: 44px; // touch target
 $hp-myours-bar-w: 4px;
-$hp-myours-bar-gap: 24px;
+$hp-myours-bar-inset: calc(#{$hp-myours-bar-w} + #{$uds-size-spacing-3}); // bar plus the 24px gap to the text
+$hp-myours-tabs-top: 150px; // gap above the tab list: title 1 sits about 450px from the top of the stage
+$hp-myours-chip-w: 420px; // caption chip max width, from the mockups
+$hp-myours-scrim-feather: 96px; // the scrim fades in over 96px on each side of the content column
 $hp-myours-ease: cubic-bezier(0.4, 0, 0.2, 1);
 $hp-myours-chip-bg: rgba($asu-gray-1, 0.7);
 $hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
@@ -33,7 +36,7 @@ $hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
 }
 
 .hp-myours {
-  --hp-myours-inset: clamp(48px, 5vw, 80px);
+  --hp-myours-inset: clamp(#{$uds-size-spacing-6}, 5vw, #{$uds-size-spacing-10});
 
   position: relative;
   background: $uds-color-base-white;
@@ -56,7 +59,7 @@ $hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
   ); // TODO: no token (56px at 393, 63px at 768)
   line-height: 1;
   font-weight: $uds-font-weight-bold;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.03em; // TODO: no token (the mockups' tight display tracking)
   text-align: inherit; // the theme's $heading-text-align is left; centred stacked, left on desktop (A2.2)
 }
 
@@ -114,8 +117,8 @@ $hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
   &::before {
     content: "";
     position: absolute;
-    top: 8px;
-    bottom: 8px;
+    top: $uds-size-spacing-1;
+    bottom: $uds-size-spacing-1;
     left: 0;
     width: $hp-myours-bar-w;
     background: $asu-gray-3;
@@ -147,7 +150,7 @@ $hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
   width: 100%;
   min-height: $hp-myours-row;
   margin: 0;
-  padding: 8px 0 8px ($hp-myours-bar-w + $hp-myours-bar-gap);
+  padding: $uds-size-spacing-1 0 $uds-size-spacing-1 $hp-myours-bar-inset;
   border: 0;
   background: none;
   color: $asu-gray-4;
@@ -192,13 +195,13 @@ $hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
 .hp-myours__panel-inner {
   min-width: 0;
   min-height: 0;
-  padding: 0 8px 0 ($hp-myours-bar-w + $hp-myours-bar-gap);
+  padding: 0 $uds-size-spacing-1 0 $hp-myours-bar-inset;
   overflow: hidden;
 
   &::after {
     content: "";
     display: block;
-    height: 16px;
+    height: $uds-size-spacing-2;
   }
 }
 
@@ -234,11 +237,13 @@ $hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: $uds-size-spacing-1;
   margin-top: $uds-size-spacing-2;
   border-bottom: 1px solid currentcolor;
   font-size: 1.125rem; // TODO: no token (18px stacked, 16px desktop)
   line-height: 24px;
+  // !important: no host-page link rule (Drupal body text, editor styles) may add a second underline; the 1px
+  // border is the underline and it disappears on hover.
   text-decoration: none !important;
 
   // 44px hit area around the 24px line.
@@ -346,7 +351,7 @@ $hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
     display: grid;
     grid-template-columns: minmax(0, 1fr) min(
         #{$hp-myours-col-w},
-        calc(100% - 48px)
+        calc(100% - #{$uds-size-spacing-6})
       );
     grid-template-rows: auto 1fr;
     box-sizing: border-box;
@@ -390,11 +395,14 @@ $hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
   // The chip: bottom-left of the photo, anchored to the 1920px frame above 1920px.
   .hp-myours__caption {
     position: absolute;
-    bottom: 48px;
-    left: max(48px, calc((100% - #{$hp-myours-frame}) / 2 + 48px));
+    bottom: $uds-size-spacing-6;
+    left: max(
+      #{$uds-size-spacing-6},
+      calc((100% - #{$hp-myours-frame}) / 2 + #{$uds-size-spacing-6})
+    );
     box-sizing: border-box;
-    max-width: 420px;
-    padding: 8px 12px;
+    max-width: $hp-myours-chip-w;
+    padding: $uds-size-spacing-1 12px; // TODO: no token (12px)
     border: 1px solid $hp-myours-chip-edge;
     border-radius: 4px;
     background: $hp-myours-chip-bg;
@@ -412,14 +420,15 @@ $hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
     z-index: 1;
     top: 0;
     bottom: 0;
-    right: calc(var(--hp-myours-inset-r) - 96px);
-    width: calc(#{$hp-myours-col-w} + 192px);
+    right: calc(var(--hp-myours-inset-r) - #{$hp-myours-scrim-feather});
+    width: calc(#{$hp-myours-col-w} + 2 * #{$hp-myours-scrim-feather});
     pointer-events: none;
     background: linear-gradient(
       to right,
       rgba($asu-gray-1, 0),
-      rgba($asu-gray-1, $hp-myours-scrim-alpha) 96px,
-      rgba($asu-gray-1, $hp-myours-scrim-alpha) calc(100% - 96px),
+      rgba($asu-gray-1, $hp-myours-scrim-alpha) $hp-myours-scrim-feather,
+      rgba($asu-gray-1, $hp-myours-scrim-alpha)
+        calc(100% - #{$hp-myours-scrim-feather}),
       rgba($asu-gray-1, 0)
     );
     @media (forced-colors: active) {
@@ -439,7 +448,7 @@ $hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
 
   .hp-myours__head {
     grid-row: 1;
-    padding-top: 80px;
+    padding-top: $uds-size-spacing-10; // 80px
     text-align: left;
   }
 
@@ -457,7 +466,7 @@ $hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
   }
 
   .hp-myours__intro {
-    max-width: calc(100% - 64px);
+    max-width: calc(100% - #{$uds-size-spacing-8});
     margin: $uds-size-spacing-3 auto 0;
     text-align: center;
   }
@@ -465,7 +474,7 @@ $hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
   .hp-myours__tabs {
     grid-row: 2;
     align-self: start;
-    margin-top: 150px; // title 1 sits about 450px from the top of the stage
+    margin-top: $hp-myours-tabs-top;
   }
 
   .hp-myours__list {
@@ -473,7 +482,7 @@ $hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
   }
 
   .hp-myours__item::before {
-    left: -($hp-myours-bar-w + $hp-myours-bar-gap);
+    left: calc(-1 * #{$hp-myours-bar-inset});
   }
 
   .hp-myours__trigger {
