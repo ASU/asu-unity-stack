@@ -100,9 +100,11 @@ It measures white text over each photo at 769, 1024, 1280, 1920, 2500 and 3934 p
 - GA: each trigger and CTA carries `data-ga-*` attributes (`data-ga-component="homepage make it yours"`, `data-ga-section="make it yours"`). The event names and values are provisional until the data team confirms them (TODO in the markup module).
 - Clicking the already open trigger is swallowed in the capture phase (`preventDefault` and `stopPropagation`), so a document-level GA listener never sees it. An open-header click is not an event.
 - The script defers the state change by one task, so a document click reader still sees the old state during the click.
+- Teardown: `initMakeItYours` returns a function that removes its window listeners (click, resize fallback), the resize observer and any pending frame. Keep the returned function per section (for example in a `WeakMap` keyed by the element) and call it in `Drupal.behaviors.<name>.detach` when the section is removed (AJAX, Layout Builder previews). Otherwise the window listener keeps the detached section in memory.
 
 ## Known limits
 
 - R2: with JS off on a desktop screen, tabs 1, 3 and 5 show the mobile alt, which describes a different crop. A `<picture>` has one `alt`. Captions are not affected.
 - D1: the desktop heading swash is calibrated for a one-word lead-in ("it") before the underlined word ("yours"). A longer phrase gives a swash that is too short on desktop.
 - Without JS on desktop all five panels are open, so the section can be taller than 865px.
+- LTR only: the layout uses physical directions (`left`, `right`, `padding-left`, `text-align: left`). A right-to-left page would need logical properties.

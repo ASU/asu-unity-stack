@@ -7,6 +7,11 @@ SRC="${1:-../../.intake}"
 OUT="src/img/make-it-yours"
 for tool in cwebp webpinfo; do command -v "$tool" >/dev/null 2>&1 || { echo "$tool not found: brew install webp" >&2; exit 1; }; done
 mkdir -p "$OUT"
+# The sources must live outside the output folder, or the originals would be copied over themselves.
+if [ "$(cd "$SRC" && pwd -P)" = "$(cd "$OUT" && pwd -P)" ]; then
+  echo "source and output are the same folder ($OUT): copy the originals elsewhere first (see the README)" >&2
+  exit 1
+fi
 
 # Each slug maps to the .intake/ file of the same name (design doc D9: names were fixed at the source).
 SLUGS=(
