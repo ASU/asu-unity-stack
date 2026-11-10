@@ -45,6 +45,20 @@ JS adds these. None of them are in the static markup.
 
 Keyboard: Tab visits every trigger and the open CTA. Arrow Up/Down, Home and End move focus between triggers and never open one. Enter or Space opens.
 
+## Field limits (Stage B)
+
+The desktop stage is a fixed 865px and clips overflow, and the heading is one 88px line, so editor text has hard limits (amendment A2.1). They are `MAKE_IT_YOURS_LIMITS` in `make-it-yours-markup.js`; the helper does not enforce them, Stage B validates the fields.
+
+| Field | Max characters |
+|---|---|
+| Section heading | 13 ("Make it yours" is 13) |
+| Intro | 280 |
+| Tab title | 40 |
+| Tab description | 250 |
+| CTA label | 40 |
+
+Measured in Chromium against this build, with every field at the limit at the same time (filler made from the real copy), at 769, 1280 and 3934 px (the content column is 548px at all three): the open tab ends 26px above the stage bottom (24px required), every title and CTA stays on one line, nothing is clipped. Longer text can overflow the stage and hide the last CTA. The `MaxLengthContent` story re-checks this at 769 and 1280. The stacked layout grows with its content and needs no extra limit.
+
 ## Images
 
 25 files in `src/img/make-it-yours/`: per tab, one original width, three desktop tiers (`-1280`, `-1920`, `-2560`) and one 900x650 mobile crop.

@@ -80,6 +80,18 @@ const figureHtml = (tab, i) => {
   return `<figure class="hp-myours__photo${i === 0 ? " is-active" : ""}" data-tab="${escape(tab.slug)}" style="--hp-myours-focus: ${focusOf(desktop.focus)}"><picture><source media="${DESKTOP_MEDIA}" sizes="100vw" srcset="${srcset}"><img class="hp-myours__img" src="${escape(mobile.src)}" width="900" height="650" alt="${escape(mobile.alt)}" data-alt-desktop="${escape(desktop.alt)}" loading="lazy" decoding="async"></picture><figcaption class="hp-myours__caption"><span class="hp-myours__caption-text hp-myours__caption-text--desktop">${escape(desktop.caption)}</span><span class="hp-myours__caption-text hp-myours__caption-text--mobile">${escape(mobile.caption)}</span></figcaption></figure>`;
 };
 
+// Editor limits (characters) for Stage B, measured so the worst case still fits the fixed 865px desktop stage
+// (Amendment A2.1): all five tabs at these lengths, at 769, 1280 and 3934, leave the open tab at least 24px above the
+// stage bottom, keep each CTA and title on one line and the heading unclipped. The `MaxLengthContent` story checks
+// them. The helper does not enforce them; Stage B validates the fields.
+export const MAKE_IT_YOURS_LIMITS = {
+  heading: 13,
+  intro: 280,
+  title: 40,
+  description: 250,
+  ctaLabel: 40,
+};
+
 // Desktop sources: the "-1280" tier is at least 1280 wide AND at least 865px tall (the stage height), so wide
 // photos get a wider file (1330w, 1873w; scripts/make-it-yours-images.sh). The descriptor is the real width.
 export const MAKE_IT_YOURS = {

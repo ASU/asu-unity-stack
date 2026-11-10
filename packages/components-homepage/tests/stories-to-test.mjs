@@ -178,4 +178,5 @@ export const storiesToTest = [
   "homepage-make-it-yours--ultra-3934",
   "homepage-make-it-yours--tab-5-open",
   "homepage-make-it-yours--focus-visible",
+  "homepage-make-it-yours--max-length-content",
 ];

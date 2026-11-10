@@ -7,6 +7,7 @@ import {
   emulateTouchInput,
   Harness,
   MAKE_IT_YOURS,
+  MAKE_IT_YOURS_LIMITS,
   makeItYoursHtml,
   realKeyboard,
   realPointer,
@@ -1338,6 +1339,85 @@ export const DesktopPhotosSharp = {
     expect(chosen.naturalHeight).toBeGreaterThanOrEqual(
       Math.floor(box(img).height * window.devicePixelRatio)
     );
+  },
+};
+// Amendment A2.1 (review F2): every field at its Stage B limit, built from the real copy so it wraps like copy.
+const atLength = (source, length) => {
+  let text = source;
+  while (text.length < length) text = `${text} ${source}`;
+  text = text.slice(0, length);
+  return text.endsWith(" ") ? `${text.slice(0, -1)}s` : text;
+};
+const maxLengthData = (limits = MAKE_IT_YOURS_LIMITS) => {
+  const copy = MAKE_IT_YOURS.tabs.map(tab => tab.description).join(" ");
+  const titles = MAKE_IT_YOURS.tabs.map(tab => tab.title).join(" ");
+  const labels = MAKE_IT_YOURS.tabs.map(tab => tab.cta.label).join(" ");
+  // Each tab starts the filler at a different word, so the five tabs wrap differently.
+  const from = (text, i) => {
+    const words = text.split(" ");
+    return [...words.slice(i * 3), ...words.slice(0, i * 3)].join(" ");
+  };
+  return {
+    ...MAKE_IT_YOURS,
+    heading: atLength(MAKE_IT_YOURS.heading, limits.heading),
+    intro: atLength(`${MAKE_IT_YOURS.intro} ${copy}`, limits.intro),
+    tabs: MAKE_IT_YOURS.tabs.map((tab, i) => ({
+      ...tab,
+      title: atLength(from(titles, i), limits.title),
+      description: atLength(from(copy, i), limits.description),
+      cta: { ...tab.cta, label: atLength(from(labels, i), limits.ctaLabel) },
+    })),
+  };
+};
+const expectFitsStage = async canvasElement => {
+  const stage = find(canvasElement, ".hp-myours__stage");
+  const heading = find(canvasElement, ".hp-myours__heading");
+  const items = list(canvasElement, ".hp-myours__item");
+  near(box(stage).height, 865, 1);
+  expect(heading.scrollWidth).toBeLessThanOrEqual(heading.clientWidth);
+  for (let i = 0; i < 5; i += 1) {
+    if (trig(canvasElement, i).getAttribute("aria-expanded") !== "true") {
+      await userEvent.click(trig(canvasElement, i));
+    }
+    await expectOpenTab(canvasElement, i);
+    const cta = items[i].querySelector(".hp-myours__cta");
+    const inner = items[i].querySelector(".hp-myours__panel-inner");
+    await waitFor(() =>
+      expect(box(cta).bottom).toBeLessThanOrEqual(box(stage).bottom - 24)
+    );
+    expect(box(items[i]).bottom).toBeLessThanOrEqual(box(stage).bottom - 24);
+    expect(stage.scrollHeight).toBeLessThanOrEqual(stage.clientHeight);
+    expect(inner.scrollHeight).toBeLessThanOrEqual(inner.clientHeight + 1);
+    // One line: the CTA is its 24px line plus the 1px underline; every title is one 44px row.
+    expect(box(cta).height).toBeLessThanOrEqual(26);
+    list(canvasElement, ".hp-myours__trigger").forEach(trigger =>
+      near(box(trigger).height, 44, 1)
+    );
+  }
+};
+export const MaxLengthContent = {
+  name: "Max length content",
+  globals: { viewport: viewport(1280) },
+  render: () => <Harness html={makeItYoursHtml({ data: maxLengthData() })} />,
+  play: async ({ canvasElement }) => {
+    const data = maxLengthData();
+    await expect(data.heading).toHaveLength(MAKE_IT_YOURS_LIMITS.heading);
+    await expect(data.intro).toHaveLength(MAKE_IT_YOURS_LIMITS.intro);
+    data.tabs.forEach(tab => {
+      expect(tab.title).toHaveLength(MAKE_IT_YOURS_LIMITS.title);
+      expect(tab.description).toHaveLength(MAKE_IT_YOURS_LIMITS.description);
+      expect(tab.cta.label).toHaveLength(MAKE_IT_YOURS_LIMITS.ctaLabel);
+    });
+    await emulateReducedMotion(true);
+    try {
+      for (const width of [769, 1280]) {
+        await atWidth(width, 1000);
+        await expectFitsStage(canvasElement);
+        noHorizontalOverflow();
+      }
+    } finally {
+      await emulateReducedMotion(false);
+    }
   },
 };
 export const Tab2Open = openTabStory("Tab 2 open", 1);
