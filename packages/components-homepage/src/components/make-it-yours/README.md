@@ -47,16 +47,20 @@ Keyboard: Tab visits every trigger and the open CTA. Arrow Up/Down, Home and End
 
 ## Images
 
-25 files in `src/img/make-it-yours/`: per tab, one original width, 1280, 1920, 2560 and one 900x650 mobile crop.
+25 files in `src/img/make-it-yours/`: per tab, one original width, three desktop tiers (`-1280`, `-1920`, `-2560`) and one 900x650 mobile crop.
 
-Regenerate them from the approved photos in `.intake/`:
+No desktop file is shorter than the 865px stage, because the photo covers the stage and a shorter file would be upscaled (soft). Each tier is the tier width or the narrowest width that is 865px tall, whichever is larger. For the current photos that makes the `-1280` tier 1330 wide for tabs 1 and 2 and 1873 wide for tab 4 (a very wide photo); every other tier is its nominal width. The `width` in `desktop.sources` (the `w` descriptor) is the file's real width, so if a photo changes, update it from the script's output. Stage B image styles need the same rule (scale to the tier width, but never below 865px tall).
+
+Regenerate them from the approved photos:
 
 ```sh
-brew install webp   # once: provides cwebp
+brew install webp   # once: provides cwebp and webpinfo
 yarn workspace @asu/components-homepage images:make-it-yours
 ```
 
-The slug is the source file name (`design-your-degree.webp`, `design-your-degree-mobile.webp`, and so on). The script does no renaming or swapping, so if a photo changes, replace the file in `.intake/` under the same name and re-run it. `yarn build` copies `src/img` to `dist/img`.
+The sources are not in git. `.intake/` at the repo root is git-ignored and local (user-supplied intake assets): the approved originals (`<slug>.webp`) and mobile crops (`<slug>-mobile.webp`) supplied for WWWCMS-237 are placed there by hand. The committed `<slug>.webp` and `<slug>-mobile.webp` in `src/img/make-it-yours/` are byte-for-byte copies of them, so they are the source of record on a fresh clone: copy them to a folder outside `src/img` and pass it (`bash scripts/make-it-yours-images.sh /path/to/folder`). Do not point the script at `src/img/make-it-yours` itself; it would copy files over themselves.
+
+The slug is the source file name (`design-your-degree.webp`, `design-your-degree-mobile.webp`, and so on). The script does no renaming or swapping, so if a photo changes, replace the file under the same name and re-run it. `yarn build` copies `src/img` to `dist/img`.
 
 ## Focal point
 

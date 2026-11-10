@@ -1298,6 +1298,48 @@ const openTabStory = (name, index) => ({
     await expect(visibleCaption(canvasElement)).toBe(tab.desktop.caption);
   },
 });
+// Review F3: the stage is 865px tall and the photo covers it, so a candidate shorter than 865px is upscaled (soft).
+// Every desktop candidate must be at least 865px tall; at 1280 the browser picks the first one.
+const STAGE_H = 865;
+export const DesktopPhotosSharp = {
+  name: "Desktop photos sharp",
+  globals: { viewport: viewport(1280) },
+  render: () => <Harness html={makeItYoursHtml()} />,
+  play: async ({ canvasElement }) => {
+    const natural = src =>
+      new Promise((resolve, reject) => {
+        const probe = new Image();
+        probe.onload = () => resolve(probe);
+        probe.onerror = reject;
+        probe.src = src;
+      });
+    // Every candidate in every srcset: its real size, and the width it claims.
+    for (const tab of MAKE_IT_YOURS.tabs) {
+      for (const source of tab.desktop.sources) {
+        const probe = await natural(source.src);
+        expect(probe.naturalHeight, source.src).toBeGreaterThanOrEqual(STAGE_H);
+        expect(probe.naturalWidth, source.src).toBe(source.width);
+      }
+    }
+    // The photo the browser really shows for tab 4 at 1280.
+    await atWidth(1280, 900);
+    await userEvent.click(trig(canvasElement, 3));
+    await expectOpenTab(canvasElement, 3);
+    const img = activeImg(canvasElement);
+    img.loading = "eager";
+    await waitFor(() =>
+      expect(img.complete && img.naturalWidth > 0).toBe(true)
+    );
+    await expect(img.currentSrc).toMatch(/build-your-experience/);
+    // `img.naturalHeight` is divided by the srcset density, so read the chosen file's own pixel size.
+    const chosen = await natural(img.currentSrc);
+    await expect(chosen.naturalHeight).toBeGreaterThanOrEqual(STAGE_H);
+    // Rendered at most 1:1: the file has at least as many pixels as the box it covers.
+    expect(chosen.naturalHeight).toBeGreaterThanOrEqual(
+      Math.floor(box(img).height * window.devicePixelRatio)
+    );
+  },
+};
 export const Tab2Open = openTabStory("Tab 2 open", 1);
 export const Tab3Open = openTabStory("Tab 3 open", 2);
 export const Tab4Open = openTabStory("Tab 4 open", 3);

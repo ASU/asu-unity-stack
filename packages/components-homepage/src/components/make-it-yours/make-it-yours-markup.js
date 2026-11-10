@@ -80,6 +80,8 @@ const figureHtml = (tab, i) => {
   return `<figure class="hp-myours__photo${i === 0 ? " is-active" : ""}" data-tab="${escape(tab.slug)}" style="--hp-myours-focus: ${focusOf(desktop.focus)}"><picture><source media="${DESKTOP_MEDIA}" sizes="100vw" srcset="${srcset}"><img class="hp-myours__img" src="${escape(mobile.src)}" width="900" height="650" alt="${escape(mobile.alt)}" data-alt-desktop="${escape(desktop.alt)}" loading="lazy" decoding="async"></picture><figcaption class="hp-myours__caption"><span class="hp-myours__caption-text hp-myours__caption-text--desktop">${escape(desktop.caption)}</span><span class="hp-myours__caption-text hp-myours__caption-text--mobile">${escape(mobile.caption)}</span></figcaption></figure>`;
 };
 
+// Desktop sources: the "-1280" tier is at least 1280 wide AND at least 865px tall (the stage height), so wide
+// photos get a wider file (1330w, 1873w; scripts/make-it-yours-images.sh). The descriptor is the real width.
 export const MAKE_IT_YOURS = {
   heading: "Make it yours",
   underlined: "it yours",
@@ -99,7 +101,7 @@ export const MAKE_IT_YOURS = {
         sources: [
           {
             src: "img/make-it-yours/design-your-degree-1280.webp",
-            width: 1280,
+            width: 1330,
           },
           {
             src: "img/make-it-yours/design-your-degree-1920.webp",
@@ -132,7 +134,7 @@ export const MAKE_IT_YOURS = {
       },
       desktop: {
         sources: [
-          { src: "img/make-it-yours/learn-your-way-1280.webp", width: 1280 },
+          { src: "img/make-it-yours/learn-your-way-1280.webp", width: 1330 },
           { src: "img/make-it-yours/learn-your-way-1920.webp", width: 1920 },
           { src: "img/make-it-yours/learn-your-way-2560.webp", width: 2560 },
           { src: "img/make-it-yours/learn-your-way.webp", width: 3934 },
@@ -180,7 +182,7 @@ export const MAKE_IT_YOURS = {
         sources: [
           {
             src: "img/make-it-yours/build-your-experience-1280.webp",
-            width: 1280,
+            width: 1873,
           },
           {
             src: "img/make-it-yours/build-your-experience-1920.webp",
