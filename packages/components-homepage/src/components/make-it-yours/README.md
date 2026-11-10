@@ -97,6 +97,7 @@ It measures white text over each photo at 769, 1024, 1280, 1920, 2500 and 3934 p
 - Closed panels are `inert`. Do not remove it; it takes closed content out of the tab order and the accessibility tree.
 - The `alt` on `<img>` is the mobile alt. `initMakeItYours` swaps in `data-alt-desktop` at 769px and up, and back at 768px and below. The caption has two spans, switched by CSS, so it needs no script.
 - Reserve: on stacked layouts the script sets `--hp-myours-tabs-min` and `--hp-myours-caption-min`. Do not set them in the CMS.
+- Links: the markup helper only outputs http(s), root-relative (`/x`, not `//` or `/\`) and `#fragment` URLs, and drops any URL containing an ASCII control character (tab, LF, CR, NUL, DEL), because browsers strip those and `/<tab>/host` becomes a protocol-relative link. Stage B must validate the Drupal link field the same way (reject, do not strip).
 - GA: each trigger and CTA carries `data-ga-*` attributes (`data-ga-component="homepage make it yours"`, `data-ga-section="make it yours"`). The event names and values are provisional until the data team confirms them (TODO in the markup module).
 - Clicking the already open trigger is swallowed in the capture phase (`preventDefault` and `stopPropagation`), so a document-level GA listener never sees it. An open-header click is not an event.
 - The script defers the state change by one task, so a document click reader still sees the old state during the click.

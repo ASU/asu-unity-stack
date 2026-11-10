@@ -20,9 +20,12 @@ const escape = value =>
 // http(s), root-relative and fragment URLs only; anything else (javascript:, data:, empty) is dropped.
 // "//" and "/\" are protocol-relative to a browser, so a root-relative URL may not start with either.
 const SAFE_URL = /^(?:https?:\/\/|\/(?![/\\])|#)/i;
+// Browsers drop tab, LF and CR inside a URL, so "/<tab>/evil" becomes "//evil". Any C0 control or DEL inside the URL
+// is rejected (not stripped): no silent rewrite of what the editor typed.
+const CONTROL_CHARS = /[\u0000-\u001f\u007f]/;
 const safeHref = value => {
   const text = String(value ?? "").trim();
-  return SAFE_URL.test(text) ? text : "";
+  return SAFE_URL.test(text) && !CONTROL_CHARS.test(text) ? text : "";
 };
 const FOCUS = /^\d{1,3}(?:\.\d+)?% \d{1,3}(?:\.\d+)?%$/;
 const focusOf = value =>

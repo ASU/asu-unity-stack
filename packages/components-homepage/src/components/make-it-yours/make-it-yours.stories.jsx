@@ -189,6 +189,11 @@ export const InjectionEscaping = {
     };
     await expect(hrefOf("/\\evil.example")).toBeNull();
     await expect(hrefOf("//evil.example")).toBeNull();
+    // Cycle 3 N1: browsers strip tab, LF and CR before parsing, so "/<tab>/" is also protocol-relative.
+    await expect(hrefOf("/\t/evil.example")).toBeNull();
+    await expect(hrefOf("/\n/evil.example")).toBeNull();
+    await expect(hrefOf("/\r/evil.example")).toBeNull();
+    await expect(hrefOf("/\u0000/evil.example")).toBeNull();
     await expect(hrefOf("/admission")).toBe("/admission");
     await expect(hrefOf("#apply")).toBe("#apply");
   },
