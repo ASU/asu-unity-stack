@@ -175,10 +175,17 @@ export const InjectionEscaping = {
 // ---- shared geometry helpers ----
 const style = (element, pseudo) => getComputedStyle(element, pseudo);
 const px = value => parseFloat(value);
+const nextFrames = async (count = 2) => {
+  for (let i = 0; i < count; i += 1) {
+    await new Promise(resolve => requestAnimationFrame(resolve));
+  }
+};
 // The vitest iframe may not honour the viewport global at every width, so each layout story sets its own.
 const atWidth = async (width, height = 900) => {
   await resizeViewport(width, height);
   await expect(window.innerWidth).toBe(width);
+  // The script re-measures one frame after the resize observer fires (review F1); let that frame run.
+  await nextFrames();
 };
 const noHorizontalOverflow = () =>
   expect(document.documentElement.scrollWidth).toBeLessThanOrEqual(
@@ -888,6 +895,33 @@ export const ReserveHeightStacked = {
     }
   },
 };
+// Review F1: measuring inside the ResizeObserver callback changes the observed height, which Chromium reports as a
+// window `error` ("ResizeObserver loop completed with undelivered notifications"). Site error trackers log it.
+export const ResizeNoObserverErrors = {
+  name: "Resize, no observer errors",
+  globals: { viewport: viewport(393) },
+  render: () => <Harness html={makeItYoursHtml()} />,
+  play: async ({ canvasElement }) => {
+    const errors = [];
+    const record = event => errors.push(event.message);
+    window.addEventListener("error", record);
+    try {
+      await atWidth(393, 852);
+      for (const width of [360, 340, 393, 420, 768, 700, 500, 320, 393]) {
+        await atWidth(width, 852);
+        await waitFor(() =>
+          expect(tabsMinOf(canvasElement)).toMatch(/^\d+px$/)
+        );
+      }
+      await new Promise(resolve => setTimeout(resolve, 100));
+      await expect(
+        errors.filter(message => /ResizeObserver loop/.test(message))
+      ).toEqual([]);
+    } finally {
+      window.removeEventListener("error", record);
+    }
+  },
+};
 export const ResizeAcrossBreakpoint = {
   name: "Resize across breakpoint",
   globals: { viewport: viewport(1280) },
@@ -1009,12 +1043,18 @@ export const ForcedColors = {
         ).toBeGreaterThanOrEqual(4.5)
       );
       // The state bar is still readable in system colours: open and closed differ, neither is the canvas.
+      // The bar colour transitions (0.35s), so wait for it to settle on the system colours.
       const items = list(canvasElement, ".hp-myours__item");
-      const open = style(items[0], "::before").backgroundColor;
-      const closed = style(items[1], "::before").backgroundColor;
-      await expect(open).not.toBe(closed);
-      await expect(open).not.toBe(style(tabs).backgroundColor);
-      await expect(closed).not.toBe(style(tabs).backgroundColor);
+      await waitFor(
+        () => {
+          const open = style(items[0], "::before").backgroundColor;
+          const closed = style(items[1], "::before").backgroundColor;
+          expect(open).not.toBe(closed);
+          expect(open).not.toBe(style(tabs).backgroundColor);
+          expect(closed).not.toBe(style(tabs).backgroundColor);
+        },
+        { timeout: 2000 }
+      );
       // The caption chip keeps text and fill apart.
       const caption = find(
         canvasElement,

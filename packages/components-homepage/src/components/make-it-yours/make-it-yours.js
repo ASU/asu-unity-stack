@@ -207,15 +207,28 @@ const bind = (section, doc, win) => {
     })
   );
   if (typeof win.ResizeObserver === "function") {
+    // measure() changes the observed section's height, so it runs in the next frame, not inside the callback
+    // (otherwise Chromium reports "ResizeObserver loop completed with undelivered notifications"). One pending frame.
+    // syncAlt() runs there too: a width change may cross 769px before the media query `change` event arrives.
     let lastWidth = -1;
+    let frame = 0;
     const observer = new win.ResizeObserver(entries => {
       const width = Math.round(entries[0].contentRect.width);
-      if (width === lastWidth) return;
+      if (width === lastWidth || frame) return;
       lastWidth = width;
-      measure();
+      frame = win.requestAnimationFrame(() => {
+        frame = 0;
+        if (disposed) return;
+        syncAlt();
+        measure();
+      });
     });
     observer.observe(section);
-    cleanups.push(() => observer.disconnect());
+    cleanups.push(() => {
+      observer.disconnect();
+      if (frame) win.cancelAnimationFrame(frame);
+      frame = 0;
+    });
   } else {
     listen(win, "resize", measure);
   }
