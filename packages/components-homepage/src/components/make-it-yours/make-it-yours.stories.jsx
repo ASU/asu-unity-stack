@@ -182,7 +182,7 @@ export const InjectionEscaping = {
       template.innerHTML = html;
       return (
         template.content
-          .querySelector(".hp-myours__item .hp-myours__cta")
+          .querySelector(".hp-myours__item:first-child .hp-myours__cta")
           ?.getAttribute("href") ?? null
       );
     };
