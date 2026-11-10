@@ -1415,7 +1415,7 @@ export const MaxLengthContent = {
     });
     await emulateReducedMotion(true);
     try {
-      for (const width of [769, 1280]) {
+      for (const width of [769, 1280, 1920, 3934]) {
         await atWidth(width, 1000);
         await expectFitsStage(canvasElement);
         noHorizontalOverflow();

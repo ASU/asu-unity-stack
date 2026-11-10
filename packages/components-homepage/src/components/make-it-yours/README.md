@@ -57,7 +57,7 @@ The desktop stage is a fixed 865px and clips overflow, and the heading is one 88
 | Tab description | 250 |
 | CTA label | 40 |
 
-Measured in Chromium against this build, with every field at the limit at the same time (filler made from the real copy), at 769, 1280 and 3934 px (the content column is 548px at all three): the open tab ends 26px above the stage bottom (24px required), every title and CTA stays on one line, nothing is clipped. Longer text can overflow the stage and hide the last CTA. The `MaxLengthContent` story re-checks this at 769 and 1280. The stacked layout grows with its content and needs no extra limit.
+Measured in Chromium against this build, with every field at the limit at the same time (filler made from the real copy), at 769, 1280 and 3934 px (the content column is 548px at all three): the open tab ends 26px above the stage bottom (24px required), every title and CTA stays on one line, nothing is clipped. Longer text can overflow the stage and hide the last CTA. The `MaxLengthContent` story re-checks this at 769, 1280, 1920 and 3934. The stacked layout grows with its content and needs no extra limit.
 
 ## Images
 
