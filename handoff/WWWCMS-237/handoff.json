@@ -1,0 +1,457 @@
+{
+  "schema_version": "1.2",
+  "anchor": "WWWCMS-237",
+  "created_at": "2026-11-11T05:35:00Z",
+  "created_by": "acp unity stage",
+  "component": {
+    "name": "Homepage Make it yours",
+    "slug": "homepage-make-it-yours",
+    "intent": "new",
+    "target_package": "components-homepage",
+    "piece_folder": "packages/components-homepage/src/components/make-it-yours"
+  },
+  "sources": {
+    "jira_key": "WWWCMS-237",
+    "figma_url": "https://www.figma.com/design/F4lomCUW2bWkekYZ0j7O03",
+    "figma_node": "13467:58610",
+    "figma_verified": false,
+    "figma_note": "Never verified: the Figma Dev Mode MCP was unreachable for the whole pipeline. Visual fidelity was checked against the .intake screenshots only.",
+    "screenshots": [
+      ".intake/myours-393.png",
+      ".intake/myours-768.png",
+      ".intake/myours-1280.png",
+      ".intake/myours-1920.png",
+      ".intake/myours-2500.png",
+      ".intake/myours-3934.png"
+    ],
+    "content": ".intake/make-it-yours_content.md"
+  },
+  "unity": {
+    "base_branch": "dev",
+    "branch": "WWWCMS-237-homepage-make-it-yours",
+    "base_commit": "1f6b21c9e",
+    "commits": [
+      "2a250850ab29ff781f2a91e2497340e948dd4b5f",
+      "fad48aab6665f5f56294354f7e3d6503a2f6dce0",
+      "30da68c7de2edc3f48459c8a2ac1eb653ddf0a11",
+      "f8386fc6c5812b292cf6ee2eba98a707732686df",
+      "5eae4869aa744e3accb3cba6fb2930e4606ef9a1",
+      "059d916434b15265d76570cc6ee8521bd10d3001",
+      "0a0da2bb9063ce3acd330ae9df0cf4be9ce1d996",
+      "010fb3d653818d71319df9b637ca8ce36b4b0f21",
+      "df1fdeff5f8387c3acc61999c31d5c6a408af949",
+      "50f1dabf6ef4b3c53951925b2ad88947b4750ed8",
+      "5d09f5058d90cd951c7dc7f07fecc1751da5f045",
+      "41d46e1a5e528d76dab9f5c56f02256ed7a6372e",
+      "c54e7743a37fc7657c75452684e757ad4c8bf6c6",
+      "d725fdec52a28a6d488d146cc3184f7ff5c6da00",
+      "e15deeb622575648b92946c70e5e030c33dc68a6",
+      "b056dd60623974ac4b8024582d180526d6b646dc",
+      "60b4ccd5709db946487b0f3c9058da1feab2d0a2",
+      "cb49c768c2910304a919b2d91ad29ee525f18a82",
+      "2e10e3007857d25e3b14761752ac36d9d04149e5",
+      "91ec453ebd5c1b06584e22352f6e899c30737ad3",
+      "16c3f64d5344b1599963320944c9c78b72d73c67",
+      "2f0e77ea6e674edf8ca2efeac193c82c85baa49e",
+      "b4399b5218d0af24496143c5b28908308d6d8880",
+      "9451b7a9dc866a2bc31caf912ff93d7517bd8919",
+      "24f73ab9ce5d83aff6c5d930daa7408373f82dac",
+      "344cda23d4b376c1911dc0c6aa1ee4536d8580a3",
+      "5707d11dfa8a751764e8a0ad8a3c978a7d5d10da",
+      "4960977d930b91982b96e69d87e7ae009b145c64"
+    ],
+    "package": "@asu/components-homepage",
+    "piece_folder": "packages/components-homepage/src/components/make-it-yours",
+    "scss_entry": "packages/components-homepage/src/scss/components-homepage.scss",
+    "build_command": "yarn workspace @asu/components-homepage build",
+    "dist_paths": [
+      "packages/components-homepage/dist/css/components-homepage.css",
+      "packages/components-homepage/dist/js/components-homepage.es.js",
+      "packages/components-homepage/dist/img/make-it-yours"
+    ],
+    "storybook_story_id": "homepage-make-it-yours--default"
+  },
+  "html_parity_markup_file": "markup.html",
+  "webspark_target": {
+    "placement": "sdc-module",
+    "module": "asu_edu_homepage",
+    "module_path": "docroot/modules/custom/asu_edu_homepage",
+    "component_dir": "components/homepage-make-it-yours",
+    "sdc_id": "asu_edu_homepage:homepage-make-it-yours",
+    "block_bundle": "homepage_make_it_yours",
+    "files": [
+      "homepage-make-it-yours.component.yml",
+      "homepage-make-it-yours.twig",
+      "homepage-make-it-yours.css",
+      "homepage-make-it-yours.js"
+    ],
+    "depends_on_components": [],
+    "depends_on_note": "None. The heading swash is not a shared SDC include: copy the .scrib-host / .scrib / .scrib--myours rules from underline-mark into homepage-make-it-yours.css (design doc section 23), and serve img/scribble-myours.svg from the module.",
+    "theme_or_shared_module": "NEVER_PLACE_IN_asu_edu_THEME_OR_asu_edu_components",
+    "editor_configurable": true,
+    "css_source": "dist/css/components-homepage.css rules for .hp-myours* plus .scrib-host / .scrib / .scrib--myours (underline-mark), copied as plain CSS; no SCSS and no Laravel Mix at Stage B. The --hp-focus-inner / --hp-focus-outer custom properties it reads must be defined in the same file or by the host.",
+    "js_flavor": "plain ES2017 Drupal.behaviors port of make-it-yours.js. MUST: set inert on closed panels; swap img alt (data-alt-desktop vs data-alt-mobile) at the 769px matchMedia; set both reserve properties (--hp-myours-tabs-min on .hp-myours__tabs and --hp-myours-caption-min on .hp-myours) on stacked layouts only; coalesce measure() through requestAnimationFrame; tear down in Drupal.behaviors.<name>.detach (window click/resize listeners, resize observer, pending frame; keep the teardown per section, e.g. in a WeakMap).",
+    "fields": [
+      {
+        "name": "heading",
+        "label": "Section heading",
+        "type": "plain text",
+        "required": true,
+        "max": 13,
+        "note": "one line at 88px in the 548px column; 'Make it yours' is 13"
+      },
+      {
+        "name": "underlined",
+        "label": "Underlined words",
+        "type": "plain text",
+        "required": true,
+        "max": 20,
+        "note": "must be a suffix of the heading; the last word gets the swash, earlier words go in .hp-myours__lead"
+      },
+      {
+        "name": "intro",
+        "label": "Intro",
+        "type": "plain text",
+        "required": true,
+        "max": 280
+      },
+      {
+        "name": "tabs",
+        "label": "Tabs",
+        "type": "multi-value group",
+        "required": true,
+        "min": 5,
+        "max": 5,
+        "message": "Make it yours needs exactly five tabs.",
+        "subfields": [
+          {
+            "name": "title",
+            "type": "plain text",
+            "required": true,
+            "max": 40
+          },
+          {
+            "name": "description",
+            "type": "plain text",
+            "required": true,
+            "max": 250
+          },
+          {
+            "name": "cta_label",
+            "type": "plain text",
+            "required": true,
+            "max": 40
+          },
+          {
+            "name": "cta_url",
+            "type": "link",
+            "required": true
+          },
+          {
+            "name": "desktop_image",
+            "type": "image (media)",
+            "required": true,
+            "image_styles": [
+              "mit_1280",
+              "mit_1920",
+              "mit_2560",
+              "mit_3934"
+            ]
+          },
+          {
+            "name": "desktop_alt",
+            "type": "plain text",
+            "required": true,
+            "max": 250
+          },
+          {
+            "name": "desktop_caption",
+            "type": "plain text",
+            "required": true,
+            "max": 160
+          },
+          {
+            "name": "focal_point",
+            "type": "text 'X% Y%'",
+            "required": false,
+            "default": "50% 50%",
+            "pattern": "^\\d{1,3}(\\.\\d+)?% \\d{1,3}(\\.\\d+)?%$"
+          },
+          {
+            "name": "mobile_image",
+            "type": "image (media)",
+            "required": true,
+            "image_styles": [
+              "mit_900x650"
+            ]
+          },
+          {
+            "name": "mobile_alt",
+            "type": "plain text",
+            "required": true,
+            "max": 250
+          },
+          {
+            "name": "mobile_caption",
+            "type": "plain text",
+            "required": true,
+            "max": 160
+          }
+        ]
+      }
+    ],
+    "limits_note": "Limits are MAKE_IT_YOURS_LIMITS in make-it-yours-markup.js (amendment A2.1), measured with every field at its limit at 769, 1280 and 3934px: the tallest open tab ends 26px above the 865px stage bottom, titles and CTAs stay on one line. The markup helper does not enforce them; Stage B validates. The stacked layout grows with content and needs no extra limit.",
+    "validation": {
+      "tab_count": "exactly five tabs (min 5, max 5); message 'Make it yours needs exactly five tabs.'",
+      "required": "every field above is required except focal point (defaults to 50% 50%)",
+      "underlined": "must be a suffix of the heading",
+      "focal_point": "pattern ^\\d{1,3}(\\.\\d+)?% \\d{1,3}(\\.\\d+)?%$, default '50% 50%'",
+      "cta_url": "accept only http(s)://, root-relative '/x' (not starting '//' or '/\\'), or '#fragment'. REJECT any value containing a C0 control character (U+0000-U+001F) or DEL (U+007F); do not strip, because browsers strip tab/LF/CR and '/<tab>/host' would become a protocol-relative link. Any other scheme (javascript:, data:, mailto: and so on) is invalid."
+    },
+    "image_variants": {
+      "desktop": [
+        "mit_1280: scale to >=1280 wide AND >=865 tall",
+        "mit_1920: scale to >=1920 wide AND >=865 tall",
+        "mit_2560: scale to >=2560 wide AND >=865 tall",
+        "mit_3934: original width"
+      ],
+      "desktop_rule": "Each style scales to at least the tier width AND at least 865px tall (the stage height), so a wide, short photo gets a wider file (Unity: tabs 1 and 2 mit_1280 is 1330 wide, tab 4 is 1873 wide). The srcset descriptor MUST be the real output width of each file, not the nominal tier.",
+      "mobile": [
+        "mit_900x650: crop to 900x650"
+      ],
+      "format": "webp",
+      "srcset_sizes": "100vw",
+      "source_media": "(min-width: 769px)",
+      "img_attributes": "mobile crop is the <img src>, width=900 height=650, loading=lazy, decoding=async; alt is the mobile alt, data-alt-desktop carries the desktop alt"
+    },
+    "template_data": "the section 7 data object: heading, underlined, intro, tabs[5]{slug,title,description,cta{label,url},desktop{sources[{src,width}],alt,caption,focus},mobile{src,alt,caption}}; the Twig output must equal markup.html after whitespace normalization (id prefix is the only per-copy variable)",
+    "scribble_asset": "img/scribble-myours.svg must be served by the module (not part of dist/img/make-it-yours)"
+  },
+  "tokens_used": {
+    "colors": [
+      "$asu-gray-1",
+      "$asu-gray-3",
+      "$asu-gray-4",
+      "$asu-gray-6",
+      "$uds-color-base-white"
+    ],
+    "spacing": [
+      "$uds-size-spacing-1",
+      "$uds-size-spacing-2",
+      "$uds-size-spacing-3",
+      "$uds-size-spacing-4",
+      "$uds-size-spacing-6",
+      "$uds-size-spacing-8",
+      "$uds-size-spacing-10"
+    ],
+    "typography": [
+      "$uds-size-font-small",
+      "$uds-size-font-medium",
+      "$uds-size-font-xl",
+      "$uds-font-weight-bold"
+    ],
+    "breakpoints": [
+      "$uds-breakpoint-md (reference only; the section breaks at 769px via $hp-myours-bp)"
+    ],
+    "focus_ring": [
+      "--hp-focus-inner",
+      "--hp-focus-outer"
+    ],
+    "component_custom_properties": [
+      "--hp-myours-focus",
+      "--hp-myours-inset",
+      "--hp-myours-inset-r",
+      "--hp-myours-tabs-min",
+      "--hp-myours-caption-min"
+    ],
+    "local_scss_variables": [
+      "$hp-myours-bp (769)",
+      "$hp-myours-h (865)",
+      "$hp-myours-frame (1920)",
+      "$hp-myours-col-w (548)",
+      "$hp-myours-row (44)",
+      "$hp-myours-bar-w (4)",
+      "$hp-myours-bar-inset (28)",
+      "$hp-myours-tabs-top (150)",
+      "$hp-myours-chip-w",
+      "$hp-myours-chip-bg (rgba($asu-gray-1, 0.7), no alpha token)",
+      "$hp-myours-chip-edge (rgba($uds-color-base-white, 0.3), no alpha token)",
+      "$hp-myours-scrim-alpha (0.58)",
+      "$hp-myours-scrim-feather",
+      "$hp-myours-ease (cubic-bezier(.4,0,.2,1))"
+    ],
+    "literal_values": {
+      "desktop_heading": "5.5rem (88px), no token; TODO confirm with design",
+      "stacked_heading": "clamp literal (56-64px), no token; TODO confirm with design",
+      "desktop_title": "1.375rem (22px), no token; TODO confirm with design",
+      "stacked_description": "1.125rem (18px), no token; TODO confirm with design",
+      "scrim": "one shared gradient of $asu-gray-1 at alpha 0.58 behind the content column; not in the mockups; same strength on all five photos"
+    }
+  },
+  "interactivity": {
+    "summary": "WAI-ARIA APG Accordion, single open, one panel always open. Static markup is full HTML (all panels open, photo 1); JS applies state; CSS toggles by class. With JS off, every panel is open and only photo 1 shows (readable baseline).",
+    "state_machine": [
+      {
+        "state": "OPEN(i), i in 0..4",
+        "desc": "tab i open; initial i=0 at every width; no none-state; no preview state; no hover preview"
+      }
+    ],
+    "activation": {
+      "desktop": "click, Enter or Space on a closed header opens it; no hover preview",
+      "touch": "tap opens it",
+      "initial": "tab 1 (Design your degree) at every width",
+      "open_header": "aria-disabled=true; click, Enter and Space are no-ops, stopped in the capture phase (preventDefault + stopPropagation) so a document-level GA listener never sees them",
+      "commit": "the state change is deferred by one task (0ms timer) so document-level click readers still see the old state during the click"
+    },
+    "keyboard": {
+      "pattern": "WAI-ARIA APG Accordion",
+      "keys": {
+        "Tab/Shift+Tab": "visits all five headers and the open panel's CTA",
+        "Enter/Space": "open the focused closed header",
+        "ArrowDown/ArrowUp": "move focus to next/previous header (wraps), focus only, never opens",
+        "Home/End": "focus first/last header, focus only, never opens"
+      },
+      "focus": "no roving tabindex; focus stays on the activated header; 44px touch targets; visible focus ring from --hp-focus-inner / --hp-focus-outer"
+    },
+    "aria": {
+      "roles": "h3 > button.hp-myours__trigger; panel is role=region with aria-labelledby=trigger; no live region",
+      "dynamic": "aria-expanded true/false on every trigger and aria-disabled=true on the open trigger (added by JS, absent in static markup); closed panels get inert (JS) plus visibility hidden (CSS fallback); img alt is swapped to data-alt-desktop from 769px and back to data-alt-mobile at 768px and below"
+    },
+    "class_toggles": [
+      {
+        "trigger": "boot",
+        "element": ".hp-myours",
+        "class": "is-enhanced",
+        "effect": "CSS switches from the all-open baseline to the accordion"
+      },
+      {
+        "trigger": "boot, removed after 2 rAF",
+        "element": ".hp-myours",
+        "class": "is-booting",
+        "effect": "transitions suppressed during first render"
+      },
+      {
+        "trigger": "open tab",
+        "element": ".hp-myours__item",
+        "class": "is-open",
+        "effect": "panel grid-template-rows 0fr to 1fr, bar fills, title white"
+      },
+      {
+        "trigger": "open tab",
+        "element": ".hp-myours__photo",
+        "class": "is-active",
+        "effect": "that photo displayed, others display:none, instant (static markup has it on photo 1)"
+      },
+      {
+        "trigger": "stacked measure()",
+        "element": ".hp-myours__tabs",
+        "class": "--hp-myours-tabs-min (inline custom property)",
+        "effect": "list min-height reserves the tallest open state; stacked only"
+      },
+      {
+        "trigger": "stacked measure()",
+        "element": ".hp-myours",
+        "class": "--hp-myours-caption-min (inline custom property, A1.2)",
+        "effect": "caption min-height reserves the tallest caption so the whole section has one height for all five tabs (+-1px); removed on desktop and on teardown; re-measured on resize and document.fonts.ready"
+      },
+      {
+        "trigger": "trigger pointerenter/focus",
+        "element": ".hp-myours__img",
+        "class": "loading lazy -> eager",
+        "effect": "that photo's image is promoted so the switch rarely waits"
+      }
+    ],
+    "css_variables": {
+      "--hp-myours-tabs-min": "see above; JS-set, stacked only. Do not set in the CMS.",
+      "--hp-myours-caption-min": "see above; JS-set, stacked only. Do not set in the CMS.",
+      "--hp-myours-focus": "static, inline on each figure from the focal point field; desktop object-position"
+    },
+    "alt_swap": "<img alt> in the static markup is the mobile alt; JS stores it as data-alt-mobile and sets alt from matchMedia('(min-width: 769px)') on boot and on change. Captions carry both texts in two spans switched by CSS (no JS).",
+    "motion": "panel 0.5s cubic-bezier(.4,0,.2,1), bar 0.5s, title color 0.35s; all inside prefers-reduced-motion: no-preference; none under reduce; photo switch is instant (no crossfade or zoom)",
+    "reduced_motion": "all transitions are declared only inside @media (prefers-reduced-motion: no-preference); under reduce the state change is instant",
+    "forced_colors": "opaque Canvas panels, CanvasText text, Highlight open bar, arrow uses currentColor, scrim hidden",
+    "breakpoints": {
+      "stacked": "<= 768px: white centered head, inset 900x650 photo, dark band with the tab list (min-height = tallest open state via --hp-myours-tabs-min), caption reserve via --hp-myours-caption-min; the heading swash sits under 'yours' only",
+      "side_by_side": ">= 769px: full-bleed photo with per-photo object-position in a fixed 865px stage (frame 1920), 548px content column on the right over a shared scrim, caption chip",
+      "notes": "769 is one pixel off the UDS md breakpoint on purpose; the SCSS ($hp-myours-bp), make-it-yours.js and <source media> all use (min-width: 769px)"
+    },
+    "no_js_baseline": "every panel open, photo 1 only, mobile alt on the image (known limit R2 on desktop); captions unaffected. Section can be taller than 865px on desktop without JS.",
+    "analytics": {
+      "when": "on opening a closed header (event select, action open) and on CTA click (event link, action click) only; clicking the open header is not an event",
+      "mechanism": "data-ga-* attributes on every trigger and CTA, read by the asucms data layer",
+      "payload_keys": [
+        "data-ga-name",
+        "data-ga-event",
+        "data-ga-action",
+        "data-ga-type",
+        "data-ga-region",
+        "data-ga-section",
+        "data-ga-component",
+        "data-ga-text"
+      ],
+      "values": {
+        "name": "onclick",
+        "region": "main content",
+        "section": "make it yours",
+        "component": "homepage make it yours",
+        "trigger_event_action": "select / open",
+        "cta_event_action": "link / click",
+        "type": "internal link or external link by host (SSR falls back to www.asu.edu, so all CTAs are external link)"
+      },
+      "guards": "open-header click stopped in the capture phase; state committed after document-level readers (deferred one task)",
+      "provisional": true
+    },
+    "design_doc_refs": [
+      "section 6 state machine",
+      "section 7 data shape and Stage B field list",
+      "section 9 class-toggle contract (incl. --hp-myours-tabs-min, --hp-myours-caption-min)",
+      "section 10 behavioral matrix",
+      "section 11 accessibility",
+      "section 12.1 breakpoint, 12.3 tokens, 12.4 contrast and scrim",
+      "section 23 handoff plan",
+      "section 27 amendment A1 (scrim cap 0.60, caption reserve, CDP session fix)",
+      "section 28 amendment A2 (field limits, centered stacked heading)"
+    ]
+  },
+  "pr_ready_evidence": {
+    "build": "yarn workspace @asu/components-homepage build — OK (css 48.16 kB, js 26.48 kB, dist/img/make-it-yours = 25 files); root yarn build — OK (Lerna: 9 projects + 1 dependency; 9 of 10 tasks from the Nx cache)",
+    "lint": "yarn workspace @asu/components-homepage lint (eslint + stylelint) — exit 0",
+    "stories_a11y": "test:storybook — 11 files, 276 tests passed; test:accessibility — 188 passed, 10 failed: all 10 are the pre-existing homepage-rankings-cards ids (fail on base 1f6b21c9e); every make-it-yours audit passed",
+    "contrast": "tests/make-it-yours-contrast.spec.mjs: 30/30 at 769, 1024, 1280, 1920, 2500 and 3934 x 5 tabs, with the shared scrim at alpha 0.58 (cap 0.60)",
+    "html_parity": "verified: markup.html equals makeItYoursHtml() after whitespace normalization (tests/make-it-yours-handoff-parity.spec.mjs, RED against a stale copy then GREEN); the HtmlParity story asserts the same basis against the Storybook canvas",
+    "visual": "VISUAL_PASS (cycle 2) against the .intake screenshots; Figma not verified",
+    "review": "APPROVED with concerns (cycle 2); concern N1 fixed in cycle 3 (24f73ab9c, 5707d11df)"
+  },
+  "open_questions": [
+    {
+      "id": "figma-not-verified",
+      "subject": "Figma node 13467:58610 was never read; the Figma Dev Mode MCP (127.0.0.1:3845) was unreachable",
+      "stage_a_fallback": "built from the .intake myours-* screenshots and make-it-yours_content.md; reconcile against Figma when reachable"
+    },
+    {
+      "id": "ga-datalayer-names",
+      "subject": "GA event names and values (select/open, link/click, region, section, component) are provisional until the data team confirms",
+      "stage_a_fallback": "data-ga-* attributes on every trigger and CTA; TODO in the markup module"
+    },
+    {
+      "id": "desktop-alt-without-js (R2)",
+      "subject": "With JS off on a desktop screen, tabs 1, 3 and 5 show the mobile alt, which describes a different crop; a <picture> has one alt",
+      "stage_a_fallback": "accepted; JS swaps in the desktop alt from 769px; captions are not affected"
+    },
+    {
+      "id": "rankings-cards-a11y-preexisting",
+      "subject": "10 homepage-rankings-cards ids fail test:accessibility (glass-strip-scroll, glass-strip-hover, card-1-see-all-top, focus-order-11-cards, per-slide-labelling-7-cards, per-slide-labelling-3-cards, card-hover-maroon, focus-no-invert, no-learn-more-in-footer, hit-area-pseudo)",
+      "stage_a_fallback": "pre-existing: they fail on base 1f6b21c9e and are not touched by this branch"
+    },
+    {
+      "id": "visual-p3-deferred",
+      "subject": "Deferred visual P3s: heading about 23px wider than the mockup, CTA wraps at 320px, caption chip crowding and focal crop at 769",
+      "stage_a_fallback": "accepted for this pass; not blocking"
+    },
+    {
+      "id": "manual-testing-not-done",
+      "subject": "No manual assistive-technology (screen reader) testing and no Safari or Firefox testing; automated Chromium only (Alfa WCAG 2.1 AA, Storybook interaction tests, contrast spec)",
+      "stage_a_fallback": "run a manual AT pass and a cross-browser pass before release"
+    }
+  ]
+}
