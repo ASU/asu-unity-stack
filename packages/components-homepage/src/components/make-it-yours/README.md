@@ -82,7 +82,7 @@ The slug is the source file name (`design-your-degree.webp`, `design-your-degree
 
 ## Scrim
 
-One shared scrim darkens the right part of every desktop photo so white text keeps 4.5:1. It uses the same strength on all five photos: `$asu-gray-1` at alpha 0.58 (`$hp-myours-scrim-alpha` in the SCSS). The cap is 0.60 (approved amendment A1.1). At 0.55 only 17 of 20 cases passed, and the alpha was raised in 0.01 steps to the lowest value that gives 20 of 20 (then 4 widths). With 769 and 1024 added (review F4) it gives 30 of 30 unchanged. There is deliberately no per-photo strength and no data field for it.
+One shared scrim darkens the right part of every desktop photo so white text keeps 4.5:1. It fades in over 96px to the left of the content column and then runs at full strength to the right edge of the browser (amendment A3). It uses the same strength on all five photos: `$asu-gray-1` at alpha 0.58 (`$hp-myours-scrim-alpha` in the SCSS). The cap is 0.60 (approved amendment A1.1). At 0.55 only 17 of 20 cases passed, and the alpha was raised in 0.01 steps to the lowest value that gives 20 of 20 (then 4 widths). With 769 and 1024 added (review F4) it gives 30 of 30 unchanged. There is deliberately no per-photo strength and no data field for it.
 
 To re-check after changing a photo, a focal point or the alpha:
 

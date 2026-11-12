@@ -387,8 +387,20 @@ const desktopStory = (name, width, column) => ({
     }
     // The content column sits right of centre, over the photo.
     expect(box(p.tabs).left).toBeGreaterThan(width / 2 - 1);
+    expectScrimToRightEdge(p);
   },
 });
+// The shared scrim fades in left of the content column and runs at full strength to the right edge of the browser.
+function expectScrimToRightEdge(p) {
+  const scrim = window.getComputedStyle(p.stage, "::after");
+  const stageBox = box(p.stage);
+  const right = px(scrim.right);
+  const left = stageBox.width - px(scrim.width) - right;
+  near(right, 0, 0.5);
+  expect(left).toBeLessThanOrEqual(box(p.tabs).left - 96 + 1);
+  // The last colour stop is opaque-ish (the scrim alpha), not a fade back to transparent.
+  expect(scrim.backgroundImage).not.toMatch(/rgba\(25, 25, 25, 0\)\)$/);
+}
 export const Boundary769 = {
   name: "Boundary 769",
   globals: { viewport: viewport(769) },

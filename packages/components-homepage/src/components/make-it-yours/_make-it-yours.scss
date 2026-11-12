@@ -17,7 +17,7 @@ $hp-myours-bar-w: 4px;
 $hp-myours-bar-inset: calc(#{$hp-myours-bar-w} + #{$uds-size-spacing-3}); // bar plus the 24px gap to the text
 $hp-myours-tabs-top: 150px; // gap above the tab list: title 1 sits about 450px from the top of the stage
 $hp-myours-chip-w: 420px; // caption chip max width, from the mockups
-$hp-myours-scrim-feather: 96px; // the scrim fades in over 96px on each side of the content column
+$hp-myours-scrim-feather: 96px; // the scrim fades in over 96px left of the content column
 $hp-myours-ease: cubic-bezier(0.4, 0, 0.2, 1);
 $hp-myours-chip-bg: rgba($asu-gray-1, 0.7);
 $hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
@@ -413,6 +413,7 @@ $hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
 
   // Soft dark panel behind the content column, one identical strength for all five photos (not in the mockups).
   // Alpha set by tests/make-it-yours-contrast.spec.mjs; cap 0.60 (Amendment A1.1). 0.58 gives 30/30 (769-3934).
+  // It fades in left of the column and runs at full strength to the right edge of the browser (Amendment A3).
   $hp-myours-scrim-alpha: 0.58;
   .hp-myours__stage::after {
     content: "";
@@ -420,16 +421,16 @@ $hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
     z-index: 1;
     top: 0;
     bottom: 0;
-    right: calc(var(--hp-myours-inset-r) - #{$hp-myours-scrim-feather});
-    width: calc(#{$hp-myours-col-w} + 2 * #{$hp-myours-scrim-feather});
+    right: 0;
+    width: calc(
+      var(--hp-myours-inset-r) + #{$hp-myours-col-w} + #{$hp-myours-scrim-feather}
+    );
     pointer-events: none;
     background: linear-gradient(
       to right,
       rgba($asu-gray-1, 0),
       rgba($asu-gray-1, $hp-myours-scrim-alpha) $hp-myours-scrim-feather,
       rgba($asu-gray-1, $hp-myours-scrim-alpha)
-        calc(100% - #{$hp-myours-scrim-feather}),
-      rgba($asu-gray-1, 0)
     );
     @media (forced-colors: active) {
       display: none;
