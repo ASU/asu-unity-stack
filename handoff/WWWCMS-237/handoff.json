@@ -58,7 +58,8 @@
       "24f73ab9ce5d83aff6c5d930daa7408373f82dac",
       "344cda23d4b376c1911dc0c6aa1ee4536d8580a3",
       "5707d11dfa8a751764e8a0ad8a3c978a7d5d10da",
-      "4960977d930b91982b96e69d87e7ae009b145c64"
+      "4960977d930b91982b96e69d87e7ae009b145c64",
+      "03183c64d4e4dd8caf4ff13346cdc2106496c3fd"
     ],
     "package": "@asu/components-homepage",
     "piece_folder": "packages/components-homepage/src/components/make-it-yours",
@@ -285,7 +286,7 @@
       "stacked_heading": "clamp literal (56-64px), no token; TODO confirm with design",
       "desktop_title": "1.375rem (22px), no token; TODO confirm with design",
       "stacked_description": "1.125rem (18px), no token; TODO confirm with design",
-      "scrim": "one shared gradient of $asu-gray-1 at alpha 0.58 behind the content column; not in the mockups; same strength on all five photos"
+      "scrim": "one shared gradient of $asu-gray-1 at alpha 0.58 on .hp-myours__stage::after (desktop only): fades in over 96px left of the content column, then full strength to the right edge of the browser (right: 0; amendment A3); not in the mockups; same strength on all five photos; hidden in forced colors"
     }
   },
   "interactivity": {
@@ -410,7 +411,8 @@
       "section 12.1 breakpoint, 12.3 tokens, 12.4 contrast and scrim",
       "section 23 handoff plan",
       "section 27 amendment A1 (scrim cap 0.60, caption reserve, CDP session fix)",
-      "section 28 amendment A2 (field limits, centered stacked heading)"
+      "section 28 amendment A2 (field limits, centered stacked heading)",
+      "section 29 amendment A3 (scrim to the right edge)"
     ]
   },
   "pr_ready_evidence": {
