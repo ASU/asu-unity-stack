@@ -237,6 +237,67 @@ export const Selected = {
   },
 };
 
+export const ContentDocAlt = {
+  name: "Alt text matches the content doc",
+  globals: viewport(1440),
+  render: () => <Harness html={placesHtml()} />,
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    const alt = name => p.photos[LOCATIONS.findIndex(l => l.name === name)];
+    // Content doc 2026-11-09 ("Ready for devs"): Tempe names Mountain America Stadium, LA names the building.
+    await expect(alt("Tempe").getAttribute("alt")).toBe(
+      "Aerial views of Arizona State University’s Tempe campus and Mountain America Stadium, along with students exploring a rocky outdoor area and an ASU building exterior."
+    );
+    await expect(alt("Los Angeles").getAttribute("alt")).toBe(
+      "Aerial view of the California Center Grand building, a white multistory structure surrounded by trees and a lawn in downtown Los Angeles."
+    );
+    await expect(alt("Washington, D.C.").getAttribute("alt")).toBe(
+      "The ASU Washington, D.C., building, a historic stone building with illuminated cornices and the ASU sign, on a busy street corner."
+    );
+    // the video is described by the content doc's b-roll description, not the Tempe photo's
+    const description = p.section.querySelector(
+      `#${p.video.getAttribute("aria-describedby")}`
+    );
+    await expect(description.textContent).toBe(
+      "A video showcasing ASU’s locations and campuses including Tempe, Downtown Phoenix, Polytechnic, West Valley, Los Angeles and more."
+    );
+  },
+};
+
+export const ContentDocCopy = {
+  name: "Copy matches the content doc",
+  globals: viewport(1440),
+  render: () => <Harness html={placesHtml()} />,
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    // Content doc 2026-11-09 ("Ready for devs"); the doc's West Valley line has no final period (added here).
+    const captions = Array.from(
+      p.section.querySelectorAll(".hp-places__caption")
+    ).map(caption => caption.textContent);
+    await expect(captions).toEqual([
+      "The flagship campus — a walkable, tree-lined home to more than 55,000 Sun Devils.",
+      "An urban campus woven into the city core, home to journalism, health and public service.",
+      "An Oxford-inspired campus serving the dynamic workforce needs of a rapidly growing economy.",
+      "A hands-on campus for engineering, aviation and applied technology, turning ideas into real things.",
+      "A creative foothold in the entertainment capital, home to film, fashion, media and design.",
+      "A launchpad into government, policy and law, just blocks from the White House.",
+      "A global gateway in the heart of London, where you can earn two international degrees.",
+    ]);
+    const labels = Array.from(
+      p.section.querySelectorAll(".hp-places__group-label")
+    );
+    await expect(labels.map(label => label.textContent)).toEqual([
+      "Phoenix metro area campuses",
+      "U.S. and international",
+    ]);
+    // Figma is 0%; the theme h3 would otherwise tighten the gold headings to -0.84px (brand QA 2026-11-05).
+    // Chrome serialises a computed 0 as "normal".
+    labels.forEach(label =>
+      expect(["normal", "0px"]).toContain(style(label).letterSpacing)
+    );
+  },
+};
+
 export const ScrollOpening = {
   name: "Scroll opening",
   globals: viewport(1440),

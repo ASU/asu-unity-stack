@@ -37,26 +37,26 @@ export const GA_COMPONENT = "homepage places";
 
 export const GROUPS = [
   { label: "Phoenix metro area campuses" },
-  { label: "U.S. and International" },
+  { label: "U.S. and international" },
 ];
 
-// Prototype v2.71 copy (HTML 2635-2690). `group` indexes GROUPS. TODO: destinations from the content team
-// (WWWCMS-241 open question A11); each href is a unique fragment that matches no element. `alt` is approved by
-// the owner (2026-11-05), not in Figma except the Tempe wording.
+// Content doc 2026-11-09 copy and alt text ("Ready for devs"); `group` indexes GROUPS. Each href is still a unique
+// fragment that matches no element (the doc's real URLs are editor fields at Stage B). TODO: destinations
+// (WWWCMS-241 open question A11).
 export const LOCATIONS = [
   {
     name: "Tempe",
     group: 0,
     photo: `${MEDIA}/place-tempe.webp`,
     text: "The flagship campus — a walkable, tree-lined home to more than 55,000 Sun Devils.",
-    alt: "Aerial views of Arizona State University's Tempe campus and Sun Devil Stadium, along with students exploring a rocky outdoor area and an ASU building exterior.",
+    alt: "Aerial views of Arizona State University’s Tempe campus and Mountain America Stadium, along with students exploring a rocky outdoor area and an ASU building exterior.",
     link: "See Tempe campus",
   },
   {
     name: "Downtown Phoenix",
     group: 0,
     photo: `${MEDIA}/place-downtown.webp`,
-    text: "Health, journalism, law and public service in the heart of the city.",
+    text: "An urban campus woven into the city core, home to journalism, health and public service.",
     alt: "The Walter Cronkite School of Journalism and Mass Communication building on Downtown Phoenix's 1st Street, with a bus passing in the foreground.",
     link: "See Downtown Phoenix campus",
   },
@@ -64,7 +64,7 @@ export const LOCATIONS = [
     name: "West Valley",
     group: 0,
     photo: `${MEDIA}/place-westvalley.webp`,
-    text: "An Oxford-inspired oasis serving the dynamic workforce needs of a rapidly growing economy.",
+    text: "An Oxford-inspired campus serving the dynamic workforce needs of a rapidly growing economy.",
     alt: "The brick library building at ASU's West Valley campus, with its glass entrance lit at dusk.",
     link: "See West Valley campus",
   },
@@ -72,7 +72,7 @@ export const LOCATIONS = [
     name: "Polytechnic",
     group: 0,
     photo: `${MEDIA}/place-polytechnic.webp`,
-    text: "Hands-on engineering, technology and aviation on a former Air Force base in Mesa.",
+    text: "A hands-on campus for engineering, aviation and applied technology, turning ideas into real things.",
     alt: "A modern ASU Polytechnic campus building with copper-colored panels and a glass facade, seen from below against a blue sky.",
     link: "See Polytechnic campus",
   },
@@ -80,31 +80,31 @@ export const LOCATIONS = [
     name: "Los Angeles",
     group: 1,
     photo: `${MEDIA}/place-losangeles.webp`,
-    text: "Film, media and game design taught in the center of the industry.",
-    alt: "Aerial view of the ASU Los Angeles building, a white multi-story structure surrounded by trees and a lawn in downtown Los Angeles.",
+    text: "A creative foothold in the entertainment capital, home to film, fashion, media and design.",
+    alt: "Aerial view of the California Center Grand building, a white multistory structure surrounded by trees and a lawn in downtown Los Angeles.",
     link: "See ASU Los Angeles",
   },
   {
     name: "Washington, D.C.",
     group: 1,
     photo: `${MEDIA}/place-washington.webp`,
-    text: "Policy, journalism and global affairs steps from Capitol Hill.",
-    alt: "The ASU Washington, D.C. building, a historic stone building with illuminated cornices and the ASU sign, on a busy street corner.",
+    text: "A launchpad into government, policy and law, just blocks from the White House.",
+    alt: "The ASU Washington, D.C., building, a historic stone building with illuminated cornices and the ASU sign, on a busy street corner.",
     link: "See ASU Washington, D.C.",
   },
   {
     name: "London",
     group: 1,
     photo: `${MEDIA}/place-london.webp`,
-    text: "ASU’s first international campus, opening in the heart of the U.K.",
+    text: "A global gateway in the heart of London, where you can earn two international degrees.",
     alt: "Aerial view of London at sunrise, with Tower Bridge crossing the Thames and the city skyline behind it.",
     link: "See ASU London",
   },
 ];
 
-// Figma "Locations video" alt text annotation (1920 frame 13906:15950), verbatim.
+// Content doc (2026-11-09) b-roll video description; Figma's 1920 annotation (13906:15950) still has the older Tempe text.
 export const VIDEO_DESCRIPTION =
-  "Aerial views of Arizona State University's Tempe campus and Sun Devil Stadium, along with students exploring a rocky outdoor area and an ASU building exterior.";
+  "A video showcasing ASU’s locations and campuses including Tempe, Downtown Phoenix, Polytechnic, West Valley, Los Angeles and more.";
 
 const slug = name =>
   name
