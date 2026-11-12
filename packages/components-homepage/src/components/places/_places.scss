@@ -227,6 +227,7 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
   font-size: 16px;
   line-height: 24px;
   font-weight: 700;
+  letter-spacing: 0; // Figma 0%; the theme h3 would inherit -0.84px
 }
 
 .hp-places__names {
