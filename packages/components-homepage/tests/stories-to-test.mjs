@@ -166,4 +166,17 @@ export const storiesToTest = [
   "homepage-places--tablet-1023",
   "homepage-places--phone-393",
   "homepage-places--large-1920",
+  // WWWCMS-237: make it yours (rest, no script, every width)
+  "homepage-make-it-yours--default",
+  "homepage-make-it-yours--no-script",
+  "homepage-make-it-yours--phone-393",
+  "homepage-make-it-yours--tablet-768",
+  "homepage-make-it-yours--boundary-769",
+  "homepage-make-it-yours--desktop-1280",
+  "homepage-make-it-yours--large-1920",
+  "homepage-make-it-yours--wide-2500",
+  "homepage-make-it-yours--ultra-3934",
+  "homepage-make-it-yours--tab-5-open",
+  "homepage-make-it-yours--focus-visible",
+  "homepage-make-it-yours--max-length-content",
 ];

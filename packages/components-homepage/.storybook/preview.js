@@ -49,6 +49,22 @@ const homepageViewports = {
     styles: { width: "1920px", height: "1080px" },
     type: "desktop",
   },
+  // WWWCMS-237: make it yours (stacked through 768, side by side from 769).
+  hp769: {
+    name: "Desktop 769",
+    styles: { width: "769px", height: "900px" },
+    type: "desktop",
+  },
+  hp2500: {
+    name: "Wide 2500",
+    styles: { width: "2500px", height: "1000px" },
+    type: "desktop",
+  },
+  hp3934: {
+    name: "Ultra-wide 3934",
+    styles: { width: "3934px", height: "1000px" },
+    type: "desktop",
+  },
   // Above 1920px the topo band appears (Backgrounds).
   hp2560: {
     name: "Ultra-wide 2560",

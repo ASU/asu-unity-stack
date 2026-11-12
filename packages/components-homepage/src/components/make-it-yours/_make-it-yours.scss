@@ -1,0 +1,531 @@
+// Homepage "Make it yours": five photo tabs. Stacked through 768px (white head, inset photo, dark band with the tab
+// list) and side by side from 769px (full-bleed photo, content column on the right, 865px tall). APG Accordion.
+// Design doc: WWWCMS-237. Baseline (no script): every panel open, only the first photo; `initMakeItYours` adds
+// `.is-enhanced`, which turns on the accordion. Photos are HTML <img>/srcset; no CSS url() art here (vite.config.js).
+
+// One pixel off $uds-breakpoint-md (768px) on purpose: the design is stacked AT 768 and side by side from 769.
+// Keep equal to DESKTOP in make-it-yours.js and to the <source media> in make-it-yours-markup.js.
+$hp-myours-bp: 769px;
+
+// TODO: confirm with design - raw values (no UDS token): section height, column width, 1920 frame, rows, bar, offsets,
+// the 0.5s/0.35s timings and the translucent chip.
+$hp-myours-h: 865px;
+$hp-myours-col-w: 548px;
+$hp-myours-frame: 1920px;
+$hp-myours-row: 44px; // touch target
+$hp-myours-bar-w: 4px;
+$hp-myours-bar-inset: calc(#{$hp-myours-bar-w} + #{$uds-size-spacing-3}); // bar plus the 24px gap to the text
+$hp-myours-tabs-top: 150px; // gap above the tab list: title 1 sits about 450px from the top of the stage
+$hp-myours-chip-w: 420px; // caption chip max width, from the mockups
+$hp-myours-scrim-feather: 96px; // the scrim fades in over 96px left of the content column
+$hp-myours-ease: cubic-bezier(0.4, 0, 0.2, 1);
+$hp-myours-chip-bg: rgba($asu-gray-1, 0.7);
+$hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
+
+// !important is required to beat unity-bootstrap-theme/src/scss/extends/_misc.scss, which sets
+// `a:focus, button:focus { box-shadow: ... !important }` globally. Scoped to this component's triggers and CTAs.
+@mixin hp-myours-focus {
+  &:focus:not(:focus-visible) {
+    box-shadow: none !important;
+  }
+
+  &:focus-visible {
+    outline: 2px solid transparent;
+    box-shadow: var(--hp-focus-inner), var(--hp-focus-outer) !important;
+  }
+}
+
+.hp-myours {
+  --hp-myours-inset: clamp(#{$uds-size-spacing-6}, 5vw, #{$uds-size-spacing-10});
+
+  position: relative;
+  background: $uds-color-base-white;
+  color: $asu-gray-1;
+}
+
+.hp-myours__head {
+  padding: $uds-size-spacing-6 $uds-size-spacing-4 $uds-size-spacing-4;
+  background: $uds-color-base-white;
+  color: $asu-gray-1;
+  text-align: center;
+}
+
+.hp-myours__heading {
+  margin: 0;
+  font-size: clamp(
+    3.5rem,
+    3rem + 2vw,
+    4rem
+  ); // TODO: no token (56px at 393, 63px at 768)
+  line-height: 1;
+  font-weight: $uds-font-weight-bold;
+  letter-spacing: -0.03em; // TODO: no token (the mockups' tight display tracking)
+  text-align: inherit; // the theme's $heading-text-align is left; centred stacked, left on desktop (A2.2)
+}
+
+.hp-myours__intro {
+  margin: $uds-size-spacing-3 auto 0;
+  font-size: $uds-size-font-medium;
+  line-height: 1.5;
+}
+
+// ---- photos ----
+
+.hp-myours__photos {
+  position: relative;
+}
+
+.hp-myours__photo {
+  display: none;
+  margin: 0;
+
+  &.is-active {
+    display: block;
+  }
+}
+
+.hp-myours__photo picture {
+  display: block;
+}
+
+.hp-myours__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hp-myours__caption-text--desktop {
+  display: none;
+}
+
+// ---- tabs ----
+
+.hp-myours__tabs {
+  padding: $uds-size-spacing-4 $uds-size-spacing-4 $uds-size-spacing-6;
+  background: $asu-gray-1;
+  color: $uds-color-base-white;
+}
+
+.hp-myours__list {
+  min-height: var(--hp-myours-tabs-min, 0);
+}
+
+.hp-myours__item {
+  position: relative;
+
+  // The bar: 28px at rest (8px inset in the 44px row), the full item height when open.
+  &::before {
+    content: "";
+    position: absolute;
+    top: $uds-size-spacing-1;
+    bottom: $uds-size-spacing-1;
+    left: 0;
+    width: $hp-myours-bar-w;
+    background: $asu-gray-3;
+
+    @media (forced-colors: active) {
+      background: CanvasText;
+    }
+  }
+
+  &.is-open::before {
+    top: 0;
+    bottom: 0;
+    background: $uds-color-base-white;
+
+    @media (forced-colors: active) {
+      background: Highlight;
+    }
+  }
+}
+
+.hp-myours__tab-heading {
+  margin: 0;
+  font-size: inherit;
+}
+
+.hp-myours__trigger {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: $hp-myours-row;
+  margin: 0;
+  padding: $uds-size-spacing-1 0 $uds-size-spacing-1 $hp-myours-bar-inset;
+  border: 0;
+  background: none;
+  color: $asu-gray-4;
+  font-size: $uds-size-font-xl;
+  line-height: 28px;
+  font-weight: $uds-font-weight-bold;
+  text-align: left;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  touch-action: manipulation;
+
+  &:hover {
+    color: $uds-color-base-white;
+  }
+
+  &[aria-disabled="true"] {
+    cursor: default;
+  }
+
+  @include hp-myours-focus;
+}
+
+.hp-myours__item.is-open .hp-myours__trigger {
+  color: $uds-color-base-white;
+}
+
+// ---- panel: 0fr to 1fr, closed panels hidden from focus and AT even without `inert` ----
+
+.hp-myours__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+}
+
+.hp-myours__item.is-open > .hp-myours__panel {
+  grid-template-rows: 1fr;
+  visibility: visible;
+}
+
+// Only horizontal padding here: vertical padding would survive `min-height: 0` and keep a closed panel 20px tall.
+// The 4px above and 16px below the text are a margin and a spacer, which collapse with the panel.
+.hp-myours__panel-inner {
+  min-width: 0;
+  min-height: 0;
+  padding: 0 $uds-size-spacing-1 0 $hp-myours-bar-inset;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    display: block;
+    height: $uds-size-spacing-2;
+  }
+}
+
+.hp-myours__desc {
+  margin: 4px 0 0;
+  font-size: 1.125rem; // TODO: no token (18px)
+  line-height: 24px;
+  overflow-wrap: anywhere;
+}
+
+// No script: every item reads as open.
+.hp-myours:not(.is-enhanced) {
+  .hp-myours__panel {
+    grid-template-rows: 1fr;
+    visibility: visible;
+  }
+
+  .hp-myours__item::before {
+    top: 0;
+    bottom: 0;
+    background: $uds-color-base-white;
+  }
+
+  .hp-myours__trigger {
+    color: $uds-color-base-white;
+    cursor: default;
+  }
+}
+
+// ---- CTA: white text link, 1px underline, white in EVERY state including :visited (theme a:visited is maroon) ----
+
+.hp-myours__cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: $uds-size-spacing-1;
+  margin-top: $uds-size-spacing-2;
+  border-bottom: 1px solid currentcolor;
+  font-size: 1.125rem; // TODO: no token (18px stacked, 16px desktop)
+  line-height: 24px;
+  // !important: no host-page link rule (Drupal body text, editor styles) may add a second underline; the 1px
+  // border is the underline and it disappears on hover.
+  text-decoration: none !important;
+
+  // 44px hit area around the 24px line.
+  &::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: 0;
+    bottom: -10px;
+    left: 0;
+  }
+
+  &:hover {
+    border-bottom-color: transparent;
+  }
+
+  @include hp-myours-focus;
+}
+
+.hp-myours a.hp-myours__cta,
+.hp-myours a.hp-myours__cta:link,
+.hp-myours a.hp-myours__cta:visited,
+.hp-myours a.hp-myours__cta:hover,
+.hp-myours a.hp-myours__cta:focus,
+.hp-myours a.hp-myours__cta:active {
+  color: $uds-color-base-white;
+}
+
+.hp-myours__cta-icon {
+  display: block;
+  width: auto;
+  height: 0.875em;
+  flex: none;
+  pointer-events: none;
+}
+
+// ---- Stacked (<= 768): the photo overlaps the top 24px of the dark band; one caption line under it ----
+
+@media not all and (min-width: $hp-myours-bp) {
+  .hp-myours__photo picture {
+    position: relative;
+    z-index: 1;
+    margin: 0 $uds-size-spacing-4;
+    aspect-ratio: 900 / 650;
+  }
+
+  .hp-myours__caption {
+    position: relative;
+    box-sizing: border-box;
+    min-height: var(--hp-myours-caption-min, 0); // set by make-it-yours.js: the tallest caption wrap
+    margin-top: -$uds-size-spacing-3; // the band starts 24px above the photo's bottom edge
+    padding: $uds-size-spacing-6 $uds-size-spacing-4 0;
+    background: $asu-gray-1;
+    color: $asu-gray-4;
+    font-size: $uds-size-font-small;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+
+  .hp-myours__tabs {
+    padding-top: $uds-size-spacing-4;
+  }
+}
+
+// ---- Motion: transitions exist only when motion is allowed and not during the first render ----
+
+@media (prefers-reduced-motion: no-preference) {
+  .hp-myours:not(.is-booting) {
+    .hp-myours__panel {
+      transition:
+        grid-template-rows 0.5s $hp-myours-ease,
+        visibility 0s linear 0.5s;
+    }
+
+    .hp-myours__item.is-open > .hp-myours__panel {
+      transition:
+        grid-template-rows 0.5s $hp-myours-ease,
+        visibility 0s;
+    }
+
+    .hp-myours__trigger {
+      transition: color 0.35s ease;
+    }
+
+    .hp-myours__item::before {
+      transition:
+        top 0.5s $hp-myours-ease,
+        bottom 0.5s $hp-myours-ease,
+        background-color 0.35s ease;
+    }
+  }
+}
+
+@media (min-width: $hp-myours-bp) {
+  .hp-myours {
+    --hp-myours-inset-r: max(
+      var(--hp-myours-inset),
+      calc((100% - #{$hp-myours-frame}) / 2 + var(--hp-myours-inset))
+    );
+  }
+
+  .hp-myours__stage {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) min(
+        #{$hp-myours-col-w},
+        calc(100% - #{$uds-size-spacing-6})
+      );
+    grid-template-rows: auto 1fr;
+    box-sizing: border-box;
+    height: $hp-myours-h;
+    padding-right: var(--hp-myours-inset-r);
+    overflow: hidden;
+    background: $asu-gray-1; // behind the photo: a missing image keeps the white text readable
+    color: $uds-color-base-white;
+  }
+
+  .hp-myours__photos {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hp-myours__photo {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hp-myours__photo picture,
+  .hp-myours__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hp-myours__img {
+    object-fit: cover;
+    object-position: var(--hp-myours-focus, 50% 50%);
+  }
+
+  .hp-myours__caption-text--desktop {
+    display: inline;
+  }
+
+  .hp-myours__caption-text--mobile {
+    display: none;
+  }
+
+  // The chip: bottom-left of the photo, anchored to the 1920px frame above 1920px.
+  .hp-myours__caption {
+    position: absolute;
+    bottom: $uds-size-spacing-6;
+    left: max(
+      #{$uds-size-spacing-6},
+      calc((100% - #{$hp-myours-frame}) / 2 + #{$uds-size-spacing-6})
+    );
+    box-sizing: border-box;
+    max-width: $hp-myours-chip-w;
+    padding: $uds-size-spacing-1 12px; // TODO: no token (12px)
+    border: 1px solid $hp-myours-chip-edge;
+    border-radius: 4px;
+    background: $hp-myours-chip-bg;
+    color: $uds-color-base-white;
+    font-size: $uds-size-font-small;
+    line-height: 1.25;
+  }
+
+  // Soft dark panel behind the content column, one identical strength for all five photos (not in the mockups).
+  // Alpha set by tests/make-it-yours-contrast.spec.mjs; cap 0.60 (Amendment A1.1). 0.58 gives 30/30 (769-3934).
+  // It fades in left of the column and runs at full strength to the right edge of the browser (Amendment A3).
+  $hp-myours-scrim-alpha: 0.58;
+  .hp-myours__stage::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: calc(
+      var(--hp-myours-inset-r) + #{$hp-myours-col-w} + #{$hp-myours-scrim-feather}
+    );
+    pointer-events: none;
+    background: linear-gradient(
+      to right,
+      rgba($asu-gray-1, 0),
+      rgba($asu-gray-1, $hp-myours-scrim-alpha) $hp-myours-scrim-feather,
+      rgba($asu-gray-1, $hp-myours-scrim-alpha)
+    );
+    @media (forced-colors: active) {
+      display: none;
+    }
+  }
+  .hp-myours__head,
+  .hp-myours__tabs {
+    position: relative;
+    z-index: 2;
+    grid-column: 2;
+    min-width: 0;
+    padding: 0;
+    background: none;
+    color: $uds-color-base-white;
+  }
+
+  .hp-myours__head {
+    grid-row: 1;
+    padding-top: $uds-size-spacing-10; // 80px
+    text-align: left;
+  }
+
+  .hp-myours__heading {
+    font-size: 5.5rem; // TODO: no token (88px)
+    white-space: nowrap;
+  }
+
+  // The swash runs under "it yours": measured from the 1920 screenshot (266px wide, 91px left of "yours" at 88px).
+  .hp-myours__heading--lead .hp-myours__scrib {
+    --scrib-left: -1.03em;
+    --scrib-width: 3.02em;
+
+    max-width: none;
+  }
+
+  .hp-myours__intro {
+    max-width: calc(100% - #{$uds-size-spacing-8});
+    margin: $uds-size-spacing-3 auto 0;
+    text-align: center;
+  }
+
+  .hp-myours__tabs {
+    grid-row: 2;
+    align-self: start;
+    margin-top: $hp-myours-tabs-top;
+  }
+
+  .hp-myours__list {
+    min-height: 0;
+  }
+
+  .hp-myours__item::before {
+    left: calc(-1 * #{$hp-myours-bar-inset});
+  }
+
+  .hp-myours__trigger {
+    padding-left: 0;
+    color: $asu-gray-6;
+    font-size: 1.375rem; // TODO: no token (22px)
+  }
+
+  .hp-myours__panel-inner {
+    padding-left: 0;
+  }
+
+  .hp-myours__desc,
+  .hp-myours__cta {
+    font-size: $uds-size-font-medium;
+  }
+
+  .hp-myours__item.is-open .hp-myours__trigger,
+  .hp-myours:not(.is-enhanced) .hp-myours__trigger {
+    color: $uds-color-base-white;
+  }
+
+  // The no-JS baseline on desktop may exceed 865px (design doc Q5).
+  .hp-myours:not(.is-enhanced) .hp-myours__stage {
+    height: auto;
+    min-height: $hp-myours-h;
+  }
+}
+
+// ---- Forced colors: system colors, opaque panels (last, so it wins over the desktop `background: none`) ----
+
+@media (forced-colors: active) {
+  .hp-myours__head,
+  .hp-myours__tabs,
+  .hp-myours__caption {
+    background: Canvas;
+    color: CanvasText;
+  }
+
+  .hp-myours .hp-myours__trigger,
+  .hp-myours a.hp-myours__cta,
+  .hp-myours a.hp-myours__cta:visited {
+    color: CanvasText;
+  }
+}
