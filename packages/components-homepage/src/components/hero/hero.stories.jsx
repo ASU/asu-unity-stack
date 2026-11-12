@@ -39,7 +39,7 @@ export default {
     docs: {
       description: {
         component:
-          "Homepage hero: a full-width muted video banner with the page's only `h1`, a circled-arrow link inside it (only the arrow links; its \"Find out more\" label widens on hover and keyboard focus), one paragraph and the foundations' pause/play control. Phones and tablets (900px and under) get no video: Gray 1 or the poster, and a gold \"Find out more\" button under the copy. The video has no `src`, `autoplay` or `loop` in the markup: `initHero` attaches `data-src` above 900px only (and detaches it when the viewport shrinks), `initVideoControls` plays it (three plays, paused out of view and in a hidden tab, a visitor's pause sticks, no autoplay under reduced motion or without a poster). The control is `hidden` until a source is attached. Height: window minus header minus a 96px peek, between 560 and 1080px (`--hp-hero-header-height` is set by the page; Storybook has no header, so the defaults are the prototype's 147px / 69px). An empty `.hp-hero__assistant` mount and a narrower copy column at 1180px and under leave room for the separate AI assistant ring. `href`, poster and `data-src` are placeholders: `#hero-find-out-more`, a still from the live clip as the poster and an example URL (no media is committed or requested; these stories fake `src`, `play()` and `IntersectionObserver`). Each rendered copy needs a unique video id.",
+          "Homepage hero: a full-width muted video banner with the page's only `h1`, a circled-arrow link inside it (only the arrow links; its \"Find out more\" label widens on hover and keyboard focus), one paragraph and the foundations' pause/play control. Phones and tablets (900px and under) get no video: Gray 1 or the poster; from 768px the outlined arrow stays, below 768px a gold \"Find out more\" button sits under the copy. The video has no `src`, `autoplay` or `loop` in the markup: `initHero` attaches `data-src` above 900px only (and detaches it when the viewport shrinks), `initVideoControls` plays it (three plays, paused out of view and in a hidden tab, a visitor's pause sticks, no autoplay under reduced motion or without a poster). The control is `hidden` until a source is attached. Height: window minus header minus a 96px peek, between 560 and 1080px (`--hp-hero-header-height` is set by the page; Storybook has no header, so the defaults are the prototype's 147px / 69px). An empty `.hp-hero__assistant` mount and a narrower copy column at 1180px and under leave room for the separate AI assistant ring. `href`, poster and `data-src` are placeholders: `#hero-find-out-more`, a still from the live clip as the poster and an example URL (no media is committed or requested; these stories fake `src`, `play()` and `IntersectionObserver`). Each rendered copy needs a unique video id.",
       },
     },
   },
@@ -442,7 +442,10 @@ export const FocusVisible = {
 
 // --- phones and tablets: no video ---
 
-const expectNoVideo = async (p, { width, gutter, h1, lineHeight }) => {
+const expectNoVideo = async (
+  p,
+  { width, gutter, h1, lineHeight, outlined = false }
+) => {
   await expect(window.innerWidth).toBe(width);
   // nothing was attached or loaded: the poster paints over Gray 1
   await expect(p.source.sets).toEqual([]);
@@ -453,23 +456,35 @@ const expectNoVideo = async (p, { width, gutter, h1, lineHeight }) => {
   await near(box(p.video).width, box(p.section).width, 1);
   await near(box(p.video).height, box(p.section).height, 1);
   await expect(getComputedStyle(p.media).backgroundColor).toBe(GRAY_1);
-  // no control, no circled arrow; the gold button under the copy
+  // no control. From 768px (brand, 2026-11-10) the outlined circled arrow stays and there is no gold button;
+  // below 768px the arrow is replaced by the gold button under the copy
   await expect(p.control.hidden).toBe(true);
   await expect(display(p.control)).toBe("none");
-  await expect(display(p.arrow)).toBe("none");
-  await expect(display(p.cta)).toBe("inline-block");
-  await near(box(p.cta).height, 36, 1);
-  await near(box(p.cta).left - box(p.section).left, gutter, 1);
-  await expect(getComputedStyle(p.cta).backgroundColor).toBe(GOLD);
-  await expect(box(p.cta).top).toBeGreaterThan(box(p.text).bottom);
-  await near(box(p.cta).top - box(p.text).bottom, 24, 1);
+  if (outlined) {
+    await expect(display(p.arrow)).toBe("inline-block");
+    await expect(display(p.cta)).toBe("none");
+    await near(box(p.arrow).width, 32, 0.5);
+    await expect(p.heading.contains(p.arrow)).toBe(true);
+  } else {
+    await expect(display(p.arrow)).toBe("none");
+    await expect(display(p.cta)).toBe("inline-block");
+    await near(box(p.cta).height, 36, 1);
+    await near(box(p.cta).left - box(p.section).left, gutter, 1);
+    await expect(getComputedStyle(p.cta).backgroundColor).toBe(GOLD);
+    await expect(box(p.cta).top).toBeGreaterThan(box(p.text).bottom);
+    await near(box(p.cta).top - box(p.text).bottom, 24, 1);
+  }
   // the hero fills the screen under the header (69px compact header default)
   await near(box(p.section).height, window.innerHeight - 69, 1);
   const style = getComputedStyle(p.heading);
   await expect(style.fontSize).toBe(h1);
   await expect(style.lineHeight).toBe(lineHeight);
   // the copy sits at the bottom of the screen
-  await near(box(p.section).bottom - box(p.cta).bottom, 32, 1);
+  await near(
+    box(p.section).bottom - box(outlined ? p.text : p.cta).bottom,
+    32,
+    1
+  );
   // the gutter
   await near(box(p.heading).left - box(p.section).left, gutter, 1);
 };
@@ -514,6 +529,7 @@ export const Tablet768 = {
       gutter: 48,
       h1: "49.92px",
       lineHeight: "52.416px",
+      outlined: true,
     });
     await expect(getComputedStyle(p.text).marginTop).toBe("16px");
   },
@@ -862,8 +878,18 @@ export const BreakpointCrossing = {
     await expect(p.source.loads).toBe(1);
     await expect(p.control.hidden).toBe(true);
     await expect(display(p.control)).toBe("none");
+    // the outlined arrow stays down to 768px (brand 2026-11-10); the poster and no-video rule stay at 900
+    await expect(display(p.arrow)).toBe("inline-block");
+    await expect(display(p.cta)).toBe("none");
+    await resizeViewport(768, 768);
+    await expect(display(p.arrow)).toBe("inline-block");
+    await expect(display(p.cta)).toBe("none");
+    // 767: the gold button replaces the arrow
+    await resizeViewport(767, 768);
+    await expect(window.innerWidth).toBe(767);
     await expect(display(p.arrow)).toBe("none");
     await expect(display(p.cta)).toBe("inline-block");
+    await resizeViewport(900, 768);
 
     // 901: attached again, the control back
     await resizeViewport(901, 768);
@@ -889,6 +915,11 @@ export const BreakpointCrossing = {
     p.control.focus();
     await expect(document.activeElement).toBe(p.control);
     await resizeViewport(900, 768);
+    await waitFor(() => expect(document.activeElement).toBe(p.arrow));
+    // and to the gold button once that is the visible link (below 768px)
+    await resizeViewport(1024, 768);
+    p.control.focus();
+    await resizeViewport(767, 768);
     await waitFor(() => expect(document.activeElement).toBe(p.cta));
   },
 };
