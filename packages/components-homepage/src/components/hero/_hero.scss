@@ -213,7 +213,7 @@ $hp-hero-header-break: 1080px; // The prototype switches to its compact header a
   }
 }
 
-// Phones and tablets: the standard gold button replaces the arrow.
+// Below 768px (the UDS md line, see the phone block) the standard gold button replaces the arrow.
 .hp-hero__cta {
   display: none;
 }
@@ -309,7 +309,12 @@ $hp-hero-header-break: 1080px; // The prototype switches to its compact header a
   .hp-hero__text {
     max-width: 509px;
   }
+}
 
+// Brand (2026-11-10): the outlined circled arrow stays down to the UDS md line; only below it the gold
+// button replaces the arrow. The poster and no-video rule stay at 900px. A max-width query (no min-width)
+// so no fractional width falls between the arrow and the button.
+@media (max-width: #{$uds-breakpoint-md - 0.02px}) {
   .hp-hero__arrow {
     display: none;
   }
