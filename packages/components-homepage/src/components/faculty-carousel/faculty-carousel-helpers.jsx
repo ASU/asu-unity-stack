@@ -192,9 +192,9 @@ const card = (person, index, id) => {
   const videoId = `${id}-video-${n}`;
   const descId = `${id}-desc-${n}`;
   const media = person.video
-    ? `<video id="${videoId}" class="hp-faculty__video" muted playsinline preload="metadata" poster="${escape(person.still)}" data-auto data-in-view="0.98" data-plays="3" data-src="${escape(person.video)}"${index === 0 ? "" : " data-hold"} aria-hidden="true"></video>${videoControl(videoId, person.name)}`
+    ? `<video id="${videoId}" class="hp-faculty__video" muted playsinline preload="none" poster="${escape(person.still)}" data-auto data-restart data-plays="3" data-src="${escape(person.video)}"${index === 0 ? "" : " data-hold"} aria-hidden="true"></video>${videoControl(videoId, person.name)}`
     : "";
-  return `<div class="hp-faculty__card" data-index="${index}"><img class="hp-faculty__still" src="${escape(person.still)}" alt="${escape(person.alt)}" width="470" height="544" decoding="async"><button type="button" class="hp-faculty__pick" aria-label="Show ${escape(person.name)}" aria-describedby="${descId}" hidden ${gaAttributes(`show ${person.name}`, { event: "select" })}></button>${media}<p id="${descId}" class="visually-hidden">${escape(person.description || person.alt)}</p></div>`;
+  return `<div class="hp-faculty__card" data-index="${index}"><img class="hp-faculty__still" src="${escape(person.still)}" alt="${escape(person.alt)}" width="470" height="544" loading="lazy" decoding="async"><button type="button" class="hp-faculty__pick" aria-label="Show ${escape(person.name)}" aria-describedby="${descId}" hidden ${gaAttributes(`show ${person.name}`, { event: "select" })}></button>${media}<p id="${descId}" class="visually-hidden">${escape(person.description || person.alt)}</p></div>`;
 };
 
 const caption = (person, index) =>
@@ -215,15 +215,20 @@ export const facultyCarouselHtml = ({
 // ---- Test support ----
 
 // Renders the markup and runs the two inits in the requested order (`controlsFirst`) or not at all (`manual`, the
-// server-markup state). The test runner fakes playback and the source on every video; the Storybook UI plays the
-// real clips, as on the page.
-export const Harness = ({ html, manual = false, controlsFirst = false }) => {
+// server-markup state). With `fake` (the default in the test runner) playback and the source are faked on every
+// video; the Storybook UI plays the real clips, as on the page.
+export const Harness = ({
+  html,
+  manual = false,
+  controlsFirst = false,
+  fake = realPointer.available,
+}) => {
   const ref = useRef(null);
   useEffect(() => {
     const root = ref.current;
     const videos = Array.from(root.querySelectorAll("video"));
     const restores = videos.flatMap(video => {
-      if (!realPointer.available) return [];
+      if (!fake) return [];
       const restore = [stubPlayback(video), stubSource(video)];
       // like a browser: a video without a source rejects play() (NotSupportedError)
       const play = video.play;
@@ -243,7 +248,7 @@ export const Harness = ({ html, manual = false, controlsFirst = false }) => {
       destroy.forEach(cleanup => cleanup());
       restores.forEach(restore => restore());
     };
-  }, [html, manual, controlsFirst]);
+  }, [html, manual, controlsFirst, fake]);
   return <div ref={ref} dangerouslySetInnerHTML={{ __html: html }} />;
 };
 

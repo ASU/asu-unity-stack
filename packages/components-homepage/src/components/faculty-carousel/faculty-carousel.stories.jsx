@@ -178,6 +178,8 @@ const expectContract = async p => {
   await expect(p.captions).toHaveLength(PEOPLE.length);
   PEOPLE.forEach((person, i) => {
     expect(p.stills[i].getAttribute("src")).toBe(person.still);
+    // the section is below the fold: stills load when they near the viewport
+    expect(p.stills[i].getAttribute("loading")).toBe("lazy");
     expect(p.captions[i].textContent).toBe(person.name + person.title);
     const panel = p.panels[i];
     expect(panel.querySelector(".hp-faculty__role").textContent).toBe(
@@ -195,13 +197,21 @@ const expectContract = async p => {
     expect(panel.querySelector("blockquote") !== null).toBe(
       Boolean(person.quote)
     );
+    // the quote is upright, like the rest of the panel
+    panel
+      .querySelectorAll(
+        "blockquote, .hp-faculty__quote-text, .hp-faculty__cite"
+      )
+      .forEach(element => expect(style(element).fontStyle).toBe("normal"));
     if (person.video) {
       expect(p.videos[i].getAttribute("poster")).toBe(person.still);
+      // nothing is downloaded until a video plays
+      expect(p.videos[i].getAttribute("preload")).toBe("none");
       expect(p.videos[i].hasAttribute("muted")).toBe(true);
       expect(p.videos[i].hasAttribute("autoplay")).toBe(false);
       expect(p.videos[i].hasAttribute("loop")).toBe(false);
       expect(p.videos[i].dataset.plays).toBe("3");
-      expect(p.videos[i].dataset.inView).toBe("0.98");
+      expect(p.videos[i].dataset.inView).toBe(undefined);
       expect(p.controls[i].dataset.for).toBe(p.videos[i].id);
       expect(
         document.getElementById(p.picks[i].getAttribute("aria-describedby"))
@@ -337,11 +347,11 @@ export const Default = {
     await expect(p.status.textContent).toBe("");
     await expect(p.stage.getAttribute("role")).toBe("group");
     await expect(p.stage.getAttribute("aria-roledescription")).toBe("carousel");
-    // sources are attached (metadata only), the controls appear on the front card only and the others are held
+    // sources are attached (nothing preloaded), the controls appear on the front card only and the others are held
     p.videos.forEach((video, i) => {
       if (!video) return;
       expect(getSource(video).sets).toHaveLength(1);
-      expect(video.getAttribute("preload")).toBe("metadata");
+      expect(video.getAttribute("preload")).toBe("none");
       expect(video.hasAttribute("data-hold")).toBe(i !== 0);
       expect(p.controls[i].hidden).toBe(false);
       expect(style(p.controls[i]).visibility).toBe(
@@ -824,7 +834,7 @@ export const VideoFrontOnly = {
         video =>
           video && expect(video.classList.contains("is-ready")).toBe(false)
       );
-    // next: the old front is held and paused, its still returns; the new front waits for the fan to be fully in view
+    // next: the old front is held and paused, its still returns; the new front starts once enough of it shows
     await click(p.next);
     await waitFor(() => expect(p.stubs[0].calls.pause).toBeGreaterThan(0));
     await expect(p.videos[0].hasAttribute("data-hold")).toBe(true);
@@ -832,7 +842,7 @@ export const VideoFrontOnly = {
     await expect(p.videos[1].hasAttribute("data-hold")).toBe(false);
     await settle();
     await expect(p.stubs[1].calls.play).toBe(0);
-    environment.emit(p.videos[1], 0.5);
+    environment.emit(p.videos[1], 0.3);
     await settle();
     await expect(p.stubs[1].calls.play).toBe(0);
     environment.emit(p.videos[1], 1);
@@ -908,13 +918,14 @@ export const VideoPlayBudget = {
     await waitFor(() =>
       expect(video.classList.contains("is-ready")).toBe(false)
     );
-    // a spent card that comes back to the front shows the still with Play and does not autoplay
+    // a spent card that comes back to the front starts over: a fresh set of plays
     await click(p.next);
     await click(p.prev);
     environment.emit(video, 1);
-    await settle();
-    await expect(video.paused).toBe(true);
-    await expect(video.classList.contains("is-ready")).toBe(false);
+    await waitFor(() =>
+      expect(video.classList.contains("is-ready")).toBe(true)
+    );
+    await expect(video.paused).toBe(false);
   },
 };
 
@@ -934,15 +945,14 @@ export const VideoVisitorPause = {
     await expect(p.videos[0].paused).toBe(true);
     // the paused frame stays (no still) while the card is in front
     await expect(p.videos[0].classList.contains("is-ready")).toBe(true);
-    // away and back: still showing, still paused, even when the fan is in view
+    // away and back: the card starts over and plays again, even though the visitor had paused it
     await click(p.next);
     await expect(p.videos[0].classList.contains("is-ready")).toBe(false);
     await click(p.prev);
     environment.emit(p.videos[0], 1);
-    await settle();
-    await expect(p.videos[0].paused).toBe(true);
-    await expect(p.stubs[0].calls.play).toBe(1);
-    await expect(p.controls[0].dataset.state).toBe("paused");
+    await waitFor(() => expect(p.stubs[0].calls.play).toBe(2));
+    await expect(p.videos[0].paused).toBe(false);
+    await expect(p.controls[0].dataset.state).toBe("playing");
   },
 };
 
@@ -1122,12 +1132,13 @@ export const LateContent = {
 
 // --- more contracts ---
 
-// Render only (no play function): the Playwright spec measures this one at real widths.
+// Render only (no play function): the Playwright spec measures this one at real widths. Playback is faked so the
+// geometry does not depend on the browser's codecs.
 export const Fan = {
   tags: ["!dev"],
   name: "Fan (render only)",
   globals: viewport(1440),
-  render: () => <Harness html={facultyCarouselHtml()} />,
+  render: () => <Harness fake html={facultyCarouselHtml()} />,
 };
 
 export const TabOrder = {
