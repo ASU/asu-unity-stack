@@ -7,6 +7,11 @@
   color: $uds-color-font-dark-base;
 }
 
+.charter-bubbles-story__focus-probe {
+  display: inline-block;
+  margin: $uds-size-spacing-2;
+}
+
 .charter-bubbles-story__main {
   display: flex;
   align-items: center;

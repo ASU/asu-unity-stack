@@ -38,6 +38,13 @@ const viewport = width => ({
 
 const StoryFrame = ({ children }) => (
   <div className="charter-bubbles-story">
+    <a
+      id="charter-bubbles-focus-start"
+      className="charter-bubbles-story__focus-probe"
+      href="#charter-bubbles-focus-end"
+    >
+      Focus test: page start
+    </a>
     <section className="charter-bubbles-story__main">
       <div>
         <p className="charter-bubbles-story__eyebrow">The ASU Charter</p>
@@ -47,6 +54,13 @@ const StoryFrame = ({ children }) => (
     {children}
     <section className="charter-bubbles-story__following">
       <div>Following content begins after the reserved expansion area.</div>
+      <a
+        id="charter-bubbles-focus-end"
+        className="charter-bubbles-story__focus-probe"
+        href="#charter-bubbles-focus-start"
+      >
+        Focus test: page end
+      </a>
     </section>
   </div>
 );
@@ -686,8 +700,10 @@ const assertExpandedContentFits = async canvasElement => {
     root.getAttribute("data-layout") === "carousel" ? [link] : [link, close];
   for (const control of controls) {
     const controlRect = control.getBoundingClientRect();
-    await expect(controlRect.width).toBeGreaterThanOrEqual(44);
-    await expect(controlRect.height).toBeGreaterThanOrEqual(44);
+    if (control === close) {
+      await expect(controlRect.width).toBeGreaterThanOrEqual(44);
+      await expect(controlRect.height).toBeGreaterThanOrEqual(44);
+    }
     await expect(controlRect.left).toBeGreaterThanOrEqual(backRect.left - 1);
     await expect(controlRect.right).toBeLessThanOrEqual(backRect.right + 1);
     await expect(controlRect.top).toBeGreaterThanOrEqual(backRect.top - 1);
@@ -715,6 +731,19 @@ export const Phone320Expanded = {
       ).toHaveAttribute("data-enhanced", "true")
     );
     await assertExpandedContentFits(canvasElement);
+    const openBubble = canvasElement.querySelector(
+      ".hp-charter-bubble.is-open"
+    );
+    const openBack = openBubble.querySelector("[data-charter-bubble-panel]");
+    const viewportWidth = document.documentElement.clientWidth;
+    await expect(openBubble.getBoundingClientRect().width).toBeGreaterThan(
+      viewportWidth
+    );
+    for (const content of openBack.children) {
+      const box = content.getBoundingClientRect();
+      await expect(box.left).toBeGreaterThanOrEqual(0);
+      await expect(box.right).toBeLessThanOrEqual(viewportWidth);
+    }
   },
 };
 
@@ -725,17 +754,30 @@ export const OpenCloseFocus = {
     const root = canvasElement.querySelector("[data-charter-bubbles]");
     const fronts = root.querySelectorAll("[data-charter-bubble-open]");
     await userEvent.click(fronts[0]);
+    const firstPanel = root.querySelector(
+      '[data-charter-bubble-id="employability"] [data-charter-bubble-panel]'
+    );
+    const firstLink = firstPanel.querySelector(".hp-charter-bubble__link");
     const firstClose = root.querySelector(
       '[data-charter-bubble-id="employability"] [data-charter-bubble-close]'
     );
-    await expect(firstClose).toHaveFocus();
+    await expect(firstPanel).toHaveFocus();
+    await expect(firstPanel).not.toHaveAttribute("tabindex");
     await expect(fronts[0]).toHaveAttribute("aria-expanded", "true");
+    await userEvent.tab();
+    await expect(firstLink).toHaveFocus();
+    await userEvent.tab();
+    await expect(firstClose).toHaveFocus();
 
     await userEvent.click(fronts[1]);
+    const secondPanel = root.querySelector(
+      '[data-charter-bubble-id="fortune-500"] [data-charter-bubble-panel]'
+    );
     const secondClose = root.querySelector(
       '[data-charter-bubble-id="fortune-500"] [data-charter-bubble-close]'
     );
-    await expect(secondClose).toHaveFocus();
+    await expect(secondPanel).toHaveFocus();
+    await expect(secondPanel).not.toHaveAttribute("tabindex");
     await expect(root.querySelectorAll(".is-open")).toHaveLength(1);
     await expect(getComputedStyle(secondClose).borderRadius).toBe("50%");
 
@@ -757,16 +799,23 @@ export const OpenCloseFocus = {
       )
     ).toBeLessThanOrEqual(1);
 
-    for (const control of [
-      root.querySelector(".is-open .hp-charter-bubble__link"),
-      secondClose,
-    ]) {
-      const box = control.getBoundingClientRect();
-      await expect(box.width).toBeGreaterThanOrEqual(44);
-      await expect(box.height).toBeGreaterThanOrEqual(44);
-    }
+    const closeTarget = secondClose.getBoundingClientRect();
+    await expect(closeTarget.width).toBeGreaterThanOrEqual(44);
+    await expect(closeTarget.height).toBeGreaterThanOrEqual(44);
+
+    await userEvent.click(
+      openBack.querySelector(".hp-charter-bubble__heading")
+    );
+    await expect(root).toHaveAttribute("data-open-id", "fortune-500");
 
     await userEvent.click(secondClose);
+    await expect(fronts[1]).toHaveFocus();
+
+    await userEvent.click(fronts[1]);
+    await userEvent.click(
+      root.querySelector(".hp-charter-bubbles__cluster-shell")
+    );
+    await expect(root).not.toHaveAttribute("data-open-id");
     await expect(fronts[1]).toHaveFocus();
     await expect(root).not.toHaveAttribute("data-open-id");
   },
@@ -829,13 +878,19 @@ export const CarouselNavigation = {
     }
 
     const start = viewportElement.scrollLeft;
+    const nextItem = root.querySelector(
+      '[data-charter-bubble-id="fortune-500"]'
+    );
     await userEvent.click(next);
-    await expect(root).toHaveAttribute("data-open-id", "employability");
-    await expect(root.querySelectorAll(".is-open")).toHaveLength(1);
+    await expect(root).not.toHaveAttribute("data-open-id");
+    await expect(root.querySelectorAll(".is-open")).toHaveLength(0);
+    await expect(initialOpenItem).not.toHaveClass("is-opening");
+    await expect(nextItem).toHaveClass("is-opening");
     await waitFor(() => {
       expect(viewportElement.scrollLeft).toBeGreaterThan(start);
       expect(root).toHaveAttribute("data-open-id", "fortune-500");
       expect(root.querySelectorAll(".is-open")).toHaveLength(1);
+      expect(nextItem).not.toHaveClass("is-opening");
     });
 
     const farBubble = root.querySelector(
@@ -855,8 +910,10 @@ export const CarouselNavigation = {
     await expect(root).toHaveAttribute("data-open-id", "fortune-500");
     await expect(root.querySelectorAll(".is-open")).toHaveLength(1);
     viewportElement.dispatchEvent(new Event("scrollend"));
-    await expect(root).toHaveAttribute("data-open-id", "faculty");
-    await expect(root.querySelectorAll(".is-open")).toHaveLength(1);
+    await waitFor(() => {
+      expect(root).toHaveAttribute("data-open-id", "faculty");
+      expect(root.querySelectorAll(".is-open")).toHaveLength(1);
+    });
 
     viewportElement.dispatchEvent(new Event("touchstart", { bubbles: true }));
     viewportElement.scrollLeft += 1;
@@ -882,10 +939,28 @@ export const CarouselNavigation = {
             (viewportBox.left + viewportBox.width / 2)
         )
       ).toBeLessThanOrEqual(1);
+      expect(next).toBeDisabled();
     });
 
+    const verticalWheel = new WheelEvent("wheel", {
+      bubbles: true,
+      cancelable: true,
+      deltaY: -120,
+    });
+    viewportElement.dispatchEvent(verticalWheel);
+    await expect(verticalWheel.defaultPrevented).toBe(false);
+    await expect(root).toHaveAttribute(
+      "data-open-id",
+      "undergraduate-research"
+    );
+
     viewportElement.dispatchEvent(
-      new WheelEvent("wheel", { bubbles: true, cancelable: true, deltaY: -1 })
+      new WheelEvent("wheel", {
+        bubbles: true,
+        cancelable: true,
+        deltaY: -1,
+        shiftKey: true,
+      })
     );
     for (let index = 0; index < 4; index += 1) {
       viewportElement.dispatchEvent(
@@ -893,6 +968,7 @@ export const CarouselNavigation = {
           bubbles: true,
           cancelable: true,
           deltaY: -120,
+          shiftKey: true,
         })
       );
     }
@@ -904,20 +980,31 @@ export const CarouselNavigation = {
     await waitFor(() => {
       expect(root).toHaveAttribute("data-open-id", "degree-programs");
       expect(root.querySelectorAll(".is-open")).toHaveLength(1);
+      expect(next).not.toBeDisabled();
     });
     viewportElement.dispatchEvent(
       new WheelEvent("wheel", {
         bubbles: true,
         cancelable: true,
         deltaY: -120,
+        shiftKey: true,
       })
     );
     viewportElement.dispatchEvent(new Event("scrollend"));
     await expect(root).toHaveAttribute("data-open-id", "degree-programs");
+
+    farBubbleButton.focus();
+    await waitFor(() => {
+      expect(root).toHaveAttribute("data-open-id", "undergraduate-research");
+      const panel = farBubble.querySelector("[data-charter-bubble-panel]");
+      expect(panel).toHaveFocus();
+      expect(panel).not.toHaveAttribute("tabindex");
+    });
   },
 };
 
 export const BreakpointPreservesOpen = {
+  name: "Breakpoint resets cluster to closed",
   ...viewport(768),
   render: () => <ReactPage />,
   play: async ({ canvasElement }) => {
@@ -932,12 +1019,17 @@ export const BreakpointPreservesOpen = {
     await resizeViewport(769);
     await waitFor(() => expect(root).toHaveAttribute("data-layout", "cluster"));
     await expect(root).toHaveClass("is-enhanced", "is-cluster");
-    await expect(root).toHaveAttribute("data-open-id", "faculty");
+    await expect(root).not.toHaveAttribute("data-open-id");
+    await expect(root.querySelectorAll(".is-open, .is-opening")).toHaveLength(
+      0
+    );
     await resizeViewport(768);
     await waitFor(() =>
       expect(root).toHaveAttribute("data-layout", "carousel")
     );
     await expect(root).toHaveClass("is-enhanced", "is-carousel");
+    await expect(root).toHaveAttribute("data-open-id", "employability");
+    await expect(root.querySelectorAll(".is-open")).toHaveLength(1);
   },
 };
 
@@ -948,9 +1040,17 @@ export const ReducedMotion = {
     await emulateReducedMotion(true);
     try {
       const bubble = canvasElement.querySelector(".hp-charter-bubble");
-      await waitFor(() =>
-        expect(getComputedStyle(bubble).transitionDuration).toBe("0s")
+      const front = bubble.querySelector(".hp-charter-bubble__front");
+      const back = bubble.querySelector(".hp-charter-bubble__back");
+      const carousel = canvasElement.querySelector(
+        ".hp-charter-bubbles__viewport"
       );
+      await waitFor(() => {
+        expect(getComputedStyle(bubble).transitionDuration).toBe("0s");
+        expect(getComputedStyle(front).transitionDuration).toBe("0s");
+        expect(getComputedStyle(back).transitionDuration).toBe("0s");
+        expect(getComputedStyle(carousel).scrollBehavior).toBe("auto");
+      });
     } finally {
       await emulateReducedMotion(false);
     }

@@ -29,6 +29,15 @@ const DESKTOP_RELAXATION_PASSES = 60;
 const controllers = new WeakMap();
 const ignore = () => {};
 
+const prefersReducedMotion = view => {
+  if (typeof view?.matchMedia !== "function") return false;
+  try {
+    return view.matchMedia(REDUCED_MOTION_MEDIA_QUERY).matches;
+  } catch {
+    return false;
+  }
+};
+
 const readAttribute = (element, name) => ({
   present: element.hasAttribute(name),
   value: element.getAttribute(name),
@@ -467,10 +476,19 @@ const focusSafely = element => {
   }
 };
 
+const focusTemporarily = element => {
+  if (!element) return;
+  const tabindex = readAttribute(element, "tabindex");
+  if (!tabindex.present) element.setAttribute("tabindex", "-1");
+  focusSafely(element);
+  restoreAttribute(element, "tabindex", tabindex);
+};
+
 const bindBubbleTransitions = controller => {
   const { root } = controller;
   const records = discoverBubbleItems(root);
   const byId = new Map(records.map(record => [record.id, record]));
+  const byItem = new Map(records.map(record => [record.item, record]));
   const byFront = new Map(records.map(record => [record.front, record]));
   const byClose = new Map(records.map(record => [record.close, record]));
   const cluster = controller.query(CLUSTER_SELECTOR);
@@ -822,7 +840,7 @@ const bindBubbleTransitions = controller => {
         "--hp-charter-translate-y",
         `${point.dy / scaleY}px`
       );
-      if (point !== selected) {
+      if (point !== selected && !prefersReducedMotion(view)) {
         controller.setStyle(
           point.record.item,
           "transition",
@@ -893,7 +911,7 @@ const bindBubbleTransitions = controller => {
 
   const transitionTo = (
     nextId,
-    { focusClose = false, returnFocus = false, allowCarouselEmpty = false } = {}
+    { focusPanel = false, returnFocus = false, allowCarouselEmpty = false } = {}
   ) => {
     if (nextId != null && !byId.has(nextId)) return false;
     if (
@@ -918,7 +936,7 @@ const bindBubbleTransitions = controller => {
     applyDesktopGeometry();
 
     const active = openId == null ? null : byId.get(openId);
-    if (focusClose && active) focusSafely(active.close);
+    if (focusPanel && active) focusTemporarily(active.panel);
     else if (shouldReturnFocus && previous) focusSafely(previous.front);
 
     return true;
@@ -953,17 +971,15 @@ const bindBubbleTransitions = controller => {
         });
         return;
       }
-      transitionTo(frontRecord.id, { focusClose: true });
+      transitionTo(frontRecord.id, { focusPanel: true });
       return;
     }
 
-    const panel = target.closest(PANEL_SELECTOR);
+    const active = openId == null ? null : byId.get(openId);
     if (
-      panel &&
-      openId != null &&
+      active &&
       controller.layout?.getMode?.() !== "carousel" &&
-      !target.closest("a") &&
-      !target.closest(CLOSE_SELECTOR)
+      !active.item.contains(target)
     ) {
       transitionTo(null, { returnFocus: true });
     }
@@ -985,6 +1001,14 @@ const bindBubbleTransitions = controller => {
     transitionTo(null, { returnFocus: true });
   };
 
+  const onRootFocusIn = event => {
+    if (controller.layout?.getMode?.() !== "carousel") return;
+    const item = closestElement(event.target)?.closest(ITEM_SELECTOR);
+    const record = byItem.get(item);
+    if (!record || record.id === openId) return;
+    controller.carousel?.selectItem?.(record.item, { focusPanel: true });
+  };
+
   const onDocumentOutside = event => {
     const target = closestElement(event.target);
     if (
@@ -999,6 +1023,7 @@ const bindBubbleTransitions = controller => {
   };
 
   controller.listen(root, "click", onRootClick);
+  controller.listen(root, "focusin", onRootFocusIn);
   controller.listen(root, "keydown", onRootKeyDown);
   controller.listen(ownerDocument, "pointerdown", onDocumentOutside);
   controller.listen(ownerDocument, "click", onDocumentOutside);
@@ -1047,6 +1072,10 @@ const bindResponsiveVisibility = controller => {
     controller.setAttribute(root, "data-layout", mode);
     controller.setClass(root, "is-carousel", mode === "carousel");
     controller.setClass(root, "is-cluster", mode === "cluster");
+
+    if (mode === "cluster" && previousMode === "carousel") {
+      controller.bubbles?.setOpenId?.(null);
+    }
 
     if (mode === "carousel" && previousMode !== "carousel") {
       if (controller.bubbles?.getOpenId?.() == null) {
@@ -1276,14 +1305,7 @@ const bindCarouselGeometry = controller => {
     }, items[0]);
   };
 
-  const reducedMotion = () => {
-    if (typeof view?.matchMedia !== "function") return false;
-    try {
-      return view.matchMedia(REDUCED_MOTION_MEDIA_QUERY).matches;
-    } catch {
-      return false;
-    }
-  };
+  const reducedMotion = () => prefersReducedMotion(view);
 
   const cssLengthToPixels = value => {
     const numeric = Number.parseFloat(value);
@@ -1310,10 +1332,7 @@ const bindCarouselGeometry = controller => {
     const configuredOpenSize = cssLengthToPixels(
       rootStyle.getPropertyValue("--hp-charter-mobile-open")
     );
-    const openSize = Math.min(
-      configuredOpenSize,
-      Math.max(0, viewport.clientWidth - 64)
-    );
+    const openSize = configuredOpenSize;
     const gap = Number.parseFloat(listStyle.columnGap || listStyle.gap) || 0;
     const paddingStart = Number.parseFloat(listStyle.paddingInlineStart) || 0;
     if (!closedSize || !openSize) return null;
@@ -1388,10 +1407,12 @@ const bindCarouselGeometry = controller => {
     if (!controller.active) return state;
 
     const maxScroll = Math.max(0, viewport.scrollWidth - viewport.clientWidth);
-    const scrollLeft = Math.max(0, viewport.scrollLeft);
     const hasOverflow = maxScroll > 1;
-    const atStart = !hasOverflow || scrollLeft <= 1;
-    const atEnd = !hasOverflow || maxScroll - scrollLeft <= 1;
+    const items = getItems();
+    const activeIndex = items.indexOf(getActiveCarouselItem());
+    const atStart = !hasOverflow || activeIndex <= 0;
+    const atEnd =
+      !hasOverflow || (activeIndex >= 0 && activeIndex === items.length - 1);
 
     state = { atStart, atEnd, hasOverflow };
     setDisabled(previous, atStart);
@@ -1491,6 +1512,18 @@ const bindCarouselGeometry = controller => {
     deferredSelection = false;
     pendingScroll = true;
     controller.setClass(root, "is-correcting", true);
+    const targetId = item.getAttribute("data-charter-bubble-id");
+    controller.setClass(item, "is-opening", true);
+    if (
+      targetId &&
+      controller.bubbles?.getOpenId?.() != null &&
+      controller.bubbles.getOpenId() !== targetId
+    ) {
+      controller.bubbles.setOpenId(null, {
+        allowCarouselEmpty: true,
+        returnFocus: false,
+      });
+    }
     centerActiveBubble(reducedMotion() ? "auto" : "smooth", {
       useFinalLayout: true,
     });
@@ -1506,10 +1539,11 @@ const bindCarouselGeometry = controller => {
     pendingSelectionItem = null;
     const id = item.getAttribute("data-charter-bubble-id");
     if (id) controller.bubbles?.setOpenId?.(id);
+    controller.setClass(item, "is-opening", false);
     recentring = true;
     if (pendingFocusItem === item) {
       pendingFocusItem = null;
-      focusSafely(item.querySelector(".hp-charter-bubble__link"));
+      focusTemporarily(item.querySelector(PANEL_SELECTOR));
     }
     sync();
     return true;
@@ -1522,6 +1556,11 @@ const bindCarouselGeometry = controller => {
       controller.layout?.getMode?.() !== "carousel"
     ) {
       return false;
+    }
+
+    if (pendingSelectionItem === item) {
+      if (focusPanel) pendingFocusItem = item;
+      return true;
     }
 
     if (focusPanel) pendingFocusItem = item;
@@ -1543,7 +1582,7 @@ const bindCarouselGeometry = controller => {
 
     if (pendingFocusItem === item) {
       pendingFocusItem = null;
-      focusSafely(item.querySelector(".hp-charter-bubble__link"));
+      focusTemporarily(item.querySelector(PANEL_SELECTOR));
     }
   };
 
@@ -1701,10 +1740,10 @@ const bindCarouselGeometry = controller => {
 
   const onWheel = event => {
     if (controller.layout?.getMode?.() !== "carousel") return;
-    const delta =
-      Math.abs(event.deltaX) > Math.abs(event.deltaY)
-        ? event.deltaX
-        : event.deltaY;
+    const horizontalIntent =
+      event.shiftKey || Math.abs(event.deltaX) > Math.abs(event.deltaY);
+    if (!horizontalIntent) return;
+    const delta = event.deltaX || (event.shiftKey ? event.deltaY : 0);
     if (!delta) return;
 
     const maxScroll = Math.max(0, viewport.scrollWidth - viewport.clientWidth);
@@ -1756,7 +1795,24 @@ const bindCarouselGeometry = controller => {
   controller.listen(track, "transitionend", onItemSizeTransitionEnd);
   controller.listen(view, "resize", queueSync, { passive: true });
 
-  const unsubscribeLayout = controller.layout?.subscribe(() => sync());
+  const unsubscribeLayout = controller.layout?.subscribe(mode => {
+    if (mode !== "carousel") {
+      clearIdleTimer();
+      if (pendingSelectionItem) {
+        controller.setClass(pendingSelectionItem, "is-opening", false);
+      }
+      pendingSelectionItem = null;
+      preferredSelectionItem = null;
+      deferredSelection = false;
+      selectionOriginId = null;
+      pendingScroll = false;
+      recentring = false;
+      gestureActive = false;
+      gestureMoved = false;
+      controller.setClass(root, "is-correcting", false);
+    }
+    sync();
+  });
   controller.addCleanup(unsubscribeLayout);
 
   const ResizeObserverConstructor = view?.ResizeObserver;
@@ -1800,6 +1856,9 @@ const bindCarouselGeometry = controller => {
     deferredSelection = false;
     selectionOriginId = null;
     preferredSelectionItem = null;
+    if (pendingSelectionItem) {
+      controller.setClass(pendingSelectionItem, "is-opening", false);
+    }
     pendingSelectionItem = null;
     wheelSessionActive = false;
     controller.setClass(root, "is-correcting", false);

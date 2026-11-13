@@ -20,6 +20,10 @@ const CHEVRON_PATH =
   "M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z";
 const XMARK_PATH =
   "M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z";
+const CHEVRON_LEFT_PATH =
+  "M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z";
+const CHEVRON_RIGHT_PATH =
+  "M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z";
 
 const analyticsHtml = attributes =>
   Object.entries(approvedGaAttributes(attributes))
@@ -55,7 +59,10 @@ export const charterBubblesStaticHtml = ({
   const openIndex = items.findIndex(item => item.id === openId);
   const open = openIndex !== -1;
 
-  return `<div class="hp-charter-bubbles" data-charter-bubbles data-charter-bubbles-instance="${safeInstanceId}"${open ? ` data-open-id="${openId}"` : ""}><div class="hp-charter-bubbles__cluster-shell${open ? " has-open-bubble" : ""}" data-charter-bubble-cluster${open ? ` data-open-slot="${openIndex + 1}"` : ""}><div class="hp-charter-bubbles__cluster-stage" data-charter-bubble-cluster-stage><div class="hp-charter-bubbles__carousel" data-charter-bubble-carousel><div class="hp-charter-bubbles__viewport" data-charter-bubble-viewport><div class="hp-charter-bubbles__track" data-charter-bubble-track><ol class="hp-charter-bubbles__list" aria-label="ASU by the numbers" data-charter-bubble-list>${items.map(item => staticItemHtml(item, safeInstanceId, openId)).join("")}</ol></div></div><div class="hp-charter-bubbles__nav" role="group" aria-label="ASU facts carousel navigation" data-charter-bubble-nav><button class="hp-charter-bubbles__nav-button hp-charter-bubbles__nav-button--previous" type="button" aria-label="Previous ASU fact" disabled data-charter-bubble-previous${analyticsHtml(previousAnalytics)}><span aria-hidden="true">←</span></button><button class="hp-charter-bubbles__nav-button hp-charter-bubbles__nav-button--next" type="button" aria-label="Next ASU fact" data-charter-bubble-next${analyticsHtml(nextAnalytics)}><span aria-hidden="true">→</span></button></div></div></div></div></div>`;
+  const previousIcon = `<svg class="hp-charter-bubbles__nav-icon" viewBox="0 0 320 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="${CHEVRON_LEFT_PATH}"></path></svg>`;
+  const nextIcon = `<svg class="hp-charter-bubbles__nav-icon" viewBox="0 0 320 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="${CHEVRON_RIGHT_PATH}"></path></svg>`;
+
+  return `<div class="hp-charter-bubbles" data-charter-bubbles data-charter-bubbles-instance="${safeInstanceId}"${open ? ` data-open-id="${openId}"` : ""}><div class="hp-charter-bubbles__cluster-shell${open ? " has-open-bubble" : ""}" data-charter-bubble-cluster${open ? ` data-open-slot="${openIndex + 1}"` : ""}><div class="hp-charter-bubbles__cluster-stage" data-charter-bubble-cluster-stage><div class="hp-charter-bubbles__carousel" data-charter-bubble-carousel><div class="hp-charter-bubbles__viewport" data-charter-bubble-viewport><div class="hp-charter-bubbles__track" data-charter-bubble-track><ol class="hp-charter-bubbles__list" aria-label="ASU by the numbers" data-charter-bubble-list>${items.map(item => staticItemHtml(item, safeInstanceId, openId)).join("")}</ol></div></div><div class="hp-charter-bubbles__nav" role="group" aria-label="ASU facts carousel navigation" data-charter-bubble-nav><button class="hp-charter-bubbles__nav-button hp-charter-bubbles__nav-button--previous" type="button" aria-label="Previous ASU fact" disabled data-charter-bubble-previous${analyticsHtml(previousAnalytics)}>${previousIcon}</button><button class="hp-charter-bubbles__nav-button hp-charter-bubbles__nav-button--next" type="button" aria-label="Next ASU fact" data-charter-bubble-next${analyticsHtml(nextAnalytics)}>${nextIcon}</button></div></div></div></div></div>`;
 };
 
 /**
