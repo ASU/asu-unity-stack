@@ -175,7 +175,11 @@ const expectContract = async p => {
   const mark = p.heading.querySelector(".scrib-host > img.scrib.scrib--learn");
   await expect(mark.getAttribute("alt")).toBe("");
   await expect(mark.getAttribute("aria-hidden")).toBe("true");
-  await expect(p.cards).toHaveLength(PEOPLE.length);
+  // the mark sits behind every letter, including the "your" that follows it (mockup): the heading is the stacking
+  // context and the host adds none, so the mark's z-index -1 puts it under all the heading's text
+  await expect(style(p.heading).isolation).toBe("isolate");
+  await expect(style(mark.parentElement).zIndex).toBe("auto");
+  await expect(style(mark).zIndex).toBe("-1");
   await expect(p.panels).toHaveLength(PEOPLE.length);
   await expect(p.captions).toHaveLength(PEOPLE.length);
   PEOPLE.forEach((person, i) => {

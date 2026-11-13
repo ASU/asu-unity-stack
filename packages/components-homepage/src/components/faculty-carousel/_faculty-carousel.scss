@@ -83,6 +83,14 @@ $hp-faculty-ease: cubic-bezier(0.34, 1.12, 0.44, 1);
   font-weight: 700;
   letter-spacing: -0.05em;
   text-align: center;
+
+  // The shared host makes its own stacking context, which would lift the mark above the plain text after it ("your").
+  // The heading is the context instead, so the mark sits under every letter.
+  isolation: isolate;
+
+  .scrib-host {
+    z-index: auto;
+  }
 }
 
 .hp-faculty__sub {
