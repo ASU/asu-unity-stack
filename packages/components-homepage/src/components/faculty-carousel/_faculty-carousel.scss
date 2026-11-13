@@ -494,6 +494,11 @@ $hp-faculty-ease: cubic-bezier(0.34, 1.12, 0.44, 1);
     --mbtn-size: 32px;
     --mbtn-icon-size: 12px;
     --mbtn-z-index: 3;
+    --mbtn-rest-opacity: 100%;
+
+    // Brand: full opacity plus a shadow so the button reads over light and dark frames. A filter keeps the
+    // shared focus ring (a box-shadow) intact.
+    filter: drop-shadow(0 2px 4px rgb(0 0 0 / 45%));
 
     right: var(--hp-faculty-inset);
     bottom: var(--hp-faculty-inset);

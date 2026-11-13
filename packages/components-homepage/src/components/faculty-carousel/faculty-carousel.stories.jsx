@@ -4,6 +4,7 @@ import { expect, userEvent, waitFor } from "storybook/test";
 import { initFacultyCarousel } from "./faculty-carousel.js";
 import { initVideoControls } from "../video-control/video-control.js";
 import {
+  BLANK_POSTER,
   GA_COMPONENT,
   GA_SECTION,
   Harness,
@@ -11,6 +12,7 @@ import {
   PEOPLE,
   UTILITY_HREF,
   UTILITY_LABEL,
+  contrastRatio,
   emulateForcedColors,
   emulateReducedMotion,
   environment,
@@ -204,7 +206,9 @@ const expectContract = async p => {
       )
       .forEach(element => expect(style(element).fontStyle).toBe("normal"));
     if (person.video) {
-      expect(p.videos[i].getAttribute("poster")).toBe(person.still);
+      // the shared control needs a poster to autoplay; the video is transparent until it plays, so a blank
+      // placeholder does it and the still (lazy) is the picture: no extra download
+      expect(p.videos[i].getAttribute("poster")).toBe(BLANK_POSTER);
       // nothing is downloaded until a video plays
       expect(p.videos[i].getAttribute("preload")).toBe("none");
       expect(p.videos[i].hasAttribute("muted")).toBe(true);
@@ -596,6 +600,12 @@ const expectControl = async (p, size, inset) => {
   near(card.right - box(control).right, inset, 1);
   near(card.bottom - box(control).bottom, inset, 1);
   await expect(style(control).backgroundColor).toBe("rgb(232, 232, 232)");
+  // brand: full opacity with a drop shadow, so it reads over any frame; icon and fill stay well past 3:1
+  await expect(style(control).opacity).toBe("1");
+  await expect(style(control).filter).toContain("drop-shadow");
+  expect(
+    contrastRatio(style(control).color, style(control).backgroundColor)
+  ).toBeGreaterThanOrEqual(7);
 };
 
 const desktop = async (canvasElement, width) => {

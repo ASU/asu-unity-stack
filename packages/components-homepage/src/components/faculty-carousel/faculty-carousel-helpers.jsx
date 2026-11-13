@@ -11,6 +11,7 @@ import { stubSource } from "../hero/hero-helpers.jsx";
 
 export { emulateForcedColors } from "../rankings-cards/rankings-cards-helpers.jsx";
 export {
+  contrastRatio,
   emulateReducedMotion,
   realKeyboard,
   realPointer,
@@ -48,6 +49,10 @@ const icon = (cls, path, viewBox) =>
 const MEDIA = "faculty-media";
 
 export const SECTION_HEADING = "Learn from the best. Become your best.";
+// A 1x1 transparent GIF. The shared video control only autoplays a video that has a `poster`; this one is never
+// seen (the video is transparent until it plays and the still sits underneath), so it costs no download.
+export const BLANK_POSTER =
+  "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
 export const SUB =
   "The people who will teach, mentor and guide you are among the most accomplished in their fields. They’re here to help you go further in yours.";
 export const GA_SECTION = "learn from the best";
@@ -192,7 +197,7 @@ const card = (person, index, id) => {
   const videoId = `${id}-video-${n}`;
   const descId = `${id}-desc-${n}`;
   const media = person.video
-    ? `<video id="${videoId}" class="hp-faculty__video" muted playsinline preload="none" poster="${escape(person.still)}" data-auto data-restart data-plays="3" data-src="${escape(person.video)}"${index === 0 ? "" : " data-hold"} aria-hidden="true"></video>${videoControl(videoId, person.name)}`
+    ? `<video id="${videoId}" class="hp-faculty__video" muted playsinline preload="none" poster="${BLANK_POSTER}" data-auto data-restart data-plays="3" data-src="${escape(person.video)}"${index === 0 ? "" : " data-hold"} aria-hidden="true"></video>${videoControl(videoId, person.name)}`
     : "";
   return `<div class="hp-faculty__card" data-index="${index}"><img class="hp-faculty__still" src="${escape(person.still)}" alt="${escape(person.alt)}" width="470" height="544" loading="lazy" decoding="async"><button type="button" class="hp-faculty__pick" aria-label="Show ${escape(person.name)}" aria-describedby="${descId}" hidden ${gaAttributes(`show ${person.name}`, { event: "select" })}></button>${media}<p id="${descId}" class="visually-hidden">${escape(person.description || person.alt)}</p></div>`;
 };
