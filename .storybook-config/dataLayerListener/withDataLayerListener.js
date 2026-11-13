@@ -7,7 +7,7 @@ export const withDataLayerListener = (storyFn, context) => {
 
   function removeDOMObjects(eventObject){
     return Object.entries(eventObject).reduce((acc, [k, v])=>{
-      acc[k] = (typeof v === "object" && v.tagName) ? v.tagName : v;
+      acc[k] = (typeof v === "object" && v?.tagName) ? v.tagName : v;
       return acc
   },{})
   }

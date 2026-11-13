@@ -65,27 +65,34 @@ NavLinkIcon.propTypes = {
  *
  */
 
-const NavItem = ({ link, setItemOpened, itemOpened }) => {
+const NavItem = ({ link }) => {
   const clickRef = useRef(null);
   const parentLink = useRef(null);
-  const opened = link.id === itemOpened;
   const {
     breakpoint,
     expandOnHover = false,
     title,
     mobileMenuOpen = false,
     setMobileMenuOpen,
+    navItemsRef,
+    itemOpened,
+    setItemOpened,
   } = useAppContext();
+  const opened = link.id === itemOpened;
   const isMobile = useIsMobile(breakpoint);
 
   useEffect(() => {
     const handleClickOutside = event => {
       if (opened && !isMobile && !clickRef?.current?.contains(event?.target)) {
-        setItemOpened();
+        if (navItemsRef?.current?.find(navItem => navItem === event?.target)) {
+          setItemOpened(link.id);
+        } else {
+          setItemOpened();
+        }
       }
     };
 
-    const handleFocusChange = () => {
+    const handleFocusChange = (e) => {
       requestAnimationFrame(() => {
         const node = clickRef.current;
 
@@ -105,7 +112,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
       document.removeEventListener("click", handleClickOutside, true);
       document.removeEventListener("focusin", handleFocusChange);
     };
-  }, [opened, setItemOpened, isMobile]);
+  }, [navItemsRef, link.id, opened, itemOpened, setItemOpened, isMobile]);
 
   const renderNavLinks = useMemo(() => {
     if (link.type === "icon-home") {
@@ -128,7 +135,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
         )}
       </span>
     );
-  }, [link]);
+  }, [link, opened]);
 
   const dispatchGAEvent = () => {
     const isDropdown = !!link.items?.length;
@@ -177,11 +184,13 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
     ];
     if (navigableKeys.includes(key)) {
       e.preventDefault();
-      if (key === "Escape" && opened) {
+      if (
+        key === "Escape" ||
+        (opened && (e.type === "click" || key === "Enter" || key === " "))
+      ) {
         if (typeof clickRef?.current?.focus === "function") {
           clickRef.current.focus();
         }
-        setItemOpened();
         return;
       }
 
@@ -190,16 +199,16 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
         return;
       }
       // Handle Enter or Space key
-      if (key === "Enter" || key === " ") {
+      if (key === "Enter" || key === " " || e.type === "click" ) {
         if (link.items) {
           // Regardless of state or props mobile/desktop/hover/click
           // if the item has a dropdown, we want to toggle it on Enter/Space
-          setItemOpened();
+          setItemOpened(link.id);
         } else {
           // Single page apps do not leave the page on link click,
           // so we need to manually close the menu and trigger the onClick event
           setMobileMenuOpen(false);
-          setItemOpened();
+          setItemOpened(link.id);
           link.onClick?.(e);
         }
         dispatchGAEvent();
@@ -215,17 +224,36 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
           }
         }
       }
+    } else if (e.type === "click" && link.items && expandOnHover && !isMobile) {
+      e.preventDefault();
     } else if (e.type === "click" && link.items) {
       e.preventDefault();
       dispatchGAEvent();
-      setItemOpened();
+      setItemOpened(link.id);
     } else if (e.type === "click") {
       dispatchGAEvent();
       link.onClick?.(e);
     }
   };
 
-  const handleOnMouseEnterLeave = () => {
+  const handleOnFocus = () => {
+    if (!opened && !isMobile) {
+      setItemOpened(undefined);
+      dispatchGAEvent();
+    } else if (expandOnHover && !isMobile) {
+      setItemOpened(link.id);
+      dispatchGAEvent();
+    }
+  };
+
+  const handleOnMouseEnter = () => {
+    if (expandOnHover && !isMobile) {
+      setItemOpened(link.id);
+      dispatchGAEvent();
+    }
+  };
+
+  const handleOnMouseLeave = () => {
     if (expandOnHover && !isMobile) {
       setItemOpened();
       dispatchGAEvent();
@@ -237,8 +265,9 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
       // @ts-ignore
       breakpoint={breakpoint}
       ref={clickRef}
-      onMouseEnter={handleOnMouseEnterLeave}
-      onMouseLeave={handleOnMouseEnterLeave}
+      onMouseEnter={handleOnMouseEnter}
+      onMouseLeave={handleOnMouseLeave}
+      onFocus={handleOnFocus}
     >
       {/* @ts-ignore */}
       <a
@@ -257,7 +286,14 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
         title={
           link.type === "icon-home" && title ? `${title} home page` : link.text
         }
-        ref={parentLink}
+        ref={node => {
+          parentLink.current = node;
+          if (navItemsRef?.current) {
+            // Keep the collected top-level nav items indexed by the item's id
+            // so the array reflects the currently rendered navTree/mobileNavTree.
+            navItemsRef.current[link.id] = node;
+          }
+        }}
       >
         {renderNavLinks}
       </a>
@@ -275,6 +311,7 @@ const NavItem = ({ link, setItemOpened, itemOpened }) => {
           listId={`dropdown-${link.id}`}
           opened={opened}
           parentLink={parentLink}
+          parentId={link.id}
         />
       )}
     </NavItemWrapper>
