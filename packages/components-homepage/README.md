@@ -3,7 +3,7 @@
 Vanilla HTML/SCSS/JS foundations for the ASU homepage (Jira WWWCMS-227 / WWWCMS-230).
 
 - **Private package** (`"private": true`, version `0.0.0`). It is never published to a registry.
-- No React in shipped code. `@storybook/react-vite` is used only as the story renderer.
+- The default shipped entry is vanilla and React-free. Charter Bubbles also exposes an optional, separately built `./react` entry with React and ReactDOM as peer dependencies.
 - Design tokens come from `@asu/unity-bootstrap-theme` (`src/scss/_custom-asu-variables.scss`); never copy token values.
 
 ## Layout
@@ -13,7 +13,8 @@ Vanilla HTML/SCSS/JS foundations for the ASU homepage (Jira WWWCMS-227 / WWWCMS-
 | `src/components/<piece>/`           | One folder per foundation piece, with its SCSS partial, JS and stories side by side (see below)       |
 | `src/scss/components-homepage.scss` | SCSS entry; imports the UDS variables, `_variables.scss` and each piece's partial                     |
 | `src/scss/_variables.scss`          | Shared homepage variables and custom properties                                                       |
-| `src/js/index.js`                   | JS entry; re-exports the public API (`initVideoControls`, `initHero`, `initReimagine`, `initStories`, `initPlaces`) |
+| `src/js/index.js`                   | React-free JS entry; re-exports progressive-enhancement initializers, including `initCharterBubbles`              |
+| `src/react/index.js`                | Optional React entry for the four Charter Bubble components; React stays external                                |
 | `src/img/`                          | Art copied unchanged to `dist/img/`                                                                   |
 | `tests/`                            | Playwright accessibility spec                                                                         |
 
@@ -28,6 +29,45 @@ Pieces under `src/components/`:
 | `reimagine/`      | `_reimagine.scss`, `reimagine.stories.jsx`, `reimagine-helpers.jsx` (`Homepage/Reimagine`): the "reimagining education for everyone" section, static HTML + CSS. Opt-in scroll entrance (removable): `reimagine.js` (`initReimagine`), the ENTRANCE block in `_reimagine.scss`, `reimagine-entrance.stories.jsx` (`Homepage/Reimagine entrance`). Link `href`s are placeholders until the real URLs exist (`#audience-<slug>` per row, `#reimagine-learn-more` for Learn more): each is a fragment that matches no element, because a bare `#` scrolls the page to the top on click                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | `stories-grid/`   | `_stories-grid.scss`, `stories-grid.js` (`initStories`), `stories-grid.stories.jsx`, `stories-grid-helpers.jsx` (`Homepage/Stories grid`): an even 4x2 grid of a Gray 1 heading tile and seven photo cards (the gold promo is the 5th). Above 900px the grid opens from inset (48px, 4px corners) to full width as it scrolls into view (`initStories` writes `--hp-stories-progress`; the section's height never changes). Hover and keyboard focus reveal the subhead, darken the whole photo and invert the arrow chip (Figma hover spec). Tablet and phones (Figma 375) are the same two columns, the tile first; phones (600px and under) have smaller type, no dek and no subheads. Reduced motion and no script show the grid at full width. Every link carries the UDS `data-ga-*` attributes (click events for the theme's `initDataLayer`; pending data team confirmation). Above 1920px the grid is capped and centered on the foundations' topo band. The photos in `stories-grid/photos/` are the prototype's sample story photos (568x660 WebP, served by Storybook at `story-photos/`, not copied to `dist/`); `href`s and the "More stories" URL are placeholders. The page sets `--hp-stories-header-height` (Storybook defaults: 147px from 1080px up, 69px below). Contrast over the real photos is measured by brand before acceptance (design doc section 8) |
 | `places/`         | `_places.scss`, `places.js` (`initPlaces`), `places.stories.jsx`, `places-helpers.jsx`, `media/` (`Homepage/Places`): the campus locator ("One university, many places"). From 1024px a looping video (the shared pause control) starts inset by 48px and opens to full width as it scrolls into view (`--hp-places-progress`); a frosted 347px panel holds the heading, two buttons and seven locations in two groups. Selecting a location (click or keyboard, never hover) crossfades its photo over the video, grows a gold leader line to a description box with a link; Esc, the close button, a second click, an outside click or a scroll of more than 48px from where the box opened returns to the video; the video is held (`data-hold`) and its pause control hidden while a photo covers it; the box has a 4px gold bar on top, as wide as the box. Below 1024px (Figma 375, brand: Figma is the source of truth): a 375:219 video strip (pause button at its bottom right) above an accordion on Gray 1, one location open at a time (all start collapsed) with its text, link and photo. The section draws the Learn wallpaper (`img/learn-bg.webp`) behind it; `data-wallpaper-follow="<selector>"` continues the tile of the section above. No script: every location is open and stacked. Every link and button carries the asucms `data-ga-text` family (`data-ga-component="homepage places"`; pending data team). The photos, poster and clip in `places/media/` are the prototype's (WebP; served at `places-media/`, not in `dist/`); `href`s are placeholders. The page sets `--hp-places-header-height` (Storybook defaults: 147px from 1080px up, 69px below) |
+| `charter-bubbles/` | React components, static HTML parity fixture, token-backed SCSS, and `initCharterBubbles` (`Homepage/Charter bubbles`): one five-item list displayed as a desktop 3+2 overlapping cluster above 768px and a native scroll-snap carousel at 768px and below. This component is not an accordion. |
+
+## Charter Bubbles consumer contract
+
+Charter Bubbles is a standalone sibling placed immediately after the preceding Charter Main image/statement section. Charter Main owns the photograph and Charter statement. Charter Bubbles owns its upward desktop overlap and the reserved block below it so an expanded bubble never obscures the following section. Parents across the shared edge must not use `overflow: hidden`, `clip`, or `contain: paint`.
+
+The default vanilla entry remains React-free:
+
+```js
+import { initCharterBubbles } from "@asu/components-homepage";
+
+const teardown = initCharterBubbles(document);
+// Call during fragment removal, replacement, or application teardown.
+teardown();
+```
+
+All five items, both faces, and both carousel controls must already exist in the HTML before initialization. Before JavaScript succeeds, CSS presents all five detail panels and links as ordinary document content while hiding the dead flip and carousel controls. The initializer preflights the exact five-item ID/ARIA relationships and cluster/carousel/list/navigation structure; malformed fragments remain in that consumable unenhanced presentation. Each rendered component needs a stable, unique `data-charter-bubbles-instance`; its trigger/panel/heading IDs use `{instanceId}-{itemId}-{part}`. The initializer enhances valid existing nodes, is safe to call repeatedly, and restores server-owned attributes, classes, styles, listeners, and observer state on teardown.
+
+React consumers use the separate entry and must supply the same stable instance ID that a static/Twig render would use. The public React component renders the complete shared HTML contract, then calls the same `initCharterBubbles` authority in an effect and tears it down on unmount; it does not maintain a second interaction state machine. The effect lifetime is keyed to the instance ID and ordered item IDs, so equivalent cloned data and unrelated parent renders preserve active DOM/focus state while a real structural ID change performs a safe teardown/rebind.
+
+```jsx
+import { CharterBubbles } from "@asu/components-homepage/react";
+
+<CharterBubbles instanceId="homepage-charter-1" />;
+```
+
+The reviewed defaults come from `.intake/copy.md`. Their `#` destinations remain explicit `WWWCMS-238` TODOs until content owners supply final URLs. No analytics taxonomy is invented: item-level `frontAnalytics`, `linkAnalytics`, and `closeAnalytics`, plus root-level `previousAnalytics` and `nextAnalytics`, forward only serializable `data-ga-*` attributes. Those attributes are preserved through transitions; event names and values remain consumer/data-owner supplied.
+
+Stage B belongs only in the homepage module:
+
+```text
+modules/custom/asu_edu_homepage/components/<slug>/
+  <slug>.component.yml
+  <slug>.twig
+  <slug>.css
+  <slug>.js
+```
+
+Do not place this handoff in the `asu_edu` theme or shared `asu_edu_components` module. The recommended grouping is sibling `homepage-charter-main` and `charter-bubbles` SDCs composed by `asu_edu_homepage`; a combined homepage Charter SDC may be chosen by Stage B owners without changing the ownership or HTML contract.
 
 **Reimagine: known limitations** (accepted; CSS-only, no JS in `reimagine.js`, which is the removable entrance module):
 
@@ -57,4 +97,4 @@ The first run of `test:storybook` and `test:accessibility` needs Playwright's Ch
 
 ## Viewports
 
-`.storybook/preview.js` defines 393, 768, 1024, 1280, 1440 and 1920 px viewports.
+`.storybook/preview.js` defines 320, 393, 768, 769, 901, 1023, 1024, 1280, 1440, 1920 and 2560 px viewports.

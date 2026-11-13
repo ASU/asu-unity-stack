@@ -61,10 +61,17 @@ const c = {
     outDir: "dist",
     rollupOptions: {
       treeshake: true,
+      // The optional React entry is consumed by a host that already owns React.
+      // The vanilla/Webspark entry remains React-free.
+      external: ["react", "react-dom", "react/jsx-runtime", "react-dom/client"],
       // Keep the entry's exports (initVideoControls); an app build would drop them.
       preserveEntrySignatures: "strict",
       input: {
         "components-homepage": resolve(__dirname, "src/js/index.js"),
+        "components-homepage.react": resolve(
+          __dirname,
+          "src/react/index.js"
+        ),
         "components-homepage.style": resolve(
           __dirname,
           "src/scss/components-homepage.scss"

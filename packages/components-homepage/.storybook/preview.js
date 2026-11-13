@@ -19,6 +19,11 @@ const homepageViewports = {
     styles: { width: "768px", height: "1024px" },
     type: "tablet",
   },
+  hp769: {
+    name: "Desktop boundary 769",
+    styles: { width: "769px", height: "900px" },
+    type: "desktop",
+  },
   hp901: {
     name: "Fluid 901",
     styles: { width: "901px", height: "768px" },

@@ -5,6 +5,11 @@
   "description": "Vanilla HTML/SCSS/JS foundations for the ASU homepage. Private package, never published.",
   "homepage": "https://github.com/ASU/asu-unity-stack#readme",
   "license": "MIT",
+  "exports": {
+    ".": "./dist/js/components-homepage.es.js",
+    "./react": "./dist/js/components-homepage.react.es.js",
+    "./styles": "./dist/css/components-homepage.css"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ASU/asu-unity-stack.git",
@@ -43,6 +48,10 @@
     "stylelint-scss": "^4.6.0",
     "vite": "^6.0.0",
     "vitest": "4.1.6"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "volta": {
     "extends": "../../package.json"

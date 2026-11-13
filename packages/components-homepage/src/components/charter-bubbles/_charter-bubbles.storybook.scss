@@ -1,0 +1,64 @@
+// Storybook-only Charter composition surface. Not imported by production CSS.
+@import "@asu/unity-bootstrap-theme/src/scss/custom-asu-variables";
+
+.charter-bubbles-story {
+  min-height: 100vh;
+  background: $uds-color-base-white;
+  color: $uds-color-font-dark-base;
+}
+
+.charter-bubbles-story__main {
+  display: flex;
+  align-items: center;
+  min-height: 64.125rem; // 1026px: matches the 1280px Figma composition's preceding section.
+  padding: $uds-size-spacing-6;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.48), rgba(0, 0, 0, 0.48)),
+    url("/img/bluesky-bg.jpg") center / cover;
+  color: $uds-color-base-white;
+}
+
+.charter-bubbles-story__main > div {
+  width: 100%;
+  max-width: $uds-breakpoint-xxxl;
+  margin-inline: auto;
+}
+
+.charter-bubbles-story__main h2 {
+  max-width: 40rem;
+  margin: $uds-size-spacing-1 0 0;
+  color: inherit;
+}
+
+.charter-bubbles-story__eyebrow {
+  margin: 0;
+  font-weight: $uds-font-weight-bold;
+  text-transform: uppercase;
+}
+
+.charter-bubbles-story__following {
+  height: 100dvh;
+  padding: $uds-size-spacing-6;
+  background: $asu-gray-6;
+  font-weight: $uds-font-weight-bold;
+}
+
+.charter-bubbles-story__following > div {
+  width: 100%;
+  max-width: $uds-breakpoint-xxxl;
+  margin-inline: auto;
+}
+
+.charter-bubbles-story [data-test-teardown] {
+  margin: $uds-size-spacing-2;
+}
+
+@media (max-width: $uds-breakpoint-md) {
+  .charter-bubbles-story__main {
+    padding: $uds-size-spacing-4;
+  }
+
+  .charter-bubbles-story__following {
+    padding: $uds-size-spacing-4;
+  }
+}
