@@ -230,8 +230,9 @@ export const Selected = {
     const name = box(p.names[0]);
     const b = box(p.boxes[0]);
     await near(b.top, name.bottom - 4, 1);
-    // 1px over the panel's border: no seam between the panel and the box (brand QA 2026-11-09)
-    await near(b.left, box(p.panel).right - 1, 0.5);
+    await near(b.left, box(p.panel).right, 1);
+    // no stroke between the panel and the box while it is open (brand QA 2026-11-09, places-gap.png)
+    await expect(style(p.panel).borderRightColor).toBe("rgba(0, 0, 0, 0)");
     await near(b.width, 347, 1);
     const leader = style(p.details[0], "::before");
     await expect(leader.backgroundColor).toBe(GOLD);

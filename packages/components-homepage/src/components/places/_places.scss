@@ -528,6 +528,16 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
       --hp-places-ring-outer: var(--hp-focus-outer);
     }
 
+    // The open box continues the panel: the panel's right stroke would show as a seam between them (brand QA
+    // 2026-11-09, places-gap.png). Its glass still fills the 1px, so the two surfaces meet without a line.
+    .hp-places__panel:has(.hp-places__item.is-shown) {
+      border-right-color: transparent;
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: border-color 0.3s ease 0.2s;
+      }
+    }
+
     // The filter lives on a layer, not on the panel: the box inside is a descendant and needs the backdrop.
     .hp-places__panel::before,
     .hp-places__box::before {
@@ -618,11 +628,11 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
       height: 4px;
       padding: 0;
 
-      // Ends at the box's left edge: the free space plus the panel's 32px padding.
+      // Ends at the box's left edge: the free space plus the panel's 32px padding and 1px border.
       &::before {
         content: "";
         display: block;
-        width: calc(100% + 32px);
+        width: calc(100% + 33px);
         height: 4px;
         background: $uds-color-brand-gold;
         transform: scaleX(0);
@@ -650,8 +660,7 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
     .hp-places__box {
       position: absolute;
       top: calc(100% - 4px);
-      // 1px over the panel's own border: no seam between the panel and the box (brand QA 2026-11-09)
-      left: calc(100% + 32px);
+      left: calc(100% + 33px);
       z-index: 3;
       box-sizing: border-box;
       display: flex;
