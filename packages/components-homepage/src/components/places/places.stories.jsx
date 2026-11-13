@@ -231,9 +231,72 @@ export const Selected = {
     const b = box(p.boxes[0]);
     await near(b.top, name.bottom - 4, 1);
     await near(b.left, box(p.panel).right, 1);
+    // no stroke between the panel and the box while it is open (brand QA 2026-11-09, places-gap.png)
+    await expect(style(p.panel).borderRightColor).toBe("rgba(0, 0, 0, 0)");
     await near(b.width, 347, 1);
     const leader = style(p.details[0], "::before");
     await expect(leader.backgroundColor).toBe(GOLD);
+  },
+};
+
+export const ContentDocAlt = {
+  name: "Alt text matches the content doc",
+  globals: viewport(1440),
+  render: () => <Harness html={placesHtml()} />,
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    const alt = name => p.photos[LOCATIONS.findIndex(l => l.name === name)];
+    // Content doc 2026-11-09 ("Ready for devs"): Tempe names Mountain America Stadium, LA names the building.
+    await expect(alt("Tempe").getAttribute("alt")).toBe(
+      "Aerial views of Arizona State University’s Tempe campus and Mountain America Stadium, along with students exploring a rocky outdoor area and an ASU building exterior."
+    );
+    await expect(alt("Los Angeles").getAttribute("alt")).toBe(
+      "Aerial view of the California Center Grand building, a white multistory structure surrounded by trees and a lawn in downtown Los Angeles."
+    );
+    await expect(alt("Washington, D.C.").getAttribute("alt")).toBe(
+      "The ASU Washington, D.C., building, a historic stone building with illuminated cornices and the ASU sign, on a busy street corner."
+    );
+    // the video is described by the content doc's b-roll description, not the Tempe photo's
+    const description = p.section.querySelector(
+      `#${p.video.getAttribute("aria-describedby")}`
+    );
+    await expect(description.textContent).toBe(
+      "A video showcasing ASU’s locations and campuses including Tempe, Downtown Phoenix, Polytechnic, West Valley, Los Angeles and more."
+    );
+  },
+};
+
+export const ContentDocCopy = {
+  name: "Copy matches the content doc",
+  globals: viewport(1440),
+  render: () => <Harness html={placesHtml()} />,
+  play: async ({ canvasElement }) => {
+    const p = parts(canvasElement);
+    // Content doc 2026-11-09 ("Ready for devs"); the doc's West Valley line has no final period (added here).
+    const captions = Array.from(
+      p.section.querySelectorAll(".hp-places__caption")
+    ).map(caption => caption.textContent);
+    await expect(captions).toEqual([
+      "The flagship campus — a walkable, tree-lined home to more than 55,000 Sun Devils.",
+      "An urban campus woven into the city core, home to journalism, health and public service.",
+      "An Oxford-inspired campus serving the dynamic workforce needs of a rapidly growing economy.",
+      "A hands-on campus for engineering, aviation and applied technology, turning ideas into real things.",
+      "A creative foothold in the entertainment capital, home to film, fashion, media and design.",
+      "A launchpad into government, policy and law, just blocks from the White House.",
+      "A global gateway in the heart of London, where you can earn two international degrees.",
+    ]);
+    const labels = Array.from(
+      p.section.querySelectorAll(".hp-places__group-label")
+    );
+    await expect(labels.map(label => label.textContent)).toEqual([
+      "Phoenix metro area campuses",
+      "U.S. and international",
+    ]);
+    // Figma is 0%; the theme h3 would otherwise tighten the gold headings to -0.84px (brand QA 2026-11-05).
+    // Chrome serialises a computed 0 as "normal".
+    labels.forEach(label =>
+      expect(["normal", "0px"]).toContain(style(label).letterSpacing)
+    );
   },
 };
 
@@ -566,7 +629,7 @@ export const HoldGate = {
 };
 
 export const LowerNameBox = {
-  name: "Box of the lowest name stays in the stage",
+  name: "Box of the lowest name hangs below the stage",
   tags: ["!dev"],
   globals: viewport(1440),
   render: () => <Harness before="20vh" after="40vh" html={placesHtml()} />,
@@ -578,10 +641,12 @@ export const LowerNameBox = {
     await waitFor(() =>
       expect(p.items[last].classList.contains("is-shown")).toBe(true)
     );
-    await expect(box(p.boxes[last]).bottom).toBeLessThanOrEqual(
-      box(p.media).bottom + 1
+    // brand QA 2026-11-09: London's box may go below the section so its gold bar lines up with the leader, as in
+    // the prototype: nothing moves it up
+    await near(box(p.boxes[last]).top, box(p.names[last]).bottom - 4, 1);
+    await expect(box(p.boxes[last]).bottom).toBeGreaterThan(
+      box(p.media).bottom
     );
-    // the leader stays on the name's rule
     await near(box(p.details[last]).bottom, box(p.names[last]).bottom, 1);
   },
 };
@@ -833,6 +898,9 @@ export const PlaceLinks = {
     const seeAll = p.section.querySelector(".hp-places__see-all");
     await check(link);
     await check(seeAll);
+    // desktop keeps the Figma geometry; mobile and tablet add 4px (brand QA 2026-11-10)
+    await expect(style(link).paddingBottom).toBe("0px");
+    await expect(style(seeAll).paddingBottom).toBe("0px");
     await expect(style(link).borderBottomColor).toBe(GOLD);
     await expect(style(seeAll).borderBottomColor).toBe(WHITE);
     await hoverGone(link);
@@ -842,6 +910,13 @@ export const PlaceLinks = {
     await waitFor(() => expect(p.details[0].hidden).toBe(false));
     await check(p.boxes[0].querySelector(".hp-places__link"));
     await check(seeAll);
+    for (const width of [393, 768]) {
+      await resizeViewport(width, 1024);
+      await expect(
+        style(p.boxes[0].querySelector(".hp-places__link")).paddingBottom
+      ).toBe("4px");
+      await expect(style(seeAll).paddingBottom).toBe("4px");
+    }
   },
 };
 

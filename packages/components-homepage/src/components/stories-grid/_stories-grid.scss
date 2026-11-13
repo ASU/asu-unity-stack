@@ -7,6 +7,9 @@
 
 $hp-stories-compact-max: 600px; // TODO: confirm with design - the phone step (Figma 375; UDS sm is 576px).
 $hp-stories-header-break: 1080px; // The prototype switches to its compact header at 1079px.
+$hp-stories-tablet-min: 768px; // UDS md: from here to 900px the grid is 4 across (brand 2026-11-10, Figma 768 frame 15230:9792).
+// The Figma 375 type step (phones) also fits the 4 across tablet tiles (Figma 768: 24/24 heading, 16/20 title, no dek).
+$hp-stories-compact: "(max-width: #{$hp-stories-compact-max}), (min-width: #{$hp-stories-tablet-min}) and (max-width: #{$hp-phone-max})";
 
 // Hover/focus lift (Figma News card-V3 hover: drop-shadow 0 2px 10px rgba(0,0,0,.32)).
 // TODO: confirm with design - raw shadow, no UDS token.
@@ -39,11 +42,6 @@ $hp-stories-scrim-rest-scale: 0.5;
   // The section is the size container: its width does not change while the grid opens, so the row height
   // and the type unit below never follow the animation (no layout shift, no resize feedback).
   container-type: inline-size;
-
-  // The topo band above 1920px follows the grid's real height (the foundations' band assumes two 370px rows).
-  .hp-topo--band {
-    --hp-topo-band-height: 100%;
-  }
 
   @media (max-width: #{$hp-stories-header-break - 1px}) {
     --hp-stories-header-default: 69px;
@@ -95,6 +93,11 @@ $hp-stories-scrim-rest-scale: 0.5;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-auto-rows: auto;
   }
+
+  // Tablet (768 to 900px): 4 across, two rows of 192 x 222 tiles (the type step above is the phone one).
+  @media (min-width: $hp-stories-tablet-min) and (max-width: $hp-phone-max) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 // ---- Heading tile ----
@@ -116,7 +119,7 @@ $hp-stories-scrim-rest-scale: 0.5;
     aspect-ratio: 32 / 37;
   }
 
-  @media (max-width: $hp-stories-compact-max) {
+  @media #{$hp-stories-compact} {
     gap: $uds-size-spacing-2;
     padding: $uds-size-spacing-4 $uds-size-spacing-2;
   }
@@ -145,7 +148,7 @@ $hp-stories-scrim-rest-scale: 0.5;
   letter-spacing: calc(-0.96 * var(--hp-stories-u));
   text-wrap: balance;
 
-  @media (max-width: $hp-stories-compact-max) {
+  @media #{$hp-stories-compact} {
     font-size: 24px; // TODO: confirm with design - Figma 375: 24/24, -0.72.
     line-height: 24px;
     letter-spacing: -0.72px;
@@ -160,7 +163,7 @@ $hp-stories-scrim-rest-scale: 0.5;
   text-wrap: pretty;
 
   // The Figma 375 tile has no dek.
-  @media (max-width: $hp-stories-compact-max) {
+  @media #{$hp-stories-compact} {
     display: none;
   }
 }
@@ -277,7 +280,7 @@ $hp-stories-scrim-rest-scale: 0.5;
   border-radius: 50%;
   color: $uds-color-base-white;
 
-  @media (max-width: $hp-stories-compact-max) {
+  @media #{$hp-stories-compact} {
     top: $uds-size-spacing-2;
     right: $uds-size-spacing-2;
   }
@@ -296,7 +299,7 @@ $hp-stories-scrim-rest-scale: 0.5;
   width: 100%;
   padding: calc(24 * var(--hp-stories-u));
 
-  @media (max-width: $hp-stories-compact-max) {
+  @media #{$hp-stories-compact} {
     padding: $uds-size-spacing-2;
   }
 }
@@ -310,7 +313,7 @@ $hp-stories-scrim-rest-scale: 0.5;
   letter-spacing: calc(-0.72 * var(--hp-stories-u));
   text-wrap: balance;
 
-  @media (max-width: $hp-stories-compact-max) {
+  @media #{$hp-stories-compact} {
     font-size: $uds-size-font-medium; // TODO: confirm with design - Figma 375: 16/20, -0.48.
     line-height: 20px;
     letter-spacing: -0.48px;
@@ -415,7 +418,7 @@ $hp-stories-scrim-rest-scale: 0.5;
 }
 
 // Phones (Figma 375): no card shows a subhead; the promo's artwork sits whole on its gold.
-@media (max-width: $hp-stories-compact-max) {
+@media #{$hp-stories-compact} {
   .hp-stories .hp-stories__card {
     @include hp-stories-sub-hidden;
   }

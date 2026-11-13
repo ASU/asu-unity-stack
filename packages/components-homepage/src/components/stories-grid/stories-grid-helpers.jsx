@@ -102,7 +102,7 @@ export const storiesHtml = ({
   id = "hp-stories-heading",
   href = MORE_HREF,
 } = {}) =>
-  `<section class="hp-stories hp-bg-host" aria-labelledby="${id}"><span class="hp-topo hp-topo--band" aria-hidden="true"></span><div class="hp-stories__grid"><div class="hp-stories__lead"><p class="hp-stories__eyebrow">ASU news</p><h2 id="${id}" class="hp-stories__heading">Stories of excellence</h2><p class="hp-stories__dek">This is ASU innovation.</p><a class="btn btn-outline-gold btn-medium hp-stories__more" href="${escape(href)}" ${gaAttributes("More stories")}>More stories <svg class="hp-stories__more-icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="${ARROW_PATH}"/></svg></a></div><ul class="hp-stories__cards" role="list">${STORIES.map((story, index) => card(story, index)).join("")}</ul></div></section>`;
+  `<section class="hp-stories hp-bg-host" aria-labelledby="${id}"><div class="hp-stories__grid"><div class="hp-stories__lead"><p class="hp-stories__eyebrow">ASU news</p><h2 id="${id}" class="hp-stories__heading">Stories of excellence</h2><p class="hp-stories__dek">This is ASU innovation.</p><a class="btn btn-outline-gold btn-medium hp-stories__more" href="${escape(href)}" ${gaAttributes("More stories")}>More stories <svg class="hp-stories__more-icon" viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="${ARROW_PATH}"/></svg></a></div><ul class="hp-stories__cards" role="list">${STORIES.map((story, index) => card(story, index)).join("")}</ul></div></section>`;
 
 // Renders the markup and runs `initStories` (unless `manual`, the server-markup state). `before`/`after`
 // are blank spacers (CSS height) so a story can put the section away from the top of the page.
