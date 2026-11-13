@@ -949,6 +949,31 @@ export const ColumnAlignment = {
   },
 };
 
+const EYEBROW_ID = "hp-reimagine-heading-eyebrow";
+
+// Brand QA (Alysia 2026-11-10): "Have the eyebrow text wrap on smaller screen sizes ... inside the gold
+// highlight wrap instead of going off-screen" (seen at a 216px-wide viewport).
+export const EyebrowWraps = {
+  name: "Eyebrow wraps",
+  globals: viewport(393),
+  render: () => <Page headingId={EYEBROW_ID} />,
+  play: async ({ canvasElement }) => {
+    const p = await expectComplete(canvasElement, EYEBROW_ID);
+    await expect(getComputedStyle(p.eyebrow).whiteSpace).not.toBe("nowrap");
+    if (!realPointer.available) return;
+    await resizeViewport(393);
+    const oneLine = p.eyebrow.getBoundingClientRect().height;
+    await resizeViewport(216);
+    await expect(window.innerWidth).toBe(216);
+    const box = p.eyebrow.getBoundingClientRect();
+    // the gold highlight stays inside the 24px gutters and its text wraps onto a second line
+    await expect(box.right).toBeLessThanOrEqual(216 - 24 + 0.5);
+    await expect(box.height).toBeGreaterThan(oneLine + 8);
+    await expect(document.documentElement.scrollWidth).toBeLessThanOrEqual(216);
+    await resizeViewport(393);
+  },
+};
+
 const GUTTER_ID = "hp-reimagine-heading-gutter";
 // [viewport width, expected horizontal gutter]: 24px up to 600px, the unchanged 48px from 601px.
 const GUTTERS = [
