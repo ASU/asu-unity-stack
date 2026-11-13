@@ -570,12 +570,12 @@ export const UltraWide2560 = {
   render: () => <Harness html={heroHtml({ id: "hero-2560" })} />,
   play: async ({ canvasElement }) => {
     const p = await find(canvasElement, "hero-2560");
-    // 1440 - 147 - 96 = 1197, capped at 1080; the copy and control anchor to the centered 1920 stage
-    const stageEdge = (box(p.section).width - 1920) / 2;
-    await expectLayout(p, { height: 1080, inset: stageEdge });
-    await near(box(p.copy).width, 1920, 1);
-    // the media stays full-bleed
-    await near(box(p.video).width, box(p.section).width, 1);
+    // 1440 - 147 - 96 = 1197, capped at 1080; brand (Alysia 2026-11-10): the whole hero stops at 1920px and is
+    // centered, media included
+    await expectLayout(p, { height: 1080 });
+    await near(box(p.section).width, 1920, 1);
+    await near(box(p.section).left, (window.innerWidth - 1920) / 2, 1);
+    await near(box(p.video).width, 1920, 1);
   },
 };
 
