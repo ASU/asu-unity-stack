@@ -1,0 +1,631 @@
+// Homepage faculty fan carousel ("Learn from the best"). Design doc: WWWCMS-240.
+// Figma 260526 Homepage redesign, page V11: 1280 (13467:58816), 1920, 2500, 1024 reference (15430:4769), tablet 768
+// (15230:9888), phone 393 (13472:62480). Prototype v2.71 for the behaviour.
+// Baseline (no script): the six stills as a wrapped row, the six captions below, the six panels stacked with the
+// person's name, no videos and no controls. `initFacultyCarousel` adds `.is-enhanced`, which turns on the fan; every
+// rule that needs script is under `.is-enhanced`.
+//
+// Scale unit `--hp-u`: a length. Every fan dimension is `calc(<Figma px> * var(--hp-u))`. From 1024 it is the
+// stage column's width over the 1280 fan (536.57px), at most 1px; below 1024 it is the 768 design's px, .6594 at 393
+// rising linearly with the viewport (a guess between and above the two Figma frames). The two slot tables below are
+// the measured Figma numbers (centres and sizes of the cards inside the fan group, CSS rotation = -Figma rotation).
+
+$hp-faculty-bp: 1024px; // keep equal to the breakpoint documented in the design doc
+$hp-faculty-ease: cubic-bezier(0.34, 1.12, 0.44, 1);
+
+.hp-faculty {
+  // Stacked table (768 design px; the 393 frame is the same table at .6594). Radius and shadow do not scale.
+  --hp-fan-w: 670.73;
+  --hp-fan-h: 495.41;
+  --hp-front-w: 430.11;
+  --hp-front-h: 495.41;
+  --hp-front-x: 334.7;
+  --hp-front-y: 247.71;
+  --hp-side-w: 335.01;
+  --hp-right-x: 480.41;
+  --hp-right-y: 253.27;
+  --hp-left-x: 188.32;
+  --hp-left-y: 257.05;
+  --hp-side-s: calc(var(--hp-side-w) / var(--hp-front-w));
+  --hp-radius: 3.297px;
+  --hp-shadow: 1.13px 1.13px 9.01px rgba(0, 0, 0, 0.24);
+  --hp-u: max(0.6594px, calc(0.6594px + (100vw - 393px) * 0.000908));
+  --hp-faculty-inset: 16px;
+  --hp-faculty-ring-inner: #{$uds-color-base-white};
+  --hp-faculty-ring-outer: #{$asu-gray-1};
+
+  position: relative;
+  isolation: isolate;
+  overflow-x: clip; // the phone fan bleeds past the column; no horizontal scroll
+  padding: 32px 0;
+  background: $uds-color-base-white;
+  color: $asu-gray-1;
+
+  @media (min-width: 768px) and (max-width: #{$hp-faculty-bp - 1px}) {
+    --hp-faculty-inset: 24px;
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+}
+
+// Wallpaper: the Learn network art, tiled 100% wide behind the whole section.
+.hp-faculty__wall {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: url("../img/learn-bg.webp") center top / 100% auto repeat-y;
+}
+
+.hp-faculty__inner {
+  width: min(100% - 64px, 704px);
+  margin: 0 auto;
+}
+
+// ---- Intro ----
+
+.hp-faculty__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.hp-faculty__heading {
+  margin: 0;
+  color: $asu-gray-1;
+  font-size: 36px;
+  line-height: 40px;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  text-align: center;
+}
+
+.hp-faculty__sub {
+  max-width: 704px;
+  margin: 0;
+  color: $asu-gray-3;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+}
+
+// Figma draws this section's underline longer than the shared `scrib--learn` (which the shared rule clamps to the
+// word): 162.94 x 17 under the 36px heading (768, 393; about 125% of "Become", level with its start, 4px below the
+// line box) and 325.5 x 34 under the 64px one (1280; about 141%, starting 32px before the word, 14px below).
+.hp-faculty__heading .scrib--learn {
+  --scrib-left: -1%;
+  --scrib-width: 125%;
+  --scrib-bottom: -0.11em;
+
+  max-width: none;
+}
+
+// ---- Grid ----
+
+.hp-faculty__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+}
+
+.hp-faculty__stage-col {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: stretch;
+  align-content: start;
+  gap: 22px;
+  min-width: 0;
+}
+
+// Baseline stage: the stills in a wrapped row (no script).
+.hp-faculty__stage {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 16px;
+}
+
+.hp-faculty__card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  background: $asu-gray-6;
+  aspect-ratio: 470 / 544;
+}
+
+.hp-faculty__still,
+.hp-faculty__video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hp-faculty__video,
+.hp-faculty__pick,
+.hp-faculty__control {
+  display: none;
+}
+
+.hp-faculty__captions {
+  display: grid;
+  gap: 12px;
+}
+
+.hp-faculty__caption {
+  display: block;
+  color: $asu-gray-3;
+  font-size: 13.08px;
+  line-height: 19.61px;
+  text-align: left;
+}
+
+.hp-faculty__name {
+  display: block;
+  font-weight: 700;
+}
+
+.hp-faculty__title {
+  display: block;
+}
+
+.hp-faculty__panels {
+  display: grid;
+  gap: 32px;
+}
+
+.hp-faculty__role {
+  margin: 0;
+  color: $asu-gray-3;
+  font-size: 12px;
+  line-height: 24px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.hp-faculty__person {
+  margin: 0 0 8px;
+  font-weight: 700;
+}
+
+.hp-faculty__headline {
+  margin: 16px 0 0;
+  color: $asu-gray-1;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.hp-faculty__bio {
+  margin: 19.61px 0 0;
+  color: $asu-gray-1;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.hp-faculty__more {
+  color: $uds-color-brand-maroon;
+  text-decoration: underline;
+}
+
+.hp-faculty__quote {
+  margin: 16px 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.hp-faculty__quote-text {
+  margin: 0;
+  color: $asu-gray-1;
+  font-size: 14px;
+  line-height: 20px;
+  font-style: italic;
+}
+
+.hp-faculty__cite {
+  display: block;
+  margin-top: 4px;
+  color: $asu-gray-2;
+  font-size: 14px;
+  line-height: 20px;
+  font-style: normal;
+}
+
+// ---- Controls row ----
+
+.hp-faculty__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 34px;
+  margin-top: 16px;
+}
+
+.hp-faculty__arrows {
+  display: flex;
+  gap: 13.08px;
+}
+
+.hp-faculty__arrow {
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: 52.3px;
+  height: 52.3px;
+  padding: 0;
+  border: 1px solid $asu-gray-5;
+  border-radius: 50%;
+  background: $uds-color-base-white;
+  color: $asu-gray-1;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+
+  &:hover {
+    border-color: $asu-gray-3;
+    background: $asu-gray-6;
+  }
+
+  &:focus:not(:focus-visible) {
+    box-shadow: none !important;
+  }
+
+  // The theme's global `button:focus` rule needs an !important ring to be replaced.
+  &:focus-visible {
+    outline: 2px solid transparent !important;
+    box-shadow:
+      0 0 0 2px var(--hp-faculty-ring-inner),
+      0 0 0 4px var(--hp-faculty-ring-outer) !important;
+  }
+}
+
+.hp-faculty__arrow-icon {
+  display: block;
+  width: auto;
+  height: 16px;
+  pointer-events: none;
+}
+
+// Figma: bold maroon text, a 1px stroke under the text and the arrow; hover removes it. The 44px hit area is a
+// pseudo-element so the visible link stays 25px.
+.hp-faculty__all {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-bottom: 1px solid currentcolor;
+  color: $uds-color-brand-maroon;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  text-decoration: none !important;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -12px -4px;
+  }
+
+  &:hover {
+    border-bottom-color: transparent;
+  }
+
+  &:focus:not(:focus-visible) {
+    box-shadow: none !important;
+  }
+}
+
+.hp-faculty__all-icon {
+  display: block;
+  width: auto;
+  height: 12px;
+}
+
+// The theme draws link focus as a box-shadow, which forced-colors mode removes.
+@media (forced-colors: active) {
+  .hp-faculty__more:focus-visible,
+  .hp-faculty__all:focus-visible {
+    outline: 2px solid CanvasText !important;
+    outline-offset: 2px;
+  }
+}
+
+// ---- Enhanced: the fan ----
+
+.hp-faculty.is-enhanced {
+  .hp-faculty__stage-col {
+    container-type: inline-size;
+    justify-items: unsafe center;
+  }
+
+  .hp-faculty__stage {
+    position: relative;
+    isolation: isolate;
+    display: block;
+    width: calc(var(--hp-fan-w) * var(--hp-u));
+    height: calc(var(--hp-fan-h) * var(--hp-u));
+  }
+
+  // Every card is front-sized and placed by its centre with a transform; the back cards are the same box scaled down
+  // (Figma: 268/360.52 desktop, 335.01/430.11 stacked, both axes), so rotation and size animate together and nothing
+  // reflows. Radius and the focus ring are divided by the scale to keep their drawn size.
+  .hp-faculty__card {
+    --hp-card-x: var(--hp-front-x);
+    --hp-card-y: var(--hp-front-y);
+    --hp-card-r: 0deg;
+    --hp-card-s: 1;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: calc(var(--hp-front-w) * var(--hp-u));
+    height: calc(var(--hp-front-h) * var(--hp-u));
+    aspect-ratio: auto;
+    border-radius: calc(var(--hp-radius) / var(--hp-card-s));
+    box-shadow: var(--hp-shadow);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(
+        calc(var(--hp-card-x) * var(--hp-u) - 50%),
+        calc(var(--hp-card-y) * var(--hp-u) - 50%)
+      )
+      rotate(var(--hp-card-r)) scale(var(--hp-card-s));
+
+    // The dark overlay on the cards behind the front one.
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: rgba(0, 0, 0, 0.6);
+      pointer-events: none;
+    }
+
+    &[data-pos="0"] {
+      z-index: 3;
+      opacity: 1;
+      pointer-events: auto;
+
+      &::after {
+        opacity: 0;
+      }
+    }
+
+    &[data-pos="1"] {
+      --hp-card-x: var(--hp-right-x);
+      --hp-card-y: var(--hp-right-y);
+      --hp-card-r: 7.19deg;
+      --hp-card-s: var(--hp-side-s);
+
+      z-index: 2;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    &[data-pos="2"] {
+      --hp-card-x: var(--hp-left-x);
+      --hp-card-y: var(--hp-left-y);
+      --hp-card-r: -6.52deg;
+      --hp-card-s: var(--hp-side-s);
+
+      z-index: 1;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    // Waiting behind the stack: invisible, out of the way, and inert (script).
+    &:not([data-pos="0"]):not([data-pos="1"]):not([data-pos="2"]) {
+      --hp-card-s: calc(var(--hp-side-s) * 0.9);
+    }
+  }
+
+  // Motion starts after the first styled frame (`is-animated`, script) and only for users who have not asked for less.
+  &.is-animated .hp-faculty__card {
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        transform 0.58s $hp-faculty-ease,
+        opacity 0.35s ease;
+
+      &::after {
+        transition: opacity 0.4s ease;
+      }
+    }
+  }
+
+  .hp-faculty__video {
+    display: block;
+    z-index: 0;
+    opacity: 0;
+
+    &.is-ready {
+      opacity: 1;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: opacity 0.4s ease;
+    }
+  }
+
+  // The card itself is the pick button's overlay; the front card's own button does nothing (aria-disabled).
+  .hp-faculty__pick {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: inherit;
+    background: transparent;
+    cursor: pointer;
+
+    &[aria-disabled="true"] {
+      cursor: default;
+    }
+
+    &:focus:not(:focus-visible) {
+      box-shadow: none !important;
+    }
+
+    // Inset ring: the card clips an outer one; divided by the card's scale to keep its drawn width.
+    &:focus-visible {
+      outline: 2px solid transparent !important;
+      box-shadow:
+        inset 0 0 0 calc(2px / var(--hp-card-s, 1)) var(--hp-faculty-ring-inner),
+        inset 0 0 0 calc(4px / var(--hp-card-s, 1)) var(--hp-faculty-ring-outer) !important;
+    }
+  }
+
+  // The pause control (shared `.mbtn`) shows on the front card only; elsewhere it leaves the tab order and the hit
+  // tests (visibility), after its fade.
+  .hp-faculty__control {
+    --mbtn-size: 32px;
+    --mbtn-icon-size: 12px;
+    --mbtn-z-index: 3;
+
+    right: var(--hp-faculty-inset);
+    bottom: var(--hp-faculty-inset);
+    display: grid;
+
+    @media (min-width: 768px) and (max-width: #{$hp-faculty-bp - 1px}) {
+      --mbtn-size: 48px;
+      --mbtn-icon-size: 16px;
+    }
+  }
+
+  .hp-faculty__card:not([data-pos="0"]) .hp-faculty__control {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        opacity 0.3s ease,
+        visibility 0s linear 0.3s;
+    }
+  }
+
+  // Captions share one cell, as tall as the tallest; only the active one shows.
+  .hp-faculty__captions {
+    width: min(225px, 100%);
+    gap: 0;
+
+    @media (max-width: 767px) {
+      width: 100%;
+    }
+  }
+
+  .hp-faculty__caption {
+    grid-area: 1 / 1;
+    visibility: hidden;
+
+    &.is-active {
+      visibility: visible;
+    }
+  }
+
+  // Panels share one cell too (desktop: as tall as the tallest); stacked, only the active one takes room.
+  .hp-faculty__panels {
+    gap: 0;
+  }
+
+  .hp-faculty__panel {
+    grid-area: 1 / 1;
+    display: none;
+
+    &.is-active {
+      display: block;
+    }
+  }
+
+  .hp-faculty__person {
+    display: none;
+  }
+}
+
+// ---- Desktop (>= 1024): two columns ----
+
+@media (min-width: $hp-faculty-bp) {
+  .hp-faculty {
+    // Fan table at 1280 (px), scaled by --hp-u (1px at full size; 1024 is exactly .8494).
+    --hp-fan-w: 536.57;
+    --hp-fan-h: 415.25;
+    --hp-front-w: 360.52;
+    --hp-front-h: 415.25;
+    --hp-front-x: 266.27;
+    --hp-front-y: 207.62;
+    --hp-side-w: 268;
+    --hp-right-x: 384.31;
+    --hp-right-y: 213.78;
+    --hp-left-x: 150.65;
+    --hp-left-y: 216.8;
+    --hp-faculty-inset: 24px;
+
+    padding: 48px 0;
+  }
+
+  // `--hp-u` (and what is built from it) is declared on the container itself so `cqw` and the var() substitution
+  // both resolve against the stage column.
+  .hp-faculty__stage-col {
+    --hp-u: min(1px, calc(100cqw / 536.57));
+    --hp-radius: calc(4 * var(--hp-u));
+    --hp-shadow: calc(1.37 * var(--hp-u)) calc(1.37 * var(--hp-u))
+      calc(10.94 * var(--hp-u)) rgba(0, 0, 0, 0.24);
+  }
+
+  .hp-faculty__inner {
+    width: min(100% - 96px, 1200px);
+  }
+
+  .hp-faculty__intro {
+    margin-bottom: 64px;
+  }
+
+  .hp-faculty__heading {
+    font-size: 64px;
+    line-height: 68px;
+
+    .scrib--learn {
+      --scrib-left: -14%;
+      --scrib-width: 141%;
+      --scrib-bottom: -0.22em;
+    }
+  }
+
+  .hp-faculty__sub {
+    max-width: 513px;
+  }
+
+  .hp-faculty__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    column-gap: clamp(24px, calc(24px + (100vw - 1024px) * 0.28125), 96px);
+  }
+
+  .hp-faculty__controls {
+    margin-top: 34px;
+  }
+
+  .hp-faculty.is-enhanced {
+    .hp-faculty__panel {
+      display: block;
+      visibility: hidden;
+
+      &.is-active {
+        visibility: visible;
+      }
+    }
+  }
+}
