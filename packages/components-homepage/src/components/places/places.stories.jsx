@@ -230,7 +230,8 @@ export const Selected = {
     const name = box(p.names[0]);
     const b = box(p.boxes[0]);
     await near(b.top, name.bottom - 4, 1);
-    await near(b.left, box(p.panel).right, 1);
+    // 1px over the panel's border: no seam between the panel and the box (brand QA 2026-11-09)
+    await near(b.left, box(p.panel).right - 1, 0.5);
     await near(b.width, 347, 1);
     const leader = style(p.details[0], "::before");
     await expect(leader.backgroundColor).toBe(GOLD);
@@ -627,7 +628,7 @@ export const HoldGate = {
 };
 
 export const LowerNameBox = {
-  name: "Box of the lowest name stays in the stage",
+  name: "Box of the lowest name hangs below the stage",
   tags: ["!dev"],
   globals: viewport(1440),
   render: () => <Harness before="20vh" after="40vh" html={placesHtml()} />,
@@ -639,10 +640,12 @@ export const LowerNameBox = {
     await waitFor(() =>
       expect(p.items[last].classList.contains("is-shown")).toBe(true)
     );
-    await expect(box(p.boxes[last]).bottom).toBeLessThanOrEqual(
-      box(p.media).bottom + 1
+    // brand QA 2026-11-09: London's box may go below the section so its gold bar lines up with the leader, as in
+    // the prototype: nothing moves it up
+    await near(box(p.boxes[last]).top, box(p.names[last]).bottom - 4, 1);
+    await expect(box(p.boxes[last]).bottom).toBeGreaterThan(
+      box(p.media).bottom
     );
-    // the leader stays on the name's rule
     await near(box(p.details[last]).bottom, box(p.names[last]).bottom, 1);
   },
 };
@@ -894,6 +897,9 @@ export const PlaceLinks = {
     const seeAll = p.section.querySelector(".hp-places__see-all");
     await check(link);
     await check(seeAll);
+    // desktop keeps the Figma geometry; mobile and tablet add 4px (brand QA 2026-11-10)
+    await expect(style(link).paddingBottom).toBe("0px");
+    await expect(style(seeAll).paddingBottom).toBe("0px");
     await expect(style(link).borderBottomColor).toBe(GOLD);
     await expect(style(seeAll).borderBottomColor).toBe(WHITE);
     await hoverGone(link);
@@ -903,6 +909,13 @@ export const PlaceLinks = {
     await waitFor(() => expect(p.details[0].hidden).toBe(false));
     await check(p.boxes[0].querySelector(".hp-places__link"));
     await check(seeAll);
+    for (const width of [393, 768]) {
+      await resizeViewport(width, 1024);
+      await expect(
+        style(p.boxes[0].querySelector(".hp-places__link")).paddingBottom
+      ).toBe("4px");
+      await expect(style(seeAll).paddingBottom).toBe("4px");
+    }
   },
 };
 

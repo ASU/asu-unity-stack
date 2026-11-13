@@ -163,22 +163,6 @@ const bind = (section, doc, win) => {
     }
   };
 
-  // The box of a lower name (London, long copy) would hang past the media: it moves up by the overflow and
-  // the leader stays on the name's rule.
-  const fitBox = i => {
-    const box = items[i].querySelector(".hp-places__box");
-    items[i].style.setProperty("--hp-places-box-shift", "0px");
-    if (!media || !desk.matches) return;
-    const overflow =
-      box.getBoundingClientRect().bottom - media.getBoundingClientRect().bottom;
-    if (overflow > 0) {
-      items[i].style.setProperty(
-        "--hp-places-box-shift",
-        `${Math.ceil(overflow)}px`
-      );
-    }
-  };
-
   // The data layer event follows the widget: a toggle on desktop, an open/close disclosure below 1024
   // (asucms datalayer.md); the attributes are read at click time.
   const track = (button, event, action) => {
@@ -214,7 +198,6 @@ const bind = (section, doc, win) => {
     });
     details[i].hidden = false;
     closes[i].hidden = false;
-    fitBox(i);
     // Two frames so the fades run from their resting state (display:none cannot transition).
     showFrame = win.requestAnimationFrame(() => {
       showFrame = win.requestAnimationFrame(() => {
@@ -306,7 +289,6 @@ const bind = (section, doc, win) => {
       track(names[i], "collapse", on ? "close" : "open");
       item.classList.remove("is-selected", "is-shown");
       item.classList.toggle("is-open", on);
-      item.style.removeProperty("--hp-places-box-shift");
       details[i].hidden = !on;
       closes[i].hidden = true;
     });
@@ -538,7 +520,6 @@ const bind = (section, doc, win) => {
     if (loader && win.innerHeight !== loaderHeight) watchMedia();
     scheduleOpening();
     measureWall();
-    if (sel >= 0) fitBox(sel);
   };
 
   cleanups.push(
@@ -581,7 +562,6 @@ const bind = (section, doc, win) => {
     clearOpening();
     items.forEach((item, i) => {
       item.classList.remove("is-selected", "is-shown", "is-open");
-      item.style.removeProperty("--hp-places-box-shift");
       details[i].hidden = false;
       closes[i].hidden = true;
       names[i].removeAttribute("aria-pressed");

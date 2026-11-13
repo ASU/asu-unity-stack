@@ -412,6 +412,12 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
     .hp-places__panel {
       grid-area: 2 / 1;
     }
+
+    // Brand QA (Zoe 2026-11-10): the link underlines sit a little further from the text on mobile and tablet.
+    .hp-places__link,
+    .hp-places__see-all {
+      padding-bottom: 4px;
+    }
   }
 }
 
@@ -419,6 +425,7 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
 
 @media (min-width: $hp-places-bp) {
   .hp-places.is-enhanced {
+    z-index: 1; // a lower box may hang past the section: it stays above the next one
     background: $uds-color-base-white;
 
     // The Learn network wallpaper behind the section, to the media's bottom edge.
@@ -611,11 +618,11 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
       height: 4px;
       padding: 0;
 
-      // Ends at the box's left edge: the free space plus the panel's 32px padding and 1px border.
+      // Ends at the box's left edge: the free space plus the panel's 32px padding.
       &::before {
         content: "";
         display: block;
-        width: calc(100% + 33px);
+        width: calc(100% + 32px);
         height: 4px;
         background: $uds-color-brand-gold;
         transform: scaleX(0);
@@ -642,8 +649,9 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
     // The description box hangs beside the panel at the selected row (its top meets the leader).
     .hp-places__box {
       position: absolute;
-      top: calc(100% - 4px - var(--hp-places-box-shift, 0px));
-      left: calc(100% + 33px);
+      top: calc(100% - 4px);
+      // 1px over the panel's own border: no seam between the panel and the box (brand QA 2026-11-09)
+      left: calc(100% + 32px);
       z-index: 3;
       box-sizing: border-box;
       display: flex;
