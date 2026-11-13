@@ -166,6 +166,15 @@ export const storiesToTest = [
   "homepage-places--tablet-1023",
   "homepage-places--phone-393",
   "homepage-places--large-1920",
+  // WWWCMS-240: faculty carousel (no script, the fan at rest, and the phone, tablet and desktop layouts)
+  "homepage-faculty-carousel--no-script",
+  "homepage-faculty-carousel--default",
+  "homepage-faculty-carousel--phone-393",
+  "homepage-faculty-carousel--tablet-768",
+  "homepage-faculty-carousel--desktop-1024",
+  "homepage-faculty-carousel--desktop-1280",
+  "homepage-faculty-carousel--desktop-1440",
+  "homepage-faculty-carousel--large-1920",
   // WWWCMS-237: make it yours (rest, no script, every width)
   "homepage-make-it-yours--default",
   "homepage-make-it-yours--no-script",
