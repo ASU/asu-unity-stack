@@ -37,7 +37,7 @@ const DropdownWrapper = styled.div`
       minus offset
       minus 2rem padding
     */
-    max-height: calc(100vh - ${({ heightOffset }) => heightOffset}px - 2rem);
+    max-height: calc(100vh - ${({ $heightOffset }) => $heightOffset}px - 2rem);
     overflow-y: auto;
     overflow-x: hidden;
     display: flex;
@@ -135,7 +135,7 @@ const DropdownWrapper = styled.div`
       padding: 1rem 2rem;
     }
   }
-  @media (max-width: ${({ breakpoint }) => breakpoint}) {
+  @media (max-width: ${({ $breakpoint }) => $breakpoint}) {
     position: initial;
     border: none;
     max-height: unset;
