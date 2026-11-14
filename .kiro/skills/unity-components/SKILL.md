@@ -21,6 +21,7 @@ components before creating anything new.**
 | app-degree-pages | …`yarn storybook` | `asu-app-degree-pages` (:9010) |
 | app-rfi | …`yarn storybook` | `asu-app-rfi` (:9020) |
 | app-webdir-ui | …`yarn storybook` | `asu-app-webdir-ui` (:9030) |
+| components-homepage | …`yarn storybook` | `asu-components-homepage` (:9050) |
 | component-events | …`yarn storybook` | `asu-component-events` (:9060) |
 | component-header-footer | …`yarn storybook` | `asu-component-header-footer` (:9080) |
 | component-news | …`yarn storybook` | `asu-component-news` (:9090) |

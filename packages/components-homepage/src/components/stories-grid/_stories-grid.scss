@@ -1,0 +1,529 @@
+// Homepage stories of excellence: an even 4x2 grid (heading tile + seven photo cards) that opens from inset
+// to full width on scroll (desktop), and the same two columns on phones (Figma 375, confirmed by brand 2026-11-02).
+// Prototype v2.71 lines 1384-1411, 1681-1684, 2206-2290 (final cascade, measured); hover from the Figma
+// "News card-V3" spec (12202:14932); design doc: WWWCMS-236.
+// Desktop-first: the base rules are the layout above 900px and `max-width` queries hold every override, so
+// no viewport width falls between two queries (initStories reads the inverse of the same queries).
+
+$hp-stories-compact-max: 600px; // TODO: confirm with design - the phone step (Figma 375; UDS sm is 576px).
+$hp-stories-header-break: 1080px; // The prototype switches to its compact header at 1079px.
+$hp-stories-tablet-min: 768px; // UDS md: from here to 900px the grid is 4 across (brand 2026-11-10, Figma 768 frame 15230:9792).
+// The Figma 375 type step (phones) also fits the 4 across tablet tiles (Figma 768: 24/24 heading, 16/20 title, no dek).
+$hp-stories-compact: "(max-width: #{$hp-stories-compact-max}), (min-width: #{$hp-stories-tablet-min}) and (max-width: #{$hp-phone-max})";
+
+// Hover/focus lift (Figma News card-V3 hover: drop-shadow 0 2px 10px rgba(0,0,0,.32)).
+// TODO: confirm with design - raw shadow, no UDS token.
+$hp-stories-lift: 0 2px 10px rgba(0, 0, 0, 0.32);
+
+// Easing for the hover reveal: one decelerating curve (ease-out cubic) for every part of it, so it starts at once
+// and everything arrives together. The Material curve (0.4, 0, 0.2, 1) had moved only 9% after 66ms.
+// TODO: confirm with design - Figma gives the durations (0.4s, 0.3s), not an easing.
+$hp-stories-ease: cubic-bezier(0.33, 1, 0.68, 1);
+
+// Scrim: the gradient is drawn over the full card height and scaled from the bottom. At rest scaleY(0.5) puts its start
+// at 50% of the card (Figma: 50% in the 1280 grid instances); on hover and focus scaleY(1) starts it at the top so the
+// whole photo darkens behind the subhead. A transform runs on the compositor, so the rise cannot stutter.
+$hp-stories-scrim-rest-scale: 0.5;
+
+.hp-stories {
+  // Stage B sets --hp-stories-header-height (inherited) from the real header; Storybook has none, so the
+  // default is the prototype's measured full-width (147px) and compact (69px) header height. initStories
+  // reads --hp-stories-header-used.
+  --hp-stories-header-default: 147px;
+  --hp-stories-header-used: var(
+    --hp-stories-header-height,
+    var(--hp-stories-header-default)
+  );
+  // Room the rows leave for the header (the prototype's --hb; the header minus 24px).
+  --hp-stories-reserve: 123px;
+  --hp-stories-ring-edge: #{$uds-color-base-white};
+  --hp-stories-ring-inner: #{$asu-gray-1};
+
+  // The section is the size container: its width does not change while the grid opens, so the row height
+  // and the type unit below never follow the animation (no layout shift, no resize feedback).
+  container-type: inline-size;
+
+  @media (max-width: #{$hp-stories-header-break - 1px}) {
+    --hp-stories-header-default: 69px;
+    --hp-stories-reserve: 69px;
+  }
+
+  @media (max-width: $hp-phone-max) {
+    padding-bottom: $uds-size-spacing-4;
+    background: var(--hp-stories-page, #{$uds-color-base-white});
+  }
+}
+
+// Row height and type unit come from the resting width: 25% of the section (up to 480px) at the 32:37
+// ratio, capped at 370px and by what fits the window under the header.
+// TODO: confirm with design - 480, 370, 320, .875 and the 24px are raw (no UDS token). The .875px floor
+// keeps the title at 21px (large text) and the subhead at 14px (the prototype's .75 gave 18px and 12px).
+.hp-stories__grid {
+  --hp-stories-row: min(
+    calc(min(25cqw, 480px) * 37 / 32),
+    calc((100vh - var(--hp-stories-reserve) - 24px) / 2),
+    370px
+  );
+  --hp-stories-u: max(
+    0.875px,
+    min(calc(min(25cqw, 480px) / 320), calc(var(--hp-stories-row) / 370))
+  );
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  // 1fr keeps both rows the same height when one (the heading tile in a short window) needs more than the row.
+  grid-auto-rows: minmax(var(--hp-stories-row), 1fr);
+  // initStories writes --hp-stories-progress (0 inset .. 1 full width); without it the grid is full width.
+  width: calc(
+    min(100%, 1920px) - 2 * (1 - var(--hp-stories-progress, 1)) *
+      #{$uds-size-spacing-6}
+  );
+  margin-inline: auto;
+  border-radius: calc((1 - var(--hp-stories-progress, 1)) * 4px);
+  // initStories sets --hp-stories-clip to hidden only while the corners are rounded, so the hover shadow of an
+  // edge card is not cut off at full width.
+  overflow: var(--hp-stories-clip, visible);
+  contain: layout;
+  background: $asu-gray-1;
+  color: $uds-color-base-white;
+
+  @media (max-width: $hp-phone-max) {
+    --hp-stories-u: 1px;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: auto;
+  }
+
+  // Tablet (768 to 900px): 4 across, two rows of 192 x 222 tiles (the type step above is the phone one).
+  @media (min-width: $hp-stories-tablet-min) and (max-width: $hp-phone-max) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+// ---- Heading tile ----
+
+.hp-stories__lead {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: calc(24 * var(--hp-stories-u));
+  padding: calc(23 * var(--hp-stories-u)) calc(32 * var(--hp-stories-u))
+    calc(23 * var(--hp-stories-u)) max(24px, calc(65 * var(--hp-stories-u)));
+  background: $asu-gray-1;
+  color: $uds-color-base-white;
+
+  @media (max-width: $hp-phone-max) {
+    padding: $uds-size-spacing-3 $uds-size-spacing-6;
+    align-self: stretch; // a tile taller than 32:37 (320px phones) stretches the cards beside it
+    aspect-ratio: 32 / 37;
+  }
+
+  @media #{$hp-stories-compact} {
+    gap: $uds-size-spacing-2;
+    padding: $uds-size-spacing-4 $uds-size-spacing-2;
+  }
+}
+
+.hp-stories__eyebrow {
+  display: inline-block;
+  width: max-content;
+  margin: 0;
+  padding: calc(8 * var(--hp-stories-u));
+  background: $uds-color-brand-gold;
+  color: $asu-gray-1;
+  font-size: calc(12 * var(--hp-stories-u));
+  font-weight: $uds-font-weight-bold;
+  line-height: calc(12 * var(--hp-stories-u));
+  letter-spacing: calc(2.4 * var(--hp-stories-u));
+  text-transform: uppercase;
+}
+
+.hp-stories__heading {
+  margin: 0;
+  color: $uds-color-base-white;
+  font-size: calc(32 * var(--hp-stories-u));
+  font-weight: $uds-font-weight-bold;
+  line-height: calc(32 * var(--hp-stories-u));
+  letter-spacing: calc(-0.96 * var(--hp-stories-u));
+  text-wrap: balance;
+
+  @media #{$hp-stories-compact} {
+    font-size: 24px; // TODO: confirm with design - Figma 375: 24/24, -0.72.
+    line-height: 24px;
+    letter-spacing: -0.72px;
+  }
+}
+
+.hp-stories__dek {
+  margin: calc(-12 * var(--hp-stories-u)) 0 0;
+  color: $uds-color-base-white;
+  font-size: calc(16 * var(--hp-stories-u));
+  line-height: calc(24 * var(--hp-stories-u));
+  text-wrap: pretty;
+
+  // The Figma 375 tile has no dek.
+  @media #{$hp-stories-compact} {
+    display: none;
+  }
+}
+
+// More stories is the UDS outline button at the medium size (btn-medium, as the hero and reimagine buttons; 36px tall:
+// 16px line, 2 x 8px padding, 2 x 2px border). The theme's btn-md mixin lacks a semicolon (_buttons.scss:3), which
+// swallows the 14px font size and the 8px hit-area inset; restore both here, as reimagine does. Remove when the theme
+// is fixed. The arrow is a 14px box, 8px after the text (Figma Button).
+// TODO: confirm with design - the 14px arrow box is raw (no UDS token).
+.hp-stories .hp-stories__more {
+  --bs-btn-font-size: #{$uds-size-font-small};
+  --uds-clickable-area-inset: -#{$uds-size-spacing-1};
+
+  display: inline-flex;
+  align-items: center;
+  gap: $uds-size-spacing-1;
+}
+
+// An outline button fills on hover (prototype); the theme also scales `.btn` 1.05 from 992px, which would snap on
+// because the fill transition below leaves `transform` out. The press (`:active`) keeps the theme's scale.
+.hp-stories .hp-stories__more:hover:not(:active) {
+  transform: none;
+}
+
+.hp-stories__more-icon {
+  flex: none;
+  width: 14px;
+  height: 14px;
+}
+
+// ---- Cards ----
+
+// Only the list is `display: contents`, so each `li` is a grid item (role="list"/"listitem" in the markup
+// keep the semantics where `display: contents` drops them).
+.hp-stories__cards {
+  display: contents;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  > li {
+    display: flex;
+    min-width: 0;
+
+    @media (max-width: $hp-phone-max) {
+      align-self: stretch;
+      aspect-ratio: 32 / 37;
+    }
+  }
+}
+
+.hp-stories__card {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  align-items: flex-end;
+  min-width: 0;
+  overflow: hidden;
+  background: $asu-gray-1;
+  color: $uds-color-base-white;
+  text-decoration: none;
+}
+
+// The theme turns visited links dark maroon; the card text never changes colour.
+.hp-stories .hp-stories__card:link,
+.hp-stories .hp-stories__card:visited,
+.hp-stories .hp-stories__card:hover {
+  color: $uds-color-base-white;
+  text-decoration: none;
+}
+
+// 6px overscan on every side so no dark seam shows between flush cards; the explicit size and
+// `max-width: none` beat the theme's `img { max-width: 100% }` and an absolute image's intrinsic size.
+.hp-stories__card img {
+  position: absolute;
+  inset: -6px;
+  display: block;
+  width: calc(100% + 12px);
+  max-width: none;
+  height: calc(100% + 12px);
+  max-height: none;
+  object-fit: cover;
+}
+
+// An alpha gradient: exactly Figma's multiply of white -> #3b3b3b (1 - .7686 * t), with no blend mode.
+// TODO: confirm with design - .7686 (= 1 - #3b3b3b/255) and 50% are raw.
+.hp-stories__scrim {
+  position: absolute;
+  // One extra pixel on both sides and below, clipped by the card: at a half-pixel card edge (widths like 965px) the
+  // composited layer would otherwise snap short of the clip and leave a column of un-darkened photo.
+  inset: 0 -1px -1px;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.7686)
+  );
+  transform: scaleY($hp-stories-scrim-rest-scale);
+  transform-origin: 50% 100%;
+  pointer-events: none;
+}
+
+.hp-stories__arrow {
+  position: absolute;
+  top: calc(24 * var(--hp-stories-u));
+  right: calc(24 * var(--hp-stories-u));
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  width: calc(24 * var(--hp-stories-u));
+  height: calc(24 * var(--hp-stories-u));
+  border: max(2px, calc(2 * var(--hp-stories-u))) solid $uds-color-base-white;
+  border-radius: 50%;
+  color: $uds-color-base-white;
+
+  @media #{$hp-stories-compact} {
+    top: $uds-size-spacing-2;
+    right: $uds-size-spacing-2;
+  }
+
+  svg {
+    display: block;
+    width: auto;
+    height: calc(12 * var(--hp-stories-u));
+  }
+}
+
+// In flow, bottom-left: a long title or the revealed subhead grows the card instead of clipping.
+.hp-stories__text {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: calc(24 * var(--hp-stories-u));
+
+  @media #{$hp-stories-compact} {
+    padding: $uds-size-spacing-2;
+  }
+}
+
+.hp-stories__title {
+  margin: 0;
+  color: $uds-color-base-white;
+  font-size: calc(24 * var(--hp-stories-u));
+  font-weight: $uds-font-weight-bold;
+  line-height: calc(26 * var(--hp-stories-u));
+  letter-spacing: calc(-0.72 * var(--hp-stories-u));
+  text-wrap: balance;
+
+  @media #{$hp-stories-compact} {
+    font-size: $uds-size-font-medium; // TODO: confirm with design - Figma 375: 16/20, -0.48.
+    line-height: 20px;
+    letter-spacing: -0.48px;
+  }
+}
+
+// The subhead is clipped, never display: none, so it stays in the accessibility tree.
+.hp-stories__sub-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+}
+
+.hp-stories__sub {
+  min-height: 0;
+  margin: 0;
+  overflow: hidden;
+  color: $uds-color-base-white;
+  font-size: calc(16 * var(--hp-stories-u));
+  line-height: calc(24 * var(--hp-stories-u));
+  opacity: 0;
+  text-wrap: pretty;
+}
+
+// The revealed state: subhead open, the whole photo darkened, a gap under the title.
+@mixin hp-stories-revealed {
+  .hp-stories__sub-wrap {
+    grid-template-rows: 1fr;
+  }
+
+  .hp-stories__sub {
+    opacity: 1;
+  }
+
+  .hp-stories__title {
+    margin-bottom: calc(8 * var(--hp-stories-u));
+  }
+
+  .hp-stories__scrim {
+    transform: none;
+  }
+}
+
+// The hovered or focused card rises above its flush neighbours so its shadow shows over them.
+@mixin hp-stories-lift {
+  z-index: 4;
+  box-shadow: $hp-stories-lift;
+}
+
+@mixin hp-stories-chip-active {
+  .hp-stories__arrow {
+    background: $uds-color-base-white;
+    color: $asu-gray-3;
+  }
+}
+
+// Keyboard focus applies everywhere; hover only to a hover-capable pointer.
+.hp-stories__card:focus-visible {
+  @include hp-stories-revealed;
+  @include hp-stories-chip-active;
+  @include hp-stories-lift;
+}
+
+@media (hover: hover) {
+  .hp-stories__card:hover {
+    @include hp-stories-revealed;
+    @include hp-stories-chip-active;
+    @include hp-stories-lift;
+  }
+}
+
+// Nothing to hover (tablets, phones, touch screens of any width): the subhead is always shown and the
+// scrim covers the photo.
+@media (hover: none), (max-width: $hp-phone-max) {
+  .hp-stories__card {
+    @include hp-stories-revealed;
+  }
+}
+
+// A subhead that is not shown stays in the accessibility tree (clipped, never display: none), so a link's
+// name does not change with the width.
+@mixin hp-stories-sub-hidden {
+  .hp-stories__title {
+    margin-bottom: 0;
+  }
+
+  .hp-stories__sub {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+}
+
+// The promo's baked-in quote crowds its headline on a short card: its subhead stays out of sight at <= 900.
+@media (max-width: $hp-phone-max) {
+  .hp-stories .hp-stories__card.hp-stories__card--promo {
+    @include hp-stories-sub-hidden;
+  }
+}
+
+// Phones (Figma 375): no card shows a subhead; the promo's artwork sits whole on its gold.
+@media #{$hp-stories-compact} {
+  .hp-stories .hp-stories__card {
+    @include hp-stories-sub-hidden;
+  }
+
+  .hp-stories .hp-stories__card--promo {
+    background: $uds-color-brand-gold;
+
+    img {
+      object-fit: contain;
+    }
+  }
+}
+
+// The focus ring is a pseudo-element above the photo (a box-shadow on the card would paint under it). The
+// theme's global `a:focus` ring is `!important`; this wins by specificity and cancels for pointer focus.
+.hp-stories__card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hp-stories .hp-stories__card:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+// Keyboard focus keeps the hover lift (this beats the cancel above and the theme's focus ring).
+.hp-stories .hp-stories__card:focus-visible {
+  box-shadow: $hp-stories-lift !important;
+}
+
+.hp-stories .hp-stories__card:focus-visible::after {
+  outline: 2px solid transparent; // forced colors drop box-shadow; this outline stays (focused card only)
+  outline-offset: -2px;
+  box-shadow:
+    inset 0 0 0 2px var(--hp-stories-ring-edge),
+    inset 0 0 0 4px var(--hp-stories-ring-inner);
+}
+
+// ---- Motion ----
+
+// Movement runs only for visitors without a reduced-motion preference; the end states are the same.
+@media (prefers-reduced-motion: no-preference) {
+  .hp-stories__sub-wrap {
+    transition: grid-template-rows 0.4s $hp-stories-ease;
+  }
+
+  .hp-stories__sub {
+    transition: opacity 0.3s $hp-stories-ease;
+  }
+
+  .hp-stories__title {
+    transition: margin-bottom 0.4s $hp-stories-ease;
+  }
+
+  .hp-stories__scrim {
+    transition: transform 0.4s $hp-stories-ease;
+    will-change: transform;
+  }
+
+  // The lift fades in with the reveal; the card rises above its neighbours at once and drops back only after the
+  // shadow has faded, so the shadow is never cut off by a neighbour mid-fade.
+  .hp-stories__card {
+    transition:
+      box-shadow 0.4s $hp-stories-ease,
+      z-index 0s linear 0.4s;
+  }
+
+  .hp-stories__card:focus-visible,
+  .hp-stories__card:hover {
+    transition:
+      box-shadow 0.4s $hp-stories-ease,
+      z-index 0s;
+  }
+
+  .hp-stories__arrow {
+    transition:
+      background-color 0.25s ease,
+      color 0.25s ease;
+  }
+
+  // The prototype's outline pill: the fill and the text colour ease over 0.2s (the theme's .btn is 0.03s, a snap).
+  .hp-stories .hp-stories__more {
+    transition:
+      color 0.2s ease,
+      background-color 0.2s ease,
+      border-color 0.2s ease;
+  }
+}
+
+// Forced colours: the scrim is dropped and the text sits on the system colours.
+@media (forced-colors: active) {
+  .hp-stories__scrim {
+    display: none;
+  }
+
+  .hp-stories__text {
+    background: Canvas;
+    color: CanvasText;
+  }
+
+  .hp-stories__title,
+  .hp-stories__sub {
+    color: CanvasText;
+  }
+}

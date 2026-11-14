@@ -25,7 +25,11 @@ orchestrator → architect → coder → reviewer, model-diverse, one approval g
    (`.pipeline/visual-report.md`). Loop coder↔reviewer up to 3 cycles.
 5. **GATE + HANDOFF** — use `unity-handoff-out`: enforce build+lint,
    `run-story-tests` (interaction+a11y), HTML-parity, and `VISUAL_PASS`; then
-   write `../handoff/<anchor>/{handoff.json,markup.html}` and validate it with
+   write `../handoff/<anchor>/{handoff.json,markup.html}` (with the
+   `webspark_target` block: Stage B builds every component as a Drupal Single
+   Directory Component in the one homepage module `asu_edu_homepage`
+   (`components/<slug>/`, no submodules), never in the `asu_edu`
+   theme or the shared `asu_edu_components` module) and validate it with
    `.kiro/scripts/validate-handoff.sh`.
 6. **RETAIN** — the ephemeral `.pipeline/` reports are not committed. Preserve
    them: run

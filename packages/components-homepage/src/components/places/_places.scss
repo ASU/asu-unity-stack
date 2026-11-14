@@ -1,0 +1,758 @@
+// Homepage places (campus locator): a looping video with a frosted location list on desktop (>= 1024) that opens
+// from inset to full width on scroll, and below 1024 the Figma 375 accordion on Gray 1 (brand: Figma is the source of
+// truth for mobile, no carousel). Design doc: WWWCMS-241.
+// Figma 82545 desktop (1280, 1920, 2500) and mobile 375 (13824:1800); prototype v2.71 for the copy.
+// Baseline (no script): the intro and every location open (name, text, link, photo) stacked on Gray 1.
+// `initPlaces` adds `.is-enhanced`, which turns on the desktop overlay (>= 1024) and the accordion (< 1024);
+// every rule that needs script is under `.is-enhanced`. The wallpaper (learn-bg.webp, a ../img/ asset relative to
+// the SCSS entry) is drawn by this component, behind the section.
+
+$hp-places-bp: 1024px; // keep equal to DESKTOP in places.js
+$hp-places-header-break: 1080px; // the prototype switches to its compact header at 1079px (as the stories grid)
+$hp-places-ease: cubic-bezier(0.33, 1, 0.68, 1);
+
+// TODO: confirm with design - raw values (no UDS token): 347 panel, 885 media, 32 padding, 24 overhang, .75 glass,
+// blur 12 / saturate 160%, the 0.6/0.4/0.3/0.2s timings, the 327:219 accordion photo.
+$hp-places-panel-w: 347px;
+$hp-places-media-h: 885px;
+$hp-places-glass: rgba($asu-gray-1, 0.75);
+
+@mixin hp-places-focus {
+  &:focus:not(:focus-visible) {
+    box-shadow: none !important;
+  }
+
+  // Light surfaces: white + Gray 1 (the stories grid pair); dark surfaces override the two custom properties
+  // with the package's white + #00BAFF ring.
+  &:focus-visible {
+    outline: 2px solid transparent !important;
+    box-shadow:
+      var(--hp-places-ring-inner),
+      var(--hp-places-ring-outer) !important;
+  }
+}
+
+// Figma: a 1px stroke on the bottom of the link frame, 1px below the 24px line and clear of the glyphs, under the text,
+// the gap and the arrow; hover removes it.
+@mixin hp-places-arrow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: max-content;
+  max-width: 100%;
+  border-bottom: 1px solid currentcolor;
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration: none !important;
+
+  &:hover {
+    border-bottom-color: transparent;
+  }
+
+  @include hp-places-focus;
+}
+
+.hp-places {
+  --hp-places-header-default: 147px;
+  --hp-places-header-used: var(
+    --hp-places-header-height,
+    var(--hp-places-header-default)
+  );
+  --hp-places-side: 24px; // Figma 375 padding; 48px on tablets (the page gutter)
+  // Every surface is dark (Gray 1 page below 1024, glass above): the package's white + #00BAFF ring.
+  --hp-places-ring-inner: var(--hp-focus-inner);
+  --hp-places-ring-outer: var(--hp-focus-outer);
+
+  position: relative;
+  isolation: isolate;
+  background: $asu-gray-1;
+  color: $asu-gray-7;
+
+  @media (max-width: #{$hp-places-header-break - 1px}) {
+    --hp-places-header-default: 69px;
+  }
+
+  @media (min-width: 768px) {
+    --hp-places-side: 48px;
+  }
+
+  // Component rules set `display`; [hidden] must still hide.
+  [hidden] {
+    display: none !important;
+  }
+}
+
+// Wallpaper: the Learn network art, tiled 100% wide and stopping at the media's bottom edge; desktop only (the
+// accordion is on Gray 1). `--hp-places-wall-y` and `--hp-places-wall-bottom` come from places.js.
+.hp-places__wall {
+  display: none;
+}
+
+.hp-places__frame {
+  position: relative;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.hp-places__panel {
+  padding: 24px var(--hp-places-side);
+}
+
+// ---- Intro (the one heading block) ----
+
+.hp-places__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.hp-places__eyebrow {
+  // The gold chip (shared look with the stories grid eyebrow).
+  margin: 0;
+  padding: 6px 8px;
+  background: $uds-color-brand-gold;
+  color: $asu-gray-1;
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.hp-places__heading {
+  margin: 0;
+  color: $uds-color-base-white;
+  font-size: 32px;
+  line-height: 32px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.hp-places__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+// Gold on the dark surfaces (asucms: gold on dark, maroon on light). A 32px button with a 44px vertical hit area.
+.hp-places__cta {
+  --hp-places-cta-bg: #{$uds-color-brand-gold};
+  --hp-places-cta-ink: #{$asu-gray-1};
+  --hp-places-cta-edge: #{$uds-color-brand-gold};
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-sizing: border-box;
+  min-height: 32px;
+  padding: 0 16px;
+  border: 2px solid var(--hp-places-cta-edge);
+  border-radius: 100px;
+  background: var(--hp-places-cta-bg);
+  color: var(--hp-places-cta-ink);
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 700;
+  text-decoration: none !important;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -6px;
+    right: 0;
+    bottom: -6px;
+    left: 0;
+  }
+
+  @include hp-places-focus;
+}
+
+// Prototype: a filled pill grows 5% (colour unchanged), an outline pill fills with its own colour and the text
+// reverses (gold fill, Gray 1 text); 0.2s ease, no ring. The hover only changes the two custom properties, so the
+// visited rule below follows. TODO: confirm with design - 1.05 and 0.2s are the prototype's, not UDS tokens.
+@media (prefers-reduced-motion: no-preference) {
+  .hp-places__cta {
+    transition:
+      transform 0.2s ease,
+      color 0.2s ease,
+      background-color 0.2s ease;
+  }
+
+  .hp-places__cta--primary:hover {
+    transform: scale(1.05);
+  }
+}
+
+.hp-places__cta--secondary {
+  --hp-places-cta-bg: transparent;
+  --hp-places-cta-ink: #{$uds-color-brand-gold};
+
+  &:hover {
+    --hp-places-cta-bg: #{$uds-color-brand-gold};
+    --hp-places-cta-ink: #{$asu-gray-1};
+  }
+}
+
+.hp-places__cta-icon,
+.hp-places__arrow {
+  display: block;
+  width: auto;
+  height: 14px;
+  flex: none;
+  pointer-events: none;
+}
+
+// Figma Button: a 14 x 14 arrow box.
+.hp-places__cta-icon {
+  width: 14px;
+}
+
+// ---- Locations: the accordion (Figma 375). Desktop overrides these in the block at the end. ----
+
+.hp-places__group {
+  margin-bottom: 48px;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.hp-places__group-label {
+  margin: 0 0 8px;
+  color: $uds-color-brand-gold;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  letter-spacing: 0; // Figma 0%; the theme h3 would inherit -0.84px
+}
+
+.hp-places__names {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// The theme caps list items at 700px.
+.hp-places__item {
+  max-width: none;
+}
+
+// The name row: the name and a chevron; its 4px rule is as long as the row, and the open row's rule is gold
+// and spans the width.
+.hp-places__name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-sizing: border-box;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+  padding: 8px 0;
+  border: 0;
+  border-bottom: 4px solid $uds-color-base-white;
+  background: none;
+  color: $uds-color-base-white;
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  text-align: left;
+  cursor: pointer;
+
+  @media (forced-colors: active) {
+    border-bottom-color: CanvasText;
+  }
+
+  @include hp-places-focus;
+}
+
+.hp-places__item.is-open .hp-places__name {
+  justify-content: space-between;
+  width: 100%;
+  border-bottom-color: $uds-color-brand-gold;
+
+  @media (forced-colors: active) {
+    border-bottom-color: Highlight;
+  }
+}
+
+.hp-places__chevron {
+  display: block;
+  width: 18px;
+  height: 18px;
+  flex: none;
+  pointer-events: none;
+
+  .hp-places__item.is-open & {
+    transform: rotate(180deg);
+  }
+}
+
+// Without script the names do nothing and every location is open: no chevron, no pointer.
+.hp-places:not(.is-enhanced) {
+  .hp-places__chevron {
+    display: none;
+  }
+
+  .hp-places__name {
+    cursor: default;
+  }
+}
+
+// The open location: text, link and photo under the name.
+.hp-places__box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 12px 0 4px;
+}
+
+.hp-places__caption {
+  margin: 0;
+  color: $asu-gray-5;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.hp-places__link,
+.hp-places__see-all {
+  @include hp-places-arrow-link;
+
+  color: $uds-color-brand-gold;
+}
+
+.hp-places__photo {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  margin-top: 8px;
+  aspect-ratio: 327 / 219;
+  object-fit: cover;
+}
+
+.hp-places__see-all {
+  margin-top: 32px;
+  color: $uds-color-base-white;
+}
+
+// The theme's a:visited (0,2,1) turns these maroon, ~1.1:1 on the dark surfaces (1.4.3); visited keeps the colour.
+.hp-places .hp-places__link:visited {
+  color: $uds-color-brand-gold;
+}
+
+.hp-places .hp-places__see-all:visited {
+  color: $uds-color-base-white;
+}
+
+.hp-places .hp-places__cta:visited {
+  color: var(--hp-places-cta-ink);
+}
+
+// The media needs script (a video does nothing without it): hidden in the baseline.
+.hp-places__media,
+.hp-places__mbtn {
+  display: none;
+}
+
+.hp-places__still {
+  display: none;
+}
+
+// ---- Below 1024: the video strip above the list (Figma mobile: a 375x219 video, pause button at its
+// bottom right, directly above the locations) ----
+
+// Written as the inverse of the desktop query so no fractional width falls between the two.
+@media not all and (min-width: $hp-places-bp) {
+  .hp-places.is-enhanced {
+    .hp-places__frame {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .hp-places__media {
+      display: block;
+      grid-area: 1 / 1;
+      position: relative;
+      aspect-ratio: 375 / 219;
+      overflow: hidden;
+      background: $asu-gray-1;
+    }
+
+    .hp-places__video {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    // Over the strip, bottom right (Figma: 18px from the right, 12px from the bottom).
+    .hp-places__mbtn {
+      --mbtn-z-index: 3;
+      --mbtn-rest-opacity: 75%;
+
+      position: relative;
+      inset: auto;
+      grid-area: 1 / 1;
+      display: grid;
+      align-self: end;
+      justify-self: end;
+      margin: 0 18px 12px 0;
+    }
+
+    .hp-places__panel {
+      grid-area: 2 / 1;
+    }
+
+    // Brand QA (Zoe 2026-11-10): the link underlines sit a little further from the text on mobile and tablet.
+    .hp-places__link,
+    .hp-places__see-all {
+      padding-bottom: 4px;
+    }
+  }
+}
+
+// ---- Desktop (>= 1024): the media with the frosted list over it ----
+
+@media (min-width: $hp-places-bp) {
+  .hp-places.is-enhanced {
+    z-index: 1; // a lower box may hang past the section: it stays above the next one
+    background: $uds-color-base-white;
+
+    // The Learn network wallpaper behind the section, to the media's bottom edge.
+    .hp-places__wall {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: var(--hp-places-wall-bottom, 48px);
+      left: 0;
+      z-index: -1;
+      display: block;
+      pointer-events: none;
+      background: url("../img/learn-bg.webp") center
+        calc(-1 * var(--hp-places-wall-y, 0px)) / 100% auto repeat-y;
+    }
+
+    // Media and panel share one grid cell; the cell grows with the panel (long copy, zoom, text spacing).
+    .hp-places__frame {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      padding: 48px 0;
+    }
+
+    .hp-places__panel,
+    .hp-places__media {
+      grid-area: 1 / 1;
+    }
+
+    .hp-places__media {
+      position: relative;
+      display: block;
+      min-height: $hp-places-media-h;
+      overflow: hidden;
+      background: $asu-gray-1;
+
+      // Opening (places.js writes --hp-places-progress, 0 inset .. 1 full width, only while it is below 1).
+      &.is-opening {
+        clip-path: inset(
+          0 calc(48px * (1 - var(--hp-places-progress, 1))) round
+            calc(4px * (1 - var(--hp-places-progress, 1)))
+        );
+        will-change: clip-path;
+      }
+    }
+
+    .hp-places__video,
+    .hp-places__still {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: opacity 0.6s ease;
+      }
+    }
+
+    .hp-places__still {
+      opacity: 0;
+
+      &.is-on {
+        opacity: 1;
+      }
+    }
+
+    &.has-still .hp-places__video {
+      opacity: 0;
+    }
+
+    // A still replaces the video: there is nothing to pause or play until the box is closed.
+    &.has-still .hp-places__mbtn {
+      display: none;
+    }
+
+    .hp-places__mbtn {
+      --mbtn-z-index: 3;
+      --mbtn-rest-opacity: 75%;
+
+      right: 80px;
+      bottom: 80px;
+      display: grid;
+    }
+
+    // The frosted panel: overhangs the media's left edge by 24px and starts 24px below its top edge.
+    .hp-places__panel {
+      position: relative;
+      z-index: 2;
+      align-self: start;
+      justify-self: start;
+      box-sizing: border-box;
+      width: $hp-places-panel-w;
+      margin: 24px 0 24px 24px;
+      padding: 32px;
+      border: 1px solid $asu-gray-3;
+      isolation: isolate;
+      color: $asu-gray-7;
+      --hp-places-ring-inner: var(--hp-focus-inner);
+      --hp-places-ring-outer: var(--hp-focus-outer);
+    }
+
+    // The open box continues the panel: the panel's right stroke would show as a seam between them (brand QA
+    // 2026-11-09, places-gap.png). Its glass still fills the 1px, so the two surfaces meet without a line.
+    .hp-places__panel:has(.hp-places__item.is-shown) {
+      border-right-color: transparent;
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: border-color 0.3s ease 0.2s;
+      }
+    }
+
+    // The filter lives on a layer, not on the panel: the box inside is a descendant and needs the backdrop.
+    .hp-places__panel::before,
+    .hp-places__box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: $hp-places-glass;
+      backdrop-filter: blur(12px) saturate(160%);
+      -webkit-backdrop-filter: blur(12px) saturate(160%);
+      pointer-events: none;
+
+      @supports not (
+        (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+      ) {
+        background: rgba($asu-gray-1, 0.95);
+      }
+
+      @media (forced-colors: active) {
+        background: Canvas;
+      }
+    }
+
+    // Contrast checkers (Alfa, axe) read element backgrounds, not pseudo-elements: the panel carries the fill and its
+    // layer only blurs, so the gold labels are measured on the dark glass and not on the white section behind.
+    .hp-places__panel {
+      background: $hp-places-glass;
+
+      @supports not (
+        (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
+      ) {
+        background: rgba($asu-gray-1, 0.95);
+      }
+
+      @media (forced-colors: active) {
+        background: Canvas;
+      }
+    }
+
+    .hp-places__panel::before {
+      background: transparent;
+    }
+
+    .hp-places__group {
+      margin-bottom: 44px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+
+    .hp-places__group-label {
+      margin-bottom: 16px;
+    }
+
+    // Figma 1280: 60px between name rows (a 48px row and a 12px gap).
+    // Each row: the name, then the free space of the row, which carries the 4px leader line to the box.
+    .hp-places__item {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .hp-places__name {
+      flex: 0 1 auto;
+      width: auto;
+      min-width: 0;
+
+      &[aria-pressed="true"] {
+        border-bottom-color: $uds-color-brand-gold;
+      }
+
+      @media (forced-colors: active) {
+        &[aria-pressed="true"] {
+          border-bottom-color: Highlight;
+        }
+      }
+    }
+
+    .hp-places__chevron,
+    .hp-places__photo {
+      display: none;
+    }
+
+    .hp-places__detail {
+      flex: 1 1 0;
+      min-width: 0;
+      height: 4px;
+      padding: 0;
+
+      // Ends at the box's left edge: the free space plus the panel's 32px padding and 1px border.
+      &::before {
+        content: "";
+        display: block;
+        width: calc(100% + 33px);
+        height: 4px;
+        background: $uds-color-brand-gold;
+        transform: scaleX(0);
+        transform-origin: left;
+
+        @media (prefers-reduced-motion: no-preference) {
+          transition: transform 0.2s ease;
+        }
+
+        @media (forced-colors: active) {
+          background: Highlight;
+        }
+      }
+    }
+
+    .hp-places__item.is-shown .hp-places__detail::before {
+      transform: scaleX(1);
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: transform 0.4s $hp-places-ease;
+      }
+    }
+
+    // The description box hangs beside the panel at the selected row (its top meets the leader).
+    .hp-places__box {
+      position: absolute;
+      top: calc(100% - 4px);
+      left: calc(100% + 33px);
+      z-index: 3;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: $hp-places-panel-w;
+      padding: 24px 56px 24px 24px;
+      isolation: isolate;
+      color: $asu-gray-7;
+      --hp-places-ring-inner: var(--hp-focus-inner);
+      --hp-places-ring-outer: var(--hp-focus-outer);
+      opacity: 0;
+      visibility: hidden;
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition:
+          opacity 0.2s ease,
+          visibility 0.2s;
+      }
+
+      @media (forced-colors: active) {
+        border: 1px solid CanvasText;
+      }
+    }
+
+    .hp-places__item.is-shown .hp-places__box {
+      opacity: 1;
+      visibility: visible;
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: opacity 0.3s ease 0.2s;
+      }
+    }
+
+    // Figma: the box has a 4px gold stroke on its top edge, as wide as the box; it fades in with the box.
+    .hp-places__box::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 4px;
+      background: $uds-color-brand-gold;
+      pointer-events: none;
+
+      @media (forced-colors: active) {
+        background: Highlight;
+      }
+    }
+
+    .hp-places__caption {
+      margin: 0;
+      font-size: 16px;
+      line-height: 24px;
+
+      @media (prefers-reduced-motion: no-preference) {
+        animation: hp-places-caption 0.4s ease both;
+      }
+    }
+
+    .hp-places__close {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 0;
+      background: none;
+      color: $uds-color-base-white;
+      cursor: pointer;
+
+      @include hp-places-focus;
+    }
+
+    .hp-places__close-icon {
+      display: block;
+      width: auto;
+      height: 16px;
+      pointer-events: none;
+    }
+  }
+}
+
+@keyframes hp-places-caption {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

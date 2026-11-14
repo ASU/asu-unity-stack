@@ -1,0 +1,35 @@
+// Storybook-only styles for the rankings-cards stories.
+// This file is imported ONLY from rankings-cards.stories.jsx and must NOT be
+// included in the production bundle.
+//
+// Token note: ASU dark navy (rgb(0, 43, 92)) is not defined in the Unity token
+// system (_custom-asu-variables.scss has no navy/dark-hero token as of
+// 2026-11-03).  It is used here as a Storybook fixture to simulate the dark
+// hero band that wraps the rankings section in production (the component itself
+// uses `background: transparent`).  Once a UDS navy token is added, replace
+// the rgb() value below and reference the token.
+// Ref: design-doc v3 §4 (Q4 = transparent section).
+
+// Import Unity spacing tokens so $uds-size-spacing-4 is available.
+// This @import is safe because this partial is NOT on the production CSS entry
+// path (it is only consumed by Storybook via stories.jsx) and therefore does
+// NOT leak into dist/css/components-homepage.css.
+@import "@asu/unity-bootstrap-theme/src/scss/custom-asu-variables";
+
+#storybook-root {
+  min-height: 100vh;
+  background: linear-gradient(to top right, #5794CC, #024070);
+  background-attachment: fixed;
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+}
+
+.rankings-storybook-placeholder {
+  height: var(--vh, 50dvh);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.rankings-storybook-backdrop {
+  // storybook-only: ASU dark navy, not in UDS tokens (see note above)
+  padding: $uds-size-spacing-4; // 2rem — token from _custom-asu-variables.scss:23
+}
