@@ -1651,7 +1651,22 @@ const bindCarouselGeometry = controller => {
   };
 
   const move = direction => {
-    if (pendingScroll) return false;
+    if (
+      pendingScroll &&
+      (gestureActive || deferredSelection || pendingSelectionItem)
+    ) {
+      return false;
+    }
+
+    // Navigation may supersede passive alignment work (for example, the
+    // ResizeObserver's initial recenter). Do not discard a user's click while
+    // the carousel is merely settling its current item.
+    if (pendingScroll) {
+      clearIdleTimer();
+      pendingScroll = false;
+      recentring = false;
+      controller.setClass(root, "is-correcting", false);
+    }
     const current = sync();
     if (
       !current.hasOverflow ||

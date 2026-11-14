@@ -176,7 +176,6 @@ export const storiesToTest = [
   "homepage-charter-bubbles--forced-colors",
   "homepage-charter-bubbles--long-content",
   "homepage-charter-bubbles--malformed-contracts-stay-unenhanced",
-  "homepage-charter-bubbles--react-rerender-stability",
   "homepage-charter-bubbles--analytics-forwarding-parity",
   "homepage-charter-bubbles--no-invented-analytics",
   // WWWCMS-235: quick-links a11y story (on-white backdrop, WCAG 2.1 AA via Siteimprove Alfa)

@@ -13,7 +13,7 @@
   --hp-charter-mobile-overlap: 5.125rem; // 82px of the mobile frame overlaps the preceding image section.
   --hp-charter-cluster-width: 37.5rem; // 600px prototype cluster.
   --hp-charter-cluster-height: 25rem; // 400px prototype cluster.
-  --hp-charter-cluster-shift-y: -5.5rem; // -88px keeps the closed lower row about 96px below the preceding section.
+  --hp-charter-cluster-shift-y: -5.5rem; // -88px positions the overlap; the cluster shell owns the lower boundary.
   --hp-charter-reserved-block: 27.79875rem; // 444.78px mobile frame; TODO: confirm shared-section reservation.
   --hp-charter-nav-size: 3.26875rem; // 52.3px measured control; TODO: request control-size token.
   --hp-charter-nav-gap: 0.8175rem; // 13.08px measured gap; TODO: request spacing token.
@@ -76,7 +76,8 @@
   transition: transform var(--hp-charter-duration) var(--hp-charter-easing);
   z-index: 1;
 }
-@media (min-width: $uds-breakpoint-md) {
+// The 768px boundary belongs to the carousel; cluster placement begins above it.
+@media (min-width: $uds-breakpoint-md + 0.02px) {
   .hp-charter-bubble:nth-child(1) {
     inset-block-start: 26.6%;
     inset-inline-start: 15.3%;
