@@ -171,7 +171,7 @@
                 },
                 "image": {
                   "name": "custom",
-                  "raw": "N1",
+                  "raw": "E1",
                   "required": false
                 },
                 "title": {
@@ -597,7 +597,7 @@
                 },
                 "image": {
                   "name": "custom",
-                  "raw": "N1",
+                  "raw": "E1",
                   "required": false
                 },
                 "title": {
@@ -866,6 +866,6 @@
   },
   "meta": {
     "docgen": "react-docgen",
-    "durationMs": 750
+    "durationMs": 763
   }
 }
