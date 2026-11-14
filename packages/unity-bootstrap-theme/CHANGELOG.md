@@ -1,3 +1,13 @@
+# [@asu/unity-bootstrap-theme-v2.4.5](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.4.4...@asu/unity-bootstrap-theme-v2.4.5) (2026-11-14)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** display hero video content on mobile ([8b4f501](https://github.com/ASU/asu-unity-stack/commit/8b4f501858e0c960ffc2dbacd16392f577da1dd8))
+* **unity-bootstrap-theme:** fixed playsInline in heroes.example.stories.js ([a9fd087](https://github.com/ASU/asu-unity-stack/commit/a9fd087d988b02e2a0ae0ede6b780eae8c3a21dc))
+* **unity-bootstrap-theme:** playsinline attribute update ([1ea955f](https://github.com/ASU/asu-unity-stack/commit/1ea955f45a9246a8cfb9b57001fc534a8e7581c1))
+* **unity-bootstrap-theme:** replaced "Select Section" with "Select a Page" ([0a86f47](https://github.com/ASU/asu-unity-stack/commit/0a86f478262121d0141dec4fbce5ef429e20b3ac))
+
 # [@asu/unity-bootstrap-theme-v2.4.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.4.3...@asu/unity-bootstrap-theme-v2.4.4) (2026-11-06)
 
 
