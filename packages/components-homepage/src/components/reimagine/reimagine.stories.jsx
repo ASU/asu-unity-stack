@@ -369,19 +369,18 @@ export const Hover = {
       await realPointer.unhover(row);
       await expectRest(row);
 
-      // Learn more: stays an outline on hover (no fill) and grows to 1.05
+      // Learn more: the theme's own hover (maroon fill, white text, scale 1.05 at >= 992px)
       await realPointer.hover(p.cta);
+      await waitFor(() =>
+        expect(getComputedStyle(p.cta).backgroundColor).toBe("rgb(140, 29, 64)")
+      );
+      await waitFor(() =>
+        expect(getComputedStyle(p.cta).color).toBe("rgb(255, 255, 255)")
+      );
       await waitFor(() =>
         expect(getComputedStyle(p.cta).transform).toBe(
           "matrix(1.05, 0, 0, 1.05, 0, 0)"
         )
-      );
-      await expect(getComputedStyle(p.cta).backgroundColor).toBe(
-        "rgba(0, 0, 0, 0)"
-      );
-      await expect(getComputedStyle(p.cta).color).toBe("rgb(140, 29, 64)");
-      await expect(getComputedStyle(p.cta).borderTopColor).toBe(
-        "rgb(140, 29, 64)"
       );
       await realPointer.unhover(p.cta);
     }
@@ -687,8 +686,8 @@ export const PlaceholderLinks = {
 const CTA_ID = "hp-reimagine-heading-learn-more";
 const GROWN = "matrix(1.05, 0, 0, 1.05, 0, 0)";
 
-// QA: "Learn more should grow on hover; it currently changes color" and "remove the fill on hover".
-// The theme scales `.btn` only from 992px and in 0.03s; the button grows at every width, unfilled.
+// QA: "Learn more should grow on hover; it currently changes color". The theme scales `.btn` only
+// from 992px and in 0.03s (a pop that reads as a colour change); the button grows at every width.
 export const LearnMoreGrows = {
   name: "Learn more grows",
   globals: viewport(393),
@@ -734,10 +733,9 @@ export const LearnMoreGrows = {
         expect(getComputedStyle(p.cta).transform).toBe(GROWN)
       );
       const hovered = getComputedStyle(p.cta);
-      // brand QA: no fill and no colour change on hover, and a smooth (not 0.03s) growth
-      await expect(hovered.backgroundColor).toBe("rgba(0, 0, 0, 0)");
-      await expect(hovered.color).toBe(restColor);
-      await expect(hovered.borderTopColor).toBe("rgb(140, 29, 64)");
+      // still the colour change too, and a smooth (not 0.03s) growth
+      await expect(hovered.backgroundColor).toBe("rgb(140, 29, 64)");
+      await expect(hovered.color).not.toBe(restColor);
       await expect(hovered.transitionProperty).toContain("transform");
       await expect(hovered.transitionDuration).toContain("0.25s");
       await realPointer.unhover(p.cta);
@@ -948,6 +946,31 @@ export const ColumnAlignment = {
       await expectStacked(p);
     }
     await resizeViewport(1440);
+  },
+};
+
+const EYEBROW_ID = "hp-reimagine-heading-eyebrow";
+
+// Brand QA (Alysia 2026-11-10): "Have the eyebrow text wrap on smaller screen sizes ... inside the gold
+// highlight wrap instead of going off-screen" (seen at a 216px-wide viewport).
+export const EyebrowWraps = {
+  name: "Eyebrow wraps",
+  globals: viewport(393),
+  render: () => <Page headingId={EYEBROW_ID} />,
+  play: async ({ canvasElement }) => {
+    const p = await expectComplete(canvasElement, EYEBROW_ID);
+    await expect(getComputedStyle(p.eyebrow).whiteSpace).not.toBe("nowrap");
+    if (!realPointer.available) return;
+    await resizeViewport(393);
+    const oneLine = p.eyebrow.getBoundingClientRect().height;
+    await resizeViewport(216);
+    await expect(window.innerWidth).toBe(216);
+    const box = p.eyebrow.getBoundingClientRect();
+    // the gold highlight stays inside the 24px gutters and its text wraps onto a second line
+    await expect(box.right).toBeLessThanOrEqual(216 - 24 + 0.5);
+    await expect(box.height).toBeGreaterThan(oneLine + 8);
+    await expect(document.documentElement.scrollWidth).toBeLessThanOrEqual(216);
+    await resizeViewport(393);
   },
 };
 

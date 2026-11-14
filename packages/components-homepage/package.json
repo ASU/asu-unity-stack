@@ -17,6 +17,7 @@
   },
   "scripts": {
     "build": "vite build && cp -R src/img dist/img",
+    "images:make-it-yours": "bash scripts/make-it-yours-images.sh ../../.intake",
     "storybook": "storybook dev -p 9050",
     "build-storybook": "storybook build -o ../../build/$npm_package_name",
     "lint": "yarn js-lint && yarn css-lint",

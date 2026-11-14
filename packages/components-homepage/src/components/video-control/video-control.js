@@ -3,8 +3,9 @@
 // only `data-auto` videos resume on scroll-back (prototype v2.71 rule, open question 6);
 // a visitor's pause sticks; nothing autoplays under reduced motion or without a poster.
 // Optional per-video attributes: `data-in-view` (0-1, share of the video that must show to autoplay;
-// default 0.45) and `data-hold` (set by the page while something covers the video: nothing resumes it
-// until the attribute is removed).
+// default 0.45), `data-hold` (set by the page while something covers the video: nothing resumes it
+// until the attribute is removed) and `data-restart` (removing the hold starts the video over: a fresh
+// set of plays, a visitor's pause forgotten, back to the first frame).
 
 const DEFAULT_PLAYS = 3;
 const IN_VIEW_RATIO = 0.45;
@@ -159,6 +160,15 @@ const createEntry = (video, doc, win) => {
       if (entry.holdClearedByClick) {
         entry.holdClearedByClick = false;
         return;
+      }
+      if (video.hasAttribute("data-restart")) {
+        entry.plays = 0;
+        entry.userPaused = false;
+        try {
+          video.currentTime = 0;
+        } catch {
+          // not seekable yet
+        }
       }
       if (entry.inView && entry.ratio >= entry.minRatio) tryAutoplay();
     });

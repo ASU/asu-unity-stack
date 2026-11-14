@@ -37,7 +37,7 @@ export default {
     docs: {
       description: {
         component:
-          'Homepage stories of excellence: an even 4x2 grid, edge to edge, of a Gray 1 heading tile ("Stories of excellence", "This is ASU innovation.", "More stories") and seven photo cards (six stories and one gold promo in row 2, cell 2). On desktop the grid starts inset by the 48px gutter with 4px corners and opens to full width with square corners as it scrolls into view (`initStories` writes `--hp-stories-progress` from the scroll position; the section\'s height never changes, so nothing below it moves). Hover and keyboard focus reveal the subhead (0.4s), darken the whole photo (the scrim starts at the top instead of at 50%) and lift the card with a shadow and invert the arrow chip. Tablet (900px and under) is two columns with the heading tile as the first cell and the subhead always shown; phones (600px and under, Figma 375) keep the same two columns with smaller type, no dek and no subheads. Reduced motion and no script show the grid at full width. Above 1920px the grid is capped and centered on a Gray 1 topo band. Photos are the prototype sample photos; `href`s are placeholders (`#story-N`, `#stories-more`).',
+          'Homepage stories of excellence: an even 4x2 grid, edge to edge, of a Gray 1 heading tile ("Stories of excellence", "This is ASU innovation.", "More stories") and seven photo cards (six stories and one gold promo in row 2, cell 2). On desktop the grid starts inset by the 48px gutter with 4px corners and opens to full width with square corners as it scrolls into view (`initStories` writes `--hp-stories-progress` from the scroll position; the section\'s height never changes, so nothing below it moves). Hover and keyboard focus reveal the subhead (0.4s), darken the whole photo (the scrim starts at the top instead of at 50%) and lift the card with a shadow and invert the arrow chip. Tablets (768px to 900px, Figma 768 frame 15230:9792, brand 2026-11-10) show the grid 4 across (the heading tile and seven cards in 2 rows of 192 x 222 tiles) with the phone type, no dek and no visible subheads; from 601px to 767px it is two columns with the heading tile as the first cell and the subhead always shown; phones (600px and under, Figma 375) keep two columns with smaller type, no dek and no subheads. Reduced motion and no script show the grid at full width. Above 1920px the grid is capped and centered (no topo band; brand 2026-11-10). Photos are the prototype sample photos; `href`s are placeholders (`#story-N`, `#stories-more`).',
       },
     },
   },
@@ -80,7 +80,6 @@ const parts = canvasElement => {
   const find = selector => section.querySelector(selector);
   return {
     section,
-    band: find(".hp-topo--band"),
     grid: find(".hp-stories__grid"),
     lead: find(".hp-stories__lead"),
     eyebrow: find(".hp-stories__eyebrow"),
@@ -442,8 +441,6 @@ export const Large1920 = {
     await waitFor(() => expect(progressOf(p.grid)).toBe(1));
     const m = await expectDesktopGrid(p);
     await near(m.row, 370, 0.5);
-    // the band exists only above 1920
-    await expect(style(p.band).display).toBe("none");
   },
 };
 
@@ -462,11 +459,8 @@ export const UltraWide2560 = {
     await near(box(p.cards[0]).height, 370, 1);
     const g = box(p.grid);
     await near(g.left, (m.width - 1920) / 2, 1);
-    // a Gray 1 topo band as tall as the grid runs behind it
-    await expect(style(p.band).display).toBe("block");
-    await expect(style(p.band).backgroundColor).toBe(GRAY_1);
-    await near(box(p.band).height, g.height, 1);
-    await near(box(p.band).width, m.width, 1);
+    // no topo band (brand 2026-11-10): the page shows beside the capped grid
+    await expect(p.section.querySelector(".hp-topo")).toBeNull();
     await expect(style(p.lead).backgroundColor).toBe(GRAY_1);
   },
 };
@@ -608,13 +602,15 @@ export const Tablet768 = {
     await resizeViewport(768, 1024);
     const p = parts(canvasElement);
     await waitFor(() =>
-      expect(style(p.grid).gridTemplateColumns.split(" ")).toHaveLength(2)
+      expect(style(p.grid).gridTemplateColumns.split(" ")).toHaveLength(4)
     );
     const width = box(p.section).width;
-    const cellWidth = width / 2;
+    const cellWidth = width / 4;
     const cellHeight = (cellWidth * 37) / 32;
     const g = box(p.grid);
-    // the heading tile is the first cell, the seven cards fill 4 rows of 2
+    // brand 2026-11-10 (Figma 768 frame 15230:9792): 4 across, 192 x 222 tiles, the heading tile first and the
+    // seven cards filling the rest of 2 rows
+    await near(cellWidth, 192, 0.5);
     const lead = box(p.lead);
     await near(lead.width, cellWidth, 1);
     await near(lead.height, cellHeight, 1);
@@ -623,30 +619,32 @@ export const Tablet768 = {
       const b = box(element);
       near(b.width, cellWidth, 1);
       near(b.height, cellHeight, 1);
-      near(b.left - g.left, ((index + 1) % 2) * cellWidth, 1);
-      near(b.top - g.top, Math.floor((index + 1) / 2) * cellHeight, 1);
+      near(b.left - g.left, ((index + 1) % 4) * cellWidth, 1);
+      near(b.top - g.top, Math.floor((index + 1) / 4) * cellHeight, 1);
     });
-    await near(g.height, 4 * cellHeight, 1);
-    // the gold promo is row 3, right
-    await near(box(p.cards[4]).top - g.top, 2 * cellHeight, 1);
+    await near(g.height, 2 * cellHeight, 1);
+    // the gold promo is row 2, second column
+    await near(box(p.cards[4]).top - g.top, cellHeight, 1);
     await near(box(p.cards[4]).left - g.left, cellWidth, 1);
     // no opening, no gaps, square; the page background is white; 32px under the grid
     await expect(style(p.grid).borderRadius).toBe("0px");
     await near(g.width, width, 1);
     await expect(style(p.section).backgroundColor).toBe(WHITE);
     await near(px(style(p.section).paddingBottom), 32, 0.5);
-    // the subhead is always shown (no hover on touch); the promo's is visually hidden but in the tree
+    // the Figma 768 type: 24/24 heading, no dek, 16/20 titles and no visible subheads (still in the tree)
+    await expect(px(style(p.heading).fontSize)).toBe(24);
+    await expect(px(style(p.heading).lineHeight)).toBe(24);
+    await expect(style(p.dek).display).toBe("none");
     p.cards.forEach((_, index) => {
       const c = card(p, index);
-      expect(style(c.sub).display).not.toBe("none");
-      if (index !== 4) {
-        expect(style(c.sub).opacity).toBe("1");
-        expect(box(c.sub).height).toBeGreaterThan(20);
-      }
+      expect(px(style(c.title).fontSize)).toBe(16);
+      expect(px(style(c.title).lineHeight)).toBe(20);
+      expect(box(c.sub).height).toBeLessThanOrEqual(1);
+      expect(c.element.textContent).toContain(STORIES[index].sub);
       expect(scrimStart(c.scrim)).toBe("0%");
     });
-    await expect(box(card(p, 4).sub).height).toBeLessThanOrEqual(1);
-    await expect(card(p, 4).element.textContent).toContain(STORIES[4].sub);
+    // the More stories button stays inside its 192px tile
+    await expect(box(p.more).right).toBeLessThanOrEqual(box(p.lead).right);
   },
 };
 
@@ -730,13 +728,20 @@ export const BreakpointCrossing = {
     const progress = () =>
       p.grid.style.getPropertyValue("--hp-stories-progress");
     await waitFor(() => expect(progress()).not.toBe(""));
-    // 901 -> 900: opening off, two columns
+    // 901 -> 900: opening off, 4 across at tablet with the phone type (Figma 768)
     await resizeViewport(900, 900);
     await waitFor(() => expect(progress()).toBe(""));
-    await expect(style(p.grid).gridTemplateColumns.split(" ")).toHaveLength(2);
-    await expect(style(p.dek).display).not.toBe("none");
+    await expect(style(p.grid).gridTemplateColumns.split(" ")).toHaveLength(4);
+    await expect(style(p.dek).display).toBe("none");
+    await expect(px(style(card(p, 0).title).fontSize)).toBe(16);
+    await resizeViewport(768, 900);
+    await expect(style(p.grid).gridTemplateColumns.split(" ")).toHaveLength(4);
+    // 767: two columns with the full-size type (601 to 767)
+    await resizeViewport(767, 900);
+    await waitFor(() => expect(style(p.dek).display).not.toBe("none"));
     await expect(px(style(card(p, 0).title).fontSize)).toBe(24);
-    // 900 -> 600 -> 601: the phone step (Figma 375) has smaller type and no dek, in the same two columns
+    await expect(style(p.grid).gridTemplateColumns.split(" ")).toHaveLength(2);
+    // 767 -> 600 -> 601: the phone step (Figma 375) has smaller type and no dek, in the same two columns
     await resizeViewport(600, 900);
     await waitFor(() => expect(style(p.dek).display).toBe("none"));
     await expect(px(style(card(p, 0).title).fontSize)).toBe(16);
@@ -882,7 +887,15 @@ export const StylesheetContract = {
     walkRules((rule, conditions) => {
       if (
         /\.hp-stories/.test(rule.selectorText) &&
-        conditions.some(condition => /min-width/.test(condition))
+        conditions.some(condition =>
+          condition
+            .split(",")
+            .some(
+              part =>
+                /min-width/.test(part) &&
+                part.trim() !== "(min-width: 768px) and (max-width: 900px)"
+            )
+        )
       ) {
         offenders.push(`${conditions.join(" and ")} ${rule.selectorText}`);
       }
@@ -904,7 +917,7 @@ export const StylesheetContract = {
       }
     });
     await expect(touchRule).toBe(true);
-    // the 1921px band is the one documented exception (it lives in the foundations' `.hp-topo--band` rule)
+    // the 768px tablet band (4 across) is the one documented exception: it is bounded by max-width 900px, so no width falls between two layouts
     await expect(offenders).toEqual([]);
   },
 };
@@ -964,7 +977,7 @@ export const PromoCard = {
     const name = `${promo.img.alt} ${promo.element.textContent}`;
     await resizeViewport(768, 1024);
     await waitFor(() =>
-      expect(style(p.grid).gridTemplateColumns.split(" ")).toHaveLength(2)
+      expect(style(p.grid).gridTemplateColumns.split(" ")).toHaveLength(4)
     );
     await expect(`${promo.img.alt} ${promo.element.textContent}`).toBe(name);
     await expect(box(promo.sub).height).toBeLessThanOrEqual(1);
