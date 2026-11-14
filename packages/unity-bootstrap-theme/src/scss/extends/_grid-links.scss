@@ -49,6 +49,10 @@
     color: $uds-color-base-white;
     background-color: $asu-gray-1;
   }
+
+  & a:visited {
+    color: $uds-color-font-light-visited;
+  }
 }
 
 /*--------------------------------------------------------------
