@@ -13,9 +13,8 @@ Vanilla HTML/SCSS/JS foundations for the ASU homepage (Jira WWWCMS-227 / WWWCMS-
 | `src/components/<piece>/`           | One folder per foundation piece, with its SCSS partial, JS and stories side by side (see below)       |
 | `src/scss/components-homepage.scss` | SCSS entry; imports the UDS variables, `_variables.scss` and each piece's partial                     |
 | `src/scss/_variables.scss`          | Shared homepage variables and custom properties                                                       |
-| `src/js/index.js`                   | React-free JS entry; re-exports progressive-enhancement initializers, including `initCharterBubbles`              |
 | `src/react/index.js`                | Optional React entry for the four Charter Bubble components; React stays external                                |
-| `src/js/index.js`                   | JS entry; re-exports the public API (`initVideoControls`, `initHero`, `initReimagine`, `initStories`, `initPlaces`, `initFacultyCarousel`) |
+| `src/js/index.js`                   | JS entry; re-exports the public API (`initVideoControls`, `initHero`, `initReimagine`, `initStories`, `initPlaces`, `initFacultyCarousel`, `initCharterBubbles`) |
 | `src/img/`                          | Art copied unchanged to `dist/img/`                                                                   |
 | `tests/`                            | Playwright accessibility spec                                                                         |
 
