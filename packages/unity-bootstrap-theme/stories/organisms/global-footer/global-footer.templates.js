@@ -485,7 +485,7 @@ export const OneColumn = () => (
               <a href="#">Contact Us</a>
             </p>
             <p className="contribute-button">
-              <a href="#" className="btn btn-small btn-gold">
+              <a href="#" className="btn btn-gold">
                 Support ASU
               </a>
             </p>
@@ -649,7 +649,7 @@ export const OneColumnNoLogoOrSocial = () => (
               <a href="#">Contact Us</a>
             </p>
             <p className="contribute-button">
-              <a href="#" className="btn btn-small btn-gold">
+              <a href="#" className="btn btn-gold">
                 Support ASU
               </a>
             </p>
@@ -903,7 +903,7 @@ export const TwoColumns = () => (
                 <a href="#">Contact Us</a>
               </p>
               <p className="contribute-button">
-                <a href="#" className="btn btn-small btn-gold">
+                <a href="#" className="btn btn-gold">
                   Support ASU
                 </a>
               </p>
@@ -1197,7 +1197,7 @@ export const ThreeColumns = () => (
                 <a href="#">Contact Us</a>
               </p>
               <p className="contribute-button">
-                <a href="#" className="btn btn-small btn-gold">
+                <a href="#" className="btn btn-gold">
                   Support ASU
                 </a>
               </p>
@@ -1535,7 +1535,7 @@ export const FourColumns = () => (
                 <a href="#">Contact Us</a>
               </p>
               <p className="contribute-button">
-                <a href="#" className="btn btn-small btn-gold">
+                <a href="#" className="btn btn-gold">
                   Support ASU
                 </a>
               </p>
@@ -1917,7 +1917,7 @@ export const FiveColumns = () => (
                 <a href="#">Contact Us</a>
               </p>
               <p className="contribute-button">
-                <a href="#" className="btn btn-small btn-gold">
+                <a href="#" className="btn btn-gold">
                   Support ASU
                 </a>
               </p>
