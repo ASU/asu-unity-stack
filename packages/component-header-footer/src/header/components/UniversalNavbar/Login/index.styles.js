@@ -25,7 +25,7 @@ const LoginWrapper = styled.div`
   > a.${CLASS_NAMES.SIGNOUT}:after {
     content: ") ";
   }
-  @media (max-width: ${({ breakpoint }) => breakpoint}) {
+  @media (max-width: ${({ $breakpoint }) => $breakpoint}) {
     width: 100%;
     margin-right: 0;
     justify-content: center;
