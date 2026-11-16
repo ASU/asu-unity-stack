@@ -3,6 +3,7 @@ import {
   BreakpointPreservesOpen as BreakpointPreservesOpenStory,
   CarouselNavigation as CarouselNavigationStory,
   DesktopBoundaryContract as DesktopBoundaryContractStory,
+  HtmlParity as HtmlParityStory,
   InvalidDataFallback as InvalidDataFallbackStory,
   LongContent as LongContentStory,
   MalformedContractsStayUnenhanced as MalformedContractsStayUnenhancedStory,
@@ -29,6 +30,10 @@ export const CarouselNavigation = {
 
 export const DesktopBoundaryContract = {
   ...DesktopBoundaryContractStory,
+};
+
+export const HtmlParity = {
+  ...HtmlParityStory,
 };
 
 export const InvalidDataFallback = {

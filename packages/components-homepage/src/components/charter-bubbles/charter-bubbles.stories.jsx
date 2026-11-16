@@ -23,6 +23,7 @@ export default {
     "StaticContract",
     "OpenResearch",
     "DesktopBoundaryContract",
+    "HtmlParity",
     "CarouselNavigation",
     "BreakpointPreservesOpen",
     "InvalidDataFallback",
@@ -110,6 +111,22 @@ const StaticPage = props => (
   </StoryFrame>
 );
 
+const ParityPage = ({ openId = null }) => (
+  <StoryFrame>
+    <div data-parity-react="">
+      <CharterBubbles instanceId="parity-react" initialOpenId={openId} />
+    </div>
+    <div data-parity-static="">
+      <EnhancedMarkup
+        html={charterBubblesStaticHtml({
+          instanceId: "parity-static",
+          openId,
+        })}
+      />
+    </div>
+  </StoryFrame>
+);
+
 export const Default = {
   render: () => <ReactPage />,
   play: async ({ canvasElement }) => {
@@ -135,6 +152,24 @@ export const Default = {
     await expect(firstClose).toHaveTextContent("");
     await expect(closeIcon).toHaveAttribute("aria-hidden", "true");
     await expect(closeIcon).toHaveAttribute("focusable", "false");
+  },
+};
+
+export const HtmlParity = {
+  render: () => <ParityPage />,
+  play: async ({ canvasElement }) => {
+    await waitFor(() =>
+      expect(
+        canvasElement.querySelectorAll('[data-enhanced="true"]')
+      ).toHaveLength(2)
+    );
+    const reactContract = captureCharterBubblesContract(
+      canvasElement.querySelector("[data-parity-react]")
+    );
+    const staticContract = captureCharterBubblesContract(
+      canvasElement.querySelector("[data-parity-static]")
+    );
+    await expect(reactContract).toEqual(staticContract);
   },
 };
 
