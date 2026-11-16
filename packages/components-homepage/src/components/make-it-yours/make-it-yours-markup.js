@@ -60,7 +60,7 @@ const headingHtml = (heading, underlined) => {
   const words = phrase.split(/\s+/);
   const last = words.pop();
   const lead = words.join(" ");
-  const mark = `<span class="scrib-host">${escape(last)}<img class="scrib scrib--myours hp-myours__scrib" src="img/scribble-myours.svg" alt="" aria-hidden="true"></span>`;
+  const mark = `<span class="scrib-host">${escape(last)}<img class="scrib scrib--myours hp-myours__scrib" src="img/scribble-future.svg" alt="" aria-hidden="true"></span>`;
   const leadHtml = lead
     ? `<span class="hp-myours__lead">${escape(lead)}</span> `
     : "";

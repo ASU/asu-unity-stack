@@ -265,12 +265,14 @@ export const Phone393 = {
     near(centre(textRange(p.host.firstChild, p.host.firstChild)), middle, 2);
     near(middle, 393 / 2, 1);
     // Stacked swash sits under "yours" only.
-    expect(box(p.scrib).left).toBeGreaterThanOrEqual(box(p.host).left - 1);
+    expect(box(p.scrib).left).toBeGreaterThanOrEqual(
+      box(p.host).left - box(p.host).width * 0.05 - 1
+    );
     // "yours" wraps below the lead-in "it", so the swash cannot reach it.
     expect(box(p.host).top).toBeGreaterThan(box(p.lead).top + fontSize / 2);
-    // The base swash is shifted 2% right of the host; allow 5% of its width.
+    // The swash starts 4% left of the host and is 113% wide (overhangs 9% right); allow 10%.
     expect(box(p.scrib).right).toBeLessThanOrEqual(
-      box(p.host).right + box(p.host).width * 0.05
+      box(p.host).right + box(p.host).width * 0.1
     );
     // The list reserves the tallest open state.
     const tabsMin = find(
@@ -313,9 +315,11 @@ export const Tablet768 = {
     near(box(p.heading).height, px(style(p.heading).fontSize), 4);
     // Amendment A2.2: the line is centred, and the swash still sits under "yours" only.
     near(centre(textRange(p.heading, p.host.firstChild)), 768 / 2, 2);
-    expect(box(p.scrib).left).toBeGreaterThanOrEqual(box(p.host).left - 1);
+    expect(box(p.scrib).left).toBeGreaterThanOrEqual(
+      box(p.host).left - box(p.host).width * 0.05 - 1
+    );
     expect(box(p.scrib).right).toBeLessThanOrEqual(
-      box(p.host).right + box(p.host).width * 0.05
+      box(p.host).right + box(p.host).width * 0.1
     );
     noHorizontalOverflow();
   },
@@ -556,11 +560,11 @@ export const HeadingUnderline = {
   globals: { viewport: viewport(393) },
   render: () => <Harness html={makeItYoursHtml()} />,
   play: async ({ canvasElement }) => {
-    // Stacked: the swash sits under "yours" only (base underline-mark values).
+    // Stacked: the swash sits under "yours" only, 4% left of it and 113% wide.
     await atWidth(393, 852);
     let p = parts(canvasElement);
-    near(box(p.scrib).left - box(p.host).left, box(p.host).width * 0.02, 2);
-    near(box(p.scrib).width, box(p.host).width, 2);
+    near(box(p.scrib).left - box(p.host).left, -box(p.host).width * 0.04, 2);
+    near(box(p.scrib).width, box(p.host).width * 1.13, 2);
     // Desktop: it runs from 1.03em left of "yours", 3.02em wide, under "it yours".
     await atWidth(1280, 900);
     p = parts(canvasElement);

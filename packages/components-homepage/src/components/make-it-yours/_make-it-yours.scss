@@ -16,11 +16,13 @@ $hp-myours-row: 44px; // touch target
 $hp-myours-bar-w: 4px;
 $hp-myours-bar-inset: calc(#{$hp-myours-bar-w} + #{$uds-size-spacing-3}); // bar plus the 24px gap to the text
 $hp-myours-tabs-top: 150px; // gap above the tab list: title 1 sits about 450px from the top of the stage
-$hp-myours-chip-w: 420px; // caption chip max width, from the mockups
+$hp-myours-chip-w: 536px; // caption chip max width
+$hp-myours-chip-w-narrow: 280px; // caption chip max width at 1024px and below
+$hp-myours-chip-narrow-bp: 1024px;
 $hp-myours-scrim-feather: 96px; // the scrim fades in over 96px left of the content column
 $hp-myours-ease: cubic-bezier(0.4, 0, 0.2, 1);
-$hp-myours-chip-bg: rgba($asu-gray-1, 0.7);
-$hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
+$hp-myours-chip-bg: rgba($asu-gray-1, 0.5);
+$hp-myours-chip-edge: $asu-gray-3; // #747474
 
 // !important is required to beat unity-bootstrap-theme/src/scss/extends/_misc.scss, which sets
 // `a:focus, button:focus { box-shadow: ... !important }` globally. Scoped to this component's triggers and CTAs.
@@ -61,6 +63,13 @@ $hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
   font-weight: $uds-font-weight-bold;
   letter-spacing: -0.03em; // TODO: no token (the mockups' tight display tracking)
   text-align: inherit; // the theme's $heading-text-align is left; centred stacked, left on desktop (A2.2)
+}
+// scribble-future.svg is flatter than the old swash. Stacked: it overhangs "yours" a little on both sides (intake mobile screenshot).
+.hp-myours__heading .hp-myours__scrib {
+  --scrib-left: -4%;
+  --scrib-width: 113%;
+  --scrib-bottom: -0.06em;
+  max-width: none;
 }
 
 .hp-myours__intro {
@@ -409,6 +418,9 @@ $hp-myours-chip-edge: rgba($uds-color-base-white, 0.3);
     color: $uds-color-base-white;
     font-size: $uds-size-font-small;
     line-height: 1.25;
+    @media (max-width: $hp-myours-chip-narrow-bp) {
+      max-width: $hp-myours-chip-w-narrow;
+    }
   }
 
   // Soft dark panel behind the content column, one identical strength for all five photos (not in the mockups).
