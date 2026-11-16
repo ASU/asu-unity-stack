@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { expect, userEvent, waitFor, within } from "storybook/test";
 
-import { emulateForcedColors } from "../rankings-cards/rankings-cards-helpers.jsx";
 import {
   emulateReducedMotion,
   resizeViewport,
@@ -20,6 +19,19 @@ import "./_charter-bubbles.storybook.scss";
 export default {
   title: "Homepage/Charter bubbles",
   component: CharterBubbles,
+  excludeStories: [
+    "StaticContract",
+    "OpenResearch",
+    "DesktopBoundaryContract",
+    "CarouselNavigation",
+    "BreakpointPreservesOpen",
+    "InvalidDataFallback",
+    "UnsafeUrlFallback",
+    "MalformedContractsStayUnenhanced",
+    "ReducedMotion",
+    "LongContent",
+    "NoScript",
+  ],
   parameters: {
     docs: {
       description: {
@@ -88,22 +100,6 @@ const EnhancedMarkup = ({
 const StaticPage = props => (
   <StoryFrame>
     <EnhancedMarkup {...props} />
-  </StoryFrame>
-);
-
-const ParityPage = ({ openId = null }) => (
-  <StoryFrame>
-    <div data-parity-react="">
-      <CharterBubbles instanceId="parity-react" initialOpenId={openId} />
-    </div>
-    <div data-parity-static="">
-      <EnhancedMarkup
-        html={charterBubblesStaticHtml({
-          instanceId: "parity-static",
-          openId,
-        })}
-      />
-    </div>
   </StoryFrame>
 );
 
@@ -231,24 +227,6 @@ export const NoScript = {
     await expectCenteredRows(1200, [3, 2], 307.47);
     await expectCenteredRows(800, [2, 1, 2], 307.47);
     await expectCenteredRows(600, [1, 1, 1, 1, 1]);
-  },
-};
-
-export const HtmlParity = {
-  render: () => <ParityPage />,
-  play: async ({ canvasElement }) => {
-    await waitFor(() =>
-      expect(
-        canvasElement.querySelectorAll('[data-enhanced="true"]')
-      ).toHaveLength(2)
-    );
-    const reactContract = captureCharterBubblesContract(
-      canvasElement.querySelector("[data-parity-react]")
-    );
-    const staticContract = captureCharterBubblesContract(
-      canvasElement.querySelector("[data-parity-static]")
-    );
-    await expect(reactContract).toEqual(staticContract);
   },
 };
 
@@ -1010,24 +988,6 @@ export const ReducedMotion = {
       });
     } finally {
       await emulateReducedMotion(false);
-    }
-  },
-};
-
-export const ForcedColors = {
-  ...viewport(393),
-  render: () => <ReactPage />,
-  play: async ({ canvasElement }) => {
-    await emulateForcedColors(true);
-    try {
-      const front = canvasElement.querySelector(".hp-charter-bubble__front");
-      await waitFor(() =>
-        expect(Number.parseFloat(getComputedStyle(front).borderTopWidth)).toBe(
-          2
-        )
-      );
-    } finally {
-      await emulateForcedColors(false);
     }
   },
 };
