@@ -1903,6 +1903,31 @@ const bindCarouselGeometry = controller => {
  */
 export const getCharterBubblesController = root => controllers.get(root);
 
+const enableMotionAfterInitialLayout = controller => {
+  const { root } = controller;
+  const view = root.ownerDocument?.defaultView;
+
+  if (typeof view?.requestAnimationFrame !== "function") {
+    controller.setAttribute(root, "data-motion-ready", "true");
+    return;
+  }
+
+  let layoutFrame = null;
+  let motionFrame = null;
+  layoutFrame = view.requestAnimationFrame(() => {
+    layoutFrame = null;
+    motionFrame = view.requestAnimationFrame(() => {
+      motionFrame = null;
+      controller.setAttribute(root, "data-motion-ready", "true");
+    });
+  });
+
+  controller.addCleanup(() => {
+    if (layoutFrame != null) view.cancelAnimationFrame?.(layoutFrame);
+    if (motionFrame != null) view.cancelAnimationFrame?.(motionFrame);
+  });
+};
+
 /**
  * Initializes every Charter Bubbles root in `scope` without replacing markup.
  * Repeated initialization of one root returns the same teardown function.
@@ -1926,6 +1951,12 @@ export const initCharterBubbles = (
       bindCarouselGeometry(controller);
       controller.setClass(root, "is-enhanced", true);
       controller.setAttribute(root, "data-enhanced", "true");
+      // The initial bindings run against the progressive-enhancement fallback
+      // geometry. Re-measure once the cluster/carousel CSS is active so an
+      // authored open bubble never inherits fallback-grid coordinates.
+      controller.bubbles?.reflow?.();
+      controller.carousel?.sync?.();
+      enableMotionAfterInitialLayout(controller);
       controllers.set(root, controller);
     } else {
       controller.setClass(root, "is-enhanced", true);

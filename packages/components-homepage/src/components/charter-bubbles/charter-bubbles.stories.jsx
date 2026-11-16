@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import { expect, userEvent, waitFor, within } from "storybook/test";
 
 import {
@@ -89,10 +89,17 @@ const EnhancedMarkup = ({
 }) => {
   const ref = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!enhance) return undefined;
     return initCharterBubbles(ref.current);
   }, [enhance, html]);
+
+  useLayoutEffect(() => {
+    // Storybook can restore the authored static markup after its draggable
+    // viewport commits a new size. Reassert enhancement after every render;
+    // the contract initializer is idempotent while the controller is active.
+    if (enhance) initCharterBubbles(ref.current);
+  });
 
   return <div ref={ref} dangerouslySetInnerHTML={{ __html: html }} />;
 };
@@ -108,6 +115,9 @@ export const Default = {
   play: async ({ canvasElement }) => {
     const root = canvasElement.querySelector("[data-charter-bubbles]");
     await waitFor(() => expect(root).toHaveAttribute("data-enhanced", "true"));
+    await waitFor(() =>
+      expect(root).toHaveAttribute("data-motion-ready", "true")
+    );
     const contract = captureCharterBubblesContract(root);
     await expect(contract.itemCount).toBe(5);
     await expect(contract.listCount).toBe(1);
@@ -138,17 +148,44 @@ export const StaticContract = {
 };
 
 export const OpenResearch = {
-  render: () => <ReactPage initialOpenId="undergraduate-research" />,
+  ...viewport(1280),
+  render: () => <ReactPage />,
   play: async ({ canvasElement }) => {
     const root = canvasElement.querySelector("[data-charter-bubbles]");
-    await expect(root).toHaveAttribute(
-      "data-open-id",
-      "undergraduate-research"
+    const research = root.querySelector(
+      '[data-charter-bubble-id="undergraduate-research"]'
     );
-    await expect(root.querySelectorAll(".is-open")).toHaveLength(1);
-    await expect(
-      root.querySelector('[data-charter-bubble-id="undergraduate-research"]')
-    ).toHaveAttribute("data-charter-bubble-state", "open");
+    const researchTrigger = research.querySelector(
+      "[data-charter-bubble-open]"
+    );
+
+    researchTrigger.scrollIntoView({ block: "center", inline: "nearest" });
+    await waitFor(() => {
+      const box = researchTrigger.getBoundingClientRect();
+      expect(box.bottom).toBeGreaterThan(0);
+      expect(box.top).toBeLessThan(window.innerHeight);
+    });
+    await userEvent.click(researchTrigger);
+
+    await waitFor(() => {
+      expect(root).toHaveAttribute("data-motion-ready", "true");
+      expect(root).toHaveAttribute("data-open-id", "undergraduate-research");
+      expect(root.querySelectorAll(".is-open")).toHaveLength(1);
+
+      const surfaces = [
+        root.querySelector(".is-open [data-charter-bubble-panel]"),
+        ...root.querySelectorAll(
+          ".hp-charter-bubble:not(.is-open) [data-charter-bubble-open]"
+        ),
+      ];
+      const boxes = surfaces.map(surface => surface.getBoundingClientRect());
+      for (let first = 0; first < boxes.length; first += 1) {
+        for (let second = first + 1; second < boxes.length; second += 1) {
+          expect(circlesOverlap(boxes[first], boxes[second], 1)).toBe(false);
+        }
+      }
+    });
+    await expect(research).toHaveAttribute("data-charter-bubble-state", "open");
   },
 };
 
@@ -294,7 +331,25 @@ export const Desktop769 = {
   render: () => <StaticPage />,
   play: async ({ canvasElement }) => {
     const root = canvasElement.querySelector("[data-charter-bubbles]");
-    await waitFor(() => expect(root).toHaveAttribute("data-layout", "cluster"));
+    const firstFront = root.querySelector("[data-charter-bubble-open]");
+
+    await resizeViewport(768);
+    window.dispatchEvent(new PointerEvent("pointerup"));
+    await waitFor(() => {
+      expect(root).toHaveAttribute("data-enhanced", "true");
+      expect(root).toHaveAttribute("data-layout", "carousel");
+      expect(root).toHaveClass("is-enhanced", "is-carousel");
+      expect(getComputedStyle(firstFront).display).not.toBe("none");
+    });
+
+    await resizeViewport(769);
+    window.dispatchEvent(new PointerEvent("pointerup"));
+    await waitFor(() => {
+      expect(root).toHaveAttribute("data-enhanced", "true");
+      expect(root).toHaveAttribute("data-layout", "cluster");
+      expect(root).toHaveClass("is-enhanced", "is-cluster");
+      expect(getComputedStyle(firstFront).display).not.toBe("none");
+    });
   },
 };
 
@@ -766,6 +821,7 @@ export const CarouselNavigation = {
     const chevrons = root.querySelectorAll(".hp-charter-bubble__chevron");
     const closeButtons = root.querySelectorAll("[data-charter-bubble-close]");
     await waitFor(() => {
+      expect(root).toHaveAttribute("data-motion-ready", "true");
       expect(previous).toBeDisabled();
       expect(root).toHaveAttribute("data-open-id", "employability");
       expect(root.querySelectorAll(".is-open")).toHaveLength(1);
