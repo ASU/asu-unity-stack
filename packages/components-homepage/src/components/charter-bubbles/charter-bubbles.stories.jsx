@@ -157,9 +157,50 @@ export const OpenResearch = {
 };
 
 export const NoScript = {
+  ...viewport(1920),
   render: () => <StaticPage enhance={false} />,
   play: async ({ canvasElement }) => {
     const root = canvasElement.querySelector("[data-charter-bubbles]");
+    const items = Array.from(
+      root.querySelectorAll("[data-charter-bubble-item]")
+    );
+    const expectCenteredRows = async (
+      width,
+      expectedRowSizes,
+      expectedRowStep = null
+    ) => {
+      await resizeViewport(width);
+      await waitFor(() => {
+        const rootBox = root.getBoundingClientRect();
+        const rows = new Map();
+        items.forEach(item => {
+          const box = item.getBoundingClientRect();
+          const rowKey = Math.round(box.top);
+          rows.set(rowKey, [...(rows.get(rowKey) ?? []), box]);
+        });
+        const orderedRows = Array.from(rows.entries())
+          .sort(([first], [second]) => first - second)
+          .map(([, boxes]) => boxes);
+        expect(orderedRows.map(boxes => boxes.length)).toEqual(
+          expectedRowSizes
+        );
+        orderedRows.forEach(boxes => {
+          const left = Math.min(...boxes.map(box => box.left));
+          const right = Math.max(...boxes.map(box => box.right));
+          expect(
+            Math.abs((left + right) / 2 - (rootBox.left + rootBox.width / 2))
+          ).toBeLessThanOrEqual(1);
+        });
+        if (expectedRowStep != null) {
+          for (let index = 1; index < orderedRows.length; index += 1) {
+            expect(
+              orderedRows[index][0].top - orderedRows[index - 1][0].top
+            ).toBeCloseTo(expectedRowStep, 0);
+          }
+        }
+      });
+    };
+
     await expect(root).not.toHaveAttribute("data-layout");
     await expect(root).not.toHaveClass("is-enhanced");
     await expect(
@@ -171,6 +212,10 @@ export const NoScript = {
     for (const panel of root.querySelectorAll("[data-charter-bubble-panel]")) {
       await expect(panel).not.toHaveAttribute("aria-hidden");
       await expect(panel).not.toHaveAttribute("inert");
+      const panelBox = panel.getBoundingClientRect();
+      await expect(panelBox.width).toBeCloseTo(328.47, 1);
+      await expect(panelBox.height).toBeCloseTo(328.47, 1);
+      await expect(getComputedStyle(panel).borderRadius).toBe("164.235px");
     }
     await expect(
       getComputedStyle(root.querySelector("[data-charter-bubble-open]")).display
@@ -182,6 +227,10 @@ export const NoScript = {
       await expect(link.tabIndex).toBeGreaterThanOrEqual(0);
       await expect(getComputedStyle(link).display).not.toBe("none");
     }
+    await expectCenteredRows(1920, [5]);
+    await expectCenteredRows(1200, [3, 2], 307.47);
+    await expectCenteredRows(800, [2, 1, 2], 307.47);
+    await expectCenteredRows(600, [1, 1, 1, 1, 1]);
   },
 };
 
@@ -941,7 +990,7 @@ export const BreakpointPreservesOpen = {
 
 export const ReducedMotion = {
   ...viewport(393),
-  render: () => <ReactPage />,
+  render: () => <ReactPage className="hp-charter-bubbles--reduced-motion" />,
   play: async ({ canvasElement }) => {
     await emulateReducedMotion(true);
     try {
@@ -951,7 +1000,9 @@ export const ReducedMotion = {
       const carousel = canvasElement.querySelector(
         ".hp-charter-bubbles__viewport"
       );
+      const root = canvasElement.querySelector("[data-charter-bubbles]");
       await waitFor(() => {
+        expect(root).toHaveClass("hp-charter-bubbles--reduced-motion");
         expect(getComputedStyle(bubble).transitionDuration).toBe("0s");
         expect(getComputedStyle(front).transitionDuration).toBe("0s");
         expect(getComputedStyle(back).transitionDuration).toBe("0s");

@@ -469,9 +469,12 @@
 // document content and hide controls that cannot work. Enhancement adds
 // `.is-enhanced` only after listeners/state coordination are installed.
 .hp-charter-bubbles:not(.is-enhanced) {
+  --hp-charter-noscript-row-overlap: 2.8125rem; // 45px balances staggered circular edge spacing.
   min-height: 0;
   margin-block-start: 0;
   padding: $uds-size-spacing-6;
+  container-name: hp-charter-noscript;
+  container-type: inline-size;
 }
 
 .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubbles__cluster-shell {
@@ -493,7 +496,13 @@
 .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubbles__list {
   position: static;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  grid-template-columns: repeat(
+    2,
+    calc(
+      (var(--hp-charter-mobile-open) - #{$uds-size-spacing-3}) / 2
+    )
+  );
+  justify-content: center;
   gap: $uds-size-spacing-3;
   width: 100%;
   height: auto;
@@ -505,10 +514,95 @@
 .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble {
   position: static;
   inset: auto;
-  width: auto;
-  height: auto;
-  min-height: 0;
+  width: var(--hp-charter-mobile-open);
+  height: var(--hp-charter-mobile-open);
+  min-height: var(--hp-charter-mobile-open);
+  grid-column: 1 / span 2;
   transform: none;
+}
+
+// Half-width grid tracks allow odd-column layouts to center incomplete rows
+// while every bubble keeps the exact open-carousel diameter.
+@container hp-charter-noscript (min-width: 42.55875rem) {
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubbles__list {
+    grid-template-columns: repeat(
+      4,
+      calc(
+        (var(--hp-charter-mobile-open) - #{$uds-size-spacing-3}) / 2
+      )
+    );
+  }
+
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble:nth-child(1),
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble:nth-child(4) {
+    grid-column: 1 / span 2;
+  }
+
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble:nth-child(2),
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble:nth-child(5) {
+    grid-column: 3 / span 2;
+  }
+
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble:nth-child(3) {
+    grid-column: 2 / span 2;
+  }
+
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble:nth-child(n + 3) {
+    margin-block-start: calc(-1 * var(--hp-charter-noscript-row-overlap));
+  }
+}
+
+@container hp-charter-noscript (min-width: 64.588125rem) {
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubbles__list {
+    grid-template-columns: repeat(
+      6,
+      calc(
+        (var(--hp-charter-mobile-open) - #{$uds-size-spacing-3}) / 2
+      )
+    );
+  }
+
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble:nth-child(1) {
+    grid-column: 1 / span 2;
+    margin-block-start: 0;
+  }
+
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble:nth-child(2) {
+    grid-column: 3 / span 2;
+    margin-block-start: 0;
+  }
+
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble:nth-child(3) {
+    grid-column: 5 / span 2;
+    margin-block-start: 0;
+  }
+
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble:nth-child(4) {
+    grid-column: 2 / span 2;
+  }
+
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble:nth-child(5) {
+    grid-column: 4 / span 2;
+  }
+}
+
+@container hp-charter-noscript (min-width: 108.646875rem) {
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubbles__list {
+    grid-template-columns: repeat(
+      10,
+      calc(
+        (var(--hp-charter-mobile-open) - #{$uds-size-spacing-3}) / 2
+      )
+    );
+  }
+
+  @for $index from 1 through 5 {
+    .hp-charter-bubbles:not(.is-enhanced)
+      .hp-charter-bubble:nth-child(#{$index}) {
+      grid-column: #{2 * $index - 1} / span 2;
+      margin-block-start: 0;
+    }
+  }
 }
 
 .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble__front,
@@ -523,12 +617,12 @@
   .hp-charter-bubble__back {
   position: relative;
   inset: auto;
-  align-items: flex-start;
-  width: 100%;
-  height: auto;
-  min-height: 0;
-  padding: $uds-size-spacing-3;
-  border-radius: $uds-size-spacing-2;
+  align-items: center;
+  width: var(--hp-charter-mobile-open);
+  height: var(--hp-charter-mobile-open);
+  min-height: var(--hp-charter-mobile-open);
+  padding: 1.447rem;
+  border-radius: var(--hp-charter-mobile-open-radius);
   opacity: 1;
   pointer-events: auto;
   transform: none;
@@ -536,8 +630,26 @@
 
 .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble__heading,
 .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble__detail {
-  max-width: none;
-  text-align: start;
+  max-width: 16.731125rem;
+  text-align: center;
+}
+
+.hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble__heading {
+  font-size: 1.266125rem;
+  line-height: 1.3565625rem;
+  letter-spacing: -0.03798125rem;
+}
+
+.hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble__detail,
+.hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble__link:link,
+.hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble__link:visited {
+  font-size: 0.7235rem;
+  line-height: 1.08525rem;
+}
+
+.hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble__link:link,
+.hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble__link:visited {
+  max-width: 17.7391875rem;
 }
 
 @media (max-width: $uds-breakpoint-md) {
@@ -546,7 +658,7 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
+@mixin hp-charter-reduced-motion {
   .hp-charter-bubble,
   .hp-charter-bubble__front,
   .hp-charter-bubble__back {
@@ -560,6 +672,16 @@
   .hp-charter-bubbles__viewport {
     scroll-behavior: auto !important;
   }
+}
+
+// Allows the Storybook state (and an embedding host when necessary) to show
+// the same behavior without changing the operating system preference.
+.hp-charter-bubbles--reduced-motion {
+  @include hp-charter-reduced-motion;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @include hp-charter-reduced-motion;
 }
 
 @media (forced-colors: active) {

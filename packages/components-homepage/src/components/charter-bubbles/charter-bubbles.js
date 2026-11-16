@@ -18,6 +18,7 @@ const FOCUSABLE_SELECTOR =
   'a[href], button, input, select, textarea, [tabindex], [contenteditable="true"]';
 const CAROUSEL_MEDIA_QUERY = "(max-width: 768px)";
 const REDUCED_MOTION_MEDIA_QUERY = "(prefers-reduced-motion: reduce)";
+const REDUCED_MOTION_CLASS = "hp-charter-bubbles--reduced-motion";
 const SCROLL_IDLE_MS = 150;
 const WHEEL_SESSION_IDLE_MS = 240;
 const DESKTOP_OPEN_SIZE = 454;
@@ -29,7 +30,8 @@ const DESKTOP_RELAXATION_PASSES = 60;
 const controllers = new WeakMap();
 const ignore = () => {};
 
-const prefersReducedMotion = view => {
+const prefersReducedMotion = (view, root) => {
+  if (root?.classList.contains(REDUCED_MOTION_CLASS)) return true;
   if (typeof view?.matchMedia !== "function") return false;
   try {
     return view.matchMedia(REDUCED_MOTION_MEDIA_QUERY).matches;
@@ -840,7 +842,7 @@ const bindBubbleTransitions = controller => {
         "--hp-charter-translate-y",
         `${point.dy / scaleY}px`
       );
-      if (point !== selected && !prefersReducedMotion(view)) {
+      if (point !== selected && !prefersReducedMotion(view, root)) {
         controller.setStyle(
           point.record.item,
           "transition",
@@ -1305,7 +1307,7 @@ const bindCarouselGeometry = controller => {
     }, items[0]);
   };
 
-  const reducedMotion = () => prefersReducedMotion(view);
+  const reducedMotion = () => prefersReducedMotion(view, root);
 
   const cssLengthToPixels = value => {
     const numeric = Number.parseFloat(value);
