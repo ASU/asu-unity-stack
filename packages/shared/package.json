@@ -35,6 +35,11 @@
     "@types/prop-types": "^15"
   },
   "scripts": {
-    "lint": "eslint --fix"
+    "lint": "node ../../scripts/lint-changed.mjs --extensions js,jsx,ts,tsx -- eslint --fix",
+    "lint:check": "yarn js-lint:check",
+    "lint:fix": "yarn lint",
+    "lint:forcefix": "yarn js-lint:forcefix",
+    "js-lint:forcefix": "eslint --fix",
+    "js-lint:check": "eslint --fix-dry-run ."
   }
 }
