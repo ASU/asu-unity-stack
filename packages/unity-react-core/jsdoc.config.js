@@ -13,4 +13,9 @@ module.exports = {
     ],
     excludePattern: "FeedAnatomy",
   },
+  externals: {
+    'react-dom/client': 'ReactDOM',
+    'react-dom': 'ReactDOM',
+    'react': 'React',
+  },
 };
