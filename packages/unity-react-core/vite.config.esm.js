@@ -56,7 +56,7 @@ export default defineConfig({
     },
     rollupOptions: {
       input: LOCATION,
-      external: [...Object.keys(pkg.peerDependencies)],
+      external: [...Object.keys(pkg.peerDependencies), "react-dom/client"],
       output: {
         globals: {
           "react": "React",
