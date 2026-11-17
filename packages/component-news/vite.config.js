@@ -18,7 +18,7 @@ export default defineConfig({
         globals: {
           "react": "React",
           "react-dom": "ReactDOM",
-          "react-dom/client": "createRoot"
+          "react-dom/client": "ReactDom"
         },
       },
     },
