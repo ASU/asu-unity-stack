@@ -565,6 +565,12 @@ export const HeadingUnderline = {
     let p = parts(canvasElement);
     near(box(p.scrib).left - box(p.host).left, -box(p.host).width * 0.04, 2);
     near(box(p.scrib).width, box(p.host).width * 1.13, 2);
+    // Its bottom edge hangs 0.06em below the host.
+    near(
+      box(p.scrib).bottom - box(p.host).bottom,
+      0.06 * px(style(p.host).fontSize),
+      1
+    );
     // Desktop: it runs from 1.03em left of "yours", 3.02em wide, under "it yours".
     await atWidth(1280, 900);
     p = parts(canvasElement);
@@ -572,9 +578,37 @@ export const HeadingUnderline = {
     near(box(p.host).left - box(p.scrib).left, 1.03 * em, 2);
     near(box(p.scrib).width, 3.02 * em, 2);
     expect(box(p.scrib).left).toBeLessThan(box(p.lead).right);
+    // Desktop: the bottom edge also hangs 0.06em below the host (0.18em higher than the old -0.24em), at every desktop width.
+    for (const width of [1280, 1440, 1920]) {
+      await atWidth(width, 900);
+      p = parts(canvasElement);
+      near(
+        box(p.scrib).bottom - box(p.host).bottom,
+        0.06 * px(style(p.host).fontSize),
+        1
+      );
+    }
   },
 };
 
+// The caption chip is 280px wide at most from 769 up to 1023, and 536px at most from 1024.
+export const CaptionChipWidth = {
+  name: "Caption chip max width",
+  globals: { viewport: viewport(1280) },
+  render: () => <Harness html={makeItYoursHtml()} />,
+  play: async ({ canvasElement }) => {
+    for (const [width, max] of [
+      [769, 280],
+      [1023, 280],
+      [1024, 536],
+      [1280, 536],
+      [1920, 536],
+    ]) {
+      await atWidth(width, 900);
+      near(px(style(parts(canvasElement).caption).maxWidth), max, 0);
+    }
+  },
+};
 // ---- behaviour: click, tap, switch (T10) ----
 const trig = (canvasElement, i) =>
   list(canvasElement, ".hp-myours__trigger")[i];

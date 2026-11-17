@@ -17,11 +17,11 @@ $hp-myours-bar-w: 4px;
 $hp-myours-bar-inset: calc(#{$hp-myours-bar-w} + #{$uds-size-spacing-3}); // bar plus the 24px gap to the text
 $hp-myours-tabs-top: 150px; // gap above the tab list: title 1 sits about 450px from the top of the stage
 $hp-myours-chip-w: 536px; // caption chip max width
-$hp-myours-chip-w-narrow: 280px; // caption chip max width at 1024px and below
-$hp-myours-chip-narrow-bp: 1024px;
+$hp-myours-chip-w-narrow: 280px; // caption chip max width below 1024px
+$hp-myours-chip-wide-bp: 1024px; // the wide chip starts here, as desktop starts at 1024 in faculty-carousel and places
 $hp-myours-scrim-feather: 96px; // the scrim fades in over 96px left of the content column
 $hp-myours-ease: cubic-bezier(0.4, 0, 0.2, 1);
-$hp-myours-chip-bg: rgba($asu-gray-1, 0.5);
+$hp-myours-chip-bg: rgba($asu-gray-1, 0.6); // 0.5 fails caption contrast (3.47:1) on tabs 3 and 4; 0.55 still fails
 $hp-myours-chip-edge: $asu-gray-3; // #747474
 
 // !important is required to beat unity-bootstrap-theme/src/scss/extends/_misc.scss, which sets
@@ -63,13 +63,6 @@ $hp-myours-chip-edge: $asu-gray-3; // #747474
   font-weight: $uds-font-weight-bold;
   letter-spacing: -0.03em; // TODO: no token (the mockups' tight display tracking)
   text-align: inherit; // the theme's $heading-text-align is left; centred stacked, left on desktop (A2.2)
-}
-// scribble-future.svg is flatter than the old swash. Stacked: it overhangs "yours" a little on both sides (intake mobile screenshot).
-.hp-myours__heading .hp-myours__scrib {
-  --scrib-left: -4%;
-  --scrib-width: 113%;
-  --scrib-bottom: -0.06em;
-  max-width: none;
 }
 
 .hp-myours__intro {
@@ -292,6 +285,13 @@ $hp-myours-chip-edge: $asu-gray-3; // #747474
 // ---- Stacked (<= 768): the photo overlaps the top 24px of the dark band; one caption line under it ----
 
 @media not all and (min-width: $hp-myours-bp) {
+  // scribble-future.svg is flatter than the old swash. Stacked: it overhangs "yours" a little on both sides (intake mobile screenshot).
+  .hp-myours__heading .hp-myours__scrib {
+    --scrib-left: -4%;
+    --scrib-width: 113%;
+    --scrib-bottom: -0.06em;
+    max-width: none;
+  }
   .hp-myours__photo picture {
     position: relative;
     z-index: 1;
@@ -418,15 +418,15 @@ $hp-myours-chip-edge: $asu-gray-3; // #747474
     color: $uds-color-base-white;
     font-size: $uds-size-font-small;
     line-height: 1.25;
-    @media (max-width: $hp-myours-chip-narrow-bp) {
+    @media not all and (min-width: $hp-myours-chip-wide-bp) {
       max-width: $hp-myours-chip-w-narrow;
     }
   }
 
   // Soft dark panel behind the content column, one identical strength for all five photos (not in the mockups).
-  // Alpha set by tests/make-it-yours-contrast.spec.mjs; cap 0.60 (Amendment A1.1). 0.58 gives 30/30 (769-3934).
+  // Alpha set by tests/make-it-yours-contrast.spec.mjs; cap 0.60 (Amendment A1.1). 0.59 gives 30/30 (769-3934) with the WWWCMS-237 photos (0.58 left the intro on tab 2 at 769px at 4.46:1).
   // It fades in left of the column and runs at full strength to the right edge of the browser (Amendment A3).
-  $hp-myours-scrim-alpha: 0.58;
+  $hp-myours-scrim-alpha: 0.59;
   .hp-myours__stage::after {
     content: "";
     position: absolute;
@@ -471,10 +471,11 @@ $hp-myours-chip-edge: $asu-gray-3; // #747474
   }
 
   // The swash runs under "it yours": measured from the 1920 screenshot (266px wide, 91px left of "yours" at 88px).
+  // Bottom -0.06em puts it at the baseline, 0.18em higher than the old swash (.scrib--myours, -0.24em) (intake desktop screenshot).
   .hp-myours__heading--lead .hp-myours__scrib {
     --scrib-left: -1.03em;
     --scrib-width: 3.02em;
-
+    --scrib-bottom: -0.06em;
     max-width: none;
   }
 
