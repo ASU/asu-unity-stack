@@ -126,9 +126,8 @@ tests/__image_snapshots__/__diff_output__
 !.env.development
 !.env.production
 
-# --- Adversarial coding pipeline (project-local .kiro) ---
-# Committed: .kiro/agents, .kiro/skills, .kiro/hooks, .kiro/scripts,
-#            .kiro/steering, .kiro/settings/mcp.json
+# --- Adversarial coding pipeline (shared .agents + host adapters) ---
+# Committed: .agents plus the lightweight .kiro, .codex, and .github adapters.
 # Ignored (ephemeral run state + user-supplied intake assets):
 .pipeline/
 .intake/*

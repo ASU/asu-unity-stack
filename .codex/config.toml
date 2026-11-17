@@ -1,0 +1,46 @@
+# Generated from .agents/config/mcp-servers.json.
+# Run: node .agents/scripts/sync-ai-config.mjs
+# Do not edit MCP entries in this file directly.
+
+[agents]
+max_concurrent_threads_per_session = 4
+
+[mcp_servers.mcp_atlassian]
+command = "uvx"
+args = ["mcp-atlassian", "--read-only"]
+env_vars = ["JIRA_USERNAME", "JIRA_API_TOKEN", "CONFLUENCE_USERNAME", "CONFLUENCE_API_TOKEN"]
+
+[mcp_servers.mcp_atlassian.env]
+JIRA_URL = "https://asudev.jira.com"
+CONFLUENCE_URL = "https://asudev.jira.com/wiki"
+READ_ONLY_MODE = "true"
+
+[mcp_servers.figma]
+url = "http://127.0.0.1:3845/mcp"
+
+[mcp_servers.asu_unity_react_core]
+url = "http://localhost:9200/mcp"
+
+[mcp_servers.asu_unity_bootstrap_theme]
+url = "http://localhost:9000/mcp"
+
+[mcp_servers.asu_app_degree_pages]
+url = "http://localhost:9010/mcp"
+
+[mcp_servers.asu_app_rfi]
+url = "http://localhost:9020/mcp"
+
+[mcp_servers.asu_app_webdir_ui]
+url = "http://localhost:9030/mcp"
+
+[mcp_servers.asu_components_homepage]
+url = "http://localhost:9050/mcp"
+
+[mcp_servers.asu_component_events]
+url = "http://localhost:9060/mcp"
+
+[mcp_servers.asu_component_header_footer]
+url = "http://localhost:9080/mcp"
+
+[mcp_servers.asu_component_news]
+url = "http://localhost:9090/mcp"
