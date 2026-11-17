@@ -4,6 +4,7 @@ import { expect, waitFor } from "storybook/test";
 import * as entry from "../../js/index.js";
 import { initReimagine } from "./reimagine.js";
 import { reimagineHtml, walkRules } from "./reimagine-helpers.jsx";
+import { innerHtml } from "../inner-html.js";
 
 // Own title: `Homepage/Reimagine` is already a component, so nesting under it would make it both a leaf
 // and a group. Deleting this file removes every entrance story and test helper.
@@ -157,9 +158,9 @@ const Harness = ({ headingId, manual = false, lead = true, tail = false }) => {
       <div
         ref={ref}
         data-harness=""
-        dangerouslySetInnerHTML={{
-          __html: reimagineHtml({ headingId, entrance: true }),
-        }}
+        dangerouslySetInnerHTML={innerHtml(
+          reimagineHtml({ headingId, entrance: true })
+        )}
       />
       {tail && spacer}
     </>

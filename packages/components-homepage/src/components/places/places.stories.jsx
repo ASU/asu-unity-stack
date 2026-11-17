@@ -1139,3 +1139,39 @@ export const LazyClip = {
     await expect(p.video.hasAttribute("src")).toBe(true);
   },
 };
+
+const RerenderPage = () => {
+  const [count, setCount] = React.useState(0);
+  return (
+    <>
+      <button type="button" data-rerender onClick={() => setCount(count + 1)}>
+        Re-render {count}
+      </button>
+      <Harness html={placesHtml()} />
+    </>
+  );
+};
+
+// Storybook re-renders a story on every viewport change; the section must keep the enhancement the script
+// added (brand QA 2026-11-16: the section fell back to the server markup after a resize).
+export const RerenderKeepsEnhanced = {
+  name: "Stays enhanced when Storybook re-renders",
+  tags: ["!dev"],
+  globals: viewport(1440),
+  render: () => <RerenderPage />,
+  play: async ({ canvasElement }) => {
+    const section = () => canvasElement.querySelector(".hp-places");
+    await waitFor(() =>
+      expect(section().classList.contains("is-enhanced")).toBe(true)
+    );
+    const before = section();
+    canvasElement.querySelector("[data-rerender]").click();
+    await waitFor(() =>
+      expect(canvasElement.querySelector("[data-rerender]").textContent).toBe(
+        "Re-render 1"
+      )
+    );
+    await expect(section()).toBe(before);
+    await expect(section().classList.contains("is-enhanced")).toBe(true);
+  },
+};

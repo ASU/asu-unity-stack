@@ -16,6 +16,7 @@ import {
 import { circlesOverlap } from "./charter-bubbles-geometry.js";
 
 import "./_charter-bubbles.storybook.scss";
+import { innerHtml } from "../inner-html.js";
 
 export default {
   title: "Homepage/Charter bubbles",
@@ -82,7 +83,7 @@ const EnhancedMarkup = ({
     return initCharterBubbles(ref.current);
   }, [enhance, html]);
 
-  return <div ref={ref} dangerouslySetInnerHTML={{ __html: html }} />;
+  return <div ref={ref} dangerouslySetInnerHTML={innerHtml(html)} />;
 };
 
 const StaticPage = props => (

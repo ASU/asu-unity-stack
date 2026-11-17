@@ -17,6 +17,7 @@ import {
 } from "./quick-links-helpers.jsx";
 
 import { BACKDROP_PLAIN, FOCUS_RING_OUTER } from "./quick-links-tokens.js";
+import { innerHtml } from "../inner-html.js";
 
 // ---- meta ----
 
@@ -107,7 +108,7 @@ const parts = canvasElement => {
 };
 
 // Renders the quick-links HTML directly (no React wrapper needed; parity source).
-const Page = ({ html }) => <div dangerouslySetInnerHTML={{ __html: html }} />;
+const Page = ({ html }) => <div dangerouslySetInnerHTML={innerHtml(html)} />;
 
 // Backdrop decorator: wraps the row in the Palo Verde photo or a plain dark surface.
 // Photo backdrop uses packages/components-homepage/src/img/bluesky-bg.jpg (Vite asset import).
@@ -372,7 +373,7 @@ const HoverPage = ({ pinnedIndex = 0 }) => {
     };
   }, [pinnedIndex]);
   return (
-    <div ref={ref} dangerouslySetInnerHTML={{ __html: quickLinksHtml() }} />
+    <div ref={ref} dangerouslySetInnerHTML={innerHtml(quickLinksHtml())} />
   );
 };
 
@@ -436,7 +437,7 @@ const focusStory = (itemIndex, name) => ({
       >
         sentinel
       </button>
-      <div dangerouslySetInnerHTML={{ __html: quickLinksHtml() }} />
+      <div dangerouslySetInnerHTML={innerHtml(quickLinksHtml())} />
     </div>
   ),
   play: async ({ canvasElement }) => {
@@ -489,7 +490,7 @@ export const FocusVisibleSpanish = {
       >
         sentinel
       </button>
-      <div dangerouslySetInnerHTML={{ __html: quickLinksHtml() }} />
+      <div dangerouslySetInnerHTML={innerHtml(quickLinksHtml())} />
     </div>
   ),
   play: async ({ canvasElement }) => {
@@ -529,7 +530,7 @@ export const KeyboardTabOrder = {
       <button type="button" id="tab-order-sentinel">
         Start here
       </button>
-      <div dangerouslySetInnerHTML={{ __html: quickLinksHtml() }} />
+      <div dangerouslySetInnerHTML={innerHtml(quickLinksHtml())} />
     </div>
   ),
   play: async ({ canvasElement }) => {
@@ -865,7 +866,7 @@ export const ForcedColors = {
       >
         sentinel
       </button>
-      <div dangerouslySetInnerHTML={{ __html: quickLinksHtml() }} />
+      <div dangerouslySetInnerHTML={innerHtml(quickLinksHtml())} />
     </div>
   ),
   play: async ({ canvasElement }) => {

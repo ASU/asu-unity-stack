@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { controlHtml } from "../video-control/video-control-helpers.jsx";
 import { initVideoControls } from "../video-control/video-control.js";
 import { initPlaces } from "./places.js";
+import { innerHtml } from "../inner-html.js";
 
 export {
   emulateReducedMotion,
@@ -218,7 +219,7 @@ export const Harness = ({
       <div
         ref={ref}
         style={header ? { "--hp-places-header-height": header } : undefined}
-        dangerouslySetInnerHTML={{ __html: html }}
+        dangerouslySetInnerHTML={innerHtml(html)}
       />
       {after ? <div style={{ height: after }} aria-hidden="true" /> : null}
     </>
