@@ -1016,14 +1016,20 @@ const bindBubbleTransitions = controller => {
 
   const onRootKeyDown = event => {
     const target = closestElement(event.target);
-    if (
-      event.key !== "Escape" ||
-      openId == null ||
-      !target ||
-      !belongsToRoot(target, root)
-    ) {
+    if (event.key !== "Escape" || !target || !belongsToRoot(target, root)) {
       return;
     }
+
+    // Cancel any in-flight carousel selection first (pendingSelectionItem may
+    // be set even when openId is already null — startCorrection closes the
+    // current item before the destination is centred).
+    if (controller.carousel?.hasPendingSelection?.()) {
+      event.stopPropagation();
+      controller.carousel.cancelPendingSelection();
+      return;
+    }
+
+    if (openId == null) return;
 
     event.stopPropagation();
     transitionTo(null, { returnFocus: true, allowCarouselEmpty: true });
@@ -1047,9 +1053,19 @@ const bindBubbleTransitions = controller => {
 
   const onDocumentOutside = event => {
     const target = closestElement(event.target);
-    if (openId == null || !target || root.contains(target)) {
+    if (!target || root.contains(target)) {
       return;
     }
+
+    // Cancel any in-flight carousel selection first (pendingSelectionItem may
+    // be set even when openId is already null — startCorrection closes the
+    // current item before the destination is centred).
+    if (controller.carousel?.hasPendingSelection?.()) {
+      controller.carousel.cancelPendingSelection();
+      return;
+    }
+
+    if (openId == null) return;
     transitionTo(null, { returnFocus: true, allowCarouselEmpty: true });
   };
 
@@ -1441,11 +1457,14 @@ const bindCarouselGeometry = controller => {
 
     const maxScroll = Math.max(0, viewport.scrollWidth - viewport.clientWidth);
     const hasOverflow = maxScroll > 1;
-    const items = getItems();
-    const activeIndex = items.indexOf(getActiveCarouselItem());
-    const atStart = !hasOverflow || activeIndex <= 0;
-    const atEnd =
-      !hasOverflow || (activeIndex >= 0 && activeIndex === items.length - 1);
+    // Derive edge state from actual scroll geometry (1px tolerance per the
+    // locked real-scroll-derived end-state contract in the design doc).
+    // Using activeIndex to derive atStart/atEnd would leave disabled state
+    // stale when native pan moves the scroll position to an edge while a
+    // non-edge item is logically active.
+    const scrollLeft = viewport.scrollLeft ?? 0;
+    const atStart = !hasOverflow || scrollLeft <= 1;
+    const atEnd = !hasOverflow || scrollLeft >= maxScroll - 1;
 
     state = { atStart, atEnd, hasOverflow };
     setDisabled(previous, atStart);
@@ -1536,6 +1555,23 @@ const bindCarouselGeometry = controller => {
     const viewportCenter = viewportRect.left + viewportRect.width / 2;
     const targetCenter = frontRect.left + frontRect.width / 2;
     return Math.abs(targetCenter - viewportCenter) <= frontRect.width / 2;
+  };
+
+  /**
+   * Cancel any in-flight carousel selection, clearing all associated state so
+   * dismiss handlers (Escape, outside click) can interrupt a pending selection
+   * before it settles into an open bubble.
+   */
+  const cancelPendingSelection = () => {
+    if (!pendingSelectionItem) return;
+    const item = pendingSelectionItem;
+    pendingSelectionItem = null;
+    pendingFocusItem = null;
+    clearIdleTimer();
+    pendingScroll = false;
+    recentring = false;
+    controller.setClass(item, "is-opening", false);
+    controller.setClass(root, "is-correcting", false);
   };
 
   const startCorrection = item => {
@@ -1963,6 +1999,8 @@ const bindCarouselGeometry = controller => {
     sync,
     move,
     selectItem,
+    cancelPendingSelection,
+    hasPendingSelection: () => pendingSelectionItem != null,
     getState: () => ({ ...state, pendingScroll }),
   };
   sync();

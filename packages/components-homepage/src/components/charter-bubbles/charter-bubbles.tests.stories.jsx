@@ -4,6 +4,7 @@ import {
   CarouselNavigation as CarouselNavigationStory,
   DesktopBoundaryContract as DesktopBoundaryContractStory,
   EscapeAndOutside as EscapeAndOutsideStory,
+  EscapeAndOutsideCancelsPending as EscapeAndOutsideCancelsPendingStory,
   ForcedColors as ForcedColorsStory,
   HtmlParity as HtmlParityStory,
   InvalidDataFallback as InvalidDataFallbackStory,
@@ -13,6 +14,7 @@ import {
   OpenCloseFocus as OpenCloseFocusStory,
   OpenResearch as OpenResearchStory,
   ReducedMotion as ReducedMotionStory,
+  ScrollEdgeDisabling as ScrollEdgeDisablingStory,
   StaticContract as StaticContractStory,
   TwoDefaultInstances as TwoDefaultInstancesStory,
   UnsafeUrlFallback as UnsafeUrlFallbackStory,
@@ -86,4 +88,12 @@ export const ForcedColors = {
 
 export const TwoDefaultInstances = {
   ...TwoDefaultInstancesStory,
+};
+
+export const EscapeAndOutsideCancelsPending = {
+  ...EscapeAndOutsideCancelsPendingStory,
+};
+
+export const ScrollEdgeDisabling = {
+  ...ScrollEdgeDisablingStory,
 };

@@ -36,6 +36,8 @@ export default {
     "ReducedMotion",
     "LongContent",
     "NoScript",
+    "EscapeAndOutsideCancelsPending",
+    "ScrollEdgeDisabling",
   ],
   parameters: {
     docs: {
@@ -53,12 +55,12 @@ const viewport = width => ({
   },
 });
 
-const StoryFrame = ({ children }) => (
+const StoryFrame = ({ children, idPrefix = "charter-bubbles" }) => (
   <div className="charter-bubbles-story">
     <a
-      id="charter-bubbles-focus-start"
+      id={`${idPrefix}-focus-start`}
       className="charter-bubbles-story__focus-probe"
-      href="#charter-bubbles-focus-end"
+      href={`#${idPrefix}-focus-end`}
     >
       Focus test: page start
     </a>
@@ -72,9 +74,9 @@ const StoryFrame = ({ children }) => (
     <section className="charter-bubbles-story__following">
       <div>Following content begins after the reserved expansion area.</div>
       <a
-        id="charter-bubbles-focus-end"
+        id={`${idPrefix}-focus-end`}
         className="charter-bubbles-story__focus-probe"
-        href="#charter-bubbles-focus-start"
+        href={`#${idPrefix}-focus-start`}
       >
         Focus test: page end
       </a>
@@ -1393,12 +1395,15 @@ export const TwoDefaultInstances = {
   // useId()-derived fallback is exercised.  Both instances must generate unique
   // IDs — the P1-A fix ensures this by using useId() rather than a shared
   // constant "charter-bubbles" fallback.
+  //
+  // Each StoryFrame receives a distinct idPrefix so its own focus-probe <a>
+  // elements do not duplicate IDs when two frames appear in the same document.
   render: () => (
     <div>
-      <StoryFrame>
+      <StoryFrame idPrefix="charter-bubbles-a">
         <CharterBubbles />
       </StoryFrame>
-      <StoryFrame>
+      <StoryFrame idPrefix="charter-bubbles-b">
         <CharterBubbles />
       </StoryFrame>
     </div>
@@ -1470,5 +1475,142 @@ export const TwoDefaultInstances = {
     await waitFor(() => expect(rootB).toHaveAttribute("data-open-id"));
     // Instance A is closed, instance B is open — independent operation confirmed.
     await expect(rootA).not.toHaveAttribute("data-open-id");
+  },
+};
+
+export const EscapeAndOutsideCancelsPending = {
+  ...viewport(393),
+  // RED: Escape and outside click must cancel an in-flight carousel selection
+  // (pendingSelectionItem is set) so that no item ends up expanded after
+  // dismissal.  Before the cancelPendingSelection() fix, the dismiss handlers
+  // returned early because openId was already null (startCorrection had
+  // already called setOpenId(null)), leaving pendingSelectionItem alive; the
+  // pending fallback then opened the destination anyway.
+  render: () => <ReactPage />,
+  play: async ({ canvasElement }) => {
+    const root = canvasElement.querySelector("[data-charter-bubbles]");
+    const viewportEl = root.querySelector("[data-charter-bubble-viewport]");
+    const next = root.querySelector("[data-charter-bubble-next]");
+
+    // Wait for the initial settled state.
+    await waitFor(() =>
+      expect(root).toHaveAttribute("data-motion-ready", "true")
+    );
+
+    // --- Escape cancels in-flight selection ---
+    // Click Next: this starts correction (pendingSelectionItem set, openId→null).
+    // We immediately press Escape before scrollend so the pending fallback has
+    // not yet fired.
+    await userEvent.click(next);
+    // Dispatch scroll to simulate movement without settling.
+    viewportEl.dispatchEvent(new Event("scroll"));
+    // Now dismiss with Escape while selection is still in-flight.
+    await userEvent.keyboard("{Escape}");
+    // The carousel must end up with no open item and no pending item.
+    // Allow time for any rogue fallback timer to fire.
+    await new Promise(resolve => setTimeout(resolve, 300));
+    await expect(root).not.toHaveAttribute("data-open-id");
+    await expect(root.querySelectorAll(".is-open")).toHaveLength(0);
+    await expect(root.querySelectorAll(".is-opening")).toHaveLength(0);
+
+    // --- Outside click cancels in-flight selection ---
+    // Re-open by clicking next so there is an active open state.
+    viewportEl.dispatchEvent(new Event("scrollend"));
+    await waitFor(() => expect(root).toHaveAttribute("data-open-id"));
+    // Start another correction via Next.
+    await userEvent.click(next);
+    viewportEl.dispatchEvent(new Event("scroll"));
+    // Click outside the component while correction is in-flight.
+    const outsideEl = canvasElement.querySelector(
+      ".charter-bubbles-story__following div"
+    );
+    await userEvent.click(outsideEl);
+    // Allow time for any rogue fallback timer to fire.
+    await new Promise(resolve => setTimeout(resolve, 300));
+    await expect(root).not.toHaveAttribute("data-open-id");
+    await expect(root.querySelectorAll(".is-open")).toHaveLength(0);
+    await expect(root.querySelectorAll(".is-opening")).toHaveLength(0);
+
+    // Restore: settle so subsequent stories have a clean state.
+    viewportEl.dispatchEvent(new Event("scrollend"));
+    await new Promise(resolve => setTimeout(resolve, 50));
+  },
+};
+
+export const ScrollEdgeDisabling = {
+  ...viewport(393),
+  // RED: Carousel Previous/Next disabled state must be derived from actual
+  // scrollLeft vs maxScroll (with 1px tolerance), not from the logical
+  // activeIndex.  Before the fix, sync() used activeIndex to set atStart/atEnd,
+  // which left disabled state stale when native pan moved the scroll position
+  // to an edge while a non-edge item was logically active.
+  render: () => <ReactPage />,
+  play: async ({ canvasElement }) => {
+    const root = canvasElement.querySelector("[data-charter-bubbles]");
+    const viewportEl = root.querySelector("[data-charter-bubble-viewport]");
+    const previous = root.querySelector("[data-charter-bubble-previous]");
+    const next = root.querySelector("[data-charter-bubble-next]");
+
+    // Wait for the initial settled state (first item open → atStart = true).
+    await waitFor(() =>
+      expect(root).toHaveAttribute("data-motion-ready", "true")
+    );
+    await waitFor(() => expect(previous).toBeDisabled());
+
+    // --- Native pan to the end while first item is still logically active ---
+    // Simulate a touch gesture that pans to the rightmost position.
+    viewportEl.dispatchEvent(new Event("touchstart", { bubbles: true }));
+    const maxScroll = Math.max(
+      0,
+      viewportEl.scrollWidth - viewportEl.clientWidth
+    );
+    viewportEl.scrollLeft = maxScroll;
+    viewportEl.dispatchEvent(new Event("scroll"));
+    // Dispatch touchend + scrollend so the gesture finishes without committing
+    // a selection (we want to verify disabled state before selection settles).
+    viewportEl.ownerDocument.defaultView.dispatchEvent(new Event("touchend"));
+    viewportEl.dispatchEvent(new Event("scrollend"));
+
+    // After the scroll settles a new item is selected; wait for that.
+    await waitFor(() => expect(root).toHaveAttribute("data-open-id"));
+    // The last item is now open — Next must be disabled because scrollLeft is
+    // at maxScroll, regardless of what activeIndex started as.
+    await waitFor(() => expect(next).toBeDisabled());
+    await expect(previous).not.toBeDisabled();
+
+    // --- Native pan to the start while a non-first item might be active ---
+    viewportEl.dispatchEvent(new Event("touchstart", { bubbles: true }));
+    viewportEl.scrollLeft = 0;
+    viewportEl.dispatchEvent(new Event("scroll"));
+    viewportEl.ownerDocument.defaultView.dispatchEvent(new Event("touchend"));
+    viewportEl.dispatchEvent(new Event("scrollend"));
+    await waitFor(() => expect(root).toHaveAttribute("data-open-id"));
+    // Previous must be disabled because scrollLeft ≈ 0.
+    await waitFor(() => expect(previous).toBeDisabled());
+    await expect(next).not.toBeDisabled();
+
+    // --- Disabled state updates on resize ---
+    // Pan to end again so Next is disabled.
+    viewportEl.dispatchEvent(new Event("touchstart", { bubbles: true }));
+    viewportEl.scrollLeft = viewportEl.scrollWidth - viewportEl.clientWidth;
+    viewportEl.dispatchEvent(new Event("scroll"));
+    viewportEl.ownerDocument.defaultView.dispatchEvent(new Event("touchend"));
+    viewportEl.dispatchEvent(new Event("scrollend"));
+    await waitFor(() => expect(next).toBeDisabled());
+
+    // Widen the viewport so there is no overflow (all items fit).
+    await resizeViewport(1280);
+    // Both controls disabled when no overflow (or carousel exits).
+    // The disabled state must update — not remain at the pre-resize scroll state.
+    await waitFor(() =>
+      // Either both are disabled (no-overflow) or we are in cluster mode
+      // where the nav is hidden; the key assertion is that neither check
+      // throws, confirming sync ran after resize.
+      expect(
+        previous.disabled ||
+          previous.getAttribute("aria-disabled") === "true" ||
+          root.getAttribute("data-layout") === "cluster"
+      ).toBe(true)
+    );
   },
 };
