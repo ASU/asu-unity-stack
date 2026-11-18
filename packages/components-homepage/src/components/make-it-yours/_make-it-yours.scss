@@ -12,6 +12,7 @@ $hp-myours-bp: 769px;
 $hp-myours-h: 865px;
 $hp-myours-col-w: 548px;
 $hp-myours-frame: 1920px;
+$hp-myours-wide-max: 1280px; // up to here the two columns split 50/50
 $hp-myours-row: 44px; // touch target
 $hp-myours-bar-w: 4px;
 $hp-myours-bar-inset: calc(#{$hp-myours-bar-w} + #{$uds-size-spacing-3}); // bar plus the 24px gap to the text
@@ -526,6 +527,41 @@ $hp-myours-chip-edge: $asu-gray-3; // #747474
   }
 }
 
+// ---- 769px to 1280px: photo half (caption) and content half (title + accordion) are 50% each. Stacked at 768 and below. ----
+@media (min-width: $hp-myours-bp) and (max-width: $hp-myours-wide-max) {
+  .hp-myours__stage {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: $uds-size-spacing-6; // 48px between the caption column and the content column
+  }
+  // Caption stays inside the left half, with the same 48px edge inset on both sides.
+  .hp-myours__caption {
+    max-width: calc(50% - #{$uds-size-spacing-6} * 2);
+  }
+  // Scrim covers the right half plus its feather.
+  .hp-myours__stage::after {
+    width: calc(50% + #{$hp-myours-scrim-feather});
+  }
+  // The heading scales with the viewport and wraps ("Make it" / "yours") when the column is too narrow for one line.
+  // The underlined last word carries the scribble, so it works on either line.
+  .hp-myours__heading {
+    font-size: clamp(
+      4rem,
+      7vw,
+      5.5rem
+    ); // TODO: no token (64px at 769 to 88px at 1257+)
+    white-space: normal;
+    text-wrap: balance;
+    text-align: center;
+  }
+  // Here the swoosh sits under "yours" only (the stacked values), not under "it yours".
+  .hp-myours__heading--lead .hp-myours__scrib,
+  .hp-myours__heading .hp-myours__scrib {
+    --scrib-left: -4%;
+    --scrib-width: 113%;
+    --scrib-bottom: -0.06em;
+    max-width: none;
+  }
+}
 // ---- Forced colors: system colors, opaque panels (last, so it wins over the desktop `background: none`) ----
 
 @media (forced-colors: active) {
