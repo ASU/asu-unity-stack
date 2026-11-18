@@ -1,3 +1,10 @@
+# [@asu/app-degree-pages-v3.2.5](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.2.4...@asu/app-degree-pages-v3.2.5) (2026-11-06)
+
+
+### Bug Fixes
+
+* storybook package updates ([ece04b4](https://github.com/asu/asu-unity-stack/commit/ece04b4ca6977f67e91d29bf8e2c0c536351db53))
+
 # [@asu/app-degree-pages-v3.2.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-degree-pages-v3.2.3...@asu/app-degree-pages-v3.2.4) (2026-08-07)
 
 
