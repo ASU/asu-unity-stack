@@ -478,14 +478,6 @@ const focusSafely = element => {
   }
 };
 
-const focusTemporarily = element => {
-  if (!element) return;
-  const tabindex = readAttribute(element, "tabindex");
-  if (!tabindex.present) element.setAttribute("tabindex", "-1");
-  focusSafely(element);
-  restoreAttribute(element, "tabindex", tabindex);
-};
-
 const bindBubbleTransitions = controller => {
   const { root } = controller;
   const records = discoverBubbleItems(root);
@@ -498,10 +490,12 @@ const bindBubbleTransitions = controller => {
   const list = controller.query(LIST_SELECTOR);
   const ownerDocument = root.ownerDocument;
   const view = ownerDocument?.defaultView;
-  const supportsInert = Boolean(
-    view?.HTMLElement && "inert" in view.HTMLElement.prototype
-  );
   let openId = null;
+  // Set to the record that was just explicitly closed in carousel mode so that
+  // the focusin handler (which normally auto-opens the focused item) does not
+  // immediately re-open the item that was just closed by Close / Escape /
+  // outside.  Cleared on the next focusin cycle.
+  let carouselJustClosedId = null;
 
   const clearDesktopGeometry = () => {
     records.forEach(record => {
@@ -889,12 +883,18 @@ const bindBubbleTransitions = controller => {
     );
     controller.setAttribute(record.panel, "inert", isOpen ? null : "");
 
-    if (!supportsInert) {
-      fallbackFocusables(record).forEach(element => {
-        if (isOpen) controller.releaseAttribute(element, "tabindex");
-        else controller.setAttribute(element, "tabindex", "-1");
-      });
-    }
+    // Always snapshot and apply tabindex=-1 to closed panel descendants so
+    // keyboard users cannot Tab into a closed/inert panel regardless of
+    // whether the browser's inert implementation is complete.  Restore their
+    // authored values on open or teardown (the mutation ledger handles the
+    // restore on teardown automatically).
+    fallbackFocusables(record).forEach(element => {
+      if (isOpen) {
+        controller.releaseAttribute(element, "tabindex");
+      } else {
+        controller.setAttribute(element, "tabindex", "-1");
+      }
+    });
   };
 
   const syncRoot = () => {
@@ -933,13 +933,35 @@ const bindBubbleTransitions = controller => {
     );
 
     openId = nextId;
+    if (nextId == null && controller.layout?.getMode?.() === "carousel") {
+      carouselJustClosedId = previous?.id ?? null;
+    } else {
+      carouselJustClosedId = null;
+    }
     records.forEach(record => syncRecord(record, record.id === openId));
     syncRoot();
     applyDesktopGeometry();
 
     const active = openId == null ? null : byId.get(openId);
-    if (focusPanel && active) focusTemporarily(active.panel);
-    else if (shouldReturnFocus && previous) focusSafely(previous.front);
+    // Focus the labelled Close button — the locked focus destination from the
+    // design-doc state machine.  The Close button already has tabindex restored
+    // by syncRecord (isOpen path) so focusSafely works without a temporary
+    // tabindex.  Using requestAnimationFrame ensures the browser has processed
+    // the inert removal and CSS updates before attempting to focus.
+    if (focusPanel && active) {
+      const closeEl = active.close;
+      const activeId = active.id;
+      if (view?.requestAnimationFrame) {
+        view.requestAnimationFrame(() => {
+          // Only focus if this item is still the open one when the frame fires.
+          if (openId === activeId) focusSafely(closeEl);
+        });
+      } else {
+        focusSafely(closeEl);
+      }
+    } else if (shouldReturnFocus && previous) {
+      focusSafely(previous.front);
+    }
 
     return true;
   };
@@ -959,8 +981,7 @@ const bindBubbleTransitions = controller => {
     const close = target.closest(CLOSE_SELECTOR);
     const closeRecord = byClose.get(close);
     if (closeRecord && closeRecord.id === openId) {
-      if (controller.layout?.getMode?.() === "carousel") return;
-      transitionTo(null, { returnFocus: true });
+      transitionTo(null, { returnFocus: true, allowCarouselEmpty: true });
       return;
     }
 
@@ -992,7 +1013,6 @@ const bindBubbleTransitions = controller => {
     if (
       event.key !== "Escape" ||
       openId == null ||
-      controller.layout?.getMode?.() === "carousel" ||
       !target ||
       !belongsToRoot(target, root)
     ) {
@@ -1000,7 +1020,7 @@ const bindBubbleTransitions = controller => {
     }
 
     event.stopPropagation();
-    transitionTo(null, { returnFocus: true });
+    transitionTo(null, { returnFocus: true, allowCarouselEmpty: true });
   };
 
   const onRootFocusIn = event => {
@@ -1008,20 +1028,23 @@ const bindBubbleTransitions = controller => {
     const item = closestElement(event.target)?.closest(ITEM_SELECTOR);
     const record = byItem.get(item);
     if (!record || record.id === openId) return;
+    // If the user just explicitly closed this item, do not re-open it on the
+    // resulting focus-return.  Clear the suppression so the next manual
+    // keyboard navigation works normally.
+    if (record.id === carouselJustClosedId) {
+      carouselJustClosedId = null;
+      return;
+    }
+    carouselJustClosedId = null;
     controller.carousel?.selectItem?.(record.item, { focusPanel: true });
   };
 
   const onDocumentOutside = event => {
     const target = closestElement(event.target);
-    if (
-      openId == null ||
-      controller.layout?.getMode?.() === "carousel" ||
-      !target ||
-      root.contains(target)
-    ) {
+    if (openId == null || !target || root.contains(target)) {
       return;
     }
-    transitionTo(null, { returnFocus: true });
+    transitionTo(null, { returnFocus: true, allowCarouselEmpty: true });
   };
 
   controller.listen(root, "click", onRootClick);
@@ -1545,7 +1568,19 @@ const bindCarouselGeometry = controller => {
     recentring = true;
     if (pendingFocusItem === item) {
       pendingFocusItem = null;
-      focusTemporarily(item.querySelector(PANEL_SELECTOR));
+      // Focus the labelled Close button — the locked focus destination.
+      const closeEl = item.querySelector(CLOSE_SELECTOR);
+      if (closeEl) {
+        const activateId = id;
+        if (view?.requestAnimationFrame) {
+          view.requestAnimationFrame(() => {
+            if (controller.bubbles?.getOpenId?.() === activateId)
+              focusSafely(closeEl);
+          });
+        } else {
+          focusSafely(closeEl);
+        }
+      }
     }
     sync();
     return true;
@@ -1584,7 +1619,19 @@ const bindCarouselGeometry = controller => {
 
     if (pendingFocusItem === item) {
       pendingFocusItem = null;
-      focusTemporarily(item.querySelector(PANEL_SELECTOR));
+      // Focus the labelled Close button — the locked focus destination.
+      const closeEl = item.querySelector(CLOSE_SELECTOR);
+      if (closeEl) {
+        const commitId = item.getAttribute("data-charter-bubble-id");
+        if (view?.requestAnimationFrame) {
+          view.requestAnimationFrame(() => {
+            if (controller.bubbles?.getOpenId?.() === commitId)
+              focusSafely(closeEl);
+          });
+        } else {
+          focusSafely(closeEl);
+        }
+      }
     }
   };
 

@@ -393,9 +393,28 @@
     letter-spacing: -0.03798125rem; // -0.61px measured mobile tracking.
   }
 
-  .hp-charter-bubble__chevron,
-  .hp-charter-bubble__close {
+  // In carousel mode, the front-face chevron is not needed (the whole face
+  // is used to scroll/open).  The Close button IS shown when a bubble is open
+  // so users have a keyboard-accessible and pointer-accessible way to close.
+  .hp-charter-bubble__chevron {
     display: none;
+  }
+
+  .hp-charter-bubble:not(.is-open):not(.is-opening) .hp-charter-bubble__close {
+    display: none;
+  }
+
+  // When a bubble is open (or animating to open), show the Close button as a
+  // visible 44×44 labelled control centred at the base of the expanded face.
+  .hp-charter-bubble.is-open .hp-charter-bubble__close,
+  .hp-charter-bubble.is-opening .hp-charter-bubble__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // Explicitly re-assert 44×44 to prevent shrink-to-fit when
+    // position:absolute resolves width from the flex container's content.
+    width: 2.75rem; // 44px
+    height: 2.75rem; // 44px
   }
 
   .hp-charter-bubble__detail {
