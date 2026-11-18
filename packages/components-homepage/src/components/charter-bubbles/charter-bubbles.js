@@ -952,9 +952,15 @@ const bindBubbleTransitions = controller => {
       const closeEl = active.close;
       const activeId = active.id;
       if (view?.requestAnimationFrame) {
-        view.requestAnimationFrame(() => {
-          // Only focus if this item is still the open one when the frame fires.
-          if (openId === activeId) focusSafely(closeEl);
+        const frameId = view.requestAnimationFrame(() => {
+          // Only focus if this item is still the open one when the frame fires
+          // AND the controller is still active (not torn down).
+          if (controller.active && openId === activeId) focusSafely(closeEl);
+        });
+        controller.addCleanup(() => {
+          if (typeof view.cancelAnimationFrame === "function") {
+            view.cancelAnimationFrame(frameId);
+          }
         });
       } else {
         focusSafely(closeEl);
@@ -1098,9 +1104,11 @@ const bindResponsiveVisibility = controller => {
     controller.setClass(root, "is-carousel", mode === "carousel");
     controller.setClass(root, "is-cluster", mode === "cluster");
 
-    if (mode === "cluster" && previousMode === "carousel") {
-      controller.bubbles?.setOpenId?.(null);
-    }
+    // Per the locked state machine: "responsive mode changes → OPEN(N)"
+    // The logical open item is preserved when crossing the 768px boundary.
+    // Previously this branch called setOpenId(null) on carousel→cluster, which
+    // is a design-doc mismatch.  The carousel→cluster geometry reflow below
+    // will re-apply desktop positions for the still-open bubble.
 
     if (mode === "carousel" && previousMode !== "carousel") {
       if (controller.bubbles?.getOpenId?.() == null) {
@@ -1573,9 +1581,18 @@ const bindCarouselGeometry = controller => {
       if (closeEl) {
         const activateId = id;
         if (view?.requestAnimationFrame) {
-          view.requestAnimationFrame(() => {
-            if (controller.bubbles?.getOpenId?.() === activateId)
+          const frameId = view.requestAnimationFrame(() => {
+            if (
+              controller.active &&
+              controller.bubbles?.getOpenId?.() === activateId
+            ) {
               focusSafely(closeEl);
+            }
+          });
+          controller.addCleanup(() => {
+            if (typeof view.cancelAnimationFrame === "function") {
+              view.cancelAnimationFrame(frameId);
+            }
           });
         } else {
           focusSafely(closeEl);
@@ -1624,9 +1641,18 @@ const bindCarouselGeometry = controller => {
       if (closeEl) {
         const commitId = item.getAttribute("data-charter-bubble-id");
         if (view?.requestAnimationFrame) {
-          view.requestAnimationFrame(() => {
-            if (controller.bubbles?.getOpenId?.() === commitId)
+          const frameId = view.requestAnimationFrame(() => {
+            if (
+              controller.active &&
+              controller.bubbles?.getOpenId?.() === commitId
+            ) {
               focusSafely(closeEl);
+            }
+          });
+          controller.addCleanup(() => {
+            if (typeof view.cancelAnimationFrame === "function") {
+              view.cancelAnimationFrame(frameId);
+            }
           });
         } else {
           focusSafely(closeEl);
