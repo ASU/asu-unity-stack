@@ -28,7 +28,7 @@
     "lint:fix": "yarn lint",
     "lint:forcefix": "yarn js-lint:forcefix",
     "js-lint:forcefix": "eslint --fix 'src/**/*.{js,jsx}'",
-    "js-lint:check": "eslint --fix-dry-run 'src/**/*.{js,jsx}'",
+    "js-lint:check": "eslint 'src/**/*.{js,jsx}'",
     "test": "jest --config=./jest.config.js --passWithNoTests --silent --coverage",
     "test:accessibility": "playwright test",
     "test-update-snapshot": "yarn test -- -u",

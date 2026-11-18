@@ -40,6 +40,6 @@
     "lint:fix": "yarn lint",
     "lint:forcefix": "yarn js-lint:forcefix",
     "js-lint:forcefix": "eslint --fix",
-    "js-lint:check": "eslint --fix-dry-run ."
+    "js-lint:check": "eslint ."
   }
 }

@@ -37,7 +37,7 @@
     "lint:fix": "yarn lint",
     "lint:forcefix": "yarn js-lint:forcefix",
     "js-lint:forcefix": "eslint --fix 'src/**/*.{js,jsx}'",
-    "js-lint:check": "eslint --fix-dry-run 'src/**/*.{js,jsx}'",
+    "js-lint:check": "eslint 'src/**/*.{js,jsx}'",
     "test": "jest --config=./jest.config.js --silent --coverage && yarn test-datalayer",
     "test-datalayer": "playwright test tests/dataLayer-header.spec.mjs",
     "test-update-snapshot": "yarn test -- -u",

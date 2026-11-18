@@ -29,7 +29,7 @@
     "lint:fix": "yarn lint",
     "lint:forcefix": "yarn js-lint:forcefix",
     "js-lint:forcefix": "eslint --fix 'src/**/*.{js,jsx}'",
-    "js-lint:check": "eslint --fix-dry-run 'src/**/*.{js,jsx}'",
+    "js-lint:check": "eslint 'src/**/*.{js,jsx}'",
     "test": "vitest --watch=false",
     "test-update-snapshot": "yarn test -- -u",
     "build": "vite build && yarn postbuild",
