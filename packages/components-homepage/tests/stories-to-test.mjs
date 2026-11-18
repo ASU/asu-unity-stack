@@ -185,6 +185,9 @@ export const storiesToTest = [
   // Focus and close interaction suites (newly added to Tests wrapper):
   "homepage-charter-bubbles-tests--open-close-focus",
   "homepage-charter-bubbles-tests--escape-and-outside",
+  // Forced-colors and multiple-instance coverage (P2-C, review cycle 5):
+  "homepage-charter-bubbles-tests--forced-colors",
+  "homepage-charter-bubbles-tests--two-default-instances",
   // WWWCMS-235: quick-links a11y story (on-white backdrop, WCAG 2.1 AA via Siteimprove Alfa)
   "homepage-quick-links--accessibility-plain",
   // WWWCMS-236: stories grid (rest, hover, no script, and the tablet, phone and large layouts)

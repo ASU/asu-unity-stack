@@ -4,6 +4,7 @@ import {
   CarouselNavigation as CarouselNavigationStory,
   DesktopBoundaryContract as DesktopBoundaryContractStory,
   EscapeAndOutside as EscapeAndOutsideStory,
+  ForcedColors as ForcedColorsStory,
   HtmlParity as HtmlParityStory,
   InvalidDataFallback as InvalidDataFallbackStory,
   LongContent as LongContentStory,
@@ -13,6 +14,7 @@ import {
   OpenResearch as OpenResearchStory,
   ReducedMotion as ReducedMotionStory,
   StaticContract as StaticContractStory,
+  TwoDefaultInstances as TwoDefaultInstancesStory,
   UnsafeUrlFallback as UnsafeUrlFallbackStory,
 } from "./charter-bubbles.stories.jsx";
 
@@ -23,7 +25,7 @@ export default {
 
 export const BreakpointPreservesOpen = {
   ...BreakpointPreservesOpenStory,
-  name: "Breakpoint resets cluster to closed",
+  name: "Breakpoint preserves open item across mode change",
 };
 
 export const CarouselNavigation = {
@@ -76,4 +78,12 @@ export const StaticContract = {
 
 export const UnsafeUrlFallback = {
   ...UnsafeUrlFallbackStory,
+};
+
+export const ForcedColors = {
+  ...ForcedColorsStory,
+};
+
+export const TwoDefaultInstances = {
+  ...TwoDefaultInstancesStory,
 };

@@ -5,6 +5,8 @@ import {
   emulateReducedMotion,
   resizeViewport,
 } from "../reimagine/reimagine-helpers.jsx";
+import { emulateForcedColors } from "../rankings-cards/rankings-cards-helpers.jsx";
+import { realPointer } from "../video-control/video-control-helpers.jsx";
 import { CharterBubbles } from "./CharterBubbles.jsx";
 import { DEFAULT_CHARTER_BUBBLES } from "./charter-bubbles-data.js";
 import { initCharterBubbles } from "./charter-bubbles.js";
@@ -26,6 +28,8 @@ export default {
     "HtmlParity",
     "CarouselNavigation",
     "BreakpointPreservesOpen",
+    "ForcedColors",
+    "TwoDefaultInstances",
     "InvalidDataFallback",
     "UnsafeUrlFallback",
     "MalformedContractsStayUnenhanced",
@@ -1168,7 +1172,7 @@ export const CarouselNavigation = {
 };
 
 export const BreakpointPreservesOpen = {
-  name: "Breakpoint resets cluster to closed",
+  name: "Breakpoint preserves open item across mode change",
   ...viewport(768),
   render: () => <ReactPage />,
   play: async ({ canvasElement }) => {
@@ -1176,23 +1180,31 @@ export const BreakpointPreservesOpen = {
     const front = root.querySelector(
       '[data-charter-bubble-id="faculty"] [data-charter-bubble-open]'
     );
+    // Start in carousel mode and open the faculty bubble.
+    await waitFor(() =>
+      expect(root).toHaveAttribute("data-layout", "carousel")
+    );
     await userEvent.click(front);
     await waitFor(() =>
       expect(root).toHaveAttribute("data-open-id", "faculty")
     );
+
+    // Resize to cluster mode (769px) — the locked state machine requires the
+    // open item to be preserved, not closed.
     await resizeViewport(769);
     await waitFor(() => expect(root).toHaveAttribute("data-layout", "cluster"));
     await expect(root).toHaveClass("is-enhanced", "is-cluster");
-    await expect(root).not.toHaveAttribute("data-open-id");
-    await expect(root.querySelectorAll(".is-open, .is-opening")).toHaveLength(
-      0
-    );
+    // The faculty bubble must still be open after crossing the breakpoint.
+    await expect(root).toHaveAttribute("data-open-id", "faculty");
+    await expect(root.querySelectorAll(".is-open")).toHaveLength(1);
+
+    // Resize back to carousel mode (768px) — the faculty bubble remains open.
     await resizeViewport(768);
     await waitFor(() =>
       expect(root).toHaveAttribute("data-layout", "carousel")
     );
     await expect(root).toHaveClass("is-enhanced", "is-carousel");
-    await expect(root).toHaveAttribute("data-open-id", "employability");
+    await expect(root).toHaveAttribute("data-open-id", "faculty");
     await expect(root.querySelectorAll(".is-open")).toHaveLength(1);
   },
 };
@@ -1322,5 +1334,141 @@ export const MalformedContractsStayUnenhanced = {
           .display
       ).toBe("none");
     }
+  },
+};
+
+export const ForcedColors = {
+  ...viewport(1280),
+  render: () => <ReactPage />,
+  play: async ({ canvasElement }) => {
+    // This test requires real-browser forced-colors emulation.  When
+    // realPointer.available is false (outside the vitest browser runner),
+    // emulateForcedColors returns without applying emulation; skip the
+    // assertions in that case to avoid a false negative.
+    if (!realPointer.available) return;
+
+    await emulateForcedColors(true);
+    try {
+      const root = canvasElement.querySelector("[data-charter-bubbles]");
+      await waitFor(() =>
+        expect(root).toHaveAttribute("data-layout", "cluster")
+      );
+
+      // In forced-colors mode the component must remain fully operational:
+      // labels must be accessible, bubbles open and close normally, and no
+      // JS error should prevent the interaction.  The @media (forced-colors)
+      // block in _charter-bubbles.scss adds a solid CanvasText border and
+      // sets forced-color-adjust: auto; structural verification here confirms
+      // the component does not break under system-color overrides.
+      const front = root.querySelector("[data-charter-bubble-open]");
+      await expect(front).toHaveAccessibleName();
+
+      // Open a bubble — verify the state machine still works under forced colors.
+      await userEvent.click(front);
+      await waitFor(() => expect(root).toHaveAttribute("data-open-id"));
+
+      const panel = root.querySelector(".is-open [data-charter-bubble-panel]");
+      await expect(panel).not.toHaveAttribute("aria-hidden", "true");
+      await expect(panel).not.toHaveAttribute("inert");
+
+      const closeBtn = root.querySelector(
+        ".is-open [data-charter-bubble-close]"
+      );
+      // The close button must be visible and labelled under forced colors.
+      await expect(getComputedStyle(closeBtn).display).not.toBe("none");
+      await expect(closeBtn).toHaveAccessibleName();
+
+      // Close via the Close button — verify forced colors does not block interaction.
+      await userEvent.click(closeBtn);
+      await waitFor(() => expect(root).not.toHaveAttribute("data-open-id"));
+    } finally {
+      await emulateForcedColors(false);
+    }
+  },
+};
+
+export const TwoDefaultInstances = {
+  ...viewport(1280),
+  // Render two <CharterBubbles> without an explicit instanceId so the React
+  // useId()-derived fallback is exercised.  Both instances must generate unique
+  // IDs — the P1-A fix ensures this by using useId() rather than a shared
+  // constant "charter-bubbles" fallback.
+  render: () => (
+    <div>
+      <StoryFrame>
+        <CharterBubbles />
+      </StoryFrame>
+      <StoryFrame>
+        <CharterBubbles />
+      </StoryFrame>
+    </div>
+  ),
+  play: async ({ canvasElement }) => {
+    const roots = canvasElement.querySelectorAll("[data-charter-bubbles]");
+    await expect(roots).toHaveLength(2);
+
+    // Both instances must be enhanced.
+    for (const root of roots) {
+      await waitFor(() =>
+        expect(root).toHaveAttribute("data-enhanced", "true")
+      );
+    }
+
+    // All IDs within charter-bubbles roots must be unique across the two instances.
+    // (We scope to the roots so StoryFrame probe IDs are excluded.)
+    const allRootIds = Array.from(roots).flatMap(root =>
+      Array.from(root.querySelectorAll("[id]")).map(el => el.id)
+    );
+    const duplicates = allRootIds.filter(
+      (id, index) => allRootIds.indexOf(id) !== index
+    );
+    await expect(duplicates).toHaveLength(0);
+
+    // Each instance's aria-controls must resolve to an element within the
+    // same root (not cross-instance).
+    for (const root of roots) {
+      for (const front of root.querySelectorAll("[data-charter-bubble-open]")) {
+        const panelId = front.getAttribute("aria-controls");
+        const panel = canvasElement.querySelector(`#${CSS.escape(panelId)}`);
+        await expect(root.contains(panel)).toBe(true);
+      }
+    }
+
+    // Open a bubble in each instance independently.
+    const [rootA, rootB] = roots;
+    const frontA = rootA.querySelector("[data-charter-bubble-open]");
+    const frontB = rootB.querySelector("[data-charter-bubble-open]");
+
+    // Scroll the first instance into view before clicking to avoid the
+    // IntersectionObserver closing the bubble immediately after opening.
+    frontA.scrollIntoView({ block: "center", inline: "nearest" });
+    await waitFor(() => {
+      const box = frontA.getBoundingClientRect();
+      expect(box.bottom).toBeGreaterThan(0);
+      expect(box.top).toBeLessThan(window.innerHeight);
+    });
+
+    await userEvent.click(frontA);
+    await waitFor(() => expect(rootA).toHaveAttribute("data-open-id"));
+    await expect(rootB).not.toHaveAttribute("data-open-id");
+
+    // Close the first instance and open one in the second.
+    const openCloseA = rootA.querySelector(
+      ".is-open [data-charter-bubble-close]"
+    );
+    await userEvent.click(openCloseA);
+    await waitFor(() => expect(rootA).not.toHaveAttribute("data-open-id"));
+
+    frontB.scrollIntoView({ block: "center", inline: "nearest" });
+    await waitFor(() => {
+      const box = frontB.getBoundingClientRect();
+      expect(box.bottom).toBeGreaterThan(0);
+      expect(box.top).toBeLessThan(window.innerHeight);
+    });
+
+    await userEvent.click(frontB);
+    await waitFor(() => expect(rootB).toHaveAttribute("data-open-id"));
+    // Instance A is closed, instance B is open — independent operation confirmed.
+    await expect(rootA).not.toHaveAttribute("data-open-id");
   },
 };
