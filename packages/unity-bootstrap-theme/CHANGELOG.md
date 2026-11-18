@@ -1,3 +1,10 @@
+# [@asu/unity-bootstrap-theme-v2.4.6](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.4.5...@asu/unity-bootstrap-theme-v2.4.6) (2026-11-18)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fixed global footer "Support ASU" button size ([e530086](https://github.com/ASU/asu-unity-stack/commit/e530086bc2d370d2389c5ea0c7545d02f1ed176e))
+
 # [@asu/unity-bootstrap-theme-v2.4.5](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.4.4...@asu/unity-bootstrap-theme-v2.4.5) (2026-11-14)
 
 
