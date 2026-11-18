@@ -431,6 +431,13 @@ div.uds-hero-lg {
   div.uds-hero-sm {
     grid-template-rows: 0px 1fr auto auto;
 
+    [role="doc-subtitle"], // UDS is deprecatated doc-subtitle as a Selector
+    .hero-subtitle {
+      margin-top: auto;
+      // to align subtitle text with the title
+      margin-left: 0.375rem;
+    }
+
     // Row 4 collapses to 0 when the hero has no CTA, leaving the h1 flush
     // against the bottom edge — carry the bottom spacing on the h1 instead.
     h1 {
