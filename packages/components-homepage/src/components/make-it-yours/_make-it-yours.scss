@@ -1,5 +1,6 @@
 // Homepage "Make it yours": five photo tabs. Stacked through 768px (white head, inset photo, dark band with the tab
-// list) and side by side from 769px (full-bleed photo, content column on the right, 865px tall). APG Accordion.
+// list) and side by side from 769px (full-bleed photo, content column on the right, 865px tall). 769-1280px: two equal
+// columns with a 48px gap, centred heading that may wrap; above 1280px: a 548px content column. APG Accordion.
 // Design doc: WWWCMS-237. Baseline (no script): every panel open, only the first photo; `initMakeItYours` adds
 // `.is-enhanced`, which turns on the accordion. Photos are HTML <img>/srcset; no CSS url() art here (vite.config.js).
 
@@ -18,8 +19,6 @@ $hp-myours-bar-w: 4px;
 $hp-myours-bar-inset: calc(#{$hp-myours-bar-w} + #{$uds-size-spacing-3}); // bar plus the 24px gap to the text
 $hp-myours-tabs-top: 150px; // gap above the tab list: title 1 sits about 450px from the top of the stage
 $hp-myours-chip-w: 536px; // caption chip max width
-$hp-myours-chip-w-narrow: 280px; // caption chip max width below 1024px
-$hp-myours-chip-wide-bp: 1024px; // the wide chip starts here, as desktop starts at 1024 in faculty-carousel and places
 $hp-myours-scrim-feather: 96px; // the scrim fades in over 96px left of the content column
 $hp-myours-ease: cubic-bezier(0.4, 0, 0.2, 1);
 $hp-myours-chip-bg: rgba($asu-gray-1, 0.6); // 0.5 fails caption contrast (3.47:1) on tabs 3 and 4; 0.55 still fails
@@ -419,9 +418,6 @@ $hp-myours-chip-edge: $asu-gray-3; // #747474
     color: $uds-color-base-white;
     font-size: $uds-size-font-small;
     line-height: 1.25;
-    @media not all and (min-width: $hp-myours-chip-wide-bp) {
-      max-width: $hp-myours-chip-w-narrow;
-    }
   }
 
   // Soft dark panel behind the content column, one identical strength for all five photos (not in the mockups).
@@ -539,7 +535,11 @@ $hp-myours-chip-edge: $asu-gray-3; // #747474
   }
   // Scrim covers the right half plus its feather.
   .hp-myours__stage::after {
-    width: calc(50% + #{$hp-myours-scrim-feather});
+    // The content column starts at 50% + inset/2 - 24px from the right edge's side (half of the width left after the
+    // right padding and the 48px gap), so the scrim covers that plus its feather.
+    width: calc(
+      50% + var(--hp-myours-inset-r) / 2 - #{$uds-size-spacing-3} + #{$hp-myours-scrim-feather}
+    );
   }
   // The heading scales with the viewport and wraps ("Make it" / "yours") when the column is too narrow for one line.
   // The underlined last word carries the scribble, so it works on either line.

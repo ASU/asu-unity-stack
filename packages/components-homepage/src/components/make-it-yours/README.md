@@ -2,6 +2,13 @@
 
 The homepage "Make it yours" section: a heading, an intro, and five photo tabs (degree, format, community, experience, cost). Only one tab is open at a time (WAI-ARIA Accordion). Up to 768px the layout is stacked (white head, inset photo, dark band with the tab list). From 769px the photo fills an 865px stage and the tab column sits on the right.
 
+Side-by-side widths:
+
+| Width | Columns | Caption chip | Heading | Swash |
+|---|---|---|---|---|
+| 769-1280px | two equal columns (after the right inset), 48px gap | at most 50% of the stage minus 48px on each side | `clamp(64px, 7vw, 88px)`, centred, wraps to two lines when the column is too narrow | under "yours" only (stacked values: 4% left, 113% wide) |
+| 1281px and up | 548px content column | at most 536px | 88px, one line, left | under "it yours" (1.03em left, 3.02em wide) |
+
 ## Files
 
 | File | What it is |
@@ -47,7 +54,7 @@ Keyboard: Tab visits every trigger and the open CTA. Arrow Up/Down, Home and End
 
 ## Field limits (Stage B)
 
-The desktop stage is a fixed 865px and clips overflow, and the heading is one 88px line, so editor text has hard limits (amendment A2.1). They are `MAKE_IT_YOURS_LIMITS` in `make-it-yours-markup.js`; the helper does not enforce them, Stage B validates the fields.
+The desktop stage is a fixed 865px and clips overflow, and above 1280px the heading is one 88px line, so editor text has hard limits (amendment A2.1). They are `MAKE_IT_YOURS_LIMITS` in `make-it-yours-markup.js`; the helper does not enforce them, Stage B validates the fields.
 
 | Field | Max characters |
 |---|---|
@@ -57,7 +64,7 @@ The desktop stage is a fixed 865px and clips overflow, and the heading is one 88
 | Tab description | 250 |
 | CTA label | 40 |
 
-Measured in Chromium against this build, with every field at the limit at the same time (filler made from the real copy), at 769, 1280 and 3934 px (the content column is 548px at all three): the open tab ends 26px above the stage bottom (24px required), every title and CTA stays on one line, nothing is clipped. Longer text can overflow the stage and hide the last CTA. The `MaxLengthContent` story re-checks this at 769, 1280, 1920 and 3934. The stacked layout grows with its content and needs no extra limit.
+Measured in Chromium against this build, with every field at the limit at the same time (filler made from the real copy), with the 548px column: the open tab ends 26px above the stage bottom (24px required), every title and CTA stays on one line, nothing is clipped. From 769 to 1280 the column is half the stage (about 337px at 769, 462px at 1024). Max-length copy still fits at 1150 and 1280, but not at 769-1024: see Known limits. Longer text can overflow the stage and hide the last CTA. The `MaxLengthContent` story re-checks this at 769, 1280, 1920 and 3934. The stacked layout grows with its content and needs no extra limit.
 
 ## Images
 
@@ -106,6 +113,7 @@ It measures white text over each photo at 769, 1024, 1280, 1920, 2500 and 3934 p
 ## Known limits
 
 - R2: with JS off on a desktop screen, tabs 1, 3 and 5 show the mobile alt, which describes a different crop. A `<picture>` has one `alt`. Captions are not affected.
-- D1: the desktop heading swash is calibrated for a one-word lead-in ("it") before the underlined word ("yours"). A longer phrase gives a swash that is too short on desktop.
+- 769-1280 column fit: in the 50/50 layout the content column is narrower than 548px. At 769 and 800px the current copy overflows the 865px stage (its content reaches about 927px at 769) and max-length copy reaches about 1100px. At 900 and 1024px the one-line heading's swash overhangs the column by 1-6px, which trips the heading overflow check. The `MaxLengthContent` story fails at 769 until the limits, the stage height or the layout in that range is decided.
+- D1: above 1280px the desktop heading swash is calibrated for a one-word lead-in ("it") before the underlined word ("yours"). A longer phrase gives a swash that is too short on desktop.
 - Without JS on desktop all five panels are open, so the section can be taller than 865px.
 - LTR only: the layout uses physical directions (`left`, `right`, `padding-left`, `text-align: left`). A right-to-left page would need logical properties.

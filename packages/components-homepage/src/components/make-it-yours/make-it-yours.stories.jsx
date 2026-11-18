@@ -21,7 +21,7 @@ export default {
     docs: {
       description: {
         component:
-          'Homepage "Make it yours" section (WWWCMS-237): five photo tabs (degree, format, community, experience, cost). Stacked through 768px (white head, inset photo, dark band with the tab list) and side by side from 769px (full-bleed photo, content column on the right, 865px tall). WAI-ARIA APG Accordion: one panel is always open. Without script every panel is open and only the first photo shows. `initMakeItYours` wires it.',
+          'Homepage "Make it yours" section (WWWCMS-237): five photo tabs (degree, format, community, experience, cost). Stacked through 768px (white head, inset photo, dark band with the tab list) and side by side from 769px (full-bleed photo, content column on the right, 865px tall; 769-1280px two equal columns with a 48px gap and a centred, wrapping heading). WAI-ARIA APG Accordion: one panel is always open. Without script every panel is open and only the first photo shows. `initMakeItYours` wires it.',
       },
     },
   },
@@ -371,7 +371,12 @@ const expectDesktopStage = (canvasElement, width) => {
   near(box(p.img).width, width, 1);
   near(box(p.img).height, 865, 1);
   expect(style(p.img).objectFit).toBe("cover");
-  near(px(style(p.heading).fontSize), 88, 0);
+  // Up to 1280 the heading scales (7vw, 64px to 88px); above it is 88px.
+  near(
+    px(style(p.heading).fontSize),
+    width <= 1280 ? Math.min(88, Math.max(64, width * 0.07)) : 88,
+    1
+  );
   near(box(p.stage).bottom - box(p.caption).bottom, 48, 1);
   near(box(p.caption).left, Math.max(48, (width - FRAME) / 2 + 48), 1);
   noHorizontalOverflow();
@@ -384,13 +389,21 @@ const desktopStory = (name, width, column) => ({
   play: async ({ canvasElement }) => {
     await atWidth(width, 1000);
     const p = expectDesktopStage(canvasElement, width);
-    if (column) {
-      expect(box(p.tabs).left).toBeGreaterThanOrEqual(column[0]);
-      expect(box(p.tabs).left).toBeLessThanOrEqual(column[1]);
+    if (width <= 1280) {
+      // 769 to 1280: two equal columns with a 48px gap, after the right inset (clamp(48px, 5vw, 80px)).
+      const inset = Math.min(80, Math.max(48, width * 0.05));
+      const col = (width - inset - 48) / 2;
+      near(box(p.tabs).width, col, 1);
+      near(box(p.tabs).left, col + 48, 1);
+    } else {
+      if (column) {
+        expect(box(p.tabs).left).toBeGreaterThanOrEqual(column[0]);
+        expect(box(p.tabs).left).toBeLessThanOrEqual(column[1]);
+      }
       near(box(p.tabs).width, 548, 1);
+      // The content column sits right of centre, over the photo.
+      expect(box(p.tabs).left).toBeGreaterThan(width / 2 - 1);
     }
-    // The content column sits right of centre, over the photo.
-    expect(box(p.tabs).left).toBeGreaterThan(width / 2 - 1);
     expectScrimToRightEdge(p);
   },
 });
@@ -435,7 +448,7 @@ export const Boundary769 = {
     );
   },
 };
-const desktop1280 = desktopStory("Desktop 1280", 1280, [640, 690]);
+const desktop1280 = desktopStory("Desktop 1280", 1280);
 export const Desktop1280 = {
   ...desktop1280,
   play: async context => {
@@ -571,9 +584,19 @@ export const HeadingUnderline = {
       0.06 * px(style(p.host).fontSize),
       1
     );
-    // Desktop: it runs from 1.03em left of "yours", 3.02em wide, under "it yours".
-    await atWidth(1280, 900);
+    // 769 to 1280: the same as stacked, under "yours" only, and the heading is centred.
+    for (const width of [769, 1024, 1280]) {
+      await atWidth(width, 900);
+      p = parts(canvasElement);
+      near(box(p.scrib).left - box(p.host).left, -box(p.host).width * 0.04, 2);
+      near(box(p.scrib).width, box(p.host).width * 1.13, 2);
+      expect(style(p.heading).textAlign).toBe("center");
+      expect(style(p.heading).whiteSpace).toBe("normal");
+    }
+    // Above 1280: it runs from 1.03em left of "yours", 3.02em wide, under "it yours".
+    await atWidth(1440, 900);
     p = parts(canvasElement);
+    expect(style(p.heading).whiteSpace).toBe("nowrap");
     const em = px(style(p.host).fontSize);
     near(box(p.host).left - box(p.scrib).left, 1.03 * em, 2);
     near(box(p.scrib).width, 3.02 * em, 2);
@@ -591,21 +614,25 @@ export const HeadingUnderline = {
   },
 };
 
-// The caption chip is 280px wide at most from 769 up to 1023, and 536px at most from 1024.
+// The caption chip stays inside the left half (50% minus 48px on each side) from 769 up to 1280, and is 536px at most above that.
 export const CaptionChipWidth = {
   name: "Caption chip max width",
   globals: { viewport: viewport(1280) },
   render: () => <Harness html={makeItYoursHtml()} />,
   play: async ({ canvasElement }) => {
     for (const [width, max] of [
-      [769, 280],
-      [1023, 280],
-      [1024, 536],
-      [1280, 536],
+      [769, 769 / 2 - 96],
+      [1023, 1023 / 2 - 96],
+      [1024, 1024 / 2 - 96],
+      [1280, 1280 / 2 - 96],
+      [1281, 536],
       [1920, 536],
     ]) {
       await atWidth(width, 900);
-      near(px(style(parts(canvasElement).caption).maxWidth), max, 0);
+      const { caption } = parts(canvasElement);
+      expect(box(caption).width).toBeLessThanOrEqual(max + 1);
+      // The chip never crosses into the right half.
+      expect(box(caption).right).toBeLessThanOrEqual(width / 2);
     }
   },
 };
