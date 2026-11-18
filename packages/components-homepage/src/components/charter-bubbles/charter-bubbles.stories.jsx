@@ -1482,10 +1482,21 @@ export const EscapeAndOutsideCancelsPending = {
   ...viewport(393),
   // RED: Escape and outside click must cancel an in-flight carousel selection
   // (pendingSelectionItem is set) so that no item ends up expanded after
-  // dismissal.  Before the cancelPendingSelection() fix, the dismiss handlers
-  // returned early because openId was already null (startCorrection had
-  // already called setOpenId(null)), leaving pendingSelectionItem alive; the
-  // pending fallback then opened the destination anyway.
+  // dismissal — including after the native scrollend that fires when the
+  // programmatic smooth scroll finishes.
+  //
+  // Before the cancelPendingSelection() fix, the dismiss handlers returned
+  // early because openId was already null (startCorrection had already called
+  // setOpenId(null)), leaving pendingSelectionItem alive; the pending fallback
+  // then opened the destination anyway.
+  //
+  // After that fix, cancel cleared pendingSelectionItem but did not suppress
+  // the subsequent scrollend.  On scrollend, finishPending() fell through to
+  // commitNearestSelection() (pendingSelectionItem null, recentring false,
+  // deferredSelection false) and reopened the nearest bubble.  The
+  // explicitlyEmpty flag introduced in this cycle prevents that: it is set by
+  // notifyDismissed() and suppresses commitNearestSelection() until a new
+  // correction or gesture begins.
   render: () => <ReactPage />,
   play: async ({ canvasElement }) => {
     const root = canvasElement.querySelector("[data-charter-bubbles]");
@@ -1497,24 +1508,33 @@ export const EscapeAndOutsideCancelsPending = {
       expect(root).toHaveAttribute("data-motion-ready", "true")
     );
 
-    // --- Escape cancels in-flight selection ---
-    // Click Next: this starts correction (pendingSelectionItem set, openId→null).
-    // We immediately press Escape before scrollend so the pending fallback has
-    // not yet fired.
+    // --- Escape cancels in-flight selection; post-cancel scrollend must not
+    //     reopen the bubble ---
+    // Click Next: starts correction (pendingSelectionItem set, openId→null).
     await userEvent.click(next);
     // Dispatch scroll to simulate movement without settling.
     viewportEl.dispatchEvent(new Event("scroll"));
-    // Now dismiss with Escape while selection is still in-flight.
+    // Dismiss with Escape while selection is still in-flight.
     await userEvent.keyboard("{Escape}");
-    // The carousel must end up with no open item and no pending item.
-    // Allow time for any rogue fallback timer to fire.
+    // Allow time for any rogue fallback timer (SCROLL_IDLE_MS=150ms + margin).
     await new Promise(resolve => setTimeout(resolve, 300));
     await expect(root).not.toHaveAttribute("data-open-id");
     await expect(root.querySelectorAll(".is-open")).toHaveLength(0);
     await expect(root.querySelectorAll(".is-opening")).toHaveLength(0);
+    // Now fire the native scrollend that the browser emits when the smooth
+    // scroll finishes.  This is the core assertion for the P1 finding: the
+    // bubble must remain closed even after scrollend arrives post-cancel.
+    viewportEl.dispatchEvent(new Event("scrollend"));
+    await new Promise(resolve => setTimeout(resolve, 50));
+    await expect(root).not.toHaveAttribute("data-open-id");
+    await expect(root.querySelectorAll(".is-open")).toHaveLength(0);
+    await expect(root.querySelectorAll(".is-opening")).toHaveLength(0);
 
-    // --- Outside click cancels in-flight selection ---
-    // Re-open by clicking next so there is an active open state.
+    // --- Outside click cancels in-flight selection; post-cancel scrollend
+    //     must not reopen the bubble ---
+    // Re-open by clicking Next again — a new user correction clears the
+    // explicitlyEmpty flag and starts a new selection.
+    await userEvent.click(next);
     viewportEl.dispatchEvent(new Event("scrollend"));
     await waitFor(() => expect(root).toHaveAttribute("data-open-id"));
     // Start another correction via Next.
@@ -1525,13 +1545,20 @@ export const EscapeAndOutsideCancelsPending = {
       ".charter-bubbles-story__following div"
     );
     await userEvent.click(outsideEl);
-    // Allow time for any rogue fallback timer to fire.
+    // Allow time for any rogue fallback timer.
     await new Promise(resolve => setTimeout(resolve, 300));
     await expect(root).not.toHaveAttribute("data-open-id");
     await expect(root.querySelectorAll(".is-open")).toHaveLength(0);
     await expect(root.querySelectorAll(".is-opening")).toHaveLength(0);
+    // Fire the native scrollend — bubble must remain closed.
+    viewportEl.dispatchEvent(new Event("scrollend"));
+    await new Promise(resolve => setTimeout(resolve, 50));
+    await expect(root).not.toHaveAttribute("data-open-id");
+    await expect(root.querySelectorAll(".is-open")).toHaveLength(0);
+    await expect(root.querySelectorAll(".is-opening")).toHaveLength(0);
 
-    // Restore: settle so subsequent stories have a clean state.
+    // Restore: re-open with Next + scrollend for clean state.
+    await userEvent.click(next);
     viewportEl.dispatchEvent(new Event("scrollend"));
     await new Promise(resolve => setTimeout(resolve, 50));
   },

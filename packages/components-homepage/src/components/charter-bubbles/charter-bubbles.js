@@ -987,6 +987,9 @@ const bindBubbleTransitions = controller => {
     const close = target.closest(CLOSE_SELECTOR);
     const closeRecord = byClose.get(close);
     if (closeRecord && closeRecord.id === openId) {
+      if (controller.layout?.getMode?.() === "carousel") {
+        controller.carousel?.notifyDismissed?.();
+      }
       transitionTo(null, { returnFocus: true, allowCarouselEmpty: true });
       return;
     }
@@ -1032,6 +1035,9 @@ const bindBubbleTransitions = controller => {
     if (openId == null) return;
 
     event.stopPropagation();
+    if (controller.layout?.getMode?.() === "carousel") {
+      controller.carousel?.notifyDismissed?.();
+    }
     transitionTo(null, { returnFocus: true, allowCarouselEmpty: true });
   };
 
@@ -1066,6 +1072,9 @@ const bindBubbleTransitions = controller => {
     }
 
     if (openId == null) return;
+    if (controller.layout?.getMode?.() === "carousel") {
+      controller.carousel?.notifyDismissed?.();
+    }
     transitionTo(null, { returnFocus: true, allowCarouselEmpty: true });
   };
 
@@ -1279,6 +1288,12 @@ const bindCarouselGeometry = controller => {
   let selectionOriginId = null;
   let preferredSelectionItem = null;
   let pendingSelectionItem = null;
+  // Set by notifyDismissed() (via cancelPendingSelection or transitionTo(null))
+  // when the user explicitly closes all bubbles.  Suppresses
+  // commitNearestSelection() so a following scroll/scrollend does not reopen a
+  // bubble after a deliberate dismiss.  Cleared when a new correction or gesture
+  // begins.
+  let explicitlyEmpty = false;
   let scrollIdleTimer = null;
   let wheelSessionTimer = null;
   let wheelSessionActive = false;
@@ -1561,6 +1576,10 @@ const bindCarouselGeometry = controller => {
    * Cancel any in-flight carousel selection, clearing all associated state so
    * dismiss handlers (Escape, outside click) can interrupt a pending selection
    * before it settles into an open bubble.
+   *
+   * Also sets explicitlyEmpty so that subsequent scroll/scrollend events from
+   * the in-flight smooth scroll do not call commitNearestSelection() and reopen
+   * the item that was just dismissed.
    */
   const cancelPendingSelection = () => {
     if (!pendingSelectionItem) return;
@@ -1570,8 +1589,34 @@ const bindCarouselGeometry = controller => {
     clearIdleTimer();
     pendingScroll = false;
     recentring = false;
+    explicitlyEmpty = true;
     controller.setClass(item, "is-opening", false);
     controller.setClass(root, "is-correcting", false);
+  };
+
+  /**
+   * Notify the carousel that the user explicitly dismissed all bubbles (via
+   * Escape or outside click).  Called by transitionTo(null, allowCarouselEmpty)
+   * in bindBubbleTransitions so that any in-flight scroll settlement — whether
+   * its timer fired before or after the dismiss gesture — does not reopen the
+   * nearest bubble.
+   *
+   * Also clears any in-flight pending selection (redundant if
+   * cancelPendingSelection was already called, but safe to repeat).
+   */
+  const notifyDismissed = () => {
+    explicitlyEmpty = true;
+    // Also clear any pending selection that may still be live.
+    if (pendingSelectionItem) {
+      const item = pendingSelectionItem;
+      pendingSelectionItem = null;
+      pendingFocusItem = null;
+      clearIdleTimer();
+      pendingScroll = false;
+      recentring = false;
+      controller.setClass(item, "is-opening", false);
+      controller.setClass(root, "is-correcting", false);
+    }
   };
 
   const startCorrection = item => {
@@ -1580,6 +1625,8 @@ const bindCarouselGeometry = controller => {
     preferredSelectionItem = null;
     deferredSelection = false;
     pendingScroll = true;
+    // A new programmatic correction supersedes any prior explicit-dismiss state.
+    explicitlyEmpty = false;
     controller.setClass(root, "is-correcting", true);
     const targetId = item.getAttribute("data-charter-bubble-id");
     controller.setClass(item, "is-opening", true);
@@ -1699,6 +1746,15 @@ const bindCarouselGeometry = controller => {
 
   const finishPending = () => {
     clearIdleTimer();
+    // The user explicitly dismissed all bubbles (Escape or outside click).
+    // Suppress commitNearestSelection() so the in-flight scroll settlement does
+    // not reopen the nearest bubble.  The flag persists until a new correction
+    // or gesture clears it.
+    if (explicitlyEmpty) {
+      pendingScroll = false;
+      sync();
+      return;
+    }
     if (gestureActive) {
       pendingScroll = true;
       return;
@@ -1808,6 +1864,8 @@ const bindCarouselGeometry = controller => {
     preferredSelectionItem = null;
     gestureActive = true;
     gestureMoved = false;
+    // A new user gesture supersedes any prior explicit-dismiss state.
+    explicitlyEmpty = false;
     clearIdleTimer();
   };
 
@@ -1835,6 +1893,13 @@ const bindCarouselGeometry = controller => {
 
   const onScroll = () => {
     if (controller.layout?.getMode?.() !== "carousel") return;
+    // If the user explicitly dismissed all bubbles, the programmatic smooth
+    // scroll is still running and will fire scroll/scrollend events.  Ignore
+    // them so we do not reschedule a finishPending() that would reopen a bubble.
+    if (explicitlyEmpty) {
+      queueSync();
+      return;
+    }
     if (gestureActive) {
       gestureMoved = true;
       pendingScroll = true;
@@ -1928,6 +1993,7 @@ const bindCarouselGeometry = controller => {
         controller.setClass(pendingSelectionItem, "is-opening", false);
       }
       pendingSelectionItem = null;
+      explicitlyEmpty = false;
       preferredSelectionItem = null;
       deferredSelection = false;
       selectionOriginId = null;
@@ -1986,6 +2052,7 @@ const bindCarouselGeometry = controller => {
       controller.setClass(pendingSelectionItem, "is-opening", false);
     }
     pendingSelectionItem = null;
+    explicitlyEmpty = false;
     wheelSessionActive = false;
     controller.setClass(root, "is-correcting", false);
     if (syncFrame != null && typeof view?.cancelAnimationFrame === "function") {
@@ -2000,6 +2067,7 @@ const bindCarouselGeometry = controller => {
     move,
     selectItem,
     cancelPendingSelection,
+    notifyDismissed,
     hasPendingSelection: () => pendingSelectionItem != null,
     getState: () => ({ ...state, pendingScroll }),
   };
