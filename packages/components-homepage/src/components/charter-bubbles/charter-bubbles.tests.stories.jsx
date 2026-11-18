@@ -3,11 +3,13 @@ import {
   BreakpointPreservesOpen as BreakpointPreservesOpenStory,
   CarouselNavigation as CarouselNavigationStory,
   DesktopBoundaryContract as DesktopBoundaryContractStory,
+  EscapeAndOutside as EscapeAndOutsideStory,
   HtmlParity as HtmlParityStory,
   InvalidDataFallback as InvalidDataFallbackStory,
   LongContent as LongContentStory,
   MalformedContractsStayUnenhanced as MalformedContractsStayUnenhancedStory,
   NoScript as NoScriptStory,
+  OpenCloseFocus as OpenCloseFocusStory,
   OpenResearch as OpenResearchStory,
   ReducedMotion as ReducedMotionStory,
   StaticContract as StaticContractStory,
@@ -32,6 +34,10 @@ export const DesktopBoundaryContract = {
   ...DesktopBoundaryContractStory,
 };
 
+export const EscapeAndOutside = {
+  ...EscapeAndOutsideStory,
+};
+
 export const HtmlParity = {
   ...HtmlParityStory,
 };
@@ -50,6 +56,10 @@ export const MalformedContractsStayUnenhanced = {
 
 export const NoScript = {
   ...NoScriptStory,
+};
+
+export const OpenCloseFocus = {
+  ...OpenCloseFocusStory,
 };
 
 export const OpenResearch = {
