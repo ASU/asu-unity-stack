@@ -27,7 +27,7 @@ export default {
     docs: {
       description: {
         component:
-          "Quick-links row (WWWCMS-235): four icon anchors (Explore ASU Online → Visit an ASU campus → Request info → Apply now) plus a Spanish utility link (`Aprender más en español →`, white text, underlined; the underline disappears on hover). On the four icon anchors, hover and keyboard focus paint a 16% white glass rectangle behind the active item and swap the icon to ASU gold. ≤ 900 px: 2×2 grid; ≥ 901 px: 1×4 row. Pure HTML + SCSS; zero JS shipped.",
+          "Quick-links row (WWWCMS-235): four icon anchors (Explore ASU Online → Visit an ASU campus → Request info → Apply now) plus a Spanish utility link (`Aprender más en español →`, white text, underlined; the underline disappears on hover). On the four icon anchors, hover and keyboard focus paint a 16% white glass rectangle behind the active item and swap the icon to ASU gold. < 768 px: 2×2 grid (160 px items, 8 px gap); 768–1023 px: 1×4 row (160 px items, 8 px gap); ≥ 1024 px: 1×4 equal columns (16 px gap). Pure HTML + SCSS; zero JS shipped.",
       },
     },
   },
@@ -227,14 +227,21 @@ export const Default393 = {
     const label = canvasElement.querySelector(".hp-quick-link__label");
     expect(getComputedStyle(label).textAlign).toBe("center");
 
+    // Figma 393 frame: fixed 160px items, 8px column gap.
+    for (const item of p.items) {
+      await expect(
+        Math.abs(item.getBoundingClientRect().width - 160)
+      ).toBeLessThanOrEqual(1);
+    }
+    await expect(parseFloat(getComputedStyle(p.list).columnGap)).toBe(8);
+
     // Even 2×2: equal width/height/padding, icon + label centered per item.
     await expectEvenMobileGrid(p);
   },
 };
 
 // §8 row 3 — default at 768 px
-// **Amendment 2026-10-30:** 768 ≤ $hp-phone-max (900px) → 2×2 grid applies (Q6 lock).
-// Design-doc §6 table had a transcription error; Q6 lock (900px boundary) is authoritative.
+// Figma 768 frame: one row of four fixed 160px items, 8px gap (tablet range 768–1023px).
 export const Default768 = {
   name: "default-768",
   globals: viewport(768),
@@ -244,24 +251,29 @@ export const Default768 = {
   play: async ({ canvasElement }) => {
     const p = parts(canvasElement);
 
-    // 768 ≤ $hp-phone-max (900px): grid layout has 2 tracks — same 2×2 as 393px
-    const gridCols = getComputedStyle(p.list).gridTemplateColumns;
-    const tracks = gridCols.trim().split(/\s+/);
-    await expect(tracks.length).toBe(2);
+    // 1×4 row: four tracks, all items share the top edge
+    const tracks = getComputedStyle(p.list)
+      .gridTemplateColumns.trim()
+      .split(/\s+/);
+    await expect(tracks.length).toBe(4);
+    const tops = p.items.map(
+      item => Math.round(item.getBoundingClientRect().top * 10) / 10
+    );
+    await expect(Math.max(...tops) - Math.min(...tops)).toBeLessThanOrEqual(1);
 
-    // Item 3 in second grid row
-    const item1Box = p.items[0].getBoundingClientRect();
-    const item3Box = p.items[2].getBoundingClientRect();
-    await expect(item3Box.top).toBeGreaterThan(item1Box.bottom - 1);
+    // Fixed 160px items with an 8px gap
+    for (const item of p.items) {
+      await expect(
+        Math.abs(item.getBoundingClientRect().width - 160)
+      ).toBeLessThanOrEqual(1);
+    }
+    await expect(parseFloat(getComputedStyle(p.list).columnGap)).toBe(8);
 
-    // Label is 16px / 20px at every breakpoint, including phone.
+    // Label is 16px / 20px at every breakpoint, including tablet.
     for (const label of p.labels) {
       await expect(getComputedStyle(label).fontSize).toBe("16px");
       await expect(getComputedStyle(label).lineHeight).toBe("20px");
     }
-
-    // Even 2×2: equal width/height/padding, icon + label centered per item.
-    await expectEvenMobileGrid(p);
   },
 };
 
@@ -687,7 +699,7 @@ export const AccessibilityPlain = {
 
 // --- Additional stories for review-fix cycle 1 ---
 
-// Boundary story: icon is 24px at 901px (§8 / review finding P2-4)
+// Boundary story: icon is 24px at 901px (§8 / review finding P2-4); 901px is tablet 1×4.
 export const Default901 = {
   name: "default-901",
   globals: { viewport: { value: "hp901", isRotated: false } },
@@ -697,7 +709,7 @@ export const Default901 = {
   play: async ({ canvasElement }) => {
     const p = parts(canvasElement);
 
-    // 901px > $hp-phone-max → 1×4 row
+    // 901px is in the 768–1023px tablet range → 1×4 row (160px items, 8px gap)
     const tops = p.items.map(
       item => Math.round(item.getBoundingClientRect().top * 10) / 10
     );
