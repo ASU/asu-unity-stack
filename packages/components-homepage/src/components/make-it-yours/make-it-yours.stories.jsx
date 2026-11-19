@@ -920,9 +920,25 @@ export const AltAndCaptionPerCrop = {
     );
   },
 };
+// The real pointer stays where an earlier story left it, and a section rendered under it promotes that tab's photo
+// before the story starts. Park it on a 4px probe in the top-left corner (over the photo, never a tab title) before
+// the section renders.
+const parkPointer = async () => {
+  if (!realPointer.available) return;
+  const probe = document.createElement("div");
+  probe.style.cssText =
+    "position:fixed;top:0;left:0;z-index:2147483647;width:4px;height:4px;";
+  document.body.appendChild(probe);
+  try {
+    await realPointer.hover(probe);
+  } finally {
+    probe.remove();
+  }
+};
 export const LazyAndPromote = {
   name: "Lazy and promote",
   globals: { viewport: viewport(1280) },
+  beforeEach: parkPointer,
   render: () => <Harness html={makeItYoursHtml()} />,
   play: async ({ canvasElement }) => {
     await atWidth(1280, 900);
