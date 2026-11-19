@@ -1,3 +1,11 @@
+# [@asu/unity-bootstrap-theme-v2.4.7](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.4.6...@asu/unity-bootstrap-theme-v2.4.7) (2026-11-19)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix for small hero subtitle text ([15eb827](https://github.com/ASU/asu-unity-stack/commit/15eb82795ab17f03e564a1fb60c8516cd83ec814))
+* **unity-bootstrap-theme:** hero-subtitle update and fixed margin off by .005rem ([0f91b4b](https://github.com/ASU/asu-unity-stack/commit/0f91b4b950caa4c7f022bb6a19964d273e744cdf))
+
 # [@asu/unity-bootstrap-theme-v2.4.6](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.4.5...@asu/unity-bootstrap-theme-v2.4.6) (2026-11-18)
 
 
