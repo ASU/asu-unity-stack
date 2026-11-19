@@ -214,6 +214,7 @@
   margin: 0;
   padding: 0;
   color: $uds-color-brand-maroon;
+  font-size: $uds-size-font-medium;
   font-weight: $uds-font-weight-normal;
   text-decoration: underline;
   text-underline-offset: 0.2em;
@@ -419,14 +420,14 @@
 
   .hp-charter-bubble__detail {
     max-width: 16.731125rem;
-    font-size: 0.7235rem; // 11.58px measured mobile body text.
+    font-size: $uds-size-font-medium;
     line-height: 1.08525rem; // 17.36px measured mobile line-height.
   }
 
   .hp-charter-bubbles .hp-charter-bubble__link:link,
   .hp-charter-bubbles .hp-charter-bubble__link:visited {
     max-width: 17.7391875rem; // 283.83px measured mobile link width.
-    font-size: 0.7235rem;
+    font-size: $uds-size-font-medium;
     line-height: 1.08525rem;
   }
 
@@ -662,7 +663,7 @@
 .hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubble__detail,
 .hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubble__link:link,
 .hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubble__link:visited {
-  font-size: 0.7235rem;
+  font-size: $uds-size-font-medium;
   line-height: 1.08525rem;
 }
 

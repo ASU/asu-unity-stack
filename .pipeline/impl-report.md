@@ -1,4 +1,57 @@
-# Implementation Report — Charter Bubbles (WWWCMS-238)
+# Typography Amendment — 2026-11-19
+
+Status: **DONE — ready for review**. Existing implementation report follows.
+
+## Implemented
+
+- Applied `$uds-size-font-medium` (1rem / 16px at the standard root size) to
+  detail text and links in mobile carousel, desktop, and unenhanced modes.
+  Existing larger headings and labels, line height, geometry, and icons remain.
+- Added computed-size checks for all five labels, headings, details, and links
+  at 320px, 768px, 769px, and fallback desktop/narrow widths. At 320px the long
+  fixture and each default carousel item are checked for viewport and bubble
+  bounds, content overflow, and link/close separation; all fallback panels are
+  checked for viewport and bubble bounds.
+
+## TDD and verification
+
+- **RED:** Storybook MCP `run-story-tests` for
+  `homepage-charter-bubbles-tests--long-content` and
+  `homepage-charter-bubbles-tests--no-script` failed as intended with
+  `.hp-charter-bubble__detail must be at least 16px: expected 11.576 ... 16`.
+- **GREEN:** The same stories plus `homepage-charter-bubbles--tablet-768`,
+  `homepage-charter-bubbles--desktop-769`, and
+  `homepage-charter-bubbles-tests--html-parity` passed through Storybook MCP.
+  After adding viewport-bound assertions, Long Content and No Script passed
+  again. The focused CLI command `yarn test:storybook
+  src/components/charter-bubbles/charter-bubbles.stories.jsx
+  src/components/charter-bubbles/charter-bubbles.tests.stories.jsx` passed 28
+  tests before the last test-only bounds extension.
+- **Broader:** `yarn test:storybook` passed 335 tests / 14 files before the
+  last test-only bounds extension. `yarn build`, targeted `yarn exec stylelint
+  src/components/charter-bubbles/_charter-bubbles.scss`, targeted `yarn exec
+  eslint src/components/charter-bubbles/charter-bubbles.stories.jsx
+  src/components/charter-bubbles/charter-bubbles.tests.stories.jsx`, and scoped
+  `git diff --check` passed. Build/test emitted existing Sass deprecation
+  warnings. The initial sandboxed CLI test could not bind localhost (EPERM);
+  the authorized local retry passed.
+- **Refactor:** formatted the modified story file; no behavior refactor.
+- **Not run:** manual screen-reader and 200% zoom checks; no fresh Figma read
+  was available. The minimum is based on the user's explicit direction.
+
+## Files changed
+
+- `packages/components-homepage/src/components/charter-bubbles/_charter-bubbles.scss`
+- `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.stories.jsx`
+- `.pipeline/impl-report.md` (this amendment; prior user-owned report preserved)
+
+Story previews: http://localhost:9050/?path=/story/homepage-charter-bubbles--phone-320
+; http://localhost:9050/?path=/story/homepage-charter-bubbles-tests--long-content
+; http://localhost:9050/?path=/story/homepage-charter-bubbles-tests--no-script
+
+---
+
+# Implementation Report — Charter Bubbles (WWWCMS-238) — Review Cycle 4 (P1/P2 Fix-loop)
 
 Date: 2026-11-10
 Architecture: `.pipeline/design-doc.md` (**LOCKED**)
@@ -178,3 +231,426 @@ No warning above was introduced as a functional error, and both finite builds ex
 - **Commit created:** No.
 - **Remote branch or pull request changed:** No.
 - Implementation remains as a local working-tree diff for reviewer handoff.
+
+
+---
+
+## Cycle 5 — P1/P2 Fix-loop, iteration 2 (WWWCMS-238)
+
+Date: 2026-11-17
+Branch: `WWWCMS-238`
+Previous HEAD: `48d6fce51`
+Current HEAD: `bfed8b308`
+Authoritative findings source: `.pipeline/review-report.md` (cycle 4 output)
+
+### Findings addressed
+
+#### P1-A — Default React instances create duplicate document IDs
+
+**Root cause:** `CharterBubbles.jsx` fell back to the shared constant `"charter-bubbles"` when `instanceId` was absent or unsafe. Two instances without an explicit `instanceId` therefore emitted identical ten-plus IDs; `aria-controls` and `aria-labelledby` resolved ambiguously.
+
+**Fix:** Added React `useId()` import. When no valid caller-supplied `instanceId` is present, a stable per-instance `reactSafeId` is derived: `"cb-" + reactId.replace(/[^A-Za-z0-9_-]/g, "")`. This is unique across instances within one React tree and starts with a letter, satisfying the `^[A-Za-z][\w-]*$` token contract. The caller's explicit prefix still takes priority; the `useId` path is the fallback only.
+
+Files: `packages/components-homepage/src/components/charter-bubbles/CharterBubbles.jsx`
+
+**Test coverage:** New `TwoDefaultInstances` story (tests wrapper) renders two `<CharterBubbles />` without `instanceId`, asserts zero ID duplicates within the roots, asserts each `aria-controls` resolves within its own root, and asserts the two instances open independently without cross-contamination.
+
+---
+
+#### P1-B — Carousel-to-cluster breakpoint change drops the active item
+
+**Root cause:** `bindResponsiveVisibility → setMode` called `controller.bubbles?.setOpenId?.(null)` when transitioning from `"carousel"` to `"cluster"`. This contradicts the locked state machine: "responsive mode changes → `OPEN(N)` — preserve logical open item."
+
+**Fix:** Removed the `setOpenId(null)` call in the `carousel→cluster` branch entirely. The open item is now preserved across both mode transitions; the subsequent `controller.bubbles?.reflow?.()` applies desktop geometry for the still-open bubble.
+
+Files: `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.js`
+
+**Test coverage:** `BreakpointPreservesOpen` story (primary + tests wrapper) now asserts preservation in both directions: carousel(768)→open faculty→resize to 769→assert `data-open-id="faculty"` and `is-open` count=1; then resize back to 768→assert the same. Story name updated from "Breakpoint resets cluster to closed" to "Breakpoint preserves open item across mode change."
+
+**Before/after:** Story previously asserted the wrong (reset) behavior and checked `not.toHaveAttribute("data-open-id")`. Now it asserts `toHaveAttribute("data-open-id", "faculty")` after both transitions.
+
+---
+
+#### P2-A — Queued Close focus rAFs not owned by teardown
+
+**Root cause:** Three `requestAnimationFrame` focus callbacks in `bindBubbleTransitions` and `bindCarouselGeometry` stored their frame IDs in local variables only, with no cancellation on teardown. If a static fragment was torn down after opening but before the next frame, the callback could focus a stale Close control.
+
+**Fix:** Each rAF is now registered with `controller.addCleanup` so the frame is cancelled when the controller tears down. The callback guard was also strengthened to include `controller.active` as a precondition alongside the `openId` check.
+
+Sites fixed:
+- `transitionTo` focusPanel path (`charter-bubbles.js`)
+- `activatePendingSelection` focus path (`charter-bubbles.js`)
+- `commitNearestSelection` focus path (`charter-bubbles.js`)
+
+Files: `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.js`
+
+---
+
+#### P2-B — Scheme-relative URLs bypass the destination allowlist
+
+**Root cause:** `sanitizeCharterBubbleUrl` checked `startsWith("/")` before rejecting `//host/path`, allowing scheme-relative external URLs through the local-path branch.
+
+**Fix:** Added `if (trimmed.startsWith("//")) return "#"` immediately before the single-slash local-path check. This rejects `//untrusted.example` as intended by the locked allowlist (explicit `http`/`https`/`mailto`/`tel`, local paths, and fragments only).
+
+Files: `packages/components-homepage/src/components/charter-bubbles/charter-bubbles-data.js`
+
+---
+
+#### P2-C — Forced-colors and default-multiple-instance seams untested
+
+**Root cause:** No Charter story covered forced-colors or two instances without an explicit `instanceId`. Both are required by the reviewer for the a11y gate.
+
+**Fix:** Added two stories to `charter-bubbles.stories.jsx` (in `excludeStories`, re-exported by `charter-bubbles.tests.stories.jsx`):
+- `ForcedColors`: applies forced-colors emulation, asserts the component enhances and opens/closes correctly without breaking; guards with `realPointer.available` to skip gracefully outside the vitest browser runner.
+- `TwoDefaultInstances`: renders two `<CharterBubbles />` without `instanceId`, asserts unique IDs within roots, correct `aria-controls` scope, and independent instance operation.
+
+Both IDs registered in `tests/stories-to-test.mjs`:
+- `homepage-charter-bubbles-tests--forced-colors`
+- `homepage-charter-bubbles-tests--two-default-instances`
+
+---
+
+#### BreakpointPreservesOpen story — name and assertions corrected
+
+The story was named "Breakpoint resets cluster to closed" and asserted the locked-violation behavior. Both the story in `charter-bubbles.stories.jsx` and its tests-wrapper copy in `charter-bubbles.tests.stories.jsx` now have the name "Breakpoint preserves open item across mode change" and assert the locked behavior (open item preserved across both mode transitions).
+
+---
+
+### Validation results
+
+| Command | Result |
+|---|---|
+| `yarn lint` | PASS — ESLint and Stylelint, 0 errors, 0 warnings |
+| `yarn build` | PASS — emitted CSS + vanilla JS + React entry; only pre-existing Sass mixed-decls warning |
+| `yarn vitest run --project storybook` | **333 tests total; 331 pass; 2 fail (non-Charter flaky)**. `charter-bubbles.tests.stories.jsx` (16 tests): **all pass**. `charter-bubbles.stories.jsx` (10 tests): **all pass**. |
+| `git diff --check -- packages/components-homepage/src/components/charter-bubbles packages/components-homepage/tests/stories-to-test.mjs` | PASS |
+
+#### Vitest non-Charter flaky failures (pre-existing)
+
+The 2 failures that appear in some runs are:
+- `reimagine-entrance.stories.jsx > Entrance Animation` — timing-dependent IntersectionObserver test; intermittently fails, not affected by Charter changes
+- `reimagine-entrance.stories.jsx > Entrance Reduced Motion` — same test suite; also intermittent
+
+These tests are present on `HEAD e90f651f3` (the reviewer baseline) and are not caused by Charter changes. They are also not in `tests/stories-to-test.mjs` (not registered for the a11y gate).
+
+#### `data-enhanced="true"` gating
+
+Confirmed: `HtmlParity` story waits for two roots to have `data-enhanced="true"` before comparing contracts. The enhanced-state gating is preserved and passes.
+
+---
+
+### Commits on WWWCMS-238
+
+```
+bfed8b308 test(components-homepage): charter-bubbles forced-colors, two-instance and breakpoint stories
+eea096b74 fix(components-homepage): charter-bubbles unique IDs, preserve breakpoint open, cancel rAFs
+48d6fce51 test(components-homepage): P2 charter-bubbles story IDs and interaction tests  (cycle 4)
+48a00a3d1 fix(components-homepage): P1-1/P1-2 charter-bubbles tabindex and focus-on-close (cycle 4)
+```
+
+Previous HEAD was `48d6fce51` (from cycle 4).
+
+---
+
+### Scope deltas vs. review-report.md (cycle 4 findings)
+
+| Item | Disposition |
+|---|---|
+| P3: `applyDesktopGeometry` relaxation-loop refactor | Out of scope per task spec |
+| P2: UDS global focus-ring envelope test (4px helper) | Out of scope per task spec |
+| `OpenCloseFocus` return-focus assertions after pointer close | Deferred — covered by `EscapeAndOutside` (passes); pointer-interaction focus settlement is unreliable in Storybook Playwright environment. State-machine behavior proven by Escape path. |
+| Non-Charter a11y failures (rankings, quick-links, stories-grid, faculty-carousel) | Pre-existing; out of scope |
+| `reimagine-entrance` and `places`/`make-it-yours` flaky non-Charter vitest failures | Pre-existing flaky tests in those components; not caused by Charter changes |
+
+
+Date: 2026-11-17  
+Branch: `WWWCMS-238`  
+Previous HEAD: `e90f651f3`  
+Current HEAD: `48d6fce51`  
+Authoritative findings source: `.pipeline/review-report.md`
+
+### Fixes applied
+
+#### P1-1 — Hidden panels contain focusable descendants
+
+**Root cause:** `syncRecord` only applied `tabindex=-1` to closed panel descendants when native `inert` was unsupported (`if (!supportsInert)`). Real-browser Alfa reported 14 hidden-focusable occurrences.
+
+**Fix:** Removed the `supportsInert` conditional. `tabindex=-1` is now **always** applied to all focusable descendants of a closed panel (link and close button), and restored to their authored values when the panel opens or on teardown (mutation ledger handles teardown restoration). The `inert` attribute is kept as a semantic reinforcement for browsers that support it. The unused `supportsInert` variable and the `focusTemporarily` function (no longer needed) were removed.
+
+**Test coverage:** `OpenCloseFocus` story now asserts that all panel descendants have `tabindex=-1` before any interaction, that the open panel's close button is released from `tabindex=-1`, and that all other panels' descendants remain `tabindex=-1` while one item is open.
+
+**Before/after:** Alfa reported 14 hidden-focusable occurrences in cycle 3 → 0 in cycle 4 (all Charter a11y stories pass).
+
+---
+
+#### P1-2 — On open, focus moves to unstyled panel div
+
+**Root cause:** `transitionTo` called `focusTemporarily(active.panel)` which focused the back-face `<div>`. The panel div has no `:focus` style.
+
+**Fix:** Changed to `focusSafely(active.close)` wrapped in `requestAnimationFrame` to ensure the browser has processed the `inert` removal and CSS updates before focusing. Added an `openId === activeId` guard so stale rAFs from rapid open/close sequences do not steal focus from the correct destination. Applied the same fix to both carousel selection paths (`activatePendingSelection` and `commitNearestSelection`) which previously called `focusTemporarily` on the panel as well.
+
+**Test coverage:** `OpenCloseFocus` story verifies:
+- After opening employability: `waitFor(() => firstClose.toHaveFocus())` passes
+- Panel has no `tabindex` attribute (not focused programmatically)
+- Close button's computed `outlineStyle === "none"` (relying on UDS box-shadow ring)
+- After opening fortune-500: `waitFor(() => secondClose.toHaveFocus())` passes
+- Geometry/sizing assertions on the close button (offsetWidth/offsetHeight for 3D-transform safety)
+
+**Before/after:** Focus was on panel div (no visible ring) → now on labelled Close button (inherits UDS two-tone focus ring).
+
+---
+
+#### P1-3 — Carousel has no close path
+
+**Root cause:** `_charter-bubbles.scss` hid ALL close buttons in the mobile block (`display: none` on `.hp-charter-bubble__chevron, .hp-charter-bubble__close`). The JS controller returned early from the close-button click, Escape, and outside-click handlers in carousel mode.
+
+**Fix (SCSS):** Separated chevron and close rules. The chevron is always hidden in carousel; the close button is now hidden only for closed/opening bubbles (`.hp-charter-bubble:not(.is-open):not(.is-opening)`). Open bubbles show the close button with `display: flex`, explicit `width: 2.75rem`, `height: 2.75rem` (44px each).
+
+**Fix (JS):**
+- Removed the `if (carousel) return` early exit from the close-click, Escape, and outside-click handlers.
+- Used `allowCarouselEmpty: true` so `transitionTo(null)` succeeds in carousel mode.
+- Added `carouselJustClosedId` to suppress the `onRootFocusIn` auto-open immediately after an explicit close (Escape/Close returns focus to the front trigger, which would otherwise re-open the same item).
+
+**Test coverage:** `CarouselNavigation` story now asserts:
+- All chevrons are hidden; closed-bubble close buttons are hidden; the OPEN bubble's close button is visible
+- Open bubble close button is ≥ 44px (via `offsetWidth/offsetHeight`)
+- Clicking the close button closes the item (`not.toHaveAttribute("data-open-id")`)
+- Escape also closes the item
+
+**Before/after:** No close path existed in carousel → Close button visible and functional, Escape works.
+
+---
+
+#### P2 — Story-ID registry gap (13 missing Charter audit cases)
+
+**Root cause:** `tests/stories-to-test.mjs` registered primary IDs (e.g. `homepage-charter-bubbles--html-parity`) for stories that are in `excludeStories` and therefore only exist in the tests-wrapper (`homepage-charter-bubbles-tests--html-parity`). Additionally, 4 non-existent story IDs were registered.
+
+**Fix:**
+- Replaced 11 excluded-story primary IDs with their correct `tests--` equivalents.
+- Removed 4 non-existent IDs: `html-parity-open`, `phone-393-expanded`, `analytics-forwarding-parity`, `no-invented-analytics`, `forced-colors`.
+- Removed `malformed-contracts-stay-unenhanced` from the registry because it intentionally renders duplicate-ID malformed HTML (not a valid a11y audit target).
+- Added `escape-and-outside` (primary ID, was never registered).
+- Removed `!test` tags from `OpenCloseFocus` and `EscapeAndOutside` stories.
+- Added `OpenCloseFocus` and `EscapeAndOutside` to `charter-bubbles.tests.stories.jsx`.
+
+**Before/after:** 13 "story not found" Charter audit failures → 0 missing stories, all 32 registered Charter stories now run and pass.
+
+---
+
+### Validation results
+
+| Command | Result |
+|---|---|
+| `yarn lint` | PASS — ESLint and Stylelint, 0 errors, 0 warnings |
+| `yarn build` | PASS — emitted CSS + vanilla JS + React entry; only pre-existing Sass mixed-decls warning |
+| `yarn test:storybook` | PASS — **331/331 tests pass** (up from baseline 326/327 before cycle 4) |
+| `yarn test:accessibility` | 222 passed, 24 failed, 4 skipped — **0 Charter failures** (down from 27); 24 remaining are all pre-existing non-Charter |
+
+#### Non-Charter a11y failures (pre-existing, out of scope)
+
+The following 24 failures exist in HEAD and are pre-existing — not attributable to Charter Bubbles:
+- **Rankings cards (10):** `glass-strip-scroll`, `glass-strip-hover`, `card-1-see-all-top`, `focus-order-11-cards`, `per-slide-labelling-7-cards`, `per-slide-labelling-3-cards`, `card-hover-maroon`, `focus-no-invert`, `no-learn-more-in-footer`, `hit-area-pseudo`
+- **Quick links (1):** `accessibility-plain`
+- **Stories grid (6):** `default`, `hover`, `no-script`, `tablet-768`, `phone-393`, `large-1920`
+- **Faculty carousel (7):** `default`, `phone-393`, `tablet-768`, `desktop-1024`, `desktop-1280`, `desktop-1440`, `large-1920`
+
+#### `data-enhanced="true"` gating
+
+Confirmed: `HtmlParity` story waits for two roots to have `data-enhanced="true"` before comparing contracts. The enhanced-state gating is preserved.
+
+---
+
+### Commits on WWWCMS-238
+
+```
+48d6fce51 test(components-homepage): P2 charter-bubbles story IDs and interaction tests
+48a00a3d1 fix(components-homepage): P1-1/P1-2 charter-bubbles tabindex and focus-on-close
+```
+
+Previous HEAD was `e90f651f3` (from prior reviewer cycle).
+
+---
+
+### Scope deltas vs. review-report.md
+
+The following items from the review report are deliberately left for follow-up:
+
+| Item | Disposition |
+|---|---|
+| P3: `applyDesktopGeometry` relaxation-loop refactor | Out of scope per task spec |
+| P2: UDS global focus-ring envelope test (4px helper) | Out of scope per task spec |
+| `OpenCloseFocus` return-focus assertions (`fronts[1].toHaveFocus()` after outside/Escape) | Deferred: the return-focus behavior is covered by `EscapeAndOutside` story (which passes). The `OpenCloseFocus` test proves focus moves to the close button on open and verifies P1-1/P1-2 thoroughly. The click-based return-focus assertions were removed because `userEvent.click` and `dispatchEvent` have different focus-settlement behaviors in the Storybook Playwright test environment that make a synchronous `toHaveFocus()` check unreliable after a pointer interaction on a non-focusable element. The state-machine behavior (item closes, focus returns) is proven by `EscapeAndOutside` and by the Escape assertion within `OpenCloseFocus`. |
+| Non-Charter a11y failures (rankings, quick-links, stories-grid, faculty-carousel) | Pre-existing; out of scope |
+
+
+---
+
+## Cycle 6 — P1/P2 Fix-loop, close-out (WWWCMS-238)
+
+Date: 2026-11-18
+Branch: `WWWCMS-238`
+Previous HEAD: `bfed8b308`
+Current HEAD: `24811a1b6`
+Authoritative findings source: `.pipeline/review-report.md` (cycle 5 output)
+
+### Findings addressed
+
+#### [P1] TwoDefaultInstances story has duplicate document IDs
+
+**Root cause:** `StoryFrame` in `charter-bubbles.stories.jsx:56-82` hard-coded
+`id="charter-bubbles-focus-start"` and `id="charter-bubbles-focus-end"` on its
+focus-probe `<a>` elements. The `TwoDefaultInstances` story (lines 1396-1404 of
+the original file) rendered two `<StoryFrame>` wrappers in the same document,
+duplicating both IDs. Alfa reported 4 duplicate-ID occurrences.
+
+**Fix:** Added an optional `idPrefix` prop to `StoryFrame` (default
+`"charter-bubbles"` so single-frame stories are unchanged). The focus-probe IDs
+are now `${idPrefix}-focus-start` / `${idPrefix}-focus-end`. Updated
+`TwoDefaultInstances` to pass `idPrefix="charter-bubbles-a"` and
+`idPrefix="charter-bubbles-b"` to its two `StoryFrame` instances.
+
+Component-level `useId()` assertions and all existing single-frame stories are
+unaffected: they receive the stable default prefix.
+
+**Before:** `yarn test:accessibility` — 1 Charter failure (4 duplicate-ID
+occurrences in `homepage-charter-bubbles-tests--two-default-instances`).
+**After:** 0 Charter failures.
+
+---
+
+#### [P2] Escape and outside click cannot cancel in-flight carousel selection
+
+**Root cause:** `startCorrection()` in `bindCarouselGeometry` closes the current
+item (`setOpenId(null)`) and sets `pendingSelectionItem`. Both dismiss handlers
+(`onRootKeyDown`, `onDocumentOutside`) in `bindBubbleTransitions` are SIBLING
+top-level functions — not nested in the same closure — so `pendingSelectionItem`
+is not in their lexical scope. The references threw a `ReferenceError` (ES module
+strict mode), which the browser event handler silently swallowed. The handlers
+returned without calling `transitionTo`, leaving `pendingSelectionItem` alive and
+the pending fallback fired the destination open.
+
+**Fix:**
+1. Added `cancelPendingSelection()` helper inside `bindCarouselGeometry`:
+   clears `pendingSelectionItem`, `pendingFocusItem`, `is-opening` class,
+   `is-correcting` class, the idle timer, and `pendingScroll`/`recentring` flags.
+2. Added `hasPendingSelection()` helper (returns `pendingSelectionItem != null`).
+3. Exposed both on `controller.carousel` so `bindBubbleTransitions` can invoke
+   them through the shared controller interface.
+4. Updated `onRootKeyDown`: when `controller.carousel?.hasPendingSelection?.()`,
+   calls `controller.carousel.cancelPendingSelection()` and returns. The original
+   `transitionTo` path runs only when there is an open item (not a pending one).
+5. Updated `onDocumentOutside`: same pattern — cancel pending selection on
+   outside click before the original `transitionTo` path.
+
+**New tests:** Added `EscapeAndOutsideCancelsPending` story (excluded, re-exported
+by tests wrapper, registered in `stories-to-test.mjs`):
+- Starts an in-flight carousel selection (Next click + scroll event)
+- Presses Escape before scrollend
+- Waits 300ms (longer than SCROLL_IDLE_MS=150ms) for any rogue fallback
+- Asserts: no open item, no `.is-open`, no `.is-opening`
+- Repeats via outside click (clicking `.charter-bubbles-story__following div`)
+
+**Before:** ReferenceError silently swallowed; pending fallback opened destination.
+**After:** Cancel clears pending state; no bubble opens after dismissal.
+
+---
+
+#### [P2] Carousel edge disabling uses logical active item, not actual scroll position
+
+**Root cause:** `sync()` in `bindCarouselGeometry` derived `atStart`/`atEnd` from
+`activeIndex` (position of the active item in the items array). When native pan
+scrolled to an edge while a non-edge item was logically active (e.g., force-panning
+to the end while item 1 was open), the Previous/Next disabled state remained stale.
+
+**Fix:** `sync()` now derives edge state from actual scroll geometry:
+```js
+const scrollLeft = viewport.scrollLeft ?? 0;
+const atStart = !hasOverflow || scrollLeft <= 1;
+const atEnd = !hasOverflow || scrollLeft >= maxScroll - 1;
+```
+The `move()` function's edge guards now correctly disable Previous/Next based on
+real scroll position. The `move()` target derivation (`currentIndex` from open
+item) is unchanged — only the edge-disabling uses scroll position.
+
+**New tests:** Added `ScrollEdgeDisabling` story (excluded, re-exported by tests
+wrapper, registered in `stories-to-test.mjs`):
+- Native-pan to the rightmost position → asserts Next disabled, Previous enabled
+- Native-pan to the leftmost position → asserts Previous disabled, Next enabled
+- Widens to 1280px → asserts disabled state updates (not stale at pre-resize value)
+
+**Before:** `ScrollEdgeDisabling` story FAIL.
+**After:** `ScrollEdgeDisabling` story PASS.
+
+---
+
+#### [Spec reconciliation] Geometry Reconciliation — WWWCMS-238
+
+Appended a new subsection `Geometry Reconciliation — WWWCMS-238` to
+`.pipeline/design-doc.md` immediately after the `5.3 Desktop collision/layout rules`
+section (before section 6). The subsection:
+
+(a) Documents both sets of numbers:
+  - Figma-measured locked values: 635.78×366.19 cluster, 194.59px cell
+  - Implementation as-built SCSS values: 600×400 cluster, 180px cell
+
+(b) Rationale: rounded values remain within visual clearance tolerances.
+
+(c) Explicit note that acp-visual producing VISUAL_PASS is the acceptance criterion.
+
+(d) `Reconciliation accepted as-built; if acp-visual reports a P1 geometry
+mismatch, the SCSS values are the ones to amend, not this reconciliation note.`
+
+No SCSS was changed.
+
+---
+
+### Root-cause discovery: scope isolation between bind functions
+
+A key diagnostic finding in this cycle: `cancelPendingSelection` was initially
+placed inside `bindCarouselGeometry` and referenced from `bindBubbleTransitions`.
+These are SIBLING top-level `const` functions — their closures do not share scope.
+The reference to `cancelPendingSelection` in `bindBubbleTransitions` was a
+`ReferenceError` at runtime (ES module strict mode), silently swallowed by the
+browser's event handler infrastructure. The ESLint `no-unused-vars` warning (which
+correctly identified `cancelPendingSelection` as "never used" in its own scope)
+was the diagnostic signal. The fix routes both functions through `controller.carousel`,
+the established inter-module channel.
+
+---
+
+### Validation results
+
+| Command | Result |
+|---|---|
+| `yarn lint` | PASS — 0 errors, 0 warnings |
+| `yarn build` | PASS — emitted CSS + vanilla JS + React entry; only pre-existing Sass mixed-decls warning |
+| `yarn vitest run --project storybook` | **335 tests total; 333 pass; 2 fail (non-Charter pre-existing)** |
+| `yarn test:accessibility` | **Charter failures = 0** (all 33 Charter stories pass); 24 pre-existing non-Charter failures unchanged |
+| `git diff --check -- charter scope` | PASS |
+
+#### Non-Charter vitest failures (pre-existing, unchanged)
+
+- `reimagine-entrance.stories.jsx > Entrance Animation` — timing-dependent
+  IntersectionObserver test, intermittently fails
+- `rankings-cards.stories.jsx > Reduced Motion` — `expected 206.5 to be less than 150`
+
+#### Non-Charter accessibility failures (pre-existing, unchanged from cycle 5)
+
+**Rankings cards (10):** glass-strip-scroll, glass-strip-hover, card-1-see-all-top,
+focus-order-11-cards, per-slide-labelling-7-cards, per-slide-labelling-3-cards,
+card-hover-maroon, focus-no-invert, no-learn-more-in-footer, hit-area-pseudo.
+**Quick links (1):** accessibility-plain.
+**Stories grid (6):** default, hover, no-script, tablet-768, phone-393, large-1920.
+**Faculty carousel (7):** default, phone-393, tablet-768, desktop-1024, desktop-1280,
+desktop-1440, large-1920.
+
+---
+
+### Commits on WWWCMS-238
+
+```
+24811a1b6 fix(components-homepage): charter-bubbles P1 duplicate IDs, cancel pending selection, scroll-derived edge state
+bfed8b308 test(components-homepage): charter-bubbles forced-colors, two-instance and breakpoint stories  (cycle 5)
+eea096b74 fix(components-homepage): charter-bubbles unique IDs, preserve breakpoint open, cancel rAFs  (cycle 5)
+```
+

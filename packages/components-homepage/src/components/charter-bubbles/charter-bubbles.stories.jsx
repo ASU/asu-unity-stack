@@ -55,6 +55,25 @@ const viewport = width => ({
   },
 });
 
+const assertBubbleTextSizes = async root => {
+  const selectors = [
+    ".hp-charter-bubble__front-label",
+    ".hp-charter-bubble__heading",
+    ".hp-charter-bubble__detail",
+    ".hp-charter-bubble__link",
+  ];
+  for (const selector of selectors) {
+    const elements = root.querySelectorAll(selector);
+    await expect(elements).toHaveLength(5);
+    for (const element of elements) {
+      await expect(
+        parseFloat(getComputedStyle(element).fontSize),
+        `${selector} must be at least 16px`
+      ).toBeGreaterThanOrEqual(16);
+    }
+  }
+};
+
 const StoryFrame = ({ children, idPrefix = "charter-bubbles" }) => (
   <div className="charter-bubbles-story">
     <a
@@ -302,9 +321,39 @@ export const NoScript = {
       await expect(getComputedStyle(link).display).not.toBe("none");
     }
     await expectCenteredRows(1920, [5]);
+    await assertBubbleTextSizes(root);
     await expectCenteredRows(1200, [3, 2], 307.47);
     await expectCenteredRows(800, [2, 1, 2], 307.47);
     await expectCenteredRows(600, [1, 1, 1, 1, 1]);
+    await resizeViewport(320);
+    await assertBubbleTextSizes(root);
+    for (const panel of root.querySelectorAll("[data-charter-bubble-panel]")) {
+      const panelRect = panel.getBoundingClientRect();
+      for (const content of panel.querySelectorAll(
+        ".hp-charter-bubble__heading, .hp-charter-bubble__detail, .hp-charter-bubble__link"
+      )) {
+        const rect = content.getBoundingClientRect();
+        await expect(
+          rect.left,
+          `${content.className} outside viewport`
+        ).toBeGreaterThanOrEqual(0);
+        await expect(
+          rect.right,
+          `${content.className} outside viewport`
+        ).toBeLessThanOrEqual(document.documentElement.clientWidth);
+        await expect(
+          rect.top,
+          `${content.className} above bubble`
+        ).toBeGreaterThanOrEqual(panelRect.top - 1);
+        await expect(
+          rect.bottom,
+          `${content.className} below bubble`
+        ).toBeLessThanOrEqual(panelRect.bottom + 1);
+      }
+      await expect(panel.scrollHeight).toBeLessThanOrEqual(
+        panel.clientHeight + 1
+      );
+    }
   },
 };
 
@@ -326,6 +375,7 @@ export const Tablet768 = {
     await waitFor(() =>
       expect(root).toHaveAttribute("data-layout", "carousel")
     );
+    await assertBubbleTextSizes(root);
     for (const item of root.querySelectorAll("[data-charter-bubble-item]")) {
       const styles = getComputedStyle(item);
       // At carousel layout, items are in flexbox with position: relative
@@ -391,6 +441,7 @@ export const Desktop769 = {
       expect(root).toHaveClass("is-enhanced", "is-cluster");
       expect(getComputedStyle(firstFront).display).not.toBe("none");
     });
+    await assertBubbleTextSizes(root);
   },
 };
 
@@ -704,6 +755,36 @@ const assertExpandedContentFits = async canvasElement => {
   );
   const backRect = back.getBoundingClientRect();
   const isCarousel = root.getAttribute("data-layout") === "carousel";
+
+  await assertBubbleTextSizes(root);
+
+  for (const content of back.querySelectorAll(
+    ".hp-charter-bubble__heading, .hp-charter-bubble__detail, .hp-charter-bubble__link"
+  )) {
+    const rect = content.getBoundingClientRect();
+    await expect(
+      rect.top,
+      `${content.className} above bubble`
+    ).toBeGreaterThanOrEqual(backRect.top - 1);
+    await expect(
+      rect.bottom,
+      `${content.className} below bubble`
+    ).toBeLessThanOrEqual(backRect.bottom + 1);
+    if (isCarousel) {
+      await expect(
+        rect.left,
+        `${content.className} outside viewport`
+      ).toBeGreaterThanOrEqual(0);
+      await expect(
+        rect.right,
+        `${content.className} outside viewport`
+      ).toBeLessThanOrEqual(document.documentElement.clientWidth);
+    }
+  }
+  await expect(
+    link.getBoundingClientRect().bottom,
+    "Link must not overlap close control"
+  ).toBeLessThanOrEqual(close.getBoundingClientRect().top + 1);
 
   // In both layouts: check the link fits inside the back element
   for (const control of [link]) {
@@ -1263,6 +1344,19 @@ export const LongContent = {
       ).toHaveAttribute("data-enhanced", "true")
     );
     await assertExpandedContentFits(canvasElement);
+    const root = canvasElement.querySelector("[data-charter-bubbles]");
+    const items = Array.from(
+      root.querySelectorAll("[data-charter-bubble-item]")
+    );
+    const next = root.querySelector("[data-charter-bubble-next]");
+    for (const item of items.slice(1)) {
+      await userEvent.click(next);
+      await waitFor(() => {
+        expect(item).toHaveClass("is-open");
+        expect(item).not.toHaveClass("is-opening");
+      });
+      await waitFor(() => assertExpandedContentFits(canvasElement));
+    }
   },
 };
 
