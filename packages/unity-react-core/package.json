@@ -1,6 +1,6 @@
 {
   "name": "@asu/unity-react-core",
-  "version": "2.5.1",
+  "version": "2.5.3",
   "main": "./dist/unityReactCore.umd.js",
   "module": "./dist/unityReactCore.es.js",
   "browser": "./dist/unityReactCore.umd.js",
@@ -30,7 +30,12 @@
   "scripts": {
     "create": "plop",
     "dev": "yarn storybook & yarn testui",
-    "lint": "eslint --fix 'src/**/*.{js,jsx}' ",
+    "lint": "node ../../scripts/lint-changed.mjs --extensions js,jsx --include src -- eslint --fix",
+    "lint:check": "yarn js-lint:check",
+    "lint:fix": "yarn lint",
+    "lint:forcefix": "yarn js-lint:forcefix",
+    "js-lint:forcefix": "eslint --fix 'src/**/*.{js,jsx}'",
+    "js-lint:check": "eslint 'src/**/*.{js,jsx}'",
     "test": "vitest --watch=false",
     "test:accessibility": "playwright test",
     "testui": "vitest --ui",

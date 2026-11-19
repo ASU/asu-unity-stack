@@ -14,6 +14,7 @@ import {
   resizeViewport,
   walkRules,
 } from "./reimagine-helpers.jsx";
+import { innerHtml } from "../inner-html.js";
 
 export default {
   title: "Homepage/Reimagine",
@@ -59,7 +60,7 @@ const Page = ({ headingId, pinned = false }) => {
   return (
     <div
       ref={ref}
-      dangerouslySetInnerHTML={{ __html: reimagineHtml({ headingId }) }}
+      dangerouslySetInnerHTML={innerHtml(reimagineHtml({ headingId }))}
     />
   );
 };

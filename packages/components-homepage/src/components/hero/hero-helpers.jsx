@@ -6,6 +6,7 @@ import {
   controlHtml,
   stubPlayback,
 } from "../video-control/video-control-helpers.jsx";
+import { innerHtml } from "../inner-html.js";
 
 export {
   emulateReducedMotion,
@@ -138,7 +139,7 @@ export const Harness = ({ html, manual = false, controlsFirst = false }) => {
       restores.forEach(restore => restore());
     };
   }, [html, manual, controlsFirst]);
-  return <div ref={ref} dangerouslySetInnerHTML={{ __html: html }} />;
+  return <div ref={ref} dangerouslySetInnerHTML={innerHtml(html)} />;
 };
 
 // QA preview only: the prototype's own hotlink to the current asu.edu clip. Production serves a hosted
@@ -157,7 +158,7 @@ export const LiveHarness = ({ html }) => {
   }, [html]);
   return (
     <>
-      <div ref={ref} dangerouslySetInnerHTML={{ __html: html }} />
+      <div ref={ref} dangerouslySetInnerHTML={innerHtml(html)} />
       <div style={{ height: "150vh" }} aria-hidden="true" />
     </>
   );

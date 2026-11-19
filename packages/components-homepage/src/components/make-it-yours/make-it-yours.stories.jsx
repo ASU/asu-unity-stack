@@ -21,7 +21,7 @@ export default {
     docs: {
       description: {
         component:
-          'Homepage "Make it yours" section (WWWCMS-237): five photo tabs (degree, format, community, experience, cost). Stacked through 768px (white head, inset photo, dark band with the tab list) and side by side from 769px (full-bleed photo, content column on the right, 865px tall). WAI-ARIA APG Accordion: one panel is always open. Without script every panel is open and only the first photo shows. `initMakeItYours` wires it.',
+          'Homepage "Make it yours" section (WWWCMS-237): five photo tabs (degree, format, community, experience, cost). Stacked through 768px (white head, inset photo, dark band with the tab list) and side by side from 769px (full-bleed photo, content column on the right, 865px tall; 769-1280px two equal columns with a 48px gap and a centred, wrapping heading; 769-1124px the stage grows with the copy). WAI-ARIA APG Accordion: one panel is always open. Without script every panel is open and only the first photo shows. `initMakeItYours` wires it.',
       },
     },
   },
@@ -265,12 +265,14 @@ export const Phone393 = {
     near(centre(textRange(p.host.firstChild, p.host.firstChild)), middle, 2);
     near(middle, 393 / 2, 1);
     // Stacked swash sits under "yours" only.
-    expect(box(p.scrib).left).toBeGreaterThanOrEqual(box(p.host).left - 1);
+    expect(box(p.scrib).left).toBeGreaterThanOrEqual(
+      box(p.host).left - box(p.host).width * 0.05 - 1
+    );
     // "yours" wraps below the lead-in "it", so the swash cannot reach it.
     expect(box(p.host).top).toBeGreaterThan(box(p.lead).top + fontSize / 2);
-    // The base swash is shifted 2% right of the host; allow 5% of its width.
+    // The swash starts 4% left of the host and is 113% wide (overhangs 9% right); allow 10%.
     expect(box(p.scrib).right).toBeLessThanOrEqual(
-      box(p.host).right + box(p.host).width * 0.05
+      box(p.host).right + box(p.host).width * 0.1
     );
     // The list reserves the tallest open state.
     const tabsMin = find(
@@ -313,9 +315,11 @@ export const Tablet768 = {
     near(box(p.heading).height, px(style(p.heading).fontSize), 4);
     // Amendment A2.2: the line is centred, and the swash still sits under "yours" only.
     near(centre(textRange(p.heading, p.host.firstChild)), 768 / 2, 2);
-    expect(box(p.scrib).left).toBeGreaterThanOrEqual(box(p.host).left - 1);
+    expect(box(p.scrib).left).toBeGreaterThanOrEqual(
+      box(p.host).left - box(p.host).width * 0.05 - 1
+    );
     expect(box(p.scrib).right).toBeLessThanOrEqual(
-      box(p.host).right + box(p.host).width * 0.05
+      box(p.host).right + box(p.host).width * 0.1
     );
     noHorizontalOverflow();
   },
@@ -356,18 +360,34 @@ const desktopParts = canvasElement => ({
   photos: find(canvasElement, ".hp-myours__photos"),
 });
 const FRAME = 1920;
+// 769-1124 (MID in make-it-yours.js): the stage grows past 865px with the copy, and keeps one height for every tab.
+const MID_MAX = 1124;
+const expectStageHeight = (stage, width) => {
+  if (width <= MID_MAX) {
+    expect(box(stage).height).toBeGreaterThanOrEqual(865 - 1);
+  } else {
+    near(box(stage).height, 865, 1);
+  }
+};
 // Geometry shared by every desktop width (design doc 12.1): 865px stage, photo fills it, chip 48px in from the
 // bottom and from the left edge of the 1920px frame, heading 88px.
 const expectDesktopStage = (canvasElement, width) => {
   const p = desktopParts(canvasElement);
   expect(style(p.stage).display).toBe("grid");
-  near(box(p.stage).height, 865, 1);
+  expectStageHeight(p.stage, width);
   near(box(p.stage).width, width, 1);
   near(box(p.photos).width, width, 1);
   near(box(p.img).width, width, 1);
-  near(box(p.img).height, 865, 1);
+  near(box(p.img).height, box(p.stage).height, 1);
   expect(style(p.img).objectFit).toBe("cover");
-  near(px(style(p.heading).fontSize), 88, 0);
+  // 769-1124: 56px to 64px (6vw); up to 1280: 64px to 88px (7vw); above: 88px.
+  const heading =
+    width <= MID_MAX
+      ? Math.min(64, Math.max(56, width * 0.06))
+      : width <= 1280
+        ? Math.min(88, Math.max(64, width * 0.07))
+        : 88;
+  near(px(style(p.heading).fontSize), heading, 1);
   near(box(p.stage).bottom - box(p.caption).bottom, 48, 1);
   near(box(p.caption).left, Math.max(48, (width - FRAME) / 2 + 48), 1);
   noHorizontalOverflow();
@@ -380,13 +400,21 @@ const desktopStory = (name, width, column) => ({
   play: async ({ canvasElement }) => {
     await atWidth(width, 1000);
     const p = expectDesktopStage(canvasElement, width);
-    if (column) {
-      expect(box(p.tabs).left).toBeGreaterThanOrEqual(column[0]);
-      expect(box(p.tabs).left).toBeLessThanOrEqual(column[1]);
+    if (width <= 1280) {
+      // 769 to 1280: two equal columns with a 48px gap, after the right inset (clamp(48px, 5vw, 80px)).
+      const inset = Math.min(80, Math.max(48, width * 0.05));
+      const col = (width - inset - 48) / 2;
+      near(box(p.tabs).width, col, 1);
+      near(box(p.tabs).left, col + 48, 1);
+    } else {
+      if (column) {
+        expect(box(p.tabs).left).toBeGreaterThanOrEqual(column[0]);
+        expect(box(p.tabs).left).toBeLessThanOrEqual(column[1]);
+      }
       near(box(p.tabs).width, 548, 1);
+      // The content column sits right of centre, over the photo.
+      expect(box(p.tabs).left).toBeGreaterThan(width / 2 - 1);
     }
-    // The content column sits right of centre, over the photo.
-    expect(box(p.tabs).left).toBeGreaterThan(width / 2 - 1);
     expectScrimToRightEdge(p);
   },
 });
@@ -410,7 +438,7 @@ export const Boundary769 = {
     await expect(window.matchMedia("(min-width: 769px)").matches).toBe(true);
     const p = desktopParts(canvasElement);
     await expect(style(p.stage).display).toBe("grid");
-    near(box(p.stage).height, 865, 1);
+    expectStageHeight(p.stage, 769);
     await waitFor(() =>
       expect(p.img.currentSrc).toMatch(/design-your-degree(-\d+)?\.webp$/)
     );
@@ -431,7 +459,7 @@ export const Boundary769 = {
     );
   },
 };
-const desktop1280 = desktopStory("Desktop 1280", 1280, [640, 690]);
+const desktop1280 = desktopStory("Desktop 1280", 1280);
 export const Desktop1280 = {
   ...desktop1280,
   play: async context => {
@@ -556,21 +584,70 @@ export const HeadingUnderline = {
   globals: { viewport: viewport(393) },
   render: () => <Harness html={makeItYoursHtml()} />,
   play: async ({ canvasElement }) => {
-    // Stacked: the swash sits under "yours" only (base underline-mark values).
+    // Stacked: the swash sits under "yours" only, 4% left of it and 113% wide.
     await atWidth(393, 852);
     let p = parts(canvasElement);
-    near(box(p.scrib).left - box(p.host).left, box(p.host).width * 0.02, 2);
-    near(box(p.scrib).width, box(p.host).width, 2);
-    // Desktop: it runs from 1.03em left of "yours", 3.02em wide, under "it yours".
-    await atWidth(1280, 900);
-    p = parts(canvasElement);
-    const em = px(style(p.host).fontSize);
-    near(box(p.host).left - box(p.scrib).left, 1.03 * em, 2);
-    near(box(p.scrib).width, 3.02 * em, 2);
-    expect(box(p.scrib).left).toBeLessThan(box(p.lead).right);
+    near(box(p.scrib).left - box(p.host).left, -box(p.host).width * 0.04, 2);
+    near(box(p.scrib).width, box(p.host).width * 1.13, 2);
+    // Its bottom edge hangs 0.06em below the host.
+    near(
+      box(p.scrib).bottom - box(p.host).bottom,
+      0.06 * px(style(p.host).fontSize),
+      1
+    );
+    // 769 to 1280: the same as stacked, under "yours" only, and the heading is centred.
+    for (const width of [769, 1024, 1280]) {
+      await atWidth(width, 900);
+      p = parts(canvasElement);
+      near(box(p.scrib).left - box(p.host).left, -box(p.host).width * 0.04, 2);
+      near(box(p.scrib).width, box(p.host).width * 1.13, 2);
+      expect(style(p.heading).textAlign).toBe("center");
+      expect(style(p.heading).whiteSpace).toBe("normal");
+    }
+    // Above 1280: one line, and the swash still sits under "yours" only, clear of "it".
+    for (const width of [1440, 1920]) {
+      await atWidth(width, 900);
+      p = parts(canvasElement);
+      expect(style(p.heading).whiteSpace).toBe("nowrap");
+      near(box(p.scrib).left - box(p.host).left, -box(p.host).width * 0.04, 2);
+      near(box(p.scrib).width, box(p.host).width * 1.13, 2);
+      expect(box(p.scrib).left).toBeGreaterThan(box(p.lead).right);
+    }
+    // Desktop: the bottom edge also hangs 0.06em below the host (0.18em higher than the old -0.24em), at every desktop width.
+    for (const width of [1280, 1440, 1920]) {
+      await atWidth(width, 900);
+      p = parts(canvasElement);
+      near(
+        box(p.scrib).bottom - box(p.host).bottom,
+        0.06 * px(style(p.host).fontSize),
+        1
+      );
+    }
   },
 };
 
+// The caption chip stays inside the left half (50% minus 48px on each side) from 769 up to 1280, and is 536px at most above that.
+export const CaptionChipWidth = {
+  name: "Caption chip max width",
+  globals: { viewport: viewport(1280) },
+  render: () => <Harness html={makeItYoursHtml()} />,
+  play: async ({ canvasElement }) => {
+    for (const [width, max] of [
+      [769, 769 / 2 - 96],
+      [1023, 1023 / 2 - 96],
+      [1024, 1024 / 2 - 96],
+      [1280, 1280 / 2 - 96],
+      [1281, 536],
+      [1920, 536],
+    ]) {
+      await atWidth(width, 900);
+      const { caption } = parts(canvasElement);
+      expect(box(caption).width).toBeLessThanOrEqual(max + 1);
+      // The chip never crosses into the right half.
+      expect(box(caption).right).toBeLessThanOrEqual(width / 2);
+    }
+  },
+};
 // ---- behaviour: click, tap, switch (T10) ----
 const trig = (canvasElement, i) =>
   list(canvasElement, ".hp-myours__trigger")[i];
@@ -843,9 +920,25 @@ export const AltAndCaptionPerCrop = {
     );
   },
 };
+// The real pointer stays where an earlier story left it, and a section rendered under it promotes that tab's photo
+// before the story starts. Park it on a 4px probe in the top-left corner (over the photo, never a tab title) before
+// the section renders.
+const parkPointer = async () => {
+  if (!realPointer.available) return;
+  const probe = document.createElement("div");
+  probe.style.cssText =
+    "position:fixed;top:0;left:0;z-index:2147483647;width:4px;height:4px;";
+  document.body.appendChild(probe);
+  try {
+    await realPointer.hover(probe);
+  } finally {
+    probe.remove();
+  }
+};
 export const LazyAndPromote = {
   name: "Lazy and promote",
   globals: { viewport: viewport(1280) },
+  beforeEach: parkPointer,
   render: () => <Harness html={makeItYoursHtml()} />,
   play: async ({ canvasElement }) => {
     await atWidth(1280, 900);
@@ -1001,13 +1094,17 @@ export const ResizeAcrossBreakpoint = {
     );
     await waitFor(() => expect(tabsMinOf(canvasElement)).toMatch(/^\d+px$/));
     await expectOpenTab(canvasElement, 2);
-    // 769: side by side again.
+    // 769: side by side again. 769-1124 keeps the list reserve (the stage can grow there).
     await atWidth(769, 900);
     await waitFor(() =>
       expect(activeImg(canvasElement).getAttribute("alt")).toBe(tab.desktop.alt)
     );
-    await waitFor(() => expect(tabsMinOf(canvasElement)).toBe(""));
+    await waitFor(() => expect(tabsMinOf(canvasElement)).toMatch(/^\d+px$/));
     await expectOpenTab(canvasElement, 2);
+    expectStageHeight(find(canvasElement, ".hp-myours__stage"), 769);
+    // 1125: fixed 865px stage, no reserve.
+    await atWidth(1125, 900);
+    await waitFor(() => expect(tabsMinOf(canvasElement)).toBe(""));
     near(box(find(canvasElement, ".hp-myours__stage")).height, 865, 1);
     // And once more down to a phone width.
     await atWidth(393, 852);
@@ -1390,8 +1487,24 @@ const expectFitsStage = async canvasElement => {
   const stage = find(canvasElement, ".hp-myours__stage");
   const heading = find(canvasElement, ".hp-myours__heading");
   const items = list(canvasElement, ".hp-myours__item");
-  near(box(stage).height, 865, 1);
-  expect(heading.scrollWidth).toBeLessThanOrEqual(heading.clientWidth);
+  // After a resize the script re-measures the list reserve in the next frame; let it settle first.
+  await new Promise(resolve =>
+    requestAnimationFrame(() => requestAnimationFrame(resolve))
+  );
+  expectStageHeight(stage, window.innerWidth);
+  const height = box(stage).height;
+  // The heading text stays inside its column. The swash is decoration and may overhang "yours" (113% wide),
+  // so it is checked against the stage, not the column.
+  const range = document.createRange();
+  range.selectNodeContents(heading);
+  const text = Array.from(range.getClientRects());
+  const column = box(heading);
+  text.forEach(rect => {
+    expect(rect.left).toBeGreaterThanOrEqual(column.left - 1);
+    expect(rect.right).toBeLessThanOrEqual(column.right + 1);
+  });
+  const scrib = heading.querySelector(".hp-myours__scrib");
+  if (scrib) expect(box(scrib).right).toBeLessThanOrEqual(box(stage).right);
   for (let i = 0; i < 5; i += 1) {
     if (trig(canvasElement, i).getAttribute("aria-expanded") !== "true") {
       await userEvent.click(trig(canvasElement, i));
@@ -1405,10 +1518,17 @@ const expectFitsStage = async canvasElement => {
     expect(box(items[i]).bottom).toBeLessThanOrEqual(box(stage).bottom - 24);
     expect(stage.scrollHeight).toBeLessThanOrEqual(stage.clientHeight);
     expect(inner.scrollHeight).toBeLessThanOrEqual(inner.clientHeight + 1);
-    // One line: the CTA is its 24px line plus the 1px underline; every title is one 44px row.
-    expect(box(cta).height).toBeLessThanOrEqual(26);
+    // One height for every tab (in 769-1124 the reserve holds it).
+    near(box(stage).height, height, 1);
+    // Above 1124 (fixed 865px stage): one line, the CTA is its 24px line plus the 1px underline, and every title
+    // is one 44px row. In 769-1124 the stage grows, so a max-length CTA or title may wrap; a title is still at
+    // least a 44px touch target.
+    if (window.innerWidth > MID_MAX)
+      expect(box(cta).height).toBeLessThanOrEqual(26);
     list(canvasElement, ".hp-myours__trigger").forEach(trigger =>
-      near(box(trigger).height, 44, 1)
+      window.innerWidth > MID_MAX
+        ? near(box(trigger).height, 44, 1)
+        : expect(box(trigger).height).toBeGreaterThanOrEqual(44 - 1)
     );
   }
 };
@@ -1427,7 +1547,7 @@ export const MaxLengthContent = {
     });
     await emulateReducedMotion(true);
     try {
-      for (const width of [769, 1280, 1920, 3934]) {
+      for (const width of [769, 900, 1024, 1124, 1125, 1280, 1920, 3934]) {
         await atWidth(width, 1000);
         await expectFitsStage(canvasElement);
         noHorizontalOverflow();

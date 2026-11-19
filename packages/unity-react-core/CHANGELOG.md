@@ -1,3 +1,18 @@
+# [@asu/unity-react-core-v2.5.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.5.2...@asu/unity-react-core-v2.5.3) (2026-11-19)
+
+
+### Bug Fixes
+
+* **unity-react-core:** sub title text testing for small hero ([e4c8376](https://github.com/ASU/asu-unity-stack/commit/e4c8376ef5dd3709b50f768fcfc4af1ded4a3fb5))
+
+# [@asu/unity-react-core-v2.5.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.5.1...@asu/unity-react-core-v2.5.2) (2026-11-14)
+
+
+### Bug Fixes
+
+* **unity-react-core:** fixed missing export for the SidebarMenu component ([d389914](https://github.com/ASU/asu-unity-stack/commit/d389914da09f57bd914a26ebfd970c4633df0bf7))
+* **unity-react-core:** replaced "Select Section" with "Select a Page" for the sidebar menu ([b8c5ae8](https://github.com/ASU/asu-unity-stack/commit/b8c5ae82569086f3b761e9ef11aa7c9bf28655e6))
+
 # [@asu/unity-react-core-v2.5.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.5.0...@asu/unity-react-core-v2.5.1) (2026-11-06)
 
 

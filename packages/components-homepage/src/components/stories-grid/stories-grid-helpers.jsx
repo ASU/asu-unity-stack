@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
 import { initStories } from "./stories-grid.js";
+import { innerHtml } from "../inner-html.js";
 
 export {
   emulateReducedMotion,
@@ -116,7 +117,7 @@ export const Harness = ({ html, manual = false, before = 0, after = 0 }) => {
   return (
     <>
       {before ? <div style={{ height: before }} aria-hidden="true" /> : null}
-      <div ref={ref} dangerouslySetInnerHTML={{ __html: html }} />
+      <div ref={ref} dangerouslySetInnerHTML={innerHtml(html)} />
       {after ? <div style={{ height: after }} aria-hidden="true" /> : null}
     </>
   );

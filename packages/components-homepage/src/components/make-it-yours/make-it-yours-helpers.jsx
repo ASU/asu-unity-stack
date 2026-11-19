@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
 import { initMakeItYours } from "./make-it-yours.js";
+import { innerHtml } from "../inner-html.js";
 
 export {
   contrastRatio,
@@ -23,5 +24,5 @@ export const Harness = ({ html, manual = false }) => {
     if (manual) return undefined;
     return initMakeItYours(ref.current);
   }, [html, manual]);
-  return <div ref={ref} dangerouslySetInnerHTML={{ __html: html }} />;
+  return <div ref={ref} dangerouslySetInnerHTML={innerHtml(html)} />;
 };

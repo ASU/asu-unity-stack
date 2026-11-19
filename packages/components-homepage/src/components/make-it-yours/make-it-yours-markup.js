@@ -60,7 +60,7 @@ const headingHtml = (heading, underlined) => {
   const words = phrase.split(/\s+/);
   const last = words.pop();
   const lead = words.join(" ");
-  const mark = `<span class="scrib-host">${escape(last)}<img class="scrib scrib--myours hp-myours__scrib" src="img/scribble-myours.svg" alt="" aria-hidden="true"></span>`;
+  const mark = `<span class="scrib-host">${escape(last)}<img class="scrib scrib--future hp-myours__scrib" src="img/scribble-future.svg" alt="" aria-hidden="true"></span>`;
   const leadHtml = lead
     ? `<span class="hp-myours__lead">${escape(lead)}</span> `
     : "";
@@ -120,7 +120,7 @@ export const MAKE_IT_YOURS = {
         sources: [
           {
             src: "img/make-it-yours/design-your-degree-1280.webp",
-            width: 1330,
+            width: 1430,
           },
           {
             src: "img/make-it-yours/design-your-degree-1920.webp",
@@ -130,7 +130,7 @@ export const MAKE_IT_YOURS = {
             src: "img/make-it-yours/design-your-degree-2560.webp",
             width: 2560,
           },
-          { src: "img/make-it-yours/design-your-degree.webp", width: 3932 },
+          { src: "img/make-it-yours/design-your-degree.webp", width: 3934 },
         ],
         alt: "Minlan, in a maroon graduation cap and gown with a gold ASU stole, holding the stole with both hands and looking off to the side, smiling.",
         caption: "Minlan “Paul” Ezan, ’25 BS in accountancy",
@@ -153,7 +153,7 @@ export const MAKE_IT_YOURS = {
       },
       desktop: {
         sources: [
-          { src: "img/make-it-yours/learn-your-way-1280.webp", width: 1330 },
+          { src: "img/make-it-yours/learn-your-way-1280.webp", width: 1430 },
           { src: "img/make-it-yours/learn-your-way-1920.webp", width: 1920 },
           { src: "img/make-it-yours/learn-your-way-2560.webp", width: 2560 },
           { src: "img/make-it-yours/learn-your-way.webp", width: 3934 },
@@ -176,7 +176,7 @@ export const MAKE_IT_YOURS = {
       cta: { label: "Explore student life", url: "https://eoss.asu.edu/" },
       desktop: {
         sources: [
-          { src: "img/make-it-yours/find-your-people-1280.webp", width: 1280 },
+          { src: "img/make-it-yours/find-your-people-1280.webp", width: 1430 },
           { src: "img/make-it-yours/find-your-people-1920.webp", width: 1920 },
           { src: "img/make-it-yours/find-your-people-2560.webp", width: 2560 },
           { src: "img/make-it-yours/find-your-people.webp", width: 3934 },
@@ -201,7 +201,7 @@ export const MAKE_IT_YOURS = {
         sources: [
           {
             src: "img/make-it-yours/build-your-experience-1280.webp",
-            width: 1873,
+            width: 1430,
           },
           {
             src: "img/make-it-yours/build-your-experience-1920.webp",
@@ -238,7 +238,7 @@ export const MAKE_IT_YOURS = {
         sources: [
           {
             src: "img/make-it-yours/explore-costs-and-aid-1280.webp",
-            width: 1280,
+            width: 1430,
           },
           {
             src: "img/make-it-yours/explore-costs-and-aid-1920.webp",

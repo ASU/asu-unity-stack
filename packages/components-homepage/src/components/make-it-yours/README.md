@@ -1,6 +1,16 @@
 # make-it-yours (WWWCMS-237)
 
-The homepage "Make it yours" section: a heading, an intro, and five photo tabs (degree, format, community, experience, cost). Only one tab is open at a time (WAI-ARIA Accordion). Up to 768px the layout is stacked (white head, inset photo, dark band with the tab list). From 769px the photo fills an 865px stage and the tab column sits on the right.
+The homepage "Make it yours" section: a heading, an intro, and five photo tabs (degree, format, community, experience, cost). Only one tab is open at a time (WAI-ARIA Accordion). Up to 768px the layout is stacked (white head, inset photo, dark band with the tab list). From 769px the photo fills the stage (865px tall; it can grow at 769-1124px, see below) and the tab column sits on the right.
+
+Side-by-side widths:
+
+| Width | Stage | Columns | Caption chip | Heading | Gap above tabs |
+|---|---|---|---|---|---|
+| 769-1124px | at least 865px, grows with the copy; one height for every tab | two equal columns (after the right inset), 48px gap | at most 50% of the stage minus 48px on each side | `clamp(56px, 6vw, 64px)`, 48px from the top, centred, 0.25em side padding (wraps to two lines at about 769-800px) | 64px |
+| 1125-1280px | 865px | as above | as above | `clamp(64px, 7vw, 88px)`, 80px from the top, centred, wraps when the column is too narrow | 150px |
+| 1281px and up | 865px | 548px content column | at most 536px | 88px, one line, left | 150px |
+
+The swash sits under "yours" only at every width (4% left, 113% wide). At 769-1124px the intro uses the full column width.
 
 ## Files
 
@@ -39,7 +49,7 @@ JS adds these. None of them are in the static markup.
 | `.hp-myours__trigger` | `aria-expanded`, `aria-disabled="true"` | state; the open trigger is disabled (click, Enter, Space do nothing) |
 | `.hp-myours__panel` | `inert` | on closed panels |
 | `.hp-myours__img` | `alt`, `data-alt-desktop`, `data-alt-mobile`, `loading` | per-crop alt; `lazy` becomes `eager` when a trigger is hovered or focused |
-| `.hp-myours__tabs` | `--hp-myours-tabs-min` | stacked only: reserves the tallest open tab list so nothing jumps |
+| `.hp-myours__tabs` | `--hp-myours-tabs-min` | stacked and 769-1124px: reserves the tallest open tab list so nothing jumps; removed above 1124px and on teardown |
 | `.hp-myours` | `--hp-myours-caption-min` | stacked only: reserves the tallest caption so the whole section keeps one height for every tab; removed on desktop and on teardown |
 | `.hp-myours__photo` | `--hp-myours-focus` | static, from the content file; desktop `object-position` |
 
@@ -47,7 +57,7 @@ Keyboard: Tab visits every trigger and the open CTA. Arrow Up/Down, Home and End
 
 ## Field limits (Stage B)
 
-The desktop stage is a fixed 865px and clips overflow, and the heading is one 88px line, so editor text has hard limits (amendment A2.1). They are `MAKE_IT_YOURS_LIMITS` in `make-it-yours-markup.js`; the helper does not enforce them, Stage B validates the fields.
+The desktop stage is a fixed 865px and clips overflow, and above 1280px the heading is one 88px line, so editor text has hard limits (amendment A2.1). They are `MAKE_IT_YOURS_LIMITS` in `make-it-yours-markup.js`; the helper does not enforce them, Stage B validates the fields.
 
 | Field | Max characters |
 |---|---|
@@ -57,7 +67,7 @@ The desktop stage is a fixed 865px and clips overflow, and the heading is one 88
 | Tab description | 250 |
 | CTA label | 40 |
 
-Measured in Chromium against this build, with every field at the limit at the same time (filler made from the real copy), at 769, 1280 and 3934 px (the content column is 548px at all three): the open tab ends 26px above the stage bottom (24px required), every title and CTA stays on one line, nothing is clipped. Longer text can overflow the stage and hide the last CTA. The `MaxLengthContent` story re-checks this at 769, 1280, 1920 and 3934. The stacked layout grows with its content and needs no extra limit.
+Measured in Chromium against this build, with every field at the limit at the same time (filler made from the real copy), with the 548px column: the open tab ends 26px above the stage bottom (24px required), every title and CTA stays on one line, nothing is clipped. From 769 to 1280 the column is half the stage (about 337px at 769, 462px at 1024). At 769-1124px the stage grows instead of clipping, so the current copy fits in 865px (the open tab ends about 793px down at 769) and max-length copy makes the stage about 1029px tall at 769 and 901px at 900; titles and CTAs may wrap there. Max-length copy fits the fixed 865px stage from 1125px (it overflowed at 1025-1100, which is why the growing range ends at 1124). Longer text can overflow the fixed stage above 1124px and hide the last CTA. The `MaxLengthContent` story re-checks this at 769, 900, 1024, 1124, 1125, 1280, 1920 and 3934. The stacked layout grows with its content and needs no extra limit.
 
 ## Images
 
@@ -82,7 +92,7 @@ The slug is the source file name (`design-your-degree.webp`, `design-your-degree
 
 ## Scrim
 
-One shared scrim darkens the right part of every desktop photo so white text keeps 4.5:1. It fades in over 96px to the left of the content column and then runs at full strength to the right edge of the browser (amendment A3). It uses the same strength on all five photos: `$asu-gray-1` at alpha 0.58 (`$hp-myours-scrim-alpha` in the SCSS). The cap is 0.60 (approved amendment A1.1). At 0.55 only 17 of 20 cases passed, and the alpha was raised in 0.01 steps to the lowest value that gives 20 of 20 (then 4 widths). With 769 and 1024 added (review F4) it gives 30 of 30 unchanged. There is deliberately no per-photo strength and no data field for it.
+One shared scrim darkens the right part of every desktop photo so white text keeps 4.5:1. It fades in over 96px to the left of the content column and then runs at full strength to the right edge of the browser (amendment A3). It uses the same strength on all five photos: `$asu-gray-1` at alpha 0.59 (`$hp-myours-scrim-alpha` in the SCSS). The cap is 0.60 (approved amendment A1.1). At 0.55 only 17 of 20 cases passed, and the alpha was raised in 0.01 steps to the lowest value that gives 20 of 20 (then 4 widths; 0.58 with the first photo set, raised to 0.59 for the WWWCMS-237 photos). With 769 and 1024 added (review F4) it gives 30 of 30. There is deliberately no per-photo strength and no data field for it.
 
 To re-check after changing a photo, a focal point or the alpha:
 
@@ -96,7 +106,7 @@ It measures white text over each photo at 769, 1024, 1280, 1920, 2500 and 3934 p
 
 - Closed panels are `inert`. Do not remove it; it takes closed content out of the tab order and the accessibility tree.
 - The `alt` on `<img>` is the mobile alt. `initMakeItYours` swaps in `data-alt-desktop` at 769px and up, and back at 768px and below. The caption has two spans, switched by CSS, so it needs no script.
-- Reserve: on stacked layouts the script sets `--hp-myours-tabs-min` and `--hp-myours-caption-min`. Do not set them in the CMS.
+- Reserve: on stacked layouts the script sets `--hp-myours-tabs-min` and `--hp-myours-caption-min`; at 769-1124px it sets `--hp-myours-tabs-min` only. Do not set them in the CMS. The 1124px edge is `MID` in `make-it-yours.js` and `$hp-myours-mid-max` in the SCSS; keep them equal.
 - Links: the markup helper only outputs http(s), root-relative (`/x`, not `//` or `/\`) and `#fragment` URLs, and drops any URL containing an ASCII control character (tab, LF, CR, NUL, DEL), because browsers strip those and `/<tab>/host` becomes a protocol-relative link. Stage B must validate the Drupal link field the same way (reject, do not strip).
 - GA: each trigger and CTA carries `data-ga-*` attributes (`data-ga-component="homepage make it yours"`, `data-ga-section="make it yours"`). The event names and values are provisional until the data team confirms them (TODO in the markup module).
 - Clicking the already open trigger is swallowed in the capture phase (`preventDefault` and `stopPropagation`), so a document-level GA listener never sees it. An open-header click is not an event.
@@ -106,6 +116,5 @@ It measures white text over each photo at 769, 1024, 1280, 1920, 2500 and 3934 p
 ## Known limits
 
 - R2: with JS off on a desktop screen, tabs 1, 3 and 5 show the mobile alt, which describes a different crop. A `<picture>` has one `alt`. Captions are not affected.
-- D1: the desktop heading swash is calibrated for a one-word lead-in ("it") before the underlined word ("yours"). A longer phrase gives a swash that is too short on desktop.
 - Without JS on desktop all five panels are open, so the section can be taller than 865px.
 - LTR only: the layout uses physical directions (`left`, `right`, `padding-left`, `text-align: left`). A right-to-left page would need logical properties.

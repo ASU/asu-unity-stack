@@ -1,6 +1,6 @@
 {
   "name": "@asu/unity-bootstrap-theme",
-  "version": "2.4.4",
+  "version": "2.4.7",
   "description": "Please see @asu/unity-react-core for up-to-date stories and examples.\nBase UI theme for ASU Web Standards 2.0 developed with Bootstrap 5",
   "homepage": "https://github.com/ASU/asu-unity-stack#readme",
   "license": "MIT",
@@ -20,11 +20,15 @@
     "storybook": "storybook dev -p 9000",
     "build-storybook": "storybook build -o ../../build/$npm_package_name",
     "lint": "yarn js-lint && yarn css-lint",
+    "lint:check": "yarn lint",
     "lint:fix": "yarn js-lint:fix && yarn css-lint:fix",
+    "lint:forcefix": "yarn js-lint:forcefix && yarn css-lint:forcefix",
     "js-lint": "eslint \"**/*.js\"",
-    "js-lint:fix": "eslint \"**/*.js\" --fix",
+    "js-lint:fix": "node ../../scripts/lint-changed.mjs --extensions js -- eslint --fix",
+    "js-lint:forcefix": "eslint \"**/*.js\" --fix",
     "css-lint": "stylelint \"**/*.{css,scss}\" --cache --cache-location .cache/.stylelintcache --rd",
-    "css-lint:fix": "stylelint \"**/*.{css,scss}\" --fix --cache --cache-location .cache/.stylelintcache --rd"
+    "css-lint:fix": "node ../../scripts/lint-changed.mjs --extensions css,scss -- stylelint --fix --cache --cache-location .cache/.stylelintcache --rd",
+    "css-lint:forcefix": "stylelint \"**/*.{css,scss}\" --fix --cache --cache-location .cache/.stylelintcache --rd"
   },
   "devDependencies": {
     "@asu/shared": "*",

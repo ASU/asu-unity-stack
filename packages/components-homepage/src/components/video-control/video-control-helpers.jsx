@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
 import { initVideoControls } from "./video-control.js";
+import { innerHtml } from "../inner-html.js";
 
 // Tiny inline poster (no hotlink, no committed media).
 export const POSTER = `data:image/svg+xml,${encodeURIComponent(
@@ -315,5 +316,5 @@ export const Harness = ({ html, manual = false, hover = false }) => {
       restores.forEach(restore => restore());
     };
   }, [html, manual, hover]);
-  return <div ref={ref} dangerouslySetInnerHTML={{ __html: html }} />;
+  return <div ref={ref} dangerouslySetInnerHTML={innerHtml(html)} />;
 };

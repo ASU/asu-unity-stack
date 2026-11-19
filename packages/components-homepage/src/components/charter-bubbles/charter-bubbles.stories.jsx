@@ -17,6 +17,7 @@ import {
 import { circlesOverlap } from "./charter-bubbles-geometry.js";
 
 import "./_charter-bubbles.storybook.scss";
+import { innerHtml } from "../inner-html.js";
 
 export default {
   title: "Homepage/Charter bubbles",

@@ -93,8 +93,8 @@ function degreeDataPropResolverService(row = {}) {
       if (!planCode || !degreeType) return "";
 
       const programTypeMap = {
-        UG:   "bachelors",
-        GR:   "masters-phd",
+        UG: "bachelors",
+        GR: "masters-phd",
         UGCM: "minors",
       };
 

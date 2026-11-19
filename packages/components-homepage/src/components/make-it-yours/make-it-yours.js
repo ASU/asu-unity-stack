@@ -3,6 +3,8 @@
 // Without this script the CSS shows every panel open and only the first photo (the no-JS baseline).
 
 const DESKTOP = "(min-width: 769px)"; // keep equal to $hp-myours-bp in _make-it-yours.scss
+// Side by side but the stage can grow: keep equal to $hp-myours-bp and $hp-myours-mid-max in _make-it-yours.scss.
+const MID = "(min-width: 769px) and (max-width: 1124px)";
 const TABS_MIN = "--hp-myours-tabs-min";
 const CAPTION_MIN = "--hp-myours-caption-min";
 
@@ -28,6 +30,7 @@ const subscribe = (mediaQuery, handler) => {
 
 const bind = (section, doc, win) => {
   const desk = query(win, DESKTOP, false);
+  const mid = query(win, MID, false);
   const cleanups = [];
   const listen = (target, type, handler, options) => {
     target.addEventListener(type, handler, options);
@@ -95,16 +98,21 @@ const bind = (section, doc, win) => {
     });
     return tallest;
   };
-  // Stacked only: the list reserves the tallest open state and the caption its tallest wrap, so the section
-  // never changes height between tabs.
+  // Stacked: the list reserves the tallest open state and the caption its tallest wrap, so the section never
+  // changes height between tabs. 769-1124 (MID): the stage grows with the list, so the list reserve applies there
+  // too; the caption is a chip over the photo and needs none. Above 1124 the stage is a fixed 865px: no reserve.
   const measure = () => {
-    if (desk.matches) {
+    if (desk.matches) section.style.removeProperty(CAPTION_MIN);
+    if (desk.matches && !mid.matches) {
       if (tabs) tabs.style.removeProperty(TABS_MIN);
-      section.style.removeProperty(CAPTION_MIN);
       return;
     }
-    const caption = `${Math.ceil(tallestCaption())}px`;
-    section.style.setProperty(CAPTION_MIN, caption);
+    if (!desk.matches) {
+      section.style.setProperty(
+        CAPTION_MIN,
+        `${Math.ceil(tallestCaption())}px`
+      );
+    }
     if (!tabs) return;
     const headings = triggers.reduce(
       (sum, trigger) => sum + trigger.parentElement.offsetHeight,
@@ -204,7 +212,8 @@ const bind = (section, doc, win) => {
     subscribe(desk, () => {
       syncAlt();
       measure();
-    })
+    }),
+    subscribe(mid, measure)
   );
   if (typeof win.ResizeObserver === "function") {
     // measure() changes the observed section's height, so it runs in the next frame, not inside the callback

@@ -76,9 +76,11 @@ function headingHeroHtmlTemplate({
         <div role="doc-subtitle" data-testid="hero-subtitle">
           <span
             className={classNames({
-              [textColor[subTitle.color]]: subTitle.color,
-              [highlightColor[subTitle.highlightColor]]:
-                subTitle.highlightColor,
+              [textColor[subTitle.color ? subTitle.color : "undefined"]]:
+                subTitle.color,
+              [highlightColor[
+                subTitle.highlightColor ? subTitle.highlightColor : "undefined"
+              ]]: subTitle.highlightColor,
             })}
           >
             {subTitle.text}

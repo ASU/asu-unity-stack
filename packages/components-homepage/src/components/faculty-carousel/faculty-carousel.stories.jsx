@@ -1322,3 +1322,39 @@ export const LivePreview = {
   const { play } = story;
   story.play = context => (realPointer.available ? play(context) : undefined);
 });
+
+const RerenderPage = () => {
+  const [count, setCount] = React.useState(0);
+  return (
+    <>
+      <button type="button" data-rerender onClick={() => setCount(count + 1)}>
+        Re-render {count}
+      </button>
+      <Harness html={facultyCarouselHtml()} />
+    </>
+  );
+};
+
+// Storybook re-renders a story on every viewport change; the section must keep the fan the script built
+// (brand QA 2026-11-16: the carousel fell back to the server markup after a resize).
+export const RerenderKeepsFan = {
+  name: "Stays enhanced when Storybook re-renders",
+  tags: ["!dev"],
+  globals: viewport(1440),
+  render: () => <RerenderPage />,
+  play: async ({ canvasElement }) => {
+    const section = () => canvasElement.querySelector(".hp-faculty");
+    await waitFor(() =>
+      expect(section().classList.contains("is-enhanced")).toBe(true)
+    );
+    const before = section();
+    canvasElement.querySelector("[data-rerender]").click();
+    await waitFor(() =>
+      expect(canvasElement.querySelector("[data-rerender]").textContent).toBe(
+        "Re-render 1"
+      )
+    );
+    await expect(section()).toBe(before);
+    await expect(section().classList.contains("is-enhanced")).toBe(true);
+  },
+};

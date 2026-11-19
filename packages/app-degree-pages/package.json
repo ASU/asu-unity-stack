@@ -24,7 +24,12 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "scripts": {
-    "lint": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'",
+    "lint": "node ../../scripts/lint-changed.mjs --extensions js,jsx,ts,tsx --include src -- eslint --fix",
+    "lint:check": "yarn js-lint:check",
+    "lint:fix": "yarn lint",
+    "lint:forcefix": "yarn js-lint:forcefix",
+    "js-lint:forcefix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'",
+    "js-lint:check": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "test": "vitest --watch=false",
     "test:accessibility": "playwright test",
     "test-update-snapshot": "yarn test -- -u",

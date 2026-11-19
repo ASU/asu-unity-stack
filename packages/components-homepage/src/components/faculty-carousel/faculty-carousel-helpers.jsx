@@ -8,6 +8,7 @@ import {
 import { initVideoControls } from "../video-control/video-control.js";
 import { initFacultyCarousel } from "./faculty-carousel.js";
 import { stubSource } from "../hero/hero-helpers.jsx";
+import { innerHtml } from "../inner-html.js";
 
 export { emulateForcedColors } from "../rankings-cards/rankings-cards-helpers.jsx";
 export {
@@ -254,7 +255,7 @@ export const Harness = ({
       restores.forEach(restore => restore());
     };
   }, [html, manual, controlsFirst, fake]);
-  return <div ref={ref} dangerouslySetInnerHTML={{ __html: html }} />;
+  return <div ref={ref} dangerouslySetInnerHTML={innerHtml(html)} />;
 };
 
 // The real thing, no fakes: real playback, real sources and the real IntersectionObserver. Blank space above and
@@ -269,7 +270,7 @@ export const LiveHarness = ({ html }) => {
   return (
     <>
       <div style={{ height: "40vh" }} aria-hidden="true" />
-      <div ref={ref} dangerouslySetInnerHTML={{ __html: html }} />
+      <div ref={ref} dangerouslySetInnerHTML={innerHtml(html)} />
       <div style={{ height: "100vh" }} aria-hidden="true" />
     </>
   );

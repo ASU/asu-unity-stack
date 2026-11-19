@@ -46,7 +46,7 @@ export const SidebarMenu: React.FC<SidebarProps> = ({ title, links }) => {
         aria-expanded="false"
         aria-controls="sidebar-left"
       >
-        <p>Select Section</p>
+        <p>Select a Page</p>
         <span className="fas fa-chevron-up" />
       </div>
 
