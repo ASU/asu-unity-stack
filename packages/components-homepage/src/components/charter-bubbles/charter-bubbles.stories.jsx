@@ -38,6 +38,8 @@ export default {
     "NoScript",
     "EscapeAndOutsideCancelsPending",
     "ScrollEdgeDisabling",
+    "SecondClickCloses",
+    "HoverSizing",
   ],
   parameters: {
     docs: {
@@ -998,6 +1000,85 @@ export const OpenCloseFocus = {
   },
 };
 
+export const SecondClickCloses = {
+  ...viewport(1280),
+  render: () => <ReactPage />,
+  play: async ({ canvasElement }) => {
+    const root = canvasElement.querySelector("[data-charter-bubbles]");
+    const item = root.querySelector('[data-charter-bubble-id="employability"]');
+    const front = item.querySelector("[data-charter-bubble-open]");
+    const panel = item.querySelector("[data-charter-bubble-panel]");
+    const heading = panel.querySelector(".hp-charter-bubble__heading");
+    const detail = panel.querySelector(".hp-charter-bubble__detail");
+    const link = panel.querySelector("a[href]");
+    const close = panel.querySelector("[data-charter-bubble-close]");
+    const preceding = canvasElement.querySelector(
+      ".charter-bubbles-story__main"
+    );
+    await waitFor(() => expect(root).toHaveAttribute("data-layout", "cluster"));
+    window.scrollTo(
+      0,
+      window.scrollY + preceding.getBoundingClientRect().bottom - 400
+    );
+    await waitFor(() =>
+      expect(
+        Math.abs(preceding.getBoundingClientRect().bottom - 400)
+      ).toBeLessThanOrEqual(2)
+    );
+
+    const open = async () => {
+      await userEvent.click(front);
+      await waitFor(() => {
+        expect(root).toHaveAttribute("data-open-id", "employability");
+        expect(close).toHaveFocus();
+      });
+    };
+    const verifyClosed = async () => {
+      await waitFor(() => {
+        expect(root).not.toHaveAttribute("data-open-id");
+        expect(item).not.toHaveClass("is-open");
+        expect(front).toHaveAttribute("aria-expanded", "false");
+        expect(panel).toHaveAttribute("aria-hidden", "true");
+        expect(panel).toHaveAttribute("inert");
+        expect(front).toHaveFocus();
+      });
+    };
+
+    await open();
+    await userEvent.click(panel);
+    await verifyClosed();
+    await open();
+    if (realPointer.available) {
+      await realPointer.click(heading);
+    } else {
+      await userEvent.click(heading);
+    }
+    await verifyClosed();
+    await open();
+    await userEvent.click(detail);
+    await verifyClosed();
+    await open();
+
+    let linkActivated = false;
+    const observeLink = event => {
+      linkActivated = !event.defaultPrevented;
+      event.preventDefault(); // Keep the test in the story after native activation.
+    };
+    document.addEventListener("click", observeLink, { once: true });
+    await userEvent.click(link);
+    await expect(linkActivated).toBe(true);
+    await expect(root).toHaveAttribute("data-open-id", "employability");
+
+    await resizeViewport(393);
+    await waitFor(() => {
+      expect(root).toHaveAttribute("data-layout", "carousel");
+      expect(root).toHaveAttribute("data-open-id", "employability");
+    });
+    await userEvent.click(heading);
+    await expect(root).toHaveAttribute("data-open-id", "employability");
+  },
+};
+
 export const EscapeAndOutside = {
   ...viewport(1280),
   render: () => <ReactPage />,
@@ -1289,6 +1370,79 @@ export const BreakpointPreservesOpen = {
     await expect(root).toHaveClass("is-enhanced", "is-carousel");
     await expect(root).toHaveAttribute("data-open-id", "faculty");
     await expect(root.querySelectorAll(".is-open")).toHaveLength(1);
+  },
+};
+
+export const HoverSizing = {
+  ...viewport(1280),
+  render: () => <ReactPage />,
+  play: async ({ canvasElement }) => {
+    const root = canvasElement.querySelector("[data-charter-bubbles]");
+    const front = root.querySelector("[data-charter-bubble-open]");
+    const preceding = canvasElement.querySelector(
+      ".charter-bubbles-story__main"
+    );
+    await waitFor(() => {
+      expect(root).toHaveAttribute("data-layout", "cluster");
+      expect(root).toHaveAttribute("data-motion-ready", "true");
+      expect(root).not.toHaveAttribute("data-open-id");
+    });
+    window.scrollTo(
+      0,
+      window.scrollY + preceding.getBoundingClientRect().bottom - 400
+    );
+    await waitFor(() =>
+      expect(
+        Math.abs(preceding.getBoundingClientRect().bottom - 400)
+      ).toBeLessThanOrEqual(2)
+    );
+    const style = getComputedStyle(front);
+    await expect(parseFloat(style.width)).toBe(180);
+    await expect(parseFloat(style.height)).toBe(180);
+    const ratio = Number(
+      getComputedStyle(root).getPropertyValue("--hp-charter-emphasis").trim()
+    );
+    await expect(Number.isFinite(ratio)).toBe(true);
+    await expect(ratio).toBeCloseTo(200 / 180, 6);
+    if (!realPointer.available) return;
+
+    const property = "--hp-charter-emphasis";
+    const original = root.style.getPropertyValue(property);
+    const priority = root.style.getPropertyPriority(property);
+    const expectSize = async expected => {
+      await waitFor(() => {
+        const computed = getComputedStyle(front);
+        const matrix = new DOMMatrixReadOnly(computed.transform);
+        expect(
+          parseFloat(computed.width) * Math.hypot(matrix.m11, matrix.m12)
+        ).toBeCloseTo(expected, 2);
+        expect(
+          parseFloat(computed.height) * Math.hypot(matrix.m21, matrix.m22)
+        ).toBeCloseTo(expected, 2);
+      });
+    };
+    try {
+      await realPointer.hover(front);
+      await expect(front.matches(":hover")).toBe(true);
+      await expectSize(200);
+      root.style.setProperty(property, "1.05");
+      await expectSize(189);
+      if (original) root.style.setProperty(property, original, priority);
+      else root.style.removeProperty(property);
+      await expectSize(200);
+      await realPointer.unhover(front);
+      await expectSize(180);
+      root.classList.add("hp-charter-bubbles--reduced-motion");
+      await realPointer.hover(front);
+      await expect(front.matches(":hover")).toBe(true);
+      await expectSize(180);
+      await expect(getComputedStyle(front).transitionDuration).toBe("0s");
+    } finally {
+      root.classList.remove("hp-charter-bubbles--reduced-motion");
+      if (original) root.style.setProperty(property, original, priority);
+      else root.style.removeProperty(property);
+      await realPointer.unhover(front);
+    }
   },
 };
 

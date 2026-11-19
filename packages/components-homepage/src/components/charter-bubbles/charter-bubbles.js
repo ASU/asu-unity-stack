@@ -1011,6 +1011,20 @@ const bindBubbleTransitions = controller => {
     if (
       active &&
       controller.layout?.getMode?.() !== "carousel" &&
+      active.panel.contains(target)
+    ) {
+      const actionable = target.closest(FOCUSABLE_SELECTOR);
+      if (!actionable || !active.item.contains(actionable)) {
+        transitionTo(null, { returnFocus: true });
+        // A pointer click on static content may already have moved focus to
+        // the document body, so restore the trigger explicitly in this path.
+        focusSafely(active.front);
+      }
+      return;
+    }
+    if (
+      active &&
+      controller.layout?.getMode?.() !== "carousel" &&
       !active.item.contains(target)
     ) {
       transitionTo(null, { returnFocus: true });

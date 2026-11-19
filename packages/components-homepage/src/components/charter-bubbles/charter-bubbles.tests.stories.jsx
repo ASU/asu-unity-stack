@@ -7,6 +7,7 @@ import {
   EscapeAndOutsideCancelsPending as EscapeAndOutsideCancelsPendingStory,
   ForcedColors as ForcedColorsStory,
   HtmlParity as HtmlParityStory,
+  HoverSizing as HoverSizingStory,
   InvalidDataFallback as InvalidDataFallbackStory,
   LongContent as LongContentStory,
   MalformedContractsStayUnenhanced as MalformedContractsStayUnenhancedStory,
@@ -14,6 +15,7 @@ import {
   OpenCloseFocus as OpenCloseFocusStory,
   OpenResearch as OpenResearchStory,
   ReducedMotion as ReducedMotionStory,
+  SecondClickCloses as SecondClickClosesStory,
   ScrollEdgeDisabling as ScrollEdgeDisablingStory,
   StaticContract as StaticContractStory,
   TwoDefaultInstances as TwoDefaultInstancesStory,
@@ -46,6 +48,10 @@ export const HtmlParity = {
   ...HtmlParityStory,
 };
 
+export const HoverSizing = {
+  ...HoverSizingStory,
+};
+
 export const InvalidDataFallback = {
   ...InvalidDataFallbackStory,
 };
@@ -72,6 +78,10 @@ export const OpenResearch = {
 
 export const ReducedMotion = {
   ...ReducedMotionStory,
+};
+
+export const SecondClickCloses = {
+  ...SecondClickClosesStory,
 };
 
 export const StaticContract = {

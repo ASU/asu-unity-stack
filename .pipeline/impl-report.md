@@ -654,3 +654,79 @@ bfed8b308 test(components-homepage): charter-bubbles forced-colors, two-instance
 eea096b74 fix(components-homepage): charter-bubbles unique IDs, preserve breakpoint open, cancel rAFs  (cycle 5)
 ```
 
+# Implementation amendment: closed and hover size contract
+
+Status: **DONE_WITH_CONCERNS** — 2026-11-19
+
+## What was implemented
+
+Retained the 180px (`11.25rem`) closed circle. Changed
+`--hp-charter-emphasis` from the unused 200px length to the unitless
+`1.111111` ratio and made the hover transform consume it. Comments cite Jira
+comment 2634628: Figma aligns with the 180px closed circle, while the approved
+200px hover is prototype-derived and not a Figma measurement.
+
+## TDD evidence
+
+- Added `HoverSizing` to the existing stories and Tests sidebar. It measures
+  computed 180px dimensions, parses the complete unitless property, uses native
+  pointer hover and matrix scale to verify approximately 200px, overrides the
+  property to verify 189px, restores it, verifies unhover, and verifies reduced
+  motion. The property and pointer are restored in `finally`.
+- **RED:** `yarn test:storybook src/components/charter-bubbles/charter-bubbles.tests.stories.jsx -t 'Hover Sizing'` failed the finite ratio assertion because `12.5rem` is not a unitless number.
+- **GREEN:** the same command passed, including native hover and override.
+- **Affected suite:** `yarn test:storybook src/components/charter-bubbles/charter-bubbles.stories.jsx src/components/charter-bubbles/charter-bubbles.tests.stories.jsx` passed 30/30.
+- **Full package:** `yarn test:storybook` passed 334/337. Places' `Pause
+  control hidden while a campus is selected` failed (`none` versus `grid`);
+  Reimagine's `Entrance Animation` and `Entrance Reduced Motion` also failed.
+  A targeted rerun of those two files passed all seven Reimagine stories but
+  repeated the Places failure (35/36 overall). Neither component was changed.
+- Targeted Stylelint, ESLint, and `yarn build` passed. Existing Sass/Storybook
+  warnings remain. Storybook MCP test request did not return; browser CLI tests
+  ran successfully. Preview:
+  http://localhost:9050/?path=/story/homepage-charter-bubbles-tests--hover-sizing.
+
+## Files changed
+
+- `packages/components-homepage/src/components/charter-bubbles/_charter-bubbles.scss`
+- `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.stories.jsx`
+- `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.tests.stories.jsx`
+
+---
+
+# Implementation amendment: cluster second-click dismissal
+
+Status: **DONE** — 2026-11-19
+
+## What was implemented
+
+Clicking static content or the expanded back surface in cluster mode closes the
+open bubble and restores its trigger focus. Focusable descendants (including the
+link) keep their existing activation behavior. Carousel clicks remain unchanged.
+The existing Close/front/outside branches retain priority and behavior.
+
+## TDD evidence
+
+- Added `SecondClickCloses` to the existing charter-bubbles stories and Tests
+  sidebar. It exercises the back surface, heading with a real pointer in the
+  browser runner, detail, link activation, focus return, ARIA/inert state, and
+  carousel exclusion.
+- **RED:** `yarn test:storybook src/components/charter-bubbles/charter-bubbles.tests.stories.jsx -t 'Second Click Closes'` failed because `data-open-id` remained `employability` after clicking the open heading.
+- **GREEN:** the same command passed (1 passed, 18 skipped), including the real-pointer heading interaction.
+- Refactor: none. The change reuses the existing focusable selector and transition.
+- Broader checks: `yarn test:storybook` passed 336/336 across 14 files before
+  the final test-only change from simulated to real pointer; the final focused
+  test then passed. Targeted ESLint and `yarn build` passed. Scoped
+  `git diff --check` passed. Existing Sass/Storybook warnings remain.
+- Storybook MCP focused test request did not return during the run; the actual
+  Chromium Storybook CLI test and full suite passed. The preview is
+  http://localhost:9050/?path=/story/homepage-charter-bubbles-tests--second-click-closes.
+
+## Files changed
+
+- `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.js`
+- `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.stories.jsx`
+- `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.tests.stories.jsx`
+
+---
+
