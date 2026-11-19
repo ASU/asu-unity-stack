@@ -5,14 +5,32 @@
 # Usage:
 # - Run with env var:  SKIP_PUSH_HOOK=1 git push
 if [ "$SKIP_PUSH_HOOK" = "1" ]; then
-  echo "Skipping build and tests..."
+  echo "Skipping lint, tests, build, and critical dependency audit..."
   exit 0
 else
-  echo "Running build and tests..."
-  yarn test && yarn build
+  echo "Running build, tests, and critical dependency audit (build includes the full lint check)..."
+  zero_sha="0000000000000000000000000000000000000000"
+  pushed_ref_count=0
+  push_base=""
+
+  while read -r _local_ref local_sha _remote_ref remote_sha; do
+    [ "$local_sha" = "$zero_sha" ] && continue
+    pushed_ref_count=$((pushed_ref_count + 1))
+    if [ "$pushed_ref_count" -eq 1 ] && [ "$remote_sha" != "$zero_sha" ]; then
+      push_base="$remote_sha"
+    else
+      push_base=""
+    fi
+  done
+
+  if [ "$pushed_ref_count" -eq 1 ] && [ -n "$push_base" ]; then
+    PRE_PUSH_TEST_MODE=affected PRE_PUSH_BASE="$push_base" yarn pre-push
+  else
+    PRE_PUSH_TEST_MODE=all yarn pre-push
+  fi
 
   if [ $? -ne 0 ]; then
-    echo "Build or tests failed. Please fix errors before pushing or use 'SKIP_PUSH_HOOK=1 git push' to skip."
+    echo "Lint, tests, build, or critical dependency audit failed. Please fix errors before pushing or use 'SKIP_PUSH_HOOK=1 git push' to skip."
     exit 1
   fi
 fi
