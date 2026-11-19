@@ -1,5 +1,7 @@
 // Homepage "Make it yours": five photo tabs. Stacked through 768px (white head, inset photo, dark band with the tab
-// list) and side by side from 769px (full-bleed photo, content column on the right, 865px tall). APG Accordion.
+// list) and side by side from 769px (full-bleed photo, content column on the right, 865px tall). 769-1280px: two equal
+// columns with a 48px gap, centred heading that may wrap; 769-1124px the stage can grow past 865px and the head is
+// tighter; above 1280px: a 548px content column. APG Accordion.
 // Design doc: WWWCMS-237. Baseline (no script): every panel open, only the first photo; `initMakeItYours` adds
 // `.is-enhanced`, which turns on the accordion. Photos are HTML <img>/srcset; no CSS url() art here (vite.config.js).
 
@@ -12,13 +14,17 @@ $hp-myours-bp: 769px;
 $hp-myours-h: 865px;
 $hp-myours-col-w: 548px;
 $hp-myours-frame: 1920px;
+$hp-myours-wide-max: 1280px; // up to here the two columns split 50/50
+// Up to here the half-width column is too narrow for the copy in 865px, so the stage grows and the head is tighter.
+// "About 1024": measured, max-length copy fits the fixed 865px stage from 1125px (it overflows at 1025-1100).
+// Keep equal to MID in make-it-yours.js.
+$hp-myours-mid-max: 1124px;
+$hp-myours-tabs-top-mid: 64px; // gap above the tab list in that range (150px above it)
 $hp-myours-row: 44px; // touch target
 $hp-myours-bar-w: 4px;
 $hp-myours-bar-inset: calc(#{$hp-myours-bar-w} + #{$uds-size-spacing-3}); // bar plus the 24px gap to the text
 $hp-myours-tabs-top: 150px; // gap above the tab list: title 1 sits about 450px from the top of the stage
 $hp-myours-chip-w: 536px; // caption chip max width
-$hp-myours-chip-w-narrow: 280px; // caption chip max width below 1024px
-$hp-myours-chip-wide-bp: 1024px; // the wide chip starts here, as desktop starts at 1024 in faculty-carousel and places
 $hp-myours-scrim-feather: 96px; // the scrim fades in over 96px left of the content column
 $hp-myours-ease: cubic-bezier(0.4, 0, 0.2, 1);
 $hp-myours-chip-bg: rgba($asu-gray-1, 0.6); // 0.5 fails caption contrast (3.47:1) on tabs 3 and 4; 0.55 still fails
@@ -418,9 +424,6 @@ $hp-myours-chip-edge: $asu-gray-3; // #747474
     color: $uds-color-base-white;
     font-size: $uds-size-font-small;
     line-height: 1.25;
-    @media not all and (min-width: $hp-myours-chip-wide-bp) {
-      max-width: $hp-myours-chip-w-narrow;
-    }
   }
 
   // Soft dark panel behind the content column, one identical strength for all five photos (not in the mockups).
@@ -470,11 +473,11 @@ $hp-myours-chip-edge: $asu-gray-3; // #747474
     white-space: nowrap;
   }
 
-  // The swash runs under "it yours": measured from the 1920 screenshot (266px wide, 91px left of "yours" at 88px).
+  // The swash runs under "yours" only, at every width (the stacked values: 4% left, 113% wide).
   // Bottom -0.06em puts it at the baseline, 0.18em higher than the old swash (.scrib--myours, -0.24em) (intake desktop screenshot).
   .hp-myours__heading--lead .hp-myours__scrib {
-    --scrib-left: -1.03em;
-    --scrib-width: 3.02em;
+    --scrib-left: -4%;
+    --scrib-width: 113%;
     --scrib-bottom: -0.06em;
     max-width: none;
   }
@@ -526,6 +529,69 @@ $hp-myours-chip-edge: $asu-gray-3; // #747474
   }
 }
 
+// ---- 769px to 1280px: photo half (caption) and content half (title + accordion) are 50% each. Stacked at 768 and below. ----
+@media (min-width: $hp-myours-bp) and (max-width: $hp-myours-wide-max) {
+  .hp-myours__stage {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: $uds-size-spacing-6; // 48px between the caption column and the content column
+  }
+  // Caption stays inside the left half, with the same 48px edge inset on both sides.
+  .hp-myours__caption {
+    max-width: calc(50% - #{$uds-size-spacing-6} * 2);
+  }
+  // Scrim covers the right half plus its feather.
+  .hp-myours__stage::after {
+    // The content column starts at 50% + inset/2 - 24px from the right edge's side (half of the width left after the
+    // right padding and the 48px gap), so the scrim covers that plus its feather.
+    width: calc(
+      50% + var(--hp-myours-inset-r) / 2 - #{$uds-size-spacing-3} + #{$hp-myours-scrim-feather}
+    );
+  }
+  // The heading scales with the viewport and wraps ("Make it" / "yours") when the column is too narrow for one line.
+  // The underlined last word carries the scribble, so it works on either line.
+  .hp-myours__heading {
+    font-size: clamp(
+      4rem,
+      7vw,
+      5.5rem
+    ); // TODO: no token (64px at 769 to 88px at 1257+)
+    white-space: normal;
+    text-wrap: balance;
+    text-align: center;
+  }
+}
+// ---- 769px to 1124px: the stage grows past 865px when the copy needs it, and the head takes less height ----
+// make-it-yours.js reserves the tallest open tab list here too (--hp-myours-tabs-min), so the stage keeps one height
+// for every tab. 24px of padding keeps the open tab 24px above the stage bottom.
+@media (min-width: $hp-myours-bp) and (max-width: $hp-myours-mid-max) {
+  .hp-myours__stage {
+    height: auto;
+    min-height: $hp-myours-h;
+    padding-bottom: $uds-size-spacing-3;
+  }
+  .hp-myours__head {
+    padding-top: $uds-size-spacing-6; // 48px (80px above 1124)
+  }
+  .hp-myours__heading {
+    font-size: clamp(
+      3.5rem,
+      6vw,
+      4rem
+    ); // TODO: no token (56px at 769, 64px from 1067)
+    // Room for the swash, which overhangs "yours" by about 0.1em left and 0.23em right: without it the one-line
+    // heading spills 5-12px out of the column at 769-800. With it, "yours" wraps to a second line there.
+    padding-inline: 0.25em;
+  }
+  .hp-myours__intro {
+    max-width: none; // the full column width: fewer lines
+  }
+  .hp-myours__tabs {
+    margin-top: $hp-myours-tabs-top-mid;
+  }
+  .hp-myours__list {
+    min-height: var(--hp-myours-tabs-min, 0);
+  }
+}
 // ---- Forced colors: system colors, opaque panels (last, so it wins over the desktop `background: none`) ----
 
 @media (forced-colors: active) {
