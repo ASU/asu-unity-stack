@@ -121,7 +121,8 @@ Default.args = {
   loggedIn: false,
   userName: "",
   navTree: basicNavTree,
-  title: "Subdomain name Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+  title:
+    "Subdomain name Lorem ipsum dolor sit amet, consectetur adipiscing elit",
   breakpoint: "Lg",
   searchUrl: "https://search.asu.edu/search",
   site: "subdomain",
@@ -133,7 +134,8 @@ Empty.args = {};
 
 export const NoNavigation = Template.bind({});
 NoNavigation.args = {
-  title: "Subdomain name Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+  title:
+    "Subdomain name Lorem ipsum dolor sit amet, consectetur adipiscing elit",
   loggedIn: true,
   userName: "Sparky",
   logoutLink: "/caslogout",
@@ -144,7 +146,8 @@ NoNavigation.args = {
 
 export const NoNavigationWithButtons = Template.bind({});
 NoNavigationWithButtons.args = {
-  title: "Subdomain name Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+  title:
+    "Subdomain name Lorem ipsum dolor sit amet, consectetur adipiscing elit",
   buttons: [
     {
       href: "/",
@@ -172,7 +175,8 @@ BreakpointXL.args = {
   logoutLink: "/caslogout",
   loginLink: "/cas",
   navTree: basicNavTree,
-  title: "Subdomain name Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+  title:
+    "Subdomain name Lorem ipsum dolor sit amet, consectetur adipiscing elit",
   parentOrg: "Parent unit name",
   parentOrgUrl: "https://engineering.asu.edu",
   breakpoint: "Xl",
@@ -188,7 +192,8 @@ WithMobileNavTree.args = {
   loginLink: "/cas",
   navTree: basicNavTree,
   mobileNavTree,
-  title: "Subdomain name Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+  title:
+    "Subdomain name Lorem ipsum dolor sit amet, consectetur adipiscing elit",
   parentOrg: "Parent unit name",
   parentOrgUrl: "https://engineering.asu.edu",
   breakpoint: "Xl",
@@ -199,7 +204,8 @@ WithMobileNavTree.args = {
 export const WithButtons = Template.bind({});
 WithButtons.args = {
   navTree: navTreeWithButtons,
-  title: "Subdomain name Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+  title:
+    "Subdomain name Lorem ipsum dolor sit amet, consectetur adipiscing elit",
   buttons: [
     {
       href: "/",
@@ -224,7 +230,8 @@ WithButtons.args = {
 export const WithMenuColumns = Template.bind({});
 WithMenuColumns.args = {
   navTree: navTreeMega,
-  title: "Subdomain name Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+  title:
+    "Subdomain name Lorem ipsum dolor sit amet, consectetur adipiscing elit",
   parentOrg: "Parent unit name",
   parentOrgUrl: "https://engineering.asu.edu",
   loggedIn: true,
@@ -238,7 +245,8 @@ WithMenuColumns.args = {
 export const ExpandOnHover = Template.bind({});
 ExpandOnHover.args = {
   navTree: navTreeMega,
-  title: "Subdomain name Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+  title:
+    "Subdomain name Lorem ipsum dolor sit amet, consectetur adipiscing elit",
   parentOrg: "Parent unit name",
   parentOrgUrl: "https://engineering.asu.edu",
   loggedIn: true,
@@ -276,7 +284,8 @@ Unbranded.args = {
 
 export const AnimatedTitle = AnimatedTitleTemplate.bind({});
 AnimatedTitle.args = {
-  title: "Subdomain name Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+  title:
+    "Subdomain name Lorem ipsum dolor sit amet, consectetur adipiscing elit",
   navTree: basicNavTree,
   loggedIn: false,
   logoutLink: "/caslogout",

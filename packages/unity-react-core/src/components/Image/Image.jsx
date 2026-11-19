@@ -73,7 +73,7 @@ export const Image = ({
     return (
       <>
         {buttons && (
-          <div className="card-buttons" style={{marginTop: caption?20:0}}>
+          <div className="card-buttons" style={{ marginTop: caption ? 20 : 0 }}>
             {buttons.map(button => (
               <div
                 className="card-button"
@@ -104,22 +104,24 @@ export const Image = ({
       <div className={borderAndDropShadowClasses}>
         <figure className="figure uds-figure">
           {renderImage()}
-            <figcaption className="figure-caption uds-figure-caption">
-              {captionTitle && <h3>{captionTitle}</h3>}
-              {caption &&
+          <figcaption className="figure-caption uds-figure-caption">
+            {captionTitle && <h3>{captionTitle}</h3>}
+            {caption && (
               <span
                 className="uds-caption-text"
                 dangerouslySetInnerHTML={sanitizeDangerousMarkup(caption)}
-              />}
-               {renderButtons()}
-            </figcaption>
+              />
+            )}
+            {renderButtons()}
+          </figcaption>
         </figure>
       </div>
     );
   };
 
-  return buttons || caption ? renderFigure() : renderImage(borderAndDropShadowClasses);
-
+  return buttons || caption
+    ? renderFigure()
+    : renderImage(borderAndDropShadowClasses);
 };
 
 Image.propTypes = {

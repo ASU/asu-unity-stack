@@ -96,9 +96,7 @@ const BaseCarousel = ({
 
       {CustomNavComponent ? (
         // @ts-ignore
-        <CustomNavComponent
-          instanceName={instanceName}
-        />
+        <CustomNavComponent instanceName={instanceName} />
       ) : (
         <>
           {hasPositionIndicators && <BulletItems buttonCount={buttonCount} />}
