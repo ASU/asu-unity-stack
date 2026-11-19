@@ -1,3 +1,10 @@
+# [@asu/unity-react-core-v2.5.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.5.2...@asu/unity-react-core-v2.5.3) (2026-11-19)
+
+
+### Bug Fixes
+
+* **unity-react-core:** sub title text testing for small hero ([e4c8376](https://github.com/ASU/asu-unity-stack/commit/e4c8376ef5dd3709b50f768fcfc4af1ded4a3fb5))
+
 # [@asu/unity-react-core-v2.5.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.5.1...@asu/unity-react-core-v2.5.2) (2026-11-14)
 
 
