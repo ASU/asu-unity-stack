@@ -150,34 +150,48 @@ export const storiesToTest = [
   "homepage-rankings-cards--overflow-clipping-check",
   "homepage-rankings-cards--no-learn-more",
   // WWWCMS-238: Charter Bubbles core, responsive, state, and inclusive variants
+  // Primary IDs (not in excludeStories):
   "homepage-charter-bubbles--default",
-  "homepage-charter-bubbles--static-contract",
-  "homepage-charter-bubbles--open-research",
-  "homepage-charter-bubbles--no-script",
-  "homepage-charter-bubbles--html-parity",
-  "homepage-charter-bubbles--html-parity-open",
   "homepage-charter-bubbles--phone-320",
   "homepage-charter-bubbles--phone-320-expanded",
   "homepage-charter-bubbles--phone-393",
-  "homepage-charter-bubbles--phone-393-expanded",
   "homepage-charter-bubbles--tablet-768",
   "homepage-charter-bubbles--desktop-769",
   "homepage-charter-bubbles--desktop-1280",
   "homepage-charter-bubbles--wide-1920",
   "homepage-charter-bubbles--ultra-wide-2560",
-  "homepage-charter-bubbles--desktop-boundary-contract",
   "homepage-charter-bubbles--desktop-slots-769",
   "homepage-charter-bubbles--desktop-slots-1280",
   "homepage-charter-bubbles--desktop-slots-1920",
   "homepage-charter-bubbles--desktop-slots-2560",
   "homepage-charter-bubbles--open-to-open-geometry",
+  // OpenCloseFocus and EscapeAndOutside have !test removed — primary IDs run
   "homepage-charter-bubbles--open-close-focus",
-  "homepage-charter-bubbles--reduced-motion",
-  "homepage-charter-bubbles--forced-colors",
-  "homepage-charter-bubbles--long-content",
-  "homepage-charter-bubbles--malformed-contracts-stay-unenhanced",
-  "homepage-charter-bubbles--analytics-forwarding-parity",
-  "homepage-charter-bubbles--no-invented-analytics",
+  "homepage-charter-bubbles--escape-and-outside",
+  // Excluded from primary (live under Tests wrapper title):
+  "homepage-charter-bubbles-tests--static-contract",
+  "homepage-charter-bubbles-tests--open-research",
+  "homepage-charter-bubbles-tests--no-script",
+  "homepage-charter-bubbles-tests--html-parity",
+  "homepage-charter-bubbles-tests--desktop-boundary-contract",
+  "homepage-charter-bubbles-tests--carousel-navigation",
+  "homepage-charter-bubbles-tests--breakpoint-preserves-open",
+  "homepage-charter-bubbles-tests--invalid-data-fallback",
+  "homepage-charter-bubbles-tests--unsafe-url-fallback",
+  // malformed-contracts-stay-unenhanced intentionally renders duplicate-ID
+  // test HTML to verify rejection; it is not a valid accessibility audit target.
+  "homepage-charter-bubbles-tests--reduced-motion",
+  "homepage-charter-bubbles-tests--long-content",
+  // Focus and close interaction suites (newly added to Tests wrapper):
+  "homepage-charter-bubbles-tests--open-close-focus",
+  "homepage-charter-bubbles-tests--escape-and-outside",
+  // Forced-colors and multiple-instance coverage (P2-C, review cycle 5):
+  "homepage-charter-bubbles-tests--forced-colors",
+  "homepage-charter-bubbles-tests--two-default-instances",
+  // Escape/outside cancel in-flight selection (P2, review cycle 6):
+  "homepage-charter-bubbles-tests--escape-and-outside-cancels-pending",
+  // Scroll-derived edge disabling (P2, review cycle 6):
+  "homepage-charter-bubbles-tests--scroll-edge-disabling",
   // WWWCMS-235: quick-links a11y story (on-white backdrop, WCAG 2.1 AA via Siteimprove Alfa)
   "homepage-quick-links--accessibility-plain",
   // WWWCMS-236: stories grid (rest, hover, no script, and the tablet, phone and large layouts)

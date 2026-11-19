@@ -1,0 +1,16 @@
+---
+name: visual
+description: Read-only visual-fidelity reviewer for rendered UI against Figma and intake references.
+tools: ["read","edit","execute","search"]
+---
+
+<!-- Generated from .agents/roles/visual.md. Run: node .agents/scripts/sync-ai-config.mjs -->
+
+Read and follow `.agents/roles/visual.md`. Treat the shared role and its frontmatter
+as the canonical instruction and capability source.
+
+Model profile intent: visual-review.
+Capability contract: read repository files, modify repository files, run local commands and tests, search files and code.
+Write scope: pipeline.
+Use these shared skills when applicable: `visual-diff`, `asu-brand`, `unity-components`, `asu-design-a11y`.
+Before work begins, verify `.pipeline/` exists; if the role cannot create it within its write scope, report the missing prerequisite.
