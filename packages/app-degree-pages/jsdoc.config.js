@@ -22,4 +22,9 @@ module.exports = {
       "./src/core/types/shared-local-types.js",
     ],
   },
+  externals: {
+    'react-dom/client': 'ReactDOM',
+    'react-dom': 'ReactDOM',
+    'react': 'React',
+  },
 };

@@ -19,7 +19,7 @@ export const horizontalCardsMap = ({ type = "", numCards = 1 }) => {
               height="337"
               loading="lazy"
               decoding="async"
-              fetchpriority="high"
+              fetchPriority="high"
             />
             <div className="card-content-wrapper">
               <div className="card-header">

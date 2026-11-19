@@ -25,7 +25,7 @@ export const ImageOverlapRightOrLeft = ({ left }) => {
         height="600"
         loading="lazy"
         decoding="async"
-        fetchpriority="high"
+        fetchPriority="high"
       />
       <div className="content-wrapper">
         <h3>This is the content that goes in the box.</h3>

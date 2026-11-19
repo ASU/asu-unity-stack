@@ -25,7 +25,7 @@ export const LargeImageNoCaptionComponent = ({ dropShadow }) => {
         height="750"
         loading="lazy"
         decoding="async"
-        fetchpriority="high"
+        fetchPriority="high"
       />
     </div>
   );
@@ -43,7 +43,7 @@ export const LargeImageCaptionComponent = ({ dropShadow }) => {
           height="600"
           loading="lazy"
           decoding="async"
-          fetchpriority="high"
+          fetchPriority="high"
         />
         <figcaption className="figure-caption uds-figure-caption">
           <span className="uds-caption-text">

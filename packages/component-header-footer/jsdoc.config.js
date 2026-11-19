@@ -14,4 +14,9 @@ module.exports = {
       "./src/footer/components",
     ],
   },
+  externals: {
+    'react-dom/client': 'ReactDOM',
+    'react-dom': 'ReactDOM',
+    'react': 'React',
+  },
 };

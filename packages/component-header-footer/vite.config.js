@@ -14,11 +14,12 @@ export default defineConfig({
     },
     rollupOptions: {
       input: resolve(__dirname, "src/index.js"),
-      external: [...Object.keys(pkg.peerDependencies)],
+      external: [...Object.keys(pkg.peerDependencies), "react-dom/client"],
       output: {
         globals: {
           "react": "React",
           "react-dom": "ReactDOM",
+          "react-dom/client": "ReactDOM"
         },
       },
     },
