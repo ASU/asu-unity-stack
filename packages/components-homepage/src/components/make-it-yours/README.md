@@ -6,8 +6,8 @@ Side-by-side widths:
 
 | Width | Columns | Caption chip | Heading | Swash |
 |---|---|---|---|---|
-| 769-1280px | two equal columns (after the right inset), 48px gap | at most 50% of the stage minus 48px on each side | `clamp(64px, 7vw, 88px)`, centred, wraps to two lines when the column is too narrow | under "yours" only (stacked values: 4% left, 113% wide) |
-| 1281px and up | 548px content column | at most 536px | 88px, one line, left | under "it yours" (1.03em left, 3.02em wide) |
+| 769-1280px | two equal columns (after the right inset), 48px gap | at most 50% of the stage minus 48px on each side | `clamp(64px, 7vw, 88px)`, centred, wraps to two lines when the column is too narrow | under "yours" only (4% left, 113% wide) |
+| 1281px and up | 548px content column | at most 536px | 88px, one line, left | under "yours" only (4% left, 113% wide) |
 
 ## Files
 
@@ -114,6 +114,5 @@ It measures white text over each photo at 769, 1024, 1280, 1920, 2500 and 3934 p
 
 - R2: with JS off on a desktop screen, tabs 1, 3 and 5 show the mobile alt, which describes a different crop. A `<picture>` has one `alt`. Captions are not affected.
 - 769-1280 column fit: in the 50/50 layout the content column is narrower than 548px. At 769 and 800px the current copy overflows the 865px stage (its content reaches about 927px at 769) and max-length copy reaches about 1100px. At 900 and 1024px the one-line heading's swash overhangs the column by 1-6px, which trips the heading overflow check. The `MaxLengthContent` story fails at 769 until the limits, the stage height or the layout in that range is decided.
-- D1: above 1280px the desktop heading swash is calibrated for a one-word lead-in ("it") before the underlined word ("yours"). A longer phrase gives a swash that is too short on desktop.
 - Without JS on desktop all five panels are open, so the section can be taller than 865px.
 - LTR only: the layout uses physical directions (`left`, `right`, `padding-left`, `text-align: left`). A right-to-left page would need logical properties.

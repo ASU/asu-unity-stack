@@ -467,11 +467,11 @@ $hp-myours-chip-edge: $asu-gray-3; // #747474
     white-space: nowrap;
   }
 
-  // The swash runs under "it yours": measured from the 1920 screenshot (266px wide, 91px left of "yours" at 88px).
+  // The swash runs under "yours" only, at every width (the stacked values: 4% left, 113% wide).
   // Bottom -0.06em puts it at the baseline, 0.18em higher than the old swash (.scrib--myours, -0.24em) (intake desktop screenshot).
   .hp-myours__heading--lead .hp-myours__scrib {
-    --scrib-left: -1.03em;
-    --scrib-width: 3.02em;
+    --scrib-left: -4%;
+    --scrib-width: 113%;
     --scrib-bottom: -0.06em;
     max-width: none;
   }
@@ -552,14 +552,6 @@ $hp-myours-chip-edge: $asu-gray-3; // #747474
     white-space: normal;
     text-wrap: balance;
     text-align: center;
-  }
-  // Here the swoosh sits under "yours" only (the stacked values), not under "it yours".
-  .hp-myours__heading--lead .hp-myours__scrib,
-  .hp-myours__heading .hp-myours__scrib {
-    --scrib-left: -4%;
-    --scrib-width: 113%;
-    --scrib-bottom: -0.06em;
-    max-width: none;
   }
 }
 // ---- Forced colors: system colors, opaque panels (last, so it wins over the desktop `background: none`) ----

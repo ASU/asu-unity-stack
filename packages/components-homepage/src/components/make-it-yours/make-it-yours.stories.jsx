@@ -593,14 +593,15 @@ export const HeadingUnderline = {
       expect(style(p.heading).textAlign).toBe("center");
       expect(style(p.heading).whiteSpace).toBe("normal");
     }
-    // Above 1280: it runs from 1.03em left of "yours", 3.02em wide, under "it yours".
-    await atWidth(1440, 900);
-    p = parts(canvasElement);
-    expect(style(p.heading).whiteSpace).toBe("nowrap");
-    const em = px(style(p.host).fontSize);
-    near(box(p.host).left - box(p.scrib).left, 1.03 * em, 2);
-    near(box(p.scrib).width, 3.02 * em, 2);
-    expect(box(p.scrib).left).toBeLessThan(box(p.lead).right);
+    // Above 1280: one line, and the swash still sits under "yours" only, clear of "it".
+    for (const width of [1440, 1920]) {
+      await atWidth(width, 900);
+      p = parts(canvasElement);
+      expect(style(p.heading).whiteSpace).toBe("nowrap");
+      near(box(p.scrib).left - box(p.host).left, -box(p.host).width * 0.04, 2);
+      near(box(p.scrib).width, box(p.host).width * 1.13, 2);
+      expect(box(p.scrib).left).toBeGreaterThan(box(p.lead).right);
+    }
     // Desktop: the bottom edge also hangs 0.06em below the host (0.18em higher than the old -0.24em), at every desktop width.
     for (const width of [1280, 1440, 1920]) {
       await atWidth(width, 900);
