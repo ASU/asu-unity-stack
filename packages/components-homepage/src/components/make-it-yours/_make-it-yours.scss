@@ -1,6 +1,7 @@
 // Homepage "Make it yours": five photo tabs. Stacked through 768px (white head, inset photo, dark band with the tab
 // list) and side by side from 769px (full-bleed photo, content column on the right, 865px tall). 769-1280px: two equal
-// columns with a 48px gap, centred heading that may wrap; above 1280px: a 548px content column. APG Accordion.
+// columns with a 48px gap, centred heading that may wrap; 769-1124px the stage can grow past 865px and the head is
+// tighter; above 1280px: a 548px content column. APG Accordion.
 // Design doc: WWWCMS-237. Baseline (no script): every panel open, only the first photo; `initMakeItYours` adds
 // `.is-enhanced`, which turns on the accordion. Photos are HTML <img>/srcset; no CSS url() art here (vite.config.js).
 
@@ -14,6 +15,11 @@ $hp-myours-h: 865px;
 $hp-myours-col-w: 548px;
 $hp-myours-frame: 1920px;
 $hp-myours-wide-max: 1280px; // up to here the two columns split 50/50
+// Up to here the half-width column is too narrow for the copy in 865px, so the stage grows and the head is tighter.
+// "About 1024": measured, max-length copy fits the fixed 865px stage from 1125px (it overflows at 1025-1100).
+// Keep equal to MID in make-it-yours.js.
+$hp-myours-mid-max: 1124px;
+$hp-myours-tabs-top-mid: 64px; // gap above the tab list in that range (150px above it)
 $hp-myours-row: 44px; // touch target
 $hp-myours-bar-w: 4px;
 $hp-myours-bar-inset: calc(#{$hp-myours-bar-w} + #{$uds-size-spacing-3}); // bar plus the 24px gap to the text
@@ -552,6 +558,38 @@ $hp-myours-chip-edge: $asu-gray-3; // #747474
     white-space: normal;
     text-wrap: balance;
     text-align: center;
+  }
+}
+// ---- 769px to 1124px: the stage grows past 865px when the copy needs it, and the head takes less height ----
+// make-it-yours.js reserves the tallest open tab list here too (--hp-myours-tabs-min), so the stage keeps one height
+// for every tab. 24px of padding keeps the open tab 24px above the stage bottom.
+@media (min-width: $hp-myours-bp) and (max-width: $hp-myours-mid-max) {
+  .hp-myours__stage {
+    height: auto;
+    min-height: $hp-myours-h;
+    padding-bottom: $uds-size-spacing-3;
+  }
+  .hp-myours__head {
+    padding-top: $uds-size-spacing-6; // 48px (80px above 1124)
+  }
+  .hp-myours__heading {
+    font-size: clamp(
+      3.5rem,
+      6vw,
+      4rem
+    ); // TODO: no token (56px at 769, 64px from 1067)
+    // Room for the swash, which overhangs "yours" by about 0.1em left and 0.23em right: without it the one-line
+    // heading spills 5-12px out of the column at 769-800. With it, "yours" wraps to a second line there.
+    padding-inline: 0.25em;
+  }
+  .hp-myours__intro {
+    max-width: none; // the full column width: fewer lines
+  }
+  .hp-myours__tabs {
+    margin-top: $hp-myours-tabs-top-mid;
+  }
+  .hp-myours__list {
+    min-height: var(--hp-myours-tabs-min, 0);
   }
 }
 // ---- Forced colors: system colors, opaque panels (last, so it wins over the desktop `background: none`) ----

@@ -21,7 +21,7 @@ export default {
     docs: {
       description: {
         component:
-          'Homepage "Make it yours" section (WWWCMS-237): five photo tabs (degree, format, community, experience, cost). Stacked through 768px (white head, inset photo, dark band with the tab list) and side by side from 769px (full-bleed photo, content column on the right, 865px tall; 769-1280px two equal columns with a 48px gap and a centred, wrapping heading). WAI-ARIA APG Accordion: one panel is always open. Without script every panel is open and only the first photo shows. `initMakeItYours` wires it.',
+          'Homepage "Make it yours" section (WWWCMS-237): five photo tabs (degree, format, community, experience, cost). Stacked through 768px (white head, inset photo, dark band with the tab list) and side by side from 769px (full-bleed photo, content column on the right, 865px tall; 769-1280px two equal columns with a 48px gap and a centred, wrapping heading; 769-1124px the stage grows with the copy). WAI-ARIA APG Accordion: one panel is always open. Without script every panel is open and only the first photo shows. `initMakeItYours` wires it.',
       },
     },
   },
@@ -360,23 +360,34 @@ const desktopParts = canvasElement => ({
   photos: find(canvasElement, ".hp-myours__photos"),
 });
 const FRAME = 1920;
+// 769-1124 (MID in make-it-yours.js): the stage grows past 865px with the copy, and keeps one height for every tab.
+const MID_MAX = 1124;
+const expectStageHeight = (stage, width) => {
+  if (width <= MID_MAX) {
+    expect(box(stage).height).toBeGreaterThanOrEqual(865 - 1);
+  } else {
+    near(box(stage).height, 865, 1);
+  }
+};
 // Geometry shared by every desktop width (design doc 12.1): 865px stage, photo fills it, chip 48px in from the
 // bottom and from the left edge of the 1920px frame, heading 88px.
 const expectDesktopStage = (canvasElement, width) => {
   const p = desktopParts(canvasElement);
   expect(style(p.stage).display).toBe("grid");
-  near(box(p.stage).height, 865, 1);
+  expectStageHeight(p.stage, width);
   near(box(p.stage).width, width, 1);
   near(box(p.photos).width, width, 1);
   near(box(p.img).width, width, 1);
-  near(box(p.img).height, 865, 1);
+  near(box(p.img).height, box(p.stage).height, 1);
   expect(style(p.img).objectFit).toBe("cover");
-  // Up to 1280 the heading scales (7vw, 64px to 88px); above it is 88px.
-  near(
-    px(style(p.heading).fontSize),
-    width <= 1280 ? Math.min(88, Math.max(64, width * 0.07)) : 88,
-    1
-  );
+  // 769-1124: 56px to 64px (6vw); up to 1280: 64px to 88px (7vw); above: 88px.
+  const heading =
+    width <= MID_MAX
+      ? Math.min(64, Math.max(56, width * 0.06))
+      : width <= 1280
+        ? Math.min(88, Math.max(64, width * 0.07))
+        : 88;
+  near(px(style(p.heading).fontSize), heading, 1);
   near(box(p.stage).bottom - box(p.caption).bottom, 48, 1);
   near(box(p.caption).left, Math.max(48, (width - FRAME) / 2 + 48), 1);
   noHorizontalOverflow();
@@ -427,7 +438,7 @@ export const Boundary769 = {
     await expect(window.matchMedia("(min-width: 769px)").matches).toBe(true);
     const p = desktopParts(canvasElement);
     await expect(style(p.stage).display).toBe("grid");
-    near(box(p.stage).height, 865, 1);
+    expectStageHeight(p.stage, 769);
     await waitFor(() =>
       expect(p.img.currentSrc).toMatch(/design-your-degree(-\d+)?\.webp$/)
     );
@@ -1067,13 +1078,17 @@ export const ResizeAcrossBreakpoint = {
     );
     await waitFor(() => expect(tabsMinOf(canvasElement)).toMatch(/^\d+px$/));
     await expectOpenTab(canvasElement, 2);
-    // 769: side by side again.
+    // 769: side by side again. 769-1124 keeps the list reserve (the stage can grow there).
     await atWidth(769, 900);
     await waitFor(() =>
       expect(activeImg(canvasElement).getAttribute("alt")).toBe(tab.desktop.alt)
     );
-    await waitFor(() => expect(tabsMinOf(canvasElement)).toBe(""));
+    await waitFor(() => expect(tabsMinOf(canvasElement)).toMatch(/^\d+px$/));
     await expectOpenTab(canvasElement, 2);
+    expectStageHeight(find(canvasElement, ".hp-myours__stage"), 769);
+    // 1125: fixed 865px stage, no reserve.
+    await atWidth(1125, 900);
+    await waitFor(() => expect(tabsMinOf(canvasElement)).toBe(""));
     near(box(find(canvasElement, ".hp-myours__stage")).height, 865, 1);
     // And once more down to a phone width.
     await atWidth(393, 852);
@@ -1456,8 +1471,24 @@ const expectFitsStage = async canvasElement => {
   const stage = find(canvasElement, ".hp-myours__stage");
   const heading = find(canvasElement, ".hp-myours__heading");
   const items = list(canvasElement, ".hp-myours__item");
-  near(box(stage).height, 865, 1);
-  expect(heading.scrollWidth).toBeLessThanOrEqual(heading.clientWidth);
+  // After a resize the script re-measures the list reserve in the next frame; let it settle first.
+  await new Promise(resolve =>
+    requestAnimationFrame(() => requestAnimationFrame(resolve))
+  );
+  expectStageHeight(stage, window.innerWidth);
+  const height = box(stage).height;
+  // The heading text stays inside its column. The swash is decoration and may overhang "yours" (113% wide),
+  // so it is checked against the stage, not the column.
+  const range = document.createRange();
+  range.selectNodeContents(heading);
+  const text = Array.from(range.getClientRects());
+  const column = box(heading);
+  text.forEach(rect => {
+    expect(rect.left).toBeGreaterThanOrEqual(column.left - 1);
+    expect(rect.right).toBeLessThanOrEqual(column.right + 1);
+  });
+  const scrib = heading.querySelector(".hp-myours__scrib");
+  if (scrib) expect(box(scrib).right).toBeLessThanOrEqual(box(stage).right);
   for (let i = 0; i < 5; i += 1) {
     if (trig(canvasElement, i).getAttribute("aria-expanded") !== "true") {
       await userEvent.click(trig(canvasElement, i));
@@ -1471,10 +1502,17 @@ const expectFitsStage = async canvasElement => {
     expect(box(items[i]).bottom).toBeLessThanOrEqual(box(stage).bottom - 24);
     expect(stage.scrollHeight).toBeLessThanOrEqual(stage.clientHeight);
     expect(inner.scrollHeight).toBeLessThanOrEqual(inner.clientHeight + 1);
-    // One line: the CTA is its 24px line plus the 1px underline; every title is one 44px row.
-    expect(box(cta).height).toBeLessThanOrEqual(26);
+    // One height for every tab (in 769-1124 the reserve holds it).
+    near(box(stage).height, height, 1);
+    // Above 1124 (fixed 865px stage): one line, the CTA is its 24px line plus the 1px underline, and every title
+    // is one 44px row. In 769-1124 the stage grows, so a max-length CTA or title may wrap; a title is still at
+    // least a 44px touch target.
+    if (window.innerWidth > MID_MAX)
+      expect(box(cta).height).toBeLessThanOrEqual(26);
     list(canvasElement, ".hp-myours__trigger").forEach(trigger =>
-      near(box(trigger).height, 44, 1)
+      window.innerWidth > MID_MAX
+        ? near(box(trigger).height, 44, 1)
+        : expect(box(trigger).height).toBeGreaterThanOrEqual(44 - 1)
     );
   }
 };
@@ -1493,7 +1531,7 @@ export const MaxLengthContent = {
     });
     await emulateReducedMotion(true);
     try {
-      for (const width of [769, 1280, 1920, 3934]) {
+      for (const width of [769, 900, 1024, 1124, 1125, 1280, 1920, 3934]) {
         await atWidth(width, 1000);
         await expectFitsStage(canvasElement);
         noHorizontalOverflow();
