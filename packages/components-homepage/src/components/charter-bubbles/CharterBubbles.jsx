@@ -80,15 +80,10 @@ const CharterBubblesRender = (
   forwardedRef
 ) => {
   const resolvedItems = resolveItems(items);
-  // Derive a stable per-instance ID for this React instance.  When a valid
-  // caller-supplied instanceId is provided it is used directly (preserving the
-  // static-HTML parity contract).  When it is absent or unsafe, React.useId()
-  // generates a unique, stable identifier so two <CharterBubbles /> instances
-  // without an explicit instanceId never share ARIA IDs.  The useId value is
-  // sanitized through the same helper used by the static path.
+  // A valid caller-supplied instanceId is used directly (static-HTML parity).
+  // Otherwise React.useId() supplies a unique, stable fallback so two instances
+  // without an instanceId never share ARIA ids.
   const reactId = useId();
-  // Derive a CSS/HTML-safe token from the React-generated id (which may
-  // contain `:` characters on React 18).
   const reactSafeId = `cb-${reactId.replace(/[^A-Za-z0-9_-]/g, "")}`;
   const callerSafeId = sanitizeCharterBubbleId(instanceId, "");
   const safeInstanceId = callerSafeId || reactSafeId;

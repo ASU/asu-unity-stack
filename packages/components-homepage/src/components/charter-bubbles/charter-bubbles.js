@@ -18,7 +18,6 @@ const FOCUSABLE_SELECTOR =
   'a[href], button, input, select, textarea, [tabindex], [contenteditable="true"]';
 const CAROUSEL_MEDIA_QUERY = "(max-width: 768px)";
 const REDUCED_MOTION_MEDIA_QUERY = "(prefers-reduced-motion: reduce)";
-const REDUCED_MOTION_CLASS = "hp-charter-bubbles--reduced-motion";
 const SCROLL_IDLE_MS = 150;
 const WHEEL_SESSION_IDLE_MS = 240;
 const DESKTOP_OPEN_SIZE = 454;
@@ -30,8 +29,7 @@ const DESKTOP_RELAXATION_PASSES = 60;
 const controllers = new WeakMap();
 const ignore = () => {};
 
-const prefersReducedMotion = (view, root) => {
-  if (root?.classList.contains(REDUCED_MOTION_CLASS)) return true;
+const prefersReducedMotion = view => {
   if (typeof view?.matchMedia !== "function") return false;
   try {
     return view.matchMedia(REDUCED_MOTION_MEDIA_QUERY).matches;
@@ -478,6 +476,54 @@ const focusSafely = element => {
   }
 };
 
+const createOwnedFocusScheduler = (controller, ownerDocument, view) => {
+  let frame = null;
+  let expectedOwner = null;
+  let intent = 0;
+
+  const cancel = () => {
+    intent += 1;
+    if (frame != null && typeof view?.cancelAnimationFrame === "function") {
+      view.cancelAnimationFrame(frame);
+    }
+    frame = null;
+    expectedOwner = null;
+  };
+
+  controller.listen(ownerDocument, "focusin", event => {
+    if (frame != null && event.target !== expectedOwner) cancel();
+  });
+  controller.addCleanup(cancel);
+
+  const schedule = (element, isCurrent = () => true) => {
+    cancel();
+    const scheduledIntent = intent;
+    expectedOwner = ownerDocument?.activeElement ?? null;
+    const scheduledOwner = expectedOwner;
+    const focus = () => {
+      frame = null;
+      expectedOwner = null;
+      if (
+        !controller.active ||
+        intent !== scheduledIntent ||
+        ownerDocument?.activeElement !== scheduledOwner ||
+        !isCurrent()
+      ) {
+        return;
+      }
+      focusSafely(element);
+    };
+
+    if (typeof view?.requestAnimationFrame === "function") {
+      frame = view.requestAnimationFrame(focus);
+    } else {
+      focus();
+    }
+  };
+
+  return { cancel, schedule };
+};
+
 const bindBubbleTransitions = controller => {
   const { root } = controller;
   const records = discoverBubbleItems(root);
@@ -490,12 +536,12 @@ const bindBubbleTransitions = controller => {
   const list = controller.query(LIST_SELECTOR);
   const ownerDocument = root.ownerDocument;
   const view = ownerDocument?.defaultView;
+  const focusScheduler = createOwnedFocusScheduler(
+    controller,
+    ownerDocument,
+    view
+  );
   let openId = null;
-  // Set to the record that was just explicitly closed in carousel mode so that
-  // the focusin handler (which normally auto-opens the focused item) does not
-  // immediately re-open the item that was just closed by Close / Escape /
-  // outside.  Cleared on the next focusin cycle.
-  let carouselJustClosedId = null;
 
   const clearDesktopGeometry = () => {
     records.forEach(record => {
@@ -836,7 +882,7 @@ const bindBubbleTransitions = controller => {
         "--hp-charter-translate-y",
         `${point.dy / scaleY}px`
       );
-      if (point !== selected && !prefersReducedMotion(view, root)) {
+      if (point !== selected && !prefersReducedMotion(view)) {
         controller.setStyle(
           point.record.item,
           "transition",
@@ -883,17 +929,9 @@ const bindBubbleTransitions = controller => {
     );
     controller.setAttribute(record.panel, "inert", isOpen ? null : "");
 
-    // Always snapshot and apply tabindex=-1 to closed panel descendants so
-    // keyboard users cannot Tab into a closed/inert panel regardless of
-    // whether the browser's inert implementation is complete.  Restore their
-    // authored values on open or teardown (the mutation ledger handles the
-    // restore on teardown automatically).
     fallbackFocusables(record).forEach(element => {
-      if (isOpen) {
-        controller.releaseAttribute(element, "tabindex");
-      } else {
-        controller.setAttribute(element, "tabindex", "-1");
-      }
+      if (isOpen) controller.releaseAttribute(element, "tabindex");
+      else controller.setAttribute(element, "tabindex", "-1");
     });
   };
 
@@ -915,6 +953,7 @@ const bindBubbleTransitions = controller => {
     nextId,
     { focusPanel = false, returnFocus = false, allowCarouselEmpty = false } = {}
   ) => {
+    focusScheduler.cancel();
     if (nextId != null && !byId.has(nextId)) return false;
     if (
       nextId == null &&
@@ -933,41 +972,15 @@ const bindBubbleTransitions = controller => {
     );
 
     openId = nextId;
-    if (nextId == null && controller.layout?.getMode?.() === "carousel") {
-      carouselJustClosedId = previous?.id ?? null;
-    } else {
-      carouselJustClosedId = null;
-    }
     records.forEach(record => syncRecord(record, record.id === openId));
     syncRoot();
     applyDesktopGeometry();
 
     const active = openId == null ? null : byId.get(openId);
-    // Focus the labelled Close button — the locked focus destination from the
-    // design-doc state machine.  The Close button already has tabindex restored
-    // by syncRecord (isOpen path) so focusSafely works without a temporary
-    // tabindex.  Using requestAnimationFrame ensures the browser has processed
-    // the inert removal and CSS updates before attempting to focus.
     if (focusPanel && active) {
-      const closeEl = active.close;
       const activeId = active.id;
-      if (view?.requestAnimationFrame) {
-        const frameId = view.requestAnimationFrame(() => {
-          // Only focus if this item is still the open one when the frame fires
-          // AND the controller is still active (not torn down).
-          if (controller.active && openId === activeId) focusSafely(closeEl);
-        });
-        controller.addCleanup(() => {
-          if (typeof view.cancelAnimationFrame === "function") {
-            view.cancelAnimationFrame(frameId);
-          }
-        });
-      } else {
-        focusSafely(closeEl);
-      }
-    } else if (shouldReturnFocus && previous) {
-      focusSafely(previous.front);
-    }
+      focusScheduler.schedule(active.close, () => openId === activeId);
+    } else if (shouldReturnFocus && previous) focusSafely(previous.front);
 
     return true;
   };
@@ -987,10 +1000,8 @@ const bindBubbleTransitions = controller => {
     const close = target.closest(CLOSE_SELECTOR);
     const closeRecord = byClose.get(close);
     if (closeRecord && closeRecord.id === openId) {
-      if (controller.layout?.getMode?.() === "carousel") {
-        controller.carousel?.notifyDismissed?.();
-      }
-      transitionTo(null, { returnFocus: true, allowCarouselEmpty: true });
+      if (controller.layout?.getMode?.() === "carousel") return;
+      transitionTo(null, { returnFocus: true });
       return;
     }
 
@@ -999,7 +1010,7 @@ const bindBubbleTransitions = controller => {
     if (frontRecord) {
       if (controller.layout?.getMode?.() === "carousel") {
         controller.carousel?.selectItem?.(frontRecord.item, {
-          focusPanel: true,
+          focusPanel: event.detail === 0,
         });
         return;
       }
@@ -1016,8 +1027,6 @@ const bindBubbleTransitions = controller => {
       const actionable = target.closest(FOCUSABLE_SELECTOR);
       if (!actionable || !active.item.contains(actionable)) {
         transitionTo(null, { returnFocus: true });
-        // A pointer click on static content may already have moved focus to
-        // the document body, so restore the trigger explicitly in this path.
         focusSafely(active.front);
       }
       return;
@@ -1033,26 +1042,18 @@ const bindBubbleTransitions = controller => {
 
   const onRootKeyDown = event => {
     const target = closestElement(event.target);
-    if (event.key !== "Escape" || !target || !belongsToRoot(target, root)) {
+    if (
+      event.key !== "Escape" ||
+      openId == null ||
+      controller.layout?.getMode?.() === "carousel" ||
+      !target ||
+      !belongsToRoot(target, root)
+    ) {
       return;
     }
-
-    // Cancel any in-flight carousel selection first (pendingSelectionItem may
-    // be set even when openId is already null — startCorrection closes the
-    // current item before the destination is centred).
-    if (controller.carousel?.hasPendingSelection?.()) {
-      event.stopPropagation();
-      controller.carousel.cancelPendingSelection();
-      return;
-    }
-
-    if (openId == null) return;
 
     event.stopPropagation();
-    if (controller.layout?.getMode?.() === "carousel") {
-      controller.carousel?.notifyDismissed?.();
-    }
-    transitionTo(null, { returnFocus: true, allowCarouselEmpty: true });
+    transitionTo(null, { returnFocus: true });
   };
 
   const onRootFocusIn = event => {
@@ -1060,36 +1061,20 @@ const bindBubbleTransitions = controller => {
     const item = closestElement(event.target)?.closest(ITEM_SELECTOR);
     const record = byItem.get(item);
     if (!record || record.id === openId) return;
-    // If the user just explicitly closed this item, do not re-open it on the
-    // resulting focus-return.  Clear the suppression so the next manual
-    // keyboard navigation works normally.
-    if (record.id === carouselJustClosedId) {
-      carouselJustClosedId = null;
-      return;
-    }
-    carouselJustClosedId = null;
     controller.carousel?.selectItem?.(record.item, { focusPanel: true });
   };
 
   const onDocumentOutside = event => {
     const target = closestElement(event.target);
-    if (!target || root.contains(target)) {
+    if (
+      openId == null ||
+      controller.layout?.getMode?.() === "carousel" ||
+      !target ||
+      root.contains(target)
+    ) {
       return;
     }
-
-    // Cancel any in-flight carousel selection first (pendingSelectionItem may
-    // be set even when openId is already null — startCorrection closes the
-    // current item before the destination is centred).
-    if (controller.carousel?.hasPendingSelection?.()) {
-      controller.carousel.cancelPendingSelection();
-      return;
-    }
-
-    if (openId == null) return;
-    if (controller.layout?.getMode?.() === "carousel") {
-      controller.carousel?.notifyDismissed?.();
-    }
-    transitionTo(null, { returnFocus: true, allowCarouselEmpty: true });
+    transitionTo(null, { returnFocus: true });
   };
 
   controller.listen(root, "click", onRootClick);
@@ -1142,12 +1127,6 @@ const bindResponsiveVisibility = controller => {
     controller.setAttribute(root, "data-layout", mode);
     controller.setClass(root, "is-carousel", mode === "carousel");
     controller.setClass(root, "is-cluster", mode === "cluster");
-
-    // Per the locked state machine: "responsive mode changes → OPEN(N)"
-    // The logical open item is preserved when crossing the 768px boundary.
-    // Previously this branch called setOpenId(null) on carousel→cluster, which
-    // is a design-doc mismatch.  The carousel→cluster geometry reflow below
-    // will re-apply desktop positions for the still-open bubble.
 
     if (mode === "carousel" && previousMode !== "carousel") {
       if (controller.bubbles?.getOpenId?.() == null) {
@@ -1292,6 +1271,11 @@ const bindCarouselGeometry = controller => {
   const previous = controller.query(PREVIOUS_SELECTOR);
   const next = controller.query(NEXT_SELECTOR);
   if (!viewport || !track || !list || !previous || !next) return;
+  const focusScheduler = createOwnedFocusScheduler(
+    controller,
+    ownerDocument,
+    view
+  );
 
   let pendingScroll = false;
   let pendingFocusItem = null;
@@ -1302,12 +1286,6 @@ const bindCarouselGeometry = controller => {
   let selectionOriginId = null;
   let preferredSelectionItem = null;
   let pendingSelectionItem = null;
-  // Set by notifyDismissed() (via cancelPendingSelection or transitionTo(null))
-  // when the user explicitly closes all bubbles.  Suppresses
-  // commitNearestSelection() so a following scroll/scrollend does not reopen a
-  // bubble after a deliberate dismiss.  Cleared when a new correction or gesture
-  // begins.
-  let explicitlyEmpty = false;
   let scrollIdleTimer = null;
   let wheelSessionTimer = null;
   let wheelSessionActive = false;
@@ -1317,6 +1295,24 @@ const bindCarouselGeometry = controller => {
     atEnd: false,
     hasOverflow: true,
   };
+
+  const focusActiveLink = item => {
+    const id = item?.getAttribute("data-charter-bubble-id");
+    const link = item?.querySelector(
+      `${PANEL_SELECTOR} a.hp-charter-bubble__link[href]`
+    );
+    if (!id || !link) return;
+    focusScheduler.schedule(
+      link,
+      () => controller.bubbles?.getOpenId?.() === id
+    );
+  };
+
+  controller.listen(ownerDocument, "focusin", event => {
+    if (pendingFocusItem && !pendingFocusItem.contains(event.target)) {
+      pendingFocusItem = null;
+    }
+  });
 
   const setDisabled = (button, disabled) => {
     controller.setClass(button, "is-disabled", disabled);
@@ -1383,7 +1379,7 @@ const bindCarouselGeometry = controller => {
     }, items[0]);
   };
 
-  const reducedMotion = () => prefersReducedMotion(view, root);
+  const reducedMotion = () => prefersReducedMotion(view);
 
   const cssLengthToPixels = value => {
     const numeric = Number.parseFloat(value);
@@ -1486,14 +1482,11 @@ const bindCarouselGeometry = controller => {
 
     const maxScroll = Math.max(0, viewport.scrollWidth - viewport.clientWidth);
     const hasOverflow = maxScroll > 1;
-    // Derive edge state from actual scroll geometry (1px tolerance per the
-    // locked real-scroll-derived end-state contract in the design doc).
-    // Using activeIndex to derive atStart/atEnd would leave disabled state
-    // stale when native pan moves the scroll position to an edge while a
-    // non-edge item is logically active.
-    const scrollLeft = viewport.scrollLeft ?? 0;
-    const atStart = !hasOverflow || scrollLeft <= 1;
-    const atEnd = !hasOverflow || scrollLeft >= maxScroll - 1;
+    const items = getItems();
+    const activeIndex = items.indexOf(getActiveCarouselItem());
+    const atStart = !hasOverflow || activeIndex <= 0;
+    const atEnd =
+      !hasOverflow || (activeIndex >= 0 && activeIndex === items.length - 1);
 
     state = { atStart, atEnd, hasOverflow };
     setDisabled(previous, atStart);
@@ -1586,61 +1579,12 @@ const bindCarouselGeometry = controller => {
     return Math.abs(targetCenter - viewportCenter) <= frontRect.width / 2;
   };
 
-  /**
-   * Cancel any in-flight carousel selection, clearing all associated state so
-   * dismiss handlers (Escape, outside click) can interrupt a pending selection
-   * before it settles into an open bubble.
-   *
-   * Also sets explicitlyEmpty so that subsequent scroll/scrollend events from
-   * the in-flight smooth scroll do not call commitNearestSelection() and reopen
-   * the item that was just dismissed.
-   */
-  const cancelPendingSelection = () => {
-    if (!pendingSelectionItem) return;
-    const item = pendingSelectionItem;
-    pendingSelectionItem = null;
-    pendingFocusItem = null;
-    clearIdleTimer();
-    pendingScroll = false;
-    recentring = false;
-    explicitlyEmpty = true;
-    controller.setClass(item, "is-opening", false);
-    controller.setClass(root, "is-correcting", false);
-  };
-
-  /**
-   * Notify the carousel that the user explicitly dismissed all bubbles (via
-   * Escape or outside click).  Called by transitionTo(null, allowCarouselEmpty)
-   * in bindBubbleTransitions so that any in-flight scroll settlement — whether
-   * its timer fired before or after the dismiss gesture — does not reopen the
-   * nearest bubble.
-   *
-   * Also clears any in-flight pending selection (redundant if
-   * cancelPendingSelection was already called, but safe to repeat).
-   */
-  const notifyDismissed = () => {
-    explicitlyEmpty = true;
-    // Also clear any pending selection that may still be live.
-    if (pendingSelectionItem) {
-      const item = pendingSelectionItem;
-      pendingSelectionItem = null;
-      pendingFocusItem = null;
-      clearIdleTimer();
-      pendingScroll = false;
-      recentring = false;
-      controller.setClass(item, "is-opening", false);
-      controller.setClass(root, "is-correcting", false);
-    }
-  };
-
   const startCorrection = item => {
     if (!item) return false;
     pendingSelectionItem = item;
     preferredSelectionItem = null;
     deferredSelection = false;
     pendingScroll = true;
-    // A new programmatic correction supersedes any prior explicit-dismiss state.
-    explicitlyEmpty = false;
     controller.setClass(root, "is-correcting", true);
     const targetId = item.getAttribute("data-charter-bubble-id");
     controller.setClass(item, "is-opening", true);
@@ -1673,28 +1617,7 @@ const bindCarouselGeometry = controller => {
     recentring = true;
     if (pendingFocusItem === item) {
       pendingFocusItem = null;
-      // Focus the labelled Close button — the locked focus destination.
-      const closeEl = item.querySelector(CLOSE_SELECTOR);
-      if (closeEl) {
-        const activateId = id;
-        if (view?.requestAnimationFrame) {
-          const frameId = view.requestAnimationFrame(() => {
-            if (
-              controller.active &&
-              controller.bubbles?.getOpenId?.() === activateId
-            ) {
-              focusSafely(closeEl);
-            }
-          });
-          controller.addCleanup(() => {
-            if (typeof view.cancelAnimationFrame === "function") {
-              view.cancelAnimationFrame(frameId);
-            }
-          });
-        } else {
-          focusSafely(closeEl);
-        }
-      }
+      focusActiveLink(item);
     }
     sync();
     return true;
@@ -1708,6 +1631,8 @@ const bindCarouselGeometry = controller => {
     ) {
       return false;
     }
+
+    if (!focusPanel) pendingFocusItem = null;
 
     if (pendingSelectionItem === item) {
       if (focusPanel) pendingFocusItem = item;
@@ -1733,42 +1658,12 @@ const bindCarouselGeometry = controller => {
 
     if (pendingFocusItem === item) {
       pendingFocusItem = null;
-      // Focus the labelled Close button — the locked focus destination.
-      const closeEl = item.querySelector(CLOSE_SELECTOR);
-      if (closeEl) {
-        const commitId = item.getAttribute("data-charter-bubble-id");
-        if (view?.requestAnimationFrame) {
-          const frameId = view.requestAnimationFrame(() => {
-            if (
-              controller.active &&
-              controller.bubbles?.getOpenId?.() === commitId
-            ) {
-              focusSafely(closeEl);
-            }
-          });
-          controller.addCleanup(() => {
-            if (typeof view.cancelAnimationFrame === "function") {
-              view.cancelAnimationFrame(frameId);
-            }
-          });
-        } else {
-          focusSafely(closeEl);
-        }
-      }
+      focusActiveLink(item);
     }
   };
 
   const finishPending = () => {
     clearIdleTimer();
-    // The user explicitly dismissed all bubbles (Escape or outside click).
-    // Suppress commitNearestSelection() so the in-flight scroll settlement does
-    // not reopen the nearest bubble.  The flag persists until a new correction
-    // or gesture clears it.
-    if (explicitlyEmpty) {
-      pendingScroll = false;
-      sync();
-      return;
-    }
     if (gestureActive) {
       pendingScroll = true;
       return;
@@ -1831,7 +1726,7 @@ const bindCarouselGeometry = controller => {
       : setTimeout(finishPending, SCROLL_IDLE_MS);
   };
 
-  const move = direction => {
+  const move = (direction, { focusPanel = false } = {}) => {
     if (
       pendingScroll &&
       (gestureActive || deferredSelection || pendingSelectionItem)
@@ -1868,7 +1763,12 @@ const bindCarouselGeometry = controller => {
     const target = items[currentIndex + (direction < 0 ? -1 : 1)];
     if (!target) return false;
 
-    return startCorrection(target);
+    if (focusPanel) pendingFocusItem = target;
+    const started = startCorrection(target);
+    if (started && focusPanel) {
+      focusSafely(target.querySelector(OPEN_SELECTOR));
+    }
+    return started;
   };
 
   const beginGesture = () => {
@@ -1878,8 +1778,6 @@ const bindCarouselGeometry = controller => {
     preferredSelectionItem = null;
     gestureActive = true;
     gestureMoved = false;
-    // A new user gesture supersedes any prior explicit-dismiss state.
-    explicitlyEmpty = false;
     clearIdleTimer();
   };
 
@@ -1907,13 +1805,6 @@ const bindCarouselGeometry = controller => {
 
   const onScroll = () => {
     if (controller.layout?.getMode?.() !== "carousel") return;
-    // If the user explicitly dismissed all bubbles, the programmatic smooth
-    // scroll is still running and will fire scroll/scrollend events.  Ignore
-    // them so we do not reschedule a finishPending() that would reopen a bubble.
-    if (explicitlyEmpty) {
-      queueSync();
-      return;
-    }
     if (gestureActive) {
       gestureMoved = true;
       pendingScroll = true;
@@ -1973,6 +1864,27 @@ const bindCarouselGeometry = controller => {
     startCorrection(target);
   };
 
+  const onKeyDown = event => {
+    const target = closestElement(event.target);
+    if (
+      controller.layout?.getMode?.() !== "carousel" ||
+      event.defaultPrevented ||
+      event.altKey ||
+      event.ctrlKey ||
+      event.metaKey ||
+      event.shiftKey ||
+      !["ArrowLeft", "ArrowRight"].includes(event.key) ||
+      !target ||
+      !viewport.contains(target) ||
+      !belongsToRoot(target, root)
+    ) {
+      return;
+    }
+
+    event.preventDefault();
+    move(event.key === "ArrowLeft" ? -1 : 1, { focusPanel: true });
+  };
+
   const onItemSizeTransitionEnd = event => {
     if (
       controller.layout?.getMode?.() !== "carousel" ||
@@ -1996,6 +1908,7 @@ const bindCarouselGeometry = controller => {
   controller.listen(view, "touchcancel", endGesture, { passive: true });
   controller.listen(viewport, "scroll", onScroll, { passive: true });
   controller.listen(viewport, "wheel", onWheel, { passive: false });
+  controller.listen(viewport, "keydown", onKeyDown);
   controller.listen(viewport, "scrollend", finishPending);
   controller.listen(track, "transitionend", onItemSizeTransitionEnd);
   controller.listen(view, "resize", queueSync, { passive: true });
@@ -2007,7 +1920,6 @@ const bindCarouselGeometry = controller => {
         controller.setClass(pendingSelectionItem, "is-opening", false);
       }
       pendingSelectionItem = null;
-      explicitlyEmpty = false;
       preferredSelectionItem = null;
       deferredSelection = false;
       selectionOriginId = null;
@@ -2066,7 +1978,6 @@ const bindCarouselGeometry = controller => {
       controller.setClass(pendingSelectionItem, "is-opening", false);
     }
     pendingSelectionItem = null;
-    explicitlyEmpty = false;
     wheelSessionActive = false;
     controller.setClass(root, "is-correcting", false);
     if (syncFrame != null && typeof view?.cancelAnimationFrame === "function") {
@@ -2080,9 +1991,6 @@ const bindCarouselGeometry = controller => {
     sync,
     move,
     selectItem,
-    cancelPendingSelection,
-    notifyDismissed,
-    hasPendingSelection: () => pendingSelectionItem != null,
     getState: () => ({ ...state, pendingScroll }),
   };
   sync();
@@ -2095,31 +2003,6 @@ const bindCarouselGeometry = controller => {
  * @param {HTMLElement} root
  */
 export const getCharterBubblesController = root => controllers.get(root);
-
-const enableMotionAfterInitialLayout = controller => {
-  const { root } = controller;
-  const view = root.ownerDocument?.defaultView;
-
-  if (typeof view?.requestAnimationFrame !== "function") {
-    controller.setAttribute(root, "data-motion-ready", "true");
-    return;
-  }
-
-  let layoutFrame = null;
-  let motionFrame = null;
-  layoutFrame = view.requestAnimationFrame(() => {
-    layoutFrame = null;
-    motionFrame = view.requestAnimationFrame(() => {
-      motionFrame = null;
-      controller.setAttribute(root, "data-motion-ready", "true");
-    });
-  });
-
-  controller.addCleanup(() => {
-    if (layoutFrame != null) view.cancelAnimationFrame?.(layoutFrame);
-    if (motionFrame != null) view.cancelAnimationFrame?.(motionFrame);
-  });
-};
 
 /**
  * Initializes every Charter Bubbles root in `scope` without replacing markup.
@@ -2149,7 +2032,6 @@ export const initCharterBubbles = (
       // authored open bubble never inherits fallback-grid coordinates.
       controller.bubbles?.reflow?.();
       controller.carousel?.sync?.();
-      enableMotionAfterInitialLayout(controller);
       controllers.set(root, controller);
     } else {
       controller.setClass(root, "is-enhanced", true);

@@ -214,7 +214,6 @@
   margin: 0;
   padding: 0;
   color: $uds-color-brand-maroon;
-  font-size: $uds-size-font-medium;
   font-weight: $uds-font-weight-normal;
   text-decoration: underline;
   text-underline-offset: 0.2em;
@@ -394,28 +393,9 @@
     letter-spacing: -0.03798125rem; // -0.61px measured mobile tracking.
   }
 
-  // In carousel mode, the front-face chevron is not needed (the whole face
-  // is used to scroll/open).  The Close button IS shown when a bubble is open
-  // so users have a keyboard-accessible and pointer-accessible way to close.
-  .hp-charter-bubble__chevron {
+  .hp-charter-bubble__chevron,
+  .hp-charter-bubble__close {
     display: none;
-  }
-
-  .hp-charter-bubble:not(.is-open):not(.is-opening) .hp-charter-bubble__close {
-    display: none;
-  }
-
-  // When a bubble is open (or animating to open), show the Close button as a
-  // visible 44×44 labelled control centred at the base of the expanded face.
-  .hp-charter-bubble.is-open .hp-charter-bubble__close,
-  .hp-charter-bubble.is-opening .hp-charter-bubble__close {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    // Explicitly re-assert 44×44 to prevent shrink-to-fit when
-    // position:absolute resolves width from the flex container's content.
-    width: 2.75rem; // 44px
-    height: 2.75rem; // 44px
   }
 
   .hp-charter-bubble__detail {
@@ -488,42 +468,49 @@
 // Without successful initialization, present every detail/link as ordinary
 // document content and hide controls that cannot work. Enhancement adds
 // `.is-enhanced` only after listeners/state coordination are installed.
-.hp-charter-bubbles:not([data-enhanced="true"]) {
-  --hp-charter-noscript-row-overlap: 2.8125rem; // 45px balances staggered circular edge spacing.
+.hp-charter-bubbles:not(.is-enhanced) {
+  --hp-charter-noscript-diameter: min(
+    var(--hp-charter-mobile-open),
+    100cqi
+  );
+  --hp-charter-noscript-gap: #{$uds-size-spacing-3};
+  --hp-charter-noscript-row-overlap: 2.951rem; // (D + G) * (1 - sqrt(3) / 2); no UDS geometry token.
+  container: charter-bubbles-noscript / inline-size;
   min-height: 0;
   margin-block-start: 0;
   padding: $uds-size-spacing-6;
-  container-name: hp-charter-noscript;
-  container-type: inline-size;
 }
 
-.hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubbles__cluster-shell {
+.hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubbles__cluster-shell {
   min-block-size: 0;
 }
 
-.hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubbles__cluster-stage,
-.hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubbles__carousel,
-.hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubbles__viewport,
-.hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubbles__track {
+.hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubbles__cluster-stage,
+.hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubbles__carousel,
+.hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubbles__viewport,
+.hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubbles__track {
   position: static;
   width: 100%;
   height: auto;
   padding: 0;
   overflow: visible;
   transform: none;
+  scroll-behavior: auto;
+  scroll-snap-type: none;
 }
 
-.hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubbles__list {
+.hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubbles__list {
   position: static;
   display: grid;
   grid-template-columns: repeat(
     2,
     calc(
-      (var(--hp-charter-mobile-open) - #{$uds-size-spacing-3}) / 2
+      (var(--hp-charter-noscript-diameter) - var(--hp-charter-noscript-gap)) /
+        2
     )
   );
+  gap: var(--hp-charter-noscript-gap);
   justify-content: center;
-  gap: $uds-size-spacing-3;
   width: 100%;
   height: auto;
   min-height: 0;
@@ -531,170 +518,173 @@
   padding: 0;
 }
 
-.hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubble {
+.hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble {
   position: static;
   inset: auto;
-  width: var(--hp-charter-mobile-open);
-  height: var(--hp-charter-mobile-open);
-  min-height: var(--hp-charter-mobile-open);
   grid-column: 1 / span 2;
+  inline-size: var(--hp-charter-noscript-diameter);
+  block-size: var(--hp-charter-noscript-diameter);
+  min-height: 0;
+  margin: 0;
+  aspect-ratio: 1;
   transform: none;
+  transition: none;
 }
 
-// Half-width grid tracks allow odd-column layouts to center incomplete rows
-// while every bubble keeps the exact open-carousel diameter.
-@container hp-charter-noscript (min-width: 42.55875rem) {
-  .hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubbles__list {
-    grid-template-columns: repeat(
-      4,
-      calc(
-        (var(--hp-charter-mobile-open) - #{$uds-size-spacing-3}) / 2
-      )
-    );
-  }
-
-  .hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubble:nth-child(1),
-  .hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubble:nth-child(4) {
-    grid-column: 1 / span 2;
-  }
-
-  .hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubble:nth-child(2),
-  .hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubble:nth-child(5) {
-    grid-column: 3 / span 2;
-  }
-
-  .hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubble:nth-child(3) {
-    grid-column: 2 / span 2;
-  }
-
-  .hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubble:nth-child(n + 3) {
-    margin-block-start: calc(-1 * var(--hp-charter-noscript-row-overlap));
-  }
-}
-
-@container hp-charter-noscript (min-width: 64.588125rem) {
-  .hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubbles__list {
-    grid-template-columns: repeat(
-      6,
-      calc(
-        (var(--hp-charter-mobile-open) - #{$uds-size-spacing-3}) / 2
-      )
-    );
-  }
-
-  .hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubble:nth-child(1) {
-    grid-column: 1 / span 2;
-    margin-block-start: 0;
-  }
-
-  .hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubble:nth-child(2) {
-    grid-column: 3 / span 2;
-    margin-block-start: 0;
-  }
-
-  .hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubble:nth-child(3) {
-    grid-column: 5 / span 2;
-    margin-block-start: 0;
-  }
-
-  .hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubble:nth-child(4) {
-    grid-column: 2 / span 2;
-  }
-
-  .hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubble:nth-child(5) {
-    grid-column: 4 / span 2;
-  }
-}
-
-@container hp-charter-noscript (min-width: 108.646875rem) {
-  .hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubbles__list {
-    grid-template-columns: repeat(
-      10,
-      calc(
-        (var(--hp-charter-mobile-open) - #{$uds-size-spacing-3}) / 2
-      )
-    );
-  }
-
-  @for $index from 1 through 5 {
-    .hp-charter-bubbles:not([data-enhanced="true"])
-      .hp-charter-bubble:nth-child(#{$index}) {
-      grid-column: #{2 * $index - 1} / span 2;
-      margin-block-start: 0;
-    }
-  }
-}
-
-.hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubble__front,
-.hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubble__close,
-.hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubbles__nav {
+.hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble__front,
+.hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble__close,
+.hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubbles__nav {
   display: none;
 }
 
-.hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubble__back,
-.hp-charter-bubbles:not([data-enhanced="true"])
+.hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble__back,
+.hp-charter-bubbles:not(.is-enhanced)
   .hp-charter-bubble.is-open
   .hp-charter-bubble__back {
   position: relative;
   inset: auto;
   align-items: center;
-  width: var(--hp-charter-mobile-open);
-  height: var(--hp-charter-mobile-open);
-  min-height: var(--hp-charter-mobile-open);
-  padding: 1.447rem;
-  border-radius: var(--hp-charter-mobile-open-radius);
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding: $uds-size-spacing-4;
+  outline: 2px solid transparent;
+  border-radius: 50%;
   opacity: 1;
+  overflow: visible;
   pointer-events: auto;
   transform: none;
+  transition: none;
 }
 
-.hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubble__heading,
-.hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubble__detail {
-  max-width: 16.731125rem;
+.hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble__heading,
+.hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble__detail,
+.hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble__link {
+  max-inline-size: 14rem; // Keeps canonical text and its focus ring inside the circular chord.
   text-align: center;
 }
 
-.hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubble__heading {
-  font-size: 1.266125rem;
-  line-height: 1.3565625rem;
-  letter-spacing: -0.03798125rem;
+@container charter-bubbles-noscript (min-width: 42.55875rem) {
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubbles__list {
+    grid-template-columns: repeat(
+      4,
+      calc(
+        (var(--hp-charter-noscript-diameter) - var(--hp-charter-noscript-gap)) /
+          2
+      )
+    );
+  }
+
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble:nth-child(1) {
+    grid-area: 1 / 1 / auto / span 2;
+  }
+
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble:nth-child(2) {
+    grid-area: 1 / 3 / auto / span 2;
+  }
+
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble:nth-child(3) {
+    grid-area: 2 / 2 / auto / span 2;
+    margin-block-start: calc(
+      -1 * var(--hp-charter-noscript-row-overlap)
+    );
+  }
+
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble:nth-child(4) {
+    grid-area: 3 / 1 / auto / span 2;
+    margin-block-start: calc(
+      -1 * var(--hp-charter-noscript-row-overlap)
+    );
+  }
+
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble:nth-child(5) {
+    grid-area: 3 / 3 / auto / span 2;
+    margin-block-start: calc(
+      -1 * var(--hp-charter-noscript-row-overlap)
+    );
+  }
 }
 
-.hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubble__detail,
-.hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubble__link:link,
-.hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubble__link:visited {
-  font-size: $uds-size-font-medium;
-  line-height: 1.08525rem;
+@container charter-bubbles-noscript (min-width: 64.588125rem) {
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubbles__list {
+    grid-template-columns: repeat(
+      6,
+      calc(
+        (var(--hp-charter-noscript-diameter) - var(--hp-charter-noscript-gap)) /
+          2
+      )
+    );
+  }
+
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble:nth-child(1) {
+    grid-area: 1 / 1 / auto / span 2;
+    margin-block-start: 0;
+  }
+
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble:nth-child(2) {
+    grid-area: 1 / 3 / auto / span 2;
+    margin-block-start: 0;
+  }
+
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble:nth-child(3) {
+    grid-area: 1 / 5 / auto / span 2;
+    margin-block-start: 0;
+  }
+
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble:nth-child(4) {
+    grid-area: 2 / 2 / auto / span 2;
+  }
+
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble:nth-child(5) {
+    grid-area: 2 / 4 / auto / span 2;
+  }
 }
 
-.hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubble__link:link,
-.hp-charter-bubbles:not([data-enhanced="true"]) .hp-charter-bubble__link:visited {
-  max-width: 17.7391875rem;
+@container charter-bubbles-noscript (min-width: 108.646875rem) {
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubbles__list {
+    grid-template-columns: repeat(
+      10,
+      calc(
+        (var(--hp-charter-noscript-diameter) - var(--hp-charter-noscript-gap)) /
+          2
+      )
+    );
+  }
+
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble:nth-child(1) {
+    grid-area: 1 / 1 / auto / span 2;
+    margin-block-start: 0;
+  }
+
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble:nth-child(2) {
+    grid-area: 1 / 3 / auto / span 2;
+    margin-block-start: 0;
+  }
+
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble:nth-child(3) {
+    grid-area: 1 / 5 / auto / span 2;
+    margin-block-start: 0;
+  }
+
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble:nth-child(4) {
+    grid-area: 1 / 7 / auto / span 2;
+    margin-block-start: 0;
+  }
+
+  .hp-charter-bubbles:not(.is-enhanced) .hp-charter-bubble:nth-child(5) {
+    grid-area: 1 / 9 / auto / span 2;
+    margin-block-start: 0;
+  }
 }
 
 @media (max-width: $uds-breakpoint-md) {
-  .hp-charter-bubbles:not([data-enhanced="true"]) {
-    padding: $uds-size-spacing-4;
+  .hp-charter-bubbles:not(.is-enhanced) {
+    padding-block: $uds-size-spacing-4;
+    padding-inline: $uds-size-spacing-2;
   }
 }
 
-// Enhancement changes the fallback grid into either the cluster or carousel.
-// Keep motion disabled until that final layout has painted so those startup
-// geometry changes do not animate. The controller adds `data-motion-ready`
-// after two animation frames; all later interaction transitions remain intact.
-.hp-charter-bubbles:not([data-motion-ready]) {
-  .hp-charter-bubble,
-  .hp-charter-bubble__front,
-  .hp-charter-bubble__back {
-    transition: none !important;
-  }
-
-  .hp-charter-bubbles__viewport {
-    scroll-behavior: auto !important;
-  }
-}
-
-@mixin hp-charter-reduced-motion {
+@media (prefers-reduced-motion: reduce) {
   .hp-charter-bubble,
   .hp-charter-bubble__front,
   .hp-charter-bubble__back {
@@ -710,17 +700,13 @@
   }
 }
 
-// Allows the Storybook state (and an embedding host when necessary) to show
-// the same behavior without changing the operating system preference.
-.hp-charter-bubbles--reduced-motion {
-  @include hp-charter-reduced-motion;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  @include hp-charter-reduced-motion;
-}
-
 @media (forced-colors: active) {
+  .hp-charter-bubbles:not(.is-enhanced)
+    .hp-charter-bubble__link:focus-visible {
+    outline: 2px solid CanvasText !important;
+    outline-offset: 4px;
+  }
+
   .hp-charter-bubble__front,
   .hp-charter-bubble__back,
   .hp-charter-bubbles__nav-button {

@@ -52,9 +52,6 @@ export const sanitizeCharterBubbleUrl = url => {
   const trimmed = url.trim();
   if (!trimmed) return "#";
   if (trimmed.startsWith("#")) return trimmed;
-  // Reject scheme-relative URLs (//host/path) — they are external and bypass
-  // the explicit-scheme allowlist even though they begin with a slash.
-  if (trimmed.startsWith("//")) return "#";
   if (
     trimmed.startsWith("/") ||
     trimmed.startsWith("./") ||
