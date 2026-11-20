@@ -1,10 +1,19 @@
 #!/bin/sh
 [ -n "$CI" ] && exit 0
 
+# Shared roles and MCP settings generate the Codex and GitHub adapters. Block
+# stale generated files so additions, updates, and removals stay synchronized.
+node .agents/scripts/sync-ai-config.mjs --check || exit 1
+if ! git diff --quiet -- .agents/adapters/kiro/agents .codex/config.toml .codex/agents .github/agents; then
+    echo "Error: Generated AI configuration has unstaged changes."
+    echo "Run 'node .agents/scripts/sync-ai-config.mjs', then stage its output."
+    exit 1
+fi
+
 # Check for merge conflict markers
 # This hook prevents commits that contain unresolved merge conflicts.
 # It checks the staged changes for common conflict markers
-# (e.g., <<<<<<<, =======, >>>>>>>) and blocks the commit if any are found.
+# (e.g., <<<<<<, ======, >>>>>>) and blocks the commit if any are found.
 
 # This file will always fail since it contains the conflict markers pattern,
 # We will still check this file for conflict markers to prevent committing

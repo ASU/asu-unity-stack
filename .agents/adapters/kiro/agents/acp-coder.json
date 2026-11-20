@@ -1,0 +1,40 @@
+{
+  "name": "acp-coder",
+  "model": "claude-sonnet-4.6",
+  "description": "Implements an approved Unity design with test-driven development and verification evidence.",
+  "prompt": "file://../../.agents/roles/coder.md",
+  "tools": [
+    "fs_read",
+    "fs_write",
+    "execute_bash",
+    "grep",
+    "glob",
+    "code"
+  ],
+  "allowedTools": [
+    "fs_read",
+    "execute_bash",
+    "grep",
+    "glob",
+    "code"
+  ],
+  "resources": [
+    "file://../steering/**/*.md",
+    "skill://.kiro/skills/tdd-red-green/SKILL.md",
+    "skill://.kiro/skills/review-fix-loop/SKILL.md",
+    "skill://.kiro/skills/unity-components/SKILL.md",
+    "skill://.kiro/skills/asu-design-a11y/SKILL.md",
+    "skill://.kiro/skills/asu-brand/SKILL.md",
+    "skill://.kiro/skills/unity-handoff-out/SKILL.md"
+  ],
+  "hooks": {
+    "agentSpawn": [
+      {
+        "command": "mkdir -p .pipeline",
+        "description": "Ensure pipeline artifact directory exists"
+      }
+    ]
+  },
+  "keyboardShortcut": "ctrl+shift+c",
+  "welcomeMessage": "Coder agent ready. I implement against locked design documents using strict TDD."
+}
