@@ -602,3 +602,94 @@ This document becomes **LOCKED** only after explicit user approval. Any change
 to the authority order, commit staging, carousel baseline, wrapper semantics,
 or isolated patch list requires renewed approval. Test-detail refinements that
 do not change observable behavior may be recorded in the implementation report.
+
+## User-Approved Follow-Up Amendment — No-Script Layout and Reduced-Motion Story
+
+Status: **APPROVED REQUIREMENT — implementation pending, 2026-11-19**
+
+This amendment records follow-up behavior requested after the baseline recovery
+was completed and approved. It does not change the recovery evidence above and
+must be implemented and reviewed as a separate task.
+
+### No-script presentation
+
+When JavaScript is unavailable or enhancement does not initialize, the
+`NoScript` story must render all five expanded bubble faces as open, round
+bubbles. It must not replace them with rectangular fallback cards. All headings,
+details, and links remain present and readable in the initial HTML. Controls
+that cannot operate without JavaScript (front triggers, Close buttons, and
+carousel navigation) remain hidden.
+
+The five bubbles must retain DOM, reading, and link-tab order while arranging
+into these responsive visual rows according to the available inline width:
+
+| Available row capacity | Required rows |
+| --- | --- |
+| Five bubbles | `5` — one row of five |
+| Three bubbles | `3 / 2` — three on the first row and two centered below |
+| Two bubbles | `2 / 1 / 2` — two on the first row, one centered, and two on the final row |
+| One bubble | `1 / 1 / 1 / 1 / 1` — five rows of one |
+
+Breakpoint thresholds must be derived from the bubble's minimum usable diameter,
+the approved horizontal gap, and the component's available width. They must not
+depend on JavaScript measurements. Representative wide, desktop, tablet, and
+mobile Storybook viewports must prove each row pattern, including 320px reflow.
+
+Because the bubbles are circular, equal CSS grid row and column gaps do not
+produce equal perceived edge-to-edge spacing. Each row after the first must use
+a controlled negative block offset (or equivalent negative row-gap calculation)
+so the visible vertical gap between circle edges matches the visible horizontal
+gap. The offset must:
+
+- be expressed through an existing token or a documented component custom
+  property when no suitable token exists;
+- preserve the required `3 / 2` and `2 / 1 / 2` centering;
+- avoid content, link-focus-ring, and bubble overlap;
+- remain correct at 200% zoom, forced colors, and 320px width; and
+- be verified from rendered circle bounds rather than grid-cell bounds alone.
+
+The no-script state is static: it must not animate, flip, scroll-snap, or imply
+that clicking the expanded surface will dismiss a bubble.
+
+### Reduced-motion Storybook contract
+
+The production component already behaves correctly when the browser genuinely
+reports `prefers-reduced-motion: reduce`. The remaining defect is the Storybook
+story environment: opening the `ReducedMotion` story without separately enabling
+browser emulation can still show animation.
+
+The `ReducedMotion` story must establish reduced-motion emulation before the
+component initializes and before its first painted frame. It must not rely only
+on a play-function toggle that occurs after render. Opening the story directly
+must therefore satisfy:
+
+```text
+matchMedia('(prefers-reduced-motion: reduce)').matches === true
+```
+
+without requiring the viewer to change browser or operating-system settings.
+The story or test harness must restore the previous emulation state during
+cleanup so it cannot leak into other stories.
+
+The focused browser test must verify:
+
+- the media query matches before interaction;
+- bubble/front/back transition durations are `0s` on first observable render;
+- carousel scrolling uses `auto` behavior;
+- hover remains at the 180px base size;
+- opening or selecting a bubble does not animate; and
+- the following ordinary-motion story is not left in reduced-motion mode.
+
+### Follow-up verification matrix
+
+| Behavior | Required evidence |
+| --- | --- |
+| No-script initial HTML | All five expanded round faces, meaningful content and links present, inoperative controls hidden |
+| Five-column capacity | One row of five in DOM order |
+| Three-column capacity | Centered `3 / 2` rows |
+| Two-column capacity | Centered `2 / 1 / 2` rows |
+| One-column capacity | Five rows of one with no horizontal page overflow at 320px |
+| Perceived gap equality | Rendered vertical circle-edge gap matches horizontal circle-edge gap within layout-rounding tolerance |
+| Accessibility | Link order remains DOM order; visible focus rings do not overlap adjacent bubbles; 200% zoom and forced colors retain content |
+| Reduced-motion direct preview | Media query is true before first interaction and no transition is observable |
+| Story isolation | Subsequent ordinary-motion story retains normal motion |
