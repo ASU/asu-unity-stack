@@ -1056,3 +1056,44 @@ export const InViewAndHold = {
     await expect(video.hasAttribute("data-hold")).toBe(false);
   },
 };
+
+export const RestartOnHoldRelease = {
+  name: "data-restart: releasing the hold starts over",
+  tags: ["!dev"],
+  render: () => (
+    <Harness
+      html={withAttributes(
+        frameHtml({ id: "v-restart", auto: true }),
+        "v-restart",
+        "data-restart"
+      )}
+    />
+  ),
+  play: async ({ canvasElement }) => {
+    const settle = () => new Promise(resolve => setTimeout(resolve, 30));
+    const { video, button, stub } = await find(canvasElement, "v-restart");
+    environment.emit(video, 1);
+    await expectPlaying(button);
+    // spend the three plays: it stops on the first frame
+    stub.finish();
+    await waitFor(() => expect(stub.calls.play).toBe(2));
+    stub.finish();
+    await waitFor(() => expect(stub.calls.play).toBe(3));
+    stub.finish();
+    await expectPaused(button);
+    // hold on, hold off: a fresh set of plays, even though the video was spent
+    video.setAttribute("data-hold", "");
+    await settle();
+    video.removeAttribute("data-hold");
+    await waitFor(() => expect(stub.calls.play).toBe(4));
+    await expectPlaying(button);
+    // a visitor's pause is forgotten as well
+    await userEvent.click(button);
+    await expectPaused(button);
+    video.setAttribute("data-hold", "");
+    await settle();
+    video.removeAttribute("data-hold");
+    await waitFor(() => expect(stub.calls.play).toBe(5));
+    await expectPlaying(button);
+  },
+};

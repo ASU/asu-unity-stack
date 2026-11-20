@@ -54,6 +54,16 @@ const homepageViewports = {
     styles: { width: "1920px", height: "1080px" },
     type: "desktop",
   },
+  hp2500: {
+    name: "Wide 2500",
+    styles: { width: "2500px", height: "1000px" },
+    type: "desktop",
+  },
+  hp3934: {
+    name: "Ultra-wide 3934",
+    styles: { width: "3934px", height: "1000px" },
+    type: "desktop",
+  },
   // Above 1920px the topo band appears (Backgrounds).
   hp2560: {
     name: "Ultra-wide 2560",

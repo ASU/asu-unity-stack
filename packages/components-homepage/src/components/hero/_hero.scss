@@ -21,6 +21,10 @@ $hp-hero-header-break: 1080px; // The prototype switches to its compact header a
   flex-direction: column;
   justify-content: flex-end;
   overflow: hidden;
+  // Brand (Alysia 2026-11-10, Figma 3934 frame: the hero video is 1920 wide and centered): the whole hero
+  // stops at 1920px, media included.
+  max-width: $uds-breakpoint-xxxl;
+  margin-inline: auto;
   // Window minus header minus a 96px peek, between 560 and 1080 (Sarah 10/15). min-height, not height,
   // so enlarged text or zoom grows the section instead of clipping the copy.
   // TODO: confirm with design - 560, 1080 and the 96px peek are raw (no UDS token).
@@ -73,8 +77,7 @@ $hp-hero-header-break: 1080px; // The prototype switches to its compact header a
   display: contents;
 }
 
-// The last paragraph line sits 48px above the hero's bottom (82529). Above the 1920px stage the copy
-// anchors to a centered 1920px frame; the media stays full-bleed.
+// The last paragraph line sits 48px above the hero's bottom (82529).
 .hp-hero__copy {
   position: relative;
   z-index: 5;
@@ -213,7 +216,7 @@ $hp-hero-header-break: 1080px; // The prototype switches to its compact header a
   }
 }
 
-// Phones and tablets: the standard gold button replaces the arrow.
+// Below 768px (the UDS md line, see the phone block) the standard gold button replaces the arrow.
 .hp-hero__cta {
   display: none;
 }
@@ -268,18 +271,6 @@ $hp-hero-header-break: 1080px; // The prototype switches to its compact header a
   }
 }
 
-// Above the 1920px stage the copy and the control anchor to a centered 1920px frame.
-@media (min-width: $uds-breakpoint-xxxl + 1px) {
-  .hp-hero__copy {
-    max-width: $uds-breakpoint-xxxl;
-    margin-inline: auto;
-  }
-
-  .hp-hero .hp-hero__control {
-    right: calc((100% - #{$uds-breakpoint-xxxl}) / 2 + var(--hp-hero-gutter));
-  }
-}
-
 // Phones and tablets (900px and under): no video, the poster or Gray 1 fills the screen under the header.
 @media (max-width: $hp-phone-max) {
   .hp-hero {
@@ -309,7 +300,12 @@ $hp-hero-header-break: 1080px; // The prototype switches to its compact header a
   .hp-hero__text {
     max-width: 509px;
   }
+}
 
+// Brand (2026-11-10): the outlined circled arrow stays down to the UDS md line; only below it the gold
+// button replaces the arrow. The poster and no-video rule stay at 900px. A max-width query (no min-width)
+// so no fractional width falls between the arrow and the button.
+@media (max-width: #{$uds-breakpoint-md - 0.02px}) {
   .hp-hero__arrow {
     display: none;
   }

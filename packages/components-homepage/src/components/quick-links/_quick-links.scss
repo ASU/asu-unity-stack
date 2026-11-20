@@ -5,8 +5,13 @@
 // Tokens: packages/unity-bootstrap-theme/src/scss/_custom-asu-variables.scss
 // Local custom properties: packages/components-homepage/src/scss/_variables.scss
 
-// Space between quick-link items (design: 16px), at every breakpoint.
+// Desktop (>= 1024px) gap is 16px (Figma 1280 frame). Phone and tablet gap is 8px (Figma 393 and 768 frames).
 $hp-quick-links-gap: 16px;
+$hp-quick-links-gap-compact: 8px;
+// Phone and tablet item width (Figma 393 and 768 frames).
+$hp-quick-links-item-compact: 160px;
+// Phone and tablet item height (Figma frames: 88px).
+$hp-quick-links-item-height: 88px;
 
 // --- wrapper ---
 
@@ -180,28 +185,50 @@ $hp-quick-links-gap: 16px;
   box-shadow: var(--hp-focus-inner), var(--hp-focus-outer) !important;
 }
 
-// --- phone 2×2 layout ≤ $hp-phone-max (900 px) ---
-
-@media (max-width: $hp-phone-max) {
+// --- phone 2×2 layout: 360–767px (Figma 393 frame) ---
+// Two fixed 160px columns, 8px gap, two rows, centered.
+@media (max-width: 767px) {
   .hp-quick-links {
     padding-inline: $uds-size-spacing-3;
   }
 
-  // Even 2×2: the list spans the wrapper; minmax(0, 1fr) keeps both columns
-  // identical regardless of label length, and grid-auto-rows: 1fr makes both
-  // rows match the tallest item (e.g. a wrapped two-line label).
   .hp-quick-links__list {
-    display: grid;
     grid-auto-flow: row;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, $hp-quick-links-item-compact));
     grid-auto-columns: auto;
-    grid-auto-rows: 1fr; // both rows match the tallest item
-    width: 100%;
-    column-gap: $hp-quick-links-gap;
-    row-gap: $hp-quick-links-gap;
+    grid-auto-rows: $hp-quick-links-item-height;
+    justify-content: center;
+    width: auto;
+    column-gap: $hp-quick-links-gap-compact;
+    row-gap: $hp-quick-links-gap-compact;
   }
 
-  // Icon (24px) and label (16px / 20px) are the same at every breakpoint: no phone overrides.
+  .hp-quick-link {
+    height: 100%;
+  }
+
+  .hp-quick-link .hp-quick-link__label {
+    max-width: 117px; // Figma label box; labels wrap inside it.
+  }
+}
+
+// --- tablet: one row of four at 768–1023px (Figma 768 frame) ---
+// Four fixed 160px items, 8px gap, left-aligned as in the Figma frame.
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hp-quick-links__list {
+    grid-auto-columns: minmax(0, $hp-quick-links-item-compact);
+    grid-auto-rows: $hp-quick-links-item-height;
+    justify-content: start;
+    column-gap: $hp-quick-links-gap-compact;
+  }
+
+  .hp-quick-link {
+    height: 100%;
+  }
+
+  .hp-quick-link .hp-quick-link__label {
+    max-width: 117px;
+  }
 }
 
 // --- forced-colors (Windows High Contrast, Forced Colors Mode) ---

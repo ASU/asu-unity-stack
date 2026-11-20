@@ -15,6 +15,7 @@ export * from "./HighlyRanked/HighlyRanked";
 export * from "./Image/Image";
 export * from "./Pagination/Pagination";
 export * from "./RankingCard/RankingCard";
+export * from "./SidebarMenu/SidebarMenu";
 export * from "./SystemAlert/SystemAlert";
 export * from "./TabbedPanels/TabbedPanels";
 export * from "./Testimonial/Testimonial";

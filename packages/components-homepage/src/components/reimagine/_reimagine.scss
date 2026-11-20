@@ -40,7 +40,8 @@ $hp-reimagine-rule: 1px; // TODO: confirm with design - hairline between rows (P
 
 .hp-reimagine__eyebrow {
   display: block;
-  width: max-content;
+  width: fit-content; // wraps inside the gold highlight at narrow widths (brand QA 2026-11-10)
+  max-width: 100%;
   padding: $uds-size-spacing-1;
   background: $uds-color-brand-gold;
   color: $asu-gray-1;
@@ -82,20 +83,6 @@ $hp-reimagine-rule: 1px; // TODO: confirm with design - hairline between rows (P
   height: 1em;
   width: auto;
   vertical-align: -0.125em;
-}
-
-// Brand QA: Learn more stays an outline on hover and press (no maroon fill, no white text); only the
-// growth below shows the state. The theme fills `.btn-outline-maroon` on :hover, :active and
-// :focus-visible:hover/:active, and turns the border transparent on :focus-visible.
-.hp-reimagine .hp-reimagine__cta.btn {
-  &:hover,
-  &:active,
-  &:focus-visible:hover,
-  &:focus-visible:active {
-    background-color: transparent;
-    border-color: $uds-color-brand-maroon;
-    color: $uds-color-brand-maroon;
-  }
 }
 
 // Learn more grows on hover and keyboard focus at every width. The theme scales `.btn` 1.05 only from

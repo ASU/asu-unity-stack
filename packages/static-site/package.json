@@ -8,6 +8,10 @@
     "build:dev": "tsc && vite build --mode dev",
     "build": "tsc && vite build --mode prod",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:check": "yarn lint",
+    "lint:fix": "node ../../scripts/lint-changed.mjs --extensions ts,tsx -- eslint --fix --report-unused-disable-directives --max-warnings 0",
+    "lint:forcefix": "yarn js-lint:forcefix",
+    "js-lint:forcefix": "eslint . --ext ts,tsx --fix --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {

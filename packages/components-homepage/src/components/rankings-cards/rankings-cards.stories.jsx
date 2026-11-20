@@ -56,6 +56,7 @@ import { initRankingsCards, computeAlpha } from "./rankings-cards.js";
 // Storybook-only styles: .rankings-storybook-backdrop simulates the dark hero
 // band that surrounds the rankings section in production.
 import "./_rankings-cards.storybook.scss";
+import { innerHtml } from "../inner-html.js";
 
 export default {
   title: "Homepage/Rankings cards",
@@ -102,7 +103,7 @@ const viewport = width => ({
 const StaticPage = ({ html }) => (
   <div
     className="rankings-storybook-backdrop"
-    dangerouslySetInnerHTML={{ __html: html }}
+    dangerouslySetInnerHTML={innerHtml(html)}
   />
 );
 
@@ -117,7 +118,7 @@ const LivePage = ({ html }) => {
     <div
       ref={ref}
       className="rankings-storybook-backdrop"
-      dangerouslySetInnerHTML={{ __html: html }}
+      dangerouslySetInnerHTML={innerHtml(html)}
     />
   );
 };
@@ -405,7 +406,7 @@ const HoverPage = () => {
     <div
       ref={ref}
       className="rankings-storybook-backdrop"
-      dangerouslySetInnerHTML={{ __html: DEFAULT_HTML }}
+      dangerouslySetInnerHTML={innerHtml(DEFAULT_HTML)}
     />
   );
 };
@@ -1025,7 +1026,7 @@ const IdempotentPage = () => {
     <div
       ref={ref}
       className="rankings-storybook-backdrop"
-      dangerouslySetInnerHTML={{ __html: OVERFLOW_HTML }}
+      dangerouslySetInnerHTML={innerHtml(OVERFLOW_HTML)}
     />
   );
 };
@@ -1126,7 +1127,7 @@ const TeardownPage = () => {
     <div
       ref={ref}
       className="rankings-storybook-backdrop"
-      dangerouslySetInnerHTML={{ __html: ONE_CARD_HTML }}
+      dangerouslySetInnerHTML={innerHtml(ONE_CARD_HTML)}
     />
   );
 };
@@ -1222,7 +1223,7 @@ const TeardownPageCustomNext = () => {
     <div
       ref={ref}
       className="rankings-storybook-backdrop"
-      dangerouslySetInnerHTML={{ __html: OVERFLOW_HTML_B }}
+      dangerouslySetInnerHTML={innerHtml(OVERFLOW_HTML_B)}
     />
   );
 };
@@ -1421,14 +1422,14 @@ export const NoGaAfterNavInteraction = {
 const MultiSectionPage = () => (
   <div className="rankings-storybook-backdrop">
     <div
-      dangerouslySetInnerHTML={{
-        __html: rankingsCardsHtml({ headingId: "hp-rankings-copy-a" }),
-      }}
+      dangerouslySetInnerHTML={innerHtml(
+        rankingsCardsHtml({ headingId: "hp-rankings-copy-a" })
+      )}
     />
     <div
-      dangerouslySetInnerHTML={{
-        __html: rankingsCardsHtml({ headingId: "hp-rankings-copy-b" }),
-      }}
+      dangerouslySetInnerHTML={innerHtml(
+        rankingsCardsHtml({ headingId: "hp-rankings-copy-b" })
+      )}
     />
   </div>
 );
@@ -1641,9 +1642,9 @@ const ResizeToOverflowPage = () => {
     <div
       ref={ref}
       className="rankings-storybook-backdrop"
-      dangerouslySetInnerHTML={{
-        __html: rankingsCardsHtml({ cards: DEFAULT_CARDS.slice(0, 2) }),
-      }}
+      dangerouslySetInnerHTML={innerHtml(
+        rankingsCardsHtml({ cards: DEFAULT_CARDS.slice(0, 2) })
+      )}
     />
   );
 };
@@ -2518,7 +2519,7 @@ const GlassStripTeardownPage = () => {
     <div
       ref={ref}
       className="rankings-storybook-backdrop"
-      dangerouslySetInnerHTML={{ __html: DEFAULT_HTML }}
+      dangerouslySetInnerHTML={innerHtml(DEFAULT_HTML)}
     />
   );
 };
@@ -2563,7 +2564,7 @@ const OpacityTeardownRestoresPage = () => {
     <div
       ref={ref}
       className="rankings-storybook-backdrop"
-      dangerouslySetInnerHTML={{ __html: DEFAULT_HTML }}
+      dangerouslySetInnerHTML={innerHtml(DEFAULT_HTML)}
     />
   );
 };
@@ -2619,7 +2620,7 @@ const OpacityTeardownRestoresPriorityPage = () => {
     <div
       ref={ref}
       className="rankings-storybook-backdrop"
-      dangerouslySetInnerHTML={{ __html: DEFAULT_HTML }}
+      dangerouslySetInnerHTML={innerHtml(DEFAULT_HTML)}
     />
   );
 };
@@ -2683,7 +2684,7 @@ const IoAbsentPage = () => {
     <div
       ref={ref}
       className="rankings-storybook-backdrop"
-      dangerouslySetInnerHTML={{ __html: DEFAULT_HTML }}
+      dangerouslySetInnerHTML={innerHtml(DEFAULT_HTML)}
     />
   );
 };
@@ -2758,7 +2759,7 @@ const DockStickyPage = () => (
     <div style={{ height: "200px" }} />
     <div
       className="rankings-storybook-backdrop"
-      dangerouslySetInnerHTML={{ __html: DEFAULT_HTML }}
+      dangerouslySetInnerHTML={innerHtml(DEFAULT_HTML)}
     />
     {/* Space below to allow scrolling past the hold distance */}
     <div style={{ height: "300vh" }} />
@@ -2869,7 +2870,7 @@ const TouchTargetsPage = () => {
     <div
       ref={ref}
       className="rankings-storybook-backdrop"
-      dangerouslySetInnerHTML={{ __html: DEFAULT_HTML }}
+      dangerouslySetInnerHTML={innerHtml(DEFAULT_HTML)}
     />
   );
 };

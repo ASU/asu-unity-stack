@@ -50,8 +50,8 @@ const AccordionView = ({ programs, actionUrls }) => {
     const resolver = degreeDataPropResolverService(row);
     const degreeUrl = resolver.getDegreeSearchUrl();
     const majorNameHtml = degreeUrl
-    ? `<a href=${degreeUrl}>${resolver.getMajorDesc()}</a>`
-    : `<span>${resolver.getMajorDesc()}</span>`;
+      ? `<a href=${degreeUrl}>${resolver.getMajorDesc()}</a>`
+      : `<span>${resolver.getMajorDesc()}</span>`;
 
     const getRequiredCourses = () => {
       const isOnline = resolver.isOnline();

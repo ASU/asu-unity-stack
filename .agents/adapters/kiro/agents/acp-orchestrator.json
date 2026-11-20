@@ -1,0 +1,58 @@
+{
+  "name": "acp-orchestrator",
+  "model": "claude-opus-4.7",
+  "description": "Coordinates the Unity adversarial pipeline and delegates architecture, implementation, review, and visual verification.",
+  "prompt": "file://../../.agents/roles/orchestrator.md",
+  "tools": [
+    "fs_read",
+    "fs_write",
+    "execute_bash",
+    "grep",
+    "glob",
+    "use_subagent"
+  ],
+  "allowedTools": [
+    "fs_read",
+    "grep",
+    "glob",
+    "use_subagent"
+  ],
+  "resources": [
+    "file://../steering/**/*.md",
+    "skill://.kiro/skills/adversarial-coding-pipeline/SKILL.md",
+    "skill://.kiro/skills/jira-figma-intake/SKILL.md",
+    "skill://.kiro/skills/unity-handoff-out/SKILL.md"
+  ],
+  "toolsSettings": {
+    "subagent": {
+      "availableAgents": [
+        "acp-architect",
+        "acp-coder",
+        "acp-reviewer",
+        "acp-visual"
+      ],
+      "trustedAgents": [
+        "acp-architect",
+        "acp-coder",
+        "acp-reviewer",
+        "acp-visual"
+      ]
+    }
+  },
+  "hooks": {
+    "agentSpawn": [
+      {
+        "command": "mkdir -p .pipeline",
+        "description": "Ensure pipeline artifact directory exists"
+      }
+    ],
+    "stop": [
+      {
+        "command": ".kiro/hooks/log-phase.sh",
+        "description": "Log phase transition to .pipeline/phase-log.jsonl"
+      }
+    ]
+  },
+  "keyboardShortcut": "ctrl+shift+o",
+  "welcomeMessage": "Adversarial coding pipeline ready. Provide a component name and any Jira key, Figma URL, or intake screenshots."
+}

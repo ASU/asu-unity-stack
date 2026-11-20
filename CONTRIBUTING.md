@@ -20,7 +20,7 @@ A bug is a _demonstrable problem_ that is caused by the code in the repository. 
 
 Guidelines for bug reports:
 
-0. **Validate and lint your code** &mdash; run the ``` yarn lint ``` command, if available. [validate your HTML](http://html5.validator.nu)
+0. **Validate and lint your code** &mdash; run ``` yarn lint:check ``` to check every file without modifying it. Package linters that apply automatic fixes receive only staged, unstaged, or untracked source files that already have changes. Run ``` yarn lint:fix ``` from the root or an individual package to explicitly apply that same changed-files-only fixing behavior. Run ``` yarn lint:forcefix ``` only when you intentionally want to apply automatic fixes to every file in each package's lint scope. Optionally run ``` yarn ci:check ``` for the local Jenkins-equivalent blocking checks: immutable install, CI build with lint and docs, uncached tests, and critical dependency audit. The pre-push hook runs ``` yarn pre-push ``` for cached builds plus cached tests for packages changed since the remote branch tip and their dependents, followed by the uncached critical dependency audit. New branches and ambiguous multi-ref pushes safely run all cached tests. Jenkins continues to run ``` yarn test ``` without the Nx cache. [validate your HTML](http://html5.validator.nu)
    and [lint your HTML](https://github.com/twbs/bootlint) to ensure your
    problem isn't caused by a simple error in your own code.
 

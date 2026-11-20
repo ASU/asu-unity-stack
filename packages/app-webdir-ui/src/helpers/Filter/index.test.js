@@ -45,7 +45,9 @@ describe("FilterComponent nav controls", () => {
     expect(
       document.querySelector(".scroll-control-next .carousel-control-next-icon")
     ).toBeInTheDocument();
-    expect(document.querySelector(".scroll-control-prev")).not.toBeInTheDocument();
+    expect(
+      document.querySelector(".scroll-control-prev")
+    ).not.toBeInTheDocument();
 
     // Simulate having scrolled all the way over: "prev" appears, "next" hides.
     Object.defineProperty(container, "scrollLeft", {
@@ -57,7 +59,9 @@ describe("FilterComponent nav controls", () => {
     expect(
       document.querySelector(".scroll-control-prev .carousel-control-prev-icon")
     ).toBeInTheDocument();
-    expect(document.querySelector(".scroll-control-next")).not.toBeInTheDocument();
+    expect(
+      document.querySelector(".scroll-control-next")
+    ).not.toBeInTheDocument();
   });
 
   it("scrolls the choices container when the next control is clicked", () => {
