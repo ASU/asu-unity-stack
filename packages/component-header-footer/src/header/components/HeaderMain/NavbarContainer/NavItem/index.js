@@ -197,10 +197,10 @@ const NavItem = ({ link }) => {
         }
         return;
       }
-      if (opened && (e.type === "click" || key === "Enter" || key === " ")) {
-        if (typeof clickRef?.current?.focus === "function") {
-          clickRef.current.focus();
-        }
+      if (opened && link.items && (key === "Enter" || key === " ")) {
+        // Toggle an open dropdown closed
+        setItemOpened();
+        dispatchGAEvent();
         return;
       }
       // Handle Enter or Space key
@@ -234,7 +234,8 @@ const NavItem = ({ link }) => {
     } else if (e.type === "click" && link.items) {
       e.preventDefault();
       dispatchGAEvent();
-      setItemOpened(link.id);
+      // Toggle: close if already open, otherwise open
+      setItemOpened(opened ? undefined : link.id);
     } else if (e.type === "click") {
       dispatchGAEvent();
       link.onClick?.(e);
