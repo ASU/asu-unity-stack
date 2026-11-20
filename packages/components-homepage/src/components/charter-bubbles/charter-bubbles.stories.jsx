@@ -1788,13 +1788,16 @@ export const KeyboardArrowTransitionReducedMotion = {
 };
 
 export const BreakpointPreservesOpen = {
-  name: "Breakpoint resets cluster to closed",
+  name: "Breakpoint preserves open item across mode change",
   ...viewport(768),
   render: () => <ReactPage />,
   play: async ({ canvasElement }) => {
     const root = canvasElement.querySelector("[data-charter-bubbles]");
     const front = root.querySelector(
       '[data-charter-bubble-id="faculty"] [data-charter-bubble-open]'
+    );
+    await waitFor(() =>
+      expect(root).toHaveAttribute("data-layout", "carousel")
     );
     await userEvent.click(front);
     await waitFor(() =>
@@ -1803,17 +1806,47 @@ export const BreakpointPreservesOpen = {
     await resizeViewport(769);
     await waitFor(() => expect(root).toHaveAttribute("data-layout", "cluster"));
     await expect(root).toHaveClass("is-enhanced", "is-cluster");
-    await expect(root).not.toHaveAttribute("data-open-id");
-    await expect(root.querySelectorAll(".is-open, .is-opening")).toHaveLength(
-      0
-    );
+    await expect(root).toHaveAttribute("data-open-id", "faculty");
+    await expect(root.querySelectorAll(".is-open")).toHaveLength(1);
     await resizeViewport(768);
     await waitFor(() =>
       expect(root).toHaveAttribute("data-layout", "carousel")
     );
     await expect(root).toHaveClass("is-enhanced", "is-carousel");
-    await expect(root).toHaveAttribute("data-open-id", "employability");
+    await expect(root).toHaveAttribute("data-open-id", "faculty");
     await expect(root.querySelectorAll(".is-open")).toHaveLength(1);
+  },
+};
+
+export const TwoDefaultInstances = {
+  ...viewport(1280),
+  // No instanceId: the useId()-derived fallback must keep ARIA ids unique.
+  render: () => (
+    <div>
+      <CharterBubbles />
+      <CharterBubbles />
+    </div>
+  ),
+  play: async ({ canvasElement }) => {
+    const roots = canvasElement.querySelectorAll("[data-charter-bubbles]");
+    await expect(roots).toHaveLength(2);
+    for (const root of roots) {
+      await waitFor(() =>
+        expect(root).toHaveAttribute("data-enhanced", "true")
+      );
+    }
+    const ids = Array.from(roots).flatMap(root =>
+      Array.from(root.querySelectorAll("[id]")).map(el => el.id)
+    );
+    await expect(ids.filter((id, n) => ids.indexOf(id) !== n)).toHaveLength(0);
+    for (const root of roots) {
+      for (const front of root.querySelectorAll("[data-charter-bubble-open]")) {
+        const panel = canvasElement.querySelector(
+          `#${CSS.escape(front.getAttribute("aria-controls"))}`
+        );
+        await expect(root.contains(panel)).toBe(true);
+      }
+    }
   },
 };
 

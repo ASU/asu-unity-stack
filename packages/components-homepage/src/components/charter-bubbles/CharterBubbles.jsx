@@ -2,6 +2,7 @@ import React, {
   forwardRef,
   useCallback,
   useEffect,
+  useId,
   useLayoutEffect,
   useRef,
 } from "react";
@@ -79,7 +80,13 @@ const CharterBubblesRender = (
   forwardedRef
 ) => {
   const resolvedItems = resolveItems(items);
-  const safeInstanceId = sanitizeCharterBubbleId(instanceId, "charter-bubbles");
+  // A valid caller-supplied instanceId is used directly (static-HTML parity).
+  // Otherwise React.useId() supplies a unique, stable fallback so two instances
+  // without an instanceId never share ARIA ids.
+  const reactId = useId();
+  const reactSafeId = `cb-${reactId.replace(/[^A-Za-z0-9_-]/g, "")}`;
+  const callerSafeId = sanitizeCharterBubbleId(instanceId, "");
+  const safeInstanceId = callerSafeId || reactSafeId;
   const openIndex = resolvedItems.findIndex(item => item.id === initialOpenId);
   const activeOpenId = openIndex === -1 ? null : initialOpenId;
   const structuralSignature = JSON.stringify([
@@ -97,9 +104,9 @@ const CharterBubblesRender = (
     [forwardedRef]
   );
 
-  if (safeInstanceId !== instanceId) {
+  if (instanceId && !callerSafeId) {
     warnInDevelopment(
-      'A unique HTML-safe instanceId is required; using "charter-bubbles".'
+      `instanceId "${instanceId}" is not a valid HTML token; a unique React-derived ID is being used instead.`
     );
   }
 

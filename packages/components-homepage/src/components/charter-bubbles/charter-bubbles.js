@@ -1128,10 +1128,6 @@ const bindResponsiveVisibility = controller => {
     controller.setClass(root, "is-carousel", mode === "carousel");
     controller.setClass(root, "is-cluster", mode === "cluster");
 
-    if (mode === "cluster" && previousMode === "carousel") {
-      controller.bubbles?.setOpenId?.(null);
-    }
-
     if (mode === "carousel" && previousMode !== "carousel") {
       if (controller.bubbles?.getOpenId?.() == null) {
         controller.bubbles?.setOpenId?.(controller.bubbles.getFirstId());
@@ -2031,6 +2027,11 @@ export const initCharterBubbles = (
       bindCarouselGeometry(controller);
       controller.setClass(root, "is-enhanced", true);
       controller.setAttribute(root, "data-enhanced", "true");
+      // The initial bindings run against the progressive-enhancement fallback
+      // geometry. Re-measure once the cluster/carousel CSS is active so an
+      // authored open bubble never inherits fallback-grid coordinates.
+      controller.bubbles?.reflow?.();
+      controller.carousel?.sync?.();
       controllers.set(root, controller);
     } else {
       controller.setClass(root, "is-enhanced", true);
