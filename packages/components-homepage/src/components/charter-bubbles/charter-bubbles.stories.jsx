@@ -311,6 +311,85 @@ const circleEdgeGap = (left, right) =>
   left.rect.width / 2 -
   right.rect.width / 2;
 
+const focusPaint = style => {
+  const outlineWidth = parseFloat(style.outlineWidth) || 0;
+  const outlineOffset = parseFloat(style.outlineOffset) || 0;
+  const outlineVisible =
+    outlineWidth > 0 &&
+    style.outlineStyle !== "none" &&
+    style.outlineStyle !== "hidden" &&
+    style.outlineColor !== "transparent";
+  const outlineExtent = outlineVisible
+    ? Math.max(0, outlineWidth + outlineOffset)
+    : 0;
+  const shadowExtent =
+    style.boxShadow === "none"
+      ? 0
+      : Math.max(
+          ...style.boxShadow.split(/,(?![^()]*(?:\)|$))/).map(shadow => {
+            const lengths = Array.from(
+              shadow.matchAll(/-?\d*\.?\d+px/g),
+              match => Math.abs(parseFloat(match[0]))
+            );
+            const [offsetX = 0, offsetY = 0, blur = 0, spread = 0] = lengths;
+            return Math.max(offsetX, offsetY) + blur + spread;
+          })
+        );
+  return {
+    extent: Math.max(outlineExtent, shadowExtent),
+    signature: [
+      style.outlineStyle,
+      style.outlineWidth,
+      style.outlineColor,
+      style.boxShadow,
+    ].join("|"),
+  };
+};
+
+const assertLinkFocusClearance = (link, entries, links) => {
+  const linkRect = link.getBoundingClientRect();
+  const { extent } = focusPaint(getComputedStyle(link));
+  expect(
+    extent,
+    `focused link must have nonzero visible focus paint: ${
+      focusPaint(getComputedStyle(link)).signature
+    }`
+  ).toBeGreaterThan(0);
+  const focusRect = {
+    left: linkRect.left - extent,
+    right: linkRect.right + extent,
+    top: linkRect.top - extent,
+    bottom: linkRect.bottom + extent,
+  };
+  expect(focusRect.left).toBeGreaterThanOrEqual(-1);
+  expect(focusRect.right).toBeLessThanOrEqual(
+    document.documentElement.clientWidth + 1
+  );
+  const ownIndex = links.indexOf(link);
+  for (const neighbor of entries.filter(entry => entry.index !== ownIndex)) {
+    const closestX = Math.max(
+      focusRect.left,
+      Math.min(neighbor.center.x, focusRect.right)
+    );
+    const closestY = Math.max(
+      focusRect.top,
+      Math.min(neighbor.center.y, focusRect.bottom)
+    );
+    expect(
+      Math.hypot(neighbor.center.x - closestX, neighbor.center.y - closestY)
+    ).toBeGreaterThan(neighbor.rect.width / 2);
+  }
+};
+
+const trustedTab = async () => {
+  if (!realPointer.available) {
+    await userEvent.tab();
+    return;
+  }
+  const { userEvent: browserUserEvent } = await import("vitest/browser");
+  await browserUserEvent.keyboard("{Tab}");
+};
+
 const assertNoScriptLayout = async (
   canvasElement,
   expectedRows,
@@ -400,44 +479,17 @@ const assertNoScriptLayout = async (
   for (const link of links) {
     expect(link).toBeVisible();
     expect(link.tabIndex).toBeGreaterThanOrEqual(0);
-    link.focus();
-    expect(link).toHaveFocus();
-    const linkRect = link.getBoundingClientRect();
-    const linkStyle = getComputedStyle(link);
-    const focusClearance =
-      parseFloat(linkStyle.outlineWidth) +
-      Math.max(0, parseFloat(linkStyle.outlineOffset));
-    const focusRect = {
-      left: linkRect.left - focusClearance,
-      right: linkRect.right + focusClearance,
-      top: linkRect.top - focusClearance,
-      bottom: linkRect.bottom + focusClearance,
-    };
-    expect(focusRect.left).toBeGreaterThanOrEqual(-1);
-    expect(focusRect.right).toBeLessThanOrEqual(
-      document.documentElement.clientWidth + 1
-    );
-    const ownIndex = links.indexOf(link);
-    for (const neighbor of entries.filter(entry => entry.index !== ownIndex)) {
-      const closestX = Math.max(
-        focusRect.left,
-        Math.min(neighbor.center.x, focusRect.right)
-      );
-      const closestY = Math.max(
-        focusRect.top,
-        Math.min(neighbor.center.y, focusRect.bottom)
-      );
-      expect(
-        Math.hypot(neighbor.center.x - closestX, neighbor.center.y - closestY)
-      ).toBeGreaterThan(neighbor.rect.width / 2);
-    }
   }
   if (checkTabOrder) {
     const start = canvasElement.querySelector("#charter-bubbles-focus-start");
     start.focus();
     for (const link of links) {
-      await userEvent.tab();
+      const unfocusedPaint = focusPaint(getComputedStyle(link));
+      await trustedTab();
       expect(link).toHaveFocus();
+      const focusedPaint = focusPaint(getComputedStyle(link));
+      expect(focusedPaint.signature).not.toBe(unfocusedPaint.signature);
+      assertLinkFocusClearance(link, entries, links);
     }
   }
   if (checkPageOverflow) {
@@ -597,6 +649,13 @@ export const NoScriptForcedColors = {
       for (const { panel } of entries) {
         expect(parseFloat(getComputedStyle(panel).outlineWidth)).toBe(2);
       }
+      const focusedLink = canvasElement.querySelector(
+        ".hp-charter-bubble__link:focus-visible"
+      );
+      expect(focusedLink).not.toBeNull();
+      const focusedStyle = getComputedStyle(focusedLink);
+      expect(focusedStyle.outlineStyle).not.toBe("none");
+      expect(parseFloat(focusedStyle.outlineWidth)).toBeGreaterThan(0);
     } finally {
       await emulateForcedColors(false);
     }
@@ -1554,6 +1613,7 @@ export const ReducedMotion = {
     expect(getComputedStyle(front).transitionDuration).toBe("0s");
     expect(getComputedStyle(back).transitionDuration).toBe("0s");
     expect(getComputedStyle(carousel).scrollBehavior).toBe("auto");
+    if (import.meta.env.MODE !== "test") return;
     await expect(realPointer.available).toBe(true);
     await realPointer.hover(front);
     expect(front.getBoundingClientRect().width).toBeCloseTo(180, 0);

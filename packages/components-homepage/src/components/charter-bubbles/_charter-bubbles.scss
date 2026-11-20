@@ -701,6 +701,12 @@
 }
 
 @media (forced-colors: active) {
+  .hp-charter-bubbles:not(.is-enhanced)
+    .hp-charter-bubble__link:focus-visible {
+    outline: 2px solid CanvasText !important;
+    outline-offset: 4px;
+  }
+
   .hp-charter-bubble__front,
   .hp-charter-bubble__back,
   .hp-charter-bubbles__nav-button {
