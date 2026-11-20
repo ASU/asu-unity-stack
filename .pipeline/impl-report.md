@@ -366,3 +366,55 @@ Status after fallback stage: **GREEN; ready for isolated fallback commit.**
 
 Follow-up implementation status: **GREEN; ready for isolated motion commit and
 review.**
+
+### Follow-up Commit Checkpoint (uncommitted review note)
+
+- Plan amendment: `ae4175920`.
+- No-script circles: `f82adefaa`.
+- Pre-render reduced motion: `e6c839df1`.
+- No push was performed. This final report note remains uncommitted for the
+  adversarial review/final documentation stage, as required.
+
+## Follow-up Review-Fix Closure Table — Cycle 1
+
+| # | Finding | Severity | Type | Files | Planned Fix | Evidence | Verify | Result |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | Forced-colors no-script link focus is invisible and clearance testing accepts zero paint | P1 | AUTO-FIX | `_charter-bubbles.scss`, `charter-bubbles.stories.jsx` | Add fallback-scoped system-color `:focus-visible`; derive clearance from nonzero outline and box-shadow paint; use trusted keyboard Tab and require a visible focused/unfocused delta | red-test, green-test, accessibility, integration | `yarn test:storybook src/components/charter-bubbles/charter-bubbles.stories.jsx -t 'No script — forced colors'` | PASS — RED computed `none / 0px / no shadow` and zero extent; GREEN computed a 2px CanvasText outline plus 4px offset (6px extent), visible paint delta, trusted Tab focus, and full neighbor clearance; 1/1 |
+| 2 | Direct Reduced Motion preview throws on Vitest-only pointer assertion | P2 | AUTO-FIX | `charter-bubbles.stories.jsx` | Keep synchronous first-state assertions universal; keep hover/click mandatory in Vitest; return cleanly before only the automation tail in direct preview; prove cleanup isolation | red-test, green-test, lifecycle, integration | `yarn test:storybook src/components/charter-bubbles/charter-bubbles.stories.jsx -t 'Reduced Motion\|Motion isolation'` | PASS — Vitest 2/2 with mandatory real pointer; direct preview query/marker/0s/auto all pass with zero console/page/play errors; isolation restores ordinary motion |
+
+### Follow-up Review-Fix Evidence — Cycle 1
+
+- P1 RED: trusted keyboard Tab in forced colors moved focus to the fallback link,
+  whose computed paint was `outline-style: none`, `outline-width: 0px`, and
+  `box-shadow: none`; the revised helper correctly failed on zero extent.
+- P1 GREEN: fallback forced-color focus now uses a 2px `CanvasText` outline with
+  a 4px offset. The production theme's global focus reset is important, so the
+  system-color outline is important as well. The helper parses both outlines
+  and every box-shadow ring, rejects zero visible paint, compares focused and
+  unfocused paint signatures, expands the focus rectangle by the actual 6px
+  extent, and proves it clears every neighboring circle. All seven no-script
+  stories pass, including 200% zoom and forced colors.
+- P2 RED: direct Storybook already satisfied query, marker, zero-transition,
+  and auto-scroll assertions, then failed solely because the Vitest-only real
+  pointer capability was asserted in development mode.
+- P2 GREEN: those four synchronous first-state assertions still run in every
+  environment. Only development/direct preview returns before the automation
+  tail. Test mode still asserts pointer capability, real-hover 180px, real
+  click, final 454px face, and absence of `is-opening`.
+- Direct-preview Chromium check at the real Storybook iframe returned
+  `query: true`, `marker: true`, `transition: "0s"`, `scroll: "auto"`, and an
+  empty console/page-error list. The local server was stopped afterward.
+- Focused results: forced colors 1/1; Reduced Motion + Motion isolation 2/2;
+  resolved `Html Parity` 1/1; all no-script stories 7/7.
+- Charter suite: first run reached 35/36 because the unchanged carousel pointer
+  target did not stabilize before its runner timeout; a clean retry passed
+  36/36. Full package Storybook passed 11/11 files and 275/275 stories.
+- Scoped ESLint, scoped Stylelint, and Vite build passed; the build transformed
+  15 modules. The Storybook reduced-motion marker is absent from `dist`.
+- Source isolation against `b4eb7152a` is empty for controller JavaScript,
+  React markup, data, and the static fixture. No geometry, content, enhanced
+  choreography, or production reduced-motion rule changed.
+
+Review-fix cycle 1 status: **2/2 findings closed.**
+
+Follow-up final status: **DONE — independently approved in review cycle 2.**
