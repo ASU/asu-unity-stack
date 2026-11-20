@@ -1,3 +1,32 @@
+# [@asu/unity-react-core-v2.5.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.5.3...@asu/unity-react-core-v2.5.4) (2026-11-20)
+
+
+### Bug Fixes
+
+* **lint:** report auto-fixable errors in checks ([67c7247](https://github.com/ASU/asu-unity-stack/commit/67c7247a9c76c1a7e96844c6445cf1387052ccf8))
+
+# [@asu/unity-react-core-v2.5.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.5.2...@asu/unity-react-core-v2.5.3) (2026-11-19)
+
+
+### Bug Fixes
+
+* **unity-react-core:** sub title text testing for small hero ([e4c8376](https://github.com/ASU/asu-unity-stack/commit/e4c8376ef5dd3709b50f768fcfc4af1ded4a3fb5))
+
+# [@asu/unity-react-core-v2.5.2](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.5.1...@asu/unity-react-core-v2.5.2) (2026-11-14)
+
+
+### Bug Fixes
+
+* **unity-react-core:** fixed missing export for the SidebarMenu component ([d389914](https://github.com/ASU/asu-unity-stack/commit/d389914da09f57bd914a26ebfd970c4633df0bf7))
+* **unity-react-core:** replaced "Select Section" with "Select a Page" for the sidebar menu ([b8c5ae8](https://github.com/ASU/asu-unity-stack/commit/b8c5ae82569086f3b761e9ef11aa7c9bf28655e6))
+
+# [@asu/unity-react-core-v2.5.1](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.5.0...@asu/unity-react-core-v2.5.1) (2026-11-06)
+
+
+### Bug Fixes
+
+* storybook package updates ([ece04b4](https://github.com/ASU/asu-unity-stack/commit/ece04b4ca6977f67e91d29bf8e2c0c536351db53))
+
 # [@asu/unity-react-core-v2.5.0](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.4.1...@asu/unity-react-core-v2.5.0) (2026-09-25)
 
 

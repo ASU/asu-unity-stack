@@ -47,7 +47,7 @@ export const ButtonIconOnly = ({
       }}
     >
       <button
-      autoFocus={autoFocus}
+        autoFocus={autoFocus}
         type="button"
         className={`btn btn-circle btn-circle-alt-${color} ${
           size === "large" && "btn-circle-large"

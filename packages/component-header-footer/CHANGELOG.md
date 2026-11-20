@@ -1,3 +1,17 @@
+# [@asu/component-header-footer-v1.6.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.6.2...@asu/component-header-footer-v1.6.3) (2026-11-20)
+
+
+### Bug Fixes
+
+* **lint:** report auto-fixable errors in checks ([67c7247](https://github.com/asu/asu-unity-stack/commit/67c7247a9c76c1a7e96844c6445cf1387052ccf8))
+
+# [@asu/component-header-footer-v1.6.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.6.1...@asu/component-header-footer-v1.6.2) (2026-11-06)
+
+
+### Bug Fixes
+
+* storybook package updates ([ece04b4](https://github.com/asu/asu-unity-stack/commit/ece04b4ca6977f67e91d29bf8e2c0c536351db53))
+
 # [@asu/component-header-footer-v1.6.1](https://github.com/asu/asu-unity-stack/compare/@asu/component-header-footer-v1.6.0...@asu/component-header-footer-v1.6.1) (2026-09-29)
 
 

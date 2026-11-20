@@ -32,9 +32,10 @@ export default {
  * @param {HeroProps} props
  * @returns {JSX.Element}
  */
-const Template = ({ image, title, contents, contentsColor }) => (
+const Template = ({ image, title, subTitle, contents, contentsColor }) => (
   <Hero
     title={title}
+    subTitle={subTitle}
     image={image}
     contents={contents}
     contentsColor={contentsColor}
@@ -56,6 +57,17 @@ HeroSmall.args = {
     text: "Heading with a long title 1",
     highlightColor: "none",
   },
+  subTitle: {
+    text: "Subtitle with example text",
+    highlightColor: "none",
+  },
+  contentsColor: "white",
+  contents: [
+    {
+      text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
+    },
+  ],
 };
 HeroSmall.parameters = {
   docs: {
