@@ -578,7 +578,7 @@ const expectText = async p => {
   await expect(more.color).toBe("rgb(140, 29, 64)");
   await expect(more.textDecorationLine).toBe("underline");
   const caption = style(p.captions[0]);
-  await expect(caption.fontSize).toBe("13.08px");
+  await expect(caption.fontSize).toBe("14px");
   await expect(caption.color).toBe("rgb(116, 116, 116)");
   const arrow = box(p.next);
   near(arrow.width, 52.3, 0.1);
@@ -635,13 +635,13 @@ const desktop = async (canvasElement, width) => {
   await expectIntro(p, { size: 64, line: 68, sub: 513 });
   await expectText(p);
   await expectControl(p, 32, 24);
-  // caption: 225px under the fan, 22px below it, left-aligned text centred under the stage
+  // caption: 225px wide, 19px below the fan (QA row 71), left edge on the front card's left edge (QA row 59)
   near(box(p.captions[0]).width, 225, 1);
-  near(box(p.captions[0]).top - box(p.stage).bottom, 22, 1);
+  near(box(p.captions[0]).top - box(p.stage).bottom, 19, 1);
   near(
-    box(p.captions[0]).left + 112.5,
-    box(p.stage).left + 266.27 * desktopUnit(p),
-    4
+    box(p.captions[0]).left,
+    box(p.stage).left + (266.27 - 360.52 / 2) * desktopUnit(p),
+    1
   );
   // the panels' cell is as tall as the tallest one; the controls sit 34px under it
   near(

@@ -126,6 +126,7 @@ $hp-faculty-ease: cubic-bezier(0.34, 1.12, 0.44, 1);
   grid-template-columns: minmax(0, 1fr);
   justify-items: stretch;
   align-content: start;
+  // #71: 22px was the base gap; desktop block overrides to 19px per QA sheet row 71.
   gap: 22px;
   min-width: 0;
 }
@@ -169,8 +170,10 @@ $hp-faculty-ease: cubic-bezier(0.34, 1.12, 0.44, 1);
 .hp-faculty__caption {
   display: block;
   color: $asu-gray-3;
-  font-size: 13.08px;
-  line-height: 19.61px;
+  // #72: 14px / 20px per QA sheet row 72 (was 13.08px / 19.61px). Line-height 20px is the same pair
+  // as .hp-faculty__bio; raw values, no matching token in _custom-asu-variables.scss.
+  font-size: 14px;
+  line-height: 20px;
   text-align: left;
 }
 
@@ -596,6 +599,9 @@ $hp-faculty-ease: cubic-bezier(0.34, 1.12, 0.44, 1);
     --hp-radius: calc(4 * var(--hp-u));
     --hp-shadow: calc(1.37 * var(--hp-u)) calc(1.37 * var(--hp-u))
       calc(10.94 * var(--hp-u)) rgba(0, 0, 0, 0.24);
+    // #71: 19px gap (was 22px) between stage and caption at desktop only (QA sheet row 71).
+    // Sheet specifies 19px; Figma measures 19.61px; using the sheet value.
+    gap: 19px;
   }
 
   .hp-faculty__inner {
@@ -639,6 +645,19 @@ $hp-faculty-ease: cubic-bezier(0.34, 1.12, 0.44, 1);
       &.is-active {
         visibility: visible;
       }
+    }
+
+    // #59 (QA row 59): the caption's left edge sits on the front card's left edge. The offset is
+    // (--hp-front-x - --hp-front-w / 2) * --hp-u; the caption column aligns to the start and is moved by that offset.
+    .hp-faculty__stage-col {
+      justify-items: start;
+    }
+
+    .hp-faculty__captions {
+      margin-left: calc(
+        (var(--hp-front-x) - var(--hp-front-w) / 2) * var(--hp-u)
+      );
+      width: min(225px, 100%);
     }
   }
 }
