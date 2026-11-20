@@ -533,13 +533,23 @@ $hp-faculty-ease: cubic-bezier(0.34, 1.12, 0.44, 1);
     }
   }
 
-  // Captions share one cell, as tall as the tallest; only the active one shows.
+  // Captions share one cell, as tall as the tallest; only the active one shows. QA row 59: the caption's left
+  // edge is the front card's left edge at every width. The stage is centred in the column, so the card's left
+  // edge is the column centre plus (card left in the fan - half the fan) * the scale unit.
   .hp-faculty__captions {
-    width: min(225px, 100%);
+    --hp-caption-x: calc(
+      50cqw +
+        (var(--hp-front-x) - var(--hp-front-w) / 2 - var(--hp-fan-w) / 2) *
+        var(--hp-u)
+    );
+
+    justify-self: start;
+    width: min(225px, calc(100% - var(--hp-caption-x)));
+    margin-left: var(--hp-caption-x);
     gap: 0;
 
     @media (max-width: 767px) {
-      width: 100%;
+      width: calc(100% - var(--hp-caption-x));
     }
   }
 
@@ -645,19 +655,6 @@ $hp-faculty-ease: cubic-bezier(0.34, 1.12, 0.44, 1);
       &.is-active {
         visibility: visible;
       }
-    }
-
-    // #59 (QA row 59): the caption's left edge sits on the front card's left edge. The offset is
-    // (--hp-front-x - --hp-front-w / 2) * --hp-u; the caption column aligns to the start and is moved by that offset.
-    .hp-faculty__stage-col {
-      justify-items: start;
-    }
-
-    .hp-faculty__captions {
-      margin-left: calc(
-        (var(--hp-front-x) - var(--hp-front-w) / 2) * var(--hp-u)
-      );
-      width: min(225px, 100%);
     }
   }
 }

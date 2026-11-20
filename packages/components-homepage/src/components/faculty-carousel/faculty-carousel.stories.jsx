@@ -643,6 +643,13 @@ const desktop = async (canvasElement, width) => {
     box(p.stage).left + (266.27 - 360.52 / 2) * desktopUnit(p),
     1
   );
+  near(box(p.captions[0]).left, box(p.cards[0]).left, 1.5);
+  // the fan stays centred in its column (the caption rule must not move it)
+  near(
+    box(p.stage).left + box(p.stage).width / 2,
+    box(p.stageCol).left + box(p.stageCol).width / 2,
+    1
+  );
   // the panels' cell is as tall as the tallest one; the controls sit 34px under it
   near(
     box(p.next).top -
@@ -674,7 +681,13 @@ const stacked = async (canvasElement, width, { control, inset, sub, wide }) => {
   await expectText(p);
   await expectControl(p, control, inset);
   near(box(p.captions[0]).top - box(p.stage).bottom, 22, 1);
-  near(box(p.captions[0]).width, wide ? 225 : width - 64, 1);
+  // QA row 59: the caption's left edge is the front card's left edge, at every width
+  near(box(p.captions[0]).left, box(p.cards[0]).left, 1.5);
+  near(
+    box(p.captions[0]).width,
+    wide ? 225 : width - 64 - (box(p.captions[0]).left - box(p.stageCol).left),
+    1
+  );
   near(
     box(p.next).top - box(p.panels[0].querySelector(".hp-faculty__bio")).bottom,
     16,
