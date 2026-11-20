@@ -403,9 +403,13 @@ const accordionPlay =
       expect(box(name).height).toBeGreaterThanOrEqual(44);
     });
     await expect(p.details.every(detail => detail.hidden)).toBe(true);
+    // closed rows are full width below 1024 (QA row 61; design decision in the 2026-11-16 Slack thread)
+    const rowWidth = width - 2 * (width >= 768 ? 48 : 16 + 8);
     await expect(
       p.names.every(
-        name => style(name).borderBottomColor === WHITE && box(name).width < 600
+        name =>
+          style(name).borderBottomColor === WHITE &&
+          Math.abs(box(name).width - rowWidth) <= 1
       )
     ).toBe(true);
     await expect(p.chevrons.every(c => style(c).transform === "none")).toBe(
@@ -419,11 +423,11 @@ const accordionPlay =
     const panelContent = width - 2 * side;
     await near(box(p.names[0]).width, panelContent, 1);
     await expect(style(p.names[0]).borderBottomColor).toBe(GOLD);
-    await expect(box(p.names[1]).width).toBeLessThan(panelContent);
+    await near(box(p.names[1]).width, panelContent, 1);
     await expect(style(p.chevrons[0]).transform).not.toBe("none");
-    // the open photo keeps the Figma 327:219 ratio, at most 480 wide
+    // the open photo spans the content width below 1024 (QA row 62) and keeps the Figma 327:219 ratio
     const photo = box(p.photos[0]);
-    await near(photo.width, Math.min(480, panelContent), 1);
+    await near(photo.width, panelContent, 1);
     await near(photo.height, (photo.width * 219) / 327, 1);
     // no horizontal overflow
     await expect(document.documentElement.scrollWidth).toBeLessThanOrEqual(

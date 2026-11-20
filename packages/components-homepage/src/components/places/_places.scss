@@ -246,12 +246,14 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
 
 // The name row: the name and a chevron; its 4px rule is as long as the row, and the open row's rule is gold
 // and spans the width.
+// #61: width: 100% (was fit-content) so closed rows are full-width below 1024 (QA sheet row 61).
+// Desktop overrides this with width: auto in the >= 1024 block.
 .hp-places__name {
   display: flex;
   align-items: center;
   gap: 8px;
   box-sizing: border-box;
-  width: fit-content;
+  width: 100%;
   max-width: 100%;
   margin: 0;
   padding: 8px 0;
@@ -332,10 +334,13 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
 .hp-places__photo {
   display: block;
   width: 100%;
-  max-width: 480px;
+  // #62: removed max-width: 480px below 1024 (QA sheet row 62); kept no cap so photo is full width on mobile/tablet.
+  // #63: 4px radius on the photo, all devices (QA sheet row 63). No existing token; raw value.
   margin-top: 8px;
+  border-radius: 4px;
   aspect-ratio: 327 / 219;
   object-fit: cover;
+  overflow: hidden;
 }
 
 .hp-places__see-all {
@@ -459,6 +464,8 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
       display: block;
       min-height: $hp-places-media-h;
       overflow: hidden;
+      // #64: 4px radius on the video/media at desktop (QA sheet row 64). No existing token; raw value.
+      border-radius: 4px;
       background: $asu-gray-1;
 
       // Opening (places.js writes --hp-places-progress, 0 inset .. 1 full width, only while it is below 1).
@@ -522,6 +529,9 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
       margin: 24px 0 24px 24px;
       padding: 32px;
       border: 1px solid $asu-gray-3;
+      // #65: 4px radius on all four corners of the panel (QA sheet row 65). The open box sits at
+      // left: calc(100% + 33px), not on the panel corner, so no seam protection needed. No token; raw value.
+      border-radius: 4px;
       isolation: isolate;
       color: $asu-gray-7;
       --hp-places-ring-inner: var(--hp-focus-inner);
@@ -545,6 +555,8 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
       position: absolute;
       inset: 0;
       z-index: -1;
+      // #65: inherit the panel's 4px border-radius so the glass layer clips correctly.
+      border-radius: inherit;
       background: $hp-places-glass;
       backdrop-filter: blur(12px) saturate(160%);
       -webkit-backdrop-filter: blur(12px) saturate(160%);
