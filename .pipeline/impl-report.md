@@ -315,3 +315,54 @@ introduced.
 - `.pipeline/impl-report.md`
 
 Status after fallback stage: **GREEN; ready for isolated fallback commit.**
+
+### Reduced-motion RED/GREEN and Cleanup
+
+- The initially proposed lowercase filter `-t 'Reduced motion'` matched zero
+  tests and was rejected. The resolved Storybook display name is
+  `Reduced Motion`.
+- RED command:
+  `yarn test:storybook src/components/charter-bubbles/charter-bubbles.stories.jsx -t 'Reduced Motion'`
+  — FAIL, 1 failed / 35 skipped. The first synchronous play assertion observed
+  `matchMedia('(prefers-reduced-motion: reduce)').matches === false`, proving
+  the old play-time emulation began after render.
+- GREEN command: the same resolved command — PASS, 1 passed / 35 skipped.
+  The story `beforeEach` now awaits browser emulation, installs the exact-query
+  MediaQueryList-compatible adapter and document marker, and returns idempotent
+  cleanup before React renders.
+- First observable story state: query `true`; marker present; bubble, front, and
+  back transition duration `0s`; viewport scroll behavior `auto`. A real hover
+  stays at 180px and a real click immediately exposes the final 454px open face
+  with no `is-opening` intermediate state.
+- Direct-preview support uses the same pre-render adapter and Storybook-only
+  marker rules even when the Vitest command is unavailable/no-op. The mirror is
+  confined to `_charter-bubbles.storybook.scss`; production reduced-motion CSS
+  is unchanged.
+- Cleanup command:
+  `yarn test:storybook src/components/charter-bubbles/charter-bubbles.stories.jsx -t 'Motion isolation'`
+  — PASS, 1 passed / 35 skipped. The following ordinary story observes query
+  `false`, no marker, and a nonzero transition. Cleanup restores the exact saved
+  `matchMedia` function and prior marker absence/value, awaits emulation reset,
+  and safely no-ops on a second call.
+
+### Follow-up Broader Verification
+
+- Charter Bubbles: 36/36 PASS.
+- Full package Storybook: 11/11 files and 275/275 stories PASS.
+- Scoped ESLint and Stylelint: PASS.
+- Package build: PASS; Vite transformed 15 modules and emitted the production
+  CSS, React ES, package ES, and Charter Bubbles ES bundles.
+- Existing Sass/Bootstrap deprecation warnings remain; no new failure or
+  warning was introduced.
+- Production JavaScript, JSX component markup, data, static fixture, enhanced
+  cluster/carousel behavior, and production reduced-motion media rules have no
+  follow-up diff.
+
+### Reduced-motion Files Changed
+
+- `packages/components-homepage/src/components/charter-bubbles/_charter-bubbles.storybook.scss`
+- `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.stories.jsx`
+- `.pipeline/impl-report.md`
+
+Follow-up implementation status: **GREEN; ready for isolated motion commit and
+review.**

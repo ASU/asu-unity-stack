@@ -58,6 +58,25 @@
   margin: $uds-size-spacing-2;
 }
 
+html[data-charter-bubbles-reduced-motion-story]
+  .hp-charter-bubble,
+html[data-charter-bubbles-reduced-motion-story]
+  .hp-charter-bubble__front,
+html[data-charter-bubbles-reduced-motion-story]
+  .hp-charter-bubble__back {
+  transition: none !important;
+}
+
+html[data-charter-bubbles-reduced-motion-story]
+  .hp-charter-bubble__front:hover {
+  transform: translate(-50%, -50%) rotateY(0) scale(1);
+}
+
+html[data-charter-bubbles-reduced-motion-story]
+  .hp-charter-bubbles__viewport {
+  scroll-behavior: auto !important;
+}
+
 @media (max-width: $uds-breakpoint-md) {
   .charter-bubbles-story__main {
     padding: $uds-size-spacing-4;

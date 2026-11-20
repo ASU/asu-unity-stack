@@ -39,6 +39,62 @@ const viewport = width => ({
   },
 });
 
+const REDUCED_MOTION_QUERY = "(prefers-reduced-motion: reduce)";
+const REDUCED_MOTION_STORY_ATTRIBUTE =
+  "data-charter-bubbles-reduced-motion-story";
+
+const installReducedMotionStoryEnvironment = async () => {
+  const nativeMatchMedia = window.matchMedia;
+  const root = document.documentElement;
+  const hadMarker = root.hasAttribute(REDUCED_MOTION_STORY_ATTRIBUTE);
+  const previousMarker = root.getAttribute(REDUCED_MOTION_STORY_ATTRIBUTE);
+  let cleaned = false;
+
+  await emulateReducedMotion(true);
+
+  const listeners = new Set();
+  const reducedMotionList = {
+    matches: true,
+    media: REDUCED_MOTION_QUERY,
+    onchange: null,
+    addEventListener(type, listener) {
+      if (type === "change") listeners.add(listener);
+    },
+    removeEventListener(type, listener) {
+      if (type === "change") listeners.delete(listener);
+    },
+    addListener(listener) {
+      listeners.add(listener);
+    },
+    removeListener(listener) {
+      listeners.delete(listener);
+    },
+    dispatchEvent(event) {
+      for (const listener of listeners) listener.call(this, event);
+      if (typeof this.onchange === "function") this.onchange(event);
+      return !event.defaultPrevented;
+    },
+  };
+
+  window.matchMedia = query =>
+    query === REDUCED_MOTION_QUERY
+      ? reducedMotionList
+      : nativeMatchMedia.call(window, query);
+  root.setAttribute(REDUCED_MOTION_STORY_ATTRIBUTE, "");
+
+  return async () => {
+    if (cleaned) return;
+    cleaned = true;
+    window.matchMedia = nativeMatchMedia;
+    if (hadMarker) {
+      root.setAttribute(REDUCED_MOTION_STORY_ATTRIBUTE, previousMarker ?? "");
+    } else {
+      root.removeAttribute(REDUCED_MOTION_STORY_ATTRIBUTE);
+    }
+    await emulateReducedMotion(false);
+  };
+};
+
 const assertMinimumBubbleTextSize = root => {
   const selectors = [
     ".hp-charter-bubble__front-label",
@@ -1481,30 +1537,50 @@ export const BreakpointPreservesOpen = {
 
 export const ReducedMotion = {
   ...viewport(1440),
+  beforeEach: installReducedMotionStoryEnvironment,
   render: () => <ReactPage />,
   play: async ({ canvasElement }) => {
-    await emulateReducedMotion(true);
-    try {
-      const bubble = canvasElement.querySelector(".hp-charter-bubble");
-      const front = bubble.querySelector(".hp-charter-bubble__front");
-      const back = bubble.querySelector(".hp-charter-bubble__back");
-      const carousel = canvasElement.querySelector(
-        ".hp-charter-bubbles__viewport"
-      );
-      await expect(realPointer.available).toBe(true);
-      await realPointer.hover(front);
-      await waitFor(() => {
-        expect(getComputedStyle(bubble).transitionDuration).toBe("0s");
-        expect(getComputedStyle(front).transitionDuration).toBe("0s");
-        expect(getComputedStyle(back).transitionDuration).toBe("0s");
-        expect(getComputedStyle(carousel).scrollBehavior).toBe("auto");
-        expect(front.getBoundingClientRect().width).toBeCloseTo(180, 0);
-      });
-    } finally {
-      const front = canvasElement.querySelector(".hp-charter-bubble__front");
-      await realPointer.unhover(front);
-      await emulateReducedMotion(false);
-    }
+    expect(window.matchMedia(REDUCED_MOTION_QUERY).matches).toBe(true);
+    expect(document.documentElement).toHaveAttribute(
+      REDUCED_MOTION_STORY_ATTRIBUTE
+    );
+    const bubble = canvasElement.querySelector(".hp-charter-bubble");
+    const front = bubble.querySelector(".hp-charter-bubble__front");
+    const back = bubble.querySelector(".hp-charter-bubble__back");
+    const carousel = canvasElement.querySelector(
+      ".hp-charter-bubbles__viewport"
+    );
+    expect(getComputedStyle(bubble).transitionDuration).toBe("0s");
+    expect(getComputedStyle(front).transitionDuration).toBe("0s");
+    expect(getComputedStyle(back).transitionDuration).toBe("0s");
+    expect(getComputedStyle(carousel).scrollBehavior).toBe("auto");
+    await expect(realPointer.available).toBe(true);
+    await realPointer.hover(front);
+    expect(front.getBoundingClientRect().width).toBeCloseTo(180, 0);
+    await realPointer.click(front);
+    expect(bubble).toHaveClass("is-open");
+    expect(bubble).not.toHaveClass("is-opening");
+    expect(back.getBoundingClientRect().width).toBeCloseTo(454, 0);
+    await realPointer.unhover(front);
+  },
+};
+
+export const MotionIsolation = {
+  name: "Motion isolation",
+  tags: ["!dev", "!autodocs"],
+  ...viewport(1440),
+  render: () => <ReactPage />,
+  play: async ({ canvasElement }) => {
+    expect(window.matchMedia(REDUCED_MOTION_QUERY).matches).toBe(false);
+    expect(document.documentElement).not.toHaveAttribute(
+      REDUCED_MOTION_STORY_ATTRIBUTE
+    );
+    expect(
+      parseFloat(
+        getComputedStyle(canvasElement.querySelector(".hp-charter-bubble"))
+          .transitionDuration
+      )
+    ).toBeGreaterThan(0);
   },
 };
 
