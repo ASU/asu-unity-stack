@@ -4,7 +4,8 @@ import React from "react";
 import { ASUHeader } from ".";
 import { defaultState } from "../../__mocks__/data/props-mock";
 
-const getToggle = () => screen.getAllByRole("link", { name: /link option 1/i })[0];
+const getToggle = () =>
+  screen.getAllByRole("link", { name: /link option 1/i })[0];
 
 describe("NavItem dropdown toggling", () => {
   beforeEach(() => {

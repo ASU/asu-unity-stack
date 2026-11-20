@@ -92,7 +92,7 @@ const NavItem = ({ link }) => {
       }
     };
 
-    const handleFocusChange = (e) => {
+    const handleFocusChange = e => {
       requestAnimationFrame(() => {
         const node = clickRef.current;
 
@@ -204,7 +204,7 @@ const NavItem = ({ link }) => {
         return;
       }
       // Handle Enter or Space key
-      if (key === "Enter" || key === " " || e.type === "click" ) {
+      if (key === "Enter" || key === " " || e.type === "click") {
         if (link.items) {
           // Regardless of state or props mobile/desktop/hover/click
           // if the item has a dropdown, we want to toggle it on Enter/Space
