@@ -171,6 +171,7 @@ export const storiesToTest = [
   "homepage-charter-bubbles--desktop-slots-1920",
   "homepage-charter-bubbles--desktop-slots-2560",
   "homepage-charter-bubbles--open-to-open-geometry",
+  "homepage-charter-bubbles--open-on-load-geometry",
   "homepage-charter-bubbles--open-close-focus",
   "homepage-charter-bubbles--breakpoint-preserves-open",
   "homepage-charter-bubbles--two-default-instances",

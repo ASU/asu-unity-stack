@@ -1096,6 +1096,103 @@ export const OpenToOpenGeometry = {
   },
 };
 
+// Simulates a refresh with the page already scrolled: the placeholder is
+// scrolled into view first, then the bubbles mount in its place so they
+// initialise with the page scrolled and the bubbles in the viewport.
+const ScrolledLoadPage = () => {
+  const [ready, setReady] = React.useState(false);
+  const placeholderRef = React.useRef(null);
+  React.useEffect(() => {
+    const top =
+      placeholderRef.current.getBoundingClientRect().top + window.scrollY - 40;
+    window.scrollTo({ top, behavior: "instant" });
+    let frame = 0;
+    const waitForScroll = () => {
+      if (Math.abs(window.scrollY - top) < 1) setReady(true);
+      else frame = requestAnimationFrame(waitForScroll);
+    };
+    waitForScroll();
+    return () => cancelAnimationFrame(frame);
+  }, []);
+  return (
+    <>
+      <StoryFrame>
+        {ready ? (
+          <CharterBubbles
+            instanceId="storybook-charter"
+            initialOpenId="employability"
+          />
+        ) : (
+          <div ref={placeholderRef} style={{ minHeight: 900 }} />
+        )}
+      </StoryFrame>
+      {/* Trailing height lets the window scroll before the bubbles mount. */}
+      <div style={{ height: 3000 }} />
+    </>
+  );
+};
+
+// Desktop geometry is measured from viewport coordinates, so the case that
+// matters is a refresh with the page scrolled until the bubbles are in view.
+export const OpenOnLoadGeometry = {
+  tags: ["!dev", "!autodocs"],
+  ...viewport(1280),
+  render: () => <ScrolledLoadPage />,
+  play: async ({ canvasElement }) => {
+    const readRoot = () =>
+      canvasElement.querySelector("[data-charter-bubbles]");
+    const readOffsets = () =>
+      Array.from(readRoot().querySelectorAll("[data-charter-bubble-item]")).map(
+        item => [
+          item.style.getPropertyValue("--hp-charter-translate-x"),
+          item.style.getPropertyValue("--hp-charter-translate-y"),
+        ]
+      );
+    await waitFor(() => {
+      expect(readRoot()).toHaveAttribute("data-layout", "cluster");
+      expect(readRoot()).toHaveAttribute("data-open-id", "employability");
+    });
+    expect(window.scrollY).toBeGreaterThan(0);
+    // Every item must have measured offsets, not fallback-grid coordinates.
+    await waitFor(() =>
+      expect(readOffsets().every(([x, y]) => x !== "" && y !== "")).toBe(true)
+    );
+    for (const [x, y] of readOffsets()) {
+      expect(x).not.toBe("");
+      expect(y).not.toBe("");
+    }
+
+    // Once neighbour transitions settle, the open bubble sits inside the
+    // viewport and no neighbour overlaps it.
+    await waitFor(() => {
+      const open = readRoot().querySelector(
+        '[data-charter-bubble-id="employability"]'
+      );
+      const openRect = open
+        .querySelector("[data-charter-bubble-panel]")
+        .getBoundingClientRect();
+      expect(openRect.top).toBeGreaterThanOrEqual(0);
+      expect(openRect.bottom).toBeLessThanOrEqual(window.innerHeight);
+      const openCenter = circleCenter(openRect);
+      for (const item of readRoot().querySelectorAll(
+        '[data-charter-bubble-item]:not([data-charter-bubble-id="employability"])'
+      )) {
+        const rect = item
+          .querySelector("[data-charter-bubble-open]")
+          .getBoundingClientRect();
+        const center = circleCenter(rect);
+        const distance = Math.hypot(
+          center.x - openCenter.x,
+          center.y - openCenter.y
+        );
+        expect(distance).toBeGreaterThanOrEqual(
+          (openRect.width + rect.width) / 2 - 1
+        );
+      }
+    });
+  },
+};
+
 const assertExpandedContentFits = async canvasElement => {
   const root = canvasElement.querySelector("[data-charter-bubbles]");
   const back = root.querySelector(".is-open [data-charter-bubble-panel]");
