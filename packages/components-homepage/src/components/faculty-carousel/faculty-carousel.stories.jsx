@@ -401,8 +401,10 @@ export const Rotation = {
       );
       p.panels.forEach((panel, c) => {
         expect(panel.classList.contains("is-active")).toBe(c === i);
-        expect(style(panel).visibility).toBe(c === i ? "visible" : "hidden");
+        expect(style(panel).display).toBe(c === i ? "block" : "none");
       });
+      // QA row 70: the controls sit 34px under the active bio, whichever person is in front
+      near(box(p.next).top - box(p.panels[i]).bottom, 34, 1);
       p.captions.forEach((caption, c) =>
         expect(caption.classList.contains("is-active")).toBe(c === i)
       );
@@ -650,7 +652,7 @@ const desktop = async (canvasElement, width) => {
     box(p.stageCol).left + box(p.stageCol).width / 2,
     1
   );
-  // the panels' cell is as tall as the tallest one; the controls sit 34px under it
+  // the panels' cell is as tall as the active bio (QA row 70); the controls sit 34px under it
   near(
     box(p.next).top -
       box(p.section.querySelector(".hp-faculty__panels")).bottom,
@@ -1261,9 +1263,8 @@ export const BreakpointCrossing = {
       await resizeViewport(width, 900);
       await expect(state()).toEqual(before);
       await expect(style(p.panels[1]).display).toBe("block");
-      await expect(style(p.panels[0]).display).toBe(
-        width < 1024 ? "none" : "block"
-      );
+      // QA row 70: only the active panel takes room, at both layouts
+      await expect(style(p.panels[0]).display).toBe("none");
     }
   },
 };
