@@ -191,15 +191,16 @@ const NavItem = ({ link }) => {
         setItemOpened();
         return;
       }
+      if (key === "Escape") {
+        if (mobileMenuOpen) {
+          setMobileMenuOpen(false);
+        }
+        return;
+      }
       if (opened && (e.type === "click" || key === "Enter" || key === " ")) {
         if (typeof clickRef?.current?.focus === "function") {
           clickRef.current.focus();
         }
-        return;
-      }
-
-      if (key === "Escape" && !opened && mobileMenuOpen) {
-        setMobileMenuOpen(false);
         return;
       }
       // Handle Enter or Space key
