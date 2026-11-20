@@ -1,3 +1,10 @@
+# [@asu/unity-react-core-v2.5.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.5.3...@asu/unity-react-core-v2.5.4) (2026-11-20)
+
+
+### Bug Fixes
+
+* **lint:** report auto-fixable errors in checks ([67c7247](https://github.com/ASU/asu-unity-stack/commit/67c7247a9c76c1a7e96844c6445cf1387052ccf8))
+
 # [@asu/unity-react-core-v2.5.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-react-core-v2.5.2...@asu/unity-react-core-v2.5.3) (2026-11-19)
 
 
