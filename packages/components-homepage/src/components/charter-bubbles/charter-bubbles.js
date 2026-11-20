@@ -476,6 +476,54 @@ const focusSafely = element => {
   }
 };
 
+const createOwnedFocusScheduler = (controller, ownerDocument, view) => {
+  let frame = null;
+  let expectedOwner = null;
+  let intent = 0;
+
+  const cancel = () => {
+    intent += 1;
+    if (frame != null && typeof view?.cancelAnimationFrame === "function") {
+      view.cancelAnimationFrame(frame);
+    }
+    frame = null;
+    expectedOwner = null;
+  };
+
+  controller.listen(ownerDocument, "focusin", event => {
+    if (frame != null && event.target !== expectedOwner) cancel();
+  });
+  controller.addCleanup(cancel);
+
+  const schedule = (element, isCurrent = () => true) => {
+    cancel();
+    const scheduledIntent = intent;
+    expectedOwner = ownerDocument?.activeElement ?? null;
+    const scheduledOwner = expectedOwner;
+    const focus = () => {
+      frame = null;
+      expectedOwner = null;
+      if (
+        !controller.active ||
+        intent !== scheduledIntent ||
+        ownerDocument?.activeElement !== scheduledOwner ||
+        !isCurrent()
+      ) {
+        return;
+      }
+      focusSafely(element);
+    };
+
+    if (typeof view?.requestAnimationFrame === "function") {
+      frame = view.requestAnimationFrame(focus);
+    } else {
+      focus();
+    }
+  };
+
+  return { cancel, schedule };
+};
+
 const bindBubbleTransitions = controller => {
   const { root } = controller;
   const records = discoverBubbleItems(root);
@@ -488,6 +536,11 @@ const bindBubbleTransitions = controller => {
   const list = controller.query(LIST_SELECTOR);
   const ownerDocument = root.ownerDocument;
   const view = ownerDocument?.defaultView;
+  const focusScheduler = createOwnedFocusScheduler(
+    controller,
+    ownerDocument,
+    view
+  );
   let openId = null;
 
   const clearDesktopGeometry = () => {
@@ -900,6 +953,7 @@ const bindBubbleTransitions = controller => {
     nextId,
     { focusPanel = false, returnFocus = false, allowCarouselEmpty = false } = {}
   ) => {
+    focusScheduler.cancel();
     if (nextId != null && !byId.has(nextId)) return false;
     if (
       nextId == null &&
@@ -925,14 +979,7 @@ const bindBubbleTransitions = controller => {
     const active = openId == null ? null : byId.get(openId);
     if (focusPanel && active) {
       const activeId = active.id;
-      const focusClose = () => {
-        if (openId === activeId) focusSafely(active.close);
-      };
-      if (typeof view?.requestAnimationFrame === "function") {
-        view.requestAnimationFrame(focusClose);
-      } else {
-        focusClose();
-      }
+      focusScheduler.schedule(active.close, () => openId === activeId);
     } else if (shouldReturnFocus && previous) focusSafely(previous.front);
 
     return true;
@@ -1228,6 +1275,11 @@ const bindCarouselGeometry = controller => {
   const previous = controller.query(PREVIOUS_SELECTOR);
   const next = controller.query(NEXT_SELECTOR);
   if (!viewport || !track || !list || !previous || !next) return;
+  const focusScheduler = createOwnedFocusScheduler(
+    controller,
+    ownerDocument,
+    view
+  );
 
   let pendingScroll = false;
   let pendingFocusItem = null;
@@ -1248,21 +1300,23 @@ const bindCarouselGeometry = controller => {
     hasOverflow: true,
   };
 
-  const focusPanelAction = item => {
+  const focusActiveLink = item => {
     const id = item?.getAttribute("data-charter-bubble-id");
     const link = item?.querySelector(
       `${PANEL_SELECTOR} a.hp-charter-bubble__link[href]`
     );
     if (!id || !link) return;
-    const focusLink = () => {
-      if (controller.bubbles?.getOpenId?.() === id) focusSafely(link);
-    };
-    if (typeof view?.requestAnimationFrame === "function") {
-      view.requestAnimationFrame(focusLink);
-    } else {
-      focusLink();
-    }
+    focusScheduler.schedule(
+      link,
+      () => controller.bubbles?.getOpenId?.() === id
+    );
   };
+
+  controller.listen(ownerDocument, "focusin", event => {
+    if (pendingFocusItem && !pendingFocusItem.contains(event.target)) {
+      pendingFocusItem = null;
+    }
+  });
 
   const setDisabled = (button, disabled) => {
     controller.setClass(button, "is-disabled", disabled);
@@ -1567,7 +1621,7 @@ const bindCarouselGeometry = controller => {
     recentring = true;
     if (pendingFocusItem === item) {
       pendingFocusItem = null;
-      focusPanelAction(item);
+      focusActiveLink(item);
     }
     sync();
     return true;
@@ -1581,6 +1635,8 @@ const bindCarouselGeometry = controller => {
     ) {
       return false;
     }
+
+    if (!focusPanel) pendingFocusItem = null;
 
     if (pendingSelectionItem === item) {
       if (focusPanel) pendingFocusItem = item;
@@ -1606,7 +1662,7 @@ const bindCarouselGeometry = controller => {
 
     if (pendingFocusItem === item) {
       pendingFocusItem = null;
-      focusPanelAction(item);
+      focusActiveLink(item);
     }
   };
 

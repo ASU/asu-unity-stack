@@ -1,7 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import { expect, userEvent, waitFor, within } from "storybook/test";
 
-import { emulateForcedColors } from "../rankings-cards/rankings-cards-helpers.jsx";
+import {
+  emulateForcedColors,
+  realPointer,
+} from "../rankings-cards/rankings-cards-helpers.jsx";
 import {
   emulateReducedMotion,
   resizeViewport,
@@ -54,6 +57,65 @@ const assertMinimumBubbleTextSize = root => {
       ).toBeGreaterThanOrEqual(16);
     }
   }
+};
+
+const TypographyPage = () => (
+  <>
+    <div data-typography-enhanced="">
+      <ReactPage initialOpenId="employability" />
+    </div>
+    <div data-typography-unenhanced="">
+      <StaticPage
+        enhance={false}
+        html={charterBubblesStaticHtml({
+          instanceId: "typography-unenhanced",
+          openId: "employability",
+        })}
+      />
+    </div>
+  </>
+);
+
+const assertTypographyBoundary = async (
+  canvasElement,
+  layout,
+  { checkContentFit = false } = {}
+) => {
+  const root = canvasElement.querySelector(
+    "[data-typography-enhanced] [data-charter-bubbles]"
+  );
+  const unenhancedRoot = canvasElement.querySelector(
+    "[data-typography-unenhanced] [data-charter-bubbles]"
+  );
+  await waitFor(() => {
+    expect(root).toHaveAttribute("data-enhanced", "true");
+    expect(root).toHaveAttribute("data-layout", layout);
+  });
+  expect(unenhancedRoot).not.toHaveAttribute("data-enhanced");
+  assertMinimumBubbleTextSize(root);
+  assertMinimumBubbleTextSize(unenhancedRoot);
+  if (!checkContentFit) return;
+
+  if (!root.hasAttribute("data-open-id")) {
+    root.querySelector("[data-charter-bubble-open]").click();
+  }
+  await waitFor(() =>
+    expect(root).toHaveAttribute("data-open-id", "employability")
+  );
+
+  await waitFor(() => {
+    const panel = root.querySelector(".is-open [data-charter-bubble-panel]");
+    expect(panel).not.toBeNull();
+    for (const content of panel.querySelectorAll(
+      ".hp-charter-bubble__heading, .hp-charter-bubble__detail, .hp-charter-bubble__link"
+    )) {
+      const bounds = content.getBoundingClientRect();
+      expect(bounds.left).toBeGreaterThanOrEqual(0);
+      expect(bounds.right).toBeLessThanOrEqual(
+        document.documentElement.clientWidth
+      );
+    }
+  });
 };
 
 const StoryFrame = ({ children }) => (
@@ -231,66 +293,48 @@ export const Phone320 = {
 export const TypographyMinimum = {
   tags: ["!dev", "!autodocs"],
   ...viewport(320),
-  render: () => <ReactPage initialOpenId="employability" />,
-  play: async ({ canvasElement }) => {
-    const root = canvasElement.querySelector("[data-charter-bubbles]");
-    await waitFor(() => expect(root).toHaveAttribute("data-enhanced", "true"));
-    await waitFor(() =>
-      expect(root).toHaveAttribute("data-layout", "carousel")
-    );
-    assertMinimumBubbleTextSize(root);
+  render: () => <TypographyPage />,
+  play: async ({ canvasElement }) =>
+    assertTypographyBoundary(canvasElement, "carousel", {
+      checkContentFit: true,
+    }),
+};
 
-    const panel = root.querySelector(".is-open [data-charter-bubble-panel]");
-    await waitFor(() => {
-      for (const content of panel.querySelectorAll(
-        ".hp-charter-bubble__heading, .hp-charter-bubble__detail, .hp-charter-bubble__link"
-      )) {
-        const bounds = content.getBoundingClientRect();
-        expect(bounds.left).toBeGreaterThanOrEqual(0);
-        expect(bounds.right).toBeLessThanOrEqual(
-          document.documentElement.clientWidth
-        );
-      }
-    });
-  },
+export const TypographyMinimum768 = {
+  tags: ["!dev", "!autodocs"],
+  ...viewport(768),
+  render: () => <TypographyPage />,
+  play: async ({ canvasElement }) =>
+    assertTypographyBoundary(canvasElement, "carousel"),
+};
+
+export const TypographyMinimum769 = {
+  tags: ["!dev", "!autodocs"],
+  ...viewport(769),
+  render: () => <TypographyPage />,
+  play: async ({ canvasElement }) =>
+    assertTypographyBoundary(canvasElement, "cluster"),
 };
 
 export const HoverSizing = {
   tags: ["!dev", "!autodocs"],
-  ...viewport(1280),
+  ...viewport(1440),
   render: () => <ReactPage />,
   play: async ({ canvasElement }) => {
     const root = canvasElement.querySelector("[data-charter-bubbles]");
-    const findHoverRule = rules => {
-      for (const rule of rules) {
-        if (
-          rule.selectorText === ".hp-charter-bubble__front:hover" &&
-          rule.style?.transform.includes("var(--hp-charter-emphasis)")
-        ) {
-          return rule;
-        }
-        if (rule.cssRules) {
-          const nested = findHoverRule(rule.cssRules);
-          if (nested) return nested;
-        }
-      }
-      return null;
-    };
+    const front = root.querySelector("[data-charter-bubble-open]");
+    const paintedWidth = () => front.getBoundingClientRect().width;
 
+    await expect(realPointer.available).toBe(true);
     await waitFor(() => expect(root).toHaveAttribute("data-layout", "cluster"));
     expect(
       Number(getComputedStyle(root).getPropertyValue("--hp-charter-emphasis"))
     ).toBeCloseTo(200 / 180, 5);
-    expect(
-      Array.from(root.ownerDocument.styleSheets).some(sheet =>
-        findHoverRule(sheet.cssRules)
-      )
-    ).toBe(true);
-
-    root.style.setProperty("--hp-charter-emphasis", "1.05");
-    expect(
-      Number(getComputedStyle(root).getPropertyValue("--hp-charter-emphasis"))
-    ).toBeCloseTo(1.05, 2);
+    await waitFor(() => expect(paintedWidth()).toBeCloseTo(180, 0));
+    await realPointer.hover(front);
+    await waitFor(() => expect(paintedWidth()).toBeCloseTo(200, 0));
+    await realPointer.unhover(front);
+    await waitFor(() => expect(paintedWidth()).toBeCloseTo(180, 0));
   },
 };
 
@@ -768,47 +812,40 @@ export const OpenCloseFocus = {
     await expect(getComputedStyle(secondClose).borderRadius).toBe("50%");
     await userEvent.click(secondClose);
     await expect(fronts[1]).toHaveFocus();
+  },
+};
 
-    await emulateReducedMotion(true);
-    await resizeViewport(393);
-    await waitFor(() =>
-      expect(root).toHaveAttribute("data-layout", "carousel")
-    );
-    const carouselItem = root.querySelector(
-      '[data-charter-bubble-id="fortune-500"]'
-    );
-    const carouselFront = carouselItem.querySelector(
-      "[data-charter-bubble-open]"
-    );
-    const carouselPanel = carouselItem.querySelector(
-      "[data-charter-bubble-panel]"
-    );
-    const carouselLink = carouselPanel.querySelector(
-      ".hp-charter-bubble__link"
-    );
-    root.ownerDocument.querySelector("#charter-bubbles-focus-start").focus();
-    carouselFront.focus();
-    root
-      .querySelector("[data-charter-bubble-viewport]")
-      .dispatchEvent(new Event("scrollend"));
-    await waitFor(() => {
-      expect(root).toHaveAttribute("data-open-id", "fortune-500");
-      expect(carouselLink).toHaveFocus();
-    });
-    expect(carouselPanel).not.toHaveAttribute("tabindex");
-    expect(carouselPanel).not.toHaveAttribute("role");
+export const FocusLifecycle = {
+  tags: ["!dev", "!autodocs"],
+  ...viewport(1280),
+  render: () => <ReactPage />,
+  play: async ({ canvasElement }) => {
+    const root = canvasElement.querySelector("[data-charter-bubbles]");
+    const front = root.querySelector("[data-charter-bubble-open]");
+    const close = root.querySelector("[data-charter-bubble-close]");
+    const probe = canvasElement.querySelector("#charter-bubbles-focus-start");
+    const waitForFrames = () =>
+      new Promise(resolve =>
+        requestAnimationFrame(() => requestAnimationFrame(resolve))
+      );
 
-    const next = root.querySelector("[data-charter-bubble-next]");
-    next.focus();
-    await userEvent.click(next);
-    await waitFor(() =>
-      expect(root).toHaveAttribute("data-open-id", "faculty")
-    );
-    expect(next).toHaveFocus();
-    expect(
-      root.querySelector(".is-open [data-charter-bubble-panel]")
-    ).not.toHaveFocus();
-    await emulateReducedMotion(false);
+    await waitFor(() => expect(root).toHaveAttribute("data-layout", "cluster"));
+
+    const teardown = initCharterBubbles(root);
+    front.click();
+    teardown();
+    probe.focus();
+    await waitForFrames();
+    expect(probe).toHaveFocus();
+    expect(close).not.toHaveFocus();
+
+    const teardownAgain = initCharterBubbles(root);
+    front.click();
+    probe.focus();
+    await waitForFrames();
+    expect(probe).toHaveFocus();
+    expect(close).not.toHaveFocus();
+    teardownAgain();
   },
 };
 
@@ -822,11 +859,21 @@ export const SecondClickCloses = {
     const front = item.querySelector("[data-charter-bubble-open]");
     const panel = item.querySelector("[data-charter-bubble-panel]");
     const heading = panel.querySelector(".hp-charter-bubble__heading");
+    const detail = panel.querySelector(".hp-charter-bubble__detail");
     const link = panel.querySelector(".hp-charter-bubble__link");
+    const close = panel.querySelector("[data-charter-bubble-close]");
+    const open = () => {
+      front.click();
+      expect(root).toHaveAttribute("data-open-id", "employability");
+    };
+    const expectClosed = () => {
+      expect(root).not.toHaveAttribute("data-open-id");
+      expect(panel).toHaveAttribute("inert");
+      expect(front).toHaveFocus();
+    };
 
     await waitFor(() => expect(root).toHaveAttribute("data-layout", "cluster"));
-    front.click();
-    expect(root).toHaveAttribute("data-open-id", "employability");
+    open();
 
     link.addEventListener("click", event => event.preventDefault(), {
       once: true,
@@ -835,9 +882,39 @@ export const SecondClickCloses = {
     expect(root).toHaveAttribute("data-open-id", "employability");
 
     heading.click();
-    expect(root).not.toHaveAttribute("data-open-id");
-    expect(panel).toHaveAttribute("inert");
-    expect(front).toHaveFocus();
+    expectClosed();
+
+    open();
+    panel.click();
+    expectClosed();
+
+    open();
+    detail.click();
+    expectClosed();
+
+    open();
+    close.click();
+    expectClosed();
+  },
+};
+
+export const SecondClickClosesCarouselExclusion = {
+  tags: ["!dev", "!autodocs"],
+  ...viewport(393),
+  render: () => <ReactPage initialOpenId="employability" />,
+  play: async ({ canvasElement }) => {
+    const root = canvasElement.querySelector("[data-charter-bubbles]");
+    const panel = root.querySelector(
+      '[data-charter-bubble-id="employability"] [data-charter-bubble-panel]'
+    );
+    const detail = panel.querySelector(".hp-charter-bubble__detail");
+    await waitFor(() => {
+      expect(root).toHaveAttribute("data-layout", "carousel");
+      expect(root).toHaveAttribute("data-open-id", "employability");
+    });
+    panel.click();
+    detail.click();
+    expect(root).toHaveAttribute("data-open-id", "employability");
   },
 };
 
@@ -901,6 +978,21 @@ export const CarouselNavigation = {
     const nextItem = root.querySelector(
       '[data-charter-bubble-id="fortune-500"]'
     );
+    const pointerFront = nextItem.querySelector("[data-charter-bubble-open]");
+    const pointerLink = nextItem.querySelector(".hp-charter-bubble__link");
+    await expect(realPointer.available).toBe(true);
+    await realPointer.click(pointerFront);
+    viewportElement.dispatchEvent(new Event("scrollend"));
+    await waitFor(() =>
+      expect(root).toHaveAttribute("data-open-id", "fortune-500")
+    );
+    expect(pointerLink).not.toHaveFocus();
+    await userEvent.click(previous);
+    viewportElement.dispatchEvent(new Event("scrollend"));
+    await waitFor(() =>
+      expect(root).toHaveAttribute("data-open-id", "employability")
+    );
+
     await userEvent.click(next);
     viewportElement.dispatchEvent(new Event("scroll"));
     viewportElement.dispatchEvent(new Event("scrollend"));
@@ -964,6 +1056,7 @@ export const CarouselNavigation = {
     const farBubbleButton = farBubble.querySelector(
       "[data-charter-bubble-open]"
     );
+    const farBubbleLink = farBubble.querySelector(".hp-charter-bubble__link");
     await userEvent.click(farBubbleButton);
     await waitFor(() => {
       expect(root).toHaveAttribute("data-open-id", "undergraduate-research");
@@ -1036,10 +1129,16 @@ export const CarouselNavigation = {
     viewportElement.dispatchEvent(new Event("scrollend"));
     await expect(root).toHaveAttribute("data-open-id", "degree-programs");
 
+    canvasElement.querySelector("#charter-bubbles-focus-start").focus();
     farBubbleButton.focus();
     await expect(farBubbleButton).toHaveFocus();
     await expect(farBubble).toHaveClass("is-opening");
     await expect(root).not.toHaveAttribute("data-open-id");
+    viewportElement.dispatchEvent(new Event("scrollend"));
+    await waitFor(() => {
+      expect(root).toHaveAttribute("data-open-id", "undergraduate-research");
+      expect(farBubbleLink).toHaveFocus();
+    });
   },
 };
 
@@ -1074,7 +1173,7 @@ export const BreakpointPreservesOpen = {
 };
 
 export const ReducedMotion = {
-  ...viewport(393),
+  ...viewport(1440),
   render: () => <ReactPage />,
   play: async ({ canvasElement }) => {
     await emulateReducedMotion(true);
@@ -1085,13 +1184,18 @@ export const ReducedMotion = {
       const carousel = canvasElement.querySelector(
         ".hp-charter-bubbles__viewport"
       );
+      await expect(realPointer.available).toBe(true);
+      await realPointer.hover(front);
       await waitFor(() => {
         expect(getComputedStyle(bubble).transitionDuration).toBe("0s");
         expect(getComputedStyle(front).transitionDuration).toBe("0s");
         expect(getComputedStyle(back).transitionDuration).toBe("0s");
         expect(getComputedStyle(carousel).scrollBehavior).toBe("auto");
+        expect(front.getBoundingClientRect().width).toBeCloseTo(180, 0);
       });
     } finally {
+      const front = canvasElement.querySelector(".hp-charter-bubble__front");
+      await realPointer.unhover(front);
       await emulateReducedMotion(false);
     }
   },
