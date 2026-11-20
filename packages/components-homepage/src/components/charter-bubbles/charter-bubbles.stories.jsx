@@ -818,32 +818,59 @@ export const OpenCloseFocus = {
 export const FocusLifecycle = {
   tags: ["!dev", "!autodocs"],
   ...viewport(1280),
-  render: () => <ReactPage />,
+  render: () => (
+    <StaticPage
+      enhance={false}
+      html={charterBubblesStaticHtml({
+        instanceId: "focus-lifecycle",
+        openId: "employability",
+      })}
+    />
+  ),
   play: async ({ canvasElement }) => {
     const root = canvasElement.querySelector("[data-charter-bubbles]");
     const front = root.querySelector("[data-charter-bubble-open]");
     const close = root.querySelector("[data-charter-bubble-close]");
-    const probe = canvasElement.querySelector("#charter-bubbles-focus-start");
+    const startProbe = canvasElement.querySelector(
+      "#charter-bubbles-focus-start"
+    );
+    const endProbe = canvasElement.querySelector("#charter-bubbles-focus-end");
     const waitForFrames = () =>
       new Promise(resolve =>
         requestAnimationFrame(() => requestAnimationFrame(resolve))
       );
 
-    await waitFor(() => expect(root).toHaveAttribute("data-layout", "cluster"));
-
     const teardown = initCharterBubbles(root);
+    await waitFor(() => {
+      expect(root).toHaveAttribute("data-layout", "cluster");
+      expect(root).toHaveAttribute("data-open-id", "employability");
+    });
+    close.click();
+    expect(root).not.toHaveAttribute("data-open-id");
+    startProbe.focus();
     front.click();
     teardown();
-    probe.focus();
+    // The unenhanced fallback hides Close after teardown. Reveal only that
+    // authored control so a stale queued callback remains observable without
+    // changing focus or creating another controller.
+    close.style.display = "grid";
     await waitForFrames();
-    expect(probe).toHaveFocus();
+    expect(startProbe).toHaveFocus();
     expect(close).not.toHaveFocus();
+    close.style.removeProperty("display");
 
     const teardownAgain = initCharterBubbles(root);
+    await waitFor(() => {
+      expect(root).toHaveAttribute("data-layout", "cluster");
+      expect(root).toHaveAttribute("data-open-id", "employability");
+    });
+    close.click();
+    expect(root).not.toHaveAttribute("data-open-id");
+    startProbe.focus();
     front.click();
-    probe.focus();
+    endProbe.focus();
     await waitForFrames();
-    expect(probe).toHaveFocus();
+    expect(endProbe).toHaveFocus();
     expect(close).not.toHaveFocus();
     teardownAgain();
   },
