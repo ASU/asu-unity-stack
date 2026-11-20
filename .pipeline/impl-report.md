@@ -1,6 +1,6 @@
 # Charter Bubbles Baseline Recovery — Implementation Report
 
-Status: **IN_PROGRESS**
+Status: **DONE**
 
 Branch: `codex/WWWCMS-238-baseline-recovery`
 
@@ -40,47 +40,6 @@ Branch: `codex/WWWCMS-238-baseline-recovery`
 ### Files
 
 - `packages/components-homepage/src/components/charter-bubbles/_charter-bubbles.scss`
-- `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.stories.jsx`
-- `.pipeline/impl-report.md`
-
-## Isolated Patch 4 — Focus Ownership
-
-### Tests added/changed
-
-- Promoted and narrowed `OpenCloseFocus` into a focused browser regression for
-  focus ownership instead of unrelated geometry assertions.
-- It requires closed panel actions to be unavailable, panel wrappers to remain
-  plain non-focusable `div` elements, cluster opens to focus the labelled Close
-  button, closes to return focus to the front, keyboard carousel selection to
-  focus the visible native link, and carousel navigation not to steal focus.
-
-### RED
-
-- Command: `yarn test:storybook src/components/charter-bubbles/charter-bubbles.stories.jsx -t 'Open Close Focus'`
-- Expected/observed failure: focus remained on the expanded panel wrapper
-  instead of the labelled Close button. The baseline also omitted explicit
-  `tabindex="-1"` fallback state from closed panel actions in inert-capable
-  Chromium.
-
-### GREEN
-
-- Removed temporary wrapper `tabindex` mutation and wrapper focusing.
-- Cluster activation now schedules focus on the visible Close button after the
-  inert/state update, guarded by the still-open bubble ID.
-- Closed panel actions now consistently receive the existing mutation-ledger
-  `tabindex="-1"` fallback and restore their authored state when opened.
-- Keyboard-requested carousel selection uses the native panel link after the
-  baseline correction settles; pointer selection no longer requests programmatic
-  panel focus, and Previous/Next retain focus.
-- Focused command passed: 1 passed, 24 skipped.
-- Full Charter Bubbles regression command passed: 25/25 stories.
-- Refactor: consolidated carousel native-action focus in one guarded helper and
-  removed the obsolete temporary-focus helper. No carousel state, geometry,
-  timing, or CSS choreography changed; no approved portion was omitted.
-
-### Files
-
-- `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.js`
 - `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.stories.jsx`
 - `.pipeline/impl-report.md`
 
@@ -149,3 +108,158 @@ Branch: `codex/WWWCMS-238-baseline-recovery`
 - `packages/components-homepage/src/components/charter-bubbles/_charter-bubbles.scss`
 - `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.stories.jsx`
 - `.pipeline/impl-report.md`
+
+## Isolated Patch 4 — Focus Ownership
+
+### Tests added/changed
+
+- Promoted and narrowed `OpenCloseFocus` into a focused browser regression for
+  focus ownership instead of unrelated geometry assertions.
+- It requires closed panel actions to be unavailable, panel wrappers to remain
+  plain non-focusable `div` elements, cluster opens to focus the labelled Close
+  button, closes to return focus to the front, keyboard carousel selection to
+  focus the visible native link, and carousel navigation not to steal focus.
+
+### RED
+
+- Command: `yarn test:storybook src/components/charter-bubbles/charter-bubbles.stories.jsx -t 'Open Close Focus'`
+- Expected/observed failure: focus remained on the expanded panel wrapper
+  instead of the labelled Close button. The baseline also omitted explicit
+  `tabindex="-1"` fallback state from closed panel actions in inert-capable
+  Chromium.
+
+### GREEN
+
+- Removed temporary wrapper `tabindex` mutation and wrapper focusing.
+- Cluster activation now schedules focus on the visible Close button after the
+  inert/state update, guarded by the still-open bubble ID.
+- Closed panel actions now consistently receive the existing mutation-ledger
+  `tabindex="-1"` fallback and restore their authored state when opened.
+- Keyboard-requested carousel selection uses the native panel link after the
+  baseline correction settles; pointer selection no longer requests programmatic
+  panel focus, and Previous/Next retain focus.
+- Focused command passed: 1 passed, 24 skipped.
+- Full Charter Bubbles regression command passed: 25/25 stories.
+- Refactor: consolidated carousel native-action focus in one guarded helper and
+  removed the obsolete temporary-focus helper. No carousel state, geometry,
+  timing, or CSS choreography changed; no approved portion was omitted.
+
+### Files
+
+- `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.js`
+- `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.stories.jsx`
+- `.pipeline/impl-report.md`
+
+## Commit Sequence
+
+1. `ee578c5ba chore(components-homepage): establish charter bubble recovery baseline`
+2. `2c8a6d1d0 docs(components-homepage): preserve charter bubble recovery records`
+3. `45ba5ebb0 fix(components-homepage): restore charter bubble minimum text size`
+4. `79fa7e6af fix(components-homepage): restore charter bubble cluster dismissal`
+5. `fb206e0b0 fix(components-homepage): restore charter bubble hover sizing`
+6. `58f3043d8 fix(components-homepage): restore charter bubble focus ownership`
+
+Behavior changes were not combined, and no later checkpoint commit was
+cherry-picked.
+
+## Verification Ladder
+
+- Focused typography: PASS, 1 passed / 21 skipped at the patch stage.
+- Focused cluster dismissal: PASS, 1 passed / 22 skipped at the patch stage.
+- Focused hover sizing: PASS, 1 passed / 23 skipped at the patch stage.
+- Focused focus ownership: PASS, 1 passed / 24 skipped.
+- Final Charter Bubbles suite:
+  `yarn test:storybook src/components/charter-bubbles/charter-bubbles.stories.jsx`
+  — PASS, 29/29 in Chromium after review closure.
+- Scoped JavaScript lint:
+  `yarn exec eslint src/components/charter-bubbles/charter-bubbles.js src/components/charter-bubbles/charter-bubbles.stories.jsx`
+  — PASS.
+- Scoped SCSS lint:
+  `yarn exec stylelint src/components/charter-bubbles/_charter-bubbles.scss`
+  — PASS.
+- Package build: `yarn build` — PASS; Vite built 15 modules and emitted the
+  expected CSS, React ES, component ES, and Charter Bubbles ES bundles.
+- Full package browser suite: `yarn test:storybook` — PASS, 11 files and
+  268/268 stories in Chromium after review closure.
+- Archive verification: PASS, all 15 destination files still match their
+  `9fbc2af37:.pipeline` source blob hashes; zero mismatches.
+- Final production diff whitespace check against `e24e660e3`: PASS.
+- Worktree after behavior commits: clean before this final report update.
+
+The browser and build checks retain pre-existing Bootstrap/Sass deprecation
+warnings (`@import` and legacy color functions); no new warning or failure was
+introduced.
+
+## Conflicts, Omissions, and Skipped Checks
+
+- No approved patch conflicted with the November 13 carousel state, geometry,
+  or animation baseline, so no behavior patch was omitted.
+- No required check was skipped.
+- The final diff against non-authoritative `bd9826d33` remains intentionally
+  large because later carousel machinery, broad story rewrites, malformed
+  contract suites, and registry changes were not imported.
+- Webspark/handoff code was not changed because the locked recovery design
+  explicitly defers it to a later task.
+
+## Review-Fix Closure Table — Cycle 1
+
+| # | Finding | Severity | Type | File(s) | Planned Fix | Evidence Type | Verify Command | Result |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | Real-pointer closed carousel front retains queued keyboard focus intent | P1 | AUTO-FIX | `charter-bubbles.js`, `charter-bubbles.stories.jsx` | Clear queued carousel focus intent when a pointer selection supersedes `focusin`; add real-pointer focus regression without changing selection geometry/state | red-test, green-test, integration | `yarn test:storybook src/components/charter-bubbles/charter-bubbles.stories.jsx -t 'Carousel Navigation'` | PASS — RED reproduced destination-link focus; GREEN 1 passed / 28 skipped; final Charter 29/29 |
+| 2 | Queued focus frames survive teardown or external focus changes | P2 | AUTO-FIX | `charter-bubbles.js`, `charter-bubbles.stories.jsx` | Register focus frames with controller cleanup, guard controller activity, invalidate superseded intent, and add teardown/external-focus race regressions | red-test, green-test, integration | `yarn test:storybook src/components/charter-bubbles/charter-bubbles.stories.jsx -t 'Focus Lifecycle'` | PASS — RED reproduced post-teardown Close focus; GREEN 1 passed / 28 skipped; final Charter 29/29 |
+| 3 | Focused stories omit locked typography, dismissal, hover, and reduced-motion browser seams | P2 | AUTO-FIX | `charter-bubbles.stories.jsx` | Extend focused stories for 768/769/unenhanced typography; panel/detail/Close/carousel dismissal boundaries; and real-pointer painted hover geometry under normal/reduced motion | red-test, green-test, integration | `yarn test:storybook src/components/charter-bubbles/charter-bubbles.stories.jsx -t 'Typography Minimum'`; `-t 'Second Click Closes'`; `-t 'Hover Sizing'`; `-t 'Reduced Motion'` | PASS — typography 3/3, dismissal 2/2, hover 1/1, reduced motion 1/1; rendered 180→200 normal and 180 reduced |
+| 4 | Lifecycle story does not isolate teardown cancellation from external owner change | P2 | AUTO-FIX | `charter-bubbles.stories.jsx` | Replace the teardown case with a single-controller unenhanced fixture that pre-focuses an external probe, queues cluster focus programmatically, tears down without another focus move, and independently retains the external-focus-without-teardown case | red-test, green-test, integration | `yarn test:storybook src/components/charter-bubbles/charter-bubbles.stories.jsx -t 'Focus Lifecycle'` | PASS — controlled mutation RED focused stale Close; restored production GREEN 1 passed / 28 skipped; Charter 29/29; package retry 268/268 |
+
+## Review-Fix Evidence — Cycle 1
+
+- P1 RED: a real pointer click on the closed `fortune-500` carousel front
+  settled on the correct bubble but moved focus to its destination link.
+- P1 GREEN: pointer selection now clears earlier `focusin` intent while the
+  existing keyboard path still focuses the native link after settlement.
+  The baseline `CarouselNavigation` story retains all state, geometry, held-pan,
+  wheel, and temporary-empty assertions.
+- P2 RED: opening a cluster bubble and immediately tearing down still allowed
+  the queued animation-frame callback to focus Close; external focus could be
+  overwritten by the same stale callback.
+- P2 GREEN: focus frames are controller-owned, cancelled during teardown,
+  guarded by `controller.active`, and invalidated when newer focus intent wins.
+- Test-fidelity GREEN: fixed viewport stories cover 320px content fit, 768px,
+  769px, and unenhanced typography; cluster panel/detail/link/Close priority and
+  carousel exclusion; real-pointer painted hover geometry in normal and reduced
+  motion.
+- Broader verification: Charter Bubbles 29/29; package Storybook 268/268 across
+  11 files; scoped ESLint PASS; scoped Stylelint PASS; Vite package build PASS
+  with 15 modules.
+- Existing Bootstrap/Sass deprecation warnings remain unchanged.
+
+## Review-Fix Evidence — Cycle 2
+
+- Fixture: `FocusLifecycle` now renders unenhanced static HTML and creates only
+  one controller at a time. The authored initial open state makes Close
+  observable after teardown without a React effect creating a second owner.
+- Teardown-only case: the external start probe is focused before a programmatic
+  cluster open queues the focus frame; teardown runs immediately; no focus move
+  occurs afterward; after two frames the probe must still own focus and Close
+  must not.
+- External-focus case: a fresh single controller queues the same frame, then
+  focus explicitly moves to the separate end probe without teardown; after two
+  frames the end probe must still own focus and Close must not.
+- Mutation RED: temporarily removing both the scheduler cleanup registration
+  and `controller.active` guard caused the focused story to fail because the
+  stale frame moved focus from the unchanged start probe to Close. The
+  production file was immediately restored, and
+  `git diff --exit-code -- .../charter-bubbles.js` passed before GREEN.
+- GREEN command:
+  `yarn test:storybook src/components/charter-bubbles/charter-bubbles.stories.jsx -t 'Focus Lifecycle'`
+  — PASS, 1 passed / 28 skipped.
+- Charter command:
+  `yarn test:storybook src/components/charter-bubbles/charter-bubbles.stories.jsx`
+  — PASS, 29/29.
+- Scoped lint:
+  `yarn exec eslint src/components/charter-bubbles/charter-bubbles.stories.jsx`
+  — PASS.
+- Full package command: first run reached 267/268 because of one unrelated
+  intermittent `places.stories.jsx` assertion; a clean retry passed 11/11 files
+  and 268/268 stories. No runner or background server was left active.
+- Cycle 2 makes no production change and does not alter carousel state,
+  geometry, timing, or choreography.
