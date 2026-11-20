@@ -580,7 +580,9 @@ const expectText = async p => {
   await expect(more.color).toBe("rgb(140, 29, 64)");
   await expect(more.textDecorationLine).toBe("underline");
   const caption = style(p.captions[0]);
+  // QA row 72: 14px / 20px
   await expect(caption.fontSize).toBe("14px");
+  await expect(caption.lineHeight).toBe("20px");
   await expect(caption.color).toBe("rgb(116, 116, 116)");
   const arrow = box(p.next);
   near(arrow.width, 52.3, 0.1);

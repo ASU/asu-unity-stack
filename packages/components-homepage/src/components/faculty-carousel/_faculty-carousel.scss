@@ -170,9 +170,9 @@ $hp-faculty-ease: cubic-bezier(0.34, 1.12, 0.44, 1);
 .hp-faculty__caption {
   display: block;
   color: $asu-gray-3;
-  // #72: 14px / 20px per QA sheet row 72 (was 13.08px / 19.61px). Line-height 20px is the same pair
-  // as .hp-faculty__bio; raw values, no matching token in _custom-asu-variables.scss.
-  font-size: 14px;
+  // #72: 14px / 20px per QA sheet row 72 (was 13.08px / 19.61px). Font size is the UDS small token (0.875rem).
+  // Line-height 20px is the same pair as .hp-faculty__bio; raw value, the only 1.25rem token is a font size.
+  font-size: $uds-size-font-small;
   line-height: 20px;
   text-align: left;
 }

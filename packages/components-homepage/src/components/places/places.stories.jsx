@@ -334,6 +334,11 @@ export const Desktop1024 = {
     await expect(style(p.media).display).toBe("block");
     await expect(box(p.panel).width).toBe(347);
     await expect(box(p.frame).width).toBe(1024);
+    // QA rows 63-65: 4px radius on the photo, the media, the panel, and the panel's glass layer
+    await expect(style(p.photos[0]).borderRadius).toBe("4px");
+    await expect(style(p.media).borderRadius).toBe("4px");
+    await expect(style(p.panel).borderRadius).toBe("4px");
+    await expect(style(p.panel, "::before").borderRadius).toBe("4px");
   },
 };
 
@@ -429,6 +434,8 @@ const accordionPlay =
     const photo = box(p.photos[0]);
     await near(photo.width, panelContent, 1);
     await near(photo.height, (photo.width * 219) / 327, 1);
+    // QA row 63: 4px radius on the photo, all devices
+    await expect(style(p.photos[0]).borderRadius).toBe("4px");
     // no horizontal overflow
     await expect(document.documentElement.scrollWidth).toBeLessThanOrEqual(
       width

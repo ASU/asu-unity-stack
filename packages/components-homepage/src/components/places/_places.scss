@@ -335,9 +335,10 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
   display: block;
   width: 100%;
   // #62: removed max-width: 480px below 1024 (QA sheet row 62); kept no cap so photo is full width on mobile/tablet.
-  // #63: 4px radius on the photo, all devices (QA sheet row 63). No existing token; raw value.
+  // #63: 4px radius on the photo, all devices (QA sheet row 63). $uds-size-spacing-half is 0.25rem, the same
+  // token quick-links uses for its radius.
   margin-top: 8px;
-  border-radius: 4px;
+  border-radius: $uds-size-spacing-half;
   aspect-ratio: 327 / 219;
   object-fit: cover;
   overflow: hidden;
@@ -464,8 +465,8 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
       display: block;
       min-height: $hp-places-media-h;
       overflow: hidden;
-      // #64: 4px radius on the video/media at desktop (QA sheet row 64). No existing token; raw value.
-      border-radius: 4px;
+      // #64: 4px radius on the video/media at desktop (QA sheet row 64). Token is 0.25rem (4px).
+      border-radius: $uds-size-spacing-half;
       background: $asu-gray-1;
 
       // Opening (places.js writes --hp-places-progress, 0 inset .. 1 full width, only while it is below 1).
@@ -530,8 +531,8 @@ $hp-places-glass: rgba($asu-gray-1, 0.75);
       padding: 32px;
       border: 1px solid $asu-gray-3;
       // #65: 4px radius on all four corners of the panel (QA sheet row 65). The open box sits at
-      // left: calc(100% + 33px), not on the panel corner, so no seam protection needed. No token; raw value.
-      border-radius: 4px;
+      // left: calc(100% + 33px), not on the panel corner, so no seam protection needed. Token is 0.25rem (4px).
+      border-radius: $uds-size-spacing-half;
       isolation: isolate;
       color: $asu-gray-7;
       --hp-places-ring-inner: var(--hp-focus-inner);
