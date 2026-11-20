@@ -1,3 +1,10 @@
+# [@asu/app-rfi-v3.10.5](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.10.4...@asu/app-rfi-v3.10.5) (2026-11-20)
+
+
+### Bug Fixes
+
+* **lint:** report auto-fixable errors in checks ([67c7247](https://github.com/asu/asu-unity-stack/commit/67c7247a9c76c1a7e96844c6445cf1387052ccf8))
+
 # [@asu/app-rfi-v3.10.4](https://github.com/asu/asu-unity-stack/compare/@asu/app-rfi-v3.10.3...@asu/app-rfi-v3.10.4) (2026-11-06)
 
 
