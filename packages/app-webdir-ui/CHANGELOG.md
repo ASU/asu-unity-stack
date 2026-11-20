@@ -1,3 +1,10 @@
+# [@asu/app-webdir-ui-v5.0.21](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.20...@asu/app-webdir-ui-v5.0.21) (2026-11-20)
+
+
+### Bug Fixes
+
+* **lint:** report auto-fixable errors in checks ([67c7247](https://github.com/asu/asu-unity-stack/commit/67c7247a9c76c1a7e96844c6445cf1387052ccf8))
+
 # [@asu/app-webdir-ui-v5.0.20](https://github.com/asu/asu-unity-stack/compare/@asu/app-webdir-ui-v5.0.19...@asu/app-webdir-ui-v5.0.20) (2026-11-06)
 
 
