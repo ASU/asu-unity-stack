@@ -400,14 +400,14 @@
 
   .hp-charter-bubble__detail {
     max-width: 16.731125rem;
-    font-size: 0.7235rem; // 11.58px measured mobile body text.
+    font-size: $uds-size-font-medium;
     line-height: 1.08525rem; // 17.36px measured mobile line-height.
   }
 
   .hp-charter-bubbles .hp-charter-bubble__link:link,
   .hp-charter-bubbles .hp-charter-bubble__link:visited {
     max-width: 17.7391875rem; // 283.83px measured mobile link width.
-    font-size: 0.7235rem;
+    font-size: $uds-size-font-medium;
     line-height: 1.08525rem;
   }
 

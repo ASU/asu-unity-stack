@@ -36,6 +36,26 @@ const viewport = width => ({
   },
 });
 
+const assertMinimumBubbleTextSize = root => {
+  const selectors = [
+    ".hp-charter-bubble__front-label",
+    ".hp-charter-bubble__heading",
+    ".hp-charter-bubble__detail",
+    ".hp-charter-bubble__link",
+  ];
+
+  for (const selector of selectors) {
+    const elements = root.querySelectorAll(selector);
+    expect(elements).toHaveLength(5);
+    for (const element of elements) {
+      expect(
+        parseFloat(getComputedStyle(element).fontSize),
+        `${selector} must be at least 16px`
+      ).toBeGreaterThanOrEqual(16);
+    }
+  }
+};
+
 const StoryFrame = ({ children }) => (
   <div className="charter-bubbles-story">
     <a
@@ -206,6 +226,31 @@ export const HtmlParity = {
 export const Phone320 = {
   ...viewport(320),
   render: () => <StaticPage />,
+};
+
+export const TypographyMinimum = {
+  tags: ["!dev", "!autodocs"],
+  ...viewport(320),
+  render: () => <ReactPage initialOpenId="employability" />,
+  play: async ({ canvasElement }) => {
+    const root = canvasElement.querySelector("[data-charter-bubbles]");
+    await waitFor(() => expect(root).toHaveAttribute("data-enhanced", "true"));
+    await waitFor(() => expect(root).toHaveAttribute("data-layout", "carousel"));
+    assertMinimumBubbleTextSize(root);
+
+    const panel = root.querySelector(".is-open [data-charter-bubble-panel]");
+    await waitFor(() => {
+      for (const content of panel.querySelectorAll(
+        ".hp-charter-bubble__heading, .hp-charter-bubble__detail, .hp-charter-bubble__link"
+      )) {
+        const bounds = content.getBoundingClientRect();
+        expect(bounds.left).toBeGreaterThanOrEqual(0);
+        expect(bounds.right).toBeLessThanOrEqual(
+          document.documentElement.clientWidth
+        );
+      }
+    });
+  },
 };
 
 export const Phone393 = {
