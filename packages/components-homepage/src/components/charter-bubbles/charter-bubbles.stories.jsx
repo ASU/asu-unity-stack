@@ -737,8 +737,10 @@ export const OpenCloseFocus = {
     await userEvent.click(
       openBack.querySelector(".hp-charter-bubble__heading")
     );
-    await expect(root).toHaveAttribute("data-open-id", "fortune-500");
+    await expect(root).not.toHaveAttribute("data-open-id");
+    await expect(fronts[1]).toHaveFocus();
 
+    await userEvent.click(fronts[1]);
     await userEvent.click(secondClose);
     await expect(fronts[1]).toHaveFocus();
 
@@ -749,6 +751,33 @@ export const OpenCloseFocus = {
     await expect(root).not.toHaveAttribute("data-open-id");
     await expect(fronts[1]).toHaveFocus();
     await expect(root).not.toHaveAttribute("data-open-id");
+  },
+};
+
+export const SecondClickCloses = {
+  tags: ["!dev", "!autodocs"],
+  ...viewport(1280),
+  render: () => <ReactPage />,
+  play: async ({ canvasElement }) => {
+    const root = canvasElement.querySelector("[data-charter-bubbles]");
+    const item = root.querySelector('[data-charter-bubble-id="employability"]');
+    const front = item.querySelector("[data-charter-bubble-open]");
+    const panel = item.querySelector("[data-charter-bubble-panel]");
+    const heading = panel.querySelector(".hp-charter-bubble__heading");
+    const link = panel.querySelector(".hp-charter-bubble__link");
+
+    await waitFor(() => expect(root).toHaveAttribute("data-layout", "cluster"));
+    front.click();
+    expect(root).toHaveAttribute("data-open-id", "employability");
+
+    link.addEventListener("click", event => event.preventDefault(), { once: true });
+    link.click();
+    expect(root).toHaveAttribute("data-open-id", "employability");
+
+    heading.click();
+    expect(root).not.toHaveAttribute("data-open-id");
+    expect(panel).toHaveAttribute("inert");
+    expect(front).toHaveFocus();
   },
 };
 

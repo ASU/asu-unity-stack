@@ -979,6 +979,18 @@ const bindBubbleTransitions = controller => {
     if (
       active &&
       controller.layout?.getMode?.() !== "carousel" &&
+      active.panel.contains(target)
+    ) {
+      const actionable = target.closest(FOCUSABLE_SELECTOR);
+      if (!actionable || !active.item.contains(actionable)) {
+        transitionTo(null, { returnFocus: true });
+        focusSafely(active.front);
+      }
+      return;
+    }
+    if (
+      active &&
+      controller.layout?.getMode?.() !== "carousel" &&
       !active.item.contains(target)
     ) {
       transitionTo(null, { returnFocus: true });

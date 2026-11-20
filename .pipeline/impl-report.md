@@ -42,3 +42,37 @@ Branch: `codex/WWWCMS-238-baseline-recovery`
 - `packages/components-homepage/src/components/charter-bubbles/_charter-bubbles.scss`
 - `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.stories.jsx`
 - `.pipeline/impl-report.md`
+
+## Isolated Patch 2 — Cluster Second-Click Dismissal
+
+### Tests added/changed
+
+- Added `SecondClickCloses` and updated the historical `OpenCloseFocus`
+  interaction to require a second click on static expanded content to close
+  the bubble and return focus to its front. The focused story also verifies
+  that an action link remains actionable.
+- Existing carousel stories remain the regression coverage for the explicitly
+  excluded carousel mode.
+
+### RED
+
+- Command: `yarn test:storybook src/components/charter-bubbles/charter-bubbles.stories.jsx -t 'Second Click Closes'`
+- Expected/observed failure: clicking the expanded heading left
+  `data-open-id="employability"` in place.
+
+### GREEN
+
+- Added one cluster-only event-delegation branch: static content inside the
+  active panel dismisses it, while descendants matching the existing
+  focusable/action selector do not.
+- Focused command passed: 1 passed, 22 skipped.
+- Full Charter Bubbles regression command passed: 23/23 stories.
+- Refactor: the focused story uses synchronous DOM activation so its
+  cluster-only assertions cannot race unrelated viewport stories in a full
+  Storybook run; no production refactor.
+
+### Files
+
+- `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.js`
+- `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.stories.jsx`
+- `.pipeline/impl-report.md`
