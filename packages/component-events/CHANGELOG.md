@@ -1,3 +1,10 @@
+# [@asu/component-events-v3.2.3](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v3.2.2...@asu/component-events-v3.2.3) (2026-11-20)
+
+
+### Bug Fixes
+
+* **lint:** report auto-fixable errors in checks ([67c7247](https://github.com/asu/asu-unity-stack/commit/67c7247a9c76c1a7e96844c6445cf1387052ccf8))
+
 # [@asu/component-events-v3.2.2](https://github.com/asu/asu-unity-stack/compare/@asu/component-events-v3.2.1...@asu/component-events-v3.2.2) (2026-11-06)
 
 
