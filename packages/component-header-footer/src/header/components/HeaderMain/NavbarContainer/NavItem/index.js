@@ -184,10 +184,14 @@ const NavItem = ({ link }) => {
     ];
     if (navigableKeys.includes(key)) {
       e.preventDefault();
-      if (
-        key === "Escape" ||
-        (opened && (e.type === "click" || key === "Enter" || key === " "))
-      ) {
+      if (key === "Escape" && opened) {
+        if (typeof parentLink?.current?.focus === "function") {
+          parentLink.current.focus();
+        }
+        setItemOpened();
+        return;
+      }
+      if (opened && (e.type === "click" || key === "Enter" || key === " ")) {
         if (typeof clickRef?.current?.focus === "function") {
           clickRef.current.focus();
         }
