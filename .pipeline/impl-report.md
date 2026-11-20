@@ -43,6 +43,47 @@ Branch: `codex/WWWCMS-238-baseline-recovery`
 - `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.stories.jsx`
 - `.pipeline/impl-report.md`
 
+## Isolated Patch 4 — Focus Ownership
+
+### Tests added/changed
+
+- Promoted and narrowed `OpenCloseFocus` into a focused browser regression for
+  focus ownership instead of unrelated geometry assertions.
+- It requires closed panel actions to be unavailable, panel wrappers to remain
+  plain non-focusable `div` elements, cluster opens to focus the labelled Close
+  button, closes to return focus to the front, keyboard carousel selection to
+  focus the visible native link, and carousel navigation not to steal focus.
+
+### RED
+
+- Command: `yarn test:storybook src/components/charter-bubbles/charter-bubbles.stories.jsx -t 'Open Close Focus'`
+- Expected/observed failure: focus remained on the expanded panel wrapper
+  instead of the labelled Close button. The baseline also omitted explicit
+  `tabindex="-1"` fallback state from closed panel actions in inert-capable
+  Chromium.
+
+### GREEN
+
+- Removed temporary wrapper `tabindex` mutation and wrapper focusing.
+- Cluster activation now schedules focus on the visible Close button after the
+  inert/state update, guarded by the still-open bubble ID.
+- Closed panel actions now consistently receive the existing mutation-ledger
+  `tabindex="-1"` fallback and restore their authored state when opened.
+- Keyboard-requested carousel selection uses the native panel link after the
+  baseline correction settles; pointer selection no longer requests programmatic
+  panel focus, and Previous/Next retain focus.
+- Focused command passed: 1 passed, 24 skipped.
+- Full Charter Bubbles regression command passed: 25/25 stories.
+- Refactor: consolidated carousel native-action focus in one guarded helper and
+  removed the obsolete temporary-focus helper. No carousel state, geometry,
+  timing, or CSS choreography changed; no approved portion was omitted.
+
+### Files
+
+- `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.js`
+- `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.stories.jsx`
+- `.pipeline/impl-report.md`
+
 ## Isolated Patch 2 — Cluster Second-Click Dismissal
 
 ### Tests added/changed

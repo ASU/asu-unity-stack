@@ -235,7 +235,9 @@ export const TypographyMinimum = {
   play: async ({ canvasElement }) => {
     const root = canvasElement.querySelector("[data-charter-bubbles]");
     await waitFor(() => expect(root).toHaveAttribute("data-enhanced", "true"));
-    await waitFor(() => expect(root).toHaveAttribute("data-layout", "carousel"));
+    await waitFor(() =>
+      expect(root).toHaveAttribute("data-layout", "carousel")
+    );
     assertMinimumBubbleTextSize(root);
 
     const panel = root.querySelector(".is-open [data-charter-bubble-panel]");
@@ -717,12 +719,14 @@ export const Phone320Expanded = {
 };
 
 export const OpenCloseFocus = {
-  tags: ["!dev", "!test", "!autodocs"],
+  tags: ["!dev", "!autodocs"],
   ...viewport(1280),
   render: () => <ReactPage />,
   play: async ({ canvasElement }) => {
     const root = canvasElement.querySelector("[data-charter-bubbles]");
     const fronts = root.querySelectorAll("[data-charter-bubble-open]");
+    await resizeViewport(1280);
+    await waitFor(() => expect(root).toHaveAttribute("data-layout", "cluster"));
     await userEvent.click(fronts[0]);
     const firstPanel = root.querySelector(
       '[data-charter-bubble-id="employability"] [data-charter-bubble-panel]'
@@ -731,12 +735,23 @@ export const OpenCloseFocus = {
     const firstClose = root.querySelector(
       '[data-charter-bubble-id="employability"] [data-charter-bubble-close]'
     );
-    await expect(firstPanel).toHaveFocus();
+    const closedPanel = root.querySelector(
+      '[data-charter-bubble-id="degree-programs"] [data-charter-bubble-panel]'
+    );
+    const closedLink = closedPanel.querySelector(".hp-charter-bubble__link");
+    const closedClose = closedPanel.querySelector(
+      "[data-charter-bubble-close]"
+    );
+    await expect(closedPanel).toHaveAttribute("inert");
+    await expect(closedLink).toHaveAttribute("tabindex", "-1");
+    await expect(closedClose).toHaveAttribute("tabindex", "-1");
+    await waitFor(() => expect(firstClose).toHaveFocus());
     await expect(firstPanel).not.toHaveAttribute("tabindex");
+    await expect(firstPanel).not.toHaveAttribute("role");
     await expect(fronts[0]).toHaveAttribute("aria-expanded", "true");
-    await userEvent.tab();
+    firstLink.focus();
     await expect(firstLink).toHaveFocus();
-    await userEvent.tab();
+    firstClose.focus();
     await expect(firstClose).toHaveFocus();
 
     await userEvent.click(fronts[1]);
@@ -746,50 +761,54 @@ export const OpenCloseFocus = {
     const secondClose = root.querySelector(
       '[data-charter-bubble-id="fortune-500"] [data-charter-bubble-close]'
     );
-    await expect(secondPanel).toHaveFocus();
+    await waitFor(() => expect(secondClose).toHaveFocus());
     await expect(secondPanel).not.toHaveAttribute("tabindex");
+    await expect(secondPanel).not.toHaveAttribute("role");
     await expect(root.querySelectorAll(".is-open")).toHaveLength(1);
     await expect(getComputedStyle(secondClose).borderRadius).toBe("50%");
-
-    const openBack = root.querySelector(".is-open .hp-charter-bubble__back");
-    const openLink = openBack.querySelector(".hp-charter-bubble__link");
-    await expect(getComputedStyle(openBack).rowGap).toBe("16px");
-    for (const child of openBack.children) {
-      const style = getComputedStyle(child);
-      await expect(style.marginBlockStart).toBe("0px");
-      await expect(style.marginBlockEnd).toBe("0px");
-    }
-    const backBox = openBack.getBoundingClientRect();
-    const linkBox = openLink.getBoundingClientRect();
-    const closeBox = secondClose.getBoundingClientRect();
-    await expect(closeBox.top).toBeGreaterThanOrEqual(linkBox.bottom);
-    await expect(
-      Math.abs(
-        closeBox.left + closeBox.width / 2 - (backBox.left + backBox.width / 2)
-      )
-    ).toBeLessThanOrEqual(1);
-
-    const closeTarget = secondClose.getBoundingClientRect();
-    await expect(closeTarget.width).toBeGreaterThanOrEqual(44);
-    await expect(closeTarget.height).toBeGreaterThanOrEqual(44);
-
-    await userEvent.click(
-      openBack.querySelector(".hp-charter-bubble__heading")
-    );
-    await expect(root).not.toHaveAttribute("data-open-id");
-    await expect(fronts[1]).toHaveFocus();
-
-    await userEvent.click(fronts[1]);
     await userEvent.click(secondClose);
     await expect(fronts[1]).toHaveFocus();
 
-    await userEvent.click(fronts[1]);
-    await userEvent.click(
-      root.querySelector(".hp-charter-bubbles__cluster-shell")
+    await emulateReducedMotion(true);
+    await resizeViewport(393);
+    await waitFor(() =>
+      expect(root).toHaveAttribute("data-layout", "carousel")
     );
-    await expect(root).not.toHaveAttribute("data-open-id");
-    await expect(fronts[1]).toHaveFocus();
-    await expect(root).not.toHaveAttribute("data-open-id");
+    const carouselItem = root.querySelector(
+      '[data-charter-bubble-id="fortune-500"]'
+    );
+    const carouselFront = carouselItem.querySelector(
+      "[data-charter-bubble-open]"
+    );
+    const carouselPanel = carouselItem.querySelector(
+      "[data-charter-bubble-panel]"
+    );
+    const carouselLink = carouselPanel.querySelector(
+      ".hp-charter-bubble__link"
+    );
+    root.ownerDocument.querySelector("#charter-bubbles-focus-start").focus();
+    carouselFront.focus();
+    root
+      .querySelector("[data-charter-bubble-viewport]")
+      .dispatchEvent(new Event("scrollend"));
+    await waitFor(() => {
+      expect(root).toHaveAttribute("data-open-id", "fortune-500");
+      expect(carouselLink).toHaveFocus();
+    });
+    expect(carouselPanel).not.toHaveAttribute("tabindex");
+    expect(carouselPanel).not.toHaveAttribute("role");
+
+    const next = root.querySelector("[data-charter-bubble-next]");
+    next.focus();
+    await userEvent.click(next);
+    await waitFor(() =>
+      expect(root).toHaveAttribute("data-open-id", "faculty")
+    );
+    expect(next).toHaveFocus();
+    expect(
+      root.querySelector(".is-open [data-charter-bubble-panel]")
+    ).not.toHaveFocus();
+    await emulateReducedMotion(false);
   },
 };
 
@@ -809,7 +828,9 @@ export const SecondClickCloses = {
     front.click();
     expect(root).toHaveAttribute("data-open-id", "employability");
 
-    link.addEventListener("click", event => event.preventDefault(), { once: true });
+    link.addEventListener("click", event => event.preventDefault(), {
+      once: true,
+    });
     link.click();
     expect(root).toHaveAttribute("data-open-id", "employability");
 

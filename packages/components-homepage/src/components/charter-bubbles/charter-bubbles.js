@@ -476,14 +476,6 @@ const focusSafely = element => {
   }
 };
 
-const focusTemporarily = element => {
-  if (!element) return;
-  const tabindex = readAttribute(element, "tabindex");
-  if (!tabindex.present) element.setAttribute("tabindex", "-1");
-  focusSafely(element);
-  restoreAttribute(element, "tabindex", tabindex);
-};
-
 const bindBubbleTransitions = controller => {
   const { root } = controller;
   const records = discoverBubbleItems(root);
@@ -496,9 +488,6 @@ const bindBubbleTransitions = controller => {
   const list = controller.query(LIST_SELECTOR);
   const ownerDocument = root.ownerDocument;
   const view = ownerDocument?.defaultView;
-  const supportsInert = Boolean(
-    view?.HTMLElement && "inert" in view.HTMLElement.prototype
-  );
   let openId = null;
 
   const clearDesktopGeometry = () => {
@@ -887,12 +876,10 @@ const bindBubbleTransitions = controller => {
     );
     controller.setAttribute(record.panel, "inert", isOpen ? null : "");
 
-    if (!supportsInert) {
-      fallbackFocusables(record).forEach(element => {
-        if (isOpen) controller.releaseAttribute(element, "tabindex");
-        else controller.setAttribute(element, "tabindex", "-1");
-      });
-    }
+    fallbackFocusables(record).forEach(element => {
+      if (isOpen) controller.releaseAttribute(element, "tabindex");
+      else controller.setAttribute(element, "tabindex", "-1");
+    });
   };
 
   const syncRoot = () => {
@@ -936,8 +923,17 @@ const bindBubbleTransitions = controller => {
     applyDesktopGeometry();
 
     const active = openId == null ? null : byId.get(openId);
-    if (focusPanel && active) focusTemporarily(active.panel);
-    else if (shouldReturnFocus && previous) focusSafely(previous.front);
+    if (focusPanel && active) {
+      const activeId = active.id;
+      const focusClose = () => {
+        if (openId === activeId) focusSafely(active.close);
+      };
+      if (typeof view?.requestAnimationFrame === "function") {
+        view.requestAnimationFrame(focusClose);
+      } else {
+        focusClose();
+      }
+    } else if (shouldReturnFocus && previous) focusSafely(previous.front);
 
     return true;
   };
@@ -967,7 +963,7 @@ const bindBubbleTransitions = controller => {
     if (frontRecord) {
       if (controller.layout?.getMode?.() === "carousel") {
         controller.carousel?.selectItem?.(frontRecord.item, {
-          focusPanel: true,
+          focusPanel: event.detail === 0,
         });
         return;
       }
@@ -1250,6 +1246,22 @@ const bindCarouselGeometry = controller => {
     atStart: true,
     atEnd: false,
     hasOverflow: true,
+  };
+
+  const focusPanelAction = item => {
+    const id = item?.getAttribute("data-charter-bubble-id");
+    const link = item?.querySelector(
+      `${PANEL_SELECTOR} a.hp-charter-bubble__link[href]`
+    );
+    if (!id || !link) return;
+    const focusLink = () => {
+      if (controller.bubbles?.getOpenId?.() === id) focusSafely(link);
+    };
+    if (typeof view?.requestAnimationFrame === "function") {
+      view.requestAnimationFrame(focusLink);
+    } else {
+      focusLink();
+    }
   };
 
   const setDisabled = (button, disabled) => {
@@ -1555,7 +1567,7 @@ const bindCarouselGeometry = controller => {
     recentring = true;
     if (pendingFocusItem === item) {
       pendingFocusItem = null;
-      focusTemporarily(item.querySelector(PANEL_SELECTOR));
+      focusPanelAction(item);
     }
     sync();
     return true;
@@ -1594,7 +1606,7 @@ const bindCarouselGeometry = controller => {
 
     if (pendingFocusItem === item) {
       pendingFocusItem = null;
-      focusTemporarily(item.querySelector(PANEL_SELECTOR));
+      focusPanelAction(item);
     }
   };
 
