@@ -263,3 +263,55 @@ introduced.
   and 268/268 stories. No runner or background server was left active.
 - Cycle 2 makes no production change and does not alter carousel state,
   geometry, timing, or choreography.
+
+## Follow-up Implementation — No-script Circles and Pre-render Motion
+
+### Fallback RED/GREEN
+
+- Pre-change enhanced characterization:
+  `yarn test:storybook src/components/charter-bubbles/charter-bubbles.stories.jsx`
+  — PASS, 29/29.
+- RED command:
+  `yarn test:storybook src/components/charter-bubbles/charter-bubbles.stories.jsx -t 'No script'`
+  — FAIL, 4/4 focused stories. The existing fallback rendered rectangles and
+  row groups `[1,1,1,1,1]`, `[3,1,1]`, and `[3,2]` instead of the locked
+  circle patterns.
+- 320px feasibility GREEN: the canonical heading, detail, and link remain at
+  or above 16px and fit the 288px circle without clipping, copy/markup changes,
+  or horizontal page overflow.
+- Final focused GREEN command: the same `-t 'No script'` command — PASS, 7/7
+  (four patterns, threshold edges, 200% CSS zoom, and forced colors).
+- Final Charter command:
+  `yarn test:storybook src/components/charter-bubbles/charter-bubbles.stories.jsx`
+  — PASS, 35/35.
+- Scoped quality:
+  `yarn exec eslint src/components/charter-bubbles/charter-bubbles.stories.jsx`
+  and
+  `yarn exec stylelint src/components/charter-bubbles/_charter-bubbles.scss src/components/charter-bubbles/_charter-bubbles.storybook.scss`
+  — PASS.
+
+### Rendered Fallback Geometry
+
+- `ONE`: row groups `[1,1,1,1,1]`; `TWO`: `[2,1,2]`; `THREE`: `[3,2]`;
+  `FIVE`: `[5]`. Sorted rendered centers retain DOM indexes `0,1,2,3,4`.
+- Full-size diameter `D = 328.46875px`; half-row X offset `176.234375px`;
+  vertical center pitch `305.25275px` from the documented `47.216px` overlap.
+- Same-row circular edge gap: `24px`. Diagonal edge gap: `24.005px`; the
+  `0.005px` deviation is browser/decimal rounding and needs no clearance
+  adjustment. The locked overlap remains unchanged.
+- The threshold fixture proves below/at transitions at outer widths 776/777,
+  1129/1130, and 1834/1835px after the retained 3rem desktop padding.
+- Only the five visible links enter the Tab sequence, in DOM order. Rendered
+  focus outlines clear every neighboring circle in all four patterns, at 200%
+  CSS zoom, and in forced colors. Dead front, Close, and navigation controls
+  remain `display: none`; circle overflow remains visible.
+- No-script transitions, smooth scrolling, and scroll snapping are disabled.
+  Enhanced cluster/carousel production selectors and JavaScript are untouched.
+
+### Fallback Files Changed
+
+- `packages/components-homepage/src/components/charter-bubbles/_charter-bubbles.scss`
+- `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.stories.jsx`
+- `.pipeline/impl-report.md`
+
+Status after fallback stage: **GREEN; ready for isolated fallback commit.**

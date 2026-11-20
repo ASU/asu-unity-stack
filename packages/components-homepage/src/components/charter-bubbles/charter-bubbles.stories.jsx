@@ -173,6 +173,44 @@ const StaticPage = props => (
   </StoryFrame>
 );
 
+const NoScriptThresholdPage = () => (
+  <div>
+    {[
+      ["t2-below", 776, [1, 1, 1, 1, 1]],
+      ["t2-at", 777, [2, 1, 2]],
+      ["t3-below", 1129, [2, 1, 2]],
+      ["t3-at", 1130, [3, 2]],
+      ["t5-below", 1834, [3, 2]],
+      ["t5-at", 1835, [5]],
+    ].map(([id, width, rows]) => (
+      <div
+        key={id}
+        data-threshold-case={id}
+        data-expected-rows={rows.join(",")}
+        style={{ width }}
+      >
+        <EnhancedMarkup
+          enhance={false}
+          html={charterBubblesStaticHtml({ instanceId: `threshold-${id}` })}
+        />
+      </div>
+    ))}
+  </div>
+);
+
+const NoScriptZoomPage = () => (
+  <div data-no-script-zoom-harness="" style={{ width: "100%" }}>
+    <a id="charter-bubbles-focus-start" href="#charter-bubbles-zoom-end">
+      Focus test: page start
+    </a>
+    <EnhancedMarkup
+      enhance={false}
+      html={charterBubblesStaticHtml({ instanceId: "no-script-zoom" })}
+    />
+    <span id="charter-bubbles-zoom-end" />
+  </div>
+);
+
 const ParityPage = ({ openId = null }) => (
   <StoryFrame>
     <div data-parity-react="">
@@ -188,6 +226,180 @@ const ParityPage = ({ openId = null }) => (
     </div>
   </StoryFrame>
 );
+
+const circleCenter = rect => ({
+  x: rect.left + rect.width / 2,
+  y: rect.top + rect.height / 2,
+});
+
+const groupCircleRows = entries => {
+  const rows = [];
+  [...entries]
+    .sort((left, right) =>
+      Math.abs(left.center.y - right.center.y) > 2
+        ? left.center.y - right.center.y
+        : left.center.x - right.center.x
+    )
+    .forEach(entry => {
+      const row = rows.find(
+        candidate => Math.abs(candidate[0].center.y - entry.center.y) <= 2
+      );
+      if (row) row.push(entry);
+      else rows.push([entry]);
+    });
+  return rows.map(row => row.sort((a, b) => a.center.x - b.center.x));
+};
+
+const circleEdgeGap = (left, right) =>
+  Math.hypot(left.center.x - right.center.x, left.center.y - right.center.y) -
+  left.rect.width / 2 -
+  right.rect.width / 2;
+
+const assertNoScriptLayout = async (
+  canvasElement,
+  expectedRows,
+  { checkPageOverflow = true, checkTabOrder = true } = {}
+) => {
+  const root = canvasElement.querySelector("[data-charter-bubbles]");
+  const items = Array.from(root.querySelectorAll("[data-charter-bubble-item]"));
+  const panels = items.map(item =>
+    item.querySelector("[data-charter-bubble-panel]")
+  );
+  const links = items.map(item =>
+    item.querySelector(".hp-charter-bubble__link")
+  );
+  const entries = panels.map((panel, index) => {
+    const rect = panel.getBoundingClientRect();
+    return { center: circleCenter(rect), index, panel, rect };
+  });
+  const rows = groupCircleRows(entries);
+
+  expect(root).not.toHaveAttribute("data-layout");
+  expect(root).not.toHaveClass("is-enhanced");
+  expect(items).toHaveLength(5);
+  expect(rows.map(row => row.length)).toEqual(expectedRows);
+  expect(rows.flat().map(entry => entry.index)).toEqual([0, 1, 2, 3, 4]);
+
+  const rootCenter = circleCenter(root.getBoundingClientRect()).x;
+  for (const row of rows) {
+    const rowCenter =
+      row.reduce((sum, entry) => sum + entry.center.x, 0) / row.length;
+    expect(rowCenter).toBeCloseTo(rootCenter, 0);
+  }
+
+  for (const entry of entries) {
+    expect(entry.rect.width).toBeGreaterThan(0);
+    expect(entry.rect.width).toBeCloseTo(entry.rect.height, 0);
+    expect(getComputedStyle(entry.panel).borderRadius).toBe("50%");
+    expect(getComputedStyle(entry.panel).overflow).not.toBe("hidden");
+    expect(entry.panel).not.toHaveAttribute("aria-hidden");
+    expect(entry.panel).not.toHaveAttribute("inert");
+
+    for (const content of entry.panel.querySelectorAll(
+      ".hp-charter-bubble__heading, .hp-charter-bubble__detail, .hp-charter-bubble__link"
+    )) {
+      const contentRect = content.getBoundingClientRect();
+      expect(contentRect.left).toBeGreaterThanOrEqual(entry.rect.left);
+      expect(contentRect.right).toBeLessThanOrEqual(entry.rect.right);
+      expect(contentRect.top).toBeGreaterThanOrEqual(entry.rect.top);
+      expect(contentRect.bottom).toBeLessThanOrEqual(entry.rect.bottom);
+    }
+  }
+
+  const renderedScale = root.getBoundingClientRect().width / root.offsetWidth;
+  const expectedGap = 24 * renderedScale;
+  for (const row of rows) {
+    for (let index = 1; index < row.length; index += 1) {
+      expect(circleEdgeGap(row[index - 1], row[index])).toBeCloseTo(
+        expectedGap,
+        0
+      );
+    }
+  }
+  for (let rowIndex = 1; rowIndex < rows.length; rowIndex += 1) {
+    const previous = rows[rowIndex - 1];
+    const current = rows[rowIndex];
+    for (const entry of current) {
+      const nearest = [...previous]
+        .sort(
+          (left, right) =>
+            Math.abs(left.center.x - entry.center.x) -
+            Math.abs(right.center.x - entry.center.x)
+        )
+        .slice(0, entry.center.x === previous[0].center.x ? 1 : 2);
+      for (const neighbor of nearest) {
+        expect(circleEdgeGap(entry, neighbor)).toBeCloseTo(expectedGap, 0);
+      }
+    }
+  }
+  for (const selector of [
+    "[data-charter-bubble-open]",
+    "[data-charter-bubble-close]",
+    "[data-charter-bubble-nav]",
+  ]) {
+    for (const control of root.querySelectorAll(selector)) {
+      expect(getComputedStyle(control).display).toBe("none");
+    }
+  }
+  for (const link of links) {
+    expect(link).toBeVisible();
+    expect(link.tabIndex).toBeGreaterThanOrEqual(0);
+    link.focus();
+    expect(link).toHaveFocus();
+    const linkRect = link.getBoundingClientRect();
+    const linkStyle = getComputedStyle(link);
+    const focusClearance =
+      parseFloat(linkStyle.outlineWidth) +
+      Math.max(0, parseFloat(linkStyle.outlineOffset));
+    const focusRect = {
+      left: linkRect.left - focusClearance,
+      right: linkRect.right + focusClearance,
+      top: linkRect.top - focusClearance,
+      bottom: linkRect.bottom + focusClearance,
+    };
+    expect(focusRect.left).toBeGreaterThanOrEqual(-1);
+    expect(focusRect.right).toBeLessThanOrEqual(
+      document.documentElement.clientWidth + 1
+    );
+    const ownIndex = links.indexOf(link);
+    for (const neighbor of entries.filter(entry => entry.index !== ownIndex)) {
+      const closestX = Math.max(
+        focusRect.left,
+        Math.min(neighbor.center.x, focusRect.right)
+      );
+      const closestY = Math.max(
+        focusRect.top,
+        Math.min(neighbor.center.y, focusRect.bottom)
+      );
+      expect(
+        Math.hypot(neighbor.center.x - closestX, neighbor.center.y - closestY)
+      ).toBeGreaterThan(neighbor.rect.width / 2);
+    }
+  }
+  if (checkTabOrder) {
+    const start = canvasElement.querySelector("#charter-bubbles-focus-start");
+    start.focus();
+    for (const link of links) {
+      await userEvent.tab();
+      expect(link).toHaveFocus();
+    }
+  }
+  if (checkPageOverflow) {
+    expect(document.documentElement.scrollWidth).toBeLessThanOrEqual(
+      document.documentElement.clientWidth + 1
+    );
+  }
+  expect(
+    getComputedStyle(root.querySelector(".hp-charter-bubble"))
+      .transitionDuration
+  ).toBe("0s");
+  expect(
+    getComputedStyle(root.querySelector("[data-charter-bubble-viewport]"))
+      .scrollBehavior
+  ).toBe("auto");
+
+  return { entries, links, root, rows };
+};
 
 export const Default = {
   render: () => <ReactPage />,
@@ -239,30 +451,98 @@ export const OpenResearch = {
 };
 
 export const NoScript = {
+  name: "No script — ONE",
+  tags: ["!dev", "!autodocs"],
+  ...viewport(320),
+  render: () => <StaticPage enhance={false} />,
+  play: async ({ canvasElement }) =>
+    assertNoScriptLayout(canvasElement, [1, 1, 1, 1, 1]),
+};
+
+export const NoScriptTwo = {
+  name: "No script — TWO (2 / 1 / 2)",
+  tags: ["!dev", "!autodocs"],
+  ...viewport(768),
+  render: () => <StaticPage enhance={false} />,
+  play: async ({ canvasElement }) =>
+    assertNoScriptLayout(canvasElement, [2, 1, 2]),
+};
+
+export const NoScriptThree = {
+  name: "No script — THREE (3 / 2)",
+  tags: ["!dev", "!autodocs"],
+  ...viewport(1280),
+  render: () => <StaticPage enhance={false} />,
+  play: async ({ canvasElement }) =>
+    assertNoScriptLayout(canvasElement, [3, 2]),
+};
+
+export const NoScriptFive = {
+  name: "No script — FIVE",
+  tags: ["!dev", "!autodocs"],
+  ...viewport(1920),
+  render: () => <StaticPage enhance={false} />,
+  play: async ({ canvasElement }) => assertNoScriptLayout(canvasElement, [5]),
+};
+
+export const NoScriptThresholds = {
+  name: "No script — threshold edges",
+  tags: ["!dev", "!autodocs"],
+  ...viewport(1920),
+  render: () => <NoScriptThresholdPage />,
+  play: async ({ canvasElement }) => {
+    for (const thresholdCase of canvasElement.querySelectorAll(
+      "[data-threshold-case]"
+    )) {
+      const root = thresholdCase.querySelector("[data-charter-bubbles]");
+      const entries = Array.from(
+        root.querySelectorAll("[data-charter-bubble-panel]")
+      ).map((panel, index) => {
+        const rect = panel.getBoundingClientRect();
+        return { center: circleCenter(rect), index, panel, rect };
+      });
+      expect(groupCircleRows(entries).map(row => row.length)).toEqual(
+        thresholdCase.dataset.expectedRows.split(",").map(Number)
+      );
+    }
+  },
+};
+
+export const NoScriptZoom = {
+  name: "No script — 200% zoom",
+  tags: ["!dev", "!autodocs"],
+  ...viewport(1280),
+  render: () => <NoScriptZoomPage />,
+  play: async ({ canvasElement }) => {
+    const harness = canvasElement.querySelector(
+      "[data-no-script-zoom-harness]"
+    );
+    const previousZoom = harness.style.zoom;
+    try {
+      harness.style.zoom = "2";
+      await assertNoScriptLayout(canvasElement, [1, 1, 1, 1, 1], {
+        checkPageOverflow: false,
+      });
+    } finally {
+      harness.style.zoom = previousZoom;
+    }
+  },
+};
+
+export const NoScriptForcedColors = {
+  name: "No script — forced colors",
+  tags: ["!dev", "!autodocs"],
+  ...viewport(1280),
   render: () => <StaticPage enhance={false} />,
   play: async ({ canvasElement }) => {
-    const root = canvasElement.querySelector("[data-charter-bubbles]");
-    await expect(root).not.toHaveAttribute("data-layout");
-    await expect(root).not.toHaveClass("is-enhanced");
-    await expect(
-      root.querySelectorAll("[data-charter-bubble-item]")
-    ).toHaveLength(5);
-    await expect(
-      root.querySelectorAll("[data-charter-bubble-panel]")
-    ).toHaveLength(5);
-    for (const panel of root.querySelectorAll("[data-charter-bubble-panel]")) {
-      await expect(panel).not.toHaveAttribute("aria-hidden");
-      await expect(panel).not.toHaveAttribute("inert");
-    }
-    await expect(
-      getComputedStyle(root.querySelector("[data-charter-bubble-open]")).display
-    ).toBe("none");
-    await expect(
-      getComputedStyle(root.querySelector("[data-charter-bubble-nav]")).display
-    ).toBe("none");
-    for (const link of root.querySelectorAll(".hp-charter-bubble__link")) {
-      await expect(link.tabIndex).toBeGreaterThanOrEqual(0);
-      await expect(getComputedStyle(link).display).not.toBe("none");
+    await emulateForcedColors(true);
+    try {
+      const { entries } = await assertNoScriptLayout(canvasElement, [3, 2]);
+      for (const { panel } of entries) {
+        expect(parseFloat(getComputedStyle(panel).outlineWidth)).toBe(2);
+      }
+    } finally {
+      await emulateForcedColors(false);
     }
   },
 };
