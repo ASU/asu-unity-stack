@@ -2604,28 +2604,28 @@
         {
           "id": "components-heroes--hero-small",
           "name": "Hero Small",
-          "snippet": "const HeroSmall = ({ image, title, contents, contentsColor }) => (\n  <Hero\n    title={title}\n    image={image}\n    contents={contents}\n    contentsColor={contentsColor}\n  />\n);",
+          "snippet": "const HeroSmall = ({ image, title, subTitle, contents, contentsColor }) => (\n  <Hero\n    title={title}\n    subTitle={subTitle}\n    image={image}\n    contents={contents}\n    contentsColor={contentsColor}\n  />\n);",
           "description": "",
           "warning": "Incomplete snippet: `img1` could not be resolved statically."
         },
         {
           "id": "components-heroes--hero-long-title",
           "name": "Hero Long Title",
-          "snippet": "const HeroLongTitle = ({ image, title, contents, contentsColor }) => (\n  <Hero\n    title={title}\n    image={image}\n    contents={contents}\n    contentsColor={contentsColor}\n  />\n);",
+          "snippet": "const HeroLongTitle = ({ image, title, subTitle, contents, contentsColor }) => (\n  <Hero\n    title={title}\n    subTitle={subTitle}\n    image={image}\n    contents={contents}\n    contentsColor={contentsColor}\n  />\n);",
           "description": "",
           "warning": "Incomplete snippet: `img1` could not be resolved statically."
         },
         {
           "id": "components-heroes--hero-medium",
           "name": "Hero Medium",
-          "snippet": "const HeroMedium = ({ image, title, contents, contentsColor }) => (\n  <Hero\n    title={title}\n    image={image}\n    contents={contents}\n    contentsColor={contentsColor}\n  />\n);",
+          "snippet": "const HeroMedium = ({ image, title, subTitle, contents, contentsColor }) => (\n  <Hero\n    title={title}\n    subTitle={subTitle}\n    image={image}\n    contents={contents}\n    contentsColor={contentsColor}\n  />\n);",
           "description": "",
           "warning": "Incomplete snippet: `img1` could not be resolved statically."
         },
         {
           "id": "components-heroes--hero-large",
           "name": "Hero Large",
-          "snippet": "const HeroLarge = ({ image, title, contents, contentsColor }) => (\n  <Hero\n    title={title}\n    image={image}\n    contents={contents}\n    contentsColor={contentsColor}\n  />\n);",
+          "snippet": "const HeroLarge = ({ image, title, subTitle, contents, contentsColor }) => (\n  <Hero\n    title={title}\n    subTitle={subTitle}\n    image={image}\n    contents={contents}\n    contentsColor={contentsColor}\n  />\n);",
           "description": "",
           "warning": "Incomplete snippet: `img1` could not be resolved statically."
         }
@@ -5630,6 +5630,6 @@
   },
   "meta": {
     "docgen": "react-docgen-typescript",
-    "durationMs": 1622
+    "durationMs": 1568
   }
 }

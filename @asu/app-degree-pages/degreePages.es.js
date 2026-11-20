@@ -5693,8 +5693,8 @@ function LE({
           "span",
           {
             className: Sn({
-              [S[o.color]]: o.color,
-              [b[o.highlightColor]]: o.highlightColor
+              [S[o.color ? o.color : "undefined"]]: o.color,
+              [b[o.highlightColor ? o.highlightColor : "undefined"]]: o.highlightColor
             }),
             children: o.text
           }
