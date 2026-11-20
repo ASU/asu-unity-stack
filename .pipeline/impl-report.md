@@ -76,3 +76,35 @@ Branch: `codex/WWWCMS-238-baseline-recovery`
 - `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.js`
 - `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.stories.jsx`
 - `.pipeline/impl-report.md`
+
+## Isolated Patch 3 — Hover Sizing
+
+### Tests added/changed
+
+- Added `HoverSizing` to require a unitless `200 / 180` emphasis ratio, confirm
+  the base hover rule consumes the custom property, and prove an instance can
+  override the ratio.
+- Existing interaction geometry and `ReducedMotion` stories remain the browser
+  regressions for hover collision suppression and motion removal.
+
+### RED
+
+- Command: `yarn test:storybook src/components/charter-bubbles/charter-bubbles.stories.jsx -t 'Hover Sizing'`
+- Expected/observed failure: the prior length value `12.5rem` parsed as `NaN`
+  instead of the required unitless `1.111111` ratio.
+
+### GREEN
+
+- Replaced the length-valued emphasis property with the approved unitless
+  ratio and consumed it from the existing hover transform.
+- Focused command passed: 1 passed, 23 skipped.
+- Full Charter Bubbles regression command passed: 24/24 stories.
+- Refactor: the test inspects the same-origin CSS rule because synthetic hover
+  does not activate the browser `:hover` state in this Storybook test runner;
+  no production refactor.
+
+### Files
+
+- `packages/components-homepage/src/components/charter-bubbles/_charter-bubbles.scss`
+- `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.stories.jsx`
+- `.pipeline/impl-report.md`

@@ -253,6 +253,45 @@ export const TypographyMinimum = {
   },
 };
 
+export const HoverSizing = {
+  tags: ["!dev", "!autodocs"],
+  ...viewport(1280),
+  render: () => <ReactPage />,
+  play: async ({ canvasElement }) => {
+    const root = canvasElement.querySelector("[data-charter-bubbles]");
+    const findHoverRule = rules => {
+      for (const rule of rules) {
+        if (
+          rule.selectorText === ".hp-charter-bubble__front:hover" &&
+          rule.style?.transform.includes("var(--hp-charter-emphasis)")
+        ) {
+          return rule;
+        }
+        if (rule.cssRules) {
+          const nested = findHoverRule(rule.cssRules);
+          if (nested) return nested;
+        }
+      }
+      return null;
+    };
+
+    await waitFor(() => expect(root).toHaveAttribute("data-layout", "cluster"));
+    expect(
+      Number(getComputedStyle(root).getPropertyValue("--hp-charter-emphasis"))
+    ).toBeCloseTo(200 / 180, 5);
+    expect(
+      Array.from(root.ownerDocument.styleSheets).some(sheet =>
+        findHoverRule(sheet.cssRules)
+      )
+    ).toBe(true);
+
+    root.style.setProperty("--hp-charter-emphasis", "1.05");
+    expect(
+      Number(getComputedStyle(root).getPropertyValue("--hp-charter-emphasis"))
+    ).toBeCloseTo(1.05, 2);
+  },
+};
+
 export const Phone393 = {
   ...viewport(393),
   render: () => <StaticPage />,

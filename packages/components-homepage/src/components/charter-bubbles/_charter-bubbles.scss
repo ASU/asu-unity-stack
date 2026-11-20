@@ -3,9 +3,9 @@
 // Measured custom properties below have no current UDS token and remain design/token TODOs.
 
 .hp-charter-bubbles {
-  --hp-charter-circle: 11.25rem; // 180px Figma measurement; TODO: request component-size token.
+  --hp-charter-circle: 11.25rem; // 180px Figma-aligned; Jira comment 2634628. TODO: request component-size token.
   --hp-charter-cell: 11.25rem; // The desktop anchor is the 180px closed circle.
-  --hp-charter-emphasis: 12.5rem; // 200px prototype hover size.
+  --hp-charter-emphasis: 1.111111; // 200px / 180px; approved prototype hover (Jira comment 2634628), not measured in Figma.
   --hp-charter-expanded: 28.375rem; // 454px Jira maximum; TODO: confirm final design token.
   --hp-charter-mobile-open: 20.529375rem; // 328.47px Figma measurement; TODO: request component-size token.
   --hp-charter-mobile-open-radius: 10.2646875rem; // Half the measured open width; TODO: request radius token.
@@ -140,7 +140,7 @@
 }
 
 .hp-charter-bubble__front:hover {
-  transform: translate(-50%, -50%) rotateY(0) scale(1.111111); // 200px / 180px prototype emphasis ratio.
+  transform: translate(-50%, -50%) rotateY(0) scale(var(--hp-charter-emphasis));
 }
 
 .hp-charter-bubble__front-label {
