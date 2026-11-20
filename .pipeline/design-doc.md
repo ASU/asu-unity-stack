@@ -1135,3 +1135,316 @@ emulation lifecycle, file boundaries, and staged commits. Any need to change
 production markup/JavaScript, the enhanced behavior, the 16px minimum, or the
 Webspark handoff requires a new amendment and renewed approval. No implementation
 code may be written before that approval.
+
+---
+
+# Architecture Amendment — Carousel Arrow-Key Transition Parity — 2026-11-20
+
+Status: **APPROVED AND LOCKED — 2026-11-20**
+
+This amendment is additive. It preserves every earlier recovery and fallback
+decision. Once approved, it supersedes only the earlier statement that the
+carousel has no custom ArrowLeft/ArrowRight handling.
+
+## Scope decision
+
+**Hold scope.** The report is a narrow interaction regression. The minimum
+durable fix is to route horizontal arrow keys through the carousel's existing
+controlled selection transition. No markup, geometry, copy, analytics, cluster
+behavior, or general focus model needs to change.
+
+## Problem framing (six forcing questions)
+
+### Problem Statement
+
+Keyboard users need ArrowLeft/ArrowRight navigation inside the enhanced
+carousel to use the same close → center → open choreography as its Previous/Next
+buttons and horizontal wheel input, because native overflow scrolling currently
+enters a delayed passive-scroll path with visibly different timing and state.
+
+### Stakeholders
+
+- Keyboard and switch users operating the mobile/tablet carousel are directly
+  affected; they need deterministic movement and a valid visible focus target.
+- Screen-reader users are indirectly affected because open-state ARIA/inert
+  changes must settle before focus enters the destination panel.
+- Pointer, touch, wheel, and copied-static-HTML consumers must retain their
+  current behavior.
+- Maintainers need one transition authority rather than a separate keyboard
+  animation implementation.
+
+### Success Criteria
+
+1. With focus inside the carousel viewport, unmodified ArrowRight selects the
+   next item and ArrowLeft selects the previous item.
+2. Each accepted arrow begins the same existing `move`/`startCorrection`
+   sequence used by Previous/Next: the old bubble closes, exactly one adjacent
+   item gains `is-opening`, it centers, and only then becomes the sole open item.
+3. The accepted key event prevents native horizontal scrolling, including while
+   a transition is already pending, so the passive scroll path cannot race it.
+4. As correction begins, focus moves from the closing panel to the destination's
+   still-visible front button. After the destination is open and its ARIA/inert
+   state is synchronized, focus moves to its visible link. Focus never remains
+   in a closed/inert panel.
+5. A held/repeated key cannot skip more than one item during a pending
+   transition. At an edge, state and focus remain unchanged.
+6. ArrowUp/ArrowDown and modified horizontal arrows retain native browser/page
+   behavior. Cluster mode and navigation-button keyboard activation are unchanged.
+7. Normal motion uses the existing smooth correction; reduced motion uses the
+   existing immediate correction without waiting on a CSS transition.
+
+### Failure Modes
+
+1. **Hidden focus (highest impact):** the current item closes while focus stays
+   in its inert panel. Detect by checking `activeElement`, `inert`, and open ARIA
+   state before and after settlement. Recover by using the existing
+   `pendingFocusItem`/post-activation focus scheduler.
+2. **Native/controlled race:** a key both scrolls natively and starts correction.
+   Detect with `defaultPrevented`, item classes, and single-open assertions.
+   Recover by preventing every owned unmodified horizontal arrow before routing.
+3. **Key repeat skips items:** repeated keydown events retarget while correction
+   is pending. Detect with two keydowns before `scrollend`. Recover by consuming
+   the repeat while the existing pending-state guard rejects the second move.
+4. **Edge escape:** ArrowLeft at the first item or ArrowRight at the last item
+   changes scroll/state or loses focus. Detect at both edges; consume the owned
+   key and retain state/focus.
+5. **Over-broad interception:** vertical arrows, modified arrows, cluster keys,
+   or nav-button keys are prevented. Detect each boundary and leave it native.
+6. **Motion regression:** reduced motion uses smooth scrolling or waits forever
+   for a transition/scroll event. Detect under pre-render media emulation and
+   exercise the existing idle/scrollend fallback.
+
+### MVP Scope
+
+- One viewport-scoped `keydown` handler in the existing carousel controller.
+- A small option on the existing adjacent `move` path to request destination
+  focus; no second transition implementation.
+- One isolated Storybook interaction story covering RED/GREEN, boundaries,
+  focus, repeat, and reduced-motion compatibility.
+- Focused regression, lint, build, and the complete Charter story file.
+
+### Out of Scope
+
+- Roving tabindex, `aria-activedescendant`, new roles, live regions, or making
+  the viewport/wrapper focusable.
+- Home/End, PageUp/PageDown, ArrowUp/ArrowDown, RTL remapping, or a new carousel
+  keyboard specification beyond the reported horizontal arrows.
+- Changes to cluster interaction, carousel touch/pointer/wheel semantics,
+  geometry, CSS timing/easing, markup/HTML parity, no-script layout, analytics,
+  reduced-motion emulation, or Stage B handoff.
+
+## Diagnosis and data flow
+
+Current code has no ArrowLeft/ArrowRight listener. When a focused descendant
+causes the overflow viewport to scroll natively, `onScroll` marks a deferred
+selection, idle/`scrollend` chooses a neighbor, and only then
+`startCorrection` begins. Buttons and horizontal wheel call `move` or
+`startCorrection` immediately. The proposed handler removes that split path.
+
+```text
+keydown bubbles from focused link/front inside carousel viewport
+  |
+  +-- cluster / vertical key / modified key / already defaultPrevented
+  |      -> do not handle; native behavior
+  |
+  +-- ArrowLeft / ArrowRight in carousel
+         -> preventDefault (owns horizontal key; blocks native-scroll race)
+         -> move(-1|+1, { focusPanel: true })
+              |
+              +-- edge or controlled transition already pending
+              |      -> no state change; key remains consumed
+              |
+              +-- adjacent target
+                     -> pendingFocusItem = target
+                     -> existing startCorrection(target)
+                     -> close old + target.is-opening + center
+                     -> focus target's still-visible front button
+                     -> scroll/scrollend/idle activation
+                     -> synchronize open/ARIA/inert
+                     -> existing focus scheduler focuses target link
+```
+
+No storage, network, analytics, markup, or new output channel is introduced.
+
+## State machine amendment
+
+```text
+OPEN(N), focus inside viewport
+  -- owned ArrowRight and N is not last --> CORRECTING(N, N+1, keyboardFocus=true)
+  -- owned ArrowLeft  and N is not first -> CORRECTING(N, N-1, keyboardFocus=true)
+  -- owned arrow at edge ----------------> OPEN(N), unchanged
+
+CORRECTING(N, M, keyboardFocus=true), focus on M front
+  -- repeated owned arrow ---------------> same CORRECTING state; no skip
+  -- target reaches center / scrollend ---> OPEN(M), then focus M link
+  -- idle fallback -----------------------> retry existing correction/activation
+  -- teardown or leaves carousel mode ----> existing cleanup; no scheduled focus
+
+Any state
+  -- ArrowUp/Down or modified horizontal arrow --> existing/native behavior
+```
+
+Side effects remain reversible through the controller ledger and existing
+teardown. `preventDefault` is the only new event side effect.
+
+## Behavioral matrix
+
+| User Action | Current State | Next State | Visual/Focus Result | Animation |
+| --- | --- | --- | --- | --- |
+| ArrowRight in viewport | item N open, next exists | correcting to N+1, then N+1 open | same close/center/open classes as Next; focus N+1 front during correction, then its link after open | existing smooth correction; auto under reduced motion |
+| ArrowLeft in viewport | item N open, previous exists | correcting to N-1, then N-1 open | same as Previous; focus N-1 front during correction, then its link after open | existing smooth correction; auto under reduced motion |
+| Repeated owned arrow while correcting | correction pending | same correction | no second target, no native scroll, no focus loss | existing in-flight animation only |
+| Horizontal arrow at edge | first/last open | unchanged | focus and open state remain | none |
+| ArrowUp/ArrowDown | any carousel state | unchanged by component | native page behavior | native |
+| Ctrl/Meta/Alt/Shift + horizontal arrow | any carousel state | unchanged by component | native/assistive-technology behavior | native |
+| Horizontal arrow in cluster | any cluster state | existing cluster behavior | no carousel interception | existing |
+| Enter/Space on Previous/Next | carousel | adjacent item | existing button path | existing |
+
+## Accessibility Requirements
+
+### Keyboard Navigation
+
+- **Tab order:** unchanged normal DOM order through visible front buttons and
+  the open panel link; the wrapper and viewport do not become tab stops.
+- **Arrow keys:** while focus is within the carousel viewport, unmodified
+  ArrowLeft/ArrowRight select exactly one adjacent item through the controlled
+  transition. ArrowUp/ArrowDown and modified arrows remain native.
+- **Enter/Space:** native activation of front and navigation buttons remains.
+- **Escape:** unchanged by this amendment.
+
+### Focus Management
+
+- Pattern: standard DOM focus, not roving tabindex or `aria-activedescendant`.
+- The existing pending-focus seam is used. Once correction starts, focus moves
+  synchronously to the destination's visible front button; the existing
+  `focusin` selection hook is idempotent because that item is already pending.
+  Focus then moves to the destination link only after that item is open and its
+  panel is no longer inert.
+- A rejected repeat or edge key does not move focus. Teardown cancels scheduled
+  focus through the existing owned focus scheduler.
+
+### Screen Reader
+
+- No live region or role changes.
+- Existing front/link/Close accessible names remain.
+- `aria-expanded`, `aria-hidden`, and `inert` synchronize before destination
+  focus. Exactly one item is exposed as open after settlement.
+
+### Motion
+
+- Reuse `startCorrection`, which selects `smooth` only when
+  `prefers-reduced-motion` is false and `auto` otherwise.
+- No new CSS transition, duration, easing, or transition-event dependency.
+
+## Error paths and recovery
+
+| Component/Stage | Error | Detection | Recovery | User impact |
+| --- | --- | --- | --- | --- |
+| Key classifier | intercepts non-owned key/modifier | focused boundary assertions | tighten exact key/modifier/mode/containment guards | native key behavior restored |
+| Adjacent move | pending or edge move returns false | state/class assertions | consume owned key but retain current target/state | no skip or drift |
+| Correction | native scroll also occurs | `defaultPrevented` plus target/state geometry | prevent before routing; reuse one correction authority | consistent transition |
+| Activation | target not centered/open | existing scrollend + idle fallback assertions | retain existing retry/fallback | temporary correction only |
+| Focus scheduler | focus remains in old inert panel or reaches link early/stale | activeElement and inert assertions | focus target front after correction starts; schedule link only for matching open ID; existing cleanup cancellation | focus stays valid |
+| Mode/teardown | handler fires after cluster switch/destroy | mode and teardown regression | controller-owned listener and active/mode guards | native behavior after teardown |
+
+## Test matrix
+
+| Behavior | Test Level | Boundary / Seam | Test Double Strategy | Verification Command | Failure Mode Covered |
+| --- | --- | --- | --- | --- | --- |
+| ArrowRight parity with Next | component/regression | viewport keydown → `move` → correction | real Chromium event/classes/geometry | `cd packages/components-homepage && yarn test:storybook src/components/charter-bubbles/charter-bubbles.stories.jsx -t 'Keyboard arrow transition'` | delayed passive-scroll choreography |
+| ArrowLeft parity with Previous | component/regression | same path, reverse direction | real Chromium | same focused command | asymmetric transition |
+| Prevent native race | component | cancelable key event boundary | real `KeyboardEvent`, inspect `defaultPrevented` | same focused command | native and controlled paths both run |
+| Interim and settled focus/ARIA/inert | accessibility/component | target front → pending focus scheduler → active panel | real focus and DOM state | same focused command | focus in closed/inert panel or premature link focus |
+| Repeat during correction | component | pending-state guard | two real keydowns before `scrollend` | same focused command | multi-item skip |
+| First/last edge | component | adjacency bounds | real events at both endpoints | same focused command | drift or focus loss at edge |
+| Vertical/modified keys | accessibility/component | exact classifier | real cancelable key events | same focused command | over-broad interception |
+| Reduced motion | component/integration | pre-render media state → existing correction | existing real Storybook media emulation | `cd packages/components-homepage && yarn test:storybook src/components/charter-bubbles/charter-bubbles.stories.jsx -t 'Reduced motion|Keyboard arrow transition'` | smooth motion or transition wait under preference |
+| Pointer/wheel/button regression | component/integration | shared controller paths | existing real stories | `cd packages/components-homepage && yarn test:storybook src/components/charter-bubbles/charter-bubbles.stories.jsx` | changing established inputs |
+| Static/React contract | contract | unchanged markup | existing parity story | `cd packages/components-homepage && yarn test:storybook src/components/charter-bubbles/charter-bubbles.stories.jsx -t 'HTML parity'` | accidental markup divergence |
+| Static quality | static | changed JS/story | real ESLint | `cd packages/components-homepage && yarn exec eslint src/components/charter-bubbles/charter-bubbles.js src/components/charter-bubbles/charter-bubbles.stories.jsx` | syntax/style error |
+| Package integration | integration | production bundle | real Vite build | `cd packages/components-homepage && yarn build` | bundling/export regression |
+
+The coder must verify the story's resolved display name before relying on `-t`;
+zero matched tests is a failed verification.
+
+## Implementation tasks (two-to-five minutes each)
+
+### Task K1 — Add isolated RED characterization (5 minutes)
+
+Files:
+`packages/components-homepage/src/components/charter-bubbles/charter-bubbles.stories.jsx`,
+`.pipeline/impl-report.md`.
+
+- Add `KeyboardArrowTransition` at 393px and begin with the initial open link
+  focused.
+- Dispatch a cancelable ArrowRight and require `defaultPrevented`, immediate old
+  close plus one adjacent `is-opening`, then destination open/focused after
+  `scrollend`.
+- Compare the observable class/ARIA sequence with the existing Next-button path.
+- Run the focused command and record RED caused by absent key handling.
+
+Depends on: human approval.
+
+### Task K2 — Route owned arrows through the existing transition (5 minutes)
+
+File:
+`packages/components-homepage/src/components/charter-bubbles/charter-bubbles.js`.
+
+- Extend the existing adjacent `move` helper with a keyboard-focus option that
+  assigns the destination to `pendingFocusItem`, calls `startCorrection`, and
+  then focuses the destination's still-visible front. Its resulting `focusin`
+  must remain idempotent through the existing same-pending-item guard.
+- Add a controller-owned viewport `keydown` listener with exact carousel,
+  containment, key, `defaultPrevented`, and modifier guards.
+- For an owned key, call `preventDefault` before attempting `move`, so edges and
+  in-flight repeats cannot fall back to native horizontal scrolling.
+- Do not add CSS, timers, markup, roles, tabindex, or a second transition path.
+- Run K1 to GREEN.
+
+Depends on: K1 RED.
+
+### Task K3 — Close keyboard boundaries and motion cases (5 minutes)
+
+File:
+`packages/components-homepage/src/components/charter-bubbles/charter-bubbles.stories.jsx`.
+
+- Add reverse, repeat-before-settlement, both-edge, vertical/modifier, focus,
+  ARIA/inert, and reduced-motion assertions to the isolated story or a tightly
+  paired story.
+- Confirm teardown/mode guards through existing full-story regressions.
+- Run the focused keyboard and reduced-motion commands.
+
+Depends on: K2 GREEN.
+
+### Task K4 — Regression, evidence, and isolated commit (5 minutes)
+
+Files: `.pipeline/impl-report.md`; reviewer later owns
+`.pipeline/review-report.md`.
+
+- Run the full Charter story file, HTML parity, targeted ESLint, package build,
+  and scoped `git diff --check`.
+- Record exact RED/GREEN output, focus/motion evidence, files, and anything not
+  run. Submit to adversarial review.
+- Commit the implementation separately as
+  `fix(components-homepage): align charter bubble arrow transitions`; keep final
+  review documentation in its own later docs commit.
+
+Depends on: K3 GREEN.
+
+## Security and performance considerations
+
+- No new trust boundary, input, URL, HTML, analytics, storage, or network path.
+  Event handling accepts only browser-generated/local key names after exact
+  guards and performs no dynamic lookup outside the owned root.
+- One bubbling `keydown` listener is owned and removed by the existing controller
+  ledger. Work is constant over five items and only occurs for two exact keys.
+- The implementation adds no observer, timer, layout loop, CSS animation, or
+  additional geometry read beyond the existing correction path.
+
+## Amendment lock protocol
+
+No implementation or test code may be written until the user approves this
+amendment. Approval locks the owned keys, focus destination, transition reuse,
+scope exclusions, tests, and isolated commit. Any need to change markup, CSS,
+geometry, non-horizontal keys, cluster behavior, or the Webspark handoff requires
+a new amendment and renewed approval.

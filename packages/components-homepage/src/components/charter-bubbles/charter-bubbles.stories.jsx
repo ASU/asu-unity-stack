@@ -1564,6 +1564,229 @@ export const CarouselNavigation = {
   },
 };
 
+export const KeyboardArrowTransition = {
+  name: "Keyboard arrow transition",
+  ...viewport(393),
+  render: () => <ReactPage initialOpenId="employability" />,
+  play: async ({ canvasElement }) => {
+    const root = canvasElement.querySelector("[data-charter-bubbles]");
+    const viewportElement = root.querySelector(
+      "[data-charter-bubble-viewport]"
+    );
+    const itemIds = [
+      "employability",
+      "fortune-500",
+      "faculty",
+      "degree-programs",
+      "undergraduate-research",
+    ];
+    const getItem = id =>
+      root.querySelector(`[data-charter-bubble-id="${id}"]`);
+    const getFront = id =>
+      getItem(id).querySelector("[data-charter-bubble-open]");
+    const getPanel = id =>
+      getItem(id).querySelector("[data-charter-bubble-panel]");
+    const getLink = id => getItem(id).querySelector(".hp-charter-bubble__link");
+    const dispatchKey = (target, key, modifiers = {}) => {
+      const event = new KeyboardEvent("keydown", {
+        key,
+        bubbles: true,
+        cancelable: true,
+        ...modifiers,
+      });
+      target.dispatchEvent(event);
+      return event;
+    };
+    const finishTransition = async id => {
+      viewportElement.dispatchEvent(new Event("scrollend"));
+      await waitFor(() => {
+        expect(root).toHaveAttribute("data-open-id", id);
+        expect(root.querySelectorAll(".is-open")).toHaveLength(1);
+        expect(getItem(id)).toHaveClass("is-open");
+        expect(getItem(id)).not.toHaveClass("is-opening");
+        expect(getFront(id)).toHaveAttribute("aria-expanded", "true");
+        expect(getPanel(id)).toHaveAttribute("aria-hidden", "false");
+        expect(getPanel(id)).not.toHaveAttribute("inert");
+      });
+    };
+    const transitionSnapshot = () => ({
+      openId: root.getAttribute("data-open-id"),
+      openIds: Array.from(root.querySelectorAll(".is-open"), item =>
+        item.getAttribute("data-charter-bubble-id")
+      ),
+      openingIds: Array.from(root.querySelectorAll(".is-opening"), item =>
+        item.getAttribute("data-charter-bubble-id")
+      ),
+      currentExpanded: getFront("employability").getAttribute("aria-expanded"),
+      currentHidden: getPanel("employability").getAttribute("aria-hidden"),
+      currentInert: getPanel("employability").hasAttribute("inert"),
+      destinationExpanded:
+        getFront("fortune-500").getAttribute("aria-expanded"),
+      destinationHidden: getPanel("fortune-500").getAttribute("aria-hidden"),
+      destinationInert: getPanel("fortune-500").hasAttribute("inert"),
+    });
+    const currentItem = getItem("employability");
+    const currentLink = getLink("employability");
+    const destinationItem = getItem("fortune-500");
+    const destinationFront = destinationItem.querySelector(
+      "[data-charter-bubble-open]"
+    );
+    const destinationLink = getLink("fortune-500");
+    const next = root.querySelector("[data-charter-bubble-next]");
+
+    await waitFor(() => {
+      expect(root).toHaveAttribute("data-layout", "carousel");
+      expect(root).toHaveAttribute("data-open-id", "employability");
+    });
+    currentLink.focus();
+    expect(currentLink).toHaveFocus();
+
+    const arrowRight = dispatchKey(currentLink, "ArrowRight");
+
+    expect(arrowRight.defaultPrevented).toBe(true);
+    expect(root).not.toHaveAttribute("data-open-id");
+    expect(currentItem).not.toHaveClass("is-open");
+    expect(getFront("employability")).toHaveAttribute("aria-expanded", "false");
+    expect(getPanel("employability")).toHaveAttribute("aria-hidden", "true");
+    expect(getPanel("employability")).toHaveAttribute("inert");
+    expect(destinationItem).toHaveClass("is-opening");
+    expect(destinationFront).toHaveAttribute("aria-expanded", "false");
+    expect(getPanel("fortune-500")).toHaveAttribute("aria-hidden", "true");
+    expect(getPanel("fortune-500")).toHaveAttribute("inert");
+    expect(destinationFront).toHaveFocus();
+
+    const arrowSnapshot = transitionSnapshot();
+    const repeatedArrow = dispatchKey(destinationFront, "ArrowRight");
+    expect(repeatedArrow.defaultPrevented).toBe(true);
+    expect(root.querySelectorAll(".is-opening")).toHaveLength(1);
+    expect(destinationItem).toHaveClass("is-opening");
+
+    const arrowDown = dispatchKey(destinationFront, "ArrowDown");
+    expect(arrowDown.defaultPrevented).toBe(false);
+    for (const modifiers of [
+      { altKey: true },
+      { ctrlKey: true },
+      { metaKey: true },
+      { shiftKey: true },
+    ]) {
+      const modifiedArrow = dispatchKey(
+        destinationFront,
+        "ArrowRight",
+        modifiers
+      );
+      expect(modifiedArrow.defaultPrevented).toBe(false);
+    }
+    expect(root.querySelectorAll(".is-opening")).toHaveLength(1);
+
+    await finishTransition("fortune-500");
+    expect(destinationLink).toHaveFocus();
+
+    const arrowLeft = dispatchKey(destinationLink, "ArrowLeft");
+    expect(arrowLeft.defaultPrevented).toBe(true);
+    expect(currentItem).toHaveClass("is-opening");
+    expect(getFront("employability")).toHaveFocus();
+    await finishTransition("employability");
+    expect(currentLink).toHaveFocus();
+
+    await userEvent.click(next);
+    expect(transitionSnapshot()).toEqual(arrowSnapshot);
+    await finishTransition("fortune-500");
+    expect(next).toHaveFocus();
+
+    destinationLink.focus();
+    const backToStart = dispatchKey(destinationLink, "ArrowLeft");
+    expect(backToStart.defaultPrevented).toBe(true);
+    await finishTransition("employability");
+    expect(currentLink).toHaveFocus();
+
+    const leftEdge = dispatchKey(currentLink, "ArrowLeft");
+    expect(leftEdge.defaultPrevented).toBe(true);
+    expect(root).toHaveAttribute("data-open-id", "employability");
+    expect(root.querySelectorAll(".is-opening")).toHaveLength(0);
+    expect(currentLink).toHaveFocus();
+
+    for (let index = 1; index < itemIds.length; index += 1) {
+      const sourceLink = getLink(itemIds[index - 1]);
+      sourceLink.focus();
+      const event = dispatchKey(sourceLink, "ArrowRight");
+      expect(event.defaultPrevented).toBe(true);
+      expect(getFront(itemIds[index])).toHaveFocus();
+      await finishTransition(itemIds[index]);
+      expect(getLink(itemIds[index])).toHaveFocus();
+    }
+
+    const lastId = itemIds[itemIds.length - 1];
+    const lastLink = getLink(lastId);
+    const rightEdge = dispatchKey(lastLink, "ArrowRight");
+    expect(rightEdge.defaultPrevented).toBe(true);
+    expect(root).toHaveAttribute("data-open-id", lastId);
+    expect(root.querySelectorAll(".is-opening")).toHaveLength(0);
+    expect(lastLink).toHaveFocus();
+  },
+};
+
+export const KeyboardArrowTransitionReducedMotion = {
+  name: "Keyboard arrow transition reduced motion",
+  tags: ["!dev", "!autodocs"],
+  ...viewport(393),
+  beforeEach: installReducedMotionStoryEnvironment,
+  render: () => <ReactPage initialOpenId="employability" />,
+  play: async ({ canvasElement }) => {
+    const root = canvasElement.querySelector("[data-charter-bubbles]");
+    const viewportElement = root.querySelector(
+      "[data-charter-bubble-viewport]"
+    );
+    const currentLink = root.querySelector(
+      '[data-charter-bubble-id="employability"] .hp-charter-bubble__link'
+    );
+    const destinationItem = root.querySelector(
+      '[data-charter-bubble-id="fortune-500"]'
+    );
+    const destinationFront = destinationItem.querySelector(
+      "[data-charter-bubble-open]"
+    );
+    const destinationLink = destinationItem.querySelector(
+      ".hp-charter-bubble__link"
+    );
+    const scrollBehaviors = [];
+    const nativeScrollTo = viewportElement.scrollTo;
+
+    await waitFor(() => {
+      expect(root).toHaveAttribute("data-layout", "carousel");
+      expect(root).toHaveAttribute("data-open-id", "employability");
+    });
+    expect(window.matchMedia(REDUCED_MOTION_QUERY).matches).toBe(true);
+    expect(getComputedStyle(viewportElement).scrollBehavior).toBe("auto");
+
+    viewportElement.scrollTo = options => {
+      scrollBehaviors.push(options?.behavior);
+      nativeScrollTo.call(viewportElement, options);
+    };
+    try {
+      currentLink.focus();
+      const arrowRight = new KeyboardEvent("keydown", {
+        key: "ArrowRight",
+        bubbles: true,
+        cancelable: true,
+      });
+      currentLink.dispatchEvent(arrowRight);
+      expect(arrowRight.defaultPrevented).toBe(true);
+      expect(destinationItem).toHaveClass("is-opening");
+      expect(destinationFront).toHaveFocus();
+      expect(scrollBehaviors).toContain("auto");
+      expect(scrollBehaviors).not.toContain("smooth");
+
+      viewportElement.dispatchEvent(new Event("scrollend"));
+      await waitFor(() => {
+        expect(root).toHaveAttribute("data-open-id", "fortune-500");
+        expect(destinationLink).toHaveFocus();
+      });
+    } finally {
+      viewportElement.scrollTo = nativeScrollTo;
+    }
+  },
+};
+
 export const BreakpointPreservesOpen = {
   name: "Breakpoint resets cluster to closed",
   ...viewport(768),

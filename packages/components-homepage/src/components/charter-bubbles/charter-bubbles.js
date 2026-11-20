@@ -1730,7 +1730,7 @@ const bindCarouselGeometry = controller => {
       : setTimeout(finishPending, SCROLL_IDLE_MS);
   };
 
-  const move = direction => {
+  const move = (direction, { focusPanel = false } = {}) => {
     if (
       pendingScroll &&
       (gestureActive || deferredSelection || pendingSelectionItem)
@@ -1767,7 +1767,12 @@ const bindCarouselGeometry = controller => {
     const target = items[currentIndex + (direction < 0 ? -1 : 1)];
     if (!target) return false;
 
-    return startCorrection(target);
+    if (focusPanel) pendingFocusItem = target;
+    const started = startCorrection(target);
+    if (started && focusPanel) {
+      focusSafely(target.querySelector(OPEN_SELECTOR));
+    }
+    return started;
   };
 
   const beginGesture = () => {
@@ -1863,6 +1868,27 @@ const bindCarouselGeometry = controller => {
     startCorrection(target);
   };
 
+  const onKeyDown = event => {
+    const target = closestElement(event.target);
+    if (
+      controller.layout?.getMode?.() !== "carousel" ||
+      event.defaultPrevented ||
+      event.altKey ||
+      event.ctrlKey ||
+      event.metaKey ||
+      event.shiftKey ||
+      !["ArrowLeft", "ArrowRight"].includes(event.key) ||
+      !target ||
+      !viewport.contains(target) ||
+      !belongsToRoot(target, root)
+    ) {
+      return;
+    }
+
+    event.preventDefault();
+    move(event.key === "ArrowLeft" ? -1 : 1, { focusPanel: true });
+  };
+
   const onItemSizeTransitionEnd = event => {
     if (
       controller.layout?.getMode?.() !== "carousel" ||
@@ -1886,6 +1912,7 @@ const bindCarouselGeometry = controller => {
   controller.listen(view, "touchcancel", endGesture, { passive: true });
   controller.listen(viewport, "scroll", onScroll, { passive: true });
   controller.listen(viewport, "wheel", onWheel, { passive: false });
+  controller.listen(viewport, "keydown", onKeyDown);
   controller.listen(viewport, "scrollend", finishPending);
   controller.listen(track, "transitionend", onItemSizeTransitionEnd);
   controller.listen(view, "resize", queueSync, { passive: true });

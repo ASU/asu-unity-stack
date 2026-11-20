@@ -418,3 +418,69 @@ review.**
 Review-fix cycle 1 status: **2/2 findings closed.**
 
 Follow-up final status: **DONE — independently approved in review cycle 2.**
+
+## Follow-up Implementation — Carousel Arrow-Key Transition Parity
+
+Status: **DONE — ready for adversarial review.**
+
+### What was implemented
+
+- Added a viewport-owned `keydown` handler for unmodified ArrowLeft and
+  ArrowRight while the enhanced component is in carousel mode.
+- Owned horizontal arrows now prevent native overflow scrolling and reuse the
+  existing `move` → `startCorrection` close/center/open transition authority.
+- Keyboard correction moves focus to the destination's visible front button,
+  then uses the existing pending-focus scheduler to focus its link only after
+  the panel is open and no longer inert.
+- Repeats during correction and arrows at either edge are consumed without
+  retargeting or native-scroll fallback. Vertical and Alt/Ctrl/Meta/Shift
+  modified arrows remain native. No markup, CSS, geometry, analytics, cluster,
+  pointer, wheel, or navigation-button behavior changed.
+
+### TDD evidence
+
+- Tests added: `KeyboardArrowTransition` and
+  `KeyboardArrowTransitionReducedMotion` in
+  `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.stories.jsx`.
+- RED command:
+  `yarn test:storybook src/components/charter-bubbles/charter-bubbles.stories.jsx -t 'Keyboard arrow transition'`
+  — FAIL, 1 failed / 36 skipped. The cancelable ArrowRight event reported
+  `defaultPrevented === false`, proving the native-only path.
+- Initial GREEN: the same command — PASS, 1 passed / 36 skipped after the
+  minimal viewport listener and focus option on `move`.
+- Boundary/motion GREEN: the expanded same command — PASS, 2 passed / 36
+  skipped. Coverage requires forward/reverse parity, the same interim
+  class/ARIA/inert snapshot as the Next button, destination-front then
+  destination-link focus, repeat suppression, both edges, vertical and all
+  four modifier boundaries, and `auto` rather than `smooth` correction under
+  pre-render reduced motion.
+- Focused motion command:
+  `yarn test:storybook src/components/charter-bubbles/charter-bubbles.stories.jsx -t 'Reduced motion|Keyboard arrow transition'`
+  — PASS, 2 passed / 36 skipped.
+- Full Charter command:
+  `yarn test:storybook src/components/charter-bubbles/charter-bubbles.stories.jsx`
+  — PASS, 38/38.
+- HTML parity: the proposed `-t 'HTML parity'` capitalization matched zero
+  tests and was rejected. The resolved display-name command
+  `-t 'Html Parity'` passed 1 test / 37 skipped.
+- Scoped ESLint for the controller and story: PASS.
+- Package `yarn build`: PASS; Vite transformed 17 modules and emitted the
+  expected CSS, React ES, package ES, and Charter Bubbles ES bundles.
+- Scoped `git diff --check`: PASS.
+
+### Refactor and skipped checks
+
+- Refactor: only test helpers local to the new story; no production structural
+  refactor beyond the approved optional focus argument on the existing `move`
+  function.
+- Not run: the full package Storybook suite and manual screen-reader testing.
+  The complete affected Charter file, focused accessibility boundaries, parity,
+  lint, and build were run. Manual assistive-technology verification remains a
+  delivery recommendation and no claim of complete accessibility is made.
+
+### Files changed
+
+- `.pipeline/design-doc.md`
+- `.pipeline/impl-report.md`
+- `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.js`
+- `packages/components-homepage/src/components/charter-bubbles/charter-bubbles.stories.jsx`
