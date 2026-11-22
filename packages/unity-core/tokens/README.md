@@ -15,11 +15,12 @@ tokens/*.json  (DTCG source, this folder)
                                          for legacy Bootstrap/SCSS consumers)
 ```
 
-> **Status: values are provisional.** Token *values* mirror the unity-core
-> prototype and are pending final confirmation by the Brand team
-> (UDS-2268 / UDS-2275). Do not align values to Figma or to the legacy SCSS
-> theme until Brand signs off — known divergences are documented in each
-> token's `$description` and surfaced by `yarn tokens:check-figma`.
+> **Status.** Token names and values follow the UDS Report (UDS-2274), with
+> production (`unity-bootstrap-theme` on `dev`) as the base, and the UDS
+> spacing guidelines v1 for semantic spacing. Tokens still waiting on Brand are
+> `experimental` and say why in their `$description`; see
+> [Pending Brand](#pending-brand). Known differences with Figma are surfaced by
+> `yarn tokens:check-figma`.
 
 ## Scripts
 
@@ -36,12 +37,22 @@ Validated by `scripts/validate-tokens.mjs` (formal shape in
 
 - Tokens use DTCG keys: `$value`, `$type`, `$description`. Legacy
   `value`/`type` keys are rejected.
-- Every token needs a `$description` and a `com.asu.uds.status`
-  (`stable | experimental | deprecated`) — own or inherited from an ancestor
+- Every token needs a `$description`, a `com.asu.uds.status`
+  (`stable | experimental | deprecated`) and a `com.asu.uds.tier`
+  (`primitive | semantic | component`) — own or inherited from an ancestor
   group via `$extensions`.
+- Tier rules: a primitive holds a literal value; a semantic token holds a
+  literal or references a primitive; a component token references a semantic
+  token. A component token may reference a primitive only with
+  `primitiveRef: true` and a `$description` saying why (today:
+  `button.padding.small.x` = 12px and `button.opacity.disabled`, which have no
+  semantic token).
 - `$extensions["com.asu.uds"]` fields:
   - `figmaVar` — round-trip link to the Figma variable
     (`"Collection/Group/Name"`, resolved against `figma/figma-variables.json`).
+    Allowed on a token or on a mode group (`{light, dark}`,
+    `{desktop, mobile}`, `{desktop, tablet, mobile}`); each leaf is compared
+    with its own Figma mode. `tablet` has no Figma mode yet.
   - `deprecatedAliases` — legacy SCSS/JS names the token replaces, so
     migration tooling and agents can map old → new.
   - `usage` / `avoid` — positive/negative guidance for choosing tokens.
@@ -82,7 +93,7 @@ Drop the parts that do not apply. Examples:
 | `color.background.accent` | color | background | accent | — |
 | `color.border.focus` | color | border | focus | — |
 | `color.border.error` | color | border | error | — |
-| `spacing.section.small` | spacing | section | small | — |
+| `spacing.section.sm` | spacing | section | sm | — |
 
 - **Component tokens** use the component as the object and add the property
   it sets: `<category>.<component>.<variant>.<property>`, for example
@@ -95,15 +106,17 @@ Drop the parts that do not apply. Examples:
 - **Segments are lowercase kebab-case** (`on-contrast`, `link-visited`).
   The `.` is reserved as the path separator (DTCG), so it never appears inside
   a segment: no `spacing.1.5`.
-- **Size variants** use `xs`, `sm`, `md`, `lg`, `xl`, `2xl`…; level variants
-  use plain words (`standard`, `small`).
+- **Size variants** use `xs`, `sm`, `md`, `lg`, `xl`, `2xl`…, with
+  `standard` for the default size (`spacing.section.standard`,
+  `spacing.padding.standard`), as in Figma.
 
 ### Categories
 
 Top-level segment of every token. Do not add a new one without a team decision.
 
-`color`, `font`, `spacing`, `radius`, `border`, `opacity`, `shadow`,
-`transition`, `easing`, `breakpoint`
+`color`, `font`, `line-height`, `letter-spacing`, `spacing`, `radius`,
+`border`, `opacity`, `duration`, `breakpoint`, `container`, `grid`, `icon`,
+`target-size`, plus component groups (`button`).
 
 ### Modes
 
@@ -113,8 +126,27 @@ part of the token's public name:
 - `<path>.{light,dark}` → `--uds-<path>`, emitted on
   `:root, .uds-surface-light` (light values) and `.uds-surface-dark`
   (dark values). Wrap a region in `class="uds-surface-dark"` to re-theme it.
-- `<path>.{desktop,mobile}` → `--uds-<path>`, desktop on `:root`, mobile
-  inside `@media (max-width: 767px)` (only emitted when it differs).
+  The section classes production already uses switch the tokens too, so
+  existing Webspark 2 content works without migration: dark =
+  `.gray-7-bg`, `.gray-dark-bg`, `.bg-dark`; light = `.white-bg`,
+  `.gray-1-bg`, `.gray-2-bg`, `.bg-white`, `.bg-gray-1`, `.bg-gray-2`
+  (`LIGHT_SURFACES` / `DARK_SURFACES` in `style-dictionary.config.js`). These
+  rules only set `--uds-*` properties; they never paint a background. Use
+  `.uds-surface-*` in new code.
+  Why a class and not descendant selectors: the components use Shadow DOM,
+  which outside selectors cannot reach; custom properties are inherited
+  through it.
+- `<path>.{desktop,tablet,mobile}` → `--uds-<path>`: desktop (≥992px) on
+  `:root`, tablet inside `@media (max-width: 991.98px)`, mobile inside
+  `@media (max-width: 575.98px)`, matching production's
+  `media-breakpoint-down(lg)` / `down(sm)`. The tablet block comes first so
+  mobile wins below 576px. An override is emitted only when it differs from
+  the next larger breakpoint; a token without `tablet` uses its desktop value
+  on tablet.
+- A token that references a light/dark value (for example
+  `color.button.primary.background` → `color.background.accent`) is declared
+  in both the light and the dark block, so it switches inside
+  `.uds-surface-dark` (custom properties resolve where they are declared).
 
 ### Output names (encoded in `style-dictionary.config.js`)
 
@@ -139,10 +171,41 @@ One legacy name can map to several semantic tokens, one per object it styles.
 
 ### Current state
 
-The token files in this folder still use the prototype names
-(`color.semantic.<role>`, `spacing.sm`, `border.color.*`). They will be
-renamed to this convention once Brand confirms the token set in the
-UDS-2274 report, together with the values (see the status note above).
+Token names and values follow the UDS Report (UDS-2274), with production
+values as the base. The prototype names (`color.semantic.<role>`,
+`color.brand.*`, `spacing.sm`, `spacing.1…6`, `border.color.*`) were removed;
+note that `spacing.4` now means 4px (it was an alias of 24px).
+
+## Pending Brand
+
+These tokens ship as `experimental` until Brand decides. The number is the ask
+in the UDS Report (`docs/UDS REPORT.xlsx`, "Asks for Brand").
+
+| Ask | Topic | What ships today |
+|---|---|---|
+| 1 | Tier names | `primitive / semantic / component`. Brand asked "Brand replaces primitive?": to confirm whether that means renaming the tier or adding a brand layer. The tier is metadata only; no token name depends on it. |
+| 2, 3 | H1 desktop / H2 mobile line-height | Brand values (68px / 36px). Production keeps 72px / 40px until Brand decides to change it. |
+| 9 | Status colors in dark | Figma values; the dark pairs are about 2:1 contrast until Brand defines dark status backgrounds. |
+| 11 | The 4 Figma "Brand colors" | Functional names: `color.background.accent` (ASU Maroon), `color.background.highlight` (ASU Gold), `color.background.contrast` (ASU Black), `color.text.on-contrast` (ASU White). Figma rename tabled by Brand. |
+| 13 | Production values missing in Figma | H1 article, H3–H5, letter-spacing, radius, `color.maroon-dark`, spacing 72–512. List: `docs/uds-2274-ask13-add-to-figma.xlsx`. |
+| 14, 16, 22 | Semantic spacing | UDS spacing guidelines v1 (`docs/UDS SPACING GUIDELINES PROPOSAL.xlsx`), taken as final by the team because Brand did not respond. Tablet values need a Tablet mode in Figma. The hero keeps 64px (ask 22). `heading-paragraph` is 16px (production) vs 24px in Figma. |
+| 21 | Header search color `#495057` | Approved by Brand (use Gray 2); still on `dev` in `component-header-footer`. Separate ticket, not done yet. |
+
+Also deferred:
+
+- `line-height.paragraph` (production: font-size + 8px) is not a single DTCG
+  value, so it has no token yet.
+- The Figma snapshot (`figma/figma-variables.json`, 2026-09-21) predates
+  Brand's ask 7 update, so `color.text.secondary` (Gray 2) shows as a
+  mismatch until the snapshot is refreshed.
+
+Expected `yarn tokens:check-figma` mismatches, each a documented decision:
+`color.text.primary`, `color.border.focus` and `color.background.contrast`
+dark (Gray 7, ask 5); `color.text.inverse` light and dark (ask 12);
+`color.text.on-contrast` dark (Gray 1, tertiary button); `color.text.secondary`
+light (snapshot predates ask 7); `color.text.warning` light (`#BB4700`,
+ask 10); `line-height.h2` mobile (36px, ask 3);
+`spacing.paragraph.heading-paragraph` (16px, production).
 
 ## Figma connection
 
