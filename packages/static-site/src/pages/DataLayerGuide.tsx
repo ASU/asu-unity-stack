@@ -10,7 +10,11 @@ export const bookmarklet = `javascript:(${watchDataLayer
   // remove comments
   .replace(/\/\*.*?\*\//g, "")
   // replace multiple spaces with a single space
-  .replace(/\s+/g, " ")})();`;
+  .replace(/\s+/g, " ")
+  // the source file ends with `};`; drop the trailing `;` (and any
+  // surrounding whitespace) so wrapping it as `(fn)();` stays valid JS
+  .trim()
+  .replace(/;$/, "")})();`;
 
 const gtmCodes = {
   universal: "GTM-KDWN8Z",
@@ -238,7 +242,19 @@ const DataLayerGuide = () => {
             script which will output data layer events to the console.
             <br />
             <br />
-            <a href={bookmarklet}>Watch DataLayer</a>
+            {/*
+              React (16.9+, incl. v19) refuses to render `javascript:` URLs
+              passed via the `href` prop and replaces them with a thrown-error
+              URL. Setting the attribute imperatively through a ref bypasses
+              that sanitizer so the bookmarklet stays draggable/clickable.
+            */}
+            <a
+              ref={node => {
+                node?.setAttribute("href", bookmarklet);
+              }}
+            >
+              Watch DataLayer
+            </a>
           </p>
           <h3>Only Run Code You Trust</h3>
           <p>

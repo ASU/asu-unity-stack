@@ -6,7 +6,8 @@
         "cacheableOperations": [
           "prebuild",
           "build",
-          "build-storybook"
+          "build-storybook",
+          "test"
         ]
       }
     }

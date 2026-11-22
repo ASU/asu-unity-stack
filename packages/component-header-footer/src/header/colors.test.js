@@ -1,5 +1,10 @@
 // @ts-check
-import { ASU_MAROON, ASU_GOLD, ACCENT_PRIMARY, ACCENT_SECONDARY } from "./colors";
+import {
+  ASU_MAROON,
+  ASU_GOLD,
+  ACCENT_PRIMARY,
+  ACCENT_SECONDARY,
+} from "./colors";
 
 describe("header brand color constants", () => {
   it("reads maroon from the --bs-maroon custom property with the current hex as fallback", () => {

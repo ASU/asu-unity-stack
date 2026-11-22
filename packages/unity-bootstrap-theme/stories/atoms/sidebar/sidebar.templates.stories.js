@@ -20,9 +20,9 @@ export const Sidebar = () => (
       data-ga-type="click"
       data-ga-region="main content"
       data-ga-section="Lorem ipsum"
-      data-ga="Select section"
+      data-ga="Select a page"
     >
-      <p>Select Section</p>
+      <p>Select a Page</p>
       <span className="fas fa-chevron-up" />
     </div>
     <nav id="sidebar-left" className="sidebar collapse" aria-label="Secondary">

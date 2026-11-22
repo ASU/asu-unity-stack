@@ -253,8 +253,8 @@ const imageButtonCards = [
         label: "Explore",
         ariaLabel: "Explore",
         href: "#",
-      }
-    ]
+      },
+    ],
   },
 ];
 

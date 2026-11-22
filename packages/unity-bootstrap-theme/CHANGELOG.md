@@ -1,3 +1,35 @@
+# [@asu/unity-bootstrap-theme-v2.4.7](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.4.6...@asu/unity-bootstrap-theme-v2.4.7) (2026-11-19)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fix for small hero subtitle text ([15eb827](https://github.com/ASU/asu-unity-stack/commit/15eb82795ab17f03e564a1fb60c8516cd83ec814))
+* **unity-bootstrap-theme:** hero-subtitle update and fixed margin off by .005rem ([0f91b4b](https://github.com/ASU/asu-unity-stack/commit/0f91b4b950caa4c7f022bb6a19964d273e744cdf))
+
+# [@asu/unity-bootstrap-theme-v2.4.6](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.4.5...@asu/unity-bootstrap-theme-v2.4.6) (2026-11-18)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** fixed global footer "Support ASU" button size ([e530086](https://github.com/ASU/asu-unity-stack/commit/e530086bc2d370d2389c5ea0c7545d02f1ed176e))
+
+# [@asu/unity-bootstrap-theme-v2.4.5](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.4.4...@asu/unity-bootstrap-theme-v2.4.5) (2026-11-14)
+
+
+### Bug Fixes
+
+* **unity-bootstrap-theme:** display hero video content on mobile ([8b4f501](https://github.com/ASU/asu-unity-stack/commit/8b4f501858e0c960ffc2dbacd16392f577da1dd8))
+* **unity-bootstrap-theme:** fixed playsInline in heroes.example.stories.js ([a9fd087](https://github.com/ASU/asu-unity-stack/commit/a9fd087d988b02e2a0ae0ede6b780eae8c3a21dc))
+* **unity-bootstrap-theme:** playsinline attribute update ([1ea955f](https://github.com/ASU/asu-unity-stack/commit/1ea955f45a9246a8cfb9b57001fc534a8e7581c1))
+* **unity-bootstrap-theme:** replaced "Select Section" with "Select a Page" ([0a86f47](https://github.com/ASU/asu-unity-stack/commit/0a86f478262121d0141dec4fbce5ef429e20b3ac))
+
+# [@asu/unity-bootstrap-theme-v2.4.4](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.4.3...@asu/unity-bootstrap-theme-v2.4.4) (2026-11-06)
+
+
+### Bug Fixes
+
+* storybook package updates ([ece04b4](https://github.com/ASU/asu-unity-stack/commit/ece04b4ca6977f67e91d29bf8e2c0c536351db53))
+
 # [@asu/unity-bootstrap-theme-v2.4.3](https://github.com/ASU/asu-unity-stack/compare/@asu/unity-bootstrap-theme-v2.4.2...@asu/unity-bootstrap-theme-v2.4.3) (2026-09-30)
 
 
