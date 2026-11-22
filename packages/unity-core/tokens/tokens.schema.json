@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://unity.web.asu.edu/schemas/uds-tokens.schema.json",
   "title": "UDS Design Token file",
-  "description": "W3C DTCG-based token contract for the ASU Unity Design System. Adds a required agent-consumable metadata layer under $extensions[\"com.asu.uds\"]: every token must have an effective status and a $description, own or inherited from an ancestor group (enforced by scripts/validate-tokens.mjs).",
+  "description": "W3C DTCG-based token contract for the ASU Unity Design System. Adds a required agent-consumable metadata layer under $extensions[\"com.asu.uds\"]: every token must have an effective status, tier and $description, own or inherited from an ancestor group (enforced by scripts/validate-tokens.mjs).",
   "$ref": "#/$defs/group",
   "$defs": {
     "udsExtensions": {
@@ -15,10 +15,18 @@
               "enum": ["stable", "experimental", "deprecated"],
               "description": "Lifecycle status. Inheritable from ancestor groups."
             },
+            "tier": {
+              "enum": ["primitive", "semantic", "component"],
+              "description": "Token layer. primitive = raw value; semantic = named by purpose, may reference a primitive; component = scoped to one component, references a semantic token. Inheritable from ancestor groups."
+            },
+            "primitiveRef": {
+              "type": "boolean",
+              "description": "Component tokens only: allows referencing a primitive where no semantic token exists. Explain why in $description."
+            },
             "figmaVar": {
               "type": "string",
               "pattern": "^[^/]+/.+$",
-              "description": "Round-trip link to the Figma variable as \"Collection/Group/Name\", matching tokens/figma/figma-variables.json."
+              "description": "Round-trip link to the Figma variable as \"Collection/Group/Name\", matching tokens/figma/figma-variables.json. Allowed on a token or on a mode group ({light,dark}, {desktop,mobile}, {desktop,tablet,mobile}); leaves inherit it and are compared against their own Figma mode."
             },
             "deprecatedAliases": {
               "type": "array",

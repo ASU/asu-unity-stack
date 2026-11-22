@@ -11,14 +11,44 @@
  * Run `yarn build:tokens` (validates first, then builds).
  *
  * Conventions encoded in the custom formats:
- *   - color.semantic.<role>.{light,dark} → `--uds-color-<role>` emitted on
+ *   - <path>.{light,dark} → `--uds-<path>` emitted on
  *     `:root, .uds-surface-light` (light) and `.uds-surface-dark` (dark).
- *   - <path>.{desktop,mobile} → `--uds-<path>` emitted on `:root` (desktop)
- *     and inside `@media (max-width: 767px)` (mobile).
+ *   - <path>.{desktop,tablet,mobile} → `--uds-<path>` emitted on `:root`
+ *     (desktop, >=992px), inside `@media (max-width: 991.98px)` (tablet) and
+ *     inside `@media (max-width: 575.98px)` (mobile). Breakpoints match
+ *     production's media-breakpoint-down(lg) / down(sm). The tablet block comes
+ *     first so mobile wins below 576px; an override is emitted only when the
+ *     value differs from the next larger breakpoint.
  *   - Pure references ({a.b.c}) are preserved as var()/$ references.
+ *   - A token whose reference chain reaches a light/dark leaf (e.g. a button
+ *     token aliasing color.background.accent) is declared in BOTH the light
+ *     and dark blocks: custom properties resolve where they are declared, so a
+ *     :root-only alias would keep its light value inside .uds-surface-dark.
  */
 
 const PREFIX = 'uds';
+
+/**
+ * Selectors that switch the color tokens to their light / dark values.
+ * `.uds-surface-light` / `.uds-surface-dark` are the official classes for new
+ * code. The others are the section background classes production already uses
+ * (unity-bootstrap-theme `_backgrounds.scss`, Bootstrap `.bg-*`; stored in
+ * Webspark 2 block config), so existing content switches without migration.
+ * These rules only set --uds-* custom properties; they never paint a
+ * background themselves. Component-specific classes (.bg-gray-7 on the
+ * breadcrumb, .uds-bg-dark on the pager) are intentionally not listed.
+ */
+export const LIGHT_SURFACES = [
+  ':root',
+  '.uds-surface-light',
+  '.white-bg',
+  '.gray-1-bg',
+  '.gray-2-bg',
+  '.bg-white',
+  '.bg-gray-1',
+  '.bg-gray-2',
+];
+export const DARK_SURFACES = ['.uds-surface-dark', '.gray-7-bg', '.gray-dark-bg', '.bg-dark'];
 
 const isPureRef = (value) =>
   typeof value === 'string' && /^\{[^}]+\}$/.test(value.trim());
@@ -39,9 +69,8 @@ function cssInfo(token) {
   if (last === 'light' || last === 'dark') {
     bucket = last;
     path = path.slice(0, -1);
-    path = path.filter((seg) => seg !== 'semantic');
-  } else if (last === 'desktop' || last === 'mobile') {
-    bucket = last === 'desktop' ? 'base' : 'mobile';
+  } else if (last === 'desktop' || last === 'tablet' || last === 'mobile') {
+    bucket = last === 'desktop' ? 'base' : last;
     path = path.slice(0, -1);
   }
   return { name: `--${PREFIX}-${path.join('-')}`, bucket };
@@ -71,27 +100,47 @@ const HEADER = (what) => `/**
  */
 `;
 
+/** True when the token's reference chain reaches a light/dark leaf. */
+function isModeDependent(token, pathMap, depth = 0) {
+  if (depth > 10) return false;
+  const orig = originalValue(token);
+  if (!isPureRef(orig)) return false;
+  const target = pathMap.get(refPath(orig));
+  if (!target) return false;
+  const last = target.path[target.path.length - 1];
+  return last === 'light' || last === 'dark' || isModeDependent(target, pathMap, depth + 1);
+}
+
 function formatCssThemed({ dictionary }) {
   const pathMap = buildPathMap(dictionary);
-  const buckets = { base: [], light: [], dark: [], mobile: [] };
+  const buckets = { base: [], light: [], dark: [], tablet: [], mobile: [] };
+  const sibling = (token, leaf) => pathMap.get([...token.path.slice(0, -1), leaf].join('.'));
   for (const token of dictionary.allTokens) {
     const { name, bucket } = cssInfo(token);
-    if (bucket === 'mobile') {
-      // Only emit a mobile override when it differs from the desktop value.
-      const desktopPath = [...token.path.slice(0, -1), 'desktop'].join('.');
-      const desktop = pathMap.get(desktopPath);
-      if (desktop && originalValue(desktop) === originalValue(token)) continue;
-      buckets.mobile.push(`    ${name}: ${cssValue(token, pathMap)};`);
+    const decl = `${name}: ${cssValue(token, pathMap)};`;
+    if (bucket === 'tablet' || bucket === 'mobile') {
+      // Emit an override only when it differs from the next larger breakpoint.
+      const larger = (bucket === 'mobile' && sibling(token, 'tablet')) || sibling(token, 'desktop');
+      if (larger && originalValue(larger) === originalValue(token)) continue;
+      buckets[bucket].push(`    ${decl}`);
       continue;
     }
-    buckets[bucket].push(`  ${name}: ${cssValue(token, pathMap)};`);
+    if (bucket === 'base' && isModeDependent(token, pathMap)) {
+      buckets.light.push(`  ${decl}`);
+      buckets.dark.push(`  ${decl}`);
+      continue;
+    }
+    buckets[bucket].push(`  ${decl}`);
   }
   let out = HEADER('CSS custom properties');
   out += `\n:root {\n${buckets.base.join('\n')}\n}\n`;
-  out += `\n:root,\n.uds-surface-light {\n${buckets.light.join('\n')}\n}\n`;
-  out += `\n.uds-surface-dark {\n${buckets.dark.join('\n')}\n}\n`;
+  out += `\n${LIGHT_SURFACES.join(',\n')} {\n${buckets.light.join('\n')}\n}\n`;
+  out += `\n${DARK_SURFACES.join(',\n')} {\n${buckets.dark.join('\n')}\n}\n`;
+  if (buckets.tablet.length) {
+    out += `\n@media (max-width: 991.98px) {\n  :root {\n${buckets.tablet.join('\n')}\n  }\n}\n`;
+  }
   if (buckets.mobile.length) {
-    out += `\n@media (max-width: 767px) {\n  :root {\n${buckets.mobile.join('\n')}\n  }\n}\n`;
+    out += `\n@media (max-width: 575.98px) {\n  :root {\n${buckets.mobile.join('\n')}\n  }\n}\n`;
   }
   return out;
 }
