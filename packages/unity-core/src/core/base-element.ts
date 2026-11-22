@@ -18,7 +18,7 @@ export class UdsBaseElement extends LitElement {
     region?: string;
     section?: string;
   }): void {
-    const dataLayer = (window as any).dataLayer;
+    const dataLayer = (window as Window & { dataLayer?: unknown[] }).dataLayer;
     const payload = {
       event: detail.event ?? 'collapse',
       action: detail.action.toLowerCase(),

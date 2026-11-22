@@ -1,6 +1,7 @@
 import { html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { UdsBaseElement } from '../../core/base-element.js';
+import type { UdsAccordionItem } from './uds-accordion-item.js';
 
 /**
  * @tag uds-accordion
@@ -53,11 +54,11 @@ export class UdsAccordion extends UdsBaseElement {
 
   private _handleItemToggle(e: CustomEvent<{ open: boolean }>): void {
     if (!this.multiple && e.detail.open) {
-      const items = this.querySelectorAll('uds-accordion-item');
+      const items = this.querySelectorAll<UdsAccordionItem>('uds-accordion-item');
       const target = e.composedPath()[0] as Element;
       items.forEach(item => {
         if (item !== target) {
-          (item as any).open = false;
+          item.open = false;
         }
       });
     }

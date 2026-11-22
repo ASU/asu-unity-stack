@@ -8,9 +8,6 @@ export default tseslint.config(
     files: ['src/**/*.ts'],
     languageOptions: {
       parser: tseslint.parser,
-      parserOptions: {
-        project: './tsconfig.json',
-      },
     },
   },
   {

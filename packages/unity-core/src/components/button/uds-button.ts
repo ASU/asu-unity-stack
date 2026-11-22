@@ -48,7 +48,6 @@ function coerce<T extends string>(
     return value as T;
   }
   if (value !== undefined && value !== null && value !== '') {
-    // eslint-disable-next-line no-console
     console.warn(
       `<uds-button>: "${String(value)}" is not a brand-approved ${attr}. ` +
         `Allowed: ${approved.join(', ')}. Falling back to "${fallback}".`
