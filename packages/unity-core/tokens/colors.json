@@ -1,246 +1,851 @@
 {
   "color": {
-    "$description": "ASU color tokens. Primitive values mirror the current prototype palette; final values are pending Brand team confirmation (UDS-2268).",
+    "$description": "ASU color tokens, following the UDS Report (UDS-2274) with production values as the base. Three tiers: primitive, semantic, component.",
     "$extensions": {
-      "com.asu.uds": { "status": "experimental" }
+      "com.asu.uds": {
+        "status": "stable"
+      }
     },
-    "brand": {
-      "maroon": {
-        "$value": "#8C1D40",
-        "$type": "color",
-        "$description": "ASU Maroon — primary brand color",
-        "$extensions": {
-          "com.asu.uds": {
-            "figmaVar": "Themes/Primary Colors/ASU Maroon",
-            "deprecatedAliases": ["$uds-color-base-maroon"]
-          }
-        }
-      },
-      "gold": {
-        "$value": "#FFC627",
-        "$type": "color",
-        "$description": "ASU Gold — primary brand color",
-        "$extensions": {
-          "com.asu.uds": {
-            "figmaVar": "Themes/Primary Colors/ASU Gold",
-            "deprecatedAliases": ["$uds-color-base-gold"]
-          }
-        }
-      },
-      "black": {
-        "$value": "#000000",
-        "$type": "color",
-        "$description": "ASU Rich Black — foundational contrast. Pending Brand decision: the Figma UDS Design Kit defines ASU Black as Gray 1 (#191919). See UDS-2275 audit, mismatch #3."
-      },
-      "white": {
-        "$value": "#FFFFFF",
-        "$type": "color",
-        "$description": "ASU White — foundational contrast",
-        "$extensions": {
-          "com.asu.uds": {
-            "figmaVar": "Themes/Primary Colors/ASU White",
-            "deprecatedAliases": ["$uds-color-base-white"]
-          }
+    "maroon": {
+      "$value": "#8C1D40",
+      "$type": "color",
+      "$description": "ASU Maroon.",
+      "$extensions": {
+        "com.asu.uds": {
+          "figmaVar": "Themes/Primary Colors/ASU Maroon",
+          "deprecatedAliases": [
+            "$uds-color-base-maroon"
+          ],
+          "tier": "primitive"
         }
       }
     },
-    "secondary": {
-      "green": {
-        "$value": "#78BE20",
-        "$type": "color",
-        "$description": "ASU Green — accent only, max 20% of palette (Pantone 368 C)",
-        "$extensions": {
-          "com.asu.uds": {
-            "figmaVar": "Themes/System Colors/ASU Green",
-            "deprecatedAliases": ["$uds-color-base-green"]
-          }
+    "gold": {
+      "$value": "#FFC627",
+      "$type": "color",
+      "$description": "ASU Gold.",
+      "$extensions": {
+        "com.asu.uds": {
+          "figmaVar": "Themes/Primary Colors/ASU Gold",
+          "deprecatedAliases": [
+            "$uds-color-base-gold"
+          ],
+          "tier": "primitive"
         }
-      },
-      "blue": {
-        "$value": "#00A3E0",
-        "$type": "color",
-        "$description": "ASU Blue — accent only (Pantone 299 C)",
-        "$extensions": {
-          "com.asu.uds": {
-            "figmaVar": "Themes/System Colors/ASU Blue",
-            "deprecatedAliases": ["$uds-color-base-blue"]
-          }
+      }
+    },
+    "white": {
+      "$value": "#FFFFFF",
+      "$type": "color",
+      "$description": "White.",
+      "$extensions": {
+        "com.asu.uds": {
+          "figmaVar": "Themes/Primary Colors/ASU White",
+          "deprecatedAliases": [
+            "$uds-color-base-white",
+            "$white"
+          ],
+          "tier": "primitive"
         }
-      },
-      "orange": {
-        "$value": "#FF7F32",
-        "$type": "color",
-        "$description": "ASU Orange — accent only (Pantone 1575 C)",
-        "$extensions": {
-          "com.asu.uds": {
-            "figmaVar": "Themes/System Colors/ASU Orange",
-            "deprecatedAliases": ["$uds-color-base-orange"]
-          }
+      }
+    },
+    "black": {
+      "$value": "#000000",
+      "$type": "color",
+      "$description": "Pure black. Not used for text: text on gold and dark text use Gray 1 (Brand, ask 4: 'Black means #000').",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "primitive"
         }
-      },
-      "gray": {
-        "$value": "#747474",
-        "$type": "color",
-        "$description": "ASU Gray — primary gray, accent only (Pantone 424 C). Same value as Gray 3.",
-        "$extensions": {
-          "com.asu.uds": {
-            "figmaVar": "Themes/Grayscale/Gray 3"
-          }
-        }
-      },
-      "copper": {
-        "$value": "#AF674B",
-        "$type": "color",
-        "$description": "ASU Copper — accent only (Pantone 7522 C). Not present in the Figma UDS Design Kit variables."
-      },
-      "turquoise": {
-        "$value": "#4AB7C4",
-        "$type": "color",
-        "$description": "ASU Turquoise — accent only (Pantone 2227 C). Not present in the Figma UDS Design Kit variables."
-      },
-      "pink": {
-        "$value": "#E74973",
-        "$type": "color",
-        "$description": "ASU Pink — accent only (Pantone 205 C). Not present in the Figma UDS Design Kit variables."
       }
     },
     "gray-1": {
       "$value": "#191919",
       "$type": "color",
-      "$description": "Gray 1 — used as black on asu.edu for reduced contrast",
+      "$description": "Gray 1 (1 = darkest). Used for text and 'black' surfaces (Brand, ask 4: 'Use Grey-1 going forward').",
       "$extensions": {
         "com.asu.uds": {
           "figmaVar": "Themes/Grayscale/Gray 1",
-          "deprecatedAliases": ["$asu-gray-1", "$uds-color-base-gray-7"]
+          "deprecatedAliases": [
+            "$asu-gray-1",
+            "$uds-color-base-gray-7"
+          ],
+          "tier": "primitive"
         }
       }
     },
     "gray-2": {
       "$value": "#484848",
       "$type": "color",
-      "$description": "Gray 2",
+      "$description": "Gray 2 (1 = darkest).",
       "$extensions": {
         "com.asu.uds": {
           "figmaVar": "Themes/Grayscale/Gray 2",
-          "deprecatedAliases": ["$asu-gray-2", "$uds-color-base-gray-6"]
+          "deprecatedAliases": [
+            "$asu-gray-2",
+            "$uds-color-base-gray-6"
+          ],
+          "tier": "primitive"
         }
       }
     },
     "gray-3": {
       "$value": "#747474",
       "$type": "color",
-      "$description": "Gray 3 — same as ASU Gray",
+      "$description": "Gray 3 (1 = darkest).",
       "$extensions": {
         "com.asu.uds": {
           "figmaVar": "Themes/Grayscale/Gray 3",
-          "deprecatedAliases": ["$asu-gray-3", "$uds-color-base-gray-5"]
+          "deprecatedAliases": [
+            "$asu-gray-3",
+            "$uds-color-base-gray-5"
+          ],
+          "tier": "primitive"
         }
       }
     },
     "gray-4": {
       "$value": "#BFBFBF",
       "$type": "color",
-      "$description": "Gray 4",
+      "$description": "Gray 4 (1 = darkest).",
       "$extensions": {
         "com.asu.uds": {
           "figmaVar": "Themes/Grayscale/Gray 4",
-          "deprecatedAliases": ["$asu-gray-4", "$uds-color-base-gray-4"]
+          "deprecatedAliases": [
+            "$asu-gray-4",
+            "$uds-color-base-gray-4"
+          ],
+          "tier": "primitive"
         }
       }
     },
     "gray-5": {
       "$value": "#D0D0D0",
       "$type": "color",
-      "$description": "Gray 5",
+      "$description": "Gray 5 (1 = darkest).",
       "$extensions": {
         "com.asu.uds": {
           "figmaVar": "Themes/Grayscale/Gray 5",
-          "deprecatedAliases": ["$asu-gray-5", "$uds-color-base-gray-3"]
+          "deprecatedAliases": [
+            "$asu-gray-5",
+            "$uds-color-base-gray-3"
+          ],
+          "tier": "primitive"
         }
       }
     },
     "gray-6": {
       "$value": "#E8E8E8",
       "$type": "color",
-      "$description": "Gray 6",
+      "$description": "Gray 6 (1 = darkest).",
       "$extensions": {
         "com.asu.uds": {
           "figmaVar": "Themes/Grayscale/Gray 6",
-          "deprecatedAliases": ["$asu-gray-6", "$uds-color-base-gray-2"]
+          "deprecatedAliases": [
+            "$asu-gray-6",
+            "$uds-color-base-gray-2"
+          ],
+          "tier": "primitive"
         }
       }
     },
     "gray-7": {
       "$value": "#FAFAFA",
       "$type": "color",
-      "$description": "Gray 7 — used as white on asu.edu for reduced contrast",
+      "$description": "Gray 7 (1 = darkest). Used as text on dark sections (Brand, ask 5).",
       "$extensions": {
         "com.asu.uds": {
           "figmaVar": "Themes/Grayscale/Gray 7",
-          "deprecatedAliases": ["$asu-gray-7", "$uds-color-base-gray-1"]
+          "deprecatedAliases": [
+            "$asu-gray-7",
+            "$uds-color-base-gray-1"
+          ],
+          "tier": "primitive"
         }
       }
     },
-    "semantic": {
-      "$description": "Surface-aware semantic roles. The light value is emitted on :root/.uds-surface-light, the dark value on .uds-surface-dark. Semantic-to-Figma mapping is intentionally deferred until the Brand team confirms the Light or Dark Mode collection (UDS-2275).",
+    "green": {
+      "$value": "#78BE20",
+      "$type": "color",
+      "$description": "ASU Green.",
+      "$extensions": {
+        "com.asu.uds": {
+          "figmaVar": "Themes/System Colors/ASU Green",
+          "deprecatedAliases": [
+            "$uds-color-base-green"
+          ],
+          "tier": "primitive"
+        }
+      }
+    },
+    "blue": {
+      "$value": "#00A3E0",
+      "$type": "color",
+      "$description": "ASU Blue.",
+      "$extensions": {
+        "com.asu.uds": {
+          "figmaVar": "Themes/System Colors/ASU Blue",
+          "deprecatedAliases": [
+            "$uds-color-base-blue"
+          ],
+          "tier": "primitive"
+        }
+      }
+    },
+    "orange": {
+      "$value": "#FF7F32",
+      "$type": "color",
+      "$description": "ASU Orange.",
+      "$extensions": {
+        "com.asu.uds": {
+          "figmaVar": "Themes/System Colors/ASU Orange",
+          "deprecatedAliases": [
+            "$uds-color-base-orange"
+          ],
+          "tier": "primitive"
+        }
+      }
+    },
+    "red": {
+      "$value": "#CC2F2F",
+      "$type": "color",
+      "$description": "Error red.",
+      "$extensions": {
+        "com.asu.uds": {
+          "figmaVar": "Themes/System Colors/Error",
+          "deprecatedAliases": [
+            "$uds-color-alerts-error"
+          ],
+          "tier": "primitive"
+        }
+      }
+    },
+    "maroon-dark": {
+      "$value": "#440E22",
+      "$type": "color",
+      "$description": "Dark maroon: visited links on light backgrounds. Pending Brand, ask 13: in Figma only as a semantic value, not yet a Themes primitive.",
+      "$extensions": {
+        "com.asu.uds": {
+          "status": "experimental",
+          "deprecatedAliases": [
+            "$uds-color-base-darkmaroon"
+          ],
+          "tier": "primitive"
+        }
+      }
+    },
+    "gold-dark": {
+      "$value": "#D3A524",
+      "$type": "color",
+      "$description": "Dark gold: visited links on dark backgrounds only (2.19:1 on light). Brand, ask 19: replaces #7F6227. Figma: dark mode of 'Light or Dark Mode/System colors/Visited link color'.",
+      "$extensions": {
+        "com.asu.uds": {
+          "deprecatedAliases": [
+            "$uds-color-base-darkgold",
+            "$uds-color-font-light-visited"
+          ],
+          "tier": "primitive"
+        }
+      }
+    },
+    "divider-darker": {
+      "$value": "#1E1E1E",
+      "$type": "color",
+      "$description": "Footer divider, darker.",
+      "$extensions": {
+        "com.asu.uds": {
+          "deprecatedAliases": [
+            "$uds-color-divider-darker"
+          ],
+          "tier": "primitive"
+        }
+      }
+    },
+    "divider-lighter": {
+      "$value": "#393939",
+      "$type": "color",
+      "$description": "Footer divider, lighter.",
+      "$extensions": {
+        "com.asu.uds": {
+          "deprecatedAliases": [
+            "$uds-color-divider-lighter"
+          ],
+          "tier": "primitive"
+        }
+      }
+    },
+    "text": {
+      "$description": "Semantic text colors.",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "semantic"
+        }
+      },
       "primary": {
+        "$description": "Default text. Dark: Gray 7 as production (Brand, ask 5); Figma uses white.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Light or Dark Mode/Text colors/Primary text",
+            "deprecatedAliases": [
+              "$body-color",
+              "$uds-color-font-light-base"
+            ]
+          }
+        },
         "light": {
-          "$value": "{color.brand.maroon}",
-          "$type": "color",
-          "$description": "Primary action color on light surfaces"
+          "$value": "{color.gray-1}",
+          "$type": "color"
         },
         "dark": {
-          "$value": "{color.brand.gold}",
-          "$type": "color",
-          "$description": "Primary action color on dark surfaces"
+          "$value": "{color.gray-7}",
+          "$type": "color"
         }
       },
       "secondary": {
+        "$description": "Secondary text (captions, meta). Gray 2 passes AA (Brand, ask 7: Figma updated).",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Light or Dark Mode/Text colors/Secondary text"
+          }
+        },
         "light": {
-          "$value": "{color.brand.gold}",
-          "$type": "color",
-          "$description": "Secondary action color on light surfaces"
+          "$value": "{color.gray-2}",
+          "$type": "color"
         },
         "dark": {
-          "$value": "{color.brand.white}",
-          "$type": "color",
-          "$description": "Secondary action color on dark surfaces"
+          "$value": "{color.gray-6}",
+          "$type": "color"
         }
       },
-      "surface": {
+      "inverse": {
+        "$description": "Text on background.inverse (Brand, ask 12). Figma calls it 'Quaternary text'.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Light or Dark Mode/Text colors/Quaternary text"
+          }
+        },
         "light": {
           "$value": "{color.gray-7}",
-          "$type": "color",
-          "$description": "Light surface background (Gray 7 per asu.edu convention)"
+          "$type": "color"
         },
         "dark": {
           "$value": "{color.gray-1}",
-          "$type": "color",
-          "$description": "Dark surface background (Gray 1 per asu.edu convention)"
+          "$type": "color"
         }
       },
-      "on-surface": {
+      "on-accent": {
+        "$description": "Text on background.accent (maroon in light, gold in dark).",
+        "light": {
+          "$value": "{color.white}",
+          "$type": "color"
+        },
+        "dark": {
+          "$value": "{color.gray-1}",
+          "$type": "color"
+        }
+      },
+      "on-highlight": {
+        "$value": "{color.gray-1}",
+        "$type": "color",
+        "$description": "Text on background.highlight (gold), every state (Brand, ask 4)."
+      },
+      "on-contrast": {
+        "$description": "Text on background.contrast. Functional name; Figma calls it 'ASU White'. Rename pending Brand (ask 11, tabled). Dark: Gray 1 so the tertiary button reads.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Light or Dark Mode/Brand colors/ASU White",
+            "status": "experimental"
+          }
+        },
+        "light": {
+          "$value": "{color.white}",
+          "$type": "color"
+        },
+        "dark": {
+          "$value": "{color.gray-1}",
+          "$type": "color"
+        }
+      },
+      "on-neutral": {
+        "$value": "{color.gray-1}",
+        "$type": "color",
+        "$description": "Text on background.neutral (gray button, Brand ask 18)."
+      },
+      "link": {
+        "$description": "Link text.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Light or Dark Mode/System colors/Link color",
+            "deprecatedAliases": [
+              "$link-color",
+              "$uds-color-font-light-link"
+            ]
+          }
+        },
+        "light": {
+          "$value": "{color.maroon}",
+          "$type": "color"
+        },
+        "dark": {
+          "$value": "{color.gold}",
+          "$type": "color"
+        }
+      },
+      "link-visited": {
+        "$description": "Visited link text.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Light or Dark Mode/System colors/Visited link color",
+            "deprecatedAliases": [
+              "$link-visited-color",
+              "$uds-color-font-light-visited"
+            ]
+          }
+        },
+        "light": {
+          "$value": "{color.maroon-dark}",
+          "$type": "color"
+        },
+        "dark": {
+          "$value": "{color.gold-dark}",
+          "$type": "color"
+        }
+      },
+      "success": {
+        "$description": "Success text. Pending Brand, ask 9: Figma's dark status pairing is about 2:1 contrast until Brand defines dark status backgrounds.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Light or Dark Mode/System colors/Success/Text",
+            "status": "experimental",
+            "deprecatedAliases": [
+              "$uds-color-font-dark-success"
+            ]
+          }
+        },
+        "light": {
+          "$value": "#446D12",
+          "$type": "color"
+        },
+        "dark": {
+          "$value": "{color.green}",
+          "$type": "color"
+        }
+      },
+      "info": {
+        "$description": "Info text. Pending Brand, ask 9: Figma's dark status pairing is about 2:1 contrast until Brand defines dark status backgrounds.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Light or Dark Mode/System colors/Info/Text",
+            "status": "experimental",
+            "deprecatedAliases": [
+              "$uds-color-font-light-info"
+            ]
+          }
+        },
+        "light": {
+          "$value": "#126877",
+          "$type": "color"
+        },
+        "dark": {
+          "$value": "#00B0F3",
+          "$type": "color"
+        }
+      },
+      "warning": {
+        "$description": "Warning text. Light #BB4700 per Brand (ask 10, 4.50:1 on #FFEADE); Figma still has #BD4800. Pending Brand, ask 9: Figma's dark status pairing is about 2:1 contrast until Brand defines dark status backgrounds.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Light or Dark Mode/System colors/Warning/Text",
+            "status": "experimental"
+          }
+        },
+        "light": {
+          "$value": "#BB4700",
+          "$type": "color"
+        },
+        "dark": {
+          "$value": "#FF8034",
+          "$type": "color"
+        }
+      },
+      "error": {
+        "$description": "Error text. Pending Brand, ask 9: Figma's dark status pairing is about 2:1 contrast until Brand defines dark status backgrounds.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Light or Dark Mode/System colors/Error/Text",
+            "status": "experimental",
+            "deprecatedAliases": [
+              "$uds-color-font-dark-error"
+            ]
+          }
+        },
+        "light": {
+          "$value": "#B72A2A",
+          "$type": "color"
+        },
+        "dark": {
+          "$value": "#FF7B7D",
+          "$type": "color"
+        }
+      }
+    },
+    "background": {
+      "$description": "Semantic background colors.",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "semantic"
+        }
+      },
+      "primary": {
+        "$description": "Default page background.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Light or Dark Mode/Backgrounds/Primary background"
+          }
+        },
+        "light": {
+          "$value": "{color.white}",
+          "$type": "color"
+        },
+        "dark": {
+          "$value": "{color.gray-1}",
+          "$type": "color"
+        }
+      },
+      "secondary": {
+        "$description": "Subtle section background.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Light or Dark Mode/Backgrounds/Secondary background"
+          }
+        },
+        "light": {
+          "$value": "{color.gray-7}",
+          "$type": "color"
+        },
+        "dark": {
+          "$value": "{color.gray-2}",
+          "$type": "color"
+        }
+      },
+      "inverse": {
+        "$description": "Inverse of background.primary (Brand, ask 12). Figma calls it 'Quaternary background'.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Light or Dark Mode/Backgrounds/Quaternary background",
+            "deprecatedAliases": [
+              "$uds-color-background-dark"
+            ]
+          }
+        },
         "light": {
           "$value": "{color.gray-1}",
-          "$type": "color",
-          "$description": "Text on light surface (Gray 1)"
+          "$type": "color"
+        },
+        "dark": {
+          "$value": "{color.white}",
+          "$type": "color"
+        }
+      },
+      "accent": {
+        "$description": "Brand accent fill (primary button, accents). Functional name; Figma calls it 'ASU Maroon' but it renders gold in dark. Rename pending Brand (ask 11, tabled).",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Light or Dark Mode/Brand colors/ASU Maroon",
+            "status": "experimental",
+            "deprecatedAliases": [
+              "$primary"
+            ]
+          }
+        },
+        "light": {
+          "$value": "{color.maroon}",
+          "$type": "color"
+        },
+        "dark": {
+          "$value": "{color.gold}",
+          "$type": "color"
+        }
+      },
+      "highlight": {
+        "$value": "{color.gold}",
+        "$type": "color",
+        "$description": "Brand highlight fill (secondary button). Functional name; Figma calls it 'ASU Gold'. Rename pending Brand (ask 11, tabled).",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Light or Dark Mode/Brand colors/ASU Gold",
+            "status": "experimental",
+            "deprecatedAliases": [
+              "$secondary"
+            ]
+          }
+        }
+      },
+      "contrast": {
+        "$description": "High-contrast fill (tertiary button). Functional name; Figma calls it 'ASU Black' but it renders white in dark. Dark: Gray 7 as production (ask 5). Rename pending Brand (ask 11, tabled).",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Light or Dark Mode/Brand colors/ASU Black",
+            "status": "experimental",
+            "deprecatedAliases": [
+              "$dark"
+            ]
+          }
+        },
+        "light": {
+          "$value": "{color.gray-1}",
+          "$type": "color"
         },
         "dark": {
           "$value": "{color.gray-7}",
-          "$type": "color",
-          "$description": "Text on dark surface (Gray 7)"
+          "$type": "color"
         }
       },
-      "on-primary": {
+      "neutral": {
+        "$value": "{color.gray-4}",
+        "$type": "color",
+        "$description": "Neutral fill (gray button, Brand ask 18: KEEP)."
+      },
+      "success": {
+        "$value": "#E9F5DB",
+        "$type": "color",
+        "$description": "Success background. Same value in dark until Brand defines dark status backgrounds (ask 9).",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Light or Dark Mode/System colors/Success/Background",
+            "status": "experimental",
+            "deprecatedAliases": [
+              "$uds-color-background-success"
+            ]
+          }
+        }
+      },
+      "info": {
+        "$value": "#D6F0FA",
+        "$type": "color",
+        "$description": "Info background. Same value in dark until Brand defines dark status backgrounds (ask 9).",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Light or Dark Mode/System colors/Info/Background",
+            "status": "experimental",
+            "deprecatedAliases": [
+              "$uds-color-background-info"
+            ]
+          }
+        }
+      },
+      "warning": {
+        "$value": "#FFEADE",
+        "$type": "color",
+        "$description": "Warning background. Same value in dark until Brand defines dark status backgrounds (ask 9).",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Light or Dark Mode/System colors/Warning/Background",
+            "status": "experimental",
+            "deprecatedAliases": [
+              "$uds-color-background-warning"
+            ]
+          }
+        }
+      },
+      "error": {
+        "$value": "#F7DDDD",
+        "$type": "color",
+        "$description": "Error background. Same value in dark until Brand defines dark status backgrounds (ask 9).",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Light or Dark Mode/System colors/Error/Background",
+            "status": "experimental",
+            "deprecatedAliases": [
+              "$uds-color-background-error"
+            ]
+          }
+        }
+      }
+    },
+    "border": {
+      "$description": "Semantic border colors.",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "semantic"
+        }
+      },
+      "default": {
+        "$description": "Default border.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Light or Dark Mode/Border colors/Border color",
+            "deprecatedAliases": [
+              "$nav-tabs-border-color"
+            ]
+          }
+        },
         "light": {
-          "$value": "{color.brand.white}",
-          "$type": "color",
-          "$description": "Text on primary-colored background (light surface)"
+          "$value": "{color.gray-5}",
+          "$type": "color"
         },
         "dark": {
+          "$value": "{color.gray-3}",
+          "$type": "color"
+        }
+      },
+      "focus": {
+        "$description": "Focus ring. Dark: Gray 7 as production (ask 5); Figma uses white.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Light or Dark Mode/Border colors/Focus border"
+          }
+        },
+        "light": {
           "$value": "{color.gray-1}",
+          "$type": "color"
+        },
+        "dark": {
+          "$value": "{color.gray-7}",
+          "$type": "color"
+        }
+      },
+      "success": {
+        "$description": "Success border. Dark value from Figma. Pending Brand, ask 9: Figma's dark status pairing is about 2:1 contrast until Brand defines dark status backgrounds.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Light or Dark Mode/System colors/Success/Default",
+            "status": "experimental",
+            "deprecatedAliases": [
+              "$uds-color-alerts-success"
+            ]
+          }
+        },
+        "light": {
+          "$value": "{color.green}",
+          "$type": "color"
+        },
+        "dark": {
+          "$value": "{color.white}",
+          "$type": "color"
+        }
+      },
+      "info": {
+        "$value": "{color.blue}",
+        "$type": "color",
+        "$description": "Info border.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Light or Dark Mode/System colors/Info/Default",
+            "deprecatedAliases": [
+              "$uds-color-alerts-info"
+            ]
+          }
+        }
+      },
+      "warning": {
+        "$value": "{color.orange}",
+        "$type": "color",
+        "$description": "Warning border.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Light or Dark Mode/System colors/Warning/Default",
+            "deprecatedAliases": [
+              "$uds-color-alerts-warning"
+            ]
+          }
+        }
+      },
+      "error": {
+        "$value": "{color.red}",
+        "$type": "color",
+        "$description": "Error border.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Light or Dark Mode/System colors/Error/Default"
+          }
+        }
+      }
+    },
+    "button": {
+      "$description": "Button colors (component tier). Each aliases a semantic token; moded aliases are re-declared inside .uds-surface-dark so they switch with the section.",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "component",
+          "status": "experimental"
+        }
+      },
+      "primary": {
+        "background": {
+          "$value": "{color.background.accent.light}",
           "$type": "color",
-          "$description": "Text on primary-colored background (dark surface)"
+          "$description": "Primary button fill (.btn-maroon).",
+          "$extensions": {
+            "com.asu.uds": {
+              "figmaVar": "Light or Dark Mode/Button colors/Primary button"
+            }
+          }
+        },
+        "text": {
+          "$value": "{color.text.on-accent.light}",
+          "$type": "color",
+          "$description": "Primary button text.",
+          "$extensions": {
+            "com.asu.uds": {
+              "figmaVar": "Light or Dark Mode/Button colors/Primary button text"
+            }
+          }
+        }
+      },
+      "secondary": {
+        "background": {
+          "$value": "{color.background.highlight}",
+          "$type": "color",
+          "$description": "Secondary button fill (.btn-gold).",
+          "$extensions": {
+            "com.asu.uds": {
+              "figmaVar": "Light or Dark Mode/Button colors/Secondary button"
+            }
+          }
+        },
+        "text": {
+          "$value": "{color.text.on-highlight}",
+          "$type": "color",
+          "$description": "Secondary button text, every state (ask 4).",
+          "$extensions": {
+            "com.asu.uds": {
+              "figmaVar": "Light or Dark Mode/Button colors/Secondary button text"
+            }
+          }
+        }
+      },
+      "tertiary": {
+        "background": {
+          "$value": "{color.background.contrast.light}",
+          "$type": "color",
+          "$description": "Tertiary button fill (.btn-dark).",
+          "$extensions": {
+            "com.asu.uds": {
+              "figmaVar": "Light or Dark Mode/Button colors/Tertiary button"
+            }
+          }
+        },
+        "text": {
+          "$value": "{color.text.on-contrast.light}",
+          "$type": "color",
+          "$description": "Tertiary button text.",
+          "$extensions": {
+            "com.asu.uds": {
+              "figmaVar": "Light or Dark Mode/Button colors/Tertiary button text"
+            }
+          }
+        }
+      },
+      "gray": {
+        "background": {
+          "$value": "{color.background.neutral}",
+          "$type": "color",
+          "$description": "Gray button fill (.btn-gray, ask 18). Not in Figma yet."
+        },
+        "text": {
+          "$value": "{color.text.on-neutral}",
+          "$type": "color",
+          "$description": "Gray button text."
         }
       }
     }
