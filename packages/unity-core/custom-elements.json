@@ -4,275 +4,6 @@
   "modules": [
     {
       "kind": "javascript-module",
-      "path": "src/components/accordion/uds-accordion-item.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "UdsAccordionItem",
-          "cssProperties": [
-            {
-              "description": "Border color for the item",
-              "name": "--uds-color-border"
-            },
-            {
-              "description": "Header button padding",
-              "name": "--uds-spacing-accordion-header"
-            },
-            {
-              "description": "Panel content padding",
-              "name": "--uds-spacing-accordion-panel"
-            },
-            {
-              "description": "Header background color",
-              "name": "--uds-color-background-accordion-header"
-            },
-            {
-              "description": "Header hover background",
-              "name": "--uds-color-background-accordion-header-hover"
-            },
-            {
-              "description": "Panel background color",
-              "name": "--uds-color-background-accordion-panel"
-            },
-            {
-              "description": "Header font size",
-              "name": "--uds-font-size-accordion-header"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "The header button element",
-              "name": "header"
-            },
-            {
-              "description": "The collapsible panel container",
-              "name": "panel"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Default slot for the panel content.",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "title",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "The text displayed in the header button.",
-              "attribute": "title"
-            },
-            {
-              "kind": "field",
-              "name": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the panel is currently expanded.",
-              "attribute": "open",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "_headerId",
-              "type": {
-                "text": "string"
-              },
-              "privacy": "private",
-              "default": "`uds-accordion-header-${id}`"
-            },
-            {
-              "kind": "field",
-              "name": "_panelId",
-              "type": {
-                "text": "string"
-              },
-              "privacy": "private",
-              "default": "`uds-accordion-panel-${id}`"
-            },
-            {
-              "kind": "method",
-              "name": "_toggle",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "_handleKeydown",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "KeyboardEvent"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "name": "uds-accordion-toggle",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when the item is opened or closed."
-            }
-          ],
-          "attributes": [
-            {
-              "name": "title",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "The text displayed in the header button.",
-              "fieldName": "title"
-            },
-            {
-              "name": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the panel is currently expanded.",
-              "fieldName": "open"
-            }
-          ],
-          "superclass": {
-            "name": "UdsBaseElement",
-            "module": "/src/core/base-element.js"
-          },
-          "tagName": "uds-accordion-item",
-          "customElement": true,
-          "summary": "A single collapsible item within a `<uds-accordion>`."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "UdsAccordionItem",
-          "declaration": {
-            "name": "UdsAccordionItem",
-            "module": "src/components/accordion/uds-accordion-item.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "uds-accordion-item",
-          "declaration": {
-            "name": "UdsAccordionItem",
-            "module": "src/components/accordion/uds-accordion-item.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/accordion/uds-accordion.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "UdsAccordion",
-          "cssProperties": [
-            {
-              "description": "Gap between accordion items",
-              "name": "--uds-spacing-component-gap"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Default slot for `<uds-accordion-item>` children.",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "multiple",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "When false (default), only one item can be open at a time.\nWhen true, multiple items may be open simultaneously.",
-              "attribute": "multiple"
-            },
-            {
-              "kind": "method",
-              "name": "_handleItemToggle",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "CustomEvent<{ open: boolean }>"
-                  }
-                }
-              ]
-            }
-          ],
-          "attributes": [
-            {
-              "name": "multiple",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "When false (default), only one item can be open at a time.\nWhen true, multiple items may be open simultaneously.",
-              "fieldName": "multiple"
-            }
-          ],
-          "superclass": {
-            "name": "UdsBaseElement",
-            "module": "/src/core/base-element.js"
-          },
-          "tagName": "uds-accordion",
-          "customElement": true,
-          "summary": "A container for `<uds-accordion-item>` elements. Controls single/multiple open behavior."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "UdsAccordion",
-          "declaration": {
-            "name": "UdsAccordion",
-            "module": "src/components/accordion/uds-accordion.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "uds-accordion",
-          "declaration": {
-            "name": "UdsAccordion",
-            "module": "src/components/accordion/uds-accordion.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/button/uds-button.ts",
       "declarations": [
         {
@@ -281,52 +12,64 @@
           "name": "UdsButton",
           "cssProperties": [
             {
-              "description": "Default (primary) role color → maroon",
-              "name": "--uds-button-color-default"
+              "description": "`default` role fill → maroon (gold in dark sections)",
+              "name": "--uds-color-button-primary-background"
             },
             {
-              "description": "CTA role color → gold",
-              "name": "--uds-button-color-cta"
+              "description": "Text on a solid `default` fill",
+              "name": "--uds-color-button-primary-text"
             },
             {
-              "description": "Neutral role color → gray-4",
-              "name": "--uds-button-color-neutral"
+              "description": "`cta` role fill → gold",
+              "name": "--uds-color-button-secondary-background"
             },
             {
-              "description": "Contrast role color → gray-1",
-              "name": "--uds-button-color-contrast"
+              "description": "Text on a solid `cta` fill",
+              "name": "--uds-color-button-secondary-text"
             },
             {
-              "description": "Foreground on a solid default fill",
-              "name": "--uds-button-on-default"
+              "description": "`neutral` role fill → gray-4",
+              "name": "--uds-color-button-gray-background"
             },
             {
-              "description": "Foreground on a solid CTA fill",
-              "name": "--uds-button-on-cta"
+              "description": "Text on a solid `neutral` fill",
+              "name": "--uds-color-button-gray-text"
             },
             {
-              "description": "Foreground on a solid neutral fill",
-              "name": "--uds-button-on-neutral"
+              "description": "`contrast` role fill → gray-1 (gray-7 in dark sections)",
+              "name": "--uds-color-button-tertiary-background"
             },
             {
-              "description": "Foreground on a solid contrast fill",
-              "name": "--uds-button-on-contrast"
+              "description": "Text on a solid `contrast` fill",
+              "name": "--uds-color-button-tertiary-text"
             },
             {
-              "description": "Extra-small spacing",
-              "name": "--uds-spacing-xs"
+              "description": "Default size vertical padding (16px)",
+              "name": "--uds-button-padding-default-y"
             },
             {
-              "description": "Small spacing",
-              "name": "--uds-spacing-sm"
+              "description": "Default size horizontal padding (32px)",
+              "name": "--uds-button-padding-default-x"
             },
             {
-              "description": "Medium spacing",
-              "name": "--uds-spacing-md"
+              "description": "Small size vertical padding (4px)",
+              "name": "--uds-button-padding-small-y"
             },
             {
-              "description": "Small border radius",
-              "name": "--uds-radius-sm"
+              "description": "Small size horizontal padding (12px)",
+              "name": "--uds-button-padding-small-x"
+            },
+            {
+              "description": "Disabled opacity (0.5)",
+              "name": "--uds-button-opacity-disabled"
+            },
+            {
+              "description": "Border width (2px)",
+              "name": "--uds-border-width-button"
+            },
+            {
+              "description": "Pill border radius",
+              "name": "--uds-radius-pill"
             },
             {
               "description": "Bold font weight",
@@ -519,7 +262,7 @@
           },
           "tagName": "uds-button",
           "customElement": true,
-          "summary": "Brand-approved UDS button. Renders as `<a>` when `href` is set, otherwise `<button>`.\n`color` selects a semantic role (default/cta/neutral/contrast) that resolves to a brand\ntoken via the `--uds-button-color-*` component tokens; `variant` selects the style\ntreatment. Non-approved values are coerced to the default at runtime."
+          "summary": "Brand-approved UDS button. Renders as `<a>` when `href` is set, otherwise `<button>`.\n`color` selects a semantic role (default/cta/neutral/contrast) that resolves to the\n`--uds-color-button-*` component tokens; `variant` selects the style\ntreatment. Non-approved values are coerced to the default at runtime."
         }
       ],
       "exports": [
@@ -543,6 +286,283 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/accordion/uds-accordion-item.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "UdsAccordionItem",
+          "cssProperties": [
+            {
+              "description": "Border color for the item",
+              "name": "--uds-color-border-default"
+            },
+            {
+              "description": "Header and panel vertical padding",
+              "name": "--uds-spacing-16"
+            },
+            {
+              "description": "Header and panel horizontal padding",
+              "name": "--uds-spacing-24"
+            },
+            {
+              "description": "Header and panel background color",
+              "name": "--uds-color-background-primary"
+            },
+            {
+              "description": "Header hover background color",
+              "name": "--uds-color-background-secondary"
+            },
+            {
+              "description": "Header and panel text color",
+              "name": "--uds-color-text-primary"
+            },
+            {
+              "description": "Header font size",
+              "name": "--uds-font-size-h4"
+            },
+            {
+              "description": "Header focus ring color",
+              "name": "--uds-color-border-focus"
+            },
+            {
+              "description": "Item border radius",
+              "name": "--uds-radius-none"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The header button element",
+              "name": "header"
+            },
+            {
+              "description": "The collapsible panel container",
+              "name": "panel"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Default slot for the panel content.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "The text displayed in the header button.",
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the panel is currently expanded.",
+              "attribute": "open",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_headerId",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "default": "`uds-accordion-header-${id}`"
+            },
+            {
+              "kind": "field",
+              "name": "_panelId",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "default": "`uds-accordion-panel-${id}`"
+            },
+            {
+              "kind": "method",
+              "name": "_toggle",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_handleKeydown",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "uds-accordion-toggle",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the item is opened or closed."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "The text displayed in the header button.",
+              "fieldName": "title"
+            },
+            {
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the panel is currently expanded.",
+              "fieldName": "open"
+            }
+          ],
+          "superclass": {
+            "name": "UdsBaseElement",
+            "module": "/src/core/base-element.js"
+          },
+          "tagName": "uds-accordion-item",
+          "customElement": true,
+          "summary": "A single collapsible item within a `<uds-accordion>`."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UdsAccordionItem",
+          "declaration": {
+            "name": "UdsAccordionItem",
+            "module": "src/components/accordion/uds-accordion-item.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "uds-accordion-item",
+          "declaration": {
+            "name": "UdsAccordionItem",
+            "module": "src/components/accordion/uds-accordion-item.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/accordion/uds-accordion.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "UdsAccordion",
+          "cssProperties": [
+            {
+              "description": "Gap between accordion items",
+              "name": "--uds-spacing-12"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Default slot for `<uds-accordion-item>` children.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "multiple",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "When false (default), only one item can be open at a time.\nWhen true, multiple items may be open simultaneously.",
+              "attribute": "multiple"
+            },
+            {
+              "kind": "method",
+              "name": "_handleItemToggle",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "CustomEvent<{ open: boolean }>"
+                  }
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "multiple",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "When false (default), only one item can be open at a time.\nWhen true, multiple items may be open simultaneously.",
+              "fieldName": "multiple"
+            }
+          ],
+          "superclass": {
+            "name": "UdsBaseElement",
+            "module": "/src/core/base-element.js"
+          },
+          "tagName": "uds-accordion",
+          "customElement": true,
+          "summary": "A container for `<uds-accordion-item>` elements. Controls single/multiple open behavior."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UdsAccordion",
+          "declaration": {
+            "name": "UdsAccordion",
+            "module": "src/components/accordion/uds-accordion.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "uds-accordion",
+          "declaration": {
+            "name": "UdsAccordion",
+            "module": "src/components/accordion/uds-accordion.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/card/uds-card.ts",
       "declarations": [
         {
@@ -552,23 +572,23 @@
           "cssProperties": [
             {
               "description": "Card background color",
-              "name": "--uds-color-surface"
+              "name": "--uds-color-background-primary"
             },
             {
               "description": "Card text color",
-              "name": "--uds-color-on-surface"
+              "name": "--uds-color-text-primary"
             },
             {
-              "description": "Internal padding",
-              "name": "--uds-spacing-3"
+              "description": "Content padding (32px, UDS spacing guidelines sheet 3)",
+              "name": "--uds-spacing-padding-lg"
             },
             {
               "description": "Gap between card sections",
-              "name": "--uds-spacing-4"
+              "name": "--uds-spacing-16"
             },
             {
-              "description": "Card border radius",
-              "name": "--uds-radius-md"
+              "description": "Card border radius (square, as production)",
+              "name": "--uds-radius-none"
             }
           ],
           "cssParts": [

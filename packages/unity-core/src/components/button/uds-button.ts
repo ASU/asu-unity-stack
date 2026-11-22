@@ -6,11 +6,11 @@ import { UdsBaseElement } from '../../core/base-element.js';
 
 /**
  * Brand-approved semantic color roles (ASU UDS button guide). These map to
- * brand tokens via the `--uds-button-color-*` component tokens in tokens.css.
- * - `default`  — primary action (maroon)
- * - `cta`      — call-to-action (gold)
- * - `neutral`  — neutral (gray-4)
- * - `contrast` — high-contrast (gray-1)
+ * the `--uds-color-button-*` component tokens in tokens.css:
+ * - `default`  — primary button (background.accent: maroon, gold in dark sections)
+ * - `cta`      — secondary button (background.highlight: gold)
+ * - `neutral`  — gray button (background.neutral: gray-4)
+ * - `contrast` — tertiary button (background.contrast: gray-1, gray-7 in dark sections)
  */
 export type ButtonColor = 'default' | 'cta' | 'neutral' | 'contrast';
 
@@ -60,8 +60,8 @@ function coerce<T extends string>(
 /**
  * @tag uds-button
  * @summary Brand-approved UDS button. Renders as `<a>` when `href` is set, otherwise `<button>`.
- * `color` selects a semantic role (default/cta/neutral/contrast) that resolves to a brand
- * token via the `--uds-button-color-*` component tokens; `variant` selects the style
+ * `color` selects a semantic role (default/cta/neutral/contrast) that resolves to the
+ * `--uds-color-button-*` component tokens; `variant` selects the style
  * treatment. Non-approved values are coerced to the default at runtime.
  *
  * @slot - Override label text with custom content
@@ -70,18 +70,21 @@ function coerce<T extends string>(
  *
  * @csspart button - The inner button or anchor element
  *
- * @cssprop [--uds-button-color-default] - Default (primary) role color → maroon
- * @cssprop [--uds-button-color-cta] - CTA role color → gold
- * @cssprop [--uds-button-color-neutral] - Neutral role color → gray-4
- * @cssprop [--uds-button-color-contrast] - Contrast role color → gray-1
- * @cssprop [--uds-button-on-default] - Foreground on a solid default fill
- * @cssprop [--uds-button-on-cta] - Foreground on a solid CTA fill
- * @cssprop [--uds-button-on-neutral] - Foreground on a solid neutral fill
- * @cssprop [--uds-button-on-contrast] - Foreground on a solid contrast fill
- * @cssprop [--uds-spacing-xs] - Extra-small spacing
- * @cssprop [--uds-spacing-sm] - Small spacing
- * @cssprop [--uds-spacing-md] - Medium spacing
- * @cssprop [--uds-radius-sm] - Small border radius
+ * @cssprop [--uds-color-button-primary-background] - `default` role fill → maroon (gold in dark sections)
+ * @cssprop [--uds-color-button-primary-text] - Text on a solid `default` fill
+ * @cssprop [--uds-color-button-secondary-background] - `cta` role fill → gold
+ * @cssprop [--uds-color-button-secondary-text] - Text on a solid `cta` fill
+ * @cssprop [--uds-color-button-gray-background] - `neutral` role fill → gray-4
+ * @cssprop [--uds-color-button-gray-text] - Text on a solid `neutral` fill
+ * @cssprop [--uds-color-button-tertiary-background] - `contrast` role fill → gray-1 (gray-7 in dark sections)
+ * @cssprop [--uds-color-button-tertiary-text] - Text on a solid `contrast` fill
+ * @cssprop [--uds-button-padding-default-y] - Default size vertical padding (16px)
+ * @cssprop [--uds-button-padding-default-x] - Default size horizontal padding (32px)
+ * @cssprop [--uds-button-padding-small-y] - Small size vertical padding (4px)
+ * @cssprop [--uds-button-padding-small-x] - Small size horizontal padding (12px)
+ * @cssprop [--uds-button-opacity-disabled] - Disabled opacity (0.5)
+ * @cssprop [--uds-border-width-button] - Border width (2px)
+ * @cssprop [--uds-radius-pill] - Pill border radius
  * @cssprop [--uds-font-weight-bold] - Bold font weight
  */
 @customElement('uds-button')
@@ -150,7 +153,7 @@ export class UdsButton extends UdsBaseElement {
 
     :host([disabled]) {
       pointer-events: none;
-      opacity: 0.5;
+      opacity: var(--uds-button-opacity-disabled, 0.5);
     }
 
     .btn {
@@ -158,10 +161,10 @@ export class UdsButton extends UdsBaseElement {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: var(--uds-spacing-xs, 0.25rem);
-      padding: var(--uds-spacing-sm, 0.5rem) var(--uds-spacing-md, 1rem);
-      border: 2px solid transparent;
-      border-radius: var(--uds-radius-sm, 4px);
+      gap: var(--uds-spacing-4, 4px);
+      padding: var(--uds-button-padding-default-y, 16px) var(--uds-button-padding-default-x, 32px);
+      border: var(--uds-border-width-button, 2px) solid transparent;
+      border-radius: var(--uds-radius-pill, 400rem);
       font-family: inherit;
       font-size: 1rem;
       font-weight: var(--uds-font-weight-bold, 700);
@@ -178,20 +181,20 @@ export class UdsButton extends UdsBaseElement {
 
     /* ── Color role layer: bind semantic role → component token (with brand fallback) ── */
     .btn--default {
-      --_c: var(--uds-button-color-default, var(--uds-color-brand-maroon, #8c1d40));
-      --_on: var(--uds-button-on-default, #ffffff);
+      --_c: var(--uds-color-button-primary-background, #8c1d40);
+      --_on: var(--uds-color-button-primary-text, #ffffff);
     }
     .btn--cta {
-      --_c: var(--uds-button-color-cta, var(--uds-color-brand-gold, #ffc627));
-      --_on: var(--uds-button-on-cta, #191919);
+      --_c: var(--uds-color-button-secondary-background, #ffc627);
+      --_on: var(--uds-color-button-secondary-text, #191919);
     }
     .btn--neutral {
-      --_c: var(--uds-button-color-neutral, var(--uds-color-gray-4, #bfbfbf));
-      --_on: var(--uds-button-on-neutral, #191919);
+      --_c: var(--uds-color-button-gray-background, #bfbfbf);
+      --_on: var(--uds-color-button-gray-text, #191919);
     }
     .btn--contrast {
-      --_c: var(--uds-button-color-contrast, var(--uds-color-gray-1, #191919));
-      --_on: var(--uds-button-on-contrast, #ffffff);
+      --_c: var(--uds-color-button-tertiary-background, #191919);
+      --_on: var(--uds-color-button-tertiary-text, #ffffff);
     }
 
     /* ── Variant layer: how the role color is applied ── */
@@ -226,32 +229,13 @@ export class UdsButton extends UdsBaseElement {
 
     /* ── Size ── */
     .btn--small {
-      padding: var(--uds-spacing-xs, 0.25rem) var(--uds-spacing-sm, 0.5rem);
+      padding: var(--uds-button-padding-small-y, 4px) var(--uds-button-padding-small-x, 12px);
       font-size: 0.875rem;
     }
 
-    /* ── Dark-surface adaptation ── */
-    :host-context(.uds-surface-dark) .btn--solid {
-      background-color: #ffffff;
-      color: var(--_c);
-      border-color: #ffffff;
-    }
-    :host-context(.uds-surface-dark) .btn--solid:hover {
-      background-color: #e0e0e0;
-      border-color: #e0e0e0;
-    }
-    :host-context(.uds-surface-dark) .btn--outlined,
-    :host-context(.uds-surface-dark) .btn--ghost {
-      color: #ffffff;
-      border-color: currentColor;
-    }
-    :host-context(.uds-surface-dark) .btn--outlined:hover {
-      background-color: #ffffff;
-      color: #191919;
-    }
-    :host-context(.uds-surface-dark) .btn:focus-visible {
-      outline-color: #ffffff;
-    }
+    /* Dark sections: no overrides here. The --uds-color-button-* tokens are
+       re-declared in .uds-surface-dark (tokens.css), so --_c / --_on switch
+       automatically (primary: gold fill + Gray 1 text; tertiary: Gray 7 fill). */
   `;
 
   private _handleClick(e: Event): void {

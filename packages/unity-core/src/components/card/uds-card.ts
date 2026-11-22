@@ -18,11 +18,11 @@ import { UdsBaseElement } from '../../core/base-element.js';
  * @csspart body - The body content area
  * @csspart actions - The actions footer area
  *
- * @cssprop [--uds-color-surface] - Card background color
- * @cssprop [--uds-color-on-surface] - Card text color
- * @cssprop [--uds-spacing-3] - Internal padding
- * @cssprop [--uds-spacing-4] - Gap between card sections
- * @cssprop [--uds-radius-md] - Card border radius
+ * @cssprop [--uds-color-background-primary] - Card background color
+ * @cssprop [--uds-color-text-primary] - Card text color
+ * @cssprop [--uds-spacing-padding-lg] - Content padding (32px, UDS spacing guidelines sheet 3)
+ * @cssprop [--uds-spacing-16] - Gap between card sections
+ * @cssprop [--uds-radius-none] - Card border radius (square, as production)
  */
 @customElement('uds-card')
 export class UdsCard extends UdsBaseElement {
@@ -51,9 +51,9 @@ export class UdsCard extends UdsBaseElement {
     .card {
       display: flex;
       flex-direction: column;
-      background: var(--uds-color-surface, #ffffff);
-      color: var(--uds-color-on-surface, #191919);
-      border-radius: var(--uds-radius-md, 4px);
+      background: var(--uds-color-background-primary, #ffffff);
+      color: var(--uds-color-text-primary, #191919);
+      border-radius: var(--uds-radius-none, 0px);
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
       border: 1px solid rgba(0, 0, 0, 0.08);
       overflow: hidden;
@@ -75,7 +75,7 @@ export class UdsCard extends UdsBaseElement {
     }
 
     .card--link:focus-within {
-      outline: 2px solid var(--uds-color-semantic-primary, #8c1d40);
+      outline: 2px solid var(--uds-color-border-focus, #191919);
       outline-offset: 2px;
     }
 
@@ -112,32 +112,32 @@ export class UdsCard extends UdsBaseElement {
     .card__content {
       display: flex;
       flex-direction: column;
-      padding: var(--uds-spacing-4, 24px);
-      gap: var(--uds-spacing-3, 16px);
+      padding: var(--uds-spacing-padding-lg, 32px);
+      gap: var(--uds-spacing-16, 16px);
       flex: 1;
     }
 
     .card__heading {
       margin: 0;
-      font-family: var(--uds-font-family-heading, 'Arial', sans-serif);
-      font-size: var(--uds-font-size-heading-4, 20px);
+      font-family: var(--uds-font-family-base, Arial, sans-serif);
+      font-size: var(--uds-font-size-h4, 20px);
       font-weight: var(--uds-font-weight-bold, 700);
       line-height: 1.3;
-      color: var(--uds-color-on-surface, #191919);
+      color: var(--uds-color-text-primary, #191919);
     }
 
     .card__body {
       flex: 1;
-      font-size: var(--uds-font-size-body, 16px);
+      font-size: var(--uds-font-size-16, 16px);
       line-height: 1.5;
     }
 
     .card__actions {
       display: flex;
-      gap: var(--uds-spacing-2, 8px);
+      gap: var(--uds-spacing-8, 8px);
       flex-wrap: wrap;
       margin-top: auto;
-      padding-top: var(--uds-spacing-2, 8px);
+      padding-top: var(--uds-spacing-8, 8px);
     }
 
     /* Responsive: horizontal layout at wider container sizes */
@@ -167,16 +167,16 @@ export class UdsCard extends UdsBaseElement {
 
     /* Dark surface */
     :host-context(.uds-surface-dark) .card {
-      background: color-mix(in srgb, var(--uds-color-surface, #191919) 100%, transparent);
+      background: color-mix(in srgb, var(--uds-color-background-primary, #191919) 100%, transparent);
       border: 1px solid rgba(255, 255, 255, 0.12);
     }
 
     :host-context(.uds-surface-dark) .card__heading {
-      color: var(--uds-color-on-surface, #ffffff);
+      color: var(--uds-color-text-primary, #fafafa);
     }
 
     :host-context(.uds-surface-dark) .card--link:focus-within {
-      outline-color: var(--uds-color-brand-gold, #ffc627);
+      outline-color: var(--uds-color-border-focus, #fafafa);
     }
   `;
 

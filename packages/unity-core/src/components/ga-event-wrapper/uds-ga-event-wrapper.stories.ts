@@ -77,7 +77,7 @@ export const WithPrefix: Story = {
 export const WrappingUdsButton: Story = {
   render: () => html`
     <uds-ga-event-wrapper .gaData=${gaData}>
-      <uds-button label="Apply now" color="gold"></uds-button>
+      <uds-button label="Apply now" color="cta"></uds-button>
     </uds-ga-event-wrapper>
   `,
 };

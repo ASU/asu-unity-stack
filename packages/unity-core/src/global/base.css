@@ -12,11 +12,11 @@
 
 html {
   font-family: var(--uds-font-family-base);
-  font-size: var(--uds-font-size-body);
+  font-size: var(--uds-font-size-16);
   font-weight: var(--uds-font-weight-regular);
   line-height: 1.5;
-  color: var(--uds-color-on-surface);
-  background-color: var(--uds-color-surface);
+  color: var(--uds-color-text-primary);
+  background-color: var(--uds-color-background-primary);
 }
 
 body {
@@ -27,14 +27,14 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--uds-font-family-heading);
+  font-family: var(--uds-font-family-base);
   font-weight: var(--uds-font-weight-bold);
   line-height: 1.2;
   margin-top: 0;
-  margin-bottom: var(--uds-spacing-2);
+  margin-bottom: var(--uds-spacing-paragraph-heading-paragraph);
 }
 
-h1 { font-size: var(--uds-font-size-heading-1); }
-h2 { font-size: var(--uds-font-size-heading-2); }
-h3 { font-size: var(--uds-font-size-heading-3); }
-h4 { font-size: var(--uds-font-size-heading-4); }
+h1 { font-size: var(--uds-font-size-h1); line-height: var(--uds-line-height-h1); letter-spacing: var(--uds-letter-spacing-h1); }
+h2 { font-size: var(--uds-font-size-h2); line-height: var(--uds-line-height-h2); letter-spacing: var(--uds-letter-spacing-h2); }
+h3 { font-size: var(--uds-font-size-h3); line-height: var(--uds-line-height-h3); letter-spacing: var(--uds-letter-spacing-h3); }
+h4 { font-size: var(--uds-font-size-h4); line-height: var(--uds-line-height-h4); letter-spacing: var(--uds-letter-spacing-h4); }

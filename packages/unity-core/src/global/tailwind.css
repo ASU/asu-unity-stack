@@ -11,34 +11,45 @@
   /* ── Disable all default colors ── */
   --color-*: initial;
 
-  /* ── UDS Colors ── */
-  --color-primary: var(--uds-color-primary);
-  --color-secondary: var(--uds-color-secondary);
-  --color-surface: var(--uds-color-surface);
-  --color-on-surface: var(--uds-color-on-surface);
-  --color-on-primary: var(--uds-color-on-primary);
-  --color-brand-maroon: var(--uds-color-brand-maroon);
-  --color-brand-gold: var(--uds-color-brand-gold);
-  --color-brand-gold2: var(--uds-color-brand-gold);
+  /* ── UDS Colors (semantic tokens; switch inside .uds-surface-dark) ── */
+  --color-primary: var(--uds-color-background-accent);
+  --color-secondary: var(--uds-color-background-highlight);
+  --color-surface: var(--uds-color-background-primary);
+  --color-on-surface: var(--uds-color-text-primary);
+  --color-on-primary: var(--uds-color-text-on-accent);
+  --color-maroon: var(--uds-color-maroon);
+  --color-gold: var(--uds-color-gold);
 
-  /* ── Disable default spacing, define UDS spacing ── */
+  /* ── Disable default spacing, define UDS spacing (keys = px, as the tokens: p-24 = 24px) ── */
   --spacing: initial;
-  --spacing-1: var(--uds-spacing-1);
-  --spacing-2: var(--uds-spacing-2);
-  --spacing-3: var(--uds-spacing-3);
+  --spacing-0: var(--uds-spacing-0);
   --spacing-4: var(--uds-spacing-4);
-  --spacing-5: var(--uds-spacing-5);
-  --spacing-6: var(--uds-spacing-6);
+  --spacing-8: var(--uds-spacing-8);
+  --spacing-12: var(--uds-spacing-12);
+  --spacing-16: var(--uds-spacing-16);
+  --spacing-20: var(--uds-spacing-20);
+  --spacing-24: var(--uds-spacing-24);
+  --spacing-32: var(--uds-spacing-32);
+  --spacing-36: var(--uds-spacing-36);
+  --spacing-40: var(--uds-spacing-40);
+  --spacing-48: var(--uds-spacing-48);
+  --spacing-56: var(--uds-spacing-56);
+  --spacing-64: var(--uds-spacing-64);
+  --spacing-72: var(--uds-spacing-72);
+  --spacing-80: var(--uds-spacing-80);
+  --spacing-96: var(--uds-spacing-96);
+  --spacing-112: var(--uds-spacing-112);
+  --spacing-128: var(--uds-spacing-128);
+  --spacing-256: var(--uds-spacing-256);
+  --spacing-512: var(--uds-spacing-512);
 
-  /* ── UDS Font Families ── */
+  /* ── UDS Font Family ── */
   --font-base: var(--uds-font-family-base);
-  --font-heading: var(--uds-font-family-heading);
 
   /* ── Disable default radii, define UDS radii ── */
   --radius-*: initial;
-  --radius-sm: var(--uds-radius-sm);
-  --radius-md: var(--uds-radius-md);
-  --radius-lg: var(--uds-radius-lg);
+  --radius-none: var(--uds-radius-none);
+  --radius-pill: var(--uds-radius-pill);
 }
 
 /* Scan the examples and src directories for class usage */

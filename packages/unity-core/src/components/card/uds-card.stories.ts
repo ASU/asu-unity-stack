@@ -61,8 +61,8 @@ export const WithActions: Story = {
     <div style="max-width: 360px;">
       <uds-card heading=${args.heading} image=${args.image}>
         <p>Start your journey at ASU. Applications are now open for Fall 2027.</p>
-        <uds-button slot="actions" label="Apply" color="gold"></uds-button>
-        <uds-button slot="actions" label="Learn More" color="secondary"></uds-button>
+        <uds-button slot="actions" label="Apply" color="cta"></uds-button>
+        <uds-button slot="actions" label="Learn More" color="contrast"></uds-button>
       </uds-card>
     </div>
   `,
@@ -78,7 +78,7 @@ export const Horizontal: Story = {
     <div style="max-width: 700px;">
       <uds-card heading=${args.heading} image=${args.image} ?horizontal=${args.horizontal}>
         <p>ASU researchers are leading breakthroughs in sustainability, AI, and space exploration.</p>
-        <uds-button slot="actions" label="Read More" color="primary"></uds-button>
+        <uds-button slot="actions" label="Read More" color="default"></uds-button>
       </uds-card>
     </div>
   `,
@@ -94,7 +94,7 @@ export const OnDarkSurface: Story = {
       <div style="max-width: 360px;">
         <uds-card heading=${args.heading} image=${args.image}>
           <p>Ranked #1 in innovation by U.S. News & World Report.</p>
-          <uds-button slot="actions" label="Explore" color="gold"></uds-button>
+          <uds-button slot="actions" label="Explore" color="cta"></uds-button>
         </uds-card>
       </div>
     </div>

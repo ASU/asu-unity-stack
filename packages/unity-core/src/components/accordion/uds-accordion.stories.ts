@@ -68,7 +68,8 @@ export const OnDarkSurface: Story = {
   args: { multiple: false },
   render: ({ multiple }) => html`
     <div
-      style="background: #191919; padding: 2rem; --uds-color-background-accordion-header: #484848; --uds-color-background-accordion-header-hover: #5a5a5a; --uds-color-background-accordion-panel: #2a2a2a; --uds-color-font-dark-base: #ffffff; --uds-color-border: #484848;"
+      class="uds-surface-dark"
+      style="background: var(--uds-color-background-primary); padding: 2rem;"
     >
       <uds-accordion ?multiple=${multiple}>
         <uds-accordion-item title="Dark Surface Item 1" open>

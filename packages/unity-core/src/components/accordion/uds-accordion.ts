@@ -8,7 +8,7 @@ import { UdsBaseElement } from '../../core/base-element.js';
  *
  * @slot - Default slot for `<uds-accordion-item>` children.
  *
- * @cssprop [--uds-spacing-component-gap] - Gap between accordion items
+ * @cssprop [--uds-spacing-12] - Gap between accordion items
  *
  * @example
  * ```html
@@ -26,7 +26,7 @@ export class UdsAccordion extends UdsBaseElement {
     }
 
     ::slotted(*) {
-      margin-bottom: var(--uds-spacing-component-gap, 0.75rem);
+      margin-bottom: var(--uds-spacing-12, 12px);
     }
 
     ::slotted(*:last-child) {

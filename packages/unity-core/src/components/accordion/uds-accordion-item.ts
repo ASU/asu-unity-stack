@@ -15,13 +15,15 @@ let instanceCounter = 0;
  * @csspart header - The header button element
  * @csspart panel - The collapsible panel container
  *
- * @cssprop [--uds-color-border] - Border color for the item
- * @cssprop [--uds-spacing-accordion-header] - Header button padding
- * @cssprop [--uds-spacing-accordion-panel] - Panel content padding
- * @cssprop [--uds-color-background-accordion-header] - Header background color
- * @cssprop [--uds-color-background-accordion-header-hover] - Header hover background
- * @cssprop [--uds-color-background-accordion-panel] - Panel background color
- * @cssprop [--uds-font-size-accordion-header] - Header font size
+ * @cssprop [--uds-color-border-default] - Border color for the item
+ * @cssprop [--uds-spacing-16] - Header and panel vertical padding
+ * @cssprop [--uds-spacing-24] - Header and panel horizontal padding
+ * @cssprop [--uds-color-background-primary] - Header and panel background color
+ * @cssprop [--uds-color-background-secondary] - Header hover background color
+ * @cssprop [--uds-color-text-primary] - Header and panel text color
+ * @cssprop [--uds-font-size-h4] - Header font size
+ * @cssprop [--uds-color-border-focus] - Header focus ring color
+ * @cssprop [--uds-radius-none] - Item border radius
  *
  * @example
  * ```html
@@ -35,8 +37,8 @@ export class UdsAccordionItem extends UdsBaseElement {
   static override styles = css`
     :host {
       display: block;
-      border: 1px solid var(--uds-color-border, #e8e8e8);
-      border-radius: var(--uds-border-radius, 0);
+      border: 1px solid var(--uds-color-border-default, #d0d0d0);
+      border-radius: var(--uds-radius-none, 0px);
       overflow: hidden;
     }
 
@@ -45,12 +47,12 @@ export class UdsAccordionItem extends UdsBaseElement {
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      padding: var(--uds-spacing-accordion-header, 1rem 1.5rem);
+      padding: var(--uds-spacing-16, 16px) var(--uds-spacing-24, 24px);
       border: none;
-      background: var(--uds-color-background-accordion-header, #ffffff);
-      color: var(--uds-color-font-dark-base, #191919);
+      background: var(--uds-color-background-primary, #ffffff);
+      color: var(--uds-color-text-primary, #191919);
       font-family: inherit;
-      font-size: var(--uds-font-size-accordion-header, 1rem);
+      font-size: var(--uds-font-size-h4, 20px);
       font-weight: 700;
       cursor: pointer;
       text-align: left;
@@ -59,11 +61,11 @@ export class UdsAccordionItem extends UdsBaseElement {
     }
 
     .header-button:hover {
-      background: var(--uds-color-background-accordion-header-hover, #fafafa);
+      background: var(--uds-color-background-secondary, #fafafa);
     }
 
     .header-button:focus-visible {
-      outline: 2px solid var(--uds-color-base-bluefocus, #00baff);
+      outline: 2px solid var(--uds-color-border-focus, #191919);
       outline-offset: -2px;
       z-index: 1;
       position: relative;
@@ -87,9 +89,9 @@ export class UdsAccordionItem extends UdsBaseElement {
 
     .panel {
       display: none;
-      padding: var(--uds-spacing-accordion-panel, 1rem 1.5rem);
-      background: var(--uds-color-background-accordion-panel, #ffffff);
-      color: var(--uds-color-font-dark-base, #191919);
+      padding: var(--uds-spacing-16, 16px) var(--uds-spacing-24, 24px);
+      background: var(--uds-color-background-primary, #ffffff);
+      color: var(--uds-color-text-primary, #191919);
     }
 
     :host([open]) .panel {

@@ -11,7 +11,7 @@ const meta: Meta = {
     href: { control: 'text' },
     color: {
       control: { type: 'select' },
-      options: ['primary', 'secondary', 'gold'],
+      options: ['default', 'cta', 'neutral', 'contrast'],
     },
     size: {
       control: { type: 'select' },
@@ -21,7 +21,7 @@ const meta: Meta = {
   },
   args: {
     label: 'Click me',
-    color: 'primary',
+    color: 'default',
     size: 'default',
     disabled: false,
   },
@@ -42,14 +42,14 @@ type Story = StoryObj;
 export const Primary: Story = {
   args: {
     label: 'Primary Button',
-    color: 'primary',
+    color: 'default',
   },
 };
 
 export const Secondary: Story = {
   args: {
     label: 'Secondary Button',
-    color: 'secondary',
+    color: 'cta',
   },
 };
 
@@ -77,7 +77,7 @@ export const Disabled: Story = {
 export const OnDarkSurface: Story = {
   args: {
     label: 'On Dark Surface',
-    color: 'primary',
+    color: 'default',
   },
   render: (args) => html`
     <div

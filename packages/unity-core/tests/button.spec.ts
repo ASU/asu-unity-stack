@@ -85,7 +85,7 @@ test.describe('uds-button', () => {
       <link rel="stylesheet" href="/src/global/tokens.css" />
       <script type="module" src="/src/components/button/uds-button.ts"></script>
       <div class="uds-surface-dark" style="background: #191919; padding: 2rem;">
-        <uds-button label="Dark Surface" color="primary"></uds-button>
+        <uds-button label="Dark Surface" color="default"></uds-button>
       </div>
     `);
 
