@@ -1,8 +1,18 @@
 {
   "name": "@asu/unity-core",
   "version": "1.0.0",
+  "private": true,
   "type": "module",
   "description": "ASU Unity Design System web components library and global styles. Part of the UDS Code Kit.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ASU/asu-unity-stack.git",
+    "directory": "packages/unity-core"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
+  },
   "main": "dist/unity-core.js",
   "module": "dist/unity-core.js",
   "types": "dist/index.d.ts",
@@ -25,12 +35,13 @@
       "import": "./dist/components/uds-ga-event-wrapper.js"
     },
     "./tokens.css": "./dist/tokens.css",
-    "./base.css": "./dist/base.css"
+    "./base.css": "./dist/base.css",
+    "./tokens.scss": "./dist/tokens.scss"
   },
   "scripts": {
     "dev": "storybook dev -p 6008",
     "analyze": "cem analyze",
-    "build": "vite build",
+    "build": "yarn build:tokens && vite build && tsc --emitDeclarationOnly && node scripts/check-exports.mjs",
     "build:tailwind": "tailwindcss -i ./src/global/tailwind.css -o ./dist/tailwind.css --minify",
     "build:tokens": "node scripts/validate-tokens.mjs && node build-tokens.js",
     "tokens:validate": "node scripts/validate-tokens.mjs",

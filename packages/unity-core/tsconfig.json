@@ -8,10 +8,23 @@
     "declarationDir": "dist",
     "outDir": "dist",
     "rootDir": "src",
-    "lib": ["ES2021", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ES2021",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "experimentalDecorators": true,
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+    "skipLibCheck": true,
+    "types": []
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.stories.ts"]
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.test.ts",
+    "**/*.stories.ts"
+  ]
 }
