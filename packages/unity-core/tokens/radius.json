@@ -1,40 +1,27 @@
 {
   "radius": {
-    "$description": "Border radius scale.",
+    "$description": "Border radius. Production uses two values. Not in Figma variables yet (ask 13).",
     "$extensions": {
-      "com.asu.uds": { "status": "experimental" }
+      "com.asu.uds": {
+        "status": "stable",
+        "tier": "primitive"
+      }
     },
     "none": {
       "$value": "0px",
       "$type": "dimension",
-      "$description": "No rounding"
+      "$description": "Square corners: cards, inputs, dropdowns, tabs, accordion."
     },
-    "sm": {
-      "$value": "2px",
+    "pill": {
+      "$value": "400rem",
       "$type": "dimension",
-      "$description": "Subtle rounding (buttons)"
-    },
-    "md": {
-      "$value": "4px",
-      "$type": "dimension",
-      "$description": "Default rounding (cards, inputs)"
-    },
-    "lg": {
-      "$value": "8px",
-      "$type": "dimension",
-      "$description": "Pronounced rounding"
-    },
-    "xl": {
-      "$value": "16px",
-      "$type": "dimension",
-      "$description": "Large rounding (modals, panels)"
-    },
-    "full": {
-      "$value": "9999px",
-      "$type": "dimension",
-      "$description": "Pill/circle shape. The legacy SCSS theme uses 400rem for the same purpose.",
+      "$description": "Pill shape: buttons, badges.",
       "$extensions": {
-        "com.asu.uds": { "deprecatedAliases": ["$uds-component-border-radius"] }
+        "com.asu.uds": {
+          "deprecatedAliases": [
+            "$uds-component-border-radius"
+          ]
+        }
       }
     }
   }

@@ -1,0 +1,66 @@
+{
+  "button": {
+    "$description": "Button component tokens (spacing and opacity). Button colors are color.button.*. UDS spacing guidelines: sheet 2 maps each button size to a padding token; sheet 3 makes them component tokens once sheet 2 is final.",
+    "$extensions": {
+      "com.asu.uds": {
+        "status": "experimental",
+        "tier": "component"
+      }
+    },
+    "padding": {
+      "default": {
+        "y": {
+          "$value": "{spacing.padding.md}",
+          "$type": "dimension",
+          "$description": "Default button, vertical (16px)."
+        },
+        "x": {
+          "$value": "{spacing.padding.lg}",
+          "$type": "dimension",
+          "$description": "Default button, horizontal (32px)."
+        }
+      },
+      "medium": {
+        "y": {
+          "$value": "{spacing.padding.sm}",
+          "$type": "dimension",
+          "$description": "Medium button, vertical (8px)."
+        },
+        "x": {
+          "$value": "{spacing.padding.md}",
+          "$type": "dimension",
+          "$description": "Medium button, horizontal (16px)."
+        }
+      },
+      "small": {
+        "y": {
+          "$value": "{spacing.padding.xs}",
+          "$type": "dimension",
+          "$description": "Small button, vertical (4px)."
+        },
+        "x": {
+          "$value": "{spacing.12}",
+          "$type": "dimension",
+          "$description": "Small button, horizontal (12px). References the scale: 12px has no padding token (guidelines sheet 2 note).",
+          "$extensions": {
+            "com.asu.uds": {
+              "primitiveRef": true
+            }
+          }
+        }
+      }
+    },
+    "opacity": {
+      "disabled": {
+        "$value": "{opacity.disabled}",
+        "$type": "number",
+        "$description": "Disabled button opacity (0.5). References the primitive: there is no semantic opacity token.",
+        "$extensions": {
+          "com.asu.uds": {
+            "primitiveRef": true
+          }
+        }
+      }
+    }
+  }
+}

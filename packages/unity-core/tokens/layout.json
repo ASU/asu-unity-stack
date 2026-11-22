@@ -1,0 +1,113 @@
+{
+  "breakpoint": {
+    "$description": "Media-query breakpoints, as production ($uds-breakpoint-*). CSS custom properties cannot be used inside @media; consume these via the SCSS output or build tooling. The token pipeline's own modes use desktop >=992px, tablet 576-991.98px, mobile <=575.98px. Figma has no breakpoint variables (Desktop and Mobile frames only).",
+    "$extensions": {
+      "com.asu.uds": {
+        "status": "stable",
+        "tier": "primitive"
+      }
+    },
+    "sm": {
+      "$value": "576px",
+      "$type": "dimension",
+      "$description": "Small.",
+      "$extensions": {
+        "com.asu.uds": {
+          "deprecatedAliases": [
+            "$uds-breakpoint-sm"
+          ]
+        }
+      }
+    },
+    "md": {
+      "$value": "768px",
+      "$type": "dimension",
+      "$description": "Medium.",
+      "$extensions": {
+        "com.asu.uds": {
+          "deprecatedAliases": [
+            "$uds-breakpoint-md"
+          ]
+        }
+      }
+    },
+    "lg": {
+      "$value": "992px",
+      "$type": "dimension",
+      "$description": "Large: desktop starts here.",
+      "$extensions": {
+        "com.asu.uds": {
+          "deprecatedAliases": [
+            "$uds-breakpoint-lg"
+          ]
+        }
+      }
+    },
+    "xl": {
+      "$value": "1260px",
+      "$type": "dimension",
+      "$description": "Extra large.",
+      "$extensions": {
+        "com.asu.uds": {
+          "deprecatedAliases": [
+            "$uds-breakpoint-xl"
+          ]
+        }
+      }
+    }
+  },
+  "container": {
+    "$description": "Container.",
+    "$extensions": {
+      "com.asu.uds": {
+        "status": "stable",
+        "tier": "primitive"
+      }
+    },
+    "max-width": {
+      "$value": "1224px",
+      "$type": "dimension",
+      "$description": "Container max width: 1200px content + 12px gutter on each side. Figma's 12-column width (1200) excludes the gutter.",
+      "$extensions": {
+        "com.asu.uds": {
+          "deprecatedAliases": [
+            "$uds-grid-container-max-width-xl"
+          ]
+        }
+      }
+    }
+  },
+  "grid": {
+    "$description": "Layout grid.",
+    "$extensions": {
+      "com.asu.uds": {
+        "status": "stable",
+        "tier": "primitive"
+      }
+    },
+    "columns": {
+      "$value": "12",
+      "$type": "number",
+      "$description": "Grid columns.",
+      "$extensions": {
+        "com.asu.uds": {
+          "deprecatedAliases": [
+            "$uds-grid-column-count"
+          ]
+        }
+      }
+    },
+    "gutter": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Grid gutter (12 x 78 + 11 x 24 = 1200 in Figma).",
+      "$extensions": {
+        "com.asu.uds": {
+          "deprecatedAliases": [
+            "$uds-grid-gutter-width"
+          ]
+        }
+      }
+    }
+  }
+}

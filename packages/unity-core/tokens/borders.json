@@ -1,51 +1,22 @@
 {
   "border": {
-    "$description": "Border widths and colors.",
+    "$description": "Border widths. Border colors are color.border.*.",
     "$extensions": {
-      "com.asu.uds": { "status": "experimental" }
-    },
-    "width": {
-      "none": {
-        "$value": "0px",
-        "$type": "dimension",
-        "$description": "No border"
-      },
-      "thin": {
-        "$value": "1px",
-        "$type": "dimension",
-        "$description": "Default border"
-      },
-      "medium": {
-        "$value": "2px",
-        "$type": "dimension",
-        "$description": "Emphasis border"
-      },
-      "thick": {
-        "$value": "4px",
-        "$type": "dimension",
-        "$description": "Heavy accent border"
+      "com.asu.uds": {
+        "status": "stable",
+        "tier": "primitive"
       }
     },
-    "color": {
-      "default": {
-        "$value": "{color.gray-5}",
-        "$type": "color",
-        "$description": "Default border color (#D0D0D0)",
-        "$extensions": {
-          "com.asu.uds": {
-            "figmaVar": "Light or Dark Mode/Border colors/Border color"
-          }
-        }
+    "width": {
+      "button": {
+        "$value": "2px",
+        "$type": "dimension",
+        "$description": "Filled button border width."
       },
-      "strong": {
-        "$value": "{color.gray-2}",
-        "$type": "color",
-        "$description": "Strong border color (#484848)"
-      },
-      "brand": {
-        "$value": "{color.brand.gold}",
-        "$type": "color",
-        "$description": "Brand accent border (Gold)"
+      "focus": {
+        "$value": "1px",
+        "$type": "dimension",
+        "$description": "Form field focus ring (box-shadow 0 0 0 1px)."
       }
     }
   }
