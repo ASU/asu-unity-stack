@@ -49,7 +49,12 @@
     "test": "vitest",
     "test:e2e": "playwright test",
     "storybook": "storybook dev -p 6008",
-    "lint": "eslint src/"
+    "lint": "node ../../scripts/lint-changed.mjs --extensions ts --include src -- eslint --fix",
+    "lint:check": "yarn ts-lint:check",
+    "lint:fix": "yarn lint",
+    "lint:forcefix": "yarn ts-lint:forcefix",
+    "ts-lint:check": "eslint src/",
+    "ts-lint:forcefix": "eslint --fix src/"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.0",
