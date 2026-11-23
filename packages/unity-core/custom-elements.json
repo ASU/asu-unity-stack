@@ -563,139 +563,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/ga-event-wrapper/uds-ga-event-wrapper.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "UdsGaEventWrapper",
-          "slots": [
-            {
-              "description": "A single element to track (e.g. an `<a>`, `<button>`, or `<uds-button>`).",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "gaData",
-              "type": {
-                "text": "GaEventType"
-              },
-              "default": "{}",
-              "description": "Google Analytics data applied to the slotted child.",
-              "attribute": "gaData"
-            },
-            {
-              "kind": "field",
-              "name": "prefix",
-              "type": {
-                "text": "GaPrefix"
-              },
-              "default": "''",
-              "description": "Prefix for the emitted `data-ga` attributes (`data-ga-{prefix}-action`).",
-              "attribute": "prefix"
-            },
-            {
-              "kind": "field",
-              "name": "_tracked",
-              "type": {
-                "text": "HTMLElement | null"
-              },
-              "privacy": "private",
-              "default": "null",
-              "description": "Cached reference to the currently-tracked slotted element."
-            },
-            {
-              "kind": "field",
-              "name": "_prefixSegment",
-              "type": {
-                "text": "string"
-              },
-              "privacy": "private",
-              "readonly": true
-            },
-            {
-              "kind": "method",
-              "name": "_getSlottedElement",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "HTMLElement | null"
-                }
-              }
-            },
-            {
-              "kind": "field",
-              "name": "_handleSlotChange",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_applyGaAttributes",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "field",
-              "name": "_handleClick",
-              "privacy": "private"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "gaData",
-              "type": {
-                "text": "GaEventType"
-              },
-              "default": "{}",
-              "description": "Google Analytics data applied to the slotted child.",
-              "fieldName": "gaData"
-            },
-            {
-              "name": "prefix",
-              "type": {
-                "text": "GaPrefix"
-              },
-              "default": "''",
-              "description": "Prefix for the emitted `data-ga` attributes (`data-ga-{prefix}-action`).",
-              "fieldName": "prefix"
-            }
-          ],
-          "superclass": {
-            "name": "UdsBaseElement",
-            "module": "/src/core/base-element.js"
-          },
-          "tagName": "uds-ga-event-wrapper",
-          "customElement": true,
-          "summary": "Wraps a single slotted element and wires it for Google Analytics\ntracking — the web-component equivalent of the React `GaEventWrapper`.\n\nIt supports the same two mechanisms the design system uses elsewhere:\n\n1. **Declarative (`data-ga*` attributes)** — the wrapper reflects the values\nfrom `gaData` onto the slotted child as `data-ga{prefix}-*` attributes, so\nthe CMS/global `[data-ga]` click listener picks them up. This is the\nprimary mechanism for HTML/Drupal consumption.\n2. **Programmatic (`dataLayer` push)** — on click it also pushes the event\nstraight to `window.dataLayer`, guarded (like the React version) so it only\nfires when `gaData.event` and `gaData.action` are both present."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "UdsGaEventWrapper",
-          "declaration": {
-            "name": "UdsGaEventWrapper",
-            "module": "src/components/ga-event-wrapper/uds-ga-event-wrapper.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "uds-ga-event-wrapper",
-          "declaration": {
-            "name": "UdsGaEventWrapper",
-            "module": "src/components/ga-event-wrapper/uds-ga-event-wrapper.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/card/uds-card.ts",
       "declarations": [
         {
@@ -867,6 +734,139 @@
           "declaration": {
             "name": "UdsCard",
             "module": "src/components/card/uds-card.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/ga-event-wrapper/uds-ga-event-wrapper.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "UdsGaEventWrapper",
+          "slots": [
+            {
+              "description": "A single element to track (e.g. an `<a>`, `<button>`, or `<uds-button>`).",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "gaData",
+              "type": {
+                "text": "GaEventType"
+              },
+              "default": "{}",
+              "description": "Google Analytics data applied to the slotted child.",
+              "attribute": "gaData"
+            },
+            {
+              "kind": "field",
+              "name": "prefix",
+              "type": {
+                "text": "GaPrefix"
+              },
+              "default": "''",
+              "description": "Prefix for the emitted `data-ga` attributes (`data-ga-{prefix}-action`).",
+              "attribute": "prefix"
+            },
+            {
+              "kind": "field",
+              "name": "_tracked",
+              "type": {
+                "text": "HTMLElement | null"
+              },
+              "privacy": "private",
+              "default": "null",
+              "description": "Cached reference to the currently-tracked slotted element."
+            },
+            {
+              "kind": "field",
+              "name": "_prefixSegment",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_getSlottedElement",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "HTMLElement | null"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_handleSlotChange",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_applyGaAttributes",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_handleClick",
+              "privacy": "private"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "gaData",
+              "type": {
+                "text": "GaEventType"
+              },
+              "default": "{}",
+              "description": "Google Analytics data applied to the slotted child.",
+              "fieldName": "gaData"
+            },
+            {
+              "name": "prefix",
+              "type": {
+                "text": "GaPrefix"
+              },
+              "default": "''",
+              "description": "Prefix for the emitted `data-ga` attributes (`data-ga-{prefix}-action`).",
+              "fieldName": "prefix"
+            }
+          ],
+          "superclass": {
+            "name": "UdsBaseElement",
+            "module": "/src/core/base-element.js"
+          },
+          "tagName": "uds-ga-event-wrapper",
+          "customElement": true,
+          "summary": "Wraps a single slotted element and wires it for Google Analytics\ntracking — the web-component equivalent of the React `GaEventWrapper`.\n\nIt supports the same two mechanisms the design system uses elsewhere:\n\n1. **Declarative (`data-ga*` attributes)** — the wrapper reflects the values\nfrom `gaData` onto the slotted child as `data-ga{prefix}-*` attributes, so\nthe CMS/global `[data-ga]` click listener picks them up. This is the\nprimary mechanism for HTML/Drupal consumption.\n2. **Programmatic (`dataLayer` push)** — on click it also pushes the event\nstraight to `window.dataLayer`, guarded (like the React version) so it only\nfires when `gaData.event` and `gaData.action` are both present."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UdsGaEventWrapper",
+          "declaration": {
+            "name": "UdsGaEventWrapper",
+            "module": "src/components/ga-event-wrapper/uds-ga-event-wrapper.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "uds-ga-event-wrapper",
+          "declaration": {
+            "name": "UdsGaEventWrapper",
+            "module": "src/components/ga-event-wrapper/uds-ga-event-wrapper.ts"
           }
         }
       ]

@@ -24,4 +24,18 @@ export default {
    * type) without extra JSDoc. Equivalent to the `--litelement` CLI flag.
    */
   litelement: true,
+
+  /**
+   * The analyzer does not guarantee module order across runs, which made every
+   * build rewrite custom-elements.json. Sort modules by path so the output is
+   * deterministic.
+   */
+  plugins: [
+    {
+      name: 'uds-sort-modules',
+      packageLinkPhase({ customElementsManifest }) {
+        customElementsManifest.modules.sort((a, b) => a.path.localeCompare(b.path));
+      },
+    },
+  ],
 };
