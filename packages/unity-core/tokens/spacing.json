@@ -1,0 +1,474 @@
+{
+  "spacing": {
+    "$description": "Spacing. Numeric keys are the px value (primitives, UDS grid; Brand ask 23: keep pixel names). Production utility classes (.m-N / .p-N, multiples of 8) and $uds-size-spacing-N do not change. Semantic groups (section, padding, paragraph) follow the UDS spacing guidelines v1.",
+    "$extensions": {
+      "com.asu.uds": {
+        "status": "stable"
+      }
+    },
+    "0": {
+      "$value": "0px",
+      "$type": "dimension",
+      "$description": "Zero.",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "primitive",
+          "deprecatedAliases": [
+            "$uds-size-spacing-0"
+          ]
+        }
+      }
+    },
+    "4": {
+      "$value": "4px",
+      "$type": "dimension",
+      "$description": "4px.",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "primitive",
+          "figmaVar": "Themes/UDS grid/4px",
+          "deprecatedAliases": [
+            "$uds-size-spacing-half"
+          ]
+        }
+      }
+    },
+    "8": {
+      "$value": "8px",
+      "$type": "dimension",
+      "$description": "8px.",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "primitive",
+          "figmaVar": "Themes/UDS grid/8px",
+          "deprecatedAliases": [
+            "$uds-size-spacing-1"
+          ]
+        }
+      }
+    },
+    "12": {
+      "$value": "12px",
+      "$type": "dimension",
+      "$description": "In Figma's UDS grid, not in production.",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "primitive",
+          "figmaVar": "Themes/UDS grid/12px",
+          "status": "experimental"
+        }
+      }
+    },
+    "16": {
+      "$value": "16px",
+      "$type": "dimension",
+      "$description": "16px.",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "primitive",
+          "figmaVar": "Themes/UDS grid/16px",
+          "deprecatedAliases": [
+            "$uds-size-spacing-2"
+          ]
+        }
+      }
+    },
+    "20": {
+      "$value": "20px",
+      "$type": "dimension",
+      "$description": "In Figma's UDS grid, not in production.",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "primitive",
+          "figmaVar": "Themes/UDS grid/20px",
+          "status": "experimental"
+        }
+      }
+    },
+    "24": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "24px.",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "primitive",
+          "figmaVar": "Themes/UDS grid/24px",
+          "deprecatedAliases": [
+            "$uds-size-spacing-3"
+          ]
+        }
+      }
+    },
+    "32": {
+      "$value": "32px",
+      "$type": "dimension",
+      "$description": "32px.",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "primitive",
+          "figmaVar": "Themes/UDS grid/32px",
+          "deprecatedAliases": [
+            "$uds-size-spacing-4"
+          ]
+        }
+      }
+    },
+    "36": {
+      "$value": "36px",
+      "$type": "dimension",
+      "$description": "In Figma's UDS grid, not in production.",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "primitive",
+          "figmaVar": "Themes/UDS grid/36px",
+          "status": "experimental"
+        }
+      }
+    },
+    "40": {
+      "$value": "40px",
+      "$type": "dimension",
+      "$description": "40px.",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "primitive",
+          "figmaVar": "Themes/UDS grid/40px",
+          "deprecatedAliases": [
+            "$uds-size-spacing-5"
+          ]
+        }
+      }
+    },
+    "48": {
+      "$value": "48px",
+      "$type": "dimension",
+      "$description": "48px.",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "primitive",
+          "figmaVar": "Themes/UDS grid/48px",
+          "deprecatedAliases": [
+            "$uds-size-spacing-6"
+          ]
+        }
+      }
+    },
+    "56": {
+      "$value": "56px",
+      "$type": "dimension",
+      "$description": "56px.",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "primitive",
+          "figmaVar": "Themes/UDS grid/56px",
+          "deprecatedAliases": [
+            "$uds-size-spacing-7"
+          ]
+        }
+      }
+    },
+    "64": {
+      "$value": "64px",
+      "$type": "dimension",
+      "$description": "64px.",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "primitive",
+          "figmaVar": "Themes/UDS grid/64px",
+          "deprecatedAliases": [
+            "$uds-size-spacing-8"
+          ]
+        }
+      }
+    },
+    "72": {
+      "$value": "72px",
+      "$type": "dimension",
+      "$description": "Live in production (ask 17: KEEP). Not yet in Figma's UDS grid (ask 13 list).",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "primitive",
+          "deprecatedAliases": [
+            "$uds-size-spacing-9"
+          ]
+        }
+      }
+    },
+    "80": {
+      "$value": "80px",
+      "$type": "dimension",
+      "$description": "Live in production (ask 17: KEEP). Not yet in Figma's UDS grid (ask 13 list).",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "primitive",
+          "deprecatedAliases": [
+            "$uds-size-spacing-10"
+          ]
+        }
+      }
+    },
+    "96": {
+      "$value": "96px",
+      "$type": "dimension",
+      "$description": "96px.",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "primitive",
+          "figmaVar": "Themes/UDS grid/96px",
+          "deprecatedAliases": [
+            "$uds-size-spacing-12"
+          ]
+        }
+      }
+    },
+    "112": {
+      "$value": "112px",
+      "$type": "dimension",
+      "$description": "Live in production (ask 17: KEEP). Not yet in Figma's UDS grid (ask 13 list).",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "primitive",
+          "deprecatedAliases": [
+            "$uds-size-spacing-14"
+          ]
+        }
+      }
+    },
+    "128": {
+      "$value": "128px",
+      "$type": "dimension",
+      "$description": "Live in production (ask 17: KEEP). Not yet in Figma's UDS grid (ask 13 list).",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "primitive",
+          "deprecatedAliases": [
+            "$uds-size-spacing-16"
+          ]
+        }
+      }
+    },
+    "256": {
+      "$value": "256px",
+      "$type": "dimension",
+      "$description": "Live in production (ask 17: KEEP). Not yet in Figma's UDS grid (ask 13 list).",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "primitive",
+          "deprecatedAliases": [
+            "$uds-size-spacing-32"
+          ]
+        }
+      }
+    },
+    "512": {
+      "$value": "512px",
+      "$type": "dimension",
+      "$description": "Live in production (ask 17: KEEP). Not yet in Figma's UDS grid (ask 13 list).",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "primitive",
+          "deprecatedAliases": [
+            "$uds-size-spacing-64"
+          ]
+        }
+      }
+    },
+    "section": {
+      "$description": "Vertical space between page sections (top and bottom padding of a section). UDS spacing guidelines v1 (team final, 2026-11). Brand review pending; values may change without a breaking rename.",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "semantic",
+          "status": "experimental"
+        }
+      },
+      "standard": {
+        "$description": "Default space between page sections. Tablet 72 is new.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Breakpoints/Section spacing/Section spacing | Standard"
+          }
+        },
+        "desktop": {
+          "$value": "{spacing.96}",
+          "$type": "dimension"
+        },
+        "tablet": {
+          "$value": "{spacing.72}",
+          "$type": "dimension"
+        },
+        "mobile": {
+          "$value": "{spacing.48}",
+          "$type": "dimension"
+        }
+      },
+      "sm": {
+        "$description": "Compact sections, and space below a hero. The hero does not move to this token now (ask 22).",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Breakpoints/Section spacing/Section spacing | Small"
+          }
+        },
+        "desktop": {
+          "$value": "{spacing.64}",
+          "$type": "dimension"
+        },
+        "tablet": {
+          "$value": "{spacing.48}",
+          "$type": "dimension"
+        },
+        "mobile": {
+          "$value": "{spacing.32}",
+          "$type": "dimension"
+        }
+      },
+      "xs": {
+        "$description": "Tight sections: dividers, footer blocks, stacked content groups.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Breakpoints/Section spacing/Section spacing | Extra small"
+          }
+        },
+        "desktop": {
+          "$value": "{spacing.48}",
+          "$type": "dimension"
+        },
+        "tablet": {
+          "$value": "{spacing.32}",
+          "$type": "dimension"
+        },
+        "mobile": {
+          "$value": "{spacing.24}",
+          "$type": "dimension"
+        }
+      }
+    },
+    "padding": {
+      "$description": "Inside padding of containers and components. UDS spacing guidelines v1 (team final, 2026-11). Brand review pending; values may change without a breaking rename. Production also pads with 12px and 40px, which have no padding name; components use spacing.12 / spacing.40.",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "semantic",
+          "status": "experimental"
+        }
+      },
+      "xl": {
+        "$description": "Large containers: sections with a background color, banners, callouts. Tablet 40 is new.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Breakpoints/Padding/Padding | Extra large"
+          }
+        },
+        "desktop": {
+          "$value": "{spacing.48}",
+          "$type": "dimension"
+        },
+        "tablet": {
+          "$value": "{spacing.40}",
+          "$type": "dimension"
+        },
+        "mobile": {
+          "$value": "{spacing.32}",
+          "$type": "dimension"
+        }
+      },
+      "lg": {
+        "$value": "{spacing.32}",
+        "$type": "dimension",
+        "$description": "Cards and content blocks.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Breakpoints/Padding/Padding | Large"
+          }
+        }
+      },
+      "standard": {
+        "$value": "{spacing.24}",
+        "$type": "dimension",
+        "$description": "Default inside padding of components.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Breakpoints/Padding/Padding | Standard"
+          }
+        }
+      },
+      "md": {
+        "$value": "{spacing.16}",
+        "$type": "dimension",
+        "$description": "Default button padding (vertical), form fields, compact components.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Breakpoints/Padding/Padding | Medium"
+          }
+        }
+      },
+      "sm": {
+        "$value": "{spacing.8}",
+        "$type": "dimension",
+        "$description": "Tight padding: alerts, small controls, medium button (vertical).",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Breakpoints/Padding/Padding | Small"
+          }
+        }
+      },
+      "xs": {
+        "$value": "{spacing.4}",
+        "$type": "dimension",
+        "$description": "Minimal padding: small button (vertical), tags, tabs.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Breakpoints/Padding/Padding | Extra small"
+          }
+        }
+      }
+    },
+    "paragraph": {
+      "$description": "Space between text elements. UDS spacing guidelines v1 (team final, 2026-11). Brand review pending; values may change without a breaking rename.",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "semantic",
+          "status": "experimental"
+        }
+      },
+      "paragraph-paragraph": {
+        "$value": "{spacing.16}",
+        "$type": "dimension",
+        "$description": "Space between two paragraphs.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Breakpoints/Paragraph spacing/Paragraph > Paragraph"
+          }
+        }
+      },
+      "heading-paragraph": {
+        "$value": "{spacing.16}",
+        "$type": "dimension",
+        "$description": "Space between a heading and the paragraph below it. Production value ($heading-margin: 1rem); Figma says 24, Brand to decide.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Breakpoints/Paragraph spacing/Heading > Paragraph"
+          }
+        }
+      },
+      "element-text": {
+        "$description": "Space between a non-text element (image, card, button group) and text.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Breakpoints/Paragraph spacing/Element > Text"
+          }
+        },
+        "desktop": {
+          "$value": "{spacing.32}",
+          "$type": "dimension"
+        },
+        "tablet": {
+          "$value": "{spacing.24}",
+          "$type": "dimension"
+        },
+        "mobile": {
+          "$value": "{spacing.24}",
+          "$type": "dimension"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "duration": {
+    "$description": "Transition durations, as production.",
+    "$extensions": {
+      "com.asu.uds": {
+        "status": "stable",
+        "tier": "primitive"
+      }
+    },
+    "base": {
+      "$value": "400ms",
+      "$type": "duration",
+      "$description": "Default transition.",
+      "$extensions": {
+        "com.asu.uds": {
+          "deprecatedAliases": [
+            "$uds-time-transition-base"
+          ]
+        }
+      }
+    },
+    "slow": {
+      "$value": "1000ms",
+      "$type": "duration",
+      "$description": "Slow transition.",
+      "$extensions": {
+        "com.asu.uds": {
+          "deprecatedAliases": [
+            "$uds-time-transition-xl"
+          ]
+        }
+      }
+    }
+  }
+}

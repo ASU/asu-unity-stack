@@ -1,0 +1,477 @@
+{
+  "font": {
+    "$description": "Font family, weights and sizes. Values from production (unity-bootstrap-theme), per the UDS Report (UDS-2274).",
+    "$extensions": {
+      "com.asu.uds": {
+        "status": "stable"
+      }
+    },
+    "family": {
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "primitive"
+        }
+      },
+      "base": {
+        "$value": "Arial, Helvetica, 'Nimbus Sans L', 'Liberation Sans', FreeSans, sans-serif",
+        "$type": "fontFamily",
+        "$description": "UDS font stack (body and headings).",
+        "$extensions": {
+          "com.asu.uds": {
+            "deprecatedAliases": [
+              "$uds-font-family-base"
+            ]
+          }
+        }
+      }
+    },
+    "weight": {
+      "$description": "Font weights.",
+      "$extensions": {
+        "com.asu.uds": {
+          "tier": "primitive"
+        }
+      },
+      "light": {
+        "$value": "300",
+        "$type": "fontWeight",
+        "$extensions": {
+          "com.asu.uds": {
+            "deprecatedAliases": [
+              "$uds-font-weight-light"
+            ]
+          }
+        }
+      },
+      "regular": {
+        "$value": "400",
+        "$type": "fontWeight",
+        "$extensions": {
+          "com.asu.uds": {
+            "deprecatedAliases": [
+              "$uds-font-weight-normal"
+            ]
+          }
+        }
+      },
+      "bold": {
+        "$value": "700",
+        "$type": "fontWeight",
+        "$extensions": {
+          "com.asu.uds": {
+            "deprecatedAliases": [
+              "$uds-font-weight-bold",
+              "$heading-font-weight"
+            ]
+          }
+        }
+      },
+      "black": {
+        "$value": "900",
+        "$type": "fontWeight",
+        "$extensions": {
+          "com.asu.uds": {
+            "deprecatedAliases": [
+              "$uds-font-weight-bolder"
+            ]
+          }
+        }
+      }
+    },
+    "size": {
+      "$description": "Font sizes. Numeric keys are the px value (primitives); hN keys are heading sizes (semantic). Live in production; pending Brand, ask 13 (add to Figma).",
+      "12": {
+        "$value": "12px",
+        "$type": "dimension",
+        "$extensions": {
+          "com.asu.uds": {
+            "tier": "primitive",
+            "deprecatedAliases": [
+              "$uds-size-font-tiny"
+            ]
+          }
+        }
+      },
+      "14": {
+        "$value": "14px",
+        "$type": "dimension",
+        "$extensions": {
+          "com.asu.uds": {
+            "tier": "primitive",
+            "deprecatedAliases": [
+              "$uds-size-font-small"
+            ]
+          }
+        }
+      },
+      "16": {
+        "$value": "16px",
+        "$type": "dimension",
+        "$extensions": {
+          "com.asu.uds": {
+            "tier": "primitive",
+            "deprecatedAliases": [
+              "$uds-size-font-medium"
+            ]
+          }
+        }
+      },
+      "20": {
+        "$value": "20px",
+        "$type": "dimension",
+        "$extensions": {
+          "com.asu.uds": {
+            "tier": "primitive",
+            "deprecatedAliases": [
+              "$uds-size-font-large"
+            ]
+          }
+        }
+      },
+      "24": {
+        "$value": "24px",
+        "$type": "dimension",
+        "$extensions": {
+          "com.asu.uds": {
+            "tier": "primitive",
+            "deprecatedAliases": [
+              "$uds-size-font-xl"
+            ]
+          }
+        }
+      },
+      "32": {
+        "$value": "32px",
+        "$type": "dimension",
+        "$extensions": {
+          "com.asu.uds": {
+            "tier": "primitive",
+            "deprecatedAliases": [
+              "$uds-size-font-xxl"
+            ]
+          }
+        }
+      },
+      "48": {
+        "$value": "48px",
+        "$type": "dimension",
+        "$extensions": {
+          "com.asu.uds": {
+            "tier": "primitive",
+            "deprecatedAliases": [
+              "$uds-size-font-xxxl"
+            ]
+          }
+        }
+      },
+      "h1": {
+        "$description": "H1 size.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Breakpoints/Headings/H1 font size",
+            "tier": "semantic",
+            "deprecatedAliases": [
+              "$heading-one-font-size",
+              "$heading-one-mobile-font-size"
+            ]
+          }
+        },
+        "desktop": {
+          "$value": "64px",
+          "$type": "dimension"
+        },
+        "mobile": {
+          "$value": "36px",
+          "$type": "dimension"
+        }
+      },
+      "h1-article": {
+        "$description": "H1 article variant (h1.article). Live in production; pending Brand, ask 13 (add to Figma).",
+        "$extensions": {
+          "com.asu.uds": {
+            "tier": "semantic",
+            "status": "experimental",
+            "deprecatedAliases": [
+              "$heading-one-article-font-size"
+            ]
+          }
+        },
+        "desktop": {
+          "$value": "48px",
+          "$type": "dimension"
+        },
+        "mobile": {
+          "$value": "36px",
+          "$type": "dimension"
+        }
+      },
+      "h2": {
+        "$description": "H2 size.",
+        "$extensions": {
+          "com.asu.uds": {
+            "figmaVar": "Breakpoints/Headings/H2 font size",
+            "tier": "semantic",
+            "deprecatedAliases": [
+              "$heading-two-font-size",
+              "$heading-two-mobile-font-size"
+            ]
+          }
+        },
+        "desktop": {
+          "$value": "40px",
+          "$type": "dimension"
+        },
+        "mobile": {
+          "$value": "32px",
+          "$type": "dimension"
+        }
+      },
+      "h3": {
+        "$value": "24px",
+        "$type": "dimension",
+        "$description": "H3 size. Live in production; pending Brand, ask 13 (add to Figma).",
+        "$extensions": {
+          "com.asu.uds": {
+            "tier": "semantic",
+            "status": "experimental",
+            "deprecatedAliases": [
+              "$heading-three-font-size"
+            ]
+          }
+        }
+      },
+      "h4": {
+        "$value": "20px",
+        "$type": "dimension",
+        "$description": "H4 size. Live in production; pending Brand, ask 13 (add to Figma).",
+        "$extensions": {
+          "com.asu.uds": {
+            "tier": "semantic",
+            "status": "experimental",
+            "deprecatedAliases": [
+              "$heading-four-font-size"
+            ]
+          }
+        }
+      },
+      "h5": {
+        "$value": "16px",
+        "$type": "dimension",
+        "$description": "H5 size. Live in production; pending Brand, ask 13 (add to Figma).",
+        "$extensions": {
+          "com.asu.uds": {
+            "tier": "semantic",
+            "status": "experimental",
+            "deprecatedAliases": [
+              "$heading-five-font-size"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "line-height": {
+    "$description": "Heading line heights (semantic). Body line-height (font-size + 8px) is not a single token value; see tokens/README.md § Pending.",
+    "$extensions": {
+      "com.asu.uds": {
+        "status": "experimental",
+        "tier": "semantic"
+      }
+    },
+    "h1": {
+      "$description": "H1 line height. Brand value (ask 2: 68px); production is 72px until Brand decides to change it.",
+      "$extensions": {
+        "com.asu.uds": {
+          "figmaVar": "Breakpoints/Headings/H1 line height",
+          "deprecatedAliases": [
+            "$heading-one-line-height",
+            "$heading-one-mobile-line-height"
+          ]
+        }
+      },
+      "desktop": {
+        "$value": "68px",
+        "$type": "dimension"
+      },
+      "mobile": {
+        "$value": "40px",
+        "$type": "dimension"
+      }
+    },
+    "h1-article": {
+      "$description": "H1 article line height. Live in production; pending Brand, ask 13 (add to Figma).",
+      "$extensions": {
+        "com.asu.uds": {
+          "deprecatedAliases": [
+            "$heading-one-article-line-height"
+          ]
+        }
+      },
+      "desktop": {
+        "$value": "52px",
+        "$type": "dimension"
+      },
+      "mobile": {
+        "$value": "40px",
+        "$type": "dimension"
+      }
+    },
+    "h2": {
+      "$description": "H2 line height. Mobile 36px is Brand's value (ask 3); production is 40px, Figma 34px.",
+      "$extensions": {
+        "com.asu.uds": {
+          "figmaVar": "Breakpoints/Headings/H2 line height",
+          "deprecatedAliases": [
+            "$heading-two-line-height",
+            "$heading-two-mobile-line-height"
+          ]
+        }
+      },
+      "desktop": {
+        "$value": "44px",
+        "$type": "dimension"
+      },
+      "mobile": {
+        "$value": "36px",
+        "$type": "dimension"
+      }
+    },
+    "h3": {
+      "$value": "28px",
+      "$type": "dimension",
+      "$description": "H3 line height. Live in production; pending Brand, ask 13 (add to Figma).",
+      "$extensions": {
+        "com.asu.uds": {
+          "deprecatedAliases": [
+            "$heading-three-line-height"
+          ]
+        }
+      }
+    },
+    "h4": {
+      "$value": "26px",
+      "$type": "dimension",
+      "$description": "H4 line height. Live in production; pending Brand, ask 13 (add to Figma).",
+      "$extensions": {
+        "com.asu.uds": {
+          "deprecatedAliases": [
+            "$heading-four-line-height"
+          ]
+        }
+      }
+    },
+    "h5": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "H5 line height. Live in production; pending Brand, ask 13 (add to Figma).",
+      "$extensions": {
+        "com.asu.uds": {
+          "deprecatedAliases": [
+            "$heading-five-line-height"
+          ]
+        }
+      }
+    }
+  },
+  "letter-spacing": {
+    "$description": "Heading letter spacing (semantic): production rem values x 16. Live in production; pending Brand, ask 13 (add to Figma).",
+    "$extensions": {
+      "com.asu.uds": {
+        "status": "experimental",
+        "tier": "semantic"
+      }
+    },
+    "h1": {
+      "$description": "H1 letter spacing.",
+      "$extensions": {
+        "com.asu.uds": {
+          "deprecatedAliases": [
+            "$heading-one-letter-spacing",
+            "$heading-one-mobile-letter-spacing"
+          ]
+        }
+      },
+      "desktop": {
+        "$value": "-2.24px",
+        "$type": "dimension"
+      },
+      "mobile": {
+        "$value": "-1.248px",
+        "$type": "dimension"
+      }
+    },
+    "h1-article": {
+      "$description": "H1 article letter spacing.",
+      "$extensions": {
+        "com.asu.uds": {
+          "deprecatedAliases": [
+            "$heading-one-article-letter-spacing"
+          ]
+        }
+      },
+      "desktop": {
+        "$value": "-1.68px",
+        "$type": "dimension"
+      },
+      "mobile": {
+        "$value": "-1.248px",
+        "$type": "dimension"
+      }
+    },
+    "h2": {
+      "$description": "H2 letter spacing.",
+      "$extensions": {
+        "com.asu.uds": {
+          "deprecatedAliases": [
+            "$heading-two-letter-spacing",
+            "$heading-two-mobile-letter-spacing"
+          ]
+        }
+      },
+      "desktop": {
+        "$value": "-1.4px",
+        "$type": "dimension"
+      },
+      "mobile": {
+        "$value": "-1.12px",
+        "$type": "dimension"
+      }
+    },
+    "h3": {
+      "$value": "-0.84px",
+      "$type": "dimension",
+      "$description": "H3 letter spacing.",
+      "$extensions": {
+        "com.asu.uds": {
+          "deprecatedAliases": [
+            "$heading-three-letter-spacing"
+          ]
+        }
+      }
+    },
+    "h4": {
+      "$value": "-0.3px",
+      "$type": "dimension",
+      "$description": "H4 letter spacing.",
+      "$extensions": {
+        "com.asu.uds": {
+          "deprecatedAliases": [
+            "$heading-four-letter-spacing"
+          ]
+        }
+      }
+    },
+    "h5": {
+      "$value": "-0.24px",
+      "$type": "dimension",
+      "$description": "H5 letter spacing.",
+      "$extensions": {
+        "com.asu.uds": {
+          "deprecatedAliases": [
+            "$heading-five-letter-spacing"
+          ]
+        }
+      }
+    }
+  }
+}

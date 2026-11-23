@@ -1,0 +1,28 @@
+{
+  "radius": {
+    "$description": "Border radius. Production uses two values. Not in Figma variables yet (ask 13).",
+    "$extensions": {
+      "com.asu.uds": {
+        "status": "stable",
+        "tier": "primitive"
+      }
+    },
+    "none": {
+      "$value": "0px",
+      "$type": "dimension",
+      "$description": "Square corners: cards, inputs, dropdowns, tabs, accordion."
+    },
+    "pill": {
+      "$value": "400rem",
+      "$type": "dimension",
+      "$description": "Pill shape: buttons, badges.",
+      "$extensions": {
+        "com.asu.uds": {
+          "deprecatedAliases": [
+            "$uds-component-border-radius"
+          ]
+        }
+      }
+    }
+  }
+}

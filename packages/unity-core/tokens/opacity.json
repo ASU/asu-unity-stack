@@ -1,0 +1,23 @@
+{
+  "opacity": {
+    "$description": "Opacity.",
+    "$extensions": {
+      "com.asu.uds": {
+        "status": "stable",
+        "tier": "primitive"
+      }
+    },
+    "disabled": {
+      "$value": "0.5",
+      "$type": "number",
+      "$description": "Disabled controls.",
+      "$extensions": {
+        "com.asu.uds": {
+          "deprecatedAliases": [
+            "$btn-disabled-opacity"
+          ]
+        }
+      }
+    }
+  }
+}

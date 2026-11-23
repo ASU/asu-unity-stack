@@ -1,0 +1,23 @@
+{
+  "border": {
+    "$description": "Border widths. Border colors are color.border.*.",
+    "$extensions": {
+      "com.asu.uds": {
+        "status": "stable",
+        "tier": "primitive"
+      }
+    },
+    "width": {
+      "button": {
+        "$value": "2px",
+        "$type": "dimension",
+        "$description": "Filled button border width."
+      },
+      "focus": {
+        "$value": "1px",
+        "$type": "dimension",
+        "$description": "Form field focus ring (box-shadow 0 0 0 1px)."
+      }
+    }
+  }
+}

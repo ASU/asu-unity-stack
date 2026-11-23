@@ -1,0 +1,73 @@
+{
+  "icon": {
+    "$description": "Icon sizes.",
+    "$extensions": {
+      "com.asu.uds": {
+        "status": "stable",
+        "tier": "primitive"
+      }
+    },
+    "size": {
+      "sm": {
+        "$value": "24px",
+        "$type": "dimension",
+        "$description": "Small icon.",
+        "$extensions": {
+          "com.asu.uds": {
+            "deprecatedAliases": [
+              "$uds-size-icon-small"
+            ]
+          }
+        }
+      },
+      "md": {
+        "$value": "32px",
+        "$type": "dimension",
+        "$description": "Base icon.",
+        "$extensions": {
+          "com.asu.uds": {
+            "deprecatedAliases": [
+              "$uds-size-icon-base"
+            ]
+          }
+        }
+      },
+      "lg": {
+        "$value": "40px",
+        "$type": "dimension",
+        "$description": "Large icon.",
+        "$extensions": {
+          "com.asu.uds": {
+            "deprecatedAliases": [
+              "$uds-size-icon-large"
+            ]
+          }
+        }
+      },
+      "xl": {
+        "$value": "48px",
+        "$type": "dimension",
+        "$description": "Extra large icon.",
+        "$extensions": {
+          "com.asu.uds": {
+            "deprecatedAliases": [
+              "$uds-size-icon-xl"
+            ]
+          }
+        }
+      },
+      "2xl": {
+        "$value": "80px",
+        "$type": "dimension",
+        "$description": "2x large icon.",
+        "$extensions": {
+          "com.asu.uds": {
+            "deprecatedAliases": [
+              "$uds-size-icon-xxl"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

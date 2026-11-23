@@ -1,0 +1,23 @@
+{
+  "target-size": {
+    "$description": "Accessibility.",
+    "$extensions": {
+      "com.asu.uds": {
+        "status": "stable",
+        "tier": "primitive"
+      }
+    },
+    "minimum": {
+      "$value": "24px",
+      "$type": "dimension",
+      "$description": "Minimum pointer target size (WCAG 2.2, 2.5.8).",
+      "$extensions": {
+        "com.asu.uds": {
+          "deprecatedAliases": [
+            "$a11y-target-size-minimum"
+          ]
+        }
+      }
+    }
+  }
+}
