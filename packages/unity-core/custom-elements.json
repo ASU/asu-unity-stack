@@ -4,6 +4,283 @@
   "modules": [
     {
       "kind": "javascript-module",
+      "path": "src/components/accordion/uds-accordion-item.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "UdsAccordionItem",
+          "cssProperties": [
+            {
+              "description": "Border color for the item",
+              "name": "--uds-color-border-default"
+            },
+            {
+              "description": "Header and panel vertical padding",
+              "name": "--uds-spacing-16"
+            },
+            {
+              "description": "Header and panel horizontal padding",
+              "name": "--uds-spacing-24"
+            },
+            {
+              "description": "Header and panel background color",
+              "name": "--uds-color-background-primary"
+            },
+            {
+              "description": "Header hover background color",
+              "name": "--uds-color-background-secondary"
+            },
+            {
+              "description": "Header and panel text color",
+              "name": "--uds-color-text-primary"
+            },
+            {
+              "description": "Header font size",
+              "name": "--uds-font-size-h4"
+            },
+            {
+              "description": "Header focus ring color",
+              "name": "--uds-color-border-focus"
+            },
+            {
+              "description": "Item border radius",
+              "name": "--uds-radius-none"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The header button element",
+              "name": "header"
+            },
+            {
+              "description": "The collapsible panel container",
+              "name": "panel"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Default slot for the panel content.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "The text displayed in the header button.",
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the panel is currently expanded.",
+              "attribute": "open",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_headerId",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "default": "`uds-accordion-header-${id}`"
+            },
+            {
+              "kind": "field",
+              "name": "_panelId",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "default": "`uds-accordion-panel-${id}`"
+            },
+            {
+              "kind": "method",
+              "name": "_toggle",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_handleKeydown",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "uds-accordion-toggle",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the item is opened or closed."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "The text displayed in the header button.",
+              "fieldName": "title"
+            },
+            {
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the panel is currently expanded.",
+              "fieldName": "open"
+            }
+          ],
+          "superclass": {
+            "name": "UdsBaseElement",
+            "module": "/src/core/base-element.js"
+          },
+          "tagName": "uds-accordion-item",
+          "customElement": true,
+          "summary": "A single collapsible item within a `<uds-accordion>`."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UdsAccordionItem",
+          "declaration": {
+            "name": "UdsAccordionItem",
+            "module": "src/components/accordion/uds-accordion-item.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "uds-accordion-item",
+          "declaration": {
+            "name": "UdsAccordionItem",
+            "module": "src/components/accordion/uds-accordion-item.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/accordion/uds-accordion.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "UdsAccordion",
+          "cssProperties": [
+            {
+              "description": "Gap between accordion items",
+              "name": "--uds-spacing-12"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Default slot for `<uds-accordion-item>` children.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "multiple",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "When false (default), only one item can be open at a time.\nWhen true, multiple items may be open simultaneously.",
+              "attribute": "multiple"
+            },
+            {
+              "kind": "method",
+              "name": "_handleItemToggle",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "CustomEvent<{ open: boolean }>"
+                  }
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "multiple",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "When false (default), only one item can be open at a time.\nWhen true, multiple items may be open simultaneously.",
+              "fieldName": "multiple"
+            }
+          ],
+          "superclass": {
+            "name": "UdsBaseElement",
+            "module": "/src/core/base-element.js"
+          },
+          "tagName": "uds-accordion",
+          "customElement": true,
+          "summary": "A container for `<uds-accordion-item>` elements. Controls single/multiple open behavior."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UdsAccordion",
+          "declaration": {
+            "name": "UdsAccordion",
+            "module": "src/components/accordion/uds-accordion.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "uds-accordion",
+          "declaration": {
+            "name": "UdsAccordion",
+            "module": "src/components/accordion/uds-accordion.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/button/uds-button.ts",
       "declarations": [
         {
@@ -286,109 +563,76 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/accordion/uds-accordion-item.ts",
+      "path": "src/components/ga-event-wrapper/uds-ga-event-wrapper.ts",
       "declarations": [
         {
           "kind": "class",
           "description": "",
-          "name": "UdsAccordionItem",
-          "cssProperties": [
-            {
-              "description": "Border color for the item",
-              "name": "--uds-color-border-default"
-            },
-            {
-              "description": "Header and panel vertical padding",
-              "name": "--uds-spacing-16"
-            },
-            {
-              "description": "Header and panel horizontal padding",
-              "name": "--uds-spacing-24"
-            },
-            {
-              "description": "Header and panel background color",
-              "name": "--uds-color-background-primary"
-            },
-            {
-              "description": "Header hover background color",
-              "name": "--uds-color-background-secondary"
-            },
-            {
-              "description": "Header and panel text color",
-              "name": "--uds-color-text-primary"
-            },
-            {
-              "description": "Header font size",
-              "name": "--uds-font-size-h4"
-            },
-            {
-              "description": "Header focus ring color",
-              "name": "--uds-color-border-focus"
-            },
-            {
-              "description": "Item border radius",
-              "name": "--uds-radius-none"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "The header button element",
-              "name": "header"
-            },
-            {
-              "description": "The collapsible panel container",
-              "name": "panel"
-            }
-          ],
+          "name": "UdsGaEventWrapper",
           "slots": [
             {
-              "description": "Default slot for the panel content.",
+              "description": "A single element to track (e.g. an `<a>`, `<button>`, or `<uds-button>`).",
               "name": ""
             }
           ],
           "members": [
             {
               "kind": "field",
-              "name": "title",
+              "name": "gaData",
               "type": {
-                "text": "string"
+                "text": "GaEventType"
+              },
+              "default": "{}",
+              "description": "Google Analytics data applied to the slotted child.",
+              "attribute": "gaData"
+            },
+            {
+              "kind": "field",
+              "name": "prefix",
+              "type": {
+                "text": "GaPrefix"
               },
               "default": "''",
-              "description": "The text displayed in the header button.",
-              "attribute": "title"
+              "description": "Prefix for the emitted `data-ga` attributes (`data-ga-{prefix}-action`).",
+              "attribute": "prefix"
             },
             {
               "kind": "field",
-              "name": "open",
+              "name": "_tracked",
               "type": {
-                "text": "boolean"
+                "text": "HTMLElement | null"
               },
-              "default": "false",
-              "description": "Whether the panel is currently expanded.",
-              "attribute": "open",
-              "reflects": true
+              "privacy": "private",
+              "default": "null",
+              "description": "Cached reference to the currently-tracked slotted element."
             },
             {
               "kind": "field",
-              "name": "_headerId",
+              "name": "_prefixSegment",
               "type": {
                 "text": "string"
               },
               "privacy": "private",
-              "default": "`uds-accordion-header-${id}`"
-            },
-            {
-              "kind": "field",
-              "name": "_panelId",
-              "type": {
-                "text": "string"
-              },
-              "privacy": "private",
-              "default": "`uds-accordion-panel-${id}`"
+              "readonly": true
             },
             {
               "kind": "method",
-              "name": "_toggle",
+              "name": "_getSlottedElement",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "HTMLElement | null"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_handleSlotChange",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_applyGaAttributes",
               "privacy": "private",
               "return": {
                 "type": {
@@ -397,166 +641,55 @@
               }
             },
             {
-              "kind": "method",
-              "name": "_handleKeydown",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "KeyboardEvent"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "name": "uds-accordion-toggle",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when the item is opened or closed."
+              "kind": "field",
+              "name": "_handleClick",
+              "privacy": "private"
             }
           ],
           "attributes": [
             {
-              "name": "title",
+              "name": "gaData",
               "type": {
-                "text": "string"
+                "text": "GaEventType"
+              },
+              "default": "{}",
+              "description": "Google Analytics data applied to the slotted child.",
+              "fieldName": "gaData"
+            },
+            {
+              "name": "prefix",
+              "type": {
+                "text": "GaPrefix"
               },
               "default": "''",
-              "description": "The text displayed in the header button.",
-              "fieldName": "title"
-            },
-            {
-              "name": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the panel is currently expanded.",
-              "fieldName": "open"
+              "description": "Prefix for the emitted `data-ga` attributes (`data-ga-{prefix}-action`).",
+              "fieldName": "prefix"
             }
           ],
           "superclass": {
             "name": "UdsBaseElement",
             "module": "/src/core/base-element.js"
           },
-          "tagName": "uds-accordion-item",
+          "tagName": "uds-ga-event-wrapper",
           "customElement": true,
-          "summary": "A single collapsible item within a `<uds-accordion>`."
+          "summary": "Wraps a single slotted element and wires it for Google Analytics\ntracking — the web-component equivalent of the React `GaEventWrapper`.\n\nIt supports the same two mechanisms the design system uses elsewhere:\n\n1. **Declarative (`data-ga*` attributes)** — the wrapper reflects the values\nfrom `gaData` onto the slotted child as `data-ga{prefix}-*` attributes, so\nthe CMS/global `[data-ga]` click listener picks them up. This is the\nprimary mechanism for HTML/Drupal consumption.\n2. **Programmatic (`dataLayer` push)** — on click it also pushes the event\nstraight to `window.dataLayer`, guarded (like the React version) so it only\nfires when `gaData.event` and `gaData.action` are both present."
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "UdsAccordionItem",
+          "name": "UdsGaEventWrapper",
           "declaration": {
-            "name": "UdsAccordionItem",
-            "module": "src/components/accordion/uds-accordion-item.ts"
+            "name": "UdsGaEventWrapper",
+            "module": "src/components/ga-event-wrapper/uds-ga-event-wrapper.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "uds-accordion-item",
+          "name": "uds-ga-event-wrapper",
           "declaration": {
-            "name": "UdsAccordionItem",
-            "module": "src/components/accordion/uds-accordion-item.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/accordion/uds-accordion.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "UdsAccordion",
-          "cssProperties": [
-            {
-              "description": "Gap between accordion items",
-              "name": "--uds-spacing-12"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Default slot for `<uds-accordion-item>` children.",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "multiple",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "When false (default), only one item can be open at a time.\nWhen true, multiple items may be open simultaneously.",
-              "attribute": "multiple"
-            },
-            {
-              "kind": "method",
-              "name": "_handleItemToggle",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "CustomEvent<{ open: boolean }>"
-                  }
-                }
-              ]
-            }
-          ],
-          "attributes": [
-            {
-              "name": "multiple",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "When false (default), only one item can be open at a time.\nWhen true, multiple items may be open simultaneously.",
-              "fieldName": "multiple"
-            }
-          ],
-          "superclass": {
-            "name": "UdsBaseElement",
-            "module": "/src/core/base-element.js"
-          },
-          "tagName": "uds-accordion",
-          "customElement": true,
-          "summary": "A container for `<uds-accordion-item>` elements. Controls single/multiple open behavior."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "UdsAccordion",
-          "declaration": {
-            "name": "UdsAccordion",
-            "module": "src/components/accordion/uds-accordion.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "uds-accordion",
-          "declaration": {
-            "name": "UdsAccordion",
-            "module": "src/components/accordion/uds-accordion.ts"
+            "name": "UdsGaEventWrapper",
+            "module": "src/components/ga-event-wrapper/uds-ga-event-wrapper.ts"
           }
         }
       ]
@@ -734,139 +867,6 @@
           "declaration": {
             "name": "UdsCard",
             "module": "src/components/card/uds-card.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/ga-event-wrapper/uds-ga-event-wrapper.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "UdsGaEventWrapper",
-          "slots": [
-            {
-              "description": "A single element to track (e.g. an `<a>`, `<button>`, or `<uds-button>`).",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "gaData",
-              "type": {
-                "text": "GaEventType"
-              },
-              "default": "{}",
-              "description": "Google Analytics data applied to the slotted child.",
-              "attribute": "gaData"
-            },
-            {
-              "kind": "field",
-              "name": "prefix",
-              "type": {
-                "text": "GaPrefix"
-              },
-              "default": "''",
-              "description": "Prefix for the emitted `data-ga` attributes (`data-ga-{prefix}-action`).",
-              "attribute": "prefix"
-            },
-            {
-              "kind": "field",
-              "name": "_tracked",
-              "type": {
-                "text": "HTMLElement | null"
-              },
-              "privacy": "private",
-              "default": "null",
-              "description": "Cached reference to the currently-tracked slotted element."
-            },
-            {
-              "kind": "field",
-              "name": "_prefixSegment",
-              "type": {
-                "text": "string"
-              },
-              "privacy": "private",
-              "readonly": true
-            },
-            {
-              "kind": "method",
-              "name": "_getSlottedElement",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "HTMLElement | null"
-                }
-              }
-            },
-            {
-              "kind": "field",
-              "name": "_handleSlotChange",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_applyGaAttributes",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "field",
-              "name": "_handleClick",
-              "privacy": "private"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "gaData",
-              "type": {
-                "text": "GaEventType"
-              },
-              "default": "{}",
-              "description": "Google Analytics data applied to the slotted child.",
-              "fieldName": "gaData"
-            },
-            {
-              "name": "prefix",
-              "type": {
-                "text": "GaPrefix"
-              },
-              "default": "''",
-              "description": "Prefix for the emitted `data-ga` attributes (`data-ga-{prefix}-action`).",
-              "fieldName": "prefix"
-            }
-          ],
-          "superclass": {
-            "name": "UdsBaseElement",
-            "module": "/src/core/base-element.js"
-          },
-          "tagName": "uds-ga-event-wrapper",
-          "customElement": true,
-          "summary": "Wraps a single slotted element and wires it for Google Analytics\ntracking — the web-component equivalent of the React `GaEventWrapper`.\n\nIt supports the same two mechanisms the design system uses elsewhere:\n\n1. **Declarative (`data-ga*` attributes)** — the wrapper reflects the values\nfrom `gaData` onto the slotted child as `data-ga{prefix}-*` attributes, so\nthe CMS/global `[data-ga]` click listener picks them up. This is the\nprimary mechanism for HTML/Drupal consumption.\n2. **Programmatic (`dataLayer` push)** — on click it also pushes the event\nstraight to `window.dataLayer`, guarded (like the React version) so it only\nfires when `gaData.event` and `gaData.action` are both present."
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "UdsGaEventWrapper",
-          "declaration": {
-            "name": "UdsGaEventWrapper",
-            "module": "src/components/ga-event-wrapper/uds-ga-event-wrapper.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "uds-ga-event-wrapper",
-          "declaration": {
-            "name": "UdsGaEventWrapper",
-            "module": "src/components/ga-event-wrapper/uds-ga-event-wrapper.ts"
           }
         }
       ]

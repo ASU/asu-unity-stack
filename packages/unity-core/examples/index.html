@@ -9,7 +9,6 @@
   -->
   <link rel="stylesheet" href="../dist/tokens.css" />
   <link rel="stylesheet" href="../dist/base.css" />
-  <link rel="stylesheet" href="../dist/tailwind.css" />
   <script type="module" src="../dist/unity-core.js"></script>
   <style>
     body {
@@ -54,6 +53,11 @@
       margin: 0 calc(-1 * var(--uds-spacing-16));
     }
 
+    .faq {
+      padding: var(--uds-spacing-24);
+      background: var(--uds-color-background-secondary);
+    }
+
     .button-row {
       display: flex;
       gap: var(--uds-spacing-8);
@@ -63,14 +67,14 @@
   </style>
 </head>
 <body>
-  <div class="container p-24">
-    <h1 class="font-base text-primary">UDS Code Kit — Component Demo</h1>
-    <p class="text-on-surface">This page consumes Unity Design System web components without a framework or build step.</p>
+  <div class="container">
+    <h1>UDS Code Kit — Component Demo</h1>
+    <p>This page consumes Unity Design System web components without a framework or build step.</p>
 
     <!-- Buttons Section -->
-    <section class="section mb-48">
-      <h2 class="font-base">Buttons</h2>
-      <div class="button-row flex gap-8 flex-wrap">
+    <section class="section">
+      <h2>Buttons</h2>
+      <div class="button-row">
         <uds-button label="Primary Action" color="default"></uds-button>
         <uds-button label="Secondary Action" color="contrast"></uds-button>
         <uds-button label="Gold CTA" color="cta"></uds-button>
@@ -80,8 +84,8 @@
     </section>
 
     <!-- Cards Section -->
-    <section class="section mb-48">
-      <h2 class="font-base">Cards</h2>
+    <section class="section">
+      <h2>Cards</h2>
       <div class="card-grid">
         <uds-card heading="Undergraduate Programs" image="https://picsum.photos/seed/undergrad/800/450">
           <p>Explore 350+ undergraduate degree programs across all ASU campuses.</p>
@@ -130,8 +134,8 @@
     </section>
 
     <!-- Accordion Section -->
-    <section class="section p-24 rounded-none bg-surface">
-      <h2 class="font-base">Frequently Asked Questions</h2>
+    <section class="section faq">
+      <h2>Frequently Asked Questions</h2>
       <uds-accordion>
         <uds-accordion-item title="What is the UDS Code Kit?">
           <p>The UDS Code Kit is a collection of web components that implement the ASU Unity Design System. They work in any HTML environment — Drupal, static sites, React, or plain HTML.</p>

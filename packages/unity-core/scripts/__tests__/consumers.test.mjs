@@ -36,7 +36,7 @@ describe('consumers', () => {
   });
 
   it('dead prototype files are gone', () => {
-    for (const f of ['tailwind.config.ts', 'src/core/tokens.ts', 'src/components/button/uds-button.tokens.css']) {
+    for (const f of ['tailwind.config.ts', 'src/global/tailwind.css', '.storybook/framework-snippets.ts', 'src/core/tokens.ts', 'src/components/button/uds-button.tokens.css']) {
       expect(existsSync(join(ROOT, f))).toBe(false);
     }
   });
