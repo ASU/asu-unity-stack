@@ -54,6 +54,12 @@ const ASUHeader = ({
    */
   const headerRef = useRef(null);
   const mobileMenuToggleRef = useRef(null);
+  /**
+   * Collects references to each top-level nav item's anchor element,
+   * keyed by the item's index (link.id) within the currently rendered navTree/mobileNavTree.
+   * @type {React.MutableRefObject<Array<HTMLAnchorElement?>>}
+   */
+  const navItemsRef = useRef([]);
 
   const [itemOpened, setStateItemOpened] = useState(undefined);
   const [mobileMenuOpen, setStateMobileMenuOpen] = useState(false);
@@ -186,6 +192,7 @@ const ASUHeader = ({
         setMobileMenuOpen,
         singlePageAppReset,
         mobileMenuToggleRef,
+        navItemsRef,
         site,
       }}
     >

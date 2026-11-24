@@ -10,12 +10,25 @@ import {
 } from "../../../../../__mocks__/data/props-mock";
 import { AppContextProvider } from "../../../core/context/app-context";
 
-const renderNavbarContainer = props => {
-  return render(
-    <AppContextProvider initialValue={props}>
+// NavItem reads itemOpened/setItemOpened from context (normally supplied by
+// ASUHeader), so the test harness must provide that state.
+const StatefulProvider = ({ props }) => {
+  const [itemOpened, setItemOpened] = React.useState(undefined);
+  return (
+    <AppContextProvider
+      initialValue={{
+        ...props,
+        itemOpened,
+        setItemOpened: (id = undefined) => setItemOpened(id),
+      }}
+    >
       <NavbarContainer />
     </AppContextProvider>
   );
+};
+
+const renderNavbarContainer = props => {
+  return render(<StatefulProvider props={props} />);
 };
 
 describe("#Navbar Container Component", () => {
