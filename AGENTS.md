@@ -65,13 +65,20 @@ yarn test:e2e       # Jest + Puppeteer e2e
   pushing to `window.dataLayer`) when modifying components.
 - Add dependencies from within the target package: `cd packages/<pkg>` then
   `yarn add <package>`.
+- **Stage B (asucms) placement:** every component lands as a Drupal Single
+  Directory Component in the one homepage module `asu_edu_homepage`
+  (`modules/custom/asu_edu_homepage/components/<slug>/`, no submodules)
+  ( with `<slug>.component.yml`, `.twig`, `.css`, `.js`),
+  not in the `asu_edu` theme or the shared `asu_edu_components` module. Handoffs
+  carry this in `webspark_target`; do not write Stage A notes or tickets that
+  say otherwise.
 - Conventional commits; versioning/publishing is automated via semantic-release.
   Use `yarn commit` (commitizen) to author compliant messages.
 
 ## Storybook MCP
 
 Each component package runs a Storybook dev server exposing an MCP endpoint (see
-`.github/copilot-instructions.md` for the port table). Before building UI, use
+`.agents/guidance/repository.md` for the port table). Before building UI, use
 `list-all-documentation` / `get-documentation` to discover and reuse existing
 components; after generating UI, write stories and run `run-story-tests`.
 
@@ -79,12 +86,12 @@ components; after generating UI, write stories and run `run-story-tests`.
 
 - [`README.md`](README.md) — full human-oriented project documentation.
 - [`CONTRIBUTING.md`](CONTRIBUTING.md) — contribution workflow.
-- [`.github/copilot-instructions.md`](.github/copilot-instructions.md) — detailed
+- [`.agents/guidance/repository.md`](.agents/guidance/repository.md) — detailed
   architecture, build quirks, CI/CD (Jenkins), Storybook MCP port table, and
   conventions.
-- [`.github/instructions/unity-react-core.instructions.md`](.github/instructions/unity-react-core.instructions.md)
+- [`.agents/guidance/packages/unity-react-core.md`](.agents/guidance/packages/unity-react-core.md)
   — component library specifics.
-- [`.kiro/README.md`](.kiro/README.md) — the Stage A adversarial coding pipeline.
+- [`.agents/guidance/kiro/README.md`](.agents/guidance/kiro/README.md) — the Stage A adversarial coding pipeline.
 
 > Monorepo note: this repository intentionally uses a single root `AGENTS.md`.
 > Per-package specifics live in each package's own docs and in the instruction

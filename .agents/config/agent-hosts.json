@@ -1,0 +1,49 @@
+{
+  "modelProfiles": {
+    "planning": {
+      "kiro": "claude-opus-4.7",
+      "codex": { "model": "gpt-6.1-sol", "reasoningEffort": "high" }
+    },
+    "implementation": {
+      "kiro": "claude-sonnet-4.6",
+      "codex": { "model": "gpt-6.1-terra", "reasoningEffort": "high" }
+    },
+    "independent-review": {
+      "kiro": "gpt-5.6-terra",
+      "codex": { "model": "gpt-6.1-sol", "reasoningEffort": "high" }
+    },
+    "visual-review": {
+      "kiro": "claude-sonnet-4.6",
+      "codex": { "model": "gpt-6.1-sol", "reasoningEffort": "medium" }
+    }
+  },
+  "capabilities": {
+    "read": { "description": "read repository files", "kiroTools": ["fs_read"], "githubTools": ["read"] },
+    "write": { "description": "modify repository files", "kiroTools": ["fs_write"], "githubTools": ["edit"] },
+    "shell": { "description": "run local commands and tests", "kiroTools": ["execute_bash"], "githubTools": ["execute"] },
+    "search": { "description": "search files and code", "kiroTools": ["grep", "glob"], "githubTools": ["search"] },
+    "code": { "description": "inspect code structure", "kiroTools": ["code"], "githubTools": ["read", "search"] },
+    "subagents": { "description": "delegate to registered specialist agents", "kiroTools": ["use_subagent"], "githubTools": ["agent"] }
+  },
+  "hooks": {
+    "ensure-pipeline-directory": {
+      "kiroEvent": "agentSpawn",
+      "command": "mkdir -p .pipeline",
+      "description": "Ensure pipeline artifact directory exists",
+      "fallback": "Before work begins, verify `.pipeline/` exists; if the role cannot create it within its write scope, report the missing prerequisite."
+    },
+    "log-phase": {
+      "kiroEvent": "stop",
+      "command": ".kiro/hooks/log-phase.sh",
+      "description": "Log phase transition to .pipeline/phase-log.jsonl",
+      "fallback": "Record completed pipeline phase transitions in `.pipeline/phase-log.jsonl`."
+    },
+    "block-writes": {
+      "kiroEvent": "preToolUse",
+      "matcher": "fs_write",
+      "command": ".kiro/hooks/block-reviewer-writes.sh",
+      "description": "Reviewers do not modify code",
+      "fallback": "Do not modify implementation files."
+    }
+  }
+}
