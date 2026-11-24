@@ -35,7 +35,6 @@ spec:
     environment {
         HOME='.'
         RAW_GH_TOKEN = credentials('github-org-asu-pac')
-        NPM_TOKEN = credentials('NPM_TOKEN')
         NODE_AUTH_TOKEN = credentials('github-org-asu-pac')
         AWS_ACCESS_KEY_ID = credentials('AWS_ACCESS_KEY_ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
