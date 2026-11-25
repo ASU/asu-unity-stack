@@ -17,11 +17,11 @@ const AnchorMenuWrapper = styled.div`
     align-items: center;
     width: 100%;
     text-align: inherit;
-    i {
-      transition: all 0.3s;
+    svg {
+      transition: transform 0.3s;
     }
   }
-  .show-menu i {
+  .show-menu svg {
     transform: rotate(-180deg);
   }
   .nav-link {
