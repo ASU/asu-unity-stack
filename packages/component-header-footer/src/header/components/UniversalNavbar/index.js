@@ -78,7 +78,7 @@ const UniversalNavbar = () => {
   return (
     <Wrapper
       // @ts-ignore
-      breakpoint={breakpoint}
+      $breakpoint={breakpoint}
       className={buildClassName(
         CLASS_NAMES.UNIVERSAL_NAV,
         isUnbranded && CLASS_NAMES.UNIVERSAL_NAV_UNBRANDED

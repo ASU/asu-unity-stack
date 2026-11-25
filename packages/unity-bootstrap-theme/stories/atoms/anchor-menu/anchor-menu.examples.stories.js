@@ -30,7 +30,7 @@ export const AnchorMenu = () => {
             height="1000"
             loading="lazy"
             decoding="async"
-            fetchpriority="high"
+            fetchPriority="high"
           />
           <h1>
             <span className="highlight-gold">Gettysburg Address</span>

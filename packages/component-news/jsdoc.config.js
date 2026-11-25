@@ -13,4 +13,9 @@ module.exports = {
       "./src/components",
     ],
   },
+  externals: {
+    'react-dom/client': 'ReactDOM',
+    'react-dom': 'ReactDOM',
+    'react': 'React',
+  },
 };
